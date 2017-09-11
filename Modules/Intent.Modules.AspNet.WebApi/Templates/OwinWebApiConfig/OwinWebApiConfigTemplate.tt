@@ -1,0 +1,72 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<object>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+
+
+#>
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Owin;
+using System.Web.Http;
+using Unity.WebApi;
+<#= DependencyUsings #>
+
+[assembly: DefaultIntentManaged(Mode.Merge)]
+
+namespace <#= Namespace #>
+{
+    public static class WebApiConfig
+    {
+        [IntentManaged(Mode.Fully)]
+        public static void Configure(IAppBuilder app)
+        {
+            var config = new HttpConfiguration();
+
+            // Use camel case for JSON data.
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            // Adds "Z" to the end of serialized DateTime, so that clients are aware that the received time is UTC
+            config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+
+            // Unity
+            config.DependencyResolver = new UnityDependencyResolver(UnityConfig.GetConfiguredContainer());
+
+<#
+    foreach (var item in ConfigureItems)
+    {
+#>
+            <#= item #>
+<#
+    }
+#>
+            // Web API routes
+            config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+			AddCustomConfiguration(config);
+
+            app.UseWebApi(config);
+        }
+
+		[IntentManaged(Mode.Ignore)]
+		public static void AddCustomConfiguration(HttpConfiguration config) 
+		{
+
+		}
+    }
+}

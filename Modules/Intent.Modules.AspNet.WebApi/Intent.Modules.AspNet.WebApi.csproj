@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D6171CC1-577A-4123-9CA3-34E017A40071}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Intent.Modules.WebApi</RootNamespace>
+    <AssemblyName>Intent.Modules.WebApi</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.0.0-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.0-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Decorators\Legacy\DebugSleepDistributionDecorator.cs" />
+    <Compile Include="Decorators\UseHttpsOwinStartupDecorator.cs" />
+    <Compile Include="Decorators\WebApiConfigJsonValidationDecorator.cs" />
+    <Compile Include="Decorators\Legacy\WebApiDistributionJsonValidationDecorator.cs" />
+    <Compile Include="Decorators\WebApiDistributionExceptionHandlingStrategy.cs" />
+    <Compile Include="Legacy\BaseDistributionDecorator.cs" />
+    <Compile Include="Decorators\Legacy\WebApiDistributionExceptionHandlingStrategy.cs" />
+    <Compile Include="Decorators\WebApiOwinStartupDecorator.cs" />
+    <Compile Include="Legacy\Controller\IDistributionDecorator.cs" />
+    <Compile Include="Legacy\Controller\WebApiControllerTemplate.cs">
+      <DependentUpon>WebApiControllerTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Legacy\Controller\WebApiImplementationTemplatePartial.cs" />
+    <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.cs">
+      <DependentUpon>RequireHttpsMiddlewareTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplatePartial.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrations.cs" />
+    <Compile Include="Templates\Controller\DistributionDecoratorBase.cs" />
+    <Compile Include="Templates\Controller\Registrations.cs" />
+    <Compile Include="Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.cs">
+      <DependentUpon>HttpExceptionHandlerTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\HttpExceptionHandler\HttpExceptionHandlerTemplatePartial.cs" />
+    <Compile Include="NugetPackages.cs" />
+    <Compile Include="Templates\OwinWebApiConfig\IWebApiConfigTemplateDecorator.cs" />
+    <Compile Include="Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.cs">
+      <DependentUpon>OwinWebApiConfigTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\OwinWebApiConfig\OwinWebApiConfigTemplatePartial.cs" />
+    <Compile Include="Templates\Controller\WebApiControllerTemplate.cs">
+      <DependentUpon>WebApiControllerTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Controller\WebApiControllerTemplatePartial.cs" />
+    <Compile Include="Templates\WebApiBadHttpRequestException\WebApiBadHttpRequestExceptionTemplate.cs">
+      <DependentUpon>WebApiBadHttpRequestExceptionTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\WebApiBadHttpRequestException\WebApiBadHttpRequestExceptionTemplatePartial.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Intent.Modules.AspNet.WebApi.ipkgspec" />
+    <None Include="Legacy\Services.ttinclude" />
+    <None Include="MetaData\Services\Intent.WebApi.services.pkg.config" />
+    <None Include="packages.config" />
+    <None Include="Templates\Services.ttinclude" />
+    <None Include="Templates\Controller\WebApiControllerTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>WebApiControllerTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj">
+      <Project>{2972A488-2F67-426D-8762-C85FB36FB32C}</Project>
+      <Name>Intent.Packages.Application.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Application.ServiceCallHandlers\Intent.Modules.Application.ServiceCallHandlers.csproj">
+      <Project>{E923CA07-9C38-4D69-B150-2A8FFF6E9100}</Project>
+      <Name>Intent.Packages.Application.ServiceCallHandlers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Packages.Constants\Intent.Packages.Constants.csproj">
+      <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
+      <Name>Intent.Packages.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.AspNet.Owin\Intent.Modules.AspNet.Owin.csproj">
+      <Project>{56A0B1F7-FA7E-46B0-A1C8-164DDB07FC4C}</Project>
+      <Name>Intent.Packages.Owin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Packages.Unity\Intent.Packages.Unity.csproj">
+      <Project>{DE177367-D476-4299-B9E6-71934B434FC5}</Project>
+      <Name>Intent.Packages.Unity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Templates\WebApiBadHttpRequestException\WebApiBadHttpRequestExceptionTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>WebApiBadHttpRequestExceptionTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="Legacy\Controller\WebApiControllerTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>WebApiControllerTemplate.cs</LastGenOutput>
+    </None>
+    <Content Include="MetaData\Services\Stereotypes\64d4a412-03d8-46bb-90dc-8ddb186270e2.xml" />
+    <Content Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RequireHttpsMiddlewareTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="MetaData\Services\Folders\87d16e6c-ce99-4329-87c4-d39dcddf0764.xml" />
+    <Content Include="Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HttpExceptionHandlerTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>OwinWebApiConfigTemplate.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
+$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)$(ProjectName).ipkgspec $(ProjectDir)..\..\Intent.Packages
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

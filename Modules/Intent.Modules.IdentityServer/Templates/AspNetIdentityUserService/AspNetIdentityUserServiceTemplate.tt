@@ -1,0 +1,71 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<object>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+
+
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using System.Web;
+using IdentityServer3.AspNetIdentity;
+using IdentityServer3.Core;
+using IdentityServer3.Core.Configuration;
+using IdentityServer3.Core.Services;
+<#= DependencyUsings #>
+using Intent.CodeGen;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public static class UserServiceExtensions
+    {
+        public static IdentityServerServiceFactory ConfigureUserService(this IdentityServerServiceFactory factory, string connectionString)
+        {
+            factory.UserService = new Registration<IUserService, UserService>();
+            factory.Register(new Registration<UserManager>());
+            factory.Register(new Registration<UserStore>());
+            factory.Register(new Registration<IdentityDbContext>(resolver => new IdentityDbContext()));
+            return factory;
+        }
+    }
+
+    public class UserService : AspNetIdentityUserService<User, string>
+    {
+        public UserService(UserManager userManager)
+            : base(userManager)
+        {
+        }
+
+        protected override async Task<IEnumerable<Claim>> GetClaimsFromAccount(User user)
+        {
+            var claims = (await base.GetClaimsFromAccount(user)).ToList();
+            claims.Add(new Claim(Constants.ClaimTypes.Name, user.UserName));
+
+            if (!string.IsNullOrWhiteSpace(user.FirstName))
+            {
+                claims.Add(new Claim(Constants.ClaimTypes.GivenName, user.FirstName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(user.LastName))
+            {
+                claims.Add(new Claim(Constants.ClaimTypes.FamilyName, user.LastName));
+            }
+
+            return claims;
+        }
+    }
+}

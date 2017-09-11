@@ -1,0 +1,59 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<object>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+
+
+#>
+using System.Collections.Generic;
+using IdentityServer3.Core.Models;
+using Intent.CodeGen;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public static class Clients
+    {
+        public static List<Client> Get()
+        {
+            return new List<Client>
+            {
+<#    foreach(var application in Applications)
+    {#>
+                new Client
+                {
+                    Enabled = true,
+                    ClientName = "<#= application.ApplicationName #>",
+                    ClientId = "<#= application.ApplicationName #>",
+
+                    Flow = Flows.<#= application.AuthenticationType #>,
+
+                    AllowedCorsOrigins = new List<string>
+                    {
+                        "<#= application.ApplicationUrl #>"
+                    },
+
+                    RedirectUris = new List<string>
+                    {
+                        "<#= application.ApplicationUrl #>/#/login-callback/",
+                        "<#= application.ApplicationUrl #>/App/Auth/RenewToken/SilentRenew.html"
+                    },
+
+                    RequireConsent = false,
+                    AllowAccessToAllScopes = true
+                },
+<#    } #>
+            };
+        }
+    }
+}

@@ -1,0 +1,64 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+#>
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using Microsoft.Practices.Unity;
+using Intent.CodeGen;
+<#=DependencyUsings#>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#=Namespace#>
+{
+    public class <#=ClassName#> : <#= GetServiceInterfaceName() #>
+    {
+        private readonly IUnityContainer _container;
+
+        public <#=ClassName#>(IUnityContainer container)
+        { 
+            _container = container;
+        }
+
+<#    foreach (var o in Model.Operations)
+    {
+
+#>        public <#= GetOperationReturnType(o) #> <#= o.Name#>(<#= GetOperationDefinitionParameters(o) #>)
+        {
+            var sch = _container.Resolve<<#= GetHandlerClassName(o) #>>();
+            <#
+        if (o.ReturnType != null)
+        {
+#>return <#
+        }
+#>sch.Handle(<#= GetOperationCallParameters(o) #>);
+        }
+
+<#        
+    }
+#>
+
+        #region IDisposable Members
+
+        public void Dispose()
+        {
+            //dispose all resources
+        }
+
+        #endregion
+    }
+}

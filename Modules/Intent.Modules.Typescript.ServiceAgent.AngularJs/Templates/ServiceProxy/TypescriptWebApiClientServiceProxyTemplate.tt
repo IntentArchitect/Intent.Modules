@@ -1,0 +1,60 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentTypescriptProjectItemTemplateBase<ServiceModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic"#>
+<#@ import namespace="Intent.Packages.Typescript.ServiceAgent.Contracts"#>
+<#
+#>
+
+namespace <#= Namespace #> {
+
+    export class <#=ClassName#> {
+        
+        static $inject = ['$http', 'Config'];
+        constructor(
+            public $http: ng.IHttpService,
+            public config: any) {
+        }
+
+<#        foreach (var o in Model.Operations)
+        {
+
+            if (o.ReturnType != null)
+            {
+
+#>
+        public <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IHttpPromise<<#= this.ConvertType(o.ReturnType.TypeReference) #>>
+        {
+            var baseUrl = this.config["<#= ApiBasePathConfigKey #>"];
+            var url = baseUrl + "/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>";
+            return this.$http.post<<#= this.ConvertType(o.ReturnType.TypeReference) #>>(url, { <#= GetMethodCallParameters(o) #> });
+        }
+
+<#
+            }
+            else
+            {
+#>
+        public <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IHttpPromise<void>
+        {
+            var baseUrl = this.config["<#= ApiBasePathConfigKey #>"];
+            var url = baseUrl + "/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>";
+            return this.$http.post<void>(url, { <#= GetMethodCallParameters(o) #> });
+        }
+
+<#            }
+        }
+#>
+    }
+
+    angular.module("App").service("<#=Model.Name#>Proxy", <#=Model.Name#>Proxy);
+}

@@ -1,0 +1,40 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IOperationModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+#>
+using Intent.CodeGen;
+using System;
+using System.Linq;
+using System.Collections.Generic;
+<#=DependencyUsings#>
+
+[assembly: DefaultIntentManaged(Mode.Ignore)]
+
+namespace <#= Namespace #>
+{
+    [IntentManaged(Mode.Merge)]
+    public class <#=ClassName#> 
+    {
+		[IntentInitialGen]
+        public <#=ClassName#>()
+        {
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore)]
+        public <#= GetOperationReturnType(Model) #> Handle(<#= GetOperationDefinitionParameters(Model) #>)
+        {
+            throw new NotImplementedException("Your implementation here");
+        }
+    }
+}

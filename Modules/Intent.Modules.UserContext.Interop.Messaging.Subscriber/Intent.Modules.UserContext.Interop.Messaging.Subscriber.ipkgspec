@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.UserContext.Interop.Messaging.Subscriber</id>
+  <version>1.0.1</version>
+  <summary>UserContext registrations for messaging subscription infrastructure.</summary>
+  <description>UserContext registrations for messaging subscription infrastructure.</description>
+  <authors>Intent Software</authors>
+  <projectUrl>http://intentsoftware.io</projectUrl>
+  <tags>User Context Messaging Eventing Message Broker</tags>
+  <templates>
+  </templates>
+  <decorators>
+    <decorator id="Intent.UserContext.Interop.Messaging.Subscriber.Decorator.Legacy"/>
+  </decorators>
+  <dependencies>
+    <dependency id="Intent.UserContext" version="1.0"/>
+    <dependency id="Intent.Messaging.Subscriber" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\Intent.Packages.UserContext.Interop.Messaging.Subscriber.dll"/>
+    <file src="bin\$configuration$\Intent.Packages.UserContext.Interop.Messaging.Subscriber.pdb"/>
+  </files>
+</package>

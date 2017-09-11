@@ -1,0 +1,55 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<object>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+#>
+using NLog;
+using NLog.Config;
+using NLog.LayoutRenderers;
+using System;
+using System.Linq;
+using System.Text;
+<#= DependencyUsings #>
+using Intent.CodeGen;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+namespace <#= Namespace #>
+{
+    [LayoutRenderer(NAME)]
+    public class <#= ClassName #> : LayoutRenderer
+    {
+        public const string NAME = "operation-context-id";
+
+        protected override void Append(StringBuilder builder, LogEventInfo logEvent)
+        {
+            var operationRequestId = Guid.Empty;
+
+            var blackListedLoggerNamesStartingWith = new[]
+            {
+                "Akka",
+                "Intent.ESB"
+            };
+
+            if (!blackListedLoggerNamesStartingWith.Any(x => logEvent.LoggerName.StartsWith(x, StringComparison.InvariantCultureIgnoreCase)))
+            {
+                operationRequestId = OperationRequestId.Current;
+            }
+            
+            builder.Append($"OperationContextId={operationRequestId}");
+        }
+
+        public static void Register()
+        {
+            ConfigurationItemFactory.Default.LayoutRenderers.RegisterDefinition(NAME, typeof(NLogOperationRequestIdRenderer));
+        }
+    }
+}

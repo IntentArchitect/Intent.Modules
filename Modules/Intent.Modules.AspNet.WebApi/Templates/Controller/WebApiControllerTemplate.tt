@@ -1,0 +1,122 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+#>
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Transactions;
+using System.Web;
+using System.Web.Http;
+using Intent.CodeGen;
+<#=DependencyUsings#>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#=Namespace#>
+{
+    [RoutePrefix("api/<#= Model.Name.Replace("Service", "").ToLower() #>")]
+    public class <#= ClassName #> : ApiController
+    {
+        private readonly <#= GetServiceInterfaceName() #> _appService;<#= DeclarePrivateVariables() #>
+
+        public <#= ClassName #> (<#= GetServiceInterfaceName() #> appService<#= ConstructorParams() #>
+            )
+        {
+            if (appService == null)
+                throw new ArgumentNullException("appService");
+            _appService = appService;<#= ConstructorInit() #>
+        } 
+    
+<#    foreach (var operation in Model.Operations)
+    {
+        //Transactions
+        string isolationLevel = "ReadCommitted"; // TODO: Make configurable
+#>
+        public class <#= operation.Name #>Payload
+        {
+<#
+            foreach (var parameter in operation.Parameters)
+            {
+                foreach (var decorator in PayloadPropertyDecorators(parameter))
+                {
+#>
+            <#= decorator #>
+<#
+                }
+#>
+            public <#= GetTypeName(parameter.TypeReference) #> <#= parameter.Name #> { get; set; }
+<#
+            }
+#>
+        }
+
+        [AcceptVerbs("POST")]
+		<#= GetSecurityAttribute(operation) #>
+        [Route("<#= operation.Name.ToLower() #>")]
+        public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= operation.Name + "Payload payload" #>)
+        {<#= BeginOperation(operation) #>
+
+<#      if (operation.ReturnType != null)
+        {
+#>            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);
+<#      }#>
+            TransactionOptions tso = new TransactionOptions();
+            tso.IsolationLevel = IsolationLevel.<#= isolationLevel #>;
+
+            try
+            {<#= BeforeTransaction(operation) #>
+                using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso))
+                {<#= BeforeCallToAppLayer(operation) #>
+<#
+        if (operation.ReturnType != null)
+        {
+#>                    var appServiceResult = _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+                    result = appServiceResult;
+<#      }
+        else
+        {
+#>                        _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+<#      }
+#><#= AfterCallToAppLayer(operation) #>
+                    ts.Complete();
+                }<#= AfterTransaction(operation) #>
+            }
+            catch (Exception e) 
+            {<#= OnExceptionCaught(operation) #>
+            }
+
+<#        if (operation.ReturnType != null)
+        {
+#>            return result;
+<#      }#>
+
+        }
+
+<#    }
+
+        // Source code of base class: http://aspnetwebstack.codeplex.com/SourceControl/latest#src/System.Web.Http/ApiController.cs
+        // As dispose is not virtual, looking at the source code, this looks like a better hook in point
+#>
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            //dispose all resources
+            _appService.Dispose();
+        }
+<#=ClassMethods()#>
+    }
+}

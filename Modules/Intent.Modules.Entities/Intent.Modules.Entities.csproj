@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04CE09B0-68C2-4C8B-921F-65EEA14D3D58}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Intent.Packages.Entities</RootNamespace>
+    <AssemblyName>Intent.Packages.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.0.0-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.0-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.10.0.30319\lib\net40\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Decorators\DDDEntityDecorator.cs" />
+    <Compile Include="Decorators\DDDEntityDecoratorRegistration.cs" />
+    <Compile Include="Decorators\DDDEntityInterfaceDecorator.cs" />
+    <Compile Include="Decorators\DDDEntityInterfaceDecoratorRegistration.cs" />
+    <Compile Include="Decorators\SerializableEntityDecorator.cs" />
+    <Compile Include="Decorators\SerializableEntityInterfaceDecorator.cs" />
+    <Compile Include="Decorators\SerializableEntityDecoratorRegistration.cs" />
+    <Compile Include="Decorators\SerializableEntityInterfaceDecoratorRegistration.cs" />
+    <Compile Include="NugetPackages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\DomainEntityBehaviour\DomainEntityBehaviourTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DomainEntityBehaviourTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DomainEntityBehaviour\DomainEntityBehaviourTemplatePartial.cs" />
+    <Compile Include="Templates\DomainEntityBehaviour\Registrations.cs" />
+    <Compile Include="Templates\DomainEntityInterface\AbstractDomainEntityInterfaceDecorator.cs" />
+    <Compile Include="Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DomainEntityInterfaceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DomainEntityInterface\DomainEntityInterfaceTemplatePartial.cs" />
+    <Compile Include="Templates\DomainEntityInterface\Registrations.cs" />
+    <Compile Include="Templates\DomainEntityModelExtensions.cs" />
+    <Compile Include="Templates\DomainEntity\AbstractDomainEntityDecorator.cs" />
+    <Compile Include="Templates\DomainEntity\DomainEntityTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DomainEntityTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DomainEntity\DomainEntityTemplatePartial.cs" />
+    <Compile Include="Templates\DomainEntity\Registrations.cs" />
+    <Compile Include="Templates\DomainPartialEntity\DomainPartialEntityTemplatePartial.cs" />
+    <Compile Include="Templates\DomainPartialEntity\DomainPartialEntityTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DomainPartialEntityTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DomainPartialEntity\Registration.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Intent.Modules.Entities.ipkgspec" />
+    <None Include="MetaData\Domain\Intent.Entities.domain.pkg.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MetaData\Domain\DataTypes\013af2c5-3c32-4752-8f59-db5691050aef.xml" />
+    <Content Include="MetaData\Domain\DataTypes\675c7b84-997a-44e0-82b9-cd724c07c9e6.xml" />
+    <Content Include="MetaData\Domain\DataTypes\6b649125-18ea-48fd-a6ba-0bfff0d8f488.xml" />
+    <Content Include="MetaData\Domain\DataTypes\d384db9c-a279-45e1-801e-e4e8099625f2.xml" />
+    <Content Include="MetaData\Domain\DataTypes\e6f92b09-b2c5-4536-8270-a4d9e5bbd930.xml" />
+    <Content Include="MetaData\Domain\DataTypes\fb0a362d-e9e2-40de-b6ff-5ce8167cbe74.xml" />
+    <Content Include="MetaData\Domain\Folders\be845ddb-c32d-4811-a312-2ac08eea1eb5.xml" />
+    <Content Include="MetaData\Domain\Folders\e7e9124a-d717-4d39-b02b-a568b3434112.xml" />
+    <Content Include="MetaData\Domain\Stereotypes\9715ec0f-15cd-4bc4-b21a-0fe486800f2a.xml" />
+    <Content Include="MetaData\Domain\Stereotypes\829569cf-4664-4134-a938-b3a45360da40.xml" />
+    <Content Include="MetaData\Domain\Stereotypes\ae291daf-9a2b-496a-a458-c25df342de9c.xml" />
+    <Content Include="Templates\DomainEntityBehaviour\DomainEntityBehaviourTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DomainEntityBehaviourTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DomainEntityInterfaceTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\DomainEntity\DomainEntityTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DomainEntityTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DomainPartialEntityTemplate.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
+$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)$(ProjectName).ipkgspec $(ProjectDir)..\..\Intent.Packages
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,22 @@
+﻿using Intent.MetaModel.UMLModel;
+using Intent.Packages.EntityFramework.Templates.EFMapping;
+using Intent.SoftwareFactory.MetaModels.UMLModel;
+
+namespace Intent.Packages.RichDomain.Auditing.Decorators
+{
+    public class UserContextEFMappingTemplateDecorator : IEFMappingTemplateDecorator
+    {
+        public const string Identifier = "Intent.RichDomain.Auditing.EFMapping";
+        public string[] PropertyMappings(Class @class)
+        {
+            if (!@class.IsAggregateRoot())
+            {
+                return new string[0];
+            }
+
+            return new[] { @"            this.Property(x => x.CreatedBy)
+                .HasMaxLength(50);
+" };
+        }
+    }
+}

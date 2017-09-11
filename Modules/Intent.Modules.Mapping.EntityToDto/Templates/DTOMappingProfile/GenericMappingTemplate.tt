@@ -1,0 +1,78 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.Mapping" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+using AutoMapper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text; 
+using System.Threading.Tasks;
+using Intent.Framework.Core;
+<#= DeclareUsings #>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace#> 
+{
+    public class <#= ProfileName#> : Profile
+    {
+        protected override void  Configure()
+        {
+<#
+foreach (var model in Models)
+{
+#>
+            Configure(this, default(<#= model.SourceType.FullName #>), default(<#= model.DestinationType.FullName #>));
+<# 
+}
+#>
+        }
+<#
+foreach (var model in Models)
+{
+#>
+
+        public static IMappingExpression<<#= model.SourceType.FullName #>, <#= model.DestinationType.FullName #>> Configure(IProfileExpression cfg, <#= model.SourceType.FullName #> sourceType, <#= model.DestinationType.FullName #> destinationType)
+        {
+<#foreach (var resolveUsing in model.ResolveUsing){#>
+            Func<<#=model.SourceType.FullName#>, IDictionary<string, object>, <#=resolveUsing.Key.Type.FullName#>> __<#=resolveUsing.Key.Name#>mapping =
+                <#=resolveUsing.Value#>
+                ;
+<#}#>
+            return cfg.CreateMap<<#=model.SourceType.FullName#>, <#=model.DestinationType.TypeName#>>()
+<#if (model.IncludeBaseClassMap){#>
+                .IncludeBase<<#=model.SourceType.BaseClassType.FullName#>, <#=model.DestinationType.BaseClassType.FullName#>>()
+<#}#>
+<#if (!string.IsNullOrWhiteSpace(model.DestinationConstructor) &&  model.MapAfterDestinationConstructor){#>
+                .ConstructProjectionUsing(<<#=model.DestinationConstructor#>>)
+<#}#>
+<#if (!string.IsNullOrWhiteSpace(model.DestinationConstructor) &&  model.MapAfterDestinationConstructor){#>
+                .ProjectionUsing(<<#=model.DestinationConstructor#>>)
+<#}#>
+<#foreach (var mapFrom in model.MapFroms){#>
+                .ForMember(dest => dest.<#=mapFrom.Key#>, opt => opt.MapFrom(<#=mapFrom.Value#>))
+<#}#>
+<#foreach (var resolveUsing in model.ResolveUsing){#>
+                .ForMember(dest => dest.<#=resolveUsing.Key.Name#>, opt => opt.ResolveUsing(ctx => __<#=resolveUsing.Key.Name#>mapping(((<#=model.SourceType.FullName#>)ctx.Context.SourceValue), ctx.Context.Options.Items)));
+<#}#>
+                ;
+        }
+<#
+}#>
+
+        public static T Convert<T>(T value)
+        {
+            return value;
+        }
+    }
+}

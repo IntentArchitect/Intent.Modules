@@ -1,0 +1,32 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentTypescriptProjectItemTemplateBase<DTOModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.MetaModel.DTO" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic"#>
+
+namespace <#= Namespace #>
+{
+<# AddClass(Model);#>
+} 
+
+<#+
+    void AddClass(DTOModel model)
+    {
+#>
+    export interface <#= ClassName #>
+    {
+<#+ foreach (var field in Model.Fields) {#>
+        <#=field.Name.ToCamelCase()#>: <#= this.ConvertType(field.TypeReference) #>;
+<#+}#>
+    }
+<#+
+    }
+#>

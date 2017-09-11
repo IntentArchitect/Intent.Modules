@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="c16b51de-1104-41e4-a345-53f622198611">
+  <name>C# Type</name>
+  <displayFunction>(C# - ${TypeName})</displayFunction>
+  <targetElements>
+    <element>type-definition</element>
+  </targetElements>
+  <parentFolderId>ce8bd5aa-b950-4667-a452-bb5c338c0be8</parentFolderId>
+  <properties>
+    <property id="f522b8cc-674a-4ac7-a316-6dd7ca93bc68">
+      <name>TypeName</name>
+      <type>string</type>
+    </property>
+    <property id="28ad269e-bbc0-4025-b8c8-503e04f548cf">
+      <name>IsPrimitive</name>
+      <type>boolean</type>
+      <defaultValue xmlns:q1="http://www.w3.org/2001/XMLSchema" d4p1:type="q1:boolean" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance">true</defaultValue>
+    </property>
+  </properties>
+</stereotypeDefinition>

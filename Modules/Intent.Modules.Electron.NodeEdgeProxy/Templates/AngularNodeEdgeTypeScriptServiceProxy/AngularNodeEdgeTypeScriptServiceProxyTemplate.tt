@@ -1,0 +1,124 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentProjectItemTemplateBase<ServiceModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.Class" #>
+<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+namespace <#= Namespace #> {
+
+    export class <#=Model.Name#>Proxy {
+        private edgeProxy: IEdgeProxy;
+
+        static $inject = ["$q", "Config", "Edge"];
+        constructor(
+            private $q: ng.IQService,
+            public config: any,
+            edge: IEdge) {
+
+            try {
+                this.edgeProxy = edge.func({
+                    assemblyFile: this.config["edge_assembly_path"] + "<#= AssemblyName #>.dll",
+                    typeName: "<#= TypeName #>",
+                    methodName: "Invoke"
+                });
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
+<#        foreach (var o in Model.Operations)
+        {
+
+            if (o.ReturnType != null)
+            {
+#>
+        public <#= LowerFirst(o.Name) #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= GetReturnType(o) #>> {
+            try {
+                var data = {
+                    operationName: "<#= o.Name #>",
+                    payload: JSON.stringify({
+<#
+                    for (var i=0; i<o.Parameters.Count; i++)
+                    {
+                        var p = o.Parameters[i];
+                        var conditionalComma = i+1 != o.Parameters.Count ? "," : "";
+                        
+#>
+                        <#= p.Name #>: <#= p.Name #><#= conditionalComma #>
+<#
+                    }
+#>
+                    })
+                };
+
+                return this.$q((resolve: (data: <# GetReturnType(o); #>) => void, reject: (reason: any) => void) => {
+                    this.edgeProxy(data, (error, result: string) => {
+                        if (error) {
+                            reject(error);
+                            return;
+                        }
+
+                        resolve(JSON.parse(result).response);
+                    });
+                });
+            } catch (e) {
+                console.error(e);
+                return this.$q.reject(e);
+            }
+        }
+
+<#
+            }
+            else
+            {
+#>
+        public <#= LowerFirst(o.Name) #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<void> {
+            try {
+                var data = {
+                    operationName: "<#= o.Name #>",
+                    payload: JSON.stringify({
+<#
+                    for (var i=0; i<o.Parameters.Count; i++)
+                    {
+                        var p = o.Parameters[i];
+                        var conditionalComma = i+1 != o.Parameters.Count ? "," : "";
+                        
+#>
+                        <#= p.Name #>: <#= p.Name #><#= conditionalComma #>
+<#
+                    }
+#>
+                    })
+                };
+
+                return this.$q((resolve: (data: any) => void, reject: (reason: any) => void) => {
+                    this.edgeProxy(data, (error: any) => {
+                        if (error) {
+                            reject(error);
+                            return;
+                        }
+
+                        resolve(null);
+                    });
+                });
+            } catch (e) {
+                console.error(e);
+                return this.$q.reject(e);
+            }
+        }
+
+<#            }
+        }
+#>
+    }
+
+    angular.module("App").service("<#=Model.Name#>Proxy", <#=Model.Name#>Proxy);
+}

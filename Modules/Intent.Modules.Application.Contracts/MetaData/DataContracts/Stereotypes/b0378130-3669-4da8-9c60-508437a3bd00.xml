@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="b0378130-3669-4da8-9c60-508437a3bd00">
+  <name>ServerOnly</name>
+  <displayFunction>[ServerOnly]</displayFunction>
+  <targetElements>
+    <element>folder</element>
+    <element>dto</element>
+  </targetElements>
+  <parentFolderId>ce8bd5aa-b950-4667-a452-bb5c338c0be8</parentFolderId>
+  <properties />
+</stereotypeDefinition>

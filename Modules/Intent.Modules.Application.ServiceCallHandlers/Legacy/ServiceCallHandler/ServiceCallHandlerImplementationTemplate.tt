@@ -1,0 +1,49 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<ServiceOperationModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.Class" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.Service" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#@ include file="./../Services.ttinclude" #> 
+<#
+#>
+using Intent.CodeGen;
+using System;
+using System.Linq;
+using System.Collections.Generic;
+<#=DependencyUsings#>
+
+[assembly: DefaultIntentManaged(Mode.Ignore)]
+
+namespace <#= Namespace #>
+{
+    [IntentManaged(Mode.Merge)]
+    public class <#=ClassName#> 
+    {
+		[IntentInitialGen]
+
+        public <#=ClassName#>()
+        {
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore)]
+        public <#= Model.ReturnType.FullName #> Handle(<# GetMethodDefinitionParameters(Model); #>)
+        {
+<#
+        if (Model.HasReturnType())
+        {
+#>            return null;
+<#
+        }
+#>
+        }
+    }
+}

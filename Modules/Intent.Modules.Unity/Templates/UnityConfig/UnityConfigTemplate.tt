@@ -1,0 +1,76 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<object>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#= DependencyUsings #>
+using Intent.CodeGen;
+using Microsoft.Practices.Unity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    [IntentManaged(Mode.Merge)]
+    public class <#= ClassName #>
+    {
+        #region Unity Container
+        private static readonly Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
+        {
+            var container = new UnityContainer();
+            RegisterTypes(container);
+            return container;
+        });
+
+        /// <summary>
+        /// Gets the configured Unity container.
+        /// </summary>
+        public static IUnityContainer GetConfiguredContainer()
+        {
+            return container.Value;
+        }
+        #endregion
+
+        private static void RegisterTypes(IUnityContainer container)
+        {
+            LoadConventions(container);
+            LoadGeneratedRegistrations(container);
+            LoadCustom(container);
+        }
+
+        /// <summary>Registers the type mappings with the Unity container.</summary>
+        /// <param name="container">The unity container to configure.</param>
+        /// <remarks>There is no need to register concrete types (unless you want to change the defaults), 
+        /// as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
+        [IntentManaged(Mode.Ignore)]
+        private static void LoadCustom(IUnityContainer container)
+        {
+            //Add Custom Unity Registrations
+        }
+
+        private static void LoadConventions(IUnityContainer container)
+        {
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.StartsWith("<#= Namespace.Split('.')[0] #>") || x.FullName.StartsWith("Intent")).ToArray();
+
+            container.RegisterTypes(
+               AllClasses.FromAssemblies(assemblies),
+               WithMappings.FromMatchingInterface,
+               WithName.Default,
+               WithLifetime.PerResolve);
+        }
+
+        private static void LoadGeneratedRegistrations(IUnityContainer container)
+        {
+            <#= Registrations() #>
+        }
+    }
+}

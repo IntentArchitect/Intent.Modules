@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2972A488-2F67-426D-8762-C85FB36FB32C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Intent.Packages.Application.Contracts</RootNamespace>
+    <AssemblyName>Intent.Packages.Application.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.0.0-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.0-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.10.0.30319\lib\net40\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Decorators\DataContractDTOAttributeDecoratorRegistration.cs" />
+    <Compile Include="Legacy\DTO\DTOTemplate.cs" />
+    <Compile Include="Legacy\DTO\GenericClassTemplate.cs">
+      <DependentUpon>GenericClassTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Legacy\DTO\GenericClassTemplatePartial.cs" />
+    <Compile Include="Legacy\ServiceContract\ServiceContractTemplate.cs">
+      <DependentUpon>ServiceContractTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Legacy\ServiceContract\ServiceContractTemplatePartial.cs" />
+    <Compile Include="NugetPackages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrations.cs" />
+    <Compile Include="Templates\DTO\Registrations.cs" />
+    <Compile Include="Decorators\DataContractDTOAttributeDecorator.cs" />
+    <Compile Include="Templates\DTO\DTOTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DTOTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DTO\DTOTemplatePartial.cs" />
+    <Compile Include="Templates\DTO\IDTOAttributeDecorator.cs" />
+    <Compile Include="Templates\ServiceContract\Registrations.cs" />
+    <Compile Include="Templates\ServiceContract\ServiceContractTemplate.cs">
+      <DependentUpon>ServiceContractTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\ServiceContract\ServiceContractTemplatePartial.cs" />
+    <Compile Include="CSharpTypeReferenceExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Intent.Modules.Application.Contracts.ipkgspec" />
+    <None Include="Legacy\Services.ttinclude" />
+    <None Include="MetaData\DataContracts\Intent.Application.Contracts.datacontracts.pkg.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Packages.Constants\Intent.Packages.Constants.csproj">
+      <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
+      <Name>Intent.Packages.Constants</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Legacy\DTO\GenericClassTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>GenericClassTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="Legacy\ServiceContract\ServiceContractTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ServiceContractTemplate.cs</LastGenOutput>
+    </None>
+    <Content Include="MetaData\DataContracts\Folders\88d16e6c-ce99-4329-87c4-d39dcddf0764.xml" />
+    <Content Include="MetaData\DataContracts\Folders\ce8bd5aa-b950-4667-a452-bb5c338c0be8.xml" />
+    <Content Include="MetaData\DataContracts\Stereotypes\5489b2f4-e5b9-46db-af94-009182d74ce5.xml" />
+    <Content Include="MetaData\DataContracts\Stereotypes\8fceefa4-6368-44d3-b207-49c17c3781ab.xml" />
+    <Content Include="MetaData\DataContracts\Stereotypes\a4252e9e-d353-4ad3-8713-3922fc5aa49e.xml" />
+    <Content Include="MetaData\DataContracts\Stereotypes\b0378130-3669-4da8-9c60-508437a3bd00.xml" />
+    <Content Include="MetaData\DataContracts\Stereotypes\c16b51de-1104-41e4-a345-53f622198611.xml" />
+    <Content Include="MetaData\DataContracts\Types\3bda7c84-f491-425a-a9b9-5b05a4bef535.xml" />
+    <Content Include="MetaData\DataContracts\Types\3de02a9e-68fc-4b15-b0c0-5793b83e2bc7.xml" />
+    <Content Include="MetaData\DataContracts\Types\7b74df30-1b05-4c61-86b4-434e6a3d32ec.xml" />
+    <Content Include="MetaData\DataContracts\Types\92d33ca4-fa1f-40cf-9ed5-55b3434564f4.xml" />
+    <Content Include="MetaData\DataContracts\Types\9c8ef500-1b6a-4926-a055-968d71cf898d.xml" />
+    <Content Include="MetaData\DataContracts\Types\cef68430-7b12-4de9-bfde-332d8c906840.xml" />
+    <Content Include="MetaData\DataContracts\Types\e4a0642d-069e-49b5-bdb7-12b7c739f089.xml" />
+    <Content Include="Templates\DTO\DTOTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DTOTemplate.cs</LastGenOutput>
+    </Content>
+    <None Include="Templates\ServiceContract\ServiceContractTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ServiceContractTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
+$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)$(ProjectName).ipkgspec $(ProjectDir)..\..\Intent.Packages
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

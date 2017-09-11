@@ -1,0 +1,37 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<DTOModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.MetaModel.DTO" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+<#=DependencyUsings#>
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using AutoMapper;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public static class <#=ClassName#> 
+    {
+		public static <#= ContractTypeName#> MapTo<#= ContractTypeName#> (this <#= DomainTypeName#> projectFrom)
+		{
+			return Mapper.Map<<#= ContractTypeName#>>(projectFrom);
+		}		
+
+		public static List<<#= ContractTypeName#>> MapTo<#= ContractTypeName#>s (this IEnumerable<<#= DomainTypeName#>> projectFrom)
+		{
+			return projectFrom.Select(x => x.MapTo<#= ContractTypeName#>()).ToList();
+		}
+	}
+}
+

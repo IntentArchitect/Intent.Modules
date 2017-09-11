@@ -1,0 +1,98 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.Class" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+
+    var metaData = Model.GetMetaData();
+    foreach (var usingNS in metaData.GetUsings())
+    {#>
+using <#= usingNS#>;
+<#    }
+#>
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace#>
+{
+<# AddClass(Model);#>
+} 
+
+<#+
+    void AddClass(ClassModel model)
+    {
+        foreach (var section in model.XmlCommentsModel.Sections)
+        {
+            foreach (var line in section.Replace(Environment.NewLine, "\n").Split('\n'))
+            {
+#>
+    /// <#= line #>
+<#+
+            }
+        }
+
+    foreach (var tag in model.GetAttributeStereoType().Tags)
+    {#>
+    [<#= tag.Name#>(<#= tag.Value#>)]
+<#+    }#>
+    public partial <#= model.IsAbstract ? "abstract " : "" #>class <#= model.ClassType.TypeName#><#+ AddClassContracts(model); #>
+
+    {
+<#+
+    foreach (var property in model.Properties)
+    {
+        foreach (var section in property.XmlCommentsModel.Sections)
+        {
+            foreach (var line in section.Replace(Environment.NewLine, "\n").Split('\n'))
+            {
+#>
+        /// <#= line #>
+<#+
+            }
+        }
+
+        foreach (var tag in property.GetAttributeStereoType().Tags)
+        {#>
+        [<#= tag.Name#>(<#= tag.Value#>)]
+<#+        }#>
+        public <#= property.Type.FullName#> <#= property.Name.ToPascalCase() #> { get; set;}
+
+<#+    }#>
+    }
+
+<#+    foreach (var child in model.ChildClasses)
+    {
+        AddClass(child);
+    }
+#>
+<#+
+    }
+#><#+
+    void AddClassContracts(ClassModel model)
+    {
+        if (model.BaseClassType == null && !model.Interfaces.Any())
+            return;
+        #> : <#+
+        if (model.BaseClassType != null)
+        {
+        #><#=model.BaseClassType.FullName#> <#+
+            if (model.Interfaces.Any())
+            {
+                #>, <#+
+            }
+        }
+        if (model.Interfaces.Any())
+        {
+            string interfaces = string.Join(",", model.Interfaces.Select(i => i.FullName).ToList());
+            #><#=interfaces#><#+
+        }
+    }
+#>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataType id="3bda7c84-f491-425a-a9b9-5b05a4bef535">
+  <name>string</name>
+  <parentFolderId>88d16e6c-ce99-4329-87c4-d39dcddf0764</parentFolderId>
+  <defaultStereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="c16b51de-1104-41e4-a345-53f622198611">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="f522b8cc-674a-4ac7-a316-6dd7ca93bc68" value="string" />
+        <property name="28ad269e-bbc0-4025-b8c8-503e04f548cf" value="false" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+</dataType>

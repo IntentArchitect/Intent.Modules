@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Application.Contracts.Mappings</id>
+  <version>1.0.25</version>
+  <summary>Creates application service contract mappings.</summary>
+  <description></description>
+  <authors>Intent Software</authors>
+  <templates>    
+    <template id="Intent.Application.Contracts.Mapping" enabled="true">
+      <role>Application</role>
+      <config>          
+        <add key="ContractTemplateDependancyId" description="The template Id for the template producing the Contracts" default="Intent.Application.Contracts.DTO"  />
+        <add key="DomainTemplateDependancyId" description="The template Id for the template producing the Domain Entities" default="Intent.RichDomain.EntityStateInterface" />
+      </config>
+    </template>
+    <template id="Intent.Application.Contracts.Mapping.Profile">
+      <role>Application</role>
+    </template>
+  </templates>
+  <decorators />
+  <dependencies>
+    <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\Intent.Packages.Application.Contracts.Mappings.dll"/>
+    <file src="bin\$configuration$\Intent.Packages.Application.Contracts.Mappings.pdb"/>
+  </files>
+</package>

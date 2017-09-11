@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Typescript.ServiceAgent.AngularJs</id>
+  <version>1.0.2</version>
+  <summary>Typescript service proxies for AngularJS</summary>
+  <description>Typescript service proxies for AngularJS</description>
+  <authors>Intent Software</authors>
+  <projectUrl>www.intentsoftware.io</projectUrl>
+  <tags>AngularJs Typescript Proxy ServiceAgent</tags>
+  <templates>
+    <template id="Intent.Typescript.ServiceAgent.AngularJs.Proxy.Local">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.Typescript.ServiceAgent.AngularJs.Proxy.Remote">
+      <role>Presentation.Web</role>
+    </template>
+  </templates>
+  <decorators>
+  </decorators>
+  <dependencies>
+    <dependency id="Intent.Typescript.ServiceAgent.Contracts" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\Intent.Packages.Typescript.ServiceAgent.AngularJs.dll"/>
+    <file src="bin\$configuration$\Intent.Packages.Typescript.ServiceAgent.AngularJs.pdb"/>
+  </files>
+</package>

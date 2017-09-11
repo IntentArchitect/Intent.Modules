@@ -1,0 +1,35 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<ServiceModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+#>
+
+using System;
+using System.Collections.Generic;
+using Intent.CodeGen;
+<#=DependencyUsings#>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#=Namespace#>
+{
+    public interface <#=ClassName#> : IDisposable
+    {
+<#
+    foreach (var o in Model.Operations)
+    {
+#>        <#= GetOperationReturnType(o) #> <#= o.Name.ToPascalCase() #>(<#= GetOperationDefinitionParameters(o) #>);
+<#        
+    }
+#>    }
+}

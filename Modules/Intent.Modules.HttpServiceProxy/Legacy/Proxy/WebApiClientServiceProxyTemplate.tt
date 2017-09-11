@@ -1,0 +1,177 @@
+﻿<#@ template debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<ServiceModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
+<#@ import namespace="Intent.MetaModel.UMLModel" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.Service" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+using System;
+using System.Configuration;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+<#= DependencyUsings #>
+using Intent.CodeGen; 
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public class <#=ClassName#> : I<#=Model.Name#>
+    {
+        private readonly IHttpProxyInterceptor[] _httpProxyInterceptors;
+
+        public <#=ClassName#>(IHttpProxyInterceptor[] httpProxyInterceptors) 
+        {
+            _httpProxyInterceptors = httpProxyInterceptors;
+        }
+
+        private HttpClient CreateHttpClient()
+        {
+            var serviceName = ConfigurationManager.AppSettings["WebApiEndpointBaseUrl.<#= ApplicationName #>"];
+            if (string.IsNullOrWhiteSpace(serviceName))
+            {
+                throw new Exception("No configuration entry defined. Please add the following to the config file's appSetting section: <add key=\"WebApiEndpointBaseUrl.<#= ApplicationName #>\" value=\"INSERT_URL_HERE\" />");
+            }
+
+            int timeoutInSeconds;
+            if (!int.TryParse(ConfigurationManager.AppSettings["HttpClient.Timeout.Seconds"], out timeoutInSeconds))
+            {
+                throw new Exception("Could not find or parse 'HttpClient.Timeout.Seconds' setting in config file as int.");
+            }
+
+            var client = new HttpClient
+            {
+                BaseAddress = new Uri(new Uri(serviceName), "/api/<#= Model.Name.Replace("Service", "").ToLower() #>/"),
+                Timeout = TimeSpan.FromSeconds(timeoutInSeconds)
+            };
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            foreach(var httpProxyInterceptor in _httpProxyInterceptors)
+            {
+                httpProxyInterceptor.OnCreate(client);
+            }
+
+            return client;
+        }
+
+<#
+    foreach (var operation in Model.Operations)
+    {
+#>
+<#
+        // Asynchronous versions:
+        if (operation.HasReturnType())
+        {
+#>
+        public async Task<<#= operation.ReturnType.FullName #>> <#= operation.Name #>Async(<#= GetMethodDefinitionParameters(operation) #>)
+        {
+            return await new Task<<#= operation.ReturnType.FullName #>>(() => <#= operation.Name #>(<#= GetMethodCallParameters(operation) #>));
+        }
+
+<#
+        }
+        else // if (operation.HasReturnType())
+        {
+#>
+        public async void <#= operation.Name #>Async(<#= GetMethodDefinitionParameters(operation) #>)
+        {
+            await new Task(() => <#= operation.Name #>(<#= GetMethodCallParameters(operation) #>));
+        }
+
+<# 
+        } // if (operation.HasReturnType())
+
+        // Synchronous versions:
+#>
+        public <#= operation.HasReturnType() ? operation.ReturnType.FullName : "void" #> <#= operation.Name #>(<#= GetMethodDefinitionParameters(operation) #>)
+        {
+            using (var client = CreateHttpClient())
+            {
+                try
+                {
+                    const string requestUri = "<#= operation.Name.ToLowerInvariant() #>";
+                    
+                    var response = client.PostAsJsonAsync(
+                        requestUri: requestUri,
+<# 
+                    if (operation.UsesRawSignature)
+                    {
+
+                        if (operation.Parameters.Count > 1)
+                        {
+                            throw new Exception(string.Format("Use of more than one parameter for operations which have 'IsRaw' is unsupported. Service='{0}', Operation='{1}'", Model.Name, operation.Name));
+                        }
+#>
+                        value: <#= operation.Parameters.Any() ? operation.Parameters.Single().Name : "null" #>).Result;
+<#
+                    }
+                    else
+                    {
+#>
+                        value: new
+                        {
+<#
+                        foreach (var parameter in operation.Parameters)
+                        {
+#>
+                            <#= parameter.Name #>,
+<#
+                        } // foreach (var parameter in operation.Parameters)
+#>
+                        }).Result;
+<# 
+                    }
+#>
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new WebApiClientServiceProxyRemoteException(
+                            response.StatusCode,
+                            response.ReasonPhrase,
+                            $"Request to {new Uri(client.BaseAddress, requestUri).AbsoluteUri} failed with status code {(int)response.StatusCode} {response.ReasonPhrase}.\n\n" +
+                            $"{response.Content.ReadAsStringAsync().Result}");
+                    }
+<#
+            if (operation.HasReturnType())
+            {
+#>
+
+                    return response.Content.<#= GetReadAs(operation) #>.Result;
+<#
+            } // if (operation.HasReturnType())
+#>
+                }
+                catch (AggregateException aggregateException)
+                {
+                    if (aggregateException.InnerExceptions.Count == 1)
+                    {
+                        throw aggregateException.InnerExceptions.Single();
+                    }
+
+                    throw;
+                }
+            }
+        }
+
+<#
+    } // foreach (var operation in Model.Operations)
+#>
+        public void Dispose()
+        {
+            // NOP
+        }
+    }
+}

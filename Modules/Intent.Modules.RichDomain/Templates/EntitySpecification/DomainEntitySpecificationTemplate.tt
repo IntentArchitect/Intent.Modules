@@ -1,0 +1,37 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<Class>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
+<#@ import namespace="Intent.MetaModel.UMLModel" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+using System;
+using System.Collections.Generic;
+using Intent.CodeGen;
+using Intent.Framework.Domain;
+using Intent.Framework.Domain.Specification;
+
+[assembly: DefaultIntentManaged(Mode.Ignore)]
+
+
+namespace <#= Namespace #>
+{
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class <#= Model.Name.ToPascalCase() #>Specification : DomainSpecificationBase<<#= Model.Name.ToPascalCase() #>, <#= Model.Name.ToPascalCase() #>Specification> 
+    {
+        [IntentManaged(Mode.Fully)]
+        public static <#= Model.Name.ToPascalCase() #>Specification Where()
+        {
+            return new <#= Model.Name.ToPascalCase() #>Specification();
+        }
+    }
+}
+

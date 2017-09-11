@@ -1,0 +1,199 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<Class>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
+<#@ import namespace="Intent.MetaModel.UMLModel" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+var InterfaceName = "I" + Model.Name.ToPascalCase() + "";
+var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";#>
+
+using System;
+using System.Collections.Generic;
+using Intent.Framework.Domain;
+using Intent.CodeGen;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+#warning Indexes and Unqiues on FKs think its not done for 1 to Many
+#warning need to factor in Aggregate boundaries into Edit and States
+
+namespace <#= Namespace #>
+{
+<# if (Model.IsEntity())
+   {
+   #>
+   //Typed Identifier
+    public class <#= Model.IdentifierType() #> : <#= Model.ParentClass != null ? Model.ParentClass.IdentifierType() : "Identifier"  #> 
+    {
+        protected <#= Model.IdentifierType() #>(Guid id) : base (id) {}
+
+        public static <#= Model.IdentifierType() #> Create(Guid? id)
+        {
+            return (id.HasValue) ? new <#= Model.IdentifierType() #>(id.Value) : null;
+        }
+    }
+<#   }#>
+
+    public interface <#= readOnlyInterfaceName#> : <#= Model.ParentClass != null ? "I" + Model.ParentClass.Name.ToPascalCase() + ", " : ""  #><#= GetInterfaces(Model) #>
+    {
+        <#= Model.Name.ToPascalCase() #> State { get; }
+
+        <#= Model.IdentifierType() #> Id { get; }
+<#  foreach (var attribute in Model.Attributes)
+    {
+        if (attribute.IsAssociationAttribute)
+            continue;    
+#>
+        <#= attribute.HasComplexDomainType() ? attribute.ComplexDomainType() : attribute.DomainType() #> <#= attribute.Name.ToPascalCase() #> { get;}
+<#  }#><#= InterfaceProperties(Model) #><#
+// TODO: Change this to a decorator:
+	if (Model.IsAggregateRoot() && !Model.IsSubClass()) 
+    {
+#>
+        DateTime? CreateDateTime { get; }
+        DateTime? UpdateDateTime { get; }
+        string UpdatedBy { get; }
+
+<#  }
+    foreach (var association in Model.Associations)
+    {
+        if (!association.Navigable)
+            continue;
+
+    if (association.OtherAssociationEnd().Multiplicity == Multiplicity.Many && association.Multiplicity == Multiplicity.One)
+        {#>
+        <#= association.IdentifierType()#> <#= association.IdentifierName()#> { get; }
+<#      }#>
+
+        <#= association.Type("I", "", true) #> <#= association.Name().ToPascalCase() #> { get;}
+<#  }#>
+
+<#  foreach (var operation in Model.Operations.Where(x => x.IsQueryBehaviour()))
+    {
+        string returnType = operation.ReturnType != null ? operation.ReturnType.DomainType() : "void";
+        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => x.DomainType() + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
+        #>
+        <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
+<#    }#>
+    }
+
+    partial class <#= Model.Name.ToPascalCase() #> : <#= readOnlyInterfaceName#>
+    {
+        #region <#= readOnlyInterfaceName#>
+
+        <#= Model.Name.ToPascalCase() #> <#= readOnlyInterfaceName#>.State 
+        { 
+            get
+            {
+                return (<#= Model.Name.ToPascalCase() #>)this;
+            }
+        }
+
+        <#= Model.IdentifierType() #> <#= readOnlyInterfaceName#>.Id 
+        { 
+            get
+            {
+                return <#= Model.IdentifierType() #>.Create(this.Id);
+            }
+        }
+
+<#  foreach (var attribute in Model.Attributes)
+    {
+        if (attribute.IsAssociationAttribute)
+            continue;#>
+<#      if (attribute.HasComplexDomainType())
+        {#>
+        <#= attribute.ComplexDomainType() #> <#= readOnlyInterfaceName#>.<#= attribute.Name.ToPascalCase() #> 
+        {
+            get { return (<#= attribute.Name.ToPascalCase() #> != null) ? new <#= attribute.ComplexDomainType() #>(<#= attribute.Name.ToPascalCase() #>) : null; }
+        }
+
+<#      }
+        else
+        {#>
+        <#= attribute.DomainType() #> <#= readOnlyInterfaceName#>.<#= attribute.Name.ToPascalCase() #> 
+        {
+            get { return <#= attribute.Name.ToPascalCase() #>; }
+        }
+
+<#      }
+    }#><#= ImplementationPartialProperties(Model, readOnlyInterfaceName) #>
+<#
+	if (Model.IsAggregateRoot() && !Model.IsSubClass()) 
+    {
+#>
+        DateTime? <#= readOnlyInterfaceName#>.CreateDateTime
+        {
+            get { return CreateDateTime; }
+        }
+
+        DateTime? <#= readOnlyInterfaceName#>.UpdateDateTime
+        {
+            get { return UpdateDateTime; }
+        }
+
+        string <#= readOnlyInterfaceName#>.UpdatedBy
+        {
+            get { return UpdatedBy; }
+        }
+
+<#  }
+
+    foreach (var association in Model.Associations)
+    {
+        if (!association.Navigable)
+            continue;
+
+        if (association.OtherAssociationEnd().Multiplicity == Multiplicity.Many && association.Multiplicity == Multiplicity.One)
+        {#>
+        <#= association.IdentifierType()#> <#= readOnlyInterfaceName#>.<#= association.IdentifierName()#>
+        { 
+            get { return Domain.<#= association.IdentifierType()#>.Create(this.<#= association.IdentifierName()#>); }
+        }
+
+<#      }
+        if (association.IsCollection())
+        {#>
+        <#= association.Type("I", "", true) #> <#= readOnlyInterfaceName#>.<#= association.Name().ToPascalCase() #> 
+        { 
+            get { return <#=association.Name().ToPascalCase()#>; }
+        }
+
+<#      }
+        else
+        {#>
+        <#= association.Type("I", "") #> <#= readOnlyInterfaceName#>.<#= association.Name().ToPascalCase() #> 
+        { 
+            get { return <#= association.Name().ToPascalCase() #>;} 
+        }
+
+<#        }
+    }
+#>
+        #endregion
+    }
+}
+
+<#+ 
+
+public string GetInterfaces(Class umlClass) {
+    if (umlClass.IsAggregateRoot())
+    {
+        return "IAggregateRoot, IVersionedEntity, IEntity";
+    }
+    if (umlClass.IsEntity())
+    {
+        return "IEntity";
+    }
+    return "";
+}
+#>

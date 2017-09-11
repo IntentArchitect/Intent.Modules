@@ -1,0 +1,26 @@
+﻿<#@ template debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<object>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
+<#@ import namespace="Intent.MetaModel.UMLModel" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+using System;
+using Intent.CodeGen;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public interface <#= ClassName #>
+    {
+        Uri Resolve(string targetApplicationName, string basePath);
+    }
+}

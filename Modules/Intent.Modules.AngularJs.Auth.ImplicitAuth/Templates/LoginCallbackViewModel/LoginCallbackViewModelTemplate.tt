@@ -1,0 +1,51 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentProjectItemTemplateBase<object>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+
+
+#>
+'use strict';
+namespace App.Auth {
+    export class LoginCallbackViewModel implements IViewModel {
+        static $inject = ["$stateParams", "$rootScope", "$state", "OidcTokenManager", "UserInfoService"];
+
+        constructor(
+            private $stateParams: any,
+            private $rootScope: ng.IRootScopeService,
+            private $state: ng.ui.IStateService,
+            private oidcTokenManager: Oidc.OidcTokenManager,
+            private userInfoService: UserInfoService) {
+
+            var hash = $stateParams.response;
+            if (hash.charAt(0) === "&") {
+                hash = hash.substr(1);
+            }
+
+            oidcTokenManager.processTokenCallbackAsync(hash).then(() => {
+                this.userInfoService.loadFromProfile(oidcTokenManager.profile);
+                $state.go("shell.worklist");
+            }, error => {
+                this.$rootScope.$apply(() => {
+                    this.errors = (error && error.message) ? error.message : error;
+                    if (this.errors === "No request state loaded" && !oidcTokenManager.expired) {
+                        $state.go("shell.worklist");
+                    }
+                });
+            });
+        }
+
+        errors: string;
+
+        dispose = () => {}
+    }
+}

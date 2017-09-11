@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.IdentityServer</id>
+  <version>1.0.4</version>
+  <summary>Fully functional authentication server using IdentityServer, and backed by Asp.Net Identity.</summary>
+  <description>Fully functional authentication server using IdentityServer, and backed by Asp.Net Identity.</description>
+  <authors>Intent Software</authors>
+  <projectUrl>http://intentsoftware.io</projectUrl>
+  <tags>Authentication IdentityServer Token-based Security</tags>
+  <templates>
+    <template id="Intent.IdentityServer.AspNetIdentity.Model">
+      <role>Application.Services</role>
+    </template>
+    <template id="Intent.IdentityServer.AspNetIdentity.UserService">
+      <role>Application.Services</role>
+    </template>
+    <template id="Intent.IdentityServer.Clients">
+      <role>Application.Services</role>
+    </template>
+    <template id="Intent.IdentityServer.Scopes">
+      <role>Application.Services</role>
+    </template>
+    <template id="Intent.IdentityServer.SigningCertificate">
+      <role>Distribution</role>
+    </template>
+  </templates>
+  <decorators>
+    <decorator id="Intent.IdentityServer.OwinStartupDecorator"/>
+  </decorators>
+  <interoperability>
+  </interoperability>
+  <dependencies>
+    <dependency id="Intent.Owin" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\Intent.Packages.IdentityServer.dll"/>
+    <file src="bin\$configuration$\Intent.Packages.IdentityServer.pdb"/>
+  </files>
+</package>

@@ -1,0 +1,97 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<IEnumerable<Class>>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
+<#@ import namespace="Intent.MetaModel.UMLModel" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+using System;
+using Intent.Framework.Core;
+using Intent.Framework.EntityFramework.Interceptors;
+using System.Collections.Generic;
+<#= DependencyUsings #>
+using Intent.CodeGen;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public class <#= BoundedContextName#>DeleteVisitor : ICompositionDeleteVisitor
+    {
+        private readonly IList<object> _toDelete;
+
+        public IList<object> ToDelete
+        {
+            get
+            {
+                return _toDelete;
+            }
+        }
+
+        public void Reset()
+        {
+            _toDelete.Clear();
+        }
+
+        public <#= BoundedContextName#>DeleteVisitor()
+        {
+            _toDelete = new List<object>();
+        }
+
+        public void Visit(IVisitable visitable)
+        {
+            Visit((dynamic)visitable);
+        }
+
+<# foreach (var model in Model) {
+	   if (!model.IsEntity()) {
+			continue;
+       }
+#>
+        public void Visit(<#= model.Name.ToPascalCase() #> state)
+        {
+<# 
+        if (model.ParentClass != null)
+        {
+#>
+            Visit((<#= model.ParentClass.Name.ToPascalCase() #>) state);
+<# 
+        }
+
+        foreach(var associationEnd in model.Associations)
+        {
+            if (associationEnd.Association.AssociationType ==  AssociationType.Composite && associationEnd.Association.ParentEnd == associationEnd)
+            {
+                if (associationEnd.IsCollection())
+                {
+#>
+            foreach (IVisitable item in state.<#= associationEnd.Name().ToPascalCase() #>)
+            {
+                item.Accept(this);
+            }
+<#
+                }
+                else
+                {#>
+            if (state.<#= associationEnd.Name().ToPascalCase() #> != null)
+            {
+                ((IVisitable)state.<#= associationEnd.Name().ToPascalCase() #>).Accept(this);
+            }
+<#                }
+            }
+        }
+#>
+            _toDelete.Add(state);
+        }
+
+<# }#>
+    }
+}

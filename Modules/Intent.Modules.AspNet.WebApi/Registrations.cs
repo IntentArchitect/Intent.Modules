@@ -1,0 +1,49 @@
+﻿using System.Linq;
+using Intent.Modules.WebApi.Decorators;
+using Intent.Modules.WebApi.Legacy.Controller;
+using Intent.Modules.WebApi.Templates.Controller;
+using Intent.Modules.WebApi.Templates.HttpExceptionHandler;
+using Intent.Modules.WebApi.Templates.OwinWebApiConfig;
+using Intent.Modules.WebApi.Templates.RequireHttpsMiddleware;
+using Intent.Modules.WebApi.Templates.WebApiBadHttpRequestException;
+using Intent.Packages.Owin.Templates.OwinStartup;
+using Intent.SoftwareFactory;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.MetaModels.Service;
+using Intent.SoftwareFactory.Modules.Decorators.WebApi;
+using Intent.SoftwareFactory.Registrations;
+using WebApiControllerTemplate = Intent.Modules.WebApi.Legacy.Controller.WebApiControllerTemplate;
+
+namespace Intent.Modules.WebApi
+{
+    public class Registrations : OldProjectTemplateRegistration
+    {
+
+        public Registrations()
+        {
+        }
+
+        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        {
+            var serviceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataType("Service-Legacy")).Where(x => x.ApplicationName == application.ApplicationName).ToList();
+
+            RegisterTemplate(OwinWebApiConfigTemplate.Identifier, project => new OwinWebApiConfigTemplate(project));
+            RegisterTemplate(HttpExceptionHandlerTemplate.Identifier, project => new HttpExceptionHandlerTemplate(project, application.EventDispatcher));
+            RegisterTemplate(WebApiBadHttpRequestExceptionTemplate.Identifier, project => new WebApiBadHttpRequestExceptionTemplate(project));
+            RegisterTemplate(RequireHttpsMiddlewareTemplate.Identifier, project => new RequireHttpsMiddlewareTemplate(project));
+
+            foreach (var serviceModel in serviceModels)
+            {
+                RegisterTemplate(WebApiControllerTemplate.Identifier, project => new WebApiControllerTemplate(serviceModel, project));
+            }
+
+            RegisterDecorator<DistributionDecoratorBase>(WebApiDistributionExceptionHandlingStrategy.Identifier, new WebApiDistributionExceptionHandlingStrategy());
+            RegisterDecorator<IDistributionDecorator>(Decorators.Legacy.WebApiDistributionExceptionHandlingStrategy.Identifier, new Decorators.Legacy.WebApiDistributionExceptionHandlingStrategy());
+            RegisterDecorator<IDistributionDecorator>(Decorators.Legacy.WebApiDistributionJsonValidationDecorator.Identifier, new Decorators.Legacy.WebApiDistributionJsonValidationDecorator());
+            RegisterDecorator<IDistributionDecorator>(Decorators.Legacy.DebugSleepDistributionDecorator.Identifier, new Decorators.Legacy.DebugSleepDistributionDecorator(300));
+            RegisterDecorator<IWebApiConfigTemplateDecorator>(WebApiConfigJsonValidationDecorator.Identifier, new WebApiConfigJsonValidationDecorator());
+            RegisterDecorator<IOwinStartupDecorator>(WebApiOwinStartupDecorator.Identifier, new WebApiOwinStartupDecorator());
+            RegisterDecorator<IOwinStartupDecorator>(UseHttpsOwinStartupDecorator.Identifier, new UseHttpsOwinStartupDecorator());
+        }
+    }
+}

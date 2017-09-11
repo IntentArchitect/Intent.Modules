@@ -1,0 +1,68 @@
+﻿
+<#+
+void GetMethodDefinitionParameters(ServiceOperationModel o) 
+{
+	GetMethodDefinitionParameters(o, false);
+}
+
+void GetMethodDefinitionParameters(ServiceOperationModel o, bool withLeadingComma) 
+{
+	GetMethodDefinitionParameters(o.Parameters, withLeadingComma);
+}
+
+void GetMethodDefinitionParameters(List<ParameterModel> parameters, bool withLeadingComma) 
+{
+	    for(int i = 0; i < parameters.Count; i++) 
+	{ 
+		ParameterModel p = parameters[i];
+		if (withLeadingComma || (!withLeadingComma && i != 0))
+        {
+			#>, <#+
+        } 
+	#><#= p.Type.FullName#> <#= p.Name#><#+
+	}	
+}
+
+#>
+
+<#+
+
+void GetMethodCallParameters(ServiceOperationModel o) 
+{
+	GetMethodCallParameters(o, false);
+}
+
+void GetMethodCallParameters(ServiceOperationModel o, bool withLeadingComma) 
+{
+	GetMethodCallParameters(o.Parameters, withLeadingComma);
+}
+
+void GetMethodCallParameters(List<ParameterModel> parameters, bool withLeadingComma)
+{
+    for(int i = 0; i < parameters.Count; i++) 
+	{ 
+		ParameterModel p = parameters[i];
+		if (withLeadingComma || (!withLeadingComma && i != 0))
+        {
+			#>, <#+
+        } 
+	#><#= p.Name#><#+
+	}
+
+}
+
+void GetMethodCallParameters(ServiceOperationModel o, bool withLeadingComma, string prefix)
+{
+	List<ParameterModel> parameters = o.Parameters;
+
+    for(int i = 0; i < parameters.Count; i++) 
+	{ 
+		ParameterModel p = parameters[i];
+		if (withLeadingComma || (!withLeadingComma && i != 0))
+        {
+			#>, <#+
+        } 
+#><#= prefix + p.Name#><#+
+	}
+}
+#>

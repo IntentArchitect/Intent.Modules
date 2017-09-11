@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Application.ServiceCallHandlers</id>
+  <version>1.0.8</version>
+  <summary>Generic Application Layer service call dispatching pattern that is technology agnostic.</summary>
+  <description>Generic Application Layer service call dispatching pattern that is technology agnostic.</description>
+  <authors>Intent Software</authors>
+  <templates>
+    <template id="Intent.Application.ServiceCallHandlers.Handler">
+      <role>Application.Services</role>
+    </template>
+    <template id="Intent.Application.ServiceCallHandlers.ServiceImplementation">
+      <role>Application.Services</role>
+    </template>
+    <template id="Intent.Application.ServiceCallHandlers.Handler.Legacy">
+      <role>Application.Services</role>
+    </template>
+    <template id="Intent.Application.ServiceCallHandlers.ServiceImplementation.Legacy">
+      <role>Application.Services</role>
+    </template>
+  </templates>
+  <decorators />
+  <dependencies>
+    <dependency id="Intent.Application.Contracts" version="1.0"/>
+    <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\Intent.Packages.Application.ServiceCallHandlers.dll"/>
+    <file src="bin\$configuration$\Intent.Packages.Application.ServiceCallHandlers.pdb"/>
+  </files>
+</package>

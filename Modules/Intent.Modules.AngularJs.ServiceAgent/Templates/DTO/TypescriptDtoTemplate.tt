@@ -1,0 +1,48 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentProjectItemTemplateBase<ClassModel>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.Common" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.Class" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+namespace <#= Namespace #>
+{
+<# AddClass(Model);#>
+} 
+
+<#+
+    void AddClass(ClassModel model)
+    {
+#>
+    export interface <#= model.ClassType.TypeName#>
+    {
+<#+        foreach (var p in model.Properties)
+        {
+            
+        
+#>        <#= p.Name.ToCamelCase() #>: <#= p.Type.ConvertType() #>;
+<#+ 
+        }
+#>
+    }
+
+<#+        foreach (var child in model.ChildClasses)
+        {
+            AddClass(child);
+        }
+#>
+<#+
+    }
+#>
+<#+ 
+
+
+#>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.OutputTransformer.FileHeader</id>
+  <version>1.0.3</version>
+  <summary>Inserts an "Intent" header with additional information provided by the Software Factory.</summary>
+  <description>Inserts an "Intent" header with additional information provided by the Software Factory.</description>
+  <authors>Intent Software</authors>
+  <templates>
+  </templates>
+  <decorators />
+  <outputTransformers>
+    <outputTransformer id="Intent.OutputTransformer.FileHeader">
+      <config>
+        <add key="Append To Once Off" description="Should file headers be applied to once off generated code (true | false)" default="true" />
+        <add key="Append Always" description="List of CodeGenTypes which should have files headers appended on every execution. (comma delimited list of strings)" default="Basic,IntentControlledTagWeave" />
+        <add key="Append On Create" description="List of CodeGenTypes which should have files headers appended on initial output creation. (comma delimited list of strings)" default="UserControlledTagWeave,UserControlledWeave,RoslynWeave" />
+      </config>
+    </outputTransformer>
+  </outputTransformers>
+  <dependencies />
+  <files>
+    <file src="bin\$configuration$\Intent.Packages.OutputManager.FileHeaders.dll"/>
+    <file src="bin\$configuration$\Intent.Packages.OutputManager.FileHeaders.pdb"/>
+  </files>
+</package>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Application.Contracts</id>
+  <version>1.0.25</version>
+  <summary>Creates generic application service contracts.</summary>
+  <description>Creates generic application service contracts that is technology agnostic.</description>
+  <authors>Intent Software</authors>
+  <templates>
+    <template id="Intent.Application.Contracts.DTO">
+      <role>Application.Contracts</role>
+    </template>
+    <template id="Intent.Application.Contracts.ServiceContract">
+      <role>Application.Contracts</role>
+    </template>
+    <template id="Intent.Application.Contracts.DTO.Legacy">
+      <role>Application.Contracts</role>
+    </template>
+    <template id="Intent.Application.Contracts.ServiceContract.Legacy">
+      <role>Application.Contracts</role>
+    </template>
+  </templates>
+  <decorators>
+    <decorator id="Intent.Application.Contracts.DataContractDecorator"/>
+  </decorators>
+  <dependencies>
+    <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\Intent.Packages.Application.Contracts.dll"/>
+    <file src="bin\$configuration$\Intent.Packages.Application.Contracts.pdb"/>
+  </files>
+  <metadata>
+    <install target="DataContracts" src="MetaData\DataContracts"/>
+  </metadata>
+</package>

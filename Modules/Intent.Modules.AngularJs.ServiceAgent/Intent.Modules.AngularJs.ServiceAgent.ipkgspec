@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.AngularJs.ServiceAgent</id>
+  <version>1.0.4</version>
+  <summary>(DEPRECATED) Typescript DTO and Proxy patterns for AngularJS.</summary>
+  <description>DTO and Proxy patterns for AngularJS. (DEPRECATED) Use Intent.Packages.Typescript.ServiceAgent.AngularJs and Intent.Packages.Typescript.ServiceAgent.Contracts instead.</description>
+  <authors>Intent Software</authors>
+  <projectUrl>http://intentsoftware.io</projectUrl>
+  <tags>Typescript AngularJS DTO Proxy</tags>
+  <templates>
+    <template id="Intent.AngularJs.ServiceAgent.DTO">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.AngularJs.ServiceAgent.Proxy">
+      <role>Presentation.Web</role>
+    </template>
+  </templates>
+  <decorators />
+  <dependencies>
+    <dependency id="Intent.Bower" version="1.0"/>
+    <dependency id="Intent.Typescript.Config" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\Intent.Packages.AngularJs.ServiceAgent.dll"/>
+    <file src="bin\$configuration$\Intent.Packages.AngularJs.ServiceAgent.pdb"/>
+  </files>
+</package>

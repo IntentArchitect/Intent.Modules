@@ -1,0 +1,253 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<Class>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
+<#@ import namespace="Intent.MetaModel.UMLModel" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic"#>
+<#= DependencyUsings #>
+using System;
+using System.Collections.Generic;
+using Intent.Framework.Domain;
+using Intent.Framework.Core;
+using Intent.CodeGen;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+<#  var orphanableAssociations = GetOrphanableAssociations(Model);
+    foreach (var a in orphanableAssociations)
+    {#>
+    [IndependantOrphanableAttribute(typeof(<#= a.Association.ChildEnd.Class.Name.ToPascalCase() #>), "<#= a.Association.RelationshipString()#>")]
+<#  }
+#><#= ClassAnnotations(Model) #>
+    public <#= Model.IsAbstract ? "abstract " : "" #>partial class <#= Model.Name.ToPascalCase() #> : <#= GetBaseClass(Model) + GetInterfaces(Model) #>, IVisitable<#        
+    if (orphanableAssociations.Any())
+    {
+#>, IIndependantOrphanable, ICanBeOrphaned<#
+    }
+    bool checkMultiplcity = Model.Associations.Where( a => a.HasConstrianableMultiplicity).Count() > 0;
+    if (checkMultiplcity)
+    {
+#>, IEnforcedMultiplicity<#
+    }#>
+    {
+
+        protected <#= Model.Name.ToPascalCase() #>() : base( true)
+        {
+        }
+
+        public <#= Model.Name.ToPascalCase() #>(bool ormLoading) : base(ormLoading)
+        {<#= ConstructorWithOrmLoadingParameter(Model) #>
+<#
+            if (Model.IsAggregateRoot() && !Model.IsSubClass()) 
+            {
+#>
+            CreateDateTime = DateTime.UtcNow;
+<#          }#>
+        }
+
+<#  foreach (var attribute in Model.Attributes)
+    {
+        if (attribute.IsAssociationAttribute)
+            continue;    
+        AddAttribute(attribute);
+    }
+    foreach (var association in Model.Associations)
+    {
+
+    if (association.OtherAssociationEnd().Multiplicity == Multiplicity.Many && association.Multiplicity == Multiplicity.One)
+    {#>
+        public Guid<#= association.IsMandatory() ? "" : "?"#> <#= association.IdentifierName()#> { get;  set; }
+<#        if (!association.Navigable)
+        { #>
+        public virtual <#= association.Type("") #> <#= association.Name().ToPascalCase()#> { get; set; }
+<#        } #>
+<#  }        
+    if (!association.Navigable)
+        continue;
+    
+    if (association.Association.AssociationType ==  AssociationType.Aggregation && association.Association.ChildEnd == association && association.Association.RelationshipString() == "0..1->1" )
+        continue;
+#>
+        private <#= association.Type("") #> <#= association.Name().ToPrivateMember() #>;
+        public virtual <#= association.Type("") #> <#= association.Name().ToPascalCase() #>
+        {
+            get
+            {
+<#    if (association.IsCollection() && association.HasConstrianableMultiplicity) 
+    {
+        AddCheckConstraint(association);
+    }
+    string associationReturn;
+    if (association.IsCollection())
+    {
+        associationReturn = String.Format("{0} ?? ({0} = new HashSet<{1}>())", association.Name().ToPrivateMember(), association.Class.Name + "");
+    }
+    else
+    {
+        associationReturn = association.Name().ToPrivateMember();
+    }
+#>            
+                return <#= associationReturn #>;
+            }
+            set
+            {    
+<#    if (association.HasConstrianableMultiplicity) 
+    {#>
+                if (!OrmLoading)
+                {
+<#
+        AddCheckConstraint(association);#>
+                }
+<#  }#>
+                <#= association.Name().ToPrivateMember() #> = value;
+            }
+        }
+<#    }#><#= PublicProperties(Model) #><#
+    if (Model.IsAggregateRoot() && !Model.IsSubClass()) 
+    {
+#>
+        public DateTime? CreateDateTime { get; set; }
+        public DateTime? UpdateDateTime { get; set; }
+        public string UpdatedBy { get; set; }
+        public byte[] Version { get; set; }
+
+<#  }#>
+<#     if (orphanableAssociations.Any())
+    {#>
+        
+        public bool IsOrphan() 
+        {
+            return <#=  orphanableAssociations.First().Name().ToPascalCase() #> == null;
+        }
+<#    } 
+#>
+        
+        void IVisitable.Accept(IVisitor v)
+        {
+            v.Visit(this);
+        }
+    }
+}
+
+<#+ 
+
+public void AddCheckConstraint(AssociationEnd associationEnd)
+{
+    string checkFunc = null;
+    if (associationEnd.MaxMultiplicity == "1" && associationEnd.MinMultiplicity == "1")
+    {
+        checkFunc = associationEnd.Name().ToPascalCase() + " != null";
+    }
+    else if (associationEnd.MaxMultiplicity == "*")
+    {
+        checkFunc = associationEnd.Name().ToPascalCase() + ".Count >= " + associationEnd.MinMultiplicity;
+    }
+    else 
+    {
+        checkFunc = string.Format("{0}.Count >= {1} && {0}.Count <= {2}", associationEnd.Name().ToPascalCase(), associationEnd.MinMultiplicity, associationEnd.MaxMultiplicity) ;
+    }
+#>
+                RequiredMultiplcityChecks["<#= associationEnd.Name().ToPascalCase()#>"] = () => <#= checkFunc#> ;
+<#+
+}
+
+public string GetBaseClass(Class umlClass) {
+    if (umlClass.ParentClass != null)
+        return umlClass.ParentClass.Name + "";
+
+    if (umlClass.IsEntity())
+        return umlClass.Stereotypes.GetTagValue<string>("AggregateRoot", "BaseType") ?? "EntityBase";
+
+    return "Object";
+}
+
+public string GetInterfaces(Class umlClass) {
+    if (umlClass.IsAggregateRoot())
+    {
+        return ", IAggregateRoot, IVersionedEntity, IEntity";
+    }
+    if (umlClass.IsEntity())
+    {
+        return ", IEntity";
+    }
+    return "";
+}
+
+public string GetBaseDataInterfaces(Class umlClass) 
+{
+    List<string> result = new List<string>();        
+
+    if (umlClass.IsSubClass())
+        result.Add("I" + umlClass.ParentClass.Name.ToPascalCase() + "Data");
+
+    if (umlClass.IsAggregateRoot())
+        result.Add("IAggregateRoot");
+
+    if (umlClass.IsEntity())
+        result.Add("IEntity");
+
+    return string.Join(",", result);
+}
+
+public void AddAttribute(UmlAttribute attribute)
+{
+#><#= PropertyFieldAnnotations(attribute) 
+#>        private <#= attribute.DomainType() #> <#= attribute.Name.ToPrivateMember() #>;<#= PropertyAnnotations(attribute) #>
+        public <#= attribute.DomainType() #> <#= attribute.Name.ToPascalCase() #> 
+        {
+            get { return <#= attribute.Name.ToPrivateMember() #>; }
+            set
+            {
+<#+    if (attribute.Stereotypes.GetTagValue("Text", "TrimAutomatically", false)) {#>
+                value = value?.Truncate(<#= attribute.Stereotypes.GetTagValue("Text", "MaxLength", 8000)#>);
+<#+  }#><#= PropertySetterBefore(attribute) #>
+<#+  if (attribute.Type == "date")
+    {
+        if (attribute.IsMandatory)
+        {#>
+                <#= attribute.Name.ToPrivateMember() #> = value.Date;
+<#+
+        }
+        else
+        {#>
+                <#= attribute.Name.ToPrivateMember() #> = (value == null) ? value : value.Value.Date;
+<#+      }
+    }
+    else
+    {#>
+                <#= attribute.Name.ToPrivateMember() #> = value;
+<#+  }#><#= PropertySetterAfter(attribute) 
+#>            }
+        }
+
+<#+
+}
+
+private List<AssociationEnd> GetOrphanableAssociations(Class model)
+{
+    List<AssociationEnd> result = new List<AssociationEnd>();
+    foreach (var a in model.Associations)
+    {
+        if (a.Association.AssociationType == AssociationType.Composite && a.Association.RelationshipString() == "1->1" && a == a.Association.ChildEnd)
+        {
+            result.Add(a);
+        }
+        if (a.Association.AssociationType == AssociationType.Composite && a.Association.RelationshipString() == "1->*" && a == a.Association.ChildEnd)
+        {
+            result.Add(a);
+        }
+    }
+    return result;
+}
+
+#>

@@ -1,0 +1,345 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<Class>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
+<#@ import namespace="Intent.MetaModel.UMLModel" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+using System;
+using System.Collections.Generic;
+using Intent.Framework.Domain;
+using Intent.CodeGen;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+<# string typedIdentifier = null;
+   if (Model.IsEntity())
+   {
+       typedIdentifier = GetEntityIdTypeName(Model);
+   }#>
+    //Full Interface
+    public partial interface I<#= Model.Name.ToPascalCase() #>Behaviour<#= (Model.IsSubClass()) ? " : I" + Model.ParentClass.Name.ToPascalCase() + "" : "" #>
+    {
+        <#= Model.Name.ToPascalCase() #> State { get; }
+
+        <#= Model.IdentifierType() #> Id { get; }
+<#  foreach (var attribute in Model.Attributes)
+    {
+        if (attribute.IsAssociationAttribute)
+            continue;    
+#>
+        <#= attribute.HasComplexDomainType() ? attribute.ComplexDomainType() : attribute.DomainType() #> <#= attribute.Name.ToPascalCase() #> { get;}
+<#    }
+    foreach (var association in Model.Associations)
+    {
+        if (!association.Navigable)
+            continue;
+
+    if (association.OtherAssociationEnd().Multiplicity == Multiplicity.Many && association.Multiplicity == Multiplicity.One)
+        {#>
+        <#= association.IdentifierType()#> <#= association.IdentifierName()#> { get; }
+<#      }#>
+
+        <#= association.Type("I", "", readOnly: true) #> <#= association.Name().ToPascalCase() #> { get;}
+<#  }#>
+
+<#  foreach (var operation in Model.Operations.Where(x => x.IsQueryBehaviour()))
+    {
+        string returnType = operation.ReturnType != null ? operation.ReturnType.DomainType() : "void";
+        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => x.DomainType() + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
+        #>
+        <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
+<#    }#>
+<#  foreach (var operation in Model.Operations.Where(x => x.IsCommandBehaviour()))
+    {
+        string returnType = operation.ReturnType != null ? operation.ReturnType.DomainType() : "void";
+        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => x.DomainType() + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
+        #>
+        <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
+<#    }#>
+    }
+
+    // Rich Domain Interface Implementation
+    public partial class <#= Model.Name.ToPascalCase() #>Behaviour : <#= (Model.IsSubClass()) ? Model.ParentClass.Name.ToPascalCase() + "Behaviour, " : "" #>I<#= Model.Name.ToPascalCase() #>Behaviour
+    {
+        private readonly <#= Model.Name.ToPascalCase() #> _state;
+        
+        public <#= Model.Name.ToPascalCase() #>Behaviour(<#= Model.Name.ToPascalCase() #> state)<#= (Model.IsSubClass()) ? " : base (state)" : "" #>
+        {
+            if (state == null) 
+            {
+                throw new Exception("Parameter 'state' cannot be null in constructing <#= Model.Name.ToPascalCase() #>Behaviour");
+            }
+            _state = state;
+        }
+
+<#  var className = Model.Name.ToPascalCase();
+    if (Model.IsEntity())
+    {#>
+        public <#= typedIdentifier #> Id 
+        { 
+            get { return <#= typedIdentifier #>.Create(_state.Id);  }
+        }
+
+<#  }
+
+    foreach (var attribute in Model.Attributes)
+    {
+        if (attribute.IsAssociationAttribute)
+            continue;    
+    #>
+<#        if (attribute.HasComplexDomainType())
+        { #>
+        public <#= attribute.ComplexDomainType() #> <#= attribute.Name.ToPascalCase() #> 
+        {
+            get { return new <#= attribute.ComplexDomainType() #>(_state.<#= attribute.Name.ToPascalCase() #>); }
+            set { _state.<#= attribute.Name.ToPascalCase() #> = value; }
+        }
+
+<#        }
+        else
+        { #>
+        public <#= attribute.DomainType() #> <#= attribute.Name.ToPascalCase() #> 
+        {
+            get { return _state.<#= attribute.Name.ToPascalCase() #>; }
+            set { _state.<#= attribute.Name.ToPascalCase() #> = value; }
+        }
+
+<#        }#>
+<#  }#>
+<#    foreach (var association in Model.Associations)
+    {
+        if (!association.Navigable)
+            continue;
+
+        if (association.OtherAssociationEnd().Multiplicity == Multiplicity.Many && association.Multiplicity == Multiplicity.One)
+        {#>
+        public <#= association.IdentifierType()#> <#= association.IdentifierName()#> 
+        {
+            get { return <#= association.IdentifierType()#>.Create(_state.<#= association.IdentifierName()#>); }
+            set { _state.<#= association.IdentifierName()#> = value; }
+        }
+
+<#      }#>
+        public <#= association.Type("I", "", readOnly: true) #> <#= association.Name().ToPascalCase() #> 
+        { 
+            get { return _state.<#= association.Name().ToPascalCase() #>; }
+            set { _state.<#= association.Name().ToPascalCase() #> = (<#= association.Type("", "", readOnly: false) #>)value; }
+        }
+<#  }#>
+        public <#= Model.Name.ToPascalCase() #> State
+        {
+            get { return _state; }
+        }
+<#= PublicProperties(Model) #>
+<#    if (Model.IsAggregateRoot() && !Model.IsSubClass()) 
+    {
+#>
+        public DateTime? CreateDateTime
+        {
+            get { return _state.CreateDateTime; }
+            set { _state.CreateDateTime = value; }
+        }
+
+        public DateTime? UpdateDateTime
+        {
+            get { return _state.UpdateDateTime; }
+            set { _state.UpdateDateTime = value; }
+        }
+
+        public string UpdatedBy
+        {
+            get { return _state.UpdatedBy; }
+            set { _state.UpdatedBy = value; }
+        }
+
+<#  }#>
+<#  foreach (var operation in Model.Operations.Where(x => x.IsQueryBehaviour()))
+    {
+        string returnType = operation.ReturnType != null ? operation.ReturnType.DomainType() : "void";
+        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => x.DomainType() + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
+        string parameters = operation.Parameters.Any() ? operation.Parameters.Select(x => x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
+        #>
+        public <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>)
+        {
+            return _state.<#= operation.Name.ToPascalCase() #>(<#= parameters #>);
+        }
+
+<#    }#>
+    }
+
+    public static class <#= Model.Name.ToPascalCase() #>Extensions
+    {
+        public static I<#= Model.Name.ToPascalCase() #>Behaviour Behaviours(this I<#= Model.Name.ToPascalCase() #> state)
+        {
+            return new <#= Model.Name.ToPascalCase() #>Behaviour((<#= Model.Name.ToPascalCase() #>) state);
+        }
+    }
+}
+
+<#+ 
+
+public void AddCheckConstraint(AssociationEnd associationEnd)
+{
+    string checkFunc = null;
+    if (associationEnd.MaxMultiplicity == "1" && associationEnd.MinMultiplicity == "1")
+    {
+        checkFunc = associationEnd.Name().ToPascalCase() + " != null";
+    }
+    else if (associationEnd.MaxMultiplicity == "*")
+    {
+        checkFunc = associationEnd.Name().ToPascalCase() + ".Count >= " + associationEnd.MinMultiplicity;
+    }
+    else 
+    {
+        checkFunc = string.Format("{0}.Count >= {1} && {0}.Count <= {2}", associationEnd.Name().ToPascalCase(), associationEnd.MinMultiplicity, associationEnd.MaxMultiplicity) ;
+    }
+#>
+                RequiredMultiplcityChecks["<#= associationEnd.Name().ToPascalCase()#>"] = () => <#= checkFunc#> ;
+<#+
+}
+
+public string GetEntityIdTypeName( Class umlClass)
+{
+       string guidName = umlClass.Name.ToPascalCase() + "Id";
+       if (umlClass.IsView())
+       {
+           guidName = guidName.Replace("View", "");
+       }
+       return guidName;
+}
+
+public string GetBaseClass(Class umlClass) {
+    if (umlClass.ParentClass != null)
+        return umlClass.ParentClass.Name;
+
+    if (umlClass.IsEntity())
+        return "EntityBase";
+
+    return "Object";
+}
+
+public string GetInterfaces(Class umlClass) {
+    if (umlClass.IsAggregateRoot())
+    {
+        return ", IAggregateRoot, IVersionedEntity, IEntity";
+    }
+    if (umlClass.IsEntity())
+    {
+        return ", IEntity";
+    }
+    return "";
+}
+
+public string GetBaseDataInterfaces(Class umlClass) 
+{
+    List<string> result = new List<string>();        
+
+    if (umlClass.IsSubClass())
+        result.Add("I" + umlClass.ParentClass.Name.ToPascalCase() + "Data");
+
+    if (umlClass.IsAggregateRoot())
+        result.Add("IAggregateRoot");
+
+    if (umlClass.IsEntity())
+        result.Add("IEntity");
+
+    return string.Join(",", result);
+}
+
+public bool MustCreateForeignKeyPropertyIfApplicable(AssociationEnd associationEnd, out string identifierType, out string propertyName) 
+{
+    identifierType = "";
+    propertyName = "";
+
+    if (associationEnd.RelationshipType == RelationshipType.OneToMany)
+    {
+        var otherClass = associationEnd.Class;
+        identifierType = GetEntityIdTypeName(otherClass) ;
+        propertyName = associationEnd.Name().ToPascalCase() + "Id";
+        return true;
+    }
+
+    return false;
+}
+
+public string CreateForeignKeyPropertyIfApplicable(AssociationEnd association) 
+{
+    if (association.RelationshipType == RelationshipType.OneToMany)
+        return string.Format("public Guid{0} {1}Id ", association.IsMandatory() ? "" : "?", association.Name().ToPascalCase()) + "{ get; set; }";
+
+    return String.Empty;
+}
+
+public string GetAssociationReturn(AssociationEnd association) 
+{
+    if (association.IsCollection())
+    {
+        return String.Format("{0} ?? ({0} = new {1}())", association.Name().ToPrivateMember(), association.ConstructorType());
+    }
+    return association.Name().ToPrivateMember();
+}
+
+public string GetAssociatedInterface( Class umlClass)
+{
+    if (umlClass.IsAggregateRoot())
+    {
+        return "I" + umlClass.Name + "Data";
+    }
+    else
+    {
+        return "I" + umlClass.Name;
+    }
+}
+
+public Dictionary<string, string> GetSetPropertyValidations(Intent.SoftwareFactory.MetaModels.UMLModel.UmlAttribute attribute) 
+{
+    var result = new Dictionary<string, string>();
+    if (attribute.Type == "string" && attribute.IsMandatory) 
+    {
+        result.Add("string.IsNullOrEmpty(value)", attribute.Name + " is mandatory.");
+    }
+
+    var minLength = attribute.Stereotypes.GetTagValue<int?>("Text", "MinLength");
+    if (minLength != null)
+    {
+        result.Add("!string.IsNullOrEmpty(value) && value.Length < " + minLength, attribute.Name + " cannot be less than " + minLength + " characters.");
+    }
+
+    var maxLength = attribute.Stereotypes.GetTagValue<int?>("Text", "MaxLength");
+    if (maxLength != null)
+    {
+        result.Add("!string.IsNullOrEmpty(value) && value.Length > " + maxLength, attribute.Name + " cannot be more than " + maxLength + " characters.");
+    }
+
+    var minValue = attribute.Stereotypes.GetTagValue<int?>("Numeric", "MinValue");
+    if (minValue != null )
+    {
+        result.Add("value < " + minValue, attribute.Name + " cannot be less than " + minValue + ".");
+    }
+
+    var maxValue = attribute.Stereotypes.GetTagValue<int?>("Numeric", "MaxValue");
+    if (maxValue != null)
+    {
+        result.Add("value > " + maxValue, attribute.Name + " cannot be more than " + maxValue + ".");
+    }
+
+    var maxDecimalPlaces = attribute.Stereotypes.GetTagValue<int?>("Numeric", "MaxDecimalPlaces");
+    if (maxDecimalPlaces != null)
+    {
+        result.Add(string.Format("(value * {0}) != Math.Floor(value * {0})", Math.Pow(10, maxDecimalPlaces.Value)), attribute.Name + " cannot have more than " + maxDecimalPlaces + " decimal places.");
+    }
+
+    return result;
+}
+#>

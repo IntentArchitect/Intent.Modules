@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.AngularJs.Auth.ImplicitAuth</id>
+  <version>1.0.1</version>
+  <summary>AngularJs module for implicit token authentication with silent renewal</summary>
+  <description>AngularJs module for implicit token authentication with silent renewal</description>
+  <authors>Intent Software</authors>
+  <projectUrl>http://intentsoftware.io</projectUrl>
+  <tags>AngularJS Auth IdentityServer Implicit Passive Authentication Authorization</tags>
+  <templates>
+    <template id="Intent.AngularJs.Auth.ImplicitAuth.AuthModule">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.AngularJs.Auth.ImplicitAuth.HttpInterceptor">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.AngularJs.Auth.ImplicitAuth.LoginCallbackState">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.AngularJs.Auth.ImplicitAuth.LoginCallbackView">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.AngularJs.Auth.ImplicitAuth.LoginCallbackViewModel">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.AngularJs.Auth.ImplicitAuth.LoginRedirectState">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.AngularJs.Auth.ImplicitAuth.LoginRedirectView">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.AngularJs.Auth.ImplicitAuth.SilentRenewCallbackView">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.AngularJs.Auth.ImplicitAuth.UserInfoService">
+      <role>Presentation.Web</role>
+    </template>
+  </templates>
+  <decorators />
+  <dependencies />
+  <files>
+    <file src="bin\Debug\Intent.Modules.AngularJs.Auth.ImplicitAuth.dll"/>
+    <file src="bin\Debug\Intent.Modules.AngularJs.Auth.ImplicitAuth.pdb"/>
+  </files>
+</package>

@@ -1,0 +1,52 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentProjectItemTemplateBase<object>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+
+
+#>
+namespace App.Auth {
+
+    export class AuthHttpInterceptorService implements ng.IHttpInterceptor {
+
+        static $inject = ['$q', "OidcTokenManager"];
+
+        constructor(
+            private $q: ng.IQService,
+            private tokenManager: Oidc.OidcTokenManager) {}
+
+        public request = (config: any) => {
+            var token = this.tokenManager.access_token;
+            if (token) {
+                config.headers['Authorization'] = 'Bearer ' + token;
+            }
+            return config;
+        }
+
+        public responseError = (rejection: any) => {
+            if (rejection.status === 401) {
+                if (this.tokenManager.expired) {
+                    this.tokenManager.removeToken();
+                    this.tokenManager.redirectForToken();
+                } else {
+					// Handle 401 error
+                }
+            }
+            if (rejection.status === 403) {
+				// Handle 403 error
+            }
+            return this.$q.reject(rejection);
+        }
+    }
+
+    angular.module("Auth").service("AuthHttpInterceptorService", AuthHttpInterceptorService);
+}

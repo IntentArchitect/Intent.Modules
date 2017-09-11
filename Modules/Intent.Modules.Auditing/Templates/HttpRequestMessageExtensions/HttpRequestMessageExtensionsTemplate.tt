@@ -1,0 +1,63 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+using System.Net.Http;
+<#=DependencyUsings#>
+
+[assembly:DefaultIntentManaged(Mode.Fully)]
+
+namespace <#=Namespace#>
+{
+    internal static class HttpRequestMessageExtensions
+    {
+        private const string HttpContext = "MS_HttpContext";
+        private const string OwinContext = "MS_OwinContext";
+        private const string RemoteEndpointMessage = "System.ServiceModel.Channels.RemoteEndpointMessageProperty";
+
+<#
+    // See: http://www.strathweb.com/2013/05/retrieving-the-clients-ip-address-in-asp-net-web-api/
+    // dynamic keyword is used as it avoids us having to set up usings and references to System.ServiceModel.dll for WebApi projects,
+    // but it will magically work for self hosted solutions (including WCF).
+#>
+        public static string GetClientIpAddress(this HttpRequestMessage request)
+        {
+            if (request.Properties.ContainsKey(HttpContext))
+            {
+                dynamic ctx = request.Properties[HttpContext];
+                if (ctx != null)
+                {
+                    return ctx.Request.UserHostAddress;
+                }
+            }
+
+            if (request.Properties.ContainsKey(OwinContext))
+            {
+                dynamic ctx = request.Properties[OwinContext];
+                if (ctx != null)
+                {
+                    return ctx.Request.RemoteIpAddress;
+                }
+            }
+
+            if (request.Properties.ContainsKey(RemoteEndpointMessage))
+            {
+                dynamic remoteEndpoint = request.Properties[RemoteEndpointMessage];
+                if (remoteEndpoint != null)
+                {
+                    return remoteEndpoint.Address;
+                }
+            }
+
+            return null;
+        }
+    }
+}

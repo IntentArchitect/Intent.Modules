@@ -1,0 +1,81 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentProjectItemTemplateBase<object>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+
+
+#>
+'use strict';
+
+namespace App.Auth {
+        export class UserInfoService {
+        static $inject = ["OidcTokenManager"];
+
+        constructor(
+            private tokenManager: Oidc.OidcTokenManager) {
+
+            this.tryLoadFromStorage();
+        }
+
+        userInfo: UserInfo = new UserInfo();
+
+        public loadFromProfile = (profile: any): void => {
+            this.userInfo.isAuthenticated = true;
+            this.userInfo.userName = profile.name;
+            this.userInfo.fullName = profile.given_name + " " + profile.family_name;
+            this.userInfo.roles = Array.isArray(profile.role) ? profile.role : [profile.role];
+            this.userInfo.userId = profile.sub;
+        }
+
+        public logOut() {
+            this.tokenManager.redirectForLogout();
+        }
+
+        private tryLoadFromStorage = () => {
+            if (!this.tokenManager.expired)
+                this.loadFromProfile(this.tokenManager.profile);
+        };
+
+    }
+
+    angular.module("Auth").service("UserInfoService", UserInfoService);
+
+    export class UserInfo {
+        public isAuthenticated = false;
+        public userId: string = "";
+        public userName: string = "";
+        public fullName: string = "";
+        public roles: string[] = [];
+
+        constructor() { }
+
+        public load = (userInfo: UserInfo) => {
+            this.isAuthenticated = true;
+            this.userId = userInfo.userId;
+            this.userName = userInfo.userName;
+            this.fullName = userInfo.fullName;
+            this.roles = userInfo.roles;
+        }
+
+        public clear = () => {
+            this.isAuthenticated = false;
+            this.userName = "";
+            this.fullName = "";
+            this.roles = [];
+            this.userId = "";
+        }
+
+        public hasAuthorization = (): boolean => {
+            return this.isAuthenticated; // Extent this for your app...
+        }
+    }
+}

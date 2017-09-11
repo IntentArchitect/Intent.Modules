@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C41EA8CB-E1DB-432C-BF2E-7C8188A009A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Intent.Packages.AngularJs.Auth.ImplicitAuth</RootNamespace>
+    <AssemblyName>Intent.Modules.AngularJs.Auth.ImplicitAuth</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.0.0-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.0-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrations.cs" />
+    <Compile Include="Templates\HttpInterceptor\AngularAuthHttpInterceptorServiceTemplate.cs">
+      <DependentUpon>AngularAuthHttpInterceptorServiceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\HttpInterceptor\AngularAuthHttpInterceptorServiceTemplatePartial.cs" />
+    <Compile Include="Templates\AuthModule\AngularImplicitAuthModuleTemplate.cs">
+      <DependentUpon>AngularImplicitAuthModuleTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\AuthModule\AngularImplicitAuthModuleTemplatePartial.cs" />
+    <Compile Include="Templates\UserInfoService\AngularUserInfoServiceTemplate.cs">
+      <DependentUpon>AngularUserInfoServiceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\UserInfoService\AngularUserInfoServiceTemplatePartial.cs" />
+    <Compile Include="Templates\AuthModule\IAngularImplicitAuthModuleDecorator.cs" />
+    <Compile Include="Templates\LoginCallbackState\LoginCallbackStateTemplate.cs">
+      <DependentUpon>LoginCallbackStateTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\LoginCallbackState\LoginCallbackStateTemplatePartial.cs" />
+    <Compile Include="Templates\LoginCallbackViewModel\LoginCallbackViewModelTemplate.cs">
+      <DependentUpon>LoginCallbackViewModelTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\LoginCallbackViewModel\LoginCallbackViewModelTemplatePartial.cs" />
+    <Compile Include="Templates\LoginCallbackView\LoginCallbackViewTemplate.cs">
+      <DependentUpon>LoginCallbackViewTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\LoginCallbackView\LoginCallbackViewTemplatePartial.cs" />
+    <Compile Include="Templates\LoginRedirectState\LoginRedirectStateTemplate.cs">
+      <DependentUpon>LoginRedirectStateTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\LoginRedirectState\LoginRedirectStateTemplatePartial.cs" />
+    <Compile Include="Templates\LoginRedirectView\LoginRedirectViewTemplate.cs">
+      <DependentUpon>LoginRedirectViewTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\LoginRedirectView\LoginRedirectViewTemplatePartial.cs" />
+    <Compile Include="Templates\SilentRenewCallbackView\SilentRenewCallbackViewTemplate.cs">
+      <DependentUpon>SilentRenewCallbackViewTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\SilentRenewCallbackView\SilentRenewCallbackViewTemplatePartial.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\HttpInterceptor\AngularAuthHttpInterceptorServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AngularAuthHttpInterceptorServiceTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AngularImplicitAuthModuleTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\UserInfoService\AngularUserInfoServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AngularUserInfoServiceTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\LoginCallbackState\LoginCallbackStateTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>LoginCallbackStateTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\LoginCallbackViewModel\LoginCallbackViewModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>LoginCallbackViewModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\LoginCallbackView\LoginCallbackViewTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>LoginCallbackViewTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\LoginRedirectState\LoginRedirectStateTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>LoginRedirectStateTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\LoginRedirectView\LoginRedirectViewTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>LoginRedirectViewTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\SilentRenewCallbackView\SilentRenewCallbackViewTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SilentRenewCallbackViewTemplate.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Intent.Modules.AngularJs.Auth.ImplicitAuth.ipkgspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
+      <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
+      <Name>Intent.Modules.Constants</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.WebApi</id>
+  <version>1.0.17</version>
+  <summary>ASP.NET WebApi 2.2 distribution pattern for services.</summary>
+  <description>ASP.NET WebApi 2.2 distribution pattern for services.</description>
+  <authors>Intent Software</authors>
+  <projectUrl>http://intentsoftware.io</projectUrl>
+  <tags>WebApi Restful</tags>
+  <templates>
+    <template id="Intent.WebApi.Controller">
+      <role>Distribution.WebApi</role>
+    </template>
+    <template id="Intent.WebApi.OwinWebApiConfig">
+      <role>Distribution.WebApi</role>
+    </template>
+    <template id="Intent.WebApi.BadHttpRequestException" enabled="false">
+      <role>Distribution.WebApi</role>
+    </template>
+    <template id="Intent.WebApi.RequireHttpsMiddleware" enabled="false">
+      <role>Distribution.WebApi</role>
+    </template>
+    <template id="Intent.WebApi.HttpExceptionHandler" enabled="false">
+      <role>Distribution.WebApi</role>
+    </template>
+    <template id="Intent.WebApi.Controller.Legacy" enabled="false">
+      <role>Distribution.WebApi</role>
+    </template>
+  </templates>
+  <decorators>
+    <decorator id="Intent.WebApi.OwinStartup"/>
+    <decorator id="Intent.WebApi.OwinStartup.UseHttpsDecorator" enabled="false"/>
+    <decorator id="Intent.WebApi.WebApiConfig.JsonValidation.Decorator" enabled="false"/>
+    <decorator id="Intent.WebApi.Distribution.JsonValidation.Decorator.Legacy" enabled="false"/>
+    <decorator id="Intent.WebApi.Distribution.DebugSleep.Decorator.Legacy" enabled="false"/>
+    <decorator id="Intent.WebApi.ExceptionHandlingStrategy" enabled="false"/>
+    <decorator id="Intent.WebApi.ExceptionHandlingStrategy.Legacy" enabled="false"/>
+  </decorators>
+  <dependencies>
+    <dependency id="Intent.Owin" version="1.0"/>
+    <dependency id="Intent.Unity" version="1.0"/>
+    <dependency id="Intent.Application.Contracts" version="1.0"/>
+    <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\Intent.Modules.WebApi.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.WebApi.pdb"/>
+  </files>
+  <metadata>
+    <install target="Services" src="MetaData\Services"/>
+  </metadata>
+</package>

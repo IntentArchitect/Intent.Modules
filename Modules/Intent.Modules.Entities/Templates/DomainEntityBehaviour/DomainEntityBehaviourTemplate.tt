@@ -1,0 +1,40 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.MetaModel.Domain" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic"#>
+<#
+
+
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+<#= DependencyUsings #>
+
+[assembly: DefaultIntentManaged(Mode.Merge)] 
+
+namespace <#= Namespace #>
+{
+    public class <#= ClassName #> : BehavioursBase<<#= ClassStateName #>>
+    {
+        public <#= ClassName #>(<#= ClassStateName #> state) : base(state)
+        {
+        }
+    }
+
+	public static class <#= ClassStateName #>Extensions
+    {
+        public static <#= ClassName #> Behaviours(this I<#= ClassStateName #> <#= ClassStateName.ToCamelCase() #>)
+        {
+            return new <#= ClassName #>((<#= ClassStateName #>)<#= ClassStateName.ToCamelCase() #>);
+        }
+    }
+}

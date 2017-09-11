@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FF32AC23-39E7-4D97-A2C9-D941520A5A2F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Intent.Packages.Electron.NodeEdgeProxy</RootNamespace>
+    <AssemblyName>Intent.Packages.Electron.NodeEdgeProxy</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.0.0-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.0-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.10.0.30319\lib\net40\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Legacy\AngularEdgeService\AngularEdgeServiceTemplate.cs">
+      <DependentUpon>AngularEdgeServiceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Legacy\AngularEdgeService\AngularEdgeServiceTemplatePartial.cs" />
+    <Compile Include="Legacy\AngularEdgeService\Registrations.cs" />
+    <Compile Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.cs">
+      <DependentUpon>AngularNodeEdgeTypeScriptServiceProxyTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplatePartial.cs" />
+    <Compile Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\Registrations.cs" />
+    <Compile Include="Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.cs">
+      <DependentUpon>NodeEdgeCsharpReceivingProxyTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplatePartial.cs" />
+    <Compile Include="Legacy\NodeEdgeCsharpReceivingProxy\Registrations.cs" />
+    <Compile Include="NugetPackages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\AngularEdgeService\Registrations.cs" />
+    <Compile Include="Templates\AngularEdgeService\AngularEdgeServiceTemplate.cs">
+      <DependentUpon>AngularEdgeServiceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\AngularEdgeService\AngularEdgeServiceTemplatePartial.cs" />
+    <Compile Include="Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.cs">
+      <DependentUpon>AngularNodeEdgeTypeScriptServiceProxyTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplatePartial.cs" />
+    <Compile Include="Templates\AngularNodeEdgeTypeScriptServiceProxy\Registrations.cs" />
+    <Compile Include="Templates\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.cs">
+      <DependentUpon>NodeEdgeCsharpReceivingProxyTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplatePartial.cs" />
+    <Compile Include="Templates\NodeEdgeCsharpReceivingProxy\Registrations.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj">
+      <Project>{2972A488-2F67-426D-8762-C85FB36FB32C}</Project>
+      <Name>Intent.Packages.Application.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Application.ServiceCallHandlers\Intent.Modules.Application.ServiceCallHandlers.csproj">
+      <Project>{E923CA07-9C38-4D69-B150-2A8FFF6E9100}</Project>
+      <Name>Intent.Packages.Application.ServiceCallHandlers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
+      <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
+      <Name>Intent.Packages.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Packages.Unity\Intent.Packages.Unity.csproj">
+      <Project>{DE177367-D476-4299-B9E6-71934B434FC5}</Project>
+      <Name>Intent.Packages.Unity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Legacy\AngularEdgeService\AngularEdgeServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AngularEdgeServiceTemplate.cs</LastGenOutput>
+    </Content>
+    <None Include="Intent.Modules.Electron.NodeEdgeProxy.ipkgspec" />
+    <None Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AngularNodeEdgeTypeScriptServiceProxyTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>NodeEdgeCsharpReceivingProxyTemplate.cs</LastGenOutput>
+    </None>
+    <Content Include="Templates\AngularEdgeService\AngularEdgeServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AngularEdgeServiceTemplate.cs</LastGenOutput>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Templates\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>NodeEdgeCsharpReceivingProxyTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AngularNodeEdgeTypeScriptServiceProxyTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
+$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)$(ProjectName).ipkgspec $(ProjectDir)..\..\Intent.Packages
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
