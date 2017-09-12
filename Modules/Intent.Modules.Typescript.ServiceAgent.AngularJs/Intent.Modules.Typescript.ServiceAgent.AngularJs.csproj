@@ -72,10 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
-      <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
-      <Name>Intent.Packages.Constants</Name>
+      <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
+      <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Packages.Typescript.ServiceAgent.Contracts\Intent.Packages.Typescript.ServiceAgent.Contracts.csproj">
+    <ProjectReference Include="..\Intent.Modules.Typescript.ServiceAgent.Contracts\Intent.Modules.Typescript.ServiceAgent.Contracts.csproj">
       <Project>{33EA449E-9D02-4DDE-85BC-58AD664D9ABD}</Project>
       <Name>Intent.Packages.Typescript.ServiceAgent.Contracts</Name>
     </ProjectReference>

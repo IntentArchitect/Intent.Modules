@@ -122,10 +122,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
-      <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
-      <Name>Intent.Packages.Constants</Name>
+      <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
+      <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Packages.RichDomain\Intent.Packages.RichDomain.csproj">
+    <ProjectReference Include="..\Intent.Modules.RichDomain\Intent.Modules.RichDomain.csproj">
       <Project>{9DB8717C-8F21-450B-9FEA-BBFB3F835390}</Project>
       <Name>Intent.Packages.RichDomain</Name>
     </ProjectReference>

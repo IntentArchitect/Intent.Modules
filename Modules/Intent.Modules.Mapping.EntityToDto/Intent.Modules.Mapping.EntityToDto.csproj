@@ -92,7 +92,7 @@
       <Project>{E923CA07-9C38-4D69-B150-2A8FFF6E9100}</Project>
       <Name>Intent.Packages.Application.ServiceCallHandlers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Packages.RichDomain\Intent.Packages.RichDomain.csproj">
+    <ProjectReference Include="..\Intent.Modules.RichDomain\Intent.Modules.RichDomain.csproj">
       <Project>{9DB8717C-8F21-450B-9FEA-BBFB3F835390}</Project>
       <Name>Intent.Packages.RichDomain</Name>
     </ProjectReference>

@@ -61,11 +61,11 @@
     <Compile Include="Registrations.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Packages.Messaging.Subscriber\Intent.Packages.Messaging.Subscriber.csproj">
+    <ProjectReference Include="..\Intent.Modules.Messaging.Subscriber\Intent.Modules.Messaging.Subscriber.csproj">
       <Project>{3B75BB62-B670-4C28-B3C9-76C6717F6C90}</Project>
       <Name>Intent.Packages.Messaging.Subscriber</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Packages.Unity\Intent.Packages.Unity.csproj">
+    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
       <Project>{DE177367-D476-4299-B9E6-71934B434FC5}</Project>
       <Name>Intent.Packages.Unity</Name>
     </ProjectReference>

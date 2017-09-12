@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.AspNet.Identity.Migrations</RootNamespace>
-    <AssemblyName>Intent.Packages.AspNet.Identity.Migrations</AssemblyName>
+    <AssemblyName>Intent.Modules.AspNet.Identity.Migrations</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -79,9 +79,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Packages.IdentityServer\Intent.Packages.IdentityServer.csproj">
+    <ProjectReference Include="..\Intent.Modules.IdentityServer\Intent.Modules.IdentityServer.csproj">
       <Project>{e3a48fd5-8997-4f40-98c4-82a90636b761}</Project>
-      <Name>Intent.Packages.IdentityServer</Name>
+      <Name>Intent.Modules.IdentityServer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -92,9 +92,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.AspNet.Identity.Migrations.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -61,7 +61,7 @@
     <Compile Include="Templates\ClientNotificationService\ClientNotificationServicePartial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Packages.WebApi\Intent.Modules.WebApi.csproj">
+    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
       <Project>{D6171CC1-577A-4123-9CA3-34E017A40071}</Project>
       <Name>Intent.Modules.WebApi</Name>
     </ProjectReference>

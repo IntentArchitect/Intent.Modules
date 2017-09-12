@@ -44,8 +44,8 @@
     <dependency id="Intent.OutputTransformer.TagWeaving" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.AngularJs.Shell.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.AngularJs.Shell.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.AngularJs.Shell.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.AngularJs.Shell.pdb"/>
     <file src="bin\$configuration$\HtmlAgilityPack.dll"/>
   </files>
 </package>

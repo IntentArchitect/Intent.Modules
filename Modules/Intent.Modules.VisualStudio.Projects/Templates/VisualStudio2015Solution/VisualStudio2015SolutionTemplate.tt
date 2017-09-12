@@ -1,0 +1,57 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory.SDK" #>  
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+#>
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+<#  foreach(var project in Projects)
+    {#>
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<#= project.ProjectName #>", "<#= project.ProjectName #>\\<#= project.ProjectName #>.csproj", "{<#= project.Id.ToString().ToUpper() #>}"
+EndProject
+<#    } #>
+<#    foreach(var solutionFolder in SolutionFolders)
+    { 
+#>
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "<#= solutionFolder.FolderName #>", "<#= solutionFolder.FolderName #>", "{<#= solutionFolder.Id.ToString().ToUpper() #>}"
+EndProject
+<#    } #>
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<#    foreach(var project in Projects)
+    {#>
+		{<#= project.Id.ToString().ToUpper() #>}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{<#= project.Id.ToString().ToUpper() #>}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{<#= project.Id.ToString().ToUpper() #>}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{<#= project.Id.ToString().ToUpper() #>}.Release|Any CPU.Build.0 = Release|Any CPU
+<#    } #>
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+<#    foreach(var solutionFolder in SolutionFolders)
+    { 
+        foreach(var associatedProject in solutionFolder.AssociatedProjects)
+        {
+#>
+		{<#= associatedProject.Id.ToString().ToUpper() #>} = {<#= solutionFolder.Id.ToString().ToUpper() #>}
+<#        }
+    } #>
+	EndGlobalSection
+EndGlobal

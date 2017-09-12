@@ -26,8 +26,8 @@
     <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.Application.Contracts.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.Application.Contracts.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.Application.Contracts.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.Application.Contracts.pdb"/>
   </files>
   <metadata>
     <install target="DataContracts" src="MetaData\DataContracts"/>

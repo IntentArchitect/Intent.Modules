@@ -22,7 +22,7 @@
     <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.Application.Contracts.Mappings.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.Application.Contracts.Mappings.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.Application.Contracts.Mappings.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.Application.Contracts.Mappings.pdb"/>
   </files>
 </package>

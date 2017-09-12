@@ -59,7 +59,7 @@
       <Project>{C405EC88-B752-4BE3-BF9D-6D71DABA5ABF}</Project>
       <Name>Intent.Packages.AspNet.SignalR</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Packages.Messaging.Subscriber\Intent.Packages.Messaging.Subscriber.csproj">
+    <ProjectReference Include="..\Intent.Modules.Messaging.Subscriber\Intent.Modules.Messaging.Subscriber.csproj">
       <Project>{3B75BB62-B670-4C28-B3C9-76C6717F6C90}</Project>
       <Name>Intent.Packages.Messaging.Subscriber</Name>
     </ProjectReference>

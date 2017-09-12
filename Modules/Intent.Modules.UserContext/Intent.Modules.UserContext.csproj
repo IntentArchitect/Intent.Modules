@@ -91,8 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
-      <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
-      <Name>Intent.Packages.Constants</Name>
+      <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
+      <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

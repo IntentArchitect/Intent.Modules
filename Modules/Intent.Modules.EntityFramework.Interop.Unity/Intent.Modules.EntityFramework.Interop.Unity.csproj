@@ -59,7 +59,7 @@
       <Project>{6F1E2AAB-73BC-47BE-978E-C8CA8E93379A}</Project>
       <Name>Intent.Packages.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Packages.Unity\Intent.Packages.Unity.csproj">
+    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
       <Project>{DE177367-D476-4299-B9E6-71934B434FC5}</Project>
       <Name>Intent.Packages.Unity</Name>
     </ProjectReference>

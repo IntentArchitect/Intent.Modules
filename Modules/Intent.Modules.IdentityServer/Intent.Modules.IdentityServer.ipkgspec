@@ -33,7 +33,7 @@
     <dependency id="Intent.Owin" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.IdentityServer.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.IdentityServer.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.IdentityServer.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.IdentityServer.pdb"/>
   </files>
 </package>

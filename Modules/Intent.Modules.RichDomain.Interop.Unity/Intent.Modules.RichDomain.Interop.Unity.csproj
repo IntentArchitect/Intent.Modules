@@ -55,7 +55,7 @@
     <Compile Include="Registrations.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Packages.Unity\Intent.Packages.Unity.csproj">
+    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
       <Project>{DE177367-D476-4299-B9E6-71934B434FC5}</Project>
       <Name>Intent.Packages.Unity</Name>
     </ProjectReference>

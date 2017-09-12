@@ -15,7 +15,7 @@
     <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.Owin.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.Owin.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.AspNet.Owin.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.AspNet.Owin.pdb"/>
   </files>
 </package>

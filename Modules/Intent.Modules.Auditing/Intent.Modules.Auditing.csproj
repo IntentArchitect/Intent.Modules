@@ -70,11 +70,11 @@
     <Compile Include="Templates\ServiceBoundaryAudtingStrategy\ServiceBoundaryAuditingStrategyTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Packages.Unity\Intent.Packages.Unity.csproj">
+    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
       <Project>{DE177367-D476-4299-B9E6-71934B434FC5}</Project>
       <Name>Intent.Packages.Unity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Packages.UserContext\Intent.Packages.UserContext.csproj">
+    <ProjectReference Include="..\Intent.Modules.UserContext\Intent.Modules.UserContext.csproj">
       <Project>{C12C6483-778D-4606-8239-62045D67788F}</Project>
       <Name>Intent.Packages.UserContext</Name>
     </ProjectReference>

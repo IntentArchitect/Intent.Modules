@@ -59,7 +59,7 @@
       <Project>{3cf84649-2030-4d91-b93f-984421bc479c}</Project>
       <Name>Intent.Packages.Logging.NLog</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Packages.Messaging.Subscriber\Intent.Packages.Messaging.Subscriber.csproj">
+    <ProjectReference Include="..\Intent.Modules.Messaging.Subscriber\Intent.Modules.Messaging.Subscriber.csproj">
       <Project>{3B75BB62-B670-4C28-B3C9-76C6717F6C90}</Project>
       <Name>Intent.Packages.Messaging.Subscriber</Name>
     </ProjectReference>

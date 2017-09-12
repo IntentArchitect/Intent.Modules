@@ -21,7 +21,7 @@
     <dependency id="Intent.Typescript.Config" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.AngularJs.ServiceAgent.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.AngularJs.ServiceAgent.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.AngularJs.ServiceAgent.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.AngularJs.ServiceAgent.pdb"/>
   </files>
 </package>

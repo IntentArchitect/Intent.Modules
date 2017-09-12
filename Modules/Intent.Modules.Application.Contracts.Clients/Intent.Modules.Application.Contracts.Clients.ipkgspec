@@ -26,8 +26,8 @@
         <dependency id="Intent.Application.Contracts" version="1.0"/>
     </dependencies>
     <files>
-        <file src="bin\$configuration$\Intent.Packages.Application.Contracts.Clients.dll"/>
-        <file src="bin\$configuration$\Intent.Packages.Application.Contracts.Clients.pdb"/>
+        <file src="bin\$configuration$\Intent.Modules.Application.Contracts.Clients.dll"/>
+        <file src="bin\$configuration$\Intent.Modules.Application.Contracts.Clients.pdb"/>
     </files>
     <metadata>
         <install target="Services" src="MetaData\Services"/>

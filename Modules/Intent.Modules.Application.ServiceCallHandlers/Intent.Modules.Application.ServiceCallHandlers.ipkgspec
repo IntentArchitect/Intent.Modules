@@ -25,7 +25,7 @@
     <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.Application.ServiceCallHandlers.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.Application.ServiceCallHandlers.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.Application.ServiceCallHandlers.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.Application.ServiceCallHandlers.pdb"/>
   </files>
 </package>

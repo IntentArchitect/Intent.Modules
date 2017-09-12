@@ -59,7 +59,7 @@
       <Project>{3CF84649-2030-4D91-B93F-984421BC479C}</Project>
       <Name>Intent.Packages.Logging.NLog</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Packages.Unity\Intent.Packages.Unity.csproj">
+    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
       <Project>{DE177367-D476-4299-B9E6-71934B434FC5}</Project>
       <Name>Intent.Packages.Unity</Name>
     </ProjectReference>
