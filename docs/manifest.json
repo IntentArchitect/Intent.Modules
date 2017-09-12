@@ -1,0 +1,321 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/test/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Extensibility/CreateAModule.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Extensibility/CreateAModule.html",
+          "hash": "jha3DIDzBvuDSiIvfLomow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/GettingStarted/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/GettingStarted/intro.html",
+          "hash": "euoUYLhmqX5zK5uFzZ78OQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "5Z1PvQkpIfGRCcV+2aSY/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "t8QKgRlAWpoZTEcGPVHWww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Appendix.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Appendix.html",
+          "hash": "P6hyJ7qKenFswcvDA0RGjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Attributes.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Attributes.html",
+          "hash": "AqEETt4/LdvN6iHyQ1cBqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/CodeMigrations.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/CodeMigrations.html",
+          "hash": "Z3F7RZ/0aYzsGW7I+v6a8A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Gotchas.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Gotchas.html",
+          "hash": "E6gxyZxCK+t/2L7XMBqwIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/HowItWorks.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/HowItWorks.html",
+          "hash": "RQRl5Ce4VWipW/+84349oA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/HowToImplement.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/HowToImplement.html",
+          "hash": "Me7FkGk7+uhelSTli+XUpw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/HowToWorkWith.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/HowToWorkWith.html",
+          "hash": "rEsuXMq/cQ5bv9QCjOdR4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "modules/RoslynWeaver/Images/SimplifiedIAProcess.png",
+      "output": {
+        "resource": {
+          "relative_path": "modules/RoslynWeaver/Images/SimplifiedIAProcess.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "modules/RoslynWeaver/Images/SimplifiedRoslynWeaveIAProcess.png",
+      "output": {
+        "resource": {
+          "relative_path": "modules/RoslynWeaver/Images/SimplifiedRoslynWeaveIAProcess.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Modes.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Modes.html",
+          "hash": "Hm4G1eU0iGDDFGGtwn7Xxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Overview.html",
+          "hash": "hpkH4sDxZrETAefjI+BBBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Terminology.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Terminology.html",
+          "hash": "EnlfbHz0/49rTenO23/NTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "modules/RoslynWeaver/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/toc.html",
+          "hash": "BOXZI6mlHTob7IDuQNvYsw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/index.html",
+          "hash": "vrtPlJfcjIbzLPZMaOfB3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "modules/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "modules/toc.html",
+          "hash": "AkDMIr95xmyvWGp/2FxFqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "rSN/Yu6sGcP/vKHRoC57YA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "RestApiDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {}
+}

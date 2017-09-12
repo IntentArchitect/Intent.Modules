@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Roslyn Weaver | Intent Architect </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Roslyn Weaver | Intent Architect ">
+    <meta name="generator" content="docfx 2.23.1.0">
+    
+    <link rel="shortcut icon" href="../..//images/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="roslyn-weaver">Roslyn Weaver</h1>
+
+<h2 id="working-with-roslyn-weaver-templates">Working with Roslyn Weaver templates</h2>
+<p>Roslyn Weaver provides several code based attributes (<a href="Attributes.html">Roslyn Weaver attributes</a>) which can used to control or change the code weaving process. As a developer working with the generated output, you will find that while the generated output is typically what you want ocassionally you may need to change or extend the output for exceptional circumstances. Note if you are doing this often you should consider upgrading or changing the templates themselves. </p>
+<p>Modifying the solution code file involves introducing, or changing exisitng, IntentManged attributes to fine tune the Roslyn Weavers behaviour to respect the non-generated code. Below are several examples of doing this.</p>
+<h3 id="turning-off-the-code-generation">Turning off the code generation</h3>
+<p>Assuming we have a generated solution code file, as per the code example below.</p>
+<pre><code class="lang-csharp">...
+using System;
+
+[assembly: IntentTemplate(&quot;MyFirstTemplate&quot;, Version = &quot;1.0&quot;)]
+
+public class MyGeneratedClass
+{
+    ...
+}
+</code></pre><p>We could introduce the <a class="xref" href="Attributes.html#defaultintentmanaged-attribute">DefaultIntentManaged</a> attribute to turn of the code generation for this specific file.</p>
+<pre><code class="lang-csharp">...
+using System;
+
+[assembly: DefaultIntentManaged(Mode.Ignore)]
+[assembly: IntentTemplate(&quot;MyFirstTemplate&quot;, Version = &quot;1.0&quot;)]
+
+public class MyGeneratedClass
+{
+    ...
+}
+</code></pre><p>Note this does not techincally turn off the code generation is rather instructing the Roslyn Weaver to ignore all the code elements by default. </p>
+<h3 id="changing-a-classes-signature">Changing a classes signature</h3>
+<p>Assuming we want to change a classes signature, e.g. Introduce a new attribute or an interface, given we have a generated output as below. </p>
+<pre><code class="lang-csharp">...
+using System;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTemplate(&quot;MyFirstTemplate&quot;, Version = &quot;1.0&quot;)]
+
+public class MyGeneratedClass
+{
+    ...
+}
+</code></pre><p>There are several ways we could achieve this, adding any one of the IntentManaged attributes listed below to the class would allow you to modify the signature. </p>
+<pre><code class="lang-csharp">...
+using System;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTemplate(&quot;MyFirstTemplate&quot;, Version = &quot;1.0&quot;)]
+
+[IntentManaged(Mode.Merge, Signature=Mode.Ignore, Body=Mode.Fully)] // OR
+[IntentManaged(Mode.Merge, Signature=Mode.Merge, Body=Mode.Fully)] // OR
+[IntentManaged(Mode.Merge, Signature=Mode.Merge, Body=Mode.Merge)] // OR
+//This is equivelant to the line above
+[IntentManaged(Mode.Merge)] this is equivelant to the line above
+
+[MyManualAttribute]
+public class MyGeneratedClass : MyManualBaseClass, IMyManualInterface
+{
+    ...
+}
+</code></pre><h3 id="changing-a-method-implementation">Changing a method implementation</h3>
+<p>Assuming we want to change the implementation of a generated method, looking at the example below. </p>
+<pre><code class="lang-csharp">...
+public class MyGeneratedClass 
+{
+    public void MyMethod(string arg1)
+    {
+
+    }
+}
+</code></pre><p>We can modify the method using any of the IntentManaged attributes below.</p>
+<pre><code class="lang-csharp">...
+public class MyGeneratedClass 
+{
+    [IntentManaged(Mode.Ignore)] // OR
+    [IntentManaged(Mode.Merge, Signature=Mode.Fully, Body=Mode.Ignore)]
+    public void MyMethod(string arg1)
+    {
+        //My Implementation
+    }
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

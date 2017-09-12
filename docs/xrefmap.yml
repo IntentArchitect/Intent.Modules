@@ -1,0 +1,9 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: RoslynWeaver_Appendix
+  name: Roslyn Weaver
+  href: modules/RoslynWeaver/Appendix.html
+- uid: RoslynWeaver_Attributes
+  name: Roslyn Weaver
+  href: modules/RoslynWeaver/Attributes.html
