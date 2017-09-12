@@ -6,6 +6,12 @@
   items:
   - name: Roslyn Weaver 
     href: ../modules/RoslynWeaver/  
+- name: User Manual
+  items:
+  - name: Shell
+    href: UserManual/Shell.md    
+  - name: Home
+    href: UserManual/HomeScreen.md    
 - name: Extensibility
   items:
   - name: Create A Module
