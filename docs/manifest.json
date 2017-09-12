@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/HomeScreen.html",
-          "hash": "IUjYG2YqwOf8ARhNEXm1BQ=="
+          "hash": "j6g9tGxV6/Ufne7aP4eGNA=="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,19 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/Shell.html",
-          "hash": "XbCtDSMKpY15pk5fMl1xTg=="
+          "hash": "lukDZ3hv9/761+bxD+s5uA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/SolutionScreen.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/SolutionScreen.html",
+          "hash": "JspoP2QI/1RgcdSEnE6SKQ=="
         }
       },
       "is_incremental": false,
@@ -66,7 +78,18 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "X4PrqS20W7nePELR/ZR+jg=="
+          "hash": "4yoNHGg3pq3cEJUtPKDsRw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/Home.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/Home.png"
         }
       },
       "is_incremental": false,
@@ -78,6 +101,17 @@
       "output": {
         "resource": {
           "relative_path": "images/UserManual/Shell.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/SolutionScreen.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/SolutionScreen.png"
         }
       },
       "is_incremental": false,
@@ -332,13 +366,13 @@
           "can_incremental": true,
           "incrementalPhase": "build"
         },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build"
-        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
           "incrementalPhase": "build"
         }
       }

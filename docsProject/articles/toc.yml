@@ -12,6 +12,8 @@
     href: UserManual/Shell.md    
   - name: Home
     href: UserManual/HomeScreen.md    
+  - name: Solution
+    href: UserManual/SolutionScreen.md    
 - name: Extensibility
   items:
   - name: Create A Module
