@@ -1,0 +1,5 @@
+- name: Intent Architect
+  href: articles/
+- name: Modules
+  href: modules/
+  homepage: modules/index.md

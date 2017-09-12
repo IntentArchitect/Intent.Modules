@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/test/docfx_project",
+  "source_base_path": "C:/Dev/IntentArchitect/docsProject",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/Extensibility/CreateAModule.html",
-          "hash": "jha3DIDzBvuDSiIvfLomow=="
+          "hash": "CJdXoFK/+MiY1EECUiiH3A=="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/GettingStarted/intro.html",
-          "hash": "euoUYLhmqX5zK5uFzZ78OQ=="
+          "hash": "Xacz8GRgZYDQv6PmqFC5PA=="
         }
       },
       "is_incremental": false,
@@ -76,7 +76,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "t8QKgRlAWpoZTEcGPVHWww=="
+          "hash": "0+abL64D9YOVBvwXRlRkMw=="
         }
       },
       "is_incremental": false,
@@ -88,7 +88,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Appendix.html",
-          "hash": "P6hyJ7qKenFswcvDA0RGjg=="
+          "hash": "dlqDOgbPiGu7fFTvxR+ZMQ=="
         }
       },
       "is_incremental": false,
@@ -100,7 +100,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Attributes.html",
-          "hash": "AqEETt4/LdvN6iHyQ1cBqQ=="
+          "hash": "bFw7V8n6YjjO6NwaiFXplA=="
         }
       },
       "is_incremental": false,
@@ -112,7 +112,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/CodeMigrations.html",
-          "hash": "Z3F7RZ/0aYzsGW7I+v6a8A=="
+          "hash": "qqixvhA1rEeJTSYFAA3Eag=="
         }
       },
       "is_incremental": false,
@@ -124,7 +124,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Gotchas.html",
-          "hash": "E6gxyZxCK+t/2L7XMBqwIg=="
+          "hash": "TIbMCCw0X48Ly9MedrOKQg=="
         }
       },
       "is_incremental": false,
@@ -136,7 +136,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/HowItWorks.html",
-          "hash": "RQRl5Ce4VWipW/+84349oA=="
+          "hash": "qdKHJzYzgam+BVBCaW20tg=="
         }
       },
       "is_incremental": false,
@@ -148,7 +148,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/HowToImplement.html",
-          "hash": "Me7FkGk7+uhelSTli+XUpw=="
+          "hash": "U2BYzzQ7aMr+LgBXL4HfCA=="
         }
       },
       "is_incremental": false,
@@ -160,7 +160,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/HowToWorkWith.html",
-          "hash": "rEsuXMq/cQ5bv9QCjOdR4Q=="
+          "hash": "CZZEqEKjCAHE9hK0D4J2PA=="
         }
       },
       "is_incremental": false,
@@ -194,7 +194,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Modes.html",
-          "hash": "Hm4G1eU0iGDDFGGtwn7Xxw=="
+          "hash": "4U3mh2nCUaowLYYbhSgAnQ=="
         }
       },
       "is_incremental": false,
@@ -209,7 +209,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Overview.html",
-          "hash": "hpkH4sDxZrETAefjI+BBBA=="
+          "hash": "uqHtdrKtBNurw981a6CNXg=="
         }
       },
       "is_incremental": false,
@@ -221,7 +221,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Terminology.html",
-          "hash": "EnlfbHz0/49rTenO23/NTA=="
+          "hash": "C45yiVhys55PruT4p813Bw=="
         }
       },
       "is_incremental": false,
@@ -245,7 +245,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/index.html",
-          "hash": "vrtPlJfcjIbzLPZMaOfB3A=="
+          "hash": "SRQyrZNkb4K+xHGA1w/RVg=="
         }
       },
       "is_incremental": false,
@@ -279,13 +279,14 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
         "incrementalPhase": "build"
       },
       "processors": {
-        "TocDocumentProcessor": {
+        "RestApiDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ResourceDocumentProcessor": {
@@ -293,17 +294,17 @@
           "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build"
         },
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build"
-        },
-        "RestApiDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }

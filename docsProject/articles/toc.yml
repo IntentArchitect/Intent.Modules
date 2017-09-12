@@ -1,0 +1,12 @@
+- name: Getting Started
+  items:
+  - name: What is Intent Architect?
+    href: GettingStarted/intro.md
+- name: Core Modules
+  items:
+  - name: Roslyn Weaver 
+    href: ../modules/RoslynWeaver/  
+- name: Extensibility
+  items:
+  - name: Create A Module
+    href: Extensibility/CreateAModule.md
