@@ -15,7 +15,7 @@
     <dependency id="Intent.WebApi" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.AspNet.SignalR.Interop.WebApi.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.AspNet.SignalR.Interop.WebApi.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.AspNet.SignalR.Interop.WebApi.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.AspNet.SignalR.Interop.WebApi.pdb"/>
   </files>
 </package>

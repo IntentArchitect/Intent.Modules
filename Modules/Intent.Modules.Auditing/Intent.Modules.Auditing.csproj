@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.Auditing</RootNamespace>
-    <AssemblyName>Intent.Packages.Auditing</AssemblyName>
+    <AssemblyName>Intent.Modules.Auditing</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -70,20 +70,6 @@
     <Compile Include="Templates\ServiceBoundaryAudtingStrategy\ServiceBoundaryAuditingStrategyTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
-      <Project>{DE177367-D476-4299-B9E6-71934B434FC5}</Project>
-      <Name>Intent.Packages.Unity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.UserContext\Intent.Modules.UserContext.csproj">
-      <Project>{C12C6483-778D-4606-8239-62045D67788F}</Project>
-      <Name>Intent.Packages.UserContext</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
-      <Project>{D6171CC1-577A-4123-9CA3-34E017A40071}</Project>
-      <Name>Intent.Modules.WebApi</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Templates\HttpRequestMessageExtensions\HttpRequestMessageExtensionsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>HttpRequestMessageExtensionsTemplate.cs</LastGenOutput>
@@ -100,11 +86,24 @@
     <None Include="Intent.Modules.Auditing.ipkgspec" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
+      <Project>{d6171cc1-577a-4123-9ca3-34e017a40071}</Project>
+      <Name>Intent.Modules.AspNet.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
+      <Project>{de177367-d476-4299-b9e6-71934b434fc5}</Project>
+      <Name>Intent.Modules.Unity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.UserContext\Intent.Modules.UserContext.csproj">
+      <Project>{c12c6483-778d-4606-8239-62045d67788f}</Project>
+      <Name>Intent.Modules.UserContext</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)$(ProjectName).ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

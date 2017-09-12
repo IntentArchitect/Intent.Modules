@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.EntityFramework</RootNamespace>
-    <AssemblyName>Intent.Packages.EntityFramework</AssemblyName>
+    <AssemblyName>Intent.Modules.EntityFramework</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -126,15 +126,14 @@
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.RichDomain\Intent.Modules.RichDomain.csproj">
-      <Project>{9DB8717C-8F21-450B-9FEA-BBFB3F835390}</Project>
-      <Name>Intent.Packages.RichDomain</Name>
+      <Project>{9db8717c-8f21-450b-9fea-bbfb3f835390}</Project>
+      <Name>Intent.Modules.RichDomain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.EntityFramework.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

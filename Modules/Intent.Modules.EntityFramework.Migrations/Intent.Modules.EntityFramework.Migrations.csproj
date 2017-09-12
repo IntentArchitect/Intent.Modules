@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.EntityFramework.Migrations</RootNamespace>
-    <AssemblyName>Intent.Packages.EntityFramework.Migrations</AssemblyName>
+    <AssemblyName>Intent.Modules.EntityFramework.Migrations</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -86,15 +86,14 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.EntityFramework\Intent.Modules.EntityFramework.csproj">
-      <Project>{6F1E2AAB-73BC-47BE-978E-C8CA8E93379A}</Project>
-      <Name>Intent.Packages.EntityFramework</Name>
+      <Project>{6f1e2aab-73bc-47be-978e-c8ca8e93379a}</Project>
+      <Name>Intent.Modules.EntityFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.EntityFramework.Migrations.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

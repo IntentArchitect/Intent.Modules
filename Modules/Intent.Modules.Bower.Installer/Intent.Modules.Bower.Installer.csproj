@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.Bower.Installer</RootNamespace>
-    <AssemblyName>Intent.Packages.Bower.Installer</AssemblyName>
+    <AssemblyName>Intent.Modules.Bower.Installer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -55,20 +55,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Bower\Intent.Modules.Bower.csproj">
-      <Project>{676FFB48-2B61-46BF-86B1-1A6D5F48888D}</Project>
-      <Name>Intent.Packages.Bower</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Intent.Modules.Bower.Installer.ipkgspec" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Bower\Intent.Modules.Bower.csproj">
+      <Project>{676ffb48-2b61-46bf-86b1-1a6d5f48888d}</Project>
+      <Name>Intent.Modules.Bower</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.Bower.Installer.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

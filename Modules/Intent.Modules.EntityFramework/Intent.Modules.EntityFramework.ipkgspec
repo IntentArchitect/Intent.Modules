@@ -42,7 +42,7 @@
     <dependency id="Intent.RichDomain" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.EntityFramework.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.EntityFramework.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.EntityFramework.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.EntityFramework.pdb"/>
   </files>
 </package>

@@ -61,6 +61,10 @@
       <Project>{56A0B1F7-FA7E-46B0-A1C8-164DDB07FC4C}</Project>
       <Name>Intent.Modules.AspNet.Owin</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.csproj">
+      <Project>{7fea24fe-c3ac-43bf-a8b0-099aabfbd526}</Project>
+      <Name>Intent.Modules.VisualStudio.Projects</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.AspNet.Owin.FileServer.ipkgspec" />

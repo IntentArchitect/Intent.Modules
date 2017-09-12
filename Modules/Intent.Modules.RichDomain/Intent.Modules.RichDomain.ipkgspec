@@ -40,8 +40,8 @@
     <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.RichDomain.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.RichDomain.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.RichDomain.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.RichDomain.pdb"/>
   </files>
   <metadata>
     <install target="Domain" src="MetaData\Domain"/>

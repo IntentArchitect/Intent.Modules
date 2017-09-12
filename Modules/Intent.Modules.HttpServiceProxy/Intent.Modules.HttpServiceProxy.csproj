@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.HttpServiceProxy</RootNamespace>
-    <AssemblyName>Intent.Packages.HttpServiceProxy</AssemblyName>
+    <AssemblyName>Intent.Modules.HttpServiceProxy</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -120,12 +120,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Application.Contracts.Clients\Intent.Modules.Application.Contracts.Clients.csproj">
-      <Project>{96929b04-8386-4f55-b348-15a592fa7c0c}</Project>
-      <Name>Intent.Packages.Application.Contracts.Clients</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Legacy\Proxy\WebApiClientServiceProxyTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiClientServiceProxyTemplate.cs</LastGenOutput>
@@ -143,11 +137,16 @@
       <LastGenOutput>HttpServiceProxyAddressResolverImplementationTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Application.Contracts.Clients\Intent.Modules.Application.Contracts.Clients.csproj">
+      <Project>{96929b04-8386-4f55-b348-15a592fa7c0c}</Project>
+      <Name>Intent.Modules.Application.Contracts.Clients</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.HttpServiceProxy.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

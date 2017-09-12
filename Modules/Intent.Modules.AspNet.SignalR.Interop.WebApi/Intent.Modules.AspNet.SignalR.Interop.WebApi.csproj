@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.AspNet.SignalR.Interop.WebApi</RootNamespace>
-    <AssemblyName>Intent.Packages.AspNet.SignalR.Interop.WebApi</AssemblyName>
+    <AssemblyName>Intent.Modules.AspNet.SignalR.Interop.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -53,24 +53,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.AspNet.SignalR\Intent.Modules.AspNet.SignalR.csproj">
-      <Project>{C405EC88-B752-4BE3-BF9D-6D71DABA5ABF}</Project>
-      <Name>Intent.Packages.AspNet.SignalR</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
-      <Project>{D6171CC1-577A-4123-9CA3-34E017A40071}</Project>
-      <Name>Intent.Modules.WebApi</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Intent.Modules.AspNet.SignalR.Interop.WebApi.ipkgspec" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.AspNet.SignalR\Intent.Modules.AspNet.SignalR.csproj">
+      <Project>{c405ec88-b752-4be3-bf9d-6d71daba5abf}</Project>
+      <Name>Intent.Modules.AspNet.SignalR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
+      <Project>{d6171cc1-577a-4123-9ca3-34e017a40071}</Project>
+      <Name>Intent.Modules.AspNet.WebApi</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)$(ProjectName).ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

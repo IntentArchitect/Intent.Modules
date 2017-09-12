@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.EntityFramework.Interop.Unity</RootNamespace>
-    <AssemblyName>Intent.Packages.EntityFramework.Interop.Unity</AssemblyName>
+    <AssemblyName>Intent.Modules.EntityFramework.Interop.Unity</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -55,24 +55,23 @@
     <Compile Include="Registrations.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.EntityFramework\Intent.Modules.EntityFramework.csproj">
-      <Project>{6F1E2AAB-73BC-47BE-978E-C8CA8E93379A}</Project>
-      <Name>Intent.Packages.EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
-      <Project>{DE177367-D476-4299-B9E6-71934B434FC5}</Project>
-      <Name>Intent.Packages.Unity</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Intent.Modules.EntityFramework.Interop.Unity.ipkgspec" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.EntityFramework\Intent.Modules.EntityFramework.csproj">
+      <Project>{6f1e2aab-73bc-47be-978e-c8ca8e93379a}</Project>
+      <Name>Intent.Modules.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
+      <Project>{de177367-d476-4299-b9e6-71934b434fc5}</Project>
+      <Name>Intent.Modules.Unity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.EntityFramework.Interop.Unity.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.Logging.NLog</RootNamespace>
-    <AssemblyName>Intent.Packages.Logging.NLog</AssemblyName>
+    <AssemblyName>Intent.Modules.Logging.NLog</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -96,6 +96,10 @@
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.csproj">
+      <Project>{7fea24fe-c3ac-43bf-a8b0-099aabfbd526}</Project>
+      <Name>Intent.Modules.VisualStudio.Projects</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Logging.NLog.ipkgspec" />
@@ -103,9 +107,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.Logging.NLog.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

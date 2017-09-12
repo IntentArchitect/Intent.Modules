@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.Electron.NodeEdgeProxy</RootNamespace>
-    <AssemblyName>Intent.Packages.Electron.NodeEdgeProxy</AssemblyName>
+    <AssemblyName>Intent.Modules.Electron.NodeEdgeProxy</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -101,20 +101,20 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj">
-      <Project>{2972A488-2F67-426D-8762-C85FB36FB32C}</Project>
-      <Name>Intent.Packages.Application.Contracts</Name>
+      <Project>{2972a488-2f67-426d-8762-c85fb36fb32c}</Project>
+      <Name>Intent.Modules.Application.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Application.ServiceCallHandlers\Intent.Modules.Application.ServiceCallHandlers.csproj">
-      <Project>{E923CA07-9C38-4D69-B150-2A8FFF6E9100}</Project>
-      <Name>Intent.Packages.Application.ServiceCallHandlers</Name>
+      <Project>{e923ca07-9c38-4d69-b150-2a8fff6e9100}</Project>
+      <Name>Intent.Modules.Application.ServiceCallHandlers</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
-      <Project>{DE177367-D476-4299-B9E6-71934B434FC5}</Project>
-      <Name>Intent.Packages.Unity</Name>
+      <Project>{de177367-d476-4299-b9e6-71934b434fc5}</Project>
+      <Name>Intent.Modules.Unity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -151,9 +151,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)$(ProjectName).ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

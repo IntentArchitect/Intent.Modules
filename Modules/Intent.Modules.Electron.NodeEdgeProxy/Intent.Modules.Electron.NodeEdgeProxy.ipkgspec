@@ -33,7 +33,7 @@
         <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
     </dependencies>
     <files>
-      <file src="bin\$configuration$\Intent.Packages.Electron.NodeEdgeProxy.dll"/>
-      <file src="bin\$configuration$\Intent.Packages.Electron.NodeEdgeProxy.pdb"/>
+      <file src="bin\$configuration$\Intent.Modules.Electron.NodeEdgeProxy.dll"/>
+      <file src="bin\$configuration$\Intent.Modules.Electron.NodeEdgeProxy.pdb"/>
     </files>
 </package>

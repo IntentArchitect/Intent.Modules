@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.Logging.NLog.Interop.WebApi</RootNamespace>
-    <AssemblyName>Intent.Packages.Logging.NLog.Interop.WebApi</AssemblyName>
+    <AssemblyName>Intent.Modules.Logging.NLog.Interop.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -56,24 +56,23 @@
     <Compile Include="Registrations.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Logging.NLog\Intent.Modules.Logging.NLog.csproj">
-      <Project>{3CF84649-2030-4D91-B93F-984421BC479C}</Project>
-      <Name>Intent.Packages.Logging.NLog</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
-      <Project>{D6171CC1-577A-4123-9CA3-34E017A40071}</Project>
-      <Name>Intent.Modules.WebApi</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Intent.Modules.Logging.NLog.Interop.WebApi.ipkgspec" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
+      <Project>{d6171cc1-577a-4123-9ca3-34e017a40071}</Project>
+      <Name>Intent.Modules.AspNet.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Logging.NLog\Intent.Modules.Logging.NLog.csproj">
+      <Project>{3cf84649-2030-4d91-b93f-984421bc479c}</Project>
+      <Name>Intent.Modules.Logging.NLog</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.Logging.NLog.Interop.WebApi.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

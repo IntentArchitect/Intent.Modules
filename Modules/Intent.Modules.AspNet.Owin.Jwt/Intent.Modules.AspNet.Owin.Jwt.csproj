@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.Owin.Jwt</RootNamespace>
-    <AssemblyName>Intent.Packages.Owin.Jwt</AssemblyName>
+    <AssemblyName>Intent.Modules.AspNet.Owin.Jwt</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -72,13 +72,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.AspNet.Owin\Intent.Modules.AspNet.Owin.csproj">
+      <Project>{56a0b1f7-fa7e-46b0-a1c8-164ddb07fc4c}</Project>
+      <Name>Intent.Modules.AspNet.Owin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.AspNet.Owin\Intent.Modules.AspNet.Owin.csproj">
-      <Project>{56A0B1F7-FA7E-46B0-A1C8-164DDB07FC4C}</Project>
-      <Name>Intent.Packages.Owin</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -87,9 +87,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.Owin.Jwt.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

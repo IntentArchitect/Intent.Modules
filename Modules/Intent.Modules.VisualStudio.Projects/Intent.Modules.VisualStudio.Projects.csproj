@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.SoftwareFactory.VSProjects</RootNamespace>
-    <AssemblyName>Intent.SoftwareFactory.VSProjects</AssemblyName>
+    <AssemblyName>Intent.Modules.VisualStudio.Projects</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.0.0-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.0-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Build, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
@@ -123,6 +131,7 @@
     <None Include="Intent.Modules.VisualStudio.Projects.ipkgspec">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Events\" />
@@ -136,12 +145,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.VisualStudio.Projects.ipkgspec $(ProjectDir)..\..\Intent.Packages
-
-if not exist "$(ProjectDir)..\..\Intent.SoftwareFactory.Bin" mkdir "$(ProjectDir)..\..\Intent.SoftwareFactory.Bin"
-copy /Y "$(ProjectDir)Bin\Debug\$(ProjectName).dll" "$(ProjectDir)..\..\Intent.SoftwareFactory.Bin\$(ProjectName).dll"
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

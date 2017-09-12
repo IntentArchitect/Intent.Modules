@@ -16,7 +16,7 @@
     <dependency id="Intent.Bower" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.Bower.Installer.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.Bower.Installer.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.Bower.Installer.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.Bower.Installer.pdb"/>
   </files>
 </package>

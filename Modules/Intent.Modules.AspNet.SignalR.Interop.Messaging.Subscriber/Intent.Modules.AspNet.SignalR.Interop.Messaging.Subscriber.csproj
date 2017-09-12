@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.AspNet.SignalR.Interop.Messaging.Subscriber</RootNamespace>
-    <AssemblyName>Intent.Packages.AspNet.SignalR.Interop.Messaging.Subscriber</AssemblyName>
+    <AssemblyName>Intent.Modules.AspNet.SignalR.Interop.Messaging.Subscriber</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -56,12 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.AspNet.SignalR\Intent.Modules.AspNet.SignalR.csproj">
-      <Project>{C405EC88-B752-4BE3-BF9D-6D71DABA5ABF}</Project>
-      <Name>Intent.Packages.AspNet.SignalR</Name>
+      <Project>{c405ec88-b752-4be3-bf9d-6d71daba5abf}</Project>
+      <Name>Intent.Modules.AspNet.SignalR</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Messaging.Subscriber\Intent.Modules.Messaging.Subscriber.csproj">
-      <Project>{3B75BB62-B670-4C28-B3C9-76C6717F6C90}</Project>
-      <Name>Intent.Packages.Messaging.Subscriber</Name>
+      <Project>{3b75bb62-b670-4c28-b3c9-76c6717f6c90}</Project>
+      <Name>Intent.Modules.Messaging.Subscriber</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -70,9 +70,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)$(ProjectName).ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

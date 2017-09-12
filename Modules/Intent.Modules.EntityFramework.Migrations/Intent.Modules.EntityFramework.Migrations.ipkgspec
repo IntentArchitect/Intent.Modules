@@ -22,7 +22,7 @@
     <dependency id="Intent.EntityFramework" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.EntityFramework.Migrations.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.EntityFramework.Migrations.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.EntityFramework.Migrations.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.EntityFramework.Migrations.pdb"/>
   </files>
 </package>

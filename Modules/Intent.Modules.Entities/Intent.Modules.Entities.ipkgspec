@@ -47,8 +47,8 @@
     <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.Entities.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.Entities.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.Entities.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.Entities.pdb"/>
   </files>
   <metadata>
     <install target="Domain" src="MetaData\Domain"/>
