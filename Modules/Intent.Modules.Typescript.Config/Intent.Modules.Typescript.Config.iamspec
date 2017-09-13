@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Typescript.Config</id>
+  <version>1.0.1</version>
+  <summary>Typescript configuration files</summary>
+  <description>Typescript configuration files</description>
+  <authors>Intent Software</authors>
+  <templates>
+    <template id="Intent.Typescript.Config.TypescriptConfig">
+      <role>Presentation.Web</role>
+    </template>
+    <template id="Intent.Typescript.Config.DefinitelyTypedReferences">
+      <role>Presentation.Web</role>
+    </template>
+  </templates>
+  <decorators>
+  </decorators>
+  <dependencies>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+</package>

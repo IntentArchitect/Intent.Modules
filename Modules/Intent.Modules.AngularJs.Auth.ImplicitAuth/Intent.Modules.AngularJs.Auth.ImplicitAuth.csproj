@@ -152,7 +152,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.AngularJs.Auth.ImplicitAuth.ipkgspec" />
+    <None Include="Intent.Modules.AngularJs.Auth.ImplicitAuth.iamspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

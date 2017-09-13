@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Intent.IArchitect.Packager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.IntentArchitectPackager.1.0.0-alpha\lib\net452\Intent.IArchitect.Packager.exe</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.0-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
@@ -65,7 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Intent.Modules.NuGet.Installer.ipkgspec" />
+    <None Include="Intent.Modules.NuGet.Installer.iamspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -73,6 +77,13 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\Intent.IntentArchitectPackager.1.0.0-alpha\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.0.0-alpha\build\Intent.IntentArchitectPackager.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.1.0.0-alpha\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.1.0.0-alpha\build\Intent.IntentArchitectPackager.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

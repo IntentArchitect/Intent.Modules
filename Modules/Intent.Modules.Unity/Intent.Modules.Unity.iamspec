@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Unity</id>
+  <version>1.0.3</version>
+  <summary>Unity container for patterns that require Dependency Injection.</summary>
+  <description>Unity container for patterns that require Dependency Injection.</description>
+  <authors>Intent Software</authors>
+  <projectUrl>http://intentsoftware.io</projectUrl>
+  <tags>Unity Container DI Dependency Injection</tags>
+  <templates>
+    <template id="Intent.WebApi.UnityConfig">
+      <role>Distribution.WebApi</role>
+    </template>
+  </templates>
+  <decorators />
+  <dependencies>
+    <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+</package>

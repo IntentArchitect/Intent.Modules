@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Entities</id>
+  <version>0.0.6</version>
+  <summary>Create domain entities and related artifacts.</summary>
+  <description></description>
+  <authors>Intent Software</authors>
+  <templates>   
+    <template id="Intent.Entities.Base">
+      <role>Domain</role>
+      <config>
+        <add key="Depends On" description="Make this output a code behind file for" default="${Name}.cs" />
+      </config>
+    </template>
+    <template id="Intent.Entities.Base.Interface">
+      <role>Domain</role>
+      <config>
+        <add key="Depends On" description="Make this output a code behind file for" default="${Name}.cs" />
+      </config>
+    </template>
+    <template id="Intent.Entities.Behaviour">
+      <role>Domain</role>
+      <config>
+        <add key="Depends On" description="Make this output a code behind file for" default="${Name}.cs" />
+      </config>
+    </template>
+    <template id="Intent.Entities.PartialEntity">
+      <role>Domain</role>
+      <config>
+        <add key="Namespace" description="Base class for all aggregates" default="Bob" />
+      </config>
+    </template>
+  </templates>
+  <decorators>
+    <decorator id="Intent.DDD.Entity.Decorator">
+      <config>
+        <add key="Aggregate Root Base Class" description="Base class for all aggregates" default="" />
+        <add key="Entity Base Class" description="Base class for all entities" default="" />
+        <add key="Value Object Base Class" description="Base class for all value objcets" default="" />
+      </config>
+    </decorator>
+    <decorator id="Intent.DDD.Entity.Interfaces.Decorator" />
+    <decorator id="Intent.Serializable.Entity.Decorator" enabled="false" />
+    <decorator id="Intent.Serializable.Entity.Interfaces.Decorator" enabled="false" />
+  </decorators>
+  <dependencies>
+    <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+  <metadata>
+    <install target="Domain" src="MetaData\Domain"/>
+  </metadata>
+</package>

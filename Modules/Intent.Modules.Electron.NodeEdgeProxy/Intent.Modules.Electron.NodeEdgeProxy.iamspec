@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+    <id>Intent.Packages.Electron.NodeEdgeProxy</id>
+    <version>1.0.4</version>
+    <summary>Creates service proxies allowing you to call C# code from within Node.js</summary>
+    <description>Implements service contracts and infrastructure in both C# and TypeScript allowing C# service calls to be initiated from within a Node.js hosted Angular Application.</description>
+    <authors>Intent Software</authors>
+    <templates>
+        <template id="Intent.Electron.NodeEdgeProxy.AngularEdgeService">
+            <role>Presentation</role>
+        </template>
+        <template id="Intent.Electron.NodeEdgeProxy.AngularNodeEdgeTypeScriptServiceProxy">
+            <role>Presentation</role>
+        </template>
+        <template id="Intent.Electron.NodeEdgeProxy.CsharpReceivingProxy">
+            <role>Distribution</role>
+        </template>
+      <template id="Intent.Electron.NodeEdgeProxy.AngularEdgeService.Legacy">
+        <role>Presentation</role>
+      </template>
+      <template id="Intent.Electron.NodeEdgeProxy.AngularNodeEdgeTypeScriptServiceProxy.Legacy">
+        <role>Presentation</role>
+      </template>
+      <template id="Intent.Electron.NodeEdgeProxy.CsharpReceivingProxy.Legacy">
+        <role>Distribution</role>
+      </template>
+    </templates>
+    <decorators/>
+    <dependencies>
+        <dependency id="Intent.Application.ServiceCallHandlers" version="1.0.7"/>
+        <dependency id="Intent.Application.Contracts" version="0.0.19"/>
+        <dependency id="Intent.Unity" version="1.0.3"/>
+        <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
+    </dependencies>
+    <files>
+      <file src="bin\$configuration$\$id$.dll"/>
+      <file src="bin\$configuration$\$id$.pdb"/>
+    </files>
+</package>

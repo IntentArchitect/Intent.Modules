@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Bower.Installer</id>
+  <version>1.0.2</version>
+  <summary>Installs Bower dependencies specified in the bower.config file.</summary>
+  <description>Installs Bower dependencies specified in the bower.config file.</description>
+  <authors>Intent Software</authors>
+  <projectUrl>http://intentsoftware.io</projectUrl>
+  <tags>Bower Automatic Installer</tags>
+  <templates />
+  <decorators />
+  <applicationProcessors>
+    <applicationProcessor id="Intent.BowerPackageInstaller" />
+  </applicationProcessors>
+  <dependencies>
+    <dependency id="Intent.Bower" version="1.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+</package>
