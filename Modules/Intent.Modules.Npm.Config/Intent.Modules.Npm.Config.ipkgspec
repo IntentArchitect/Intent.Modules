@@ -17,8 +17,8 @@
   <dependencies>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.Npm.Config.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.Npm.Config.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.Npm.Config.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.Npm.Config.pdb"/>
   </files>
   <metadata>
   </metadata>

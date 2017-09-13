@@ -23,7 +23,7 @@
     <dependency id="Intent.Messaging.Subscriber" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.Messaging.Publisher.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.Messaging.Publisher.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.Messaging.Publisher.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.Messaging.Publisher.pdb"/>
   </files>
 </package>

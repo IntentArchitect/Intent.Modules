@@ -12,7 +12,7 @@
     <dependency id="Intent.Mapping.EntityToDto" version="1.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\Intent.Packages.Mapping.EntityToDto.Owin.dll"/>
-    <file src="bin\$configuration$\Intent.Packages.Mapping.EntityToDto.Owin.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.Mapping.EntityToDto.Owin.dll"/>
+    <file src="bin\$configuration$\Intent.Modules.Mapping.EntityToDto.Owin.pdb"/>
   </files>
 </package>

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.Mapping.EntityToDto.Owin</RootNamespace>
-    <AssemblyName>Intent.Packages.Mapping.EntityToDto.Owin</AssemblyName>
+    <AssemblyName>Intent.Modules.Mapping.EntityToDto.Owin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -56,24 +56,23 @@
     <Compile Include="Registrations.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Mapping.EntityToDto\Intent.Modules.Mapping.EntityToDto.csproj">
-      <Project>{410713E8-F898-4600-B860-D899B03D6B7A}</Project>
-      <Name>Intent.Packages.Mapping.EntityToDto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.AspNet.Owin\Intent.Modules.AspNet.Owin.csproj">
-      <Project>{56A0B1F7-FA7E-46B0-A1C8-164DDB07FC4C}</Project>
-      <Name>Intent.Packages.Owin</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Intent.Modules.Mapping.EntityToDto.Owin.ipkgspec" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.AspNet.Owin\Intent.Modules.AspNet.Owin.csproj">
+      <Project>{56a0b1f7-fa7e-46b0-a1c8-164ddb07fc4c}</Project>
+      <Name>Intent.Modules.AspNet.Owin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Mapping.EntityToDto\Intent.Modules.Mapping.EntityToDto.csproj">
+      <Project>{410713e8-f898-4600-b860-d899b03d6b7a}</Project>
+      <Name>Intent.Modules.Mapping.EntityToDto</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.Mapping.EntityToDto.Owin.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

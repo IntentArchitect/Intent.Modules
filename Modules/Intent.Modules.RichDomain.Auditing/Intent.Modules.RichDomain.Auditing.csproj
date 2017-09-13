@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Packages.RichDomain.Auditing</RootNamespace>
-    <AssemblyName>Intent.Packages.RichDomain.Auditing</AssemblyName>
+    <AssemblyName>Intent.Modules.RichDomain.Auditing</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -59,24 +59,23 @@
     <Compile Include="Registrations.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.EntityFramework\Intent.Modules.EntityFramework.csproj">
-      <Project>{6F1E2AAB-73BC-47BE-978E-C8CA8E93379A}</Project>
-      <Name>Intent.Packages.EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.RichDomain\Intent.Modules.RichDomain.csproj">
-      <Project>{9DB8717C-8F21-450B-9FEA-BBFB3F835390}</Project>
-      <Name>Intent.Packages.RichDomain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Intent.Modules.RichDomain.Auditing.ipkgspec" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.EntityFramework\Intent.Modules.EntityFramework.csproj">
+      <Project>{6f1e2aab-73bc-47be-978e-c8ca8e93379a}</Project>
+      <Name>Intent.Modules.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.RichDomain\Intent.Modules.RichDomain.csproj">
+      <Project>{9db8717c-8f21-450b-9fea-bbfb3f835390}</Project>
+      <Name>Intent.Modules.RichDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist "$(ProjectDir)..\..\Intent.Packages" mkdir "$(ProjectDir)..\..\Intent.Packages"
-$(ProjectDir)..\..\Intent.IArchitect\Intent.IArchitect.Electron\Intent.IArchitect.Packager\bin\$(ConfigurationName)\Intent.IArchitect.Packager.exe package $(ProjectDir)Intent.RichDomain.Auditing.ipkgspec $(ProjectDir)..\..\Intent.Packages
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
