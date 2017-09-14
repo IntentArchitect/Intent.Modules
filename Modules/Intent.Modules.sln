@@ -107,6 +107,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.VisualStudio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.NuGet.Installer", "Intent.Modules.NuGet.Installer\Intent.Modules.NuGet.Installer.csproj", "{07786CDC-3BA4-43C7-A37C-4EDBCBE89299}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.OutputManager.TagWeaver", "Intent.Modules.OutputManager.TagWeaver\Intent.Modules.OutputManager.TagWeaver.csproj", "{A79001BD-3CAC-44C0-A429-564B18C84A93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -313,6 +315,10 @@ Global
 		{07786CDC-3BA4-43C7-A37C-4EDBCBE89299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07786CDC-3BA4-43C7-A37C-4EDBCBE89299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07786CDC-3BA4-43C7-A37C-4EDBCBE89299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A79001BD-3CAC-44C0-A429-564B18C84A93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A79001BD-3CAC-44C0-A429-564B18C84A93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A79001BD-3CAC-44C0-A429-564B18C84A93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A79001BD-3CAC-44C0-A429-564B18C84A93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -368,5 +374,6 @@ Global
 		{A90BEA7C-2F11-42DB-9CFB-95D1E21585C9} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 		{7FEA24FE-C3AC-43BF-A8B0-099AABFBD526} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 		{07786CDC-3BA4-43C7-A37C-4EDBCBE89299} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
+		{A79001BD-3CAC-44C0-A429-564B18C84A93} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 	EndGlobalSection
 EndGlobal

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{410713E8-F898-4600-B860-D899B03D6B7A}</ProjectGuid>
+    <ProjectGuid>{A79001BD-3CAC-44C0-A429-564B18C84A93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Mapping.EntityToDto</RootNamespace>
-    <AssemblyName>Intent.Modules.Mapping.EntityToDto</AssemblyName>
+    <RootNamespace>Intent.Packages.OutputManager.TagWeave</RootNamespace>
+    <AssemblyName>Intent.Modules.OutputManager.TagWeaver</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -36,15 +36,10 @@
       <HintPath>..\packages\Intent.IntentArchitectPackager.1.0.0-alpha\lib\net452\Intent.IArchitect.Packager.exe</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.0.0-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.0-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,50 +50,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NugetPackages.cs" />
+    <Compile Include="ContentParser.cs" />
+    <Compile Include="FileWeaver.cs" />
+    <Compile Include="ParsedContent.cs" />
+    <Compile Include="ParsedToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrations.cs" />
-    <Compile Include="Templates\DTOMappingProfile\DTOMappingTemplate.cs" />
-    <Compile Include="Templates\DTOMappingProfile\GenericMappingTemplate.cs">
-      <DependentUpon>GenericMappingTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\DTOMappingProfile\GenericMappingTemplatePartial.cs" />
-    <Compile Include="Templates\EntityMappingExtensions\EntityMappingExtensionsTemplate.cs">
-      <DependentUpon>EntityMappingExtensionsTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\EntityMappingExtensions\EntityMappingExtensionsTemplatePartial.cs" />
+    <Compile Include="TagToken.cs" />
+    <Compile Include="TagType.cs" />
+    <Compile Include="TagWeavingOMP.cs" />
+    <Compile Include="TokenParser.cs" />
+    <Compile Include="TokenParsers\CSCommentCodeGenParsedToken.cs" />
+    <Compile Include="TokenParsers\CSCommentCodeGenTokenParser.cs" />
+    <Compile Include="TokenParsers\HashCommentCodeGenParsedToken.cs" />
+    <Compile Include="TokenParsers\HashCommentCodeGenTokenParser.cs" />
+    <Compile Include="TokenParsers\XmlCommentCodeGenParsedToken.cs" />
+    <Compile Include="TokenParsers\XmlCommentCodeGenTokenParser.cs" />
+    <Compile Include="WeaveBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Mapping.EntityToDto.iamspec" />
+    <None Include="Intent.Modules.OutputManager.TagWeaver.iamspec" />
     <None Include="packages.config" />
-    <None Include="Templates\DTOMappingProfile\GenericMappingTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>GenericMappingTemplate.cs</LastGenOutput>
-    </None>
-    <Content Include="Templates\EntityMappingExtensions\EntityMappingExtensionsTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EntityMappingExtensionsTemplate.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj">
-      <Project>{2972A488-2F67-426D-8762-C85FB36FB32C}</Project>
-      <Name>Intent.Modules.Application.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Application.ServiceCallHandlers\Intent.Modules.Application.ServiceCallHandlers.csproj">
-      <Project>{E923CA07-9C38-4D69-B150-2A8FFF6E9100}</Project>
-      <Name>Intent.Modules.Application.ServiceCallHandlers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.RichDomain\Intent.Modules.RichDomain.csproj">
-      <Project>{9DB8717C-8F21-450B-9FEA-BBFB3F835390}</Project>
-      <Name>Intent.Modules.RichDomain</Name>
+    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
+      <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
+      <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

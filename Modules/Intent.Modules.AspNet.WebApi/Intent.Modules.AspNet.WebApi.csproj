@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.AspNet.WebApi.iamspec" />
+    <None Include="Intent.Modules.WebApi.nuspec" />
     <None Include="Legacy\Services.ttinclude" />
     <None Include="MetaData\Services\Intent.WebApi.services.pkg.config" />
     <None Include="packages.config" />
