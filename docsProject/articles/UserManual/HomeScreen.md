@@ -7,16 +7,16 @@ The home screen is a general landing page, it allows you to create new solutions
 
 
 ## 1. Create New Solution
-Allows you to create a new solution, as stated. Solutions are just a named grouping for one or more applciations.([Solution Screen](SolutionScreen.md))
+Allows you to create a new solution, as stated. Solutions are just a named grouping for one or more applciations.[![Navigates to Solution Screen](../../images/navigate.png "Navigates to Solution Screen")](SolutionScreen.md)
 
 ## 2. Open Existing Solution
-Find and open a previously created solution. These would be files with the .isln extension. ([Solution Screen](SolutionScreen.md))
+Find and open a previously created solution. These would be files with the .isln extension. [![Navigates to Solution Screen](../../images/navigate.png "Navigates to Solution Screen")](SolutionScreen.md)
 
 ## 3. Recent
 Contains a list of recently accessed solution and applications.
 
 ## 4. Recently Accessed Solution
-Click me to open this recently accessed solution. ([Solution Screen](SolutionScreen.md))
+Click me to open this recently accessed solution. [![Navigates to Solution Screen](../../images/navigate.png "Navigates to Solution Screen")](SolutionScreen.md)
 
 ## 5. Recently Accessed Applciation
 Click me to open this recently accessed application.
