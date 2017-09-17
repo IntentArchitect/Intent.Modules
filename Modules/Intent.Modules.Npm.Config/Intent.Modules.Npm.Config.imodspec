@@ -5,7 +5,7 @@
   <summary>Create domain entities and related artifacts.</summary>
   <description>Create domain entities and related artifacts.</description>
   <authors>Intent Software</authors>
-  <projectUrl>www.intentsoftware.io</projectUrl>
+  <projectUrl>www.intentarchitect.com</projectUrl>
   <tags>Npm Config Node Packager</tags>
   <templates>   
     <template id="Intent.Npm.Config.PackageJson">

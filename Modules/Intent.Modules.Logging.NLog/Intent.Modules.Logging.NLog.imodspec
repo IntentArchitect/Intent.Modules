@@ -5,7 +5,7 @@
   <summary>NLog logging for services.</summary>
   <description>NLog logging for services.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>NLog Logging Service</tags>
   <templates>
     <template id="Intent.Logging.NLog.OperationRequestId">

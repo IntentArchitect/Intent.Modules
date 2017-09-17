@@ -5,7 +5,7 @@
   <summary>Messaging infrastructure for publishing events and commands in a transactional manner.</summary>
   <description>Messaging infrastructure for publishing events and commands in a transactional manner.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Event Eventing Commands Messaging ESB Message Broker</tags>
   <templates>
   </templates>

@@ -5,7 +5,7 @@
   <summary>Unity container for patterns that require Dependency Injection.</summary>
   <description>Unity container for patterns that require Dependency Injection.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Unity Container DI Dependency Injection</tags>
   <templates>
     <template id="Intent.WebApi.UnityConfig">

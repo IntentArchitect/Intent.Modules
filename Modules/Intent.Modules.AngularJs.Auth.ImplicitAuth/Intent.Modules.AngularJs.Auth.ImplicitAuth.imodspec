@@ -5,7 +5,7 @@
   <summary>AngularJs module for implicit token authentication with silent renewal</summary>
   <description>AngularJs module for implicit token authentication with silent renewal</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>AngularJS Auth IdentityServer Implicit Passive Authentication Authorization</tags>
   <templates>
     <template id="Intent.AngularJs.Auth.ImplicitAuth.AuthModule">

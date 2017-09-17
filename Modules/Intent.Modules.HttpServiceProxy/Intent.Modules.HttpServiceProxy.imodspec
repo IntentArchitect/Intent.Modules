@@ -5,7 +5,7 @@
     <summary>Http Service Proxies for described WebApi services.</summary>
     <description>Http Service Proxies for described WebApi services.</description>
     <authors>Intent Software</authors>
-    <projectUrl>http://intentsoftware.io</projectUrl>
+    <projectUrl>https://intentarchitect.com/</projectUrl>
     <tags>Http Proxy Service WebApi</tags>
     <templates>
         <template id="Intent.HttpServiceProxy.Exception">

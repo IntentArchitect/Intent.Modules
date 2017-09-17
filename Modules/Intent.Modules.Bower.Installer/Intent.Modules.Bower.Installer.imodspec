@@ -5,7 +5,7 @@
   <summary>Installs Bower dependencies specified in the bower.config file.</summary>
   <description>Installs Bower dependencies specified in the bower.config file.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Bower Automatic Installer</tags>
   <templates />
   <decorators />

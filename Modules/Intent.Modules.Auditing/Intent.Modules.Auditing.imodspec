@@ -5,7 +5,7 @@
   <summary>Auditing infrastructure using EntityFramework change tracking to event out changes to the data.</summary>
   <description>Auditing infrastructure using EntityFramework change tracking to event out changes to the data.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Auditing EntityFramework</tags>
   <templates>
     <template id="Intent.Auditing.HttpRequestMessageExtensions">

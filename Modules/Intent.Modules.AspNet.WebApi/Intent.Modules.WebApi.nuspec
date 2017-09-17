@@ -7,7 +7,7 @@
     <authors>Intent Architect</authors>
     <owners>Intent Architect</owners>
     <!--<licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>-->
-    <projectUrl>https://intentarchitect.com</projectUrl>
+    <projectUrl>https://intentarchitect.com/</projectUrl>
     <iconUrl>https://intentarchitect.com/assets/images/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>ASP.NET WebApi 2.2 patterns for .NET 4.x</description>

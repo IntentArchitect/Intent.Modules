@@ -5,7 +5,7 @@
   <summary>NLog logging for messaging subscription infrastructure.</summary>
   <description>NLog logging for messaging subscription infrastructure.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>NLog Logging Messaging Eventing Message Broker</tags>
   <templates>
   </templates>

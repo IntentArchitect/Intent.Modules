@@ -71,7 +71,7 @@
     <Compile Include="Templates\Proxy\TypescriptWebApiClientServiceProxyTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.AngularJs.ServiceAgent.imodspec1" />
+    <None Include="Intent.Modules.AngularJs.ServiceAgent.imodspec" />
     <None Include="packages.config" />
     <None Include="Templates\Proxy\TypescriptWebApiClientServiceProxyTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

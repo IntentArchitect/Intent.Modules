@@ -5,7 +5,7 @@
   <summary>Typescript service proxies for AngularJS</summary>
   <description>Typescript service proxies for AngularJS</description>
   <authors>Intent Software</authors>
-  <projectUrl>www.intentsoftware.io</projectUrl>
+  <projectUrl>www.intentarchitect.com</projectUrl>
   <tags>AngularJs Typescript Proxy ServiceAgent</tags>
   <templates>
     <template id="Intent.Typescript.ServiceAgent.AngularJs.Proxy.Local">

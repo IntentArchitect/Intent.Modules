@@ -5,7 +5,7 @@
   <summary>Installs NuGet dependencies on demand for the template / decorator components being installed for the application.</summary>
   <description>Installs NuGet dependencies on demand for the template / decorator components being installed for the application.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>NuGet Automatic Installer</tags>
   <templates />
   <decorators />

@@ -5,7 +5,7 @@
   <summary>Infastructure for Asp.Net SignalR</summary>
   <description>Infastructure for Asp.Net SignalR</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>AspNet SignalR</tags>
   <templates>
     <template id="Intent.AspNet.SignalR.IClientNotificationService">

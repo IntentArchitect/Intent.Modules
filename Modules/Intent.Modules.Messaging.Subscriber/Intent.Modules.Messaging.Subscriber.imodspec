@@ -5,7 +5,7 @@
   <summary>Messaging infrastructure to consume event and command messages.</summary>
   <description>Messaging infrastructure to consume event and command messages.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Messaging Eventing Event Command ESB Message Broker</tags>
   <templates>
     <template id="Intent.Messaging.Subscriber.Controller.Legacy">

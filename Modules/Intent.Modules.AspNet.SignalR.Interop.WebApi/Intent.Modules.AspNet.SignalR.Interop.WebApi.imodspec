@@ -5,7 +5,7 @@
   <summary>Interoperability between SignalR and WebApi service calls.</summary>
   <description>Interoperability between SignalR and WebApi service calls.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>AspNet WebApi SignalR Interoperability</tags>
   <decorators>
     <decorator id="Intent.AspNet.SignalR.Interop.WebApi.Legacy"/>

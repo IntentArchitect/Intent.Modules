@@ -5,7 +5,7 @@
   <summary>Entity Framework migrations setup with README file containing useful commands</summary>
   <description>Entity Framework migrations setup with README file containing useful commands</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>EntityFramework ORM Domain Repository Data Migrations</tags>
   <templates>
     <template id="Intent.EntityFramework.Migrations.DbMigrationsConfiguration">

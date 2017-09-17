@@ -5,7 +5,7 @@
   <summary>Shell layout for Angular JS using UI-Router</summary>
   <description>Shell layout for Angular JS using UI-Router</description>
   <authors>Intent Software</authors>
-  <projectUrl>www.intentsoftware.io</projectUrl>
+  <projectUrl>www.intentarchitect.com</projectUrl>
   <tags>AngularJs Shell Typescript</tags>
   <templates>
     <template id="Intent.AngularJs.Shell.AngularApp">

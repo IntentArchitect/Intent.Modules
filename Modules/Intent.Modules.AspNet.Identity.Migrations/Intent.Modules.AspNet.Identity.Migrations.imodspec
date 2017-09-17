@@ -5,7 +5,7 @@
   <summary>Entity Framework migrations setup for ASP.NET Identity with README file containing useful commands</summary>
   <description>Entity Framework migrations setup for ASP.NET Identity with README file containing useful commands</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>EntityFramework AspNet Identity ORM Domain Repository Data Migrations</tags>
   <templates>
     <template id="Intent.AspNet.Identity.Migrations.DbMigrationsConfiguration">

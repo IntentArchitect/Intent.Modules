@@ -5,7 +5,7 @@
   <summary>Fully functional authentication server using IdentityServer, and backed by Asp.Net Identity.</summary>
   <description>Fully functional authentication server using IdentityServer, and backed by Asp.Net Identity.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Authentication IdentityServer Token-based Security</tags>
   <templates>
     <template id="Intent.IdentityServer.AspNetIdentity.Model">

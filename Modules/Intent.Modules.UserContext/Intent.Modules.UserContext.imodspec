@@ -5,7 +5,7 @@
   <summary>User context for abstracting user information from security infrastructure.</summary>
   <description>User context for abstracting user information from security infrastructure.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>UserContext Security Principal Identity Domain</tags>
   <templates>
     <template id="Intent.UserContext.UserContextInterface">

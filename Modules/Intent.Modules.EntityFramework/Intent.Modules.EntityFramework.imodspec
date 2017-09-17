@@ -5,7 +5,7 @@
   <summary>Entity Framework mappings and repository pattern based on Domain meta-data.</summary>
   <description>Entity Framework mappings and repository pattern based on Domain meta-data.</description>
   <authors>Intent Software</authors>
-  <projectUrl>http://intentsoftware.io</projectUrl>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>EntityFramework ORM Domain Repository</tags>
   <templates>
     <template id="Intent.EntityFramework.DbContext">
