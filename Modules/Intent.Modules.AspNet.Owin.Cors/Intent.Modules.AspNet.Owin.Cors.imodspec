@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
-  <id>Intent.Owin.Cors</id>
+  <id>Intent.AspNet.Owin.Cors</id>
   <version>1.0.0</version>
   <summary>CORS plugin for OWIN</summary>
   <description>CORS for OWIN</description>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
-  <id>Intent.Owin.FileServer</id>
+  <id>Intent.AspNet.Owin.FileServer</id>
   <version>1.0.0</version>
   <summary>File hosting configuration for OWIN web servers</summary>
   <description>File hosting configuration for OWIN web servers</description>

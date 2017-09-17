@@ -20,7 +20,7 @@
   </decorators>
   <dependencies>
     <dependency id="Intent.Unity" version="1.0"/>
-    <dependency id="Intent.OutputManager.RoslynMerge" version="1.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

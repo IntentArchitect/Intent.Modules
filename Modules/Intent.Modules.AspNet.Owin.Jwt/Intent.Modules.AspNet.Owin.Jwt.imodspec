@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
-  <id>Intent.Owin.Jwt</id>
+  <id>Intent.AspNet.Owin.Jwt</id>
   <version>1.0.2</version>
   <summary>JWT Authentication plugin for OWIN</summary>
   <description>JWT Authentication plugin for OWIN</description>
