@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.Constants;
+﻿using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.EntityFramework.Templates.DbContext
+namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
     partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<Class>>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing
     {

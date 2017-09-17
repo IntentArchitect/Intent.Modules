@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.IdentityServer.Templates.SigningCertificate
+namespace Intent.Modules.IdentityServer.Templates.SigningCertificate
 {
     public partial class SigningCertificateTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

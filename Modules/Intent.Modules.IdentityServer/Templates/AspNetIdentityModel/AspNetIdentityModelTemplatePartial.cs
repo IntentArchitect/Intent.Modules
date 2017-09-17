@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.Constants;
+﻿using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.IdentityServer.Templates.AspNetIdentityModel
+namespace Intent.Modules.IdentityServer.Templates.AspNetIdentityModel
 {
     // TODO: Break this template out into the various entities in the Identity Model
     public partial class AspNetIdentityModelTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing

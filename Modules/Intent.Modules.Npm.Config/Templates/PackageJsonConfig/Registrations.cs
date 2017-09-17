@@ -1,9 +1,9 @@
-﻿using System.ComponentModel;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
+using System.ComponentModel;
 
-namespace Intent.Packages.Npm.Config.Templates.PackageJsonConfig
+namespace Intent.Modules.Npm.Config.Templates.PackageJsonConfig
 {
     [Description("Intent npm package.json")]
     public class Registrations : NoModelTemplateRegistrationBase

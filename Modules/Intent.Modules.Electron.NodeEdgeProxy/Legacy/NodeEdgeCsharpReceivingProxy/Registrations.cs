@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Intent.SoftwareFactory;
+﻿using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
-namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingProxy
+namespace Intent.Modules.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingProxy
 {
     [Description("Intent.Packages.Electron.NodeEdgeProxy - CSharp Receiving Proxies (Legacy)")]
     public class Registrations : ModelTemplateRegistrationBase<ServiceModel>

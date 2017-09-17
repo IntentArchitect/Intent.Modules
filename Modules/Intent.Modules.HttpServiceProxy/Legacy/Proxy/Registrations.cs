@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using Intent.SoftwareFactory;
+﻿using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Registrations;
+using System.Linq;
 
-namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
+namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
 {
     public class Registrations : OldProjectTemplateRegistration
     {

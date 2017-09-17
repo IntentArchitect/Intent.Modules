@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using Intent.Packages.AspNet.SignalR.Templates.ClientNotificationService;
-using Intent.Packages.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
+using Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService;
+using Intent.Modules.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.AspNet.SignalR.Interop.Messaging.Subscriber.Decorators
+namespace Intent.Modules.AspNet.SignalR.Interop.Messaging.Subscriber.Decorators
 {
     public class SignalrWebApiEventConsumerDistributionDecorator : IEventConsumerDecorator, IHasTemplateDependencies
     {

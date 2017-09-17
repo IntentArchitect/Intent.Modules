@@ -1,6 +1,6 @@
 ﻿using Intent.SoftwareFactory.MetaModels.Class;
 
-namespace Intent.Packages.Application.Contracts.Legacy.DTO
+namespace Intent.Modules.Application.Contracts.Legacy.DTO
 {
     partial class GenericClassTemplate 
     {

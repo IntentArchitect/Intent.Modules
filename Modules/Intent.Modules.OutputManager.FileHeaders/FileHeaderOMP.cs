@@ -1,15 +1,12 @@
 ﻿using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Helpers;
 using Intent.SoftwareFactory.Plugins;
 using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Intent.Packages.OutputManager.FileHeaders
+namespace Intent.Modules.OutputManager.FileHeaders
 {
     public class FileHeaderOMP : OutputTransformerBase
     {

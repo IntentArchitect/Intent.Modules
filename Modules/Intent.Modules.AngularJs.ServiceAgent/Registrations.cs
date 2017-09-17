@@ -1,14 +1,14 @@
-﻿using System.Linq;
-using Intent.MetaModel.Dto.Old;
+﻿using Intent.MetaModel.Dto.Old;
 using Intent.MetaModel.Hosting;
-using Intent.Packages.AngularJs.ServiceAgent.Templates.DTO;
-using Intent.Packages.AngularJs.ServiceAgent.Templates.Proxy;
+using Intent.Modules.AngularJs.ServiceAgent.Templates.DTO;
+using Intent.Modules.AngularJs.ServiceAgent.Templates.Proxy;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Registrations;
+using System.Linq;
 
-namespace Intent.Packages.AngularJs.ServiceAgent
+namespace Intent.Modules.AngularJs.ServiceAgent
 {
     public class Registrations : OldProjectTemplateRegistration
     {

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Intent.Packages.Application.Contracts.Legacy.DTO;
+﻿using Intent.Modules.Application.Contracts.Legacy.DTO;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceCallHandler
+namespace Intent.Modules.Application.ServiceCallHandlers.Legacy.ServiceCallHandler
 {
     partial class ServiceCallHandlerImplementationTemplate : IntentRoslynProjectItemTemplateBase<ServiceOperationModel>, ITemplate, IHasTemplateDependencies
     {

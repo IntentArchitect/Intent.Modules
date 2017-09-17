@@ -1,6 +1,6 @@
 ﻿using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
+namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
 {
     public interface IAngularImplicitAuthModuleDecorator : ITemplateDecorator
     {

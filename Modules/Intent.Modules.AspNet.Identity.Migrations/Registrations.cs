@@ -1,11 +1,9 @@
-﻿using System.Linq;
-using Intent.Packages.AspNet.Identity.Migrations.Templates.DbMigrationsConfiguration;
-using Intent.Packages.AspNet.Identity.Migrations.Templates.ReadMe;
-using Intent.SoftwareFactory;
+﻿using Intent.Modules.AspNet.Identity.Migrations.Templates.DbMigrationsConfiguration;
+using Intent.Modules.AspNet.Identity.Migrations.Templates.ReadMe;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.EntityFramework
+namespace Intent.Modules.AspNet.Identity.Migrations
 {
     public class Registrations : OldProjectTemplateRegistration
     {

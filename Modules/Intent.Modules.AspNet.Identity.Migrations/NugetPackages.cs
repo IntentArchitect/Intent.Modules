@@ -1,7 +1,6 @@
-﻿using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
+﻿using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.AspNetIdentity.Migrations
+namespace Intent.Modules.AspNet.Identity.Migrations
 {
     public class NugetPackages
     {

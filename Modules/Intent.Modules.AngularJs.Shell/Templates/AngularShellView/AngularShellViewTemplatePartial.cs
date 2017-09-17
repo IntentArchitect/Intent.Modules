@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.AngularJs.Shell.Templates.AngularShellView
+namespace Intent.Modules.AngularJs.Shell.Templates.AngularShellView
 {
     partial class AngularShellViewTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasBowerDependencies
     {

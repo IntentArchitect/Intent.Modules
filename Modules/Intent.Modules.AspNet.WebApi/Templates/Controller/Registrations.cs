@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Intent.MetaModel.Service;
+﻿using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
-namespace Intent.Modules.WebApi.Templates.Controller
+namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
     [Description("Intent Distribution - WebApi")]
     public class Registrations : ModelTemplateRegistrationBase<IServiceModel>

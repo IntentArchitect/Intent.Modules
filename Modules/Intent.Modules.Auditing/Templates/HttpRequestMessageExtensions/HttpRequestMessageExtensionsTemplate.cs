@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Auditing.Templates.HttpRequestMessageExtensions
+namespace Intent.Modules.Auditing.Templates.HttpRequestMessageExtensions
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.Auditing.Templates.HttpRequestMessageExtensions
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Auditing\Templates\HttpRequestMessageExtensions\HttpRequestMessageExtensionsTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Auditing\Templates\HttpRequestMessageExtensions\HttpRequestMessageExtensionsTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class HttpRequestMessageExtensionsTemplate : IntentRoslynProjectItemTemplateBase
     {
@@ -33,14 +33,14 @@ namespace Intent.Packages.Auditing.Templates.HttpRequestMessageExtensions
         {
             this.Write(" \r\nusing System.Net.Http;\r\n");
             
-            #line 14 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Auditing\Templates\HttpRequestMessageExtensions\HttpRequestMessageExtensionsTemplate.tt"
+            #line 14 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Auditing\Templates\HttpRequestMessageExtensions\HttpRequestMessageExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly:DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 18 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Auditing\Templates\HttpRequestMessageExtensions\HttpRequestMessageExtensionsTemplate.tt"
+            #line 18 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Auditing\Templates\HttpRequestMessageExtensions\HttpRequestMessageExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -55,7 +55,7 @@ namespace Intent.Packages.Auditing.Templates.HttpRequestMessageExtensions
 
 ");
             
-            #line 26 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Auditing\Templates\HttpRequestMessageExtensions\HttpRequestMessageExtensionsTemplate.tt"
+            #line 26 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Auditing\Templates\HttpRequestMessageExtensions\HttpRequestMessageExtensionsTemplate.tt"
 
     // See: http://www.strathweb.com/2013/05/retrieving-the-clients-ip-address-in-asp-net-web-api/
     // dynamic keyword is used as it avoids us having to set up usings and references to System.ServiceModel.dll for WebApi projects,

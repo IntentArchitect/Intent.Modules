@@ -1,18 +1,18 @@
-﻿using System.Linq;
-using Intent.MetaModel.UMLModel;
-using Intent.Packages.RichDomain.Decorators;
-using Intent.Packages.RichDomain.Templates.EntityBehaviour;
-using Intent.Packages.RichDomain.Templates.EntityBehaviourBase;
-using Intent.Packages.RichDomain.Templates.EntitySpecification;
-using Intent.Packages.RichDomain.Templates.EntityState;
-using Intent.Packages.RichDomain.Templates.EntityStateInterface;
-using Intent.Packages.RichDomain.Templates.Enum;
+﻿using Intent.MetaModel.UMLModel;
+using Intent.Modules.RichDomain.Decorators;
+using Intent.Modules.RichDomain.Templates.EntityBehaviour;
+using Intent.Modules.RichDomain.Templates.EntityBehaviourBase;
+using Intent.Modules.RichDomain.Templates.EntitySpecification;
+using Intent.Modules.RichDomain.Templates.EntityState;
+using Intent.Modules.RichDomain.Templates.EntityStateInterface;
+using Intent.Modules.RichDomain.Templates.Enum;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Registrations;
+using System.Linq;
 
-namespace Intent.Packages.RichDomain
+namespace Intent.Modules.RichDomain
 {
     public class Registrations : OldProjectTemplateRegistration
     {

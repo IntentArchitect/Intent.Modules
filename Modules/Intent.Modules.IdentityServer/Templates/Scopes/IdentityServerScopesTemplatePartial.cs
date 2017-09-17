@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.IdentityServer.Templates.Scopes
+namespace Intent.Modules.IdentityServer.Templates.Scopes
 {
     public partial class IdentityServerScopesTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

@@ -1,9 +1,9 @@
-﻿using Intent.SoftwareFactory.NuGet.NugetIntegration;
+﻿using Intent.Modules.NuGet.Installer.NugetIntegration;
 using System;
 using IPackage = NuGet.IPackage;
 using IVersionSpec = NuGet.IVersionSpec;
 
-namespace Intent.SoftwareFactory.NuGet.Managers
+namespace Intent.Modules.NuGet.Installer.Managers
 {
     public class Referer
     {

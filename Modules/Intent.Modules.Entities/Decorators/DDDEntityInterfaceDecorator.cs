@@ -1,13 +1,8 @@
 ﻿using Intent.MetaModel.Domain;
-using Intent.Packages.Entities.Templates;
-using Intent.Packages.Entities.Templates.DomainEntityInterface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Intent.Modules.Entities.Templates;
+using Intent.Modules.Entities.Templates.DomainEntityInterface;
 
-namespace Intent.Packages.Entities.Decorators
+namespace Intent.Modules.Entities.Decorators
 {
     public class DDDEntityInterfaceDecorator : AbstractDomainEntityInterfaceDecorator
     {

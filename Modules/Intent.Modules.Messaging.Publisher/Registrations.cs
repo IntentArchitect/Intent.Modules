@@ -1,17 +1,17 @@
-﻿using System.Linq;
-using Intent.Packages.Messaging.Publisher.Decorators.Legacy;
-using Intent.Packages.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
-using Intent.Packages.Unity.Templates.UnityConfig;
-using Intent.Modules.WebApi.Legacy.Controller;
-using Intent.Modules.WebApi.Templates.Controller;
+﻿using Intent.Modules.AspNet.WebApi.Legacy.Controller;
+using Intent.Modules.AspNet.WebApi.Templates.Controller;
+using Intent.Modules.Messaging.Publisher.Decorators.Legacy;
+using Intent.Modules.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
+using Intent.Modules.Unity.Templates.UnityConfig;
+using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.VSProjects.Decorators;
-using IntentEsbPublishingDistributionDecorator = Intent.Packages.Messaging.Publisher.Decorators.IntentEsbPublishingDistributionDecorator;
+using System.Linq;
+using IntentEsbPublishingDistributionDecorator = Intent.Modules.Messaging.Publisher.Decorators.IntentEsbPublishingDistributionDecorator;
 
-namespace Intent.Packages.Messaging.Publisher
+namespace Intent.Modules.Messaging.Publisher
 {
     public class Registrations : OldProjectTemplateRegistration
     {

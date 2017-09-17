@@ -1,7 +1,6 @@
-﻿using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
+﻿using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.HttpServiceProxy
+namespace Intent.Modules.HttpServiceProxy
 {
     public class NugetPackages
     {

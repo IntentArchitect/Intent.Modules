@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Modules.WebApi.Templates.WebApiBadHttpRequestException
+namespace Intent.Modules.AspNet.WebApi.Templates.WebApiBadHttpRequestException
 {
     partial class WebApiBadHttpRequestExceptionTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

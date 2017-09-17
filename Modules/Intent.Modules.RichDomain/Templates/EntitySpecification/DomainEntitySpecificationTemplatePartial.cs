@@ -2,7 +2,7 @@
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.RichDomain.Templates.EntitySpecification
+namespace Intent.Modules.RichDomain.Templates.EntitySpecification
 {
     partial class DomainEntitySpecificationTemplate : IntentRoslynProjectItemTemplateBase<Class>, ITemplate
     {

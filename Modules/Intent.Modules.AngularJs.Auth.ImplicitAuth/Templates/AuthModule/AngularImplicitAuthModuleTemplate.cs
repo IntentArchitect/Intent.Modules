@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
+namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class AngularImplicitAuthModuleTemplate : IntentProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
 
 
 
@@ -48,14 +48,14 @@ namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
                 authority: config[""identity_authority_url""],
                 client_id: """);
             
-            #line 22 "C:\Dev\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
+            #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ApplicationName));
             
             #line default
             #line hidden
             this.Write("\",\r\n                redirect_uri: config[\"");
             
-            #line 23 "C:\Dev\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BasePathConfigKey));
             
             #line default
@@ -68,7 +68,7 @@ namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
                 silent_renew: true,
                 silent_redirect_uri: config[""");
             
-            #line 29 "C:\Dev\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
+            #line 29 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BasePathConfigKey));
             
             #line default
@@ -96,7 +96,7 @@ namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
                     "                      location.href = location.origin;\r\n                        " +
                     "}\r\n                    }");
             
-            #line 57 "C:\Dev\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
+            #line 57 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\AuthModule\AngularImplicitAuthModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AdditionalIfElses()));
             
             #line default

@@ -1,17 +1,14 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Intent.MetaModel.DTO;
-using Intent.MetaModel.Service;
-using Intent.Packages.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
+﻿using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
-namespace Intent.Packages.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
+namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
     [Description("Intent Typescript ServiceAgent Proxy - Other Servers")]
     public class RemoteRegistrations : ModelTemplateRegistrationBase<ServiceModel>

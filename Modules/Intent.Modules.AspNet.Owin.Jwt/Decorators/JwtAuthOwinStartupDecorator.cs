@@ -1,12 +1,11 @@
-using System.Collections.Generic;
-using Intent.Packages.Constants;
-using Intent.Packages.Owin.Templates.OwinStartup;
-using Intent.SoftwareFactory.Engine;
+using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Owin.Jwt.Decorators
+namespace Intent.Modules.AspNet.Owin.Jwt.Decorators
 {
     public class JwtAuthOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IHasAssemblyDependencies, IRequiresPreProcessing
     {

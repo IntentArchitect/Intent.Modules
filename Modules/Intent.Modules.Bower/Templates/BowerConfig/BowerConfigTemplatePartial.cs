@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using SearchOption = Intent.SoftwareFactory.Engine.SearchOption;
 
-namespace Intent.Packages.Bower.Templates.BowerConfig
+namespace Intent.Modules.Bower.Templates.BowerConfig
 {
     public class BowerConfigTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

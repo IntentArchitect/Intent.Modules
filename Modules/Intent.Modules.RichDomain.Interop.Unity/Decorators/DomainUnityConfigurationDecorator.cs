@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using Intent.Packages.Unity;
-using Intent.Packages.Unity.Templates.UnityConfig;
-using Intent.SoftwareFactory.Templates;
+﻿using Intent.Modules.Unity;
+using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.RichDomain.Interop.Unity.Decorators
+namespace Intent.Modules.RichDomain.Interop.Unity.Decorators
 {
     public class DomainUnityConfigurationDecorator : IUnityRegistrationsDecorator, IHasNugetDependencies
     {

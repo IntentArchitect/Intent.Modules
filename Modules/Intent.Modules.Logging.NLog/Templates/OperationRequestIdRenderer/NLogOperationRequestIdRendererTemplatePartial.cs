@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Package.Logging.NLog;
-using Intent.Packages.Logging.NLog.Templates.OperationRequestId;
+﻿using Intent.Modules.Logging.NLog.Templates.OperationRequestId;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Logging.NLog.Templates.OperationRequestIdRenderer
+namespace Intent.Modules.Logging.NLog.Templates.OperationRequestIdRenderer
 {
     partial class NLogOperationRequestIdRendererTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasTemplateDependencies
     {

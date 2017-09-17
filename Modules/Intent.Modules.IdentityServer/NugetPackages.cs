@@ -1,7 +1,6 @@
-﻿using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
+﻿using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.IdentityServer
+namespace Intent.Modules.IdentityServer
 {
     public class NugetPackages
     {

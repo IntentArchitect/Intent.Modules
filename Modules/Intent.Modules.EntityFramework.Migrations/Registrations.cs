@@ -1,16 +1,9 @@
-﻿using System.Linq;
-using Intent.Packages.EntityFramework.Migrations.Templates.DbMigrationsConfiguration;
-using Intent.Packages.EntityFramework.Migrations.Templates.ReadMe;
-using Intent.Packages.EntityFramework.Templates.DbContext;
-using Intent.Packages.EntityFramework.Templates.DeleteVisitor;
-using Intent.Packages.EntityFramework.Templates.EFMapping;
-using Intent.Packages.EntityFramework.Templates.Repository;
-using Intent.Packages.EntityFramework.Templates.RepositoryContract;
-using Intent.SoftwareFactory;
+﻿using Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfiguration;
+using Intent.Modules.EntityFramework.Migrations.Templates.ReadMe;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.EntityFramework
+namespace Intent.Modules.EntityFramework.Migrations
 {
     public class Registrations : OldProjectTemplateRegistration
     {

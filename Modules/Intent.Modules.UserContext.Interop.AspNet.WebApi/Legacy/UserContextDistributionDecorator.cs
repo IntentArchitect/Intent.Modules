@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Intent.Modules.WebApi.Legacy;
-using Intent.Packages.UserContext.Templates.UserContextInterface;
+﻿using Intent.Modules.AspNet.WebApi.Legacy;
+using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.UserContext.Interop.WebApi.Legacy
+namespace Intent.Modules.UserContext.Interop.AspNet.WebApi.Legacy
 {
     public class UserContextDistributionDecorator : BaseDistributionDecorator, IHasTemplateDependencies
     {

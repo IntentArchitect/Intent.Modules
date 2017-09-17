@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Owin.Templates.OwinStartup
+namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 {
     public static class NugetPackage
     {

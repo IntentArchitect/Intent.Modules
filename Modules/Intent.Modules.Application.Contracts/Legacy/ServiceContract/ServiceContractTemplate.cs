@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Application.Contracts.Legacy.ServiceContract
+namespace Intent.Modules.Application.Contracts.Legacy.ServiceContract
 {
     using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.SoftwareFactory.MetaModels.Service;
@@ -23,7 +23,7 @@ namespace Intent.Packages.Application.Contracts.Legacy.ServiceContract
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class ServiceContractTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<ServiceModel>
     {
@@ -36,7 +36,7 @@ namespace Intent.Packages.Application.Contracts.Legacy.ServiceContract
             this.Write(" \r\n");
             this.Write(" \r\n");
             
-            #line 16 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
+            #line 16 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
 
 
             
@@ -44,7 +44,7 @@ namespace Intent.Packages.Application.Contracts.Legacy.ServiceContract
             #line hidden
             this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\n");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -52,21 +52,21 @@ namespace Intent.Packages.Application.Contracts.Legacy.ServiceContract
             this.Write("\r\nusing Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\n[assem" +
                     "bly:DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
+            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 30 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
+            #line 30 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : IDisposable\r\n    {\r\n");
             
-            #line 32 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
+            #line 32 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
 
     foreach (var o in Model.Operations)
     {
@@ -76,28 +76,28 @@ namespace Intent.Packages.Application.Contracts.Legacy.ServiceContract
             #line hidden
             this.Write("        ");
             
-            #line 35 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
+            #line 35 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.ReturnType.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 35 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
+            #line 35 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 35 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
+            #line 35 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
  GetMethodDefinitionParameters(o); 
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 36 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
+            #line 36 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\ServiceContractTemplate.tt"
         
     }
 
@@ -123,7 +123,7 @@ namespace Intent.Packages.Application.Contracts.Legacy.ServiceContract
             }
         }
         
-        #line 2 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 2 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 
 void GetMethodDefinitionParameters(ServiceOperationModel o) 
 {
@@ -147,14 +147,14 @@ void GetMethodDefinitionParameters(List<ParameterModel> parameters, bool withLea
         #line default
         #line hidden
         
-        #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 this.Write(", ");
 
         
         #line default
         #line hidden
         
-        #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 
         } 
 	
@@ -162,28 +162,28 @@ this.Write(", ");
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Type.FullName));
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 
 	}	
 }
@@ -193,7 +193,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
         #line default
         #line hidden
         
-        #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 
 
 void GetMethodCallParameters(ServiceOperationModel o) 
@@ -218,14 +218,14 @@ void GetMethodCallParameters(List<ParameterModel> parameters, bool withLeadingCo
         #line default
         #line hidden
         
-        #line 47 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 47 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 this.Write(", ");
 
         
         #line default
         #line hidden
         
-        #line 47 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 47 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 
         } 
 	
@@ -233,14 +233,14 @@ this.Write(", ");
         #line default
         #line hidden
         
-        #line 49 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 49 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
 
         
         #line default
         #line hidden
         
-        #line 49 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 49 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 
 	}
 
@@ -260,14 +260,14 @@ void GetMethodCallParameters(ServiceOperationModel o, bool withLeadingComma, str
         #line default
         #line hidden
         
-        #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 this.Write(", ");
 
         
         #line default
         #line hidden
         
-        #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 
         } 
 
@@ -275,14 +275,14 @@ this.Write(", ");
         #line default
         #line hidden
         
-        #line 65 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(prefix + p.Name));
 
         
         #line default
         #line hidden
         
-        #line 65 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
+        #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\ServiceContract\./../Services.ttinclude"
 
 	}
 }

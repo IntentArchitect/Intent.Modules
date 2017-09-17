@@ -1,6 +1,6 @@
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.AngularJs.Shell
+namespace Intent.Modules.AngularJs.Shell
 {
     public static class BowerPackages
     {

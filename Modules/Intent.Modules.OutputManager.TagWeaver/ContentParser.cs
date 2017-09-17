@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Intent.SoftwareFactory;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace Intent.SoftwareFactory.Plugins.TagWeaving
+namespace Intent.Modules.OutputManager.TagWeaver
 {
     public class ContentParser
     {

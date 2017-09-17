@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.SoftwareFactory.VSProjects.Templates.AssemblyInfo
+namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
 {
     using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.SoftwareFactory.Templates;
@@ -22,7 +22,7 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.AssemblyInfo
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\AssemblyInfo\AssemblyInfoTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\AssemblyInfo\AssemblyInfoTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class AssemblyInfoTemplate : IntentProjectItemTemplateBase<object>
     {
@@ -44,7 +44,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle(""");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\AssemblyInfo\AssemblyInfoTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\AssemblyInfo\AssemblyInfoTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Project.Name));
             
             #line default
@@ -52,7 +52,7 @@ using System.Runtime.InteropServices;
             this.Write("\")]\r\n[assembly: AssemblyDescription(\"\")]\r\n[assembly: AssemblyConfiguration(\"\")]\r\n" +
                     "[assembly: AssemblyCompany(\"\")]\r\n[assembly: AssemblyProduct(\"");
             
-            #line 25 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\AssemblyInfo\AssemblyInfoTemplate.tt"
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\AssemblyInfo\AssemblyInfoTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Project.Name));
             
             #line default
@@ -70,7 +70,7 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid(""");
             
-            #line 36 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\AssemblyInfo\AssemblyInfoTemplate.tt"
+            #line 36 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\AssemblyInfo\AssemblyInfoTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Guid.NewGuid()));
             
             #line default

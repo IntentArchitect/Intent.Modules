@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.SoftwareFactory.VSProjects.Templates.ConsoleApp
+namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.ConsoleApp
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class ConsoleAppTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -34,7 +34,7 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.ConsoleApp
             this.Write(" \r\n");
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
 
 
 
@@ -44,14 +44,14 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.ConsoleApp
             #line hidden
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing Intent.CodeGen;\r\n");
             
-            #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
+            #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly:DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 24 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

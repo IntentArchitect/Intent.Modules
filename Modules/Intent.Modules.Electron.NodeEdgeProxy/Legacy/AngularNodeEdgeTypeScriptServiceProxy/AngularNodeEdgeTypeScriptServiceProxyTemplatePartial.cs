@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using Intent.Packages.Constants;
-using Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingProxy;
+using Intent.Modules.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingProxy;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.AngularNodeEdgeTypeScriptServiceProxy
+namespace Intent.Modules.Electron.NodeEdgeProxy.Legacy.AngularNodeEdgeTypeScriptServiceProxy
 {
     partial class AngularNodeEdgeTypeScriptServiceProxyTemplate : IntentProjectItemTemplateBase<ServiceModel>, ITemplate, IRequiresPreProcessing
     {

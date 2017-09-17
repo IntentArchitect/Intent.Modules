@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
-using Intent.Packages.Constants;
+using System;
+using System.Collections.Generic;
 
-namespace Intent.SoftwareFactory.Plugins.TagWeaving
+namespace Intent.Modules.OutputManager.TagWeaver
 {
     public class FileWeaver
     {

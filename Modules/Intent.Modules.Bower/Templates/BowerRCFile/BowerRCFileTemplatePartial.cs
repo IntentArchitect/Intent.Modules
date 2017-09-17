@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.Bower.Templates.BowerRCFile
+namespace Intent.Modules.Bower.Templates.BowerRCFile
 {
     partial class BowerRCFileTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

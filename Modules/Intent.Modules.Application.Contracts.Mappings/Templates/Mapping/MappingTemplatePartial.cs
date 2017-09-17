@@ -1,19 +1,15 @@
 ﻿using Intent.MetaModel.DTO;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
-using System;
+using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.MetaModel;
-using Intent.Packages.Constants;
-using Intent.SoftwareFactory.MetaData;
-using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Application.Contracts.Mappings.Templates.Mapping
+namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
     partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<DTOModel>, ITemplate, IRequiresPreProcessing, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation
     {

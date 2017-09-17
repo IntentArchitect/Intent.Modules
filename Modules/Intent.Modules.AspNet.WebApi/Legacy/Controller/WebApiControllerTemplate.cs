@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.WebApi.Legacy.Controller
+namespace Intent.Modules.AspNet.WebApi.Legacy.Controller
 {
     using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.SoftwareFactory.MetaModels.Service;
@@ -23,7 +23,7 @@ namespace Intent.Modules.WebApi.Legacy.Controller
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>
     {
@@ -36,7 +36,7 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             this.Write(" \r\n");
             this.Write(" \r\n");
             
-            #line 16 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 16 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 
 
             
@@ -45,7 +45,7 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             this.Write("\r\nusing System;\r\nusing System.Linq;\r\nusing System.Collections.Generic;\r\nusing Sys" +
                     "tem.Transactions;\r\nusing System.Web;\r\nusing System.Web.Http;\r\n");
             
-            #line 25 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
  
     if (Model.Operations.Any(x => x.UsesRawSignature))
     {
@@ -55,7 +55,7 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("using System.IO;\r\nusing System.Net;\r\nusing System.Net.Http;\r\n");
             
-            #line 32 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 32 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
  
     }
 
@@ -63,7 +63,7 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line default
             #line hidden
             
-            #line 35 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 35 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -71,56 +71,56 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             this.Write("\r\nusing Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamesp" +
                     "ace ");
             
-            #line 40 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 40 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write(".Controllers\r\n{\r\n    [Authorize]\r\n    [RoutePrefix(\"api/");
             
-            #line 43 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 43 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.Replace("Service", "").ToLower()));
             
             #line default
             #line hidden
             this.Write("\")]\r\n    public class ");
             
-            #line 44 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("Controller : ApiController\r\n    {\r\n        private readonly I");
             
-            #line 46 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 46 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write(" _appService;");
             
-            #line 46 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 46 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DeclarePrivateVariables()));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n        public ");
             
-            #line 48 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 48 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("Controller (I");
             
-            #line 48 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 48 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write(" appService");
             
-            #line 48 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 48 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConstructorParams()));
             
             #line default
@@ -129,14 +129,14 @@ namespace Intent.Modules.WebApi.Legacy.Controller
                     "throw new ArgumentNullException(\"appService\");\r\n            _appService = appSer" +
                     "vice;");
             
-            #line 53 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 53 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConstructorInit()));
             
             #line default
             #line hidden
             this.Write("\r\n        } \r\n    \r\n");
             
-            #line 56 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 56 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
     foreach (var operation in Model.Operations)
     {
         //Transactions
@@ -150,13 +150,13 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line default
             #line hidden
             
-            #line 64 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 64 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodReturnType(operation)));
             
             #line default
             #line hidden
             
-            #line 64 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 64 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 ;
         Action adaptServiceResult = () => 
             
@@ -164,7 +164,7 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("appServiceResult");
             
-            #line 65 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 ;
         Action additionalParameters = () => {};
 
@@ -176,14 +176,14 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("        public class ");
             
-            #line 71 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 71 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("Payload\r\n        {\r\n");
             
-            #line 73 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 73 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 
             foreach (var parameter in operation.Parameters)
             {
@@ -195,14 +195,14 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("            ");
             
-            #line 79 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 79 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(decorator));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 80 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 80 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 
                 }
 
@@ -211,21 +211,21 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("            public ");
             
-            #line 83 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 83 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Type.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 83 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 83 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 84 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 84 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 
             }
 
@@ -234,7 +234,7 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("        }\r\n\r\n");
             
-            #line 89 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 89 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
         
         }
 
@@ -245,7 +245,7 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("        [AllowAnonymous]\r\n");
             
-            #line 95 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 95 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
         }
 
             
@@ -253,14 +253,14 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("        [AcceptVerbs(\"POST\")]\r\n        [Route(\"");
             
-            #line 98 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 98 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write("\")]\r\n");
             
-            #line 99 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 99 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
         
         if (operation.Security.RequiredRoles.Any()) {
 
@@ -269,14 +269,14 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("        [Authorize(Roles = \"");
             
-            #line 102 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 102 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Security.RequiredRoles.First()));
             
             #line default
             #line hidden
             this.Write("\")]\r\n");
             
-            #line 103 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 103 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
         }
 
         var methodDefinitionParameters = operation.UsesRawSignature
@@ -288,35 +288,35 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("        public ");
             
-            #line 109 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 109 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
  getReturnType(); 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 109 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 109 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 109 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 109 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(methodDefinitionParameters));
             
             #line default
             #line hidden
             this.Write(")\r\n        {");
             
-            #line 110 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 110 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BeginOperation(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n");
             
-            #line 112 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 112 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
         if (operation.HasReturnType())
         {
 
@@ -325,21 +325,21 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("            ");
             
-            #line 114 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 114 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
  getReturnType(); 
             
             #line default
             #line hidden
             this.Write(" result = default(");
             
-            #line 114 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 114 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
  getReturnType(); 
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 115 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 115 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
       }
             
             #line default
@@ -347,14 +347,14 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             this.Write("            TransactionOptions tso = new TransactionOptions();\r\n            tso.I" +
                     "solationLevel = IsolationLevel.");
             
-            #line 117 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 117 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(isolationLevel));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 118 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 118 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 	if (operation.TransactionOptions.TimeoutInSeconds != null)
     { 
             
@@ -362,21 +362,21 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("\t\t\ttso.Timeout = TimeSpan.FromSeconds(");
             
-            #line 120 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 120 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.TransactionOptions.TimeoutInSeconds));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 121 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 121 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 	} 
             
             #line default
             #line hidden
             this.Write("\r\n            try\r\n            {");
             
-            #line 124 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 124 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BeforeTransaction(operation)));
             
             #line default
@@ -384,14 +384,14 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             this.Write("\r\n                using (TransactionScope ts = new TransactionScope(TransactionSc" +
                     "opeOption.Required, tso))\r\n                {");
             
-            #line 126 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 126 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BeforeCallToAppLayer(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 127 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 127 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 
         if (operation.HasReturnType())
         {
@@ -401,21 +401,21 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("                    var appServiceResult = _appService.");
             
-            #line 130 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 130 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 130 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 130 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
  getMethodCallParameters(); 
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 131 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 131 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 
             if (ReturnsHttpResponseMessage(operation))
             {
@@ -426,14 +426,14 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             this.Write("                    result = Request.CreateResponse(HttpStatusCode.OK);\r\n        " +
                     "            result.Content = ");
             
-            #line 136 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 136 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetHttpResponseMessageContent(operation)));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 137 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 137 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 
             }
             else
@@ -444,14 +444,14 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("                    result = ");
             
-            #line 142 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 142 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
  adaptServiceResult(); 
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 143 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 143 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
 
             }
         }
@@ -463,49 +463,49 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("                        _appService.");
             
-            #line 148 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 148 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 148 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 148 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
  getMethodCallParameters(); 
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 149 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 149 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
         }
 
             
             #line default
             #line hidden
             
-            #line 150 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 150 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AfterCallToAppLayer(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n                    ts.Complete();\r\n                }");
             
-            #line 152 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 152 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AfterTransaction(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n            }\r\n            catch (Exception e) \r\n            {");
             
-            #line 155 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 155 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(OnExceptionCaught(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n            }\r\n\r\n");
             
-            #line 158 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 158 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
         if (operation.HasReturnType())
         {
 
@@ -514,14 +514,14 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             #line hidden
             this.Write("            return result;\r\n");
             
-            #line 161 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 161 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
       }
             
             #line default
             #line hidden
             this.Write("\r\n        }\r\n\r\n");
             
-            #line 165 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 165 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
     }
 
         // Source code of base class: http://aspnetwebstack.codeplex.com/SourceControl/latest#src/System.Web.Http/ApiController.cs
@@ -534,7 +534,7 @@ namespace Intent.Modules.WebApi.Legacy.Controller
                     "ase.Dispose(disposing);\r\n\r\n            //dispose all resources\r\n            _app" +
                     "Service.Dispose();\r\n        }\r\n");
             
-            #line 177 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
+            #line 177 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassMethods()));
             
             #line default
@@ -558,7 +558,7 @@ namespace Intent.Modules.WebApi.Legacy.Controller
             }
         }
         
-        #line 2 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 2 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 
 void GetMethodDefinitionParameters(ServiceOperationModel o) 
 {
@@ -582,14 +582,14 @@ void GetMethodDefinitionParameters(List<ParameterModel> parameters, bool withLea
         #line default
         #line hidden
         
-        #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 this.Write(", ");
 
         
         #line default
         #line hidden
         
-        #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 
         } 
 	
@@ -597,28 +597,28 @@ this.Write(", ");
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Type.FullName));
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 
 	}	
 }
@@ -628,7 +628,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
         #line default
         #line hidden
         
-        #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 
 
 void GetMethodCallParameters(ServiceOperationModel o) 
@@ -653,14 +653,14 @@ void GetMethodCallParameters(List<ParameterModel> parameters, bool withLeadingCo
         #line default
         #line hidden
         
-        #line 47 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 47 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 this.Write(", ");
 
         
         #line default
         #line hidden
         
-        #line 47 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 47 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 
         } 
 	
@@ -668,14 +668,14 @@ this.Write(", ");
         #line default
         #line hidden
         
-        #line 49 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 49 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
 
         
         #line default
         #line hidden
         
-        #line 49 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 49 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 
 	}
 
@@ -695,14 +695,14 @@ void GetMethodCallParameters(ServiceOperationModel o, bool withLeadingComma, str
         #line default
         #line hidden
         
-        #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 this.Write(", ");
 
         
         #line default
         #line hidden
         
-        #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 
         } 
 
@@ -710,14 +710,14 @@ this.Write(", ");
         #line default
         #line hidden
         
-        #line 65 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(prefix + p.Name));
 
         
         #line default
         #line hidden
         
-        #line 65 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Legacy\Controller\./../Services.ttinclude"
+        #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Legacy\Controller\./../Services.ttinclude"
 
 	}
 }

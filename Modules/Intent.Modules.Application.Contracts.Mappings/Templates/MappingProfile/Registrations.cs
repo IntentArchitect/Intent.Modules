@@ -1,17 +1,13 @@
-﻿
-using System;
-using System.Linq;
+﻿using Intent.MetaModel.DTO;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using System.ComponentModel;
-using Intent.MetaModel.DTO;
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.SoftwareFactory.Registrations;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
-using Intent.Packages.Application.Contracts.Mappings.Templates.MappingProfile;
-using Intent.SoftwareFactory.Registrations;
+using System.ComponentModel;
+using System.Linq;
 
-namespace Intent.Packages.Application.Contracts.MappingProfile
+namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
     [Description("Intent Applications Contract Mapping Profile Template")]
     public class Registrations : ListModelTemplateRegistrationBase<DTOModel>

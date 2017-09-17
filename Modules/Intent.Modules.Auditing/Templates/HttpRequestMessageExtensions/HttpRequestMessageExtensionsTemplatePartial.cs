@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Auditing.Templates.HttpRequestMessageExtensions
+namespace Intent.Modules.Auditing.Templates.HttpRequestMessageExtensions
 {
     partial class HttpRequestMessageExtensionsTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies
     {

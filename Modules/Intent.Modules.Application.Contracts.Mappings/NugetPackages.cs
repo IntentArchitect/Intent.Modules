@@ -1,7 +1,6 @@
-using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Application.Contracts
+namespace Intent.Modules.Application.Contracts.Mappings
 {
     public static class NugetPackages
     {

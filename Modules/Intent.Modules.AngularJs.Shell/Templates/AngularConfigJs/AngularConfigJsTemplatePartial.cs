@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Intent.Modules.Constants;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Eventing;
+using Intent.SoftwareFactory.Templates;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Intent.Packages.Constants;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.AngularJs.Shell.Templates.AngularConfigJs
+namespace Intent.Modules.AngularJs.Shell.Templates.AngularConfigJs
 {
     partial class AngularConfigJsTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IRequiresPreProcessing
     {

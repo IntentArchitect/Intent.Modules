@@ -1,10 +1,12 @@
+using Intent.Modules.VisualStudio.Projects.Decorators;
+using Intent.SoftwareFactory.Engine;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.VSProjects.Decorators;// This dependency is not ideal
 
-namespace Intent.Packages.Owin.FileServer.Decorators
+// This dependency is not ideal
+
+namespace Intent.Modules.AspNet.Owin.FileServer.Decorators
 {
     public class RootLocationWebConfigDecorator : IWebConfigDecorator
     {

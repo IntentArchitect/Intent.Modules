@@ -7,7 +7,7 @@
     <ProjectGuid>{7FEA24FE-C3AC-43BF-A8B0-099AABFBD526}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.SoftwareFactory.VSProjects</RootNamespace>
+    <RootNamespace>Intent.Modules.VisualStudio.Projects</RootNamespace>
     <AssemblyName>Intent.Modules.VisualStudio.Projects</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

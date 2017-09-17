@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.Unity.Templates.UnityConfig;
+﻿using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Modules.WebApi.Templates.OwinWebApiConfig
+namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
 {
     partial class OwinWebApiConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, IHasDecorators<IWebApiConfigTemplateDecorator>
     {

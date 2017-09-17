@@ -1,7 +1,6 @@
-﻿using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
+﻿using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.EntityFramework
+namespace Intent.Modules.EntityFramework
 {
     public class NugetPackages
     {

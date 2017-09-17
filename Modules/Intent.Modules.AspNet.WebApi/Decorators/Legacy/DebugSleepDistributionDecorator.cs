@@ -1,7 +1,7 @@
-using Intent.Modules.WebApi.Legacy;
+using Intent.Modules.AspNet.WebApi.Legacy;
 using Intent.SoftwareFactory.MetaModels.Service;
 
-namespace Intent.Modules.WebApi.Decorators.Legacy
+namespace Intent.Modules.AspNet.WebApi.Decorators.Legacy
 {
     public class DebugSleepDistributionDecorator : BaseDistributionDecorator
     {

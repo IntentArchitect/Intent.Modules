@@ -1,11 +1,11 @@
+using Intent.MetaModel.Common;
+using Intent.MetaModel.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel.Common;
-using Intent.MetaModel.Domain;
 using ITypeReference = Intent.MetaModel.Domain.ITypeReference;
 
-namespace Intent.Packages.Entities.Templates
+namespace Intent.Modules.Entities.Templates
 {
     public static class DomainEntityModelExtensions
     {

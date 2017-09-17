@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.WebApi.Templates.WebApiBadHttpRequestException
+namespace Intent.Modules.AspNet.WebApi.Templates.WebApiBadHttpRequestException
 {
     using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.SoftwareFactory.MetaModels.Service;
@@ -23,7 +23,7 @@ namespace Intent.Modules.WebApi.Templates.WebApiBadHttpRequestException
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\WebApiBadHttpRequestException\WebApiBadHttpRequestExceptionTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiBadHttpRequestException\WebApiBadHttpRequestExceptionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class WebApiBadHttpRequestExceptionTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -36,7 +36,7 @@ namespace Intent.Modules.WebApi.Templates.WebApiBadHttpRequestException
             this.Write(" \r\nusing System;\r\nusing Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.F" +
                     "ully)]\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\WebApiBadHttpRequestException\WebApiBadHttpRequestExceptionTemplate.tt"
+            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiBadHttpRequestException\WebApiBadHttpRequestExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

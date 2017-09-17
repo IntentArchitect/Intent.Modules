@@ -7,7 +7,7 @@
     <ProjectGuid>{FDC479ED-9D0A-4D6B-99D3-53C4CD41E852}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Typescript.ServiceAgent.AngularJs</RootNamespace>
+    <RootNamespace>Intent.Modules.Typescript.ServiceAgent.AngularJs</RootNamespace>
     <AssemblyName>Intent.Modules.Typescript.ServiceAgent.AngularJs</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Logging.NLog.Templates.OperationRequestId
+namespace Intent.Modules.Logging.NLog.Templates.OperationRequestId
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestId
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class OperationRequestIdTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestId
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
 
 
             
@@ -42,14 +42,14 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestId
             this.Write("using System;\r\nusing Intent.Framework;\r\nusing Intent.CodeGen;\r\n\r\n[assembly: Defau" +
                     "ltIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 23 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -57,7 +57,7 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestId
             this.Write("\r\n    {\r\n        private readonly Guid _value = Guid.NewGuid();\r\n\r\n        privat" +
                     "e ");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -65,7 +65,7 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestId
             this.Write("()\r\n        {\r\n        }\r\n\r\n        public static Guid Current\r\n        {\r\n      " +
                     "      get\r\n            {\r\n                if (ServiceCallContext.Instance.Get<");
             
-            #line 35 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
+            #line 35 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -73,7 +73,7 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestId
             this.Write(">() == null)\r\n                {\r\n                    ServiceCallContext.Instance." +
                     "Set(new ");
             
-            #line 37 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
+            #line 37 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -81,7 +81,7 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestId
             this.Write("());\r\n                }\r\n\r\n                return ServiceCallContext.Instance.Get" +
                     "<");
             
-            #line 40 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
+            #line 40 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestId\OperationRequestIdTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

@@ -1,11 +1,11 @@
+using Intent.Modules.VisualStudio.Projects.Decorators;
+using Intent.SoftwareFactory.Engine;
 using System.Collections;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.VSProjects.Decorators;
 
-namespace Intent.Packages.Messaging.Publisher.Decorators.Legacy
+namespace Intent.Modules.Messaging.Publisher.Decorators.Legacy
 {
     public class IntentEsbPublishingWebConfigDecorator : IWebConfigDecorator
     {

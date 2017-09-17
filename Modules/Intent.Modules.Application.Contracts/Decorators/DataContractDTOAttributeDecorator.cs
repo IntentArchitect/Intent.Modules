@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.MetaModel.DTO;
-using Intent.Packages.Application.Contracts.Templates.DTO;
+﻿using Intent.MetaModel.DTO;
+using Intent.Modules.Application.Contracts.Templates.DTO;
 
-namespace Intent.Packages.Application.Contracts.Decorators
+namespace Intent.Modules.Application.Contracts.Decorators
 {
     public class DataContractDTOAttributeDecorator : IDTOAttributeDecorator
     {

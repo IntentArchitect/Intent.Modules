@@ -1,11 +1,10 @@
-using System.Collections.Generic;
-using Intent.Modules.WebApi.Legacy;
-using Intent.Modules.WebApi;
+using Intent.Modules.AspNet.WebApi;
+using Intent.Modules.AspNet.WebApi.Legacy;
 using Intent.SoftwareFactory.MetaModels.Service;
-using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.EntityFramework.Interop.WebApi.Legacy
+namespace Intent.Modules.EntityFramework.Interop.WebApi.Legacy
 {
     public class EntityFrameworkDistributionDecorator : BaseDistributionDecorator, IHasNugetDependencies
     {

@@ -1,11 +1,11 @@
+using Intent.Modules.VisualStudio.Projects.Decorators;
+using Intent.SoftwareFactory.Engine;
 using System;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.VSProjects.Decorators;
 
-namespace Intent.Packages.Logging.NLog.Decorators
+namespace Intent.Modules.Logging.NLog.Decorators
 {
     public class NLogWebConfigDecorator : IWebConfigDecorator
     {

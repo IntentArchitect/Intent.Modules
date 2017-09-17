@@ -1,13 +1,13 @@
-using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.Messaging.Subscriber.Legacy.MessageHandler;
-using Intent.Packages.Unity.Templates.UnityConfig;
+using Intent.Modules.Messaging.Subscriber.Legacy.MessageHandler;
+using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Messaging.Subscriber.Legacy.Decorators
+namespace Intent.Modules.Messaging.Subscriber.Legacy.Decorators
 {
     public class IntentEsbConsumingUnityRegistrationsDecorator : IUnityRegistrationsDecorator, IHasTemplateDependencies, IHasNugetDependencies
     {

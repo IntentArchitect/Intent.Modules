@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Intent.MetaModel.Service;
-using Intent.Packages.Application.Contracts.Templates.ServiceContract;
+﻿using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
+using System;
+using System.ComponentModel;
+using System.Linq;
 
-namespace Intent.Packages.Application.ServiceCallHandlers.Templates.ServiceCallHandler
+namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
     [Description("Intent Application - Service Call Handler")]
     public class Registrations : IProjectTemplateRegistration

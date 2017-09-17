@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.RichDomain.Templates.EntityBehaviourBase
+namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
 {
     partial class DomainEntityBehaviourBaseTemplate : IntentRoslynProjectItemTemplateBase<Class>, ITemplate, IHasDecorators<IDomainEntityBehaviourBaseDecorator>
     {

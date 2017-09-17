@@ -1,13 +1,8 @@
-﻿using Intent.Packages.Entities.Templates.DomainEntity;
+﻿using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.SoftwareFactory.Registrations;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Intent.Packages.Entities.Decorators
+namespace Intent.Modules.Entities.Decorators
 {
     [Description("Serializable Entity Decorator - Domain decorator")]
     public class SerializableEntityDecoratorRegistration : DecoratorRegistration<AbstractDomainEntityDecorator>

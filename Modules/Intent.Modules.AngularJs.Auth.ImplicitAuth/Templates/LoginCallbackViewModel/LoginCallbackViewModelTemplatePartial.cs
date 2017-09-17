@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.LoginCallbackViewModel
+namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginCallbackViewModel
 {
     partial class LoginCallbackViewModelTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

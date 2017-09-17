@@ -7,7 +7,7 @@
     <ProjectGuid>{FF32AC23-39E7-4D97-A2C9-D941520A5A2F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Electron.NodeEdgeProxy</RootNamespace>
+    <RootNamespace>Intent.Modules.Electron.NodeEdgeProxy</RootNamespace>
     <AssemblyName>Intent.Modules.Electron.NodeEdgeProxy</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

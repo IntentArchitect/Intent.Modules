@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Mapping.EntityToDto.Templates.EntityMappingExtensions
+namespace Intent.Modules.Mapping.EntityToDto.Templates.EntityMappingExtensions
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
     using Intent.SoftwareFactory.Templates;
@@ -22,7 +22,7 @@ namespace Intent.Packages.Mapping.EntityToDto.Templates.EntityMappingExtensions
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\EntityMappingExtensions\EntityMappingExtensionsTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\EntityMappingExtensions\EntityMappingExtensionsTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class EntityMappingExtensionsTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -34,7 +34,7 @@ namespace Intent.Packages.Mapping.EntityToDto.Templates.EntityMappingExtensions
         {
             this.Write("  \r\n");
             
-            #line 14 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\EntityMappingExtensions\EntityMappingExtensionsTemplate.tt"
+            #line 14 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\EntityMappingExtensions\EntityMappingExtensionsTemplate.tt"
 
 
 
@@ -46,7 +46,7 @@ namespace Intent.Packages.Mapping.EntityToDto.Templates.EntityMappingExtensions
                     "tent.Framework.Domain;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamesp" +
                     "ace ");
             
-            #line 24 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\EntityMappingExtensions\EntityMappingExtensionsTemplate.tt"
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\EntityMappingExtensions\EntityMappingExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

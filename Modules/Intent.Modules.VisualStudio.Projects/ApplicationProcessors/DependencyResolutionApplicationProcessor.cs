@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Plugins;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.SoftwareFactory.VSProjects.ApplicationProcessors
+namespace Intent.Modules.VisualStudio.Projects.ApplicationProcessors
 {
     public class DependencyResolutionApplicationProcessor : ApplicationProcessorBase
     {

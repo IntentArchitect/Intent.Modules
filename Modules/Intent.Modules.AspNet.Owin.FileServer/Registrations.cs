@@ -1,11 +1,10 @@
-﻿using Intent.Packages.Owin.FileServer.Decorators;
-using Intent.Packages.Owin.Templates.OwinStartup;
+﻿using Intent.Modules.AspNet.Owin.FileServer.Decorators;
+using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.VSProjects.Decorators;
 
-namespace Intent.Packages.Owin.FileServer
+namespace Intent.Modules.AspNet.Owin.FileServer
 {
     public class Registrations : OldProjectTemplateRegistration
     {

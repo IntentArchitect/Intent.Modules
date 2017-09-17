@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Intent.MetaModel.Common;
+﻿using Intent.MetaModel.Common;
 using Intent.MetaModel.Dto.Old;
-using Intent.MetaModel.DTO;
-using Intent.Packages.Application.Contracts.Legacy.DTO;
-using Intent.Packages.Application.Contracts.Legacy.ServiceContract;
-using Intent.Packages.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Application.Contracts.Legacy.DTO;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
@@ -15,10 +8,14 @@ using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Registrations;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using IApplication = Intent.SoftwareFactory.Engine.IApplication;
-using ServiceContractTemplate = Intent.Packages.Application.Contracts.Legacy.ServiceContract.ServiceContractTemplate;
+using ServiceContractTemplate = Intent.Modules.Application.Contracts.Legacy.ServiceContract.ServiceContractTemplate;
 
-namespace Intent.Packages.Application.Contracts.Clients
+namespace Intent.Modules.Application.Contracts.Clients
 {
     public class TemplateIds
     {

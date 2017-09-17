@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.Typescript.Config.Templates.TypescriptDefinitelyTypedReference
+namespace Intent.Modules.Typescript.Config.Templates.TypescriptDefinitelyTypedReference
 {
     public partial class TypescriptDefinitelyTypedReferencesTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

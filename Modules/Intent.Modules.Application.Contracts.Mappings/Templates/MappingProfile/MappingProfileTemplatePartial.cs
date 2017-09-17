@@ -3,15 +3,11 @@ using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
-using System;
+using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.SoftwareFactory.MetaModels.UMLModel;
-using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Application.Contracts.Mappings.Templates.MappingProfile
+namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
     partial class MappingProfileTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IList<DTOModel>>, ITemplate, IHasNugetDependencies
     {

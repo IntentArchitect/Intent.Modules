@@ -1,22 +1,12 @@
-﻿using Intent.SoftwareFactory.Configuration;
+﻿using Intent.Modules.VisualStudio.Projects.Decorators;
+using Intent.Modules.VisualStudio.Projects.Templates.ConsoleAppCsProjectFile;
+using Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.VisualStudio;
-using Intent.SoftwareFactory.VSProjects.Decorators;
-using Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution;
 using Microsoft.Build.Construction;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.MetaModel.Hosting;
-using Intent.SoftwareFactory.MetaData;
 
-namespace Intent.SoftwareFactory.VSProjects.Registrations
+namespace Intent.Modules.VisualStudio.Projects.Registrations
 {
     public class VSRegistrations : OldProjectTemplateRegistration
     {
@@ -61,7 +51,7 @@ namespace Intent.SoftwareFactory.VSProjects.Registrations
                 }
                 else if (project.ProjectType.Id == ConsoleApplication)
                 {
-                    project.RegisterTemplateInstance(new Templates.ConsoleApp.ConsoleAppCsProjectFile.ConsoleAppCsProjectFileTemplate(project));
+                    project.RegisterTemplateInstance(new ConsoleAppCsProjectFileTemplate(project));
                     project.RegisterTemplateInstance(new Templates.NuGetPackagesConfig.NuGetPackagesConfigTemplate(project));
                     project.RegisterTemplateInstance(new Templates.AssemblyInfo.AssemblyInfoTemplate(project));
                 }

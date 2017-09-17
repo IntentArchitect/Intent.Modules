@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.AspNet.SignalR.Templates.ClientNotificationService
+namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.AspNet.SignalR.Templates.ClientNotificationService
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class ClientNotificationService : IntentRoslynProjectItemTemplateBase
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.AspNet.SignalR.Templates.ClientNotificationService
         {
             this.Write(" \r\n");
             
-            #line 12 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
+            #line 12 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
 
 
 
@@ -43,14 +43,14 @@ namespace Intent.Packages.AspNet.SignalR.Templates.ClientNotificationService
             #line hidden
             this.Write("using System;\r\n");
             
-            #line 17 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
+            #line 17 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
+            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Auditing.Templates.ServiceBoundaryAudtingStrategy
+namespace Intent.Modules.Auditing.Templates.ServiceBoundaryAudtingStrategy
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.Auditing.Templates.ServiceBoundaryAudtingStrategy
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Auditing\Templates\ServiceBoundaryAudtingStrategy\ServiceBoundaryAuditingStrategyTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Auditing\Templates\ServiceBoundaryAudtingStrategy\ServiceBoundaryAuditingStrategyTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class ServiceBoundaryAuditingStrategyTemplate : IntentRoslynProjectItemTemplateBase
     {
@@ -35,14 +35,14 @@ namespace Intent.Packages.Auditing.Templates.ServiceBoundaryAudtingStrategy
                     "k;\r\nusing Intent.Framework.EntityFramework.Auditing;\r\nusing Intent.Framework.Ent" +
                     "ityFramework.Auditing.Data;\r\nusing Intent.CodeGen;\r\n");
             
-            #line 19 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Auditing\Templates\ServiceBoundaryAudtingStrategy\ServiceBoundaryAuditingStrategyTemplate.tt"
+            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Auditing\Templates\ServiceBoundaryAudtingStrategy\ServiceBoundaryAuditingStrategyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly:DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 23 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Auditing\Templates\ServiceBoundaryAudtingStrategy\ServiceBoundaryAuditingStrategyTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Auditing\Templates\ServiceBoundaryAudtingStrategy\ServiceBoundaryAuditingStrategyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

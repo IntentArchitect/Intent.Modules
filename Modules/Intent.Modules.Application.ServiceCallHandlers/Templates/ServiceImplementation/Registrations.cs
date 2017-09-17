@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Intent.MetaModel.Service;
+﻿using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
-namespace Intent.Packages.Application.ServiceCallHandlers.Templates.ServiceImplementation
+namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
     [Description("Intent Application - Service Implementation")]
     public class Registrations : ModelTemplateRegistrationBase<IServiceModel>

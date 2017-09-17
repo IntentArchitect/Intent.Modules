@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.AngularJs.Shell.Templates.AngularShellState
+namespace Intent.Modules.AngularJs.Shell.Templates.AngularShellState
 {
     partial class AngularShellStateTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

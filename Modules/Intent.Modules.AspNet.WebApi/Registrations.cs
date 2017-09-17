@@ -1,20 +1,19 @@
-﻿using System.Linq;
-using Intent.Modules.WebApi.Decorators;
-using Intent.Modules.WebApi.Legacy.Controller;
-using Intent.Modules.WebApi.Templates.Controller;
-using Intent.Modules.WebApi.Templates.HttpExceptionHandler;
-using Intent.Modules.WebApi.Templates.OwinWebApiConfig;
-using Intent.Modules.WebApi.Templates.RequireHttpsMiddleware;
-using Intent.Modules.WebApi.Templates.WebApiBadHttpRequestException;
-using Intent.Packages.Owin.Templates.OwinStartup;
+﻿using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.AspNet.WebApi.Decorators;
+using Intent.Modules.AspNet.WebApi.Legacy.Controller;
+using Intent.Modules.AspNet.WebApi.Templates.Controller;
+using Intent.Modules.AspNet.WebApi.Templates.HttpExceptionHandler;
+using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
+using Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware;
+using Intent.Modules.AspNet.WebApi.Templates.WebApiBadHttpRequestException;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
-using Intent.SoftwareFactory.Modules.Decorators.WebApi;
 using Intent.SoftwareFactory.Registrations;
-using WebApiControllerTemplate = Intent.Modules.WebApi.Legacy.Controller.WebApiControllerTemplate;
+using System.Linq;
+using WebApiControllerTemplate = Intent.Modules.AspNet.WebApi.Legacy.Controller.WebApiControllerTemplate;
 
-namespace Intent.Modules.WebApi
+namespace Intent.Modules.AspNet.WebApi
 {
     public class Registrations : OldProjectTemplateRegistration
     {

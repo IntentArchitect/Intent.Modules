@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Entities.Templates.DomainPartialEntity
+namespace Intent.Modules.Entities.Templates.DomainPartialEntity
 {
     using Intent.MetaModel.Domain;
     using Intent.SoftwareFactory.Templates;
@@ -22,7 +22,7 @@ namespace Intent.Packages.Entities.Templates.DomainPartialEntity
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class DomainPartialEntityTemplate : IntentRoslynProjectItemTemplateBase<IClass>
     {
@@ -35,21 +35,21 @@ namespace Intent.Packages.Entities.Templates.DomainPartialEntity
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing Intent.Framework.Domain; " +
                     "\r\nusing Intent.Framework.Core;\r\nusing Intent.CodeGen;\r\n");
             
-            #line 19 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
+            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 23 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public partial class ");
             
-            #line 25 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

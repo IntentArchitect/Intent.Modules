@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Electron.NodeEdgeProxy.Templates.AngularEdgeService
+namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
 {
     using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.SoftwareFactory.MetaModels.Service;
@@ -23,7 +23,7 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Templates.AngularEdgeService
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Templates\AngularEdgeService\AngularEdgeServiceTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularEdgeService\AngularEdgeServiceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class AngularEdgeServiceTemplate : IntentProjectItemTemplateBase<object>
     {

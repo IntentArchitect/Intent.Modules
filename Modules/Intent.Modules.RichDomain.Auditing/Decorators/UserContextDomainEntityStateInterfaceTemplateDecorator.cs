@@ -1,8 +1,8 @@
 ﻿using Intent.MetaModel.UMLModel;
-using Intent.Packages.RichDomain.Templates.EntityStateInterface;
+using Intent.Modules.RichDomain.Templates.EntityStateInterface;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 
-namespace Intent.Packages.RichDomain.Auditing.Decorators
+namespace Intent.Modules.RichDomain.Auditing.Decorators
 {
     public class UserContextDomainEntityStateInterfaceTemplateDecorator : IDomainEntityStateInterfaceTemplateDecorator
     {

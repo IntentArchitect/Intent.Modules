@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.UserContext.Templates.UserContextInterface
+namespace Intent.Modules.UserContext.Templates.UserContextInterface
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.UserContext.Templates.UserContextInterface
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class UserContextInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.UserContext.Templates.UserContextInterface
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
 
 
 
@@ -44,14 +44,14 @@ namespace Intent.Packages.UserContext.Templates.UserContextInterface
             this.Write("using System;\r\nusing Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Igno" +
                     "re)]\r\n\r\nnamespace ");
             
-            #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
+            #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 24 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

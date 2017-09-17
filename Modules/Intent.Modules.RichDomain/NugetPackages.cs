@@ -1,7 +1,6 @@
-﻿using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
+﻿using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.RichDomain
+namespace Intent.Modules.RichDomain
 {
     public class NugetPackages
     {

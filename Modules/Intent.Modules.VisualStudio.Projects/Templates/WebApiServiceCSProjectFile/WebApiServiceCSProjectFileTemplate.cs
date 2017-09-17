@@ -1,19 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Xml;
-using Intent.SoftwareFactory.Configuration;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-
 using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.VisualStudio;
 using Microsoft.Build.Construction;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using Intent.MetaModel.Hosting;
-using Intent.SoftwareFactory.MetaData;
-using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.SoftwareFactory.VSProjects.Templates.WebApiServiceCSProjectFile
+namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectFile
 {
     public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies, ISupportXmlDecorators, IProjectTemplate
     {

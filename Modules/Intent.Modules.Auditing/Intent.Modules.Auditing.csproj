@@ -7,7 +7,7 @@
     <ProjectGuid>{9683F3F2-665E-4035-8425-0454E764D713}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Auditing</RootNamespace>
+    <RootNamespace>Intent.Modules.Auditing</RootNamespace>
     <AssemblyName>Intent.Modules.Auditing</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

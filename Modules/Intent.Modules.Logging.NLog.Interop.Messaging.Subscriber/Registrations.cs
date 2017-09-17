@@ -1,9 +1,9 @@
-﻿using Intent.Packages.Logging.NLog.Interop.Messaging.Subscriber.Legacy;
-using Intent.Packages.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
+﻿using Intent.Modules.Logging.NLog.Interop.Messaging.Subscriber.Legacy;
+using Intent.Modules.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.Logging.NLog.Interop.WebApi
+namespace Intent.Modules.Logging.NLog.Interop.Messaging.Subscriber
 {
     public class Registrations : OldProjectTemplateRegistration
     {

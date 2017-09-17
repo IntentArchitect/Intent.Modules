@@ -1,14 +1,14 @@
-﻿using System.Linq;
-using Intent.Packages.Messaging.Subscriber.Legacy.Decorators;
-using Intent.Packages.Messaging.Subscriber.Legacy.MessageHandler;
-using Intent.Packages.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
-using Intent.Packages.Unity.Templates.UnityConfig;
+﻿using Intent.Modules.Messaging.Subscriber.Legacy.Decorators;
+using Intent.Modules.Messaging.Subscriber.Legacy.MessageHandler;
+using Intent.Modules.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
+using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.SoftwareFactory.Registrations;
+using System.Linq;
 
-namespace Intent.Packages.Messaging.Subscriber
+namespace Intent.Modules.Messaging.Subscriber
 {
     public class LegacyRegistrations : OldProjectTemplateRegistration
     {

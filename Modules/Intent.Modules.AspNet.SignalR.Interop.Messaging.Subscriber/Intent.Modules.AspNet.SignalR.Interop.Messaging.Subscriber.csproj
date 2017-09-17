@@ -7,7 +7,7 @@
     <ProjectGuid>{6B04ADD0-986C-41B5-9B02-F80C940EEBF1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.AspNet.SignalR.Interop.Messaging.Subscriber</RootNamespace>
+    <RootNamespace>Intent.Modules.AspNet.SignalR.Interop.Messaging.Subscriber</RootNamespace>
     <AssemblyName>Intent.Modules.AspNet.SignalR.Interop.Messaging.Subscriber</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

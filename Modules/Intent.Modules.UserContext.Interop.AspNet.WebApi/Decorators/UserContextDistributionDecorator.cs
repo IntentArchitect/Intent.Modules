@@ -1,14 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Data.Common;
-using Intent.MetaModel.Service;
-using Intent.Packages.UserContext.Templates.UserContextInterface;
-using Intent.Modules.WebApi.Decorators;
-using Intent.Modules.WebApi.Legacy;
-using Intent.Modules.WebApi.Templates.Controller;
-using Intent.SoftwareFactory.MetaModels.Service;
+﻿using Intent.MetaModel.Service;
+using Intent.Modules.AspNet.WebApi.Templates.Controller;
+using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.UserContext.Interop.WebApi.Decorators
+namespace Intent.Modules.UserContext.Interop.AspNet.WebApi.Decorators
 {
     public class UserContextDistributionDecorator : DistributionDecoratorBase, IHasTemplateDependencies
     {

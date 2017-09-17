@@ -1,10 +1,10 @@
-﻿using Intent.Packages.UserContext.Templates.UserContextInterface;
-using Intent.Packages.UserContext.Templates.UserContextProvider;
-using Intent.Packages.UserContext.Templates.UserContextStatic;
+﻿using Intent.Modules.UserContext.Templates.UserContextInterface;
+using Intent.Modules.UserContext.Templates.UserContextProvider;
+using Intent.Modules.UserContext.Templates.UserContextStatic;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.UserContext
+namespace Intent.Modules.UserContext
 {
     public class Registrations : OldProjectTemplateRegistration
     {

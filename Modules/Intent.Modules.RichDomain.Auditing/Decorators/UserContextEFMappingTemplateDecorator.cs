@@ -1,8 +1,8 @@
 ﻿using Intent.MetaModel.UMLModel;
-using Intent.Packages.EntityFramework.Templates.EFMapping;
+using Intent.Modules.EntityFramework.Templates.EFMapping;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 
-namespace Intent.Packages.RichDomain.Auditing.Decorators
+namespace Intent.Modules.RichDomain.Auditing.Decorators
 {
     public class UserContextEFMappingTemplateDecorator : IEFMappingTemplateDecorator
     {

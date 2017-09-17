@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.RichDomain.Templates.EntityBehaviour
+namespace Intent.Modules.RichDomain.Templates.EntityBehaviour
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
     using Intent.SoftwareFactory.Templates;
@@ -23,7 +23,7 @@ namespace Intent.Packages.RichDomain.Templates.EntityBehaviour
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class DomainEntityBehaviourTemplate : IntentRoslynProjectItemTemplateBase<Class>
     {
@@ -36,7 +36,7 @@ namespace Intent.Packages.RichDomain.Templates.EntityBehaviour
             this.Write("  \r\n\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing" +
                     " Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 23 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -45,21 +45,21 @@ namespace Intent.Packages.RichDomain.Templates.EntityBehaviour
                     "gnature = Mode.Merge, Body = Mode.Ignore, Targets = Targets.Methods, AccessModif" +
                     "iers = AccessModifiers.Public)]\r\n    partial class ");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("  \r\n    {\r\n\r\n");
             
-            #line 30 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 30 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
 if (Model.Attributes.Any()) {
             
             #line default
             #line hidden
             this.Write("        [IntentInitialGen]\r\n");
             
-            #line 32 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 32 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
   string constructorDefinition = Model.Attributes.Any(a => !a.IsAssociationAttribute)
         ? Model.Attributes.Where(a => !a.IsAssociationAttribute).Select(x => x.DomainType() + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
         : "";
@@ -69,21 +69,21 @@ if (Model.Attributes.Any()) {
             #line hidden
             this.Write("        public ");
             
-            #line 36 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 36 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 36 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 36 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(constructorDefinition));
             
             #line default
             #line hidden
             this.Write(")\r\n            : this (false)\r\n        {\r\n");
             
-            #line 39 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 39 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
   foreach (var attribute in Model.Attributes.Where(a => !a.IsAssociationAttribute))
 {
             
@@ -91,21 +91,21 @@ if (Model.Attributes.Any()) {
             #line hidden
             this.Write("            ");
             
-            #line 41 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 41 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 41 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 41 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 42 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 42 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
 }//for
 
             
@@ -113,14 +113,14 @@ if (Model.Attributes.Any()) {
             #line hidden
             this.Write("        }\r\n\r\n");
             
-            #line 46 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 46 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
 }//if
 
             
             #line default
             #line hidden
             
-            #line 48 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 48 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
   foreach (var operation in Model.Operations)
     {
         string returnType = operation.ReturnType != null ? operation.ReturnType.DomainType() : "void";
@@ -134,21 +134,21 @@ if (Model.Attributes.Any()) {
             #line hidden
             this.Write("        public ");
             
-            #line 56 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 56 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(returnType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 56 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 56 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 56 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 56 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameterDefinitions));
             
             #line default
@@ -156,7 +156,7 @@ if (Model.Attributes.Any()) {
             this.Write(")\r\n        {\r\n            throw new NotImplementedException(\"Replace with your im" +
                     "plementation...\");\r\n        }\r\n");
             
-            #line 60 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 60 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
 			}
 			else
 			{ 
@@ -165,28 +165,28 @@ if (Model.Attributes.Any()) {
             #line hidden
             this.Write("        public abstract ");
             
-            #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(returnType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameterDefinitions));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 64 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 64 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
 			}
 		}
     }
@@ -198,14 +198,14 @@ if (Model.Attributes.Any()) {
                     " Signature = Mode.Merge, Body = Mode.Ignore, Targets = Targets.Methods, AccessMo" +
                     "difiers = AccessModifiers.Public)]\r\n    partial class ");
             
-            #line 73 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 73 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("Behaviour\r\n    {\r\n");
             
-            #line 75 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 75 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
   foreach (var operation in Model.Operations)
     {
         string returnType = operation.ReturnType != null ? operation.ReturnType.DomainType() : "void";
@@ -218,28 +218,28 @@ if (Model.Attributes.Any()) {
             #line hidden
             this.Write("        public ");
             
-            #line 82 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 82 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(returnType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 82 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 82 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 82 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 82 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameterDefinitions));
             
             #line default
             #line hidden
             this.Write(")\r\n        {");
             
-            #line 83 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 83 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(OperationStart()));
             
             #line default
@@ -247,7 +247,7 @@ if (Model.Attributes.Any()) {
             this.Write("\r\n            throw new NotImplementedException(\"Replace with your implementation" +
                     "...\");\r\n        }\r\n\r\n");
             
-            #line 87 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
+            #line 87 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviour\DomainEntityBehaviourTemplate.tt"
       }
     }
 

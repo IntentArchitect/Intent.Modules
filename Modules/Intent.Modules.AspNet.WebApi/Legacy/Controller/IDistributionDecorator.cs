@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using Intent.SoftwareFactory.MetaModels.Class;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Modules.WebApi.Legacy.Controller
+namespace Intent.Modules.AspNet.WebApi.Legacy.Controller
 {
     public interface IDistributionDecorator : ITemplateDecorator, IPriorityDecorator
     {

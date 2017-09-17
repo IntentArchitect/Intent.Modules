@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.MetaModels.Mapping;
-using Intent.SoftwareFactory.Templates;
+﻿using Intent.SoftwareFactory.MetaModels.Mapping;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Mapping.EntityToDto.Templates.DTOMappingProfile
+namespace Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile
 {
     partial class GenericMappingTemplate
     {

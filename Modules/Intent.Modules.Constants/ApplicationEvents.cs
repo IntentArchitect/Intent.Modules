@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Intent.Packages.Constants
+﻿namespace Intent.Modules.Constants
 {
     public static class SoftwareFactoryEvents
     {

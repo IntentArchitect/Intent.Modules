@@ -1,10 +1,9 @@
-﻿using Intent.Packages.Typescript.Config.Templates.TypescriptConfig;
-using Intent.Packages.Typescript.Config.Templates.TypescriptDefinitelyTypedReference;
+﻿using Intent.Modules.Typescript.Config.Templates.TypescriptConfig;
+using Intent.Modules.Typescript.Config.Templates.TypescriptDefinitelyTypedReference;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.Typescript.Config
+namespace Intent.Modules.Typescript.Config
 {
     public class Registrations : OldProjectTemplateRegistration
     {

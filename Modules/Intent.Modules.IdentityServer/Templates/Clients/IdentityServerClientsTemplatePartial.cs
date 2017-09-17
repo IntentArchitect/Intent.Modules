@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Intent.Packages.Constants;
+﻿using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.IdentityServer.Templates.Clients
+namespace Intent.Modules.IdentityServer.Templates.Clients
 {
     public partial class IdentityServerClientsTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

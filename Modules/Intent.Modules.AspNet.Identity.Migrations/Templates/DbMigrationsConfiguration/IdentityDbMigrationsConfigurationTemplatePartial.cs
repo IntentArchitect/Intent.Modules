@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.AspNetIdentity.Migrations;
-using Intent.Packages.IdentityServer.Templates.AspNetIdentityModel;
+﻿using Intent.Modules.IdentityServer.Templates.AspNetIdentityModel;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.AspNet.Identity.Migrations.Templates.DbMigrationsConfiguration
+namespace Intent.Modules.AspNet.Identity.Migrations.Templates.DbMigrationsConfiguration
 {
     partial class IdentityDbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies
     {

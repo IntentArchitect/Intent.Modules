@@ -1,11 +1,6 @@
 ﻿using Intent.SoftwareFactory.Templates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Intent.SoftwareFactory.VSProjects.Decorators
+namespace Intent.Modules.VisualStudio.Projects.Decorators
 {
     public interface IWebConfigDecorator : IXmlDecorator
     {

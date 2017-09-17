@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.AngularJs.Shell.Templates.AngularCommon
+namespace Intent.Modules.AngularJs.Shell.Templates.AngularCommon
 {
     partial class AngularCommonTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

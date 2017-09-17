@@ -1,17 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.MetaModel.Common;
+﻿using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
-using Intent.Packages.Application.Contracts.Clients;
-using Intent.Packages.HttpServiceProxy.Templates.AddressResolverInterface;
-using Intent.Packages.HttpServiceProxy.Templates.Exception;
-using Intent.Packages.HttpServiceProxy.Templates.InterceptorInterface;
-using Intent.SoftwareFactory;
+using Intent.Modules.Application.Contracts.Clients;
+using Intent.Modules.HttpServiceProxy.Templates.AddressResolverInterface;
+using Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.HttpServiceProxy.Templates.Proxy
+namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
     partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, IHasTemplateDependencies
     {

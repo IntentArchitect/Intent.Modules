@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectState
+namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectState
 {
     partial class LoginRedirectStateTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.MetaModel.Common;
+﻿using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
-using Intent.Packages.Application.Contracts.Templates.DTO;
-using Intent.Packages.Constants;
+using Intent.Modules.Application.Contracts.Templates.DTO;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Application.Contracts.Templates.ServiceContract
+namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
     partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
     {

@@ -1,7 +1,6 @@
-﻿using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
+﻿using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Mapping.EntityToDto
+namespace Intent.Modules.Mapping.EntityToDto
 {
     public class NugetPackages
     {

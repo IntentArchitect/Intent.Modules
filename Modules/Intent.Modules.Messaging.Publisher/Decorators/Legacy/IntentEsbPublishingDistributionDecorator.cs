@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using Intent.Modules.WebApi.Legacy;
+using Intent.Modules.AspNet.WebApi.Legacy;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Messaging.Publisher.Decorators.Legacy
+namespace Intent.Modules.Messaging.Publisher.Decorators.Legacy
 {
     public class IntentEsbPublishingDistributionDecorator : BaseDistributionDecorator, IHasNugetDependencies
     {

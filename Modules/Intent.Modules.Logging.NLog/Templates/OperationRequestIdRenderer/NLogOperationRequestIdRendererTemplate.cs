@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Logging.NLog.Templates.OperationRequestIdRenderer
+namespace Intent.Modules.Logging.NLog.Templates.OperationRequestIdRenderer
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestIdRenderer
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestIdRenderer\NLogOperationRequestIdRendererTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestIdRenderer\NLogOperationRequestIdRendererTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class NLogOperationRequestIdRendererTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestIdRenderer
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestIdRenderer\NLogOperationRequestIdRendererTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestIdRenderer\NLogOperationRequestIdRendererTemplate.tt"
 
 
             
@@ -42,7 +42,7 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestIdRenderer
             this.Write("using NLog;\r\nusing NLog.Config;\r\nusing NLog.LayoutRenderers;\r\nusing System;\r\nusin" +
                     "g System.Linq;\r\nusing System.Text;\r\n");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestIdRenderer\NLogOperationRequestIdRendererTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestIdRenderer\NLogOperationRequestIdRendererTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -50,14 +50,14 @@ namespace Intent.Packages.Logging.NLog.Templates.OperationRequestIdRenderer
             this.Write("\r\nusing Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\nnamespac" +
                     "e ");
             
-            #line 25 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestIdRenderer\NLogOperationRequestIdRendererTemplate.tt"
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestIdRenderer\NLogOperationRequestIdRendererTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [LayoutRenderer(NAME)]\r\n    public class ");
             
-            #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\OperationRequestIdRenderer\NLogOperationRequestIdRendererTemplate.tt"
+            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\OperationRequestIdRenderer\NLogOperationRequestIdRendererTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

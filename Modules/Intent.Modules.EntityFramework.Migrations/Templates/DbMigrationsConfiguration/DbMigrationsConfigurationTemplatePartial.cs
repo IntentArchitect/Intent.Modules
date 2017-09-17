@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.EntityFramework.Templates.DbContext;
+﻿using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.EntityFramework.Migrations.Templates.DbMigrationsConfiguration
+namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfiguration
 {
     partial class DbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, IHasAdditionalHeaderInformation, IHasDecorators<IMigrationSeedDecorator>
     {

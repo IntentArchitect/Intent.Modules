@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using Intent.Modules.WebApi.Templates.RequireHttpsMiddleware;
-using Intent.Packages.Owin.Templates.OwinStartup;
+using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Modules.WebApi.Decorators
+namespace Intent.Modules.AspNet.WebApi.Decorators
 {
     public class UseHttpsOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IHasTemplateDependencies
     {

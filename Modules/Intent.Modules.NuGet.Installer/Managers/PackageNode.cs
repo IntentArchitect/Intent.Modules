@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using IPackage = NuGet.IPackage;
 
-namespace Intent.SoftwareFactory.NuGet.Managers
+namespace Intent.Modules.NuGet.Installer.Managers
 {
     public class PackageNode
     {

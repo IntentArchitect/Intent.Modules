@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.MetaModel.Domain;
+﻿using Intent.MetaModel.Domain;
+using Intent.Modules.Entities.Templates.DomainPartialEntity;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System;
-using Intent.Packages.Entities.Templates.DomainPartialEntity;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Entities.Templates.DomainEntity
+namespace Intent.Modules.Entities.Templates.DomainEntity
 {
     partial class DomainEntityTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<AbstractDomainEntityDecorator>
     {

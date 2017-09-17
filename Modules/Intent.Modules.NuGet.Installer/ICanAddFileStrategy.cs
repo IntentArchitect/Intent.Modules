@@ -1,4 +1,4 @@
-﻿namespace Intent.SoftwareFactory.NuGet
+﻿namespace Intent.Modules.NuGet.Installer
 {
     public interface ICanAddFileStrategy
     {

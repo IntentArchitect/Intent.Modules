@@ -1,7 +1,6 @@
-using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Owin.Jwt
+namespace Intent.Modules.AspNet.Owin.Jwt
 {
     public static class NugetPackages
     {

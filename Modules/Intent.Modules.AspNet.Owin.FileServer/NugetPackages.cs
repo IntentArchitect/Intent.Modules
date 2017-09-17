@@ -1,7 +1,6 @@
-﻿using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
+﻿using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Owin.FileServer
+namespace Intent.Modules.AspNet.Owin.FileServer
 {
     public class NugetPackages
     {

@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.Owin.Jwt.Templates.SigningCertificate
+namespace Intent.Modules.AspNet.Owin.Jwt.Templates.SigningCertificate
 {
     public partial class SigningCertificateTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

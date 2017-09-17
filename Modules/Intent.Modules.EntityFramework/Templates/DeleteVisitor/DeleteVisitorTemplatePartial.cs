@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.RichDomain.Templates.EntityBehaviourBase;
-using Intent.Packages.RichDomain.Templates.EntityState;
+﻿using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.EntityFramework.Templates.DeleteVisitor
+namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
 {
     partial class DeleteVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<Class>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
     {

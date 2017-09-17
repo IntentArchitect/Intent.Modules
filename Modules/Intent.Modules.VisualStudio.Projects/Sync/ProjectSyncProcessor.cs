@@ -1,8 +1,9 @@
-﻿using Intent.Packages.Constants;
+﻿using Intent.Modules.Constants;
+using Intent.Modules.VisualStudio.Projects.Sync.Events;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.VisualStudio;
-using Intent.SoftwareFactory.VSProjectSync.Events;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace Intent.SoftwareFactory.VSProjectSync
+namespace Intent.Modules.VisualStudio.Projects.Sync
 {
     public class ProjectSyncProcessor
     {

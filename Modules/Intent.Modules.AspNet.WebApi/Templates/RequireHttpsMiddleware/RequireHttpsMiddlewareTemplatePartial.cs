@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Modules.WebApi.Templates.RequireHttpsMiddleware
+namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
 {
     public partial class RequireHttpsMiddlewareTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies
     {

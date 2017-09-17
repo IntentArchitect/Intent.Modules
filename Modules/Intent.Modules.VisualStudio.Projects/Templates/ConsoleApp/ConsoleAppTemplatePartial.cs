@@ -1,13 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.SoftwareFactory.Engine;
-
-using Intent.SoftwareFactory.RoslynMerge;
-using Intent.SoftwareFactory.RoslynMerge.Migrations;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.Configuration;
 
-namespace Intent.SoftwareFactory.VSProjects.Templates.ConsoleApp
+namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp
 {
     partial class ConsoleAppTemplate : IntentRoslynProjectItemTemplateBase<object>
     {

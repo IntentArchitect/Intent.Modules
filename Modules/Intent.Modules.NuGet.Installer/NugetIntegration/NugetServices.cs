@@ -1,3 +1,4 @@
+using Intent.SoftwareFactory;
 using NuGet;
 using NuGet.CommandLine;
 using NuGet.Common;
@@ -14,7 +15,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 
-namespace Intent.SoftwareFactory.NuGet.NugetIntegration
+namespace Intent.Modules.NuGet.Installer.NugetIntegration
 {
     public class NugetServices : INugetServices
     {

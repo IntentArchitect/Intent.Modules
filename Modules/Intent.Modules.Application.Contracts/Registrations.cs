@@ -1,13 +1,13 @@
-﻿using System.Linq;
-using Intent.MetaModel.Dto.Old;
-using Intent.Packages.Application.Contracts.Legacy.DTO;
-using Intent.Packages.Application.Contracts.Legacy.ServiceContract;
+﻿using Intent.MetaModel.Dto.Old;
+using Intent.Modules.Application.Contracts.Legacy.DTO;
+using Intent.Modules.Application.Contracts.Legacy.ServiceContract;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Registrations;
+using System.Linq;
 
-namespace Intent.Packages.Application.Contracts
+namespace Intent.Modules.Application.Contracts
 {
     public class Registrations : OldProjectTemplateRegistration
     {

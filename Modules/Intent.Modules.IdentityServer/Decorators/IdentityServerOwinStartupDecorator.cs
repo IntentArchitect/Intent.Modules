@@ -1,18 +1,17 @@
-using System.Collections.Generic;
 using Intent.MetaModel.Hosting;
-using Intent.Packages.Constants;
-using Intent.Packages.IdentityServer.Templates.AspNetIdentityModel;
-using Intent.Packages.IdentityServer.Templates.AspNetIdentityUserService;
-using Intent.Packages.IdentityServer.Templates.Clients;
-using Intent.Packages.IdentityServer.Templates.Scopes;
-using Intent.Packages.IdentityServer.Templates.SigningCertificate;
-using Intent.Packages.Owin.Templates.OwinStartup;
-using Intent.SoftwareFactory.Engine;
+using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.Constants;
+using Intent.Modules.IdentityServer.Templates.AspNetIdentityModel;
+using Intent.Modules.IdentityServer.Templates.AspNetIdentityUserService;
+using Intent.Modules.IdentityServer.Templates.Clients;
+using Intent.Modules.IdentityServer.Templates.Scopes;
+using Intent.Modules.IdentityServer.Templates.SigningCertificate;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.IdentityServer.Decorators
+namespace Intent.Modules.IdentityServer.Decorators
 {
     public class IdentityServerOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IHasTemplateDependencies, IRequiresPreProcessing
     {

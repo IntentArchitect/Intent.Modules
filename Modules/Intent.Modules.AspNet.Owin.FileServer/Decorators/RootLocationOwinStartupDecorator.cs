@@ -1,10 +1,9 @@
+using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.IO;
-using Intent.Packages.Owin.Templates.OwinStartup;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Owin.FileServer.Decorators
+namespace Intent.Modules.AspNet.Owin.FileServer.Decorators
 {
     public class RootLocationOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies
     {

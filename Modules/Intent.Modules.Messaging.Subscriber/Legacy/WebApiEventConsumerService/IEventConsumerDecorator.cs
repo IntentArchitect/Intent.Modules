@@ -1,6 +1,6 @@
 ﻿using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.Messaging.Subscriber.Legacy.WebApiEventConsumerService
+namespace Intent.Modules.Messaging.Subscriber.Legacy.WebApiEventConsumerService
 {
     public interface IEventConsumerDecorator : ITemplateDecorator, IPriorityDecorator, IDeclareUsings
     {

@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.Constants;
+﻿using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Unity.Templates.UnityConfig
+namespace Intent.Modules.Unity.Templates.UnityConfig
 {
     partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IUnityRegistrationsDecorator>
     {

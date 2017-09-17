@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.IdentityServer.Templates.AspNetIdentityUserService
+namespace Intent.Modules.IdentityServer.Templates.AspNetIdentityUserService
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.IdentityServer.Templates.AspNetIdentityUserService
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class AspNetIdentityUserServiceTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.IdentityServer.Templates.AspNetIdentityUserService
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
 
 
 
@@ -53,7 +53,7 @@ using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
 ");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -61,7 +61,7 @@ using IdentityServer3.Core.Services;
             this.Write("\r\nusing Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamesp" +
                     "ace ");
             
-            #line 32 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
+            #line 32 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

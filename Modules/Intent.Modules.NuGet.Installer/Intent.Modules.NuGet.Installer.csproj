@@ -7,7 +7,7 @@
     <ProjectGuid>{07786CDC-3BA4-43C7-A37C-4EDBCBE89299}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.SoftwareFactory.NuGet</RootNamespace>
+    <RootNamespace>Intent.Modules.NuGet.Installer</RootNamespace>
     <AssemblyName>Intent.Modules.NuGet.Installer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

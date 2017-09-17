@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Intent.Modules.VisualStudio.Projects.Decorators;
+using Intent.SoftwareFactory;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using Intent.SoftwareFactory.Engine;
 
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
-using Intent.SoftwareFactory.Configuration;
-using Intent.SoftwareFactory.VSProjects.Decorators;
-
-namespace Intent.SoftwareFactory.VSProjects.Templates.WebConfig
+namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 {
     public class WcfServiceWebConfigTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasDecorators<IWebConfigDecorator>
     {

@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.IdentityServer.Templates.SigningCertificate
+namespace Intent.Modules.IdentityServer.Templates.SigningCertificate
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.IdentityServer.Templates.SigningCertificate
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.IdentityServer\Templates\SigningCertificate\SigningCertificateTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\SigningCertificate\SigningCertificateTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class SigningCertificateTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -35,7 +35,7 @@ namespace Intent.Packages.IdentityServer.Templates.SigningCertificate
                     "icates;\r\nusing Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n" +
                     "\r\nnamespace ");
             
-            #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.IdentityServer\Templates\SigningCertificate\SigningCertificateTemplate.tt"
+            #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\SigningCertificate\SigningCertificateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

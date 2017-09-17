@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Auditing.Templates.ServiceBoundaryAudtingStrategy
+namespace Intent.Modules.Auditing.Templates.ServiceBoundaryAudtingStrategy
 {
     partial class ServiceBoundaryAuditingStrategyTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies
     {

@@ -3,14 +3,11 @@ using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Intent.Packages.Entities.Templates.DomainEntityBehaviour
+namespace Intent.Modules.Entities.Templates.DomainEntityBehaviour
 {
     [Description("Intent Entity Behaviour Template")]
     public class Registrations : ModelTemplateRegistrationBase<Class>

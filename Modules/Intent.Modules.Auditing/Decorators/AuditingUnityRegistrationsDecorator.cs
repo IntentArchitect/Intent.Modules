@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Intent.Packages.Auditing.Templates.ServiceBoundaryAudtingStrategy;
-using Intent.Packages.Unity.Templates.UnityConfig;
+﻿using Intent.Modules.Auditing.Templates.ServiceBoundaryAudtingStrategy;
+using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Auditing.Decorators
+namespace Intent.Modules.Auditing.Decorators
 {
     public class AuditingUnityRegistrationsDecorator : IUnityRegistrationsDecorator, IHasTemplateDependencies, IHasNugetDependencies
     {

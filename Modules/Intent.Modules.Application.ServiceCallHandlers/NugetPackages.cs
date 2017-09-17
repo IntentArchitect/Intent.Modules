@@ -1,7 +1,6 @@
-using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Application.ServiceCallHandlers
+namespace Intent.Modules.Application.ServiceCallHandlers
 {
     public static class NugetPackages
     {

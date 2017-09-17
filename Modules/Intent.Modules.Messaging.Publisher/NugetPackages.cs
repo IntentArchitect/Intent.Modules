@@ -1,6 +1,6 @@
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Messaging.Publisher
+namespace Intent.Modules.Messaging.Publisher
 {
     public static class NugetPackages
     {

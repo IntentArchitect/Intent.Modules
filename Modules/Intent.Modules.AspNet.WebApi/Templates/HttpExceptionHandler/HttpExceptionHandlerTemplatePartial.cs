@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.Constants;
+﻿using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Modules.WebApi.Templates.HttpExceptionHandler
+namespace Intent.Modules.AspNet.WebApi.Templates.HttpExceptionHandler
 {
     partial class HttpExceptionHandlerTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing, IHasAssemblyDependencies
     {

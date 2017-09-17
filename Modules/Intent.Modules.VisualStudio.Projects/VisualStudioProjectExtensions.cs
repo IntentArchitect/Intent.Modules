@@ -1,15 +1,7 @@
-﻿using Intent.SoftwareFactory.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
-using Intent.SoftwareFactory.VSProjects;
-using Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution;
 
-namespace Intent.SoftwareFactory.Configuration
+namespace Intent.Modules.VisualStudio.Projects
 {
     public static class VisualStudioProjectExtensions
     {

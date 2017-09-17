@@ -1,12 +1,10 @@
-using System.Collections.Generic;
 using Intent.MetaModel.Service;
-using Intent.Modules.WebApi.Legacy;
-using Intent.Modules.WebApi.Templates.Controller;
+using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.SoftwareFactory.MetaData;
-using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Messaging.Publisher.Decorators
+namespace Intent.Modules.Messaging.Publisher.Decorators
 {
     public class IntentEsbPublishingDistributionDecorator : DistributionDecoratorBase, IHasNugetDependencies
     {

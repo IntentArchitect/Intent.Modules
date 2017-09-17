@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplementation
+namespace Intent.Modules.Application.ServiceCallHandlers.Legacy.ServiceImplementation
 {
     using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.SoftwareFactory.MetaModels.Service;
@@ -23,7 +23,7 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>
     {
@@ -36,7 +36,7 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
             this.Write(" \r\n");
             this.Write(" \r\n");
             
-            #line 16 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 16 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
 
 
             
@@ -45,7 +45,7 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
             this.Write("\r\nusing System;\r\nusing System.Linq;\r\nusing System.Collections.Generic;\r\nusing Mic" +
                     "rosoft.Practices.Unity;\r\n");
             
-            #line 23 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -53,28 +53,28 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
             this.Write("\r\nusing Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamesp" +
                     "ace ");
             
-            #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 30 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 30 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : I");
             
-            #line 30 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 30 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        private readonly IUnityContainer _container;\r\n\r\n        public ");
             
-            #line 34 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 34 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -82,7 +82,7 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
             this.Write("(IUnityContainer container)\r\n        { \r\n            _container = container;\r\n   " +
                     "     }\r\n\r\n");
             
-            #line 39 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 39 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
     foreach (var o in Model.Operations)
     {
 
@@ -92,28 +92,28 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
             #line hidden
             this.Write("        public ");
             
-            #line 42 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 42 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.ReturnType.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 42 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 42 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 42 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 42 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
  GetMethodDefinitionParameters(o); 
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n");
             
-            #line 44 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
         foreach (var parameter in o.Parameters)
         {
             if (parameter.Type.TypeName.Contains("DTO") && parameter.Type.TypeName != "PagedSearchCriteriaDTO")
@@ -124,14 +124,14 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
             #line hidden
             this.Write("            //");
             
-            #line 48 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 48 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write(".Validate(true);\r\n");
             
-            #line 49 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 49 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
 
             }
         }
@@ -141,14 +141,14 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
             #line hidden
             this.Write("            \r\n            var sch = _container.Resolve<");
             
-            #line 53 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 53 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name));
             
             #line default
             #line hidden
             this.Write("SCH>();\r\n            ");
             
-            #line 54 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 54 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
 
         if (o.HasReturnType())
         {
@@ -158,7 +158,7 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
             #line hidden
             this.Write("return ");
             
-            #line 57 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 57 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
 
         }
 
@@ -167,14 +167,14 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
             #line hidden
             this.Write("sch.Handle(");
             
-            #line 59 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 59 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
  GetMethodCallParameters(o); 
             
             #line default
             #line hidden
             this.Write(");\r\n        } \r\n\r\n");
             
-            #line 62 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 62 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\ServiceImplementationTemplate.tt"
         
     }
 
@@ -202,7 +202,7 @@ namespace Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplemen
             }
         }
         
-        #line 2 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 2 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 
 void GetMethodDefinitionParameters(ServiceOperationModel o) 
 {
@@ -226,14 +226,14 @@ void GetMethodDefinitionParameters(List<ParameterModel> parameters, bool withLea
         #line default
         #line hidden
         
-        #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 this.Write(", ");
 
         
         #line default
         #line hidden
         
-        #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 
         } 
 	
@@ -241,28 +241,28 @@ this.Write(", ");
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Type.FullName));
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
 
         
         #line default
         #line hidden
         
-        #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 
 	}	
 }
@@ -272,7 +272,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
         #line default
         #line hidden
         
-        #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 
 
 void GetMethodCallParameters(ServiceOperationModel o) 
@@ -297,14 +297,14 @@ void GetMethodCallParameters(List<ParameterModel> parameters, bool withLeadingCo
         #line default
         #line hidden
         
-        #line 47 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 47 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 this.Write(", ");
 
         
         #line default
         #line hidden
         
-        #line 47 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 47 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 
         } 
 	
@@ -312,14 +312,14 @@ this.Write(", ");
         #line default
         #line hidden
         
-        #line 49 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 49 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
 
         
         #line default
         #line hidden
         
-        #line 49 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 49 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 
 	}
 
@@ -339,14 +339,14 @@ void GetMethodCallParameters(ServiceOperationModel o, bool withLeadingComma, str
         #line default
         #line hidden
         
-        #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 this.Write(", ");
 
         
         #line default
         #line hidden
         
-        #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 
         } 
 
@@ -354,14 +354,14 @@ this.Write(", ");
         #line default
         #line hidden
         
-        #line 65 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 this.Write(this.ToStringHelper.ToStringWithCulture(prefix + p.Name));
 
         
         #line default
         #line hidden
         
-        #line 65 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
+        #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.ServiceCallHandlers\Legacy\ServiceImplementation\./../Services.ttinclude"
 
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.Mapping.EntityToDto.Templates.EntityMappingExtensions
+namespace Intent.Modules.Mapping.EntityToDto.Templates.EntityMappingExtensions
 {
     partial class EntityMappingExtensionsTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

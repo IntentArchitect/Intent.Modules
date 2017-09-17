@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.Templates;
+﻿using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Modules.WebApi.Templates.OwinWebApiConfig
+namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
 {
     public interface IWebApiConfigTemplateDecorator : ITemplateDecorator
     {

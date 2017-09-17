@@ -1,13 +1,13 @@
-﻿using Intent.SoftwareFactory.Eventing;
+﻿using Intent.Modules.OutputManager.TagWeaver.TokenParsers;
+using Intent.SoftwareFactory;
+using Intent.SoftwareFactory.Eventing;
+using Intent.SoftwareFactory.Plugins;
 using Intent.SoftwareFactory.Templates;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Intent.SoftwareFactory.Plugins.TagWeaving
+namespace Intent.Modules.OutputManager.TagWeaver
 {
     public class TagWeavingOMP : OutputTransformerBase
     {

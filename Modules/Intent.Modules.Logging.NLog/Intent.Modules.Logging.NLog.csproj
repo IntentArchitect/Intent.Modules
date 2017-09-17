@@ -7,7 +7,7 @@
     <ProjectGuid>{3CF84649-2030-4D91-B93F-984421BC479C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Logging.NLog</RootNamespace>
+    <RootNamespace>Intent.Modules.Logging.NLog</RootNamespace>
     <AssemblyName>Intent.Modules.Logging.NLog</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Typescript.Config.Templates.TypescriptConfig
+namespace Intent.Modules.Typescript.Config.Templates.TypescriptConfig
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.Typescript.Config.Templates.TypescriptConfig
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Typescript.Config\Templates\TypescriptConfig\TypescriptConfigFileTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Typescript.Config\Templates\TypescriptConfig\TypescriptConfigFileTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class TypescriptConfigFileTemplate : IntentProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.Typescript.Config.Templates.TypescriptConfig
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Typescript.Config\Templates\TypescriptConfig\TypescriptConfigFileTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Typescript.Config\Templates\TypescriptConfig\TypescriptConfigFileTemplate.tt"
 
 
 

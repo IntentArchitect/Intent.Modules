@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.UserContext.Templates.UserContextInterface
+namespace Intent.Modules.UserContext.Templates.UserContextInterface
 {
     partial class UserContextInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

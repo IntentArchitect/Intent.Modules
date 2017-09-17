@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.HttpServiceProxy.Templates.Exception
+namespace Intent.Modules.HttpServiceProxy.Templates.Exception
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
     using Intent.MetaModel.UMLModel;
@@ -23,7 +23,7 @@ namespace Intent.Packages.HttpServiceProxy.Templates.Exception
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class WebApiClientServiceProxyRemoteExceptionTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -36,21 +36,21 @@ namespace Intent.Packages.HttpServiceProxy.Templates.Exception
             this.Write(" \r\n\r\nusing System;\r\nusing System.Net;\r\nusing Intent.CodeGen;\r\n\r\n[assembly: Defaul" +
                     "tIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 23 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : Exception\r\n    {\r\n        public ");
             
-            #line 25 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

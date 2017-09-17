@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectView
+namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectView
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectVie
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\LoginRedirectView\LoginRedirectViewTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\LoginRedirectView\LoginRedirectViewTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class LoginRedirectViewTemplate : IntentProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectVie
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\LoginRedirectView\LoginRedirectViewTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Auth.ImplicitAuth\Templates\LoginRedirectView\LoginRedirectViewTemplate.tt"
 
 
 

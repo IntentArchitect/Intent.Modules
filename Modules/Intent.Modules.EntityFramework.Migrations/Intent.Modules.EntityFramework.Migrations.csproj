@@ -7,7 +7,7 @@
     <ProjectGuid>{42C35856-BD4B-42E8-B720-E3DBA4762A0D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.EntityFramework.Migrations</RootNamespace>
+    <RootNamespace>Intent.Modules.EntityFramework.Migrations</RootNamespace>
     <AssemblyName>Intent.Modules.EntityFramework.Migrations</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

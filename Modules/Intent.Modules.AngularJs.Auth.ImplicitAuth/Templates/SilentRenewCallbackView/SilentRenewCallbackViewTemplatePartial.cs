@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.SilentRenewCallbackView
+namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.SilentRenewCallbackView
 {
     partial class SilentRenewCallbackViewTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

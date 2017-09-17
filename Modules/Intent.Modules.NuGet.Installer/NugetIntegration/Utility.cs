@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Versioning;
 
-namespace Intent.SoftwareFactory.NuGet.NugetIntegration
+namespace Intent.Modules.NuGet.Installer.NugetIntegration
 {
     public static class Utility
     {

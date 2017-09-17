@@ -1,9 +1,9 @@
-﻿using Intent.Packages.Owin.Cors.Decorators;
-using Intent.Packages.Owin.Templates.OwinStartup;
+﻿using Intent.Modules.AspNet.Owin.Cors.Decorators;
+using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.Owin.Cors
+namespace Intent.Modules.AspNet.Owin.Cors
 {
     public class Registrations : OldProjectTemplateRegistration
     {

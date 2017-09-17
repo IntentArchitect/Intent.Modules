@@ -1,11 +1,6 @@
 ﻿using Intent.SoftwareFactory.Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Intent.SoftwareFactory.VSProjectSync.Events
+namespace Intent.Modules.VisualStudio.Projects.Sync.Events
 {
     public class RemoveProjectItemEvent
     {

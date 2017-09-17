@@ -7,7 +7,7 @@
     <ProjectGuid>{E3A48FD5-8997-4F40-98C4-82A90636B761}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.IdentityServer</RootNamespace>
+    <RootNamespace>Intent.Modules.IdentityServer</RootNamespace>
     <AssemblyName>Intent.Modules.IdentityServer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Unity.Templates.UnityConfig
+namespace Intent.Modules.Unity.Templates.UnityConfig
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.Unity.Templates.UnityConfig
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.Unity.Templates.UnityConfig
         {
             this.Write(" \r\n");
             
-            #line 12 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 12 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -42,14 +42,14 @@ namespace Intent.Packages.Unity.Templates.UnityConfig
                     "ystem.Collections.Generic;\r\nusing System.Linq;\r\n\r\n[assembly: DefaultIntentManage" +
                     "d(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 24 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -94,7 +94,7 @@ namespace Intent.Packages.Unity.Templates.UnityConfig
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.StartsWith(""");
             
-            #line 62 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 62 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace.Split('.')[0]));
             
             #line default
@@ -112,7 +112,7 @@ namespace Intent.Packages.Unity.Templates.UnityConfig
         {
             ");
             
-            #line 73 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 73 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Registrations()));
             
             #line default

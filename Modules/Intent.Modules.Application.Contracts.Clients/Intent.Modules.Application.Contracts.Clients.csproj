@@ -7,7 +7,7 @@
     <ProjectGuid>{96929B04-8386-4F55-B348-15A592FA7C0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Application.Contracts.Clients</RootNamespace>
+    <RootNamespace>Intent.Modules.Application.Contracts.Clients</RootNamespace>
     <AssemblyName>Intent.Modules.Application.Contracts.Clients</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

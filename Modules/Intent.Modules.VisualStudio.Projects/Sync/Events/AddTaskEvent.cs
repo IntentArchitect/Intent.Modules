@@ -1,6 +1,6 @@
 ﻿using Intent.SoftwareFactory.Engine;
 
-namespace Intent.SoftwareFactory.VSProjectSync.Events
+namespace Intent.Modules.VisualStudio.Projects.Sync.Events
 {
     public class AddTaskEvent 
     {

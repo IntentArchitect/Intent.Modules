@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.SoftwareFactory.Configuration;
+﻿using Intent.Modules.VisualStudio.Projects.Parsing;
 using Intent.SoftwareFactory.Engine;
-
 using Intent.SoftwareFactory.Templates;
 using Microsoft.Build.Construction;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
-using Intent.SoftwareFactory.Parsing;
-using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
+namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
 {
     // NB! Solution Project Type GUIDS: http://www.codeproject.com/Reference/720512/List-of-Visual-Studio-Project-Type-GUIDs
     partial class VisualStudio2015SolutionTemplate : ITemplate

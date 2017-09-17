@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.Application.Contracts.Legacy.DTO;
-using Intent.Packages.Application.Contracts.Legacy.ServiceContract;
+﻿using Intent.Modules.Application.Contracts.Legacy.DTO;
+using Intent.Modules.Application.Contracts.Legacy.ServiceContract;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Class;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Modules.WebApi.Legacy.Controller
+namespace Intent.Modules.AspNet.WebApi.Legacy.Controller
 {
     partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<IDistributionDecorator>, IDeclareUsings
     {

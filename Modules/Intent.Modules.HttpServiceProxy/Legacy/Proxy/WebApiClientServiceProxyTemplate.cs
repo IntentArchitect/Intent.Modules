@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
+namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
     using Intent.MetaModel.UMLModel;
@@ -24,7 +24,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>
     {
@@ -37,7 +37,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             this.Write(" \r\n\r\nusing System;\r\nusing System.Configuration;\r\nusing System.Linq;\r\nusing System" +
                     ".Net.Http;\r\nusing System.Net.Http.Headers;\r\nusing System.Threading.Tasks;\r\n");
             
-            #line 23 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -45,21 +45,21 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             this.Write("\r\nusing Intent.CodeGen; \r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnames" +
                     "pace ");
             
-            #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 30 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 30 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : I");
             
-            #line 30 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 30 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
@@ -67,7 +67,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             this.Write("\r\n    {\r\n        private readonly IHttpProxyInterceptor[] _httpProxyInterceptors;" +
                     "\r\n\r\n        public ");
             
-            #line 34 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 34 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -81,7 +81,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
         {
             var serviceName = ConfigurationManager.AppSettings[""WebApiEndpointBaseUrl.");
             
-            #line 41 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 41 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ApplicationName));
             
             #line default
@@ -91,7 +91,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
                     "following to the config file\'s appSetting section: <add key=\\\"WebApiEndpointBase" +
                     "Url.");
             
-            #line 44 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ApplicationName));
             
             #line default
@@ -109,7 +109,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             {
                 BaseAddress = new Uri(new Uri(serviceName), ""/api/");
             
-            #line 55 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 55 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.Replace("Service", "").ToLower()));
             
             #line default
@@ -131,7 +131,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
 
 ");
             
-            #line 70 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 70 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
 
     foreach (var operation in Model.Operations)
     {
@@ -140,7 +140,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             #line default
             #line hidden
             
-            #line 74 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 74 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
 
         // Asynchronous versions:
         if (operation.HasReturnType())
@@ -151,49 +151,49 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             #line hidden
             this.Write("        public async Task<");
             
-            #line 79 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 79 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.ReturnType.FullName));
             
             #line default
             #line hidden
             this.Write("> ");
             
-            #line 79 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 79 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("Async(");
             
-            #line 79 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 79 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodDefinitionParameters(operation)));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            return await new Task<");
             
-            #line 81 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 81 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.ReturnType.FullName));
             
             #line default
             #line hidden
             this.Write(">(() => ");
             
-            #line 81 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 81 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 81 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 81 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodCallParameters(operation)));
             
             #line default
             #line hidden
             this.Write("));\r\n        }\r\n\r\n");
             
-            #line 84 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 84 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
 
         }
         else // if (operation.HasReturnType())
@@ -204,35 +204,35 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             #line hidden
             this.Write("        public async void ");
             
-            #line 89 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 89 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("Async(");
             
-            #line 89 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 89 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodDefinitionParameters(operation)));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            await new Task(() => ");
             
-            #line 91 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 91 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 91 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 91 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodCallParameters(operation)));
             
             #line default
             #line hidden
             this.Write("));\r\n        }\r\n\r\n");
             
-            #line 94 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 94 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
  
         } // if (operation.HasReturnType())
 
@@ -243,21 +243,21 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             #line hidden
             this.Write("        public ");
             
-            #line 99 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 99 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.HasReturnType() ? operation.ReturnType.FullName : "void"));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 99 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 99 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 99 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 99 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodDefinitionParameters(operation)));
             
             #line default
@@ -266,7 +266,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
                     "\n                try\r\n                {\r\n                    const string reques" +
                     "tUri = \"");
             
-            #line 105 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 105 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToLowerInvariant()));
             
             #line default
@@ -274,7 +274,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             this.Write("\";\r\n                    \r\n                    var response = client.PostAsJsonAsy" +
                     "nc(\r\n                        requestUri: requestUri,\r\n");
             
-            #line 109 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 109 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
  
                     if (operation.UsesRawSignature)
                     {
@@ -289,14 +289,14 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             #line hidden
             this.Write("                        value: ");
             
-            #line 118 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 118 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Parameters.Any() ? operation.Parameters.Single().Name : "null"));
             
             #line default
             #line hidden
             this.Write(").Result;\r\n");
             
-            #line 119 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 119 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
 
                     }
                     else
@@ -307,7 +307,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             #line hidden
             this.Write("                        value: new\r\n                        {\r\n");
             
-            #line 126 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 126 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
 
                         foreach (var parameter in operation.Parameters)
                         {
@@ -317,14 +317,14 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             #line hidden
             this.Write("                            ");
             
-            #line 130 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 130 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 131 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 131 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
 
                         } // foreach (var parameter in operation.Parameters)
 
@@ -333,7 +333,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             #line hidden
             this.Write("                        }).Result;\r\n");
             
-            #line 135 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 135 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
  
                     }
 
@@ -351,7 +351,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
                     }
 ");
             
-            #line 147 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 147 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
 
             if (operation.HasReturnType())
             {
@@ -361,14 +361,14 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
             #line hidden
             this.Write("\r\n                    return response.Content.");
             
-            #line 152 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 152 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetReadAs(operation)));
             
             #line default
             #line hidden
             this.Write(".Result;\r\n");
             
-            #line 153 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 153 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
 
             } // if (operation.HasReturnType())
 
@@ -390,7 +390,7 @@ namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
 
 ");
             
-            #line 169 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
+            #line 169 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Legacy\Proxy\WebApiClientServiceProxyTemplate.tt"
 
     } // foreach (var operation in Model.Operations)
 

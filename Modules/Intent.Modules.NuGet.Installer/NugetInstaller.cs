@@ -1,14 +1,14 @@
+using Intent.Modules.NuGet.Installer.Managers;
+using Intent.SoftwareFactory;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Plugins;
+using Intent.SoftwareFactory.VisualStudio;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.NuGet.Managers;
-using Intent.SoftwareFactory.Plugins;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.SoftwareFactory.NuGet
+namespace Intent.Modules.NuGet.Installer
 {
     public class NugetInstaller : ApplicationProcessorBase, IApplicationProcessor
     {

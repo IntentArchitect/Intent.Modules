@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Intent.MetaModel.Domain;
-using Intent.Packages.Entities.Templates.DomainEntityInterface;
-using Intent.Packages.Entities.Templates;
+﻿using Intent.MetaModel.Domain;
+using Intent.Modules.Entities.Templates;
+using Intent.Modules.Entities.Templates.DomainEntityInterface;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Entities.Decorators
+namespace Intent.Modules.Entities.Decorators
 {
     public class SerializableEntityInterfaceDecorator : AbstractDomainEntityInterfaceDecorator
     {

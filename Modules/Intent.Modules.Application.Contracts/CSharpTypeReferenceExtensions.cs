@@ -1,13 +1,13 @@
-using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
-using Intent.Packages.Application.Contracts.Templates.DTO;
-using Intent.Packages.Constants;
+using Intent.Modules.Application.Contracts.Templates.DTO;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
+using System.Linq;
 
-namespace Intent.Packages.Application.Contracts
+namespace Intent.Modules.Application.Contracts
 {
     public static class CSharpTypeReferenceExtensions
     {

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Intent.Packages.RichDomain.Templates.EntityState;
+﻿using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.EntityFramework.Templates.RepositoryContract
+namespace Intent.Modules.EntityFramework.Templates.RepositoryContract
 {
     partial class RepositoryContractTemplate : IntentRoslynProjectItemTemplateBase<Class>, ITemplate, IHasTemplateDependencies
     {

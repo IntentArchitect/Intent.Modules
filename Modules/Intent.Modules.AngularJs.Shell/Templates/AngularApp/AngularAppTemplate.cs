@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.AngularJs.Shell.Templates.AngularApp
+namespace Intent.Modules.AngularJs.Shell.Templates.AngularApp
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.AngularJs.Shell.Templates.AngularApp
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularApp\AngularAppTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularApp\AngularAppTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class AngularAppTemplate : IntentProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.AngularJs.Shell.Templates.AngularApp
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularApp\AngularAppTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularApp\AngularAppTemplate.tt"
 
 
 
@@ -44,21 +44,21 @@ namespace Intent.Packages.AngularJs.Shell.Templates.AngularApp
             this.Write("\"use strict\";\r\nnamespace App {\r\n    var app = angular.module(\"App\", [\r\n          " +
                     "  \"ui.router\"\r\n//IntentManaged[modules]\r\n");
             
-            #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularApp\AngularAppTemplate.tt"
+            #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularApp\AngularAppTemplate.tt"
 	foreach(var module in AngularModules) { 
             
             #line default
             #line hidden
             this.Write("\t\t\t, \"");
             
-            #line 23 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularApp\AngularAppTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularApp\AngularAppTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(module));
             
             #line default
             #line hidden
             this.Write("\"\r\n");
             
-            #line 24 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularApp\AngularAppTemplate.tt"
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularApp\AngularAppTemplate.tt"
 	} 
             
             #line default

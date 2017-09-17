@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.HttpServiceProxy.Templates.AddressResolverInterface
+namespace Intent.Modules.HttpServiceProxy.Templates.AddressResolverInterface
 {
     partial class HttpServiceProxyAddressResolverInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

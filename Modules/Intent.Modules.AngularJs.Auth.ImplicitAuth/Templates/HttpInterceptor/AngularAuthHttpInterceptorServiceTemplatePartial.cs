@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.HttpInterceptor
+namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.HttpInterceptor
 {
     partial class AngularAuthHttpInterceptorServiceTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasBowerDependencies
     {

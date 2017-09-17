@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.RichDomain.Templates.Enum
+namespace Intent.Modules.RichDomain.Templates.Enum
 {
-    
+
     partial class DomainEnumTemplate : IntentProjectItemTemplateBase<EnumDefinition>, ITemplate, IHasNugetDependencies
     {
         public const string Identifier = "Intent.RichDomain.Enum";

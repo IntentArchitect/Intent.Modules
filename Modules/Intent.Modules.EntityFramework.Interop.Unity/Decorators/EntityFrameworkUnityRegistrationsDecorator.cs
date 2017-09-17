@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using Intent.Packages.EntityFramework.Templates.DeleteVisitor;
-using Intent.Packages.Unity.Templates.UnityConfig;
+using Intent.Modules.EntityFramework.Templates.DeleteVisitor;
+using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.EntityFramework.Interop.Unity.Decorators
+namespace Intent.Modules.EntityFramework.Interop.Unity.Decorators
 {
     public class EntityFrameworkUnityRegistrationsDecorator : IUnityRegistrationsDecorator, IHasTemplateDependencies
     {

@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.MetaModel.Service;
-using Intent.Packages.Constants;
-using Intent.Packages.Typescript.ServiceAgent.Contracts;
+﻿using Intent.MetaModel.Service;
+using Intent.Modules.Constants;
+using Intent.Modules.Typescript.ServiceAgent.Contracts;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
+namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
     partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<ServiceModel>, ITemplate, IRequiresPreProcessing
     {

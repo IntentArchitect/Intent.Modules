@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Application.Contracts.Legacy.DTO
+namespace Intent.Modules.Application.Contracts.Legacy.DTO
 {
     using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.SoftwareFactory.Templates;
@@ -22,7 +22,7 @@ namespace Intent.Packages.Application.Contracts.Legacy.DTO
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class GenericClassTemplate : GenericClassTemplateBase
     {
@@ -34,7 +34,7 @@ namespace Intent.Packages.Application.Contracts.Legacy.DTO
         {
             this.Write(" \r\n");
             
-            #line 14 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+            #line 14 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
 
     var metaData = Model.GetMetaData();
@@ -45,14 +45,14 @@ namespace Intent.Packages.Application.Contracts.Legacy.DTO
             #line hidden
             this.Write("using ");
             
-            #line 19 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(usingNS));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+            #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
     }
 
             
@@ -60,14 +60,14 @@ namespace Intent.Packages.Application.Contracts.Legacy.DTO
             #line hidden
             this.Write("[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 24 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n");
             
-            #line 26 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+            #line 26 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
  AddClass(Model);
             
             #line default
@@ -91,7 +91,7 @@ namespace Intent.Packages.Application.Contracts.Legacy.DTO
             }
         }
         
-        #line 29 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 29 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
     void AddClass(ClassModel model)
     {
@@ -104,28 +104,28 @@ namespace Intent.Packages.Application.Contracts.Legacy.DTO
         #line default
         #line hidden
         
-        #line 36 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 36 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("    /// ");
 
         
         #line default
         #line hidden
         
-        #line 37 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 37 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(line));
 
         
         #line default
         #line hidden
         
-        #line 37 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 37 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 38 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 38 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
             }
         }
@@ -136,89 +136,89 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 43 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 43 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("    [");
 
         
         #line default
         #line hidden
         
-        #line 44 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(tag.Name));
 
         
         #line default
         #line hidden
         
-        #line 44 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("(");
 
         
         #line default
         #line hidden
         
-        #line 44 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(tag.Value));
 
         
         #line default
         #line hidden
         
-        #line 44 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(")]\r\n");
 
         
         #line default
         #line hidden
         
-        #line 45 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 45 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
     }
         
         #line default
         #line hidden
         
-        #line 45 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 45 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("    public partial ");
 
         
         #line default
         #line hidden
         
-        #line 46 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 46 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(model.IsAbstract ? "abstract " : ""));
 
         
         #line default
         #line hidden
         
-        #line 46 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 46 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("class ");
 
         
         #line default
         #line hidden
         
-        #line 46 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 46 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassType.TypeName));
 
         
         #line default
         #line hidden
         
-        #line 46 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 46 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
  AddClassContracts(model); 
         
         #line default
         #line hidden
         
-        #line 46 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 46 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("\r\n    {\r\n");
 
         
         #line default
         #line hidden
         
-        #line 49 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 49 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
     foreach (var property in model.Properties)
     {
@@ -231,28 +231,28 @@ this.Write("\r\n    {\r\n");
         #line default
         #line hidden
         
-        #line 56 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 56 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("        /// ");
 
         
         #line default
         #line hidden
         
-        #line 57 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 57 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(line));
 
         
         #line default
         #line hidden
         
-        #line 57 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 57 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 58 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 58 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
             }
         }
@@ -263,96 +263,96 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("        [");
 
         
         #line default
         #line hidden
         
-        #line 64 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 64 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(tag.Name));
 
         
         #line default
         #line hidden
         
-        #line 64 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 64 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("(");
 
         
         #line default
         #line hidden
         
-        #line 64 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 64 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(tag.Value));
 
         
         #line default
         #line hidden
         
-        #line 64 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 64 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(")]\r\n");
 
         
         #line default
         #line hidden
         
-        #line 65 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
         }
         
         #line default
         #line hidden
         
-        #line 65 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("        public ");
 
         
         #line default
         #line hidden
         
-        #line 66 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 66 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(property.Type.FullName));
 
         
         #line default
         #line hidden
         
-        #line 66 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 66 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 66 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 66 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToPascalCase()));
 
         
         #line default
         #line hidden
         
-        #line 66 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 66 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(" { get; set;}\r\n\r\n");
 
         
         #line default
         #line hidden
         
-        #line 68 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 68 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
     }
         
         #line default
         #line hidden
         
-        #line 68 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 68 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write("    }\r\n\r\n");
 
         
         #line default
         #line hidden
         
-        #line 71 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 71 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
     foreach (var child in model.ChildClasses)
     {
         AddClass(child);
@@ -362,7 +362,7 @@ this.Write("    }\r\n\r\n");
         #line default
         #line hidden
         
-        #line 76 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 76 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
     }
 
@@ -370,7 +370,7 @@ this.Write("    }\r\n\r\n");
         #line default
         #line hidden
         
-        #line 78 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 78 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
     void AddClassContracts(ClassModel model)
     {
@@ -381,14 +381,14 @@ this.Write("    }\r\n\r\n");
         #line default
         #line hidden
         
-        #line 83 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 83 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(" : ");
 
         
         #line default
         #line hidden
         
-        #line 83 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 83 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
         if (model.BaseClassType != null)
         {
@@ -397,21 +397,21 @@ this.Write(" : ");
         #line default
         #line hidden
         
-        #line 86 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 86 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(model.BaseClassType.FullName));
 
         
         #line default
         #line hidden
         
-        #line 86 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 86 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 86 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 86 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
             if (model.Interfaces.Any())
             {
@@ -420,14 +420,14 @@ this.Write(" ");
         #line default
         #line hidden
         
-        #line 89 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 89 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(", ");
 
         
         #line default
         #line hidden
         
-        #line 89 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 89 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
             }
         }
@@ -439,14 +439,14 @@ this.Write(", ");
         #line default
         #line hidden
         
-        #line 95 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 95 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(interfaces));
 
         
         #line default
         #line hidden
         
-        #line 95 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
+        #line 95 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Legacy\DTO\GenericClassTemplate.tt"
 
         }
     }

@@ -7,7 +7,7 @@
     <ProjectGuid>{286642B8-1367-47A4-B5A5-2FD4494C110C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Bower.Installer</RootNamespace>
+    <RootNamespace>Intent.Modules.Bower.Installer</RootNamespace>
     <AssemblyName>Intent.Modules.Bower.Installer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

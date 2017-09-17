@@ -1,14 +1,13 @@
-﻿using Intent.SoftwareFactory.NuGet.NugetIntegration;
+﻿using Intent.Modules.NuGet.Installer.NugetIntegration;
 using Microsoft.Build.Construction;
+using Microsoft.Build.Evaluation;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Intent.SoftwareFactory.Templates;
-using Microsoft.Build.Evaluation;
 using IPackage = NuGet.IPackage;
 
-namespace Intent.SoftwareFactory.NuGet.Managers
+namespace Intent.Modules.NuGet.Installer.Managers
 {
     public class NugetManager : IDisposable
     {

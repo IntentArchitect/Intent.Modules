@@ -1,6 +1,6 @@
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Owin.Cors
+namespace Intent.Modules.AspNet.Owin.Cors
 {
     public static class NugetPackages
     {

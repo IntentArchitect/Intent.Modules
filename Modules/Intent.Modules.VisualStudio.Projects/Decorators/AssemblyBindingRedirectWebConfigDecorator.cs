@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.SoftwareFactory.VSProjects.Decorators
+namespace Intent.Modules.VisualStudio.Projects.Decorators
 {
     public class AssemblyBindingRedirectWebConfigDecorator : IWebConfigDecorator
     {

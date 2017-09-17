@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.AngularJs.Shell.Templates.AngularConfigJs
+namespace Intent.Modules.AngularJs.Shell.Templates.AngularConfigJs
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.AngularJs.Shell.Templates.AngularConfigJs
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class AngularConfigJsTemplate : IntentProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.AngularJs.Shell.Templates.AngularConfigJs
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
 
 
 
@@ -43,28 +43,28 @@ namespace Intent.Packages.AngularJs.Shell.Templates.AngularConfigJs
             #line hidden
             this.Write("angular.module(\"App\").constant(\"Config\", {\r\n//IntentManaged[configs]\r\n");
             
-            #line 19 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
+            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
 	foreach(var item in ConfigItems) { 
             
             #line default
             #line hidden
             this.Write("    ");
             
-            #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
+            #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(item.Key));
             
             #line default
             #line hidden
             this.Write(": \"");
             
-            #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
+            #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(item.Value));
             
             #line default
             #line hidden
             this.Write("\",\r\n");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.Shell\Templates\AngularConfigJs\AngularConfigJsTemplate.tt"
 	} 
             
             #line default

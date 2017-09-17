@@ -2,7 +2,7 @@
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
+namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {
     partial class TypescriptDtoTemplate : IntentTypescriptProjectItemTemplateBase<DTOModel>, ITemplate
     {

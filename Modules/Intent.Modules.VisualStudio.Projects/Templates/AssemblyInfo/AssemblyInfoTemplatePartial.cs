@@ -1,11 +1,7 @@
-﻿using System;
-using Intent.SoftwareFactory.Configuration;
-using Intent.SoftwareFactory.Engine;
-
-using Intent.SoftwareFactory.MetaModels.Solution;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.SoftwareFactory.VSProjects.Templates.AssemblyInfo
+namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
 {
     partial class AssemblyInfoTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

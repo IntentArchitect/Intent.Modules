@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.UserContext.Templates.UserContextStatic
+namespace Intent.Modules.UserContext.Templates.UserContextStatic
 {
     partial class UserContextStaticTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

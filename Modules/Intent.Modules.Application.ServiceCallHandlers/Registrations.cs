@@ -1,14 +1,12 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceCallHandler;
-using Intent.Packages.Application.ServiceCallHandlers.Legacy.ServiceImplementation;
+﻿using Intent.Modules.Application.ServiceCallHandlers.Legacy.ServiceCallHandler;
+using Intent.Modules.Application.ServiceCallHandlers.Legacy.ServiceImplementation;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Registrations;
+using System.Linq;
 
-namespace Intent.Packages.Application.ServiceCallHandlers
+namespace Intent.Modules.Application.ServiceCallHandlers
 {
     public class Registrations : OldProjectTemplateRegistration
     {

@@ -7,7 +7,7 @@
     <ProjectGuid>{68F5A4A1-FD17-4DC7-8DCF-9200751DC89E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Application.Contracts.Mappings</RootNamespace>
+    <RootNamespace>Intent.Modules.Application.Contracts.Mappings</RootNamespace>
     <AssemblyName>Intent.Modules.Application.Contracts.Mappings</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

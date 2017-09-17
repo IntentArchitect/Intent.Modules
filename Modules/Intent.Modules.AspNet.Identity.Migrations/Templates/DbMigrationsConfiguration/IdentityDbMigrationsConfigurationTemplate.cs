@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.AspNet.Identity.Migrations.Templates.DbMigrationsConfiguration
+namespace Intent.Modules.AspNet.Identity.Migrations.Templates.DbMigrationsConfiguration
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -16,7 +16,7 @@ namespace Intent.Packages.AspNet.Identity.Migrations.Templates.DbMigrationsConfi
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class IdentityDbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase
     {
@@ -30,14 +30,14 @@ namespace Intent.Packages.AspNet.Identity.Migrations.Templates.DbMigrationsConfi
             this.Write("using System;\r\nusing System.Data.Entity.Migrations;\r\nusing System.Data.Entity.Mig" +
                     "rations.Model;\r\nusing System.Data.Entity.SqlServer;\r\nusing System.IO;");
             
-            #line 10 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
+            #line 10 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -45,21 +45,21 @@ namespace Intent.Packages.AspNet.Identity.Migrations.Templates.DbMigrationsConfi
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    public sealed c" +
                     "lass ");
             
-            #line 16 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
+            #line 16 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : DbMigrationsConfiguration<");
             
-            #line 16 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
+            #line 16 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DbContextClassName));
             
             #line default
             #line hidden
             this.Write(">\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public ");
             
-            #line 19 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
+            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -67,7 +67,7 @@ namespace Intent.Packages.AspNet.Identity.Migrations.Templates.DbMigrationsConfi
             this.Write("()\r\n        {\r\n            AutomaticMigrationsEnabled = false;\r\n            Migra" +
                     "tionsDirectory = \"Identity\\\\Migrations\";\r\n            MigrationsNamespace = \"");
             
-            #line 23 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -75,7 +75,7 @@ namespace Intent.Packages.AspNet.Identity.Migrations.Templates.DbMigrationsConfi
             this.Write(".Migrations\";\r\n        }\r\n\r\n        [IntentManaged(Mode.Merge, Signature = Mode.F" +
                     "ully, Body = Mode.Ignore)]\r\n        protected override void Seed(");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.Identity.Migrations\Templates\DbMigrationsConfiguration\IdentityDbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DbContextClassName));
             
             #line default

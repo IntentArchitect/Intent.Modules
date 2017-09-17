@@ -7,7 +7,7 @@
     <ProjectGuid>{C57BAAC5-468E-44F1-8A38-AA7C609B2F9D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.AngularJs.Shell</RootNamespace>
+    <RootNamespace>Intent.Modules.AngularJs.Shell</RootNamespace>
     <AssemblyName>Intent.Modules.AngularJs.Shell</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -1,6 +1,6 @@
 ﻿using NuGet;
 
-namespace Intent.SoftwareFactory.NuGet.NugetIntegration
+namespace Intent.Modules.NuGet.Installer.NugetIntegration
 {
     public interface INugetServices
     {

@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.HttpServiceProxy.Templates.InterceptorInterface;
+﻿using Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.HttpServiceProxy.Legacy.Proxy
+namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
 {
     partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, IHasTemplateDependencies
     {

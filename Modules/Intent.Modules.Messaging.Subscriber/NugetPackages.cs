@@ -1,6 +1,6 @@
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Messaging.Subscriber
+namespace Intent.Modules.Messaging.Subscriber
 {
     public static class NugetPackages
     {

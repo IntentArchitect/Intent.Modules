@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Intent.Modules.WebApi.Templates.OwinWebApiConfig;
+﻿using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
+using System.Collections.Generic;
 
-namespace Intent.SoftwareFactory.Modules.Decorators.WebApi
+namespace Intent.Modules.AspNet.WebApi.Decorators
 {
     public class WebApiConfigJsonValidationDecorator : IWebApiConfigTemplateDecorator
     {

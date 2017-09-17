@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Intent.Packages.Bower.Installer
+namespace Intent.Modules.Bower.Installer
 {
     public class CommandLineProcessor
     {

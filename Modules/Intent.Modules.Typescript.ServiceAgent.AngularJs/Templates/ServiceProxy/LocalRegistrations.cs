@@ -1,13 +1,13 @@
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
-namespace Intent.Packages.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
+namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
     [Description("Intent Typescript ServiceAgent Proxy - Local Server")]
     public class LocalRegistrations : ModelTemplateRegistrationBase<ServiceModel>

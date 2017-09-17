@@ -1,7 +1,6 @@
-using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Electron.NodeEdgeProxy
+namespace Intent.Modules.Electron.NodeEdgeProxy
 {
     public static class NugetPackages
     {

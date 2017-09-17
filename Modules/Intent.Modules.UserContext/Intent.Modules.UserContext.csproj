@@ -7,7 +7,7 @@
     <ProjectGuid>{C12C6483-778D-4606-8239-62045D67788F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.UserContext</RootNamespace>
+    <RootNamespace>Intent.Modules.UserContext</RootNamespace>
     <AssemblyName>Intent.Modules.UserContext</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

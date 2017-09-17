@@ -1,10 +1,10 @@
-﻿using Intent.Packages.EntityFramework.Interop.WebApi.Decorators;
-using Intent.Modules.WebApi.Legacy.Controller;
-using Intent.Modules.WebApi.Templates.Controller;
+﻿using Intent.Modules.AspNet.WebApi.Legacy.Controller;
+using Intent.Modules.AspNet.WebApi.Templates.Controller;
+using Intent.Modules.EntityFramework.Interop.WebApi.Legacy;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.EntityFramework.Interop.WebApi
+namespace Intent.Modules.EntityFramework.Interop.WebApi
 {
     public class Registrations : OldProjectTemplateRegistration
     {
@@ -14,8 +14,8 @@ namespace Intent.Packages.EntityFramework.Interop.WebApi
 
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            RegisterDecorator<IDistributionDecorator>(Intent.Packages.EntityFramework.Interop.WebApi.Legacy.EntityFrameworkDistributionDecorator.Identifier, new Intent.Packages.EntityFramework.Interop.WebApi.Legacy.EntityFrameworkDistributionDecorator());
-            RegisterDecorator<DistributionDecoratorBase>(EntityFrameworkDistributionDecorator.Identifier, new EntityFrameworkDistributionDecorator());
+            RegisterDecorator<IDistributionDecorator>(EntityFrameworkDistributionDecorator.Identifier, new EntityFrameworkDistributionDecorator());
+            RegisterDecorator<DistributionDecoratorBase>(Decorators.EntityFrameworkDistributionDecorator.Identifier, new Decorators.EntityFrameworkDistributionDecorator());
         }
     }
 }

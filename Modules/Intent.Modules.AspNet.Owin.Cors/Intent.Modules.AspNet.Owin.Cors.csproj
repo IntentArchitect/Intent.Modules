@@ -7,7 +7,7 @@
     <ProjectGuid>{F670D629-233A-44A9-AD6F-0A40F52CB502}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Owin.Cors</RootNamespace>
+    <RootNamespace>Intent.Modules.AspNet.Owin.Cors</RootNamespace>
     <AssemblyName>Intent.Modules.AspNet.Owin.Cors</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

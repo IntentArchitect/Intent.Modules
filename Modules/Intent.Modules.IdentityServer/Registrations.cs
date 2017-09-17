@@ -1,16 +1,16 @@
-﻿using System.Linq;
-using Intent.MetaModel.Hosting;
-using Intent.Packages.IdentityServer.Decorators;
-using Intent.Packages.IdentityServer.Templates.AspNetIdentityModel;
-using Intent.Packages.IdentityServer.Templates.AspNetIdentityUserService;
-using Intent.Packages.IdentityServer.Templates.Clients;
-using Intent.Packages.IdentityServer.Templates.Scopes;
-using Intent.Packages.IdentityServer.Templates.SigningCertificate;
-using Intent.Packages.Owin.Templates.OwinStartup;
+﻿using Intent.MetaModel.Hosting;
+using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.IdentityServer.Decorators;
+using Intent.Modules.IdentityServer.Templates.AspNetIdentityModel;
+using Intent.Modules.IdentityServer.Templates.AspNetIdentityUserService;
+using Intent.Modules.IdentityServer.Templates.Clients;
+using Intent.Modules.IdentityServer.Templates.Scopes;
+using Intent.Modules.IdentityServer.Templates.SigningCertificate;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
+using System.Linq;
 
-namespace Intent.Packages.IdentityServer
+namespace Intent.Modules.IdentityServer
 {
     public class Registrations : OldProjectTemplateRegistration
     {

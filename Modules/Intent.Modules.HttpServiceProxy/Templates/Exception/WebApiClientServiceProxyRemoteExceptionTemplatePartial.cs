@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.HttpServiceProxy.Templates.Exception
+namespace Intent.Modules.HttpServiceProxy.Templates.Exception
 {
     partial class WebApiClientServiceProxyRemoteExceptionTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

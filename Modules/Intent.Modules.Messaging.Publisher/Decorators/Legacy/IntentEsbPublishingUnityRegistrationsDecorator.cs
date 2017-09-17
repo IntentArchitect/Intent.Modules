@@ -1,12 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Intent.Packages.Unity.Templates.UnityConfig;
+using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace Intent.Packages.Messaging.Publisher.Decorators.Legacy
+namespace Intent.Modules.Messaging.Publisher.Decorators.Legacy
 {
     public class IntentEsbPublishingUnityRegistrationsDecorator : IUnityRegistrationsDecorator, IHasNugetDependencies
     {

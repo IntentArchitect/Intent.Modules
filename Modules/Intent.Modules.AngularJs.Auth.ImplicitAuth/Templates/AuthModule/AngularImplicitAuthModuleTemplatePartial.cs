@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Intent.MetaModel.Hosting;
-using Intent.Packages.Constants;
+﻿using Intent.MetaModel.Hosting;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
+namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
 {
     partial class AngularImplicitAuthModuleTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasBowerDependencies, IRequiresPreProcessing, IHasDecorators<IAngularImplicitAuthModuleDecorator>
     {

@@ -1,6 +1,6 @@
 ﻿using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Auditing
+namespace Intent.Modules.Auditing
 {
     public class NugetPackages
     {

@@ -7,7 +7,7 @@
     <ProjectGuid>{36F0AC19-B618-4C38-866D-BD75369E83D1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.UserContext.Interop.WebApi</RootNamespace>
+    <RootNamespace>Intent.Modules.UserContext.Interop.AspNet.WebApi</RootNamespace>
     <AssemblyName>Intent.Modules.UserContext.Interop.AspNet.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

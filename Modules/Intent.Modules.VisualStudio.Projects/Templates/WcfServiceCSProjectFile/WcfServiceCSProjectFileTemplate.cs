@@ -1,16 +1,14 @@
+using Intent.SoftwareFactory;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.VisualStudio;
+using Microsoft.Build.Construction;
 using System;
 using System.Collections.Generic;
-using Intent.SoftwareFactory.Configuration;
-using Intent.SoftwareFactory.Engine;
-
-using Intent.SoftwareFactory.MetaModels.Solution;
-using Intent.SoftwareFactory.Templates;
-using Microsoft.Build.Construction;
-using System.Xml.Linq;
 using System.IO;
-using Intent.SoftwareFactory.VisualStudio;
+using System.Xml.Linq;
 
-namespace Intent.SoftwareFactory.VSProjects.Templates.WcfServiceCSProjectFile
+namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 {
     public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators, IHasNugetDependencies
     {

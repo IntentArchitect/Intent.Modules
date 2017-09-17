@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Mapping.EntityToDto.Templates.DTOMappingProfile
+namespace Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile
 {
     using Intent.SoftwareFactory.MetaModels.Mapping;
     using Intent.SoftwareFactory.Templates;
@@ -22,7 +22,7 @@ namespace Intent.Packages.Mapping.EntityToDto.Templates.DTOMappingProfile
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class GenericMappingTemplate : GenericMappingTemplateBase
     {
@@ -36,28 +36,28 @@ namespace Intent.Packages.Mapping.EntityToDto.Templates.DTOMappingProfile
                     "tem.Linq;\r\nusing System.Text; \r\nusing System.Threading.Tasks;\r\nusing Intent.Fram" +
                     "ework.Core;\r\n");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DeclareUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 25 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write(" \r\n{\r\n    public class ");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ProfileName));
             
             #line default
             #line hidden
             this.Write(" : Profile\r\n    {\r\n        protected override void  Configure()\r\n        {\r\n");
             
-            #line 31 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 
 foreach (var model in Models)
 {
@@ -67,21 +67,21 @@ foreach (var model in Models)
             #line hidden
             this.Write("            Configure(this, default(");
             
-            #line 35 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 35 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.SourceType.FullName));
             
             #line default
             #line hidden
             this.Write("), default(");
             
-            #line 35 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 35 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.DestinationType.FullName));
             
             #line default
             #line hidden
             this.Write("));\r\n");
             
-            #line 36 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 36 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
  
 }
 
@@ -90,7 +90,7 @@ foreach (var model in Models)
             #line hidden
             this.Write("        }\r\n");
             
-            #line 40 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 40 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 
 foreach (var model in Models)
 {
@@ -100,220 +100,220 @@ foreach (var model in Models)
             #line hidden
             this.Write("\r\n        public static IMappingExpression<");
             
-            #line 45 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 45 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.SourceType.FullName));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 45 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 45 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.DestinationType.FullName));
             
             #line default
             #line hidden
             this.Write("> Configure(IProfileExpression cfg, ");
             
-            #line 45 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 45 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.SourceType.FullName));
             
             #line default
             #line hidden
             this.Write(" sourceType, ");
             
-            #line 45 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 45 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.DestinationType.FullName));
             
             #line default
             #line hidden
             this.Write(" destinationType)\r\n        {\r\n");
             
-            #line 47 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 47 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 foreach (var resolveUsing in model.ResolveUsing){
             
             #line default
             #line hidden
             this.Write("            Func<");
             
-            #line 48 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 48 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.SourceType.FullName));
             
             #line default
             #line hidden
             this.Write(", IDictionary<string, object>, ");
             
-            #line 48 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 48 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(resolveUsing.Key.Type.FullName));
             
             #line default
             #line hidden
             this.Write("> __");
             
-            #line 48 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 48 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(resolveUsing.Key.Name));
             
             #line default
             #line hidden
             this.Write("mapping =\r\n                ");
             
-            #line 49 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 49 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(resolveUsing.Value));
             
             #line default
             #line hidden
             this.Write("\r\n                ;\r\n");
             
-            #line 51 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 51 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("            return cfg.CreateMap<");
             
-            #line 52 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 52 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.SourceType.FullName));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 52 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 52 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.DestinationType.TypeName));
             
             #line default
             #line hidden
             this.Write(">()\r\n");
             
-            #line 53 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 53 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 if (model.IncludeBaseClassMap){
             
             #line default
             #line hidden
             this.Write("                .IncludeBase<");
             
-            #line 54 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 54 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.SourceType.BaseClassType.FullName));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 54 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 54 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.DestinationType.BaseClassType.FullName));
             
             #line default
             #line hidden
             this.Write(">()\r\n");
             
-            #line 55 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 55 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 56 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 56 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 if (!string.IsNullOrWhiteSpace(model.DestinationConstructor) &&  model.MapAfterDestinationConstructor){
             
             #line default
             #line hidden
             this.Write("                .ConstructProjectionUsing(<");
             
-            #line 57 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 57 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.DestinationConstructor));
             
             #line default
             #line hidden
             this.Write(">)\r\n");
             
-            #line 58 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 58 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 59 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 59 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 if (!string.IsNullOrWhiteSpace(model.DestinationConstructor) &&  model.MapAfterDestinationConstructor){
             
             #line default
             #line hidden
             this.Write("                .ProjectionUsing(<");
             
-            #line 60 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 60 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.DestinationConstructor));
             
             #line default
             #line hidden
             this.Write(">)\r\n");
             
-            #line 61 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 61 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 62 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 62 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 foreach (var mapFrom in model.MapFroms){
             
             #line default
             #line hidden
             this.Write("                .ForMember(dest => dest.");
             
-            #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(mapFrom.Key));
             
             #line default
             #line hidden
             this.Write(", opt => opt.MapFrom(");
             
-            #line 63 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 63 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(mapFrom.Value));
             
             #line default
             #line hidden
             this.Write("))\r\n");
             
-            #line 64 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 64 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 65 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 foreach (var resolveUsing in model.ResolveUsing){
             
             #line default
             #line hidden
             this.Write("                .ForMember(dest => dest.");
             
-            #line 66 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 66 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(resolveUsing.Key.Name));
             
             #line default
             #line hidden
             this.Write(", opt => opt.ResolveUsing(ctx => __");
             
-            #line 66 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 66 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(resolveUsing.Key.Name));
             
             #line default
             #line hidden
             this.Write("mapping(((");
             
-            #line 66 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 66 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.SourceType.FullName));
             
             #line default
             #line hidden
             this.Write(")ctx.Context.SourceValue), ctx.Context.Options.Items)));\r\n");
             
-            #line 67 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 67 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("                ;\r\n        }\r\n");
             
-            #line 70 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
+            #line 70 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Mapping.EntityToDto\Templates\DTOMappingProfile\GenericMappingTemplate.tt"
 
 }
             

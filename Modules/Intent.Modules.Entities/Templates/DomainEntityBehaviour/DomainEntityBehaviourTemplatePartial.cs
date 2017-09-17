@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.MetaModel.Domain;
+﻿using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.Entities.Templates.DomainEntityBehaviour
+namespace Intent.Modules.Entities.Templates.DomainEntityBehaviour
 {
     partial class DomainEntityBehaviourTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate//, IHasDecorators<AbstractDomainEntityDecorator>
     {

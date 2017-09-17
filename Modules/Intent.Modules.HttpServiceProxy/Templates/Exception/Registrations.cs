@@ -1,9 +1,9 @@
-﻿using System.ComponentModel;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
+using System.ComponentModel;
 
-namespace Intent.Packages.HttpServiceProxy.Templates.Exception
+namespace Intent.Modules.HttpServiceProxy.Templates.Exception
 {
     [Description("Intent HttpServiceProxy - Remote Exception")]
     public class Registrations : NoModelTemplateRegistrationBase

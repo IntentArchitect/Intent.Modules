@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Messaging.Subscriber.Legacy.WebApiEventConsumerService
+namespace Intent.Modules.Messaging.Subscriber.Legacy.WebApiEventConsumerService
 {
     public partial class WebApiEventConsumerServiceTemplate : IntentRoslynProjectItemTemplateBase<SubscribingModel>, ITemplate, IHasNugetDependencies, IHasDecorators<IEventConsumerDecorator>, IRequiresPreProcessing
     {

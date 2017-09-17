@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Intent.MetaModel.Dto.Old;
+﻿using Intent.MetaModel.Dto.Old;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Common;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Application.Contracts.Legacy.DTO
+namespace Intent.Modules.Application.Contracts.Legacy.DTO
 {
     public class DTOTemplate : IntentRoslynProjectItemTemplateBase<DtoModel>, ITemplate, IHasAssemblyDependencies
     {

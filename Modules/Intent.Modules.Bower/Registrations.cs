@@ -1,10 +1,9 @@
-﻿using Intent.Packages.Bower.Templates.BowerConfig;
-using Intent.Packages.Bower.Templates.BowerRCFile;
+﻿using Intent.Modules.Bower.Templates.BowerConfig;
+using Intent.Modules.Bower.Templates.BowerRCFile;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.Bower
+namespace Intent.Modules.Bower
 {
     public class Registrations : OldProjectTemplateRegistration
     {

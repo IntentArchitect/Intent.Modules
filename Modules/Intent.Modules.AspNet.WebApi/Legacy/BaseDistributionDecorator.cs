@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Intent.Modules.WebApi.Legacy.Controller;
+﻿using Intent.Modules.AspNet.WebApi.Legacy.Controller;
 using Intent.SoftwareFactory.MetaModels.Class;
 using Intent.SoftwareFactory.MetaModels.Service;
+using System.Collections.Generic;
 
-namespace Intent.Modules.WebApi.Legacy
+namespace Intent.Modules.AspNet.WebApi.Legacy
 {
     public abstract class BaseDistributionDecorator : IDistributionDecorator
     {

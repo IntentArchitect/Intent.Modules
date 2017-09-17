@@ -7,7 +7,7 @@
     <ProjectGuid>{2EFB81D3-AB77-48DC-882B-EEC2C37196EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Logging.NLog.Interop.WebApi</RootNamespace>
+    <RootNamespace>Intent.Modules.Logging.NLog.Interop.WebApi</RootNamespace>
     <AssemblyName>Intent.Modules.Logging.NLog.Interop.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

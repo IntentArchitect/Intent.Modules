@@ -1,12 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using Intent.MetaModel.Domain;
-using Intent.Packages.Entities.Templates;
-using Intent.Packages.Entities.Templates.DomainEntity;
+﻿using Intent.MetaModel.Domain;
+using Intent.Modules.Entities.Templates;
+using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.SoftwareFactory.Configuration;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Entities.Decorators
+namespace Intent.Modules.Entities.Decorators
 {
     public class DDDEntityDecorator : AbstractDomainEntityDecorator, ISupportsConfiguration
     {

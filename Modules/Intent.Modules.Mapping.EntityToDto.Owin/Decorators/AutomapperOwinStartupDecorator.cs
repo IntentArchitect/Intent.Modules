@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Intent.Packages.Mapping.EntityToDto.Templates.DTOMappingProfile;
-using Intent.Packages.Owin.Templates.OwinStartup;
+﻿using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Mapping.EntityToDto.Owin.Decorators
+namespace Intent.Modules.Mapping.EntityToDto.Owin.Decorators
 {
     public class AutomapperOwinStartupDecorator : IOwinStartupDecorator, IHasTemplateDependencies, IHasNugetDependencies
     {

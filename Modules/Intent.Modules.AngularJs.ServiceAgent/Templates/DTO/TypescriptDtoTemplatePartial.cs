@@ -4,7 +4,7 @@ using Intent.SoftwareFactory.MetaModels.Class;
 using Intent.SoftwareFactory.MetaModels.Common;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.AngularJs.ServiceAgent.Templates.DTO
+namespace Intent.Modules.AngularJs.ServiceAgent.Templates.DTO
 {
     partial class TypescriptDtoTemplate : IntentProjectItemTemplateBase<ClassModel>, ITemplate
     {

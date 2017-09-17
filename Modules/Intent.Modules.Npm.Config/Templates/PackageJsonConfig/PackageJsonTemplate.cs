@@ -1,14 +1,13 @@
-using System.Collections.Generic;
-using System.IO;
-using Intent.Packages.Constants;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
+using System.IO;
 
-namespace Intent.Packages.Npm.Config.Templates.PackageJsonConfig
+namespace Intent.Modules.Npm.Config.Templates.PackageJsonConfig
 {
     public class PackageJsonTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

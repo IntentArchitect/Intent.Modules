@@ -1,10 +1,10 @@
-﻿using Intent.Packages.Logging.NLog.Interop.WebApi.Decorators;
-using Intent.Modules.WebApi.Legacy.Controller;
-using Intent.Modules.WebApi.Templates.Controller;
+﻿using Intent.Modules.AspNet.WebApi.Legacy.Controller;
+using Intent.Modules.AspNet.WebApi.Templates.Controller;
+using Intent.Modules.Logging.NLog.Interop.WebApi.Decorators;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.Logging.NLog.Interop.WebApi
+namespace Intent.Modules.Logging.NLog.Interop.WebApi
 {
     public class Registrations : OldProjectTemplateRegistration
     {

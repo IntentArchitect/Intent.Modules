@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Intent.Packages.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
-using Intent.Packages.UserContext.Templates.UserContextInterface;
+﻿using Intent.Modules.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
+using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.UserContext.Interop.Messaging.Subscriber.Legacy
+namespace Intent.Modules.UserContext.Interop.Messaging.Subscriber.Legacy
 {
     public class UserContextEventConsumerDecorator : IEventConsumerDecorator, IHasTemplateDependencies
     {

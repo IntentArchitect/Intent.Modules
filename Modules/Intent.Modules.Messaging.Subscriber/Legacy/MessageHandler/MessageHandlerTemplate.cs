@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Messaging.Subscriber.Legacy.MessageHandler
+namespace Intent.Modules.Messaging.Subscriber.Legacy.MessageHandler
 {
     using Intent.SoftwareFactory.Templates;
     using Intent.SoftwareFactory.MetaModels.Common;
@@ -22,7 +22,7 @@ namespace Intent.Packages.Messaging.Subscriber.Legacy.MessageHandler
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Messaging.Subscriber\Legacy\MessageHandler\MessageHandlerTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Messaging.Subscriber\Legacy\MessageHandler\MessageHandlerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class MessageHandlerTemplate : IntentRoslynProjectItemTemplateBase<TypeModel>
     {
@@ -46,21 +46,21 @@ using Intent.CodeGen;
 
 namespace ");
             
-            #line 25 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Messaging.Subscriber\Legacy\MessageHandler\MessageHandlerTemplate.tt"
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Messaging.Subscriber\Legacy\MessageHandler\MessageHandlerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Messaging.Subscriber\Legacy\MessageHandler\MessageHandlerTemplate.tt"
+            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Messaging.Subscriber\Legacy\MessageHandler\MessageHandlerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.TypeName));
             
             #line default
             #line hidden
             this.Write("Handler : IMessageHandler<");
             
-            #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Messaging.Subscriber\Legacy\MessageHandler\MessageHandlerTemplate.tt"
+            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Messaging.Subscriber\Legacy\MessageHandler\MessageHandlerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.FullName));
             
             #line default
@@ -68,7 +68,7 @@ namespace ");
             this.Write(">\r\n    {\r\n        [IntentManaged(Mode.Merge, Body = Mode.Ignore)]\r\n        public" +
                     " void Handle(");
             
-            #line 31 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Messaging.Subscriber\Legacy\MessageHandler\MessageHandlerTemplate.tt"
+            #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Messaging.Subscriber\Legacy\MessageHandler\MessageHandlerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.FullName));
             
             #line default

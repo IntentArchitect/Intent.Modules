@@ -1,9 +1,9 @@
-﻿using Intent.Packages.Mapping.EntityToDto.Owin.Decorators;
-using Intent.Packages.Owin.Templates.OwinStartup;
+﻿using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.Mapping.EntityToDto.Owin.Decorators;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.Mapping.EntityToDto.Owin
+namespace Intent.Modules.Mapping.EntityToDto.Owin
 {
     public class Registrations : OldProjectTemplateRegistration
     {

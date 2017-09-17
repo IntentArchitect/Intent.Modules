@@ -1,14 +1,14 @@
-﻿using Intent.Packages.AngularJs.Shell.Templates.AngularApp;
-using Intent.Packages.AngularJs.Shell.Templates.AngularCommon;
-using Intent.Packages.AngularJs.Shell.Templates.AngularConfigJs;
-using Intent.Packages.AngularJs.Shell.Templates.AngularShellState;
-using Intent.Packages.AngularJs.Shell.Templates.AngularShellView;
-using Intent.Packages.AngularJs.Shell.Templates.AngularShellViewModel;
+﻿using Intent.Modules.AngularJs.Shell.Templates.AngularApp;
+using Intent.Modules.AngularJs.Shell.Templates.AngularCommon;
+using Intent.Modules.AngularJs.Shell.Templates.AngularConfigJs;
+using Intent.Modules.AngularJs.Shell.Templates.AngularIndexHtml;
+using Intent.Modules.AngularJs.Shell.Templates.AngularShellState;
+using Intent.Modules.AngularJs.Shell.Templates.AngularShellView;
+using Intent.Modules.AngularJs.Shell.Templates.AngularShellViewModel;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Modules.Templates.Website;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.AngularJs.Shell
+namespace Intent.Modules.AngularJs.Shell
 {
     public class Registrations : OldProjectTemplateRegistration
     {

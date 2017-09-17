@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.UserContext.Templates.UserContextStatic
+namespace Intent.Modules.UserContext.Templates.UserContextStatic
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.UserContext.Templates.UserContextStatic
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class UserContextStaticTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.UserContext.Templates.UserContextStatic
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
 
 
 
@@ -44,7 +44,7 @@ namespace Intent.Packages.UserContext.Templates.UserContextStatic
             this.Write("using Intent.Framework;\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespac" +
                     "e ");
             
-            #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
+            #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

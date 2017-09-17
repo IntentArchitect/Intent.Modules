@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Common;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Messaging.Subscriber.Legacy.MessageHandler
+namespace Intent.Modules.Messaging.Subscriber.Legacy.MessageHandler
 {
     public partial class MessageHandlerTemplate : IntentRoslynProjectItemTemplateBase<TypeModel>, ITemplate, IHasNugetDependencies
     {

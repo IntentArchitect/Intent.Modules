@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
+namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class VisualStudio2015SolutionTemplate : VisualStudio2015SolutionTemplateBase
     {
@@ -34,7 +34,7 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
             this.Write("  \r\n");
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
 
 
             
@@ -43,7 +43,7 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
             this.Write("Microsoft Visual Studio Solution File, Format Version 12.00\r\n# Visual Studio 14\r\n" +
                     "VisualStudioVersion = 14.0.25420.1\r\nMinimumVisualStudioVersion = 10.0.40219.1\r\n");
             
-            #line 19 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
   foreach(var project in Projects)
     {
             
@@ -51,41 +51,41 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
             #line hidden
             this.Write("Project(\"{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}\") = \"");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project.ProjectName));
             
             #line default
             #line hidden
             this.Write("\", \"");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project.ProjectName));
             
             #line default
             #line hidden
             this.Write("\\");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project.ProjectName));
             
             #line default
             #line hidden
             this.Write(".csproj\", \"{");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project.Id.ToString().ToUpper()));
             
             #line default
             #line hidden
             this.Write("}\"\r\nEndProject\r\n");
             
-            #line 23 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
     } 
             
             #line default
             #line hidden
             
-            #line 24 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
     foreach(var solutionFolder in SolutionFolders)
     { 
 
@@ -94,28 +94,28 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
             #line hidden
             this.Write("Project(\"{2150E333-8FDC-42A3-9474-1A3956D46DE8}\") = \"");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(solutionFolder.FolderName));
             
             #line default
             #line hidden
             this.Write("\", \"");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(solutionFolder.FolderName));
             
             #line default
             #line hidden
             this.Write("\", \"{");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(solutionFolder.Id.ToString().ToUpper()));
             
             #line default
             #line hidden
             this.Write("}\"\r\nEndProject\r\n");
             
-            #line 29 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 29 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
     } 
             
             #line default
@@ -124,7 +124,7 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
                     " CPU = Debug|Any CPU\r\n\t\tRelease|Any CPU = Release|Any CPU\r\n\tEndGlobalSection\r\n\tG" +
                     "lobalSection(ProjectConfigurationPlatforms) = postSolution\r\n");
             
-            #line 36 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 36 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
     foreach(var project in Projects)
     {
             
@@ -132,35 +132,35 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
             #line hidden
             this.Write("\t\t{");
             
-            #line 38 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 38 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project.Id.ToString().ToUpper()));
             
             #line default
             #line hidden
             this.Write("}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t{");
             
-            #line 39 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 39 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project.Id.ToString().ToUpper()));
             
             #line default
             #line hidden
             this.Write("}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t{");
             
-            #line 40 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 40 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project.Id.ToString().ToUpper()));
             
             #line default
             #line hidden
             this.Write("}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t{");
             
-            #line 41 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 41 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project.Id.ToString().ToUpper()));
             
             #line default
             #line hidden
             this.Write("}.Release|Any CPU.Build.0 = Release|Any CPU\r\n");
             
-            #line 42 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 42 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
     } 
             
             #line default
@@ -169,7 +169,7 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
                     "onNode = FALSE\r\n\tEndGlobalSection\r\n\tGlobalSection(NestedProjects) = preSolution\r" +
                     "\n");
             
-            #line 48 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 48 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
     foreach(var solutionFolder in SolutionFolders)
     { 
         foreach(var associatedProject in solutionFolder.AssociatedProjects)
@@ -180,21 +180,21 @@ namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
             #line hidden
             this.Write("\t\t{");
             
-            #line 53 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 53 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(associatedProject.Id.ToString().ToUpper()));
             
             #line default
             #line hidden
             this.Write("} = {");
             
-            #line 53 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 53 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(solutionFolder.Id.ToString().ToUpper()));
             
             #line default
             #line hidden
             this.Write("}\r\n");
             
-            #line 54 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.SoftwareFactory.VSProjects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
+            #line 54 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
         }
     } 
             

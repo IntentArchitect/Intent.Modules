@@ -7,7 +7,7 @@
     <ProjectGuid>{A90BEA7C-2F11-42DB-9CFB-95D1E21585C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.UserContext.Interop.Messaging.Subscriber</RootNamespace>
+    <RootNamespace>Intent.Modules.UserContext.Interop.Messaging.Subscriber</RootNamespace>
     <AssemblyName>Intent.Modules.UserContext.Interop.Messaging.Subscriber</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -1,16 +1,11 @@
-﻿using Intent.SoftwareFactory.Registrations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Registrations;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Engine;
 using Microsoft.Build.Construction;
+using System;
 using System.IO;
 
-namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
+namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
 {
     public class VisualStudio2015SolutionRegistration : ApplicationTemplateRegistration
     { 

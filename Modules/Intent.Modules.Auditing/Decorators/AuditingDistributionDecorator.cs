@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Modules.WebApi.Legacy;
-using Intent.Packages.Auditing.Templates.HttpRequestMessageExtensions;
-using Intent.Packages.Auditing.Templates.ServiceBoundaryAudtingStrategy;
-using Intent.Packages.UserContext.Templates.UserContextInterface;
+﻿using Intent.Modules.AspNet.WebApi.Legacy;
+using Intent.Modules.Auditing.Templates.HttpRequestMessageExtensions;
+using Intent.Modules.Auditing.Templates.ServiceBoundaryAudtingStrategy;
+using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Auditing.Decorators
+namespace Intent.Modules.Auditing.Decorators
 {
     public class AuditingDistributionDecorator : BaseDistributionDecorator, IHasTemplateDependencies, IHasNugetDependencies
     {

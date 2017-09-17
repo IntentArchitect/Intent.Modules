@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.MetaModel.UMLModel;
-using Intent.Packages.Application.Contracts.Legacy.DTO;
-using Intent.Packages.RichDomain.Templates.EntityStateInterface;
+﻿using Intent.MetaModel.UMLModel;
+using Intent.Modules.Application.Contracts.Legacy.DTO;
+using Intent.Modules.RichDomain.Templates.EntityStateInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Mapping;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Mapping.EntityToDto.Templates.DTOMappingProfile
+namespace Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile
 {
     public class DTOMappingTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<MappingModel>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IDeclareUsings
     {

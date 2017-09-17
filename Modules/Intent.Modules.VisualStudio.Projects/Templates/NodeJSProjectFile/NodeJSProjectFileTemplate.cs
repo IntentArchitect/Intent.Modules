@@ -1,14 +1,11 @@
-using System;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
+using Microsoft.Build.Construction;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using Intent.SoftwareFactory.Configuration;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
-using Microsoft.Build.Construction;
 
-namespace Intent.SoftwareFactory.VSProjects.Templates.NodeJSProjectFile
+namespace Intent.Modules.VisualStudio.Projects.Templates.NodeJSProjectFile
 {
     public class NodeJSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators
     {

@@ -1,9 +1,9 @@
-﻿using Intent.Packages.EntityFramework.Interop.Unity.Decorators;
-using Intent.Packages.Unity.Templates.UnityConfig;
+﻿using Intent.Modules.EntityFramework.Interop.Unity.Decorators;
+using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.EntityFramework.Interop.WebApi
+namespace Intent.Modules.EntityFramework.Interop.Unity
 {
     public class Registrations : OldProjectTemplateRegistration
     {

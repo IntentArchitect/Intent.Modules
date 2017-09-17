@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.IdentityServer.Templates.AspNetIdentityModel;
+﻿using Intent.Modules.IdentityServer.Templates.AspNetIdentityModel;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.IdentityServer.Templates.AspNetIdentityUserService
+namespace Intent.Modules.IdentityServer.Templates.AspNetIdentityUserService
 {
     public partial class AspNetIdentityUserServiceTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasTemplateDependencies
     {

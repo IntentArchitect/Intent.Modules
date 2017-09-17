@@ -1,19 +1,18 @@
-﻿using System.Linq;
-using Intent.MetaModel.Hosting;
-using Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.AuthModule;
-using Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.HttpInterceptor;
-using Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.LoginCallbackState;
-using Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.LoginCallbackView;
-using Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.LoginCallbackViewModel;
-using Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectState;
-using Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectView;
-using Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.SilentRenewCallbackView;
-using Intent.Packages.AngularJs.Auth.ImplicitAuth.Templates.UserInfoService;
+﻿using Intent.MetaModel.Hosting;
+using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule;
+using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.HttpInterceptor;
+using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginCallbackState;
+using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginCallbackView;
+using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginCallbackViewModel;
+using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectState;
+using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectView;
+using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.SilentRenewCallbackView;
+using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.UserInfoService;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Registrations;
+using System.Linq;
 
-namespace Intent.AngularJs.Shell
+namespace Intent.Modules.AngularJs.Auth.ImplicitAuth
 {
     public class Registrations : OldProjectTemplateRegistration
     {

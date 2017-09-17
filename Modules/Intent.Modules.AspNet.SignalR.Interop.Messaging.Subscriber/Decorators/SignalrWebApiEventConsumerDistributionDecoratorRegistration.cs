@@ -1,7 +1,7 @@
-﻿using Intent.Packages.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
+﻿using Intent.Modules.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Packages.AspNet.SignalR.Interop.Messaging.Subscriber.Decorators
+namespace Intent.Modules.AspNet.SignalR.Interop.Messaging.Subscriber.Decorators
 {
     public class SignalrWebApiEventConsumerDistributionDecoratorRegistration : DecoratorRegistration<IEventConsumerDecorator>
     {

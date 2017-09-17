@@ -1,14 +1,12 @@
-﻿using System.Linq;
-using Intent.Packages.Logging.NLog.Decorators;
-using Intent.Packages.Logging.NLog.Templates.OperationRequestId;
-using Intent.Packages.Logging.NLog.Templates.OperationRequestIdRenderer;
-using Intent.Packages.Logging.NLog.Templates.SanitizingJsonSerializer;
-using Intent.SoftwareFactory;
+﻿using Intent.Modules.Logging.NLog.Decorators;
+using Intent.Modules.Logging.NLog.Templates.OperationRequestId;
+using Intent.Modules.Logging.NLog.Templates.OperationRequestIdRenderer;
+using Intent.Modules.Logging.NLog.Templates.SanitizingJsonSerializer;
+using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.VSProjects.Decorators;
 
-namespace Intent.Package.Logging.NLog
+namespace Intent.Modules.Logging.NLog
 {
     public class Registrations : OldProjectTemplateRegistration
     {

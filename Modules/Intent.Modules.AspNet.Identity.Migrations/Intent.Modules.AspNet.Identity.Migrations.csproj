@@ -7,7 +7,7 @@
     <ProjectGuid>{26C1F0DC-3C1C-4BC2-97E0-A6C3150B6201}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.AspNet.Identity.Migrations</RootNamespace>
+    <RootNamespace>Intent.Modules.AspNet.Identity.Migrations</RootNamespace>
     <AssemblyName>Intent.Modules.AspNet.Identity.Migrations</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

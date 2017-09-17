@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.WebApi.Templates.Controller
+namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
     using Intent.SoftwareFactory.Templates;
     using Intent.MetaModel.Service;
@@ -22,7 +22,7 @@ namespace Intent.Modules.WebApi.Templates.Controller
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>
     {
@@ -34,7 +34,7 @@ namespace Intent.Modules.WebApi.Templates.Controller
         {
             this.Write(" \r\n");
             
-            #line 14 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 14 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
 
             
@@ -44,63 +44,63 @@ namespace Intent.Modules.WebApi.Templates.Controller
                     "tem.Transactions;\r\nusing System.Web;\r\nusing System.Web.Http;\r\nusing Intent.CodeG" +
                     "en;\r\n");
             
-            #line 24 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [RoutePrefix(\"api/");
             
-            #line 30 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 30 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.Replace("Service", "").ToLower()));
             
             #line default
             #line hidden
             this.Write("\")]\r\n    public class ");
             
-            #line 31 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ApiController\r\n    {\r\n        private readonly ");
             
-            #line 33 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 33 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetServiceInterfaceName()));
             
             #line default
             #line hidden
             this.Write(" _appService;");
             
-            #line 33 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 33 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DeclarePrivateVariables()));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n        public ");
             
-            #line 35 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 35 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" (");
             
-            #line 35 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 35 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetServiceInterfaceName()));
             
             #line default
             #line hidden
             this.Write(" appService");
             
-            #line 35 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 35 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConstructorParams()));
             
             #line default
@@ -109,14 +109,14 @@ namespace Intent.Modules.WebApi.Templates.Controller
                     "throw new ArgumentNullException(\"appService\");\r\n            _appService = appSer" +
                     "vice;");
             
-            #line 40 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 40 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConstructorInit()));
             
             #line default
             #line hidden
             this.Write("\r\n        } \r\n    \r\n");
             
-            #line 43 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 43 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
     foreach (var operation in Model.Operations)
     {
         //Transactions
@@ -127,14 +127,14 @@ namespace Intent.Modules.WebApi.Templates.Controller
             #line hidden
             this.Write("        public class ");
             
-            #line 48 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 48 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("Payload\r\n        {\r\n");
             
-            #line 50 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 50 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
             foreach (var parameter in operation.Parameters)
             {
@@ -146,14 +146,14 @@ namespace Intent.Modules.WebApi.Templates.Controller
             #line hidden
             this.Write("            ");
             
-            #line 56 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 56 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(decorator));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 57 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 57 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
                 }
 
@@ -162,21 +162,21 @@ namespace Intent.Modules.WebApi.Templates.Controller
             #line hidden
             this.Write("            public ");
             
-            #line 60 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 60 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(parameter.TypeReference)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 60 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 60 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 61 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 61 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
             }
 
@@ -185,49 +185,49 @@ namespace Intent.Modules.WebApi.Templates.Controller
             #line hidden
             this.Write("        }\r\n\r\n        [AcceptVerbs(\"POST\")]\r\n\t\t");
             
-            #line 67 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 67 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetSecurityAttribute(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n        [Route(\"");
             
-            #line 68 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 68 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write("\")]\r\n        public ");
             
-            #line 69 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 69 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationReturnType(operation)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 69 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 69 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 69 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 69 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name + "Payload payload"));
             
             #line default
             #line hidden
             this.Write(")\r\n        {");
             
-            #line 70 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 70 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BeginOperation(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n");
             
-            #line 72 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 72 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
       if (operation.ReturnType != null)
         {
 
@@ -236,21 +236,21 @@ namespace Intent.Modules.WebApi.Templates.Controller
             #line hidden
             this.Write("            ");
             
-            #line 74 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 74 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationReturnType(operation)));
             
             #line default
             #line hidden
             this.Write(" result = default(");
             
-            #line 74 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 74 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationReturnType(operation)));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 75 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 75 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
       }
             
             #line default
@@ -258,14 +258,14 @@ namespace Intent.Modules.WebApi.Templates.Controller
             this.Write("            TransactionOptions tso = new TransactionOptions();\r\n            tso.I" +
                     "solationLevel = IsolationLevel.");
             
-            #line 77 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 77 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(isolationLevel));
             
             #line default
             #line hidden
             this.Write(";\r\n\r\n            try\r\n            {");
             
-            #line 80 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 80 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BeforeTransaction(operation)));
             
             #line default
@@ -273,14 +273,14 @@ namespace Intent.Modules.WebApi.Templates.Controller
             this.Write("\r\n                using (TransactionScope ts = new TransactionScope(TransactionSc" +
                     "opeOption.Required, tso))\r\n                {");
             
-            #line 82 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 82 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BeforeCallToAppLayer(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 83 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 83 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
         if (operation.ReturnType != null)
         {
@@ -290,21 +290,21 @@ namespace Intent.Modules.WebApi.Templates.Controller
             #line hidden
             this.Write("                    var appServiceResult = _appService.");
             
-            #line 86 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 86 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 86 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 86 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationCallParameters(operation)));
             
             #line default
             #line hidden
             this.Write(");\r\n                    result = appServiceResult;\r\n");
             
-            #line 88 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 88 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
       }
         else
         {
@@ -314,49 +314,49 @@ namespace Intent.Modules.WebApi.Templates.Controller
             #line hidden
             this.Write("                        _appService.");
             
-            #line 91 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 91 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 91 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 91 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationCallParameters(operation)));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 92 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 92 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
       }
 
             
             #line default
             #line hidden
             
-            #line 93 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 93 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AfterCallToAppLayer(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n                    ts.Complete();\r\n                }");
             
-            #line 95 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 95 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AfterTransaction(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n            }\r\n            catch (Exception e) \r\n            {");
             
-            #line 98 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 98 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(OnExceptionCaught(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n            }\r\n\r\n");
             
-            #line 101 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 101 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
         if (operation.ReturnType != null)
         {
 
@@ -365,14 +365,14 @@ namespace Intent.Modules.WebApi.Templates.Controller
             #line hidden
             this.Write("            return result;\r\n");
             
-            #line 104 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 104 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
       }
             
             #line default
             #line hidden
             this.Write("\r\n        }\r\n\r\n");
             
-            #line 108 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 108 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
     }
 
         // Source code of base class: http://aspnetwebstack.codeplex.com/SourceControl/latest#src/System.Web.Http/ApiController.cs
@@ -385,7 +385,7 @@ namespace Intent.Modules.WebApi.Templates.Controller
                     "ase.Dispose(disposing);\r\n\r\n            //dispose all resources\r\n            _app" +
                     "Service.Dispose();\r\n        }\r\n");
             
-            #line 120 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 120 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassMethods()));
             
             #line default

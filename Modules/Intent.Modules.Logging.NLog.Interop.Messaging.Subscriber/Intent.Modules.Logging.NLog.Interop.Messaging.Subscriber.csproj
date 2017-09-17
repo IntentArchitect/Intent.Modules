@@ -7,7 +7,7 @@
     <ProjectGuid>{F9D0B024-F469-489C-B9B3-0D95395065E5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Logging.NLog.Interop.Messaging.Subscriber</RootNamespace>
+    <RootNamespace>Intent.Modules.Logging.NLog.Interop.Messaging.Subscriber</RootNamespace>
     <AssemblyName>Intent.Modules.Logging.NLog.Interop.Messaging.Subscriber</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

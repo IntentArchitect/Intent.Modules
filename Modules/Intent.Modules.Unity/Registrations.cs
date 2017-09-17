@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using Intent.Packages.Unity.Templates.UnityConfig;
+﻿using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Registrations;
+using System.Linq;
 
-namespace Intent.Packages.Unity
+namespace Intent.Modules.Unity
 {
     public class Registrations : OldProjectTemplateRegistration
     {

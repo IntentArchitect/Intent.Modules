@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using Intent.Modules.WebApi.Legacy;
+﻿using Intent.Modules.AspNet.WebApi.Legacy;
 using Intent.SoftwareFactory.MetaModels.Service;
-using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Modules.WebApi.Decorators.Legacy
+namespace Intent.Modules.AspNet.WebApi.Decorators.Legacy
 {
     // TODO: This should move out to its own package.
     public class WebApiDistributionExceptionHandlingStrategy : BaseDistributionDecorator, IHasNugetDependencies

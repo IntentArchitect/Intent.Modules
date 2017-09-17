@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using Intent.Packages.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
+using Intent.Modules.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Messaging.Publisher.Decorators.Legacy
+namespace Intent.Modules.Messaging.Publisher.Decorators.Legacy
 {
     // This is almost an exact copy of IntentEsbPublishingDistributionDecorator
     public class IntentEsbPublishingEventConsumerDecorator : IEventConsumerDecorator

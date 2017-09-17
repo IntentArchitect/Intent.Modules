@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.AspNet.SignalR.Templates.ClientNotificationService
+namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService
 {
     public partial class ClientNotificationService : IntentRoslynProjectItemTemplateBase
     {

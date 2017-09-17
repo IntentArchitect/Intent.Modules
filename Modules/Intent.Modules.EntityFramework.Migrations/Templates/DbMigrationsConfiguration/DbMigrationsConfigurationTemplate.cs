@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.EntityFramework.Migrations.Templates.DbMigrationsConfiguration
+namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfiguration
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -16,7 +16,7 @@ namespace Intent.Packages.EntityFramework.Migrations.Templates.DbMigrationsConfi
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class DbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase
     {
@@ -29,14 +29,14 @@ namespace Intent.Packages.EntityFramework.Migrations.Templates.DbMigrationsConfi
             this.Write("using System;\r\nusing System.Data.Entity.Migrations;\r\nusing System.Data.Entity.Mig" +
                     "rations.Model;\r\nusing System.Data.Entity.SqlServer;\r\nusing System.IO;\r\n");
             
-            #line 10 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 10 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 14 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 14 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -44,21 +44,21 @@ namespace Intent.Packages.EntityFramework.Migrations.Templates.DbMigrationsConfi
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    public sealed c" +
                     "lass ");
             
-            #line 17 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 17 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n        : DbMigrationsConfiguration<");
             
-            #line 18 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 18 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetDbContextClassName()));
             
             #line default
             #line hidden
             this.Write(">\r\n    {\r\n        public ");
             
-            #line 20 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -66,35 +66,35 @@ namespace Intent.Packages.EntityFramework.Migrations.Templates.DbMigrationsConfi
             this.Write("()\r\n        {\r\n            AutomaticMigrationsEnabled = false;\r\n        }\r\n\r\n    " +
                     "    protected override void Seed(");
             
-            #line 25 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetDbContextClassName()));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 25 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DbContextVariableName));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            base.Seed(");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DbContextVariableName));
             
             #line default
             #line hidden
             this.Write(");");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Seeds()));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n            CustomSeed(");
             
-            #line 29 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 29 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DbContextVariableName));
             
             #line default
@@ -102,14 +102,14 @@ namespace Intent.Packages.EntityFramework.Migrations.Templates.DbMigrationsConfi
             this.Write(");\r\n        }\r\n\r\n        [IntentManaged(Mode.Merge, Signature = Mode.Fully, Body " +
                     "= Mode.Ignore)]\r\n        private void CustomSeed(");
             
-            #line 33 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 33 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetDbContextClassName()));
             
             #line default
             #line hidden
             this.Write(" dbContext)\r\n        {\r\n            // Put your seed data here\r\n        }");
             
-            #line 36 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
+            #line 36 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework.Migrations\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Methods()));
             
             #line default

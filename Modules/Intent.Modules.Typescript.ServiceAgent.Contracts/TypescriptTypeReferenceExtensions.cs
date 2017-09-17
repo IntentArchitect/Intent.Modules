@@ -1,12 +1,12 @@
 using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
-using Intent.Packages.Constants;
-using Intent.Packages.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
+using Intent.Modules.Constants;
+using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.Typescript.ServiceAgent.Contracts
+namespace Intent.Modules.Typescript.ServiceAgent.Contracts
 {
     public static class TypescriptTypeReferenceExtensions
     {

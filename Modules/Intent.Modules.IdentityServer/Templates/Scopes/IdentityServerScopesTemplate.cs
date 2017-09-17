@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.IdentityServer.Templates.Scopes
+namespace Intent.Modules.IdentityServer.Templates.Scopes
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.IdentityServer.Templates.Scopes
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class IdentityServerScopesTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.IdentityServer.Templates.Scopes
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
 
 
 
@@ -45,7 +45,7 @@ namespace Intent.Packages.IdentityServer.Templates.Scopes
                     "m.Web;\r\nusing IdentityServer3.Core;\r\nusing IdentityServer3.Core.Models;\r\nusing I" +
                     "ntent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

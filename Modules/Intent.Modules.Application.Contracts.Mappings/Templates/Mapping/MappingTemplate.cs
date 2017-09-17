@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Application.Contracts.Mappings.Templates.Mapping
+namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
     using Intent.MetaModel.DTO;
     using Intent.SoftwareFactory.Templates;
@@ -22,7 +22,7 @@ namespace Intent.Packages.Application.Contracts.Mappings.Templates.Mapping
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<DTOModel>
     {
@@ -34,7 +34,7 @@ namespace Intent.Packages.Application.Contracts.Mappings.Templates.Mapping
         {
             this.Write(" \r\n\r\n");
             
-            #line 14 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 14 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -43,70 +43,70 @@ namespace Intent.Packages.Application.Contracts.Mappings.Templates.Mapping
                     "ialization;\r\nusing AutoMapper;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n" +
                     "\r\nnamespace ");
             
-            #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public static class ");
             
-            #line 24 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" \r\n    {\r\n\t\tpublic static ");
             
-            #line 26 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 26 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ContractTypeName));
             
             #line default
             #line hidden
             this.Write(" MapTo");
             
-            #line 26 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 26 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ContractTypeName));
             
             #line default
             #line hidden
             this.Write(" (this ");
             
-            #line 26 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 26 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DomainTypeName));
             
             #line default
             #line hidden
             this.Write(" projectFrom)\r\n\t\t{\r\n\t\t\treturn Mapper.Map<");
             
-            #line 28 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ContractTypeName));
             
             #line default
             #line hidden
             this.Write(">(projectFrom);\r\n\t\t}\t\t\r\n\r\n\t\tpublic static List<");
             
-            #line 31 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ContractTypeName));
             
             #line default
             #line hidden
             this.Write("> MapTo");
             
-            #line 31 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ContractTypeName));
             
             #line default
             #line hidden
             this.Write("s (this IEnumerable<");
             
-            #line 31 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DomainTypeName));
             
             #line default
             #line hidden
             this.Write("> projectFrom)\r\n\t\t{\r\n\t\t\treturn projectFrom.Select(x => x.MapTo");
             
-            #line 33 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
+            #line 33 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ContractTypeName));
             
             #line default

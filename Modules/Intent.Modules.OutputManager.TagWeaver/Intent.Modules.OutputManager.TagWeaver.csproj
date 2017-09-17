@@ -7,7 +7,7 @@
     <ProjectGuid>{A79001BD-3CAC-44C0-A429-564B18C84A93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.OutputManager.TagWeave</RootNamespace>
+    <RootNamespace>Intent.Modules.OutputManager.TagWeaver</RootNamespace>
     <AssemblyName>Intent.Modules.OutputManager.TagWeaver</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -1,15 +1,13 @@
-﻿using Intent.Packages.Constants;
+﻿using Intent.Modules.Constants;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Helpers;
 using Intent.SoftwareFactory.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Intent.SoftwareFactory.VSProjectSync
+namespace Intent.Modules.VisualStudio.Projects.Sync
 {
     public class ApplicationSyncProcessor : ApplicationProcessorBase, IApplicationProcessor
     {

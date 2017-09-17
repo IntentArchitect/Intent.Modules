@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Intent.Packages.Constants;
-using Intent.Packages.UserContext.Templates.UserContextInterface;
+﻿using Intent.Modules.Constants;
+using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.UserContext.Templates.UserContextProvider
+namespace Intent.Modules.UserContext.Templates.UserContextProvider
 {
     partial class UserContextProviderTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasTemplateDependencies, IRequiresPreProcessing
     {

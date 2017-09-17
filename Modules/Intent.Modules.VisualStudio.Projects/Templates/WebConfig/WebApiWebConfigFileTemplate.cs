@@ -1,19 +1,17 @@
-﻿using System;
+﻿using Intent.Modules.Constants;
+using Intent.Modules.VisualStudio.Projects.Decorators;
+using Intent.SoftwareFactory;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Eventing;
+using Intent.SoftwareFactory.Templates;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Intent.Packages.Constants;
-using Intent.SoftwareFactory.Engine;
 
-using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
-using Intent.SoftwareFactory.Configuration;
-using Intent.SoftwareFactory.VSProjects.Decorators;
-
-namespace Intent.SoftwareFactory.VSProjects.Templates.WebConfig
+namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 {
     public class WebApiWebConfigFileTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasDecorators<IWebConfigDecorator>
     {

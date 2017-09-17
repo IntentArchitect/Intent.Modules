@@ -1,10 +1,7 @@
-﻿using System;
-using Intent.SoftwareFactory.Engine;
-
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.Configuration;
 
-namespace Intent.SoftwareFactory.VSProjects.Templates.NuGetPackagesConfig
+namespace Intent.Modules.VisualStudio.Projects.Templates.NuGetPackagesConfig
 {
     public partial class NuGetPackagesConfigTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {

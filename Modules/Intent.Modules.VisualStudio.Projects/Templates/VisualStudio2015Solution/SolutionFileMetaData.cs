@@ -2,11 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Intent.SoftwareFactory.VSProjects.Templates.VisualStudio2015Solution
+namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
 {
     public class SolutionFileMetaData : IFileMetaData
     {

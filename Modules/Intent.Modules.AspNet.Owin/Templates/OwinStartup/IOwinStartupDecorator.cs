@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Owin.Templates.OwinStartup
+namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 {
     public interface IOwinStartupDecorator : ITemplateDecorator, IPriorityDecorator, IDeclareUsings
     {

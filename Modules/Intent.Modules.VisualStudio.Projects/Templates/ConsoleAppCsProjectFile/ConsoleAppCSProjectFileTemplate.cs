@@ -1,14 +1,13 @@
+using Intent.SoftwareFactory;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.VisualStudio;
+using Microsoft.Build.Construction;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
-using Intent.SoftwareFactory.Engine;
 
-using Intent.SoftwareFactory.Templates;
-using Microsoft.Build.Construction;
-using Intent.SoftwareFactory.Configuration;
-using Intent.SoftwareFactory.VisualStudio;
-
-namespace Intent.SoftwareFactory.VSProjects.Templates.ConsoleApp.ConsoleAppCsProjectFile
+namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleAppCsProjectFile
 {
     public class ConsoleAppCsProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators
     {

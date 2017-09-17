@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Intent.MetaModel.Service;
+﻿using Intent.MetaModel.Service;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Modules.WebApi.Templates.Controller
+namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
     public abstract class DistributionDecoratorBase : ITemplateDecorator, IPriorityDecorator
     {

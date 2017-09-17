@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.Templates;
+﻿using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Packages.EntityFramework.Migrations.Templates.DbMigrationsConfiguration
+namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfiguration
 {
     public interface IMigrationSeedDecorator : ITemplateDecorator, IDeclareUsings
     {

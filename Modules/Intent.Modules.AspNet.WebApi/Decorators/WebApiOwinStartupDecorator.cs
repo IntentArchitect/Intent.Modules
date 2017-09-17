@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using Intent.Modules.WebApi.Templates.OwinWebApiConfig;
-using Intent.Packages.Owin.Templates.OwinStartup;
+using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
 
-namespace Intent.Modules.WebApi.Decorators
+namespace Intent.Modules.AspNet.WebApi.Decorators
 {
     public class WebApiOwinStartupDecorator : IOwinStartupDecorator, IHasTemplateDependencies
     {

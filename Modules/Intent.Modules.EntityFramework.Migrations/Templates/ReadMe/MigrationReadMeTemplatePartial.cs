@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Packages.EntityFramework.Migrations.Templates.DbMigrationsConfiguration;
+﻿using Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfiguration;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.EntityFramework.Migrations.Templates.ReadMe
+namespace Intent.Modules.EntityFramework.Migrations.Templates.ReadMe
 {
     partial class MigrationReadMeTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasTemplateDependencies
     {

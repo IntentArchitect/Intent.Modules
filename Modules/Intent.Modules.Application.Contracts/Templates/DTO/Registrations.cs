@@ -1,17 +1,13 @@
-﻿using System;
-using System.Linq;
+﻿using Intent.MetaModel.DTO;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Registrations;
-using Intent.Packages.Application.Contracts.Templates.DTO;
-using System.ComponentModel;
-using Intent.Packages.Application.Contracts.Decorators;
-using Intent.SoftwareFactory.Templates.Registrations;
-using Intent.MetaModel.DTO;
 using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.Templates.Registrations;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
-namespace Intent.Packages.Application.Contracts.DTO
+namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
     [Description("Intent Applications Contracts DTO")]
     public class Registrations : ModelTemplateRegistrationBase<DTOModel>

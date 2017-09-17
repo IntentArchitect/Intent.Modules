@@ -1,18 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.MetaModel;
-using Intent.MetaModel.Common;
-using Intent.MetaModel.DTO;
+﻿using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
-using Intent.Packages.Application.ServiceCallHandlers.Templates.ServiceCallHandler;
-using Intent.Packages.Application.Contracts;
-using Intent.Packages.Application.Contracts.Templates.DTO;
-using Intent.Packages.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Application.Contracts;
+using Intent.Modules.Application.Contracts.Templates.DTO;
+using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Application.ServiceCallHandlers.Templates.ServiceImplementation
+namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
     partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
     {

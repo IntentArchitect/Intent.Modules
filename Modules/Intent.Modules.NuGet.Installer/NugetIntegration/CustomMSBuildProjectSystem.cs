@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using Microsoft.Build.Construction;
+﻿using Microsoft.Build.Construction;
 using NuGet.Common;
 using NuGet.ProjectManagement;
+using System;
+using System.IO;
+using System.Linq;
 
-namespace Intent.SoftwareFactory.NuGet.NugetIntegration
+namespace Intent.Modules.NuGet.Installer.NugetIntegration
 {
     public class CustomMsbuildProjectSystem : MSBuildProjectSystem, IMSBuildNuGetProjectSystem
     {

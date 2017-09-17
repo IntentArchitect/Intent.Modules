@@ -1,12 +1,11 @@
-using System.Collections.Generic;
-using System.Linq;
-using Intent.Package.Logging.NLog;
-using Intent.Packages.Logging.NLog.Templates.SanitizingJsonSerializer;
-using Intent.Packages.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
+using Intent.Modules.Logging.NLog.Templates.SanitizingJsonSerializer;
+using Intent.Modules.Messaging.Subscriber.Legacy.WebApiEventConsumerService;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Logging.NLog.Interop.Messaging.Subscriber.Legacy
+namespace Intent.Modules.Logging.NLog.Interop.Messaging.Subscriber.Legacy
 {
     public class NLogEventConsumerDecorator : IEventConsumerDecorator, IHasNugetDependencies, IHasTemplateDependencies
     {

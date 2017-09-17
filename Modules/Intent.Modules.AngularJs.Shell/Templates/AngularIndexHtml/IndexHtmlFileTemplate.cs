@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.XPath;
-using HtmlAgilityPack;
-using Intent.Packages.Constants;
+﻿using HtmlAgilityPack;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
-
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
-namespace Intent.SoftwareFactory.Modules.Templates.Website
+namespace Intent.Modules.AngularJs.Shell.Templates.AngularIndexHtml
 {
     public class IndexHtmlFileTemplate : IntentProjectItemTemplateBase<object>
     {

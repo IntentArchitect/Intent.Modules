@@ -1,12 +1,11 @@
-using System;
-using System.IO;
-using System.Linq;
-using Intent.Packages.Bower.Templates.BowerConfig;
+using Intent.Modules.Bower.Templates.BowerConfig;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Plugins;
+using System.IO;
+using System.Linq;
 
-namespace Intent.Packages.Bower.Installer
+namespace Intent.Modules.Bower.Installer
 {
     public class BowerPackageInstaller : ApplicationProcessorBase, IApplicationProcessor
     {

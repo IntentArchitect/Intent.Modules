@@ -7,7 +7,7 @@
     <ProjectGuid>{E923CA07-9C38-4D69-B150-2A8FFF6E9100}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Application.ServiceCallHandlers</RootNamespace>
+    <RootNamespace>Intent.Modules.Application.ServiceCallHandlers</RootNamespace>
     <AssemblyName>Intent.Modules.Application.ServiceCallHandlers</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

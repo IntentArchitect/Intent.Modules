@@ -1,14 +1,14 @@
-﻿using System.Linq;
-using Intent.MetaModel.Dto.Old;
+﻿using Intent.MetaModel.Dto.Old;
 using Intent.MetaModel.UMLModel;
-using Intent.Packages.Mapping.EntityToDto.Templates.DTOMappingProfile;
-using Intent.Packages.Mapping.EntityToDto.Templates.EntityMappingExtensions;
+using Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile;
+using Intent.Modules.Mapping.EntityToDto.Templates.EntityMappingExtensions;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Registrations;
+using System.Linq;
 
-namespace Intent.Packages.Mapping.EntityToDto
+namespace Intent.Modules.Mapping.EntityToDto
 {
     public class Registrations : OldProjectTemplateRegistration
     {

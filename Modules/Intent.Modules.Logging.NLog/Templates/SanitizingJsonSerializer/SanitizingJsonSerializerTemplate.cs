@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Logging.NLog.Templates.SanitizingJsonSerializer
+namespace Intent.Modules.Logging.NLog.Templates.SanitizingJsonSerializer
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.Logging.NLog.Templates.SanitizingJsonSerializer
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\SanitizingJsonSerializer\SanitizingJsonSerializerTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\SanitizingJsonSerializer\SanitizingJsonSerializerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class SanitizingJsonSerializerTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -34,7 +34,7 @@ namespace Intent.Packages.Logging.NLog.Templates.SanitizingJsonSerializer
             this.Write("\t\r\n");
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\SanitizingJsonSerializer\SanitizingJsonSerializerTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\SanitizingJsonSerializer\SanitizingJsonSerializerTemplate.tt"
 
 
             
@@ -44,14 +44,14 @@ namespace Intent.Packages.Logging.NLog.Templates.SanitizingJsonSerializer
                     "n;\r\nusing System;\r\nusing System.Net.Http;\r\nusing System.Reflection;\r\n\r\n[assembly" +
                     ": DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 24 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\SanitizingJsonSerializer\SanitizingJsonSerializerTemplate.tt"
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\SanitizingJsonSerializer\SanitizingJsonSerializerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 26 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Logging.NLog\Templates\SanitizingJsonSerializer\SanitizingJsonSerializerTemplate.tt"
+            #line 26 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Logging.NLog\Templates\SanitizingJsonSerializer\SanitizingJsonSerializerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

@@ -2,7 +2,7 @@
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
 
-namespace Intent.Packages.AspNet.SignalR.Templates.ClientNotificationService
+namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService
 {
     public class ClientNotificationServiceRegistration : NoModelTemplateRegistrationBase
     {

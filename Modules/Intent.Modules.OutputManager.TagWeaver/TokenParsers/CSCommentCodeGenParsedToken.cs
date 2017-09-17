@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Intent.SoftwareFactory.Plugins.TagWeaving
+﻿namespace Intent.Modules.OutputManager.TagWeaver.TokenParsers
 {
     public class CSCommentCodeGenParsedToken : TagToken
     {

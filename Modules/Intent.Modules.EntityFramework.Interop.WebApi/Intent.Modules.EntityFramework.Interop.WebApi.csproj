@@ -7,7 +7,7 @@
     <ProjectGuid>{5E7E8956-5DFA-44AF-9778-0EA6570A06C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.EntityFramework.Interop.WebApi</RootNamespace>
+    <RootNamespace>Intent.Modules.EntityFramework.Interop.WebApi</RootNamespace>
     <AssemblyName>Intent.Modules.EntityFramework.Interop.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

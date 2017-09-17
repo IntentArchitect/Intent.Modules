@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Packages.Logging.NLog.Templates.OperationRequestId
+namespace Intent.Modules.Logging.NLog.Templates.OperationRequestId
 {
     partial class OperationRequestIdTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {

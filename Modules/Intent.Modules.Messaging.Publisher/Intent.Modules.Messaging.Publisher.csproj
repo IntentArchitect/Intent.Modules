@@ -7,7 +7,7 @@
     <ProjectGuid>{B390DF1E-165B-4949-936C-D00C4A3FEEF0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Messaging.Publisher</RootNamespace>
+    <RootNamespace>Intent.Modules.Messaging.Publisher</RootNamespace>
     <AssemblyName>Intent.Modules.Messaging.Publisher</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingProxy
+namespace Intent.Modules.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingProxy
 {
     using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.SoftwareFactory.MetaModels.Service;
@@ -23,7 +23,7 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class NodeEdgeCsharpReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>
     {
@@ -37,28 +37,28 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
                     "son.Serialization;\r\nusing System;\r\nusing System.Threading.Tasks;\r\nusing Intent.C" +
                     "odeGen;\r\n");
             
-            #line 21 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 25 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 27 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("NodeEdgeProxy\r\n    {\r\n        private readonly I");
             
-            #line 29 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 29 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
@@ -66,7 +66,7 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             this.Write(" _appService;\r\n        private readonly JsonSerializerSettings _jsonSerializerSet" +
                     "tings;\r\n\r\n        public ");
             
-            #line 32 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 32 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
@@ -74,7 +74,7 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             this.Write("NodeEdgeProxy()\r\n        {\r\n            _appService = UnityConfig.GetConfiguredCo" +
                     "ntainer().Resolve<I");
             
-            #line 34 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 34 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
@@ -98,7 +98,7 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
                     {
 ");
             
-            #line 51 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 51 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
                         // An exception gets thrown if "null" is returned, so we always wrap everthing up in an object and 
                         // then on the receiving side we always just read the "response" property. 
@@ -110,14 +110,14 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             #line hidden
             this.Write("                        case nameof(");
             
-            #line 57 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 57 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("):\r\n");
             
-            #line 58 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 58 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
                             if (operation.HasReturnType())
                             {
@@ -128,14 +128,14 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             this.Write("                            return JsonConvert.SerializeObject(new\r\n             " +
                     "               {\r\n                                Response = (object) ");
             
-            #line 64 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 64 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(JsonConvert.DeserializeObject<");
             
-            #line 64 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 64 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
@@ -143,7 +143,7 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             this.Write("Payload>((string)input.payload))\r\n                            }, _jsonSerializerS" +
                     "ettings);\r\n");
             
-            #line 66 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 66 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
                             }
                             else
@@ -154,14 +154,14 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             #line hidden
             this.Write("                            ");
             
-            #line 71 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 71 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(JsonConvert.DeserializeObject<");
             
-            #line 71 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 71 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
@@ -169,7 +169,7 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             this.Write("Payload>((string)input.payload));\r\n                            return new { Respo" +
                     "nse = (object) null };\r\n");
             
-            #line 73 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 73 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
                             } // if (operation.HasReturnType())
                         } // foreach(var operation in Model.Operations)
@@ -181,7 +181,7 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
                     "($\"Unknown operation: {operationName}\");\r\n                    }\r\n               " +
                     " }\r\n                catch (Exception e)\r\n                {");
             
-            #line 82 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 82 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
  
                     // Sometimes Edge falls over with a StackOverflow exception when it tries 
                     // to send some exceptions back to the client, so we just wrap all exceptions
@@ -195,7 +195,7 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             this.Write("                    throw new SerializableException(e.Message, e.StackTrace);\r\n  " +
                     "              }\r\n            });\r\n        }\r\n");
             
-            #line 93 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 93 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
         foreach(var operation in Model.Operations)
         {
@@ -206,14 +206,14 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             #line hidden
             this.Write("\r\n        public class ");
             
-            #line 99 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 99 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("Payload\r\n        {\r\n");
             
-            #line 101 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 101 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
             foreach (var parameter in operation.Parameters)
             {
@@ -223,21 +223,21 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             #line hidden
             this.Write("            public ");
             
-            #line 105 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 105 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Type.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 105 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 105 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 106 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 106 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
             }
 
@@ -246,7 +246,7 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             #line hidden
             this.Write("        }\r\n");
             
-            #line 110 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 110 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
  
             if (operation.HasReturnType())
             {
@@ -256,42 +256,42 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             #line hidden
             this.Write("        private ");
             
-            #line 114 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 114 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.ReturnType.FullName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 114 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 114 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 114 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 114 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("Payload payload)\r\n        {\r\n            return _appService.");
             
-            #line 116 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 116 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 116 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 116 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodCallParameters(operation)));
             
             #line default
             #line hidden
             this.Write(");\r\n        }\r\n");
             
-            #line 118 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 118 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
             }
             else
@@ -302,35 +302,35 @@ namespace Intent.Packages.Electron.NodeEdgeProxy.Legacy.NodeEdgeCsharpReceivingP
             #line hidden
             this.Write("        private void ");
             
-            #line 123 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 123 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 123 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 123 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("Payload payload)\r\n        {\r\n            _appService.");
             
-            #line 125 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 125 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 125 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 125 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodCallParameters(operation)));
             
             #line default
             #line hidden
             this.Write(");\r\n        }\r\n");
             
-            #line 127 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
+            #line 127 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
             }
         }

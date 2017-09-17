@@ -1,20 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.MetaModel;
-using Intent.MetaModel.Common;
-using Intent.MetaModel.DTO;
+﻿using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
-using Intent.Packages.Application.ServiceCallHandlers.Templates.ServiceCallHandler;
-using Intent.Packages.Application.Contracts;
-using Intent.Packages.Application.Contracts.Templates.DTO;
-using Intent.Packages.Application.Contracts.Templates.ServiceContract;
-using Intent.Packages.Unity.Templates.UnityConfig;
+using Intent.Modules.Application.Contracts;
+using Intent.Modules.Application.Contracts.Templates.DTO;
+using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
-using ServiceContractTemplate = Intent.Packages.Application.Contracts.Legacy.ServiceContract.ServiceContractTemplate;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy
+namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy
 {
     partial class NodeEdgeCsharpReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
     {

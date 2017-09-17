@@ -1,12 +1,6 @@
-﻿using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Packages.Entities
+namespace Intent.Modules.Entities
 {
     public static class NugetPackages
     {

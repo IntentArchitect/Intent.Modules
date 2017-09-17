@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Intent.MetaModel.Service;
-using Intent.Package.Logging.NLog;
-using Intent.Packages.Logging.NLog.Templates.SanitizingJsonSerializer;
-using Intent.Modules.WebApi.Templates.Controller;
+using Intent.Modules.AspNet.WebApi.Templates.Controller;
+using Intent.Modules.Logging.NLog.Templates.SanitizingJsonSerializer;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Logging.NLog.Interop.WebApi.Decorators
+namespace Intent.Modules.Logging.NLog.Interop.WebApi.Decorators
 {
     public class NLogDistributionDecorator : DistributionDecoratorBase, IHasNugetDependencies, IHasTemplateDependencies
     {

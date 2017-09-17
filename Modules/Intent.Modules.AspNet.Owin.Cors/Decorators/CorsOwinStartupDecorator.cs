@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using Intent.Packages.Owin.Templates.OwinStartup;
+using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
 
-namespace Intent.Packages.Owin.Cors.Decorators
+namespace Intent.Modules.AspNet.Owin.Cors.Decorators
 {
     public class CorsOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IRequiresPreProcessing
     {

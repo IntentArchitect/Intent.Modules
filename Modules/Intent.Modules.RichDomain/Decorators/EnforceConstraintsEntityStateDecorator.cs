@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Intent.MetaModel.UMLModel;
+using Intent.Modules.RichDomain.Templates.EntityState;
+using Intent.SoftwareFactory.MetaModels.UMLModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Intent.MetaModel.UMLModel;
-using Intent.Packages.RichDomain.Templates.EntityState;
-using Intent.SoftwareFactory.MetaModels.UMLModel;
 
-namespace Intent.Packages.RichDomain.Decorators
+namespace Intent.Modules.RichDomain.Decorators
 {
     public class EnforceConstraintsEntityStateDecorator : IDomainEntityStateDecorator
     {

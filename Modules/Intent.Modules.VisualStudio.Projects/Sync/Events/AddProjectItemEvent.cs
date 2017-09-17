@@ -1,10 +1,9 @@
 ﻿using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Intent.SoftwareFactory.VSProjectSync.Events
+namespace Intent.Modules.VisualStudio.Projects.Sync.Events
 {
     public class AddProjectItemEvent 
     {

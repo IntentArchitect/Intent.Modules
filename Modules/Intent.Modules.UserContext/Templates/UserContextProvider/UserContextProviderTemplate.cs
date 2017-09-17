@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Packages.UserContext.Templates.UserContextProvider
+namespace Intent.Modules.UserContext.Templates.UserContextProvider
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Packages.UserContext.Templates.UserContextProvider
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextProvider\UserContextProviderTemplate.tt"
+    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextProvider\UserContextProviderTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class UserContextProviderTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Packages.UserContext.Templates.UserContextProvider
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextProvider\UserContextProviderTemplate.tt"
+            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextProvider\UserContextProviderTemplate.tt"
 
 
 
@@ -44,21 +44,21 @@ namespace Intent.Packages.UserContext.Templates.UserContextProvider
             this.Write("using Intent.Framework.Core.Context;\r\nusing System;\r\nusing System.Collections.Gen" +
                     "eric;\r\nusing System.Linq;\r\nusing System.Security.Claims;\r\n");
             
-            #line 22 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextProvider\UserContextProviderTemplate.tt"
+            #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextProvider\UserContextProviderTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 26 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextProvider\UserContextProviderTemplate.tt"
+            #line 26 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextProvider\UserContextProviderTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Ignore, Signature = Mode.Fully)]\r\n    public class ");
             
-            #line 29 "C:\Dev\Intent\Intent.SoftwareFactory\Intent.Packages.UserContext\Templates\UserContextProvider\UserContextProviderTemplate.tt"
+            #line 29 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.UserContext\Templates\UserContextProvider\UserContextProviderTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

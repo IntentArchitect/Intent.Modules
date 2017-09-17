@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Intent.Package.Logging.NLog;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Intent.Packages.Logging.NLog.Templates.SanitizingJsonSerializer
+namespace Intent.Modules.Logging.NLog.Templates.SanitizingJsonSerializer
 {
     partial class SanitizingJsonSerializerTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies
     {

@@ -7,7 +7,7 @@
     <ProjectGuid>{FF962242-BAD5-43FB-BA8C-A24D70E33821}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Packages.Typescript.Config</RootNamespace>
+    <RootNamespace>Intent.Modules.Typescript.Config</RootNamespace>
     <AssemblyName>Intent.Modules.Typescript.Config</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
