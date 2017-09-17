@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="347b634b-8af1-471e-b6a9-ffa8a739b57b">
+  <name>QueryOperation</name>
+  <icon>
+    <type>CharacterBox</type>
+    <source>Q|#757575</source>
+  </icon>
+  <displayIcon>true</displayIcon>
+  <targetElements>
+    <element>operation</element>
+  </targetElements>
+  <parentFolderId>e7e9124a-d717-4d39-b02b-a568b3434112</parentFolderId>
+  <properties />
+</stereotypeDefinition>

@@ -99,8 +99,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetaData\Domain\DataTypes\013af2c5-3c32-4752-8f59-db5691050aef.xml" />
+    <Content Include="MetaData\Domain\DataTypes\1fbaa056-b666-4f25-b8fd-76fe3165acc8.xml" />
     <Content Include="MetaData\Domain\DataTypes\675c7b84-997a-44e0-82b9-cd724c07c9e6.xml" />
     <Content Include="MetaData\Domain\DataTypes\6b649125-18ea-48fd-a6ba-0bfff0d8f488.xml" />
+    <Content Include="MetaData\Domain\DataTypes\a4107c29-7851-4121-9416-cf1236908f1e.xml" />
     <Content Include="MetaData\Domain\DataTypes\d384db9c-a279-45e1-801e-e4e8099625f2.xml" />
     <Content Include="MetaData\Domain\DataTypes\e6f92b09-b2c5-4536-8270-a4d9e5bbd930.xml" />
     <Content Include="MetaData\Domain\DataTypes\fb0a362d-e9e2-40de-b6ff-5ce8167cbe74.xml" />
@@ -108,6 +110,10 @@
     <Content Include="MetaData\Domain\Folders\e7e9124a-d717-4d39-b02b-a568b3434112.xml" />
     <None Include="Intent.Modules.RichDomain.imodspec" />
     <None Include="MetaData\Domain\Intent.RichDomain.domain.pkg.config" />
+    <Content Include="MetaData\Domain\Stereotypes\153b1e56-8398-4f02-bbfc-301c6f1b34cb.xml" />
+    <Content Include="MetaData\Domain\Stereotypes\1cf363a0-ab00-4e50-a627-7d5f31f39dd1.xml" />
+    <Content Include="MetaData\Domain\Stereotypes\29f4ab1f-e95c-4ee4-aae2-c9aeabfac89c.xml" />
+    <Content Include="MetaData\Domain\Stereotypes\347b634b-8af1-471e-b6a9-ffa8a739b57b.xml" />
     <Content Include="MetaData\Domain\Stereotypes\9715ec0f-15cd-4bc4-b21a-0fe486800f2a.xml" />
     <Content Include="MetaData\Domain\Stereotypes\ae291daf-9a2b-496a-a458-c25df342de9c.xml" />
     <Content Include="Templates\Enum\DomainEnumTemplate.tt">

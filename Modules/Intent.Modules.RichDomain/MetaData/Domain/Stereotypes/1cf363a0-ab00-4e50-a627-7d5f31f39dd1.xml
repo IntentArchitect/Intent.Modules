@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="1cf363a0-ab00-4e50-a627-7d5f31f39dd1">
+  <name>CommandOperation</name>
+  <icon>
+    <type>CharacterBox</type>
+    <source>C|#795548</source>
+  </icon>
+  <displayIcon>true</displayIcon>
+  <targetElements>
+    <element>operation</element>
+  </targetElements>
+  <parentFolderId>e7e9124a-d717-4d39-b02b-a568b3434112</parentFolderId>
+  <properties />
+</stereotypeDefinition>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="153b1e56-8398-4f02-bbfc-301c6f1b34cb">
+  <name>Numeric</name>
+  <icon>
+    <type>CharacterBox</type>
+    <source>N|#FFC107</source>
+  </icon>
+  <displayIcon>false</displayIcon>
+  <displayFunction>[${(MinValue == null) ? '*' : MinValue}..${(MaxValue == null) ? '*' : MaxValue}]</displayFunction>
+  <targetElements>
+    <element>attribute</element>
+  </targetElements>
+  <parentFolderId>e7e9124a-d717-4d39-b02b-a568b3434112</parentFolderId>
+  <properties>
+    <property id="62a1e47b-3b2c-4f77-8a2a-c2bcab1867ec">
+      <name>MinValue</name>
+      <type>number</type>
+    </property>
+    <property id="ab5c2188-68fe-46b5-9356-11a6efb5d8fa">
+      <name>MaxValue</name>
+      <type>number</type>
+    </property>
+  </properties>
+</stereotypeDefinition>
