@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> | Intent Architect </title>
+    <title>Domain | Intent Architect </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content=" | Intent Architect ">
+    <meta name="title" content="Domain | Intent Architect ">
     <meta name="generator" content="docfx 2.23.1.0">
     
     <link rel="shortcut icon" href="../..//images/favicon.ico">
@@ -74,7 +74,73 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="domain">Domain</h1>
 
+<h2 id="overview">Overview</h2>
+<p>This screen allows to describe your business domain through the use of UML class diagrams. As with all the meta data describing DSLs this data is technology agnostic and can be extending using your own custom meta data through the stereotype system. </p>
+<p><img src="../../images/UserManual/Domain.png" alt="Image of the Domain Screen"></p>
+<h3 id="1-toolbar">1. Toolbar</h3>
+<p>These are the controls which allow you to perfrom high level interactions with the current UML Diagram. </p>
+<h3 id="2-uml-editor">2. Uml Editor</h3>
+<p>This is the UML visualization of the currently selected UML diagram. The diagram as well as the unlying model can be edited in this view. </p>
+<h3 id="3-tree-model">3. Tree Model</h3>
+<p>This view shows the model in it&#39;s entirety :-</p>
+<ul>
+<li>Views of the domain model</li>
+<li>Actual domain model</li>
+<li>Type definitions</li>
+<li>Stereotypes</li>
+</ul>
+<h3 id="4-properties">4. Properties</h3>
+<p>This is a basic property editor for the currently selected item.</p>
+<h2 id="toolbar">Toolbar</h2>
+<p>Allows for high level interaction with the current UML View within the UML Editor region.</p>
+<p><img src="../../images/UserManual/DomainToolbar.png" alt="Image of the Domain Toolbar"></p>
+<h3 id="1-save">1. Save</h3>
+<p>Saves your changed.</p>
+<h3 id="2-add-class">2. Add Class</h3>
+<p>Adds a new class to you current view, this class is also added to the domain model.</p>
+<h3 id="3-add-attribute">3. Add Attribute</h3>
+<p>Add an attribute to a class.</p>
+<h3 id="4-add-operation">4. Add Operation</h3>
+<p>Add an operation to a class.</p>
+<h3 id="5-add-association">5. Add Association</h3>
+<p>Add an association between the two classes you select.</p>
+<h3 id="6-add-inheritance">6. Add Inheritance</h3>
+<p>Add an inheritance relationship between the two classes you select.</p>
+<h2 id="uml-editor">Uml Editor</h2>
+<p>Model you domain or a sub view of it using UML. This supports standard UML functionality as well as the concept of stereotypes which allow you to annotated any custom meta data you wish, to any aspect of the model. Note the editor has an short cut keys and context menu.</p>
+<p><img src="../../images/UserManual/DomainModeler.png" alt="Image of the Domain UML Editor"></p>
+<h3 id="1-class">1. Class</h3>
+<p>A UML Class.</p>
+<h3 id="2-stereotypes">2. Stereotypes</h3>
+<p>An example of a stereotype being applied to a class, note stereotypes can be applied to any aspect of the model attributes, properties, etc.</p>
+<h3 id="3-attributes">3. Attributes</h3>
+<p>List of classes attributes.</p>
+<h3 id="4-operations">4. Operations</h3>
+<p>List of classes operations.</p>
+<h3 id="5-association">5. Association</h3>
+<p>An association between classes.</p>
+<h2 id="tree-model">Tree Model</h2>
+<p>This tree view contains the entire domain model, as opposed to the UML editor which showing you a specific view of the model.</p>
+<p><img src="../../images/UserManual/DomainModelView.png" alt="Image of the Domain Model View"></p>
+<h3 id="1-views">1. Views</h3>
+<p>These are the views of the domain model, or sub section of the domain model. This tool allows for mutliple views to be created ontop a single domain model. This allows for creating simplified views or perspective based views ontop of the unlying model.</p>
+<h3 id="2-domain-model-artifacts">2. Domain Model Artifacts</h3>
+<p>These artifacts would be the basic model i.e. the UML Classes and their properties, plus the associations between them.</p>
+<h3 id="3-folders">3. Folders</h3>
+<p>This tool supports a dynamic folder structure allowing you store your domain model artifacts in a structure which makes sense to you. </p>
+<h3 id="4-supporting-model-artifacts">4. Supporting Model Artifacts</h3>
+<p>These would be the extensions to the UML model, namely custom data types, enumerations and stereotype definitions.</p>
+<h2 id="property-window">Property Window</h2>
+<p>This shows, and allows for editing, the properties of the currently selected item.</p>
+<p><img src="../../images/UserManual/DomainProperties.png" alt="Image of the Domain Property Window"></p>
+<h3 id="1-item-type">1. Item Type</h3>
+<p>Type indicator for the selected item.</p>
+<h3 id="2-properties">2. Properties</h3>
+<p>The properties of the selected item.</p>
+<h3 id="3-stereotypes">3. Stereotypes</h3>
+<p>Stereotypes which are on the currently selected item.</p>
 </article>
           </div>
           

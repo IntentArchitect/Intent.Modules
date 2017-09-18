@@ -14,6 +14,24 @@
     href: UserManual/HomeScreen.md    
   - name: Solution
     href: UserManual/SolutionScreen.md    
+  - name: New Application Wizard
+    href: UserManual/NewApplicationWizard.md    
+  - name: Application
+    href: UserManual/ApplicationScreen.md    
+  - name: Application Configuration
+    href: UserManual/ApplicationConfiguration.md    
+  - name: Modules
+    href: UserManual/ApplicationModules.md    
+  - name: Domain
+    href: UserManual/Domain.md    
+  - name: Data Contracts
+    href: UserManual/Dto.md    
+  - name: Services
+    href: UserManual/Services.md    
+  - name: Execution
+    href: UserManual/SoftwareFactoryExecution.md    
+  - name: Repository Configuration
+    href: UserManual/RepositoryConfiguration.md    
 - name: Extensibility
   items:
   - name: Create A Module

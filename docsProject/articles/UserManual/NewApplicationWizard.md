@@ -5,7 +5,7 @@ This wizard creates new applciations with in the current solution.
 ![Image of the Application Wizard Screen 1](../../images/UserManual/AddApplicationWizard1.png)
 
 ## 1. Repository Configuration
-This allows you to configure your repositories, i.e. where Intent Artifact is discovereing your application templates and other discoverable resources. [![Navigates to Repository Configuration](../../images/navigate.png "Navigates to Repository Configuration screen")](RepositoryConfiguration.md)
+This allows you to configure your repositories, i.e. where Intent Architect is discovereing your application templates and other discoverable plugins. [![Navigates to Repository Configuration](../../images/navigate.png "Navigates to Repository Configuration screen")](RepositoryConfiguration.md)
 
 ## 2. Application Templates
 This is a list of application templates you can base your application on. Application templates pre-configure your application according to the template. Application Template simply initialize you application to a pre-defined state, everything the Application Template does can be done manually through the UI.

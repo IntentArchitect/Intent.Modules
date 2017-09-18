@@ -3,8 +3,6 @@
 ## Overview
 Roslyn Weaver allows developers to change or extend generated code files with their own custom code. Templates designed to work with this extension are far more powerful than traditional code generation, they allow *hand written* code to be introduced into the generated code. These template still maintaining the ability to continue changing and executing without losing the *hand written* code. In summary it allows generated code and custom written code to live symbiotically in a single file.
 
-![Image of Roslyn Weaved output](images/RoslynWeaverOverview.png)
-
 The primary driver behind Roslyn Weaver is to overcome one of the biggest limitations of traditional code generation systems which is that they are typically '*all or nothing*'. That is to to say you have to use the generated code as is for all scenarios and there is a very limit scope for extensibility. Any extensibility is typically done through inheritance or partial classes. While these traditional methods are available and may be great to use for some scenarios Roslyn Weaver introduces a wide new range of possibilities.
 
 Due to the Roslyn Weaver's ability to integate *non-generated* with generated code there are many new possibilities for extensibility beyond those of traditional code generation techniques. Some extensibilty techniques may include, (but not limited to)
