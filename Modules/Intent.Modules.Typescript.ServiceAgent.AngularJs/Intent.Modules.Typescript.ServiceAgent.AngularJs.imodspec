@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Typescript.ServiceAgent.AngularJs</id>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <summary>Typescript service proxies for AngularJS</summary>
   <description>Typescript service proxies for AngularJS</description>
   <authors>Intent Software</authors>
@@ -10,9 +10,15 @@
   <templates>
     <template id="Intent.Typescript.ServiceAgent.AngularJs.Proxy.Local">
       <role>Presentation.Web</role>
+      <config>
+        <add key="AngularModule" description="AngularJs module to register this proxy into." default="App"  />
+      </config>
     </template>
     <template id="Intent.Typescript.ServiceAgent.AngularJs.Proxy.Remote">
       <role>Presentation.Web</role>
+      <config>
+        <add key="AngularModule" description="AngularJs module to register this proxy into." default="App"  />
+      </config>
     </template>
   </templates>
   <decorators>

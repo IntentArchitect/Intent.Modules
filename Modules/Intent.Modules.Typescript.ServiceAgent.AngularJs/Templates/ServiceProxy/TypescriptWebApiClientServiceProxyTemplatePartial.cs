@@ -13,6 +13,8 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
     {
         public const string RemoteIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Remote";
         public const string LocalIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Local";
+
+        public const string DomainTemplateDependancyId = "DomainTemplateDependancyId";
         private readonly IApplicationEventDispatcher _eventDispatcher;
 
         public TypescriptWebApiClientServiceProxyTemplate(string identifier, IProject project, ServiceModel model, IApplicationEventDispatcher eventDispatcher)
@@ -24,6 +26,19 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         public string ApiBasePathConfigKey => $"{Project.Application.SolutionName.ToLower()}_{Model.Application.Name.ToLower()}_api_basepath".ToLower();
 
         public string ApplicationName => Model.Application.Name;
+
+        public string AngularModule
+        {
+            get
+            {
+                string angularModule;
+                if (GetMetaData().CustomMetaData.TryGetValue("AngularModule", out angularModule))
+                {
+                    return angularModule;
+                }
+                return "App"; // Default Angular Module
+            }
+        }
 
         protected override TypescriptDefaultFileMetaData DefineTypescriptDefaultFileMetaData()
         {
@@ -40,7 +55,6 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 
         public void PreProcess()
         {
-
             _eventDispatcher.Publish(ApplicationEvents.AngularJs_ConfigurationRequired, new Dictionary<string, string>()
             {
                 { "Key", ApiBasePathConfigKey },

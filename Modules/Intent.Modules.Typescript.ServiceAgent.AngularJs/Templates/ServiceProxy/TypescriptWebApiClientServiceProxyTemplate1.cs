@@ -187,7 +187,14 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             
             #line default
             #line hidden
-            this.Write("    }\r\n\r\n    angular.module(\"App\").service(\"");
+            this.Write("    }\r\n\r\n    angular.module(\"");
+            
+            #line 59 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AngularModule));
+            
+            #line default
+            #line hidden
+            this.Write("\").service(\"");
             
             #line 59 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));

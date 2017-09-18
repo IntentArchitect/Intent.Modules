@@ -56,5 +56,5 @@ namespace <#= Namespace #> {
 #>
     }
 
-    angular.module("App").service("<#=Model.Name#>Proxy", <#=Model.Name#>Proxy);
+    angular.module("<#= AngularModule #>").service("<#=Model.Name#>Proxy", <#=Model.Name#>Proxy);
 }

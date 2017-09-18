@@ -67,7 +67,6 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
             _domainTemplateDependancy = TemplateDependancy.OnModel<Class>(fileMetaData.CustomMetaData[DomainTemplateDependancyId], (to) => to.ClassId == Model.MappedClassId);
         }
 
-
         public void PreProcess()
         {
             _contractDependancy = this.Project.Application.FindTemplateInstance<IHasClassDetails>(_contractTemplateDependancy);
