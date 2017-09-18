@@ -109,7 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.AspNet.WebApi.imodspec" />
-    <None Include="Intent.Modules.WebApi.nuspec" />
+    <None Include="Intent.Modules.AspNet.WebApi.nuspec" />
     <None Include="Legacy\Services.ttinclude" />
     <None Include="MetaData\Services\Intent.WebApi.services.pkg.config" />
     <None Include="packages.config" />
@@ -118,6 +118,11 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiControllerTemplate.cs</LastGenOutput>
     </None>
+    <None Include="_CreateNewNuGetPackage\Config.ps1" />
+    <None Include="_CreateNewNuGetPackage\DoNotModify\CreateNuGetPackage.ps1" />
+    <None Include="_CreateNewNuGetPackage\DoNotModify\New-NuGetPackage.ps1" />
+    <None Include="_CreateNewNuGetPackage\DoNotModify\UploadNuGetPackage.ps1" />
+    <None Include="_CreateNewNuGetPackage\RunMeToUploadNuGetPackage.cmd" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -145,6 +150,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
     <None Include="Templates\WebApiBadHttpRequestException\WebApiBadHttpRequestExceptionTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiBadHttpRequestExceptionTemplate.cs</LastGenOutput>
@@ -153,26 +159,28 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiControllerTemplate.cs</LastGenOutput>
     </None>
-    <Content Include="MetaData\Services\Stereotypes\64d4a412-03d8-46bb-90dc-8ddb186270e2.xml" />
-    <Content Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt">
+    <None Include="MetaData\Services\Stereotypes\64d4a412-03d8-46bb-90dc-8ddb186270e2.xml" />
+    <None Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>RequireHttpsMiddlewareTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="MetaData\Services\Folders\87d16e6c-ce99-4329-87c4-d39dcddf0764.xml" />
-    <Content Include="Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.tt">
+    </None>
+    <None Include="MetaData\Services\Folders\87d16e6c-ce99-4329-87c4-d39dcddf0764.xml" />
+    <None Include="Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>HttpExceptionHandlerTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt">
+    </None>
+    <None Include="Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>OwinWebApiConfigTemplate.cs</LastGenOutput>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>REM Create a NuGet package for this project and place the .nupkg file in the project's output directory.
+REM If you see this in Visual Studio's Error List window, check the Output window's Build tab for the actual error.
+ECHO Creating NuGet package in Post-Build event...
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "&amp; '$(ProjectDir)_CreateNewNuGetPackage\DoNotModify\CreateNuGetPackage.ps1' -ProjectFilePath '$(ProjectPath)' -OutputDirectory '$(TargetDir)' -BuildConfiguration '$(ConfigurationName)' -BuildPlatform '$(PlatformName)'"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\build\Intent.IntentArchitectPackager.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
