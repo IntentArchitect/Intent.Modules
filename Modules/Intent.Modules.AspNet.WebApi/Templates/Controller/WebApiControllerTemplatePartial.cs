@@ -164,8 +164,10 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         {
             if (o.HasStereotype("Secured") || Model.HasStereotype("Secured"))
             {
-                var roles = o.GetPropertyValue<string>("Security", "Roles");
-                return $"[Authorize]"; // TODO: Roles
+                var roles = o.GetPropertyValue<string>("Secured", "Roles");
+                return string.IsNullOrWhiteSpace(roles)
+                    ? "[Authorize]" 
+                    : $"[Authorize(Roles = \"{roles}\")]";
             }
             return "[AllowAnonymous]";
         }
