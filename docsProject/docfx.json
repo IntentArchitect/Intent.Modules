@@ -49,8 +49,9 @@
     "globalMetadata": {
       "_appTitle": "Intent Architect",
       "_enableSearch":"true",
-      //"_appLogoPath":"/images/logo.png",
-      "_appFaviconPath":"/images/favicon.ico"
+      "_appLogoPath":"./images/logo.png",
+      "_appFaviconPath":"/images/favicon.ico",
+      "_appFooter": "<span>Copyright © <script type=\"text/javascript\">document.write((new Date()).getFullYear());</script> Intent Software</span>"
     }, 
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
