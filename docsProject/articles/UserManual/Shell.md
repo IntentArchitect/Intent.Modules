@@ -1,5 +1,7 @@
 # The Shell
 
+This is the basic shell of Intent Architect which is typcally always visible no matter where you are in the application.
+
 ![Image of the Shell](../../images/UserManual/Shell.png)
 
 ## 1. Home Screen Area

@@ -1,34 +1,36 @@
 - name: Getting Started
   items:
-  - name: What is Intent Architect?
+  - name: Welcome to Intent Architect
     href: GettingStarted/intro.md
+  - name: Quick Start
+    href: GettingStarted/QuickStart.md
 - name: Core Modules
   items:
   - name: Roslyn Weaver 
     href: ../modules/RoslynWeaver/  
 - name: User Manual
   items:
-  - name: Shell
+  - name: The shell
     href: UserManual/Shell.md    
-  - name: Home
+  - name: Home screen
     href: UserManual/HomeScreen.md    
-  - name: Solution
+  - name: Creating a Solution
     href: UserManual/SolutionScreen.md    
-  - name: New Application Wizard
+  - name: Creating an Application
     href: UserManual/NewApplicationWizard.md    
-  - name: Application
+  - name: Application home screen
     href: UserManual/ApplicationScreen.md    
   - name: Application Configuration
     href: UserManual/ApplicationConfiguration.md    
-  - name: Modules
+  - name: Application Modules
     href: UserManual/ApplicationModules.md    
-  - name: Domain
+  - name: Model your Domain
     href: UserManual/Domain.md    
-  - name: Data Contracts
+  - name: Model your Data Contracts
     href: UserManual/Dto.md    
-  - name: Services
+  - name: Model your Services
     href: UserManual/Services.md    
-  - name: Execution
+  - name: Push the play button
     href: UserManual/SoftwareFactoryExecution.md    
   - name: Repository Configuration
     href: UserManual/RepositoryConfiguration.md    

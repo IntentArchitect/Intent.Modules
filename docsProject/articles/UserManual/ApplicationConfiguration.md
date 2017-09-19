@@ -1,20 +1,25 @@
 # Application Configuration
 
-The  screen is where you configure / describe your applications code project structure.
+Describe your application's code project structure. Here you conceptually lay out how the physcial code structure you would like, or how it actually is if you are using Intent Architect against an existing code base. The are 2 main purposes behind describing this structure:-
+- Flexability, allowing you to map out where you would like the generated code outputs to go.
+- Generate and/or manage your actual code projects and solutions 
+
+Generated code is mapped to the projects through a role system. Templates in Modules target roles (defined by the Tempalte creator), when such a module is added to your application those roles becomes available on this screen for assignment. Assigning a role to a project is effectivly saying 'Place all generated output related to this role into this project'. It is recommended to use standard conventions for roles e.g. Domain, Persistence, UI, Services, Contracts, etc. 
+
 
 ![Image of the Application Configuration](../../images/UserManual/ApplicationConfiguration.png)
 
 ## 1. Save
-Save your changes, save the world.
+Save your application configuration, save the world.
 
 ## 2. Project
-Add one or more projects, these projects represent the physcial code projects you are generating code for. These projects can either be created by Intent Architect or be existing projects. Projects have project types, project type are dynmic and available in Intent Architect through modules.
+Add one or more projects, these projects represent the actual code projects of your code solution. These projects can either be created by Intent Architect or be existing projects. Projects have project types, project types are dynmaic and available in Intent Architect through modules. Our Visual Studio module ships with several standard .Net project types. 
 
 ## 3. Assigned Roles
-These are the Roles currently assigned to this specific projects. Code generating modules, typically specify which role their output should target. In this way you are essentially mapping the code generation outputs to your projects. 
+These are the roles currently assigned to this specific projects. These roles mean that any generated code targeting these roles will be placed in this project. 
 
 ## 4. Unassigned Roles
-This is a list of roles, which have been registerd with Intent Architect through the modules you have added to your application, which are currently not mapped onto a project. These roles need to be mapped to a specific project.
+This is a list of roles which have been registerd, through the modules you have added to your application, which are currently not mapped onto a project. These roles need to be mapped to the desired projects.
 
-## 5. Properties
-Show the properties of the currently selected item, and typically allows them to be edited.
+## 5. Properties window
+Show the properties of the currently selected item, and typically allows them to be edited. There is also a context menu available on items for editing.

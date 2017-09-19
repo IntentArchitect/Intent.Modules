@@ -76,18 +76,23 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="application-configuration">Application Configuration</h1>
 
-<p>The  screen is where you configure / describe your applications code project structure.</p>
+<p>Describe your application&#39;s code project structure. Here you conceptually lay out how the physcial code structure you would like, or how it actually is if you are using Intent Architect against an existing code base. The are 2 main purposes behind describing this structure:-</p>
+<ul>
+<li>Flexability, allowing you to map out where you would like the generated code outputs to go.</li>
+<li>Generate and/or manage your actual code projects and solutions </li>
+</ul>
+<p>Generated code is mapped to the projects through a role system. Templates in Modules target roles (defined by the Tempalte creator), when such a module is added to your application those roles becomes available on this screen for assignment. Assigning a role to a project is effectivly saying &#39;Place all generated output related to this role into this project&#39;. It is recommended to use standard conventions for roles e.g. Domain, Persistence, UI, Services, Contracts, etc. </p>
 <p><img src="../../images/UserManual/ApplicationConfiguration.png" alt="Image of the Application Configuration"></p>
 <h2 id="1-save">1. Save</h2>
-<p>Save your changes, save the world.</p>
+<p>Save your application configuration, save the world.</p>
 <h2 id="2-project">2. Project</h2>
-<p>Add one or more projects, these projects represent the physcial code projects you are generating code for. These projects can either be created by Intent Architect or be existing projects. Projects have project types, project type are dynmic and available in Intent Architect through modules.</p>
+<p>Add one or more projects, these projects represent the actual code projects of your code solution. These projects can either be created by Intent Architect or be existing projects. Projects have project types, project types are dynmaic and available in Intent Architect through modules. Our Visual Studio module ships with several standard .Net project types. </p>
 <h2 id="3-assigned-roles">3. Assigned Roles</h2>
-<p>These are the Roles currently assigned to this specific projects. Code generating modules, typically specify which role their output should target. In this way you are essentially mapping the code generation outputs to your projects. </p>
+<p>These are the roles currently assigned to this specific projects. These roles mean that any generated code targeting these roles will be placed in this project. </p>
 <h2 id="4-unassigned-roles">4. Unassigned Roles</h2>
-<p>This is a list of roles, which have been registerd with Intent Architect through the modules you have added to your application, which are currently not mapped onto a project. These roles need to be mapped to a specific project.</p>
-<h2 id="5-properties">5. Properties</h2>
-<p>Show the properties of the currently selected item, and typically allows them to be edited.</p>
+<p>This is a list of roles which have been registerd, through the modules you have added to your application, which are currently not mapped onto a project. These roles need to be mapped to the desired projects.</p>
+<h2 id="5-properties-window">5. Properties window</h2>
+<p>Show the properties of the currently selected item, and typically allows them to be edited. There is also a context menu available on items for editing.</p>
 </article>
           </div>
           

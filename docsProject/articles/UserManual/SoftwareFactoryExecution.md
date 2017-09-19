@@ -1,6 +1,6 @@
 # Software Factory Execution
 
-This screen shows the execution of the software factory, it provides detailed information about what is happening in Intent Architect's code generation process. This screen also shows the user what code changes will be made and allows for reviewing these changes.
+Clicking the Play button will kick off the execution of our software factory. This screen shows the execution details of the software factory, it provides detailed information about what is happening with in  code generation process. This screen also shows the user what code changes will be made and allows for reviewing and/or rejecting these changes.
 
 ## Console tab
 
@@ -17,10 +17,10 @@ Use this search to filter the console messages.
 These toggleable buttons allow for filtering of console messages based on their category.
 
 ### 4. Console Messages
-These messages are the output from the code generation process. These can be useful for giving insight into the code generation process, should it be required.
+These messages are the output from the code generation process. They can be useful for giving insight into the code generation process, should it be required.
 
 ### 5. Apply Changes
-Apply changes will commit the "Checked" changes / outputs of the code generatation process, i.e. write the output to disk, this will overwrite files if they exist on the hard drive.
+Apply changes will commit the "Checked" changes / outputs of the code generatation process, i.e. write the output to disk i.e. create, delete and overwrite code files on the hard drive.
 
 ### 6. Cancel
 This will cancel the process, no output will be written to disk, i.e. no changes will occur to your existing code base.

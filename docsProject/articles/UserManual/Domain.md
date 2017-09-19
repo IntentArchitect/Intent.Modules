@@ -2,22 +2,22 @@
 
 ## Overview
 
-This screen allows to describe your business domain through the use of UML class diagrams. As with all the meta data describing DSLs this data is technology agnostic and can be extending using your own custom meta data through the stereotype system. 
+This screen allows to describe your business domain through the use of UML class diagrams. Here you can describe complex business concepts and their relationships, partitioning them into simpler to consume views (if required). As with all the meta data describing DSLs this data is technology agnostic and can be extending using your own custom meta data through the stereotype system. 
 
 ![Image of the Domain Screen](../../images/UserManual/Domain.png)
 
 ### 1. Toolbar
-These are the controls which allow you to perfrom high level interactions with the current UML Diagram. 
+These are the controls which allow you to perfrom high level interactions with the current UML view. 
 
 ### 2. Uml Editor
-This is the UML visualization of the currently selected UML diagram. The diagram as well as the unlying model can be edited in this view. 
+This is the UML visualization of the currently selected UML view. The view as well as the unlying model are edited. 
 
 ### 3. Tree Model
-This view shows the model in it's entirety :-
+This tree shows the model in it's entirety :-
 - Views of the domain model
-- Actual domain model
+- Domain model
 - Type definitions
-- Stereotypes
+- Stereotype Definitions
 
 ### 4. Properties
 This is a basic property editor for the currently selected item.
@@ -48,7 +48,7 @@ Add an inheritance relationship between the two classes you select.
 
 ## Uml Editor
 
-Model you domain or a sub view of it using UML. This supports standard UML functionality as well as the concept of stereotypes which allow you to annotated any custom meta data you wish, to any aspect of the model. Note the editor has an short cut keys and context menu.
+Model you domain or a sub view of it using UML. This supports standard UML functionality, this includes concept of stereotypes which allow you to annotated custom meta data to any aspect of the model. 
 
 ![Image of the Domain UML Editor](../../images/UserManual/DomainModeler.png)
 
@@ -69,12 +69,12 @@ An association between classes.
 
 ## Tree Model
 
-This tree view contains the entire domain model, as opposed to the UML editor which showing you a specific view of the model.
+This tree view contains the entire domain model, as opposed to the UML editor which showing you a specific view of the domain model.
 
 ![Image of the Domain Model View](../../images/UserManual/DomainModelView.png)
 
 ### 1. Views
-These are the views of the domain model, or sub section of the domain model. This tool allows for mutliple views to be created ontop a single domain model. This allows for creating simplified views or perspective based views ontop of the unlying model.
+These are the views of the domain model, or sub sections of the domain model. This tool allows for mutliple views to be created ontop a single domain model. This allows for creating simplified views or perspective based views ontop of the unlying domain model.
 
 ### 2. Domain Model Artifacts
 These artifacts would be the basic model i.e. the UML Classes and their properties, plus the associations between them.
@@ -83,7 +83,7 @@ These artifacts would be the basic model i.e. the UML Classes and their properti
 This tool supports a dynamic folder structure allowing you store your domain model artifacts in a structure which makes sense to you. 
 
 ### 4. Supporting Model Artifacts
-These would be the extensions to the UML model, namely custom data types, enumerations and stereotype definitions.
+These would be the extensions to the UML model, namely custom data types, enumerations and stereotype definitions. Note these can be manually created or imported by Modules.
 
 ## Property Window
 
