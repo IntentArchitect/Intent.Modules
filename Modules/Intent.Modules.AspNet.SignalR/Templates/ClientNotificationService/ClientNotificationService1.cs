@@ -55,19 +55,8 @@ namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService
             
             #line default
             #line hidden
-            this.Write(@"
-{
-    public interface IClientNotificationService
-    {
-        void NotifyUser(string userId, object message);
-        void NotifyClientUsers(string clientId, object message);
-        void NotifyAll(object message);
-		void NotifyUserInRole(string role, object message);
-		void NotifyReportListeners(Guid reportId, object message);
-        void Flush();
-    }
-}
-");
+            this.Write("\r\n{\r\n    public interface IClientNotificationService\r\n    {\r\n        void Flush()" +
+                    ";\r\n    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;

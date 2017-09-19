@@ -20,11 +20,6 @@ namespace <#= Namespace #>
 {
     public interface IClientNotificationService
     {
-        void NotifyUser(string userId, object message);
-        void NotifyClientUsers(string clientId, object message);
-        void NotifyAll(object message);
-		void NotifyUserInRole(string role, object message);
-		void NotifyReportListeners(Guid reportId, object message);
         void Flush();
     }
 }

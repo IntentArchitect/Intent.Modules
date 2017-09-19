@@ -1,26 +1,43 @@
 ﻿using System.Collections.Generic;
+using Intent.MetaModel.Service;
 using Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService;
-using Intent.Modules.AspNet.WebApi.Legacy;
-using Intent.SoftwareFactory.MetaModels.Service;
+using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.AspNet.SignalR.Interop.WebApi.Decorator
 {
-    internal class SignalrWebApiDistributionDecorator : BaseDistributionDecorator, IHasTemplateDependencies
+    internal class SignalrWebApiDistributionDecorator : DistributionDecoratorBase
     {
-        public const string Identifier = "Intent.AspNet.SignalR.Interop.WebApi.Legacy";
+        public const string Identifier = "Intent.AspNet.SignalR.Interop.WebApi";
 
-        public override string DeclarePrivateVariables(ServiceModel service) => @"
+        public SignalrWebApiDistributionDecorator()
+        {
+            
+        }
+
+        public override string DeclarePrivateVariables(IServiceModel service)
+        {
+            return @"
         private readonly IClientNotificationService _clientNotificationService;";
+        }
 
-        public override string ConstructorParams(ServiceModel service) => @"
+        public override string ConstructorParams(IServiceModel service)
+        {
+            return @"
             , IClientNotificationService clientNotificationService";
+        }
 
-        public override string ConstructorInit(ServiceModel service) => @"
+        public override string ConstructorInit(IServiceModel service)
+        {
+            return @"
             _clientNotificationService = clientNotificationService;";
+        }
 
-        public override string AfterTransaction(ServiceModel service, ServiceOperationModel operation) => @"
+        public override string AfterTransaction(IServiceModel service, IOperationModel operation)
+        {
+            return @"
                 _clientNotificationService.Flush();";
+        }
 
         public override int Priority { get; set; } = -500;
 

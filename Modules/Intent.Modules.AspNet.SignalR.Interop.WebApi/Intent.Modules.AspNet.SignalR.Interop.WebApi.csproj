@@ -54,8 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decorator\SignalrWebApiDistributionDecoratorRegistation.cs" />
     <Compile Include="Decorator\SignalrWebApiDistributionDecorator.cs" />
+    <Compile Include="Decorator\SignalrWebApiDistributionDecoratorRegistation.cs" />
+    <Compile Include="Decorator\Legacy\LegacySignalrWebApiDistributionDecoratorRegistation.cs" />
+    <Compile Include="Decorator\Legacy\LegacySignalrWebApiDistributionDecorator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
