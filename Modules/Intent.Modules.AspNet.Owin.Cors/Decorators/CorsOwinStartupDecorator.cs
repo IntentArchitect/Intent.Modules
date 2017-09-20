@@ -39,7 +39,8 @@ namespace Intent.Modules.AspNet.Owin.Cors.Decorators
             var corsPolicy = new CorsPolicy
             {
                 AllowAnyMethod = true,
-                AllowAnyHeader = true
+                AllowAnyHeader = true,
+                SupportsCredentials = true
             };
 
             // Try and load allowed origins from web.config
