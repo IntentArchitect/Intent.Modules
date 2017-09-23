@@ -9,7 +9,7 @@
     <decorator id="Intent.Owin.Cors.OwinStartupDecorator"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Owin" version="1.0"/>
+    <dependency id="Intent.AspNet.Owin" version="1.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

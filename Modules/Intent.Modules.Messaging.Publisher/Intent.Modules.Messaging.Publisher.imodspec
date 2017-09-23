@@ -18,7 +18,7 @@
   </decorators>
   <dependencies>
     <dependency id="Intent.Unity" version="1.0"/>
-    <dependency id="Intent.WebApi" version="1.0"/>
+    <dependency id="Intent.AspNet.WebApi" version="1.0"/>
     <dependency id="Intent.VisualStudio.Projects" version="1.0"/>
     <dependency id="Intent.Messaging.Subscriber" version="1.0"/>
   </dependencies>

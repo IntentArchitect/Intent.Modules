@@ -15,7 +15,7 @@
   <decorators>
   </decorators>
   <interoperability>
-    <detect id="Intent.WebApi">
+    <detect id="Intent.AspNet.WebApi">
       <install>
         <package id="Intent.AspNet.SignalR.Interop.WebApi" version="1.0"/>
       </install>

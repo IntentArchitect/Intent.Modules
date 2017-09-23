@@ -15,7 +15,7 @@
   </decorators>
   <dependencies>
     <dependency id="Intent.EntityFramework" version="1.0"/>
-    <dependency id="Intent.WebApi" version="1.0"/>
+    <dependency id="Intent.AspNet.WebApi" version="1.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

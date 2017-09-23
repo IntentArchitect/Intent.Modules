@@ -23,7 +23,7 @@
   <dependencies>
   </dependencies>
   <interoperability>
-    <detect id="Intent.WebApi">
+    <detect id="Intent.AspNet.WebApi">
       <install>
         <package id="Intent.UserContext.Interop.WebApi" version="1.0"/>
       </install>
