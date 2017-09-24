@@ -5,6 +5,25 @@ Intent Architect is a coding automation tool for software developers. It's based
   - **Quality Assured** - Create your patterns and rest easy knowing that they are consistently rolled out throughout your codebase.
   - **Agile Architecture** - Future-proof your architecture! Effortlessly upgrade or even swap out your technologies and design patterns at the push of a button. Mitigating technical risk has never been easier.
 
+## Getting started
+[Register](https://intentarchitect.com/#/user-access/register) on our website and [download](https://intentarchitect.com/#/downloads) the latest release.
+
+##### Quickstart
+To get a feel for the power of Intent Architect, let's create a "full stack" ASP.NET WebApi 2.2 server with persistence and domain patterns in place. Install the latest release and sign in to application using the credentials used for registration. In the application:
+  1. Create a new solution
+  2. Create an application in the solution using the "Full Stack ASP.NET WebApi 2.2" template.
+  3. Run the software factory (play button in the top right)
+  4. Apply the code outputs
+
+Here we've create the scaffolding code for the server, as well as installed all the required NuGet packages.
+
+  5. Open the solution in Visual Studio 2015/17 _(output will be in the location chosen for your application)_
+  6. Compile and run (_hit F5_)
+
+Play around by adding Services, Domain classes and DTOs, and see how the patterns are realized in your codebase.
+
+_(Important: You will need to add the "Aggregate Root" / "Entity" (Domain Driven Development concepts) stereotype to you Domain classes for them to generate. This is a requirement of the Intent.RichDomain module, currently being installed for this application template. To do so simply right-click the Domain class and select Add Stereotype)_
+
 ## How it works
 Intent Architect works by feeding information (Metadata) about the application, and how this information should be realized (Modules), into a Software Factory, which then outputs code into your codebase. For more information, check out our website [www.intentarchitect.com](https://intentarchitect.com).
 
