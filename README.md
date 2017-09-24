@@ -11,6 +11,6 @@ Intent Architect works by feeding information (Metadata) about the application, 
 ## Create your own Modules
 Modules are made up of a cohesive set of outputs which make up a pattern. This repository contains the modules that have been created by the Intent Architect team to deliver complex business applications for existing clients.
 
-While the output of each module is language agnostic, creating the modules must be done using C#.NET (a modern and powerful strongly typed language).
+While the output of each module is language agnostic, creating the modules must be done using C# and .NET (a modern and powerful strongly typed language).
 
-Tutorials and documentation for creating your own modules metadata is on the way, but in the meantime feel free to check out our existing modules to see how they work.
+Tutorials and documentation for creating your own modules is on the way, but in the meantime feel free to check out our existing modules to see how they work.
