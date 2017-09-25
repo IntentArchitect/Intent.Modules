@@ -32,7 +32,7 @@
   </templates>
   <decorators />
   <!--<interoperability>
-    <detect id="Intent.Owin">
+    <detect id="Intent.AspNet.Owin">
       <install>
         <package id="Intent.Owin.FileServer" version="1.0"/>
       </install>
