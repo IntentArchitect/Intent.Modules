@@ -127,6 +127,11 @@ namespace Intent.Modules.AngularJs.ServiceAgent.Templates.Proxy
                 case "System.Boolean":
                     propertyType = "boolean";
                     break;
+                case "object":
+                case "Object":
+                case "System.Object":
+                    propertyType = "any";
+                    break;
                 default:
                     {
                         if (propertyType.IndexOf("Contracts") != -1)
