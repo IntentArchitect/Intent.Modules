@@ -8,7 +8,7 @@ Intent Architect is a coding automation tool for software developers. It's based
 ## Getting started
 [Register](https://intentarchitect.com/#/user-access/register) on our website and [download](https://intentarchitect.com/#/downloads) the latest release.
 
-##### Quickstart
+#### Quickstart
 
 It takes just a few minutes to get a feel for the power of Intent Architect. For this quickstart we're going to create a "full stack" ASP.NET WebApi 2.2 server with persistence and domain patterns in place. If you haven't done so already, install the latest release and sign in to application using the credentials used for registration. Once signed in, in the application:
   1. Press 'Create New Solution' directly under the 'Start' heading at the top left of the initial screen.
