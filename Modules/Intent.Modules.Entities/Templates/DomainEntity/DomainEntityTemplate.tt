@@ -12,8 +12,6 @@
 <#@ import namespace="System.Collections.Generic"#>
 using System;
 using System.Collections.Generic;
-using Intent.Framework.Domain; 
-using Intent.Framework.Core;
 using Intent.CodeGen;
 <#= DependencyUsings #>
 
@@ -91,5 +89,23 @@ namespace <#= Namespace #>
             }
         }
 <#    }#>
+
+<#  foreach (var operation in Model.Operations)
+    {
+        string returnType = operation.ReturnType != null ? operation.ReturnType.Type.Name : "void";
+        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => x.Type.Name + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
+		if (!operation.IsAbstract)
+		{#>
+        public <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>)
+        {
+            throw new NotImplementedException("Replace with your implementation...");
+        }
+<#		}
+		else
+		{ #>
+        public abstract <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
+<#		}
+    }
+#>
     }
 }

@@ -32,45 +32,29 @@ namespace Intent.Modules.Entities.Templates.DomainPartialEntity
         /// </summary>
         public override string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing Intent.Framework.Domain; " +
-                    "\r\nusing Intent.Framework.Core;\r\nusing Intent.CodeGen;\r\n");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing Intent.CodeGen;\r\n");
             
-            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
+            #line 17 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public partial class ");
             
-            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
+            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Entities\Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
-        }
-        private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;
-        /// <summary>
-        /// The current host for the text templating engine
-        /// </summary>
-        public virtual global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost Host
-        {
-            get
-            {
-                return this.hostValue;
-            }
-            set
-            {
-                this.hostValue = value;
-            }
         }
     }
     

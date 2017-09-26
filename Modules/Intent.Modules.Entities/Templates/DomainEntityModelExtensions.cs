@@ -42,7 +42,17 @@ namespace Intent.Modules.Entities.Templates
 
         public static string Name(this IAssociationEnd associationEnd)
         {
-            return associationEnd.Name ?? associationEnd.Class.Name;
+            if (string.IsNullOrEmpty(associationEnd.Name))
+            {
+                var className = associationEnd.Class.Name;
+                if (associationEnd.MaxMultiplicity == "*" || int.Parse(associationEnd.MaxMultiplicity) > 1)
+                {
+                    return className.EndsWith("y") ? className.Substring(0, className.Length - 1) + "ies" : string.Format("{0}s", className);
+                }
+                return associationEnd.Class.Name;
+            }
+
+            return associationEnd.Name;
         }
 
         public static string Type(this IAssociationEnd associationEnd)

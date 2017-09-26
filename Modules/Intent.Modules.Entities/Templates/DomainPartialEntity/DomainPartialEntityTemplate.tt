@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -13,8 +13,6 @@
 <#@ import namespace="System.Collections.Generic"#>
 using System;
 using System.Collections.Generic;
-using Intent.Framework.Domain; 
-using Intent.Framework.Core;
 using Intent.CodeGen;
 <#= DependencyUsings #>
 
