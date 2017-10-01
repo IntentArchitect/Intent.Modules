@@ -39,7 +39,7 @@ namespace <#= Namespace #>
 
         public async Task<object> Invoke(dynamic input)
         {
-            return await Task.Run<object>(() =>
+            return await Task.Factory.StartNew<object>(() =>
             {
                 try
                 {
@@ -87,7 +87,7 @@ namespace <#= Namespace #>
                 #>
                     throw new SerializableException(e.Message, e.StackTrace);
                 }
-            });
+            }, TaskCreationOptions.LongRunning);
         }
 <#
         foreach(var operation in Model.Operations)

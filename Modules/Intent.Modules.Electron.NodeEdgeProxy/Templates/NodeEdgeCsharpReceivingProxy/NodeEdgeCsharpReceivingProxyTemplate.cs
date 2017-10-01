@@ -87,7 +87,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
 
         public async Task<object> Invoke(dynamic input)
         {
-            return await Task.Run<object>(() =>
+            return await Task.Factory.StartNew<object>(() =>
             {
                 try
                 {
@@ -192,7 +192,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
             #line default
             #line hidden
             this.Write("                    throw new SerializableException(e.Message, e.StackTrace);\r\n  " +
-                    "              }\r\n            });\r\n        }\r\n");
+                    "              }\r\n            }, TaskCreationOptions.LongRunning);\r\n        }\r\n");
             
             #line 92 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
