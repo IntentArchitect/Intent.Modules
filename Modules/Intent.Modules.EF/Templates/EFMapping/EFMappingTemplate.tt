@@ -25,9 +25,9 @@
             throw new Exception(string.Format("Unsupported Mapping, multiple Composition parents to {0} ", Model.Name));            
         }
 
-        if (!association.SourceEnd.IsNavigable)
+        if (!association.TargetEnd.IsNavigable)
         {
-            throw new Exception(string.Format("Unsupported Parent Needs to be Navigable to Child relationship  {0} on {1} ", association.ToString(), association.TargetEnd.Class.Name));
+            throw new Exception(string.Format("Unsupported Source Needs to be Navigable to Target relationship  {0} on {1} ", association.ToString(), association.TargetEnd.Class.Name));
         }
 
         //Unsupported Associations
@@ -154,19 +154,6 @@ namespace <#= Namespace #>
 <#  }#>
 <#    foreach (var associationEnd in Model.AssociatedClasses)
     {
-        if (associationEnd.OtherEnd().Multiplicity == Multiplicity.Many && associationEnd.Multiplicity == Multiplicity.One)
-        {#>
-            this.Property(x => x.<#= associationEnd.IdentifierName()#>)
-<#          if (associationEnd.Stereotypes.GetPropertyValue("UniqueConstraint", "IsIndex", false)){ #>
-
-                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= associationEnd.Stereotypes.GetPropertyValue("UniqueConstraint", "UniqueKey", "Unique1")#>", <#=associationEnd.Stereotypes.GetPropertyValue("UniqueConstraint", "Order", "1")#>) { IsUnique = true }))<#
-            }
-            if (!string.IsNullOrEmpty(associationEnd.Stereotypes.GetPropertyValue("Index", "UniqueKey", ""))){#>
-
-                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= associationEnd.Stereotypes.GetPropertyValue("Index", "UniqueKey", "Unique1")#>", <#= associationEnd.Stereotypes.GetPropertyValue("Index", "Order", "1")#>) { IsUnique = false }))<#
-            }#>
-                ;
-<#      }
 
 		if (associationEnd != associationEnd.Association.TargetEnd)
         {
@@ -181,14 +168,14 @@ namespace <#= Namespace #>
             case RelationshipType.OneToMany :#>
             <#= string.Format("this.{0}(x => x.{1})", associationEnd.MinMultiplicity != "0" ? "HasRequired" : "HasOptional", associationEnd.Name().ToPascalCase())#>
                 .WithMany(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
-                .HasForeignKey(x => x.<#= associationEnd.Name().ToPascalCase()#>Id)
+                .Map(m => m.MapKey("<#= associationEnd.Name().ToPascalCase()#>Id"))
                 ;
 
 <#                  break;
             case RelationshipType.ManyToOne :#>
             this.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
                 .<#= string.Format("{0}({1})", associationEnd.OtherEnd().MinMultiplicity != "0" ? "WithRequired" : "WithOptional", "x => x." + associationEnd.OtherEnd().Name().ToPascalCase())#>
-                .HasForeignKey(x => x.<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id)
+				.Map(m => m.MapKey("<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id"))
                 ;
 
 <#                  break;
