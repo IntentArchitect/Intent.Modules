@@ -21,7 +21,7 @@ This section allows you to manages your applications modules. These modules can 
 This DSL allows you to describe your applications domain model using UML. [![Navigates to Domain](../../images/navigate.png "Navigates to Domain Screen")](Domain.md)
 
 ## 6. DTO
-This DSL allows you to describe your applications data contracts. This DSL also supports concepts like describing your contracts with reference to your domain allowing you to introduce compile time dependancies without introducing a runtime dependancies. [![Navigates to DTO](../../images/navigate.png "Navigates to DTO Screen")](Dto.md)
+This DSL allows you to describe your applications data contracts. This DSL also supports concepts like describing your contracts with reference to your domain allowing you to introduce compile time dependencies without introducing a runtime dependencies. [![Navigates to DTO](../../images/navigate.png "Navigates to DTO Screen")](Dto.md)
 
 ## 7. Services
 This DSL allows you to describe your applications services. [![Navigates to Services](../../images/navigate.png "Navigates to Services Screen")](Services.md)

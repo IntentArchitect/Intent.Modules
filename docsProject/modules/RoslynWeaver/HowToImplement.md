@@ -2,7 +2,7 @@
 
 ## How to implement Roslyn Weaver in your templates
 
-Enabling you templates to work with the Rosyln Weaver module is as simple as implementing the *IRoslynMerge* interface. Alternativly you can inherit you template from the *IntentRoslynProjectItemTemplateBase* base class which implements this interface already, as well as several other quality of life features.
+Enabling you templates to work with the Roslyn Weaver module is as simple as implementing the *IRoslynMerge* interface. Alternatively you can inherit you template from the *IntentRoslynProjectItemTemplateBase* base class which implements this interface already, as well as several other quality of life features.
 
 ```csharp
 using Intent.SoftwareFactory.Templates;
@@ -26,8 +26,8 @@ There are typically 3 types of templates, these can be categorized by the nature
 - Largely Hand coded content
 - Event split of generated and hand coded content
 
-To Do
+Coming Soon (tm)
 
 Use Partial Classes (With or without code behind), inheritance, composition
-Mention Code MIgrations
+Mention Code Migrations
 InitialCodeGen

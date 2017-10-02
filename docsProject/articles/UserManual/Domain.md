@@ -7,10 +7,10 @@ This screen allows to describe your business domain through the use of UML class
 ![Image of the Domain Screen](../../images/UserManual/Domain.png)
 
 ### 1. Toolbar
-These are the controls which allow you to perfrom high level interactions with the current UML view. 
+These are the controls which allow you to perform high level interactions with the current UML view. 
 
 ### 2. Uml Editor
-This is the UML visualization of the currently selected UML view. The view as well as the unlying model are edited. 
+This is the UML visualization of the currently selected UML view. The view as well as the underlying model are edited. 
 
 ### 3. Tree Model
 This tree shows the model in it's entirety :-
@@ -74,7 +74,7 @@ This tree view contains the entire domain model, as opposed to the UML editor wh
 ![Image of the Domain Model View](../../images/UserManual/DomainModelView.png)
 
 ### 1. Views
-These are the views of the domain model, or sub sections of the domain model. This tool allows for mutliple views to be created ontop a single domain model. This allows for creating simplified views or perspective based views ontop of the unlying domain model.
+These are the views of the domain model, or sub sections of the domain model. This tool allows for multiple views to be created on top of a single domain model. This allows for creating simplified views or perspective based views on top of the underlying domain model.
 
 ### 2. Domain Model Artifacts
 These artifacts would be the basic model i.e. the UML Classes and their properties, plus the associations between them.

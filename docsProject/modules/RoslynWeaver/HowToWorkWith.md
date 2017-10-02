@@ -2,9 +2,9 @@
 
 ## Working with Roslyn Weaver templates
 
-Roslyn Weaver provides several code based attributes ([Roslyn Weaver attributes](Attributes.md)) which can used to control or change the code weaving process. As a developer working with the generated output, you will find that while the generated output is typically what you want ocassionally you may need to change or extend the output for exceptional circumstances. Note if you are doing this often you should consider upgrading or changing the templates themselves. 
+Roslyn Weaver provides several code based attributes ([Roslyn Weaver attributes](Attributes.md)) which can used to control or change the code weaving process. As a developer working with the generated output, you will find that while the generated output is typically what you want occasionally you may need to change or extend the output for exceptional circumstances. Note if you are doing this often you should consider upgrading or changing the templates themselves. 
 
-Modifying the solution code file involves introducing, or changing exisitng, IntentManged attributes to fine tune the Roslyn Weavers behaviour to respect the non-generated code. Below are several examples of doing this.
+Modifying the solution code file involves introducing, or changing existing, IntentManged attributes to fine tune the Roslyn Weavers behaviour to respect the non-generated code. Below are several examples of doing this.
 
 ### Turning off the code generation
 
@@ -36,7 +36,7 @@ public class MyGeneratedClass
     ...
 }
 ```
-Note this does not techincally turn off the code generation is rather instructing the Roslyn Weaver to ignore all the code elements by default. 
+Note this does not technically turn off the code generation is rather instructing the Roslyn Weaver to ignore all the code elements by default. 
 
 ### Changing a classes signature
 
@@ -67,8 +67,8 @@ using System;
 [IntentManaged(Mode.Merge, Signature=Mode.Ignore, Body=Mode.Fully)] // OR
 [IntentManaged(Mode.Merge, Signature=Mode.Merge, Body=Mode.Fully)] // OR
 [IntentManaged(Mode.Merge, Signature=Mode.Merge, Body=Mode.Merge)] // OR
-//This is equivelant to the line above
-[IntentManaged(Mode.Merge)] this is equivelant to the line above
+//This is equivalent to the line above
+[IntentManaged(Mode.Merge)] this is equivalent to the line above
 
 [MyManualAttribute]
 public class MyGeneratedClass : MyManualBaseClass, IMyManualInterface

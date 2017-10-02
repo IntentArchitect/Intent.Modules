@@ -1,7 +1,7 @@
 - name: Getting Started
   items:
   - name: Welcome to Intent Architect
-    href: GettingStarted/intro.md
+    href: GettingStarted/Intro.md
   - name: Quick Start
     href: GettingStarted/QuickStart.md
 - name: Core Modules

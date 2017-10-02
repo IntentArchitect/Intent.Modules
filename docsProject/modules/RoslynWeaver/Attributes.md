@@ -47,7 +47,7 @@ using Intent.CodeGen;
 This attribute can be added to a code element to control how the Roslyn Weaver merges the code. The merge behaviour is determined by the [mode](Modes.md) which is specified.
 
 ### Usage
-This attiribute can be introduced into generated code to alter the behaviour of the Roslyn Weaver. The typical scenario would be to allow you to introduce custom code into a generated code file. 
+This attriibute can be introduced into generated code to alter the behaviour of the Roslyn Weaver. The typical scenario would be to allow you to introduce custom code into a generated code file. 
 
 This attribute is typically used by developers to modify the template output, it typically should not be used in templates themselves, templates should typically using [DefaultIntentManaged](#defaultintentmanaged-attribute) if they want to control the Roslyn Weavers behaviour.
 
@@ -90,7 +90,7 @@ Generated Code File
 
 #### Fine tuning the mode
 
-The code example below is simlar to the one above, how ever in this example the method signature is running fully under code gen while the body of the method is under the developers control.
+The code example below is similar to the one above, how ever in this example the method signature is running fully under code gen while the body of the method is under the developers control.
 
 Generated Code File
 
@@ -109,7 +109,7 @@ Generated Code File
 ## DefaultIntentManaged Attribute
 
 ### Overview
-This attibute can be used to specify the default mode for 1 or more code elements. 
+This attribute can be used to specify the default mode for 1 or more code elements. 
 
 ### Usage
 
@@ -132,12 +132,12 @@ This attribute can be applied to any of the following.
 |Element Mode|Specified the mode under which the targeted code element should be merged|
 |Body|Specified the mode under which the body of the targeted code element should be merged. This is only required if the mode for the body differs from the element mode.|
 |Signature|Specified the mode under which the signature of the targeted code element should be merged. This is only required if the mode for the signature differs from the element mode.|
-|Targets|Allows for targeting specifc code elements which the mode must apply to. Multiple targets can be specified using the \| syntax. The valid targets are Classes, Constructors, Enums, Fields, Interfaces, Methods and Properties |
+|Targets|Allows for targeting specific code elements which the mode must apply to. Multiple targets can be specified using the \| syntax. The valid targets are Classes, Constructors, Enums, Fields, Interfaces, Methods and Properties |
 |AccessModifiers|This property can be used to target code elements based on access modifiers. Multiple access modifiers can be specified using the \| syntax. The valid access modifiers are internal, private, protected and public. |
 
 ### Examples
 
-#### Letting the code gen explictly control all public members of a class
+#### Letting the code gen explicitly control all public members of a class
 
 TODO
 
@@ -156,12 +156,12 @@ Template Code File
 ## IntentInitialGen Attribute
 
 ### Overview
-This attribute can be used by developers creating templates to indicate code elements which are generated *once off* when the template is initally run. These code elements are typically stubs or default implementations for developers to complete or enrich. From the Roslyn Weavers perspective this code is seen as manual code, it just happens to get added in by the template as opposed to a developer. 
+This attribute can be used by developers creating templates to indicate code elements which are generated *once off* when the template is initially run. These code elements are typically stubs or default implementations for developers to complete or enrich. From the Roslyn Weavers perspective this code is seen as manual code, it just happens to get added in by the template as opposed to a developer. 
 
 ### Usage
 This attribute should only be used in templates and does not make sense to exist in generated code. The Roslyn Weaver will remove these attributes from the generated code.
 
-Any templates using this attribute should be desined in such a way that the code targeted by these attributes is in a managed mode of *Ignore* or *Merge*. If the code element is under *fully* mode it will be removed on a subsequent execution of the template.
+Any templates using this attribute should be designed in such a way that the code targeted by these attributes is in a managed mode of *Ignore* or *Merge*. If the code element is under *fully* mode it will be removed on a subsequent execution of the template.
 
 This attribute can be applied to any of the following.
 - Constructor
@@ -200,4 +200,4 @@ Generated Code File
         ...
 ```
 
-Note the generated code is not seem as part of the template, hance if it is runnng under *Fully* managed mode, the code will be removed on a subsequent run.
+Note the generated code is not seem as part of the template, hance if it is running under *Fully* managed mode, the code will be removed on a subsequent run.

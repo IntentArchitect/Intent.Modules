@@ -1,6 +1,6 @@
 # Solution Screen
 
-Ths screen allows for the creation / maintainenance a solution. A solution simply represents a named logical grouping of applications.
+Ths screen allows for the creation / maintenance a solution. A solution simply represents a named logical grouping of applications.
 
 ![Image of the Solution Screen](../../images/UserManual/SolutionScreen.png)
 
@@ -9,7 +9,7 @@ Ths screen allows for the creation / maintainenance a solution. A solution simpl
 ## 1. Edit Solution Details
 Enough said.
 
-## 2. Add New Applcation
+## 2. Add New Application
 Adds a new application to this solution. [![Navigates to New Application Wizard](../../images/navigate.png "Navigates to New Application Wizard")](NewApplicationWizard.md)
 
 ## 3. Edit Application

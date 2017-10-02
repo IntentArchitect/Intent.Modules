@@ -1,12 +1,14 @@
 # Overview
 
+Coming Soon (tm)
+
 ## Download the application
 
 ## Register on the website
 
 ## Create a new Solution
 
-## Create a new Appliation
+## Create a new Application
 
 ## Push the "Play" button
 

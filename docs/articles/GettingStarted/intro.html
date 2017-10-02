@@ -8,7 +8,7 @@
     <title>Welcome to Intent Architect | Intent Architect </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Welcome to Intent Architect | Intent Architect ">
-    <meta name="generator" content="docfx 2.24.0.0">
+    <meta name="generator" content="docfx 2.23.1.0">
     
     <link rel="shortcut icon" href="../..//images/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
     <meta property="docfx:rel" content="../../">
     
   </head>
@@ -35,7 +34,7 @@
               </button>
               
               <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../.././images/logo.png" alt="">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -77,11 +76,48 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="welcome-to-intent-architect">Welcome to Intent Architect</h1>
 
+<h2 id="what-is-intent-architect-">What is Intent Architect ?</h2>
+<p>Intent Architect is a coding automation tool for software developers. It&#39;s based on the principles of a software factory, and provides a platform for design and pattern reuse.</p>
+<ul>
+<li>Build Faster - Allow Intent Architect to manage the tedious and repetitive tasks that take up most of your time, freeing you up to focus on meaningful value-adding development.</li>
+<li>Quality Assured - Create your patterns, and then rest easy, knowing that they are applied consistently and correctly throughout your codebase.</li>
+<li>Agile Architecture - Future-proof your architecture! Effortlessly upgrade (or even swap out) your technologies and design patterns at the push of a button - mitigating technical risk has never been easier.</li>
+</ul>
 <h2 id="how-does-it-work-">How does it work ?</h2>
-<h3 id="describe-your-architecture">Describe your architecture</h3>
-<h3 id="choose-your-patterns">Choose your patterns</h3>
-<h3 id="realize-your-architecture">Realize your architecture</h3>
-<h2 id="why-this-is-a-better-way-to-build-software-">Why this is a better way to build software ?</h2>
+<p>Conceptually Intent Architect works in 3 steps:- </p>
+<ul>
+<li>Describe your application through Meta data</li>
+<li>Choose your patterns and their backing technologies through Modules</li>
+<li>Click the play button </li>
+</ul>
+<p><img src="../../images/HowItWorks.png" alt="Image of IA Overview"></p>
+<p>In practice you would apply these steps organically and iteratively as you build out your application, describing and refining your application as you model your business domain, patternizing your application architecture either explicitly or in an emergent fashion depending on your experience. </p>
+<p>So what is involved in these 3 steps ?</p>
+<h3 id="describe-your-application-through-meta-data">Describe your application through Meta data</h3>
+<p>In this step you can describe your application or aspects of your application in a technology agnostic way. Some of the typical things you might wish to describe are</p>
+<ul>
+<li>Domain model</li>
+<li>Service Contracts</li>
+<li>Services</li>
+<li>Inbound and outbound events</li>
+<li>Source code structure</li>
+<li>ANY other aspect of your application you feel is appropriate</li>
+</ul>
+<p>Am I not just documenting my design ? Is principle yes, but unlike traditional documentation this is a living document which <em>integrates</em> into your actual source code. As you change your design (Meta data) your application source code changes. Through this process you capture the design intent of your application rather than hard coding it into your application source code as it is traditionally done. This decoupling of the design intent from the actual source code makes refactoring or changing your designs easier as you are literally changing the design rather have to reverse engineer it out of the source code and refactor the code.</p>
+<p>Intent Architect has serval Domain Specific Languages (DSLs) which you can use to model the application concepts described above. </p>
+<p>All the DSLs are fully extensible though a custom meta data extension system simply referred to as <em>stereotypes</em>. Stereotypes allow you to extend existing models and add your own custom data to the existing model. This would typically be data that is specific to you application or design. Should you wish to describe other aspects of your application that Intent Architect does not have a DSL for  you can provide your own Meta Data models. These can be in what ever format you like, some examples may include JSON, XML or .Net source code. This can be done through creating your own MetaDataLoader plugin.</p>
+<p>It is important to note you do not have to describe your entire application upfront, you can describe your application iteratively as you uncover the domain you are building for. </p>
+<h3 id="choose-your-patterns-and-their-backing-technologies-through-modules">Choose your patterns and their backing technologies through Modules</h3>
+<h3 id="click-the-play-button">Click the play button</h3>
+<h2 id="why-is-this-a-better-way-to-build-software-">Why is this a better way to build software ?</h2>
+<p>Truly patternized solution</p>
+<p>Encapsulated Technology Stacks</p>
+<p>Avoid the &quot;It&#39;s too much work to do it right, lets do it good enough&quot;</p>
+<p>Refactor Architecture</p>
+<p>Softcoded architecture </p>
+<p>Industrialized architecture vs Artisan architecture</p>
+<p>Your design / intent is no longer hard coded into your application, it can be revisited </p>
+<p>Visualization of architecture which easily consumable by the development team, and more consumable by system / business analysts</p>
 </article>
           </div>
           
@@ -90,7 +126,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/IntentSoftware/IntentArchitect/blob/master/docsProject/articles/GettingStarted/intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/IntentSoftware/IntentArchitect/blob/master/docsProject/articles/GettingStarted/Intro.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -109,8 +145,8 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            <span>Copyright © <script type="text/javascript">document.write((new Date()).getFullYear());</script> Intent Software</span>
             
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

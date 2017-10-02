@@ -5,8 +5,8 @@ Roslyn Weaver allows developers to change or extend generated code files with th
 
 The primary driver behind Roslyn Weaver is to overcome one of the biggest limitations of traditional code generation systems which is that they are typically '*all or nothing*'. That is to to say you have to use the generated code as is for all scenarios and there is a very limit scope for extensibility. Any extensibility is typically done through inheritance or partial classes. While these traditional methods are available and may be great to use for some scenarios Roslyn Weaver introduces a wide new range of possibilities.
 
-Due to the Roslyn Weaver's ability to integate *non-generated* with generated code there are many new possibilities for extensibility beyond those of traditional code generation techniques. Some extensibilty techniques may include, (but not limited to)
-- Creating custom code extention points in your templates
+Due to the Roslyn Weaver's ability to integrate *non-generated* with generated code there are many new possibilities for extensibility beyond those of traditional code generation techniques. Some extensibility techniques may include, (but not limited to)
+- Creating custom code extension points in your templates
 - Roslyn Weaver allows explicit deviation from the template, by the developer, for exceptional scenarios
 - Template outputs are more open to change by the developer
 

@@ -8,7 +8,7 @@
     <title>Roslyn Weaver | Intent Architect </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Roslyn Weaver | Intent Architect ">
-    <meta name="generator" content="docfx 2.24.0.0">
+    <meta name="generator" content="docfx 2.23.1.0">
     
     <link rel="shortcut icon" href="../..//images/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
     <meta property="docfx:rel" content="../../">
     
   </head>
@@ -35,7 +34,7 @@
               </button>
               
               <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../.././images/logo.png" alt="">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -125,7 +124,7 @@ using Intent.CodeGen;
 <h3 id="overview">Overview</h3>
 <p>This attribute can be added to a code element to control how the Roslyn Weaver merges the code. The merge behaviour is determined by the <a href="Modes.html">mode</a> which is specified.</p>
 <h3 id="usage">Usage</h3>
-<p>This attiribute can be introduced into generated code to alter the behaviour of the Roslyn Weaver. The typical scenario would be to allow you to introduce custom code into a generated code file. </p>
+<p>This attriibute can be introduced into generated code to alter the behaviour of the Roslyn Weaver. The typical scenario would be to allow you to introduce custom code into a generated code file. </p>
 <p>This attribute is typically used by developers to modify the template output, it typically should not be used in templates themselves, templates should typically using <a href="#defaultintentmanaged-attribute">DefaultIntentManaged</a> if they want to control the Roslyn Weavers behaviour.</p>
 <p>This attribute is will override <a href="#defaultintentmanaged-attribute">DefaultIntentManaged</a> if both are targeting the same code element.</p>
 <p>This attribute can be applied to any of the following.</p>
@@ -174,7 +173,7 @@ using Intent.CodeGen;
         }
         ...
 </code></pre><h4 id="fine-tuning-the-mode">Fine tuning the mode</h4>
-<p>The code example below is simlar to the one above, how ever in this example the method signature is running fully under code gen while the body of the method is under the developers control.</p>
+<p>The code example below is similar to the one above, how ever in this example the method signature is running fully under code gen while the body of the method is under the developers control.</p>
 <p>Generated Code File</p>
 <pre><code class="lang-csharp">        ...
 
@@ -186,7 +185,7 @@ using Intent.CodeGen;
         ...
 </code></pre><h2 id="defaultintentmanaged-attribute">DefaultIntentManaged Attribute</h2>
 <h3 id="overview">Overview</h3>
-<p>This attibute can be used to specify the default mode for 1 or more code elements. </p>
+<p>This attribute can be used to specify the default mode for 1 or more code elements. </p>
 <h3 id="usage">Usage</h3>
 <p>The attribute is scoped based on were it is declared, i.e. if it is declared at an assembly level it&#39;s scope is the entire file, if it is declared on a class or interface it&#39;s scope is that class or interface.</p>
 <p>The code elements the attribute applies to work as follows.</p>
@@ -225,7 +224,7 @@ using Intent.CodeGen;
 </tr>
 <tr>
 <td>Targets</td>
-<td>Allows for targeting specifc code elements which the mode must apply to. Multiple targets can be specified using the | syntax. The valid targets are Classes, Constructors, Enums, Fields, Interfaces, Methods and Properties</td>
+<td>Allows for targeting specific code elements which the mode must apply to. Multiple targets can be specified using the | syntax. The valid targets are Classes, Constructors, Enums, Fields, Interfaces, Methods and Properties</td>
 </tr>
 <tr>
 <td>AccessModifiers</td>
@@ -234,7 +233,7 @@ using Intent.CodeGen;
 </tbody>
 </table>
 <h3 id="examples">Examples</h3>
-<h4 id="letting-the-code-gen-explictly-control-all-public-members-of-a-class">Letting the code gen explictly control all public members of a class</h4>
+<h4 id="letting-the-code-gen-explicitly-control-all-public-members-of-a-class">Letting the code gen explicitly control all public members of a class</h4>
 <p>TODO</p>
 <p>Template Code File</p>
 <pre><code class="lang-csharp">        ...
@@ -247,10 +246,10 @@ using Intent.CodeGen;
         ...
 </code></pre><h2 id="intentinitialgen-attribute">IntentInitialGen Attribute</h2>
 <h3 id="overview">Overview</h3>
-<p>This attribute can be used by developers creating templates to indicate code elements which are generated <em>once off</em> when the template is initally run. These code elements are typically stubs or default implementations for developers to complete or enrich. From the Roslyn Weavers perspective this code is seen as manual code, it just happens to get added in by the template as opposed to a developer. </p>
+<p>This attribute can be used by developers creating templates to indicate code elements which are generated <em>once off</em> when the template is initially run. These code elements are typically stubs or default implementations for developers to complete or enrich. From the Roslyn Weavers perspective this code is seen as manual code, it just happens to get added in by the template as opposed to a developer. </p>
 <h3 id="usage">Usage</h3>
 <p>This attribute should only be used in templates and does not make sense to exist in generated code. The Roslyn Weaver will remove these attributes from the generated code.</p>
-<p>Any templates using this attribute should be desined in such a way that the code targeted by these attributes is in a managed mode of <em>Ignore</em> or <em>Merge</em>. If the code element is under <em>fully</em> mode it will be removed on a subsequent execution of the template.</p>
+<p>Any templates using this attribute should be designed in such a way that the code targeted by these attributes is in a managed mode of <em>Ignore</em> or <em>Merge</em>. If the code element is under <em>fully</em> mode it will be removed on a subsequent execution of the template.</p>
 <p>This attribute can be applied to any of the following.</p>
 <ul>
 <li>Constructor</li>
@@ -280,7 +279,7 @@ using Intent.CodeGen;
             #warning please implement 1 or more meaningful non-anemic constructors 
         }
         ...
-</code></pre><p>Note the generated code is not seem as part of the template, hance if it is runnng under <em>Fully</em> managed mode, the code will be removed on a subsequent run.</p>
+</code></pre><p>Note the generated code is not seem as part of the template, hance if it is running under <em>Fully</em> managed mode, the code will be removed on a subsequent run.</p>
 </article>
           </div>
           
@@ -308,8 +307,8 @@ using Intent.CodeGen;
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            <span>Copyright © <script type="text/javascript">document.write((new Date()).getFullYear());</script> Intent Software</span>
             
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
