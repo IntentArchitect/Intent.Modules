@@ -55,7 +55,7 @@ namespace <#= Namespace #>
 #>
                         case nameof(<#= operation.Name #>):
 <#
-                            if (operation != null)
+                            if (operation.ReturnType != null)
                             {
 #>
                             return JsonConvert.SerializeObject(new
@@ -112,7 +112,7 @@ namespace <#= Namespace #>
 #>
         private <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= operation.Name #>Payload payload)
         {
-            return _appService.<#= operation.Name#>(<# getMethodCallParameters(); #>);
+            return _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
         }
 <#
             }
@@ -121,7 +121,7 @@ namespace <#= Namespace #>
 #>
         private void <#= operation.Name #>(<#= operation.Name #>Payload payload)
         {
-            _appService.<#= operation.Name#>(<# getMethodCallParameters(); #>);
+            _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
         }
 <#
             }

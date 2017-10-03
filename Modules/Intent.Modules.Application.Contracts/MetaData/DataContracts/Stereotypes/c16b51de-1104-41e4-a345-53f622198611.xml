@@ -4,6 +4,7 @@
   <displayFunction>(C# - ${TypeName})</displayFunction>
   <targetElements>
     <element>type-definition</element>
+    <element>enum</element>
   </targetElements>
   <parentFolderId>ce8bd5aa-b950-4667-a452-bb5c338c0be8</parentFolderId>
   <properties>

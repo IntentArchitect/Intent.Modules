@@ -35,7 +35,7 @@ namespace Intent.Modules.Application.Contracts
                 result = $"{typeInfo.Folder.GetPropertyValue<string>(StandardStereotypes.NamespaceProvider, "Namespace")}.{typeInfo.Name}";
             }
 
-            if (typeInfo.Type == ReferenceType.DataType && typeInfo.IsNullable && typeInfo.Stereotypes.GetPropertyValue(StandardStereotypes.CSharpType, "IsPrimitive", false))
+            if (typeInfo.IsNullable && (typeInfo.Type == ReferenceType.Enum || (typeInfo.Type == ReferenceType.DataType && typeInfo.Stereotypes.GetPropertyValue(StandardStereotypes.CSharpType, "IsPrimitive", false))))
             {
                 result += "?";
             }
