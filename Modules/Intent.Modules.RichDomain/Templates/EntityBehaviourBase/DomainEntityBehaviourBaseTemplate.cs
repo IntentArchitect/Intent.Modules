@@ -63,7 +63,7 @@ namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
             this.Write("Behaviour");
             
             #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((Model.IsSubClass()) ? " : I" + Model.ParentClass.Name.ToPascalCase() + "" : ""));
+            this.Write(this.ToStringHelper.ToStringWithCulture((Model.IsSubClass()) ? " : I" + Model.ParentClass.Name.ToPascalCase() + "Behaviour" : ""));
             
             #line default
             #line hidden
@@ -239,7 +239,14 @@ namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
             
             #line default
             #line hidden
-            this.Write("    }\r\n\r\n    // Rich Domain Interface Implementation\r\n    public partial class ");
+            this.Write("    }\r\n\r\n    // Rich Domain Interface Implementation\r\n    public ");
+            
+            #line 73 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsAbstract ? "abstract " : ""));
+            
+            #line default
+            #line hidden
+            this.Write("partial class ");
             
             #line 73 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
@@ -642,21 +649,48 @@ namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
             
             #line default
             #line hidden
-            this.Write(" state)\r\n        {\r\n            return new ");
+            this.Write(" state)\r\n        {\r\n");
             
             #line 185 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
+
+foreach (var @class in GetInstantiableBehaviours(Model))
+{
+
+            
+            #line default
+            #line hidden
+            this.Write("            if (state is ");
+            
+            #line 189 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(@class.Name.ToPascalCase()));
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n            {\r\n                return new ");
+            
+            #line 191 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(@class.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("Behaviour((");
             
-            #line 185 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
+            #line 191 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(@class.Name.ToPascalCase()));
             
             #line default
             #line hidden
-            this.Write(") state);\r\n        }\r\n    }\r\n}\r\n\r\n");
+            this.Write(") state);\r\n            }\r\n\r\n");
+            
+            #line 194 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+  
+}
+
+            
+            #line default
+            #line hidden
+            this.Write("            throw new Exception($\"Could not find behaviour to initialize for {sta" +
+                    "te.GetType().FullName}\");\r\n        }\r\n    }\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;
@@ -675,7 +709,7 @@ namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
             }
         }
         
-        #line 190 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+        #line 202 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
  
 
 public void AddCheckConstraint(AssociationEnd associationEnd)
@@ -698,42 +732,42 @@ public void AddCheckConstraint(AssociationEnd associationEnd)
         #line default
         #line hidden
         
-        #line 207 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+        #line 219 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
 this.Write("                RequiredMultiplcityChecks[\"");
 
         
         #line default
         #line hidden
         
-        #line 208 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+        #line 220 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.Name().ToPascalCase()));
 
         
         #line default
         #line hidden
         
-        #line 208 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+        #line 220 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
 this.Write("\"] = () => ");
 
         
         #line default
         #line hidden
         
-        #line 208 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+        #line 220 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(checkFunc));
 
         
         #line default
         #line hidden
         
-        #line 208 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+        #line 220 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
 this.Write(" ;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 209 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+        #line 221 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
 
 }
 

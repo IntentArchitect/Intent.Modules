@@ -28,7 +28,7 @@ namespace <#= Namespace #>
        typedIdentifier = GetEntityIdTypeName(Model);
    }#>
     //Full Interface
-    public partial interface I<#= Model.Name.ToPascalCase() #>Behaviour<#= (Model.IsSubClass()) ? " : I" + Model.ParentClass.Name.ToPascalCase() + "" : "" #>
+    public partial interface I<#= Model.Name.ToPascalCase() #>Behaviour<#= (Model.IsSubClass()) ? " : I" + Model.ParentClass.Name.ToPascalCase() + "Behaviour" : "" #>
     {
         <#= Model.Name.ToPascalCase() #> State { get; }
 
@@ -70,7 +70,7 @@ namespace <#= Namespace #>
     }
 
     // Rich Domain Interface Implementation
-    public partial class <#= Model.Name.ToPascalCase() #>Behaviour : <#= (Model.IsSubClass()) ? Model.ParentClass.Name.ToPascalCase() + "Behaviour, " : "" #>I<#= Model.Name.ToPascalCase() #>Behaviour
+    public <#= Model.IsAbstract ? "abstract " : "" #>partial class <#= Model.Name.ToPascalCase() #>Behaviour : <#= (Model.IsSubClass()) ? Model.ParentClass.Name.ToPascalCase() + "Behaviour, " : "" #>I<#= Model.Name.ToPascalCase() #>Behaviour
     {
         private readonly <#= Model.Name.ToPascalCase() #> _state;
         
@@ -182,7 +182,19 @@ namespace <#= Namespace #>
     {
         public static I<#= Model.Name.ToPascalCase() #>Behaviour Behaviours(this I<#= Model.Name.ToPascalCase() #> state)
         {
-            return new <#= Model.Name.ToPascalCase() #>Behaviour((<#= Model.Name.ToPascalCase() #>) state);
+<#
+foreach (var @class in GetInstantiableBehaviours(Model))
+{
+#>
+            if (state is <#= @class.Name.ToPascalCase() #>)
+            {
+                return new <#= @class.Name.ToPascalCase() #>Behaviour((<#= @class.Name.ToPascalCase() #>) state);
+            }
+
+<#  
+}
+#>
+            throw new Exception($"Could not find behaviour to initialize for {state.GetType().FullName}");
         }
     }
 }

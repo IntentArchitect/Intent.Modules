@@ -2,6 +2,7 @@
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
 {
@@ -38,6 +39,39 @@ namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
         public string PublicProperties(Class @class)
         {
             return GetDecorators().Aggregate(x => x.PublicProperties(@class));
+        }
+
+        private IList<Class> GetInstantiableBehaviours(Class @class)
+        {
+            var list = new List<Class>();
+
+            // NB: Order is important, we want most most specialized classes first
+            if (@class.SubClasses != null && @class.SubClasses.Any())
+            {
+                list.AddRange(RecursiveGetSubClasses(@class));
+            }
+            list.Add(@class);
+
+            return list
+                .Where(x => !x.IsAbstract)
+                .ToList();
+        }
+
+        private IEnumerable<Class> RecursiveGetSubClasses(Class @class)
+        {
+            var returnList = new List<Class>();
+            foreach (var subClass in @class.SubClasses)
+            {
+                // NB: Order is important, we want most most specialized classes first
+                if (subClass.SubClasses != null && subClass.SubClasses.Any())
+                {
+                    returnList.AddRange(RecursiveGetSubClasses(subClass));
+                }
+
+                returnList.Add(subClass);
+            }
+
+            return returnList;
         }
     }
 
