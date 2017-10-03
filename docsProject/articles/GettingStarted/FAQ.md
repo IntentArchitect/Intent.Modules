@@ -11,3 +11,5 @@ Do I need to use T4 templates ?
 Does my Solution need to be Microsoft .Net based ? 
 
 Isn't code generation fundamentally evil ?
+
+Does this tool replace traditional software development ?

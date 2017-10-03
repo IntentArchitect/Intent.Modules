@@ -90,8 +90,9 @@
 <li>Choose your patterns and their backing technologies through Modules</li>
 <li>Click the play button </li>
 </ul>
-<p><img src="../../images/HowItWorks.png" alt="Image of IA Overview"></p>
-<p>In practice you would apply these steps organically and iteratively as you build out your application, describing and refining your application as you model your business domain, patternizing your application architecture either explicitly or in an emergent fashion depending on your experience. </p>
+<p><img src="../../images/HowItWorks.png" alt="Image of IA Overview">
+<em>Overview of how Intent Architect work</em></p>
+<p>In practice you would apply these steps organically and iteratively as you build out your application, describing your application and refining your design as you model your business domain, patternizing your application architecture either explicitly or in an emergent fashion depending on your experience. </p>
 <p>So what is involved in these 3 steps ?</p>
 <h3 id="describe-your-application-through-meta-data">Describe your application through Meta data</h3>
 <p>In this step you can describe your application or aspects of your application in a technology agnostic way. Some of the typical things you might wish to describe are</p>
@@ -104,7 +105,9 @@
 <li>ANY other aspect of your application you feel is appropriate</li>
 </ul>
 <p>Am I not just documenting my design ? Is principle yes, but unlike traditional documentation this is a living document which <em>integrates</em> into your actual source code. As you change your design (Meta data) your application source code changes. Through this process you capture the design intent of your application rather than hard coding it into your application source code as it is traditionally done. This decoupling of the design intent from the actual source code makes refactoring or changing your designs easier as you are literally changing the design rather have to reverse engineer it out of the source code and refactor the code.</p>
-<p>Intent Architect has serval Domain Specific Languages (DSLs) which you can use to model the application concepts described above. </p>
+<p>Intent Architect has serval Domain Specific Languages (DSLs) which you can use to model the application concepts described above. An example of such a DSL would be our UML modelling DSL which would typically be used to model your application domain.</p>
+<p><img src="../../images/UmlModellerSample.png" alt="Image of UML Model Sample">
+<em>UML Modelling DSL example</em></p>
 <p>All the DSLs are fully extensible though a custom meta data extension system simply referred to as <em>stereotypes</em>. Stereotypes allow you to extend existing models and add your own custom data to the existing model. This would typically be data that is specific to you application or design. Should you wish to describe other aspects of your application that Intent Architect does not have a DSL for  you can provide your own Meta Data models. These can be in what ever format you like, some examples may include JSON, XML or .Net source code. This can be done through creating your own MetaDataLoader plugin.</p>
 <p>It is important to note you do not have to describe your entire application upfront, you can describe your application iteratively as you uncover the domain you are building for. </p>
 <h3 id="choose-your-patterns-and-their-backing-technologies-through-modules">Choose your patterns and their backing technologies through Modules</h3>
