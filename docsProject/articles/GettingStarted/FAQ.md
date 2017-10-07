@@ -1,29 +1,29 @@
 # Frequently Asked Questions
 
 
-## If I use Intent Architect am I locked into your product?
+## If I use Intent Architect, am I locked into your product?
 
-**No**, this is one of our fundamental design principles. Intent Architect is build to be a design time tool, just like your favourite IDE. There is no coupling between it and your application or production environments. This means you can stop using Intent Architect at any point with zero impact to your applications. 
+**No**, this is one of our fundamental design principles. Intent Architect is built to be a design time tool, just like your favourite IDE. There is no coupling between it and your application or production environments. This means you can stop using Intent Architect at any point with zero impact to your applications. 
 
-This is different from most similar tools which would have some form of lock-in, examples of such lock-ins may include:-
-- A runtime your code must execute in
-- Proprietary framework dependencies 
-- Unmaintainable code generation, code generation which is unwieldy or poorly implemented such that its is obviously not what a developer would have coded.
+This is different from most other similar tools, which would have some form of lock-in. For example, Intent Architect has:-
+- No runtime that your code must execute in.
+- No proprietary framework dependencies .
+- No generated code that is unmaintainable due to being unwieldy or poorly implemented, such that it's obviously not what a developer would have coded.
 
 ## Does this tool replace traditional software development?
 
-**No**, it complements it. Intent Architect is build by developers, for developers, we are in no way trying to diminish the development experience. If anything the tool frees developers up from menial tasks of implementing boilerplate coding to focus on application design and business problems. 
+**No**, it complements it. Intent Architect is built by developers for developers, we are in no way trying to diminish the development experience. The tool frees developers from performing many menial tasks, such as implementing boilerplate code, allowing them to focus on application design and solving business problems.
 
-## Does my solution/application need to be Microsoft .Net based?
+## Does my solution/application need to be Microsoft .NET based?
 
-No, Intent Architect itself is built in .NET Technologies, but the code it generates can be whatever you like.
+No, Intent Architect itself is built in .NET technologies, but the code it generates can be whatever you like.
 
-We have coded several Modules to improve the process for .NET, for example:-
+We already have several Modules available to improve the process for .NET, development for example:-
 - Visual Studio Integration
-- Nuget Integration
+- NuGet Integration
 - Roslyn Weaver, for advanced code weaving scenarios
 
-These Modules are written outside of Intent Architect as plugins and similar can be produced for other development environments, if you are interested in doing this or need some helping doing so, please contact us. 
+These Modules are written outside of Intent Architect as plugins, and similar Modules can be produced for other development environments. If you are interested in doing this or need some helping doing so, please contact us.
 
 ## How do I create my own patterns / modules?
 
@@ -31,19 +31,19 @@ These Modules are written outside of Intent Architect as plugins and similar can
 
 ## Do I need to use T4 templates for my patterns?
 
-There is no requirement to use T4 templates. We typically use T4 templates and our SDK supplies T4 base classes for templates, but you can use  any other technology you like, you simply need to implement the *ITemplate* interface.
+There is no requirement to use T4 templates. We typically use T4 templates ourselves and our SDK supplies T4 base classes templates, but you can use  any other technology you like, you simply need to implement the *ITemplate* interface.
 
 ## Isn't code generation fundamentally evil?
 
-I must admit I was initially very surprised to find people who had negative views on code generation, I personally have been exposed to various code generation techniques over the past 15 years and have generally had positive experiences. My view is that it a tool, and just like any tool you need to know where it is appropriate to use and how to get the best use out of the tool. 
+We must admit we were initially very surprised to find there are people who have negative views on code generation, we have been exposed to various code generation techniques over the past 15 years and have generally had positive experiences. Out view is that it a tool, and just like any tool you need to know where it is appropriate to use and how to get the best use out of the tool. 
 
-From the people I have spoken to and my own experience code generation becomes problematic in the following scenarios:-
+From the people we have spoken to, and from our own experience, code generation becomes problematic in the following scenarios:-
 - **Prescriptive code generated**, in these scenarios you have no control over the code being generated, it's a take it or leave it scenario.
-- **The code being generated is bad**, bad code is bad code, whether it is generate or not. Many code generation tools are very generic resulting in poor code, it's obvious to spot the code wasn't hand written.
-- **Once off code generation**, this scenario isn't necessarily inherently bad, were it can be problematic is if you generate a lot of code which you later on realise you want to / need to refactor. It's not obvious that code generation is the problem here as you could have hand coded it all to find yourself in the same position, some people will argue manually coding it might have forced you to rethink your implementation.  
+- **The code being generated is bad**, bad code is bad code, whether it is generated or not. Many code generation tools are very generic, resulting in poor code, it's obvious to spot the code wasn't hand written.
+- **Once off code generation**, this scenario isn't necessarily inherently bad, where it can be problematic is if you generate a lot of code which you later on realise you want/need to refactor. It's not obvious that code generation is the problem here as you could have hand coded it all, only to find yourself in the same position, some people will argue manually coding it might have forced you to rethink your implementation.
 - **All or nothing code generation**, here it is difficult to deal with exceptional scenarios, which happen.
 
-Intent Architect we have taken these learnings and tried to create a seamless code generation experience. Some of the factors we believe set us apart include:-
+With Intent Architect we have taken these learnings and tried to create a seamless code generation experience. Some of the factors which we believe set us apart include:-
 - **You control the content.** The code that is generated is completely within your control.
 - **Continuous code generation.** At any point you can run the code generation and your application will update to reflect your design accordingly, even in existing code files. 
 - **Managed generated outputs.** Most code generation tools work in a purely additive fashion i.e. only adding to or overwriting files in your code base, Intent Architect tracks the generated outputs and removes generated outputs which are no longer relevant.  

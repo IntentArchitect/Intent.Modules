@@ -145,7 +145,7 @@ Managed code is a term we like to use for all the code that Intent Architect is 
 
 If you do need to change *Managed* code you are changing the pattern rather than all the instances in your code base, making the code maintenance significantly simpler.
 
-> "Less code to maintain, Less code to understand." 
+> "Less code to maintain, less complexity to manage." 
 
 ### DRY (Don't repeat yourself)
 Intent Architect allows you to achieve the DRY principle to 2 areas that are traditionally hard to do:-
@@ -153,40 +153,42 @@ Intent Architect allows you to achieve the DRY principle to 2 areas that are tra
 - Design and Implementation
 
 #### Boilerplate code
-As the boilerplate code is now generated from your design pattern, all this code is written and maintained in one place namely the pattern, regardless of how many instances of the pattern there are in the solution.
+As the boilerplate code is now generated from your design pattern, all this code is written and maintained in one place, namely, the pattern, regardless of how many instances of the pattern there are in the solution.
 
 #### Design and Implementation
-Documenting design is typically done side by side with implementation, i.e. we document the design, and separately we implement the design. The problem with this approach is that the two are completely detached and it's inevitable that the design and the implementation will go out of sync. Using Intent Architect the design flows directly into the implementation so there is no need to repeat the design in the implementation.
+Documentation of the design is typically done side by side with the implementation, i.e. we document the design, and separately we implement the design. The problem with this approach is that the two are completely detached and it's inevitable that the design and the implementation will go out of sync. Using Intent Architect the design flows directly into the implementation, so there is no need to repeat the design in the implementation.
 
-**Design once, and have that design executed as intended.**
+> "Design once, and have that design realized as intended."
 
-### No 'Magic' the code is there
-There are several techniques developers use to try and minimize the coding of this boilerplate code, some of these techniques would include AOP, dynamic proxies, mix-ins or runtime weaving. While all these techniques are perfectly acceptable they often add in the element of 'magic' which makes it harder for developers who are unfamiliar with the implementation to understand what is going on or even follow the logic.  While its important to note Intent Architect doesn't prohibit you from using these approaches it offers you a new technique, which is simply to generate the boilerplate code as you would have traditionally hand coded it. In this way the code is easy to read, debug and understand but you don't have to write / maintain all the boilerplate code. 
+### No *Magic* - The code is right there
+There are several techniques that developers use to try and minimize the coding of this boilerplate code, some of these techniques would include Aspect-Oriented Programming (AOP), dynamic proxies, mix-ins or runtime weaving. While all these techniques are perfectly acceptable, they often add in the element of *magic* which makes it harder for developers who are unfamiliar with the implementation to understand what is going on, or even follow the logic.  While it's important to note that Intent Architect doesn't prohibit you from using these approaches, it offers you a new technique, which is simply to generate the boilerplate code as you would have traditionally hand coded it. In this way the code is easy to read, debug and understand, but you don't have to write / maintain all the boilerplate code. 
 
-**Code thats easier to understand and debug, is easier to maintain.**
+> "Code that's easier to follow and debug is easier to maintain."
 
 ### No lock-in 
-Intent Architect is build to be a design time tool, just like your favourite IDE. There is no coupling between it and your application. This means you can stop using at any point with no impact on your solutions. This is different from most similar tools which would have some form of lock-in, examples of such lock-ins may include:-
-- A runtime your code must execute in
-- Proprietary framework dependencies 
-- Unmaintainable code generation, code generation which is unwieldy or poorly implemented such that its is obviously not what a developer would have coded.
+Intent Architect is built to be a design time tool, just like your favourite IDE. There is no coupling between it and your application. This means you can stop using it at any point with no impact on your project. 
 
-**Use the tool because it's adding value to you, not because you have to**
+This is different from most other similar tools, which would have some form of lock-in. For example, Intent Architect has:-
+- No runtime that your code must execute in.
+- No proprietary framework dependencies .
+- No generated code that is unmaintainable due to being unwieldy or poorly implemented, such that it's obviously not what a developer would have coded.
+
+> "Use the tool because it's adding value to you, not because your past decisions are holding you captive."
 
 ### By developers, for developers 
-The ideas and concepts present in Intent Architect have been developed, shaped and envisioned by developers trying to solve real world problems. The tool is in no way trying to diminish the development experience. This tool allows developers to better capture their design intent rather than hard coding it into their applications. 
+The ideas and concepts present in Intent Architect have been developed, shaped and envisioned by developers trying to solve real world problems. The tool is in no way trying to diminish the development experience, it simply allows developers to better capture their design intent rather than hard coding it into their applications. 
 
-**We are developers and we believe this tool takes our products to the next level**
+> "We are developers and we believe this tool takes our projects to the next level."
 
 ### Code generation done right
-Through the journey we have had a lot of experience with various code generation tools and techniques, with mixed results. In Intent Architect we have taken these learnings and tried to create a seamless code generation experience. Some of the factors we believe set us apart include:-
+Collectively through our careers, we have had a lot of experience with various code generation tools and techniques, with mixed results. In Intent Architect we have taken these learnings and tried to create a seamless code generation experience. Some of the factors we believe that set us apart include:-
 - Continuous generation, as opposed to once off code generation. At any point you can run the code generation and your application will update to reflect your design accordingly, even in existing code files. 
-- Managed outputs, most code generation tools work in a purely additive fashion i.e. only adding to or overwriting files in your code base, Intent Architect tracks the generated outputs and removes generated outputs which are no longer relevant.  
-- Code Weaving, we support advanced weaving systems which allow for manual code to be introduced into generated code files, and for that code to be maintained on subsequent generations of the code.  
-- Code as you would write it, this is really up to module implementors but in principle, and from our experience, there is no reason for the generated code to look any different to hand written code.
-- IDE integration, the generated code is integrated into your IDE, no need to manually add or removed generated code files in your IDE. (We currently have an implementation for Visual Studio, but Intent Architect is extensible and there is no reason it can not be integrated into your IDE of choice)
+- Managed outputs, most code generation tools work in a purely additive fashion i.e. only adding to, or overwriting, files in your code base. Intent Architect tracks the generated outputs and removes those which are no longer relevant.  
+- Code Weaving, we support advanced weaving systems which allow for manual code to be introduced into generated code files, and for that non generated code to be retained on subsequent generations of the code.
+- Code as you would write it, this is really up to module implementors, but in principle and from our experience, there is no reason for the generated code to look any different to hand written code.
+- IDE integration, the code generation understands your IDE and automatically adds generated code files to your project/solution. Any IDE can have this kind of integration, for example one can add the `Intent.VisualStudio.Projects` module to your Intent Architect application to have generated code files and projects automatically appear in your Visual Studio solution.
 
-**Intent Architect wants to be a productive developer on your team, and not get in your way.**
+> "Intent Architect wants to be a productive developer on your team, and not get in your way."
 
 
 
