@@ -1,6 +1,6 @@
 # Welcome to Intent Architect
 
-## What is Intent Architect ?
+## What is Intent Architect?
 
 Intent Architect is a coding automation tool for software developers. It's based on the principles of a software factory, and provides a platform for design and pattern reuse.
 
@@ -8,7 +8,7 @@ Intent Architect is a coding automation tool for software developers. It's based
 - **Quality Assured** - Create your patterns, and then rest easy, knowing that they are applied consistently and correctly throughout your codebase.
 - **Agile Architecture** - Future-proof your architecture! Effortlessly upgrade (or even swap out) your technologies and design patterns at the push of a button - mitigating technical risk has never been easier.
 
-## How does it work ?
+## How does it work?
 
 All software systems, and this is particularly true of large enterprise systems, are composed of patterns. This code behind these patterns is often referred to as boilerplate code or plumbing. The more patternized a system is the more maintainable and robust it is. This is fairly well known and understood in the the software development industry.  The real challenges comes in around things like:-
 - **How to make sure the pattern is implemented consistently**, this often breaks down when people don't understand the original intent of the pattern, the technology, or simply implement it lazily.
