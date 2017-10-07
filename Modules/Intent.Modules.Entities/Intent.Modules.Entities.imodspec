@@ -50,7 +50,4 @@
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
-  <metadata>
-    <install target="Domain" src="MetaData\Domain"/>
-  </metadata>
 </package>

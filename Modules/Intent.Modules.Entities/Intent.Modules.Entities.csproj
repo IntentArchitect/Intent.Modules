@@ -103,21 +103,9 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="Intent.Modules.Entities.imodspec" />
-    <None Include="MetaData\Domain\Intent.Entities.domain.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MetaData\Domain\DataTypes\013af2c5-3c32-4752-8f59-db5691050aef.xml" />
-    <Content Include="MetaData\Domain\DataTypes\675c7b84-997a-44e0-82b9-cd724c07c9e6.xml" />
-    <Content Include="MetaData\Domain\DataTypes\6b649125-18ea-48fd-a6ba-0bfff0d8f488.xml" />
-    <Content Include="MetaData\Domain\DataTypes\d384db9c-a279-45e1-801e-e4e8099625f2.xml" />
-    <Content Include="MetaData\Domain\DataTypes\e6f92b09-b2c5-4536-8270-a4d9e5bbd930.xml" />
-    <Content Include="MetaData\Domain\DataTypes\fb0a362d-e9e2-40de-b6ff-5ce8167cbe74.xml" />
-    <Content Include="MetaData\Domain\Folders\be845ddb-c32d-4811-a312-2ac08eea1eb5.xml" />
-    <Content Include="MetaData\Domain\Folders\e7e9124a-d717-4d39-b02b-a568b3434112.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\9715ec0f-15cd-4bc4-b21a-0fe486800f2a.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\829569cf-4664-4134-a938-b3a45360da40.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\ae291daf-9a2b-496a-a458-c25df342de9c.xml" />
     <Content Include="Templates\DomainEntityBehaviour\DomainEntityBehaviourTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DomainEntityBehaviourTemplate.cs</LastGenOutput>
