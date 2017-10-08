@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/GettingStarted/FAQ.html",
-          "hash": "HzOqIq+DZmTo8GMs0HDHvA=="
+          "hash": "C0bCtXFv6upcUrgVmDOsnA=="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/GettingStarted/Intro.html",
-          "hash": "l48lWse0edVOlX6fdJU9/g=="
+          "hash": "4wHnWuR+KypZb0LFlCW5FA=="
         }
       },
       "is_incremental": false,
@@ -712,14 +712,14 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
         "RestApiDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ManagedReferenceDocumentProcessor": {
