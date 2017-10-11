@@ -8,7 +8,7 @@
     <title>Quick Start | Intent Architect </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Quick Start | Intent Architect ">
-    <meta name="generator" content="docfx 2.24.0.0">
+    <meta name="generator" content="docfx 2.23.1.0">
     
     <link rel="shortcut icon" href="../..//images/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
     <meta property="docfx:tocrel" content="../toc.html">
-    
     <meta property="docfx:rel" content="../../">
     
   </head>
@@ -77,24 +76,126 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="quick-start">Quick Start</h1>
 
-<p>It takes just a few minutes to get a feel for the power of Intent Architect. For this quickstart we&#39;re going to create a &quot;full stack&quot; ASP.NET WebApi 2.2 server with persistence and domain patterns in place. If you haven&#39;t done so already, install the latest release and sign in to application using the credentials used for registration. Once signed in, in the application:</p>
-<h2 id="download-the-application">Download the application</h2>
-<h2 id="register-on-the-website">Register on the website</h2>
-<h2 id="create-a-new-solution">Create a new Solution</h2>
-<h2 id="create-a-new-application">Create a new Application</h2>
-<h2 id="push-the-play-button">Push the &quot;Play&quot; button</h2>
-<h2 id="what-just-happened">What just happened</h2>
-<p>Press &#39;Create New Solution&#39; directly under the &#39;Start&#39; heading at the top left of the initial screen.
-You are now on the screen for managing your new solution, press the &#39;New Application&#39; tile.
-Select the &#39;Full Stack ASP.NET WebApi 2.2&#39; tile and press the &#39;Next&#39; button.
-Keep the default application &#39;Name&#39; or change it, then press &#39;Create&#39;.
-Give the application a short while to download and install the modules.
-Press the icon with a play button at the top right of the UI to run the software factory.
-After the software factory execution is complete, you are presented with a list of all pending changes, press the &#39;Apply&#39; button for the outputs to be written to your disk drive.
-You&#39;ve now created the scaffolding code for a Visual Studio server solution, as well as installed all the required NuGet packages.</p>
-<p>Open the solution in Visual Studio 2015/2017 (output will be in the location chosen for your application)
-Compile and run (hit F5)
-Play around in Intent Architect by adding Services, Domain classes and DTOs, and see how the patterns are realized in your codebase.</p>
+<p>Tooling in software helps us build more robust, maintainable applications faster then we could doing it all by hand. </p>
+<p>Intent Architect is an IDE-like tool which allows helps you better capture your design intent and uses that intent to build out those aspects of your application as per your <em>&#39;blueprints&#39;</em>.</p>
+<p>The goal of this guide is to  give you a feel for the tool illustrating how it works and what it can do for you. In the guide we&#39;re going to create a &quot;full stack&quot; ASP.NET WebApi 2.2 server with persistence and domain patterns in place.</p>
+<p>By the end, you&#39;ll have a basic understanding of how Intent Architect works and a foundation to begin exploring how Intent Architect can make your development world better.</p>
+<h2 id="1-setup-the-development-environment">1. Setup the development environment</h2>
+<p>Get your Intent Architect up and running in 3 easy steps.</p>
+<ul>
+<li>Sign up on the Intent Architect <a href="http://www.intentarchitect.com">website</a></li>
+<li>Download and Install the latest version of the application</li>
+<li>Start Intent Architect and sign in using your site registration credentials </li>
+</ul>
+<h2 id="2-create-a-new-solution">2. Create a new Solution</h2>
+<p>A Solution a logical grouping mechanism of applications, modern systems are typically made up of multiple applications. Solutions allow us to simply put these applications together as a logical unit.</p>
+<p><strong>Click on &#39;Create New Solution&#39; either in the middle of the Home screen or from the Solutions drop down.</strong></p>
+<p><img src="../../images/QuickStart/CreateSolutionDialog.png" alt="New Solution Dialog">
+<em>Create Solution Dialog</em></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Icon</td>
+<td>This is an icon which will be associated with you solution. Change it to something more appropriate or use the randomly assigned one.</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>The name of your solution. This name should be alpha-numeric with no special characters or spaces.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>A description of the solution.</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>The folder where Intent Architect can persist data associated with this solution. You would typically want to place this folder inside your Source Control Repository, so that your information can be versioned and shared amongst the development team. Intent Architect does not append any additional sub directories, the directory selected will be the directory used.</td>
+</tr>
+</tbody>
+</table>
+<p>You will be presented with Create Solution Dialog.</p>
+<div class="TIP"><h5>Tip</h5><p>Good names for Solutions would typically be things like the client, your product name, business area / unit or your organization name</p>
+</div>
+<p><strong>Fill out the dialog and press &#39;Save&#39;.</strong></p>
+<h2 id="3-create-a-new-application">3. Create a new Application</h2>
+<p>Next we will create an Application. An Application is exactly what you would expect, it is the Intent Architects representation of the actual application you are building. </p>
+<p><strong>Click the &#39;New Application&#39; block.</strong></p>
+<p>You will now be presented with a 2 step wizard to create your application.</p>
+<ul>
+<li>Select an Application Template</li>
+<li>Capture your Application&#39;s details</li>
+</ul>
+<p><img src="../../images/QuickStart/CreateApplicationPage1.png" alt="Select an Application Template">
+<em>Select an Application Template</em></p>
+<p>Application Templates are just that, they are templates which configure the initial state of your applications. They can install Modules, populate Metadata and any other thing you could manually configure through the front end. Intent Architect comes with prebuilt Application Templates it is also possible to create your own. For the purposes of this guide we will choose the Full Stack ASP.NET WebAPI 2.2 Application Template.</p>
+<p><strong>Select the &#39;Full Stack ASP.NET WebAPI 2.2&#39; Application Template and click &#39;Next&#39;.</strong></p>
+<p><img src="../../images/QuickStart/CreateApplicationPage2.png" alt="Capture Application Details">
+<em>Capture Application Details</em></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>The name of your application. This name should be alpha-numeric with no special characters or spaces.</td>
+</tr>
+<tr>
+<td>Icon</td>
+<td>This is an icon which will be associated with you application. Change it to something more appropriate or use the randomly assigned one.</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>The folder where your application&#39;s data will be persisted. By default this will be in a sub-folder of the solution named after the Application name.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>A description of the Application.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fill out the dialog and press &#39;Create&#39;.</strong></p>
+<h2 id="4-push-the-play-button">4. Push the &#39;Play&#39; button</h2>
+<p>Your Application is now created, and pre-configured with various Modules and Metadata from the Application Template. </p>
+<p><img src="../../images/QuickStart/NewApplication.png" alt="View of an Application">
+<em>Application View</em></p>
+<p><strong>Click the &#39;Play&#39; button, in the top right hand corner.</strong></p>
+<p>A dialog will popup, this dialog is giving feedback and interaction with the code generation process. Not worrying to much about the details, it should stop focused on the &#39;Changes&#39; tab, at this point the software factory is presenting you with a list of all the code changes it would like to make. Reviewing the list we can see it is creating much of Visual Studio infrastructure for us, names &#39;sln&#39;, &#39;csproj&#39; and various other infrastructural files.</p>
+<p><img src="../../images/QuickStart/SoftwareFactoryExecution1.png" alt="Execution of the Software Factory">
+<em>Software Factory execution &#39;Changes&#39;</em></p>
+<p><strong>Click the &#39;Apply Changes&#39; button.</strong></p>
+<p>At this point the software factory is applying you changes. At this point it may feel a little slow, but if you look closely at the console you will notice that it is installing various Nuget packages. These packages are being installed based on the configured Module dependencies. The slowness you are currently experiencing is the actual Nuget download. This obviously only happens on the initial installation of the Nuget packages.  </p>
+<p><strong>Click the &#39;Close&#39; button.</strong></p>
+<p>At this point you can navigate to the folder you specified for your application and you should see something like this.</p>
+<p><img src="../../images/QuickStart/GeneratedApplication.png" alt="View of Generated Output">
+<em>Generated outputs</em></p>
+<p>Open the solution in Visual Studio 2015/2017 (output will be in the location chosen for your application)</p>
+<p>Compile and run (hit F5)</p>
+<h2 id="what-just-happened">What just happened?</h2>
+<p>So the part that is probably not obvious at this point is what caused the code to be generated and why it was generated like that. </p>
+<p>If you look in the Modules section of you application, on the installed tab you should see something similar to this.</p>
+<p><img src="../../images/QuickStart/Modules.png" alt="View of Modules">
+<em>Installed Modules</em></p>
+<p>Here you can see there are a collection on modules which have been installed as part of the application template. Each of these modules is affecting what code is generated and how it is generated. </p>
+<p>You can try uninstall and reinstalling Modules to see what affect they have on the code generation.</p>
+<p>In a less contrived scenario you would hand pick which modules you wished to use or create your own.</p>
+<p>Another aspect which is affecting the code generation is the Application Configuration. If you go the &#39;Configuration&#39; section, you will find the following.</p>
+<p><img src="../../images/QuickStart/Configuration.png" alt="View of Application Configuration">
+<em>Application project configuration</em></p>
+<p>This is Metadata describing how you want you actual source code to be structured. This section not only described how you want your source code projects to be structured but where you would like the code generation from the modules to go. This is done by mapping &#39;Target Roles&#39; from the Modules onto your project structure.</p>
+<div class="NOTE"><h5>Note</h5><p>The project types available are again supplied by modules, in this case specifically from the Intent.VisualStudio Module. New project types can be added through the Modules system.    </p>
+</div>
+<h2 id="add-additional-metadata-to-describe-your-application">Add additional Metadata to describe your Application</h2>
+<p>Play around in Intent Architect by adding Services, Domain classes and DTOs, and see how the patterns are realized in your codebase.</p>
+<p>Don&#39;t forget to click &#39;Play&#39; for your design to be realized in code.</p>
 </article>
           </div>
           
