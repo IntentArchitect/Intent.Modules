@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Dev/IntentArchitect/docsProject",
+  "source_base_path": "C:/Dev/Intent/IntentArchitect/docsProject",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/Extensibility/CreateAModule.html",
-          "hash": "GcykDHcs+2imgiLTTgt4Xw=="
+          "hash": "QZGJFejDYkvT4pijy2WAkw=="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/GettingStarted/FAQ.html",
-          "hash": "+iDn5rVrLWGS2B6SeWfVZQ=="
+          "hash": "7E+x9aAH/e89XSk2fQLyZA=="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/GettingStarted/Intro.html",
-          "hash": "ICztzRDZ4v9olykrDjHXhA=="
+          "hash": "RMTuPFiIHk8KYC6xeUiX6g=="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/GettingStarted/QuickStart.html",
-          "hash": "p67KEZSm6nAUJyGj2sSC7g=="
+          "hash": "Bjae/fyaNsOUmWGwiTio/g=="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/ApplicationConfiguration.html",
-          "hash": "Wk+3mOIuPFlM6ODNa0Vb3w=="
+          "hash": "Pxz7BrTUsc7EGuJeUa9j8Q=="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/ApplicationModules.html",
-          "hash": "ECdAMTJqgnr1PdfA509u+A=="
+          "hash": "cbANoqSJusZNeOnHh4nznA=="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/ApplicationScreen.html",
-          "hash": "dAh77rnn3i8UyLkFSushTA=="
+          "hash": "ugcHV0hZ/dZd2bMgmSJw4w=="
         }
       },
       "is_incremental": false,
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/Domain.html",
-          "hash": "+xGa0WcFTZT/2z21m/7yuw=="
+          "hash": "MsJscUsskToEqoxojuH80Q=="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/Dto.html",
-          "hash": "FfMBJLprxkfx8KzKSAUvUw=="
+          "hash": "wBojGmeCeCcXR+z9PLl51Q=="
         }
       },
       "is_incremental": false,
@@ -126,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/HomeScreen.html",
-          "hash": "/Ax8kQroO57IWdwwo55gkA=="
+          "hash": "5QvDktjBvGFHNrOGws9ckQ=="
         }
       },
       "is_incremental": false,
@@ -138,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/NewApplicationWizard.html",
-          "hash": "ME3j8z/C4YCWoZEjsCMdkw=="
+          "hash": "TQQBE9jdBw92SCfKGc1HOg=="
         }
       },
       "is_incremental": false,
@@ -150,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/RepositoryConfiguration.html",
-          "hash": "VJ8aMRJy2Ko3nSeydFT21g=="
+          "hash": "9nRzNsoZ4oaZJ2hxUoGKOg=="
         }
       },
       "is_incremental": false,
@@ -162,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/Services.html",
-          "hash": "QCbc9030ayBZ5yzVrj4ZYw=="
+          "hash": "jj1jmbPYPzZgGupMvkeXeA=="
         }
       },
       "is_incremental": false,
@@ -174,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/Shell.html",
-          "hash": "vdn6Vf+uV4SgnBvB9oBCTg=="
+          "hash": "wMKFYZ590TUpS/9pQ3mlbQ=="
         }
       },
       "is_incremental": false,
@@ -186,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/SoftwareFactoryExecution.html",
-          "hash": "Fo72sC2dIvlIGL82XteJqQ=="
+          "hash": "hkR0GNYquF7PXCcebPgNPg=="
         }
       },
       "is_incremental": false,
@@ -198,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/UserManual/SolutionScreen.html",
-          "hash": "Ge/3UBHruL8d8PzhrTaliA=="
+          "hash": "I4pyOdkGoGDMumZuHn8BzA=="
         }
       },
       "is_incremental": false,
@@ -210,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "OVUUFNDFEN3z8qJQxtm59Q=="
+          "hash": "6KaoYAvSw7eU7ryFQDjJNg=="
         }
       },
       "is_incremental": false,
@@ -596,7 +596,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "Kq8rl/ZLh8+rOdNAsEv4bw=="
+          "hash": "MtIZACwLDZu0WTPdTK9ZUg=="
         }
       },
       "is_incremental": false,
@@ -608,7 +608,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Appendix.html",
-          "hash": "MnVsCtQ7H7unMJ6KZ+ONqg=="
+          "hash": "cfVLGIsExkuXgCHRyYByEg=="
         }
       },
       "is_incremental": false,
@@ -620,7 +620,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Attributes.html",
-          "hash": "hzeswO46RHcxR34hSI+rcQ=="
+          "hash": "60GKhvMg02qpS09Z1C1q3g=="
         }
       },
       "is_incremental": false,
@@ -632,7 +632,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/CodeMigrations.html",
-          "hash": "w5eYDR2o9oMAi/SUg6X2Aw=="
+          "hash": "+pQsuP0yIFswSmia576JXg=="
         }
       },
       "is_incremental": false,
@@ -644,7 +644,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Gotchas.html",
-          "hash": "XMHu1B/C+TmxBc6ThOGqRQ=="
+          "hash": "kG3bPU7bJ0sX6774Uupw+A=="
         }
       },
       "is_incremental": false,
@@ -656,7 +656,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/HowItWorks.html",
-          "hash": "5iQRpFKct3qZp5BK+0Ss2g=="
+          "hash": "OlDC5sAKWATgtIcJaZTY5g=="
         }
       },
       "is_incremental": false,
@@ -668,7 +668,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/HowToImplement.html",
-          "hash": "ax5HSRSYnMtmZYKYml8Hjw=="
+          "hash": "SbqoRe3ktoBEpyqpp+e8bw=="
         }
       },
       "is_incremental": false,
@@ -680,7 +680,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/HowToWorkWith.html",
-          "hash": "T5BcbmPe9t5NzlHU33QnXQ=="
+          "hash": "MI6e3aHzsislDhpW868BjQ=="
         }
       },
       "is_incremental": false,
@@ -714,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Modes.html",
-          "hash": "ZNWqO6M+CxFg1aFxtylXXQ=="
+          "hash": "LzDmt7LD8p0z0c8LlJeTyw=="
         }
       },
       "is_incremental": false,
@@ -726,7 +726,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Overview.html",
-          "hash": "RJOQYRIXA59H2mhE3CL9Kw=="
+          "hash": "VLbUxdlN6BCkpTq/F5idJw=="
         }
       },
       "is_incremental": false,
@@ -738,7 +738,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/Terminology.html",
-          "hash": "y7aG2NfsWPkN/+GW1ITyHA=="
+          "hash": "noG8gP67bFIkX0NpN+c8yA=="
         }
       },
       "is_incremental": false,
@@ -750,7 +750,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/RoslynWeaver/toc.html",
-          "hash": "BOXZI6mlHTob7IDuQNvYsw=="
+          "hash": "fIdY5B6xjNl+HXqRgW/dkg=="
         }
       },
       "is_incremental": false,
@@ -762,7 +762,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/index.html",
-          "hash": "jHT9QOFEwQ+QOqNEpjKShw=="
+          "hash": "ATb61+UmAQFuBLdVZq5aWg=="
         }
       },
       "is_incremental": false,
@@ -774,7 +774,7 @@
       "output": {
         ".html": {
           "relative_path": "modules/toc.html",
-          "hash": "AkDMIr95xmyvWGp/2FxFqQ=="
+          "hash": "e+aBkCbnDb5zo9pYoL54gg=="
         }
       },
       "is_incremental": false,
@@ -786,7 +786,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "PQKVhiWHfnKzBowFBuaSxg=="
+          "hash": "5pDi4jvVItpg7R+i/0ALQQ=="
         }
       },
       "is_incremental": false,
@@ -796,7 +796,8 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Cannot build incrementally because config changed.",
         "incrementalPhase": "build"
       },
       "processors": {
@@ -810,17 +811,17 @@
           "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
-        "ResourceDocumentProcessor": {
+        "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build"
         },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }
@@ -834,5 +835,10 @@
       "processors": {}
     }
   ],
-  "version_info": {}
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
 }
