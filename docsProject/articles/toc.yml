@@ -38,7 +38,3 @@
     href: UserManual/SoftwareFactoryExecution.md    
   - name: Repository Configuration
     href: UserManual/RepositoryConfiguration.md    
-- name: Extensibility
-  items:
-  - name: Create A Module
-    href: Extensibility/CreateAModule.md
