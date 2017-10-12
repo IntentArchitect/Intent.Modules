@@ -4,6 +4,8 @@
     href: GettingStarted/Intro.md
   - name: Quick Start
     href: GettingStarted/QuickStart.md
+  - name: Make Your Own Module
+    href: GettingStarted/MakeYourOwnModule.md
   - name: FAQ
     href: GettingStarted/FAQ.md
 - name: Core Modules
