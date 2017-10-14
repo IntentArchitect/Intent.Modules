@@ -1,0 +1,44 @@
+﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentTypescriptProjectItemTemplateBase<ViewStateModel>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+
+
+#>
+'use strict';
+namespace App {
+    export class ShellStateManager implements ng.ui.IState {
+		static state = () => <ng.ui.IState>{
+            url: "/",
+            templateUrl: "App/Shell/ShellView.html",
+            resolve: {
+				viewModel: ["ShellStateManager",
+					(manager: ShellStateManager) => {
+						return new ShellViewModel();
+					}
+				]
+            },
+            controller: [
+                "$scope", "viewModel", ($scope: ng.IScope, viewModel: IViewModel) => {
+                    (<any>$scope).vm = viewModel;
+                    $scope.$on("$destroy", () => viewModel.dispose());
+                }
+            ]
+        };
+
+        static $inject = [];
+        constructor() { 
+        }
+    }
+
+    angular.module("App").service("ShellStateManager", ShellStateManager);
+}
