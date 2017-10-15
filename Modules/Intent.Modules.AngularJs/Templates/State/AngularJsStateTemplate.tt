@@ -15,20 +15,20 @@
 
 #>
 'use strict';
-namespace App {
-    export class ShellStateManager implements ng.ui.IState {
-		static state = () => <ng.ui.IState>{
-            url: "/",
-            templateUrl: "App/Shell/ShellView.html",
+namespace <#= Namespace #> {
+    export class <#= ClassName #> implements ng.ui.IState {
+        static state = () => <ng.ui.IState>{
+            url: "<#= Url #>",
+            templateUrl: "App/States/<#= Model.Name #>/<#= Model.Name #>View.html",
             resolve: {
-				viewModel: ["ShellStateManager",
-					(manager: ShellStateManager) => {
-						return new ShellViewModel();
-					}
-				]
+                viewModel: ["<#= ClassName #>",
+                    (manager: <#= ClassName #>) => {
+                        return new <#= ViewModelName #>();
+                    }
+                ]
             },
             controller: [
-                "$scope", "viewModel", ($scope: ng.IScope, viewModel: IViewModel) => {
+                "$scope", "viewModel", ($scope: ng.IScope, viewModel: <#= ViewModelName #>) => {
                     (<any>$scope).vm = viewModel;
                     $scope.$on("$destroy", () => viewModel.dispose());
                 }
@@ -40,5 +40,5 @@ namespace App {
         }
     }
 
-    angular.module("App").service("ShellStateManager", ShellStateManager);
+    angular.module("App").service("<#= ClassName #>", <#= ClassName #>);
 }

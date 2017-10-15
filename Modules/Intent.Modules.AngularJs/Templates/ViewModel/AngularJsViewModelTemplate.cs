@@ -41,17 +41,22 @@ namespace Intent.Modules.AngularJs.Templates.ViewModel
             
             #line default
             #line hidden
-            this.Write("\r\nnamespace App {\r\n    export class ShellViewModel {\r\n\r\n        applicationName: " +
-                    "string = \"");
+            this.Write("\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\ViewModel\AngularJsViewModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.ApplicationName));
+            #line 18 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\ViewModel\AngularJsViewModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
-            this.Write("\";\r\n        userName: string = \"User Name\";\r\n\r\n        logOut = () => {\r\n        " +
-                    "    alert(\'Not implemented...\');\r\n        }\r\n\r\n\t\tdispose = () => {\r\n\t\t}\r\n    }\r\n" +
-                    "}");
+            this.Write(" {\r\n    export class ");
+            
+            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\ViewModel\AngularJsViewModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(" {\r\n\r\n        constructor() {\r\n        }\r\n        \r\n        dispose = () => {\r\n  " +
+                    "      }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;

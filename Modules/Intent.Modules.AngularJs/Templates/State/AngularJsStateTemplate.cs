@@ -41,21 +41,72 @@ namespace Intent.Modules.AngularJs.Templates.State
             
             #line default
             #line hidden
-            this.Write(@"'use strict';
-namespace App {
-    export class ShellStateManager implements ng.ui.IState {
-		static state = () => <ng.ui.IState>{
-            url: ""/"",
-            templateUrl: ""App/Shell/ShellView.html"",
-            resolve: {
-				viewModel: [""ShellStateManager"",
-					(manager: ShellStateManager) => {
-						return new ShellViewModel();
-					}
-				]
-            },
-            controller: [
-                ""$scope"", ""viewModel"", ($scope: ng.IScope, viewModel: IViewModel) => {
+            this.Write("\'use strict\';\r\nnamespace ");
+            
+            #line 18 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
+            
+            #line default
+            #line hidden
+            this.Write(" {\r\n    export class ");
+            
+            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(" implements ng.ui.IState {\r\n        static state = () => <ng.ui.IState>{\r\n       " +
+                    "     url: \"");
+            
+            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Url));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n            templateUrl: \"App/States/");
+            
+            #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
+            
+            #line default
+            #line hidden
+            this.Write("/");
+            
+            #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
+            
+            #line default
+            #line hidden
+            this.Write("View.html\",\r\n            resolve: {\r\n                viewModel: [\"");
+            
+            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n                    (manager: ");
+            
+            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(") => {\r\n                        return new ");
+            
+            #line 26 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ViewModelName));
+            
+            #line default
+            #line hidden
+            this.Write("();\r\n                    }\r\n                ]\r\n            },\r\n            contro" +
+                    "ller: [\r\n                \"$scope\", \"viewModel\", ($scope: ng.IScope, viewModel: ");
+            
+            #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ViewModelName));
+            
+            #line default
+            #line hidden
+            this.Write(@") => {
                     (<any>$scope).vm = viewModel;
                     $scope.$on(""$destroy"", () => viewModel.dispose());
                 }
@@ -65,10 +116,24 @@ namespace App {
         static $inject = [];
         constructor() { 
         }
+
     }
 
-    angular.module(""App"").service(""ShellStateManager"", ShellStateManager);
-}");
+    angular.module(""App"").service(""");
+            
+            #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write("\", ");
+            
+            #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;

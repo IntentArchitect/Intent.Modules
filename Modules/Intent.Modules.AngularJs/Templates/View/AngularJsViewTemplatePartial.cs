@@ -4,7 +4,7 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.AngularJs.Templates.View
 {
-    partial class AngularJsViewTemplate : IntentProjectItemTemplateBase<ViewStateModel>, ITemplate, IHasBowerDependencies
+    partial class AngularJsViewTemplate : IntentProjectItemTemplateBase<ViewStateModel>, ITemplate
     {
         public const string Identifier = "Intent.AngularJs.View";
         public AngularJsViewTemplate(IProject project, ViewStateModel model)
@@ -15,20 +15,12 @@ namespace Intent.Modules.AngularJs.Templates.View
         public override DefaultFileMetaData DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
+                overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Name}View",
                 fileExtension: "html",
                 defaultLocationInProject: $@"wwwroot\App\States\{Model.Name}"
                 );
-        }
-
-        public IEnumerable<IBowerPackageInfo> GetBowerDependencies()
-        {
-            return new[]
-            {
-                BowerPackageInfo.FontAwesome
-            };
         }
     }
 }

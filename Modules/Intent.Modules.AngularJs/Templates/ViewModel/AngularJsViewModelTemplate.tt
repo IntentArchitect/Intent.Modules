@@ -15,17 +15,13 @@
 
 #>
 
-namespace App {
-    export class ShellViewModel {
+namespace <#= Namespace #> {
+    export class <#= ClassName #> {
 
-        applicationName: string = "<#= Project.Application.ApplicationName #>";
-        userName: string = "User Name";
-
-        logOut = () => {
-            alert('Not implemented...');
+        constructor() {
         }
-
-		dispose = () => {
-		}
+        
+        dispose = () => {
+        }
     }
 }

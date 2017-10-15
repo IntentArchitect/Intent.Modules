@@ -41,27 +41,7 @@ namespace Intent.Modules.AngularJs.Templates.View
             
             #line default
             #line hidden
-            this.Write("<nav class=\"navbar navbar-inverse navbar-fixed-top\">\r\n    <div class=\"container-f" +
-                    "luid\">\r\n        <div class=\"navbar-header\">\r\n            <button type=\"button\" c" +
-                    "lass=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria" +
-                    "-expanded=\"false\" aria-controls=\"navbar\">\r\n                <span class=\"sr-only\"" +
-                    ">Toggle navigation</span>\r\n                <span class=\"icon-bar\"></span>\r\n     " +
-                    "           <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar" +
-                    "\"></span>\r\n            </button>\r\n            <a class=\"navbar-brand\" href=\"#\">{" +
-                    "{ vm.applicationName }}</a>\r\n        </div>\r\n        <div id=\"navbar\" class=\"col" +
-                    "lapse navbar-collapse\">\r\n            <ul class=\"nav navbar-nav\">\r\n              " +
-                    "  <li class=\"active\"><a href=\"\">Home</a></li>\r\n                <li><a href=\"\">Ab" +
-                    "out</a></li>\r\n            </ul>\r\n            <ul class=\"nav navbar-nav navbar-ri" +
-                    "ght\">\r\n                <li class=\"dropdown\">\r\n                    <a href=\"\" cla" +
-                    "ss=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"True\">\r\n             " +
-                    "           <i class=\"fa fa-user fa-lg\" style=\"margin-right: 5px\"></i> {{ vm.user" +
-                    "Name }}<i class=\"fa fa-chevron-down\" style=\"margin-left: 5px\"></i>\r\n            " +
-                    "        </a>\r\n                    <ul class=\"dropdown-menu\">\r\n                  " +
-                    "      <li class=\"divider\"></li>\r\n                        <li><a href=\"\" ng-click" +
-                    "=\"vm.logOut()\"><i class=\"fa fa-sign-out fa-fw\"></i>Sign Out</a></li>\r\n          " +
-                    "          </ul>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    <" +
-                    "/div>\r\n</nav>\r\n<div class=\"container-fluid\" style=\"margin-top: 50px\">\r\n    <div " +
-                    "class=\"row\" ui-view></div>\r\n</div>");
+            this.Write("<div>\r\n\r\n</div>");
             return this.GenerationEnvironment.ToString();
         }
         private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;

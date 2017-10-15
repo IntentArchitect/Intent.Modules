@@ -19,7 +19,7 @@ namespace Intent.Modules.AngularJs.Templates.View
             _metaDataManager = metaDataManager;
         }
 
-        public override string TemplateId => AngularJsStateTemplate.Identifier;
+        public override string TemplateId => AngularJsViewTemplate.Identifier;
 
         public override ITemplate CreateTemplateInstance(IProject project, ViewStateModel model)
         {
