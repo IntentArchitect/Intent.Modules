@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeResolvers\CSharpTypeResolver.cs" />
+    <Compile Include="TypeResolvers\TypeScriptTypeResolver.cs" />
+    <Compile Include="TypeResolvers\TypeScriptTypeResolverFactory.cs" />
+    <Compile Include="TypeResolvers\CSharpTypeResolverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.CommonTypes.imodspec" />
@@ -54,19 +58,27 @@
     <None Include="MetaData\Domain\Intent.CommonTypes.domain.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Intent.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj">
+      <Project>{3D67A7FC-3ABC-45EA-B48A-CB42B739754F}</Project>
+      <Name>Intent.SoftwareFactory.SDK</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="MetaData\DataContracts\Folders\Types.xml" />
     <Content Include="MetaData\DataContracts\Folders\Stereotypes.xml" />
     <Content Include="MetaData\DataContracts\Stereotypes\Java.xml" />
     <Content Include="MetaData\DataContracts\Stereotypes\CSharp.xml" />
     <Content Include="MetaData\DataContracts\Stereotypes\TypeScript.xml" />
+    <Content Include="MetaData\DataContracts\Types\Float.xml" />
     <Content Include="MetaData\DataContracts\Types\Double.xml" />
     <Content Include="MetaData\DataContracts\Types\Binary.xml" />
     <Content Include="MetaData\DataContracts\Types\DateTime.xml" />
     <Content Include="MetaData\DataContracts\Types\Date.xml" />
     <Content Include="MetaData\DataContracts\Types\Bool.xml" />
     <Content Include="MetaData\DataContracts\Types\Byte.xml" />
+    <Content Include="MetaData\DataContracts\Types\Short.xml" />
+    <Content Include="MetaData\DataContracts\Types\Long.xml" />
     <Content Include="MetaData\DataContracts\Types\Int.xml" />
     <Content Include="MetaData\DataContracts\Types\Char.xml" />
     <Content Include="MetaData\DataContracts\Types\Guid.xml" />
@@ -78,10 +90,13 @@
     <Content Include="MetaData\Domain\DataTypes\Date.xml" />
     <Content Include="MetaData\Domain\DataTypes\Bool.xml" />
     <Content Include="MetaData\Domain\DataTypes\Byte.xml" />
+    <Content Include="MetaData\Domain\DataTypes\Float.xml" />
     <Content Include="MetaData\Domain\DataTypes\Int.xml" />
     <Content Include="MetaData\Domain\DataTypes\Char.xml" />
     <Content Include="MetaData\Domain\DataTypes\Guid.xml" />
     <Content Include="MetaData\Domain\DataTypes\Decimal.xml" />
+    <Content Include="MetaData\Domain\DataTypes\Long.xml" />
+    <Content Include="MetaData\Domain\DataTypes\Short.xml" />
     <Content Include="MetaData\Domain\DataTypes\String.xml" />
     <Content Include="MetaData\Domain\Folders\Types.xml" />
     <Content Include="MetaData\Domain\Folders\Stereotypes.xml" />
