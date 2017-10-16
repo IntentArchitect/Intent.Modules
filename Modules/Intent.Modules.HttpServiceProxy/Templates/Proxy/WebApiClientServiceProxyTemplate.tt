@@ -37,10 +37,11 @@ namespace <#= Namespace #>
 
         private HttpClient CreateHttpClient()
         {
-            int timeoutInSeconds;
-            if (!int.TryParse(ConfigurationManager.AppSettings["HttpClient.Timeout.Seconds"], out timeoutInSeconds))
+            var timeoutInSeconds = 60;
+            if (!string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["HttpClient.Timeout.Seconds"]) &&
+                !int.TryParse(ConfigurationManager.AppSettings["HttpClient.Timeout.Seconds"], out timeoutInSeconds))
             {
-                throw new Exception("Could not find or parse 'HttpClient.Timeout.Seconds' setting in config file as int.");
+                throw new Exception("Could not parse 'HttpClient.Timeout.Seconds' setting in config file as int.");
             }
 
             var client = new HttpClient
