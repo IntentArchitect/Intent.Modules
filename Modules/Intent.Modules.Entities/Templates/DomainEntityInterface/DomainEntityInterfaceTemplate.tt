@@ -25,9 +25,10 @@ namespace <#= Namespace #>
     {
 <#  foreach (var attribute in Model.Attributes)
     {
+		string attributeType = Types.Get(attribute.Type);
 #>
 <#= PropertyAnnotations(attribute) #>
-        <#= attribute.Type(GetDecorators()) #> <#= attribute.Name.ToPascalCase() #> { get; }
+        <#= attributeType #> <#= attribute.Name.ToPascalCase() #> { get; }
 <#  }
 
 	foreach (var associatedClass in Model.AssociatedClasses)
@@ -43,8 +44,8 @@ namespace <#= Namespace #>
 
 <#  foreach (var operation in Model.Operations)
     {
-        string returnType = operation.ReturnType != null ? operation.ReturnType.Type.Name : "void";
-        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => x.Type.Name + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
+        string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";
+        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
 #>
         <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
 <#  }#>

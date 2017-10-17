@@ -3,7 +3,6 @@ using Intent.MetaModel.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ITypeReference = Intent.MetaModel.Domain.ITypeReference;
 
 namespace Intent.Modules.Entities.Templates
 {
@@ -115,7 +114,7 @@ namespace Intent.Modules.Entities.Templates
                 case "binary":
                     return "byte[]";
                 default:
-                    if (type.Type == DomainType.Enum)
+                    if (type.Type == ReferenceType.Enum)
                     {
                         return type.Name + nullableString;
                     }
