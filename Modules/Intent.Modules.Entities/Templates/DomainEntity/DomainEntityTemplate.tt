@@ -29,17 +29,18 @@ namespace <#= Namespace #>
 <#= ClassOtherConstructors(Model) #>
 <#  foreach (var attribute in Model.Attributes)
     {
+		string attributeType = Types.Get(attribute.Type);
 #>
 <#= PropertyFieldAnnotations(attribute) #>
-        private <#= attribute.Type(GetDecorators()) #> <#= attribute.Name.ToPrivateMember() #>;
+        private <#= attributeType #> <#= attribute.Name.ToPrivateMember() #>;
 <#= PropertyAnnotations(attribute) #>
-        public <#= attribute.Type(GetDecorators()) #> <#= attribute.Name.ToPascalCase() #> 
+        public <#= attributeType #> <#= attribute.Name.ToPascalCase() #> 
         {
             get { return <#= attribute.Name.ToPrivateMember() #>; }
             set
             {
 <#= PropertySetterBefore(attribute) #><#		
-		if (attribute.Type.Name == "date")
+		if (attributeType == "date")
 		{
 			if (!attribute.IsNullable)
 			{#>
@@ -92,8 +93,8 @@ namespace <#= Namespace #>
 
 <#  foreach (var operation in Model.Operations)
     {
-        string returnType = operation.ReturnType != null ? operation.ReturnType.Type.Name : "void";
-        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => x.Type.Name + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
+        string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";
+        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
 		if (!operation.IsAbstract)
 		{#>
         public <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>)
