@@ -45,21 +45,6 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginCallbackView
                     "\r\n        <strong>Error:</strong> {{vm.errors}}\r\n    </div>\r\n</div>\r\n");
             return this.GenerationEnvironment.ToString();
         }
-        private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;
-        /// <summary>
-        /// The current host for the text templating engine
-        /// </summary>
-        public virtual global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost Host
-        {
-            get
-            {
-                return this.hostValue;
-            }
-            set
-            {
-                this.hostValue = value;
-            }
-        }
     }
     
     #line default

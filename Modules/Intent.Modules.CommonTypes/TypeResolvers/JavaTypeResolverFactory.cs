@@ -1,4 +1,5 @@
-﻿using Intent.SoftwareFactory.Templates;
+﻿using Intent.Modules.CommonTypes.Contracts;
+using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

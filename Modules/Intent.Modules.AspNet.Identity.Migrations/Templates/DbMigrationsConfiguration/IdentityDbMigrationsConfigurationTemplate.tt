@@ -1,5 +1,5 @@
 ﻿
-<#@ template  debug="true" hostSpecific="true" inherits="IntentRoslynProjectItemTemplateBase" #>
+<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>

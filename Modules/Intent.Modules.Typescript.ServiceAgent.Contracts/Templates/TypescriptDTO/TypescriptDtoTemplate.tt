@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentTypescriptProjectItemTemplateBase<DTOModel>" #>
+﻿<#@ template  debug="true"  inherits="IntentTypescriptProjectItemTemplateBase<DTOModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>

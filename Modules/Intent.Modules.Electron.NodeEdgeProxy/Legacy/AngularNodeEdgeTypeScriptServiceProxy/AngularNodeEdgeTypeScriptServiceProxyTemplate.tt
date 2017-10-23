@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentProjectItemTemplateBase<ServiceModel>" #>
+﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<ServiceModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>

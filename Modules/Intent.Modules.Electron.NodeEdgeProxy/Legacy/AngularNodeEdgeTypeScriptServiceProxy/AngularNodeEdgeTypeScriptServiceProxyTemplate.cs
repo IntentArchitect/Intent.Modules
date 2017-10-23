@@ -300,21 +300,6 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Legacy.AngularNodeEdgeTypeScript
             this.Write("Proxy);\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
-        private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;
-        /// <summary>
-        /// The current host for the text templating engine
-        /// </summary>
-        public virtual global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost Host
-        {
-            get
-            {
-                return this.hostValue;
-            }
-            set
-            {
-                this.hostValue = value;
-            }
-        }
         
         #line 126 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Legacy\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
 

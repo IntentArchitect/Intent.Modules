@@ -37,11 +37,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Intent.SoftwareFactory\packages\Intent.SoftwareFactory.MetaModel.1.0.1-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.0.2-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.0-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.1-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -108,6 +108,7 @@
     <Content Include="MetaData\Domain\DataTypes\fb0a362d-e9e2-40de-b6ff-5ce8167cbe74.xml" />
     <Content Include="MetaData\Domain\Folders\be845ddb-c32d-4811-a312-2ac08eea1eb5.xml" />
     <Content Include="MetaData\Domain\Folders\e7e9124a-d717-4d39-b02b-a568b3434112.xml" />
+    <Content Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
     <None Include="Intent.Modules.RichDomain.imodspec" />
     <None Include="MetaData\Domain\Intent.RichDomain.domain.pkg.config" />
     <Content Include="MetaData\Domain\Stereotypes\153b1e56-8398-4f02-bbfc-301c6f1b34cb.xml" />

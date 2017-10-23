@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true" hostSpecific="true" inherits="IntentProjectItemTemplateBase<object>" #>
+﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<object>" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
 <#@ output extension=".txt" #>
 Create a new migration:
