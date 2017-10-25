@@ -48,10 +48,10 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Name}",
+                fileName: "${Model.Name}",
                 fileExtension: "cs",
                 defaultLocationInProject: string.Join("\\", GetNamespaceParts().DefaultIfEmpty("DTOs")),
-                className: "${Name}",
+                className: "${Model.Name}",
                 @namespace: string.Join(".", new [] { "${Project.ProjectName}" }.Concat(GetNamespaceParts()))
                 );
         }

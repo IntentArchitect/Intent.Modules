@@ -9,19 +9,19 @@
     <template id="Intent.Entities.Base">
       <role>Domain</role>
       <config>
-        <add key="Depends On" description="Make this output a code behind file for" default="${Name}.cs" />
+        <add key="Depends On" description="Make this output a code behind file for" default="${Model.Name}.cs" />
       </config>
     </template>
     <template id="Intent.Entities.Base.Interface">
       <role>Domain</role>
       <config>
-        <add key="Depends On" description="Make this output a code behind file for" default="${Name}.cs" />
+        <add key="Depends On" description="Make this output a code behind file for" default="${Model.Name}.cs" />
       </config>
     </template>
     <template id="Intent.Entities.Behaviour" enabled="false">
       <role>Domain</role>
       <config>
-        <add key="Depends On" description="Make this output a code behind file for" default="${Name}.cs" />
+        <add key="Depends On" description="Make this output a code behind file for" default="${Model.Name}.cs" />
       </config>
     </template>
     <template id="Intent.Entities.PartialEntity">

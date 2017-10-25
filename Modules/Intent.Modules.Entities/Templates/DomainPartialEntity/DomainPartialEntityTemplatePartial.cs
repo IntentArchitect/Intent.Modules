@@ -22,10 +22,10 @@ namespace Intent.Modules.Entities.Templates.DomainPartialEntity
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
-                fileName: "${Name}",
+                fileName: "${Model.Name}",
                 fileExtension: "cs",
                 defaultLocationInProject: "Domain",
-                className: "${Name}",
+                className: "${Model.Name}",
                 @namespace: "${Project.ProjectName}"
                 );
         }

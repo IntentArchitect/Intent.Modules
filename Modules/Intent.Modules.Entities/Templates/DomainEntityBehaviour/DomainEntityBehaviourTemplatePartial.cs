@@ -25,10 +25,10 @@ namespace Intent.Modules.Entities.Templates.DomainEntityBehaviour
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Name}Behaviours",
+                fileName: "${Model.Name}Behaviours",
                 fileExtension: "cs",
                 defaultLocationInProject: "Domain",
-                className: "${Name}Behaviours",
+                className: "${Model.Name}Behaviours",
                 @namespace: "${Project.ProjectName}"
                 );
         }

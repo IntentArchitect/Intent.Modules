@@ -12,6 +12,10 @@
     <file src="bin\$configuration$\$id$.pdb"/>
     <file src="bin\$configuration$\Intent.Modules.Common.dll" inspect="false"/>
   </files>
+  <factoryExtensions>
+    <factoryExtension id="Intent.CommonTypes.TypeResolvers">
+    </factoryExtension>
+  </factoryExtensions>
   <metadata>
     <install target="Domain" src="MetaData\Domain"/>
     <install target="DataContracts" src="MetaData\DataContracts"/>

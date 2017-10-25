@@ -43,10 +43,10 @@ namespace Intent.Modules.Application.Contracts.Legacy.ServiceContract
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "I${Name}",
+                fileName: "I${Model.Name}",
                 fileExtension: "cs",
                 defaultLocationInProject: "Generated\\Services",
-                className: "I${Name}",
+                className: "I${Model.Name}",
                 @namespace: "${Project.ProjectName}"
                 );
         }

@@ -1,14 +1,16 @@
-﻿using Intent.SoftwareFactory;
+﻿using Intent.Modules.Common.Plugins;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Plugins;
+using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Intent.Modules.VisualStudio.Projects.ApplicationProcessors
 {
-    public class DependencyResolutionApplicationProcessor : ApplicationProcessorBase
+    public class DependencyResolutionApplicationProcessor : FactoryExtensionBase, IExecutionLifeCycle
     {
         public override string Id
         {
@@ -19,12 +21,15 @@ namespace Intent.Modules.VisualStudio.Projects.ApplicationProcessors
         }
 
 
-        public DependencyResolutionApplicationProcessor()
+        public void OnStep(IApplication application, string step)
         {
-            WhenToRun = ApplicationProcessorExecutionStep.BeforeTemplateExecution;            
+            if (step == ExecutionLifeCycleSteps.BeforeTemplateExecution)
+            {
+                ResolveDependencies(application);
+            }
         }
 
-        public override void Run(IApplication application)
+        public void ResolveDependencies(IApplication application)
         {
             // Resolve all dependencies and events
             Logging.Log.Info($"Resolving Dependencies");

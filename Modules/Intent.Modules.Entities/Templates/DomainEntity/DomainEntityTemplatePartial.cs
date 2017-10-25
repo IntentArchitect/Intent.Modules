@@ -30,10 +30,10 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
 
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Name}Partial",
+                fileName: "${Model.Name}Partial",
                 fileExtension: "cs",
                 defaultLocationInProject: "Domain",
-                className: "${Name}",
+                className: "${Model.Name}",
                 @namespace: "${Project.ProjectName}",
                 dependsUpon: partialClass?.GetMetaData().FileNameWithExtension()
                 );

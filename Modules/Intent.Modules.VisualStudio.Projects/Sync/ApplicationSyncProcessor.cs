@@ -1,15 +1,17 @@
-﻿using Intent.Modules.Constants;
+﻿using Intent.Modules.Common.Plugins;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Plugins;
+using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Intent.Modules.VisualStudio.Projects.Sync
 {
-    public class ApplicationSyncProcessor : ApplicationProcessorBase, IApplicationProcessor
+    public class ApplicationSyncProcessor : FactoryExtensionBase, IExecutionLifeCycle
     {
         private readonly ISoftwareFactoryEventDispatcher _eventDispatcher;
         private readonly IChanges _changeManager;
@@ -27,7 +29,6 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         public ApplicationSyncProcessor(ISoftwareFactoryEventDispatcher eventDispatcher, IXmlFileCache fileCache, IChanges changeManager)
         {
             Order = 90;
-            WhenToRun = ApplicationProcessorExecutionStep.AfterTemplateExecution;
             _changeManager = changeManager;
             _fileCache = fileCache;
             _actions = new Dictionary<string, List<SoftwareFactoryEvent>>();
@@ -40,17 +41,15 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             _eventDispatcher.Subscribe(SoftwareFactoryEvents.ChangeProjectItemTypeEvent, Handle);
         }
 
-        public void Handle(SoftwareFactoryEvent @event)
+        public void OnStep(IApplication application, string step)
         {
-            string projectId = @event.GetValue("ProjectId");
-            if (!_actions.ContainsKey(projectId))
+            if (step == ExecutionLifeCycleSteps.AfterTemplateExecution)
             {
-                _actions[projectId] = new List<SoftwareFactoryEvent>();
+                SyncProjectFiles(application);
             }
-            _actions[projectId].Add(@event);
         }
 
-        public override void Run(IApplication application)
+        public void SyncProjectFiles(IApplication application)
         {
             foreach (var project in _actions)
             {
@@ -64,6 +63,16 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             }
 
             _actions.Clear();
+        }
+
+        public void Handle(SoftwareFactoryEvent @event)
+        {
+            string projectId = @event.GetValue("ProjectId");
+            if (!_actions.ContainsKey(projectId))
+            {
+                _actions[projectId] = new List<SoftwareFactoryEvent>();
+            }
+            _actions[projectId].Add(@event);
         }
     }
 }
