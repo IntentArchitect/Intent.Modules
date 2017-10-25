@@ -1,19 +1,32 @@
 using Intent.Modules.Bower.Templates.BowerConfig;
+using Intent.Modules.Common.Plugins;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Plugins;
+using Intent.SoftwareFactory.Plugins.FactoryExtensions;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System;
 
 namespace Intent.Modules.Bower.Installer
 {
-    public class BowerPackageInstaller : ApplicationProcessorBase, IApplicationProcessor
+    [Description("Bower Package Installer")]
+    public class BowerPackageInstaller : FactoryExtensionBase, IExecutionLifeCycle
     {
 
         public BowerPackageInstaller()
         {
             Order = 10;
-            WhenToRun = ApplicationProcessorExecutionStep.AfterTemplateExecution;
+        }
+
+
+        public void OnStep(IApplication application, string step)
+        {
+            if (step == ExecutionLifeCycleSteps.AfterTemplateExecution)
+            {
+                Run(application);
+            }
         }
 
         public override string Id
@@ -24,7 +37,7 @@ namespace Intent.Modules.Bower.Installer
             }
         }
 
-        public override void Run(IApplication application)
+        public void Run(IApplication application)
         {
             var projects = application.Projects.Where(x => x.HasTemplateInstance(BowerConfigTemplate.Identifier));
             foreach (var project in projects)

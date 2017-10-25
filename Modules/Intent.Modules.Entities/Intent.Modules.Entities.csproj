@@ -36,6 +36,18 @@
       <HintPath>..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\lib\net452\Intent.IArchitect.Packager.exe</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.2.0-beta\lib\net45\Intent.MetaModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.Modules.Common.1.2.0-beta\lib\net45\Intent.Modules.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.2.0-beta\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -87,20 +99,6 @@
       <DependentUpon>DomainPartialEntityTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\DomainPartialEntity\Registration.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Intent.SoftwareFactory\Intent.MetaModel\Intent.MetaModel.csproj">
-      <Project>{0b7d6145-3362-42bf-940b-18cbde0e95b5}</Project>
-      <Name>Intent.MetaModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Intent.SoftwareFactory\Intent.Modules.Common\Intent.Modules.Common.csproj">
-      <Project>{01740a89-8fec-4bc0-bed8-1f7ab6504fd3}</Project>
-      <Name>Intent.Modules.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Intent.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj">
-      <Project>{3d67a7fc-3abc-45ea-b48a-cb42b739754f}</Project>
-      <Name>Intent.SoftwareFactory.SDK</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Entities.imodspec" />

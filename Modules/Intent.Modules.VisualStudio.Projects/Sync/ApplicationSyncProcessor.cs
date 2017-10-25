@@ -7,10 +7,12 @@ using Intent.SoftwareFactory.Plugins;
 using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace Intent.Modules.VisualStudio.Projects.Sync
 {
+    [Description("Visual Studio Project File Syncer")]
     public class ApplicationSyncProcessor : FactoryExtensionBase, IExecutionLifeCycle
     {
         private readonly ISoftwareFactoryEventDispatcher _eventDispatcher;

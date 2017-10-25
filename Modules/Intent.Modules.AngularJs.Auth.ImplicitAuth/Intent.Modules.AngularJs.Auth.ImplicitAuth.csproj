@@ -37,11 +37,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.0.2-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.2.0-beta\lib\net45\Intent.MetaModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.Modules.Common.1.2.0-beta\lib\net45\Intent.Modules.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.1-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.2.0-beta\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -55,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BowerPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrations.cs" />
     <Compile Include="Templates\HttpInterceptor\AngularAuthHttpInterceptorServiceTemplate.cs">
@@ -160,6 +165,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Bower\Intent.Modules.Bower.csproj">
+      <Project>{676ffb48-2b61-46bf-86b1-1a6d5f48888d}</Project>
+      <Name>Intent.Modules.Bower</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>

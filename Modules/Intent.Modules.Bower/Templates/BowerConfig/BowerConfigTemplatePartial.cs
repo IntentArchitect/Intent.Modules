@@ -1,4 +1,5 @@
-﻿using Intent.SoftwareFactory.Engine;
+﻿using Intent.Modules.Bower.Contracts;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;

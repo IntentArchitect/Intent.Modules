@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Common</id>
+  <version>0.0.1</version>
+  <summary>Base Implimentation and Helper classes.</summary>
+  <description></description>
+  <authors>Intent Software</authors>
+  <templates />
+  <dependencies />
+  <files>
+    <file src="bin\$configuration$\Intent.Modules.Common.dll"/>
+  </files>
+</package>

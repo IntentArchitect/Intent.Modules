@@ -9,12 +9,11 @@
   <tags>NuGet Automatic Installer</tags>
   <templates />
   <decorators />
-  <applicationProcessors>
-    <applicationProcessor id="Intent.NugetInstaller" >
-      <whenToRun>AfterCommitChanges</whenToRun>
+  <factoryExtensions>
+    <factoryExtension id="Intent.NugetInstaller" >
       <order>100</order>
-    </applicationProcessor>
-  </applicationProcessors>
+    </factoryExtension>
+  </factoryExtensions>
   <dependencies>
   </dependencies>
   <files>

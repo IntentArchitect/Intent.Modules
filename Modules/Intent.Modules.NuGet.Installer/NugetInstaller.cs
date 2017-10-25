@@ -1,7 +1,9 @@
 using Intent.Modules.NuGet.Installer.Managers;
+using Intent.Modules.Common.Plugins;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Plugins;
+using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using Intent.SoftwareFactory.VisualStudio;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ using System.Linq;
 
 namespace Intent.Modules.NuGet.Installer
 {
-    public class NugetInstaller : ApplicationProcessorBase, IApplicationProcessor
+    public class NugetInstaller : FactoryExtensionBase, IExecutionLifeCycle
     {
         public override string Id
         {
@@ -23,10 +25,18 @@ namespace Intent.Modules.NuGet.Installer
         public NugetInstaller()
         {
             Order = 100;
-            WhenToRun = ApplicationProcessorExecutionStep.AfterCommitChanges;
         }
 
-        public override void Run(IApplication application)
+
+        public void OnStep(IApplication application, string step)
+        {
+            if (step == ExecutionLifeCycleSteps.AfterCommitChanges)
+            {
+                Run(application);
+            }
+        }
+
+        public void Run(IApplication application)
         {
             Logging.Log.Info($"NuGet - Start processesing Packages");
 
@@ -65,6 +75,7 @@ namespace Intent.Modules.NuGet.Installer
                 nugetManager.CleanupPackagesFolder();
             }
         }
+
 
         private class CanAddFileStrategy : ICanAddFileStrategy
         {

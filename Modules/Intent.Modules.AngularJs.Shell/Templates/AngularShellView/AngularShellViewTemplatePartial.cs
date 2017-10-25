@@ -1,4 +1,5 @@
-﻿using Intent.SoftwareFactory.Engine;
+﻿using Intent.Modules.Bower.Contracts;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 
@@ -27,7 +28,7 @@ namespace Intent.Modules.AngularJs.Shell.Templates.AngularShellView
         {
             return new[]
             {
-                BowerPackageInfo.FontAwesome
+                BowerPackages.FontAwesome
             };
         }
     }

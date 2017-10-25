@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using Intent.Modules.Bower.Contracts;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
@@ -7,6 +8,7 @@ using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Intent.Modules.Bower;
 
 namespace Intent.Modules.AngularJs.Shell.Templates.AngularIndexHtml
 {

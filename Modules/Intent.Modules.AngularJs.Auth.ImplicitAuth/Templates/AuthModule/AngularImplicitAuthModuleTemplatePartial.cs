@@ -1,4 +1,5 @@
 ﻿using Intent.MetaModel.Hosting;
+using Intent.Modules.Bower.Contracts;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
@@ -49,7 +50,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
         {
             return new[]
             {
-                BowerPackageInfo.OidcTokenManager,
+                BowerPackages.OidcTokenManager,
             };
         }
 

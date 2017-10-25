@@ -1,5 +1,7 @@
-﻿using Intent.SoftwareFactory;
+﻿using Intent.Modules.Common.Plugins;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Plugins;
+using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Linq;
 
 namespace Intent.Modules.OutputManager.FileHeaders
 {
-    public class FileHeaderOMP : OutputTransformerBase
+    public class FileHeaderOMP : FactoryExtensionBase, ITransformOutput
     {
         private bool _appendHeadersToOnceOffTemplates = true;
         private HeaderAppendBehaviour _unspecifiedBehaviour = HeaderAppendBehaviour.Always;
@@ -52,7 +54,7 @@ namespace Intent.Modules.OutputManager.FileHeaders
             }
         }
 
-        public override void Process(IOutputFile output)
+        public void Transform(IOutputFile output)
         {
             if (output.FileMetaData.OverwriteBehaviour == OverwriteBehaviour.OnceOff && _appendHeadersToOnceOffTemplates)
             {

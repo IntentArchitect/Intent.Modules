@@ -10,7 +10,7 @@
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
-    <file src="bin\$configuration$\Intent.Modules.Common.dll" inspect="false"/>
+<!--    <file src="bin\$configuration$\Intent.Modules.Common.dll" inspect="false"/>-->
   </files>
   <factoryExtensions>
     <factoryExtension id="Intent.CommonTypes.TypeResolvers">

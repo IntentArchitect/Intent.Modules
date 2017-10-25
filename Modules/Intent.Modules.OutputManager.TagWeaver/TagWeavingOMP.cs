@@ -1,7 +1,9 @@
-﻿using Intent.Modules.OutputManager.TagWeaver.TokenParsers;
+﻿using Intent.Modules.Common.Plugins;
+using Intent.Modules.OutputManager.TagWeaver.TokenParsers;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Plugins;
+using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +11,7 @@ using System.Linq;
 
 namespace Intent.Modules.OutputManager.TagWeaver
 {
-    public class TagWeavingOMP : OutputTransformerBase
+    public class TagWeavingOMP : FactoryExtensionBase, ITransformOutput
     {
         private readonly ISoftwareFactoryEventDispatcher _eventDispatcher;
         private Dictionary<string, WeaveBehaviour> _codeGenTypeMap;
@@ -66,7 +68,7 @@ namespace Intent.Modules.OutputManager.TagWeaver
 
         }
 
-        public override void Process(IOutputFile output)
+        public void Transform(IOutputFile output)
         {
             WeaveBehaviour behaviour;
             if (!_codeGenTypeMap.TryGetValue(output.FileMetaData.CodeGenType, out behaviour))

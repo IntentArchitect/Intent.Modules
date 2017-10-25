@@ -1,3 +1,4 @@
+using Intent.Modules.Bower.Contracts;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.AngularJs.Shell

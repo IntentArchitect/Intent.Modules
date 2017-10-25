@@ -1,4 +1,5 @@
-﻿using Intent.Modules.Constants;
+﻿using Intent.Modules.Bower.Contracts;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;

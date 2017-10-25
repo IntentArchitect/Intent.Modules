@@ -9,9 +9,9 @@
   <tags>Bower Automatic Installer</tags>
   <templates />
   <decorators />
-  <applicationProcessors>
-    <applicationProcessor id="Intent.BowerPackageInstaller" />
-  </applicationProcessors>
+  <factoryExtensions>
+    <factoryExtension id="Intent.BowerPackageInstaller" />
+  </factoryExtensions>
   <dependencies>
     <dependency id="Intent.Bower" version="1.0"/>
   </dependencies>

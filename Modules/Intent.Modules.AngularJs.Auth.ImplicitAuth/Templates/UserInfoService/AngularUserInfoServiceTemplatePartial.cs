@@ -1,4 +1,5 @@
-﻿using Intent.SoftwareFactory.Engine;
+﻿using Intent.Modules.Bower.Contracts;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 
@@ -29,7 +30,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.UserInfoService
         {
             return new[]
             {
-                BowerPackageInfo.AngularLocalStorage
+                BowerPackages.AngularLocalStorage
             };
         }
     }

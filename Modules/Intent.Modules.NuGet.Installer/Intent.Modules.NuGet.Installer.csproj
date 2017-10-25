@@ -38,17 +38,21 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.0.2-alpha\lib\net45\Intent.MetaModel.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.2.0-beta\lib\net45\Intent.MetaModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.Modules.Common.1.2.0-beta\lib\net45\Intent.Modules.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.0.1-alpha\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.2.0-beta\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Build, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="NuGet, Version=2.8.60717.93, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NuGet.CommandLine.3.4.3\tools\NuGet.exe</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -79,6 +83,7 @@
   <ItemGroup>
     <Content Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

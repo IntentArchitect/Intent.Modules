@@ -1,4 +1,5 @@
-﻿using Intent.SoftwareFactory.Engine;
+﻿using Intent.Modules.Bower.Contracts;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 
@@ -28,7 +29,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.HttpInterceptor
         {
             return new[]
             {
-                BowerPackageInfo.OidcTokenManager
+                BowerPackages.OidcTokenManager
             };
         }
     }
