@@ -9,10 +9,13 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Plugins;
 using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using Intent.SoftwareFactory.Templates;
+using System.ComponentModel;
+using Intent.SoftwareFactory;
 
 namespace Intent.Modules.CommonTypes.FactoryExtensions
 {
-    public class TypeResolverFactoryExtension : IFactoryExtension, IDiscoverTypes
+    [Description("Type Resolver (Factory Extension)")]
+    public class TypeResolverFactoryExtension : IFactoryExtension, IDiscoverTypes, ITemplateLifeCycle
     {
         private ITypeResolverFactoryRepository _typeResolverFactoryRepository;
 
@@ -33,6 +36,7 @@ namespace Intent.Modules.CommonTypes.FactoryExtensions
                 if (typeof(ITypeResolverFactory).IsAssignableFrom(type))
                 {
                     ITypeResolverFactory factory = typeActivator.Activate<ITypeResolverFactory>(type);
+                    Logging.Log.Info("Discovered Type Resolver : " + type.GetDescription());
                     typeResolverFactories.Add(factory);
                 }
             }

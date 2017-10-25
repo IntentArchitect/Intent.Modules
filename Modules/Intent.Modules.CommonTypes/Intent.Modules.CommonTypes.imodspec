@@ -10,6 +10,7 @@
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="bin\$configuration$\Intent.Modules.Common.dll" inspect="false"/>
   </files>
   <metadata>
     <install target="Domain" src="MetaData\Domain"/>
