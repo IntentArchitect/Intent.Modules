@@ -41,7 +41,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.Modules.Common.1.2.0-beta\lib\net45\Intent.Modules.Common.dll</HintPath>
+      <HintPath>..\packages\Intent.Modules.Common.1.2.1-beta\lib\net45\Intent.Modules.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
