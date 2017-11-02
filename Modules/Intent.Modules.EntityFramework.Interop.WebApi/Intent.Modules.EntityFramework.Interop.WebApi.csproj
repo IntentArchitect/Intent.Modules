@@ -70,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetaData\Services\Folders\9733341D-F963-4728-98EC-8A3968E2759C.xml" />
-    <Content Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MetaData\Services\Stereotypes\" />

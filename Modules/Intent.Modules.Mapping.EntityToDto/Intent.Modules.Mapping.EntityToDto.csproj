@@ -77,7 +77,6 @@
     <Compile Include="Templates\EntityMappingExtensions\EntityMappingExtensionsTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
     <None Include="Intent.Modules.Mapping.EntityToDto.imodspec" />
     <None Include="packages.config" />
     <None Include="Templates\DTOMappingProfile\GenericMappingTemplate.tt">

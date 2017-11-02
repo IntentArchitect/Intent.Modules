@@ -112,7 +112,6 @@
     <Content Include="MetaData\Domain\DataTypes\fb0a362d-e9e2-40de-b6ff-5ce8167cbe74.xml" />
     <Content Include="MetaData\Domain\Folders\be845ddb-c32d-4811-a312-2ac08eea1eb5.xml" />
     <Content Include="MetaData\Domain\Folders\e7e9124a-d717-4d39-b02b-a568b3434112.xml" />
-    <Content Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
     <None Include="Intent.Modules.RichDomain.imodspec" />
     <None Include="MetaData\Domain\Intent.RichDomain.domain.pkg.config" />
     <Content Include="MetaData\Domain\Stereotypes\153b1e56-8398-4f02-bbfc-301c6f1b34cb.xml" />

@@ -126,7 +126,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AngularEdgeServiceTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
     <None Include="Intent.Modules.Electron.NodeEdgeProxy.imodspec" />
     <None Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

@@ -80,7 +80,6 @@
     <Content Include="MetaData\Services\Folders\6a44c402-9b4f-41af-9fed-87ff1d58dfed.xml" />
     <Content Include="MetaData\Services\Folders\87178626-6aba-4093-96b1-b5ac8558bf65.xml" />
     <Content Include="MetaData\Services\Stereotypes\d299265f-ac40-44d7-a9d5-eb33780ec859.xml" />
-    <Content Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

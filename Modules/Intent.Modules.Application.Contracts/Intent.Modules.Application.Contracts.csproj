@@ -107,7 +107,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
     <None Include="Legacy\DTO\GenericClassTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>GenericClassTemplate.cs</LastGenOutput>

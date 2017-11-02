@@ -118,7 +118,6 @@
     <Content Include="MetaData\Domain\Stereotypes\Java.xml" />
     <Content Include="MetaData\Domain\Stereotypes\CSharp.xml" />
     <Content Include="MetaData\Domain\Stereotypes\TypeScript.xml" />
-    <Content Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\build\Intent.IntentArchitectPackager.targets')" />
