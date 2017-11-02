@@ -70,19 +70,21 @@ In a new instance of Visual Studio we are going to make a new project from which
         - Name: `Module.Example.WebApi.imodpec`
         - Content:
             ```xml
-            <?xml version=`1.0` encoding=`utf-8`?>
+            <?xml version="1.0" encoding="utf-8"?>
             <package>
                 <id>$id$</id>
                 <version>0.0.1</version>
+                <summary>Example module implementing a basic WebApi Controller</summary>
+                <description>Example module implementing a basic WebApi Controller</description>
                 <templates>
-                    <template id=`Module.Example.WebApi.WebApiController`>
+                    <template id="Module.Example.WebApi.WebApiController">
                         <role>Distribution.WebApi</role>
                     </template>
                 </templates>
             </package>
             ```
 
-    - Template
+    - Template File
 
         A convenient and powerful templating engine for the Intent Architect's Software Factory is T4. Visual Studio has support and tooling for T4 out the box and it provides a convenient way to mix code and text together through `.tt` files. By using a `Runtime Text Template`, normal C# code is created each time the `.tt` file is saved.
         
@@ -92,13 +94,13 @@ In a new instance of Visual Studio we are going to make a new project from which
         - Name: `WebApiControllerTemplate.tt`
         - Content:
             ```csharp
-            <#@ template language=`C#` inherits=`IntentRoslynProjectItemTemplateBase<IServiceModel>`#>
-            <#@ assembly name=`System.Core` #>
-            <#@ import namespace=`Intent.MetaModel.Service` #>
-            <#@ import namespace=`Intent.SoftwareFactory.Templates` #>
-            <#@ import namespace=`System.Linq` #>
-            <#@ import namespace=`System.Text` #>
-            <#@ import namespace=`System.Collections.Generic` #>
+            <#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>"#>
+            <#@ assembly name="System.Core" #>
+            <#@ import namespace="Intent.MetaModel.Service" #>
+            <#@ import namespace="Intent.SoftwareFactory.Templates" #>
+            <#@ import namespace="System.Linq" #>
+            <#@ import namespace="System.Text" #>
+            <#@ import namespace="System.Collections.Generic" #>
             using Intent.CodeGen;
 
             [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -136,18 +138,18 @@ In a new instance of Visual Studio we are going to make a new project from which
 
                     public override RoslynMergeConfig ConfigureRoslynMerger()
                     {
-                        return new RoslynMergeConfig(new TemplateMetaData(Id, `1.0`));
+                        return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
                     }
 
                     protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
                     {
                         return new RoslynDefaultFileMetaData(
                             overwriteBehaviour: OverwriteBehaviour.Always,
-                            fileName: Model.Name + `Controller`,
-                            fileExtension: `cs`,
-                            defaultLocationInProject: @`Controllers`,
-                            className: `${Name}Controller`,
-                            @namespace: `${Project.Name}.Controllers`);
+                            fileName: "${Name}Controller",
+                            fileExtension: "cs",
+                            defaultLocationInProject: @"Controllers",
+                            className: "${Name}Controller",
+                            @namespace: "${Project.Name}.Controllers");
                     }
                 }
             }
@@ -187,7 +189,7 @@ In a new instance of Visual Studio we are going to make a new project from which
 
                     public override IEnumerable<IServiceModel> GetModels(IApplication application)
                     {
-                        return _metaDataManager.GetMetaData<IServiceModel>(new MetaDataType(`Service`)).Where(x => x.Application.Name == application.ApplicationName).ToList();
+                        return _metaDataManager.GetMetaData<IServiceModel>(new MetaDataType("Service")).Where(x => x.Application.Name == application.ApplicationName).ToList();
                     }
 
                     public override string TemplateId => WebApiControllerTemplate.Identifier;
@@ -248,13 +250,13 @@ Let's make our template generate class names and their namespaces.
 Change the content of the `WebApiControllerTemplate.tt` file to the following: 
 
 ```csharp
-<#@ template language=`C#` inherits=`IntentRoslynProjectItemTemplateBase<IServiceModel>`#>
-<#@ assembly name=`System.Core` #>
-<#@ import namespace=`Intent.MetaModel.Service` #>
-<#@ import namespace=`Intent.SoftwareFactory.Templates` #>
-<#@ import namespace=`System.Linq` #>
-<#@ import namespace=`System.Text` #>
-<#@ import namespace=`System.Collections.Generic` #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>"#>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
 using System;
 using Intent.CodeGen;
 
@@ -275,13 +277,13 @@ Build your module, run the software factory and observe that it now applies a na
 Change the content of the `WebApiControllerTemplate.tt` file to the following: 
 
 ```csharp
-<#@ template language=`C#` inherits=`IntentRoslynProjectItemTemplateBase<IServiceModel>`#>
-<#@ assembly name=`System.Core` #>
-<#@ import namespace=`Intent.MetaModel.Service` #>
-<#@ import namespace=`Intent.SoftwareFactory.Templates` #>
-<#@ import namespace=`System.Linq` #>
-<#@ import namespace=`System.Text` #>
-<#@ import namespace=`System.Collections.Generic` #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>"#>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
 using System;
 using System.Web.Http;
 using Intent.CodeGen;
@@ -319,7 +321,7 @@ namespace Module.Example.WebApi
 {
     public partial class WebApiControllerTemplate
     {
-        public const string Identifier = `Module.Example.WebApi.WebApiController`;
+        public const string Identifier = "Module.Example.WebApi.WebApiController";
 
         public WebApiControllerTemplate(IProject project, IServiceModel model) : base(Identifier, project, model)
         {
@@ -327,25 +329,25 @@ namespace Module.Example.WebApi
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, `1.0`));
+            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: Model.Name + `Controller`,
-                fileExtension: `cs`,
-                defaultLocationInProject: @`Controllers`,
-                className: `${Name}Controller`,
-                @namespace: `${Project.Name}.Controllers`);
+                fileName: Model.Name + "Controller",
+                fileExtension: "cs",
+                defaultLocationInProject: "Controllers",
+                className: "${Name}Controller",
+                @namespace: "${Project.Name}.Controllers");
         }
 
         // A helper method used by the template:
         private string GetOperationReturnType(IOperationModel o)
         {
             return o.ReturnType == null
-                ? `void`
+                ? "void"
                 : o.ReturnType.TypeReference.Name;
         }
 
@@ -353,8 +355,8 @@ namespace Module.Example.WebApi
         private string GetParameters(IOperationModel o)
         {
             return o.Parameters
-                .Select(x => $`{x.TypeReference.Name} {x.Name}`)
-                .Aggregate((x, y) => x + `, ` + y);
+                .Select(x => $"{x.TypeReference.Name} {x.Name}")
+                .Aggregate((x, y) => x + ", " + y);
         }
     }
 }
@@ -362,13 +364,13 @@ namespace Module.Example.WebApi
 
 Change the content of the `WebApiControllerTemplate.tt` file to the following: 
 ```csharp
-<#@ template language=`C#` inherits=`IntentRoslynProjectItemTemplateBase<IServiceModel>`#>
-<#@ assembly name=`System.Core` #>
-<#@ import namespace=`Intent.MetaModel.Service` #>
-<#@ import namespace=`Intent.SoftwareFactory.Templates` #>
-<#@ import namespace=`System.Linq` #>
-<#@ import namespace=`System.Text` #>
-<#@ import namespace=`System.Collections.Generic` #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>"#>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
 using System;
 using System.Web.Http;
 using Intent.CodeGen;
@@ -383,7 +385,7 @@ namespace <#= Namespace #>
     {
 #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore)]
-        [AcceptVerbs(`GET`)]
+        [AcceptVerbs("GET")]
         public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= GetParameters(operation) #>)
         {
             throw new NotImplementedException();
