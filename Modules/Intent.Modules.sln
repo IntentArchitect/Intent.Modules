@@ -115,6 +115,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.CommonTypes"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common", "Intent.Modules.Common\Intent.Modules.Common.csproj", "{56475E35-0CC7-4D75-937C-FF46C073BB66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AngularJs", "Intent.Modules.AngularJs\Intent.Modules.AngularJs.csproj", "{F1C703CB-F808-4C87-9961-57DDA14354A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -337,6 +339,10 @@ Global
 		{56475E35-0CC7-4D75-937C-FF46C073BB66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56475E35-0CC7-4D75-937C-FF46C073BB66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56475E35-0CC7-4D75-937C-FF46C073BB66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C703CB-F808-4C87-9961-57DDA14354A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C703CB-F808-4C87-9961-57DDA14354A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C703CB-F808-4C87-9961-57DDA14354A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C703CB-F808-4C87-9961-57DDA14354A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -396,5 +402,6 @@ Global
 		{B06D6952-6A48-4B3F-B507-F1747D6FBB2E} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 		{ED404A63-FC25-4C42-AB4C-619815D8A6EB} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 		{56475E35-0CC7-4D75-937C-FF46C073BB66} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
+		{F1C703CB-F808-4C87-9961-57DDA14354A4} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 	EndGlobalSection
 EndGlobal
