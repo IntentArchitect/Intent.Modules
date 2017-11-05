@@ -116,40 +116,24 @@ namespace Intent.Modules.AngularJs.Templates.State
         static $inject = [];
         constructor() { 
         }
-
     }
 
     angular.module(""App"").service(""");
             
-            #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 43 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\", ");
             
-            #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 43 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(");\r\n}");
             return this.GenerationEnvironment.ToString();
-        }
-        private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;
-        /// <summary>
-        /// The current host for the text templating engine
-        /// </summary>
-        public virtual global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost Host
-        {
-            get
-            {
-                return this.hostValue;
-            }
-            set
-            {
-                this.hostValue = value;
-            }
         }
     }
     

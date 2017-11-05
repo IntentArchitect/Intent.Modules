@@ -86,7 +86,7 @@ namespace <#= Namespace #>
 
                     // For example, new System.IO.FileSystemWatcher("invalid path", filterCriteria);
                 #>
-                    throw new SerializableException(e.Message, e.StackTrace);
+                    throw new SerializableException(e);
                 }
             }, TaskCreationOptions.LongRunning);
         }

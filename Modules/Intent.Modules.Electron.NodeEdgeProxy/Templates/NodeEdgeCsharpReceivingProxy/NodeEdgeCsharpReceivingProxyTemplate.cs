@@ -191,8 +191,8 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
             
             #line default
             #line hidden
-            this.Write("                    throw new SerializableException(e.Message, e.StackTrace);\r\n  " +
-                    "              }\r\n            }, TaskCreationOptions.LongRunning);\r\n        }\r\n");
+            this.Write("                    throw new SerializableException(e);\r\n                }\r\n     " +
+                    "       }, TaskCreationOptions.LongRunning);\r\n        }\r\n");
             
             #line 92 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
 
