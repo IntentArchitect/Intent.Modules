@@ -1,21 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.CommonTypes</id>
-  <version>1.0.0</version>
+  <version>1.2.1</version>
   <summary>Common Types for Modelling.</summary>
   <description>Common data types for modelling.</description>
   <authors>Intent Software</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Types</tags>
+  <factoryExtensions>
+    <factoryExtension id="Intent.CommonTypes.TypeResolvers">
+    </factoryExtension>
+  </factoryExtensions>
+  <dependencies>
+    <dependency id="Intent.Common" version="1.2.1"/>
+  </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
 <!--    <file src="bin\$configuration$\Intent.Modules.Common.dll" inspect="false"/>-->
   </files>
-  <factoryExtensions>
-    <factoryExtension id="Intent.CommonTypes.TypeResolvers">
-    </factoryExtension>
-  </factoryExtensions>
   <metadata>
     <install target="Domain" src="MetaData\Domain"/>
     <install target="DataContracts" src="MetaData\DataContracts"/>

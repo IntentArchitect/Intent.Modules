@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AngularJs.Auth.ImplicitAuth</id>
-  <version>1.0.1</version>
+  <version>1.2.1</version>
   <summary>AngularJs module for implicit token authentication with silent renewal</summary>
   <description>AngularJs module for implicit token authentication with silent renewal</description>
   <authors>Intent Software</authors>
@@ -37,7 +37,9 @@
     </template>
   </templates>
   <decorators />
-  <dependencies />
+  <dependencies>
+    <dependency id="Intent.Common" version="1.2.1"/>
+  </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>

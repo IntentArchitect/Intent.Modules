@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Mapping.EntityToDto.Owin</id>
-  <version>1.0.1</version>
+  <version>1.2.1</version>
   <summary>Owin configuration setup for Intent.Mapping.EntityToDto package.</summary>
   <description>Owin configuration setup for Intent.Mapping.EntityToDto package.</description>
   <authors>Intent Software</authors>
@@ -9,7 +9,8 @@
     <decorator id="Intent.Mapping.EntityToDto.Owin.ConfigurationDecorator"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Mapping.EntityToDto" version="1.0"/>
+    <dependency id="Intent.Common" version="1.2.1"/>
+    <dependency id="Intent.Mapping.EntityToDto" version="1.2.1"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

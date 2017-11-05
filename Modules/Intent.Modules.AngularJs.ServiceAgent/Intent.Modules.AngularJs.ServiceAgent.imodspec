@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AngularJs.ServiceAgent</id>
-  <version>1.0.5</version>
+  <version>1.2.1</version>
   <summary>(DEPRECATED) Typescript DTO and Proxy patterns for AngularJS.</summary>
   <description>DTO and Proxy patterns for AngularJS. (DEPRECATED) Use Intent.Packages.Typescript.ServiceAgent.AngularJs and Intent.Packages.Typescript.ServiceAgent.Contracts instead.</description>
   <authors>Intent Software</authors>
@@ -17,8 +17,9 @@
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Bower" version="1.0"/>
-    <dependency id="Intent.Typescript.Config" version="1.0"/>
+    <dependency id="Intent.Bower" version="1.2.1"/>
+    <dependency id="Intent.Common" version="1.2.1"/>
+    <dependency id="Intent.Typescript.Config" version="1.2.1"/>
   </dependencies>
   <files>
      <file src="bin\$configuration$\$id$.dll"/>
