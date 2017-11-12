@@ -16,5 +16,9 @@
       <name>Type</name>
       <type>string</type>
     </property>
+    <property id="9805D4BE-0962-428C-8CAF-E305A30833B4">
+      <name>Namespace</name>
+      <type>string</type>
+    </property>
   </properties>
 </stereotypeDefinition>
