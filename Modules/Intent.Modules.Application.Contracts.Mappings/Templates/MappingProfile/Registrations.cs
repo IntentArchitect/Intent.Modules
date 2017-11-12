@@ -10,7 +10,7 @@ using System.Linq;
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
     [Description("Intent Applications Contract Mapping Profile Template")]
-    public class Registrations : ListModelTemplateRegistrationBase<DTOModel>
+    public class Registrations : ListModelTemplateRegistrationBase<IDTOModel>
     {
         private IMetaDataManager _metaDataManager;
 
@@ -30,14 +30,14 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             }
         }
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<DTOModel> models)
+        public override ITemplate CreateTemplateInstance(IProject project, IList<IDTOModel> models)
         {
             return new MappingProfileTemplate(project, models);
         }
 
-        public override IList<DTOModel> GetModels(IApplication application)
+        public override IList<IDTOModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetMetaData<Intent.MetaModel.DTO.DTOModel>(new MetaDataType("DTO")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return _metaDataManager.GetDTOModels(application).ToList();
         }
     }
 }

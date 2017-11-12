@@ -8,13 +8,13 @@ using System;
 
 namespace Intent.Modules.EF.Templates.EFMapping
 {
-    partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<Class>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, IPostTemplateCreation
+    partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, IPostTemplateCreation
     {
         public const string Identifier = "Intent.EF.EFMapping";
         private IEnumerable<IEFMappingTemplateDecorator> _decorators;
         private ITemplateDependancy _domainTemplateDependancy;
 
-        public EFMappingTemplate(Class model, IProject project)
+        public EFMappingTemplate(IClass model, IProject project)
             : base (Identifier, project, model)
         {
         }
@@ -22,7 +22,7 @@ namespace Intent.Modules.EF.Templates.EFMapping
         public void Created()
         {
             var fileMetaData = GetMetaData();
-            _domainTemplateDependancy = TemplateDependancy.OnModel<Class>(fileMetaData.CustomMetaData["DomainTemplateDependancyId"], (to) => to.Id == Model.Id);
+            _domainTemplateDependancy = TemplateDependancy.OnModel<IClass>(fileMetaData.CustomMetaData["DomainTemplateDependancyId"], (to) => to.Id == Model.Id);
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()

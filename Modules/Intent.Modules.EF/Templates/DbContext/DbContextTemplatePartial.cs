@@ -17,7 +17,7 @@ namespace Intent.Modules.EF.Templates.DbContext
 
         private readonly IApplicationEventDispatcher _eventDispatcher;
 
-        public DbContextTemplate(IEnumerable<Class> models, IProject project, IApplicationEventDispatcher eventDispatcher)
+        public DbContextTemplate(IEnumerable<IClass> models, IProject project, IApplicationEventDispatcher eventDispatcher)
             : base (Identifier, project, models)
         {
             _eventDispatcher = eventDispatcher;

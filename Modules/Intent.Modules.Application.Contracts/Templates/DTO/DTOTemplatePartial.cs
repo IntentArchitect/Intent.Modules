@@ -10,12 +10,12 @@ using System.Linq;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
-    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<DTOModel>, ITemplate, IHasAssemblyDependencies
+    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasAssemblyDependencies
     {
         public const string Identifier = "Intent.Application.Contracts.DTO";
         private readonly DecoratorDispatcher<IDTOAttributeDecorator> _decoratorDispatcher;
 
-        public DTOTemplate(IProject project, DTOModel model, string identifier = Identifier)
+        public DTOTemplate(IProject project, IDTOModel model, string identifier = Identifier)
             : base(identifier, project, model)
         {
             _decoratorDispatcher = new DecoratorDispatcher<IDTOAttributeDecorator>(project.ResolveDecorators<IDTOAttributeDecorator>);

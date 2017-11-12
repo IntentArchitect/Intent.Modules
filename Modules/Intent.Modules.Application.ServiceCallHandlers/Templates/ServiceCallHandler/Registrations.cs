@@ -29,7 +29,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
 
         public void DoRegistration(Action<string, Func<IProject, ITemplate>> register, IApplication applicationManager)
         {
-            var serviceModels = _metaDataManager.GetMetaData<IServiceModel>(new MetaDataType("Service")).Where(x => x.Application.Name == applicationManager.ApplicationName).ToList();
+            var serviceModels = _metaDataManager.GetServiceModels(applicationManager);
             foreach (var serviceModel in serviceModels)
             {
                 foreach (var operationModel in serviceModel.Operations)

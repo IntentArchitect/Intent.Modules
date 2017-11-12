@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Intent.Modules.EF.Templates.EFMapping
 {
     [Description("Intent EF Mapping Template")]
-    public class Registrations : ModelTemplateRegistrationBase<Class>
+    public class Registrations : ModelTemplateRegistrationBase<IClass>
     {
         private IMetaDataManager _metaDataManager;
 
@@ -30,14 +30,14 @@ namespace Intent.Modules.EF.Templates.EFMapping
             }
         }
 
-        public override ITemplate CreateTemplateInstance(IProject project, Class model)
+        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
             return new EFMappingTemplate(model, project);
         }
 
-        public override IEnumerable<Class> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
+        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
         {
-            return _metaDataManager.GetMetaData<Class>(new MetaDataType("DomainEntity")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return _metaDataManager.GetDomainModels(application).ToList();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Intent.Modules.EF.Templates.EFMapping
     
     #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EF\Templates\EFMapping\EFMappingTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<Class>
+    public partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<IClass>
     {
 #line hidden
         /// <summary>

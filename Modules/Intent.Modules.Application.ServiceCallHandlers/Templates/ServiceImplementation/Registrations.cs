@@ -28,7 +28,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetMetaData<IServiceModel>(new MetaDataType("Service")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return _metaDataManager.GetServiceModels(application);
         }
     }
 }

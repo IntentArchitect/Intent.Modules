@@ -24,7 +24,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
     
     #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<DTOModel>
+    public partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>
     {
 #line hidden
         /// <summary>

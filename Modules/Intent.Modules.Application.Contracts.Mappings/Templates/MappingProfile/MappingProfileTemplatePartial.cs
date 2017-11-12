@@ -9,11 +9,11 @@ using System.Linq;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
-    partial class MappingProfileTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IList<DTOModel>>, ITemplate, IHasNugetDependencies
+    partial class MappingProfileTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, ITemplate, IHasNugetDependencies
     {
         public const string Identifier = "Intent.Application.Contracts.Mapping.Profile";
 
-        public MappingProfileTemplate(IProject project, IList<DTOModel> model)
+        public MappingProfileTemplate(IProject project, IList<IDTOModel> model)
             : base(Identifier, project, model)
         {
             ContractTemplateDependancyId = "Intent.Application.Contracts.DTO";
@@ -33,9 +33,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             return base.GetNugetDependencies().Concat(new INugetPackageInfo[] { NugetPackages.AutoMapper });
         }
 
-        public string GetContractType(DTOModel model)
+        public string GetContractType(IDTOModel model)
         {
-            var templateDependancy = TemplateDependancy.OnModel<DTOModel>(ContractTemplateDependancyId, (to) => to.Id == model.Id);
+            var templateDependancy = TemplateDependancy.OnModel<IDTOModel>(ContractTemplateDependancyId, (to) => to.Id == model.Id);
             var templateOutput = this.Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {
@@ -44,7 +44,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             return templateOutput.FullTypeName();
         }
 
-        public string GetDomainType(DTOModel model)
+        public string GetDomainType(IDTOModel model)
         {
             var templateDependancy = TemplateDependancy.OnModel<Class>(DomainTemplateDependancyId, (to) => to.ClassId == model.MappedClassId);
             var templateOutput = this.Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);

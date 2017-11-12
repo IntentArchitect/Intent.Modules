@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
-    partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<DTOModel>, ITemplate, IRequiresPreProcessing, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation
+    partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IRequiresPreProcessing, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation
     {
         public const string Identifier = "Intent.Application.Contracts.Mapping";
 
@@ -22,7 +22,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         private ITemplateDependancy _domainTemplateDependancy;
         private ITemplateDependancy _contractTemplateDependancy;
 
-        public MappingTemplate(IProject project, DTOModel model)
+        public MappingTemplate(IProject project, IDTOModel model)
             : base(Identifier, project, model)
         {
             

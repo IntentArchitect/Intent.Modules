@@ -11,12 +11,12 @@ using System.Linq;
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
-    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
+    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
     {
         private readonly string _dtoTemplateId;
         public const string Identifier = "Intent.Application.Contracts.ServiceContract";
 
-        public ServiceContractTemplate(IProject project, ServiceModel model, string identifier = Identifier, string dtoTemplateId = DTOTemplate.Identifier)
+        public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = Identifier, string dtoTemplateId = DTOTemplate.Identifier)
             : base(identifier, project, model)
         {
             _dtoTemplateId = dtoTemplateId;

@@ -7,12 +7,12 @@ namespace Intent.Modules.Application.Contracts.Decorators
     {
         public const string Id = "Intent.Application.Contracts.DataContractDecorator";
 
-        public string ClasssAttributes(DTOModel dto)
+        public string ClasssAttributes(IDTOModel dto)
         {
             return "[DataContract]";
         }
 
-        public string PropertyAttributes(DTOModel dto, IDTOField field)
+        public string PropertyAttributes(IDTOModel dto, IDTOField field)
         {
             return "[DataMember]";
         }

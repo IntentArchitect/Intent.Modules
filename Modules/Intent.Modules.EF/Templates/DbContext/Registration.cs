@@ -10,7 +10,7 @@ using System.Linq;
 namespace Intent.Modules.EF.Templates.DbContext
 {
     [Description("Intent EF  DB Context")]
-    public class Registrations : ListModelTemplateRegistrationBase<Class>
+    public class Registrations : ListModelTemplateRegistrationBase<IClass>
     {
         private IMetaDataManager _metaDataManager;
 
@@ -27,14 +27,14 @@ namespace Intent.Modules.EF.Templates.DbContext
             }
         }
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<Class> models)
+        public override ITemplate CreateTemplateInstance(IProject project, IList<IClass> models)
         {
             return new DbContextTemplate(models, project, project.Application.EventDispatcher);
         }
 
-        public override IList<Class> GetModels(SoftwareFactory.Engine.IApplication application)
+        public override IList<IClass> GetModels(SoftwareFactory.Engine.IApplication application)
         {
-            return _metaDataManager.GetMetaData<Class>(new MetaDataType("DomainEntity")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return _metaDataManager.GetDomainModels(application).ToList();
         }
     }
 }

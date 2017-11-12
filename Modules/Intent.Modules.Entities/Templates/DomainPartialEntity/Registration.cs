@@ -10,7 +10,7 @@ using System.Linq;
 namespace Intent.Modules.Entities.Templates.DomainPartialEntity
 {
     [Description("Intent Entity Partial Template")]
-    public class Registration : ModelTemplateRegistrationBase<Class>
+    public class Registration : ModelTemplateRegistrationBase<IClass>
     {
         private IMetaDataManager _metaDataManager;
 
@@ -27,14 +27,14 @@ namespace Intent.Modules.Entities.Templates.DomainPartialEntity
             }
         }
 
-        public override ITemplate CreateTemplateInstance(IProject project, Class model)
+        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
             return new DomainPartialEntityTemplate(model, project);
         }
 
-        public override IEnumerable<Class> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
+        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
         {
-            return _metaDataManager.GetMetaData<Class>(new MetaDataType("DomainEntity")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return _metaDataManager.GetDomainModels(application);
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Linq;
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
     [Description("Intent Applications Service Contracts")]
-    public class Registrations : ModelTemplateRegistrationBase<ServiceModel>
+    public class Registrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
@@ -21,14 +21,14 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         public override string TemplateId => ServiceContractTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
         {
             return new ServiceContractTemplate(project, model);
         }
 
-        public override IEnumerable<ServiceModel> GetModels(IApplication application)
+        public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetMetaData<ServiceModel>(new MetaDataType("Service")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return _metaDataManager.GetServiceModels(application);
         }
     }
 }

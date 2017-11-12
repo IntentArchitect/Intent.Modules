@@ -24,7 +24,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
     
     #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Application.Contracts\Templates\ServiceContract\ServiceContractTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class ServiceContractTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<ServiceModel>
+    public partial class ServiceContractTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IServiceModel>
     {
 #line hidden
         /// <summary>
