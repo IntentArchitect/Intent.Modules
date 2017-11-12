@@ -6,10 +6,21 @@
     href: GettingStarted/QuickStart.md
   - name: Make Your Own Module
     href: GettingStarted/MakeYourOwnModule.md
+  - name: Factory Extensions
+    href: GettingStarted/FactoryExtensions.md
   - name: FAQ
-    href: GettingStarted/FAQ.md
+    href: GettingStarted/FAQ.md        
 - name: Core Modules
+  homepage: CoreModules.md
   items:
+  - name: Intent Common
+    href: ../modules/IntentCommon/Overview.md
+  - name: Intent Common Types
+    href: ../modules/IntentCommonTypes/Overview.md
+  - name: Intent Nuget Installer
+    href: ../modules/IntentNugetInstaller/Overview.md
+  - name: Intent Visual Studio Projects
+    href: ../modules/IntentVisualStudioProjects/Overview.md
   - name: Roslyn Weaver 
     href: ../modules/RoslynWeaver/  
 - name: User Manual

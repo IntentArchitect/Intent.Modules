@@ -1,22 +1,18 @@
-- name: Modules
-  items:
-  - name: Roslyn Weaver
-    items:
-    - name: Overview
-      href: Overview.md
-    - name: Terminology
-      href: Terminology.md      
-    - name: How it works
-      href: HowItWorks.md      
-    - name: Roslyn Weaver for Template Designers
-      href: HowToImplement.md     
-    - name: Roslyn Weaver for Template Consumers
-      href: HowToWorkWith.md         
-    - name: Roslyn Weaver Attributes
-      href: Attributes.md     
-    - name: Code Migrations
-      href: CodeMigrations.md     
-    - name: Gotchas
-      href: Gotchas.md     
-    - name: Appendix
-      href: Appendix.md     
+- name: Overview
+  href: Overview.md
+- name: Terminology
+  href: Terminology.md      
+- name: How it works
+  href: HowItWorks.md      
+- name: Roslyn Weaver for Template Designers
+  href: HowToImplement.md     
+- name: Roslyn Weaver for Template Consumers
+  href: HowToWorkWith.md         
+- name: Roslyn Weaver Attributes
+  href: Attributes.md     
+- name: Code Migrations
+  href: CodeMigrations.md     
+- name: Gotchas
+  href: Gotchas.md     
+- name: Appendix
+  href: Appendix.md     

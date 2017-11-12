@@ -9,9 +9,9 @@ Modules can include any of the following plugins:-
 |Plugin Type|Description|
 |-|-|
 |Template Registrations|Standard code generation plugins namely templates and decorators.|
-|Application Processor|Allow for the execution of custom code within the execution process at predefined execution steps. |
+|Factory Extensions|Allow for the execution of custom code within the software factory. |
 |Meta Data Provider|Load your own Meta Data to further enrich the code generation process. |
-|Output Transformer|Intercept and optionally manipulate the generated code during the execution process. |
+
 
 
 ![Image of the Modules Screen](../../images/UserManual/ApplicationModules.png)

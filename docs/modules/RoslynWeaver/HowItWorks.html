@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -78,7 +78,7 @@
 <h1 id="roslyn-weaver">Roslyn Weaver</h1>
 
 <h2 id="how-it-works">How it works</h2>
-<p>The Roslyn Weaver is an Intent Architect extension, more specifically an Output Transformer. The Roslyn Weaver works by modifying the standard Intent Architect process.</p>
+<p>The Roslyn Weaver is an Intent Architect extension, more specifically a Factory Extension. The Roslyn Weaver works by modifying the standard Intent Architect process.</p>
 <p><img src="Images/SimplifiedIAProcess.png" alt="Simplified Intent Architect Process">
 <em>Simplified Intent Architect execution process</em></p>
 <p>Roslyn weavers intercepts the template output, finds the existing solution file ( if present) and weaves them together, typically preserving the <em>non-generated</em> code and merging in the generated template output.</p>
@@ -96,9 +96,6 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/IntentSoftware/IntentArchitect/blob/master/docsProject/modules/RoslynWeaver/HowItWorks.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

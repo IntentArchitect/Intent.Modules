@@ -2,7 +2,7 @@
 
 ## How it works
 
-The Roslyn Weaver is an Intent Architect extension, more specifically an Output Transformer. The Roslyn Weaver works by modifying the standard Intent Architect process.
+The Roslyn Weaver is an Intent Architect extension, more specifically a Factory Extension. The Roslyn Weaver works by modifying the standard Intent Architect process.
 
 ![Simplified Intent Architect Process](images/SimplifiedIAProcess.png)
 *Simplified Intent Architect execution process*

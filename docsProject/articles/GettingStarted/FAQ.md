@@ -33,6 +33,10 @@ These Modules are written outside of Intent Architect as plugins, and similar Mo
 
 There is no requirement to use T4 templates. We typically use T4 templates ourselves and our SDK supplies T4 base classes templates, but you can use  any other technology you like, you simply need to implement the *ITemplate* interface.
 
+## What about Version Control / Source Control Management ?
+
+Intent Architect is designed with this in mind, everything you interact with in Intent Architect is persisted into human readable, version control friendly, text based files. These files are stored on you hard drive, in the locations you specified. These folders can be added to your favourite source control management system. Ideally we would recommend including these folders with your solution. 
+
 ## Isn't code generation fundamentally evil?
 
 We must admit we were initially very surprised to find there are people who have negative views on code generation, we have been exposed to various code generation techniques over the past 15 years and have generally had positive experiences. Out view is that it a tool, and just like any tool you need to know where it is appropriate to use and how to get the best use out of the tool. 
