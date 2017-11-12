@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Intent.SoftwareFactory\packages\Intent.SoftwareFactory.MetaModel.1.2.3-beta\lib\net45\Intent.MetaModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.2.1-beta\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
@@ -54,6 +58,7 @@
     <Compile Include="Helpers\ExpressionParser.cs" />
     <Compile Include="Helpers\TypeHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
+    <Compile Include="MetaDataExtensions.cs" />
     <Compile Include="MetaData\CommonExtensions.cs" />
     <Compile Include="Plugins\FactoryExtensionBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

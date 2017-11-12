@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.MetaModel.Common;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 
@@ -11,9 +6,9 @@ namespace Intent.SoftwareFactory.Templates
 {
     public class ClassTypeSource : IClassTypeSource
     {
-        private Func<ITypeReference, string> _execute;
+        private Func<MetaModel.Common.ITypeReference, string> _execute;
 
-        internal ClassTypeSource(Func<ITypeReference, string> execute)
+        internal ClassTypeSource(Func<MetaModel.Common.ITypeReference, string> execute)
         {
             _execute = execute;
         }
@@ -32,7 +27,7 @@ namespace Intent.SoftwareFactory.Templates
                 )?.FullTypeName());
         }
 
-        public string GetClassType(ITypeReference typeInfo)
+        public string GetClassType(MetaModel.Common.ITypeReference typeInfo)
         {
             return _execute(typeInfo);
         }
