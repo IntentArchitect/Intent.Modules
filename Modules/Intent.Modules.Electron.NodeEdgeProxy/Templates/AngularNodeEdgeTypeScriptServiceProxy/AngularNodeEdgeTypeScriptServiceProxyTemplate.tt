@@ -59,7 +59,7 @@ namespace <#= Namespace #> {
                     })
                 };
 
-                return this.$q((resolve: (data: <# GetReturnType(o); #>) => void, reject: (reason: any) => void) => {
+                return this.$q((resolve: (data: <#= GetReturnType(o) #>) => void, reject: (reason: any) => void) => {
                     this.edgeProxy(data, (error, result: string) => {
                         if (error) {
                             reject(error);

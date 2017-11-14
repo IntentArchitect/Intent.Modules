@@ -160,7 +160,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
                     "olve: (data: ");
             
             #line 62 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
- GetReturnType(o); 
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetReturnType(o)));
             
             #line default
             #line hidden
