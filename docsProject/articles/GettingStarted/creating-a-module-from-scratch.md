@@ -1,12 +1,20 @@
-# Make Your Own Module - Complete Example - ASP.NET Web API Controllers 
+# Creating a Module From Scratch
+
+This document is a detailed walkthrough of creating an [Intent Architect](https://intentarchitect.com/) module from scratch.
+
+## I would prefer to skip all this reading and just see the final code
+
+If you would prefer to quickly jump straight into a working example, we have a super quick guide [here](downloadable-example-module.md) on using a downloadable example module.
+
+## This Tutorial
 
 This tutorial will walk you through creating an Intent Architect module which will generate ASP.NET WebApi controllers based on the `Services` visual DSL in Intent Architect. 
 
-Intent Architect is designed to work on both new and existing projects. In this tutorial we will have the template add additional WebApi Controllers to an existing application.
+Intent Architect is designed to work equally well on both new and existing projects. In this tutorial we will make a Module which adds additional WebApi Controllers to an existing application.
 
 ## Make a new Visual Studio Solution and Project
 
-We will create a WebApi project using Visual Studio's scaffolding feature. 
+Create a WebApi project using Visual Studio's scaffolding feature:
 
 - Open Visual Studio
 - Create New Project
@@ -16,15 +24,15 @@ We will create a WebApi project using Visual Studio's scaffolding feature.
     - Solution name: `MyApplication`
     ![](../../images/MakeYourOwnModule/image1.png)
 - Press `OK`
-- Use `Web API` template
+- Use the `Web API` template
 ![](../../images/MakeYourOwnModule/image2.png)
-- Leave default boxes checked (just `MVC` and `Web API`)
+- Leave the default boxes checked (just `MVC` and `Web API`)
 - (Optional) Press the `Change Authentication` button and choose `No Authentication` if you don't want to worry about authentication right now.
 - Press `OK`
 
 ## Make a new Intent Architect Solution and Application
 
-In Intent Architect, we will make a new solution in the same folder as our Visual Studio solution and project above.
+In Intent Architect, we will make a new solution in the same folder as our Visual Studio solution and project above:
 
 - Open Intent Architect
 - Make a new Solution:
@@ -49,9 +57,9 @@ In Intent Architect, we will make a new solution in the same folder as our Visua
 
 ## Creating the Module
 
-In a new instance of Visual Studio we are going to make a new project from which our Intent Architect Module will be packaged.
+In a new instance of Visual Studio, we are going to make a new project from which our Intent Architect Module will be packaged:
 
-- Open a new instance of Visual Studio
+- Open a new instance of Visual Studio.
 - Under `Visual C#`, `Windows`, choose `Class Library`.
     - Name: `Module.Example.WebApi`
     - Location: `C:\Dev\MySolution`
@@ -60,11 +68,11 @@ In a new instance of Visual Studio we are going to make a new project from which
 - Add the following Nuget packages:
     - `Intent.IntentArchitectPackager`
     - `Intent.SoftwareFactory.MetaModel` (which will install `Intent.SoftwareFactory.SDK` as a dependency)
-- Add following new items to the project (right-click `Module.Example.WebApi`, `Add`, `New Item`):
+- Add the following new items to the project (right-click `Module.Example.WebApi`, click `Add`, click `New Item`):
     
     - Module Specification File:
     
-        A module specification, or rather, `.imodspec` files are very similar to NuGet `.nuspec` files and are used by the module packager and Intent Architect to understand the contents of a module, including what templates, decorators and settings it has available.
+        Module specifications, or rather `.imodspec` files, are very similar to NuGet `.nuspec` files and are used by the Intent Architect's module packager and Intent Architect itself to understand the contents of a module, including what templates, decorators and settings it offers.
 
         - Visual Studio Project item type: `XML File`
         - Name: `Module.Example.WebApi.imodpec`
@@ -86,9 +94,15 @@ In a new instance of Visual Studio we are going to make a new project from which
 
     - Template File
 
-        A convenient and powerful templating engine for the Intent Architect's Software Factory is T4. Visual Studio has support and tooling for T4 out the box and it provides a convenient way to mix code and text together through `.tt` files. By using a `Runtime Text Template`, normal C# code is created each time the `.tt` file is saved.
+        While Intent Architect does not require any particular kind of templating technology, we recommend using [Microsoft's T4 Text Templating](https://docs.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates) with `.tt` files due to its convenience and rich feature set. For those familiar with `.aspx` files, T4 syntax is quite similar.
+
+        With Intent Architect, you can get by without knowing very much about T4, but having at least a basic understanding of its [syntax](https://docs.microsoft.com/en-us/visualstudio/modeling/writing-a-t4-text-template) is highly recommended.
+
+        While Visual Studio is able to compile T4 templates out the box, we recommend you install a Visual Studio extension, such as [this free one](http://t4-editor.tangible-engineering.com/Download_T4Editor_Plus_ModelingTools.html), which provides additional Visual Studio IDE features, such as T4 syntax highlighting.
         
-        By making the `.tt` inherit from an Intent Architect base templating class, Intent Architect's Software Factory automatically captures the template output during the Software Factory run.
+        With Intent Architect, one needs to use T4's `Runtime Text Template` which creates a normal C# file each time the `.tt` file is saved.
+        
+        We also change the `.tt` file to inherit from an Intent Architect base templating class which allows Intent Architect's Software Factory to automatically capture the template output during the Software Factory run.
 
         - Visual Studio Project item type: `Runtime Text Template` (search in top right, or can be found under `Visual C# Items`, `General`)
         - Name: `WebApiControllerTemplate.tt`
@@ -108,9 +122,13 @@ In a new instance of Visual Studio we are going to make a new project from which
             ```
     - Template's Partal File:
         
-        T4 `Runtime Text Template` files re-generate a `.cs` file with a class inside it each time the `.tt` file is saved. These generated classes are `partial` which allows us to make other corresponding `partial` classes.
+        While `.tt` files are ideal for mixing code with text, we have found that certain tasks, like encapsulating template logic in methods, is a very clunky experience. 
 
-        By creating a partial class which is just another `.cs` file to Visual Studio, unlike `.tt` files, full Visual Studio IntelliSense and other C# features available to them. This makes partial classes the ideal place to put more complicated backing logic for our templates, such as constructors, utility methods, etc.
+        Fortunately, T4 `Runtime Text Template` files actually generate a `.cs` file with a class inside it each time the `.tt` file is saved. These generated classes are `partial` which allows us to make our own corresponding `partial` class.
+        
+        These partial files which we can create are just completely normal `.cs` files, making them an ideal place to put more complicated template logic, such as constructors, utility methods, etc.
+        
+        You can read more about partial classes [here](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-classes).
 
         - Visual Studio Project item type: `Class`
         - Name: `WebApiControllerTemplatePartial.cs`
@@ -156,7 +174,7 @@ In a new instance of Visual Studio we are going to make a new project from which
             ```
     - Registration file:
 
-        Intent Architect's Software Factory loads module assemblies and using reflection locates available templates by finding classes which implement `ITemplateRegistration` and then initializes the templates defined inside.
+        Intent Architect's Software Factory loads the .NET assemblies of all installed modules, then using reflection locates available templates by finding classes which implement `ITemplateRegistration` and then finally initializes the template defined inside.
 
         - Visual Studio Project item type: `Class`
         - Name: `WebApiControllerTemplateRegistration.cs`
@@ -202,16 +220,18 @@ Build the Visual Studio Solution project and in Visual Studio's build output you
 Successfully created package Module.Example.WebApi.0.0.1.imod
 ```
 
-When you added the `Intent.IntentArchitectPackager` NuGet package to the project, it injected a task into the build action of the project to package up the module for you. This module file is placed in your `$(SolutionFolder)\Intent.Modules` folder.
+### How did it know to do that?
+
+When you added the `Intent.IntentArchitectPackager` NuGet package to the project, it injected a task into the build action of the project to package up the module for you. The created `.mod` file is placed in your `$(SolutionFolder)\Intent.Modules` folder.
 
 ## Add the Module to your Intent Architect Application and Start Using It
 
 This example module is now ready to be used within Intent Architect.
 
 - Go to `Modules`:
-    - Add your own repository
+    - Add your own repository:
 
-        By adding 'File System' based repository to our application, Intent Architect will be able to search for and install modules from your file system, much like it does so through the official Intent Architect repository.
+        By adding a 'File System' based repository to our application, Intent Architect will be able to search for and install modules from your file system, much like it does so through the official Intent Architect repository.
 
         - Press the cog icon near the top right
         - Press `Add New` 
@@ -224,28 +244,35 @@ This example module is now ready to be used within Intent Architect.
 - Go to `Configuration`
     - Drag the `Distribution.WebApi` role onto your `MyApplication.WebApi` project, note how its icon changes to be green and checked.
 - Go to `Services`
-    - Make a few services
+    - Make at least one service, ideally with an operation.
 
 
 Now run the software factory and observe the changes generated. You can see that for each service you defined in Intent Architect, it has created a new controller in your Visual Studio project. Right now though these controllers have no real content, we're still going to have to add some more content to them.
 
-## Force re-install of rebuilt module
+## Automating the re-installation of your module each time you build it in Visual Studio
 
-Once Intent Architect has downloaded and installed a module, it won't try re-download it again. This creates a problem in that whenever you make a change and rebuild your module while devloping it, you won't see you changes apply unless you uninstall and re-install the module in Intent Architect.
+Before we move onto adding some useful output to our template, we are going to make our life a little easier.
 
-Having to re-install your module every time gets tedious very fast, fortunately though there is a way to automate this re-install during the build process of your module. In Visual Studio, right-click the `Module.Example.WebApi` project and select `Properties`. Select the `Build Events` section and in the `Post-build event command line` box put the following:
+Generally, Intent Architect will not re-copy or download the same version of a module except when you use the `Reinstall` button on the `Modules` screen. This can become tedious during development if you're changing and rebuilding your module often.
 
-```
-if exist "C:\Dev\MySolution\Intent.Modules\Module.Example.WebApi.0.0.1" rmdir "C:\Dev\MySolution\Intent.Modules\Module.Example.WebApi.0.0.1" /s /q
-```
+However, Intent Architect will restore *missing* modules, this means we can force a re-copying a module by deleting the copied/downloaded instance of it each time you rebuild the module in Visual Studio.
 
-What this does is delete the module from your Intent Architect's `Intent.Modules` folder each time your module builds, then later when the Software Factory runs, it will see the module is missing and automatically re-download the missing package. You will see in the log during the software factory run that the module is being restored.
+In Visual Studio:
+- Right-click the `Module.Example.WebApi` project.
+- Select `Properties`.
+- Select the `Build Events` section.
+- In the `Post-build event command line` box put the following:
+    ```
+    if exist "C:\Dev\MySolution\Intent.Modules\Module.Example.WebApi.0.0.1" rmdir "C:\Dev\MySolution\Intent.Modules\Module.Example.WebApi.0.0.1" /s /q
+    ```
+
+So we now delete the module from your Intent Architect's `Intent.Modules` folder each time your module builds, then when the Software Factory next runs, it will see the module is missing and automatically re-copy/re-download it. You will see in the Software Factory's log that the module was restored.
 
 Now we can move back to improving our template.
 
 ## Have the template generate a class in a namespace
 
-Let's make our template generate class names and their namespaces.
+Next we'll make our template generate class names and their namespaces.
 
 Change the content of the `WebApiControllerTemplate.tt` file to the following: 
 
@@ -302,7 +329,7 @@ Build your module, run the software factory and observe that the generated class
 
 ## Add operations to the generated class
 
-If you haven't done so already, in Intent Architect ensure you have a service with at least one operation and the operation has at least one parameter and a return type.
+If you haven't done so already, in Intent Architect ensure you have a service with at least one operation and that the operation has at least one parameter and a return type.
 
 Change the content of the `WebApiControllerTemplatePartial.cs` file to the following: 
 
@@ -362,7 +389,7 @@ namespace Module.Example.WebApi
 }
 ```
 
-Change the content of the `WebApiControllerTemplate.tt` file to the following: 
+Also change the content of the `WebApiControllerTemplate.tt` file to the following: 
 ```csharp
 <#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>"#>
 <#@ assembly name="System.Core" #>
@@ -397,3 +424,9 @@ namespace <#= Namespace #>
 }
 ```
 Build your module, run the software factory and observe that the generated classes now have operations generated in them.
+
+## Conclusion
+
+We now have a module containing a template which generates basic ASP.NET WebApi controller classes.
+
+It will make a file and class for each service you have defined with Intent Architect's `Services` DSL. For each file and class it generates, it will also make a method for each operation defined on each *service* from Intent Architect.

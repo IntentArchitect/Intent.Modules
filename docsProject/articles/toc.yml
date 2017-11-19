@@ -5,7 +5,11 @@
   - name: Quick Start
     href: GettingStarted/QuickStart.md
   - name: Make Your Own Module
-    href: GettingStarted/MakeYourOwnModule.md
+    items:
+    - name: Creating a Module From Scratch
+      href: GettingStarted/creating-a-module-from-scratch.md
+    - name: Downloadable Example Module
+      href: GettingStarted/downloadable-example-module.md
   - name: Factory Extensions
     href: GettingStarted/FactoryExtensions.md
   - name: FAQ
