@@ -155,32 +155,34 @@
 <li>Name: <code>Module.Example.WebApi.imodpec</code></li>
 <li>Content:
   <code>xml
-  &lt;?xml version=`1.0` encoding=`utf-8`?&gt;
+  &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
   &lt;package&gt;
       &lt;id&gt;$id$&lt;/id&gt;
       &lt;version&gt;0.0.1&lt;/version&gt;
+      &lt;summary&gt;Example module implementing a basic WebApi Controller&lt;/summary&gt;
+      &lt;description&gt;Example module implementing a basic WebApi Controller&lt;/description&gt;
       &lt;templates&gt;
-          &lt;template id=`Module.Example.WebApi.WebApiController`&gt;
+          &lt;template id=&quot;Module.Example.WebApi.WebApiController&quot;&gt;
               &lt;role&gt;Distribution.WebApi&lt;/role&gt;
           &lt;/template&gt;
       &lt;/templates&gt;
   &lt;/package&gt;</code></li>
 </ul>
 </li>
-<li><p>Template</p>
+<li><p>Template File</p>
 <p>  A convenient and powerful templating engine for the Intent Architect&#39;s Software Factory is T4. Visual Studio has support and tooling for T4 out the box and it provides a convenient way to mix code and text together through <code>.tt</code> files. By using a <code>Runtime Text Template</code>, normal C# code is created each time the <code>.tt</code> file is saved.</p>
 <p>  By making the <code>.tt</code> inherit from an Intent Architect base templating class, Intent Architect&#39;s Software Factory automatically captures the template output during the Software Factory run.</p>
 <ul>
 <li>Visual Studio Project item type: <code>Runtime Text Template</code> (search in top right, or can be found under <code>Visual C# Items</code>, <code>General</code>)</li>
 <li>Name: <code>WebApiControllerTemplate.tt</code></li>
 <li><p>Content:</p>
-<pre><code class="lang-csharp">&lt;#@ template language=`C#` inherits=`IntentRoslynProjectItemTemplateBase&lt;IServiceModel&gt;`#&gt;
-&lt;#@ assembly name=`System.Core` #&gt;
-&lt;#@ import namespace=`Intent.MetaModel.Service` #&gt;
-&lt;#@ import namespace=`Intent.SoftwareFactory.Templates` #&gt;
-&lt;#@ import namespace=`System.Linq` #&gt;
-&lt;#@ import namespace=`System.Text` #&gt;
-&lt;#@ import namespace=`System.Collections.Generic` #&gt;
+<pre><code class="lang-csharp">&lt;#@ template language=&quot;C#&quot; inherits=&quot;IntentRoslynProjectItemTemplateBase&lt;IServiceModel&gt;&quot;#&gt;
+&lt;#@ assembly name=&quot;System.Core&quot; #&gt;
+&lt;#@ import namespace=&quot;Intent.MetaModel.Service&quot; #&gt;
+&lt;#@ import namespace=&quot;Intent.SoftwareFactory.Templates&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Text&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Collections.Generic&quot; #&gt;
 using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -217,18 +219,18 @@ namespace Module.Example.WebApi
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, `1.0`));
+            return new RoslynMergeConfig(new TemplateMetaData(Id, &quot;1.0&quot;));
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: Model.Name + `Controller`,
-                fileExtension: `cs`,
-                defaultLocationInProject: @`Controllers`,
-                className: `${Name}Controller`,
-                @namespace: `${Project.Name}.Controllers`);
+                fileName: &quot;${Name}Controller&quot;,
+                fileExtension: &quot;cs&quot;,
+                defaultLocationInProject: @&quot;Controllers&quot;,
+                className: &quot;${Name}Controller&quot;,
+                @namespace: &quot;${Project.Name}.Controllers&quot;);
         }
     }
 }
@@ -268,7 +270,7 @@ namespace Module.Example.WebApi
 
         public override IEnumerable&lt;IServiceModel&gt; GetModels(IApplication application)
         {
-            return _metaDataManager.GetMetaData&lt;IServiceModel&gt;(new MetaDataType(`Service`)).Where(x =&gt; x.Application.Name == application.ApplicationName).ToList();
+            return _metaDataManager.GetMetaData&lt;IServiceModel&gt;(new MetaDataType(&quot;Service&quot;)).Where(x =&gt; x.Application.Name == application.ApplicationName).ToList();
         }
 
         public override string TemplateId =&gt; WebApiControllerTemplate.Identifier;
@@ -324,13 +326,13 @@ namespace Module.Example.WebApi
 <h2 id="have-the-template-generate-a-class-in-a-namespace">Have the template generate a class in a namespace</h2>
 <p>Let&#39;s make our template generate class names and their namespaces.</p>
 <p>Change the content of the <code>WebApiControllerTemplate.tt</code> file to the following: </p>
-<pre><code class="lang-csharp">&lt;#@ template language=`C#` inherits=`IntentRoslynProjectItemTemplateBase&lt;IServiceModel&gt;`#&gt;
-&lt;#@ assembly name=`System.Core` #&gt;
-&lt;#@ import namespace=`Intent.MetaModel.Service` #&gt;
-&lt;#@ import namespace=`Intent.SoftwareFactory.Templates` #&gt;
-&lt;#@ import namespace=`System.Linq` #&gt;
-&lt;#@ import namespace=`System.Text` #&gt;
-&lt;#@ import namespace=`System.Collections.Generic` #&gt;
+<pre><code class="lang-csharp">&lt;#@ template language=&quot;C#&quot; inherits=&quot;IntentRoslynProjectItemTemplateBase&lt;IServiceModel&gt;&quot;#&gt;
+&lt;#@ assembly name=&quot;System.Core&quot; #&gt;
+&lt;#@ import namespace=&quot;Intent.MetaModel.Service&quot; #&gt;
+&lt;#@ import namespace=&quot;Intent.SoftwareFactory.Templates&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Text&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Collections.Generic&quot; #&gt;
 using System;
 using Intent.CodeGen;
 
@@ -345,13 +347,13 @@ namespace &lt;#= Namespace #&gt;
 </code></pre><p>Build your module, run the software factory and observe that it now applies a namespace and class name to your controllers.</p>
 <h2 id="make-the-generated-class-extend-aspnet-webapis-apicontroller-class">Make the generated class extend ASP.NET WebApi&#39;s ApiController class</h2>
 <p>Change the content of the <code>WebApiControllerTemplate.tt</code> file to the following: </p>
-<pre><code class="lang-csharp">&lt;#@ template language=`C#` inherits=`IntentRoslynProjectItemTemplateBase&lt;IServiceModel&gt;`#&gt;
-&lt;#@ assembly name=`System.Core` #&gt;
-&lt;#@ import namespace=`Intent.MetaModel.Service` #&gt;
-&lt;#@ import namespace=`Intent.SoftwareFactory.Templates` #&gt;
-&lt;#@ import namespace=`System.Linq` #&gt;
-&lt;#@ import namespace=`System.Text` #&gt;
-&lt;#@ import namespace=`System.Collections.Generic` #&gt;
+<pre><code class="lang-csharp">&lt;#@ template language=&quot;C#&quot; inherits=&quot;IntentRoslynProjectItemTemplateBase&lt;IServiceModel&gt;&quot;#&gt;
+&lt;#@ assembly name=&quot;System.Core&quot; #&gt;
+&lt;#@ import namespace=&quot;Intent.MetaModel.Service&quot; #&gt;
+&lt;#@ import namespace=&quot;Intent.SoftwareFactory.Templates&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Text&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Collections.Generic&quot; #&gt;
 using System;
 using System.Web.Http;
 using Intent.CodeGen;
@@ -382,7 +384,7 @@ namespace Module.Example.WebApi
 {
     public partial class WebApiControllerTemplate
     {
-        public const string Identifier = `Module.Example.WebApi.WebApiController`;
+        public const string Identifier = &quot;Module.Example.WebApi.WebApiController&quot;;
 
         public WebApiControllerTemplate(IProject project, IServiceModel model) : base(Identifier, project, model)
         {
@@ -390,25 +392,25 @@ namespace Module.Example.WebApi
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, `1.0`));
+            return new RoslynMergeConfig(new TemplateMetaData(Id, &quot;1.0&quot;));
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: Model.Name + `Controller`,
-                fileExtension: `cs`,
-                defaultLocationInProject: @`Controllers`,
-                className: `${Name}Controller`,
-                @namespace: `${Project.Name}.Controllers`);
+                fileName: Model.Name + &quot;Controller&quot;,
+                fileExtension: &quot;cs&quot;,
+                defaultLocationInProject: &quot;Controllers&quot;,
+                className: &quot;${Name}Controller&quot;,
+                @namespace: &quot;${Project.Name}.Controllers&quot;);
         }
 
         // A helper method used by the template:
         private string GetOperationReturnType(IOperationModel o)
         {
             return o.ReturnType == null
-                ? `void`
+                ? &quot;void&quot;
                 : o.ReturnType.TypeReference.Name;
         }
 
@@ -416,19 +418,19 @@ namespace Module.Example.WebApi
         private string GetParameters(IOperationModel o)
         {
             return o.Parameters
-                .Select(x =&gt; $`{x.TypeReference.Name} {x.Name}`)
-                .Aggregate((x, y) =&gt; x + `, ` + y);
+                .Select(x =&gt; $&quot;{x.TypeReference.Name} {x.Name}&quot;)
+                .Aggregate((x, y) =&gt; x + &quot;, &quot; + y);
         }
     }
 }
 </code></pre><p>Change the content of the <code>WebApiControllerTemplate.tt</code> file to the following: </p>
-<pre><code class="lang-csharp">&lt;#@ template language=`C#` inherits=`IntentRoslynProjectItemTemplateBase&lt;IServiceModel&gt;`#&gt;
-&lt;#@ assembly name=`System.Core` #&gt;
-&lt;#@ import namespace=`Intent.MetaModel.Service` #&gt;
-&lt;#@ import namespace=`Intent.SoftwareFactory.Templates` #&gt;
-&lt;#@ import namespace=`System.Linq` #&gt;
-&lt;#@ import namespace=`System.Text` #&gt;
-&lt;#@ import namespace=`System.Collections.Generic` #&gt;
+<pre><code class="lang-csharp">&lt;#@ template language=&quot;C#&quot; inherits=&quot;IntentRoslynProjectItemTemplateBase&lt;IServiceModel&gt;&quot;#&gt;
+&lt;#@ assembly name=&quot;System.Core&quot; #&gt;
+&lt;#@ import namespace=&quot;Intent.MetaModel.Service&quot; #&gt;
+&lt;#@ import namespace=&quot;Intent.SoftwareFactory.Templates&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Text&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Collections.Generic&quot; #&gt;
 using System;
 using System.Web.Http;
 using Intent.CodeGen;
@@ -443,7 +445,7 @@ namespace &lt;#= Namespace #&gt;
     {
 #&gt;
         [IntentManaged(Mode.Merge, Body = Mode.Ignore)]
-        [AcceptVerbs(`GET`)]
+        [AcceptVerbs(&quot;GET&quot;)]
         public &lt;#= GetOperationReturnType(operation) #&gt; &lt;#= operation.Name #&gt;(&lt;#= GetParameters(operation) #&gt;)
         {
             throw new NotImplementedException();
@@ -461,6 +463,9 @@ namespace &lt;#= Namespace #&gt;
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/IntentSoftware/IntentArchitect/blob/master/docsProject/articles/GettingStarted/MakeYourOwnModule.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
