@@ -47,11 +47,11 @@ This template supports T4.
 
 ## Implementing your class
 
-Once you have chosen which type of template you want to create simply create a C# class and inherit from that class. Below is an example of a 'IntentRoslynProjectItemTemplateBase' template.
+Once you have chosen which type of template you want to create simply create a C# class and inherit from that class. Below is an example of a 'IntentRoslynProjectItemTemplateBase<TModel>' template, `SomeMetaDataModel` is the Metadata model or data model we intend on using.
 
 ```csharp
 
-public class MyFirstTemplate : IntentRoslynProjectItemTemplateBase<SomeMetadataModel>
+    public class MyFirstTemplate : IntentRoslynProjectItemTemplateBase<SomeMetadataModel>
     {
         public const string Identifier = "MyProjectOrOrganization.MyFirstTemplate";
 
@@ -68,14 +68,8 @@ public class MyFirstTemplate : IntentRoslynProjectItemTemplateBase<SomeMetadataM
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
-            return new RoslynDefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}",
-                fileExtension: "cs",
-                defaultLocationInProject: "MyFirstTemplateFolder",
-                className: "${Model.Name}",
-                //remove the "_" from "@namespace_" bug in the documentation tool
-                @namespace_: " ${Project.Name}.MyFirstTemplateFolder" );
+            //This is covered in the Configuration section
+            throw new NotImplementedException();
         }
 
         public override string TransformText()
