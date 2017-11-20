@@ -13,7 +13,27 @@
   - name: Factory Extensions
     href: GettingStarted/FactoryExtensions.md
   - name: FAQ
-    href: GettingStarted/FAQ.md        
+    href: GettingStarted/FAQ.md    
+- name: Modules
+  homepage: Modules/IModSpecFile.md
+  items:
+  - name: IModSpec File
+    href: Modules/IModSpecFile.md    
+- name: Templates
+  homepage: Templates/Overview.md
+  items:
+  - name: Overview
+    href: Templates/Overview.md
+  - name: The Template Class
+    href: Templates/TheTemplateClass.md
+  - name: Registration
+    href: Templates/Registrations.md
+  - name: Configuration
+    href: Templates/Configuration.md
+  - name: Code Output
+    href: Templates/CodeOutput.md
+  - name: Extensions
+    href: Templates/Extensions.md
 - name: Core Modules
   homepage: CoreModules.md
   items:

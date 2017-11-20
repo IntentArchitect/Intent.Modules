@@ -1,0 +1,1109 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Dev/IntentArchitect/docsProject",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/CoreModules.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/CoreModules.html",
+          "hash": "159Skfshmi96u91U6T0sDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Extensibility/CreateAModule.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Extensibility/CreateAModule.html",
+          "hash": "/gWImGCQeiGnDMv57vE6fw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/GettingStarted/FAQ.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/GettingStarted/FAQ.html",
+          "hash": "aR6mI/hoVYCOnXPLDCM6qA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/GettingStarted/FactoryExtensions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/GettingStarted/FactoryExtensions.html",
+          "hash": "1SD4fwrKJ9M/Qn7ZTLo+fA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/GettingStarted/Intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/GettingStarted/Intro.html",
+          "hash": "QQbaf8++yS3cjoEMOIw29g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/GettingStarted/MakeYourOwnModule.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/GettingStarted/MakeYourOwnModule.html",
+          "hash": "ykuqBBuJH+QExn/GHX0lwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/GettingStarted/QuickStart.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/GettingStarted/QuickStart.html",
+          "hash": "fXHa35bnf93DhoH16hBqVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Modules/IModSpecFile.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Modules/IModSpecFile.html",
+          "hash": "hwznHHCchmAIPj61ZTB+Wg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Templates/CodeOutput.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Templates/CodeOutput.html",
+          "hash": "yLacAsvdKks4UXo5I6cCXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Templates/Configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Templates/Configuration.html",
+          "hash": "6pttjy/sCIRuTfwB6JVyEQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Templates/Extensions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Templates/Extensions.html",
+          "hash": "xs9tZATXsjpauVCGyjB45w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Templates/Overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Templates/Overview.html",
+          "hash": "POg+sAgfyzD6Y5Tz/Gf0Aw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Templates/Registrations.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Templates/Registrations.html",
+          "hash": "Ylbt2z2GZRYnzz3T0sDC3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Templates/TheTemplateClass.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Templates/TheTemplateClass.html",
+          "hash": "SeSb7qNESu6gO/EcbHNs8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/ApplicationConfiguration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/ApplicationConfiguration.html",
+          "hash": "D36kcQf3ZUruPPpwIFx6vA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/ApplicationModules.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/ApplicationModules.html",
+          "hash": "3662iFJ/nwMMJId3e97nDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/ApplicationScreen.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/ApplicationScreen.html",
+          "hash": "90qdX1Hze3weN3TlBzCJ+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/Domain.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/Domain.html",
+          "hash": "klbdjgBlYFVf0CxItFjHfQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/Dto.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/Dto.html",
+          "hash": "XK8S6cIPLzOCz2YLpT/hVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/HomeScreen.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/HomeScreen.html",
+          "hash": "eSygXT3eS23ExsfJ6P8lrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/NewApplicationWizard.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/NewApplicationWizard.html",
+          "hash": "egFvL+XAIXjN0jWzFAjNoQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/RepositoryConfiguration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/RepositoryConfiguration.html",
+          "hash": "XTp5SSTQ4XKPl+psRsdztA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/Services.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/Services.html",
+          "hash": "uBsC7P9Y+ImoGNKd08/clA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/Shell.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/Shell.html",
+          "hash": "WgEsmLgyB/r/9zOFr5iPFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/SoftwareFactoryExecution.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/SoftwareFactoryExecution.html",
+          "hash": "4FbqkI8NoAFev0OIZwKBFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/UserManual/SolutionScreen.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/UserManual/SolutionScreen.html",
+          "hash": "gXOomuVkYwTNiGQO1xRfhQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "Ch5H4Fh8HSZybICH0ikN0w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/HowItWorks.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/HowItWorks.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MakeYourOwnModule/image1.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MakeYourOwnModule/image1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MakeYourOwnModule/image2.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MakeYourOwnModule/image2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MakeYourOwnModule/image3.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MakeYourOwnModule/image3.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MakeYourOwnModule/image4.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MakeYourOwnModule/image4.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MakeYourOwnModule/image5.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MakeYourOwnModule/image5.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MakeYourOwnModule/image6.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MakeYourOwnModule/image6.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MakeYourOwnModule/image7.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MakeYourOwnModule/image7.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ModulesSample.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ModulesSample.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Navigate.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Navigate.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/QuickStart/Configuration.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/QuickStart/Configuration.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/QuickStart/CreateApplicationPage1.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/QuickStart/CreateApplicationPage1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/QuickStart/CreateApplicationPage2.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/QuickStart/CreateApplicationPage2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/QuickStart/CreateSolutionDialog.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/QuickStart/CreateSolutionDialog.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/QuickStart/GeneratedApplication.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/QuickStart/GeneratedApplication.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/QuickStart/Modules.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/QuickStart/Modules.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/QuickStart/NewApplication.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/QuickStart/NewApplication.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/QuickStart/SoftwareFactoryExecution1.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/QuickStart/SoftwareFactoryExecution1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/SFExecutionSample.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/SFExecutionSample.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UmlModellerSample.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UmlModellerSample.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/AddApplicationWizard1.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/AddApplicationWizard1.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/AddApplicationWizard2.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/AddApplicationWizard2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/Application.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/Application.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/ApplicationConfiguration.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/ApplicationConfiguration.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/ApplicationModules.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/ApplicationModules.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/Domain.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/Domain.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/DomainContext.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/DomainContext.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/DomainModelView.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/DomainModelView.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/DomainModeler.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/DomainModeler.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/DomainProperties.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/DomainProperties.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/DomainToolbar.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/DomainToolbar.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/Dto.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/Dto.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/Home.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/Home.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/RepositoryConfiguration.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/RepositoryConfiguration.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/SFExecuteChanges.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/SFExecuteChanges.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/SFExecuteConsole.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/SFExecuteConsole.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/Services.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/Services.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/Shell.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/Shell.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/UserManual/SolutionScreen.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/UserManual/SolutionScreen.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "yn21FAniBGHb4lG/aZmjVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/IntentCommon/Overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/IntentCommon/Overview.html",
+          "hash": "wHRvnjMkrNgxY3AWJsGVbw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/IntentCommonTypes/Overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/IntentCommonTypes/Overview.html",
+          "hash": "wxpV34B2YTuNVuITxjFB+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "modules/IntentCommonTypes/images/DateTimeMapping.png",
+      "output": {
+        "resource": {
+          "relative_path": "modules/IntentCommonTypes/images/DateTimeMapping.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "modules/IntentCommonTypes/images/MetaDataTypes.png",
+      "output": {
+        "resource": {
+          "relative_path": "modules/IntentCommonTypes/images/MetaDataTypes.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "modules/IntentCommonTypes/images/StereoTypes.png",
+      "output": {
+        "resource": {
+          "relative_path": "modules/IntentCommonTypes/images/StereoTypes.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/IntentNugetInstaller/Overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/IntentNugetInstaller/Overview.html",
+          "hash": "jJV2NlraNSvVGlECIY5KHQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/IntentVisualStudioProjects/Overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/IntentVisualStudioProjects/Overview.html",
+          "hash": "vne3Wza+AAUuUiS2bQ3Vbw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Appendix.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Appendix.html",
+          "hash": "E0cc8fIJX0FYhIRdeA1OGQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Attributes.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Attributes.html",
+          "hash": "y1vXjjEo/R7Qdkm9c1gsAg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/CodeMigrations.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/CodeMigrations.html",
+          "hash": "nmj4BBknXaH6PHaYbnsZdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Gotchas.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Gotchas.html",
+          "hash": "UnVyDbgROOWXctXdwM8ohA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/HowItWorks.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/HowItWorks.html",
+          "hash": "ceLnGspa9T2c9M5NkeK1Ew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/HowToImplement.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/HowToImplement.html",
+          "hash": "zSiOrbDg+0TT/4Ca4eZrQQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/HowToWorkWith.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/HowToWorkWith.html",
+          "hash": "D4O3w5dEvzE3FediiJh7Tw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "modules/RoslynWeaver/Images/SimplifiedIAProcess.png",
+      "output": {
+        "resource": {
+          "relative_path": "modules/RoslynWeaver/Images/SimplifiedIAProcess.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "modules/RoslynWeaver/Images/SimplifiedRoslynWeaveIAProcess.png",
+      "output": {
+        "resource": {
+          "relative_path": "modules/RoslynWeaver/Images/SimplifiedRoslynWeaveIAProcess.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Modes.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Modes.html",
+          "hash": "yxGbjFxhkWZtbVVdHQ90bA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Overview.html",
+          "hash": "RcQNY9M+VOJOSRqUQW0T6g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/RoslynWeaver/Terminology.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/RoslynWeaver/Terminology.html",
+          "hash": "aVbcZnX1Z8/KcImapsUYXg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modules/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "modules/index.html",
+          "hash": "BZL46WsD7s0PlOA9YYhtaw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "modules/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "modules/toc.html",
+          "hash": "ZV4d9K5L7QPu0vqvapAtNQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "i6hmEbaRzuYCiC/faRYe/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "RestApiDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

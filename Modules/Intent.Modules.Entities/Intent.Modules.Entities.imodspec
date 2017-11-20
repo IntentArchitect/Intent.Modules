@@ -36,7 +36,7 @@
       <config>
         <add key="Aggregate Root Base Class" description="Base class for all aggregates" default="" />
         <add key="Entity Base Class" description="Base class for all entities" default="" />
-        <add key="Value Object Base Class" description="Base class for all value objcets" default="" />
+        <add key="Value Object Base Class" description="Base class for all value objects" default="" />
       </config>
     </decorator>
     <decorator id="Intent.DDD.Entity.Interfaces.Decorator"  enabled="false"/>

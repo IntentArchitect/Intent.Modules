@@ -9,7 +9,7 @@
   </templates>
   <decorators />
   <factoryExtensions>
-    <factoryExtension id="Intent.OutputTransformer.FileHeader">
+    <factoryExtension id="Intent.OutputTransformer.FileHeader" enabled="true">
       <config>
         <add key="Append To Once Off" description="Should file headers be applied to once off generated code (true | false)" default="true" />
         <add key="Append Always" description="List of CodeGenTypes which should have files headers appended on every execution. (comma delimited list of strings)" default="Basic,IntentControlledTagWeave" />

@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The Template Class | Intent Architect </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="The Template Class | Intent Architect ">
+    <meta name="generator" content="docfx 2.24.0.0">
+    
+    <link rel="shortcut icon" href="../..//images/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../.././images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="the-template-class">The Template Class</h1>
+
+<p>Templates are completely generic and can be implemented how ever you like, at it&#39;s core you simply have to implement this interface.</p>
+<pre><code class="lang-csharp">
+    public interface ITemplate
+    {
+        //Unique Identifier for the template
+        string Id { get; }
+        //Metadata about the generate file, i.e. filename, output location, etc
+        IFileMetaData GetMetaData();
+        //Method which generates the template output i.e. the generate file
+        string RunTemplate();
+    }
+</code></pre><p>Practically you don&#39;t to implement this interface yourself, but rather you can inherit from one of the base templates supplied in &#39;Intent.Module.Common&#39; available on Nuget. The supplied base templates are as follows.</p>
+<ul>
+<li><strong><a href="#intentroslynprojectitemtemplatebase">IntentRoslynProjectItemTemplateBase</a></strong>, base template for C# code generation, supports code weaving scenarios.</li>
+<li><strong><a href="#intenttypescriptprojectitemtemplatebase">IntentTypescriptProjectItemTemplateBase</a></strong>, base template for TypeScript code generation.</li>
+<li><strong><a href="#intentprojectitemtemplatebase">IntentProjectItemTemplateBase</a></strong>, base template for any generation where the output belongs to a project.</li>
+<li><strong><a href="#intenttemplatebase">IntentTemplateBase</a></strong>, base template for any generation where the output does not belong within a project.</li>
+</ul>
+<h2 id="base-templates">Base Templates</h2>
+<h3 id="intentroslynprojectitemtemplatebase">IntentRoslynProjectItemTemplateBase</h3>
+<p>This base template is intended for templates generating C# files. There are 2 versions of this template one for template which are bound to data (<code>IntentRoslynProjectItemTemplateBase&lt;TModel&gt;</code>) and one for templates which are not bound to data(<code>IntentRoslynProjectItemTemplateBase</code>). </p>
+<p>This template has build in support for &#39;Roslyn Weaver&#39; which allows for advanced code weaving scenarios.
+This template supports T4. </p>
+<h3 id="intenttypescriptprojectitemtemplatebase">IntentTypescriptProjectItemTemplateBase</h3>
+<p>This base template is intended for templates generating TypeScript (ts) files. There are 2 versions of this template one for template which are bound to data (<code>IntentTypescriptProjectItemTemplateBase&lt;TModel&gt;</code>) and one for templates which are not bound to data(<code>IntentTypescriptProjectItemTemplateBase</code>). </p>
+<p>This template supports T4. </p>
+<h3 id="intentprojectitemtemplatebase">IntentProjectItemTemplateBase</h3>
+<p>This base template is intended for templates generating code into project structures. If one of the previous two templates is not what what you are looking for this is probably what you want to use.There are 2 versions of this template one for template which are bound to data (<code>IntentProjectItemTemplateBase&lt;TModel&gt;</code>) and one for templates which are not bound to data(<code>IntentProjectItemTemplateBase</code>).</p>
+<p>This template supports T4. </p>
+<h3 id="intenttemplatebase">IntentTemplateBase</h3>
+<p>This base template is intended for templates generating code that does not fall into project structures. 99% of the time this is not what you want.</p>
+<p>This template supports T4.</p>
+<h2 id="implementing-your-class">Implementing your class</h2>
+<p>Once you have chosen which type of template you want to create simply create a C# class and inherit from that class. Below is an example of a &#39;IntentRoslynProjectItemTemplateBase&#39; template.</p>
+<pre><code class="lang-csharp">
+public class MyFirstTemplate : IntentRoslynProjectItemTemplateBase&lt;SomeMetadataModel&gt;
+    {
+        public const string Identifier = &quot;MyProjectOrOrganization.MyFirstTemplate&quot;;
+
+        public MyFirstTemplate(IProject project, SomeMetadataModel model)
+            : base(Identifier, project, model)
+        {
+
+        }
+
+        public override RoslynMergeConfig ConfigureRoslynMerger()
+        {
+            return new RoslynMergeConfig(new TemplateMetaData(Id, &quot;1.0&quot;));
+        }
+
+        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        {
+            return new RoslynDefaultFileMetaData(
+                overwriteBehaviour: OverwriteBehaviour.Always,
+                fileName: &quot;${Model.Name}&quot;,
+                fileExtension: &quot;cs&quot;,
+                defaultLocationInProject: &quot;MyFirstTemplateFolder&quot;,
+                className: &quot;${Model.Name}&quot;,
+                //remove the &quot;_&quot; from &quot;@namespace_&quot; seems to be a bug in the documentation tool
+                @namespace_: &quot; ${Project.Name}.MyFirstTemplateFolder&quot; );
+        }
+
+        public override string TransformText()
+        {
+            //This is covered in the Code Output section
+            throw new NotImplementedException();
+        }
+
+    }
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/IntentSoftware/IntentArchitect/blob/master/docsProject/articles/Templates/TheTemplateClass.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span>Copyright © <script type="text/javascript">document.write((new Date()).getFullYear());</script> Intent Software</span>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-106066850-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106066850-1');
+</script>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
