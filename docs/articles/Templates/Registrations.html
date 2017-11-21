@@ -77,7 +77,49 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="template-registrations">Template Registrations</h1>
 
-</article>
+<p>For Intent Architect to know about your template you need to register it, this is done through a registration class. This class doesn&#39;t only tell Intent Architect to register the template, but how to construct instances of it and bind that instance to data.</p>
+<div class="NOTE"><h5>Note</h5><p>A template registration is a factory, i.e. it will create a template instance for data model returned from the <code>GetModels</code> method.</p>
+</div>
+<p>There are 3 base classes you can inherit from to register your template.</p>
+<ul>
+<li><strong>NoModelTemplateRegistrationBase</strong>, templates not bound to data</li>
+<li><strong>ModelTemplateRegistrationBase</strong>, template bound to data</li>
+<li><strong>ListModelTemplateRegistrationBase</strong>, template bound to a list of data</li>
+</ul>
+<p>Here is an example of a template registration.</p>
+<pre><code class="lang-csharp">
+    [Description(&quot;Intent Entity Base Template&quot;)]
+    public class Registrations : ModelTemplateRegistrationBase&lt;IClass&gt;
+    {
+        private IMetaDataManager _metaDataManager;
+
+        public Registrations(IMetaDataManager metaDataManager)
+        {
+            _metaDataManager = metaDataManager;
+        }
+
+        // This should be the same identifier as that of the template.
+        public override string TemplateId
+        {
+            get
+            {
+                return DomainEntityTemplate.Identifier;
+            }
+        }
+
+        //Factory method for creating template instances
+        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        {
+            return new DomainEntityTemplate(model, project);
+        }
+
+        //The set of Data to create template instances for
+        public override IEnumerable&lt;IClass&gt; GetModels(Intent.SoftwareFactory.Engine.IApplication application)
+        {
+            return _metaDataManager.GetDomainModels(application);
+        }
+    }
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

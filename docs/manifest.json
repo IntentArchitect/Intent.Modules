@@ -37,12 +37,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/GettingStarted/FAQ.md",
       "output": {
         ".html": {
           "relative_path": "articles/GettingStarted/FAQ.html",
-          "hash": "aR6mI/hoVYCOnXPLDCM6qA=="
+          "hash": "UbutgW6rRerwH+sOCpwh4Q=="
         }
       },
       "is_incremental": false,
@@ -74,11 +77,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "articles/GettingStarted/MakeYourOwnModule.md",
+      "source_relative_path": "articles/GettingStarted/QuickStart.md",
       "output": {
         ".html": {
-          "relative_path": "articles/GettingStarted/MakeYourOwnModule.html",
-          "hash": "ykuqBBuJH+QExn/GHX0lwQ=="
+          "relative_path": "articles/GettingStarted/QuickStart.html",
+          "hash": "fXHa35bnf93DhoH16hBqVg=="
         }
       },
       "is_incremental": false,
@@ -86,11 +89,23 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "articles/GettingStarted/QuickStart.md",
+      "source_relative_path": "articles/GettingStarted/creating-a-module-from-scratch.md",
       "output": {
         ".html": {
-          "relative_path": "articles/GettingStarted/QuickStart.html",
-          "hash": "fXHa35bnf93DhoH16hBqVg=="
+          "relative_path": "articles/GettingStarted/creating-a-module-from-scratch.html",
+          "hash": "TcjlT8hcEUNJBfefn/oj/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/GettingStarted/downloadable-example-module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/GettingStarted/downloadable-example-module.html",
+          "hash": "pGzMYQVP6o3/i5P54WwhBg=="
         }
       },
       "is_incremental": false,
@@ -126,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/Templates/Configuration.html",
-          "hash": "6pttjy/sCIRuTfwB6JVyEQ=="
+          "hash": "n2Hr28P4zHchr+WzfscAVw=="
         }
       },
       "is_incremental": false,
@@ -162,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/Templates/Registrations.html",
-          "hash": "Ylbt2z2GZRYnzz3T0sDC3w=="
+          "hash": "Ycpjzm2EXuR15yy0Dgu4Iw=="
         }
       },
       "is_incremental": false,
@@ -174,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/Templates/TheTemplateClass.html",
-          "hash": "SeSb7qNESu6gO/EcbHNs8w=="
+          "hash": "yn6Fxca91YDZsyuAfEyeaw=="
         }
       },
       "is_incremental": false,
@@ -330,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "Ch5H4Fh8HSZybICH0ikN0w=="
+          "hash": "wSyw8KBHySArnXWirGJRWw=="
         }
       },
       "is_incremental": false,
@@ -1076,17 +1091,17 @@
           "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+        "RestApiDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build"
         },
-        "RestApiDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
           "incrementalPhase": "build"
         }
       }

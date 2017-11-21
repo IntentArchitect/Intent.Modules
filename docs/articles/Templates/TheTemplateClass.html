@@ -110,9 +110,9 @@ This template supports T4. </p>
 <p>This base template is intended for templates generating code that does not fall into project structures. 99% of the time this is not what you want.</p>
 <p>This template supports T4.</p>
 <h2 id="implementing-your-class">Implementing your class</h2>
-<p>Once you have chosen which type of template you want to create simply create a C# class and inherit from that class. Below is an example of a &#39;IntentRoslynProjectItemTemplateBase&#39; template.</p>
+<p>Once you have chosen which type of template you want to create simply create a C# class and inherit from that class. Below is an example of a &#39;IntentRoslynProjectItemTemplateBase<tmodel>&#39; template, <code>SomeMetaDataModel</code> is the Metadata model or data model we intend on using.<p>
 <pre><code class="lang-csharp">
-public class MyFirstTemplate : IntentRoslynProjectItemTemplateBase&lt;SomeMetadataModel&gt;
+    public class MyFirstTemplate : IntentRoslynProjectItemTemplateBase&lt;SomeMetadataModel&gt;
     {
         public const string Identifier = &quot;MyProjectOrOrganization.MyFirstTemplate&quot;;
 
@@ -129,14 +129,8 @@ public class MyFirstTemplate : IntentRoslynProjectItemTemplateBase&lt;SomeMetada
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
-            return new RoslynDefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: &quot;${Model.Name}&quot;,
-                fileExtension: &quot;cs&quot;,
-                defaultLocationInProject: &quot;MyFirstTemplateFolder&quot;,
-                className: &quot;${Model.Name}&quot;,
-                //remove the &quot;_&quot; from &quot;@namespace_&quot; seems to be a bug in the documentation tool
-                @namespace_: &quot; ${Project.Name}.MyFirstTemplateFolder&quot; );
+            //This is covered in the Configuration section
+            throw new NotImplementedException();
         }
 
         public override string TransformText()
@@ -146,7 +140,7 @@ public class MyFirstTemplate : IntentRoslynProjectItemTemplateBase&lt;SomeMetada
         }
 
     }
-</code></pre></article>
+</code></pre></tmodel></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

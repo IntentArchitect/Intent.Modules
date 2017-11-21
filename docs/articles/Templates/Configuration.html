@@ -77,6 +77,54 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="template-configuration">Template Configuration</h1>
 
+<p>There are two aspects to template configuration</p>
+<ul>
+<li><strong>Template Class Configuration</strong></li>
+<li><strong>IModSpec Configuration</strong></li>
+</ul>
+<h2 id="template-class-configuration">Template Class Configuration</h2>
+<p>There are several flavours of these configurations, but they are all very similar, you are basically describing the nature of the template and it&#39;s output. Here is an example.</p>
+<pre><code class="lang-csharp">
+        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        {
+            return new RoslynDefaultFileMetaData(
+                overwriteBehaviour: OverwriteBehaviour.Always,
+                fileName: &quot;${Model.Name}&quot;,
+                fileExtension: &quot;cs&quot;,
+                defaultLocationInProject: &quot;MyFirstTemplateFolder&quot;,
+                className: &quot;${Model.Name}&quot;,
+                //remove the &quot;_&quot; from &quot;@namespace_&quot; bug in the documentation tool
+                @namespace_: &quot; ${Project.Name}.MyFirstTemplateFolder&quot; );
+        }
+</code></pre><div class="NOTE"><h5>Note</h5><p>${...} is a binding syntax. See below for more information.</p>
+</div>
+<p>In the above example the configuration settings mean the following.</p>
+<ul>
+<li><strong>overwriteBehaviour</strong>, this has 2 options, <code>Always</code> and <code>OnceOff</code>, <code>Always</code> will always generate and overwrite the solution file, <code>OnceOff</code> will only create the solution file if it does not exist.</li>
+<li><strong>fileName</strong>, the file name of the generated solution file.</li>
+<li><strong>fileExtension</strong>, the file extension of the generated solution file.</li>
+<li><strong>defaultLocationInProject</strong>, the relative path to put the generated solution file with it&#39;s project.</li>
+<li><strong>className</strong>, the class name of the generated class with the generated solution file</li>
+<li><strong>namespace</strong>, the namespace of the generated class with the generated solution file</li>
+</ul>
+<p>There is also a <code>Dictionary&lt;string, string&gt;</code> called <code>CustomMetaData</code> which allows you to define any additional parameter you wish to define, these can be exposed for end user configuration through the IModSpec file.</p>
+<div class="NOTE"><h5>Note</h5><p>These are default values, i.e. should you choose to expose these variables through the IModSpec files, consumers can change the values of these settings.</p>
+</div>
+<div class="NOTE"><h5>Note</h5><p>Once a template instance has been created, calling <code>GetFileMetaData()</code> will return the actual configured values, the template will execute with.</p>
+</div>
+<h2 id="imodspec-configuration">IModSpec Configuration</h2>
+<p>This configuration is similar to &#39;Template Class Configuration&#39; but is exposed to consumers of your template through Intent Architect, i.e. this configuration can be adjusted &quot;runtime&quot;. And allow you to support configurable features on your templates.</p>
+<p>Sample IModSpec configuration.</p>
+<pre><code class="lang-xml">    &lt;config&gt;
+    &lt;add key=&quot;fileName&quot; 
+        description=&quot;The generated output&#39;s file name&quot; 
+        default=&quot;${Model.Name}&quot; /&gt;
+    &lt;/config&gt;
+</code></pre><p>In this example a consumer of the template can now change the generated files names. </p>
+<div class="NOTE"><h5>Note</h5><p>Only variables declared in the IModSpec file can be configured by consumers.</p>
+</div>
+<h2 id="binding-syntax">Binding Syntax</h2>
+<p>The binding syntax can be used within your configuration. The binding is relative to you template class, i.e. you can bind to any properties or methods within your template. The syntax is <code>${</code>expression<code>}</code>. The reason to use this syntax is to make it possible for others to see your configuration an rebind it, if you want to support this scenario.</p>
 </article>
           </div>
           
