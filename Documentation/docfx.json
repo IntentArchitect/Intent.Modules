@@ -45,7 +45,7 @@
         ]
       }
     ],
-    "dest": "../docs",
+    "dest": "_site",
     "globalMetadata": {
       "_appTitle": "Intent Architect",
       "_enableSearch":"true",
