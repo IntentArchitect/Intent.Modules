@@ -1,8 +1,0 @@
-
-generate
------------
-docfx docfx.json
-
-run locally
-------------
-docfx serve ../docs

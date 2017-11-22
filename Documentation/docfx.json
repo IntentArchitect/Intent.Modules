@@ -18,7 +18,8 @@
         ],
         "exclude": [
           "obj/**",
-          "_site/**"
+          "_site/**",
+          "readme.md"
         ]
       }
     ],
@@ -30,7 +31,8 @@
         ],
         "exclude": [
           "obj/**",
-          "_site/**"
+          "_site/**",
+          "readme.md"
         ]
       }
     ],
@@ -41,7 +43,8 @@
         ],
         "exclude": [
           "obj/**",
-          "_site/**"
+          "_site/**",
+          "readme.md"
         ]
       }
     ],
