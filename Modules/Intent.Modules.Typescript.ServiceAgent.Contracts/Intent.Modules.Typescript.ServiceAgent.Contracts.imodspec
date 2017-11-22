@@ -11,9 +11,9 @@
     </template>
     <template id="Intent.Typescript.ServiceAgent.Contracts.DTO.Remote">
       <role>Presentation.Web</role>
-      <location>wwwroot\App\DTOs\Generated\${Application.Name}</location>
+      <location>wwwroot\App\DTOs\Generated\${Model.Application.Name}</location>
       <config>
-        <add key="Namespace" default="App.Contracts.${Application.Name}"/>
+        <add key="Namespace" default="App.Contracts.${Model.Application.Name}"/>
       </config>
     </template>
   </templates>

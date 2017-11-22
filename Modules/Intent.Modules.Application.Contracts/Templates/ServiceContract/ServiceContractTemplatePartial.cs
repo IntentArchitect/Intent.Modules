@@ -47,10 +47,10 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "I${Name}",
+                fileName: "I${Model.Name}",
                 fileExtension: "cs",
                 defaultLocationInProject: string.Join("\\", GetNamespaceParts().DefaultIfEmpty("ServiceContracts")),
-                className: "I${Name}",
+                className: "I${Model.Name}",
                 @namespace: string.Join(".", new[] { "${Project.ProjectName}" }.Concat(GetNamespaceParts()))
                 );
         }

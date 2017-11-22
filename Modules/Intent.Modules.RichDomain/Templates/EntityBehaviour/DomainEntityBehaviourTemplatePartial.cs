@@ -24,7 +24,7 @@ namespace Intent.Modules.RichDomain.Templates.EntityBehaviour
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Name}",
+                fileName: "${Model.Name}",
                 fileExtension: "cs",
                 defaultLocationInProject: "Behaviour",
                 className: "N/A", // There are two classes in this template.

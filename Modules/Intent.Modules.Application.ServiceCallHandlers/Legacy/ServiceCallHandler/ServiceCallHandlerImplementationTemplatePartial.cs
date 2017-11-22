@@ -46,10 +46,10 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Legacy.ServiceCallHandl
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Name}SCH",
+                fileName: "${Model.Name}SCH",
                 fileExtension: "cs",
                 defaultLocationInProject: $"ServiceCallHandlers\\{ServiceModel.Name}",
-                className: "${Name}SCH",
+                className: "${Model.Name}SCH",
                 @namespace: "${Project.ProjectName}"// + ServiceModel.Name // TODO: One day...
                 );
         }

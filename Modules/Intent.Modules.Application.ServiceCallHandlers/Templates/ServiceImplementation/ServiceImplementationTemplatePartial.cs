@@ -50,10 +50,10 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Name}",
+                fileName: "${Model.Name}",
                 fileExtension: "cs",
                 defaultLocationInProject: "ServiceImplementation",
-                className: "${Name}",
+                className: "${Model.Name}",
                 @namespace: "${Project.ProjectName}"
 
                 );

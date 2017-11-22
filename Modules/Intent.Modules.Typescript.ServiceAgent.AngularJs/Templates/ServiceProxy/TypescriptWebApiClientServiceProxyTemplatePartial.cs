@@ -48,7 +48,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                 fileName: $"{Model.Name}Proxy",
                 fileExtension: "ts",
                 defaultLocationInProject: $@"wwwroot\App\Proxies\Generated",
-                className: "${Name}Proxy",
+                className: "${Model.Name}Proxy",
                 @namespace: "App.Proxies"
                 );
         }

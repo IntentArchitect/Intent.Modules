@@ -85,10 +85,10 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Name}Mapping",
+                fileName: "${Model.Name}Mapping",
                 fileExtension: "cs",
                 defaultLocationInProject: $"Mappings{(GetNamespaceParts().Any() ? "\\" + string.Join("\\", GetNamespaceParts()) : "")}",
-                className: "${Name}Mapping",
+                className: "${Model.Name}Mapping",
                 @namespace: string.Join(".", new[] { "${Project.ProjectName}" }.Concat(GetNamespaceParts()))
                 );
         }

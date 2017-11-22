@@ -111,7 +111,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.OutputManage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.EF", "Intent.Modules.EF\Intent.Modules.EF.csproj", "{B06D6952-6A48-4B3F-B507-F1747D6FBB2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.CommonTypes", "Intent.Modules.CommonTypes\Intent.Modules.CommonTypes.csproj", "{ED404A63-FC25-4C42-AB4C-619815D8A6EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.Types", "Intent.Modules.CommonTypes\Intent.Modules.Common.Types.csproj", "{ED404A63-FC25-4C42-AB4C-619815D8A6EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common", "Intent.Modules.Common\Intent.Modules.Common.csproj", "{56475E35-0CC7-4D75-937C-FF46C073BB66}"
 EndProject

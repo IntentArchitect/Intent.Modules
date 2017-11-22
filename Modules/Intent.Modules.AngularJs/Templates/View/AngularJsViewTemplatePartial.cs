@@ -17,7 +17,7 @@ namespace Intent.Modules.AngularJs.Templates.View
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "${Name}View",
+                fileName: "${Model.Name}View",
                 fileExtension: "html",
                 defaultLocationInProject: $@"wwwroot\App\States\{Model.Name}"
                 );

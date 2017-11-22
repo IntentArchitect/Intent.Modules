@@ -39,7 +39,7 @@ namespace Intent.Modules.RichDomain.Templates.EntityStateInterface
                 fileName: $"{Model.Name}Interfaces",
                 fileExtension: "cs",
                 defaultLocationInProject: "Generated\\StateInterfaces",
-                className: "I${Name}",
+                className: "I${Model.Name}",
                 @namespace: "${Project.ProjectName}"
             );
         }

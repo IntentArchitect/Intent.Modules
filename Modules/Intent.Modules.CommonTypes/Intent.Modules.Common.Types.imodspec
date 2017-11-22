@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
-  <id>Intent.CommonTypes</id>
+  <id>Intent.Common.Types</id>
   <version>1.2.1</version>
   <summary>Common Types for Modelling.</summary>
   <description>Common data types for modelling.</description>

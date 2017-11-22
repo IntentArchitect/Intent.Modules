@@ -34,10 +34,10 @@ namespace Intent.Modules.AngularJs.Templates.State
             return new TypescriptDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "${Name}StateManager",
+                fileName: "${Model.Name}StateManager",
                 fileExtension: "ts",
                 defaultLocationInProject: $@"wwwroot\App\States\{Model.Name}",
-                className: "${Name}StateManager",
+                className: "${Model.Name}StateManager",
                 @namespace: "${Project.ApplicationName}");
         }
     }

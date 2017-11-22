@@ -4,11 +4,11 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {
-    partial class TypescriptDtoTemplate : IntentTypescriptProjectItemTemplateBase<DTOModel>, ITemplate
+    partial class TypescriptDtoTemplate : IntentTypescriptProjectItemTemplateBase<IDTOModel>, ITemplate
     {
         public const string LocalIdentifier = "Intent.Typescript.ServiceAgent.Contracts.DTO.Local";
         public const string RemoteIdentifier = "Intent.Typescript.ServiceAgent.Contracts.DTO.Remote";
-        public TypescriptDtoTemplate(string identifier, IProject project, DTOModel model)
+        public TypescriptDtoTemplate(string identifier, IProject project, IDTOModel model)
             : base(identifier, project, model)
         {
             // For reference purposes only:
@@ -26,7 +26,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
                 fileName: Model.Name,
                 fileExtension: "ts",
                 defaultLocationInProject: @"wwwroot\App\DTOs\Generated",
-                className: "${Name}",
+                className: "${Model.Name}",
                 @namespace: "App.Contracts");
         }
     }

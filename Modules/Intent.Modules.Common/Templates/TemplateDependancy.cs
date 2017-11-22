@@ -44,7 +44,7 @@ namespace Intent.SoftwareFactory.Templates
                 (t) =>
                 {
                     var model = (t as ITemplateWithModel)?.Model;
-                    if (model != null && model.GetType () == typeof(TModel))
+                    if (model is TModel)
                     {
                         return isMatch((TModel)model);
                     }

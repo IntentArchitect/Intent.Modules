@@ -12,7 +12,7 @@ using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {
     [Description("Intent Typescript ServiceAgent DTO - Local")]
-    public class LocalRegistrations : ModelTemplateRegistrationBase<DTOModel>
+    public class LocalRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
@@ -24,14 +24,14 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override string TemplateId => TypescriptDtoTemplate.LocalIdentifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, DTOModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, IDTOModel model)
         {
             return new TypescriptDtoTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<DTOModel> GetModels(IApplication application)
+        public override IEnumerable<IDTOModel> GetModels(IApplication application)
         {
-            var dtoModels = _metaDataManager.GetMetaData<DTOModel>(new MetaDataType("DTO")).Where(x => x.Application.Name == application.ApplicationName);
+            var dtoModels = _metaDataManager.GetDTOModels(application);
 
             // TODO JL: Temp, filter out ones for server only, will ultimately get replaced with concept of client applications in the future
             dtoModels = dtoModels.Where(x => x.Stereotypes.All(s => s.Name != "ServerOnly") && !FolderOrParentFolderHasStereoType(x.Folder, "ServerOnly"));

@@ -43,7 +43,7 @@ namespace Intent.Modules.EntityFramework.Templates.Repository
                 fileName: $"{Model.Name}Repository",
                 fileExtension: "cs",
                 defaultLocationInProject: "Repository",
-                className: "${Name}Repository",
+                className: "${Model.Name}Repository",
                 @namespace: "${Project.Name}"
                 );
         }

@@ -32,7 +32,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
                 fileName: $"{Model.Name}WebApiClientProxy",
                 fileExtension: "cs",
                 defaultLocationInProject: @"Generated\ClientProxies",
-                className: "${Name}WebApiClientProxy",
+                className: "${Model.Name}WebApiClientProxy",
                 @namespace: "${Project.Name}"
                 );
         }

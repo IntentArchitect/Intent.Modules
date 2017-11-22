@@ -7,8 +7,8 @@
     <ProjectGuid>{ED404A63-FC25-4C42-AB4C-619815D8A6EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Modules.CommonTypes</RootNamespace>
-    <AssemblyName>Intent.Modules.CommonTypes</AssemblyName>
+    <RootNamespace>Intent.Modules.Common.Types</RootNamespace>
+    <AssemblyName>Intent.Modules.Common.Types</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -74,7 +74,7 @@
     <Compile Include="TypeResolvers\CSharpTypeResolverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.CommonTypes.imodspec" />
+    <None Include="Intent.Modules.Common.Types.imodspec" />
     <None Include="MetaData\DataContracts\Intent.CommonTypes.datacontracts.pkg.config" />
     <None Include="MetaData\Domain\Intent.CommonTypes.domain.pkg.config" />
     <None Include="packages.config" />
@@ -85,39 +85,39 @@
     <Content Include="MetaData\DataContracts\Stereotypes\Java.xml" />
     <Content Include="MetaData\DataContracts\Stereotypes\CSharp.xml" />
     <Content Include="MetaData\DataContracts\Stereotypes\TypeScript.xml" />
-    <Content Include="MetaData\DataContracts\Types\Float.xml" />
-    <Content Include="MetaData\DataContracts\Types\Double.xml" />
-    <Content Include="MetaData\DataContracts\Types\Binary.xml" />
-    <Content Include="MetaData\DataContracts\Types\DateTime.xml" />
-    <Content Include="MetaData\DataContracts\Types\Date.xml" />
-    <Content Include="MetaData\DataContracts\Types\Bool.xml" />
-    <Content Include="MetaData\DataContracts\Types\Byte.xml" />
-    <Content Include="MetaData\DataContracts\Types\Short.xml" />
-    <Content Include="MetaData\DataContracts\Types\Long.xml" />
-    <Content Include="MetaData\DataContracts\Types\Int.xml" />
-    <Content Include="MetaData\DataContracts\Types\Char.xml" />
-    <Content Include="MetaData\DataContracts\Types\Guid.xml" />
-    <Content Include="MetaData\DataContracts\Types\Decimal.xml" />
-    <Content Include="MetaData\DataContracts\Types\String.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Double.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Binary.xml" />
-    <Content Include="MetaData\Domain\DataTypes\DateTime.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Date.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Bool.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Byte.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Float.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Int.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Char.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Guid.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Decimal.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Long.xml" />
-    <Content Include="MetaData\Domain\DataTypes\Short.xml" />
-    <Content Include="MetaData\Domain\DataTypes\String.xml" />
+    <Content Include="MetaData\DataContracts\Types\float.xml" />
+    <Content Include="MetaData\DataContracts\Types\double.xml" />
+    <Content Include="MetaData\DataContracts\Types\binary.xml" />
+    <Content Include="MetaData\DataContracts\Types\datetime.xml" />
+    <Content Include="MetaData\DataContracts\Types\date.xml" />
+    <Content Include="MetaData\DataContracts\Types\bool.xml" />
+    <Content Include="MetaData\DataContracts\Types\byte.xml" />
+    <Content Include="MetaData\DataContracts\Types\short.xml" />
+    <Content Include="MetaData\DataContracts\Types\long.xml" />
+    <Content Include="MetaData\DataContracts\Types\int.xml" />
+    <Content Include="MetaData\DataContracts\Types\char.xml" />
+    <Content Include="MetaData\DataContracts\Types\guid.xml" />
+    <Content Include="MetaData\DataContracts\Types\decimal.xml" />
+    <Content Include="MetaData\DataContracts\Types\string.xml" />
     <Content Include="MetaData\Domain\Folders\Types.xml" />
     <Content Include="MetaData\Domain\Folders\Stereotypes.xml" />
     <Content Include="MetaData\Domain\Stereotypes\Java.xml" />
     <Content Include="MetaData\Domain\Stereotypes\CSharp.xml" />
     <Content Include="MetaData\Domain\Stereotypes\TypeScript.xml" />
+    <Content Include="MetaData\Domain\Types\binary.xml" />
+    <Content Include="MetaData\Domain\Types\bool.xml" />
+    <Content Include="MetaData\Domain\Types\byte.xml" />
+    <Content Include="MetaData\Domain\Types\char.xml" />
+    <Content Include="MetaData\Domain\Types\date.xml" />
+    <Content Include="MetaData\Domain\Types\datetime.xml" />
+    <Content Include="MetaData\Domain\Types\decimal.xml" />
+    <Content Include="MetaData\Domain\Types\double.xml" />
+    <Content Include="MetaData\Domain\Types\float.xml" />
+    <Content Include="MetaData\Domain\Types\guid.xml" />
+    <Content Include="MetaData\Domain\Types\int.xml" />
+    <Content Include="MetaData\Domain\Types\long.xml" />
+    <Content Include="MetaData\Domain\Types\short.xml" />
+    <Content Include="MetaData\Domain\Types\string.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\build\Intent.IntentArchitectPackager.targets')" />

@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentTypescriptProjectItemTemplateBase<DTOModel>" #>
+﻿<#@ template  debug="true"  inherits="IntentTypescriptProjectItemTemplateBase<IDTOModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -18,7 +18,7 @@ namespace <#= Namespace #>
 } 
 
 <#+
-    void AddClass(DTOModel model)
+    void AddClass(IDTOModel model)
     {
 #>
     export interface <#= ClassName #>

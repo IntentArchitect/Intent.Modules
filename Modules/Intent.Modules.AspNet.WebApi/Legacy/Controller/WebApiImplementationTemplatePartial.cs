@@ -70,7 +70,7 @@ namespace Intent.Modules.AspNet.WebApi.Legacy.Controller
                 fileName: Model.Name + "Controller",
                 fileExtension: "cs",
                 defaultLocationInProject: @"Controllers\Generated",
-                className: "${Name}Controller",
+                className: "${Model.Name}Controller",
                 @namespace: "${Project.Name}"
                 );
         }

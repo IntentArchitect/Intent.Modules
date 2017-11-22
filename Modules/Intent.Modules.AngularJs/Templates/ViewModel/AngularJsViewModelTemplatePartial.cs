@@ -16,10 +16,10 @@ namespace Intent.Modules.AngularJs.Templates.ViewModel
             return new TypescriptDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "${Name}ViewModel",
+                fileName: "${Model.Name}ViewModel",
                 fileExtension: "ts",
                 defaultLocationInProject: $@"wwwroot\App\States\{Model.Name}",
-                className: "${Name}ViewModel",
+                className: "${Model.Name}ViewModel",
                 @namespace: "${Project.ApplicationName}");
         }
     }
