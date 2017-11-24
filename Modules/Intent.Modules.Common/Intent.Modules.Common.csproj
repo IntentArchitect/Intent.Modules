@@ -33,11 +33,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.2.3-beta\lib\net45\Intent.MetaModel.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.2.3\lib\net45\Intent.MetaModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.2.1-beta\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.2.1\lib\net45\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
