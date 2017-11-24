@@ -20,5 +20,9 @@
       <name>Namespace</name>
       <type>string</type>
     </property>
+    <property id="AE91EFB3-56BB-451D-AA29-C20D221AB168">
+      <name>IsPrimitive</name>
+      <type>boolean</type>
+    </property>
   </properties>
 </stereotypeDefinition>

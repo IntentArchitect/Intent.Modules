@@ -12,5 +12,19 @@
         <property name="8CCCD630-6AF9-41FA-8E5F-414860AD89BB" value="System" />        
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="822c6b64-82c2-4e5b-9d07-b79adc9a09e7">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="6591a390-5d73-422c-af7b-371184a8519a" value="Date" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="1df2768a-5f1e-4bf5-a01c-b2dc74864b7f">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="7db2c33e-2fd7-44aa-a2da-39ac26a7f831" value="Date" />
+        <property name="9805D4BE-0962-428C-8CAF-E305A30833B4" value="java.util" />
+        <property name="AE91EFB3-56BB-451D-AA29-C20D221AB168" value="false" />
+      </properties>
+    </stereotype>
   </stereotypes>
 </dataType>
