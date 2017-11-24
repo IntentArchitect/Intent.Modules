@@ -1,13 +1,13 @@
 - name: Modules
   items:
   - name: Intent Common
-    href: IntentCommon/Overview.md
+    href: intent_common/overview.md
   - name: Intent Common Types
-    href: IntentCommonTypes/Overview.md
+    href: intent_common_types/overview.md
   - name: Intent Nuget Installer
-    href: IntentNugetInstaller/Overview.md
+    href: intent_nuget_installer/overview.md
   - name: Intent Visual Studio Projects
-    href: IntentVisualStudioProjects/Overview.md
+    href: intent_visual_studio_projects/overview.md
   - name: Roslyn Weaver
-    href: RoslynWeaver/toc.yml
-    topicHref: RoslynWeaver/Overview.md
+    href: roslyn_weaver/toc.yml
+    topicHref: roslyn_weaver/overview.md

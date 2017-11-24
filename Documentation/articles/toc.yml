@@ -1,75 +1,75 @@
 - name: Getting Started
   items:
   - name: Welcome to Intent Architect
-    href: GettingStarted/Intro.md
+    href: getting_started/intro.md
   - name: Quick Start
-    href: GettingStarted/QuickStart.md
+    href: getting_started/quickStart.md
   - name: Make Your Own Module
     items:
     - name: Creating a Module From Scratch
-      href: GettingStarted/creating-a-module-from-scratch.md
+      href: getting_started/creating_a_module_from_scratch.md
     - name: Downloadable Example Module
-      href: GettingStarted/downloadable-example-module.md
+      href: getting_started/downloadable_example_module.md
   - name: Factory Extensions
-    href: GettingStarted/FactoryExtensions.md
+    href: getting_started/factory_extensions.md
   - name: FAQ
-    href: GettingStarted/FAQ.md    
+    href: getting_started/faq.md
 - name: Modules
-  homepage: Modules/IModSpecFile.md
+  homepage: modules/imodspecfile.md
   items:
   - name: IModSpec File
-    href: Modules/IModSpecFile.md    
+    href: modules/imodspecfile.md
 - name: Templates
-  homepage: Templates/Overview.md
+  homepage: templates/overview.md
   items:
   - name: Overview
-    href: Templates/Overview.md
+    href: templates/overview.md
   - name: The Template Class
-    href: Templates/TheTemplateClass.md
+    href: templates/the_template_class.md
   - name: Registration
-    href: Templates/Registrations.md
+    href: templates/registrations.md
   - name: Configuration
-    href: Templates/Configuration.md
+    href: templates/configuration.md
   - name: Code Output
-    href: Templates/CodeOutput.md
+    href: templates/code_output.md
   - name: Extensions
-    href: Templates/Extensions.md
+    href: templates/extensions.md
 - name: Core Modules
   homepage: CoreModules.md
   items:
   - name: Intent Common
-    href: ../modules/IntentCommon/Overview.md
+    href: ../modules/intent_common/overview.md
   - name: Intent Common Types
-    href: ../modules/IntentCommonTypes/Overview.md
+    href: ../modules/intent_common_types/overview.md
   - name: Intent Nuget Installer
-    href: ../modules/IntentNugetInstaller/Overview.md
+    href: ../modules/intent_nuget_installer/overview.md
   - name: Intent Visual Studio Projects
-    href: ../modules/IntentVisualStudioProjects/Overview.md
+    href: ../modules/intent_visual_studio_projects/overview.md
   - name: Roslyn Weaver 
-    href: ../modules/RoslynWeaver/  
+    href: ../modules/roslyn_weaver/
 - name: User Manual
   items:
   - name: The shell
-    href: UserManual/Shell.md    
+    href: user_manual/shell.md
   - name: Home screen
-    href: UserManual/HomeScreen.md    
+    href: user_manual/home_screen.md
   - name: Creating a Solution
-    href: UserManual/SolutionScreen.md    
+    href: user_manual/solution_screen.md
   - name: Creating an Application
-    href: UserManual/NewApplicationWizard.md    
+    href: user_manual/new_application_wizard.md
   - name: Application home screen
-    href: UserManual/ApplicationScreen.md    
+    href: user_manual/application_screen.md
   - name: Application Configuration
-    href: UserManual/ApplicationConfiguration.md    
+    href: user_manual/application_configuration.md
   - name: Application Modules
-    href: UserManual/ApplicationModules.md    
+    href: user_manual/application_modules.md
   - name: Model your Domain
-    href: UserManual/Domain.md    
+    href: user_manual/domain.md
   - name: Model your Data Contracts
-    href: UserManual/Dto.md    
+    href: user_manual/dto.md
   - name: Model your Services
-    href: UserManual/Services.md    
+    href: user_manual/services.md
   - name: Push the play button
-    href: UserManual/SoftwareFactoryExecution.md    
+    href: user_manual/software_factory_execution.md
   - name: Repository Configuration
-    href: UserManual/RepositoryConfiguration.md    
+    href: user_manual/repository_configuration.md
