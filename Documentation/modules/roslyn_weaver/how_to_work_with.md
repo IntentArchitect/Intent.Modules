@@ -2,7 +2,7 @@
 
 ## Working with Roslyn Weaver templates
 
-Roslyn Weaver provides several code based attributes ([Roslyn Weaver attributes](Attributes.md)) which can used to control or change the code weaving process. As a developer working with the generated output, you will find that while the generated output is typically what you want occasionally you may need to change or extend the output for exceptional circumstances. Note if you are doing this often you should consider upgrading or changing the templates themselves. 
+Roslyn Weaver provides several code based attributes ([Roslyn Weaver attributes](attributes.md)) which can used to control or change the code weaving process. As a developer working with the generated output, you will find that while the generated output is typically what you want occasionally you may need to change or extend the output for exceptional circumstances. Note if you are doing this often you should consider upgrading or changing the templates themselves. 
 
 Modifying the solution code file involves introducing, or changing existing, IntentManged attributes to fine tune the Roslyn Weavers behaviour to respect the non-generated code. Below are several examples of doing this.
 

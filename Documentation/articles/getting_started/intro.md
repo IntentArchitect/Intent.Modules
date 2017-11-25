@@ -23,7 +23,7 @@ Conceptually Intent Architect works in 3 steps:-
 - Choose your patterns and their backing technologies through Modules
 - Run the Software Factory
 
-![Image of IA Overview](../../images/HowItWorks.png)
+![Image of IA Overview](../../images/how_it_works.png)
 *Overview of how Intent Architect work*
 
 In practice you would apply these steps organically and iteratively as you build out your solution, describing your application and refining its design as you model your business domain, patternizing your application's architecture. 
@@ -43,7 +43,7 @@ Am I not just documenting my design? In principle yes, but unlike traditional do
 Intent Architect has several Domain Specific Languages (DSLs) which you can use to model the application concepts described above. An example of such a DSL would be our integrated visual UML editor, which would typically be used to model your application domain.
 
 
-![Image of UML Model Sample](../../images/UmlModellerSample.png)
+![Image of UML Model Sample](../../images/uml_modeller_sample.png)
 *UML Modelling DSL example*
 
 All the DSLs are fully extensible though a custom metadata extension system simply referred to as *stereotypes*. Stereotypes allow you to extend existing models and add your own custom data to the existing Metadata model. This would typically be data that is specific to your application or design. Should you wish to describe other aspects of your application, that Intent Architect does not have a DSL for, you can provide your own Metadata models. These Metadata models can be in whatever format you like, some examples may include JSON, XML or .NET source code. This can be done through creating your own `MetadataLoader` plugin.
@@ -61,7 +61,7 @@ When capturing Metadata you are really describing *what* you want to build, in t
 
 The way you *choose your patterns* in Intent Architect is by installing Modules. Theses Modules typically contain coded templates which will generate these design patterns into your solution based on the Metadata you have previously described. You can reuse someone else's Module or build your own.
 
-![Image of Modules Sample](../../images/ModulesSample.png)
+![Image of Modules Sample](../../images/modules_sample.png)
 *Installed Modules example*
 
 Some additional points on modules:-
@@ -74,7 +74,7 @@ Some additional points on modules:-
 
 So this step..., really is that easy. Clicking the play button in Intent Architect will execute the software factory. Intent Architect will take your Metadata, patterns, configuration and then generate your application accordingly. What this means practically is that source code, as per your design, will be generated. It is important to note at this point that Intent Architect is designed to work with continuous code generation in mind, i.e. whenever you change your design or patterns, simply clicking play will update your application accordingly.
 
-![Image of Modules Sample](../../images/SFExecutionSample.png)
+![Image of Modules Sample](../../images/sf_execution_sample.png)
 *Software Factory execution example*
 
 When running the Software Factory, feedback about its execution is provided in the Console tab. The Changes tab provides comprehensive information about the code changes that Intent Architect wants to apply. These changes can be reviewed and then applied, or discarded if required.  

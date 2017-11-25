@@ -4,7 +4,7 @@ Clicking the Play button will kick off the execution of our software factory. Th
 
 ## Console tab
 
-![Image of the SF Execution Console](../../images/UserManual/SFExecuteConsole.png)
+![Image of the SF Execution Console](../../images/user_manual/sf_execute_console.png)
 
 ### 1. Console Tab
 
@@ -27,7 +27,7 @@ This will cancel the process, no output will be written to disk, i.e. no changes
 
 ## Changes tab  
 
-![Image of the SF Execution Changes](../../images/UserManual/SFExecuteChanges.png)
+![Image of the SF Execution Changes](../../images/user_manual/sf_execute_changes.png)
 
 ### 1. Changes Tab
 This tab shows the details of the output from the code generation execution process.

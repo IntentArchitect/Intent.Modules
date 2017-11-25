@@ -22,7 +22,7 @@ A `Solution` is a logical grouping of `Applications` (components) of your system
 
 **Click on `Create New Solution`, either in the body of the `Home` screen or from the `Solutions` drop down at the top of the screen.**
 
-![New Solution Dialog](../../images/QuickStart/CreateSolutionDialog.png)
+![New Solution Dialog](../../images/quick_start/create_solution_dialog.png)
 
 *Create Solution Dialog*
 
@@ -50,14 +50,14 @@ You will now be presented with a two-step wizard to create your application.
 - Select an Application Template.
 - Capture some basic details for the Application.
 
-![Select an Application Template](../../images/QuickStart/CreateApplicationPage1.png)
+![Select an Application Template](../../images/quick_start/create_application_page1.png)
 *Select an Application Template*
 
 Each Application Template is pre-configured initial state of an application. They can install Modules, populate Metadata and anything else that can be manually configured through the front end. Intent Architect has a gallery of templates available online which will be added to over time. For the purposes of this guide, we will choose the `Full Stack ASP.NET WebAPI 2.2` *Application Template*.
 
 **Select the `Full Stack ASP.NET WebAPI 2.2` Application Template and click `Next`.**
 
-![Capture Application Details](../../images/QuickStart/CreateApplicationPage2.png)
+![Capture Application Details](../../images/quick_start/create_application_page2.png)
 *Capture Application Details*
 
 |Field|Description|
@@ -73,14 +73,14 @@ Each Application Template is pre-configured initial state of an application. The
 
 Your Application is now created, and pre-configured with various Modules and Metadata from the Application Template. 
 
-![View of an Application](../../images/QuickStart/NewApplication.png)
+![View of an Application](../../images/quick_start/new_application.png)
 *Application View*
 
 **Click the `Play` button, in the top right hand corner.**
 
 The `Run Software Factory` dialogue will appear, providing feedback of and interaction with the code generation process. Not worrying too much about the presented `Console` entries, once the Software Factory has run, the `Changes` tab is presented showing a list of all pending code changes. Reviewing the list, we can see it is wanting to create a Visual Studio solution, made up of the `.sln` file as well as `csproj` and various other infrastructura files.
 
-![Execution of the Software Factory](../../images/QuickStart/SoftwareFactoryExecution1.png)
+![Execution of the Software Factory](../../images/quick_start/software_factory_execution1.png)
 *Software Factory execution 'Changes'*
 
 **Click the `Apply Changes` button.**
@@ -91,7 +91,7 @@ At this point the software factory applies all the pending code changes from the
 
 At this point you can navigate to the folder on your hard drive which you specified for your application and you should see something like this:
 
-![View of Generated Output](../../images/QuickStart/GeneratedApplication.png)
+![View of Generated Output](../../images/quick_start/generated_application.png)
 *Generated outputs*
 
 Open the solution in Visual Studio 2015/2017 (output will be in the location chosen for your application).
@@ -105,7 +105,7 @@ What may not obvious at this point is what caused the code to be generated, and 
 
 If you look at the Modules section of you application, on the installed tab you should see something similar to this:
 
-![View of Modules](../../images/QuickStart/Modules.png)
+![View of Modules](../../images/quick_start/modules.png)
 *Installed Modules*
 
 Here you can see there are a collection of modules which have been installed by the application template. Each of these modules is affecting what code is generated as well as how it is generated. 
@@ -116,7 +116,7 @@ In a less contrived scenario you would hand pick which modules you wished to use
 
 Another aspect which is affecting the code generation is the Application Configuration. If you go the `Configuration` section, you will see the following:
 
-![View of Application Configuration](../../images/QuickStart/Configuration.png)
+![View of Application Configuration](../../images/quick_start/configuration.png)
 *Application project configuration*
 
 This is Metadata describing how you want your actual source code to be structured in addition to where you would like the code generation from installed modules to go. This is done by mapping `Target Roles` from the `Modules` onto your project structure.

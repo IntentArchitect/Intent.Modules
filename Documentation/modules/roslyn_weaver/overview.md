@@ -15,21 +15,21 @@ Some of the design goals behind Roslyn Weaver
 - Respect the developers code, try to maintain formatting and white space as much as possible. 
 - Try to be unintrusive, code should look and fell like code you would traditionally hand write. 
 
-[Terminology](Terminology.md)
+[Terminology](terminology.md)
 
-[How Roslyn Weaver works](HowItWorks.md)
+[How Roslyn Weaver works](how_it_works.md)
 
-[Roslyn Weaver for Template Designers](HowToImplement.md)
+[Roslyn Weaver for Template Designers](how_to_implement.md)
 
-[Roslyn Weaver for Template Consumers](HowToWorkWith.md)
+[Roslyn Weaver for Template Consumers](how_to_work_with.md)
 
-[Roslyn Weaver Attributes](Attributes.md)
+[Roslyn Weaver Attributes](attributes.md)
 
-[Code Migrations](CodeMigrations.md)
+[Code Migrations](code_migrations.md)
 
-[Gotchas](Gotchas.md)
+[Gotchas](gotchas.md)
 
-[Appendix](Appendix.md)
+[Appendix](appendix.md)
 
 
 

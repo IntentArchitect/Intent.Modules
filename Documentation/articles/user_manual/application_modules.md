@@ -14,11 +14,11 @@ Modules can include any of the following plugins:-
 
 
 
-![Image of the Modules Screen](../../images/UserManual/ApplicationModules.png)
+![Image of the Modules Screen](../../images/user_manual/application_modules.png)
 
 
 ## 1. Repository Configuration
-This allows you to configure your repositories, i.e. where Intent Architect is discovering your modules. [![Navigates to Repository Configuration](../../images/navigate.png "Navigates to Repository Configuration screen")](RepositoryConfiguration.md)
+This allows you to configure your repositories, i.e. where Intent Architect is discovering your modules. [![Navigates to Repository Configuration](../../images/navigate.png "Navigates to Repository Configuration screen")](repository_configuration.md)
 
 ## 2. Module Filter
 This controls what modules you are seeing in the modules list.

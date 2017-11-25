@@ -3,7 +3,7 @@
   - name: Welcome to Intent Architect
     href: getting_started/intro.md
   - name: Quick Start
-    href: getting_started/quickStart.md
+    href: getting_started/quick_start.md
   - name: Make Your Own Module
     items:
     - name: Creating a Module From Scratch
@@ -35,7 +35,7 @@
   - name: Extensions
     href: templates/extensions.md
 - name: Core Modules
-  homepage: CoreModules.md
+  homepage: core_modules.md
   items:
   - name: Intent Common
     href: ../modules/intent_common/overview.md

@@ -4,7 +4,7 @@
 
 This screen allows to describe your business domain through the use of UML class diagrams. Here you can describe complex business concepts and their relationships, partitioning them into simpler to consume views (if required). As with all the meta data describing DSLs this data is technology agnostic and can be extending using your own custom meta data through the stereotype system. 
 
-![Image of the Domain Screen](../../images/UserManual/Domain.png)
+![Image of the Domain Screen](../../images/user_manual/domain.png)
 
 ### 1. Toolbar
 These are the controls which allow you to perform high level interactions with the current UML view. 
@@ -26,7 +26,7 @@ This is a basic property editor for the currently selected item.
 
 Allows for high level interaction with the current UML View within the UML Editor region.
 
-![Image of the Domain Toolbar](../../images/UserManual/DomainToolbar.png)
+![Image of the Domain Toolbar](../../images/user_manual/domain_toolbar.png)
 
 ### 1. Save
 Saves your changed.
@@ -50,7 +50,7 @@ Add an inheritance relationship between the two classes you select.
 
 Model you domain or a sub view of it using UML. This supports standard UML functionality, this includes concept of stereotypes which allow you to annotated custom meta data to any aspect of the model. 
 
-![Image of the Domain UML Editor](../../images/UserManual/DomainModeler.png)
+![Image of the Domain UML Editor](../../images/user_manual/domain_modeler.png)
 
 ### 1. Class
 A UML Class.
@@ -71,7 +71,7 @@ An association between classes.
 
 This tree view contains the entire domain model, as opposed to the UML editor which showing you a specific view of the domain model.
 
-![Image of the Domain Model View](../../images/UserManual/DomainModelView.png)
+![Image of the Domain Model View](../../images/user_manual/domain_model_view.png)
 
 ### 1. Views
 These are the views of the domain model, or sub sections of the domain model. This tool allows for multiple views to be created on top of a single domain model. This allows for creating simplified views or perspective based views on top of the underlying domain model.
@@ -89,7 +89,7 @@ These would be the extensions to the UML model, namely custom data types, enumer
 
 This shows, and allows for editing, the properties of the currently selected item.
 
-![Image of the Domain Property Window](../../images/UserManual/DomainProperties.png)
+![Image of the Domain Property Window](../../images/user_manual/domain_properties.png)
 
 ### 1. Item Type
 Type indicator for the selected item.

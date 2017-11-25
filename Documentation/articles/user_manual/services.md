@@ -2,7 +2,7 @@
 
 This screen allows to describe your services. As with all the meta data describing DSLs this data is technology agnotic and can be extending using your own custom meta data through the stereotype system. 
 
-![Image of the Dto Screen](../../images/UserManual/Services.png)
+![Image of the Dto Screen](../../images/user_manual/services.png)
 
 ## 1. Save
 

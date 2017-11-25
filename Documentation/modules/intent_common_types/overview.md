@@ -6,17 +6,17 @@ This module provides technology agnostic primitive types for modeling. It also p
 
 Installing this module will install MetaData Data types into the various standard Intent Architect DSLs (e.g. Domain Modeller). 
 
-![Installed MetaData types](images/MetaDataTypes.png)
+![Installed MetaData types](images/meta_data_types.png)
 *Installed MetaData Data types*
 
 It will also install Stereotypes for describing type conversions, this module install type converters for C#, Java and TypeScript.
 
-![Installed Stereotypes](images/StereoTypes.png)
+![Installed Stereotypes](images/stereo_types.png)
 *Installed Stereotypes*
 
 These stereotypes can be applied to any data types to describe it's technology specific type. In the image below we can see an example of mapping the technology agnostic 'datetime' onto the equivalent C# type.
 
-![DateTime Mapping](images/DateTimeMapping.png)
+![DateTime Mapping](images/date_time_mapping.png)
 *Mapping Datetime to C#*
 
 Within you template simply pass the MetaData model data type to the Types.Get method to resolve the technology specific type within your template (see pseudo code example below). 

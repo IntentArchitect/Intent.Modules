@@ -4,7 +4,7 @@ This document is a detailed walkthrough of creating an [Intent Architect](https:
 
 ## I would prefer to skip all this reading and just see the final code
 
-If you would prefer to quickly jump straight into a working example, we have a super quick guide [here](downloadable-example-module.md) on using a downloadable example module.
+If you would prefer to quickly jump straight into a working example, we have a super quick guide [here](downloadable_example_module.md) on using a downloadable example module.
 
 ## This Tutorial
 
@@ -22,10 +22,10 @@ Create a WebApi project using Visual Studio's scaffolding feature:
     - Name: `MyApplication.WebApi`
     - Location: `C:\Dev\MySolution`
     - Solution name: `MyApplication`
-    ![](../../images/MakeYourOwnModule/image1.png)
+    ![](../../images/make_your_own_module/image1.png)
 - Press `OK`
 - Use the `Web API` template
-![](../../images/MakeYourOwnModule/image2.png)
+![](../../images/make_your_own_module/image2.png)
 - Leave the default boxes checked (just `MVC` and `Web API`)
 - (Optional) Press the `Change Authentication` button and choose `No Authentication` if you don't want to worry about authentication right now.
 - Press `OK`
@@ -38,12 +38,12 @@ In Intent Architect, we will make a new solution in the same folder as our Visua
 - Make a new Solution:
     - Name: `MySolution`
     - Path: `C:\Dev\MySolution`
-    ![](../../images/MakeYourOwnModule/image3.png)
+    ![](../../images/make_your_own_module/image3.png)
 - Make a new Application
     - Use the `Empty Application` template
-    ![](../../images/MakeYourOwnModule/image4.png)
+    ![](../../images/make_your_own_module/image4.png)
     - Give it name of `MyApplication`
-    ![](../../images/MakeYourOwnModule/image5.png)
+    ![](../../images/make_your_own_module/image5.png)
 - Go to `Modules`
     - Search for `Intent.VisualStudio.Projects` and install the module
     - Search for `Intent.NuGet.Installer` and install the module
@@ -52,7 +52,7 @@ In Intent Architect, we will make a new solution in the same folder as our Visua
     - Right-click `Projects` and select `New Project`
     - Select the `WebApi` entry
     - Give it a name of `MyApplication.WebApi`.
-    ![](../../images/MakeYourOwnModule/image6.png)
+    ![](../../images/make_your_own_module/image6.png)
 - Use the play button to generate your application. Press `Apply Changes` when done.
 
 ## Creating the Module
@@ -64,7 +64,7 @@ In a new instance of Visual Studio, we are going to make a new project from whic
     - Name: `Module.Example.WebApi`
     - Location: `C:\Dev\MySolution`
     - Solution name: `MySolution.Automation`
-    ![](../../images/MakeYourOwnModule/image7.png)
+    ![](../../images/make_your_own_module/image7.png)
 - Add the following Nuget packages:
     - `Intent.IntentArchitectPackager`
     - `Intent.SoftwareFactory.MetaModel` (which will install `Intent.SoftwareFactory.SDK` as a dependency)

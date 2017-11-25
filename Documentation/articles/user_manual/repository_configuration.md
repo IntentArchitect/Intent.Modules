@@ -2,7 +2,7 @@
 
 This screen allows you to configure the Repositories for your application. These repositories are the sources of Application Templates and Modules. Repositories can be represented by a service or a physical folder on your hard drive. 
 
-![Image of the Repository Configuration Screen](../../images/UserManual/RepositoryConfiguration.png)
+![Image of the Repository Configuration Screen](../../images/user_manual/repository_configuration.png)
 
 ## 1. Current Repository
 This control allows you to change / choose your default repository 

@@ -7,7 +7,7 @@ Describe your application's code project structure. Here you conceptually lay ou
 Generated code is mapped to the projects through a role system. Templates in Modules target roles (defined by the Template creator), when such a module is added to your application those roles becomes available on this screen for assignment. Assigning a role to a project is effectively saying 'Place all generated output related to this role into this project'. It is recommended to use standard conventions for roles e.g. Domain, Persistence, UI, Services, Contracts, etc. 
 
 
-![Image of the Application Configuration](../../images/UserManual/ApplicationConfiguration.png)
+![Image of the Application Configuration](../../images/user_manual/application_configuration.png)
 
 ## 1. Save
 Save your application configuration, save the world.
