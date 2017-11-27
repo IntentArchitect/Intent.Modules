@@ -39,4 +39,4 @@ The https://github.com/IntentSoftware/Modules.Examples repository contains an al
 
 ## More information:
 
-For a more detail on the parts and pieces of this example, we recommend that you read the [Creating A Module From Scratch](https://github.com/IntentSoftware/IntentArchitect/blob/master/docsProject/articles/getting_started/creating_a_module_from_scratch.md) article.
+For a more detail on the parts and pieces of this example, we recommend that you read the [Creating a Module From Scratch](https://intentarchitect.com/docs/articles/getting_started/creating_a_module_from_scratch.html) article.

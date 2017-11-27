@@ -25,7 +25,7 @@ Play around by adding Services, Domain classes and DTOs, and see how the pattern
 _(Important: You will need to add the "Aggregate Root" / "Entity" (Domain Driven Development concepts) stereotype to you Domain classes for them to generate. This is a requirement of the Intent.RichDomain module, currently being installed for this application template. To do so simply right-click the Domain class and select Add Stereotype)_
 
 ## How it works
-Intent Architect works by feeding information (Metadata) about the application, and how this information should be realized (Modules), into a Software Factory, which then outputs code into your codebase. For more information, check out our website [www.intentarchitect.com](https://intentarchitect.com).
+Intent Architect works by feeding information (Metadata) about the application, and how this information should be realized (Modules), into a Software Factory, which then outputs code into your codebase. For more information, check out our website [https://intentarchitect.com/](https://intentarchitect.com/).
 
 ## Create your own Modules
 Modules are made up of a cohesive set of outputs which make up a pattern. This repository contains the modules that have been created by the Intent Architect team to deliver complex business applications for existing clients.
