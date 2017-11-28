@@ -19,14 +19,7 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
             {
                 string typeName = typeInfo.Stereotypes.GetPropertyValue<string>("Java", "Type");
                 string @namespace = typeInfo.Stereotypes.GetPropertyValue<string>("Java", "Namespace");
-                if (!string.IsNullOrWhiteSpace(@namespace))
-                {
-                    result = $"{@namespace}.{typeName}";
-                }
-                else
-                {
-                    result = typeName;
-                }
+                result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
             }
 
             return result;

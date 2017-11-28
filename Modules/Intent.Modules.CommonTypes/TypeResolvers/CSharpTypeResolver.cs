@@ -20,14 +20,9 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
             {
                 string typeName = typeInfo.Stereotypes.GetPropertyValue<string>("C#", "Type");
                 string @namespace = typeInfo.Stereotypes.GetPropertyValue<string>("C#", "Namespace");
-                if (!string.IsNullOrWhiteSpace(@namespace))
-                {
-                    result = $"{@namespace}.{typeName}";
-                }
-                else
-                {
-                    result = typeName;
-                }
+
+                result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
+
                 if (typeInfo.IsNullable && (typeInfo.Type == ReferenceType.Enum || (typeInfo.Type == ReferenceType.DataType && typeInfo.Stereotypes.GetPropertyValue("C#", "IsPrimitive", false))))
                 {
                     result += "?";
