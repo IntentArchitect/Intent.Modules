@@ -10,15 +10,19 @@
       href: getting_started/creating_a_module_from_scratch.md
     - name: Downloadable Example Module
       href: getting_started/downloadable_example_module.md
-  - name: Factory Extensions
-    href: getting_started/factory_extensions.md
   - name: FAQ
     href: getting_started/faq.md
 - name: Modules
-  homepage: modules/imodspecfile.md
+  homepage: modules/imodspec_file.md
   items:
+  - name: Overview
+    href: modules/overview.md
   - name: IModSpec File
-    href: modules/imodspecfile.md
+    href: modules/imodspec_file.md
+  - name: Templates
+    href: emplates/overview.md
+  - name: Factory Extensions
+    href: getting_started/factory_extensions.md
 - name: Templates
   homepage: templates/overview.md
   items:
