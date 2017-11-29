@@ -20,9 +20,9 @@
   - name: IModSpec File
     href: modules/imodspec_file.md
   - name: Templates
-    href: emplates/overview.md
+    href: templates/overview.md
   - name: Factory Extensions
-    href: getting_started/factory_extensions.md
+    href: modules/factory_extensions.md
 - name: Templates
   homepage: templates/overview.md
   items:
