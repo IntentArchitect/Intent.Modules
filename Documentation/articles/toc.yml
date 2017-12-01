@@ -13,7 +13,7 @@
   - name: FAQ
     href: getting_started/faq.md
 - name: Modules
-  homepage: modules/imodspec_file.md
+  homepage: modules/overview.md
   items:
   - name: Overview
     href: modules/overview.md

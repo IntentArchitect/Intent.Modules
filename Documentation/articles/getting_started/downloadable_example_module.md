@@ -1,7 +1,7 @@
 <!--
 Important:
 
-This is largely replicated at https://github.com/IntentSoftware/Modules.Examples/blob/master/readme.md
+This is largely replicated at https://github.com/IntentSoftware/IntentArchitect/blob/master/docsProject/articles/make_your_own_module.md
 
 Be sure to update both if editing.
 -->
@@ -25,9 +25,12 @@ The https://github.com/IntentSoftware/Modules.Examples repository contains an al
     - Leave Visual Studio open so you can come back to it later.
 - Using Intent Architect:
     - Open the `.\MySolution\MySolution.isln` *solution* and its `MyApplication` *application*.
-    - Run the Software Factory and observe that there are no outstanding output changes.
+    - Run the Software Factory and observe that the output would like to create a `MathServiceController` and update the `.csproj` file. This is based on the metadata in the `Services` modeler.
     - Edit and save `Services` of the *application*, then run the Software Factory again to see how output is affected.
     - Leave Intent Architect open so you can come back to it later.
+
+>[!Note]
+>It's worth noting that you can change the implementation of each operation in the `MathServiceController` *without* your code being overwritten. This is due to the [Roslyn Weaving](https://intentarchitect.com/docs/modules/roslyn_weaver/overview.html) output transformer module `Intent.OutputManager.RoslynWeaver`.
 
 ## Editing the example module and seeing how it affects the generated code
 

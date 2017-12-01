@@ -4,7 +4,7 @@ Modules are the building blocks and extension points of Intent Architect. They t
 ## Creating Modules
 If you're looking to automate patterns unique to your project, then creating your own Modules is the way to do it. It's easy to get started by following [this document](../getting_started/downloadable_example_module.md) and _checking out_ the example code. For more in depth examples, _check out_ our [GitHub repository of modules](https://github.com/IntentSoftware/IntentArchitect), which has many working modules that can be used as is in your applications, or as a seed for your own custom patterns.
 
-See this [this document](../getting_started/creating_a_module_from_scratch.md) for a full tutorial on creating a module from scratch.
+See [this document](../getting_started/creating_a_module_from_scratch.md) for a full tutorial on creating a module from scratch.
 
 
 ## Module Components
@@ -15,5 +15,10 @@ Every Module requires an **[imodspec file](imodspec_file.md)** to describe it an
 - **[Metadata](imodspec_file.md)** - Install predefined metadata into your application on installing of the Module. This is very useful when you have predefined Stereotypes or Types that your templates depend upon.
 
 ## Packaging
-To package a Module from a `csproj` (C# Project) into a Module that is able to be installed into an Intent Architect application, an packager is required. This is provided as a NuGet package `Intent.IntentArchitectPackager`, which can be installed by running the following:
-Install-Package Intent.IntentArchitectPackager -Version 1.1.0
+To package a Module from a `csproj` (C# Project) into a Module that is able to be installed into an Intent Architect application, a packager is required. This is provided as a NuGet package `Intent.IntentArchitectPackager`, which can be installed by running the following:
+
+```
+Install-Package Intent.IntentArchitectPackager
+```
+
+On successful compiling of the project, the Module will be packaged into a folder at `%SolutionFolder%\Intent.Modules`. By creating a repository at this folder from within Intent Architect's Modules manager, you can install this module into your application.
