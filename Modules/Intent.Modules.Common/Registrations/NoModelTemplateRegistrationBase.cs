@@ -1,5 +1,6 @@
 ﻿
 using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Registrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,9 @@ namespace Intent.SoftwareFactory.Templates.Registrations
 
         public abstract ITemplate CreateTemplateInstance(IProject project);
 
-        public void DoRegistration(Action<string, Func<IProject, ITemplate>> register, IApplication applicationManager)
+        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
-            register(TemplateId, project => CreateTemplateInstance(project));
+            registery.Register(TemplateId, project => CreateTemplateInstance(project));
         }
     }
 }

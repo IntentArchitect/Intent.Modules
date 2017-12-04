@@ -32,7 +32,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override IEnumerable<DTOModel> GetModels(IApplication application)
         {
-            var dtoModels = _metaDataManager.GetMetaData<DTOModel>(new MetaDataType("DTO"));
+            var dtoModels = _metaDataManager.GetMetaData<DTOModel>(new MetaDataIdentifier("DTO"));
 
             dtoModels = dtoModels.Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(a => a.Trim() == application.ApplicationName));
 

@@ -1,4 +1,5 @@
-﻿using Intent.Modules.VisualStudio.Projects.Decorators;
+﻿/*
+using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
@@ -97,3 +98,4 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
         }
     }
 }
+*/

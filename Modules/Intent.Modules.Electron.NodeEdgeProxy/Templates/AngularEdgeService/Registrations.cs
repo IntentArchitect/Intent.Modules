@@ -28,7 +28,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
         public override IEnumerable<ServiceModel> GetModels(IApplication applicationManager)
         {
             return _metaDataManager
-                .GetMetaData<ServiceModel>(new MetaDataType("Service"))
+                .GetMetaData<ServiceModel>(new MetaDataIdentifier("Service"))
                 .Where(x => x.Application.Name == applicationManager.ApplicationName && x.Stereotypes.Any(y => y.Name == "NodeEdgeService"))
                 .ToList();
         }

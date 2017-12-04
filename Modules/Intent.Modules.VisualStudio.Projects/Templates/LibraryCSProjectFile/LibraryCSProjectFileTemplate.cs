@@ -12,10 +12,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
 {
     public class LibraryCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators, IHasNugetDependencies
     {
+        public const string Identifier = "Intent.VisualStudio.Projects.LibraryCSProjectFile";
         private readonly Dictionary<string, IXmlDecorator> _decorators = new Dictionary<string, IXmlDecorator>();
 
         public LibraryCSProjectFileTemplate(IProject project)
-            : base (CoreTemplateId.ProjectCSLibrary, project, null)
+            : base (Identifier, project, null)
         {
         }
 
@@ -24,7 +25,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
-                fileName: Project.ProjectName,
+                fileName: Project.Name,
                 fileExtension: "csproj",
                 defaultLocationInProject: ""
                 );

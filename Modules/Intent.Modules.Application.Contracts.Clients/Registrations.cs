@@ -35,12 +35,12 @@ namespace Intent.Modules.Application.Contracts.Clients
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
             var dtoModels = metaDataManager
-                .GetMetaData<DtoModel>(new MetaDataType("DtoProjection"))
+                .GetMetaData<DtoModel>(new MetaDataIdentifier("DtoProjection"))
                 .Where(x => x.Clients.Any(y => application.ApplicationName.Equals(y, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
 
             var serviceModels = metaDataManager
-                .GetMetaData<ServiceModel>(new MetaDataType("Service-Legacy"))
+                .GetMetaData<ServiceModel>(new MetaDataIdentifier("Service-Legacy"))
                 .Where(x => x.Clients.Any(y => application.ApplicationName.Equals(y, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
 
@@ -76,7 +76,7 @@ namespace Intent.Modules.Application.Contracts.Clients
         public override IEnumerable<MetaModel.Service.ServiceModel> GetModels(IApplication application)
         {
             return _metaDataManager
-                .GetMetaData<MetaModel.Service.ServiceModel>(new MetaDataType("Service"))
+                .GetMetaData<MetaModel.Service.ServiceModel>(new MetaDataIdentifier("Service"))
                 .Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }
@@ -102,7 +102,7 @@ namespace Intent.Modules.Application.Contracts.Clients
         public override IEnumerable<MetaModel.DTO.DTOModel> GetModels(IApplication application)
         {
             return _metaDataManager
-                .GetMetaData<MetaModel.DTO.DTOModel>(new MetaDataType("DTO"))
+                .GetMetaData<MetaModel.DTO.DTOModel>(new MetaDataIdentifier("DTO"))
                 .Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }

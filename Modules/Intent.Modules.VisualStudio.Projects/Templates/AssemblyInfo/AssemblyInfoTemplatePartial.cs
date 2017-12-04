@@ -5,9 +5,10 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
 {
     partial class AssemblyInfoTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {
+        public const string Identifier = "Intent.VisualStudio.Projects.AssemblyInfo";
 
         public AssemblyInfoTemplate(IProject project)
-            : base (CoreTemplateId.AssemblyInfo, project, null)
+            : base (Identifier, project, null)
         {
         }
 

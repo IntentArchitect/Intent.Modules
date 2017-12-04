@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.VisualStudio.Projects</id>
-  <version>1.2.1</version>
+  <version>1.2.2</version>
   <summary>Installs templates for Visual Studio projects that integrate with Intent Architect</summary>
   <description>Installs templates for Visual Studio projects that integrate with Intent Architect</description>
   <authors>Intent Software</authors>
@@ -87,9 +87,28 @@
       </properties>
     </projectType>
   </projectTypes>
-  <templates />
+  <templates>    
+    <template id="Intent.VisualStudio.Projects.VisualStudio2015Solution">
+    </template>
+    <template id="Intent.VisualStudio.Projects.AssemblyInfo">
+    </template>
+    <template id="Intent.VisualStudio.Projects.NuGetPackagesConfig">
+    </template>
+    <template id="Intent.VisualStudio.Projects.ConsoleAppCsProjectFile">
+    </template>
+    <template id="Intent.VisualStudio.Projects.WebConfig">
+    </template>
+    <template id="Intent.VisualStudio.Projects.LibraryCSProjectFile">
+    </template>
+    <template id="Intent.VisualStudio.Projects.WebApiServiceCSProjectFile">
+    </template>
+    <template id="Intent.VisualStudio.Projects.WcfServiceCSProjectFile">
+    </template>
+    <template id="Intent.VisualStudio.Projects.NodeJSProjectFile">
+    </template>
+  </templates>
   <decorators>
-    <decorator id="AssemblyBindingRedirectWebConfig"/>
+    <decorator id="Intent.VisualStudio.Projects.AssemblyBindingRedirectWebConfig"/>
   </decorators>
   <factoryExtensions>
     <factoryExtension id="Intent.VSProjects.DependencyResolver">
@@ -100,11 +119,14 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-        <dependency id="Intent.Common" version="1.2.1"/>
+    <dependency id="Intent.Common" version="1.2.2"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="bin\$configuration$\Microsoft.Build.dll" inspect="false"/>
+    <file src="bin\$configuration$\Microsoft.Build.Engine.dll" inspect="false"/>
+    <file src="bin\$configuration$\Microsoft.Build.Framework.dll" inspect="false"/>
   </files>
 
 </package>

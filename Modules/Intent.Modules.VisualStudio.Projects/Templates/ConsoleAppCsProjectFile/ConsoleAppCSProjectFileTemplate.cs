@@ -11,10 +11,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleAppCsProjectFile
 {
     public class ConsoleAppCsProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators
     {
+        public const string Identifier = "Intent.VisualStudio.Projects.ConsoleAppCsProjectFile";
+
         private readonly Dictionary<string, IXmlDecorator> _decorators = new Dictionary<string, IXmlDecorator>();
 
         public ConsoleAppCsProjectFileTemplate(IProject project)
-            : base (CoreTemplateId.ConsoleAppCsProject, project, null)
+            : base (Identifier, project, null)
         {
         }
 

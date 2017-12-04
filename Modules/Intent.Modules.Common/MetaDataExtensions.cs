@@ -11,19 +11,19 @@ namespace Intent.SoftwareFactory
 {
     public static class IntentMetadataExtensions
     {
-        public static IEnumerable<IServiceModel> GetServiceModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application)
+        public static IEnumerable<IServiceModel> GetServiceModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metaDataIdentifier = null)
         {
-            return metaDataManager.GetMetaData<IServiceModel>(new MetaDataType("Service")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return metaDataManager.GetMetaData<IServiceModel>(new MetaDataIdentifier(metaDataIdentifier ?? "Service")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
 
-        public static IEnumerable<IClass> GetDomainModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application)
+        public static IEnumerable<IClass> GetDomainModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metaDataIdentifier = null)
         {
-            return metaDataManager.GetMetaData<IClass>(new MetaDataType("DomainEntity")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return metaDataManager.GetMetaData<IClass>(new MetaDataIdentifier(metaDataIdentifier ?? "DomainEntity")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
-
-        public static IEnumerable<IDTOModel> GetDTOModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application)
+        
+        public static IEnumerable<IDTOModel> GetDTOModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metaDataIdentifier = null)
         {
-            return metaDataManager.GetMetaData<IDTOModel>(new MetaDataType("DTO")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return metaDataManager.GetMetaData<IDTOModel>(new MetaDataIdentifier(metaDataIdentifier ?? "DTO")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
     }
 }

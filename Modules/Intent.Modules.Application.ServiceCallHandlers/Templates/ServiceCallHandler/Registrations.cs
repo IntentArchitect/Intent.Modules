@@ -6,6 +6,7 @@ using Intent.SoftwareFactory.Templates.Registrations;
 using System;
 using System.ComponentModel;
 using System.Linq;
+using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
@@ -27,14 +28,14 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             return new ServiceCallHandlerImplementationTemplate(project, serviceModel, operationModel);
         }
 
-        public void DoRegistration(Action<string, Func<IProject, ITemplate>> register, IApplication applicationManager)
+        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication applicationManager)
         {
             var serviceModels = _metaDataManager.GetServiceModels(applicationManager);
             foreach (var serviceModel in serviceModels)
             {
                 foreach (var operationModel in serviceModel.Operations)
                 {
-                    register(TemplateId, (project) => CreateTemplateInstance(project, serviceModel, operationModel));
+                    registery.Register(TemplateId, (project) => CreateTemplateInstance(project, serviceModel, operationModel));
                 }
             }
         }

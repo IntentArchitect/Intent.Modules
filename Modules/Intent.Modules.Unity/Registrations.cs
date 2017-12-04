@@ -16,7 +16,7 @@ namespace Intent.Modules.Unity
 
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            var serviceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataType("Service-Legacy")).Where(x => x.ApplicationName == application.ApplicationName).ToList();
+            var serviceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataIdentifier("Service-Legacy")).Where(x => x.ApplicationName == application.ApplicationName).ToList();
 
             RegisterTemplate(UnityConfigTemplate.Identifier, project => new UnityConfigTemplate(project, application.EventDispatcher));
         }

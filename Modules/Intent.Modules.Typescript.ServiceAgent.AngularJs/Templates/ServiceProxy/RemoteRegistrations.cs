@@ -29,7 +29,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 
         public override IEnumerable<ServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = _metaDataManager.GetMetaData<ServiceModel>(new MetaDataType("Service"));
+            var serviceModels = _metaDataManager.GetMetaData<ServiceModel>(new MetaDataIdentifier("Service"));
 
             serviceModels = serviceModels.Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(a => a.Trim() == application.ApplicationName));
 

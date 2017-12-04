@@ -12,10 +12,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 {
     public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators, IHasNugetDependencies
     {
+        public const string Identifier = "Intent.VisualStudio.Projects.WcfServiceCSProjectFile";
         private readonly Dictionary<string, IXmlDecorator> _decorators = new Dictionary<string, IXmlDecorator>();
 
         public WcfServiceCSProjectFileTemplate(IProject project)
-            : base (CoreTemplateId.ProjectWCF, project, null)
+            : base (Identifier, project, null)
         {
         }
 

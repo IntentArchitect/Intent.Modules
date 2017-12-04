@@ -10,7 +10,7 @@ namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
     {
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            var clientServiceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataType("Service-Legacy")).Where(x => x.Clients.Contains(application.ApplicationName)).ToList();
+            var clientServiceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataIdentifier("Service-Legacy")).Where(x => x.Clients.Contains(application.ApplicationName)).ToList();
 
             foreach (var serviceModel in clientServiceModels)
             {
