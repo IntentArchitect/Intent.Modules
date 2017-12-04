@@ -13,7 +13,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
     // NB! Solution Project Type GUIDS: http://www.codeproject.com/Reference/720512/List-of-Visual-Studio-Project-Type-GUIDs
     partial class VisualStudio2015SolutionTemplate : ITemplate
     {
-        public const string Identifier = "";
+        public const string Identifier = "Intent.VisualStudio.Projects.VisualStudio2015Solution";
         private readonly IApplication _application;
         private readonly IFileMetaData _fileMetaData;
 

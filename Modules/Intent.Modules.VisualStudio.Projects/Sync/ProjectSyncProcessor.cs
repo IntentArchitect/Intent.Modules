@@ -43,10 +43,12 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         public void Process(List<SoftwareFactoryEvent> events)
         {
-#warning on Creating a new Project this crashes as the project file does not exist on the Hard drive
-            string filename = Path.GetFullPath(LoadProjectFile());
+            string filename = LoadProjectFile();
 
+            if (string.IsNullOrWhiteSpace(filename))
+                return;
 
+            filename = Path.GetFullPath(filename);
 
             //run events
             ProcessEvents(events);
@@ -189,6 +191,8 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         private string LoadProjectFile()
         {
             string filename = Project.ProjectFile();
+            if (string.IsNullOrWhiteSpace(filename))
+                return null;
             _doc = _xmlFileCache.GetFile(filename);
 
             if (_doc == null)
