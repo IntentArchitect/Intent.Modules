@@ -58,13 +58,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Legacy\AngularEdgeService\AngularEdgeServiceTemplate.cs">
-      <DependentUpon>AngularEdgeServiceTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Legacy\AngularEdgeService\AngularEdgeServiceTemplatePartial.cs" />
-    <Compile Include="Legacy\AngularEdgeService\Registrations.cs" />
     <Compile Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.cs">
       <DependentUpon>AngularNodeEdgeTypeScriptServiceProxyTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -122,10 +115,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Legacy\AngularEdgeService\AngularEdgeServiceTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>AngularEdgeServiceTemplate.cs</LastGenOutput>
-    </Content>
     <None Include="Intent.Modules.Electron.NodeEdgeProxy.imodspec" />
     <None Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
