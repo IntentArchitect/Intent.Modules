@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Modules.RichDomain</RootNamespace>
     <AssemblyName>Intent.Modules.RichDomain</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -125,7 +126,6 @@
     </None>
     <None Include="Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DomainEntitySpecificationTemplate.cs</LastGenOutput>
     </None>
     <None Include="Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

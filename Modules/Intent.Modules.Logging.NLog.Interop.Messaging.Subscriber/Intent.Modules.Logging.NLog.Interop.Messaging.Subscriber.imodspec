@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Logging.NLog.Interop.Messaging.Subscriber</id>
-  <version>1.2.1</version>
+  <version>1.2.3</version>
   <summary>NLog logging for messaging subscription infrastructure.</summary>
   <description>NLog logging for messaging subscription infrastructure.</description>
   <authors>Intent Software</authors>
@@ -13,9 +13,9 @@
     <decorator id="Intent.Logging.NLog.Interop.EventConsumerDecorator.Legacy"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.2.1"/>
-    <dependency id="Intent.Logging.NLog" version="1.2.1"/>
-    <dependency id="Intent.Messaging.Subscriber" version="1.2.1"/>
+    <dependency id="Intent.Common" version="1.2.3"/>
+    <dependency id="Intent.Logging.NLog" version="1.2.3"/>
+    <dependency id="Intent.Messaging.Subscriber" version="1.2.3"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
