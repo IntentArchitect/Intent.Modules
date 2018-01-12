@@ -9,6 +9,7 @@
   <displayFunction>[consumers: ${CommaSeperatedList ? CommaSeperatedList : "&lt;none&gt;"}]</displayFunction>
   <targetElements>
     <element>dto</element>
+    <element>folder</element>
   </targetElements>
   <parentFolderId>beb17e6d-acff-4c9d-96c3-255abec814bb</parentFolderId>
   <properties>

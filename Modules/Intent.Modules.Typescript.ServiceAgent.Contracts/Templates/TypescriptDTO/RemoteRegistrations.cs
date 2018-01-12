@@ -1,3 +1,4 @@
+using System;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
 using Intent.SoftwareFactory;
@@ -34,24 +35,44 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
         {
             var dtoModels = _metaDataManager.GetMetaData<DTOModel>(new MetaDataIdentifier("DTO"));
 
-            dtoModels = dtoModels.Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(a => a.Trim() == application.ApplicationName));
+            dtoModels = dtoModels.Where(x => x.GetConsumers().Any(a => a.Trim() == application.ApplicationName));
 
             return dtoModels.ToList();
         }
 
-        private static bool FolderOrParentFolderHasStereoType(IFolder folder, string name)
+        //private static bool FolderOrParentFolderHasStereoType(IFolder folder, string name)
+        //{
+        //    if (folder == null)
+        //    {
+        //        return false;
+        //    }
+
+        //    if (folder.Stereotypes.Any(x => x.Name == name))
+        //    {
+        //        return true;
+        //    }
+
+        //    return FolderOrParentFolderHasStereoType(folder.ParentFolder, name);
+        //}
+    }
+
+    public static class DTOModelExtensions {
+        public static IEnumerable<string> GetConsumers(this DTOModel dto)
         {
-            if (folder == null)
+            if (dto.HasStereotype("Consumers"))
             {
-                return false;
+                return dto.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',');
             }
-
-            if (folder.Stereotypes.Any(x => x.Name == name))
+            var folder = dto.Folder;
+            while (folder != null)
             {
-                return true;
+                if (folder.HasStereotype("Consumers"))
+                {
+                    return folder.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',');
+                }
+                folder = folder.ParentFolder;
             }
-
-            return FolderOrParentFolderHasStereoType(folder.ParentFolder, name);
+            return new string[0];
         }
     }
 }
