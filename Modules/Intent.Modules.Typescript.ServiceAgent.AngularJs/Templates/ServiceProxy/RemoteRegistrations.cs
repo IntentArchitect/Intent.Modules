@@ -31,7 +31,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         {
             var serviceModels = _metaDataManager.GetMetaData<ServiceModel>(new MetaDataIdentifier("Service"));
 
-            serviceModels = serviceModels.Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(a => a.Trim() == application.ApplicationName));
+            serviceModels = serviceModels.Where(x => x.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Any(a => a.Trim() == application.ApplicationName));
 
             return serviceModels.ToList();
         }

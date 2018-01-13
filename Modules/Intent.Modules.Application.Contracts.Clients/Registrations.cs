@@ -135,18 +135,9 @@ namespace Intent.Modules.Application.Contracts.Clients
         {
             if (dto.HasStereotype("Consumers"))
             {
-                return dto.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Select(x => x.Trim());
+                return dto.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Select(x => x.Trim());
             }
-            var folder = dto.Folder;
-            while (folder != null)
-            {
-                if (folder.HasStereotype("Consumers"))
-                {
-                    return folder.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Select(x => x.Trim());
-                }
-                folder = folder.ParentFolder;
-            }
-            return new string[0];
+            return dto.GetStereotypeInFolders("Consumers").GetProperty("CommaSeperatedList", "").Split(',').Select(x => x.Trim());
         }
     }
 }

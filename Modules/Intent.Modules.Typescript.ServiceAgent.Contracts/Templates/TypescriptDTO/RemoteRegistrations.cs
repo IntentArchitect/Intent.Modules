@@ -61,18 +61,9 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
         {
             if (dto.HasStereotype("Consumers"))
             {
-                return dto.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',');
+                return dto.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Select(x => x.Trim());
             }
-            var folder = dto.Folder;
-            while (folder != null)
-            {
-                if (folder.HasStereotype("Consumers"))
-                {
-                    return folder.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',');
-                }
-                folder = folder.ParentFolder;
-            }
-            return new string[0];
+            return dto.GetStereotypeInFolders("Consumers").GetProperty("CommaSeperatedList", "").Split(',').Select(x => x.Trim());
         }
     }
 }

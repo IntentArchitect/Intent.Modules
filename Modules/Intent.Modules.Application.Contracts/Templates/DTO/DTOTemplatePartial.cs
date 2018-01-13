@@ -58,7 +58,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         private IEnumerable<string> GetNamespaceParts()
         {
-            return Model.GetFolderPath().Select(x => x.GetPropertyValue<string>(StandardStereotypes.NamespaceProvider, "Namespace")).Where(x => x != null);
+            return Model.GetFolderPath(includePackage: true).Select(x => x.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace")).Where(x => x != null);
         }
 
         private string GetTypeInfo(ITypeReference typeInfo)

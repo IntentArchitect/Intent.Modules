@@ -14,7 +14,7 @@ namespace Intent.Modules.AngularJs.Templates.State
         {
         }
 
-        public string Url => Model.Stereotypes.GetPropertyValue("AngularState", "Url", "");
+        public string Url => Model.GetStereotypeProperty("AngularState", "Url", "");
 
         public string ViewModelName
         {

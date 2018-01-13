@@ -34,7 +34,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts
             }
             else if (typeInfo.HasStereotype(StandardStereotypes.TypescriptType))
             {
-                result = typeInfo.Stereotypes.GetPropertyValue<string>(StandardStereotypes.TypescriptType, "TypeName");
+                result = typeInfo.GetStereotypeProperty<string>(StandardStereotypes.TypescriptType, "TypeName");
             }
 
             return result;
