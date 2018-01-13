@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.EntityFramework</id>
-  <version>1.2.3</version>
+  <version>1.3.0</version>
   <summary>Entity Framework mappings and repository pattern based on Domain meta-data.</summary>
   <description>Entity Framework mappings and repository pattern based on Domain meta-data.</description>
   <authors>Intent Software</authors>
@@ -28,19 +28,19 @@
   <interoperability>
     <detect id="Intent.AspNet.WebApi">
       <install>
-        <package id="Intent.EntityFramework.Interop.WebApi" version="1.2.3"/>
+        <package id="Intent.EntityFramework.Interop.WebApi" version="1.3.0"/>
       </install>
     </detect>
     <detect id="Intent.Unity">
       <install>
-        <package id="Intent.EntityFramework.Interop.Unity" version="1.2.3"/>
+        <package id="Intent.EntityFramework.Interop.Unity" version="1.3.0"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="1.2.3"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.2.3"/>
-    <dependency id="Intent.RichDomain" version="1.2.3"/>
+    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>
+    <dependency id="Intent.RichDomain" version="1.3.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

@@ -26,7 +26,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
             var targetProjectIds = new List<string>() {
-                ProjectTypeIds.WcfApplication,
+                ProjectTypeIds.WebApiApplication,
             };
 
             var projects = application.Projects.Where(p => targetProjectIds.Contains(p.ProjectType.Id));

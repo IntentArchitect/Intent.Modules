@@ -204,7 +204,8 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
 
         private CustomMsbuildProjectSystem GetMsbuildNuGetProjectSystem(string project)
         {
-            if (!(GetProject(project).MSBuildNuGetProjectSystem is CustomMsbuildProjectSystem msbuildNuGetProjectSystem))
+            var msbuildNuGetProjectSystem = GetProject(project).MSBuildNuGetProjectSystem as CustomMsbuildProjectSystem;
+            if (msbuildNuGetProjectSystem == null)
             {
                 throw new Exception($"Could not get {nameof(CustomMsbuildProjectSystem)} for {project}.");
             }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities</id>
-  <version>1.2.3</version>
+  <version>1.3.0</version>
   <summary>Create domain entities and related artifacts.</summary>
   <description></description>
   <authors>Intent Software</authors>
@@ -44,8 +44,8 @@
     <decorator id="Intent.Serializable.Entity.Interfaces.Decorator" enabled="false" />
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.2.3"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.2.3"/>
+    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

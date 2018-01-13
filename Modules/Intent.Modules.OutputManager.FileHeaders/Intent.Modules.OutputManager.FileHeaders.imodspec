@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.OutputTransformer.FileHeader</id>
-  <version>1.2.3</version>
+  <version>1.3.0</version>
   <summary>Inserts an "Intent" header with additional information provided by the Software Factory.</summary>
   <description>Inserts an "Intent" header with additional information provided by the Software Factory.</description>
   <authors>Intent Software</authors>
@@ -18,7 +18,7 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="1.2.3"/>
+    <dependency id="Intent.Common" version="1.3.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

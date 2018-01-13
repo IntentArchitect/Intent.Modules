@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.EntityFramework.Interop.WebApi</id>
-  <version>1.2.3</version>
+  <version>1.3.0</version>
   <summary>Entity Framwork scope and context management for interoperability with the Intent.WebApi package.</summary>
   <description>Entity Framwork scope and context management for interoperability with the Intent.WebApi package.</description>
   <authors>Intent Software</authors>
@@ -14,9 +14,9 @@
     <decorator id="Intent.EntityFramework.Interop.WebApi.Legacy"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.2.3"/>
-    <dependency id="Intent.EntityFramework" version="1.2.3"/>
-    <dependency id="Intent.AspNet.WebApi" version="1.2.3"/>
+    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.EntityFramework" version="1.3.0"/>
+    <dependency id="Intent.AspNet.WebApi" version="1.3.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

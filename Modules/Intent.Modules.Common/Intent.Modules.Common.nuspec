@@ -17,7 +17,7 @@
     <tags>Intent Architect Software Factory Metadata SDK</tags>
     <dependencies>
       <dependency id="Intent.SoftwareFactory.SDK" version="1.2.1" />
-      <dependency id="Intent.SoftwareFactory.MetaModel" version="1.2.3" />
+      <dependency id="Intent.SoftwareFactory.MetaModel" version="1.3.0" />
     </dependencies>
   </metadata>
 </package>

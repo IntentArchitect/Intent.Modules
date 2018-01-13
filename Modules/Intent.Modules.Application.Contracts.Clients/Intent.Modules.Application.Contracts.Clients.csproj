@@ -69,17 +69,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Application.Contracts.Clients.imodspec" />
-    <None Include="MetaData\DTOs\Intent.Application.Contracts.Clients.datacontracts.pkg.config" />
-    <None Include="MetaData\Services\Intent.Packages.Application.Contracts.Clients.services.pkg.config" />
+    <None Include="MetaData\Services\Intent.Modules.Application.Contracts.Clients.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MetaData\DTOs\Folders\6ac397f3-3e4a-42a3-80e2-80badd356ffe.xml" />
-    <Content Include="MetaData\DTOs\Folders\beb17e6d-acff-4c9d-96c3-255abec814bb.xml" />
-    <Content Include="MetaData\DTOs\Stereotypes\fce3ff66-3a0a-4323-88f7-b61e5276aaad.xml" />
-    <Content Include="MetaData\Services\Folders\6a44c402-9b4f-41af-9fed-87ff1d58dfed.xml" />
     <Content Include="MetaData\Services\Folders\87178626-6aba-4093-96b1-b5ac8558bf65.xml" />
-    <Content Include="MetaData\Services\Stereotypes\d299265f-ac40-44d7-a9d5-eb33780ec859.xml" />
+    <Content Include="MetaData\Services\Stereotypes\d299265f-ac40-44d7-a9d5-eb33780ec859.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

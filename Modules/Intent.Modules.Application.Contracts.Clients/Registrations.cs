@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.MetaModel.DTO;
 using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 using ServiceContractTemplate = Intent.Modules.Application.Contracts.Legacy.ServiceContract.ServiceContractTemplate;
 
@@ -77,7 +78,7 @@ namespace Intent.Modules.Application.Contracts.Clients
         {
             return _metaDataManager
                 .GetMetaData<MetaModel.Service.ServiceModel>(new MetaDataIdentifier("Service"))
-                .Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
+                .Where(x => x.GetConsumers().Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }
     }
@@ -103,7 +104,7 @@ namespace Intent.Modules.Application.Contracts.Clients
         {
             return _metaDataManager
                 .GetMetaData<MetaModel.DTO.DTOModel>(new MetaDataIdentifier("DTO"))
-                .Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
+                .Where(x => x.GetConsumers().Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }
     }
@@ -125,6 +126,27 @@ namespace Intent.Modules.Application.Contracts.Clients
         public static string GetQualifiedName(this ITypeReference typeInfo, IProjectItemTemplate template)
         {
             return typeInfo.GetQualifiedName(template, TemplateIds.ClientDTO);
+        }
+    }
+
+    public static class DTOModelExtensions
+    {
+        public static IEnumerable<string> GetConsumers<T>(this T dto) where T: IHasFolder, IHasStereotypes
+        {
+            if (dto.HasStereotype("Consumers"))
+            {
+                return dto.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Select(x => x.Trim());
+            }
+            var folder = dto.Folder;
+            while (folder != null)
+            {
+                if (folder.HasStereotype("Consumers"))
+                {
+                    return folder.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Select(x => x.Trim());
+                }
+                folder = folder.ParentFolder;
+            }
+            return new string[0];
         }
     }
 }
