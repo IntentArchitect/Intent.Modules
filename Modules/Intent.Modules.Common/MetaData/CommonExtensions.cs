@@ -23,6 +23,12 @@ namespace Intent.SoftwareFactory.MetaData
 
     public static class StereotypeExtensions
     {
+        [Obsolete("Use GetStereotypeProperty")]
+        public static T GetPropertyValue<T>(this IHasStereotypes model, string stereotypeName, string propertyName, T defaultIfNotFound = default(T))
+        {
+            return model.GetStereotypeProperty(stereotypeName, propertyName, defaultIfNotFound);
+        }
+
         public static T GetStereotypeProperty<T>(this IHasStereotypes model, string stereotypeName, string propertyName, T defaultIfNotFound = default(T))
         {
             return model.GetStereotype(stereotypeName).GetProperty(propertyName, defaultIfNotFound);
