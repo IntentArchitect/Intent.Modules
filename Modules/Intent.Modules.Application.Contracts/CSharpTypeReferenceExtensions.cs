@@ -11,7 +11,7 @@ namespace Intent.Modules.Application.Contracts
 {
     public static class CSharpTypeReferenceExtensions
     {
-        public static string GetQualifiedName(this ITypeReference typeInfo, IProjectItemTemplate template, string templateIdentifier = DTOTemplate.Identifier)
+        public static string GetQualifiedName(this ITypeReference typeInfo, IProjectItemTemplate template, string templateIdentifier = DTOTemplate.IDENTIFIER)
         {
             var result = typeInfo.Name;
             if (typeInfo.Type == ReferenceType.ClassType)

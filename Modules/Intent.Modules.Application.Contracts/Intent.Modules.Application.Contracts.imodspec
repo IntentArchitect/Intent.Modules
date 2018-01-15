@@ -8,9 +8,15 @@
   <templates>
     <template id="Intent.Application.Contracts.DTO">
       <role>Application.Contracts</role>
+      <config>
+        <add key="Namespace" description="Create the class within the specified namespace" default="${FolderBasedNamespace}" />
+      </config>
     </template>
     <template id="Intent.Application.Contracts.ServiceContract">
       <role>Application.Contracts</role>
+      <config>
+        <add key="Namespace" description="Create the class within the specified namespace" default="${FolderBasedNamespace}" />
+      </config>
     </template>
     <template id="Intent.Application.Contracts.DTO.Legacy">
       <role>Application.Contracts</role>

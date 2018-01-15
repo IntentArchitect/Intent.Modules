@@ -2,7 +2,7 @@
 
 ## Overview
 
-'IModSpec' files or modules specifications files, are xml configuration files used to describe the module, it's content and configurability of the module. Every module must have a 'IModSpec' file. 
+'IModSpec' files or modules specifications files, are XML configuration files used to describe the module, its content and configurability of the module. Every module must have a 'IModSpec' file. 
 
 At a high level an imodspec file contains
 - **Module identity**, the identifier and version 
@@ -138,7 +138,7 @@ This element describes all the templates contained within your module, as well a
 
 ### `decorators` Element
 
-This element describes all the decorators contained within your module, as well as any configuration they support. If you are not familiar with the term decorator, it is a template extension, ie. a plugin for a template which modifies it's behaviour in some way. 
+This element describes all the decorators contained within your module, as well as any configuration they support. If you are not familiar with the term decorator, it is a template extension, ie. a plugin for a template which modifies its behaviour in some way. 
 
 >[!NOTE]
 >Only decorators described in the IModSpec file are accessible to consumers of your module. If you have decorators in your modules which are not registered in the IModSpec file they will not be loaded or executed.
@@ -220,12 +220,12 @@ This element allows you to describe the configurable aspects of a plugin, along 
 |Attributes|Type|Required|Description|
 |-|-|-|-|
 |key|string|Y|Name of the setting.|
-|description|string|Y|Description of the settings and it's intent. |
+|description|string|Y|Description of the settings and its intent. |
 |default|string|Y|The default value for this setting. |
 
 ### `projectTypes` Element
 
-This element describes any project types you module contains. Project types is an extension mechanism to allow developers to extend Intent Architect to support development environments beyond it's initial scope. Check out `Intent.Modules.VisualStudioProjects` for a comprehensive example of implementing your own project types.
+This element describes any project types your module contains. Project types is an extension mechanism to allow developers to extend Intent Architect to support development environments beyond its initial scope. Check out `Intent.Modules.VisualStudioProjects` for a comprehensive example of implementing your own project types.
 
 ```xml
   <projectTypes>

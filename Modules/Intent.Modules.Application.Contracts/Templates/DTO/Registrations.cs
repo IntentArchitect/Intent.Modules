@@ -24,7 +24,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         {
             get
             {
-                return DTOTemplate.Identifier;
+                return DTOTemplate.IDENTIFIER;
             }
         }
 

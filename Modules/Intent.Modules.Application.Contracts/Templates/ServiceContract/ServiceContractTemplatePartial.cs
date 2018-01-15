@@ -16,7 +16,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         private readonly string _dtoTemplateId;
         public const string Identifier = "Intent.Application.Contracts.ServiceContract";
 
-        public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = Identifier, string dtoTemplateId = DTOTemplate.Identifier)
+        public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = Identifier, string dtoTemplateId = DTOTemplate.IDENTIFIER)
             : base(identifier, project, model)
         {
             _dtoTemplateId = dtoTemplateId;
@@ -24,10 +24,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
-            return new[]
-            {
-                TemplateDependancy.OnTemplate(_dtoTemplateId),
-            };
+            return new ITemplateDependancy[] { };
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
@@ -51,14 +48,19 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
                 fileExtension: "cs",
                 defaultLocationInProject: string.Join("\\", GetNamespaceParts().DefaultIfEmpty("ServiceContracts")),
                 className: "I${Model.Name}",
-                @namespace: string.Join(".", new[] { "${Project.ProjectName}" }.Concat(GetNamespaceParts()))
-                );
+                @namespace: "${FolderBasedNamespace}");
         }
+
+        public string FolderBasedNamespace => string.Join(".", new[] { Project.Name }.Concat(GetNamespaceParts()));
 
         private IEnumerable<string> GetNamespaceParts()
         {
-            return Model.GetFolderPath(includePackage: true).Select(x => x.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace")).Where(x => x != null);
+            return Model
+                .GetFolderPath()
+                .Select(x => x.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace") ?? x.Name)
+                .Where(x => !string.IsNullOrWhiteSpace(x));
         }
+
 
         private string GetOperationDefinitionParameters(IOperationModel o)
         {

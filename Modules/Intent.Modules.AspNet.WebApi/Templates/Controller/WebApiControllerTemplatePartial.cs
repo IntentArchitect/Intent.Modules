@@ -31,8 +31,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DTOTemplate.Identifier),
-                TemplateDependancy.OnTemplate(ServiceContractTemplate.Identifier),
+                TemplateDependancy.OnTemplate(ServiceContractTemplate.Identifier)
             };
         }
 
@@ -70,7 +69,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: Model.Name + "Controller",
                 fileExtension: "cs",
-                defaultLocationInProject: @"Controllers\Generated\",
+                defaultLocationInProject: @"Controllers\Generated",
                 className: "${Model.Name}Controller",
                 @namespace: "${Project.Name}"
                 );
