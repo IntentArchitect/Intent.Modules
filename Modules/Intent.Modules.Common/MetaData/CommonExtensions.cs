@@ -63,7 +63,7 @@ namespace Intent.SoftwareFactory.MetaData
             return model.Stereotypes.Any(x => x.Name == stereotypeName);
         }
 
-        public static IStereotype GetStereotypeInFolders<T>(this T model, string stereotypeName) where T : IHasFolder, IHasStereotypes
+        public static IStereotype GetStereotypeInFolders(this IHasFolder model, string stereotypeName)
         {
             var folder = model.Folder;
             while (folder != null)

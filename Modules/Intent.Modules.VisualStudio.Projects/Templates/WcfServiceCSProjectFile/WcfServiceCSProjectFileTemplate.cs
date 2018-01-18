@@ -61,7 +61,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             {
                 _decorators.Add(id, decorator);
             }
-
         }
 
         public string CreateTemplate()
