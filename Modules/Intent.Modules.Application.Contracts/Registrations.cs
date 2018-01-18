@@ -13,8 +13,8 @@ namespace Intent.Modules.Application.Contracts
     {
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            var dtoModels = metaDataManager.GetMetaData<DtoModel>(new MetaDataType("DtoProjection")).Where(x => x.BoundedContextName == application.ApplicationName).ToList();
-            var serviceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataType("Service-Legacy")).Where(x => x.ApplicationName == application.ApplicationName).ToList();
+            var dtoModels = metaDataManager.GetMetaData<DtoModel>(new MetaDataIdentifier("DtoProjection")).Where(x => x.BoundedContextName == application.ApplicationName).ToList();
+            var serviceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataIdentifier("Service-Legacy")).Where(x => x.ApplicationName == application.ApplicationName).ToList();
 
             foreach (var model in dtoModels)
             {

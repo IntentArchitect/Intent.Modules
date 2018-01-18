@@ -9,10 +9,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.NodeJSProjectFile
 {
     public class NodeJSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators
     {
+        public const string Identifier = "Intent.VisualStudio.Projects.NodeJSProjectFile";
+
         private readonly Dictionary<string, IXmlDecorator> _decorators = new Dictionary<string, IXmlDecorator>();
 
         public NodeJSProjectFileTemplate(IProject project)
-            : base (CoreTemplateId.ProjectCSLibrary, project, null)
+            : base (Identifier, project, null)
         {
         }
 

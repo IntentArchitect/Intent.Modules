@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AspNet.WebApi</id>
-  <version>1.2.1</version>
+  <version>1.3.0</version>
   <summary>ASP.NET WebApi 2.2 distribution pattern for services.</summary>
   <description>ASP.NET WebApi 2.2 distribution pattern for services.</description>
   <authors>Intent Software</authors>
@@ -37,11 +37,11 @@
     <decorator id="Intent.WebApi.ExceptionHandlingStrategy.Legacy" enabled="false"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.2.1"/>
-    <dependency id="Intent.AspNet.Owin" version="1.2.1"/>
-    <dependency id="Intent.Unity" version="1.2.1"/>
-    <dependency id="Intent.Application.Contracts" version="1.2.1"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.2.1"/>
+    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.AspNet.Owin" version="1.3.0"/>
+    <dependency id="Intent.Unity" version="1.3.0"/>
+    <dependency id="Intent.Application.Contracts" version="1.3.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

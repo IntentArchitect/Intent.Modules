@@ -31,8 +31,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DTOTemplate.Identifier),
-                TemplateDependancy.OnTemplate(ServiceContractTemplate.Identifier),
+                TemplateDependancy.OnTemplate(ServiceContractTemplate.Identifier)
             };
         }
 
@@ -70,7 +69,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: Model.Name + "Controller",
                 fileExtension: "cs",
-                defaultLocationInProject: @"Controllers\Generated\",
+                defaultLocationInProject: "Controllers\\Generated",
                 className: "${Model.Name}Controller",
                 @namespace: "${Project.Name}"
                 );
@@ -164,7 +163,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         {
             if (o.HasStereotype("Secured") || Model.HasStereotype("Secured"))
             {
-                var roles = o.GetPropertyValue<string>("Secured", "Roles");
+                var roles = o.GetStereotypeProperty<string>("Secured", "Roles");
                 return string.IsNullOrWhiteSpace(roles)
                     ? "[Authorize]" 
                     : $"[Authorize(Roles = \"{roles}\")]";

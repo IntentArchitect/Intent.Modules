@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.MetaModel.DTO;
 using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 using ServiceContractTemplate = Intent.Modules.Application.Contracts.Legacy.ServiceContract.ServiceContractTemplate;
 
@@ -35,12 +36,12 @@ namespace Intent.Modules.Application.Contracts.Clients
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
             var dtoModels = metaDataManager
-                .GetMetaData<DtoModel>(new MetaDataType("DtoProjection"))
+                .GetMetaData<DtoModel>(new MetaDataIdentifier("DtoProjection"))
                 .Where(x => x.Clients.Any(y => application.ApplicationName.Equals(y, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
 
             var serviceModels = metaDataManager
-                .GetMetaData<ServiceModel>(new MetaDataType("Service-Legacy"))
+                .GetMetaData<ServiceModel>(new MetaDataIdentifier("Service-Legacy"))
                 .Where(x => x.Clients.Any(y => application.ApplicationName.Equals(y, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
 
@@ -76,8 +77,8 @@ namespace Intent.Modules.Application.Contracts.Clients
         public override IEnumerable<MetaModel.Service.ServiceModel> GetModels(IApplication application)
         {
             return _metaDataManager
-                .GetMetaData<MetaModel.Service.ServiceModel>(new MetaDataType("Service"))
-                .Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
+                .GetMetaData<MetaModel.Service.ServiceModel>(new MetaDataIdentifier("Service"))
+                .Where(x => x.GetConsumers().Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }
     }
@@ -102,8 +103,8 @@ namespace Intent.Modules.Application.Contracts.Clients
         public override IEnumerable<MetaModel.DTO.DTOModel> GetModels(IApplication application)
         {
             return _metaDataManager
-                .GetMetaData<MetaModel.DTO.DTOModel>(new MetaDataType("DTO"))
-                .Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
+                .GetMetaData<MetaModel.DTO.DTOModel>(new MetaDataIdentifier("DTO"))
+                .Where(x => x.GetConsumers().Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }
     }
@@ -125,6 +126,18 @@ namespace Intent.Modules.Application.Contracts.Clients
         public static string GetQualifiedName(this ITypeReference typeInfo, IProjectItemTemplate template)
         {
             return typeInfo.GetQualifiedName(template, TemplateIds.ClientDTO);
+        }
+    }
+
+    public static class DTOModelExtensions
+    {
+        public static IEnumerable<string> GetConsumers<T>(this T dto) where T: IHasFolder, IHasStereotypes
+        {
+            if (dto.HasStereotype("Consumers"))
+            {
+                return dto.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Select(x => x.Trim());
+            }
+            return dto.GetStereotypeInFolders("Consumers").GetProperty("CommaSeperatedList", "").Split(',').Select(x => x.Trim());
         }
     }
 }

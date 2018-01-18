@@ -18,8 +18,8 @@ namespace Intent.Modules.AngularJs.ServiceAgent
 
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            var clientServiceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataType("Service-Legacy")).Where(x => x.Clients.Contains(application.ApplicationName)).ToList();
-            var clientDtoModels = metaDataManager.GetMetaData<DtoModel>(new MetaDataType("DtoProjection")).Where(x => x.Clients.Contains(application.ApplicationName)).ToList();
+            var clientServiceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataIdentifier("Service-Legacy")).Where(x => x.Clients.Contains(application.ApplicationName)).ToList();
+            var clientDtoModels = metaDataManager.GetMetaData<DtoModel>(new MetaDataIdentifier("DtoProjection")).Where(x => x.Clients.Contains(application.ApplicationName)).ToList();
             var hostingConfig = metaDataManager.GetMetaData<HostingConfigModel>("LocalHosting").SingleOrDefault(x => x.ApplicationName == application.ApplicationName);
 
             foreach (var serviceModel in clientServiceModels)

@@ -1,21 +1,23 @@
-﻿using Intent.MetaModel.Common;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
     partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasAssemblyDependencies
     {
-        public const string Identifier = "Intent.Application.Contracts.DTO";
+        public const string IDENTIFIER = "Intent.Application.Contracts.DTO";
+        public const string NAMESPACE_CONFIG_KEY = "Namespace";
+
         private readonly DecoratorDispatcher<IDTOAttributeDecorator> _decoratorDispatcher;
 
-        public DTOTemplate(IProject project, IDTOModel model, string identifier = Identifier)
+        public DTOTemplate(IProject project, IDTOModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
             _decoratorDispatcher = new DecoratorDispatcher<IDTOAttributeDecorator>(project.ResolveDecorators<IDTOAttributeDecorator>);
@@ -44,6 +46,15 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             return _decoratorDispatcher.Dispatch(x => x.PropertyAttributes(Model, field));
         }
 
+        public string ConstructorParameters()
+        {
+            return Model.Fields.Any()
+                ? Model.Fields
+                    .Select(x => "\r\n            " + GetTypeInfo(x.TypeReference) + " " + x.Name.ToCamelCase())
+                    .Aggregate((x, y) => x + ", " + y)
+                : "";
+        }
+
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
             return new RoslynDefaultFileMetaData(
@@ -52,14 +63,27 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
                 fileExtension: "cs",
                 defaultLocationInProject: string.Join("\\", GetNamespaceParts().DefaultIfEmpty("DTOs")),
                 className: "${Model.Name}",
-                @namespace: string.Join(".", new [] { "${Project.ProjectName}" }.Concat(GetNamespaceParts()))
-                );
+                @namespace: "${FolderBasedNamespace}");
         }
+
+        public string FolderBasedNamespace => string.Join(".", new[] { Project.Name }.Concat(GetNamespaceParts()));
 
         private IEnumerable<string> GetNamespaceParts()
         {
-            return Model.GetFolderPath().Select(x => x.GetPropertyValue<string>(StandardStereotypes.NamespaceProvider, "Namespace")).Where(x => x != null);
+            return Model
+                .GetFolderPath(includePackage: false)
+                .Select(x => x.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace") ?? x.Name)
+                .Where(x => !string.IsNullOrWhiteSpace(x));
         }
+
+        //private string ResolveNamespace()
+        //{
+        //    string value;
+
+        //    return GetMetaData().CustomMetaData.TryGetValue("Namespace", out value)
+        //        ? value
+        //        : FolderBasedNamespace;
+        //}
 
         private string GetTypeInfo(ITypeReference typeInfo)
         {
@@ -68,6 +92,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             {
                 result = "List<" + result + ">";
             }
+
             return result;
         }
     }

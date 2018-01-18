@@ -17,7 +17,7 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
         {
             if (typeInfo.HasStereotype("TypeScript"))
             {
-                return typeInfo.Stereotypes.GetPropertyValue<string>("TypeScript", "Type");
+                return typeInfo.GetStereotypeProperty<string>("TypeScript", "Type");
             }
 
             return typeInfo.Name;

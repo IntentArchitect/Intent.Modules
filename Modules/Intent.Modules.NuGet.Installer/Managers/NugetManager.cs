@@ -1,10 +1,11 @@
-﻿using Intent.Modules.NuGet.Installer.NugetIntegration;
-using Microsoft.Build.Construction;
-using Microsoft.Build.Evaluation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Intent.Modules.NuGet.Installer.NugetIntegration;
+using Intent.SoftwareFactory.Engine;
+using Microsoft.Build.Construction;
+using Microsoft.Build.Evaluation;
 using IPackage = NuGet.IPackage;
 
 namespace Intent.Modules.NuGet.Installer.Managers
@@ -12,6 +13,7 @@ namespace Intent.Modules.NuGet.Installer.Managers
     public class NugetManager : IDisposable
     {
         private readonly string _solutionFilePath;
+        private readonly ITracing _tracing;
         private readonly bool _allowPreReleaseVersions;
         private readonly INugetServices _nugetServices;
         private readonly IList<MsbuildProject> _msbuildProjects = new List<MsbuildProject>();
@@ -20,9 +22,15 @@ namespace Intent.Modules.NuGet.Installer.Managers
         /// 
         /// </summary>
         /// <param name="solutionFilePath"></param>
+        /// <param name="tracing"></param>
         /// <param name="allowPreReleaseVersions"></param>
         /// <param name="projectFilePaths">Project files which may not be saved to the .sln file yet, but should be processed as well.</param>
-        public NugetManager(string solutionFilePath, bool allowPreReleaseVersions = false, IEnumerable<string> projectFilePaths = null, IDictionary<string, ICanAddFileStrategy> canAddFileStrategies = null)
+        public NugetManager(
+            string solutionFilePath,
+            ITracing tracing,
+            bool allowPreReleaseVersions = false,
+            IEnumerable<string> projectFilePaths = null,
+            IDictionary<string, ICanAddFileStrategy> canAddFileStrategies = null)
         {
             if (solutionFilePath == null)
             {
@@ -40,8 +48,9 @@ namespace Intent.Modules.NuGet.Installer.Managers
             }
 
             _solutionFilePath = solutionFilePath;
+            _tracing = tracing;
             _allowPreReleaseVersions = allowPreReleaseVersions;
-            _nugetServices = NugetServices.Create(solutionFilePath, canAddFileStrategies);
+            _nugetServices = NugetServices.Create(solutionFilePath, canAddFileStrategies, tracing);
 
             LoadMsbuildProjects(solutionFilePath, projectFilePaths);
         }

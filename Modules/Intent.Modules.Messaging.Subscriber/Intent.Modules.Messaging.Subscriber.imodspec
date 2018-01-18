@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Messaging.Subscriber</id>
-  <version>1.2.1</version>
+  <version>1.3.0</version>
   <summary>Messaging infrastructure to consume event and command messages.</summary>
   <description>Messaging infrastructure to consume event and command messages.</description>
   <authors>Intent Software</authors>
@@ -19,9 +19,9 @@
     <decorator id="Intent.Messaging.Subscriber.UnityRegistrationsDecorator.Legacy"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.2.1"/>
-    <dependency id="Intent.Unity" version="1.2.1"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.2.1"/>
+    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.Unity" version="1.3.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

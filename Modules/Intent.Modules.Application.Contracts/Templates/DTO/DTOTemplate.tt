@@ -20,16 +20,26 @@ using System.Runtime.Serialization;
 
 namespace <#= Namespace #>
 {
-	<#= ClassAttributes()#>
+    <#= ClassAttributes()#>
     public class <#=ClassName#> 
     {
         public <#=ClassName#>()
         {
         }
 
+        public static <#= ClassName #> Create(<#= ConstructorParameters() #>) 
+        {
+            return new <#= ClassName #>
+            {
 <# foreach (var field in Model.Fields) {#>
-		<#= PropertyAttributes(field)#>
-		public <#= GetTypeInfo(field.TypeReference)#> <#=field.Name.ToPascalCase()#> {get; set;}
+                <#= field.Name.ToPascalCase() #> = <#= field.Name.ToCamelCase() #>,
+<#}#>
+            };
+        }
+
+<# foreach (var field in Model.Fields) {#>
+        <#= PropertyAttributes(field)#>
+        public <#= GetTypeInfo(field.TypeReference)#> <#=field.Name.ToPascalCase()#> {get; set;}
 <#}#>
     }
 }

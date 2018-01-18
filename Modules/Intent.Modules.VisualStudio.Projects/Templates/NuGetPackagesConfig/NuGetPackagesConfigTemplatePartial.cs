@@ -5,8 +5,10 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.NuGetPackagesConfig
 {
     public partial class NuGetPackagesConfigTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {
+        public const string Identifier = "Intent.VisualStudio.Projects.NuGetPackagesConfig";
+
         public NuGetPackagesConfigTemplate(IProject project)
-            : base (CoreTemplateId.NuGetPackagesConfig, project, null)
+            : base (Identifier, project, null)
         {
         }
 

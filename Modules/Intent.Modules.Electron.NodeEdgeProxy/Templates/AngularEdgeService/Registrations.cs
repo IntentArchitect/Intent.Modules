@@ -10,7 +10,7 @@ using System.Linq;
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
 {
     [Description("Intent.Packages.Electron.NodeEdgeProxy - Angular Service")]
-    public class Registrations : ModelTemplateRegistrationBase<ServiceModel>
+    public class Registrations : NoModelTemplateRegistrationBase
     {
         private readonly IMetaDataManager _metaDataManager;
 
@@ -20,17 +20,9 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
         }
 
         public override string TemplateId => AngularEdgeServiceTemplate.Identifier;
-        public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project)
         {
             return new AngularEdgeServiceTemplate(project);
-        }
-
-        public override IEnumerable<ServiceModel> GetModels(IApplication applicationManager)
-        {
-            return _metaDataManager
-                .GetMetaData<ServiceModel>(new MetaDataType("Service"))
-                .Where(x => x.Application.Name == applicationManager.ApplicationName && x.Stereotypes.Any(y => y.Name == "NodeEdgeService"))
-                .ToList();
         }
     }
 }

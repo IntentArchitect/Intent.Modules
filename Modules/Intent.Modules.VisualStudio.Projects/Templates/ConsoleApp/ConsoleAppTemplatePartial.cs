@@ -5,8 +5,10 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp
 {
     partial class ConsoleAppTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
+#warning this wasnt being used but looks like maybe it should ???B
+
         public ConsoleAppTemplate(IProject project)
-            : base(CoreTemplateId.ConsoleApp, project, null)
+            : base("HELP ME PLZ", project, null)
         {
         }
 

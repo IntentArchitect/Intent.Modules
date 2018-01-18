@@ -1,4 +1,11 @@
-using Intent.SoftwareFactory;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading;
+using Intent.SoftwareFactory.Engine;
 using NuGet;
 using NuGet.CommandLine;
 using NuGet.Common;
@@ -7,21 +14,14 @@ using NuGet.Packaging.Core;
 using NuGet.ProjectManagement;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading;
 
 namespace Intent.Modules.NuGet.Installer.NugetIntegration
 {
     public class NugetServices : INugetServices
     {
-        public static INugetServices Create(string solutionFile, IDictionary<string, ICanAddFileStrategy> canAddFileStrategies)
+        public static INugetServices Create(string solutionFile, IDictionary<string, ICanAddFileStrategy> canAddFileStrategies, ITracing tracing)
         {
-            return new NugetServices(solutionFile, canAddFileStrategies);
+            return new NugetServices(solutionFile, canAddFileStrategies, tracing);
         }
 
         private readonly IConsole _console;
@@ -31,10 +31,12 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
         private readonly IDictionary<string, MSBuildNuGetProject> _loadedMsBuildNuGetProjects;
         private readonly string _packagesFolder;
         private readonly IDictionary<string, ICanAddFileStrategy> _canAddFileStrategies;
+        private readonly ITracing _tracing;
 
-        private NugetServices(string solutionFile, IDictionary<string, ICanAddFileStrategy> canAddFileStrategies)
+        private NugetServices(string solutionFile, IDictionary<string, ICanAddFileStrategy> canAddFileStrategies, ITracing tracing)
         {
             _canAddFileStrategies = canAddFileStrategies;
+            _tracing = tracing;
             if (solutionFile == null)
             {
                 throw new ArgumentNullException(nameof(solutionFile));
@@ -70,7 +72,8 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                     FileName = fileName,
                     Arguments = $"restore \"{solutionFilePath}\"",
                     UseShellExecute = false,
-                    RedirectStandardOutput = true
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true,
                 }
             };
 
@@ -97,7 +100,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
 
             if (package == null)
             {
-                Logging.Log.Info($"Fetching NuGet package {packageId} {versionSpec}.");
+                _tracing.Info($"Fetching NuGet package {packageId} {versionSpec}.");
 
                 package = _feedPackageRepository
                     .FindPackages(
@@ -129,7 +132,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
             ICanAddFileStrategy canAddFileStrategy;
             _canAddFileStrategies.TryGetValue(package.Id, out canAddFileStrategy);
 
-            Logging.Log.Info($"NuGet - Installing {package.GetFullName()} into project {project}");
+            _tracing.Info($"NuGet - Installing {package.GetFullName()} into project {project}");
 
             try
             {
@@ -141,7 +144,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
             }
             catch (Exception e)
             {
-                Logging.Log.Warning($"NuGet - Failed to install {package.GetFullName()} into project {project}: {e.Message}");
+                _tracing.Warning($"NuGet - Failed to install {package.GetFullName()} into project {project}: {e.Message}");
             }
             Save(project);
         }
@@ -199,12 +202,12 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
             GetMsbuildNuGetProjectSystem(project).Save();
         }
 
-        private MSBuildProjectSystem GetMsbuildNuGetProjectSystem(string project)
+        private CustomMsbuildProjectSystem GetMsbuildNuGetProjectSystem(string project)
         {
-            var msbuildNuGetProjectSystem = GetProject(project).MSBuildNuGetProjectSystem as MSBuildProjectSystem;
+            var msbuildNuGetProjectSystem = GetProject(project).MSBuildNuGetProjectSystem as CustomMsbuildProjectSystem;
             if (msbuildNuGetProjectSystem == null)
             {
-                throw new Exception($"Could not get {nameof(MSBuildProjectSystem)} for {project}.");
+                throw new Exception($"Could not get {nameof(CustomMsbuildProjectSystem)} for {project}.");
             }
 
             return msbuildNuGetProjectSystem;
@@ -217,9 +220,9 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
             if (!_loadedMsBuildNuGetProjects.TryGetValue(project, out msBuildNuGetProject))
             {
                 var msbuildNuGetProjectSystem = new CustomMsbuildProjectSystem(
-                    msbuildDirectory: MsBuildUtility.GetMsbuildDirectory(null, _console),
                     projectFullPath: project,
-                    projectContext: _nuGetProjectContext);
+                    projectContext: _nuGetProjectContext,
+                    ignoreMissingImports: true);
 
                 msBuildNuGetProject = new MSBuildNuGetProject(
                     msbuildNuGetProjectSystem: msbuildNuGetProjectSystem,

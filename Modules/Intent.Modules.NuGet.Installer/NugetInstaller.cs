@@ -1,44 +1,36 @@
-using Intent.Modules.NuGet.Installer.Managers;
-using Intent.Modules.Common.Plugins;
-using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Plugins;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
-using Intent.SoftwareFactory.VisualStudio;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Intent.Modules.NuGet.Installer.Managers;
+using Intent.Modules.Common.Plugins;
+using Intent.SoftwareFactory;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Plugins.FactoryExtensions;
+using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.NuGet.Installer
 {
     public class NugetInstaller : FactoryExtensionBase, IExecutionLifeCycle
     {
-        public override string Id
-        {
-            get
-            {
-                return "Intent.NugetInstaller";
-            }
-        }
+        public override string Id => "Intent.NugetInstaller";
 
         public NugetInstaller()
         {
             Order = 100;
         }
 
-
         public void OnStep(IApplication application, string step)
         {
             if (step == ExecutionLifeCycleSteps.AfterCommitChanges)
             {
-                Run(application);
+                Run(application, Logging.Log);
             }
         }
 
-        public void Run(IApplication application)
+        public void Run(IApplication application, ITracing tracing)
         {
-            Logging.Log.Info($"NuGet - Start processesing Packages");
+            tracing.Info($"NuGet - Start processesing Packages");
 
             var addFileBehaviours = application.Projects
                 .SelectMany(x =>  x.NugetPackages())
@@ -48,6 +40,7 @@ namespace Intent.Modules.NuGet.Installer
 
             using (var nugetManager = new NugetManager(
                 solutionFilePath: application.GetSolutionPath(),
+                tracing: tracing,
                 allowPreReleaseVersions: true,
                 projectFilePaths: application.Projects.Select(x => Path.GetFullPath(Path.Combine(x.ProjectFile()))),
                 canAddFileStrategies: addFileBehaviours))
@@ -56,7 +49,7 @@ namespace Intent.Modules.NuGet.Installer
                 {
                     var projectFile = Path.GetFullPath(project.ProjectFile());
 
-                    Logging.Log.Info($"NuGet - Determining Packages for installation - { project.ProjectFile() }");
+                    tracing.Info($"NuGet - Determining Packages for installation - { project.ProjectFile() }");
 
                     var nugetPackages = project.NugetPackages();
                     foreach (var nugetPackageInfo in nugetPackages)
@@ -68,14 +61,13 @@ namespace Intent.Modules.NuGet.Installer
                     }
                 }
 
-                Logging.Log.Info($"NuGet - Processing pending installs...");
+                tracing.Info($"NuGet - Processing pending installs...");
                 nugetManager.ProcessPendingInstalls();
 
-                Logging.Log.Info($"NuGet - Cleaning up packages folders...");
+                tracing.Info($"NuGet - Cleaning up packages folders...");
                 nugetManager.CleanupPackagesFolder();
             }
         }
-
 
         private class CanAddFileStrategy : ICanAddFileStrategy
         {

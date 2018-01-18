@@ -1,3 +1,4 @@
+using System;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
 using Intent.SoftwareFactory;
@@ -32,26 +33,37 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override IEnumerable<DTOModel> GetModels(IApplication application)
         {
-            var dtoModels = _metaDataManager.GetMetaData<DTOModel>(new MetaDataType("DTO"));
+            var dtoModels = _metaDataManager.GetMetaData<DTOModel>(new MetaDataIdentifier("DTO"));
 
-            dtoModels = dtoModels.Where(x => x.GetPropertyValue("Consumers", "CommaSeperatedList", "").Split(',').Any(a => a.Trim() == application.ApplicationName));
+            dtoModels = dtoModels.Where(x => x.GetConsumers().Any(a => a.Trim() == application.ApplicationName));
 
             return dtoModels.ToList();
         }
 
-        private static bool FolderOrParentFolderHasStereoType(IFolder folder, string name)
+        //private static bool FolderOrParentFolderHasStereoType(IFolder folder, string name)
+        //{
+        //    if (folder == null)
+        //    {
+        //        return false;
+        //    }
+
+        //    if (folder.Stereotypes.Any(x => x.Name == name))
+        //    {
+        //        return true;
+        //    }
+
+        //    return FolderOrParentFolderHasStereoType(folder.ParentFolder, name);
+        //}
+    }
+
+    public static class DTOModelExtensions {
+        public static IEnumerable<string> GetConsumers(this DTOModel dto)
         {
-            if (folder == null)
+            if (dto.HasStereotype("Consumers"))
             {
-                return false;
+                return dto.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Select(x => x.Trim());
             }
-
-            if (folder.Stereotypes.Any(x => x.Name == name))
-            {
-                return true;
-            }
-
-            return FolderOrParentFolderHasStereoType(folder.ParentFolder, name);
+            return dto.GetStereotypeInFolders("Consumers").GetProperty("CommaSeperatedList", "").Split(',').Select(x => x.Trim());
         }
     }
 }

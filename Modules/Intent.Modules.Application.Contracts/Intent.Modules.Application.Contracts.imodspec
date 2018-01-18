@@ -1,16 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.Contracts</id>
-  <version>1.2.1</version>
+  <version>1.3.0</version>
   <summary>Creates generic application service contracts.</summary>
   <description>Creates generic application service contracts that is technology agnostic.</description>
   <authors>Intent Software</authors>
   <templates>
     <template id="Intent.Application.Contracts.DTO">
       <role>Application.Contracts</role>
+      <config>
+        <add key="Namespace" description="Create the class within the specified namespace" default="${FolderBasedNamespace}" />
+      </config>
     </template>
     <template id="Intent.Application.Contracts.ServiceContract">
       <role>Application.Contracts</role>
+      <config>
+        <add key="Namespace" description="Create the class within the specified namespace" default="${FolderBasedNamespace}" />
+      </config>
     </template>
     <template id="Intent.Application.Contracts.DTO.Legacy">
       <role>Application.Contracts</role>
@@ -23,8 +29,8 @@
     <decorator id="Intent.Application.Contracts.DataContractDecorator"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.2.1"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.2.1"/>
+    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

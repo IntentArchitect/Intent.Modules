@@ -11,7 +11,7 @@ namespace Intent.Modules.Application.Contracts
 {
     public static class CSharpTypeReferenceExtensions
     {
-        public static string GetQualifiedName(this ITypeReference typeInfo, IProjectItemTemplate template, string templateIdentifier = DTOTemplate.Identifier)
+        public static string GetQualifiedName(this ITypeReference typeInfo, IProjectItemTemplate template, string templateIdentifier = DTOTemplate.IDENTIFIER)
         {
             var result = typeInfo.Name;
             if (typeInfo.Type == ReferenceType.ClassType)
@@ -24,18 +24,18 @@ namespace Intent.Modules.Application.Contracts
             }
             else if (typeInfo.Stereotypes.Any(x => x.Name == StandardStereotypes.CSharpType))
             {
-                result = typeInfo.Stereotypes.GetPropertyValue<string>(StandardStereotypes.CSharpType, "TypeName");
+                result = typeInfo.GetStereotypeProperty<string>(StandardStereotypes.CSharpType, "TypeName");
             }
-            else if (typeInfo.GetPropertyValue<string>(StandardStereotypes.NamespaceProvider, "Namespace") != null)
+            else if (typeInfo.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace") != null)
             {
-                result = $"{typeInfo.GetPropertyValue<string>(StandardStereotypes.NamespaceProvider, "Namespace")}.{typeInfo.Name}";
+                result = $"{typeInfo.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace")}.{typeInfo.Name}";
             }
-            else if (typeInfo.Folder?.GetPropertyValue<string>(StandardStereotypes.NamespaceProvider, "Namespace") != null)
+            else if (typeInfo.Folder?.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace") != null)
             {
-                result = $"{typeInfo.Folder.GetPropertyValue<string>(StandardStereotypes.NamespaceProvider, "Namespace")}.{typeInfo.Name}";
+                result = $"{typeInfo.Folder.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace")}.{typeInfo.Name}";
             }
 
-            if (typeInfo.IsNullable && (typeInfo.Type == ReferenceType.Enum || (typeInfo.Type == ReferenceType.DataType && typeInfo.Stereotypes.GetPropertyValue(StandardStereotypes.CSharpType, "IsPrimitive", false))))
+            if (typeInfo.IsNullable && (typeInfo.Type == ReferenceType.Enum || (typeInfo.Type == ReferenceType.DataType && typeInfo.GetStereotypeProperty(StandardStereotypes.CSharpType, "IsPrimitive", false))))
             {
                 result += "?";
             }

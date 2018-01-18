@@ -10,6 +10,7 @@ namespace Intent.Modules.VisualStudio.Projects.Decorators
 {
     public class AssemblyBindingRedirectWebConfigDecorator : IWebConfigDecorator
     {
+        public const string Identifier = "Intent.VisualStudio.Projects.AssemblyBindingRedirectWebConfig";
         private XmlNamespaceManager _namespaces;
 
         public AssemblyBindingRedirectWebConfigDecorator()

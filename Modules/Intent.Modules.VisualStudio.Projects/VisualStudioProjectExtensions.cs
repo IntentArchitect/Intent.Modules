@@ -12,7 +12,7 @@ namespace Intent.Modules.VisualStudio.Projects
 
         public static string TargetFrameworkVersion(this IProject project)
         {
-            return project.Stereotypes.GetPropertyValue("C# .NET", "FrameworkVersion", "v4.5.2");
+            return project.GetStereotypeProperty("C# .NET", "FrameworkVersion", "v4.5.2");
         }
     }
 

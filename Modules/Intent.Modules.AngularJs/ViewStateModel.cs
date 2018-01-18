@@ -8,11 +8,11 @@ using Intent.SoftwareFactory.Plugins;
 
 namespace Intent.Modules.AngularJs
 {
-    public class ViewStateModel
+    public class ViewStateModel : IHasStereotypes
     {
         public string Name { get; set; }
         public IList<CommandModel> Commands { get; set; }
-        public IList<Stereotype> Stereotypes { get; set; }
+        public IEnumerable<IStereotype> Stereotypes { get; set; }
         public ViewStateModel Parent { get; set; }
         public Application Application { get; set; }
     }

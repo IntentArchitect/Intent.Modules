@@ -19,6 +19,7 @@ namespace Intent.SoftwareFactory.Registrations
         public abstract string TemplateId { get; }
         public abstract ITemplate CreateTemplateInstance(IProject project, IList<TModel> models);
         public abstract IList<TModel> GetModels(IApplication applicationManager);
+        public string MetaDataIdentifier { get; set; }
 
         public string FilterExpression
         {
@@ -44,7 +45,7 @@ namespace Intent.SoftwareFactory.Registrations
             }
         }
 
-        public void DoRegistration(Action<string, Func<IProject, ITemplate>> register, IApplication application)
+        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
 
             var config = application.Config.GetConfig(this.TemplateId, Configuration.PluginConfigType.Template);
@@ -67,7 +68,7 @@ namespace Intent.SoftwareFactory.Registrations
                 models = Filter(models);
             }
 
-            register(TemplateId, project => CreateTemplateInstance(project, models));
+            registery.Register(TemplateId, project => CreateTemplateInstance(project, models));
             templateInstancesRegistered++;
             Logging.Log.Debug($"Template instances registered : {templateInstancesRegistered}");
         }
@@ -88,6 +89,7 @@ namespace Intent.SoftwareFactory.Registrations
         public virtual void Configure(IDictionary<string, string> settings)
         {
             settings.SetIfSupplied("DataFilter", (s) => FilterExpression = s);
+            settings.SetIfSupplied("MetaDataIdentifier", (s) => MetaDataIdentifier = s);
         }
     }
 }

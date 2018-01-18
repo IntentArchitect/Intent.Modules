@@ -19,7 +19,7 @@ namespace Intent.Modules.Messaging.Subscriber
 
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            var applicationModel = metaDataManager.GetMetaData<ApplicationModel>(new MetaDataType("Application")).FirstOrDefault(x => x.Name == application.ApplicationName);
+            var applicationModel = metaDataManager.GetMetaData<ApplicationModel>(new MetaDataIdentifier("Application")).FirstOrDefault(x => x.Name == application.ApplicationName);
             if (applicationModel == null)
             {
                 Logging.Log.Warning($"ApplicationModel could not be found for application [{ application.ApplicationName }]");

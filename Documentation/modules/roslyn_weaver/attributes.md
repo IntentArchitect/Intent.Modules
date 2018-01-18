@@ -132,7 +132,7 @@ This attribute can be applied to any of the following.
 |Element Mode|Specified the mode under which the targeted code element should be merged|
 |Body|Specified the mode under which the body of the targeted code element should be merged. This is only required if the mode for the body differs from the element mode.|
 |Signature|Specified the mode under which the signature of the targeted code element should be merged. This is only required if the mode for the signature differs from the element mode.|
-|Targets|Allows for targeting specific code elements which the mode must apply to. Multiple targets can be specified using the \| syntax. The valid targets are Classes, Constructors, Enums, Fields, Interfaces, Methods and Properties |
+|Targets|Allows for targeting specific code elements which the mode must apply to. Multiple targets can be specified using the \| syntax. The valid targets are Classes, Constructors, Enums, Fields, Interfaces, Methods, Namespaces, Properties and Usings |
 |AccessModifiers|This property can be used to target code elements based on access modifiers. Multiple access modifiers can be specified using the \| syntax. The valid access modifiers are internal, private, protected and public. |
 
 ### Examples

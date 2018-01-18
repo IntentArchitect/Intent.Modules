@@ -23,8 +23,8 @@ namespace Intent.Modules.RichDomain
 
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            var entityModels = metaDataManager.GetMetaData<Class>(new MetaDataType("Entity")).Where(x => x.BoundedContext() == application.ApplicationName).ToList();
-            var enumModels = metaDataManager.GetMetaData<EnumDefinition>(new MetaDataType("Enums")).Where(x => x.BoundedContext() == application.ApplicationName).ToList();
+            var entityModels = metaDataManager.GetMetaData<Class>(new MetaDataIdentifier("Entity")).Where(x => x.BoundedContext() == application.ApplicationName).ToList();
+            var enumModels = metaDataManager.GetMetaData<EnumDefinition>(new MetaDataIdentifier("Enums")).Where(x => x.BoundedContext() == application.ApplicationName).ToList();
 
             if (entityModels.All(x => !x.IsEntity()))
             {

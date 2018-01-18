@@ -15,12 +15,15 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 {
     public class WebApiWebConfigFileTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasDecorators<IWebConfigDecorator>
     {
+        public const string Identifier = "Intent.VisualStudio.Projects.WebConfig";
+
+
         private IEnumerable<IWebConfigDecorator> _decorators;
         private readonly IDictionary<string, string> _appSettings = new Dictionary<string, string>();
         private readonly IDictionary<string, ConnectionStringElement> _connectionStrings = new Dictionary<string, ConnectionStringElement>();
 
         public WebApiWebConfigFileTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
-            : base(CoreTemplateId.WebApiWebConfig, project, null)
+            : base(Identifier, project, null)
         {
             eventDispatcher.Subscribe(ApplicationEvents.Config_AppSetting, HandleAppSetting);
             eventDispatcher.Subscribe(ApplicationEvents.Config_ConnectionString, HandleConnectionString);

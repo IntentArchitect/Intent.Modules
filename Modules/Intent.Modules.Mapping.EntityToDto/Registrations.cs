@@ -19,8 +19,8 @@ namespace Intent.Modules.Mapping.EntityToDto
 
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            var dtoModels = metaDataManager.GetMetaData<DtoModel>(new MetaDataType("DtoProjection")).Where(x => x.BoundedContextName == application.ApplicationName).ToList();
-            var enumModels = metaDataManager.GetMetaData<EnumDefinition>(new MetaDataType("Enums")).Where(x => x.BoundedContext() == application.ApplicationName).ToList();
+            var dtoModels = metaDataManager.GetMetaData<DtoModel>(new MetaDataIdentifier("DtoProjection")).Where(x => x.BoundedContextName == application.ApplicationName).ToList();
+            var enumModels = metaDataManager.GetMetaData<EnumDefinition>(new MetaDataIdentifier("Enums")).Where(x => x.BoundedContext() == application.ApplicationName).ToList();
 
             var mappingModels = dtoModels.SelectMany((o) => o.Mappings).ToList();
             if (mappingModels.Count > 0)

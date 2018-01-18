@@ -12,7 +12,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers
     {
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            var serviceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataType("Service-Legacy")).Where(x => x.ApplicationName == application.ApplicationName).ToList();
+            var serviceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataIdentifier("Service-Legacy")).Where(x => x.ApplicationName == application.ApplicationName).ToList();
 
             foreach (var serviceModel in serviceModels)
             {

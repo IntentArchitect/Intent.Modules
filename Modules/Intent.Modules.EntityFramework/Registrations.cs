@@ -21,7 +21,7 @@ namespace Intent.Modules.EntityFramework
 
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            var models = metaDataManager.GetMetaData<Class>(new MetaDataType("Entity")).Where(x => x.BoundedContext() == application.ApplicationName).ToList();
+            var models = metaDataManager.GetMetaData<Class>(new MetaDataIdentifier("Entity")).Where(x => x.BoundedContext() == application.ApplicationName).ToList();
 
             RegisterTemplate(DbContextTemplate.Identifier, project => new DbContextTemplate(models, project, application.EventDispatcher));
             RegisterTemplate(DeleteVisitorTemplate.Identifier, project => new DeleteVisitorTemplate(models, project));

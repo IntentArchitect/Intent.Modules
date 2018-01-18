@@ -24,8 +24,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DTOTemplate.Identifier),
-                TemplateDependancy.OnTemplate(ServiceContractTemplate.Identifier),
+                TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.Identifier, x => x.Id == Model.Id)
             }
             .Union(Model.Operations.Select(x => TemplateDependancy.OnModel(ServiceCallHandlerImplementationTemplate.Identifier, x)).ToArray());
         }

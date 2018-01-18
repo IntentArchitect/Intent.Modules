@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AngularJs.Shell</id>
-  <version>1.2.1</version>
+  <version>1.3.0</version>
   <summary>Shell layout for Angular JS using UI-Router</summary>
   <description>Shell layout for Angular JS using UI-Router</description>
   <authors>Intent Software</authors>
@@ -39,10 +39,10 @@
     </detect>
   </interoperability>-->
   <dependencies>
-    <dependency id="Intent.Bower" version="1.2.1"/>
-    <dependency id="Intent.Common" version="1.2.1"/>
-    <dependency id="Intent.Typescript.Config" version="1.2.1"/>
-    <dependency id="Intent.OutputTransformer.TagWeaving" version="1.2.1"/>
+    <dependency id="Intent.Bower" version="1.3.0"/>
+    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.Typescript.Config" version="1.3.0"/>
+    <dependency id="Intent.OutputTransformer.TagWeaving" version="1.3.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

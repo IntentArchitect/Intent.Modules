@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.NuGet.Installer</id>
-  <version>1.2.1</version>
+  <version>1.3.0</version>
   <summary>Installs NuGet dependencies on demand for the template / decorator components being installed for the application.</summary>
   <description>Installs NuGet dependencies on demand for the template / decorator components being installed for the application.</description>
   <authors>Intent Software</authors>
@@ -15,11 +15,19 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="1.2.1"/>
+    <dependency id="Intent.Common" version="1.3.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
-    <file src="bin\$configuration$\NuGet.exe"/>
+    <file src="bin\$configuration$\NuGet.exe" inspect="false"/>
+    
+    <file src="bin\$configuration$\Microsoft.Build.dll" inspect="false"/>
+    <file src="bin\$configuration$\Microsoft.Build.Framework.dll" inspect="false"/>
+    <file src="bin\$configuration$\Microsoft.Build.Utilities.Core.dll" inspect="false"/>
+    <file src="bin\$configuration$\System.Collections.Immutable.dll" inspect="false"/>
+    <file src="bin\$configuration$\System.Runtime.InteropServices.RuntimeInformation.dll" inspect="false"/>
+    <file src="bin\$configuration$\System.Threading.Thread.dll" inspect="false"/>
+    <file src="bin\$configuration$\System.Threading.Tasks.Dataflow.dll" inspect="false"/>
   </files>
 </package>

@@ -79,11 +79,11 @@ namespace <#= Namespace #>
     
         public <#= Model.Name.ToPascalCase() #>Mapping()
         {
-<#    if (Model.ParentClass == null || Model.ParentClass.Stereotypes.GetPropertyValue<string>("InheritanceMapping", "Type") != "TPH")
+<#    if (Model.ParentClass == null || Model.ParentClass.GetStereotypeProperty<string>("InheritanceMapping", "Type") != "TPH")
     {#>
             this.ToTable("<#= Model.Name #>");
 <#    }
-    if (Model.Stereotypes.GetPropertyValue<string>("InheritanceMapping", "Type") == "TPH")
+    if (Model.GetStereotypeProperty<string>("InheritanceMapping", "Type") == "TPH")
     {
         foreach (var subClass in Model.ChildClasses)
         {
@@ -93,7 +93,7 @@ namespace <#= Namespace #>
     }
 	bool mapPk = true;
     //Key Mapping
-    if (Model.ParentClass != null && Model.ParentClass.Stereotypes.GetPropertyValue<string>("InheritanceMapping", "Type") == "TPH")    
+    if (Model.ParentClass != null && Model.ParentClass.GetStereotypeProperty<string>("InheritanceMapping", "Type") == "TPH")    
     {
 		mapPk = false;
         //No Key mapping required
@@ -109,13 +109,13 @@ namespace <#= Namespace #>
 <#			continue;
         }#>
             this.Property(x => x.<#= attribute.Name.ToPascalCase()#>)<#
-        if (attribute.Stereotypes.GetPropertyValue("UniqueConstraint", "IsIndex", false)){ #>
+        if (attribute.GetStereotypeProperty("UniqueConstraint", "IsIndex", false)){ #>
 
-                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= attribute.Stereotypes.GetPropertyValue("UniqueConstraint", "UniqueKey", "Unique1")#>", <#=attribute.Stereotypes.GetPropertyValue("UniqueConstraint", "Order", "1")#>) { IsUnique = true }))<#
+                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= attribute.GetStereotypeProperty("UniqueConstraint", "UniqueKey", "Unique1")#>", <#=attribute.GetStereotypeProperty("UniqueConstraint", "Order", "1")#>) { IsUnique = true }))<#
         }
-        if (!string.IsNullOrEmpty(attribute.Stereotypes.GetPropertyValue("Index", "UniqueKey", ""))){#>
+        if (!string.IsNullOrEmpty(attribute.GetStereotypeProperty("Index", "UniqueKey", ""))){#>
 
-                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= attribute.Stereotypes.GetPropertyValue("Index", "UniqueKey", "Unique1")#>", <#= attribute.Stereotypes.GetPropertyValue("Index", "Order", "1")#>) { IsUnique = <#= attribute.Stereotypes.GetPropertyValue("Index", "IsUnique", "false")#> }))<#
+                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= attribute.GetStereotypeProperty("Index", "UniqueKey", "Unique1")#>", <#= attribute.GetStereotypeProperty("Index", "Order", "1")#>) { IsUnique = <#= attribute.GetStereotypeProperty("Index", "IsUnique", "false")#> }))<#
         }
         if (!attribute.IsNullable){#>
 
@@ -124,7 +124,7 @@ namespace <#= Namespace #>
 
         if (attribute.Type.Name == "string" )
         {
-            var maxLength = attribute.Stereotypes.GetPropertyValue<int?>("Text", "MaxLength");    
+            var maxLength = attribute.GetStereotypeProperty<int?>("Text", "MaxLength");    
             if (maxLength.HasValue){
         #>
 
@@ -132,8 +132,8 @@ namespace <#= Namespace #>
             }
         }
 
-        var decimalPrecision = attribute.Stereotypes.GetPropertyValue<int?>("Numeric", "Precision");
-        var decimalScale = attribute.Stereotypes.GetPropertyValue<int?>("Numeric", "Scale");
+        var decimalPrecision = attribute.GetStereotypeProperty<int?>("Numeric", "Precision");
+        var decimalScale = attribute.GetStereotypeProperty<int?>("Numeric", "Scale");
         if (decimalPrecision.HasValue && decimalScale.HasValue){#>
 
                 .HasPrecision(<#= decimalPrecision#>, <#= decimalScale #>)<#

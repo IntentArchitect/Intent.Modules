@@ -12,12 +12,13 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
 {
     public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies, ISupportXmlDecorators, IProjectTemplate
     {
+        public const string Identifier = "Intent.VisualStudio.Projects.WebApiServiceCSProjectFile";
         private readonly Dictionary<string, IXmlDecorator> _decorators = new Dictionary<string, IXmlDecorator>();
         private readonly string _sslPort = "";
         private readonly string _port;
 
         public WebApiServiceCSProjectFileTemplate(IProject project)
-            : base(CoreTemplateId.ProjectWebApi, project, null)
+            : base(Identifier, project, null)
         {
             _port = project.ProjectType.Properties.First(x => x.Name == "Port").Value;
             var useSsl = false;
