@@ -150,6 +150,17 @@ namespace Intent.SoftwareFactory.Templates
             }
             return "_" + ToCamelCase(s, false);
         }
+
+        public static string Pluralize(this string word, bool inputIsKnownToBeSingular = true)
+        {
+            return Humanizer.Inflections.Vocabularies.Default.Pluralize(word, inputIsKnownToBeSingular);
+        }
+
+        public static string Singularize(this string word, bool inputIsKnownToBePlural = true)
+        {
+            return Humanizer.Inflections.Vocabularies.Default.Singularize(word, inputIsKnownToBePlural);
+        }
+
     }
 
 }
