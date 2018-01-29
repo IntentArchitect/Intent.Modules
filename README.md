@@ -1,5 +1,14 @@
 # Intent Architect
 
+## Module Examples
+This folder working examples of the features available to developers wanting to build their own modules. These demos allow you to interact with the examples learning and exploring the many options available to you.
+
+## Modules Quick Start
+
+## Intent Documentation
+
+## To Clean Up
+
 Intent Architect is a coding automation tool for software developers. It's based on the principles of a software factory, and provides a platform for design an pattern reuse.
   - **Build Faster** - Allow Intent Architect to manage the tedious and repetitive tasks that take up most of your time, freeing you up to focus on meaningful value-adding development.
   - **Quality Assured** - Create your patterns and rest easy knowing that they are consistently rolled out throughout your codebase.

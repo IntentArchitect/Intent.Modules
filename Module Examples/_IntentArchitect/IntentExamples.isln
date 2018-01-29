@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<solution id="2b2eb813-c940-4099-b1cb-a4f4bcda0007">
+  <name>IntentExamples</name>
+  <description>Simple Examples of Intent features</description>
+  <version>1.0</version>
+  <icon>birthday-cake</icon>
+  <iconType>FontAwesome</iconType>
+  <metadataRelativePath>Intent.MetaData</metadataRelativePath>
+  <applications>
+    <application id="b18fe4eb-0584-4802-810b-a8cbca429119" relativePath="SampleApp\SampleApp.application.config" />
+  </applications>
+</solution>

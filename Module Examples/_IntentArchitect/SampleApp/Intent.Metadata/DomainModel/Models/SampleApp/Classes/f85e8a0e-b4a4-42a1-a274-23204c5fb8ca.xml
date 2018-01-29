@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f85e8a0e-b4a4-42a1-a274-23204c5fb8ca">
+  <name>BillingAddress</name>
+  <isAbstract>false</isAbstract>
+  <parentFolderId>11337603-462a-43cc-86c0-aa390f99568f</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="41f7086f-1af4-4253-9131-a53f057b856f">
+      <name>line1</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <stereotypes />
+    </attribute>
+  </attributes>
+  <operations />
+</class>
