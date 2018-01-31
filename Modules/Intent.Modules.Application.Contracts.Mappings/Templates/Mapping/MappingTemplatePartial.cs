@@ -1,4 +1,5 @@
-﻿using Intent.MetaModel.DTO;
+﻿using System;
+using Intent.MetaModel.DTO;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
@@ -11,7 +12,7 @@ using System.Linq;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
-    partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IRequiresPreProcessing, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation
+    partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IRequiresPreProcessing, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation, IHasDecorators<IMappingTemplateDecorator>
     {
         public const string Identifier = "Intent.Application.Contracts.Mapping";
 
@@ -21,13 +22,13 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         private IHasClassDetails _domainDependancy;
         private ITemplateDependancy _domainTemplateDependancy;
         private ITemplateDependancy _contractTemplateDependancy;
+        private IEnumerable<IMappingTemplateDecorator> _decorators;
 
         public MappingTemplate(IProject project, IDTOModel model)
             : base(Identifier, project, model)
         {
-            
-        }
 
+        }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -41,23 +42,34 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
-            return new ITemplateDependancy[] { _contractTemplateDependancy, _domainTemplateDependancy };
+            return new[] { _contractTemplateDependancy, _domainTemplateDependancy };
         }
 
-        public string ContractTypeName
+        public IEnumerable<IMappingTemplateDecorator> GetDecorators()
+        {
+            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+        }
+
+        public string ContractTypeName => _contractDependancy.ClassName;
+
+        public string DomainTypeName => _domainDependancy.ClassName;
+
+        public string DecoratorUsings
         {
             get
             {
-                return _contractDependancy.ClassName;
+                return GetDecorators()
+                    .SelectMany(x => x.Usings())
+                    .Aggregate((x, y) => $"{x}{Environment.NewLine}{y}");
             }
         }
 
-        public string DomainTypeName
+        public string GetDecoratorMembers(string contractTypeName, string domainTypeName)
         {
-            get
-            {
-                return _domainDependancy.ClassName;
-            }
+            return GetDecorators()
+                .SelectMany(x => x.AdditionalMembers(contractTypeName, domainTypeName))
+                .Select(x => $"{Environment.NewLine}{x}")
+                .Aggregate((x, y) => $"{x}{y}");
         }
 
         public void Created()
