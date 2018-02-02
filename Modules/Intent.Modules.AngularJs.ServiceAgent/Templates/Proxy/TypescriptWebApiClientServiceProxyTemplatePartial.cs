@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.AngularJs.ServiceAgent.Templates.Proxy
 {
-    partial class TypescriptWebApiClientServiceProxyTemplate : IntentProjectItemTemplateBase<ServiceModel>, ITemplate, IRequiresPreProcessing
+    partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<ServiceModel>, ITemplate, IRequiresPreProcessing
     {
         public const string Identifier = "Intent.AngularJs.ServiceAgent.Proxy";
 
@@ -23,23 +23,23 @@ namespace Intent.Modules.AngularJs.ServiceAgent.Templates.Proxy
             _eventDispatcher = eventDispatcher;
         }
 
-        public string Namespace => "App.Proxies";
+        protected override TypescriptDefaultFileMetaData DefineTypescriptDefaultFileMetaData()
+        {
+            return new TypescriptDefaultFileMetaData(
+                overwriteBehaviour: OverwriteBehaviour.Always,
+                codeGenType: CodeGenType.Basic,
+                fileName: "${Model.Name}Proxy",
+                fileExtension: "ts",
+                defaultLocationInProject: $@"wwwroot\App\Proxies\Generated",
+                className: "${Model.Name}Proxy",
+                @namespace: "App.Proxies"
+                );
+        }
+
         public string SolutionName => Project.Application.SolutionName;
         public string ApplicationName => Project.Application.ApplicationName;
         public string ApiBasePathConfigKey => $"{Project.Application.SolutionName}_{Model.ApplicationName}_api_basepath".ToLower();
         public string ContractNamespace => Model.ApplicationName == Project.ApplicationName().Replace("_Client", "") ? "Contracts" : $"Contracts.{Model.ApplicationName}";
-
-
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
-        {
-            return new DefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
-                fileName: $"{Model.Name}Proxy",
-                fileExtension: "ts",
-                defaultLocationInProject: $@"wwwroot\App\Proxies\Generated"
-                );
-        }
 
         public void PreProcess()
         {

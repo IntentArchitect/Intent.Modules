@@ -21,7 +21,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.HttpExceptionHandler
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AspNet.WebApi\Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class HttpExceptionHandlerTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.HttpExceptionHandler
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.tt"
+            #line 13 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AspNet.WebApi\Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.tt"
 
 
 
@@ -56,7 +56,7 @@ using System.Web.Http;
 
 namespace ");
             
-            #line 30 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.tt"
+            #line 30 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AspNet.WebApi\Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

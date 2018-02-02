@@ -52,7 +52,11 @@ namespace Intent.SoftwareFactory.Templates
                     string @namespace,
                     string dependsUpon = null
                     )
-            : base(overwriteBehaviour, codeGenType, fileName, fileExtension, defaultLocationInProject)
+            : base(overwriteBehaviour: overwriteBehaviour, 
+                  codeGenType: codeGenType, 
+                  fileName: fileName, 
+                  fileExtension: fileExtension,
+                  defaultLocationInProject: defaultLocationInProject)
         {
             if (!string.IsNullOrWhiteSpace(className))
             {
