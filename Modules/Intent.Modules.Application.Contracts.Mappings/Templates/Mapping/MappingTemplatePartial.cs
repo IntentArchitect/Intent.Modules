@@ -58,6 +58,11 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         {
             get
             {
+                if (!GetDecorators().Any())
+                {
+                    return string.Empty;
+                }
+
                 return GetDecorators()
                     .SelectMany(x => x.Usings())
                     .Aggregate((x, y) => $"{x}{Environment.NewLine}{y}");
@@ -66,6 +71,11 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 
         public string GetDecoratorMembers(string contractTypeName, string domainTypeName)
         {
+            if (!GetDecorators().Any())
+            {
+                return string.Empty;
+            }
+
             return GetDecorators()
                 .SelectMany(x => x.AdditionalMembers(contractTypeName, domainTypeName))
                 .Select(x => $"{Environment.NewLine}{x}")
