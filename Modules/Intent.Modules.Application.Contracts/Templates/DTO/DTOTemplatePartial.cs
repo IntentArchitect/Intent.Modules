@@ -50,7 +50,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         {
             return Model.Fields.Any()
                 ? Model.Fields
-                    .Select(x => "\r\n            " + GetTypeInfo(x.TypeReference) + " " + x.Name.ToCamelCase())
+                    .Select(x => "\r\n            " + GetTypeInfo(x.TypeReference) + " " + x.Name.ToCamelCase().PrefixIdentifierIfKeyword())
                     .Aggregate((x, y) => x + ", " + y)
                 : "";
         }

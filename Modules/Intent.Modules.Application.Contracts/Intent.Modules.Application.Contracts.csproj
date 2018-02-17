@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CSharpHelpers.cs" />
     <Compile Include="CSharpTypeReferenceExtensions.cs" />
     <Compile Include="Decorators\DataContractDTOAttributeDecoratorRegistration.cs" />
     <Compile Include="Legacy\DTO\DTOTemplate.cs" />
