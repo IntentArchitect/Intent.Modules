@@ -110,6 +110,10 @@
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Typescript.ServiceAgent.Contracts\Intent.Modules.Typescript.ServiceAgent.Contracts.csproj">
+      <Project>{33ea449e-9d02-4dde-85bc-58ad664d9abd}</Project>
+      <Name>Intent.Modules.Typescript.ServiceAgent.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
       <Project>{de177367-d476-4299-b9e6-71934b434fc5}</Project>
       <Name>Intent.Modules.Unity</Name>
@@ -142,7 +146,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
