@@ -2,6 +2,8 @@
 
 This example services to demonstrate setting up a basic T4 Template.
 
+Templates with in Intent Architect are the building blocks used to describe code, more specifically the code patterns you would generated.
+
 ## Concepts shown
 - T4 templating basics, basic mechanics of T4 you will require to make your own templates e.g. loops, conditionals, binding to the code behind etc.
 - Template File Metadata, template provide File Metadata describing the nature of the content they are creating, for example its file name, project location and file extension.
