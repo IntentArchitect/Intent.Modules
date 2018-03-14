@@ -10,7 +10,6 @@
 namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.MetaModel.UMLModel;
     using Intent.SoftwareFactory.Templates;
     using System;
     using System.IO;

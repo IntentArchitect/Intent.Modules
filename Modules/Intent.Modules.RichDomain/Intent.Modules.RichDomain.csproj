@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DDDExtensions.cs" />
     <Compile Include="Decorators\EnforceConstraintsEntityStateDecorator.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,6 +107,7 @@
     <Content Include="MetaData\Domain\Folders\Stereotypes.xml" />
     <None Include="Intent.Modules.RichDomain.imodspec" />
     <None Include="MetaData\Domain\Intent.RichDomain.domain.pkg.config" />
+    <Content Include="MetaData\Domain\Stereotypes\DomainType.xml" />
     <Content Include="MetaData\Domain\Stereotypes\Numeric.xml" />
     <Content Include="MetaData\Domain\Stereotypes\CommandOperation.xml" />
     <Content Include="MetaData\Domain\Stereotypes\Text.xml" />
