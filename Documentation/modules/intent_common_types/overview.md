@@ -14,12 +14,12 @@ It will also install Stereotypes for describing type conversions, this module in
 ![Installed Stereotypes](images/stereo_types.png)
 *Installed Stereotypes*
 
-These stereotypes can be applied to any data types to describe it's technology specific type. In the image below we can see an example of mapping the technology agnostic 'datetime' onto the equivalent C# type.
+These stereotypes can be applied to any data types to describe its technology specific type. In the image below we can see an example of mapping the technology agnostic 'datetime' onto the equivalent C# type.
 
 ![DateTime Mapping](images/date_time_mapping.png)
 *Mapping Datetime to C#*
 
-Within you template simply pass the MetaData model data type to the Types.Get method to resolve the technology specific type within your template (see pseudo code example below). 
+Within your template simply pass the MetaData model data type to the Types.Get method to resolve the technology specific type within your template (see pseudo code example below). 
 
 ```csharp
 
