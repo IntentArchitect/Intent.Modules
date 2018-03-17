@@ -356,5 +356,13 @@ namespace Intent.Modules.RichDomain
                     return type;
             }
         }
+
+        public static string GetNewKeywordIfDerived(this Class @class)
+        {
+            return @class.ParentClass != null
+                ? "new "
+                : string.Empty;
+        }
+
     }
 }

@@ -9,7 +9,7 @@ namespace Intent.Modules.RichDomain.Auditing.Decorators
         public const string Identifier = "Intent.RichDomain.Auditing.EntityBehaviourBase";
         public string[] PublicProperties(Class @class)
         {
-            if (!@class.IsAggregateRoot())
+            if (!@class.IsAggregateRoot() || Utils.HasParentClassWhichIsAggregateRoot(@class))
             {
                 return new string[0];
             }

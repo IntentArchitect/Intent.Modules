@@ -30,9 +30,9 @@ namespace <#= Namespace #>
     //Full Interface
     public partial interface I<#= Model.Name.ToPascalCase() #>Behaviour<#= (Model.IsSubClass()) ? " : I" + Model.ParentClass.Name.ToPascalCase() + "Behaviour" : "" #>
     {
-        <#= Model.Name.ToPascalCase() #> State { get; }
+        <#= Model.GetNewKeywordIfDerived() #><#= Model.Name.ToPascalCase() #> State { get; }
 
-        <#= Model.IdentifierType() #> Id { get; }
+        <#= Model.GetNewKeywordIfDerived() #><#= Model.IdentifierType() #> Id { get; }
 <#  foreach (var attribute in Model.Attributes)
     {
         if (attribute.IsAssociationAttribute)
@@ -86,7 +86,7 @@ namespace <#= Namespace #>
 <#  var className = Model.Name.ToPascalCase();
     if (Model.IsEntity())
     {#>
-        public <#= typedIdentifier #> Id 
+        public <#= Model.GetNewKeywordIfDerived() #><#= typedIdentifier #> Id 
         { 
             get { return <#= typedIdentifier #>.Create(_state.Id);  }
         }
@@ -137,7 +137,7 @@ namespace <#= Namespace #>
             set { _state.<#= association.Name().ToPascalCase() #> = (<#= association.Type("", "", readOnly: false) #>)value; }
         }
 <#  }#>
-        public <#= Model.Name.ToPascalCase() #> State
+        public <#= Model.GetNewKeywordIfDerived() #><#= Model.Name.ToPascalCase() #> State
         {
             get { return _state; }
         }

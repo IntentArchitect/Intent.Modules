@@ -22,7 +22,7 @@ namespace Intent.Modules.RichDomain.Auditing.Decorators
 
         public string ConstructorWithOrmLoadingParameter(Class @class)
         {
-            if (!@class.IsAggregateRoot())
+            if (!@class.IsAggregateRoot() || Utils.HasParentClassWhichIsAggregateRoot(@class))
             {
                 return null;
             }
@@ -33,7 +33,7 @@ namespace Intent.Modules.RichDomain.Auditing.Decorators
 
         public string[] PublicProperties(Class @class)
         {
-            if (!@class.IsAggregateRoot())
+            if (!@class.IsAggregateRoot() || Utils.HasParentClassWhichIsAggregateRoot(@class))
             {
                 return new string[0];
             }
