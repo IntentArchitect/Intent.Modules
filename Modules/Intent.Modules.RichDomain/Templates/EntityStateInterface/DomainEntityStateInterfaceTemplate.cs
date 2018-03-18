@@ -10,7 +10,6 @@
 namespace Intent.Modules.RichDomain.Templates.EntityStateInterface
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.MetaModel.UMLModel;
     using Intent.SoftwareFactory.Templates;
     using System;
     using System.IO;
@@ -35,7 +34,7 @@ namespace Intent.Modules.RichDomain.Templates.EntityStateInterface
         {
             this.Write(" \r\n");
             
-            #line 15 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 14 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
 
 var InterfaceName = "I" + Model.Name.ToPascalCase() + "";
 var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
@@ -46,14 +45,14 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
                     ";\r\nusing Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nname" +
                     "space ");
             
-            #line 26 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 25 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n");
             
-            #line 28 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
  if (Model.IsEntity())
    {
    
@@ -62,102 +61,102 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line hidden
             this.Write("   //Typed Identifier\r\n    public class ");
             
-            #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 31 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IdentifierType()));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 31 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentClass != null ? Model.ParentClass.IdentifierType() : "Identifier"));
             
             #line default
             #line hidden
             this.Write(" \r\n    {\r\n        protected ");
             
-            #line 34 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 33 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IdentifierType()));
             
             #line default
             #line hidden
             this.Write("(Guid id) : base (id) {}\r\n\r\n        public ");
             
-            #line 36 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 35 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetNewKeywordIfDerived()));
             
             #line default
             #line hidden
             this.Write("static ");
             
-            #line 36 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 35 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IdentifierType()));
             
             #line default
             #line hidden
             this.Write(" Create(Guid? id)\r\n        {\r\n            return (id.HasValue) ? new ");
             
-            #line 38 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 37 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IdentifierType()));
             
             #line default
             #line hidden
             this.Write("(id.Value) : null;\r\n        }\r\n    }\r\n");
             
-            #line 41 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 40 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
    }
             
             #line default
             #line hidden
             this.Write("\r\n    public interface ");
             
-            #line 43 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 42 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 43 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 42 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentClass != null ? "I" + Model.ParentClass.Name.ToPascalCase() + ", " : ""));
             
             #line default
             #line hidden
             
-            #line 43 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 42 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetInterfaces(Model)));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        ");
             
-            #line 45 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 44 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetNewKeywordIfDerived()));
             
             #line default
             #line hidden
             
-            #line 45 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 44 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" State { get; }\r\n\r\n        ");
             
-            #line 47 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 46 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetNewKeywordIfDerived()));
             
             #line default
             #line hidden
             
-            #line 47 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 46 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IdentifierType()));
             
             #line default
             #line hidden
             this.Write(" Id { get; }\r\n");
             
-            #line 48 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 47 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
   foreach (var attribute in Model.Attributes)
     {
         if (attribute.IsAssociationAttribute)
@@ -168,33 +167,33 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line hidden
             this.Write("        ");
             
-            #line 53 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 52 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.HasComplexDomainType() ? attribute.ComplexDomainType() : attribute.DomainType()));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 53 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 52 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" { get;}\r\n");
             
-            #line 54 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 53 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
   }
             
             #line default
             #line hidden
             
-            #line 54 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 53 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(InterfaceProperties(Model)));
             
             #line default
             #line hidden
             
-            #line 54 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 53 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
 
 // TODO: Change this to a decorator:
 	if (Model.IsAggregateRoot() && !Model.IsSubClass()) 
@@ -206,7 +205,7 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             this.Write("        DateTime? CreateDateTime { get; }\r\n        DateTime? UpdateDateTime { get" +
                     "; }\r\n        string UpdatedBy { get; }\r\n\r\n");
             
-            #line 63 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 62 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
   }
     foreach (var association in Model.Associations)
     {
@@ -220,49 +219,49 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line hidden
             this.Write("        ");
             
-            #line 71 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 70 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.IdentifierType()));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 71 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 70 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.IdentifierName()));
             
             #line default
             #line hidden
             this.Write(" { get; }\r\n");
             
-            #line 72 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 71 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
       }
             
             #line default
             #line hidden
             this.Write("\r\n        ");
             
-            #line 74 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 73 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.Type("I", "", true)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 74 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 73 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" { get;}\r\n");
             
-            #line 75 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 74 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
   }
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 77 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 76 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
   foreach (var operation in Model.Operations.Where(x => x.IsQueryBehaviour()))
     {
         string returnType = operation.ReturnType != null ? operation.ReturnType.DomainType() : "void";
@@ -273,98 +272,98 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line hidden
             this.Write("        ");
             
-            #line 82 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 81 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(returnType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 82 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 81 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 82 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 81 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameterDefinitions));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 83 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 82 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
     }
             
             #line default
             #line hidden
             this.Write("    }\r\n\r\n    partial class ");
             
-            #line 86 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 85 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 86 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 85 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        #region ");
             
-            #line 88 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 87 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n        ");
             
-            #line 90 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 89 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 90 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 89 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write(".State \r\n        { \r\n            get\r\n            {\r\n                return (");
             
-            #line 94 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 93 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(")this;\r\n            }\r\n        }\r\n\r\n        ");
             
-            #line 98 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 97 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IdentifierType()));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 98 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 97 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write(".Id \r\n        { \r\n            get\r\n            {\r\n                return ");
             
-            #line 102 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 101 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IdentifierType()));
             
             #line default
             #line hidden
             this.Write(".Create(this.Id);\r\n            }\r\n        }\r\n\r\n");
             
-            #line 106 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 105 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
   foreach (var attribute in Model.Attributes)
     {
         if (attribute.IsAssociationAttribute)
@@ -373,7 +372,7 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line default
             #line hidden
             
-            #line 110 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 109 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
       if (attribute.HasComplexDomainType())
         {
             
@@ -381,49 +380,49 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line hidden
             this.Write("        ");
             
-            #line 112 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 111 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.ComplexDomainType()));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 112 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 111 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 112 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 111 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" \r\n        {\r\n            get { return (");
             
-            #line 114 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 113 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" != null) ? new ");
             
-            #line 114 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 113 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.ComplexDomainType()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 114 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 113 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(") : null; }\r\n        }\r\n\r\n");
             
-            #line 117 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 116 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
       }
         else
         {
@@ -432,49 +431,49 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line hidden
             this.Write("        ");
             
-            #line 120 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 119 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.DomainType()));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 120 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 119 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 120 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 119 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" \r\n        {\r\n            get { return ");
             
-            #line 122 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 121 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("; }\r\n        }\r\n\r\n");
             
-            #line 125 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 124 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
       }
     }
             
             #line default
             #line hidden
             
-            #line 126 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 125 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ImplementationPartialProperties(Model, readOnlyInterfaceName)));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 127 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 126 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
 
 	if (Model.IsAggregateRoot() && !Model.IsSubClass()) 
     {
@@ -484,7 +483,7 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line hidden
             this.Write("        DateTime? ");
             
-            #line 131 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 130 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
@@ -492,7 +491,7 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             this.Write(".CreateDateTime\r\n        {\r\n            get { return CreateDateTime; }\r\n        }" +
                     "\r\n\r\n        DateTime? ");
             
-            #line 136 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 135 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
@@ -500,14 +499,14 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             this.Write(".UpdateDateTime\r\n        {\r\n            get { return UpdateDateTime; }\r\n        }" +
                     "\r\n\r\n        string ");
             
-            #line 141 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 140 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write(".UpdatedBy\r\n        {\r\n            get { return UpdatedBy; }\r\n        }\r\n\r\n");
             
-            #line 146 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 145 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
   }
 
     foreach (var association in Model.Associations)
@@ -522,42 +521,42 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line hidden
             this.Write("        ");
             
-            #line 155 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 154 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.IdentifierType()));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 155 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 154 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 155 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 154 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.IdentifierName()));
             
             #line default
             #line hidden
             this.Write("\r\n        { \r\n            get { return Domain.");
             
-            #line 157 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 156 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.IdentifierType()));
             
             #line default
             #line hidden
             this.Write(".Create(this.");
             
-            #line 157 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 156 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.IdentifierName()));
             
             #line default
             #line hidden
             this.Write("); }\r\n        }\r\n\r\n");
             
-            #line 160 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 159 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
       }
         if (association.IsCollection())
         {
@@ -566,35 +565,35 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line hidden
             this.Write("        ");
             
-            #line 163 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 162 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.Type("I", "", true)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 163 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 162 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 163 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 162 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" \r\n        { \r\n            get { return ");
             
-            #line 165 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 164 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("; }\r\n        }\r\n\r\n");
             
-            #line 168 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 167 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
       }
         else
         {
@@ -603,35 +602,35 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             #line hidden
             this.Write("        ");
             
-            #line 171 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 170 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.Type("I", "")));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 171 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 170 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(readOnlyInterfaceName));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 171 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 170 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" \r\n        { \r\n            get { return ");
             
-            #line 173 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 172 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(association.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(";} \r\n        }\r\n\r\n");
             
-            #line 176 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+            #line 175 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
         }
     }
 
@@ -642,7 +641,7 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 183 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
+        #line 182 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.tt"
  
 
 public string GetInterfaces(Class umlClass) {

@@ -10,7 +10,6 @@
 namespace Intent.Modules.RichDomain.Templates.Enum
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.MetaModel.UMLModel;
     using Intent.SoftwareFactory.Templates;
     using System;
     using System.IO;
@@ -23,7 +22,7 @@ namespace Intent.Modules.RichDomain.Templates.Enum
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class DomainEnumTemplate : IntentProjectItemTemplateBase<EnumDefinition>
     {
@@ -34,7 +33,7 @@ namespace Intent.Modules.RichDomain.Templates.Enum
         public override string TransformText()
         {
             
-            #line 15 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
+            #line 14 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
 
  
             
@@ -43,21 +42,21 @@ namespace Intent.Modules.RichDomain.Templates.Enum
             this.Write(" \r\n\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing Intent.Framework.Dom" +
                     "ain;\r\nusing Intent.Framework.Core;\r\n\r\nnamespace ");
             
-            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
+            #line 22 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public enum ");
             
-            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
+            #line 24 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Type));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n");
             
-            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
+            #line 26 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
     foreach(var literal in Model.Values)
     { 
             
@@ -65,14 +64,14 @@ namespace Intent.Modules.RichDomain.Templates.Enum
             #line hidden
             this.Write("        ");
             
-            #line 29 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
+            #line 28 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(literal));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 30 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
+            #line 29 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\Enum\DomainEnumTemplate.tt"
     } 
             
             #line default
