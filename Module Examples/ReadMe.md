@@ -2,7 +2,7 @@
 
 These examples are meant to illustrate the various features available to Intent Architect module builders.
 
-### Prerequisites
+## Prerequisites
 - Install Visual Studio
 - Install Intent Architect 
 

@@ -1,0 +1,14 @@
+﻿<#@ template  debug="true" inherits="Intent.SoftwareFactory.Templates.IntentProjectItemTemplateBase" #>
+<#@ Assembly Name="System.Core" #>
+<#@ import namespace="Intent.MetaModel.Domain" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #> 
+<#@ import namespace="System.IO" #> 
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic"#>
+
+Template Variables
+Variable 1 : <#= Variable1#>
+Variable 2 : <#= FileMetaData.CustomMetaData["Variable2"]#>

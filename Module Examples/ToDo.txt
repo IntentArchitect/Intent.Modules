@@ -10,9 +10,9 @@ Need a doc explaining how to interact, play with the examples. - Explain there a
 
 [*] - Templates : Non T4 Templates
 [*] - Templates : Basic T4 Templates
+[*] - Templates : Template Config
 [ ] - Templates : Template Data Binding
 [ ] - Templates : Binding to specific Metadata
-[ ] - Templates : Template Config
 [ ] - Templates : Type agnostic modelling
 [ ] - Templates : Loose coupling and situational logic through Eventing 
 [ ] - Templates : Template Dependancies

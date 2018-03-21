@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Templates.Config</id>
+  <version>1.0.0</version>
+  <summary>Illustrates the basics of template configuration</summary>
+  <description>Illustrates the basics of template configuration</description>
+  <authors>Intent Software</authors>
+  <templates>
+    <template id="Templates.Config.TemplateVariables" enabled="true">
+      <role>Default</role>
+      <config>
+        <!-- Specify the  exposed configurable variables-->
+        <add key="Variable1" description="Variable 1 description" default="Variable1Default" />
+        <add key="Variable2" description="Variable 2 description" default="Variable2Default" />
+      </config>
+    </template>
+    <template id="Templates.Config.DataBoundConfig" enabled="true">
+      <role>Default</role>
+      <config>
+        <!-- Specify the  exposed configurable variables, with optional default values-->
+        <add key="Variable1" description="Project Name" default="${Project.ProjectName}" />
+        <add key="Variable2" description="Model Property" default="${CustomModel.Name}" />
+        <add key="Variable3" description="Code Behind Variable" default="${Variable3}" />
+      </config>
+    </template>
+  </templates>
+  <decorators />
+  <factoryExtensions>
+  </factoryExtensions>
+  <dependencies />
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+</package>

@@ -1,6 +1,6 @@
 ﻿# Templates : Basic T4 Template
 
-This example services to demonstrate setting up a basic T4 Template.
+This example serves to demonstrate setting up a basic T4 Template.
 
 Templates with in Intent Architect are the building blocks used to describe code, more specifically the code patterns you would generated.
 

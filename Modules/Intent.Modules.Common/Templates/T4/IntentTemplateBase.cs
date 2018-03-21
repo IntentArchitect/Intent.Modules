@@ -213,7 +213,7 @@ namespace Intent.SoftwareFactory.Templates
             {
                 if ((objectToConvert == null))
                 {
-                    throw new global::System.ArgumentNullException("objectToConvert");
+                    return "";
                 }
                 System.Type t = objectToConvert.GetType();
                 System.Reflection.MethodInfo method = t.GetMethod("ToString", new System.Type[] {

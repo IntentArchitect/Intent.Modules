@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Templates.BasicT4Template",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Templates.Registrations", "Templates.Registrations\Templates.Registrations.csproj", "{80CCC0CB-97F0-4804-8945-F703792319DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Templates.Config", "Templates.Config\Templates.Config.csproj", "{47877264-C4CB-4CF9-B8FA-9EF398942F5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{80CCC0CB-97F0-4804-8945-F703792319DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80CCC0CB-97F0-4804-8945-F703792319DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80CCC0CB-97F0-4804-8945-F703792319DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47877264-C4CB-4CF9-B8FA-9EF398942F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47877264-C4CB-4CF9-B8FA-9EF398942F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47877264-C4CB-4CF9-B8FA-9EF398942F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47877264-C4CB-4CF9-B8FA-9EF398942F5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
