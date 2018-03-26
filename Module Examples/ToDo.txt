@@ -11,9 +11,9 @@ Need a doc explaining how to interact, play with the examples. - Explain there a
 [*] - Templates : Non T4 Templates
 [*] - Templates : Basic T4 Templates
 [*] - Templates : Template Config
+[*] - Templates : Type agnostic modelling
 [ ] - Templates : Template Data Binding
 [ ] - Templates : Binding to specific Metadata
-[ ] - Templates : Type agnostic modelling
 [ ] - Templates : Loose coupling and situational logic through Eventing 
 [ ] - Templates : Template Dependancies
 [ ] - Templates : Assembly References
@@ -33,10 +33,10 @@ Need a doc explaining how to interact, play with the examples. - Explain there a
 [ ] - Factory Extensions : Output Interceptor - maybe file header, maybe transforms
 
 
-[X] - Template Registrations : No Model
-[X] - Template Registrations : 1-1 Model
-[X] - Template Registrations : 1- Many Model
-[X] - Template Registrations : Custom Registration
+[*] - Template Registrations : No Model
+[*] - Template Registrations : 1-1 Model
+[*] - Template Registrations : 1- Many Model
+[*] - Template Registrations : Custom Registration
 
 [ ] - Roslyn Weave : Modifying Template Output
 [ ] - Roslyn Weave : Template designed to be coded in

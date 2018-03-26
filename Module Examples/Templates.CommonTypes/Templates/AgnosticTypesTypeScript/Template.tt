@@ -1,0 +1,22 @@
+﻿<#@ template  debug="true" inherits="Intent.SoftwareFactory.Templates.IntentProjectItemTemplateBase<IClass>" #>
+<#@ Assembly Name="System.Core" #>
+<#@ import namespace="Intent.MetaModel.Domain" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #> 
+<#@ import namespace="System.IO" #> 
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic"#> 
+
+namespace App.MySpace
+{
+    export interface <#= Model.Name#>
+    {
+<# foreach (var attribute in Model.Attributes) {#>
+        //Model Type id : <#= attribute.Type.Name #>
+        <#= attribute.Name.ToCamelCase() #> <#= Types.Get(attribute.Type).ToCamelCase() #>;
+
+<#}#>
+    }
+} 

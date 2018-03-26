@@ -26,5 +26,12 @@
         <property name="AE91EFB3-56BB-451D-AA29-C20D221AB168" value="false" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="f0df7de4-de6d-4b33-a351-62196f194e09">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="c5540633-b665-423c-b04a-e3989d59e546" value="String" />
+        <property name="b7cda24a-8300-4a5d-8df2-7ee484a45692" value="Common" />
+      </properties>
+    </stereotype>
   </stereotypes>
 </dataType>
