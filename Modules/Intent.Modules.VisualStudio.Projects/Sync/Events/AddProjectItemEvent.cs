@@ -41,6 +41,12 @@ namespace Intent.Modules.VisualStudio.Projects.Sync.Events
             return this;
         }
 
+        public AddProjectItemEvent CopyToOutputDirectory(string copyToOutputDirectory)
+        {
+            MetaData.Add(new KeyValuePair<string, string>("CopyToOutputDirectory", copyToOutputDirectory));
+            return this;
+        }
+
         public static string GetProjectItemType(string fileName)
         {
             string fileExtension = Path.GetExtension(fileName)

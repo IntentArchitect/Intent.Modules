@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Decorators\AssemblyBindingRedirectWebConfigDecoratorRegistration.cs" />
+    <Compile Include="Decorators\ICSProjectFileDecorator.cs" />
     <Compile Include="FactoryExtensions\DependencyResolutionApplicationProcessor.cs" />
     <Compile Include="ProjectTypeIds.cs" />
     <Compile Include="Sync\ApplicationSyncProcessor.cs" />
@@ -168,6 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Intent.Modules.VisualStudio.Projects.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Intent.Modules.VisualStudio.Projects.imodspec">
       <SubType>Designer</SubType>
     </None>
