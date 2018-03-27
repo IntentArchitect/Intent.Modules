@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DDDExtensions.cs" />
     <Compile Include="Decorators\EnforceConstraintsEntityStateDecorator.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,9 +79,9 @@
     <Compile Include="Templates\EntityBehaviour\DomainEntityBehaviourTemplatePartial.cs" />
     <Compile Include="Templates\EntityBehaviour\IDomainBehaviourDecorator.cs" />
     <Compile Include="Templates\EntitySpecification\DomainEntitySpecificationTemplate.cs">
-      <DependentUpon>DomainEntitySpecificationTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>DomainEntitySpecificationTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\EntitySpecification\DomainEntitySpecificationTemplatePartial.cs" />
     <Compile Include="Templates\EntityStateInterface\DomainEntityStateInterfaceTemplate.cs">
@@ -106,12 +107,17 @@
     <Content Include="MetaData\Domain\Folders\Stereotypes.xml" />
     <None Include="Intent.Modules.RichDomain.imodspec" />
     <None Include="MetaData\Domain\Intent.RichDomain.domain.pkg.config" />
+    <Content Include="MetaData\Domain\Stereotypes\DomainType.xml" />
     <Content Include="MetaData\Domain\Stereotypes\Numeric.xml" />
     <Content Include="MetaData\Domain\Stereotypes\CommandOperation.xml" />
     <Content Include="MetaData\Domain\Stereotypes\Text.xml" />
     <Content Include="MetaData\Domain\Stereotypes\QueryOperation.xml" />
     <Content Include="MetaData\Domain\Stereotypes\AggregateRoot.xml" />
     <Content Include="MetaData\Domain\Stereotypes\Entity.xml" />
+    <None Include="Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DomainEntitySpecificationTemplate.cs</LastGenOutput>
+    </None>
     <Content Include="Templates\Enum\DomainEnumTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DomainEnumTemplate.cs</LastGenOutput>
@@ -124,9 +130,6 @@
     <None Include="Templates\EntityState\DomainEntityStateTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DomainEntityStateTemplate.cs</LastGenOutput>
-    </None>
-    <None Include="Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
     <None Include="Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

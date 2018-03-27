@@ -285,14 +285,22 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 {
                     case SoftwareFactoryEvents.AddProjectItemEvent:
                         var x = new AddProjectItemEvent(Project, @event.GetValue("RelativeFileName"), @event.TryGetValue("ItemType"));
+
                         if (@event.TryGetValue("Depends On") != null)
                         {
                             x.DependentUpon(@event.TryGetValue("Depends On"));
                         }
+
                         if (@event.TryGetValue("IntentGenType") != null)
                         {
                             x.Generated(@event.TryGetValue("IntentGenType"));
                         }
+
+                        if (@event.TryGetValue("CopyToOutputDirectory") != null)
+                        {
+                            x.CopyToOutputDirectory(@event.TryGetValue("CopyToOutputDirectory"));
+                        }
+
                         Process(x);
                         break;
                     case SoftwareFactoryEvents.RemoveProjectItemEvent:

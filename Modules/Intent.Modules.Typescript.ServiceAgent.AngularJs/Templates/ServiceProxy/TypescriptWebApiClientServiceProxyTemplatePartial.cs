@@ -45,7 +45,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             return new TypescriptDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{Model.Name}Proxy",
+                fileName: "${Model.Name}Proxy",
                 fileExtension: "ts",
                 defaultLocationInProject: $@"wwwroot\App\Proxies\Generated",
                 className: "${Model.Name}Proxy",

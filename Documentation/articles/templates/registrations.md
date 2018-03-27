@@ -5,10 +5,10 @@ For Intent Architect to know about your template you need to register it, this i
 >[!NOTE]
 >A template registration is a factory, i.e. it will create a template instance for data model returned from the `GetModels` method.
 
-There are 3 base classes you can inherit from to register your template.
-- **NoModelTemplateRegistrationBase**, templates not bound to data
-- **ModelTemplateRegistrationBase**, template bound to data
-- **ListModelTemplateRegistrationBase**, template bound to a list of data
+Fundamentally, Intent Architect uses the `IProjectTemplateRegistration` interface to register Templates with the Software Factory. A few base classes have been created for convenience to make the common use cases easier to implement:
+- **NoModelTemplateRegistrationBase** - For cases when the template is not dependent on any metadata (e.g. outputting a static file).
+- **ModelTemplateRegistrationBase** - For cases when there is a _one-to-one_ relationship between each metadata model and output file. This is the most common use case (e.g. a `ServiceImplementation` output for each `Service` model from the metadata).
+- **ListModelTemplateRegistrationBase** - For cases when the template requires a collection of metadata models (e.g. a Dependency Injection `Registrations` class that registers up each of the services from the metadata)
 
 Here is an example of a template registration.
 

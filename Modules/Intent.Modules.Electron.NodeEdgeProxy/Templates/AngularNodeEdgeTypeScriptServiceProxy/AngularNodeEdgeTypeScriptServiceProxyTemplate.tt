@@ -11,16 +11,17 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Intent.Modules.Typescript.ServiceAgent.Contracts" #>
 
 namespace <#= Namespace #> {
 
     export class <#=Model.Name#>Proxy {
-        private edgeProxy: IEdgeProxy;
+        private readonly edgeProxy: IEdgeProxy;
 
         static $inject = ["$q", "Config", "Edge"];
         constructor(
-            private $q: ng.IQService,
-            public config: any,
+            private readonly $q: ng.IQService,
+            private readonly config: any,
             edge: IEdge) {
 
             try {
@@ -30,7 +31,7 @@ namespace <#= Namespace #> {
                     methodName: "Invoke"
                 });
             } catch (e) {
-                console.error(e)
+                console.error(e);
             }
         }
 
@@ -40,7 +41,7 @@ namespace <#= Namespace #> {
             if (o.ReturnType != null)
             {
 #>
-        public <#= LowerFirst(o.Name) #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= GetReturnType(o) #>> {
+        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= this.ConvertType(o.ReturnType.TypeReference) #>> {
             try {
                 var data = {
                     operationName: "<#= o.Name #>",
@@ -59,7 +60,7 @@ namespace <#= Namespace #> {
                     })
                 };
 
-                return this.$q((resolve: (data: <#= GetReturnType(o) #>) => void, reject: (reason: any) => void) => {
+                return this.$q((resolve: (data: <#= this.ConvertType(o.ReturnType.TypeReference) #>) => void, reject: (reason: any) => void) => {
                     this.edgeProxy(data, (error, result: string) => {
                         if (error) {
                             reject(error);
@@ -80,7 +81,7 @@ namespace <#= Namespace #> {
             else
             {
 #>
-        public <#= LowerFirst(o.Name) #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<void> {
+        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<void> {
             try {
                 var data = {
                     operationName: "<#= o.Name #>",

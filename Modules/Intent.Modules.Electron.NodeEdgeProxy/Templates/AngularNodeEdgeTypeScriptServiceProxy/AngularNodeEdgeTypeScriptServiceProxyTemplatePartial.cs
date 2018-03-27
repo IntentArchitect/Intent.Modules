@@ -7,6 +7,7 @@ using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Typescript.ServiceAgent.Contracts;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScriptServiceProxy
 {
@@ -53,111 +54,16 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
             });
         }
 
-        private static string GetMethodDefinitionParameters(IOperationModel operation)
+        private string GetMethodDefinitionParameters(IOperationModel operation)
         {
-            if (!operation.Parameters.Any())
+            if (operation.Parameters == null || !operation.Parameters.Any())
             {
-                return "";
+                return string.Empty;
             }
+
             return operation.Parameters
-                .Select(x => $"{LowerFirst(x.Name)}: {ConvertType(x.TypeReference.Name)}{(x.TypeReference.IsCollection ? "[]" : string.Empty)}")
+                .Select(x => $"{x.Name.ToCamelCase()}: {this.ConvertType(x.TypeReference)}")
                 .Aggregate((x, y) => $"{x}, {y}");
-        }
-
-        //private static string GetMethodCallParameters(IOperationModel operation)
-        //{
-        //    return operation.Parameters
-        //        .Select(x => $"{LowerFirst(x.Name)}: {LowerFirst(x.Name)}")
-        //        .Aggregate((x, y) => $"{x}, {y}");
-        //}
-
-        private static string GetReturnType(IOperationModel o)
-        {
-            if (o.ReturnType.TypeReference.Name.StartsWith("PagedResult"))
-            {
-                return $"Contracts.PagedResultDTO<{ConvertType(o.ReturnType.TypeReference.Name)}>";
-            }
-
-            if (o.ReturnType.TypeReference.IsCollection)
-            {
-                return $"{ConvertType(o.ReturnType.TypeReference.Name)}[]";
-            }
-
-            return $"{ConvertType(o.ReturnType.TypeReference.Name)}";
-        }
-
-        // TODO JL: This should work off GBs new system of stereotypes for mapping the types
-        private static string ConvertType(string propertyType)
-        {
-            switch (propertyType)
-            {
-                case "byte[]":
-                case "Byte[]":
-                case "System.Byte[]":
-                    propertyType = "Array<number>";
-                    break;
-                case "DateTime":
-                case "DateTime?":
-                case "System.DateTime":
-                case "System.DateTime?":
-                case "System.Nullable<System.DateTime>":
-                    propertyType = "Date";
-                    break;
-                case "string":
-                case "String":
-                case "System.String":
-                case "Guid":
-                case "Guid?":
-                case "System.Guid":
-                case "System.Guid?":
-                case "System.Nullable<System.Guid>":
-                    propertyType = "string";
-                    break;
-                case "int":
-                case "Int32":
-                case "Int32?":
-                case "System.Int32":
-                case "System.Int32?":
-                case "System.Nullable<System.Int32>":
-                case "decimal":
-                case "Decimal":
-                case "Decimal?":
-                case "System.Decimal":
-                case "System.Decimal?":
-                case "System.Nullable<System.Decimal>":
-                case "System.TimeSpan":
-                case "System.TimeSpan?":
-                case "System.Nullable<System.TimeSpan>":
-                    propertyType = "number";
-                    break;
-                case "bool":
-                case "Boolean":
-                case "System.Boolean":
-                    propertyType = "boolean";
-                    break;
-                default:
-                    {
-                        if (propertyType.IndexOf("Contracts") != -1)
-                        {
-                            propertyType = propertyType.Substring(propertyType.IndexOf("Contracts"));
-                        }
-                        else
-                        {
-                            propertyType = "Contracts." + propertyType.Split('.')[propertyType.Split('.').Length - 1];
-                        }
-
-                        break;
-                    }
-            }
-
-            return propertyType;
-        }
-
-        private static string LowerFirst(string s)
-        {
-            if (string.IsNullOrEmpty(s))
-                return s;
-            return char.ToLowerInvariant(s[0]) + s.Substring(1);
         }
     }
 }

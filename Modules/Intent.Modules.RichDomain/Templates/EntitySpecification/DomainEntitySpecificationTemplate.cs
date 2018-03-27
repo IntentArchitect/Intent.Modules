@@ -10,7 +10,6 @@
 namespace Intent.Modules.RichDomain.Templates.EntitySpecification
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.MetaModel.UMLModel;
     using Intent.SoftwareFactory.Templates;
     using System;
     using System.IO;
@@ -23,7 +22,7 @@ namespace Intent.Modules.RichDomain.Templates.EntitySpecification
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class DomainEntitySpecificationTemplate : IntentRoslynProjectItemTemplateBase<Class>
     {
@@ -37,28 +36,28 @@ namespace Intent.Modules.RichDomain.Templates.EntitySpecification
                     "ng Intent.Framework.Domain;\r\nusing Intent.Framework.Domain.Specification;\r\n\r\n[as" +
                     "sembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\n\r\nnamespace ");
             
-            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
+            #line 24 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    public class ");
             
-            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("Specification : DomainSpecificationBase<");
             
-            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
             
             #line default
@@ -66,14 +65,14 @@ namespace Intent.Modules.RichDomain.Templates.EntitySpecification
             this.Write("Specification> \r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public stati" +
                     "c ");
             
-            #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
+            #line 30 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("Specification Where()\r\n        {\r\n            return new ");
             
-            #line 33 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
+            #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntitySpecification\DomainEntitySpecificationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
             
             #line default

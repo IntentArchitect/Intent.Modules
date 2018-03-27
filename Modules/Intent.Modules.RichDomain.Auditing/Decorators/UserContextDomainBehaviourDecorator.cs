@@ -1,4 +1,3 @@
-using Intent.MetaModel.UMLModel;
 using Intent.Modules.RichDomain.Templates.EntityBehaviour;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 
@@ -7,15 +6,16 @@ namespace Intent.Modules.RichDomain.Auditing.Decorators
     public class UserContextDomainBehaviourDecorator : IDomainBehaviourDecorator
     {
         public const string Identifier = "Intent.RichDomain.Auditing.DomainBehaviour";
-        public string OperationStart(Class model)
+        public string OperationStart(Class @class)
         {
-            if (model.IsAggregateRoot())
+            if (!@class.IsAggregateRoot() && !Utils.HasParentClassWhichIsAggregateRoot(@class))
             {
-                return @"
+                return null;
+            }
+
+            return @"
             UpdateDateTime = DateTime.UtcNow;
             UpdatedBy = UserContext.Current.UserName;";
-            }
-            return null;
         }
     }
 }

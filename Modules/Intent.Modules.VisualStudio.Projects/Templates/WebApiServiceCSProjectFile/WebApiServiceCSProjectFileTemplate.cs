@@ -1,32 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Xml.Linq;
+using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using Microsoft.Build.Construction;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Xml.Linq;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectFile
 {
-    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies, ISupportXmlDecorators, IProjectTemplate
+    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies, ISupportXmlDecorators, IHasDecorators<ICSProjectFileDecorator>, IProjectTemplate
     {
         public const string Identifier = "Intent.VisualStudio.Projects.WebApiServiceCSProjectFile";
-        private readonly Dictionary<string, IXmlDecorator> _decorators = new Dictionary<string, IXmlDecorator>();
+        private readonly Dictionary<string, IXmlDecorator> _xmlDecorators = new Dictionary<string, IXmlDecorator>();
         private readonly string _sslPort = "";
         private readonly string _port;
+        private IEnumerable<ICSProjectFileDecorator> _decorators;
 
         public WebApiServiceCSProjectFileTemplate(IProject project)
             : base(Identifier, project, null)
         {
             _port = project.ProjectType.Properties.First(x => x.Name == "Port").Value;
-            var useSsl = false;
+            bool useSsl;
             bool.TryParse(project.ProjectType.Properties.First(x => x.Name == "UseSsl").Value, out useSsl);
             if (useSsl)
             {
                 _sslPort = project.ProjectType.Properties.First(x => x.Name == "SslPort").Value;
             }
+        }
+
+        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        {
+            return new DefaultFileMetaData(
+                overwriteBehaviour: OverwriteBehaviour.Always,
+                codeGenType: CodeGenType.Basic,
+                fileName: Project.Name,
+                fileExtension: "csproj",
+                defaultLocationInProject: ""
+            );
         }
 
         public override string TransformText()
@@ -35,7 +49,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var doc = LoadOrCreate(fullFileName);
-            foreach (var decorator in GetDecorators())
+            foreach (var decorator in GetXmlDecorators())
             {
                 decorator.Install(doc, Project);
             }
@@ -57,19 +71,23 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             return doc;
         }
 
-        private IEnumerable<IXmlDecorator> GetDecorators()
+        public IEnumerable<ICSProjectFileDecorator> GetDecorators()
         {
-            //May need to bring in application / project level decorators too
-            return _decorators.Values;
+            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
         }
 
+        private IEnumerable<IXmlDecorator> GetXmlDecorators()
+        {
+            return _xmlDecorators.Values.Union(GetDecorators());
+        }
+
+        // TODO: ISupportXmlDecorators and GetXmlDecorators probably shouldn't be here, so far as I can see nothing is relying on it
         public void RegisterDecorator(string id, IXmlDecorator decorator)
         {
-            if (!_decorators.ContainsKey(id))
+            if (!_xmlDecorators.ContainsKey(id))
             {
-                _decorators.Add(id, decorator);
+                _xmlDecorators.Add(id, decorator);
             }
-
         }
 
         public string CreateTemplate()
@@ -194,17 +212,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             return root.RawXml.Replace("utf-16", "utf-8");
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
-        {
-            return new DefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
-                codeGenType: CodeGenType.Basic,
-                fileName: Project.Name,
-                fileExtension: "csproj",
-                defaultLocationInProject: ""
-                );
-        }
-
         private static ProjectItemGroupElement AddItems(ProjectRootElement elem, string groupName, params string[] items)
         {
             var group = elem.AddItemGroup();
@@ -242,6 +249,5 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
                 NugetPackages.NewtonsoftJson,
             };
         }
-
     }
 }

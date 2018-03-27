@@ -12,6 +12,7 @@ namespace Intent.Modules.AngularJs.ServiceAgent.Templates.DTO
     using Intent.SoftwareFactory.MetaModels.Common;
     using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.SoftwareFactory.Templates;
+    using Intent.MetaModel.Dto.Old;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -23,9 +24,9 @@ namespace Intent.Modules.AngularJs.ServiceAgent.Templates.DTO
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class TypescriptDtoTemplate : IntentProjectItemTemplateBase<ClassModel>
+    public partial class TypescriptDtoTemplate : IntentTypescriptProjectItemTemplateBase<DtoModel>
     {
 #line hidden
         /// <summary>
@@ -35,15 +36,15 @@ namespace Intent.Modules.AngularJs.ServiceAgent.Templates.DTO
         {
             this.Write(" \r\n\r\nnamespace ");
             
-            #line 16 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+            #line 17 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n");
             
-            #line 18 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
- AddClass(Model);
+            #line 19 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+ AddClass(Model.Class);
             
             #line default
             #line hidden
@@ -51,7 +52,7 @@ namespace Intent.Modules.AngularJs.ServiceAgent.Templates.DTO
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 22 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 
     void AddClass(ClassModel model)
     {
@@ -60,28 +61,28 @@ namespace Intent.Modules.AngularJs.ServiceAgent.Templates.DTO
         #line default
         #line hidden
         
-        #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 25 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 this.Write("    export interface ");
 
         
         #line default
         #line hidden
         
-        #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 26 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(model.ClassType.TypeName));
 
         
         #line default
         #line hidden
         
-        #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 26 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 this.Write("\r\n    {\r\n");
 
         
         #line default
         #line hidden
         
-        #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 28 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
         foreach (var p in model.Properties)
         {
             
@@ -91,42 +92,42 @@ this.Write("\r\n    {\r\n");
         #line default
         #line hidden
         
-        #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 this.Write("        ");
 
         
         #line default
         #line hidden
         
-        #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Name.ToCamelCase()));
 
         
         #line default
         #line hidden
         
-        #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 this.Write(": ");
 
         
         #line default
         #line hidden
         
-        #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(p.Type.ConvertType()));
 
         
         #line default
         #line hidden
         
-        #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 this.Write(";\r\n");
 
         
         #line default
         #line hidden
         
-        #line 32 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 33 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
  
         }
 
@@ -134,14 +135,14 @@ this.Write(";\r\n");
         #line default
         #line hidden
         
-        #line 34 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 35 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 this.Write("    }\r\n\r\n");
 
         
         #line default
         #line hidden
         
-        #line 37 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 38 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
         foreach (var child in model.ChildClasses)
         {
             AddClass(child);
@@ -151,7 +152,7 @@ this.Write("    }\r\n\r\n");
         #line default
         #line hidden
         
-        #line 42 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 43 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
 
     }
 
@@ -159,7 +160,7 @@ this.Write("    }\r\n\r\n");
         #line default
         #line hidden
         
-        #line 45 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
+        #line 46 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs.ServiceAgent\Templates\DTO\TypescriptDtoTemplate.tt"
  
 
 

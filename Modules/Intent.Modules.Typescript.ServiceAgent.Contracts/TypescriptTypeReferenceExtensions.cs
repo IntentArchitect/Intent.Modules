@@ -10,7 +10,8 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts
 {
     public static class TypescriptTypeReferenceExtensions
     {
-        public static string ConvertType(this IProjectItemTemplate template, ITypeReference typeInfo)
+        public static string ConvertType<T>(this T template, ITypeReference typeInfo)
+            where T : IProjectItemTemplate, IRequireTypeResolver
         {
             var result = template.GetQualifiedName(typeInfo);
             if (typeInfo.IsCollection)
@@ -20,7 +21,8 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts
             return result;
         }
 
-        public static string GetQualifiedName(this IProjectItemTemplate template, ITypeReference typeInfo)
+        public static string GetQualifiedName<T>(this T template, ITypeReference typeInfo)
+            where T : IProjectItemTemplate, IRequireTypeResolver
         {
             string result = typeInfo.Name;
             if (typeInfo.Type == ReferenceType.ClassType)
@@ -29,15 +31,15 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts
                     ?? template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<DTOModel>(TypescriptDtoTemplate.RemoteIdentifier, (x) => x.Id == typeInfo.Id));
                 if (templateInstance != null)
                 {
-                    result = $"{templateInstance.Namespace}.{templateInstance.ClassName}";
+                    return $"{templateInstance.Namespace}.{templateInstance.ClassName}";
                 }
             }
             else if (typeInfo.HasStereotype(StandardStereotypes.TypescriptType))
             {
-                result = typeInfo.GetStereotypeProperty<string>(StandardStereotypes.TypescriptType, "TypeName");
+                return typeInfo.GetStereotypeProperty<string>(StandardStereotypes.TypescriptType, "TypeName");
             }
 
-            return result;
+            return template.Types.Get(typeInfo);
         }
     }
 }
