@@ -12,7 +12,7 @@
       <role>Domain</role>
     </template>
     <template id="Intent.UserContext.UserContextProvider">
-      <role>Domain</role>
+      <role>Distribution</role>
     </template>
     <template id="Intent.UserContext.UserContextStatic">
       <role>Domain</role>
