@@ -1,5 +1,4 @@
-﻿using Intent.MetaModel.UMLModel;
-using Intent.Modules.RichDomain.Templates.EntityBehaviourBase;
+﻿using Intent.Modules.RichDomain.Templates.EntityBehaviourBase;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 
 namespace Intent.Modules.RichDomain.Auditing.Decorators

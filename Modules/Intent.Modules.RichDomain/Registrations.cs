@@ -1,5 +1,4 @@
-﻿using Intent.MetaModel.UMLModel;
-using Intent.Modules.RichDomain.Decorators;
+﻿using Intent.Modules.RichDomain.Decorators;
 using Intent.Modules.RichDomain.Templates.EntityBehaviour;
 using Intent.Modules.RichDomain.Templates.EntityBehaviourBase;
 using Intent.Modules.RichDomain.Templates.EntitySpecification;

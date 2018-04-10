@@ -10,7 +10,7 @@
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.MetaModel.UMLModel;
+    using Intent.Modules.RichDomain;
     using Intent.SoftwareFactory.Templates;
     using System;
     using System.IO;
@@ -23,7 +23,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<Class>>
     {
@@ -37,28 +37,28 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
                     "ntions;\r\nusing Intent.Framework.EntityFramework;\r\nusing Intent.CodeGen;\r\n\r\n[asse" +
                     "mbly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 23 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 25 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
             
             #line default
             #line hidden
             this.Write("DbContext : DbContextEx\r\n    {\r\n        public ");
             
-            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
             
             #line default
             #line hidden
             this.Write("DbContext()\r\n            : base(\"");
             
-            #line 28 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 28 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
             
             #line default
@@ -67,7 +67,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
                     "DbModelBuilder modelBuilder)\r\n        {\r\n            base.OnModelCreating(modelB" +
                     "uilder);\r\n            \r\n            modelBuilder.HasDefaultSchema(\"");
             
-            #line 37 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 37 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
             
             #line default
@@ -75,7 +75,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             this.Write("\");\r\n            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention" +
                     ">();\r\n");
             
-            #line 39 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 39 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
  foreach (var model in Model) {
 	   if (!model.IsEntity()) {
 			continue;
@@ -86,14 +86,14 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             #line hidden
             this.Write("            modelBuilder.Configurations.Add(new ");
             
-            #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 44 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("Mapping());\r\n");
             
-            #line 45 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 45 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
  }
             
             #line default

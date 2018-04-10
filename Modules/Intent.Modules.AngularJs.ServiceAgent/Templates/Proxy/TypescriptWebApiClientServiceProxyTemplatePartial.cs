@@ -36,6 +36,19 @@ namespace Intent.Modules.AngularJs.ServiceAgent.Templates.Proxy
                 );
         }
 
+        public string AngularModule
+        {
+            get
+            {
+                string angularModule;
+                if (GetMetaData().CustomMetaData.TryGetValue("AngularModule", out angularModule))
+                {
+                    return angularModule;
+                }
+                return "App"; // Default Angular Module
+            }
+        }
+
         public string SolutionName => Project.Application.SolutionName;
         public string ApplicationName => Project.Application.ApplicationName;
         public string ApiBasePathConfigKey => $"{Project.Application.SolutionName}_{Model.ApplicationName}_api_basepath".ToLower();

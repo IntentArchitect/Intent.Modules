@@ -10,7 +10,6 @@
 namespace Intent.Modules.HttpServiceProxy.Templates.AddressResolverImplementation
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.MetaModel.UMLModel;
     using Intent.SoftwareFactory.Templates;
     using System;
     using System.IO;
@@ -23,7 +22,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.AddressResolverImplementatio
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class HttpServiceProxyAddressResolverImplementationTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -36,21 +35,21 @@ namespace Intent.Modules.HttpServiceProxy.Templates.AddressResolverImplementatio
             this.Write(" \r\n\r\nusing System;\r\nusing System.Configuration;\r\nusing Intent.CodeGen;\r\n\r\n[assemb" +
                     "ly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplate.tt"
+            #line 20 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplate.tt"
+            #line 22 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 23 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplate.tt"
+            #line 22 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetAddressResolverInterfaceName()));
             
             #line default

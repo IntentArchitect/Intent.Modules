@@ -1,5 +1,4 @@
-﻿using Intent.MetaModel.UMLModel;
-using Intent.Modules.EntityFramework.Templates.DbContext;
+﻿using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Modules.EntityFramework.Templates.DeleteVisitor;
 using Intent.Modules.EntityFramework.Templates.EFMapping;
 using Intent.Modules.EntityFramework.Templates.Repository;
@@ -9,6 +8,7 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Registrations;
 using System.Linq;
+using Intent.Modules.RichDomain;
 
 namespace Intent.Modules.EntityFramework
 {

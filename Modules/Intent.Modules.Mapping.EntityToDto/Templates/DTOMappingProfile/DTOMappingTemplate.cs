@@ -1,5 +1,4 @@
-﻿using Intent.MetaModel.UMLModel;
-using Intent.Modules.Application.Contracts.Legacy.DTO;
+﻿using Intent.Modules.Application.Contracts.Legacy.DTO;
 using Intent.Modules.RichDomain.Templates.EntityStateInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Mapping;
@@ -8,6 +7,7 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.RichDomain;
 
 namespace Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile
 {

@@ -10,7 +10,7 @@
 namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.MetaModel.UMLModel;
+    using Intent.Modules.RichDomain;
     using Intent.SoftwareFactory.Templates;
     using System;
     using System.IO;
@@ -23,7 +23,7 @@ namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class DeleteVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<Class>>
     {
@@ -36,7 +36,7 @@ namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
             this.Write(" \r\n\r\nusing System;\r\nusing Intent.Framework.Core;\r\nusing Intent.Framework.EntityFr" +
                     "amework.Interceptors;\r\nusing System.Collections.Generic;\r\n");
             
-            #line 20 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 20 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -44,14 +44,14 @@ namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
             this.Write("\r\nusing Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamesp" +
                     "ace ");
             
-            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 25 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 27 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
             
             #line default
@@ -75,7 +75,7 @@ namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
 
         public ");
             
-            #line 44 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 44 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
             
             #line default
@@ -84,7 +84,7 @@ namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
                     "}\r\n\r\n        public void Visit(IVisitable visitable)\r\n        {\r\n            Vis" +
                     "it((dynamic)visitable);\r\n        }\r\n\r\n");
             
-            #line 54 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 54 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
  foreach (var model in Model) {
 	   if (!model.IsEntity()) {
 			continue;
@@ -95,14 +95,14 @@ namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
             #line hidden
             this.Write("        public void Visit(");
             
-            #line 59 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 59 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" state)\r\n        {\r\n");
             
-            #line 61 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 61 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
  
         if (model.ParentClass != null)
         {
@@ -112,14 +112,14 @@ namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
             #line hidden
             this.Write("            Visit((");
             
-            #line 65 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 65 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.ParentClass.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(") state);\r\n");
             
-            #line 66 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 66 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
  
         }
 
@@ -135,14 +135,14 @@ namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
             #line hidden
             this.Write("            foreach (IVisitable item in state.");
             
-            #line 76 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 76 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(")\r\n            {\r\n                item.Accept(this);\r\n            }\r\n");
             
-            #line 80 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 80 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
 
                 }
                 else
@@ -152,21 +152,21 @@ namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
             #line hidden
             this.Write("            if (state.");
             
-            #line 84 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 84 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" != null)\r\n            {\r\n                ((IVisitable)state.");
             
-            #line 86 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 86 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(").Accept(this);\r\n            }\r\n");
             
-            #line 88 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 88 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
                 }
             }
         }
@@ -176,7 +176,7 @@ namespace Intent.Modules.EntityFramework.Templates.DeleteVisitor
             #line hidden
             this.Write("            _toDelete.Add(state);\r\n        }\r\n\r\n");
             
-            #line 95 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
+            #line 95 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DeleteVisitor\DeleteVisitorTemplate.tt"
  }
             
             #line default

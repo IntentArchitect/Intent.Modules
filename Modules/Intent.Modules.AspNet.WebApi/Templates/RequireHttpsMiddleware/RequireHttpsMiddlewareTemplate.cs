@@ -10,7 +10,6 @@
 namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.MetaModel.UMLModel;
     using Intent.SoftwareFactory.Templates;
     using System;
     using System.IO;
@@ -23,7 +22,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AspNet.WebApi\Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class RequireHttpsMiddlewareTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,11 +32,12 @@ namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
         /// </summary>
         public override string TransformText()
         {
+            this.Write("\r\n");
             this.Write(" \r\n\r\nusing Microsoft.Owin;\r\nusing System.Threading.Tasks;\r\nusing System.Web;\r\nusi" +
                     "ng Intent.CodeGen;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace " +
                     "");
             
-            #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AspNet.WebApi\Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt"
+            #line 22 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AspNet.WebApi\Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
