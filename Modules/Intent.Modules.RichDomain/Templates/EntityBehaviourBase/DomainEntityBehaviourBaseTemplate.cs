@@ -69,11 +69,23 @@ namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
             this.Write("\r\n    {\r\n        ");
             
             #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetNewKeywordIfDerived()));
+            
+            #line default
+            #line hidden
+            
+            #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" State { get; }\r\n\r\n        ");
+            
+            #line 34 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetNewKeywordIfDerived()));
+            
+            #line default
+            #line hidden
             
             #line 34 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IdentifierType()));
@@ -314,6 +326,12 @@ namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
             this.Write("        public ");
             
             #line 88 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetNewKeywordIfDerived()));
+            
+            #line default
+            #line hidden
+            
+            #line 88 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(typedIdentifier));
             
             #line default
@@ -527,6 +545,12 @@ namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
             #line default
             #line hidden
             this.Write("        public ");
+            
+            #line 139 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetNewKeywordIfDerived()));
+            
+            #line default
+            #line hidden
             
             #line 139 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityBehaviourBase\DomainEntityBehaviourBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
