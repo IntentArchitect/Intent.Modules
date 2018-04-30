@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Mapping.EntityToDto</id>
-  <version>1.3.0</version>
+  <version>1.4.0</version>
   <summary>Mapping infrastructure for mapping Domain Entities to DTOs using Automapper.</summary>
   <description>Mapping infrastructure for mapping Domain Entities to DTOs using Automapper.</description>
   <authors>Intent Software</authors>
