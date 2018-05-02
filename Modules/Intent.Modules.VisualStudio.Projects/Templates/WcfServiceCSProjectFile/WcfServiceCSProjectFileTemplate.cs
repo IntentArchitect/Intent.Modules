@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Xml.Linq;
-using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
@@ -12,14 +9,12 @@ using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 {
-    public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators, IHasDecorators<ICSProjectFileDecorator>, IHasNugetDependencies
+    public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, IHasNugetDependencies
     {
-        public const string Identifier = "Intent.VisualStudio.Projects.WcfServiceCSProjectFile";
-        private readonly Dictionary<string, IXmlDecorator> _xmlDecorators = new Dictionary<string, IXmlDecorator>();
-        private IEnumerable<ICSProjectFileDecorator> _decorators;
+        public const string IDENTIFIER = "Intent.VisualStudio.Projects.WcfServiceCSProjectFile";
 
         public WcfServiceCSProjectFileTemplate(IProject project)
-            : base (Identifier, project, null)
+            : base(IDENTIFIER, project, null)
         {
         }
 
@@ -40,46 +35,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var doc = LoadOrCreate(fullFileName);
-            foreach (var decorator in GetXmlDecorators())
-            {
-                decorator.Install(doc, Project);
-            }
             return doc.ToStringUTF8();
-
         }
 
         private XDocument LoadOrCreate(string fullFileName)
         {
-            XDocument doc;
-            if (File.Exists(fullFileName))
-            {
-                doc = System.Xml.Linq.XDocument.Load(fullFileName);
-            }
-            else
-            {
-                doc = System.Xml.Linq.XDocument.Parse(CreateTemplate());
-            }
-            return doc;
-        }
-
-        public IEnumerable<ICSProjectFileDecorator> GetDecorators()
-        {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
-        }
-
-        private IEnumerable<IXmlDecorator> GetXmlDecorators()
-        {
-            return _xmlDecorators.Values.Union(GetDecorators());
-        }
-
-        // TODO: ISupportXmlDecorators and GetXmlDecorators probably shouldn't be here, so far as I can see nothing is relying on it
-
-        public void RegisterDecorator(string id, IXmlDecorator decorator)
-        {
-            if (!_xmlDecorators.ContainsKey(id))
-            {
-                _xmlDecorators.Add(id, decorator);
-            }
+            return File.Exists(fullFileName)
+                ? XDocument.Load(fullFileName)
+                : XDocument.Parse(CreateTemplate());
         }
 
         public string CreateTemplate()
@@ -111,7 +74,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             group.AddProperty("IISExpressUseClassicPipelineMode", "");
             group.AddProperty("UseGlobalApplicationHostFile", "");
             group.AddProperty("TargetFrameworkProfile", "");
-            
+
             group = root.AddPropertyGroup();
             group.Condition = " '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ";
             group.AddProperty("DebugSymbols", "true");
@@ -216,7 +179,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             itemGroup.AddItem(groupName, item, metaData);
         }
 
-        private void AddReference(ProjectItemGroupElement itemGroup, IAssemblyReference reference)
+        private static void AddReference(ProjectItemGroupElement itemGroup, IAssemblyReference reference)
         {
             var metaData = new List<KeyValuePair<string, string>>();
             if (reference.HasHintPath())
@@ -224,11 +187,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
                 metaData.Add(new KeyValuePair<string, string>("HintPath", reference.HintPath));
             }
             AddItem(itemGroup, "Reference", reference.Library, metaData);
-        }
-
-        public void RegisterDecorator(string id, object decorator)
-        {
-            throw new NotImplementedException();
         }
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()

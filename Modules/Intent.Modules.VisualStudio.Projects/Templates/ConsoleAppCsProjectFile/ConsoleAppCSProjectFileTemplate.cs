@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Xml.Linq;
-using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
@@ -12,14 +9,12 @@ using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleAppCsProjectFile
 {
-    public class ConsoleAppCsProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators, IHasDecorators<ICSProjectFileDecorator>
+    public class ConsoleAppCsProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate
     {
-        public const string Identifier = "Intent.VisualStudio.Projects.ConsoleAppCsProjectFile";
-        private readonly Dictionary<string, IXmlDecorator> _xmlDecorators = new Dictionary<string, IXmlDecorator>();
-        private IEnumerable<ICSProjectFileDecorator> _decorators;
+        public const string IDENTIFIER = "Intent.VisualStudio.Projects.ConsoleAppCsProjectFile";
 
         public ConsoleAppCsProjectFileTemplate(IProject project)
-            : base (Identifier, project, null)
+            : base (IDENTIFIER, project, null)
         {
         }
 
@@ -40,10 +35,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleAppCsProjectFile
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var doc = LoadOrCreate(fullFileName);
-            foreach (var decorator in GetXmlDecorators())
-            {
-                decorator.Install(doc, Project);
-            }
             return doc.ToStringUTF8();
         }
 
@@ -52,25 +43,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleAppCsProjectFile
             return File.Exists(fullFileName)
                 ? XDocument.Load(fullFileName)
                 : XDocument.Parse(CreateTemplate());
-        }
-
-        public IEnumerable<ICSProjectFileDecorator> GetDecorators()
-        {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
-        }
-
-        private IEnumerable<IXmlDecorator> GetXmlDecorators()
-        {
-            return _xmlDecorators.Values.Union(GetDecorators());
-        }
-
-        // TODO: ISupportXmlDecorators and GetXmlDecorators probably shouldn't be here, so far as I can see nothing is relying on it
-        public void RegisterDecorator(string id, IXmlDecorator decorator)
-        {
-            if (!_xmlDecorators.ContainsKey(id))
-            {
-                _xmlDecorators.Add(id, decorator);
-            }
         }
 
         public string CreateTemplate()
@@ -154,7 +126,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleAppCsProjectFile
             itemGroup.AddItem(groupName, item, metaData);
         }
 
-        private void AddReference(ProjectItemGroupElement itemGroup, IAssemblyReference reference)
+        private static void AddReference(ProjectItemGroupElement itemGroup, IAssemblyReference reference)
         {
             var metaData = new List<KeyValuePair<string, string>>();
             if (reference.HasHintPath())

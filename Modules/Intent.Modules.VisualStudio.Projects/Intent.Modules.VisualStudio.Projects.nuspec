@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Intent.Modules.VisualStudio.Projects</id>
-    <version>1.3.2</version>
+    <version>1.3.3</version>
     <title>Intent Module - Visual Studio Projects</title>
     <authors>Intent Architect</authors>
     <owners>Intent Architect</owners>

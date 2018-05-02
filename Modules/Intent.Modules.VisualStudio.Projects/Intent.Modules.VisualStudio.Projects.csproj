@@ -86,15 +86,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Decorators\AssemblyBindingRedirectWebConfigDecoratorRegistration.cs" />
-    <Compile Include="Decorators\ICSProjectFileDecorator.cs" />
+    <Compile Include="Events\CsProjectEvents.cs" />
     <Compile Include="FactoryExtensions\DependencyResolutionApplicationProcessor.cs" />
     <Compile Include="ProjectTypeIds.cs" />
     <Compile Include="Sync\ApplicationSyncProcessor.cs" />
-    <Compile Include="Sync\Events\AddProjectItemEvent.cs" />
-    <Compile Include="Sync\Events\AddTargetEvent.cs" />
-    <Compile Include="Sync\Events\AddTaskEvent.cs" />
-    <Compile Include="Sync\Events\ChangeProjectItemTypeEvent.cs" />
-    <Compile Include="Sync\Events\RemoveProjectItemEvent.cs" />
     <Compile Include="Sync\ProjectSyncProcessor.cs" />
     <Compile Include="Templates\AssemblyInfo\Registrations.cs" />
     <Compile Include="Templates\ConsoleAppCsProjectFile\Registrations.cs" />
@@ -180,7 +175,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Events\" />
     <Folder Include="Registrations\" />
   </ItemGroup>
   <ItemGroup>

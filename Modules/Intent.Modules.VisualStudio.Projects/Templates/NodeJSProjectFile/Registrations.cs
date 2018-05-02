@@ -1,31 +1,21 @@
-﻿using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.Templates.Registrations;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Registrations;
+using Intent.SoftwareFactory.Templates.Registrations;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.NodeJSProjectFile
 {
     [Description("Node JS Project File - VS Projects")]
     public class Registrations : IProjectTemplateRegistration
     {
-        private readonly IMetaDataManager _metaDataManager;
-
-        public Registrations(IMetaDataManager metaDataManager)
-        {
-            _metaDataManager = metaDataManager;
-        }
-
-        public string TemplateId => NodeJSProjectFileTemplate.Identifier;
-
+        public string TemplateId => NodeJSProjectFileTemplate.IDENTIFIER;
 
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
-            var targetProjectIds = new List<string>() {
+            var targetProjectIds = new List<string>
+            {
                 ProjectTypeIds.NodeJsConsoleApplication,
             };
 
@@ -33,7 +23,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.NodeJSProjectFile
 
             foreach (var project in projects)
             {
-                registery.Register(TemplateId, project, (p) => new NodeJSProjectFileTemplate(project));
+                registery.Register(TemplateId, project, p => new NodeJSProjectFileTemplate(project));
             }
         }
     }

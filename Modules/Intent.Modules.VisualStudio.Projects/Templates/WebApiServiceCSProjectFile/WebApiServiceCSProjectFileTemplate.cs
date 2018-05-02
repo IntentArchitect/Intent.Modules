@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
@@ -12,16 +10,14 @@ using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectFile
 {
-    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies, ISupportXmlDecorators, IHasDecorators<ICSProjectFileDecorator>, IProjectTemplate
+    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies, IProjectTemplate
     {
-        public const string Identifier = "Intent.VisualStudio.Projects.WebApiServiceCSProjectFile";
-        private readonly Dictionary<string, IXmlDecorator> _xmlDecorators = new Dictionary<string, IXmlDecorator>();
+        public const string IDENTIFIER = "Intent.VisualStudio.Projects.WebApiServiceCSProjectFile";
         private readonly string _sslPort = "";
         private readonly string _port;
-        private IEnumerable<ICSProjectFileDecorator> _decorators;
 
         public WebApiServiceCSProjectFileTemplate(IProject project)
-            : base(Identifier, project, null)
+            : base(IDENTIFIER, project, null)
         {
             _port = project.ProjectType.Properties.First(x => x.Name == "Port").Value;
             bool useSsl;
@@ -49,12 +45,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var doc = LoadOrCreate(fullFileName);
-            foreach (var decorator in GetXmlDecorators())
-            {
-                decorator.Install(doc, Project);
-            }
             return doc.ToStringUTF8();
-
         }
 
         private XDocument LoadOrCreate(string fullFileName)
@@ -69,25 +60,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
                 doc = XDocument.Parse(CreateTemplate());
             }
             return doc;
-        }
-
-        public IEnumerable<ICSProjectFileDecorator> GetDecorators()
-        {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
-        }
-
-        private IEnumerable<IXmlDecorator> GetXmlDecorators()
-        {
-            return _xmlDecorators.Values.Union(GetDecorators());
-        }
-
-        // TODO: ISupportXmlDecorators and GetXmlDecorators probably shouldn't be here, so far as I can see nothing is relying on it
-        public void RegisterDecorator(string id, IXmlDecorator decorator)
-        {
-            if (!_xmlDecorators.ContainsKey(id))
-            {
-                _xmlDecorators.Add(id, decorator);
-            }
         }
 
         public string CreateTemplate()
