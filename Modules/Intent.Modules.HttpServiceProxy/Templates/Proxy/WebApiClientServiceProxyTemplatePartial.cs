@@ -109,12 +109,20 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
         private string GetInterceptorInterfaceName()
         {
             var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpProxyInterceptorInterfaceTemplate.Identifier));
+            if (template == null)
+            {
+                return "IHttpProxyInterceptor";
+            }
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 
         private string GetAddressResolverInterfaceName()
         {
             var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpServiceProxyAddressResolverInterfaceTemplate.Identifier));
+            if (template == null)
+            {
+                return "IHttpServiceProxyAddressResolver";
+            }
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 
