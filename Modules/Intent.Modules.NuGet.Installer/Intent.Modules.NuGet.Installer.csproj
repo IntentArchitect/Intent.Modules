@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="ICanAddFileStrategy.cs" />
     <Compile Include="Managers\NugetManager.cs" />
+    <Compile Include="Managers\NuGetManagerSettings.cs" />
     <Compile Include="Managers\PackageNode.cs" />
     <Compile Include="Managers\Referer.cs" />
     <Compile Include="NugetInstaller.cs" />

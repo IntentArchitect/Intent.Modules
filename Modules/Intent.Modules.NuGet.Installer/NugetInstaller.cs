@@ -13,11 +13,43 @@ namespace Intent.Modules.NuGet.Installer
 {
     public class NugetInstaller : FactoryExtensionBase, IExecutionLifeCycle
     {
-        public override string Id => "Intent.NugetInstaller";
+        public const string TracingOutputPrefix = "NuGet - ";
+        public override string Id => Identifier;
+        public const string Identifier = "Intent.NugetInstaller";
+        private const string SettingKeyForPerformCleanup = "Perform NuGet Package Cleanup"; // Must match the config entry in the .imodspec
+        private const string SettingKeyForAllowPrereleaseVersions = "Allow Prerelease Versions"; // Must match the config entry in the .imodspec
+        private const string SettingKeyForConsolidatePackageVersions = "Consolidate Package Versions"; // Must match the config entry in the .imodspec
+        private const string SettingKeyForWarnOnMultipleVersionsOfSamePackage = "Warn On Multiple Versions of Same Package"; // Must match the config entry in the .imodspec
+        private bool _settingPerformCleanup;
+        private bool _settingAllowPrereleaseVersions;
+        private bool _settingConsolidatePackageVersions;
+        private bool _settingWarnOnMultipleVersionsOfSamePackage;
 
         public NugetInstaller()
         {
             Order = 100;
+        }
+
+        public override void Configure(IDictionary<string, string> settings)
+        {
+            settings.SetIfSupplied(
+                name: SettingKeyForPerformCleanup,
+                setSetting: parsedValue => _settingPerformCleanup = parsedValue,
+                convert: rawValue => true.ToString().Equals(rawValue, StringComparison.OrdinalIgnoreCase));
+            settings.SetIfSupplied(
+                name: SettingKeyForAllowPrereleaseVersions,
+                setSetting: parsedValue => _settingAllowPrereleaseVersions = parsedValue,
+                convert: rawValue => true.ToString().Equals(rawValue, StringComparison.OrdinalIgnoreCase));
+            settings.SetIfSupplied(
+                name: SettingKeyForConsolidatePackageVersions,
+                setSetting: parsedValue => _settingConsolidatePackageVersions = parsedValue,
+                convert: rawValue => true.ToString().Equals(rawValue, StringComparison.OrdinalIgnoreCase));
+            settings.SetIfSupplied(
+                name: SettingKeyForWarnOnMultipleVersionsOfSamePackage,
+                setSetting: parsedValue => _settingWarnOnMultipleVersionsOfSamePackage = parsedValue,
+                convert: rawValue => true.ToString().Equals(rawValue, StringComparison.OrdinalIgnoreCase));
+            
+            base.Configure(settings);
         }
 
         public void OnStep(IApplication application, string step)
@@ -30,11 +62,11 @@ namespace Intent.Modules.NuGet.Installer
 
         public void Run(IApplication application, ITracing tracing)
         {
-            tracing.Info($"NuGet - Start processesing Packages");
+            tracing.Info($"{TracingOutputPrefix}Start processesing Packages");
 
             foreach (var project in application.Projects.Where(x => x.ProjectFile() == null))
             {
-                tracing.Debug($"NuGet - Skipped processing project '{project.Name}' as its type '{project.ProjectType.Name}' is unsupported.");
+                tracing.Debug($"{TracingOutputPrefix}Skipped processing project '{project.Name}' as its type '{project.ProjectType.Name}' is unsupported.");
             }
 
             var applicableProjects = application.Projects
@@ -42,7 +74,7 @@ namespace Intent.Modules.NuGet.Installer
                 .ToArray();
 
             var addFileBehaviours = applicableProjects
-                .SelectMany(x =>  x.NugetPackages())
+                .SelectMany(x => x.NugetPackages())
                 .GroupBy(x => x.Name)
                 .Distinct()
                 .ToDictionary(x => x.Key, x => new CanAddFileStrategy(x) as ICanAddFileStrategy);
@@ -50,7 +82,12 @@ namespace Intent.Modules.NuGet.Installer
             using (var nugetManager = new NugetManager(
                 solutionFilePath: application.GetSolutionPath(),
                 tracing: tracing,
-                allowPreReleaseVersions: true,
+                settings: new NuGetManagerSettings
+                {
+                    AllowPreReleaseVersions = _settingAllowPrereleaseVersions,
+                    ConsolidateVersions = _settingConsolidatePackageVersions,
+                    WarnOnMultipleVersionsOfSamePackage = _settingWarnOnMultipleVersionsOfSamePackage
+                },
                 projectFilePaths: applicableProjects.Select(x => Path.GetFullPath(x.ProjectFile())),
                 canAddFileStrategies: addFileBehaviours))
             {
@@ -58,7 +95,7 @@ namespace Intent.Modules.NuGet.Installer
                 {
                     var projectFile = Path.GetFullPath(project.ProjectFile());
 
-                    tracing.Info($"NuGet - Determining Packages for installation - { project.ProjectFile() }");
+                    tracing.Info($"{TracingOutputPrefix}Determining Packages for installation - { project.ProjectFile() }");
 
                     var nugetPackages = project.NugetPackages();
                     foreach (var nugetPackageInfo in nugetPackages)
@@ -70,11 +107,14 @@ namespace Intent.Modules.NuGet.Installer
                     }
                 }
 
-                tracing.Info($"NuGet - Processing pending installs...");
+                tracing.Info($"{TracingOutputPrefix}Processing pending installs...");
                 nugetManager.ProcessPendingInstalls();
 
-                tracing.Info($"NuGet - Cleaning up packages folders...");
-                nugetManager.CleanupPackagesFolder();
+                if (_settingPerformCleanup)
+                {
+                    tracing.Info($"{TracingOutputPrefix}Cleaning up packages folders...");
+                    nugetManager.CleanupPackagesFolder();
+                }
             }
         }
 

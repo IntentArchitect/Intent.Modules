@@ -12,44 +12,40 @@ namespace Intent.Modules.NuGet.Installer.Managers
 {
     public class NugetManager : IDisposable
     {
-        private readonly string _solutionFilePath;
         private readonly ITracing _tracing;
-        private readonly bool _allowPreReleaseVersions;
+        private readonly NuGetManagerSettings _settings;
         private readonly INugetServices _nugetServices;
-        private readonly IList<MsbuildProject> _msbuildProjects = new List<MsbuildProject>();
+        private readonly List<MsbuildProject> _msbuildProjects = new List<MsbuildProject>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="solutionFilePath"></param>
         /// <param name="tracing"></param>
-        /// <param name="allowPreReleaseVersions"></param>
+        /// <param name="settings"></param>
         /// <param name="projectFilePaths">Project files which may not be saved to the .sln file yet, but should be processed as well.</param>
+        /// <param name="canAddFileStrategies">Strategy to control whether or not NuGet packages can add source files to projects. For example Startup.cs by Owin.</param>
         public NugetManager(
             string solutionFilePath,
             ITracing tracing,
-            bool allowPreReleaseVersions = false,
+            NuGetManagerSettings settings,
             IEnumerable<string> projectFilePaths = null,
             IDictionary<string, ICanAddFileStrategy> canAddFileStrategies = null)
         {
-            if (solutionFilePath == null)
-            {
-                throw new ArgumentNullException(nameof(solutionFilePath));
-            }
+            if (settings == null)
+                throw new ArgumentNullException(nameof(settings));
 
-            if (projectFilePaths == null)
-            {
-                projectFilePaths = new string[0];
-            }
+            if (solutionFilePath == null)
+                throw new ArgumentNullException(nameof(solutionFilePath));
 
             if (!File.Exists(solutionFilePath))
-            {
                 throw new ArgumentException($"File '{solutionFilePath}' not found.", nameof(solutionFilePath));
-            }
 
-            _solutionFilePath = solutionFilePath;
+            if (projectFilePaths == null)
+                projectFilePaths = new string[0];
+
             _tracing = tracing;
-            _allowPreReleaseVersions = allowPreReleaseVersions;
+            _settings = settings;
             _nugetServices = NugetServices.Create(solutionFilePath, canAddFileStrategies, tracing);
 
             LoadMsbuildProjects(solutionFilePath, projectFilePaths);
@@ -63,11 +59,6 @@ namespace Intent.Modules.NuGet.Installer.Managers
                 referer: Referer.Create("Software Factory", Utility.GetMinVersionSpecInclusive(minVersionInclusive)));
         }
 
-        public void RestorePackages()
-        {
-            _nugetServices.RestorePackages(_solutionFilePath);
-        }
-
         public void CleanupPackagesFolder()
         {
             _nugetServices.CleanupPackagesFolder();
@@ -75,9 +66,32 @@ namespace Intent.Modules.NuGet.Installer.Managers
 
         public void ProcessPendingInstalls()
         {
-            foreach (var msbuildProject in _msbuildProjects)
+            string report;
+            if (_settings.ConsolidateVersions && !string.IsNullOrWhiteSpace(report = GetPackagesWithMultipleVersionsReport()))
             {
-                ConsolidateVersions(msbuildProject);
+                _tracing.Info($"{NugetInstaller.TracingOutputPrefix}" +
+                                $"Multiple versions exist for one or more NuGet packages within the solution. Intent will now automatically " +
+                                $"upgrade any lower versions to the highest installed version within the solution. To disable this behaviour " +
+                                $"change the 'Consolidate Package Versions' option in Intent in the {NugetInstaller.Identifier} module " +
+                                $"configuration." +
+                                $"{Environment.NewLine}" +
+                                $"{Environment.NewLine}" +
+                                $"{report}");
+
+                foreach (var msbuildProject in _msbuildProjects)
+                {
+                    ConsolidateVersions(msbuildProject);
+                }
+            }
+            else if (!_settings.ConsolidateVersions && _settings.WarnOnMultipleVersionsOfSamePackage && !string.IsNullOrWhiteSpace(report = GetPackagesWithMultipleVersionsReport()))
+            {
+                _tracing.Warning($"{NugetInstaller.TracingOutputPrefix}" +
+                                 $"Multiple versions exist for one or more NuGet packages within the solution. You should consider " +
+                                 $"consolidating these package versions within Visual Studio or alternatively enable the 'Consolidate " +
+                                 $"Package Versions' option in Intent in the {NugetInstaller.Identifier} module configuration." +
+                                 $"{Environment.NewLine}" +
+                                 $"{Environment.NewLine}" +
+                                 $"{report}");
             }
 
             foreach (var msbuildProject in _msbuildProjects)
@@ -89,6 +103,48 @@ namespace Intent.Modules.NuGet.Installer.Managers
             {
                 ProcessPendingInstalls(msbuildProject);
             }
+        }
+
+        private string GetPackagesWithMultipleVersionsReport()
+        {
+            var allPackages = _msbuildProjects
+                .SelectMany(x => x.PackageNodes)
+                .Where(x => x.InstalledPackage != null)
+                .ToArray();
+
+            var packagesWithMultipleVersions = allPackages
+                .Where(x => allPackages
+                    .Where(y => x.InstalledPackage.Id == y.InstalledPackage.Id)
+                    .Any(y => x.InstalledPackage.Version != y.InstalledPackage.Version))
+                .Select(x => x.InstalledPackage.Id)
+                .Distinct()
+                .OrderBy(x => x)
+                .ToArray();
+
+            if (!packagesWithMultipleVersions.Any())
+            {
+                return null;
+            }
+
+            return packagesWithMultipleVersions
+                .Select(packageId => new
+                {
+                    PackageId = packageId,
+                    VersionReport = _msbuildProjects
+                        .Select(x => new
+                        {
+                            x.Path,
+                            x.PackageNodes.SingleOrDefault(y => y.InstalledPackage?.Id == packageId)?.InstalledPackage
+                                ?.Version
+                        })
+                        .Where(x => x.Version != null)
+                        .OrderByDescending(x => x.Version)
+                        .ThenBy(x => x.Path)
+                        .Select(x => $"    Version {x.Version} in '{x.Path}'")
+                        .Aggregate((x, y) => x + Environment.NewLine + y)
+                })
+                .Select(x => $"{x.PackageId} has the following versions installed:{Environment.NewLine}{x.VersionReport}")
+                .Aggregate((x, y) => x + Environment.NewLine + y);
         }
 
         private void ConsolidateVersions(MsbuildProject project)
@@ -148,14 +204,14 @@ namespace Intent.Modules.NuGet.Installer.Managers
 
         private void AddOrUpdateRequiredPackage(MsbuildProject msbuildProject, string packageId, Referer referer)
         {
-            var packageOfHighestVersion = GetPackageOfHighestVersion(packageId);
+            var packageOfLowestVersion = GetPackageOfLowestVersion(packageId);
 
-            var package = packageOfHighestVersion != null && referer.VersionSpec.IsSatisfiedBy(packageOfHighestVersion.Version)
-                ? packageOfHighestVersion
+            var package = packageOfLowestVersion != null && referer.VersionSpec.IsSatisfiedBy(packageOfLowestVersion.Version)
+                ? packageOfLowestVersion
                 : _nugetServices.GetPackage(
                     packageId: packageId,
                     versionSpec: referer.VersionSpec,
-                    allowPrereleaseVersions: _allowPreReleaseVersions);
+                    allowPrereleaseVersions: _settings.AllowPreReleaseVersions);
 
             var packageNode = msbuildProject.PackageNodes
                 .SingleOrDefault(x => x.RequiredPackage.Id.Equals(packageId, StringComparison.InvariantCultureIgnoreCase));
@@ -169,9 +225,9 @@ namespace Intent.Modules.NuGet.Installer.Managers
 
             packageNode.AddReferer(referer);
 
-            if (packageOfHighestVersion != null)
+            if (packageOfLowestVersion != null)
             {
-                packageNode.AddReferer(Referer.CreateFromSolutionHighestVersion(packageOfHighestVersion));
+                packageNode.AddReferer(Referer.CreateFromSolutionHighestVersion(packageOfLowestVersion));
             }
 
             if (referer.VersionSpec.RequiresLowerThan(packageNode.RequiredPackage.Version))
@@ -205,10 +261,7 @@ namespace Intent.Modules.NuGet.Installer.Managers
                 .Select(x => x.AbsolutePath)
                 .Union(additionalProjectFilePaths);
 
-            foreach (var project in msbuildProjectPaths)
-            {
-                _msbuildProjects.Add(LoadMsbuildProject(project));
-            }
+            _msbuildProjects.AddRange(msbuildProjectPaths.Select(LoadMsbuildProject).Where(x => x != null));
         }
 
         private MsbuildProject LoadMsbuildProject(string project)
@@ -218,10 +271,10 @@ namespace Intent.Modules.NuGet.Installer.Managers
                 throw new ArgumentNullException(nameof(project));
             }
 
-#warning this should possbily be a warning and continue, this scenario can happen when you remove a project and have not manually updated the sln file
             if (!File.Exists(project))
             {
-                throw new FileNotFoundException(project);
+                _tracing.Warning($"{NugetInstaller.TracingOutputPrefix}Could not find file '{project}'. This project will be ignored for now. Check your Visual Studio .sln file and/or Intent Application configuration to investigate further.");
+                return null;
             }
 
             var msBuildProject = new MsbuildProject(project);
@@ -245,6 +298,15 @@ namespace Intent.Modules.NuGet.Installer.Managers
                 .SelectMany(x => x.PackageNodes)
                 .Select(x => x.RequiredPackage)
                 .OrderByDescending(x => x.Version)
+                .FirstOrDefault(x => x.Id == packageId);
+        }
+
+        private IPackage GetPackageOfLowestVersion(string packageId)
+        {
+            return _msbuildProjects
+                .SelectMany(x => x.PackageNodes)
+                .Select(x => x.RequiredPackage)
+                .OrderBy(x => x.Version)
                 .FirstOrDefault(x => x.Id == packageId);
         }
 
