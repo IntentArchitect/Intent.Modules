@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.EntityFramework.Migrations</id>
-  <version>1.4.0</version>
+  <version>1.4.1</version>
   <summary>Entity Framework migrations setup with README file containing useful commands</summary>
   <description>Entity Framework migrations setup with README file containing useful commands</description>
   <authors>Intent Software</authors>

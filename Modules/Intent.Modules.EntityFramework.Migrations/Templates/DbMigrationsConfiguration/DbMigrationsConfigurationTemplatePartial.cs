@@ -5,17 +5,18 @@ using Intent.SoftwareFactory.VisualStudio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.SoftwareFactory;
 
 namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfiguration
 {
-    partial class DbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, IHasAdditionalHeaderInformation, IHasDecorators<IMigrationSeedDecorator>
+    partial class DbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, IHasDecorators<IMigrationSeedDecorator>
     {
         public const string Identifier = "Intent.EntityFramework.Migrations.DbMigrationsConfiguration";
 
-        private readonly ISet<string> _headerInformation = new HashSet<string>();
         private string _dbContextName;
         private string _dbContextNamespace;
         private IEnumerable<IMigrationSeedDecorator> _decorators;
+        private readonly ITracing _log = Logging.Log;
 
         public DbMigrationsConfigurationTemplate(IProject project)
             : base(Identifier, project)
@@ -49,15 +50,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
                 return _dbContextName = dbContextTemplate.GetMetaData().FileName;
             }
 
-            // TODO This was a hack I believe?
-            //var esbHostDbContextTemplate = Project.FindTemplateInstance(TemplateId.EsbHostDbContext);
-            //if (esbHostDbContextTemplate != null)
-            //{
-            //    return _dbContextName = EsbHostDbContextTemplate.DB_CONTEXT_NAME;
-            //}
-
-            // TODO: Is there a way to publish a system-wide warning event?
-            _headerInformation.Add("WARNING: Could not find template with creates DbContext's name, default used instead.");
+            _log.Warning($"{Identifier} - Could not find template with creates DbContext's name, default used instead.");
 
             return _dbContextName = "DbContext";
         }
@@ -77,15 +70,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
                 return _dbContextNamespace = string.Format(template, Project.FindTemplateInstance<IHasClassDetails>(DbContextTemplate.Identifier).Namespace);
             }
 
-            // TODO This was a hack I believe?
-            //var esbHostDbContextTemplate = Project.FindTemplateInstance(TemplateId.EsbHostDbContext);
-            //if (esbHostDbContextTemplate != null)
-            //{
-            //    return _dbContextNamespace = string.Format(template, Project.GetNamespaceFor(TemplateId.EsbHostDbContext));
-            //}
-
-            // TODO: Is there a way to publish a system-wide warning event?
-            _headerInformation.Add("WARNING: Could not find template with creates DbContext's name, default used instead.");
+            _log.Warning($"{Identifier} - Could not find template with creates DbContext's name, default used instead.");
 
             return _dbContextNamespace = string.Format(template, "System.Data.Entity");
         }
@@ -142,11 +127,6 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
             {
                 TemplateDependancy.OnTemplate(DbContextTemplate.Identifier),
             };
-        }
-
-        public IEnumerable<string> GetAdditionalHeaderInformation()
-        {
-            return _headerInformation.OrderBy(x => x).ToArray();
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

@@ -7,11 +7,6 @@ namespace Intent.Modules.EntityFramework.Migrations
 {
     public class Registrations : OldProjectTemplateRegistration
     {
-
-        public Registrations()
-        {
-        }
-
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
             RegisterTemplate(DbMigrationsConfigurationTemplate.Identifier, project => new DbMigrationsConfigurationTemplate(project));
