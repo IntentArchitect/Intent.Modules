@@ -32,7 +32,7 @@ namespace <#= Namespace #>
             return new <#= ClassName #>
             {
 <# foreach (var field in Model.Fields) {#>
-                <#= field.Name.ToPascalCase() #> = <#= field.Name.ToCamelCase() #>,
+                <#= field.Name.ToPascalCase() #> = <#= field.Name.ToCamelCase().PrefixIdentifierIfKeyword() #>,
 <#}#>
             };
         }

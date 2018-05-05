@@ -6,28 +6,26 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.AngularJs.ServiceAgent.Templates.DTO
 {
-    partial class TypescriptDtoTemplate : IntentProjectItemTemplateBase<ClassModel>, ITemplate
+    partial class TypescriptDtoTemplate : IntentTypescriptProjectItemTemplateBase<DtoModel>, ITemplate
     {
         public const string Identifier = "Intent.AngularJs.ServiceAgent.DTO";
 
         public TypescriptDtoTemplate(DtoModel model, IProject project)
-            : base(Identifier, project, model.Class)
+            : base(Identifier, project, model)
         {
-            Namespace = model.BoundedContextName == project.ApplicationName().Replace("_Client", "") ? "App.Contracts" : $"App.Contracts.{model.BoundedContextName}";
-            Location = model.BoundedContextName == project.ApplicationName().Replace("_Client", "") ? $@"wwwroot\App\DTOs\Generated" : $@"wwwroot\App\DTOs\Generated\{model.BoundedContextName}";
         }
 
-        public string Namespace { get; }
-        public string Location { get; }
-
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        protected override TypescriptDefaultFileMetaData DefineTypescriptDefaultFileMetaData()
         {
-            return new DefaultFileMetaData(
+            return new TypescriptDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: Model.ClassType.TypeName,
+                fileName: Model.Class.ClassType.TypeName,
                 fileExtension: "ts",
-                defaultLocationInProject: Location);
+                defaultLocationInProject: Model.BoundedContextName == Project.ApplicationName().Replace("_Client", "") ? $@"wwwroot\App\DTOs\Generated" : $@"wwwroot\App\DTOs\Generated\{Model.BoundedContextName}",
+                className: Model.Class.ClassType.TypeName,
+                @namespace: Model.BoundedContextName == Project.ApplicationName().Replace("_Client", "") ? "App.Contracts" : $"App.Contracts.{Model.BoundedContextName}"
+            );
         }
     }
 

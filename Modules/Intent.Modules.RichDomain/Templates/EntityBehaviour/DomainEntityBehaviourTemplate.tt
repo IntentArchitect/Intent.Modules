@@ -5,7 +5,6 @@
 <#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
-<#@ import namespace="Intent.MetaModel.UMLModel" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Diagnostics" #>

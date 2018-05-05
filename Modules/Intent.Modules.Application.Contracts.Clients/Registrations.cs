@@ -123,7 +123,8 @@ namespace Intent.Modules.Application.Contracts.Clients
 
     public static class CSharpTypeReferenceExtensions
     {
-        public static string GetQualifiedName(this ITypeReference typeInfo, IProjectItemTemplate template)
+        public static string GetQualifiedName<T>(this ITypeReference typeInfo, T template)
+            where T: IProjectItemTemplate, IRequireTypeResolver
         {
             return typeInfo.GetQualifiedName(template, TemplateIds.ClientDTO);
         }

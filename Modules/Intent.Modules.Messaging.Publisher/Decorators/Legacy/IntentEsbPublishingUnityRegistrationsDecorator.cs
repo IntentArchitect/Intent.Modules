@@ -5,10 +5,12 @@ using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Intent.Modules.Constants;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Messaging.Publisher.Decorators.Legacy
 {
-    public class IntentEsbPublishingUnityRegistrationsDecorator : IUnityRegistrationsDecorator, IHasNugetDependencies
+    public class IntentEsbPublishingUnityRegistrationsDecorator : IUnityRegistrationsDecorator, IHasNugetDependencies, IRequiresPreProcessing
     {
         public const string Identifier = "Intent.Messaging.Publisher.UnityDecorator.Legacy";
         private readonly IApplication _application;
@@ -25,7 +27,9 @@ namespace Intent.Modules.Messaging.Publisher.Decorators.Legacy
             return new[]
             {
                 @"using Intent.Esb.Client.Publishing;",
-                @"using Intent.Framework.Unity;"
+                @"using Intent.Framework.Unity;",
+                @"using System.Configuration;",
+                @"using Inoxico.Seedwork.Distribution.Esb;"
             };
         }
 
@@ -39,8 +43,9 @@ namespace Intent.Modules.Messaging.Publisher.Decorators.Legacy
             sb.AppendLine();
             sb.AppendLine();
             sb.AppendLine($@"{indentation}// ESB Publishing Config");
-            sb.AppendLine($@"{indentation}var businessQueueFactory = new BusinessQueueFactory(boundedContextName: ""{appName} Application"", esbLocation: ""akka.tcp://intentEsb@localhost:9391"");");
-
+            sb.AppendLine($@"{indentation}var businessQueueFactory = new BusinessQueueFactory(new MessageQueueFactory(");
+            sb.AppendLine($@"{indentation}    boundedContextName: ""{appName} Application"",");
+            sb.AppendLine($@"{indentation}    notifyQueueManagerFactory: new HttpNotifyQueueManagerFactory(esbUrl: ConfigurationManager.AppSettings[""Esb.Url""])));");
             foreach (var publishingQueue in _eventingModel.PublishingQueues)
             {
                 if (!publishingQueue.PublishedEvents.Any())
@@ -71,6 +76,15 @@ namespace Intent.Modules.Messaging.Publisher.Decorators.Legacy
             sb.AppendLine($@"{indentation}container.RegisterInstance(businessQueueFactory);");
 
             return sb.ToString();
+        }
+
+        public void PreProcess()
+        {
+            _application.EventDispatcher.Publish(ApplicationEvents.Config_AppSetting, new Dictionary<string, string>()
+            {
+                {"Key", "Esb.Url"},
+                {"Value", $"http://localhost:9000/" }
+            });
         }
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()

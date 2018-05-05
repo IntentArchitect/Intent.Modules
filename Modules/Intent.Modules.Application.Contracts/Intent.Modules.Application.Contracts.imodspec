@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.Contracts</id>
-  <version>1.3.0</version>
+  <version>1.3.2</version>
   <summary>Creates generic application service contracts.</summary>
   <description>Creates generic application service contracts that is technology agnostic.</description>
   <authors>Intent Software</authors>
@@ -30,13 +30,13 @@
   </decorators>
   <dependencies>
     <dependency id="Intent.Common" version="1.3.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>
+    <dependency id="Intent.Common.Types" version="1.3.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.1"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
   <metadata>
-    <install target="DataContracts" src="MetaData\DataContracts"/>
   </metadata>
 </package>

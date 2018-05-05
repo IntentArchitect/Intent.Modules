@@ -1,4 +1,7 @@
-﻿using Intent.SoftwareFactory.Engine;
+﻿#warning Indexes and Unqiues on FKs think its not done for 1 to Many
+#warning need to factor in Aggregate boundaries into Edit and States
+
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;

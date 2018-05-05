@@ -4,7 +4,6 @@
 <#@ Assembly Name="System.Windows.Forms" #>
 <#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
-<#@ import namespace="Intent.MetaModel.UMLModel" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
@@ -23,9 +22,6 @@ using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
-#warning Indexes and Unqiues on FKs think its not done for 1 to Many
-#warning need to factor in Aggregate boundaries into Edit and States
-
 namespace <#= Namespace #>
 {
 <# if (Model.IsEntity())
@@ -36,7 +32,7 @@ namespace <#= Namespace #>
     {
         protected <#= Model.IdentifierType() #>(Guid id) : base (id) {}
 
-        public static <#= Model.IdentifierType() #> Create(Guid? id)
+        public <#= Model.GetNewKeywordIfDerived() #>static <#= Model.IdentifierType() #> Create(Guid? id)
         {
             return (id.HasValue) ? new <#= Model.IdentifierType() #>(id.Value) : null;
         }
@@ -45,9 +41,9 @@ namespace <#= Namespace #>
 
     public interface <#= readOnlyInterfaceName#> : <#= Model.ParentClass != null ? "I" + Model.ParentClass.Name.ToPascalCase() + ", " : ""  #><#= GetInterfaces(Model) #>
     {
-        <#= Model.Name.ToPascalCase() #> State { get; }
+        <#= Model.GetNewKeywordIfDerived() #><#= Model.Name.ToPascalCase() #> State { get; }
 
-        <#= Model.IdentifierType() #> Id { get; }
+        <#= Model.GetNewKeywordIfDerived() #><#= Model.IdentifierType() #> Id { get; }
 <#  foreach (var attribute in Model.Attributes)
     {
         if (attribute.IsAssociationAttribute)

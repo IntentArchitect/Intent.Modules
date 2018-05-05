@@ -1,25 +1,33 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Xml.Linq;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using Microsoft.Build.Construction;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Xml.Linq;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 {
-    public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators, IHasNugetDependencies
+    public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, IHasNugetDependencies
     {
-        public const string Identifier = "Intent.VisualStudio.Projects.WcfServiceCSProjectFile";
-        private readonly Dictionary<string, IXmlDecorator> _decorators = new Dictionary<string, IXmlDecorator>();
+        public const string IDENTIFIER = "Intent.VisualStudio.Projects.WcfServiceCSProjectFile";
 
         public WcfServiceCSProjectFileTemplate(IProject project)
-            : base (Identifier, project, null)
+            : base(IDENTIFIER, project, null)
         {
         }
 
+        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        {
+            return new DefaultFileMetaData(
+                overwriteBehaviour: OverwriteBehaviour.Always,
+                codeGenType: CodeGenType.Basic,
+                fileName: Project.ProjectName,
+                fileExtension: "csproj",
+                defaultLocationInProject: ""
+            );
+        }
 
         public override string TransformText()
         {
@@ -27,40 +35,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var doc = LoadOrCreate(fullFileName);
-            foreach (var decorator in GetDecorators())
-            {
-                decorator.Install(doc, Project);
-            }
             return doc.ToStringUTF8();
-
         }
 
         private XDocument LoadOrCreate(string fullFileName)
         {
-            XDocument doc;
-            if (File.Exists(fullFileName))
-            {
-                doc = System.Xml.Linq.XDocument.Load(fullFileName);
-            }
-            else
-            {
-                doc = System.Xml.Linq.XDocument.Parse(CreateTemplate());
-            }
-            return doc;
-        }
-
-        private IEnumerable<IXmlDecorator> GetDecorators()
-        {
-            //May need to bring in application / project level decorators too
-            return _decorators.Values;
-        }
-
-        public void RegisterDecorator(string id, IXmlDecorator decorator)
-        {
-            if (!_decorators.ContainsKey(id))
-            {
-                _decorators.Add(id, decorator);
-            }
+            return File.Exists(fullFileName)
+                ? XDocument.Load(fullFileName)
+                : XDocument.Parse(CreateTemplate());
         }
 
         public string CreateTemplate()
@@ -92,7 +74,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             group.AddProperty("IISExpressUseClassicPipelineMode", "");
             group.AddProperty("UseGlobalApplicationHostFile", "");
             group.AddProperty("TargetFrameworkProfile", "");
-            
+
             group = root.AddPropertyGroup();
             group.Condition = " '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ";
             group.AddProperty("DebugSymbols", "true");
@@ -182,17 +164,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             return root.RawXml.Replace("utf-16", "utf-8");
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
-        {
-            return new DefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
-                codeGenType: CodeGenType.Basic,
-                fileName: Project.ProjectName,
-                fileExtension: "csproj",
-                defaultLocationInProject: ""
-                );
-        }
-
         private static ProjectItemGroupElement AddItems(ProjectRootElement elem, string groupName, params string[] items)
         {
             var group = elem.AddItemGroup();
@@ -208,7 +179,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             itemGroup.AddItem(groupName, item, metaData);
         }
 
-        private void AddReference(ProjectItemGroupElement itemGroup, IAssemblyReference reference)
+        private static void AddReference(ProjectItemGroupElement itemGroup, IAssemblyReference reference)
         {
             var metaData = new List<KeyValuePair<string, string>>();
             if (reference.HasHintPath())
@@ -216,11 +187,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
                 metaData.Add(new KeyValuePair<string, string>("HintPath", reference.HintPath));
             }
             AddItem(itemGroup, "Reference", reference.Library, metaData);
-        }
-
-        public void RegisterDecorator(string id, object decorator)
-        {
-            throw new NotImplementedException();
         }
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()

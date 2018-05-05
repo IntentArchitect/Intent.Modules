@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Intent.Modules.VisualStudio.Projects</id>
+    <version>1.3.3</version>
+    <title>Intent Module - Visual Studio Projects</title>
+    <authors>Intent Architect</authors>
+    <owners>Intent Architect</owners>
+    <projectUrl>https://intentarchitect.com/</projectUrl>
+    <iconUrl>https://intentarchitect.com/assets/images/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Installs templates for Visual Studio projects that integrate with Intent Architect</description>
+    <releaseNotes>
+    </releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Intent Architect Module Visual Studio Projects</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>MetadataNavigation.Uml</id>
+  <version>1.0.0</version>
+  <summary>Illustrates how to use the IA UML based Metadata model</summary>
+  <description>Illustrates how to use the IA UML based Metadata model</description>
+  <authors>Intent Software</authors>
+  <templates>
+    <template id="MetadataNavigation.Uml.GenerateClass" enabled="true">
+      <role>Default</role>
+    </template>
+  </templates>
+  <decorators />
+  <factoryExtensions>
+  </factoryExtensions>
+  <dependencies />
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+</package>

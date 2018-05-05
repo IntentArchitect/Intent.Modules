@@ -1,20 +1,20 @@
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
-using Microsoft.Build.Construction;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
+using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.NodeJSProjectFile
 {
-    public class NodeJSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, ISupportXmlDecorators
+    public class NodeJSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate
     {
-        public const string Identifier = "Intent.VisualStudio.Projects.NodeJSProjectFile";
+        public const string IDENTIFIER = "Intent.VisualStudio.Projects.NodeJSProjectFile";
 
         private readonly Dictionary<string, IXmlDecorator> _decorators = new Dictionary<string, IXmlDecorator>();
 
         public NodeJSProjectFileTemplate(IProject project)
-            : base (Identifier, project, null)
+            : base(IDENTIFIER, project, null)
         {
         }
 
@@ -44,16 +44,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.NodeJSProjectFile
 
         private XDocument LoadOrCreate(string fullFileName)
         {
-            XDocument doc;
-            if (File.Exists(fullFileName))
-            {
-                doc = System.Xml.Linq.XDocument.Load(fullFileName);
-            }
-            else
-            {
-                doc = System.Xml.Linq.XDocument.Parse(CreateTemplate());
-            }
-            return doc;
+            return File.Exists(fullFileName)
+                ? XDocument.Load(fullFileName)
+                : XDocument.Parse(CreateTemplate());
         }
 
         private IEnumerable<IXmlDecorator> GetDecorators()

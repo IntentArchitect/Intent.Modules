@@ -32,7 +32,7 @@ namespace <#= Namespace #>
         {
             string userId;
             string userName;
-            string giveName;
+            string givenName;
             string familyName;
             string email;
             bool isAuthenticated;
@@ -41,7 +41,7 @@ namespace <#= Namespace #>
             {
                 userId = claims.FirstOrDefault(x => x.Type == "sub")?.Value;
                 userName = claims.FirstOrDefault(x => x.Type == "name")?.Value;
-                giveName = claims.FirstOrDefault(x => x.Type == "given_name")?.Value;
+                givenName = claims.FirstOrDefault(x => x.Type == "given_name")?.Value;
                 familyName = claims.FirstOrDefault(x => x.Type == "family_name")?.Value;
                 email = claims.FirstOrDefault(x => x.Type == "email")?.Value;
                 isAuthenticated = true;
@@ -50,13 +50,13 @@ namespace <#= Namespace #>
             {
                 userId = "";
                 userName = "Anonymous";
-                giveName = "Anonymous";
+                givenName = "Anonymous";
                 familyName = "";
                 email = "";
                 isAuthenticated = false;
             }
 
-            IUserContextData userContext = new UserContext(isAuthenticated, userId, userName, giveName, familyName, email);
+            IUserContextData userContext = new UserContext(isAuthenticated, userId, userName, givenName, familyName, email);
 
             return userContext;
         }

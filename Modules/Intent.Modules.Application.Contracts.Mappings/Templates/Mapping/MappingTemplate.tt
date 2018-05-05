@@ -12,6 +12,7 @@
 <#@ import namespace="System.Collections.Generic" #> 
 
 <#=DependencyUsings#>
+<#=DecoratorUsings#>
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -23,15 +24,15 @@ namespace <#= Namespace #>
 {
     public static class <#=ClassName#> 
     {
-		public static <#= ContractTypeName#> MapTo<#= ContractTypeName#> (this <#= DomainTypeName#> projectFrom)
-		{
-			return Mapper.Map<<#= ContractTypeName#>>(projectFrom);
-		}		
+        public static <#= ContractTypeName#> MapTo<#= ContractTypeName#> (this <#= DomainTypeName#> projectFrom)
+        {
+            return Mapper.Map<<#= ContractTypeName#>>(projectFrom);
+        }
 
-		public static List<<#= ContractTypeName#>> MapTo<#= ContractTypeName#>s (this IEnumerable<<#= DomainTypeName#>> projectFrom)
-		{
-			return projectFrom.Select(x => x.MapTo<#= ContractTypeName#>()).ToList();
-		}
-	}
+        public static List<<#= ContractTypeName#>> MapTo<#= ContractTypeName#>s (this IEnumerable<<#= DomainTypeName#>> projectFrom)
+        {
+            return projectFrom.Select(x => x.MapTo<#= ContractTypeName#>()).ToList();
+        }<#= GetDecoratorMembers(ContractTypeName, DomainTypeName) #>
+     }
 }
 

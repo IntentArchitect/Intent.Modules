@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.UserContext.Interop.WebApi</id>
-  <version>1.3.0</version>
+  <version>1.3.1</version>
   <summary>User context management in the context of Intent.WebApi.</summary>
   <description>User context management in the context of Intent.WebApi.</description>
   <authors>Intent Software</authors>

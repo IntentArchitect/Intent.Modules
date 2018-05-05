@@ -32,7 +32,16 @@ namespace Intent.Modules.NuGet.Installer
         {
             tracing.Info($"NuGet - Start processesing Packages");
 
-            var addFileBehaviours = application.Projects
+            foreach (var project in application.Projects.Where(x => x.ProjectFile() == null))
+            {
+                tracing.Debug($"NuGet - Skipped processing project '{project.Name}' as its type '{project.ProjectType.Name}' is unsupported.");
+            }
+
+            var applicableProjects = application.Projects
+                .Where(x => x.ProjectFile() != null)
+                .ToArray();
+
+            var addFileBehaviours = applicableProjects
                 .SelectMany(x =>  x.NugetPackages())
                 .GroupBy(x => x.Name)
                 .Distinct()
@@ -42,10 +51,10 @@ namespace Intent.Modules.NuGet.Installer
                 solutionFilePath: application.GetSolutionPath(),
                 tracing: tracing,
                 allowPreReleaseVersions: true,
-                projectFilePaths: application.Projects.Select(x => Path.GetFullPath(Path.Combine(x.ProjectFile()))),
+                projectFilePaths: applicableProjects.Select(x => Path.GetFullPath(x.ProjectFile())),
                 canAddFileStrategies: addFileBehaviours))
             {
-                foreach (var project in application.Projects)
+                foreach (var project in applicableProjects)
                 {
                     var projectFile = Path.GetFullPath(project.ProjectFile());
 

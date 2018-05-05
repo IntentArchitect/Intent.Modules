@@ -1,5 +1,4 @@
-﻿using Intent.MetaModel.UMLModel;
-using Intent.Modules.RichDomain.Templates.EntityBehaviourBase;
+﻿using Intent.Modules.RichDomain.Templates.EntityBehaviourBase;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 
 namespace Intent.Modules.RichDomain.Auditing.Decorators
@@ -9,7 +8,7 @@ namespace Intent.Modules.RichDomain.Auditing.Decorators
         public const string Identifier = "Intent.RichDomain.Auditing.EntityBehaviourBase";
         public string[] PublicProperties(Class @class)
         {
-            if (!@class.IsAggregateRoot())
+            if (!@class.IsAggregateRoot() || Utils.HasParentClassWhichIsAggregateRoot(@class))
             {
                 return new string[0];
             }

@@ -1,17 +1,16 @@
-﻿using Intent.Modules.Constants;
-using Intent.Modules.VisualStudio.Projects.Sync.Events;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.XPath;
+using Intent.Modules.Constants;
+using Intent.Modules.VisualStudio.Projects.Events;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.VisualStudio;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace Intent.Modules.VisualStudio.Projects.Sync
 {
@@ -19,31 +18,32 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
     {
         private readonly IXmlFileCache _xmlFileCache;
         private readonly IChanges _changeManager;
-        private readonly ISoftwareFactoryEventDispatcher _sfEventDispatcher;
-        public IProject Project { get; }
-        private Action<string, string> _syncProjectFile;
+        private readonly ISoftwareFactoryEventDispatcher _softwareFactoryEventDispatcher;
+        private readonly IProject _project;
 
+        private Action<string, string> _syncProjectFile;
         private XDocument _doc;
         private XmlNamespaceManager _namespaces;
         private XNamespace _namespace;
         private XElement _projectElement;
         private XElement _codeItems;
 
-        public ProjectSyncProcessor(ISoftwareFactoryEventDispatcher eventDispatcher,
+        public ProjectSyncProcessor(
+            ISoftwareFactoryEventDispatcher softwareFactoryEventDispatcher,
             IXmlFileCache xmlFileCache,
             IChanges changeManager,
             IProject project)
         {
-            _changeManager = changeManager;
+            _softwareFactoryEventDispatcher = softwareFactoryEventDispatcher;
             _xmlFileCache = xmlFileCache;
-            _sfEventDispatcher = eventDispatcher;
-            Project = project;
-            _syncProjectFile = UpdateFileOnHDD;
+            _changeManager = changeManager;
+            _project = project;
+            _syncProjectFile = UpdateFileOnHdd;
         }
 
         public void Process(List<SoftwareFactoryEvent> events)
         {
-            string filename = LoadProjectFile();
+            var filename = LoadProjectFile();
 
             if (string.IsNullOrWhiteSpace(filename))
                 return;
@@ -55,13 +55,13 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             SyncAssemblyReferences();
             SyncProjectReferences();
 
-            string currentProjectFileContent = "";
+            var currentProjectFileContent = "";
             if (File.Exists(filename))
             {
                 var currentProjectFile = XDocument.Parse(File.ReadAllText(filename));
                 currentProjectFileContent = currentProjectFile.ToStringUTF8();
             }
-            string outputContent = _doc.ToStringUTF8();
+            var outputContent = _doc.ToStringUTF8();
             //trying to do a schemantic comparision as VS does inconsistence formatting 
             if (currentProjectFileContent != outputContent)
             {
@@ -71,96 +71,136 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             }
         }
 
-        private void UpdateFileOnHDD(string filename, string outputContent)
+        public void ProcessEvents(List<SoftwareFactoryEvent> events)
+        {
+            foreach (var @event in events)
+            {
+                switch (@event.EventIdentifier)
+                {
+                    case SoftwareFactoryEvents.AddProjectItemEvent:
+                        ProcessAddProjectItem(
+                            relativeFileName: @event.GetValue("RelativeFileName"),
+                            itemType: @event.TryGetValue("ItemType"),
+                            dependsOn: @event.TryGetValue("Depends On"),
+                            intentGenType: @event.TryGetValue("IntentGenType"),
+                            copyToOutputDirectory: @event.TryGetValue("CopyToOutputDirectory"));
+                        break;
+                    case SoftwareFactoryEvents.RemoveProjectItemEvent:
+                        ProcessRemoveProjectItem(
+                            relativeFileName: @event.GetValue("RelativeFileName"));
+                        break;
+                    case SoftwareFactoryEvents.AddTargetEvent:
+                        ProcessTargetElement(
+                            name: @event.GetValue("Name"),
+                            xml: @event.GetValue("Xml"));
+                        break;
+                    case SoftwareFactoryEvents.AddTaskEvent:
+                        ProcessUsingTask(
+                            taskName: @event.GetValue("TaskName"),
+                            assemblyFile: @event.GetValue("AssemblyFile"));
+                        break;
+                    case SoftwareFactoryEvents.ChangeProjectItemTypeEvent:
+                        ProcessChangeProjectItemType(
+                            project: _project,
+                            relativeFileName: @event.GetValue("RelativeFileName"),
+                            itemType: @event.GetValue("ItemType"));
+                        break;
+                    case CsProjectEvents.AddCompileDependsOn:
+                        ProcessCompileDependsOn(
+                            targetName: @event.GetValue("TargetName"));
+                        break;
+                    case CsProjectEvents.AddImport:
+                        ProcessImport(
+                            project: @event.GetValue("Project"),
+                            condition: @event.GetValue("Condition"));
+                        break;
+                    case CsProjectEvents.AddBeforeBuild:
+                        ProcessBeforeBuild(
+                            xml: @event.GetValue("Xml"));
+                        break;
+                    case CsProjectEvents.AddContentFile:
+                        // This and SoftwareFactoryEvents.AddProjectItemEvent can potentially be merged, this one is just
+                        // a more explicit version, the other one tends to "work it out".
+                        ProcessContent(
+                            include: @event.GetValue("Include"),
+                            link: @event.GetValue("Link"),
+                            copyToOutputDirectory: @event.GetValue("CopyToOutputDirectory"));
+                        break;
+                    default:
+                        Logging.Log.Warning($"VSProject Sync not handling {@event.EventIdentifier}");
+                        break;
+                }
+            }
+        }
+
+        private void UpdateFileOnHdd(string filename, string outputContent)
         {
             var se = new SoftwareFactoryEvent(SoftwareFactoryEvents.OverwriteFileCommand, new Dictionary<string, string>
                                         {
                                             {"FullFileName", filename},
                                             {"Content", outputContent},
                                         });
-            _sfEventDispatcher.Publish(se);
-        }
-
-        private void CompareToExpectedResult(string expected, string output)
-        {
-            if (output != expected)
-            {
-                StringBuilder errorMessage = new StringBuilder();
-
-                if (output.Length != expected.Length)
-                {
-                    if (output.Length < expected.Length)
-                    {
-                        errorMessage.AppendLine(" (Output shorter)");
-                    }
-                    else
-                    {
-                        errorMessage.AppendLine(" (Expected shorter)");
-                    }
-                }
-
-                for (int i = 0; i < Math.Min(output.Length, expected.Length); i++)
-                {
-                    if (output[i] != expected[i])
-                    {
-                        errorMessage.AppendLine("first difference at position " + i);
-                        var from = Math.Max(0, i - 500);
-                        errorMessage.AppendLine("output : " + output.Substring(from, Math.Min(1000, output.Length - from)));
-                        errorMessage.AppendLine("expect : " + expected.Substring(from, Math.Min(1000, expected.Length - from)));
-                        break;
-                    }
-                }
-                throw new Exception(errorMessage.ToString());
-            }
+            _softwareFactoryEventDispatcher.Publish(se);
         }
 
         private void SyncProjectReferences()
         {
-            if (Project.Dependencies().Count > 0)
+            if (_project.Dependencies().Count <= 0)
             {
+                return;
+            }
 
-                var itemGroupElement = FindProjectReferenceItemGroup();
+            var itemGroupElement = FindProjectReferenceItemGroup();
 
-                foreach (var dependency in Project.Dependencies())
+            foreach (var dependency in _project.Dependencies())
+            {
+                var projectUrl = string.Format("..\\{0}\\{0}.csproj", dependency.Name);
+                var projectReferenceItem = _doc.XPathSelectElement($"/ns:Project/ns:ItemGroup/ns:ProjectReference[@Include='{projectUrl}']", _namespaces);
+                if (projectReferenceItem != null)
                 {
-                    string projectUrl = string.Format("..\\{0}\\{0}.csproj", dependency.Name);
-                    var projectReferenceItem = _doc.XPathSelectElement($"/ns:Project/ns:ItemGroup/ns:ProjectReference[@Include='{projectUrl}']", _namespaces);
-                    if (projectReferenceItem == null)
-                    {
-                        /*
+                    continue;
+                }
+
+                /*
         <ProjectReference Include="..\Intent.SoftwareFactory\Intent.SoftwareFactory.csproj">
           <Project>{c5a8f278-d3a4-4f93-98d1-964147f54d6e}</Project>
           <Name>Intent.SoftwareFactory</Name>
         </ProjectReference>                     */
 
-                        var item = new XElement(XName.Get("ProjectReference", _namespace.NamespaceName));
-                        item.Add(new XAttribute("Include", projectUrl));
+                var item = new XElement(XName.Get("ProjectReference", _namespace.NamespaceName));
+                item.Add(new XAttribute("Include", projectUrl));
 
-                        var projectIdElement = new XElement(XName.Get("Project", _namespace.NamespaceName));
-                        projectIdElement.Value = $"{{{dependency.Id}}}";
-                        item.Add(projectIdElement);
+                var projectIdElement = new XElement(XName.Get("Project", _namespace.NamespaceName));
+                projectIdElement.Value = $"{{{dependency.Id}}}";
+                item.Add(projectIdElement);
 
-                        var projectNameElement = new XElement(XName.Get("Name", _namespace.NamespaceName));
-                        projectNameElement.Value = $"{dependency.Name}";
-                        item.Add(projectNameElement);
+                var projectNameElement = new XElement(XName.Get("Name", _namespace.NamespaceName));
+                projectNameElement.Value = $"{dependency.Name}";
+                item.Add(projectNameElement);
 
-                        itemGroupElement.Add(item);
-                    }
-                }
+                itemGroupElement.Add(item);
             }
         }
 
         private void SyncAssemblyReferences()
         {
-            var aReferenceElement = _doc.XPathSelectElement($"/ns:Project/ns:ItemGroup/ns:Reference", _namespaces);
-            if (aReferenceElement == null && Project.References().Count == 0)
+            var aReferenceElement = _doc.XPathSelectElement("/ns:Project/ns:ItemGroup/ns:Reference", _namespaces);
+            if (aReferenceElement == null)
+            {
+                throw new Exception("aReferenceElement is null");
+            }
+
+            if (_project.References().Count == 0)
             {
                 return;
             }
 
             var itemGroupElement = aReferenceElement.Parent;
-
-            foreach (var refrence in Project.References())
+            if (itemGroupElement == null)
+            {
+                throw new Exception("itemGroupElement is null");
+            }
+            foreach (var refrence in _project.References())
             {
                 var projectReferenceItem = _doc.XPathSelectElement($"/ns:Project/ns:ItemGroup/ns:Reference[@Include='{refrence.Library}']", _namespaces);
                 if (projectReferenceItem == null)
@@ -190,7 +230,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private string LoadProjectFile()
         {
-            string filename = Project.ProjectFile();
+            var filename = _project.ProjectFile();
             if (string.IsNullOrWhiteSpace(filename))
                 return null;
             _doc = _xmlFileCache.GetFile(filename);
@@ -207,6 +247,11 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 _syncProjectFile = (f, c) => change.ChangeContent(c);
             }
 
+            if (_doc.Root == null)
+            {
+                throw new Exception("_doc.Root is null");
+            }
+
             _namespaces = new XmlNamespaceManager(new NameTable());
             _namespace = _doc.Root.GetDefaultNamespace();
             _namespaces.AddNamespace("ns", _namespace.NamespaceName);
@@ -221,7 +266,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         private XElement FindProjectReferenceItemGroup()
         {
             XElement result = null;
-            var aProjectReferenceElement = _doc.XPathSelectElement($"/ns:Project/ns:ItemGroup/ns:ProjectReference", _namespaces);
+            var aProjectReferenceElement = _doc.XPathSelectElement("/ns:Project/ns:ItemGroup/ns:ProjectReference", _namespaces);
 
             if (aProjectReferenceElement != null)
             {
@@ -236,7 +281,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             }
             else
             {
-                if (lastItemGroup.Elements().Count() == 0)
+                if (!lastItemGroup.Elements().Any())
                 {
                     result = lastItemGroup;
                 }
@@ -264,7 +309,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 }
                 else
                 {
-                    if (lastItemGroup.Elements().Count() == 0)
+                    if (!lastItemGroup.Elements().Any())
                     {
                         _codeItems = lastItemGroup;
                     }
@@ -277,43 +322,60 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             }
         }
 
-        public void ProcessEvents(List<SoftwareFactoryEvent> events)
+        private void ProcessCompileDependsOn(string targetName)
         {
-            foreach (var @event in events)
-            {
-                switch (@event.EventIdentifier)
-                {
-                    case SoftwareFactoryEvents.AddProjectItemEvent:
-                        var x = new AddProjectItemEvent(Project, @event.GetValue("RelativeFileName"), @event.TryGetValue("ItemType"));
-                        if (@event.TryGetValue("Depends On") != null)
-                        {
-                            x.DependentUpon(@event.TryGetValue("Depends On"));
-                        }
-                        if (@event.TryGetValue("IntentGenType") != null)
-                        {
-                            x.Generated(@event.TryGetValue("IntentGenType"));
-                        }
-                        Process(x);
-                        break;
-                    case SoftwareFactoryEvents.RemoveProjectItemEvent:
-                        var r = new RemoveProjectItemEvent(Project, @event.GetValue("RelativeFileName"));
-                        Process(r);
-                        break;
+            /*
+              <PropertyGroup>
+                <CompileDependsOn>$(CompileDependsOn);GulpBuild;</CompileDependsOn>
+              </PropertyGroup>
+            */
 
-                    case SoftwareFactoryEvents.AddTargetEvent:
-                        Process(new AddTargetEvent(Project, @event.GetValue("Name"), @event.GetValue("Condition"), @event.GetValue("Xml")));
-                        break;
-                    case SoftwareFactoryEvents.AddTaskEvent:
-                        Process(new AddTaskEvent(Project, @event.GetValue("TaskName"), @event.GetValue("AssemblyFile")));
-                        break;
-                    case SoftwareFactoryEvents.ChangeProjectItemTypeEvent:
-                        Process(new ChangeProjectItemTypeEvent(Project, @event.GetValue("RelativeFileName"), @event.GetValue("ItemType")));
-                        break;
-                    default:
-                        Logging.Log.Warning($"VSProject Sync not handling {@event.EventIdentifier}");
-                        break;
-                }
+            var element = _doc.XPathSelectElement($"/ns:Project/ns:PropertyGroup/ns:CompileDependsOn[contains(text(),'$(CompileDependsOn);') and contains(text(),'{targetName};')]", _namespaces);
+            if (element == null)
+            {
+                _projectElement.Add(CreateElement(
+                    name: "PropertyGroup",
+                    subElements: new[]
+                    {
+                        CreateElement(
+                            name: "CompileDependsOn",
+                            value: $"$(CompileDependsOn);{targetName};")
+                    }));
             }
+        }
+
+        private void ProcessImport(string project, string condition)
+        {
+            var element = _doc.XPathSelectElement($"/ns:Project/ns:Import[@Project=\"{project}\"]", _namespaces);
+            if (element == null)
+            {
+                _projectElement.Add(element = CreateElement(
+                    name: "Import",
+                    attributes: new[]
+                    {
+                        new XAttribute("Project", project),
+                        new XAttribute("Condition", condition),
+                    }));
+            }
+
+            SetOrClearAttribute(attributeName: "Condition", value: condition, xElement: element);
+        }
+
+        private void ProcessUsingTask(string taskName, string assemblyFile)
+        {
+            var element = _doc.XPathSelectElement($"/ns:Project/ns:UsingTask[@TaskName=\"{taskName}\"]", _namespaces);
+            if (element == null)
+            {
+                _projectElement.Add(element = CreateElement(
+                    name: "UsingTask",
+                    attributes: new[]
+                    {
+                        new XAttribute("TaskName", taskName),
+                        new XAttribute("AssemblyFile", assemblyFile),
+                    }));
+            }
+
+            SetOrClearAttribute(attributeName: "AssemblyFile", value: assemblyFile, xElement: element);
         }
 
         private XElement GetProjectItem(string fileName)
@@ -322,24 +384,57 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             return projectItem;
         }
 
-        private void Process (RemoveProjectItemEvent @event)
+        private void ProcessRemoveProjectItem(string relativeFileName)
         {
-            var projectItem = GetProjectItem(@event.RelativeFileName);
+            var projectItem = GetProjectItem(relativeFileName);
             if (projectItem != null)
             {
                 projectItem.Remove();
             }
         }
 
-        private void Process(AddProjectItemEvent @event)
+        private void ProcessAddProjectItem(string relativeFileName, string itemType, string dependsOn, string intentGenType, string copyToOutputDirectory)
         {
+            if (string.IsNullOrWhiteSpace(relativeFileName))
+            {
+                throw new Exception("relativeFileName is null");
+            }
 
-            var projectItem = GetProjectItem(@event.RelativeFileName);
+            if (Path.GetExtension(relativeFileName).Equals(".config", StringComparison.InvariantCultureIgnoreCase))
+            {
+                copyToOutputDirectory = "PreserveNewest";
+            }
+
+            if (itemType == null)
+            {
+                var fileExtension = Path.GetExtension(relativeFileName).Substring(1); //remove the '.'
+                switch (fileExtension)
+                {
+                    case "cs":
+                        itemType = "Compile";
+                        break;
+                    default:
+                        itemType = "Content";
+                        break;
+                }
+            }
+
+            var metadata = new Dictionary<string, string>
+            {
+                { "CopyToOutputDirectory", copyToOutputDirectory },
+                { "DependentUpon", dependsOn },
+                { "IntentGenerated", intentGenType != null ? _project.Application.ApplicationName : null },
+                { "IntentGenType", intentGenType },
+            }
+            .Where(x => x.Value != null)
+            .ToArray();
+
+            var projectItem = GetProjectItem(relativeFileName);
             if (projectItem == null)
             {
-                var item = new XElement(XName.Get(@event.ItemType, _namespace.NamespaceName));
-                item.Add(new XAttribute("Include", @event.RelativeFileName));
-                foreach (var metaData in @event.MetaData)
+                var item = new XElement(XName.Get(itemType, _namespace.NamespaceName));
+                item.Add(new XAttribute("Include", relativeFileName));
+                foreach (var metaData in metadata)
                 {
                     var child = new XElement(XName.Get(metaData.Key, _namespace.NamespaceName));
                     child.Value = metaData.Value;
@@ -349,19 +444,19 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             }
             else
             {
-                if (projectItem.Name.LocalName != @event.ItemType)
+                if (projectItem.Name.LocalName != itemType)
                 {
-                    projectItem.Name = XName.Get(@event.ItemType, projectItem.Name.NamespaceName);
+                    projectItem.Name = XName.Get(itemType, projectItem.Name.NamespaceName);
                 }
                 var children = projectItem.Elements().ToList();
                 projectItem.RemoveNodes();
-                foreach (var metaData in @event.MetaData)
+                foreach (var metaData in metadata)
                 {
                     var child = new XElement(XName.Get(metaData.Key, _namespace.NamespaceName));
                     child.Value = metaData.Value;
                     projectItem.Add(child);
                 }
-                foreach (var userAddedMetaData in children.Where(x => @event.MetaData.All(y => XName.Get(y.Key, _namespace.NamespaceName) != x.Name)))
+                foreach (var userAddedMetaData in children.Where(x => metadata.All(y => XName.Get(y.Key, _namespace.NamespaceName) != x.Name)))
                 {
                     var child = new XElement(userAddedMetaData.Name);
                     child.Value = userAddedMetaData.Value;
@@ -370,51 +465,169 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             }
         }
 
-        private void Process(AddTargetEvent @event)
+        private void ProcessBeforeBuild(string xml)
         {
-            string xpath = $"/ns:Project/ns:Target[@Name=\"{@event.Name}\" and @Condition=\"{@event.Condition}\"]";
-            var transElement = _doc.XPathSelectElement(xpath, _namespaces);
-            if (transElement == null)
+            var parsedXml = GetParsedXml(xml);
+
+            var beforeBuildElement = _doc.XPathSelectElement("/ns:Project/ns:Target[@Name=\"BeforeBuild\"]", _namespaces);
+            if (beforeBuildElement == null)
             {
-                var newNode = XElement.Parse(@event.Xml);
-                foreach (XElement ce in newNode.DescendantsAndSelf())
-                {
-                    ce.Name = _namespace + ce.Name.LocalName;
-                }
-                _projectElement.Add(newNode);
+                _projectElement.Add(beforeBuildElement = CreateElement(
+                    name: "Target",
+                    attributes: new[]
+                    {
+                        new XAttribute("Name", "BeforeBuild"),
+                    }));
+            }
+
+            if (beforeBuildElement.Elements().All(x => x.ToString() != parsedXml.ToString()))
+            {
+                beforeBuildElement.Add(parsedXml);
             }
         }
 
-        private void Process(AddTaskEvent @event)
+        private void ProcessContent(string include, string link, string copyToOutputDirectory)
         {
-            var element = _doc.XPathSelectElement($"/ns:Project/ns:UsingTask[@TaskName='{@event.TaskName}']", _namespaces);
+            var subElements = new List<XElement>();
+            if (!string.IsNullOrWhiteSpace(link))
+            {
+                subElements.Add(CreateElement(name: "Link", value: link));
+            }
+
+            if (!string.IsNullOrWhiteSpace(copyToOutputDirectory))
+            {
+                subElements.Add(CreateElement(name: "CopyToOutputDirectory", value: copyToOutputDirectory));
+            }
+
+            var desiredElement = CreateElement(
+                name: "Content",
+                attributes: new[]
+                {
+                    new XAttribute("Include", include),
+                },
+                subElements: subElements);
+
+            var element = GetProjectItem(include);
             if (element == null)
             {
-                var transformTaskRegister = new XElement(XName.Get("UsingTask", _namespace.NamespaceName));
-                transformTaskRegister.Add(new XAttribute("TaskName", @event.TaskName));
-                transformTaskRegister.Add(new XAttribute("AssemblyFile", @event.AssemblyFile));
-                _projectElement.Add(transformTaskRegister);
+                _codeItems.Add(desiredElement);
+                return;
             }
 
+            ReplaceElementIfNotMatch(element, desiredElement);
         }
 
-        private void Process(ChangeProjectItemTypeEvent @event)
+        private void ProcessTargetElement(string name, string xml)
         {
-            var projectItem = GetProjectItem(@event.RelativeFileName);
+            var desiredContent = GetParsedXml(xml);
+
+            var targetElement = _doc.XPathSelectElement($"/ns:Project/ns:Target[@Name=\"{name}\"]", _namespaces);
+            if (targetElement == null)
+            {
+                _projectElement.Add(desiredContent);
+                return;
+            }
+
+            ReplaceElementIfNotMatch(targetElement, desiredContent);
+        }
+
+        private void ProcessChangeProjectItemType(IProject project, string relativeFileName, string itemType)
+        {
+            var projectItem = GetProjectItem(relativeFileName);
             if (projectItem == null)
             {
                 //WTF
-                throw new Exception($"Cant from config file {@event.RelativeFileName} in project file {@event.Project.ProjectFile()}");
+                throw new Exception($"Cant from config file {relativeFileName} in project file {project.ProjectFile()}");
             }
 
             //Make sure it's None not Content
-            if (projectItem.Name.LocalName != @event.ItemType)
+            if (projectItem.Name.LocalName != itemType)
             {
-                projectItem.Name = XName.Get(@event.ItemType, projectItem.Name.NamespaceName);
+                projectItem.Name = XName.Get(itemType, projectItem.Name.NamespaceName);
             }
 
         }
 
+        private XElement CreateElement(string name, string value = null, IEnumerable<XAttribute> attributes = null, IEnumerable<XElement> subElements = null)
+        {
+            attributes = attributes ?? new XAttribute[0];
+            subElements = subElements ?? new XElement[0];
+
+            var newElement = new XElement(XName.Get(name, _namespace.NamespaceName));
+            if (value != null)
+            {
+                newElement.Value = value;
+            }
+
+            foreach (var attribute in attributes)
+            {
+                newElement.Add(attribute);
+            }
+
+            foreach (var element in subElements)
+            {
+                newElement.Add(element);
+            }
+
+            return newElement;
+        }
+
+        private XElement GetParsedXml(string xml)
+        {
+            var parsedXml = XElement.Parse(xml);
+            foreach (var xElement in parsedXml.DescendantsAndSelf())
+            {
+                xElement.Name = _namespace + xElement.Name.LocalName;
+            }
+
+            return parsedXml;
+        }
+
+        private static void ReplaceElementIfNotMatch(XNode current, XElement desired)
+        {
+            if (desired.ToString() == current.ToString())
+            {
+                return;
+            }
+
+            var parentElement = current.Parent;
+            if (parentElement == null)
+            {
+                throw new Exception("parentElement is  null");
+            }
+
+            var previousElement = current.PreviousNode;
+            current.Remove();
+
+            if (previousElement != null)
+            {
+                previousElement.AddAfterSelf(desired);
+            }
+            else
+            {
+                parentElement.AddFirst(desired);
+            }
+
+        }
+
+        private static void SetOrClearAttribute(string attributeName, string value, XElement xElement)
+        {
+            var attribute = xElement.Attributes().SingleOrDefault(x => x.Name == attributeName);
+            if (value == null)
+            {
+                attribute?.Remove();
+            }
+
+            if (value != null && attribute == null)
+            {
+                xElement.Add(attribute = new XAttribute(attributeName, value));
+            }
+
+            if (value != null && attribute.Value != value)
+            {
+                attribute.Value = value;
+            }
+        }
     }
 }
 

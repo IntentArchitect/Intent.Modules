@@ -1,5 +1,4 @@
-﻿using Intent.MetaModel.UMLModel;
-using Intent.Modules.RichDomain.Templates.EntityState;
+﻿using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using System.Collections.Generic;
 
@@ -22,7 +21,7 @@ namespace Intent.Modules.RichDomain.Auditing.Decorators
 
         public string ConstructorWithOrmLoadingParameter(Class @class)
         {
-            if (!@class.IsAggregateRoot())
+            if (!@class.IsAggregateRoot() || Utils.HasParentClassWhichIsAggregateRoot(@class))
             {
                 return null;
             }
@@ -33,7 +32,7 @@ namespace Intent.Modules.RichDomain.Auditing.Decorators
 
         public string[] PublicProperties(Class @class)
         {
-            if (!@class.IsAggregateRoot())
+            if (!@class.IsAggregateRoot() || Utils.HasParentClassWhichIsAggregateRoot(@class))
             {
                 return new string[0];
             }

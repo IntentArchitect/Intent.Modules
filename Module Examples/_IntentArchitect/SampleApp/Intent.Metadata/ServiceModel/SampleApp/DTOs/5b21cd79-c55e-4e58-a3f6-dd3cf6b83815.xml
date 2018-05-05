@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dto id="5b21cd79-c55e-4e58-a3f6-dd3cf6b83815">
+  <name>CreateOrderDto</name>
+  <parentFolderId>c19d8693-4da8-4300-864a-4f9915821452</parentFolderId>
+  <isMapped>true</isMapped>
+  <mappedClassId>1bc4766f-8f5b-467a-ae2b-ca023957793b</mappedClassId>
+  <fields>
+    <field id="c31507fd-2752-44be-b0a5-046caca5b95a">
+      <name>total</name>
+      <typeId>675c7b84-997a-44e0-82b9-cd724c07c9e6</typeId>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isMapped>true</isMapped>
+      <mapping>
+        <targetId>17ffc246-5144-4e97-8c84-dfe2fec18091</targetId>
+        <path>total</path>
+        <type>decimal</type>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <validateMapping>true</validateMapping>
+        <dynamicType>true</dynamicType>
+      </mapping>
+      <stereotypes />
+    </field>
+    <field id="07491973-207b-4a87-8e4c-0fda996bfc2a">
+      <name>date</name>
+      <typeId>a4107c29-7851-4121-9416-cf1236908f1e</typeId>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isMapped>true</isMapped>
+      <mapping>
+        <targetId>6825d3f4-615d-44d2-b5b8-36f4ed2fe2b1</targetId>
+        <path>date</path>
+        <type>datetime</type>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <validateMapping>true</validateMapping>
+        <dynamicType>true</dynamicType>
+      </mapping>
+      <stereotypes />
+    </field>
+    <field id="1dc35c92-6e95-4c6f-a2eb-9fcc82a1b9fb">
+      <name>customerId</name>
+      <typeId>6b649125-18ea-48fd-a6ba-0bfff0d8f488</typeId>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </field>
+  </fields>
+  <stereotypes />
+</dto>

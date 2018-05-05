@@ -1,0 +1,48 @@
+5. ) Enum Literal Image
+6. ) Stereotype Definition Image
+
+Need a doc explaining how to interact, play with the examples. - Explain there are modules, IA Solution and output and how to check / play with each. When to reinstall modules etc.
+
+[*] - Metadata Navigation : Uml
+[*] - Metadata Navigation : Applications and Projects
+[ ] - Metadata Navigation : Services and DTOs
+
+
+[*] - Templates : Non T4 Templates
+[*] - Templates : Basic T4 Templates
+[*] - Templates : Template Config
+[*] - Templates : Type agnostic modelling
+[ ] - Templates : Template Data Binding
+[ ] - Templates : Binding to specific Metadata
+[ ] - Templates : Loose coupling and situational logic through Eventing 
+[ ] - Templates : Template Dependancies
+[ ] - Templates : Assembly References
+[ ] - Templates : Output routing
+[ ] - Templates : Non-Project based templates
+[ ] - Templates : Code Behind
+
+[ ] - StereoTypes : Create custom with properties , use it in a template
+
+[ ] - modules : Embed metadata in module
+[ ] - modules : Configuration samples
+[ ] - modules : Include external dependancies into module
+
+[ ] - Factory Extensions : Process Life Cylce
+[ ] - Factory Extensions : Dependencies
+[ ] - Factory Extensions : Template Life Cylce
+[ ] - Factory Extensions : Output Interceptor - maybe file header, maybe transforms
+
+
+[*] - Template Registrations : No Model
+[*] - Template Registrations : 1-1 Model
+[*] - Template Registrations : 1- Many Model
+[*] - Template Registrations : Custom Registration
+
+[ ] - Roslyn Weave : Modifying Template Output
+[ ] - Roslyn Weave : Template designed to be coded in
+
+[ ] - Decorators :
+
+[ ] - Custom Metadata Loader
+
+[ ] - Templates : Nuget Dependancies *DONT DO THIS YET AS THIS MAY CHANGE*

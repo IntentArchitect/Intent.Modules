@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Templates.Registrations</id>
+  <version>1.0.0</version>
+  <summary>Illustrates the basics of template registrations</summary>
+  <description>Illustrates the basics of template registrations</description>
+  <authors>Intent Software</authors>
+  <templates>
+    <template id="Templates.Registrations.CustomBinding" enabled="true">
+      <role>Default</role>
+    </template>
+    <template id="Templates.Registrations.NoModel" enabled="true">
+      <role>Default</role>
+    </template>
+    <template id="Templates.Registrations.OneTemplateToManyModels" enabled="true">
+      <role>Default</role>
+    </template>
+    <template id="Templates.Registrations.OneTemplateToOneModel" enabled="true">
+      <role>Default</role>
+    </template>
+  </templates>
+  <decorators />
+  <factoryExtensions>
+  </factoryExtensions>
+  <dependencies />
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+</package>
