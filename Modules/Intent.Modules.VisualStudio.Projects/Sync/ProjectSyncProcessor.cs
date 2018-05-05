@@ -143,6 +143,41 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             _softwareFactoryEventDispatcher.Publish(se);
         }
 
+        private string LoadProjectFile()
+        {
+            var filename = _project.ProjectFile();
+            if (string.IsNullOrWhiteSpace(filename))
+                return null;
+            _doc = _xmlFileCache.GetFile(filename);
+
+            if (_doc == null)
+            {
+                var change = _changeManager.FindChange(filename);
+                if (change == null)
+                {
+                    throw new Exception($"Trying to sync project file, but unable to find csproj content. {filename}");
+                }
+                _doc = XDocument.Parse(change.Content);
+
+                _syncProjectFile = (f, c) => change.ChangeContent(c);
+            }
+
+            if (_doc.Root == null)
+            {
+                throw new Exception("_doc.Root is null");
+            }
+
+            _namespaces = new XmlNamespaceManager(new NameTable());
+            _namespace = _doc.Root.GetDefaultNamespace();
+            _namespaces.AddNamespace("ns", _namespace.NamespaceName);
+
+            _projectElement = _doc.XPathSelectElement("/ns:Project", _namespaces);
+
+            FindItemGroupForCodeFiles();
+
+            return filename;
+        }
+
         private void SyncProjectReferences()
         {
             if (_project.Dependencies().Count <= 0)
@@ -184,15 +219,15 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private void SyncAssemblyReferences()
         {
+            if (_project.References().Count == 0)
+            {
+                return;
+            }
+
             var aReferenceElement = _doc.XPathSelectElement("/ns:Project/ns:ItemGroup/ns:Reference", _namespaces);
             if (aReferenceElement == null)
             {
                 throw new Exception("aReferenceElement is null");
-            }
-
-            if (_project.References().Count == 0)
-            {
-                return;
             }
 
             var itemGroupElement = aReferenceElement.Parent;
@@ -226,41 +261,6 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                     itemGroupElement.Add(item);
                 }
             }
-        }
-
-        private string LoadProjectFile()
-        {
-            var filename = _project.ProjectFile();
-            if (string.IsNullOrWhiteSpace(filename))
-                return null;
-            _doc = _xmlFileCache.GetFile(filename);
-
-            if (_doc == null)
-            {
-                var change = _changeManager.FindChange(filename);
-                if (change == null)
-                {
-                    throw new Exception($"Trying to sync project file, but unable to find csproj content. {filename}");
-                }
-                _doc = XDocument.Parse(change.Content);
-
-                _syncProjectFile = (f, c) => change.ChangeContent(c);
-            }
-
-            if (_doc.Root == null)
-            {
-                throw new Exception("_doc.Root is null");
-            }
-
-            _namespaces = new XmlNamespaceManager(new NameTable());
-            _namespace = _doc.Root.GetDefaultNamespace();
-            _namespaces.AddNamespace("ns", _namespace.NamespaceName);
-
-            _projectElement = _doc.XPathSelectElement("/ns:Project", _namespaces);
-
-            FindItemGroupForCodeFiles();
-
-            return filename;
         }
 
         private XElement FindProjectReferenceItemGroup()

@@ -21,7 +21,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
         public override DefaultFileMetaData DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.Always,
+                overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: Project.ProjectName,
                 fileExtension: "csproj",
