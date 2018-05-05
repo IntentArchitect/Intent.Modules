@@ -8,10 +8,12 @@ namespace Intent.Modules.NuGet.Installer.Managers
     public class Referer
     {
         private const string HIGHEST_SOLUTION_VERSION_REFERER_NAME = "Highest Solution Version";
+        private const string LOWEST_SOLUTION_VERSION_REFERER_NAME = "Lowest Solution Version";
 
         public static Referer Create(string name, IVersionSpec versionSpec) => new Referer(name: name, packageNode: null, versionSpec: versionSpec);
         public static Referer Create(PackageNode packageNode, IVersionSpec versionSpec) => new Referer(name: null, packageNode: packageNode, versionSpec: versionSpec);
         public static Referer CreateFromSolutionHighestVersion(IPackage package) => new Referer(name: HIGHEST_SOLUTION_VERSION_REFERER_NAME, packageNode: null, versionSpec: package.Version.ToMinVersionSpecInclusive());
+        public static Referer CreateFromSolutionLowestVersion(IPackage package) => new Referer(name: LOWEST_SOLUTION_VERSION_REFERER_NAME, packageNode: null, versionSpec: package.Version.ToMinVersionSpecInclusive());
 
         private Referer(string name, PackageNode packageNode, IVersionSpec versionSpec)
         {

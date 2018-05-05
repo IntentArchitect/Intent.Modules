@@ -5,6 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.XPath;
 using Intent.SoftwareFactory.Engine;
 using NuGet;
 using NuGet.CommandLine;
@@ -42,13 +46,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                 throw new ArgumentNullException(nameof(solutionFile));
             }
 
-            var directoryName = Path.GetDirectoryName(solutionFile);
-            if (directoryName == null)
-            {
-                throw new NullReferenceException();
-            }
-
-            _packagesFolder = Path.Combine(directoryName, "packages");
+            _packagesFolder = GetPackagesRepositoryPath(solutionFile);
             _localPackageRepository = PackageRepositoryFactory.Default.CreateRepository(_packagesFolder);
             _feedPackageRepository = PackageRepositoryFactory.Default.CreateRepository(NuGetConstants.V2FeedUrl);
             _console = new global::NuGet.Common.Console();
@@ -57,15 +55,105 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
             _loadedMsBuildNuGetProjects = new Dictionary<string, MSBuildNuGetProject>();
         }
 
+        private string GetPackagesRepositoryPath(string solutionFile)
+        {
+            // See https://docs.microsoft.com/en-us/nuget/consume-packages/configuring-nuget-behavior for full details, but the
+            // short version is that the local packages folder's location can be configured through configuration files.
+
+            var directoryName = Path.GetDirectoryName(solutionFile);
+            if (directoryName == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            var directoryInfo = new DirectoryInfo(directoryName);
+            string customRepositoryPath;
+            do
+            {
+                if (TryGetCustomRepositoryPath(directoryInfo.FullName, out customRepositoryPath))
+                    break;
+
+                directoryInfo = directoryInfo.Parent;
+            } while (directoryInfo != null);
+
+            return customRepositoryPath ?? Path.Combine(directoryName, "packages");
+        }
+
+        private bool TryGetCustomRepositoryPath(string x, out string customRepositoryPath)
+        {
+            customRepositoryPath = null;
+
+            var configFile = Path.Combine(x, "nuget.config");
+            if (!File.Exists(configFile))
+            {
+                return false;
+            }
+
+            XDocument doc;
+            try
+            {
+                doc = XDocument.Parse(File.ReadAllText(configFile));
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            if (doc.Root == null)
+            {
+                return false;
+            }
+
+            var repositoryPath = doc
+                .XPathSelectElement("/configuration/config/add[@key='repositoryPath']")
+                ?.Attribute("value")
+                ?.Value;
+
+            if (string.IsNullOrWhiteSpace(repositoryPath))
+            {
+                return false;
+            }
+
+            _tracing.Debug($"{NugetInstaller.TracingOutputPrefix}Found repositoryPath with value '{repositoryPath}' in '{configFile}'");
+
+            customRepositoryPath = Path.IsPathRooted(repositoryPath)
+                ? repositoryPath
+                : Path.Combine(x, repositoryPath);
+
+            return true;
+        }
+
         public void RestorePackages(string solutionFilePath)
         {
+            _tracing.Info($"{NugetInstaller.TracingOutputPrefix}Running Package restore for solution '{solutionFilePath}'");
+            var result =
+                RunNuGetManager(
+                    solutionFilePath: solutionFilePath,
+                    onOutputDataReceived: x => _tracing.Info($"{NugetInstaller.TracingOutputPrefix}{x}"),
+                    onErrorDataReceived: x => _tracing.Failure($"{NugetInstaller.TracingOutputPrefix}{x}"))
+                .Result;
+
+            if (result == 0)
+            {
+                _tracing.Info($"{NugetInstaller.TracingOutputPrefix}Package restore for solution '{solutionFilePath}' complete.");
+            }
+            else
+            {
+                throw new Exception($"{NugetInstaller.TracingOutputPrefix}Package restore process for solution '{solutionFilePath}' exited with return code {result}. See above log for more information.");
+            }
+        }
+
+        private static Task<int> RunNuGetManager(string solutionFilePath, Action<string> onOutputDataReceived, Action<string> onErrorDataReceived)
+        {
+            var tcs = new TaskCompletionSource<int>();
+
             var fileName = Assembly.GetAssembly(typeof(Program)).Location;
             if (fileName == null)
             {
                 throw new NullReferenceException();
             }
 
-            var nugetProcess = new Process
+            var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
@@ -73,17 +161,34 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                     Arguments = $"restore \"{solutionFilePath}\"",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
+                    RedirectStandardError = true,
                     CreateNoWindow = true,
-                }
+                },
+                EnableRaisingEvents = true
             };
 
-            nugetProcess.Start();
-            nugetProcess.WaitForExit();
-
-            if (nugetProcess.ExitCode != 0)
+            process.OutputDataReceived += (sender, args) =>
             {
-                throw new Exception($"An issue occurred with NuGet package restore for {solutionFilePath}, full output:{Environment.NewLine}{nugetProcess.StandardOutput.ReadToEnd()}");
-            }
+                if (string.IsNullOrWhiteSpace(args.Data) || onOutputDataReceived == null) return;
+                onOutputDataReceived(args.Data);
+            };
+
+            process.ErrorDataReceived += (sender, args) =>
+            {
+                if (string.IsNullOrWhiteSpace(args.Data) || onErrorDataReceived == null) return;
+                onErrorDataReceived(args.Data);
+            };
+            
+            process.Exited += (sender, args) =>
+            {
+                tcs.SetResult(process.ExitCode);
+            };
+
+            process.Start();
+            process.BeginOutputReadLine();
+            process.BeginErrorReadLine();
+
+            return tcs.Task;
         }
 
         public IPackage GetPackage(string packageId, IVersionSpec versionSpec, bool allowPrereleaseVersions)
@@ -92,7 +197,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                 _localPackageRepository
                     .FindPackages(
                         packageId: packageId,
-                        versionSpec: new VersionSpec(versionSpec.MinVersion), 
+                        versionSpec: new VersionSpec(versionSpec.MinVersion),
                         allowPrereleaseVersions: allowPrereleaseVersions,
                         allowUnlisted: false)
                     .OrderBy(x => x.Version)
@@ -100,7 +205,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
 
             if (package == null)
             {
-                _tracing.Info($"Fetching NuGet package {packageId} {versionSpec}.");
+                _tracing.Info($"{NugetInstaller.TracingOutputPrefix}Fetching package {packageId} {versionSpec}.");
 
                 package = _feedPackageRepository
                     .FindPackages(
@@ -132,7 +237,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
             ICanAddFileStrategy canAddFileStrategy;
             _canAddFileStrategies.TryGetValue(package.Id, out canAddFileStrategy);
 
-            _tracing.Info($"NuGet - Installing {package.GetFullName()} into project {project}");
+            _tracing.Info($"{NugetInstaller.TracingOutputPrefix}Installing {package.GetFullName()} into project {project}");
 
             try
             {
@@ -144,7 +249,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
             }
             catch (Exception e)
             {
-                _tracing.Warning($"NuGet - Failed to install {package.GetFullName()} into project {project}: {e.Message}");
+                _tracing.Warning($"{NugetInstaller.TracingOutputPrefix}Failed to install {package.GetFullName()} into project {project}: {e.Message}");
             }
             Save(project);
         }
