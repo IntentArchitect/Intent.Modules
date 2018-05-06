@@ -58,15 +58,17 @@ namespace <#= Namespace #>
 #><#= PropertySetterAfter(attribute) #>            }
         }
 <#  }
+	if (Model.AssociatedClasses.Any()) {#>
+
+<# 	}
 	foreach (var associatedClass in Model.AssociatedClasses)
     {
-#><# 	
+#><#= AssociationBefore(associatedClass) #><# 	
 		if (!associatedClass.IsNavigable) 
 		{
 			continue;
         }
-#>
-		private <#= associatedClass.Type() #> <#= associatedClass.Name().ToPrivateMember() #>;
+#>		private <#= associatedClass.Type() #> <#= associatedClass.Name().ToPrivateMember() #>;
 <#= PropertyAnnotations(associatedClass) #>
         public virtual <#= associatedClass.Type() #> <#= associatedClass.Name().ToPascalCase() #>
         {
@@ -89,9 +91,12 @@ namespace <#= Namespace #>
                 <#= associatedClass.Name().ToPrivateMember() #> = value;
             }
         }
-<#    }#>
+<#= AssociationBefore(associatedClass) #>
+<#  }
+	if (Model.Operations.Any()) {#>
 
-<#  foreach (var operation in Model.Operations)
+<# 	}
+	foreach (var operation in Model.Operations)
     {
         string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";
         string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";

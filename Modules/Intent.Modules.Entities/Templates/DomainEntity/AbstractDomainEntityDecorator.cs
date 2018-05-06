@@ -18,6 +18,8 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
         public virtual string PropertyAnnotations(IAssociationEnd associationEnd) { return null; }
         public virtual string PropertySetterBefore(IAssociationEnd associationEnd) { return null; }
         public virtual string PropertySetterAfter(IAssociationEnd associationEnd) { return null; }
+        public virtual string AssociationBefore(IAssociationEnd associationEnd) { return null; }
+        public virtual string AssociationAfter(IAssociationEnd associationEnd) { return null; }
         public virtual string GetBaseClass(IClass @class) { return null; }
         public virtual string ConvertAttributeType(IAttribute attribute) { return null; }
 

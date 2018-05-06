@@ -107,6 +107,11 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             return GetDecorators().Aggregate(x => x.PropertySetterAfter(attribute));
         }
 
+        public string AssociationBefore(IAssociationEnd associationEnd)
+        {
+            return GetDecorators().Aggregate(x => x.AssociationBefore(associationEnd));
+        }
+
         public string PropertyAnnotations(IAssociationEnd associationEnd)
         {
             return GetDecorators().Aggregate(x => x.PropertyAnnotations(associationEnd));
@@ -121,5 +126,11 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
         {
             return GetDecorators().Aggregate(x => x.PropertySetterAfter(associationEnd));
         }
+
+        public string AssociationAfter(IAssociationEnd associationEnd)
+        {
+            return GetDecorators().Aggregate(x => x.AssociationAfter(associationEnd));
+        }
+
     }
 }
