@@ -354,7 +354,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             this.Write(" = value;\r\n            }\r\n        }\r\n");
             
             #line 94 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationBefore(associatedClass)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationAfter(associatedClass)));
             
             #line default
             #line hidden

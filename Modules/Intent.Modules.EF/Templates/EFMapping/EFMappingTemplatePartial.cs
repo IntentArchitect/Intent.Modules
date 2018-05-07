@@ -43,6 +43,20 @@ namespace Intent.Modules.EF.Templates.EFMapping
             };
         }
 
+        public bool UseForeignKeys
+        {
+            get
+            {
+                string useForeignKeysString;
+                bool useForeignKeys;
+                if (GetMetaData().CustomMetaData.TryGetValue("Use Foreign Keys", out useForeignKeysString) && bool.TryParse(useForeignKeysString, out useForeignKeys))
+                {
+                    return useForeignKeys;
+                }
+                return true;
+            }
+        }
+
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));

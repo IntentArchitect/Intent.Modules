@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6F137540-606F-4E35-89E6-E73ADAACDC52}</ProjectGuid>
+    <ProjectGuid>{E1044E5B-715F-4AE8-8FAB-2B95BF05289D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Modules.Entities.Interop.EntityFramework</RootNamespace>
-    <AssemblyName>Intent.Modules.Entities.Interop.EntityFramework</AssemblyName>
+    <RootNamespace>Intent.Modules.Entities.DDD</RootNamespace>
+    <AssemblyName>Intent.Modules.Entities.DDD</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -38,7 +38,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.4.0\lib\net452\Intent.MetaModel.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.3.0\lib\net452\Intent.MetaModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -46,7 +46,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.4.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.3.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -59,21 +59,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decorators\ForeignKeyEntityDecorator.cs" />
-    <Compile Include="Decorators\BidirectionalOneToManyEntityDecorator.cs" />
-    <Compile Include="Decorators\ForeignKeyEntityDecoratorRegistration.cs" />
-    <Compile Include="Decorators\BidirectionalOneToManyEntityDecoratorRegistration.cs" />
+    <Compile Include="Decorators\DDDEntityDecorator.cs" />
+    <Compile Include="Decorators\DDDEntityDecoratorRegistration.cs" />
+    <Compile Include="Decorators\DDDEntityInterfaceDecorator.cs" />
+    <Compile Include="Decorators\DDDEntityInterfaceDecoratorRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Entities.Interop.EntityFramework.imodspec">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Intent.Modules.Entities.DDD.imodspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Entities\Intent.Modules.Entities.csproj">
-      <Project>{04ce09b0-68c2-4c8b-921f-65eea14d3d58}</Project>
+      <Project>{04CE09B0-68C2-4C8B-921F-65EEA14D3D58}</Project>
       <Name>Intent.Modules.Entities</Name>
     </ProjectReference>
   </ItemGroup>

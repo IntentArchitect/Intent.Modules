@@ -91,7 +91,7 @@ namespace <#= Namespace #>
                 <#= associatedClass.Name().ToPrivateMember() #> = value;
             }
         }
-<#= AssociationBefore(associatedClass) #>
+<#= AssociationAfter(associatedClass) #>
 <#  }
 	if (Model.Operations.Any()) {#>
 

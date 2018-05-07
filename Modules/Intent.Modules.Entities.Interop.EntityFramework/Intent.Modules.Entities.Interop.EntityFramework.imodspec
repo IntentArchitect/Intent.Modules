@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities.Interop.EntityFramework</id>
-  <version>1.3.0</version>
+  <version>1.4.0</version>
   <summary>Interoperability for Entities to be persisted by Entity Framework</summary>
   <description></description>
   <authors>Intent Software</authors>
-  <templates>   
+  <templates>
   </templates>
   <decorators>
     <decorator id="Intent.Entities.Interop.EntityFramework.BidirectionalOneToManyEntityDecorator"  enabled="true"/>
+    <decorator id="Intent.Entities.Interop.EntityFramework.ForeignKeyEntityDecorator"  enabled="true"/>
   </decorators>
   <dependencies>
     <dependency id="Intent.Entities" version="1.3.0"/>

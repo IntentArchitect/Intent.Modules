@@ -168,14 +168,22 @@ namespace <#= Namespace #>
             case RelationshipType.OneToMany :#>
             <#= string.Format("this.{0}(x => x.{1})", associationEnd.MinMultiplicity != "0" ? "HasRequired" : "HasOptional", associationEnd.Name().ToPascalCase())#>
                 .WithMany(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
+<#				if (UseForeignKeys) { #>
+				.HasForeignKey(x => x.<#= associationEnd.Name().ToPascalCase()#>Id)
+<#				} else { #>
                 .Map(m => m.MapKey("<#= associationEnd.Name().ToPascalCase()#>Id"))
+<#				} #>
                 ;
 
 <#                  break;
             case RelationshipType.ManyToOne :#>
             this.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
                 .<#= string.Format("{0}({1})", associationEnd.OtherEnd().MinMultiplicity != "0" ? "WithRequired" : "WithOptional", "x => x." + associationEnd.OtherEnd().Name().ToPascalCase())#>
+<#				if (UseForeignKeys) { #>
+				.HasForeignKey(x => x.<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id)
+<#				} else { #>
 				.Map(m => m.MapKey("<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id"))
+<#				} #>
                 ;
 
 <#                  break;
