@@ -5,8 +5,14 @@
   <summary>Create domain entities and related artifacts.</summary>
   <description></description>
   <authors>Intent Software</authors>
-  <templates>   
-    <template id="Intent.Entities.Base">
+  <templates>
+    <template id="Intent.Entities.Entity">
+      <role>Domain</role>
+      <config>
+        <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
+      </config>
+    </template>
+    <template id="Intent.Entities.EntityState">
       <role>Domain</role>
       <config>
         <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
@@ -25,12 +31,6 @@
       <config>
         <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
         <add key="Depends On" description="Make this output a code behind file for" default="${Model.Name}.cs" />
-      </config>
-    </template>
-    <template id="Intent.Entities.PartialEntity">
-      <role>Domain</role>
-      <config>
-        <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
       </config>
     </template>
   </templates>

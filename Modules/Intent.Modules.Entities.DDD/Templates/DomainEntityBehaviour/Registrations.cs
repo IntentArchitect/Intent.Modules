@@ -1,15 +1,14 @@
-﻿using Intent.MetaModel.Domain;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 
-namespace Intent.Modules.Entities.Templates.DomainEntity
+namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 {
-    [Description("Intent Entity Base Template")]
+    [Description("Intent.Entities.DDD - Behaviour Template")]
     public class Registrations : ModelTemplateRegistrationBase<IClass>
     {
         private IMetaDataManager _metaDataManager;
@@ -19,17 +18,11 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             _metaDataManager = metaDataManager;
         }
 
-        public override string TemplateId
-        {
-            get
-            {
-                return DomainEntityTemplate.Identifier;
-            }
-        }
+        public override string TemplateId => DomainEntityBehavioursTemplate.Identifier;
 
         public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
-            return new DomainEntityTemplate(model, project);
+            return new DomainEntityBehavioursTemplate(model, project);
         }
 
         public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication application)

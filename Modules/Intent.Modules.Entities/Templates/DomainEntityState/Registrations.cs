@@ -6,15 +6,16 @@ using Intent.SoftwareFactory.Templates.Registrations;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modules.Entities.Templates.DomainEntityState;
 
-namespace Intent.Modules.Entities.Templates.DomainPartialEntity
+namespace Intent.Modules.Entities.Templates.DomainEntity
 {
-    [Description("Intent Entity Partial Template")]
-    public class Registration : ModelTemplateRegistrationBase<IClass>
+    [Description("Intent.Entities - Entity State Template")]
+    public class Registrations : ModelTemplateRegistrationBase<IClass>
     {
         private IMetaDataManager _metaDataManager;
 
-        public Registration(IMetaDataManager metaDataManager)
+        public Registrations(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -23,13 +24,13 @@ namespace Intent.Modules.Entities.Templates.DomainPartialEntity
         {
             get
             {
-                return DomainPartialEntityTemplate.Identifier;
+                return DomainEntityStateTemplate.Identifier;
             }
         }
 
         public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
-            return new DomainPartialEntityTemplate(model, project);
+            return new DomainEntityStateTemplate(model, project);
         }
 
         public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication application)

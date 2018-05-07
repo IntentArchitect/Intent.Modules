@@ -85,21 +85,21 @@
     <Compile Include="Templates\DomainEntityInterface\DomainEntityInterfaceTemplatePartial.cs" />
     <Compile Include="Templates\DomainEntityInterface\Registrations.cs" />
     <Compile Include="Templates\DomainEntityModelExtensions.cs" />
-    <Compile Include="Templates\DomainEntity\AbstractDomainEntityDecorator.cs" />
+    <Compile Include="Templates\DomainEntityState\AbstractDomainEntityDecorator.cs" />
+    <Compile Include="Templates\DomainEntityState\DomainEntityStateTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DomainEntityStateTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DomainEntityState\DomainEntityStateTemplatePartial.cs" />
+    <Compile Include="Templates\DomainEntityState\Registrations.cs" />
+    <Compile Include="Templates\DomainEntity\DomainEntityTemplatePartial.cs" />
     <Compile Include="Templates\DomainEntity\DomainEntityTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DomainEntityTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\DomainEntity\DomainEntityTemplatePartial.cs" />
-    <Compile Include="Templates\DomainEntity\Registrations.cs" />
-    <Compile Include="Templates\DomainPartialEntity\DomainPartialEntityTemplatePartial.cs" />
-    <Compile Include="Templates\DomainPartialEntity\DomainPartialEntityTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DomainPartialEntityTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\DomainPartialEntity\Registration.cs" />
+    <Compile Include="Templates\DomainEntity\Registration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Entities.imodspec" />
@@ -114,13 +114,13 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DomainEntityInterfaceTemplate.cs</LastGenOutput>
     </Content>
+    <Content Include="Templates\DomainEntityState\DomainEntityStateTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DomainEntityStateTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\DomainEntity\DomainEntityTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DomainEntityTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\DomainPartialEntity\DomainPartialEntityTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DomainPartialEntityTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

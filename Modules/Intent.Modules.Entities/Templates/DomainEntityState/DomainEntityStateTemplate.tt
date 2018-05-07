@@ -1,0 +1,97 @@
+﻿<#@ template  debug="true"  inherits="Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IClass>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.MetaModel.Domain" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic"#>
+using System;
+using System.Collections.Generic;
+using Intent.CodeGen;
+<#= DependencyUsings #>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+<#= ClassAnnotations(Model) #>
+    public <#= Model.IsAbstract ? "abstract " : "" #>partial class <#= ClassName #> : <#= GetBaseClass(Model)#>, I<#= ClassName #><#= GetInterfaces(Model) #>
+    {<#= ConstructorAnnotations(Model) #>
+		public <#= ClassName #>(<#= ConstructorParameters(Model) #>) 
+		{
+<#= ConstructorBody(Model) #>
+		}
+<#= ClassOtherConstructors(Model) #>
+<#  foreach (var attribute in Model.Attributes)
+    {
+		string attributeType = Types.Get(attribute.Type);
+#>
+<#= PropertyFieldAnnotations(attribute) #>
+        private <#= attributeType #> <#= attribute.Name.ToPrivateMember() #>;
+<#= PropertyAnnotations(attribute) #>
+        public <#= attributeType #> <#= attribute.Name.ToPascalCase() #> 
+        {
+            get { return <#= attribute.Name.ToPrivateMember() #>; }
+            set
+            {
+<#= PropertySetterBefore(attribute) #><#		
+		if (attributeType == "date")
+		{
+			if (!attribute.IsNullable)
+			{#>
+                <#= attribute.Name.ToPrivateMember() #> = value.Date;
+<#			}
+			else
+			{#>
+                <#= attribute.Name.ToPrivateMember() #> = (value == null) ? value : value.Value.Date;
+<#			}
+		}
+		else
+		{#>
+                <#= attribute.Name.ToPrivateMember() #> = value;
+<#		}
+#><#= PropertySetterAfter(attribute) #>            }
+        }
+<#  }
+	if (Model.AssociatedClasses.Any()) {#>
+
+<# 	}
+	foreach (var associatedClass in Model.AssociatedClasses)
+    {
+#><#= AssociationBefore(associatedClass) #><# 	
+		if (!associatedClass.IsNavigable) 
+		{
+			continue;
+        }
+#>		private <#= associatedClass.Type() #> <#= associatedClass.Name().ToPrivateMember() #>;
+<#= PropertyAnnotations(associatedClass) #>
+        public virtual <#= associatedClass.Type() #> <#= associatedClass.Name().ToPascalCase() #>
+        {
+            get
+            {
+<#		string associatedClassReturn;
+		if (associatedClass.Multiplicity == Multiplicity.Many)
+		{
+			associatedClassReturn = String.Format("{0} ?? ({0} = new List<{1}>())", associatedClass.Name().ToPrivateMember(), associatedClass.Class.Name + "");
+		}
+		else
+		{
+			associatedClassReturn = associatedClass.Name().ToPrivateMember();
+		}
+#>
+                return <#= associatedClassReturn #>;
+            }
+            set
+            {    
+                <#= associatedClass.Name().ToPrivateMember() #> = value;
+            }
+        }
+<#= AssociationAfter(associatedClass) #>
+<#  }#>
+    }
+}
