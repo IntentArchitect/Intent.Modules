@@ -1,6 +1,7 @@
 ﻿using Intent.MetaModel.Domain;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
+using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Entities.Decorators
 {
@@ -21,6 +22,11 @@ namespace Intent.Modules.Entities.Decorators
                 return domainType;
             }
             return base.ConvertAttributeType(attribute);
+        }
+
+        public override bool CanWriteOperation(IOperation operation)
+        {
+            return !operation.HasStereotype("Command Operation");
         }
     }
 }

@@ -133,5 +133,14 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             return GetDecorators().Aggregate(x => x.AssociationAfter(associationEnd));
         }
 
+        public bool CanWriteAttribute(IAttribute attribute)
+        {
+            return GetDecorators().All(x => x.CanWriteAttribute(attribute));
+        }
+
+        public bool CanWriteAssociation(IAssociationEnd association)
+        {
+            return GetDecorators().All(x => x.CanWriteAssociation(association));
+        }
     }
 }

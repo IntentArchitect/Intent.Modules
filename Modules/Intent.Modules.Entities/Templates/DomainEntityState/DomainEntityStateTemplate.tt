@@ -27,7 +27,7 @@ namespace <#= Namespace #>
 <#= ConstructorBody(Model) #>
 		}
 <#= ClassOtherConstructors(Model) #>
-<#  foreach (var attribute in Model.Attributes)
+<#  foreach (var attribute in Model.Attributes.Where(CanWriteAttribute))
     {
 		string attributeType = Types.Get(attribute.Type);
 #>
@@ -61,7 +61,7 @@ namespace <#= Namespace #>
 	if (Model.AssociatedClasses.Any()) {#>
 
 <# 	}
-	foreach (var associatedClass in Model.AssociatedClasses)
+	foreach (var associatedClass in Model.AssociatedClasses.Where(CanWriteAssociation))
     {
 #><#= AssociationBefore(associatedClass) #><# 	
 		if (!associatedClass.IsNavigable) 

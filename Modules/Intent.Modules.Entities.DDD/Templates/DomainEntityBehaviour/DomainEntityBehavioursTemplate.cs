@@ -138,7 +138,7 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
             
             #line default
             #line hidden
-            this.Write(")\r\n        }\r\n");
+            this.Write(");\r\n        }\r\n");
             
             #line 46 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
 		}

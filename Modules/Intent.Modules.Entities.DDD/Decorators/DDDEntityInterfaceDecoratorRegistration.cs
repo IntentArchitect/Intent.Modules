@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    [Description("DDD Entity Interface Decorator - Domain decorator")]
+    [Description("Intent.Entities.DDD.EntityInterfaceDecorator")]
     public class DDDEntityInterfaceDecoratorRegistration : DecoratorRegistration<AbstractDomainEntityInterfaceDecorator>
     {
 

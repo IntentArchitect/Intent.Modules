@@ -125,7 +125,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             this.Write("\r\n");
             
             #line 30 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities\Templates\DomainEntityState\DomainEntityStateTemplate.tt"
-  foreach (var attribute in Model.Attributes)
+  foreach (var attribute in Model.Attributes.Where(CanWriteAttribute))
     {
 		string attributeType = Types.Get(attribute.Type);
 
@@ -263,7 +263,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             
             #line 63 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities\Templates\DomainEntityState\DomainEntityStateTemplate.tt"
  	}
-	foreach (var associatedClass in Model.AssociatedClasses)
+	foreach (var associatedClass in Model.AssociatedClasses.Where(CanWriteAssociation))
     {
 
             

@@ -22,6 +22,7 @@
         <add key="Value Object Base Class" description="Base class for all value objects" default="" />
       </config>
     </decorator>
+    <decorator id="Intent.Entities.DDD.EntityInterfaceDecorator" enabled="true"></decorator>
   </decorators>
   <dependencies>
     <dependency id="Intent.Entities" version="1.4.0"/>
@@ -30,4 +31,7 @@
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
+  <metadata>
+    <install target="Domain" src="MetaData\Domain"/>
+  </metadata>
 </package>

@@ -53,7 +53,7 @@ namespace Intent.Modules.Entities.Decorators
 
         public override string GetBaseClass(IClass @class)
         {
-            var baseClass = @class.Stereotypes.GetProperty<string>("AggregateRoot", "BaseType");
+            var baseClass = @class.Stereotypes.GetProperty<string>("Aggregate Root", "BaseType");
             if (baseClass != null)
             {
                 return baseClass;
@@ -63,12 +63,12 @@ namespace Intent.Modules.Entities.Decorators
             {
                 return baseClass;
             }
-            baseClass = @class.Stereotypes.GetProperty<string>("ValueObject", "BaseType");
+            baseClass = @class.Stereotypes.GetProperty<string>("Value Object", "BaseType");
             if (baseClass != null)
             {
                 return baseClass;
             }
-            if (_aggregateRootBaseClass != null && @class.Stereotypes.FirstOrDefault(s => s.Name == "AggregateRoot") != null)
+            if (_aggregateRootBaseClass != null && @class.Stereotypes.FirstOrDefault(s => s.Name == "Aggregate Root") != null)
             {
                 return _aggregateRootBaseClass;
             }
@@ -76,7 +76,7 @@ namespace Intent.Modules.Entities.Decorators
             {
                 return _entityBaseClass;
             }
-            if (_valueObjectBaseClass != null && @class.Stereotypes.FirstOrDefault(s => s.Name == "ValueObject") != null)
+            if (_valueObjectBaseClass != null && @class.Stereotypes.FirstOrDefault(s => s.Name == "Value Object") != null)
             {
                 return _valueObjectBaseClass;
             }

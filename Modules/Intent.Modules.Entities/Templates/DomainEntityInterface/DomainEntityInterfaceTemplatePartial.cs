@@ -60,5 +60,20 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         {
             return GetDecorators().Aggregate(x => x.PropertyAnnotations(associationEnd));
         }
+
+        public bool CanWriteAttribute(IAttribute attribute)
+        {
+            return GetDecorators().All(x => x.CanWriteAttribute(attribute));
+        }
+
+        public bool CanWriteAssociation(IAssociationEnd association)
+        {
+            return GetDecorators().All(x => x.CanWriteAssociation(association));
+        }
+
+        public bool CanWriteOperation(IOperation operation)
+        {
+            return GetDecorators().All(x => x.CanWriteOperation(operation));
+        }
     }
 }

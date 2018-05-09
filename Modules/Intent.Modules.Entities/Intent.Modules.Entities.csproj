@@ -59,10 +59,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decorators\DDDEntityDecorator.cs" />
-    <Compile Include="Decorators\DDDEntityDecoratorRegistration.cs" />
-    <Compile Include="Decorators\DDDEntityInterfaceDecorator.cs" />
-    <Compile Include="Decorators\DDDEntityInterfaceDecoratorRegistration.cs" />
     <Compile Include="Decorators\SerializableEntityDecorator.cs" />
     <Compile Include="Decorators\SerializableEntityInterfaceDecorator.cs" />
     <Compile Include="Decorators\SerializableEntityDecoratorRegistration.cs" />

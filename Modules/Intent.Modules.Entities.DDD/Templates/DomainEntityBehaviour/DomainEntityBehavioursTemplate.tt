@@ -41,7 +41,7 @@ namespace <#= Namespace #>
 		{#>
         public <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>)
         {
-            <#= operation.ReturnType != null ? "return " : "" #>_state.<#= operation.Name.ToPascalCase() #>(<#= parameterNames #>)
+            <#= operation.ReturnType != null ? "return " : "" #>_state.<#= operation.Name.ToPascalCase() #>(<#= parameterNames #>);
         }
 <#		}
     }
