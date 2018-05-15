@@ -57,6 +57,20 @@ namespace Intent.Modules.EF.Templates.EFMapping
             }
         }
 
+        public bool ImplicitSurrogateKey
+        {
+            get
+            {
+                string useForeignKeysString;
+                bool useForeignKeys;
+                if (GetMetaData().CustomMetaData.TryGetValue("Implicit Surrogate Key", out useForeignKeysString) && bool.TryParse(useForeignKeysString, out useForeignKeys))
+                {
+                    return useForeignKeys;
+                }
+                return true;
+            }
+        }
+
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));

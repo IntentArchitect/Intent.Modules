@@ -98,11 +98,18 @@ namespace <#= Namespace #>
 		mapPk = false;
         //No Key mapping required
     } 
-    
+
+	if (mapPk || ImplicitSurrogateKey) {#>
+            this.HasKey(x => x.Id);
+            this.Property(x => x.Id).HasColumnName("Id");
+<#  }  
     foreach (var attribute in Model.Attributes)
     {
 		if (mapPk && attribute.Name.ToLower() == "id")
         {
+			if (ImplicitSurrogateKey) {
+				throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable this option in the module", Model.Name));
+            }
 #>
             this.HasKey(x => x.Id);
             this.Property(x => x.Id).HasColumnName("Id");
