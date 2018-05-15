@@ -28,7 +28,7 @@ namespace Intent.Modules.AngularJs.Templates.View
 
         public override IEnumerable<ViewStateModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetMetaData<ViewStateModel>(new MetaDataIdentifier("ViewState")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return _metaDataManager.GetMetaData<ViewStateModel>(new MetaDataIdentifier("ViewState")).ToList();
         }
     }
 }

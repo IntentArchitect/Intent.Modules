@@ -20,6 +20,7 @@ namespace Intent.Modules.AngularJs
     public class CommandModel
     {
         public string Name { get; set; }
+        public IEnumerable<IStereotype> Stereotypes { get; set; }
     }
 
     public class MetadataProvider : IMetaDataProvider
@@ -53,7 +54,18 @@ namespace Intent.Modules.AngularJs
                 {
                     Name = "Home",
                     Application = new Application("", "Test"),
-                    Commands = new List<CommandModel>(),
+                    Commands = new List<CommandModel>()
+                    {
+                        new CommandModel() {Name = "print", Stereotypes = new List<IStereotype>
+                        {
+                            new Stereotype("Service Call", new []
+                            {
+                                new StereotypeProperty("ServiceName", "PrintService", StereotypePropertyType.String),
+                                new StereotypeProperty("OperationName", "Print(vm.ajsd, vm.asdlkfj)", StereotypePropertyType.String),
+                            })
+                        }
+                        }
+                    },
                     Stereotypes = new List<Stereotype>()
                     {
                         new Stereotype("AngularState", new[]
@@ -61,9 +73,25 @@ namespace Intent.Modules.AngularJs
                             new StereotypeProperty("Url", "", StereotypePropertyType.String),
                         })
                     },
+                },
+                new ViewStateModel()
+                {
+                    Name = "About",
+                    Application = new Application("", "Test"),
+                    Commands = new List<CommandModel>()
+                    {
+                    },
+                    Stereotypes = new List<Stereotype>()
+                    {
+                        new Stereotype("AngularState", new[]
+                        {
+                            new StereotypeProperty("Url", "about", StereotypePropertyType.String),
+                        })
+                    },
                 }
             };
             models[1].Parent = models[0];
+            models[2].Parent = models[0];
             return new List<IMetaDataResults>()
             {
                 new MetaDataResults<ViewStateModel>("ViewState", models)
