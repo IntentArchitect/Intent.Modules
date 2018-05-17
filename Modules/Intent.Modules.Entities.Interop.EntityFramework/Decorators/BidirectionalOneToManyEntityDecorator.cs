@@ -7,7 +7,7 @@ namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 {
     public class BidirectionalOneToManyEntityDecorator : AbstractDomainEntityDecorator, ISupportsConfiguration
     {
-        public const string Id = "Intent.Entities.Interop.EntityFramework.BidirectionalOneToManyEntityDecorator";
+        public const string Identifier = "Intent.Entities.Interop.EntityFramework.BidirectionalOneToManyEntityDecorator";
 
         public override string AssociationBefore(IAssociationEnd associationEnd)
         {

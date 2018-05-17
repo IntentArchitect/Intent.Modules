@@ -14,6 +14,7 @@ namespace Intent.Modules.Entities.Decorators
         private const string AggregateRootBaseClassSetting = "Aggregate Root Base Class";
         private const string EntityBaseClassSetting = "Entity Base Class";
         private const string ValueObjectBaseClassSetting = "Value Object Base Class";
+        private const string DefaultBaseClassSetting  = "Default Base Class";
 
         private string _aggregateRootBaseClass = null;
         private string _entityBaseClass = null;

@@ -9,6 +9,7 @@
   </templates>
   <decorators>
     <decorator id="Intent.Entities.Interop.EntityFramework.BidirectionalOneToManyEntityDecorator"  enabled="true"/>
+    <decorator id="Intent.Entities.Interop.EntityFramework.SurrogatePrimaryKeyEntityDecorator"  enabled="true"/>
     <decorator id="Intent.Entities.Interop.EntityFramework.ForeignKeyEntityDecorator"  enabled="true"/>
   </decorators>
   <dependencies>

@@ -59,8 +59,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\SurrogatePrimaryKeyDecorator.cs" />
     <Compile Include="Decorators\ForeignKeyEntityDecorator.cs" />
     <Compile Include="Decorators\BidirectionalOneToManyEntityDecorator.cs" />
+    <Compile Include="Decorators\SurrogatePrimaryKeyDecoratorRegistration.cs" />
     <Compile Include="Decorators\ForeignKeyEntityDecoratorRegistration.cs" />
     <Compile Include="Decorators\BidirectionalOneToManyEntityDecoratorRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

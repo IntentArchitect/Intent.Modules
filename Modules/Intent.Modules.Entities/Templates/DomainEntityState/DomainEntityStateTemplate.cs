@@ -118,7 +118,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             this.Write("\r\n\t\t}\r\n");
             
             #line 29 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities\Templates\DomainEntityState\DomainEntityStateTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ClassOtherConstructors(Model)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(BeforeProperties(Model)));
             
             #line default
             #line hidden

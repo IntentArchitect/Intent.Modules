@@ -11,7 +11,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
         public virtual string ConstructorAnnotations(IClass @class) { return null; }
         public virtual string ConstructorParameters(IClass @class) { return null; }
         public virtual string ConstructorBody(IClass @class) { return null; }
-        public virtual string ClassOtherConstructors(IClass @class) { return null; }
+        public virtual string BeforeProperties(IClass @class) { return null; }
         public virtual string PropertyFieldAnnotations(IAttribute attribute) { return null; }
         public virtual string PropertyAnnotations(IAttribute attribute) { return null; }
         public virtual string PropertySetterBefore(IAttribute attribute) { return null; }
