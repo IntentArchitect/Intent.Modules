@@ -66,6 +66,12 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             
             #line default
             #line hidden
+            
+            #line 24 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentClass != null ? string.Format(" : I{0}", Model.ParentClass.Name) : ""));
+            
+            #line default
+            #line hidden
             this.Write("\r\n    {\r\n");
             
             #line 26 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"

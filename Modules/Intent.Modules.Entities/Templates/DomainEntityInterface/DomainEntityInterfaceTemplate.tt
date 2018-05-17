@@ -21,7 +21,7 @@ using Intent.CodeGen;
 namespace <#= Namespace #>
 {
 <#= InterfaceAnnotations(Model) #>
-    public partial interface I<#= ClassName #><#= GetInterfaces(Model) #>
+    public partial interface I<#= ClassName #><#= GetInterfaces(Model) #><#= Model.ParentClass != null ? string.Format(" : I{0}", Model.ParentClass.Name) : "" #>
     {
 <#  foreach (var attribute in Model.Attributes.Where(CanWriteAttribute))
     {

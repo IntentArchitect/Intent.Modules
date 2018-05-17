@@ -6,6 +6,9 @@
   <description></description>
   <authors>Intent Software</authors>
   <templates>
+    <template id="Intent.Entities.Interop.EntityFramework.IdentityGenerator">
+      <role>Domain</role>
+    </template>
   </templates>
   <decorators>
     <decorator id="Intent.Entities.Interop.EntityFramework.BidirectionalOneToManyEntityDecorator"  enabled="true"/>

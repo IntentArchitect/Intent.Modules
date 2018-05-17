@@ -35,14 +35,6 @@
     </template>
   </templates>
   <decorators>
-    <decorator id="Intent.DDD.Entity.Decorator" enabled="false">
-      <config>
-        <add key="Aggregate Root Base Class" description="Base class for all aggregates" default="" />
-        <add key="Entity Base Class" description="Base class for all entities" default="" />
-        <add key="Value Object Base Class" description="Base class for all value objects" default="" />
-      </config>
-    </decorator>
-    <decorator id="Intent.DDD.Entity.Interfaces.Decorator"  enabled="false"/>
     <decorator id="Intent.Serializable.Entity.Decorator" enabled="false" />
     <decorator id="Intent.Serializable.Entity.Interfaces.Decorator" enabled="false" />
   </decorators>

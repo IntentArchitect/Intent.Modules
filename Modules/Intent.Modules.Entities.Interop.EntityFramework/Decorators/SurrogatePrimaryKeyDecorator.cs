@@ -1,11 +1,14 @@
-﻿using Intent.MetaModel.Domain;
+﻿using System.Collections.Generic;
+using Intent.MetaModel.Domain;
+using Intent.Modules.Entities.Interop.EntityFramework.Templates.IdentityGenerator;
 using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.SoftwareFactory.Configuration;
 using Intent.Modules.Entities.Templates;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 {
-    public class SurrogatePrimaryKeyDecorator : AbstractDomainEntityDecorator, ISupportsConfiguration
+    public class SurrogatePrimaryKeyDecorator : AbstractDomainEntityDecorator, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.Entities.Interop.EntityFramework.SurrogatePrimaryKeyEntityDecorator";
 
@@ -22,6 +25,11 @@ namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
             get { return _id ?? (_id = IdentityGenerator.NewSequentialId()).Value; }
             set { _id = value; }
         }";
+        }
+
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            return new[] { TemplateDependancy.OnTemplate(IdentityGeneratorTemplate.Identifier) };
         }
     }
 }

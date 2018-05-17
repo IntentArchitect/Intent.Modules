@@ -23,26 +23,14 @@ using System.Linq;
 
 namespace <#= Namespace #>
 {
-    public class <#= ClassName #>
-    {
-		private <#= ClassStateName #> _state;
-
-        public <#= ClassName #>(<#= ClassStateName #> state)
-        {
-			_state = state;
-        }
-
+    public interface I<#= ClassStateName #>Behaviours<#= Model.ParentClass != null ? string.Format(" : I{0}Behaviours", Model.ParentClass.Name) : "" #> {
 <# foreach (var operation in Model.Operations)
     {
         string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";
         string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
-        string parameterNames = operation.Parameters.Any() ? operation.Parameters.Select(x => x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
 		if (!operation.IsAbstract)
 		{#>
-        public <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>)
-        {
-            <#= operation.ReturnType != null ? "return " : "" #>_state.<#= operation.Name.ToPascalCase() #>(<#= parameterNames #>);
-        }
+        <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
 <#		}
     }
 #>
@@ -50,9 +38,9 @@ namespace <#= Namespace #>
 
 	public static class <#= ClassStateName #>Extensions
     {
-        public static <#= ClassName #> Behaviours(this I<#= ClassStateName #> <#= ClassStateName.ToCamelCase() #>)
+        public static I<#= ClassStateName #>Behaviours Behaviours(this I<#= ClassStateName #> <#= ClassStateName.ToCamelCase() #>)
         {
-            return new <#= ClassName #>((<#= ClassStateName #>)<#= ClassStateName.ToCamelCase() #>);
+            return (I<#= ClassStateName #>Behaviours)<#= ClassStateName.ToCamelCase() #>;
         }
     }
 }

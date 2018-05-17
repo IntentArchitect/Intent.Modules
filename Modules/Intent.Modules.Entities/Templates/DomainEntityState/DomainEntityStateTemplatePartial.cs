@@ -68,19 +68,9 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             return GetDecorators().Aggregate(x => x.ClassAnnotations(@class));
         }
 
-        public string ConstructorAnnotations(IClass @class)
+        public string Constructors(IClass @class)
         {
-            return GetDecorators().Aggregate(x => x.ConstructorAnnotations(@class));
-        }
-
-        public string ConstructorParameters(IClass @class)
-        {
-            return GetDecorators().Aggregate(x => x.ConstructorParameters(@class));
-        }
-
-        public string ConstructorBody(IClass @class)
-        {
-            return GetDecorators().Aggregate(x => x.ConstructorBody(@class));
+            return GetDecorators().Aggregate(x => x.Constructors(@class));
         }
 
         public string BeforeProperties(IClass @class)

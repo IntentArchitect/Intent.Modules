@@ -8,12 +8,12 @@ using Intent.SoftwareFactory.Templates.Registrations;
 
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 {
-    [Description("Intent.Entities.DDD - Behaviour Template")]
-    public class Registrations : ModelTemplateRegistrationBase<IClass>
+    [Description(DomainEntityBehavioursTemplate.Identifier)]
+    public class DomainEntityBehavioursTemplateRegistration : ModelTemplateRegistrationBase<IClass>
     {
-        private IMetaDataManager _metaDataManager;
+        private readonly IMetaDataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public DomainEntityBehavioursTemplateRegistration(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

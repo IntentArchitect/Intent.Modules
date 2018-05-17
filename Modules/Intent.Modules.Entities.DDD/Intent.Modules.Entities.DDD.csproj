@@ -69,7 +69,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplatePartial.cs" />
-    <Compile Include="Templates\DomainEntityBehaviour\Registrations.cs" />
+    <Compile Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplateRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

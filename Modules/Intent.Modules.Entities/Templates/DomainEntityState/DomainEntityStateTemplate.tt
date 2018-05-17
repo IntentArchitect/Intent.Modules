@@ -21,11 +21,8 @@ namespace <#= Namespace #>
 {
 <#= ClassAnnotations(Model) #>
     public <#= Model.IsAbstract ? "abstract " : "" #>partial class <#= ClassName #> : <#= GetBaseClass(Model)#>, I<#= ClassName #><#= GetInterfaces(Model) #>
-    {<#= ConstructorAnnotations(Model) #>
-		public <#= ClassName #>(<#= ConstructorParameters(Model) #>) 
-		{
-<#= ConstructorBody(Model) #>
-		}
+    {
+<#= Constructors(Model) #>
 <#= BeforeProperties(Model) #>
 <#  foreach (var attribute in Model.Attributes.Where(CanWriteAttribute))
     {
