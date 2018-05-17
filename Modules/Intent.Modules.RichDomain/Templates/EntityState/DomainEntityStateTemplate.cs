@@ -490,157 +490,160 @@ public string GetBaseDataInterfaces(Class umlClass)
 
 public void AddAttribute(UmlAttribute attribute)
 {
+	if (attribute.Stereotypes.Any(x => x.Name == "Calculated")) {
+		return;
+    }
 
         
         #line default
         #line hidden
         
-        #line 203 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 206 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(PropertyFieldAnnotations(attribute)));
 
         
         #line default
         #line hidden
         
-        #line 204 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 207 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write("        private ");
 
         
         #line default
         #line hidden
         
-        #line 204 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 207 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(attribute.DomainType()));
 
         
         #line default
         #line hidden
         
-        #line 204 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 207 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 204 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 207 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPrivateMember()));
 
         
         #line default
         #line hidden
         
-        #line 204 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 207 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(";");
 
         
         #line default
         #line hidden
         
-        #line 204 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 207 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(PropertyAnnotations(attribute)));
 
         
         #line default
         #line hidden
         
-        #line 204 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 207 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write("\r\n        public ");
 
         
         #line default
         #line hidden
         
-        #line 205 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 208 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(attribute.DomainType()));
 
         
         #line default
         #line hidden
         
-        #line 205 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 208 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(" ");
 
         
         #line default
         #line hidden
         
-        #line 205 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 208 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
 
         
         #line default
         #line hidden
         
-        #line 205 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 208 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(" \r\n        {\r\n            get { return ");
 
         
         #line default
         #line hidden
         
-        #line 207 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 210 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPrivateMember()));
 
         
         #line default
         #line hidden
         
-        #line 207 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 210 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write("; }\r\n            set\r\n            {\r\n");
 
         
         #line default
         #line hidden
         
-        #line 210 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 213 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
     if (attribute.Stereotypes.GetTagValue("Text", "TrimAutomatically", false)) {
         
         #line default
         #line hidden
         
-        #line 210 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 213 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write("                value = value?.Truncate(");
 
         
         #line default
         #line hidden
         
-        #line 211 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 214 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Stereotypes.GetTagValue("Text", "MaxLength", 8000)));
 
         
         #line default
         #line hidden
         
-        #line 211 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 214 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(");\r\n");
 
         
         #line default
         #line hidden
         
-        #line 212 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 215 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
   }
         
         #line default
         #line hidden
         
-        #line 212 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 215 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(PropertySetterBefore(attribute)));
 
         
         #line default
         #line hidden
         
-        #line 212 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 215 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write("\r\n");
 
         
         #line default
         #line hidden
         
-        #line 213 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 216 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
   if (attribute.Type == "date")
     {
         if (attribute.IsMandatory)
@@ -649,28 +652,28 @@ this.Write("\r\n");
         #line default
         #line hidden
         
-        #line 216 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 219 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write("                ");
 
         
         #line default
         #line hidden
         
-        #line 217 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 220 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPrivateMember()));
 
         
         #line default
         #line hidden
         
-        #line 217 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 220 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(" = value.Date;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 218 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 221 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 
         }
         else
@@ -679,28 +682,28 @@ this.Write(" = value.Date;\r\n");
         #line default
         #line hidden
         
-        #line 221 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 224 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write("                ");
 
         
         #line default
         #line hidden
         
-        #line 222 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 225 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPrivateMember()));
 
         
         #line default
         #line hidden
         
-        #line 222 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 225 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(" = (value == null) ? value : value.Value.Date;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 223 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 226 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
       }
     }
     else
@@ -709,48 +712,48 @@ this.Write(" = (value == null) ? value : value.Value.Date;\r\n");
         #line default
         #line hidden
         
-        #line 226 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 229 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write("                ");
 
         
         #line default
         #line hidden
         
-        #line 227 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 230 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPrivateMember()));
 
         
         #line default
         #line hidden
         
-        #line 227 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 230 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(" = value;\r\n");
 
         
         #line default
         #line hidden
         
-        #line 228 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 231 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
   }
         
         #line default
         #line hidden
         
-        #line 228 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 231 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write(this.ToStringHelper.ToStringWithCulture(PropertySetterAfter(attribute)));
 
         
         #line default
         #line hidden
         
-        #line 229 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 232 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 this.Write("            }\r\n        }\r\n\r\n");
 
         
         #line default
         #line hidden
         
-        #line 232 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
+        #line 235 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.RichDomain\Templates\EntityState\DomainEntityStateTemplate.tt"
 
 }
 

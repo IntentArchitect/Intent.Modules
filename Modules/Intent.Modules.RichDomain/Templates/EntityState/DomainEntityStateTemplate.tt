@@ -200,6 +200,9 @@ public string GetBaseDataInterfaces(Class umlClass)
 
 public void AddAttribute(UmlAttribute attribute)
 {
+	if (attribute.Stereotypes.Any(x => x.Name == "Calculated")) {
+		return;
+    }
 #><#= PropertyFieldAnnotations(attribute) 
 #>        private <#= attribute.DomainType() #> <#= attribute.Name.ToPrivateMember() #>;<#= PropertyAnnotations(attribute) #>
         public <#= attribute.DomainType() #> <#= attribute.Name.ToPascalCase() #> 

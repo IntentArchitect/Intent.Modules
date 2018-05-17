@@ -127,9 +127,16 @@ namespace <#= Namespace #>
 
                 .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= attribute.Stereotypes.GetTagValue("UniqueConstraint", "UniqueKey", "Unique1")#>", <#=attribute.Stereotypes.GetTagValue("UniqueConstraint", "Order", "1")#>) { IsUnique = true }))<#
         }
-        if (!string.IsNullOrEmpty(attribute.Stereotypes.GetTagValue("Index", "UniqueKey", ""))){#>
+		if (!string.IsNullOrEmpty(attribute.Stereotypes.GetTagValue("Index", "UniqueKey", "")))
+		{#>
 
-                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= attribute.Stereotypes.GetTagValue("Index", "UniqueKey", "Unique1")#>", <#= attribute.Stereotypes.GetTagValue("Index", "Order", "1")#>) { IsUnique = <#= attribute.Stereotypes.GetTagValue("Index", "IsUnique", "false")#> }))<#
+                .HasColumnAnnotation("Index", new IndexAnnotation(new []
+                    {
+<#			foreach(var index in attribute.Stereotypes.Where(x => x.Name == "Index")) { #>
+                        new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= index.GetTagValue("UniqueKey", "Unique1")#>", <#= index.GetTagValue("Order", "1")#>) { IsUnique = <#= index.GetTagValue("IsUnique", "false")#> },
+<#
+			}#>
+                    }))<#
         }
         if (attribute.IsMandatory){#>
 

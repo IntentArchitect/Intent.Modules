@@ -26,23 +26,29 @@ namespace <#= Namespace #>
     partial class <#= Model.Name#>  
     {
 
-<#if (Model.Attributes.Any()) {#>
+<#	if (Model.Attributes.Any()) {#>
         [IntentInitialGen]
-<#  string constructorDefinition = Model.Attributes.Any(a => !a.IsAssociationAttribute)
-        ? Model.Attributes.Where(a => !a.IsAssociationAttribute).Select(x => x.DomainType() + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
-        : "";
+<#		string constructorDefinition = Model.Attributes.Any(a => !a.IsAssociationAttribute)
+			? Model.Attributes.Where(a => !a.IsAssociationAttribute).Select(x => x.DomainType() + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
+			: "";
 #>
         public <#= Model.Name#>(<#= constructorDefinition #>)
             : this (false)
         {
-<#  foreach (var attribute in Model.Attributes.Where(a => !a.IsAssociationAttribute))
-{#>
+<#		foreach (var attribute in Model.Attributes.Where(a => !a.IsAssociationAttribute)) {#>
             <#= attribute.Name.ToPascalCase()#> = <#= attribute.Name.ToCamelCase()#>;
-<#}//for
+<#		}//for
 #>
         }
 
-<#}//if
+<#		foreach (var attribute in Model.Attributes.Where(a => a.Stereotypes.Any(x => x.Name == "Calculated"))) {#>
+        public <#= attribute.DomainType() #> <#= attribute.Name.ToPascalCase() #>
+        {
+            get { return default(<#= attribute.DomainType() #>); }
+            set { }
+        }
+<#		}
+	}//if
 #>
 <#  foreach (var operation in Model.Operations)
     {

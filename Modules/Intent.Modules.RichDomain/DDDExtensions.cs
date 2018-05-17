@@ -135,6 +135,21 @@ namespace Intent.Modules.RichDomain
             return defaultValue;
         }
 
+        public static T GetTagValue<T>(this Stereotype stereotype, string tagName, T defaultValue)
+        {
+            foreach (var tag in stereotype.Tags)
+            {
+                if (tag.Key == tagName)
+                {
+                    if (!string.IsNullOrWhiteSpace(tag.Value))
+                    {
+                        return (T)Convert.ChangeType(tag.Value, typeof(T));
+                    }
+                }
+            }
+            return defaultValue;
+        }
+
         public static T GetTagValue<T>(this IEnumerable<Stereotype> stereotypes, string stereoTypeName, string tagName)
         {
             foreach (var s in stereotypes)
