@@ -63,6 +63,13 @@
     <Compile Include="Decorators\DDDEntityDecoratorRegistration.cs" />
     <Compile Include="Decorators\DDDEntityInterfaceDecorator.cs" />
     <Compile Include="Decorators\DDDEntityInterfaceDecoratorRegistration.cs" />
+    <Compile Include="Templates\RepositoryInterface\RepositoryInterfaceTemplate.cs">
+      <DependentUpon>RepositoryInterfaceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\RepositoryInterface\RepositoryInterfaceTemplatePartial.cs" />
+    <Compile Include="Templates\RepositoryInterface\RepositoryInterfaceTemplateRegistration.cs" />
     <Compile Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.cs">
       <DependentUpon>DomainEntityBehavioursTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -90,6 +97,10 @@
     <Content Include="MetaData\Domain\Stereotypes\ValueObject.xml" />
     <Content Include="MetaData\Domain\Stereotypes\Entity.xml" />
     <Content Include="MetaData\Domain\Stereotypes\QueryOperation.xml" />
+    <Content Include="Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RepositoryInterfaceTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DomainEntityBehavioursTemplate.cs</LastGenOutput>

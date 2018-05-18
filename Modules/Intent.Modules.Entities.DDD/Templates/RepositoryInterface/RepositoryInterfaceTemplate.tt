@@ -1,0 +1,29 @@
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.MetaModel.Domain" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic"#>
+<#
+
+
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+<#= DependencyUsings #>
+
+[assembly: DefaultIntentManaged(Mode.Fully)] 
+
+namespace <#= Namespace #>
+{
+    public interface <#= ClassName #> : IRepository<<#= EntityInterfaceName #>, <#= EntityStateName #>>
+    {
+    }
+}
