@@ -88,5 +88,18 @@ namespace Intent.Modules.Entities.Decorators
         {
             return new[] { $"I{@class.Name}Behaviours" };
         }
+
+        public override string AssociationBefore(IAssociationEnd associationEnd)
+        {
+            if (!associationEnd.IsNavigable)
+            {
+                return base.AssociationBefore(associationEnd);
+            }
+            return $@"        {associationEnd.Type(prefix: "I", suffix: "", readOnly: true)} I{associationEnd.OtherEnd().Class.Name}.{associationEnd.Name()}
+        {{
+            get {{ return {associationEnd.Name()}; }}
+        }}
+";
+        }
     }
 }

@@ -7,7 +7,6 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
     partial class DomainEntityBehavioursTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate//, IHasDecorators<AbstractDomainEntityDecorator>
     {
         public const string Identifier = "Intent.Entities.DDD.Behaviours";
-        //private IEnumerable<AbstractDomainEntityDecorator> _decorators;
 
         public DomainEntityBehavioursTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
@@ -25,68 +24,12 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}Behaviours",
+                fileName: "I${Model.Name}Behaviours",
                 fileExtension: "cs",
                 defaultLocationInProject: "Domain",
-                className: "${Model.Name}Behaviours",
+                className: "I${Model.Name}Behaviours",
                 @namespace: "${Project.ProjectName}"
                 );
         }
-
-        //public IEnumerable<AbstractDomainEntityDecorator> GetDecorators()
-        //{
-        //    return _decorators ?? (_decorators = Project.ResolveDecorators(this));
-        //}
-
-        //public string GetBaseClass(IClass @class)
-        //{
-        //    return GetDecorators().Select(x => x.GetBaseClass(@class)).FirstOrDefault(x => x != null) ?? @class.ParentClass?.Name ?? "Object";
-        //}
-
-        //public string GetInterfaces(IClass @class)
-        //{
-        //    var interfaces = GetDecorators().SelectMany(x => x.GetInterfaces(@class)).Distinct().ToList();
-        //    return interfaces.Any() ? ", " + interfaces.Aggregate((x, y) => x + ", " + y) : "";
-        //}
-
-        //public string ClassAnnotations(IClass @class)
-        //{
-        //    return GetDecorators().Aggregate(x => x.ClassAnnotations(@class));
-        //}
-
-        //public string PropertyFieldAnnotations(IAttribute attribute)
-        //{ 
-        //    return GetDecorators().Aggregate(x => x.PropertyFieldAnnotations(attribute));
-        //}
-
-        //public string PropertyAnnotations(IAttribute attribute)
-        //{
-        //    return GetDecorators().Aggregate(x => x.PropertyAnnotations(attribute));
-        //}
-
-        //public string PropertySetterBefore(IAttribute attribute)
-        //{
-        //    return GetDecorators().Aggregate(x => x.PropertySetterBefore(attribute));
-        //}
-
-        //public string PropertySetterAfter(IAttribute attribute)
-        //{
-        //    return GetDecorators().Aggregate(x => x.PropertySetterAfter(attribute));
-        //}
-
-        //public string PropertyAnnotations(IAssociationEnd associationEnd)
-        //{
-        //    return GetDecorators().Aggregate(x => x.PropertyAnnotations(associationEnd));
-        //}
-
-        //public string PropertySetterBefore(IAssociationEnd associationEnd)
-        //{
-        //    return GetDecorators().Aggregate(x => x.PropertySetterBefore(associationEnd));
-        //}
-
-        //public string PropertySetterAfter(IAssociationEnd associationEnd)
-        //{
-        //    return GetDecorators().Aggregate(x => x.PropertySetterAfter(associationEnd));
-        //}
     }
 }

@@ -24,10 +24,13 @@ namespace <#= Namespace #>
     {
 <#= Constructors(Model) #>
 <#= BeforeProperties(Model) #>
-<#  foreach (var attribute in Model.Attributes.Where(CanWriteAttribute))
+<#  foreach (var attribute in Model.Attributes)
     {
 		string attributeType = Types.Get(attribute.Type);
-#>
+#><#= PropertyBefore(attribute) #><#      
+        if (!CanWriteDefaultAttribute(attribute)) {
+            continue;
+        }#>
 <#= PropertyFieldAnnotations(attribute) #>
         private <#= attributeType #> <#= attribute.Name.ToPrivateMember() #>;
 <#= PropertyAnnotations(attribute) #>
@@ -58,10 +61,10 @@ namespace <#= Namespace #>
 	if (Model.AssociatedClasses.Any()) {#>
 
 <# 	}
-	foreach (var associatedClass in Model.AssociatedClasses.Where(CanWriteAssociation))
+	foreach (var associatedClass in Model.AssociatedClasses)
     {
 #><#= AssociationBefore(associatedClass) #><# 	
-		if (!associatedClass.IsNavigable) 
+		if (!CanWriteDefaultAssociation(associatedClass) || !associatedClass.IsNavigable) 
 		{
 			continue;
         }

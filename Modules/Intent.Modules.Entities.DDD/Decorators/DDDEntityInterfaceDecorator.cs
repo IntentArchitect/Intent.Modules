@@ -24,7 +24,33 @@ namespace Intent.Modules.Entities.Decorators
             return base.ConvertAttributeType(attribute);
         }
 
-        public override bool CanWriteOperation(IOperation operation)
+        public override string AttributeAccessors(IAttribute attribute)
+        {
+            return "get;";
+        }
+
+        public override string AssociationAccessors(IAssociationEnd associationEnd)
+        {
+            return "get;";
+        }
+
+        public override bool CanWriteDefaultAssociation(IAssociationEnd association)
+        {
+            return false;
+        }
+
+        public override string PropertyBefore(IAssociationEnd associationEnd)
+        {
+            if (!associationEnd.IsNavigable)
+            {
+                return base.PropertyBefore(associationEnd);
+            }
+            return $@"
+        {associationEnd.Type(prefix: "I", suffix: "", readOnly: true)} {associationEnd.Name()} {{ get; }}
+";
+        }
+
+        public override bool CanWriteDefaultOperation(IOperation operation)
         {
             return !operation.HasStereotype("Command Operation");
         }

@@ -51,9 +51,19 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().Aggregate(x => x.InterfaceAnnotations(@class));
         }
 
+        public string PropertyBefore(IAttribute attribute)
+        {
+            return GetDecorators().Aggregate(x => x.PropertyBefore(attribute));
+        }
+
         public string PropertyAnnotations(IAttribute attribute)
         {
             return GetDecorators().Aggregate(x => x.PropertyAnnotations(attribute));
+        }
+
+        public string PropertyBefore(IAssociationEnd associationEnd)
+        {
+            return GetDecorators().Aggregate(x => x.PropertyBefore(associationEnd));
         }
 
         public string PropertyAnnotations(IAssociationEnd associationEnd)
@@ -61,19 +71,29 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().Aggregate(x => x.PropertyAnnotations(associationEnd));
         }
 
-        public bool CanWriteAttribute(IAttribute attribute)
+        public string AttributeAccessors(IAttribute attribute)
         {
-            return GetDecorators().All(x => x.CanWriteAttribute(attribute));
+            return GetDecorators().Select(x => x.AttributeAccessors(attribute)).FirstOrDefault(x => x != null) ?? "get; set;";
         }
 
-        public bool CanWriteAssociation(IAssociationEnd association)
+        public string AssociationAccessors(IAssociationEnd associationEnd)
         {
-            return GetDecorators().All(x => x.CanWriteAssociation(association));
+            return GetDecorators().Select(x => x.AssociationAccessors(associationEnd)).FirstOrDefault(x => x != null) ?? "get; set;";
         }
 
-        public bool CanWriteOperation(IOperation operation)
+        public bool CanWriteDefaultAttribute(IAttribute attribute)
         {
-            return GetDecorators().All(x => x.CanWriteOperation(operation));
+            return GetDecorators().All(x => x.CanWriteDefaultAttribute(attribute));
+        }
+
+        public bool CanWriteDefaultAssociation(IAssociationEnd association)
+        {
+            return GetDecorators().All(x => x.CanWriteDefaultAssociation(association));
+        }
+
+        public bool CanWriteDefaultOperation(IOperation operation)
+        {
+            return GetDecorators().All(x => x.CanWriteDefaultOperation(operation));
         }
     }
 }

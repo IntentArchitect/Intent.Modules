@@ -23,27 +23,37 @@ namespace <#= Namespace #>
 <#= InterfaceAnnotations(Model) #>
     public partial interface I<#= ClassName #><#= GetInterfaces(Model) #><#= Model.ParentClass != null ? string.Format(" : I{0}", Model.ParentClass.Name) : "" #>
     {
-<#  foreach (var attribute in Model.Attributes.Where(CanWriteAttribute))
+<#  foreach (var attribute in Model.Attributes)
     {
+#><#= PropertyBefore(attribute) #><#
+        if (!CanWriteDefaultAttribute(attribute)) 
+        {
+            continue;
+        }
 		string attributeType = Types.Get(attribute.Type);
 #>
 <#= PropertyAnnotations(attribute) #>
-        <#= attributeType #> <#= attribute.Name.ToPascalCase() #> { get; }
+        <#= attributeType #> <#= attribute.Name.ToPascalCase() #> { <#= AttributeAccessors(attribute) #> }
 <#  }
 
-	foreach (var associatedClass in Model.AssociatedClasses.Where(CanWriteAssociation))
-    {#><#
-		if (!associatedClass.IsNavigable) 
+	foreach (var associatedClass in Model.AssociatedClasses)
+    {
+#><#= PropertyBefore(associatedClass) #><#
+		if (!CanWriteDefaultAssociation(associatedClass) || !associatedClass.IsNavigable) 
 		{
 			continue;
         }
 #>
 <#= PropertyAnnotations(associatedClass) #>
-        <#= associatedClass.Type() #> <#= associatedClass.Name().ToPascalCase() #> { get; }
+        <#= associatedClass.Type() #> <#= associatedClass.Name().ToPascalCase() #> { <#= AssociationAccessors(associatedClass) #> }
 <#  }#>
 
-<#  foreach (var operation in Model.Operations.Where(CanWriteOperation))
+<#  foreach (var operation in Model.Operations)
     {
+        if (!CanWriteDefaultOperation(operation)) 
+        {
+            continue;
+        }
         string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";
         string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
 #>

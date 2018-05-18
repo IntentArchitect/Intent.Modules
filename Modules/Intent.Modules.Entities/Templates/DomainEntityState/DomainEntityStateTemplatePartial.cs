@@ -78,6 +78,11 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             return GetDecorators().Aggregate(x => x.BeforeProperties(@class));
         }
 
+        public string PropertyBefore(IAttribute attribute)
+        {
+            return GetDecorators().Aggregate(x => x.PropertyBefore(attribute));
+        }
+
         public string PropertyFieldAnnotations(IAttribute attribute)
         { 
             return GetDecorators().Aggregate(x => x.PropertyFieldAnnotations(attribute));
@@ -123,14 +128,14 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             return GetDecorators().Aggregate(x => x.AssociationAfter(associationEnd));
         }
 
-        public bool CanWriteAttribute(IAttribute attribute)
+        public bool CanWriteDefaultAttribute(IAttribute attribute)
         {
-            return GetDecorators().All(x => x.CanWriteAttribute(attribute));
+            return GetDecorators().All(x => x.CanWriteDefaultAttribute(attribute));
         }
 
-        public bool CanWriteAssociation(IAssociationEnd association)
+        public bool CanWriteDefaultAssociation(IAssociationEnd association)
         {
-            return GetDecorators().All(x => x.CanWriteAssociation(association));
+            return GetDecorators().All(x => x.CanWriteDefaultAssociation(association));
         }
     }
 }

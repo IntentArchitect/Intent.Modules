@@ -21,7 +21,7 @@ using Intent.CodeGen;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge)]
-    [DefaultIntentManaged(Mode.Merge, Signature = Mode.Merge, Body = Mode.Ignore, Targets = Targets.Methods, AccessModifiers = AccessModifiers.Public)]
+    [DefaultIntentManaged(Mode.Merge, Signature = Mode.Merge, Body = Mode.Merge, Targets = Targets.Methods, AccessModifiers = AccessModifiers.Public)]
     public partial class <#= ClassName #>
     {
 <# 	foreach (var operation in Model.Operations)

@@ -21,7 +21,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
             return new RoslynDefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
+                overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}",
                 fileExtension: "cs",
                 defaultLocationInProject: "Domain",

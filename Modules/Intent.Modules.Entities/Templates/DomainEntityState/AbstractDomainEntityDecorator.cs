@@ -10,6 +10,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
         public virtual string GetBaseClass(IClass @class) { return null; }
         public virtual string Constructors(IClass @class) { return null; }
         public virtual string BeforeProperties(IClass @class) { return null; }
+        public virtual string PropertyBefore(IAttribute attribute) { return null; }
         public virtual string PropertyFieldAnnotations(IAttribute attribute) { return null; }
         public virtual string PropertyAnnotations(IAttribute attribute) { return null; }
         public virtual string PropertySetterBefore(IAttribute attribute) { return null; }
@@ -21,8 +22,8 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
         public virtual string AssociationAfter(IAssociationEnd associationEnd) { return null; }
         public virtual string ConvertAttributeType(IAttribute attribute) { return null; }
 
-        public virtual bool CanWriteAttribute(IAttribute attribute) { return true; }
-        public virtual bool CanWriteAssociation(IAssociationEnd association) { return true; }
+        public virtual bool CanWriteDefaultAttribute(IAttribute attribute) { return true; }
+        public virtual bool CanWriteDefaultAssociation(IAssociationEnd association) { return true; }
 
         public virtual IEnumerable<string> GetInterfaces(IClass @class) { return new List<string>(); }
 
