@@ -17,14 +17,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Framework.Domain.Repositories;
+using Intent.CodeGen;
+using Intent.Framework.Domain.Specification;
 <#= DependencyUsings #>
 
-[assembly: DefaultIntentManaged(Mode.Fully)] 
+[assembly: DefaultIntentManaged(Mode.Ignore)]
 
 namespace <#= Namespace #>
 {
-    public interface <#= ClassName #> : IRepository<<#= EntityInterfaceName #>, <#= EntityStateName #>>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class <#= ClassName #> : <#= BaseClass #>
     {
+        [IntentManaged(Mode.Fully)]
+        public <#= Model.ParentClass != null ? "new " : "" #>static <#= ClassName #> Where()
+        {
+            return new <#= ClassName #>();
+        }
     }
 }

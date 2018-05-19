@@ -53,7 +53,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             
             #line default
             #line hidden
-            this.Write("\r\n    public partial interface I");
+            this.Write("\r\n    public partial interface ");
             
             #line 24 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

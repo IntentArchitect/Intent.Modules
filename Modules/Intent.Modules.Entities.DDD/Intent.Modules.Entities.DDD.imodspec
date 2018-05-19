@@ -16,6 +16,9 @@
     <template id="Intent.Entities.DDD.RepositoryInterface">
       <role>Domain</role>
     </template>
+    <template id="Intent.Entities.DDD.EntitySpecification">
+      <role>Domain</role>
+    </template>
   </templates>
   <decorators>
     <decorator id="Intent.Entities.DDD.EntityDecorator"  enabled="true">

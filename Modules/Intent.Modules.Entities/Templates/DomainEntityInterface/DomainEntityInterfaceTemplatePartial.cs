@@ -30,7 +30,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
                 fileName: "I${Model.Name}",
                 fileExtension: "cs",
                 defaultLocationInProject: "Domain",
-                className: "${Model.Name}",
+                className: "I${Model.Name}",
                 @namespace: "${Project.ProjectName}"
                 );
         }

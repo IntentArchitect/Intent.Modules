@@ -6,22 +6,23 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Modules.Entities.DDD.Templates.RepositoryInterface
+namespace Intent.Modules.Entities.DDD.Templates.EntitySpecification
 {
-    partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate
+    partial class EntitySpecificationTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate
     {
-        public const string Identifier = "Intent.Entities.DDD.RepositoryInterface";
+        public const string Identifier = "Intent.Entities.DDD.EntitySpecification";
 
-        public RepositoryInterfaceTemplate(IClass model, IProject project)
+        public EntitySpecificationTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
         {
         }
 
-        public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(DomainEntityStateTemplate.Identifier, Model))?.ClassName
-                                         ?? Model.Name;
+        public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(DomainEntityStateTemplate.Identifier, Model))?.ClassName 
+            ?? Model.Name;
 
-        public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
-                                         ?? $"I{Model.Name}";
+        public string BaseClass => Model.ParentClass != null 
+            ? Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(Identifier, Model.ParentClass))?.ClassName 
+            : $"DomainSpecificationBase<{EntityStateName}, {ClassName}>";
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -32,10 +33,10 @@ namespace Intent.Modules.Entities.DDD.Templates.RepositoryInterface
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "I${Model.Name}Repository",
+                fileName: "${Model.Name}Specification",
                 fileExtension: "cs",
-                defaultLocationInProject: "Repositories",
-                className: "I${Model.Name}Repository",
+                defaultLocationInProject: "Specifications",
+                className: "${Model.Name}Specification",
                 @namespace: "${Project.ProjectName}"
                 );
         }
