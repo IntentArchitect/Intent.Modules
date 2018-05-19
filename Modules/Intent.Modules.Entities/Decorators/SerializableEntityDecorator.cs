@@ -2,12 +2,13 @@
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntity;
 using System.Collections.Generic;
+using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Decorators
 {
     public class SerializableEntityDecorator : AbstractDomainEntityDecorator
     {
-        public const string Id = "Intent.Serializable.Entity.Decorator";
+        public const string Identifier = "Intent.Serializable.Entity.Decorator";
 
         public override IEnumerable<string> DeclareUsings()
         {

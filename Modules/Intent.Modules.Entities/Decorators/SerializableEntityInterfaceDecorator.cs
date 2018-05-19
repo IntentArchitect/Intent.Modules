@@ -7,7 +7,7 @@ namespace Intent.Modules.Entities.Decorators
 {
     public class SerializableEntityInterfaceDecorator : AbstractDomainEntityInterfaceDecorator
     {
-        public const string Id = "Intent.Serializable.Entity.Interfaces.Decorator";
+        public const string Identifier = "Intent.Serializable.Entity.Interfaces.Decorator";
 
         public override IEnumerable<string> GetInterfaces(IClass @class)
         {

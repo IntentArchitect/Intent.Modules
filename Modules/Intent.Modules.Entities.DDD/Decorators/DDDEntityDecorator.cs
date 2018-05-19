@@ -4,12 +4,13 @@ using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.SoftwareFactory.Configuration;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Decorators
 {
     public class DDDEntityDecorator : AbstractDomainEntityDecorator, ISupportsConfiguration
     {
-        public const string Id = "Intent.Entities.DDD.EntityDecorator";
+        public const string Identifier = "Intent.Entities.DDD.EntityDecorator";
 
         private const string AggregateRootBaseClassSetting = "Aggregate Root Base Class";
         private const string EntityBaseClassSetting = "Entity Base Class";
@@ -89,16 +90,14 @@ namespace Intent.Modules.Entities.Decorators
             return new[] { $"I{@class.Name}Behaviours" };
         }
 
-        public override string AssociationBefore(IAssociationEnd associationEnd)
+        public override string AssociationAfter(IAssociationEnd associationEnd)
         {
             if (!associationEnd.IsNavigable)
             {
                 return base.AssociationBefore(associationEnd);
             }
-            return $@"        {associationEnd.Type(prefix: "I", suffix: "", readOnly: true)} I{associationEnd.OtherEnd().Class.Name}.{associationEnd.Name()}
-        {{
-            get {{ return {associationEnd.Name()}; }}
-        }}
+            return $@"        
+        {associationEnd.Type(prefix: "I", suffix: "", readOnly: true)} I{associationEnd.OtherEnd().Class.Name}.{associationEnd.Name()} => {associationEnd.Name()};
 ";
         }
     }

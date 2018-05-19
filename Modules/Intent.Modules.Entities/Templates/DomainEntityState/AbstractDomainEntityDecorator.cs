@@ -1,8 +1,8 @@
-﻿using Intent.MetaModel.Domain;
+﻿using System.Collections.Generic;
+using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory.Templates;
-using System.Collections.Generic;
 
-namespace Intent.Modules.Entities.Templates.DomainEntity
+namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
     public abstract class AbstractDomainEntityDecorator : DecoratorBase, ITemplateDecorator, IDeclareUsings, IAttibuteTypeConverter
     {

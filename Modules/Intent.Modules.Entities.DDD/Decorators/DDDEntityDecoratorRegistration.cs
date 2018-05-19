@@ -1,20 +1,15 @@
 ﻿using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.SoftwareFactory.Registrations;
 using System.ComponentModel;
+using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    [Description("Intent.Entities.DDD.EntityDecorator")]
+    [Description(DDDEntityDecorator.Identifier)]
     public class DDDEntityDecoratorRegistration : DecoratorRegistration<AbstractDomainEntityDecorator>
     {
 
-        public override string DecoratorId
-        {
-            get
-            {
-                return DDDEntityDecorator.Id;
-            }
-        }
+        public override string DecoratorId => DDDEntityDecorator.Identifier;
 
         public override object CreateDecoratorInstance()
         {

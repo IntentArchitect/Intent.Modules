@@ -44,7 +44,7 @@ namespace Intent.Modules.Entities.DDD.Templates.RepositoryInterface
         {
             return new[]
             {
-                new NugetPackageInfo("Intent.Framework.Domain", "0.1.11-beta", null),
+                new NugetPackageInfo("Intent.Framework.Domain", "1.0.0-pre2", null),
             };
         }
     }

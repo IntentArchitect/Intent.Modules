@@ -29,11 +29,6 @@ namespace Intent.Modules.Entities.Decorators
             return "get;";
         }
 
-        public override string AssociationAccessors(IAssociationEnd associationEnd)
-        {
-            return "get;";
-        }
-
         public override bool CanWriteDefaultAssociation(IAssociationEnd association)
         {
             return false;

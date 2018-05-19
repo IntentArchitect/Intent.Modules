@@ -1,30 +1,28 @@
-﻿using Intent.MetaModel.Domain;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Intent.Modules.Entities.Templates.DomainEntity;
 
-namespace Intent.Modules.Entities.Templates.DomainPartialEntity
+namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
-    [Description("Intent.Entities - Entity Template")]
-    public class Registration : ModelTemplateRegistrationBase<IClass>
+    [Description(DomainEntityStateTemplate.Identifier)]
+    public class DomainEntityStateTemplateRegistrations : ModelTemplateRegistrationBase<IClass>
     {
         private readonly IMetaDataManager _metaDataManager;
 
-        public Registration(IMetaDataManager metaDataManager)
+        public DomainEntityStateTemplateRegistrations(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
 
-        public override string TemplateId => DomainEntityTemplate.Identifier;
+        public override string TemplateId => DomainEntityStateTemplate.Identifier;
 
         public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
-            return new DomainEntityTemplate(model, project);
+            return new DomainEntityStateTemplate(model, project);
         }
 
         public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication application)

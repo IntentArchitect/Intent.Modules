@@ -29,7 +29,7 @@ namespace <#= Namespace #>
     public class <#= ClassName #> : <#= BaseClass #>
     {
         [IntentManaged(Mode.Fully)]
-        public <#= Model.ParentClass != null ? "new " : "" #>static <#= ClassName #> Where()
+        public static <#= ClassName #> Where()
         {
             return new <#= ClassName #>();
         }

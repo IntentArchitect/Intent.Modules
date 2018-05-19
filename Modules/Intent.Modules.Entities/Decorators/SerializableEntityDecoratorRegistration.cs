@@ -1,20 +1,15 @@
 ﻿using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.SoftwareFactory.Registrations;
 using System.ComponentModel;
+using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    [Description("Serializable Entity Decorator - Domain decorator")]
+    [Description(SerializableEntityDecorator.Identifier)]
     public class SerializableEntityDecoratorRegistration : DecoratorRegistration<AbstractDomainEntityDecorator>
     {
 
-        public override string DecoratorId
-        {
-            get
-            {
-                return SerializableEntityDecorator.Id;
-            }
-        }
+        public override string DecoratorId => SerializableEntityDecorator.Identifier;
 
         public override object CreateDecoratorInstance()
         {

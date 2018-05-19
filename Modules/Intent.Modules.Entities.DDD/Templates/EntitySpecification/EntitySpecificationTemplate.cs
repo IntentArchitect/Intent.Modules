@@ -70,14 +70,7 @@ namespace Intent.Modules.Entities.DDD.Templates.EntitySpecification
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public ");
-            
-            #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\EntitySpecification\EntitySpecificationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentClass != null ? "new " : ""));
-            
-            #line default
-            #line hidden
-            this.Write("static ");
+            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public static ");
             
             #line 32 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\EntitySpecification\EntitySpecificationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

@@ -20,9 +20,7 @@ namespace Intent.Modules.Entities.DDD.Templates.EntitySpecification
         public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(DomainEntityStateTemplate.Identifier, Model))?.ClassName 
             ?? Model.Name;
 
-        public string BaseClass => Model.ParentClass != null 
-            ? Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(Identifier, Model.ParentClass))?.ClassName 
-            : $"DomainSpecificationBase<{EntityStateName}, {ClassName}>";
+        public string BaseClass => $"DomainSpecificationBase<{EntityStateName}, {ClassName}>";
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {

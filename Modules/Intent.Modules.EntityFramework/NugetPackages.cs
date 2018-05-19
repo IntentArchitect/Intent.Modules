@@ -22,9 +22,9 @@ namespace Intent.Modules.EntityFramework
 
         public static NugetPackageInfo IntentEsbServer = new NugetPackageInfo("Intent.Esb.Server", "0.1.14-beta","net45");
 
-        public static NugetPackageInfo IntentFrameworkCore = new NugetPackageInfo("Intent.Framework.Core", "0.1.4-beta","net45");
+        public static NugetPackageInfo IntentFrameworkCore = new NugetPackageInfo("Intent.Framework.Core", "1.0.0-pre3", "net45");
 
-        public static NugetPackageInfo IntentFrameworkDomain = new NugetPackageInfo("Intent.Framework.Domain","0.1.7-beta", "net45");
+        public static NugetPackageInfo IntentFrameworkDomain = new NugetPackageInfo("Intent.Framework.Core", "1.0.0-pre2", "net45");
 
         public static NugetPackageInfo IntentFrameworkEntityFramework = new NugetPackageInfo("Intent.Framework.EntityFramework", "0.1.8-beta", "net45");
         

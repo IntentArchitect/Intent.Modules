@@ -4,6 +4,7 @@ using Intent.Modules.Entities.Interop.EntityFramework.Templates.IdentityGenerato
 using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.SoftwareFactory.Configuration;
 using Intent.Modules.Entities.Templates;
+using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
@@ -14,6 +15,11 @@ namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 
         public override string BeforeProperties(IClass @class)
         {
+            if (@class.ParentClass != null)
+            {
+                return base.BeforeProperties(@class);
+            }
+
             return @"
         private Guid? _id = null;
 

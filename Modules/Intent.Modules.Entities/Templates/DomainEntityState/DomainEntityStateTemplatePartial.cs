@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.Modules.Entities.Templates.DomainEntity;
-using Intent.Modules.Entities.Templates.DomainPartialEntity;
+using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
@@ -19,6 +19,9 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             : base(Identifier, project, model)
         {
         }
+
+        public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
+                                             ?? $"I{Model.Name}";
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {

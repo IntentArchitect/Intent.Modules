@@ -4,17 +4,11 @@ using System.ComponentModel;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    [Description("Serializable Entity Interface Decorator - Domain decorator")]
+    [Description(SerializableEntityInterfaceDecorator.Identifier)]
     public class SerializableEntityInterfaceDecoratorRegistration : DecoratorRegistration<AbstractDomainEntityInterfaceDecorator>
     {
 
-        public override string DecoratorId
-        {
-            get
-            {
-                return SerializableEntityInterfaceDecorator.Id;
-            }
-        }
+        public override string DecoratorId => SerializableEntityInterfaceDecorator.Identifier;
 
         public override object CreateDecoratorInstance()
         {

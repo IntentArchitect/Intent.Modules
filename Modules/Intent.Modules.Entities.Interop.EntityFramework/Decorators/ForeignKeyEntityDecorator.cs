@@ -2,6 +2,7 @@
 using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.SoftwareFactory.Configuration;
 using Intent.Modules.Entities.Templates;
+using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 {
