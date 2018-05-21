@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
@@ -9,7 +10,7 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
-    partial class DomainEntityStateTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<AbstractDomainEntityDecorator>
+    partial class DomainEntityStateTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<AbstractDomainEntityDecorator>, IPostTemplateCreation
     {
         public const string Identifier = "Intent.Entities.EntityState";
 
@@ -22,6 +23,11 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 
         public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
                                              ?? $"I{Model.Name}";
+
+        public void Created()
+        {
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, Identifier, nameof(ICollection)));
+        }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {

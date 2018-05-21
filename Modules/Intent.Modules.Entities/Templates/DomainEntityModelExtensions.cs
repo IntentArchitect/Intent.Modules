@@ -29,15 +29,10 @@ namespace Intent.Modules.Entities.Templates
             return defaultValue;
         }
 
-        public static string TypeName(this IAttribute attribute)
-        {
-            return attribute.Type.ConvertType();
-        }
-
-        public static string Type(this IAttribute attribute, IEnumerable<IAttibuteTypeConverter> decorators)
-        {
-            return decorators.Select(x => x.ConvertAttributeType(attribute)).FirstOrDefault(x => x != null) ?? attribute.Type.ConvertType();
-        }
+        //public static string TypeName(this IAttribute attribute)
+        //{
+        //    return attribute.Type.ConvertType();
+        //}
 
         public static string Name(this IAssociationEnd associationEnd)
         {

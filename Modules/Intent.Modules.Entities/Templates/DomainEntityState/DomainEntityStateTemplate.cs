@@ -283,7 +283,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             this.Write("\t\tprivate ");
             
             #line 71 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities\Templates\DomainEntityState\DomainEntityStateTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(associatedClass.Type()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(Types.Get(associatedClass))));
             
             #line default
             #line hidden
@@ -304,7 +304,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             this.Write("\r\n        public virtual ");
             
             #line 73 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities\Templates\DomainEntityState\DomainEntityStateTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(associatedClass.Type()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(Types.Get(associatedClass))));
             
             #line default
             #line hidden

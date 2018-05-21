@@ -4,6 +4,7 @@ using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.SoftwareFactory.Configuration;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Decorators
@@ -40,11 +41,11 @@ namespace Intent.Modules.Entities.Decorators
 
         public override string ConvertAttributeType(IAttribute attribute)
         {
-            var @namespace = attribute.Type.Stereotypes.GetProperty<string>("CommonType", "Namespace");
-            if (@namespace != null)
-            {
-                return @namespace + "." + attribute.TypeName();
-            }
+            //var @namespace = attribute.Type.Stereotypes.GetProperty<string>("CommonType", "Namespace");
+            //if (@namespace != null)
+            //{
+            //    return @namespace + "." + attribute.TypeName();
+            //}
             var domainType = attribute.Stereotypes.GetProperty<string>("DomainType", "Type");
             if (domainType != null)
             {
@@ -89,6 +90,32 @@ namespace Intent.Modules.Entities.Decorators
         {
             return new[] { $"I{@class.Name}Behaviours" };
         }
+
+//        public override string Constructors(IClass @class)
+//        {
+//            if (!@class.Attributes.Any() && !@class.AssociatedClasses.Any())
+//            {
+//                return base.Constructors(@class);
+//            }
+//            var sb = new StringBuilder();
+//            sb.AppendLine($"         public {@class.Name}(");
+//            foreach (var attribute in @class.Attributes)
+//            {
+//                sb.Append(attribute.TypeName())
+//            }
+//            return $@"         public {@class.Name}(
+//            string line1, 
+//            string line2, 
+//            string line3, 
+//            Suburb suburb)
+//        {{
+//            _line1 = line1;
+//            _line2 = line2;
+//            _line3 = line3;
+//            _suburb = suburb;
+//        }}
+//";
+//        }
 
         public override string AssociationAfter(IAssociationEnd associationEnd)
         {

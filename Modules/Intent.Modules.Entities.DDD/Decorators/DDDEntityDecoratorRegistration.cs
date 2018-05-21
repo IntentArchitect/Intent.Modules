@@ -8,7 +8,6 @@ namespace Intent.Modules.Entities.Decorators
     [Description(DDDEntityDecorator.Identifier)]
     public class DDDEntityDecoratorRegistration : DecoratorRegistration<AbstractDomainEntityDecorator>
     {
-
         public override string DecoratorId => DDDEntityDecorator.Identifier;
 
         public override object CreateDecoratorInstance()

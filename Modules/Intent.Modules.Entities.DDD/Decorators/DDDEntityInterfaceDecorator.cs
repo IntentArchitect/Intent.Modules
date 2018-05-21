@@ -11,11 +11,11 @@ namespace Intent.Modules.Entities.Decorators
 
         public override string ConvertAttributeType(IAttribute attribute)
         {
-            var @namespace = attribute.Type.Stereotypes.GetProperty<string>("CommonType", "Namespace");
-            if (@namespace != null)
-            {
-                return @namespace + "." + attribute.TypeName();
-            }
+            //var @namespace = attribute.Type.Stereotypes.GetProperty<string>("CommonType", "Namespace");
+            //if (@namespace != null)
+            //{
+            //    return @namespace + "." + attribute.TypeName();
+            //}
             var domainType = attribute.Stereotypes.GetProperty<string>("DomainType", "Type");
             if (domainType != null)
             {

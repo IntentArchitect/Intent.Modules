@@ -68,9 +68,9 @@ namespace <#= Namespace #>
 		{
 			continue;
         }
-#>		private <#= associatedClass.Type() #> <#= associatedClass.Name().ToPrivateMember() #>;
+#>		private <#= NormalizeNamespace(Types.Get(associatedClass)) #> <#= associatedClass.Name().ToPrivateMember() #>;
 <#= PropertyAnnotations(associatedClass) #>
-        public virtual <#= associatedClass.Type() #> <#= associatedClass.Name().ToPascalCase() #>
+        public virtual <#= NormalizeNamespace(Types.Get(associatedClass)) #> <#= associatedClass.Name().ToPascalCase() #>
         {
             get
             {

@@ -1,30 +1,59 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using Intent.MetaModel.Common;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
+using Intent.SoftwareFactory.Templates;
+using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 
-namespace Intent.SoftwareFactory.Templates
+namespace Intent.Modules.Common.Templates
 {
     public class ClassTypeSource : IClassTypeSource
     {
-        private Func<MetaModel.Common.ITypeReference, string> _execute;
+        private readonly Func<MetaModel.Common.ITypeReference, string> _execute;
 
         internal ClassTypeSource(Func<MetaModel.Common.ITypeReference, string> execute)
         {
             _execute = execute;
         }
 
-        public static IClassTypeSource InProject(IProject project, string templateId)
+        public static IClassTypeSource InProject(IProject project, string templateId, string collectionType = nameof(IEnumerable))
         {
-            return new ClassTypeSource((typeInfo) => project.FindTemplateInstance<IHasClassDetails>(
-                TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id)
-                )?.FullTypeName());
+            return new ClassTypeSource((typeInfo) =>
+            {
+                if (typeInfo.IsCollection)
+                {
+                    return $"{collectionType}<{FullTypeNameInProject(project, templateId, typeInfo)}>";
+                }
+                return FullTypeNameInProject(project, templateId, typeInfo);
+            });
         }
 
-        public static IClassTypeSource InApplication(IApplication application, string templateId)
+        private static string FullTypeNameInProject(IProject project, string templateId, ITypeReference typeInfo)
         {
-            return new ClassTypeSource((typeInfo) => application.FindTemplateInstance<IHasClassDetails>(
-                TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id)
-                )?.FullTypeName());
+            return project.FindTemplateInstance<IHasClassDetails>(
+                    TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id))
+                ?.FullTypeName();
+        }
+
+        public static IClassTypeSource InApplication(IApplication application, string templateId, string collectionType = nameof(IEnumerable))
+        {
+            return new ClassTypeSource((typeInfo) =>
+            {
+                if (typeInfo.IsCollection)
+                {
+                    return $"{collectionType}<{FullTypeNameInApplication(application, templateId, typeInfo)}>";
+                }
+                return FullTypeNameInApplication(application, templateId, typeInfo);
+            });
+        }
+
+        private static string FullTypeNameInApplication(IApplication application, string templateId, ITypeReference typeInfo)
+        {
+            return application.FindTemplateInstance<IHasClassDetails>(
+                    TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id))
+                ?.FullTypeName();
         }
 
         public string GetClassType(MetaModel.Common.ITypeReference typeInfo)

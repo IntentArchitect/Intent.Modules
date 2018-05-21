@@ -12,7 +12,7 @@ namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 
         public override string AssociationBefore(IAssociationEnd associationEnd)
         {
-            if (associationEnd.Multiplicity == Multiplicity.One)
+            if (associationEnd.Multiplicity == Multiplicity.One && associationEnd.OtherEnd().Multiplicity == Multiplicity.Many)
             {
                 return $@"       public virtual Guid{ (associationEnd.IsNullable ? "?" : "") } { associationEnd.Name() }Id {{ get; set; }}
 ";
