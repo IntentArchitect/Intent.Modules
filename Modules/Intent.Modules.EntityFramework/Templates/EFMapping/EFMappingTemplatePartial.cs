@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
-using Intent.Modules.EF;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;

@@ -21,6 +21,9 @@
     <template id="Intent.EntityFramework.DbMigrationsConfiguration" enabled="false">
       <role>Infrastructure.Data.EF.Migrations</role>
     </template>
+    <template id="Intent.EntityFramework.DbMigrationsReadMe" enabled="false">
+      <role>Infrastructure.Data.EF.Migrations</role>
+    </template>
   </templates>
   <decorators />
   <dependencies>

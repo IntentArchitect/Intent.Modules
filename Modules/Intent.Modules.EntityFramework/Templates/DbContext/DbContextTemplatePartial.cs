@@ -2,7 +2,6 @@
 using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.Modules.Constants;
-using Intent.Modules.EF;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;

@@ -72,6 +72,10 @@
       <Project>{6f1e2aab-73bc-47be-978e-c8ca8e93379a}</Project>
       <Name>Intent.Modules.EntityFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.RichDomain.EntityFramework\Intent.Modules.RichDomain.EntityFramework.csproj">
+      <Project>{1AC61159-586F-4A8E-9857-26FD34C8047F}</Project>
+      <Name>Intent.Modules.RichDomain.EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
       <Project>{de177367-d476-4299-b9e6-71934b434fc5}</Project>
       <Name>Intent.Modules.Unity</Name>

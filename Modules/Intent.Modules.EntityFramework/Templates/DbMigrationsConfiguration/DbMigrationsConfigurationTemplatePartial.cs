@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Intent.Modules.EF;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;

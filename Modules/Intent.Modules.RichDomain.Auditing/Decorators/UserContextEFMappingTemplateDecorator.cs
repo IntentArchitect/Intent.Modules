@@ -1,4 +1,4 @@
-﻿using Intent.Modules.EntityFramework.Templates.EFMapping;
+﻿using Intent.Modules.RichDomain.EntityFramework.Templates.EFMapping;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 
 namespace Intent.Modules.RichDomain.Auditing.Decorators

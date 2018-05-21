@@ -1,8 +1,8 @@
-using Intent.Modules.EntityFramework.Templates.DeleteVisitor;
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using Intent.Modules.RichDomain.EntityFramework.Templates.DeleteVisitor;
 
 namespace Intent.Modules.EntityFramework.Interop.Unity.Decorators
 {

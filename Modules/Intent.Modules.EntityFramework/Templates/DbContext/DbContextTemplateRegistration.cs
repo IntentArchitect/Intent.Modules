@@ -1,32 +1,25 @@
-﻿using Intent.MetaModel.Domain;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 using Intent.SoftwareFactory.Templates;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Intent.Modules.EntityFramework.Templates.DbContext;
 
-namespace Intent.Modules.EF.Templates.DbContext
+namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
-    [Description("Intent EF  DB Context")]
-    public class Registrations : ListModelTemplateRegistrationBase<IClass>
+    [Description(DbContextTemplate.Identifier)]
+    public class DbContextTemplateRegistration : ListModelTemplateRegistrationBase<IClass>
     {
-        private IMetaDataManager _metaDataManager;
+        private readonly IMetaDataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public DbContextTemplateRegistration(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
 
-        public override string TemplateId
-        {
-            get
-            {
-                return DbContextTemplate.Identifier;
-            }
-        }
+        public override string TemplateId => DbContextTemplate.Identifier;
 
         public override ITemplate CreateTemplateInstance(IProject project, IList<IClass> models)
         {
