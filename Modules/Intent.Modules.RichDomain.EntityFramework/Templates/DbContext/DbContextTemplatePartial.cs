@@ -1,26 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel.Domain;
 using Intent.Modules.Constants;
-using Intent.Modules.EF;
+using Intent.Modules.EntityFramework;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
+using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Modules.EntityFramework.Templates.DbContext
+namespace Intent.Modules.RichDomain.EntityFramework.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing
+    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<Class>>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing
     {
-        public const string Identifier = "Intent.EntityFramework.DbContext";
+        public const string Identifier = "Intent.RichDomain.EntityFramework.DbContext";
 
         private readonly IApplicationEventDispatcher _eventDispatcher;
 
-        public DbContextTemplate(IEnumerable<IClass> models, IProject project, IApplicationEventDispatcher eventDispatcher)
+        public DbContextTemplate(IEnumerable<Class> models, IProject project, IApplicationEventDispatcher eventDispatcher)
             : base (Identifier, project, models)
         {
             _eventDispatcher = eventDispatcher;
         }
+
+        public string BoundedContextName => Project.ApplicationName();
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -31,11 +33,9 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Project.Application.ApplicationName}DbContext",
+                fileName: BoundedContextName + "DbContext",
                 fileExtension: "cs",
-                defaultLocationInProject: "Generated\\DbContext",
-                className: "${Project.Application.ApplicationName}DbContext",
-                @namespace: "${Project.ProjectName}"
+                defaultLocationInProject: "Generated\\DbContext"
                 );
         }
 
@@ -43,7 +43,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
         {
             return new[]
             {
-                NugetPackages.EntityFramework,
+                NugetPackages.IntentFrameworkEntityFramework,
             }
             .Union(base.GetNugetDependencies())
             .ToArray();
@@ -53,7 +53,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
         {
             _eventDispatcher.Publish(ApplicationEvents.Config_ConnectionString, new Dictionary<string, string>()
             {
-                { "Name", $"{Project.Application.ApplicationName}DB" },
+                { "Name", $"{BoundedContextName}DB" },
                 { "ConnectionString", $"Server=.;Initial Catalog={ Project.Application.SolutionName };Integrated Security=true;MultipleActiveResultSets=True" },
                 { "ProviderName", "System.Data.SqlClient" },
             });

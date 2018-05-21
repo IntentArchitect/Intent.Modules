@@ -9,8 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
-    using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.Modules.RichDomain;
+    using Intent.MetaModel.Domain;
     using Intent.SoftwareFactory.Templates;
     using System;
     using System.IO;
@@ -25,7 +24,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
     
     #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<Class>>
+    public partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>
     {
 #line hidden
         /// <summary>
@@ -34,71 +33,67 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
         public override string TransformText()
         {
             this.Write(" \r\n\r\nusing System.Data.Entity;\r\nusing System.Data.Entity.ModelConfiguration.Conve" +
-                    "ntions;\r\nusing Intent.Framework.EntityFramework;\r\nusing Intent.CodeGen;\r\n\r\n[asse" +
-                    "mbly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+                    "ntions;\r\nusing Intent.CodeGen;\r\n");
             
-            #line 23 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 18 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+            
+            #line 22 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 25 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
+            #line 24 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write("DbContext : DbContextEx\r\n    {\r\n        public ");
+            this.Write(" : DbContext\r\n\t{\r\n        public ");
+            
+            #line 26 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write("()\r\n            : base(\"");
             
             #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
-            
-            #line default
-            #line hidden
-            this.Write("DbContext()\r\n            : base(\"");
-            
-            #line 28 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.ApplicationName));
             
             #line default
             #line hidden
             this.Write("DB\")\r\n        {\r\n\r\n        } \r\n\r\n        protected override void OnModelCreating(" +
                     "DbModelBuilder modelBuilder)\r\n        {\r\n            base.OnModelCreating(modelB" +
-                    "uilder);\r\n            \r\n            modelBuilder.HasDefaultSchema(\"");
+                    "uilder);\r\n\r\n\t\t\tConfigureConventions(modelBuilder);\r\n            \r\n");
             
-            #line 37 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
-            
-            #line default
-            #line hidden
-            this.Write("\");\r\n            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention" +
-                    ">();\r\n");
-            
-            #line 39 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 38 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
  foreach (var model in Model) {
-	   if (!model.IsEntity()) {
-			continue;
-       }
-
             
             #line default
             #line hidden
             this.Write("            modelBuilder.Configurations.Add(new ");
             
-            #line 44 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 39 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("Mapping());\r\n");
             
-            #line 45 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            #line 40 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
  }
             
             #line default
             #line hidden
-            this.Write("        }\r\n    }\r\n}");
+            this.Write("        }\r\n\r\n\t\tprivate void ConfigureConventions(DbModelBuilder modelBuilder)\r\n\t\t" +
+                    "{\r\n            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>" +
+                    "();\r\n\t\t}\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

@@ -32,7 +32,7 @@
     <decorator id="Intent.Serializable.Entity.Interfaces.Decorator" enabled="false" />
   </decorators>
   <interoperability>
-    <detect id="Intent.EF">
+    <detect id="Intent.EntityFramework">
       <install>
         <package id="Intent.Entities.Interop.EntityFramework" version="1.4.0"/>
       </install>
