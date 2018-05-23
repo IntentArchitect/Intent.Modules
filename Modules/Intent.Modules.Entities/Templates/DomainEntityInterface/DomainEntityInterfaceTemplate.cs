@@ -163,7 +163,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             this.Write("\r\n        ");
             
             #line 47 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Types.Get(associatedClass)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(Types.Get(associatedClass))));
             
             #line default
             #line hidden

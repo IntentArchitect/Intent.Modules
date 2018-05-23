@@ -48,6 +48,15 @@ namespace Intent.SoftwareFactory.Templates
         /// <returns></returns>
         public virtual string NormalizeNamespace(string qualifiedClassName)
         {
+            if (qualifiedClassName.Contains("<") && qualifiedClassName.Contains(">"))
+            {
+                var genericTypes = qualifiedClassName.Substring(qualifiedClassName.IndexOf("<", StringComparison.Ordinal) + 1, qualifiedClassName.Length - qualifiedClassName.IndexOf("<", StringComparison.Ordinal) - 2);
+                var normalizedGenericTypes = genericTypes
+                    .Split(',')
+                    .Select(NormalizeNamespace)
+                    .Aggregate((x, y) => x + ", " + y);
+                qualifiedClassName = $"{qualifiedClassName.Substring(0, qualifiedClassName.IndexOf("<", StringComparison.Ordinal))}<{normalizedGenericTypes}>";
+            }
             var foreignParts = qualifiedClassName.Split('.').ToList();
 
             if (foreignParts.Count == 1)
