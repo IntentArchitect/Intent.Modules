@@ -6,7 +6,7 @@ using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 {
-    public class ForeignKeyEntityDecorator : AbstractDomainEntityDecorator, ISupportsConfiguration
+    public class ForeignKeyEntityStateDecorator : DomainEntityStateDecoratorBase, ISupportsConfiguration
     {
         public const string Identifier = "Intent.Entities.Interop.EntityFramework.ForeignKeyEntityDecorator";
 

@@ -6,20 +6,20 @@
   <description></description>
   <authors>Intent Software</authors>
   <templates>
-    <template id="Intent.Entities.Entity">
+    <template id="Intent.Entities.DomainEntity">
       <role>Domain</role>
       <config>
         <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
       </config>
     </template>
-    <template id="Intent.Entities.EntityState">
+    <template id="Intent.Entities.DomainEntityState">
       <role>Domain</role>
       <config>
         <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
         <add key="Depends On" description="Make this output a code behind file for" default="${Model.Name}.cs" />
       </config>
     </template>
-    <template id="Intent.Entities.Base.Interface">
+    <template id="Intent.Entities.DomainEntityInterface">
       <role>Domain</role>
       <config>
         <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />

@@ -5,14 +5,14 @@ using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 {
-    [Description(ForeignKeyEntityDecorator.Identifier)]
-    public class ForeignKeyEntityDecoratorRegistration : DecoratorRegistration<AbstractDomainEntityDecorator>
+    [Description(ForeignKeyEntityStateDecorator.Identifier)]
+    public class ForeignKeyEntityDecoratorRegistration : DecoratorRegistration<DomainEntityStateDecoratorBase>
     {
-        public override string DecoratorId => ForeignKeyEntityDecorator.Identifier;
+        public override string DecoratorId => ForeignKeyEntityStateDecorator.Identifier;
 
         public override object CreateDecoratorInstance()
         {
-            return new ForeignKeyEntityDecorator();
+            return new ForeignKeyEntityStateDecorator();
         }
     }
 }

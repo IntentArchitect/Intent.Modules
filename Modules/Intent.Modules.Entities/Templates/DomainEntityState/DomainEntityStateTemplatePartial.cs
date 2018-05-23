@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.SoftwareFactory.Engine;
@@ -10,11 +11,11 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
-    partial class DomainEntityStateTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<AbstractDomainEntityDecorator>, IPostTemplateCreation
+    partial class DomainEntityStateTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityStateDecoratorBase>, IPostTemplateCreation
     {
-        public const string Identifier = "Intent.Entities.EntityState";
+        public const string Identifier = "Intent.Entities.DomainEntityState";
 
-        private IEnumerable<AbstractDomainEntityDecorator> _decorators;
+        private IEnumerable<DomainEntityStateDecoratorBase> _decorators;
 
         public DomainEntityStateTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
@@ -49,9 +50,17 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
                 );
         }
 
-        public IEnumerable<AbstractDomainEntityDecorator> GetDecorators()
+        public IEnumerable<DomainEntityStateDecoratorBase> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            if (_decorators == null)
+            {
+                _decorators = Project.ResolveDecorators(this);
+                foreach (var decorator in _decorators)
+                {
+                    decorator.Template = this;
+                }
+            }
+            return _decorators;
         }
 
         public string GetBaseClass(IClass @class)

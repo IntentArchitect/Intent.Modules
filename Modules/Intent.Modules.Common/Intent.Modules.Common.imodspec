@@ -2,8 +2,8 @@
 <package>
   <id>Intent.Common</id>
   <version>1.4.1</version>
-  <summary>Base Implimentation and Helper classes.</summary>
-  <description>Base Implimentation and Helper classes.</description>
+  <summary>Base Implementation and Helper classes for modules.</summary>
+  <description>Base Implementation and Helper classes for modules.</description>
   <authors>Intent Software</authors>
   <templates />
   <dependencies />

@@ -5,14 +5,14 @@ using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 {
-    [Description(BidirectionalOneToManyEntityDecorator.Identifier)]
-    public class BidirectionalOneToManyEntityDecoratorRegistration : DecoratorRegistration<AbstractDomainEntityDecorator>
+    [Description(BidirectionalOneToManyEntityStateDecorator.Identifier)]
+    public class BidirectionalOneToManyEntityDecoratorRegistration : DecoratorRegistration<DomainEntityStateDecoratorBase>
     {
-        public override string DecoratorId => BidirectionalOneToManyEntityDecorator.Identifier;
+        public override string DecoratorId => BidirectionalOneToManyEntityStateDecorator.Identifier;
 
         public override object CreateDecoratorInstance()
         {
-            return new BidirectionalOneToManyEntityDecorator();
+            return new BidirectionalOneToManyEntityStateDecorator();
         }
     }
 }

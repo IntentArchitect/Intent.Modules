@@ -6,7 +6,7 @@ using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 {
-    public class BidirectionalOneToManyEntityDecorator : AbstractDomainEntityDecorator, ISupportsConfiguration
+    public class BidirectionalOneToManyEntityStateDecorator : DomainEntityStateDecoratorBase, ISupportsConfiguration
     {
         public const string Identifier = "Intent.Entities.Interop.EntityFramework.BidirectionalOneToManyEntityDecorator";
 

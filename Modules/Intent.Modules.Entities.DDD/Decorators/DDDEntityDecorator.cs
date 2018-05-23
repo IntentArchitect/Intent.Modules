@@ -1,131 +1,36 @@
-﻿using Intent.MetaModel.Domain;
-using Intent.Modules.Entities.Templates;
-using Intent.Modules.Entities.Templates.DomainEntity;
-using Intent.SoftwareFactory.Configuration;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
-using Intent.Modules.Entities.Templates.DomainEntityState;
+using Intent.MetaModel.Domain;
+using Intent.Modules.Entities.Templates.DomainEntity;
+using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Modules.Entities.Decorators
+namespace Intent.Modules.Entities.DDD.Decorators
 {
-    public class DDDEntityDecorator : AbstractDomainEntityDecorator, ISupportsConfiguration
+    public class DDDEntityDecorator : DomainEntityDecoratorBase
     {
         public const string Identifier = "Intent.Entities.DDD.EntityDecorator";
-
-        private const string AggregateRootBaseClassSetting = "Aggregate Root Base Class";
-        private const string EntityBaseClassSetting = "Entity Base Class";
-        private const string ValueObjectBaseClassSetting = "Value Object Base Class";
-        private const string DefaultBaseClassSetting = "Default Base Class";
-
-        private string _aggregateRootBaseClass = null;
-        private string _entityBaseClass = null;
-        private string _valueObjectBaseClass = null;
-
-        public override void Configure(IDictionary<string, string> settings)
+        
+        public override string Constructors(IClass @class)
         {
-            base.Configure(settings);
-            if (settings.ContainsKey(AggregateRootBaseClassSetting) && !string.IsNullOrWhiteSpace(settings[AggregateRootBaseClassSetting]))
+            if (!@class.Attributes.Any() && !@class.AssociatedClasses.Any())
             {
-                _aggregateRootBaseClass = settings[AggregateRootBaseClassSetting];
+                return base.Constructors(@class);
             }
-            if (settings.ContainsKey(EntityBaseClassSetting) && !string.IsNullOrWhiteSpace(settings[EntityBaseClassSetting]))
+            var sb = new StringBuilder();
+            sb.AppendLine($"        [IntentInitialGen]");
+            sb.AppendLine($"        public {@class.Name}(");
+            foreach (var attribute in @class.Attributes)
             {
-                _entityBaseClass = settings[EntityBaseClassSetting];
+                sb.AppendLine($"            {Template.Types.Get(attribute.Type)} {attribute.Name.ToCamelCase()}{(attribute != @class.Attributes.Last() ? "," : "")}");
             }
-            if (settings.ContainsKey(ValueObjectBaseClassSetting) && !string.IsNullOrWhiteSpace(settings[ValueObjectBaseClassSetting]))
+            sb.AppendLine("        )");
+            sb.AppendLine("        {");
+            foreach (var attribute in @class.Attributes)
             {
-                _valueObjectBaseClass = settings[ValueObjectBaseClassSetting];
+                sb.AppendLine($"            {attribute.Name.ToPascalCase()} = {attribute.Name.ToCamelCase()};");
             }
-        }
-
-        public override string ConvertAttributeType(IAttribute attribute)
-        {
-            //var @namespace = attribute.Type.Stereotypes.GetProperty<string>("CommonType", "Namespace");
-            //if (@namespace != null)
-            //{
-            //    return @namespace + "." + attribute.TypeName();
-            //}
-            var domainType = attribute.Stereotypes.GetProperty<string>("DomainType", "Type");
-            if (domainType != null)
-            {
-                return domainType;
-            }
-            return base.ConvertAttributeType(attribute);
-        }
-
-        public override string GetBaseClass(IClass @class)
-        {
-            var baseClass = @class.Stereotypes.GetProperty<string>("Aggregate Root", "BaseType");
-            if (baseClass != null)
-            {
-                return baseClass;
-            }
-            baseClass = @class.Stereotypes.GetProperty<string>("Entity", "BaseType");
-            if (baseClass != null)
-            {
-                return baseClass;
-            }
-            baseClass = @class.Stereotypes.GetProperty<string>("Value Object", "BaseType");
-            if (baseClass != null)
-            {
-                return baseClass;
-            }
-            if (_aggregateRootBaseClass != null && @class.Stereotypes.FirstOrDefault(s => s.Name == "Aggregate Root") != null)
-            {
-                return _aggregateRootBaseClass;
-            }
-            if (_entityBaseClass != null && @class.Stereotypes.FirstOrDefault(s => s.Name == "Entity") != null)
-            {
-                return _entityBaseClass;
-            }
-            if (_valueObjectBaseClass != null && @class.Stereotypes.FirstOrDefault(s => s.Name == "Value Object") != null)
-            {
-                return _valueObjectBaseClass;
-            }
-            return base.GetBaseClass(@class);
-        }
-
-        public override IEnumerable<string> GetInterfaces(IClass @class)
-        {
-            return new[] { $"I{@class.Name}Behaviours" };
-        }
-
-//        public override string Constructors(IClass @class)
-//        {
-//            if (!@class.Attributes.Any() && !@class.AssociatedClasses.Any())
-//            {
-//                return base.Constructors(@class);
-//            }
-//            var sb = new StringBuilder();
-//            sb.AppendLine($"         public {@class.Name}(");
-//            foreach (var attribute in @class.Attributes)
-//            {
-//                sb.Append(attribute.TypeName())
-//            }
-//            return $@"         public {@class.Name}(
-//            string line1, 
-//            string line2, 
-//            string line3, 
-//            Suburb suburb)
-//        {{
-//            _line1 = line1;
-//            _line2 = line2;
-//            _line3 = line3;
-//            _suburb = suburb;
-//        }}
-//";
-//        }
-
-        public override string AssociationAfter(IAssociationEnd associationEnd)
-        {
-            if (!associationEnd.IsNavigable)
-            {
-                return base.AssociationBefore(associationEnd);
-            }
-            return $@"        
-        {associationEnd.Type(prefix: "I", suffix: "", readOnly: true)} I{associationEnd.OtherEnd().Class.Name}.{associationEnd.Name()} => {associationEnd.Name()};
-";
+            sb.AppendLine("        }");
+            return sb.ToString();
         }
     }
 }

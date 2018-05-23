@@ -9,7 +9,7 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 {
-    public class SurrogatePrimaryKeyDecorator : AbstractDomainEntityDecorator, IHasTemplateDependencies
+    public class SurrogatePrimaryKeyStateDecorator : DomainEntityStateDecoratorBase, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.Entities.Interop.EntityFramework.SurrogatePrimaryKeyEntityDecorator";
 

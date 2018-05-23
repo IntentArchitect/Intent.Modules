@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    public class SerializableEntityInterfaceDecorator : AbstractDomainEntityInterfaceDecorator
+    public class SerializableEntityInterfaceDecorator : DomainEntityInterfaceDecoratorBase
     {
         public const string Identifier = "Intent.Serializable.Entity.Interfaces.Decorator";
 

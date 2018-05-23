@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
-    public abstract class AbstractDomainEntityInterfaceDecorator : ITemplateDecorator, IDeclareUsings, IAttibuteTypeConverter, IPriorityDecorator
+    public abstract class DomainEntityInterfaceDecoratorBase : ITemplateDecorator, IDeclareUsings, IAttibuteTypeConverter, IPriorityDecorator
     {
+        public DomainEntityInterfaceTemplate Template { get; internal set; }
+
         public virtual IEnumerable<string> DeclareUsings() { return new List<string>(); }
 
         public virtual IEnumerable<string> GetInterfaces(IClass @class) { return new List<string>(); }

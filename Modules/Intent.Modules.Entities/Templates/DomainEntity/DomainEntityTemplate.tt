@@ -24,6 +24,7 @@ namespace <#= Namespace #>
     [DefaultIntentManaged(Mode.Merge, Signature = Mode.Merge, Body = Mode.Merge, Targets = Targets.Methods, AccessModifiers = AccessModifiers.Public)]
     public partial class <#= ClassName #>
     {
+<#= Constructors(Model) #>
 <# 	foreach (var operation in Model.Operations)
     {
         string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";

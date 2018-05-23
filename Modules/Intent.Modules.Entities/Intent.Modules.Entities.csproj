@@ -42,7 +42,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.Modules.Common.1.3.0\lib\net452\Intent.Modules.Common.dll</HintPath>
+      <HintPath>..\packages\Intent.Modules.Common.1.4.1-pre1\lib\net452\Intent.Modules.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -59,13 +59,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decorators\SerializableEntityDecorator.cs" />
+    <Compile Include="Decorators\SerializableEntityStateDecorator.cs" />
     <Compile Include="Decorators\SerializableEntityInterfaceDecorator.cs" />
     <Compile Include="Decorators\SerializableEntityDecoratorRegistration.cs" />
     <Compile Include="Decorators\SerializableEntityInterfaceDecoratorRegistration.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates\DomainEntityInterface\AbstractDomainEntityInterfaceDecorator.cs" />
+    <Compile Include="Templates\DomainEntityInterface\DomainEntityInterfaceDecoratorBase.cs" />
     <Compile Include="Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -74,7 +74,7 @@
     <Compile Include="Templates\DomainEntityInterface\DomainEntityInterfaceTemplatePartial.cs" />
     <Compile Include="Templates\DomainEntityInterface\DomainEntityInterfaceTemplateRegistrations.cs" />
     <Compile Include="Templates\DomainEntityModelExtensions.cs" />
-    <Compile Include="Templates\DomainEntityState\AbstractDomainEntityDecorator.cs" />
+    <Compile Include="Templates\DomainEntityState\DomainEntityStateDecoratorBase.cs" />
     <Compile Include="Templates\DomainEntityState\DomainEntityStateTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="Templates\DomainEntityState\DomainEntityStateTemplatePartial.cs" />
     <Compile Include="Templates\DomainEntityState\DomainEntityStateTemplateRegistrations.cs" />
+    <Compile Include="Templates\DomainEntity\DomainEntityDecoratorBase.cs" />
     <Compile Include="Templates\DomainEntity\DomainEntityTemplatePartial.cs" />
     <Compile Include="Templates\DomainEntity\DomainEntityTemplate.cs">
       <AutoGen>True</AutoGen>

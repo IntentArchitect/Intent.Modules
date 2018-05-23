@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
-    partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<AbstractDomainEntityInterfaceDecorator>
+    partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>
     {
 
-        public const string Identifier = "Intent.Entities.Base.Interface";
+        public const string Identifier = "Intent.Entities.DomainEntityInterface";
 
-        private IEnumerable<AbstractDomainEntityInterfaceDecorator> _decorators;
+        private IEnumerable<DomainEntityInterfaceDecoratorBase> _decorators;
 
         public DomainEntityInterfaceTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
@@ -35,9 +35,17 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
                 );
         }
 
-        public IEnumerable<AbstractDomainEntityInterfaceDecorator> GetDecorators()
+        public IEnumerable<DomainEntityInterfaceDecoratorBase> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            if (_decorators == null)
+            {
+                _decorators = Project.ResolveDecorators(this);
+                foreach (var decorator in _decorators)
+                {
+                    decorator.Template = this;
+                }
+            }
+            return _decorators;
         }
 
         public string GetInterfaces(IClass @class)

@@ -5,15 +5,15 @@ using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    [Description(SerializableEntityDecorator.Identifier)]
-    public class SerializableEntityDecoratorRegistration : DecoratorRegistration<AbstractDomainEntityDecorator>
+    [Description(SerializableEntityStateDecorator.Identifier)]
+    public class SerializableEntityDecoratorRegistration : DecoratorRegistration<DomainEntityStateDecoratorBase>
     {
 
-        public override string DecoratorId => SerializableEntityDecorator.Identifier;
+        public override string DecoratorId => SerializableEntityStateDecorator.Identifier;
 
         public override object CreateDecoratorInstance()
         {
-            return new SerializableEntityDecorator();
+            return new SerializableEntityStateDecorator();
         }
     }
 }

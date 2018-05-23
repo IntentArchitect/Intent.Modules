@@ -5,7 +5,7 @@ using System.ComponentModel;
 namespace Intent.Modules.Entities.Decorators
 {
     [Description("Intent.Entities.DDD.EntityInterfaceDecorator")]
-    public class DDDEntityInterfaceDecoratorRegistration : DecoratorRegistration<AbstractDomainEntityInterfaceDecorator>
+    public class DDDEntityInterfaceDecoratorRegistration : DecoratorRegistration<DomainEntityInterfaceDecoratorBase>
     {
 
         public override string DecoratorId

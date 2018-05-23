@@ -10,6 +10,7 @@
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 {
     using Intent.MetaModel.Domain;
+    using Intent.SoftwareFactory.MetaData;
     using Intent.SoftwareFactory.Templates;
     using System;
     using System.IO;
@@ -33,7 +34,7 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
         public override string TransformText()
         {
             
-            #line 13 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 14 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
 
 
 
@@ -43,36 +44,36 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
             #line hidden
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\n");
             
-            #line 20 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 21 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)] \r\n\r\nnamespace ");
             
-            #line 24 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 25 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface I");
             
-            #line 26 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassStateName));
             
             #line default
             #line hidden
             this.Write("Behaviours");
             
-            #line 26 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentClass != null ? string.Format(" : I{0}Behaviours", Model.ParentClass.Name) : ""));
             
             #line default
             #line hidden
             this.Write(" {\r\n");
             
-            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
- foreach (var operation in Model.Operations)
+            #line 28 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+ foreach (var operation in Model.Operations.Where(x => x.HasStereotype("Command Operation")))
     {
         string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";
         string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
@@ -83,28 +84,28 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
             #line hidden
             this.Write("        ");
             
-            #line 33 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 34 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(returnType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 33 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 34 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 33 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 34 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameterDefinitions));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 34 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 35 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
 		}
     }
 
@@ -113,42 +114,42 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
             #line hidden
             this.Write("    }\r\n\r\n\tpublic static class ");
             
-            #line 39 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 40 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassStateName));
             
             #line default
             #line hidden
             this.Write("Extensions\r\n    {\r\n        public static I");
             
-            #line 41 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 42 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassStateName));
             
             #line default
             #line hidden
             this.Write("Behaviours Behaviours(this I");
             
-            #line 41 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 42 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassStateName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 41 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 42 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassStateName.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            return (I");
             
-            #line 43 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 44 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassStateName));
             
             #line default
             #line hidden
             this.Write("Behaviours)");
             
-            #line 43 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
+            #line 44 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassStateName.ToCamelCase()));
             
             #line default

@@ -16,7 +16,6 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
         public EFMappingTemplate(IClass model, IProject project)
             : base (Identifier, project, model)
         {
-
             var x = Model.AssociatedClasses.Where(ae => ae.Association.AssociationType == AssociationType.Composition && ae.Association.TargetEnd == ae).ToList();
         }
 

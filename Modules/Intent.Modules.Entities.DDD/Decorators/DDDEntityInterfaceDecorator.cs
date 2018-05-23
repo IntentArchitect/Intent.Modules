@@ -1,11 +1,13 @@
-﻿using Intent.MetaModel.Domain;
+﻿using System.Collections;
+using Intent.MetaModel.Domain;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    public class DDDEntityInterfaceDecorator : AbstractDomainEntityInterfaceDecorator
+    public class DDDEntityInterfaceDecorator : DomainEntityInterfaceDecoratorBase
     {
         public const string Id = "Intent.Entities.DDD.EntityInterfaceDecorator";
 
@@ -40,6 +42,7 @@ namespace Intent.Modules.Entities.Decorators
             {
                 return base.PropertyBefore(associationEnd);
             }
+            var t = ClassTypeSource.InProject(Template.Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable));
             return $@"
         {associationEnd.Type(prefix: "I", suffix: "", readOnly: true)} {associationEnd.Name()} {{ get; }}
 ";

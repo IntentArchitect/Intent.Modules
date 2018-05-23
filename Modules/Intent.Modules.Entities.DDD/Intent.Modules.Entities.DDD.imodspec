@@ -21,7 +21,8 @@
     </template>
   </templates>
   <decorators>
-    <decorator id="Intent.Entities.DDD.EntityDecorator"  enabled="true">
+    <decorator id="Intent.Entities.DDD.EntityDecorator"  enabled="true"></decorator>
+    <decorator id="Intent.Entities.DDD.EntityStateDecorator"  enabled="true">
       <config>
         <add key="Aggregate Root Base Class" description="Base class for all aggregates" default="" />
         <add key="Entity Base Class" description="Base class for all entities" default="" />

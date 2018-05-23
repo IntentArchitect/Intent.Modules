@@ -6,7 +6,7 @@ using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    public class SerializableEntityDecorator : AbstractDomainEntityDecorator
+    public class SerializableEntityStateDecorator : DomainEntityStateDecoratorBase
     {
         public const string Identifier = "Intent.Serializable.Entity.Decorator";
 
