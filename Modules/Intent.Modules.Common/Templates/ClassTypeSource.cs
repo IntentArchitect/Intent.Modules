@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Intent.MetaModel.Common;
+using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
@@ -32,6 +33,15 @@ namespace Intent.Modules.Common.Templates
 
         private static string FullTypeNameInProject(IProject project, string templateId, ITypeReference typeInfo)
         {
+            // Hack for bug in 1.4:
+            var associationEnd = typeInfo as IAssociationEnd;
+            if (associationEnd != null && associationEnd.Id == associationEnd.Association.Id)
+            {
+                return project.FindTemplateInstance<IHasClassDetails>(
+                        TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == associationEnd.Class.Id))
+                    ?.FullTypeName();
+            }
+
             return project.FindTemplateInstance<IHasClassDetails>(
                     TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id))
                 ?.FullTypeName();

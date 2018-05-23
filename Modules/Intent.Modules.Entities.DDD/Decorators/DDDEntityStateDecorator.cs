@@ -8,6 +8,7 @@ using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Configuration;
+using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.DDD.Decorators
@@ -44,12 +45,12 @@ namespace Intent.Modules.Entities.DDD.Decorators
 
         public override string ConvertAttributeType(IAttribute attribute)
         {
-            //var @namespace = attribute.Type.Stereotypes.GetProperty<string>("CommonType", "Namespace");
+            //var @namespace = attribute.Type.GetStereotypeProperty<string>("CommonType", "Namespace");
             //if (@namespace != null)
             //{
             //    return @namespace + "." + attribute.TypeName();
             //}
-            var domainType = attribute.Stereotypes.GetProperty<string>("DomainType", "Type");
+            var domainType = attribute.GetStereotypeProperty<string>("DomainType", "Type");
             if (domainType != null)
             {
                 return domainType;
@@ -59,17 +60,17 @@ namespace Intent.Modules.Entities.DDD.Decorators
 
         public override string GetBaseClass(IClass @class)
         {
-            var baseClass = @class.Stereotypes.GetProperty<string>("Aggregate Root", "BaseType");
+            var baseClass = @class.GetStereotypeProperty<string>("Aggregate Root", "BaseType");
             if (baseClass != null)
             {
                 return baseClass;
             }
-            baseClass = @class.Stereotypes.GetProperty<string>("Entity", "BaseType");
+            baseClass = @class.GetStereotypeProperty<string>("Entity", "BaseType");
             if (baseClass != null)
             {
                 return baseClass;
             }
-            baseClass = @class.Stereotypes.GetProperty<string>("Value Object", "BaseType");
+            baseClass = @class.GetStereotypeProperty<string>("Value Object", "BaseType");
             if (baseClass != null)
             {
                 return baseClass;

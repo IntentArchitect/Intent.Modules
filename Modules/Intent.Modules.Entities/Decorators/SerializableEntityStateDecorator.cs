@@ -3,6 +3,7 @@ using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntity;
 using System.Collections.Generic;
 using Intent.Modules.Entities.Templates.DomainEntityState;
+using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Entities.Decorators
 {
@@ -32,7 +33,7 @@ namespace Intent.Modules.Entities.Decorators
 
         public override string GetBaseClass(IClass @class)
         {
-            var baseClass = @class.Stereotypes.GetProperty<string>("Serializable", "BaseType");
+            var baseClass = @class.GetStereotypeProperty<string>("Serializable", "BaseType");
             if (baseClass != null)
             {
                 return baseClass;

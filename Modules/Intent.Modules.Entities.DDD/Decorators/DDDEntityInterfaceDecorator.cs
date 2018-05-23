@@ -13,12 +13,12 @@ namespace Intent.Modules.Entities.Decorators
 
         public override string ConvertAttributeType(IAttribute attribute)
         {
-            //var @namespace = attribute.Type.Stereotypes.GetProperty<string>("CommonType", "Namespace");
+            //var @namespace = attribute.Type.GetStereotypeProperty<string>("CommonType", "Namespace");
             //if (@namespace != null)
             //{
             //    return @namespace + "." + attribute.TypeName();
             //}
-            var domainType = attribute.Stereotypes.GetProperty<string>("DomainType", "Type");
+            var domainType = attribute.GetStereotypeProperty<string>("DomainType", "Type");
             if (domainType != null)
             {
                 return domainType;
@@ -44,7 +44,7 @@ namespace Intent.Modules.Entities.Decorators
             }
             var t = ClassTypeSource.InProject(Template.Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable));
             return $@"
-        {associationEnd.Type(prefix: "I", suffix: "", readOnly: true)} {associationEnd.Name()} {{ get; }}
+        {t.GetClassType(associationEnd)} {associationEnd.Name()} {{ get; }}
 ";
         }
 

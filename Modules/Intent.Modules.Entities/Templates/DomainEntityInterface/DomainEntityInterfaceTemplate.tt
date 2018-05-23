@@ -43,9 +43,8 @@ namespace <#= Namespace #>
 		{
 			continue;
         }
-#>
-<#= PropertyAnnotations(associatedClass) #>
-        <#= associatedClass.Type() #> <#= associatedClass.Name().ToPascalCase() #> { <#= AssociationAccessors(associatedClass) #> }
+#><#= PropertyAnnotations(associatedClass) #>
+        <#= Types.Get(associatedClass) #> <#= associatedClass.Name().ToPascalCase() #> { <#= AssociationAccessors(associatedClass) #> }
 <#  }#>
 
 <#  foreach (var operation in Model.Operations)

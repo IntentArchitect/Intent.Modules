@@ -14,7 +14,7 @@ namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
         {
             if (!associationEnd.IsNavigable && associationEnd.Multiplicity == Multiplicity.One && associationEnd.OtherEnd().Multiplicity == Multiplicity.Many)
             {
-                return $@"       public virtual { associationEnd.Type() } { associationEnd.Name() } {{ get; set; }}
+                return $@"       public virtual { Template.Types.Get(associationEnd) } { associationEnd.Name() } {{ get; set; }}
 ";
             }
             return base.AssociationBefore(associationEnd);

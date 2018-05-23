@@ -1,12 +1,15 @@
-﻿using Intent.MetaModel.Domain;
+﻿using System.Collections;
+using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
-    partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>
+    partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>, IPostTemplateCreation
     {
 
         public const string Identifier = "Intent.Entities.DomainEntityInterface";
@@ -16,6 +19,11 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         public DomainEntityInterfaceTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
         {
+        }
+
+        public void Created()
+        {
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityStateTemplate.Identifier, nameof(ICollection)));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
