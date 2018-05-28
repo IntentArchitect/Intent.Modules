@@ -15,6 +15,7 @@
       <role>Infrastructure.Data.EF</role>
       <config>
         <add key="DomainTemplateDependancyId" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.EntityState" />
+        <add key="Implicit Surrogate Key" description="Flag for whether to use implicit surrogate keys from the Entities model." default="true" />
         <add key="Use Foreign Keys" description="Flag for whether to use foreign keys from the Entities model." default="true" />
       </config>
     </template>
@@ -34,4 +35,7 @@
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
+  <metadata>
+    <install target="Domain" src="MetaData\Domain"/>
+  </metadata>
 </package>

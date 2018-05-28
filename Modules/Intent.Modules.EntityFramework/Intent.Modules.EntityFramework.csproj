@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.EntityFramework.imodspec" />
+    <None Include="MetaData\Domain\Intent.EntityFramework.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +115,8 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DbMigrationsReadMeTemplate.cs</LastGenOutput>
     </None>
+    <Content Include="MetaData\Domain\Folders\Stereotypes.xml" />
+    <Content Include="MetaData\Domain\Stereotypes\Index.xml" />
     <Content Include="Templates\DbContext\DbContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DbContextTemplate.cs</LastGenOutput>
@@ -127,6 +130,7 @@
       <LastGenOutput>EFMappingTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

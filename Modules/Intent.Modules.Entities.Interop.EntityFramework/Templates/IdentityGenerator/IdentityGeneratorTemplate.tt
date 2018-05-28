@@ -15,6 +15,7 @@
 
 #>
 using System;
+using System.Runtime.InteropServices;
 <#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)] 
@@ -23,36 +24,39 @@ namespace <#= Namespace #>
 {
     public static class <#= ClassName #>
     {
-        private static readonly long EpochMilliseconds = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks / 10000L;
+        [DllImport("rpcrt4.dll", SetLastError = true)]
+        static extern int UuidCreateSequential(out Guid guid);
+
         /// <summary>
-        /// Creates a sequential GUID according to SQL Server's ordering rules.
+        /// Generates sequential GUIDs for SQL Server
+        /// https://blogs.msdn.microsoft.com/dbrowne/2012/07/03/how-to-generate-sequential-guids-for-sql-server-in-net/
         /// </summary>
+        /// <returns></returns>
         public static Guid NewSequentialId()
         {
-            // This code was not reviewed to guarantee uniqueness under most conditions, nor completely optimize for avoiding
-            // page splits in SQL Server when doing inserts from multiple hosts, so do not re-use in production systems.
-            var guidBytes = Guid.NewGuid().ToByteArray();
+            UuidCreateSequential(out var guid);
 
-            // get the milliseconds since Jan 1 1970
-            byte[] sequential = BitConverter.GetBytes((DateTime.Now.Ticks / 10000L) - EpochMilliseconds);
+            var s = guid.ToByteArray();
+            var t = new byte[16];
 
-            // discard the 2 most significant bytes, as we only care about the milliseconds increasing, but the highest ones 
-            // should be 0 for several thousand years to come (non-issue).
-            if (BitConverter.IsLittleEndian)
-            {
-                guidBytes[10] = sequential[5];
-                guidBytes[11] = sequential[4];
-                guidBytes[12] = sequential[3];
-                guidBytes[13] = sequential[2];
-                guidBytes[14] = sequential[1];
-                guidBytes[15] = sequential[0];
-            }
-            else
-            {
-                Buffer.BlockCopy(sequential, 2, guidBytes, 10, 6);
-            }
+            t[3] = s[0];
+            t[2] = s[1];
+            t[1] = s[2];
+            t[0] = s[3];
+            t[5] = s[4];
+            t[4] = s[5];
+            t[7] = s[6];
+            t[6] = s[7];
+            t[8] = s[8];
+            t[9] = s[9];
+            t[10] = s[10];
+            t[11] = s[11];
+            t[12] = s[12];
+            t[13] = s[13];
+            t[14] = s[14];
+            t[15] = s[15];
 
-            return new Guid(guidBytes);
+            return new Guid(t);
         }
     }
 }

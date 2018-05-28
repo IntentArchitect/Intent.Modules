@@ -41,47 +41,65 @@ namespace Intent.Modules.Entities.Interop.EntityFramework.Templates.IdentityGene
             
             #line default
             #line hidden
-            this.Write("using System;\r\n");
+            this.Write("using System;\r\nusing System.Runtime.InteropServices;\r\n");
             
-            #line 18 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.Interop.EntityFramework\Templates\IdentityGenerator\IdentityGeneratorTemplate.tt"
+            #line 19 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.Interop.EntityFramework\Templates\IdentityGenerator\IdentityGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)] \r\n\r\nnamespace ");
             
-            #line 22 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.Interop.EntityFramework\Templates\IdentityGenerator\IdentityGeneratorTemplate.tt"
+            #line 23 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.Interop.EntityFramework\Templates\IdentityGenerator\IdentityGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public static class ");
             
-            #line 24 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.Interop.EntityFramework\Templates\IdentityGenerator\IdentityGeneratorTemplate.tt"
+            #line 25 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.Interop.EntityFramework\Templates\IdentityGenerator\IdentityGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        private static readonly long EpochMilliseconds = new DateTime(19" +
-                    "70, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks / 10000L;\r\n        /// <summary>\r\n   " +
-                    "     /// Creates a sequential GUID according to SQL Server\'s ordering rules.\r\n  " +
-                    "      /// </summary>\r\n        public static Guid NewSequentialId()\r\n        {\r\n " +
-                    "           // This code was not reviewed to guarantee uniqueness under most cond" +
-                    "itions, nor completely optimize for avoiding\r\n            // page splits in SQL " +
-                    "Server when doing inserts from multiple hosts, so do not re-use in production sy" +
-                    "stems.\r\n            var guidBytes = Guid.NewGuid().ToByteArray();\r\n\r\n           " +
-                    " // get the milliseconds since Jan 1 1970\r\n            byte[] sequential = BitCo" +
-                    "nverter.GetBytes((DateTime.Now.Ticks / 10000L) - EpochMilliseconds);\r\n\r\n        " +
-                    "    // discard the 2 most significant bytes, as we only care about the milliseco" +
-                    "nds increasing, but the highest ones \r\n            // should be 0 for several th" +
-                    "ousand years to come (non-issue).\r\n            if (BitConverter.IsLittleEndian)\r" +
-                    "\n            {\r\n                guidBytes[10] = sequential[5];\r\n                " +
-                    "guidBytes[11] = sequential[4];\r\n                guidBytes[12] = sequential[3];\r\n" +
-                    "                guidBytes[13] = sequential[2];\r\n                guidBytes[14] = " +
-                    "sequential[1];\r\n                guidBytes[15] = sequential[0];\r\n            }\r\n " +
-                    "           else\r\n            {\r\n                Buffer.BlockCopy(sequential, 2, " +
-                    "guidBytes, 10, 6);\r\n            }\r\n\r\n            return new Guid(guidBytes);\r\n  " +
-                    "      }\r\n    }\r\n}");
+            this.Write(@"
+    {
+        [DllImport(""rpcrt4.dll"", SetLastError = true)]
+        static extern int UuidCreateSequential(out Guid guid);
+
+        /// <summary>
+        /// Generates sequential GUIDs for SQL Server
+        /// https://blogs.msdn.microsoft.com/dbrowne/2012/07/03/how-to-generate-sequential-guids-for-sql-server-in-net/
+        /// </summary>
+        /// <returns></returns>
+        public static Guid NewSequentialId()
+        {
+            UuidCreateSequential(out var guid);
+
+            var s = guid.ToByteArray();
+            var t = new byte[16];
+
+            t[3] = s[0];
+            t[2] = s[1];
+            t[1] = s[2];
+            t[0] = s[3];
+            t[5] = s[4];
+            t[4] = s[5];
+            t[7] = s[6];
+            t[6] = s[7];
+            t[8] = s[8];
+            t[9] = s[9];
+            t[10] = s[10];
+            t[11] = s[11];
+            t[12] = s[12];
+            t[13] = s[13];
+            t[14] = s[14];
+            t[15] = s[15];
+
+            return new Guid(t);
+        }
+    }
+}");
             return this.GenerationEnvironment.ToString();
         }
     }

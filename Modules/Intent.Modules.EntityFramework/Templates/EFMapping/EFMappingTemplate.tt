@@ -98,7 +98,7 @@ namespace <#= Namespace #>
         //No Key mapping required
     } 
 
-	if (mapPk || ImplicitSurrogateKey) {#>
+	if (ImplicitSurrogateKey) {#>
             this.HasKey(x => x.Id);
             this.Property(x => x.Id).HasColumnName("Id");
 <#  }  
@@ -107,7 +107,7 @@ namespace <#= Namespace #>
 		if (mapPk && attribute.Name.ToLower() == "id")
         {
 			if (ImplicitSurrogateKey) {
-				throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable this option in the module", Model.Name));
+				throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable the 'Implicit Surrogate Key' option for this template", Model.Name));
             }
 #>
             this.HasKey(x => x.Id);
@@ -115,13 +115,15 @@ namespace <#= Namespace #>
 <#			continue;
         }#>
             this.Property(x => x.<#= attribute.Name.ToPascalCase()#>)<#
-        if (attribute.GetStereotypeProperty("UniqueConstraint", "IsIndex", false)){ #>
-
-                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= attribute.GetStereotypeProperty("UniqueConstraint", "UniqueKey", "Unique1")#>", <#=attribute.GetStereotypeProperty("UniqueConstraint", "Order", "1")#>) { IsUnique = true }))<#
-        }
-        if (!string.IsNullOrEmpty(attribute.GetStereotypeProperty("Index", "UniqueKey", ""))){#>
-
-                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= attribute.GetStereotypeProperty("Index", "UniqueKey", "Unique1")#>", <#= attribute.GetStereotypeProperty("Index", "Order", "1")#>) { IsUnique = <#= attribute.GetStereotypeProperty("Index", "IsUnique", "false")#> }))<#
+		if (!string.IsNullOrEmpty(attribute.GetStereotypeProperty<string>("Index", "UniqueKey")))
+		{#>
+                .HasColumnAnnotation("Index", new IndexAnnotation(new []
+                    {
+<#			foreach(var index in attribute.Stereotypes.Where(x => x.Name == "Index")) { #>
+                        new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= index.GetProperty("UniqueKey", "Unique1")#>", <#= index.GetProperty("Order", "1")#>) { IsUnique = <#= index.GetProperty("IsUnique", "false")#> },
+<#
+			}#>
+                    }))<#
         }
         if (!attribute.IsNullable){#>
 
