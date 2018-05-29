@@ -67,6 +67,11 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().Aggregate(x => x.InterfaceAnnotations(@class));
         }
 
+        public string BeforeProperties(IClass @class)
+        {
+            return GetDecorators().Aggregate(x => x.BeforeProperties(@class));
+        }
+
         public string PropertyBefore(IAttribute attribute)
         {
             return GetDecorators().Aggregate(x => x.PropertyBefore(attribute));

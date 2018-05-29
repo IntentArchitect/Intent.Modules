@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
-    public abstract class DomainEntityInterfaceDecoratorBase : ITemplateDecorator, IDeclareUsings, IAttibuteTypeConverter, IPriorityDecorator
+    public abstract class DomainEntityInterfaceDecoratorBase : DecoratorBase, ITemplateDecorator, IDeclareUsings, IAttibuteTypeConverter, IPriorityDecorator
     {
         public DomainEntityInterfaceTemplate Template { get; internal set; }
 
@@ -13,6 +13,8 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         public virtual IEnumerable<string> GetInterfaces(IClass @class) { return new List<string>(); }
 
         public virtual string InterfaceAnnotations(IClass @class) { return null; }
+
+        public virtual string BeforeProperties(IClass @class) { return null; }
 
         public virtual string PropertyBefore(IAttribute attribute) { return null; }
 

@@ -23,6 +23,7 @@ namespace <#= Namespace #>
 <#= InterfaceAnnotations(Model) #>
     public partial interface <#= ClassName #><#= GetInterfaces(Model) #><#= Model.ParentClass != null ? string.Format(" : I{0}", Model.ParentClass.Name) : "" #>
     {
+<#= BeforeProperties(Model) #>
 <#  foreach (var attribute in Model.Attributes)
     {
 #><#= PropertyBefore(attribute) #><#
