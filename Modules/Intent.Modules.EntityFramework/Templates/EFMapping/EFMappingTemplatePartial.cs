@@ -21,8 +21,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
 
         public void Created()
         {
-            var fileMetaData = GetMetaData();
-            _domainTemplateDependancy = TemplateDependancy.OnModel<IClass>(fileMetaData.CustomMetaData["DomainTemplateDependancyId"], (to) => to.Id == Model.Id);
+            _domainTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()

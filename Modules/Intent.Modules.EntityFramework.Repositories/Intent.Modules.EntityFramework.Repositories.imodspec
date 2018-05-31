@@ -8,22 +8,15 @@
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>EntityFramework</tags>
   <templates>
-    <template id="Intent.EntityFramework.DbContext">
-      <role>Infrastructure.Data.EF</role>
+    <template id="Intent.EntityFramework.RepositoryInterface">
+      <role>Repository.Interface</role>
     </template>
-    <template id="Intent.EntityFramework.EFMapping">
-      <role>Infrastructure.Data.EF</role>
+    <template id="Intent.EntityFramework.RepositoryImplementation">
+      <role>Repository.Implementation</role>
       <config>
         <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
-        <add key="Implicit Surrogate Key" description="Flag for whether to use implicit surrogate keys from the Entities model." default="true" />
-        <add key="Use Foreign Keys" description="Flag for whether to use foreign keys from the Entities model." default="true" />
+        <add key="Entity Interface Template Id" description="The template Id for the template producing the Domain Entity Interfaces" default="Intent.Entities.DomainEntityInterface" />
       </config>
-    </template>
-    <template id="Intent.EntityFramework.DbMigrationsConfiguration" enabled="false">
-      <role>Infrastructure.Data.EF.Migrations</role>
-    </template>
-    <template id="Intent.EntityFramework.DbMigrationsReadMe" enabled="false">
-      <role>Infrastructure.Data.EF.Migrations</role>
     </template>
   </templates>
   <decorators />

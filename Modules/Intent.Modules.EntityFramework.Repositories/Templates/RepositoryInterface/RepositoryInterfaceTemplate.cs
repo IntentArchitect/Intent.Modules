@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.Entities.DDD.Templates.RepositoryInterface
+namespace Intent.Modules.EntityFramework.Repositories.Templates.RepositoryInterface
 {
     using Intent.MetaModel.Domain;
     using Intent.SoftwareFactory.Templates;
@@ -22,7 +22,7 @@ namespace Intent.Modules.Entities.DDD.Templates.RepositoryInterface
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>
     {
@@ -33,7 +33,7 @@ namespace Intent.Modules.Entities.DDD.Templates.RepositoryInterface
         public override string TransformText()
         {
             
-            #line 13 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            #line 13 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
 
 
 
@@ -44,35 +44,35 @@ namespace Intent.Modules.Entities.DDD.Templates.RepositoryInterface
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Inten" +
                     "t.Framework.Domain.Repositories;\r\n");
             
-            #line 21 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            #line 21 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)] \r\n\r\nnamespace ");
             
-            #line 25 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            #line 25 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : IRepository<");
             
-            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Entities.DDD\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityStateName));
             
             #line default

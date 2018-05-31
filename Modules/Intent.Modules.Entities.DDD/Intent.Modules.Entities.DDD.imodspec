@@ -13,9 +13,6 @@
         <add key="Depends On" description="Make this output a code behind file for" default="${Model.Name}.cs" />
       </config>
     </template>
-    <template id="Intent.Entities.DDD.RepositoryInterface">
-      <role>Domain</role>
-    </template>
     <template id="Intent.Entities.DDD.EntitySpecification">
       <role>Domain</role>
     </template>
