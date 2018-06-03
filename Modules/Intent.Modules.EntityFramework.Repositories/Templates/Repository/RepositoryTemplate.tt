@@ -21,10 +21,10 @@ using Intent.CodeGen;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge)]
-	public class <#= ClassName #> : RepositoryBase<<#= EntityInterfaceName #>, <#= EntityName #>, <#= Model.BoundedContext()#>DbContext>, <#= RepositoryContractName #>
+	public class <#= ClassName #> : RepositoryBase<<#= EntityInterfaceName #>, <#= EntityName #>, <#= DbContextName #>>, <#= RepositoryContractName #>
     {
         [IntentManaged(Mode.Merge, Body = Mode.Ignore)]
-        public <#= ClassName #>() : base (new <#= Model.BoundedContext() #>DeleteVisitor())
+        public <#= ClassName #>() : base (new <#= DeleteVisitorName #>)
         {
         }
     }

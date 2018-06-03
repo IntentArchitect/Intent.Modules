@@ -1,27 +1,31 @@
 ﻿using System.Collections.Generic;
 using Intent.MetaModel.Domain;
-using Intent.Modules.Entities.Templates.DomainEntityInterface;
-using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Modules.Entities.DDD.Templates.RepositoryInterface
+namespace Intent.Modules.EntityFramework.Repositories.Templates.RepositoryInterface
 {
-    partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate
+    partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies
     {
-        public const string Identifier = "Intent.Entities.DDD.RepositoryInterface";
+        public const string Identifier = "Intent.EntityFramework.Repositories.Interface";
+        private ITemplateDependancy _entityStateTemplateDependancy;
+        private ITemplateDependancy _entityInterfaceTemplateDependancy;
 
         public RepositoryInterfaceTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
         {
         }
 
-        public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(DomainEntityStateTemplate.Identifier, Model))?.ClassName
-                                         ?? Model.Name;
+        public void Created()
+        {
+            _entityStateTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+            _entityInterfaceTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
+        }
 
-        public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
-                                         ?? $"I{Model.Name}";
+        public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(_entityStateTemplateDependancy)?.ClassName ?? Model.Name;
+
+        public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(_entityInterfaceTemplateDependancy)?.ClassName ?? $"I{Model.Name}";
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -38,6 +42,15 @@ namespace Intent.Modules.Entities.DDD.Templates.RepositoryInterface
                 className: "I${Model.Name}Repository",
                 @namespace: "${Project.ProjectName}"
                 );
+        }
+
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            return new[]
+            {
+                _entityInterfaceTemplateDependancy,
+                _entityStateTemplateDependancy
+            };
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()

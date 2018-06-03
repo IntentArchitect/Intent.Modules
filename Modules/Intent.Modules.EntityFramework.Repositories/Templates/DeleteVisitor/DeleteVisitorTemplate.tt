@@ -1,0 +1,91 @@
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.MetaModel.Domain" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+using System;
+using Intent.Framework.Core;
+using Intent.Framework.EntityFramework.Interceptors;
+using System.Collections.Generic;
+<#= DependencyUsings #>
+using Intent.CodeGen;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public class <#= ClassName #> : ICompositionDeleteVisitor
+    {
+        private readonly IList<object> _toDelete;
+
+        public IList<object> ToDelete
+        {
+            get
+            {
+                return _toDelete;
+            }
+        }
+
+        public void Reset()
+        {
+            _toDelete.Clear();
+        }
+
+        public <#= ClassName #>()
+        {
+            _toDelete = new List<object>();
+        }
+
+        public void Visit(IVisitable visitable)
+        {
+            Visit((dynamic)visitable);
+        }
+
+<# foreach (var model in Model) {
+#>
+        public void Visit(<#= GetClassName(model) #> state)
+        {
+<# 
+        if (model.ParentClass != null)
+        {
+#>
+            Visit((<#= GetClassName(model.ParentClass)#>) state);
+<# 
+        }
+
+        foreach(var associationEnd in model.AssociatedClasses)
+        {
+            if (associationEnd.Association.AssociationType ==  AssociationType.Composition && associationEnd.OtherEnd() == associationEnd)
+            {
+                if (associationEnd.Multiplicity == Multiplicity.Many) {
+#>
+            foreach (IVisitable item in state.<#= Types.Get(associationEnd) #>)
+            {
+                item.Accept(this);
+            }
+<#              }
+                else
+                {#>
+            if (state.<#= Types.Get(associationEnd) #> != null)
+            {
+                ((IVisitable)state.<#= Types.Get(associationEnd) #>).Accept(this);
+            }
+<#                }
+            }
+        }
+#>
+            _toDelete.Add(state);
+        }
+
+<# }#>
+    }
+}
