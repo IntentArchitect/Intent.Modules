@@ -9,12 +9,12 @@ using System.Linq;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
-    [Description("Intent Distribution - WebApi")]
-    public class Registrations : ModelTemplateRegistrationBase<IServiceModel>
+    [Description(WebApiControllerTemplate.Identifier)]
+    public class WebApiControllerTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public WebApiControllerTemplateRegistrations(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
