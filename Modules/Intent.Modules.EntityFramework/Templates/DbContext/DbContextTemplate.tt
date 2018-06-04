@@ -14,17 +14,15 @@
 
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Intent.CodeGen;
 <#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
-    public class <#= ClassName#> : DbContext
-	{
-        public <#= ClassName#>()
-            : base("<#= Project.Application.ApplicationName#>DB")
+    public class <#= ClassName#> : <#= GetBaseClass() #>
+    {
+        public <#= ClassName#>() : base("<#= Project.Application.ApplicationName#>DB")
         {
 
         } 
@@ -33,16 +31,16 @@ namespace <#= Namespace #>
         {
             base.OnModelCreating(modelBuilder);
 
-			ConfigureConventions(modelBuilder);
+            ConfigureConventions(modelBuilder);
             
 <# foreach (var model in Model) {#>
             modelBuilder.Configurations.Add(new <#= model.Name.ToPascalCase()#>Mapping());
 <# }#>
         }
 
-		private void ConfigureConventions(DbModelBuilder modelBuilder)
-		{
+        private void ConfigureConventions(DbModelBuilder modelBuilder)
+        {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-		}
+        }
     }
 }

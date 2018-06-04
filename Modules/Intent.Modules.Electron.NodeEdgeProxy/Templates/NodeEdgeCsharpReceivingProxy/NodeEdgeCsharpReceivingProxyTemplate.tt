@@ -16,7 +16,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Threading.Tasks;
-using Intent.CodeGen;
 <#=DependencyUsings#>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]

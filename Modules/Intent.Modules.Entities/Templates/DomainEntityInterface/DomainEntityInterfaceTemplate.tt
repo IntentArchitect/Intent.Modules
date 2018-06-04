@@ -13,7 +13,6 @@
 <#@ import namespace="System.Collections.Generic"#>
 using System;
 using System.Collections.Generic;
-using Intent.CodeGen;
 <#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]

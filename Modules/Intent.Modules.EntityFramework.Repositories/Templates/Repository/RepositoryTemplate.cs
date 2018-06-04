@@ -32,8 +32,8 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         /// </summary>
         public override string TransformText()
         {
-            this.Write(" \r\nusing Intent.Framework.Domain.Repositories;\r\nusing Intent.Framework.EntityFram" +
-                    "ework.Repositories;\r\nusing Intent.CodeGen;\r\n");
+            this.Write(" \r\nusing Intent.Framework.Core;\r\nusing Intent.Framework.Domain.Repositories;\r\nusi" +
+                    "ng Intent.Framework.EntityFramework.Repositories;\r\n");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
@@ -90,14 +90,14 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("() : base (new ");
+            this.Write("(IContextBackingStore context) : base (context.Get<");
             
             #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(DeleteVisitorName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(DbContextName));
             
             #line default
             #line hidden
-            this.Write(")\r\n        {\r\n        }\r\n    }\r\n}");
+            this.Write(">())\r\n        {\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

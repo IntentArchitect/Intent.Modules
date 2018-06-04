@@ -14,7 +14,6 @@
 <#@ import namespace="System.Collections.Generic" #> 
 using Intent.Framework.Domain.Repositories;
 using Intent.Framework.EntityFramework.Repositories;
-using Intent.CodeGen;
 <#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Ignore)]

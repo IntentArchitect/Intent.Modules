@@ -6,7 +6,7 @@ using Intent.Modules.Entities.Templates.DomainEntityState;
 namespace Intent.Modules.Entities.Decorators
 {
     [Description(SerializableEntityStateDecorator.Identifier)]
-    public class SerializableEntityDecoratorRegistration : DecoratorRegistration<DomainEntityStateDecoratorBase>
+    public class SerializableEntityStateDecoratorRegistration : DecoratorRegistration<DomainEntityStateDecoratorBase>
     {
 
         public override string DecoratorId => SerializableEntityStateDecorator.Identifier;

@@ -61,7 +61,7 @@
   <ItemGroup>
     <Compile Include="Decorators\SerializableEntityStateDecorator.cs" />
     <Compile Include="Decorators\SerializableEntityInterfaceDecorator.cs" />
-    <Compile Include="Decorators\SerializableEntityDecoratorRegistration.cs" />
+    <Compile Include="Decorators\SerializableEntityStateDecoratorRegistration.cs" />
     <Compile Include="Decorators\SerializableEntityInterfaceDecoratorRegistration.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -18,7 +18,6 @@ using Intent.Framework.Core;
 using Intent.Framework.EntityFramework.Interceptors;
 using System.Collections.Generic;
 <#= DependencyUsings #>
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

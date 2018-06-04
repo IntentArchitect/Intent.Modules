@@ -19,7 +19,6 @@
 using System;
 using System.Collections.Generic;
 <#=DependencyUsings#>
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
@@ -56,9 +57,11 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.RepositoryInterf
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return new[]
-            {
-                new NugetPackageInfo("Intent.Framework.Domain", "1.0.0-pre2", null),
-            };
+                {
+                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0-pre1", null),
+                }
+                .Union(base.GetNugetDependencies())
+                .ToArray();
         }
     }
 }

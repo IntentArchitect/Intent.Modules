@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.Modules.Entities.DDD.Templates.RepositoryInterface;
-using Intent.Modules.EntityFramework.Repositories.Templates.DeleteVisitor;
+using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor;
 using Intent.Modules.EntityFramework.Repositories.Templates.RepositoryInterface;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 {
@@ -29,7 +31,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             _entityInterfaceTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
             _repositoryInterfaceTemplateDependancy = TemplateDependancy.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
             _dbContextTemplateDependancy = TemplateDependancy.OnTemplate(DbContextTemplate.Identifier);
-            _deleteVisitorTemplateDependancy = TemplateDependancy.OnTemplate(DeleteVisitorTemplate.Identifier);
+            _deleteVisitorTemplateDependancy = TemplateDependancy.OnTemplate(EntityCompositionVisitorTemplate.Identifier);
         }
 
         public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(_entityInterfaceTemplateDependancy)?.ClassName ?? $"I{Model.Name}";
@@ -69,6 +71,16 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
                 _dbContextTemplateDependancy,
                 _deleteVisitorTemplateDependancy,
             };
+        }
+
+        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        {
+            return new[]
+                {
+                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0-pre1", null),
+                }
+                .Union(base.GetNugetDependencies())
+                .ToArray();
         }
     }
 }

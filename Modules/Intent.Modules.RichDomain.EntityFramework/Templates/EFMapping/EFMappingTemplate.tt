@@ -70,7 +70,6 @@ using System.Data.Entity.Infrastructure.Annotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Intent.Framework.EntityFramework.Mapping;
 <#= DependencyUsings #>
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.Modules.Constants;
@@ -9,11 +10,12 @@ using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing
+    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing, IHasDecorators<DbContextDecoratorBase>
     {
         public const string Identifier = "Intent.EntityFramework.DbContext";
 
         private readonly IApplicationEventDispatcher _eventDispatcher;
+        private IEnumerable<DbContextDecoratorBase> _decorators;
 
         public DbContextTemplate(IEnumerable<IClass> models, IProject project, IApplicationEventDispatcher eventDispatcher)
             : base (Identifier, project, models)
@@ -56,6 +58,23 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
                 { "ConnectionString", $"Server=.;Initial Catalog={ Project.Application.SolutionName };Integrated Security=true;MultipleActiveResultSets=True" },
                 { "ProviderName", "System.Data.SqlClient" },
             });
+        }
+
+        public IEnumerable<DbContextDecoratorBase> GetDecorators()
+        {
+            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+        }
+
+        public string GetBaseClass()
+        {
+            try
+            {
+                return GetDecorators().Select(x => x.GetBaseClass()).SingleOrDefault(x => x != null) ?? "DbContext";
+            }
+            catch (InvalidOperationException)
+            {
+                throw new Exception($"Multiple decorators attempting to modify 'base class' on {Identifier}");
+            }
         }
     }
 }

@@ -11,9 +11,9 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
+using Intent.Framework.Core;
 using Intent.Framework.Domain.Repositories;
 using Intent.Framework.EntityFramework.Repositories;
-using Intent.CodeGen;
 <#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Ignore)]
@@ -24,7 +24,7 @@ namespace <#= Namespace #>
 	public class <#= ClassName #> : RepositoryBase<<#= EntityInterfaceName #>, <#= EntityName #>, <#= DbContextName #>>, <#= RepositoryContractName #>
     {
         [IntentManaged(Mode.Merge, Body = Mode.Ignore)]
-        public <#= ClassName #>() : base (new <#= DeleteVisitorName #>)
+        public <#= ClassName #>(IContextBackingStore context) : base (context.Get<<#= DbContextName #>>())
         {
         }
     }

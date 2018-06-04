@@ -21,7 +21,6 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin; 
 <#= DependencyUsings #>
-using Intent.CodeGen;
 
 [assembly: OwinStartup(typeof(<#= Namespace #>.Startup))]
 [assembly: DefaultIntentManaged(Mode.Fully)]

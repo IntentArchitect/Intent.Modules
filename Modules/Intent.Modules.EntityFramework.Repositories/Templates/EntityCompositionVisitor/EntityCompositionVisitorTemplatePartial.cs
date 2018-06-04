@@ -4,16 +4,15 @@ using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
-using Class = Intent.SoftwareFactory.MetaModels.UMLModel.Class;
 
-namespace Intent.Modules.EntityFramework.Repositories.Templates.DeleteVisitor
+namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
 {
-    partial class DeleteVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation
+    partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation
     {
-        public const string Identifier = "Intent.EntityFramework.Repositories.DeleteVisitor";
+        public const string Identifier = "Intent.EntityFramework.Repositories.EntityCompositionVisitor";
         private ITemplateDependancy[] _entityStateTemplateDependancies;
 
-        public DeleteVisitorTemplate(IEnumerable<IClass> models, IProject project)
+        public EntityCompositionVisitorTemplate(IEnumerable<IClass> models, IProject project)
             : base (Identifier, project, models)
         {
 
@@ -54,14 +53,14 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.DeleteVisitor
             );
         }
 
-        //public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        //{
-        //    return new[]
-        //    {
-        //        new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0", null),
-        //    }
-        //    .Union(base.GetNugetDependencies())
-        //    .ToArray();
-        //}
+        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        {
+            return new[]
+            {
+                new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0-pre1", null),
+            }
+            .Union(base.GetNugetDependencies())
+            .ToArray();
+        }
     }
 }

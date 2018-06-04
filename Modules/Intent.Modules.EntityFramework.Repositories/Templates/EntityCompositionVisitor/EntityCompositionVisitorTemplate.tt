@@ -17,7 +17,6 @@ using Intent.Framework.Core;
 using Intent.Framework.EntityFramework.Interceptors;
 using System.Collections.Generic;
 <#= DependencyUsings #>
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -31,6 +30,11 @@ namespace <#= Namespace #>
     {
         private readonly IList<object> _entities;
 
+        public <#= ClassName #>()
+        {
+            _entities = new List<object>();
+        }
+
         public IList<object> Entities
         {
             get
@@ -42,11 +46,6 @@ namespace <#= Namespace #>
         public void Reset()
         {
             _entities.Clear();
-        }
-
-        public <#= ClassName #>()
-        {
-            _entities = new List<object>();
         }
 
         public void Visit(IVisitable visitable)

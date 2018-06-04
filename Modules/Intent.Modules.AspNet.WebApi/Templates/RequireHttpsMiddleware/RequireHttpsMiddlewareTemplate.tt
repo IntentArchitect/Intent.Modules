@@ -15,7 +15,6 @@
 using Microsoft.Owin;
 using System.Threading.Tasks;
 using System.Web;
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

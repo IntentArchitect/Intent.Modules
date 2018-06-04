@@ -18,7 +18,6 @@ var readOnlyInterfaceName = "I" + Model.Name.ToPascalCase() + "";#>
 using System;
 using System.Collections.Generic;
 using Intent.Framework.Domain;
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

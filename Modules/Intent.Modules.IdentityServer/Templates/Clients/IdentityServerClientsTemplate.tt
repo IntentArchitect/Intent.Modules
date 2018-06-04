@@ -16,7 +16,6 @@
 #>
 using System.Collections.Generic;
 using IdentityServer3.Core.Models;
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

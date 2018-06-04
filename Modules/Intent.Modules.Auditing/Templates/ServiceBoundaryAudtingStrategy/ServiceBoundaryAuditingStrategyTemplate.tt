@@ -15,7 +15,6 @@ using Intent.Esb.Client.Publishing;
 using Intent.Framework;
 using Intent.Framework.EntityFramework.Auditing;
 using Intent.Framework.EntityFramework.Auditing.Data;
-using Intent.CodeGen;
 <#=DependencyUsings#>
 
 [assembly:DefaultIntentManaged(Mode.Ignore)]

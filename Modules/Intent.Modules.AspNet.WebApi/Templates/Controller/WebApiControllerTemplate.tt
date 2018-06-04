@@ -20,7 +20,6 @@ using System.Collections.Generic;
 using System.Transactions;
 using System.Web;
 using System.Web.Http;
-using Intent.CodeGen;
 <#=DependencyUsings#>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
