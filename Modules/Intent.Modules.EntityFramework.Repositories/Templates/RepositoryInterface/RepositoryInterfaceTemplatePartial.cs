@@ -6,7 +6,7 @@ using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.RepositoryInterface
 {
-    partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies
+    partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.Interface";
         private ITemplateDependancy _entityStateTemplateDependancy;

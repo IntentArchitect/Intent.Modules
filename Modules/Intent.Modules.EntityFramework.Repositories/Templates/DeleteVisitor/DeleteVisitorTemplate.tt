@@ -23,26 +23,30 @@ using Intent.CodeGen;
 
 namespace <#= Namespace #>
 {
-    public class <#= ClassName #> : ICompositionDeleteVisitor
+    /// <summary>
+    /// Determines the entities that are compositionally associated with a root entity.
+    /// This is typically used to work out which entities should be deleted when their root is deleted.
+    /// </summary>
+    public class <#= ClassName #> : IEntityCompositionVisitor
     {
-        private readonly IList<object> _toDelete;
+        private readonly IList<object> _entities;
 
-        public IList<object> ToDelete
+        public IList<object> Entities
         {
             get
             {
-                return _toDelete;
+                return _entities;
             }
         }
 
         public void Reset()
         {
-            _toDelete.Clear();
+            _entities.Clear();
         }
 
         public <#= ClassName #>()
         {
-            _toDelete = new List<object>();
+            _entities = new List<object>();
         }
 
         public void Visit(IVisitable visitable)
@@ -83,7 +87,7 @@ namespace <#= Namespace #>
             }
         }
 #>
-            _toDelete.Add(state);
+            _entities.Add(state);
         }
 
 <# }#>

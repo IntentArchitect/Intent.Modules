@@ -32,7 +32,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Project.Application.ApplicationName}DbContext",
                 fileExtension: "cs",
-                defaultLocationInProject: "Generated\\DbContext",
+                defaultLocationInProject: "DbContext",
                 className: "${Project.Application.ApplicationName}DbContext",
                 @namespace: "${Project.ProjectName}"
                 );

@@ -8,9 +8,9 @@ using Class = Intent.SoftwareFactory.MetaModels.UMLModel.Class;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.DeleteVisitor
 {
-    partial class DeleteVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
+    partial class DeleteVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation
     {
-        public const string Identifier = "Intent.RichDomain.EntityFramework.DeleteVisitor";
+        public const string Identifier = "Intent.EntityFramework.Repositories.DeleteVisitor";
         private ITemplateDependancy[] _entityStateTemplateDependancies;
 
         public DeleteVisitorTemplate(IEnumerable<IClass> models, IProject project)
@@ -46,22 +46,22 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.DeleteVisitor
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Project.Application.ApplicationName}DeleteVisitor",
+                fileName: "EntityCompositionVisitor",
                 fileExtension: "cs",
-                defaultLocationInProject: "DeleteVisitor",
-                className: "${Project.Application.ApplicationName}DeleteVisitor",
-                @namespace: "${Project.ProjectName}.DeleteVisitor"
+                defaultLocationInProject: "Visitor",
+                className: "EntityCompositionVisitor",
+                @namespace: "${Project.ProjectName}"
             );
         }
 
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new[]
-            {
-                NugetPackages.IntentFrameworkEntityFramework,
-            }
-            .Union(base.GetNugetDependencies())
-            .ToArray();
-        }
+        //public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        //{
+        //    return new[]
+        //    {
+        //        new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0", null),
+        //    }
+        //    .Union(base.GetNugetDependencies())
+        //    .ToArray();
+        //}
     }
 }

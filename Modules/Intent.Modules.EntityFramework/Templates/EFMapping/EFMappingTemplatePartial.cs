@@ -81,7 +81,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name}Mapping",
                 fileExtension: "cs",
-                defaultLocationInProject: "Generated\\EFMapping",
+                defaultLocationInProject: "EFMapping",
                 className: $"{Model.Name}Mapping",
                 @namespace: "${Project.Name}");
         }

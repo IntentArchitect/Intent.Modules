@@ -9,7 +9,7 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 {
-    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies
+    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.Implementation";
         private ITemplateDependancy _entityStateTemplateDependancy;
