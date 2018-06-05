@@ -24,7 +24,7 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Merge)]
 	public class <#= ClassName #> : RepositoryBase<<#= EntityInterfaceName #>, <#= EntityName #>, <#= DbContextName #>>, <#= RepositoryContractName #>
     {
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore)]
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully, Body = Mode.Ignore)]
         public <#= ClassName #>(IContextBackingStore context) : base (context.Get<DbContextScope>().Get<<#= DbContextName #>>())
         {
         }

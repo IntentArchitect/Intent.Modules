@@ -37,7 +37,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
         {
             return new[]
             {
-                NugetPackages.EntityFramework,
+                NugetPackages.IntentFrameworkCore,
             }
             .Union(base.GetNugetDependencies())
             .ToArray();

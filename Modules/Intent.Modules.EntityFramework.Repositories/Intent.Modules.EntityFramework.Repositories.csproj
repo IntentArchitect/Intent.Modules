@@ -63,6 +63,13 @@
     </Compile>
     <Compile Include="Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplatePartial.cs" />
     <Compile Include="Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplateRegistration.cs" />
+    <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplate.cs">
+      <DependentUpon>EntitySpecificationTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplatePartial.cs" />
+    <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplateRegistration.cs" />
     <Compile Include="Templates\RepositoryInterface\RepositoryInterfaceTemplate.cs">
       <DependentUpon>RepositoryInterfaceTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -94,6 +101,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityCompositionVisitorTemplate.cs</LastGenOutput>
     </None>
+    <Content Include="Templates\EntitySpecification\EntitySpecificationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EntitySpecificationTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>RepositoryInterfaceTemplate.cs</LastGenOutput>

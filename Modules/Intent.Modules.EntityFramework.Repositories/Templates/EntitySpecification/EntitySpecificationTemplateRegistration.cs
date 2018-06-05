@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using Intent.MetaModel.Domain;
+using Intent.Modules.EntityFramework.Repositories.Templates.EntitySpecification;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;

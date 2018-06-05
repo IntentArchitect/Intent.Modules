@@ -61,13 +61,6 @@
     <Compile Include="Decorators\DDDEntityStateDecoratorRegistration.cs" />
     <Compile Include="Decorators\DDDEntityInterfaceDecorator.cs" />
     <Compile Include="Decorators\DDDEntityInterfaceDecoratorRegistration.cs" />
-    <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplate.cs">
-      <DependentUpon>EntitySpecificationTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplatePartial.cs" />
-    <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplateRegistration.cs" />
     <Compile Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.cs">
       <DependentUpon>DomainEntityBehavioursTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -99,10 +92,6 @@
     <Content Include="MetaData\Domain\Stereotypes\ValueObject.xml" />
     <Content Include="MetaData\Domain\Stereotypes\Entity.xml" />
     <Content Include="MetaData\Domain\Stereotypes\QueryOperation.xml" />
-    <Content Include="Templates\EntitySpecification\EntitySpecificationTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EntitySpecificationTemplate.cs</LastGenOutput>
-    </Content>
     <Content Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DomainEntityBehavioursTemplate.cs</LastGenOutput>

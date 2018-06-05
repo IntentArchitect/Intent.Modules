@@ -1,24 +1,27 @@
 ﻿using System.Collections.Generic;
 using Intent.MetaModel.Domain;
-using Intent.Modules.Entities.Templates.DomainEntityInterface;
-using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Modules.Entities.DDD.Templates.EntitySpecification
+namespace Intent.Modules.EntityFramework.Repositories.Templates.EntitySpecification
 {
-    partial class EntitySpecificationTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate
+    partial class EntitySpecificationTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IPostTemplateCreation
     {
-        public const string Identifier = "Intent.Entities.DDD.EntitySpecification";
+        public const string Identifier = "Intent.EntityFramework.Repositories.EntitySpecification";
+        private ITemplateDependancy _entityStateTemplateDependancy;
 
         public EntitySpecificationTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
         {
         }
 
-        public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(DomainEntityStateTemplate.Identifier, Model))?.ClassName 
-            ?? Model.Name;
+        public void Created()
+        {
+            _entityStateTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+        }
+
+        public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(_entityStateTemplateDependancy)?.ClassName ?? Model.Name;
 
         public string BaseClass => $"DomainSpecificationBase<{EntityStateName}, {ClassName}>";
 

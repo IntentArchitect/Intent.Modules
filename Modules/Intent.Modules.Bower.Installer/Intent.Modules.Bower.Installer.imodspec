@@ -13,7 +13,7 @@
     <factoryExtension id="Intent.BowerPackageInstaller" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.Common" version="1.5.0"/>
     <dependency id="Intent.Bower" version="1.3.0"/>
   </dependencies>
   <files>

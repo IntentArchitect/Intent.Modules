@@ -83,8 +83,8 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Merge, Body = Mode.Ignore)]\r\n        public " +
-                    "");
+            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Merge, Signature = Mode.Fully, Body = Mode.I" +
+                    "gnore)]\r\n        public ");
             
             #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
