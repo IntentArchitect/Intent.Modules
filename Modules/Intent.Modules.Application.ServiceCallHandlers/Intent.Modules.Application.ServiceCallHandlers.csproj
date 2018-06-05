@@ -88,6 +88,10 @@
       <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
+      <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
+      <Name>Intent.Modules.Constants</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

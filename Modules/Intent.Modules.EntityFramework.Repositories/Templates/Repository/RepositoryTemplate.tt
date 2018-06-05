@@ -13,6 +13,7 @@
 <#@ import namespace="System.Collections.Generic" #> 
 using Intent.Framework.Core;
 using Intent.Framework.Domain.Repositories;
+using Intent.Framework.EntityFramework;
 using Intent.Framework.EntityFramework.Repositories;
 <#= DependencyUsings #>
 
@@ -24,7 +25,7 @@ namespace <#= Namespace #>
 	public class <#= ClassName #> : RepositoryBase<<#= EntityInterfaceName #>, <#= EntityName #>, <#= DbContextName #>>, <#= RepositoryContractName #>
     {
         [IntentManaged(Mode.Merge, Body = Mode.Ignore)]
-        public <#= ClassName #>(IContextBackingStore context) : base (context.Get<<#= DbContextName #>>())
+        public <#= ClassName #>(IContextBackingStore context) : base (context.Get<DbContextScope>().Get<<#= DbContextName #>>())
         {
         }
     }

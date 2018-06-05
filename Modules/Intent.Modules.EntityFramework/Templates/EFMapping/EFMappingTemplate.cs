@@ -535,7 +535,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             this.Write("Id\");\r\n                        m.MapRightKey(\"");
             
             #line 204 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.Class.Name.ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.Name.ToPascalCase()));
             
             #line default
             #line hidden

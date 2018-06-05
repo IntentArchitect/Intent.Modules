@@ -63,7 +63,6 @@
     <None Include="Intent.Modules.EntityFramework.Interop.WebApi.imodspec" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
       <Project>{d6171cc1-577a-4123-9ca3-34e017a40071}</Project>
@@ -73,6 +72,9 @@
       <Project>{56475E35-0CC7-4D75-937C-FF46C073BB66}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

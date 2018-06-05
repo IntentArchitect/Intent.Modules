@@ -8,7 +8,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
 {
     public partial class RequireHttpsMiddlewareTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies
     {
-        public const string Identifier = "Intent.WebApi.RequireHttpsMiddleware";
+        public const string Identifier = "Intent.AspNet.WebApi.RequireHttpsMiddleware";
         public RequireHttpsMiddlewareTemplate(IProject project)
             : base(Identifier, project, null)
         {

@@ -20,21 +20,24 @@ namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
         public override IEnumerable<string> DeclareUsings(IServiceModel mode) => new List<string>()
         {
             "using Intent.Framework;",
-            "using Intent.Framework.Core.Context;",
+            "using Intent.Framework.Core;",
             "using Intent.Framework.EntityFramework;",
         };
 
         public override string DeclarePrivateVariables(IServiceModel service) => @"
-        private readonly IDbContextFactory _dbContextFactory;";
+        private readonly IDbContextFactory _dbContextFactory;
+        private readonly IContextBackingStore _contextBackingStore;";
 
         public override string ConstructorParams(IServiceModel service) => @"
-            , IDbContextFactory dbContextFactory";
+            , IDbContextFactory dbContextFactory
+            , IContextBackingStore contextBackingStore";
 
         public override string ConstructorInit(IServiceModel service) => @"
-            _dbContextFactory = dbContextFactory;";
+            _dbContextFactory = dbContextFactory;
+            _contextBackingStore = contextBackingStore;";
 
         public override string BeforeTransaction(IServiceModel service, IOperationModel operation) => $@"
-                using (var dbScope = new DbContextScope(_dbContextFactory, readOnly: { operation.Stereotypes.Any(x => x.Name == "ReadOnly").ToString().ToLower() }))
+                using (var dbScope = new DbContextScope(_dbContextFactory, _contextBackingStore, readOnly: { operation.Stereotypes.Any(x => x.Name == "ReadOnly").ToString().ToLower() }))
                 {{";
 
         public override string AfterCallToAppLayer(IServiceModel service, IOperationModel operation) => operation.Stereotypes.All(x => x.Name != "ReadOnly") ? @"

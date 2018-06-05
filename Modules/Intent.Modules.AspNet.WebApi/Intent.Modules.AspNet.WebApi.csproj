@@ -96,6 +96,13 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\WebApiBadHttpRequestException\WebApiBadHttpRequestExceptionTemplatePartial.cs" />
+    <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplateRegistration.cs" />
+    <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.cs">
+      <DependentUpon>WebApiServiceCallContextTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.AspNet.WebApi.imodspec" />
@@ -156,6 +163,12 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>OwinWebApiConfigTemplate.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>WebApiServiceCallContextTemplate.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

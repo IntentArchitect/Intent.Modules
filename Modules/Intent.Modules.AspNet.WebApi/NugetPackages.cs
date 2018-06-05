@@ -27,13 +27,11 @@ namespace Intent.Modules.AspNet.WebApi
 
         public static NugetPackageInfo IntentFrameworkCore = new NugetPackageInfo("Intent.Framework.Core", "1.0.0-pre3", "net45");
 
-        public static NugetPackageInfo IntentFrameworkDomain = new NugetPackageInfo("Intent.Framework.Core", "1.0.0-pre2", "net45");
+        public static NugetPackageInfo IntentFrameworkDomain = new NugetPackageInfo("Intent.Framework.Domain", "1.0.0-pre2", "net45");
 
-        public static NugetPackageInfo IntentFrameworkEntityFramework = new NugetPackageInfo("Intent.Framework.EntityFramework", "0.1.8-beta", "net45");
+        public static NugetPackageInfo IntentFrameworkEntityFramework = new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0-pre1", "net45");
         
         public static NugetPackageInfo IntentFrameworkUnity = new NugetPackageInfo("Intent.Framework.Unity","0.1.2-beta", "net45");
-
-        public static NugetPackageInfo IntentFrameworkWebApi = new NugetPackageInfo("Intent.Framework.WebApi","0.1.3-beta", "net45");
 
         public static NugetPackageInfo IntentFrameworkWcf = new NugetPackageInfo("Intent.Framework.WCF", "0.1.4-beta","net45");
 

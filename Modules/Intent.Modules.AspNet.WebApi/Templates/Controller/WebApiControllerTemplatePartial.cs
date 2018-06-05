@@ -14,7 +14,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
     partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings
     {
-        public const string Identifier = "Intent.WebApi.Controller";
+        public const string Identifier = "Intent.AspNet.WebApi.Controller";
         private IEnumerable<WebApiControllerDecoratorBase> _decorators;
 
         public WebApiControllerTemplate(IProject project, IServiceModel model)
@@ -52,7 +52,6 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 NugetPackages.MicrosoftAspNetWebApiCore,
                 NugetPackages.MicrosoftAspNetWebApiWebHost,
                 NugetPackages.NewtonsoftJson,
-                NugetPackages.IntentFrameworkWebApi,
             }
             .Union(base.GetNugetDependencies())
             .ToArray();

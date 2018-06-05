@@ -1,3 +1,4 @@
+using System;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
 using Intent.Modules.Application.Contracts.Templates.DTO;
@@ -11,7 +12,8 @@ namespace Intent.Modules.Application.Contracts
 {
     public static class CSharpTypeReferenceExtensions
     {
-        public static string GetQualifiedName<T>(this ITypeReference typeInfo, T template, string templateIdentifier = DTOTemplate.IDENTIFIER)
+        [Obsolete("To be converted to Type system")]
+        public static string GetQualifiedName<T>(this ITypeReference typeInfo, T template, string templateIdentifier = DTOTemplate.Identifier)
             where T: IProjectItemTemplate, IRequireTypeResolver
         {
             var result = typeInfo.Name;

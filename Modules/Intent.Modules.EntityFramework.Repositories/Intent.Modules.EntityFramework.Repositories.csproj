@@ -104,6 +104,10 @@
       <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
+      <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
+      <Name>Intent.Modules.Constants</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.EntityFramework\Intent.Modules.EntityFramework.csproj">
       <Project>{6F1E2AAB-73BC-47BE-978E-C8CA8E93379A}</Project>
       <Name>Intent.Modules.EntityFramework</Name>

@@ -6,9 +6,9 @@ using System.Collections.Generic;
 namespace Intent.Modules.AspNet.WebApi.Decorators
 {
     // TODO: This should move out to its own package.
-    public class WebApiWebApiControllerExceptionHandlingStrategy : WebApiControllerDecoratorBase, IHasNugetDependencies
+    public class WebApiWebApiControllerExceptionHandlingStrategy : WebApiControllerDecoratorBase
     {
-        public const string Identifier = "Intent.WebApi.ExceptionHandlingStrategy";
+        public const string Identifier = "Intent.AspNet.WebApi.ExceptionHandlingStrategy";
 
         public override IEnumerable<string> DeclareUsings(IServiceModel service) => new List<string>
         {
@@ -30,13 +30,5 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
         public override bool HandlesCaughtException() => true;
 
         public override int Priority { get; set; } = -400;
-
-        public IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new[]
-            {
-                NugetPackages.IntentFrameworkWebApi,
-            };
-        }
     }
 }

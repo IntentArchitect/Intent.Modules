@@ -8,10 +8,10 @@
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>NLog Logging Service</tags>
   <templates>
-    <template id="Intent.Logging.NLog.OperationRequestId">
+    <template id="Intent.Logging.NLog.OperationRequestId" enabled="false">
       <role>Distribution</role>
     </template>
-    <template id="Intent.Logging.NLog.OperationRequestIdRenderer">
+    <template id="Intent.Logging.NLog.OperationRequestIdRenderer" enabled="false">
       <role>Distribution</role>
     </template>
     <template id="Intent.Logging.NLog.SanitizingJsonSerializer">

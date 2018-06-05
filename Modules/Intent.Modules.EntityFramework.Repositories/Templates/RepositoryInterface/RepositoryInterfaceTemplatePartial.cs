@@ -58,7 +58,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.RepositoryInterf
         {
             return new[]
                 {
-                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0-pre1", null),
+                    new NugetPackageInfo("Intent.Framework.Domain", "1.0.0-pre2", null),
                 }
                 .Union(base.GetNugetDependencies())
                 .ToArray();

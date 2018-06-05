@@ -10,7 +10,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.HttpExceptionHandler
 {
     partial class HttpExceptionHandlerTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing, IHasAssemblyDependencies
     {
-        public const string Identifier = "Intent.WebApi.HttpExceptionHandler";
+        public const string Identifier = "Intent.AspNet.WebApi.HttpExceptionHandler";
 
         private readonly IApplicationEventDispatcher _eventDispatcher;
 
@@ -43,7 +43,6 @@ namespace Intent.Modules.AspNet.WebApi.Templates.HttpExceptionHandler
             {
                 NugetPackages.IntentFrameworkCore,
                 NugetPackages.IntentFrameworkDomain,
-                NugetPackages.IntentFrameworkWebApi,
             }
             .Union(base.GetNugetDependencies())
             .ToArray();

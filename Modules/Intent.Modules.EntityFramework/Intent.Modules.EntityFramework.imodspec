@@ -30,12 +30,12 @@
   <interoperability>
     <detect id="Intent.AspNet.WebApi">
       <install>
-        <package id="Intent.EntityFramework.Interop.WebApi" version="1.4.0"/>
+        <package id="Intent.EntityFramework.Interop.WebApi" version="1.5.0"/>
       </install>
     </detect>
     <detect id="Intent.Unity">
       <install>
-        <package id="Intent.EntityFramework.Interop.Unity" version="1.4.0"/>
+        <package id="Intent.EntityFramework.Interop.Unity" version="1.5.0"/>
       </install>
     </detect>
   </interoperability>

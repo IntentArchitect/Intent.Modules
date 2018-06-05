@@ -6,7 +6,7 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
-using DTOTemplate = Intent.Modules.Application.Contracts.Legacy.DTO.DTOTemplate;
+using Intent.Modules.Application.Contracts.Templates.DTO;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {

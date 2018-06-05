@@ -9,7 +9,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
 {
     partial class OwinWebApiConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, IHasDecorators<IWebApiConfigTemplateDecorator>
     {
-        public const string Identifier = "Intent.WebApi.OwinWebApiConfig";
+        public const string Identifier = "Intent.AspNet.WebApi.OwinWebApiConfig";
         private IEnumerable<IWebApiConfigTemplateDecorator> _decorators;
 
         public OwinWebApiConfigTemplate(IProject project)

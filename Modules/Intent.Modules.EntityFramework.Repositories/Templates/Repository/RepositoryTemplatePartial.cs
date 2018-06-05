@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common.Plugins;
+using Intent.Modules.Constants;
 using Intent.Modules.Entities.DDD.Templates.RepositoryInterface;
 using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor;
 using Intent.Modules.EntityFramework.Repositories.Templates.RepositoryInterface;
@@ -11,7 +13,7 @@ using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 {
-    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation
+    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.Implementation";
         private ITemplateDependancy _entityStateTemplateDependancy;
@@ -61,6 +63,11 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
                 );
         }
 
+        public void PreProcess()
+        {
+
+        }
+
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
             return new[]
@@ -81,6 +88,23 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
                 }
                 .Union(base.GetNugetDependencies())
                 .ToArray();
+        }
+
+        public void BeforeTemplateExecution()
+        {
+            var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependancy);
+            if (contractTemplate == null)
+            {
+                return;
+            }
+
+            Project.Application.EventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
+            {
+                { "InterfaceType", $"{contractTemplate.Namespace}.{contractTemplate.ClassName}"},
+                { "ConcreteType", $"{Namespace}.{ClassName}" },
+                { "InterfaceTypeTemplateId", _repositoryInterfaceTemplateDependancy.TemplateIdOrName },
+                { "ConcreteTypeTemplateId", Identifier }
+            });
         }
     }
 }

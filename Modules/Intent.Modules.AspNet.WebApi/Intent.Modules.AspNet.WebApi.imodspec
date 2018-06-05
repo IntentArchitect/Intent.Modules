@@ -8,27 +8,30 @@
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>WebApi Restful</tags>
   <templates>
-    <template id="Intent.WebApi.Controller">
+    <template id="Intent.AspNet.WebApi.Controller">
       <role>Distribution.WebApi</role>
     </template>
-    <template id="Intent.WebApi.OwinWebApiConfig">
+    <template id="Intent.AspNet.WebApi.OwinWebApiConfig">
       <role>Distribution.WebApi</role>
     </template>
-    <template id="Intent.WebApi.BadHttpRequestException" enabled="false">
+    <template id="Intent.AspNet.WebApi.ServiceCallContext">
       <role>Distribution.WebApi</role>
     </template>
-    <template id="Intent.WebApi.RequireHttpsMiddleware" enabled="false">
+    <template id="Intent.AspNet.WebApi.BadHttpRequestException" enabled="false">
       <role>Distribution.WebApi</role>
     </template>
-    <template id="Intent.WebApi.HttpExceptionHandler" enabled="false">
+    <template id="Intent.AspNet.WebApi.RequireHttpsMiddleware" enabled="false">
+      <role>Distribution.WebApi</role>
+    </template>
+    <template id="Intent.AspNet.WebApi.HttpExceptionHandler" enabled="false">
       <role>Distribution.WebApi</role>
     </template>
   </templates>
   <decorators>
-    <decorator id="Intent.WebApi.OwinStartup"/>
-    <decorator id="Intent.WebApi.OwinStartup.UseHttpsDecorator" enabled="false"/>
-    <decorator id="Intent.WebApi.WebApiConfig.JsonValidation.Decorator" enabled="false"/>
-    <decorator id="Intent.WebApi.ExceptionHandlingStrategy" enabled="false"/>
+    <decorator id="Intent.AspNet.WebApi.OwinStartup"/>
+    <decorator id="Intent.AspNet.WebApi.OwinStartup.UseHttpsDecorator" enabled="false"/>
+    <decorator id="Intent.AspNet.WebApi.WebApiConfig.JsonValidation.Decorator" enabled="false"/>
+    <decorator id="Intent.AspNet.WebApi.ExceptionHandlingStrategy" enabled="false"/>
   </decorators>
   <dependencies>
     <dependency id="Intent.Common" version="1.5.0"/>

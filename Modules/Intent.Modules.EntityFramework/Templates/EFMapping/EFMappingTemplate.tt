@@ -201,7 +201,7 @@ namespace <#= Namespace #>
                     {
                         m.ToTable("<#= associationEnd.OtherEnd().Class.Name.ToPascalCase() + associationEnd.Name().ToPascalCase() #>");
                         m.MapLeftKey("<#= associationEnd.OtherEnd().Class.Name.ToPascalCase()#>Id");
-                        m.MapRightKey("<#= associationEnd.Class.Name.ToPascalCase()#>Id");
+                        m.MapRightKey("<#= associationEnd.Name.ToPascalCase()#>Id");
                     });
 
 <#                  break;

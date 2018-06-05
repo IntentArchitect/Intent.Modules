@@ -18,12 +18,6 @@
         <add key="Namespace" description="Create the class within the specified namespace" default="${FolderBasedNamespace}" />
       </config>
     </template>
-    <template id="Intent.Application.Contracts.DTO.Legacy">
-      <role>Application.Contracts</role>
-    </template>
-    <template id="Intent.Application.Contracts.ServiceContract.Legacy">
-      <role>Application.Contracts</role>
-    </template>
   </templates>
   <decorators>
     <decorator id="Intent.Application.Contracts.DataContractDecorator"/>
