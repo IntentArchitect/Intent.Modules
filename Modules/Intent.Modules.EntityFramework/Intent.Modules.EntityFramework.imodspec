@@ -27,6 +27,18 @@
     </template>
   </templates>
   <decorators />
+  <interoperability>
+    <detect id="Intent.AspNet.WebApi">
+      <install>
+        <package id="Intent.EntityFramework.Interop.WebApi" version="1.4.0"/>
+      </install>
+    </detect>
+    <detect id="Intent.Unity">
+      <install>
+        <package id="Intent.EntityFramework.Interop.Unity" version="1.4.0"/>
+      </install>
+    </detect>
+  </interoperability>
   <dependencies>
     <dependency id="Intent.Common" version="1.3.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>

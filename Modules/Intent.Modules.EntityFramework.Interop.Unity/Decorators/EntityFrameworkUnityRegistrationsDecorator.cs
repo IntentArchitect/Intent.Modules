@@ -24,8 +24,6 @@ namespace Intent.Modules.EntityFramework.Interop.Unity.Decorators
 
         public string Registrations() => $@"
             container.RegisterType<IDbContextFactory, DbContextFactory>();
-            container.RegisterType<IDbContextSaveInterceptor, OrphanDeleteInterceptor>(""OrphanDeleteInterceptor"");
-            container.RegisterType<ICompositionDeleteVisitor, { _application.ApplicationName }DeleteVisitor>();
 ";
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {

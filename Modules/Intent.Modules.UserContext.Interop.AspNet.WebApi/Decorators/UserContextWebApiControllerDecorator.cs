@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.UserContext.Interop.AspNet.WebApi.Decorators
 {
-    public class UserContextDistributionDecorator : DistributionDecoratorBase, IHasTemplateDependencies
+    public class UserContextWebApiControllerDecorator : WebApiControllerDecoratorBase, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.UserContext.Interop.WebApi.DistributionDecorator";
 

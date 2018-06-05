@@ -9,12 +9,12 @@ using System.Linq;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
-    [Description("Intent Application - Service Implementation")]
-    public class Registrations : ModelTemplateRegistrationBase<IServiceModel>
+    [Description(ServiceImplementationTemplate.Identifier)]
+    public class ServiceImplementationTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public ServiceImplementationTemplateRegistrations(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

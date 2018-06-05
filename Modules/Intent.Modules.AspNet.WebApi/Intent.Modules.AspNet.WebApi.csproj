@@ -41,10 +41,6 @@
       <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.4.0\lib\net452\Intent.MetaModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.Modules.Common.1.3.0\lib\net452\Intent.Modules.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.4.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
@@ -62,7 +58,7 @@
   <ItemGroup>
     <Compile Include="Decorators\UseHttpsOwinStartupDecorator.cs" />
     <Compile Include="Decorators\WebApiConfigJsonValidationDecorator.cs" />
-    <Compile Include="Decorators\WebApiDistributionExceptionHandlingStrategy.cs" />
+    <Compile Include="Decorators\WebApiWebApiControllerExceptionHandlingStrategy.cs" />
     <Compile Include="Decorators\WebApiOwinStartupDecorator.cs" />
     <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.cs">
       <DependentUpon>RequireHttpsMiddlewareTemplate.tt</DependentUpon>
@@ -72,7 +68,7 @@
     <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplatePartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrations.cs" />
-    <Compile Include="Templates\Controller\DistributionDecoratorBase.cs" />
+    <Compile Include="Templates\Controller\WebApiControllerDecoratorBase.cs" />
     <Compile Include="Templates\Controller\WebApiControllerTemplateRegistrations.cs" />
     <Compile Include="Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.cs">
       <DependentUpon>HttpExceptionHandlerTemplate.tt</DependentUpon>
@@ -127,6 +123,10 @@
     <ProjectReference Include="..\Intent.Modules.AspNet.Owin\Intent.Modules.AspNet.Owin.csproj">
       <Project>{56a0b1f7-fa7e-46b0-a1c8-164ddb07fc4c}</Project>
       <Name>Intent.Modules.AspNet.Owin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
+      <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
+      <Name>Intent.Modules.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>

@@ -1,6 +1,7 @@
 ﻿using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.SoftwareFactory.Registrations;
 using System.ComponentModel;
+using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modules.Entities.Decorators
 {
@@ -10,7 +11,7 @@ namespace Intent.Modules.Entities.Decorators
 
         public override string DecoratorId => SerializableEntityInterfaceDecorator.Identifier;
 
-        public override object CreateDecoratorInstance()
+        public override object CreateDecoratorInstance(IApplication application)
         {
             return new SerializableEntityInterfaceDecorator();
         }

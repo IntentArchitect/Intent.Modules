@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.Messaging.Publisher.Decorators.Legacy
 {
-    // This is almost an exact copy of IntentEsbPublishingDistributionDecorator
+    // This is almost an exact copy of IntentEsbPublishingWebApiControllerDecorator
     public class IntentEsbPublishingEventConsumerDecorator : IEventConsumerDecorator
     {
         public const string Identifier = "Intent.Messaging.Publisher.EventConsumerDecorator.Legacy";

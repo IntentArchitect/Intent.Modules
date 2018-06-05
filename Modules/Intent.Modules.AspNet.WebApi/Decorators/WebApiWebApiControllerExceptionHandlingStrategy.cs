@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Intent.Modules.AspNet.WebApi.Decorators
 {
     // TODO: This should move out to its own package.
-    public class WebApiDistributionExceptionHandlingStrategy : DistributionDecoratorBase, IHasNugetDependencies
+    public class WebApiWebApiControllerExceptionHandlingStrategy : WebApiControllerDecoratorBase, IHasNugetDependencies
     {
         public const string Identifier = "Intent.WebApi.ExceptionHandlingStrategy";
 

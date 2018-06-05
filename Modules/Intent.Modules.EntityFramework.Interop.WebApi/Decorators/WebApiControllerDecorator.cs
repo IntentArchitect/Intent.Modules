@@ -4,12 +4,18 @@ using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.SoftwareFactory.Eventing;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
 {
-    public class EntityFrameworkDistributionDecorator : DistributionDecoratorBase, IHasNugetDependencies
+    public class WebApiControllerDecorator : WebApiControllerDecoratorBase, IHasNugetDependencies
     {
-        public const string Identifier = "Intent.EntityFramework.Interop.WebApi";
+        public WebApiControllerDecorator(IApplicationEventDispatcher applicationEventDispatcher)
+        {
+        }
+
+        public const string Identifier = "Intent.EntityFramework.Interop.WebApi.ControllerDecorator";
 
         public override IEnumerable<string> DeclareUsings(IServiceModel mode) => new List<string>()
         {

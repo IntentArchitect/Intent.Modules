@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
-    public abstract class DistributionDecoratorBase : ITemplateDecorator, IPriorityDecorator
+    public abstract class WebApiControllerDecoratorBase : ITemplateDecorator, IPriorityDecorator
     {
         public virtual IEnumerable<string> DeclareUsings(IServiceModel service) => new List<string>();
 

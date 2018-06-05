@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.Messaging.Publisher.Decorators
 {
-    public class IntentEsbPublishingDistributionDecorator : DistributionDecoratorBase, IHasNugetDependencies
+    public class IntentEsbPublishingWebApiControllerDecorator : WebApiControllerDecoratorBase, IHasNugetDependencies
     {
         public const string Identifier = "Intent.Messaging.Publisher.DistributionDecorator";
 

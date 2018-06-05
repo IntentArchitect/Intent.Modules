@@ -12,10 +12,10 @@ using System.Linq;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
-    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<DistributionDecoratorBase>, IDeclareUsings
+    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings
     {
         public const string Identifier = "Intent.WebApi.Controller";
-        private IEnumerable<DistributionDecoratorBase> _decorators;
+        private IEnumerable<WebApiControllerDecoratorBase> _decorators;
 
         public WebApiControllerTemplate(IProject project, IServiceModel model)
             : base(Identifier, project, model)
@@ -154,7 +154,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             return GetDecorators().Aggregate(x => x.ClassMethods(Model));
         }
 
-        public IEnumerable<DistributionDecoratorBase> GetDecorators()
+        public IEnumerable<WebApiControllerDecoratorBase> GetDecorators()
         {
             return _decorators ?? (_decorators = Project.ResolveDecorators(this));
         }

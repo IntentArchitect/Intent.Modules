@@ -27,7 +27,7 @@ namespace Intent.Modules.AspNet.WebApi
             RegisterTemplate(WebApiBadHttpRequestExceptionTemplate.Identifier, project => new WebApiBadHttpRequestExceptionTemplate(project));
             RegisterTemplate(RequireHttpsMiddlewareTemplate.Identifier, project => new RequireHttpsMiddlewareTemplate(project));
 
-            RegisterDecorator<DistributionDecoratorBase>(WebApiDistributionExceptionHandlingStrategy.Identifier, new WebApiDistributionExceptionHandlingStrategy());
+            RegisterDecorator<WebApiControllerDecoratorBase>(WebApiWebApiControllerExceptionHandlingStrategy.Identifier, new WebApiWebApiControllerExceptionHandlingStrategy());
             RegisterDecorator<IWebApiConfigTemplateDecorator>(WebApiConfigJsonValidationDecorator.Identifier, new WebApiConfigJsonValidationDecorator());
             RegisterDecorator<IOwinStartupDecorator>(WebApiOwinStartupDecorator.Identifier, new WebApiOwinStartupDecorator());
             RegisterDecorator<IOwinStartupDecorator>(UseHttpsOwinStartupDecorator.Identifier, new UseHttpsOwinStartupDecorator());

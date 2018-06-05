@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace Intent.Modules.Logging.NLog.Interop.WebApi.Decorators
 {
-    public class NLogDistributionDecorator : DistributionDecoratorBase, IHasNugetDependencies, IHasTemplateDependencies
+    public class NLogWebApiControllerDecorator : WebApiControllerDecoratorBase, IHasNugetDependencies, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.Logging.NLog.Interop.WebApi.Decorator";
 
-        public NLogDistributionDecorator()
+        public NLogWebApiControllerDecorator()
         {
         }
 

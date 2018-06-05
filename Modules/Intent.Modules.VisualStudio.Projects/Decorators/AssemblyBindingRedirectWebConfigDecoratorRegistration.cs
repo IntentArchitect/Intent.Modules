@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modules.VisualStudio.Projects.Decorators
 {
@@ -20,7 +21,7 @@ namespace Intent.Modules.VisualStudio.Projects.Decorators
             }
         }
 
-        public override object CreateDecoratorInstance()
+        public override object CreateDecoratorInstance(IApplication application)
         {
             return new AssemblyBindingRedirectWebConfigDecorator();
         }

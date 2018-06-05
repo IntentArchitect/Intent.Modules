@@ -10,12 +10,12 @@ using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
-    [Description("Intent Application - Service Call Handler")]
-    public class Registrations : IProjectTemplateRegistration
+    [Description(ServiceCallHandlerImplementationTemplate.Identifier)]
+    public class ServiceCallHandlerImplementationTemplateRegistrations : IProjectTemplateRegistration
     {
         private readonly IMetaDataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public ServiceCallHandlerImplementationTemplateRegistrations(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

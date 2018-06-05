@@ -2,6 +2,7 @@
 using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Modules.Entities.Templates.DomainEntityState;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
@@ -11,7 +12,7 @@ namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
     {
         public override string DecoratorId => SurrogatePrimaryKeyInterfaceDecorator.Identifier;
 
-        public override object CreateDecoratorInstance()
+        public override object CreateDecoratorInstance(IApplication application)
         {
             return new SurrogatePrimaryKeyInterfaceDecorator();
         }

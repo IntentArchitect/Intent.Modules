@@ -6,11 +6,11 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.AspNet.SignalR.Interop.WebApi.Decorator
 {
-    internal class SignalrWebApiDistributionDecorator : DistributionDecoratorBase
+    internal class SignalrWebApiWebApiControllerDecorator : WebApiControllerDecoratorBase
     {
         public const string Identifier = "Intent.AspNet.SignalR.Interop.WebApi";
 
-        public SignalrWebApiDistributionDecorator()
+        public SignalrWebApiWebApiControllerDecorator()
         {
             
         }

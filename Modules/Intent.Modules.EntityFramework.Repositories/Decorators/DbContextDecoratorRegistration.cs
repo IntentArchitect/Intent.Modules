@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Intent.Modules.EntityFramework.Templates.DbContext;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.EntityFramework.Repositories.Decorators
@@ -10,7 +11,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Decorators
 
         public override string DecoratorId => DbContextDecorator.Identifier;
 
-        public override object CreateDecoratorInstance()
+        public override object CreateDecoratorInstance(IApplication application)
         {
             return new DbContextDecorator();
         }
