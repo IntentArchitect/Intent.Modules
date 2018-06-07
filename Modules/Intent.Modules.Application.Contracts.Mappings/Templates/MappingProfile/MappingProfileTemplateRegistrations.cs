@@ -10,25 +10,19 @@ using System.Linq;
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
     [Description("Intent Applications Contract Mapping Profile Template")]
-    public class Registrations : ListModelTemplateRegistrationBase<IDTOModel>
+    public class MappingProfileTemplateRegistrations : ListModelTemplateRegistrationBase<IDTOModel>
     {
-        private IMetaDataManager _metaDataManager;
+        private readonly IMetaDataManager _metaDataManager;
 
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public MappingProfileTemplateRegistrations(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
             
             FilterExpression = "!string.IsNullOrWhiteSpace(model.MappedClassId)";
         }
 
-        public override string TemplateId
-        {
-            get
-            {
-                return MappingProfileTemplate.Identifier;
-            }
-        }
+        public override string TemplateId => MappingProfileTemplate.Identifier;
 
         public override ITemplate CreateTemplateInstance(IProject project, IList<IDTOModel> models)
         {

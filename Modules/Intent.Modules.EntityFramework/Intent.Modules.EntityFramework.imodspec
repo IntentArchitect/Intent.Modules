@@ -19,10 +19,10 @@
         <add key="Use Foreign Keys" description="Flag for whether to use foreign keys from the Entities model." default="true" />
       </config>
     </template>
-    <template id="Intent.EntityFramework.DbMigrationsConfiguration" enabled="false">
+    <template id="Intent.EntityFramework.DbMigrationsConfiguration" enabled="true">
       <role>Infrastructure.Data.EF.Migrations</role>
     </template>
-    <template id="Intent.EntityFramework.DbMigrationsReadMe" enabled="false">
+    <template id="Intent.EntityFramework.DbMigrationsReadMe" enabled="true">
       <role>Infrastructure.Data.EF.Migrations</role>
     </template>
   </templates>

@@ -1,27 +1,24 @@
 ﻿using Intent.MetaModel.DTO;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.MetaModel.Domain;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
     partial class MappingProfileTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, ITemplate, IHasNugetDependencies
     {
         public const string Identifier = "Intent.Application.Contracts.Mapping.Profile";
+        public const string ContractTemplateDependancyId = "ContractTemplateDependancyId";
+        public const string DomainTemplateDependancyId = "DomainTemplateDependancyId";
 
         public MappingProfileTemplate(IProject project, IList<IDTOModel> model)
             : base(Identifier, project, model)
         {
-            ContractTemplateDependancyId = "Intent.Application.Contracts.DTO";
-            DomainTemplateDependancyId = "Intent.RichDomain.EntityStateInterface";
         }
-
-        public string ContractTemplateDependancyId { get; set; }
-        public string DomainTemplateDependancyId { get; set; }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -35,7 +32,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public string GetContractType(IDTOModel model)
         {
-            var templateDependancy = TemplateDependancy.OnModel<IDTOModel>(ContractTemplateDependancyId, (to) => to.Id == model.Id);
+            var templateDependancy = TemplateDependancy.OnModel<IDTOModel>(GetMetaData().CustomMetaData[ContractTemplateDependancyId], (to) => to.Id == model.Id);
             var templateOutput = this.Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {
@@ -46,7 +43,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public string GetDomainType(IDTOModel model)
         {
-            var templateDependancy = TemplateDependancy.OnModel<Class>(DomainTemplateDependancyId, (to) => to.ClassId == model.MappedClassId);
+            var templateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData[DomainTemplateDependancyId], (to) => to.Id == model.MappedClassId);
             var templateOutput = this.Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {
