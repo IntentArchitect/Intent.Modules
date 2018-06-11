@@ -121,6 +121,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.RichDomain.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.EntityFramework.Repositories", "Intent.Modules.EntityFramework.Repositories\Intent.Modules.EntityFramework.Repositories.csproj", "{B51489BA-5826-4F55-9A1F-51B3E8ADB142}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Templates", "Application Templates", "{02E19E01-F2C6-4FAC-A57B-2A496B6129AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.ApplicationTemplates", "Intent.ApplicationTemplates\Intent.ApplicationTemplates.csproj", "{9A223AC6-CBF7-418E-93E0-F2326ADDAC07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -351,6 +355,10 @@ Global
 		{B51489BA-5826-4F55-9A1F-51B3E8ADB142}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B51489BA-5826-4F55-9A1F-51B3E8ADB142}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B51489BA-5826-4F55-9A1F-51B3E8ADB142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A223AC6-CBF7-418E-93E0-F2326ADDAC07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A223AC6-CBF7-418E-93E0-F2326ADDAC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A223AC6-CBF7-418E-93E0-F2326ADDAC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A223AC6-CBF7-418E-93E0-F2326ADDAC07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -412,6 +420,7 @@ Global
 		{E1044E5B-715F-4AE8-8FAB-2B95BF05289D} = {46C61870-A203-487D-9680-8D143871AA1F}
 		{1AC61159-586F-4A8E-9857-26FD34C8047F} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 		{B51489BA-5826-4F55-9A1F-51B3E8ADB142} = {46C61870-A203-487D-9680-8D143871AA1F}
+		{9A223AC6-CBF7-418E-93E0-F2326ADDAC07} = {02E19E01-F2C6-4FAC-A57B-2A496B6129AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

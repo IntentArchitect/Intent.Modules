@@ -19,9 +19,8 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
         public WebApiServiceCSProjectFileTemplate(IProject project)
             : base(IDENTIFIER, project, null)
         {
-            _port = project.ProjectType.Properties.First(x => x.Name == "Port").Value;
-            bool useSsl;
-            bool.TryParse(project.ProjectType.Properties.First(x => x.Name == "UseSsl").Value, out useSsl);
+            _port = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "Port")?.Value;
+            bool.TryParse(project.ProjectType.Properties.FirstOrDefault(x => x.Name == "UseSsl")?.Value, out var useSsl);
             if (useSsl)
             {
                 _sslPort = project.ProjectType.Properties.First(x => x.Name == "SslPort").Value;

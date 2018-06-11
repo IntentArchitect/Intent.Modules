@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<applicationTemplate>
+    <id>Intent.ApplicationTemplate.EmptyApplication</id>
+    <displayName>Empty Application</displayName>
+    <shortDescription>An empty application for creating your own stack.</shortDescription>
+    <authors>Intent Software</authors>
+    <icon type="FontAwesome" source="file-o" />
+    <priority>1000</priority>
+</applicationTemplate>
