@@ -13,5 +13,6 @@ namespace Intent.Modules.VisualStudio.Projects
         public const string WcfApplication = "3CDFF513-03D8-4BAB-9435-160108A086A3";
         public const string ConsoleApplication = "673AAE96-C9B1-4B7E-9A52-ADE5F9218CFC";
         public const string NodeJsConsoleApplication = "CC13FD07-C783-4B0D-A641-4A861A22F087";
+        public const string CoreWebApp = "FFD54A85-9362-48AC-B646-C93AB9AC63D2";
     }
 }
