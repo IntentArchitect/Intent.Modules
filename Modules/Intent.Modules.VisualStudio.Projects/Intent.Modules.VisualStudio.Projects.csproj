@@ -87,6 +87,13 @@
     <Compile Include="ProjectTypeIds.cs" />
     <Compile Include="Sync\ApplicationSyncProcessor.cs" />
     <Compile Include="Sync\ProjectSyncProcessor.cs" />
+    <Compile Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.cs">
+      <DependentUpon>CoreLibraryCSProjectTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplatePartial.cs" />
+    <Compile Include="Templates\CoreLibrary\CsProject\CoreWebCSProjectTemplateRegistrations.cs" />
     <Compile Include="Templates\CoreWeb\Startup\CoreWebStartupTemplate.cs">
       <DependentUpon>CoreWebStartupTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -159,6 +166,10 @@
     <Compile Include="Templates\WebConfig\WebApiWebConfigFileTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CoreLibraryCSProjectTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CoreWebStartupTemplate.cs</LastGenOutput>
