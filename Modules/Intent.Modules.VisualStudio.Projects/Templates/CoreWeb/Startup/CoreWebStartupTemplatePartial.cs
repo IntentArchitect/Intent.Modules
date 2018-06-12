@@ -8,7 +8,7 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
 {
-    partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>
+    partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.Startup";
         private readonly IList<ContainerRegistration> _registrations = new List<ContainerRegistration>();
@@ -38,11 +38,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
             return registrations;// + Environment.NewLine + GetDecorators().Aggregate(x => x.Registrations());
         }
 
-        private static string DefineRegistration(ContainerRegistration x)
+        private string DefineRegistration(ContainerRegistration x)
         {
             return x.InterfaceType != null 
-                ? $"{Environment.NewLine}            services.AddTransient<{x.InterfaceType}, {x.ConcreteType}>();" 
-                : $"{Environment.NewLine}            services.AddTransient<{x.ConcreteType}>();";
+                ? $"{Environment.NewLine}            services.AddTransient<{NormalizeNamespace(x.InterfaceType)}, {NormalizeNamespace(x.ConcreteType)}>();" 
+                : $"{Environment.NewLine}            services.AddTransient<{NormalizeNamespace(x.ConcreteType)}>();";
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -60,6 +60,17 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 className: $"Startup",
                 @namespace: "${Project.Name}"
                 );
+        }
+
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            return _registrations
+                .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
+                .Select(x => x.InterfaceTypeTemplateDependency)
+                .Union(_registrations
+                    .Where(x => x.ConcreteTypeTemplateDependency != null)
+                    .Select(x => x.ConcreteTypeTemplateDependency))
+                .ToList();
         }
 
         internal class ContainerRegistration

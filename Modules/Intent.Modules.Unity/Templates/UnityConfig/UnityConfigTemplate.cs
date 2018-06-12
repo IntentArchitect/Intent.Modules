@@ -31,16 +31,15 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         /// </summary>
         public override string TransformText()
         {
-            this.Write(" \r\n");
+            this.Write(" \r\nusing Microsoft.Practices.Unity;\r\nusing System;\r\nusing System.Collections.Gene" +
+                    "ric;\r\nusing System.Linq;\r\n");
             
-            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
-            this.Write("\r\nusing Microsoft.Practices.Unity;\r\nusing System;\r\nusing System.Collections.Gener" +
-                    "ic;\r\nusing System.Linq;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnames" +
-                    "pace ");
+            this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));

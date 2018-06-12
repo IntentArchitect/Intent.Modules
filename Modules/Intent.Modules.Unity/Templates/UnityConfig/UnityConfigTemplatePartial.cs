@@ -11,7 +11,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
 {
     partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IUnityRegistrationsDecorator>, IHasTemplateDependencies
     {
-        public const string Identifier = "Intent.WebApi.UnityConfig";
+        public const string Identifier = "Intent.Unity.Config";
 
         private IEnumerable<IUnityRegistrationsDecorator> _decorators;
         private readonly IList<ContainerRegistration> _registrations = new List<ContainerRegistration>();
@@ -35,9 +35,9 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "UnityConfig",
                 fileExtension: "cs",
-                defaultLocationInProject: "",
+                defaultLocationInProject: "Unity",
                 className: "UnityConfig",
-                @namespace: "${Project.ProjectName}"
+                @namespace: "${Project.ProjectName}.Unity"
                 );
         }
 
@@ -54,7 +54,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         public string Registrations()
         {
             var registrations = _registrations != null && _registrations.Any(x => x.InterfaceType != null)
-                ? _registrations.Where(x => x.InterfaceType != null).Select(x => $"{Environment.NewLine}            container.RegisterType<{x.InterfaceType}, {x.ConcreteType}>();").Aggregate((x, y) => x + y)
+                ? _registrations.Where(x => x.InterfaceType != null).Select(x => $"{Environment.NewLine}            container.RegisterType<{NormalizeNamespace(x.InterfaceType)}, {NormalizeNamespace(x.ConcreteType)}>();").Aggregate((x, y) => x + y)
                 : string.Empty;
 
             return registrations + Environment.NewLine + GetDecorators().Aggregate(x => x.Registrations());
@@ -68,7 +68,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         private void Handle(ApplicationEvent @event)
         {
             _registrations.Add(new ContainerRegistration(
-                interfaceType: @event.GetValue("InterfaceType"), 
+                interfaceType: @event.TryGetValue("InterfaceType"), 
                 concreteType: @event.GetValue("ConcreteType"), 
                 lifetime: @event.TryGetValue("Lifetime"),
                 interfaceTypeTemplateDependency: @event.TryGetValue("InterfaceTypeTemplateId") != null ? TemplateDependancy.OnTemplate(@event.TryGetValue("InterfaceTypeTemplateId")) : null,
@@ -78,7 +78,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
             return _registrations
-                .Where(x => x.InterfaceTypeTemplateDependency != null)
+                .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
                 .Select(x => x.InterfaceTypeTemplateDependency)
                 .Union(_registrations
                     .Where(x => x.ConcreteTypeTemplateDependency != null)

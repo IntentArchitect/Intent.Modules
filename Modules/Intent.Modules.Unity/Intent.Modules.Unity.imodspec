@@ -8,8 +8,11 @@
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Unity Container DI Dependency Injection</tags>
   <templates>
-    <template id="Intent.WebApi.UnityConfig">
-      <role>Distribution.WebApi</role>
+    <template id="Intent.Unity.Config">
+      <role>Distribution</role>
+    </template>
+    <template id="Intent.Unity.ServiceProvider">
+      <role>Distribution</role>
     </template>
   </templates>
   <decorators />
