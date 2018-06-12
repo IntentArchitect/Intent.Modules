@@ -1,20 +1,19 @@
-﻿using Intent.MetaModel.Common;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
-using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Intent.Modules.AspNet.WebApi.Templates.Controller
+namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {
     partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings
     {
-        public const string Identifier = "Intent.AspNet.WebApi.Controller";
+        public const string Identifier = "Intent.AspNetCore.WebApi.Controller";
         private IEnumerable<WebApiControllerDecoratorBase> _decorators;
 
         public WebApiControllerTemplate(IProject project, IServiceModel model)
@@ -43,19 +42,19 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             };
         }
 
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new[]
-            {
-                NugetPackages.MicrosoftAspNetWebApi,
-                NugetPackages.MicrosoftAspNetWebApiClient,
-                NugetPackages.MicrosoftAspNetWebApiCore,
-                NugetPackages.MicrosoftAspNetWebApiWebHost,
-                NugetPackages.NewtonsoftJson,
-            }
-            .Union(base.GetNugetDependencies())
-            .ToArray();
-        }
+        //public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        //{
+        //    return new[]
+        //    {
+        //        NugetPackages.MicrosoftAspNetWebApi,
+        //        NugetPackages.MicrosoftAspNetWebApiClient,
+        //        NugetPackages.MicrosoftAspNetWebApiCore,
+        //        NugetPackages.MicrosoftAspNetWebApiWebHost,
+        //        NugetPackages.NewtonsoftJson,
+        //    }
+        //    .Union(base.GetNugetDependencies())
+        //    .ToArray();
+        //}
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -66,11 +65,11 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: Model.Name + "Controller",
+                fileName: "${Model.Name}Controller",
                 fileExtension: "cs",
                 defaultLocationInProject: "Controllers",
                 className: "${Model.Name}Controller",
-                @namespace: "${Project.Name}"
+                @namespace: "${Project.Name}.Controller"
                 );
         }
 

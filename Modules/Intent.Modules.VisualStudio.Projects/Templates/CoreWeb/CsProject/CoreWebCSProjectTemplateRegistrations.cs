@@ -12,18 +12,10 @@ using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
 {
-    [Description("Assembly Info Template - VS Projects")]
+    [Description(CoreWebCSProjectTemplate.Identifier)]
     public class CoreWebCSProjectTemplateRegistrations : IProjectTemplateRegistration
     {
-        private readonly IMetaDataManager _metaDataManager;
-
-        public CoreWebCSProjectTemplateRegistrations(IMetaDataManager metaDataManager)
-        {
-            _metaDataManager = metaDataManager;
-        }
-
-        public string TemplateId => AssemblyInfoTemplate.Identifier;
-
+        public string TemplateId => CoreWebCSProjectTemplate.Identifier;
 
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {

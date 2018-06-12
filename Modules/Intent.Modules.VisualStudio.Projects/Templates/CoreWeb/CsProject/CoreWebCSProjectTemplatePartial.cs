@@ -8,7 +8,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 {
     partial class CoreWebCSProjectTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {
-        public const string Identifier = "Intent.VisualStudio.Projects.CoreWebCSProject";
+        public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.CSProject";
 
         public CoreWebCSProjectTemplate(IProject project)
             : base (Identifier, project, null)

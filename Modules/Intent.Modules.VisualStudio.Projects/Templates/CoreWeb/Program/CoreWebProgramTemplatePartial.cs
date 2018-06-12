@@ -24,8 +24,8 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Program
                 fileName: $"Program",
                 fileExtension: "cs",
                 defaultLocationInProject: "",
-                className:null,
-                @namespace: null
+                className: $"Program",
+                @namespace: "${Project.Name}"
                 );
         }
     }

@@ -53,8 +53,8 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
 
         public string Registrations()
         {
-            var registrations = _registrations != null && _registrations.Any()
-                ? _registrations.Select(x => $"{Environment.NewLine}            container.RegisterType<{x.InterfaceType}, {x.ConcreteType}>();").Aggregate((x, y) => x + y)
+            var registrations = _registrations != null && _registrations.Any(x => x.InterfaceType != null)
+                ? _registrations.Where(x => x.InterfaceType != null).Select(x => $"{Environment.NewLine}            container.RegisterType<{x.InterfaceType}, {x.ConcreteType}>();").Aggregate((x, y) => x + y)
                 : string.Empty;
 
             return registrations + Environment.NewLine + GetDecorators().Aggregate(x => x.Registrations());

@@ -1,0 +1,120 @@
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+#>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Transactions;
+using Intent.RoslynWeaver.Attributes;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+<#=DependencyUsings#>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#=Namespace#>
+{
+    [Route("api/[controller]")]
+    public class <#= ClassName #> : Controller
+    {
+        private readonly <#= GetServiceInterfaceName() #> _appService;<#= DeclarePrivateVariables() #>
+
+        public <#= ClassName #> (<#= GetServiceInterfaceName() #> appService<#= ConstructorParams() #>
+            )
+        {
+             _appService = appService ?? throw new ArgumentNullException(nameof(appService));<#= ConstructorInit() #>
+        } 
+    
+<#    foreach (var operation in Model.Operations)
+    {
+        //Transactions
+        string isolationLevel = "ReadCommitted"; // TODO: Make configurable
+#>
+        public class <#= operation.Name #>Payload
+        {
+<#
+            foreach (var parameter in operation.Parameters)
+            {
+                foreach (var decorator in PayloadPropertyDecorators(parameter))
+                {
+#>
+            <#= decorator #>
+<#
+                }
+#>
+            public <#= GetTypeName(parameter.TypeReference) #> <#= parameter.Name #> { get; set; }
+<#
+            }
+#>
+        }
+
+        [HttpPost("<#= operation.Name.ToLower() #>")]
+		<#= GetSecurityAttribute(operation) #>
+        public <#= GetOperationReturnType(operation) #> <#= operation.Name #>([FromBody]<#= operation.Name + "Payload payload" #>)
+        {<#= BeginOperation(operation) #>
+
+<#      if (operation.ReturnType != null)
+        {
+#>            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);
+<#      }#>
+            TransactionOptions tso = new TransactionOptions();
+            tso.IsolationLevel = IsolationLevel.<#= isolationLevel #>;
+
+            try
+            {<#= BeforeTransaction(operation) #>
+                using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso))
+                {<#= BeforeCallToAppLayer(operation) #>
+<#
+        if (operation.ReturnType != null)
+        {
+#>                    var appServiceResult = _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+                    result = appServiceResult;
+<#      }
+        else
+        {
+#>                        _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+<#      }
+#><#= AfterCallToAppLayer(operation) #>
+                    ts.Complete();
+                }<#= AfterTransaction(operation) #>
+            }
+            catch (Exception e) 
+            {<#= OnExceptionCaught(operation) #>
+            }
+
+<#        if (operation.ReturnType != null)
+        {
+#>            return result;
+<#      }#>
+
+        }
+
+<#    }
+
+        // Source code of base class: http://aspnetwebstack.codeplex.com/SourceControl/latest#src/System.Web.Http/ApiController.cs
+        // As dispose is not virtual, looking at the source code, this looks like a better hook in point
+#>
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            //dispose all resources
+            _appService.Dispose();
+        }
+<#=ClassMethods()#>
+    }
+}

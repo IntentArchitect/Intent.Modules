@@ -9,12 +9,13 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Eventing;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
-    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IRequiresPreProcessing
+    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.Application.ServiceCallHandlers.ServiceImplementation";
         public ServiceImplementationTemplate(IProject project, IServiceModel model)
@@ -60,7 +61,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
                 );
         }
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
             Project.Application.EventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
             {

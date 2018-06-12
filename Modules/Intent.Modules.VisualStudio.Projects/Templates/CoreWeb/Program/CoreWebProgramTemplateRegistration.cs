@@ -9,13 +9,14 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Registrations;
 using System.ComponentModel;
 using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject;
+using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Program;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
 {
-    [Description("Assembly Info Template - VS Projects")]
+    [Description(CoreWebProgramTemplate.Identifier)]
     public class CoreWebProgramTemplateRegistration : IProjectTemplateRegistration
     {
-        public string TemplateId => AssemblyInfoTemplate.Identifier;
+        public string TemplateId => CoreWebProgramTemplate.Identifier;
 
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
@@ -28,7 +29,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
 
             foreach (var project in projects)
             {
-                registery.Register(TemplateId, project, p => new CoreWebCSProjectTemplate(project));
+                registery.Register(TemplateId, project, p => new CoreWebProgramTemplate(project));
             }
         }
     }
