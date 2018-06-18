@@ -36,9 +36,23 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             _deleteVisitorTemplateDependancy = TemplateDependancy.OnTemplate(EntityCompositionVisitorTemplate.Identifier);
         }
 
-        public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(_entityInterfaceTemplateDependancy)?.ClassName ?? $"I{Model.Name}";
+        public string EntityInterfaceName
+        {
+            get
+            {
+                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityInterfaceTemplateDependancy);
+                return template != null ? NormalizeNamespace($"{template.Namespace}.{template.ClassName}") : $"{Model.Name}";
+            }
+        }
 
-        public string EntityName => Project.FindTemplateInstance<IHasClassDetails>(_entityStateTemplateDependancy)?.ClassName ?? $"{Model.Name}";
+        public string EntityName
+        {
+            get
+            {
+                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityStateTemplateDependancy);
+                return template != null ? NormalizeNamespace($"{template.Namespace}.{template.ClassName}") : $"{Model.Name}";
+            }
+        }
 
         public string RepositoryContractName => Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependancy)?.ClassName ?? $"I{ClassName}";
 
@@ -84,7 +98,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         {
             return new[]
                 {
-                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0-pre1", null),
+                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0", null),
                 }
                 .Union(base.GetNugetDependencies())
                 .ToArray();

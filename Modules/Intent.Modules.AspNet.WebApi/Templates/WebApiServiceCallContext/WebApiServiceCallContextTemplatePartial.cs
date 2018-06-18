@@ -47,7 +47,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
         {
             Project.Application.EventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
             {
-                { "InterfaceType", $"Intent.Framework.Core.IContextBackingStore"},
+                { "InterfaceType", $"Intent.Framework.Core.Context.IContextBackingStore"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" }
             });
         }

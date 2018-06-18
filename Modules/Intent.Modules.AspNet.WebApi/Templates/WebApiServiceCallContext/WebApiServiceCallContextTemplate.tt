@@ -12,7 +12,7 @@
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
 
-using Intent.Framework.Core;
+using Intent.Framework.Core.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;

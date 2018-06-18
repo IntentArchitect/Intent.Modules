@@ -106,10 +106,6 @@
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.RichDomain\Intent.Modules.RichDomain.csproj">
-      <Project>{9db8717c-8f21-450b-9fea-bbfb3f835390}</Project>
-      <Name>Intent.Modules.RichDomain</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt">

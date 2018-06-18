@@ -82,7 +82,7 @@
     <PostBuildEvent>if not exist "$(SolutionDir)Intent.Modules" mkdir "$(SolutionDir)Intent.Modules"
 $(TargetDir)Intent.IArchitect.Packager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Empty\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 $(TargetDir)Intent.IArchitect.Packager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Empty Visual Studio\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-$(TargetDir)Intent.IArchitect.Packager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)AngularJS Web Application\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+REM $(TargetDir)Intent.IArchitect.Packager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)AngularJS Web Application\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 $(TargetDir)Intent.IArchitect.Packager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Full Stack ASP.NET WebApi\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 </PostBuildEvent>
   </PropertyGroup>

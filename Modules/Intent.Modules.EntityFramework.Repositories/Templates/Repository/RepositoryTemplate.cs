@@ -32,9 +32,9 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         /// </summary>
         public override string TransformText()
         {
-            this.Write(" \r\nusing Intent.Framework.Core;\r\nusing Intent.Framework.Domain.Repositories;\r\nusi" +
-                    "ng Intent.Framework.EntityFramework;\r\nusing Intent.Framework.EntityFramework.Rep" +
-                    "ositories;\r\n");
+            this.Write(" \r\nusing Intent.Framework.Core.Context;\r\nusing Intent.Framework.Domain.Repositori" +
+                    "es;\r\nusing Intent.Framework.EntityFramework;\r\nusing Intent.Framework.EntityFrame" +
+                    "work.Repositories;\r\n");
             
             #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));

@@ -19,8 +19,7 @@ namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
 
         public override IEnumerable<string> DeclareUsings(IServiceModel mode) => new List<string>()
         {
-            "using Intent.Framework;",
-            "using Intent.Framework.Core;",
+            "using Intent.Framework.Core.Context;",
             "using Intent.Framework.EntityFramework;",
         };
 

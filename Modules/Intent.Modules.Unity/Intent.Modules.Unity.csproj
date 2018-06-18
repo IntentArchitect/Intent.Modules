@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrations.cs" />
     <Compile Include="Templates\UnityConfig\UnityConfigTemplateRegistration.cs" />
     <Compile Include="Templates\UnityServiceProvider\UnityServiceProviderTemplate.cs">
       <DependentUpon>UnityServiceProviderTemplate.tt</DependentUpon>

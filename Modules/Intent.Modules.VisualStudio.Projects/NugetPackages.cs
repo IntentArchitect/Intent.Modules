@@ -4,7 +4,7 @@ namespace Intent.Modules.VisualStudio.Projects
 {
     public class NugetPackages
     {
-        public static INugetPackageInfo IntentFrameworkCore = new NugetPackageInfo("Intent.Framework.Core", "1.0.0-pre3", "net45");
+        public static INugetPackageInfo IntentFrameworkCore = new NugetPackageInfo("Intent.Framework.Core", "1.0.0", "net45");
         public static INugetPackageInfo MicrosoftAspNetWebApi = new NugetPackageInfo("Microsoft.AspNet.WebApi", "5.2.3", "net45");
         public static INugetPackageInfo MicrosoftAspNetWebApiClient = new NugetPackageInfo("Microsoft.AspNet.WebApi.Client", "5.2.3", "net45");
         public static INugetPackageInfo MicrosoftAspNetWebApiCore = new NugetPackageInfo("Microsoft.AspNet.WebApi.Core", "5.2.3", "net45")

@@ -25,11 +25,11 @@ namespace Intent.Modules.AspNet.WebApi
 
         public static NugetPackageInfo IntentEsbServer = new NugetPackageInfo("Intent.Esb.Server", "0.1.14-beta","net45");
 
-        public static NugetPackageInfo IntentFrameworkCore = new NugetPackageInfo("Intent.Framework.Core", "1.0.0-pre5", "net45");
+        public static NugetPackageInfo IntentFrameworkCore = new NugetPackageInfo("Intent.Framework.Core", "1.0.0", "net45");
 
-        public static NugetPackageInfo IntentFrameworkDomain = new NugetPackageInfo("Intent.Framework.Domain", "1.0.0-pre2", "net45");
+        public static NugetPackageInfo IntentFrameworkDomain = new NugetPackageInfo("Intent.Framework.Domain", "1.0.0", "net45");
 
-        public static NugetPackageInfo IntentFrameworkEntityFramework = new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0-pre1", "net45");
+        public static NugetPackageInfo IntentFrameworkEntityFramework = new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0", "net45");
         
         public static NugetPackageInfo IntentFrameworkUnity = new NugetPackageInfo("Intent.Framework.Unity","0.1.2-beta", "net45");
 

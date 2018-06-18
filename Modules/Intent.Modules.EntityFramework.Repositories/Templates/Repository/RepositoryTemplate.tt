@@ -11,7 +11,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-using Intent.Framework.Core;
+using Intent.Framework.Core.Context;
 using Intent.Framework.Domain.Repositories;
 using Intent.Framework.EntityFramework;
 using Intent.Framework.EntityFramework.Repositories;

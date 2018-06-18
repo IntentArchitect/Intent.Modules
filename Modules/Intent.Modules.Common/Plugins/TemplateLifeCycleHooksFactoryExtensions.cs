@@ -22,6 +22,8 @@ namespace Intent.Modules.Common.Plugins
                     .ToList();
 
                 templates.ForEach(x => x.BeforeTemplateExecution());
+
+                // TODO: Run for decorators too. Probably as separate FactoryExtension
             }
         }
     }

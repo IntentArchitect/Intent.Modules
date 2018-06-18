@@ -32,8 +32,8 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
         /// </summary>
         public override string TransformText()
         {
-            this.Write(" \r\n\r\nusing Intent.Framework.Core;\r\nusing System;\r\nusing System.Collections.Generi" +
-                    "c;\r\nusing System.Linq;\r\nusing System.Web;\r\n");
+            this.Write(" \r\n\r\nusing Intent.Framework.Core.Context;\r\nusing System;\r\nusing System.Collection" +
+                    "s.Generic;\r\nusing System.Linq;\r\nusing System.Web;\r\n");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));

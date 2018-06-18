@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
@@ -35,8 +36,8 @@ namespace Intent.Modules.Entities.Interop.EntityFramework.Templates.IdentityGene
         {
             return new List<INugetPackageInfo>()
             {
-                new NugetPackageInfo("RT.Comb", "2.3.0", null)
-            };
+                new NugetPackageInfo("RT.Comb", "2.3.0")
+            }.Union(base.GetNugetDependencies());
         }
     }
 }

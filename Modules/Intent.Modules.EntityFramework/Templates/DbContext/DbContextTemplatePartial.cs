@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
@@ -10,7 +11,7 @@ using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing, IHasDecorators<DbContextDecoratorBase>
+    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasNugetDependencies, IBeforeTemplateExecutionHook, IHasDecorators<DbContextDecoratorBase>
     {
         public const string Identifier = "Intent.EntityFramework.DbContext";
 
@@ -50,7 +51,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             .ToArray();
         }
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
             _eventDispatcher.Publish(ApplicationEvents.Config_ConnectionString, new Dictionary<string, string>()
             {
