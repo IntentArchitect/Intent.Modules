@@ -242,3 +242,4 @@ ModelManifest.xml
 .fake/
 
 **/Intent.Modules/**
+/Modules/Intent.ApplicationTemplates/*.iat

@@ -17,7 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Practices.Unity;
+using Unity;
 <#=DependencyUsings#>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]

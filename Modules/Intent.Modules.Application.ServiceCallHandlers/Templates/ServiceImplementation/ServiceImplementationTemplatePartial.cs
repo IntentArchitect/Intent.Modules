@@ -37,7 +37,6 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             return new[]
             {
                 NugetPackages.CommonServiceLocator,
-                NugetPackages.Unity,
             }
             .Union(base.GetNugetDependencies())
             .ToArray();

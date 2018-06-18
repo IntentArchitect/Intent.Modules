@@ -42,8 +42,8 @@ namespace Intent.Modules.Unity.Templates.UnityServiceProvider
             
             #line default
             #line hidden
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Micro" +
-                    "soft.Practices.Unity;\r\n");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Unity" +
+                    ";\r\n");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));

@@ -9,10 +9,12 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-using Microsoft.Practices.Unity;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Practices.Unity;
+using System.Collections.Generic;
+using Unity;
+using Unity.RegistrationByConvention;
 <#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
