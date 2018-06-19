@@ -1,12 +1,13 @@
-using Intent.Modules.EntityFramework.Templates.DeleteVisitor;
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Constants;
+using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.EntityFramework.Interop.Unity.Decorators
 {
-    public class EntityFrameworkUnityRegistrationsDecorator : IUnityRegistrationsDecorator, IHasTemplateDependencies
+    public class EntityFrameworkUnityRegistrationsDecorator : IUnityRegistrationsDecorator, IHasNugetDependencies
     {
         public const string Identifier = "Intent.EntityFramework.Interop.Unity";
 
@@ -19,19 +20,25 @@ namespace Intent.Modules.EntityFramework.Interop.Unity.Decorators
 
         public IEnumerable<string> DeclareUsings() => new [] {
             "using Intent.Framework.EntityFramework;",
-            "using Intent.Framework.EntityFramework.Interceptors;"
         };
 
         public string Registrations() => $@"
             container.RegisterType<IDbContextFactory, DbContextFactory>();
-            container.RegisterType<IDbContextSaveInterceptor, OrphanDeleteInterceptor>(""OrphanDeleteInterceptor"");
-            container.RegisterType<ICompositionDeleteVisitor, { _application.ApplicationName }DeleteVisitor>();
 ";
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        //public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        //{
+        //    return new[]
+        //    {
+        //        TemplateDependancy.OnTemplate(DeleteVisitorTemplate.Identifier)
+        //    };
+        //}
+
+        public IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return new[]
+            return new List<INugetPackageInfo>
             {
-                TemplateDependancy.OnTemplate(DeleteVisitorTemplate.Identifier)
+                new NugetPackageInfo("EntityFramework", "6.2.0"),
+                new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0")
             };
         }
     }

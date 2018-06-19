@@ -1,27 +1,28 @@
-﻿using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.MetaModels.UMLModel;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.MetaModel.Domain;
+using Intent.Modules.Common.Plugins;
+using Intent.Modules.Constants;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Eventing;
+using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<Class>>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing
+    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasNugetDependencies, IBeforeTemplateExecutionHook, IHasDecorators<DbContextDecoratorBase>
     {
         public const string Identifier = "Intent.EntityFramework.DbContext";
 
         private readonly IApplicationEventDispatcher _eventDispatcher;
+        private IEnumerable<DbContextDecoratorBase> _decorators;
 
-        public DbContextTemplate(IEnumerable<Class> models, IProject project, IApplicationEventDispatcher eventDispatcher)
+        public DbContextTemplate(IEnumerable<IClass> models, IProject project, IApplicationEventDispatcher eventDispatcher)
             : base (Identifier, project, models)
         {
             _eventDispatcher = eventDispatcher;
         }
-
-        public string BoundedContextName => Project.ApplicationName();
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -32,9 +33,11 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: BoundedContextName + "DbContext",
+                fileName: "${Project.Application.ApplicationName}DbContext",
                 fileExtension: "cs",
-                defaultLocationInProject: "Generated\\DbContext"
+                defaultLocationInProject: "DbContext",
+                className: "${Project.Application.ApplicationName}DbContext",
+                @namespace: "${Project.ProjectName}"
                 );
         }
 
@@ -42,20 +45,37 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
         {
             return new[]
             {
-                NugetPackages.IntentFrameworkEntityFramework,
+                NugetPackages.EntityFramework,
             }
             .Union(base.GetNugetDependencies())
             .ToArray();
         }
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
             _eventDispatcher.Publish(ApplicationEvents.Config_ConnectionString, new Dictionary<string, string>()
             {
-                { "Name", $"{BoundedContextName}DB" },
+                { "Name", $"{Project.Application.ApplicationName}DB" },
                 { "ConnectionString", $"Server=.;Initial Catalog={ Project.Application.SolutionName };Integrated Security=true;MultipleActiveResultSets=True" },
                 { "ProviderName", "System.Data.SqlClient" },
             });
+        }
+
+        public IEnumerable<DbContextDecoratorBase> GetDecorators()
+        {
+            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+        }
+
+        public string GetBaseClass()
+        {
+            try
+            {
+                return GetDecorators().Select(x => x.GetBaseClass()).SingleOrDefault(x => x != null) ?? "DbContext";
+            }
+            catch (InvalidOperationException)
+            {
+                throw new Exception($"Multiple decorators attempting to modify 'base class' on {Identifier}");
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Intent.Modules.AngularJs.Templates.State
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class AngularJsStateTemplate : IntentTypescriptProjectItemTemplateBase<ViewStateModel>
     {
@@ -33,7 +33,7 @@ namespace Intent.Modules.AngularJs.Templates.State
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 13 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
 
 
 
@@ -41,67 +41,96 @@ namespace Intent.Modules.AngularJs.Templates.State
             
             #line default
             #line hidden
-            this.Write("\'use strict\';\r\nnamespace ");
+            this.Write("// NOTE: NB! This is an R&D Module.\r\n\'use strict\';\r\nnamespace ");
             
-            #line 18 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 19 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write(" {\r\n    export class ");
             
-            #line 19 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 20 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(" implements ng.ui.IState {\r\n        static state = () => <ng.ui.IState>{\r\n       " +
-                    "     url: \"");
+            this.Write(" implements ng.ui.IState {\r\n//IntentManaged[state]\r\n        static state = () => " +
+                    "<ng.ui.IState>{\r\n            url: \"");
             
-            #line 21 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 23 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Url));
             
             #line default
             #line hidden
             this.Write("\",\r\n            templateUrl: \"App/States/");
             
-            #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 24 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("/");
             
-            #line 22 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 24 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("View.html\",\r\n            resolve: {\r\n                viewModel: [\"");
             
-            #line 24 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 26 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\",\r\n                    (manager: ");
             
-            #line 25 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 27 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(") => {\r\n                        return new ");
             
-            #line 26 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 28 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ViewModelName));
             
             #line default
             #line hidden
-            this.Write("();\r\n                    }\r\n                ]\r\n            },\r\n            contro" +
-                    "ller: [\r\n                \"$scope\", \"viewModel\", ($scope: ng.IScope, viewModel: ");
+            this.Write("({\r\n");
             
-            #line 31 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 29 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+	foreach(var command in Model.Commands) {
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t\t\t\t\t");
+            
+            #line 30 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(command.Name));
+            
+            #line default
+            #line hidden
+            this.Write("Command: new Command(() => manager.");
+            
+            #line 30 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(command.Name));
+            
+            #line default
+            #line hidden
+            this.Write("()),\r\n");
+            
+            #line 31 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+	} 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t\t\t\t});\r\n                    }\r\n                ]\r\n            },\r\n            " +
+                    "controller: [\r\n                \"$scope\", \"viewModel\", ($scope: ng.IScope, viewMo" +
+                    "del: ");
+            
+            #line 37 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ViewModelName));
             
             #line default
@@ -112,22 +141,43 @@ namespace Intent.Modules.AngularJs.Templates.State
                 }
             ]
         };
+//IntentManaged[state]
 
         static $inject = [];
         constructor() { 
         }
-    }
 
-    angular.module(""App"").service(""");
+");
             
-            #line 43 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 49 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+	foreach(var command in Model.Commands) {
+            
+            #line default
+            #line hidden
+            this.Write("\tpublic ");
+            
+            #line 50 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(command.Name));
+            
+            #line default
+            #line hidden
+            this.Write("() {\r\n\t\t// your implementation here...\r\n\t}\r\n");
+            
+            #line 53 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+	} 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    }\r\n    angular.module(\"App\").service(\"");
+            
+            #line 56 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\", ");
             
-            #line 43 "C:\Dev\Intent\IntentArchitect\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
+            #line 56 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.AngularJs\Templates\State\AngularJsStateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

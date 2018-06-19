@@ -41,10 +41,6 @@
       <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.4.0\lib\net452\Intent.MetaModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.Modules.Common.1.3.0\lib\net452\Intent.Modules.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.4.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
@@ -60,7 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decorators\IntentEsbPublishingDistributionDecorator.cs" />
+    <Compile Include="Decorators\IntentEsbPublishingWebApiControllerDecorator.cs" />
     <Compile Include="Decorators\Legacy\IntentEsbPublishingDistributionDecorator.cs" />
     <Compile Include="Decorators\Legacy\IntentEsbPublishingEventConsumerDecorator.cs" />
     <Compile Include="Decorators\Legacy\IntentEsbPublishingUnityRegistrationsDecorator.cs" />
@@ -79,6 +75,10 @@
       <Project>{d6171cc1-577a-4123-9ca3-34e017a40071}</Project>
       <Name>Intent.Modules.AspNet.WebApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
+      <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
+      <Name>Intent.Modules.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
       <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
       <Name>Intent.Modules.Constants</Name>
@@ -95,6 +95,9 @@
       <Project>{7fea24fe-c3ac-43bf-a8b0-099aabfbd526}</Project>
       <Name>Intent.Modules.VisualStudio.Projects</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

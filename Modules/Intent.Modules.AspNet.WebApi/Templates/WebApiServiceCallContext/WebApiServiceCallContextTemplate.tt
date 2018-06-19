@@ -1,0 +1,74 @@
+﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase<object>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.MetaModel.Domain" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+using Intent.Framework.Core.Context;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+<#= DependencyUsings #>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public class <#= ClassName#> : IContextBackingStore
+    {
+        private static readonly object ModuleKey = new object();
+
+        T IContextBackingStore.Get<T>()
+        {
+            var dict = GetDictionary(HttpContext.Current);
+
+            if (dict != null)
+            {
+                object obj;
+
+                if (dict.TryGetValue(typeof(T), out obj))
+                {
+                    return (T) obj;
+                }
+            }
+
+            return default(T);
+        }
+
+        void IContextBackingStore.Set<T>(T value)
+        {
+            var dict = GetDictionary(HttpContext.Current);
+
+            if (dict == null)
+            {
+                dict = new Dictionary<Type, object>();
+
+                HttpContext.Current.Items[ModuleKey] = dict;
+            }
+
+            dict[typeof(T)] = value;
+        }
+
+        private static Dictionary<Type, object> GetDictionary(HttpContext context)
+        {
+            if (context == null)
+            {
+                throw new InvalidOperationException(
+                    $"{nameof(<#= ClassName#>)} can only be used in the context of an HTTP request. Possible causes for this error are using {nameof(<#= ClassName#>)} on a non-ASP.NET application, or using it in a thread that is not associated with the appropriate synchronization context.");
+            }
+
+            var dict = (Dictionary<Type, object>) context.Items[ModuleKey];
+
+            return dict;
+        }
+    }
+}

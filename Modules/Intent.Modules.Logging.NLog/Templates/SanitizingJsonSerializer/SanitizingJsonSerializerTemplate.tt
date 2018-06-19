@@ -12,7 +12,6 @@
 <#@ import namespace="System.Collections.Generic" #> 
 <#
 #>
-using Intent.CodeGen;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;

@@ -1,7 +1,8 @@
-﻿<#@ template  debug="true"  inherits="Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IClass>" #>
+﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.MetaModel.Domain" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
 <#@ import namespace="System" #>
@@ -12,86 +13,18 @@
 <#@ import namespace="System.Collections.Generic"#>
 using System;
 using System.Collections.Generic;
-using Intent.CodeGen;
 <#= DependencyUsings #>
 
-[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Ignore)]
 
 namespace <#= Namespace #>
 {
-<#= ClassAnnotations(Model) #>
-    public <#= Model.IsAbstract ? "abstract " : "" #>partial class <#= ClassName #> : <#= GetBaseClass(Model)#>, I<#= ClassName #><#= GetInterfaces(Model) #>
-    {<#= ConstructorAnnotations(Model) #>
-		public <#= ClassName #>(<#= ConstructorParameters(Model) #>) 
-		{
-<#= ConstructorBody(Model) #>
-		}
-<#= ClassOtherConstructors(Model) #>
-<#  foreach (var attribute in Model.Attributes)
+    [IntentManaged(Mode.Merge)]
+    [DefaultIntentManaged(Mode.Merge, Signature = Mode.Merge, Body = Mode.Merge, Targets = Targets.Methods, AccessModifiers = AccessModifiers.Public)]
+    public partial class <#= ClassName #>
     {
-		string attributeType = Types.Get(attribute.Type);
-#>
-<#= PropertyFieldAnnotations(attribute) #>
-        private <#= attributeType #> <#= attribute.Name.ToPrivateMember() #>;
-<#= PropertyAnnotations(attribute) #>
-        public <#= attributeType #> <#= attribute.Name.ToPascalCase() #> 
-        {
-            get { return <#= attribute.Name.ToPrivateMember() #>; }
-            set
-            {
-<#= PropertySetterBefore(attribute) #><#		
-		if (attributeType == "date")
-		{
-			if (!attribute.IsNullable)
-			{#>
-                <#= attribute.Name.ToPrivateMember() #> = value.Date;
-<#			}
-			else
-			{#>
-                <#= attribute.Name.ToPrivateMember() #> = (value == null) ? value : value.Value.Date;
-<#			}
-		}
-		else
-		{#>
-                <#= attribute.Name.ToPrivateMember() #> = value;
-<#		}
-#><#= PropertySetterAfter(attribute) #>            }
-        }
-<#  }
-	foreach (var associatedClass in Model.AssociatedClasses)
-    {
-#><# 	
-		if (!associatedClass.IsNavigable) 
-		{
-			continue;
-        }
-#>
-		private <#= associatedClass.Type() #> <#= associatedClass.Name().ToPrivateMember() #>;
-<#= PropertyAnnotations(associatedClass) #>
-        public virtual <#= associatedClass.Type() #> <#= associatedClass.Name().ToPascalCase() #>
-        {
-            get
-            {
-<#		string associatedClassReturn;
-		if (associatedClass.Multiplicity == Multiplicity.Many)
-		{
-			associatedClassReturn = String.Format("{0} ?? ({0} = new List<{1}>())", associatedClass.Name().ToPrivateMember(), associatedClass.Class.Name + "");
-		}
-		else
-		{
-			associatedClassReturn = associatedClass.Name().ToPrivateMember();
-		}
-#>
-                return <#= associatedClassReturn #>;
-            }
-            set
-            {    
-                <#= associatedClass.Name().ToPrivateMember() #> = value;
-            }
-        }
-<#    }#>
-
-<#  foreach (var operation in Model.Operations)
+<#= Constructors(Model) #>
+<# 	foreach (var operation in Model.Operations)
     {
         string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";
         string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";

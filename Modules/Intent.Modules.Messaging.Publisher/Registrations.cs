@@ -9,7 +9,7 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.SoftwareFactory.Registrations;
 using System.Linq;
-using IntentEsbPublishingDistributionDecorator = Intent.Modules.Messaging.Publisher.Decorators.IntentEsbPublishingDistributionDecorator;
+using Intent.Modules.Messaging.Publisher.Decorators;
 
 namespace Intent.Modules.Messaging.Publisher
 {
@@ -22,7 +22,7 @@ namespace Intent.Modules.Messaging.Publisher
 
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            RegisterDecorator<DistributionDecoratorBase>(IntentEsbPublishingDistributionDecorator.Identifier, new IntentEsbPublishingDistributionDecorator());
+            RegisterDecorator<WebApiControllerDecoratorBase>(IntentEsbPublishingWebApiControllerDecorator.Identifier, new IntentEsbPublishingWebApiControllerDecorator());
             RegisterDecorator<IWebConfigDecorator>(IntentEsbPublishingWebConfigDecorator.Identifier, new IntentEsbPublishingWebConfigDecorator());
 
             RegisterDecorator<IEventConsumerDecorator>(Decorators.Legacy.IntentEsbPublishingEventConsumerDecorator.Identifier, new Decorators.Legacy.IntentEsbPublishingEventConsumerDecorator());

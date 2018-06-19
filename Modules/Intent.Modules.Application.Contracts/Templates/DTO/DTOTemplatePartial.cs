@@ -12,12 +12,12 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
     partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasAssemblyDependencies
     {
-        public const string IDENTIFIER = "Intent.Application.Contracts.DTO";
+        public const string Identifier = "Intent.Application.Contracts.DTO";
         public const string NAMESPACE_CONFIG_KEY = "Namespace";
 
         private readonly DecoratorDispatcher<IDTOAttributeDecorator> _decoratorDispatcher;
 
-        public DTOTemplate(IProject project, IDTOModel model, string identifier = IDENTIFIER)
+        public DTOTemplate(IProject project, IDTOModel model, string identifier = Identifier)
             : base(identifier, project, model)
         {
             _decoratorDispatcher = new DecoratorDispatcher<IDTOAttributeDecorator>(project.ResolveDecorators<IDTOAttributeDecorator>);

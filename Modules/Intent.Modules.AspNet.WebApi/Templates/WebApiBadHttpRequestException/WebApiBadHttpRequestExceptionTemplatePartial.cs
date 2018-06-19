@@ -5,7 +5,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiBadHttpRequestException
 {
     partial class WebApiBadHttpRequestExceptionTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {
-        public const string Identifier = "Intent.WebApi.BadHttpRequestException";
+        public const string Identifier = "Intent.AspNet.WebApi.BadHttpRequestException";
         public WebApiBadHttpRequestExceptionTemplate(IProject project)
             : base (Identifier, project, null)
         {

@@ -9,10 +9,13 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.Plugins;
+using Intent.Modules.Constants;
+using Intent.SoftwareFactory.Eventing;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
-    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
+    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.Application.ServiceCallHandlers.ServiceImplementation";
         public ServiceImplementationTemplate(IProject project, IServiceModel model)
@@ -34,7 +37,6 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             return new[]
             {
                 NugetPackages.CommonServiceLocator,
-                NugetPackages.Unity,
             }
             .Union(base.GetNugetDependencies())
             .ToArray();
@@ -56,6 +58,17 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
                 @namespace: "${Project.ProjectName}"
 
                 );
+        }
+
+        public void BeforeTemplateExecution()
+        {
+            Project.Application.EventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
+            {
+                { "InterfaceType", GetServiceInterfaceName()},
+                { "ConcreteType", $"{Namespace}.{ClassName}" },
+                { "InterfaceTypeTemplateId", ServiceContractTemplate.Identifier },
+                { "ConcreteTypeTemplateId", Identifier }
+            });
         }
 
         private string GetOperationDefinitionParameters(IOperationModel o)
@@ -88,13 +101,13 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
         public string GetServiceInterfaceName()
         {
             var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.Identifier, x => x.Id == Model.Id));
-            return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
+            return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
         }
 
         private string GetHandlerClassName(IOperationModel o)
         {
             var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<OperationModel>(ServiceCallHandlerImplementationTemplate.Identifier, x => x.Id == o.Id));
-            return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
+            return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
         }
 
         private string GetTypeName(ITypeReference typeInfo)

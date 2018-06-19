@@ -4,6 +4,6 @@ namespace Intent.Modules.Application.Contracts
 {
     public static class NugetPackages
     {
-        public static NugetPackageInfo IntentFrameworkCore = new NugetPackageInfo("Intent.Framework.Core", "0.1.4-beta", "net45");
+        public static NugetPackageInfo IntentRoslynWeaverAttributes = new NugetPackageInfo("Intent.RoslynWeaver.Attributes", "1.0.0");
     }
 }

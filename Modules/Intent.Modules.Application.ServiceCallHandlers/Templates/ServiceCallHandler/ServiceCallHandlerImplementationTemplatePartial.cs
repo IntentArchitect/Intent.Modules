@@ -6,11 +6,14 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
-using DTOTemplate = Intent.Modules.Application.Contracts.Legacy.DTO.DTOTemplate;
+using Intent.Modules.Application.Contracts.Templates.DTO;
+using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Common.Plugins;
+using Intent.Modules.Constants;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
-    partial class ServiceCallHandlerImplementationTemplate : IntentRoslynProjectItemTemplateBase<IOperationModel>, ITemplate, IHasTemplateDependencies
+    partial class ServiceCallHandlerImplementationTemplate : IntentRoslynProjectItemTemplateBase<IOperationModel>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.Application.ServiceCallHandlers.Handler";
 
@@ -84,6 +87,17 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
                 result = "List<" + result + ">";
             }
             return result;
+        }
+
+        public void BeforeTemplateExecution()
+        {
+            Project.Application.EventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
+            {
+                { "InterfaceType", null},
+                { "ConcreteType", $"{Namespace}.{ClassName}" },
+                { "InterfaceTypeTemplateId", null },
+                { "ConcreteTypeTemplateId", Identifier }
+            });
         }
     }
 }

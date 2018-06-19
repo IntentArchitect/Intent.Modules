@@ -16,7 +16,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         private readonly string _dtoTemplateId;
         public const string Identifier = "Intent.Application.Contracts.ServiceContract";
 
-        public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = Identifier, string dtoTemplateId = DTOTemplate.IDENTIFIER)
+        public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = Identifier, string dtoTemplateId = DTOTemplate.Identifier)
             : base(identifier, project, model)
         {
             _dtoTemplateId = dtoTemplateId;
@@ -31,7 +31,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         {
             return new List<INugetPackageInfo>()
             {
-                NugetPackages.IntentFrameworkCore,
+                NugetPackages.IntentRoslynWeaverAttributes,
             };
         }
 

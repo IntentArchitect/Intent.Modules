@@ -12,7 +12,7 @@ namespace Intent.Modules.Common.Plugins
     {
         public abstract string Id { get; }
 
-        public int Order
+        public virtual int Order
         {
             get; set;
         }

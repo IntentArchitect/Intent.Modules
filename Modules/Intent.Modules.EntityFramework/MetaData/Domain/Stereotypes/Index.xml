@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+  <name>Index</name>
+  <icon>
+    <type>CharacterBox</type>
+    <source>I|#424242</source>
+  </icon>
+  <displayIcon>true</displayIcon>
+  <targetElements>
+    <element>attribute</element>
+  </targetElements>
+  <parentFolderId>7EE81EB9-EA65-42C5-9A80-3AC6F4859EA9</parentFolderId>
+  <properties>
+    <property id="3427ad7b-e1a6-4d36-9e12-c5ada14a414b">
+      <name>UniqueKey</name>
+      <type>string</type>
+    </property>
+    <property id="a8f903d5-e8b6-4d15-aedb-08c6b290b733">
+      <name>Order</name>
+      <type>number</type>
+    </property>
+    <property id="90002464-b824-40e2-9f73-32f306868897">
+      <name>IsUnique</name>
+      <type>boolean</type>
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -10,7 +10,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
     [Description("Web Api Service CS Project File - VS Projects")] 
     public class Registrations : IProjectTemplateRegistration
     {
-        public string TemplateId => WebApiServiceCSProjectFileTemplate.IDENTIFIER;
+        public string TemplateId => WebApiServiceCSProjectFileTemplate.Identifier;
 
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {

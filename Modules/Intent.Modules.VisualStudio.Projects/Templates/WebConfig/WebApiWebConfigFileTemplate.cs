@@ -125,7 +125,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
             XDocument doc;
             if (File.Exists(filePath))
             {
-                doc = XDocument.Load(filePath);
+                doc = XDocument.Load(filePath, LoadOptions.PreserveWhitespace);
             }
             else
             {
@@ -135,7 +135,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
   -->
 <configuration>
   <configSections>
-    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
   </configSections>
   <appSettings>
   </appSettings>

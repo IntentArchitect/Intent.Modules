@@ -4,22 +4,20 @@ using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
-using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.MetaModel.Domain;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
-    partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IRequiresPreProcessing, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation, IHasDecorators<IMappingTemplateDecorator>
+    partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation, IHasDecorators<IMappingTemplateDecorator>
     {
         public const string Identifier = "Intent.Application.Contracts.Mapping";
 
         public const string ContractTemplateDependancyId = "ContractTemplateDependancyId";
         public const string DomainTemplateDependancyId = "DomainTemplateDependancyId";
-        private IHasClassDetails _contractDependancy;
-        private IHasClassDetails _domainDependancy;
         private ITemplateDependancy _domainTemplateDependancy;
         private ITemplateDependancy _contractTemplateDependancy;
         private IEnumerable<IMappingTemplateDecorator> _decorators;
@@ -50,9 +48,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
             return _decorators ?? (_decorators = Project.ResolveDecorators(this));
         }
 
-        public string ContractTypeName => _contractDependancy.ClassName;
+        public string ContractTypeName => this.Project.Application.FindTemplateInstance<IHasClassDetails>(_contractTemplateDependancy)?.ClassName ?? Model.Name;
 
-        public string DomainTypeName => _domainDependancy.ClassName;
+        public string DomainTypeName => Project.Application.FindTemplateInstance<IHasClassDetails>(_domainTemplateDependancy)?.ClassName ?? throw new Exception($"Unable to resolve template dependancy. Template : {this.Id} Depends on : {_domainTemplateDependancy.TemplateIdOrName} Model : {Model.MappedClassId}");
 
         public string DecoratorUsings
         {
@@ -84,23 +82,8 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 
         public void Created()
         {
-            var fileMetaData = GetMetaData();
-            _contractTemplateDependancy = TemplateDependancy.OnModel<DTOModel>(fileMetaData.CustomMetaData[ContractTemplateDependancyId], (to) => to.Id == Model.Id);
-            _domainTemplateDependancy = TemplateDependancy.OnModel<Class>(fileMetaData.CustomMetaData[DomainTemplateDependancyId], (to) => to.ClassId == Model.MappedClassId);
-        }
-
-        public void PreProcess()
-        {
-            _contractDependancy = this.Project.Application.FindTemplateInstance<IHasClassDetails>(_contractTemplateDependancy);
-            if (_contractDependancy == null)
-            {
-                Logging.Log.Failure($"Unable to resolve template dependancy. Template : {this.Id} Depends on : {_contractTemplateDependancy.TemplateIdOrName} Model : {Model.Id}");
-            }
-            _domainDependancy = this.Project.Application.FindTemplateInstance<IHasClassDetails>(_domainTemplateDependancy);
-            if (_domainDependancy == null)
-            {
-                Logging.Log.Failure($"Unable to resolve template dependancy. Template : {this.Id} Depends on : {_domainTemplateDependancy.TemplateIdOrName} Model : {Model.MappedClassId}");
-            }
+            _contractTemplateDependancy = TemplateDependancy.OnModel<IDTOModel>(GetMetaData().CustomMetaData[ContractTemplateDependancyId], (to) => to.Id == Model.Id);
+            _domainTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData[DomainTemplateDependancyId], (to) => to.Id == Model.MappedClassId);
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()

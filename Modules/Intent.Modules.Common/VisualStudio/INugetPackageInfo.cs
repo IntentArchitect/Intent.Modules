@@ -7,6 +7,7 @@ namespace Intent.SoftwareFactory.VisualStudio
     {
         string Name { get; }
         string Version { get; }
+        [Obsolete("Not used")]
         string TargetFramework { get; }
         bool CanAddFile(string file);
         /// <summary>

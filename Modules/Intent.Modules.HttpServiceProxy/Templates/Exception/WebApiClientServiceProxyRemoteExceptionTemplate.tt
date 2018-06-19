@@ -13,7 +13,6 @@
 
 using System;
 using System.Net;
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

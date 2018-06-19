@@ -1,0 +1,29 @@
+﻿<div>
+    <p>A full technology stack for building a web server using ASP.NET WebApi 2.2 in Visual Studio.</p>
+    <p>This template configures an N-Layered architecture with a rich domain based on Domain Driven Development (DDD) principles.</p>
+    <p>The following technologies are used:</p>
+    <ul>
+        <li><strong>ASP.NET WebApi 2.2</strong> - framework for building HTTP services</li>
+        <li><strong>OWIN</strong> - middleware framework between the web server and web application</li>
+        <li><strong>Entity Framework</strong> - Microsoft's recommended ORM (Object Relational Mapper), providing an abstraction on the database.</li>
+        <li><strong>Unity</strong> - dependency injection framework.</li>
+    </ul>
+    <p>Other notes:</p>
+    <ul>
+        <li>
+            Service calls are implemented using a lazy dispatch pattern which is abstracted away from the WebApi technology and technical concernts.
+            Your service call business code should be implemented in the 'SCH' classes.
+        </li>
+        <li>
+            A collection oriented repository pattern provides access to the udnerlying database via Entity Framework.
+            The DbContext backing each repository is isolated to each service call. The same instance is returned for any instantiation of a repository during the service call.
+        </li>
+        <!--<li>
+            A rich domain pattern realizes classes described in the Domain. By design, altering entities is isolated to Operations on the entities (i.e. changing attributes on
+            an entity via is Setter is made more difficult).
+        </li>-->
+        <li>
+            Dependency injection is implemented throughout each pattern in the application. Add additional registrations in thte UnityConfig.cs file.
+        </li>
+    </ul>
+</div>

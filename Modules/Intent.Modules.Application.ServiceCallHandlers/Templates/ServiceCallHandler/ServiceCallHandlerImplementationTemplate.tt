@@ -13,7 +13,6 @@
 <#@ import namespace="System.Collections.Generic" #> 
 <#
 #>
-using Intent.CodeGen;
 using System;
 using System.Linq;
 using System.Collections.Generic;

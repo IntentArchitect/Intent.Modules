@@ -15,7 +15,6 @@
 
 #>
 using System;
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Ignore)]
 

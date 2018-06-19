@@ -1,0 +1,37 @@
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<object>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.MetaModel.Domain" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic"#>
+<#
+
+
+#>
+using System;
+using System.Runtime.InteropServices;
+<#= DependencyUsings #>
+
+[assembly: DefaultIntentManaged(Mode.Fully)] 
+
+namespace <#= Namespace #>
+{
+    public static class <#= ClassName #>
+    {
+        /// <summary>
+        /// Generates sequential GUIDs for SQL Server.
+        /// https://github.com/richardtallent/RT.Comb
+        /// </summary>
+        /// <returns></returns>
+        public static Guid NewSequentialId()
+        {
+            return RT.Comb.Provider.Sql.Create();
+        }
+    }
+}

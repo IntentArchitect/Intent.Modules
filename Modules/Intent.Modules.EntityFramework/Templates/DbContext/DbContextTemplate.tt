@@ -1,10 +1,9 @@
-﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IEnumerable<Class>>"#>
+﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>"#>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
 <#@ Assembly Name="Intent.SoftwareFactory" #>
-<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
-<#@ import namespace="Intent.Modules.RichDomain" #>
+<#@ import namespace="Intent.MetaModel.Domain" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
@@ -15,17 +14,15 @@
 
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Intent.Framework.EntityFramework;
-using Intent.CodeGen;
+<#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
-    public class <#= BoundedContextName#>DbContext : DbContextEx
+    public class <#= ClassName#> : <#= GetBaseClass() #>
     {
-        public <#= BoundedContextName#>DbContext()
-            : base("<#= BoundedContextName#>DB")
+        public <#= ClassName#>() : base("<#= Project.Application.ApplicationName#>DB")
         {
 
         } 
@@ -33,16 +30,17 @@ namespace <#= Namespace #>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            ConfigureConventions(modelBuilder);
             
-            modelBuilder.HasDefaultSchema("<#= BoundedContextName#>");
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-<# foreach (var model in Model) {
-	   if (!model.IsEntity()) {
-			continue;
-       }
-#>
+<# foreach (var model in Model) {#>
             modelBuilder.Configurations.Add(new <#= model.Name.ToPascalCase()#>Mapping());
 <# }#>
+        }
+
+        private void ConfigureConventions(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
     }
 }

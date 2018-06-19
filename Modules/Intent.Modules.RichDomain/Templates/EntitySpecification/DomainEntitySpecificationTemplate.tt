@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using Intent.CodeGen;
 using Intent.Framework.Domain;
 using Intent.Framework.Domain.Specification;
 

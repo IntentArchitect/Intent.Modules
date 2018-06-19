@@ -17,21 +17,19 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Microsoft.Practices.Unity;
-using Intent.CodeGen;
 <#=DependencyUsings#>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#=Namespace#>
 {
-    public class <#=ClassName#> : <#= GetServiceInterfaceName() #>
+    public class <#=ClassName#> : <#= NormalizeNamespace(GetServiceInterfaceName()) #>
     {
-        private readonly IUnityContainer _container;
+        private readonly IServiceProvider _serviceProvider;
 
-        public <#=ClassName#>(IUnityContainer container)
+        public <#=ClassName#>(IServiceProvider serviceProvider)
         { 
-            _container = container;
+            _serviceProvider = serviceProvider;
         }
 
 <#    foreach (var o in Model.Operations)
@@ -39,7 +37,7 @@ namespace <#=Namespace#>
 
 #>        public <#= GetOperationReturnType(o) #> <#= o.Name#>(<#= GetOperationDefinitionParameters(o) #>)
         {
-            var sch = _container.Resolve<<#= GetHandlerClassName(o) #>>();
+            var sch = (<#= NormalizeNamespace(GetHandlerClassName(o)) #>)_serviceProvider.GetService(typeof(<#= NormalizeNamespace(GetHandlerClassName(o)) #>));
             <#
         if (o.ReturnType != null)
         {

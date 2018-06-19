@@ -2,16 +2,17 @@
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using System.Collections.Generic;
+using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    public class SerializableEntityInterfaceDecorator : AbstractDomainEntityInterfaceDecorator
+    public class SerializableEntityInterfaceDecorator : DomainEntityInterfaceDecoratorBase
     {
-        public const string Id = "Intent.Serializable.Entity.Interfaces.Decorator";
+        public const string Identifier = "Intent.Serializable.Entity.Interfaces.Decorator";
 
         public override IEnumerable<string> GetInterfaces(IClass @class)
         {
-            var baseClass = @class.Stereotypes.GetProperty<string>("Serializable", "BaseType");
+            var baseClass = @class.GetStereotypeProperty<string>("Serializable", "BaseType");
             if (baseClass != null)
             {
                 return new[]

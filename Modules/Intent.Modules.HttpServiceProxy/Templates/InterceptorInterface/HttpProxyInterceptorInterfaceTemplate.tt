@@ -12,7 +12,6 @@
 <#@ import namespace="System.Collections.Generic" #> 
 
 using System.Net.Http;
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

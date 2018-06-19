@@ -9,12 +9,13 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-<#= DependencyUsings #>
-using Intent.CodeGen;
-using Microsoft.Practices.Unity;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Practices.Unity;
+using System.Collections.Generic;
+using Unity;
+using Unity.RegistrationByConvention;
+<#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -59,8 +60,12 @@ namespace <#= Namespace #>
 
         private static void LoadConventions(IUnityContainer container)
         {
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.StartsWith("<#= Namespace.Split('.')[0] #>") || x.FullName.StartsWith("Intent")).ToArray();
-
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(x => x.FullName.StartsWith("Intent")
+<#  foreach(var project in ApplicationProjects) { #>
+                            || x.FullName.Equals("<#= project.Name #>")
+<#  } #>
+                      ).ToArray();
             container.RegisterTypes(
                AllClasses.FromAssemblies(assemblies),
                WithMappings.FromMatchingInterface,

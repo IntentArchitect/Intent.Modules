@@ -13,7 +13,6 @@
 <#@ import namespace="System.Collections.Generic"#>
 using System;
 using System.Collections.Generic;
-using Intent.CodeGen;
 <#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -21,29 +20,39 @@ using Intent.CodeGen;
 namespace <#= Namespace #>
 {
 <#= InterfaceAnnotations(Model) #>
-    public partial interface I<#= ClassName #><#= GetInterfaces(Model) #>
+    public partial interface <#= ClassName #><#= GetInterfaces(Model) #><#= Model.ParentClass != null ? string.Format(" : I{0}", Model.ParentClass.Name) : "" #>
     {
+<#= BeforeProperties(Model) #>
 <#  foreach (var attribute in Model.Attributes)
     {
+#><#= PropertyBefore(attribute) #><#
+        if (!CanWriteDefaultAttribute(attribute)) 
+        {
+            continue;
+        }
 		string attributeType = Types.Get(attribute.Type);
 #>
 <#= PropertyAnnotations(attribute) #>
-        <#= attributeType #> <#= attribute.Name.ToPascalCase() #> { get; }
+        <#= attributeType #> <#= attribute.Name.ToPascalCase() #> { <#= AttributeAccessors(attribute) #> }
 <#  }
 
 	foreach (var associatedClass in Model.AssociatedClasses)
-    {#><# 	
-		if (!associatedClass.IsNavigable) 
+    {
+#><#= PropertyBefore(associatedClass) #><#
+		if (!CanWriteDefaultAssociation(associatedClass) || !associatedClass.IsNavigable) 
 		{
 			continue;
         }
-#>
-<#= PropertyAnnotations(associatedClass) #>
-        <#= associatedClass.Type() #> <#= associatedClass.Name().ToPascalCase() #> { get; }
+#><#= PropertyAnnotations(associatedClass) #>
+        <#= NormalizeNamespace(Types.Get(associatedClass)) #> <#= associatedClass.Name().ToPascalCase() #> { <#= AssociationAccessors(associatedClass) #> }
 <#  }#>
 
 <#  foreach (var operation in Model.Operations)
     {
+        if (!CanWriteDefaultOperation(operation)) 
+        {
+            continue;
+        }
         string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";
         string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
 #>

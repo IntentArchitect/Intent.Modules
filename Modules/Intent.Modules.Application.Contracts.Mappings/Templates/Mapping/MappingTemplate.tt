@@ -24,14 +24,14 @@ namespace <#= Namespace #>
 {
     public static class <#=ClassName#> 
     {
-        public static <#= ContractTypeName#> MapTo<#= ContractTypeName#> (this <#= DomainTypeName#> projectFrom)
+        public static <#= NormalizeNamespace(ContractTypeName) #> MapTo<#= NormalizeNamespace(ContractTypeName) #> (this <#= NormalizeNamespace(DomainTypeName) #> projectFrom)
         {
-            return Mapper.Map<<#= ContractTypeName#>>(projectFrom);
+            return Mapper.Map<<#= NormalizeNamespace(ContractTypeName) #>>(projectFrom);
         }
 
-        public static List<<#= ContractTypeName#>> MapTo<#= ContractTypeName#>s (this IEnumerable<<#= DomainTypeName#>> projectFrom)
+        public static List<<#= NormalizeNamespace(ContractTypeName) #>> MapTo<#= NormalizeNamespace(ContractTypeName) #>s (this IEnumerable<<#= NormalizeNamespace(DomainTypeName) #>> projectFrom)
         {
-            return projectFrom.Select(x => x.MapTo<#= ContractTypeName#>()).ToList();
+            return projectFrom.Select(x => x.MapTo<#= NormalizeNamespace(ContractTypeName) #>()).ToList();
         }<#= GetDecoratorMembers(ContractTypeName, DomainTypeName) #>
      }
 }

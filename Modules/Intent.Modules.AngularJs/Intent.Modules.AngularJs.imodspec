@@ -2,8 +2,8 @@
 <package>
   <id>Intent.AngularJs</id>
   <version>1.3.0</version>
-  <summary>AngularJs view pattern using ui-router, implemented with Typescript</summary>
-  <description>AngularJs view pattern using ui-router, implemented with Typescript</description>
+  <summary>NB! Research Module - AngularJs view pattern using ui-router, implemented with Typescript</summary>
+  <description>NB! Research Module - AngularJs view pattern using ui-router, implemented with Typescript</description>
   <authors>Intent Software</authors>
   <projectUrl>www.intentarchitect.com</projectUrl>
   <tags>AngularJs Typescript</tags>
@@ -28,7 +28,7 @@
   </interoperability>-->
   <dependencies>
     <dependency id="Intent.Bower" version="1.3.0"/>
-    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.Common" version="1.5.0"/>
     <dependency id="Intent.Typescript.Config" version="1.3.0"/>
     <dependency id="Intent.OutputTransformer.TagWeaving" version="1.3.0"/>
   </dependencies>

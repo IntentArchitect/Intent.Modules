@@ -1,49 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.EntityFramework</id>
-  <version>1.4.0</version>
-  <summary>Entity Framework mappings and repository pattern based on Domain meta-data.</summary>
-  <description>Entity Framework mappings and repository pattern based on Domain meta-data.</description>
+  <version>1.5.0</version>
+  <summary>Entity Framework implementation.</summary>
+  <description>Entity Framework implementation.</description>
   <authors>Intent Software</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
-  <tags>EntityFramework ORM Domain Repository</tags>
+  <tags>EntityFramework</tags>
   <templates>
     <template id="Intent.EntityFramework.DbContext">
       <role>Infrastructure.Data.EF</role>
     </template>
-    <template id="Intent.EntityFramework.DeleteVisitor">
-      <role>Infrastructure.Data.EF</role>
-    </template>
     <template id="Intent.EntityFramework.EFMapping">
       <role>Infrastructure.Data.EF</role>
+      <config>
+        <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
+        <add key="Implicit Surrogate Key" description="Flag for whether to use implicit surrogate keys from the Entities model." default="true" />
+        <add key="Use Foreign Keys" description="Flag for whether to use foreign keys from the Entities model." default="true" />
+      </config>
     </template>
-    <template id="Intent.EntityFramework.Repository">
-      <role>Infrastructure.Data.EF</role>
+    <template id="Intent.EntityFramework.DbMigrationsConfiguration" enabled="true">
+      <role>Infrastructure.Data.EF.Migrations</role>
     </template>
-    <template id="Intent.EntityFramework.RepositoryContract">
-      <role>Domain</role>
+    <template id="Intent.EntityFramework.DbMigrationsReadMe" enabled="true">
+      <role>Infrastructure.Data.EF.Migrations</role>
     </template>
   </templates>
   <decorators />
   <interoperability>
     <detect id="Intent.AspNet.WebApi">
       <install>
-        <package id="Intent.EntityFramework.Interop.WebApi" version="1.4.0"/>
+        <package id="Intent.EntityFramework.Interop.WebApi" version="1.5.0"/>
       </install>
     </detect>
     <detect id="Intent.Unity">
       <install>
-        <package id="Intent.EntityFramework.Interop.Unity" version="1.4.0"/>
+        <package id="Intent.EntityFramework.Interop.Unity" version="1.5.0"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="1.3.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>
-    <dependency id="Intent.RichDomain" version="1.4.0"/>
+    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
+  <metadata>
+    <install target="Domain" src="MetaData\Domain"/>
+  </metadata>
 </package>

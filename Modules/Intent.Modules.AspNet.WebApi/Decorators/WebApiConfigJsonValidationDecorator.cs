@@ -5,7 +5,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
 {
     public class WebApiConfigJsonValidationDecorator : IWebApiConfigTemplateDecorator
     {
-        public const string Identifier = "Intent.WebApi.WebApiConfig.JsonValidation.Decorator";
+        public const string Identifier = "Intent.AspNet.WebApi.WebApiConfig.JsonValidation.Decorator";
 
         public IEnumerable<string> Configure()
         {

@@ -9,9 +9,9 @@ using System.Linq;
 
 namespace Intent.Modules.Unity.Templates.UnityConfig
 {
-    partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IUnityRegistrationsDecorator>
+    partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IUnityRegistrationsDecorator>, IHasTemplateDependencies
     {
-        public const string Identifier = "Intent.WebApi.UnityConfig";
+        public const string Identifier = "Intent.Unity.Config";
 
         private IEnumerable<IUnityRegistrationsDecorator> _decorators;
         private readonly IList<ContainerRegistration> _registrations = new List<ContainerRegistration>();
@@ -21,6 +21,8 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         {
             eventDispatcher.Subscribe(ApplicationEvents.Container_RegistrationRequired, Handle);
         }
+
+        public IEnumerable<IProject> ApplicationProjects => Project.Application.Projects;
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -33,9 +35,9 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "UnityConfig",
                 fileExtension: "cs",
-                defaultLocationInProject: "",
+                defaultLocationInProject: "Unity",
                 className: "UnityConfig",
-                @namespace: "${Project.ProjectName}"
+                @namespace: "${Project.ProjectName}.Unity"
                 );
         }
 
@@ -51,8 +53,8 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
 
         public string Registrations()
         {
-            var registrations = _registrations != null && _registrations.Any()
-                ? _registrations.Select(x => $"{Environment.NewLine}            container.RegisterType<{x.InterfaceType}, {x.ConcreteType}>();").Aggregate((x, y) => x + y)
+            var registrations = _registrations != null && _registrations.Any(x => x.InterfaceType != null)
+                ? _registrations.Where(x => x.InterfaceType != null).Select(x => $"{Environment.NewLine}            container.RegisterType<{NormalizeNamespace(x.InterfaceType)}, {NormalizeNamespace(x.ConcreteType)}>();").Aggregate((x, y) => x + y)
                 : string.Empty;
 
             return registrations + Environment.NewLine + GetDecorators().Aggregate(x => x.Registrations());
@@ -65,21 +67,41 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
 
         private void Handle(ApplicationEvent @event)
         {
-            _registrations.Add(new ContainerRegistration(@event.GetValue("InterfaceType"), @event.GetValue("ConcreteType"), @event.TryGetValue("Lifetime")));
+            _registrations.Add(new ContainerRegistration(
+                interfaceType: @event.TryGetValue("InterfaceType"), 
+                concreteType: @event.GetValue("ConcreteType"), 
+                lifetime: @event.TryGetValue("Lifetime"),
+                interfaceTypeTemplateDependency: @event.TryGetValue("InterfaceTypeTemplateId") != null ? TemplateDependancy.OnTemplate(@event.TryGetValue("InterfaceTypeTemplateId")) : null,
+                concreteTypeTemplateDependency: @event.TryGetValue("ConcreteTypeTemplateId") != null ? TemplateDependancy.OnTemplate(@event.TryGetValue("ConcreteTypeTemplateId")) : null));
+        }
+
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            return _registrations
+                .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
+                .Select(x => x.InterfaceTypeTemplateDependency)
+                .Union(_registrations
+                    .Where(x => x.ConcreteTypeTemplateDependency != null)
+                    .Select(x => x.ConcreteTypeTemplateDependency))
+                .ToList();
         }
     }
 
     internal class ContainerRegistration
     {
-        public ContainerRegistration(string interfaceType, string concreteType, string lifetime)
+        public ContainerRegistration(string interfaceType, string concreteType, string lifetime, ITemplateDependancy interfaceTypeTemplateDependency, ITemplateDependancy concreteTypeTemplateDependency)
         {
             InterfaceType = interfaceType;
             ConcreteType = concreteType;
             Lifetime = lifetime ?? "Transient";
+            InterfaceTypeTemplateDependency = interfaceTypeTemplateDependency;
+            ConcreteTypeTemplateDependency = concreteTypeTemplateDependency;
         }
 
         public string InterfaceType { get; private set; }
         public string ConcreteType { get; private set; }
         public string Lifetime { get; private set; }
+        public ITemplateDependancy InterfaceTypeTemplateDependency { get; private set; }
+        public ITemplateDependancy ConcreteTypeTemplateDependency { get; }
     }
 }

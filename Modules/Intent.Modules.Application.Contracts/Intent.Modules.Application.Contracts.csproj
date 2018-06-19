@@ -41,10 +41,6 @@
       <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.4.0\lib\net452\Intent.MetaModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.Modules.Common.1.3.0\lib\net452\Intent.Modules.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.4.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
@@ -62,22 +58,8 @@
     <Compile Include="CSharpHelpers.cs" />
     <Compile Include="CSharpTypeReferenceExtensions.cs" />
     <Compile Include="Decorators\DataContractDTOAttributeDecoratorRegistration.cs" />
-    <Compile Include="Legacy\DTO\DTOTemplate.cs" />
-    <Compile Include="Legacy\DTO\GenericClassTemplate.cs">
-      <DependentUpon>GenericClassTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Legacy\DTO\GenericClassTemplatePartial.cs" />
-    <Compile Include="Legacy\ServiceContract\ServiceContractTemplate.cs">
-      <DependentUpon>ServiceContractTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Legacy\ServiceContract\ServiceContractTemplatePartial.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrations.cs" />
     <Compile Include="Templates\DTO\Registrations.cs" />
     <Compile Include="Decorators\DataContractDTOAttributeDecorator.cs" />
     <Compile Include="Templates\DTO\DTOTemplate.cs">
@@ -87,7 +69,7 @@
     </Compile>
     <Compile Include="Templates\DTO\DTOTemplatePartial.cs" />
     <Compile Include="Templates\DTO\IDTOAttributeDecorator.cs" />
-    <Compile Include="Templates\ServiceContract\Registrations.cs" />
+    <Compile Include="Templates\ServiceContract\ServiceContractTemplateRegistrations.cs" />
     <Compile Include="Templates\ServiceContract\ServiceContractTemplate.cs">
       <DependentUpon>ServiceContractTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -97,10 +79,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Application.Contracts.imodspec" />
-    <None Include="Legacy\Services.ttinclude" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
+      <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
+      <Name>Intent.Modules.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
@@ -108,14 +93,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Legacy\DTO\GenericClassTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>GenericClassTemplate.cs</LastGenOutput>
-    </None>
-    <None Include="Legacy\ServiceContract\ServiceContractTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ServiceContractTemplate.cs</LastGenOutput>
-    </None>
     <Content Include="Templates\DTO\DTOTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DTOTemplate.cs</LastGenOutput>

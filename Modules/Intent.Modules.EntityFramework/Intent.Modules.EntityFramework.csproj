@@ -41,10 +41,6 @@
       <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.4.0\lib\net452\Intent.MetaModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.Modules.Common.1.3.0\lib\net452\Intent.Modules.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.4.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
@@ -62,83 +58,76 @@
   <ItemGroup>
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrations.cs" />
+    <Compile Include="Templates\DbContext\DbContextDecoratorBase.cs" />
+    <Compile Include="Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.cs">
+      <DependentUpon>DbMigrationsReadMeTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplatePartial.cs" />
     <Compile Include="Templates\DbContext\DbContextTemplate.cs">
       <DependentUpon>DbContextTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\DbContext\DbContextTemplatePartial.cs" />
-    <Compile Include="Templates\DeleteVisitor\DeleteVisitorTemplate.cs">
-      <DependentUpon>DeleteVisitorTemplate.tt</DependentUpon>
+    <Compile Include="Templates\DbContext\DbContextTemplateRegistration.cs" />
+    <Compile Include="Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.cs">
+      <DependentUpon>DbMigrationsConfigurationTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\DeleteVisitor\DeleteVisitorTemplatePartial.cs" />
+    <Compile Include="Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplatePartial.cs" />
+    <Compile Include="Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplateRegistration.cs" />
+    <Compile Include="Templates\DbMigrationsReadMe\EFMappingTemplateRegistration.cs" />
     <Compile Include="Templates\EFMapping\EFMappingTemplate.cs">
       <DependentUpon>EFMappingTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\EFMapping\EFMappingTemplatePartial.cs" />
-    <Compile Include="Templates\RepositoryContract\RepositoryContractTemplate.cs">
-      <DependentUpon>RepositoryContractTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\RepositoryContract\RepositoryContractTemplatePartial.cs" />
-    <Compile Include="Templates\Repository\RepositoryTemplate.cs">
-      <DependentUpon>RepositoryTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\Repository\RepositoryTemplatePartial.cs" />
+    <Compile Include="Templates\EFMapping\EFMappingTemplateRegistration.cs" />
+    <Compile Include="Templates\Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.EntityFramework.imodspec" />
+    <None Include="MetaData\Domain\Intent.EntityFramework.pkg.config" />
     <None Include="packages.config" />
-    <None Include="Templates\DbContext\DbContextTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DbContextTemplate.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Templates\DeleteVisitor\DeleteVisitorTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DeleteVisitorTemplate.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Templates\EFMapping\EFMappingTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EFMappingTemplate.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Templates\Repository\RepositoryTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>RepositoryTemplate.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Templates\RepositoryContract\RepositoryContractTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>RepositoryContractTemplate.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
+      <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
+      <Name>Intent.Modules.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.RichDomain\Intent.Modules.RichDomain.csproj">
-      <Project>{9db8717c-8f21-450b-9fea-bbfb3f835390}</Project>
-      <Name>Intent.Modules.RichDomain</Name>
-    </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DbMigrationsReadMeTemplate.cs</LastGenOutput>
+    </None>
+    <Content Include="MetaData\Domain\Folders\Stereotypes.xml" />
+    <Content Include="MetaData\Domain\Stereotypes\Index.xml" />
+    <Content Include="Templates\DbContext\DbContextTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DbContextTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DbMigrationsConfigurationTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\EFMapping\EFMappingTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EFMappingTemplate.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

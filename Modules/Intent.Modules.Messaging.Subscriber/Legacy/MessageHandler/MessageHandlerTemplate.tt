@@ -18,7 +18,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Intent.Esb.Client.Consuming;
 using Intent.Esb.Common.Messaging;
-using Intent.CodeGen;
 
 [assembly: DefaultIntentManaged(Mode.Ignore)]
 

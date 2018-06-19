@@ -1,6 +1,5 @@
 ﻿using Intent.MetaModel.Common;
 using Intent.MetaModel.Dto.Old;
-using Intent.Modules.Application.Contracts.Legacy.DTO;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
@@ -14,7 +13,6 @@ using System.ComponentModel;
 using System.Linq;
 using Intent.MetaModel.DTO;
 using IApplication = Intent.SoftwareFactory.Engine.IApplication;
-using ServiceContractTemplate = Intent.Modules.Application.Contracts.Legacy.ServiceContract.ServiceContractTemplate;
 
 namespace Intent.Modules.Application.Contracts.Clients
 {
@@ -24,37 +22,6 @@ namespace Intent.Modules.Application.Contracts.Clients
         public const string ClientServiceContract = "Intent.Application.Contracts.ServiceContract.Client";
         public const string ClientDtoLegacy = "Intent.Application.Contracts.DTO.Legacy.Client";
         public const string ClientLegacyServiceContractLegacy = "Intent.Application.Contracts.ServiceContract.Legacy.Client";
-    }
-
-    //public class DecoratorIds
-    //{
-    //    public const string ClientDataContractDecorator = "Intent.Application.Contracts.DataContractDecorator";
-    //}
-
-    public class LegacyRegistrations : OldProjectTemplateRegistration
-    {
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
-        {
-            var dtoModels = metaDataManager
-                .GetMetaData<DtoModel>(new MetaDataIdentifier("DtoProjection"))
-                .Where(x => x.Clients.Any(y => application.ApplicationName.Equals(y, StringComparison.OrdinalIgnoreCase)))
-                .ToList();
-
-            var serviceModels = metaDataManager
-                .GetMetaData<ServiceModel>(new MetaDataIdentifier("Service-Legacy"))
-                .Where(x => x.Clients.Any(y => application.ApplicationName.Equals(y, StringComparison.OrdinalIgnoreCase)))
-                .ToList();
-
-            foreach (var model in dtoModels)
-            {
-                RegisterTemplate(TemplateIds.ClientDtoLegacy, project => new DTOTemplate(project, model, TemplateIds.ClientDtoLegacy));
-            }
-
-            foreach (var serviceModel in serviceModels)
-            {
-                RegisterTemplate(TemplateIds.ClientLegacyServiceContractLegacy, project => new ServiceContractTemplate(serviceModel, project, TemplateIds.ClientLegacyServiceContractLegacy));
-            }
-        }
     }
 
     [Description("Intent Applications Service Contracts (Clients)")]

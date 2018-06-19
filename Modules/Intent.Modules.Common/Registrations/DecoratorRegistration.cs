@@ -21,9 +21,9 @@ namespace Intent.SoftwareFactory.Registrations
                 return;
             }
 
-            register(DecoratorId, typeof(TDecoratorContract), CreateDecoratorInstance());
+            register(DecoratorId, typeof(TDecoratorContract), CreateDecoratorInstance(application));
         }
 
-        public abstract object CreateDecoratorInstance();
+        public abstract object CreateDecoratorInstance(IApplication application);
     }
 }

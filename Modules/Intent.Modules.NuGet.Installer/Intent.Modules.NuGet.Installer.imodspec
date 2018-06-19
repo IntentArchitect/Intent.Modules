@@ -27,9 +27,11 @@
              default="true" />
       </config>
     </factoryExtension>
+    <!--<factoryExtension id="Intent.NETCore.NugetInstaller" enabled="false">
+    </factoryExtension>-->
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.Common" version="1.5.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

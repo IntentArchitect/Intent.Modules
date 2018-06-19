@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common</id>
-  <version>1.4.0-beta</version>
-  <summary>Base Implimentation and Helper classes.</summary>
-  <description>Base Implimentation and Helper classes.</description>
+  <version>1.5.0</version>
+  <summary>Base Implementation and Helper classes for modules.</summary>
+  <description>Base Implementation and Helper classes for modules.</description>
   <authors>Intent Software</authors>
   <templates />
   <dependencies />

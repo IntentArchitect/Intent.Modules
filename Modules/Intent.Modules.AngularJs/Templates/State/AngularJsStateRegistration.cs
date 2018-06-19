@@ -9,7 +9,7 @@ using Intent.SoftwareFactory.Templates.Registrations;
 
 namespace Intent.Modules.AngularJs.Templates.State
 {
-    [Description("Intent - AngularJs State Registration")]
+    [Description(AngularJsStateTemplate.Identifier)]
     public class AngularJsStateRegistration : ModelTemplateRegistrationBase<ViewStateModel>
     {
         private readonly IMetaDataManager _metaDataManager;
@@ -28,7 +28,7 @@ namespace Intent.Modules.AngularJs.Templates.State
 
         public override IEnumerable<ViewStateModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetMetaData<ViewStateModel>(new MetaDataIdentifier("ViewState")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return _metaDataManager.GetMetaData<ViewStateModel>(new MetaDataIdentifier("ViewState")).ToList();
         }
     }
 }

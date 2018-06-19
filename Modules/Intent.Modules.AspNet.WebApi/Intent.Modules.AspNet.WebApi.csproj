@@ -41,10 +41,6 @@
       <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.4.0\lib\net452\Intent.MetaModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.Modules.Common.1.3.0\lib\net452\Intent.Modules.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.4.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
       <Private>True</Private>
@@ -60,21 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decorators\Legacy\DebugSleepDistributionDecorator.cs" />
     <Compile Include="Decorators\UseHttpsOwinStartupDecorator.cs" />
     <Compile Include="Decorators\WebApiConfigJsonValidationDecorator.cs" />
-    <Compile Include="Decorators\Legacy\WebApiDistributionJsonValidationDecorator.cs" />
-    <Compile Include="Decorators\WebApiDistributionExceptionHandlingStrategy.cs" />
-    <Compile Include="Legacy\BaseDistributionDecorator.cs" />
-    <Compile Include="Decorators\Legacy\WebApiDistributionExceptionHandlingStrategy.cs" />
+    <Compile Include="Decorators\WebApiWebApiControllerExceptionHandlingStrategy.cs" />
     <Compile Include="Decorators\WebApiOwinStartupDecorator.cs" />
-    <Compile Include="Legacy\Controller\IDistributionDecorator.cs" />
-    <Compile Include="Legacy\Controller\WebApiControllerTemplate.cs">
-      <DependentUpon>WebApiControllerTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Legacy\Controller\WebApiImplementationTemplatePartial.cs" />
     <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.cs">
       <DependentUpon>RequireHttpsMiddlewareTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -83,8 +68,8 @@
     <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplatePartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrations.cs" />
-    <Compile Include="Templates\Controller\DistributionDecoratorBase.cs" />
-    <Compile Include="Templates\Controller\Registrations.cs" />
+    <Compile Include="Templates\Controller\WebApiControllerDecoratorBase.cs" />
+    <Compile Include="Templates\Controller\WebApiControllerTemplateRegistrations.cs" />
     <Compile Include="Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.cs">
       <DependentUpon>HttpExceptionHandlerTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -111,11 +96,17 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\WebApiBadHttpRequestException\WebApiBadHttpRequestExceptionTemplatePartial.cs" />
+    <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplateRegistration.cs" />
+    <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.cs">
+      <DependentUpon>WebApiServiceCallContextTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.AspNet.WebApi.imodspec" />
     <None Include="Intent.Modules.AspNet.WebApi.nuspec" />
-    <None Include="Legacy\Services.ttinclude" />
     <None Include="MetaData\Services\Intent.WebApi.services.pkg.config" />
     <None Include="packages.config" />
     <None Include="Templates\Services.ttinclude" />
@@ -140,6 +131,10 @@
       <Project>{56a0b1f7-fa7e-46b0-a1c8-164ddb07fc4c}</Project>
       <Name>Intent.Modules.AspNet.Owin</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
+      <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
+      <Name>Intent.Modules.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
@@ -154,16 +149,12 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiBadHttpRequestExceptionTemplate.cs</LastGenOutput>
     </None>
-    <None Include="Legacy\Controller\WebApiControllerTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>WebApiControllerTemplate.cs</LastGenOutput>
-    </None>
-    <None Include="MetaData\Services\Stereotypes\64d4a412-03d8-46bb-90dc-8ddb186270e2.xml" />
+    <None Include="MetaData\Services\Stereotypes\Secured.xml" />
     <None Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>RequireHttpsMiddlewareTemplate.cs</LastGenOutput>
     </None>
-    <None Include="MetaData\Services\Folders\87d16e6c-ce99-4329-87c4-d39dcddf0764.xml" />
+    <None Include="MetaData\Services\Folders\Stereotypes.xml" />
     <None Include="Templates\HttpExceptionHandler\HttpExceptionHandlerTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>HttpExceptionHandlerTemplate.cs</LastGenOutput>
@@ -172,6 +163,12 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>OwinWebApiConfigTemplate.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>WebApiServiceCallContextTemplate.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

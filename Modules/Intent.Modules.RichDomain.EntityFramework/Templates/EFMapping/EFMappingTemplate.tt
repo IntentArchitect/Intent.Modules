@@ -1,0 +1,276 @@
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<Class>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modules.RichDomain" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+<#//Some initial validation
+    foreach (var associationEnd in Model.Associations)
+    {
+        var association = associationEnd.Association;
+        
+        //if there is more than 1 parent association && there are any which are not 0..1->1 (this is a manual inheritance mapping)
+        if ((Model.Associations.Where(ae => ae.Association.AssociationType == AssociationType.Composite &&  ae.Association.ChildEnd == ae).Count() > 1)
+            && (Model.Associations.Where(ae => ae.Association.AssociationType == AssociationType.Composite &&  ae.Association.ChildEnd == ae && ae.Association.RelationshipString() != "0..1->1").Count() > 0)
+            )
+        {
+            throw new Exception(string.Format("Unsupported Mapping, multiple composite parents to {0} ", Model.Name));            
+        }
+
+        if (!association.ParentEnd.Navigable)
+        {
+            throw new Exception(string.Format("Unsupported Parent Needs to be Navigable to Child relationship  {0} on {1} ", association.ToString(), association.ChildEnd.Class.Name));
+        }
+
+        //Unsupported Associations
+        if ((association.AssociationType == AssociationType.Aggregation ) && ( association.RelationshipString() == "1->0..1"))
+        {
+            throw new Exception(string.Format("Unsupported Aggregation relationship  {0} - this relationship implies composition", association.ToString()));
+        }
+        if ((association.AssociationType == AssociationType.Aggregation ) && ( association.RelationshipString() == "1->1"))
+        {
+            throw new Exception(string.Format("Unsupported Aggregation relationship  {0} - this relationship implies composition", association.ToString()));
+        }
+        if ((association.AssociationType == AssociationType.Aggregation ) && ( association.RelationshipString() == "1->*"))
+        {
+            throw new Exception(string.Format("Unsupported Aggregation relationship {0}, this relationship implies Composition", association.ToString()));
+        }
+        if ((association.AssociationType == AssociationType.Composite ) && ( association.RelationshipString() == "0..1->0..1"))
+        {
+            throw new Exception(string.Format("Unsupported composite relationship {0}", association.ToString()));
+        }
+        if ((association.AssociationType == AssociationType.Composite ) && ( association.RelationshipString() == "0..1->*"))
+        {
+            throw new Exception(string.Format("Unsupported composite relationship {0}, this relationship implies aggregation", association.ToString()));
+        }
+        if ((association.AssociationType == AssociationType.Composite ) && ( association.RelationshipString().StartsWith("*->")))
+        {
+            throw new Exception(string.Format("Unsupported composite relationship {0}, this relationship implies aggregation", association.ToString()));
+        }
+        //Naviagability Requirement
+        if ((association.AssociationType == AssociationType.Composite ) && ( association.RelationshipString() == "0..1->1") && (!association.ParentEnd.Navigable))
+        {
+            throw new Exception(string.Format("Unsupported. IsNavigable from Composite Required for composite relationship {0}", association.ToString()));
+        }
+    }
+
+#>
+using System;
+using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.Infrastructure.Annotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Intent.Framework.EntityFramework.Mapping;
+<#= DependencyUsings #>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public partial class <#= Model.Name.ToPascalCase() #>Mapping : EntityTypeConfiguration<<#= Model.Name.ToPascalCase() #>>
+    {
+    
+        public <#= Model.Name.ToPascalCase() #>Mapping()
+        {
+<#    if (Model.ParentClass == null || Model.ParentClass.Stereotypes.GetTagValue<string>("InheritanceMapping", "Type") != "TPH")
+    {#>
+            this.ToTable("<#= Model.TableName() #>", "<#= Model.BoundedContext() #>");
+<#    }
+    if (Model.Stereotypes.GetTagValue<string>("InheritanceMapping", "Type") == "TPH")
+    {
+        foreach (var subClass in Model.SubClasses)
+        {
+#>
+            this.Map<<#= subClass.Name.ToPascalCase() #>>(m => m.Requires("DbSpecialization").HasValue((int)<#= Model.Name.ToPascalCase() #>Specialization.<#= subClass.Name.ToPascalCase() #>));
+<#      }
+    }
+    //Key Mapping
+    if (Model.IsSubClass() && Model.ParentClass.Stereotypes.GetTagValue<string>("InheritanceMapping", "Type") == "TPH")    
+    {
+        //No Key mapping required
+    } 
+    else 
+    {
+        bool doneKey = false;
+        foreach (var assocaitionEnd in Model.Associations)
+        {
+            /*if (assocaitionEnd.Association.RelationshipString() == "1->*" && assocaitionEnd == assocaitionEnd.Association.ChildEnd)
+            {#>
+            this.HasKey(x => new { x.Id, x.<#= assocaitionEnd.Association.ChildEnd.IdentifierName()#> });
+            this.Property(x => x.Id).HasColumnName("<#= Model.PrimaryKeys().First() #>");
+<#                doneKey = true;
+            }*/
+        }
+        if (!doneKey)
+        {
+#>
+            this.HasKey(x => x.Id);
+            this.Property(x => x.Id).HasColumnName("<#= Model.PrimaryKeys().First() #>");
+<#        }
+    }
+    
+    foreach (var attribute in Model.Attributes)
+    {
+        if (attribute.IsAssociationAttribute)
+            continue;#>
+            this.Property(x => x.<#= attribute.Name.ToPascalCase()#>)<#
+        if (attribute.Stereotypes.GetTagValue("UniqueConstraint", "IsIndex", false)){ #>
+
+                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= attribute.Stereotypes.GetTagValue("UniqueConstraint", "UniqueKey", "Unique1")#>", <#=attribute.Stereotypes.GetTagValue("UniqueConstraint", "Order", "1")#>) { IsUnique = true }))<#
+        }
+		if (!string.IsNullOrEmpty(attribute.Stereotypes.GetTagValue("Index", "UniqueKey", "")))
+		{#>
+
+                .HasColumnAnnotation("Index", new IndexAnnotation(new []
+                    {
+<#			foreach(var index in attribute.Stereotypes.Where(x => x.Name == "Index")) { #>
+                        new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= index.GetTagValue("UniqueKey", "Unique1")#>", <#= index.GetTagValue("Order", "1")#>) { IsUnique = <#= index.GetTagValue("IsUnique", "false")#> },
+<#
+			}#>
+                    }))<#
+        }
+        if (attribute.IsMandatory){#>
+
+                .IsRequired()<#
+        }
+
+        if (attribute.Type == "string" )
+        {
+            var maxLength = attribute.Stereotypes.GetTagValue<int?>("Text", "MaxLength");    
+            if (maxLength.HasValue){
+        #>
+
+                .HasMaxLength(<#= maxLength.Value#>)<#
+            }
+        }
+
+        var decimalPrecision = attribute.Stereotypes.GetTagValue<int?>("Numeric", "Precision");
+        var decimalScale = attribute.Stereotypes.GetTagValue<int?>("Numeric", "Scale");
+        if (decimalPrecision.HasValue && decimalScale.HasValue){#>
+
+                .HasPrecision(<#= decimalPrecision#>, <#= decimalScale #>)<#
+        }
+        switch (attribute.Type)
+        {
+            case "date" :#>
+
+                .HasColumnType("date")<#
+                break;
+            case "datetime" :#>
+
+                .HasColumnType("datetime2")<#
+                break;
+        }    
+#>;
+
+<#  }#>
+<#    foreach (var associationEnd in Model.Associations)
+    {
+
+        if (associationEnd.OtherAssociationEnd().Multiplicity == Multiplicity.Many && associationEnd.Multiplicity == Multiplicity.One)
+        {#>
+            this.Property(x => x.<#= associationEnd.IdentifierName()#>)
+<#            if (associationEnd.Stereotypes.GetTagValue("UniqueConstraint", "IsIndex", false)){ #>
+
+                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= associationEnd.Stereotypes.GetTagValue("UniqueConstraint", "UniqueKey", "Unique1")#>", <#=associationEnd.Stereotypes.GetTagValue("UniqueConstraint", "Order", "1")#>) { IsUnique = true }))<#
+            }
+            if (!string.IsNullOrEmpty(associationEnd.Stereotypes.GetTagValue("Index", "UniqueKey", ""))){#>
+
+                .HasColumnAnnotation("Index", new IndexAnnotation( new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= associationEnd.Stereotypes.GetTagValue("Index", "UniqueKey", "Unique1")#>", <#= associationEnd.Stereotypes.GetTagValue("Index", "Order", "1")#>) { IsUnique = false }))<#
+            }#>
+                ;
+<#        }
+        if (associationEnd.AssociationType != AssociationType.Association)
+        {
+            switch (associationEnd.RelationshipType)
+            {
+                case RelationshipType.OneToOne :
+                    MapOneToOne(associationEnd);
+                    break;
+                case RelationshipType.OneToMany :#>
+            <#= string.Format("this.{0}(x => x.{1})", associationEnd.IsMandatory() ? "HasRequired" : "HasOptional", associationEnd.Name().ToPascalCase())#>
+                .WithMany(<#= associationEnd.OtherAssociationEnd().Navigable ? "x => x." + associationEnd.OtherAssociationEnd().Name().ToPascalCase() : "" #>)
+                .HasForeignKey(x => x.<#= associationEnd.Name().ToPascalCase()#>Id)
+                ;
+
+<#                    break;
+                case RelationshipType.ManyToOne :#>
+            this.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
+                .<#= string.Format("{0}({1})", associationEnd.OtherAssociationEnd().IsMandatory() ? "WithRequired" : "WithOptional", "x => x." + associationEnd.OtherAssociationEnd().Name().ToPascalCase())#>
+                .HasForeignKey(x => x.<#= associationEnd.OtherAssociationEnd().Name().ToPascalCase()#>Id)
+                ;
+
+<#                    break;
+                case RelationshipType.ManyToMany :#>
+            this.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
+                .WithMany(<#= associationEnd.OtherAssociationEnd().Navigable ? "x => x." + associationEnd.OtherAssociationEnd().Name().ToPascalCase() : "" #>)
+                .Map(m => 
+                    {
+                        m.ToTable("<#= associationEnd.OtherAssociationEnd().Class.Name.ToPascalCase() + associationEnd.Name().ToPascalCase() #>");
+                        m.MapLeftKey("<#= associationEnd.OtherAssociationEnd().Class.Name.ToPascalCase()#>Id");
+                        m.MapRightKey("<#= associationEnd.Class.Name.ToPascalCase()#>Id");
+                    });
+
+<#                    break;
+            }
+        }
+    }
+#><#= PropertyMappings(Model) #><#    
+	if (Model.IsAggregateRoot() && !Model.IsSubClass()) 
+    {#>
+            this.Property(x => x.CreateDateTime)
+                .HasColumnType("datetime2");
+            this.Property(x => x.UpdateDateTime)
+                .HasColumnType("datetime2");
+            this.Property(x => x.UpdatedBy)
+                .HasMaxLength(50);
+            this.Property(x => x.Version)
+                .IsRowVersion()
+                .HasColumnName("Version");
+<#  }#>
+        }
+    }
+}
+<#+
+public void MapOneToOne(AssociationEnd associationEnd)
+{
+    AssociationEnd parent = associationEnd.Association.ParentEnd;
+    AssociationEnd child = associationEnd.Association.ChildEnd;
+
+    string hasClause = associationEnd.IsMandatory() ? "HasRequired" : "HasOptional";
+    string withClause = "With" + (associationEnd.OtherAssociationEnd().IsMandatory() ? "Required" : "Optional") + (associationEnd.IsMandatory() == associationEnd.OtherAssociationEnd().IsMandatory() ?  DeterminePrinciple(associationEnd)  : "");    
+#>
+            <#= string.Format("this.{0}(x => x.{1})", hasClause, associationEnd.Name().ToPascalCase())#>
+            <#= string.Format(".{0}({1})", withClause, associationEnd.OtherAssociationEnd().Navigable ? "x => x." + associationEnd.OtherAssociationEnd().Name().ToPascalCase(): "" )#>
+<#+  if ((associationEnd.Association.AssociationType == AssociationType.Composite && associationEnd.Association.RelationshipString() == "0..1->1")
+            || (associationEnd.Association.AssociationType == AssociationType.Aggregation && associationEnd.Association.RelationshipString() == "0..1->1")
+        )
+    {#>
+            .Map(m => m.MapKey("<#= associationEnd.Name().ToPascalCase() + "Id"#>"))
+<#+    }#>
+            ;
+<#+    
+}
+
+public string DeterminePrinciple(AssociationEnd associationEnd)
+{
+    if (associationEnd.AssociationType == AssociationType.Composite || associationEnd.OtherAssociationEnd().AssociationType == AssociationType.Aggregation)
+    {
+        return "Principal";
+    }
+    if (associationEnd.AssociationType == AssociationType.Aggregation || associationEnd.OtherAssociationEnd().AssociationType == AssociationType.Composite)
+    {
+        return "Dependent";
+    }
+    return "";
+}
+
+#>

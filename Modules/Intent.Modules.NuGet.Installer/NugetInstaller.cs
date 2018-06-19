@@ -48,7 +48,7 @@ namespace Intent.Modules.NuGet.Installer
                 name: SettingKeyForWarnOnMultipleVersionsOfSamePackage,
                 setSetting: parsedValue => _settingWarnOnMultipleVersionsOfSamePackage = parsedValue,
                 convert: rawValue => true.ToString().Equals(rawValue, StringComparison.OrdinalIgnoreCase));
-            
+
             base.Configure(settings);
         }
 

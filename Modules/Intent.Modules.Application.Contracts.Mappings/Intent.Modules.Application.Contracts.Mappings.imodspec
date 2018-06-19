@@ -1,26 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.Contracts.Mappings</id>
-  <version>1.3.1</version>
+  <version>1.5.0</version>
   <summary>Creates application service contract mappings.</summary>
   <description></description>
   <authors>Intent Software</authors>
   <templates>    
     <template id="Intent.Application.Contracts.Mapping" enabled="true">
-      <role>Application</role>
+      <role>Application.Mappings</role>
       <config>          
         <add key="ContractTemplateDependancyId" description="The template Id for the template producing the Contracts" default="Intent.Application.Contracts.DTO"  />
-        <add key="DomainTemplateDependancyId" description="The template Id for the template producing the Domain Entities" default="Intent.RichDomain.EntityStateInterface" />
+        <add key="DomainTemplateDependancyId" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityInterface" />
       </config>
     </template>
     <template id="Intent.Application.Contracts.Mapping.Profile">
-      <role>Application</role>
+      <role>Application.Mappings</role>
+      <config>
+        <add key="ContractTemplateDependancyId" description="The template Id for the template producing the Contracts" default="Intent.Application.Contracts.DTO"  />
+        <add key="DomainTemplateDependancyId" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityInterface" />
+      </config>
     </template>
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="1.3.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>
+    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

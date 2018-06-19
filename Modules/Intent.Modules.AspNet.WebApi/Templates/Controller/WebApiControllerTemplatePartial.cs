@@ -12,10 +12,10 @@ using System.Linq;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
-    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<DistributionDecoratorBase>, IDeclareUsings
+    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings
     {
-        public const string Identifier = "Intent.WebApi.Controller";
-        private IEnumerable<DistributionDecoratorBase> _decorators;
+        public const string Identifier = "Intent.AspNet.WebApi.Controller";
+        private IEnumerable<WebApiControllerDecoratorBase> _decorators;
 
         public WebApiControllerTemplate(IProject project, IServiceModel model)
             : base(Identifier, project, model)
@@ -52,7 +52,6 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 NugetPackages.MicrosoftAspNetWebApiCore,
                 NugetPackages.MicrosoftAspNetWebApiWebHost,
                 NugetPackages.NewtonsoftJson,
-                NugetPackages.IntentFrameworkWebApi,
             }
             .Union(base.GetNugetDependencies())
             .ToArray();
@@ -69,7 +68,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: Model.Name + "Controller",
                 fileExtension: "cs",
-                defaultLocationInProject: "Controllers\\Generated",
+                defaultLocationInProject: "Controllers",
                 className: "${Model.Name}Controller",
                 @namespace: "${Project.Name}"
                 );
@@ -154,7 +153,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             return GetDecorators().Aggregate(x => x.ClassMethods(Model));
         }
 
-        public IEnumerable<DistributionDecoratorBase> GetDecorators()
+        public IEnumerable<WebApiControllerDecoratorBase> GetDecorators()
         {
             return _decorators ?? (_decorators = Project.ResolveDecorators(this));
         }

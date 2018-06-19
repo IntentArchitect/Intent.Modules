@@ -6,7 +6,7 @@ namespace Intent.SoftwareFactory.VisualStudio
 {
     public class NugetPackageInfo : INugetPackageInfo
     {
-        public NugetPackageInfo(string name, string version, string targetFramework)
+        public NugetPackageInfo(string name, string version, string targetFramework = null)
         {
             Name = name;
             Version = version;

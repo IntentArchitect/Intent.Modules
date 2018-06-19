@@ -1,0 +1,47 @@
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IEnumerable<Class>>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
+<#@ import namespace="Intent.Modules.RichDomain" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using Intent.Framework.EntityFramework;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public class <#= BoundedContextName#>DbContext : DbContextEx
+    {
+        public <#= BoundedContextName#>DbContext()
+            : base("<#= BoundedContextName#>DB")
+        {
+
+        } 
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            
+            modelBuilder.HasDefaultSchema("<#= BoundedContextName#>");
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+<# foreach (var model in Model) {
+	   if (!model.IsEntity()) {
+			continue;
+       }
+#>
+            modelBuilder.Configurations.Add(new <#= model.Name.ToPascalCase()#>Mapping());
+<# }#>
+        }
+    }
+}

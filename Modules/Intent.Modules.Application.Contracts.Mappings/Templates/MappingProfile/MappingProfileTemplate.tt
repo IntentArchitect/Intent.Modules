@@ -26,15 +26,15 @@ namespace <#= Namespace #>
         {		
 			//using the default() to help the compiler to understand the overloading	
 <# foreach (var model in Model) {#>
-			Configure(this, default(<#= GetDomainType(model)#>), default(<#= GetContractType(model)#>));
+			Configure(this, default(<#= NormalizeNamespace(GetDomainType(model))#>), default(<#= NormalizeNamespace(GetContractType(model))#>));
 <#}#>
 		}
 
 		
 <# foreach (var model in Model) {#>
-	    public static IMappingExpression<<#= GetDomainType(model)#>, <#= GetContractType(model)#>> Configure(IProfileExpression cfg, <#= GetDomainType(model)#> sourceType, <#= GetContractType(model)#> destinationType)
+	    public static IMappingExpression<<#= NormalizeNamespace(GetDomainType(model)) #>, <#= NormalizeNamespace(GetContractType(model)) #>> Configure(IProfileExpression cfg, <#= NormalizeNamespace(GetDomainType(model)) #> sourceType, <#= NormalizeNamespace(GetContractType(model)) #> destinationType)
 		{
-            return cfg.CreateMap<<#=GetDomainType(model)#>, <#=GetContractType(model)#>>()
+            return cfg.CreateMap<<#=NormalizeNamespace(GetDomainType(model)) #>, <#= NormalizeNamespace(GetContractType(model)) #>>()
                 //.IncludeBase<>()
 <#foreach (var field in model.Fields){
 	if (field.Mapping != null && field.Name != field.Mapping.Path){
