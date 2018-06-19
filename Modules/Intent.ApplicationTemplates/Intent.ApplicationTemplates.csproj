@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Intent.IArchitect.Packager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.IntentArchitectPackager.1.2.1-beta\lib\net452\Intent.IArchitect.Packager.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,6 +69,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Empty Visual Studio\description.html" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Full Stack ASP.NET WebApi\content\modules.config" />
@@ -71,19 +77,13 @@
     <None Include="Empty\content\modules.config" />
     <None Include="Empty Visual Studio\content\modules.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\IntentArchitect.ElectronClient\Intent.IArchitect.Packager\Intent.IArchitect.Packager.csproj">
-      <Project>{de3c0c79-0563-4e7e-a0cb-d1dce6f24834}</Project>
-      <Name>Intent.IArchitect.Packager</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if not exist "$(SolutionDir)Intent.Modules" mkdir "$(SolutionDir)Intent.Modules"
-$(TargetDir)Intent.IArchitect.Packager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Empty\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-$(TargetDir)Intent.IArchitect.Packager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Empty Visual Studio\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-REM $(TargetDir)Intent.IArchitect.Packager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)AngularJS Web Application\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-$(TargetDir)Intent.IArchitect.Packager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Full Stack ASP.NET WebApi\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+$(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Empty\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+$(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Empty Visual Studio\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+REM $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)AngularJS Web Application\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+$(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Full Stack ASP.NET WebApi\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
