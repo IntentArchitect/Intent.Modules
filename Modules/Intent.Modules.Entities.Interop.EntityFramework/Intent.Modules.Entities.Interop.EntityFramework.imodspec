@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities.Interop.EntityFramework</id>
-  <version>1.4.0</version>
+  <version>1.5.0</version>
   <summary>Interoperability for Entities to be persisted by Entity Framework</summary>
   <description></description>
   <authors>Intent Software</authors>

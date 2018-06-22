@@ -41,13 +41,13 @@ namespace Intent.Modules.OutputManager.TagWeaver
         public string GetContentBetween(ParsedToken from, ParsedToken to)
         {
             int start = from.Index + from.Length;
-            return _buffer.ToString(start, (to.Index - start) + 1 );
+            return _buffer.ToString(start, (to.Index - start));
         }
 
         public void ReplaceContentBetween(ParsedToken from, ParsedToken to, string newContent)
         {
             int start = from.Index + from.Length;
-            int end = (to.Index - start) + 1;
+            int end = (to.Index - start);
             RemoveContent(start, end);
             AppendContent(newContent, start);
         }

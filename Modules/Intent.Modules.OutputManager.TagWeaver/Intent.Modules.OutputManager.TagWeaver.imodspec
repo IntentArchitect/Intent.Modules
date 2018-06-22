@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
-  <id>Intent.OutputTransformer.TagWeaving</id>
-  <version>1.3.0</version>
+  <id>Intent.OutputTransformer.TagWeaver</id>
+  <version>1.5.0</version>
   <summary>Provides interactive code management between software factory outputs and existing user code through tags.</summary>
   <description>Provides interactive code management between software factory outputs and existing user code through tags.</description>
   <authors>Intent Software</authors>
@@ -11,7 +11,7 @@
   </templates>
   <decorators />
   <factoryExtensions>
-    <factoryExtension id="Intent.OutputTransformer.TagWeaving">
+    <factoryExtension id="Intent.OutputTransformer.TagWeaver">
       <config>
         <add key="Keep Code In Tags" description="List of CodeGenTypes which should 'Keep Code In Tags' weaving. (comma delimited list of strings)" default="IntentControlledTagWeave" />
         <add key="Generate Code To Tags" description="List of CodeGenTypes which should have 'Generate Code To Tags' weaving. (comma delimited list of strings)" default="UserControlledTagWeave" />        
