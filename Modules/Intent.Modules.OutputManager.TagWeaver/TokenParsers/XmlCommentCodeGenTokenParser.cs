@@ -2,7 +2,7 @@
 {
     public class XmlCommentCodeGenTokenParser : TokenParser
     {
-        private const string CODE_GEN_PATTERN = @"[ \f\t\v]*<!--cg\[(.*?)\]-->[ \f\t\v]*\r\n";
+        private const string CODE_GEN_PATTERN = @"[ \f\t\v]*<!--IntentManaged\[(.*?)\]-->[ \f\t\v]*\r\n";
 
         public XmlCommentCodeGenTokenParser()
             : base("CodeGen", CODE_GEN_PATTERN)

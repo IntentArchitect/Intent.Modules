@@ -40,7 +40,7 @@ namespace <#= Namespace #> {
                 }
             ]
         };
-//IntentManaged[state]
+//IntentManagedXXX[state]
 
         static $inject = [];
         constructor() { 

@@ -6,7 +6,7 @@
         public XmlCommentCodeGenParsedToken(int index, int length, string name, string value)
             : base(index, length, name, value)
         {
-            string parse = value.Substring(value.IndexOf("<!--cg[") + 7);
+            string parse = value.Substring(value.IndexOf("<!--IntentManaged[") + 7);
 
             int start = 0;
 
