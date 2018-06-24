@@ -25,6 +25,8 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             _domainTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
         }
 
+        public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(_domainTemplateDependancy)?.ClassName ?? Model.Name;
+
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return new[]
@@ -80,10 +82,10 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.Name}Mapping",
+                fileName: "${Model.Name}Mapping",
                 fileExtension: "cs",
                 defaultLocationInProject: "EFMapping",
-                className: $"{Model.Name}Mapping",
+                className: "${Model.Name}Mapping",
                 @namespace: "${Project.Name}");
         }
 

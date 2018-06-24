@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsConfiguration;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
 {
-    partial class DbMigrationsReadMeTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasTemplateDependencies
+    partial class DbMigrationsReadMeTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {
         public const string Identifier = "Intent.EntityFrameworkCore.DbMigrationsReadMe";
 
@@ -20,7 +19,6 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
         public string BoundedContextName => Project.ApplicationName();
         public string MigrationProject => Project.Name;
         public string ProjectWithDbContext => Project.Application.Projects.FirstOrDefault(x => x.HasStereotype("Startup"))?.Name ?? Project.Application.Projects.First().Name;
-        public string DbContextConfigurationName => Project.FindTemplateInstance(DbMigrationsConfigurationTemplate.Identifier).GetMetaData().FileName;
 
         public override DefaultFileMetaData DefineDefaultFileMetaData()
         {
@@ -31,14 +29,6 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
                 fileExtension: "txt",
                 defaultLocationInProject: ""
                 );
-        }
-
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
-        {
-            return new[]
-            {
-                TemplateDependancy.OnTemplate(DbMigrationsConfigurationTemplate.Identifier)
-            };
         }
     }
 }

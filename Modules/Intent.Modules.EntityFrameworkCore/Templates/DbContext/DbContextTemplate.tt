@@ -21,25 +21,18 @@ namespace <#= Namespace #>
 {
     public class <#= ClassName#> : <#= GetBaseClass() #>
     {
-        public <#= ClassName#>() : base("<#= Project.Application.ApplicationName#>DB")
+        public <#= ClassName#>(DbContextOptions options) : base(options)
         {
 
         } 
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            ConfigureConventions(modelBuilder);
-            
 <# foreach (var model in Model) {#>
-            modelBuilder.Configurations.Add(new <#= model.Name.ToPascalCase()#>Mapping());
+            modelBuilder.ApplyConfiguration(new <#= model.Name.ToPascalCase()#>Mapping());
 <# }#>
-        }
-
-        private void ConfigureConventions(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
     }
 }

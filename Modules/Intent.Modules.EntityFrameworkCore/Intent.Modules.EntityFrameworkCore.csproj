@@ -72,13 +72,6 @@
     </Compile>
     <Compile Include="Templates\DbContext\DbContextTemplatePartial.cs" />
     <Compile Include="Templates\DbContext\DbContextTemplateRegistration.cs" />
-    <Compile Include="Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.cs">
-      <DependentUpon>DbMigrationsConfigurationTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplatePartial.cs" />
-    <Compile Include="Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplateRegistration.cs" />
     <Compile Include="Templates\DbMigrationsReadMe\EFMappingTemplateRegistration.cs" />
     <Compile Include="Templates\EFMapping\EFMappingTemplate.cs">
       <DependentUpon>EFMappingTemplate.tt</DependentUpon>
@@ -117,10 +110,6 @@
     <Content Include="Templates\DbContext\DbContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DbContextTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DbMigrationsConfigurationTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\EFMapping\EFMappingTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

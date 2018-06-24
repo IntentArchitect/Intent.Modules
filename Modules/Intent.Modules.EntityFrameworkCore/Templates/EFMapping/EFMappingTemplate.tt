@@ -63,30 +63,28 @@
 
 #>
 using System;
-using System.Data.Entity.ModelConfiguration;
-using System.Data.Entity.Infrastructure.Annotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 <#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
-    public partial class <#= Model.Name.ToPascalCase() #>Mapping : IEntityTypeConfiguration<<#= Model.Name.ToPascalCase() #>>
+    public class <#= ClassName #> : IEntityTypeConfiguration<<#= EntityStateName #>>
     {
-    
-        public <#= Model.Name.ToPascalCase() #>Mapping()
+        public void Configure(EntityTypeBuilder<<#= EntityStateName #>> builder)
         {
 <#    if (Model.ParentClass == null || Model.ParentClass.GetStereotypeProperty<string>("InheritanceMapping", "Type") != "TPH")
     {#>
-            this.ToTable("<#= Model.Name #>");
+            builder.ToTable("<#= Model.Name #>");
 <#    }
     if (Model.GetStereotypeProperty<string>("InheritanceMapping", "Type") == "TPH")
     {
         foreach (var subClass in Model.ChildClasses)
         {
 #>
-            this.Map<<#= subClass.Name.ToPascalCase() #>>(m => m.Requires("DbSpecialization").HasValue((int)<#= Model.Name.ToPascalCase() #>Specialization.<#= subClass.Name.ToPascalCase() #>));
+            builder.Map<<#= subClass.Name.ToPascalCase() #>>(m => m.Requires("DbSpecialization").HasValue((int)<#= Model.Name.ToPascalCase() #>Specialization.<#= subClass.Name.ToPascalCase() #>));
 <#      }
     }
 	bool mapPk = true;
@@ -98,8 +96,8 @@ namespace <#= Namespace #>
     } 
 
 	if (ImplicitSurrogateKey) {#>
-            this.HasKey(x => x.Id);
-            this.Property(x => x.Id).HasColumnName("Id");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName("Id");
 <#  }  
     foreach (var attribute in Model.Attributes)
     {
@@ -109,11 +107,11 @@ namespace <#= Namespace #>
 				throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable the 'Implicit Surrogate Key' option for this template", Model.Name));
             }
 #>
-            this.HasKey(x => x.Id);
-            this.Property(x => x.Id).HasColumnName("Id");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName("Id");
 <#			continue;
         }#>
-            this.Property(x => x.<#= attribute.Name.ToPascalCase()#>)<#
+            builder.Property(x => x.<#= attribute.Name.ToPascalCase()#>)<#
 		if (!string.IsNullOrEmpty(attribute.GetStereotypeProperty<string>("Index", "UniqueKey")))
 		{#>
                 .HasColumnAnnotation("Index", new IndexAnnotation(new []
@@ -184,18 +182,22 @@ namespace <#= Namespace #>
 
 <#                  break;
             case RelationshipType.ManyToOne :#>
-            this.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
-                .<#= string.Format("{0}({1})", associationEnd.OtherEnd().MinMultiplicity != "0" ? "WithRequired" : "WithOptional", "x => x." + associationEnd.OtherEnd().Name().ToPascalCase())#>
+            builder.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
+                .WithOne(x => x.<#= associationEnd.OtherEnd().Name().ToPascalCase() #>)
 <#				if (UseForeignKeys) { #>
 				.HasForeignKey(x => x.<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id)
 <#				} else { #>
 				.Map(m => m.MapKey("<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id"))
 <#				} #>
+<#				if (associationEnd.OtherEnd().MinMultiplicity != "0") { #>
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade)
+<#				}#>
                 ;
 
 <#                  break;
             case RelationshipType.ManyToMany :#>
-            this.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
+            builder.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
                 .WithMany(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
                 .Map(m => 
                     {

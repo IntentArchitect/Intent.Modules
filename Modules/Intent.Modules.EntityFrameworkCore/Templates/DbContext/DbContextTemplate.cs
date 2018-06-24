@@ -67,39 +67,30 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
             
             #line default
             #line hidden
-            this.Write("() : base(\"");
+            this.Write("(DbContextOptions options) : base(options)\r\n        {\r\n\r\n        } \r\n\r\n        pr" +
+                    "otected override void OnModelCreating(ModelBuilder modelBuilder)\r\n        {\r\n   " +
+                    "         base.OnModelCreating(modelBuilder);\r\n\r\n");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.ApplicationName));
-            
-            #line default
-            #line hidden
-            this.Write("DB\")\r\n        {\r\n\r\n        } \r\n\r\n        protected override void OnModelCreating(" +
-                    "DbModelBuilder modelBuilder)\r\n        {\r\n            base.OnModelCreating(modelB" +
-                    "uilder);\r\n\r\n            ConfigureConventions(modelBuilder);\r\n            \r\n");
-            
-            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
  foreach (var model in Model) {
             
             #line default
             #line hidden
-            this.Write("            modelBuilder.Configurations.Add(new ");
+            this.Write("            modelBuilder.ApplyConfiguration(new ");
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("Mapping());\r\n");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
  }
             
             #line default
             #line hidden
-            this.Write("        }\r\n\r\n        private void ConfigureConventions(DbModelBuilder modelBuilde" +
-                    "r)\r\n        {\r\n            modelBuilder.Conventions.Remove<OneToManyCascadeDelet" +
-                    "eConvention>();\r\n        }\r\n    }\r\n}");
+            this.Write("        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
