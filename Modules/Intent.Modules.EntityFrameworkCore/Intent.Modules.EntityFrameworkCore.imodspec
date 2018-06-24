@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.EntityFrameworkCore</id>
+  <version>1.5.0</version>
+  <summary>Entity Framework Core implementation.</summary>
+  <description>Entity Framework Core implementation.</description>
+  <authors>Intent Software</authors>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
+  <tags>EntityFrameworkCore EF EntityFramework Core</tags>
+  <templates>
+    <template id="Intent.EntityFrameworkCore.DbContext">
+      <role>Infrastructure.Data.EF</role>
+    </template>
+    <template id="Intent.EntityFrameworkCore.EFMapping">
+      <role>Infrastructure.Data.EF</role>
+      <config>
+        <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
+        <add key="Implicit Surrogate Key" description="Flag for whether to use implicit surrogate keys from the Entities model." default="true" />
+        <add key="Use Foreign Keys" description="Flag for whether to use foreign keys from the Entities model." default="true" />
+      </config>
+    </template>
+    <template id="Intent.EntityFrameworkCore.DbMigrationsConfiguration" enabled="true">
+      <role>Infrastructure.Data.EF.Migrations</role>
+    </template>
+    <template id="Intent.EntityFrameworkCore.DbMigrationsReadMe" enabled="true">
+      <role>Infrastructure.Data.EF.Migrations</role>
+    </template>
+  </templates>
+  <decorators />
+  <interoperability>
+    <detect id="Intent.AspNet.WebApi">
+      <install>
+        <package id="Intent.EntityFramework.Interop.WebApi" version="1.5.0"/>
+      </install>
+    </detect>
+    <!--<detect id="Intent.Unity">
+      <install>
+        <package id="Intent.EntityFramework.Interop.Unity" version="1.5.0"/>
+      </install>
+    </detect>-->
+  </interoperability>
+  <dependencies>
+    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+  <metadata>
+    <install target="Domain" src="MetaData\Domain"/>
+  </metadata>
+</package>
