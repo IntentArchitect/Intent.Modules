@@ -26,7 +26,6 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         private XmlNamespaceManager _namespaces;
         private XNamespace _namespace;
         private XElement _projectElement;
-        private XElement _codeItems;
 
         public ProjectSyncProcessor(
             ISoftwareFactoryEventDispatcher softwareFactoryEventDispatcher,
@@ -50,9 +49,14 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
             filename = Path.GetFullPath(filename);
 
-            //run events
-            ProcessEvents(events);
-            SyncAssemblyReferences();
+            // Do not process .Net Core projects.
+            if (!IsNetCoreProject())
+            {
+                //run events
+                ProcessEvents(events);
+                SyncAssemblyReferences();
+            }
+
             SyncProjectReferences();
 
             var currentProjectFileContent = "";
@@ -173,8 +177,6 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
             _projectElement = _doc.XPathSelectElement("/ns:Project", _namespaces);
 
-            FindItemGroupForCodeFiles();
-
             return filename;
         }
 
@@ -185,7 +187,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 return;
             }
 
-            var itemGroupElement = FindProjectReferenceItemGroup();
+            var itemGroupElement = FindOrCreateProjectReferenceItemGroup();
 
             foreach (var dependency in _project.Dependencies())
             {
@@ -263,7 +265,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             }
         }
 
-        private XElement FindProjectReferenceItemGroup()
+        private XElement FindOrCreateProjectReferenceItemGroup()
         {
             XElement result = null;
             var aProjectReferenceElement = _doc.XPathSelectElement("/ns:Project/ns:ItemGroup/ns:ProjectReference", _namespaces);
@@ -272,54 +274,64 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             {
                 return aProjectReferenceElement.Parent;
             }
+            else
+            {
+                result = new XElement(XName.Get("ItemGroup", _namespace.NamespaceName));
+                _projectElement.Add(result);
+                return result;
+            }
 
+            //var lastItemGroup = _doc.XPathSelectElements("/ns:Project/ns:ItemGroup", _namespaces).LastOrDefault();
+            //if (lastItemGroup == null)
+            //{
+            //    _projectElement.Add(_codeItems);
+            //}
+            //else
+            //{
+            //    if (!lastItemGroup.Elements().Any())
+            //    {
+            //        result = lastItemGroup;
+            //    }
+            //    else
+            //    {
+            //        result = new XElement(XName.Get("ItemGroup", _namespace.NamespaceName));
+            //        lastItemGroup.AddAfterSelf(result);
+            //    }
+            //}
+
+            //return result;
+        }
+
+        private XElement FindItemGroupForCodeFiles()
+        {
+            var codeItems = _doc.XPathSelectElement("/ns:Project/ns:ItemGroup[ns:Compile or ns:Content or ns:None]", _namespaces);
+
+            return codeItems;
+        }
+
+        private XElement AddItemGroupForCodeFiles()
+        {
+            var codeItems = new XElement(XName.Get("ItemGroup", _namespace.NamespaceName));
 
             var lastItemGroup = _doc.XPathSelectElements("/ns:Project/ns:ItemGroup", _namespaces).LastOrDefault();
+
             if (lastItemGroup == null)
             {
-                _projectElement.Add(_codeItems);
+                _projectElement.Add(codeItems);
             }
             else
             {
                 if (!lastItemGroup.Elements().Any())
                 {
-                    result = lastItemGroup;
+                    codeItems = lastItemGroup;
                 }
                 else
                 {
-                    result = new XElement(XName.Get("ItemGroup", _namespace.NamespaceName));
-                    lastItemGroup.AddAfterSelf(result);
+                    lastItemGroup.AddAfterSelf(codeItems);
                 }
             }
 
-            return result;
-        }
-
-        private void FindItemGroupForCodeFiles()
-        {
-            _codeItems = _doc.XPathSelectElement("/ns:Project/ns:ItemGroup[ns:Compile or ns:Content or ns:None]", _namespaces);
-
-            if (_codeItems == null)
-            {
-
-                var lastItemGroup = _doc.XPathSelectElements("/ns:Project/ns:ItemGroup", _namespaces).LastOrDefault();
-                if (lastItemGroup == null)
-                {
-                    _projectElement.Add(_codeItems);
-                }
-                else
-                {
-                    if (!lastItemGroup.Elements().Any())
-                    {
-                        _codeItems = lastItemGroup;
-                    }
-                    else
-                    {
-                        _codeItems = new XElement(XName.Get("ItemGroup", _namespace.NamespaceName));
-                        lastItemGroup.AddAfterSelf(_codeItems);
-                    }
-                }
-            }
+            return codeItems;
         }
 
         private void ProcessCompileDependsOn(string targetName)
@@ -423,11 +435,11 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             {
                 { "CopyToOutputDirectory", copyToOutputDirectory },
                 { "DependentUpon", dependsOn },
-                { "IntentGenerated", intentGenType != null ? _project.Application.ApplicationName : null },
-                { "IntentGenType", intentGenType },
             }
             .Where(x => x.Value != null)
             .ToArray();
+
+            var codeItems = FindItemGroupForCodeFiles() ?? AddItemGroupForCodeFiles();
 
             var projectItem = GetProjectItem(relativeFileName);
             if (projectItem == null)
@@ -440,7 +452,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                     child.Value = metaData.Value;
                     item.Add(child);
                 }
-                _codeItems.Add(item);
+                codeItems.Add(item);
             }
             else
             {
@@ -510,7 +522,8 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             var element = GetProjectItem(include);
             if (element == null)
             {
-                _codeItems.Add(desiredElement);
+                var codeItems = FindItemGroupForCodeFiles() ?? AddItemGroupForCodeFiles();
+                codeItems.Add(desiredElement);
                 return;
             }
 
@@ -627,6 +640,11 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             {
                 attribute.Value = value;
             }
+        }
+
+        private bool IsNetCoreProject()
+        {
+            return new[] { ProjectTypeIds.CoreCSharpLibrary, ProjectTypeIds.CoreWebApp }.Contains(_project.ProjectType.Id);
         }
     }
 }

@@ -64,7 +64,13 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
                 {
                     // 2. Add project dependencies
                     project.AddDependency(projectDependency);
+
                     // 3. Load nuget packages from project dependencies.
+                    //    Don't load for Core projects
+                    if (new[] { ProjectTypeIds.CoreWebApp, ProjectTypeIds.CoreCSharpLibrary }.Contains(project.ProjectType.Id))
+                    {
+                        continue;
+                    }
                     project.AddNugetPackages(GetTemplateNugetDependencies(projectDependency));
                 }
 

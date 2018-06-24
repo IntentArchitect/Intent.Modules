@@ -42,19 +42,15 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             };
         }
 
-        //public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        //{
-        //    return new[]
-        //    {
-        //        NugetPackages.MicrosoftAspNetWebApi,
-        //        NugetPackages.MicrosoftAspNetWebApiClient,
-        //        NugetPackages.MicrosoftAspNetWebApiCore,
-        //        NugetPackages.MicrosoftAspNetWebApiWebHost,
-        //        NugetPackages.NewtonsoftJson,
-        //    }
-        //    .Union(base.GetNugetDependencies())
-        //    .ToArray();
-        //}
+        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        {
+            return new[]
+            {
+                new NugetPackageInfo("Microsoft.AspNetCore.All", "2.0.8"),
+            }
+            .Union(base.GetNugetDependencies())
+            .ToArray();
+        }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {

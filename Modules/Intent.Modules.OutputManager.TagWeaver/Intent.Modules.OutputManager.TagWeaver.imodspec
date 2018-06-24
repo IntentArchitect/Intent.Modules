@@ -14,7 +14,8 @@
     <factoryExtension id="Intent.OutputTransformer.TagWeaver">
       <config>
         <add key="Keep Code In Tags" description="List of CodeGenTypes which should 'Keep Code In Tags' weaving. (comma delimited list of strings)" default="IntentControlledTagWeave" />
-        <add key="Generate Code To Tags" description="List of CodeGenTypes which should have 'Generate Code To Tags' weaving. (comma delimited list of strings)" default="UserControlledTagWeave" />        
+        <add key="Generate Code To Tags" description="List of CodeGenTypes which should have 'Generate Code To Tags' weaving. (comma delimited list of strings)" default="UserControlledTagWeave" />
+        <add key="Generate Code To Tagged Scope" description="List of CodeGenTypes which should have 'Generate Code To Tags' weaving. (comma delimited list of strings)" default="IntentManageTaggedScope" />        
         <add key="C Style Parser Extensions" description="List of file extensions which should be parsed as '//' comment syntax. (| delimited list of strings)" default="cs|ts|js" />
         <add key="Xml Style Extensions" description="List of file extensions which should be parsed as '&lt;!-- --&gt;' comment syntax. (| delimited list of strings)" default="xml|config|xaml" />
       </config>

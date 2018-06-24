@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
+using System.Xml.XPath;
 using Intent.Modules.NuGet.Installer.Managers;
 using Intent.Modules.Common.Plugins;
 using Intent.SoftwareFactory;
@@ -62,17 +64,33 @@ namespace Intent.Modules.NuGet.Installer
 
         public void Run(IApplication application, ITracing tracing)
         {
-            tracing.Info($"{TracingOutputPrefix}Start processesing Packages");
+            tracing.Info($"{TracingOutputPrefix}Start processesing packages");
 
             foreach (var project in application.Projects.Where(x => x.ProjectFile() == null))
             {
                 tracing.Debug($"{TracingOutputPrefix}Skipped processing project '{project.Name}' as its type '{project.ProjectType.Name}' is unsupported.");
             }
 
-            var applicableProjects = application.Projects
-                .Where(x => x.ProjectFile() != null)
+            var netFrameworkProjects = application.Projects
+                .Where(x => x.ProjectFile() != null && !IsNetCoreProject(x))
                 .ToArray();
 
+            if (netFrameworkProjects.Any())
+            {
+                InstallForNetFramework(application.GetSolutionPath(), netFrameworkProjects, tracing);
+            }
+
+            var netCoreProjects = application.Projects
+                .Where(x => x.ProjectFile() != null && IsNetCoreProject(x))
+                .ToArray();
+
+            InstallForNetCore(netCoreProjects, tracing);
+
+            tracing.Info($"{TracingOutputPrefix}Completed processesing packages");
+        }
+
+        private void InstallForNetFramework(string solutionPath, IEnumerable<IProject> applicableProjects, ITracing tracing)
+        {
             var addFileBehaviours = applicableProjects
                 .SelectMany(x => x.NugetPackages())
                 .GroupBy(x => x.Name)
@@ -80,7 +98,7 @@ namespace Intent.Modules.NuGet.Installer
                 .ToDictionary(x => x.Key, x => new CanAddFileStrategy(x) as ICanAddFileStrategy);
 
             using (var nugetManager = new NugetManager(
-                solutionFilePath: application.GetSolutionPath(),
+                solutionFilePath: solutionPath,
                 tracing: tracing,
                 settings: new NuGetManagerSettings
                 {
@@ -95,7 +113,7 @@ namespace Intent.Modules.NuGet.Installer
                 {
                     var projectFile = Path.GetFullPath(project.ProjectFile());
 
-                    tracing.Info($"{TracingOutputPrefix}Determining Packages for installation - { project.ProjectFile() }");
+                    tracing.Info($"{TracingOutputPrefix}Determining Packages for installation - {project.ProjectFile()}");
 
                     var nugetPackages = project.NugetPackages();
                     foreach (var nugetPackageInfo in nugetPackages)
@@ -116,6 +134,50 @@ namespace Intent.Modules.NuGet.Installer
                     nugetManager.CleanupPackagesFolder();
                 }
             }
+        }
+
+        private static void InstallForNetCore(IProject[] netCoreProjects, ITracing tracing)
+        {
+            foreach (var netCoreProject in netCoreProjects)
+            {
+                var doc = XDocument.Load(netCoreProject.ProjectFile());
+
+                var nugetPackages = netCoreProject
+                    .NugetPackages()
+                    .Distinct()
+                    .GroupBy(x => x.Name)
+                    .ToDictionary(x => x.Key, x => x);
+
+                var packageReferenceItemGroup = doc.XPathSelectElement("Project/ItemGroup[PackageReference]");
+                if (packageReferenceItemGroup == null)
+                {
+                    packageReferenceItemGroup = new XElement("ItemGroup");
+                    doc.XPathSelectElement("Project").Add(packageReferenceItemGroup);
+                }
+
+                foreach (var addFileBehaviour in nugetPackages)
+                {
+                    var latestVersion = addFileBehaviour.Value.OrderByDescending(x => x.Version).First().Version;
+                    var existingReference = packageReferenceItemGroup.XPathSelectElement($"PackageReference[@Include='{addFileBehaviour.Key}']");
+
+                    if (existingReference == null)
+                    {
+                        tracing.Info($"{TracingOutputPrefix}Installing {addFileBehaviour.Key} {latestVersion} into project {netCoreProject.Name}");
+
+                        packageReferenceItemGroup.Add(new XElement("PackageReference",
+                            new XAttribute("Include", addFileBehaviour.Key),
+                            new XAttribute("Version", latestVersion)));
+                    }
+                }
+
+                doc.Save(netCoreProject.ProjectFile());
+            }
+        }
+
+        private bool IsNetCoreProject(IProject project)
+        {
+            var doc = XDocument.Load(Path.GetFullPath(project.ProjectFile()));
+            return doc.XPathSelectElement("Project[@Sdk]") != null;
         }
 
         private class CanAddFileStrategy : ICanAddFileStrategy
