@@ -102,10 +102,10 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
         private void IssueManyToManyWarning(IAssociationEnd associationEnd)
         {
-            Logging.Log.Warning($@"Intent.EntityFrameworkCore: Cannot create mapping relationship from {Model.Name} to {associationEnd.Class.Name}.
-  Many-to-Many relationships are not yet supported in EntityFrameworkCore. 
-  You will need to create a joining-table entity.
-  For more information, please see https://github.com/aspnet/EntityFrameworkCore/issues/1368");
+            Logging.Log.Warning($@"Intent.EntityFrameworkCore: Cannot create mapping relationship from {Model.Name} to {associationEnd.Class.Name}. It has been ignored, and will not be persisted.
+    Many-to-Many relationships are not yet supported by EntityFrameworkCore as yet.
+    You will need to create a joining-table entity (e.g. [{Model.Name}] 1 --> * [{Model.Name}{associationEnd.Class.Name}] * --> 1 [{associationEnd.Class.Name}])
+    For more information, please see https://github.com/aspnet/EntityFrameworkCore/issues/1368");
         }
     }
 
