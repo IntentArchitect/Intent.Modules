@@ -2,6 +2,7 @@
 using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.Modules.EntityFramework;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
@@ -99,6 +100,13 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             return GetDecorators().Aggregate(x => x.PropertyMappings(@class));
         }
 
+        private void IssueManyToManyWarning(IAssociationEnd associationEnd)
+        {
+            Logging.Log.Warning($@"Intent.EntityFrameworkCore: Cannot create mapping relationship from {Model.Name} to {associationEnd.Class.Name}.
+  Many-to-Many relationships are not yet supported in EntityFrameworkCore. 
+  You will need to create a joining-table entity.
+  For more information, please see https://github.com/aspnet/EntityFrameworkCore/issues/1368");
+        }
     }
 
     public interface IEFMappingTemplateDecorator : ITemplateDecorator
