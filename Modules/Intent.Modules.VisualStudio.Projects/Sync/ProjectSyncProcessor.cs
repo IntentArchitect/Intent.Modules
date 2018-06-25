@@ -199,10 +199,8 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 }
 
                 /*
-        <ProjectReference Include="..\Intent.SoftwareFactory\Intent.SoftwareFactory.csproj">
-          <Project>{c5a8f278-d3a4-4f93-98d1-964147f54d6e}</Project>
-          <Name>Intent.SoftwareFactory</Name>
-        </ProjectReference>                     */
+                <ProjectReference Include="..\Intent.SoftwareFactory\Intent.SoftwareFactory.csproj"/>
+                */
 
                 var item = new XElement(XName.Get("ProjectReference", _namespace.NamespaceName));
                 item.Add(new XAttribute("Include", projectUrl));
