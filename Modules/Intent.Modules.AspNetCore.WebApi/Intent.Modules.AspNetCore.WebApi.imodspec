@@ -27,4 +27,7 @@
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
+  <metadata>
+    <install target="Services" src="MetaData\Services"/>
+  </metadata>
 </package>

@@ -85,6 +85,20 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return result;
         }
 
+        private string GetHttpVerb(IOperationModel operation)
+        {
+            var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
+            if (verb != "AUTO")
+            {
+                return verb;
+            }
+            if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
+            {
+                return "POST";
+            }
+            return "GET";
+        }
+
         public string DeclarePrivateVariables()
         {
             return GetDecorators().Aggregate(x => x.DeclarePrivateVariables(Model));

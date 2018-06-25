@@ -62,7 +62,7 @@ namespace <#=Namespace#>
 #>
         }
 
-        [HttpPost("<#= operation.Name.ToLower() #>")]
+        [Http<#= GetHttpVerb(operation).ToLower().ToPascalCase() #>("<#= operation.Name.ToLower() #>")]
 		<#= GetSecurityAttribute(operation) #>
         public <#= GetOperationReturnType(operation) #> <#= operation.Name #>([FromBody]<#= operation.Name + "Payload payload" #>)
         {<#= BeginOperation(operation) #>

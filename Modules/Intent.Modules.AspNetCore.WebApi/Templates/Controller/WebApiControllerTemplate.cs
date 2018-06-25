@@ -176,7 +176,14 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             
             #line default
             #line hidden
-            this.Write("        }\r\n\r\n        [HttpPost(\"");
+            this.Write("        }\r\n\r\n        [Http");
+            
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetHttpVerb(operation).ToLower().ToPascalCase()));
+            
+            #line default
+            #line hidden
+            this.Write("(\"");
             
             #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToLower()));

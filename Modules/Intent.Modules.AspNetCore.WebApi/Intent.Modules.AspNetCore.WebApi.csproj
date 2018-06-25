@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.AspNetCore.WebApi.imodspec" />
+    <None Include="MetaData\Services\Intent.AspNetCore.WebApi.services.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +84,17 @@
       <Project>{56475E35-0CC7-4D75-937C-FF46C073BB66}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MetaData\Services\Folders\Stereotypes.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MetaData\Services\Stereotypes\Secured.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MetaData\Services\Stereotypes\Http.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Intent.IntentArchitectPackager.1.2.1-beta\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.2.1-beta\build\Intent.IntentArchitectPackager.targets')" />
