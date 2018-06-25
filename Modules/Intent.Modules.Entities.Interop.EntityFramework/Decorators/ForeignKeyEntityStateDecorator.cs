@@ -15,7 +15,8 @@ namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
 
         public override string AssociationBefore(IAssociationEnd associationEnd)
         {
-            if (associationEnd.Multiplicity == Multiplicity.One && associationEnd.OtherEnd().Multiplicity == Multiplicity.Many)
+            if ((associationEnd.Multiplicity == Multiplicity.One || (associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd == associationEnd)) &&
+                (associationEnd.OtherEnd().Multiplicity == Multiplicity.Many || associationEnd.OtherEnd().Multiplicity == Multiplicity.ZeroToOne))
             {
                 return $@"       public virtual {_foreignKeyType}{ (associationEnd.IsNullable ? "?" : "") } { associationEnd.Name() }Id {{ get; set; }}
 ";

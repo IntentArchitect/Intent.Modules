@@ -106,7 +106,13 @@ namespace Intent.SoftwareFactory.Templates
             {
                 return Char.ToUpper(s[0]) + s.Substring(1);
             }
+        }
 
+        public static string ToPluralName(this string s)
+        {
+            return s.EndsWith("y") 
+                ? (s.Substring(0, s.Length - 1) + "ies")
+                : s.EndsWith("s") ? $"{s}es"  : $"{s}s";
         }
 
         public static string ToCamelCase(this string s)

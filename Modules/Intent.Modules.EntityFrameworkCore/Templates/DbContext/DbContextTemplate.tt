@@ -24,7 +24,11 @@ namespace <#= Namespace #>
         public <#= ClassName#>(DbContextOptions options) : base(options)
         {
 
-        } 
+        }
+
+<# foreach (var model in Model) {#>
+        public DbSet<<#= model.Name.ToPascalCase()#>> <#= model.Name.ToPascalCase().ToPluralName()#> { get; set; }
+<# }#>
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

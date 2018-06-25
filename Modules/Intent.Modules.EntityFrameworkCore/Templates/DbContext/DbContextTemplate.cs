@@ -67,25 +67,52 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
             
             #line default
             #line hidden
-            this.Write("(DbContextOptions options) : base(options)\r\n        {\r\n\r\n        } \r\n\r\n        pr" +
-                    "otected override void OnModelCreating(ModelBuilder modelBuilder)\r\n        {\r\n   " +
-                    "         base.OnModelCreating(modelBuilder);\r\n\r\n");
+            this.Write("(DbContextOptions options) : base(options)\r\n        {\r\n\r\n        }\r\n\r\n");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+ foreach (var model in Model) {
+            
+            #line default
+            #line hidden
+            this.Write("        public DbSet<");
+            
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToPascalCase()));
+            
+            #line default
+            #line hidden
+            this.Write("> ");
+            
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToPascalCase().ToPluralName()));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n");
+            
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+ }
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        protected override void OnModelCreating(ModelBuilder modelBuilder)\r\n   " +
+                    "     {\r\n            base.OnModelCreating(modelBuilder);\r\n\r\n");
+            
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
  foreach (var model in Model) {
             
             #line default
             #line hidden
             this.Write("            modelBuilder.ApplyConfiguration(new ");
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("Mapping());\r\n");
             
-            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
  }
             
             #line default

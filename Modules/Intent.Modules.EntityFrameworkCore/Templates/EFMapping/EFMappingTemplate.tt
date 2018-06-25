@@ -75,19 +75,10 @@ namespace <#= Namespace #>
     {
         public void Configure(EntityTypeBuilder<<#= EntityStateName #>> builder)
         {
-<#    if (Model.ParentClass == null)
+<#  if (Model.ParentClass == null)
     {#>
             builder.ToTable("<#= Model.Name #>");
-<#    }
-    if (Model.GetStereotypeProperty<string>("InheritanceMapping", "Type") == "TPH")
-    {
-        foreach (var subClass in Model.ChildClasses)
-        {
-#>
-            builder.Map<<#= subClass.Name.ToPascalCase() #>>(m => m.Requires("DbSpecialization").HasValue((int)<#= Model.Name.ToPascalCase() #>Specialization.<#= subClass.Name.ToPascalCase() #>));
-<#      }
-    }
-
+<#  }
 	if (ImplicitSurrogateKey && Model.ParentClass == null) {#>
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("Id");
@@ -164,10 +155,13 @@ namespace <#= Namespace #>
             builder.HasOne(x => x.<#=associationEnd.Name().ToPascalCase()#>)
                 .WithOne(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
 <#				if (associationEnd.OtherEnd().MinMultiplicity != "0") { #>
-                .HasForeignKey<<#= associationEnd.Class.Name #>>(x => x.Id)
+                .HasForeignKey<<#= Model.Name #>>(x => x.Id)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade)
-<#				}#>
+<#				} else {#>
+                .HasForeignKey<<#= Model.Name #>>(x => x.<#= associationEnd.Name().ToPascalCase()#>Id)
+                .OnDelete(DeleteBehavior.Restrict)
+<#              } #>
                 ;
 
 <#              break;
