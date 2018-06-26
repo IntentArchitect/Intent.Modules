@@ -129,6 +129,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.EntityFramew
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.EntityFrameworkCore", "Intent.Modules.EntityFrameworkCore\Intent.Modules.EntityFrameworkCore.csproj", "{E9452E43-0EFB-448E-93AA-E084644C796E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.EntityFrameworkCore.Repositories", "Intent.Modules.EntityFrameworkCore.Repositories\Intent.Modules.EntityFrameworkCore.Repositories.csproj", "{3695D671-4A21-4586-86F9-434602EA241C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Entities.Repositories.Api", "Intent.Modules.Entities.Repositories.Api\Intent.Modules.Entities.Repositories.Api.csproj", "{DC43DD5D-0776-4345-853D-DEF3A95F0CDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -371,6 +375,14 @@ Global
 		{E9452E43-0EFB-448E-93AA-E084644C796E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9452E43-0EFB-448E-93AA-E084644C796E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9452E43-0EFB-448E-93AA-E084644C796E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3695D671-4A21-4586-86F9-434602EA241C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3695D671-4A21-4586-86F9-434602EA241C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3695D671-4A21-4586-86F9-434602EA241C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3695D671-4A21-4586-86F9-434602EA241C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC43DD5D-0776-4345-853D-DEF3A95F0CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC43DD5D-0776-4345-853D-DEF3A95F0CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC43DD5D-0776-4345-853D-DEF3A95F0CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC43DD5D-0776-4345-853D-DEF3A95F0CDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -435,6 +447,8 @@ Global
 		{F66F26B3-E36F-4F27-AF96-E6DDB59CA0D2} = {46C61870-A203-487D-9680-8D143871AA1F}
 		{43F7EB29-6F2C-4C2E-8072-7B9278A38244} = {46C61870-A203-487D-9680-8D143871AA1F}
 		{E9452E43-0EFB-448E-93AA-E084644C796E} = {46C61870-A203-487D-9680-8D143871AA1F}
+		{3695D671-4A21-4586-86F9-434602EA241C} = {46C61870-A203-487D-9680-8D143871AA1F}
+		{DC43DD5D-0776-4345-853D-DEF3A95F0CDF} = {46C61870-A203-487D-9680-8D143871AA1F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

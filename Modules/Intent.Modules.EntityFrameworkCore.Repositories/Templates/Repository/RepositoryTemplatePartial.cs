@@ -3,24 +3,21 @@ using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
-using Intent.Modules.Entities.DDD.Templates.RepositoryInterface;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
-using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor;
-using Intent.Modules.EntityFramework.Templates.DbContext;
+using Intent.Modules.EntityFrameworkCore.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
+namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
 {
     partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation, IBeforeTemplateExecutionHook
     {
-        public const string Identifier = "Intent.EntityFramework.Repositories.Implementation";
+        public const string Identifier = "Intent.EntityFrameworkCore.Repositories.Implementation";
         private ITemplateDependancy _entityStateTemplateDependancy;
         private ITemplateDependancy _entityInterfaceTemplateDependancy;
         private ITemplateDependancy _repositoryInterfaceTemplateDependancy;
         private ITemplateDependancy _dbContextTemplateDependancy;
-        private ITemplateDependancy _deleteVisitorTemplateDependancy;
 
         public RepositoryTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
@@ -33,7 +30,6 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             _entityInterfaceTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
             _repositoryInterfaceTemplateDependancy = TemplateDependancy.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
             _dbContextTemplateDependancy = TemplateDependancy.OnTemplate(DbContextTemplate.Identifier);
-            _deleteVisitorTemplateDependancy = TemplateDependancy.OnTemplate(EntityCompositionVisitorTemplate.Identifier);
         }
 
         public string EntityInterfaceName
@@ -57,8 +53,6 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         public string RepositoryContractName => Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependancy)?.ClassName ?? $"I{ClassName}";
 
         public string DbContextName => Project.FindTemplateInstance<IHasClassDetails>(_dbContextTemplateDependancy)?.ClassName ?? $"{Model.Application.Name}DbContext";
-
-        public string DeleteVisitorName => Project.FindTemplateInstance<IHasClassDetails>(_deleteVisitorTemplateDependancy)?.ClassName ?? $"{Model.Application.Name}DeleteVisitor";
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -90,7 +84,6 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
                 _entityInterfaceTemplateDependancy,
                 _repositoryInterfaceTemplateDependancy,
                 _dbContextTemplateDependancy,
-                _deleteVisitorTemplateDependancy,
             };
         }
 
@@ -98,7 +91,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         {
             return new[]
                 {
-                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.1-pre1", null),
+                    new NugetPackageInfo("Intent.Framework.EntityFrameworkCore", "1.0.0-pre2", null),
                 }
                 .Union(base.GetNugetDependencies())
                 .ToArray();

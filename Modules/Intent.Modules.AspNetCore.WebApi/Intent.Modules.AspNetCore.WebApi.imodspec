@@ -15,6 +15,9 @@
         <add key="Namespace" description="Namespace" default="${Project.Name}.Controllers" />
       </config>
     </template>
+    <template id="Intent.AspNetCore.WebApi.ServiceCallContext">
+      <role>Distribution.WebApi</role>
+    </template>
   </templates>
   <decorators>
   </decorators>

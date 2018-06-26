@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F66F26B3-E36F-4F27-AF96-E6DDB59CA0D2}</ProjectGuid>
+    <ProjectGuid>{DC43DD5D-0776-4345-853D-DEF3A95F0CDF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Modules.AspNetCore.WebApi</RootNamespace>
-    <AssemblyName>Intent.Modules.AspNetCore.WebApi</AssemblyName>
+    <RootNamespace>Intent.Modules.Entities.Repositories.Api</RootNamespace>
+    <AssemblyName>Intent.Modules.Entities.Repositories.Api</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -38,6 +38,9 @@
     <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.4.0\lib\net452\Intent.MetaModel.dll</HintPath>
     </Reference>
+    <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.Modules.Common.1.5.0\lib\net452\Intent.Modules.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.4.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>
@@ -51,68 +54,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates\Controller\WebApiControllerDecoratorBase.cs" />
-    <Compile Include="Templates\Controller\WebApiControllerTemplate.cs">
-      <DependentUpon>WebApiControllerTemplate.tt</DependentUpon>
+    <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplate.cs">
+      <DependentUpon>EntitySpecificationTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\Controller\WebApiControllerTemplatePartial.cs" />
-    <Compile Include="Templates\Controller\WebApiControllerTemplateRegistrations.cs" />
-    <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.cs">
-      <DependentUpon>WebApiServiceCallContextTemplate.tt</DependentUpon>
+    <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplatePartial.cs" />
+    <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplateRegistration.cs" />
+    <Compile Include="Templates\RepositoryInterface\RepositoryInterfaceTemplate.cs">
+      <DependentUpon>RepositoryInterfaceTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplatePartial.cs" />
-    <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplateRegistration.cs" />
+    <Compile Include="Templates\RepositoryInterface\RepositoryInterfaceTemplatePartial.cs" />
+    <Compile Include="Templates\RepositoryInterface\RepositoryInterfaceTemplateRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.AspNetCore.WebApi.imodspec" />
-    <None Include="MetaData\Services\Intent.AspNetCore.WebApi.services.pkg.config" />
+    <None Include="Intent.Modules.Entities.Repositories.Api.imodspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Templates\Controller\WebApiControllerTemplate.tt">
+    <Content Include="Templates\EntitySpecification\EntitySpecificationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>WebApiControllerTemplate.cs</LastGenOutput>
-    </None>
+      <LastGenOutput>EntitySpecificationTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RepositoryInterfaceTemplate.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj">
-      <Project>{2972A488-2F67-426D-8762-C85FB36FB32C}</Project>
-      <Name>Intent.Modules.Application.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
-      <Project>{56475E35-0CC7-4D75-937C-FF46C073BB66}</Project>
-      <Name>Intent.Modules.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
-      <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
-      <Name>Intent.Modules.Constants</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="MetaData\Services\Folders\Stereotypes.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="MetaData\Services\Stereotypes\Secured.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="MetaData\Services\Stereotypes\Http.xml">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>WebApiServiceCallContextTemplate.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Intent.IntentArchitectPackager.1.2.1-beta\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.2.1-beta\build\Intent.IntentArchitectPackager.targets')" />

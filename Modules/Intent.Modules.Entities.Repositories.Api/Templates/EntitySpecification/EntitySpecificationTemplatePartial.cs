@@ -4,11 +4,11 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Modules.EntityFramework.Repositories.Templates.EntitySpecification
+namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
 {
     partial class EntitySpecificationTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IPostTemplateCreation
     {
-        public const string Identifier = "Intent.EntityFramework.Repositories.EntitySpecification";
+        public const string Identifier = "Intent.Entities.Repositories.Api.EntitySpecification";
         private ITemplateDependancy _entityStateTemplateDependancy;
 
         public EntitySpecificationTemplate(IClass model, IProject project)
@@ -46,7 +46,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntitySpecificat
         {
             return new[]
             {
-                new NugetPackageInfo("Intent.Framework.Domain", "0.1.11-beta", null),
+                new NugetPackageInfo("Intent.Framework.Domain", "1.0.0", null),
             };
         }
     }

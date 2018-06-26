@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.EntityFrameworkCore.Repositories</id>
+  <version>1.5.0</version>
+  <summary>Repository Patterns for Entity Framework Core.</summary>
+  <description>Repository Patterns for Entity Framework Core.</description>
+  <authors>Intent Software</authors>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
+  <tags>EntityFrameworkCore Repositories EntityFramework Core</tags>
+  <templates>
+    <template id="Intent.EntityFrameworkCore.Repositories.Implementation">
+      <role>Repository.Implementation</role>
+      <config>
+        <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
+        <add key="Entity Interface Template Id" description="The template Id for the template producing the Domain Entity Interfaces" default="Intent.Entities.DomainEntityInterface" />
+      </config>
+    </template>
+  </templates>
+  <decorators>
+  </decorators>
+  <dependencies>
+    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.Common.Types" version="1.5.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
+    <dependency id="Intent.Entities.Repositories.Api" version="1.5.0"/>
+    <dependency id="Intent.EntityFrameworkCore" version="1.5.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+</package>

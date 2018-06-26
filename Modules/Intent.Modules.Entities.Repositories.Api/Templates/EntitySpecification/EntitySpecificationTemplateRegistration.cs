@@ -1,29 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using Intent.MetaModel.Domain;
-using Intent.Modules.EntityFramework.Repositories.Templates.RepositoryInterface;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
 
-namespace Intent.Modules.Entities.DDD.Templates.RepositoryInterface
+namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
 {
-    [Description(RepositoryInterfaceTemplate.Identifier)]
-    public class RepositoryInterfaceTemplateRegistration : ModelTemplateRegistrationBase<IClass>
+    [Description(EntitySpecificationTemplate.Identifier)]
+    public class EntitySpecificationTemplateRegistration : ModelTemplateRegistrationBase<IClass>
     {
         private readonly IMetaDataManager _metaDataManager;
 
-        public RepositoryInterfaceTemplateRegistration(IMetaDataManager metaDataManager)
+        public EntitySpecificationTemplateRegistration(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
 
-        public override string TemplateId => RepositoryInterfaceTemplate.Identifier;
+        public override string TemplateId => EntitySpecificationTemplate.Identifier;
 
         public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
-            return new RepositoryInterfaceTemplate(model, project);
+            return new EntitySpecificationTemplate(model, project);
         }
 
         public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication application)

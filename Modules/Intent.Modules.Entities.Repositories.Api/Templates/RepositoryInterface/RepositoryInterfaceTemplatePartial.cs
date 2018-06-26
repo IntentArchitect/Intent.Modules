@@ -5,11 +5,11 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Modules.EntityFramework.Repositories.Templates.RepositoryInterface
+namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
 {
     partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation
     {
-        public const string Identifier = "Intent.EntityFramework.Repositories.Interface";
+        public const string Identifier = "Intent.Entities.Repositories.Api.Interface";
         private ITemplateDependancy _entityStateTemplateDependancy;
         private ITemplateDependancy _entityInterfaceTemplateDependancy;
 

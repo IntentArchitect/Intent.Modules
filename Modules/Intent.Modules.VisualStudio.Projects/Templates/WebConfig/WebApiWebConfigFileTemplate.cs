@@ -125,7 +125,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
             XDocument doc;
             if (File.Exists(filePath))
             {
-                doc = XDocument.Load(filePath, LoadOptions.PreserveWhitespace);
+                doc = XDocument.Load(filePath);
             }
             else
             {

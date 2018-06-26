@@ -7,6 +7,9 @@
   <authors>Intent Software</authors>
   <templates />
   <dependencies />
+  <factoryExtensions>
+    <factoryExtension id="Intent.Common.TemplateLifeCycleHooks" />
+  </factoryExtensions>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
