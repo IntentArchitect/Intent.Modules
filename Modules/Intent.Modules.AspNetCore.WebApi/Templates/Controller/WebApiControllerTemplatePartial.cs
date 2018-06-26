@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
@@ -85,18 +87,18 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return result;
         }
 
-        private string GetHttpVerb(IOperationModel operation)
+        private HttpVerb GetHttpVerb(IOperationModel operation)
         {
             var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
             if (verb != "AUTO")
             {
-                return verb;
+                return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
             }
             if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
             {
-                return "POST";
+                return HttpVerb.POST;
             }
-            return "GET";
+            return HttpVerb.GET;
         }
 
         public string DeclarePrivateVariables()
@@ -179,22 +181,66 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return "[AllowAnonymous]";
         }
 
-        private string GetOperationCallParameters(IOperationModel o)
+        private string GetOperationParameters(IOperationModel operation)
         {
-            if (!o.Parameters.Any())
+            if (!operation.Parameters.Any())
+            {
+                return string.Empty;
+            }
+            switch (GetHttpVerb(operation))
+            {
+                case HttpVerb.POST:
+                case HttpVerb.PUT:
+                    return $"[FromBody]{operation.Name}Payload payload";
+                case HttpVerb.GET:
+                case HttpVerb.DELETE:
+                    if (operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
+                    {
+                        Logging.Log.Warning($@"Intent.AspNetCore.WebApi: [{Model.Name}.{operation.Name}] Passing objects into HTTP {GetHttpVerb(operation)} operations is not well supported by this module.
+    We recommend using a POST or PUT verb");
+                        // Log warning
+                    }
+                    return operation.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private string GetOperationCallParameters(IOperationModel operation)
+        {
+            if (!operation.Parameters.Any())
             {
                 return "";
             }
-            return o.Parameters.Select(x => $"payload.{x.Name}").Aggregate((x, y) => x + ", " + y);
+
+            switch (GetHttpVerb(operation))
+            {
+                case HttpVerb.POST:
+                case HttpVerb.PUT:
+                    return operation.Parameters.Select(x => $"payload.{x.Name}").Aggregate((x, y) => x + ", " + y);
+                case HttpVerb.GET:
+                case HttpVerb.DELETE:
+                    return operation.Parameters.Select(x => $"{x.Name}").Aggregate((x, y) => x + ", " + y);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
-        private string GetOperationReturnType(IOperationModel o)
+        private string GetOperationReturnType(IOperationModel operation)
         {
-            if (o.ReturnType == null)
+            if (operation.ReturnType == null)
             {
                 return "void";
             }
-            return GetTypeName(o.ReturnType.TypeReference);
+            return GetTypeName(operation.ReturnType.TypeReference);
         }
+    }
+
+    internal enum HttpVerb
+    {
+        GET,
+        POST,
+        PUT,
+        DELETE
     }
 }

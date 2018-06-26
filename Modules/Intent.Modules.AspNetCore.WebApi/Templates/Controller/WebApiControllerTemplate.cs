@@ -110,24 +110,23 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             this.Write("\r\n        } \r\n    \r\n");
             
             #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-    foreach (var operation in Model.Operations)
+  foreach (var operation in Model.Operations)
     {
-        //Transactions
-        string isolationLevel = "ReadCommitted"; // TODO: Make configurable
+        if (operation.Parameters.Any() && (GetHttpVerb(operation) == HttpVerb.POST || GetHttpVerb(operation) == HttpVerb.PUT)) {
 
             
             #line default
             #line hidden
             this.Write("        public class ");
             
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("Payload\r\n        {\r\n");
             
-            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
             foreach (var parameter in operation.Parameters)
             {
@@ -139,14 +138,14 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             #line hidden
             this.Write("            ");
             
-            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(decorator));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
                 }
 
@@ -155,31 +154,38 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             #line hidden
             this.Write("            public ");
             
-            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(parameter.TypeReference)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
             }
 
             
             #line default
             #line hidden
-            this.Write("        }\r\n\r\n        [Http");
+            this.Write("        }\r\n");
+            
+            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+      } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        [Http");
             
             #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetHttpVerb(operation).ToLower().ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetHttpVerb(operation).ToString().ToLower().ToPascalCase()));
             
             #line default
             #line hidden
@@ -211,10 +217,10 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             
             #line default
             #line hidden
-            this.Write("([FromBody]");
+            this.Write("(");
             
             #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name + "Payload payload"));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationParameters(operation)));
             
             #line default
             #line hidden
@@ -259,7 +265,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                     "solationLevel = IsolationLevel.");
             
             #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(isolationLevel));
+            this.Write(this.ToStringHelper.ToStringWithCulture("ReadCommitted"));
             
             #line default
             #line hidden

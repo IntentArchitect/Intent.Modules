@@ -39,10 +39,9 @@ namespace <#=Namespace#>
              _appService = appService ?? throw new ArgumentNullException(nameof(appService));<#= ConstructorInit() #>
         } 
     
-<#    foreach (var operation in Model.Operations)
+<#  foreach (var operation in Model.Operations)
     {
-        //Transactions
-        string isolationLevel = "ReadCommitted"; // TODO: Make configurable
+        if (operation.Parameters.Any() && (GetHttpVerb(operation) == HttpVerb.POST || GetHttpVerb(operation) == HttpVerb.PUT)) {
 #>
         public class <#= operation.Name #>Payload
         {
@@ -61,10 +60,11 @@ namespace <#=Namespace#>
             }
 #>
         }
+<#      } #>
 
-        [Http<#= GetHttpVerb(operation).ToLower().ToPascalCase() #>("<#= operation.Name.ToLower() #>")]
+        [Http<#= GetHttpVerb(operation).ToString().ToLower().ToPascalCase() #>("<#= operation.Name.ToLower() #>")]
 		<#= GetSecurityAttribute(operation) #>
-        public <#= GetOperationReturnType(operation) #> <#= operation.Name #>([FromBody]<#= operation.Name + "Payload payload" #>)
+        public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>
 
 <#      if (operation.ReturnType != null)
@@ -72,7 +72,7 @@ namespace <#=Namespace#>
 #>            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);
 <#      }#>
             TransactionOptions tso = new TransactionOptions();
-            tso.IsolationLevel = IsolationLevel.<#= isolationLevel #>;
+            tso.IsolationLevel = IsolationLevel.<#= "ReadCommitted" #>;
 
             try
             {<#= BeforeTransaction(operation) #>
