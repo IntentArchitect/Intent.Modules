@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Unity</id>
-  <version>1.5.0</version>
+  <version>1.5.1</version>
   <summary>Unity container for patterns that require Dependency Injection.</summary>
   <description>Unity container for patterns that require Dependency Injection.</description>
   <authors>Intent Software</authors>
@@ -12,6 +12,9 @@
       <role>Distribution</role>
     </template>
     <template id="Intent.Unity.ServiceProvider">
+      <role>Distribution</role>
+    </template>
+    <template id="Intent.Unity.PerServiceCallLifetimeManager">
       <role>Distribution</role>
     </template>
   </templates>

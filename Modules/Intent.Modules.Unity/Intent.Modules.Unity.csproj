@@ -58,6 +58,13 @@
   <ItemGroup>
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.cs">
+      <DependentUpon>PerServiceCallLifetimeManagerTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplatePartial.cs" />
+    <Compile Include="Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplateRegistration.cs" />
     <Compile Include="Templates\UnityConfig\UnityConfigTemplateRegistration.cs" />
     <Compile Include="Templates\UnityServiceProvider\UnityServiceProviderTemplate.cs">
       <DependentUpon>UnityServiceProviderTemplate.tt</DependentUpon>
@@ -75,6 +82,10 @@
     <Compile Include="Templates\UnityConfig\UnityConfigTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>PerServiceCallLifetimeManagerTemplate.cs</LastGenOutput>
+    </None>
     <Content Include="Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UnityServiceProviderTemplate.cs</LastGenOutput>

@@ -30,6 +30,8 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
         public virtual bool HandlesCaughtException() => false;
 
+        public virtual string OnDispose(IServiceModel service) => @"";
+
         public virtual string ClassMethods(IServiceModel service) => @"";
 
         public virtual int Priority { get; set; } = 0;

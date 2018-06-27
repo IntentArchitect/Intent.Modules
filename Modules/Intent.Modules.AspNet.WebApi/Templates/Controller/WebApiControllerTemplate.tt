@@ -34,11 +34,9 @@ namespace <#=Namespace#>
         public <#= ClassName #> (<#= GetServiceInterfaceName() #> appService<#= ConstructorParams() #>
             )
         {
-            if (appService == null)
-                throw new ArgumentNullException("appService");
-            _appService = appService;<#= ConstructorInit() #>
-        } 
-    
+            _appService = appService ?? throw new ArgumentNullException(nameof(appService));<#= ConstructorInit() #>
+        }
+
 <#    foreach (var operation in Model.Operations)
     {
         //Transactions
@@ -115,6 +113,7 @@ namespace <#=Namespace#>
 
             //dispose all resources
             _appService.Dispose();
+            <#=OnDispose()#>
         }
 <#=ClassMethods()#>
     }

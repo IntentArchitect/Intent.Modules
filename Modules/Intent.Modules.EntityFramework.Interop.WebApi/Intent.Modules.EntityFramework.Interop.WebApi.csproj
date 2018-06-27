@@ -72,6 +72,10 @@
       <Project>{56475E35-0CC7-4D75-937C-FF46C073BB66}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.EntityFramework\Intent.Modules.EntityFramework.csproj">
+      <Project>{6F1E2AAB-73BC-47BE-978E-C8CA8E93379A}</Project>
+      <Name>Intent.Modules.EntityFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

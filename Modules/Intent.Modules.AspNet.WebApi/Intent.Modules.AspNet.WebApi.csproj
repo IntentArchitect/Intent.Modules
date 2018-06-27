@@ -60,6 +60,7 @@
     <Compile Include="Decorators\WebApiConfigJsonValidationDecorator.cs" />
     <Compile Include="Decorators\WebApiWebApiControllerExceptionHandlingStrategy.cs" />
     <Compile Include="Decorators\WebApiOwinStartupDecorator.cs" />
+    <Compile Include="Templates\OwinWebApiConfig\OwinWebApiConfigTemplateRegistration.cs" />
     <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.cs">
       <DependentUpon>RequireHttpsMiddlewareTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
