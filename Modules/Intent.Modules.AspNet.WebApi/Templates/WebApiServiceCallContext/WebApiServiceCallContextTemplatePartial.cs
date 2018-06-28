@@ -45,10 +45,22 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
 
         public void PreProcess()
         {
-            Project.Application.EventDispatcher.Publish(ContainerRegistration.EventId, new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
                 { "InterfaceType", $"Intent.Framework.Core.Context.IContextBackingStore"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" }
+            });
+
+            Project.Application.EventDispatcher.Publish(InitializationRequiredEvent.EventId, new Dictionary<string, string>()
+            {
+                { InitializationRequiredEvent.Usings, $@"using Intent.Framework.Core.Context;
+using {Namespace};" },
+                { InitializationRequiredEvent.Code, $"InitializeServiceCallContext();" },
+                { InitializationRequiredEvent.Method, $@"
+        void InitializeServiceCallContext()
+        {{
+            ServiceCallContext.SetBackingStore(new {ClassName}());
+        }}" }
             });
         }
     }

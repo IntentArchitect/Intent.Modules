@@ -20,7 +20,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         public UnityConfigTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
             : base(Identifier, project, null)
         {
-            eventDispatcher.Subscribe(Constants.ContainerRegistration.EventId, Handle);
+            eventDispatcher.Subscribe(Constants.ContainerRegistrationEvent.EventId, Handle);
         }
 
         public IEnumerable<IProject> ApplicationProjects => Project.Application.Projects;
@@ -55,7 +55,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         public string Registrations()
         {
             var registrations = _registrations
-                .Where(x => x.InterfaceType != null || !x.Lifetime.Equals(Constants.ContainerRegistration.TransientLifetime, StringComparison.InvariantCultureIgnoreCase))
+                .Where(x => x.InterfaceType != null || !x.Lifetime.Equals(Constants.ContainerRegistrationEvent.TransientLifetime, StringComparison.InvariantCultureIgnoreCase))
                 .ToList();
 
             var output = registrations.Any() ? registrations.Select(GetRegistrationString).Aggregate((x, y) => x + y) : string.Empty;
@@ -74,11 +74,11 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         {
             switch (registration.Lifetime)
             {
-                case Constants.ContainerRegistration.SingletonLifetime:
+                case Constants.ContainerRegistrationEvent.SingletonLifetime:
                     return "new ContainerControlledLifetimeManager()";
-                case Constants.ContainerRegistration.PerServiceCallLifetime:
+                case Constants.ContainerRegistrationEvent.PerServiceCallLifetime:
                     return $"new {Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(PerServiceCallLifetimeManagerTemplate.Identifier)).ClassName}()";
-                case Constants.ContainerRegistration.TransientLifetime:
+                case Constants.ContainerRegistrationEvent.TransientLifetime:
                     return string.Empty;
                 default:
                     return string.Empty;
@@ -118,7 +118,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         {
             InterfaceType = interfaceType;
             ConcreteType = concreteType;
-            Lifetime = lifetime ?? Constants.ContainerRegistration.TransientLifetime;
+            Lifetime = lifetime ?? Constants.ContainerRegistrationEvent.TransientLifetime;
             InterfaceTypeTemplateDependency = interfaceTypeTemplateDependency;
             ConcreteTypeTemplateDependency = concreteTypeTemplateDependency;
         }

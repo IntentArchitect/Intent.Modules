@@ -112,7 +112,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
                 return;
             }
 
-            Project.Application.EventDispatcher.Publish(ContainerRegistration.EventId, new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
                 { "InterfaceType", $"{contractTemplate.Namespace}.{contractTemplate.ClassName}"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" },

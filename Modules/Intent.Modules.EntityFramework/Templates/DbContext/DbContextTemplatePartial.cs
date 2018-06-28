@@ -60,11 +60,11 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
                 { "ProviderName", "System.Data.SqlClient" },
             });
 
-            _eventDispatcher.Publish(ContainerRegistration.EventId, new Dictionary<string, string>()
+            _eventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
                 { "ConcreteType", $"{Namespace}.{ClassName}" },
                 { "ConcreteTypeTemplateId", Identifier },
-                { "Lifetime", ContainerRegistration.PerServiceCallLifetime }
+                { "Lifetime", ContainerRegistrationEvent.PerServiceCallLifetime }
             });
         }
 

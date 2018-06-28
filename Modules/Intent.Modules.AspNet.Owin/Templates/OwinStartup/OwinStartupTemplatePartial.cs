@@ -4,6 +4,8 @@ using Intent.SoftwareFactory.VisualStudio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Constants;
+using Intent.SoftwareFactory.Eventing;
 
 namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 {
@@ -15,14 +17,24 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 
     }
 
-    partial class OwinStartupTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasDecorators<IOwinStartupDecorator>, IHasAssemblyDependencies
+    partial class OwinStartupTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasDecorators<IOwinStartupDecorator>, IHasAssemblyDependencies, IDeclareUsings
     {
         public const string Identifier = "Intent.Owin.OwinStartup";
         private IEnumerable<IOwinStartupDecorator> _decorators;
+        private IList<Initializations> _initializations = new List<Initializations>();
 
         public OwinStartupTemplate(IProject project)
             : base(Identifier, project)
         {
+            Project.Application.EventDispatcher.Subscribe(InitializationRequiredEvent.EventId, Handle);
+        }
+
+        private void Handle(ApplicationEvent @event)
+        {
+            _initializations.Add(new Initializations(
+                usings: @event.GetValue(InitializationRequiredEvent.Usings), 
+                code: @event.GetValue(InitializationRequiredEvent.Code), 
+                method: @event.TryGetValue(InitializationRequiredEvent.Method)));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -55,7 +67,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 
         public string Configuration()
         {
-            var configurations = GetDecorators().SelectMany(x => x.Configuration()).ToArray();
+            var configurations = GetDecorators().SelectMany(x => x.Configuration()).Union(_initializations.Select(x => x.Code)).ToArray();
             if (!configurations.Any())
             {
                 return string.Empty;
@@ -72,7 +84,12 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 
         public string Methods()
         {
-            var methods = GetDecorators().SelectMany(x => x.Methods()).ToArray();
+            var methods = GetDecorators().SelectMany(x => x.Methods())
+                .Union(_initializations
+                    .Where(x => !string.IsNullOrWhiteSpace(x.Method))
+                    .Select(x => x.Method))
+                .ToArray();
+
             if (!methods.Any())
             {
                 return string.Empty;
@@ -101,6 +118,28 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
                 .SelectMany(x => x.GetAssemblyDependencies())
                 .ToList();
         }
+
+        public IEnumerable<string> DeclareUsings()
+        {
+            return _initializations.Select(x => x.Usings)
+                .Select(x => x.Split(';'))
+                .SelectMany(x => x)
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => x.Trim() + ";");
+        }
     }
 
+    internal class Initializations
+    {
+        public string Usings { get; }
+        public string Code { get; }
+        public string Method { get; }
+
+        public Initializations(string usings, string code, string method)
+        {
+            Usings = usings;
+            Code = code;
+            Method = method;
+        }
+    }
 }

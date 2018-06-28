@@ -16,7 +16,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
         public CoreWebStartupTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
             : base(Identifier, project, null)
         {
-            eventDispatcher.Subscribe(ContainerRegistration.EventId, Handle);
+            eventDispatcher.Subscribe(Constants.ContainerRegistrationEvent.EventId, Handle);
         }
 
         private void Handle(ApplicationEvent @event)
@@ -41,8 +41,23 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
         private string DefineRegistration(ContainerRegistration x)
         {
             return x.InterfaceType != null 
-                ? $"{Environment.NewLine}            services.AddTransient<{NormalizeNamespace(x.InterfaceType)}, {NormalizeNamespace(x.ConcreteType)}>();" 
-                : $"{Environment.NewLine}            services.AddTransient<{NormalizeNamespace(x.ConcreteType)}>();";
+                ? $"{Environment.NewLine}            services.{RegistrationType(x)}<{NormalizeNamespace(x.InterfaceType)}, {NormalizeNamespace(x.ConcreteType)}>();" 
+                : $"{Environment.NewLine}            services.{RegistrationType(x)}<{NormalizeNamespace(x.ConcreteType)}>();";
+        }
+
+        private string RegistrationType(ContainerRegistration registration)
+        {
+            switch (registration.Lifetime)
+            {
+                case Constants.ContainerRegistrationEvent.SingletonLifetime:
+                    return "AddSingleton";
+                case Constants.ContainerRegistrationEvent.PerServiceCallLifetime:
+                    return "AddScoped";
+                case Constants.ContainerRegistrationEvent.TransientLifetime:
+                    return "AddTransient";
+                default:
+                    return "AddTransient";
+            }
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

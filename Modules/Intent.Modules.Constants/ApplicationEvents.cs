@@ -24,7 +24,16 @@
         public const string Typescript_TypingsRequired = "Typescript.Typings";
     }
 
-    public static class ContainerRegistration
+    public static class InitializationRequiredEvent
+    {
+        public const string EventId = "InitializationRequiredEvent";
+        public const string Usings = "InitializationRequiredEvent.Usings";
+        public const string Code = "InitializationRequiredEvent.Code";
+        public const string Method = "InitializationRequiredEvent.Method";
+
+    }
+
+    public static class ContainerRegistrationEvent
     {
         public const string EventId = "Container.RegistrationRequired";
         public const string TransientLifetime = "Transient";
