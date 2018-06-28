@@ -389,7 +389,14 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             #line hidden
             this.Write("        protected override void Dispose(bool disposing)\r\n        {\r\n            b" +
                     "ase.Dispose(disposing);\r\n\r\n            //dispose all resources\r\n            _app" +
-                    "Service.Dispose();\r\n        }\r\n");
+                    "Service.Dispose();");
+            
+            #line 116 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(OnDispose()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        }\r\n");
             
             #line 118 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassMethods()));

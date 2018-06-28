@@ -32,9 +32,9 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
         private void Handle(ApplicationEvent @event)
         {
             _initializations.Add(new Initializations(
-                usings: @event.GetValue(InitializationRequiredEvent.Usings), 
-                code: @event.GetValue(InitializationRequiredEvent.Code), 
-                method: @event.TryGetValue(InitializationRequiredEvent.Method)));
+                usings: @event.GetValue(InitializationRequiredEvent.UsingsKey), 
+                code: @event.GetValue(InitializationRequiredEvent.CallKey), 
+                method: @event.TryGetValue(InitializationRequiredEvent.MethodKey)));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

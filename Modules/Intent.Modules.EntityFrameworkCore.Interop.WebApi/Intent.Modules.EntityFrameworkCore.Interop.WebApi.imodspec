@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.EntityFrameworkCore.Interop.WebApi</id>
+  <version>1.5.1</version>
+  <summary>Entity Framwork Core dbContext injection for interoperability with the Intent.AspNet.WebApi package.</summary>
+  <description>Entity Framwork Core dbContext injection for interoperability with the Intent.AspNet.WebApi package.</description>
+  <authors>Intent Software</authors>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
+  <tags>AspNetCore Core WebApi EntityFrameworkCore Interoperability</tags>
+  <templates>
+  </templates>
+  <decorators>
+    <decorator id="Intent.EntityFrameworkCore.Interop.WebApi.ControllerDecorator"/>
+  </decorators>
+  <dependencies>
+    <dependency id="Intent.Common" version="1.5.1"/>
+    <dependency id="Intent.EntityFrameworkCore" version="1.5.1"/>
+    <dependency id="Intent.AspNetCore.WebApi" version="1.5.1"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+</package>

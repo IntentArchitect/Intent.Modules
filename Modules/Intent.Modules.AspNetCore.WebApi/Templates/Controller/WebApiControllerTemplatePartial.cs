@@ -159,6 +159,11 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                 throw;";
         }
 
+        public string OnDispose()
+        {
+            return GetDecorators().Aggregate(x => x.OnDispose(Model));
+        }
+
         public string ClassMethods()
         {
             return GetDecorators().Aggregate(x => x.ClassMethods(Model));

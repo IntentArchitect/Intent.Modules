@@ -113,7 +113,7 @@ namespace <#=Namespace#>
             base.Dispose(disposing);
 
             //dispose all resources
-            _appService.Dispose();
+            _appService.Dispose();<#=OnDispose()#>
         }
 <#=ClassMethods()#>
     }

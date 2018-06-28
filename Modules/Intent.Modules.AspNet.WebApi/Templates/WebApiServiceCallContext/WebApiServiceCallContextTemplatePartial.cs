@@ -53,10 +53,10 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
 
             Project.Application.EventDispatcher.Publish(InitializationRequiredEvent.EventId, new Dictionary<string, string>()
             {
-                { InitializationRequiredEvent.Usings, $@"using Intent.Framework.Core.Context;
+                { InitializationRequiredEvent.UsingsKey, $@"using Intent.Framework.Core.Context;
 using {Namespace};" },
-                { InitializationRequiredEvent.Code, $"InitializeServiceCallContext();" },
-                { InitializationRequiredEvent.Method, $@"
+                { InitializationRequiredEvent.CallKey, $"InitializeServiceCallContext();" },
+                { InitializationRequiredEvent.MethodKey, $@"
         void InitializeServiceCallContext()
         {{
             ServiceCallContext.SetBackingStore(new {ClassName}());

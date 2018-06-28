@@ -115,7 +115,14 @@ using Microsoft.Extensions.Options;
             
             #line default
             #line hidden
-            this.Write("\r\n        }\r\n    }\r\n}");
+            this.Write("\r\n        }\r\n\r\n");
+            
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Methods()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

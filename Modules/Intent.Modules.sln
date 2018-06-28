@@ -137,6 +137,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules (Official .NETCore)
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules (Official .NET)", "Modules (Official .NET)", "{3621A3CE-CF23-4454-B901-013B2A16A5FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.EntityFrameworkCore.Interop.WebApi", "Intent.Modules.EntityFrameworkCore.Interop.WebApi\Intent.Modules.EntityFrameworkCore.Interop.WebApi.csproj", "{48ABE8B4-C509-4B9D-93B6-5D5FC2EA88B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -387,6 +389,10 @@ Global
 		{DC43DD5D-0776-4345-853D-DEF3A95F0CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC43DD5D-0776-4345-853D-DEF3A95F0CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC43DD5D-0776-4345-853D-DEF3A95F0CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48ABE8B4-C509-4B9D-93B6-5D5FC2EA88B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48ABE8B4-C509-4B9D-93B6-5D5FC2EA88B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48ABE8B4-C509-4B9D-93B6-5D5FC2EA88B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48ABE8B4-C509-4B9D-93B6-5D5FC2EA88B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -453,6 +459,7 @@ Global
 		{E9452E43-0EFB-448E-93AA-E084644C796E} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 		{3695D671-4A21-4586-86F9-434602EA241C} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 		{DC43DD5D-0776-4345-853D-DEF3A95F0CDF} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
+		{48ABE8B4-C509-4B9D-93B6-5D5FC2EA88B8} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

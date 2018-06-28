@@ -62,11 +62,11 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
                 { "ProviderName", "System.Data.SqlClient" },
             });
 
-            _eventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
+            _eventDispatcher.Publish(ContainerRegistrationForDbContextEvent.EventId, new Dictionary<string, string>()
             {
-                { "ConcreteType", $"{Namespace}.{ClassName}" },
-                { "ConcreteTypeTemplateId", Identifier },
-                { "Lifetime", ContainerRegistrationEvent.PerServiceCallLifetime }
+                { ContainerRegistrationForDbContextEvent.ConcreteTypeKey, $"{Namespace}.{ClassName}" },
+                { ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey, Identifier },
+                { ContainerRegistrationForDbContextEvent.OptionsKey, $@".UseSqlServer(Configuration.GetConnectionString(""{Project.Application.ApplicationName}DB"")).UseLazyLoadingProxies()" },
             });
         }
 
