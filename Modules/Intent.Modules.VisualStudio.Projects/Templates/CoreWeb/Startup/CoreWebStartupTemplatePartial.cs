@@ -16,7 +16,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
         public CoreWebStartupTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
             : base(Identifier, project, null)
         {
-            eventDispatcher.Subscribe(ApplicationEvents.Container_RegistrationRequired, Handle);
+            eventDispatcher.Subscribe(ContainerRegistration.EventId, Handle);
         }
 
         private void Handle(ApplicationEvent @event)

@@ -50,7 +50,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.HttpExceptionHandler
 
         public void PreProcess()
         {
-            _eventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
+            _eventDispatcher.Publish(ContainerRegistration.EventId, new Dictionary<string, string>()
             {
                 { "InterfaceType", "Intent.Framework.WebApi.ExceptionHandling.IServiceBoundaryExceptionHandlingStrategy"},
                 { "ConcreteType", "ServiceBoundaryExceptionHandlingStrategy" }

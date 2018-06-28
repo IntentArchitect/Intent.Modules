@@ -30,7 +30,7 @@ namespace <#= Namespace #>
     /// This lifetime manager requires that the ServiceCallContext is set with an approriate IContextBackingStore.
     /// For more information, see the following article https://www.wiktorzychla.com/2013/03/unity-and-http-per-request-lifetime.html
     /// </summary>
-    public class PerServiceCallLifetimeManager : LifetimeManager
+    public class <#= ClassName #> : LifetimeManager
     {
         private readonly object _key = new object();
 

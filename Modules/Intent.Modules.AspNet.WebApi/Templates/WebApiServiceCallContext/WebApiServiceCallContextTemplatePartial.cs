@@ -45,7 +45,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
 
         public void PreProcess()
         {
-            Project.Application.EventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(ContainerRegistration.EventId, new Dictionary<string, string>()
             {
                 { "InterfaceType", $"Intent.Framework.Core.Context.IContextBackingStore"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" }

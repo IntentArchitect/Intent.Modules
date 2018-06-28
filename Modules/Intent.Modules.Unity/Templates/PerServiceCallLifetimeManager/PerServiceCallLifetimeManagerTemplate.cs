@@ -56,44 +56,52 @@ namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    /// <summary>\r\n    /// Per request lifetime manager, ensuring that the s" +
-                    "ame instance shall be resolved at any stage during a service call.\r\n    /// This" +
-                    " lifetime manager requires that the ServiceCallContext is set with an approriate" +
-                    " IContextBackingStore.\r\n    /// For more information, see the following article " +
-                    "https://www.wiktorzychla.com/2013/03/unity-and-http-per-request-lifetime.html\r\n " +
-                    "   /// </summary>\r\n    public class PerServiceCallLifetimeManager : LifetimeMana" +
-                    "ger\r\n    {\r\n        private readonly object _key = new object();\r\n\r\n        publ" +
-                    "ic override object GetValue(ILifetimeContainer container = null)\r\n        {\r\n   " +
-                    "         return BackingStore.GetValue(_key);\r\n        }\r\n\r\n        public overri" +
-                    "de void SetValue(object newValue, ILifetimeContainer container = null)\r\n        " +
-                    "{\r\n            if (newValue == null)\r\n            {\r\n                RemoveValue" +
-                    "();\r\n            }\r\n\r\n            BackingStore.SetValue(_key, newValue);\r\n      " +
-                    "  }\r\n\r\n        public override void RemoveValue(ILifetimeContainer container = n" +
-                    "ull)\r\n        {\r\n            BackingStore.RemoveValue(_key);\r\n        }\r\n\r\n     " +
-                    "   protected override LifetimeManager OnCreateLifetimeManager()\r\n        {\r\n    " +
-                    "        return new PerServiceCallLifetimeManager();\r\n        }\r\n\r\n        privat" +
-                    "e static PerServiceCallLifetimeManagerBackingStore BackingStore\r\n        {\r\n    " +
-                    "        get\r\n            {\r\n                var instance = ServiceCallContext.In" +
-                    "stance.Get<PerServiceCallLifetimeManagerBackingStore>();\r\n                if (in" +
-                    "stance == null)\r\n                {\r\n                    instance = new PerServic" +
-                    "eCallLifetimeManagerBackingStore();\r\n                    ServiceCallContext.Inst" +
-                    "ance.Set(instance);\r\n                }\r\n\r\n                return instance;\r\n    " +
-                    "        }\r\n        }\r\n\r\n        private class PerServiceCallLifetimeManagerBacki" +
-                    "ngStore : IDisposable\r\n        {\r\n            private readonly Dictionary<object" +
-                    ", object> _values = new Dictionary<object, object>();\r\n            private bool " +
-                    "_isDisposing;\r\n\r\n            public void SetValue(object key, object value)\r\n   " +
-                    "         {\r\n                _values[key] = value;\r\n            }\r\n\r\n            " +
-                    "public void RemoveValue(object key)\r\n            {\r\n                _values.Remo" +
-                    "ve(key);\r\n            }\r\n\r\n            public object GetValue(object key)\r\n     " +
-                    "       {\r\n                _values.TryGetValue(key, out var returnValue);\r\n\r\n    " +
-                    "            return returnValue;\r\n            }\r\n\r\n            public void Dispos" +
-                    "e()\r\n            {\r\n                // Guard against stack overflows (if one of " +
-                    "the values for some reason tries to dispose this)\r\n                if (_isDispos" +
-                    "ing)\r\n                {\r\n                    return;\r\n                }\r\n\r\n     " +
-                    "           _isDisposing = true;\r\n\r\n                foreach (var value in _values" +
-                    ")\r\n                {\r\n                    var disposable = value.Value as IDispo" +
-                    "sable;\r\n                    disposable?.Dispose();\r\n                }\r\n         " +
-                    "   }\r\n        }\r\n    }\r\n}");
+            this.Write(@"
+{
+    /// <summary>
+    /// Per request lifetime manager, ensuring that the same instance shall be resolved at any stage during a service call.
+    /// This lifetime manager requires that the ServiceCallContext is set with an approriate IContextBackingStore.
+    /// For more information, see the following article https://www.wiktorzychla.com/2013/03/unity-and-http-per-request-lifetime.html
+    /// </summary>
+    public class ");
+            
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(" : LifetimeManager\r\n    {\r\n        private readonly object _key = new object();\r\n" +
+                    "\r\n        public override object GetValue(ILifetimeContainer container = null)\r\n" +
+                    "        {\r\n            return BackingStore.GetValue(_key);\r\n        }\r\n\r\n       " +
+                    " public override void SetValue(object newValue, ILifetimeContainer container = n" +
+                    "ull)\r\n        {\r\n            if (newValue == null)\r\n            {\r\n             " +
+                    "   RemoveValue();\r\n            }\r\n\r\n            BackingStore.SetValue(_key, newV" +
+                    "alue);\r\n        }\r\n\r\n        public override void RemoveValue(ILifetimeContainer" +
+                    " container = null)\r\n        {\r\n            BackingStore.RemoveValue(_key);\r\n    " +
+                    "    }\r\n\r\n        protected override LifetimeManager OnCreateLifetimeManager()\r\n " +
+                    "       {\r\n            return new PerServiceCallLifetimeManager();\r\n        }\r\n\r\n" +
+                    "        private static PerServiceCallLifetimeManagerBackingStore BackingStore\r\n " +
+                    "       {\r\n            get\r\n            {\r\n                var instance = Service" +
+                    "CallContext.Instance.Get<PerServiceCallLifetimeManagerBackingStore>();\r\n        " +
+                    "        if (instance == null)\r\n                {\r\n                    instance =" +
+                    " new PerServiceCallLifetimeManagerBackingStore();\r\n                    ServiceCa" +
+                    "llContext.Instance.Set(instance);\r\n                }\r\n\r\n                return i" +
+                    "nstance;\r\n            }\r\n        }\r\n\r\n        private class PerServiceCallLifeti" +
+                    "meManagerBackingStore : IDisposable\r\n        {\r\n            private readonly Dic" +
+                    "tionary<object, object> _values = new Dictionary<object, object>();\r\n           " +
+                    " private bool _isDisposing;\r\n\r\n            public void SetValue(object key, obje" +
+                    "ct value)\r\n            {\r\n                _values[key] = value;\r\n            }\r\n" +
+                    "\r\n            public void RemoveValue(object key)\r\n            {\r\n              " +
+                    "  _values.Remove(key);\r\n            }\r\n\r\n            public object GetValue(obje" +
+                    "ct key)\r\n            {\r\n                _values.TryGetValue(key, out var returnV" +
+                    "alue);\r\n\r\n                return returnValue;\r\n            }\r\n\r\n            publ" +
+                    "ic void Dispose()\r\n            {\r\n                // Guard against stack overflo" +
+                    "ws (if one of the values for some reason tries to dispose this)\r\n               " +
+                    " if (_isDisposing)\r\n                {\r\n                    return;\r\n            " +
+                    "    }\r\n\r\n                _isDisposing = true;\r\n\r\n                foreach (var va" +
+                    "lue in _values)\r\n                {\r\n                    var disposable = value.V" +
+                    "alue as IDisposable;\r\n                    disposable?.Dispose();\r\n              " +
+                    "  }\r\n            }\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

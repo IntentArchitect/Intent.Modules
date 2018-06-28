@@ -22,7 +22,7 @@ namespace Intent.Modules.Unity.Templates.UnityServiceProvider
 
         public void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(ContainerRegistration.EventId, new Dictionary<string, string>()
             {
                 { "InterfaceType", "IServiceProvider"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" },

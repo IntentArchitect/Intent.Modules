@@ -59,6 +59,13 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
                 { "ConnectionString", $"Server=.;Initial Catalog={ Project.Application.SolutionName };Integrated Security=true;MultipleActiveResultSets=True" },
                 { "ProviderName", "System.Data.SqlClient" },
             });
+
+            _eventDispatcher.Publish(ContainerRegistration.EventId, new Dictionary<string, string>()
+            {
+                { "ConcreteType", $"{Namespace}.{ClassName}" },
+                { "ConcreteTypeTemplateId", Identifier },
+                { "Lifetime", ContainerRegistration.PerServiceCallLifetime }
+            });
         }
 
         public IEnumerable<DbContextDecoratorBase> GetDecorators()

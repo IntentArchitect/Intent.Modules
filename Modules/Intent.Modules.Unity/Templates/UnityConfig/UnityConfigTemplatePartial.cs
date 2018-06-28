@@ -6,6 +6,7 @@ using Intent.SoftwareFactory.VisualStudio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager;
 
 namespace Intent.Modules.Unity.Templates.UnityConfig
 {
@@ -19,7 +20,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         public UnityConfigTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
             : base(Identifier, project, null)
         {
-            eventDispatcher.Subscribe(ApplicationEvents.Container_RegistrationRequired, Handle);
+            eventDispatcher.Subscribe(Constants.ContainerRegistration.EventId, Handle);
         }
 
         public IEnumerable<IProject> ApplicationProjects => Project.Application.Projects;
@@ -53,11 +54,35 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
 
         public string Registrations()
         {
-            var registrations = _registrations != null && _registrations.Any(x => x.InterfaceType != null)
-                ? _registrations.Where(x => x.InterfaceType != null).Select(x => $"{Environment.NewLine}            container.RegisterType<{NormalizeNamespace(x.InterfaceType)}, {NormalizeNamespace(x.ConcreteType)}>();").Aggregate((x, y) => x + y)
-                : string.Empty;
+            var registrations = _registrations
+                .Where(x => x.InterfaceType != null || !x.Lifetime.Equals(Constants.ContainerRegistration.TransientLifetime, StringComparison.InvariantCultureIgnoreCase))
+                .ToList();
 
-            return registrations + Environment.NewLine + GetDecorators().Aggregate(x => x.Registrations());
+            var output = registrations.Any() ? registrations.Select(GetRegistrationString).Aggregate((x, y) => x + y) : string.Empty;
+
+            return output + Environment.NewLine + GetDecorators().Aggregate(x => x.Registrations());
+        }
+
+        private string GetRegistrationString(ContainerRegistration x)
+        {
+            return x.InterfaceType != null 
+                ? $"{Environment.NewLine}            container.RegisterType<{NormalizeNamespace(x.InterfaceType)}, {NormalizeNamespace(x.ConcreteType)}>({GetLifetimeManager(x)});" 
+                : $"{Environment.NewLine}            container.RegisterType<{NormalizeNamespace(x.ConcreteType)}>({GetLifetimeManager(x)});";
+        }
+
+        private string GetLifetimeManager(ContainerRegistration registration)
+        {
+            switch (registration.Lifetime)
+            {
+                case Constants.ContainerRegistration.SingletonLifetime:
+                    return "new ContainerControlledLifetimeManager()";
+                case Constants.ContainerRegistration.PerServiceCallLifetime:
+                    return $"new {Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(PerServiceCallLifetimeManagerTemplate.Identifier)).ClassName}()";
+                case Constants.ContainerRegistration.TransientLifetime:
+                    return string.Empty;
+                default:
+                    return string.Empty;
+            }
         }
 
         public IEnumerable<IUnityRegistrationsDecorator> GetDecorators()
@@ -93,7 +118,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         {
             InterfaceType = interfaceType;
             ConcreteType = concreteType;
-            Lifetime = lifetime ?? "Transient";
+            Lifetime = lifetime ?? Constants.ContainerRegistration.TransientLifetime;
             InterfaceTypeTemplateDependency = interfaceTypeTemplateDependency;
             ConcreteTypeTemplateDependency = concreteTypeTemplateDependency;
         }

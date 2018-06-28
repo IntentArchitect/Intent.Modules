@@ -28,7 +28,7 @@ namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
                 fileExtension: "cs",
                 defaultLocationInProject: "Unity",
                 className: "PerServiceCallLifetimeManager",
-                @namespace: "${Project.Name}"
+                @namespace: "${Project.Name}.Unity"
                 );
         }
 
