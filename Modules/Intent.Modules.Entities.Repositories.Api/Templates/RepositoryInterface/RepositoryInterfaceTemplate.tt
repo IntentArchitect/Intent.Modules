@@ -20,11 +20,12 @@ using System.Linq;
 using Intent.Framework.Domain.Repositories;
 <#= DependencyUsings #>
 
-[assembly: DefaultIntentManaged(Mode.Fully)] 
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
     public interface <#= ClassName #> : IRepository<<#= EntityInterfaceName #>, <#= EntityStateName #>>
     {
+        <#= EntityInterfaceName #> FindById(Guid id);
     }
 }

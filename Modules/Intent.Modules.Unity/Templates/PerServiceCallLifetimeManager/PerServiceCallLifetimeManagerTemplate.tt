@@ -14,11 +14,10 @@
 
 
 #>
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Owin;
-using System.Web.Http;
-using Unity.WebApi;
+using System;
+using System.Collections.Generic;
+using Intent.Framework.Core.Context;
+using Unity.Lifetime;
 <#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]

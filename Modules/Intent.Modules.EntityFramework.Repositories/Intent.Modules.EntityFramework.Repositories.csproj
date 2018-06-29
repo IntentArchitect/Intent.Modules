@@ -53,8 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Decorators\DbContextDecorator.cs" />
-    <Compile Include="Decorators\DbContextDecoratorRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.cs">
       <DependentUpon>EntityCompositionVisitorTemplate.tt</DependentUpon>

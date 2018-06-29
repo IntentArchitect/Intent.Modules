@@ -30,12 +30,12 @@
   <interoperability>
     <detect id="Intent.AspNet.WebApi">
       <install>
-        <package id="Intent.EntityFramework.Interop.WebApi" version="1.5.0"/>
+        <package id="Intent.EntityFramework.Interop.WebApi" version="1.5.1"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.Common" version="1.5.1"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
   </dependencies>
   <files>

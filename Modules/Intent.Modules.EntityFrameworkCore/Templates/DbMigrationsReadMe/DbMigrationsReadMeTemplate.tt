@@ -3,32 +3,32 @@
 <#@ output extension=".txt" #>
 Create a new migration:
 -------------------------------------------------------------------------------------------------------------------------------------------------------
-add-migration -Name {ChangeName} -StartupProject "<#= ProjectWithDbContext #>" -Project <#= MigrationProject#>
+Add-Migration -Name {ChangeName} -StartupProject "<#= ProjectWithDbContext #>" -Project <#= MigrationProject#>
 
 
 Override an existing migration:
 -------------------------------------------------------------------------------------------------------------------------------------------------------
-add-migration -Name {ExistingNameWithoutDateComponent} -StartupProject "<#= ProjectWithDbContext #>" -Project <#= MigrationProject#>
+Add-Migration -Name {ExistingNameWithoutDateComponent} -StartupProject "<#= ProjectWithDbContext #>" -Project <#= MigrationProject#>
 
 
 Update to latest version:
 -------------------------------------------------------------------------------------------------------------------------------------------------------
-update-database -StartupProject "<#= ProjectWithDbContext #>" -Project <#= MigrationProject #>
+Update-Database -StartupProject "<#= ProjectWithDbContext #>" -Project <#= MigrationProject #>
 
 
 Upgrade/downgrade to specific version
 -------------------------------------------------------------------------------------------------------------------------------------------------------
-update-database -StartupProjectName "<#= ProjectWithDbContext #>" -ProjectName <#= MigrationProject #> -Migration {Target}
+Update-Database -StartupProjectName "<#= ProjectWithDbContext #>" -ProjectName <#= MigrationProject #> -Migration {Target}
 
 
 Generate script which detects current database version and updates it to the latest:
 -------------------------------------------------------------------------------------------------------------------------------------------------------
-update-database -StartupProjectName "<#= ProjectWithDbContext #>" -ProjectName <#= MigrationProject #> -Script -SourceMigration:$InitialDatabase
+Script-Migration -StartupProjectName "<#= ProjectWithDbContext #>" -ProjectName <#= MigrationProject #> -Script -SourceMigration:$InitialDatabase
 
 
 Generate a script two upgrade from and to a specific version:
 -------------------------------------------------------------------------------------------------------------------------------------------------------
-update-database -StartupProjectName "<#= ProjectWithDbContext #>" -ProjectName <#= MigrationProject #> -Script -SourceMigration:{Source} -TargetMigration:{Target}
+Script-Migration -StartupProjectName "<#= ProjectWithDbContext #>" -ProjectName <#= MigrationProject #> -Script -SourceMigration:{Source} -TargetMigration:{Target}
 
 
 Drop all tables in schema:

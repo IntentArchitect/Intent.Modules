@@ -41,17 +41,17 @@ namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
             
             #line default
             #line hidden
-            this.Write("using Newtonsoft.Json;\r\nusing Newtonsoft.Json.Serialization;\r\nusing Owin;\r\nusing " +
-                    "System.Web.Http;\r\nusing Unity.WebApi;\r\n");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing Intent.Framework.Core.Con" +
+                    "text;\r\nusing Unity.Lifetime;\r\n");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -65,7 +65,7 @@ namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
     /// </summary>
     public class ");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

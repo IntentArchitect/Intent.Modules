@@ -49,7 +49,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
             
             #line default
             #line hidden
-            this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)] \r\n\r\nnamespace ");
+            this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
@@ -77,7 +77,14 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n    }\r\n}");
+            this.Write(">\r\n    {\r\n        ");
+            
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
+            
+            #line default
+            #line hidden
+            this.Write(" FindById(Guid id);\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
