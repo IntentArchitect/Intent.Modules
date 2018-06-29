@@ -52,9 +52,7 @@
     {
         public const string EventId = "Container.RegistrationRequired.DbContext";
         public const string UsingsKey = "Usings";
-        public const string InterfaceTypeKey = "InterfaceType";
         public const string ConcreteTypeKey = "ConcreteType";
-        public const string InterfaceTypeTemplateIdKey = "InterfaceTypeTemplateId";
         public const string ConcreteTypeTemplateIdKey = "ConcreteTypeTemplateId";
         public const string OptionsKey = "Options";
     }

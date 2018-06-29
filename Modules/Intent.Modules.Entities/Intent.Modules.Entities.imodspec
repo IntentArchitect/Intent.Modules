@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities</id>
-  <version>1.5.0</version>
+  <version>1.5.1</version>
   <summary>Create domain entities and related artifacts.</summary>
   <description></description>
   <authors>Intent Software</authors>
@@ -33,6 +33,11 @@
   </decorators>
   <interoperability>
     <detect id="Intent.EntityFramework">
+      <install>
+        <package id="Intent.Entities.Interop.EntityFramework" version="1.5.0"/>
+      </install>
+    </detect>
+    <detect id="Intent.EntityFrameworkCore">
       <install>
         <package id="Intent.Entities.Interop.EntityFramework" version="1.5.0"/>
       </install>

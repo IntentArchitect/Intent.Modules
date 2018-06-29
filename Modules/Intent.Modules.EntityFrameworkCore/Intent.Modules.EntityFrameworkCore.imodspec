@@ -10,6 +10,10 @@
   <templates>
     <template id="Intent.EntityFrameworkCore.DbContext">
       <role>Infrastructure.Data.EF</role>
+      <config>
+        <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
+        <add key="Use Lazy-Loading Proxies" description="Whether EF should be configured to use lazy-loading proxies" default="true" />
+      </config>
     </template>
     <template id="Intent.EntityFrameworkCore.EFMapping">
       <role>Infrastructure.Data.EF</role>
@@ -28,16 +32,11 @@
   </templates>
   <decorators />
   <interoperability>
-    <detect id="Intent.AspNet.WebApi">
+    <detect id="Intent.AspNetCore.WebApi">
       <install>
-        <package id="Intent.EntityFramework.Interop.WebApi" version="1.5.0"/>
+        <package id="Intent.EntityFrameworkCore.Interop.WebApi" version="1.5.1"/>
       </install>
     </detect>
-    <!--<detect id="Intent.Unity">
-      <install>
-        <package id="Intent.EntityFramework.Interop.Unity" version="1.5.0"/>
-      </install>
-    </detect>-->
   </interoperability>
   <dependencies>
     <dependency id="Intent.Common" version="1.5.1"/>

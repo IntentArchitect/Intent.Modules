@@ -91,7 +91,7 @@ using Microsoft.Extensions.Options;
         [IntentManaged(Mode.Ignore)]
         public void ConfigureServices(IServiceCollection services)
         {
-            IntentConfiguredServices(services)
+            IntentConfiguredServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

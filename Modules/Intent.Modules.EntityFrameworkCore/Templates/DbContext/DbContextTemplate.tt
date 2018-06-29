@@ -27,7 +27,7 @@ namespace <#= Namespace #>
         }
 
 <# foreach (var model in Model) {#>
-        public DbSet<<#= model.Name.ToPascalCase()#>> <#= model.Name.ToPascalCase().ToPluralName()#> { get; set; }
+        public DbSet<<#= GetEntityName(model) #>> <#= GetEntityName(model).ToPluralName()#> { get; set; }
 <# }#>
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

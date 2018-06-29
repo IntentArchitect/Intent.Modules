@@ -77,14 +77,14 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
             this.Write("        public DbSet<");
             
             #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetEntityName(model)));
             
             #line default
             #line hidden
             this.Write("> ");
             
             #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToPascalCase().ToPluralName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetEntityName(model).ToPluralName()));
             
             #line default
             #line hidden

@@ -8,7 +8,7 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
 {
-    partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>, IHasTemplateDependencies
+    partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>, IHasTemplateDependencies, IDeclareUsings
     {
         public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.Startup";
         private readonly IList<ContainerRegistration> _registrations = new List<ContainerRegistration>();
@@ -34,6 +34,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
         private void HandleDbContextRegistration(ApplicationEvent @event)
         {
             _dbContextRegistrations.Add(new DbContextContainerRegistration(
+                @event.TryGetValue(ContainerRegistrationForDbContextEvent.UsingsKey),
                 @event.GetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeKey),
                 @event.TryGetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey) != null ? TemplateDependancy.OnTemplate(@event.TryGetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey)) : null,
                 @event.TryGetValue(ContainerRegistrationForDbContextEvent.OptionsKey)));
@@ -137,25 +138,36 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 ConcreteTypeTemplateDependency = concreteTypeTemplateDependency;
             }
 
-            public string InterfaceType { get; private set; }
-            public string ConcreteType { get; private set; }
-            public string Lifetime { get; private set; }
-            public ITemplateDependancy InterfaceTypeTemplateDependency { get; private set; }
+            public string InterfaceType { get; }
+            public string ConcreteType { get; }
+            public string Lifetime { get; }
+            public ITemplateDependancy InterfaceTypeTemplateDependency { get; }
             public ITemplateDependancy ConcreteTypeTemplateDependency { get; }
         }
 
         internal class DbContextContainerRegistration
         {
-            public DbContextContainerRegistration(string concreteType, ITemplateDependancy concreteTypeTemplateDependency, string options)
+            public DbContextContainerRegistration(string usings, string concreteType, ITemplateDependancy concreteTypeTemplateDependency, string options)
             {
+                Usings = usings;
                 ConcreteType = concreteType;
                 ConcreteTypeTemplateDependency = concreteTypeTemplateDependency;
                 Options = options;
             }
 
-            public string ConcreteType { get; private set; }
+            public string Usings { get; }
+            public string ConcreteType { get; }
             public ITemplateDependancy ConcreteTypeTemplateDependency { get; }
-            public string Options { get; private set; }
+            public string Options { get; }
+        }
+
+        public IEnumerable<string> DeclareUsings()
+        {
+            return _dbContextRegistrations.Select(x => x.Usings)
+                .Select(x => x.Split(';'))
+                .SelectMany(x => x)
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => x.Trim() + ";");
         }
     }
 }

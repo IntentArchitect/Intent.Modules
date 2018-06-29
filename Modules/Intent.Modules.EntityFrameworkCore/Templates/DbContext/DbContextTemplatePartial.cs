@@ -13,7 +13,7 @@ using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasNugetDependencies, IBeforeTemplateExecutionHook, IHasDecorators<DbContextDecoratorBase>
+    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, IBeforeTemplateExecutionHook, IHasDecorators<DbContextDecoratorBase>, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.EntityFrameworkCore.DbContext";
 
@@ -21,9 +21,15 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
         private IEnumerable<DbContextDecoratorBase> _decorators;
 
         public DbContextTemplate(IEnumerable<IClass> models, IProject project, IApplicationEventDispatcher eventDispatcher)
-            : base (Identifier, project, models)
+            : base(Identifier, project, models)
         {
             _eventDispatcher = eventDispatcher;
+        }
+
+        public string GetEntityName(IClass model)
+        {
+            var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == model.Id));
+            return template != null ? NormalizeNamespace($"{template.ClassName}") : $"{model.Name}";
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -45,10 +51,16 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return new[]
-            {
-                NugetPackages.EntityFrameworkCore,
-            }
+            return UseLazyLoadingProxies
+                ? new[]
+                {
+                    NugetPackages.EntityFrameworkCore,
+                    NugetPackages.EntityFrameworkCoreProxies,
+                }
+                : new[]
+                {
+                    NugetPackages.EntityFrameworkCore,
+                }
             .Union(base.GetNugetDependencies())
             .ToArray();
         }
@@ -64,11 +76,14 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
             _eventDispatcher.Publish(ContainerRegistrationForDbContextEvent.EventId, new Dictionary<string, string>()
             {
+                { ContainerRegistrationForDbContextEvent.UsingsKey, $"using Microsoft.EntityFrameworkCore;" },
                 { ContainerRegistrationForDbContextEvent.ConcreteTypeKey, $"{Namespace}.{ClassName}" },
                 { ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey, Identifier },
-                { ContainerRegistrationForDbContextEvent.OptionsKey, $@".UseSqlServer(Configuration.GetConnectionString(""{Project.Application.ApplicationName}DB"")).UseLazyLoadingProxies()" },
+                { ContainerRegistrationForDbContextEvent.OptionsKey, $@".UseSqlServer(Configuration.GetConnectionString(""{Project.Application.ApplicationName}DB"")){(UseLazyLoadingProxies ? ".UseLazyLoadingProxies()" : "")}" },
             });
         }
+
+        public bool UseLazyLoadingProxies => !bool.TryParse(GetMetaData().CustomMetaData["Use Lazy-Loading Proxies"], out var useLazyLoadingProxies) || useLazyLoadingProxies;
 
         public IEnumerable<DbContextDecoratorBase> GetDecorators()
         {
@@ -85,6 +100,11 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
             {
                 throw new Exception($"Multiple decorators attempting to modify 'base class' on {Identifier}");
             }
+        }
+
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            return Model.Select(x => TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
         }
     }
 }

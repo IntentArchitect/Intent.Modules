@@ -1,12 +1,10 @@
 ﻿<div>
-    <p>A full technology stack for building a web server using ASP.NET WebApi 2.2 in Visual Studio.</p>
+    <p>A full technology stack for building a web server using ASP.NET Core in Visual Studio 2017+.</p>
     <p>This template configures a hexagonal architecture with a technology agnostic Domain and Application layer.</p>
     <p>The following technologies are used:</p>
     <ul>
-        <li><strong>ASP.NET WebApi 2.2</strong> - framework for building HTTP services</li>
-        <li><strong>OWIN</strong> - middleware framework between the web server and web application</li>
-        <li><strong>Entity Framework</strong> - Microsoft's recommended ORM (Object Relational Mapper), providing an abstraction on the database.</li>
-        <li><strong>Unity</strong> - dependency injection framework.</li>
+        <li><strong>ASP.NET Core</strong> - framework for building HTTP services</li>
+        <li><strong>Entity Framework Core</strong> - Microsoft's recommended ORM (Object Relational Mapper), providing an abstraction on the database.</li>
     </ul>
     <p>Other notes:</p>
     <ul>
@@ -19,9 +17,7 @@
             The DbContext backing each repository is isolated to each service call. The same instance is returned for any instantiation of a repository during the service call.
         </li>
         <li>
-            <strong>Dependency Injection</strong> - Dependency injection is implemented throughout each pattern in the application. A per-service-call Lifetime manager is used to ensure all respositories
-            instantiated during a call receive the same DbContext.
-            Add additional registrations in thte UnityConfig.cs file.
+            <strong>Dependency Injection</strong> - Dependency injection is implemented using the standard ASP.NET Core DI container.
         </li>
     </ul>
 </div>
