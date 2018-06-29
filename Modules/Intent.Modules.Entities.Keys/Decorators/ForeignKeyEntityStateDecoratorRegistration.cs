@@ -1,13 +1,12 @@
 ﻿using System.ComponentModel;
-using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
+namespace Intent.Modules.Entities.Keys.Decorators
 {
     [Description(ForeignKeyEntityStateDecorator.Identifier)]
-    public class ForeignKeyEntityDecoratorRegistration : DecoratorRegistration<DomainEntityStateDecoratorBase>
+    public class ForeignKeyEntityStateDecoratorRegistration : DecoratorRegistration<DomainEntityStateDecoratorBase>
     {
         public override string DecoratorId => ForeignKeyEntityStateDecorator.Identifier;
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{6F137540-606F-4E35-89E6-E73ADAACDC52}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Modules.Entities.Interop.EntityFramework</RootNamespace>
-    <AssemblyName>Intent.Modules.Entities.Interop.EntityFramework</AssemblyName>
+    <RootNamespace>Intent.Modules.Entities.Keys</RootNamespace>
+    <AssemblyName>Intent.Modules.Entities.Keys</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -61,7 +61,7 @@
     <Compile Include="Decorators\ForeignKeyEntityStateDecorator.cs" />
     <Compile Include="Decorators\BidirectionalOneToManyEntityStateDecorator.cs" />
     <Compile Include="Decorators\SurrogatePrimaryKeyEntityStateDecoratorRegistration.cs" />
-    <Compile Include="Decorators\ForeignKeyEntityDecoratorRegistration.cs" />
+    <Compile Include="Decorators\ForeignKeyEntityStateDecoratorRegistration.cs" />
     <Compile Include="Decorators\BidirectionalOneToManyEntityDecoratorRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\IdentityGenerator\IdentityGeneratorTemplate.cs">
@@ -73,7 +73,7 @@
     <Compile Include="Templates\IdentityGenerator\IdentityGeneratorTemplateRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Entities.Interop.EntityFramework.imodspec">
+    <None Include="Intent.Modules.Entities.Keys.imodspec">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />

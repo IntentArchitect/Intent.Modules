@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
@@ -7,7 +8,7 @@ using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
 {
-    partial class WebApiServiceCallContextTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing
+    partial class WebApiServiceCallContextTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.AspNet.WebApi.ServiceCallContext";
 
@@ -43,7 +44,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
             .ToArray();
         }
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
             Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {

@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using Intent.MetaModel.Domain;
-using Intent.Modules.Entities.Templates.DomainEntity;
-using Intent.SoftwareFactory.Configuration;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
+using Intent.SoftwareFactory.Configuration;
 
-namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
+namespace Intent.Modules.Entities.Keys.Decorators
 {
     public class ForeignKeyEntityStateDecorator : DomainEntityStateDecoratorBase, ISupportsConfiguration
     {
         private string _foreignKeyType = "Guid";
-        public const string Identifier = "Intent.Entities.Interop.EntityFramework.ForeignKeyEntityDecorator";
+        public const string Identifier = "Intent.Entities.Keys.ForeignKeyEntityDecorator";
         public const string ForeignKeyType = "Foreign Key Type";
 
         public override string AssociationBefore(IAssociationEnd associationEnd)

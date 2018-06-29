@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel;
-using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
-using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.Modules.Entities.Interop.EntityFramework.Decorators
+namespace Intent.Modules.Entities.Keys.Decorators
 {
     [Description(SurrogatePrimaryKeyInterfaceDecorator.Identifier)]
     public class SurrogatePrimaryKeyInterfaceDecoratorRegistration : DecoratorRegistration<DomainEntityInterfaceDecoratorBase>
