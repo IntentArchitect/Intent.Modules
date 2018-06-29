@@ -48,6 +48,7 @@ namespace Intent.SoftwareFactory.Templates
         /// <returns></returns>
         public virtual string NormalizeNamespace(string qualifiedClassName)
         {
+            // Handle Generics recursively:
             if (qualifiedClassName.Contains("<") && qualifiedClassName.Contains(">"))
             {
                 var genericTypes = qualifiedClassName.Substring(qualifiedClassName.IndexOf("<", StringComparison.Ordinal) + 1, qualifiedClassName.Length - qualifiedClassName.IndexOf("<", StringComparison.Ordinal) - 2);
@@ -66,6 +67,15 @@ namespace Intent.SoftwareFactory.Templates
 
             var localParts = this.Namespace.Split('.');
 
+            // Check if namespace already exists, but avoid where qualifiedClassName is same as a namespace:
+            var existingUsings = DependencyUsings.Split(';').Select(x => x.Trim().Replace("using ", "")).ToList();
+            var foreignNamespace = foreignParts.Where(x => x != foreignParts.Last()).Aggregate((x, y) => x + "." + y);
+            if (existingUsings.Any(x => x == foreignNamespace) && existingUsings.All(x => x != qualifiedClassName))
+            {
+                return foreignParts.Last();
+            }
+
+            // Remove redundant parts of namespace:
             foreach (var localPart in localParts)
             {
                 if (localPart == foreignParts[0])
