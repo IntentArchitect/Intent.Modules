@@ -87,20 +87,6 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return result;
         }
 
-        private HttpVerb GetHttpVerb(IOperationModel operation)
-        {
-            var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
-            if (verb != "AUTO")
-            {
-                return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
-            }
-            if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
-            {
-                return HttpVerb.POST;
-            }
-            return HttpVerb.GET;
-        }
-
         public string DeclarePrivateVariables()
         {
             return GetDecorators().Aggregate(x => x.DeclarePrivateVariables(Model));
@@ -238,6 +224,20 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                 return "void";
             }
             return GetTypeName(operation.ReturnType.TypeReference);
+        }
+
+        private HttpVerb GetHttpVerb(IOperationModel operation)
+        {
+            var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
+            if (verb != "AUTO")
+            {
+                return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
+            }
+            if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
+            {
+                return HttpVerb.POST;
+            }
+            return HttpVerb.GET;
         }
     }
 

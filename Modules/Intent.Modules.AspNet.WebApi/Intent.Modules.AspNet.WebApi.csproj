@@ -166,6 +166,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="MetaData\Services\Stereotypes\Http.xml">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiServiceCallContextTemplate.cs</LastGenOutput>

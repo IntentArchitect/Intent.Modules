@@ -56,9 +56,7 @@ namespace <#=Namespace#>
                 }
 #>
             public <#= GetTypeName(parameter.TypeReference) #> <#= parameter.Name #> { get; set; }
-<#
-            }
-#>
+<#          }#>
         }
 <#      } #>
 
@@ -66,8 +64,14 @@ namespace <#=Namespace#>
 		<#= GetSecurityAttribute(operation) #>
         public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>
+<#      if (operation.Parameters.Any() && (GetHttpVerb(operation) == HttpVerb.POST || GetHttpVerb(operation) == HttpVerb.PUT)) {#>
+            if (payload == null) 
+            {
+                throw new ArgumentNullException(nameof(payload));
+            }
 
-<#      if (operation.ReturnType != null)
+<#      }
+        if (operation.ReturnType != null)
         {
 #>            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);
 <#      }#>

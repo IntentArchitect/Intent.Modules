@@ -91,7 +91,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
         {
             return new[]
                 {
-                    new NugetPackageInfo("Intent.Framework.EntityFrameworkCore", "1.0.0-pre2", null),
+                    new NugetPackageInfo("Intent.Framework.EntityFrameworkCore", "1.0.0", null),
                 }
                 .Union(base.GetNugetDependencies())
                 .ToArray();

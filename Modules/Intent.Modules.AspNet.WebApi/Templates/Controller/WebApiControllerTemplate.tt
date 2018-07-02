@@ -26,7 +26,7 @@ using System.Web.Http;
 
 namespace <#=Namespace#>
 {
-    [RoutePrefix("api/<#= Model.Name.Replace("Service", "").ToLower() #>")]
+    [RoutePrefix("api/<#= Model.Name.ToLower() #>")]
     public class <#= ClassName #> : ApiController
     {
         private readonly <#= GetServiceInterfaceName() #> _appService;<#= DeclarePrivateVariables() #>
@@ -37,10 +37,9 @@ namespace <#=Namespace#>
             _appService = appService ?? throw new ArgumentNullException(nameof(appService));<#= ConstructorInit() #>
         }
 
-<#    foreach (var operation in Model.Operations)
+<#  foreach (var operation in Model.Operations)
     {
-        //Transactions
-        string isolationLevel = "ReadCommitted"; // TODO: Make configurable
+        if (operation.Parameters.Any() && (GetHttpVerb(operation) == HttpVerb.POST || GetHttpVerb(operation) == HttpVerb.PUT)) {
 #>
         public class <#= operation.Name #>Payload
         {
@@ -55,23 +54,28 @@ namespace <#=Namespace#>
                 }
 #>
             public <#= GetTypeName(parameter.TypeReference) #> <#= parameter.Name #> { get; set; }
-<#
-            }
-#>
+<#          }#>
         }
+<#      } #>
 
-        [AcceptVerbs("POST")]
+        [AcceptVerbs("<#= GetHttpVerb(operation).ToString().ToUpper()#>")]
 		<#= GetSecurityAttribute(operation) #>
         [Route("<#= operation.Name.ToLower() #>")]
-        public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= operation.Name + "Payload payload" #>)
+        public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>
+<#      if (operation.Parameters.Any() && (GetHttpVerb(operation) == HttpVerb.POST || GetHttpVerb(operation) == HttpVerb.PUT)) {#>
+            if (payload == null) 
+            {
+                throw new ArgumentNullException(nameof(payload));
+            }
 
-<#      if (operation.ReturnType != null)
+<#      }
+        if (operation.ReturnType != null)
         {
 #>            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);
 <#      }#>
             TransactionOptions tso = new TransactionOptions();
-            tso.IsolationLevel = IsolationLevel.<#= isolationLevel #>;
+            tso.IsolationLevel = IsolationLevel.<#= "ReadCommitted" #>;
 
             try
             {<#= BeforeTransaction(operation) #>
