@@ -24,9 +24,9 @@ namespace Intent.Modules.OutputManager.TagWeaver
         public string Keep(TokenParser tokenParser, string generatedContent, string manualContent)
         {
             ContentParser p = new ContentParser(
-                new List<TokenParser> { 
+                new List<TokenParser> {
                     tokenParser
-                }                    
+                }
                 );
 
             var manualParse = p.Parse(manualContent);
@@ -107,7 +107,7 @@ namespace Intent.Modules.OutputManager.TagWeaver
              
             */
             ContentParser p = new ContentParser(
-                new List<TokenParser> { 
+                new List<TokenParser> {
                     tokenParser
                 }
                 );
@@ -152,6 +152,51 @@ namespace Intent.Modules.OutputManager.TagWeaver
                         }
                     }
 
+                }
+            }
+
+            return manualParse.ToString();
+        }
+
+        public string EmbedByScope(TokenParser tokenParser, string generatedContent, string manualContent)
+        {
+
+            /* Parses things like
+              
+            //IntentManaged[void_SomeMethod]
+             
+            */
+            ContentParser p = new ContentParser(
+                new List<TokenParser> {
+                    tokenParser
+                }
+                );
+            var manualParse = p.Parse(manualContent);
+
+            if (manualParse.Tokens.Count == 0)
+            {
+                return manualContent;
+            }
+
+            var generatedParse = p.Parse(generatedContent);
+
+            if (generatedParse.Tokens.Count == 0)
+            {
+                return manualContent;
+            }
+
+            for (int ig = 0; ig < generatedParse.Tokens.Count; ig++)
+            {
+                TagToken gToken = (TagToken)generatedParse.Tokens[ig];
+                string contentToInsert = generatedParse.GetContentBetween(generatedParse.Tokens[ig], '{', '}');
+
+                for (int im = 0; im < manualParse.Tokens.Count; im++)
+                {
+                    TagToken mToken = (TagToken)manualParse.Tokens[im];
+                    if (mToken.Identifier == gToken.Identifier)
+                    {
+                        manualParse.ReplaceContentBetween(manualParse.Tokens[im], '{', '}', contentToInsert);
+                    }
                 }
             }
 

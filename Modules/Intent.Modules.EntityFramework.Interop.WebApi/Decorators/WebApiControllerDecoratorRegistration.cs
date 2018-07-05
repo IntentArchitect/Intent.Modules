@@ -18,7 +18,7 @@ namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
 
         public override object CreateDecoratorInstance(IApplication application)
         {
-            return new WebApiControllerDecorator(application.EventDispatcher);
+            return new WebApiControllerDecorator(application);
         }
     }
 }

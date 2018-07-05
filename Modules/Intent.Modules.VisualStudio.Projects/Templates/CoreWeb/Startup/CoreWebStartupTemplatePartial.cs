@@ -8,18 +8,20 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
 {
-    partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>, IHasTemplateDependencies
+    partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>, IHasTemplateDependencies, IDeclareUsings
     {
         public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.Startup";
         private readonly IList<ContainerRegistration> _registrations = new List<ContainerRegistration>();
+        private readonly IList<DbContextContainerRegistration> _dbContextRegistrations = new List<DbContextContainerRegistration>();
 
         public CoreWebStartupTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
             : base(Identifier, project, null)
         {
-            eventDispatcher.Subscribe(ApplicationEvents.Container_RegistrationRequired, Handle);
+            eventDispatcher.Subscribe(Constants.ContainerRegistrationEvent.EventId, HandleServiceRegistraiton);
+            eventDispatcher.Subscribe(Constants.ContainerRegistrationForDbContextEvent.EventId, HandleDbContextRegistration);
         }
 
-        private void Handle(ApplicationEvent @event)
+        private void HandleServiceRegistraiton(ApplicationEvent @event)
         {
             _registrations.Add(new ContainerRegistration(
                 interfaceType: @event.TryGetValue("InterfaceType"),
@@ -29,20 +31,69 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 concreteTypeTemplateDependency: @event.TryGetValue("ConcreteTypeTemplateId") != null ? TemplateDependancy.OnTemplate(@event.TryGetValue("ConcreteTypeTemplateId")) : null));
         }
 
+        private void HandleDbContextRegistration(ApplicationEvent @event)
+        {
+            _dbContextRegistrations.Add(new DbContextContainerRegistration(
+                @event.TryGetValue(ContainerRegistrationForDbContextEvent.UsingsKey),
+                @event.GetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeKey),
+                @event.TryGetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey) != null ? TemplateDependancy.OnTemplate(@event.TryGetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey)) : null,
+                @event.TryGetValue(ContainerRegistrationForDbContextEvent.OptionsKey)));
+        }
+
         public string Registrations()
         {
-            var registrations = _registrations != null && _registrations.Any()
-                ? _registrations.Select(DefineRegistration).Aggregate((x, y) => x + y)
+            string registrations = string.Empty;
+            if (_dbContextRegistrations.Any())
+            {
+                registrations += $"{Environment.NewLine}            ConfigureDbContext(services);";
+            }
+
+            registrations += _registrations.Any()
+                ? _registrations.Select(DefineServiceRegistration).Aggregate((x, y) => x + y)
                 : string.Empty;
 
             return registrations;// + Environment.NewLine + GetDecorators().Aggregate(x => x.Registrations());
         }
 
-        private string DefineRegistration(ContainerRegistration x)
+        public string Methods()
         {
-            return x.InterfaceType != null 
-                ? $"{Environment.NewLine}            services.AddTransient<{NormalizeNamespace(x.InterfaceType)}, {NormalizeNamespace(x.ConcreteType)}>();" 
-                : $"{Environment.NewLine}            services.AddTransient<{NormalizeNamespace(x.ConcreteType)}>();";
+            string methods = string.Empty;
+            if (_dbContextRegistrations.Any())
+            {
+                methods += $"{Environment.NewLine}        private void ConfigureDbContext(IServiceCollection services)";
+                methods += $"{Environment.NewLine}        {{";
+                methods += _dbContextRegistrations.Select(DefineDbContextRegistration).Aggregate((x, y) => x + y);
+                methods += $"{Environment.NewLine}        }}";
+            }
+
+            return methods;// + Environment.NewLine + GetDecorators().Aggregate(x => x.Registrations());
+        }
+
+        private string DefineServiceRegistration(ContainerRegistration x)
+        {
+            return x.InterfaceType != null
+                ? $"{Environment.NewLine}            services.{RegistrationType(x)}<{NormalizeNamespace(x.InterfaceType)}, {NormalizeNamespace(x.ConcreteType)}>();"
+                : $"{Environment.NewLine}            services.{RegistrationType(x)}<{NormalizeNamespace(x.ConcreteType)}>();";
+        }
+
+        private string DefineDbContextRegistration(DbContextContainerRegistration x)
+        {
+            return $"{Environment.NewLine}            services.AddDbContext<{NormalizeNamespace(x.ConcreteType)}>({(x.Options != null ? $"x => x{x.Options}" : string.Empty)});";
+        }
+
+        private string RegistrationType(ContainerRegistration registration)
+        {
+            switch (registration.Lifetime)
+            {
+                case Constants.ContainerRegistrationEvent.SingletonLifetime:
+                    return "AddSingleton";
+                case Constants.ContainerRegistrationEvent.PerServiceCallLifetime:
+                    return "AddScoped";
+                case Constants.ContainerRegistrationEvent.TransientLifetime:
+                    return "AddTransient";
+                default:
+                    return "AddTransient";
+            }
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -70,6 +121,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 .Union(_registrations
                     .Where(x => x.ConcreteTypeTemplateDependency != null)
                     .Select(x => x.ConcreteTypeTemplateDependency))
+                .Union(_dbContextRegistrations
+                    .Where(x => x.ConcreteTypeTemplateDependency != null)
+                    .Select(x => x.ConcreteTypeTemplateDependency))
                 .ToList();
         }
 
@@ -84,11 +138,36 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 ConcreteTypeTemplateDependency = concreteTypeTemplateDependency;
             }
 
-            public string InterfaceType { get; private set; }
-            public string ConcreteType { get; private set; }
-            public string Lifetime { get; private set; }
-            public ITemplateDependancy InterfaceTypeTemplateDependency { get; private set; }
+            public string InterfaceType { get; }
+            public string ConcreteType { get; }
+            public string Lifetime { get; }
+            public ITemplateDependancy InterfaceTypeTemplateDependency { get; }
             public ITemplateDependancy ConcreteTypeTemplateDependency { get; }
+        }
+
+        internal class DbContextContainerRegistration
+        {
+            public DbContextContainerRegistration(string usings, string concreteType, ITemplateDependancy concreteTypeTemplateDependency, string options)
+            {
+                Usings = usings;
+                ConcreteType = concreteType;
+                ConcreteTypeTemplateDependency = concreteTypeTemplateDependency;
+                Options = options;
+            }
+
+            public string Usings { get; }
+            public string ConcreteType { get; }
+            public ITemplateDependancy ConcreteTypeTemplateDependency { get; }
+            public string Options { get; }
+        }
+
+        public IEnumerable<string> DeclareUsings()
+        {
+            return _dbContextRegistrations.Select(x => x.Usings)
+                .Select(x => x.Split(';'))
+                .SelectMany(x => x)
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => x.Trim() + ";");
         }
     }
 }

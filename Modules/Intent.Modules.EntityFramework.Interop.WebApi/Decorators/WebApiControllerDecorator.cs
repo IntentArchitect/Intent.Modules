@@ -4,54 +4,60 @@ using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
 {
-    public class WebApiControllerDecorator : WebApiControllerDecoratorBase, IHasNugetDependencies
+    public class WebApiControllerDecorator : WebApiControllerDecoratorBase, IHasTemplateDependencies
     {
-        public WebApiControllerDecorator(IApplicationEventDispatcher applicationEventDispatcher)
+        private readonly IApplication _application;
+
+        public WebApiControllerDecorator(IApplication application)
         {
+            _application = application;
         }
 
         public const string Identifier = "Intent.EntityFramework.Interop.WebApi.ControllerDecorator";
 
-        public override IEnumerable<string> DeclareUsings(IServiceModel mode) => new List<string>()
-        {
-            "using Intent.Framework.Core.Context;",
-            "using Intent.Framework.EntityFramework;",
-        };
+        //public override IEnumerable<string> DeclareUsings(IServiceModel service)
+        //{
+        //    return new[] { $"using {GetDbContextTemplate().Namespace};" };
+        //}
 
-        public override string DeclarePrivateVariables(IServiceModel service) => @"
-        private readonly IDbContextFactory _dbContextFactory;
-        private readonly IContextBackingStore _contextBackingStore;";
+        public override string DeclarePrivateVariables(IServiceModel service) => $@"
+        private readonly {GetDbContextTemplate().ClassName} _dbContext;";
 
-        public override string ConstructorParams(IServiceModel service) => @"
-            , IDbContextFactory dbContextFactory
-            , IContextBackingStore contextBackingStore";
+        public override string ConstructorParams(IServiceModel service) => $@"
+            , {GetDbContextTemplate().ClassName} dbContext";
 
         public override string ConstructorInit(IServiceModel service) => @"
-            _dbContextFactory = dbContextFactory;
-            _contextBackingStore = contextBackingStore;";
-
-        public override string BeforeTransaction(IServiceModel service, IOperationModel operation) => $@"
-                using (var dbScope = new DbContextScope(_dbContextFactory, _contextBackingStore, readOnly: { operation.Stereotypes.Any(x => x.Name == "ReadOnly").ToString().ToLower() }))
-                {{";
+            _dbContext = dbContext;";
 
         public override string AfterCallToAppLayer(IServiceModel service, IOperationModel operation) => operation.Stereotypes.All(x => x.Name != "ReadOnly") ? @"
-                    dbScope.SaveChanges();" : "";
+                    _dbContext.SaveChanges();" : "";
 
-        public override string AfterTransaction(IServiceModel service, IOperationModel operation) => @"
-                }";
+        public override string OnDispose(IServiceModel service)
+        {
+            return @"
+            _dbContext.Dispose();";
+        }
+
 
         public override int Priority { get; set; } = -200;
 
-        public IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        private IHasClassDetails GetDbContextTemplate()
+        {
+            return _application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(DbContextTemplate.Identifier));
+        }
+
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
             return new[]
             {
-                NugetPackages.IntentFrameworkEntityFramework,
+                TemplateDependancy.OnTemplate(DbContextTemplate.Identifier)
             };
         }
     }

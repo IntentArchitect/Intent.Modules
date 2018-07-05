@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities</id>
-  <version>1.5.0</version>
+  <version>1.5.1</version>
   <summary>Create domain entities and related artifacts.</summary>
   <description></description>
   <authors>Intent Software</authors>
@@ -34,12 +34,17 @@
   <interoperability>
     <detect id="Intent.EntityFramework">
       <install>
-        <package id="Intent.Entities.Interop.EntityFramework" version="1.4.0"/>
+        <package id="Intent.Entities.Keys" version="1.5.1"/>
+      </install>
+    </detect>
+    <detect id="Intent.EntityFrameworkCore">
+      <install>
+        <package id="Intent.Entities.Keys" version="1.5.1"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.Common" version="1.5.1"/>
     <dependency id="Intent.Common.Types" version="1.5.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
   </dependencies>

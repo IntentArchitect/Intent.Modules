@@ -1,0 +1,116 @@
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<object>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#
+
+
+#>
+using System;
+using System.Collections.Generic;
+using Intent.Framework.Core.Context;
+using Unity.Lifetime;
+<#= DependencyUsings #>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    /// <summary>
+    /// Per request lifetime manager, ensuring that the same instance shall be resolved at any stage during a service call.
+    /// This lifetime manager requires that the ServiceCallContext is set with an approriate IContextBackingStore.
+    /// For more information, see the following article https://www.wiktorzychla.com/2013/03/unity-and-http-per-request-lifetime.html
+    /// </summary>
+    public class <#= ClassName #> : LifetimeManager
+    {
+        private readonly object _key = new object();
+
+        public override object GetValue(ILifetimeContainer container = null)
+        {
+            return BackingStore.GetValue(_key);
+        }
+
+        public override void SetValue(object newValue, ILifetimeContainer container = null)
+        {
+            if (newValue == null)
+            {
+                RemoveValue();
+            }
+
+            BackingStore.SetValue(_key, newValue);
+        }
+
+        public override void RemoveValue(ILifetimeContainer container = null)
+        {
+            BackingStore.RemoveValue(_key);
+        }
+
+        protected override LifetimeManager OnCreateLifetimeManager()
+        {
+            return new PerServiceCallLifetimeManager();
+        }
+
+        private static PerServiceCallLifetimeManagerBackingStore BackingStore
+        {
+            get
+            {
+                var instance = ServiceCallContext.Instance.Get<PerServiceCallLifetimeManagerBackingStore>();
+                if (instance == null)
+                {
+                    instance = new PerServiceCallLifetimeManagerBackingStore();
+                    ServiceCallContext.Instance.Set(instance);
+                }
+
+                return instance;
+            }
+        }
+
+        private class PerServiceCallLifetimeManagerBackingStore : IDisposable
+        {
+            private readonly Dictionary<object, object> _values = new Dictionary<object, object>();
+            private bool _isDisposing;
+
+            public void SetValue(object key, object value)
+            {
+                _values[key] = value;
+            }
+
+            public void RemoveValue(object key)
+            {
+                _values.Remove(key);
+            }
+
+            public object GetValue(object key)
+            {
+                _values.TryGetValue(key, out var returnValue);
+
+                return returnValue;
+            }
+
+            public void Dispose()
+            {
+                // Guard against stack overflows (if one of the values for some reason tries to dispose this)
+                if (_isDisposing)
+                {
+                    return;
+                }
+
+                _isDisposing = true;
+
+                foreach (var value in _values)
+                {
+                    var disposable = value.Value as IDisposable;
+                    disposable?.Dispose();
+                }
+            }
+        }
+    }
+}

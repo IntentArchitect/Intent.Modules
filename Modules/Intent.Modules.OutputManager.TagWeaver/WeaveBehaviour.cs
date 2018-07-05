@@ -4,6 +4,7 @@
     {
         KeepCodeInTags,
         GenerateCodeToTags,
+        GenerateCodeToScope,
         Ignore
     }
 }

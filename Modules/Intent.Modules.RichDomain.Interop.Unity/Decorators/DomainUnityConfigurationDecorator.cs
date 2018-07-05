@@ -27,7 +27,7 @@ namespace Intent.Modules.RichDomain.Interop.Unity.Decorators
         {
             return new[]
             {
-                NugetPackages.IntentFrameworkUnity
+                new NugetPackageInfo("Intent.Framework.Unity", "0.1.2-beta"), 
             };
         }
     }

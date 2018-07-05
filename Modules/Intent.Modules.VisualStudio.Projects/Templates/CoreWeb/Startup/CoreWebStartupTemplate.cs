@@ -66,16 +66,16 @@ using Microsoft.Extensions.Options;
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    public class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -88,17 +88,10 @@ using Microsoft.Extensions.Options;
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        [IntentManaged(Mode.Ignore)]
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-");
-            
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Registrations()));
-            
-            #line default
-            #line hidden
-            this.Write(@"
+            IntentConfiguredServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -111,8 +104,25 @@ using Microsoft.Extensions.Options;
 
             app.UseMvc();
         }
-    }
-}");
+
+        public void IntentConfiguredServices(IServiceCollection services) 
+        {
+            services.AddMvc();
+");
+            
+            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Registrations()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        }\r\n\r\n");
+            
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Methods()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

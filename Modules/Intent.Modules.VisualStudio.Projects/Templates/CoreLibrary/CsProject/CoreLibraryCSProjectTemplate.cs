@@ -36,7 +36,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
             this.Write(" \r\n");
             this.Write(" \r\n");
             this.Write("<Project Sdk=\"Microsoft.NET.Sdk\">\r\n\r\n  <PropertyGroup>\r\n    <TargetFramework>netc" +
-                    "oreapp2.0</TargetFramework>\r\n  </PropertyGroup>\r\n\r\n");
+                    "oreapp2.1</TargetFramework>\r\n  </PropertyGroup>\r\n\r\n");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
   if (Project.Dependencies().Any()) { 
@@ -50,7 +50,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
             
             #line default
             #line hidden
-            this.Write("    <ProjectReference Include=\"..");
+            this.Write("    <ProjectReference Include=\"..\\");
             
             #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(dependency.Name));

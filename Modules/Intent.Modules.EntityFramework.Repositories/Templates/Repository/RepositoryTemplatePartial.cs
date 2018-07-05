@@ -4,8 +4,8 @@ using Intent.MetaModel.Domain;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.Modules.Entities.DDD.Templates.RepositoryInterface;
+using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor;
-using Intent.Modules.EntityFramework.Repositories.Templates.RepositoryInterface;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
@@ -98,7 +98,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         {
             return new[]
                 {
-                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0", null),
+                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.1", null),
                 }
                 .Union(base.GetNugetDependencies())
                 .ToArray();
@@ -112,7 +112,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
                 return;
             }
 
-            Project.Application.EventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
                 { "InterfaceType", $"{contractTemplate.Namespace}.{contractTemplate.ClassName}"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" },

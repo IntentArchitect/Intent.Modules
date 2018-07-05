@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
+using System.Xml.XPath;
 using Intent.Modules.NuGet.Installer.NugetIntegration;
 using Intent.SoftwareFactory.Engine;
 using Microsoft.Build.Construction;
@@ -257,11 +259,17 @@ namespace Intent.Modules.NuGet.Installer.Managers
 
             var solutionFile = SolutionFile.Parse(solutionFilePath);
             var msbuildProjectPaths = solutionFile.ProjectsInOrder
-                .Where(x => x.ProjectType == SolutionProjectType.KnownToBeMSBuildFormat)
+                .Where(x => x.ProjectType == SolutionProjectType.KnownToBeMSBuildFormat && !IsNetCoreProject(x.AbsolutePath))
                 .Select(x => x.AbsolutePath)
                 .Union(additionalProjectFilePaths);
 
             _msbuildProjects.AddRange(msbuildProjectPaths.Select(LoadMsbuildProject).Where(x => x != null));
+        }
+
+        private bool IsNetCoreProject(string path)
+        {
+            var doc = XDocument.Load(path);
+            return doc.XPathSelectElement("Project[@Sdk]") != null;
         }
 
         private MsbuildProject LoadMsbuildProject(string project)

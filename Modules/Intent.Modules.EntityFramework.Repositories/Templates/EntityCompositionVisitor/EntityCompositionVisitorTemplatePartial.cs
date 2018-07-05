@@ -57,7 +57,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
         {
             return new[]
             {
-                new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0", null),
+                new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.1", null),
             }
             .Union(base.GetNugetDependencies())
             .ToArray();

@@ -41,13 +41,55 @@ namespace Intent.Modules.OutputManager.TagWeaver
         public string GetContentBetween(ParsedToken from, ParsedToken to)
         {
             int start = from.Index + from.Length;
-            return _buffer.ToString(start, (to.Index - start) + 1 );
+            return _buffer.ToString(start, (to.Index - start));
+        }
+
+        public string GetContentBetween(ParsedToken from, char beginChar, char endChar)
+        {
+            int start = from.Index + from.Length;
+            int end = FindScopeEnd(start, beginChar, endChar);
+            return _buffer.ToString(start, end - start);
+        }
+
+        private int FindScopeEnd(int start, char beginChar, char endChar)
+        {
+            var depth = 0;
+            var inTheGame = false;
+            var text = _buffer.ToString();
+            for (int i = start; i < text.Length; i++)
+            {
+                if (text[i] == beginChar)
+                {
+                    depth++;
+                    inTheGame = true;
+                    continue;
+                }
+                if (text[i] == endChar)
+                {
+                    depth--;
+                }
+
+                if (inTheGame && depth == 0)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
 
         public void ReplaceContentBetween(ParsedToken from, ParsedToken to, string newContent)
         {
             int start = from.Index + from.Length;
-            int end = (to.Index - start) + 1;
+            int end = (to.Index - start);
+            RemoveContent(start, end);
+            AppendContent(newContent, start);
+        }
+
+        public void ReplaceContentBetween(ParsedToken from, char beginChar, char endChar, string newContent)
+        {
+            int start = from.Index + from.Length;
+            int end = FindScopeEnd(start, beginChar, endChar) - start;
             RemoveContent(start, end);
             AppendContent(newContent, start);
         }

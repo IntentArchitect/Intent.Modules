@@ -11,7 +11,7 @@ namespace Intent.Modules.Unity
             .BlockAddingOfAllFiles();
         public static NugetPackageInfo UnityAspNetWebApi = new NugetPackageInfo("Unity.AspNet.WebApi", "4.0.1", "net452")
             .BlockAddingOfAllFiles();
-        public static NugetPackageInfo IntentFrameworkUnity = new NugetPackageInfo("Intent.Framework.Unity", "0.1.2-beta", "net45");
+        public static NugetPackageInfo IntentFrameworkCore = new NugetPackageInfo("Intent.Framework.Core", "1.0.0", "net45");
 
     }
 }

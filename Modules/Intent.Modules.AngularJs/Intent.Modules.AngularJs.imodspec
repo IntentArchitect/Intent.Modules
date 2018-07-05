@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AngularJs</id>
-  <version>1.3.0</version>
+  <version>1.4.0</version>
   <summary>NB! Research Module - AngularJs view pattern using ui-router, implemented with Typescript</summary>
   <description>NB! Research Module - AngularJs view pattern using ui-router, implemented with Typescript</description>
   <authors>Intent Software</authors>
@@ -30,7 +30,7 @@
     <dependency id="Intent.Bower" version="1.3.0"/>
     <dependency id="Intent.Common" version="1.5.0"/>
     <dependency id="Intent.Typescript.Config" version="1.3.0"/>
-    <dependency id="Intent.OutputTransformer.TagWeaving" version="1.3.0"/>
+    <dependency id="Intent.OutputTransformer.TagWeaver" version="1.5.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

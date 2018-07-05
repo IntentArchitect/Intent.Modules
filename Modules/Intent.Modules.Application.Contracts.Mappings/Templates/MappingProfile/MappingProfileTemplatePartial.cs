@@ -6,10 +6,12 @@ using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common.Plugins;
+using Intent.Modules.Constants;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
-    partial class MappingProfileTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, ITemplate, IHasNugetDependencies
+    partial class MappingProfileTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.Application.Contracts.Mapping.Profile";
         public const string ContractTemplateDependancyId = "ContractTemplateDependancyId";
@@ -62,6 +64,20 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
                 className: "DtoProfile",
                 @namespace: "${Project.ProjectName}"
                 );
+        }
+
+        public void BeforeTemplateExecution()
+        {
+            Project.Application.EventDispatcher.Publish(InitializationRequiredEvent.EventId, new Dictionary<string, string>()
+            {
+                { InitializationRequiredEvent.UsingsKey, $@"using {Namespace};" },
+                { InitializationRequiredEvent.CallKey, $"InitializeMapper();" },
+                { InitializationRequiredEvent.MethodKey, $@"
+        void InitializeMapper()
+        {{
+           AutoMapper.Mapper.Initialize(x => x.AddProfile(new {ClassName}()));
+        }}" }
+            });
         }
 
         private string ToPascalCasePath(string path)

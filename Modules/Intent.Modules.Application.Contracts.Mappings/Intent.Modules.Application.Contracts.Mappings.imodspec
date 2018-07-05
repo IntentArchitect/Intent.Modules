@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.Contracts.Mappings</id>
-  <version>1.5.0</version>
+  <version>1.5.1</version>
   <summary>Creates application service contract mappings.</summary>
   <description></description>
   <authors>Intent Software</authors>
@@ -23,7 +23,7 @@
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.Common" version="1.5.1"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
   </dependencies>
   <files>

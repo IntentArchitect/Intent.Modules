@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
@@ -7,7 +8,7 @@ using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
 {
-    partial class WebApiServiceCallContextTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IRequiresPreProcessing
+    partial class WebApiServiceCallContextTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.AspNet.WebApi.ServiceCallContext";
 
@@ -43,12 +44,24 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
             .ToArray();
         }
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
                 { "InterfaceType", $"Intent.Framework.Core.Context.IContextBackingStore"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" }
+            });
+
+            Project.Application.EventDispatcher.Publish(InitializationRequiredEvent.EventId, new Dictionary<string, string>()
+            {
+                { InitializationRequiredEvent.UsingsKey, $@"using Intent.Framework.Core.Context;
+using {Namespace};" },
+                { InitializationRequiredEvent.CallKey, $"InitializeServiceCallContext();" },
+                { InitializationRequiredEvent.MethodKey, $@"
+        void InitializeServiceCallContext()
+        {{
+            ServiceCallContext.SetBackingStore(new {ClassName}());
+        }}" }
             });
         }
     }

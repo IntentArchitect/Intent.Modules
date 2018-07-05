@@ -62,7 +62,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagToken.cs" />
     <Compile Include="TagType.cs" />
-    <Compile Include="TagWeavingOMP.cs" />
+    <Compile Include="TagWeavingExtension.cs" />
     <Compile Include="TokenParser.cs" />
     <Compile Include="TokenParsers\CSCommentCodeGenParsedToken.cs" />
     <Compile Include="TokenParsers\CSCommentCodeGenTokenParser.cs" />

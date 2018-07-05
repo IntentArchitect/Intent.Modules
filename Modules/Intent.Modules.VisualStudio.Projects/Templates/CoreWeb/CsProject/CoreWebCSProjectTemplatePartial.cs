@@ -1,12 +1,15 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Xml.Linq;
+using System.Xml.XPath;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 {
-    partial class CoreWebCSProjectTemplate : IntentProjectItemTemplateBase<object>, ITemplate
+    partial class CoreWebCSProjectTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IProjectTemplate
     {
         public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.CSProject";
 
@@ -22,6 +25,30 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var doc = LoadOrCreate(fullFileName);
+
+            //var nugetPackages = Project
+            //    .NugetPackages()
+            //    .GroupBy(x => x.Name)
+            //    .ToDictionary(x => x.Key, x => x);
+
+            //var packageReferenceItemGroup = doc.XPathSelectElement("Project/ItemGroup[PackageReference]");
+            //if (packageReferenceItemGroup == null)
+            //{
+            //    packageReferenceItemGroup = new XElement("ItemGroup");
+            //    doc.XPathSelectElement("Project").Add(packageReferenceItemGroup);
+            //}
+
+            //foreach (var addFileBehaviour in nugetPackages)
+            //{
+            //    var existingReference = packageReferenceItemGroup.XPathSelectElement($"PackageReference[@Include='{addFileBehaviour.Key}']");
+            //    if (existingReference == null)
+            //    {
+            //        packageReferenceItemGroup.Add(new XElement("PackageReference", 
+            //            new XAttribute("Include", addFileBehaviour.Key), 
+            //            new XAttribute("Version", addFileBehaviour.Value.OrderByDescending(x => x.Version).First().Version)));
+            //    }
+            //}
+
             return doc.ToString();
         }
 

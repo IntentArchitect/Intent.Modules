@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common</id>
-  <version>1.5.0</version>
+  <version>1.5.1</version>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>
   <authors>Intent Software</authors>
   <templates />
   <dependencies />
+  <factoryExtensions>
+    <factoryExtension id="Intent.Common.TemplateLifeCycleHooks" />
+  </factoryExtensions>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>

@@ -10,7 +10,9 @@
 <#@ import namespace="System.Diagnostics" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
-<#@ import namespace="System.Collections.Generic" #> 
+<#@ import namespace="System.Collections.Generic" #>
+using System;
+using System.Linq;
 using Intent.Framework.Core.Context;
 using Intent.Framework.Domain.Repositories;
 using Intent.Framework.EntityFramework;
@@ -24,9 +26,15 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Merge)]
 	public class <#= ClassName #> : RepositoryBase<<#= EntityInterfaceName #>, <#= EntityName #>, <#= DbContextName #>>, <#= RepositoryContractName #>
     {
-        [IntentManaged(Mode.Merge, Signature = Mode.Fully, Body = Mode.Ignore)]
-        public <#= ClassName #>(IContextBackingStore context) : base (context.Get<DbContextScope>().Get<<#= DbContextName #>>())
+        [IntentManaged(Mode.Fully)]
+        public <#= ClassName #>(<#= DbContextName #> dbContext) : base (dbContext)
         {
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public <#= EntityInterfaceName #> FindById(Guid id)
+        {
+            return CreateQuery().SingleOrDefault(x => x.Id == id);
         }
     }
 }

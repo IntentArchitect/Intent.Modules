@@ -49,7 +49,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Full Stack ASP.NET Core WebApi\content\%24{field_application.name}.application.config" />
+    <None Include="Full Stack ASP.NET Core WebApi\content\modules.config" />
     <None Include="Full Stack ASP.NET WebApi\content\%24{field_application.name}.application.config" />
+    <Content Include="Full Stack ASP.NET Core WebApi\description.html" />
+    <Content Include="Full Stack ASP.NET Core WebApi\metadata.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Full Stack ASP.NET WebApi\description.html" />
     <Content Include="Full Stack ASP.NET WebApi\metadata.xml">
       <SubType>Designer</SubType>
@@ -84,6 +90,7 @@ $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentAr
 $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Empty Visual Studio\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 REM $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)AngularJS Web Application\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Full Stack ASP.NET WebApi\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+$(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Full Stack ASP.NET Core WebApi\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

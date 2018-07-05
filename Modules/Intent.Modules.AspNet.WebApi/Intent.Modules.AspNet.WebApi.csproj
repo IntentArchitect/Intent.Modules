@@ -60,6 +60,7 @@
     <Compile Include="Decorators\WebApiConfigJsonValidationDecorator.cs" />
     <Compile Include="Decorators\WebApiWebApiControllerExceptionHandlingStrategy.cs" />
     <Compile Include="Decorators\WebApiOwinStartupDecorator.cs" />
+    <Compile Include="Templates\OwinWebApiConfig\OwinWebApiConfigTemplateRegistration.cs" />
     <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.cs">
       <DependentUpon>RequireHttpsMiddlewareTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -107,7 +108,7 @@
   <ItemGroup>
     <None Include="Intent.Modules.AspNet.WebApi.imodspec" />
     <None Include="Intent.Modules.AspNet.WebApi.nuspec" />
-    <None Include="MetaData\Services\Intent.WebApi.services.pkg.config" />
+    <None Include="MetaData\Services\Intent.AspNet.WebApi.services.pkg.config" />
     <None Include="packages.config" />
     <None Include="Templates\Services.ttinclude" />
     <None Include="Templates\Controller\WebApiControllerTemplate.tt">
@@ -165,6 +166,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="MetaData\Services\Stereotypes\Http.xml">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiServiceCallContextTemplate.cs</LastGenOutput>

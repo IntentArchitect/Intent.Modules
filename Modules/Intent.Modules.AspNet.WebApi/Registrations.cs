@@ -22,7 +22,6 @@ namespace Intent.Modules.AspNet.WebApi
 
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            RegisterTemplate(OwinWebApiConfigTemplate.Identifier, project => new OwinWebApiConfigTemplate(project));
             RegisterTemplate(HttpExceptionHandlerTemplate.Identifier, project => new HttpExceptionHandlerTemplate(project, application.EventDispatcher));
             RegisterTemplate(WebApiBadHttpRequestExceptionTemplate.Identifier, project => new WebApiBadHttpRequestExceptionTemplate(project));
             RegisterTemplate(RequireHttpsMiddlewareTemplate.Identifier, project => new RequireHttpsMiddlewareTemplate(project));

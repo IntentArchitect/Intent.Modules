@@ -47,7 +47,7 @@ namespace Intent.Modules.UserContext.Templates.UserContextProvider
         public void PreProcess()
         {
             var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(UserContextInterfaceTemplate.Identifier);
-            _eventDispatcher.Publish(ApplicationEvents.Container_RegistrationRequired, new Dictionary<string, string>()
+            _eventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
                 { "InterfaceType", $"Intent.Framework.Core.Context.IUserContextProvider<{contractTemplate.FullTypeName()}>" },
                 { "ConcreteType",  this.FullTypeName() }

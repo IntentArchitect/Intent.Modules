@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.Templates.DomainEntity
 {
-    partial class DomainEntityTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityDecoratorBase>
+    partial class DomainEntityTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityDecoratorBase>, IPostTemplateCreation
     {
         public const string Identifier = "Intent.Entities.DomainEntity";
         private IEnumerable<DomainEntityDecoratorBase> _decorators;
@@ -19,6 +22,11 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetaData(Id, new TemplateVersion(1, 0)));
+        }
+
+        public void Created()
+        {
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityTemplate.Identifier, nameof(ICollection)));
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AspNetCore.WebApi</id>
-  <version>1.5.0</version>
+  <version>1.5.1</version>
   <summary>ASP.NET Core Web API distribution pattern for services.</summary>
   <description>ASP.NET Core Web API distribution pattern for services.</description>
   <authors>Intent Software</authors>
@@ -15,6 +15,9 @@
         <add key="Namespace" description="Namespace" default="${Project.Name}.Controllers" />
       </config>
     </template>
+    <template id="Intent.AspNetCore.WebApi.ServiceCallContext">
+      <role>Distribution.WebApi</role>
+    </template>
   </templates>
   <decorators>
   </decorators>
@@ -27,4 +30,7 @@
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
+  <metadata>
+    <install target="Services" src="MetaData\Services"/>
+  </metadata>
 </package>
