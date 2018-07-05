@@ -51,7 +51,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return UseLazyLoadingProxies
+            return (UseLazyLoadingProxies
                 ? new[]
                 {
                     NugetPackages.EntityFrameworkCore,
@@ -60,7 +60,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
                 : new[]
                 {
                     NugetPackages.EntityFrameworkCore,
-                }
+                })
             .Union(base.GetNugetDependencies())
             .ToArray();
         }
