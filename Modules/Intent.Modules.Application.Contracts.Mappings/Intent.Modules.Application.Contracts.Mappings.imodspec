@@ -2,8 +2,8 @@
 <package>
   <id>Intent.Application.Contracts.Mappings</id>
   <version>1.5.1</version>
-  <summary>Creates application service contract mappings.</summary>
-  <description></description>
+  <summary>Creates mapping configuration and extension methods using Automapper.</summary>
+  <description>Creates mapping configuration and extension methods using Automapper.</description>
   <authors>Intent Software</authors>
   <templates>    
     <template id="Intent.Application.Contracts.Mapping" enabled="true">

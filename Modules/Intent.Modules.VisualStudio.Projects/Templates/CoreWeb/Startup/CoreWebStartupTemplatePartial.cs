@@ -55,6 +55,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
         {
             var configurations = _initializations.Select(x => x.Code).ToList();
 
+            if (!configurations.Any())
+            {
+                return string.Empty;
+            }
+
             const string tabbing = "            ";
             return Environment.NewLine +
                    configurations
