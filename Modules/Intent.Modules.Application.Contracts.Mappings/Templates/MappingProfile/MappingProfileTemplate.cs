@@ -54,8 +54,15 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             
             #line default
             #line hidden
-            this.Write(" : Profile\r\n    {\r\n\t\r\n        protected override void  Configure()\r\n        {\t\t\r\n" +
-                    "\t\t\t//using the default() to help the compiler to understand the overloading\t\r\n");
+            this.Write(" : Profile\r\n    {\r\n\t\r\n        public ");
+            
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write("()\r\n        {\t\t\r\n\t\t\t//using the default() to help the compiler to understand the " +
+                    "overloading\t\r\n");
             
             #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
  foreach (var model in Model) {
