@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Intent.MetaModel.Domain;
 using Intent.MetaModel.Service;
 using Intent.MetaModel.DTO;
+using Intent.MetaModel.Enums;
 
 namespace Intent.SoftwareFactory
 {
@@ -24,6 +25,11 @@ namespace Intent.SoftwareFactory
         public static IEnumerable<IDTOModel> GetDTOModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metaDataIdentifier = null)
         {
             return metaDataManager.GetMetaData<IDTOModel>(new MetaDataIdentifier(metaDataIdentifier ?? "DTO")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+        }
+        
+        public static IEnumerable<IEnumModel> GetEnumModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metaDataIdentifier = null)
+        {
+            return metaDataManager.GetMetaData<IEnumModel>(new MetaDataIdentifier(metaDataIdentifier ?? "Enum")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
     }
 }
