@@ -21,7 +21,7 @@ namespace Intent.Modules.IdentityServer.Templates.AspNetIdentityModel
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class AspNetIdentityModelTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Modules.IdentityServer.Templates.AspNetIdentityModel
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 13 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
 
 
 
@@ -54,7 +54,7 @@ using IdSvr3 = IdentityServer3.Core;
 
 namespace ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 28 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -91,7 +91,7 @@ namespace ");
 
     public class ");
             
-            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 58 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DB_CONTEXT_NAME));
             
             #line default
@@ -99,7 +99,7 @@ namespace ");
             this.Write(" : IdentityDbContext<User, Role, string, IdentityUserLogin, IdentityUserRole, Ide" +
                     "ntityUserClaim>\r\n    {\r\n        public ");
             
-            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 60 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DB_CONTEXT_NAME));
             
             #line default
@@ -108,55 +108,33 @@ namespace ");
                     "lass UserStore : UserStore<User, Role, string, IdentityUserLogin, IdentityUserRo" +
                     "le, IdentityUserClaim>\r\n    {\r\n        public UserStore(");
             
-            #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 68 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DB_CONTEXT_NAME));
             
             #line default
             #line hidden
-            this.Write(@" ctx)
-            : base(ctx)
-        {
-        }
-    }
-
-    public class UserManager : UserManager<User, string>
-    {
-        public UserManager(UserStore store)
-            : base(store)
-        {
-            this.ClaimsIdentityFactory = new ClaimsFactory();
-        }
-    }
-
-    public class ClaimsFactory : ClaimsIdentityFactory<User, string>
-    {
-        public ClaimsFactory()
-        {
-            this.UserIdClaimType = IdSvr3.Constants.ClaimTypes.Subject;
-            this.UserNameClaimType = IdSvr3.Constants.ClaimTypes.PreferredUserName;
-            this.RoleClaimType = IdSvr3.Constants.ClaimTypes.Role;
-        }
-
-        public override async System.Threading.Tasks.Task<System.Security.Claims.ClaimsIdentity> CreateAsync(UserManager<User, string> manager, User user, string authenticationType)
-        {
-            var ci = await base.CreateAsync(manager, user, authenticationType);
-            if (!String.IsNullOrWhiteSpace(user.FirstName))
-            {
-                ci.AddClaim(new Claim(""given_name"", user.FirstName));
-            }
-            if (!String.IsNullOrWhiteSpace(user.LastName))
-            {
-                ci.AddClaim(new Claim(""family_name"", user.LastName));
-            }
-            return ci;
-        }
-    }
-
-    public class RoleStore : RoleStore<Role>
-    {
-        public RoleStore(");
+            this.Write(" ctx)\r\n            : base(ctx)\r\n        {\r\n        }\r\n    }\r\n\r\n    public class U" +
+                    "serManager : UserManager<User, string>\r\n    {\r\n        public UserManager(UserSt" +
+                    "ore store)\r\n            : base(store)\r\n        {\r\n            this.ClaimsIdentit" +
+                    "yFactory = new ClaimsFactory();\r\n            this.UserValidator = new UserValida" +
+                    "tor<User>(this)\r\n            {\r\n                AllowOnlyAlphanumericUserNames =" +
+                    " false\r\n            };\r\n        }\r\n    }\r\n\r\n    public class ClaimsFactory : Cla" +
+                    "imsIdentityFactory<User, string>\r\n    {\r\n        public ClaimsFactory()\r\n       " +
+                    " {\r\n            this.UserIdClaimType = IdSvr3.Constants.ClaimTypes.Subject;\r\n   " +
+                    "         this.UserNameClaimType = IdSvr3.Constants.ClaimTypes.PreferredUserName;" +
+                    "\r\n            this.RoleClaimType = IdSvr3.Constants.ClaimTypes.Role;\r\n        }\r" +
+                    "\n\r\n        public override async System.Threading.Tasks.Task<System.Security.Cla" +
+                    "ims.ClaimsIdentity> CreateAsync(UserManager<User, string> manager, User user, st" +
+                    "ring authenticationType)\r\n        {\r\n            var ci = await base.CreateAsync" +
+                    "(manager, user, authenticationType);\r\n            if (!String.IsNullOrWhiteSpace" +
+                    "(user.FirstName))\r\n            {\r\n                ci.AddClaim(new Claim(\"given_n" +
+                    "ame\", user.FirstName));\r\n            }\r\n            if (!String.IsNullOrWhiteSpa" +
+                    "ce(user.LastName))\r\n            {\r\n                ci.AddClaim(new Claim(\"family" +
+                    "_name\", user.LastName));\r\n            }\r\n            return ci;\r\n        }\r\n    " +
+                    "}\r\n\r\n    public class RoleStore : RoleStore<Role>\r\n    {\r\n        public RoleSto" +
+                    "re(");
             
-            #line 109 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 113 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DB_CONTEXT_NAME));
             
             #line default
