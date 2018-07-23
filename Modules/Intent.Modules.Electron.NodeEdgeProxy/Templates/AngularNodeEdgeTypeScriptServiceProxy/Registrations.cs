@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScriptServiceProxy
 {
-    [Description("Intent.Packages.Electron.NodeEdgeProxy - Angular TypeScript Proxies")]
+    [Description(AngularNodeEdgeTypeScriptServiceProxyTemplate.Identifier)]
     public class Registrations : ModelTemplateRegistrationBase<ServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
@@ -21,15 +21,12 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
         }
 
         public override string TemplateId => AngularNodeEdgeTypeScriptServiceProxyTemplate.Identifier;
+        
         public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
         {
-            var hostingConfig = _metaDataManager.GetMetaData<HostingConfigModel>("LocalHosting").SingleOrDefault(x => x.ApplicationName == project.ApplicationName());
-
             return new AngularNodeEdgeTypeScriptServiceProxyTemplate(
                 model: model,
-                hostingConfig: hostingConfig,
-                project: project,
-                eventDispatcher: project.Application.EventDispatcher);
+                project: project);
         }
 
         public override IEnumerable<ServiceModel> GetModels(IApplication applicationManager)

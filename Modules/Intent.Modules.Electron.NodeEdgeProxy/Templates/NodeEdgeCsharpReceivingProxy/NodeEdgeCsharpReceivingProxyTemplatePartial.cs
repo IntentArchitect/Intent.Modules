@@ -1,6 +1,5 @@
 ﻿using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
-using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Unity.Templates.UnityConfig;
@@ -9,6 +8,7 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Application.Contracts;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy
 {
@@ -57,6 +57,18 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
             .ToArray();
         }
 
+        private string GetOperationCallParameters(IOperationModel o)
+        {
+            if (!o.Parameters.Any())
+            {
+                return string.Empty;
+            }
+
+            return o.Parameters
+                .Select((x, i) => $"JsonConvert.DeserializeObject<{GetTypeName(x.TypeReference)}>(methodParameters[{i}])")
+                .Aggregate((x, y) => x + ", " + y);
+        }
+
         private string GetTypeName(ITypeReference typeInfo)
         {
             var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
@@ -66,26 +78,5 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
             }
             return result;
         }
-
-        private string GetOperationReturnType(IOperationModel o)
-        {
-            if (o.ReturnType == null)
-            {
-                return "void";
-            }
-            return GetTypeName(o.ReturnType.TypeReference);
-        }
-
-        private string GetOperationCallParameters(IOperationModel o)
-        {
-            if (!o.Parameters.Any())
-            {
-                return "";
-            }
-
-            return o.Parameters.Select(x => $"payload.{x.Name}").Aggregate((x, y) => x + ", " + y);
-        }
-
-
     }
 }

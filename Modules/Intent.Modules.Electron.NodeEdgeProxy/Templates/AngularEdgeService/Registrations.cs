@@ -1,15 +1,13 @@
-﻿using Intent.MetaModel.Service;
-using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.MetaModel.Hosting;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
 {
-    [Description("Intent.Packages.Electron.NodeEdgeProxy - Angular Service")]
+    [Description(AngularEdgeServiceProviderTemplate.Identifier)]
     public class Registrations : NoModelTemplateRegistrationBase
     {
         private readonly IMetaDataManager _metaDataManager;
@@ -18,11 +16,14 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
         {
             _metaDataManager = metaDataManager;
         }
-
-        public override string TemplateId => AngularEdgeServiceTemplate.Identifier;
+        
+        public override string TemplateId => AngularEdgeServiceProviderTemplate.Identifier;
+        
         public override ITemplate CreateTemplateInstance(IProject project)
         {
-            return new AngularEdgeServiceTemplate(project);
+            var hostingConfig = _metaDataManager.GetMetaData<HostingConfigModel>("LocalHosting").SingleOrDefault(x => x.ApplicationName == project.ApplicationName());
+            
+            return new AngularEdgeServiceProviderTemplate(project, hostingConfig, project.Application.EventDispatcher);
         }
     }
 }
