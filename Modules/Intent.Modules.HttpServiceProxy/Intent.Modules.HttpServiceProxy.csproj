@@ -70,26 +70,26 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Legacy\Proxy\Registrations.cs" />
     <Compile Include="Templates\Exception\Registrations.cs" />
-    <Compile Include="Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplate.cs">
-      <DependentUpon>HttpServiceProxyAddressResolverImplementationTemplate.tt</DependentUpon>
+    <Compile Include="Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.cs">
+      <DependentUpon>HttpClientServiceImplementationTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplatePartial.cs" />
-    <Compile Include="Templates\AddressResolverImplementation\Registrations.cs" />
-    <Compile Include="Templates\AddressResolverInterface\HttpServiceProxyAddressResolverInterfaceTemplate.cs">
-      <DependentUpon>HttpServiceProxyAddressResolverInterfaceTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\AddressResolverInterface\HttpServiceProxyAddressResolverInterfaceTemplatePartial.cs" />
-    <Compile Include="Templates\AddressResolverInterface\Registrations.cs" />
+    <Compile Include="Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplatePartial.cs" />
+    <Compile Include="Templates\HttpClientServiceImplementation\Registrations.cs" />
     <Compile Include="Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.cs">
       <DependentUpon>HttpProxyInterceptorInterfaceTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplatePartial.cs" />
+    <Compile Include="Templates\HttpClientServiceInterface\Registrations.cs" />
+    <Compile Include="Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.cs">
+      <DependentUpon>HttpClientServiceInterfaceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplatePartial.cs" />
     <Compile Include="Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.cs">
       <DependentUpon>WebApiClientServiceProxyRemoteExceptionTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -108,9 +108,9 @@
   <ItemGroup>
     <None Include="Intent.Modules.HttpServiceProxy.imodspec" />
     <None Include="packages.config" />
-    <None Include="Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt">
+    <None Include="Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>HttpProxyInterceptorInterfaceTemplate.cs</LastGenOutput>
+      <LastGenOutput>HttpClientServiceInterfaceTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -135,22 +135,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Templates\AddressResolverInterface\HttpServiceProxyAddressResolverInterfaceTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>HttpServiceProxyAddressResolverInterfaceTemplate.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Templates\AddressResolverImplementation\HttpServiceProxyAddressResolverImplementationTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>HttpServiceProxyAddressResolverImplementationTemplate.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Application.Contracts.Clients\Intent.Modules.Application.Contracts.Clients.csproj">
       <Project>{96929b04-8386-4f55-b348-15a592fa7c0c}</Project>
       <Name>Intent.Modules.Application.Contracts.Clients</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HttpProxyInterceptorInterfaceTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HttpClientServiceImplementationTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

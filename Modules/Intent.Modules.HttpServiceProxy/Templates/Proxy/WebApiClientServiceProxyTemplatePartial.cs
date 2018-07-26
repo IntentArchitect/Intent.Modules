@@ -1,17 +1,16 @@
-﻿using Intent.MetaModel.Common;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts.Clients;
-using Intent.Modules.HttpServiceProxy.Templates.AddressResolverInterface;
-using Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
-using System.Collections.Generic;
-using System.Linq;
+using Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
-    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, IHasTemplateDependencies
+    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies
     {
         public const string Identifier = "Intent.HttpServiceProxy.Proxy";
 
@@ -51,16 +50,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
         {
             return new[]
             {
-                new GacAssemblyReference("System.Net.Http"),
-                new GacAssemblyReference("System.Configuration"),
-            };
-        }
-
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
-        {
-            return new List<ITemplateDependancy>
-            {
-                TemplateDependancy.OnTemplate(HttpProxyInterceptorInterfaceTemplate.Identifier),
+                new GacAssemblyReference("System.Net.Http")
             };
         }
 
@@ -103,18 +93,13 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             {
                 return $"I{Model.Name}";
             }
+
             return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
         }
 
-        private string GetInterceptorInterfaceName()
+        private string GetHttpClientServiceInterfaceName()
         {
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpProxyInterceptorInterfaceTemplate.Identifier));
-            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
-        }
-
-        private string GetAddressResolverInterfaceName()
-        {
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpServiceProxyAddressResolverInterfaceTemplate.Identifier));
+            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpClientServiceInterfaceTemplate.IDENTIFIER));
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 

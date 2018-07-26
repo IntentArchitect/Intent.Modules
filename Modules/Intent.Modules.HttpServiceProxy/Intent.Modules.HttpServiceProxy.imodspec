@@ -1,43 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
-    <id>Intent.HttpServiceProxy</id>
-    <version>1.3.1</version>
-    <summary>Http Service Proxies for described WebApi services.</summary>
-    <description>Http Service Proxies for described WebApi services.</description>
-    <authors>Intent Software</authors>
-    <projectUrl>https://intentarchitect.com/</projectUrl>
-    <tags>Http Proxy Service WebApi</tags>
-    <templates>
-        <template id="Intent.HttpServiceProxy.Exception">
-            <role>ClientServiceProxy</role>
-        </template>
-        <template id="Intent.HttpServiceProxy.InterceptorInterface">
-            <role>ClientServiceProxy</role>
-        </template>
-        <template id="Intent.HttpServiceProxy.AddressResolverInterface">
-            <role>ClientServiceProxy</role>
-        </template>
-        <template id="Intent.HttpServiceProxy.AddressResolverImplementation">
-            <role>ClientServiceProxy</role>
-        </template>
-        <template id="Intent.HttpServiceProxy.Proxy">
-            <role>ClientServiceProxy</role>
-        </template>
-        <template id="Intent.HttpServiceProxy.Proxy.Legacy">
-            <role>ClientServiceProxy</role>
-        </template>
-    </templates>
-    <decorators>
-    </decorators>
-    <interoperability>
-    </interoperability>
-    <dependencies>
-      <dependency id="Intent.Common" version="1.3.0"/>
-      <dependency id="Intent.Application.Contracts.Clients" version="1.3.1"/>
-      <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>
-    </dependencies>
-    <files>
-        <file src="bin\$configuration$\$id$.dll"/>
-        <file src="bin\$configuration$\$id$.pdb"/>
-    </files>
+  <id>Intent.HttpServiceProxy</id>
+  <version>1.3.2</version>
+  <summary>Http Service Proxies for described WebApi services.</summary>
+  <description>Http Service Proxies for described WebApi services.</description>
+  <authors>Intent Software</authors>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
+  <tags>Http Proxy Service WebApi</tags>
+  <templates>
+    <template id="Intent.HttpServiceProxy.Exception">
+      <role>ClientServiceProxy</role>
+    </template>
+    <template id="Intent.HttpServiceProxy.InterceptorInterface">
+      <role>ClientServiceProxy</role>
+    </template>
+    <template id="Intent.HttpServiceProxy.Proxy">
+      <role>ClientServiceProxy</role>
+    </template>
+    <template id="Intent.HttpServiceProxy.Proxy.Legacy">
+      <role>ClientServiceProxy</role>
+    </template>
+
+    <template id="Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementation">
+      <role>ClientServiceProxy</role>
+    </template>
+    <template id="Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface">
+      <role>ClientServiceProxy</role>
+    </template>
+
+  </templates>
+  <decorators>
+  </decorators>
+  <interoperability>
+  </interoperability>
+  <dependencies>
+    <dependency id="Intent.Common" version="1.3.0"/>
+    <dependency id="Intent.Application.Contracts.Clients" version="1.3.1"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.3.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
 </package>

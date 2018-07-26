@@ -1,0 +1,152 @@
+﻿<#@ template debug="true"  inherits="IntentRoslynProjectItemTemplateBase<object>"#>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public class <#= ClassName #> : <#= GetHttpClientServiceInterfaceName() #>
+    {
+        private static readonly object LockObject = new object();
+        private static readonly int TimeoutInSeconds;
+
+        private static bool _instantiated;
+
+        private readonly Func<<#= GetInterceptorInterfaceName() #>[]> _proxyInterceptorsProvider;
+        private readonly IDictionary<string, HttpClient> _httpClients = new Dictionary<string, HttpClient>();
+
+        static HttpClientService()
+        {
+            TimeoutInSeconds = 60;
+            if (!string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["HttpClient.Timeout.Seconds"]) &&
+                !int.TryParse(ConfigurationManager.AppSettings["HttpClient.Timeout.Seconds"], out TimeoutInSeconds))
+            {
+                throw new Exception("Could not parse 'HttpClient.Timeout.Seconds' setting in config file as int.");
+            }
+        }
+
+        public HttpClientService(Func<<#= GetInterceptorInterfaceName() #>[]> proxyInterceptorsProvider)
+        {
+            lock (LockObject)
+            {
+                if (_instantiated)
+                {
+                    throw new Exception("This service is designed to run as a singleton and has already been instantiated.");
+                }
+
+                _instantiated = true;
+            }
+
+            _proxyInterceptorsProvider = proxyInterceptorsProvider;
+        }
+
+        /// <summary>
+        /// Retrieve an existing, or otherwise lazy instantiate a new, HttpClient for a particular host/port combination
+        /// in a thread safe manner.
+        /// </summary>
+        private HttpClient GetHttpClient(string url)
+        {
+            var uri = new Uri(url);
+            var key = $"{uri.Host}.{uri.Port}";
+
+            if (_httpClients.ContainsKey(key)) // First check of double checked lock
+            {
+                return _httpClients[key];
+            }
+
+            lock (LockObject)
+            {
+                if (_httpClients.ContainsKey(key)) // Second check of double checked lock
+                {
+                    return _httpClients[key];
+                }
+
+                var httpClient = _httpClients[key] = new HttpClient
+                {
+                    BaseAddress = new Uri(uri.GetLeftPart(UriPartial.Authority)),
+                    Timeout = TimeSpan.FromSeconds(TimeoutInSeconds)
+                };
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                return httpClient;
+            }
+        }
+
+        public string GetBaseAddress(string targetApplicationName)
+        {
+            var baseUrl = ConfigurationManager.AppSettings[$"WebApiEndpointBaseUrl.{targetApplicationName}"];
+            if (string.IsNullOrWhiteSpace(baseUrl))
+            {
+                throw new Exception($"No configuration entry defined. Please add the following to the config file's appSetting section: <add key=\"WebApiEndpointBaseUrl.{targetApplicationName}\" value=\"INSERT_URL_HERE\" />");
+            }
+
+            return baseUrl;
+        }
+
+        public Task<HttpResponseMessage> PostAsJsonAsync<T>(string targetApplicationName, string requestUri, T value)
+        {
+            return PostAsJsonAsync(targetApplicationName, requestUri, value, CancellationToken.None);
+        }
+
+        public Task<HttpResponseMessage> PostAsJsonAsync<T>(string targetApplicationName, string requestUri, T value, CancellationToken cancellationToken)
+        {
+            var baseUri = new Uri(GetBaseAddress(targetApplicationName));
+            var fullRequestUri = new Uri(baseUri, requestUri);
+
+            return PostAsJsonAsync(fullRequestUri.ToString(), value, cancellationToken);
+        }
+
+        public Task<HttpResponseMessage> PostAsJsonAsync<T>(string fullRequestUri, T value)
+        {
+            return PostAsJsonAsync(fullRequestUri, value, CancellationToken.None);
+        }
+
+        public Task<HttpResponseMessage> PostAsJsonAsync<T>(string fullRequestUri, T value, CancellationToken cancellationToken)
+        {
+            // This method is an adaptation of PostAsJsonAsync(...) from the following two source files:
+            // https://github.com/aspnet/AspNetWebStack/blob/master/src/System.Net.Http.Formatting/HttpClientExtensions.cs
+            // https://github.com/dotnet/corefx/blob/master/src/System.Net.Http/src/System/Net/Http/HttpClient.cs
+
+            // A custom method was required so that interceptors can change the headers per request, particularly the
+            // authorization one, rather than just having defaults headers per HttpClient instance, by extension allowing
+            // us to keep a single instance of an HttpClient per application, as per Microsoft guidelines.
+
+            // This Github issue explains the requirement perfectly: https://github.com/dotnet/corefx/issues/23544
+
+            var httpClient = GetHttpClient(fullRequestUri);
+
+            var request = new HttpRequestMessage(
+                method: HttpMethod.Post,
+                requestUri: new Uri(fullRequestUri).PathAndQuery)
+            {
+                Content = new ObjectContent<T>(value, new JsonMediaTypeFormatter(), (MediaTypeHeaderValue)null)
+            };
+
+            foreach (var interceptor in _proxyInterceptorsProvider())
+            {
+                interceptor.BeforeRequest(request);
+            }
+
+            return httpClient.SendAsync(request, cancellationToken);
+        }
+    }
+}

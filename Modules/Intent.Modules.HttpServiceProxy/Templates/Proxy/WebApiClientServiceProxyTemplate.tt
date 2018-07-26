@@ -1,16 +1,12 @@
 ﻿<#@ template debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
-<#@ Assembly Name="System.Windows.Forms" #>
-<#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
 <#@ import namespace="Intent.MetaModel.Service" #>
-
-
 using System;
 using System.Configuration;
 using System.Linq;
@@ -18,7 +14,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 <#= DependencyUsings #>
-using Intent.CodeGen; 
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -26,41 +21,12 @@ namespace <#= Namespace #>
 {
     public class <#= ClassName #> : <#= GetServiceInterfaceName() #>
     {
-        private readonly <#= GetAddressResolverInterfaceName() #> _addressResolver;
-        private readonly <#= GetInterceptorInterfaceName() #>[] _httpProxyInterceptors;
+        private readonly <#= GetHttpClientServiceInterfaceName() #> _httpClientService;
 
-        public <#= ClassName #>(<#= GetAddressResolverInterfaceName() #> addressResolver, <#= GetInterceptorInterfaceName() #>[] httpProxyInterceptors)
+        public <#= ClassName #>(<#= GetHttpClientServiceInterfaceName() #> httpClientService)
         {
-            _addressResolver = addressResolver;
-            _httpProxyInterceptors = httpProxyInterceptors;
+            _httpClientService = httpClientService;
         }
-
-        private HttpClient CreateHttpClient()
-        {
-            var timeoutInSeconds = 60;
-            if (!string.IsNullOrWhiteSpace(ConfigurationManager.AppSettings["HttpClient.Timeout.Seconds"]) &&
-                !int.TryParse(ConfigurationManager.AppSettings["HttpClient.Timeout.Seconds"], out timeoutInSeconds))
-            {
-                throw new Exception("Could not parse 'HttpClient.Timeout.Seconds' setting in config file as int.");
-            }
-
-            var client = new HttpClient
-            {
-                BaseAddress = _addressResolver.Resolve("<#= ApplicationName #>", "/api/<#= Model.Name.Replace("Service", "").ToLower() #>/"),
-                Timeout = TimeSpan.FromSeconds(timeoutInSeconds)
-            };
-
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            foreach(var httpProxyInterceptor in _httpProxyInterceptors)
-            {
-                httpProxyInterceptor.OnCreate(client);
-            }
-
-            return client;
-        }
-
 <#
     foreach (var operation in Model.Operations)
     {
@@ -70,84 +36,83 @@ namespace <#= Namespace #>
         if (operation.ReturnType != null)
         {
 #>
+
         public async Task<<#= GetOperationReturnType(operation) #>> <#= operation.Name #>Async(<#= GetOperationDefinitionParameters(operation) #>)
         {
             return await new Task<<#= GetOperationReturnType(operation) #>>(() => <#= operation.Name #>(<#= GetOperationCallParameters(operation) #>));
         }
-
 <#
         }
         else // if (operation.ReturnType != null)
         {
 #>
+
         public async void <#= operation.Name #>Async(<#= GetOperationDefinitionParameters(operation) #>)
         {
             await new Task(() => <#= operation.Name #>(<#= GetOperationCallParameters(operation) #>));
         }
-
 <# 
         } // if (operation.HasReturnType())
 
         // Synchronous versions:
 #>
+
         public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= GetOperationDefinitionParameters(operation) #>)
         {
-            using (var client = CreateHttpClient())
+            try
             {
-                try
-                {
-                    const string requestUri = "<#= operation.Name.ToLowerInvariant() #>";
-                    
-                    var response = client.PostAsJsonAsync(
-                        requestUri: requestUri,
-                        value: new
-                        {
+                const string requestUri = "/api/<#= Model.Name.Replace("Service", "").ToLower() #>/<#= operation.Name.ToLowerInvariant() #>";
+
+                var response = _httpClientService.PostAsJsonAsync(
+                    targetApplicationName: "<#= ApplicationName #>",
+                    requestUri: requestUri,
+                    value: new
+                    {
 <#
                         foreach (var parameter in operation.Parameters)
                         {
 #>
-                            <#= parameter.Name #>,
+                        <#= parameter.Name #>,
 <#
                         } // foreach (var parameter in operation.Parameters)
 #>
-                        }).Result;
+                    }).Result;
 
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new WebApiClientServiceProxyRemoteException(
-                            response.StatusCode,
-                            response.ReasonPhrase,
-                            $"Request to {new Uri(client.BaseAddress, requestUri).AbsoluteUri} failed with status code {(int)response.StatusCode} {response.ReasonPhrase}.\n\n" +
-                            $"{response.Content.ReadAsStringAsync().Result}");
-                    }
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new WebApiClientServiceProxyRemoteException(
+                        response.StatusCode,
+                        response.ReasonPhrase,
+                        $"Request to {new Uri(new Uri(_httpClientService.GetBaseAddress("<#= ApplicationName #>")), requestUri).AbsoluteUri} failed with status code {(int)response.StatusCode} {response.ReasonPhrase}.\n\n" +
+                        $"{response.Content.ReadAsStringAsync().Result}");
+                }
 <#
             if (operation.ReturnType != null)
             {
 #>
 
-                    return response.Content.<#= GetReadAs(operation) #>.Result;
+                return response.Content.<#= GetReadAs(operation) #>.Result;
 <#
             } // if (operation.ReturnType != null)
 #>
-                }
-                catch (AggregateException aggregateException)
+            }
+            catch (AggregateException aggregateException)
+            {
+                if (aggregateException.InnerExceptions.Count == 1)
                 {
-                    if (aggregateException.InnerExceptions.Count == 1)
-                    {
-                        throw aggregateException.InnerExceptions.Single();
-                    }
-
-                    throw;
+                    throw aggregateException.InnerExceptions.Single();
                 }
+
+                throw;
             }
         }
-
 <#
     } // foreach (var operation in Model.Operations)
 #>
+
         public void Dispose()
         {
-            // NOP
+            // NOP - Required for interface implementation
         }
     }
 }

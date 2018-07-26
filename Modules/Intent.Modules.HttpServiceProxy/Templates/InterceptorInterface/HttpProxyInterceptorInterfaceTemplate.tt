@@ -20,6 +20,6 @@ namespace <#= Namespace #>
 {
     public interface <#= ClassName #>
     {
-        void OnCreate(HttpClient client);
+        void BeforeRequest(HttpRequestMessage request);
     }
 }
