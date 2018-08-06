@@ -92,7 +92,10 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             {
                 result = "List<" + result + ">";
             }
-
+            else if (typeInfo.IsNullable)
+            {
+                result = string.Format("System.Nullable<{0}>", result);
+            }
             return result;
         }
     }

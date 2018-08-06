@@ -22,12 +22,15 @@ using System.Collections.Generic;
 
 namespace <#=Namespace#>
 {
+    <#= ContractAttributes()#>
     public interface <#=ClassName#> : IDisposable
     {
 <#
     foreach (var o in Model.Operations)
     {
-#>        <#= GetOperationReturnType(o) #> <#= o.Name.ToPascalCase() #>(<#= GetOperationDefinitionParameters(o) #>);
+          
+#>        <#= OperationAttributes(o)#>
+        <#= GetOperationReturnType(o) #> <#= o.Name.ToPascalCase() #>(<#= GetOperationDefinitionParameters(o) #>);
 <#        
     }
 #>    }
