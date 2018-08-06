@@ -109,7 +109,6 @@ namespace Intent.SoftwareFactory.Templates
         {
             return new[]
             {
-#warning This OK ?
                 new NugetPackageInfo(name : "Intent.RoslynWeaver.Attributes", version : "1.0.0")
             };
         }

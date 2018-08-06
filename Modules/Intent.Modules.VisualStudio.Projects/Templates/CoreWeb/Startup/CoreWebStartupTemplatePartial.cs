@@ -13,12 +13,15 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
         public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.Startup";
         private readonly IList<ContainerRegistration> _registrations = new List<ContainerRegistration>();
         private readonly IList<DbContextContainerRegistration> _dbContextRegistrations = new List<DbContextContainerRegistration>();
+        private readonly IList<Initializations> _initializations = new List<Initializations>();
 
         public CoreWebStartupTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
             : base(Identifier, project, null)
         {
-            eventDispatcher.Subscribe(Constants.ContainerRegistrationEvent.EventId, HandleServiceRegistraiton);
-            eventDispatcher.Subscribe(Constants.ContainerRegistrationForDbContextEvent.EventId, HandleDbContextRegistration);
+            eventDispatcher.Subscribe(ContainerRegistrationEvent.EventId, HandleServiceRegistraiton);
+            eventDispatcher.Subscribe(ContainerRegistrationForDbContextEvent.EventId, HandleDbContextRegistration);
+            eventDispatcher.Subscribe(InitializationRequiredEvent.EventId, HandleInitialization);
+
         }
 
         private void HandleServiceRegistraiton(ApplicationEvent @event)
@@ -40,6 +43,32 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 @event.TryGetValue(ContainerRegistrationForDbContextEvent.OptionsKey)));
         }
 
+        private void HandleInitialization(ApplicationEvent @event)
+        {
+            _initializations.Add(new Initializations(
+                usings: @event.GetValue(InitializationRequiredEvent.UsingsKey),
+                code: @event.GetValue(InitializationRequiredEvent.CallKey),
+                method: @event.TryGetValue(InitializationRequiredEvent.MethodKey)));
+        }
+
+        public string Configurations()
+        {
+            var configurations = _initializations.Select(x => x.Code).ToList();
+
+            if (!configurations.Any())
+            {
+                return string.Empty;
+            }
+
+            const string tabbing = "            ";
+            return Environment.NewLine +
+                   configurations
+                       .Select(x => x.Trim())
+                       .Select(x => x.StartsWith("#") ? x : $"{tabbing}{x}")
+                       .Aggregate((x, y) => $"{x}{Environment.NewLine}" +
+                                            $"{y}");
+        }
+
         public string Registrations()
         {
             string registrations = string.Empty;
@@ -57,16 +86,29 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
 
         public string Methods()
         {
-            string methods = string.Empty;
+            var methods = _initializations
+                .Where(x => !string.IsNullOrWhiteSpace(x.Method))
+                .Select(x => x.Method)
+                .ToList();
             if (_dbContextRegistrations.Any())
             {
-                methods += $"{Environment.NewLine}        private void ConfigureDbContext(IServiceCollection services)";
-                methods += $"{Environment.NewLine}        {{";
-                methods += _dbContextRegistrations.Select(DefineDbContextRegistration).Aggregate((x, y) => x + y);
-                methods += $"{Environment.NewLine}        }}";
+                var dbContextRegistration = string.Empty;
+                dbContextRegistration += $"{Environment.NewLine}        private void ConfigureDbContext(IServiceCollection services)";
+                dbContextRegistration += $"{Environment.NewLine}        {{";
+                dbContextRegistration += _dbContextRegistrations.Select(DefineDbContextRegistration).Aggregate((x, y) => x + y);
+                dbContextRegistration += $"{Environment.NewLine}        }}";
+                methods.Add(dbContextRegistration);
             }
 
-            return methods;// + Environment.NewLine + GetDecorators().Aggregate(x => x.Registrations());
+            const string tabbing = "        ";
+            return Environment.NewLine +
+                   Environment.NewLine +
+                   methods
+                       .Select(x => x.Trim())
+                       .Select(x => $"{tabbing}{x}")
+                       .Aggregate((x, y) => $"{x}{Environment.NewLine}" +
+                                            $"{Environment.NewLine}" +
+                                            $"{y}");
         }
 
         private string DefineServiceRegistration(ContainerRegistration x)
@@ -127,6 +169,15 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 .ToList();
         }
 
+        public IEnumerable<string> DeclareUsings()
+        {
+            return _dbContextRegistrations.Select(x => x.Usings)
+                .Select(x => x.Split(';'))
+                .SelectMany(x => x)
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => x.Trim() + ";");
+        }
+
         internal class ContainerRegistration
         {
             public ContainerRegistration(string interfaceType, string concreteType, string lifetime, ITemplateDependancy interfaceTypeTemplateDependency, ITemplateDependancy concreteTypeTemplateDependency)
@@ -161,13 +212,18 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
             public string Options { get; }
         }
 
-        public IEnumerable<string> DeclareUsings()
+        internal class Initializations
         {
-            return _dbContextRegistrations.Select(x => x.Usings)
-                .Select(x => x.Split(';'))
-                .SelectMany(x => x)
-                .Where(x => !string.IsNullOrWhiteSpace(x))
-                .Select(x => x.Trim() + ";");
+            public string Usings { get; }
+            public string Code { get; }
+            public string Method { get; }
+
+            public Initializations(string usings, string code, string method)
+            {
+                Usings = usings;
+                Code = code;
+                Method = method;
+            }
         }
     }
 }

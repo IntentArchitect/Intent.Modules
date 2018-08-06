@@ -1,27 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Electron.NodeEdgeProxy</id>
-  <version>1.3.1</version>
+  <version>1.3.2</version>
   <summary>Creates service proxies allowing you to call C# code from within Node.js</summary>
   <description>Implements service contracts and infrastructure in both C# and TypeScript allowing C# service calls to be initiated from within a Node.js hosted Angular Application.</description>
   <authors>Intent Software</authors>
   <templates>
-    <template id="Intent.Electron.NodeEdgeProxy.AngularEdgeService">
+    <template id="Intent.Electron.NodeEdgeProxy.AngularEdgeServiceProvider">
       <role>Presentation</role>
     </template>
     <template id="Intent.Electron.NodeEdgeProxy.AngularNodeEdgeTypeScriptServiceProxy">
       <role>Presentation</role>
     </template>
     <template id="Intent.Electron.NodeEdgeProxy.CsharpReceivingProxy">
-      <role>Distribution</role>
-    </template>
-    <template id="Intent.Electron.NodeEdgeProxy.AngularEdgeService.Legacy">
-      <role>Presentation</role>
-    </template>
-    <template id="Intent.Electron.NodeEdgeProxy.AngularNodeEdgeTypeScriptServiceProxy.Legacy">
-      <role>Presentation</role>
-    </template>
-    <template id="Intent.Electron.NodeEdgeProxy.CsharpReceivingProxy.Legacy">
       <role>Distribution</role>
     </template>
   </templates>

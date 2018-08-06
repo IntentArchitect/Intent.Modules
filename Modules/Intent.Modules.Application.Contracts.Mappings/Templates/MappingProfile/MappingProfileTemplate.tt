@@ -22,7 +22,7 @@ namespace <#= Namespace #>
     public class <#=ClassName#> : Profile
     {
 	
-        protected override void  Configure()
+        public <#= ClassName #>()
         {		
 			//using the default() to help the compiler to understand the overloading	
 <# foreach (var model in Model) {#>

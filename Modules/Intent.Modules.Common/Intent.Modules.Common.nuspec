@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Intent.Modules.Common</id>
-    <version>1.5.0</version>
+    <version>1.5.1</version>
     <title>Intent - Modules Common</title>
     <authors>Intent Architect</authors>
     <owners>Intent Architect</owners>
@@ -11,8 +11,7 @@
     <iconUrl>https://intentarchitect.com/assets/images/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Base classes and helpers for building your own modules for Intent Architect.</description>
-    <releaseNotes>
-    </releaseNotes>
+    <releaseNotes>Make enum metadata available.</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>Intent Architect Software Factory SDK Modules Common</tags>
     <dependencies>

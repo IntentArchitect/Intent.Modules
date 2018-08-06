@@ -11,26 +11,18 @@ using Intent.Modules.Typescript.ServiceAgent.Contracts;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScriptServiceProxy
 {
-    partial class AngularNodeEdgeTypeScriptServiceProxyTemplate : IntentProjectItemTemplateBase<ServiceModel>, ITemplate, IRequiresPreProcessing
+    partial class AngularNodeEdgeTypeScriptServiceProxyTemplate : IntentProjectItemTemplateBase<ServiceModel>, ITemplate
     {
         public const string Identifier = "Intent.Electron.NodeEdgeProxy.AngularNodeEdgeTypeScriptServiceProxy";
 
-        private readonly HostingConfigModel _hostingConfig;
-        private readonly IApplicationEventDispatcher _eventDispatcher;
-
-        public AngularNodeEdgeTypeScriptServiceProxyTemplate(ServiceModel model, HostingConfigModel hostingConfig, IProject project, IApplicationEventDispatcher eventDispatcher)
+        public AngularNodeEdgeTypeScriptServiceProxyTemplate(ServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
-            _hostingConfig = hostingConfig;
-            _eventDispatcher = eventDispatcher;
-            var recevingProxyProject = project.Application.FindProjectWithTemplateInstance(NodeEdgeCsharpReceivingProxyTemplate.Identifier, model);
-            AssemblyName = recevingProxyProject.Name;
+            var receivingProxyProject = project.Application.FindProjectWithTemplateInstance(NodeEdgeCsharpReceivingProxyTemplate.Identifier, model);
+            AssemblyName = receivingProxyProject.Name;
         }
 
         public string Namespace => "App.Proxies";
-        public string SolutionName => Project.Application.SolutionName;
-        public string ApplicationName => Project.Application.ApplicationName;
-        public string ApiBasePathConfigKey => $"{Project.Application.SolutionName}_{Project.ApplicationName()}_api_basepath".ToLower();
         public string AssemblyName { get; }
         public string TypeName => $"{AssemblyName}.{Model.Name}NodeEdgeProxy";
 
@@ -41,17 +33,26 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name}Proxy",
                 fileExtension: "ts",
-                defaultLocationInProject: $@"wwwroot\App\Proxies\Generated"
-                );
+                defaultLocationInProject: $@"wwwroot\App\Proxies\Generated");
         }
 
-        public void PreProcess()
+        private string GetReturnType(IOperationModel operation)
         {
-            _eventDispatcher.Publish(ApplicationEvents.AngularJs_ConfigurationRequired, new Dictionary<string, string>()
+            return operation.ReturnType != null
+                ? this.ConvertType(operation.ReturnType.TypeReference)
+                : "void";
+        }
+
+        private static string GetMethodCallParameters(IOperationModel operation)
+        {
+            if (operation.Parameters == null || !operation.Parameters.Any())
             {
-                { "Key", ApiBasePathConfigKey },
-                { "Value", _hostingConfig?.GetBaseUrl() ?? "" }
-            });
+                return string.Empty;
+            }
+
+            return ", " + operation.Parameters
+                .Select(x => x.Name.ToCamelCase())
+                .Aggregate((x, y) => $"{x}, {y}");
         }
 
         private string GetMethodDefinitionParameters(IOperationModel operation)

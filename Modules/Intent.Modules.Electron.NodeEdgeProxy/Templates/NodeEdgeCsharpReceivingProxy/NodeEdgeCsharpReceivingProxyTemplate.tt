@@ -1,21 +1,15 @@
 ﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<ServiceModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
-<#@ Assembly Name="System.Windows.Forms" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
 <#@ import namespace="Intent.MetaModel.Service" #>
-<#@ import namespace="System" #>
-<#@ import namespace="System.IO" #>
-<#@ import namespace="System.Diagnostics" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Collections" #>
-<#@ import namespace="System.Collections.Generic" #> 
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System;
-using System.Threading.Tasks;
 <#=DependencyUsings#>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -42,38 +36,28 @@ namespace <#= Namespace #>
             {
                 try
                 {
-                    var operationName = (string)input.operationName;
-            
-                    switch (operationName)
+                    var methodName = (string)input.methodName;
+                    var methodParameters = ((object[]) input.methodParameters).Select(x => (string) x).ToArray();
+                    AsyncAwaitOperationContext.SetHeaders(((IEnumerable<dynamic>)input.headers).ToDictionary(x => (string)x.name, x => (string)x.value));
+
+                    switch (methodName)
                     {
 <#
                         // An exception gets thrown if "null" is returned, so we always wrap everthing up in an object and 
-                        // then on the receiving side we always just read the "response" property. 
+                        // then on the receiving side we always read the "response" property as necessary. 
                         foreach(var operation in Model.Operations)
                         {
 #>
                         case nameof(<#= operation.Name #>):
-<#
-                            if (operation.ReturnType != null)
-                            {
-#>
                             return JsonConvert.SerializeObject(new
                             {
-                                Response = (object) <#= operation.Name #>(JsonConvert.DeserializeObject<<#= operation.Name #>Payload>((string)input.payload))
+                                Response = <#= operation.Name #>(methodParameters)
                             }, _jsonSerializerSettings);
 <#
-                            }
-                            else
-                            {
-#>
-                            <#= operation.Name #>(JsonConvert.DeserializeObject<<#= operation.Name #>Payload>((string)input.payload));
-                            return new { Response = (object) null };
-<#
-                            } // if (operation.HasReturnType())
                         } // foreach(var operation in Model.Operations)
 #>
                         default:
-                            throw new Exception($"Unknown operation: {operationName}");
+                            throw new Exception($"Unknown method: {methodName}");
                     }
                 }
                 catch (Exception e)
@@ -91,39 +75,27 @@ namespace <#= Namespace #>
 <#
         foreach(var operation in Model.Operations)
         {
-            Action getMethodCallParameters = () => GetOperationCallParameters(operation);
 #>
 
-        public class <#= operation.Name #>Payload
+        private object <#= operation.Name #>(string[] methodParameters)
         {
 <#
-            foreach (var parameter in operation.Parameters)
-            {
-#>
-            public <#= GetTypeName(parameter.TypeReference) #> <#= parameter.Name #> { get; set; }
-<#
-            }
-#>
-        }
-<# 
             if (operation.ReturnType != null)
             {
 #>
-        private <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= operation.Name #>Payload payload)
-        {
             return _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
-        }
 <#
             }
             else
             {
 #>
-        private void <#= operation.Name #>(<#= operation.Name #>Payload payload)
-        {
             _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
-        }
+            return null;
 <#
             }
+#>
+        }
+<#
         }
 #>
     }

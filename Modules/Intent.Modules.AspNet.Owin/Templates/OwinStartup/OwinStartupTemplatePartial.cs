@@ -21,7 +21,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
     {
         public const string Identifier = "Intent.Owin.OwinStartup";
         private IEnumerable<IOwinStartupDecorator> _decorators;
-        private IList<Initializations> _initializations = new List<Initializations>();
+        private readonly IList<Initializations> _initializations = new List<Initializations>();
 
         public OwinStartupTemplate(IProject project)
             : base(Identifier, project)

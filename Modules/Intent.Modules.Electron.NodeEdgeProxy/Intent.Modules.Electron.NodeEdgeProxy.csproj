@@ -55,29 +55,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.cs">
-      <DependentUpon>AngularNodeEdgeTypeScriptServiceProxyTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplatePartial.cs" />
-    <Compile Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\Registrations.cs" />
-    <Compile Include="Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.cs">
-      <DependentUpon>NodeEdgeCsharpReceivingProxyTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplatePartial.cs" />
-    <Compile Include="Legacy\NodeEdgeCsharpReceivingProxy\Registrations.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\AngularEdgeService\Registrations.cs" />
-    <Compile Include="Templates\AngularEdgeService\AngularEdgeServiceTemplate.cs">
-      <DependentUpon>AngularEdgeServiceTemplate.tt</DependentUpon>
+    <Compile Include="Templates\AngularEdgeService\AngularEdgeServiceProviderTemplate.cs">
+      <DependentUpon>AngularEdgeServiceProviderTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\AngularEdgeService\AngularEdgeServiceTemplatePartial.cs" />
+    <Compile Include="Templates\AngularEdgeService\AngularEdgeServiceProviderTemplatePartial.cs" />
     <Compile Include="Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.cs">
       <DependentUpon>AngularNodeEdgeTypeScriptServiceProxyTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -121,17 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Electron.NodeEdgeProxy.imodspec" />
-    <None Include="Legacy\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt">
+    <Content Include="Templates\AngularEdgeService\AngularEdgeServiceProviderTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>AngularNodeEdgeTypeScriptServiceProxyTemplate.cs</LastGenOutput>
-    </None>
-    <None Include="Legacy\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>NodeEdgeCsharpReceivingProxyTemplate.cs</LastGenOutput>
-    </None>
-    <Content Include="Templates\AngularEdgeService\AngularEdgeServiceTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>AngularEdgeServiceTemplate.cs</LastGenOutput>
+      <LastGenOutput>AngularEdgeServiceProviderTemplate.cs</LastGenOutput>
     </Content>
     <None Include="packages.config" />
     <None Include="Templates\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt">

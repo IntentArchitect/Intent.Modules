@@ -77,6 +77,10 @@ namespace <#= Namespace #>
             : base(store)
         {
             this.ClaimsIdentityFactory = new ClaimsFactory();
+            this.UserValidator = new UserValidator<User>(this)
+            {
+                AllowOnlyAlphanumericUserNames = false
+            };
         }
     }
 

@@ -103,21 +103,24 @@ using Microsoft.Extensions.Options;
             }
 
             app.UseMvc();
-        }
-
-        public void IntentConfiguredServices(IServiceCollection services) 
-        {
-            services.AddMvc();
 ");
             
-            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Configurations()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        }\r\n\r\n        public void IntentConfiguredServices(IServiceCollection se" +
+                    "rvices) \r\n        {\r\n            services.AddMvc();\r\n");
+            
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Registrations()));
             
             #line default
             #line hidden
             this.Write("\r\n        }\r\n\r\n");
             
-            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Methods()));
             
             #line default
