@@ -16,10 +16,14 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         private readonly string _dtoTemplateId;
         public const string Identifier = "Intent.Application.Contracts.ServiceContract";
 
+        private readonly DecoratorDispatcher<IServiceContractAttributeDecorator> _decoratorDispatcher;
+
         public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = Identifier, string dtoTemplateId = DTOTemplate.Identifier)
             : base(identifier, project, model)
         {
             _dtoTemplateId = dtoTemplateId;
+
+            _decoratorDispatcher = new DecoratorDispatcher<IServiceContractAttributeDecorator>(project.ResolveDecorators<IServiceContractAttributeDecorator>);
         }
 
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
@@ -52,6 +56,16 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         }
 
         public string FolderBasedNamespace => string.Join(".", new[] { Project.Name }.Concat(GetNamespaceParts()));
+
+        public string ContractAttributes()
+        {
+            return _decoratorDispatcher.Dispatch(x => x.ContractAttributes(Model));
+        }
+
+        public string OperationAttributes(IOperationModel operation)
+        {
+            return _decoratorDispatcher.Dispatch(x => x.OperationAttributes(Model, operation));
+        }
 
         private IEnumerable<string> GetNamespaceParts()
         {
@@ -86,6 +100,10 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             if (typeInfo.IsCollection)
             {
                 result = "List<" + result + ">";
+            }
+            else if (typeInfo.IsNullable)
+            {
+                result = string.Format("System.Nullable<{0}>", result);
             }
             return result;
         }
