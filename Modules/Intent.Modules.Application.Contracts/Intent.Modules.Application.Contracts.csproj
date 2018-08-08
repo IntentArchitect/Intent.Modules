@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Application.Contracts.imodspec" />
+    <None Include="MetaData\DataContracts\Intent.Modules.Application.Contracts.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +95,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="MetaData\DataContracts\Stereotypes\DataContract.xml" />
     <Content Include="Templates\DTO\DTOTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DTOTemplate.cs</LastGenOutput>
