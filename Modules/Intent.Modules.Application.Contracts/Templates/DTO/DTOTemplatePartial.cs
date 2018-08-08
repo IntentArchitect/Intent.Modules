@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
@@ -10,7 +11,7 @@ using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
-    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasAssemblyDependencies
+    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasAssemblyDependencies, IHasDecorators<IDTOAttributeDecorator>
     {
         public const string Identifier = "Intent.Application.Contracts.DTO";
         public const string NAMESPACE_CONFIG_KEY = "Namespace";
@@ -97,6 +98,11 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
                 result = string.Format("System.Nullable<{0}>", result);
             }
             return result;
+        }
+
+        public IEnumerable<IDTOAttributeDecorator> GetDecorators()
+        {
+            return _decoratorDispatcher.GetDecorators();
         }
     }
 }
