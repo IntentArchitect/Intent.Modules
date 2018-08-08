@@ -33,5 +33,6 @@
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
   <metadata>
+    <install target="DataContracts" src="MetaData\DataContracts"/>
   </metadata>
 </package>
