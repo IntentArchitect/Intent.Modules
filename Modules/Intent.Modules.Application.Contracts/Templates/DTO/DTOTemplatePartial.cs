@@ -69,6 +69,11 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public string FolderBasedNamespace => string.Join(".", new[] { Project.Name }.Concat(GetNamespaceParts()));
 
+        public IEnumerable<IDTOAttributeDecorator> GetDecorators()
+        {
+            return _decoratorDispatcher.GetDecorators();
+        }
+
         private IEnumerable<string> GetNamespaceParts()
         {
             return Model
@@ -98,11 +103,6 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
                 result = string.Format("System.Nullable<{0}>", result);
             }
             return result;
-        }
-
-        public IEnumerable<IDTOAttributeDecorator> GetDecorators()
-        {
-            return _decoratorDispatcher.GetDecorators();
         }
 
         private string GetCollectionTypeFormatConfig()
