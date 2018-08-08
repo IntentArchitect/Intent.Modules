@@ -105,13 +105,23 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
             if (typeInfo.IsCollection)
             {
-                result = "List<" + result + ">";
+                result = string.Format(GetCollectionTypeFormatConfig(), result);
             }
             else if (typeInfo.IsNullable)
             {
                 result = string.Format("System.Nullable<{0}>", result);
             }
             return result;
+        }
+
+        private string GetCollectionTypeFormatConfig()
+        {
+            var format = FileMetaData.CustomMetaData["Collection Type Format"];
+            if (string.IsNullOrEmpty(format))
+            {
+                throw new Exception("Collection Type Format not specified in module configuration");
+            }
+            return format;
         }
     }
 }
