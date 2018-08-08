@@ -10,6 +10,7 @@
       <role>Application.Contracts</role>
       <config>
         <add key="Namespace" description="Create the class within the specified namespace" default="${FolderBasedNamespace}" />
+        <add key="Collection Type Format" description="Specify the equivalent format like you would in a string.Format() call in C# for collection types. Example: '{0}[]' for arrays or 'List&lt;{0}&gt;' for a generic list" default="List&lt;{0}&gt;" />
       </config>
     </template>
     <template id="Intent.Application.Contracts.ServiceContract">
