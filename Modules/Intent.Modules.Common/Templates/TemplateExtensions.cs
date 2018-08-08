@@ -21,7 +21,7 @@ namespace Intent.SoftwareFactory.Templates
                 .Union(
                     template.GetAllDeclareUsing()
                     .Where(x => !string.IsNullOrWhiteSpace(x))
-                    .Select(x => $"{x}")
+                    .Select(x => $"using {x};")
                 )
                 .Except(namespacesToIgnore.Select(x => $"using {x};"))
                 .Distinct();

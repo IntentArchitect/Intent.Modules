@@ -8,10 +8,11 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
-    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
+    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
     {
         private readonly string _dtoTemplateId;
         public const string Identifier = "Intent.Application.Contracts.ServiceContract";
@@ -42,6 +43,11 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+        }
+
+        public IEnumerable<IServiceContractAttributeDecorator> GetDecorators()
+        {
+            return _decoratorDispatcher.GetDecorators();
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
