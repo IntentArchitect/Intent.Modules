@@ -11,9 +11,6 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-<#
-#>
-
 using System;
 using System.Collections.Generic;
 <#=DependencyUsings#>
@@ -22,16 +19,31 @@ using System.Collections.Generic;
 
 namespace <#=Namespace#>
 {
+<# 
+    foreach (var line in Model.GetXmlDocLines())
+    {
+#>
+    /// <#= line #>
+<#
+    }
+#>
     <#= ContractAttributes()#>
     public interface <#=ClassName#> : IDisposable
     {
 <#
     foreach (var o in Model.Operations)
     {
-          
-#>        <#= OperationAttributes(o)#>
+        foreach (var line in o.GetXmlDocLines())
+        {
+#>
+        /// <#= line #>
+<#
+        }
+#>
+        <#= OperationAttributes(o)#>
         <#= GetOperationReturnType(o) #> <#= o.Name.ToPascalCase() #>(<#= GetOperationDefinitionParameters(o) #>);
-<#        
+<#
     }
-#>    }
+#>
+    }
 }

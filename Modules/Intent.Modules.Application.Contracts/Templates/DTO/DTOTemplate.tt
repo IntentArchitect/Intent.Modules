@@ -10,7 +10,6 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-
 using System;
 using System.Collections.Generic;
 <#=DependencyUsings#>
@@ -19,6 +18,14 @@ using System.Collections.Generic;
 
 namespace <#= Namespace #>
 {
+<# 
+    foreach (var line in Model.GetXmlDocLines())
+    {
+#>
+    /// <#= line #>
+<#
+    }
+#>
     <#= ClassAttributes()#>
     public class <#=ClassName#> 
     {
@@ -35,10 +42,23 @@ namespace <#= Namespace #>
 <#}#>
             };
         }
+<#
+    foreach (var field in Model.Fields)
+    {
+#>
 
-<# foreach (var field in Model.Fields) {#>
+<#
+        foreach (var line in field.GetXmlDocLines())
+        {
+#>
+        /// <#= line #>
+<#
+        }
+#>
         <#= PropertyAttributes(field)#>
         public <#= GetTypeInfo(field.TypeReference)#> <#=field.Name.ToPascalCase()#> {get; set;}
-<#}#>
+<#
+    }
+#>
     }
 }

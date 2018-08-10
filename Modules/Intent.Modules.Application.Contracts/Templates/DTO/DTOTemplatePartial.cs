@@ -98,10 +98,6 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             {
                 result = string.Format(GetCollectionTypeFormatConfig(), result);
             }
-            else if (typeInfo.IsNullable)
-            {
-                result = string.Format("System.Nullable<{0}>", result);
-            }
             return result;
         }
 

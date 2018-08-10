@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Intent.MetaModel.Common;
+using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Application.Contracts
 {
@@ -92,6 +95,17 @@ namespace Intent.Modules.Application.Contracts
             return CsharpKeywords.Contains(identifier)
                 ? $"@{identifier}"
                 : identifier;
+        }
+
+        internal static IEnumerable<string> GetXmlDocLines(this IHasStereotypes hasStereotypes)
+        {
+            var text = hasStereotypes.GetStereotypeProperty<string>("XmlDoc", "Content");
+
+            return string.IsNullOrWhiteSpace(text)
+                ? new string[0]
+                : text
+                    .Replace("\r\n", "\r")
+                    .Split('\r');
         }
     }
 }
