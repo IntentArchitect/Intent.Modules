@@ -76,7 +76,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
             _eventDispatcher.Publish(ContainerRegistrationForDbContextEvent.EventId, new Dictionary<string, string>()
             {
-                { ContainerRegistrationForDbContextEvent.UsingsKey, $"using Microsoft.EntityFrameworkCore;" },
+                { ContainerRegistrationForDbContextEvent.UsingsKey, $"Microsoft.EntityFrameworkCore;" },
                 { ContainerRegistrationForDbContextEvent.ConcreteTypeKey, $"{Namespace}.{ClassName}" },
                 { ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey, Identifier },
                 { ContainerRegistrationForDbContextEvent.OptionsKey, $@".UseSqlServer(Configuration.GetConnectionString(""{Project.Application.ApplicationName}DB"")){(UseLazyLoadingProxies ? ".UseLazyLoadingProxies()" : "")}" },

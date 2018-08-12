@@ -24,11 +24,11 @@ namespace Intent.Modules.Messaging.Subscriber.Legacy.Decorators
         public IEnumerable<string> DeclareUsings()
         {
             var usings = _eventingModel.Subscribing.SubscribedEvents
-                .Select(x => $"using {x.NS};")
+                .Select(x => $"{x.NS}")
                 .Distinct()
                 .ToList();
 
-            usings.Add("using Intent.Esb.Client.Consuming;");
+            usings.Add("Intent.Esb.Client.Consuming");
 
             return usings;
         }

@@ -127,6 +127,15 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 .ToList();
         }
 
+        public IEnumerable<string> DeclareUsings()
+        {
+            return _dbContextRegistrations.Select(x => x.Usings)
+                .Select(x => x.Split(';'))
+                .SelectMany(x => x)
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => x.Trim());
+        }
+
         internal class ContainerRegistration
         {
             public ContainerRegistration(string interfaceType, string concreteType, string lifetime, ITemplateDependancy interfaceTypeTemplateDependency, ITemplateDependancy concreteTypeTemplateDependency)
@@ -161,13 +170,18 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
             public string Options { get; }
         }
 
-        public IEnumerable<string> DeclareUsings()
+        internal class Initializations
         {
-            return _dbContextRegistrations.Select(x => x.Usings)
-                .Select(x => x.Split(';'))
-                .SelectMany(x => x)
-                .Where(x => !string.IsNullOrWhiteSpace(x))
-                .Select(x => x.Trim() + ";");
+            public string Usings { get; }
+            public string Code { get; }
+            public string Method { get; }
+
+            public Initializations(string usings, string code, string method)
+            {
+                Usings = usings;
+                Code = code;
+                Method = method;
+            }
         }
     }
 }

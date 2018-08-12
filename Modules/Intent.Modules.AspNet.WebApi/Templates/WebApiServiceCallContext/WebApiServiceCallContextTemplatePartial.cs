@@ -54,8 +54,8 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
 
             Project.Application.EventDispatcher.Publish(InitializationRequiredEvent.EventId, new Dictionary<string, string>()
             {
-                { InitializationRequiredEvent.UsingsKey, $@"using Intent.Framework.Core.Context;
-using {Namespace};" },
+                { InitializationRequiredEvent.UsingsKey, $@"Intent.Framework.Core.Context;
+{Namespace};" },
                 { InitializationRequiredEvent.CallKey, $"InitializeServiceCallContext();" },
                 { InitializationRequiredEvent.MethodKey, $@"
         void InitializeServiceCallContext()

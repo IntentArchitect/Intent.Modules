@@ -12,7 +12,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
 
         public override IEnumerable<string> DeclareUsings(IServiceModel service) => new List<string>
         {
-            "using Intent.Framework.WebApi.ExceptionHandling;"
+            "Intent.Framework.WebApi.ExceptionHandling"
         };
 
         public override string DeclarePrivateVariables(IServiceModel service) => @"

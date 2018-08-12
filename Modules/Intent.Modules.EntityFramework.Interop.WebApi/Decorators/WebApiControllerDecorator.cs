@@ -22,10 +22,6 @@ namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
 
         public const string Identifier = "Intent.EntityFramework.Interop.WebApi.ControllerDecorator";
 
-        //public override IEnumerable<string> DeclareUsings(IServiceModel service)
-        //{
-        //    return new[] { $"using {GetDbContextTemplate().Namespace};" };
-        //}
 
         public override string DeclarePrivateVariables(IServiceModel service) => $@"
         private readonly {GetDbContextTemplate().ClassName} _dbContext;";

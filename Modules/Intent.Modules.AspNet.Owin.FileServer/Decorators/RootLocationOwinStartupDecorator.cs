@@ -20,8 +20,8 @@ namespace Intent.Modules.AspNet.Owin.FileServer.Decorators
         {
             return new[]
             {
-                "using Microsoft.Owin.FileSystems;",
-                "using Microsoft.Owin.StaticFiles;"
+                "Microsoft.Owin.FileSystems",
+                "Microsoft.Owin.StaticFiles"
             };
         }
 

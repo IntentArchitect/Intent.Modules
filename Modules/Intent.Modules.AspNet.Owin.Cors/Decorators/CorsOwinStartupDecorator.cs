@@ -17,7 +17,7 @@ namespace Intent.Modules.AspNet.Owin.Cors.Decorators
         {
             return new[]
             {
-                "using Microsoft.Owin.Cors;"
+                "Microsoft.Owin.Cors"
             };
         }
 

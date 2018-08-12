@@ -11,8 +11,8 @@ namespace Intent.Modules.UserContext.Interop.Messaging.Subscriber.Legacy
 
         public IEnumerable<string> DeclareUsings() => new[]
         {
-            "using Intent.Framework;",
-            "using Intent.Framework.Core.Context;",
+            "Intent.Framework",
+            "Intent.Framework.Core.Context",
         };
 
         public string DeclarePrivateVariables() => @"

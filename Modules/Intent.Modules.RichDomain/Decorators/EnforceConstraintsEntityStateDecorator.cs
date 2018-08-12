@@ -14,7 +14,7 @@ namespace Intent.Modules.RichDomain.Decorators
         {
             return new[]
             {
-                "using Intent.Framework.Domain;",
+                "Intent.Framework.Domain",
             };
         }
 

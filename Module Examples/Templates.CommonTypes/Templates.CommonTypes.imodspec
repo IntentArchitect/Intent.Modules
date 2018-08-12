@@ -14,7 +14,11 @@
     </template>
     <template id="Templates.CommonTypes.CustomLanguage" enabled="true">
       <role>Default</role>
-    </template>    
+    </template>
+    <template id="Templates.CommonTypes.ResolveGeneratedTypes" enabled="true">
+      <role>Default</role>
+    </template>
+    
   </templates>
   <decorators />
   <factoryExtensions>

@@ -26,7 +26,7 @@ namespace Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile
 
         public IEnumerable<string> DeclareUsings()
         {
-            return _additionalNamespaces.Select(x => $"using {x};").ToArray();
+            return _additionalNamespaces.Select(x => x).ToArray();
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()

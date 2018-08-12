@@ -20,8 +20,8 @@ namespace Intent.Modules.Logging.NLog.Interop.WebApi.Decorators
         {
             return new[]
                 {
-                "using NLog;",
-                "using System.Diagnostics;"
+                "NLog",
+                "System.Diagnostics"
                 };
         }
 

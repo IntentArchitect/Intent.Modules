@@ -33,10 +33,10 @@ namespace Intent.Modules.IdentityServer.Decorators
         {
             return new[]
             {
-                "using System.Configuration;",
-                "using IdentityServer3.Core.Configuration;",
-                "using IdentityServer3.Core.Services;",
-                "using IdentityServer3.Core.Services.Default;",
+                "System.Configuration",
+                "IdentityServer3.Core.Configuration",
+                "IdentityServer3.Core.Services",
+                "IdentityServer3.Core.Services.Default",
             };
         }
 

@@ -24,7 +24,8 @@ namespace Intent.SoftwareFactory.Templates
                     .Select(x => $"using {x};")
                 )
                 .Except(namespacesToIgnore.Select(x => $"using {x};"))
-                .Distinct();
+                .Distinct()
+                .ToArray();
 
             return usings.Any()
                     ? usings.Aggregate((x, y) => x + Environment.NewLine + y)
