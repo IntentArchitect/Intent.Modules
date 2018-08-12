@@ -23,7 +23,7 @@ namespace Intent.Modules.Logging.NLog.Interop.Unity.Decorators
 
         public IEnumerable<string> DeclareUsings() => new string[]
         {
-            $"using {_applicationManager.FindTemplateInstance<IHasClassDetails>(NLogOperationRequestIdRendererTemplate.Identifier).Namespace };",
+            _applicationManager.FindTemplateInstance<IHasClassDetails>(NLogOperationRequestIdRendererTemplate.Identifier).Namespace ,
         };
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()

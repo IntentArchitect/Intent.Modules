@@ -19,7 +19,7 @@ namespace Intent.Modules.EntityFramework.Interop.Unity.Decorators
         }
 
         public IEnumerable<string> DeclareUsings() => new [] {
-            "using Intent.Framework.EntityFramework;",
+            "Intent.Framework.EntityFramework",
         };
 
         public string Registrations() => $@"

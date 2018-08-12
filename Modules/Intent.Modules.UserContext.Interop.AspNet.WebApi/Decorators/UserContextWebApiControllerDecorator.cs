@@ -14,8 +14,8 @@ namespace Intent.Modules.UserContext.Interop.AspNet.WebApi.Decorators
         {
             return new[]
             {
-                "using Intent.Framework;",
-                "using Intent.Framework.Core.Context;",
+                "Intent.Framework",
+                "Intent.Framework.Core.Context",
             };
         }
 

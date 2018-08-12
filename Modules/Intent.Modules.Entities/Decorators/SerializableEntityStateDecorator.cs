@@ -13,7 +13,7 @@ namespace Intent.Modules.Entities.Decorators
 
         public override IEnumerable<string> DeclareUsings()
         {
-            return new List<string>() { "using System.Runtime.Serialization;" };
+            return new List<string>() { "System.Runtime.Serialization" };
         }
 
         public override string ClassAnnotations(IClass @class)

@@ -23,12 +23,12 @@ namespace Intent.Modules.AspNet.Owin.Jwt.Decorators
         {
             return new[]
             {
-                "using System.IdentityModel.Tokens;",
-                "using System.Configuration;",
-                "using IdentityServer3.AccessTokenValidation;",
-                "using Microsoft.Owin.Security;",
-                "using Microsoft.Owin.Security.Infrastructure;",
-                "using Microsoft.Owin.Security.OAuth;",
+                "System.IdentityModel.Tokens",
+                "System.Configuration",
+                "IdentityServer3.AccessTokenValidation",
+                "Microsoft.Owin.Security",
+                "Microsoft.Owin.Security.Infrastructure",
+                "Microsoft.Owin.Security.OAuth",
             };
         }
 

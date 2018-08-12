@@ -70,7 +70,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
         {
             Project.Application.EventDispatcher.Publish(InitializationRequiredEvent.EventId, new Dictionary<string, string>()
             {
-                { InitializationRequiredEvent.UsingsKey, $@"using {Namespace};" },
+                { InitializationRequiredEvent.UsingsKey, $@"{Namespace};" },
                 { InitializationRequiredEvent.CallKey, $"InitializeMapper();" },
                 { InitializationRequiredEvent.MethodKey, $@"
         void InitializeMapper()

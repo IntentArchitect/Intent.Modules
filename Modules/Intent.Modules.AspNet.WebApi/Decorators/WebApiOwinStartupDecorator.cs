@@ -13,7 +13,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
         {
             return new[]
             {
-                "using System.Web.Http;",
+                "System.Web.Http",
             };
         }
 

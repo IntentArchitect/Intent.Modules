@@ -16,8 +16,8 @@ namespace Intent.Modules.Mapping.EntityToDto.Owin.Decorators
 
             return new[]
             {
-                "using Intent.Framework.AutoMapper;",
-                "using Intent.Framework.Core.Mapping;",
+                "Intent.Framework.AutoMapper",
+                "Intent.Framework.Core.Mapping",
             };
         }
 

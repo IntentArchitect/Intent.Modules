@@ -12,7 +12,7 @@ namespace Intent.Modules.RichDomain.Interop.Unity.Decorators
         {
             return new []
             {
-                "using Intent.Framework.Unity;"
+                "Intent.Framework.Unity"
             };
         }
 

@@ -19,8 +19,8 @@ namespace Intent.Modules.Logging.NLog.Interop.Messaging.Subscriber.Legacy
         {
             return new[]
             {
-                "using NLog;",
-                "using System.Diagnostics;"
+                "NLog",
+                "System.Diagnostics"
             };
         }
 

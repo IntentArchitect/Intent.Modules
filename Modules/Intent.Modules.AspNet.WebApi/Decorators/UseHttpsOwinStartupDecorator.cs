@@ -17,7 +17,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
         {
             return new[]
                 {
-                    "using NWebsec.Owin;",
+                    "NWebsec.Owin",
                 };
         }
 
