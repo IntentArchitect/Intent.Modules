@@ -107,6 +107,8 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             {
                 result = string.Format(GetCollectionTypeFormatConfig(), result);
             }
+            // Don't check for nullables here because the type resolution system will take care of language specific nullables
+
             return result;
         }
 
