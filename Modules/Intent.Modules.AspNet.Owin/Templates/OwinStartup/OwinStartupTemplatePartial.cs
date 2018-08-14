@@ -125,7 +125,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
                 .Select(x => x.Split(';'))
                 .SelectMany(x => x)
                 .Where(x => !string.IsNullOrWhiteSpace(x))
-                .Select(x => x.Trim() + ";");
+                .Select(x => x.Trim());
         }
     }
 
