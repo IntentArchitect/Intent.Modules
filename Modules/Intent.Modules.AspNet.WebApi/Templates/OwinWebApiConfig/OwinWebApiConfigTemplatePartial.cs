@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
 {
-    partial class OwinWebApiConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, IHasDecorators<IWebApiConfigTemplateDecorator>
+    partial class OwinWebApiConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IWebApiConfigTemplateDecorator>
     {
         public const string Identifier = "Intent.AspNet.WebApi.OwinWebApiConfig";
         private IEnumerable<IWebApiConfigTemplateDecorator> _decorators;
@@ -42,19 +42,10 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
             {
                 NugetPackages.MicrosoftAspNetWebApi,
                 NugetPackages.MicrosoftAspNetWebApiOwin,
-                NugetPackages.UnityWebApi,
                 NugetPackages.MicrosoftWebInfrastructure
             }
             .Union(base.GetNugetDependencies())
             .ToArray();
-        }
-
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
-        {
-            return new[]
-            {
-                TemplateDependancy.OnTemplate(UnityConfigTemplate.Identifier) // TODO: We should not need to lock ourselves into Unity (or Owin for that matter) for WebApi
-            };
         }
 
         public IEnumerable<IWebApiConfigTemplateDecorator> GetDecorators()

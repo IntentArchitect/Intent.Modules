@@ -33,10 +33,16 @@
     <decorator id="Intent.AspNet.WebApi.WebApiConfig.JsonValidation.Decorator" enabled="false"/>
     <decorator id="Intent.AspNet.WebApi.ExceptionHandlingStrategy" enabled="false"/>
   </decorators>
+  <interoperability>
+    <detect id="Intent.Unity">
+      <install>
+        <package id="Intent.AspNet.WebApi.Interop.Unity" version="1.5.2"/>
+      </install>
+    </detect>
+  </interoperability>
   <dependencies>
     <dependency id="Intent.Common" version="1.5.1"/>
     <dependency id="Intent.AspNet.Owin" version="1.5.1"/>
-    <dependency id="Intent.Unity" version="1.5.1"/>
     <dependency id="Intent.Application.Contracts" version="1.5.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
   </dependencies>

@@ -64,8 +64,6 @@ namespace Intent.Modules.AspNet.WebApi
 
         public static NugetPackageInfo NLog = new NugetPackageInfo("NLog", "4.3.4", "net452");
 
-        public static NugetPackageInfo UnityWebApi = new NugetPackageInfo("Unity.WebAPI", "5.3.0", "net452")
-            .BlockAddingOfAllFiles();
         public static NugetPackageInfo UnityAspNetWebApi = new NugetPackageInfo("Unity.AspNet.WebApi", "4.0.1", "net452")
             .BlockAddingOfAllFiles();
 
