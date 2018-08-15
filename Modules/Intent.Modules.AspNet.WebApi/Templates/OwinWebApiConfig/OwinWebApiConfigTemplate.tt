@@ -18,7 +18,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using System.Web.Http;
-using Unity.WebApi;
 <#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
