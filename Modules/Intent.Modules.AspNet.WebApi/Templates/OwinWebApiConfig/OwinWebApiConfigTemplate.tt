@@ -38,9 +38,6 @@ namespace <#= Namespace #>
             // Adds "Z" to the end of serialized DateTime, so that clients are aware that the received time is UTC
             config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
 
-            // Unity
-            config.DependencyResolver = new UnityDependencyResolver(UnityConfig.GetConfiguredContainer());
-
 <#
     foreach (var item in ConfigureItems)
     {
