@@ -40,8 +40,7 @@ namespace <#=Namespace#>
         } 
     
 <#  foreach (var operation in Model.Operations)
-    {
-#>
+    {#>
         [Http<#= GetHttpVerb(operation).ToString().ToLower().ToPascalCase() #>("<#= operation.Name.ToLower() #>")]
         <#= GetSecurityAttribute(operation) #>
         public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)

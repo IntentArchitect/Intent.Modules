@@ -38,8 +38,7 @@ namespace <#=Namespace#>
         }
 
 <#  foreach (var operation in Model.Operations)
-    {
-#>
+    { #>
         [AcceptVerbs("<#= GetHttpVerb(operation).ToString().ToUpper()#>")]
         <#= GetSecurityAttribute(operation) #>
         [Route("<#= operation.Name.ToLower() #>")]
