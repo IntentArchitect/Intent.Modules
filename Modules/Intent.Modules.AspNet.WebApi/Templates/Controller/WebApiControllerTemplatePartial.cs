@@ -183,11 +183,12 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             {
                 return string.Empty;
             }
-            switch (GetHttpVerb(operation))
+            var verb = GetHttpVerb(operation);
+            switch (verb)
             {
                 case HttpVerb.POST:
                 case HttpVerb.PUT:
-                    return $"[FromBody]{operation.Name}Payload payload";
+                    return operation.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
                 case HttpVerb.GET:
                 case HttpVerb.DELETE:
                     if (operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
@@ -198,7 +199,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                     }
                     return operation.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new NotSupportedException($"{verb} not supported");
             }
         }
 
@@ -206,19 +207,19 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         {
             if (!operation.Parameters.Any())
             {
-                return "";
+                return string.Empty;
             }
 
-            switch (GetHttpVerb(operation))
+            var verb = GetHttpVerb(operation);
+            switch (verb)
             {
                 case HttpVerb.POST:
                 case HttpVerb.PUT:
-                    return operation.Parameters.Select(x => $"payload.{x.Name}").Aggregate((x, y) => x + ", " + y);
                 case HttpVerb.GET:
                 case HttpVerb.DELETE:
-                    return operation.Parameters.Select(x => $"{x.Name}").Aggregate((x, y) => x + ", " + y);
+                    return operation.Parameters.Select(x => x.Name).Aggregate((x, y) => x + ", " + y);
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new NotSupportedException($"{verb} not supported");
             }
         }
 
