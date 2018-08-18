@@ -244,10 +244,22 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
         private string GetParameterBindingAttribute(IOperationParameterModel parameter)
         {
             const string ParameterBinding = "Parameter Binding";
+            const string PropertyType = "Type";
+            const string PropertyCustomType = "Custom Type";
+            const string CustomValue = "Custom";
 
-            if(parameter.HasStereotype(ParameterBinding))
+            if (parameter.HasStereotype(ParameterBinding))
             {
-                var attributeName = parameter.GetStereotypeProperty<string>(ParameterBinding, "Type");
+                var attributeName = parameter.GetStereotypeProperty<string>(ParameterBinding, PropertyType);
+                if(string.Equals(attributeName, CustomValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    var customAttributeValue = parameter.GetStereotypeProperty<string>(ParameterBinding, PropertyCustomType);
+                    if(string.IsNullOrWhiteSpace(customAttributeValue))
+                    {
+                        throw new Exception("Parameter Binding was set to custom but no Custom attribute type was specified");
+                    }
+                    return $"[{customAttributeValue}]";
+                }
                 return $"[{attributeName}]";
             }
 
