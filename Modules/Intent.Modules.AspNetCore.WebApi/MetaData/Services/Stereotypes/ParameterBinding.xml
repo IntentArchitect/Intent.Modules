@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="d87904ed-599e-40c2-b96d-267b0a3dc337">
+  <name>Parameter Binding</name>
+  <icon>
+    <type>FontAwesome</type>
+    <source>chain-broken</source>
+  </icon>
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>operation-parameter</element>
+  </targetElements>
+  <parentFolderId>041A14A6-9CB0-4622-928A-CE0B86BF7742</parentFolderId>
+  <properties>
+    <property id="828379e2-e58f-4b87-bf74-24177a024a08">
+      <name>Type</name>
+      <type>options</type>
+      <defaultValue>FromBody</defaultValue>
+      <options>
+        <option>BindRequired</option>
+        <option>BindNever</option>
+        <option>FromHeader</option>
+        <option>FromQuery</option>
+        <option>FromRoute</option>
+        <option>FromForm</option>
+        <option>FromBody</option>
+        <option>ModelBinder</option>
+      </options>
+    </property>
+  </properties>
+</stereotypeDefinition>
