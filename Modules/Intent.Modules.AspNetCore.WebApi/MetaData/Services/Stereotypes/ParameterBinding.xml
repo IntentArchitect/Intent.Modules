@@ -6,7 +6,7 @@
     <source>chain-broken</source>
   </icon>
   <displayIcon>false</displayIcon>
-  <displayFunction />
+  <displayFunction>[${Type}]</displayFunction>
   <targetElements>
     <element>operation-parameter</element>
   </targetElements>
