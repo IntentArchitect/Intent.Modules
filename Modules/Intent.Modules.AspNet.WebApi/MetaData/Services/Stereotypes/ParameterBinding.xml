@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="7947E281-3338-4EDF-B15D-90203FA67DA9">
+  <name>Parameter Binding</name>
+  <icon>
+    <type>FontAwesome</type>
+    <source>chain-broken</source>
+  </icon>
+  <displayIcon>false</displayIcon>
+  <displayFunction>[${Type}]</displayFunction>
+  <targetElements>
+    <element>operation-parameter</element>
+  </targetElements>
+  <parentFolderId>87d16e6c-ce99-4329-87c4-d39dcddf0764</parentFolderId>
+  <properties>
+    <property id="84DC5DB3-C2AF-4509-907D-4EFE7CA24390">
+      <name>Type</name>
+      <type>options</type>
+      <defaultValue>FromBody</defaultValue>
+      <options>
+        <option>FromUri</option>
+        <option>FromBody</option>
+        <option>Custom</option>
+      </options>
+    </property>
+    <property id="D9658EE8-B36C-49CF-A569-858A8BD687E9">
+      <name>Custom Type</name>
+      <type>string</type>
+      <options />
+    </property>
+  </properties>
+</stereotypeDefinition>
