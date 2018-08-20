@@ -178,11 +178,12 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             {
                 return string.Empty;
             }
-            switch (GetHttpVerb(operation))
+            var verb = GetHttpVerb(operation);
+            switch (verb)
             {
                 case HttpVerb.POST:
                 case HttpVerb.PUT:
-                    return $"[FromBody]{operation.Name}Payload payload";
+                    return operation.Parameters.Select(x => $"{GetParameterBindingAttribute(x)}{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => $"{x}, {y}");
                 case HttpVerb.GET:
                 case HttpVerb.DELETE:
                     if (operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
@@ -193,7 +194,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                     }
                     return operation.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new NotSupportedException($"{verb} not supported");
             }
         }
 
@@ -201,19 +202,19 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
         {
             if (!operation.Parameters.Any())
             {
-                return "";
+                return string.Empty;
             }
 
-            switch (GetHttpVerb(operation))
+            var verb = GetHttpVerb(operation);
+            switch (verb)
             {
                 case HttpVerb.POST:
                 case HttpVerb.PUT:
-                    return operation.Parameters.Select(x => $"payload.{x.Name}").Aggregate((x, y) => x + ", " + y);
                 case HttpVerb.GET:
                 case HttpVerb.DELETE:
-                    return operation.Parameters.Select(x => $"{x.Name}").Aggregate((x, y) => x + ", " + y);
+                    return operation.Parameters.Select(x => x.Name).Aggregate((x, y) => $"{x}, {y}");
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new NotSupportedException($"{verb} not supported");
             }
         }
 
@@ -238,6 +239,31 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                 return HttpVerb.POST;
             }
             return HttpVerb.GET;
+        }
+
+        private string GetParameterBindingAttribute(IOperationParameterModel parameter)
+        {
+            const string ParameterBinding = "Parameter Binding";
+            const string PropertyType = "Type";
+            const string PropertyCustomType = "Custom Type";
+            const string CustomValue = "Custom";
+
+            if (parameter.HasStereotype(ParameterBinding))
+            {
+                var attributeName = parameter.GetStereotypeProperty<string>(ParameterBinding, PropertyType);
+                if(string.Equals(attributeName, CustomValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    var customAttributeValue = parameter.GetStereotypeProperty<string>(ParameterBinding, PropertyCustomType);
+                    if(string.IsNullOrWhiteSpace(customAttributeValue))
+                    {
+                        throw new Exception("Parameter Binding was set to custom but no Custom attribute type was specified");
+                    }
+                    return $"[{customAttributeValue}]";
+                }
+                return $"[{attributeName}]";
+            }
+
+            return string.Empty;
         }
     }
 
