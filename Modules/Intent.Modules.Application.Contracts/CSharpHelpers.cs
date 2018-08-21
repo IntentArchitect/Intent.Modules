@@ -105,6 +105,7 @@ namespace Intent.Modules.Application.Contracts
                 ? new string[0]
                 : text
                     .Replace("\r\n", "\r")
+                    .Replace("\n", "\r")
                     .Split('\r');
         }
     }
