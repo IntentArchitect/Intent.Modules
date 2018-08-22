@@ -90,6 +90,13 @@
     <Compile Include="ProjectTypeIds.cs" />
     <Compile Include="Sync\ApplicationSyncProcessor.cs" />
     <Compile Include="Sync\ProjectSyncProcessor.cs" />
+    <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplate.cs">
+      <DependentUpon>ConsoleAppProgramTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplatePartial.cs" />
+    <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplateRegistration.cs" />
     <Compile Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.cs">
       <DependentUpon>CoreLibraryCSProjectTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -126,7 +133,7 @@
     <Compile Include="Templates\CoreWeb\CsProject\CoreWebCSProjectTemplatePartial.cs" />
     <Compile Include="Templates\CoreWeb\CsProject\CoreWebCSProjectTemplateRegistrations.cs" />
     <Compile Include="Templates\AssemblyInfo\Registrations.cs" />
-    <Compile Include="Templates\ConsoleAppCsProjectFile\Registrations.cs" />
+    <Compile Include="Templates\ConsoleApp\CsProject\ConsoleAppCsProjectTemplateRegistration.cs" />
     <Compile Include="Templates\LibraryCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\NodeJSProjectFile\NodeJSProjectFileTemplate.cs" />
     <Compile Include="Templates\NodeJSProjectFile\Registrations.cs" />
@@ -149,13 +156,7 @@
       <DependentUpon>AssemblyInfoTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\AssemblyInfo\AssemblyInfoTemplatePartial.cs" />
-    <Compile Include="Templates\ConsoleAppCsProjectFile\ConsoleAppCSProjectFileTemplate.cs" />
-    <Compile Include="Templates\ConsoleApp\ConsoleAppTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConsoleAppTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\ConsoleApp\ConsoleAppTemplatePartial.cs" />
+    <Compile Include="Templates\ConsoleApp\CsProject\ConsoleAppCSProjectTemplate.cs" />
     <Compile Include="Templates\LibraryCSProjectFile\LibraryCSProjectFileTemplate.cs" />
     <Compile Include="Templates\NuGetPackagesConfig\NuGetPackagesConfigTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -176,6 +177,10 @@
     <Compile Include="Templates\WebConfig\WebApiWebConfigFileTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ConsoleAppProgramTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CoreLibraryCSProjectTemplate.cs</LastGenOutput>
@@ -199,10 +204,6 @@
     <Content Include="Templates\AssemblyInfo\AssemblyInfoTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AssemblyInfoTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\ConsoleApp\ConsoleAppTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ConsoleAppTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\NuGetPackagesConfig\NuGetPackagesConfigTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

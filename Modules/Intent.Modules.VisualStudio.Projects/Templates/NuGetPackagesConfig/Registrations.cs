@@ -26,7 +26,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.NuGetPackagesConfig
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
             var targetProjectIds = new List<string>() {
-                ProjectTypeIds.ConsoleApplication,
+                ProjectTypeIds.ConsoleAppNetFramework,
                 ProjectTypeIds.CSharpLibrary,
                 ProjectTypeIds.WcfApplication,
                 ProjectTypeIds.WebApiApplication };

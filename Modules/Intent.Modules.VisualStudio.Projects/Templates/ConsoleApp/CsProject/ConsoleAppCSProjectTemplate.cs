@@ -7,14 +7,14 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using Microsoft.Build.Construction;
 
-namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleAppCsProjectFile
+namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
 {
-    public class ConsoleAppCsProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate
+    public class ConsoleAppCsProjectTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate
     {
-        public const string IDENTIFIER = "Intent.VisualStudio.Projects.ConsoleAppCsProjectFile";
+        public const string Identifier = "Intent.VisualStudio.Projects.ConsoleApp.CSProject";
 
-        public ConsoleAppCsProjectFileTemplate(IProject project)
-            : base (IDENTIFIER, project, null)
+        public ConsoleAppCsProjectTemplate(IProject project)
+            : base (Identifier, project, null)
         {
         }
 

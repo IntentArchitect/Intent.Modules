@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp
+namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,9 +21,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\Program\ConsoleAppProgramTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ConsoleAppTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class ConsoleAppProgramTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -34,7 +34,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp
             this.Write(" \r\n");
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\Program\ConsoleAppProgramTemplate.tt"
 
 
 
@@ -42,43 +42,25 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp
             
             #line default
             #line hidden
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\n");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.IO;\r\nusing System." +
+                    "Linq;\r\nusing System.Threading.Tasks;\r\n");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\Program\ConsoleAppProgramTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
-            this.Write("\r\n\r\n[assembly:DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
+            this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\ConsoleAppTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\ConsoleApp\Program\ConsoleAppProgramTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
-            this.Write(@"
-{
-    class Program
-    {
-        public Program()
-        {
-            
-        }
-
-        static void Main(string[] args)
-        {
-            var program = UnityConfig.GetConfiguredContainer().Resolve<Program>();
-            program.Start();
-        }
-
-        public void Start()
-        {
-            Console.WriteLine(""Starting Application"");
-
-            Console.ReadLine();
-        }
-    }
-}");
+            this.Write("\r\n{\r\n    public class Program\r\n    {\r\n        [IntentManaged(Mode.Ignore)]\r\n     " +
+                    "   public static void Main(string[] args)\r\n        {\r\n            Console.WriteL" +
+                    "ine(\"Application Started...\");\r\n            Console.ReadLine();\r\n        }\r\n    " +
+                    "}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
