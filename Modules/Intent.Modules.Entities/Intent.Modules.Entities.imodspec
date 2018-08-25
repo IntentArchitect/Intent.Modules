@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities</id>
-  <version>1.5.1</version>
+  <version>1.5.2</version>
   <summary>Create domain entities and related artifacts.</summary>
   <description></description>
   <authors>Intent Software</authors>

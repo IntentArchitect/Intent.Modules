@@ -30,18 +30,18 @@ namespace <#= Namespace #>
         {
             continue;
         }
-		string attributeType = Types.Get(attribute.Type);
+        string attributeType = Types.Get(attribute.Type);
 #>
 <#= PropertyAnnotations(attribute) #>
         <#= attributeType #> <#= attribute.Name.ToPascalCase() #> { <#= AttributeAccessors(attribute) #> }
 <#  }
 
-	foreach (var associatedClass in Model.AssociatedClasses)
+    foreach (var associatedClass in Model.AssociatedClasses)
     {
 #><#= PropertyBefore(associatedClass) #><#
-		if (!CanWriteDefaultAssociation(associatedClass) || !associatedClass.IsNavigable) 
-		{
-			continue;
+        if (!CanWriteDefaultAssociation(associatedClass) || !associatedClass.IsNavigable) 
+        {
+            continue;
         }
 #><#= PropertyAnnotations(associatedClass) #>
         <#= NormalizeNamespace(Types.Get(associatedClass)) #> <#= associatedClass.Name().ToPascalCase() #> { <#= AssociationAccessors(associatedClass) #> }
@@ -53,10 +53,9 @@ namespace <#= Namespace #>
         {
             continue;
         }
-        string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";
         string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
 #>
-        <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
+        <#= EmitOperationReturnType(operation) #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
 <#  }#>
     }
 }

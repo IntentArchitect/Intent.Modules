@@ -38,39 +38,13 @@ namespace <#=Namespace#>
         }
 
 <#  foreach (var operation in Model.Operations)
-    {
-        if (operation.Parameters.Any() && (GetHttpVerb(operation) == HttpVerb.POST || GetHttpVerb(operation) == HttpVerb.PUT)) {
-#>
-        public class <#= operation.Name #>Payload
-        {
-<#
-            foreach (var parameter in operation.Parameters)
-            {
-                foreach (var decorator in PayloadPropertyDecorators(parameter))
-                {
-#>
-            <#= decorator #>
-<#
-                }
-#>
-            public <#= GetTypeName(parameter.TypeReference) #> <#= parameter.Name #> { get; set; }
-<#          }#>
-        }
-<#      } #>
-
+    { #>
         [AcceptVerbs("<#= GetHttpVerb(operation).ToString().ToUpper()#>")]
-		<#= GetSecurityAttribute(operation) #>
+        <#= GetSecurityAttribute(operation) #>
         [Route("<#= operation.Name.ToLower() #>")]
         public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>
-<#      if (operation.Parameters.Any() && (GetHttpVerb(operation) == HttpVerb.POST || GetHttpVerb(operation) == HttpVerb.PUT)) {#>
-            if (payload == null) 
-            {
-                throw new ArgumentNullException(nameof(payload));
-            }
-
-<#      }
-        if (operation.ReturnType != null)
+<#      if (operation.ReturnType != null)
         {
 #>            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);
 <#      }#>
@@ -95,7 +69,9 @@ namespace <#=Namespace#>
                     ts.Complete();
                 }<#= AfterTransaction(operation) #>
             }
-            catch (Exception e) 
+#pragma warning disable CS0168 // Variable is declared but never used
+            catch (Exception e)
+#pragma warning restore CS0168 // Variable is declared but never used
             {<#= OnExceptionCaught(operation) #>
             }
 
