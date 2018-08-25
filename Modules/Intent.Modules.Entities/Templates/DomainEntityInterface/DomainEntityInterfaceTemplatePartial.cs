@@ -116,5 +116,22 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         {
             return GetDecorators().All(x => x.CanWriteDefaultOperation(operation));
         }
+
+        public string EmitOperationReturnType(IOperation operation)
+        {
+            if (operation.ReturnType != null)
+            {
+                var type = Types.Get(operation.ReturnType.Type);
+                if (operation.ReturnType.IsCollection)
+                {
+                    type = $"ICollection<{type}>";
+                }
+                return type;
+            }
+            else
+            {
+                return "void";
+            }
+        }
     }
 }
