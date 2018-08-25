@@ -1,14 +1,14 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp
+namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
 {
-    partial class ConsoleAppTemplate : IntentRoslynProjectItemTemplateBase<object>
+    partial class ConsoleAppProgramTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
-#warning this wasnt being used but looks like maybe it should ???B
+        public const string Identifier = "Intent.VisualStudio.Projects.ConsoleApp.Program";
 
-        public ConsoleAppTemplate(IProject project)
-            : base("HELP ME PLZ", project, null)
+        public ConsoleAppProgramTemplate(IProject project)
+            : base(Identifier, project, null)
         {
         }
 
@@ -24,8 +24,8 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp
                 fileName: $"Program",
                 fileExtension: "cs",
                 defaultLocationInProject: "",
-                className:null,
-                @namespace: null
+                className: $"Program",
+                @namespace: "${Project.Name}"
                 );
         }
     }
