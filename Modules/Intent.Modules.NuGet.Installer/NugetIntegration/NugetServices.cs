@@ -205,16 +205,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
 
             if (package == null)
             {
-                _tracing.Info($"{NugetInstaller.TracingOutputPrefix}Fetching package {packageId} {versionSpec}.");
-
-                package = _feedPackageRepository
-                    .FindPackages(
-                        packageId: packageId,
-                        versionSpec: versionSpec,
-                        allowPrereleaseVersions: allowPrereleaseVersions,
-                        allowUnlisted: false)
-                    .OrderBy(x => x.Version)
-                    .First();
+                package = FetchPackage(packageId, versionSpec, allowPrereleaseVersions);
             }
 
             if (package == null)
@@ -223,6 +214,113 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
             }
 
             return package;
+        }
+
+        private IPackage FetchPackage(string packageId, IVersionSpec versionSpec, bool allowPrereleaseVersions)
+        {
+            // Caching was implemented because in Inoxico commit 44a9bd3e6d19a39a2ba2939c57239d3bd871ae88, IntegrationApi
+            // on run would download Newtonsoft.Json over a dozen times.
+            
+            // What was happening is that a lot of the packages had a dependency on a lower version of Json than what was
+            // installed, and the logic is such that we always get the minimum required version of dependencies to check
+            // its dependepencies.
+
+            // So caching is the quick fix that if we have already retrieved the package, we just re-use it. If we are to use
+            // use caching though, we should look into using NuGet's own machine and/or user profile level caching infrastructure
+            // rather than putting everything into memory.
+
+            // Alternatively, we change our logic so that it sees Json is already installed and meets the VersionSpec, and don't
+            // fetch the lower version. However, that would only help for non-first time code-gen per application, so
+            // alternatively we could change our logic that it keeps track of which packages we have retrieved and more intelligently
+            // checks if they meet the VersionSpec.
+
+            var cachedPackageKey = CachedPackageKey.Create(packageId, versionSpec, allowPrereleaseVersions);
+            if (_cachedPackages.TryGetValue(cachedPackageKey, out var package))
+            {
+                return package;
+            }
+
+            _tracing.Info($"{NugetInstaller.TracingOutputPrefix}Fetching package {packageId} {versionSpec}.");
+
+            _cachedPackages[cachedPackageKey] = package = _feedPackageRepository
+                .FindPackages(
+                    packageId: packageId,
+                    versionSpec: versionSpec,
+                    allowPrereleaseVersions: allowPrereleaseVersions,
+                    allowUnlisted: false)
+                .OrderBy(x => x.Version)
+                .First();
+
+            return package;
+        }
+
+        private IDictionary<CachedPackageKey, IPackage> _cachedPackages = new Dictionary<CachedPackageKey, IPackage>();
+
+        private struct CachedPackageKey : IEquatable<CachedPackageKey>
+        {
+            private readonly string _packageId;
+            private readonly bool _allowPrereleaseVersions;
+
+            private readonly global::NuGet.SemanticVersion _minVersion;
+            private readonly bool _isMinInclusive;
+            private readonly global::NuGet.SemanticVersion _maxVersion;
+            private readonly bool _isMaxInclusive;
+
+            public static CachedPackageKey Create(string packageId, IVersionSpec versionSpec, bool allowPrereleaseVersions)
+            {
+                return new CachedPackageKey(packageId, versionSpec, allowPrereleaseVersions);
+            }
+
+            private CachedPackageKey(string packageId, IVersionSpec versionSpec, bool allowPrereleaseVersions)
+            {
+                _packageId = packageId;
+                _allowPrereleaseVersions = allowPrereleaseVersions;
+                _minVersion = versionSpec.MinVersion;
+                _isMinInclusive = versionSpec.IsMinInclusive;
+                _maxVersion = versionSpec.MaxVersion;
+                _isMaxInclusive = versionSpec.IsMaxInclusive;
+            }
+
+            public bool Equals(CachedPackageKey other)
+            {
+                return
+                    _allowPrereleaseVersions == other._allowPrereleaseVersions &&
+                    _isMaxInclusive == other._isMaxInclusive &&
+                    _isMinInclusive == other._isMinInclusive &&
+                    Equals(_maxVersion, other._maxVersion) &&
+                    Equals(_minVersion, other._minVersion) &&
+                    string.Equals(_packageId, other._packageId, StringComparison.OrdinalIgnoreCase);
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (ReferenceEquals(null, obj)) return false;
+                return obj is CachedPackageKey && Equals((CachedPackageKey) obj);
+            }
+
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    var hashCode = _allowPrereleaseVersions.GetHashCode();
+                    hashCode = (hashCode * 397) ^ _isMaxInclusive.GetHashCode();
+                    hashCode = (hashCode * 397) ^ _isMinInclusive.GetHashCode();
+                    hashCode = (hashCode * 397) ^ (_maxVersion != null ? _maxVersion.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (_minVersion != null ? _minVersion.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (_packageId != null ? StringComparer.OrdinalIgnoreCase.GetHashCode(_packageId) : 0);
+                    return hashCode;
+                }
+            }
+
+            public static bool operator ==(CachedPackageKey left, CachedPackageKey right)
+            {
+                return left.Equals(right);
+            }
+
+            public static bool operator !=(CachedPackageKey left, CachedPackageKey right)
+            {
+                return !left.Equals(right);
+            }
         }
 
         public bool IsInstalled(string project, IPackage package)
