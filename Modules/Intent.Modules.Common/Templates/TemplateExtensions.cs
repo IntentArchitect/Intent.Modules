@@ -1,10 +1,8 @@
-﻿using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.VisualStudio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.SoftwareFactory.Templates
 {
@@ -17,19 +15,43 @@ namespace Intent.SoftwareFactory.Templates
                     .SelectMany(project.FindTemplateInstances<ITemplate>)
                     .Where(ti => ti != null && ti.GetMetaData().CustomMetaData.ContainsKey("Namespace"))
                     .ToList()
-                    .Select(x => $"using {x.GetMetaData().CustomMetaData["Namespace"]};")
-                .Union(
-                    template.GetAllDeclareUsing()
-                    .Where(x => !string.IsNullOrWhiteSpace(x))
-                    .Select(x => $"using {x};")
-                )
-                .Except(namespacesToIgnore.Select(x => $"using {x};"))
+                    .Select(x => x.GetMetaData().CustomMetaData["Namespace"])
+                .Union(template.GetAllDeclareUsing())
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Except(namespacesToIgnore)
+                .Distinct()
+                .ToArray();
+
+            foreach (var @using in usings.Where(x => x != FixUsing(x)))
+            {
+                Logging.Log.Warning($"When resolving usings for Template Id [{template.Id}] file [{template.GetMetaData().FileName}], " +
+                                    $"a using arrived with with the format [{@using}], but should have been in the format " +
+                                    $"[{FixUsing(@using)}]. The module and/or decorator author should update this module.");
+            }
+
+            usings = usings
+                .Select(x => $"using {FixUsing(x)};")
                 .Distinct()
                 .ToArray();
 
             return usings.Any()
                     ? usings.Aggregate((x, y) => x + Environment.NewLine + y)
                     : string.Empty;
+        }
+
+        private static string FixUsing(string @using)
+        {
+            if (@using.StartsWith("using "))
+            {
+                @using = @using.Substring("using ".Length, @using.Length - "using ".Length);
+            }
+
+            if (@using.EndsWith(";"))
+            {
+                @using = @using.Substring(0, @using.Length - ";".Length);
+            }
+
+            return @using;
         }
 
         public static IEnumerable<string> GetAllDeclareUsing(this ITemplate template)
@@ -111,9 +133,9 @@ namespace Intent.SoftwareFactory.Templates
 
         public static string ToPluralName(this string s)
         {
-            return s.EndsWith("y") 
+            return s.EndsWith("y")
                 ? (s.Substring(0, s.Length - 1) + "ies")
-                : s.EndsWith("s") ? $"{s}es"  : $"{s}s";
+                : s.EndsWith("s") ? $"{s}es" : $"{s}s";
         }
 
         public static string ToCamelCase(this string s)
