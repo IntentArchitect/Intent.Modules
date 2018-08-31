@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Application.Contracts.imodspec" />
+    <None Include="Intent.Modules.Application.Contracts.nuspec" />
     <None Include="MetaData\DataContracts\Intent.Modules.Application.Contracts.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
