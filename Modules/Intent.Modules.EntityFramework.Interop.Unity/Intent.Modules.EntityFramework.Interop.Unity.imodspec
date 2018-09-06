@@ -2,8 +2,8 @@
 <package>
   <id>Intent.EntityFramework.Interop.Unity</id>
   <version>1.5.1</version>
-  <summary>Entity Framwork registrations for Unity DI container.</summary>
-  <description>Entity Framwork registrations for Unity DI container.</description>
+  <summary>Entity Framework registrations for Unity DI container.</summary>
+  <description>Entity Framework registrations for Unity DI container.</description>
   <authors>Intent Software</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>WebApi Unity Interoperability</tags>

@@ -2,8 +2,8 @@
 <package>
   <id>Intent.EntityFrameworkCore.Interop.WebApi</id>
   <version>1.5.1</version>
-  <summary>Entity Framwork Core dbContext injection for interoperability with the Intent.AspNet.WebApi package.</summary>
-  <description>Entity Framwork Core dbContext injection for interoperability with the Intent.AspNet.WebApi package.</description>
+  <summary>Entity Framework Core dbContext injection for interoperability with the Intent.AspNet.WebApi package.</summary>
+  <description>Entity Framework Core dbContext injection for interoperability with the Intent.AspNet.WebApi package.</description>
   <authors>Intent Software</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>AspNetCore Core WebApi EntityFrameworkCore Interoperability</tags>
