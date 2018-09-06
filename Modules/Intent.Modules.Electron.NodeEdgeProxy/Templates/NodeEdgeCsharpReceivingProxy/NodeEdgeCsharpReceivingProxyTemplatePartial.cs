@@ -65,7 +65,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
             }
 
             return o.Parameters
-                .Select((x, i) => $"JsonConvert.DeserializeObject<{GetTypeName(x.TypeReference)}>(methodParameters[{i}])")
+                .Select((x, i) => $"Deserialize<{GetTypeName(x.TypeReference)}>(methodParameters[{i}])")
                 .Aggregate((x, y) => x + ", " + y);
         }
 

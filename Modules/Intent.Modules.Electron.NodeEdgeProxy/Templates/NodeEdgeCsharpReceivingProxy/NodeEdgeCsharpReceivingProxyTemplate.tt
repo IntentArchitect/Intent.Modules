@@ -98,5 +98,12 @@ namespace <#= Namespace #>
 <#
         }
 #>
+
+        private T Deserialize<T>(string serializedString)
+        {
+            return serializedString != null
+                ? JsonConvert.DeserializeObject<T>(serializedString)
+                : default(T);
+        }
     }
 }
