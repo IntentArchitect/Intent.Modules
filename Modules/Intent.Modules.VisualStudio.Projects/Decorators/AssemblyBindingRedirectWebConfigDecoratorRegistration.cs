@@ -17,7 +17,7 @@ namespace Intent.Modules.VisualStudio.Projects.Decorators
         {
             get
             {
-                return AssemblyBindingRedirectWebConfigDecorator.Identifier;
+                return AssemblyBindingRedirectWebConfigDecorator.IDENTIFIER;
             }
         }
 

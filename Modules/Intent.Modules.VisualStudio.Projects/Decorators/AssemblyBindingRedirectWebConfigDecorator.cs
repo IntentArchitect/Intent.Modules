@@ -1,49 +1,51 @@
-﻿using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.VisualStudio;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.VisualStudio.Projects.Decorators
 {
     public class AssemblyBindingRedirectWebConfigDecorator : IWebConfigDecorator
     {
-        public const string Identifier = "Intent.VisualStudio.Projects.AssemblyBindingRedirectWebConfig";
+        public const string IDENTIFIER = "Intent.VisualStudio.Projects.AssemblyBindingRedirectWebConfig";
         private XmlNamespaceManager _namespaces;
-
-        public AssemblyBindingRedirectWebConfigDecorator()
-        {
-        }
 
         public void Install(XDocument doc, IProject p)
         {
             _namespaces = new XmlNamespaceManager(new NameTable());
-            var @namespace = doc.Root.GetDefaultNamespace();
-            _namespaces.AddNamespace("ns", @namespace.NamespaceName);
+            var defaultNamespace = doc.Root.GetDefaultNamespace();
+            _namespaces.AddNamespace("ns", defaultNamespace.NamespaceName);
             _namespaces.AddNamespace("urns", "urn:schemas-microsoft-com:asm.v1");
 
-            var assemblyBinding = doc.XPathSelectElement("/ns:configuration/ns:runtime/urns:assemblyBinding", _namespaces);
-            if (assemblyBinding == null)
+            var configurationElement = doc.XPathSelectElement("/ns:configuration", _namespaces);
+            if (configurationElement == null)
             {
-                assemblyBinding = new XElement("assemblyBinding");
-                assemblyBinding.Add(new XAttribute("xmlns", "urn:schemas-microsoft-com:asm.v1"));
+                doc.Add(configurationElement = new XElement("configuration"));
+            }
 
-                AddAssemblyBindingRedirects(assemblyBinding, p.NugetPackages().SelectMany(x => x.AssemblyRedirects).ToList());
-                doc.XPathSelectElement("/ns:configuration/ns:runtime", _namespaces).AddFirst(assemblyBinding);
-            }
-            else
+            var runtimeElement = doc.XPathSelectElement("/ns:configuration/ns:runtime", _namespaces);
+            if (runtimeElement == null)
             {
-                AddAssemblyBindingRedirects(assemblyBinding, p.NugetPackages().SelectMany(x => x.AssemblyRedirects).ToList());
+                configurationElement.Add(runtimeElement = new XElement("runtime"));
             }
+
+            var assemblyBindingElement = doc.XPathSelectElement("/ns:configuration/ns:runtime/urns:assemblyBinding", _namespaces);
+            if (assemblyBindingElement == null)
+            {
+                runtimeElement.AddFirst(assemblyBindingElement = new XElement((XNamespace)_namespaces.LookupNamespace("urns") + "assemblyBinding"));
+            }
+
+            AddAssemblyBindingRedirects(assemblyBindingElement, p.NugetPackages().SelectMany(x => x.AssemblyRedirects).ToList());
         }
 
-        private void AddAssemblyBindingRedirects(XElement assemblyBinding, List<AssemblyRedirectInfo> assemblyRedirects)
+        private void AddAssemblyBindingRedirects(XElement assemblyBindingElement, List<AssemblyRedirectInfo> assemblyRedirects)
         {
             foreach (var assemblyRedirect in assemblyRedirects)
             {
-                if (assemblyBinding.XPathSelectElement($"//urns:dependentAssembly//urns:assemblyIdentity[@name='{ assemblyRedirect.Name }']", _namespaces) != null)
+                if (assemblyBindingElement.XPathSelectElement($"//urns:dependentAssembly//urns:assemblyIdentity[@name='{ assemblyRedirect.Name }']", _namespaces) != null)
                 {
                     continue;
                 }
@@ -61,7 +63,7 @@ namespace Intent.Modules.VisualStudio.Projects.Decorators
                 bindingRedirect.Add(new XAttribute("newVersion", assemblyRedirect.Version));
                 dependentAssemly.Add(bindingRedirect);
 
-                assemblyBinding.Add(dependentAssemly);
+                assemblyBindingElement.Add(dependentAssemly);
             }
 
         }
