@@ -56,30 +56,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Legacy\Decorators\IntentEsbConsumingUnityRegistrationsDecorator.cs" />
+    <Compile Include="LegacyCodeBasedDsl\Decorators\UnityRegistrations\Registrations.cs" />
+    <Compile Include="LegacyCodeBasedDsl\Decorators\UnityRegistrations\UnityRegistrationsDecorator.cs" />
+    <Compile Include="LegacyCodeBasedDsl\Templates\MessageHandler\Registrations.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Legacy\WebApiEventConsumerService\IEventConsumerDecorator.cs" />
-    <Compile Include="Legacy\MessageHandler\MessageHandlerTemplate.cs">
+    <Compile Include="LegacyCodeBasedDsl\Templates\MessageHandler\MessageHandlerTemplate.cs">
       <DependentUpon>MessageHandlerTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Legacy\MessageHandler\MessageHandlerTemplatePartial.cs" />
-    <Compile Include="Legacy\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate1.cs">
+    <Compile Include="LegacyCodeBasedDsl\Templates\MessageHandler\MessageHandlerTemplatePartial.cs" />
+    <Compile Include="LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\Registrations.cs" />
+    <Compile Include="LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate1.cs">
       <DependentUpon>WebApiEventConsumerServiceTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Legacy\WebApiEventConsumerService\WebApiEventConsumerServiceTemplatePartial.cs" />
-    <Compile Include="LegacyRegistrations.cs" />
+    <Compile Include="LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Legacy\MessageHandler\MessageHandlerTemplate.tt">
+    <Content Include="LegacyCodeBasedDsl\Templates\MessageHandler\MessageHandlerTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MessageHandlerTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Legacy\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt">
+    <Content Include="LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiEventConsumerServiceTemplate1.cs</LastGenOutput>
     </Content>
@@ -92,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
+      <Project>{d6171cc1-577a-4123-9ca3-34e017a40071}</Project>
+      <Name>Intent.Modules.AspNet.WebApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
       <Name>Intent.Modules.Common</Name>

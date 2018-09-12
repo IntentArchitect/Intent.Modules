@@ -10,7 +10,7 @@ namespace Intent.Modules.UserContext.Interop.AspNet.WebApi.Decorators
     {
         public const string Identifier = "Intent.UserContext.Interop.WebApi.DistributionDecorator";
 
-        public override IEnumerable<string> DeclareUsings(IServiceModel service)
+        public override IEnumerable<string> DeclareUsings()
         {
             return new[]
             {

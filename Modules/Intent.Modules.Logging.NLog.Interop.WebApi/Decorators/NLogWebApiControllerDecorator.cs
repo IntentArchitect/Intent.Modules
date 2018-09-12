@@ -16,7 +16,7 @@ namespace Intent.Modules.Logging.NLog.Interop.WebApi.Decorators
         {
         }
 
-        public override IEnumerable<string> DeclareUsings(IServiceModel service)
+        public override IEnumerable<string> DeclareUsings()
         {
             return new[]
                 {

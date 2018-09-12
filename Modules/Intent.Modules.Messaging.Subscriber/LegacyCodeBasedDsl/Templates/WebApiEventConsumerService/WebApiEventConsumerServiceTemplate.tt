@@ -1,0 +1,91 @@
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<SubscribingModel>" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.SoftwareFactory.MetaModels.Application" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Transactions;
+using System.Web.Http;
+using Intent.Esb.Client.Consuming;
+using Intent.Framework.EntityFramework;
+<#= DependencyUsings #>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    [RoutePrefix("api/eventConsumer")]
+    public class <#= ClassName #> : ApiController
+    {
+        private readonly MessageDispatcher _messageDispatcher;<#= DeclarePrivateVariables() #>
+
+        public MessageConsumingServiceController(MessageDispatcher messageDispatcher<#= ConstructorParams() #>
+            )
+        {
+            _messageDispatcher = messageDispatcher;<#= ConstructorInit() #>
+        }
+
+        public class MessagePayload
+        {
+            public string Content { get; set; }
+        }
+
+        [AcceptVerbs("POST")]
+        [Route("consumeMessage")]
+<#  if (Model.Security.RequiresAuthentication)
+    { #>
+        [Authorize<#= (Model.Security.RequiredRoles.Any()) ? "(Roles = \"" + Model.Security.RequiredRoles.First() + "\")" : "" #>]
+<#  } #>
+        public void ConsumeMessage(MessagePayload payload)
+        {<#= BeginOperation() #>
+            TransactionOptions tso = new TransactionOptions();
+            tso.IsolationLevel = IsolationLevel.<#= Model.TransactionOptions.IsolationLevel #>;
+<#  if (Model.TransactionOptions.TimeoutInSeconds != null)
+    { #>
+            tso.Timeout = TimeSpan.FromSeconds(<#= Model.TransactionOptions.TimeoutInSeconds #>);
+<#  } #>
+            try
+            {<#= BeforeTransaction() #>
+                using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso, TransactionScopeAsyncFlowOption.Enabled))
+                {<#= BeforeCallToAppLayer() #>
+                    _messageDispatcher.Dispatch(payload.Content);<#= AfterCallToAppLayer() #>
+                    ts.Complete();
+                }<#= AfterTransaction() #>
+            }
+            catch (Exception e) 
+            {<#= OnExceptionCaught() #>
+            }
+        }
+
+<#  if (Model.Security.RequiresAuthentication)
+    { #>
+        [Authorize<#= (Model.Security.RequiredRoles.Any()) ? "(Roles = \"" + Model.Security.RequiredRoles.First() + "\")" : "" #>]
+<#  } #>
+        [AcceptVerbs("GET")]
+        [Route("serviceIsRunning")]
+        public bool ServiceIsRunning()
+        {
+            return true;
+        }
+
+<# 
+        // Source code of base class: http://aspnetwebstack.codeplex.com/SourceControl/latest#src/System.Web.Http/ApiController.cs
+        // As dispose is not virtual, looking at the source code, this looks like a better hook in point
+#>
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);<#= OnDispose() #>
+        }
+    }
+}

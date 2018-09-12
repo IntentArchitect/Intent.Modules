@@ -19,14 +19,14 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         public const string Identifier = "Intent.AspNet.WebApi.Controller";
         private IEnumerable<WebApiControllerDecoratorBase> _decorators;
 
-        public WebApiControllerTemplate(IProject project, IServiceModel model)
-            : base(Identifier, project, model)
+        public WebApiControllerTemplate(IProject project, IServiceModel model, string identifier = Identifier)
+            : base(identifier, project, model)
         {
         }
 
         public IEnumerable<string> DeclareUsings()
         {
-            return GetDecorators().SelectMany(x => x.DeclareUsings(Model));
+            return GetDecorators().SelectMany(x => x.DeclareUsings());
         }
 
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()

@@ -10,7 +10,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
     {
         public const string Identifier = "Intent.AspNet.WebApi.ExceptionHandlingStrategy";
 
-        public override IEnumerable<string> DeclareUsings(IServiceModel service) => new List<string>
+        public override IEnumerable<string> DeclareUsings() => new List<string>
         {
             "Intent.Framework.WebApi.ExceptionHandling"
         };

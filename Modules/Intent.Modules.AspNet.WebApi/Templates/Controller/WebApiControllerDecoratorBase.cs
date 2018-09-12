@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
-    public abstract class WebApiControllerDecoratorBase : ITemplateDecorator, IPriorityDecorator
+    public abstract class WebApiControllerDecoratorBase : ITemplateDecorator, IPriorityDecorator, IDeclareUsings
     {
-        public virtual IEnumerable<string> DeclareUsings(IServiceModel service) => new List<string>();
+        public virtual IEnumerable<string> DeclareUsings() => new List<string>();
 
         public virtual string DeclarePrivateVariables(IServiceModel service) => @"";
 
