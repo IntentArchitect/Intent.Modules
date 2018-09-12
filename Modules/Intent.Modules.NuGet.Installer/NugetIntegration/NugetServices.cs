@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using NuGet;
 using NuGet.CommandLine;
@@ -208,11 +209,6 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                 package = FetchPackage(packageId, versionSpec, allowPrereleaseVersions);
             }
 
-            if (package == null)
-            {
-                throw new Exception($"Could not resolve {packageId} {versionSpec}");
-            }
-
             return package;
         }
 
@@ -249,7 +245,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                     allowPrereleaseVersions: allowPrereleaseVersions,
                     allowUnlisted: false)
                 .OrderBy(x => x.Version)
-                .First();
+                .FirstOrDefault();
 
             return package;
         }

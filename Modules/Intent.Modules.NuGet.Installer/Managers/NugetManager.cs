@@ -215,6 +215,12 @@ namespace Intent.Modules.NuGet.Installer.Managers
                     versionSpec: referer.VersionSpec,
                     allowPrereleaseVersions: _settings.AllowPreReleaseVersions);
 
+            if (package == null)
+            {
+                _tracing.Warning($"{NugetInstaller.TracingOutputPrefix}Unable find package [{packageId} {referer.VersionSpec}] to install as requested by [{referer.Name}].");
+                return;
+            }
+
             var packageNode = msbuildProject.PackageNodes
                 .SingleOrDefault(x => x.RequiredPackage.Id.Equals(packageId, StringComparison.InvariantCultureIgnoreCase));
 
@@ -266,7 +272,7 @@ namespace Intent.Modules.NuGet.Installer.Managers
             _msbuildProjects.AddRange(msbuildProjectPaths.Select(LoadMsbuildProject).Where(x => x != null));
         }
 
-        private bool IsNetCoreProject(string path)
+        private static bool IsNetCoreProject(string path)
         {
             var doc = XDocument.Load(path);
             return doc.XPathSelectElement("Project[@Sdk]") != null;
