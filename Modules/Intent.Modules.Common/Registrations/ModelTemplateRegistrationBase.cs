@@ -1,13 +1,9 @@
-﻿
+﻿using System.Collections.Generic;
+using System.Linq;
 using Intent.SoftwareFactory.Configuration;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Helpers;
 using Intent.SoftwareFactory.Registrations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Intent.SoftwareFactory.Templates.Registrations
 {
@@ -61,6 +57,7 @@ namespace Intent.SoftwareFactory.Templates.Registrations
             {
                 Logging.Log.Debug($"Applying filter : {_filterExpression}");
             }
+
             foreach (var m in models)
             {
                 var model = m;

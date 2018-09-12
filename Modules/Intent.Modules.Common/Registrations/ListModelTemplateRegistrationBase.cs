@@ -1,13 +1,10 @@
-﻿using Intent.SoftwareFactory.Configuration;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Intent.SoftwareFactory.Configuration;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Helpers;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Intent.SoftwareFactory.Registrations
 {
@@ -47,13 +44,12 @@ namespace Intent.SoftwareFactory.Registrations
 
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
-
             var config = application.Config.GetConfig(this.TemplateId, Configuration.PluginConfigType.Template);
             if (!config.Enabled)
             {
                 Logging.Log.Info($"Skipping disabled Template : { TemplateId }.");
                 return;
-            }            
+            }
 
             int templateInstancesRegistered = 0;
             var models = GetModels(application);

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Intent.SoftwareFactory.VisualStudio
 {
-    public class ExternalAssemblyRefernce : IAssemblyReference
+    public class ExternalAssemblyReference : IAssemblyReference
     {
         public string Library { get; }
         public string HintPath { get; }
 
-        public ExternalAssemblyRefernce(string library, string hintPath)
+        public ExternalAssemblyReference(string library, string hintPath)
         {
             Library = library;
             HintPath = hintPath;

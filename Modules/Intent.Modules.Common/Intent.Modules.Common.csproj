@@ -87,7 +87,7 @@
     <Compile Include="TypeResolution\IRequireTypeResolver.cs" />
     <Compile Include="TypeResolution\ITypeResolver.cs" />
     <Compile Include="VisualStudio\AssemblyRedirectInfo.cs" />
-    <Compile Include="VisualStudio\ExternalAssemblyRefernce.cs" />
+    <Compile Include="VisualStudio\ExternalAssemblyReference.cs" />
     <Compile Include="VisualStudio\GacAssemblyReference.cs" />
     <Compile Include="VisualStudio\IAssemblyReference.cs" />
     <Compile Include="VisualStudio\IHasAssemblyDependencies.cs" />
