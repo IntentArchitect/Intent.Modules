@@ -7,6 +7,7 @@ using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -15,7 +16,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 {
     public class WebApiWebConfigFileTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasDecorators<IWebConfigDecorator>
     {
-        public const string Identifier = "Intent.VisualStudio.Projects.WebConfig";
+        public const string IDENTIFIER = "Intent.VisualStudio.Projects.WebConfig";
 
 
         private IEnumerable<IWebConfigDecorator> _decorators;
@@ -23,7 +24,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
         private readonly IDictionary<string, ConnectionStringElement> _connectionStrings = new Dictionary<string, ConnectionStringElement>();
 
         public WebApiWebConfigFileTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
-            : base(Identifier, project, null)
+            : base(IDENTIFIER, project, null)
         {
             eventDispatcher.Subscribe(ApplicationEvents.Config_AppSetting, HandleAppSetting);
             eventDispatcher.Subscribe(ApplicationEvents.Config_ConnectionString, HandleConnectionString);
@@ -72,51 +73,73 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
             var location = FileMetaData.GetFullLocationPathWithFileName();
 
             var doc = LoadOrCreateWebConfig(location);
+            if (doc == null) throw new Exception("doc is null");
+            if (doc.Root == null) throw new Exception("doc.Root is null");
 
             var namespaces = new XmlNamespaceManager(new NameTable());
             namespaces.AddNamespace("ns", doc.Root.GetDefaultNamespace().NamespaceName);
 
+            var configurationElement = doc.XPathSelectElement("/ns:configuration", namespaces);
+            if (configurationElement == null)
+            {
+                doc.Add(configurationElement = new XElement("configuration"));
+            }
+
+            // App Settings:
+            var appSettingsElement = doc.XPathSelectElement("/ns:configuration/ns:appSettings", namespaces);
+            if (appSettingsElement == null && _appSettings.Any())
+            {
+                configurationElement.AddFirst(appSettingsElement = new XElement("appSettings"));
+            }
+
             foreach (var appSetting in _appSettings)
             {
-                var configAppSettings = doc.XPathSelectElement("/ns:configuration/ns:appSettings", namespaces);
-                if (configAppSettings.XPathSelectElement($"//add[@key='{appSetting.Key}']", namespaces) == null)
+                if (appSettingsElement == null) throw new Exception("appSettingsElement is null");
+
+                if (appSettingsElement.XPathSelectElement($"//add[@key='{appSetting.Key}']", namespaces) == null)
                 {
                     var setting = new XElement("add");
                     setting.Add(new XAttribute("key", appSetting.Key));
                     setting.Add(new XAttribute("value", appSetting.Value));
-                    configAppSettings.Add(setting);
+                    appSettingsElement.Add(setting);
+                }
+            }
+
+            // Connection Strings:
+            var connectionStringsElement = doc.XPathSelectElement("/ns:configuration/ns:connectionStrings", namespaces);
+            if (connectionStringsElement == null && _connectionStrings.Values.Any())
+            {
+                connectionStringsElement = new XElement("connectionStrings");
+
+                if (appSettingsElement != null)
+                {
+                    appSettingsElement.AddBeforeSelf(connectionStringsElement);
+                }
+                else
+                {
+                    configurationElement.AddFirst(connectionStringsElement);
                 }
             }
 
             foreach (var connectionString in _connectionStrings.Values)
             {
-                var configConnectionStrings = doc.XPathSelectElement("/ns:configuration/ns:connectionStrings", namespaces);
-                if (configConnectionStrings == null)
-                {
-                    configConnectionStrings = new XElement("connectionStrings");
-                    var configAppSettings = doc.XPathSelectElement("/ns:configuration/ns:appSettings", namespaces);
-                    if (configAppSettings == null)
-                    {
-                        doc.Root.AddFirst(configConnectionStrings);
-                    }
-                    else
-                    {
-                        configAppSettings.AddBeforeSelf(configConnectionStrings);
-                    }
-                }
-                if (configConnectionStrings.XPathSelectElement($"//add[@name='{connectionString.Name}']", namespaces) == null)
+                if (connectionStringsElement == null) throw new Exception("connectionStringsElement is null");
+
+                if (connectionStringsElement.XPathSelectElement($"//add[@name='{connectionString.Name}']", namespaces) == null)
                 {
                     var setting = new XElement("add");
                     setting.Add(new XAttribute("name", connectionString.Name));
                     setting.Add(new XAttribute("providerName", connectionString.ProviderName));
                     setting.Add(new XAttribute("connectionString", connectionString.ConnectionString));
-                    configConnectionStrings.Add(setting);
+                    connectionStringsElement.Add(setting);
                 }
             }
+
             foreach (var webConfigDecorator in GetDecorators())
             {
                 webConfigDecorator.Install(doc, Project);
             }
+            
             return doc.ToStringUTF8();
         }
 

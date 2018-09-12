@@ -20,7 +20,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
             _metaDataManager = metaDataManager;
         }
 
-        public string TemplateId => WebApiWebConfigFileTemplate.Identifier;
+        public string TemplateId => WebApiWebConfigFileTemplate.IDENTIFIER;
 
 
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
