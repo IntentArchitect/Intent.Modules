@@ -1,28 +1,24 @@
+using System.Collections.Generic;
+using System.Linq;
 using Intent.MetaModel.Service;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.Modules.Logging.NLog.Templates.SanitizingJsonSerializer;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Intent.Modules.Logging.NLog.Interop.WebApi.Decorators
 {
     public class NLogWebApiControllerDecorator : WebApiControllerDecoratorBase, IHasNugetDependencies, IHasTemplateDependencies
     {
-        public const string Identifier = "Intent.Logging.NLog.Interop.WebApi.Decorator";
-
-        public NLogWebApiControllerDecorator()
-        {
-        }
+        public const string IDENTIFIER = "Intent.Logging.NLog.Interop.WebApi.Decorator";
 
         public override IEnumerable<string> DeclareUsings()
         {
             return new[]
-                {
+            {
                 "NLog",
                 "System.Diagnostics"
-                };
+            };
         }
 
         public override string DeclarePrivateVariables(IServiceModel service) => @"
@@ -37,18 +33,9 @@ namespace Intent.Modules.Logging.NLog.Interop.WebApi.Decorators
 
         public override string BeginOperation(IServiceModel service, IOperationModel operation)
         {
-            return BeginOperation(new[] { "payload" }, operation.Name);
-        }
-
-        private static string BeginOperation(IEnumerable<string> parameterNames, string operationName)
-        {
-            var anonymousObjectInitializer = parameterNames.Select(x => $"{x}")
-                .DefaultIfEmpty()
-                .Aggregate((x, y) => $"{x}, {y}");
-
             return $@"
             var stopWatch = Stopwatch.StartNew();
-            Logger.Trace(""{FormatOperationName(operationName)}Parameters: {{0}}"", SanitizingJsonSerializer.Serialize(new {{ " + anonymousObjectInitializer + $@" }}));";
+            Logger.Trace(""{FormatOperationName(operation.Name)}Parameters: {{0}}"", SanitizingJsonSerializer.Serialize(new {{ " + GetAnonymousObjectInitializer(operation) + $@" }}));";
         }
 
         public override string BeforeTransaction(IServiceModel service, IOperationModel operation) => @"";
@@ -75,18 +62,17 @@ namespace Intent.Modules.Logging.NLog.Interop.WebApi.Decorators
 
         public override string OnExceptionCaught(IServiceModel service, IOperationModel operation)
         {
-            return OnExceptionCaught(new[] { "payload" }, operation.Name);
+            return $@"
+                Logger.Error(""{FormatOperationName(operation.Name)}Parameters: {{0}}"", SanitizingJsonSerializer.Serialize(new {{ " + GetAnonymousObjectInitializer(operation) + $@" }}));
+                Logger.Error(e);";
         }
 
-        private static string OnExceptionCaught(IEnumerable<string> parameterNames, string operationName)
+        private static string GetAnonymousObjectInitializer(IOperationModel operation)
         {
-            var anonymousObjectInitializer = parameterNames.Select(x => $"{x}")
+            return operation.Parameters
+                .Select(x => $"{x.Name}")
                 .DefaultIfEmpty()
                 .Aggregate((x, y) => $"{x}, {y}");
-
-            return $@"
-                Logger.Error(""{FormatOperationName(operationName)}Parameters: {{0}}"", SanitizingJsonSerializer.Serialize(new {{ " + anonymousObjectInitializer + $@" }}));
-                Logger.Error(e);";
         }
 
         public override string ClassMethods(IServiceModel service) => @"";

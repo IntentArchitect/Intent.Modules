@@ -36,18 +36,13 @@ namespace <#= Namespace #>
             _messageDispatcher = messageDispatcher;<#= ConstructorInit() #>
         }
 
-        public class MessagePayload
-        {
-            public string Content { get; set; }
-        }
-
         [AcceptVerbs("POST")]
         [Route("consumeMessage")]
 <#  if (Model.Security.RequiresAuthentication)
     { #>
         [Authorize<#= (Model.Security.RequiredRoles.Any()) ? "(Roles = \"" + Model.Security.RequiredRoles.First() + "\")" : "" #>]
 <#  } #>
-        public void ConsumeMessage(MessagePayload payload)
+        public void ConsumeMessage(string content)
         {<#= BeginOperation() #>
             TransactionOptions tso = new TransactionOptions();
             tso.IsolationLevel = IsolationLevel.<#= Model.TransactionOptions.IsolationLevel #>;
@@ -59,7 +54,7 @@ namespace <#= Namespace #>
             {<#= BeforeTransaction() #>
                 using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso, TransactionScopeAsyncFlowOption.Enabled))
                 {<#= BeforeCallToAppLayer() #>
-                    _messageDispatcher.Dispatch(payload.Content);<#= AfterCallToAppLayer() #>
+                    _messageDispatcher.Dispatch(content);<#= AfterCallToAppLayer() #>
                     ts.Complete();
                 }<#= AfterTransaction() #>
             }

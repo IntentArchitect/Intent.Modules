@@ -9,7 +9,7 @@ namespace Intent.Modules.Logging.NLog.Interop.WebApi
     {
         public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
         {
-            RegisterDecorator<WebApiControllerDecoratorBase>(NLogWebApiControllerDecorator.Identifier, new NLogWebApiControllerDecorator());
+            RegisterDecorator<WebApiControllerDecoratorBase>(NLogWebApiControllerDecorator.IDENTIFIER, new NLogWebApiControllerDecorator());
         }
     }
 }

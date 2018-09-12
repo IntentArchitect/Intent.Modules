@@ -49,7 +49,7 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
                         parameters: new List<IOperationParameterModel>
                         {
                             new OperationParameterModel(
-                                name: "Content",
+                                name: "content",
                                 typeReference: new ClassTypeReference(
                                     id: Guid.Empty.ToString(),
                                     name: "string",

@@ -79,11 +79,10 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
             
             #line default
             #line hidden
-            this.Write("\r\n        }\r\n\r\n        public class MessagePayload\r\n        {\r\n            public" +
-                    " string Content { get; set; }\r\n        }\r\n\r\n        [AcceptVerbs(\"POST\")]\r\n     " +
-                    "   [Route(\"consumeMessage\")]\r\n");
+            this.Write("\r\n        }\r\n\r\n        [AcceptVerbs(\"POST\")]\r\n        [Route(\"consumeMessage\")]\r\n" +
+                    "");
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
   if (Model.Security.RequiresAuthentication)
     { 
             
@@ -91,21 +90,21 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
             #line hidden
             this.Write("        [Authorize");
             
-            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((Model.Security.RequiredRoles.Any()) ? "(Roles = \"" + Model.Security.RequiredRoles.First() + "\")" : ""));
             
             #line default
             #line hidden
             this.Write("]\r\n");
             
-            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
   } 
             
             #line default
             #line hidden
-            this.Write("        public void ConsumeMessage(MessagePayload payload)\r\n        {");
+            this.Write("        public void ConsumeMessage(string content)\r\n        {");
             
-            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BeginOperation()));
             
             #line default
@@ -113,14 +112,14 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
             this.Write("\r\n            TransactionOptions tso = new TransactionOptions();\r\n            tso" +
                     ".IsolationLevel = IsolationLevel.");
             
-            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.TransactionOptions.IsolationLevel));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
   if (Model.TransactionOptions.TimeoutInSeconds != null)
     { 
             
@@ -128,21 +127,21 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
             #line hidden
             this.Write("            tso.Timeout = TimeSpan.FromSeconds(");
             
-            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.TransactionOptions.TimeoutInSeconds));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
   } 
             
             #line default
             #line hidden
             this.Write("            try\r\n            {");
             
-            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BeforeTransaction()));
             
             #line default
@@ -151,35 +150,35 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
                     "opeOption.Required, tso, TransactionScopeAsyncFlowOption.Enabled))\r\n            " +
                     "    {");
             
-            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BeforeCallToAppLayer()));
             
             #line default
             #line hidden
-            this.Write("\r\n                    _messageDispatcher.Dispatch(payload.Content);");
+            this.Write("\r\n                    _messageDispatcher.Dispatch(content);");
             
-            #line 62 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AfterCallToAppLayer()));
             
             #line default
             #line hidden
             this.Write("\r\n                    ts.Complete();\r\n                }");
             
-            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AfterTransaction()));
             
             #line default
             #line hidden
             this.Write("\r\n            }\r\n            catch (Exception e) \r\n            {");
             
-            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 62 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(OnExceptionCaught()));
             
             #line default
             #line hidden
             this.Write("\r\n            }\r\n        }\r\n\r\n");
             
-            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
   if (Model.Security.RequiresAuthentication)
     { 
             
@@ -187,14 +186,14 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
             #line hidden
             this.Write("        [Authorize");
             
-            #line 73 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((Model.Security.RequiredRoles.Any()) ? "(Roles = \"" + Model.Security.RequiredRoles.First() + "\")" : ""));
             
             #line default
             #line hidden
             this.Write("]\r\n");
             
-            #line 74 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 69 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
   } 
             
             #line default
@@ -202,7 +201,7 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
             this.Write("        [AcceptVerbs(\"GET\")]\r\n        [Route(\"serviceIsRunning\")]\r\n        public" +
                     " bool ServiceIsRunning()\r\n        {\r\n            return true;\r\n        }\r\n\r\n");
             
-            #line 82 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
  
         // Source code of base class: http://aspnetwebstack.codeplex.com/SourceControl/latest#src/System.Web.Http/ApiController.cs
         // As dispose is not virtual, looking at the source code, this looks like a better hook in point
@@ -213,7 +212,7 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
             this.Write("        protected override void Dispose(bool disposing)\r\n        {\r\n            b" +
                     "ase.Dispose(disposing);");
             
-            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
+            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Messaging.Subscriber\LegacyCodeBasedDsl\Templates\WebApiEventConsumerService\WebApiEventConsumerServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(OnDispose()));
             
             #line default
