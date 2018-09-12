@@ -10,7 +10,7 @@ using Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager;
 
 namespace Intent.Modules.Unity.Templates.UnityConfig
 {
-    partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IUnityRegistrationsDecorator>, IHasTemplateDependencies
+    partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IUnityRegistrationsDecorator>//, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.Unity.Config";
 
@@ -66,8 +66,8 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         private string GetRegistrationString(ContainerRegistration x)
         {
             return x.InterfaceType != null 
-                ? $"{Environment.NewLine}            container.RegisterType<{NormalizeNamespace(x.InterfaceType)}, {NormalizeNamespace(x.ConcreteType)}>({GetLifetimeManager(x)});" 
-                : $"{Environment.NewLine}            container.RegisterType<{NormalizeNamespace(x.ConcreteType)}>({GetLifetimeManager(x)});";
+                ? $"{Environment.NewLine}            container.RegisterType<{x.InterfaceType}, {x.ConcreteType}>({GetLifetimeManager(x)});" 
+                : $"{Environment.NewLine}            container.RegisterType<{x.ConcreteType}>({GetLifetimeManager(x)});";
         }
 
         private string GetLifetimeManager(ContainerRegistration registration)
@@ -98,17 +98,6 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
                 lifetime: @event.TryGetValue("Lifetime"),
                 interfaceTypeTemplateDependency: @event.TryGetValue("InterfaceTypeTemplateId") != null ? TemplateDependancy.OnTemplate(@event.TryGetValue("InterfaceTypeTemplateId")) : null,
                 concreteTypeTemplateDependency: @event.TryGetValue("ConcreteTypeTemplateId") != null ? TemplateDependancy.OnTemplate(@event.TryGetValue("ConcreteTypeTemplateId")) : null));
-        }
-
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
-        {
-            return _registrations
-                .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
-                .Select(x => x.InterfaceTypeTemplateDependency)
-                .Union(_registrations
-                    .Where(x => x.ConcreteTypeTemplateDependency != null)
-                    .Select(x => x.ConcreteTypeTemplateDependency))
-                .ToList();
         }
     }
 
