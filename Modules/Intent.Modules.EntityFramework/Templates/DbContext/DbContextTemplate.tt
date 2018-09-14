@@ -38,9 +38,13 @@ namespace <#= Namespace #>
 <# }#>
         }
 
+		[IntentManaged(Mode.Ignore)]
         private void ConfigureConventions(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+			// Customize Default Schema
+			// modelBuilder.HasDefaultSchema("<#= Project.Application.ApplicationName#>");
         }
     }
 }
