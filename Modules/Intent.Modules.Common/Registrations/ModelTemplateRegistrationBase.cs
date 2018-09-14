@@ -19,10 +19,7 @@ namespace Intent.SoftwareFactory.Templates.Registrations
 
         public string FilterExpression
         {
-            get
-            {
-                return _filterExpression;
-            }
+            get => _filterExpression;
             set
             {
                 if (value == null)
@@ -41,29 +38,28 @@ namespace Intent.SoftwareFactory.Templates.Registrations
             }
         }
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var config = application.Config.GetConfig(this.TemplateId, Configuration.PluginConfigType.Template);
+            var config = application.Config.GetConfig(TemplateId, PluginConfigType.Template);
             if (!config.Enabled)
             {
                 Logging.Log.Info($"Skipping disabled Template : { TemplateId }.");
                 return;
             }
 
-            int templateInstancesRegistered = 0;
-            var models = GetModels(application);
-            Logging.Log.Debug($"Models found [{typeof(TModel).FullName}] : {models.Count()}");
+            var templateInstancesRegistered = 0;
+            var models = GetModels(application).ToArray();
+            Logging.Log.Debug($"Models found [{typeof(TModel).FullName}] : {models.Length}");
             if (_filterExpression != null)
             {
                 Logging.Log.Debug($"Applying filter : {_filterExpression}");
             }
 
-            foreach (var m in models)
+            foreach (var model in models)
             {
-                var model = m;
                 if (_filter == null || _filter.Invoke(model))
                 {
-                    registery.Register(TemplateId, project => CreateTemplateInstance(project, model));
+                    registry.Register(TemplateId, project => CreateTemplateInstance(project, model));
                     templateInstancesRegistered++;
                 }
             }

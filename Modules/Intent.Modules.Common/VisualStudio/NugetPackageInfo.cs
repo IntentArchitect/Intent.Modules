@@ -14,6 +14,11 @@ namespace Intent.SoftwareFactory.VisualStudio
             AssemblyRedirects = new List<AssemblyRedirectInfo>();
         }
 
+        public override string ToString()
+        {
+            return $"{Name}, {Version}, {TargetFramework}";
+        }
+
         public string Name { get; }
         public string Version { get; }
         public string TargetFramework { get; }
