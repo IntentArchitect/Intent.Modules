@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\DefaultConstructorDomainEntityDecorator.cs" />
+    <Compile Include="Decorators\DefaultConstructorDomainEntityDecoratorRegistration.cs" />
     <Compile Include="Decorators\SerializableEntityStateDecorator.cs" />
     <Compile Include="Decorators\SerializableEntityInterfaceDecorator.cs" />
     <Compile Include="Decorators\SerializableEntityStateDecoratorRegistration.cs" />
