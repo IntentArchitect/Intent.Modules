@@ -79,7 +79,7 @@ namespace <#= Namespace #>
     {#>
             builder.ToTable("<#= Model.Name #>");
 <#  }
-	if (ImplicitSurrogateKey && Model.ParentClass == null) {#>
+    if (ImplicitSurrogateKey && Model.ParentClass == null) {#>
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("Id");
 <#  }
@@ -88,24 +88,28 @@ namespace <#= Namespace #>
 <#  }  
     foreach (var attribute in Model.Attributes)
     {
-		if (attribute.Name.ToLower() == "id")
+        if (attribute.Name.ToLower() == "id")
         {
-			if (ImplicitSurrogateKey) {
-				throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable the 'Implicit Surrogate Key' option for this template", Model.Name));
+            if (ImplicitSurrogateKey) {
+                throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable the 'Implicit Surrogate Key' option for this template", Model.Name));
             }#>
             builder.HasKey(x => x.Id);
 <#	    }#>
+<#		var indexStereotype = attribute.GetStereotype("Index");
+        if(indexStereotype != null)
+        { #>
+            builder.HasIndex(x => x.<#= attribute.Name.ToPascalCase() #>)
+                .IsUnique(unique: <#= indexStereotype.GetProperty("IsUnique", "false") #>)
+<#			
+            var uniqueKey = indexStereotype.GetProperty("UniqueKey", string.Empty);
+            if(!string.IsNullOrEmpty(uniqueKey))
+            { #>
+                .HasName("<#= uniqueKey #>")
+<#			} #>
+                ;
+<#      } #>
             builder.Property(x => x.<#= attribute.Name.ToPascalCase()#>)<#
-		if (!string.IsNullOrEmpty(attribute.GetStereotypeProperty<string>("Index", "UniqueKey")))
-		{#>
-                .HasColumnAnnotation("Index", new IndexAnnotation(new []
-                    {
-<#			foreach(var index in attribute.Stereotypes.Where(x => x.Name == "Index")) { #>
-                        new IndexAttribute("<#= Model.Name.ToPascalCase()#>_<#= index.GetProperty("UniqueKey", "Unique1")#>", <#= index.GetProperty("Order", "1")#>) { IsUnique = <#= index.GetProperty("IsUnique", "false")#> },
-<#
-			}#>
-                    }))<#
-        }
+
         if (!attribute.IsNullable){#>
 
                 .IsRequired()<#
@@ -144,9 +148,9 @@ namespace <#= Namespace #>
 <#    foreach (var associationEnd in Model.AssociatedClasses)
     {
 
-		if (associationEnd != associationEnd.Association.TargetEnd)
+        if (associationEnd != associationEnd.Association.TargetEnd)
         {
-			continue;
+            continue;
         }
 
         switch (associationEnd.Relationship())
@@ -169,7 +173,7 @@ namespace <#= Namespace #>
             builder.HasOne(x => x.<#=associationEnd.Name().ToPascalCase()#>)
                 .WithMany(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
 <#				if (UseForeignKeys) { #>
-				.HasForeignKey(x => x.<#= associationEnd.Name().ToPascalCase()#>Id)
+                .HasForeignKey(x => x.<#= associationEnd.Name().ToPascalCase()#>Id)
 <#				} else { #>
                 .HasForeignKey("<#= associationEnd.Name().ToPascalCase()#>Id"))
 <#				} #>
@@ -180,9 +184,9 @@ namespace <#= Namespace #>
             builder.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
                 .WithOne(x => x.<#= associationEnd.OtherEnd().Name().ToPascalCase() #>)
 <#				if (UseForeignKeys) { #>
-				.HasForeignKey(x => x.<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id)
+                .HasForeignKey(x => x.<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id)
 <#				} else { #>
-				.Map(m => m.MapKey("<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id"))
+                .Map(m => m.MapKey("<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id"))
 <#				} #>
 <#				if (associationEnd.OtherEnd().MinMultiplicity != "0") { #>
                 .IsRequired()
