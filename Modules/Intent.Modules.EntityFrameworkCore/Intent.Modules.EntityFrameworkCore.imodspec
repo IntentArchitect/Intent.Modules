@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.EntityFrameworkCore</id>
-  <version>1.5.4</version>
+  <version>1.5.5</version>
   <summary>Entity Framework Core implementation.</summary>
   <description>Entity Framework Core implementation.</description>
   <authors>Intent Software</authors>
@@ -13,6 +13,8 @@
       <config>
         <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
         <add key="Use Lazy-Loading Proxies" description="Whether EF should be configured to use lazy-loading proxies" type="boolean" default="true" />
+        <!-- Untill there is a better way, this method will have to do -->
+        <add key="DbContext DbServer Setup" description="The name of the Extension method that gets invoked to setup the desired DB Server" default="UseSqlServer" />
       </config>
     </template>
     <template id="Intent.EntityFrameworkCore.EFMapping">

@@ -79,7 +79,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
                 { ContainerRegistrationForDbContextEvent.UsingsKey, $"Microsoft.EntityFrameworkCore;" },
                 { ContainerRegistrationForDbContextEvent.ConcreteTypeKey, $"{Namespace}.{ClassName}" },
                 { ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey, Identifier },
-                { ContainerRegistrationForDbContextEvent.OptionsKey, $@".UseSqlServer(Configuration.GetConnectionString(""{Project.Application.ApplicationName}DB"")){(UseLazyLoadingProxies ? ".UseLazyLoadingProxies()" : "")}" },
+                { ContainerRegistrationForDbContextEvent.OptionsKey, $@".{GetDbContextDbServerSetupMethodName()}(Configuration.GetConnectionString(""{Project.Application.ApplicationName}DB"")){(UseLazyLoadingProxies ? ".UseLazyLoadingProxies()" : "")}" },
             });
         }
 
@@ -105,6 +105,12 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
             return Model.Select(x => TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
+        }
+
+        private string GetDbContextDbServerSetupMethodName()
+        {
+            var dbContextDbServerName = GetMetaData().CustomMetaData["DbContext DbServer Setup"];
+            return dbContextDbServerName;
         }
     }
 }
