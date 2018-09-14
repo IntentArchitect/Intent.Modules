@@ -30,7 +30,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DTOTemplate.Identifier),
+                TemplateDependancy.OnTemplate(DTOTemplate.IDENTIFIER),
             };
         }
 

@@ -1,11 +1,11 @@
-﻿using Intent.MetaModel.DTO;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using Intent.MetaModel.DTO;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 using Intent.SoftwareFactory.Templates;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
@@ -18,11 +18,11 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
         public MappingProfileTemplateRegistrations(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
-            
+
             FilterExpression = "!string.IsNullOrWhiteSpace(model.MappedClassId)";
         }
 
-        public override string TemplateId => MappingProfileTemplate.Identifier;
+        public override string TemplateId => MappingProfileTemplate.IDENTIFIER;
 
         public override ITemplate CreateTemplateInstance(IProject project, IList<IDTOModel> models)
         {

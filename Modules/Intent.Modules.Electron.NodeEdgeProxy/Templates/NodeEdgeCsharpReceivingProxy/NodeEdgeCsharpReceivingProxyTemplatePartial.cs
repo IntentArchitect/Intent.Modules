@@ -43,7 +43,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
             {
                 TemplateDependancy.OnTemplate(UnityConfigTemplate.Identifier),
                 TemplateDependancy.OnModel(ServiceContractTemplate.Identifier, Model),
-                TemplateDependancy.OnTemplate(DTOTemplate.Identifier)
+                TemplateDependancy.OnTemplate(DTOTemplate.IDENTIFIER)
             };
         }
 

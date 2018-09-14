@@ -10,10 +10,10 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
 {
     partial class WebApiServiceCallContextTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IBeforeTemplateExecutionHook
     {
-        public const string Identifier = "Intent.AspNet.WebApi.ServiceCallContext";
+        public const string IDENTIFIER = "Intent.AspNet.WebApi.ServiceCallContext";
 
         public WebApiServiceCallContextTemplate(IProject project)
-            : base (Identifier, project, null)
+            : base(IDENTIFIER, project, null)
         {
         }
 
@@ -48,7 +48,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
         {
             Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
-                { "InterfaceType", $"Intent.Framework.Core.Context.IContextBackingStore"},
+                { "InterfaceType", "Intent.Framework.Core.Context.IContextBackingStore"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" }
             });
 
@@ -56,9 +56,9 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
             {
                 { InitializationRequiredEvent.UsingsKey, $@"Intent.Framework.Core.Context;
 {Namespace};" },
-                { InitializationRequiredEvent.CallKey, $"InitializeServiceCallContext();" },
+                { InitializationRequiredEvent.CallKey, "InitializeServiceCallContext();" },
                 { InitializationRequiredEvent.MethodKey, $@"
-        void InitializeServiceCallContext()
+        private void InitializeServiceCallContext()
         {{
             ServiceCallContext.SetBackingStore(new {ClassName}());
         }}" }

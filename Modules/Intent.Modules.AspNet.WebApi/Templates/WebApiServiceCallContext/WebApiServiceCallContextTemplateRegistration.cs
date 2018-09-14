@@ -1,19 +1,14 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Intent.MetaModel.Domain;
-using Intent.SoftwareFactory;
+﻿using System.ComponentModel;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Registrations;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
 {
-    [Description(WebApiServiceCallContextTemplate.Identifier)]
+    [Description(WebApiServiceCallContextTemplate.IDENTIFIER)]
     public class WebApiServiceCallContextTemplateRegistration : NoModelTemplateRegistrationBase
     {
-        public override string TemplateId => WebApiServiceCallContextTemplate.Identifier;
+        public override string TemplateId => WebApiServiceCallContextTemplate.IDENTIFIER;
 
         public override ITemplate CreateTemplateInstance(IProject project)
         {

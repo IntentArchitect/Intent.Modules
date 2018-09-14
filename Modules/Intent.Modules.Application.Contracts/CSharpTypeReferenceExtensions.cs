@@ -13,7 +13,7 @@ namespace Intent.Modules.Application.Contracts
     public static class CSharpTypeReferenceExtensions
     {
         [Obsolete("To be converted to Type system")]
-        public static string GetQualifiedName<T>(this ITypeReference typeInfo, T template, string templateIdentifier = DTOTemplate.Identifier)
+        public static string GetQualifiedName<T>(this ITypeReference typeInfo, T template, string templateIdentifier = DTOTemplate.IDENTIFIER)
             where T: IProjectItemTemplate, IRequireTypeResolver
         {
             var result = typeInfo.Name;

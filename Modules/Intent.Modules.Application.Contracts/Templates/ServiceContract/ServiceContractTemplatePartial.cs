@@ -19,7 +19,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         private readonly DecoratorDispatcher<IServiceContractAttributeDecorator> _decoratorDispatcher;
 
-        public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = Identifier, string dtoTemplateId = DTOTemplate.Identifier)
+        public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = Identifier, string dtoTemplateId = DTOTemplate.IDENTIFIER)
             : base(identifier, project, model)
         {
             _dtoTemplateId = dtoTemplateId;

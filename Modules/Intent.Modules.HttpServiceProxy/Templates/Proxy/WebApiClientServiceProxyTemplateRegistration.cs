@@ -1,27 +1,27 @@
-﻿using Intent.MetaModel.Service;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
-    [Description("Intent HttpServiceProxy - Proxy")]
-    public class Registrations : ModelTemplateRegistrationBase<IServiceModel>
+    [Description(WebApiClientServiceProxyTemplate.IDENTIFIER)]
+    public class WebApiClientServiceProxyTemplateRegistration : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public WebApiClientServiceProxyTemplateRegistration(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
 
-        public override string TemplateId => WebApiClientServiceProxyTemplate.Identifier;
+        public override string TemplateId => WebApiClientServiceProxyTemplate.IDENTIFIER;
 
         public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
         {

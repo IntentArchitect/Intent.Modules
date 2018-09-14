@@ -57,7 +57,7 @@ namespace Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DTOTemplate.Identifier),
+                TemplateDependancy.OnTemplate(DTOTemplate.IDENTIFIER),
                 TemplateDependancy.OnTemplate(DomainEntityStateInterfaceTemplate.Identifier)
             };
         }

@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
-    [Description(DTOTemplate.Identifier)]
+    [Description(DTOTemplate.IDENTIFIER)]
     public class Registrations : ModelTemplateRegistrationBase<IDTOModel>
     {
         private readonly IMetaDataManager _metaDataManager;
@@ -20,7 +20,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         }
 
-        public override string TemplateId => DTOTemplate.Identifier;
+        public override string TemplateId => DTOTemplate.IDENTIFIER;
 
         public override ITemplate CreateTemplateInstance(IProject project, IDTOModel model)
         {

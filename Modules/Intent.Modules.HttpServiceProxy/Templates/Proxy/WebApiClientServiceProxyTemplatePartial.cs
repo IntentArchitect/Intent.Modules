@@ -1,4 +1,6 @@
-﻿using Intent.MetaModel.Common;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts.Clients;
 using Intent.Modules.HttpServiceProxy.Templates.AddressResolverInterface;
@@ -6,17 +8,15 @@ using Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
     partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, IHasTemplateDependencies
     {
-        public const string Identifier = "Intent.HttpServiceProxy.Proxy";
+        public const string IDENTIFIER = "Intent.HttpServiceProxy.Proxy";
 
-        public WebApiClientServiceProxyTemplate(IProject project, IServiceModel model)
-            : base(Identifier, project, model)
+        public WebApiClientServiceProxyTemplate(IProject project, IServiceModel model, string identifier = IDENTIFIER)
+            : base(identifier, project, model)
         {
         }
 
@@ -33,8 +33,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
                 fileExtension: "cs",
                 defaultLocationInProject: @"Generated\ClientProxies",
                 className: "${Model.Name}WebApiClientProxy",
-                @namespace: "${Project.Name}"
-                );
+                @namespace: "${Project.Name}");
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
