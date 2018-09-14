@@ -3,16 +3,17 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
 using System.ComponentModel;
 
-namespace Intent.Modules.HttpServiceProxy.Templates.AddressResolverInterface
+namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
 {
-    [Description("Intent HttpServiceProxy - Address Resolver Interface")]
+    [Description(HttpClientServiceInterfaceTemplate.IDENTIFIER)]
     public class Registrations : NoModelTemplateRegistrationBase
     {
-        public override string TemplateId => HttpServiceProxyAddressResolverInterfaceTemplate.Identifier;
+        public override string TemplateId => HttpClientServiceInterfaceTemplate.IDENTIFIER;
 
         public override ITemplate CreateTemplateInstance(IProject project)
         {
-            return new HttpServiceProxyAddressResolverInterfaceTemplate(project);
+            return new HttpClientServiceInterfaceTemplate(project);
         }
     }
 }
+

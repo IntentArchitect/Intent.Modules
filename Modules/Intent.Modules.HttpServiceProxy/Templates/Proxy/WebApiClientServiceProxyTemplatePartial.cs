@@ -3,20 +3,19 @@ using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts.Clients;
-using Intent.Modules.HttpServiceProxy.Templates.AddressResolverInterface;
-using Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
+using Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
-    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, IHasTemplateDependencies
+    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies
     {
         public const string IDENTIFIER = "Intent.HttpServiceProxy.Proxy";
 
-        public WebApiClientServiceProxyTemplate(IProject project, IServiceModel model, string identifier = IDENTIFIER)
-            : base(identifier, project, model)
+        public WebApiClientServiceProxyTemplate(IProject project, IServiceModel model)
+            : base(IDENTIFIER, project, model)
         {
         }
 
@@ -33,7 +32,8 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
                 fileExtension: "cs",
                 defaultLocationInProject: @"Generated\ClientProxies",
                 className: "${Model.Name}WebApiClientProxy",
-                @namespace: "${Project.Name}");
+                @namespace: "${Project.Name}"
+                );
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
@@ -50,16 +50,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
         {
             return new[]
             {
-                new GacAssemblyReference("System.Net.Http"),
-                new GacAssemblyReference("System.Configuration"),
-            };
-        }
-
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
-        {
-            return new List<ITemplateDependancy>
-            {
-                TemplateDependancy.OnTemplate(HttpProxyInterceptorInterfaceTemplate.Identifier),
+                new GacAssemblyReference("System.Net.Http")
             };
         }
 
@@ -102,25 +93,16 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             {
                 return $"I{Model.Name}";
             }
+
             return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
         }
 
-        private string GetInterceptorInterfaceName()
+        private string GetHttpClientServiceInterfaceName()
         {
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpProxyInterceptorInterfaceTemplate.Identifier));
+            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpClientServiceInterfaceTemplate.IDENTIFIER));
             if (template == null)
             {
-                return "IHttpProxyInterceptor";
-            }
-            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
-        }
-
-        private string GetAddressResolverInterfaceName()
-        {
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpServiceProxyAddressResolverInterfaceTemplate.Identifier));
-            if (template == null)
-            {
-                return "IHttpServiceProxyAddressResolver";
+                return "IHttpClientService";
             }
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }

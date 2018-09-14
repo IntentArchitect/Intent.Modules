@@ -1,11 +1,12 @@
-﻿using Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface;
 
 namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
 {
@@ -102,6 +103,12 @@ namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
             {
                 TemplateDependancy.OnTemplate(HttpProxyInterceptorInterfaceTemplate.Identifier),
             };
+        }
+
+        private string GetHttpClientServiceInterfaceName()
+        {
+            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpClientServiceInterfaceTemplate.IDENTIFIER));
+            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
     }
 }

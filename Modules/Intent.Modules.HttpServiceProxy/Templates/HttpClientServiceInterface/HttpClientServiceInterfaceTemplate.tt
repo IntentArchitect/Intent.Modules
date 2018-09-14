@@ -10,8 +10,9 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-
-using System;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -19,6 +20,10 @@ namespace <#= Namespace #>
 {
     public interface <#= ClassName #>
     {
-        Uri Resolve(string targetApplicationName, string basePath);
+        string GetBaseAddress(string targetApplicationName);
+        Task<HttpResponseMessage> PostAsJsonAsync<T>(string targetApplicationName, string requestUri, T value);
+        Task<HttpResponseMessage> PostAsJsonAsync<T>(string targetApplicationName, string requestUri, T value, CancellationToken cancellationToken);
+        Task<HttpResponseMessage> PostAsJsonAsync<T>(string fullRequestUri, T value);
+        Task<HttpResponseMessage> PostAsJsonAsync<T>(string fullRequestUri, T value, CancellationToken cancellationToken);
     }
 }

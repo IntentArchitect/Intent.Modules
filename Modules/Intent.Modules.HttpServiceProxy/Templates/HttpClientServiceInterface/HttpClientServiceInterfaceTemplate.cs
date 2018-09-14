@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.HttpServiceProxy.Templates.AddressResolverInterface
+namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
     using Intent.SoftwareFactory.Templates;
@@ -22,9 +22,9 @@ namespace Intent.Modules.HttpServiceProxy.Templates.AddressResolverInterface
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverInterface\HttpServiceProxyAddressResolverInterfaceTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class HttpServiceProxyAddressResolverInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class HttpClientServiceInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -32,22 +32,31 @@ namespace Intent.Modules.HttpServiceProxy.Templates.AddressResolverInterface
         /// </summary>
         public override string TransformText()
         {
-            this.Write(" \r\n\r\nusing System;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+            this.Write(" \r\nusing System.Net.Http;\r\nusing System.Threading;\r\nusing System.Threading.Tasks;" +
+                    "\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverInterface\HttpServiceProxyAddressResolverInterfaceTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\AddressResolverInterface\HttpServiceProxyAddressResolverInterfaceTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        Uri Resolve(string targetApplicationName, string basePath);\r\n   " +
-                    " }\r\n}\r\n");
+            this.Write(@"
+    {
+        string GetBaseAddress(string targetApplicationName);
+        Task<HttpResponseMessage> PostAsJsonAsync<T>(string targetApplicationName, string requestUri, T value);
+        Task<HttpResponseMessage> PostAsJsonAsync<T>(string targetApplicationName, string requestUri, T value, CancellationToken cancellationToken);
+        Task<HttpResponseMessage> PostAsJsonAsync<T>(string fullRequestUri, T value);
+        Task<HttpResponseMessage> PostAsJsonAsync<T>(string fullRequestUri, T value, CancellationToken cancellationToken);
+    }
+}
+");
             return this.GenerationEnvironment.ToString();
         }
     }

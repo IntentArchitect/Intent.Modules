@@ -32,24 +32,24 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Exception
         /// </summary>
         public override string TransformText()
         {
-            this.Write(" \r\n\r\nusing System;\r\nusing System.Net;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ful" +
-                    "ly)]\r\n\r\nnamespace ");
+            this.Write(" \r\nusing System;\r\nusing System.Net;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully" +
+                    ")]\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : Exception\r\n    {\r\n        public ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
