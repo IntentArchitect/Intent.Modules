@@ -4,6 +4,7 @@ using Intent.MetaModel.Domain;
 using Intent.Modules.EntityFramework;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
@@ -98,6 +99,56 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
         public string PropertyMappings(Class @class)
         {
             return GetDecorators().Aggregate(x => x.PropertyMappings(@class));
+        }
+
+        private bool HasTypeOverride(IAttribute attribute)
+        {
+            var overrideAttributeStereotype = attribute.GetStereotype("EFMappingOptions");
+            if (overrideAttributeStereotype != null)
+            {
+                var columnType = overrideAttributeStereotype.GetProperty<string>("ColumnType");
+                if (!string.IsNullOrEmpty(columnType))
+                {
+                    return true;
+                }
+            }
+
+            var overrideTypeStereotype = attribute.Type.GetStereotype("EFMappingOptions");
+            if (overrideTypeStereotype != null)
+            {
+                var columnType = overrideTypeStereotype.GetProperty<string>("ColumnType");
+                if (!string.IsNullOrEmpty(columnType))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private string GetTypeOverride(IAttribute attribute)
+        {
+            var overrideAttributeStereotype = attribute.GetStereotype("EFMappingOptions");
+            if (overrideAttributeStereotype != null)
+            {
+                var columnType = overrideAttributeStereotype.GetProperty<string>("ColumnType");
+                if (!string.IsNullOrEmpty(columnType))
+                {
+                    return columnType;
+                }
+            }
+
+            var overrideTypeStereotype = attribute.Type.GetStereotype("EFMappingOptions");
+            if (overrideTypeStereotype != null)
+            {
+                var columnType = overrideTypeStereotype.GetProperty<string>("ColumnType");
+                if (!string.IsNullOrEmpty(columnType))
+                {
+                    return columnType;
+                }
+            }
+
+            return string.Empty;
         }
 
         private void IssueManyToManyWarning(IAssociationEnd associationEnd)
