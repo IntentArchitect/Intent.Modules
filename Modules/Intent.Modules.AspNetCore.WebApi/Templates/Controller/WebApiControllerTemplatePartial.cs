@@ -48,7 +48,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
         {
             return new[]
             {
-                new NugetPackageInfo("Microsoft.AspNetCore.All", "2.0.8"),
+                NugetPackages.AspNetCoreAll,
             }
             .Union(base.GetNugetDependencies())
             .ToArray();

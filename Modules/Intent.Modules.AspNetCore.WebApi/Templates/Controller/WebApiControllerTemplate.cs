@@ -286,16 +286,18 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             
             #line default
             #line hidden
-            this.Write("\r\n            }\r\n            catch (Exception e) \r\n            {");
+            this.Write("\r\n            }\r\n#pragma warning disable CS0168 // Variable is declared but never" +
+                    " used\r\n            catch (Exception e)\r\n#pragma warning restore CS0168 // Variab" +
+                    "le is declared but never used\r\n            {");
             
-            #line 74 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 76 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(OnExceptionCaught(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n            }\r\n\r\n");
             
-            #line 77 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 79 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
         if (operation.ReturnType != null)
         {
 
@@ -304,14 +306,14 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             #line hidden
             this.Write("            return result;\r\n");
             
-            #line 80 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 82 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
       }
             
             #line default
             #line hidden
             this.Write("\r\n        }\r\n\r\n");
             
-            #line 84 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 86 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
     }
 
         // Source code of base class: http://aspnetwebstack.codeplex.com/SourceControl/latest#src/System.Web.Http/ApiController.cs
@@ -324,14 +326,14 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                     "ase.Dispose(disposing);\r\n\r\n            //dispose all resources\r\n            _app" +
                     "Service.Dispose();");
             
-            #line 94 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 96 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(OnDispose()));
             
             #line default
             #line hidden
             this.Write("\r\n        }\r\n");
             
-            #line 96 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 98 "D:\Projects\IntentModules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassMethods()));
             
             #line default
