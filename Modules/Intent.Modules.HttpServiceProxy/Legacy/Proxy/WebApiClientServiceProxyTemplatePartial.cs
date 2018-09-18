@@ -101,7 +101,7 @@ namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
         {
             return new List<ITemplateDependancy>
             {
-                TemplateDependancy.OnTemplate(HttpProxyInterceptorInterfaceTemplate.Identifier),
+                TemplateDependancy.OnTemplate(HttpProxyInterceptorInterfaceTemplate.IDENTIFIER),
             };
         }
 

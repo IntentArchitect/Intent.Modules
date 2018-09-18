@@ -6,7 +6,7 @@ using System.ComponentModel;
 namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementation
 {
     [Description(HttpClientServiceImplementationTemplate.IDENTIFIER)]
-    public class Registrations : NoModelTemplateRegistrationBase
+    public class HttpClientServiceImplementationTemplateRegistration : NoModelTemplateRegistrationBase
     {
         public override string TemplateId => HttpClientServiceImplementationTemplate.IDENTIFIER;
 

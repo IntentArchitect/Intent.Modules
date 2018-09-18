@@ -27,7 +27,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
         {
             return new[]
             {
-                TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.Identifier, x => x.Id == Model.Id)
+                TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
             }
             .Union(Model.Operations.Select(x => TemplateDependancy.OnModel(ServiceCallHandlerImplementationTemplate.Identifier, x)).ToArray());
         }
@@ -66,7 +66,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             {
                 { "InterfaceType", GetServiceInterfaceName()},
                 { "ConcreteType", $"{Namespace}.{ClassName}" },
-                { "InterfaceTypeTemplateId", ServiceContractTemplate.Identifier },
+                { "InterfaceTypeTemplateId", ServiceContractTemplate.IDENTIFIER },
                 { "ConcreteTypeTemplateId", Identifier }
             });
         }
@@ -100,7 +100,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.Identifier, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
         }
 

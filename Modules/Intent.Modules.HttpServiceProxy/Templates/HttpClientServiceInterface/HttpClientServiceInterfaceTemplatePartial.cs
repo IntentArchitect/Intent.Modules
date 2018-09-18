@@ -9,8 +9,8 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
     {
         public const string IDENTIFIER = "Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface";
 
-        public HttpClientServiceInterfaceTemplate(IProject project)
-            : base (IDENTIFIER, project, null)
+        public HttpClientServiceInterfaceTemplate(IProject project, string identifier = IDENTIFIER)
+            : base (identifier, project, null)
         {
         }
 

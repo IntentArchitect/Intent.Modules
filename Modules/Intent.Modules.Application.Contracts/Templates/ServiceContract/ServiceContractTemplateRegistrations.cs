@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
-    [Description(ServiceContractTemplate.Identifier)]
+    [Description(ServiceContractTemplate.IDENTIFIER)]
     public class ServiceContractTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
@@ -19,7 +19,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             _metaDataManager = metaDataManager;
         }
 
-        public override string TemplateId => ServiceContractTemplate.Identifier;
+        public override string TemplateId => ServiceContractTemplate.IDENTIFIER;
 
         public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
         {

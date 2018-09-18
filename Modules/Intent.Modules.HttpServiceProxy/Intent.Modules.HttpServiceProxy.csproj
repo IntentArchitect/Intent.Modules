@@ -69,21 +69,21 @@
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Legacy\Proxy\Registrations.cs" />
-    <Compile Include="Templates\Exception\Registrations.cs" />
+    <Compile Include="Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplateRegistration.cs" />
     <Compile Include="Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.cs">
       <DependentUpon>HttpClientServiceImplementationTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplatePartial.cs" />
-    <Compile Include="Templates\HttpClientServiceImplementation\Registrations.cs" />
+    <Compile Include="Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplateRegistration.cs" />
     <Compile Include="Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.cs">
       <DependentUpon>HttpProxyInterceptorInterfaceTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplatePartial.cs" />
-    <Compile Include="Templates\HttpClientServiceInterface\Registrations.cs" />
+    <Compile Include="Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplateRegistration.cs" />
     <Compile Include="Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.cs">
       <DependentUpon>HttpClientServiceInterfaceTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -96,7 +96,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplatePartial.cs" />
-    <Compile Include="Templates\InterceptorInterface\Registrations.cs" />
+    <Compile Include="Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplatRegistration.cs" />
     <Compile Include="Templates\Proxy\WebApiClientServiceProxyTemplate.cs">
       <DependentUpon>WebApiClientServiceProxyTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -106,6 +106,7 @@
     <Compile Include="Templates\Proxy\WebApiClientServiceProxyTemplateRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Intent.Modules.HttpServiceProxy.nuspec" />
     <None Include="Intent.Modules.HttpServiceProxy.imodspec" />
     <None Include="packages.config" />
     <None Include="Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt">
@@ -133,12 +134,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiClientServiceProxyTemplate.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Application.Contracts.Clients\Intent.Modules.Application.Contracts.Clients.csproj">
-      <Project>{96929b04-8386-4f55-b348-15a592fa7c0c}</Project>
-      <Name>Intent.Modules.Application.Contracts.Clients</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt">

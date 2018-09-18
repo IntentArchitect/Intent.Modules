@@ -5,10 +5,10 @@ using System.ComponentModel;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Exception
 {
-    [Description("Intent HttpServiceProxy - Remote Exception")]
-    public class Registrations : NoModelTemplateRegistrationBase
+    [Description(WebApiClientServiceProxyRemoteExceptionTemplate.IDENTIFIER)]
+    public class WebApiClientServiceProxyRemoteExceptionTemplateRegistration : NoModelTemplateRegistrationBase
     {
-        public override string TemplateId => WebApiClientServiceProxyRemoteExceptionTemplate.Identifier;
+        public override string TemplateId => WebApiClientServiceProxyRemoteExceptionTemplate.IDENTIFIER;
 
         public override ITemplate CreateTemplateInstance(IProject project)
         {

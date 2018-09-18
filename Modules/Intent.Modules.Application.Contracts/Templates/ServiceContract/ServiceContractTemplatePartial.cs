@@ -1,6 +1,5 @@
 ﻿using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
-using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
@@ -14,16 +13,13 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
     partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
     {
-        private readonly string _dtoTemplateId;
-        public const string Identifier = "Intent.Application.Contracts.ServiceContract";
+        public const string IDENTIFIER = "Intent.Application.Contracts.ServiceContract";
 
         private readonly DecoratorDispatcher<IServiceContractAttributeDecorator> _decoratorDispatcher;
 
-        public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = Identifier, string dtoTemplateId = DTOTemplate.IDENTIFIER)
+        public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
-            _dtoTemplateId = dtoTemplateId;
-
             _decoratorDispatcher = new DecoratorDispatcher<IServiceContractAttributeDecorator>(project.ResolveDecorators<IServiceContractAttributeDecorator>);
         }
 

@@ -5,10 +5,10 @@ using System.ComponentModel;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface
 {
-    [Description("Intent HttpServiceProxy - Interceptor Interface")]
-    public class Registrations : NoModelTemplateRegistrationBase
+    [Description(HttpProxyInterceptorInterfaceTemplate.IDENTIFIER)]
+    public class HttpProxyInterceptorInterfaceTemplatRegistration : NoModelTemplateRegistrationBase
     {
-        public override string TemplateId => HttpProxyInterceptorInterfaceTemplate.Identifier;
+        public override string TemplateId => HttpProxyInterceptorInterfaceTemplate.IDENTIFIER;
 
         public override ITemplate CreateTemplateInstance(IProject project)
         {

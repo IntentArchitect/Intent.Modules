@@ -7,10 +7,10 @@ namespace Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface
 {
     partial class HttpProxyInterceptorInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasAssemblyDependencies
     {
-        public const string Identifier = "Intent.HttpServiceProxy.InterceptorInterface";
+        public const string IDENTIFIER = "Intent.HttpServiceProxy.InterceptorInterface";
 
-        public HttpProxyInterceptorInterfaceTemplate(IProject project)
-            : base (Identifier, project, null)
+        public HttpProxyInterceptorInterfaceTemplate(IProject project, string identifier = IDENTIFIER)
+            : base (identifier, project, null)
         {
         }
 

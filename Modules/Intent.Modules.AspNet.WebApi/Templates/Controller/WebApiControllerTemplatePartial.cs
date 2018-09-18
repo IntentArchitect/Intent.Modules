@@ -33,7 +33,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(ServiceContractTemplate.Identifier)
+                TemplateDependancy.OnTemplate(ServiceContractTemplate.IDENTIFIER)
             };
         }
 
@@ -78,7 +78,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.Identifier, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
         }
 

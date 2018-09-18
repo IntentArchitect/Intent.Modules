@@ -5,10 +5,10 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Exception
 {
     partial class WebApiClientServiceProxyRemoteExceptionTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
     {
-        public const string Identifier = "Intent.HttpServiceProxy.Exception";
+        public const string IDENTIFIER = "Intent.HttpServiceProxy.Exception";
 
-        public WebApiClientServiceProxyRemoteExceptionTemplate(IProject project)
-            : base (Identifier, project, null)
+        public WebApiClientServiceProxyRemoteExceptionTemplate(IProject project, string identifier = IDENTIFIER)
+            : base (identifier, project, null)
         {
         }
 

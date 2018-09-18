@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.HttpServiceProxy</id>
-  <version>1.3.2</version>
+  <version>1.3.3</version>
   <summary>Http Service Proxies for described WebApi services.</summary>
   <description>Http Service Proxies for described WebApi services.</description>
   <authors>Intent Software</authors>
@@ -11,19 +11,32 @@
     <template id="Intent.HttpServiceProxy.Exception">
       <role>ClientServiceProxy</role>
     </template>
+    
     <template id="Intent.HttpServiceProxy.InterceptorInterface">
       <role>ClientServiceProxy</role>
     </template>
+    
     <template id="Intent.HttpServiceProxy.Proxy">
       <role>ClientServiceProxy</role>
+      <config>
+        <add key="ServiceContractTemplateId" description="The template Id for the template producing the Service Contract." default="Intent.Application.Contracts.ServiceContract.Client"  />
+        <add key="HttpClientServiceInterfaceTemplateId" description="The template Id for the template producing the HTTP Client Interface." default="Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface" />
+        <add key="DtoTemplateId" description="The template Id for the template producing the DTO template." default="Intent.Application.Contracts.DTO" />
+      </config>
     </template>
+    
     <template id="Intent.HttpServiceProxy.Proxy.Legacy">
       <role>ClientServiceProxy</role>
     </template>
 
     <template id="Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementation">
       <role>ClientServiceProxy</role>
+      <config>
+        <add key="HttpClientInterceptorInterfaceTemplateId" description="The template Id for the template producing the HTTP Client Interceptor Interface." default="Intent.HttpServiceProxy.InterceptorInterface"  />
+        <add key="HttpClientServiceInterfaceTemplateId" description="The template Id for the template producing the HTTP Client Interface." default="Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface" />
+      </config>
     </template>
+
     <template id="Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface">
       <role>ClientServiceProxy</role>
     </template>
@@ -35,7 +48,6 @@
   </interoperability>
   <dependencies>
     <dependency id="Intent.Common" version="1.5.0"/>
-    <dependency id="Intent.Application.Contracts.Clients" version="1.3.1"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
   </dependencies>
   <files>

@@ -12,7 +12,7 @@ namespace Intent.Modules.Application.Contracts
 {
     public static class CSharpTypeReferenceExtensions
     {
-        [Obsolete("To be converted to Type system")]
+        [Obsolete("To be converted to Type system")] // JL: Is this even possible considering it's also trying to use based on a template identifier? See Intent.Modules.HttpServiceProxy.Templates.Proxy.WebApiClientServiceProxyTemplate for an example of an approach that might work.
         public static string GetQualifiedName<T>(this ITypeReference typeInfo, T template, string templateIdentifier = DTOTemplate.IDENTIFIER)
             where T: IProjectItemTemplate, IRequireTypeResolver
         {

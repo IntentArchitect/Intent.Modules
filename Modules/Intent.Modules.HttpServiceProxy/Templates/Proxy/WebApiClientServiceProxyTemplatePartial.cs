@@ -2,21 +2,34 @@
 using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
-using Intent.Modules.Application.Contracts.Clients;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
-using Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
-    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies
+    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, IPostTemplateCreation
     {
         public const string IDENTIFIER = "Intent.HttpServiceProxy.Proxy";
+        public const string SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY = "ServiceContractTemplateId";
+        public const string HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY = "HttpClientServiceInterfaceTemplateId";
+        public const string DTO_TEMPLATE_ID_CONFIG_KEY = "DtoTemplateId";
 
-        public WebApiClientServiceProxyTemplate(IProject project, IServiceModel model)
-            : base(IDENTIFIER, project, model)
+        private string _serviceContractTemplateId;
+        private string _httpClientServiceInterfaceTemplateId;
+        private string _dtoTemplateId;
+
+        public WebApiClientServiceProxyTemplate(IProject project, IServiceModel model, string identifier = IDENTIFIER)
+            : base(identifier, project, model)
         {
+        }
+
+        public void Created()
+        {
+            _serviceContractTemplateId = GetMetaData().CustomMetaData[SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY];
+            _httpClientServiceInterfaceTemplateId = GetMetaData().CustomMetaData[HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
+            _dtoTemplateId = GetMetaData().CustomMetaData[DTO_TEMPLATE_ID_CONFIG_KEY];
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -32,8 +45,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
                 fileExtension: "cs",
                 defaultLocationInProject: @"Generated\ClientProxies",
                 className: "${Model.Name}WebApiClientProxy",
-                @namespace: "${Project.Name}"
-                );
+                @namespace: "${Project.Name}");
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
@@ -88,9 +100,13 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(TemplateIds.ClientServiceContract, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(_serviceContractTemplateId, x => x.Id == Model.Id));
             if (serviceContractTemplate == null)
             {
+                Logging.Log.Warning($"Could not find template with ID [{_serviceContractTemplateId}] " +
+                                    $"as configured for the [{SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY}] " +
+                                    $"setting on the [{Id}] template.");
+
                 return $"I{Model.Name}";
             }
 
@@ -99,22 +115,45 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string GetHttpClientServiceInterfaceName()
         {
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpClientServiceInterfaceTemplate.IDENTIFIER));
+            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(_httpClientServiceInterfaceTemplateId));
             if (template == null)
             {
+                Logging.Log.Warning($"Could not find template with ID [{_httpClientServiceInterfaceTemplateId}] " +
+                                    $"as configured for the [{HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY}] " +
+                                    $"setting on the [{Id}] template.");
+
                 return "IHttpClientService";
             }
+
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
-            if (typeInfo.IsCollection)
+            if (typeInfo.Type != ReferenceType.ClassType)
             {
-                result = "List<" + result + ">";
+                return NormalizeNamespace(typeInfo.IsCollection
+                    ? $"List<{Types.Get(typeInfo)}>"
+                    : Types.Get(typeInfo));
             }
-            return result;
+
+            var templateInstance = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(_dtoTemplateId));
+            if (templateInstance == null)
+            {
+                Logging.Log.Warning($"Could not find template with ID [{_dtoTemplateId}] " +
+                                    $"as configured for the [{DTO_TEMPLATE_ID_CONFIG_KEY}] " +
+                                    $"setting on the [{Id}] template.");
+
+                return NormalizeNamespace(typeInfo.IsCollection
+                    ? $"List<{Types.Get(typeInfo)}>"
+                    : Types.Get(typeInfo));
+            }
+
+            var typeName = $"{templateInstance.Namespace}.{templateInstance.ClassName}";
+
+            return NormalizeNamespace(typeInfo.IsCollection
+                ? $"List<{typeName}>"
+                : typeName);
         }
 
         private string GetReadAs(IOperationModel operation)
