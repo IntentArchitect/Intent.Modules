@@ -2,6 +2,7 @@
 using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
@@ -96,6 +97,55 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             return GetDecorators().Aggregate(x => x.PropertyMappings(@class));
         }
 
+        private bool HasTypeOverride(IAttribute attribute)
+        {
+            var overrideAttributeStereotype = attribute.GetStereotype("EFMappingOptions");
+            if (overrideAttributeStereotype != null)
+            {
+                var columnType = overrideAttributeStereotype.GetProperty<string>("ColumnType");
+                if (!string.IsNullOrEmpty(columnType))
+                {
+                    return true;
+                }
+            }
+
+            var overrideTypeStereotype = attribute.Type.GetStereotype("EFMappingOptions");
+            if (overrideTypeStereotype != null)
+            {
+                var columnType = overrideTypeStereotype.GetProperty<string>("ColumnType");
+                if (!string.IsNullOrEmpty(columnType))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private string GetTypeOverride(IAttribute attribute)
+        {
+            var overrideAttributeStereotype = attribute.GetStereotype("EFMappingOptions");
+            if (overrideAttributeStereotype != null)
+            {
+                var columnType = overrideAttributeStereotype.GetProperty<string>("ColumnType");
+                if (!string.IsNullOrEmpty(columnType))
+                {
+                    return columnType;
+                }
+            }
+
+            var overrideTypeStereotype = attribute.Type.GetStereotype("EFMappingOptions");
+            if (overrideTypeStereotype != null)
+            {
+                var columnType = overrideTypeStereotype.GetProperty<string>("ColumnType");
+                if (!string.IsNullOrEmpty(columnType))
+                {
+                    return columnType;
+                }
+            }
+
+            return string.Empty;
+        }
     }
 
     public interface IEFMappingTemplateDecorator : ITemplateDecorator

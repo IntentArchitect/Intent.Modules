@@ -145,18 +145,13 @@ namespace <#= Namespace #>
 
                 .HasPrecision(<#= decimalPrecision#>, <#= decimalScale #>)<#
         }
-        switch (attribute.Type.Name)
-        {
-            case "date" :#>
 
-                .HasColumnType("date")<#
-                break;
-            case "datetime" :#>
 
-                .HasColumnType("datetime2")<#
-                break;
-        }    
-#>;
+        if (HasTypeOverride(attribute))
+        { #>
+                .HasColumnType("<#= GetTypeOverride(attribute) #>")
+<#      } #>
+				;
 
 <#  }#>
 <#    foreach (var associationEnd in Model.AssociatedClasses)

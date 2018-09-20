@@ -113,6 +113,7 @@
       <LastGenOutput>DbMigrationsReadMeTemplate.cs</LastGenOutput>
     </None>
     <Content Include="MetaData\Domain\Folders\Stereotypes.xml" />
+    <Content Include="MetaData\Domain\Stereotypes\EFMappingOptions.xml" />
     <Content Include="MetaData\Domain\Stereotypes\Index.xml" />
     <Content Include="Templates\DbContext\DbContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
