@@ -38,7 +38,7 @@ namespace Intent.Modules.Application.Contracts.Clients
 
         public override ITemplate CreateTemplateInstance(IProject project, MetaModel.Service.ServiceModel model)
         {
-            return new Templates.ServiceContract.ServiceContractTemplate(project, model, TemplateId, TemplateIds.ClientDTO);
+            return new Templates.ServiceContract.ServiceContractTemplate(project, model, TemplateId);
         }
 
         public override IEnumerable<MetaModel.Service.ServiceModel> GetModels(IApplication application)
