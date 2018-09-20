@@ -1,11 +1,11 @@
-﻿using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Constants;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
+using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 {
@@ -32,9 +32,10 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
         private void Handle(ApplicationEvent @event)
         {
             _initializations.Add(new Initializations(
-                usings: @event.GetValue(InitializationRequiredEvent.UsingsKey), 
-                code: @event.GetValue(InitializationRequiredEvent.CallKey), 
-                method: @event.TryGetValue(InitializationRequiredEvent.MethodKey)));
+                usings: @event.GetValue(InitializationRequiredEvent.UsingsKey),
+                code: @event.GetValue(InitializationRequiredEvent.CallKey),
+                method: @event.TryGetValue(InitializationRequiredEvent.MethodKey),
+                priority: @event.TryGetValue(InitializationRequiredEvent.PriorityKey)));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -67,7 +68,15 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 
         public string Configuration()
         {
-            var configurations = GetDecorators().SelectMany(x => x.Configuration()).Union(_initializations.Select(x => x.Code)).ToArray();
+            var configurations = GetDecorators()
+                .SelectMany(x => x.Configuration(), (x, configuration) => new { Code = configuration, x.Priority })
+                .Union(_initializations
+                    .Where(x => !string.IsNullOrWhiteSpace(x.Code))
+                    .Select(x => new { x.Code, x.Priority }))
+                .OrderByDescending(x => x.Priority)
+                .Select(x => x.Code)
+                .ToArray();
+
             if (!configurations.Any())
             {
                 return string.Empty;
@@ -84,10 +93,13 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 
         public string Methods()
         {
-            var methods = GetDecorators().SelectMany(x => x.Methods())
+            var methods = GetDecorators()
+                .SelectMany(x => x.Methods(), (x, method) => new { Code = method, x.Priority })
                 .Union(_initializations
                     .Where(x => !string.IsNullOrWhiteSpace(x.Method))
-                    .Select(x => x.Method))
+                    .Select(x => new { Code = x.Method, x.Priority }))
+                .OrderByDescending(x => x.Priority)
+                .Select(x => x.Code)
                 .ToArray();
 
             if (!methods.Any())
@@ -134,12 +146,16 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
         public string Usings { get; }
         public string Code { get; }
         public string Method { get; }
+        public int Priority { get; }
 
-        public Initializations(string usings, string code, string method)
+        public Initializations(string usings, string code, string method, string priority)
         {
             Usings = usings;
             Code = code;
             Method = method;
+            Priority = int.TryParse(priority, out var parsedPriority)
+                ? parsedPriority
+                : 0;
         }
     }
 }

@@ -30,6 +30,7 @@
         public const string UsingsKey = "Usings";
         public const string CallKey = "Call";
         public const string MethodKey = "Method";
+        public const string PriorityKey = "Priority";
     }
 
     public static class ContainerRegistrationEvent
