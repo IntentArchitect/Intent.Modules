@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.VisualStudio.Projects</id>
-  <version>1.5.4</version>
+  <version>1.5.5</version>
   <summary>Installs templates for Visual Studio projects that integrate with Intent Architect</summary>
   <description>Installs templates for Visual Studio projects that integrate with Intent Architect</description>
   <authors>Intent Software</authors>
@@ -105,7 +105,18 @@
       </properties>
     </projectType>
   </projectTypes>
-  <templates />
+  <templates>
+    <template id="Intent.VisualStudio.Projects.AssemblyInfo"/>
+    <template id="Intent.VisualStudio.Projects.ConsoleApp.Program"/>
+    <template id="Intent.VisualStudio.Projects.CoreLibrary.CSProject"/>
+    <template id="Intent.VisualStudio.Projects.CoreWeb.AppSettings"/>
+    <template id="Intent.VisualStudio.Projects.CoreWeb.CSProject"/>
+    <template id="Intent.VisualStudio.Projects.CoreWeb.Program"/>
+    <template id="Intent.VisualStudio.Projects.CoreWeb.Startup"/>
+    <template id="Intent.VisualStudio.Projects.NuGetPackagesConfig"/>
+    <template id="Intent.VisualStudio.Projects.VisualStudio2015Solution"/>
+    <template id="Intent.VisualStudio.Projects.WebConfig"/>
+  </templates>
   <decorators>
     <decorator id="AssemblyBindingRedirectWebConfig"/>
   </decorators>
@@ -118,7 +129,7 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-        <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.Common" version="1.5.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
