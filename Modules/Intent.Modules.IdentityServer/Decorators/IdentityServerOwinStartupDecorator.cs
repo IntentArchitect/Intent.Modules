@@ -91,7 +91,7 @@ namespace Intent.Modules.IdentityServer.Decorators
                 TemplateDependancy.OnTemplate(SigningCertificateTemplate.Identifier),
                 TemplateDependancy.OnTemplate(IdentityServerScopesTemplate.Identifier),
                 TemplateDependancy.OnTemplate(IdentityServerClientsTemplate.Identifier),
-                TemplateDependancy.OnTemplate(AspNetIdentityUserServiceTemplate.Identifier),
+                TemplateDependancy.OnTemplate(AspNetIdentityUserServiceTemplate.Identifier)
             };
         }
 

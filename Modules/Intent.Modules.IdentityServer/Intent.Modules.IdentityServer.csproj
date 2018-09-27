@@ -56,18 +56,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\IdentityServerOwinStartupDecoratorRegistration.cs" />
+    <Compile Include="Templates\AspNetIdentityModel\AspNetIdentityModelRegistrations.cs" />
     <Compile Include="Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.cs">
       <DependentUpon>AspNetIdentityModelTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\AspNetIdentityModel\AspNetIdentityModelTemplatePartial.cs" />
+    <Compile Include="Templates\AspNetIdentityUserService\AspNetIdentityUserServiceRegistrations.cs" />
     <Compile Include="Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.cs">
       <DependentUpon>AspNetIdentityUserServiceTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplatePartial.cs" />
+    <Compile Include="Templates\Clients\ClientsRegistrations.cs" />
     <Compile Include="Templates\Clients\IdentityServerClientsTemplate.cs">
       <DependentUpon>IdentityServerClientsTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -76,7 +80,6 @@
     <Compile Include="Templates\Clients\IdentityServerClientsTemplatePartial.cs" />
     <Compile Include="Decorators\IdentityServerOwinStartupDecorator.cs" />
     <Compile Include="NugetPackages.cs" />
-    <Compile Include="Registrations.cs" />
     <Compile Include="Templates\Scopes\IdentityServerScopesTemplate.cs">
       <DependentUpon>IdentityServerScopesTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -84,6 +87,8 @@
     </Compile>
     <Compile Include="Templates\Scopes\IdentityServerScopesTemplatePartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\Scopes\ScopesRegistrations.cs" />
+    <Compile Include="Templates\SigningCertificate\SigningCertificateRegistrations.cs" />
     <Compile Include="Templates\SigningCertificate\SigningCertificateTemplate.cs">
       <DependentUpon>SigningCertificateTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
