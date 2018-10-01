@@ -10,14 +10,10 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-<#
-
-
-#>
 using System.Collections.Generic;
 using IdentityServer3.Core.Models;
 
-[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Ignore)]
 
 namespace <#= Namespace #>
 {
@@ -27,31 +23,23 @@ namespace <#= Namespace #>
         {
             return new List<Client>
             {
-<#    foreach(var application in Applications)
-    {#>
-                new Client
+				// Example client:
+				/*
+				new Client
                 {
                     Enabled = true,
-                    ClientName = "<#= application.ApplicationName #>",
-                    ClientId = "<#= application.ApplicationName #>",
+                    ClientName = "Example Client",
+                    ClientId = "example_client",
 
-                    Flow = Flows.<#= application.AuthenticationType #>,
+                    Flow = Flows.ResourceOwner,
+					RequireConsent = false,
 
-                    AllowedCorsOrigins = new List<string>
-                    {
-                        "<#= application.ApplicationUrl #>"
-                    },
+                    AllowedCorsOrigins = new List<string> { "*" },
 
-                    RedirectUris = new List<string>
-                    {
-                        "<#= application.ApplicationUrl #>/#/login-callback/",
-                        "<#= application.ApplicationUrl #>/App/Auth/RenewToken/SilentRenew.html"
-                    },
-
-                    RequireConsent = false,
-                    AllowAccessToAllScopes = true
-                },
-<#    } #>
+                    AllowAccessToAllScopes = true,
+					AccessTokenType = AccessTokenType.Jwt
+                }
+				*/
             };
         }
     }

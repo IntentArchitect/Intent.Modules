@@ -21,7 +21,7 @@ namespace Intent.Modules.IdentityServer.Templates.Clients
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
+    #line 1 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class IdentityServerClientsTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -31,88 +31,43 @@ namespace Intent.Modules.IdentityServer.Templates.Clients
         /// </summary>
         public override string TransformText()
         {
-            this.Write(" \r\n");
+            this.Write(" \r\nusing System.Collections.Generic;\r\nusing IdentityServer3.Core.Models;\r\n\r\n[asse" +
+                    "mbly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
-
-
-
-
-            
-            #line default
-            #line hidden
-            this.Write("using System.Collections.Generic;\r\nusing IdentityServer3.Core.Models;\r\n\r\n[assembl" +
-                    "y: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
-            
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
+            #line 18 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    public static class Clients\r\n    {\r\n        public static List<Client> G" +
-                    "et()\r\n        {\r\n            return new List<Client>\r\n            {\r\n");
-            
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
-    foreach(var application in Applications)
+            this.Write(@"
+{
+    public static class Clients
     {
-            
-            #line default
-            #line hidden
-            this.Write("                new Client\r\n                {\r\n                    Enabled = true" +
-                    ",\r\n                    ClientName = \"");
-            
-            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(application.ApplicationName));
-            
-            #line default
-            #line hidden
-            this.Write("\",\r\n                    ClientId = \"");
-            
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(application.ApplicationName));
-            
-            #line default
-            #line hidden
-            this.Write("\",\r\n\r\n                    Flow = Flows.");
-            
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(application.AuthenticationType));
-            
-            #line default
-            #line hidden
-            this.Write(",\r\n\r\n                    AllowedCorsOrigins = new List<string>\r\n                 " +
-                    "   {\r\n                        \"");
-            
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(application.ApplicationUrl));
-            
-            #line default
-            #line hidden
-            this.Write("\"\r\n                    },\r\n\r\n                    RedirectUris = new List<string>\r" +
-                    "\n                    {\r\n                        \"");
-            
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(application.ApplicationUrl));
-            
-            #line default
-            #line hidden
-            this.Write("/#/login-callback/\",\r\n                        \"");
-            
-            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(application.ApplicationUrl));
-            
-            #line default
-            #line hidden
-            this.Write("/App/Auth/RenewToken/SilentRenew.html\"\r\n                    },\r\n\r\n               " +
-                    "     RequireConsent = false,\r\n                    AllowAccessToAllScopes = true\r" +
-                    "\n                },\r\n");
-            
-            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Clients\IdentityServerClientsTemplate.tt"
-    } 
-            
-            #line default
-            #line hidden
-            this.Write("            };\r\n        }\r\n    }\r\n}");
+        public static List<Client> Get()
+        {
+            return new List<Client>
+            {
+				// Example client:
+				/*
+				new Client
+                {
+                    Enabled = true,
+                    ClientName = ""Example Client"",
+                    ClientId = ""example_client"",
+
+                    Flow = Flows.ResourceOwner,
+					RequireConsent = false,
+
+                    AllowedCorsOrigins = new List<string> { ""*"" },
+
+                    AllowAccessToAllScopes = true,
+					AccessTokenType = AccessTokenType.Jwt
+                }
+				*/
+            };
+        }
+    }
+}");
             return this.GenerationEnvironment.ToString();
         }
     }

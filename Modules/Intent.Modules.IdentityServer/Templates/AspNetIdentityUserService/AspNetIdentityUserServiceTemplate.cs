@@ -21,7 +21,7 @@ namespace Intent.Modules.IdentityServer.Templates.AspNetIdentityUserService
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
+    #line 1 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class AspNetIdentityUserServiceTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Modules.IdentityServer.Templates.AspNetIdentityUserService
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
+            #line 13 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
 
 
 
@@ -53,14 +53,14 @@ using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
 ");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
+            #line 27 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
+            #line 31 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityUserService\AspNetIdentityUserServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -74,7 +74,7 @@ using IdentityServer3.Core.Services;
             factory.UserService = new Registration<IUserService, UserService>();
             factory.Register(new Registration<UserManager>());
             factory.Register(new Registration<UserStore>());
-            factory.Register(new Registration<IdentityDbContext>(resolver => new IdentityDbContext()));
+            factory.Register(new Registration<IdentityDbContext>(resolver => new IdentityDbContext(connectionString)));
             return factory;
         }
     }

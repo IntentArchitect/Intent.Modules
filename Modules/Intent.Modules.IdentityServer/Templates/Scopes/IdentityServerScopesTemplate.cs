@@ -21,7 +21,7 @@ namespace Intent.Modules.IdentityServer.Templates.Scopes
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
+    #line 1 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class IdentityServerScopesTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -31,21 +31,11 @@ namespace Intent.Modules.IdentityServer.Templates.Scopes
         /// </summary>
         public override string TransformText()
         {
-            this.Write(" \r\n");
+            this.Write(" \r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sy" +
+                    "stem.Web;\r\nusing IdentityServer3.Core;\r\nusing IdentityServer3.Core.Models;\r\n\r\n[a" +
+                    "ssembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
-
-
-
-
-            
-            #line default
-            #line hidden
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Syste" +
-                    "m.Web;\r\nusing IdentityServer3.Core;\r\nusing IdentityServer3.Core.Models;\r\n\r\n[asse" +
-                    "mbly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
-            
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
+            #line 22 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

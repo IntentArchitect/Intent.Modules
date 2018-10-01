@@ -37,7 +37,7 @@ namespace <#= Namespace #>
             factory.UserService = new Registration<IUserService, UserService>();
             factory.Register(new Registration<UserManager>());
             factory.Register(new Registration<UserStore>());
-            factory.Register(new Registration<IdentityDbContext>(resolver => new IdentityDbContext()));
+            factory.Register(new Registration<IdentityDbContext>(resolver => new IdentityDbContext(connectionString)));
             return factory;
         }
     }

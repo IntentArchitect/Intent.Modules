@@ -13,18 +13,18 @@ namespace Intent.Modules.IdentityServer.Templates.Clients
         public IdentityServerClientsTemplate(IProject project, ISolutionEventDispatcher solutionEventDispatcher)
             : base (Identifier, project, null)
         {
-            solutionEventDispatcher.Subscribe(SolutionEvents.Authentication_ClientRequired, Handle);
+            //solutionEventDispatcher.Subscribe(SolutionEvents.Authentication_ClientRequired, Handle);
         }
 
-        public ICollection<AuthenticationClient> Applications { get; } = new List<AuthenticationClient>();
+        //public ICollection<AuthenticationClient> Applications { get; } = new List<AuthenticationClient>();
 
-        private void Handle(SolutionEvent @event)
-        {
-            Applications.Add(new AuthenticationClient(
-                authenticationType: @event.GetValue("AuthenticationType"),
-                applicationName: @event.GetValue("ApplicationName"), 
-                applicationUrl: @event.GetValue("ApplicationUrl")));
-        }
+        //private void Handle(SolutionEvent @event)
+        //{
+        //    Applications.Add(new AuthenticationClient(
+        //        authenticationType: @event.GetValue("AuthenticationType"),
+        //        applicationName: @event.GetValue("ApplicationName"), 
+        //        applicationUrl: @event.GetValue("ApplicationUrl")));
+        //}
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -42,17 +42,17 @@ namespace Intent.Modules.IdentityServer.Templates.Clients
         }
     }
 
-    public class AuthenticationClient
-    {
-        public AuthenticationClient(string authenticationType, string applicationName, string applicationUrl)
-        {
-            AuthenticationType = authenticationType;
-            ApplicationName = applicationName;
-            ApplicationUrl = applicationUrl;
-        }
+    //public class AuthenticationClient
+    //{
+    //    public AuthenticationClient(string authenticationType, string applicationName, string applicationUrl)
+    //    {
+    //        AuthenticationType = authenticationType;
+    //        ApplicationName = applicationName;
+    //        ApplicationUrl = applicationUrl;
+    //    }
 
-        public string AuthenticationType { get; set; }
-        public string ApplicationName { get; set; }
-        public string ApplicationUrl { get; set; }
-    }
+    //    public string AuthenticationType { get; set; }
+    //    public string ApplicationName { get; set; }
+    //    public string ApplicationUrl { get; set; }
+    //}
 }

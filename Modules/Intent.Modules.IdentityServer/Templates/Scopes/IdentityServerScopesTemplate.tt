@@ -10,10 +10,6 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-<#
-
-
-#>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +17,7 @@ using System.Web;
 using IdentityServer3.Core;
 using IdentityServer3.Core.Models;
 
-[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Ignore)]
 
 namespace <#= Namespace #>
 {

@@ -61,6 +61,19 @@ namespace <#= Namespace #>
             : base("IdentityDB")
         {
         }
+
+		public <#= DB_CONTEXT_NAME #>(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        {
+        }
+
+		[IntentManaged(Mode.Ignore)]
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            //modelBuilder.HasDefaultSchema("dbo");
+        }
     }
 
     public class UserStore : UserStore<User, Role, string, IdentityUserLogin, IdentityUserRole, IdentityUserClaim>
