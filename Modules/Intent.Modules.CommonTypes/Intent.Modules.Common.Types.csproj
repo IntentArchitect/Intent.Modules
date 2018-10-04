@@ -71,7 +71,9 @@
     <Compile Include="TypeResolvers\CSharpTypeResolverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Common.Types.imodspec" />
+    <None Include="Intent.Modules.Common.Types.imodspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="MetaData\Domain\Intent.Common.Types.domain.pkg.config" />
     <None Include="MetaData\DataContracts\Intent.Common.Types.datacontracts.pkg.config" />
     <None Include="packages.config" />

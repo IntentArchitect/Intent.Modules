@@ -1,11 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.MetaModel.Common;
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.MetaModel.Common;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 
@@ -15,12 +8,11 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
     {
         protected override string ResolveType(ITypeReference typeInfo)
         {
-            if (typeInfo.HasStereotype("TypeScript"))
-            {
-                return typeInfo.GetStereotypeProperty<string>("TypeScript", "Type");
-            }
-
-            return typeInfo.Name;
+            var type = typeInfo.GetStereotypeProperty<string>("TypeScript", "Type");
+            
+            return !string.IsNullOrWhiteSpace(type)
+                ? type
+                : typeInfo.Name;
         }
 
     }

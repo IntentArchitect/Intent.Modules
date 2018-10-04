@@ -15,6 +15,12 @@
     <property id="6591a390-5d73-422c-af7b-371184a8519a">
       <name>Type</name>
       <type>string</type>
+      <options />
+    </property>
+    <property id="8f8af840-694f-48c0-9bb2-1d2d8b9f6a50">
+      <name>Import From</name>
+      <type>string</type>
+      <options />
     </property>
   </properties>
 </stereotypeDefinition>
