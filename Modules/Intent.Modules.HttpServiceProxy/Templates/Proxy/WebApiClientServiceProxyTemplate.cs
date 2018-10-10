@@ -218,14 +218,14 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
                     "tUri = \"/api/");
             
             #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Proxy\WebApiClientServiceProxyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.Replace("Service", "").ToLower()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("/");
             
             #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Proxy\WebApiClientServiceProxyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToLowerInvariant()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToCamelCase()));
             
             #line default
             #line hidden

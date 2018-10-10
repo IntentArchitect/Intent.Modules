@@ -61,7 +61,7 @@ namespace <#= Namespace #>
         {
             try
             {
-                const string requestUri = "/api/<#= Model.Name.Replace("Service", "").ToLower() #>/<#= operation.Name.ToLowerInvariant() #>";
+                const string requestUri = "/api/<#= Model.Name.ToCamelCase() #>/<#= operation.Name.ToCamelCase() #>";
 
                 var response = _httpClientService.PostAsJsonAsync(
                     targetApplicationName: "<#= ApplicationName #>",

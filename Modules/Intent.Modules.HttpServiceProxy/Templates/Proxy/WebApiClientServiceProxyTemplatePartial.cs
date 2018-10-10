@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Common;
+using Intent.MetaModel.DTO;
 using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
@@ -137,7 +138,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
                     : Types.Get(typeInfo));
             }
 
-            var templateInstance = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(_dtoTemplateId));
+            var templateInstance = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<IDTOModel>(_dtoTemplateId, x => x.Id == typeInfo.Id));
             if (templateInstance == null)
             {
                 Logging.Log.Warning($"Could not find template with ID [{_dtoTemplateId}] " +
