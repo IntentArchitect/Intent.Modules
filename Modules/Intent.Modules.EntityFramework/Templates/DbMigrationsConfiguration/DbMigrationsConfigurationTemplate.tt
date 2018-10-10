@@ -24,6 +24,14 @@ namespace <#= Namespace #>
         protected override void Seed(<#= GetDbContextClassName() #> context)
         {
             base.Seed(context);
+<#
+            foreach (var @event in GetSeedDataRequiredRegistrations())
+            {
+#>
+            <#= @event #>
+<#
+            }
+#>
 
             CustomSeed(context);
         }

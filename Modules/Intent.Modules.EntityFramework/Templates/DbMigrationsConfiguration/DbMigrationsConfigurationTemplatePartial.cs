@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Constants;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 
@@ -11,10 +13,17 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
     {
         public const string Identifier = "Intent.EntityFramework.DbMigrationsConfiguration";
         private ITemplateDependancy _dbContextDependancy;
+        private readonly List<string> _seedDataRequiredEvents = new List<string>();
 
         public DbMigrationsConfigurationTemplate(IProject project)
             : base(Identifier, project)
         {
+            project.Application.EventDispatcher.Subscribe(EntityFrameworkEvents.SeedDataRequiredEvent, Handle);
+        }
+
+        private void Handle(ApplicationEvent @event)
+        {
+            _seedDataRequiredEvents.Add(@event.AdditionalInfo[EntityFrameworkEvents.SeedDataRequiredEventKey]);
         }
 
         public string DbContextVariableName => "dbContext";
@@ -29,6 +38,11 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
                 className: $"{Project.ApplicationName()}DbContextConfiguration".Replace(".", string.Empty),
                 @namespace: "${Project.Name}"
                 );
+        }
+
+        private string[] GetSeedDataRequiredRegistrations()
+        {
+            return _seedDataRequiredEvents.ToArray();
         }
 
         public void Created()

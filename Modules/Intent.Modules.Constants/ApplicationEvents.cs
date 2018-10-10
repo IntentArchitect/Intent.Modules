@@ -57,6 +57,10 @@
         public const string ConcreteTypeTemplateIdKey = "ConcreteTypeTemplateId";
         public const string OptionsKey = "Options";
     }
+
+    public static class EntityFrameworkEvents
+    {
+        public const string SeedDataRequiredEvent = "EntityFrameworkEvents.SeedDataRequiredEvent";
+        public const string SeedDataRequiredEventKey = "EntityFrameworkEvents.SeedDataRequiredEvent.Key";
+    }
 }
-
-
