@@ -78,7 +78,9 @@
     <Compile Include="Templates\EntityMappingExtensions\EntityMappingExtensionsTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Mapping.EntityToDto.imodspec" />
+    <None Include="Intent.Modules.Mapping.EntityToDto.imodspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Templates\DTOMappingProfile\GenericMappingTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
