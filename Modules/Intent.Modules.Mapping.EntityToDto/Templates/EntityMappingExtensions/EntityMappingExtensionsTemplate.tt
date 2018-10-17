@@ -2,7 +2,6 @@
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
-<#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.SoftwareFactory.MetaModels.UMLModel" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
 <#@ import namespace="System" #>
@@ -11,10 +10,6 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #>  
-<#
-
-
-#>
 using System.Collections.Generic;
 using Intent.Framework.Core.Mapping;
 using Intent.Framework.Domain;

@@ -2,7 +2,6 @@
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
-<#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.SoftwareFactory.MetaModels.Mapping" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
 <#@ import namespace="System" #>
@@ -17,7 +16,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text; 
 using System.Threading.Tasks;
-using Intent.Framework.Core;
 <#= DeclareUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
