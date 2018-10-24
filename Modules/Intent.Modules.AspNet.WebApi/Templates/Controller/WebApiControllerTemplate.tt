@@ -2,7 +2,6 @@
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
-<#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
 <#@ import namespace="Intent.MetaModel.Service" #>
 <#@ import namespace="System" #>
@@ -11,9 +10,6 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-<#
-#>
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -36,18 +32,41 @@ namespace <#=Namespace#>
         {
             _appService = appService ?? throw new ArgumentNullException(nameof(appService));<#= ConstructorInit() #>
         }
+<#
+    foreach (var operation in Model.Operations)
+    {
+        if (RequiresPayloadObject(operation))
+        {
+#>
 
-<#  foreach (var operation in Model.Operations)
-    { #>
+        public class <#= GetPayloadObjectTypeName(operation) #>
+        {
+<#
+            foreach (var parameter in operation.Parameters.Where(IsFromBody))
+            {
+#>
+                public <#= GetTypeName(parameter.TypeReference) #> <#= parameter.Name #> { get; set; }
+<#
+            } // foreach (var parameter in operation.Parameters.Where(IsFromBody))
+#>
+        }
+<#
+        } // if (RequiresPayloadObject(operation))
+#>
+
         [AcceptVerbs("<#= GetHttpVerb(operation).ToString().ToUpper()#>")]
         <#= GetSecurityAttribute(operation) #>
         [Route("<#= operation.Name.ToLower() #>")]
         public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>
-<#      if (operation.ReturnType != null)
-        {
-#>            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);
-<#      }#>
+<#
+            if (operation.ReturnType != null)
+            {
+#>            
+            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);
+<#
+            } // if (operation.ReturnType != null)
+#>
             TransactionOptions tso = new TransactionOptions();
             tso.IsolationLevel = IsolationLevel.<#= "ReadCommitted" #>;
 
@@ -58,13 +77,16 @@ namespace <#=Namespace#>
 <#
         if (operation.ReturnType != null)
         {
-#>                    var appServiceResult = _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+#>
+                    var appServiceResult = _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
                     result = appServiceResult;
 <#      }
         else
         {
-#>                        _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
-<#      }
+#>                        
+                    _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+<#      
+        }
 #><#= AfterCallToAppLayer(operation) #>
                     ts.Complete();
                 }<#= AfterTransaction(operation) #>
@@ -75,18 +97,21 @@ namespace <#=Namespace#>
             {<#= OnExceptionCaught(operation) #>
             }
 
-<#        if (operation.ReturnType != null)
+<#
+        if (operation.ReturnType != null)
         {
-#>            return result;
-<#      }#>
-
+#>
+            return result;
+<#
         }
-
-<#    }
+#>
+        }
+<#    } // foreach (var operation in Model.Operations)
 
         // Source code of base class: http://aspnetwebstack.codeplex.com/SourceControl/latest#src/System.Web.Http/ApiController.cs
         // As dispose is not virtual, looking at the source code, this looks like a better hook in point
 #>
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

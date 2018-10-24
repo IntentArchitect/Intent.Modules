@@ -1,16 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.SoftwareFactory;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
@@ -171,10 +171,83 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             {
                 var roles = o.GetStereotypeProperty<string>("Secured", "Roles");
                 return string.IsNullOrWhiteSpace(roles)
-                    ? "[Authorize]" 
+                    ? "[Authorize]"
                     : $"[Authorize(Roles = \"{roles}\")]";
             }
             return "[AllowAnonymous]";
+        }
+
+        private static bool RequiresPayloadObject(IOperationModel operation)
+        {
+            if (!operation.Parameters.Any())
+            {
+                return false;
+            }
+
+            var verb = GetHttpVerb(operation);
+            if (verb != HttpVerb.POST && verb != HttpVerb.PUT)
+            {
+                return false;
+            }
+
+            return operation.Parameters.Count(IsFromBody) > 1;
+        }
+
+        private static bool IsFromBody(IOperationParameterModel parameter)
+        {
+            var csharpPrimitives = new[]
+            {
+                "bool",
+                "Boolean",
+                "System.Boolean",
+                "byte",
+                "Byte",
+                "System.Byte",
+                "sbyte",
+                "SByte",
+                "System.SByte",
+                "char",
+                "Char",
+                "System.Char",
+                "decimal",
+                "Decimal",
+                "System.Decimal",
+                "double",
+                "Double",
+                "System.Double",
+                "float",
+                "Single",
+                "System.Single",
+                "int",
+                "Int32",
+                "System.Int32",
+                "uint",
+                "UInt32",
+                "System.UInt32",
+                "long",
+                "Int64",
+                "System.Int64",
+                "ulong",
+                "UInt64",
+                "System.UInt64",
+                "short",
+                "Int16",
+                "System.Int16",
+                "ushort",
+                "UInt16",
+                "System.UInt16",
+                "string",
+                "String",
+                "System.String"
+            };
+
+            // NB: Order of conditional checks is important here
+            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !csharpPrimitives.Contains(parameter.TypeReference.Name);
+        }
+
+        private static string GetPayloadObjectTypeName(IOperationModel operation)
+        {
+            return $"{operation.Name.ToPascalCase()}BodyPayload";
         }
 
         private string GetOperationParameters(IOperationModel operation)
@@ -188,22 +261,38 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             {
                 case HttpVerb.POST:
                 case HttpVerb.PUT:
-                    return operation.Parameters.Select(x => $"{GetParameterBindingAttribute(x)}{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => $"{x}, {y}");
+                    return RequiresPayloadObject(operation)
+                        ? operation.Parameters
+                            .Where(x => !IsFromBody(x))
+                            .Select(x => $"{GetParameterBindingAttribute(x)}{GetTypeName(x.TypeReference)} {x.Name}")
+                            .Concat(new [] { $"{GetPayloadObjectTypeName(operation)} bodyPayload" })
+                            .Aggregate((x, y) => $"{x}, {y}")
+                        : operation.Parameters
+                            .Select(x => $"{GetParameterBindingAttribute(x)}{GetTypeName(x.TypeReference)} {x.Name}")
+                            .Aggregate((x, y) => $"{x}, {y}");
                 case HttpVerb.GET:
                 case HttpVerb.DELETE:
+                    if (operation.Parameters.Any(x => GetParameterBindingAttribute(x) == "[FromBody]"))
+                    {
+                        throw new Exception($"Intent.AspNet.WebApi: [{Model.Name}.{operation.Name}] HTTP {verb} does not support parameters with a [FromBody] attribute.");
+                    }
+
                     if (operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
                     {
-                        Logging.Log.Warning($@"Intent.AspNet.WebApi: [{Model.Name}.{operation.Name}] Passing objects into HTTP {GetHttpVerb(operation)} operations is not well supported by this module.
-    We recommend using a POST or PUT verb");
+                        Logging.Log.Warning($@"Intent.AspNet.WebApi: [{Model.Name}.{operation.Name}] Passing complex types into HTTP {verb} operations is not well supported by this module.
+    We recommend using a POST or PUT verb.");
                         // Log warning
                     }
-                    return operation.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+
+                    return operation.Parameters
+                        .Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}")
+                        .Aggregate((x, y) => x + ", " + y);
                 default:
                     throw new NotSupportedException($"{verb} not supported");
             }
         }
 
-        private string GetOperationCallParameters(IOperationModel operation)
+        private static string GetOperationCallParameters(IOperationModel operation)
         {
             if (!operation.Parameters.Any())
             {
@@ -217,7 +306,9 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 case HttpVerb.PUT:
                 case HttpVerb.GET:
                 case HttpVerb.DELETE:
-                    return operation.Parameters.Select(x => x.Name).Aggregate((x, y) => $"{x}, {y}");
+                    return operation.Parameters
+                        .Select(x => RequiresPayloadObject(operation) && IsFromBody(x) ? $"bodyPayload.{x.Name}" : x.Name)
+                        .Aggregate((x, y) => $"{x}, {y}");
                 default:
                     throw new NotSupportedException($"{verb} not supported");
             }
@@ -232,51 +323,55 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             return GetTypeName(operation.ReturnType.TypeReference);
         }
 
-        private HttpVerb GetHttpVerb(IOperationModel operation)
+        private static HttpVerb GetHttpVerb(IOperationModel operation)
         {
             var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
             if (verb != "AUTO")
             {
                 return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
             }
-            if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
+
+            if (operation.ReturnType == null || operation.Parameters.Any(IsFromBody))
             {
                 return HttpVerb.POST;
             }
+
             return HttpVerb.GET;
         }
 
-        private string GetParameterBindingAttribute(IOperationParameterModel parameter)
+        private static string GetParameterBindingAttribute(IHasStereotypes stereotypeable)
         {
-            const string ParameterBinding = "Parameter Binding";
-            const string PropertyType = "Type";
-            const string PropertyCustomType = "Custom Type";
-            const string CustomValue = "Custom";
+            const string parameterBinding = "Parameter Binding";
+            const string propertyType = "Type";
+            const string propertyCustomType = "Custom Type";
+            const string customValue = "Custom";
 
-            if (parameter.HasStereotype(ParameterBinding))
+            if (!stereotypeable.HasStereotype(parameterBinding))
             {
-                var attributeName = parameter.GetStereotypeProperty<string>(ParameterBinding, PropertyType);
-                if (string.Equals(attributeName, CustomValue, StringComparison.OrdinalIgnoreCase))
-                {
-                    var customAttributeValue = parameter.GetStereotypeProperty<string>(ParameterBinding, PropertyCustomType);
-                    if (string.IsNullOrWhiteSpace(customAttributeValue))
-                    {
-                        throw new Exception("Parameter Binding was set to custom but no Custom attribute type was specified");
-                    }
-                    return $"[{customAttributeValue}]";
-                }
+                return string.Empty;
+            }
+
+            var attributeName = stereotypeable.GetStereotypeProperty<string>(parameterBinding, propertyType);
+            if (!string.Equals(attributeName, customValue, StringComparison.OrdinalIgnoreCase))
+            {
                 return $"[{attributeName}]";
             }
 
-            return string.Empty;
-        }
-    }
+            var customAttributeValue = stereotypeable.GetStereotypeProperty<string>(parameterBinding, propertyCustomType);
+            if (string.IsNullOrWhiteSpace(customAttributeValue))
+            {
+                throw new Exception("Parameter Binding was set to custom but no Custom attribute type was specified");
+            }
 
-    internal enum HttpVerb
-    {
-        GET,
-        POST,
-        PUT,
-        DELETE
+            return $"[{customAttributeValue}]";
+        }
+
+        private enum HttpVerb
+        {
+            GET,
+            POST,
+            PUT,
+            DELETE
+        }
     }
 }
