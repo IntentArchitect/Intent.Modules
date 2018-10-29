@@ -1,10 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common</id>
-  <version>1.5.4</version>
+  <version>1.5.5</version>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>
   <authors>Intent Software</authors>
+  <projectTypes>
+    <projectType id="4C35E110-1E85-466F-B2D2-0C7042796338">
+      <name>External Project</name>
+      <icon>
+        <type>FontAwesome</type>
+        <source>external-link-square</source>
+      </icon>
+      <properties/>
+    </projectType>
+  </projectTypes>
   <templates />
   <dependencies />
   <factoryExtensions>
