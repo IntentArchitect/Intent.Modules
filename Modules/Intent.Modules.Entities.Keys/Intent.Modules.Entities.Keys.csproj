@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\ForeignKeyEntityInterfaceDecorator.cs" />
+    <Compile Include="Decorators\ForeignKeyEntityInterfaceDecoratorRegistration.cs" />
     <Compile Include="Decorators\SurrogatePrimaryKeyInterfaceDecoratorRegistration.cs" />
     <Compile Include="Decorators\SurrogatePrimaryKeyInterfaceDecorator.cs" />
     <Compile Include="Decorators\SurrogatePrimaryKeyEntityStateDecorator.cs" />

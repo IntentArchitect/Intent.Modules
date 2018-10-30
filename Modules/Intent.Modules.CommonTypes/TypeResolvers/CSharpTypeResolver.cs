@@ -28,6 +28,13 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
                     result += "?";
                 }
             }
+            else
+            {
+                if (typeInfo.IsNullable && typeInfo.Type == ReferenceType.Enum)
+                {
+                    result += "?";
+                }
+            }
 
             return result;
         }

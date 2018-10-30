@@ -26,7 +26,8 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
 
         public void Created()
         {
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityTemplate.Identifier, nameof(ICollection)));
+            //Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityTemplate.Identifier, nameof(ICollection)));
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityInterfaceTemplate.Identifier, nameof(ICollection)));
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()

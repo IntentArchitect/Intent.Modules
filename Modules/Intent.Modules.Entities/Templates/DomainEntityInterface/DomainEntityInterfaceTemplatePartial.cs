@@ -23,7 +23,8 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 
         public void Created()
         {
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityStateTemplate.Identifier, nameof(ICollection)));
+            //Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityStateTemplate.Identifier, nameof(ICollection)));
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityInterfaceTemplate.Identifier, nameof(ICollection)));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

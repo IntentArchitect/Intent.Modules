@@ -12,24 +12,24 @@ namespace Intent.SoftwareFactory
 {
     public static class IntentMetadataExtensions
     {
-        public static IEnumerable<IServiceModel> GetServiceModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metaDataIdentifier = "Services")
+        public static IEnumerable<IServiceModel> GetServiceModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier = "Services")
         {
-            return metaDataManager.GetMetaData<IServiceModel>(new MetaDataIdentifier(metaDataIdentifier ?? "Services")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return metaDataManager.GetMetaData<IServiceModel>(new MetaDataIdentifier(metadataIdentifier ?? "Services")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
 
-        public static IEnumerable<IClass> GetDomainModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metaDataIdentifier = "Domain")
+        public static IEnumerable<IClass> GetDomainModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier = "Domain")
         {
-            return metaDataManager.GetMetaData<IClass>(new MetaDataIdentifier(metaDataIdentifier ?? "Domain")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return metaDataManager.GetMetaData<IClass>(new MetaDataIdentifier(metadataIdentifier ?? "Domain")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
         
-        public static IEnumerable<IDTOModel> GetDTOModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metaDataIdentifier = "Services")
+        public static IEnumerable<IDTOModel> GetDTOModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier = "Services")
         {
-            return metaDataManager.GetMetaData<IDTOModel>(new MetaDataIdentifier(metaDataIdentifier ?? "Services")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return metaDataManager.GetMetaData<IDTOModel>(new MetaDataIdentifier(metadataIdentifier ?? "Services")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
         
-        public static IEnumerable<IEnumModel> GetEnumModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metaDataIdentifier)
+        public static IEnumerable<IEnumModel> GetEnumModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier)
         {
-            return metaDataManager.GetMetaData<IEnumModel>(new MetaDataIdentifier(metaDataIdentifier)).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return metaDataManager.GetMetaData<IEnumModel>(new MetaDataIdentifier(metadataIdentifier)).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
     }
 }
