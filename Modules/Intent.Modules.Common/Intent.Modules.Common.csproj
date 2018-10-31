@@ -97,7 +97,9 @@
     <Compile Include="VisualStudio\VisualStudioProjectExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Common.imodspec" />
+    <None Include="Intent.Modules.Common.imodspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Intent.Modules.Common.nuspec" />
     <None Include="packages.config" />
     <None Include="Templates\Pluralization\LICENSE" />

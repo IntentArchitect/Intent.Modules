@@ -1,10 +1,13 @@
-﻿using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.VisualStudio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.VisualStudio;
+
+[assembly:InternalsVisibleTo("Intent.Modules.Common.Tests")]
 
 namespace Intent.SoftwareFactory.Templates
 {
@@ -44,54 +47,134 @@ namespace Intent.SoftwareFactory.Templates
         /// <summary>
         /// Converts the namespae of a fully qualified class name to the relative namespace fo this class instance
         /// </summary>
-        /// <param name="qualifiedClassName">Namespace to convert</param>
+        /// <param name="foreignType">Namespace to convert</param>
         /// <returns></returns>
-        public virtual string NormalizeNamespace(string qualifiedClassName)
+        public virtual string NormalizeNamespace(string foreignType)
         {
             // Handle Generics recursively:
-            if (qualifiedClassName.Contains("<") && qualifiedClassName.Contains(">"))
+            if (foreignType.Contains("<") && foreignType.Contains(">"))
             {
-                var genericTypes = qualifiedClassName.Substring(qualifiedClassName.IndexOf("<", StringComparison.Ordinal) + 1, qualifiedClassName.Length - qualifiedClassName.IndexOf("<", StringComparison.Ordinal) - 2);
+                var genericTypes = foreignType.Substring(foreignType.IndexOf("<", StringComparison.Ordinal) + 1, foreignType.Length - foreignType.IndexOf("<", StringComparison.Ordinal) - 2);
                 var normalizedGenericTypes = genericTypes
                     .Split(',')
                     .Select(NormalizeNamespace)
                     .Aggregate((x, y) => x + ", " + y);
-                qualifiedClassName = $"{qualifiedClassName.Substring(0, qualifiedClassName.IndexOf("<", StringComparison.Ordinal))}<{normalizedGenericTypes}>";
-            }
-            var foreignParts = qualifiedClassName.Split('.').ToList();
-
-            if (foreignParts.Count == 1)
-            {
-                return qualifiedClassName;
+                foreignType = $"{foreignType.Substring(0, foreignType.IndexOf("<", StringComparison.Ordinal))}<{normalizedGenericTypes}>";
             }
 
-            var localParts = this.Namespace.Split('.');
+            var usingPaths = DependencyUsings.Split(';').Select(x => x.Trim().Replace("using ", "")).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+            var localNamespace = Namespace;
+            var knownOtherPaths = usingPaths
+                .Concat(Project.Application.Projects.Select(x => x.Name))
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Distinct()
+                .ToArray();
 
-            // Check if namespace already exists, but avoid where qualifiedClassName is same as a namespace:
-            var existingUsings = DependencyUsings.Split(';').Select(x => x.Trim().Replace("using ", "")).ToList();
-            var foreignNamespace = foreignParts.Where(x => x != foreignParts.Last()).Aggregate((x, y) => x + "." + y);
-            if (existingUsings.Any(x => x == foreignNamespace) && existingUsings.All(x => x != qualifiedClassName))
+            return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths);
+        }
+
+        internal static string NormalizeNamespace(
+            string localNamespace,
+            string foreignType,
+            string[] knownOtherPaths,
+            string[] usingPaths)
+        {
+            // NB: If changing this method, please run the unit tests against it
+
+            var foreignTypeParts = foreignType.Split('.').ToArray();
+            if (foreignTypeParts.Length == 1)
             {
-                return foreignParts.Last();
+                return foreignType;
             }
 
-            // Remove redundant parts of namespace:
-            foreach (var localPart in localParts)
+            // Is there already a using to which matches qualifier:
+            // (It's not immediately clear what scenario "usings.All(x => x != foreignType)" covers, if you know, please document)
+            var foreignTypeQualifier = foreignTypeParts.Take(foreignTypeParts.Length - 1).DefaultIfEmpty().Aggregate((x, y) => x + "." + y);
+            if (usingPaths.Contains(foreignTypeQualifier) && usingPaths.All(x => x != foreignType))
             {
-                if (localPart == foreignParts[0])
+                return foreignTypeParts.Last();
+            }
+
+            var localNamespaceParts = localNamespace.Split('.').ToArray();
+            var otherPathsToCheck = knownOtherPaths
+                .Concat(new[] { localNamespace })
+                .Concat(usingPaths)
+                .Distinct()
+                .ToArray();
+
+
+            // To minimize the chance that simplifying the path of the foreign type causes a compile time error due to a
+            // conflicting path, we pre-compute known sub paths for each part of the namespace.To try summarize the logic,
+            // for each part of the local namespace, find all their respective immediate sub path parts and select with
+            // some other data for easier debugging.
+            var namespacePartsSubPaths = localNamespaceParts
+                .Select((localNamespacePart, index) =>
                 {
-                    foreignParts.RemoveAt(0);
-                }
-                else
+                    var namespacePartPath = localNamespaceParts
+                        .Take(index + 1)
+                        .Aggregate((x, y) => x + "." + y);
+
+                    return new
+                    {
+                        LocalNamespacePartPath = namespacePartPath,
+                        LocalNamespacePartSubPaths = otherPathsToCheck
+                            .Where(y => y.StartsWith(namespacePartPath + "."))
+                            .Select(otherPath => new
+                            {
+                                OtherPathSubPart = otherPath.Substring((namespacePartPath + ".").Length).Split('.').First(),
+                                OtherPathFull = otherPath,
+                                LocalNamespacePartPath = namespacePartPath,
+                            })
+                            .GroupBy(x => x.OtherPathSubPart)
+                            .ToDictionary(x => x.Key, x => x.ToList())
+                    };
+                })
+                .Where(x => x.LocalNamespacePartSubPaths.Any())
+                .ToArray();
+
+            var commonPartsCount = 0;
+            for (var i = 0; i < localNamespaceParts.Length && i < foreignTypeParts.Length; i++)
+            {
+                var localPart = localNamespaceParts[i];
+                var foreignPart = foreignTypeParts[i];
+                var proposedFirstForeignPart = foreignTypeParts.Skip(i + 1).FirstOrDefault();
+                var proposedPathToOmit = foreignTypeParts.Take(i + 1).Aggregate((x, y) => x + "." + y);
+
+                // Simple check first:
+                if (localPart != foreignPart)
                 {
                     break;
                 }
-                if (foreignParts.Count == 1)
+
+                var conflicts = namespacePartsSubPaths
+                    // C# gives precendence to resolving types from the most to the least specific from the namespace
+                    .Skip(i + 1)
+                    
+                    // For namespaces with a matching sub-part:
+                    .Where(x => proposedFirstForeignPart != null && x.LocalNamespacePartSubPaths.ContainsKey(proposedFirstForeignPart))
+                    
+                    // Select filtered results (for easier debugging):
+                    .Select(x => new
+                    {
+                        x.LocalNamespacePartPath,
+                        Conflicts = x.LocalNamespacePartSubPaths[proposedFirstForeignPart]
+                            .Where(y => y.LocalNamespacePartPath != proposedPathToOmit)
+                            .ToArray()
+                    })
+
+                    // Where not empty:
+                    .Where(x => x.Conflicts.Any())
+                    .ToArray();
+
+                if (conflicts.Any())
                 {
-                    return foreignParts[0];
+                    break;
                 }
+
+                commonPartsCount++;
             }
-            return foreignParts.Aggregate((x, y) => x + "." + y);
+
+            return foreignTypeParts.Skip(commonPartsCount).Aggregate((x, y) => x + "." + y);
         }
 
         public abstract RoslynMergeConfig ConfigureRoslynMerger();
