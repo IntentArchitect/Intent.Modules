@@ -11,7 +11,7 @@ using System.Linq;
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
     [Description("Intent Typescript ServiceAgent Proxy - Other Servers")]
-    public class RemoteRegistrations : ModelTemplateRegistrationBase<ServiceModel>
+    public class RemoteRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
@@ -22,14 +22,14 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 
         public override string TemplateId => TypescriptWebApiClientServiceProxyTemplate.RemoteIdentifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
         {
             return new TypescriptWebApiClientServiceProxyTemplate(TypescriptWebApiClientServiceProxyTemplate.RemoteIdentifier, project, model, project.Application.EventDispatcher);
         }
 
-        public override IEnumerable<ServiceModel> GetModels(IApplication application)
+        public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = _metaDataManager.GetMetaData<ServiceModel>(new MetaDataIdentifier("Service"));
+            var serviceModels = _metaDataManager.GetServiceModels(application);
 
             serviceModels = serviceModels.Where(x => x.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Any(a => a.Trim() == application.ApplicationName));
 

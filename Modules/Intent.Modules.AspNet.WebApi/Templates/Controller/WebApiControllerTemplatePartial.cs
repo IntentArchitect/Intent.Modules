@@ -146,8 +146,8 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 return onExceptionCaught;
             }
 
-            return onExceptionCaught + @"
-                throw;";
+            return @"
+                return InternalServerError(e);";
         }
 
         public string OnDispose()

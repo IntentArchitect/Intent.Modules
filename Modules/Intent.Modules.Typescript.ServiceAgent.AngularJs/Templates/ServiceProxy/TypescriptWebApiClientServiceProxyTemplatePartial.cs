@@ -1,4 +1,5 @@
-﻿using Intent.MetaModel.Service;
+﻿using System;
+using Intent.MetaModel.Service;
 using Intent.Modules.Constants;
 using Intent.Modules.Typescript.ServiceAgent.Contracts;
 using Intent.SoftwareFactory.Engine;
@@ -6,10 +7,12 @@ using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.MetaModel.Common;
+using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
-    partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<ServiceModel>, ITemplate, IRequiresPreProcessing
+    partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceModel>, ITemplate, IRequiresPreProcessing
     {
         public const string RemoteIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Remote";
         public const string LocalIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Local";
@@ -17,7 +20,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         public const string DomainTemplateDependancyId = "DomainTemplateDependancyId";
         private readonly IApplicationEventDispatcher _eventDispatcher;
 
-        public TypescriptWebApiClientServiceProxyTemplate(string identifier, IProject project, ServiceModel model, IApplicationEventDispatcher eventDispatcher)
+        public TypescriptWebApiClientServiceProxyTemplate(string identifier, IProject project, IServiceModel model, IApplicationEventDispatcher eventDispatcher)
             : base(identifier, project, model)
         {
             _eventDispatcher = eventDispatcher;
@@ -62,6 +65,20 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             });
         }
 
+        private HttpVerb GetHttpVerb(IOperationModel operation)
+        {
+            var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
+            if (verb != "AUTO")
+            {
+                return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
+            }
+            if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
+            {
+                return HttpVerb.POST;
+            }
+            return HttpVerb.GET;
+        }
+
         private string GetAddress()
         {
             var useSsl = false;
@@ -96,5 +113,13 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                 .Select(x => x.Name.ToCamelCase())
                 .Aggregate((x, y) => $"{x}, {y}");
         }
+    }
+
+    internal enum HttpVerb
+    {
+        GET,
+        POST,
+        PUT,
+        DELETE
     }
 }

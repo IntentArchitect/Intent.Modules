@@ -42,7 +42,7 @@ namespace <#=Namespace#>
         [AcceptVerbs("<#= GetHttpVerb(operation).ToString().ToUpper()#>")]
         <#= GetSecurityAttribute(operation) #>
         [Route("<#= operation.Name.ToLower() #>")]
-        public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
+        public IHttpActionResult <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>
 <#      if (operation.ReturnType != null)
         {
@@ -69,17 +69,16 @@ namespace <#=Namespace#>
                     ts.Complete();
                 }<#= AfterTransaction(operation) #>
             }
-#pragma warning disable CS0168 // Variable is declared but never used
             catch (Exception e)
-#pragma warning restore CS0168 // Variable is declared but never used
-            {<#= OnExceptionCaught(operation) #>
+            {<#= OnExceptionCaught(operation) #>                
             }
 
-<#        if (operation.ReturnType != null)
-        {
-#>            return result;
+<#      if (operation.ReturnType != null)
+        {#>
+        return Ok(result);
+<#      } else {#>
+        return Ok();
 <#      }#>
-
         }
 
 <#    }

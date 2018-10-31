@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentTypescriptProjectItemTemplateBase<ServiceModel>" #>
+﻿<#@ template  debug="true"  inherits="IntentTypescriptProjectItemTemplateBase<IServiceModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -36,7 +36,11 @@ namespace <#= Namespace #> {
         {
             var baseUrl = this.config["<#= ApiBasePathConfigKey #>"];
             var url = baseUrl + "/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>";
-            return this.$http.post<<#= this.ConvertType(o.ReturnType.TypeReference) #>>(url, { <#= GetMethodCallParameters(o) #> });
+<#              if (GetHttpVerb(o) == HttpVerb.GET) { #>
+            return this.$http.get<<#= this.ConvertType(o.ReturnType.TypeReference) #>>(url, { params: { <#= GetMethodCallParameters(o) #> } });
+<#              } else {#>
+            return this.$http.post<<#= this.ConvertType(o.ReturnType.TypeReference) #>>(url, <#= GetMethodCallParameters(o) #>);
+<#              }#>
         }
 
 <#
@@ -48,7 +52,7 @@ namespace <#= Namespace #> {
         {
             var baseUrl = this.config["<#= ApiBasePathConfigKey #>"];
             var url = baseUrl + "/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>";
-            return this.$http.post<void>(url, { <#= GetMethodCallParameters(o) #> });
+            return this.$http.post<void>(url, <#= GetMethodCallParameters(o) #>);
         }
 
 <#            }
