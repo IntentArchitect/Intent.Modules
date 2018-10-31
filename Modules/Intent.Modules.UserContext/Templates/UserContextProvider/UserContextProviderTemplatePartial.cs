@@ -4,6 +4,7 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using Intent.Modules.UserContext.Templates.UserContextProviderInterface;
 
 namespace Intent.Modules.UserContext.Templates.UserContextProvider
 {
@@ -46,10 +47,11 @@ namespace Intent.Modules.UserContext.Templates.UserContextProvider
 
         public void PreProcess()
         {
+            var userContextProviderInterface = Project.FindTemplateInstance<IHasClassDetails>(UserContextProviderInterfaceTemplate.Identifier);
             var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(UserContextInterfaceTemplate.Identifier);
             _eventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
-                { "InterfaceType", $"Intent.Framework.Core.Context.IUserContextProvider<{contractTemplate.FullTypeName()}>" },
+                { "InterfaceType", $"{userContextProviderInterface.FullTypeName()}<{contractTemplate.FullTypeName()}>" },
                 { "ConcreteType",  this.FullTypeName() }
             });
         }

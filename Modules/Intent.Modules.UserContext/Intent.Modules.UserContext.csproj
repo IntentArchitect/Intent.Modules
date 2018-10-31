@@ -64,6 +64,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\UserContextInterface\UserContextInterfaceTemplatePartial.cs" />
+    <Compile Include="Templates\UserContextProviderInterface\UserContextProviderInterfaceTemplate.cs">
+      <DependentUpon>UserContextProviderInterfaceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\UserContextProviderInterface\UserContextProviderInterfacePartial.cs" />
     <Compile Include="Templates\UserContextProvider\UserContextProviderTemplate.cs">
       <DependentUpon>UserContextProviderTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -81,6 +87,10 @@
     <Content Include="Templates\UserContextInterface\UserContextInterfaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UserContextInterfaceTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\UserContextProviderInterface\UserContextProviderInterfaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>UserContextProviderInterfaceTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\UserContextProvider\UserContextProviderTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
