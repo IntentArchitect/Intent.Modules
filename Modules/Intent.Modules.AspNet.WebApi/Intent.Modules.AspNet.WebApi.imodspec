@@ -41,9 +41,9 @@
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="1.5.1"/>
+    <dependency id="Intent.Common" version="1.5.5"/>
     <dependency id="Intent.AspNet.Owin" version="1.5.1"/>
-    <dependency id="Intent.Application.Contracts" version="1.5.0"/>
+    <dependency id="Intent.Application.Contracts" version="1.5.4"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
   </dependencies>
   <files>
