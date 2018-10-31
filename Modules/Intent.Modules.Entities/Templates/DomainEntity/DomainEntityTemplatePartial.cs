@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Intent.MetaModel.Common;
 using Intent.MetaModel.Domain;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
@@ -26,7 +28,8 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
 
         public void Created()
         {
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityTemplate.Identifier, nameof(ICollection)));
+            //Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityTemplate.Identifier, nameof(ICollection)));
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityInterfaceTemplate.Identifier, nameof(ICollection)));
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
@@ -59,21 +62,18 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             return GetDecorators().Aggregate(x => x.Constructors(@class));
         }
 
+        public string GetParametersDefinition(IOperation operation)
+        {
+            return operation.Parameters.Any() 
+                ? operation.Parameters.Select(x => this.ConvertType(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) 
+                : "";
+        }
+
         public string EmitOperationReturnType(IOperation operation)
         {
-            if (operation.ReturnType != null)
-            {
-                var type = Types.Get(operation.ReturnType.Type);
-                if (operation.ReturnType.IsCollection)
-                {
-                    type = $"ICollection<{type}>";
-                }
-                return type;
-            }
-            else
-            {
-                return "void";
-            }
+            return operation.ReturnType != null ? this.ConvertType(operation.ReturnType.Type) : "void";
         }
+
+
     }
 }

@@ -55,7 +55,7 @@ namespace <#= Namespace #>
         }
         string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
 #>
-        <#= EmitOperationReturnType(operation) #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
+        <#= EmitOperationReturnType(operation) #> <#= operation.Name.ToPascalCase() #>(<#= GetParametersDefinition(operation) #>);
 <#  }#>
     }
 }

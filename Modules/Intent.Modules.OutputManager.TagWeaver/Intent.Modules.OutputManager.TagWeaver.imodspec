@@ -22,7 +22,7 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies >
-    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.Common" version="1.5.3"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

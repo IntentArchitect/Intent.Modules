@@ -13,7 +13,7 @@
     <decorator id="Intent.AspNet.WebApi.Interop.Unity.DataContractDecorator"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.Common" version="1.5.3"/>
     <dependency id="Intent.Unity" version="1.5.0"/>
     <dependency id="Intent.AspNet.WebApi" version="1.5.0" />
   </dependencies>

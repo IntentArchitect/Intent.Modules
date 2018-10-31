@@ -27,11 +27,9 @@ namespace <#= Namespace #>
     public interface I<#= ClassStateName #>Behaviours<#= Model.ParentClass != null ? string.Format(" : I{0}Behaviours", Model.ParentClass.Name) : "" #> {
 <# foreach (var operation in Model.Operations.Where(x => x.HasStereotype("Command Operation")))
     {
-        string returnType = operation.ReturnType != null ? Types.Get( operation.ReturnType.Type) : "void";
-        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
 		if (!operation.IsAbstract)
 		{#>
-        <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
+        <#= EmitOperationReturnType(operation) #> <#= operation.Name.ToPascalCase() #>(<#= GetParametersDefinition(operation) #>);
 <#		}
     }
 #>

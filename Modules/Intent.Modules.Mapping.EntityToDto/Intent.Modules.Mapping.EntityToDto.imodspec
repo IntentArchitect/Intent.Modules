@@ -22,7 +22,7 @@
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.Common" version="1.5.3"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
     <dependency id="Intent.RichDomain" version="1.3.0"/>
     <dependency id="Intent.Application.ServiceCallHandlers" version="1.3.0"/>

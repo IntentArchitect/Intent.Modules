@@ -4,6 +4,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.SoftwareFactory.MetaData;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.Decorators
 {
@@ -44,7 +45,7 @@ namespace Intent.Modules.Entities.Decorators
             }
             var t = ClassTypeSource.InProject(Template.Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable));
             return $@"
-        {t.GetClassType(associationEnd)} {associationEnd.Name()} {{ get; }}
+        {t.GetClassType(associationEnd)} {associationEnd.Name().ToPascalCase()} {{ get; }}
 ";
         }
 

@@ -1,16 +1,26 @@
-﻿using Intent.MetaModel.Domain;
+﻿using System.Collections;
+using System.Linq;
+using Intent.MetaModel.Domain;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Entities.Templates;
+using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 {
-    partial class DomainEntityBehavioursTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate//, IHasDecorators<AbstractDomainEntityDecorator>
+    partial class DomainEntityBehavioursTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IPostTemplateCreation
     {
         public const string Identifier = "Intent.Entities.DDD.Behaviours";
 
         public DomainEntityBehavioursTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
         {
+        }
+
+        public void Created()
+        {
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable)));
         }
 
         public string ClassStateName => Model.Name;
@@ -30,6 +40,18 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
                 className: "I${Model.Name}Behaviours",
                 @namespace: "${Project.ProjectName}"
                 );
+        }
+
+        private string GetParametersDefinition(IOperation operation)
+        {
+            return operation.Parameters.Any()
+                ? operation.Parameters.Select(x => this.ConvertType(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
+                : "";
+        }
+
+        private string EmitOperationReturnType(IOperation operation)
+        {
+            return operation.ReturnType != null ? this.ConvertType(operation.ReturnType.Type) : "void";
         }
     }
 }

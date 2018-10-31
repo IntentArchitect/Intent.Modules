@@ -1,10 +1,10 @@
 ﻿using Intent.MetaModel.Domain;
-using Intent.Modules.Entities.Templates.DomainEntity;
 using System;
+using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    public class DefaultConstructorDomainEntityDecorator : DomainEntityDecoratorBase
+    public class DefaultConstructorDomainEntityDecorator : DomainEntityStateDecoratorBase
     {
         public const string Identifier = "Intent.Entities.DefaultConstructorDomainEntityDecorator";
 

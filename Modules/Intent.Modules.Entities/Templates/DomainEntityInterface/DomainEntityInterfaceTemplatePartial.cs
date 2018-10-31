@@ -23,7 +23,8 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 
         public void Created()
         {
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityStateTemplate.Identifier, nameof(ICollection)));
+            //Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityStateTemplate.Identifier, nameof(ICollection)));
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityInterfaceTemplate.Identifier, nameof(ICollection)));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -117,21 +118,16 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().All(x => x.CanWriteDefaultOperation(operation));
         }
 
+        public string GetParametersDefinition(IOperation operation)
+        {
+            return operation.Parameters.Any()
+                ? operation.Parameters.Select(x => this.ConvertType(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
+                : "";
+        }
+
         public string EmitOperationReturnType(IOperation operation)
         {
-            if (operation.ReturnType != null)
-            {
-                var type = Types.Get(operation.ReturnType.Type);
-                if (operation.ReturnType.IsCollection)
-                {
-                    type = $"ICollection<{type}>";
-                }
-                return type;
-            }
-            else
-            {
-                return "void";
-            }
+            return operation.ReturnType != null ? this.ConvertType(operation.ReturnType.Type) : "void";
         }
     }
 }

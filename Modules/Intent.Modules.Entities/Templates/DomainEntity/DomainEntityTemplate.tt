@@ -26,18 +26,16 @@ namespace <#= Namespace #>
 <#= Constructors(Model) #>
 <# 	foreach (var operation in Model.Operations)
     {
-        string returnType = EmitOperationReturnType(operation);
-        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
         if (!operation.IsAbstract)
         {#>
-        public <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>)
+        public <#= EmitOperationReturnType(operation) #> <#= operation.Name.ToPascalCase() #>(<#= GetParametersDefinition(operation) #>)
         {
             throw new NotImplementedException("Replace with your implementation...");
         }
 <#		}
         else
         { #>
-        public abstract <#= returnType #> <#= operation.Name.ToPascalCase() #>(<#= parameterDefinitions #>);
+        public abstract <#= EmitOperationReturnType(operation) #> <#= operation.Name.ToPascalCase() #>(<#= GetParametersDefinition(operation) #>);
 <#		}
     }
 #>
