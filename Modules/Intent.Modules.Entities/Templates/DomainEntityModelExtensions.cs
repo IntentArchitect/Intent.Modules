@@ -1,8 +1,11 @@
 using Intent.MetaModel.Common;
 using Intent.MetaModel.Domain;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.Templates
 {
@@ -33,6 +36,16 @@ namespace Intent.Modules.Entities.Templates
         //{
         //    return attribute.Type.ConvertType();
         //}
+
+        public static string ConvertType<T>(this IntentRoslynProjectItemTemplateBase<T> template, ITypeReference type, string collectionType = nameof(IEnumerable))
+        {
+            var returnType = template.NormalizeNamespace(template.Types.Get(type));
+            if (type.IsCollection)
+            {
+                returnType = $"{collectionType}<{returnType}>";
+            }
+            return returnType;
+        }
 
         public static string Name(this IAssociationEnd associationEnd)
         {

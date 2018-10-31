@@ -1,6 +1,8 @@
 ﻿using System.Collections;
+using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
@@ -38,6 +40,18 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
                 className: "I${Model.Name}Behaviours",
                 @namespace: "${Project.ProjectName}"
                 );
+        }
+
+        private string GetParametersDefinition(IOperation operation)
+        {
+            return operation.Parameters.Any()
+                ? operation.Parameters.Select(x => this.ConvertType(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
+                : "";
+        }
+
+        private string EmitOperationReturnType(IOperation operation)
+        {
+            return operation.ReturnType != null ? this.ConvertType(operation.ReturnType.Type) : "void";
         }
     }
 }
