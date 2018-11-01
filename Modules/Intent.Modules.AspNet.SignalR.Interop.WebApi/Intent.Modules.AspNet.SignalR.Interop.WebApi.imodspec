@@ -12,7 +12,7 @@
     <decorator id="Intent.AspNet.SignalR.Interop.WebApi.Legacy"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.5.0"/>
+    <dependency id="Intent.Common" version="1.5.3"/>
     <dependency id="Intent.AspNet.SignalR" version="1.3.0"/>
     <dependency id="Intent.AspNet.WebApi" version="1.3.0"/>
   </dependencies>

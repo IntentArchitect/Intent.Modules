@@ -40,7 +40,7 @@ namespace Intent.Modules.Entities.Templates
         public static string ConvertType<T>(this IntentRoslynProjectItemTemplateBase<T> template, ITypeReference type, string collectionType = nameof(IEnumerable))
         {
             var returnType = template.NormalizeNamespace(template.Types.Get(type));
-            if (type.IsCollection)
+            if (type.IsCollection && type.Type != ReferenceType.ClassType) // GCB - ClassType automatically adds the collectiont type. This disparity is a smell..
             {
                 returnType = $"{collectionType}<{returnType}>";
             }

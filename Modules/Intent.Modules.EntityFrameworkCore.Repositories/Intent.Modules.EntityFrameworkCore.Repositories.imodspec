@@ -21,7 +21,7 @@
   </decorators>
   <dependencies>
     <dependency id="Intent.Common" version="1.5.1"/>
-    <dependency id="Intent.Common.Types" version="1.5.0"/>
+    <dependency id="Intent.Common.Types" version="1.5.2"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
     <dependency id="Intent.Entities.Repositories.Api" version="1.5.1"/>
     <dependency id="Intent.EntityFrameworkCore" version="1.5.1"/>
