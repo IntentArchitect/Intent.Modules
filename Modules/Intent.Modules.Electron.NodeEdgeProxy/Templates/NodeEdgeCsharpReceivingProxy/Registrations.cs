@@ -10,7 +10,7 @@ using System.Linq;
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy
 {
     [Description("Intent.Packages.Electron.NodeEdgeProxy - CSharp Receiving Proxies")]
-    public class Registrations : ModelTemplateRegistrationBase<ServiceModel>
+    public class Registrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
@@ -20,16 +20,16 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
         }
 
         public override string TemplateId => NodeEdgeCsharpReceivingProxyTemplate.Identifier;
-        public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
         {
             return new NodeEdgeCsharpReceivingProxyTemplate(model, project);
         }
 
-        public override IEnumerable<ServiceModel> GetModels(IApplication applicationManager)
+        public override IEnumerable<IServiceModel> GetModels(IApplication applicationManager)
         {
             return _metaDataManager
-                .GetMetaData<ServiceModel>(new MetaDataIdentifier("Service"))
-                .Where(x => x.Application.Name == applicationManager.ApplicationName && x.Stereotypes.Any(y => y.Name == "NodeEdgeService"))
+                .GetServiceModels(applicationManager)
+                .Where(x => x.Stereotypes.Any(y => y.Name == "NodeEdgeService"))
                 .ToList();
 
         }

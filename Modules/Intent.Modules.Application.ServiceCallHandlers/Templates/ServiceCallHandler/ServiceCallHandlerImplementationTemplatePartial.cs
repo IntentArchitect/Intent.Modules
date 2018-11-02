@@ -6,6 +6,7 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.MetaModel.DTO;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common.Plugins;
@@ -28,10 +29,13 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
 
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
-            return new[]
+            var typeReferences = Model.Parameters.Select(x => x.TypeReference).ToList();
+            if (Model.ReturnType != null)
             {
-                TemplateDependancy.OnTemplate(DTOTemplate.IDENTIFIER),
-            };
+                typeReferences.Add(Model.ReturnType.TypeReference);
+            }
+
+            return typeReferences.Select(x => TemplateDependancy.OnModel<IDTOModel>(DTOTemplate.IDENTIFIER, m => m.Id == x.Id)).ToArray();
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()

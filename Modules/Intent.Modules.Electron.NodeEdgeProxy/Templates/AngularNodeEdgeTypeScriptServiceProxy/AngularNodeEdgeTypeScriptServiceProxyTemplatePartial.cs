@@ -11,11 +11,11 @@ using Intent.Modules.Typescript.ServiceAgent.Contracts;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScriptServiceProxy
 {
-    partial class AngularNodeEdgeTypeScriptServiceProxyTemplate : IntentProjectItemTemplateBase<ServiceModel>, ITemplate
+    partial class AngularNodeEdgeTypeScriptServiceProxyTemplate : IntentProjectItemTemplateBase<IServiceModel>, ITemplate
     {
         public const string Identifier = "Intent.Electron.NodeEdgeProxy.AngularNodeEdgeTypeScriptServiceProxy";
 
-        public AngularNodeEdgeTypeScriptServiceProxyTemplate(ServiceModel model, IProject project)
+        public AngularNodeEdgeTypeScriptServiceProxyTemplate(IServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
             var receivingProxyProject = project.Application.FindProjectWithTemplateInstance(NodeEdgeCsharpReceivingProxyTemplate.Identifier, model);

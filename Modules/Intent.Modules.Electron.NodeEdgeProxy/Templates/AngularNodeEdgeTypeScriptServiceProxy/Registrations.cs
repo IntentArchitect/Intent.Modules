@@ -11,7 +11,7 @@ using System.Linq;
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScriptServiceProxy
 {
     [Description(AngularNodeEdgeTypeScriptServiceProxyTemplate.Identifier)]
-    public class Registrations : ModelTemplateRegistrationBase<ServiceModel>
+    public class Registrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
@@ -22,18 +22,18 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
 
         public override string TemplateId => AngularNodeEdgeTypeScriptServiceProxyTemplate.Identifier;
         
-        public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
         {
             return new AngularNodeEdgeTypeScriptServiceProxyTemplate(
                 model: model,
                 project: project);
         }
 
-        public override IEnumerable<ServiceModel> GetModels(IApplication applicationManager)
+        public override IEnumerable<IServiceModel> GetModels(IApplication applicationManager)
         {
             return _metaDataManager
-                .GetMetaData<ServiceModel>(new MetaDataIdentifier("Service"))
-                .Where(x => x.Application.Name == applicationManager.ApplicationName && x.Stereotypes.Any(y => y.Name == "NodeEdgeService"))
+                .GetServiceModels(applicationManager)
+                .Where(x => x.Stereotypes.Any(y => y.Name == "NodeEdgeService"))
                 .ToList();
         }
     }

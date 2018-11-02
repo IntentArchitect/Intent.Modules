@@ -8,10 +8,12 @@ using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Intent.Modules.Application.Contracts.Templates.DTO;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
-    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
+    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IPostTemplateCreation, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.ServiceContract";
 
@@ -21,6 +23,11 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             : base(identifier, project, model)
         {
             _decoratorDispatcher = new DecoratorDispatcher<IServiceContractAttributeDecorator>(project.ResolveDecorators<IServiceContractAttributeDecorator>);
+        }
+
+        public void Created()
+        {
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
         }
 
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
@@ -98,8 +105,8 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
-            if (typeInfo.IsCollection)
+            var result = NormalizeNamespace(Types.Get(typeInfo));
+            if (typeInfo.IsCollection && typeInfo.Type != ReferenceType.ClassType)
             {
                 result = string.Format(GetCollectionTypeFormatConfig(), result);
             }
@@ -117,5 +124,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             }
             return format;
         }
+
+
     }
 }

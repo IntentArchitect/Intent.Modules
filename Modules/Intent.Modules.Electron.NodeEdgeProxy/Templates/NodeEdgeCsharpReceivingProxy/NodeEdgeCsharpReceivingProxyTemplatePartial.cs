@@ -12,11 +12,11 @@ using Intent.Modules.Application.Contracts;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy
 {
-    partial class NodeEdgeCsharpReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
+    partial class NodeEdgeCsharpReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
     {
         public const string Identifier = "Intent.Electron.NodeEdgeProxy.CsharpReceivingProxy";
 
-        public NodeEdgeCsharpReceivingProxyTemplate(ServiceModel model, IProject project)
+        public NodeEdgeCsharpReceivingProxyTemplate(IServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
         }

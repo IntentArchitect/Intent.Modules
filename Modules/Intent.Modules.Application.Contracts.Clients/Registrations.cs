@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.Contracts.Clients
     }
 
     [Description("Intent Applications Service Contracts (Clients)")]
-    public class ServiceContractRegistrations : ModelTemplateRegistrationBase<MetaModel.Service.ServiceModel>
+    public class ServiceContractRegistrations : ModelTemplateRegistrationBase<MetaModel.Service.IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
@@ -36,22 +36,22 @@ namespace Intent.Modules.Application.Contracts.Clients
 
         public override string TemplateId => TemplateIds.ClientServiceContract;
 
-        public override ITemplate CreateTemplateInstance(IProject project, MetaModel.Service.ServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, MetaModel.Service.IServiceModel model)
         {
             return new Templates.ServiceContract.ServiceContractTemplate(project, model, TemplateId);
         }
 
-        public override IEnumerable<MetaModel.Service.ServiceModel> GetModels(IApplication application)
+        public override IEnumerable<MetaModel.Service.IServiceModel> GetModels(IApplication application)
         {
             return _metaDataManager
-                .GetMetaData<MetaModel.Service.ServiceModel>(new MetaDataIdentifier("Service"))
+                .GetMetaData<MetaModel.Service.IServiceModel>("Services")
                 .Where(x => x.GetConsumers().Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }
     }
 
     [Description("Intent Applications Contracts DTO")]
-    public class DtoRegistrations : ModelTemplateRegistrationBase<MetaModel.DTO.DTOModel>
+    public class DtoRegistrations : ModelTemplateRegistrationBase<MetaModel.DTO.IDTOModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
@@ -62,15 +62,15 @@ namespace Intent.Modules.Application.Contracts.Clients
 
         public override string TemplateId => TemplateIds.ClientDTO;
 
-        public override ITemplate CreateTemplateInstance(IProject project, MetaModel.DTO.DTOModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, MetaModel.DTO.IDTOModel model)
         {
             return new Templates.DTO.DTOTemplate(project, model, TemplateId);
         }
 
-        public override IEnumerable<MetaModel.DTO.DTOModel> GetModels(IApplication application)
+        public override IEnumerable<MetaModel.DTO.IDTOModel> GetModels(IApplication application)
         {
             return _metaDataManager
-                .GetMetaData<MetaModel.DTO.DTOModel>(new MetaDataIdentifier("DTO"))
+                .GetMetaData<MetaModel.DTO.IDTOModel>(new MetaDataIdentifier("Services"))
                 .Where(x => x.GetConsumers().Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }

@@ -19,7 +19,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class NodeEdgeCsharpReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>
+    public partial class NodeEdgeCsharpReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>
     {
 #line hidden
         /// <summary>
@@ -28,8 +28,8 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
         public override string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Syste" +
-                    "m.Threading.Tasks;\r\nusing Microsoft.Practices.Unity;\r\nusing Newtonsoft.Json;\r\nus" +
-                    "ing Newtonsoft.Json.Serialization;\r\n");
+                    "m.Threading.Tasks;\r\nusing Newtonsoft.Json;\r\nusing Newtonsoft.Json.Serialization;" +
+                    "\r\nusing Unity;\r\n");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\NodeEdgeCsharpReceivingProxy\NodeEdgeCsharpReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
