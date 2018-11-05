@@ -175,6 +175,9 @@ namespace <#= Namespace #>
 <#				} else { #>
                 .Map(m => m.MapKey("<#= associationEnd.Name().ToPascalCase()#>Id"))
 <#				} #>
+<#				if(associationEnd.Association.AssociationType == AssociationType.Composition) {  #>
+				.WillCascadeOnDelete()
+<#				} #>
                 ;
 
 <#                  break;
@@ -223,6 +226,9 @@ public void MapOneToOne(IAssociationEnd associationEnd)
     {#>
             .Map(m => m.MapKey("<#= associationEnd.Name().ToPascalCase() + "Id"#>"))
 <#+    }#>
+<#+	if(associationEnd.Association.AssociationType == AssociationType.Composition) {  #>
+			.WillCascadeOnDelete()
+<#+	} #>
             ;
 <#+    
 }
