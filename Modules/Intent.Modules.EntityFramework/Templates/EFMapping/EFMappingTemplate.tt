@@ -175,9 +175,6 @@ namespace <#= Namespace #>
 <#				} else { #>
                 .Map(m => m.MapKey("<#= associationEnd.Name().ToPascalCase()#>Id"))
 <#				} #>
-<#				if(associationEnd.Association.AssociationType == AssociationType.Composition) {  #>
-				.WillCascadeOnDelete()
-<#				} #>
                 ;
 
 <#                  break;
@@ -188,6 +185,9 @@ namespace <#= Namespace #>
 				.HasForeignKey(x => x.<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id)
 <#				} else { #>
 				.Map(m => m.MapKey("<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id"))
+<#				} #>
+<#				if(associationEnd.Association.AssociationType == AssociationType.Composition) {  #>
+				.WillCascadeOnDelete()
 <#				} #>
                 ;
 
