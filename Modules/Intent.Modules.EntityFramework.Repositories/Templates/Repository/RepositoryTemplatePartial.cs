@@ -36,6 +36,15 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             _deleteVisitorTemplateDependancy = TemplateDependancy.OnTemplate(EntityCompositionVisitorTemplate.Identifier);
         }
 
+        public string EntityCompositionVisitorName
+        {
+            get
+            {
+                var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(EntityCompositionVisitorTemplate.Identifier));
+                return template != null ? NormalizeNamespace($"{template.Namespace}.{template.ClassName}") : null;
+            }
+        }
+
         public string EntityInterfaceName
         {
             get

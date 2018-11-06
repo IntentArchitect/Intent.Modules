@@ -11,6 +11,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
+<#@ import namespace="Intent.Modules.EntityFramework.Templates" #> 
 
 using System;
 using Intent.Framework.Core;
@@ -67,20 +68,20 @@ namespace <#= Namespace #>
 
         foreach(var associationEnd in model.AssociatedClasses)
         {
-            if (associationEnd.Association.AssociationType ==  AssociationType.Composition && associationEnd.OtherEnd() == associationEnd)
+            if (associationEnd.Association.AssociationType ==  AssociationType.Composition && associationEnd.Association.TargetEnd == associationEnd)
             {
                 if (associationEnd.Multiplicity == Multiplicity.Many) {
 #>
-            foreach (IVisitable item in state.<#= Types.Get(associationEnd) #>)
+            foreach (IVisitable item in state.<#= associationEnd.Name().ToPascalCase() #>)
             {
                 item.Accept(this);
             }
 <#              }
                 else
                 {#>
-            if (state.<#= Types.Get(associationEnd) #> != null)
+            if (state.<#= associationEnd.Name() #> != null)
             {
-                ((IVisitable)state.<#= Types.Get(associationEnd) #>).Accept(this);
+                ((IVisitable)state.<#= associationEnd.Name().ToPascalCase() #>).Accept(this);
             }
 <#                }
             }

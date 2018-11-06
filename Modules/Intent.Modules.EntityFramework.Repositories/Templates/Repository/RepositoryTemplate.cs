@@ -97,8 +97,14 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             
             #line default
             #line hidden
-            this.Write(" dbContext) : base (dbContext)\r\n        {\r\n        }\r\n\r\n        [IntentManaged(Mo" +
-                    "de.Fully)]\r\n        public ");
+            this.Write(" dbContext) : base (dbContext");
+            
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(EntityCompositionVisitorName != null ? string.Format(", new {0}()", EntityCompositionVisitorName) : ""));
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n        {\r\n        }\r\n\r\n        [IntentManaged(Mode.Fully)]\r\n        public ");
             
             #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
