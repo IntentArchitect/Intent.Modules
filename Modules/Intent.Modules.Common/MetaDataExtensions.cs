@@ -19,7 +19,10 @@ namespace Intent.SoftwareFactory
             {
                 return result;
             }
+
             // Purely for backward compatibility between 1.5.x and 1.6.x
+            // TODO JL 1.6 - Add documentation link
+            Logging.Log.Warning($"Old metadata name specified, falling back to pre 1.6 metadata name. Contact the author of this module to update it and prevent this warning.\r\n{Environment.StackTrace}");
             return metaDataManager.GetMetaData<IServiceModel>(new MetaDataIdentifier("Service")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
 
@@ -30,10 +33,13 @@ namespace Intent.SoftwareFactory
             {
                 return result;
             }
+
             // Purely for backward compatibility between 1.5.x and 1.6.x
+            // TODO JL 1.6 - Add documentation link
+            Logging.Log.Warning($"Old metadata name specified, falling back to pre 1.6 metadata name. Contact the author of this module to update it and prevent this warning.\r\n{Environment.StackTrace}");
             return metaDataManager.GetMetaData<IClass>(new MetaDataIdentifier("DomainEntity")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
-        
+
         public static IEnumerable<IDTOModel> GetDTOModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier = "Services")
         {
             var result = metaDataManager.GetMetaData<IDTOModel>(new MetaDataIdentifier(metadataIdentifier ?? "Services")).Where(x => x.Application.Name == application.ApplicationName).ToList();
@@ -41,19 +47,24 @@ namespace Intent.SoftwareFactory
             {
                 return result;
             }
+
             // Purely for backward compatibility between 1.5.x and 1.6.x
+            // TODO JL 1.6 - Add documentation link
+            Logging.Log.Warning($"Old metadata name specified, falling back to pre 1.6 metadata name. Contact the author of this module to update it and prevent this warning.\r\n{Environment.StackTrace}");
             return metaDataManager.GetMetaData<IDTOModel>(new MetaDataIdentifier("DTO")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
-        
-        public static IEnumerable<IEnumModel> GetEnumModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier)
+
+        public static IEnumerable<IEnumModel> GetEnumModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier = null)
         {
-            var result = metaDataManager.GetMetaData<IEnumModel>(new MetaDataIdentifier(metadataIdentifier)).Where(x => x.Application.Name == application.ApplicationName).ToList();
-            if (result.Any())
+            if (!string.IsNullOrWhiteSpace(metadataIdentifier))
             {
-                return result;
+                return metaDataManager.GetMetaData<IEnumModel>(new MetaDataIdentifier(metadataIdentifier)).Where(x => x.Application.Name == application.ApplicationName).ToList();
             }
-            // Purely for backward compatibility between 1.5.x and 1.6.x
-            return metaDataManager.GetMetaData<IEnumModel>(new MetaDataIdentifier("Enum")).Where(x => x.Application.Name == application.ApplicationName).ToList();
+
+            return new IEnumModel[0]
+                .Concat(metaDataManager.GetMetaData<IEnumModel>(new MetaDataIdentifier("Domain")).Where(x => x.Application.Name == application.ApplicationName))
+                .Concat(metaDataManager.GetMetaData<IEnumModel>(new MetaDataIdentifier("Services")).Where(x => x.Application.Name == application.ApplicationName))
+                .ToList();
         }
     }
 }

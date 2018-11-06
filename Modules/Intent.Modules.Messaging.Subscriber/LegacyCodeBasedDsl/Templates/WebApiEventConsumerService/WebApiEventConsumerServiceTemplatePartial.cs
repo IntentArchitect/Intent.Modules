@@ -49,6 +49,7 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
                         parameters: new List<IOperationParameterModel>
                         {
                             new OperationParameterModel(
+                                id: Guid.Empty.ToString(),
                                 name: "content",
                                 typeReference: new ClassTypeReference(
                                     id: Guid.Empty.ToString(),
@@ -56,13 +57,17 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
                                     isNullable: false,
                                     isCollection: false,
                                     folder: null,
-                                    stereotypes: new IStereotype[0]),
-                                stereotypes: new IStereotype[0])
+                                    stereotypes: new IStereotype[0],
+                                    comment: null),
+                                stereotypes: new IStereotype[0],
+                                comment: null)
                         },
                         returnType: null,
-                        stereotypes: new IStereotype[0]),
+                        stereotypes: new IStereotype[0],
+                        comment: null),
                 },
-                stereotypes: new IStereotype[0]));
+                stereotypes: new IStereotype[0],
+                comment: null));
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()

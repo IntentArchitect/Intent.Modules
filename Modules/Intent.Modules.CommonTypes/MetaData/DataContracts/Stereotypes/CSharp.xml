@@ -9,6 +9,7 @@
   <displayFunction />
   <targetElements>
     <element>type-definition</element>
+    <element>true</element>
   </targetElements>
   <parentFolderId>90fdf72a-6d98-4204-aa3d-7f838789633d</parentFolderId>
   <properties>

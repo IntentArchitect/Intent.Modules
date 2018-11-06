@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Intent.Modules.Common</id>
-    <version>1.6.0-pre1</version>
+    <version>1.6.0-pre.1</version>
     <title>Intent - Modules Common</title>
     <authors>Intent Architect</authors>
     <owners>Intent Architect</owners>
@@ -15,8 +15,8 @@
     <copyright>Copyright 2018</copyright>
     <tags>Intent Architect Software Factory SDK Modules Common</tags>
     <dependencies>
-      <dependency id="Intent.SoftwareFactory.SDK" version="1.4.0" />
-      <dependency id="Intent.SoftwareFactory.MetaModel" version="1.4.0" />
+      <dependency id="Intent.SoftwareFactory.SDK" version="1.6.0-pre.1" />
+      <dependency id="Intent.SoftwareFactory.MetaModel" version="1.6.0-pre.1" />
     </dependencies>
   </metadata>
 </package>

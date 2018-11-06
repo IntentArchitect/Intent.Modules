@@ -47,8 +47,8 @@
   <interoperability>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="1.5.3"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
+    <dependency id="Intent.Common" version="1.6.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.6.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

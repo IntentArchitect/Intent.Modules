@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Intent.Modules.HttpServiceProxy</id>
-    <version>1.0.0-pre.2</version>
+    <version>1.6.0-pre.1</version>
     <title>Http Service Proxy for Services exposed over WebApi</title>
     <authors>Intent Architect</authors>
     <owners>Intent Architect</owners>

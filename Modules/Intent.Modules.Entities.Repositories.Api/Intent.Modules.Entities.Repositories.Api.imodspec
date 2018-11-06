@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities.Repositories.Api</id>
-  <version>1.5.2</version>
+  <version>1.6.0</version>
   <summary>Repository contracts and specifications for Entities.</summary>
   <description>Repository contracts and specifications for Entities.</description>
   <authors>Intent Software</authors>
@@ -27,9 +27,9 @@
   <decorators>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.5.5"/>
-    <dependency id="Intent.Common.Types" version="1.5.2"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.5.0"/>
+    <dependency id="Intent.Common" version="1.6.0"/>
+    <dependency id="Intent.Common.Types" version="1.6.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.6.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
