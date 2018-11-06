@@ -14,7 +14,7 @@
 <#@ import namespace="Intent.Modules.EntityFramework.Templates" #> 
 
 using System;
-using Intent.Framework.Core;
+using Intent.Framework.Core.Visitor;
 using Intent.Framework.EntityFramework.Interceptors;
 using System.Collections.Generic;
 <#= DependencyUsings #>

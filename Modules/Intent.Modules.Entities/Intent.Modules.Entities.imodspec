@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities</id>
-  <version>1.5.5</version>
+  <version>1.5.6</version>
   <summary>Create domain entities and related artifacts.</summary>
   <description></description>
   <authors>Intent Software</authors>
@@ -31,6 +31,7 @@
     <decorator id="Intent.Serializable.Entity.Decorator" enabled="false" />
     <decorator id="Intent.Serializable.Entity.Interfaces.Decorator" enabled="false" />
     <decorator id="Intent.Entities.DefaultConstructorDomainEntityDecorator" enabled="true" />
+    <decorator id="Intent.Entities.VisitiableDomainEntityStateDecorator" enabled="false" />
   </decorators>
   <interoperability>
     <detect id="Intent.EntityFramework">

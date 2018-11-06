@@ -34,8 +34,8 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
         public override string TransformText()
         {
             this.Write(" \r\n");
-            this.Write(" \r\n\r\nusing System;\r\nusing Intent.Framework.Core;\r\nusing Intent.Framework.EntityFr" +
-                    "amework.Interceptors;\r\nusing System.Collections.Generic;\r\n");
+            this.Write(" \r\n\r\nusing System;\r\nusing Intent.Framework.Core.Visitor;\r\nusing Intent.Framework." +
+                    "EntityFramework.Interceptors;\r\nusing System.Collections.Generic;\r\n");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
