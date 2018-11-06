@@ -31,7 +31,8 @@
     <decorator id="Intent.Serializable.Entity.Decorator" enabled="false" />
     <decorator id="Intent.Serializable.Entity.Interfaces.Decorator" enabled="false" />
     <decorator id="Intent.Entities.DefaultConstructorDomainEntityDecorator" enabled="true" />
-    <decorator id="Intent.Entities.VisitiableDomainEntityStateDecorator" enabled="false" />
+    <decorator id="Intent.Entities.VisitableDomainEntityStateDecorator" enabled="false" />
+    <decorator id="Intent.Entities.OrphanDetectionDomainEntityStateDecorator" enabled="false" />
   </decorators>
   <interoperability>
     <detect id="Intent.EntityFramework">

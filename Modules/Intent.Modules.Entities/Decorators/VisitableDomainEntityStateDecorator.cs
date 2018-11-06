@@ -5,9 +5,9 @@ using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    public class VisitiableDomainEntityStateDecorator : DomainEntityStateDecoratorBase
+    public class VisitableDomainEntityStateDecorator : DomainEntityStateDecoratorBase
     {
-        public const string Identifier = "Intent.Entities.VisitiableDomainEntityStateDecorator";
+        public const string Identifier = "Intent.Entities.VisitableDomainEntityStateDecorator";
 
         public override IEnumerable<string> GetInterfaces(IClass @class)
         {
