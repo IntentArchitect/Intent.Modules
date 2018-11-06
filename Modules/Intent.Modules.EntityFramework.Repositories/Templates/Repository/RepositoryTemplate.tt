@@ -27,7 +27,7 @@ namespace <#= Namespace #>
 	public class <#= ClassName #> : RepositoryBase<<#= EntityInterfaceName #>, <#= EntityName #>, <#= DbContextName #>>, <#= RepositoryContractName #>
     {
         [IntentManaged(Mode.Fully)]
-        public <#= ClassName #>(<#= DbContextName #> dbContext) : base (dbContext)
+        public <#= ClassName #>(<#= DbContextName #> dbContext) : base (dbContext<#= EntityCompositionVisitorName != null ? string.Format(", new {0}()", EntityCompositionVisitorName) : "" #>)
         {
         }
 
