@@ -17,7 +17,7 @@
       </config>
     </template>
     <template id="Intent.EntityFramework.Repositories.EntityCompositionVisitor" enabled="false">
-      <role>Repository.Implementation</role>
+      <role>Repository.EntityCompositionVisitor</role>
       <config>
         <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
       </config>
