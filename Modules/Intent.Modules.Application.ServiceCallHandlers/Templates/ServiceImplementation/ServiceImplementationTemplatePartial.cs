@@ -93,9 +93,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
         {
             if (o.ReturnType == null)
             {
-                return "void";
+                return o.IsAsync() ? "async Task" : "void";
             }
-            return GetTypeName(o.ReturnType.TypeReference);
+            return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType.TypeReference)}>" : GetTypeName(o.ReturnType.TypeReference);
         }
 
         public string GetServiceInterfaceName()

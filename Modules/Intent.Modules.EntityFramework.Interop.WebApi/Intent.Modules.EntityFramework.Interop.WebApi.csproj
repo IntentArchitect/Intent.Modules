@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj">
+      <Project>{2972A488-2F67-426D-8762-C85FB36FB32C}</Project>
+      <Name>Intent.Modules.Application.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
       <Project>{d6171cc1-577a-4123-9ca3-34e017a40071}</Project>
       <Name>Intent.Modules.AspNet.WebApi</Name>

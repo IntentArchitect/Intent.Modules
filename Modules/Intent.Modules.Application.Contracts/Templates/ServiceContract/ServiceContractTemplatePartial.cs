@@ -98,9 +98,9 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         {
             if (o.ReturnType == null)
             {
-                return "void";
+                return o.IsAsync() ? "Task" : "void";
             }
-            return GetTypeName(o.ReturnType.TypeReference);
+            return o.IsAsync() ? $"Task<{GetTypeName(o.ReturnType.TypeReference)}>" : GetTypeName(o.ReturnType.TypeReference);
         }
 
         private string GetTypeName(ITypeReference typeInfo)
@@ -124,7 +124,5 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             }
             return format;
         }
-
-
     }
 }

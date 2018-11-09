@@ -4,6 +4,7 @@
 <#@ Assembly Name="System.Windows.Forms" #>
 <#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modules.Application.Contracts" #> 
 <#@ import namespace="Intent.MetaModel.Service" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
@@ -17,6 +18,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 <#=DependencyUsings#>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -43,7 +45,7 @@ namespace <#=Namespace#>
         {
 #>return <#
         }
-#>sch.Handle(<#= GetOperationCallParameters(o) #>);
+#><#= o.IsAsync() ? "await " : "" #>sch.Handle(<#= GetOperationCallParameters(o) #>);
         }
 
 <#        

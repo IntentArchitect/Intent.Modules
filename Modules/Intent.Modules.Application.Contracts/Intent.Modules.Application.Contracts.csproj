@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="MetaData\DataContracts\Stereotypes\Asynchronous.xml" />
     <Content Include="MetaData\DataContracts\Stereotypes\DataContract.xml" />
     <Content Include="Templates\DTO\DTOTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

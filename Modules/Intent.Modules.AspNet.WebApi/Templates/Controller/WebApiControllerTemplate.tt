@@ -4,6 +4,7 @@
 <#@ Assembly Name="System.Windows.Forms" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
 <#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="Intent.Modules.Application.Contracts" #> 
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Diagnostics" #>
@@ -13,6 +14,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Transactions;
 using System.Web;
 using System.Web.Http;
@@ -57,7 +59,7 @@ namespace <#=Namespace#>
         [AcceptVerbs("<#= GetHttpVerb(operation).ToString().ToUpper()#>")]
         <#= GetSecurityAttribute(operation) #>
         [Route("<#= operation.Name.ToLower() #>")]
-        public IHttpActionResult <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
+        public <#= operation.IsAsync() ? "async Task<IHttpActionResult>" : "IHttpActionResult" #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>
 <#
             if (operation.ReturnType != null)
@@ -72,19 +74,19 @@ namespace <#=Namespace#>
 
             try
             {<#= BeforeTransaction(operation) #>
-                using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso))
+                using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso<#= operation.IsAsync() ? ", TransactionScopeAsyncFlowOption.Enabled" : "" #>))
                 {<#= BeforeCallToAppLayer(operation) #>
 <#
         if (operation.ReturnType != null)
         {
 #>
-                    var appServiceResult = _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+                    var appServiceResult = <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
                     result = appServiceResult;
 <#      }
         else
         {
 #>                        
-                    _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+                    <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
 <#      
         }
 #><#= AfterCallToAppLayer(operation) #>

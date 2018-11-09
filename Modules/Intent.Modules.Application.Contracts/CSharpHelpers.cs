@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Common;
+using Intent.MetaModel.Service;
 using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Application.Contracts
@@ -107,6 +108,15 @@ namespace Intent.Modules.Application.Contracts
                     .Replace("\r\n", "\r")
                     .Replace("\n", "\r")
                     .Split('\r');
+        }
+    }
+
+
+    public static class OperaionExtensions
+    {
+        public static bool IsAsync(this IOperationModel operation)
+        {
+            return operation.HasStereotype("Asynchronous");
         }
     }
 }
