@@ -13,6 +13,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
     {
 
         public const string Identifier = "Intent.Entities.DomainEntityInterface";
+        private const string OPERATIONS_CONTEXT = "Operations";
 
         private IEnumerable<DomainEntityInterfaceDecoratorBase> _decorators;
 
@@ -23,8 +24,8 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 
         public void Created()
         {
-            //Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityStateTemplate.Identifier, nameof(ICollection)));
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable)));
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityStateTemplate.Identifier, nameof(ICollection)));
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable)), OPERATIONS_CONTEXT);
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -121,13 +122,13 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         public string GetParametersDefinition(IOperation operation)
         {
             return operation.Parameters.Any()
-                ? operation.Parameters.Select(x => this.ConvertType(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
+                ? operation.Parameters.Select(x => this.ConvertType(x.Type, OPERATIONS_CONTEXT) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
                 : "";
         }
 
         public string EmitOperationReturnType(IOperation operation)
         {
-            return operation.ReturnType != null ? this.ConvertType(operation.ReturnType.Type) : "void";
+            return operation.ReturnType != null ? this.ConvertType(operation.ReturnType.Type, OPERATIONS_CONTEXT) : "void";
         }
     }
 }

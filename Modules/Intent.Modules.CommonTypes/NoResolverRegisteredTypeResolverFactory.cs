@@ -46,7 +46,12 @@ namespace Intent.Modules.CommonTypes
                 throw new NotImplementedException();
             }
 
-            public void AddClassTypeSource(SoftwareFactory.Templates.IClassTypeSource classTypeSource)
+            public void AddClassTypeSource(IClassTypeSource classTypeSource)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void AddClassTypeSource(IClassTypeSource classTypeSource, string contextName)
             {
                 throw new NotImplementedException();
             }
@@ -56,6 +61,11 @@ namespace Intent.Modules.CommonTypes
                 if (typeInfo == null)
                     return string.Empty;
                 return typeInfo.Name;
+            }
+
+            public string Get(ITypeReference typeInfo, string contextName)
+            {
+                throw new NotImplementedException();
             }
         }
     }

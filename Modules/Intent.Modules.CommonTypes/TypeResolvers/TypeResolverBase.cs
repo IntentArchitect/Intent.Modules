@@ -1,32 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Intent.MetaModel.Common;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Modules.CommonTypes.TypeResolvers
+namespace Intent.Modules.Common.Types.TypeResolvers
 {
     public abstract class TypeResolverBase : ITypeResolver
     {
-        private List<SoftwareFactory.Templates.IClassTypeSource> _classTypeSources;
+        private const string DEFAULT_CONTEXT = "_default_";
+        private readonly IDictionary<string, List<IClassTypeSource>> _classTypeSources;
 
-        public TypeResolverBase()
+        protected TypeResolverBase()
         {
-            _classTypeSources = new List<SoftwareFactory.Templates.IClassTypeSource>();
+            _classTypeSources = new Dictionary<string, List<IClassTypeSource>>()
+            {
+                { DEFAULT_CONTEXT, new List<IClassTypeSource>() }
+            };
         }
 
-        public void AddClassTypeSource(SoftwareFactory.Templates.IClassTypeSource classTypeSource)
+        public void AddClassTypeSource(IClassTypeSource classTypeSource)
         {
-            _classTypeSources.Add(classTypeSource);
+            AddClassTypeSource(classTypeSource, DEFAULT_CONTEXT);
+        }
+
+        public void AddClassTypeSource(IClassTypeSource classTypeSource, string contextName)
+        {
+            if (contextName == null)
+                contextName = DEFAULT_CONTEXT;
+
+            if (!_classTypeSources.ContainsKey(contextName))
+            {
+                _classTypeSources.Add(contextName, new List<IClassTypeSource>());
+            }
+            _classTypeSources[contextName].Add(classTypeSource);
         }
 
         public string Get(ITypeReference typeInfo)
         {
+            return Get(typeInfo, DEFAULT_CONTEXT);
+        }
+
+        public string Get(ITypeReference typeInfo, string contextName)
+        {
+            if (contextName == null)
+                contextName = DEFAULT_CONTEXT;
+
             if (typeInfo.Type == ReferenceType.ClassType)
             {
-                foreach (var classLookup in _classTypeSources)
+                if (!_classTypeSources.ContainsKey(contextName))
+                {
+                    throw new InvalidOperationException($"contextName '{contextName}' does not exist.");
+                }
+
+                foreach (var classLookup in _classTypeSources[contextName])
                 {
                     var foundClass = classLookup.GetClassType(typeInfo);
                     if (!string.IsNullOrWhiteSpace(foundClass))

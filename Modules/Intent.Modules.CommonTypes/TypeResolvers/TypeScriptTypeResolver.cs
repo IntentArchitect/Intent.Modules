@@ -1,4 +1,5 @@
 ﻿using Intent.MetaModel.Common;
+using Intent.Modules.Common.Types.TypeResolvers;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 
