@@ -21,7 +21,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\IntentModules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class OwinWebApiConfigTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\IntentModules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
 
 
 
@@ -44,14 +44,14 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
             this.Write("using Newtonsoft.Json;\r\nusing Newtonsoft.Json.Serialization;\r\nusing Owin;\r\nusing " +
                     "System.Web.Http;\r\n");
             
-            #line 21 "C:\Dev\IntentModules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 25 "C:\Dev\IntentModules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -71,33 +71,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
             // Adds ""Z"" to the end of serialized DateTime, so that clients are aware that the received time is UTC
             config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
 
-");
-            
-            #line 40 "C:\Dev\IntentModules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
-
-    foreach (var item in ConfigureItems)
-    {
-
-            
-            #line default
-            #line hidden
-            this.Write("            ");
-            
-            #line 44 "C:\Dev\IntentModules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(item));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n");
-            
-            #line 45 "C:\Dev\IntentModules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
-
-    }
-
-            
-            #line default
-            #line hidden
-            this.Write(@"            // Web API routes
+            // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -108,16 +82,35 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
 
 			AddCustomConfiguration(config);
 
-            app.UseWebApi(config);
-        }
+");
+            
+            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
 
-		[IntentManaged(Mode.Ignore)]
-		public static void AddCustomConfiguration(HttpConfiguration config) 
-		{
+    foreach (var item in ConfigureItems)
+    {
 
-		}
+            
+            #line default
+            #line hidden
+            this.Write("            ");
+            
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(item));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
+
     }
-}");
+
+            
+            #line default
+            #line hidden
+            this.Write("            app.UseWebApi(config);\r\n        }\r\n\r\n\t\t[IntentManaged(Mode.Ignore)]\r\n" +
+                    "\t\tpublic static void AddCustomConfiguration(HttpConfiguration config) \r\n\t\t{\r\n\r\n\t" +
+                    "\t}\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

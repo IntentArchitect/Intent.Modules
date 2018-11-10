@@ -97,10 +97,11 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
         {
             Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
-                { "InterfaceType", null},
-                { "ConcreteType", $"{Namespace}.{ClassName}" },
-                { "InterfaceTypeTemplateId", null },
-                { "ConcreteTypeTemplateId", Identifier }
+                { ContainerRegistrationEvent.InterfaceTypeKey, null},
+                { ContainerRegistrationEvent.ConcreteTypeKey, $"{Namespace}.{ClassName}" },
+                { ContainerRegistrationEvent.InterfaceTypeTemplateIdKey, null },
+                { ContainerRegistrationEvent.ConcreteTypeTemplateIdKey, Identifier },
+                { ContainerRegistrationEvent.LifetimeKey, ContainerRegistrationEvent.TransientLifetime }
             });
         }
     }

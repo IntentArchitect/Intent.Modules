@@ -6,6 +6,8 @@ using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Common.Plugins;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
@@ -14,7 +16,7 @@ using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
-    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings
+    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.AspNet.WebApi.Controller";
         private IEnumerable<WebApiControllerDecoratorBase> _decorators;
@@ -74,6 +76,18 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 className: "${Model.Name}Controller",
                 @namespace: "${Project.Name}"
                 );
+        }
+
+        public void BeforeTemplateExecution()
+        {
+            Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
+            {
+                { ContainerRegistrationEvent.InterfaceTypeKey, null},
+                { ContainerRegistrationEvent.ConcreteTypeKey, $"{Namespace}.{ClassName}" },
+                { ContainerRegistrationEvent.InterfaceTypeTemplateIdKey, null },
+                { ContainerRegistrationEvent.ConcreteTypeTemplateIdKey, Identifier },
+                { ContainerRegistrationEvent.LifetimeKey, ContainerRegistrationEvent.PerServiceCallLifetime }
+            });
         }
 
         public string GetServiceInterfaceName()
