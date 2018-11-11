@@ -21,8 +21,6 @@ namespace Intent.SoftwareFactory
             }
 
             // Purely for backward compatibility between 1.5.x and 1.6.x
-            // TODO JL 1.6 - Add documentation link
-            Logging.Log.Warning($"Old metadata name specified, falling back to pre 1.6 metadata name. Contact the author of this module to update it and prevent this warning.\r\n{Environment.StackTrace}");
             return metaDataManager.GetMetaData<IServiceModel>(new MetaDataIdentifier("Service")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
 
@@ -35,8 +33,6 @@ namespace Intent.SoftwareFactory
             }
 
             // Purely for backward compatibility between 1.5.x and 1.6.x
-            // TODO JL 1.6 - Add documentation link
-            Logging.Log.Warning($"Old metadata name specified, falling back to pre 1.6 metadata name. Contact the author of this module to update it and prevent this warning.\r\n{Environment.StackTrace}");
             return metaDataManager.GetMetaData<IClass>(new MetaDataIdentifier("DomainEntity")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
 
@@ -49,8 +45,6 @@ namespace Intent.SoftwareFactory
             }
 
             // Purely for backward compatibility between 1.5.x and 1.6.x
-            // TODO JL 1.6 - Add documentation link
-            Logging.Log.Warning($"Old metadata name specified, falling back to pre 1.6 metadata name. Contact the author of this module to update it and prevent this warning.\r\n{Environment.StackTrace}");
             return metaDataManager.GetMetaData<IDTOModel>(new MetaDataIdentifier("DTO")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
 
