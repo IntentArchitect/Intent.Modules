@@ -43,6 +43,8 @@ namespace Intent.Modules.AspNet.WebApi.Interop.Autofac.Decorators
         {
             return new[] 
             {
+                NugetPackages.AutofacOwin,
+                NugetPackages.AutofacWebApi2,
                 NugetPackages.AutofacWebApi2Owin
             };
         }

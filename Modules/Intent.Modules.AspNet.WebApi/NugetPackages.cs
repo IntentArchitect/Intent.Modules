@@ -57,7 +57,8 @@ namespace Intent.Modules.AspNet.WebApi
 
         public static NugetPackageInfo MicrosoftOwinStaticFiles = new NugetPackageInfo("Microsoft.Owin.StaticFiles","3.0.1", "net45");
 
-        public static NugetPackageInfo MicrosoftAspNetWebApiOwin = new NugetPackageInfo("Microsoft.AspNet.WebApi.Owin","5.2.6", "net452");
+        public static NugetPackageInfo MicrosoftAspNetWebApiOwin = new NugetPackageInfo("Microsoft.AspNet.WebApi.Owin","5.2.6", "net452")
+            .WithAssemblyRedirect(new AssemblyRedirectInfo("System.Web.Http.Owin", "5.2.6.0", "31bf3856ad364e35"));
 
         public static NugetPackageInfo NewtonsoftJson = new NugetPackageInfo("Newtonsoft.Json", "9.0.1", "net452")
             .WithAssemblyRedirect(new AssemblyRedirectInfo("Newtonsoft.Json", "9.0.0.0", "30ad4fe6b2a6aeed"));

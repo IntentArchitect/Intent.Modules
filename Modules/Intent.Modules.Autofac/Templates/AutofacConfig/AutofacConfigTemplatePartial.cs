@@ -10,7 +10,7 @@ using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.Autofac.Templates.AutofacConfig
 {
-    partial class AutofacConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IAutofacRegistrationsDecorator>//, IHasTemplateDependencies
+    partial class AutofacConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IAutofacRegistrationsDecorator>, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.Autofac.Config";
 
@@ -46,7 +46,9 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
         {
             return new INugetPackageInfo[]
             {
+                NugetPackages.Autofac,
                 NugetPackages.AutofacExtensionsDependencyInjection,
+                NugetPackages.MicrosoftExtensionsDependencyInjectionAbstractions,
             }
             .Union(base.GetNugetDependencies())
             .ToArray();
@@ -79,6 +81,18 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
                 default:
                     return string.Empty;
             }
+        }
+
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            return new ITemplateDependancy[0];
+            //return _registrations
+            //    .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
+            //    .Select(x => x.InterfaceTypeTemplateDependency)
+            //    .Union(_registrations
+            //        .Where(x => x.ConcreteTypeTemplateDependency != null)
+            //        .Select(x => x.ConcreteTypeTemplateDependency))
+            //    .ToList();
         }
 
         public IEnumerable<IAutofacRegistrationsDecorator> GetDecorators()

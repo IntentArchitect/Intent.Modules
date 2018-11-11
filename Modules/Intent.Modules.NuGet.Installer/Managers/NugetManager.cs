@@ -8,6 +8,7 @@ using Intent.Modules.NuGet.Installer.NugetIntegration;
 using Intent.SoftwareFactory.Engine;
 using Microsoft.Build.Construction;
 using Microsoft.Build.Evaluation;
+using NuGet;
 using IPackage = NuGet.IPackage;
 
 namespace Intent.Modules.NuGet.Installer.Managers
@@ -240,7 +241,7 @@ namespace Intent.Modules.NuGet.Installer.Managers
 
             if (referer.VersionSpec.RequiresLowerThan(packageNode.RequiredPackage.Version))
             {
-                throw new Exception("Installing package would require a downgrade.");
+                throw new Exception($"Installing package [{packageNode.RequiredPackage.GetFullName()}] would require a downgrade of [{referer.Name}], as the version is too high.");
             }
 
             if (packageNode.RequiredPackage.Version < package.Version)
@@ -250,7 +251,8 @@ namespace Intent.Modules.NuGet.Installer.Managers
 
             if (!packageNode.Referers.All(x => x.VersionSpec.IsSatisfiedBy(packageNode.RequiredPackage.Version)))
             {
-                throw new Exception("Could not resolve dependencies.");
+                var preventingPackage = packageNode.Referers.First(x => !x.VersionSpec.IsSatisfiedBy(packageNode.RequiredPackage.Version));
+                throw new Exception($"Unable to install [{packageNode.RequiredPackage.GetFullName()}] as the it fails to meet the version requirements of [{preventingPackage.Name}]");
             }
 
             foreach (var dependency in packageNode.RequiredPackage.GetDependencies(_nugetServices.GetTargetFrameworkName(msbuildProject.Path)))

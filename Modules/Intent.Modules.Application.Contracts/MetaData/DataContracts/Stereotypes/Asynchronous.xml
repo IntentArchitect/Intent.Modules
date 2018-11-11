@@ -7,6 +7,7 @@
   </icon>
   <displayIcon>true</displayIcon>
   <displayFunction />
+  <autoAdd>true</autoAdd>
   <targetElements>
     <element>operation</element>
   </targetElements>
