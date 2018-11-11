@@ -49,6 +49,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icons\EntityFramework.png" />
+    <Content Include="Icons\Unity.png" />
+    <Content Include="Icons\Autofac.png" />
     <None Include="Full Stack ASP.NET Core WebApi\content\%24{field_application.name}.application.config" />
     <None Include="Full Stack ASP.NET Core WebApi\content\modules.config" />
     <None Include="Full Stack ASP.NET WebApi\content\%24{field_application.name}.application.config" />

@@ -1,4 +1,5 @@
-﻿using Intent.SoftwareFactory.Engine;
+﻿using System.Linq;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.VisualStudio.Projects
@@ -12,7 +13,8 @@ namespace Intent.Modules.VisualStudio.Projects
 
         public static string TargetFrameworkVersion(this IProject project)
         {
-            return project.GetStereotypeProperty("C# .NET", "FrameworkVersion", "v4.5.2");
+            var targetFramework = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "TargetFramework");
+            return project.GetStereotypeProperty("C# .NET", "FrameworkVersion", targetFramework != null ? $"v{targetFramework.Value}" : "v4.5.2");
         }
     }
 

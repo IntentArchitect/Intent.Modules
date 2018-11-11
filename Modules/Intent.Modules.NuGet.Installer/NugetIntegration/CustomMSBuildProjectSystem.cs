@@ -2,8 +2,10 @@
 using System.IO;
 using System.Linq;
 using Intent.Modules.NuGet.Installer.ReImplementations;
+using Intent.SoftwareFactory;
 using Microsoft.Build.Construction;
 using Microsoft.Build.Evaluation;
+using Microsoft.Build.Exceptions;
 using NuGet.ProjectManagement;
 
 namespace Intent.Modules.NuGet.Installer.NugetIntegration
@@ -79,17 +81,25 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                 loadSettings |= ProjectLoadSettings.IgnoreMissingImports;
             }
 
-            // I worked out the parameters to use for this constructor overload by looking at:
-            // https://github.com/Microsoft/msbuild/blob/dddc68c22f8470ff87148e19abccdb555a1cbae5/src/XMakeBuildEngine/Definition/Project.cs
+            try
+            {
+                // I worked out the parameters to use for this constructor overload by looking at:
+                // https://github.com/Microsoft/msbuild/blob/dddc68c22f8470ff87148e19abccdb555a1cbae5/src/XMakeBuildEngine/Definition/Project.cs
 
-            var project = new Project(
-                projectFile: projectFile,
-                globalProperties: null,
-                toolsVersion: null,
-                projectCollection: ProjectCollection.GlobalProjectCollection,
-                loadSettings: loadSettings);
+                var project = new Project(
+                    projectFile: projectFile,
+                    globalProperties: null,
+                    toolsVersion: null,
+                    projectCollection: ProjectCollection.GlobalProjectCollection,
+                    loadSettings: loadSettings);
 
-            return project;
+                return project;
+            }
+            catch (InvalidProjectFileException)
+            {
+                Logging.Log.Warning("The following error may be due to a Visual Studio update. Please see this issue for more information: https://github.com/IntentSoftware/IntentArchitect/issues/130");
+                throw;
+            }
         }
 
         private static string GetProjectItemType(string fileName)
