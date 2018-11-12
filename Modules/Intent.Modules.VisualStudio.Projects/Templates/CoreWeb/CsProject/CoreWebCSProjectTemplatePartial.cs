@@ -1,11 +1,8 @@
 ﻿using System.IO;
-using System.Linq;
 using System.Xml.Linq;
-using System.Xml.XPath;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 {
@@ -26,28 +23,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 
             var doc = LoadOrCreate(fullFileName);
 
-            //var nugetPackages = Project
-            //    .NugetPackages()
-            //    .GroupBy(x => x.Name)
-            //    .ToDictionary(x => x.Key, x => x);
-
-            //var packageReferenceItemGroup = doc.XPathSelectElement("Project/ItemGroup[PackageReference]");
-            //if (packageReferenceItemGroup == null)
-            //{
-            //    packageReferenceItemGroup = new XElement("ItemGroup");
-            //    doc.XPathSelectElement("Project").Add(packageReferenceItemGroup);
-            //}
-
-            //foreach (var addFileBehaviour in nugetPackages)
-            //{
-            //    var existingReference = packageReferenceItemGroup.XPathSelectElement($"PackageReference[@Include='{addFileBehaviour.Key}']");
-            //    if (existingReference == null)
-            //    {
-            //        packageReferenceItemGroup.Add(new XElement("PackageReference", 
-            //            new XAttribute("Include", addFileBehaviour.Key), 
-            //            new XAttribute("Version", addFileBehaviour.Value.OrderByDescending(x => x.Version).First().Version)));
-            //    }
-            //}
+            Project.InstallNugetPackages(doc);
 
             return doc.ToString();
         }
@@ -55,14 +31,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
         private XDocument LoadOrCreate(string fullFileName)
         {
             return File.Exists(fullFileName)
-                ? XDocument.Load(fullFileName)
+                ? XDocument.Load(fullFileName, LoadOptions.PreserveWhitespace)
                 : XDocument.Parse(TransformText(), LoadOptions.PreserveWhitespace);
         }
 
         public override DefaultFileMetaData DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
+                overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: Project.Name,
                 fileExtension: "csproj",

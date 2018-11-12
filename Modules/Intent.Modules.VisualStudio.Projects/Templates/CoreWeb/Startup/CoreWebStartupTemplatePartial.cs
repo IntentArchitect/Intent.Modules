@@ -90,6 +90,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 .Where(x => !string.IsNullOrWhiteSpace(x.Method))
                 .Select(x => x.Method)
                 .ToList();
+
+            if (!methods.Any())
+            {
+                return string.Empty;
+            }
+
             if (_dbContextRegistrations.Any())
             {
                 var dbContextRegistration = string.Empty;

@@ -63,9 +63,9 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             if (File.Exists(filename))
             {
                 var currentProjectFile = XDocument.Parse(File.ReadAllText(filename));
-                currentProjectFileContent = currentProjectFile.ToStringUTF8();
+                currentProjectFileContent = currentProjectFile.ToString();
             }
-            var outputContent = _doc.ToStringUTF8();
+            var outputContent = _doc.ToString();
             //trying to do a schemantic comparision as VS does inconsistence formatting 
             if (currentProjectFileContent != outputContent)
             {

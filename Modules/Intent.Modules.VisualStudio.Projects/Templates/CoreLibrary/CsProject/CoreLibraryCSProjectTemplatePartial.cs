@@ -26,6 +26,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
 
             var doc = LoadOrCreate(fullFileName);
 
+            Project.InstallNugetPackages(doc);
             //var nugetPackages = Project
             //    .NugetPackages()
             //    .GroupBy(x => x.Name)
@@ -53,14 +54,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
         private XDocument LoadOrCreate(string fullFileName)
         {
             return File.Exists(fullFileName)
-                ? XDocument.Load(fullFileName)
+                ? XDocument.Load(fullFileName, LoadOptions.PreserveWhitespace)
                 : XDocument.Parse(TransformText(), LoadOptions.PreserveWhitespace);
         }
 
         public override DefaultFileMetaData DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
+                overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: Project.Name,
                 fileExtension: "csproj",

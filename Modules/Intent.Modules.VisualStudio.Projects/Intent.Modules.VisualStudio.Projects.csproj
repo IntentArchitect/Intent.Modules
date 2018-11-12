@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplatePartial.cs" />
     <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplateRegistration.cs" />
+    <Compile Include="Templates\NetCoreProjectExtensions.cs" />
     <Compile Include="Templates\CoreWeb\Startup\CoreWebStartupTemplate.cs">
       <DependentUpon>CoreWebStartupTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
