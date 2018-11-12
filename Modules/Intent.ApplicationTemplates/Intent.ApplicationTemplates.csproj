@@ -81,7 +81,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Full Stack ASP.NET WebApi\content\modules.config" />
+    <None Include="Full Stack ASP.NET WebApi\modules %28obsolete%29.config" />
     <None Include="AngularJS Web Application\content\modules.config" />
     <None Include="Empty\content\modules.config" />
     <None Include="Empty Visual Studio\content\modules.config" />
