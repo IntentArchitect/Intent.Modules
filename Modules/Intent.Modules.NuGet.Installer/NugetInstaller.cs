@@ -64,7 +64,7 @@ namespace Intent.Modules.NuGet.Installer
 
         public void Run(IApplication application, ITracing tracing)
         {
-            tracing.Info($"{TracingOutputPrefix}Start processesing packages");
+            tracing.Info($"{TracingOutputPrefix}Start processing packages");
 
             foreach (var project in application.Projects.Where(x => x.ProjectFile() == null))
             {
@@ -86,7 +86,7 @@ namespace Intent.Modules.NuGet.Installer
 
             InstallForNetCore(netCoreProjects, tracing);
 
-            tracing.Info($"{TracingOutputPrefix}Completed processesing packages");
+            tracing.Info($"{TracingOutputPrefix}Completed processing packages");
         }
 
         private void InstallForNetFramework(string solutionPath, IEnumerable<IProject> applicableProjects, ITracing tracing)

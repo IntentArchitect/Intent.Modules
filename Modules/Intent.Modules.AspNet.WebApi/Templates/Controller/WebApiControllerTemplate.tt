@@ -69,8 +69,7 @@ namespace <#=Namespace#>
 <#
             } // if (operation.ReturnType != null)
 #>
-            TransactionOptions tso = new TransactionOptions();
-            tso.IsolationLevel = IsolationLevel.<#= "ReadCommitted" #>;
+            var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
 
             try
             {<#= BeforeTransaction(operation) #>
@@ -99,9 +98,9 @@ namespace <#=Namespace#>
 
 <#      if (operation.ReturnType != null)
         {#>
-        return Ok(result);
+            return Ok(result);
 <#      } else {#>
-        return Ok();
+            return Ok();
 <#      }#>
         }
 <#    } // foreach (var operation in Model.Operations)

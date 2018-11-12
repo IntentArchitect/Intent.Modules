@@ -59,6 +59,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj">
+      <Project>{2972A488-2F67-426D-8762-C85FB36FB32C}</Project>
+      <Name>Intent.Modules.Application.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.AspNetCore.WebApi\Intent.Modules.AspNetCore.WebApi.csproj">
       <Project>{F66F26B3-E36F-4F27-AF96-E6DDB59CA0D2}</Project>
       <Name>Intent.Modules.AspNetCore.WebApi</Name>

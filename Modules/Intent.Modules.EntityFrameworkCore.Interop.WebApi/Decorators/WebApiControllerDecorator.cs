@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Service;
+using Intent.Modules.Application.Contracts;
 using Intent.Modules.AspNetCore.WebApi.Templates.Controller;
 using Intent.Modules.EntityFrameworkCore.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
@@ -28,8 +29,18 @@ namespace Intent.Modules.EntityFrameworkCore.Interop.WebApi.Decorators
         public override string ConstructorInit(IServiceModel service) => @"
             _dbContext = dbContext;";
 
-        public override string AfterCallToAppLayer(IServiceModel service, IOperationModel operation) => operation.Stereotypes.All(x => x.Name != "ReadOnly") ? @"
-                    _dbContext.SaveChanges();" : "";
+        public override string AfterCallToAppLayer(IServiceModel service, IOperationModel operation)
+        {
+            if (operation.Stereotypes.Any(x => x.Name == "ReadOnly"))
+            {
+                return "";
+            }
+            return operation.IsAsync()
+                ? $@"
+                    await _dbContext.SaveChangesAsync();"
+                : $@"
+                    _dbContext.SaveChanges();";
+        }
 
         public override string OnDispose(IServiceModel service)
         {

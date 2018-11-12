@@ -11,7 +11,7 @@ namespace Intent.Modules.AspNet.WebApi.Interop.Unity.Decorators
 
         public override object CreateDecoratorInstance(IApplication application)
         {
-            return new UnityWebApiConfigTemplateDecorator();
+            return new UnityWebApiConfigTemplateDecorator(application);
         }
     }
 }

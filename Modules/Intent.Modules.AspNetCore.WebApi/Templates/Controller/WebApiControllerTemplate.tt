@@ -4,6 +4,7 @@
 <#@ Assembly Name="System.Windows.Forms" #>
 <#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modules.Application.Contracts" #> 
 <#@ import namespace="Intent.MetaModel.Service" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
@@ -43,42 +44,41 @@ namespace <#=Namespace#>
     {#>
         [Http<#= GetHttpVerb(operation).ToString().ToLower().ToPascalCase() #>("<#= operation.Name.ToLower() #>")]
         <#= GetSecurityAttribute(operation) #>
-        public <#= GetOperationReturnType(operation) #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
+        public <#= operation.IsAsync() ? "async Task<IActionResult>" : "IActionResult" #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>
 <#      if (operation.ReturnType != null)
         {
 #>            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);
 <#      }#>
-            TransactionOptions tso = new TransactionOptions();
-            tso.IsolationLevel = IsolationLevel.<#= "ReadCommitted" #>;
+            var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
 
             try
             {<#= BeforeTransaction(operation) #>
-                using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso))
+                using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso<#= operation.IsAsync() ? ", TransactionScopeAsyncFlowOption.Enabled" : "" #>))
                 {<#= BeforeCallToAppLayer(operation) #>
 <#
         if (operation.ReturnType != null)
         {
-#>                    var appServiceResult = _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+#>                    var appServiceResult = <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
                     result = appServiceResult;
 <#      }
         else
         {
-#>                        _appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+#>                        <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
 <#      }
 #><#= AfterCallToAppLayer(operation) #>
                     ts.Complete();
                 }<#= AfterTransaction(operation) #>
             }
-#pragma warning disable CS0168 // Variable is declared but never used
             catch (Exception e)
-#pragma warning restore CS0168 // Variable is declared but never used
             {<#= OnExceptionCaught(operation) #>
             }
 
-<#        if (operation.ReturnType != null)
-        {
-#>            return result;
+<#      if (operation.ReturnType != null)
+        {#>
+            return Ok(result);
+<#      } else {#>
+            return Ok();
 <#      }#>
 
         }
