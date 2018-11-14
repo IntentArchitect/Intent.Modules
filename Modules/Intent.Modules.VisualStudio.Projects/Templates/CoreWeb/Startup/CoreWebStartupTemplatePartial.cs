@@ -91,11 +91,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 .Select(x => x.Method)
                 .ToList();
 
-            if (!methods.Any())
-            {
-                return string.Empty;
-            }
-
             if (_dbContextRegistrations.Any())
             {
                 var dbContextRegistration = string.Empty;
@@ -104,6 +99,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 dbContextRegistration += _dbContextRegistrations.Select(DefineDbContextRegistration).Aggregate((x, y) => x + y);
                 dbContextRegistration += $"{Environment.NewLine}        }}";
                 methods.Add(dbContextRegistration);
+            }
+
+            if (!methods.Any())
+            {
+                return string.Empty;
             }
 
             const string tabbing = "        ";

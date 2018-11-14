@@ -1,0 +1,22 @@
+﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<object>" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ output extension="" #>
+FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
+WORKDIR /app
+EXPOSE 80
+
+FROM microsoft/dotnet:2.1-sdk AS build
+WORKDIR /src
+COPY ["<#= Project.Name #>.csproj", "<#= Project.Name #>/"]
+RUN dotnet restore "<#= Project.Name #>/<#= Project.Name #>.csproj"
+COPY . .
+WORKDIR "/src/<#= Project.Name #>"
+RUN dotnet build "<#= Project.Name #>.csproj" -c Release -o /app
+
+FROM build AS publish
+RUN dotnet publish "<#= Project.Name #>.csproj" -c Release -o /app
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app .
+ENTRYPOINT ["dotnet", "<#= Project.Name #>.dll"]

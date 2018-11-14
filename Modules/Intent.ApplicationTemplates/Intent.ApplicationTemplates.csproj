@@ -79,6 +79,7 @@
     </Content>
     <Content Include="Empty Visual Studio\description.html" />
     <None Include="packages.config" />
+    <None Include="Web Application .NET Framework\content\modules.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AngularJS Web Application\content\modules.config" />

@@ -63,4 +63,14 @@
         public const string SeedDataRequiredEvent = "EntityFrameworkEvents.SeedDataRequiredEvent";
         public const string SeedDataRequiredEventKey = "EntityFrameworkEvents.SeedDataRequiredEvent.Key";
     }
+
+    public static class LaunchProfileRegistrationEvent
+    {
+        public const string EventId = "Container.LaunchProfileRegistration";
+        public const string ProfileNameKey = "profileName";
+        public const string CommandNameKey = "commandName";
+        public const string LaunchBrowserKey = "launchBrowser";
+        public const string LaunchUrlKey = "launchUrl";
+        public const string ApplicationUrl = "applicationUrl";
+    }
 }

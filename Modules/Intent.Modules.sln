@@ -143,6 +143,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Autofac", "I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNet.WebApi.Interop.Autofac", "Intent.Modules.AspNet.WebApi.Interop.Autofac\Intent.Modules.AspNet.WebApi.Interop.Autofac.csproj", "{24FE0487-D6F3-4B85-9942-7CB8E422221B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNetCore.Docker", "Intent.Modules.AspNetCore.Docker\Intent.Modules.AspNetCore.Docker.csproj", "{733303D8-9ECF-4ACA-86B2-C2F34B8B9DE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -405,6 +407,10 @@ Global
 		{24FE0487-D6F3-4B85-9942-7CB8E422221B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24FE0487-D6F3-4B85-9942-7CB8E422221B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24FE0487-D6F3-4B85-9942-7CB8E422221B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{733303D8-9ECF-4ACA-86B2-C2F34B8B9DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{733303D8-9ECF-4ACA-86B2-C2F34B8B9DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{733303D8-9ECF-4ACA-86B2-C2F34B8B9DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{733303D8-9ECF-4ACA-86B2-C2F34B8B9DE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -474,6 +480,7 @@ Global
 		{5EEC9791-FD02-43A3-8D6E-83FD601B1177} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 		{935E6089-3EE2-4661-B04F-EBE893629E83} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 		{24FE0487-D6F3-4B85-9942-7CB8E422221B} = {46C61870-A203-487D-9680-8D143871AA1F}
+		{733303D8-9ECF-4ACA-86B2-C2F34B8B9DE0} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

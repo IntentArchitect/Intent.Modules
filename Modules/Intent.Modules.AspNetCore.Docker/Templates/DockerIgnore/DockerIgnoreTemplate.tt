@@ -1,0 +1,5 @@
+﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<object>" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ output extension="" #>
+bin\
+obj\

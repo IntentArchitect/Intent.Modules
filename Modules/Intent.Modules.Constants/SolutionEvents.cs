@@ -1,4 +1,4 @@
-﻿namespace Intent.Packages.Constants
+﻿namespace Intent.Modules.Constants
 {
     public static class SolutionEvents
     {
