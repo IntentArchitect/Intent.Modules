@@ -42,10 +42,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.6.0-pre2\lib\net452\Intent.MetaModel.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.6.0-pre3\lib\net452\Intent.MetaModel.dll</HintPath>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.6.0-pre.1\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.6.0-pre3\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
