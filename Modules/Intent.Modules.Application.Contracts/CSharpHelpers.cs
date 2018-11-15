@@ -112,7 +112,7 @@ namespace Intent.Modules.Application.Contracts
     }
 
 
-    public static class OperaionExtensions
+    public static class OperationExtensions
     {
         public static bool IsAsync(this IOperationModel operation)
         {

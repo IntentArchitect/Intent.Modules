@@ -64,6 +64,7 @@
     <Compile Include="Decorators\SerializableEntityStateDecoratorRegistration.cs" />
     <Compile Include="Decorators\SerializableEntityInterfaceDecoratorRegistration.cs" />
     <Compile Include="NugetPackages.cs" />
+    <Compile Include="OperationExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\DomainEntityInterface\DomainEntityInterfaceDecoratorBase.cs" />
     <Compile Include="Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.cs">
@@ -93,9 +94,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Entities.imodspec" />
+    <None Include="MetaData\Domain\Intent.Entities.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MetaData\Domain\Stereotypes\Asynchronous.xml" />
     <Content Include="Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DomainEntityInterfaceTemplate.cs</LastGenOutput>

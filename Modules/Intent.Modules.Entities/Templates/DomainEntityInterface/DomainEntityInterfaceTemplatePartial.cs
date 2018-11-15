@@ -126,9 +126,13 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
                 : "";
         }
 
-        public string EmitOperationReturnType(IOperation operation)
+        public string EmitOperationReturnType(IOperation o)
         {
-            return operation.ReturnType != null ? this.ConvertType(operation.ReturnType.Type, OPERATIONS_CONTEXT) : "void";
+            if (o.ReturnType == null)
+            {
+                return o.IsAsync() ? "Task" : "void";
+            }
+            return o.IsAsync() ? $"Task<{this.ConvertType(o.ReturnType.Type)}>" : this.ConvertType(o.ReturnType.Type);
         }
     }
 }
