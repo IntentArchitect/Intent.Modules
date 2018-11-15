@@ -43,8 +43,12 @@ namespace Intent.Modules.Application.Contracts.Clients
 
         public override IEnumerable<MetaModel.Service.IServiceModel> GetModels(IApplication application)
         {
-            return _metaDataManager
-                .GetMetaData<MetaModel.Service.IServiceModel>("Services")
+            var serviceModels = _metaDataManager.GetMetaData<MetaModel.Service.IServiceModel>("Services");
+            if (!serviceModels.Any())
+            {
+                serviceModels = _metaDataManager.GetMetaData<MetaModel.Service.IServiceModel>("Service"); // backward compatibility
+            }
+            return serviceModels
                 .Where(x => x.GetConsumers().Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }
@@ -69,8 +73,12 @@ namespace Intent.Modules.Application.Contracts.Clients
 
         public override IEnumerable<MetaModel.DTO.IDTOModel> GetModels(IApplication application)
         {
-            return _metaDataManager
-                .GetMetaData<MetaModel.DTO.IDTOModel>(new MetaDataIdentifier("Services"))
+            var dtoModels = _metaDataManager.GetMetaData<MetaModel.DTO.IDTOModel>(new MetaDataIdentifier("Services"));
+            if (!dtoModels.Any())
+            {
+                dtoModels = _metaDataManager.GetMetaData<MetaModel.DTO.IDTOModel>(new MetaDataIdentifier("DTO")); // backward compatibility
+            }
+            return dtoModels
                 .Where(x => x.GetConsumers().Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
         }

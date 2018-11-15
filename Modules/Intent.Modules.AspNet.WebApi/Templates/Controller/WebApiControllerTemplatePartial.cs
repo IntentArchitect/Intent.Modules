@@ -211,6 +211,9 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         {
             var csharpPrimitives = new[]
             {
+                "guid",
+                "System.Guid",
+
                 "bool",
                 "Boolean",
                 "System.Boolean",

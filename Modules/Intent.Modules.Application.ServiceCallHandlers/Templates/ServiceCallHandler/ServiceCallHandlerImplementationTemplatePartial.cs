@@ -11,6 +11,7 @@ using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
+using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
@@ -35,7 +36,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
                 typeReferences.Add(Model.ReturnType.TypeReference);
             }
 
-            return typeReferences.Select(x => TemplateDependancy.OnModel<IDTOModel>(DTOTemplate.IDENTIFIER, m => m.Id == x.Id)).ToArray();
+            return typeReferences.Select(x => TemplateDependancy.OnModel<IMetaModel>(DTOTemplate.IDENTIFIER, m => m.Id == x.Id)).ToArray();
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
