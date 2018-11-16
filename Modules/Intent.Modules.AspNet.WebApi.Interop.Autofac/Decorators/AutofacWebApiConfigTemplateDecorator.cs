@@ -8,7 +8,7 @@ using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modules.AspNet.WebApi.Interop.Autofac.Decorators
 {
-    public class AutofacWebApiConfigTemplateDecorator : IWebApiConfigTemplateDecorator, IHasNugetDependencies, IDeclareUsings
+    public class AutofacWebApiConfigTemplateDecorator : WebApiConfigTemplateDecoratorBase, IHasNugetDependencies, IDeclareUsings
     {
         private readonly IApplication _application;
 
@@ -19,7 +19,7 @@ namespace Intent.Modules.AspNet.WebApi.Interop.Autofac.Decorators
 
         public const string Id = "Intent.AspNet.WebApi.Interop.Autofac.WebApiConfigDecorator";
 
-        public IEnumerable<string> Configure()
+        public override IEnumerable<string> Configure()
         {
             return new[]
             {

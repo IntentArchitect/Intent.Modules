@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 <#=DependencyUsings#>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -59,6 +60,7 @@ namespace <#=Namespace#>
         [AcceptVerbs("<#= GetHttpVerb(operation).ToString().ToUpper()#>")]
         <#= GetSecurityAttribute(operation) #>
         [Route("<#= operation.Name.ToLower() #>")]
+        [ResponseType(<#= string.Format("typeof({0})", operation.ReturnType != null ? GetOperationReturnType(operation) : "void") #>)]
         public <#= operation.IsAsync() ? "async Task<IHttpActionResult>" : "IHttpActionResult" #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>
 <#
@@ -100,7 +102,7 @@ namespace <#=Namespace#>
         {#>
             return Ok(result);
 <#      } else {#>
-            return Ok();
+            return StatusCode(HttpStatusCode.NoContent);
 <#      }#>
         }
 <#    } // foreach (var operation in Model.Operations)

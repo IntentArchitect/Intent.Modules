@@ -32,7 +32,7 @@ namespace Intent.Modules.AspNetCore.Swashbuckle.FactoryExtensions
                 { ServiceConfigurationRequiredEvent.UsingsKey, $@"Swashbuckle.AspNetCore.Swagger;" },
                 { ServiceConfigurationRequiredEvent.CallKey, "ConfigureSwagger(services);" },
                 { ServiceConfigurationRequiredEvent.MethodKey, $@"
-        [IntentManaged(Mode.Ignore)]
+        //[IntentManaged(Mode.Ignore)] // Uncomment to take control of this method.
         private void ConfigureSwagger(IServiceCollection services)
         {{
             services.AddSwaggerGen(c =>
@@ -47,7 +47,7 @@ namespace Intent.Modules.AspNetCore.Swashbuckle.FactoryExtensions
                 { InitializationRequiredEvent.UsingsKey, $@"Swashbuckle.AspNetCore.Swagger;" },
                 { InitializationRequiredEvent.CallKey, $@"InitializeSwagger(app);" },
                 { InitializationRequiredEvent.MethodKey, $@"
-        [IntentManaged(Mode.Ignore)]
+        //[IntentManaged(Mode.Ignore)] // Uncomment to take control of this method.
         private void InitializeSwagger(IApplicationBuilder app)
         {{
             app.UseSwagger();

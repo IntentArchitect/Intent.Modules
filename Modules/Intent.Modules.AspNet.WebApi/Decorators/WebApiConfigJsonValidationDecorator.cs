@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.AspNet.WebApi.Decorators
 {
-    public class WebApiConfigJsonValidationDecorator : IWebApiConfigTemplateDecorator
+    public class WebApiConfigJsonValidationDecorator : WebApiConfigTemplateDecoratorBase
     {
         public const string Identifier = "Intent.AspNet.WebApi.WebApiConfig.JsonValidation.Decorator";
 
-        public IEnumerable<string> Configure()
+        public override IEnumerable<string> Configure()
         {
             return new[]
             {

@@ -8,7 +8,7 @@ using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modules.AspNet.WebApi.Interop.Unity.Decorators
 {
-    public class UnityWebApiConfigTemplateDecorator : IWebApiConfigTemplateDecorator, IHasNugetDependencies, IDeclareUsings
+    public class UnityWebApiConfigTemplateDecorator : WebApiConfigTemplateDecoratorBase, IHasNugetDependencies, IDeclareUsings
     {
         private readonly IApplication _application;
 

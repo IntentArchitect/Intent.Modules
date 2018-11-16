@@ -6,7 +6,7 @@
   <description>Implements Swagger support for using the Swashbuckle library for ASP.NET Core.</description>
   <authors>Intent Architect</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
-  <tags>MediatR mediator</tags>
+  <tags>Swagger Swashbuckle AspNetCore</tags>
   <factoryExtensions>
     <factoryExtension id="Intent.AspNetCore.Swashbuckle.Setup" />
   </factoryExtensions>

@@ -5,7 +5,7 @@ using System;
 
 namespace Intent.Modules.AspNet.WebApi.Interop.Autofac.Decorators
 {
-    public class AutofacWebApiConfigTemplateDecoratorRegistration : DecoratorRegistration<IWebApiConfigTemplateDecorator>
+    public class AutofacWebApiConfigTemplateDecoratorRegistration : DecoratorRegistration<WebApiConfigTemplateDecoratorBase>
     {
         public override string DecoratorId => AutofacWebApiConfigTemplateDecorator.Id;
 

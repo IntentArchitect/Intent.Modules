@@ -7,10 +7,10 @@ using System.Linq;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
 {
-    partial class OwinWebApiConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IWebApiConfigTemplateDecorator>
+    partial class OwinWebApiConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<WebApiConfigTemplateDecoratorBase>
     {
         public const string Identifier = "Intent.AspNet.WebApi.OwinWebApiConfig";
-        private IEnumerable<IWebApiConfigTemplateDecorator> _decorators;
+        private IEnumerable<WebApiConfigTemplateDecoratorBase> _decorators;
 
         public OwinWebApiConfigTemplate(IProject project)
             : base (Identifier, project, null)
@@ -23,6 +23,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
         }
 
         public IEnumerable<string> ConfigureItems => GetDecorators().SelectMany(x => x.Configure().Union(new[] {string.Empty}));
+        public string Methods() => GetDecorators().Aggregate(x => x.Methods());
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
@@ -48,7 +49,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
             .ToArray();
         }
 
-        public IEnumerable<IWebApiConfigTemplateDecorator> GetDecorators()
+        public IEnumerable<WebApiConfigTemplateDecoratorBase> GetDecorators()
         {
             return _decorators ?? (_decorators = Project.ResolveDecorators(this));
         }

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.AspNet.Swashbuckle</id>
+  <version>1.6.0</version>
+  <summary>Implements Swagger support for using the Swashbuckle library for ASP.NET (.NET Framework).</summary>
+  <description>Implements Swagger support for using the Swashbuckle library for ASP.NET (.NET Framework).</description>
+  <authors>Intent Architect</authors>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
+  <tags>Swagger Swashbuckle AspNet</tags>
+  <templates>
+  </templates>
+  <decorators>
+    <decorator id="Intent.AspNet.Swashbuckle.WebApiConfigDecorator"/>
+  </decorators>
+  <dependencies>
+    <dependency id="Intent.Common" version="1.6.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.6.0"/>
+    <dependency id="Intent.AspNet.WebApi" version="1.6.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+</package>

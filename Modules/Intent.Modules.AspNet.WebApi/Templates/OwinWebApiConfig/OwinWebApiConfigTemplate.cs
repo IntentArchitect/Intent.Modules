@@ -110,7 +110,14 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
             #line hidden
             this.Write("            app.UseWebApi(config);\r\n        }\r\n\r\n\t\t[IntentManaged(Mode.Ignore)]\r\n" +
                     "\t\tpublic static void AddCustomConfiguration(HttpConfiguration config) \r\n\t\t{\r\n\r\n\t" +
-                    "\t}\r\n    }\r\n}");
+                    "\t}\r\n\r\n");
+            
+            #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Methods()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

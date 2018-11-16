@@ -5,5 +5,5 @@
     <shortDescription>An empty application for creating your own stack.</shortDescription>
     <authors>Intent Software</authors>
     <icon type="FontAwesome" source="file-o" />
-    <priority>1000</priority>
+    <priority>0</priority>
 </applicationTemplate>

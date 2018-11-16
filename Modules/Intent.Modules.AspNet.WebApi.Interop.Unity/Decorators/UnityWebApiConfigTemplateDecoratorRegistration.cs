@@ -5,7 +5,7 @@ using System;
 
 namespace Intent.Modules.AspNet.WebApi.Interop.Unity.Decorators
 {
-    public class UnityWebApiConfigTemplateDecoratorRegistration : DecoratorRegistration<IWebApiConfigTemplateDecorator>
+    public class UnityWebApiConfigTemplateDecoratorRegistration : DecoratorRegistration<WebApiConfigTemplateDecoratorBase>
     {
         public override string DecoratorId => UnityWebApiConfigTemplateDecorator.Id;
 

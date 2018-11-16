@@ -76,7 +76,7 @@
     </Compile>
     <Compile Include="Templates\HttpExceptionHandler\HttpExceptionHandlerTemplatePartial.cs" />
     <Compile Include="NugetPackages.cs" />
-    <Compile Include="Templates\OwinWebApiConfig\IWebApiConfigTemplateDecorator.cs" />
+    <Compile Include="Templates\OwinWebApiConfig\WebApiConfigTemplateDecoratorBase.cs" />
     <Compile Include="Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.cs">
       <DependentUpon>OwinWebApiConfigTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>

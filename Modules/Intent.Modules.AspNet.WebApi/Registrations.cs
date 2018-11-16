@@ -27,7 +27,7 @@ namespace Intent.Modules.AspNet.WebApi
             RegisterTemplate(RequireHttpsMiddlewareTemplate.Identifier, project => new RequireHttpsMiddlewareTemplate(project));
 
             RegisterDecorator<WebApiControllerDecoratorBase>(WebApiWebApiControllerExceptionHandlingStrategy.Identifier, new WebApiWebApiControllerExceptionHandlingStrategy());
-            RegisterDecorator<IWebApiConfigTemplateDecorator>(WebApiConfigJsonValidationDecorator.Identifier, new WebApiConfigJsonValidationDecorator());
+            RegisterDecorator<WebApiConfigTemplateDecoratorBase>(WebApiConfigJsonValidationDecorator.Identifier, new WebApiConfigJsonValidationDecorator());
             RegisterDecorator<IOwinStartupDecorator>(WebApiOwinStartupDecorator.Identifier, new WebApiOwinStartupDecorator());
             RegisterDecorator<IOwinStartupDecorator>(UseHttpsOwinStartupDecorator.Identifier, new UseHttpsOwinStartupDecorator());
         }
