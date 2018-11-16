@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 using Intent.SoftwareFactory.Templates.Registrations;
@@ -16,7 +17,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
         {
             var targetProjectIds = new List<string>
             {
-                ProjectTypeIds.CoreWebApp
+                VisualStudioProjectTypeIds.CoreWebApp
             };
 
             var projects = application.Projects.Where(p => targetProjectIds.Contains(p.ProjectType.Id));

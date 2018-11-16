@@ -642,7 +642,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private bool IsNetCoreProject()
         {
-            return new[] { ProjectTypeIds.CoreCSharpLibrary, ProjectTypeIds.CoreWebApp }.Contains(_project.ProjectType.Id);
+            return new[] { VisualStudioProjectTypeIds.CoreCSharpLibrary, VisualStudioProjectTypeIds.CoreWebApp }.Contains(_project.ProjectType.Id);
         }
     }
 }

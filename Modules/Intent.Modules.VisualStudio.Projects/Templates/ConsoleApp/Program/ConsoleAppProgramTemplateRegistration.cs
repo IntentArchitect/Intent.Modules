@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Program;
+using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 using Intent.SoftwareFactory.Templates.Registrations;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
 {
-    [Description(CoreWebProgramTemplate.Identifier)]
+    [Description(ConsoleAppProgramTemplate.Identifier)]
     public class ConsoleAppProgramTemplateRegistration : IProjectTemplateRegistration
     {
         public string TemplateId => ConsoleAppProgramTemplate.Identifier;
@@ -17,7 +17,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
         {
             var targetProjectIds = new List<string>
             {
-                ProjectTypeIds.ConsoleAppNetFramework
+                VisualStudioProjectTypeIds.ConsoleAppNetFramework
             };
 
             var projects = application.Projects.Where(p => targetProjectIds.Contains(p.ProjectType.Id));

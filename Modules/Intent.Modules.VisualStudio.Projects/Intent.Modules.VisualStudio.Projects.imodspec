@@ -112,8 +112,6 @@
     <template id="Intent.VisualStudio.Projects.CoreWeb.CSProject"/>
     <template id="Intent.VisualStudio.Projects.CoreWeb.AppSettings"/>
     <template id="Intent.VisualStudio.Projects.CoreWeb.LaunchSettings"/>
-    <template id="Intent.VisualStudio.Projects.CoreWeb.Program"/>
-    <template id="Intent.VisualStudio.Projects.CoreWeb.Startup"/>
     <template id="Intent.VisualStudio.Projects.NuGetPackagesConfig"/>
     <template id="Intent.VisualStudio.Projects.VisualStudio2015Solution"/>
     <template id="Intent.VisualStudio.Projects.WebConfig"/>

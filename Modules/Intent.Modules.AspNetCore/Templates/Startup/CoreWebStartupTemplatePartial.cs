@@ -2,29 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Constants;
+using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
+namespace Intent.Modules.AspNetCore.Templates.Startup
 {
-    partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>, IHasTemplateDependencies, IDeclareUsings
+    partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>, IHasTemplateDependencies, IDeclareUsings, IHasDecorators<CoreWebStartupDecorator>, IHasNugetDependencies
     {
-        public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.Startup";
+        public const string Identifier = "Intent.AspNetCore.Startup";
+        private IEnumerable<CoreWebStartupDecorator> _decorators;
         private readonly IList<ContainerRegistration> _registrations = new List<ContainerRegistration>();
         private readonly IList<DbContextContainerRegistration> _dbContextRegistrations = new List<DbContextContainerRegistration>();
+        private readonly IList<Initializations> _serviceConfigurations = new List<Initializations>();
         private readonly IList<Initializations> _initializations = new List<Initializations>();
 
         public CoreWebStartupTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
             : base(Identifier, project, null)
         {
-            eventDispatcher.Subscribe(ContainerRegistrationEvent.EventId, HandleServiceRegistraiton);
+            eventDispatcher.Subscribe(ContainerRegistrationEvent.EventId, HandleServiceRegistration);
             eventDispatcher.Subscribe(ContainerRegistrationForDbContextEvent.EventId, HandleDbContextRegistration);
+            eventDispatcher.Subscribe(ServiceConfigurationRequiredEvent.EventId, HandleServiceConfiguration);
             eventDispatcher.Subscribe(InitializationRequiredEvent.EventId, HandleInitialization);
-
         }
 
-        private void HandleServiceRegistraiton(ApplicationEvent @event)
+        private void HandleServiceRegistration(ApplicationEvent @event)
         {
             _registrations.Add(new ContainerRegistration(
                 interfaceType: @event.TryGetValue("InterfaceType"),
@@ -43,12 +47,45 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
                 @event.TryGetValue(ContainerRegistrationForDbContextEvent.OptionsKey)));
         }
 
+        private void HandleServiceConfiguration(ApplicationEvent @event)
+        {
+            _serviceConfigurations.Add(new Initializations(
+                usings: @event.GetValue(ServiceConfigurationRequiredEvent.UsingsKey),
+                code: @event.GetValue(ServiceConfigurationRequiredEvent.CallKey),
+                method: @event.TryGetValue(ServiceConfigurationRequiredEvent.MethodKey),
+                priority: int.TryParse(@event.TryGetValue(ServiceConfigurationRequiredEvent.PriorityKey), out var priority) ? priority : 0));
+        }
+
         private void HandleInitialization(ApplicationEvent @event)
         {
             _initializations.Add(new Initializations(
                 usings: @event.GetValue(InitializationRequiredEvent.UsingsKey),
                 code: @event.GetValue(InitializationRequiredEvent.CallKey),
-                method: @event.TryGetValue(InitializationRequiredEvent.MethodKey)));
+                method: @event.TryGetValue(InitializationRequiredEvent.MethodKey),
+                priority: int.TryParse(@event.TryGetValue(InitializationRequiredEvent.PriorityKey), out var priority) ? priority : 0));
+        }
+
+        public string ServiceConfigurations()
+        {
+            var configurations = _serviceConfigurations.Select(x => x.Code).ToList();
+
+            if (!configurations.Any())
+            {
+                return string.Empty;
+            }
+
+            const string tabbing = "            ";
+            return Environment.NewLine +
+                   configurations
+                       .Select(x => x.Trim())
+                       .Select(x => x.StartsWith("#") ? x : $"{tabbing}{x}")
+                       .Aggregate((x, y) => $"{x}{Environment.NewLine}" +
+                                            $"{y}");
+        }
+
+        public IEnumerable<CoreWebStartupDecorator> GetDecorators()
+        {
+            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
         }
 
         public string Configurations()
@@ -86,8 +123,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
 
         public string Methods()
         {
-            var methods = _initializations
+            var methods = _initializations.Concat(_serviceConfigurations)
                 .Where(x => !string.IsNullOrWhiteSpace(x.Method))
+                .OrderBy(x => x.Priority)
                 .Select(x => x.Method)
                 .ToList();
 
@@ -178,6 +216,8 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
         public IEnumerable<string> DeclareUsings()
         {
             return _dbContextRegistrations.Select(x => x.Usings)
+                .Concat(_initializations.Select(x => x.Usings))
+                .Concat(_serviceConfigurations.Select(x => x.Usings))
                 .Select(x => x.Split(';'))
                 .SelectMany(x => x)
                 .Where(x => !string.IsNullOrWhiteSpace(x))
@@ -223,12 +263,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
             public string Usings { get; }
             public string Code { get; }
             public string Method { get; }
+            public int Priority { get; }
 
-            public Initializations(string usings, string code, string method)
+            public Initializations(string usings, string code, string method, int priority)
             {
                 Usings = usings;
                 Code = code;
                 Method = method;
+                Priority = priority;
             }
         }
     }

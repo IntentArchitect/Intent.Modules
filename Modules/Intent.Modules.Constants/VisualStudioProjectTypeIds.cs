@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Intent.Modules.VisualStudio.Projects
+﻿namespace Intent.Modules.Constants
 {
-    public static class ProjectTypeIds
+    public static class VisualStudioProjectTypeIds
     {
         public const string CSharpLibrary = "0FEBBF41-7C8E-4F98-85A5-F8B5236CFD7D";
         public const string WebApiApplication = "8AF747CF-58F0-449C-8B95-46080FEFC8C0";

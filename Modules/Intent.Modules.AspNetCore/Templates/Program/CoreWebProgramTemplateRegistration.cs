@@ -8,8 +8,8 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Registrations;
 using System.ComponentModel;
-using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject;
-using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Program;
+using Intent.Modules.AspNetCore.Templates.Program;
+using Intent.Modules.Constants;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
 {
@@ -22,7 +22,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
         {
             var targetProjectIds = new List<string>
             {
-                ProjectTypeIds.CoreWebApp
+                VisualStudioProjectTypeIds.CoreWebApp
             };
 
             var projects = application.Projects.Where(p => targetProjectIds.Contains(p.ProjectType.Id));

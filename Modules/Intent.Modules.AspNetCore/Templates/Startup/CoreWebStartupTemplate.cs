@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
+namespace Intent.Modules.AspNetCore.Templates.Startup
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -34,7 +34,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
             this.Write(" \r\n");
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
 
 
 
@@ -54,28 +54,28 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 ");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -87,11 +87,19 @@ using Microsoft.Extensions.Options;
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        [IntentManaged(Mode.Ignore)]
+        // [IntentManaged(Mode.Ignore)] // Uncomment this line to take over management of configuring services
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             IntentConfiguredServices(services);
+");
+            
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ServiceConfigurations()));
+            
+            #line default
+            #line hidden
+            this.Write(@"
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -105,22 +113,22 @@ using Microsoft.Extensions.Options;
             app.UseMvc();
 ");
             
-            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Configurations()));
             
             #line default
             #line hidden
             this.Write("\r\n        }\r\n\r\n        public void IntentConfiguredServices(IServiceCollection se" +
-                    "rvices) \r\n        {\r\n            services.AddMvc();\r\n");
+                    "rvices) \r\n        {\r\n");
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Registrations()));
             
             #line default
             #line hidden
             this.Write("\r\n        }\r\n\r\n");
             
-            #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Startup\CoreWebStartupTemplate.tt"
+            #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Methods()));
             
             #line default

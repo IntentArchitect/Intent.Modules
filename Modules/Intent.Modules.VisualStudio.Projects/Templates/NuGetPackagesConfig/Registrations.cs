@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 using System.ComponentModel;
+using Intent.Modules.Constants;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.NuGetPackagesConfig
 {
@@ -26,10 +27,10 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.NuGetPackagesConfig
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
             var targetProjectIds = new List<string>() {
-                ProjectTypeIds.ConsoleAppNetFramework,
-                ProjectTypeIds.CSharpLibrary,
-                ProjectTypeIds.WcfApplication,
-                ProjectTypeIds.WebApiApplication };
+                VisualStudioProjectTypeIds.ConsoleAppNetFramework,
+                VisualStudioProjectTypeIds.CSharpLibrary,
+                VisualStudioProjectTypeIds.WcfApplication,
+                VisualStudioProjectTypeIds.WebApiApplication };
 
             var projects = application.Projects.Where(p => targetProjectIds.Contains(p.ProjectType.Id));
 

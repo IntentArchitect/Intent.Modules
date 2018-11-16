@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.cs" />
+    <Compile Include="VisualStudioProjectTypeIds.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionEvents.cs" />
     <Compile Include="StandardStereotypes.cs" />

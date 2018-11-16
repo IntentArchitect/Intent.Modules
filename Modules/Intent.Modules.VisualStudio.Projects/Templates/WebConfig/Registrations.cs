@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Intent.Modules.Constants;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 {
@@ -26,8 +27,8 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
             var targetProjectIds = new List<string>() {
-                ProjectTypeIds.WebApiApplication,
-                ProjectTypeIds.WcfApplication
+                VisualStudioProjectTypeIds.WebApiApplication,
+                VisualStudioProjectTypeIds.WcfApplication
             };
 
             var projects = application.Projects.Where(p => targetProjectIds.Contains(p.ProjectType.Id));

@@ -1,11 +1,11 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Program
+namespace Intent.Modules.AspNetCore.Templates.Program
 {
     partial class CoreWebProgramTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
-        public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.Program";
+        public const string Identifier = "Intent.AspNetCore.Program";
 
         public CoreWebProgramTemplate(IProject project)
             : base(Identifier, project, null)

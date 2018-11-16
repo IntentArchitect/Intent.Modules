@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modules.Constants;
 using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
@@ -17,7 +18,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
         {
             var targetProjectIds = new List<string>
             {
-                ProjectTypeIds.CoreCSharpLibrary
+                VisualStudioProjectTypeIds.CoreCSharpLibrary
             };
 
             var projects = application.Projects.Where(p => targetProjectIds.Contains(p.ProjectType.Id));

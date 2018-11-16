@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Transactions;
 using Intent.RoslynWeaver.Attributes;
@@ -44,6 +45,7 @@ namespace <#=Namespace#>
     {#>
         [Http<#= GetHttpVerb(operation).ToString().ToLower().ToPascalCase() #>("<#= operation.Name.ToLower() #>")]
         <#= GetSecurityAttribute(operation) #>
+        [ProducesResponseType(<#= operation.ReturnType != null ? string.Format("typeof({0}), ", GetOperationReturnType(operation)) : "" #>(int)HttpStatusCode.OK)]
         public <#= operation.IsAsync() ? "async Task<IActionResult>" : "IActionResult" #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>
 <#      if (operation.ReturnType != null)

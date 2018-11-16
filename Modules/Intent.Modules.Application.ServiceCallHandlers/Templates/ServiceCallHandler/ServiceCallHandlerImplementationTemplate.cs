@@ -72,7 +72,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n        }\r\n\r\n        [IntentManaged(Mode.Merge, Body = Mode.Ignore" +
-                    ")]\r\n        public ");
+                    ", Signature = Mode.Fully)]\r\n        public ");
             
             #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationReturnType(Model)));
@@ -86,8 +86,15 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             
             #line default
             #line hidden
-            this.Write(")\r\n        {\r\n            throw new NotImplementedException(\"Your implementation " +
-                    "here\");\r\n        }\r\n    }\r\n}");
+            this.Write(")\r\n        {\r\n            throw new NotImplementedException(\"Implement your busin" +
+                    "ess logic for this service call in the ");
+            
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(" (SCH = Service Call Handler) class.\");\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

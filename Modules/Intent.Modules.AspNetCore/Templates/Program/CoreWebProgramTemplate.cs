@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Program
+namespace Intent.Modules.AspNetCore.Templates.Program
 {
     using Intent.SoftwareFactory.Templates;
     using System;
@@ -21,7 +21,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Program
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Program\CoreWebProgramTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Program\CoreWebProgramTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class CoreWebProgramTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -34,7 +34,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Program
             this.Write(" \r\n");
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Program\CoreWebProgramTemplate.tt"
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Program\CoreWebProgramTemplate.tt"
 
 
 
@@ -53,14 +53,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Program\CoreWebProgramTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Program\CoreWebProgramTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\Program\CoreWebProgramTemplate.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Program\CoreWebProgramTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

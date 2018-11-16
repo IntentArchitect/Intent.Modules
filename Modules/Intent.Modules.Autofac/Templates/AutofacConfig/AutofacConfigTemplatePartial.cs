@@ -83,16 +83,19 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
             }
         }
 
+        // Overriden to empty so that namespaces are not normalized completely (to avoid class name ambiguities - e.g. two SCHs with the same name)
+        public override string DependencyUsings => "";
+
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
-            return new ITemplateDependancy[0];
-            //return _registrations
-            //    .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
-            //    .Select(x => x.InterfaceTypeTemplateDependency)
-            //    .Union(_registrations
-            //        .Where(x => x.ConcreteTypeTemplateDependency != null)
-            //        .Select(x => x.ConcreteTypeTemplateDependency))
-            //    .ToList();
+            //return new ITemplateDependancy[0];
+            return _registrations
+                .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
+                .Select(x => x.InterfaceTypeTemplateDependency)
+                .Union(_registrations
+                    .Where(x => x.ConcreteTypeTemplateDependency != null)
+                    .Select(x => x.ConcreteTypeTemplateDependency))
+                .ToList();
         }
 
         public IEnumerable<IAutofacRegistrationsDecorator> GetDecorators()

@@ -183,7 +183,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             {
                 case HttpVerb.POST:
                 case HttpVerb.PUT:
-                    return operation.Parameters.Select(x => $"{GetParameterBindingAttribute(x)}{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => $"{x}, {y}");
+                    return operation.Parameters.Select(x => $"{GetParameterBindingAttribute(operation, x)}{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => $"{x}, {y}");
                 case HttpVerb.GET:
                 case HttpVerb.DELETE:
                     if (operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
@@ -241,7 +241,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return HttpVerb.GET;
         }
 
-        private string GetParameterBindingAttribute(IOperationParameterModel parameter)
+        private string GetParameterBindingAttribute(IOperationModel operation, IOperationParameterModel parameter)
         {
             const string ParameterBinding = "Parameter Binding";
             const string PropertyType = "Type";
@@ -263,6 +263,10 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                 return $"[{attributeName}]";
             }
 
+            if (operation.Parameters.Count == 1 && parameter.TypeReference.Type == ReferenceType.ClassType)
+            {
+                return "[FromBody]";
+            }
             return string.Empty;
         }
     }

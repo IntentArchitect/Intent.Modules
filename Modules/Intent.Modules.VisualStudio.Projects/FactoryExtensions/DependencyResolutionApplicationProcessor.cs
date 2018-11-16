@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modules.Constants;
 
 namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
 {
@@ -67,7 +68,7 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
 
                     // 3. Load nuget packages from project dependencies.
                     //    Don't load for Core projects
-                    if (new[] { ProjectTypeIds.CoreWebApp, ProjectTypeIds.CoreCSharpLibrary }.Contains(project.ProjectType.Id))
+                    if (new[] { VisualStudioProjectTypeIds.CoreWebApp, VisualStudioProjectTypeIds.CoreCSharpLibrary }.Contains(project.ProjectType.Id))
                     {
                         continue;
                     }

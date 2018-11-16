@@ -40,11 +40,12 @@ namespace <#= Namespace #>
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        [IntentManaged(Mode.Ignore)]
+        // [IntentManaged(Mode.Ignore)] // Uncomment this line to take over management of configuring services
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             IntentConfiguredServices(services);
+<#= ServiceConfigurations() #>
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,7 +62,6 @@ namespace <#= Namespace #>
 
         public void IntentConfiguredServices(IServiceCollection services) 
         {
-            services.AddMvc();
 <#= Registrations() #>
         }
 
