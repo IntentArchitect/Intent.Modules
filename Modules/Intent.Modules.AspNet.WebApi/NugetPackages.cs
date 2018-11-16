@@ -39,7 +39,8 @@ namespace Intent.Modules.AspNet.WebApi
 
         public static NugetPackageInfo MicrosoftAspNetWebApi = new NugetPackageInfo("Microsoft.AspNet.WebApi", "5.2.6","net45");
 
-        public static NugetPackageInfo MicrosoftAspNetWebApiClient =new NugetPackageInfo("Microsoft.AspNet.WebApi.Client", "5.2.6", "net45");
+        public static NugetPackageInfo MicrosoftAspNetWebApiClient =new NugetPackageInfo("Microsoft.AspNet.WebApi.Client", "5.2.6", "net45")
+            .WithAssemblyRedirect(new AssemblyRedirectInfo("System.Net.Http.Formatting", "5.2.6.0", "31bf3856ad364e35"));
 
         public static NugetPackageInfo MicrosoftAspNetWebApiCore = new NugetPackageInfo("Microsoft.AspNet.WebApi.Core","5.2.6", "net45")
             .WithAssemblyRedirect(new AssemblyRedirectInfo("System.Web.Http", "5.2.6.0", "31bf3856ad364e35"));
