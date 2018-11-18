@@ -50,13 +50,14 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             filename = Path.GetFullPath(filename);
 
             // Do not process .Net Core projects.
-            if (!IsNetCoreProject())
+            if (IsNetCoreProject())
             {
-                //run events
-                ProcessEvents(events);
-                SyncAssemblyReferences();
+                return;
             }
 
+            //run events
+            ProcessEvents(events);
+            SyncAssemblyReferences();
             SyncProjectReferences();
 
             var currentProjectFileContent = "";

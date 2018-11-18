@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Installs NuGet dependencies on demand for the template / decorator components being installed for the application.</summary>
   <description>Installs NuGet dependencies on demand for the template / decorator components being installed for the application.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>NuGet Automatic Installer</tags>
   <templates />

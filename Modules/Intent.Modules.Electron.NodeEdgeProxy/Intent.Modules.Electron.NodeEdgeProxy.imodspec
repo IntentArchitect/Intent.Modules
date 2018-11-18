@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Creates service proxies allowing you to call C# code from within Node.js</summary>
   <description>Implements service contracts and infrastructure in both C# and TypeScript allowing C# service calls to be initiated from within a Node.js hosted Angular Application.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates>
     <template id="Intent.Electron.NodeEdgeProxy.AngularEdgeServiceProvider">
       <role>Presentation</role>

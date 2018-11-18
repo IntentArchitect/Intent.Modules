@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Bower configuration files</summary>
   <description>Bower configuration files</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates>
     <template id="Intent.Bower.BowerConfig">
       <role>Presentation.Web</role>

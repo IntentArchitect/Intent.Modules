@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>File hosting configuration for OWIN web servers</summary>
   <description>File hosting configuration for OWIN web servers</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>www.intentarchitect.com</projectUrl>
   <tags>Owin FileServer Static Root Location Web</tags>
   <templates>

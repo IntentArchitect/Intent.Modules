@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Create domain entities and related artifacts.</summary>
   <description></description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates>
     <template id="Intent.Entities.DomainEntity">
       <role>Domain</role>

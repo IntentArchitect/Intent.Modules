@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Typescript configuration files</summary>
   <description>Typescript configuration files</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates>
     <template id="Intent.Typescript.Config.TypescriptConfig">
       <role>Presentation.Web</role>

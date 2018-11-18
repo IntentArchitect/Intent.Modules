@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>ASP.NET Registrations using the Autofac container</summary>
   <description>Asp.NET Registrations using the Autofac container</description>
-  <authors>Intent Archiect</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Owin WebApi Autofac Interoperability</tags>
   <templates>

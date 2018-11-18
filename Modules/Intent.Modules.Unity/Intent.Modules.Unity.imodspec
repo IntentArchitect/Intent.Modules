@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Unity container for patterns that require Dependency Injection.</summary>
   <description>Unity container for patterns that require Dependency Injection.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Unity Container DI Dependency Injection</tags>
   <templates>

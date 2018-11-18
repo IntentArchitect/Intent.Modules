@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Infastructure for Asp.Net SignalR</summary>
   <description>Infastructure for Asp.Net SignalR</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>AspNet SignalR</tags>
   <templates>

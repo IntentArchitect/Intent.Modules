@@ -3,7 +3,7 @@
     <id>Intent.ApplicationTemplate.EmptyApplication</id>
     <displayName>Empty Application</displayName>
     <shortDescription>An empty application for creating your own stack.</shortDescription>
-    <authors>Intent Software</authors>
+    <authors>Intent Architect</authors>
     <icon type="FontAwesome" source="file-o" />
     <priority>0</priority>
 </applicationTemplate>

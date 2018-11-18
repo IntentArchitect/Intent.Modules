@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Mapping infrastructure for mapping Domain Entities to DTOs using Automapper.</summary>
   <description>Mapping infrastructure for mapping Domain Entities to DTOs using Automapper.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates>
     <template id="Intent.Mapping.EntityToDto.DTOMappingProfile">
       <role>Application.Services</role>

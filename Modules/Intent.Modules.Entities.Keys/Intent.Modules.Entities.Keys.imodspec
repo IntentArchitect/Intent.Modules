@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Adds primary and foreign key properties to entities.</summary>
   <description>Adds primary and foreign key properties to entities. This is typically required for ORMs (Object Relational Mappers) such as Entity Framework.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates>
     <template id="Intent.Entities.Keys.IdentityGenerator">
       <role>Domain</role>

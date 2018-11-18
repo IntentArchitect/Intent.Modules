@@ -24,6 +24,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
             var doc = LoadOrCreate(fullFileName);
 
             Project.InstallNugetPackages(doc);
+            Project.SyncProjectReferences(doc);
 
             return doc.ToString();
         }

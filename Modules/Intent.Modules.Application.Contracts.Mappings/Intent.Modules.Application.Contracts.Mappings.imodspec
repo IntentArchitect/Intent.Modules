@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Creates mapping configuration and extension methods using Automapper.</summary>
   <description>Creates mapping configuration and extension methods using Automapper.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates>    
     <template id="Intent.Application.Contracts.Mapping" enabled="true">
       <role>Application.Mappings</role>

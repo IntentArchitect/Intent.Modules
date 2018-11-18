@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates />
   <dependencies />
   <factoryExtensions>

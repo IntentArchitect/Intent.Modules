@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Entity Framework scope and context management for interoperability with the Intent.AspNet.WebApi package.</summary>
   <description>Entity Framework scope and context management for interoperability with the Intent.AspNet.WebApi package.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>WebApi EntityFramework Interoperability</tags>
   <templates>

@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>JWT Authentication plugin for OWIN</summary>
   <description>JWT Authentication plugin for OWIN</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates>
     <template id="Intent.Owin.Jwt.SigningCertificate">
       <role>Distribution</role>

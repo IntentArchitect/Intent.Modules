@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Repository contracts and specifications for Entities.</summary>
   <description>Repository contracts and specifications for Entities.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>EntityFramework</tags>
   <templates>

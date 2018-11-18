@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Generic Application Layer service call dispatching pattern that is technology agnostic.</summary>
   <description>Generic Application Layer service call dispatching pattern that is technology agnostic.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates>
     <template id="Intent.Application.ServiceCallHandlers.Handler">
       <role>Application.Services</role>

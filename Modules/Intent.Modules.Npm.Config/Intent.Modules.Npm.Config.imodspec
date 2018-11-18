@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Create domain entities and related artifacts.</summary>
   <description>Create domain entities and related artifacts.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>www.intentarchitect.com</projectUrl>
   <tags>Npm Config Node Packager</tags>
   <templates>   

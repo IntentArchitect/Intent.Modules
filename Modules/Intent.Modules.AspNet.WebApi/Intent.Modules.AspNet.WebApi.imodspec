@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>ASP.NET WebApi 2.2 distribution pattern for services.</summary>
   <description>ASP.NET WebApi 2.2 distribution pattern for services.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>WebApi Restful</tags>
   <templates>

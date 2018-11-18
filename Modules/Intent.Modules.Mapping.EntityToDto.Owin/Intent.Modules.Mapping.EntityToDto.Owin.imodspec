@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Owin configuration setup for Intent.Mapping.EntityToDto package.</summary>
   <description>Owin configuration setup for Intent.Mapping.EntityToDto package.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <decorators>
     <decorator id="Intent.Mapping.EntityToDto.Owin.ConfigurationDecorator"/>
   </decorators>

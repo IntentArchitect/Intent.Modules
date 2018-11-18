@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Basic auditing fields applied to each Rich Domain entity.</summary>
   <description>Basic auditing fields applied to each Rich Domain entity.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <decorators>
     <decorator id="Intent.RichDomain.Auditing.DomainBehaviour"/>
     <decorator id="Intent.RichDomain.Auditing.EntityBehaviourBase"/>

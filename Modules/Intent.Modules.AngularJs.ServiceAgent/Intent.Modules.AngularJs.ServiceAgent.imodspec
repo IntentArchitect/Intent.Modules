@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>(DEPRECATED) Typescript DTO and Proxy patterns for AngularJS.</summary>
   <description>DTO and Proxy patterns for AngularJS. (DEPRECATED) Use Intent.Packages.Typescript.ServiceAgent.AngularJs and Intent.Packages.Typescript.ServiceAgent.Contracts instead.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Typescript AngularJS DTO Proxy</tags>
   <templates>

@@ -27,6 +27,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
             var doc = LoadOrCreate(fullFileName);
 
             Project.InstallNugetPackages(doc);
+            Project.SyncProjectReferences(doc);
             //var nugetPackages = Project
             //    .NugetPackages()
             //    .GroupBy(x => x.Name)

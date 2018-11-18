@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Common Types for Modelling.</summary>
   <description>Common data types for modelling.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Types</tags>
   <factoryExtensions>

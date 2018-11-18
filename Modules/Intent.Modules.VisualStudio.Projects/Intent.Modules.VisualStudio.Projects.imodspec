@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Installs templates for Visual Studio projects that integrate with Intent Architect</summary>
   <description>Installs templates for Visual Studio projects that integrate with Intent Architect</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <projectTypes>
     <projectType id="0FEBBF41-7C8E-4F98-85A5-F8B5236CFD7D">
       <name>Class Library (.NET Framework)</name>

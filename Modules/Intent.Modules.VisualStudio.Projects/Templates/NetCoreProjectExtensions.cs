@@ -56,5 +56,50 @@ namespace Intent.Modules.VisualStudio.Projects.Templates
                 }
             }
         }
+
+        public static void SyncProjectReferences(this IProject _project, XDocument doc)
+        {
+            if (_project.Dependencies().Count <= 0)
+            {
+                return;
+            }
+
+            var itemGroupElement = doc.XPathSelectElement("Project/ItemGroup[ProjectReference]");
+            if (itemGroupElement == null)
+            {
+                itemGroupElement = new XElement("ItemGroup");
+                itemGroupElement.Add(Environment.NewLine);
+                itemGroupElement.Add("  ");
+
+                var projectElement = doc.XPathSelectElement("Project");
+
+                projectElement.Add("  ");
+                projectElement.Add(itemGroupElement);
+                projectElement.Add(Environment.NewLine);
+                projectElement.Add("  ");
+            }
+
+            foreach (var dependency in _project.Dependencies())
+            {
+                var projectUrl = string.Format("..\\{0}\\{0}.csproj", dependency.Name);
+                var projectReferenceItem = doc.XPathSelectElement($"/Project/ItemGroup/ProjectReference[@Include='{projectUrl}']");
+                if (projectReferenceItem != null)
+                {
+                    continue;
+                }
+
+                /*
+                <ProjectReference Include="..\Intent.SoftwareFactory\Intent.SoftwareFactory.csproj"/>
+                */
+
+                var item = new XElement(XName.Get("ProjectReference"));
+                item.Add(new XAttribute("Include", projectUrl));
+
+                itemGroupElement.Add("  ");
+                itemGroupElement.Add(item);
+                itemGroupElement.Add(Environment.NewLine);
+                itemGroupElement.Add("  ");
+            }
+        }
     }
 }

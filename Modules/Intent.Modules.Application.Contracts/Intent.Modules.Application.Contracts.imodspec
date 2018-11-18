@@ -4,7 +4,7 @@
   <version>1.6.0</version>
   <summary>Creates generic application service contracts.</summary>
   <description>Creates generic application service contracts that is technology agnostic.</description>
-  <authors>Intent Software</authors>
+  <authors>Intent Architect</authors>
   <templates>
     <template id="Intent.Application.Contracts.DTO">
       <role>Application.Contracts</role>
