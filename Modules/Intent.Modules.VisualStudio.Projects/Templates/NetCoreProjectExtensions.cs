@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Intent.SoftwareFactory.Engine;
@@ -25,7 +26,15 @@ namespace Intent.Modules.VisualStudio.Projects.Templates
             if (packageReferenceItemGroup == null)
             {
                 packageReferenceItemGroup = new XElement("ItemGroup");
-                doc.XPathSelectElement("Project").Add(packageReferenceItemGroup);
+                packageReferenceItemGroup.Add(Environment.NewLine);
+                packageReferenceItemGroup.Add("  ");
+
+                var projectElement = doc.XPathSelectElement("Project");
+
+                projectElement.Add("  ");
+                projectElement.Add(packageReferenceItemGroup);
+                projectElement.Add(Environment.NewLine);
+                projectElement.Add("  ");
             }
 
             foreach (var addFileBehaviour in nugetPackages)
@@ -38,9 +47,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates
                 {
                     //tracing.Info($"{TracingOutputPrefix}Installing {addFileBehaviour.Key} {latestVersion} into project {netCoreProject.Name}");
 
+                    packageReferenceItemGroup.Add("  ");
                     packageReferenceItemGroup.Add(new XElement("PackageReference",
                         new XAttribute("Include", addFileBehaviour.Key),
                         new XAttribute("Version", latestVersion)));
+                    packageReferenceItemGroup.Add(Environment.NewLine);
+                    packageReferenceItemGroup.Add("  ");
                 }
             }
         }

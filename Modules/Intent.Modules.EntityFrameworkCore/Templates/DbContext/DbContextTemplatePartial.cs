@@ -41,10 +41,10 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Project.Application.ApplicationName}DbContext",
+                fileName: $"{Project.Application.ApplicationName}DbContext".AsClassName(),
                 fileExtension: "cs",
                 defaultLocationInProject: "DbContext",
-                className: "${Project.Application.ApplicationName}DbContext",
+                className: $"{Project.Application.ApplicationName}DbContext".AsClassName(),
                 @namespace: "${Project.ProjectName}"
                 );
         }

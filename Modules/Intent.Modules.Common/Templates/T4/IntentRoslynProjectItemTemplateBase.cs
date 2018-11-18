@@ -38,9 +38,9 @@ namespace Intent.SoftwareFactory.Templates
             {
                 if (FileMetaData.CustomMetaData.ContainsKey("ClassName"))
                 {
-                    return FileMetaData.CustomMetaData["ClassName"];
+                    return FileMetaData.CustomMetaData["ClassName"].AsClassName();
                 }
-                return FileMetaData.FileName;
+                return FileMetaData.FileName.AsClassName();
             }
         }
 

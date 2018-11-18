@@ -7,6 +7,9 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
+
+using Intent.Modules.Common;
+
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
     using Intent.SoftwareFactory.Templates;

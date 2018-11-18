@@ -29,14 +29,15 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
         }
 
+
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Project.Application.ApplicationName}DbContext",
+                fileName: $"{Project.Application.ApplicationName}DbContext".AsClassName(),
                 fileExtension: "cs",
                 defaultLocationInProject: "DbContext",
-                className: "${Project.Application.ApplicationName}DbContext",
+                className: $"{Project.Application.ApplicationName}DbContext".AsClassName(),
                 @namespace: "${Project.ProjectName}"
                 );
         }

@@ -8,6 +8,7 @@ using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Common;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
@@ -26,9 +27,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             _eventDispatcher = eventDispatcher;
         }
 
-        public string ApiBasePathConfigKey => $"{Project.Application.SolutionName.ToLower()}_{Model.Application.Name.ToLower()}_api_basepath".ToLower();
-
-        public string ApplicationName => Model.Application.Name;
+        public string ApiBasePathConfigKey => $"{Project.Application.SolutionName.ToLower()}_{Model.Application.Name.ToLower()}_api_basepath".AsClassName().ToLower();
 
         public string AngularModule
         {

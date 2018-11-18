@@ -7,6 +7,9 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
+
+using Intent.Modules.Common;
+
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
     using Intent.SoftwareFactory.Templates;

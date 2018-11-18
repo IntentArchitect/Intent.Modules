@@ -9,6 +9,7 @@ using System.Linq;
 using Intent.MetaModel.DTO;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.MetaData;

@@ -131,6 +131,11 @@ namespace Intent.SoftwareFactory.Templates
             }
         }
 
+        public static string AsClassName(this string s)
+        {
+            return s.Replace(".", "");
+        }
+
         public static string ToPluralName(this string s)
         {
             return s.EndsWith("y")

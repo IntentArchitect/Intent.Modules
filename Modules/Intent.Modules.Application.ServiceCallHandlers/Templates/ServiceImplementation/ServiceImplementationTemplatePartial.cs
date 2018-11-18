@@ -9,6 +9,7 @@ using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Eventing;

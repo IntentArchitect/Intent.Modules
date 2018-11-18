@@ -417,7 +417,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
             if (itemType == null)
             {
-                var fileExtension = Path.GetExtension(relativeFileName).Substring(1); //remove the '.'
+                var fileExtension = !string.IsNullOrEmpty(Path.GetExtension(relativeFileName)) ? Path.GetExtension(relativeFileName).Substring(1) : null; //remove the '.'
                 switch (fileExtension)
                 {
                     case "cs":
