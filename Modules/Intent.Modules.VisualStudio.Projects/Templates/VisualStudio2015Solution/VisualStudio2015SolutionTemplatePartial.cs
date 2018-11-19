@@ -23,7 +23,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
             _fileMetaData = CreateMetaData();
             Projects = _application.Projects;
             ExistingSolution = existingSolution;
-            SolutionFolders = Projects.Where(x => x.SolutionFolder() != null)
+            SolutionFolders = Projects.Where(x => x.SolutionFolder() != null && x.Folder.Id != application.Id)
                 .GroupBy(x => x.SolutionFolder())
                 .ToDictionary(x => x.Key, x => x.ToList())
                 .Select(x => new SolutionFolder(x.Key, x.Value))

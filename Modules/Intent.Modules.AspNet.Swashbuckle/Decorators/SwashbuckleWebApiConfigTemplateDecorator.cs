@@ -48,7 +48,7 @@ namespace Intent.Modules.AspNet.Swashbuckle.Decorators
         {
             return new[] 
             {
-                NugetPackages.SwashbuckleAspNetCore,
+                NugetPackages.Swashbuckle,
             };
         }
     }

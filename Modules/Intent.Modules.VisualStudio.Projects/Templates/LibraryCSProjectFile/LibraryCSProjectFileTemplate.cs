@@ -138,10 +138,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return new[]
-            {
-                NugetPackages.IntentFrameworkCore
-            };
+            return new INugetPackageInfo[0];
         }
     }
 }

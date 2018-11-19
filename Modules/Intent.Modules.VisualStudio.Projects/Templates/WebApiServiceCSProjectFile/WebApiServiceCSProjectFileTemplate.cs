@@ -212,7 +212,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
         {
             return new[]
             {
-                NugetPackages.IntentFrameworkCore,
                 NugetPackages.MicrosoftAspNetWebApi,
                 NugetPackages.MicrosoftAspNetWebApiClient,
                 NugetPackages.MicrosoftAspNetWebApiCore,
