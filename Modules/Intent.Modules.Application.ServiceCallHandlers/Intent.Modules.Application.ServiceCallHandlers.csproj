@@ -90,6 +90,10 @@
       <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Entities.Repositories.Api\Intent.Modules.Entities.Repositories.Api.csproj">
+      <Project>{DC43DD5D-0776-4345-853D-DEF3A95F0CDF}</Project>
+      <Name>Intent.Modules.Entities.Repositories.Api</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -12,6 +12,7 @@ using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
+using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
@@ -42,12 +43,18 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return new[]
-                {
-                    NugetPackages.IntentFrameworkDomain,
-                }
-                .Union(base.GetNugetDependencies())
-                .ToArray();
+            // GCB - This is a hack to get the Intent.Framework.Domain package installed in the Application layer if repositories are detected.
+            // Note: the project reference dependency on Repositories.Api is not needed since all we are using is the constant value of RepositoryInterfaceTemplate.Identifier
+            if (Project.FindTemplateInstances<IHasClassDetails>(TemplateDependancy.OnTemplate(RepositoryInterfaceTemplate.Identifier)).Any())
+            {
+                return new[]
+                    {
+                        NugetPackages.IntentFrameworkDomain,
+                    }
+                    .Union(base.GetNugetDependencies())
+                    .ToArray();
+            }
+            return base.GetNugetDependencies();
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
