@@ -18,7 +18,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
             if ((associationEnd.Multiplicity == Multiplicity.One || associationEnd.Multiplicity == Multiplicity.ZeroToOne || (associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd == associationEnd)) &&
                 (associationEnd.OtherEnd().Multiplicity == Multiplicity.Many || associationEnd.OtherEnd().Multiplicity == Multiplicity.ZeroToOne))
             {
-                return $@"       {_foreignKeyType}{ (associationEnd.IsNullable ? "?" : "") } { associationEnd.Name().ToPascalCase() }Id {{ get; set; }}
+                return $@"       {_foreignKeyType}{ (associationEnd.IsNullable ? "?" : "") } { associationEnd.Name().ToPascalCase() }Id {{ get; }}
 ";
             }
             return base.PropertyBefore(associationEnd);

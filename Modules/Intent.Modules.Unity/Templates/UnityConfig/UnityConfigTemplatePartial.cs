@@ -10,7 +10,7 @@ using Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager;
 
 namespace Intent.Modules.Unity.Templates.UnityConfig
 {
-    partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IUnityRegistrationsDecorator>//, IHasTemplateDependencies
+    partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IUnityRegistrationsDecorator>, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.Unity.Config";
 
@@ -40,6 +40,19 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
                 className: "UnityConfig",
                 @namespace: "${Project.ProjectName}.Unity"
                 );
+        }
+
+        public override string DependencyUsings => "";
+
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            return _registrations
+                .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
+                .Select(x => x.InterfaceTypeTemplateDependency)
+                .Union(_registrations
+                    .Where(x => x.ConcreteTypeTemplateDependency != null)
+                    .Select(x => x.ConcreteTypeTemplateDependency))
+                .ToList();
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()

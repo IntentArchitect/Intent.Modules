@@ -15,6 +15,10 @@
       <name>UniqueKey</name>
       <type>string</type>
     </property>
+    <property id="a8f903d5-e8b6-4d15-aedb-08c6b290b733">
+      <name>Order</name>
+      <type>number</type>
+    </property>
     <property id="90002464-b824-40e2-9f73-32f306868897">
       <name>IsUnique</name>
       <type>boolean</type>

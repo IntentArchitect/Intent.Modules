@@ -132,7 +132,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             {
                 return o.IsAsync() ? "Task" : "void";
             }
-            return o.IsAsync() ? $"Task<{this.ConvertType(o.ReturnType.Type)}>" : this.ConvertType(o.ReturnType.Type);
+            return o.IsAsync() ? $"Task<{this.ConvertType(o.ReturnType.Type, OPERATIONS_CONTEXT)}>" : this.ConvertType(o.ReturnType.Type, OPERATIONS_CONTEXT);
         }
     }
 }

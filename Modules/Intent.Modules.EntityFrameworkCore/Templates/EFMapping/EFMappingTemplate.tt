@@ -117,7 +117,7 @@ namespace <#= Namespace #>
 
         if (attribute.Type.Name == "string" )
         {
-            var maxLength = attribute.GetStereotypeProperty<int?>("Text", "MaxLength");    
+            var maxLength = attribute.GetStereotypeProperty<int?>("StringOptions", "MaxLength") ?? attribute.GetStereotypeProperty<int?>("Text", "MaxLength");     // (Text for backwards compatibility with RichDomain)
             if (maxLength.HasValue){
         #>
 

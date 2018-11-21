@@ -19,7 +19,7 @@ namespace Intent.Modules.AspNet.WebApi.Interop.Unity.Decorators
 
         public const string Id = "Intent.AspNet.WebApi.Interop.Unity.DataContractDecorator";
 
-        public IEnumerable<string> Configure()
+        public override IEnumerable<string> Configure()
         {
             return new[]
             {
