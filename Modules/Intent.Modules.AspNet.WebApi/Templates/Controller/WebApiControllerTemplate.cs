@@ -7,9 +7,6 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-
-using Intent.Modules.Common;
-
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
     using Intent.SoftwareFactory.Templates;
@@ -188,7 +185,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             this.Write("\r\n        [Route(\"");
             
             #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToLower()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetRoute(operation)));
             
             #line default
             #line hidden

@@ -25,5 +25,14 @@
         <option>DELETE</option>
       </options>
     </property>
+    <property id="e7bf9e77-935e-450d-93f2-00a770a4c047">
+      <name>Payload</name>
+      <type>options</type>
+      <defaultValue>AUTO</defaultValue>
+      <options>
+        <option>AUTO</option>
+        <option>Payload Object</option>
+      </options>
+    </property>
   </properties>
 </stereotypeDefinition>

@@ -60,7 +60,7 @@ namespace <#=Namespace#>
 
         [AcceptVerbs("<#= GetHttpVerb(operation).ToString().ToUpper()#>")]
         <#= GetSecurityAttribute(operation) #>
-        [Route("<#= operation.Name.ToLower() #>")]
+        [Route("<#= GetRoute(operation) #>")]
         [ResponseType(<#= string.Format("typeof({0})", operation.ReturnType != null ? GetOperationReturnType(operation) : "void") #>)]
         public <#= operation.IsAsync() ? "async Task<IHttpActionResult>" : "IHttpActionResult" #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
         {<#= BeginOperation(operation) #>

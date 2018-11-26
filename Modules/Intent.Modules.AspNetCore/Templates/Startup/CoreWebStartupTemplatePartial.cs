@@ -199,8 +199,6 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                 );
         }
 
-        public override string DependencyUsings => "";
-
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
             return _registrations

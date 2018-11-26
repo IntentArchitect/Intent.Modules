@@ -191,11 +191,21 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             return "[AllowAnonymous]";
         }
 
+        private string GetRoute(IOperationModel operation)
+        {
+            return operation.Name.ToLower();
+        }
+
         private static bool RequiresPayloadObject(IOperationModel operation)
         {
             if (!operation.Parameters.Any())
             {
                 return false;
+            }
+
+            if (operation.GetStereotypeProperty("Http", "Payload", "AUTO") == "Payload Object")
+            {
+                return true;
             }
 
             var verb = GetHttpVerb(operation);
@@ -205,61 +215,6 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             }
 
             return operation.Parameters.Count(IsFromBody) > 1;
-        }
-
-        private static bool IsFromBody(IOperationParameterModel parameter)
-        {
-            var csharpPrimitives = new[]
-            {
-                "guid",
-                "System.Guid",
-
-                "bool",
-                "Boolean",
-                "System.Boolean",
-                "byte",
-                "Byte",
-                "System.Byte",
-                "sbyte",
-                "SByte",
-                "System.SByte",
-                "char",
-                "Char",
-                "System.Char",
-                "decimal",
-                "Decimal",
-                "System.Decimal",
-                "double",
-                "Double",
-                "System.Double",
-                "float",
-                "Single",
-                "System.Single",
-                "int",
-                "Int32",
-                "System.Int32",
-                "uint",
-                "UInt32",
-                "System.UInt32",
-                "long",
-                "Int64",
-                "System.Int64",
-                "ulong",
-                "UInt64",
-                "System.UInt64",
-                "short",
-                "Int16",
-                "System.Int16",
-                "ushort",
-                "UInt16",
-                "System.UInt16",
-                "string",
-                "String",
-                "System.String"
-            };
-
-            // NB: Order of conditional checks is important here
-            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !csharpPrimitives.Contains(parameter.TypeReference.Name);
         }
 
         private static string GetPayloadObjectTypeName(IOperationModel operation)
@@ -324,7 +279,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 case HttpVerb.GET:
                 case HttpVerb.DELETE:
                     return operation.Parameters
-                        .Select(x => RequiresPayloadObject(operation) && IsFromBody(x) ? $"bodyPayload.{x.Name}" : x.Name)
+                        .Select(x => RequiresPayloadObject(operation) ? $"bodyPayload.{x.Name}" : x.Name)
                         .Aggregate((x, y) => $"{x}, {y}");
                 default:
                     throw new NotSupportedException($"{verb} not supported");
@@ -381,6 +336,61 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             }
 
             return $"[{customAttributeValue}]";
+        }
+
+        private static bool IsFromBody(IOperationParameterModel parameter)
+        {
+            var csharpPrimitives = new[]
+            {
+                "guid",
+                "System.Guid",
+
+                "bool",
+                "Boolean",
+                "System.Boolean",
+                "byte",
+                "Byte",
+                "System.Byte",
+                "sbyte",
+                "SByte",
+                "System.SByte",
+                "char",
+                "Char",
+                "System.Char",
+                "decimal",
+                "Decimal",
+                "System.Decimal",
+                "double",
+                "Double",
+                "System.Double",
+                "float",
+                "Single",
+                "System.Single",
+                "int",
+                "Int32",
+                "System.Int32",
+                "uint",
+                "UInt32",
+                "System.UInt32",
+                "long",
+                "Int64",
+                "System.Int64",
+                "ulong",
+                "UInt64",
+                "System.UInt64",
+                "short",
+                "Int16",
+                "System.Int16",
+                "ushort",
+                "UInt16",
+                "System.UInt16",
+                "string",
+                "String",
+                "System.String"
+            };
+
+            // NB: Order of conditional checks is important here
+            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !csharpPrimitives.Contains(parameter.TypeReference.Name);
         }
 
         private enum HttpVerb
