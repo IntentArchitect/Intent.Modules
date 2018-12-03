@@ -31,6 +31,7 @@
         public const string CallKey = "Call";
         public const string MethodKey = "Method";
         public const string PriorityKey = "Priority";
+        public const string TemplateDependencyIdKey = "TemplateDependencyId";
     }
 
     public static class ServiceConfigurationRequiredEvent

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.Contracts.Mappings</id>
-  <version>1.6.0</version>
+  <version>1.6.1</version>
   <summary>Creates mapping configuration and extension methods using Automapper.</summary>
   <description>Creates mapping configuration and extension methods using Automapper.</description>
   <authors>Intent Architect</authors>

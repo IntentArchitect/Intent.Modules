@@ -76,7 +76,8 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
         private void InitializeMapper()
         {{
            AutoMapper.Mapper.Initialize(x => x.AddProfile(new {ClassName}()));
-        }}" }
+        }}" },
+                { InitializationRequiredEvent.TemplateDependencyIdKey, IDENTIFIER }
             });
         }
 

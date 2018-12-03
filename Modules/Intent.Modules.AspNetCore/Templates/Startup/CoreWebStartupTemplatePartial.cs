@@ -53,7 +53,8 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                 usings: @event.GetValue(ServiceConfigurationRequiredEvent.UsingsKey),
                 code: @event.GetValue(ServiceConfigurationRequiredEvent.CallKey),
                 method: @event.TryGetValue(ServiceConfigurationRequiredEvent.MethodKey),
-                priority: int.TryParse(@event.TryGetValue(ServiceConfigurationRequiredEvent.PriorityKey), out var priority) ? priority : 0));
+                priority: int.TryParse(@event.TryGetValue(ServiceConfigurationRequiredEvent.PriorityKey), out var priority) ? priority : 0,
+                templateDependency: null));
         }
 
         private void HandleInitialization(ApplicationEvent @event)
@@ -62,7 +63,8 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                 usings: @event.GetValue(InitializationRequiredEvent.UsingsKey),
                 code: @event.GetValue(InitializationRequiredEvent.CallKey),
                 method: @event.TryGetValue(InitializationRequiredEvent.MethodKey),
-                priority: int.TryParse(@event.TryGetValue(InitializationRequiredEvent.PriorityKey), out var priority) ? priority : 0));
+                priority: int.TryParse(@event.TryGetValue(InitializationRequiredEvent.PriorityKey), out var priority) ? priority : 0,
+                templateDependency: @event.TryGetValue(InitializationRequiredEvent.TemplateDependencyIdKey) != null ? TemplateDependancy.OnTemplate(@event.TryGetValue(InitializationRequiredEvent.TemplateDependencyIdKey)) : null));
         }
 
         public string ServiceConfigurations()
@@ -207,6 +209,9 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                 .Union(_registrations
                     .Where(x => x.ConcreteTypeTemplateDependency != null)
                     .Select(x => x.ConcreteTypeTemplateDependency))
+                .Union(_initializations
+                    .Where(x => x.TemplateDependancy != null)
+                    .Select(x => x.TemplateDependancy))
                 .Union(_dbContextRegistrations
                     .Where(x => x.ConcreteTypeTemplateDependency != null)
                     .Select(x => x.ConcreteTypeTemplateDependency))
@@ -264,13 +269,15 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
             public string Code { get; }
             public string Method { get; }
             public int Priority { get; }
+            public ITemplateDependancy TemplateDependancy { get; }
 
-            public Initializations(string usings, string code, string method, int priority)
+            public Initializations(string usings, string code, string method, int priority, ITemplateDependancy templateDependency)
             {
                 Usings = usings;
                 Code = code;
                 Method = method;
                 Priority = priority;
+                TemplateDependancy = templateDependency;
             }
         }
     }
