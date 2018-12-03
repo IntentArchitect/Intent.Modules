@@ -1,0 +1,44 @@
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IAttribute>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Intent.Metadata.Models;
+using Intent.RoslynWeaver.Attributes;
+using Intent.SoftwareFactory;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Registrations;
+using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.Templates.Registrations;
+<#=DependencyUsings#>
+[assembly: DefaultIntentManaged(Mode.Merge)]
+
+namespace <#= Namespace #>
+{
+	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
+    public class <#= ClassName #> : ModelTemplateRegistrationBase<<#= GetModelType() #>>
+    {
+        private readonly IMetaDataManager _metaDataManager;
+
+        public <#= ClassName #>(IMetaDataManager metaDataManager)
+        {
+            _metaDataManager = metaDataManager;
+        }
+
+        public override string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
+
+        public override ITemplate CreateTemplateInstance(IProject project, <#= GetModelType() #> model)
+        {
+			return new <#= GetTemplateNameForTemplateId() #>(project, model);
+        }
+
+	    [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public override IEnumerable<<#= GetModelType() #>> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
+        {
+            return _metaDataManager.GetClassModels(applicationManager, "Domain");
+        }
+    }
+}

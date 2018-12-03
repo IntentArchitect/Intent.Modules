@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.ModuleBuilder</id>
+  <version>1.0.0</version>
+  <summary>For the creation of Intent Architect Modules</summary>
+  <description>For the creation of Intent Architect Modules</description>
+  <authors>Intent Architect</authors>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
+  <tags>Intent Module Builder</tags>
+  <templates>
+    <template id="Intent.ModuleBuilder.IModeSpecFile">
+      <role>IModSpec</role>
+    </template>
+    <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template">
+      <role>Templates</role>
+    </template>
+    <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial">
+      <role>Templates</role>
+    </template>
+    <template id="Intent.ModuleBuilder.TemplateRegistration.PerModel">
+      <role>Templates</role>
+    </template>
+  </templates>
+  <decorators>
+  </decorators>
+  <dependencies>
+    <dependency id="Intent.Common" version="1.7.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.6.0"/>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+</package>

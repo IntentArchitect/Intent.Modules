@@ -430,13 +430,18 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 }
             }
 
-            var metadata = new Dictionary<string, string>
+            var metadata = new Dictionary<string, string>();
+            if (copyToOutputDirectory != null)
+                metadata.Add("CopyToOutputDirectory", copyToOutputDirectory);
+            if (dependsOn != null)
+                metadata.Add("DependentUpon", dependsOn);
+
+            // GCB - not the most extensible / flexible way of doing this...
+            if (Path.GetExtension(relativeFileName).Equals(".tt", StringComparison.InvariantCultureIgnoreCase))
             {
-                { "CopyToOutputDirectory", copyToOutputDirectory },
-                { "DependentUpon", dependsOn },
+                metadata.Add("Generator", "TextTemplatingFilePreprocessor");
+                metadata.Add("LastGenOutput", Path.GetFileNameWithoutExtension(relativeFileName) + ".cs");
             }
-            .Where(x => x.Value != null)
-            .ToArray();
 
             var codeItems = FindItemGroupForCodeFiles() ?? AddItemGroupForCodeFiles();
 
