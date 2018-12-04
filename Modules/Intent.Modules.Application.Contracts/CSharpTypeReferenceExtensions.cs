@@ -4,9 +4,11 @@ using Intent.MetaModel.DTO;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using System.Linq;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Application.Contracts
 {

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.RichDomain.Auditing</id>
-  <version>1.6.0</version>
+  <version>1.7.0</version>
   <summary>Basic auditing fields applied to each Rich Domain entity.</summary>
   <description>Basic auditing fields applied to each Rich Domain entity.</description>
   <authors>Intent Architect</authors>
@@ -15,7 +15,7 @@
   <interoperability>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="1.6.0"/>
+    <dependency id="Intent.Common" version="1.7.0"/>
     <dependency id="Intent.RichDomain" version="1.6.0"/>
     <dependency id="Intent.UserContext" version="1.6.0"/>
     <dependency id="Intent.EntityFramework" version="1.6.0"/>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Bower.Installer</id>
-  <version>1.6.0</version>
+  <version>1.7.0</version>
   <summary>Installs Bower dependencies specified in the bower.config file.</summary>
   <description>Installs Bower dependencies specified in the bower.config file.</description>
   <authors>Intent Architect</authors>
@@ -13,7 +13,7 @@
     <factoryExtension id="Intent.BowerPackageInstaller" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="1.6.0"/>
+    <dependency id="Intent.Common" version="1.7.0"/>
     <dependency id="Intent.Bower" version="1.6.0"/>
   </dependencies>
   <files>

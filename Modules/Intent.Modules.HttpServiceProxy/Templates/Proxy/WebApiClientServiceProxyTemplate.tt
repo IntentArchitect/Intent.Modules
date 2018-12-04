@@ -5,7 +5,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.MetaModel.Service" #>
 using System;
 using System.Configuration;

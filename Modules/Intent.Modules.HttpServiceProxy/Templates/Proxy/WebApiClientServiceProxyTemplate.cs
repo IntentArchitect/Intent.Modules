@@ -13,7 +13,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
     using System.Linq;
     using System.Collections;
     using System.Collections.Generic;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using Intent.MetaModel.Service;
     
     /// <summary>

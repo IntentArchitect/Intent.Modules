@@ -1,11 +1,11 @@
 using Intent.MetaModel.Service;
 using Intent.Modules.AspNet.WebApi;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
-using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;

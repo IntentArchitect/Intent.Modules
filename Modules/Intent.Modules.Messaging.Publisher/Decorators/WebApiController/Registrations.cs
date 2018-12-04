@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
+using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 

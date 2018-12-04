@@ -2,6 +2,7 @@ using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
 using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.AspNet.WebApi.Decorators
 {

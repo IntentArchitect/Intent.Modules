@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using Intent.MetaModel.Service;
     using System;
     using System.IO;
@@ -24,7 +24,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\ServiceContract\ServiceContractTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ServiceContractTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IServiceModel>
+    public partial class ServiceContractTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IServiceModel>
     {
 #line hidden
         /// <summary>

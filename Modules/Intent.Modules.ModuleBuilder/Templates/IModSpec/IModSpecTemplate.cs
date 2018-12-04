@@ -3,18 +3,20 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
-    public class IModSpecTemplate : IntentProjectItemTemplateBase<IEnumerable<IAttribute>>
+    public class IModSpecTemplate : IntentProjectItemTemplateBase<IEnumerable<IClass>>
     {
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
 
-        public IModSpecTemplate(string templateId, IProject project, IEnumerable<IAttribute> models)
+        public IModSpecTemplate(string templateId, IProject project, IEnumerable<IClass> models)
             : base(templateId, project, models)
         {
         }
@@ -84,7 +86,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
   <templates>
   </templates>
   <dependencies>
-    <dependency id=""Intent.Common"" version=""1.7.0""/>
+    <dependency id=""Intent.Common"" version=""1.7.0"" />
   </dependencies> 
   <files>
     <file src=""bin\$configuration$\$id$.dll"" />

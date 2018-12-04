@@ -10,7 +10,7 @@
 namespace Intent.Modules.AspNetCore.WebApi.Templates.WebApiServiceCallContext
 {
     using Intent.MetaModel.Domain;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;

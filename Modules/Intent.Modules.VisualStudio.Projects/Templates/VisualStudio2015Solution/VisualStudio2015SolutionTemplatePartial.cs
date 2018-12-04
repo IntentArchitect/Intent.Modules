@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
 {
@@ -129,8 +130,8 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
                             foreach (var projectName in missingProjects)
                             {
                                 var project = Projects.First(f => f.Name == projectName);
-                                var solutionFolder = SolutionFolders.First(f => f.FolderName == project.SolutionFolder());
-                                if (project.SolutionFolder() != null)
+                                var solutionFolder = SolutionFolders.FirstOrDefault(f => f.FolderName == project.SolutionFolder());
+                                if (solutionFolder != null)
                                 {
                                     parser.Insert($"\t\t{{{project.Id.ToString().ToUpper()}}} = {{{solutionFolder.Id.ToString().ToUpper()}}}\r\n");
                                 }

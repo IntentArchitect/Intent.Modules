@@ -10,7 +10,6 @@ namespace Intent.SoftwareFactory.Registrations
 {
     public abstract class OldProjectTemplateRegistration : IOldProjectTemplateRegistration
     {
-
         public Action<ITemplate> RegisterApplicationTeamplate { get; set; }
         public Action<string, Type, object> RegisterDecoratorNonGeneric { get; set; }
         public Action<string, Func<IProject, ITemplate>> RegisterTemplate { get; set; }

@@ -1,9 +1,10 @@
 ﻿using Intent.Modules.AspNet.Identity.Migrations.Templates.DbMigrationsConfiguration;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.AspNet.Identity.Migrations.Templates.ReadMe
 {

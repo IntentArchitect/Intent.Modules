@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.EntityFramework;
 using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.RichDomain.EntityFramework.Templates.DeleteVisitor
 {

@@ -1,6 +1,7 @@
 ﻿using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
 
-namespace Intent.SoftwareFactory.Templates
+namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IHasClassDetails
     {

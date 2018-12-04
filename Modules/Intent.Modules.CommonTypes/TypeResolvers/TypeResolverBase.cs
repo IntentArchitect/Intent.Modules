@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Intent.MetaModel.Common;
-using Intent.SoftwareFactory.Templates;
+using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.Types.TypeResolvers
 {

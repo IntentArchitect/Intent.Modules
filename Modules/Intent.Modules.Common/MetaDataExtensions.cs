@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Intent.MetaModel.Domain;
-using Intent.MetaModel.Service;
 using Intent.MetaModel.DTO;
 using Intent.MetaModel.Enums;
+using Intent.MetaModel.Service;
+using Intent.SoftwareFactory;
 
-namespace Intent.SoftwareFactory
+namespace Intent.Modules.Common
 {
     public static class IntentMetadataExtensions
     {
-        public static IEnumerable<IServiceModel> GetServiceModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier = "Services")
+        public static IEnumerable<IServiceModel> GetServiceModels(this SoftwareFactory.Engine.IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, string metadataIdentifier = "Services")
         {
             var result = metaDataManager.GetMetaData<IServiceModel>(new MetaDataIdentifier(metadataIdentifier ?? "Services")).Where(x => x.Application.Name == application.ApplicationName).ToList();
             if (result.Any())
@@ -24,7 +22,7 @@ namespace Intent.SoftwareFactory
             return metaDataManager.GetMetaData<IServiceModel>(new MetaDataIdentifier("Service")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
 
-        public static IEnumerable<IClass> GetDomainModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier = "Domain")
+        public static IEnumerable<IClass> GetDomainModels(this SoftwareFactory.Engine.IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, string metadataIdentifier = "Domain")
         {
             var result = metaDataManager.GetMetaData<IClass>(new MetaDataIdentifier(metadataIdentifier ?? "Domain")).Where(x => x.Application.Name == application.ApplicationName).ToList();
             if (result.Any())
@@ -36,7 +34,7 @@ namespace Intent.SoftwareFactory
             return metaDataManager.GetMetaData<IClass>(new MetaDataIdentifier("DomainEntity")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
 
-        public static IEnumerable<IDTOModel> GetDTOModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier = "Services")
+        public static IEnumerable<IDTOModel> GetDTOModels(this SoftwareFactory.Engine.IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, string metadataIdentifier = "Services")
         {
             var result = metaDataManager.GetMetaData<IDTOModel>(new MetaDataIdentifier(metadataIdentifier ?? "Services")).Where(x => x.Application.Name == application.ApplicationName).ToList();
             if (result.Any())
@@ -48,7 +46,7 @@ namespace Intent.SoftwareFactory
             return metaDataManager.GetMetaData<IDTOModel>(new MetaDataIdentifier("DTO")).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
 
-        public static IEnumerable<IEnumModel> GetEnumModels(this Engine.IMetaDataManager metaDataManager, Engine.IApplication application, string metadataIdentifier = null)
+        public static IEnumerable<IEnumModel> GetEnumModels(this SoftwareFactory.Engine.IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, string metadataIdentifier = null)
         {
             if (!string.IsNullOrWhiteSpace(metadataIdentifier))
             {

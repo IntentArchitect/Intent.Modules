@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.AspNetCore.Docker.Templates.DockerIgnore
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     
     /// <summary>

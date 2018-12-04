@@ -1,26 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Common;
 
-namespace Intent.SoftwareFactory.MetaData
+namespace Intent.Modules.Common
 {
-    public static class FolderExtensions
-    {
-        public static IList<IFolder> GetFolderPath(this IHasFolder model, bool includePackage = true)
-        {
-            List<IFolder> result = new List<IFolder>();
-
-            var current = model.Folder;
-            while (current != null && (includePackage || !current.IsPackage))
-            {
-                result.Insert(0, current);
-                current = current.ParentFolder;
-            }
-            return result;
-        }
-    }
-
     public static class StereotypeExtensions
     {
         [Obsolete("Use GetStereotypeProperty")]

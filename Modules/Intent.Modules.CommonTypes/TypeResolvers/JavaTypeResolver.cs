@@ -1,11 +1,12 @@
 ﻿using Intent.MetaModel.Common;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Intent.Modules.Common;
+using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.Types.TypeResolvers;
 
 namespace Intent.Modules.CommonTypes.TypeResolvers

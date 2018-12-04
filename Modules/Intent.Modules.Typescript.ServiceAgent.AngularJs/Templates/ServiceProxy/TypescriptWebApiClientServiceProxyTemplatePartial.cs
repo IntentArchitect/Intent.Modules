@@ -8,8 +8,9 @@ using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Common;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {

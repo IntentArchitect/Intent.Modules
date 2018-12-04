@@ -1,7 +1,7 @@
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
-using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.IO;
+using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.AspNet.Owin.FileServer.Decorators
 {

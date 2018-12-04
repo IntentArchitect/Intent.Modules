@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.Mapping.EntityToDto.Owin.Decorators
 {

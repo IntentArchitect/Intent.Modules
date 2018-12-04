@@ -2,8 +2,9 @@
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
+using Intent.Modules.Common;
+using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.Logging.NLog.Interop.Unity.Decorators
 {

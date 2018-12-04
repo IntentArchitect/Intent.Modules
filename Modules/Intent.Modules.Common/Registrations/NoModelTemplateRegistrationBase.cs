@@ -1,13 +1,9 @@
-﻿
-using Intent.SoftwareFactory.Engine;
+﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.Templates.Registrations;
 
-namespace Intent.SoftwareFactory.Templates.Registrations
+namespace Intent.Modules.Common.Registrations
 {
     public abstract class NoModelTemplateRegistrationBase : IProjectTemplateRegistration
     {

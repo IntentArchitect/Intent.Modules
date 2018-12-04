@@ -4,6 +4,7 @@ using System;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.Logging.NLog.Decorators
 {

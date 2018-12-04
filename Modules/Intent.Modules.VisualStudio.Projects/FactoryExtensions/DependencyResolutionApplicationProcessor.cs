@@ -3,11 +3,13 @@ using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 
 namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions

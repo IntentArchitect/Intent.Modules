@@ -4,6 +4,8 @@ using Intent.SoftwareFactory.Templates.Registrations;
 using System.ComponentModel;
 using System.Linq;
 using Intent.MetaModel.Hosting;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Registrations;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
 {

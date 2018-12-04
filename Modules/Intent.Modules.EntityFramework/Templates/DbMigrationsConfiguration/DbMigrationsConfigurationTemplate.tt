@@ -1,6 +1,6 @@
 ﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase" #>
 <#@ output extension=".cs" #>
-<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
 using System;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Migrations.Model;

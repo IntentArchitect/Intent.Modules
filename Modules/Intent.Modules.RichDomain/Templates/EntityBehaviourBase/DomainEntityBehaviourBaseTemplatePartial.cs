@@ -3,6 +3,7 @@ using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.RichDomain.Templates.EntityBehaviourBase
 {

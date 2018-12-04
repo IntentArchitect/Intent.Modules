@@ -10,8 +10,8 @@
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 {
     using Intent.MetaModel.Domain;
-    using Intent.SoftwareFactory.MetaData;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;

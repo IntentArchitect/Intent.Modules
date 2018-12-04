@@ -7,6 +7,7 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using IApplication = Intent.SoftwareFactory.Engine.IApplication;
+using IClassTypeSource = Intent.Modules.Common.TypeResolution.IClassTypeSource;
 
 namespace Intent.Modules.Common.Templates
 {

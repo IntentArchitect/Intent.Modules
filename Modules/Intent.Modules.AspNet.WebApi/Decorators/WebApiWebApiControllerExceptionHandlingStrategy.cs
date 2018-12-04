@@ -1,6 +1,5 @@
 ﻿using Intent.MetaModel.Service;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
-using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 
 namespace Intent.Modules.AspNet.WebApi.Decorators

@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.Bower.Installer
 {

@@ -1,4 +1,4 @@
-﻿using Intent.SoftwareFactory.VisualStudio;
+﻿using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.Mapping.EntityToDto
 {

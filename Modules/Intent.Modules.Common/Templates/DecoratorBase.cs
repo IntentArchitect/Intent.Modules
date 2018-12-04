@@ -1,11 +1,8 @@
-﻿using Intent.SoftwareFactory.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Intent.SoftwareFactory.Configuration;
+using Intent.SoftwareFactory.Templates;
 
-namespace Intent.SoftwareFactory.Templates
+namespace Intent.Modules.Common.Templates
 {
     public class DecoratorBase : ITemplateDecorator, ISupportsConfiguration
     {

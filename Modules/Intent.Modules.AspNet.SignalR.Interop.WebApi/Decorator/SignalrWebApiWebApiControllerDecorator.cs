@@ -2,6 +2,7 @@
 using Intent.MetaModel.Service;
 using Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
+using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.AspNet.SignalR.Interop.WebApi.Decorator

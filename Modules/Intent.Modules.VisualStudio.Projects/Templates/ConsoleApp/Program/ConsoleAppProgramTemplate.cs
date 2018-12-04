@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;

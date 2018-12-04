@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     
     /// <summary>

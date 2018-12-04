@@ -2,8 +2,8 @@
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntity;
 using System.Collections.Generic;
+using Intent.Modules.Common;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Entities.Decorators
 {

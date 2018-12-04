@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
+using Intent.Modules.Common.TypeResolution;
 
-namespace Intent.SoftwareFactory.Templates
+namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentTemplateBase : IRequireTypeResolver
     {

@@ -2,6 +2,7 @@
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.RichDomain.Templates.EntityState
 {

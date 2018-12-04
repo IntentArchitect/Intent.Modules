@@ -5,6 +5,8 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
 {

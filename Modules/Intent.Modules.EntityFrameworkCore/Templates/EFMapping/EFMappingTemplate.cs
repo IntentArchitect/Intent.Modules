@@ -10,8 +10,8 @@
 namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 {
     using Intent.MetaModel.Domain;
-    using Intent.SoftwareFactory.Templates;
-    using Intent.SoftwareFactory.MetaData;
+    using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common;
     using System;
     using System.IO;
     using System.Diagnostics;

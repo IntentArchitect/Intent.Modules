@@ -3,9 +3,9 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
 {

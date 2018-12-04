@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Configuration;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Entities.DDD.Decorators

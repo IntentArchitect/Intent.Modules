@@ -6,13 +6,14 @@ using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {

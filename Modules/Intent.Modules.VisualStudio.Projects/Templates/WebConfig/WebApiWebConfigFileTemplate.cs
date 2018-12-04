@@ -11,6 +11,8 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 {

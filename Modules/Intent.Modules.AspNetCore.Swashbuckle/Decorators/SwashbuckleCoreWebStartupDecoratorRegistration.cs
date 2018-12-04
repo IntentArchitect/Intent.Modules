@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Intent.Modules.Common.Registrations;
 using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;

@@ -1,27 +1,27 @@
 ﻿using Intent.MetaModel.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.SoftwareFactory.Engine;
 
-namespace Intent.SoftwareFactory.Templates
+namespace Intent.Modules.Common.TypeResolution
 {
+    public interface IClassTypeSource
+    {
+        string GetClassType(ITypeReference typeInfo);
+    }
+
     public interface ITypeResolver
     {
         /// <summary>
         /// Adds a default <see cref="IClassTypeSource"/> that is used when resolving type names of classes.
         /// </summary>
         /// <param name="classTypeSource"></param>
-        void AddClassTypeSource(SoftwareFactory.Templates.IClassTypeSource classTypeSource);
+        void AddClassTypeSource(IClassTypeSource classTypeSource);
 
         /// <summary>
         /// Adds an <see cref="IClassTypeSource"/> that is only used to resolve type names when <see cref="Get(Intent.MetaModel.Common.ITypeReference,string)"/> is called for the specific <see cref="contextName"/>.
         /// </summary>
         /// <param name="classTypeSource"></param>
         /// <param name="contextName"></param>
-        void AddClassTypeSource(SoftwareFactory.Templates.IClassTypeSource classTypeSource, string contextName);
+        void AddClassTypeSource(IClassTypeSource classTypeSource, string contextName);
+
         /// <summary>
         /// Resolves the type name for the specified <see cref="typeInfo"/>
         /// </summary>

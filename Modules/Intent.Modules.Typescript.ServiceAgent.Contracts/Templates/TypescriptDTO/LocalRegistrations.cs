@@ -7,6 +7,8 @@ using Intent.SoftwareFactory.Templates.Registrations;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Registrations;
 using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO

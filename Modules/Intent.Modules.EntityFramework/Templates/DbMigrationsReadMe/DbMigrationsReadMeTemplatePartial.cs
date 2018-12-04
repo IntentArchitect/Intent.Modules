@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsReadMe

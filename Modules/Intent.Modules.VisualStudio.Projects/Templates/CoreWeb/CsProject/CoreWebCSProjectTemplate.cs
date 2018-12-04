@@ -10,8 +10,8 @@
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 {
     using Intent.SoftwareFactory.MetaModels.Class;
-    using Intent.SoftwareFactory.Templates;
-    using Intent.SoftwareFactory.VisualStudio;
+    using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.VisualStudio;
     using System;
     using System.IO;
     using System.Diagnostics;

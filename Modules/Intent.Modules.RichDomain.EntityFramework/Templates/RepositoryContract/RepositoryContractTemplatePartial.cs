@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;

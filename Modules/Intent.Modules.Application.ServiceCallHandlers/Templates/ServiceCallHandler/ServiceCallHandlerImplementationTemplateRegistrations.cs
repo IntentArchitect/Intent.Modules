@@ -6,6 +6,7 @@ using Intent.SoftwareFactory.Templates.Registrations;
 using System;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modules.Common;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler

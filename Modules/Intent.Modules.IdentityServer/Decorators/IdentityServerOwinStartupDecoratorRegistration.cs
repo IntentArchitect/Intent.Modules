@@ -4,6 +4,7 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 using System;
 using System.Linq;
+using Intent.Modules.Common.Registrations;
 
 namespace Intent.Modules.IdentityServer.Decorators
 {

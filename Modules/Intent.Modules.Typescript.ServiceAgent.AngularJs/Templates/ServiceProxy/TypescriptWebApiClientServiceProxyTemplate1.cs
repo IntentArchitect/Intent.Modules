@@ -10,7 +10,7 @@
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
     using Intent.MetaModel.Service;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;

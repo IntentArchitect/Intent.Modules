@@ -1,17 +1,20 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial
 {
-    partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IAttribute>
+    partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IClass>
     {
         public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial";
 
-        public RoslynProjectItemTemplatePartialTemplate(string templateId, IProject project, IAttribute model) : base(templateId, project, model)
+        public RoslynProjectItemTemplatePartialTemplate(string templateId, IProject project, IClass model) : base(templateId, project, model)
         {
         }
 
@@ -44,14 +47,20 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 .ToArray();
         }
 
-        private string GetTargetModel()
-        {
-            return "IClass";
-        }
-
         private string GetTemplateId()
         {
             return $"{Project.Name}.{Model.Name}";
+        }
+
+        private string GetModelType()
+        {
+            var type = Model.GetTargetModel();
+            if (Model.GetRegistrationType() == RegistrationType.SingleFileListModel)
+            {
+                type = $"IList<{type}>";
+            }
+
+            return type;
         }
     }
 }

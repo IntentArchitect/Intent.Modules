@@ -128,7 +128,7 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="1.6.0"/>
+    <dependency id="Intent.Common" version="1.7.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

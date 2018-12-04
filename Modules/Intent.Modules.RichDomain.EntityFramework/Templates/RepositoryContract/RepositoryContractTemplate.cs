@@ -11,7 +11,7 @@ namespace Intent.Modules.RichDomain.EntityFramework.Templates.RepositoryContract
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
     using Intent.Modules.RichDomain;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;

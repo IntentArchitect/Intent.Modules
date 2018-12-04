@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Intent.MetaModel.Hosting;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;

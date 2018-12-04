@@ -1,7 +1,7 @@
 ﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<object>"#>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
-<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
 namespace App {
     interface IEdge {
         func(options: IEdgeFuncOptions): IEdgeProxy;

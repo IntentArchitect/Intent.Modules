@@ -10,7 +10,7 @@
 namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using Intent.SoftwareFactory.MetaModels.Service;
     using System;
     using System.IO;

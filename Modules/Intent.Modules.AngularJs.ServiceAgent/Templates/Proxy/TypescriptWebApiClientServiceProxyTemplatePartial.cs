@@ -6,6 +6,8 @@ using Intent.SoftwareFactory.MetaModels.Common;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.AngularJs.ServiceAgent.Templates.Proxy
 {

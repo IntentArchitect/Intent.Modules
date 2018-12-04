@@ -1,17 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
-namespace Intent.Modules.ModuleBuilder.Templates.Registration.PerModel
+namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
-    partial class PerModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IAttribute>
+    partial class SingleFileNoModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IClass>
     {
-        public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.PerModel";
+        public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel";
 
-        public PerModelTemplateRegistrationTemplate(IProject project, IAttribute model) : base(PerModelTemplateRegistrationTemplate.TemplateId, project, model)
+        public SingleFileNoModelTemplateRegistrationTemplate(IProject project, IClass model) : base(TemplateId, project, model)
         {
         }
 
@@ -42,12 +43,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.PerModel
             .Union(base.GetNugetDependencies())
             .ToArray();
         }
-
-        private string GetModelType()
-        {
-            return "IClass";
-        }
-
+        
         private string GetTemplateNameForTemplateId()
         {
             return Model.Name.Replace("Registrations", "Template");

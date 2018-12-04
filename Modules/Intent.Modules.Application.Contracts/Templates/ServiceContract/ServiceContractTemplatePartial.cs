@@ -2,15 +2,14 @@
 using Intent.MetaModel.Service;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {

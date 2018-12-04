@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using Intent.Modules.Application.Contracts;
     using Intent.MetaModel.Service;
     using System;
@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ServiceCallHandlerImplementationTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IOperationModel>
+    public partial class ServiceCallHandlerImplementationTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IOperationModel>
     {
 #line hidden
         /// <summary>

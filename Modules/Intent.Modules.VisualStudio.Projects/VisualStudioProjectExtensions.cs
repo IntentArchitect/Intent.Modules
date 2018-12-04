@@ -1,6 +1,6 @@
 ﻿using System.Linq;
+using Intent.Modules.Common;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.VisualStudio.Projects
 {

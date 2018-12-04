@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
 {

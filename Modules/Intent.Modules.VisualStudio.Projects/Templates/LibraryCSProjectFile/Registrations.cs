@@ -13,7 +13,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
     {
         public string TemplateId => LibraryCSProjectFileTemplate.IDENTIFIER;
 
-
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
             var targetProjectIds = new List<string>

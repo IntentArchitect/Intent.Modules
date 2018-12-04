@@ -3,16 +3,17 @@ using Intent.MetaModel.DTO;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
-    partial class MappingTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation, IHasDecorators<IMappingTemplateDecorator>
+    partial class MappingTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation, IHasDecorators<IMappingTemplateDecorator>
     {
         public const string Identifier = "Intent.Application.Contracts.Mapping";
 

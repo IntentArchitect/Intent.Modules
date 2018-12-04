@@ -3,6 +3,7 @@ using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.UserContext.Interop.AspNet.WebApi.Decorators
 {

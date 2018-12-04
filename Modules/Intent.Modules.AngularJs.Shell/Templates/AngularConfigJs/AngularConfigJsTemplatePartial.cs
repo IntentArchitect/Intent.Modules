@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.AngularJs.Shell.Templates.AngularConfigJs
 {

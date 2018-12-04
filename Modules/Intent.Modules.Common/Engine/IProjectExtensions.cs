@@ -1,11 +1,10 @@
-﻿using Intent.SoftwareFactory.Templates;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Intent.Modules.Common.Templates;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
 
-namespace Intent.SoftwareFactory.Engine
+namespace Intent.Modules.Common
 {
     public static class IProjectExtensions
     {

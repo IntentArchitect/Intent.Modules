@@ -9,14 +9,14 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.OpenSource\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularEdgeService\AngularEdgeServiceProviderTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularEdgeService\AngularEdgeServiceProviderTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class AngularEdgeServiceProviderTemplate : IntentProjectItemTemplateBase<object>
     {

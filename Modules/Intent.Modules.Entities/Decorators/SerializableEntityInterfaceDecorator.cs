@@ -2,7 +2,7 @@
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using System.Collections.Generic;
-using Intent.SoftwareFactory.MetaData;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.Entities.Decorators
 {

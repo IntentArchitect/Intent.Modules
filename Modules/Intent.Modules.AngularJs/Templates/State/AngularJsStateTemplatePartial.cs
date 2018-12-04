@@ -1,6 +1,7 @@
 ﻿using Intent.Modules.AngularJs.Templates.ViewModel;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.AngularJs.Templates.State

@@ -1,4 +1,5 @@
-﻿using Intent.SoftwareFactory.Engine;
+﻿using Intent.Modules.Common.Templates;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Templates;
 

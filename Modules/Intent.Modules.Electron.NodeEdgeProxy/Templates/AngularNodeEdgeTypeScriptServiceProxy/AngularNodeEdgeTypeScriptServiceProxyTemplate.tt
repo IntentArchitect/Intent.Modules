@@ -2,7 +2,7 @@
 <#@ output extension=".ts" #>
 <#@ Assembly Name="System.Core" #>
 <#@ import namespace="Intent.MetaModel.Service" #>
-<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="System" #>
 namespace <#= Namespace #> {
     export class <#=Model.Name#>Proxy {

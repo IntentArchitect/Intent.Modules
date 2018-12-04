@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Linq;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Registrations;
 using Intent.Modules.EntityFramework.Repositories.Templates.Repository;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;

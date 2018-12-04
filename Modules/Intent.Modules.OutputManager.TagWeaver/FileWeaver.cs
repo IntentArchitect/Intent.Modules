@@ -4,6 +4,7 @@ using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.OutputManager.TagWeaver
 {

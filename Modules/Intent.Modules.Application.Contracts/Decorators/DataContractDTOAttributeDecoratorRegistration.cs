@@ -1,6 +1,7 @@
 ﻿using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.SoftwareFactory.Registrations;
 using System.ComponentModel;
+using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modules.Application.Contracts.Decorators

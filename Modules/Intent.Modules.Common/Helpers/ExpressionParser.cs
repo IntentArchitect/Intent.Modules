@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Intent.SoftwareFactory.Helpers
+namespace Intent.Modules.Common
 {
     public static class ExpressionParser
     {

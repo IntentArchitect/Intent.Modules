@@ -10,7 +10,7 @@
 namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
     using Intent.MetaModel.Domain;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -24,7 +24,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityState\DomainEntityStateTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class DomainEntityStateTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IClass>
+    public partial class DomainEntityStateTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IClass>
     {
 #line hidden
         /// <summary>

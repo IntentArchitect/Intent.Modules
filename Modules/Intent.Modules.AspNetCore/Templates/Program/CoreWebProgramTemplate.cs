@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.AspNetCore.Templates.Program
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -42,16 +42,16 @@ namespace Intent.Modules.AspNetCore.Templates.Program
             
             #line default
             #line hidden
-            this.Write("using Microsoft.AspNetCore;\nusing Microsoft.AspNetCore.Hosting;\r\n");
+            this.Write("using Microsoft.AspNetCore;\r\nusing Microsoft.AspNetCore.Hosting;\r\n");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Program\CoreWebProgramTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Program\CoreWebProgramTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Program\CoreWebProgramTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Program\CoreWebProgramTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

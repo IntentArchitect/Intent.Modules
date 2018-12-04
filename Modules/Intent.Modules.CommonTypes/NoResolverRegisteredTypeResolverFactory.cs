@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Intent.MetaModel.Common;
-using Intent.SoftwareFactory.Templates;
+using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.CommonTypes
 {
@@ -65,7 +65,9 @@ namespace Intent.Modules.CommonTypes
 
             public string Get(ITypeReference typeInfo, string contextName)
             {
-                throw new NotImplementedException();
+                if (typeInfo == null)
+                    return string.Empty;
+                return typeInfo.Name;
             }
         }
     }

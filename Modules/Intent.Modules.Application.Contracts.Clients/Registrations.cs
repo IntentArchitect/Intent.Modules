@@ -2,7 +2,6 @@
 using Intent.MetaModel.Dto.Old;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Registrations;
 using Intent.SoftwareFactory.Templates;
@@ -12,6 +11,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Intent.MetaModel.DTO;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Registrations;
+using Intent.Modules.Common.TypeResolution;
 using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 
 namespace Intent.Modules.Application.Contracts.Clients

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Modules.Common.MetaData
+namespace Intent.Modules.Common
 {
     public static class UmlModelExtensions
     {

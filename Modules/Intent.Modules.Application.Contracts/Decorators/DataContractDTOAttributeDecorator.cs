@@ -4,8 +4,8 @@ using Intent.MetaModel.DTO;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.SoftwareFactory.Templates;
 using Intent.MetaModel.Common;
-using Intent.SoftwareFactory.MetaData;
 using System.Text;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.Application.Contracts.Decorators
 {

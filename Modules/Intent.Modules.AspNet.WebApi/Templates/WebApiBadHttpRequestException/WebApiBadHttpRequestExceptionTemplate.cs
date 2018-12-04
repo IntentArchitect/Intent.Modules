@@ -11,7 +11,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiBadHttpRequestException
 {
     using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.SoftwareFactory.MetaModels.Service;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;

@@ -10,7 +10,7 @@
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
     using Intent.MetaModel.DTO;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -24,7 +24,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class MappingProfileTemplate : Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>
+    public partial class MappingProfileTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>
     {
 #line hidden
         /// <summary>

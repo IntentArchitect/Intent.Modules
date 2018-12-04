@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.VisualStudio;
+using Intent.SoftwareFactory.Templates;
 
 [assembly:InternalsVisibleTo("Intent.Modules.Common.Tests")]
 
-namespace Intent.SoftwareFactory.Templates
+namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentRoslynProjectItemTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IHasNugetDependencies, IHasClassDetails, IRoslynMerge
     {

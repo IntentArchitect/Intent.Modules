@@ -2,10 +2,12 @@
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager;
 
 namespace Intent.Modules.Unity.Templates.UnityConfig

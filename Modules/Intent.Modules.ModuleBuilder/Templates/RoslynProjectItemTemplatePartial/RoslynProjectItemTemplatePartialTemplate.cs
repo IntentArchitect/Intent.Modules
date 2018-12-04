@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using Intent.Metadata.Models;
     using System;
     
@@ -19,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IAttribute>
+    public partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IClass>
     {
 #line hidden
         /// <summary>
@@ -27,15 +27,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
         /// </summary>
         public override string TransformText()
         {
-            this.Write(@"using Intent.Metadata.Models;
-using Intent.RoslynWeaver.Attributes;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
-using Intent.SoftwareFactory.Templates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-");
+            this.Write("using Intent.Metadata.Models;\r\nusing Intent.RoslynWeaver.Attributes;\r\nusing Inten" +
+                    "t.SoftwareFactory.Engine;\r\nusing Intent.Modules.Common;\r\nusing Intent.SoftwareFa" +
+                    "ctory.Templates;\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System" +
+                    ".Linq;\r\n");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
@@ -60,7 +55,7 @@ using System.Linq;
             this.Write(" : IntentRoslynProjectItemTemplateBase<");
             
             #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetTargetModel()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
@@ -81,7 +76,7 @@ using System.Linq;
             this.Write("(IProject project, ");
             
             #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetTargetModel()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
@@ -99,15 +94,30 @@ using System.Linq;
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: ""${Model.Name}"",
-                fileExtension: ""cs"",
-                defaultLocationInProject: ""${Model.Name}"",
-                className: ""${Model.Name}"",
-                @namespace: ""${Project.ProjectName}""
-            );
-        }
-    }
-}");
+                fileName: """);
+            
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetRegistrationType() == RegistrationType.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n                fileExtension: \"cs\",\r\n                defaultLocationInProjec" +
+                    "t: \"");
+            
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.Replace("Template", "")));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n                className: \"");
+            
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetRegistrationType() == RegistrationType.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n                @namespace: \"${Project.ProjectName}\"\r\n            );\r\n       " +
+                    " }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

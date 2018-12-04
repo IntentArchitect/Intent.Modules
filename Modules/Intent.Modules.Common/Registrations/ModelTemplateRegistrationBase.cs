@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Configuration;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Helpers;
 using Intent.SoftwareFactory.Registrations;
+using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.Templates.Registrations;
 
-namespace Intent.SoftwareFactory.Templates.Registrations
+namespace Intent.Modules.Common.Registrations
 {
     public abstract class ModelTemplateRegistrationBase<TModel> : IProjectTemplateRegistration, ISupportsConfiguration
     {

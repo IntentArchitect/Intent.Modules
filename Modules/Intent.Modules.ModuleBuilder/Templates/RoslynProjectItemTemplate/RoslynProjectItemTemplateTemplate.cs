@@ -2,17 +2,18 @@ using System.IO;
 using System.Text;
 using Intent.Metadata.Models;
 using Intent.MetaModel.DTO;
-using Intent.Modules.Common.MetaData;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 {
-    public class RoslynProjectItemTemplateTemplate : IntentProjectItemTemplateBase<IAttribute>
+    public class RoslynProjectItemTemplateTemplate : IntentProjectItemTemplateBase<IClass>
     {
         public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template";
 
-        public RoslynProjectItemTemplateTemplate(string templateId, IProject project, IAttribute model) : base(templateId, project, model)
+        public RoslynProjectItemTemplateTemplate(string templateId, IProject project, IClass model) : base(templateId, project, model)
         {
         }
 
@@ -28,8 +29,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 
         public override string TransformText()
         {
-            return $@"<#@ template language=""C#"" inherits=""IntentRoslynProjectItemTemplateBase<IClass>"" #>
+            return $@"<#@ template language=""C#"" inherits=""IntentRoslynProjectItemTemplateBase<{GetModelType()}>"" #>
 <#@ assembly name=""System.Core"" #>
+<#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""Intent.SoftwareFactory.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 
@@ -44,6 +46,18 @@ namespace <#= Namespace #>
     }}
 }}";
         }
+
+        private string GetModelType()
+        {
+            var type = Model.GetTargetModel();
+            if (Model.GetRegistrationType() == RegistrationType.SingleFileListModel)
+            {
+                type = $"IList<{type}>";
+            }
+
+            return type;
+        }
+
     }
     
 }

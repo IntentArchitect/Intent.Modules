@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Common;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
+
 #pragma warning disable 618 // Old code based DSL
 
 namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.MessageHandler

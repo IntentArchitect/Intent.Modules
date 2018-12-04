@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;

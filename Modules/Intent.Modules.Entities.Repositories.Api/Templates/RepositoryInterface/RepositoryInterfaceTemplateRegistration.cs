@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Registrations;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
 

@@ -10,7 +10,7 @@
 namespace Intent.Modules.Entities.Keys.Templates.IdentityGenerator
 {
     using Intent.MetaModel.Domain;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;

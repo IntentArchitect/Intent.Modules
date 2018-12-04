@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.MessageHandler;
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Decorators.UnityRegistrations
 {

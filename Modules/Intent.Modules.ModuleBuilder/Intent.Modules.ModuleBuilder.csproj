@@ -55,17 +55,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelExtensions.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\IModSpec\IModSpecRegistrations.cs" />
     <Compile Include="Templates\IModSpec\IModSpecTemplate.cs" />
-    <Compile Include="Templates\Registration\PerModel\PerModelTemplateRegistrationRegistrations.cs" />
-    <Compile Include="Templates\Registration\PerModel\PerModelTemplateRegistrationTemplate.cs">
+    <Compile Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationRegistrations.cs" />
+    <Compile Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.cs">
+      <DependentUpon>SingleFileNoModelTemplateRegistrationTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PerModelTemplateRegistrationTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\Registration\PerModel\PerModelTemplateRegistrationTemplatePartial.cs" />
+    <Compile Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplatePartial.cs" />
+    <Compile Include="Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationRegistrations.cs" />
+    <Compile Include="Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.cs">
+      <DependentUpon>SingleFileListModelTemplateRegistrationTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplatePartial.cs" />
+    <Compile Include="Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationRegistrations.cs" />
+    <Compile Include="Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FilePerModelTemplateRegistrationTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplatePartial.cs" />
     <Compile Include="Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialRegistrations.cs" />
     <Compile Include="Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -84,9 +99,17 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Templates\Registration\PerModel\PerModelTemplateRegistrationTemplate.tt">
+    <Content Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>PerModelTemplateRegistrationTemplate.cs</LastGenOutput>
+      <LastGenOutput>SingleFileNoModelTemplateRegistrationTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SingleFileListModelTemplateRegistrationTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FilePerModelTemplateRegistrationTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Templates;
 using IdentityGeneratorTemplate = Intent.Modules.Entities.Keys.Templates.IdentityGenerator.IdentityGeneratorTemplate;

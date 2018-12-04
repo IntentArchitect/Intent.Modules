@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.Unity;
 using Intent.Modules.Unity.Templates.UnityConfig;
-using Intent.SoftwareFactory.VisualStudio;
 using System.Collections.Generic;
+using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.RichDomain.Interop.Unity.Decorators
 {

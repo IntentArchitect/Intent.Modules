@@ -7,6 +7,8 @@ using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Typescript.ServiceAgent.Contracts;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScriptServiceProxy

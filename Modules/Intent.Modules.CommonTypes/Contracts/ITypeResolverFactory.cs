@@ -1,6 +1,7 @@
 ﻿using Intent.MetaModel.Common;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.CommonTypes.Contracts
 {

@@ -5,11 +5,12 @@ using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {

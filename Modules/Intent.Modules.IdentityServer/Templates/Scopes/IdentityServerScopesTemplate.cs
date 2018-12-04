@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.IdentityServer.Templates.Scopes
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -21,7 +21,7 @@ namespace Intent.Modules.IdentityServer.Templates.Scopes
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class IdentityServerScopesTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -35,7 +35,7 @@ namespace Intent.Modules.IdentityServer.Templates.Scopes
                     "stem.Web;\r\nusing IdentityServer3.Core;\r\nusing IdentityServer3.Core.Models;\r\n\r\n[a" +
                     "ssembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 22 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\Scopes\IdentityServerScopesTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

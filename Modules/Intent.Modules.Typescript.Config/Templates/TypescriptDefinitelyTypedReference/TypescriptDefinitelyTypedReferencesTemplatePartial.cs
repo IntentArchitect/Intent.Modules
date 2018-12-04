@@ -1,4 +1,5 @@
-﻿using Intent.SoftwareFactory.Engine;
+﻿using Intent.Modules.Common.Templates;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Typescript.Config.Templates.TypescriptDefinitelyTypedReference

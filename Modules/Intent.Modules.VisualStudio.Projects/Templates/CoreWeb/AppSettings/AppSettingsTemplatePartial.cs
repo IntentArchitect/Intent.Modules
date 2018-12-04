@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Modules.VisualStudio.Projects.Templates.WebConfig;
 using Intent.SoftwareFactory.Engine;

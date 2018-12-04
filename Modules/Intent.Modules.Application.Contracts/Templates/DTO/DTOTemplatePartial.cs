@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {

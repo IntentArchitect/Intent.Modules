@@ -9,14 +9,14 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class DbMigrationsReadMeTemplate : IntentProjectItemTemplateBase<object>
     {
@@ -30,14 +30,14 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
                     "--------------------------------------------------------------------------------" +
                     "---------------\r\nAdd-Migration -Name {ChangeName} -StartupProject \"");
             
-            #line 6 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 6 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
             
             #line default
             #line hidden
             this.Write("\" -Project ");
             
-            #line 6 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 6 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MigrationProject));
             
             #line default
@@ -49,14 +49,14 @@ Override an existing migration:
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 Add-Migration -Name {ExistingNameWithoutDateComponent} -StartupProject """);
             
-            #line 11 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
             
             #line default
             #line hidden
             this.Write("\" -Project ");
             
-            #line 11 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MigrationProject));
             
             #line default
@@ -65,14 +65,14 @@ Add-Migration -Name {ExistingNameWithoutDateComponent} -StartupProject """);
                     "--------------------------------------------------------------------------------" +
                     "-----------------------\r\nUpdate-Database -StartupProject \"");
             
-            #line 16 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
             
             #line default
             #line hidden
             this.Write("\" -Project ");
             
-            #line 16 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MigrationProject));
             
             #line default
@@ -81,14 +81,14 @@ Add-Migration -Name {ExistingNameWithoutDateComponent} -StartupProject """);
                     "--------------------------------------------------------------------------------" +
                     "-----------------------------------\r\nUpdate-Database -StartupProject \"");
             
-            #line 21 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
             
             #line default
             #line hidden
             this.Write("\" -Project ");
             
-            #line 21 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MigrationProject));
             
             #line default
@@ -100,14 +100,14 @@ Generate script which detects current database version and updates it to the lat
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 Script-Migration -StartupProject """);
             
-            #line 26 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
             
             #line default
             #line hidden
             this.Write("\" -Project ");
             
-            #line 26 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MigrationProject));
             
             #line default
@@ -119,14 +119,14 @@ Generate a script two upgrade from and to a specific version:
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 Script-Migration -StartupProject """);
             
-            #line 31 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
             
             #line default
             #line hidden
             this.Write("\" -Project ");
             
-            #line 31 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MigrationProject));
             
             #line default
@@ -138,7 +138,7 @@ Drop all tables in schema:
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 DECLARE @SCHEMA AS varchar(max) = '");
             
-            #line 36 "D:\Projects\IntentModules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BoundedContextName));
             
             #line default

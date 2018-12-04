@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.RichDomain.EntityFramework.Templates.RepositoryContract;
 using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.Modules.RichDomain.Templates.EntityStateInterface;

@@ -17,7 +17,13 @@
     <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial">
       <role>Templates</role>
     </template>
-    <template id="Intent.ModuleBuilder.TemplateRegistration.PerModel">
+    <template id="Intent.ModuleBuilder.TemplateRegistration.FilePerModel">
+      <role>Templates</role>
+    </template>
+    <template id="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel">
+      <role>Templates</role>
+    </template>
+    <template id="Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel">
       <role>Templates</role>
     </template>
   </templates>

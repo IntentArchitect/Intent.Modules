@@ -2,6 +2,7 @@
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 using System;
+using Intent.Modules.Common.Registrations;
 
 namespace Intent.Modules.AspNet.WebApi.Interop.Unity.Decorators
 {

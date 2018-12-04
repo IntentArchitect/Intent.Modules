@@ -8,6 +8,8 @@ using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.OutputManager.TagWeaver
 {

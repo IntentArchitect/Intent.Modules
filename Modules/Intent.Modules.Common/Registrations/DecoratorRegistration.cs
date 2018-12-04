@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Registrations;
 
-namespace Intent.SoftwareFactory.Registrations
+namespace Intent.Modules.Common.Registrations
 {
     public abstract class DecoratorRegistration<TDecoratorContract> : IDecoratorRegistration
     {
@@ -14,7 +11,7 @@ namespace Intent.SoftwareFactory.Registrations
 
         public void DoRegistration(Action<string, Type, object> register, IApplication application)
         {
-            var config = application.Config.GetConfig(this.DecoratorId, Configuration.PluginConfigType.Decorator);
+            var config = application.Config.GetConfig(this.DecoratorId, SoftwareFactory.Configuration.PluginConfigType.Decorator);
             if (!config.Enabled)
             {
                 Logging.Log.Info($"Skipping disabled Decorator : { DecoratorId }.");

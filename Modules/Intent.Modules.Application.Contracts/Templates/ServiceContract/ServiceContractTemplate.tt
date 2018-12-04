@@ -1,9 +1,9 @@
-﻿<#@ template  debug="true"  inherits="Intent.SoftwareFactory.Templates.IntentRoslynProjectItemTemplateBase<IServiceModel>" #>
+﻿<#@ template  debug="true"  inherits="Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IServiceModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
 <#@ Assembly Name="Intent.SoftwareFactory" #>
-<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.MetaModel.Service" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>

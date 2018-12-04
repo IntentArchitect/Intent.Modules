@@ -6,6 +6,7 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Intent.Modules.Common.Templates;
 using SearchOption = Intent.SoftwareFactory.Engine.SearchOption;
 
 namespace Intent.Modules.Bower.Templates.BowerConfig

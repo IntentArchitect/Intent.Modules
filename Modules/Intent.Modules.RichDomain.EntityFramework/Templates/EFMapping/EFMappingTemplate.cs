@@ -10,7 +10,7 @@
 namespace Intent.Modules.RichDomain.EntityFramework.Templates.EFMapping
 {
     using Intent.SoftwareFactory.MetaModels.UMLModel;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using Intent.Modules.RichDomain;
     using System;
     using System.IO;

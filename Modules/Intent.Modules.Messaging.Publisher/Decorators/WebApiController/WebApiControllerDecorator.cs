@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Intent.MetaModel.Service;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
-using Intent.SoftwareFactory.MetaData;
-using Intent.SoftwareFactory.VisualStudio;
+using Intent.Modules.Common;
+using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.Messaging.Publisher.Decorators.WebApiController
 {

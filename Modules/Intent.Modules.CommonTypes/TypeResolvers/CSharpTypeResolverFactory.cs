@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Intent.MetaModel.Common;
 using System.ComponentModel;
+using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.CommonTypes.Contracts;
 
 namespace Intent.Modules.CommonTypes.TypeResolvers

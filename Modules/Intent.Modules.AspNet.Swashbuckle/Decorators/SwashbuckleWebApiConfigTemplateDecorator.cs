@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.AspNet.Swashbuckle.Decorators
 {

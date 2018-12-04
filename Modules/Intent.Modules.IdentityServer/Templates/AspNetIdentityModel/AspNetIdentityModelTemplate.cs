@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.IdentityServer.Templates.AspNetIdentityModel
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -21,7 +21,7 @@ namespace Intent.Modules.IdentityServer.Templates.AspNetIdentityModel
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class AspNetIdentityModelTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
@@ -33,7 +33,7 @@ namespace Intent.Modules.IdentityServer.Templates.AspNetIdentityModel
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
 
 
 
@@ -54,7 +54,7 @@ using IdSvr3 = IdentityServer3.Core;
 
 namespace ");
             
-            #line 28 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -91,7 +91,7 @@ namespace ");
 
     public class ");
             
-            #line 58 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DB_CONTEXT_NAME));
             
             #line default
@@ -99,14 +99,14 @@ namespace ");
             this.Write(" : IdentityDbContext<User, Role, string, IdentityUserLogin, IdentityUserRole, Ide" +
                     "ntityUserClaim>\r\n    {\r\n        public ");
             
-            #line 60 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DB_CONTEXT_NAME));
             
             #line default
             #line hidden
             this.Write("()\r\n            : base(\"IdentityDB\")\r\n        {\r\n        }\r\n\r\n\t\tpublic ");
             
-            #line 65 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DB_CONTEXT_NAME));
             
             #line default
@@ -129,7 +129,7 @@ namespace ");
     {
         public UserStore(");
             
-            #line 81 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DB_CONTEXT_NAME));
             
             #line default
@@ -155,7 +155,7 @@ namespace ");
                     "}\r\n\r\n    public class RoleStore : RoleStore<Role>\r\n    {\r\n        public RoleSto" +
                     "re(");
             
-            #line 126 "C:\Dev\IntentArchitect\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
+            #line 126 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer\Templates\AspNetIdentityModel\AspNetIdentityModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DB_CONTEXT_NAME));
             
             #line default

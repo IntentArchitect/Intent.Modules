@@ -60,11 +60,11 @@
     <Compile Include="Helpers\ExpressionParser.cs" />
     <Compile Include="Helpers\TypeHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
-    <Compile Include="IntentMetadataExtensionsV2.cs" />
+    <Compile Include="MetadataExtensionsV2.cs" />
     <Compile Include="MetaDataExtensions.cs" />
-    <Compile Include="MetaData\CommonExtensionsV2.cs" />
-    <Compile Include="MetaData\CommonExtensions.cs" />
-    <Compile Include="MetaData\UmlModelExtensions.cs" />
+    <Compile Include="Metadata\FolderExtensions.cs" />
+    <Compile Include="Metadata\StereotypeExtensions.cs" />
+    <Compile Include="Metadata\UmlModelExtensions.cs" />
     <Compile Include="Plugins\FactoryExtensionBase.cs" />
     <Compile Include="Plugins\TemplateLifeCycleHooksFactoryExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

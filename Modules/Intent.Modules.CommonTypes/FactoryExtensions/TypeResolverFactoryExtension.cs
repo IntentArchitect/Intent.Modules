@@ -10,6 +10,8 @@ using Intent.SoftwareFactory.Plugins;
 using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using Intent.SoftwareFactory.Templates;
 using System.ComponentModel;
+using Intent.Modules.Common;
+using Intent.Modules.Common.TypeResolution;
 using Intent.SoftwareFactory;
 
 namespace Intent.Modules.CommonTypes.FactoryExtensions

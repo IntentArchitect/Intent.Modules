@@ -4,12 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Intent.Modules.Common;
 using Intent.Modules.NuGet.Installer.Managers;
 using Intent.Modules.Common.Plugins;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Plugins.FactoryExtensions;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.NuGet.Installer
 {

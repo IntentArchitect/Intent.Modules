@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Service;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Logging.NLog.Templates.SanitizingJsonSerializer;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.Logging.NLog.Interop.WebApi.Decorators
 {

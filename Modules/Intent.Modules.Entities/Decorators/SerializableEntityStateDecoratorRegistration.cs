@@ -1,6 +1,7 @@
 ﻿using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.SoftwareFactory.Registrations;
 using System.ComponentModel;
+using Intent.Modules.Common.Registrations;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Engine;
 

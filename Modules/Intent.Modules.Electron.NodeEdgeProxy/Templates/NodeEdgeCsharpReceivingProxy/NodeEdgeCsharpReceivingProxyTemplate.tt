@@ -1,7 +1,7 @@
 ﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
-<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.MetaModel.Service" #>
 using System;
 using System.Collections.Generic;

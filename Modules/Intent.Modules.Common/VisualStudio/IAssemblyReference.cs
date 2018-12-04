@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Intent.SoftwareFactory.VisualStudio
+namespace Intent.Modules.Common.VisualStudio
 {
     public interface IAssemblyReference : IEquatable<IAssemblyReference>
     {

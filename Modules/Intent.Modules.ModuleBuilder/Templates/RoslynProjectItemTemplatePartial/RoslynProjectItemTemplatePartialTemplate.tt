@@ -1,11 +1,11 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IAttribute>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
 <#@ assembly name="System.Core" #>
-<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
+using Intent.Modules.Common;
 using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
@@ -16,11 +16,11 @@ using System.Linq;
 namespace <#= Namespace #>
 {
 	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    partial class <#= ClassName #> : IntentRoslynProjectItemTemplateBase<<#= GetTargetModel() #>>
+    partial class <#= ClassName #> : IntentRoslynProjectItemTemplateBase<<#= GetModelType() #>>
     {
         public const string TemplateId = "<#= GetTemplateId() #>";
 
-        public <#= ClassName #>(IProject project, <#= GetTargetModel() #> model) : base(TemplateId, project, model)
+        public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
         }
 
@@ -34,10 +34,10 @@ namespace <#= Namespace #>
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}",
+                fileName: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "cs",
-                defaultLocationInProject: "${Model.Name}",
-                className: "${Model.Name}",
+                defaultLocationInProject: "<#= Model.Name.Replace("Template", "") #>",
+                className: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 @namespace: "${Project.ProjectName}"
             );
         }

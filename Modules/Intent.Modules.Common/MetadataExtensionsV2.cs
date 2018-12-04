@@ -6,7 +6,7 @@ using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modules.Common
 {
-    public static class IntentMetadataExtensionsV2
+    public static class MetadataExtensionsV2
     {
         public static IEnumerable<IClass> GetClassModels(this IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, string metadataIdentifier)
         {

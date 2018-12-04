@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Intent.SoftwareFactory.VisualStudio
+namespace Intent.Modules.Common.VisualStudio
 {
     public class NugetPackageInfo : INugetPackageInfo
     {

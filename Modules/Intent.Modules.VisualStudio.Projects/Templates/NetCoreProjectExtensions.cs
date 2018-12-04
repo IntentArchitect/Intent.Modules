@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates
 {

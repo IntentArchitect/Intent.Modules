@@ -2,7 +2,7 @@
 using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
-using Intent.SoftwareFactory.MetaData;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.Application.Contracts
 {

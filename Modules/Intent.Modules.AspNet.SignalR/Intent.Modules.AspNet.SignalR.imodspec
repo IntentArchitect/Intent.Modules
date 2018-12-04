@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AspNet.SignalR</id>
-  <version>1.6.0</version>
+  <version>1.7.0</version>
   <summary>Infastructure for Asp.Net SignalR</summary>
   <description>Infastructure for Asp.Net SignalR</description>
   <authors>Intent Architect</authors>
@@ -22,7 +22,7 @@
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="1.6.0"/>
+    <dependency id="Intent.Common" version="1.7.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.ServiceCallHandlers</id>
-  <version>1.6.0</version>
+  <version>1.7.0</version>
   <summary>Generic Application Layer service call dispatching pattern that is technology agnostic.</summary>
   <description>Generic Application Layer service call dispatching pattern that is technology agnostic.</description>
   <authors>Intent Architect</authors>
@@ -21,7 +21,7 @@
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="1.6.0"/>
+    <dependency id="Intent.Common" version="1.7.0"/>
     <dependency id="Intent.Application.Contracts" version="1.6.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.6.0"/>
   </dependencies>

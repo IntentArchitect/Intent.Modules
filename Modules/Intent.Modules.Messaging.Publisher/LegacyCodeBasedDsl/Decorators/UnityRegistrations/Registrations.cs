@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Linq;
+using Intent.Modules.Common.Registrations;
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.SoftwareFactory.Engine;

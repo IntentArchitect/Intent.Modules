@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modules.Common.Templates;
     using Intent.MetaModel.Service;
     using Intent.Modules.Application.Contracts;
     using System;

@@ -1,5 +1,5 @@
-﻿using Intent.SoftwareFactory.VisualStudio;
-using System;
+﻿using System;
+using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.AspNet.WebApi.Interop.Unity
 {

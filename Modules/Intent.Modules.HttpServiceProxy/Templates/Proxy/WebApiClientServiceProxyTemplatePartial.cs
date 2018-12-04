@@ -3,10 +3,12 @@ using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
 using Intent.MetaModel.Service;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {

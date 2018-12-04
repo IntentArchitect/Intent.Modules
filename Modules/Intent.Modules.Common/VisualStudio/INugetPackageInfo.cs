@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Intent.SoftwareFactory.VisualStudio
+namespace Intent.Modules.Common.VisualStudio
 {
     public interface INugetPackageInfo
     {

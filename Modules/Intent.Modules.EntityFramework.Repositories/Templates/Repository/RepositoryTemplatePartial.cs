@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Modules.Entities.DDD.Templates.RepositoryInterface;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
@@ -9,7 +12,6 @@ using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVis
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.VisualStudio;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 {
