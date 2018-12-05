@@ -52,9 +52,14 @@
     <Content Include="Icons\EntityFramework.png" />
     <Content Include="Icons\Unity.png" />
     <Content Include="Icons\Autofac.png" />
+    <None Include="Intent Module Builder\content\%24{field_application.name}.application.config" />
     <None Include="Web Application .NET Core\content\%24{field_application.name}.application.config" />
     <None Include="Web Application .NET Core\content\modules.config" />
     <None Include="Web Application .NET Framework\content\%24{field_application.name}.application.config" />
+    <Content Include="Intent Module Builder\description.html" />
+    <Content Include="Intent Module Builder\metadata.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web Application .NET Core\description.html" />
     <Content Include="Web Application .NET Core\metadata.xml">
       <SubType>Designer</SubType>
@@ -94,6 +99,7 @@ REM $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\Inte
 REM $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)AngularJS Web Application\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Framework\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Core\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+$(SolutionDir)\packages\Intent.IntentArchitectPackager.1.2.1-beta\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Intent Module Builder\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

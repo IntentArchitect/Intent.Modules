@@ -37,7 +37,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
         {
             return new INugetPackageInfo[]
             {
-                NugetPackages.IntentArchitectPackager,
                 NugetPackages.IntentModulesCommon
             }
             .Union(base.GetNugetDependencies())

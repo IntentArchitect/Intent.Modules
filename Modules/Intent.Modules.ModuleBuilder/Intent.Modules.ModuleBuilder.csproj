@@ -81,6 +81,15 @@
       <DependentUpon>FilePerModelTemplateRegistrationTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplatePartial.cs" />
+    <Compile Include="Templates\ProjectItemTemplate\ProjectItemTemplateRegistrations.cs" />
+    <Compile Include="Templates\ProjectItemTemplate\ProjectItemTemplateTemplate.cs" />
+    <Compile Include="Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialRegistrations.cs" />
+    <Compile Include="Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.cs">
+      <DependentUpon>ProjectItemTemplatePartialTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplatePartial.cs" />
     <Compile Include="Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialRegistrations.cs" />
     <Compile Include="Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -117,6 +126,10 @@
     <Content Include="Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>FilePerModelTemplateRegistrationTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ProjectItemTemplatePartialTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

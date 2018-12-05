@@ -6,13 +6,14 @@ using System.Xml.XPath;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
-    public class IModSpecTemplate : IntentProjectItemTemplateBase<IEnumerable<IClass>>
+    public class IModSpecTemplate : IntentProjectItemTemplateBase<IEnumerable<IClass>>, IHasNugetDependencies
     {
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
@@ -89,6 +90,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 </package>");
             }
             return doc;
+        }
+
+        public IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        {
+            return new INugetPackageInfo[]
+            {
+                NugetPackages.IntentArchitectPackager,
+            };
         }
     }
 }

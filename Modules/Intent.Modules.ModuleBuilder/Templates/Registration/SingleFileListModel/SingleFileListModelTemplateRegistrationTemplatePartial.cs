@@ -38,7 +38,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
         {
             return new INugetPackageInfo[]
             {
-                NugetPackages.IntentArchitectPackager,
                 NugetPackages.IntentModulesCommon
             }
             .Union(base.GetNugetDependencies())

@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
         public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
         {
             return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => x.SpecializationType == "C# Template" && x.GetRegistrationType() == RegistrationType.SingleFileListModel)
+                .Where(x => (x.SpecializationType == "C# Template" || x.SpecializationType == "File Template") && x.GetRegistrationType() == RegistrationType.SingleFileListModel)
                 .ToList();
         }
     }

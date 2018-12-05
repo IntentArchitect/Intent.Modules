@@ -1,20 +1,18 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial
+namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 {
-    partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IClass>
+    partial class ProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IClass>
     {
-        public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial";
+        public const string TemplateId = "Intent.ModuleBuilder.ProjectItemTemplate.Partial";
 
-        public RoslynProjectItemTemplatePartialTemplate(string templateId, IProject project, IClass model) : base(templateId, project, model)
+        public ProjectItemTemplatePartialTemplate(string templateId, IProject project, IClass model) : base(templateId, project, model)
         {
         }
 
