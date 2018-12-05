@@ -42,6 +42,9 @@
     <dependency id="Intent.Common" version="1.7.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0"/>
   </dependencies>
+  <metadata>
+    <install target="Module Builder" src="MetaData\Intent.ModuleBuilder"/>
+  </metadata>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
     <file src="bin\$configuration$\$id$.pdb"/>

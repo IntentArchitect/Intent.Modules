@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="819dee60-184a-4cb7-9529-0d3910f82ee6">
+  <name>Template Settings</name>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>[${Registration}]</displayFunction>
+  <targetElements>
+    <element>class</element>
+  </targetElements>
+  <autoAdd>true</autoAdd>
+  <parentFolderId>2435de84-8f7d-4bf8-951e-e469aa67e876</parentFolderId>
+  <properties>
+    <property id="311d788f-7582-4c27-9a4d-e0db1439c327">
+      <name>Registration</name>
+      <type>options</type>
+      <defaultValue>Per-Model</defaultValue>
+      <options>
+        <option>No-Model</option>
+        <option>Per-Model</option>
+        <option>Per-Model-List</option>
+        <option>Custom</option>
+      </options>
+    </property>
+  </properties>
+</stereotypeDefinition>

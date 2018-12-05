@@ -109,12 +109,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.ModuleBuilder.imodspec" />
+    <None Include="Metadata\Intent.ModuleBuilder\Intent.ModuleBuilder.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Metadata\Intent.ModuleBuilder\Stereotypes\819dee60-184a-4cb7-9529-0d3910f82ee6.xml" />
     <Content Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>SingleFileNoModelTemplateRegistrationTemplate.cs</LastGenOutput>
