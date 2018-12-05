@@ -1,4 +1,5 @@
 ﻿using Intent.Modules.AspNet.WebApi.Templates.Controller;
+using Intent.Modules.Common.Registrations;
 using Intent.Modules.UserContext.Interop.AspNet.WebApi.Decorators;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;

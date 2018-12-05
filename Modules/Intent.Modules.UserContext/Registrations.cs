@@ -1,4 +1,5 @@
-﻿using Intent.Modules.UserContext.Templates.UserContextInterface;
+﻿using Intent.Modules.Common.Registrations;
+using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.Modules.UserContext.Templates.UserContextProvider;
 using Intent.Modules.UserContext.Templates.UserContextProviderInterface;
 using Intent.Modules.UserContext.Templates.UserContextStatic;

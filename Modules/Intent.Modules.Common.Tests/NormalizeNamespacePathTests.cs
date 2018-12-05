@@ -1,5 +1,4 @@
 ﻿using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Templates;
 using Xunit;
 
 namespace Intent.Modules.Common.Tests

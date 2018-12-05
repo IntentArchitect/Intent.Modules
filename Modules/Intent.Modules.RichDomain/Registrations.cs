@@ -10,6 +10,7 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Registrations;
 using System.Linq;
+using Intent.Modules.Common.Registrations;
 
 namespace Intent.Modules.RichDomain
 {

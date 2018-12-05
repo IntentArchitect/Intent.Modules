@@ -32,7 +32,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
             return $@"<#@ template language=""C#"" inherits=""IntentRoslynProjectItemTemplateBase<{GetModelType()}>"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
-<#@ import namespace=""Intent.SoftwareFactory.Templates"" #>
+<#@ import namespace=""Intent.Modules.Common"" #>
+<#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 
 using System;

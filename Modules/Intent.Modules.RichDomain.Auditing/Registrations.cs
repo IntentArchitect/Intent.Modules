@@ -1,4 +1,5 @@
-﻿using Intent.Modules.RichDomain.Auditing.Decorators;
+﻿using Intent.Modules.Common.Registrations;
+using Intent.Modules.RichDomain.Auditing.Decorators;
 using Intent.Modules.RichDomain.EntityFramework.Templates.EFMapping;
 using Intent.Modules.RichDomain.Templates.EntityBehaviour;
 using Intent.Modules.RichDomain.Templates.EntityBehaviourBase;

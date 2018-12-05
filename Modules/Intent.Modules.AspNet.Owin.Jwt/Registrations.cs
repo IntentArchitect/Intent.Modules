@@ -1,6 +1,7 @@
 ﻿using Intent.Modules.AspNet.Owin.Jwt.Decorators;
 using Intent.Modules.AspNet.Owin.Jwt.Templates.SigningCertificate;
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 

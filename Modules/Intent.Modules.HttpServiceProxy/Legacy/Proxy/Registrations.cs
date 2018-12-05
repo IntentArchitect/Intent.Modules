@@ -3,6 +3,7 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.SoftwareFactory.Registrations;
 using System.Linq;
+using Intent.Modules.Common.Registrations;
 
 namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
 {

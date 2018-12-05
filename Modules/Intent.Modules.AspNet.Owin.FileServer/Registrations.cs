@@ -1,5 +1,6 @@
 ﻿using Intent.Modules.AspNet.Owin.FileServer.Decorators;
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
+using Intent.Modules.Common.Registrations;
 using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;

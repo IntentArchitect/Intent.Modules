@@ -1,13 +1,10 @@
-﻿using Intent.SoftwareFactory.Templates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
 
-namespace Intent.SoftwareFactory.Registrations
+namespace Intent.Modules.Common.Registrations
 {
+    [Obsolete("Legacy system for registering templates")]
     public abstract class OldProjectTemplateRegistration : IOldProjectTemplateRegistration
     {
         public Action<ITemplate> RegisterApplicationTeamplate { get; set; }

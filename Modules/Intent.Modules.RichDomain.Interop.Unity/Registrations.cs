@@ -1,4 +1,5 @@
-﻿using Intent.Modules.RichDomain.Interop.Unity.Decorators;
+﻿using Intent.Modules.Common.Registrations;
+using Intent.Modules.RichDomain.Interop.Unity.Decorators;
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;

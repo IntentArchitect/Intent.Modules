@@ -73,7 +73,7 @@
     <Compile Include="Registrations\ModelTemplateRegistrationBase.cs" />
     <Compile Include="Registrations\NoModelTemplateRegistrationBase.cs" />
     <Compile Include="Registrations\OldProjectTemplateRegistration.cs" />
-    <Compile Include="Roslyn\RoslynDefaultFileMetaData.cs" />
+    <Compile Include="Templates\Roslyn\RoslynDefaultFileMetaData.cs" />
     <Compile Include="Templates\BasicFileMetaData.cs" />
     <Compile Include="Templates\ClassTypeSource.cs" />
     <Compile Include="Templates\DecoratorBase.cs" />

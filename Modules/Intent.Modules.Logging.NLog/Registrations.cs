@@ -1,4 +1,5 @@
-﻿using Intent.Modules.Logging.NLog.Decorators;
+﻿using Intent.Modules.Common.Registrations;
+using Intent.Modules.Logging.NLog.Decorators;
 using Intent.Modules.Logging.NLog.Templates.OperationRequestId;
 using Intent.Modules.Logging.NLog.Templates.OperationRequestIdRenderer;
 using Intent.Modules.Logging.NLog.Templates.SanitizingJsonSerializer;

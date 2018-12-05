@@ -11,6 +11,7 @@ using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.UserInfoService;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 using System.Linq;
+using Intent.Modules.Common.Registrations;
 
 namespace Intent.Modules.AngularJs.Auth.ImplicitAuth
 {

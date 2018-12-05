@@ -5,6 +5,7 @@ using Intent.Modules.AngularJs.Shell.Templates.AngularIndexHtml;
 using Intent.Modules.AngularJs.Shell.Templates.AngularShellState;
 using Intent.Modules.AngularJs.Shell.Templates.AngularShellView;
 using Intent.Modules.AngularJs.Shell.Templates.AngularShellViewModel;
+using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 

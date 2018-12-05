@@ -3,6 +3,7 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Registrations;
 using System.Linq;
+using Intent.Modules.Common.Registrations;
 using Intent.Modules.RichDomain;
 using Intent.Modules.RichDomain.EntityFramework.Templates.DbContext;
 using Intent.Modules.RichDomain.EntityFramework.Templates.DeleteVisitor;
