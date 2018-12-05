@@ -32,20 +32,55 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
             return $@"<#@ template language=""C#"" inherits=""IntentRoslynProjectItemTemplateBase<{GetModelType()}>"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
+<#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 
 using System;
 <#=DependencyUsings#>
+// Mode.Fully will overwrite file on each run. 
+// Add in explicit [IntentManaged.Ignore] attributes to class or methods. Alternatively change to Mode.Merge (additive) or Mode.Ignore (once-off)
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {{
     public class <#= ClassName #>
-    {{
-        
+    {{{TemplateBody()}
     }}
 }}";
+        }
+
+        private string TemplateBody()
+        {
+            if (Model.GetRegistrationType() == RegistrationType.FilePerModel)
+            {
+                return @"
+<#  // The following is an example template implementation
+    foreach(var attribute in Model.Attributes) { #>
+        public <#= Types.Get(attribute.Type) #> <#= attribute.Name.ToPascalCase() #> { get; set; }
+
+<#  } #>
+
+<#  foreach(var operation in Model.Operations) { #>
+        public <#= Types.Get(operation.ReturnType?.Type) ?? ""void"" #> <#= operation.Name.ToPascalCase() #>(<#= string.Join("", "", operation.Parameters.Select(x => string.Format(""{0} {1}"", Types.Get(x.Type), x.Name))) #>)
+        {
+            throw new NotImplementedException();
+        }
+
+<#  } #>";
+            }
+
+            if (Model.GetRegistrationType() == RegistrationType.SingleFileListModel)
+            {
+                return @"
+<#  // The following is an example template implementation
+    foreach(var model in Model) { #>
+        // Model found: <#= model.Name #>
+<#  } #>";
+            }
+
+            return string.Empty;
         }
 
         private string GetModelType()

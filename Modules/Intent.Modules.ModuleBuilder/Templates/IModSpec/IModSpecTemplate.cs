@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using System.Xml.XPath;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
@@ -39,14 +40,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             var templatesElement = doc.Element("package").Element("templates");
 
-            templatesElement.RemoveNodes();
-
             foreach (var model in Model)
             {
                 var id = $"{Project.Name}.{model.Name}";
-                XElement specificTemplate = templatesElement
-                    .Elements("template")
-                    .FirstOrDefault(p => p.Attribute("id")?.Value == model.Name);
+                var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{id}\"]");
 
                 if (specificTemplate == null)
                 {
@@ -54,14 +51,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     templatesElement.Add(specificTemplate);
                 }
 
-                var roleElement = specificTemplate.Element("role");
-                if (roleElement == null)
+                if (specificTemplate.Element("role") == null)
                 {
-                    roleElement = new XElement("role");
-                    specificTemplate.Add(roleElement);
+                    specificTemplate.Add(new XElement("role") { Value = id });
                 }
-
-                roleElement.Value = id;
             }
 
             return doc.ToStringUTF8();
@@ -87,6 +80,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
   </templates>
   <dependencies>
     <dependency id=""Intent.Common"" version=""1.7.0"" />
+    <dependency id=""Intent.Common.Types"" version=""1.7.0"" />
   </dependencies> 
   <files>
     <file src=""bin\$configuration$\$id$.dll"" />

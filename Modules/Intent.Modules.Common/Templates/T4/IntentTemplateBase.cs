@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Intent.Modules.Common.TypeResolution;
 
@@ -228,6 +229,8 @@ namespace Intent.Modules.Common.Templates
             }
         }
         private ToStringInstanceHelper toStringHelperField = new ToStringInstanceHelper();
+        private ITypeResolver _types;
+
         /// <summary>
         /// Helper to produce culture-oriented representation of an object as a string
         /// </summary>
@@ -239,7 +242,20 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        public virtual ITypeResolver Types { get; set;}
+        public virtual ITypeResolver Types
+        {
+            get
+            {
+                if (_types == null)
+                {
+                    throw new Exception("Attempting to access Types before a ITypeResolver has been set. Either install the Intent.Common.Types module or ensure Types is set manually.");
+                }
+                return _types;
+            }
+
+            set => _types = value;
+        }
+
         #endregion
     }
 }

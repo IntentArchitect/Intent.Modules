@@ -42,6 +42,11 @@ namespace Intent.Modules.Common.Types.TypeResolvers
 
         public string Get(ITypeReference typeInfo, string contextName)
         {
+            if (typeInfo == null)
+            {
+                return null;
+            }
+
             if (contextName == null)
                 contextName = DEFAULT_CONTEXT;
 

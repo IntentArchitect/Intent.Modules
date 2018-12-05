@@ -90,6 +90,13 @@
     <Compile Include="Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplatePartial.cs" />
     <Compile Include="Templates\RoslynProjectItemTemplate\RoslynProjectItemTemplateRegistrations.cs" />
     <Compile Include="Templates\RoslynProjectItemTemplate\RoslynProjectItemTemplateTemplate.cs" />
+    <Compile Include="Templates\ReadMe\ReadMeTemplateRegistration.cs" />
+    <Compile Include="Templates\ReadMe\ReadMeTemplate.cs">
+      <DependentUpon>ReadMeTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\ReadMe\ReadMeTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.ModuleBuilder.imodspec" />
@@ -114,6 +121,10 @@
     <Content Include="Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>RoslynProjectItemTemplatePartialTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\ReadMe\ReadMeTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ReadMeTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

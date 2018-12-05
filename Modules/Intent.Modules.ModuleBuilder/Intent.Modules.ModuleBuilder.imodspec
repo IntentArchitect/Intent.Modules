@@ -11,6 +11,9 @@
     <template id="Intent.ModuleBuilder.IModeSpecFile">
       <role>IModSpec</role>
     </template>
+    <template id="Intent.ModuleBuilder.ReadMe">
+      <role>IModSpec</role>
+    </template>
     <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template">
       <role>Templates</role>
     </template>
@@ -31,7 +34,7 @@
   </decorators>
   <dependencies>
     <dependency id="Intent.Common" version="1.7.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.6.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
