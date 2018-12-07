@@ -39,7 +39,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
             dynamic config;
             if (!File.Exists(GetMetaData().GetFullLocationPathWithFileName()))
             {
-                var randomPort = new Random().Next(40000, 70000);
+                var randomPort = new Random().Next(40000, 65535);
                 config = JsonConvert.DeserializeObject(JsonConvert.SerializeObject(new LaunchSettingsJson()
                 {
                     iisSettings = new IISSettings()

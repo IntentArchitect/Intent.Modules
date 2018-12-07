@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Metadata.RDBMS</id>
+  <version>1.7.0</version>
+  <summary>Metadata for specifying RDBMS related concepts in the domain.</summary>
+  <description>Metadata for specifying RDBMS related concepts in the domain.</description>
+  <authors>Intent Architect</authors>
+  <projectUrl>https://intentarchitect.com/</projectUrl>
+  <tags>Metadata RDBMS Relational Database</tags>
+  <templates>
+  </templates>
+  <decorators />
+  <dependencies>
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll"/>
+    <file src="bin\$configuration$\$id$.pdb"/>
+  </files>
+  <metadata>
+    <install target="Domain" src="MetaData\Domain"/>
+  </metadata>
+</package>

@@ -155,6 +155,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module Builder", "Module Builder", "{4EF0E910-DD23-4813-8959-9D10F1E4E788}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Metadata.RDBMS", "Intent.Modules.Metadata.RDBMS\Intent.Modules.Metadata.RDBMS.csproj", "{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -437,6 +439,10 @@ Global
 		{3A5B08D5-646A-40D3-913A-CD1F05A6908D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A5B08D5-646A-40D3-913A-CD1F05A6908D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A5B08D5-646A-40D3-913A-CD1F05A6908D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -511,6 +517,7 @@ Global
 		{5CD69B39-BFF1-4713-86C7-D5D7D7F397EA} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 		{485C574B-D830-40EC-9427-EF57D0D40C8D} = {46C61870-A203-487D-9680-8D143871AA1F}
 		{3A5B08D5-646A-40D3-913A-CD1F05A6908D} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
+		{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
