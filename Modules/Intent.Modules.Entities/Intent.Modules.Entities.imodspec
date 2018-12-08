@@ -37,19 +37,19 @@
   <interoperability>
     <detect id="Intent.EntityFramework">
       <install>
-        <package id="Intent.Entities.Keys" version="1.6.0"/>
+        <package id="Intent.Entities.Keys" version="1.7.0"/>
       </install>
     </detect>
     <detect id="Intent.EntityFrameworkCore">
       <install>
-        <package id="Intent.Entities.Keys" version="1.6.0"/>
+        <package id="Intent.Entities.Keys" version="1.7.0"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
     <dependency id="Intent.Common" version="1.7.0"/>
     <dependency id="Intent.Common.Types" version="1.7.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.6.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

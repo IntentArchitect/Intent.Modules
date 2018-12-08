@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Intent.MetaModel;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.SoftwareFactory.Configuration;
@@ -18,6 +19,10 @@ namespace Intent.Modules.Entities.Keys.Decorators
             if ((associationEnd.Multiplicity == Multiplicity.One || associationEnd.Multiplicity == Multiplicity.ZeroToOne || (associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd == associationEnd)) &&
                 (associationEnd.OtherEnd().Multiplicity == Multiplicity.Many || associationEnd.OtherEnd().Multiplicity == Multiplicity.ZeroToOne))
             {
+                if (associationEnd.OtherEnd().HasStereotype("Foreign Key"))
+                {
+                    return base.AssociationBefore(associationEnd);
+                }
                 return $@"       public virtual {_foreignKeyType}{ (associationEnd.IsNullable ? "?" : "") } { associationEnd.Name().ToPascalCase() }Id {{ get; set; }}
 ";
             }

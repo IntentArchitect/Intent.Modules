@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<associationVisual id="6563a0dc-6e9c-41c8-bf8d-e2dfc41f3760">
+  <targetPrefPoint x="50" y="50" />
+  <fixedPoints>
+    <point x="999" y="489" />
+    <point x="999" y="950" />
+    <point x="889" y="950" />
+  </fixedPoints>
+</associationVisual>

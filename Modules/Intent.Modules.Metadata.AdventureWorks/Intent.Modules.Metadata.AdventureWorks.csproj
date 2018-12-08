@@ -1,0 +1,369 @@
+﻿<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E8F8E83D-81EE-4EE1-AB7E-B5B4B9A88E03}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Intent.Modules.Metadata.AdventureWorks</RootNamespace>
+    <AssemblyName>Intent.Modules.Metadata.AdventureWorks</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\AssociationVisuals\35491644-8a5b-4a57-ac47-d23b217002e3.xml" />
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\AssociationVisuals\3ad57cbf-5217-4e4c-9716-592dfda32c0e.xml" />
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\AssociationVisuals\4f66c73e-ccbc-41c2-bc92-b77737e99874.xml" />
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\AssociationVisuals\d8b2ee68-6e02-4efd-8bdf-6d2065f6680e.xml" />
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\AssociationVisuals\f6f850ef-870f-4b3e-ab7b-0fc730df956e.xml" />
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\ClassVisuals\16f3a46c-22bf-47a5-b008-dccffa97ab5c.xml" />
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\ClassVisuals\3d3da098-85ff-44a5-9e55-136c0dfb3d63.xml" />
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\ClassVisuals\5c9482bf-a09c-4316-8daf-d24833c08f68.xml" />
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\ClassVisuals\a0cff3e2-12a2-49c0-b0ba-5d2d3eabb628.xml" />
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\ClassVisuals\b44abaa4-7511-49fe-bccc-64405334977d.xml" />
+    <Content Include="metadata\Diagrams\Human Resources\db5d234e-eac8-471a-8059-65ef2867be9e\ClassVisuals\c7a984a8-dbf3-4518-b04a-f9e5e51f63f3.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\03d41ec7-ba9a-446d-9450-acaf4672cdd4.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\098211c5-394a-4e75-9e07-5a64d6ca65bf.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\0a3cf285-aae5-485c-a056-4e2e18744772.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\14117ce1-9be0-4f82-96ca-6b237ee2a55d.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\259730b9-611d-4209-8547-83c10ff60c48.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\40303932-6025-4418-b216-90b4aed20033.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\520b9b1d-e400-4a66-8593-d660a849ff1d.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\81cf6187-07a4-4c2e-8611-0e212eaa68a4.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\868cc504-c70f-4a0b-910b-b0382d3c45b8.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\9cfeff90-16dc-4a03-aa1e-076aff122ad6.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\a94aaea5-5fd1-4cce-aa30-d4818820faa8.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\cb3aab30-00ab-42b9-b7ef-201130d59583.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\AssociationVisuals\d58a6d12-af70-4b1f-a469-a54823fde76a.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\02dc0c28-42b5-4a03-9595-b93141cd760c.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\0a160fab-43af-47de-8524-56966653165f.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\14511b0e-2a1f-4b69-a3fa-17ae267c8d05.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\2ae99479-0f3c-4f78-af22-c6f843124e8d.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\3656f273-ed3c-4037-820d-992083d762a5.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\43481ffe-74ea-43e6-a3a2-2dfe51c2a355.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\4d6181c0-351e-4937-84bc-b74855a65cda.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\50af40e8-bc2e-409d-a5a7-6a2ee09ed51e.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\695f68ef-2fec-4759-a2f7-d21e84c7af8a.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\838946ed-16f6-4d69-9bbe-c333d5eb09f3.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\88dfbd93-22a4-49ad-9430-2372d2a4a38f.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\cf23b0ef-1adf-42ca-ba29-1b371b31508f.xml" />
+    <Content Include="metadata\Diagrams\Person\0f7cf1bd-ac02-40b3-964b-9c6c988fa551\ClassVisuals\ee0ae058-05c5-4a22-920b-0ab6a004bd72.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\00ac5f0e-c711-4cf6-971d-907475d1dc6b.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\012265f1-bf66-4964-a99c-73cba032c748.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\148a8fec-7fc4-4042-92d1-2a0df8623f35.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\1940b7da-6085-481a-a733-977d316fd6d7.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\1db5b0cf-2d0c-4612-80e9-aa81db8eb41b.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\4a44fb16-0c91-46e7-9470-3d062d4b67c6.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\4fce84fd-3245-42db-89d4-1c484bb8ea18.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\54bc25dd-a071-4ae3-a8db-5aba55d7c1b2.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\5545d07e-a2de-434b-8e96-db33b688b5f1.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\5796b786-7cec-4879-88c0-8db94f446c1d.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\5ae07115-9495-4557-a8e6-ab41ef6d75ce.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\5be1a9ed-d1f7-4eb2-96ac-73cec73ee022.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\6563a0dc-6e9c-41c8-bf8d-e2dfc41f3760.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\70c58a38-9eab-43dc-b43d-4d8040a28240.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\7860e686-3b27-4b6d-9d15-bb9a3d37ea53.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\7ca87657-b630-4ec9-adf8-35482cf96e72.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\8736e18a-8cc8-479d-810b-c89b79e9ec19.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\985c7c3e-7a29-4e10-bbf0-308c4a624c23.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\9c33d8b4-3e3b-4765-b60d-5c4e80e6780b.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\a25fdbe5-02e9-452c-b7a7-08da4bb4c47c.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\bcc80fcb-eb75-4542-84d6-0d37960ae6cb.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\be0663f7-4822-4a1a-946c-187491728856.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\be4afee2-2b1a-4fff-a13c-f2f39b8bf32b.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\c303052f-605a-4c00-b801-64efd5bc64d8.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\cf94fe87-054e-4d02-91ee-aa519cc92d95.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\f02cd0ff-c29c-421d-b6cb-84f82ed6aa42.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\AssociationVisuals\f49e566a-d866-46cb-9b5b-5680b2d28473.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\23297cd0-ada1-413d-b61c-73a5ca10195e.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\3005554f-603e-4b5c-9c92-917ad1769083.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\3e401b1c-6fa8-4fac-b876-b01c191fe285.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\3e85f027-5694-4cd5-b6cb-39cae42e715e.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\5bb82470-63b2-44b9-a548-a3b403175339.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\69a632fa-3343-4453-8a36-a7ef21cb5890.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\6aad57f6-0925-42f7-b05d-3fe6caff2de2.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\747c3430-c86c-4397-b54e-9c51f3936d40.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\7be46d3c-5b32-4734-b328-a70c659a789e.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\81e3aed7-29b4-4a28-bc84-6a3a67fad06e.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\84fbb32e-c0a7-4012-bb2f-1e7a1d2bc006.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\87918f12-0b8a-4d84-909a-0157a9271fd4.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\8b47fffd-a711-4231-b152-60cd658e5f8c.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\99d79959-fc9e-4066-b839-e5d94c11a0bb.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\9fac3f9a-80d3-40e8-b71b-2af17f1278cc.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\a1222076-a485-4c42-97e8-0007ea24edc5.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\a303eabe-ccb3-441a-87b9-ddc5e0670614.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\a7ade5cc-b091-4859-8fc7-cfa3d0afad22.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\c0d339eb-27b3-4a74-8091-10659b051787.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\c63f8a8e-fa45-4db7-9b99-ec7478fbcfc5.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\df2cfe22-9d95-47ac-9054-72d038e7293a.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\e4cba8da-0994-45d2-bdc9-a5937fd31a26.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\f261386f-d798-4310-90cf-caa5522e70df.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\f3e79c1a-d7e1-42a7-9bdd-f3a2893b120b.xml" />
+    <Content Include="metadata\Diagrams\Production\5f803c00-0078-432f-912e-7027de8b2e6c\ClassVisuals\f7dea1ed-d0eb-46dd-afd9-9ba4d28dbeb3.xml" />
+    <Content Include="metadata\Diagrams\Purchasing\9e396e8d-a8ba-4035-8667-62b3e5399554\AssociationVisuals\1c8ce4d8-e7ca-4785-be3f-a733c5f15af1.xml" />
+    <Content Include="metadata\Diagrams\Purchasing\9e396e8d-a8ba-4035-8667-62b3e5399554\AssociationVisuals\54ee5c0d-ec6c-4c8e-a83d-b4348ed0a8ec.xml" />
+    <Content Include="metadata\Diagrams\Purchasing\9e396e8d-a8ba-4035-8667-62b3e5399554\AssociationVisuals\5a07d09f-1386-4160-b3d1-5a9d78831461.xml" />
+    <Content Include="metadata\Diagrams\Purchasing\9e396e8d-a8ba-4035-8667-62b3e5399554\AssociationVisuals\aa007376-da63-4c26-ae8f-831b05c0c716.xml" />
+    <Content Include="metadata\Diagrams\Purchasing\9e396e8d-a8ba-4035-8667-62b3e5399554\ClassVisuals\26ec5b34-6e67-4819-b7f4-aa73f6a1db3f.xml" />
+    <Content Include="metadata\Diagrams\Purchasing\9e396e8d-a8ba-4035-8667-62b3e5399554\ClassVisuals\45e85b9c-d953-402a-b979-f92452e0bdde.xml" />
+    <Content Include="metadata\Diagrams\Purchasing\9e396e8d-a8ba-4035-8667-62b3e5399554\ClassVisuals\71b124d3-d294-4dbe-bc13-10c52f7d8022.xml" />
+    <Content Include="metadata\Diagrams\Purchasing\9e396e8d-a8ba-4035-8667-62b3e5399554\ClassVisuals\81cc5cf7-36f5-4d2a-834f-6c06d0bf508e.xml" />
+    <Content Include="metadata\Diagrams\Purchasing\9e396e8d-a8ba-4035-8667-62b3e5399554\ClassVisuals\bf65e95b-2372-4cd3-9146-da37f05bd6a5.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\0604a256-1d38-46a1-80f0-9f0825b4f034.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\08dc4995-9a7e-4adf-9448-64bb8b5b4b95.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\11ce95ea-fcb9-4744-899f-17b0c62e46f9.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\12704c8b-06ec-4be7-bd90-249696ca3275.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\14a3739c-45e4-49d8-8b22-96edceb3ce35.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\1b6b91ff-6288-4aa8-be7f-3e6015937dec.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\1bfc56fd-42b9-4ed8-8ebe-8fbdfde8ad6e.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\1fba4c30-ae82-45cd-90c6-5037b02ac6f0.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\2a706a19-a6c1-4b66-b01e-bc970586ef8e.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\3121f213-a8d5-457f-bbcb-4a4aeec6439c.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\453cf99f-a59a-4427-9be9-f77dd3cea132.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\469e528c-68b3-48aa-96e9-f714a48f10e1.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\4964bddc-1304-4c4a-942b-8f235fdb7ee9.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\54ae0536-c58a-450c-873a-365422dfb532.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\7a7b5d76-b205-4f53-a98f-7a2b7e795750.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\945ab220-fc5d-45a1-9cf6-92ffd40ed405.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\b32cb370-a3a1-4134-b8ec-12e55d0894fd.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\b499b607-7310-474a-a4fe-87889075f316.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\c10878cc-7b53-460e-bb48-971cdd70a916.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\e094c565-f293-4c17-85f5-ca11593ea827.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\AssociationVisuals\fc32f076-909b-48c8-b117-c5f2e278764f.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\088e4d30-610f-4f12-9bd1-20491c91a96f.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\0d486ee8-58ab-41b6-8fb6-d56476d3b8d4.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\224f4a48-4b02-4476-b26a-eb9cf1897d1a.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\32bba5d0-d75a-4218-a1b3-e7aa4c9a1ec1.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\583377f4-eeb8-4fc6-8852-e093a1433b78.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\6464494a-ded3-4d95-9fb7-02f4a669a168.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\6f28aade-ebda-40c2-83d8-7917aa6948cd.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\7f1ebed3-7978-4891-adab-8d6c15fa55fe.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\9ed8db13-94aa-4d2a-b6b1-38d62b711dcb.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\a3724913-6277-43cd-a284-5bb9621fc351.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\c496925b-7b84-440a-9b13-c527b097afe2.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\c7007d51-160a-4cd3-b342-3db497b1c8ce.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\c8d0095d-2f25-4f08-b7f9-82994ff2831a.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\e2c830c1-d616-4328-aff5-c5db1d510d2b.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\e3d85db9-feda-4388-9569-99aaeca96d97.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\e4e06159-01df-4d48-9643-1dc0addc1998.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\ec4203d2-e75a-4e7b-b436-31db591ef74c.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\ed377275-c62c-4471-b317-6d7cdb8769cc.xml" />
+    <Content Include="metadata\Diagrams\Sales\b2adf0e5-8fef-484a-b107-87aa0d0c7842\ClassVisuals\f64fdb16-90d2-4f1d-b692-c38417e6bf72.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\00ac5f0e-c711-4cf6-971d-907475d1dc6b.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\012265f1-bf66-4964-a99c-73cba032c748.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\03d41ec7-ba9a-446d-9450-acaf4672cdd4.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\0604a256-1d38-46a1-80f0-9f0825b4f034.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\08dc4995-9a7e-4adf-9448-64bb8b5b4b95.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\098211c5-394a-4e75-9e07-5a64d6ca65bf.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\0a3cf285-aae5-485c-a056-4e2e18744772.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\11ce95ea-fcb9-4744-899f-17b0c62e46f9.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\12704c8b-06ec-4be7-bd90-249696ca3275.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\14117ce1-9be0-4f82-96ca-6b237ee2a55d.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\148a8fec-7fc4-4042-92d1-2a0df8623f35.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\14a3739c-45e4-49d8-8b22-96edceb3ce35.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\1940b7da-6085-481a-a733-977d316fd6d7.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\1b6b91ff-6288-4aa8-be7f-3e6015937dec.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\1bfc56fd-42b9-4ed8-8ebe-8fbdfde8ad6e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\1c8ce4d8-e7ca-4785-be3f-a733c5f15af1.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\1db5b0cf-2d0c-4612-80e9-aa81db8eb41b.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\1fba4c30-ae82-45cd-90c6-5037b02ac6f0.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\259730b9-611d-4209-8547-83c10ff60c48.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\25dd7967-d66e-4724-a248-934144cf34a1.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\2a706a19-a6c1-4b66-b01e-bc970586ef8e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\3121f213-a8d5-457f-bbcb-4a4aeec6439c.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\335f3531-2226-43cf-8ced-ce0652cabf41.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\35491644-8a5b-4a57-ac47-d23b217002e3.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\37645efc-12ab-4de6-8e6a-6eb7e554c396.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\3ad57cbf-5217-4e4c-9716-592dfda32c0e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\3b787171-1717-4a8c-bf53-676588782797.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\40303932-6025-4418-b216-90b4aed20033.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\453cf99f-a59a-4427-9be9-f77dd3cea132.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\469e528c-68b3-48aa-96e9-f714a48f10e1.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\4964bddc-1304-4c4a-942b-8f235fdb7ee9.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\4a44fb16-0c91-46e7-9470-3d062d4b67c6.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\4f66c73e-ccbc-41c2-bc92-b77737e99874.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\4fce84fd-3245-42db-89d4-1c484bb8ea18.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\520b9b1d-e400-4a66-8593-d660a849ff1d.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\54ae0536-c58a-450c-873a-365422dfb532.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\54bc25dd-a071-4ae3-a8db-5aba55d7c1b2.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\54ee5c0d-ec6c-4c8e-a83d-b4348ed0a8ec.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\5545d07e-a2de-434b-8e96-db33b688b5f1.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\5796b786-7cec-4879-88c0-8db94f446c1d.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\5a07d09f-1386-4160-b3d1-5a9d78831461.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\5acb6e1c-4c75-457a-8fad-e12d1753d525.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\5ae07115-9495-4557-a8e6-ab41ef6d75ce.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\5be1a9ed-d1f7-4eb2-96ac-73cec73ee022.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\6563a0dc-6e9c-41c8-bf8d-e2dfc41f3760.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\70c58a38-9eab-43dc-b43d-4d8040a28240.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\7860e686-3b27-4b6d-9d15-bb9a3d37ea53.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\7a7b5d76-b205-4f53-a98f-7a2b7e795750.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\7ca87657-b630-4ec9-adf8-35482cf96e72.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\81cf6187-07a4-4c2e-8611-0e212eaa68a4.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\82717526-30e4-4357-b35b-ad76aafeb2d3.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\85836c9c-7948-4be3-8a73-07a87004a4db.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\868cc504-c70f-4a0b-910b-b0382d3c45b8.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\8736e18a-8cc8-479d-810b-c89b79e9ec19.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\92b6864b-3446-4a68-9201-9a69099a7bbc.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\945ab220-fc5d-45a1-9cf6-92ffd40ed405.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\9552ec71-51b2-44af-b06f-e9d846be5fcf.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\985c7c3e-7a29-4e10-bbf0-308c4a624c23.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\9c33d8b4-3e3b-4765-b60d-5c4e80e6780b.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\9cfeff90-16dc-4a03-aa1e-076aff122ad6.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\a25fdbe5-02e9-452c-b7a7-08da4bb4c47c.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\a94aaea5-5fd1-4cce-aa30-d4818820faa8.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\aa007376-da63-4c26-ae8f-831b05c0c716.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\b32cb370-a3a1-4134-b8ec-12e55d0894fd.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\b499b607-7310-474a-a4fe-87889075f316.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\b5fb4ef4-9fdf-480b-b5a0-a0706cedf174.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\b65238f0-bf21-4a5d-9412-081d767c2e53.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\bbc7f890-d6e9-41db-b494-7a3973c5502c.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\bcc80fcb-eb75-4542-84d6-0d37960ae6cb.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\be0663f7-4822-4a1a-946c-187491728856.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\be4afee2-2b1a-4fff-a13c-f2f39b8bf32b.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\c10878cc-7b53-460e-bb48-971cdd70a916.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\c303052f-605a-4c00-b801-64efd5bc64d8.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\c81c048e-a2e8-4931-b4d2-4b001441bae4.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\c82a4784-4d5e-4886-8f94-4dc4f63125de.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\cb3aab30-00ab-42b9-b7ef-201130d59583.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\cd67dba2-9486-46b5-8cb1-449889dc2dc5.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\cf94fe87-054e-4d02-91ee-aa519cc92d95.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\d58a6d12-af70-4b1f-a469-a54823fde76a.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\d7428751-bb9a-4aba-a71a-badd0f1a630b.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\d8b2ee68-6e02-4efd-8bdf-6d2065f6680e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\e094c565-f293-4c17-85f5-ca11593ea827.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\eb621898-7fef-43c0-a819-079f5f1655c2.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\f00e42fd-7cc7-4bfb-ab10-facd058c6b83.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\f02cd0ff-c29c-421d-b6cb-84f82ed6aa42.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\f49e566a-d866-46cb-9b5b-5680b2d28473.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\f4d798f0-7b9a-469d-8348-4e86d50c5a6b.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\f6f850ef-870f-4b3e-ab7b-0fc730df956e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\fbf40fbb-8d5b-4ddd-82b1-1a5ee00828de.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Associations\fc32f076-909b-48c8-b117-c5f2e278764f.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\02dc0c28-42b5-4a03-9595-b93141cd760c.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\088e4d30-610f-4f12-9bd1-20491c91a96f.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\0a160fab-43af-47de-8524-56966653165f.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\0d486ee8-58ab-41b6-8fb6-d56476d3b8d4.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\11898990-58d8-43a9-aeac-4f25210f50ad.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\14511b0e-2a1f-4b69-a3fa-17ae267c8d05.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\16f3a46c-22bf-47a5-b008-dccffa97ab5c.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\224f4a48-4b02-4476-b26a-eb9cf1897d1a.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\23297cd0-ada1-413d-b61c-73a5ca10195e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\26ec5b34-6e67-4819-b7f4-aa73f6a1db3f.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\2ae99479-0f3c-4f78-af22-c6f843124e8d.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\3005554f-603e-4b5c-9c92-917ad1769083.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\32bba5d0-d75a-4218-a1b3-e7aa4c9a1ec1.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\3656f273-ed3c-4037-820d-992083d762a5.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\3d3da098-85ff-44a5-9e55-136c0dfb3d63.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\3e401b1c-6fa8-4fac-b876-b01c191fe285.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\3e85f027-5694-4cd5-b6cb-39cae42e715e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\43481ffe-74ea-43e6-a3a2-2dfe51c2a355.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\45e85b9c-d953-402a-b979-f92452e0bdde.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\4d6181c0-351e-4937-84bc-b74855a65cda.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\50af40e8-bc2e-409d-a5a7-6a2ee09ed51e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\583377f4-eeb8-4fc6-8852-e093a1433b78.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\5bb82470-63b2-44b9-a548-a3b403175339.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\5c9482bf-a09c-4316-8daf-d24833c08f68.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\6464494a-ded3-4d95-9fb7-02f4a669a168.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\695f68ef-2fec-4759-a2f7-d21e84c7af8a.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\69a632fa-3343-4453-8a36-a7ef21cb5890.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\6aad57f6-0925-42f7-b05d-3fe6caff2de2.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\6f28aade-ebda-40c2-83d8-7917aa6948cd.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\71b124d3-d294-4dbe-bc13-10c52f7d8022.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\747c3430-c86c-4397-b54e-9c51f3936d40.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\7be46d3c-5b32-4734-b328-a70c659a789e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\7f1ebed3-7978-4891-adab-8d6c15fa55fe.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\81cc5cf7-36f5-4d2a-834f-6c06d0bf508e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\81e3aed7-29b4-4a28-bc84-6a3a67fad06e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\838946ed-16f6-4d69-9bbe-c333d5eb09f3.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\84fbb32e-c0a7-4012-bb2f-1e7a1d2bc006.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\87918f12-0b8a-4d84-909a-0157a9271fd4.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\88dfbd93-22a4-49ad-9430-2372d2a4a38f.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\8b47fffd-a711-4231-b152-60cd658e5f8c.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\99d79959-fc9e-4066-b839-e5d94c11a0bb.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\9ed8db13-94aa-4d2a-b6b1-38d62b711dcb.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\9fac3f9a-80d3-40e8-b71b-2af17f1278cc.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\a0cff3e2-12a2-49c0-b0ba-5d2d3eabb628.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\a1222076-a485-4c42-97e8-0007ea24edc5.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\a303eabe-ccb3-441a-87b9-ddc5e0670614.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\a3724913-6277-43cd-a284-5bb9621fc351.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\a7ade5cc-b091-4859-8fc7-cfa3d0afad22.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\b44abaa4-7511-49fe-bccc-64405334977d.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\bf65e95b-2372-4cd3-9146-da37f05bd6a5.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\c0d339eb-27b3-4a74-8091-10659b051787.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\c496925b-7b84-440a-9b13-c527b097afe2.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\c63f8a8e-fa45-4db7-9b99-ec7478fbcfc5.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\c7007d51-160a-4cd3-b342-3db497b1c8ce.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\c7a984a8-dbf3-4518-b04a-f9e5e51f63f3.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\c8d0095d-2f25-4f08-b7f9-82994ff2831a.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\cf23b0ef-1adf-42ca-ba29-1b371b31508f.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\da031ba8-e7bb-4a30-a9f9-5ae7092a5bbc.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\df2cfe22-9d95-47ac-9054-72d038e7293a.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\e2c830c1-d616-4328-aff5-c5db1d510d2b.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\e3d85db9-feda-4388-9569-99aaeca96d97.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\e4cba8da-0994-45d2-bdc9-a5937fd31a26.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\e4e06159-01df-4d48-9643-1dc0addc1998.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\ec4203d2-e75a-4e7b-b436-31db591ef74c.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\ed377275-c62c-4471-b317-6d7cdb8769cc.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\ee0ae058-05c5-4a22-920b-0ab6a004bd72.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\f14bf6db-6816-4a25-809d-8282e49f9c68.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\f261386f-d798-4310-90cf-caa5522e70df.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\f3e79c1a-d7e1-42a7-9bdd-f3a2893b120b.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\f64fdb16-90d2-4f1d-b692-c38417e6bf72.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Classes\f7dea1ed-d0eb-46dd-afd9-9ba4d28dbeb3.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Folders\360c8359-baa7-4421-8ee0-6a464401e91f.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Folders\3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Folders\46a0c52a-7778-4160-9c71-b5139c8d8a4b.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Folders\52911bcd-91aa-4719-8132-a57e63c04e90.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Folders\84eba9a6-53f5-4774-8fe9-0223df89af2e.xml" />
+    <Content Include="metadata\Packages\AdventureWorks\Folders\87c60c22-541e-4e2e-89a5-8bef5f041756.xml" />
+    <Content Include="README.txt" />
+    <Content Include="Intent.Modules.Metadata.AdventureWorks.imodspec" />
+    <Content Include="packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="metadata\Diagrams\Human Resources\Human Resources.diagram.config" />
+    <None Include="metadata\Diagrams\Person\Person.diagram.config" />
+    <None Include="metadata\Diagrams\Production\Production.diagram.config" />
+    <None Include="metadata\Diagrams\Purchasing\Purchasing.diagram.config" />
+    <None Include="metadata\Diagrams\Sales\Sales.diagram.config" />
+    <None Include="metadata\Packages\AdventureWorks\AdventureWorks.pkg.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Intent.IntentArchitectPackager.1.2.2\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.2.2\build\Intent.IntentArchitectPackager.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.1.2.2\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.1.2.2\build\Intent.IntentArchitectPackager.targets'))" />
+  </Target>
+</Project>

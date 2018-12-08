@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Intent.Modules.AspNetCore.WebApi.Templates.Controller;
+using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.EntityFrameworkCore.Interop.WebApi.Decorators
 {

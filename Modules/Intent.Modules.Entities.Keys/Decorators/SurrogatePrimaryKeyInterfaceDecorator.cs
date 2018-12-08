@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Intent.MetaModel.Domain;
+using Intent.Modules.Common;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 
 namespace Intent.Modules.Entities.Keys.Decorators
@@ -12,7 +14,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
 
         public override string BeforeProperties(IClass @class)
         {
-            if (@class.ParentClass != null)
+            if (@class.ParentClass != null || @class.Attributes.Any(x => x.HasStereotype("Primary Key")))
             {
                 return base.BeforeProperties(@class);
             }

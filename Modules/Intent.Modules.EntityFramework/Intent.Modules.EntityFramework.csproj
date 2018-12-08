@@ -112,9 +112,6 @@
     </None>
     <Content Include="MetaData\Domain\Folders\Stereotypes.xml" />
     <Content Include="MetaData\Domain\Stereotypes\EFMappingOptions.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\Index.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\Numeric.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\StringOptions.xml" />
     <Content Include="Templates\DbContext\DbContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DbContextTemplate.cs</LastGenOutput>

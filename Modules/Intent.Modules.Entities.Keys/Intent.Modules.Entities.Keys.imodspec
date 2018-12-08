@@ -29,7 +29,8 @@
     <decorator id="Intent.Entities.Keys.BidirectionalOneToManyEntityDecorator"  enabled="true"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Entities" version="1.6.0"/>
+    <dependency id="Intent.Entities" version="1.7.0"/>
+    <dependency id="Intent.Metadata.RDBMS" version="1.7.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

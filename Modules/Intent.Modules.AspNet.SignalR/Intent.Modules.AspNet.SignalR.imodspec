@@ -17,7 +17,7 @@
   <interoperability>
     <detect id="Intent.AspNet.WebApi">
       <install>
-        <package id="Intent.AspNet.SignalR.Interop.WebApi" version="1.6.0"/>
+        <package id="Intent.AspNet.SignalR.Interop.WebApi" version="1.7.0"/>
       </install>
     </detect>
   </interoperability>

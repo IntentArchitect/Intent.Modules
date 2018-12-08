@@ -35,14 +35,14 @@
     <Reference Include="Intent.IArchitect.Packager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.IntentArchitectPackager.1.2.1-beta\lib\net452\Intent.IArchitect.Packager.exe</HintPath>
     </Reference>
-    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.6.0\lib\net452\Intent.MetaModel.dll</HintPath>
+    <Reference Include="Intent.Metadata, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.7.0-pre4\lib\net452\Intent.Metadata.dll</HintPath>
     </Reference>
-    <Reference Include="Intent.Modules.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.Modules.Common.1.5.0\lib\net452\Intent.Modules.Common.dll</HintPath>
+    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.7.0-pre4\lib\net452\Intent.MetaModel.dll</HintPath>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.6.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.7.0-pre1\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -66,6 +66,10 @@
     <ProjectReference Include="..\Intent.Modules.AspNetCore.WebApi\Intent.Modules.AspNetCore.WebApi.csproj">
       <Project>{F66F26B3-E36F-4F27-AF96-E6DDB59CA0D2}</Project>
       <Name>Intent.Modules.AspNetCore.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
+      <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
+      <Name>Intent.Modules.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.EntityFrameworkCore\Intent.Modules.EntityFrameworkCore.csproj">
       <Project>{E9452E43-0EFB-448E-93AA-E084644C796E}</Project>

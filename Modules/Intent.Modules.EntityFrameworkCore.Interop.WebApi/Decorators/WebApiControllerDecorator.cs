@@ -3,9 +3,11 @@ using System.Linq;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.AspNetCore.WebApi.Templates.Controller;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.EntityFrameworkCore.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.EntityFrameworkCore.Interop.WebApi.Decorators
 {

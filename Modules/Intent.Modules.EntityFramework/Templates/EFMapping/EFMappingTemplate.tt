@@ -97,22 +97,24 @@ namespace <#= Namespace #>
         //No Key mapping required
     } 
 
-	if (ImplicitSurrogateKey) {#>
-            this.HasKey(x => x.Id);
-            this.Property(x => x.Id).HasColumnName("Id");
+	var addedImplicitKey = false;
+    if (Model.ParentClass == null && !Model.Attributes.Any(x => x.HasStereotype("Primary Key"))) {
+        addedImplicitKey = true;#>
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).HasColumnName("Id");
+<#  }
+    if (Model.ParentClass != null) {#>
+            builder.HasBaseType<<#= Model.ParentClass.Name #>>();
 <#  }  
     foreach (var attribute in Model.Attributes)
     {
-		if (mapPk && attribute.Name.ToLower() == "id")
+        if (attribute.Name.ToLower() == "id" && addedImplicitKey)
         {
-			if (ImplicitSurrogateKey) {
-				throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable the 'Implicit Surrogate Key' option for this template", Model.Name));
-            }
-#>
-            this.HasKey(x => x.Id);
-            this.Property(x => x.Id).HasColumnName("Id");
-<#			continue;
-        }#>
+                throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable the 'Implicit Surrogate Key' option for this template", Model.Name));
+	    }
+        if (attribute.HasStereotype("Primary Key")) {#>
+            builder.HasKey(x => x.<#= attribute.Name.ToPascalCase() #>);
+<#		}#>
             this.Property(x => x.<#= attribute.Name.ToPascalCase()#>)<#
 		if (!string.IsNullOrEmpty(attribute.GetStereotypeProperty<string>("Index", "UniqueKey")))
 		{#>
@@ -177,7 +179,7 @@ namespace <#= Namespace #>
             <#= string.Format("this.{0}(x => x.{1})", associationEnd.MinMultiplicity != "0" ? "HasRequired" : "HasOptional", associationEnd.Name().ToPascalCase())#>
                 .WithMany(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
 <#				if (UseForeignKeys) { #>
-				.HasForeignKey(x => x.<#= associationEnd.Name().ToPascalCase()#>Id)
+				.HasForeignKey(x => x.<#= associationEnd.OtherEnd().GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.Name().ToPascalCase() + "Id") #>)
 <#				} else { #>
                 .Map(m => m.MapKey("<#= associationEnd.Name().ToPascalCase()#>Id"))
 <#				} #>
@@ -188,7 +190,7 @@ namespace <#= Namespace #>
             this.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
                 .<#= string.Format("{0}({1})", associationEnd.OtherEnd().MinMultiplicity != "0" ? "WithRequired" : "WithOptional", "x => x." + associationEnd.OtherEnd().Name().ToPascalCase())#>
 <#				if (UseForeignKeys) { #>
-				.HasForeignKey(x => x.<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id)
+				.HasForeignKey(x => x.<#= associationEnd.GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.OtherEnd().Name().ToPascalCase() + "Id") #>)
 <#				} else { #>
 				.Map(m => m.MapKey("<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id"))
 <#				} #>

@@ -29,7 +29,7 @@
   <interoperability>
     <detect id="Intent.AspNet.WebApi">
       <install>
-        <package id="Intent.UserContext.Interop.WebApi" version="1.6.0"/>
+        <package id="Intent.UserContext.Interop.WebApi" version="1.7.0"/>
       </install>
     </detect>
   </interoperability>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Modules.Metadata.AdventureWorks</id>
+  <version>1.0.0</version>
+  <summary></summary>
+  <description></description>
+  <authors></authors>
+  <templates></templates>
+  <dependencies>
+    <dependency id="Intent.Common" version="1.7.0" />
+    <dependency id="Intent.Common.Types" version="1.7.0" />
+    <dependency id="Intent.Metadata.RDBMS" version="1.7.0" />
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll" />
+    <file src="bin\$configuration$\$id$.pdb" />
+  </files>
+  <metadata>
+    <install target="Domain" src="metadata\Packages\AdventureWorks"/>
+    <install target="Domain" src="metadata\Diagrams\Human Resources"/>
+    <install target="Domain" src="metadata\Diagrams\Person"/>
+    <install target="Domain" src="metadata\Diagrams\Production"/>
+    <install target="Domain" src="metadata\Diagrams\Purchasing"/>
+    <install target="Domain" src="metadata\Diagrams\Sales"/>
+  </metadata>
+</package>

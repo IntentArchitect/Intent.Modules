@@ -36,13 +36,14 @@
   <interoperability>
     <detect id="Intent.AspNetCore.WebApi">
       <install>
-        <package id="Intent.EntityFrameworkCore.Interop.WebApi" version="1.6.0"/>
+        <package id="Intent.EntityFrameworkCore.Interop.WebApi" version="1.7.0"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
     <dependency id="Intent.Common" version="1.7.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.6.0"/>
+    <dependency id="Intent.Metadata.RDBMS" version="1.7.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
