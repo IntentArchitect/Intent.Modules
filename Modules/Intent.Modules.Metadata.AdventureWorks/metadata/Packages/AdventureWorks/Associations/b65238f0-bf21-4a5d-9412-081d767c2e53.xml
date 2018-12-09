@@ -16,10 +16,9 @@
   <targetEnd classId="695f68ef-2fec-4759-a2f7-d21e84c7af8a">
     <name>ShipToAddress</name>
     <isNavigable>true</isNavigable>
-    <minMultiplicity>0</minMultiplicity>
+    <minMultiplicity>1</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />
   </targetEnd>
   <associationType>aggregation</associationType>
-  <stereotypes />
 </association>

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="c7a984a8-dbf3-4518-b04a-f9e5e51f63f3" type="Class">
+<class id="c7a984a8-dbf3-4518-b04a-f9e5e51f63f3">
   <name>JobCandidate</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>87c60c22-541e-4e2e-89a5-8bef5f041756</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="JobCandidate" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="HumanResources" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="43aaa3a1-fbaf-4b99-acc0-6e06f2b0043e">
+    <attribute id="74917036-5992-4d2c-ba93-83c59a1538ea">
       <name>JobCandidateID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="d4ecfb25-cd9f-4666-bcf8-76f4cc136db0">
+    <attribute id="87a6e878-5c9f-43f0-9222-2d2daa2c10ee">
       <name>BusinessEntityID</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -38,7 +46,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="a9474917-8fcd-49f1-b4f3-48ec15e0237e">
+    <attribute id="4254184a-a140-4e6a-a797-d7a570aefadf">
       <name>Resume</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -46,7 +54,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="9cfaf7d7-a142-4e7d-a54c-fa40007fc5a5">
+    <attribute id="39b23b53-b5d0-4d9d-b420-93813fbb4844">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

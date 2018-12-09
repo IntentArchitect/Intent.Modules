@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="c8d0095d-2f25-4f08-b7f9-82994ff2831a" type="Class">
+<class id="c8d0095d-2f25-4f08-b7f9-82994ff2831a">
   <name>SalesOrderHeaderSalesReason</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="SalesOrderHeaderSalesReason" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Sales" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="7b9a834f-b39c-4324-af85-ee9521ecfc60">
+    <attribute id="9bf65b7e-d83c-4f10-82b9-1695e19a8603">
       <name>SalesOrderID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="232d632e-611d-4359-aa7b-dea465216108">
+    <attribute id="de2f0bb8-2d81-4280-8fc7-58a1010de1ee">
       <name>SalesReasonID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -36,7 +44,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="02549e33-46ef-4820-aead-562ff5f31ea5">
+    <attribute id="fa19197d-31f9-43b4-a3f8-ebb246139772">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

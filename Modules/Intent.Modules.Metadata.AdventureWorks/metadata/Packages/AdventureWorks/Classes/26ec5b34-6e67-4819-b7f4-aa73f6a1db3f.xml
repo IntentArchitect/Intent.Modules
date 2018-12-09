@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="26ec5b34-6e67-4819-b7f4-aa73f6a1db3f" type="Class">
+<class id="26ec5b34-6e67-4819-b7f4-aa73f6a1db3f">
   <name>ProductVendor</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>84eba9a6-53f5-4774-8fe9-0223df89af2e</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="ProductVendor" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Purchasing" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="cf088e5a-25ef-4a7e-aea3-42b11c1c927c">
+    <attribute id="fcb15755-ca0e-43df-819a-cccd56d13414">
       <name>ProductID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="b299aceb-b7fc-4dec-b8ab-ce2cdf42ce4d">
+    <attribute id="f29e8e49-40c5-41c5-85c0-2cec51de0d56">
       <name>BusinessEntityID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -44,7 +52,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="6a19f239-970d-406b-8e91-8d8b672c9cd0">
+    <attribute id="ba810bea-7469-44ec-8239-f32c02ad3804">
       <name>AverageLeadTime</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -52,7 +60,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="b1371938-8b60-4bc0-b1ab-cd4557b64f04">
+    <attribute id="5b49e1eb-9b52-4484-af0f-fd3897cfc882">
       <name>StandardPrice</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -68,7 +76,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="76967ac4-9a64-4c46-b8ca-0d93ab17528e">
+    <attribute id="a5b15afa-b284-45a8-8308-86975c99e2cd">
       <name>LastReceiptCost</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -84,7 +92,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="97d515c6-77ab-43c9-ae02-9d0d608396c1">
+    <attribute id="c6b18cb7-6226-46ad-bdbb-1683aa1d55e0">
       <name>LastReceiptDate</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -92,7 +100,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="974c2cf6-948f-4524-9986-dbb35119f0cc">
+    <attribute id="1b117598-4f3c-47d6-9d84-112245277165">
       <name>MinOrderQty</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -100,7 +108,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="d31de08d-33fc-4b47-abd1-36cf3d1069d1">
+    <attribute id="dcec8414-4338-40c8-984d-f1d6fb2425ec">
       <name>MaxOrderQty</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -108,7 +116,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="83f28bf2-6ab9-4ecc-b90d-4f8a61c013d9">
+    <attribute id="a4a8a824-1138-4cf6-8ad2-b6f9d0d70378">
       <name>OnOrderQty</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -116,7 +124,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="54222a53-679e-49ea-94f0-897c44b17efc">
+    <attribute id="8ce6c7c4-dc52-4beb-bfea-97f900d32f3f">
       <name>UnitMeasureCode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -133,7 +141,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="ef6babe3-43f8-4575-8c12-eb215543b382">
+    <attribute id="1d65dc45-3720-41c7-b18b-ad4a5ed529e3">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

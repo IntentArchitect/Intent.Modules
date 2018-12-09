@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="a303eabe-ccb3-441a-87b9-ddc5e0670614" type="Class">
+<class id="a303eabe-ccb3-441a-87b9-ddc5e0670614">
   <name>Product</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>46a0c52a-7778-4160-9c71-b5139c8d8a4b</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="Product" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Production" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="0a6e1685-0e33-4e38-a28d-bfb7e0d21417">
+    <attribute id="b338446f-46e0-4977-a178-92a1a1833fdc">
       <name>ProductID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="77108947-b1d4-4fe6-9664-b335757fb94d">
+    <attribute id="d0b20503-d26d-4280-ac48-fef71636a8d6">
       <name>Name</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -32,6 +40,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
@@ -44,7 +53,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="8aab9157-0c91-470e-98c5-2aa0eb26681a">
+    <attribute id="22b1b244-f18b-454c-964f-0c5025d06ca5">
       <name>ProductNumber</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -68,7 +77,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="7d0f848c-6057-4f8c-b60e-e0e5a6189dda">
+    <attribute id="bf319eb4-dbe0-4b56-91c1-6063df9d5922">
       <name>MakeFlag</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -84,7 +93,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="3a9c7072-8482-48db-8cf9-0798f7dca166">
+    <attribute id="539a603d-ae4a-4fac-885d-e2d62f1864d3">
       <name>FinishedGoodsFlag</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -100,7 +109,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="01e9e700-f950-41eb-a35e-b2e7dbeb8772">
+    <attribute id="585949be-a63e-47b7-aed1-86b17742072d">
       <name>Color</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -116,7 +125,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="0f6dd46b-0eae-47de-b546-074bfa3ac475">
+    <attribute id="8c81cc9a-e066-4cf6-bbd0-c4636775ce88">
       <name>SafetyStockLevel</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -124,7 +133,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="249d683c-c87c-4c78-9ecb-8f4701274fd3">
+    <attribute id="2bc9f783-558f-442e-bf97-7053274ecfbe">
       <name>ReorderPoint</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -132,7 +141,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="bb996e7a-8376-4964-8ef6-ee3fa2085ad1">
+    <attribute id="20a125df-fccd-4d13-a143-86587d4f361c">
       <name>StandardCost</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -148,7 +157,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="c20d5e92-7558-48c4-a263-640bce653520">
+    <attribute id="a2992d59-2380-47f5-9104-d2c3c5c54898">
       <name>ListPrice</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -164,7 +173,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="c4afb114-1c12-43b4-82ec-1352046e9187">
+    <attribute id="8a497125-a934-4d3f-be5c-46b54d97a2b6">
       <name>Size</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -180,7 +189,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="979289d7-3f73-40db-ac7e-a3e22457cf01">
+    <attribute id="e6dec9e3-6f93-462b-8d75-79384a7fbf7f">
       <name>SizeUnitMeasureCode</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -188,7 +197,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="d0fcbd8b-1a19-4eed-abf6-6668564d4b64">
+    <attribute id="6868d1e6-8569-4193-a1bb-3705ce2c0fe1">
       <name>WeightUnitMeasureCode</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -196,7 +205,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="5a27718d-a089-4aa8-8446-b23739ec9fcc">
+    <attribute id="4280f6d9-53be-4fb2-9264-0343f3130adc">
       <name>Weight</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -212,7 +221,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="a9a20230-5b6c-4464-bd0f-432e1f35b667">
+    <attribute id="32bf70ec-babb-46fa-b3fb-55f286099c2e">
       <name>DaysToManufacture</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -220,7 +229,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="3f58d3f3-9dd4-4df1-aed6-e2c5c2fe3de8">
+    <attribute id="6ccb5e38-b1d1-4fd6-a9ae-1c06fa2262f5">
       <name>ProductLine</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -228,7 +237,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="f511d4bf-b441-45cc-afb4-8effb1ba6c0d">
+    <attribute id="de9fb79f-4cfe-45d7-9812-f22d996267d1">
       <name>Class</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -236,7 +245,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="6f2c3fa2-bb52-4e1f-864d-70800f052c70">
+    <attribute id="2420da20-9d7c-4ce6-98fd-7a780ce6e39a">
       <name>Style</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -244,7 +253,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="1184709e-0e9f-4904-86da-f7e61bf12793">
+    <attribute id="ff914dfd-dc8d-43da-8684-c4fba3ea72a5">
       <name>ProductSubcategoryID</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -252,7 +261,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="3b9ca815-7508-4c53-9b11-d20e27db09dc">
+    <attribute id="3ff9232c-cc02-459f-aadf-2116a2b686fd">
       <name>ProductModelID</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -260,7 +269,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="6c0b90f6-8fb8-43e2-b9dc-31ae0d53e439">
+    <attribute id="14732949-ec3a-4c81-b66e-96f62877574e">
       <name>SellStartDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -268,7 +277,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="2e351ba6-677f-48b3-9e28-83766731d454">
+    <attribute id="cb78f8d2-cf71-4474-b69d-50eed56b5a28">
       <name>SellEndDate</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -276,7 +285,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="e8900973-a034-40f4-9b1f-ed3c8f5b027d">
+    <attribute id="de60f5d5-8619-4950-943b-d9a296ef931b">
       <name>DiscontinuedDate</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -284,7 +293,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="696c44e8-bf5d-4938-b479-759da92e1f5b">
+    <attribute id="aac81905-c589-4f50-bdbf-3541bf1c60d3">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -308,7 +317,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="ab7a2d8e-6d73-4e26-9b81-bb171ac97d8f">
+    <attribute id="3cf70224-9656-405e-897c-3c136ca910d4">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

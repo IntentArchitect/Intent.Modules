@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="838946ed-16f6-4d69-9bbe-c333d5eb09f3" type="Class">
+<class id="838946ed-16f6-4d69-9bbe-c333d5eb09f3">
   <name>StateProvince</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>52911bcd-91aa-4719-8132-a57e63c04e90</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="StateProvince" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Person" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="07a15f92-0203-4337-8d63-9d3243abc881">
+    <attribute id="5d687157-de95-4bc3-b32e-b8cb03797e0f">
       <name>StateProvinceID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="5a727ac2-2147-4f3e-b504-9355e77653ae">
+    <attribute id="1157d014-97fb-4fe2-8e54-c412d54f9b41">
       <name>StateProvinceCode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -38,7 +46,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="50e012a8-5e84-4aba-b06c-6cb28843eb59">
+    <attribute id="baee02bc-2e21-41ae-ac52-a75f01f0ba8c">
       <name>CountryRegionCode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -62,7 +70,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="42bb87a6-71b6-4ac7-89c3-ec6c20dbbe1b">
+    <attribute id="81c7d17a-97e8-4a34-9160-10923fe8db85">
       <name>IsOnlyStateProvinceFlag</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -78,7 +86,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="81697015-09d2-45e7-b8ad-bea9c722ee66">
+    <attribute id="e0044ad2-0011-4a56-8c53-39416ba15c1e">
       <name>Name</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -89,6 +97,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
@@ -101,7 +110,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="b688cf6f-6f52-4034-b723-2a2b2572e6e5">
+    <attribute id="c268ab9f-f5cd-4eb5-bcf5-5f896dce382a">
       <name>TerritoryID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -109,7 +118,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="532efac3-e10a-40ba-b69b-63d134f0dc0a">
+    <attribute id="b181ea1f-767a-4b62-b2c4-7f340ffff38a">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -133,7 +142,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="9855c9b7-a1e6-4f2e-8427-94cba40f5c75">
+    <attribute id="a7e257ef-b47f-4c0c-9743-20afd9fb05c0">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

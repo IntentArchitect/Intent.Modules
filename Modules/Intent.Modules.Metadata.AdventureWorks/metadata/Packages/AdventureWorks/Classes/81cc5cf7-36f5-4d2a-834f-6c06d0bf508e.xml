@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="81cc5cf7-36f5-4d2a-834f-6c06d0bf508e" type="Class">
+<class id="81cc5cf7-36f5-4d2a-834f-6c06d0bf508e">
   <name>Vendor</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>84eba9a6-53f5-4774-8fe9-0223df89af2e</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="Vendor" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Purchasing" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="16beb5c7-60ab-44a0-89ad-4f2cd24088d6">
+    <attribute id="73358675-db07-4d70-94e9-3eaa5f49cf5d">
       <name>BusinessEntityID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="aa525a2d-a6e6-4571-895c-cd65de683638">
+    <attribute id="a12b59c2-8d5e-4bea-940b-c97e3708b87c">
       <name>AccountNumber</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -32,6 +40,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="15" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
@@ -44,7 +53,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="e2072eb9-e885-4b5a-95f1-b1653fd45062">
+    <attribute id="790743c7-547b-4bb5-91fd-ba85490badc0">
       <name>Name</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -55,11 +64,12 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="3806a632-bbb2-432f-ab27-d3f14a2d68ba">
+    <attribute id="39fa6faa-8b89-405a-9c37-7a3f824cfc00">
       <name>CreditRating</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -67,7 +77,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="89615394-2293-4054-95da-850c02ec1a50">
+    <attribute id="e830ae4e-c0f5-48cc-8332-ec786500cbcb">
       <name>PreferredVendorStatus</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -83,7 +93,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="486612be-1aaf-4389-abd1-38dd5f722542">
+    <attribute id="171732c1-2cb8-43b9-a236-a2f782b250ae">
       <name>ActiveFlag</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -99,7 +109,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="9f715412-3aa6-4a2e-97f2-f12bb73188e4">
+    <attribute id="e8e7a190-2580-4c84-a943-183bd30fc03a">
       <name>PurchasingWebServiceURL</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -115,7 +125,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="cff71ba6-8a23-4f9e-b1af-c13dbcc9a40d">
+    <attribute id="5f20713d-4b05-415b-aa43-0fee5672e2d3">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

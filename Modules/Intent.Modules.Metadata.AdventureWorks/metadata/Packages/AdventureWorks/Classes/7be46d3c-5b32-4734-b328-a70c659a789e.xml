@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="7be46d3c-5b32-4734-b328-a70c659a789e" type="Class">
+<class id="7be46d3c-5b32-4734-b328-a70c659a789e">
   <name>ProductInventory</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>46a0c52a-7778-4160-9c71-b5139c8d8a4b</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="ProductInventory" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Production" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="1a644074-ed87-41dc-a222-7cd9127ddca6">
+    <attribute id="35af3308-d869-4fc3-a458-887b7888ee1c">
       <name>ProductID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="f8f7ba0f-795d-4c3a-a4d6-2b767c30fac3">
+    <attribute id="f2696411-6b27-42a5-a149-d832ed39d150">
       <name>LocationID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -36,7 +44,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="0a3004c8-8fe3-4f6f-911b-abfbcf9e769c">
+    <attribute id="b26604e9-9872-4fda-ae87-59688eecd6f5">
       <name>Shelf</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -52,7 +60,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="bb5a767e-0d68-441d-b07a-c9afb6cda5d3">
+    <attribute id="0b48d96e-9312-49e1-a677-fbf9bceb028c">
       <name>Bin</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -60,7 +68,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="530f95ed-88a8-4446-8a63-dacd2cea9c55">
+    <attribute id="b118fa00-59c3-4436-9be0-58a131b76ec4">
       <name>Quantity</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -76,7 +84,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="f8e2804e-ae27-4780-8206-95827d032aec">
+    <attribute id="5fd3f4a8-3449-41d7-b57e-c4e9fa84ff27">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -92,7 +100,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="088eec60-9d81-46f1-b901-054615fd96d0">
+    <attribute id="49352b98-e16a-4fb6-971b-7a4c307927b7">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

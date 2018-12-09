@@ -147,6 +147,19 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
 
             return string.Empty;
         }
+
+        private string GetForeignKeyLambda(IAssociationEnd associationEnd)
+        {
+            var columns = associationEnd.GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.OtherEnd().Name().ToPascalCase() + "Id")
+                .Split(',')
+                .Select(x => x.Trim())
+                .ToList();
+            if (columns.Count() == 1)
+            {
+                return $"x => x.{columns.Single()}";
+            }
+            return $"x => new {{ {string.Join(", ", columns.Select(x => "x." + x))}}}";
+        }
     }
 
     public interface IEFMappingTemplateDecorator : ITemplateDecorator

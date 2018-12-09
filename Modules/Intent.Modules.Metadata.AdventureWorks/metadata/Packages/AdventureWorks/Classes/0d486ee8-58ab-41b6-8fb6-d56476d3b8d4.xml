@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="0d486ee8-58ab-41b6-8fb6-d56476d3b8d4" type="Class">
+<class id="0d486ee8-58ab-41b6-8fb6-d56476d3b8d4">
   <name>PersonCreditCard</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="PersonCreditCard" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Sales" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="1e9d0ef0-884c-4d03-b813-abb8323d5fcf">
+    <attribute id="d6ba9938-110d-47d5-bd77-cadd5cdfd200">
       <name>BusinessEntityID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="44b5f4b0-e09a-4a38-8f73-8aac6e9da241">
+    <attribute id="3498642f-b8d6-4ba6-b2d8-ad601a040647">
       <name>CreditCardID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -36,7 +44,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="428ca620-411d-4d18-8a5e-eff1c1a8cf91">
+    <attribute id="47ec7469-72a6-485c-8687-eaf8acb19d5d">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

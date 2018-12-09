@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Metadata\Domain\Folders\Stereotypes.xml" />
+    <Content Include="Metadata\Domain\Stereotypes\Table.xml" />
     <Content Include="Metadata\Domain\Stereotypes\Default Constraint.xml" />
     <Content Include="Metadata\Domain\Stereotypes\Foreign Key.xml" />
     <Content Include="Metadata\Domain\Stereotypes\Primary Key.xml" />

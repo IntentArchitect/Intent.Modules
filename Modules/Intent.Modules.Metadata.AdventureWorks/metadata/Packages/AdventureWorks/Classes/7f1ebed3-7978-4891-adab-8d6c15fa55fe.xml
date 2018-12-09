@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="7f1ebed3-7978-4891-adab-8d6c15fa55fe" type="Class">
+<class id="7f1ebed3-7978-4891-adab-8d6c15fa55fe">
   <name>Store</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="Store" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Sales" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="ee431e44-f606-4da3-a7ec-31aa60e1470e">
+    <attribute id="edfe3252-ffe9-488d-9861-d3c2a3503182">
       <name>BusinessEntityID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="ce8cc790-f57d-40ad-86fb-e6eba0987bda">
+    <attribute id="71004659-da6a-4130-be3b-fc135e4f5bfb">
       <name>Name</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -32,11 +40,12 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="1f0f696c-d369-4f4b-90a4-e6c298ae9d66">
+    <attribute id="1179cbcc-c4e4-4800-b9c3-43dd86e347c1">
       <name>SalesPersonID</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -53,7 +62,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="f06b2311-ff9d-4704-8105-5c1c6551363a">
+    <attribute id="e5063ad5-bdcd-4975-a137-171cf999d8db">
       <name>Demographics</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -61,7 +70,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="084bc406-29f2-451b-b1c2-fc5b287094b7">
+    <attribute id="79fa3ab5-ee11-44af-84fd-b99a2654fced">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -85,7 +94,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="341c375b-61e4-49fb-a0cc-9e2103d3bd83">
+    <attribute id="c77cfda4-1831-4d6b-9d7b-98f1d39f4501">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

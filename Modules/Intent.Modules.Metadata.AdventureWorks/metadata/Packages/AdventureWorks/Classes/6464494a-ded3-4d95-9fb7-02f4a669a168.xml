@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="6464494a-ded3-4d95-9fb7-02f4a669a168" type="Class">
+<class id="6464494a-ded3-4d95-9fb7-02f4a669a168">
   <name>CountryRegionCurrency</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="CountryRegionCurrency" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Sales" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="56b4f056-b2d4-4354-9f10-fcd18a3374d9">
+    <attribute id="eea0be3a-1046-4220-9482-2cd18bea96e4">
       <name>CountryRegionCode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -28,7 +36,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="fee95f1d-157f-4ae4-a7a5-628331745d4a">
+    <attribute id="78169b7f-f6ff-4d8d-80d2-53234556dca3">
       <name>CurrencyCode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -51,7 +59,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="43484eb6-1d97-455f-bcb9-8d652b6ef204">
+    <attribute id="a49d8c4b-0665-47a6-86f7-39324c84f74a">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

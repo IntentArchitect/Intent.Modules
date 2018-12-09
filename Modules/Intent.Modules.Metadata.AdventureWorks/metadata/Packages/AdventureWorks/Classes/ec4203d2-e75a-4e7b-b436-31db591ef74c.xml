@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ec4203d2-e75a-4e7b-b436-31db591ef74c" type="Class">
+<class id="ec4203d2-e75a-4e7b-b436-31db591ef74c">
   <name>CreditCard</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="CreditCard" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Sales" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="735842d7-a424-4d92-93dd-313428b73cec">
+    <attribute id="26fbf629-e516-4ed2-8cf2-d0a65de2dfc0">
       <name>CreditCardID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="1f0dbcdf-f557-4b36-9d12-b54751cc77ed">
+    <attribute id="90d0da01-add4-4267-b6c3-c5de38e2e5c9">
       <name>CardType</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -37,7 +45,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="ec5d7003-dc72-4741-9915-96851c2eb548">
+    <attribute id="7eba117c-7728-4757-b950-adc3df2a1cde">
       <name>CardNumber</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -61,7 +69,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="66823f1b-4dc7-4b19-af5d-53e7d2735225">
+    <attribute id="59e5e6a5-ef22-4649-82c7-f8341c19446f">
       <name>ExpMonth</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -69,7 +77,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="4f31518c-fb04-454b-baf3-75f5bb66954d">
+    <attribute id="6bbeb9c6-4ac4-4e60-8400-0e2c1e9af41f">
       <name>ExpYear</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -77,7 +85,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="6afe8ad6-3028-4d6a-81fa-3f48d9fee8be">
+    <attribute id="4d3404d3-c5b0-436c-8473-3a843ab72764">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

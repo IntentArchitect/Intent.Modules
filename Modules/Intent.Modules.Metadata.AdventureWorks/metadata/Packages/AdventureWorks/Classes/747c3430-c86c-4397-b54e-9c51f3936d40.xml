@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="747c3430-c86c-4397-b54e-9c51f3936d40" type="Class">
+<class id="747c3430-c86c-4397-b54e-9c51f3936d40">
   <name>ProductProductPhoto</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>46a0c52a-7778-4160-9c71-b5139c8d8a4b</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="ProductProductPhoto" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Production" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="d8862338-f1ba-4447-9785-c4b84695f5bf">
+    <attribute id="3a4ec8b7-1f27-4270-bc9c-38c258ae2aab">
       <name>ProductID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -29,7 +37,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="000803a7-ae19-4b4e-98eb-31c678a65c3b">
+    <attribute id="c68aeca6-508f-4409-88ec-0f0ef0c90943">
       <name>ProductPhotoID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -52,7 +60,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="0b46d696-4687-47d8-9d4b-48532005bb0a">
+    <attribute id="0411c958-b8d6-401c-be61-7edaff39ff63">
       <name>Primary</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -68,7 +76,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="dde51fa8-9cae-4365-8c41-5999fbb3bb9b">
+    <attribute id="c41162ef-d3a7-486d-b166-4f18e2a34ac6">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

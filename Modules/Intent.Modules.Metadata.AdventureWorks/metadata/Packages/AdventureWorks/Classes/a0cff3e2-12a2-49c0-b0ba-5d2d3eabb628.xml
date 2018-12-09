@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="a0cff3e2-12a2-49c0-b0ba-5d2d3eabb628" type="Class">
+<class id="a0cff3e2-12a2-49c0-b0ba-5d2d3eabb628">
   <name>Department</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>87c60c22-541e-4e2e-89a5-8bef5f041756</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="Department" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="HumanResources" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="9624e9f4-9f37-4209-bfa0-374d15459a6a">
+    <attribute id="c71e272d-c528-4eb7-a4cc-4fec2da61398">
       <name>DepartmentID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="87af2b64-8fe1-40b9-8a51-f931ec361693">
+    <attribute id="e202719e-075c-474b-8c97-9fe430fc4834">
       <name>Name</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -32,6 +40,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
@@ -44,7 +53,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="0cfab543-43f9-492c-9d2c-3a00f0ff70a4">
+    <attribute id="554d5094-a2d1-46c0-a254-d318324e9d10">
       <name>GroupName</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -55,11 +64,12 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="36efabb8-19f9-4a29-8166-75602e35830f">
+    <attribute id="f00fde3f-aa73-4108-9061-9285f2d7cfed">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

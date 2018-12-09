@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="a3724913-6277-43cd-a284-5bb9621fc351" type="Class">
+<class id="a3724913-6277-43cd-a284-5bb9621fc351">
   <name>SalesOrderDetail</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="SalesOrderDetail" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Sales" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="ad785293-026f-4123-96e6-c5fc3b5a96ab">
+    <attribute id="1a506b35-0f90-4d66-b1b5-d2edb0e56338">
       <name>SalesOrderID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="598bf610-333b-4341-9173-63500543756b">
+    <attribute id="2c5ea960-8d00-4559-acee-26d6afd46cd3">
       <name>SalesOrderDetailID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -36,7 +44,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="aebb40ce-2be7-4b36-82d8-ea0e7f17e1c7">
+    <attribute id="e297e0df-5192-4d44-a24a-453f8c036a99">
       <name>CarrierTrackingNumber</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -52,7 +60,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="6df0c044-5ee3-4a6b-8fb8-7a2e4b9cca50">
+    <attribute id="3dccb7bb-0085-4fff-b48d-d7b44bafca9e">
       <name>OrderQty</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -60,7 +68,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="56d4d2aa-b243-43ee-8dd0-3773d1959a40">
+    <attribute id="01f1f3c9-bcf1-4556-af35-62d0f1391f12">
       <name>ProductID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -77,7 +85,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="06bd81f5-f75c-4412-94bd-75b2693e6445">
+    <attribute id="ce501d5a-5971-4dc3-ae53-d2346ee2c3b1">
       <name>SpecialOfferID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -85,7 +93,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="7aec9c8f-77bb-4347-bc6b-26ae84bb2525">
+    <attribute id="c7267ad8-3110-42f4-9700-e22915b413ce">
       <name>UnitPrice</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -101,7 +109,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="aeffea6d-d297-4c4a-a807-3aba9f31d911">
+    <attribute id="6950a271-f744-45a2-9e48-73481d40c768">
       <name>UnitPriceDiscount</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -124,7 +132,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="0f26591e-9b3c-48a1-8696-243c6e8fd80a">
+    <attribute id="a26ff397-8eb2-4703-871d-61e132da7aa5">
       <name>LineTotal</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -132,7 +140,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="aeec51ed-018a-404a-9156-dd84aa684e73">
+    <attribute id="792a5058-3c41-48e3-80aa-541607d8f866">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -156,7 +164,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="12462289-6da4-401e-8a67-f3cef1896b97">
+    <attribute id="fad6d324-1fa2-4bcd-a7f3-31bc75625ffd">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

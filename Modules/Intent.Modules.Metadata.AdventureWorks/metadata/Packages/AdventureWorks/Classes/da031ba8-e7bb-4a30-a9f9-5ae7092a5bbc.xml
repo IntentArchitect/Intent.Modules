@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="da031ba8-e7bb-4a30-a9f9-5ae7092a5bbc" type="Class">
+<class id="da031ba8-e7bb-4a30-a9f9-5ae7092a5bbc">
   <name>AWBuildVersion</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>360c8359-baa7-4421-8ee0-6a464401e91f</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="AWBuildVersion" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="dbo" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="516450cc-8cf2-40cf-9050-0b23a858ad48">
+    <attribute id="398240a5-d9c8-4b3c-91a5-ab503ea99778">
       <name>SystemInformationID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="d38ad361-8385-4c02-bf50-9ffa63d3c1c2">
+    <attribute id="1d76534e-e359-490d-a6ec-10dab3fbbe3f">
       <name>DatabaseVersion</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -37,7 +45,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="6301329d-f472-4b1d-97d3-c1ed782abf02">
+    <attribute id="83d2e7b9-0b6d-48fb-bbb8-33e0522cc78f">
       <name>VersionDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -45,7 +53,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="ddcf7b74-fba0-4896-b499-f1027bf6d42a">
+    <attribute id="9a64b669-3336-4cf7-8170-9a650ee0711c">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

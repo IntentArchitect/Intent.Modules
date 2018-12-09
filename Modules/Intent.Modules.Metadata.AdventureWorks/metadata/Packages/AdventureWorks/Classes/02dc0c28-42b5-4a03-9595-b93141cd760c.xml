@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="02dc0c28-42b5-4a03-9595-b93141cd760c" type="Class">
+<class id="02dc0c28-42b5-4a03-9595-b93141cd760c">
   <name>BusinessEntity</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>52911bcd-91aa-4719-8132-a57e63c04e90</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="BusinessEntity" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Person" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="4313a330-27b7-412f-be98-28368513aaaa">
+    <attribute id="2f24b354-ed8c-4e2d-acb3-723d06886b40">
       <name>BusinessEntityID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="2e8b76e8-10f8-41d6-9dfe-bd17c1e26f00">
+    <attribute id="7c7b09d6-7c88-47fd-80aa-a47631d2c878">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -45,7 +53,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="22cbaeba-f018-4621-a372-6cee76696631">
+    <attribute id="c89afcb1-fa36-4356-831f-7254c8ccde17">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

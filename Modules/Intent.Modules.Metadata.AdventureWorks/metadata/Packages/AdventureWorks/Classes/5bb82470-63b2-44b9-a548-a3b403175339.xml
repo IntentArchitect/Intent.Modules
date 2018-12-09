@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="5bb82470-63b2-44b9-a548-a3b403175339" type="Class">
+<class id="5bb82470-63b2-44b9-a548-a3b403175339">
   <name>WorkOrder</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>46a0c52a-7778-4160-9c71-b5139c8d8a4b</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="WorkOrder" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Production" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="b43d5844-983b-43a3-a689-129c79b9f94a">
+    <attribute id="b495700d-05fe-4d04-b248-3220c39c24bc">
       <name>WorkOrderID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="8ff8bdef-6331-4928-a549-0e1904270d4a">
+    <attribute id="e562a375-c400-499e-8a44-fb9dce2c7379">
       <name>ProductID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -38,7 +46,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="73f7a9aa-dc5e-46e4-8dfb-cec4cda69fd1">
+    <attribute id="1f3a80a6-118e-4dce-b60a-7751c1d3fe2a">
       <name>OrderQty</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -46,7 +54,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="4123f295-2063-4d9d-a3d7-c3a0b057665c">
+    <attribute id="2003308e-bd7d-42d0-b539-d037cabac291">
       <name>StockedQty</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -54,7 +62,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="b3d063f2-3717-452c-846f-68a6d1421723">
+    <attribute id="b73c63dc-8593-4274-be3f-613975ea9f07">
       <name>ScrappedQty</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -62,7 +70,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="5e9de2fc-4328-4e60-83b3-67bdc5c9ad7f">
+    <attribute id="76f34b83-23ff-4749-868b-e95dc987806d">
       <name>StartDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -70,7 +78,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="e9b46d83-e441-4e43-a5f8-a30f2d2cd64a">
+    <attribute id="11779792-ba6e-4258-8cd1-1e4cbbdf187d">
       <name>EndDate</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -78,7 +86,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="d85a9215-150b-4af7-80dc-0d66b0989602">
+    <attribute id="67afc417-af09-49b7-a701-53936232a43e">
       <name>DueDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -86,7 +94,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="aad53b7f-1847-41bb-a521-35c96cf11412">
+    <attribute id="3e9c33b4-21f7-48ab-88e3-0327c4262a9e">
       <name>ScrapReasonID</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -103,7 +111,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="21435f55-f8f8-49f1-95cb-c0a2cfbbc7d6">
+    <attribute id="87ffd264-f2e9-422b-a04b-23f3c00a5195">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="3d3da098-85ff-44a5-9e55-136c0dfb3d63" type="Class">
+<class id="3d3da098-85ff-44a5-9e55-136c0dfb3d63">
   <name>EmployeePayHistory</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>87c60c22-541e-4e2e-89a5-8bef5f041756</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="EmployeePayHistory" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="HumanResources" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="cfc8a16e-df43-4edd-b2b3-e5211712c67b">
+    <attribute id="0c7fad70-32f7-42cd-a77f-66ce5699127b">
       <name>BusinessEntityID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="0601dd72-245a-4d1e-8029-a257b4beaee0">
+    <attribute id="4ca4846d-1756-43dc-a73a-ea398e51b549">
       <name>RateChangeDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -36,7 +44,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="ed53dc67-e020-4247-a62c-f51038636eb2">
+    <attribute id="c4f74ec3-3918-40ed-bb7d-3761a566e565">
       <name>Rate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -52,7 +60,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="c9630bd0-447b-4201-b924-80f35177b66b">
+    <attribute id="41700623-9719-4f0d-8eaa-4c28b24a343f">
       <name>PayFrequency</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -60,7 +68,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="ed9a17dc-3b92-485c-a1f1-0cdc8bbfa31a">
+    <attribute id="99cfedf4-abd9-4cbc-866b-6ed82e21dd5c">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

@@ -21,5 +21,4 @@
     <stereotypes />
   </targetEnd>
   <associationType>aggregation</associationType>
-  <stereotypes />
 </association>

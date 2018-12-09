@@ -16,10 +16,9 @@
   <targetEnd classId="5c9482bf-a09c-4316-8daf-d24833c08f68">
     <name>OwnerEmployee</name>
     <isNavigable>true</isNavigable>
-    <minMultiplicity>0</minMultiplicity>
+    <minMultiplicity>1</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />
   </targetEnd>
   <associationType>aggregation</associationType>
-  <stereotypes />
 </association>

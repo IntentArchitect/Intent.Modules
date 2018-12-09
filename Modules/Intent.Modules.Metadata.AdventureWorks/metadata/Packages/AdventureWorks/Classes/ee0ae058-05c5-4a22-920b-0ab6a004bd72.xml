@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ee0ae058-05c5-4a22-920b-0ab6a004bd72" type="Class">
+<class id="ee0ae058-05c5-4a22-920b-0ab6a004bd72">
   <name>Person</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>52911bcd-91aa-4719-8132-a57e63c04e90</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="Person" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Person" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="adb8fabd-0a49-47c5-98c5-5810e3bdd474">
+    <attribute id="55696822-d333-4113-b11b-36b062a04a28">
       <name>BusinessEntityID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="06f07ca8-5db6-4c4b-bcf9-82a3735c196a">
+    <attribute id="50effe2a-198f-4fe3-b420-cc3b27695022">
       <name>PersonType</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -29,7 +37,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="33a1d290-ffa9-4ad1-883c-b23dbc3a0fad">
+    <attribute id="8213c324-2dc9-426c-9a8a-15f5bac5a670">
       <name>NameStyle</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -45,7 +53,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="e6d2bbf5-042e-41b0-b763-b2b5dcb8aa76">
+    <attribute id="e57ce4be-d2aa-4ee9-8965-04a29bf990af">
       <name>Title</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -61,7 +69,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="9ff5640e-1969-40b0-a731-242f8f642cf6">
+    <attribute id="8090c4f1-6384-4da1-975b-6ac22e738756">
       <name>FirstName</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -72,6 +80,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
@@ -84,7 +93,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="825094ef-796b-4207-bbac-2bb9579ed375">
+    <attribute id="faa09ec2-a94e-4052-913d-74e0ba34a8de">
       <name>MiddleName</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -95,6 +104,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
@@ -107,7 +117,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="842b1098-3fe7-4736-a019-3fc47afd453c">
+    <attribute id="a090ffee-15f2-4dc9-aa68-52f684bbe5f1">
       <name>LastName</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -118,6 +128,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
@@ -130,7 +141,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="24a2328d-f917-457f-956c-f7ed97e54530">
+    <attribute id="dade7693-7e0e-4e2a-9346-e41fe670b9a7">
       <name>Suffix</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -146,7 +157,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="3a701cfb-494a-410a-a6d2-658f19706c88">
+    <attribute id="0b83a392-9c82-4c32-9cd2-4d92cf2cb6ce">
       <name>EmailPromotion</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -162,7 +173,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="46fec79b-4f6b-4e52-b81f-2ef72cc7e95f">
+    <attribute id="bf484e56-22ff-4c4a-a2d8-5fe667c05fac">
       <name>AdditionalContactInfo</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -170,7 +181,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="3b83a74c-95ff-4bce-9bc5-ac3b2b6da7b2">
+    <attribute id="2ad43b00-d8e1-4e26-b558-25a9d8cb2000">
       <name>Demographics</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -178,7 +189,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="e1d68af5-4a8c-4271-b75f-5af2f23a8b9c">
+    <attribute id="4fe17fd3-7cd9-47c6-91c6-547647eaf164">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -202,7 +213,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="dde1ca47-1397-4b22-9b93-175c985bfc9b">
+    <attribute id="010c5775-3f07-4553-abe0-d0b3933ac8e6">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="84fbb32e-c0a7-4012-bb2f-1e7a1d2bc006" type="Class">
+<class id="84fbb32e-c0a7-4012-bb2f-1e7a1d2bc006">
   <name>WorkOrderRouting</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>46a0c52a-7778-4160-9c71-b5139c8d8a4b</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="WorkOrderRouting" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Production" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="05f04758-bb64-4aad-adc0-a6cd2bd6bfa1">
+    <attribute id="6f335d85-edf3-44e9-b863-7e2196843bbf">
       <name>WorkOrderID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="346ecf8a-41d3-41c3-8cf9-e31238a9359a">
+    <attribute id="37caee6c-7073-4b07-9507-c1320a017e77">
       <name>ProductID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -44,7 +52,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="aa07a665-9231-4d6c-994f-1dde7d304f9e">
+    <attribute id="ff7a5290-da87-4df4-bcf0-9e8c81e5693d">
       <name>OperationSequence</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -59,7 +67,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="0e85fee6-b9ce-4cf9-8674-d51a29e7b536">
+    <attribute id="a8fda715-57eb-4a20-a448-e44970eeee56">
       <name>LocationID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -67,7 +75,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="59b1bb37-9c2a-41d4-b786-822ee92379d6">
+    <attribute id="e8357993-a3e0-4d20-9df9-7c05d0130b1e">
       <name>ScheduledStartDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -75,7 +83,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="d03f3072-9ec1-4b1b-9c7c-42ed0521cabc">
+    <attribute id="ab59dc71-599f-44c4-82a8-fd71176a1004">
       <name>ScheduledEndDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -83,7 +91,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="79b670c1-b703-4f20-afca-30aa796cb710">
+    <attribute id="e5397ecd-e365-46a4-b56c-1309d0935d1e">
       <name>ActualStartDate</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -91,7 +99,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="4e7e387f-d50f-4783-947f-8cecebe3ada0">
+    <attribute id="0ba34449-0a6b-4811-ba96-850d6d7166e6">
       <name>ActualEndDate</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -99,7 +107,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="7de23ba4-ba6e-4d2c-b031-09b3376251c9">
+    <attribute id="01cf3009-8f81-47d9-a5b6-34181234133a">
       <name>ActualResourceHrs</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -115,7 +123,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="6ddf27bd-f70f-447f-869c-22e1167d5e80">
+    <attribute id="e57694d1-00a8-478e-9119-7fa12da90c10">
       <name>PlannedCost</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -131,7 +139,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="0567d33a-d131-4e84-a61c-b8868331589b">
+    <attribute id="1228504c-e6d8-43c3-8234-414747f7a550">
       <name>ActualCost</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -147,7 +155,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="36b8f621-0ea7-4430-844e-6e66a2ddfb61">
+    <attribute id="f57ff64a-bbbc-4c3c-ad42-c362f6fcaba7">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

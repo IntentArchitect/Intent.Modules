@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="f261386f-d798-4310-90cf-caa5522e70df" type="Class">
+<class id="f261386f-d798-4310-90cf-caa5522e70df">
   <name>ProductCategory</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>46a0c52a-7778-4160-9c71-b5139c8d8a4b</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="ProductCategory" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Production" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="cb6ea984-cac0-48b9-afce-44c43610335c">
+    <attribute id="b6b950b3-54c8-4334-9935-1143fd80f438">
       <name>ProductCategoryID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="72922f60-90cc-41fc-9bbf-cc80a434c1ec">
+    <attribute id="3e3d49ff-e613-4d20-8316-29f948e05f9f">
       <name>Name</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -32,6 +40,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
@@ -44,7 +53,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="c610d279-243d-43ff-8e92-4f3266dfebf7">
+    <attribute id="c11e8539-a35a-43c6-a326-e84d04d7464d">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -68,7 +77,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="0f7cf665-1c31-4921-b36e-22835fad31fb">
+    <attribute id="0112998d-636b-47df-99d9-92f857330409">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

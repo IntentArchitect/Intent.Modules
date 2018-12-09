@@ -16,10 +16,9 @@
   <targetEnd classId="088e4d30-610f-4f12-9bd1-20491c91a96f">
     <name>FromCurrency</name>
     <isNavigable>true</isNavigable>
-    <minMultiplicity>0</minMultiplicity>
+    <minMultiplicity>1</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />
   </targetEnd>
   <associationType>aggregation</associationType>
-  <stereotypes />
 </association>

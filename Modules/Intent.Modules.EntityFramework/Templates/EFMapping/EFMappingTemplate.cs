@@ -137,7 +137,14 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             this.Write("            this.ToTable(\"");
             
             #line 82 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetStereotypeProperty("Table", "Name", Model.Name)));
+            
+            #line default
+            #line hidden
+            this.Write("\", \"");
+            
+            #line 82 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetStereotypeProperty("Table", "Schema", "dbo")));
             
             #line default
             #line hidden
@@ -194,15 +201,15 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             
             #line default
             #line hidden
-            this.Write("            builder.HasKey(x => x.Id);\r\n            builder.Property(x => x.Id).H" +
-                    "asColumnName(\"Id\");\r\n");
+            this.Write("            this.HasKey(x => x.Id);\r\n            this.Property(x => x.Id).HasColu" +
+                    "mnName(\"Id\");\r\n");
             
             #line 106 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
   } else {
             
             #line default
             #line hidden
-            this.Write("            builder.HasKey(x => ");
+            this.Write("            this.HasKey(x => ");
             
             #line 107 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((explicitPrimaryKeys.Count() == 1 ? "x." + explicitPrimaryKeys.Single().Name.ToPascalCase() : string.Format("new {{ {0} }}", string.Join(", ", explicitPrimaryKeys.Select(x => "x." + x.Name))))));
@@ -217,7 +224,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             
             #line default
             #line hidden
-            this.Write("            builder.HasBaseType<");
+            this.Write("            this.HasBaseType<");
             
             #line 110 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentClass.Name));
@@ -438,10 +445,10 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t.HasForeignKey(x => x.");
+            this.Write("\t\t\t\t.HasForeignKey(");
             
             #line 182 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.OtherEnd().GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.Name().ToPascalCase() + "Id")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetForeignKeyLambda(associationEnd.OtherEnd())));
             
             #line default
             #line hidden
@@ -495,10 +502,10 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t.HasForeignKey(x => x.");
+            this.Write("\t\t\t\t.HasForeignKey(");
             
             #line 193 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.OtherEnd().Name().ToPascalCase() + "Id")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetForeignKeyLambda(associationEnd)));
             
             #line default
             #line hidden
@@ -644,9 +651,9 @@ this.Write("\r\n");
         #line hidden
         
         #line 231 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-  if ((associationEnd.Association.AssociationType == AssociationType.Composition && associationEnd.Association.RelationshipString() == "0..1->1")
-            || (associationEnd.Association.AssociationType == AssociationType.Aggregation && associationEnd.Association.RelationshipString() == "0..1->1")
-        )
+  if (((associationEnd.Association.AssociationType == AssociationType.Composition && associationEnd.Association.RelationshipString() == "0..1->1")
+            || (associationEnd.Association.AssociationType == AssociationType.Aggregation && associationEnd.Association.RelationshipString() == "0..1->1"))
+         && Model.Attributes.All(a => a.Name.ToPascalCase() != associationEnd.OtherEnd().GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.Name().ToPascalCase() + "Id").ToPascalCase()))
     {
         
         #line default
@@ -660,7 +667,7 @@ this.Write("            .Map(m => m.MapKey(\"");
         #line hidden
         
         #line 235 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.Name().ToPascalCase() + "Id"));
+this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.OtherEnd().GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.Name().ToPascalCase() + "Id")));
 
         
         #line default

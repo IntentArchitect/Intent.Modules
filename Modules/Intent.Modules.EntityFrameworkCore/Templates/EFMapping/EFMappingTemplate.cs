@@ -136,7 +136,14 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             this.Write("            builder.ToTable(\"");
             
             #line 80 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetStereotypeProperty("Table", "Name", Model.Name)));
+            
+            #line default
+            #line hidden
+            this.Write("\", \"");
+            
+            #line 80 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\EFMapping\EFMappingTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetStereotypeProperty("Table", "Schema", "dbo")));
             
             #line default
             #line hidden

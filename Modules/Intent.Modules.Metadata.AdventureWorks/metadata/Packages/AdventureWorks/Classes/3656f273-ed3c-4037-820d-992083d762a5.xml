@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="3656f273-ed3c-4037-820d-992083d762a5" type="Class">
+<class id="3656f273-ed3c-4037-820d-992083d762a5">
   <name>PhoneNumberType</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>52911bcd-91aa-4719-8132-a57e63c04e90</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="PhoneNumberType" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Person" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="70af4247-d7b2-4191-905f-2cf1ba6ca0b4">
+    <attribute id="4b2ec5a0-69fd-441b-93b6-a3e5c05b9b1f">
       <name>PhoneNumberTypeID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="ac4eb545-0a76-419e-b81b-a0da6b9427c6">
+    <attribute id="a3eee30c-2dd5-4f17-8ecf-a3d301738556">
       <name>Name</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -32,11 +40,12 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="3696c70c-3e24-4dc3-8a62-61b8a7ee62e1">
+    <attribute id="2da262cd-bad2-4bbe-946a-873954242cb1">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

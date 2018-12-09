@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="88dfbd93-22a4-49ad-9430-2372d2a4a38f" type="Class">
+<class id="88dfbd93-22a4-49ad-9430-2372d2a4a38f">
   <name>CountryRegion</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>52911bcd-91aa-4719-8132-a57e63c04e90</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="CountryRegion" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Person" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="d775dcce-7fbf-4859-b059-b830c7bc0db1">
+    <attribute id="9b47d5c8-2b2c-467c-b831-9a7a57c20814">
       <name>CountryRegionCode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -28,7 +36,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="e75aebcd-6ecc-4b0d-b3c3-5808e00103a1">
+    <attribute id="ee77d11f-59fa-48c5-96f4-8a17aa88fde7">
       <name>Name</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -39,6 +47,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
@@ -51,7 +60,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="04de736e-bca0-43bc-9c80-e50fec3ebbf9">
+    <attribute id="abf0a053-4400-4209-93da-ca3fa0afd5ce">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

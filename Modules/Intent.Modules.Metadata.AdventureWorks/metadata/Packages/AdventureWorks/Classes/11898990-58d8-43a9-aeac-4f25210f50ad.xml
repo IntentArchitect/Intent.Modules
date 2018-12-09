@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="11898990-58d8-43a9-aeac-4f25210f50ad" type="Class">
+<class id="11898990-58d8-43a9-aeac-4f25210f50ad">
   <name>DatabaseLog</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>360c8359-baa7-4421-8ee0-6a464401e91f</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="DatabaseLog" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="dbo" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="6bc0b658-33e7-4bff-8017-482f718d58a5">
+    <attribute id="2c494ca9-aeca-4fc8-8083-00653acc4d8f">
       <name>DatabaseLogID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -29,7 +37,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="00454bb5-5b01-4eab-91b0-1acbbb8fafc6">
+    <attribute id="24380da2-b648-43b6-8769-6c4546351c5d">
       <name>PostTime</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -37,7 +45,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="b61bb674-a46f-4180-8987-fa6765e0c3db">
+    <attribute id="5dbd697e-9d2f-4c9a-a69b-298c9bc15349">
       <name>DatabaseUser</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -45,7 +53,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="c33237a1-22d5-45be-b24d-cede5ae651cd">
+    <attribute id="f6dc6599-d94e-4ce6-b2a2-888b9f533ad4">
       <name>Event</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -53,7 +61,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="b19fab18-a322-499b-8359-a4455a030ed0">
+    <attribute id="b2eeb3d5-bf98-4c0a-a57a-f49fde87aa4e">
       <name>Schema</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -61,7 +69,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="fd5b9428-47bc-494a-aa11-03c502e854a3">
+    <attribute id="2685bbf8-e3aa-4d18-811a-d5aac16ea501">
       <name>Object</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -69,7 +77,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="bee653e8-10e5-4480-bf42-6d302708a944">
+    <attribute id="fc1af17f-3036-4481-951d-dca75cc0aff0">
       <name>TSQL</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -85,7 +93,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="7c6b6c04-65d1-4602-be40-d5f878590889">
+    <attribute id="cd52483d-64ad-49fc-b921-a8b83c80b384">
       <name>XmlEvent</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

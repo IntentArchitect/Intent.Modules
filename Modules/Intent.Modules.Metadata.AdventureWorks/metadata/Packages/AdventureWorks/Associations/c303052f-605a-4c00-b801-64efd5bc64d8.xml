@@ -16,10 +16,9 @@
   <targetEnd classId="a303eabe-ccb3-441a-87b9-ddc5e0670614">
     <name>ComponentProduct</name>
     <isNavigable>true</isNavigable>
-    <minMultiplicity>0</minMultiplicity>
+    <minMultiplicity>1</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />
   </targetEnd>
   <associationType>aggregation</associationType>
-  <stereotypes />
 </association>

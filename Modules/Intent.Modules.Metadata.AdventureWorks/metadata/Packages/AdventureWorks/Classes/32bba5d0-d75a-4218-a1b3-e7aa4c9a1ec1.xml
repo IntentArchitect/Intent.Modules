@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="32bba5d0-d75a-4218-a1b3-e7aa4c9a1ec1" type="Class">
+<class id="32bba5d0-d75a-4218-a1b3-e7aa4c9a1ec1">
   <name>SalesPerson</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="SalesPerson" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Sales" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="d324d932-ee99-4f47-a219-636d36e3a6ff">
+    <attribute id="9f93b1c3-4e2d-41ae-a263-f1c655df2406">
       <name>BusinessEntityID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="01699476-6ed3-4517-ba09-53519d64045e">
+    <attribute id="5c92707e-3a87-416c-a9fc-c141f3c7674e">
       <name>TerritoryID</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -29,7 +37,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="5e38cb60-6cf2-49d0-8cb1-36001eaba973">
+    <attribute id="e4d7e770-e3ad-4952-9b6d-171d99796f2b">
       <name>SalesQuota</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -45,7 +53,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="435f30e7-eab2-4a58-b3ac-c0184e5f65a4">
+    <attribute id="dece17b7-46fa-4e29-a35d-fd28ab755d53">
       <name>Bonus</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -68,7 +76,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="b16d047d-5eae-4722-87f7-d3fc46b89ebd">
+    <attribute id="b02b5ce2-5c80-47f6-b8b8-2e7a2a552988">
       <name>CommissionPct</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -91,7 +99,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="fe4fb711-c7b6-4410-ae62-65faa38c895a">
+    <attribute id="7a3414c5-b84a-446e-aaec-90744a9a271f">
       <name>SalesYTD</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -114,7 +122,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="4b8dc9a2-9925-45af-8bc3-3707b447a596">
+    <attribute id="f0ae5468-6f31-4885-9dfc-b064cd28a17c">
       <name>SalesLastYear</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -137,7 +145,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="389f2bfc-d3da-429d-b5cd-c69bd95818ff">
+    <attribute id="ea919c52-14e2-4c04-b51f-cac9ffa0c722">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -161,7 +169,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="26e0b724-278d-47d8-9f24-7c12fb93c258">
+    <attribute id="59a9449e-04f4-4790-8ec1-7893aa28edba">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

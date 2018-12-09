@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="f14bf6db-6816-4a25-809d-8282e49f9c68" type="Class">
+<class id="f14bf6db-6816-4a25-809d-8282e49f9c68">
   <name>ErrorLog</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>360c8359-baa7-4421-8ee0-6a464401e91f</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="ErrorLog" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="dbo" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="2f66ac5f-7f5a-4ee7-9690-954b3e9e53be">
+    <attribute id="136e1d3d-0fbe-4a75-bd9f-cacf02c6236b">
       <name>ErrorLogID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="4f710af8-8b40-4107-9f1c-77e15f5f70ee">
+    <attribute id="e5156c75-f72f-4a36-80bb-eccadb16a4ff">
       <name>ErrorTime</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -37,7 +45,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="3e92deb4-3441-4975-8e4c-62612a90e5ad">
+    <attribute id="6a07b2ba-2b0a-456d-b9f4-b80bfcc61471">
       <name>UserName</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -45,7 +53,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="e23d6aae-bbef-4e84-8468-23ffe7771159">
+    <attribute id="58d1ef97-2d3c-4f26-909e-f01ee34ffcc2">
       <name>ErrorNumber</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -53,7 +61,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="2c4efaa3-63d0-496d-8c0b-16dedd5f8024">
+    <attribute id="e449c23f-0512-4f79-83fb-78c550a25ccd">
       <name>ErrorSeverity</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -61,7 +69,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="05ee2d6a-8b1b-4518-afec-3557bfea1b1e">
+    <attribute id="abdffbe5-b97f-4118-affd-be42496adb8a">
       <name>ErrorState</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -69,7 +77,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="d3fdbf12-a7f0-4116-b55f-3b02ce53fbb2">
+    <attribute id="2b043571-fb06-4723-b6aa-26aae349dd95">
       <name>ErrorProcedure</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -85,7 +93,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="ea31bf53-7510-4822-9e53-260470364fc5">
+    <attribute id="1be21993-7751-4dd8-97db-7f6ab17a3a29">
       <name>ErrorLine</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -93,7 +101,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="f9a20815-774f-4f83-aea6-7d8a0970a41d">
+    <attribute id="22be771f-78ab-480f-8a97-634f1854674e">
       <name>ErrorMessage</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

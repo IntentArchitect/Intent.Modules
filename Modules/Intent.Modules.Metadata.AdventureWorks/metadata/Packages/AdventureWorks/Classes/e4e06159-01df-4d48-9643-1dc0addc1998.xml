@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="e4e06159-01df-4d48-9643-1dc0addc1998" type="Class">
+<class id="e4e06159-01df-4d48-9643-1dc0addc1998">
   <name>SalesTaxRate</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="SalesTaxRate" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Sales" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="1e0fc8ea-95ac-477b-a6e5-a9b790e1d073">
+    <attribute id="79ddd47a-3412-4141-8521-a4155fc66ded">
       <name>SalesTaxRateID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="b009d505-3515-4327-9dd8-9858eca9e8ab">
+    <attribute id="4f90eeb6-512b-4982-b905-48b20faade57">
       <name>StateProvinceID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -38,7 +46,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="bf8868e4-3add-4601-9a49-10a5eedd1999">
+    <attribute id="f743c46c-0c7f-4ee9-bcbc-b3899d2f9442">
       <name>TaxType</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -55,7 +63,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="e6e1c814-fbf2-49cf-abe8-5f0929c8e714">
+    <attribute id="28174035-54d6-4bf4-8c5d-03a64895fd61">
       <name>TaxRate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -78,7 +86,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="35b4c80a-ebfd-4f60-a6b0-44d10ea3c1d5">
+    <attribute id="39f0be01-f049-4d1f-a6c3-d855a9799e21">
       <name>Name</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -89,11 +97,12 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="4d0344b4-0cce-4d75-b84c-1b5e1a979a9b">
+    <attribute id="fe53b729-5ec2-4992-93ae-a4560f9aaa37">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -117,7 +126,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="42936d05-ddc7-439a-845a-5f027d255741">
+    <attribute id="eeab895d-56c2-4503-b182-2d493936bf7d">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

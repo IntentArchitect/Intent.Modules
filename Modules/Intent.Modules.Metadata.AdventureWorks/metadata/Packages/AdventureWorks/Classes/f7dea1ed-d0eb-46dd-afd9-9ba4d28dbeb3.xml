@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="f7dea1ed-d0eb-46dd-afd9-9ba4d28dbeb3" type="Class">
+<class id="f7dea1ed-d0eb-46dd-afd9-9ba4d28dbeb3">
   <name>ProductDocument</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>46a0c52a-7778-4160-9c71-b5139c8d8a4b</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="ProductDocument" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Production" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="05675524-fea6-43e8-a29a-c64122e307fb">
+    <attribute id="816304ed-9aec-4ac9-93dd-0c8090c72db2">
       <name>ProductID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="0ecc81f9-4651-47b5-992d-3f224c977e19">
+    <attribute id="1c4f9c2c-f243-4f67-b17b-76c7130f10d2">
       <name>DocumentNode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -34,9 +42,16 @@
             <property name="4c1e3f7e-61d4-460d-bd20-c2edbc0c0e2e" value="false" />
           </properties>
         </stereotype>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="892" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
+          </properties>
+        </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="837d0d78-a8d7-401b-8766-dfde7cc0e8bb">
+    <attribute id="d7d334fb-ef3a-448d-9c12-ca8f857906d4">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

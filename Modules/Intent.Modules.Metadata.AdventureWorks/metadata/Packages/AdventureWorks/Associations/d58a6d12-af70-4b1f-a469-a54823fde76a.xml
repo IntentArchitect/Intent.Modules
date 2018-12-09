@@ -15,10 +15,9 @@
   </sourceEnd>
   <targetEnd classId="ee0ae058-05c5-4a22-920b-0ab6a004bd72">
     <isNavigable>true</isNavigable>
-    <minMultiplicity>0</minMultiplicity>
+    <minMultiplicity>1</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />
   </targetEnd>
   <associationType>aggregation</associationType>
-  <stereotypes />
 </association>

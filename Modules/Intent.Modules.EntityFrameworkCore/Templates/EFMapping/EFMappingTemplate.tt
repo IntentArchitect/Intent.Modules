@@ -77,7 +77,7 @@ namespace <#= Namespace #>
         {
 <#  if (Model.ParentClass == null)
     {#>
-            builder.ToTable("<#= Model.Name #>");
+            builder.ToTable("<#= Model.GetStereotypeProperty("Table", "Name", Model.Name) #>", "<#= Model.GetStereotypeProperty("Table", "Schema", "dbo") #>");
 <#  }
     var explicitPrimaryKeys = Model.Attributes.Where(x => x.HasStereotype("Primary Key")).ToList();
     var addedImplicitKey = false;

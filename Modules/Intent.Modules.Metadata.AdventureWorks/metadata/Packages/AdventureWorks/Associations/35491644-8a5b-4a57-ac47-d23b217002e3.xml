@@ -3,7 +3,7 @@
   <sourceEnd classId="3d3da098-85ff-44a5-9e55-136c0dfb3d63">
     <isNavigable>false</isNavigable>
     <minMultiplicity>0</minMultiplicity>
-    <maxMultiplicity>1</maxMultiplicity>
+    <maxMultiplicity>*</maxMultiplicity>
     <stereotypes>
       <stereotype stereotypeDefinitionId="dfe17723-99ee-4554-9be3-f4c90dd48078">
         <addedByDefault>false</addedByDefault>
@@ -21,5 +21,4 @@
     <stereotypes />
   </targetEnd>
   <associationType>aggregation</associationType>
-  <stereotypes />
 </association>

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="583377f4-eeb8-4fc6-8852-e093a1433b78" type="Class">
+<class id="583377f4-eeb8-4fc6-8852-e093a1433b78">
   <name>CurrencyRate</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="CurrencyRate" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Sales" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="f5bf40d7-42ff-42cf-958e-7034fe56ff93">
+    <attribute id="42176800-85e4-4a60-abe5-5c96a3635845">
       <name>CurrencyRateID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="2898dd0c-a7f2-42fd-9711-897256d932e1">
+    <attribute id="ed075219-a59d-4e5f-b485-7b2c29220c3e">
       <name>CurrencyRateDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -38,7 +46,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="7bc381a8-5081-4993-b0c4-4ba8c5b057c0">
+    <attribute id="f4a1862f-9474-49a8-8eb8-b32d15624f56">
       <name>FromCurrencyCode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -55,7 +63,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="31a44228-cfbb-442a-8255-cefae5428c47">
+    <attribute id="2d38bf84-7418-4414-80cb-8b0f7d3d9a10">
       <name>ToCurrencyCode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -72,7 +80,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="1a704953-9cbc-459e-bde4-24a75c96c5ba">
+    <attribute id="e09ea550-ebc2-48c9-af2e-b83d64352185">
       <name>AverageRate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -88,7 +96,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="f9f9ea07-92d4-4583-8b26-fe2f158767ed">
+    <attribute id="ddec10fb-9098-43cc-b2d6-55af84341818">
       <name>EndOfDayRate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -104,7 +112,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="3065b9e9-63f5-43ae-a269-f45936f1165b">
+    <attribute id="539fef96-12b8-4ada-b56e-4d7519f58db6">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="9ed8db13-94aa-4d2a-b6b1-38d62b711dcb" type="Class">
+<class id="9ed8db13-94aa-4d2a-b6b1-38d62b711dcb">
   <name>SalesTerritory</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="SalesTerritory" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Sales" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="b7373135-55d4-4d15-9561-a5eb444a6994">
+    <attribute id="23e85ddf-fe61-4f20-8b7b-ce7263feb155">
       <name>TerritoryID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -21,7 +29,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="2858b745-3c21-41c4-82fb-3a24190bc832">
+    <attribute id="36101159-66b7-4e61-b172-b714a31fee32">
       <name>Name</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -32,6 +40,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
@@ -44,7 +53,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="dbcf5605-65c2-4ca2-b28a-a082869caa15">
+    <attribute id="99952314-9a05-473e-87c3-f70b86448de9">
       <name>CountryRegionCode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -60,7 +69,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="b675f5bc-a2d6-4d65-b6f8-55d4baaf6bf0">
+    <attribute id="c07098ff-5bc3-4074-bd7f-679a61ef1183">
       <name>Group</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -76,7 +85,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="cff2b4e7-7c97-4932-8468-060e1a80e51a">
+    <attribute id="be3327a4-0d2b-4de5-9e9b-0f2c6ad93245">
       <name>SalesYTD</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -99,7 +108,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="6f4b245e-b714-4b6c-b29d-671fe85c032b">
+    <attribute id="34b3bdd5-c5ba-4f6a-bc8f-f096817119c9">
       <name>SalesLastYear</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -122,7 +131,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="fdfea6c6-fb0a-4ab5-a0cd-a8683d97a49f">
+    <attribute id="890e915c-b8ca-4c28-98c3-458bf3c13145">
       <name>CostYTD</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -145,7 +154,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="ce92a45d-50e9-4f51-bc94-fc27263e3450">
+    <attribute id="6c6e208e-edff-4541-b710-f5a8e0b685ea">
       <name>CostLastYear</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -168,7 +177,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="17acf29f-69e9-4f1d-8b0d-0c25faccd16a">
+    <attribute id="e0629b76-5cc9-4eb6-930a-fc5e08aec4c7">
       <name>rowguid</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -192,7 +201,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="226b0b52-66af-48f1-8a1c-78ef1d264256">
+    <attribute id="0e02de21-1aba-4030-86d7-65a7ee05a4ca">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>

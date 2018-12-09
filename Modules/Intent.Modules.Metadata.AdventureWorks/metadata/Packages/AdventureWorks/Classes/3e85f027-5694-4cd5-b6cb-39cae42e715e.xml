@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="3e85f027-5694-4cd5-b6cb-39cae42e715e" type="Class">
+<class id="3e85f027-5694-4cd5-b6cb-39cae42e715e">
   <name>BillOfMaterials</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>46a0c52a-7778-4160-9c71-b5139c8d8a4b</parentFolderId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9" value="BillOfMaterials" />
+        <property name="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b" value="Production" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <attributes>
-    <attribute id="df0c04c1-d54d-4c6a-afcb-670565d7f5a8">
+    <attribute id="5972a4f3-99b5-41f0-aacc-27ec0327aeaa">
       <name>BillOfMaterialsID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -29,7 +37,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="9a2a5229-bad2-413b-af6c-39c4e4909b65">
+    <attribute id="409a92ec-d2ca-4833-8300-049df4000982">
       <name>ProductAssemblyID</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -37,7 +45,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="5e3bc05a-2ab4-4130-bcb5-5d141b7c6a50">
+    <attribute id="6fde3829-abd4-424d-805e-e7da8274ff7a">
       <name>ComponentID</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -45,7 +53,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="f787d33f-0237-4421-845e-6ff15b7f23cf">
+    <attribute id="060ed2d2-d7e1-45dd-881b-8a77f13db2c8">
       <name>StartDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -61,7 +69,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="482d779e-6fd1-4b4f-9275-f222ebc9114e">
+    <attribute id="8ff1e059-9837-4040-89be-c0335acddd72">
       <name>EndDate</name>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
@@ -69,7 +77,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="0a4f81f9-b18d-492c-a79f-c8a13623d878">
+    <attribute id="274b79f2-fbb6-41c2-9ade-fdb50a2e15f9">
       <name>UnitMeasureCode</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -86,7 +94,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="739e11c2-4fb8-45ca-ad14-ab21599308c4">
+    <attribute id="8f4e46f2-a91e-42a4-8287-153c4b4860b3">
       <name>BOMLevel</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -94,7 +102,7 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="3ad83dfb-140e-4caa-88c9-12a18dbc9cd9">
+    <attribute id="e4da7813-a148-4c27-83c5-64c78575a820">
       <name>PerAssemblyQty</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
@@ -117,7 +125,7 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="27e6f627-31a2-41d9-bff7-05b7fcfbb43c">
+    <attribute id="6a43ff6c-5181-4fee-b466-f0344dd1b9b0">
       <name>ModifiedDate</name>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
