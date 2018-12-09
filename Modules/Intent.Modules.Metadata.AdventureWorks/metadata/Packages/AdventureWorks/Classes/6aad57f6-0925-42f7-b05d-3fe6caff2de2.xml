@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="6aad57f6-0925-42f7-b05d-3fe6caff2de2" type="Class">
+  <name>TransactionHistory</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>46a0c52a-7778-4160-9c71-b5139c8d8a4b</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="d904c4a8-9ef4-4499-bbea-269f396ff656">
+      <name>TransactionID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b99aac21-9ca4-467f-a3a6-046255a9eed6">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="4c1e3f7e-61d4-460d-bd20-c2edbc0c0e2e" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="119df2d7-2884-4ee8-8764-5adf7c68c64f">
+      <name>ProductID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_TransactionHistory_ProductID" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="1e574cb0-2f07-487b-ab21-9e83a0b9e08a">
+      <name>ReferenceOrderID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_TransactionHistory_ReferenceOrderID_ReferenceOrderLineID" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="96c45de7-e431-4808-a5aa-32a851649ee3">
+      <name>ReferenceOrderLineID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_TransactionHistory_ReferenceOrderLineID" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="((0))" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_TransactionHistory_ReferenceOrderID_ReferenceOrderLineID" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="1" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="310a8729-c497-4ad4-b38f-3e8c66b16387">
+      <name>TransactionDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_TransactionHistory_TransactionDate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(getdate())" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="48f03d70-b363-4371-abfa-438b7270d435">
+      <name>TransactionType</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>A4E9102F-C1C8-4902-A417-CA418E1874D2</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="18af4901-fa95-4be7-9172-f2bc60f4a26b">
+      <name>Quantity</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="31cfa226-3b0e-433f-8d8f-a984aa9d8aeb">
+      <name>ActualCost</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>675c7b84-997a-44e0-82b9-cd724c07c9e6</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="8565814D-EF70-40EE-A0D3-577AB7B1254C">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3BB6C479-049E-4258-87D3-7068129B7B57" value="19" />
+            <property name="CFA3180C-71F6-465B-B4BC-3238FF3648BA" value="4" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="238f22fc-8228-45b5-9f4f-61d5eb6d88ef">
+      <name>ModifiedDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_TransactionHistory_ModifiedDate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(getdate())" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+  </attributes>
+  <operations />
+</class>

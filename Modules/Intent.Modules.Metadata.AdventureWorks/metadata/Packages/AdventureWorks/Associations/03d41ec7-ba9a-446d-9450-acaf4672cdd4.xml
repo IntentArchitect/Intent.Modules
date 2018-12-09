@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="03d41ec7-ba9a-446d-9450-acaf4672cdd4">
+  <sourceEnd classId="14511b0e-2a1f-4b69-a3fa-17ae267c8d05">
+    <isNavigable>false</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>1</maxMultiplicity>
+    <stereotypes>
+      <stereotype stereotypeDefinitionId="dfe17723-99ee-4554-9be3-f4c90dd48078">
+        <addedByDefault>false</addedByDefault>
+        <properties>
+          <property name="41c9145c-7ac7-4c60-acda-10544bfaa6c0" value="BusinessEntityID" />
+        </properties>
+      </stereotype>
+    </stereotypes>
+  </sourceEnd>
+  <targetEnd classId="02dc0c28-42b5-4a03-9595-b93141cd760c">
+    <isNavigable>true</isNavigable>
+    <minMultiplicity>1</minMultiplicity>
+    <maxMultiplicity>1</maxMultiplicity>
+    <stereotypes />
+  </targetEnd>
+  <associationType>aggregation</associationType>
+  <stereotypes />
+</association>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3656f273-ed3c-4037-820d-992083d762a5" type="Class">
+  <name>PhoneNumberType</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>52911bcd-91aa-4719-8132-a57e63c04e90</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="70af4247-d7b2-4191-905f-2cf1ba6ca0b4">
+      <name>PhoneNumberTypeID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b99aac21-9ca4-467f-a3a6-046255a9eed6">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="4c1e3f7e-61d4-460d-bd20-c2edbc0c0e2e" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="ac4eb545-0a76-419e-b81b-a0da6b9427c6">
+      <name>Name</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="3696c70c-3e24-4dc3-8a62-61b8a7ee62e1">
+      <name>ModifiedDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_PhoneNumberType_ModifiedDate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(getdate())" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+  </attributes>
+  <operations />
+</class>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="c303052f-605a-4c00-b801-64efd5bc64d8">
+  <sourceEnd classId="3e85f027-5694-4cd5-b6cb-39cae42e715e">
+    <isNavigable>false</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>*</maxMultiplicity>
+    <stereotypes>
+      <stereotype stereotypeDefinitionId="dfe17723-99ee-4554-9be3-f4c90dd48078">
+        <addedByDefault>false</addedByDefault>
+        <properties>
+          <property name="41c9145c-7ac7-4c60-acda-10544bfaa6c0" value="ComponentID" />
+        </properties>
+      </stereotype>
+    </stereotypes>
+  </sourceEnd>
+  <targetEnd classId="a303eabe-ccb3-441a-87b9-ddc5e0670614">
+    <name>ComponentProduct</name>
+    <isNavigable>true</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>1</maxMultiplicity>
+    <stereotypes />
+  </targetEnd>
+  <associationType>aggregation</associationType>
+  <stereotypes />
+</association>

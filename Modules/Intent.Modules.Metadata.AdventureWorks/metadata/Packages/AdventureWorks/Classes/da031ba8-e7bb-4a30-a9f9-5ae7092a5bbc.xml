@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="da031ba8-e7bb-4a30-a9f9-5ae7092a5bbc" type="Class">
+  <name>AWBuildVersion</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>360c8359-baa7-4421-8ee0-6a464401e91f</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="516450cc-8cf2-40cf-9050-0b23a858ad48">
+      <name>SystemInformationID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>A4E9102F-C1C8-4902-A417-CA418E1874D2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b99aac21-9ca4-467f-a3a6-046255a9eed6">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="4c1e3f7e-61d4-460d-bd20-c2edbc0c0e2e" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="d38ad361-8385-4c02-bf50-9ffa63d3c1c2">
+      <name>DatabaseVersion</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="25" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="6301329d-f472-4b1d-97d3-c1ed782abf02">
+      <name>VersionDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="ddcf7b74-fba0-4896-b499-f1027bf6d42a">
+      <name>ModifiedDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_AWBuildVersion_ModifiedDate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(getdate())" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+  </attributes>
+  <operations />
+</class>

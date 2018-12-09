@@ -84,14 +84,28 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
             
             #line default
             #line hidden
-            this.Write(" FindById(Guid id);\r\n        Task<");
+            this.Write(" FindById(");
+            
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" id);\r\n        Task<");
             
             #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
             
             #line default
             #line hidden
-            this.Write("> FindByIdAsync(Guid id);\r\n    }\r\n}");
+            this.Write("> FindByIdAsync(");
+            
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" id);\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

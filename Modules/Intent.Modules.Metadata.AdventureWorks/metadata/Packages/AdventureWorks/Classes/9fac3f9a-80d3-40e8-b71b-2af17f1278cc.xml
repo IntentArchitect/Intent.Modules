@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9fac3f9a-80d3-40e8-b71b-2af17f1278cc" type="Class">
+  <name>ProductReview</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>46a0c52a-7778-4160-9c71-b5139c8d8a4b</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="11fffad9-b5b7-4faf-a295-a76d76b12f67">
+      <name>ProductReviewID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b99aac21-9ca4-467f-a3a6-046255a9eed6">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="4c1e3f7e-61d4-460d-bd20-c2edbc0c0e2e" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="9edb751d-0b6c-419b-9176-5d13d3b76e08">
+      <name>ProductID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_ProductReview_ProductID_Name" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="a8928f46-88f7-41c2-b876-a4d38fa6b0fe">
+      <name>ReviewerName</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_ProductReview_ProductID_Name" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="1" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="c9bd9420-55bc-4f9e-9acb-859818e23cc5">
+      <name>ReviewDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_ProductReview_ReviewDate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(getdate())" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="06647295-cb3e-4a30-bfed-a46c62bc5525">
+      <name>EmailAddress</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="43f7080d-d2cf-48db-b13c-04ea8b70e14f">
+      <name>Rating</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="2e69c463-7ad6-457f-a630-396b75433224">
+      <name>Comments</name>
+      <isNullable>true</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="3850" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_ProductReview_ProductID_Name" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="2" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="3f973f7d-1cb9-44b1-a213-b543d0542bd3">
+      <name>ModifiedDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_ProductReview_ModifiedDate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(getdate())" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+  </attributes>
+  <operations />
+</class>

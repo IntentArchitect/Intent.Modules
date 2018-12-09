@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ee0ae058-05c5-4a22-920b-0ab6a004bd72" type="Class">
+  <name>Person</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>52911bcd-91aa-4719-8132-a57e63c04e90</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="adb8fabd-0a49-47c5-98c5-5810e3bdd474">
+      <name>BusinessEntityID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b99aac21-9ca4-467f-a3a6-046255a9eed6">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="4c1e3f7e-61d4-460d-bd20-c2edbc0c0e2e" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="06f07ca8-5db6-4c4b-bcf9-82a3735c196a">
+      <name>PersonType</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>A4E9102F-C1C8-4902-A417-CA418E1874D2</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="33a1d290-ffa9-4ad1-883c-b23dbc3a0fad">
+      <name>NameStyle</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_Person_NameStyle" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="((0))" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="e6d2bbf5-042e-41b0-b763-b2b5dcb8aa76">
+      <name>Title</name>
+      <isNullable>true</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="8" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="9ff5640e-1969-40b0-a731-242f8f642cf6">
+      <name>FirstName</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_Person_LastName_FirstName_MiddleName" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="1" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="825094ef-796b-4207-bbac-2bb9579ed375">
+      <name>MiddleName</name>
+      <isNullable>true</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_Person_LastName_FirstName_MiddleName" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="2" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="842b1098-3fe7-4736-a019-3fc47afd453c">
+      <name>LastName</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_Person_LastName_FirstName_MiddleName" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="24a2328d-f917-457f-956c-f7ed97e54530">
+      <name>Suffix</name>
+      <isNullable>true</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="10" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="3a701cfb-494a-410a-a6d2-658f19706c88">
+      <name>EmailPromotion</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_Person_EmailPromotion" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="((0))" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="46fec79b-4f6b-4e52-b81f-2ef72cc7e95f">
+      <name>AdditionalContactInfo</name>
+      <isNullable>true</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="3b83a74c-95ff-4bce-9bc5-ac3b2b6da7b2">
+      <name>Demographics</name>
+      <isNullable>true</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="e1d68af5-4a8c-4271-b75f-5af2f23a8b9c">
+      <name>rowguid</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>6b649125-18ea-48fd-a6ba-0bfff0d8f488</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_Person_rowguid" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(newid())" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="AK_Person_rowguid" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="dde1ca47-1397-4b22-9b93-175c985bfc9b">
+      <name>ModifiedDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_Person_ModifiedDate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(getdate())" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+  </attributes>
+  <operations />
+</class>

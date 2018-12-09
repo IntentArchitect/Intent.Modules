@@ -50,16 +50,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Metadata.RDBMS.imodspec" />
-    <None Include="MetaData\Domain\Intent.Metadata.RDBMS.pkg.config" />
+    <None Include="Metadata\Domain\Intent.Metadata.RDBMS.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MetaData\Domain\Folders\Stereotypes.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\Foreign Key.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\Primary Key.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\Index.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\Numeric.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\Text.xml" />
+    <Content Include="Metadata\Domain\Folders\Stereotypes.xml" />
+    <Content Include="Metadata\Domain\Stereotypes\Default Constraint.xml" />
+    <Content Include="Metadata\Domain\Stereotypes\Foreign Key.xml" />
+    <Content Include="Metadata\Domain\Stereotypes\Primary Key.xml" />
+    <Content Include="Metadata\Domain\Stereotypes\Index.xml" />
+    <Content Include="Metadata\Domain\Stereotypes\Numeric.xml" />
+    <Content Include="Metadata\Domain\Stereotypes\Text.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Intent.IntentArchitectPackager.1.2.2\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.2.2\build\Intent.IntentArchitectPackager.targets')" />

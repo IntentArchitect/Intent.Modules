@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="5c9482bf-a09c-4316-8daf-d24833c08f68" type="Class">
+  <name>Employee</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>87c60c22-541e-4e2e-89a5-8bef5f041756</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="3f0904a1-7bca-456a-a9a5-1b22f6a11ded">
+      <name>BusinessEntityID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b99aac21-9ca4-467f-a3a6-046255a9eed6">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="4c1e3f7e-61d4-460d-bd20-c2edbc0c0e2e" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="7a1c92fa-8fcb-411c-9cde-38f5da5b49e2">
+      <name>NationalIDNumber</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="15" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="AK_Employee_NationalIDNumber" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="93bce000-74db-4f45-9598-5992c0baa100">
+      <name>LoginID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="256" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="AK_Employee_LoginID" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="45114140-32f3-4bb0-b224-2c0ada0ffaf3">
+      <name>OrganizationNode</name>
+      <isNullable>true</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_Employee_OrganizationLevel_OrganizationNode" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="1" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_Employee_OrganizationNode" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="cf751770-e0da-4c6f-96fc-58ee658d210d">
+      <name>OrganizationLevel</name>
+      <isNullable>true</isNullable>
+      <isCollection>false</isCollection>
+      <type>2ABF0FD3-CD56-4349-8838-D120ED268245</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_Employee_OrganizationLevel_OrganizationNode" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="4dceca82-1818-4c5d-861b-6b48eea3f04d">
+      <name>JobTitle</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="55b05323-4c36-46f4-8190-366c67c73b4f">
+      <name>BirthDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>1fbaa056-b666-4f25-b8fd-76fe3165acc8</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="59e20afe-d87a-4ebb-9bf1-766da57daba5">
+      <name>MaritalStatus</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>A4E9102F-C1C8-4902-A417-CA418E1874D2</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="055809fc-37e6-4d19-a1de-27826ac97940">
+      <name>Gender</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>A4E9102F-C1C8-4902-A417-CA418E1874D2</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="4b4303d0-4b8e-433d-8671-2996f3be4738">
+      <name>HireDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>1fbaa056-b666-4f25-b8fd-76fe3165acc8</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="b47eaa54-be01-4531-9ee5-805cf3a72515">
+      <name>SalariedFlag</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_Employee_SalariedFlag" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="((1))" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="d687ff05-6ab6-4c69-b2a1-c02d79ff9e8c">
+      <name>VacationHours</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>2ABF0FD3-CD56-4349-8838-D120ED268245</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_Employee_VacationHours" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="((0))" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="c6afcb56-0df7-4228-93f7-a45f3434b05d">
+      <name>SickLeaveHours</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>2ABF0FD3-CD56-4349-8838-D120ED268245</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_Employee_SickLeaveHours" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="((0))" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="41eae2bb-c2a0-4caa-b638-0d9a7118f855">
+      <name>CurrentFlag</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_Employee_CurrentFlag" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="((1))" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="189cd5bf-2301-48c2-9bc7-8b6434a72f75">
+      <name>rowguid</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>6b649125-18ea-48fd-a6ba-0bfff0d8f488</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_Employee_rowguid" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(newid())" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="AK_Employee_rowguid" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="127277a8-34d0-4ef9-b075-dddfab9d01b6">
+      <name>ModifiedDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_Employee_ModifiedDate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(getdate())" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+  </attributes>
+  <operations />
+</class>

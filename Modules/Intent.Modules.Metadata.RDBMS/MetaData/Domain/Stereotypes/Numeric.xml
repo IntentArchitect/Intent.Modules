@@ -6,6 +6,7 @@
     <source>N|#FFC107</source>
   </icon>
   <displayIcon>false</displayIcon>
+  <displayFunction>(${Precision}, ${Scale})</displayFunction>
   <targetElements>
     <element>attribute</element>
   </targetElements>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="71b124d3-d294-4dbe-bc13-10c52f7d8022" type="Class">
+  <name>ShipMethod</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>84eba9a6-53f5-4774-8fe9-0223df89af2e</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="f10a717e-f4a1-4671-a307-fa8d39ff00b3">
+      <name>ShipMethodID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b99aac21-9ca4-467f-a3a6-046255a9eed6">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="4c1e3f7e-61d4-460d-bd20-c2edbc0c0e2e" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="499d547d-91ec-4845-873e-63dab69b3be7">
+      <name>Name</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="50" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="AK_ShipMethod_Name" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="152a67cb-f50b-4a90-b24d-649c83618a45">
+      <name>ShipBase</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>675c7b84-997a-44e0-82b9-cd724c07c9e6</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_ShipMethod_ShipBase" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="((0.00))" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="8565814D-EF70-40EE-A0D3-577AB7B1254C">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3BB6C479-049E-4258-87D3-7068129B7B57" value="19" />
+            <property name="CFA3180C-71F6-465B-B4BC-3238FF3648BA" value="4" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="abc3b99f-932c-47f4-8c05-742daa72d8bb">
+      <name>ShipRate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>675c7b84-997a-44e0-82b9-cd724c07c9e6</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_ShipMethod_ShipRate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="((0.00))" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="8565814D-EF70-40EE-A0D3-577AB7B1254C">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3BB6C479-049E-4258-87D3-7068129B7B57" value="19" />
+            <property name="CFA3180C-71F6-465B-B4BC-3238FF3648BA" value="4" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="603358e5-aabd-4ec5-9636-5e8cea513c1f">
+      <name>rowguid</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>6b649125-18ea-48fd-a6ba-0bfff0d8f488</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_ShipMethod_rowguid" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(newid())" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="AK_ShipMethod_rowguid" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="353065f0-fee5-4a45-8753-4db8e2262be6">
+      <name>ModifiedDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_ShipMethod_ModifiedDate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(getdate())" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+  </attributes>
+  <operations />
+</class>

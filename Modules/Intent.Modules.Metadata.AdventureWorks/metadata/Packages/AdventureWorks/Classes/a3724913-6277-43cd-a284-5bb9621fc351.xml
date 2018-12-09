@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="a3724913-6277-43cd-a284-5bb9621fc351" type="Class">
+  <name>SalesOrderDetail</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>3a003e7f-07dd-43b6-a5bd-4a0dcc3acd9a</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="ad785293-026f-4123-96e6-c5fc3b5a96ab">
+      <name>SalesOrderID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b99aac21-9ca4-467f-a3a6-046255a9eed6">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="4c1e3f7e-61d4-460d-bd20-c2edbc0c0e2e" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="598bf610-333b-4341-9173-63500543756b">
+      <name>SalesOrderDetailID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b99aac21-9ca4-467f-a3a6-046255a9eed6">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="4c1e3f7e-61d4-460d-bd20-c2edbc0c0e2e" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="aebb40ce-2be7-4b36-82d8-ea0e7f17e1c7">
+      <name>CarrierTrackingNumber</name>
+      <isNullable>true</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD" value="25" />
+            <property name="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="6df0c044-5ee3-4a6b-8fb8-7a2e4b9cca50">
+      <name>OrderQty</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>2ABF0FD3-CD56-4349-8838-D120ED268245</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="56d4d2aa-b243-43ee-8dd0-3773d1959a40">
+      <name>ProductID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="IX_SalesOrderDetail_ProductID" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="06bd81f5-f75c-4412-94bd-75b2693e6445">
+      <name>SpecialOfferID</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="7aec9c8f-77bb-4347-bc6b-26ae84bb2525">
+      <name>UnitPrice</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>675c7b84-997a-44e0-82b9-cd724c07c9e6</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="8565814D-EF70-40EE-A0D3-577AB7B1254C">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3BB6C479-049E-4258-87D3-7068129B7B57" value="19" />
+            <property name="CFA3180C-71F6-465B-B4BC-3238FF3648BA" value="4" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="aeffea6d-d297-4c4a-a807-3aba9f31d911">
+      <name>UnitPriceDiscount</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>675c7b84-997a-44e0-82b9-cd724c07c9e6</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_SalesOrderDetail_UnitPriceDiscount" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="((0.0))" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="8565814D-EF70-40EE-A0D3-577AB7B1254C">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3BB6C479-049E-4258-87D3-7068129B7B57" value="19" />
+            <property name="CFA3180C-71F6-465B-B4BC-3238FF3648BA" value="4" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="0f26591e-9b3c-48a1-8696-243c6e8fd80a">
+      <name>LineTotal</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="aeec51ed-018a-404a-9156-dd84aa684e73">
+      <name>rowguid</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>6b649125-18ea-48fd-a6ba-0bfff0d8f488</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_SalesOrderDetail_rowguid" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(newid())" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="3427ad7b-e1a6-4d36-9e12-c5ada14a414b" value="AK_SalesOrderDetail_rowguid" />
+            <property name="a8f903d5-e8b6-4d15-aedb-08c6b290b733" value="0" />
+            <property name="90002464-b824-40e2-9f73-32f306868897" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+    <attribute id="12462289-6da4-401e-8a67-f3cef1896b97">
+      <name>ModifiedDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+      <isMapped>false</isMapped>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f21339bf-9ce6-4584-828f-de82089e3b72">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="a1a18b91-6ad7-4828-9d2c-d77e40638e4d" value="DF_SalesOrderDetail_ModifiedDate" />
+            <property name="0b03f735-394c-4c12-8f10-bd14f9ab2dd0" value="(getdate())" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </attribute>
+  </attributes>
+  <operations />
+</class>

@@ -27,7 +27,7 @@ namespace <#= Namespace #>
 {
     public interface <#= ClassName #> : IRepository<<#= EntityInterfaceName #>, <#= EntityStateName #>>
     {
-        <#= EntityInterfaceName #> FindById(Guid id);
-        Task<<#= EntityInterfaceName #>> FindByIdAsync(Guid id);
+        <#= EntityInterfaceName #> FindById(<#= PrimaryKeyType #> id);
+        Task<<#= EntityInterfaceName #>> FindByIdAsync(<#= PrimaryKeyType #> id);
     }
 }

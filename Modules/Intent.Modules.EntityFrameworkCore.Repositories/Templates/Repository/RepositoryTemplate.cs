@@ -110,16 +110,43 @@ using Microsoft.EntityFrameworkCore;
             
             #line default
             #line hidden
-            this.Write(" FindById(Guid id)\r\n        {\r\n            return CreateQuery().SingleOrDefault(x" +
-                    " => x.Id == id);\r\n        }\r\n\r\n        public async Task<");
+            this.Write(" FindById(");
+            
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" id)\r\n        {\r\n            return CreateQuery().SingleOrDefault(x => x.");
+            
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" == id);\r\n        }\r\n\r\n        public async Task<");
             
             #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
             
             #line default
             #line hidden
-            this.Write("> FindByIdAsync(Guid id)\r\n        {\r\n            return await CreateQuery().Singl" +
-                    "eOrDefaultAsync(x => x.Id == id);\r\n        }\r\n    }\r\n}");
+            this.Write("> FindByIdAsync(");
+            
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" id)\r\n        {\r\n            return await CreateQuery().SingleOrDefaultAsync(x =>" +
+                    " x.");
+            
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" == id);\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

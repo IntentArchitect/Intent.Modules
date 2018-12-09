@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="9c33d8b4-3e3b-4765-b60d-5c4e80e6780b">
+  <sourceEnd classId="5bb82470-63b2-44b9-a548-a3b403175339">
+    <isNavigable>false</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>*</maxMultiplicity>
+    <stereotypes>
+      <stereotype stereotypeDefinitionId="dfe17723-99ee-4554-9be3-f4c90dd48078">
+        <addedByDefault>false</addedByDefault>
+        <properties>
+          <property name="41c9145c-7ac7-4c60-acda-10544bfaa6c0" value="ProductID" />
+        </properties>
+      </stereotype>
+    </stereotypes>
+  </sourceEnd>
+  <targetEnd classId="a303eabe-ccb3-441a-87b9-ddc5e0670614">
+    <isNavigable>true</isNavigable>
+    <minMultiplicity>1</minMultiplicity>
+    <maxMultiplicity>1</maxMultiplicity>
+    <stereotypes />
+  </targetEnd>
+  <associationType>aggregation</associationType>
+  <stereotypes />
+</association>

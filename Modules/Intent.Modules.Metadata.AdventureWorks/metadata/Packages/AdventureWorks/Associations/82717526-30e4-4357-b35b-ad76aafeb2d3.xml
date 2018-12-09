@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="82717526-30e4-4357-b35b-ad76aafeb2d3">
+  <sourceEnd classId="e3d85db9-feda-4388-9569-99aaeca96d97">
+    <isNavigable>false</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>*</maxMultiplicity>
+    <stereotypes>
+      <stereotype stereotypeDefinitionId="dfe17723-99ee-4554-9be3-f4c90dd48078">
+        <addedByDefault>false</addedByDefault>
+        <properties>
+          <property name="41c9145c-7ac7-4c60-acda-10544bfaa6c0" value="BillToAddressID" />
+        </properties>
+      </stereotype>
+    </stereotypes>
+  </sourceEnd>
+  <targetEnd classId="695f68ef-2fec-4759-a2f7-d21e84c7af8a">
+    <name>BillToAddress</name>
+    <isNavigable>true</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>1</maxMultiplicity>
+    <stereotypes />
+  </targetEnd>
+  <associationType>aggregation</associationType>
+  <stereotypes />
+</association>

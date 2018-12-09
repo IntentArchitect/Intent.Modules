@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="08dc4995-9a7e-4adf-9448-64bb8b5b4b95">
+  <sourceEnd classId="e3d85db9-feda-4388-9569-99aaeca96d97">
+    <isNavigable>false</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>*</maxMultiplicity>
+    <stereotypes>
+      <stereotype stereotypeDefinitionId="dfe17723-99ee-4554-9be3-f4c90dd48078">
+        <addedByDefault>false</addedByDefault>
+        <properties>
+          <property name="41c9145c-7ac7-4c60-acda-10544bfaa6c0" value="CustomerID" />
+        </properties>
+      </stereotype>
+    </stereotypes>
+  </sourceEnd>
+  <targetEnd classId="c7007d51-160a-4cd3-b342-3db497b1c8ce">
+    <isNavigable>true</isNavigable>
+    <minMultiplicity>1</minMultiplicity>
+    <maxMultiplicity>1</maxMultiplicity>
+    <stereotypes />
+  </targetEnd>
+  <associationType>aggregation</associationType>
+  <stereotypes />
+</association>

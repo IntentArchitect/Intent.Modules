@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="aa007376-da63-4c26-ae8f-831b05c0c716">
+  <sourceEnd classId="bf65e95b-2372-4cd3-9146-da37f05bd6a5">
+    <isNavigable>false</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>*</maxMultiplicity>
+    <stereotypes>
+      <stereotype stereotypeDefinitionId="dfe17723-99ee-4554-9be3-f4c90dd48078">
+        <addedByDefault>false</addedByDefault>
+        <properties>
+          <property name="41c9145c-7ac7-4c60-acda-10544bfaa6c0" value="ShipMethodID" />
+        </properties>
+      </stereotype>
+    </stereotypes>
+  </sourceEnd>
+  <targetEnd classId="71b124d3-d294-4dbe-bc13-10c52f7d8022">
+    <isNavigable>true</isNavigable>
+    <minMultiplicity>1</minMultiplicity>
+    <maxMultiplicity>1</maxMultiplicity>
+    <stereotypes />
+  </targetEnd>
+  <associationType>aggregation</associationType>
+  <stereotypes />
+</association>

@@ -18,7 +18,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
         private ITemplateDependancy _domainTemplateDependancy;
 
         public EFMappingTemplate(IClass model, IProject project)
-            : base (Identifier, project, model)
+            : base(Identifier, project, model)
         {
             var x = Model.AssociatedClasses.Where(ae => ae.Association.AssociationType == AssociationType.Composition && ae.Association.TargetEnd == ae).ToList();
         }
@@ -150,6 +150,19 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             }
 
             return string.Empty;
+        }
+
+        private string GetForeignKeyLambda(IAssociationEnd associationEnd)
+        {
+            var columns = associationEnd.GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.OtherEnd().Name().ToPascalCase() + "Id")
+                .Split(',')
+                .Select(x => x.Trim())
+                .ToList();
+            if (columns.Count() == 1)
+            {
+                return $"x => x.{columns.Single()}";
+            }
+            return $"x => new {{ {string.Join(", ", columns.Select(x => "x."+ x))}}}";
         }
 
         private void IssueManyToManyWarning(IAssociationEnd associationEnd)

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="fc32f076-909b-48c8-b117-c5f2e278764f">
+  <sourceEnd classId="6464494a-ded3-4d95-9fb7-02f4a669a168">
+    <isNavigable>false</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>*</maxMultiplicity>
+    <stereotypes>
+      <stereotype stereotypeDefinitionId="dfe17723-99ee-4554-9be3-f4c90dd48078">
+        <addedByDefault>false</addedByDefault>
+        <properties>
+          <property name="41c9145c-7ac7-4c60-acda-10544bfaa6c0" value="CurrencyCode" />
+        </properties>
+      </stereotype>
+    </stereotypes>
+  </sourceEnd>
+  <targetEnd classId="088e4d30-610f-4f12-9bd1-20491c91a96f">
+    <isNavigable>true</isNavigable>
+    <minMultiplicity>1</minMultiplicity>
+    <maxMultiplicity>1</maxMultiplicity>
+    <stereotypes />
+  </targetEnd>
+  <associationType>aggregation</associationType>
+  <stereotypes />
+</association>

@@ -97,11 +97,14 @@ namespace <#= Namespace #>
         //No Key mapping required
     } 
 
-	var addedImplicitKey = false;
-    if (Model.ParentClass == null && !Model.Attributes.Any(x => x.HasStereotype("Primary Key"))) {
+    var explicitPrimaryKeys = Model.Attributes.Where(x => x.HasStereotype("Primary Key")).ToList();
+    var addedImplicitKey = false;
+    if (Model.ParentClass == null && !explicitPrimaryKeys.Any()) {
         addedImplicitKey = true;#>
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("Id");
+<#  } else {#>
+            builder.HasKey(x => <#= (explicitPrimaryKeys.Count() == 1 ? "x." + explicitPrimaryKeys.Single().Name.ToPascalCase() : string.Format("new {{ {0} }}", string.Join(", ", explicitPrimaryKeys.Select(x => "x." + x.Name)))) #>);
 <#  }
     if (Model.ParentClass != null) {#>
             builder.HasBaseType<<#= Model.ParentClass.Name #>>();
@@ -111,10 +114,7 @@ namespace <#= Namespace #>
         if (attribute.Name.ToLower() == "id" && addedImplicitKey)
         {
                 throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable the 'Implicit Surrogate Key' option for this template", Model.Name));
-	    }
-        if (attribute.HasStereotype("Primary Key")) {#>
-            builder.HasKey(x => x.<#= attribute.Name.ToPascalCase() #>);
-<#		}#>
+	    }#>
             this.Property(x => x.<#= attribute.Name.ToPascalCase()#>)<#
 		if (!string.IsNullOrEmpty(attribute.GetStereotypeProperty<string>("Index", "UniqueKey")))
 		{#>

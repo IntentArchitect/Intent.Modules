@@ -30,6 +30,8 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
 
         public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(_entityInterfaceTemplateDependancy)?.ClassName ?? $"I{Model.Name}";
 
+        public string PrimaryKeyType => Types.Get(Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Type) ?? "Guid";
+
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetaData(Id, new TemplateVersion(1, 0)));

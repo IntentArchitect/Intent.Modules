@@ -32,14 +32,14 @@ namespace <#= Namespace #>
         {
         }
 
-        public <#= EntityInterfaceName #> FindById(Guid id)
+        public <#= EntityInterfaceName #> FindById(<#= PrimaryKeyType #> id)
         {
-            return CreateQuery().SingleOrDefault(x => x.Id == id);
+            return CreateQuery().SingleOrDefault(x => x.<#= PrimaryKeyName #> == id);
         }
 
-        public async Task<<#= EntityInterfaceName #>> FindByIdAsync(Guid id)
+        public async Task<<#= EntityInterfaceName #>> FindByIdAsync(<#= PrimaryKeyType #> id)
         {
-            return await CreateQuery().SingleOrDefaultAsync(x => x.Id == id);
+            return await CreateQuery().SingleOrDefaultAsync(x => x.<#= PrimaryKeyName #> == id);
         }
     }
 }

@@ -187,8 +187,9 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
         //No Key mapping required
     } 
 
-	var addedImplicitKey = false;
-    if (Model.ParentClass == null && !Model.Attributes.Any(x => x.HasStereotype("Primary Key"))) {
+    var explicitPrimaryKeys = Model.Attributes.Where(x => x.HasStereotype("Primary Key")).ToList();
+    var addedImplicitKey = false;
+    if (Model.ParentClass == null && !explicitPrimaryKeys.Any()) {
         addedImplicitKey = true;
             
             #line default
@@ -196,7 +197,21 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             this.Write("            builder.HasKey(x => x.Id);\r\n            builder.Property(x => x.Id).H" +
                     "asColumnName(\"Id\");\r\n");
             
-            #line 105 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
+            #line 106 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
+  } else {
+            
+            #line default
+            #line hidden
+            this.Write("            builder.HasKey(x => ");
+            
+            #line 107 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture((explicitPrimaryKeys.Count() == 1 ? "x." + explicitPrimaryKeys.Single().Name.ToPascalCase() : string.Format("new {{ {0} }}", string.Join(", ", explicitPrimaryKeys.Select(x => "x." + x.Name))))));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n");
+            
+            #line 108 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
   }
     if (Model.ParentClass != null) {
             
@@ -204,14 +219,14 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             #line hidden
             this.Write("            builder.HasBaseType<");
             
-            #line 107 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
+            #line 110 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentClass.Name));
             
             #line default
             #line hidden
             this.Write(">();\r\n");
             
-            #line 108 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
+            #line 111 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
   }  
     foreach (var attribute in Model.Attributes)
     {
@@ -219,21 +234,6 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
         {
                 throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable the 'Implicit Surrogate Key' option for this template", Model.Name));
 	    }
-        if (attribute.HasStereotype("Primary Key")) {
-            
-            #line default
-            #line hidden
-            this.Write("            builder.HasKey(x => x.");
-            
-            #line 116 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
-            
-            #line default
-            #line hidden
-            this.Write(");\r\n");
-            
-            #line 117 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-		}
             
             #line default
             #line hidden
