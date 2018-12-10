@@ -56,6 +56,6 @@
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
   <metadata>
-    <install target="Domain" src="MetaData\Domain"/>
+    <install target="Domain" src="metadata\Intent.Entities"/>
   </metadata>
 </package>

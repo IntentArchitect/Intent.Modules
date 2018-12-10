@@ -20,7 +20,7 @@
 <!--    <file src="bin\$configuration$\Intent.Modules.Common.dll" inspect="false"/>-->
   </files>
   <metadata>
-    <install target="Domain" src="MetaData\Domain"/>
-    <install target="DataContracts" src="MetaData\DataContracts"/>
+    <install target="Domain" src="Metadata\Intent.Common.Types"/>
+    <install target="Services" src="Metadata\Intent.Common.Types"/>
   </metadata>  
 </package>
