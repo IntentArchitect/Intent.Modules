@@ -7,6 +7,8 @@ INTENT ARCHITECT - MODULE BUILDER
 
 To compile and run this module in Intent Architect, the following steps are required:
 
+NOTE: In Visual Studio, it is recommended to use a T4 editor such as this one (https://t4-editor.tangible-engineering.com) to edit T4 templates.
+
 # 1. Build Module
     - In Visual Studio, click Build -> Transform all T4 templates
     - Complile this project by clicking Build -> Build Solution. 

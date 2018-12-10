@@ -27,25 +27,27 @@ namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
         public override string TransformText()
         {
             this.Write("\r\n\r\nINTENT ARCHITECT - MODULE BUILDER\r\n\r\nTo compile and run this module in Intent" +
-                    " Architect, the following steps are required:\r\n\r\n# 1. Build Module\r\n    - In Vis" +
-                    "ual Studio, click Build -> Transform all T4 templates\r\n    - Complile this proje" +
-                    "ct by clicking Build -> Build Solution. \r\n    - This will automatically package " +
-                    "and create an Intent Module (.imod) file in the ${SolutionFolder}/Intent.Modules" +
-                    " folder.\r\n\r\n# 2. Add repository to Intent Architect\r\n    - In Intent Architect, " +
-                    "navigate to the application you wish to install this module into.\r\n    - Navigat" +
-                    "e to the Modules section\r\n    - Click the Repository Setting cog in the top righ" +
-                    "t corner of the Modules section.\r\n    - Click Add New, and specify the Name (e.g" +
-                    ". Local Modules) and Address which will be the full (or relative) path to the ${" +
-                    "SolutionFolder}/Intent.Modules folder.\r\n    - Click Save\r\n\r\n#3. Install Module\r\n" +
-                    "    - Select your newly added module repository from the Repository dropdown.\r\n " +
-                    "   - Your module will automatically be loaded into the modules view.\r\n    - Clic" +
-                    "k on your module and then click Install in the details section on the right.\r\n\r\n" +
-                    "#4. Run the Software Factory\r\n    - Click the \"play\" button in the right of the " +
-                    "navigation bar to run the Software Factory.\r\n    - Outputs (if any) for your mod" +
-                    "ule will be listed. \r\n    - Errors can be debugged by clicking on the \"bug\" butt" +
-                    "on to left of the \"play\" button, and selecting this solution.\r\n\r\nIssues can be s" +
-                    "ent to support@intentarchitect.com or posted on our GitHub (https://github.com/I" +
-                    "ntentSoftware/IntentArchitect)");
+                    " Architect, the following steps are required:\r\n\r\nNOTE: In Visual Studio, it is r" +
+                    "ecommended to use a T4 editor such as this one (https://t4-editor.tangible-engin" +
+                    "eering.com) to edit T4 templates.\r\n\r\n# 1. Build Module\r\n    - In Visual Studio, " +
+                    "click Build -> Transform all T4 templates\r\n    - Complile this project by clicki" +
+                    "ng Build -> Build Solution. \r\n    - This will automatically package and create a" +
+                    "n Intent Module (.imod) file in the ${SolutionFolder}/Intent.Modules folder.\r\n\r\n" +
+                    "# 2. Add repository to Intent Architect\r\n    - In Intent Architect, navigate to " +
+                    "the application you wish to install this module into.\r\n    - Navigate to the Mod" +
+                    "ules section\r\n    - Click the Repository Setting cog in the top right corner of " +
+                    "the Modules section.\r\n    - Click Add New, and specify the Name (e.g. Local Modu" +
+                    "les) and Address which will be the full (or relative) path to the ${SolutionFold" +
+                    "er}/Intent.Modules folder.\r\n    - Click Save\r\n\r\n#3. Install Module\r\n    - Select" +
+                    " your newly added module repository from the Repository dropdown.\r\n    - Your mo" +
+                    "dule will automatically be loaded into the modules view.\r\n    - Click on your mo" +
+                    "dule and then click Install in the details section on the right.\r\n\r\n#4. Run the " +
+                    "Software Factory\r\n    - Click the \"play\" button in the right of the navigation b" +
+                    "ar to run the Software Factory.\r\n    - Outputs (if any) for your module will be " +
+                    "listed. \r\n    - Errors can be debugged by clicking on the \"bug\" button to left o" +
+                    "f the \"play\" button, and selecting this solution.\r\n\r\nIssues can be sent to suppo" +
+                    "rt@intentarchitect.com or posted on our GitHub (https://github.com/IntentSoftwar" +
+                    "e/IntentArchitect)");
             return this.GenerationEnvironment.ToString();
         }
     }

@@ -74,9 +74,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 <package>
   <id>{Project.Name}</id>
   <version>1.0.0</version>
-  <summary></summary>
-  <description></description>
-  <authors></authors>
+  <summary>A custom module for {Project.Application.SolutionName}.</summary>
+  <description>A custom module for {Project.Application.SolutionName}.</description>
+  <authors>{Project.Application.SolutionName}</authors>
   <templates>
   </templates>
   <dependencies>

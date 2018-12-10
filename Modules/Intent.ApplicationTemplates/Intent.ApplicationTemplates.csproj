@@ -94,7 +94,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if not exist "$(SolutionDir)Intent.Modules" mkdir "$(SolutionDir)Intent.Modules"
-$(SolutionDir)\packages\Intent.IntentArchitectPackager.1.3.0\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Empty\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+REM $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.3.0\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Empty\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 REM $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.3.0\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Empty Visual Studio\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 REM $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.3.0\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)AngularJS Web Application\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 $(SolutionDir)\packages\Intent.IntentArchitectPackager.1.3.0\tools\IntentArchitectPackager.exe packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Framework\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
