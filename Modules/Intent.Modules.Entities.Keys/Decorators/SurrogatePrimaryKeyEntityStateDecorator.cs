@@ -13,7 +13,6 @@ namespace Intent.Modules.Entities.Keys.Decorators
     public class SurrogatePrimaryKeyEntityStateDecorator : DomainEntityStateDecoratorBase, IHasTemplateDependencies
     {
         private string _surrogateKeyType = "Guid";
-        private bool _usingIdentityGenerator = false;
         public const string Identifier = "Intent.Entities.Keys.SurrogatePrimaryKeyEntityStateDecorator";
         public const string SurrogateKeyType = "Surrogate Key Type";
 
@@ -24,9 +23,8 @@ namespace Intent.Modules.Entities.Keys.Decorators
                 return base.BeforeProperties(@class);
             }
 
-            if (_surrogateKeyType.Trim().Equals("Guid", StringComparison.InvariantCultureIgnoreCase))
+            if (UseIdentityGenerator())
             {
-                _usingIdentityGenerator = true;
                 return @"
         private Guid? _id = null;
 
@@ -47,9 +45,14 @@ namespace Intent.Modules.Entities.Keys.Decorators
         public virtual {_surrogateKeyType} Id {{ get; set; }}";
         }
 
+        private bool UseIdentityGenerator()
+        {
+            return _surrogateKeyType.Trim().Equals("Guid", StringComparison.InvariantCultureIgnoreCase);
+        }
+
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
-            if (!_usingIdentityGenerator)
+            if (!UseIdentityGenerator())
             {
                 return new List<ITemplateDependancy>();
             }

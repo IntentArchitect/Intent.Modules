@@ -37,15 +37,17 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Intent.IArchitect.Packager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\lib\net452\Intent.IArchitect.Packager.exe</HintPath>
-      <Private>True</Private>
+    <Reference Include="Intent.IArchitect.Packager, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.IntentArchitectPackager.1.3.0\lib\net461\Intent.IArchitect.Packager.exe</HintPath>
+    </Reference>
+    <Reference Include="Intent.Metadata, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.7.0-pre4\lib\net452\Intent.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.6.0\lib\net452\Intent.MetaModel.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.7.0-pre4\lib\net452\Intent.MetaModel.dll</HintPath>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.6.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.7.0-pre1\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -143,6 +145,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Intent.Modules.AngularJs.Shell.imodspec" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -151,12 +154,12 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <Import Project="..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\build\Intent.IntentArchitectPackager.targets')" />
+  <Import Project="..\packages\Intent.IntentArchitectPackager.1.3.0\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.3.0\build\Intent.IntentArchitectPackager.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.1.0.3-alpha\build\Intent.IntentArchitectPackager.targets'))" />
+    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.1.3.0\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.1.3.0\build\Intent.IntentArchitectPackager.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
