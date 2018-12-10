@@ -44,7 +44,7 @@
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0"/>
   </dependencies>
   <metadata>
-    <install target="Module Builder" src="MetaData\Intent.ModuleBuilder"/>
+    <install target="Module Builder" src="metadata\Intent.ModuleBuilder"/>
   </metadata>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

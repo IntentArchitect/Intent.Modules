@@ -32,6 +32,6 @@
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
   <metadata>
-    <install target="Services" src="MetaData\Services"/>
+    <install target="Services" src="metadata\Intent.AspNetCore.WebApi"/>
   </metadata>
 </package>

@@ -355,7 +355,7 @@
     <None Include="metadata\Diagrams\Production\Production.diagram.config" />
     <None Include="metadata\Diagrams\Purchasing\Purchasing.diagram.config" />
     <None Include="metadata\Diagrams\Sales\Sales.diagram.config" />
-    <None Include="metadata\Packages\AdventureWorks\AdventureWorks.pkg.config" />
+    <None Include="metadata\Packages\AdventureWorks\Intent.AdventureWorks.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

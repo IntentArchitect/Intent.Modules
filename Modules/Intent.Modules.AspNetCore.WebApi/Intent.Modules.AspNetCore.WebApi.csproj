@@ -74,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.AspNetCore.WebApi.imodspec" />
-    <None Include="MetaData\Services\Intent.AspNetCore.WebApi.services.pkg.config" />
+    <None Include="metadata\Intent.AspNetCore.WebApi\Intent.AspNetCore.WebApi.pkg.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -101,18 +101,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="MetaData\Services\Folders\Stereotypes.xml" />
+    <None Include="metadata\Intent.AspNetCore.WebApi\Folders\Stereotypes.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MetaData\Services\Stereotypes\Secured.xml" />
+    <None Include="metadata\Intent.AspNetCore.WebApi\Stereotypes\Secured.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MetaData\Services\Stereotypes\Http.xml">
+    <None Include="metadata\Intent.AspNetCore.WebApi\Stereotypes\Http.xml">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MetaData\Services\Stereotypes\ParameterBinding.xml" />
+    <Content Include="metadata\Intent.AspNetCore.WebApi\Stereotypes\ParameterBinding.xml" />
     <Content Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiServiceCallContextTemplate.cs</LastGenOutput>

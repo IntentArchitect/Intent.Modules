@@ -74,7 +74,7 @@
     <None Include="Intent.Modules.Entities.DDD.imodspec">
       <SubType>Designer</SubType>
     </None>
-    <None Include="MetaData\Domain\Intent.Entities.DDD.domain.pkg.config" />
+    <None Include="metadata\Intent.Entities.DDD\Intent.Entities.DDD.domain.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,12 +88,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MetaData\Domain\Folders\Stereotypes.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\AggregateRoot.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\CommandOperation.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\ValueObject.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\Entity.xml" />
-    <Content Include="MetaData\Domain\Stereotypes\QueryOperation.xml" />
+    <Content Include="metadata\Intent.Entities.DDD\Folders\Stereotypes.xml" />
+    <Content Include="metadata\Intent.Entities.DDD\Stereotypes\AggregateRoot.xml" />
+    <Content Include="metadata\Intent.Entities.DDD\Stereotypes\CommandOperation.xml" />
+    <Content Include="metadata\Intent.Entities.DDD\Stereotypes\ValueObject.xml" />
+    <Content Include="metadata\Intent.Entities.DDD\Stereotypes\Entity.xml" />
+    <Content Include="metadata\Intent.Entities.DDD\Stereotypes\QueryOperation.xml" />
     <Content Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DomainEntityBehavioursTemplate.cs</LastGenOutput>
