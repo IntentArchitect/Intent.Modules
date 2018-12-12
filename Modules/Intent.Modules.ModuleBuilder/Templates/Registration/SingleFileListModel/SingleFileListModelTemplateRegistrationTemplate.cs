@@ -105,10 +105,18 @@ using Intent.SoftwareFactory.Templates;
             
             #line default
             #line hidden
-            this.Write("> GetModels(Intent.SoftwareFactory.Engine.IApplication application)\r\n        {\r\n " +
-                    "           return _metaDataManager.GetClassModels(application, \"Domain\")\r\n      " +
-                    "          .OrderBy(x => x.Name)\r\n                .ToList();\r\n        }\r\n    }\r\n}" +
-                    "");
+            this.Write(@"> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
+        {
+            // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == ""Service"") for services only)
+            return _metaDataManager.GetClassModels(application, """);
+            
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelerName()));
+            
+            #line default
+            #line hidden
+            this.Write("\")\r\n                .OrderBy(x => x.Name)\r\n                .ToList();\r\n        }\r" +
+                    "\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

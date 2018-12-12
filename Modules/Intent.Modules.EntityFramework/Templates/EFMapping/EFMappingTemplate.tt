@@ -77,9 +77,9 @@ namespace <#= Namespace #>
     
         public <#= Model.Name.ToPascalCase() #>Mapping()
         {
-<#    if (Model.ParentClass == null || Model.ParentClass.GetStereotypeProperty<string>("InheritanceMapping", "Type") != "TPH")
+<#  if (Model.ParentClass == null || Model.ParentClass.GetStereotypeProperty<string>("InheritanceMapping", "Type") != "TPH")
     {#>
-            this.ToTable("<#= Model.GetStereotypeProperty("Table", "Name", Model.Name) #>", "<#= Model.GetStereotypeProperty("Table", "Schema", "dbo") #>");
+            this.ToTable("<#= Model.GetStereotypeProperty("Table", "Name", Model.Name) #>"<#= Model.HasStereotype("Table") ? ", \"" + Model.GetStereotypeProperty("Table", "Schema", "dbo") + "\"" : "" #>);
 <#    }
     if (Model.GetStereotypeProperty<string>("InheritanceMapping", "Type") == "TPH")
     {

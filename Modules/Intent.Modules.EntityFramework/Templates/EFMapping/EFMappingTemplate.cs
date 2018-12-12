@@ -129,7 +129,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             this.Write("Mapping()\r\n        {\r\n");
             
             #line 80 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-    if (Model.ParentClass == null || Model.ParentClass.GetStereotypeProperty<string>("InheritanceMapping", "Type") != "TPH")
+  if (Model.ParentClass == null || Model.ParentClass.GetStereotypeProperty<string>("InheritanceMapping", "Type") != "TPH")
     {
             
             #line default
@@ -141,14 +141,14 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             
             #line default
             #line hidden
-            this.Write("\", \"");
+            this.Write("\"");
             
             #line 82 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetStereotypeProperty("Table", "Schema", "dbo")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.HasStereotype("Table") ? ", \"" + Model.GetStereotypeProperty("Table", "Schema", "dbo") + "\"" : ""));
             
             #line default
             #line hidden
-            this.Write("\");\r\n");
+            this.Write(");\r\n");
             
             #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
     }

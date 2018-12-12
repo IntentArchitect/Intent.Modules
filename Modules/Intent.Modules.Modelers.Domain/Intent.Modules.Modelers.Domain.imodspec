@@ -13,6 +13,7 @@
   <decorators>
   </decorators>
   <dependencies>
+    <dependency id="Intent.Common.Types" version="1.7.0" requireReinstallation="true" />
   </dependencies>
   <metadata>
     <install target="Domain" src="modelers"/>

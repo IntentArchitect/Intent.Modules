@@ -63,7 +63,7 @@ namespace <#= Namespace #>
 <#  } #>
 
 <#  foreach(var operation in Model.Operations) { #>
-        public <#= Types.Get(operation.ReturnType?.Type) ?? ""void"" #> <#= operation.Name.ToPascalCase() #>(<#= string.Join("", "", operation.Parameters.Select(x => string.Format(""{0} {1}"", Types.Get(x.Type), x.Name))) #>)
+        public <#= operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : ""void"" #> <#= operation.Name.ToPascalCase() #>(<#= string.Join("", "", operation.Parameters.Select(x => string.Format(""{0} {1}"", Types.Get(x.Type), x.Name))) #>)
         {
             throw new NotImplementedException();
         }

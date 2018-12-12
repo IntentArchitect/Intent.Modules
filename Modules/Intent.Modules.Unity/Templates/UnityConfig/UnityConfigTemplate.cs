@@ -53,40 +53,68 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        #region Unity Container\r\n        private static readonly Lazy<IU" +
-                    "nityContainer> container = new Lazy<IUnityContainer>(() =>\r\n        {\r\n         " +
-                    "   var container = new UnityContainer();\r\n            RegisterTypes(container);\r" +
-                    "\n            return container;\r\n        });\r\n\r\n        /// <summary>\r\n        //" +
-                    "/ Gets the configured Unity container.\r\n        /// </summary>\r\n        public s" +
-                    "tatic IUnityContainer GetConfiguredContainer()\r\n        {\r\n            return co" +
-                    "ntainer.Value;\r\n        }\r\n        #endregion\r\n\r\n        private static void Reg" +
-                    "isterTypes(IUnityContainer container)\r\n        {\r\n            LoadConventions(co" +
-                    "ntainer);\r\n            LoadGeneratedRegistrations(container);\r\n            LoadC" +
-                    "ustom(container);\r\n        }\r\n\r\n        /// <summary>Registers the type mappings" +
-                    " with the Unity container.</summary>\r\n        /// <param name=\"container\">The un" +
-                    "ity container to configure.</param>\r\n        /// <remarks>There is no need to re" +
-                    "gister concrete types (unless you want to change the defaults), \r\n        /// as" +
-                    " Unity allows resolving a concrete type even if it was not previously registered" +
-                    ".</remarks>\r\n        [IntentManaged(Mode.Ignore)]\r\n        private static void L" +
-                    "oadCustom(IUnityContainer container)\r\n        {\r\n            //Add Custom Unity " +
-                    "Registrations\r\n        }\r\n\r\n        private static void LoadConventions(IUnityCo" +
-                    "ntainer container)\r\n        {\r\n            var assemblies = AppDomain.CurrentDom" +
-                    "ain.GetAssemblies()\r\n                .Where(x => x.FullName.StartsWith(\"Intent\")" +
-                    "\r\n");
+            this.Write(@"
+    {
+        #region Unity Container
+        private static readonly Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
+        {
+            var container = new UnityContainer();
+            RegisterTypes(container);
+            return container;
+        });
+
+        /// <summary>
+        /// Gets the configured Unity container.
+        /// </summary>
+        public static IUnityContainer GetConfiguredContainer()
+        {
+            return container.Value;
+        }
+        #endregion
+
+        private static void RegisterTypes(IUnityContainer container)
+        {
+            LoadConventions(container);
+            LoadGeneratedRegistrations(container);
+            LoadCustom(container);
+        }
+
+        /// <summary>Registers the type mappings with the Unity container.</summary>
+        /// <param name=""container"">The unity container to configure.</param>
+        /// <remarks>There is no need to register concrete types (unless you want to change the defaults), 
+        /// as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
+        [IntentManaged(Mode.Ignore)]
+        private static void LoadCustom(IUnityContainer container)
+        {
+            //Add Custom Unity Registrations
+        }
+
+        private static void LoadConventions(IUnityContainer container)
+        {
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(x => 
+");
             
             #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
   foreach(var project in ApplicationProjects) { 
             
             #line default
             #line hidden
-            this.Write("                            || x.FullName.Equals(\"");
+            this.Write("                            ");
+            
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(project == ApplicationProjects.First() ? "" : "|| "));
+            
+            #line default
+            #line hidden
+            this.Write("x.GetName().Name.Equals(\"");
             
             #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project.Name));
             
             #line default
             #line hidden
-            this.Write("\")\r\n");
+            this.Write("\") \r\n");
             
             #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
   } 

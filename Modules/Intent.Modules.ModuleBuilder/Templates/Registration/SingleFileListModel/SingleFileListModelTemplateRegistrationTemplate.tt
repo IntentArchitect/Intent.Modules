@@ -37,7 +37,8 @@ namespace <#= Namespace #>
 	    [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IList<<#= Model.GetTargetModel() #>> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
         {
-            return _metaDataManager.GetClassModels(application, "Domain")
+            // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == "Service") for services only)
+            return _metaDataManager.GetClassModels(application, "<#= Model.GetModelerName() #>")
                 .OrderBy(x => x.Name)
                 .ToList();
         }

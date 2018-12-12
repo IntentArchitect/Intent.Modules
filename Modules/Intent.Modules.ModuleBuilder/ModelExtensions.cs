@@ -8,19 +8,24 @@ namespace Intent.Modules.ModuleBuilder
     {
         public static RegistrationType GetRegistrationType(this IClass model)
         {
-            switch (model.GetStereotypeProperty("Template Settings", "Registration", "Per-Model"))
+            switch (model.GetStereotypeProperty("Template Settings", "Registration", "File per Model"))
             {
-                case "No-Model":
+                case "Single File (No Model)":
                     return RegistrationType.SingleFileNoModel;
-                case "Per-Model":
+                case "File per Model":
                     return RegistrationType.FilePerModel;
-                case "Per-Model-List":
+                case "Single File (Model List)":
                     return RegistrationType.SingleFileListModel;
                 case "Custom":
                     return RegistrationType.Custom;
                 default:
                     return RegistrationType.SingleFileNoModel;
             }
+        }
+
+        public static string GetModelerName(this IClass model)
+        {
+            return model.GetStereotypeProperty("Template Settings", "Modeler", "Domain");
         }
 
         public static string GetTargetModel(this IClass model)

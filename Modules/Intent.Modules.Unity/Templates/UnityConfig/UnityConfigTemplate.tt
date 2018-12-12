@@ -60,9 +60,9 @@ namespace <#= Namespace #>
         private static void LoadConventions(IUnityContainer container)
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies()
-                .Where(x => x.FullName.StartsWith("Intent")
+                .Where(x => 
 <#  foreach(var project in ApplicationProjects) { #>
-                            || x.FullName.Equals("<#= project.Name #>")
+                            <#= project == ApplicationProjects.First() ? "" : "|| " #>x.GetName().Name.Equals("<#= project.Name #>") 
 <#  } #>
                       ).ToArray();
             container.RegisterTypes(
