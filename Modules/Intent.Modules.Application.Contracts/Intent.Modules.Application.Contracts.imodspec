@@ -26,6 +26,7 @@
     <decorator id="Intent.Application.Contracts.DataContractDecorator"/>
   </decorators>
   <dependencies>
+    <dependency id="Intent.Modelers.Services" version="1.0.0"/>
     <dependency id="Intent.Common" version="1.7.0"/>
     <dependency id="Intent.Common.Types" version="1.7.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0"/>
