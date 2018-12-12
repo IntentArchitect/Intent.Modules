@@ -58,6 +58,15 @@
     <Compile Include="Decorators\WebApiConfigJsonValidationDecorator.cs" />
     <Compile Include="Decorators\WebApiWebApiControllerExceptionHandlingStrategy.cs" />
     <Compile Include="Decorators\WebApiOwinStartupDecorator.cs" />
+    <Compile Include="Templates\ExceptionHandlerFilter\ExceptionHandlerFilterOwinWebApiConfigDecorator.cs" />
+    <Compile Include="Templates\ExceptionHandlerFilter\ExceptionHandlerFilterOwinWebApiConfigDecoratorRegistration.cs" />
+    <Compile Include="Templates\ExceptionHandlerFilter\WebApiFilterTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebApiFilterTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\ExceptionHandlerFilter\WebApiFilterTemplatePartial.cs" />
+    <Compile Include="Templates\ExceptionHandlerFilter\WebApiFilterTemplateRegistrations.cs" />
     <Compile Include="Templates\OwinWebApiConfig\OwinWebApiConfigTemplateRegistration.cs" />
     <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.cs">
       <DependentUpon>RequireHttpsMiddlewareTemplate.tt</DependentUpon>
@@ -168,6 +177,10 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="MetaData\Services\Stereotypes\ParameterBinding.xml" />
+    <Content Include="Templates\ExceptionHandlerFilter\WebApiFilterTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>WebApiFilterTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiServiceCallContextTemplate.cs</LastGenOutput>
