@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Intent.Modules.Common</id>
-    <version>1.7.0-pre5</version>
+    <version>1.7.0</version>
     <title>Intent - Modules Common</title>
     <authors>Intent Architect</authors>
     <owners>Intent Architect</owners>
