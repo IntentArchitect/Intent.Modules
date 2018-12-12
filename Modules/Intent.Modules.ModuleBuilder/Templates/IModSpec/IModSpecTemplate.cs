@@ -43,7 +43,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             foreach (var model in Model)
             {
-                var id = $"{Project.Name}.{model.Name}";
+                var id = $"{Project.ApplicationName()}.{model.Name}";
                 var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{id}\"]");
 
                 if (specificTemplate == null)
@@ -81,7 +81,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
   </templates>
   <dependencies>
     <dependency id=""Intent.Common"" version=""1.7.0"" />
-    <dependency id=""Intent.Common.Types"" version=""1.7.0"" />
+    <dependency id=""Intent.Common.Types"" version=""1.7.0"" />{(Model.Any(x => x.GetModelerName() == "Domain") ? @"
+    <dependency id=""Intent.Modelers.Domain"" version=""1.0.0"" />" : "")}{(Model.Any(x => x.GetModelerName() == "Services") ? @"
+    <dependency id=""Intent.Modelers.Services"" version=""1.0.0"" />" : "")}{(Model.Any(x => x.GetModelerName() == "Eventing") ? @"
+    <dependency id=""Intent.Modelers.Eventing"" version=""0.1.0"" />" : "")}
   </dependencies> 
   <files>
     <file src=""bin\$configuration$\$id$.dll"" />

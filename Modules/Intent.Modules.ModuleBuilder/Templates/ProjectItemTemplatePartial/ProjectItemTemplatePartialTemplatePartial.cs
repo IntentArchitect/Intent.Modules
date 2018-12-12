@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
@@ -46,7 +47,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 
         private string GetTemplateId()
         {
-            return $"{Project.Name}.{Model.Name}";
+            return $"{Project.ApplicationName()}.{Model.Name}";
         }
 
         private string GetModelType()

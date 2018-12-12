@@ -48,7 +48,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
 
         private string GetTemplateId()
         {
-            return $"{Project.Name}.{Model.Name}";
+            return $"{Project.ApplicationName()}.{Model.Name}";
         }
 
         private string GetModelType()

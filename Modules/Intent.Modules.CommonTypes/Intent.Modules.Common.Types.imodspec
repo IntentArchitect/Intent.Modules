@@ -23,5 +23,6 @@
   <metadata>
     <install target="Domain" src="Metadata\Intent.Common.Types"/>
     <install target="Services" src="Metadata\Intent.Common.Types"/>
+    <install target="Eventing" src="Metadata\Intent.Common.Types"/>
   </metadata>  
 </package>
