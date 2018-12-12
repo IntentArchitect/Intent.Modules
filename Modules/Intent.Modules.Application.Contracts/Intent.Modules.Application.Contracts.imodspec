@@ -36,6 +36,6 @@
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
   <metadata>
-    <install target="DataContracts" src="MetaData\DataContracts"/>
+    <install target="Services" src="metadata\Intent.Application.Contracts"/>
   </metadata>
 </package>

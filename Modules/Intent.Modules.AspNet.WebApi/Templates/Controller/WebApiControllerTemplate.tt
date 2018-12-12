@@ -74,30 +74,25 @@ namespace <#=Namespace#>
 #>
             var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
 
-            try
-            {<#= BeforeTransaction(operation) #>
-                using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso<#= operation.IsAsync() ? ", TransactionScopeAsyncFlowOption.Enabled" : "" #>))
-                {<#= BeforeCallToAppLayer(operation) #>
+            <#= BeforeTransaction(operation) #>
+            using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso<#= operation.IsAsync() ? ", TransactionScopeAsyncFlowOption.Enabled" : "" #>))
+            {<#= BeforeCallToAppLayer(operation) #>
 <#
         if (operation.ReturnType != null)
         {
 #>
-                    var appServiceResult = <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
-                    result = appServiceResult;
+                var appServiceResult = <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+                result = appServiceResult;
 <#      }
         else
         {
-#>                        
-                    <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+#>              
+                <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
 <#      
         }
 #><#= AfterCallToAppLayer(operation) #>
-                    ts.Complete();
-                }<#= AfterTransaction(operation) #>
-            }
-            catch (Exception e)
-            {<#= OnExceptionCaught(operation) #>                
-            }
+                ts.Complete();
+            }<#= AfterTransaction(operation) #>
 
 <#      if (operation.ReturnType != null)
         {#>

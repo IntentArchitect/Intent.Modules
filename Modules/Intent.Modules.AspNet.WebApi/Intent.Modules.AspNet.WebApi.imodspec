@@ -18,21 +18,18 @@
     <template id="Intent.AspNet.WebApi.ServiceCallContext">
       <role>Distribution.WebApi</role>
     </template>
-    <template id="Intent.AspNet.WebApi.BadHttpRequestException" enabled="false">
+    <template id="Intent.AspNet.WebApi.ExceptionHandlerFilter">
       <role>Distribution.WebApi</role>
     </template>
     <template id="Intent.AspNet.WebApi.RequireHttpsMiddleware" enabled="false">
       <role>Distribution.WebApi</role>
     </template>
-    <template id="Intent.AspNet.WebApi.HttpExceptionHandler" enabled="false">
-      <role>Distribution.WebApi</role>
-    </template>
   </templates>
   <decorators>
-    <decorator id="Intent.AspNet.WebApi.OwinStartup"/>
+    <decorator id="Intent.AspNet.WebApi.OwinStartup.Decorator"/>
     <decorator id="Intent.AspNet.WebApi.OwinStartup.UseHttpsDecorator" enabled="false"/>
+    <decorator id="Intent.AspNet.WebApi.WebApiConfig.ExceptionHandlerFilter.Decorator" />
     <decorator id="Intent.AspNet.WebApi.WebApiConfig.JsonValidation.Decorator" enabled="false"/>
-    <decorator id="Intent.AspNet.WebApi.ExceptionHandlingStrategy" enabled="false"/>
   </decorators>
   <interoperability>
     <detect id="Intent.Unity">
@@ -57,6 +54,6 @@
     <file src="bin\$configuration$\$id$.pdb"/>
   </files>
   <metadata>
-    <install target="Services" src="MetaData\Services"/>
+    <install target="Services" src="metadata\Intent.AspNet.WebApi"/>
   </metadata>
 </package>

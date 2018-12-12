@@ -79,7 +79,7 @@
   <ItemGroup>
     <None Include="Intent.Modules.Application.Contracts.imodspec" />
     <None Include="Intent.Modules.Application.Contracts.nuspec" />
-    <None Include="MetaData\DataContracts\Intent.Application.Contracts.pkg.config" />
+    <None Include="metadata\Intent.Application.Contracts\Intent.Application.Contracts.pkg.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
@@ -93,8 +93,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="MetaData\DataContracts\Stereotypes\Asynchronous.xml" />
-    <Content Include="MetaData\DataContracts\Stereotypes\DataContract.xml" />
+    <Content Include="metadata\Intent.Application.Contracts\Stereotypes\Asynchronous.xml" />
+    <Content Include="metadata\Intent.Application.Contracts\Stereotypes\DataContract.xml" />
     <Content Include="Templates\DTO\DTOTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DTOTemplate.cs</LastGenOutput>

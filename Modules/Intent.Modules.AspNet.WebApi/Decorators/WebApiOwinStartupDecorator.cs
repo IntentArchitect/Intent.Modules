@@ -8,7 +8,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
 {
     public class WebApiOwinStartupDecorator : IOwinStartupDecorator, IHasTemplateDependencies
     {
-        public const string Identifier = "Intent.AspNet.WebApi.OwinStartup";
+        public const string Identifier = "Intent.AspNet.WebApi.OwinStartup.Decorator";
 
         public IEnumerable<string> DeclareUsings()
         {
