@@ -69,16 +69,6 @@
     <Content Include="Web Application .NET Framework\metadata.xml">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="AngularJS Web Application\content\%24{field_application.name}.application.config" />
-    <Content Include="AngularJS Web Application\description.html" />
-    <Content Include="AngularJS Web Application\metadata.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="Empty\content\%24{field_application.name}.application.config" />
-    <Content Include="Empty\description.html" />
-    <Content Include="Empty\metadata.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="Empty Visual Studio\content\%24{field_application.name}.application.config" />
     <Content Include="Empty Visual Studio\metadata.xml">
       <SubType>Designer</SubType>
@@ -87,8 +77,6 @@
     <None Include="Web Application .NET Framework\content\modules.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AngularJS Web Application\content\modules.config" />
-    <None Include="Empty\content\modules.config" />
     <None Include="Empty Visual Studio\content\modules.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
