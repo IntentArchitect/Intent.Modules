@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
         public override IEnumerable<IClass> GetModels(SoftwareFactory.Engine.IApplication applicationManager)
         {
             return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => x.SpecializationType == "C# Template")
+                .Where(x => x.IsCSharpTemplate())
                 .ToList();
         }
     }

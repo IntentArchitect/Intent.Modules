@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
         public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
         {
             return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => (x.SpecializationType == "C# Template" || x.SpecializationType == "File Template") && x.GetRegistrationType() == RegistrationType.FilePerModel)
+                .Where(x => (x.IsCSharpTemplate() || x.IsFileTemplate()) && x.GetRegistrationType() == RegistrationType.FilePerModel)
                 .ToList();
         }
     }

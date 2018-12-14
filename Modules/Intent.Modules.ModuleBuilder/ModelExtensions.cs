@@ -28,6 +28,16 @@ namespace Intent.Modules.ModuleBuilder
             return model.GetStereotypeProperty("Template Settings", "Modeler", "Domain");
         }
 
+        public static bool IsCSharpTemplate(this IClass model)
+        {
+            return model.SpecializationType == "C# Template";
+        }
+
+        public static bool IsFileTemplate(this IClass model)
+        {
+            return model.SpecializationType == "File Template";
+        }
+
         public static string GetTargetModel(this IClass model)
         {
             switch (model.GetRegistrationType())
