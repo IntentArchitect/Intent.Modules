@@ -10,14 +10,14 @@
   <tags>WebApi Restful</tags>
   <templates>
     <template id="Intent.AspNetCore.WebApi.Controller">
-      <role>Distribution.WebApi</role>
+      <role>AspNetCore.WebApi.Controller</role>
       <config>
         <add key="ClassName" description="Class name" default="${Model.Name}Controller" />
         <add key="Namespace" description="Namespace" default="${Project.Name}.Controllers" />
       </config>
     </template>
     <template id="Intent.AspNetCore.WebApi.ServiceCallContext" enabled="false">
-      <role>Distribution.WebApi</role>
+      <role>AspNetCore.WebApi.ServiceCallContext</role>
     </template>
   </templates>
   <decorators>

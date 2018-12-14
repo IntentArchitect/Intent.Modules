@@ -1,64 +1,58 @@
 # Quick Start
 
-Tooling in software helps us build more robust, maintainable applications faster then we could doing it all by hand. 
+This quickstart guide will take you through the steps required to create an ASP.NET Core web application using the open-source modules created by the Intent team. The aim is to show how you can describe your system in high-level models and allow a technology specific set of modules (ASP.NET Core modules in this guide) to realize that into code.
 
-Intent Architect is an IDE-like tool which helps you better capture your design intent and uses that intent to build out aspects of your application as per your *'blueprints'*.
+The open-source modules repository can be found [here](https://github.com/IntentSoftware/IntentArchitect).
 
-The goal of this guide is to give you a feel for the tool, illustrating how it works and what it can do for you. In this guide we're going to create a "full stack" ASP.NET WebApi 2.2 server with persistence and domain patterns in place.
+## 1. Installing and running Intent Architect
 
-Once completed, you'll have a basic understanding of how Intent Architect works and a foundation to begin exploring how to it can make your development world better.
+Get Intent Architect up and running through the following steps.
 
-## 1. Setup the development environment
+- Download the latest version of Intent Architect from the website: [https://intentarchitect.com/#/downloads](https://intentarchitect.com/#/downloads)
+- Register an account: [https://intentarchitect.com/#/user-access/register](https://intentarchitect.com/#/user-access/register).
+- Double click the downloaded executable to install and run Intent Architect.
+- Log in using the credentials created for your account.
 
-Get Intent Architect up and running in 3 easy steps.
+## 2. Create a workspace
 
-- Sign up at [https://intentarchitect.com/](https://intentarchitect.com/).
-- Download the latest version of Intent Architect.
-- Double clicking the downloaded .exe automatically, installs, creates shortcuts for, and starts Intent Architect, ready for you to begin working with it. 
+A `workspace` provides the root location of your solution. This is typically the root folder of you version control repository. It may for example contain a single monolithic application or several microservices.
 
-## 2. Create a New Solution
+**From the home screen, click `Create new workspace...` under the 'Create' header.**
 
-A `Solution` is a logical grouping of `Applications` (components) of your system. Modern systems are typically composed of multiple cohesive applications which communicate with each other through well defined interfaces.  
+Fill in the Name, Description (optional), and Location of your workspace. You can also change the icon by clicking on it.
 
-**Click on `Create New Solution`, either in the body of the `Home` screen or from the `Solutions` drop down at the top of the screen.**
+![New Workspace Dialog](../../images/quick_start/create_workspace.png)
 
-![New Solution Dialog](../../images/quick_start/create_solution_dialog.png)
-
-*Create Solution Dialog*
+*Create Workspace Dialog*
 
 |Field|Description|
 |-|-|
-|Icon|This is an icon which will be associated with the *Solution*. By default a random icon is chosen, but it can be changed at any time.|
-|Name|The name of your solution. This name should be alpha-numeric with no special characters or spaces.|
-|Description|Any description or comments about this solution for yourself (or your team).|
-|Location|The folder where Intent Architect will save data for the solution. This should point to a path under the same Source Control Management as your normal source code, so that it can be versioned and shared amongst the development team in the same way. Intent Architect does not append any additional sub directories, the directory selected will be the directory used.|
+|Icon|This is an icon which will be associated with the *workspace*. By default a random icon is chosen, but it can be changed at any time.|
+|Name|The name of your workspace. This name should be alpha-numeric with no special characters or spaces.|
+|Description|Any description or comments about this workspace for yourself (or your team).|
+|Location|The folder where Intent Architect will save data for the workspace. This should point to a path under the same Source Control Management as your normal source code, so that it can be versioned and shared amongst the development team in the same way. Intent Architect does not append any additional sub directories, the directory selected will be the directory used.|
 
 You will be presented with the `Create Solution` Dialog.
 
 >[!TIP]
 >Good names for Solutions would typically be things like the client name, your product name, business area / unit or your organization name.
 
-**Fill out the dialog and press `Save`.**
+**Once the workspace details have been filled out, click `Save`.**
+
+The workspace will open automatically.
 
 ## 3. Create a new Application
 
-Next we will create an `Application`. As you would expect, in Intent Architect an `Application` is a single application of your overall system, for example, it could be a website including it's frontend along with backing services and infrastructure like database persistance. 
+Next we will create an `Application`. An application could represent a standalone monolithic application, a mircroservice, or simply a location for Intent Architect to generate code into.
 
-**Click the `New Application` tile.**
+**To create an application, click the `New Application` tile from within the workspace.**
 
-You will now be presented with a two-step wizard to create your application.
-- Select an Application Template.
-- Capture some basic details for the Application.
+A `Create application` wizard will be displayed, presenting a set of `application templates`.
+- Select the `Web Application ASP.NET Core` application template.
+- Capture the Name, Location, Icon and Description (option) of your application.
 
 ![Select an Application Template](../../images/quick_start/create_application_page1.png)
-*Select an Application Template*
-
-Each Application Template is pre-configured initial state of an application. They can install Modules, populate Metadata and anything else that can be manually configured through the front end. Intent Architect has a gallery of templates available online which will be added to over time. For the purposes of this guide, we will choose the `Full Stack ASP.NET WebAPI 2.2` *Application Template*.
-
-**Select the `Full Stack ASP.NET WebAPI 2.2` Application Template and click `Next`.**
-
-![Capture Application Details](../../images/quick_start/create_application_page2.png)
-*Capture Application Details*
+*Select an application template and fill out application details.*
 
 |Field|Description|
 |-|-|
@@ -66,8 +60,17 @@ Each Application Template is pre-configured initial state of an application. The
 |Icon|This is an icon which will be associated with the *application*. By default a random icon is chosen, but it can be changed at any time.|
 |Location|The folder where your application's data will be persisted. By default this will be in a sub-folder of the solution named after the Application name.|
 |Description|A description of the Application.|
+>[!TIP]
+>`Application templates` like the ones show above are not baked into Intent Architect. They can be created relatively easily and are a great way to bundle modules into a comprehensive technology set. They can also define the default `Project Layout`. See the open-source Intent Architect GitHub repository (https://github.com/IntentSoftware/IntentArchitect) for examples on how to build application templates.
 
-**After capturing the details, press `Create`.**
+**Click `NEXT`.**
+
+![Capture Application Details](../../images/quick_start/create_application_page2.png)
+*Capture Application Details*
+
+**Leave the Installation options as is and click `CREATE`.**
+
+Intent Architect will create the application as defined by the `Web Application ASP.NET Core` application template and begin downloading all the necessary modules. Once downloading is complete the application will be opened automatically. The `Installation Manager` can now be closed.
 
 ## 4. Push the `Play` button
 
