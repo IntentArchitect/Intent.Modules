@@ -1,8 +1,8 @@
-# Quick Start
+# Getting Started - building an eShop in ASP.NET Core.
 
 This quickstart guide will take you through the steps required to create an ASP.NET Core web application using the open-source modules created by the Intent team. The aim is to show how you can describe your system in high-level models and allow a technology specific set of modules (ASP.NET Core modules in this guide) to realize that into code.
 
-The open-source modules repository can be found [here](https://github.com/IntentSoftware/IntentArchitect).
+The open-source modules repository can be found [here](https://github.com/IntentSoftware/IntentArchitect). The modules are designed to support a hexagonal architecture (a.k.a. ports and adapters architecture), and the patterns are enterprise grade and production ready.
 
 ## 1. Installing and running Intent Architect
 
@@ -123,10 +123,15 @@ The folder should look something like this:
 ![View of Generated Output](../../images/quick_start/generated_application.png)
 *Generated outputs*
 
-Open the solution (e.g. `WebApp.sln` file) in Visual Studio 2017 or later (since this is a .NET Core application).
+**Open the solution (e.g. `WebApp.sln` file) in Visual Studio 2017** or later (since this is a .NET Core application).
 
-Allow Visual Studio to restore the Compile and run (hit F5).
+Allow Visual Studio to restore NuGet dependencies then **compile and run the application (press F5)**.
 
+The server will be launched locally, but since we haven't described what we want it do, it has no capabilities and is rather useless. Let's now begin describing what we want our web server to do (_describing our "intent"_).
+
+## 5. Describing a Domain
+
+## 6. Describing Services
 
 ## What just happened?
 
