@@ -1,6 +1,6 @@
-# Getting Started - building an eShop in ASP.NET Core.
+# Getting Started - create an ASP.NET Core web app.
 
-This quickstart guide will take you through the steps required to create an ASP.NET Core web application using the open-source modules created by the Intent team. The aim is to show how you can describe your system in high-level models and allow a technology specific set of modules (ASP.NET Core modules in this guide) to realize that into code.
+This guide will take you through the steps required to create an ASP.NET Core web application using the open-source modules created by the Intent team. The aim is to show how you can describe your system in high-level models and allow a technology specific set of modules (ASP.NET Core modules in this guide) to realize that into code.
 
 The open-source modules repository can be found [here](https://github.com/IntentSoftware/IntentArchitect). The modules are designed to support a hexagonal architecture (a.k.a. ports and adapters architecture), and the patterns are enterprise grade and production ready.
 
@@ -65,15 +65,19 @@ A `Create application` wizard will be displayed, presenting a set of `applicatio
 
 **Click `NEXT`.**
 
-![Capture Application Details](../../images/quick_start/create_application_page2.png)
-*Capture Application Details*
-
 The `Web Application ASP.NET Core` application template provides a set of components which can be turned on or off. Each component represents one or more modules that will be installed. By default the main components are selected, with others presented as options.
+
+We will want to test our services later, and for that we can use the [Swagger UI](https://swagger.io/tools/swagger-ui/).
+
+**Select the `Swagger (Swashbuckle)` component for installation.**
+
+![Capture Application Details](../../images/quick_start/create_application_page2.png)
+*Select application components to install*
 
 >[!TIP]
 >You will be able to add or remove modules later, so don't worry about ensuring you get everything you need installed upfront.
 
-**Leave the installation options as is and click `CREATE`.**
+**Click `CREATE`.**
 
 Intent Architect will now create the application as defined by the `Web Application ASP.NET Core` application template and begin downloading all the necessary modules. Once downloading is complete the application will be opened automatically.
 
@@ -100,13 +104,13 @@ Your application is now created, and pre-configured with a `Project Layout` and 
 
 The `Run Software Execution` dialogue will appear, providing an output log in the `Console` tab, followed by staging files it intends on creating, updating or deleting in the `Changes` tab:
 
-![Execution of the Software Factory](../../images/quick_start/software_factory_execution1.png)
-*Software Factory execution 'Changes'*
+![Execution of the Software Factory](../../images/quick_start/software_factory_execute.gif)
+*Software Factory execution*
 
 The `Software Factory` hasn’t created or altered any files at this point. The files are staged so that it is clear to the developer what the software factory is intending on doing. By clicking on one of the files, Intent Architect will open a diff-tool (by default Visual Studio) to compare changes. 
 
 >[!TIP]
->The diff-tool can be changed under your profile settings.
+>Try clicking the `Startup.cs` file to see what Intent Architect intends to output. Note that the default Visual Studio installation locations are inspected to automatically wire up the diff-tool. If not found, an error will be shown. Any diff-tool can be used, and can be changed under your profile settings located in the top right hand corner, to the right of the Software Factory _"play"_ button..
 
 **Click the `APPLY CHANGES` button.**
 
@@ -114,7 +118,7 @@ The `Software Factory` will apply the staged code changes from the list. We can 
 
 **Click the `CLOSE` button.**
 
-## 4. Open the application in Visual Studio
+## 4. Run the application using Visual Studio
 
 At this point, we've told Intent Architect that we want an ASP.NET Core web application, and allowed it to generate the required files for just that. To open the solution in Visual Studio, we need to navigate to the application's folder. An easy shortcut to the code is to navigate to the `Project Layout` section in the aside menu, and click on the `Open in Folder` button.
 
@@ -123,15 +127,66 @@ The folder should look something like this:
 ![View of Generated Output](../../images/quick_start/generated_application.png)
 *Generated outputs*
 
-**Open the solution (e.g. `WebApp.sln` file) in Visual Studio 2017** or later (since this is a .NET Core application).
+**Open the solution (e.g. `MyMovies.sln` file) in Visual Studio 2017** or later (since this is a .NET Core application). The solution will look as follows:
 
-Allow Visual Studio to restore NuGet dependencies then **compile and run the application (press F5)**.
+![Visual Studio Solution](../../images/quick_start/visual_studio_solution.png)
 
-The server will be launched locally, but since we haven't described what we want it do, it has no capabilities and is rather useless. Let's now begin describing what we want our web server to do (_describing our "intent"_).
+*Visual Studio solution layout*
+
+Allow Visual Studio to restore NuGet dependencies then **compile and run the application by clicking `Debug` -> `Start Debugging` menu items** (or press F5).
+
+The server will be launched locally. **Navigate to `/swagger` relative url to open the Swagger UI.**
+
+![Empty Swagger](../../images/quick_start/swagger_empty.png)
+*Swagger UI - No operations defined in spec!*
+
+Since we haven't described any services, the Swagger UI will be empty. Let's now begin describing what we want our web server to do (_describing our "intent"_).
 
 ## 5. Describing a Domain
+A good place to start designing a system is with the Domain. The Domain should represent the business entities and their relationships to one another. 
+
+>[!TIP]
+>Modeling domains in this way brings _visibility_ and _transparency_ to your business layer. Developers can discuss design decision amongst each other (and even with business) with the knowledge that the diagram they are looking at represents the truth of the underlying code. In his book, _Domain-Driven Design: Tackling Complexity in the Heart of Software_, Eric Evans describes the value of having a model to align developers and domain experts.
+
+To model our Movies domain, **navigate to the `Domain` modeler.**
+
+Let's now a add a class called `Movie` to our Domain. To add a class, **right-click the diagram view and click `Add Class`.**
+
+The newly added class automatically allows you to rename it in the model window on the right. **Rename it to `Movie`.** Alternatively, right-click the class and click `Rename` (or press F2).
+
+Next let's add attributes to our `Movie` class. To add an attribute, **right-click the class and click `Add Attribute` (or press ctrl + shift + a).**
+
+**Add the following attributes:**
+
+![Movie class](../../images/quick_start/domain_movie_class.png)
+
+*Domain Modeler - adding classes and attributes.*
+
+To change the `Type` of the attribute, select the desired type from the dropdown inside the `Properties` window that is displayed on selecting an element in the diagram.
+
+The following `gif` illustrates this process:
+
+![Adding a Domain Class](../../images/quick_start/domain_create_movies.gif)
+*Domain Modeler - adding classes and attributes.*
+
+**Press the _'save'_ icon to save your `Domain` model, and re-run the `Software Factory`.**
+
+The changes should look as follows:
+
+![Adding a Domain Class](../../images/quick_start/software_factory_domain_changes.png)
+*Software Factory Execution - Domain changes.*
+
+>[!NOTE]
+>Looking through the changes above we can see the `Movie.cs` entity, it's state `MovieState.cs` and interface `IMovie.cs` being created, with a [repository](https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) interface `IMovieRepository.cs` and [specification](https://deviq.com/specification-pattern/) object `MovieSpecification.cs`. These reside in the domain project (`MyCompany.MyMovies.Domain.csproj`), and as part of the architecture, none of these classes or interfaces has any _technology_ dependencies. 
+
+>In the infrastructure project (`MyCompany.MyMovies.Infrastructure.csproj`) we see the [Entity Framework](https://docs.microsoft.com/en-gb/ef/core/) mapping `MovieMapping.cs` and the repository implementation `MovieRepository.cs`. These patterns are determined by the modules that were installed on application creation.
+
+**Click `APPLY CHANGES` and close the `Software Factory Execution` window.**
 
 ## 6. Describing Services
+Next, we want to create services to create and access our Movies. To do this, we must **navigate to the `Services` modeler.**
+
+
 
 ## What just happened?
 

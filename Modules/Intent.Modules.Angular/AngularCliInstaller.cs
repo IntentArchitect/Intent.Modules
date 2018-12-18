@@ -15,17 +15,13 @@ namespace Intent.Modules.Angular
     [Description("Angular CLI Installer")]
     public class AngularCliInstaller : FactoryExtensionBase, IExecutionLifeCycle
     {
-        public AngularCliInstaller()
-        {
-            Order = 10;
-        }
+        public override int Order => 100;
 
         public void OnStep(IApplication application, string step)
         {
             if (step == ExecutionLifeCycleSteps.BeforeTemplateExecution)
             {
                 RequestInitialization(application);
-
             }
             else if (step == ExecutionLifeCycleSteps.AfterCommitChanges)
             {
