@@ -113,7 +113,7 @@ The `Software Factory` will apply the staged code changes from the list. We can 
 
 **Click the `CLOSE` button.**
 
-## 4. Run the application using Visual Studio
+## 5. Run the application in Visual Studio
 
 At this point, we've told Intent Architect that we want an ASP.NET Core web application, and allowed it to generate the required files for just that. To open the solution in Visual Studio, we need to navigate to the application's folder. An easy shortcut to the code is to navigate to the `Project Layout` section in the aside menu, and click on the `Open in Folder` button.
 
@@ -137,7 +137,7 @@ The server will be launched locally. **Navigate to `/swagger` relative url to op
 
 Since we haven't described any services, the Swagger UI will be empty. Let's now begin describing what we want our web server to do (_describing our "intent"_).
 
-## 5. Describing a Domain
+## 6. Describing a Domain
 A good place to start designing a system is with the Domain. The Domain should represent the business entities and their relationships to one another. 
 
 >[!TIP]
@@ -176,7 +176,7 @@ The changes should look as follows:
 
 **Click `APPLY CHANGES` and close the `Software Factory Execution` window.**
 
-## 6. Describing Services
+## 7. Describing Services
 Next, we want to create services to create and access our Movies. To do this, we must **navigate to the `Services` modeler.**
 
 Let's create a service that will allow us to add and retrieve our movies. To add a service, **right-click the `Services` package and click on `New Service`.** Name the service `MovieManager`, and **add two operations, `Create` and `List`,** by right-clicking the new service and clicking on `New Operation`.
@@ -217,7 +217,7 @@ The services should look as follows:
 
 >The service implementation class is where we will put our logic to save and retrieve movies. Let's do this now.
 
-## 7. Writing code: implementing the service
+## 8. Writing code: implementing the service
 Now that we have described our domain and services, and allowed Intent Architect to generate our required infrastructure, all that is left is to code our implementation. Since we will only be creating and retrieving Movie entities, this will be very easy.
 
 **Re-open the solution in Visual Studio, and navigate to the service implementation class `MovieManager.cs`.** It will be located in the `MyCompany.MyMovies.Application` project, in the `ServiceImplementation` folder.
@@ -245,13 +245,13 @@ namespace MyCompany.MyMovies.Application.ServiceImplementation
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public async Task Create(MovieDTO dto)
         {
-            throw new NotImplementedException("Write your implementation for this services here...");
+            throw new NotImplementedException("Your implementation here...");
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public async Task<List<MovieDTO>> List()
         {
-            throw new NotImplementedException("Write your implementation for this services here...");
+            throw new NotImplementedException("Your implementation here...");
         }
 
         public void Dispose()
@@ -261,7 +261,7 @@ namespace MyCompany.MyMovies.Application.ServiceImplementation
 }
 ```
 
->[!TIP]
+>[!NOTE]
 >The attributes above the namespace (e.g. `[assembly: DefaultIntentManaged(Mode.Merge)]`) and above each method (e.g. `[IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]`) are part of the Roslyn Weaving system that is provided by installing the `Intent.OutputManager.RoslynWeaver` module.
 
 >This system ultimately takes the pain out of continuous code generation, making it possible to work alongside continuously-generated code and to take over methods and classes if the generated output isn't meeting the specific requirements. 
@@ -271,11 +271,11 @@ namespace MyCompany.MyMovies.Application.ServiceImplementation
 
 >The `[IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]` attribute is instructing the Roslyn Weaving system to allow you to alter the body of the method (`Body = Mode.Ignore`), while Intent Architect must manage the signature (`Signature = Mode.Fully`). Therefore, if we update the signature of our operations in the `Services` modeler, it will update the signature, but **leave** your implementation as is.
 
->For more information on the Roslyn Weaving system, click [here](../modules/roslyn_weaver/overview.md).
+>For more information on the Roslyn Weaving system, click [here](../../modules/roslyn_weaver/overview.md).
 
 In this application architecture, the service implementation classes are where we implement our application layer business logic.
 
-**Implement the service as follows:**
+**Implement the `MovieManager.cs` service as follows:**
 
 ```csharp
 using System.Collections.Generic;
@@ -301,6 +301,7 @@ namespace MyCompany.MyMovies.Application.ServiceImplementation
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public async Task Create(MovieDTO dto)
         {
+            // Add new movie to database
             _movieRepository.Add(new Movie()
             {
                 Title = dto.Title,
@@ -313,7 +314,10 @@ namespace MyCompany.MyMovies.Application.ServiceImplementation
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public async Task<List<MovieDTO>> List()
         {
+            // Fetch out all movies out of database
             var movies = await _movieRepository.FindAllAsync();
+
+            // Convert to DTO list and return
             return movies.Select(x => MovieDTO.Create(
                 title: x.Title, 
                 releaseDate: x.ReleaseDate, 
@@ -328,33 +332,48 @@ namespace MyCompany.MyMovies.Application.ServiceImplementation
 }
 ```
 
->[!TIP]
->Since the `IMovieRepository` class is in the domain project (`MyCompany.MyMovies.Domain`), you will need to create a project reference to it.
-
-## What just happened?
-
-What may not obvious at this point is what caused the code to be generated, and why it was generated like that. 
-
-If you look at the Modules section of you application, on the installed tab you should see something similar to this:
-
-![View of Modules](../../images/quick_start/modules.png)
-*Installed Modules*
-
-Here you can see there are a collection of modules which have been installed by the application template. Each of these modules is affecting what code is generated as well as how it is generated. 
-
-You can try uninstall and reinstalling Modules, then pressing the `Play` button to see what affect they have on the code generation.
-
-In a less contrived scenario you would hand pick which modules you wished to use or create your own.
-
-Another aspect which is affecting the code generation is the Application Configuration. If you go the `Configuration` section, you will see the following:
-
-![View of Application Configuration](../../images/quick_start/configuration.png)
-*Application project configuration*
-
-This is Metadata describing how you want your actual source code to be structured in addition to where you would like the code generation from installed modules to go. This is done by mapping `Target Roles` from the `Modules` onto your project structure.
+And that's all the code needed for our system to work :)
 
 >[!NOTE]
->The project types available are again supplied by modules, in this case specifically, from the Intent.VisualStudio Module. New project types can be added through the Modules system.    
+>Since the `IMovieRepository` class is in the domain project (`MyCompany.MyMovies.Domain`), you will need to add a project reference to it in the `MyCompany.MyMovies.Application` project.
 
-## Add additional Metadata to describe your Application
-Play around in Intent Architect by adding Services, Domain classes and DTOs, each time pressing `Play` to see how the patterns are realized in your codebase.
+The last step before we run our application is we need to set up the database. Here we have two options:
+ - Option 1: Use an in-memory database.
+ - Option 2: Use the Entity Framework migration system to create our database (requires access to a SQL Server instance).
+
+ ### Option 1: In-memory Database
+ In the `Startup.cs` file, find the `ConfigureDbContext` method and update it as follows:
+ ```csharp
+        private void ConfigureDbContext(IServiceCollection services)
+        {
+            services.AddDbContext<MyMoviesDbContext>(x => x.UseInMemoryDatabase("MyMovies"));
+        }
+ ```
+
+ ### Option 2: Entity Framework Migrations
+1. Ensure that the connection string in the `appsettings.json` file are correct (by default it tries to access a local server through the following connection string: `"Server=.;Initial Catalog=MyMovies;Integrated Security=true;MultipleActiveResultSets=True"`).
+2. Open the `MIGRATION_README.txt` file in the `MyCompany.MyMovies.Infrastructure.Data` project. This file is a reference for Entity Framework migration commands relevant to this application.
+3. Open the `Package Manager Console` (Tools -> NuGet Package Manager -> Package Manager Console).
+4. Run the _Create new migration_ command, changing the `{ChangeName}` option to "Initial": `Add-Migration -Name Initial -StartupProject "MyCompany.MyMovies.Api" -Project MyCompany.MyMovies.Infrastructure.Data`. This will create the migration.
+5. Run the _Update to latest version_ command, changing the `{ChangeName}` option to "Initial": `Update-Database -StartupProject "MyCompany.MyMovies.Api" -Project MyCompany.MyMovies.Infrastructure.Data`. This will create the database and required table schema.
+
+## 9. Run and test the app
+**Rebuild and run the application (press F5)**.
+
+Once the app is running, **navigate to the Swagger UI (`~/swagger`) test the services.**
+
+### Testing the `Create` operation
+For the `'POST /api/MovieManager/create'` service, use the Swagger UI to set the DTO body with data and execute it. The response should indicate that the call was successful:
+
+![Swagger Test - Create Movie](../../images/quick_start/swagger_test_createmovie.gif)
+*Swagger Test - Create Movie*
+
+### Testing the `List` operation
+For the `'GET /api/MovieManager/list'` service, use the Swagger UI to list the movies that were added to the database in the previous step:
+
+![Swagger Test - List Movies](../../images/quick_start/swagger_test_listmovies.gif)
+*Swagger Test - List Movies*
+
+## Summary
+
+## What's Next?
