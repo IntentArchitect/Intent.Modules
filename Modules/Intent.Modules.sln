@@ -173,6 +173,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules (Official Angular)"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Angular", "Intent.Modules.Angular\Intent.Modules.Angular.csproj", "{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.ServiceImplementations", "Intent.Modules.Application.ServiceImplementations\Intent.Modules.Application.ServiceImplementations.csproj", "{925156ED-76E0-44B3-9FC4-4CD14AB7312C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -479,6 +481,10 @@ Global
 		{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{925156ED-76E0-44B3-9FC4-4CD14AB7312C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{925156ED-76E0-44B3-9FC4-4CD14AB7312C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{925156ED-76E0-44B3-9FC4-4CD14AB7312C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{925156ED-76E0-44B3-9FC4-4CD14AB7312C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -559,6 +565,7 @@ Global
 		{C5A5AE9C-9137-4309-AC4E-F9494694390E} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{2220169E-4A02-442C-820B-CDE62EF9233A} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C} = {5F5C3F2E-DD11-4F45-A24D-9E8FB109592A}
+		{925156ED-76E0-44B3-9FC4-4CD14AB7312C} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

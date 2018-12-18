@@ -5,8 +5,8 @@
 ### [Overview of Intent Architect](articles/getting_started/intro.md)
 An overview of Intent Architect, how it works, and why it provides a better way to build software.
 
-### [Quick Start](articles/getting_started/quick_start.md)
-Get started with your first application with Intent Architect.
+### [Getting Started - create an ASP.NET Core web app](articles/getting_started/create_an_aspnetcore_web_app.md)
+Get started with Intent Architect by building a production ready ASP.NET Core web application.
 
 ### [Modules](articles/modules/overview.md)
 Most projects have patterns that are unique to them. Learn how to automate these patterns by creating your own Modules.

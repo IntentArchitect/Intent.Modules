@@ -2,8 +2,8 @@
   items:
   - name: Welcome to Intent Architect
     href: getting_started/intro.md
-  - name: Quick Start
-    href: getting_started/quick_start.md
+  - name: Create an ASP.NET Core web app
+    href: getting_started/create_an_aspnetcore_web_app.md
   - name: Make Your Own Module
     items:
     - name: Creating a Module From Scratch

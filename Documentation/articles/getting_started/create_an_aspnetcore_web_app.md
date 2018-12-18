@@ -97,15 +97,10 @@ Your application is now created, and pre-configured with a `Project Layout` and 
 
 **To run the `Software Factory`, click the _'play'_ button in the top right hand corner (or press F5):**
 
-![Run Software Factory](../../images/quick_start/play-button.png)
-
->[!TIP]
->The _'bug'_ button to the left of the _'play'_ button allows you to attach a debugger to the `Software Factory` process. This is useful for debugging custom modules that you have built.
-
 The `Run Software Execution` dialogue will appear, providing an output log in the `Console` tab, followed by staging files it intends on creating, updating or deleting in the `Changes` tab:
 
 ![Execution of the Software Factory](../../images/quick_start/software_factory_execute.gif)
-*Software Factory execution*
+*Software Factory Execution*
 
 The `Software Factory` hasn’t created or altered any files at this point. The files are staged so that it is clear to the developer what the software factory is intending on doing. By clicking on one of the files, Intent Architect will open a diff-tool (by default Visual Studio) to compare changes. 
 
@@ -146,15 +141,13 @@ Since we haven't described any services, the Swagger UI will be empty. Let's now
 A good place to start designing a system is with the Domain. The Domain should represent the business entities and their relationships to one another. 
 
 >[!TIP]
->Modeling domains in this way brings _visibility_ and _transparency_ to your business layer. Developers can discuss design decision amongst each other (and even with business) with the knowledge that the diagram they are looking at represents the truth of the underlying code. In his book, _Domain-Driven Design: Tackling Complexity in the Heart of Software_, Eric Evans describes the value of having a model to align developers and domain experts.
+>Modeling domains in this way brings _visibility_ and _transparency_ to your business layer. Developers can discuss design decision amongst each other (and even with business) with the knowledge that the diagram they are looking at represents the truth of the underlying code. In his book, **_Domain-Driven Design: Tackling Complexity in the Heart of Software_**, Eric Evans describes the value of having a model to align developers and domain experts.
 
 To model our Movies domain, **navigate to the `Domain` modeler.**
 
-Let's now a add a class called `Movie` to our Domain. To add a class, **right-click the diagram view and click `Add Class`.**
+Let's now a add a class called `Movie` to our Domain. To add a class, **right-click the diagram view and click `Add Class`.** The newly added class automatically allows you to rename it in the model window on the right. **Rename it to `Movie`.** Alternatively, right-click the class and click `Rename` (or press F2).
 
-The newly added class automatically allows you to rename it in the model window on the right. **Rename it to `Movie`.** Alternatively, right-click the class and click `Rename` (or press F2).
-
-Next let's add attributes to our `Movie` class. To add an attribute, **right-click the class and click `Add Attribute` (or press ctrl + shift + a).**
+Next let's add attributes to our `Movie` class. To add an attribute, right-click the class and click `Add Attribute` (or press _ctrl + shift + a_).
 
 **Add the following attributes:**
 
@@ -173,7 +166,7 @@ The following `gif` illustrates this process:
 
 The changes should look as follows:
 
-![Adding a Domain Class](../../images/quick_start/software_factory_domain_changes.png)
+![Software Factory Execution - Domain changes](../../images/quick_start/software_factory_domain_changes.png)
 *Software Factory Execution - Domain changes.*
 
 >[!NOTE]
@@ -186,7 +179,157 @@ The changes should look as follows:
 ## 6. Describing Services
 Next, we want to create services to create and access our Movies. To do this, we must **navigate to the `Services` modeler.**
 
+Let's create a service that will allow us to add and retrieve our movies. To add a service, **right-click the `Services` package and click on `New Service`.** Name the service `MovieManager`, and **add two operations, `Create` and `List`,** by right-clicking the new service and clicking on `New Operation`.
 
+![Adding a Service](../../images/quick_start/services_service_creation.gif)
+*Services - adding a service with operations*
+
+Operations by themselves have limited uses. We need to describe what parameters they accept as well as what data they return. Our `Create` operation needs to accept a data object which we will refer to as a `Data Transfer Object (DTO)`. To add a DTO, simply **right-click the `Services` package and click `New DTO`.** We will name this DTO `MovieDTO`.
+
+Next, we must describe the data fields that this DTO provides. Since we are using it to create a `Movie` entity, it should have the same fields as we modeled earlier in the Domain.
+
+**Describe the `MovieDTO` as shown below:**
+
+![Adding a DTO](../../images/quick_start/services_dto_creation.png)
+
+*Services - adding a DTO*
+
+To wire up our DTO with our operations, we add parameters and return types. **right-click the `Create` operation and assign in a parameter called `dto` with Type `MovieDTO`. Next, right-click the `List` operation and assign it a return type of Type `MovieDTO`, and check the `Is Collection` option in the `Properties` on the right. Click the _"save"_ icon.**
+
+![Assigning parameters and return types to operations](../../images/quick_start/services_assign_parameters_returntypes.gif)
+*Services - assigning parameters and return types to operations*
+
+The services should look as follows:
+
+![Adding a DTO](../../images/quick_start/services_final_result.png)
+
+*Services - MovieManager.*
+
+**Re-run the `Software Factory` and apply changes.**
+
+![Software Factory Execution - Services changes](../../images/quick_start/software_factory_services_changes.png)
+*Software Factory Execution - Services changes.*
+
+>[!NOTE]
+>As can be expected, our service is created as an ASP.NET Core MVC controller `MovieManagerController.cs` in our API project (`MyCompany.MyMovies.Api.csproj`).
+
+>In our application project (`MyCompany.MyMovies.Application.csproj`) the DTO `MovieDTO.cs`, service interface `IMovieManager.cs` and service implementation class `MovieManager.cs` is created.
+
+>The service implementation class is where we will put our logic to save and retrieve movies. Let's do this now.
+
+## 7. Writing code: implementing the service
+Now that we have described our domain and services, and allowed Intent Architect to generate our required infrastructure, all that is left is to code our implementation. Since we will only be creating and retrieving Movie entities, this will be very easy.
+
+**Re-open the solution in Visual Studio, and navigate to the service implementation class `MovieManager.cs`.** It will be located in the `MyCompany.MyMovies.Application` project, in the `ServiceImplementation` folder.
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Intent.RoslynWeaver.Attributes;
+using MyCompany.MyMovies.Application;
+
+
+[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: IntentTemplate("Intent.Application.ServiceImplementations", Version = "1.0")]
+
+namespace MyCompany.MyMovies.Application.ServiceImplementation
+{
+    public class MovieManager : IMovieManager
+    {
+        public MovieManager()
+        {
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public async Task Create(MovieDTO dto)
+        {
+            throw new NotImplementedException("Write your implementation for this services here...");
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public async Task<List<MovieDTO>> List()
+        {
+            throw new NotImplementedException("Write your implementation for this services here...");
+        }
+
+        public void Dispose()
+        {
+        }
+    }
+}
+```
+
+>[!TIP]
+>The attributes above the namespace (e.g. `[assembly: DefaultIntentManaged(Mode.Merge)]`) and above each method (e.g. `[IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]`) are part of the Roslyn Weaving system that is provided by installing the `Intent.OutputManager.RoslynWeaver` module.
+
+>This system ultimately takes the pain out of continuous code generation, making it possible to work alongside continuously-generated code and to take over methods and classes if the generated output isn't meeting the specific requirements. 
+
+
+>In this case it allows you to add your _user-managed_ code to this file, while simultaneously allowing Intent Architect to change it later.
+
+>The `[IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]` attribute is instructing the Roslyn Weaving system to allow you to alter the body of the method (`Body = Mode.Ignore`), while Intent Architect must manage the signature (`Signature = Mode.Fully`). Therefore, if we update the signature of our operations in the `Services` modeler, it will update the signature, but **leave** your implementation as is.
+
+>For more information on the Roslyn Weaving system, click [here](../modules/roslyn_weaver/overview.md).
+
+In this application architecture, the service implementation classes are where we implement our application layer business logic.
+
+**Implement the service as follows:**
+
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Intent.RoslynWeaver.Attributes;
+using MyCompany.MyMovies.Domain;
+
+[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: IntentTemplate("Intent.Application.ServiceImplementations", Version = "1.0")]
+
+namespace MyCompany.MyMovies.Application.ServiceImplementation
+{
+    public class MovieManager : IMovieManager
+    {
+        private readonly IMovieRepository _movieRepository;
+
+        public MovieManager(IMovieRepository movieRepository)
+        {
+            _movieRepository = movieRepository;
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public async Task Create(MovieDTO dto)
+        {
+            _movieRepository.Add(new Movie()
+            {
+                Title = dto.Title,
+                ReleaseDate = dto.ReleaseDate,
+                Genre = dto.Genre,
+                Price = dto.Price
+            });
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public async Task<List<MovieDTO>> List()
+        {
+            var movies = await _movieRepository.FindAllAsync();
+            return movies.Select(x => MovieDTO.Create(
+                title: x.Title, 
+                releaseDate: x.ReleaseDate, 
+                genre: x.Genre, 
+                price: x.Price)).ToList();
+        }
+
+        public void Dispose()
+        {
+        }
+    }
+}
+```
+
+>[!TIP]
+>Since the `IMovieRepository` class is in the domain project (`MyCompany.MyMovies.Domain`), you will need to create a project reference to it.
 
 ## What just happened?
 
