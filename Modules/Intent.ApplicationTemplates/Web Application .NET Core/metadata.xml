@@ -26,7 +26,7 @@
           <modules>
             <module id="Intent.AspNetCore" version="1.7.0" />
             <module id="Intent.AspNetCore.WebApi" version="1.7.0" />
-            <module id="Intent.Application.ServiceCallHandlers" version="1.7.0" />
+            <module id="Intent.Application.ServiceImplementations" version="1.7.0" />
           </modules>
         </component>
         <component name="AutoMapper" included="false">
