@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.1" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
+    <PackageReference Include="Intent.Framework.EntityFrameworkCore" Version="1.0.0" />
+  </ItemGroup>
+    <ItemGroup>
+    <ProjectReference Include="..\MyCompany.MyMovies.Domain\MyCompany.MyMovies.Domain.csproj" />
+  </ItemGroup>
+  </Project>

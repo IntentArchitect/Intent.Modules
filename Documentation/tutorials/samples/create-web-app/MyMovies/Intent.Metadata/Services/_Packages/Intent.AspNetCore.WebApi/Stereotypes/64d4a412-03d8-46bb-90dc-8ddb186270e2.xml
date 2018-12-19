@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="64d4a412-03d8-46bb-90dc-8ddb186270e2">
+  <name>Secured</name>
+  <icon type="FontAwesome" source="lock" />
+  <displayIcon>true</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>operation</element>
+    <element>service</element>
+  </targetElements>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>041A14A6-9CB0-4622-928A-CE0B86BF7742</parentFolderId>
+  <properties>
+    <property id="1bbe782d-85bd-4500-96b6-23c4131063cb">
+      <name>Roles</name>
+      <type>string</type>
+      <options />
+    </property>
+  </properties>
+</stereotypeDefinition>

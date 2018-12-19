@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="cf2a8c51-28d1-4c5b-bf91-44541604e6b6" type="class">
+  <name>Movie</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>30c16a15-4e9f-42c2-8a4d-2c86accd0551</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="82b20643-0082-4b2e-86fb-63ce5e5cba11">
+      <name>title</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="9cae3ad9-6ff2-420f-91e4-051650d946cb">
+      <name>releaseDate</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>1fbaa056-b666-4f25-b8fd-76fe3165acc8</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="625969a9-6301-4029-b92e-5b3fc4e2f870">
+      <name>genre</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="e1933376-e13f-45bd-92e0-8fa55e897679">
+      <name>price</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>675c7b84-997a-44e0-82b9-cd724c07c9e6</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+  </attributes>
+  <operations />
+</class>

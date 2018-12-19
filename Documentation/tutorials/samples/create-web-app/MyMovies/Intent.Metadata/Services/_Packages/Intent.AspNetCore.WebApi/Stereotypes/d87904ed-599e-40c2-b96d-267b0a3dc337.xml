@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="d87904ed-599e-40c2-b96d-267b0a3dc337">
+  <name>Parameter Binding</name>
+  <icon type="FontAwesome" source="chain-broken" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>[${Type}]</displayFunction>
+  <targetElements>
+    <element>operation-parameter</element>
+  </targetElements>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>041A14A6-9CB0-4622-928A-CE0B86BF7742</parentFolderId>
+  <properties>
+    <property id="828379e2-e58f-4b87-bf74-24177a024a08">
+      <name>Type</name>
+      <type>options</type>
+      <defaultValue>FromBody</defaultValue>
+      <options>
+        <option>FromHeader</option>
+        <option>FromQuery</option>
+        <option>FromRoute</option>
+        <option>FromForm</option>
+        <option>FromBody</option>
+        <option>FromServices</option>
+        <option>Custom</option>
+      </options>
+    </property>
+    <property id="7db9971d-9a5d-4a59-ad85-a8c44f95b0fa">
+      <name>Custom Type</name>
+      <type>string</type>
+      <options />
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<solution id="3b31c76d-fa5f-4dcf-98e1-dfb64aa7dd1f">
+  <name>MyCompany</name>
+  <version>1.2.0</version>
+  <icon>laptop</icon>
+  <iconType>FontAwesome</iconType>
+  <metadataRelativePath>Intent.MetaData</metadataRelativePath>
+  <applications>
+    <application id="89fbf129-d655-4e2e-ade4-05b0f72fea33" relativePath="MyMovies\MyMovies.application.config" />
+  </applications>
+</solution>

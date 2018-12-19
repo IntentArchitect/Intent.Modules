@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
+    <PackageReference Include="CommonServiceLocator" Version="2.0.3" />
+    <PackageReference Include="Intent.Framework.Domain" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyCompany.MyMovies.Domain\MyCompany.MyMovies.Domain.csproj" />
+  </ItemGroup>
+  </Project>

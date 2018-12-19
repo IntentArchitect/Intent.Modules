@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="4bff6a87-2ef3-4d70-9ecb-af53675a389d" type="Service">
+  <name>MovieManager</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>8e091e63-9f8a-4f8f-8bd5-9e35fbef6b17</parentFolderId>
+  <stereotypes />
+  <attributes />
+  <operations>
+    <operation id="d2c38a9a-8aa6-420d-8a89-3ea0520f5db5" isAbstract="false">
+      <name>Create</name>
+      <parameters>
+        <parameter id="cb115384-5942-405f-9159-e2ea577a51c8">
+          <name>dto</name>
+          <isNullable>false</isNullable>
+          <isCollection>false</isCollection>
+          <type>0a0e2e5c-16ec-4cc0-9140-f8c83f34be4b</type>
+          <stereotypes />
+        </parameter>
+      </parameters>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="A225C795-33E9-417D-8D58-E22826A08224">
+          <addedByDefault>false</addedByDefault>
+          <properties />
+        </stereotype>
+      </stereotypes>
+    </operation>
+    <operation id="9df2ad7b-bf90-4003-8c16-b9691ca325df" isAbstract="false">
+      <name>List</name>
+      <returnType id="c1778ce2-8d9b-40ed-a0b6-b09c31e6b538">
+        <type>0a0e2e5c-16ec-4cc0-9140-f8c83f34be4b</type>
+        <isNullable>false</isNullable>
+        <isCollection>true</isCollection>
+        <stereotypes />
+      </returnType>
+      <parameters />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="A225C795-33E9-417D-8D58-E22826A08224">
+          <addedByDefault>false</addedByDefault>
+          <properties />
+        </stereotype>
+      </stereotypes>
+    </operation>
+  </operations>
+</class>
