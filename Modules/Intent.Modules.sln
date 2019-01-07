@@ -167,6 +167,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Modelers.Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Modelers.Eventing", "Intent.Modules.Modelers.Eventing\Intent.Modules.Modelers.Eventing.csproj", "{2220169E-4A02-442C-820B-CDE62EF9233A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.IdentityServer4", "Intent.Modules.IdentityServer4\Intent.Modules.IdentityServer4.csproj", "{DA019B82-209E-4B01-A890-3B13BE8FF61F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -469,6 +471,10 @@ Global
 		{2220169E-4A02-442C-820B-CDE62EF9233A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2220169E-4A02-442C-820B-CDE62EF9233A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2220169E-4A02-442C-820B-CDE62EF9233A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA019B82-209E-4B01-A890-3B13BE8FF61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA019B82-209E-4B01-A890-3B13BE8FF61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA019B82-209E-4B01-A890-3B13BE8FF61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA019B82-209E-4B01-A890-3B13BE8FF61F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -548,6 +554,7 @@ Global
 		{944F5519-873F-4C88-BACE-1A383E0C5F49} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{C5A5AE9C-9137-4309-AC4E-F9494694390E} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{2220169E-4A02-442C-820B-CDE62EF9233A} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
+		{DA019B82-209E-4B01-A890-3B13BE8FF61F} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
