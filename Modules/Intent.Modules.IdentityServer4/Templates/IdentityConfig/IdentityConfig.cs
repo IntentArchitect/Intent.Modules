@@ -56,33 +56,62 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n\t\tpublic static List<TestUser> GetUsers()\r\n        {\r\n            return" +
-                    " new List<TestUser>\r\n            {\r\n                new TestUser\r\n              " +
-                    "  {\r\n                    SubjectId = \"1\",\r\n                    Username = \"alice" +
-                    "\",\r\n                    Password = \"password\"\r\n                },\r\n             " +
-                    "   new TestUser\r\n                {\r\n                    SubjectId = \"2\",\r\n      " +
-                    "              Username = \"bob\",\r\n                    Password = \"password\"\r\n    " +
-                    "            }\r\n            };\r\n        }\r\n\r\n        public static IEnumerable<Id" +
-                    "entityResource> GetIdentityResources()\r\n        {\r\n            return new Identi" +
-                    "tyResource[]\r\n            {\r\n                new IdentityResources.OpenId()\r\n   " +
-                    "         };\r\n        }\r\n\r\n        public static IEnumerable<ApiResource> GetApis" +
-                    "()\r\n        {\r\n            return new List<ApiResource>\r\n            {\r\n        " +
-                    "        new ApiResource(\"api1\", \"My API\")\r\n            };\r\n        }\r\n\r\n        " +
-                    "public static IEnumerable<Client> GetClients()\r\n        {\r\n            return ne" +
-                    "w List<Client>\r\n            {\r\n                new Client\r\n                {\r\n  " +
-                    "                  ClientId = \"client\",\r\n\r\n                    // no interactive " +
-                    "user, use the clientid/secret for authentication\r\n                    AllowedGra" +
-                    "ntTypes = GrantTypes.ClientCredentials,\r\n\r\n                    // secret for aut" +
-                    "hentication\r\n                    ClientSecrets =\r\n                    {\r\n       " +
-                    "                 new Secret(\"secret\".Sha256())\r\n                    },\r\n\r\n      " +
-                    "              // scopes that client has access to\r\n                    AllowedSc" +
-                    "opes = { \"api1\" }\r\n                },\r\n                // resource owner passwor" +
-                    "d grant client\r\n                new Client\r\n                {\r\n                 " +
-                    "   ClientId = \"ro.client\",\r\n                    AllowedGrantTypes = GrantTypes.R" +
-                    "esourceOwnerPassword,\r\n\r\n                    ClientSecrets =\r\n                  " +
-                    "  {\r\n                        new Secret(\"secret\".Sha256())\r\n                    " +
-                    "},\r\n                    AllowedScopes = { \"api1\" }\r\n                }\r\n         " +
-                    "   };\r\n        }\r\n    }\r\n}");
+            this.Write(@"
+    {
+		public static List<TestUser> GetUsers()
+        {
+            return new List<TestUser>
+            {
+                new TestUser
+                {
+                    SubjectId = ""1"",
+                    Username = ""alice"",
+                    Password = ""password""
+                },
+                new TestUser
+                {
+                    SubjectId = ""2"",
+                    Username = ""bob"",
+                    Password = ""password""
+                }
+            };
+        }
+
+        public static IEnumerable<IdentityResource> GetIdentityResources()
+        {
+            return new IdentityResource[]
+            {
+                new IdentityResources.OpenId()
+            };
+        }
+
+        public static IEnumerable<ApiResource> GetApis()
+        {
+            return new List<ApiResource>
+            {
+                new ApiResource(""api1"", ""My API"")
+            };
+        }
+
+        public static IEnumerable<Client> GetClients()
+        {
+            return new List<Client>
+            {
+                new Client
+                {
+                    ClientId = ""ro.client"",
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+
+                    ClientSecrets =
+                    {
+                        new Secret(""secret"".Sha256())
+                    },
+                    AllowedScopes = { ""api1"" }
+                }
+            };
+        }
+    }
+}");
             return this.GenerationEnvironment.ToString();
         }
     }

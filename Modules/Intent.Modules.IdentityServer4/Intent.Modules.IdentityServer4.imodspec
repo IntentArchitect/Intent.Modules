@@ -17,6 +17,12 @@
       <role>IdentityServer4.IdentityConfig</role>
     </template>
   </templates>
+  <factoryExtensions>
+    <factoryExtension id="Intent.IdentityServer4.SetupFactoryExtension" />
+  </factoryExtensions>
+  <decorators>
+    <decorator id="Intent.IdentityServer4.CoreWebStartupDecorator" />
+  </decorators>
   <dependencies>
     <dependency id="Intent.Common" version="1.7.0" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0" />
