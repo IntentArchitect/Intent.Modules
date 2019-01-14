@@ -47,6 +47,7 @@
     <Compile Include="Decorators\IdentityServer4CoreWebStartupDecorator.cs" />
     <Compile Include="Decorators\IdentityServer4CoreWebStartupDecoratorRegistration.cs" />
     <Compile Include="FactoryExtensions\IdentityServer4SetupFactoryExtension.cs" />
+    <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\IdentityConfig\IdentityConfig.cs">
       <AutoGen>True</AutoGen>
