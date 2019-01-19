@@ -90,5 +90,29 @@ namespace Intent.Modules.Common.Tests
 
             Assert.Equal("Common.Enums.CompanyDetails.SocialMediaType", result);
         }
+
+        [Fact]
+        public void Scenario5()
+        {
+            var result = IntentRoslynProjectItemTemplateBase.NormalizeNamespace(
+                localNamespace: "MyCompany.Movies.Api",
+                foreignType: "MyCompany.Movies.Application.Movies",
+                knownOtherPaths: new string[]
+                {
+                    "MyCompany.Movies.Infrastructure.Data",
+                    "MyCompany.Movies.Application",
+                    "MyCompany.Movies.Application.ServiceCallHandlers.Movies",
+                    "MyCompany.Movies.Domain"
+                }, 
+                usingPaths: new string[]
+                {
+                    "MyCompany.Movies.Infrastructure.Data",
+                    "MyCompany.Movies.Application",
+                    "MyCompany.Movies.Application.ServiceCallHandlers.Movies",
+                    "MyCompany.Movies.Domain"
+                });
+
+            Assert.Equal("Application.Movies", result);
+        }
     }
 }

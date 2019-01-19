@@ -13,8 +13,6 @@
     <dependency id="Intent.Metadata.RDBMS" version="1.7.0" />
   </dependencies>
   <files>
-    <file src="bin\$configuration$\$id$.dll" />
-    <file src="bin\$configuration$\$id$.pdb" />
   </files>
   <metadata>
     <install target="Domain" src="metadata\Packages\AdventureWorks"/>

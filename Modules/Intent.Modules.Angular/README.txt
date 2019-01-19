@@ -1,8 +1,3 @@
-<#@ template language="C#" inherits="IntentProjectItemTemplateBase" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
-
-
 INTENT ARCHITECT - MODULE BUILDER
 
 To compile and run this module in Intent Architect, the following steps are required:
@@ -22,7 +17,7 @@ NOTE: In Visual Studio, it is recommended to use a T4 editor such as this one (h
     - Click the Repository Setting cog in the top right corner of the Modules section.
     - Click Add New, and specify the Name (e.g. Local Modules) and Address which will be the full (or relative) path to the ${SolutionFolder}/Intent.Modules folder.
       TIP: for the current workspace, this will be at the following relative location (copy directly into your repository location): 
-      ./<#= Project.Application.ApplicationName #>/Intent.Modules 
+      ./Intent.Modules.Angular/Intent.Modules 
     - Click Save
 
 #3. Install Module

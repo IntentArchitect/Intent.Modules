@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IOperationModel>" #>
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -14,29 +14,36 @@
 <#@ import namespace="System.Collections.Generic" #> 
 <#
 #>
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Intent.RoslynWeaver.Attributes;
 <#=DependencyUsings#>
 
-[assembly: DefaultIntentManaged(Mode.Ignore)]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
-namespace <#= Namespace #>
+namespace <#=Namespace#>
 {
-    [IntentManaged(Mode.Merge)]
-    public class <#=ClassName#> 
+    public class <#=ClassName#> : <#= NormalizeNamespace(GetServiceInterfaceName()) #>
     {
 		[IntentInitialGen]
         public <#=ClassName#>()
-        {
+        { 
         }
 
+<#  foreach (var o in Model.Operations) {#>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public <#= GetOperationReturnType(Model) #> Handle(<#= GetOperationDefinitionParameters(Model) #>)
+        public <#= GetOperationReturnType(o) #> <#= o.Name#>(<#= GetOperationDefinitionParameters(o) #>)
         {
-            throw new NotImplementedException("Implement your business logic for this service call in the <#=ClassName#> (SCH = Service Call Handler) class.");
+            throw new NotImplementedException("Write your implementation for this services here...");
+        }
+
+<#  }#>
+        public void Dispose()
+        {
         }
     }
 }

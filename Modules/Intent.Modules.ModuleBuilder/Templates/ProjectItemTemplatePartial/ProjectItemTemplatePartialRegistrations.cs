@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
         public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
         {
             return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => x.SpecializationType == "File Template")
+                .Where(x => x.IsFileTemplate())
                 .ToList();
         }
     }
