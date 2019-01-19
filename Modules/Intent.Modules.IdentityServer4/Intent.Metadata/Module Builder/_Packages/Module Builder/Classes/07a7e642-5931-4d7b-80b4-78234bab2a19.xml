@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="07a7e642-5931-4d7b-80b4-78234bab2a19" type="C# Template">
+  <name>IdentityConfig</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>a1ded4df-b5ee-4d20-b328-a63493bf048c</parentFolderId>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="311d788f-7582-4c27-9a4d-e0db1439c327" value="Single File (No Model)" />
+        <property name="C2283D15-4B57-4ED9-8AAE-6EFC73039034" value="Domain" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <attributes />
+  <operations />
+</class>

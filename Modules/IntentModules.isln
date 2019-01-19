@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<solution id="9cde682f-ade0-4c8b-a474-5356f8c3cedf">
+  <name>Intent.Modules</name>
+  <description>Designer workspace for official Intent Modules</description>
+  <version>1.2.0</version>
+  <icon>https://intentarchitect.com/assets/images/logo-white.png</icon>
+  <iconType>UrlImagePath</iconType>
+  <metadataRelativePath>Intent.MetaData</metadataRelativePath>
+  <applications>
+    <application id="b9e22586-4ecd-4eaf-9f97-10e923f41952" relativePath="Intent.Modules.IdentityServer4\Intent.Modules.IdentityServer4.application.config" />
+  </applications>
+</solution>
