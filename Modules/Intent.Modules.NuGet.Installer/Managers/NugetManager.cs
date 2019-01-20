@@ -173,7 +173,7 @@ namespace Intent.Modules.NuGet.Installer.Managers
                         hadWork = true;
                     }
                 }
-                
+
             } while (hadWork);
         }
 
@@ -193,7 +193,7 @@ namespace Intent.Modules.NuGet.Installer.Managers
             while (project.PackageNodes.Any(x => !x.IsInstalled()))
             {
                 var pendingNodesWithDependenciesMet = project.PackageNodes
-                    .Where(x => 
+                    .Where(x =>
                         !x.IsInstalled() &&
                         x.Dependencies.All(y => y.SelfAndDependenciesInstalled()));
 
@@ -348,7 +348,7 @@ namespace Intent.Modules.NuGet.Installer.Managers
                 if (ReferenceEquals(null, obj)) return false;
                 if (ReferenceEquals(this, obj)) return true;
                 if (obj.GetType() != GetType()) return false;
-                return Equals((MsbuildProject) obj);
+                return Equals((MsbuildProject)obj);
             }
 
             private bool Equals(MsbuildProject other)
