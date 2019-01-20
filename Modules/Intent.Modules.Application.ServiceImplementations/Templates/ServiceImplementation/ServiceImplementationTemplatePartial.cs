@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
@@ -70,6 +71,21 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             });
         }
 
+        public override string DependencyUsings
+        {
+            get
+            {
+                var builder = new StringBuilder(base.DependencyUsings).AppendLine();
+                var additionalUsings = GetDecorators().Select(s => s.GetUsings()).Distinct().ToArray();
+                foreach (var @using in additionalUsings)
+                {
+                    builder.AppendLine($"using {@using};");
+                }
+
+                return builder.ToString();
+            }
+        }
+
         private string GetOperationDefinitionParameters(IOperationModel o)
         {
             if (!o.Parameters.Any())
@@ -115,15 +131,9 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         private string GetConstructorDependencies()
         {
-            // DJVV - TODO:
-            // Convention module:
-            // 1. Scan MetadataManger in the same way the Repo Interface register does it
-            // 2. This will mean that you will need the module settings like the Repo Interface module (filtering and TemplateID)
-            // 3. Then you can return those interface FQDNs with parameter names for the Constructor dependencies
-            // 4. Determining usings are dependent on the current service implementation
-            // 5. Now you can match up domain classes with services and populate the relevant implementations
-
-            return string.Empty;
+            var parameters = GetDecorators().SelectMany(s => s.GetConstructorDependencies()).Distinct().Select(s => $"{s.ParameterType} {s.ParameterName}").ToArray();
+            var concatStr = string.Join(", ", parameters);
+            return concatStr;
         }
 
         private string GetDecoratedImplementation(IOperationModel operation)
