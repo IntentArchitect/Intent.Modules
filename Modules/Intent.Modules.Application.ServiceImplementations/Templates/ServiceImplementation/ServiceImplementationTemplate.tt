@@ -30,18 +30,27 @@ namespace <#=Namespace#>
     public class <#=ClassName#> : <#= NormalizeNamespace(GetServiceInterfaceName()) #>
     {
 		[IntentInitialGen]
-        public <#=ClassName#>()
+        public <#=ClassName#>(<#= GetConstructorDependencies() #>)
         { 
         }
 
-<#  foreach (var o in Model.Operations) {#>
+<#  foreach (var o in Model.Operations) 
+	{ #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public <#= GetOperationReturnType(o) #> <#= o.Name#>(<#= GetOperationDefinitionParameters(o) #>)
         {
-            throw new NotImplementedException("Write your implementation for this services here...");
+<#		var decoratedImplementation = GetDecoratedImplementation(o);
+		if (decoratedImplementation != null)
+		{ #>
+			<#= decoratedImplementation #>
+<#		}
+		else 
+		{ #>
+            throw new NotImplementedException("Write your implementation for this service here...");
+<#		} #>			
         }
 
-<#  }#>
+<#  } #>
         public void Dispose()
         {
         }

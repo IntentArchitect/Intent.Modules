@@ -14,8 +14,10 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {
-    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook
+    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>
     {
+        private IEnumerable<ServiceImplementationDecoratorBase> _decorators;
+
         public const string Identifier = "Intent.Application.ServiceImplementations";
         public ServiceImplementationTemplate(IProject project, IServiceModel model)
             : base(Identifier, project, model)
@@ -28,6 +30,15 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             {
                 TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
             };
+        }
+
+        public IEnumerable<ServiceImplementationDecoratorBase> GetDecorators()
+        {
+            if (_decorators == null)
+            {
+                _decorators = Project.ResolveDecorators(this);
+            }
+            return _decorators;
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -100,6 +111,24 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
                 result = "List<" + result + ">";
             }
             return result;
+        }
+
+        private string GetConstructorDependencies()
+        {
+            // DJVV - TODO:
+            // Convention module:
+            // 1. Scan MetadataManger in the same way the Repo Interface register does it
+            // 2. This will mean that you will need the module settings like the Repo Interface module (filtering and TemplateID)
+            // 3. Then you can return those interface FQDNs with parameter names for the Constructor dependencies
+            // 4. Determining usings are dependent on the current service implementation
+            // 5. Now you can match up domain classes with services and populate the relevant implementations
+
+            return string.Empty;
+        }
+
+        private string GetDecoratedImplementation(IOperationModel operation)
+        {
+            return string.Empty;
         }
     }
 }

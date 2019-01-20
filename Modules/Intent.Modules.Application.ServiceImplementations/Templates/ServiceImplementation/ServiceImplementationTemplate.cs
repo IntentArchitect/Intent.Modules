@@ -79,40 +79,80 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             
             #line default
             #line hidden
-            this.Write("()\r\n        { \r\n        }\r\n\r\n");
+            this.Write("(");
+            
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetConstructorDependencies()));
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n        { \r\n        }\r\n\r\n");
             
             #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
-  foreach (var o in Model.Operations) {
+  foreach (var o in Model.Operations) 
+	{ 
             
             #line default
             #line hidden
             this.Write("        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]\r\n" +
                     "        public ");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationReturnType(o)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationDefinitionParameters(o)));
             
             #line default
             #line hidden
-            this.Write(")\r\n        {\r\n            throw new NotImplementedException(\"Write your implement" +
-                    "ation for this services here...\");\r\n        }\r\n\r\n");
+            this.Write(")\r\n        {\r\n");
             
-            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
-  }
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+		var decoratedImplementation = GetDecoratedImplementation(o);
+		if (decoratedImplementation != null)
+		{ 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t");
+            
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(decoratedImplementation));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+		}
+		else 
+		{ 
+            
+            #line default
+            #line hidden
+            this.Write("            throw new NotImplementedException(\"Write your implementation for this" +
+                    " service here...\");\r\n");
+            
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+		} 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t\r\n        }\r\n\r\n");
+            
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+  } 
             
             #line default
             #line hidden
