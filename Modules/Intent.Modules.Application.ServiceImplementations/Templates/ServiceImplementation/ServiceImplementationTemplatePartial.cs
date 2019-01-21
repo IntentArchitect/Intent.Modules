@@ -132,14 +132,14 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         private string GetConstructorDependencies()
         {
-            var parameters = GetDecorators().SelectMany(s => s.GetConstructorDependencies()).Distinct().Select(s => $"{s.ParameterType} {s.ParameterName}").ToArray();
+            var parameters = GetDecorators().SelectMany(s => s.GetConstructorDependencies(this.Model)).Distinct().Select(s => $"{s.ParameterType} {s.ParameterName}").ToArray();
             var concatStr = string.Join(", ", parameters);
             return concatStr;
         }
 
         private string GetDecoratedImplementation(IOperationModel operation)
         {
-            var implementations = GetDecorators().Select(p => p.GetDecoratedImplementation(operation)).ToArray();
+            var implementations = GetDecorators().Select(p => p.GetDecoratedImplementation(this.Model, operation)).ToArray();
             if (implementations.Count(p => !string.IsNullOrEmpty(p)) > 1)
             {
                 throw new Exception($"Multiple decorators are trying to implement {operation.Name}");
