@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Intent.MetaModel.Common;
@@ -138,7 +139,12 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         private string GetDecoratedImplementation(IOperationModel operation)
         {
-            return string.Empty;
+            var implementations = GetDecorators().Select(p => p.GetDecoratedImplementation(operation)).ToArray();
+            if (implementations.Count(p => !string.IsNullOrEmpty(p)) > 1)
+            {
+                throw new Exception($"Multiple decorators are trying to implement {operation.Name}");
+            }
+            return implementations.FirstOrDefault();
         }
     }
 }
