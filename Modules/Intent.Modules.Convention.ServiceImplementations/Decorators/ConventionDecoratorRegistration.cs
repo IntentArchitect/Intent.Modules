@@ -19,7 +19,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
 
         public override object CreateDecoratorInstance(IApplication application)
         {
-            return new ConventionDecorator(_metaDataManager);
+            return new ConventionDecorator(_metaDataManager, application);
         }
     }
 }
