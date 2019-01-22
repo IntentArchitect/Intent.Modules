@@ -77,7 +77,11 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             get
             {
                 var builder = new StringBuilder(base.DependencyUsings).AppendLine();
-                var additionalUsings = GetDecorators().Select(s => s.GetUsings()).Distinct().Where(p => !string.IsNullOrEmpty(p)).ToArray();
+                var additionalUsings = GetDecorators()
+                    .SelectMany(s => s.GetUsings(Model))
+                    .Distinct()
+                    .Where(p => !string.IsNullOrEmpty(p))
+                    .ToArray();
                 foreach (var @using in additionalUsings)
                 {
                     builder.AppendLine($"using {@using};");

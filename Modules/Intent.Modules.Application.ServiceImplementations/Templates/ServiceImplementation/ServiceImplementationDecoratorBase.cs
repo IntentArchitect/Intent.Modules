@@ -7,9 +7,9 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 {
     public abstract class ServiceImplementationDecoratorBase : ITemplateDecorator
     {
-        public virtual string GetUsings()
+        public virtual IEnumerable<string> GetUsings(IServiceModel serviceModel)
         {
-            return string.Empty;
+            return new List<string>();
         }
 
         public virtual IEnumerable<ConstructorParameter> GetConstructorDependencies(IServiceModel serviceModel)

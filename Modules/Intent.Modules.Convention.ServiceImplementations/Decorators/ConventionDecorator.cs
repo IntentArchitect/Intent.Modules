@@ -40,6 +40,27 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
             _repositoryInterfaceTemplateId = settings["Repository Interface Template Id"];
         }
 
+        public override IEnumerable<string> GetUsings(IServiceModel serviceModel)
+        {
+            var currentDomain = GetDomainForService(serviceModel);
+
+            if (currentDomain == null)
+            {
+                return new List<string>();
+            }
+
+            var repoInterfaceTemplate = _application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<IClass>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id));
+            if (repoInterfaceTemplate == null)
+            {
+                return new List<string>();
+            }
+
+            return new List<string>
+            {
+                repoInterfaceTemplate.Namespace
+            };
+        }
+
         public override IEnumerable<ConstructorParameter> GetConstructorDependencies(IServiceModel serviceModel)
         {
             var currentDomain = GetDomainForService(serviceModel);
