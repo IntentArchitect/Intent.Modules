@@ -77,7 +77,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             get
             {
                 var builder = new StringBuilder(base.DependencyUsings).AppendLine();
-                var additionalUsings = GetDecorators().Select(s => s.GetUsings()).Distinct().ToArray();
+                var additionalUsings = GetDecorators().Select(s => s.GetUsings()).Distinct().Where(p => !string.IsNullOrEmpty(p)).ToArray();
                 foreach (var @using in additionalUsings)
                 {
                     builder.AppendLine($"using {@using};");
@@ -130,21 +130,21 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             return result;
         }
 
-        private string GetConstructorDependencies()
+        private IEnumerable<ConstructorParameter> GetConstructorDependencies()
         {
-            var parameters = GetDecorators().SelectMany(s => s.GetConstructorDependencies(this.Model)).Distinct().Select(s => $"{s.ParameterType} {s.ParameterName}").ToArray();
-            var concatStr = string.Join(", ", parameters);
-            return concatStr;
+            var parameters = GetDecorators()
+                .SelectMany(s => s.GetConstructorDependencies(this.Model))
+                .Distinct()
+                .ToArray();
+            return parameters;
         }
 
         private string GetDecoratedImplementation(IOperationModel operation)
         {
-            var implementations = GetDecorators().Select(p => p.GetDecoratedImplementation(this.Model, operation)).ToArray();
-            if (implementations.Count(p => !string.IsNullOrEmpty(p)) > 1)
-            {
-                throw new Exception($"Multiple decorators are trying to implement {operation.Name}");
-            }
-            return implementations.FirstOrDefault();
+            return GetDecorators()
+                .Select(p => p.GetDecoratedImplementation(this.Model, operation))
+                .Aggregate(new StringBuilder(), (x, y) => x.AppendLine(y))
+                .ToString();
         }
     }
 }

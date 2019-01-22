@@ -29,9 +29,19 @@ namespace <#=Namespace#>
 {
     public class <#=ClassName#> : <#= NormalizeNamespace(GetServiceInterfaceName()) #>
     {
+<#	var parameters = GetConstructorDependencies(); 
+	foreach (var parameter in parameters)
+	{ #>
+		private <#= NormalizeNamespace(parameter.ParameterType) #> _<#= parameter.ParameterName #>;
+<#	} #>
+
 		[IntentInitialGen]
-        public <#=ClassName#>(<#= GetConstructorDependencies() #>)
-        { 
+        public <#=ClassName#>(<#= string.Join(", ", parameters.Select(s => string.Format("{0} {1}", NormalizeNamespace(s.ParameterType), s.ParameterName))) #>)
+        {
+<#	foreach (var parameter in parameters)
+	{ #>
+			_<#= parameter.ParameterName #> = <#= parameter.ParameterName #>;
+<#	} #>
         }
 
 <#  foreach (var o in Model.Operations) 

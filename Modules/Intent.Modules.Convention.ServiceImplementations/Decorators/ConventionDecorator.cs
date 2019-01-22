@@ -2,8 +2,10 @@
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Configuration;
 using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +23,11 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
 
     public class ConventionDecorator : ServiceImplementationDecoratorBase, ISupportsConfiguration
     {
-        public const string Identifier = "Intent.Conventions.ServiceImplementations";
+        public const string Identifier = "Intent.Conventions.ServiceImplementations.Decorator";
 
         private readonly IMetaDataManager _metaDataManager;
-        private IEnumerable<string> _stereotypeNames;
-        private string _repositoryInterfaceTemplateId;
         private readonly Intent.SoftwareFactory.Engine.IApplication _application;
+        private string _repositoryInterfaceTemplateId;
 
         public ConventionDecorator(IMetaDataManager metaDataManager, Intent.SoftwareFactory.Engine.IApplication application)
         {
@@ -36,8 +37,6 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
 
         public void Configure(IDictionary<string, string> settings)
         {
-            var createOnStereotypeValues = settings["Create On Stereotype"];
-            _stereotypeNames = createOnStereotypeValues.Split(new[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
             _repositoryInterfaceTemplateId = settings["Repository Interface Template Id"];
         }
 
@@ -50,31 +49,25 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
                 return new List<ConstructorParameter>();
             }
 
+            var repoInterfaceTemplate = _application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<IClass>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id));
+            if (repoInterfaceTemplate == null)
+            {
+                return new List<ConstructorParameter>();
+            }
 
+            var paramName = repoInterfaceTemplate.ClassName.Remove(0, 1).ToCamelCase();
+            var paramType = $"{repoInterfaceTemplate.Namespace}.{repoInterfaceTemplate.ClassName}";
 
             return new List<ConstructorParameter>
             {
-                
+                new ConstructorParameter(paramType, paramName)
             };
-        }
-
-        private IEnumerable<IClass> GetClassesForRepositories()
-        {
-            var allModels = _metaDataManager.GetDomainModels(_application);
-            var filteredModels = allModels.Where(p => _stereotypeNames.Any(q => p.HasStereotype(q)));
-
-            if (!filteredModels.Any())
-            {
-                return allModels;
-            }
-
-            return filteredModels;
         }
 
         private IClass GetDomainForService(IServiceModel serviceModel)
         {
             var lowerServiceName = serviceModel.Name.ToLower();
-            var domains = GetClassesForRepositories();
+            var domains = _metaDataManager.GetDomainModels(_application);
             return domains
                 .SingleOrDefault(p =>
                 {
