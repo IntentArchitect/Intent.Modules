@@ -82,6 +82,11 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
         {
             var currentDomain = GetDomainForService(serviceModel);
 
+            if (currentDomain == null)
+            {
+                return string.Empty;
+            }
+
             return MethodImplementationStrategy.ImplementOnMatch(currentDomain, operationModel);
         }
 
@@ -97,7 +102,8 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
                     return lowerDomainName == lowerServiceName
                     || pluralLowerDomainName == lowerServiceName
                     || (lowerDomainName + "service") == lowerServiceName
-                    || (lowerDomainName + "manager") == lowerServiceName;
+                    || (lowerDomainName + "manager") == lowerServiceName
+                    || (lowerDomainName + "controller") == lowerServiceName;
                 });
         }
     }
