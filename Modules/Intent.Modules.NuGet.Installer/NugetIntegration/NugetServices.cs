@@ -195,8 +195,10 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
 
         public IPackage GetPackage(string packageId, IVersionSpec versionSpec, bool allowPrereleaseVersions)
         {
-            var package =
-                _localPackageRepository
+            IPackage package = null;
+            try
+            {
+                package = _localPackageRepository
                     .FindPackages(
                         packageId: packageId,
                         versionSpec: new VersionSpec(versionSpec.MinVersion),
@@ -204,6 +206,21 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                         allowUnlisted: false)
                     .OrderBy(x => x.Version)
                     .FirstOrDefault();
+            }
+            catch (ArgumentException e)
+            {
+                if (!e.Message.EndsWith("' is not a valid version string.\r\nParameter name: version") &&
+                    !e.Message.EndsWith("' is not a valid version string.") )
+                {
+                    throw;
+                }
+
+                _tracing.Warning(
+                    $"{NugetInstaller.TracingOutputPrefix}" +
+                    $"One or more packages, or one their dependencies, for package '{packageId}' in '{_packagesFolder}', is using " +
+                    $"an unsupported Semantic Version 2. The NuGet installer will atempt to continue by downloading the package " +
+                    $"instead.");
+            }
 
             if (package == null)
             {
@@ -379,7 +396,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                 .Select(x =>
                 {
                     var package = x.PackageIdentity;
-                    
+
                     try
                     {
                         return _localPackageRepository.FindPackage(
@@ -388,13 +405,12 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                     }
                     catch (ArgumentException e)
                     {
-                        _tracing.Warning($"{NugetInstaller.TracingOutputPrefix}An unknown dependency of '{package.Id}' version '{package.Version}' in '{project}' has an unsupported Semantic Version 2. The NuGet installer will attempt to continue by ignoring this installed package.");
-
                         if (!e.Message.EndsWith("' is not a valid version string."))
                         {
                             throw;
                         }
 
+                        _tracing.Warning($"{NugetInstaller.TracingOutputPrefix}An unknown dependency of '{package.Id}' version '{package.Version}' in '{project}' has an unsupported Semantic Version 2. The NuGet installer will attempt to continue by ignoring this installed package.");
                         return null;
                     }
                 })
