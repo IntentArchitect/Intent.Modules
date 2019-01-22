@@ -1,8 +1,10 @@
-﻿using Intent.MetaModel.Domain;
+﻿using Humanizer.Inflections;
+using Intent.MetaModel.Domain;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies;
 using Intent.SoftwareFactory.Configuration;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
@@ -12,15 +14,6 @@ using System.Linq;
 
 namespace Intent.Modules.Convention.ServiceImplementations.Decorators
 {
-    // DJVV - TODO:
-    // Convention module:
-    // 1. Scan MetadataManger in the same way the Repo Interface register does it
-    // 2. This will mean that you will need the module settings like the Repo Interface module (filtering and TemplateID)
-    // 3. Then you can return those interface FQDNs with parameter names for the Constructor dependencies
-    // 4. Determining usings are dependent on the current service implementation
-    // 5. Now you can match up domain classes with services and populate the relevant implementations
-    // 6. Mapping incoming and outgoing DTOs/Domains
-
     public class ConventionDecorator : ServiceImplementationDecoratorBase, ISupportsConfiguration
     {
         public const string Identifier = "Intent.Conventions.ServiceImplementations.Decorator";
@@ -85,6 +78,13 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
             };
         }
 
+        public override string GetDecoratedImplementation(IServiceModel serviceModel, IOperationModel operationModel)
+        {
+            var currentDomain = GetDomainForService(serviceModel);
+
+            return MethodImplementationStrategy.ImplementOnMatch(currentDomain, operationModel);
+        }
+
         private IClass GetDomainForService(IServiceModel serviceModel)
         {
             var lowerServiceName = serviceModel.Name.ToLower();
@@ -93,7 +93,9 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
                 .SingleOrDefault(p =>
                 {
                     var lowerDomainName = p.Name.ToLower();
+                    var pluralLowerDomainName = Vocabularies.Default.Pluralize(lowerDomainName);
                     return lowerDomainName == lowerServiceName
+                    || pluralLowerDomainName == lowerServiceName
                     || (lowerDomainName + "service") == lowerServiceName
                     || (lowerDomainName + "manager") == lowerServiceName;
                 });

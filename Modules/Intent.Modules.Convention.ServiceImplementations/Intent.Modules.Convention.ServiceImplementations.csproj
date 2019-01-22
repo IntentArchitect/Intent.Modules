@@ -51,9 +51,16 @@
     </Content>
     <Compile Include="Decorators\ConventionDecorator.cs" />
     <Compile Include="Decorators\ConventionDecoratorRegistration.cs" />
+    <Compile Include="MethodImplementationStrategies\GetImplementationStrategy.cs" />
+    <Compile Include="MethodImplementationStrategies\IImplementationStrategy.cs" />
+    <Compile Include="MethodImplementationStrategies\MethodImplementationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj">
+      <Project>{2972A488-2F67-426D-8762-C85FB36FB32C}</Project>
+      <Name>Intent.Modules.Application.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Application.ServiceImplementations\Intent.Modules.Application.ServiceImplementations.csproj">
       <Project>{925156ed-76e0-44b3-9fc4-4cd14ab7312c}</Project>
       <Name>Intent.Modules.Application.ServiceImplementations</Name>
