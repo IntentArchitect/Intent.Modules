@@ -33,7 +33,7 @@ namespace <#= Namespace #>
                 codeGenType: CodeGenType.Basic,
                 fileName: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "txt", // Change to desired file extension.
-                defaultLocationInProject: "<#= Model.Name.Replace("Template", "") #>"
+                defaultLocationInProject: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? Model.Name.Replace("Template", "") : "" #>"
             );
         }
     }

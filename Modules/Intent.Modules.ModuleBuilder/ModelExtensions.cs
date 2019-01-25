@@ -8,7 +8,7 @@ namespace Intent.Modules.ModuleBuilder
     {
         public static RegistrationType GetRegistrationType(this IClass model)
         {
-            switch (model.GetStereotypeProperty("Template Settings", "Registration", "File per Model"))
+            switch (model.GetStereotypeProperty("Template Settings", "Creation Mode", "File per Model"))
             {
                 case "Single File (No Model)":
                     return RegistrationType.SingleFileNoModel;

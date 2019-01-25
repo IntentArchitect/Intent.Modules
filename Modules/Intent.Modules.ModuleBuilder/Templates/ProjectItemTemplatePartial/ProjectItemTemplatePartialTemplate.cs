@@ -107,7 +107,7 @@ using System.Linq;
                     "               defaultLocationInProject: \"");
             
             #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetRegistrationType() == RegistrationType.FilePerModel ? Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden
