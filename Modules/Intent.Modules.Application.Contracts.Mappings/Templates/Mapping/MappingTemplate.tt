@@ -1,16 +1,9 @@
 ﻿<#@ template  debug="true"  inherits="Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
-<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="System.Collections.Generic" #> 
 <#@ import namespace="Intent.MetaModel.DTO" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
-<#@ import namespace="System" #>
-<#@ import namespace="System.IO" #>
-<#@ import namespace="System.Diagnostics" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Collections" #>
-<#@ import namespace="System.Collections.Generic" #> 
-
 <#=DependencyUsings#>
 <#=DecoratorUsings#>
 using System.Collections.Generic;
@@ -24,15 +17,14 @@ namespace <#= Namespace #>
 {
     public static class <#=ClassName#> 
     {
-        public static <#= NormalizeNamespace(ContractTypeName) #> MapTo<#= NormalizeNamespace(ContractTypeName) #> (this <#= NormalizeNamespace(DomainTypeName) #> projectFrom)
+        public static <#= NormalizeNamespace(ContractTypeName) #> MapTo<#= NormalizeNamespace(ContractTypeName) #> (this <#= NormalizeNamespace(SourceTypeName) #> projectFrom)
         {
             return Mapper.Map<<#= NormalizeNamespace(ContractTypeName) #>>(projectFrom);
         }
 
-        public static List<<#= NormalizeNamespace(ContractTypeName) #>> MapTo<#= NormalizeNamespace(ContractTypeName) #>s (this IEnumerable<<#= NormalizeNamespace(DomainTypeName) #>> projectFrom)
+        public static List<<#= NormalizeNamespace(ContractTypeName) #>> MapTo<#= NormalizeNamespace(ContractTypeName) #>s (this IEnumerable<<#= NormalizeNamespace(SourceTypeName) #>> projectFrom)
         {
             return projectFrom.Select(x => x.MapTo<#= NormalizeNamespace(ContractTypeName) #>()).ToList();
-        }<#= GetDecoratorMembers(ContractTypeName, DomainTypeName) #>
+        }<#= GetDecoratorMembers(ContractTypeName, SourceTypeName) #>
      }
 }
-

@@ -11,7 +11,7 @@ using Intent.Modules.Common.Registrations;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
-    [Description(MappingTemplate.Identifier)]
+    [Description(MappingTemplate.IDENTIFIER)]
     public class MappingTemplateRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
         private readonly IMetaDataManager _metaDataManager;
@@ -23,7 +23,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
             FilterExpression = "!string.IsNullOrWhiteSpace(model.MappedClassId)";
         }
 
-        public override string TemplateId => MappingTemplate.Identifier;
+        public override string TemplateId => MappingTemplate.IDENTIFIER;
 
         public override ITemplate CreateTemplateInstance(IProject project, IDTOModel model)
         {

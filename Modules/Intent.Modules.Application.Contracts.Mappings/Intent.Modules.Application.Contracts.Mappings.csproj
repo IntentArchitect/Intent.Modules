@@ -71,7 +71,9 @@
     <Compile Include="Templates\Mapping\MappingTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Application.Contracts.Mappings.imodspec" />
+    <None Include="Intent.Modules.Application.Contracts.Mappings.imodspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
