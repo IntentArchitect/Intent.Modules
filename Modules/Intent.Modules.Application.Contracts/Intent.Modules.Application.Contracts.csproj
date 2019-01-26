@@ -77,7 +77,9 @@
     <Compile Include="Templates\ServiceContract\ServiceContractTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Application.Contracts.imodspec" />
+    <None Include="Intent.Modules.Application.Contracts.imodspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Intent.Modules.Application.Contracts.nuspec" />
     <None Include="metadata\Intent.Application.Contracts\Intent.Application.Contracts.pkg.config" />
   </ItemGroup>
