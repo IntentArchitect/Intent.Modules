@@ -14,7 +14,7 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
-    partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, IBeforeTemplateExecutionHook
+    partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, IBeforeTemplateExecutionHook, IPostTemplateCreation
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.Mapping.Profile";
 
