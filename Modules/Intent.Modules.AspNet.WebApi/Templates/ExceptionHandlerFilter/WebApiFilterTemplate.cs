@@ -41,35 +41,38 @@ namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n\tpublic class ");
+            this.Write("\r\n{\r\n    public class ");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\ExceptionHandlerFilter\WebApiFilterTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(" : ExceptionFilterAttribute\r\n\t{\r\n\t\t[IntentManaged(Mode.Ignore)]\r\n\t\tpublic overrid" +
-                    "e void OnException(HttpActionExecutedContext actionExecutedContext)\r\n\t\t{\r\n\t\t\t// " +
-                    "Customize your response messages by inspecting \'actionExecutedContext.Exception\'" +
-                    "\r\n\t\t\t// for specific Exception types.\r\n\t\t\t// e.g.\r\n\t\t\t// \r\n\t\t\t// if (actionExecu" +
-                    "tedContext.Exception is ArgumentException)\r\n\t\t\t// {\r\n\t\t\t//\tactionExecutedContext" +
-                    ".Response = new HttpResponseMessage\r\n\t\t\t//\t{\r\n\t\t\t//\t\tStatusCode = HttpStatusCode" +
-                    ".BadRequest,\r\n\t\t\t//\t\tContent = new StringContent(@\"{ \"\"message\"\": \"\"You have spe" +
-                    "cified an invalid argument\"\" }\"),\r\n\t\t\t//\t\tReasonPhrase = \"Invalid input supplied" +
-                    " for service operation\"\r\n\t\t\t//\t};\r\n\t\t\t//\treturn;\r\n\t\t\t// }\r\n\r\n\t\t\t// Generic retur" +
-                    "n message. Use this to mask internal errors so that consumers of your\r\n\t\t\t// ser" +
-                    "vice cannot see what the technical details are.\r\n\r\n#if DEBUG\r\n\t\t\t// This is pure" +
-                    "ly for Developer convenience to get started. Please note that\r\n\t\t\t// this is not" +
-                    " the standard way for deploying code into production.\r\n\t\t\tactionExecutedContext." +
-                    "Response = new HttpResponseMessage\r\n            {\r\n                StatusCode = " +
-                    "HttpStatusCode.InternalServerError,\r\n                Content = new StringContent" +
-                    "($@\"{{ \"\"message\"\": \"\"{actionExecutedContext.Exception.Message}\"\" }}\"),\r\n       " +
-                    "         ReasonPhrase = \"An internal server error occurred\"\r\n            };\r\n#el" +
-                    "se\r\n\t\t\tactionExecutedContext.Response = new HttpResponseMessage\r\n            {\r\n" +
-                    "                StatusCode = HttpStatusCode.InternalServerError,\r\n              " +
-                    "  Content = new StringContent(@\"{ \"\"message\"\": \"\"An internal server error occurr" +
-                    "ed\"\" }\"),\r\n                ReasonPhrase = \"An internal server error occurred\"\r\n " +
-                    "           };\r\n#endif\r\n\t\t}\r\n\t}\r\n}");
+            this.Write(" : ExceptionFilterAttribute\r\n    {\r\n        [IntentManaged(Mode.Ignore)]\r\n       " +
+                    " public override void OnException(HttpActionExecutedContext actionExecutedContex" +
+                    "t)\r\n        {\r\n            // Customize your response messages by inspecting \'ac" +
+                    "tionExecutedContext.Exception\'\r\n            // for specific Exception types.\r\n  " +
+                    "          // e.g.\r\n            // \r\n            // if (actionExecutedContext.Exc" +
+                    "eption is ArgumentException)\r\n            // {\r\n            //    actionExecuted" +
+                    "Context.Response = new HttpResponseMessage\r\n            //    {\r\n            // " +
+                    "       StatusCode = HttpStatusCode.BadRequest,\r\n            //        Content = " +
+                    "new StringContent(@\"{ \"\"message\"\": \"\"You have specified an invalid argument\"\" }\"" +
+                    "),\r\n            //        ReasonPhrase = \"Invalid input supplied for service ope" +
+                    "ration\"\r\n            //    };\r\n            //    return;\r\n            // }\r\n\r\n  " +
+                    "          // Generic return message. Use this to mask internal errors so that co" +
+                    "nsumers of your\r\n            // service cannot see what the technical details ar" +
+                    "e.\r\n\r\n#if DEBUG\r\n            // This is purely for Developer convenience to get " +
+                    "started. Please note that\r\n            // this is not the standard way for deplo" +
+                    "ying code into production.\r\n            actionExecutedContext.Response = new Htt" +
+                    "pResponseMessage\r\n            {\r\n                StatusCode = HttpStatusCode.Int" +
+                    "ernalServerError,\r\n                Content = new StringContent($@\"{{ \"\"message\"\"" +
+                    ": \"\"{actionExecutedContext.Exception.Message}\"\" }}\"),\r\n                ReasonPhr" +
+                    "ase = \"An internal server error occurred\"\r\n            };\r\n#else\r\n            ac" +
+                    "tionExecutedContext.Response = new HttpResponseMessage\r\n            {\r\n         " +
+                    "       StatusCode = HttpStatusCode.InternalServerError,\r\n                Content" +
+                    " = new StringContent(@\"{ \"\"message\"\": \"\"An internal server error occurred\"\" }\")," +
+                    "\r\n                ReasonPhrase = \"An internal server error occurred\"\r\n          " +
+                    "  };\r\n#endif\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
