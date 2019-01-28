@@ -1,34 +1,34 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Intent.MetaModel.DTO;
+using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
+namespace Intent.Modules.Application.Contracts.Clients.Templates
 {
-    [Description("Intent Typescript ServiceAgent DTO - Remote")]
-    public class RemoteRegistrations : ModelTemplateRegistrationBase<IDTOModel>
+    [Description("Intent Applications Contracts DTO")]
+    public class DtoRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
         private readonly IMetaDataManager _metaDataManager;
 
         private string _stereotypeName = "Consumers";
-        private string _stereotypePropertyName = "CommaSeperatedList";
+        private string _stereotypePropertyName = "CSharp";
 
-        public RemoteRegistrations(IMetaDataManager metaDataManager)
+        public DtoRegistrations(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
-
         }
 
-        public override string TemplateId => TypescriptDtoTemplate.RemoteIdentifier;
+        public override string TemplateId => TemplateIds.ClientDto;
 
         public override ITemplate CreateTemplateInstance(IProject project, IDTOModel model)
         {
-            return new TypescriptDtoTemplate(TemplateId, project, model);
+            return new DTOTemplate(project, model, TemplateId);
         }
 
         public override IEnumerable<IDTOModel> GetModels(IApplication application)
@@ -39,11 +39,9 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
                 dtoModels = _metaDataManager.GetMetaData<IDTOModel>("DTO").ToArray(); // backward compatibility
             }
 
-            dtoModels = dtoModels
-                .Where(x => GetConsumers(x).Any(y => application.ApplicationName.Equals(y, StringComparison.OrdinalIgnoreCase)))
+            return dtoModels
+                .Where(x => x.GetConsumers(_stereotypeName, _stereotypePropertyName).Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToArray();
-
-            return dtoModels.ToList();
         }
 
         public override void Configure(IDictionary<string, string> settings)
@@ -51,13 +49,6 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
             base.Configure(settings);
             settings.SetIfSupplied("Consumer Stereotype Name", (s) => _stereotypeName = s);
             settings.SetIfSupplied("Consumer Stereotype Property Name", (s) => _stereotypePropertyName = s);
-        }
-
-        private IEnumerable<string> GetConsumers(IDTOModel dto)
-        {
-            return dto.HasStereotype(_stereotypeName)
-                ? dto.GetStereotypeProperty(_stereotypeName, _stereotypePropertyName, "").Split(',').Select(x => x.Trim()).ToArray()
-                : dto.GetStereotypeInFolders(_stereotypeName).GetProperty(_stereotypePropertyName, "").Split(',').Select(x => x.Trim()).ToArray();
         }
     }
 }

@@ -1,8 +1,7 @@
-﻿using Intent.MetaModel.Service;
-using Intent.SoftwareFactory;
+﻿using System;
+using Intent.MetaModel.Service;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.Templates.Registrations;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,6 +14,9 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
     public class RemoteRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
+
+        private string _stereotypeName = "Consumers";
+        private string _stereotypePropertyName = "CommaSeperatedList";
 
         public RemoteRegistrations(IMetaDataManager metaDataManager)
         {
@@ -30,11 +32,25 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = _metaDataManager.GetServiceModels(application);
+            var serviceModels = _metaDataManager.GetMetaData<IServiceModel>("Services");
 
-            serviceModels = serviceModels.Where(x => x.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Any(a => a.Trim() == application.ApplicationName));
+            serviceModels = serviceModels.Where(x => GetConsumers(x).Any(y => application.ApplicationName.Equals(y, StringComparison.OrdinalIgnoreCase)));
 
             return serviceModels.ToList();
+        }
+
+        public override void Configure(IDictionary<string, string> settings)
+        {
+            base.Configure(settings);
+            settings.SetIfSupplied("Consumer Stereotype Name", (s) => _stereotypeName = s);
+            settings.SetIfSupplied("Consumer Stereotype Property Name", (s) => _stereotypePropertyName = s);
+        }
+
+        private IEnumerable<string> GetConsumers(IServiceModel dto)
+        {
+            return dto.HasStereotype(_stereotypeName)
+                ? dto.GetStereotypeProperty(_stereotypeName, _stereotypePropertyName, "").Split(',').Select(x => x.Trim()).ToArray()
+                : dto.GetStereotypeInFolders(_stereotypeName).GetProperty(_stereotypePropertyName, "").Split(',').Select(x => x.Trim()).ToArray();
         }
     }
 }

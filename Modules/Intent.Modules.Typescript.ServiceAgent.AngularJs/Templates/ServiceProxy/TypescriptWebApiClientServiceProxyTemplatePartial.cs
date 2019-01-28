@@ -65,18 +65,25 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             });
         }
 
-        private HttpVerb GetHttpVerb(IOperationModel operation)
+        //private HttpVerb GetHttpVerb(IOperationModel operation)
+        //{
+        //    var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
+        //    if (verb != "AUTO")
+        //    {
+        //        return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
+        //    }
+        //    if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
+        //    {
+        //        return HttpVerb.POST;
+        //    }
+        //    return HttpVerb.GET;
+        //}
+
+        private string GetReturnType(IOperationModel o)
         {
-            var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
-            if (verb != "AUTO")
-            {
-                return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
-            }
-            if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
-            {
-                return HttpVerb.POST;
-            }
-            return HttpVerb.GET;
+            return o.ReturnType == null
+                ? "void"
+                : this.ConvertType(o.ReturnType.TypeReference);
         }
 
         private string GetAddress()
@@ -102,11 +109,20 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                 .Aggregate((x, y) => $"{x}, {y}");
         }
 
-        private string GetMethodCallParameters(IOperationModel operation)
+        private static string GetMethodCallParameters(IOperationModel operation, bool forcePayloadObject)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {
-                return string.Empty;
+                return "{ }";
+            }
+
+            if (forcePayloadObject || operation.RequiresPayloadObject())
+            {
+                var keyValuePairs = operation.Parameters
+                    .Select(x => $"{x.Name.ToCamelCase()}: {x.Name.ToCamelCase()}")
+                    .Aggregate((x, y) => $"{x}, {y}");
+
+                return $"{{ {keyValuePairs} }}";
             }
 
             return operation.Parameters

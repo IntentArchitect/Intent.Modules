@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Typescript.ServiceAgent.Contracts</id>
-  <version>1.7.0</version>
+  <version>1.7.1</version>
   <summary>Typescript DTO contracts for service proxies</summary>
   <description>Typescript DTO contracts for service proxies</description>
   <authors>Intent Architect</authors>
@@ -13,7 +13,14 @@
       <role>Presentation.Web</role>
       <location>wwwroot\App\DTOs\Generated\${Model.Application.Name}</location>
       <config>
-        <add key="Namespace" default="App.Contracts.${Model.Application.Name}"/>
+        <add key="Namespace"
+             default="App.Contracts.${Model.Application.Name}"/>
+        <add key="Consumer Stereotype Name"
+             default="Consumers"
+             description="The name of Stereotype to search for on DTOs in a different applications which contain the 'Consumer Stereotype Property Name' specified below." />
+        <add key="Consumer Stereotype Property Name"
+             default="CommaSeparatedList"
+             description="The name of the Stereotype Property on the above 'Consumer Stereotype Name' containing a comma separated list of which are 'consuming' applications for the stereotyped DTO." />
       </config>
     </template>
   </templates>

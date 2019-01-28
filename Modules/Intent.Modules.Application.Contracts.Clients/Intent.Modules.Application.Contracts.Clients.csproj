@@ -53,7 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrations.cs" />
+    <Compile Include="Templates\DTOModelExtensions.cs" />
+    <Compile Include="Templates\DtoRegistrations.cs" />
+    <Compile Include="Templates\TemplateIds.cs" />
+    <Compile Include="Templates\ServiceContractRegistrations.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj">
@@ -66,13 +69,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Application.Contracts.Clients.imodspec" />
-    <None Include="MetaData\Services\Intent.Modules.Application.Contracts.Clients.pkg.config" />
+    <None Include="Intent.Modules.Application.Contracts.Clients.imodspec">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Metadata\Services\Intent.Modules.Application.Contracts.Clients.pkg.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MetaData\Services\Folders\87178626-6aba-4093-96b1-b5ac8558bf65.xml" />
-    <Content Include="MetaData\Services\Stereotypes\d299265f-ac40-44d7-a9d5-eb33780ec859.xml">
+    <Content Include="Metadata\Services\Folders\87178626-6aba-4093-96b1-b5ac8558bf65.xml" />
+    <Content Include="Metadata\Services\Stereotypes\d299265f-ac40-44d7-a9d5-eb33780ec859.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>

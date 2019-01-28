@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\ServiceProxy\WebApiHelpers.cs" />
     <Compile Include="Templates\ServiceProxy\LocalRegistrations.cs" />
     <Compile Include="Templates\ServiceProxy\RemoteRegistrations.cs" />
     <Compile Include="Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate1.cs">
@@ -87,7 +88,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Typescript.ServiceAgent.AngularJs.imodspec" />
+    <None Include="Intent.Modules.Typescript.ServiceAgent.AngularJs.imodspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
