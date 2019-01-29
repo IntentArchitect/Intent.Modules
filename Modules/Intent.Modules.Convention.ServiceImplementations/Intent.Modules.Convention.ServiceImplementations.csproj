@@ -51,6 +51,7 @@
     </Content>
     <Compile Include="Decorators\ConventionDecorator.cs" />
     <Compile Include="Decorators\ConventionDecoratorRegistration.cs" />
+    <Compile Include="MethodImplementationStrategies\GetByIdImplementationStrategy.cs" />
     <Compile Include="MethodImplementationStrategies\GetImplementationStrategy.cs" />
     <Compile Include="MethodImplementationStrategies\IImplementationStrategy.cs" />
     <Compile Include="MethodImplementationStrategies\MethodImplementationStrategy.cs" />

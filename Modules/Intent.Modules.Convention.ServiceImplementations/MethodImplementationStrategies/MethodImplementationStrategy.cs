@@ -13,7 +13,8 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
         {
             _strategies = new List<IImplementationStrategy>
             {
-                new GetImplementationStrategy()
+                new GetImplementationStrategy(),
+                new GetByIdImplementationStrategy()
             };
         }
 
