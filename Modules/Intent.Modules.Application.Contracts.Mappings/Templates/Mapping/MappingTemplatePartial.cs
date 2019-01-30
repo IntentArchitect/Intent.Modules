@@ -125,21 +125,29 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
                 .Aggregate((x, y) => $"{x}{y}");
         }
 
+        public string StereotypedNamespaceBasedPath => string.Join("\\", GetNamespaceParts());
+        public string StereotypedNamespace => string.Join(".", GetNamespaceParts());
+        public string SlashIfInNamespace => !string.IsNullOrWhiteSpace(StereotypedNamespaceBasedPath) ? "\\" : string.Empty;
+        public string DotIfInNamespace => !string.IsNullOrWhiteSpace(StereotypedNamespaceBasedPath) ? "." : string.Empty;
+
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Mapping",
                 fileExtension: "cs",
-                defaultLocationInProject: $"Mappings{(GetNamespaceParts().Any() ? "\\" + string.Join("\\", GetNamespaceParts()) : "")}",
+                defaultLocationInProject: "Mappings${SlashIfInNamespace}${StereotypedNamespaceBasedPath}",
                 className: "${Model.Name}Mapping",
-                @namespace: string.Join(".", new[] { "${Project.ProjectName}" }.Concat(GetNamespaceParts()))
-                );
+                @namespace: "${Project.ProjectName}Mappings${DotIfInNamespace}${StereotypedNamespace}");
         }
 
         private IEnumerable<string> GetNamespaceParts()
         {
-            return Model.GetFolderPath(includePackage: false).Select(x => x.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace")).Where(x => x != null);
+            return Model
+                .GetFolderPath(includePackage: false)
+                .Select(x => x.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace"))
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .ToArray();
         }
     }
 }
