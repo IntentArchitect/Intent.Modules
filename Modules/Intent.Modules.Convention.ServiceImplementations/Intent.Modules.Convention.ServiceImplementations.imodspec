@@ -22,6 +22,7 @@
     <dependency id="Intent.Common" version="1.7.0" />
     <dependency id="Intent.Common.Types" version="1.7.0" />
     <dependency id="Intent.Application.ServiceImplementations" version="1.7.0" />
+    <dependency id="Intent.Application.Contracts.Mappings" version="1.7.0" />
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll" />

@@ -1,22 +1,16 @@
 ﻿using System;
 using System.Linq;
-using Humanizer.Inflections;
 using Intent.MetaModel;
 using Intent.MetaModel.Domain;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
+using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {
     public class GetByIdImplementationStrategy : IImplementationStrategy
     {
-        public string GetImplementation(IClass domainModel, IOperationModel operationModel)
-        {
-            return $@"var element ={ (operationModel.IsAsync() ? "await" : "") } _{domainModel.Name.ToCamelCase()}Repository.FindById{ (operationModel.IsAsync() ? "Async" : "") }({operationModel.Parameters.First().Name.ToCamelCase()});
-            return element.MapTo{domainModel.Name.ToPascalCase()}DTO();";
-        }
-
-        public bool Match(IClass domainModel, IOperationModel operationModel)
+        public bool Match(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
         {
             if (operationModel.Parameters.Count() != 1)
             {
@@ -39,6 +33,12 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                 lowerDomainName
             }
             .Contains(lowerOperationName);
+        }
+
+        public string GetImplementation(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        {
+            return $@"var element ={ (operationModel.IsAsync() ? "await" : "") } {domainModel.Name.ToPrivateMember()}Repository.FindById{ (operationModel.IsAsync() ? "Async" : "") }({operationModel.Parameters.First().Name.ToCamelCase()});
+            return element.MapTo{domainModel.Name.ToPascalCase()}DTO();";
         }
     }
 }

@@ -87,7 +87,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
                 return string.Empty;
             }
 
-            return MethodImplementationStrategy.ImplementOnMatch(currentDomain, operationModel);
+            return MethodImplementationStrategy.ImplementOnMatch(_metaDataManager, _application, currentDomain, operationModel);
         }
 
         private IClass GetDomainForService(IServiceModel serviceModel)
