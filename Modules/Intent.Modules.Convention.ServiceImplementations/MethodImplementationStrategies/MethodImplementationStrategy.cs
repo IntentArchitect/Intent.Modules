@@ -16,7 +16,9 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             {
                 new GetImplementationStrategy(),
                 new GetByIdImplementationStrategy(),
-                new CreateImplementationStrategy()
+                new CreateImplementationStrategy(),
+                new UpdateImplementationStrategy(),
+                new DeleteImplementationStrategy()
             };
         }
 

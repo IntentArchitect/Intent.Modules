@@ -52,10 +52,12 @@
     <Compile Include="Decorators\ConventionDecorator.cs" />
     <Compile Include="Decorators\ConventionDecoratorRegistration.cs" />
     <Compile Include="MethodImplementationStrategies\CreateImplementationStrategy.cs" />
+    <Compile Include="MethodImplementationStrategies\DeleteImplementationStrategy.cs" />
     <Compile Include="MethodImplementationStrategies\GetByIdImplementationStrategy.cs" />
     <Compile Include="MethodImplementationStrategies\GetImplementationStrategy.cs" />
     <Compile Include="MethodImplementationStrategies\IImplementationStrategy.cs" />
     <Compile Include="MethodImplementationStrategies\MethodImplementationStrategy.cs" />
+    <Compile Include="MethodImplementationStrategies\UpdateImplementationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

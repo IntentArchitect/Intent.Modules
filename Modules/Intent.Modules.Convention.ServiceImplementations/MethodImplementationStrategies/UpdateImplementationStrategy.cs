@@ -4,16 +4,22 @@ using System.Text;
 using Intent.MetaModel;
 using Intent.MetaModel.Domain;
 using Intent.MetaModel.Service;
+using Intent.Modules.Application.Contracts;
 using Intent.Modules.Common;
 using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {
-    public class CreateImplementationStrategy : IImplementationStrategy
+    public class UpdateImplementationStrategy : IImplementationStrategy
     {
         public bool Match(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
         {
-            if (operationModel.Parameters.Count() != 1)
+            if (operationModel.Parameters.Count() != 2)
+            {
+                return false;
+            }
+
+            if (!operationModel.Parameters.Any(p => string.Equals(p.Name, "id", StringComparison.OrdinalIgnoreCase)))
             {
                 return false;
             }
@@ -27,25 +33,24 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             var lowerOperationName = operationModel.Name.ToLower();
             return new[]
             {
-                "post",
-                $"post{lowerDomainName}",
-                "create",
-                $"create{lowerDomainName}",
+                "put",
+                $"put{lowerDomainName}",
+                "update",
+                $"update{lowerDomainName}",
             }
             .Contains(lowerOperationName);
         }
 
         public string GetImplementation(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
         {
-            return $@"var new{domainModel.Name} = new {domainModel.Name}
-                {{
-{EmitPropertyAssignments(metaDataManager, application, domainModel, operationModel.Parameters.First())}
-                }};
-                
-                {domainModel.Name.ToPrivateMember()}Repository.Add(new{domainModel.Name});";
+            var idParam = operationModel.Parameters.First(p => string.Equals(p.Name, "id", StringComparison.OrdinalIgnoreCase));
+            var dtoParam = operationModel.Parameters.First(p => !string.Equals(p.Name, "id", StringComparison.OrdinalIgnoreCase));
+
+            return $@"var existing{domainModel.Name} ={ (operationModel.IsAsync() ? " await" : "") } {domainModel.Name.ToPrivateMember()}Repository.FindById{ (operationModel.IsAsync() ? "Async" : "") }({idParam.Name});
+                {EmitPropertyAssignments(metaDataManager, application, domainModel, "existing"+ domainModel.Name, dtoParam)}";
         }
 
-        private string EmitPropertyAssignments(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationParameterModel operationParameterModel)
+        private string EmitPropertyAssignments(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, string domainVarName, IOperationParameterModel operationParameterModel)
         {
             var sb = new StringBuilder();
             var dto = metaDataManager.GetDTOModels(application).First(p => p.Id == operationParameterModel.TypeReference.Id);
@@ -62,7 +67,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                     sb.AppendLine($"                    #warning No matching type for Domain: {domainAttribute.Name} and DTO: {dtoField.Name}");
                     continue;
                 }
-                sb.AppendLine($"                    {domainAttribute.Name} = {operationParameterModel.Name}.{dtoField.Name},");
+                sb.AppendLine($"                    {domainVarName}.{domainAttribute.Name} = {operationParameterModel.Name}.{dtoField.Name};");
             }
 
             return sb.ToString().Trim();

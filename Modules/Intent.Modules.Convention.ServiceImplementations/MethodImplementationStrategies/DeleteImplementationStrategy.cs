@@ -8,7 +8,7 @@ using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {
-    public class GetByIdImplementationStrategy : IImplementationStrategy
+    public class DeleteImplementationStrategy : IImplementationStrategy
     {
         public bool Match(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
         {
@@ -22,7 +22,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                 return false;
             }
 
-            if (operationModel?.ReturnType?.TypeReference?.IsCollection ?? false)
+            if (operationModel.ReturnType != null)
             {
                 return false;
             }
@@ -31,19 +31,16 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             var lowerOperationName = operationModel.Name.ToLower();
             return new[]
             {
-                "get",
-                $"get{lowerDomainName}",
-                "find",
-                $"find{lowerDomainName}",
-                lowerDomainName
+                "delete",
+                $"delete{lowerDomainName}"
             }
             .Contains(lowerOperationName);
         }
 
         public string GetImplementation(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
         {
-            return $@"var element ={ (operationModel.IsAsync() ? " await" : "") } {domainModel.Name.ToPrivateMember()}Repository.FindById{ (operationModel.IsAsync() ? "Async" : "") }({operationModel.Parameters.First().Name.ToCamelCase()});
-            return element.MapTo{domainModel.Name.ToPascalCase()}DTO();";
+            return $@"var existing{domainModel.Name} ={ (operationModel.IsAsync() ? " await" : "") } {domainModel.Name.ToPrivateMember()}Repository.FindById{ (operationModel.IsAsync() ? "Async" : "") }(id);
+                {domainModel.Name.ToPrivateMember()}Repository.Remove(existing{domainModel.Name});";
         }
     }
 }
