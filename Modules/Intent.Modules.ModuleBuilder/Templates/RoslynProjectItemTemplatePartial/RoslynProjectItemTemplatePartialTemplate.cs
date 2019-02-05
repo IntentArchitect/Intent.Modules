@@ -111,7 +111,7 @@ using System.Linq;
                     "t: \"");
             
             #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetRegistrationType() == RegistrationType.FilePerModel ? Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden
@@ -122,8 +122,14 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\",\r\n                @namespace: \"${Project.ProjectName}\"\r\n            );\r\n       " +
-                    " }\r\n    }\r\n}");
+            this.Write("\",\r\n                @namespace: \"${Project.Name}");
+            
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetRegistrationType() == RegistrationType.FilePerModel ? "." + Model.Name.Replace("Template", "") : ""));
+            
+            #line default
+            #line hidden
+            this.Write("\"\r\n            );\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

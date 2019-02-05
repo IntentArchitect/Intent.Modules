@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Eventing</id>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <summary>Eventing modeler for describing a the events that an application publishes and subscribes to.</summary>
   <description>Services modeler for describing an application's web services.</description>
   <authors>Intent Architect</authors>
