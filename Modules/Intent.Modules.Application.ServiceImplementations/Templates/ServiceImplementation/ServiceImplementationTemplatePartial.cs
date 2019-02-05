@@ -145,10 +145,13 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         private string GetDecoratedImplementation(IOperationModel operation)
         {
-            return GetDecorators()
-                .Select(p => p.GetDecoratedImplementation(this.Model, operation))
-                .Aggregate(new StringBuilder(), (x, y) => x.AppendLine(y))
-                .ToString();
+            var output = GetDecorators().Aggregate(x => x.GetDecoratedImplementation(Model, operation));
+            if (string.IsNullOrWhiteSpace(output))
+            {
+                return @"
+            throw new NotImplementedException(""Write your implementation for this service here..."");";
+            }
+            return output;
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                     sb.AppendLine($"                    #warning No matching type for Domain: {domainAttribute.Name} and DTO: {dtoField.Name}");
                     continue;
                 }
-                sb.AppendLine($"                    {domainAttribute.Name} = {operationParameterModel.Name}.{dtoField.Name},");
+                sb.AppendLine($"                    {domainAttribute.Name.ToPascalCase()} = {operationParameterModel.Name}.{dtoField.Name.ToPascalCase()},");
             }
 
             return sb.ToString().Trim();

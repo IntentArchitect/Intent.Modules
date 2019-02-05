@@ -48,16 +48,7 @@ namespace <#=Namespace#>
 	{ #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public <#= GetOperationReturnType(o) #> <#= o.Name#>(<#= GetOperationDefinitionParameters(o) #>)
-        {
-<#		var decoratedImplementation = GetDecoratedImplementation(o);
-		if (decoratedImplementation != null)
-		{ #>
-			<#= decoratedImplementation #>
-<#		}
-		else 
-		{ #>
-            throw new NotImplementedException("Write your implementation for this service here...");
-<#		} #>			
+        {<#= GetDecoratedImplementation(o) #>		
         }
 
 <#  } #>

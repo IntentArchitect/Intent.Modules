@@ -175,42 +175,16 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             
             #line default
             #line hidden
-            this.Write(")\r\n        {\r\n");
+            this.Write(")\r\n        {");
             
-            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
-		var decoratedImplementation = GetDecoratedImplementation(o);
-		if (decoratedImplementation != null)
-		{ 
+            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetDecoratedImplementation(o)));
             
             #line default
             #line hidden
-            this.Write("\t\t\t");
+            this.Write("\t\t\r\n        }\r\n\r\n");
             
-            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(decoratedImplementation));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n");
-            
-            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
-		}
-		else 
-		{ 
-            
-            #line default
-            #line hidden
-            this.Write("            throw new NotImplementedException(\"Write your implementation for this" +
-                    " service here...\");\r\n");
-            
-            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
-		} 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\r\n        }\r\n\r\n");
-            
-            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
   } 
             
             #line default
