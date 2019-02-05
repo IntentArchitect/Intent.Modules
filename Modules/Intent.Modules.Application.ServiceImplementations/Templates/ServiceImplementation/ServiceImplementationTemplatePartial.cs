@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
@@ -14,8 +16,10 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {
-    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook
+    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>
     {
+        private IEnumerable<ServiceImplementationDecoratorBase> _decorators;
+
         public const string Identifier = "Intent.Application.ServiceImplementations";
         public ServiceImplementationTemplate(IProject project, IServiceModel model)
             : base(Identifier, project, model)
@@ -28,6 +32,15 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             {
                 TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
             };
+        }
+
+        public IEnumerable<ServiceImplementationDecoratorBase> GetDecorators()
+        {
+            if (_decorators == null)
+            {
+                _decorators = Project.ResolveDecorators(this);
+            }
+            return _decorators;
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -57,6 +70,25 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
                 { "InterfaceTypeTemplateId", ServiceContractTemplate.IDENTIFIER },
                 { "ConcreteTypeTemplateId", Identifier }
             });
+        }
+
+        public override string DependencyUsings
+        {
+            get
+            {
+                var builder = new StringBuilder(base.DependencyUsings).AppendLine();
+                var additionalUsings = GetDecorators()
+                    .SelectMany(s => s.GetUsings(Model))
+                    .Distinct()
+                    .Where(p => !string.IsNullOrEmpty(p))
+                    .ToArray();
+                foreach (var @using in additionalUsings)
+                {
+                    builder.AppendLine($"using {@using};");
+                }
+
+                return builder.ToString();
+            }
         }
 
         private string GetOperationDefinitionParameters(IOperationModel o)
@@ -100,6 +132,23 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
                 result = "List<" + result + ">";
             }
             return result;
+        }
+
+        private IEnumerable<ConstructorParameter> GetConstructorDependencies()
+        {
+            var parameters = GetDecorators()
+                .SelectMany(s => s.GetConstructorDependencies(this.Model))
+                .Distinct()
+                .ToArray();
+            return parameters;
+        }
+
+        private string GetDecoratedImplementation(IOperationModel operation)
+        {
+            return GetDecorators()
+                .Select(p => p.GetDecoratedImplementation(this.Model, operation))
+                .Aggregate(new StringBuilder(), (x, y) => x.AppendLine(y))
+                .ToString();
         }
     }
 }
