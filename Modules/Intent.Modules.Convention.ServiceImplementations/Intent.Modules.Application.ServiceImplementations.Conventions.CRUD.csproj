@@ -5,8 +5,8 @@
     <ProjectGuid>{2AC9A9B5-8DBD-45E0-B340-5778C2C6EE8B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Modules.Convention.ServiceImplementations</RootNamespace>
-    <AssemblyName>Intent.Modules.Convention.ServiceImplementations</AssemblyName>
+    <RootNamespace>Intent.Modules.Application.ServiceImplementations.Conventions.CRUD</RootNamespace>
+    <AssemblyName>Intent.Modules.Application.ServiceImplementations.Conventions.CRUD</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.txt" />
-    <Content Include="Intent.Modules.Convention.ServiceImplementations.imodspec" />
+    <Content Include="Intent.Modules.Application.ServiceImplementations.Conventions.CRUD.imodspec" />
     <Content Include="packages.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
