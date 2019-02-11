@@ -63,7 +63,8 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
                 return new List<ConstructorParameter>();
             }
 
-            var repoInterfaceTemplate = _application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<IClass>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id));
+            var templateDepenency = TemplateDependancy.OnModel<IClass>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id);
+            var repoInterfaceTemplate = _application.FindTemplateInstance<IHasClassDetails>(templateDepenency);
             if (repoInterfaceTemplate == null)
             {
                 return new List<ConstructorParameter>();
@@ -74,7 +75,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
 
             return new List<ConstructorParameter>
             {
-                new ConstructorParameter(paramType, paramName)
+                new ConstructorParameter(paramType, paramName, templateDepenency)
             };
         }
 

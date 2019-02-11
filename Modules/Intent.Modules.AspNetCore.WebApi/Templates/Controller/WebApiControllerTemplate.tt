@@ -43,7 +43,7 @@ namespace <#=Namespace#>
     
 <#  foreach (var operation in Model.Operations)
     {#>
-        [Http<#= GetHttpVerb(operation).ToString().ToLower().ToPascalCase() #>("<#= operation.Name.ToLower() #>")]
+        [Http<#= GetHttpVerb(operation).ToString().ToLower().ToPascalCase() #>("<#= GetPath(operation) #>")]
         <#= GetSecurityAttribute(operation) #>
         [ProducesResponseType(<#= operation.ReturnType != null ? string.Format("typeof({0}), ", GetOperationReturnType(operation)) : "" #>(int)HttpStatusCode.OK)]
         public <#= operation.IsAsync() ? "async Task<IActionResult>" : "IActionResult" #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)

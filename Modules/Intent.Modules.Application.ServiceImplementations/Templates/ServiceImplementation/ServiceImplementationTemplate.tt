@@ -48,7 +48,7 @@ namespace <#=Namespace#>
 	{ #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public <#= GetOperationReturnType(o) #> <#= o.Name#>(<#= GetOperationDefinitionParameters(o) #>)
-        {<#= GetDecoratedImplementation(o) #>		
+        {<#= GetImplementation(o) #>		
         }
 
 <#  } #>

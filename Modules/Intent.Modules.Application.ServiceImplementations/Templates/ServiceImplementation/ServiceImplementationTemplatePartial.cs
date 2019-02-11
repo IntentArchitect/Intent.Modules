@@ -31,7 +31,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             return new[]
             {
                 TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
-            };
+            }.Union(GetDecorators().SelectMany(x => x.GetConstructorDependencies(Model).Select(d => d.TemplateDependency)));
         }
 
         public IEnumerable<ServiceImplementationDecoratorBase> GetDecorators()
@@ -143,7 +143,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             return parameters;
         }
 
-        private string GetDecoratedImplementation(IOperationModel operation)
+        private string GetImplementation(IOperationModel operation)
         {
             var output = GetDecorators().Aggregate(x => x.GetDecoratedImplementation(Model, operation));
             if (string.IsNullOrWhiteSpace(output))

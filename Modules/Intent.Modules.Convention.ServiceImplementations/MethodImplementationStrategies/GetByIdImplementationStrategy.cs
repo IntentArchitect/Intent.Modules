@@ -34,7 +34,9 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                 "get",
                 $"get{lowerDomainName}",
                 "find",
+                "findbyid",
                 $"find{lowerDomainName}",
+                $"find{lowerDomainName}byid",
                 lowerDomainName
             }
             .Contains(lowerOperationName);

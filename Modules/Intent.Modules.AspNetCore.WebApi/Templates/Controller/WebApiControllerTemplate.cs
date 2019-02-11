@@ -134,7 +134,7 @@ using Microsoft.AspNetCore.Mvc;
             this.Write("(\"");
             
             #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToLower()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetPath(operation)));
             
             #line default
             #line hidden

@@ -237,9 +237,20 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             }
             if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
             {
-                return HttpVerb.POST;
+                var hasIdParam = operation.Parameters.Any(x => x.Name.ToLower().EndsWith("id") && x.TypeReference.Type != ReferenceType.ClassType);
+                if (hasIdParam && new[] {"delete", "remove"}.Any(x => operation.Name.ToLower().Contains(x)))
+                {
+                    return HttpVerb.DELETE;
+                }
+                return hasIdParam ? HttpVerb.PUT : HttpVerb.POST;
             }
             return HttpVerb.GET;
+        }
+
+        private string GetPath(IOperationModel operation)
+        {
+            var path = operation.GetStereotypeProperty<string>("Http", "Route")?.ToLower();
+            return path ?? operation.Name.ToLower();
         }
 
         private string GetParameterBindingAttribute(IOperationModel operation, IOperationParameterModel parameter)
@@ -264,7 +275,8 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                 return $"[{attributeName}]";
             }
 
-            if (operation.Parameters.Count == 1 && parameter.TypeReference.Type == ReferenceType.ClassType)
+            if (operation.Parameters.Count(p => p.TypeReference.Type == ReferenceType.ClassType) == 1 
+                && parameter.TypeReference.Type == ReferenceType.ClassType)
             {
                 return "[FromBody]";
             }
