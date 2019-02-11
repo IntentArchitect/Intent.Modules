@@ -178,7 +178,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             this.Write(")\r\n        {");
             
             #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetDecoratedImplementation(o)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetImplementation(o)));
             
             #line default
             #line hidden

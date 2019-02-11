@@ -138,7 +138,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
                 fileExtension: "cs",
                 defaultLocationInProject: "Mappings${SlashIfInNamespace}${StereotypedNamespaceBasedPath}",
                 className: "${Model.Name}Mapping",
-                @namespace: "${Project.ProjectName}Mappings${DotIfInNamespace}${StereotypedNamespace}");
+                @namespace: "${Project.ProjectName}${DotIfInNamespace}${StereotypedNamespace}");
         }
 
         private IEnumerable<string> GetNamespaceParts()

@@ -25,13 +25,15 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
     public class ConstructorParameter
     {
-        public ConstructorParameter(string type, string name)
+        public ConstructorParameter(string type, string name, ITemplateDependancy templateDependency)
         {
             ParameterType = type;
             ParameterName = name;
+            TemplateDependency = templateDependency;
         }
 
         public string ParameterType { get; }
         public string ParameterName { get; }
+        public ITemplateDependancy TemplateDependency { get; }
     }
 }

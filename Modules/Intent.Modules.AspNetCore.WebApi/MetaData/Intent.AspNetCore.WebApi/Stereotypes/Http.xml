@@ -25,5 +25,9 @@
         <option>DELETE</option>
       </options>
     </property>
+    <property id="13F033F5-9BC4-47C0-A2DE-92A10E039A23">
+      <name>Route</name>
+      <type>string</type>
+    </property>
   </properties>
 </stereotypeDefinition>
