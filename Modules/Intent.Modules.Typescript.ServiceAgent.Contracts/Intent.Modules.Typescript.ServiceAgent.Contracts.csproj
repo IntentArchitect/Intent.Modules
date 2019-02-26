@@ -65,7 +65,9 @@
     <Compile Include="Templates\TypescriptDTO\TypescriptDtoTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Typescript.ServiceAgent.Contracts.imodspec" />
+    <None Include="Intent.Modules.Typescript.ServiceAgent.Contracts.imodspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Templates\TypescriptDTO\TypescriptDtoTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
