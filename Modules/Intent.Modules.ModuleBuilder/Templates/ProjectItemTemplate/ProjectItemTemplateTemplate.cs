@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using System.Text;
 using Intent.Metadata.Models;
 using Intent.MetaModel.DTO;
@@ -17,6 +18,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
         {
         }
 
+        public string FolderPath => string.Join("\\", new [] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
+
         public override DefaultFileMetaData DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
@@ -24,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "tt",
-                defaultLocationInProject: "Templates\\${Model.Name}");
+                defaultLocationInProject: "${FolderPath}\\${Model.Name}");
         }
 
         public override string TransformText()

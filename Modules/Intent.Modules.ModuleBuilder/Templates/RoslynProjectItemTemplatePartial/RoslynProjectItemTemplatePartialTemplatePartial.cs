@@ -18,6 +18,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
         {
         }
 
+        public string FolderPath => string.Join("\\", new [] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
+        public string FolderNamespace => string.Join(".", new[] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
+
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
@@ -29,9 +32,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"${{Model.Name}}Partial",
                 fileExtension: "cs",
-                defaultLocationInProject: "Templates\\${Model.Name}",
+                defaultLocationInProject: "${FolderPath}\\${Model.Name}",
                 className: "${Model.Name}",
-                @namespace: "${Project.Name}.Templates.${Model.Name}"
+                @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
             );
         }
 

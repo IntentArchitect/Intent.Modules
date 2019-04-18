@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <assetRepositories>
-  <entries />
+  <entries>
+    <entry>
+      <name>https://intentarchitect.com/</name>
+      <address>https://intentarchitect.com/</address>
+      <isBuiltIn>true</isBuiltIn>
+    </entry>
+    <entry>
+      <name>Local</name>
+      <address>./Intent.Modules/</address>
+      <isBuiltIn>false</isBuiltIn>
+    </entry>
+  </entries>
 </assetRepositories>

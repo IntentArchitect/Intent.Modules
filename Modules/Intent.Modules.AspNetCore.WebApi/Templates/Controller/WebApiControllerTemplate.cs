@@ -66,7 +66,14 @@ using Microsoft.AspNetCore.Mvc;
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    [Route(\"api/[controller]\")]\r\n    public class ");
+            this.Write("\r\n{\r\n    [Route(\"");
+            
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetRoute()));
+            
+            #line default
+            #line hidden
+            this.Write("\")]\r\n    public class ");
             
             #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

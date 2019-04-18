@@ -104,11 +104,14 @@
     <None Include="metadata\Intent.AspNetCore.WebApi\Stereotypes\Secured.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="metadata\Intent.AspNetCore.WebApi\Stereotypes\Http.xml">
+    <None Include="metadata\Intent.AspNetCore.WebApi\Stereotypes\HttpOperation.xml">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="metadata\Intent.AspNetCore.WebApi\Stereotypes\HttpService.xml">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="metadata\Intent.AspNetCore.WebApi\Stereotypes\ParameterBinding.xml" />
     <Content Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

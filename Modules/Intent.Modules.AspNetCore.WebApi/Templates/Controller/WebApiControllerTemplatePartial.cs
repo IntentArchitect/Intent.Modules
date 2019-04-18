@@ -78,6 +78,11 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
         }
 
+        private string GetRoute()
+        {
+            return Model.GetStereotypeProperty("Http", "Route", "api/[controller]");
+        }
+
         private string GetTypeName(ITypeReference typeInfo)
         {
             var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));

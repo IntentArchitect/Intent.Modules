@@ -9,6 +9,10 @@
   <templates>
     <template id="Intent.Application.ServiceImplementations">
       <role>Services.Implementation</role>
+      <config>
+        <add key="Namespace" description="Namespace" default="${Project.ProjectName}.ServiceImplementation" />
+        <add key="ClassName" description="Class name" default="${Model.Name}" />
+      </config>
     </template>
   </templates>
   <decorators />

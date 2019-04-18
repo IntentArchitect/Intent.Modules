@@ -19,6 +19,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
         public DomainEntityTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
         {
+            
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

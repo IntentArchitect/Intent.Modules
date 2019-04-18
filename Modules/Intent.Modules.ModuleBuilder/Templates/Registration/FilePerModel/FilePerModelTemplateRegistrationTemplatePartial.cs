@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
@@ -16,6 +17,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
         {
         }
 
+        public string FolderPath => string.Join("\\", new[] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
+        public string FolderNamespace => string.Join(".", new[] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
+
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
@@ -27,9 +31,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Registration",
                 fileExtension: "cs",
-                defaultLocationInProject: "Templates\\${Model.Name}",
+                defaultLocationInProject: "${FolderPath}\\${Model.Name}",
                 className: "${Model.Name}Registration",
-                @namespace: "${Project.Name}.Templates.${Model.Name}"
+                @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
             );
         }
 

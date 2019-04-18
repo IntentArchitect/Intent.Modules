@@ -1,0 +1,24 @@
+<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IClass>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+
+// Place your file template logic here
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-<#= Model.Name.ToAngularFileName() #>',
+  templateUrl: './<#= Model.Name.ToAngularFileName() #>.component.html',
+  styleUrls: ['./<#= Model.Name.ToAngularFileName() #>.component.css']
+})
+export class <#= ComponentName #>Component implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

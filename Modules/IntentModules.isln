@@ -9,5 +9,6 @@
   <applications>
     <application id="b9e22586-4ecd-4eaf-9f97-10e923f41952" relativePath="Intent.Modules.IdentityServer4\Intent.Modules.IdentityServer4.application.config" />
     <application id="9605cb81-cdac-46ca-95e8-b6d53256088e" relativePath="Intent.Modules.Convention.ServiceImplementations\Convention.ServiceImplementations.application.config" />
+    <application id="1cecc65d-e804-4de6-a27f-e8e4ad0190d7" relativePath="Intent.Modules.Angular\Angular.application.config" />
   </applications>
 </solution>

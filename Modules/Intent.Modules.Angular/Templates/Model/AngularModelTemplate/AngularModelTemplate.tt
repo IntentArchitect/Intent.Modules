@@ -1,0 +1,38 @@
+<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IClass>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+
+export class <#= ClassName #> 
+{
+    public static <#= ClassName #> Create(<#= ConstructorParameters() #>) 
+    {
+        return new <#= ClassName #>
+        {
+<# foreach (var field in Model.Fields) {#>
+            <#= field.Name.ToPascalCase() #> = <#= field.Name.ToCamelCase().PrefixIdentifierIfKeyword() #>,
+<#}#>
+        };
+    }
+<#
+foreach (var field in Model.Fields)
+{
+#>
+
+<#
+    foreach (var line in field.GetXmlDocLines())
+    {
+#>
+    /// <#= line #>
+<#
+    }
+#>
+    <#= PropertyAttributes(field)#>
+    public <#= GetTypeInfo(field.TypeReference)#> <#=field.Name.ToPascalCase()#> {get; set;}
+<#
+}
+#>
+}

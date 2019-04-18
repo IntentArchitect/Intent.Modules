@@ -52,6 +52,7 @@
     <Compile Include="Engine\IApplicationExtensions.cs" />
     <Compile Include="Engine\IProjectExtensions.cs" />
     <Compile Include="ExtensionHelpers.cs" />
+    <Compile Include="Helpers\CodeParserExtensions.cs" />
     <Compile Include="Helpers\Dynamic.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\ExpressionParser.cs" />

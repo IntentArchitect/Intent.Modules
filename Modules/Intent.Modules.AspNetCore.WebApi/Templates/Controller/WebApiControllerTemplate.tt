@@ -30,7 +30,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace <#=Namespace#>
 {
-    [Route("api/[controller]")]
+    [Route("<#= GetRoute() #>")]
     public class <#= ClassName #> : Controller
     {
         private readonly <#= GetServiceInterfaceName() #> _appService;<#= DeclarePrivateVariables() #>

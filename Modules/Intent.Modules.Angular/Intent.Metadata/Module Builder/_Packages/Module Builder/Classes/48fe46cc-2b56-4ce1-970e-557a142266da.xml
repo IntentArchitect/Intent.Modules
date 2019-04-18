@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="48fe46cc-2b56-4ce1-970e-557a142266da" type="File Template">
+  <name>AngularModuleTemplate</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>af05bb66-305f-4791-bec8-d9f9cf0c3c34</parentFolderId>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="311d788f-7582-4c27-9a4d-e0db1439c327" value="File per Model" />
+        <property name="C2283D15-4B57-4ED9-8AAE-6EFC73039034" value="Custom" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <attributes />
+  <operations />
+</class>
