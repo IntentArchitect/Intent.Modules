@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
+using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
@@ -14,7 +15,7 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {
-    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings
+    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings, IPostTemplateCreation
     {
         public const string Identifier = "Intent.AspNetCore.WebApi.Controller";
         private IEnumerable<WebApiControllerDecoratorBase> _decorators;
@@ -22,6 +23,11 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
         public WebApiControllerTemplate(IProject project, IServiceModel model)
             : base(Identifier, project, model)
         {
+        }
+
+        public void Created()
+        {
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
         }
 
         public IEnumerable<string> DeclareUsings()
@@ -85,7 +91,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
+            var result = NormalizeNamespace(Types.Get(typeInfo));
             if (typeInfo.IsCollection)
             {
                 result = "List<" + result + ">";
