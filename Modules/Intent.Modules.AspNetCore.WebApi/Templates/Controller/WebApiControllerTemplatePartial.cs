@@ -91,12 +91,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(Types.Get(typeInfo));
-            if (typeInfo.IsCollection)
-            {
-                result = "List<" + result + ">";
-            }
-            return result;
+            return NormalizeNamespace(Types.Get(typeInfo, "List"));
         }
 
         public string DeclarePrivateVariables()

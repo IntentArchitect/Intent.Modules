@@ -40,12 +40,12 @@ namespace Intent.Modules.Entities.Templates
 
         public static string ConvertType<T>(this IntentRoslynProjectItemTemplateBase<T> template, ITypeReference type, string context = null, string collectionType = nameof(IEnumerable))
         {
-            var returnType = template.NormalizeNamespace(template.Types.Get(type, context));
-            if (type.IsCollection && type.Type != ReferenceType.ClassType) // GCB - ClassType automatically adds the collectiont type. This disparity is a smell..
-            {
-                returnType = $"{collectionType}<{returnType}>";
-            }
-            return returnType;
+            var returnType = context != null ? template.Types.InContext(context).Get(type, collectionType) : template.Types.Get(type, collectionType);
+            //if (type.IsCollection && type.Type != ReferenceType.ClassType) // GCB - ClassType automatically adds the collectiont type. This disparity is a smell..
+            //{
+            //    returnType = $"{collectionType}<{returnType}>";
+            //}
+            return template.NormalizeNamespace(returnType);
         }
 
         public static string Name(this IAssociationEnd associationEnd)

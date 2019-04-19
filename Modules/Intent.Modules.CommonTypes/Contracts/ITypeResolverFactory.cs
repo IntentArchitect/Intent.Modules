@@ -10,7 +10,7 @@ namespace Intent.Modules.CommonTypes.Contracts
 
         string Name { get; }
 
-        int Priotiry { get; }
+        int Priority { get; }
 
         ITypeResolver Create();
 

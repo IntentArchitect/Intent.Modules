@@ -13,7 +13,7 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
-    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasAssemblyDependencies, IHasDecorators<IDTOAttributeDecorator>
+    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasAssemblyDependencies, IHasDecorators<IDTOAttributeDecorator>, IPostTemplateCreation
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.DTO";
 
@@ -23,6 +23,11 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             : base(identifier, project, model)
         {
             _decoratorDispatcher = new DecoratorDispatcher<IDTOAttributeDecorator>(project.ResolveDecorators<IDTOAttributeDecorator>);
+        }
+
+        public void Created()
+        {
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -95,11 +100,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         private string GetTypeInfo(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
-            if (typeInfo.IsCollection)
-            {
-                result = string.Format(GetCollectionTypeFormatConfig(), result);
-            }
+            var result = NormalizeNamespace(Types.Get(typeInfo, "List"));
             // Don't check for nullables here because the type resolution system will take care of language specific nullables
 
             return result;

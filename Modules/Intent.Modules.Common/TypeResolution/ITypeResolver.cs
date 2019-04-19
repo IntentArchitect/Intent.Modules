@@ -16,7 +16,7 @@ namespace Intent.Modules.Common.TypeResolution
         void AddClassTypeSource(IClassTypeSource classTypeSource);
 
         /// <summary>
-        /// Adds an <see cref="IClassTypeSource"/> that is only used to resolve type names when <see cref="Get(Intent.MetaModel.Common.ITypeReference,string)"/> is called for the specific <see cref="contextName"/>.
+        /// Adds an <see cref="IClassTypeSource"/> that is only used to resolve type names when <see cref="InContext(string)"/> is called for the specific <see cref="contextName"/>.
         /// </summary>
         /// <param name="classTypeSource"></param>
         /// <param name="contextName"></param>
@@ -30,11 +30,37 @@ namespace Intent.Modules.Common.TypeResolution
         string Get(ITypeReference typeInfo);
 
         /// <summary>
-        /// Resolves the type name for the specified <see cref="typeInfo"/> using <see cref="IClassTypeSource"/> that have been added for the specified <see cref="contextName"/>
+        /// Resolves the type name for the specified <see cref="typeInfo"/>
         /// </summary>
         /// <param name="typeInfo"></param>
+        /// <param name="collectionType">The collection type provided if the typeInfo.IsCollection is true</param>
+        /// <returns></returns>
+        string Get(ITypeReference typeInfo, string collectionType);
+
+        /// <summary>
+        /// Returns a <see cref="ITypeResolverContext"/> that resolves the type using the <see cref="IClassTypeSource"/> added to the specified "<paramref name="contextName"/>"
+        /// </summary>
         /// <param name="contextName"></param>
         /// <returns></returns>
-        string Get(ITypeReference typeInfo, string contextName);
+        ITypeResolverContext InContext(string contextName);
+    }
+
+    public interface ITypeResolverContext
+    {
+        /// <summary>
+        /// Resolves the type name for the specified <see cref="typeInfo"/>
+        /// </summary>
+        /// <param name="typeInfo"></param>
+        /// <returns></returns>
+        string Get(ITypeReference typeInfo);
+
+        /// <summary>
+        /// Resolves the type name for the specified <see cref="typeInfo"/>
+        /// </summary>
+        /// <param name="typeInfo"></param>
+        /// <param name="collectionType">The collection type provided if the typeInfo.IsCollection is true</param>
+        /// <returns></returns>
+        string Get(ITypeReference typeInfo, string collectionType);
+
     }
 }

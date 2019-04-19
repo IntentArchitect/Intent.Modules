@@ -14,7 +14,7 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
     public class JavaTypeResolver : TypeResolverBase, ITypeResolver
     {
 
-        protected override string ResolveType(ITypeReference typeInfo)
+        protected override string ResolveType(ITypeReference typeInfo, string collectionType = null)
         {
             var result = typeInfo.Name;
             if (typeInfo.Stereotypes.Any(x => x.Name == "Java"))

@@ -17,12 +17,17 @@ using Intent.SoftwareFactory.Eventing;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
-    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IBeforeTemplateExecutionHook
+    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IBeforeTemplateExecutionHook, IPostTemplateCreation
     {
         public const string Identifier = "Intent.Application.ServiceCallHandlers.ServiceImplementation";
         public ServiceImplementationTemplate(IProject project, IServiceModel model)
             : base(Identifier, project, model)
         {
+        }
+
+        public void Created()
+        {
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
         }
 
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
@@ -114,11 +119,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
-            if (typeInfo.IsCollection)
-            {
-                result = "List<" + result + ">";
-            }
+            var result = NormalizeNamespace(Types.Get(typeInfo, "List"));
             return result;
         }
     }

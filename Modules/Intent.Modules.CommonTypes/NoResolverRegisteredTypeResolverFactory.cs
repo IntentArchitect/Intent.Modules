@@ -18,7 +18,7 @@ namespace Intent.Modules.CommonTypes
             }
         }
 
-        public int Priotiry
+        public int Priority
         {
             get
             {
@@ -68,6 +68,11 @@ namespace Intent.Modules.CommonTypes
                 if (typeInfo == null)
                     return string.Empty;
                 return typeInfo.Name;
+            }
+
+            public ITypeResolverContext InContext(string contextName)
+            {
+                throw new NotImplementedException();
             }
         }
     }

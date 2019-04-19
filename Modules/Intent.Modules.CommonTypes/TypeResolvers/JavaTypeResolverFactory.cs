@@ -21,7 +21,7 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
             }
         }
 
-        public int Priotiry
+        public int Priority
         {
             get
             {

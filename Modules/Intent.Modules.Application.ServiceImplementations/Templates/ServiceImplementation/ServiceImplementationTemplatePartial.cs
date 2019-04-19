@@ -132,11 +132,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(Types.Get(typeInfo));
-            if (typeInfo.IsCollection)
-            {
-                result = "List<" + result + ">";
-            }
+            var result = NormalizeNamespace(Types.Get(typeInfo, "List"));
             return result;
         }
 

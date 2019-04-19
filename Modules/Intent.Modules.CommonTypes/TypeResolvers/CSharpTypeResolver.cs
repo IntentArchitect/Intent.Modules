@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
     public class CSharpTypeResolver : TypeResolverBase, ITypeResolver
     {
 
-        protected override string ResolveType(ITypeReference typeInfo)
+        protected override string ResolveType(ITypeReference typeInfo, string collectionType = null)
         {
             var result = typeInfo.Name;
             if (typeInfo.Stereotypes.Any(x => x.Name == "C#"))
@@ -34,6 +35,11 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
                 {
                     result += "?";
                 }
+            }
+
+            if (typeInfo.IsCollection)
+            {
+                result = $"{collectionType ?? nameof(IEnumerable)}<{result}>";
             }
 
             return result;

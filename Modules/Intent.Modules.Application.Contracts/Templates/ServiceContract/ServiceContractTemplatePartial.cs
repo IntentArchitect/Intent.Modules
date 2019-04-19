@@ -105,11 +105,11 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(Types.Get(typeInfo));
-            if (typeInfo.IsCollection && typeInfo.Type != ReferenceType.ClassType)
-            {
-                result = string.Format(GetCollectionTypeFormatConfig(), result);
-            }
+            var result = NormalizeNamespace(Types.Get(typeInfo, "List"));
+            //if (typeInfo.IsCollection && typeInfo.Type != ReferenceType.ClassType)
+            //{
+            //    result = string.Format(GetCollectionTypeFormatConfig(), result);
+            //}
             // Don't check for nullables here because the type resolution system will take care of language specific nullables
 
             return result;

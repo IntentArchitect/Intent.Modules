@@ -5,6 +5,45 @@ using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.Types.TypeResolvers
 {
+    public class TypeResolverContext : ITypeResolverContext
+    {
+        private readonly List<IClassTypeSource> _classTypeSources;
+        private readonly Func<ITypeReference, string, string> _resolveTypeFunc;
+
+        public TypeResolverContext(List<IClassTypeSource> classTypeSources, Func<ITypeReference, string, string> resolveTypeFunc)
+        {
+            _classTypeSources = classTypeSources;
+            _resolveTypeFunc = resolveTypeFunc;
+        }
+
+        public string Get(ITypeReference typeInfo)
+        {
+            return Get(typeInfo, null);
+        }
+
+        public string Get(ITypeReference typeInfo, string collectionType)
+        {
+            if (typeInfo == null)
+            {
+                return null;
+            }
+
+            if (typeInfo.Type == ReferenceType.ClassType)
+            {
+                foreach (var classLookup in _classTypeSources)
+                {
+                    var foundClass = classLookup.GetClassType(typeInfo);
+                    if (!string.IsNullOrWhiteSpace(foundClass))
+                    {
+                        return foundClass;
+                    }
+                }
+            }
+            return _resolveTypeFunc(typeInfo, collectionType);
+        }
+    }
+
+
     public abstract class TypeResolverBase : ITypeResolver
     {
         private const string DEFAULT_CONTEXT = "_default_";
@@ -35,40 +74,26 @@ namespace Intent.Modules.Common.Types.TypeResolvers
             _classTypeSources[contextName].Add(classTypeSource);
         }
 
+        public ITypeResolverContext InContext(string contextName)
+        {
+            if (!_classTypeSources.ContainsKey(contextName))
+            {
+                throw new InvalidOperationException($"contextName '{contextName}' does not exist.");
+            }
+
+            return new TypeResolverContext(_classTypeSources[contextName], ResolveType);
+        }
+
         public string Get(ITypeReference typeInfo)
         {
-            return Get(typeInfo, DEFAULT_CONTEXT);
+            return Get(typeInfo, null);
         }
 
-        public string Get(ITypeReference typeInfo, string contextName)
+        public string Get(ITypeReference typeInfo, string collectionType)
         {
-            if (typeInfo == null)
-            {
-                return null;
-            }
-
-            if (contextName == null)
-                contextName = DEFAULT_CONTEXT;
-
-            if (typeInfo.Type == ReferenceType.ClassType)
-            {
-                if (!_classTypeSources.ContainsKey(contextName))
-                {
-                    throw new InvalidOperationException($"contextName '{contextName}' does not exist.");
-                }
-
-                foreach (var classLookup in _classTypeSources[contextName])
-                {
-                    var foundClass = classLookup.GetClassType(typeInfo);
-                    if (!string.IsNullOrWhiteSpace(foundClass))
-                    {
-                        return foundClass;
-                    }
-                }
-            }
-            return ResolveType(typeInfo);
+            return InContext(DEFAULT_CONTEXT).Get(typeInfo, collectionType);
         }
-
-        protected abstract string ResolveType(ITypeReference typeInfo);
+        
+        protected abstract string ResolveType(ITypeReference typeInfo, string collectionType = null);
     }
 }
