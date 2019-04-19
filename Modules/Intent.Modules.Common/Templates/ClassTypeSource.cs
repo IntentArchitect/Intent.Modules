@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Intent.Metadata.Models;
 using Intent.MetaModel.Common;
-using Intent.MetaModel.Domain;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.MetaData;
 using Intent.SoftwareFactory.Templates;
 using IApplication = Intent.SoftwareFactory.Engine.IApplication;
+using IAssociationEnd = Intent.MetaModel.Domain.IAssociationEnd;
 using IClassTypeSource = Intent.Modules.Common.TypeResolution.IClassTypeSource;
 
 namespace Intent.Modules.Common.Templates
@@ -43,9 +44,11 @@ namespace Intent.Modules.Common.Templates
                     ?.FullTypeName();
             }
 
-            return project.FindTemplateInstance<IHasClassDetails>(
-                    TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id))
-                ?.FullTypeName();
+            var templateInstance = project.FindTemplateInstance<IHasClassDetails>(
+                TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id));
+            return templateInstance != null ? templateInstance.FullTypeName() 
+                + (typeInfo.GenericTypeParameters.Any() ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => FullTypeNameInProject(project, templateId, x)))}>" : "") 
+                : null;
         }
 
         public static IClassTypeSource InApplication(IApplication application, string templateId, string collectionType = nameof(IEnumerable))

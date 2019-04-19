@@ -92,6 +92,10 @@
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj">
+      <Project>{C5A5AE9C-9137-4309-AC4E-F9494694390E}</Project>
+      <Name>Intent.Modules.Modelers.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

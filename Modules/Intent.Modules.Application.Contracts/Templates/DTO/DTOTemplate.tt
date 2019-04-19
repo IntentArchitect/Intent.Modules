@@ -2,7 +2,7 @@
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
-<#@ import namespace="Intent.MetaModel.DTO" #>
+<#@ import namespace="Intent.Modelers.Services.Api" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
@@ -27,15 +27,15 @@ namespace <#= Namespace #>
     }
 #>
     <#= ClassAttributes()#>
-    public class <#=ClassName#> 
+    public class <#=ClassName#><#= GenericTypes #>
     {
         public <#=ClassName#>()
         {
         }
 
-        public static <#= ClassName #> Create(<#= ConstructorParameters() #>) 
+        public static <#=ClassName#><#= GenericTypes #> Create<#= GenericTypes #>(<#= ConstructorParameters() #>) 
         {
-            return new <#= ClassName #>
+            return new <#=ClassName#><#= GenericTypes #>
             {
 <# foreach (var field in Model.Fields) {#>
                 <#= field.Name.ToPascalCase() #> = <#= field.Name.ToCamelCase().PrefixIdentifierIfKeyword() #>,
@@ -56,7 +56,7 @@ namespace <#= Namespace #>
         }
 #>
         <#= PropertyAttributes(field)#>
-        public <#= GetTypeInfo(field.TypeReference)#> <#=field.Name.ToPascalCase()#> {get; set;}
+        public <#= GetTypeInfo(field.Type)#> <#=field.Name.ToPascalCase()#> {get; set;}
 <#
     }
 #>

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Intent.MetaModel.DTO;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.SoftwareFactory.Templates;
 using Intent.MetaModel.Common;
 using System.Text;
+using Intent.Metadata.Models;
 using Intent.Modules.Common;
 
 namespace Intent.Modules.Application.Contracts.Decorators
@@ -19,7 +20,7 @@ namespace Intent.Modules.Application.Contracts.Decorators
             return $"[DataContract{ GetDataContractPropertiesFormatted(dto) }]";
         }
 
-        public string PropertyAttributes(IDTOModel dto, IDTOField field)
+        public string PropertyAttributes(IDTOModel dto, IAttribute field)
         {
             return "[DataMember]";
         }

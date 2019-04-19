@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Intent.MetaModel.DTO;
+using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
@@ -14,14 +15,13 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
     [Description("Intent Applications Contract Mapping Profile Template")]
     public class MappingProfileTemplateRegistrations : ListModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly ServicesMetadataProvider _metaDataManager;
 
-
-        public MappingProfileTemplateRegistrations(IMetaDataManager metaDataManager)
+        public MappingProfileTemplateRegistrations(ServicesMetadataProvider metaDataManager)
         {
             _metaDataManager = metaDataManager;
 
-            FilterExpression = "!string.IsNullOrWhiteSpace(model.MappedClassId)";
+            FilterExpression = "model.MappedClass != null";
         }
 
         public override string TemplateId => MappingProfileTemplate.IDENTIFIER;
@@ -33,7 +33,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public override IList<IDTOModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetDTOModels(application).ToList();
+            return _metaDataManager.GetDTOs(application).ToList();
         }
     }
 }

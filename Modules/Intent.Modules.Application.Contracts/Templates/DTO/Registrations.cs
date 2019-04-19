@@ -1,22 +1,25 @@
-﻿using Intent.MetaModel.DTO;
-using Intent.SoftwareFactory;
+﻿using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
     [Description(DTOTemplate.IDENTIFIER)]
     public class Registrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly ServicesMetadataProvider _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public Registrations(ServicesMetadataProvider metaDataManager)
         {
             _metaDataManager = metaDataManager;
 
@@ -31,7 +34,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public override IEnumerable<IDTOModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetDTOModels(application);
+            return _metaDataManager.GetDTOs(application);
         }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.MetaModel.Common;
-using Intent.MetaModel.DTO;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
@@ -42,7 +43,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             return _decoratorDispatcher.Dispatch(x => x.ClasssAttributes(Model));
         }
 
-        public string PropertyAttributes(IDTOField field)
+        public string PropertyAttributes(IAttribute field)
         {
             return _decoratorDispatcher.Dispatch(x => x.PropertyAttributes(Model, field));
         }
@@ -51,7 +52,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         {
             return Model.Fields.Any()
                 ? Model.Fields
-                    .Select(x => "\r\n            " + GetTypeInfo(x.TypeReference) + " " + x.Name.ToCamelCase().PrefixIdentifierIfKeyword())
+                    .Select(x => "\r\n            " + GetTypeInfo(x.Type) + " " + x.Name.ToCamelCase().PrefixIdentifierIfKeyword())
                     .Aggregate((x, y) => x + ", " + y)
                 : "";
         }
@@ -68,6 +69,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         }
 
         public string FolderBasedNamespace => string.Join(".", new[] { Project.Name }.Concat(GetNamespaceParts()));
+        public string GenericTypes => Model.GenericTypes.Any() ? $"<{ string.Join(", ", Model.GenericTypes) }>" : "";
 
         public IEnumerable<IDTOAttributeDecorator> GetDecorators()
         {
@@ -106,7 +108,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         private string GetCollectionTypeFormatConfig()
         {
             var format = FileMetaData.CustomMetaData["Collection Type Format"];
-            if(string.IsNullOrEmpty(format))
+            if (string.IsNullOrEmpty(format))
             {
                 throw new Exception("Collection Type Format not specified in module configuration");
             }

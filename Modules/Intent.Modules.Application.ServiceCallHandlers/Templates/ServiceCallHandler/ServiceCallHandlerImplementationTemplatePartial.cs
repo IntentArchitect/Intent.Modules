@@ -5,6 +5,7 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.MetaModel.DTO;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
@@ -14,7 +15,6 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.MetaData;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {

@@ -67,6 +67,10 @@
       <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj">
+      <Project>{c5a5ae9c-9137-4309-ac4e-f9494694390e}</Project>
+      <Name>Intent.Modules.Modelers.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Intent.Modules.Application.Contracts.Clients.imodspec">

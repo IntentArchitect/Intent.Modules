@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Intent.MetaModel.DTO;
+using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
@@ -14,12 +15,12 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
     [Description("Intent Applications Contracts DTO")]
     public class DtoRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly ServicesMetadataProvider _metaDataManager;
 
         private string _stereotypeName = "Consumers";
         private string _stereotypePropertyName = "CSharp";
 
-        public DtoRegistrations(IMetaDataManager metaDataManager)
+        public DtoRegistrations(ServicesMetadataProvider metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -33,11 +34,7 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
 
         public override IEnumerable<IDTOModel> GetModels(IApplication application)
         {
-            var dtoModels = _metaDataManager.GetMetaData<IDTOModel>("Services").ToArray();
-            if (!dtoModels.Any())
-            {
-                dtoModels = _metaDataManager.GetMetaData<IDTOModel>("DTO").ToArray(); // backward compatibility
-            }
+            var dtoModels = _metaDataManager.GetAllDTOs();
 
             return dtoModels
                 .Where(x => x.GetConsumers(_stereotypeName, _stereotypePropertyName).Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))

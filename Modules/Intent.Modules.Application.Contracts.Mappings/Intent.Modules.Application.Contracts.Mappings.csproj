@@ -85,6 +85,10 @@
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj">
+      <Project>{c5a5ae9c-9137-4309-ac4e-f9494694390e}</Project>
+      <Name>Intent.Modules.Modelers.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Templates\MappingProfile\MappingProfileTemplate.tt">

@@ -5,6 +5,7 @@ using System.Text;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
+using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
@@ -16,7 +17,7 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {
-    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>
+    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>, IPostTemplateCreation
     {
         private IEnumerable<ServiceImplementationDecoratorBase> _decorators;
 
@@ -24,6 +25,11 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
         public ServiceImplementationTemplate(IProject project, IServiceModel model)
             : base(Identifier, project, model)
         {
+        }
+
+        public void Created()
+        {
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
         }
 
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
@@ -126,7 +132,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
+            var result = NormalizeNamespace(Types.Get(typeInfo));
             if (typeInfo.IsCollection)
             {
                 result = "List<" + result + ">";

@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
-    using Intent.MetaModel.DTO;
+    using Intent.Modelers.Services.Api;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
@@ -86,7 +86,13 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             
             #line default
             #line hidden
-            this.Write(" \r\n    {\r\n        public ");
+            
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GenericTypes));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    {\r\n        public ");
             
             #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
@@ -100,7 +106,20 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             
             #line default
             #line hidden
-            this.Write(" Create(");
+            
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GenericTypes));
+            
+            #line default
+            #line hidden
+            this.Write(" Create");
+            
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GenericTypes));
+            
+            #line default
+            #line hidden
+            this.Write("(");
             
             #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConstructorParameters()));
@@ -111,6 +130,12 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             
             #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GenericTypes));
             
             #line default
             #line hidden
@@ -188,7 +213,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             this.Write("\r\n        public ");
             
             #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeInfo(field.TypeReference)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeInfo(field.Type)));
             
             #line default
             #line hidden

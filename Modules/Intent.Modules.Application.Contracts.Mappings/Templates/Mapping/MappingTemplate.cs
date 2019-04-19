@@ -10,7 +10,7 @@
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
     using System.Collections.Generic;
-    using Intent.MetaModel.DTO;
+    using Intent.Modelers.Services.Api;
     using Intent.Modules.Common.Templates;
     using System;
     

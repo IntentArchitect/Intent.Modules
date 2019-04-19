@@ -2,7 +2,7 @@
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #> 
-<#@ import namespace="Intent.MetaModel.DTO" #>
+<#@ import namespace="Intent.Modelers.Services.Api" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#=DependencyUsings#>
 using System.Runtime.Serialization;

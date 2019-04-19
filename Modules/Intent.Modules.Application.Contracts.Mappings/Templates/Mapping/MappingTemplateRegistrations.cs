@@ -1,11 +1,12 @@
-﻿using Intent.MetaModel.DTO;
-using Intent.SoftwareFactory;
+﻿using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.SoftwareFactory.Templates.Registrations;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 
@@ -14,13 +15,13 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
     [Description(MappingTemplate.IDENTIFIER)]
     public class MappingTemplateRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly ServicesMetadataProvider _metaDataManager;
 
-        public MappingTemplateRegistrations(IMetaDataManager metaDataManager)
+        public MappingTemplateRegistrations(ServicesMetadataProvider metaDataManager)
         {
             _metaDataManager = metaDataManager;
             
-            FilterExpression = "!string.IsNullOrWhiteSpace(model.MappedClassId)";
+            FilterExpression = "model.MappedClass != null";
         }
 
         public override string TemplateId => MappingTemplate.IDENTIFIER;
@@ -32,7 +33,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 
         public override IEnumerable<IDTOModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetDTOModels(application);
+            return _metaDataManager.GetDTOs(application);
         }
     }
 }
