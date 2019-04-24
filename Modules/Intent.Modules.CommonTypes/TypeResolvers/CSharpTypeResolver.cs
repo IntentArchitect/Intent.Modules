@@ -19,7 +19,7 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
             var result = typeInfo.Name;
             if (typeInfo.Stereotypes.Any(x => x.Name == "C#"))
             {
-                string typeName = typeInfo.GetStereotypeProperty<string>("C#", "Type");
+                string typeName = typeInfo.GetStereotypeProperty<string>("C#", "Type", typeInfo.Name);
                 string @namespace = typeInfo.GetStereotypeProperty<string>("C#", "Namespace");
 
                 result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;

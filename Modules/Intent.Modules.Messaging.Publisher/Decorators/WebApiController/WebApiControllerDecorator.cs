@@ -36,8 +36,6 @@ namespace Intent.Modules.Messaging.Publisher.Decorators.WebApiController
         {
             return new[]
             {
-                NugetPackages.AkkaRemote,
-                NugetPackages.AkkaLoggerNLog,
                 NugetPackages.IntentEsbClient,
             };
         }

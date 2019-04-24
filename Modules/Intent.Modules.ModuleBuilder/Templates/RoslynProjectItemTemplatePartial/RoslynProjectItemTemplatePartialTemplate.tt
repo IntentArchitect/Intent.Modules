@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace <#= Namespace #>
 {
-	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
+	[IntentManaged(Mode.Merge)]
     partial class <#= ClassName #> : IntentRoslynProjectItemTemplateBase<<#= GetModelType() #>>
     {
         public const string TemplateId = "<#= GetTemplateId() #>";

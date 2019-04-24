@@ -81,7 +81,6 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Decorators.Unit
 
             return new[]
             {
-                NugetPackages.AkkaRemote,
                 NugetPackages.IntentEsbClient,
             };
         }
