@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dataType id="6b649125-18ea-48fd-a6ba-0bfff0d8f488">
+<class id="6b649125-18ea-48fd-a6ba-0bfff0d8f488" type="Type-Definition">
   <name>guid</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
   <parentFolderId>29b10ff0-1c9f-422b-ac1e-caeea16e69ec</parentFolderId>
-  <defaultStereotypes />
+  <attributes />
+  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="30c5995e-17ab-4cc7-8881-3e9561ab06fe">
       <addedByDefault>false</addedByDefault>
@@ -27,4 +31,4 @@
       </properties>
     </stereotype>
   </stereotypes>
-</dataType>
+</class>

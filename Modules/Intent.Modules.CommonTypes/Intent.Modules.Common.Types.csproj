@@ -75,25 +75,25 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Metadata\Intent.Common.Types\Classes\Binary.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Date.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Double.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Short.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Long.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Float.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Decimal.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Guid.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\DateTime.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Byte.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Char.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\String.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Bool.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Int.xml" />
     <Content Include="Metadata\Intent.Common.Types\Folders\Stereotypes.xml" />
     <Content Include="Metadata\Intent.Common.Types\Folders\Types.xml" />
     <Content Include="Metadata\Intent.Common.Types\Stereotypes\CSharp.xml" />
     <Content Include="Metadata\Intent.Common.Types\Stereotypes\Java.xml" />
     <Content Include="Metadata\Intent.Common.Types\Stereotypes\TypeScript.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\Binary.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\Bool.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\byte.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\char.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\Date.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\DateTime.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\Decimal.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\double.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\float.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\Guid.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\Int.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\long.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\short.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Types\String.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">

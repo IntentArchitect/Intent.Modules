@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dataType id="fb0a362d-e9e2-40de-b6ff-5ce8167cbe74">
-  <name>int</name>
+<class id="341929E9-E3E7-46AA-ACB3-B0438421F4C4" type="Type-Definition">
+  <name>float</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
   <parentFolderId>29b10ff0-1c9f-422b-ac1e-caeea16e69ec</parentFolderId>
-  <defaultStereotypes />
+  <attributes />
+  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="30c5995e-17ab-4cc7-8881-3e9561ab06fe">
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="67913852-1e61-4d9d-997e-cdfb7d9196fb" value="int" />
+        <property name="67913852-1e61-4d9d-997e-cdfb7d9196fb" value="float" />
         <property name="8CCCD630-6AF9-41FA-8E5F-414860AD89BB" value="" />
         <property name="76668E7B-8FC2-4C14-B6AA-E36854E5E499" value="true" />
       </properties>
@@ -21,10 +25,10 @@
     <stereotype stereotypeDefinitionId="1df2768a-5f1e-4bf5-a01c-b2dc74864b7f">
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="7db2c33e-2fd7-44aa-a2da-39ac26a7f831" value="int" />
+        <property name="7db2c33e-2fd7-44aa-a2da-39ac26a7f831" value="float" />
         <property name="9805D4BE-0962-428C-8CAF-E305A30833B4" value="" />
         <property name="AE91EFB3-56BB-451D-AA29-C20D221AB168" value="true" />
       </properties>
     </stereotype>
   </stereotypes>
-</dataType>
+</class>
