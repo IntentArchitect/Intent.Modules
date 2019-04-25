@@ -16,45 +16,43 @@
 #>
 
 namespace <#= Namespace #> {
-
     export class <#=ClassName#> {
-        
+        private readonly baseUrl: string;
+
         static $inject = ['$http', 'Config'];
         constructor(
-            public $http: ng.IHttpService,
-            public config: any) {
+            private readonly $http: ng.IHttpService,
+            config: any
+        ) {
+            this.baseUrl = config["<#= ApiBasePathConfigKey #>"];
         }
-
 <#        foreach (var o in Model.Operations)
         {
-
             if (o.ReturnType != null)
             {
 
 #>
-        public <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IHttpPromise<<#= this.ConvertType(o.ReturnType.TypeReference) #>>
+
+        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= this.ConvertType(o.ReturnType.TypeReference) #>>
         {
-            var baseUrl = this.config["<#= ApiBasePathConfigKey #>"];
-            var url = baseUrl + "/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>";
+            const url = `${this.baseUrl}/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>`;
 <#              if (GetHttpVerb(o) == HttpVerb.GET) { #>
-            return this.$http.get<<#= this.ConvertType(o.ReturnType.TypeReference) #>>(url, { params: { <#= GetMethodCallParameters(o) #> } });
+            return this.$http.get<<#= this.ConvertType(o.ReturnType.TypeReference) #>>(url, { params: { <#= GetMethodCallParametersForGet(o) #> } }).then(result => result.data);
 <#              } else {#>
-            return this.$http.post<<#= this.ConvertType(o.ReturnType.TypeReference) #>>(url, <#= GetMethodCallParameters(o) #>);
+            return this.$http.post<<#= this.ConvertType(o.ReturnType.TypeReference) #>>(url, <#= GetMethodCallParametersForPost(o) #>).then(result => result.data);
 <#              }#>
         }
-
 <#
             }
             else
             {
 #>
-        public <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IHttpPromise<void>
-        {
-            var baseUrl = this.config["<#= ApiBasePathConfigKey #>"];
-            var url = baseUrl + "/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>";
-            return this.$http.post<void>(url, <#= GetMethodCallParameters(o) #>);
-        }
 
+        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<void>
+        {
+            const url = `${this.baseUrl}/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>`;
+            return this.$http.post<void>(url, <#= GetMethodCallParametersForPost(o) #>).then(() => null);
+        }
 <#            }
         }
 #>

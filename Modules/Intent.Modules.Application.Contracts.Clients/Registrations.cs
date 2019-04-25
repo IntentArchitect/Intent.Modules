@@ -113,9 +113,27 @@ namespace Intent.Modules.Application.Contracts.Clients
         {
             if (dto.HasStereotype("Consumers"))
             {
-                return dto.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Select(x => x.Trim());
+                return dto
+                    .GetStereotypeProperty(
+                        "Consumers",
+                        "CommaSeperatedList",
+                        dto.GetStereotypeProperty(
+                            "Consumers",
+                            "CSharp",
+                            ""))
+                    .Split(',')
+                    .Select(x => x.Trim());
             }
-            return dto.GetStereotypeInFolders("Consumers").GetProperty("CommaSeperatedList", "").Split(',').Select(x => x.Trim());
+            
+            return dto
+                .GetStereotypeInFolders("Consumers")
+                .GetProperty(
+                    "CommaSeperatedList",
+                    dto
+                        .GetStereotypeInFolders("Consumers")
+                        .GetProperty("CSharp", ""))
+                .Split(',')
+                .Select(x => x.Trim());
         }
     }
 }

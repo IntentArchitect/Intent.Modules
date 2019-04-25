@@ -102,11 +102,23 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                 .Aggregate((x, y) => $"{x}, {y}");
         }
 
-        private string GetMethodCallParameters(IOperationModel operation)
+        private string GetMethodCallParametersForGet(IOperationModel operation)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {
-                return string.Empty;
+                return "{ }";
+            }
+
+            return operation.Parameters
+                .Select(x => $"{x.Name.ToCamelCase()}: {x.Name.ToCamelCase()}")
+                .Aggregate((x, y) => $"{x}, {y}");
+        }
+
+        private string GetMethodCallParametersForPost(IOperationModel operation)
+        {
+            if (operation.Parameters == null || !operation.Parameters.Any())
+            {
+                return "{ }";
             }
 
             return operation.Parameters

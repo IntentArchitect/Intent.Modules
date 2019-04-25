@@ -57,14 +57,33 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
         //}
     }
 
-    public static class DTOModelExtensions {
-        public static IEnumerable<string> GetConsumers(this DTOModel dto)
+    public static class DTOModelExtensions
+    {
+        public static IEnumerable<string> GetConsumers<T>(this T dto) where T: IHasFolder, IHasStereotypes
         {
             if (dto.HasStereotype("Consumers"))
             {
-                return dto.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Select(x => x.Trim());
+                return dto
+                    .GetStereotypeProperty(
+                        "Consumers",
+                        "CommaSeperatedList",
+                        dto.GetStereotypeProperty(
+                            "Consumers",
+                            "TypeScript",
+                            ""))
+                    .Split(',')
+                    .Select(x => x.Trim());
             }
-            return dto.GetStereotypeInFolders("Consumers").GetProperty("CommaSeperatedList", "").Split(',').Select(x => x.Trim());
+            
+            return dto
+                .GetStereotypeInFolders("Consumers")
+                .GetProperty(
+                    "CommaSeperatedList",
+                    dto
+                        .GetStereotypeInFolders("Consumers")
+                        .GetProperty("TypeScript", ""))
+                .Split(',')
+                .Select(x => x.Trim());
         }
     }
 }
