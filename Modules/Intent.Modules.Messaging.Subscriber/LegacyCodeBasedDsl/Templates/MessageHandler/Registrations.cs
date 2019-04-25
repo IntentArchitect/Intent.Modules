@@ -7,7 +7,7 @@ using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.SoftwareFactory.MetaModels.Common;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 #pragma warning disable 618 // Old code based DSL
 
 namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.MessageHandler
@@ -15,9 +15,9 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.Messa
     [Description(MessageHandlerTemplate.IDENTIFIER)]
     public class Registrations : ModelTemplateRegistrationBase<TypeModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public Registrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

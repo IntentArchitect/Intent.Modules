@@ -8,7 +8,7 @@ namespace Intent.Modules.Bower
 {
     public class Registrations : OldProjectTemplateRegistration
     {
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterTemplate(BowerConfigTemplate.Identifier, project => new BowerConfigTemplate(project));
             RegisterTemplate(BowerRCFileTemplate.Identifier, project => new BowerRCFileTemplate(project));

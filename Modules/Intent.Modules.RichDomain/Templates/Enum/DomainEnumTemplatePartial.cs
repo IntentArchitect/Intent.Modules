@@ -25,7 +25,7 @@ namespace Intent.Modules.RichDomain.Templates.Enum
             }
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,

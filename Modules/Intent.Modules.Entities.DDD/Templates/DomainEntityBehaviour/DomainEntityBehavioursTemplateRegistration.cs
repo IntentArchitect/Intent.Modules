@@ -6,16 +6,16 @@ using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 {
     [Description(DomainEntityBehavioursTemplate.Identifier)]
     public class DomainEntityBehavioursTemplateRegistration : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public DomainEntityBehavioursTemplateRegistration(IMetaDataManager metaDataManager)
+        public DomainEntityBehavioursTemplateRegistration(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -27,7 +27,7 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
             return new DomainEntityBehavioursTemplate(model, project);
         }
 
-        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
+        public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
             return _metaDataManager.GetDomainModels(application);
         }

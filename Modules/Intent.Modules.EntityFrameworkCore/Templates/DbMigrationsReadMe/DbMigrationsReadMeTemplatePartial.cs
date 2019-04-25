@@ -21,7 +21,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
         public string MigrationProject => Project.Name;
         public string ProjectWithDbContext => Project.Application.Projects.FirstOrDefault(x => x.HasStereotype("Startup"))?.Name ?? Project.Application.Projects.First().Name;
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

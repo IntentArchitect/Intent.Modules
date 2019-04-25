@@ -13,7 +13,7 @@ namespace Intent.Modules.Typescript.Config.Templates.TypescriptConfig
         {
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,

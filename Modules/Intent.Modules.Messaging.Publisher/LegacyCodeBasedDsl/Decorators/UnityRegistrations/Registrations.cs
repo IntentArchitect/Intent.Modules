@@ -12,9 +12,9 @@ namespace Intent.Modules.Messaging.Publisher.LegacyCodeBasedDsl.Decorators.Unity
     [Description(UnityRegistrationsDecorator.IDENTIFIER)]
     public class Registrations : DecoratorRegistration<IUnityRegistrationsDecorator>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public Registrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

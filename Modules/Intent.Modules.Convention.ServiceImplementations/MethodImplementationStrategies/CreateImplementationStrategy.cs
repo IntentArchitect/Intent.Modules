@@ -11,7 +11,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
 {
     public class CreateImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        public bool Match(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
         {
             if (operationModel.Parameters.Count() != 1)
             {
@@ -35,7 +35,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        public string GetImplementation(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
         {
             return $@"var new{domainModel.Name} = new {domainModel.Name}
                 {{
@@ -45,7 +45,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                 {domainModel.Name.ToPrivateMember()}Repository.Add(new{domainModel.Name});";
         }
 
-        private string EmitPropertyAssignments(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationParameterModel operationParameterModel)
+        private string EmitPropertyAssignments(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationParameterModel operationParameterModel)
         {
             var sb = new StringBuilder();
             var dto = metaDataManager.GetDTOModels(application).First(p => p.Id == operationParameterModel.TypeReference.Id);

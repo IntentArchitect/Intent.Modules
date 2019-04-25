@@ -29,9 +29,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.7.1\lib\net452\Intent.MetaModel.dll</HintPath>
-    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.7.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>

@@ -15,7 +15,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.HttpInterceptor
         {
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

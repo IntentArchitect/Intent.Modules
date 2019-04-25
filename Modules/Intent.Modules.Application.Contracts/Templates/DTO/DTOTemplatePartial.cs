@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.MetaModel.Common;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Templates
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {

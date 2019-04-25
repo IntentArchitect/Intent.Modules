@@ -1,8 +1,8 @@
 ﻿using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.Templates;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,9 +14,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
     [Description(ServiceImplementationTemplate.Identifier)]
     public class ServiceImplementationTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public ServiceImplementationTemplateRegistrations(IMetaDataManager metaDataManager)
+        public ServiceImplementationTemplateRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

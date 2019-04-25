@@ -6,16 +6,16 @@ using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {
     [Description(WebApiControllerTemplate.Identifier)]
     public class WebApiControllerTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public WebApiControllerTemplateRegistrations(IMetaDataManager metaDataManager)
+        public WebApiControllerTemplateRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

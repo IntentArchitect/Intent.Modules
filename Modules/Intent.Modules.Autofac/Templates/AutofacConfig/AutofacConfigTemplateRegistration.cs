@@ -2,7 +2,7 @@
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory.Engine;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 
 namespace Intent.Modules.Autofac.Templates.AutofacConfig
 {

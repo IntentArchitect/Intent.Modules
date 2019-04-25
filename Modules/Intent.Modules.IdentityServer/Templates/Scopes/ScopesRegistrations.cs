@@ -1,6 +1,6 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.Templates.Registrations;
+
 using System;
 
 namespace Intent.Modules.IdentityServer.Templates.Scopes

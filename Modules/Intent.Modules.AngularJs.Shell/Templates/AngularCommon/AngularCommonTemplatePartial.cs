@@ -14,7 +14,7 @@ namespace Intent.Modules.AngularJs.Shell.Templates.AngularCommon
         }
 
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,

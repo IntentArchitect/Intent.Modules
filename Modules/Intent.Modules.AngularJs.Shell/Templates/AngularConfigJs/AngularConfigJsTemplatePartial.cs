@@ -57,7 +57,7 @@ namespace Intent.Modules.AngularJs.Shell.Templates.AngularConfigJs
 
         public IDictionary<string, string> ConfigItems { get; private set; } = new Dictionary<string, string>();
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

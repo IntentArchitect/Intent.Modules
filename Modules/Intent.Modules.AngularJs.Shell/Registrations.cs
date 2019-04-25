@@ -18,7 +18,7 @@ namespace Intent.Modules.AngularJs.Shell
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterTemplate(AngularAppTemplate.Identifier, project => new AngularAppTemplate(project, application.EventDispatcher));
             RegisterTemplate(AngularCommonTemplate.Identifier, project => new AngularCommonTemplate(project));

@@ -11,9 +11,9 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
     [Description(ServiceImplementationTemplate.Identifier)]
     public class ServiceImplementationTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public ServiceImplementationTemplateRegistrations(IMetaDataManager metaDataManager)
+        public ServiceImplementationTemplateRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

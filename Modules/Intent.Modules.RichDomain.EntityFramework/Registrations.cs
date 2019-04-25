@@ -20,7 +20,7 @@ namespace Intent.Modules.EntityFramework
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             var models = metaDataManager.GetMetaData<Class>(new MetaDataIdentifier("Entity")).Where(x => x.BoundedContext() == application.ApplicationName).ToList();
 

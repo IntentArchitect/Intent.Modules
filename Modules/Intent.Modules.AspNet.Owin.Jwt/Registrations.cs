@@ -9,7 +9,7 @@ namespace Intent.Modules.AspNet.Owin.Jwt
 {
     public class Registrations : OldProjectTemplateRegistration
     {
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterDecorator<IOwinStartupDecorator>(JwtAuthOwinStartupDecorator.Identifier, new JwtAuthOwinStartupDecorator(application.SolutionEventDispatcher));
 

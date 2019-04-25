@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts.Templates.DTO;
-using Intent.Templates
-using Intent.MetaModel.Common;
+using Intent.Templates;
 using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;

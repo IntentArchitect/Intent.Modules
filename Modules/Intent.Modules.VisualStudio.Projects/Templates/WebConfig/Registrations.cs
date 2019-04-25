@@ -1,6 +1,6 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.Templates.Registrations;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +14,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
     [Description("Web Config - VS Projects")]
     public class Registrations : IProjectTemplateRegistration
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public Registrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

@@ -2,7 +2,7 @@
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,9 +14,9 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
     [Description(DomainEntityInterfaceTemplate.Identifier)]
     public class DomainEntityInterfaceTemplateRegistrations : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public DomainEntityInterfaceTemplateRegistrations(IMetaDataManager metaDataManager)
+        public DomainEntityInterfaceTemplateRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -28,7 +28,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return new DomainEntityInterfaceTemplate(model, project);
         }
 
-        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
+        public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
             return _metaDataManager.GetDomainModels(application);
         }

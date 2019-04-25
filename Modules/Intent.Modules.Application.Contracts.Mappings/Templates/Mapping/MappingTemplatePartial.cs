@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel.Domain;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Engine;
+using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {

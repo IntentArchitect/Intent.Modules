@@ -35,8 +35,8 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Engine;
+using Intent.Templates;
 ");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
@@ -66,7 +66,7 @@ using Intent.Templates
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n        private readonly IMetaDataManager _metaDataManager;\r\n\r\n        " +
+            this.Write(">\r\n    {\r\n        private readonly IMetadataManager _metaDataManager;\r\n\r\n        " +
                     "public ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
@@ -74,7 +74,7 @@ using Intent.Templates
             
             #line default
             #line hidden
-            this.Write("(IMetaDataManager metaDataManager)\r\n        {\r\n            _metaDataManager = met" +
+            this.Write("(IMetadataManager metaDataManager)\r\n        {\r\n            _metaDataManager = met" +
                     "aDataManager;\r\n        }\r\n\r\n        public override string TemplateId =>  ");
             
             #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
@@ -105,7 +105,7 @@ using Intent.Templates
             
             #line default
             #line hidden
-            this.Write(@"> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
+            this.Write(@"> GetModels(Engine.IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == ""Service"") for services only)
             return _metaDataManager.GetClassModels(application, """);

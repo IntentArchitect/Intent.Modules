@@ -13,7 +13,7 @@ namespace Intent.Modules.AspNet.Identity.Migrations
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterTemplate(IdentityDbMigrationsConfigurationTemplate.Identifier, project => new IdentityDbMigrationsConfigurationTemplate(project));
             RegisterTemplate(MigrationReadMeTemplate.Identifier, project => new MigrationReadMeTemplate(project));

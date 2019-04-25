@@ -3,17 +3,17 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.Engine;
+using Intent.Templates;
+
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 {
     public class RoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public RoslynProjectItemTemplateRegistrations(IMetaDataManager metaDataManager)
+        public RoslynProjectItemTemplateRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
             return new RoslynProjectItemTemplateTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IClass> GetModels(SoftwareFactory.Engine.IApplication applicationManager)
+        public override IEnumerable<IClass> GetModels(Engine.IApplication applicationManager)
         {
             return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => x.IsCSharpTemplate())

@@ -8,7 +8,7 @@ namespace Intent.Modules.Logging.NLog.Interop.WebApi
 {
     public class Registrations : OldProjectTemplateRegistration
     {
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterDecorator<WebApiControllerDecoratorBase>(NLogWebApiControllerDecorator.IDENTIFIER, new NLogWebApiControllerDecorator());
         }

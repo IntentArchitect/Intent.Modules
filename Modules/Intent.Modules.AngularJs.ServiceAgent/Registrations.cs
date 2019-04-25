@@ -17,7 +17,7 @@ namespace Intent.Modules.AngularJs.ServiceAgent
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             var clientServiceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataIdentifier("Service-Legacy")).Where(x => x.Clients.Contains(application.ApplicationName)).ToList();
             var clientDtoModels = metaDataManager.GetMetaData<DtoModel>(new MetaDataIdentifier("DtoProjection")).Where(x => x.Clients.Contains(application.ApplicationName)).ToList();

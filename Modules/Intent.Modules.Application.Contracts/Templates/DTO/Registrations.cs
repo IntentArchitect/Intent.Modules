@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.Engine;
+using Intent.Templates;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,7 +10,6 @@ using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
@@ -32,7 +31,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             return new DTOTemplate(project, model);
         }
 
-        public override IEnumerable<IDTOModel> GetModels(IApplication application)
+        public override IEnumerable<IDTOModel> GetModels(Engine.IApplication application)
         {
             return _metaDataManager.GetDTOs(application);
         }

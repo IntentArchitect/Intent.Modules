@@ -3,17 +3,16 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.Engine;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
     public class SingleFileNoModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public SingleFileNoModelTemplateRegistrationRegistrations(IMetaDataManager metaDataManager)
+        public SingleFileNoModelTemplateRegistrationRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -25,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
             return new SingleFileNoModelTemplateRegistrationTemplate(project, model);
         }
 
-        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
+        public override IEnumerable<IClass> GetModels(Engine.IApplication applicationManager)
         {
             return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => (x.IsCSharpTemplate() || x.IsFileTemplate()) && x.GetRegistrationType() == RegistrationType.SingleFileNoModel)

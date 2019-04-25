@@ -1,4 +1,4 @@
-﻿using Intent.SoftwareFactory.Templates.Registrations;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +15,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
     [Description("Assembly Info Template - VS Projects")]
     public class Registrations : IProjectTemplateRegistration
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public Registrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

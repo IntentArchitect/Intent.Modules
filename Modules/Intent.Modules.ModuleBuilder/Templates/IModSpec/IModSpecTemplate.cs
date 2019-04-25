@@ -3,13 +3,12 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
@@ -23,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 OverwriteBehaviour.Always,

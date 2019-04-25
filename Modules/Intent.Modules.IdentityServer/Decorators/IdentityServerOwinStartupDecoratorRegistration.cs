@@ -12,9 +12,9 @@ namespace Intent.Modules.IdentityServer.Decorators
     {
         public override string DecoratorId => IdentityServerOwinStartupDecorator.Identifier;
 
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public IdentityServerOwinStartupDecoratorRegistration(IMetaDataManager metaDataManager)
+        public IdentityServerOwinStartupDecoratorRegistration(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

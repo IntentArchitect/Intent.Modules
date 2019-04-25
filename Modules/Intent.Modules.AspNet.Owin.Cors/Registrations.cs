@@ -8,7 +8,7 @@ namespace Intent.Modules.AspNet.Owin.Cors
 {
     public class Registrations : OldProjectTemplateRegistration
     {
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterDecorator<IOwinStartupDecorator>(CorsOwinStartupDecorator.Identifier, new CorsOwinStartupDecorator());
         }

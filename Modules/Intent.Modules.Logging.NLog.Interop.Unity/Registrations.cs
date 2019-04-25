@@ -8,7 +8,7 @@ namespace Intent.Modules.Logging.NLog.Interop.Unity
 {
     public class Registrations : OldProjectTemplateRegistration
     {
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterDecorator<IUnityRegistrationsDecorator>(NLogUnityDecorator.Identifier, new NLogUnityDecorator(application));
         }

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
 {
@@ -16,7 +16,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
         {
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

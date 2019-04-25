@@ -23,7 +23,7 @@ namespace Intent.Modules.AspNet.Identity.Migrations.Templates.ReadMe
         public string ProjectWithDbContext => Project.Application.Projects.FirstOrDefault(x => x.HasStereotype("Startup"))?.Name ?? Project.Application.Projects.First().Name;
         public string DbContextConfigurationName => Project.FindTemplateInstance(IdentityDbMigrationsConfigurationTemplate.Identifier).GetMetaData().FileName;
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

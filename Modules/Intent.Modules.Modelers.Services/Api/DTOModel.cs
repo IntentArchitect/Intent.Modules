@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Intent.Metadata.Models;
-using Intent.MetaModel.Common;
 
 namespace Intent.Modelers.Services.Api
 {

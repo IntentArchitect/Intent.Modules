@@ -59,7 +59,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
                 : XDocument.Parse(TransformText(), LoadOptions.PreserveWhitespace);
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

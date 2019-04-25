@@ -35,8 +35,8 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Engine;
+using Intent.Templates;
 ");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"

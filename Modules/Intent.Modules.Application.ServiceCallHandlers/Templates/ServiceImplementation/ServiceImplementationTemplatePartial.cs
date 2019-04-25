@@ -5,7 +5,7 @@ using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler;
 using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common;

@@ -3,22 +3,22 @@ using Intent.MetaModel.DTO;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using IApplication = Intent.SoftwareFactory.Engine.IApplication;
+using IApplication = Engine.IApplication;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {
     [Description("Intent Typescript ServiceAgent DTO - Local")]
     public class LocalRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public LocalRegistrations(IMetaDataManager metaDataManager)
+        public LocalRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
 

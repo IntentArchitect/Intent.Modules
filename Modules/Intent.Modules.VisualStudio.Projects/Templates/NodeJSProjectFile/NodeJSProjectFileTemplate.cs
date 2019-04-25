@@ -19,7 +19,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.NodeJSProjectFile
         {
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,

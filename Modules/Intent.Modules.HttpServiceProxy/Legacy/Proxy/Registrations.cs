@@ -9,7 +9,7 @@ namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
 {
     public class Registrations : OldProjectTemplateRegistration
     {
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             var clientServiceModels = metaDataManager.GetMetaData<ServiceModel>(new MetaDataIdentifier("Service-Legacy")).Where(x => x.Clients.Contains(application.ApplicationName)).ToList();
 

@@ -13,7 +13,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
         {
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,

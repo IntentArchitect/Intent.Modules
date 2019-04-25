@@ -22,7 +22,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             };
         }
 
-        public static string ImplementOnMatch(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        public static string ImplementOnMatch(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
         {
             foreach (var strategy in _strategies)
             {

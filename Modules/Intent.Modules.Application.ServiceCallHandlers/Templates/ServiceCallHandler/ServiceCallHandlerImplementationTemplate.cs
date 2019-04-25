@@ -11,7 +11,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
 {
     using Intent.Modules.Common.Templates;
     using Intent.Modules.Application.Contracts;
-    using Intent.MetaModel.Service;
+    using Intent.Metadata.Models;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ServiceCallHandlerImplementationTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IOperationModel>
+    public partial class ServiceCallHandlerImplementationTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IOperation>
     {
 #line hidden
         /// <summary>
@@ -36,7 +36,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             this.Write(" \r\n");
             this.Write(" \r\n");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
 
 
             
@@ -45,28 +45,28 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             this.Write("using System;\r\nusing System.Linq;\r\nusing System.Collections.Generic;\r\nusing Syste" +
                     "m.Threading.Tasks;\r\nusing Intent.RoslynWeaver.Attributes;\r\n");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" \r\n    {\r\n\t\t[IntentInitialGen]\r\n        public ");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -74,14 +74,14 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             this.Write("()\r\n        {\r\n        }\r\n\r\n        [IntentManaged(Mode.Merge, Body = Mode.Ignore" +
                     ", Signature = Mode.Fully)]\r\n        public ");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationReturnType(Model)));
             
             #line default
             #line hidden
             this.Write(" Handle(");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationDefinitionParameters(Model)));
             
             #line default
@@ -89,7 +89,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             this.Write(")\r\n        {\r\n            throw new NotImplementedException(\"Implement your busin" +
                     "ess logic for this service call in the ");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

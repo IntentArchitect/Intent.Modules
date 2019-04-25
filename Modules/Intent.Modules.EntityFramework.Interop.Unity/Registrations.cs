@@ -12,7 +12,7 @@ namespace Intent.Modules.EntityFramework.Interop.Unity
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterDecorator<IUnityRegistrationsDecorator>(EntityFrameworkUnityRegistrationsDecorator.Identifier, new EntityFrameworkUnityRegistrationsDecorator(application));
         }

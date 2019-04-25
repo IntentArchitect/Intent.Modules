@@ -13,12 +13,12 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
     [Description("Intent Typescript ServiceAgent Proxy - Other Servers")]
     public class RemoteRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
         private string _stereotypeName = "Consumers";
         private string _stereotypePropertyName = "CommaSeperatedList";
 
-        public RemoteRegistrations(IMetaDataManager metaDataManager)
+        public RemoteRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

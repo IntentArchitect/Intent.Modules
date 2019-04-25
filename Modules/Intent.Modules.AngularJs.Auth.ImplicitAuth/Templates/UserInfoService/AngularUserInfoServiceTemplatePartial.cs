@@ -15,7 +15,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.UserInfoService
         {
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

@@ -66,7 +66,7 @@ namespace Intent.Modules.Npm.Config.Templates.PackageJsonConfig
             });
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

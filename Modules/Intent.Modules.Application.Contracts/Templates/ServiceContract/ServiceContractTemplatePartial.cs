@@ -1,15 +1,16 @@
-﻿using Intent.MetaModel.Common;
-using Intent.MetaModel.Service;
-using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+﻿using Intent.Modules.Constants;
+using Intent.Engine;
+using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
@@ -71,7 +72,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             return _decoratorDispatcher.Dispatch(x => x.ContractAttributes(Model));
         }
 
-        public string OperationAttributes(IOperationModel operation)
+        public string OperationAttributes(IOperation operation)
         {
             return _decoratorDispatcher.Dispatch(x => x.OperationAttributes(Model, operation));
         }
@@ -85,22 +86,22 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         }
 
 
-        private string GetOperationDefinitionParameters(IOperationModel o)
+        private string GetOperationDefinitionParameters(IOperation o)
         {
             if (!o.Parameters.Any())
             {
                 return "";
             }
-            return o.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+            return o.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationReturnType(IOperationModel o)
+        private string GetOperationReturnType(IOperation o)
         {
             if (o.ReturnType == null)
             {
                 return o.IsAsync() ? "Task" : "void";
             }
-            return o.IsAsync() ? $"Task<{GetTypeName(o.ReturnType.TypeReference)}>" : GetTypeName(o.ReturnType.TypeReference);
+            return o.IsAsync() ? $"Task<{GetTypeName(o.ReturnType.Type)}>" : GetTypeName(o.ReturnType.Type);
         }
 
         private string GetTypeName(ITypeReference typeInfo)

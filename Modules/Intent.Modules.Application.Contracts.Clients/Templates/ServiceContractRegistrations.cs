@@ -12,12 +12,12 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
     [Description("Intent Applications Service Contracts (Clients)")]
     public class ServiceContractRegistrations : ModelTemplateRegistrationBase<MetaModel.Service.IServiceModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
         private string _stereotypeName = "Consumers";
         private string _stereotypePropertyName = "CSharp";
 
-        public ServiceContractRegistrations(IMetaDataManager metaDataManager)
+        public ServiceContractRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

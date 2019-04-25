@@ -11,7 +11,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
 {
     public class GetImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        public bool Match(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
         {
             if (operationModel.Parameters.Any())
             {
@@ -40,7 +40,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetaDataManager metaDataManager, SoftwareFactory.Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        public string GetImplementation(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
         {
             return $@"var elements ={ (operationModel.IsAsync() ? "await" : "") } {domainModel.Name.ToPrivateMember()}Repository.FindAll{ (operationModel.IsAsync() ? "Async" : "") }();
             return elements.MapTo{domainModel.Name.ToPascalCase()}DTOs();";

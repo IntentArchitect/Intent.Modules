@@ -8,17 +8,17 @@ using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 {
     [Description(RepositoryTemplate.Identifier)]
     public class RepositoryTemplateRegistration : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
         private IEnumerable<string> _stereotypeNames;
 
-        public RepositoryTemplateRegistration(IMetaDataManager metaDataManager)
+        public RepositoryTemplateRegistration(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -38,7 +38,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             return new RepositoryTemplate(model, project);
         }
 
-        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
+        public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
             var allModels = _metaDataManager.GetDomainModels(application);
             var filteredModels = allModels.Where(p => _stereotypeNames.Any(q => p.HasStereotype(q)));

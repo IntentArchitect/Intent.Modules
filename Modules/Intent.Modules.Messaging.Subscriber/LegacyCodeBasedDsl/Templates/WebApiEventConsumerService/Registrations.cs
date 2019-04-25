@@ -6,16 +6,16 @@ using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 
 namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebApiEventConsumerService
 {
     [Description(WebApiEventConsumerServiceTemplate.IDENTIFIER)]
     public class Registrations : ModelTemplateRegistrationBase<SubscribingModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public Registrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

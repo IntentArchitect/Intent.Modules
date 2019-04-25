@@ -1,19 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 {
     public class ProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public ProjectItemTemplateRegistrations(IMetaDataManager metaDataManager)
+        public ProjectItemTemplateRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -25,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
             return new ProjectItemTemplateTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IClass> GetModels(SoftwareFactory.Engine.IApplication applicationManager)
+        public override IEnumerable<IClass> GetModels(Engine.IApplication applicationManager)
         {
             return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => x.IsFileTemplate())

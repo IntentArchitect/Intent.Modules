@@ -9,7 +9,7 @@ using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
 {
@@ -17,9 +17,9 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
     [Description(EntityCompositionVisitorTemplate.Identifier)]
     public class EntityCompositionVisitorTemplateRegistration : ListModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public EntityCompositionVisitorTemplateRegistration(IMetaDataManager metaDataManager)
+        public EntityCompositionVisitorTemplateRegistration(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -31,7 +31,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             return new EntityCompositionVisitorTemplate(models, project);
         }
 
-        public override IList<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
+        public override IList<IClass> GetModels(Engine.IApplication application)
         {
             return _metaDataManager.GetDomainModels(application).ToList();
         }

@@ -14,9 +14,9 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
     [Description(DbContextTemplate.Identifier)]
     public class DbContextTemplateRegistration : ListModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public DbContextTemplateRegistration(IMetaDataManager metaDataManager)
+        public DbContextTemplateRegistration(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -28,7 +28,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             return new DbContextTemplate(models, project, project.Application.EventDispatcher);
         }
 
-        public override IList<IClass> GetModels(SoftwareFactory.Engine.IApplication application)
+        public override IList<IClass> GetModels(Engine.IApplication application)
         {
             return _metaDataManager.GetDomainModels(application).ToList();
         }

@@ -59,7 +59,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
             _connectionStrings.Add(@event.GetValue("Name"), new ConnectionStringElement(name: @event.GetValue("Name"), connectionString: @event.GetValue("ConnectionString"), providerName: @event.GetValue("ProviderName")));
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

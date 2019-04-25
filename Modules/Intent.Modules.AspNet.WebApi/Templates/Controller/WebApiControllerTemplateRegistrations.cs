@@ -2,7 +2,7 @@
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,9 +14,9 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
     [Description(WebApiControllerTemplate.Identifier)]
     public class WebApiControllerTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public WebApiControllerTemplateRegistrations(IMetaDataManager metaDataManager)
+        public WebApiControllerTemplateRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

@@ -13,7 +13,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.SilentRenewCallba
         {
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,

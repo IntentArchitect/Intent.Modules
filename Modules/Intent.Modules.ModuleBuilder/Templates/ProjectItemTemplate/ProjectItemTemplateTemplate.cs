@@ -1,12 +1,11 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.MetaModel.DTO;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 {
@@ -20,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         public string FolderPath => string.Join("\\", new [] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,

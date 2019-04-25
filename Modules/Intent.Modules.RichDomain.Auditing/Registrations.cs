@@ -17,7 +17,7 @@ namespace Intent.Modules.RichDomain.Auditing
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterDecorator<IDomainBehaviourDecorator>(UserContextDomainBehaviourDecorator.Identifier, new UserContextDomainBehaviourDecorator());
             RegisterDecorator<IDomainEntityBehaviourBaseDecorator>(UserContextDomainEntityBehaviourBaseDecorator.Identifier, new UserContextDomainEntityBehaviourBaseDecorator());

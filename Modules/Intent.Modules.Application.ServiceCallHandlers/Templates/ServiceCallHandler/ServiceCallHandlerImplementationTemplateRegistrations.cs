@@ -1,8 +1,8 @@
 ﻿using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
-using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.Templates;
+
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -14,9 +14,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
     [Description(ServiceCallHandlerImplementationTemplate.Identifier)]
     public class ServiceCallHandlerImplementationTemplateRegistrations : IProjectTemplateRegistration
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public ServiceCallHandlerImplementationTemplateRegistrations(IMetaDataManager metaDataManager)
+        public ServiceCallHandlerImplementationTemplateRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

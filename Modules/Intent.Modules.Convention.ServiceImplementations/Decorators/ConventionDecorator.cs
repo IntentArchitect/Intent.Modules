@@ -18,11 +18,11 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
     {
         public const string Identifier = "Intent.Conventions.ServiceImplementations.Decorator";
 
-        private readonly IMetaDataManager _metaDataManager;
-        private readonly Intent.SoftwareFactory.Engine.IApplication _application;
+        private readonly IMetadataManager _metaDataManager;
+        private readonly Engine.IApplication _application;
         private string _repositoryInterfaceTemplateId;
 
-        public ConventionDecorator(IMetaDataManager metaDataManager, Intent.SoftwareFactory.Engine.IApplication application)
+        public ConventionDecorator(IMetadataManager metaDataManager, Engine.IApplication application)
         {
             _metaDataManager = metaDataManager;
             _application = application;

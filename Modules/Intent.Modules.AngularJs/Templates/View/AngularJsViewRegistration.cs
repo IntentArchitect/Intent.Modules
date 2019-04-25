@@ -6,16 +6,16 @@ using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 
 namespace Intent.Modules.AngularJs.Templates.View
 {
     [Description("Intent - AngularJs View Registration")]
     public class AngularJsViewRegistration : ModelTemplateRegistrationBase<ViewStateModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public AngularJsViewRegistration(IMetaDataManager metaDataManager)
+        public AngularJsViewRegistration(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

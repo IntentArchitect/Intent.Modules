@@ -17,4 +17,9 @@ namespace Intent.Modules.Common
         //    return metaDataManager.GetMetaData<IEnumModel>(metadataIdentifier).Where(x => x.Application.Name == application.ApplicationName).ToList();
         //}
     }
+
+    public class CodeGenType
+    {
+        public const string Basic = "Basci";
+    }
 }

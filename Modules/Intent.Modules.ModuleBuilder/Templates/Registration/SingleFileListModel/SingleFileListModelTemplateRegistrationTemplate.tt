@@ -10,8 +10,8 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Engine;
+using Intent.Templates;
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -20,9 +20,9 @@ namespace <#= Namespace #>
 	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class <#= ClassName #> : ListModelTemplateRegistrationBase<<#= Model.GetTargetModel() #>>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public <#= ClassName #>(IMetaDataManager metaDataManager)
+        public <#= ClassName #>(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -35,7 +35,7 @@ namespace <#= Namespace #>
         }
 
 	    [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IList<<#= Model.GetTargetModel() #>> GetModels(Intent.SoftwareFactory.Engine.IApplication application)
+        public override IList<<#= Model.GetTargetModel() #>> GetModels(Engine.IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == "Service") for services only)
             return _metaDataManager.GetClassModels(application, "<#= Model.GetModelerName() #>")

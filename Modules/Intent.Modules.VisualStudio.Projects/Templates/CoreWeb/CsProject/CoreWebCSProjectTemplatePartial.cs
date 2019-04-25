@@ -37,7 +37,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
                 : XDocument.Parse(TransformText(), LoadOptions.PreserveWhitespace);
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

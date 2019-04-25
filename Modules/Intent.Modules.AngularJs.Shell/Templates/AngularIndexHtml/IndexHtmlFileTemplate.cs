@@ -86,7 +86,7 @@ namespace Intent.Modules.AngularJs.Shell.Templates.AngularIndexHtml
             return doc.DocumentNode.InnerHtml;
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

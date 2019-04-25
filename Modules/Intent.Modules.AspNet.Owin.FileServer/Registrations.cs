@@ -13,7 +13,7 @@ namespace Intent.Modules.AspNet.Owin.FileServer
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterDecorator<IOwinStartupDecorator>(RootLocationOwinStartupDecorator.Identifier, new RootLocationOwinStartupDecorator());
             RegisterDecorator<IWebConfigDecorator>(RootLocationWebConfigDecorator.Identifier, new RootLocationWebConfigDecorator());

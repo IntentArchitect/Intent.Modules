@@ -16,7 +16,7 @@ namespace Intent.Modules.Logging.NLog
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterDecorator<IWebConfigDecorator>(NLogWebConfigDecorator.Identifier, new NLogWebConfigDecorator());
 

@@ -1,12 +1,10 @@
-﻿using Intent.MetaModel.Common;
-using Intent.MetaModel.Service;
-using Intent.Modules.Application.Contracts;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+﻿using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.MetaModel.DTO;
+using Intent.Modelers.Services.Api;
+using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common;
@@ -15,28 +13,28 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.Common.VisualStudio;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
-    partial class ServiceCallHandlerImplementationTemplate : IntentRoslynProjectItemTemplateBase<IOperationModel>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook
+    partial class ServiceCallHandlerImplementationTemplate : IntentRoslynProjectItemTemplateBase<IOperation>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.Application.ServiceCallHandlers.Handler";
 
-        public ServiceCallHandlerImplementationTemplate(IProject project, IServiceModel serviceModel, IOperationModel model)
+        public ServiceCallHandlerImplementationTemplate(IProject project, IServiceModel service, IOperation model)
             : base(Identifier, project, model)
         {
-            ServiceModel = serviceModel;
-            Context.AddFakeProperty("Service", ServiceModel);
+            Service = service;
         }
 
-        public IServiceModel ServiceModel { get; set; }
+        public IServiceModel Service { get; set; }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            var typeReferences = Model.Parameters.Select(x => x.TypeReference).ToList();
+            var typeReferences = Model.Parameters.Select(x => x.Type).ToList();
             if (Model.ReturnType != null)
             {
-                typeReferences.Add(Model.ReturnType.TypeReference);
+                typeReferences.Add(Model.ReturnType.Type);
             }
 
             return typeReferences.Select(x => TemplateDependancy.OnModel<IMetaModel>(DTOTemplate.IDENTIFIER, m => m.Id == x.Id)).ToArray();
@@ -69,38 +67,38 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}SCH",
                 fileExtension: "cs",
-                defaultLocationInProject: $"ServiceCallHandlers\\{ServiceModel.Name}",
+                defaultLocationInProject: $"ServiceCallHandlers\\{Service.Name}",
                 className: "${Model.Name}SCH",
                 @namespace: "${Project.ProjectName}.ServiceCallHandlers.${Service.Name}"
                 );
         }
 
-        private string GetOperationDefinitionParameters(IOperationModel o)
+        private string GetOperationDefinitionParameters(IOperation o)
         {
             if (!o.Parameters.Any())
             {
                 return "";
             }
-            return o.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+            return o.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationReturnType(IOperationModel o)
+        private string GetOperationReturnType(IOperation o)
         {
             if (o.ReturnType == null)
             {
                 return o.IsAsync() ? "async Task" : "void";
             }
-            return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType.TypeReference)}>" : GetTypeName(o.ReturnType.TypeReference);
+            return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType.Type)}>" : GetTypeName(o.ReturnType.Type);
         }
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
-            if (typeInfo.IsCollection)
-            {
-                result = "List<" + result + ">";
-            }
-            return result;
+            //var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
+            //if (typeInfo.IsCollection)
+            //{
+            //    result = "List<" + result + ">";
+            //}
+            return NormalizeNamespace(Types.Get(typeInfo, "List"));
         }
 
         public void BeforeTemplateExecution()

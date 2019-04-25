@@ -2,7 +2,7 @@ using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,9 +14,9 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
     [Description("Intent Typescript ServiceAgent Proxy - Local Server")]
     public class LocalRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public LocalRegistrations(IMetaDataManager metaDataManager)
+        public LocalRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

@@ -12,7 +12,7 @@ namespace Intent.Modules.Mapping.EntityToDto.Owin
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetaDataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
         {
             RegisterDecorator<IOwinStartupDecorator>(AutomapperOwinStartupDecorator.IDENTIFIER, new AutomapperOwinStartupDecorator());
         }

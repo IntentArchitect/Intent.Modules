@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Api\DTOModel.cs" />
     <Compile Include="Api\IDTOModel.cs" />
+    <Compile Include="Api\IServiceModel.cs" />
+    <Compile Include="Api\ServiceModel.cs" />
     <Compile Include="ServicesMetadataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

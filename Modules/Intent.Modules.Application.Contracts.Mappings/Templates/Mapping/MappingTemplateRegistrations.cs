@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.Engine;
+using Intent.Templates;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

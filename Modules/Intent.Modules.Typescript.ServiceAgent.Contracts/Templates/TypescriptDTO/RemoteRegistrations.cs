@@ -13,12 +13,12 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
     [Description("Intent Typescript ServiceAgent DTO - Remote")]
     public class RemoteRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
         private string _stereotypeName = "Consumers";
         private string _stereotypePropertyName = "CommaSeperatedList";
 
-        public RemoteRegistrations(IMetaDataManager metaDataManager)
+        public RemoteRegistrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
 

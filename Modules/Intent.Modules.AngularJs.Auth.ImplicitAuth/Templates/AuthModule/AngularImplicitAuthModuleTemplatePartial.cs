@@ -35,7 +35,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
 
         public string ApplicationName => Project.ApplicationName();
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,

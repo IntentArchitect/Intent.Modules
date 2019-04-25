@@ -1,4 +1,4 @@
-﻿using Intent.Templates
+﻿using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {

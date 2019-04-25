@@ -1,6 +1,6 @@
 ﻿using Intent.SoftwareFactory.Engine;
 using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+
 using System.ComponentModel;
 using System.Linq;
 using Intent.MetaModel.Hosting;
@@ -12,9 +12,9 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
     [Description(AngularEdgeServiceProviderTemplate.Identifier)]
     public class Registrations : NoModelTemplateRegistrationBase
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public Registrations(IMetaDataManager metaDataManager)
+        public Registrations(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }

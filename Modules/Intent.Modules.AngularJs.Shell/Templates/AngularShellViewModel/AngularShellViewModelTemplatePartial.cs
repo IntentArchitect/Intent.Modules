@@ -12,7 +12,7 @@ namespace Intent.Modules.AngularJs.Shell.Templates.AngularShellViewModel
         {
         }
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,

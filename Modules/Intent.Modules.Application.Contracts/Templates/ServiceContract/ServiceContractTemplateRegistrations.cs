@@ -1,11 +1,11 @@
-﻿using Intent.MetaModel.Service;
-using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
-using Intent.SoftwareFactory.Templates.Registrations;
+﻿using Intent.Engine;
+using Intent.Templates;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 
@@ -14,9 +14,9 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
     [Description(ServiceContractTemplate.IDENTIFIER)]
     public class ServiceContractTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly ServicesMetadataProvider _metaDataManager;
 
-        public ServiceContractTemplateRegistrations(IMetaDataManager metaDataManager)
+        public ServiceContractTemplateRegistrations(ServicesMetadataProvider metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -28,9 +28,9 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             return new ServiceContractTemplate(project, model);
         }
 
-        public override IEnumerable<IServiceModel> GetModels(IApplication application)
+        public override IEnumerable<IServiceModel> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetServiceModels(application);
+            return _metaDataManager.GetServices(application);
         }
     }
 }

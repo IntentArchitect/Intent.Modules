@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
-using Intent.SoftwareFactory.Engine;
 
 namespace Intent.Modelers.Services
 {
     public class ServicesMetadataProvider
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metaDataManager;
 
-        public ServicesMetadataProvider(IMetaDataManager metaDataManager)
+        public ServicesMetadataProvider(IMetadataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -21,9 +21,16 @@ namespace Intent.Modelers.Services
             return classes.Select(x => new DTOModel(x)).ToList();
         }
 
-        public IEnumerable<IDTOModel> GetDTOs(SoftwareFactory.Engine.IApplication application)
+        public IEnumerable<IDTOModel> GetDTOs(Engine.IApplication application)
         {
             return GetAllDTOs().Where(x => x.Application.Name == application.ApplicationName);
+        }
+
+        public IEnumerable<IServiceModel> GetServices(Engine.IApplication application)
+        {
+            var classes = _metaDataManager.GetMetaData<IClass>("Services").Where(x => x.Application.Name == application.ApplicationName
+                && x.SpecializationType == "DTO").ToList();
+            return classes.Select(x => new ServiceModel(x)).ToList();
         }
     }
 }
