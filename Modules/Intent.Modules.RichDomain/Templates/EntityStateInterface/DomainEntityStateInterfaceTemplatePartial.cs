@@ -42,7 +42,7 @@ namespace Intent.Modules.RichDomain.Templates.EntityStateInterface
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name}Interfaces",
                 fileExtension: "cs",
-                defaultLocationInProject: "Generated\\StateInterfaces",
+                defaultLocationInProject: "Generated/StateInterfaces",
                 className: "I${Model.Name}",
                 @namespace: "${Project.ProjectName}"
             );
