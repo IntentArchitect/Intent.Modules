@@ -20,7 +20,7 @@ namespace Intent.Modules.AngularJs.Templates.View
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}View",
                 fileExtension: "html",
-                defaultLocationInProject: $@"wwwroot\App\States\{Model.Name}"
+                defaultLocationInProject: $"wwwroot/App/States/{Model.Name}"
                 );
         }
     }

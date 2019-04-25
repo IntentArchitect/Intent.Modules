@@ -21,7 +21,7 @@ namespace Intent.Modules.AngularJs.Shell.Templates.AngularCommon
                 codeGenType: CodeGenType.Basic,
                 fileName: "Common",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App\Common"
+                defaultLocationInProject: "wwwroot/App/Common"
                 );
         }
     }

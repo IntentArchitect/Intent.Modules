@@ -20,7 +20,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginCallbackStat
                 codeGenType: CodeGenType.Basic,
                 fileName: "LoginCallbackState",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App\Auth\LoginCallback"
+                defaultLocationInProject: "wwwroot/App/Auth/LoginCallback"
                 );
         }
     }

@@ -37,7 +37,7 @@ namespace Intent.Modules.AngularJs.Templates.State
                 codeGenType: CodeGenType.UserControlledTagWeave,
                 fileName: "${Model.Name}StateManager",
                 fileExtension: "ts",
-                defaultLocationInProject: $@"wwwroot\App\States\{Model.Name}",
+                defaultLocationInProject: $"wwwroot/App/States/{Model.Name}",
                 className: "${Model.Name}StateManager",
                 @namespace: "${Project.ApplicationName}");
         }

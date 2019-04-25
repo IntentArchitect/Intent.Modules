@@ -20,7 +20,7 @@ namespace Intent.Modules.Typescript.Config.Templates.TypescriptDefinitelyTypedRe
                 codeGenType: CodeGenType.Basic,
                 fileName: "_references",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App"
+                defaultLocationInProject: "wwwroot/App"
                 );
         }
     }

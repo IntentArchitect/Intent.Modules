@@ -20,7 +20,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectStat
                 codeGenType: CodeGenType.Basic,
                 fileName: "LoginRedirectState",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App\Auth\LoginRedirect"
+                defaultLocationInProject: "wwwroot/App/Auth/LoginRedirect"
                 );
         }
     }

@@ -22,7 +22,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.UserInfoService
                 codeGenType: CodeGenType.Basic,
                 fileName: "UserInfoService",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App\Auth\Services"
+                defaultLocationInProject: "wwwroot/App/Auth/Services"
 
                 );
         }

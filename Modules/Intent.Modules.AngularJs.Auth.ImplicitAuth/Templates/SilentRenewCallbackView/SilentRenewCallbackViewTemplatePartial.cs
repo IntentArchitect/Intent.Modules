@@ -20,7 +20,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.SilentRenewCallba
                 codeGenType: CodeGenType.Basic,
                 fileName: "SilentRenew",
                 fileExtension: "html",
-                defaultLocationInProject: @"wwwroot\App\Auth\RenewToken"
+                defaultLocationInProject: "wwwroot/App/Auth/RenewToken"
                 );
         }
     }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Bower</id>
-  <version>1.7.0</version>
+  <version>1.9.0</version>
   <summary>Bower configuration files</summary>
   <description>Bower configuration files</description>
   <authors>Intent Architect</authors>
@@ -15,10 +15,10 @@
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="1.7.0"/>
+    <dependency id="Intent.Common" version="1.9.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\$id$.dll"/>
-    <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="bin/$configuration$/$id$.dll"/>
+    <file src="bin/$configuration$/$id$.pdb"/>
   </files>
 </package>

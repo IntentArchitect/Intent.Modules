@@ -14,7 +14,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
         {
             // For reference purposes only:
             //Namespace = model.BoundedContextName == project.ApplicationName().Replace("_Client", "") ? "App.Contracts" : $"App.Contracts.{model.BoundedContextName}";
-            //Location = model.BoundedContextName == project.ApplicationName().Replace("_Client", "") ? $@"wwwroot\App\DTOs\Generated" : $@"wwwroot\App\DTOs\Generated\{model.BoundedContextName}";
+            //Location = model.BoundedContextName == project.ApplicationName().Replace("_Client", "") ? $"wwwroot/App/DTOs/Generated" : $@"wwwroot/App/DTOs/Generated/{model.BoundedContextName}";
         }
 
         public string ApplicationName => Model.Application.Name;
@@ -26,7 +26,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
                 codeGenType: CodeGenType.Basic,
                 fileName: Model.Name,
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App\DTOs\Generated",
+                defaultLocationInProject: "wwwroot/App/DTOs/Generated",
                 className: "${Model.Name}",
                 @namespace: "App.Contracts");
         }
