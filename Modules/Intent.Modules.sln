@@ -173,8 +173,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Angular", "I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.ServiceImplementations", "Intent.Modules.Application.ServiceImplementations\Intent.Modules.Application.ServiceImplementations.csproj", "{925156ED-76E0-44B3-9FC4-4CD14AB7312C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.IdentityServer4", "Intent.Modules.IdentityServer4\Intent.Modules.IdentityServer4.csproj", "{DA019B82-209E-4B01-A890-3B13BE8FF61F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.ServiceImplementations.Conventions.CRUD", "Intent.Modules.Convention.ServiceImplementations\Intent.Modules.Application.ServiceImplementations.Conventions.CRUD.csproj", "{2AC9A9B5-8DBD-45E0-B340-5778C2C6EE8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Angular.Tests", "Intent.Modules.Angular.Tests\Intent.Modules.Angular.Tests.csproj", "{931D1E79-7D7F-4047-B2F4-5BABB0D1F481}"
@@ -485,10 +483,6 @@ Global
 		{925156ED-76E0-44B3-9FC4-4CD14AB7312C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{925156ED-76E0-44B3-9FC4-4CD14AB7312C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{925156ED-76E0-44B3-9FC4-4CD14AB7312C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA019B82-209E-4B01-A890-3B13BE8FF61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA019B82-209E-4B01-A890-3B13BE8FF61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA019B82-209E-4B01-A890-3B13BE8FF61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA019B82-209E-4B01-A890-3B13BE8FF61F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2AC9A9B5-8DBD-45E0-B340-5778C2C6EE8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2AC9A9B5-8DBD-45E0-B340-5778C2C6EE8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AC9A9B5-8DBD-45E0-B340-5778C2C6EE8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -577,7 +571,6 @@ Global
 		{2220169E-4A02-442C-820B-CDE62EF9233A} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C} = {5F5C3F2E-DD11-4F45-A24D-9E8FB109592A}
 		{925156ED-76E0-44B3-9FC4-4CD14AB7312C} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
-		{DA019B82-209E-4B01-A890-3B13BE8FF61F} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 		{2AC9A9B5-8DBD-45E0-B340-5778C2C6EE8B} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 		{931D1E79-7D7F-4047-B2F4-5BABB0D1F481} = {5F5C3F2E-DD11-4F45-A24D-9E8FB109592A}
 	EndGlobalSection
