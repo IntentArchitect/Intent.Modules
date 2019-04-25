@@ -1,9 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel.Domain;
-using Intent.MetaModel.DTO;
-using Intent.MetaModel.Enums;
-using Intent.MetaModel.Service;
 using Intent.SoftwareFactory;
 
 namespace Intent.Modules.Common

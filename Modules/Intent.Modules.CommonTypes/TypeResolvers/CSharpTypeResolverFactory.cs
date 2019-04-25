@@ -1,4 +1,4 @@
-﻿using Intent.Templates
+﻿using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Intent.MetaModel.Common;
 using System.ComponentModel;
 using Intent.Modules.Common.TypeResolution;
+using Intent.Modules.Common.Types.TypeResolvers;
 using Intent.Modules.CommonTypes.Contracts;
 
 namespace Intent.Modules.CommonTypes.TypeResolvers

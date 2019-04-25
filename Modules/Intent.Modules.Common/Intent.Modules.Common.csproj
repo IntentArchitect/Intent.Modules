@@ -56,7 +56,6 @@
     <Compile Include="Helpers\TypeHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
     <Compile Include="MetadataExtensionsV2.cs" />
-    <Compile Include="MetaDataExtensions.cs" />
     <Compile Include="Metadata\FolderExtensions.cs" />
     <Compile Include="Metadata\StereotypeExtensions.cs" />
     <Compile Include="Metadata\UmlModelExtensions.cs" />
@@ -83,6 +82,8 @@
     <Compile Include="Templates\Pluralization\Vocabulary.cs" />
     <Compile Include="Templates\Roslyn\RoslynMergeConfig.cs" />
     <Compile Include="Templates\Roslyn\TemplateMetaData.cs" />
+    <Compile Include="Templates\Roslyn\TemplateMigrationCriteria.cs" />
+    <Compile Include="Templates\Roslyn\TemplateVersion.cs" />
     <Compile Include="Templates\T4\IntentProjectItemTemplateBase.cs" />
     <Compile Include="Templates\Roslyn\IntentRoslynProjectItemTemplateBase.cs" />
     <Compile Include="Templates\T4\IntentTemplateBase.cs" />

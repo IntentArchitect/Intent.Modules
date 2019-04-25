@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Intent.MetaModel.Common;
+using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common
 {

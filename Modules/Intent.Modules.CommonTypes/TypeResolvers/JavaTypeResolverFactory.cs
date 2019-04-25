@@ -1,5 +1,5 @@
 ﻿using Intent.Modules.CommonTypes.Contracts;
-using Intent.Templates
+using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.MetaModel.Common;
 
 namespace Intent.Modules.Common
 {

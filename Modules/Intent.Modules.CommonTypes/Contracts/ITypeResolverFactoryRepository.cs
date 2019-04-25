@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Intent.Modules.CommonTypes.Contracts;
+using Intent.Templates;
 
-namespace Intent.Modules.CommonTypes.Contracts
+namespace Intent.Modules.Common.Types.Contracts
 {
     public interface ITypeResolverFactoryRepository
     {
         IEnumerable<ITypeResolverFactory> TypeResolvers { get; }
 
-        ITypeResolverFactory GetTypeResolver(SoftwareFactory.Templates.IFileMetadata meta);
+        ITypeResolverFactory GetTypeResolver(IFileMetadata meta);
     }
 }

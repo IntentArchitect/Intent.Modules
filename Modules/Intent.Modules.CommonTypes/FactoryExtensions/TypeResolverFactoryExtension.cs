@@ -5,14 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Intent.Modules.CommonTypes.Contracts;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Plugins;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
-using Intent.Templates
+using Intent.Templates;
 using System.ComponentModel;
+using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.TypeResolution;
+using Intent.Modules.Common.Types.Contracts;
+using Intent.Plugins;
+using Intent.Plugins.FactoryExtensions;
 using Intent.SoftwareFactory;
+using Intent.Utils;
 
 namespace Intent.Modules.CommonTypes.FactoryExtensions
 {

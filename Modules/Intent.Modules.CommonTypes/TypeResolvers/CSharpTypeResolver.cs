@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.MetaModel.Common;
-using Intent.Modules.Common;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
-using Intent.Modules.Common.Types.TypeResolvers;
 
-namespace Intent.Modules.CommonTypes.TypeResolvers
+namespace Intent.Modules.Common.Types.TypeResolvers
 {
     public class CSharpTypeResolver : TypeResolverBase, ITypeResolver
     {
@@ -24,14 +19,14 @@ namespace Intent.Modules.CommonTypes.TypeResolvers
 
                 result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
 
-                if (typeInfo.IsNullable && (typeInfo.Type == ReferenceType.Enum || (typeInfo.Type == ReferenceType.DataType && typeInfo.GetStereotypeProperty("C#", "IsPrimitive", false))))
+                if (typeInfo.IsNullable && (typeInfo.SpecializationType.Equals("Enum",StringComparison.InvariantCultureIgnoreCase) || (typeInfo.GetStereotypeProperty("C#", "IsPrimitive", false))))
                 {
                     result += "?";
                 }
             }
             else
             {
-                if (typeInfo.IsNullable && typeInfo.Type == ReferenceType.Enum)
+                if (typeInfo.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase))
                 {
                     result += "?";
                 }

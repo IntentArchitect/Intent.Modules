@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Intent.Metadata.Models;
 using Intent.MetaModel.Common;
 using Intent.Modules.Common.TypeResolution;
 
@@ -28,15 +29,12 @@ namespace Intent.Modules.Common.Types.TypeResolvers
                 return null;
             }
 
-            if (typeInfo.Type == ReferenceType.ClassType)
+            foreach (var classLookup in _classTypeSources)
             {
-                foreach (var classLookup in _classTypeSources)
+                var foundClass = classLookup.GetClassType(typeInfo);
+                if (!string.IsNullOrWhiteSpace(foundClass))
                 {
-                    var foundClass = classLookup.GetClassType(typeInfo);
-                    if (!string.IsNullOrWhiteSpace(foundClass))
-                    {
-                        return foundClass;
-                    }
+                    return foundClass;
                 }
             }
             return _resolveTypeFunc(typeInfo, collectionType);
@@ -93,7 +91,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
         {
             return InContext(DEFAULT_CONTEXT).Get(typeInfo, collectionType);
         }
-        
+
         protected abstract string ResolveType(ITypeReference typeInfo, string collectionType = null);
     }
 }

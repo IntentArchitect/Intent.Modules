@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using Intent.MetaModel.Common;
 using System.ComponentModel;
 using Intent.Modules.Common.TypeResolution;
+using Intent.Modules.Common.Types.TypeResolvers;
 using Intent.Modules.CommonTypes.Contracts;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.CommonTypes.TypeResolvers
 {
