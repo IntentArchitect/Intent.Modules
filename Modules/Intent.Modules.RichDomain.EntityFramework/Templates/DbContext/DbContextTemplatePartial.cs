@@ -5,8 +5,8 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Modules.EntityFramework;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.Templates
 

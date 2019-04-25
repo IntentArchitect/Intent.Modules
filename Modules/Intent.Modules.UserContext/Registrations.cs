@@ -3,7 +3,7 @@ using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.Modules.UserContext.Templates.UserContextProvider;
 using Intent.Modules.UserContext.Templates.UserContextProviderInterface;
 using Intent.Modules.UserContext.Templates.UserContextStatic;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.UserContext

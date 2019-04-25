@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.EntityFramework.Templates.EFMapping
 {
-    using Intent.MetaModel.Domain;
+    using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common.Templates;
     using Intent.Modules.Common;
     using System;

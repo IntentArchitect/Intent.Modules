@@ -11,8 +11,8 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
-using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.Common.VisualStudio;
+using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
@@ -37,14 +37,14 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
                 typeReferences.Add(Model.ReturnType.Type);
             }
 
-            return typeReferences.Select(x => TemplateDependancy.OnModel<IMetaModel>(DTOTemplate.IDENTIFIER, m => m.Id == x.Id)).ToArray();
+            return typeReferences.Select(x => TemplateDependency.OnModel<IMetaModel>(DTOTemplate.IDENTIFIER, m => m.Id == x.Id)).ToArray();
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             // GCB - This is a hack to get the Intent.Framework.Domain package installed in the Application layer if repositories are detected.
-            // Note: the project reference dependency on Repositories.Api is not needed since all we are using is the constant value of RepositoryInterfaceTemplate.Identifier
-            if (Project.FindTemplateInstances<IHasClassDetails>(TemplateDependancy.OnTemplate(RepositoryInterfaceTemplate.Identifier)).Any())
+            // Note: the project reference dependency on Repositories.Api is not needed in the .imodspec since all we are using is the constant value of RepositoryInterfaceTemplate.Identifier
+            if (Project.FindTemplateInstances<IHasClassDetails>(TemplateDependency.OnTemplate(RepositoryInterfaceTemplate.Identifier)).Any())
             {
                 return new[]
                     {

@@ -5,7 +5,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
 using Intent.Templates
 using Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface;
@@ -103,13 +103,13 @@ namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
         {
             return new List<ITemplateDependency>
             {
-                TemplateDependancy.OnTemplate(HttpProxyInterceptorInterfaceTemplate.IDENTIFIER),
+                TemplateDependency.OnTemplate(HttpProxyInterceptorInterfaceTemplate.IDENTIFIER),
             };
         }
 
         private string GetHttpClientServiceInterfaceName()
         {
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(HttpClientServiceInterfaceTemplate.IDENTIFIER));
+            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(HttpClientServiceInterfaceTemplate.IDENTIFIER));
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
     }

@@ -5,7 +5,7 @@ using System.Linq;
 using Intent.MetaModel.DTO;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO

@@ -37,12 +37,12 @@ namespace Intent.Modules.Common.Templates
             if (associationEnd != null && associationEnd.Id == associationEnd.Association.Id)
             {
                 return project.FindTemplateInstance<IHasClassDetails>(
-                        TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == associationEnd.Class.Id))
+                        TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == associationEnd.Class.Id))
                     ?.FullTypeName();
             }
 
             var templateInstance = project.FindTemplateInstance<IHasClassDetails>(
-                TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id));
+                TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id));
             return templateInstance != null ? templateInstance.FullTypeName() 
                 + (typeInfo.GenericTypeParameters.Any() ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => FullTypeNameInProject(project, templateId, x)))}>" : "") 
                 : null;
@@ -63,7 +63,7 @@ namespace Intent.Modules.Common.Templates
         private static string FullTypeNameInApplication(IApplication application, string templateId, ITypeReference typeInfo)
         {
             return application.FindTemplateInstance<IHasClassDetails>(
-                    TemplateDependancy.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id))
+                    TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id))
                 ?.FullTypeName();
         }
 

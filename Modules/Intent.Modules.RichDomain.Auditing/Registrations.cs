@@ -5,7 +5,7 @@ using Intent.Modules.RichDomain.Templates.EntityBehaviour;
 using Intent.Modules.RichDomain.Templates.EntityBehaviourBase;
 using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.Modules.RichDomain.Templates.EntityStateInterface;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.RichDomain.Auditing

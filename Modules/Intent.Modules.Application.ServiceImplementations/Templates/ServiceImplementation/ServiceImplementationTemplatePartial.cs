@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Intent.MetaModel.Common;
-using Intent.MetaModel.Service;
+using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
@@ -12,8 +13,8 @@ using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {
@@ -36,7 +37,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
         {
             return new[]
             {
-                TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
+                TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
             }.Union(GetDecorators().SelectMany(x => x.GetConstructorDependencies(Model).Select(d => d.TemplateDependency)));
         }
 
@@ -97,16 +98,16 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             }
         }
 
-        private string GetOperationDefinitionParameters(IOperationModel o)
+        private string GetOperationDefinitionParameters(IOperation o)
         {
             if (!o.Parameters.Any())
             {
                 return "";
             }
-            return o.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+            return o.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationCallParameters(IOperationModel o)
+        private string GetOperationCallParameters(IOperation o)
         {
             if (!o.Parameters.Any())
             {
@@ -115,18 +116,18 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             return o.Parameters.Select(x => $"{x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationReturnType(IOperationModel o)
+        private string GetOperationReturnType(IOperation o)
         {
             if (o.ReturnType == null)
             {
                 return o.IsAsync() ? "async Task" : "void";
             }
-            return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType.TypeReference)}>" : GetTypeName(o.ReturnType.TypeReference);
+            return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType.Type)}>" : GetTypeName(o.ReturnType.Type);
         }
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
         }
 
@@ -145,7 +146,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             return parameters;
         }
 
-        private string GetImplementation(IOperationModel operation)
+        private string GetImplementation(IOperation operation)
         {
             var output = GetDecorators().Aggregate(x => x.GetDecoratedImplementation(Model, operation));
             if (string.IsNullOrWhiteSpace(output))

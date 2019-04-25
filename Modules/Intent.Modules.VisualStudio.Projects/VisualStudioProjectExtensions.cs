@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 
 namespace Intent.Modules.VisualStudio.Projects
 {

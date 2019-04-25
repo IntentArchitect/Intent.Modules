@@ -56,7 +56,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
             {
                 return new List<ITemplateDependency>();
             }
-            return new[] { TemplateDependancy.OnTemplate(IdentityGeneratorTemplate.Identifier) };
+            return new[] { TemplateDependency.OnTemplate(IdentityGeneratorTemplate.Identifier) };
         }
 
         public override void Configure(IDictionary<string, string> settings)

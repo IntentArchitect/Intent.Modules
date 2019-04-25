@@ -3,7 +3,7 @@ using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Unity.Templates.UnityConfig;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 using System.Collections.Generic;
 using System.Linq;
@@ -42,9 +42,9 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(UnityConfigTemplate.Identifier),
-                TemplateDependancy.OnModel(ServiceContractTemplate.IDENTIFIER, Model),
-                TemplateDependancy.OnTemplate(DTOTemplate.IDENTIFIER)
+                TemplateDependency.OnTemplate(UnityConfigTemplate.Identifier),
+                TemplateDependency.OnModel(ServiceContractTemplate.IDENTIFIER, Model),
+                TemplateDependency.OnTemplate(DTOTemplate.IDENTIFIER)
             };
         }
 

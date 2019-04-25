@@ -3,7 +3,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Intent.Modules.VisualStudio.Projects.Decorators;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 
 namespace Intent.Modules.Messaging.Publisher.Decorators.WebConfig
 {

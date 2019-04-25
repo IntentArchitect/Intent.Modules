@@ -5,8 +5,8 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.Templates
 
 namespace Intent.Modules.AspNetCore.Templates.Startup
@@ -35,8 +35,8 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                 interfaceType: @event.TryGetValue("InterfaceType"),
                 concreteType: @event.GetValue("ConcreteType"),
                 lifetime: @event.TryGetValue("Lifetime"),
-                interfaceTypeTemplateDependency: @event.TryGetValue("InterfaceTypeTemplateId") != null ? TemplateDependancy.OnTemplate(@event.TryGetValue("InterfaceTypeTemplateId")) : null,
-                concreteTypeTemplateDependency: @event.TryGetValue("ConcreteTypeTemplateId") != null ? TemplateDependancy.OnTemplate(@event.TryGetValue("ConcreteTypeTemplateId")) : null));
+                interfaceTypeTemplateDependency: @event.TryGetValue("InterfaceTypeTemplateId") != null ? TemplateDependency.OnTemplate(@event.TryGetValue("InterfaceTypeTemplateId")) : null,
+                concreteTypeTemplateDependency: @event.TryGetValue("ConcreteTypeTemplateId") != null ? TemplateDependency.OnTemplate(@event.TryGetValue("ConcreteTypeTemplateId")) : null));
         }
 
         private void HandleDbContextRegistration(ApplicationEvent @event)
@@ -44,7 +44,7 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
             _dbContextRegistrations.Add(new DbContextContainerRegistration(
                 @event.TryGetValue(ContainerRegistrationForDbContextEvent.UsingsKey),
                 @event.GetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeKey),
-                @event.TryGetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey) != null ? TemplateDependancy.OnTemplate(@event.TryGetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey)) : null,
+                @event.TryGetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey) != null ? TemplateDependency.OnTemplate(@event.TryGetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey)) : null,
                 @event.TryGetValue(ContainerRegistrationForDbContextEvent.OptionsKey)));
         }
 
@@ -65,7 +65,7 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                 code: @event.GetValue(InitializationRequiredEvent.CallKey),
                 method: @event.TryGetValue(InitializationRequiredEvent.MethodKey),
                 priority: int.TryParse(@event.TryGetValue(InitializationRequiredEvent.PriorityKey), out var priority) ? priority : 0,
-                templateDependency: @event.TryGetValue(InitializationRequiredEvent.TemplateDependencyIdKey) != null ? TemplateDependancy.OnTemplate(@event.TryGetValue(InitializationRequiredEvent.TemplateDependencyIdKey)) : null));
+                templateDependency: @event.TryGetValue(InitializationRequiredEvent.TemplateDependencyIdKey) != null ? TemplateDependency.OnTemplate(@event.TryGetValue(InitializationRequiredEvent.TemplateDependencyIdKey)) : null));
         }
 
         public string ServiceConfigurations()

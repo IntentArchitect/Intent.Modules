@@ -46,7 +46,7 @@ namespace Intent.Modules.AspNet.SignalR.Interop.WebApi.Decorator
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(ClientNotificationService.Identifier),
+                TemplateDependency.OnTemplate(ClientNotificationService.Identifier),
             };
         }
     }

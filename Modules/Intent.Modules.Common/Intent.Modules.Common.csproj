@@ -89,7 +89,7 @@
     <Compile Include="Templates\T4\IntentTemplateBase.cs" />
     <Compile Include="Templates\T4\IntentTypescriptProjectItemTemplateBase.cs" />
     <Compile Include="Templates\TemplateDecoratorExtensions.cs" />
-    <Compile Include="Templates\TemplateDependancy.cs" />
+    <Compile Include="Templates\TemplateDependency.cs" />
     <Compile Include="Templates\TemplateExtensions.cs" />
     <Compile Include="TypeResolution\IRequireTypeResolver.cs" />
     <Compile Include="TypeResolution\ITypeResolver.cs" />

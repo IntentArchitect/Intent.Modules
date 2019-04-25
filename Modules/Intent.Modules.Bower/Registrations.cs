@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.Bower.Templates.BowerConfig;
 using Intent.Modules.Bower.Templates.BowerRCFile;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Bower

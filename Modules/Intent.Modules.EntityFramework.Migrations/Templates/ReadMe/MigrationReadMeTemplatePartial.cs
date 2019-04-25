@@ -1,5 +1,5 @@
 ﻿using Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfiguration;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +38,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.ReadMe
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DbMigrationsConfigurationTemplate.Identifier)
+                TemplateDependency.OnTemplate(DbMigrationsConfigurationTemplate.Identifier)
             };
         }
     }

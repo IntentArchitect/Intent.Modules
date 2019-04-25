@@ -6,7 +6,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 using Microsoft.Build.Construction;
 

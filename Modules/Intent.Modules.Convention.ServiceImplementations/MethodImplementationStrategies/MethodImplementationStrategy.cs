@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Intent.MetaModel.Domain;
-using Intent.MetaModel.Service;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
+using Intent.Metadata.Models;
+using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {
@@ -22,7 +22,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             };
         }
 
-        public static string ImplementOnMatch(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        public static string ImplementOnMatch(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             foreach (var strategy in _strategies)
             {

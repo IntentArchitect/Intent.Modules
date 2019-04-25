@@ -1,5 +1,5 @@
 ﻿using Intent.Modules.Logging.NLog.Templates.OperationRequestId;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace Intent.Modules.Logging.NLog.Templates.OperationRequestIdRenderer
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(OperationRequestIdTemplate.Identifier)
+                TemplateDependency.OnTemplate(OperationRequestIdTemplate.Identifier)
             };            
         }
 

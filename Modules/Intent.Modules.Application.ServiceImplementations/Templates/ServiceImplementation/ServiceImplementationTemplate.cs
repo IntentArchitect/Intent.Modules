@@ -11,7 +11,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 {
     using Intent.Modules.Common.Templates;
     using Intent.Modules.Application.Contracts;
-    using Intent.MetaModel.Service;
+    using Intent.Modelers.Services.Api;
     using System;
     using System.IO;
     using System.Diagnostics;

@@ -6,7 +6,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Constants;
 using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts
@@ -30,8 +30,8 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts
             string result = typeInfo.Name;
             if (typeInfo.Type == ReferenceType.ClassType)
             {
-                var templateInstance = template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<DTOModel>(TypescriptDtoTemplate.LocalIdentifier, (x) => x.Id == typeInfo.Id))
-                    ?? template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<DTOModel>(TypescriptDtoTemplate.RemoteIdentifier, (x) => x.Id == typeInfo.Id));
+                var templateInstance = template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<DTOModel>(TypescriptDtoTemplate.LocalIdentifier, (x) => x.Id == typeInfo.Id))
+                    ?? template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<DTOModel>(TypescriptDtoTemplate.RemoteIdentifier, (x) => x.Id == typeInfo.Id));
                 if (templateInstance != null)
                 {
                     return $"{templateInstance.Namespace}.{templateInstance.ClassName}";

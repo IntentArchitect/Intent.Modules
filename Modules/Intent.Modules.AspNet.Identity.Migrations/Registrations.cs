@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.AspNet.Identity.Migrations.Templates.DbMigrationsConfiguration;
 using Intent.Modules.AspNet.Identity.Migrations.Templates.ReadMe;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.AspNet.Identity.Migrations

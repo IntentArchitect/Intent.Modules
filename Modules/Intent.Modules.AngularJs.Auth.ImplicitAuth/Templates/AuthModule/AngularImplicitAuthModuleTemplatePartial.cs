@@ -1,7 +1,7 @@
 ﻿using Intent.MetaModel.Hosting;
 using Intent.Modules.Bower.Contracts;
 using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates;
 using System.Collections.Generic;
 using Intent.Engine;

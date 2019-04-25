@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Engine;
+using Intent.Templates;
 
 
 namespace Intent.Modules.Autofac.Templates.AutofacConfig

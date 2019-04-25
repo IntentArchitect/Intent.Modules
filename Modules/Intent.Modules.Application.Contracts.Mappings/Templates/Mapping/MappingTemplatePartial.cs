@@ -7,6 +7,8 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Engine;
+using Intent.Modelers.Domain.Api;
+using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
@@ -40,8 +42,8 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
             _stereotypeNameConfigValue = GetMetaData().CustomMetaData[StereotypeNameConfigId];
             _stereotypeTypePropertyConfigValue = GetMetaData().CustomMetaData[StereotypeTypePropertyConfigId];
             _stereotypeNamespacePropertyConfigValue = GetMetaData().CustomMetaData[StereotypeNamespacePropertyConfigId];
-            _contractTemplateDependancy = TemplateDependancy.OnModel<IDTOModel>(GetMetaData().CustomMetaData[ContractTemplateDependancyConfigId], (to) => to.Id == Model.Id);
-            _domainTemplateDependancy = TemplateDependancy.OnModel<IClass>(_domainTemplateDependancyConfigValue, (to) => to.Id == Model.MappedClass.ClassId);
+            _contractTemplateDependancy = TemplateDependency.OnModel<IDTOModel>(GetMetaData().CustomMetaData[ContractTemplateDependancyConfigId], (to) => to.Id == Model.Id);
+            _domainTemplateDependancy = TemplateDependency.OnModel<IClass>(_domainTemplateDependancyConfigValue, (to) => to.Id == Model.MappedClass.ClassId);
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

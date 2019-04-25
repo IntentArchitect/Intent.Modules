@@ -1,6 +1,6 @@
 using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.Templates
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

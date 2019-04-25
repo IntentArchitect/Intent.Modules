@@ -2,8 +2,8 @@
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Modules.UserContext.Templates.UserContextInterface;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.Templates
 
 namespace Intent.Modules.UserContext.Templates.UserContextProviderInterface
@@ -39,7 +39,7 @@ namespace Intent.Modules.UserContext.Templates.UserContextProviderInterface
         {
             return new List<ITemplateDependency>
             {
-                TemplateDependancy.OnTemplate(UserContextInterfaceTemplate.Identifier),
+                TemplateDependency.OnTemplate(UserContextInterfaceTemplate.Identifier),
             };
         }
     }

@@ -5,8 +5,8 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Modules.EntityFramework.Templates.DbContext;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
@@ -50,7 +50,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
         public void Created()
         {
             var fileMetaData = GetMetaData();
-            _dbContextDependancy = TemplateDependancy.OnTemplate(DbContextTemplate.Identifier);
+            _dbContextDependancy = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
         }
 
         public string GetDbContextClassName()

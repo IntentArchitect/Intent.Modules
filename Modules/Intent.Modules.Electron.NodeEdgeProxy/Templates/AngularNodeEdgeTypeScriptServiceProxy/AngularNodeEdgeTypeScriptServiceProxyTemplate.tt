@@ -1,7 +1,7 @@
 ﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<IServiceModel>" #>
 <#@ output extension=".ts" #>
 <#@ Assembly Name="System.Core" #>
-<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="Intent.Modelers.Services.Api" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="System" #>
 namespace <#= Namespace #> {

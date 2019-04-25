@@ -7,8 +7,8 @@ using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.Templates
 

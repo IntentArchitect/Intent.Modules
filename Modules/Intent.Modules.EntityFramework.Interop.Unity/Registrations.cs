@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.Common.Registrations;
 using Intent.Modules.EntityFramework.Interop.Unity.Decorators;
 using Intent.Modules.Unity.Templates.UnityConfig;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.EntityFramework.Interop.Unity

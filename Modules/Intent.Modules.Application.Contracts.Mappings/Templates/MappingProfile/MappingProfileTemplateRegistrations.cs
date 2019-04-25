@@ -7,7 +7,6 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
 using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile

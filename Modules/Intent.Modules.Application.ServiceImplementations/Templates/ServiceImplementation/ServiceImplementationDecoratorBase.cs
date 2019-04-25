@@ -1,7 +1,8 @@
-﻿using Intent.MetaModel.Service;
-using Intent.Templates
+﻿using Intent.Templates;
 using System;
 using System.Collections.Generic;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {
@@ -17,7 +18,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             return new List<ConstructorParameter>();
         }
 
-        public virtual string GetDecoratedImplementation(IServiceModel serviceModel, IOperationModel operationModel)
+        public virtual string GetDecoratedImplementation(IServiceModel serviceModel, IOperation operationModel)
         {
             return string.Empty;
         }

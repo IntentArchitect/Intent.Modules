@@ -20,12 +20,12 @@ namespace Intent.Modules.Common
 
         public static ITemplate FindTemplateInstance(this IProject project, string templateId, string className)
         {
-            return project.FindTemplateInstance(templateId, TemplateDependancy.OnClassName(templateId, className));
+            return project.FindTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
         }
 
         public static ITemplate FindTemplateInstance(this IProject project, string templateId, object model)
         {
-            return project.FindTemplateInstance(TemplateDependancy.OnModel(templateId, model));
+            return project.FindTemplateInstance(TemplateDependency.OnModel(templateId, model));
         }
 
         public static TTemplate FindTemplateInstance<TTemplate>(this IProject project, string templateId, object model) where TTemplate : class
@@ -38,19 +38,19 @@ namespace Intent.Modules.Common
             return project.FindTemplateInstance(templateId) as TTemplate;
         }
 
-        public static ITemplate FindTemplateInstance(this IProject project, ITemplateDependency templateDependancy)
+        public static ITemplate FindTemplateInstance(this IProject project, ITemplateDependency templateDependency)
         {
-            return project.FindTemplateInstance(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch);
+            return project.FindTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch);
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IProject project, ITemplateDependency templateDependancy) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this IProject project, ITemplateDependency templateDependency) where TTemplate : class
         {
-            return project.FindTemplateInstance(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch) as TTemplate;
+            return project.FindTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch) as TTemplate;
         }
 
-        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IProject project, ITemplateDependency templateDependancy) where TTemplate : class
+        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IProject project, ITemplateDependency templateDependency) where TTemplate : class
         {
-            return project.FindTemplateInstances(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch, SearchOption.AllProjects).Cast<TTemplate>();
+            return project.FindTemplateInstances(templateDependency.TemplateIdOrName, templateDependency.IsMatch, SearchOption.AllProjects).Cast<TTemplate>();
         }
     }
 }

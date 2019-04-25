@@ -6,7 +6,7 @@ using Intent.Modules.IdentityServer.Templates.AspNetIdentityUserService;
 using Intent.Modules.IdentityServer.Templates.Clients;
 using Intent.Modules.IdentityServer.Templates.Scopes;
 using Intent.Modules.IdentityServer.Templates.SigningCertificate;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Eventing;
 using Intent.Templates
 using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
@@ -89,10 +89,10 @@ namespace Intent.Modules.IdentityServer.Decorators
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(SigningCertificateTemplate.Identifier),
-                TemplateDependancy.OnTemplate(IdentityServerScopesTemplate.Identifier),
-                TemplateDependancy.OnTemplate(IdentityServerClientsTemplate.Identifier),
-                TemplateDependancy.OnTemplate(AspNetIdentityUserServiceTemplate.Identifier)
+                TemplateDependency.OnTemplate(SigningCertificateTemplate.Identifier),
+                TemplateDependency.OnTemplate(IdentityServerScopesTemplate.Identifier),
+                TemplateDependency.OnTemplate(IdentityServerClientsTemplate.Identifier),
+                TemplateDependency.OnTemplate(AspNetIdentityUserServiceTemplate.Identifier)
             };
         }
 

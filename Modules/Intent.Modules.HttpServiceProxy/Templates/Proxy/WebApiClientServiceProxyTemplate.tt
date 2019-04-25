@@ -6,7 +6,7 @@
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
-<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="Intent.Modelers.Services.Api" #>
 using System;
 using System.Configuration;
 using System.Linq;

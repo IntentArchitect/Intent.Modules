@@ -1,11 +1,10 @@
-﻿using Intent.MetaModel.Service;
-using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates;
-
+﻿using Intent.Templates;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Engine;
+using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 
@@ -14,11 +13,11 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
     [Description(ServiceImplementationTemplate.Identifier)]
     public class ServiceImplementationTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly ServicesMetadataProvider _metadataProvider;
 
-        public ServiceImplementationTemplateRegistrations(IMetadataManager metaDataManager)
+        public ServiceImplementationTemplateRegistrations(ServicesMetadataProvider metadataProvider)
         {
-            _metaDataManager = metaDataManager;
+            _metadataProvider = metadataProvider;
         }
 
         public override string TemplateId => ServiceImplementationTemplate.Identifier;
@@ -30,7 +29,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetServiceModels(application);
+            return _metadataProvider.GetServices(application);
         }
     }
 }

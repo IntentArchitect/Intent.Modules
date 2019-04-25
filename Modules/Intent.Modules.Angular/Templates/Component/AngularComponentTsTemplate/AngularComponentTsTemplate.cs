@@ -7,9 +7,6 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-
-using Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate;
-
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
     using System.Collections.Generic;

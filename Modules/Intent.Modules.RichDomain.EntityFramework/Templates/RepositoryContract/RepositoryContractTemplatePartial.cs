@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.RichDomain.Templates.EntityState;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.Templates
 
@@ -20,7 +20,7 @@ namespace Intent.Modules.RichDomain.EntityFramework.Templates.RepositoryContract
         {
             return new[]
             {
-                TemplateDependancy.OnModel(DomainEntityStateTemplate.Identifier, Model)
+                TemplateDependency.OnModel(DomainEntityStateTemplate.Identifier, Model)
             };
         }
 

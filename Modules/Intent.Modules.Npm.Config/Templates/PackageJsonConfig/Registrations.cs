@@ -1,4 +1,4 @@
-﻿using Intent.SoftwareFactory.Engine;
+﻿using Intent.Engine;
 using Intent.Templates
 
 using System.ComponentModel;

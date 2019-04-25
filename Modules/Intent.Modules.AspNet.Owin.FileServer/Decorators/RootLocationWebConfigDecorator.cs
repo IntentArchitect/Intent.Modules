@@ -1,5 +1,5 @@
 using Intent.Modules.VisualStudio.Projects.Decorators;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;

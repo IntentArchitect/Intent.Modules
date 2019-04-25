@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.Entities.Keys.Templates.IdentityGenerator
 {
-    using Intent.MetaModel.Domain;
+    using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;

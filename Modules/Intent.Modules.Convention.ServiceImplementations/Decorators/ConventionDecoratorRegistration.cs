@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using System;
 using System.ComponentModel;
 

@@ -82,6 +82,10 @@
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Domain\Intent.Modules.Modelers.Domain.csproj">
+      <Project>{944f5519-873f-4c88-bace-1a383e0c5f49}</Project>
+      <Name>Intent.Modules.Modelers.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj">
       <Project>{c5a5ae9c-9137-4309-ac4e-f9494694390e}</Project>
       <Name>Intent.Modules.Modelers.Services</Name>

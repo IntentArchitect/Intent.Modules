@@ -8,17 +8,17 @@ namespace Intent.Modules.Common
     {
         public static ITemplate FindTemplateInstance(this IApplication application, string templateId, object model)
         {
-            return FindTemplateInstance(application, TemplateDependancy.OnModel(templateId, model));
+            return FindTemplateInstance(application, TemplateDependency.OnModel(templateId, model));
         }
 
         public static ITemplate FindTemplateInstance(this IApplication application, string templateId, string className)
         {
-            return application.FindTemplateInstance(templateId, TemplateDependancy.OnClassName(templateId, className));
+            return application.FindTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
         }
 
-        public static ITemplate FindTemplateInstance(this IApplication application, ITemplateDependency templateDependancy)
+        public static ITemplate FindTemplateInstance(this IApplication application, ITemplateDependency templateDependency)
         {
-            return application.FindTemplateInstance(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch);
+            return application.FindTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch);
         }
 
         //Typed Overloads
@@ -34,27 +34,27 @@ namespace Intent.Modules.Common
 
         public static TTemplate FindTemplateInstance<TTemplate>(this IApplication application, string templateId) where TTemplate : class
         {
-            return application.FindTemplateInstance(TemplateDependancy.OnTemplate(templateId)) as TTemplate;
+            return application.FindTemplateInstance(TemplateDependency.OnTemplate(templateId)) as TTemplate;
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IApplication application, ITemplateDependency templateDependancy) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this IApplication application, ITemplateDependency templateDependency) where TTemplate : class
         {
-            return application.FindTemplateInstance(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch) as TTemplate;
+            return application.FindTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch) as TTemplate;
         }
 
         public static IProject FindProjectWithTemplateInstance(this IApplication application, string templateId, object model)
         {
-            return FindProjectWithTemplateInstance(application, TemplateDependancy.OnModel(templateId, model));
+            return FindProjectWithTemplateInstance(application, TemplateDependency.OnModel(templateId, model));
         }
 
         public static IProject FindProjectWithTemplateInstance(this IApplication application, string templateId, string className)
         {
-            return application.FindProjectWithTemplateInstance(templateId, TemplateDependancy.OnClassName(templateId, className));
+            return application.FindProjectWithTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
         }
 
-        public static IProject FindProjectWithTemplateInstance(this IApplication application, ITemplateDependency templateDependancy)
+        public static IProject FindProjectWithTemplateInstance(this IApplication application, ITemplateDependency templateDependency)
         {
-            return application.FindProjectWithTemplateInstance(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch);
+            return application.FindProjectWithTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch);
         }
     }
 }

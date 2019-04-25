@@ -3,7 +3,7 @@ using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates
 
@@ -23,7 +23,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
 
         public void Created()
         {
-            _domainTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+            _domainTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()

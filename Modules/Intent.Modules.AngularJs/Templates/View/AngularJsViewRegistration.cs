@@ -4,7 +4,7 @@ using System.Linq;
 using Intent.Modules.AngularJs.Templates.State;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 

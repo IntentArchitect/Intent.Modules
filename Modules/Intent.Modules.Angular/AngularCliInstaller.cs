@@ -7,7 +7,7 @@ using Intent.Modules.Bower.Installer;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 
 namespace Intent.Modules.Angular

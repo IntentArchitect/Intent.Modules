@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel.Domain;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
@@ -10,7 +9,10 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Modelers.Domain.Api;
+using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
+using Intent.Utils;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
@@ -54,7 +56,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public string GetContractType(IDTOModel model)
         {
-            var templateDependancy = TemplateDependancy.OnModel<IDTOModel>(GetMetaData().CustomMetaData[ContractTemplateDependancyConfigId], (to) => to.Id == model.Id);
+            var templateDependancy = TemplateDependency.OnModel<IDTOModel>(GetMetaData().CustomMetaData[ContractTemplateDependancyConfigId], (to) => to.Id == model.Id);
             var templateOutput = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {
@@ -75,7 +77,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
                     : type;
             }
 
-            var templateDependancy = TemplateDependancy.OnModel<IClass>(_domainTemplateDependancyConfigValue, (to) => to.Id == model.MappedClass.ClassId);
+            var templateDependancy = TemplateDependency.OnModel<IClass>(_domainTemplateDependancyConfigValue, (to) => to.Id == model.MappedClass.ClassId);
             var templateOutput = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {

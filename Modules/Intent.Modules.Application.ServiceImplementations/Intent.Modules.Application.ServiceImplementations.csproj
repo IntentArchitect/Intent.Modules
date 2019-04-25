@@ -75,9 +75,17 @@
       <Project>{2972A488-2F67-426D-8762-C85FB36FB32C}</Project>
       <Name>Intent.Modules.Application.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
+      <Project>{56475E35-0CC7-4D75-937C-FF46C073BB66}</Project>
+      <Name>Intent.Modules.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
       <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
       <Name>Intent.Modules.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj">
+      <Project>{C5A5AE9C-9137-4309-AC4E-F9494694390E}</Project>
+      <Name>Intent.Modules.Modelers.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

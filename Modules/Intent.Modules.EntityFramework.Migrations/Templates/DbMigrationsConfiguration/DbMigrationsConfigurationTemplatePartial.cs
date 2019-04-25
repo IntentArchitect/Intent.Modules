@@ -1,5 +1,5 @@
 ﻿using Intent.Modules.EntityFramework.Templates.DbContext;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 using System;
 using System.Collections.Generic;
@@ -127,7 +127,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DbContextTemplate.Identifier),
+                TemplateDependency.OnTemplate(DbContextTemplate.Identifier),
             };
         }
 

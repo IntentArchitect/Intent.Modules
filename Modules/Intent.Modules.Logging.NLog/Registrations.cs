@@ -4,7 +4,7 @@ using Intent.Modules.Logging.NLog.Templates.OperationRequestId;
 using Intent.Modules.Logging.NLog.Templates.OperationRequestIdRenderer;
 using Intent.Modules.Logging.NLog.Templates.SanitizingJsonSerializer;
 using Intent.Modules.VisualStudio.Projects.Decorators;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Logging.NLog

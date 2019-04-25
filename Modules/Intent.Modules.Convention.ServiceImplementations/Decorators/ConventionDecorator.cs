@@ -1,16 +1,17 @@
 ﻿using Humanizer.Inflections;
-using Intent.MetaModel.Domain;
-using Intent.MetaModel.Service;
 using Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies;
-using Intent.SoftwareFactory.Configuration;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Engine;
+using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
+using Intent.Modelers.Domain;
+using Intent.Modelers.Services.Api;
+using Intent.Plugins;
 
 namespace Intent.Modules.Convention.ServiceImplementations.Decorators
 {
@@ -42,7 +43,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
                 return new List<string>();
             }
 
-            var repoInterfaceTemplate = _application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<IClass>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id));
+            var repoInterfaceTemplate = _application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IClass>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id));
             if (repoInterfaceTemplate == null)
             {
                 return new List<string>();
@@ -63,7 +64,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
                 return new List<ConstructorParameter>();
             }
 
-            var templateDepenency = TemplateDependancy.OnModel<IClass>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id);
+            var templateDepenency = TemplateDependency.OnModel<IClass>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id);
             var repoInterfaceTemplate = _application.FindTemplateInstance<IHasClassDetails>(templateDepenency);
             if (repoInterfaceTemplate == null)
             {
@@ -79,7 +80,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
             };
         }
 
-        public override string GetDecoratedImplementation(IServiceModel serviceModel, IOperationModel operationModel)
+        public override string GetDecoratedImplementation(IServiceModel serviceModel, IOperation operationModel)
         {
             var currentDomain = GetDomainForService(serviceModel);
 
@@ -91,10 +92,10 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
             return MethodImplementationStrategy.ImplementOnMatch(_metaDataManager, _application, currentDomain, operationModel);
         }
 
-        private IClass GetDomainForService(IServiceModel serviceModel)
+        private Modelers.Domain.Api.IClass GetDomainForService(IServiceModel serviceModel)
         {
             var lowerServiceName = serviceModel.Name.ToLower();
-            var domains = _metaDataManager.GetDomainModels(_application);
+            var domains = _metaDataManager.GetDomainClasses(_application);
             return domains
                 .SingleOrDefault(p =>
                 {

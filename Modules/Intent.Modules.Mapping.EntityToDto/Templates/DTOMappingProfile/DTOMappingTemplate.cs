@@ -1,5 +1,5 @@
 ﻿using Intent.Modules.RichDomain.Templates.EntityStateInterface;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.Mapping;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.Templates
@@ -58,8 +58,8 @@ namespace Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DTOTemplate.IDENTIFIER),
-                TemplateDependancy.OnTemplate(DomainEntityStateInterfaceTemplate.Identifier)
+                TemplateDependency.OnTemplate(DTOTemplate.IDENTIFIER),
+                TemplateDependency.OnTemplate(DomainEntityStateInterfaceTemplate.Identifier)
             };
         }
 

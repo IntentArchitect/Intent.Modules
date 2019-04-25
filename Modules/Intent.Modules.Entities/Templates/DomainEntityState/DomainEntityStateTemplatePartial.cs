@@ -7,7 +7,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState
@@ -23,7 +23,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
         {
         }
 
-        public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
+        public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
                                              ?? $"I{Model.Name}";
 
         public void Created()

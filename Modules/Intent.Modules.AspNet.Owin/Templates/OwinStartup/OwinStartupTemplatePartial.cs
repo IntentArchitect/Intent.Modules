@@ -4,8 +4,8 @@ using System.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.Templates
 
 namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using Intent.MetaModel.Domain;
+using Intent.Engine;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
 {
@@ -20,7 +21,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
 
         public void Created()
         {
-            _entityStateTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+            _entityStateTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
         }
 
         public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(_entityStateTemplateDependancy)?.ClassName ?? Model.Name;

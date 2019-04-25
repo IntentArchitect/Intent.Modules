@@ -9,7 +9,7 @@ using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates
 
@@ -39,7 +39,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(ServiceContractTemplate.IDENTIFIER)
+                TemplateDependency.OnTemplate(ServiceContractTemplate.IDENTIFIER)
             };
         }
 
@@ -80,7 +80,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
         }
 

@@ -52,7 +52,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(RequireHttpsMiddlewareTemplate.Identifier),
+                TemplateDependency.OnTemplate(RequireHttpsMiddlewareTemplate.Identifier),
             };
         }
     }

@@ -1,19 +1,19 @@
-﻿using Intent.MetaModel.Common;
-using Intent.MetaModel.Service;
-using Intent.Modules.Application.Contracts;
-using Intent.Modules.Application.Contracts.Templates.DTO;
+﻿using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler;
-using Intent.SoftwareFactory.Engine;
 using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
+using Intent.Modules.Application.Contracts;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Eventing;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
@@ -34,9 +34,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
         {
             return new[]
             {
-                TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
+                TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
             }
-            .Union(Model.Operations.Select(x => TemplateDependancy.OnModel(ServiceCallHandlerImplementationTemplate.Identifier, x)).ToArray());
+            .Union(Model.Operations.Select(x => TemplateDependency.OnModel(ServiceCallHandlerImplementationTemplate.Identifier, x)).ToArray());
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
@@ -78,16 +78,16 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             });
         }
 
-        private string GetOperationDefinitionParameters(IOperationModel o)
+        private string GetOperationDefinitionParameters(IOperation o)
         {
             if (!o.Parameters.Any())
             {
                 return "";
             }
-            return o.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+            return o.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationCallParameters(IOperationModel o)
+        private string GetOperationCallParameters(IOperation o)
         {
             if (!o.Parameters.Any())
             {
@@ -96,24 +96,24 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             return o.Parameters.Select(x => $"{x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationReturnType(IOperationModel o)
+        private string GetOperationReturnType(IOperation o)
         {
             if (o.ReturnType == null)
             {
                 return o.IsAsync() ? "async Task" : "void";
             }
-            return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType.TypeReference)}>" : GetTypeName(o.ReturnType.TypeReference);
+            return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType.Type)}>" : GetTypeName(o.ReturnType.Type);
         }
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
         }
 
-        private string GetHandlerClassName(IOperationModel o)
+        private string GetHandlerClassName(IOperation o)
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<OperationModel>(ServiceCallHandlerImplementationTemplate.Identifier, x => x.Id == o.Id));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IOperation>(ServiceCallHandlerImplementationTemplate.Identifier, x => x.Id == o.Id));
             return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
         }
 

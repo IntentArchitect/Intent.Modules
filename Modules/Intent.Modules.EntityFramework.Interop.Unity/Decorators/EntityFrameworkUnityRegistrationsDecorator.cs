@@ -1,5 +1,5 @@
 using Intent.Modules.Unity.Templates.UnityConfig;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 using System.Collections.Generic;
 using Intent.Modules.Common.VisualStudio;
@@ -29,7 +29,7 @@ namespace Intent.Modules.EntityFramework.Interop.Unity.Decorators
         //{
         //    return new[]
         //    {
-        //        TemplateDependancy.OnTemplate(DeleteVisitorTemplate.Identifier)
+        //        TemplateDependency.OnTemplate(DeleteVisitorTemplate.Identifier)
         //    };
         //}
 

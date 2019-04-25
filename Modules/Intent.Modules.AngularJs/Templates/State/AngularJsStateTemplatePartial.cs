@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.AngularJs.Templates.ViewModel;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.AngularJs.Templates.State
@@ -21,7 +21,7 @@ namespace Intent.Modules.AngularJs.Templates.State
         {
             get
             {
-                var template = Project.FindTemplateInstance(TemplateDependancy.OnModel(AngularJsViewModelTemplate.Identifier, Model)) as IHasClassDetails;
+                var template = Project.FindTemplateInstance(TemplateDependency.OnModel(AngularJsViewModelTemplate.Identifier, Model)) as IHasClassDetails;
                 if (template != null)
                 {
                     return template.ClassName;

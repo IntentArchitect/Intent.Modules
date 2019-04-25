@@ -2,7 +2,7 @@
 using System.Xml.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject

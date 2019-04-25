@@ -6,7 +6,7 @@ using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.Modules.RichDomain.Templates.EntityStateInterface;
 using Intent.Modules.RichDomain.Templates.Enum;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.SoftwareFactory.Registrations;
 using System.Linq;

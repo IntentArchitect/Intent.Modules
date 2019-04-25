@@ -4,7 +4,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.MessageHandler;
 using Intent.Modules.Unity.Templates.UnityConfig;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.Templates
 
@@ -68,7 +68,7 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Decorators.Unit
 
             return new[]
             {
-                TemplateDependancy.OnTemplate(MessageHandlerTemplate.IDENTIFIER),
+                TemplateDependency.OnTemplate(MessageHandlerTemplate.IDENTIFIER),
             };
         }
 

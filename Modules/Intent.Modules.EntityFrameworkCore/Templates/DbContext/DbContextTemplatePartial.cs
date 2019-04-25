@@ -9,8 +9,8 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Modules.EntityFramework;
 using Intent.Modules.EntityFramework.Templates.DbContext;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.Templates
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
@@ -30,7 +30,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public string GetEntityName(IClass model)
         {
-            var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == model.Id));
+            var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == model.Id));
             return template != null ? NormalizeNamespace($"{template.ClassName}") : $"{model.Name}";
         }
 
@@ -106,7 +106,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return Model.Select(x => TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
+            return Model.Select(x => TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
         }
 
         private string GetDbContextDbServerSetupMethodName()

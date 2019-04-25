@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Intent.Modules.Common;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Unity.Templates.UnityConfig;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 
 namespace Intent.Modules.AspNet.WebApi.Interop.Unity.Decorators
 {

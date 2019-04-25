@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
-    using Intent.MetaModel.Domain;
+    using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 
 namespace Intent.Modules.VisualStudio.Projects.Decorators
 {

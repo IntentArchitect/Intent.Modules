@@ -2,7 +2,7 @@
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
-<#@ import namespace="Intent.MetaModel.Service" #>
+<#@ import namespace="Intent.Modelers.Services.Api" #>
 using System;
 using System.Collections.Generic;
 using System.Linq;

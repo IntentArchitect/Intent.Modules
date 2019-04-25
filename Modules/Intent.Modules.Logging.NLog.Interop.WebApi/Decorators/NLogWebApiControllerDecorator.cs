@@ -106,7 +106,7 @@ namespace Intent.Modules.Logging.NLog.Interop.WebApi.Decorators
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(SanitizingJsonSerializerTemplate.Identifier),
+                TemplateDependency.OnTemplate(SanitizingJsonSerializerTemplate.Identifier),
             };
         }
     }

@@ -4,7 +4,7 @@ using Intent.MetaModel.Domain;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
@@ -25,7 +25,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
 
         public void Created()
         {
-            _entityStateTemplateDependancies = Model.Select(x => TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == x.Id)).ToArray();
+            _entityStateTemplateDependancies = Model.Select(x => TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == x.Id)).ToArray();
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
@@ -35,7 +35,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
 
         public string GetClassName(IClass @class)
         {
-            return Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == @class.Id))?.ClassName ?? $"{@class.Name}";
+            return Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == @class.Id))?.ClassName ?? $"{@class.Name}";
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

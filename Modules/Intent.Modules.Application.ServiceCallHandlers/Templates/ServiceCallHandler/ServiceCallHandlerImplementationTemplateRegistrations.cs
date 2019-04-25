@@ -1,42 +1,42 @@
-﻿using Intent.MetaModel.Service;
-using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates;
-
+﻿using Intent.Templates;
 using System;
 using System.ComponentModel;
 using System.Linq;
-using Intent.Modules.Common;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
+using Intent.Registrations;
+using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
     [Description(ServiceCallHandlerImplementationTemplate.Identifier)]
     public class ServiceCallHandlerImplementationTemplateRegistrations : IProjectTemplateRegistration
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly ServicesMetadataProvider _metadataProvider;
 
-        public ServiceCallHandlerImplementationTemplateRegistrations(IMetadataManager metaDataManager)
+        public ServiceCallHandlerImplementationTemplateRegistrations(ServicesMetadataProvider metadataProvider)
         {
-            _metaDataManager = metaDataManager;
+            _metadataProvider = metadataProvider;
         }
 
         public string TemplateId => ServiceCallHandlerImplementationTemplate.Identifier;
 
 
-        private ITemplate CreateTemplateInstance(IProject project, IServiceModel serviceModel, IOperationModel operationModel)
+        private ITemplate CreateTemplateInstance(IProject project, IServiceModel serviceModel, IOperation operationModel)
         {
             return new ServiceCallHandlerImplementationTemplate(project, serviceModel, operationModel);
         }
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication applicationManager)
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication applicationManager)
         {
-            var serviceModels = _metaDataManager.GetServiceModels(applicationManager);
+            var serviceModels = _metadataProvider.GetServices(applicationManager);
             foreach (var serviceModel in serviceModels)
             {
                 foreach (var operationModel in serviceModel.Operations)
                 {
-                    registery.Register(TemplateId, (project) => CreateTemplateInstance(project, serviceModel, operationModel));
+                    registry.Register(TemplateId, (project) => CreateTemplateInstance(project, serviceModel, operationModel));
                 }
             }
         }

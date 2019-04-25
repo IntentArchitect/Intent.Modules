@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 {
-    using Intent.MetaModel.Domain;
+    using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
     using System;

@@ -5,9 +5,10 @@ using Intent.Modules.Autofac.Templates.AutofacConfig;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
-using Intent.Templates
+using Intent.Engine;
+using Intent.Eventing;
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Autofac.Templates.AutofacConfig
 {
@@ -110,8 +111,8 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
                 interfaceType: @event.TryGetValue(ContainerRegistrationEvent.InterfaceTypeKey), 
                 concreteType: @event.GetValue(ContainerRegistrationEvent.ConcreteTypeKey), 
                 lifetime: @event.TryGetValue(ContainerRegistrationEvent.LifetimeKey),
-                interfaceTypeTemplateDependency: @event.TryGetValue(ContainerRegistrationEvent.InterfaceTypeTemplateIdKey) != null ? TemplateDependancy.OnTemplate(@event.TryGetValue(ContainerRegistrationEvent.InterfaceTypeTemplateIdKey)) : null,
-                concreteTypeTemplateDependency: @event.TryGetValue(ContainerRegistrationEvent.ConcreteTypeTemplateIdKey) != null ? TemplateDependancy.OnTemplate(@event.TryGetValue(ContainerRegistrationEvent.ConcreteTypeTemplateIdKey)) : null));
+                interfaceTypeTemplateDependency: @event.TryGetValue(ContainerRegistrationEvent.InterfaceTypeTemplateIdKey) != null ? TemplateDependency.OnTemplate(@event.TryGetValue(ContainerRegistrationEvent.InterfaceTypeTemplateIdKey)) : null,
+                concreteTypeTemplateDependency: @event.TryGetValue(ContainerRegistrationEvent.ConcreteTypeTemplateIdKey) != null ? TemplateDependency.OnTemplate(@event.TryGetValue(ContainerRegistrationEvent.ConcreteTypeTemplateIdKey)) : null));
         }
     }
 

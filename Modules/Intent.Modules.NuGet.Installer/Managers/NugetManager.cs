@@ -5,7 +5,7 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Intent.Modules.NuGet.Installer.NugetIntegration;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Microsoft.Build.Construction;
 using Microsoft.Build.Evaluation;
 using NuGet;

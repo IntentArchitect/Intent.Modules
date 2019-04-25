@@ -9,7 +9,7 @@ using Intent.Modules.NuGet.Installer.Managers;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 
 namespace Intent.Modules.NuGet.Installer

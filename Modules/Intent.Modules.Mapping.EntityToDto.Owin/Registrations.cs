@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.Mapping.EntityToDto.Owin.Decorators;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Mapping.EntityToDto.Owin

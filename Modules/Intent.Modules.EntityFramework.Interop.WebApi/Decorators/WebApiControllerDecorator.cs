@@ -7,9 +7,9 @@ using Intent.Modules.Application.Contracts;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.EntityFramework.Templates.DbContext;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Eventing;
 using Intent.Templates
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 
 namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
 {
@@ -58,14 +58,14 @@ namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
 
         private IHasClassDetails GetDbContextTemplate()
         {
-            return _application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(DbContextTemplate.Identifier));
+            return _application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(DbContextTemplate.Identifier));
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DbContextTemplate.Identifier)
+                TemplateDependency.OnTemplate(DbContextTemplate.Identifier)
             };
         }
     }

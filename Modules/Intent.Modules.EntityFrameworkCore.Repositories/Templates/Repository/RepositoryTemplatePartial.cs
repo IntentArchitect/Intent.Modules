@@ -8,7 +8,7 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.EntityFrameworkCore.Templates.DbContext;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
@@ -28,10 +28,10 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
 
         public void Created()
         {
-            _entityStateTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
-            _entityInterfaceTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
-            _repositoryInterfaceTemplateDependancy = TemplateDependancy.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
-            _dbContextTemplateDependancy = TemplateDependancy.OnTemplate(DbContextTemplate.Identifier);
+            _entityStateTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+            _entityInterfaceTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
+            _repositoryInterfaceTemplateDependancy = TemplateDependency.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
+            _dbContextTemplateDependancy = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
         }
 
         public string EntityInterfaceName
@@ -114,7 +114,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
             {
                 { "InterfaceType", $"{contractTemplate.Namespace}.{contractTemplate.ClassName}"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" },
-                { "InterfaceTypeTemplateId", _repositoryInterfaceTemplateDependancy.TemplateIdOrName },
+                { "InterfaceTypeTemplateId", _repositoryInterfaceTemplateDependency.TemplateIdOrName },
                 { "ConcreteTypeTemplateId", Identifier }
             });
         }

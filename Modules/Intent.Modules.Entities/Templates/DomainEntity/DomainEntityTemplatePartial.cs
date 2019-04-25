@@ -6,7 +6,7 @@ using Intent.MetaModel.Domain;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.Entities.Templates.DomainEntity

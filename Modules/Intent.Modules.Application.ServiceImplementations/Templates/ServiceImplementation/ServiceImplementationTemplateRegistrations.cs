@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using Intent.MetaModel.Service;
+using Intent.Engine;
+using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {
     [Description(ServiceImplementationTemplate.Identifier)]
     public class ServiceImplementationTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly ServicesMetadataProvider _metaDataManager;
 
-        public ServiceImplementationTemplateRegistrations(IMetadataManager metaDataManager)
+        public ServiceImplementationTemplateRegistrations(ServicesMetadataProvider metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -27,7 +28,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetServiceModels(application);
+            return _metaDataManager.GetServices(application);
         }
     }
 }

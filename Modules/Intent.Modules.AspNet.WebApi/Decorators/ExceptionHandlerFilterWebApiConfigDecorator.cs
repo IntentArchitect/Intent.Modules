@@ -17,7 +17,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return new[] { TemplateDependancy.OnTemplate(WebApiFilterTemplate.TemplateId) };
+            return new[] { TemplateDependency.OnTemplate(WebApiFilterTemplate.TemplateId) };
         }
     }
 }

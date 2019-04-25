@@ -1,5 +1,5 @@
 ﻿using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService

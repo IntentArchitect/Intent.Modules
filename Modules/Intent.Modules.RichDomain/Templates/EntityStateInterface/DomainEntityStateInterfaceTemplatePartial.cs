@@ -1,7 +1,7 @@
 ﻿#warning Indexes and Unqiues on FKs think its not done for 1 to Many
 #warning need to factor in Aggregate boundaries into Edit and States
 
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.Templates
 using System.Collections.Generic;

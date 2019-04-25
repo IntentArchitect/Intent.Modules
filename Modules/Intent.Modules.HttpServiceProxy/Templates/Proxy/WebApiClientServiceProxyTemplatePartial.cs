@@ -7,7 +7,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
@@ -103,7 +103,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<ServiceModel>(_serviceContractTemplateId, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(_serviceContractTemplateId, x => x.Id == Model.Id));
             if (serviceContractTemplate == null)
             {
                 Logging.Log.Warning($"Could not find template with ID [{_serviceContractTemplateId}] " +
@@ -118,7 +118,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string GetHttpClientServiceInterfaceName()
         {
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(_httpClientServiceInterfaceTemplateId));
+            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(_httpClientServiceInterfaceTemplateId));
             if (template == null)
             {
                 Logging.Log.Warning($"Could not find template with ID [{_httpClientServiceInterfaceTemplateId}] " +
@@ -140,7 +140,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
                     : Types.Get(typeInfo));
             }
 
-            var templateInstance = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnModel<IDTOModel>(_dtoTemplateId, x => x.Id == typeInfo.Id));
+            var templateInstance = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IDTOModel>(_dtoTemplateId, x => x.Id == typeInfo.Id));
             if (templateInstance == null)
             {
                 Logging.Log.Warning($"Could not find template with ID [{_dtoTemplateId}] " +

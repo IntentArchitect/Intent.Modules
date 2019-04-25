@@ -34,7 +34,7 @@ namespace Intent.Modules.Mapping.EntityToDto.Owin.Decorators
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies() => new[]
         {
-            TemplateDependancy.OnTemplate(DTOMappingTemplate.Identifier),
+            TemplateDependency.OnTemplate(DTOMappingTemplate.Identifier),
         };
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies() => new[]

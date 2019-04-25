@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.Templates
 using System;
 using System.Collections.Generic;
@@ -92,7 +92,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
                 case Constants.ContainerRegistrationEvent.SingletonLifetime:
                     return "new ContainerControlledLifetimeManager()";
                 case Constants.ContainerRegistrationEvent.PerServiceCallLifetime:
-                    return $"new {Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(PerServiceCallLifetimeManagerTemplate.Identifier)).ClassName}()";
+                    return $"new {Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(PerServiceCallLifetimeManagerTemplate.Identifier)).ClassName}()";
                 case Constants.ContainerRegistrationEvent.TransientLifetime:
                     return string.Empty;
                 default:
@@ -111,8 +111,8 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
                 interfaceType: @event.TryGetValue(ContainerRegistrationEvent.InterfaceTypeKey),
                 concreteType: @event.GetValue(ContainerRegistrationEvent.ConcreteTypeKey),
                 lifetime: @event.TryGetValue(ContainerRegistrationEvent.LifetimeKey),
-                interfaceTypeTemplateDependency: @event.TryGetValue(ContainerRegistrationEvent.InterfaceTypeTemplateIdKey) != null ? TemplateDependancy.OnTemplate(@event.TryGetValue(ContainerRegistrationEvent.InterfaceTypeTemplateIdKey)) : null,
-                concreteTypeTemplateDependency: @event.TryGetValue(ContainerRegistrationEvent.ConcreteTypeTemplateIdKey) != null ? TemplateDependancy.OnTemplate(@event.TryGetValue(ContainerRegistrationEvent.ConcreteTypeTemplateIdKey)) : null));
+                interfaceTypeTemplateDependency: @event.TryGetValue(ContainerRegistrationEvent.InterfaceTypeTemplateIdKey) != null ? TemplateDependency.OnTemplate(@event.TryGetValue(ContainerRegistrationEvent.InterfaceTypeTemplateIdKey)) : null,
+                concreteTypeTemplateDependency: @event.TryGetValue(ContainerRegistrationEvent.ConcreteTypeTemplateIdKey) != null ? TemplateDependency.OnTemplate(@event.TryGetValue(ContainerRegistrationEvent.ConcreteTypeTemplateIdKey)) : null));
         }
     }
 

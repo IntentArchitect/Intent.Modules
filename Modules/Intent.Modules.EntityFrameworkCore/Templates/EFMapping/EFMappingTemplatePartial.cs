@@ -5,7 +5,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.EntityFramework;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates
 
@@ -25,7 +25,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
         public void Created()
         {
-            _domainTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+            _domainTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
         }
 
         public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(_domainTemplateDependancy)?.ClassName ?? Model.Name;

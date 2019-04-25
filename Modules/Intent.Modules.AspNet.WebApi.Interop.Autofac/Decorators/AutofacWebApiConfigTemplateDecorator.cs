@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Intent.Modules.Autofac.Templates.AutofacConfig;
 using Intent.Modules.Common;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 
 namespace Intent.Modules.AspNet.WebApi.Interop.Autofac.Decorators
 {

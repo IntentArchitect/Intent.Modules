@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using Intent.MetaModel;
-using Intent.MetaModel.Domain;
-using Intent.MetaModel.Service;
+using Intent.Metadata.Models;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Common;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
+using Intent.Modelers.Services;
+using Intent.Modules.Common.Templates;
+using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {
     public class UpdateImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        public bool Match(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             if (operationModel.Parameters.Count() != 2)
             {
@@ -41,7 +42,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        public string GetImplementation(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             var idParam = operationModel.Parameters.First(p => string.Equals(p.Name, "id", StringComparison.OrdinalIgnoreCase));
             var dtoParam = operationModel.Parameters.First(p => !string.Equals(p.Name, "id", StringComparison.OrdinalIgnoreCase));
@@ -50,10 +51,10 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                 {EmitPropertyAssignments(metaDataManager, application, domainModel, "existing"+ domainModel.Name, dtoParam)}";
         }
 
-        private string EmitPropertyAssignments(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, string domainVarName, IOperationParameterModel operationParameterModel)
+        private string EmitPropertyAssignments(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, string domainVarName, IOperationParameter operationParameterModel)
         {
             var sb = new StringBuilder();
-            var dto = metaDataManager.GetDTOModels(application).First(p => p.Id == operationParameterModel.TypeReference.Id);
+            var dto = metaDataManager.GetDTOs(application).First(p => p.Id == operationParameterModel.Type.Id);
             foreach (var domainAttribute in domainModel.Attributes)
             {
                 var dtoField = dto.Fields.FirstOrDefault(p => p.Name.Equals(domainAttribute.Name, StringComparison.OrdinalIgnoreCase));
@@ -62,7 +63,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                     sb.AppendLine($"                    #warning No matching field found for {domainAttribute.Name}");
                     continue;
                 }
-                if (domainAttribute.Type.Id != dtoField.TypeReference.Id)
+                if (domainAttribute.Type.Id != dtoField.Type.Id)
                 {
                     sb.AppendLine($"                    #warning No matching type for Domain: {domainAttribute.Name} and DTO: {dtoField.Name}");
                     continue;

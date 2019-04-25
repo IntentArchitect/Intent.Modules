@@ -2,8 +2,8 @@
 using Intent.MetaModel.Service;
 using Intent.Modules.Constants;
 using Intent.Modules.Typescript.ServiceAgent.Contracts;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.Templates
 using System.Collections.Generic;
 using System.Linq;

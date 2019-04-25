@@ -4,7 +4,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.RichDomain.EntityFramework.Templates.RepositoryContract;
 using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.Modules.RichDomain.Templates.EntityStateInterface;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
 using Intent.Templates
 
@@ -23,9 +23,9 @@ namespace Intent.Modules.RichDomain.EntityFramework.Templates.Repository
         {
             return new[]
             {
-                TemplateDependancy.OnModel(DomainEntityStateTemplate.Identifier, Model),
-                TemplateDependancy.OnModel(DomainEntityStateInterfaceTemplate.Identifier, Model),
-                TemplateDependancy.OnModel(RepositoryContractTemplate.Identifier, Model)
+                TemplateDependency.OnModel(DomainEntityStateTemplate.Identifier, Model),
+                TemplateDependency.OnModel(DomainEntityStateInterfaceTemplate.Identifier, Model),
+                TemplateDependency.OnModel(RepositoryContractTemplate.Identifier, Model)
             };
         }
 

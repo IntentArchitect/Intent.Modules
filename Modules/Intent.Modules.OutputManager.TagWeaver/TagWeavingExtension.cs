@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.Common.Plugins;
 using Intent.Modules.OutputManager.TagWeaver.TokenParsers;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Eventing;
 using Intent.SoftwareFactory.Plugins;
 using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using Intent.Templates

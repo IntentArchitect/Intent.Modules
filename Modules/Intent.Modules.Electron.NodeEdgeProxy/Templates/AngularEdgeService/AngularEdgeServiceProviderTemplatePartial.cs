@@ -3,8 +3,8 @@ using Intent.MetaModel.Hosting;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.Templates
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService

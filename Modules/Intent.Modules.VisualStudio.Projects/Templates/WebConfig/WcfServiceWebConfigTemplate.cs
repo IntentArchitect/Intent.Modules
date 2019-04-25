@@ -1,7 +1,7 @@
 ﻿/*
 using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 using System.Collections.Generic;
 using System.IO;

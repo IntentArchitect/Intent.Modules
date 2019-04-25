@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Intent.MetaModel.Domain;
+using Intent.Engine;
+using Intent.Modelers.Domain;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
@@ -15,10 +16,10 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
     [Description(EntitySpecificationTemplate.Identifier)]
     public class EntitySpecificationTemplateRegistration : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly DomainMetadataProvider _metaDataManager;
         private IEnumerable<string> _stereotypeNames;
 
-        public EntitySpecificationTemplateRegistration(IMetadataManager metaDataManager)
+        public EntitySpecificationTemplateRegistration(DomainMetadataProvider metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
@@ -40,8 +41,8 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            var allModels = _metaDataManager.GetDomainModels(application);
-            var filteredModels = allModels.Where(p => _stereotypeNames.Any(q => p.HasStereotype(q)));
+            var allModels = _metaDataManager.GetClasses(application);
+            var filteredModels = allModels.Where(p => _stereotypeNames.Any(p.HasStereotype));
 
             if (!filteredModels.Any())
             {

@@ -37,7 +37,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(OwinWebApiConfigTemplate.Identifier),
+                TemplateDependency.OnTemplate(OwinWebApiConfigTemplate.Identifier),
             };
         }
     }

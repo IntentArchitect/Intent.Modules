@@ -3,7 +3,7 @@ using System.Linq;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsReadMe
@@ -38,7 +38,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsReadMe
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DbMigrationsConfigurationTemplate.Identifier)
+                TemplateDependency.OnTemplate(DbMigrationsConfigurationTemplate.Identifier)
             };
         }
     }

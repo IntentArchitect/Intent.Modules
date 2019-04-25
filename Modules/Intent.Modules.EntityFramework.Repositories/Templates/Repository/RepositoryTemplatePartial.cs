@@ -10,7 +10,7 @@ using Intent.Modules.Entities.DDD.Templates.RepositoryInterface;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor;
 using Intent.Modules.EntityFramework.Templates.DbContext;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
@@ -31,18 +31,18 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 
         public void Created()
         {
-            _entityStateTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
-            _entityInterfaceTemplateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
-            _repositoryInterfaceTemplateDependancy = TemplateDependancy.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
-            _dbContextTemplateDependancy = TemplateDependancy.OnTemplate(DbContextTemplate.Identifier);
-            _deleteVisitorTemplateDependancy = TemplateDependancy.OnTemplate(EntityCompositionVisitorTemplate.Identifier);
+            _entityStateTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+            _entityInterfaceTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
+            _repositoryInterfaceTemplateDependancy = TemplateDependency.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
+            _dbContextTemplateDependancy = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
+            _deleteVisitorTemplateDependancy = TemplateDependency.OnTemplate(EntityCompositionVisitorTemplate.Identifier);
         }
 
         public string EntityCompositionVisitorName
         {
             get
             {
-                var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(EntityCompositionVisitorTemplate.Identifier));
+                var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(EntityCompositionVisitorTemplate.Identifier));
                 return template != null ? NormalizeNamespace($"{template.Namespace}.{template.ClassName}") : null;
             }
         }
@@ -131,7 +131,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             {
                 { "InterfaceType", $"{contractTemplate.Namespace}.{contractTemplate.ClassName}"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" },
-                { "InterfaceTypeTemplateId", _repositoryInterfaceTemplateDependancy.TemplateIdOrName },
+                { "InterfaceTypeTemplateId", _repositoryInterfaceTemplateDependency.TemplateIdOrName },
                 { "ConcreteTypeTemplateId", Identifier }
             });
         }

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.VisualStudio.Projects.Decorators;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Messaging.Publisher.Decorators.WebConfig

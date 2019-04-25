@@ -3,7 +3,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public class TemplateDependancy : ITemplateDependency
+    public class TemplateDependency : ITemplateDependency
     {
         public string TemplateIdOrName { get; }
         //public object MetaDataModel { get; }
@@ -11,7 +11,7 @@ namespace Intent.Modules.Common.Templates
 
         private Func<ITemplate, bool> _isMatch;
 
-        private TemplateDependancy(string templateIdOrName, Func<ITemplate, bool> isMatch)
+        private TemplateDependency(string templateIdOrName, Func<ITemplate, bool> isMatch)
         {
             TemplateIdOrName = templateIdOrName;
             _isMatch = isMatch;
@@ -21,22 +21,22 @@ namespace Intent.Modules.Common.Templates
 
         public static ITemplateDependency OnTemplate(string templateIdOrName)
         {
-            return new TemplateDependancy(templateIdOrName, (t) => true);
+            return new TemplateDependency(templateIdOrName, (t) => true);
         }
 
         public static ITemplateDependency OnModel(string templateIdOrName, object metaDataModel)
         {
-            return new TemplateDependancy(templateIdOrName, (t) => (t as ITemplateWithModel)?.Model == metaDataModel);
+            return new TemplateDependency(templateIdOrName, (t) => (t as ITemplateWithModel)?.Model == metaDataModel);
         }
 
         public static ITemplateDependency OnClassName(string templateIdOrName, string className)
         {
-            return new TemplateDependancy(templateIdOrName, (t) => t.GetMetaData().CustomMetaData.ContainsKey("ClassName") && t.GetMetaData().CustomMetaData["ClassName"] == className);
+            return new TemplateDependency(templateIdOrName, (t) => t.GetMetaData().CustomMetaData.ContainsKey("ClassName") && t.GetMetaData().CustomMetaData["ClassName"] == className);
         }
 
         public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch)
         {
-            return new TemplateDependancy(
+            return new TemplateDependency(
                 templateIdOrName,
                 (t) =>
                 {

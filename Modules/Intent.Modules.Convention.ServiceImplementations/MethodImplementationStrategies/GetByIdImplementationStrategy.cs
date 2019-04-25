@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Linq;
-using Intent.MetaModel;
-using Intent.MetaModel.Domain;
-using Intent.MetaModel.Service;
+using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Application.Contracts;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
+using Intent.Modules.Common.Templates;
+using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {
     public class GetByIdImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        public bool Match(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             if (operationModel.Parameters.Count() != 1)
             {
@@ -22,7 +23,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                 return false;
             }
 
-            if (operationModel?.ReturnType?.TypeReference?.IsCollection ?? false)
+            if (operationModel?.ReturnType?.Type?.IsCollection ?? false)
             {
                 return false;
             }
@@ -42,7 +43,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationModel operationModel)
+        public string GetImplementation(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             return $@"var element ={ (operationModel.IsAsync() ? " await" : "") } {domainModel.Name.ToPrivateMember()}Repository.FindById{ (operationModel.IsAsync() ? "Async" : "") }({operationModel.Parameters.First().Name.ToCamelCase()});
             return element.MapTo{domainModel.Name.ToPascalCase()}DTO();";
