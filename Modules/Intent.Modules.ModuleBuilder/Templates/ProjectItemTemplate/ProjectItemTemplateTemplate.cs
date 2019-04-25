@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "tt",
-                defaultLocationInProject: "Templates\\${Model.Name}");
+                defaultLocationInProject: "Templates/${Model.Name}");
         }
 
         public override string TransformText()

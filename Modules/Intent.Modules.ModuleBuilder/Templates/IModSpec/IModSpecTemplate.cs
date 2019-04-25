@@ -104,12 +104,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
   <templates>
   </templates>
   <dependencies>
-    <dependency id=""Intent.Common"" version=""1.7.0"" />
-    <dependency id=""Intent.Common.Types"" version=""1.7.0"" />
+    <dependency id=""Intent.Common"" version=""1.9.0"" />
+    <dependency id=""Intent.Common.Types"" version=""1.9.0"" />
   </dependencies> 
   <files>
-    <file src=""bin\$configuration$\$id$.dll"" />
-    <file src=""bin\$configuration$\$id$.pdb"" />
+    <file src=""bin/$configuration$/$id$.dll"" />
+    <file src=""bin/$configuration$/$id$.pdb"" />
   </files>
 </package>");
             }

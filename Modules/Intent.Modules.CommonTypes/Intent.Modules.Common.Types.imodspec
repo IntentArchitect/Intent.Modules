@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Types</id>
-  <version>1.7.0</version>
+  <version>1.9.0</version>
   <summary>Common Types for Modelling.</summary>
   <description>Common data types for modelling.</description>
   <authors>Intent Architect</authors>
@@ -13,16 +13,16 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="1.7.0"/>
+    <dependency id="Intent.Common" version="1.9.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\$id$.dll"/>
-    <file src="bin\$configuration$\$id$.pdb"/>
-<!--    <file src="bin\$configuration$\Intent.Modules.Common.dll" inspect="false"/>-->
+    <file src="bin/$configuration$/$id$.dll"/>
+    <file src="bin/$configuration$/$id$.pdb"/>
+<!--    <file src="bin/$configuration$/Intent.Modules.Common.dll" inspect="false"/>-->
   </files>
   <metadata>
-    <install target="Domain" src="Metadata\Intent.Common.Types"/>
-    <install target="Services" src="Metadata\Intent.Common.Types"/>
-    <install target="Eventing" src="Metadata\Intent.Common.Types"/>
+    <install target="Domain" src="Metadata/Intent.Common.Types"/>
+    <install target="Services" src="Metadata/Intent.Common.Types"/>
+    <install target="Eventing" src="Metadata/Intent.Common.Types"/>
   </metadata>  
 </package>

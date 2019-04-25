@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Registration",
                 fileExtension: "cs",
-                defaultLocationInProject: "Templates\\${Model.Name}",
+                defaultLocationInProject: "Templates/${Model.Name}",
                 className: "${Model.Name}Registration",
                 @namespace: "${Project.Name}.Templates.${Model.Name}"
             );

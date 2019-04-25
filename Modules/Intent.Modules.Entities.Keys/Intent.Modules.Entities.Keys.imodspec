@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities.Keys</id>
-  <version>1.7.0</version>
+  <version>1.9.0</version>
   <summary>Adds primary and foreign key properties to entities.</summary>
   <description>Adds primary and foreign key properties to entities. This is typically required for ORMs (Object Relational Mappers) such as Entity Framework.</description>
   <authors>Intent Architect</authors>
@@ -30,11 +30,11 @@
     <decorator id="Intent.Entities.Keys.BidirectionalOneToManyEntityDecorator"  enabled="true"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Entities" version="1.7.0"/>
-    <dependency id="Intent.Metadata.RDBMS" version="1.7.0"/>
+    <dependency id="Intent.Entities" version="1.9.0"/>
+    <dependency id="Intent.Metadata.RDBMS" version="1.9.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\$id$.dll"/>
-    <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="bin/$configuration$/$id$.dll"/>
+    <file src="bin/$configuration$/$id$.pdb"/>
   </files>
 </package>

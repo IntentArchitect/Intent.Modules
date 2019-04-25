@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"${{Model.Name}}Partial",
                 fileExtension: "cs",
-                defaultLocationInProject: "Templates\\${Model.Name}",
+                defaultLocationInProject: "Templates/${Model.Name}",
                 className: "${Model.Name}",
                 @namespace: "${Project.Name}.Templates.${Model.Name}"
             );

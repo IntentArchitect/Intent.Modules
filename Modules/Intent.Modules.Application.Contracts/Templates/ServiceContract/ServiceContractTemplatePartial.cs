@@ -59,7 +59,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "I${Model.Name}",
                 fileExtension: "cs",
-                defaultLocationInProject: string.Join("\\", GetNamespaceParts().DefaultIfEmpty("ServiceContracts")),
+                defaultLocationInProject: string.Join("/", GetNamespaceParts().DefaultIfEmpty("ServiceContracts")),
                 className: "I${Model.Name}",
                 @namespace: "${FolderBasedNamespace}");
         }

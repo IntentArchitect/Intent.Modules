@@ -93,7 +93,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Mapping",
                 fileExtension: "cs",
-                defaultLocationInProject: $"Mappings{(GetNamespaceParts().Any() ? "\\" + string.Join("\\", GetNamespaceParts()) : "")}",
+                defaultLocationInProject: $"Mappings{(GetNamespaceParts().Any() ? "/" + string.Join("/", GetNamespaceParts()) : "")}",
                 className: "${Model.Name}Mapping",
                 @namespace: string.Join(".", new[] { "${Project.ProjectName}" }.Concat(GetNamespaceParts()))
                 );

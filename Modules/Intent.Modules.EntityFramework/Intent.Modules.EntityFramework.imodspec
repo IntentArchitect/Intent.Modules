@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.EntityFramework</id>
-  <version>1.7.0</version>
+  <version>1.9.0</version>
   <summary>Entity Framework implementation.</summary>
   <description>Entity Framework implementation.</description>
   <authors>Intent Architect</authors>
@@ -31,21 +31,21 @@
   <interoperability>
     <detect id="Intent.AspNet.WebApi">
       <install>
-        <package id="Intent.EntityFramework.Interop.WebApi" version="1.7.0"/>
+        <package id="Intent.EntityFramework.Interop.WebApi" version="1.9.0"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Modelers.Domain" version="1.0.0"/>
-    <dependency id="Intent.Common" version="1.7.0"/>
-    <dependency id="Intent.Metadata.RDBMS" version="1.7.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0"/>
+    <dependency id="Intent.Modelers.Domain" version="1.9.0"/>
+    <dependency id="Intent.Common" version="1.9.0"/>
+    <dependency id="Intent.Metadata.RDBMS" version="1.9.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.9.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\$id$.dll"/>
-    <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="bin/$configuration$/$id$.dll"/>
+    <file src="bin/$configuration$/$id$.pdb"/>
   </files>
   <metadata>
-    <install target="Domain" src="MetaData\Domain"/>
+    <install target="Domain" src="MetaData/Domain"/>
   </metadata>
 </package>
