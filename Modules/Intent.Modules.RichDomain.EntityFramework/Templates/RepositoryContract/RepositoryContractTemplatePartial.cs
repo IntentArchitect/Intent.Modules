@@ -3,7 +3,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.RichDomain.EntityFramework.Templates.RepositoryContract
 {
@@ -16,7 +16,7 @@ namespace Intent.Modules.RichDomain.EntityFramework.Templates.RepositoryContract
         {
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

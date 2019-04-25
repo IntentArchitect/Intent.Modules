@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Intent.MetaModel.Domain;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Entities.Templates.DomainEntity
 {

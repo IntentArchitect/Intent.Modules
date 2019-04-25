@@ -1,5 +1,5 @@
 ﻿using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System;
 using System.Collections.Generic;
 using Intent.Modules.Autofac.Templates.AutofacConfig;

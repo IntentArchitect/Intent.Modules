@@ -1,6 +1,6 @@
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System.Collections.Generic;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
@@ -25,7 +25,7 @@ namespace Intent.Modules.EntityFramework.Interop.Unity.Decorators
         public string Registrations() => $@"
             container.RegisterType<IDbContextFactory, DbContextFactory>();
 ";
-        //public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        //public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         //{
         //    return new[]
         //    {

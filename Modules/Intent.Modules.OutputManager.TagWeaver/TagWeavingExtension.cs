@@ -4,7 +4,7 @@ using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Plugins;
 using Intent.SoftwareFactory.Plugins.FactoryExtensions;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

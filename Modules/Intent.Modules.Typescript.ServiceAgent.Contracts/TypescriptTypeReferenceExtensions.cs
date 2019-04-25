@@ -1,3 +1,4 @@
+using Intent.Metadata.Models;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
 using Intent.Modules.Common;
@@ -6,7 +7,7 @@ using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Constants;
 using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts
 {

@@ -8,7 +8,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
@@ -26,8 +26,8 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         private string _stereotypeNameConfigValue;
         private string _stereotypeTypePropertyConfigValue;
         private string _stereotypeNamespacePropertyConfigValue;
-        private ITemplateDependancy _domainTemplateDependancy;
-        private ITemplateDependancy _contractTemplateDependancy;
+        private ITemplateDependency _domainTemplateDependancy;
+        private ITemplateDependency _contractTemplateDependancy;
         private IEnumerable<IMappingTemplateDecorator> _decorators;
 
         public MappingTemplate(IProject project, IDTOModel model)
@@ -55,7 +55,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
             return base.GetNugetDependencies().Concat(new INugetPackageInfo[] { NugetPackages.AutoMapper });
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[] { _contractTemplateDependancy, _domainTemplateDependancy };
         }

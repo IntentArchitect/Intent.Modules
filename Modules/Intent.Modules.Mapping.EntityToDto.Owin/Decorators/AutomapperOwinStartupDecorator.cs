@@ -3,7 +3,7 @@ using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Mapping.EntityToDto.Templates.DTOMappingProfile;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Mapping.EntityToDto.Owin.Decorators
 {
@@ -32,7 +32,7 @@ namespace Intent.Modules.Mapping.EntityToDto.Owin.Decorators
 
         public int Priority { get; set; } = 200;
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies() => new[]
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies() => new[]
         {
             TemplateDependancy.OnTemplate(DTOMappingTemplate.Identifier),
         };

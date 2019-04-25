@@ -4,7 +4,7 @@ using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Class;
 using Intent.SoftwareFactory.MetaModels.Common;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.AngularJs.ServiceAgent.Templates.DTO
 {

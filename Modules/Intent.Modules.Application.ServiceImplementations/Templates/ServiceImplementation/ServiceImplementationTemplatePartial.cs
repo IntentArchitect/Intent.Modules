@@ -13,7 +13,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {
@@ -32,7 +32,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

@@ -2,7 +2,7 @@
 using Intent.MetaModel.Service;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System.Collections.Generic;
 using System.Linq;
 using System;
@@ -30,9 +30,9 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return new ITemplateDependancy[] { };
+            return new ITemplateDependency[] { };
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()

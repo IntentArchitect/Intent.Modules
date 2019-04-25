@@ -11,18 +11,18 @@ using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 {
     partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.Implementation";
-        private ITemplateDependancy _entityStateTemplateDependancy;
-        private ITemplateDependancy _entityInterfaceTemplateDependancy;
-        private ITemplateDependancy _repositoryInterfaceTemplateDependancy;
-        private ITemplateDependancy _dbContextTemplateDependancy;
-        private ITemplateDependancy _deleteVisitorTemplateDependancy;
+        private ITemplateDependency _entityStateTemplateDependancy;
+        private ITemplateDependency _entityInterfaceTemplateDependancy;
+        private ITemplateDependency _repositoryInterfaceTemplateDependancy;
+        private ITemplateDependency _dbContextTemplateDependancy;
+        private ITemplateDependency _deleteVisitorTemplateDependancy;
 
         public RepositoryTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
@@ -97,7 +97,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

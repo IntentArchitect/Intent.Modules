@@ -1,5 +1,5 @@
 ﻿using System;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
@@ -26,7 +26,7 @@ namespace Intent.Modules.Common.Templates
                     string @namespace,
                     string dependsUpon = null
                     )
-            : base(overwriteBehaviour, SoftwareFactory.Templates.CodeGenType.RoslynWeave, fileName, fileExtension, defaultLocationInProject)
+            : base(overwriteBehaviour, "RoslynWeave", fileName, fileExtension, defaultLocationInProject)
         {
             if (!string.IsNullOrWhiteSpace(className))
             {

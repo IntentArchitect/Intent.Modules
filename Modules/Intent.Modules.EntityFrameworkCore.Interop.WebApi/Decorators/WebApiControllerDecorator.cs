@@ -6,7 +6,7 @@ using Intent.Modules.AspNetCore.WebApi.Templates.Controller;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.EntityFrameworkCore.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using Intent.Modules.Common;
 
 namespace Intent.Modules.EntityFrameworkCore.Interop.WebApi.Decorators
@@ -58,7 +58,7 @@ namespace Intent.Modules.EntityFrameworkCore.Interop.WebApi.Decorators
             return _application.FindTemplateInstance<IHasClassDetails>(TemplateDependancy.OnTemplate(DbContextTemplate.Identifier));
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

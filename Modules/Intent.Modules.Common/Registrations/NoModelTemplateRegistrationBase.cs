@@ -1,7 +1,6 @@
-﻿using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.Templates.Registrations;
+﻿using Intent.Engine;
+using Intent.Registrations;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Registrations
 {
@@ -11,9 +10,9 @@ namespace Intent.Modules.Common.Registrations
 
         public abstract ITemplate CreateTemplateInstance(IProject project);
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            registery.Register(TemplateId, project => CreateTemplateInstance(project));
+            registry.Register(TemplateId, CreateTemplateInstance);
         }
     }
 }

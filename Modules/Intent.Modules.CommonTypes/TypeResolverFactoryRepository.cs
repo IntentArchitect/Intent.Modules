@@ -24,7 +24,7 @@ namespace Intent.Modules.CommonTypes
             }
         }
 
-        public Contracts.ITypeResolverFactory GetTypeResolver(SoftwareFactory.Templates.IFileMetaData metaData)
+        public Contracts.ITypeResolverFactory GetTypeResolver(SoftwareFactory.Templates.IFileMetadata metaData)
         {
             var resolver = _typeResolvers.OrderByDescending(tr => tr.Priority).FirstOrDefault(tr => tr.SupportedFileTypes.Any( ft => ft.ToLower().EndsWith( metaData.FileExtension.ToLower())) );
 

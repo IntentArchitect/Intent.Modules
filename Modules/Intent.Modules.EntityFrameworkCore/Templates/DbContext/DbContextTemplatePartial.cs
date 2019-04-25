@@ -11,7 +11,7 @@ using Intent.Modules.EntityFramework;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 {
@@ -104,7 +104,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
             }
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return Model.Select(x => TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
         }

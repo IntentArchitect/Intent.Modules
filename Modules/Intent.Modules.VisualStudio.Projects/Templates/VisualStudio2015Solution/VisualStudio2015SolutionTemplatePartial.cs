@@ -1,12 +1,13 @@
 ﻿using Intent.Modules.VisualStudio.Projects.Parsing;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 using Microsoft.Build.Construction;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Intent.Engine;
 using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
@@ -16,7 +17,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
     {
         public const string Identifier = "Intent.VisualStudio.Projects.VisualStudio2015Solution";
         private readonly IApplication _application;
-        private readonly IFileMetaData _fileMetaData;
+        private readonly IFileMetadata _fileMetaData;
 
         public VisualStudio2015SolutionTemplate(IApplication application, SolutionFile existingSolution)
         {
@@ -143,12 +144,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
             }
         }
 
-        public IFileMetaData GetMetaData()
+        public IFileMetadata GetMetaData()
         {
             return _fileMetaData;
         }
 
-        private IFileMetaData CreateMetaData()
+        private IFileMetadata CreateMetaData()
         {            
             return new SolutionFileMetaData(
                 outputType: "VisualStudio2015Solution", 

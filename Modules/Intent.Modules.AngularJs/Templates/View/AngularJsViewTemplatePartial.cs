@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.AngularJs.Templates.View
 {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
+using Intent.Utils;
 
 namespace Intent.Modules.Common.Templates
 {
@@ -61,9 +61,9 @@ namespace Intent.Modules.Common.Templates
             return template.GetAll<IDeclareUsings, string>((i) => i.DeclareUsings());
         }
 
-        public static IEnumerable<ITemplateDependancy> GetAllTemplateDependancies(this ITemplate template)
+        public static IEnumerable<ITemplateDependency> GetAllTemplateDependancies(this ITemplate template)
         {
-            return template.GetAll<IHasTemplateDependencies, ITemplateDependancy>((i) => i.GetTemplateDependencies());
+            return template.GetAll<IHasTemplateDependencies, ITemplateDependency>((i) => i.GetTemplateDependencies());
         }
 
         public static IEnumerable<string> GetAllAdditionalHeaderInformation(this ITemplate template)

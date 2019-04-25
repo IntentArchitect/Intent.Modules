@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Intent.MetaModel.Domain;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {

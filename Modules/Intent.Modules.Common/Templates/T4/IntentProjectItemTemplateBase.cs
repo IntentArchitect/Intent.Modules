@@ -1,5 +1,5 @@
-﻿using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+﻿using Intent.Engine;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
@@ -16,8 +16,8 @@ namespace Intent.Modules.Common.Templates
         public string Id { get; }
         public TModel Model { get; }
         public IProject Project { get; }
-        public TemplateContext Context { get; }
-        public IFileMetaData FileMetaData { get; private set; }
+        public ITemplateContext Context { get; }
+        public IFileMetadata FileMetaData { get; private set; }
 
         public virtual string DependencyUsings => this.ResolveAllUsings(Project);
 
@@ -29,19 +29,19 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        public void ConfigureFileMetaData(IFileMetaData fileMetaData)
+        public void ConfigureFileMetaData(IFileMetadata fileMetaData)
         {
             FileMetaData = fileMetaData;
         }
 
-        public abstract DefaultFileMetaData DefineDefaultFileMetaData();
+        public abstract ITemplateFileConfig DefineDefaultFileMetaData();
 
         public virtual string RunTemplate()
         {
             return TransformText();
         }
 
-        public IFileMetaData GetMetaData()
+        public IFileMetadata GetMetaData()
         {
             return FileMetaData;
         }

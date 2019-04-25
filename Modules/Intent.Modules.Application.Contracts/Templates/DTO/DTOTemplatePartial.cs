@@ -9,7 +9,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {

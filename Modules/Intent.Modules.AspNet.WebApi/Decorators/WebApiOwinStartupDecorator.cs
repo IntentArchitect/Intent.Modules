@@ -1,6 +1,6 @@
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
 using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
 
@@ -33,7 +33,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
 
         public int Priority { get; set; } = -100;
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

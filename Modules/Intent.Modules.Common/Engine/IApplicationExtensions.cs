@@ -1,6 +1,6 @@
-﻿using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+﻿using Intent.Engine;
+using Intent.Modules.Common.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Common
 {
@@ -16,7 +16,7 @@ namespace Intent.Modules.Common
             return application.FindTemplateInstance(templateId, TemplateDependancy.OnClassName(templateId, className));
         }
 
-        public static ITemplate FindTemplateInstance(this IApplication application, ITemplateDependancy templateDependancy)
+        public static ITemplate FindTemplateInstance(this IApplication application, ITemplateDependency templateDependancy)
         {
             return application.FindTemplateInstance(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch);
         }
@@ -37,7 +37,7 @@ namespace Intent.Modules.Common
             return application.FindTemplateInstance(TemplateDependancy.OnTemplate(templateId)) as TTemplate;
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IApplication application, ITemplateDependancy templateDependancy) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this IApplication application, ITemplateDependency templateDependancy) where TTemplate : class
         {
             return application.FindTemplateInstance(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch) as TTemplate;
         }
@@ -52,7 +52,7 @@ namespace Intent.Modules.Common
             return application.FindProjectWithTemplateInstance(templateId, TemplateDependancy.OnClassName(templateId, className));
         }
 
-        public static IProject FindProjectWithTemplateInstance(this IApplication application, ITemplateDependancy templateDependancy)
+        public static IProject FindProjectWithTemplateInstance(this IApplication application, ITemplateDependency templateDependancy)
         {
             return application.FindProjectWithTemplateInstance(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch);
         }

@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +46,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
 
         public override string DependencyUsings => "";
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return _registrations
                 .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
@@ -118,7 +118,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
 
     internal class ContainerRegistration
     {
-        public ContainerRegistration(string interfaceType, string concreteType, string lifetime, ITemplateDependancy interfaceTypeTemplateDependency, ITemplateDependancy concreteTypeTemplateDependency)
+        public ContainerRegistration(string interfaceType, string concreteType, string lifetime, ITemplateDependency interfaceTypeTemplateDependency, ITemplateDependency concreteTypeTemplateDependency)
         {
             InterfaceType = interfaceType;
             ConcreteType = concreteType;
@@ -130,7 +130,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         public string InterfaceType { get; private set; }
         public string ConcreteType { get; private set; }
         public string Lifetime { get; private set; }
-        public ITemplateDependancy InterfaceTypeTemplateDependency { get; private set; }
-        public ITemplateDependancy ConcreteTypeTemplateDependency { get; }
+        public ITemplateDependency InterfaceTypeTemplateDependency { get; private set; }
+        public ITemplateDependency ConcreteTypeTemplateDependency { get; }
     }
 }

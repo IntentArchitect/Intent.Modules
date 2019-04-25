@@ -1,13 +1,14 @@
 ﻿using System;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Engine;
+using Intent.Registrations;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Registrations
 {
     [Obsolete("Legacy system for registering templates")]
-    public abstract class OldProjectTemplateRegistration : IOldProjectTemplateRegistration
+    public abstract class OldProjectTemplateRegistration
     {
-        public Action<ITemplate> RegisterApplicationTeamplate { get; set; }
+        public Action<ITemplate> RegisterApplicationTemplate { get; set; }
         public Action<string, Type, object> RegisterDecoratorNonGeneric { get; set; }
         public Action<string, Func<IProject, ITemplate>> RegisterTemplate { get; set; }
 
@@ -16,6 +17,6 @@ namespace Intent.Modules.Common.Registrations
             RegisterDecoratorNonGeneric(id, typeof(TDecorator), decorator);
         }
 
-        public abstract void RegisterStuff(IApplication application, IMetaDataManager metaDataManager);
+        public abstract void RegisterStuff(IApplication application, IMetadataManager metaDataManager);
     }
 }

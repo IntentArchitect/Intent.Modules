@@ -4,14 +4,14 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
 {
     partial class EntitySpecificationTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IPostTemplateCreation
     {
         public const string Identifier = "Intent.Entities.Repositories.Api.EntitySpecification";
-        private ITemplateDependancy _entityStateTemplateDependancy;
+        private ITemplateDependency _entityStateTemplateDependancy;
 
         public EntitySpecificationTemplate(IClass model, IProject project)
             : base(Identifier, project, model)

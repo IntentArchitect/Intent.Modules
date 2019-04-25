@@ -2,7 +2,7 @@
 using Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter;
 using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.AspNet.WebApi.Decorators
 {
@@ -15,7 +15,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
             return new []{ "config.Filters.Add(new ExceptionHandlerFilter());" };
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[] { TemplateDependancy.OnTemplate(WebApiFilterTemplate.TemplateId) };
         }

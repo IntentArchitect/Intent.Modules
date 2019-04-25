@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.SoftwareFactory.Engine;
 

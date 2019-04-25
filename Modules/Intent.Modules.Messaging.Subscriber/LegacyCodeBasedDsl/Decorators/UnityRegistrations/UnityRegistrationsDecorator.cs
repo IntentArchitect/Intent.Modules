@@ -6,7 +6,7 @@ using Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.MessageHa
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Decorators.UnityRegistrations
 {
@@ -59,11 +59,11 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Decorators.Unit
             return output;
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             if (_eventingModel == null)
             {
-                return new ITemplateDependancy[0];
+                return new ITemplateDependency[0];
             }
 
             return new[]

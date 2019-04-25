@@ -2,7 +2,7 @@
 using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 using System.Collections.Generic;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
@@ -39,9 +39,9 @@ namespace Intent.Modules.UserContext.Templates.UserContextProvider
                 );
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return new List<ITemplateDependancy>
+            return new List<ITemplateDependency>
             {
                 TemplateDependancy.OnTemplate(UserContextInterfaceTemplate.Identifier),
             };

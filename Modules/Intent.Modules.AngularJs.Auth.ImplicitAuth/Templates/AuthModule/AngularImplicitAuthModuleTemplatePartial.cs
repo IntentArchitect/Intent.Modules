@@ -2,15 +2,17 @@
 using Intent.Modules.Bower.Contracts;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 using System.Collections.Generic;
+using Intent.Engine;
+using Intent.Eventing;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
 {
-    partial class AngularImplicitAuthModuleTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasBowerDependencies, IRequiresPreProcessing, IHasDecorators<IAngularImplicitAuthModuleDecorator>
+    partial class AngularImplicitAuthModuleTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasBowerDependencies, IBeforeTemplateExecutionHook, IHasDecorators<IAngularImplicitAuthModuleDecorator>
     {
         public const string Identifier = "Intent.AngularJs.Auth.ImplicitAuth.AuthModule";
 
@@ -30,6 +32,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
         }
 
         public string BasePathConfigKey => $"{Project.Application.SolutionName}_{Project.ApplicationName()}_basepath".ToLower();
+
         public string ApplicationName => Project.ApplicationName();
 
         public override DefaultFileMetaData DefineDefaultFileMetaData()
@@ -56,7 +59,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
             };
         }
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
             _applicationEvents.Publish(ApplicationEvents.AngularJs_ModuleRegistered, new Dictionary<string, string>()
             {

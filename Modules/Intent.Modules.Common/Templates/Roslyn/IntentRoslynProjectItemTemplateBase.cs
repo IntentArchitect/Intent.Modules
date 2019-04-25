@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Intent.Engine;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 [assembly:InternalsVisibleTo("Intent.Modules.Common.Tests")]
 
@@ -180,7 +181,7 @@ namespace Intent.Modules.Common.Templates
 
         public abstract RoslynMergeConfig ConfigureRoslynMerger();
 
-        public sealed override DefaultFileMetaData DefineDefaultFileMetaData()
+        public sealed override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return DefineRoslynDefaultFileMetaData();
         }

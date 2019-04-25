@@ -1,5 +1,5 @@
 ﻿using Intent.MetaModel.Service;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System.Collections.Generic;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller

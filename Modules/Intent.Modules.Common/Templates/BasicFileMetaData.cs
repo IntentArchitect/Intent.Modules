@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public class BasicFileMetaData : IFileMetaData
+    public class BasicFileMetaData : IFileMetadata
     {
 
         public BasicFileMetaData(
@@ -17,7 +17,7 @@ namespace Intent.Modules.Common.Templates
             string dependsUpon
             )
         {
-            DefaultLocationInProject = defaultLocationInProject;
+            LocationInProject = defaultLocationInProject;
             DependsUpon = dependsUpon;
             if (fileExtension.StartsWith("."))
             {
@@ -36,10 +36,10 @@ namespace Intent.Modules.Common.Templates
         }
 
         public string CodeGenType { get; }
-        public string DefaultLocationInProject { get; }
         public string DependsUpon { get; }
         public string FileExtension { get; }
-        public string FileName { get; }
+        public string FileName { get; set; }
+        public string LocationInProject { get; set; }
         public OverwriteBehaviour OverwriteBehaviour { get; }
         public string FullLocationPath { get; }
         public string RelativeFilePath { get; }

@@ -2,7 +2,7 @@
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System;
 using System.Collections.Generic;
 using System.IO;

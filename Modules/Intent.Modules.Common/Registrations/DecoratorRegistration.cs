@@ -1,7 +1,8 @@
 ﻿using System;
-using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Configuration;
+using Intent.Engine;
+using Intent.Registrations;
+using Intent.Utils;
 
 namespace Intent.Modules.Common.Registrations
 {
@@ -11,7 +12,7 @@ namespace Intent.Modules.Common.Registrations
 
         public void DoRegistration(Action<string, Type, object> register, IApplication application)
         {
-            var config = application.Config.GetConfig(this.DecoratorId, SoftwareFactory.Configuration.PluginConfigType.Decorator);
+            var config = application.Config.GetConfig(this.DecoratorId, PluginConfigType.Decorator);
             if (!config.Enabled)
             {
                 Logging.Log.Info($"Skipping disabled Decorator : { DecoratorId }.");

@@ -6,7 +6,7 @@ using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
 using Intent.SoftwareFactory.MetaModels.Common;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using Intent.SoftwareFactory.Templates.Registrations;
 #pragma warning disable 618 // Old code based DSL
 

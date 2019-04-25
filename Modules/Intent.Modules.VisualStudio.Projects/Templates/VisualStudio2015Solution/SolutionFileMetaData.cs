@@ -1,11 +1,11 @@
-﻿using Intent.SoftwareFactory.Templates;
+﻿using Intent.Templates
 using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
 {
-    public class SolutionFileMetaData : IFileMetaData
+    public class SolutionFileMetaData : IFileMetadata
     {
         private readonly string _fileLocation;
 

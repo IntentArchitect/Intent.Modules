@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Entities.Templates
 {

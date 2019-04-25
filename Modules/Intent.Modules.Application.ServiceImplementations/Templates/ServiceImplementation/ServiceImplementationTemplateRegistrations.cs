@@ -4,7 +4,7 @@ using Intent.MetaModel.Service;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {

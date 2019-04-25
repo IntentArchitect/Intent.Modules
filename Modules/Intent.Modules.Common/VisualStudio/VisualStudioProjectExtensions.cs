@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 
 namespace Intent.Modules.Common.VisualStudio
 {

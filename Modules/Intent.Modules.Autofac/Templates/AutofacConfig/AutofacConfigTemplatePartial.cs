@@ -7,7 +7,7 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Autofac.Templates.AutofacConfig
 {
@@ -87,9 +87,9 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
         // Overriden to empty so that namespaces are not normalized completely (to avoid class name ambiguities - e.g. two SCHs with the same name)
         public override string DependencyUsings => "";
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            //return new ITemplateDependancy[0];
+            //return new ITemplateDependency[0];
             return _registrations
                 .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
                 .Select(x => x.InterfaceTypeTemplateDependency)
@@ -117,7 +117,7 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
 
     internal class ContainerRegistration
     {
-        public ContainerRegistration(string interfaceType, string concreteType, string lifetime, ITemplateDependancy interfaceTypeTemplateDependency, ITemplateDependancy concreteTypeTemplateDependency)
+        public ContainerRegistration(string interfaceType, string concreteType, string lifetime, ITemplateDependency interfaceTypeTemplateDependency, ITemplateDependency concreteTypeTemplateDependency)
         {
             InterfaceType = interfaceType;
             ConcreteType = concreteType;
@@ -129,7 +129,7 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
         public string InterfaceType { get; private set; }
         public string ConcreteType { get; private set; }
         public string Lifetime { get; private set; }
-        public ITemplateDependancy InterfaceTypeTemplateDependency { get; private set; }
-        public ITemplateDependancy ConcreteTypeTemplateDependency { get; }
+        public ITemplateDependency InterfaceTypeTemplateDependency { get; private set; }
+        public ITemplateDependency ConcreteTypeTemplateDependency { get; }
     }
 }

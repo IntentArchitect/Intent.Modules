@@ -1,5 +1,5 @@
 ﻿using Intent.MetaModel.Service;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {

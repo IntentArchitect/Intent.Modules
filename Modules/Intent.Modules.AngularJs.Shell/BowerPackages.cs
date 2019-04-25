@@ -1,5 +1,5 @@
 using Intent.Modules.Bower.Contracts;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.AngularJs.Shell
 {

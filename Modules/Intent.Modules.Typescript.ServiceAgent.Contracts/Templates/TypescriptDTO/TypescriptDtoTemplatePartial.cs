@@ -1,7 +1,7 @@
 ﻿using Intent.MetaModel.DTO;
 using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {

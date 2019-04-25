@@ -1,20 +1,20 @@
-﻿using Intent.SoftwareFactory.Templates;
+﻿using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public static class IFileMetaDataExtensions
+    public static class IFileMetadataExtensions
     {
-        public static string FileNameWithExtension(this IFileMetaData fm)
+        public static string FileNameWithExtension(this IFileMetadata fm)
         {
             return $"{fm.FileName}.{fm.FileExtension}";
         }
 
-        public static string GetFullLocationPathWithFileName(this IFileMetaData fm)
+        public static string GetFullLocationPathWithFileName(this IFileMetadata fm)
         {
             return $"{fm.GetFullLocationPath()}\\{fm.FileNameWithExtension()}";
         }
 
-        public static string GetRelativeFilePathWithFileName(this IFileMetaData fm)
+        public static string GetRelativeFilePathWithFileName(this IFileMetadata fm)
         {
             string relativePath = fm.GetRelativeFilePath();
             if (!string.IsNullOrWhiteSpace(relativePath))

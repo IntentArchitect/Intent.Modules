@@ -8,7 +8,7 @@ using Intent.Modules.EntityFramework.Repositories.Templates.Repository;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using Intent.SoftwareFactory.Templates.Registrations;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor

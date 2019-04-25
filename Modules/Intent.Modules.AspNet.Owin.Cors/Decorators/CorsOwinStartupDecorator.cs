@@ -1,5 +1,5 @@
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System.Collections.Generic;
 using Intent.Modules.Common.VisualStudio;
 

@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System;
 using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
@@ -12,9 +12,9 @@ namespace Intent.Modules.OutputManager.TagWeaver
     {
         private readonly ISoftwareFactoryEventDispatcher _eventDispatcher;
         public IProject Project { get; }
-        public IFileMetaData FileMetaData { get; }
+        public IFileMetadata FileMetaData { get; }
 
-        public FileWeaver(ISoftwareFactoryEventDispatcher eventDispatcher, IProject project, IFileMetaData fileMetaData)
+        public FileWeaver(ISoftwareFactoryEventDispatcher eventDispatcher, IProject project, IFileMetadata fileMetaData)
         {
             _eventDispatcher = eventDispatcher;
             this.Project = project;

@@ -1,5 +1,5 @@
 ﻿using Intent.MetaModel.Service;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System;
 using System.Collections.Generic;
 
@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
     public class ConstructorParameter
     {
-        public ConstructorParameter(string type, string name, ITemplateDependancy templateDependency)
+        public ConstructorParameter(string type, string name, ITemplateDependency templateDependency)
         {
             ParameterType = type;
             ParameterName = name;
@@ -34,6 +34,6 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         public string ParameterType { get; }
         public string ParameterName { get; }
-        public ITemplateDependancy TemplateDependency { get; }
+        public ITemplateDependency TemplateDependency { get; }
     }
 }

@@ -4,7 +4,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Common;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 #pragma warning disable 618 // Old code based DSL
 

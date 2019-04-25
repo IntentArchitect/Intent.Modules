@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Common
 {
@@ -38,17 +38,17 @@ namespace Intent.Modules.Common
             return project.FindTemplateInstance(templateId) as TTemplate;
         }
 
-        public static ITemplate FindTemplateInstance(this IProject project, ITemplateDependancy templateDependancy)
+        public static ITemplate FindTemplateInstance(this IProject project, ITemplateDependency templateDependancy)
         {
             return project.FindTemplateInstance(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch);
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IProject project, ITemplateDependancy templateDependancy) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this IProject project, ITemplateDependency templateDependancy) where TTemplate : class
         {
             return project.FindTemplateInstance(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch) as TTemplate;
         }
 
-        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IProject project, ITemplateDependancy templateDependancy) where TTemplate : class
+        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IProject project, ITemplateDependency templateDependancy) where TTemplate : class
         {
             return project.FindTemplateInstances(templateDependancy.TemplateIdOrName, templateDependancy.IsMatch, SearchOption.AllProjects).Cast<TTemplate>();
         }

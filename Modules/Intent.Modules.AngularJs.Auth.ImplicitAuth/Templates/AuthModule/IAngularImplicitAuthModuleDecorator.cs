@@ -1,4 +1,4 @@
-﻿using Intent.SoftwareFactory.Templates;
+﻿using Intent.Templates
 
 namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
 {

@@ -7,7 +7,7 @@ using Intent.Modules.EntityFramework;
 using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.RichDomain.EntityFramework.Templates.DeleteVisitor
 {
@@ -23,7 +23,7 @@ namespace Intent.Modules.RichDomain.EntityFramework.Templates.DeleteVisitor
 
         public string BoundedContextName => Project.ApplicationName();
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return Model.Select(x => TemplateDependancy.OnModel(DomainEntityStateTemplate.Identifier, x)).ToArray();
         }

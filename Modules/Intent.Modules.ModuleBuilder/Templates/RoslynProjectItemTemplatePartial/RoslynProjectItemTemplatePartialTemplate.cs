@@ -30,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             this.Write(@"using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using System;

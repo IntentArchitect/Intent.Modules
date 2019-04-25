@@ -4,7 +4,7 @@ using Intent.MetaModel.Domain;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Modules.Entities.Templates;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Entities.DDD.Decorators
 {

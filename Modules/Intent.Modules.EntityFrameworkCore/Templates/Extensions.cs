@@ -1,7 +1,7 @@
 ﻿using System;
 using Intent.MetaModel.Domain;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.EntityFrameworkCore.Templates
 {

@@ -7,7 +7,7 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface;
 
 namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
@@ -99,9 +99,9 @@ namespace Intent.Modules.HttpServiceProxy.Legacy.Proxy
             };
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return new List<ITemplateDependancy>
+            return new List<ITemplateDependency>
             {
                 TemplateDependancy.OnTemplate(HttpProxyInterceptorInterfaceTemplate.IDENTIFIER),
             };

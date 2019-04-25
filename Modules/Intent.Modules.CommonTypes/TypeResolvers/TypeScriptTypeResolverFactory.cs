@@ -8,7 +8,7 @@ using Intent.MetaModel.Common;
 using System.ComponentModel;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.CommonTypes.Contracts;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.CommonTypes.TypeResolvers
 {

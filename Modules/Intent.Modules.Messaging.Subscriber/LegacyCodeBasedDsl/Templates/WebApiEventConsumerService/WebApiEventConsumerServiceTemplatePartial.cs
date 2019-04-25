@@ -10,7 +10,7 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.MetaModels.Application;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebApiEventConsumerService
 {

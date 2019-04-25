@@ -5,7 +5,7 @@ using Intent.MetaModel.Domain;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 using IdentityGeneratorTemplate = Intent.Modules.Entities.Keys.Templates.IdentityGenerator.IdentityGeneratorTemplate;
 
 namespace Intent.Modules.Entities.Keys.Decorators
@@ -50,11 +50,11 @@ namespace Intent.Modules.Entities.Keys.Decorators
             return _surrogateKeyType.Trim().Equals("Guid", StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             if (!UseIdentityGenerator())
             {
-                return new List<ITemplateDependancy>();
+                return new List<ITemplateDependency>();
             }
             return new[] { TemplateDependancy.OnTemplate(IdentityGeneratorTemplate.Identifier) };
         }

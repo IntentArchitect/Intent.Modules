@@ -2,21 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.MetaModel.Common;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
-using IApplication = Intent.SoftwareFactory.Engine.IApplication;
-using IAssociationEnd = Intent.MetaModel.Domain.IAssociationEnd;
+using IApplication = Intent.Engine.IApplication;
 using IClassTypeSource = Intent.Modules.Common.TypeResolution.IClassTypeSource;
 
 namespace Intent.Modules.Common.Templates
 {
     public class ClassTypeSource : IClassTypeSource
     {
-        private readonly Func<MetaModel.Common.ITypeReference, string> _execute;
+        private readonly Func<ITypeReference, string> _execute;
 
-        internal ClassTypeSource(Func<MetaModel.Common.ITypeReference, string> execute)
+        internal ClassTypeSource(Func<ITypeReference, string> execute)
         {
             _execute = execute;
         }
@@ -70,7 +67,7 @@ namespace Intent.Modules.Common.Templates
                 ?.FullTypeName();
         }
 
-        public string GetClassType(MetaModel.Common.ITypeReference typeInfo)
+        public string GetClassType(ITypeReference typeInfo)
         {
             return _execute(typeInfo);
         }

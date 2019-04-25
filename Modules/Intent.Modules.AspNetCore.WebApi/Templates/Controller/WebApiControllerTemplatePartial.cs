@@ -11,7 +11,7 @@ using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {
@@ -35,7 +35,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return GetDecorators().SelectMany(x => x.DeclareUsings(Model));
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

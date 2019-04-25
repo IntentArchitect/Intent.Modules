@@ -4,7 +4,7 @@ using Intent.Modules.Constants;
 using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.UserContext.Templates.UserContextProviderInterface
 {
@@ -35,9 +35,9 @@ namespace Intent.Modules.UserContext.Templates.UserContextProviderInterface
                 );
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return new List<ITemplateDependancy>
+            return new List<ITemplateDependency>
             {
                 TemplateDependancy.OnTemplate(UserContextInterfaceTemplate.Identifier),
             };

@@ -13,7 +13,7 @@ using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
@@ -32,7 +32,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             return GetDecorators().SelectMany(x => x.DeclareUsings());
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

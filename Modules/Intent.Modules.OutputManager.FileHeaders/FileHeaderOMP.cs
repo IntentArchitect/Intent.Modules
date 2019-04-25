@@ -1,14 +1,15 @@
 ﻿using Intent.Modules.Common.Plugins;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Plugins;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Plugins.FactoryExtensions;
 
 namespace Intent.Modules.OutputManager.FileHeaders
 {
@@ -58,14 +59,14 @@ namespace Intent.Modules.OutputManager.FileHeaders
 
         public void Transform(IOutputFile output)
         {
-            if (output.FileMetaData.OverwriteBehaviour == OverwriteBehaviour.OnceOff && _appendHeadersToOnceOffTemplates)
+            if (output.FileMetadata.OverwriteBehaviour == OverwriteBehaviour.OnceOff && _appendHeadersToOnceOffTemplates)
             {
                 output.ChangeContent(AppendHeader(output));
                 return;
             }
 
             HeaderAppendBehaviour behaviour;
-            if (!_codeGenTypeMap.TryGetValue(output.FileMetaData.CodeGenType , out behaviour))
+            if (!_codeGenTypeMap.TryGetValue(output.FileMetadata.CodeGenType , out behaviour))
             {
                 behaviour = _unspecifiedBehaviour;
             }
@@ -76,7 +77,7 @@ namespace Intent.Modules.OutputManager.FileHeaders
                     output.ChangeContent(AppendHeader(output));
                     break;
                 case HeaderAppendBehaviour.OnCreate:
-                    if (!File.Exists(output.FileMetaData.GetFullLocationPathWithFileName()))
+                    if (!File.Exists(output.FileMetadata.GetFullLocationPathWithFileName()))
                     {
                         output.ChangeContent(AppendHeader(output));
                     }
@@ -89,7 +90,7 @@ namespace Intent.Modules.OutputManager.FileHeaders
         private string AppendHeader(IOutputFile output)
         {
             string content = output.Content;
-            IFileMetaData fileMetaData = output.FileMetaData;
+            IFileMetadata fileMetaData = output.FileMetadata;
 
             string header = GetHeader(output);
             //Deal with XML Declartions <?xml...>
@@ -113,11 +114,11 @@ namespace Intent.Modules.OutputManager.FileHeaders
 
         private string GetHeader(IOutputFile output)
         {
-            string fileExtension = output.FileMetaData.FileExtension;
-            IFileMetaData fileMetaData = output.FileMetaData;
+            string fileExtension = output.FileMetadata.FileExtension;
+            IFileMetadata fileMetaData = output.FileMetadata;
 
-            var codeGenTypeDescription = output.FileMetaData.CodeGenType;
-            var overwriteBehaviourDescription = output.FileMetaData.OverwriteBehaviour.GetDescription();
+            var codeGenTypeDescription = output.FileMetadata.CodeGenType;
+            var overwriteBehaviourDescription = output.FileMetadata.OverwriteBehaviour.GetDescription();
 
             var additionalHeaders = output.Template.GetAllAdditionalHeaderInformation();
             var additionalHeaderInformation = !additionalHeaders.Any()

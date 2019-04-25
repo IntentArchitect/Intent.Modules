@@ -1,9 +1,9 @@
 ﻿using System;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public class TemplateDependancy : ITemplateDependancy
+    public class TemplateDependancy : ITemplateDependency
     {
         public string TemplateIdOrName { get; }
         //public object MetaDataModel { get; }
@@ -19,22 +19,22 @@ namespace Intent.Modules.Common.Templates
             //ClassName = className;
         }
 
-        public static ITemplateDependancy OnTemplate(string templateIdOrName)
+        public static ITemplateDependency OnTemplate(string templateIdOrName)
         {
             return new TemplateDependancy(templateIdOrName, (t) => true);
         }
 
-        public static ITemplateDependancy OnModel(string templateIdOrName, object metaDataModel)
+        public static ITemplateDependency OnModel(string templateIdOrName, object metaDataModel)
         {
             return new TemplateDependancy(templateIdOrName, (t) => (t as ITemplateWithModel)?.Model == metaDataModel);
         }
 
-        public static ITemplateDependancy OnClassName(string templateIdOrName, string className)
+        public static ITemplateDependency OnClassName(string templateIdOrName, string className)
         {
             return new TemplateDependancy(templateIdOrName, (t) => t.GetMetaData().CustomMetaData.ContainsKey("ClassName") && t.GetMetaData().CustomMetaData["ClassName"] == className);
         }
 
-        public static ITemplateDependancy OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch)
+        public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch)
         {
             return new TemplateDependancy(
                 templateIdOrName,

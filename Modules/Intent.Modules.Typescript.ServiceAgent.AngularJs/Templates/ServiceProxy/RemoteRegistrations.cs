@@ -1,7 +1,7 @@
 ﻿using System;
 using Intent.MetaModel.Service;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

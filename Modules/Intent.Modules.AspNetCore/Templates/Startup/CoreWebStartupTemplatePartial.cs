@@ -7,7 +7,7 @@ using Intent.Modules.Constants;
 using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.AspNetCore.Templates.Startup
 {
@@ -202,7 +202,7 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                 );
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return _registrations
                 .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
@@ -232,7 +232,7 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
 
         internal class ContainerRegistration
         {
-            public ContainerRegistration(string interfaceType, string concreteType, string lifetime, ITemplateDependancy interfaceTypeTemplateDependency, ITemplateDependancy concreteTypeTemplateDependency)
+            public ContainerRegistration(string interfaceType, string concreteType, string lifetime, ITemplateDependency interfaceTypeTemplateDependency, ITemplateDependency concreteTypeTemplateDependency)
             {
                 InterfaceType = interfaceType;
                 ConcreteType = concreteType;
@@ -244,13 +244,13 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
             public string InterfaceType { get; }
             public string ConcreteType { get; }
             public string Lifetime { get; }
-            public ITemplateDependancy InterfaceTypeTemplateDependency { get; }
-            public ITemplateDependancy ConcreteTypeTemplateDependency { get; }
+            public ITemplateDependency InterfaceTypeTemplateDependency { get; }
+            public ITemplateDependency ConcreteTypeTemplateDependency { get; }
         }
 
         internal class DbContextContainerRegistration
         {
-            public DbContextContainerRegistration(string usings, string concreteType, ITemplateDependancy concreteTypeTemplateDependency, string options)
+            public DbContextContainerRegistration(string usings, string concreteType, ITemplateDependency concreteTypeTemplateDependency, string options)
             {
                 Usings = usings;
                 ConcreteType = concreteType;
@@ -260,7 +260,7 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
 
             public string Usings { get; }
             public string ConcreteType { get; }
-            public ITemplateDependancy ConcreteTypeTemplateDependency { get; }
+            public ITemplateDependency ConcreteTypeTemplateDependency { get; }
             public string Options { get; }
         }
 
@@ -270,9 +270,9 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
             public string Code { get; }
             public string Method { get; }
             public int Priority { get; }
-            public ITemplateDependancy TemplateDependancy { get; }
+            public ITemplateDependency TemplateDependancy { get; }
 
-            public Initializations(string usings, string code, string method, int priority, ITemplateDependancy templateDependency)
+            public Initializations(string usings, string code, string method, int priority, ITemplateDependency templateDependency)
             {
                 Usings = usings;
                 Code = code;

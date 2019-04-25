@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Intent.MetaModel.Service;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {

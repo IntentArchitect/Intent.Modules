@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.NodeJSProjectFile

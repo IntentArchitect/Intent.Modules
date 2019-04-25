@@ -5,7 +5,7 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.RichDomain.Templates.EntityState;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.RichDomain.EntityFramework.Templates.EFMapping
 {
@@ -30,7 +30,7 @@ namespace Intent.Modules.RichDomain.EntityFramework.Templates.EFMapping
             .ToArray();
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Configuration;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.Configuration;
+using Intent.Engine;
+using Intent.Plugins;
+using Intent.Registrations;
+using Intent.Templates;
+using Intent.Utils;
 
 namespace Intent.Modules.Common.Registrations
 {
@@ -43,9 +43,9 @@ namespace Intent.Modules.Common.Registrations
             }
         }
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var config = application.Config.GetConfig(this.TemplateId, SoftwareFactory.Configuration.PluginConfigType.Template);
+            var config = application.Config.GetConfig(this.TemplateId, PluginConfigType.Template);
             if (!config.Enabled)
             {
                 Logging.Log.Info($"Skipping disabled Template : { TemplateId }.");
@@ -65,7 +65,7 @@ namespace Intent.Modules.Common.Registrations
                 models = Filter(models);
             }
 
-            registery.Register(TemplateId, project => CreateTemplateInstance(project, models));
+            registry.Register(TemplateId, project => CreateTemplateInstance(project, models));
             templateInstancesRegistered++;
             Logging.Log.Debug($"Template instances registered : {templateInstancesRegistered}");
         }

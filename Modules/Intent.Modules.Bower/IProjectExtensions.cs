@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.Bower.Contracts;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System;
 using System.Collections.Generic;
 using System.Linq;

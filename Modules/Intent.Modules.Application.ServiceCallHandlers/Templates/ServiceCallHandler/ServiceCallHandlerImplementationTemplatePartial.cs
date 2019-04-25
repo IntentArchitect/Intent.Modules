@@ -2,7 +2,7 @@
 using Intent.MetaModel.Service;
 using Intent.Modules.Application.Contracts;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
@@ -31,7 +31,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
 
         public IServiceModel ServiceModel { get; set; }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             var typeReferences = Model.Parameters.Select(x => x.TypeReference).ToList();
             if (Model.ReturnType != null)

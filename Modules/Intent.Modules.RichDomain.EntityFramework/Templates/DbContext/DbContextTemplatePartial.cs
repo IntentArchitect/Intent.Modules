@@ -8,7 +8,7 @@ using Intent.Modules.EntityFramework;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.RichDomain.EntityFramework.Templates.DbContext
 {

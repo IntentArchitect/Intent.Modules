@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.Logging.NLog.Templates.OperationRequestId;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.Templates;
@@ -27,7 +27,7 @@ namespace Intent.Modules.Logging.NLog.Templates.OperationRequestIdRenderer
             .ToArray();
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

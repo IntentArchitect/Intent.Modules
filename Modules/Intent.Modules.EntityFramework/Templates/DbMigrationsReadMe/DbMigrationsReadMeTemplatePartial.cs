@@ -4,7 +4,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsReadMe
 {
@@ -34,7 +34,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsReadMe
                 );
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

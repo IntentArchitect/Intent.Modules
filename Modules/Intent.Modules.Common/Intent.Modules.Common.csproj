@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Intent.MetaModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.7.1\lib\net452\Intent.MetaModel.dll</HintPath>
-    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.7.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>
@@ -71,6 +68,11 @@
     <Compile Include="Registrations\ModelTemplateRegistrationBase.cs" />
     <Compile Include="Registrations\NoModelTemplateRegistrationBase.cs" />
     <Compile Include="Registrations\OldProjectTemplateRegistration.cs" />
+    <Compile Include="Templates\DefaultFileMetaData.cs" />
+    <Compile Include="Templates\IHasAdditionalHeaderInformation.cs" />
+    <Compile Include="Templates\IHasClassDetails.cs" />
+    <Compile Include="Templates\Roslyn\IRoslynMerge.cs" />
+    <Compile Include="Templates\Roslyn\ITemplateMigration.cs" />
     <Compile Include="Templates\Roslyn\RoslynDefaultFileMetaData.cs" />
     <Compile Include="Templates\BasicFileMetaData.cs" />
     <Compile Include="Templates\ClassTypeSource.cs" />
@@ -79,8 +81,10 @@
     <Compile Include="Templates\IFileMetaDataExtensions.cs" />
     <Compile Include="Templates\Pluralization\Vocabularies.cs" />
     <Compile Include="Templates\Pluralization\Vocabulary.cs" />
+    <Compile Include="Templates\Roslyn\RoslynMergeConfig.cs" />
+    <Compile Include="Templates\Roslyn\TemplateMetaData.cs" />
     <Compile Include="Templates\T4\IntentProjectItemTemplateBase.cs" />
-    <Compile Include="Templates\T4\IntentRoslynProjectItemTemplateBase.cs" />
+    <Compile Include="Templates\Roslyn\IntentRoslynProjectItemTemplateBase.cs" />
     <Compile Include="Templates\T4\IntentTemplateBase.cs" />
     <Compile Include="Templates\T4\IntentTypescriptProjectItemTemplateBase.cs" />
     <Compile Include="Templates\TemplateDecoratorExtensions.cs" />

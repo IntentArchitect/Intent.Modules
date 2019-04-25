@@ -5,14 +5,14 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
 {
     partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.EntityCompositionVisitor";
-        private ITemplateDependancy[] _entityStateTemplateDependancies;
+        private ITemplateDependency[] _entityStateTemplateDependancies;
 
         public EntityCompositionVisitorTemplate(IEnumerable<IClass> models, IProject project)
             : base (Identifier, project, models)
@@ -28,7 +28,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             _entityStateTemplateDependancies = Model.Select(x => TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == x.Id)).ToArray();
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return _entityStateTemplateDependancies;
         }

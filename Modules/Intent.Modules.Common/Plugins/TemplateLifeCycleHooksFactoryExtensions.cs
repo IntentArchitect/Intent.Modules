@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Linq;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
+using Intent.Engine;
+using Intent.Plugins.FactoryExtensions;
 
 namespace Intent.Modules.Common.Plugins
 {

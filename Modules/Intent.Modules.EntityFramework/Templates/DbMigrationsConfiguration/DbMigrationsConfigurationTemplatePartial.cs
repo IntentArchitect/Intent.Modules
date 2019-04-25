@@ -7,14 +7,14 @@ using Intent.Modules.Constants;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 {
     partial class DbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, IPostTemplateCreation
     {
         public const string Identifier = "Intent.EntityFramework.DbMigrationsConfiguration";
-        private ITemplateDependancy _dbContextDependancy;
+        private ITemplateDependency _dbContextDependancy;
         private readonly List<string> _seedDataRequiredEvents = new List<string>();
 
         public DbMigrationsConfigurationTemplate(IProject project)
@@ -69,7 +69,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
             .ToArray();
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {

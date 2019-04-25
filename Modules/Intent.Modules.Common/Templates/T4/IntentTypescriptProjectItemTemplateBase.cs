@@ -1,5 +1,5 @@
-﻿using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+﻿using Intent.Engine;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
@@ -33,7 +33,7 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        public sealed override DefaultFileMetaData DefineDefaultFileMetaData()
+        public sealed override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return DefineTypescriptDefaultFileMetaData();
         }

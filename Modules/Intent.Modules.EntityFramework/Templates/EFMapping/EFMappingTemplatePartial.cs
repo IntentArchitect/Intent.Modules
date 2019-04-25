@@ -5,7 +5,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory.Engine;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Templates.EFMapping
 {
@@ -13,7 +13,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
     {
         public const string Identifier = "Intent.EntityFramework.EFMapping";
         private IEnumerable<IEFMappingTemplateDecorator> _decorators;
-        private ITemplateDependancy _domainTemplateDependancy;
+        private ITemplateDependency _domainTemplateDependancy;
 
         public EFMappingTemplate(IClass model, IProject project)
             : base (Identifier, project, model)
@@ -36,7 +36,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             .ToArray();
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {
