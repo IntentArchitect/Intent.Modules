@@ -87,7 +87,6 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                             relativeFileName: @event.GetValue("RelativeFileName"),
                             itemType: @event.TryGetValue("ItemType"),
                             dependsOn: @event.TryGetValue("Depends On"),
-                            intentGenType: @event.TryGetValue("IntentGenType"),
                             copyToOutputDirectory: @event.TryGetValue("CopyToOutputDirectory"));
                         break;
                     case SoftwareFactoryEvents.RemoveProjectItemEvent:
@@ -206,12 +205,16 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 var item = new XElement(XName.Get("ProjectReference", _namespace.NamespaceName));
                 item.Add(new XAttribute("Include", projectUrl));
 
-                var projectIdElement = new XElement(XName.Get("Project", _namespace.NamespaceName));
-                projectIdElement.Value = $"{{{dependency.Id}}}";
+                var projectIdElement = new XElement(XName.Get("Project", _namespace.NamespaceName))
+                {
+                    Value = $"{{{dependency.Id}}}"
+                };
                 item.Add(projectIdElement);
 
-                var projectNameElement = new XElement(XName.Get("Name", _namespace.NamespaceName));
-                projectNameElement.Value = $"{dependency.Name}";
+                var projectNameElement = new XElement(XName.Get("Name", _namespace.NamespaceName))
+                {
+                    Value = $"{dependency.Name}"
+                };
                 item.Add(projectNameElement);
 
                 itemGroupElement.Add(item);
@@ -254,8 +257,10 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                     item.Add(new XAttribute("Include", refrence.Library));
                     if (refrence.HasHintPath())
                     {
-                        var projectIdElement = new XElement(XName.Get("HintPath", _namespace.NamespaceName));
-                        projectIdElement.Value = refrence.HintPath;
+                        var projectIdElement = new XElement(XName.Get("HintPath", _namespace.NamespaceName))
+                        {
+                            Value = refrence.HintPath
+                        };
                         item.Add(projectIdElement);
                     }
 
@@ -266,7 +271,6 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private XElement FindOrCreateProjectReferenceItemGroup()
         {
-            XElement result = null;
             var aProjectReferenceElement = _doc.XPathSelectElement("/ns:Project/ns:ItemGroup/ns:ProjectReference", _namespaces);
 
             if (aProjectReferenceElement != null)
@@ -275,7 +279,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             }
             else
             {
-                result = new XElement(XName.Get("ItemGroup", _namespace.NamespaceName));
+                var result = new XElement(XName.Get("ItemGroup", _namespace.NamespaceName));
                 _projectElement.Add(result);
                 return result;
             }
@@ -357,6 +361,8 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private void ProcessImport(string project, string condition)
         {
+            project = NormalizePath(project);
+
             var element = _doc.XPathSelectElement($"/ns:Project/ns:Import[@Project=\"{project}\"]", _namespaces);
             if (element == null)
             {
@@ -374,6 +380,8 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private void ProcessUsingTask(string taskName, string assemblyFile)
         {
+            assemblyFile = NormalizePath(assemblyFile);
+
             var element = _doc.XPathSelectElement($"/ns:Project/ns:UsingTask[@TaskName=\"{taskName}\"]", _namespaces);
             if (element == null)
             {
@@ -397,15 +405,17 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private void ProcessRemoveProjectItem(string relativeFileName)
         {
+            relativeFileName = NormalizePath(relativeFileName);
+
             var projectItem = GetProjectItem(relativeFileName);
-            if (projectItem != null)
-            {
-                projectItem.Remove();
-            }
+            projectItem?.Remove();
         }
 
-        private void ProcessAddProjectItem(string relativeFileName, string itemType, string dependsOn, string intentGenType, string copyToOutputDirectory)
+        private void ProcessAddProjectItem(string relativeFileName, string itemType, string dependsOn, string copyToOutputDirectory)
         {
+            relativeFileName = NormalizePath(relativeFileName);
+            dependsOn = NormalizePath(dependsOn);
+
             if (string.IsNullOrWhiteSpace(relativeFileName))
             {
                 throw new Exception("relativeFileName is null");
@@ -450,10 +460,12 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             {
                 var item = new XElement(XName.Get(itemType, _namespace.NamespaceName));
                 item.Add(new XAttribute("Include", relativeFileName));
-                foreach (var metaData in metadata)
+                foreach (var data in metadata)
                 {
-                    var child = new XElement(XName.Get(metaData.Key, _namespace.NamespaceName));
-                    child.Value = metaData.Value;
+                    var child = new XElement(XName.Get(data.Key, _namespace.NamespaceName))
+                    {
+                        Value = data.Value
+                    };
                     item.Add(child);
                 }
                 codeItems.Add(item);
@@ -466,16 +478,14 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 }
                 var children = projectItem.Elements().ToList();
                 projectItem.RemoveNodes();
-                foreach (var metaData in metadata)
+                foreach (var data in metadata)
                 {
-                    var child = new XElement(XName.Get(metaData.Key, _namespace.NamespaceName));
-                    child.Value = metaData.Value;
+                    var child = new XElement(XName.Get(data.Key, _namespace.NamespaceName)) { Value = data.Value };
                     projectItem.Add(child);
                 }
                 foreach (var userAddedMetaData in children.Where(x => metadata.All(y => XName.Get(y.Key, _namespace.NamespaceName) != x.Name)))
                 {
-                    var child = new XElement(userAddedMetaData.Name);
-                    child.Value = userAddedMetaData.Value;
+                    var child = new XElement(userAddedMetaData.Name) { Value = userAddedMetaData.Value };
                     projectItem.Add(child);
                 }
             }
@@ -504,6 +514,9 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private void ProcessContent(string include, string link, string copyToOutputDirectory)
         {
+            include = NormalizePath(include);
+            link = NormalizePath(link);
+
             var subElements = new List<XElement>();
             if (!string.IsNullOrWhiteSpace(link))
             {
@@ -550,6 +563,8 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private void ProcessChangeProjectItemType(IProject project, string relativeFileName, string itemType)
         {
+            relativeFileName = NormalizePath(relativeFileName);
+
             var projectItem = GetProjectItem(relativeFileName);
             if (projectItem == null)
             {
@@ -610,7 +625,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             var parentElement = current.Parent;
             if (parentElement == null)
             {
-                throw new Exception("parentElement is  null");
+                throw new Exception("parentElement is null");
             }
 
             var previousElement = current.PreviousNode;
@@ -650,6 +665,24 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         {
             return new[] { VisualStudioProjectTypeIds.CoreCSharpLibrary, VisualStudioProjectTypeIds.CoreWebApp }.Contains(_project.ProjectType.Id);
         }
+
+        private static string NormalizePath(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return value;
+            }
+
+            // .csproj and solution files use backslashes even on Mac
+            value = value.Replace("/", @"\");
+
+            // Replace double occurrences of folder seperators with single seperator. IE, turn a path like Dev\\Folder to Dev\Folder
+            while (value.Contains(@"\\"))
+                value = value.Replace(@"\\", @"\");
+
+            return value;
+        }
+
     }
 }
 

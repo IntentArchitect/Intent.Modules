@@ -35,7 +35,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
 
         public string GetFullLocationPath()
         {
-            return Path.GetFullPath(_fileLocation);
+            return Path.GetFullPath(_fileLocation).Replace(@"\", "/");
         }
 
 
