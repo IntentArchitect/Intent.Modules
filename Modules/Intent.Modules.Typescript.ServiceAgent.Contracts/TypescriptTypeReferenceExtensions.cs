@@ -1,12 +1,12 @@
+using System;
 using Intent.Metadata.Models;
-using Intent.MetaModel.Common;
-using Intent.MetaModel.DTO;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Constants;
 using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
 using Intent.Engine;
+using Intent.Modelers.Services.Api;
 using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts
@@ -24,14 +24,15 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts
             return result;
         }
 
+        [Obsolete("Should use Types.Get(...) system")]
         public static string GetQualifiedName<T>(this T template, ITypeReference typeInfo)
             where T : IProjectItemTemplate, IRequireTypeResolver
         {
             string result = typeInfo.Name;
-            if (typeInfo.Type == ReferenceType.ClassType)
+            if (typeInfo.SpecializationType == "DTO")
             {
-                var templateInstance = template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<DTOModel>(TypescriptDtoTemplate.LocalIdentifier, (x) => x.Id == typeInfo.Id))
-                    ?? template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<DTOModel>(TypescriptDtoTemplate.RemoteIdentifier, (x) => x.Id == typeInfo.Id));
+                var templateInstance = template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IDTOModel>(TypescriptDtoTemplate.LocalIdentifier, (x) => x.Id == typeInfo.Id))
+                    ?? template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IDTOModel>(TypescriptDtoTemplate.RemoteIdentifier, (x) => x.Id == typeInfo.Id));
                 if (templateInstance != null)
                 {
                     return $"{templateInstance.Namespace}.{templateInstance.ClassName}";

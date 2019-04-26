@@ -5,7 +5,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modelers.Domain.Api
 {
-    public class Class : IClass, IEquatable<IClass>
+    internal class Class : IClass, IEquatable<IClass>
     {
         private IList<IAssociationEnd> _associatedClasses = new List<IAssociationEnd>();
         private readonly Metadata.Models.IClass _class;

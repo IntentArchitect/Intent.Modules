@@ -71,10 +71,6 @@
       <Project>{1AC61159-586F-4A8E-9857-26FD34C8047F}</Project>
       <Name>Intent.Modules.RichDomain.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.RichDomain\Intent.Modules.RichDomain.csproj">
-      <Project>{9db8717c-8f21-450b-9fea-bbfb3f835390}</Project>
-      <Name>Intent.Modules.RichDomain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

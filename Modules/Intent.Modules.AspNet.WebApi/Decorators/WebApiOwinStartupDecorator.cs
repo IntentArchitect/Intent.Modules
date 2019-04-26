@@ -1,6 +1,6 @@
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
 using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
 

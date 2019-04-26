@@ -139,7 +139,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             this.Write("                public ");
             
             #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(parameter.TypeReference)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(parameter.Type)));
             
             #line default
             #line hidden

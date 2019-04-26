@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Unity.Templates.UnityConfig
 {

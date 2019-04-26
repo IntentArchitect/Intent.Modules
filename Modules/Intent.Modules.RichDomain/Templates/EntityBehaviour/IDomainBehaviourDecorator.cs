@@ -1,5 +1,5 @@
 ﻿using Intent.SoftwareFactory.MetaModels.UMLModel;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.RichDomain.Templates.EntityBehaviour
 {

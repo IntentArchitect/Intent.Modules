@@ -5,11 +5,12 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.Modules.Common.Plugins;
+using Intent.Templates;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
 {
-    partial class AngularEdgeServiceProviderTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IRequiresPreProcessing
+    partial class AngularEdgeServiceProviderTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.Electron.NodeEdgeProxy.AngularEdgeServiceProvider";
         
@@ -25,7 +26,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
 
         public string ApiBasePathConfigKey => $"{Project.Application.SolutionName}_{Project.ApplicationName()}_api_basepath".ToLower();
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
             _eventDispatcher.Publish(ApplicationEvents.AngularJs_ConfigurationRequired, new Dictionary<string, string>()
             {

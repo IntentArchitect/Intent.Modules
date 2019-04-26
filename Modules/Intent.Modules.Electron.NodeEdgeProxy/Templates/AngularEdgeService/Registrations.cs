@@ -1,5 +1,5 @@
 ﻿using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 using System.ComponentModel;
 using System.Linq;

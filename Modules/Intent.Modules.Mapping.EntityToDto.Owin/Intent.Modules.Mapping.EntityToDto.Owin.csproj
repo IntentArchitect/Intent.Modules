@@ -67,10 +67,6 @@
       <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Mapping.EntityToDto\Intent.Modules.Mapping.EntityToDto.csproj">
-      <Project>{410713e8-f898-4600-b860-d899b03d6b7a}</Project>
-      <Name>Intent.Modules.Mapping.EntityToDto</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

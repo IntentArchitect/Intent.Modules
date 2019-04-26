@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities</id>
-  <version>1.8.0</version>
+  <version>2.0.0</version>
   <summary>Create domain entities and related artifacts.</summary>
   <description></description>
   <authors>Intent Architect</authors>
@@ -38,20 +38,20 @@
   <interoperability>
     <detect id="Intent.EntityFramework">
       <install>
-        <package id="Intent.Entities.Keys" version="1.7.0"/>
+        <package id="Intent.Entities.Keys" version="2.0.0"/>
       </install>
     </detect>
     <detect id="Intent.EntityFrameworkCore">
       <install>
-        <package id="Intent.Entities.Keys" version="1.7.0"/>
+        <package id="Intent.Entities.Keys" version="2.0.0"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Modelers.Domain" version="1.0.1"/>
-    <dependency id="Intent.Common" version="1.7.0"/>
-    <dependency id="Intent.Common.Types" version="1.7.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0"/>
+    <dependency id="Intent.Modelers.Domain" version="2.0.0"/>
+    <dependency id="Intent.Common" version="2.0.0"/>
+    <dependency id="Intent.Common.Types" version="2.0.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>

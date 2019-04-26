@@ -4,7 +4,7 @@ using Intent.Modules.Constants;
 using Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common;

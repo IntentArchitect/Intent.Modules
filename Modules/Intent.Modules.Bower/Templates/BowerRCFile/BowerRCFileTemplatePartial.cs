@@ -1,5 +1,6 @@
 ﻿using Intent.Modules.Common.Templates;
 using Intent.Engine;
+using Intent.Modules.Common;
 using Intent.Templates
 
 namespace Intent.Modules.Bower.Templates.BowerRCFile

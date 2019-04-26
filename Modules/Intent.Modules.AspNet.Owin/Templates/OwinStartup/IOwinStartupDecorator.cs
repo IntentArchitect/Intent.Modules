@@ -1,4 +1,4 @@
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 
 namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup

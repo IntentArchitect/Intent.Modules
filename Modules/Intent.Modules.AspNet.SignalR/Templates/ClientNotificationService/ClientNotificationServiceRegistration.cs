@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.Common.Registrations;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 
 namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService

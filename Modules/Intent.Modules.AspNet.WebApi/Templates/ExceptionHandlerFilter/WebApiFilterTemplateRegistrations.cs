@@ -1,5 +1,5 @@
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 using System;
 using Intent.Modules.Common.Registrations;

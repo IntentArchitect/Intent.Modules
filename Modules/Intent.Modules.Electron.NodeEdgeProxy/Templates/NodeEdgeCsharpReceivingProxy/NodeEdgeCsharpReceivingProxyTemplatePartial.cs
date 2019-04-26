@@ -4,7 +4,7 @@ using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Application.Contracts;

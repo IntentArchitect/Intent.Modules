@@ -1,11 +1,12 @@
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.AspNet.Owin.Cors.Decorators
 {
-    public class CorsOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IRequiresPreProcessing
+    public class CorsOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.Owin.Cors.OwinStartupDecorator";
 
@@ -86,7 +87,7 @@ namespace Intent.Modules.AspNet.Owin.Cors.Decorators
             };
         }
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
             // TODO: need metadata for who to allow.
             //_eventDispatcher.Publish(new WebConfigAppSettingRequiredEvent(_applicationName, "IdentityServer.Issuer.Name", $"{_application.HostingConfig.GetBaseUrl()}/identity"))

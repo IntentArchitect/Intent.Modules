@@ -5,7 +5,7 @@ using Intent.Registrations;
 
 namespace Intent.Modules.AspNet.SignalR.Interop.WebApi.Decorator
 {
-    public class SignalrWebApiDistributionDecoratorRegistation : DecoratorRegistration<WebApiControllerDecoratorBase>
+    public class SignalrWebApiDistributionDecoratorRegistration : DecoratorRegistration<WebApiControllerDecoratorBase>
     {
         public override string DecoratorId => SignalrWebApiWebApiControllerDecorator.Identifier;
         public override object CreateDecoratorInstance(IApplication application)

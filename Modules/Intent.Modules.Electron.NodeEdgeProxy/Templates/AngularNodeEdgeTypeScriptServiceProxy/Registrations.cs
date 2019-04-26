@@ -2,7 +2,7 @@
 using Intent.Modelers.Services.Api;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 using System.Collections.Generic;
 using System.ComponentModel;

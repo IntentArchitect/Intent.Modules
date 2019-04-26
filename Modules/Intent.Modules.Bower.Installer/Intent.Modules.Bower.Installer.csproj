@@ -59,10 +59,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Bower\Intent.Modules.Bower.csproj">
-      <Project>{676ffb48-2b61-46bf-86b1-1a6d5f48888d}</Project>
-      <Name>Intent.Modules.Bower</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
       <Name>Intent.Modules.Common</Name>

@@ -1,11 +1,12 @@
 ﻿using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
-using Intent.Templates
+using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using Intent.Modules.Autofac.Templates.AutofacConfig;
 using Intent.Modules.Common;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Engine;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.AspNet.WebApi.Interop.Autofac.Decorators
 {

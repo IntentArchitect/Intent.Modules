@@ -49,7 +49,7 @@ namespace <#=Namespace#>
             foreach (var parameter in operation.Parameters.Where(IsFromBody))
             {
 #>
-                public <#= GetTypeName(parameter.TypeReference) #> <#= parameter.Name #> { get; set; }
+                public <#= GetTypeName(parameter.Type) #> <#= parameter.Name #> { get; set; }
 <#
             } // foreach (var parameter in operation.Parameters.Where(IsFromBody))
 #>

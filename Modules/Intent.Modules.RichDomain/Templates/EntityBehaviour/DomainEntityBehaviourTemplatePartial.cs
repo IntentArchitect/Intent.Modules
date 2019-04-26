@@ -1,6 +1,6 @@
 ﻿using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
 

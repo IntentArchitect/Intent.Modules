@@ -1,13 +1,14 @@
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
 using Intent.Modules.Constants;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.AspNet.Owin.Jwt.Decorators
 {
-    public class JwtAuthOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IHasAssemblyDependencies, IRequiresPreProcessing
+    public class JwtAuthOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IHasAssemblyDependencies, IBeforeTemplateExecutionHook
     {
         private readonly ISolutionEventDispatcher _solutionEvents;
         public const string Identifier = "Intent.Owin.Jwt.JwtAuthOwinStartupDecorator";
@@ -91,7 +92,7 @@ namespace Intent.Modules.AspNet.Owin.Jwt.Decorators
             };
         }
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
             _solutionEvents.Publish(ApplicationEvents.Config_AppSetting, new Dictionary<string, string>()
             {

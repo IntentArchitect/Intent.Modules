@@ -1,6 +1,7 @@
 ﻿using Intent.Modelers.Services.Api;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
+using Intent.Metadata.Models;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
@@ -14,19 +15,19 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
         public virtual string ConstructorInit(IServiceModel service) => @"";
 
-        public virtual IEnumerable<string> PayloadPropertyDecorators(IOperationParameterModel parameter) => new string[] {};
+        public virtual IEnumerable<string> PayloadPropertyDecorators(IOperationParameter parameter) => new string[] {};
 
-        public virtual string BeginOperation(IServiceModel service, IOperationModel operation) => @"";
+        public virtual string BeginOperation(IServiceModel service, IOperation operation) => @"";
 
-        public virtual string BeforeTransaction(IServiceModel service, IOperationModel operation) => @"";
+        public virtual string BeforeTransaction(IServiceModel service, IOperation operation) => @"";
 
-        public virtual string BeforeCallToAppLayer(IServiceModel service, IOperationModel operation) => @"";
+        public virtual string BeforeCallToAppLayer(IServiceModel service, IOperation operation) => @"";
 
-        public virtual string AfterCallToAppLayer(IServiceModel service, IOperationModel operation) => @"";
+        public virtual string AfterCallToAppLayer(IServiceModel service, IOperation operation) => @"";
 
-        public virtual string AfterTransaction(IServiceModel service, IOperationModel operation) => @"";
+        public virtual string AfterTransaction(IServiceModel service, IOperation operation) => @"";
 
-        public virtual string OnExceptionCaught(IServiceModel service, IOperationModel operation) => @"";
+        public virtual string OnExceptionCaught(IServiceModel service, IOperation operation) => @"";
 
         public virtual bool HandlesCaughtException() => false;
 

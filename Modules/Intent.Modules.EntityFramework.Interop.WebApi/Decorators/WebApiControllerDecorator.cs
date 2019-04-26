@@ -8,8 +8,9 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Eventing;
-using Intent.Templates
-using Intent.Engine;
+using Intent.Templates;
+using Intent.Metadata.Models;
+using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
 {
@@ -34,7 +35,7 @@ namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
         public override string ConstructorInit(IServiceModel service) => @"
             _dbContext = dbContext;";
 
-        public override string AfterCallToAppLayer(IServiceModel service, IOperationModel operation)
+        public override string AfterCallToAppLayer(IServiceModel service, IOperation operation)
         {
             if (operation.Stereotypes.Any(x => x.Name == "ReadOnly"))
             {
