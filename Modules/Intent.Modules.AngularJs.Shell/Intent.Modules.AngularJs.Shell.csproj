@@ -130,7 +130,7 @@
       <Name>Intent.Modules.Bower</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
-      <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
+      <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
