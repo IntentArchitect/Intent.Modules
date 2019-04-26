@@ -1,5 +1,4 @@
 ﻿using Intent.Modules.Entities.Templates.DomainEntityInterface;
-using Intent.SoftwareFactory.Registrations;
 using System.ComponentModel;
 using Intent.Modules.Common.Registrations;
 using Intent.Engine;

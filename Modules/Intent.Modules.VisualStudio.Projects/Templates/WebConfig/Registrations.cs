@@ -1,5 +1,5 @@
 ﻿using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 using System;
 using System.Collections.Generic;

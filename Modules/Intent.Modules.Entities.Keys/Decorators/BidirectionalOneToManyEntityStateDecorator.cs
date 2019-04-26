@@ -1,7 +1,8 @@
-﻿using Intent.MetaModel.Domain;
-using Intent.Modules.Entities.Templates;
+﻿using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using Intent.SoftwareFactory.Configuration;
+using Intent.Configuration;
+using Intent.Metadata.Models;
+using Intent.Plugins;
 
 namespace Intent.Modules.Entities.Keys.Decorators
 {

@@ -10,7 +10,8 @@ using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
+using Intent.Plugins.FactoryExtensions;
+using Intent.Utils;
 
 namespace Intent.Modules.NuGet.Installer
 {

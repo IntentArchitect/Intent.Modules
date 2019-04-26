@@ -7,6 +7,8 @@ namespace Intent.Modelers.Domain.Api
     {
         string Name { get; }
 
+        bool IsAbstract { get; }
+
         IEnumerable<string> GenericTypes { get; }
 
         IClass ParentClass { get; }

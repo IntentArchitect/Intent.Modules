@@ -7,7 +7,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectFile

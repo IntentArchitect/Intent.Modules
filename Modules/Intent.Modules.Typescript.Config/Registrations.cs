@@ -2,7 +2,7 @@
 using Intent.Modules.Typescript.Config.Templates.TypescriptConfig;
 using Intent.Modules.Typescript.Config.Templates.TypescriptDefinitelyTypedReference;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 namespace Intent.Modules.Typescript.Config
 {

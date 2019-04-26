@@ -1,11 +1,13 @@
 ﻿using System.Collections;
-using Intent.MetaModel.Domain;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
+using Intent.SoftwareFactory.Templates;
+using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {

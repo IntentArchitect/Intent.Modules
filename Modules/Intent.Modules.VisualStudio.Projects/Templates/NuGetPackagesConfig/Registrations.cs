@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 using System.ComponentModel;
 using Intent.Modules.Constants;
 

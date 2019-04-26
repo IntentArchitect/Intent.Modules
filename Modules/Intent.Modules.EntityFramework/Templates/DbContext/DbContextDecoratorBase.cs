@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Intent.MetaModel.Domain;
+using Intent.Modelers.Domain.Api;
 using Intent.Templates
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext

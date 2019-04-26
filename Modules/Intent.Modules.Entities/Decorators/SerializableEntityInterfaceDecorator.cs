@@ -1,4 +1,4 @@
-﻿using Intent.MetaModel.Domain;
+﻿using Intent.Modelers.Domain.Api;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using System.Collections.Generic;

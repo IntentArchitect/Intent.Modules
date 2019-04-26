@@ -1,5 +1,5 @@
 ﻿using System;
-using Intent.MetaModel.Domain;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Templates
 

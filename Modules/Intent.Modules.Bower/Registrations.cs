@@ -2,7 +2,7 @@
 using Intent.Modules.Bower.Templates.BowerRCFile;
 using Intent.Modules.Common.Registrations;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 namespace Intent.Modules.Bower
 {

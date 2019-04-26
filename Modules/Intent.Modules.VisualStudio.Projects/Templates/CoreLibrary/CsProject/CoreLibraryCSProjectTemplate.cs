@@ -9,7 +9,6 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
 {
-    using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.Modules.Common.Templates;
     using Intent.Modules.Common.VisualStudio;
     using System;
@@ -38,42 +37,42 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
             this.Write("<Project Sdk=\"Microsoft.NET.Sdk\">\r\n\r\n  <PropertyGroup>\r\n    <TargetFramework>netc" +
                     "oreapp2.1</TargetFramework>\r\n  </PropertyGroup>\r\n\r\n");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
   if (Project.Dependencies().Any()) { 
             
             #line default
             #line hidden
             this.Write("  <ItemGroup>\r\n");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
       foreach (var dependency in Project.Dependencies()) { 
             
             #line default
             #line hidden
             this.Write("    <ProjectReference Include=\"..\\");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(dependency.Name));
             
             #line default
             #line hidden
             this.Write("\\");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(dependency.Name));
             
             #line default
             #line hidden
             this.Write(".csproj\" />\r\n");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("  </ItemGroup>\r\n\r\n");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
   } 
             
             #line default

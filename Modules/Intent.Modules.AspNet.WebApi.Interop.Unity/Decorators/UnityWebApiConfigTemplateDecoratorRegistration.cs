@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 using System;
 using Intent.Modules.Common.Registrations;
 

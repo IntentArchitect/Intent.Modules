@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel.Domain;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 

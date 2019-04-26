@@ -5,8 +5,8 @@ using System.ComponentModel;
 using System.Linq;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
-using Intent.SoftwareFactory.Plugins;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
+using Intent.Plugins;
+using Intent.Plugins.FactoryExtensions;
 
 namespace Intent.Modules.Angular
 {

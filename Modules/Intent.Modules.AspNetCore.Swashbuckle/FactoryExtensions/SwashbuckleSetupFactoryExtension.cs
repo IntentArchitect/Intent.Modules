@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.Engine;
-using Intent.SoftwareFactory.Plugins;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
+using Intent.Plugins;
+using Intent.Plugins.FactoryExtensions;
 
 namespace Intent.Modules.AspNetCore.Swashbuckle.FactoryExtensions
 {

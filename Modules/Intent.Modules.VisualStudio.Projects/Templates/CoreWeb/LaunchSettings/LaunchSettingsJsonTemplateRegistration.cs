@@ -3,8 +3,8 @@ using System.ComponentModel;
 using System.Linq;
 using Intent.Modules.Constants;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
-using Intent.Templates
+using Intent.Registrations;
+using Intent.Templates;
 
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings

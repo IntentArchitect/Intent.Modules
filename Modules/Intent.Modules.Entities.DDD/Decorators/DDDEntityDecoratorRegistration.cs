@@ -2,7 +2,6 @@
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
 
 namespace Intent.Modules.Entities.DDD.Decorators
 {

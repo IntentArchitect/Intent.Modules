@@ -4,7 +4,7 @@ using Intent.Modules.UserContext.Templates.UserContextProvider;
 using Intent.Modules.UserContext.Templates.UserContextProviderInterface;
 using Intent.Modules.UserContext.Templates.UserContextStatic;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 namespace Intent.Modules.UserContext
 {

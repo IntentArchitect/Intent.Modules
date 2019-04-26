@@ -1,7 +1,8 @@
-﻿<#@ template  debug="true"  inherits="Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IClass>" #>
+﻿<#@ template  debug="true"  inherits="Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<Modelers.Domain.Api.IClass>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modelers.Domain.Api" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="System" #>
@@ -41,7 +42,7 @@ namespace <#= Namespace #>
 <#= PropertySetterBefore(attribute) #><#		
 		if (attributeType == "date")
 		{
-			if (!attribute.IsNullable)
+			if (!attribute.Type.IsNullable)
 			{#>
                 <#= attribute.Name.ToPrivateMember() #> = value.Date;
 <#			}

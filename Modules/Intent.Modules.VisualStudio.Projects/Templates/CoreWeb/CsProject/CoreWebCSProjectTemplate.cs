@@ -9,7 +9,6 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 {
-    using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.Modules.Common.Templates;
     using Intent.Modules.Common.VisualStudio;
     using System;
@@ -52,42 +51,42 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 
 ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
   if (Project.Dependencies().Any()) { 
             
             #line default
             #line hidden
             this.Write("  <ItemGroup>\r\n");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
       foreach (var dependency in Project.Dependencies()) { 
             
             #line default
             #line hidden
             this.Write("    <ProjectReference Include=\"..\\");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(dependency.Name));
             
             #line default
             #line hidden
             this.Write("\\");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(dependency.Name));
             
             #line default
             #line hidden
             this.Write(".csproj\" />\r\n");
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("  </ItemGroup>\r\n\r\n");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
   } 
             
             #line default

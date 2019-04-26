@@ -1,4 +1,4 @@
-﻿using Intent.Templates
+﻿using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,9 +27,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
         public string CodeGenType { get; }
         public string OutputType { get; }
         public OverwriteBehaviour OverwriteBehaviour { get; }
-        public string FileName { get; }
+        public string FileName { get; set; }
+        public string LocationInProject { get; set; } = "";
         public string FileExtension => "sln";
-        public string DefaultLocationInProject => "";
         public string DependsUpon => null;
         public IDictionary<string, string> CustomMetaData { get; }
 

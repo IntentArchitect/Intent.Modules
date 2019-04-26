@@ -1,7 +1,7 @@
 ﻿using Intent.MetaModel.Hosting;
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 using System;
 using System.Linq;
 using Intent.Modules.Common.Registrations;

@@ -5,7 +5,8 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.Modules.Common;
+using Intent.Templates;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

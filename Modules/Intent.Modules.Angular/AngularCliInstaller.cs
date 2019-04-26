@@ -8,7 +8,7 @@ using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
+using Intent.Plugins.FactoryExtensions;
 
 namespace Intent.Modules.Angular
 {

@@ -80,6 +80,10 @@
       <Project>{04CE09B0-68C2-4C8B-921F-65EEA14D3D58}</Project>
       <Name>Intent.Modules.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Domain\Intent.Modules.Modelers.Domain.csproj">
+      <Project>{944F5519-873F-4C88-BACE-1A383E0C5F49}</Project>
+      <Name>Intent.Modules.Modelers.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="metadata\Intent.Entities.DDD\Folders\Stereotypes.xml" />

@@ -2,7 +2,7 @@
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.Mapping.EntityToDto.Owin.Decorators;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 namespace Intent.Modules.Mapping.EntityToDto.Owin
 {

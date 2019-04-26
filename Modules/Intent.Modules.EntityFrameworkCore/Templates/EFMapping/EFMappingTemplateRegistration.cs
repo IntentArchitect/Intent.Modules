@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Intent.MetaModel.Domain;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;

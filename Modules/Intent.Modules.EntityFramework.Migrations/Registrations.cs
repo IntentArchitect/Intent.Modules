@@ -2,7 +2,7 @@
 using Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfiguration;
 using Intent.Modules.EntityFramework.Migrations.Templates.ReadMe;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 namespace Intent.Modules.EntityFramework.Migrations
 {

@@ -3,7 +3,7 @@ using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -9,7 +9,7 @@ using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.LoginRedirectView;
 using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.SilentRenewCallbackView;
 using Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.UserInfoService;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 using System.Linq;
 using Intent.Modules.Common.Registrations;
 

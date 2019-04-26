@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using Intent.MetaModel.Domain;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Modelers.Domain;
+using Intent.Templates;
 
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState
@@ -29,7 +30,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetDomainModels(application);
+            return _metaDataManager.GetDomainClasses(application);
         }
     }
 }

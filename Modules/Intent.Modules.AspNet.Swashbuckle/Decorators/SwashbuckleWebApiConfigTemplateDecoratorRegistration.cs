@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
 using Intent.Modules.Common.Registrations;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 namespace Intent.Modules.AspNet.Swashbuckle.Decorators
 {

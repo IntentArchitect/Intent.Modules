@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using Intent.Modules.Common.Templates;

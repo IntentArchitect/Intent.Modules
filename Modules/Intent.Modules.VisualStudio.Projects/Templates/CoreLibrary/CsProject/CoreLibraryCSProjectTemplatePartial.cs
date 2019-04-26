@@ -5,7 +5,8 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using Intent.Modules.Common.Templates;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Modules.Common;
+using Intent.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
 {

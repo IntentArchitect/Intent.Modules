@@ -9,7 +9,6 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
 {
-    using Intent.SoftwareFactory.MetaModels.Class;
     using Intent.Modules.Common.Templates;
     using Intent.Modules.Common.VisualStudio;
     using System;

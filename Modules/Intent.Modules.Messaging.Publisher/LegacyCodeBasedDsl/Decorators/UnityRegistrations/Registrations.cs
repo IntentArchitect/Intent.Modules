@@ -5,7 +5,7 @@ using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.Application;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 namespace Intent.Modules.Messaging.Publisher.LegacyCodeBasedDsl.Decorators.UnityRegistrations
 {

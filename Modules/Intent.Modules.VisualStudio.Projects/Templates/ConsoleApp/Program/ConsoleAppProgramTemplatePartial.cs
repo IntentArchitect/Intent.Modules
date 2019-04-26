@@ -1,6 +1,7 @@
 ﻿using Intent.Modules.Common.Templates;
 using Intent.Engine;
-using Intent.Templates
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
 {

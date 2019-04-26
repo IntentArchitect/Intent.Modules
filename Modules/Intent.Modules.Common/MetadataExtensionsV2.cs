@@ -21,5 +21,6 @@ namespace Intent.Modules.Common
     public class CodeGenType
     {
         public const string Basic = "Basci";
+        public const string UserControlledWeave = "UserControlledWeave";
     }
 }

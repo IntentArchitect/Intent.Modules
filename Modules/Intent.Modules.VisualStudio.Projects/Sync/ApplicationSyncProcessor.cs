@@ -8,7 +8,8 @@ using Intent.Modules.VisualStudio.Projects.Events;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
+using Intent.Plugins.FactoryExtensions;
+using Intent.Utils;
 
 namespace Intent.Modules.VisualStudio.Projects.Sync
 {

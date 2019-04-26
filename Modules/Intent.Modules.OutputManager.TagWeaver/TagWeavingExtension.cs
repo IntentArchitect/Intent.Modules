@@ -2,12 +2,13 @@
 using Intent.Modules.OutputManager.TagWeaver.TokenParsers;
 using Intent.SoftwareFactory;
 using Intent.Eventing;
-using Intent.SoftwareFactory.Plugins;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
-using Intent.Templates
+using Intent.Plugins;
+using Intent.Plugins.FactoryExtensions;
+using Intent.Templates;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 
@@ -68,7 +69,7 @@ namespace Intent.Modules.OutputManager.TagWeaver
         public void Transform(IOutputFile output)
         {
             WeaveBehaviour behaviour;
-            if (!_codeGenTypeMap.TryGetValue(output.FileMetaData.CodeGenType, out behaviour))
+            if (!_codeGenTypeMap.TryGetValue(output.FileMetadata.CodeGenType, out behaviour))
             {
                 return;
             }
@@ -77,31 +78,31 @@ namespace Intent.Modules.OutputManager.TagWeaver
             {
                 case WeaveBehaviour.KeepCodeInTags:
                     {
-                        string targetFile = output.FileMetaData.GetFullLocationPathWithFileName();
+                        string targetFile = output.FileMetadata.GetFullLocationPathWithFileName();
                         if (File.Exists(targetFile))
                         {
-                            var fileWeaver = new FileWeaver(_eventDispatcher, output.Project, output.FileMetaData);
-                            output.ChangeContent(fileWeaver.Keep(GetTokenParser(output.FileMetaData.FileExtension), output.Content, File.ReadAllText(targetFile)));
+                            var fileWeaver = new FileWeaver(_eventDispatcher, output.Project, output.FileMetadata);
+                            output.ChangeContent(fileWeaver.Keep(GetTokenParser(output.FileMetadata.FileExtension), output.Content, File.ReadAllText(targetFile)));
                         }
                     }
                     break;
                 case WeaveBehaviour.GenerateCodeToTags:
                     {
-                        string targetFile = output.FileMetaData.GetFullLocationPathWithFileName();
+                        string targetFile = output.FileMetadata.GetFullLocationPathWithFileName();
                         if (File.Exists(targetFile))
                         {
-                            var fileWeaver = new FileWeaver(_eventDispatcher, output.Project, output.FileMetaData);
-                            output.ChangeContent(fileWeaver.Embed(GetTokenParser(output.FileMetaData.FileExtension), output.Content, File.ReadAllText(targetFile)));
+                            var fileWeaver = new FileWeaver(_eventDispatcher, output.Project, output.FileMetadata);
+                            output.ChangeContent(fileWeaver.Embed(GetTokenParser(output.FileMetadata.FileExtension), output.Content, File.ReadAllText(targetFile)));
                         }
                     }
                     break;
                 case WeaveBehaviour.GenerateCodeToScope:
                 {
-                    string targetFile = output.FileMetaData.GetFullLocationPathWithFileName();
+                    string targetFile = output.FileMetadata.GetFullLocationPathWithFileName();
                     if (File.Exists(targetFile))
                     {
-                        var fileWeaver = new FileWeaver(_eventDispatcher, output.Project, output.FileMetaData);
-                        output.ChangeContent(fileWeaver.EmbedByScope(GetTokenParser(output.FileMetaData.FileExtension), output.Content, File.ReadAllText(targetFile)));
+                        var fileWeaver = new FileWeaver(_eventDispatcher, output.Project, output.FileMetadata);
+                        output.ChangeContent(fileWeaver.EmbedByScope(GetTokenParser(output.FileMetadata.FileExtension), output.Content, File.ReadAllText(targetFile)));
                     }
                 }
                     break;

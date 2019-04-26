@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Intent.MetaModel.Common;
-using Intent.SoftwareFactory.Plugins;
+using Intent.Plugins;
 
 namespace Intent.Modules.AngularJs
 {

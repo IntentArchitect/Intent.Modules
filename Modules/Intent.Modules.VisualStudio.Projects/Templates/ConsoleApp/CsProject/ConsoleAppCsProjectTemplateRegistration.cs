@@ -4,7 +4,7 @@ using System.Linq;
 using Intent.Modules.Constants;
 using Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleAppCsProjectFile

@@ -7,7 +7,8 @@ using Intent.Modules.Constants;
 using Intent.Modules.VisualStudio.Projects.Templates.WebConfig;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.Modules.Common;
+using Intent.Templates;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

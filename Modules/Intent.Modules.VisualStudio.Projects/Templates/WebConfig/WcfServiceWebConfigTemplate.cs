@@ -2,7 +2,7 @@
 using Intent.Modules.VisualStudio.Projects.Decorators;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;

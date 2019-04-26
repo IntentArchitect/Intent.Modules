@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using Intent.MetaModel;
-using Intent.MetaModel.Domain;
 using Intent.Modules.Common;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using Intent.SoftwareFactory.Configuration;
+using Intent.Configuration;
+using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
+using Intent.Plugins;
 
 namespace Intent.Modules.Entities.Keys.Decorators
 {

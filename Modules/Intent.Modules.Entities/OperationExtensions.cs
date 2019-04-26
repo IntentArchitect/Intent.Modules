@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Intent.MetaModel.Domain;
+using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 
 namespace Intent.Modules.Entities

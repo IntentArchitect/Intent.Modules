@@ -17,6 +17,7 @@ namespace Intent.Modelers.Domain.Api
         public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
         public IFolder Folder => _class.Folder;
         public string Name => _class.Name;
+        public bool IsAbstract => _class.IsAbstract;
         public IEnumerable<string> GenericTypes => _class.GenericTypes;
         public IClass ParentClass
         {

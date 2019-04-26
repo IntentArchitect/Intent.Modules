@@ -5,7 +5,7 @@ using Intent.Modules.AngularJs.ServiceAgent.Templates.Proxy;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.Service;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 using System.Linq;
 using Intent.Modules.Common.Registrations;
 

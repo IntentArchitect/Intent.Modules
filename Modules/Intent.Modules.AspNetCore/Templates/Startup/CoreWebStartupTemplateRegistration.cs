@@ -4,7 +4,7 @@ using System.Linq;
 using Intent.Modules.AspNetCore.Templates.Startup;
 using Intent.Modules.Constants;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup

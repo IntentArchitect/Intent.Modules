@@ -1,8 +1,8 @@
 ﻿using Intent.Modules.Common.Plugins;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.SoftwareFactory.Plugins.FactoryExtensions;
-using Intent.Templates
+using Intent.Plugins.FactoryExtensions;
+using Intent.Templates;
 using System.Collections.Generic;
 using System;
 using System.ComponentModel;
@@ -11,6 +11,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
+using Intent.Utils;
 
 namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
 {

@@ -1,7 +1,7 @@
 ﻿using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.SoftwareFactory.MetaModels.UMLModel;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 using System.Linq;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.RichDomain;

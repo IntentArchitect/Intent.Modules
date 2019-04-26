@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup;
 using Intent.Engine;
-using Intent.SoftwareFactory.Registrations;
+using Intent.Registrations;
 
 namespace Intent.Modules.AspNetCore.Swashbuckle.Decorators
 {

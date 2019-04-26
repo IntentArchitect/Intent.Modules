@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Intent.Utils;
 
 namespace Intent.Modules.OutputManager.TagWeaver
 {

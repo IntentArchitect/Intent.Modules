@@ -1,12 +1,12 @@
-using Intent.MetaModel.Common;
-using Intent.MetaModel.Domain;
+using Intent.Modelers.Domain.Api;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Metadata.Models;
+using Intent.Templates;
 
 namespace Intent.Modules.Entities.Templates
 {

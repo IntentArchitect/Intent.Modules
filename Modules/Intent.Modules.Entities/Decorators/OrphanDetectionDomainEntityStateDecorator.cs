@@ -1,10 +1,11 @@
-﻿using Intent.MetaModel.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel;
+using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
+using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.Decorators
 {

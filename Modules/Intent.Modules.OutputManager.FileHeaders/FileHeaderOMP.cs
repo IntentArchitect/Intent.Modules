@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.Common.Plugins;
 using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Plugins;
+using Intent.Plugins;
 using Intent.Templates;
 using System;
 using System.Collections.Generic;

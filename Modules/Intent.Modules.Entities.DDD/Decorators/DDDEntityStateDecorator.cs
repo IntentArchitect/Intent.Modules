@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Intent.MetaModel.Domain;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using Intent.SoftwareFactory.Configuration;
-using Intent.Templates
+using Intent.Configuration;
+using Intent.Metadata.Models;
+using Intent.Plugins;
+using Intent.Templates;
+using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.DDD.Decorators
 {

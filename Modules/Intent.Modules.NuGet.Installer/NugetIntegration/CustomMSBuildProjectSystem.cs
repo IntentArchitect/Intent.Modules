@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using Intent.Modules.NuGet.Installer.ReImplementations;
 using Intent.SoftwareFactory;
+using Intent.Utils;
 using Microsoft.Build.Construction;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Exceptions;

@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Text;
-using Intent.MetaModel.Domain;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Modules.Entities.Templates;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.Entities.DDD.Decorators
 {

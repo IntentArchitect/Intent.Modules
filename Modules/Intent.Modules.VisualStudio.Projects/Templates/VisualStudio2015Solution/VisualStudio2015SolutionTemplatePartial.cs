@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Intent.Engine;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
