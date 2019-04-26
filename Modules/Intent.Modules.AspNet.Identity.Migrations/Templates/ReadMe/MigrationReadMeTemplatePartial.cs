@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.AspNet.Identity.Migrations.Templates.DbMigrationsConfiguration;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common;

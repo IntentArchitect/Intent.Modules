@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +8,8 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
+using Intent.SoftwareFactory.Templates;
+using Intent.Utils;
 
 namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfiguration
 {

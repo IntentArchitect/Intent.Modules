@@ -98,7 +98,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             return _decorators ?? (_decorators = Project.ResolveDecorators(this));
         }
 
-        public string PropertyMappings(Class @class)
+        public string PropertyMappings(IClass @class)
         {
             return GetDecorators().Aggregate(x => x.PropertyMappings(@class));
         }
@@ -169,6 +169,6 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
 
     public interface IEFMappingTemplateDecorator : ITemplateDecorator
     {
-        string[] PropertyMappings(Class @class);
+        string[] PropertyMappings(IClass @class);
     }
 }

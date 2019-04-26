@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Intent.MetaModel.Hosting;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
@@ -10,30 +9,30 @@ using Intent.Templates;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
 {
-    partial class AngularEdgeServiceProviderTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IBeforeTemplateExecutionHook
+    partial class AngularEdgeServiceProviderTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {
         public const string Identifier = "Intent.Electron.NodeEdgeProxy.AngularEdgeServiceProvider";
         
-        private readonly HostingConfigModel _hostingConfig;
+        //private readonly HostingConfigModel _hostingConfig;
         private readonly IApplicationEventDispatcher _eventDispatcher;
 
-        public AngularEdgeServiceProviderTemplate(IProject project, HostingConfigModel hostingConfig, IApplicationEventDispatcher eventDispatcher)
+        public AngularEdgeServiceProviderTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
             : base (Identifier, project, null)
         {
-            _hostingConfig = hostingConfig;
+            //_hostingConfig = hostingConfig;
             _eventDispatcher = eventDispatcher;
         }
 
         public string ApiBasePathConfigKey => $"{Project.Application.SolutionName}_{Project.ApplicationName()}_api_basepath".ToLower();
 
-        public void BeforeTemplateExecution()
-        {
-            _eventDispatcher.Publish(ApplicationEvents.AngularJs_ConfigurationRequired, new Dictionary<string, string>()
-            {
-                { "Key", ApiBasePathConfigKey },
-                { "Value", _hostingConfig?.GetBaseUrl() ?? "" }
-            });
-        }
+        //public void BeforeTemplateExecution()
+        //{
+        //    _eventDispatcher.Publish(ApplicationEvents.AngularJs_ConfigurationRequired, new Dictionary<string, string>()
+        //    {
+        //        { "Key", ApiBasePathConfigKey },
+        //        { "Value", _hostingConfig?.GetBaseUrl() ?? "" }
+        //    });
+        //}
 
         public override ITemplateFileConfig DefineDefaultFileMetaData()
         {

@@ -9,7 +9,6 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface
 {
-    using Intent.SoftwareFactory.MetaModels.UMLModel;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
@@ -35,14 +34,14 @@ namespace Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface
             this.Write(" \r\nusing System.Net.Http;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nname" +
                     "space ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

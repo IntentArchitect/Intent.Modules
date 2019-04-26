@@ -1,5 +1,4 @@
-﻿using Intent.MetaModel.Common;
-using Intent.Modelers.Services.Api;
+﻿using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Unity.Templates.UnityConfig;
@@ -7,19 +6,26 @@ using Intent.Engine;
 using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy
 {
-    partial class NodeEdgeCsharpReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
+    partial class NodeEdgeCsharpReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IPostTemplateCreation, IHasTemplateDependencies, IHasNugetDependencies
     {
         public const string Identifier = "Intent.Electron.NodeEdgeProxy.CsharpReceivingProxy";
 
         public NodeEdgeCsharpReceivingProxyTemplate(IServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
+        }
+
+        public void Created()
+        {
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -58,7 +64,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
             .ToArray();
         }
 
-        private string GetOperationCallParameters(IOperationModel o)
+        private string GetOperationCallParameters(IOperation o)
         {
             if (!o.Parameters.Any())
             {
@@ -66,18 +72,19 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
             }
 
             return o.Parameters
-                .Select((x, i) => $"Deserialize<{GetTypeName(x.TypeReference)}>(methodParameters[{i}])")
+                .Select((x, i) => $"Deserialize<{GetTypeName(x.Type)}>(methodParameters[{i}])")
                 .Aggregate((x, y) => x + ", " + y);
         }
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
-            if (typeInfo.IsCollection)
-            {
-                result = "List<" + result + ">";
-            }
-            return result;
+            //var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
+            //if (typeInfo.IsCollection)
+            //{
+            //    result = "List<" + result + ">";
+            //}
+            //return result;
+            return Types.Get(typeInfo, "List");
         }
     }
 }

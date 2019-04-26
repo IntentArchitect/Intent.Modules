@@ -1,6 +1,5 @@
-﻿using Intent.Modules.IdentityServer.Templates.AspNetIdentityModel;
-using Intent.Engine;
-using Intent.Templates
+﻿using Intent.Engine;
+using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.Templates;

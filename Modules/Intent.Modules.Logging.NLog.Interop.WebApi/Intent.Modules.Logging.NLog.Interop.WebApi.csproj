@@ -67,10 +67,6 @@
       <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Logging.NLog\Intent.Modules.Logging.NLog.csproj">
-      <Project>{3cf84649-2030-4d91-b93f-984421bc479c}</Project>
-      <Name>Intent.Modules.Logging.NLog</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

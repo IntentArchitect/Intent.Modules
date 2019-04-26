@@ -9,7 +9,6 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementation
 {
-    using Intent.SoftwareFactory.MetaModels.UMLModel;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
@@ -46,21 +45,21 @@ using System.Threading.Tasks;
 
 namespace ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetHttpClientServiceInterfaceName()));
             
             #line default
@@ -69,7 +68,7 @@ namespace ");
                     "   private static readonly int TimeoutInSeconds;\r\n\r\n        private static bool " +
                     "_instantiated;\r\n\r\n        private readonly Func<");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetInterceptorInterfaceName()));
             
             #line default
@@ -89,7 +88,7 @@ namespace ");
 
         public HttpClientService(Func<");
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetInterceptorInterfaceName()));
             
             #line default

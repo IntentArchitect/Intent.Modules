@@ -5,12 +5,14 @@ using Intent.Eventing;
 using Intent.Templates;
 using System.Collections.Generic;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.UserContext.Templates.UserContextProviderInterface;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.UserContext.Templates.UserContextProvider
 {
-    partial class UserContextProviderTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasTemplateDependencies, IRequiresPreProcessing
+    partial class UserContextProviderTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.UserContext.UserContextProvider";
 
@@ -47,7 +49,7 @@ namespace Intent.Modules.UserContext.Templates.UserContextProvider
             };
         }
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
             var userContextProviderInterface = Project.FindTemplateInstance<IHasClassDetails>(UserContextProviderInterfaceTemplate.Identifier);
             var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(UserContextInterfaceTemplate.Identifier);

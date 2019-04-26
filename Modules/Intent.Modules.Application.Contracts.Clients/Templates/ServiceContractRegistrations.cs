@@ -5,12 +5,13 @@ using System.Linq;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Modelers.Services.Api;
+using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Clients.Templates
 {
     [Description("Intent Applications Service Contracts (Clients)")]
-    public class ServiceContractRegistrations : ModelTemplateRegistrationBase<MetaModel.Service.IServiceModel>
+    public class ServiceContractRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetadataManager _metaDataManager;
 
@@ -24,17 +25,17 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
 
         public override string TemplateId => TemplateIds.ClientServiceContract;
 
-        public override ITemplate CreateTemplateInstance(IProject project, MetaModel.Service.IServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
         {
             return new Contracts.Templates.ServiceContract.ServiceContractTemplate(project, model, TemplateId);
         }
 
-        public override IEnumerable<MetaModel.Service.IServiceModel> GetModels(IApplication application)
+        public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = _metaDataManager.GetMetaData<MetaModel.Service.IServiceModel>("Services").ToArray();
+            var serviceModels = _metaDataManager.GetMetaData<IServiceModel>("Services").ToArray();
             if (!serviceModels.Any())
             {
-                serviceModels = _metaDataManager.GetMetaData<MetaModel.Service.IServiceModel>("Service").ToArray(); // backward compatibility
+                serviceModels = _metaDataManager.GetMetaData<IServiceModel>("Service").ToArray(); // backward compatibility
             }
 
             return serviceModels

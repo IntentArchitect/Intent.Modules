@@ -1,4 +1,3 @@
-using Intent.MetaModel.Hosting;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Constants;
 using Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy;
@@ -7,6 +6,7 @@ using Intent.Eventing;
 using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Typescript.ServiceAgent.Contracts;
@@ -38,14 +38,14 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
                 defaultLocationInProject: $@"wwwroot\App\Proxies\Generated");
         }
 
-        private string GetReturnType(IOperationModel operation)
+        private string GetReturnType(IOperation operation)
         {
             return operation.ReturnType != null
-                ? this.ConvertType(operation.ReturnType.TypeReference)
+                ? this.ConvertType(operation.ReturnType.Type)
                 : "void";
         }
 
-        private static string GetMethodCallParameters(IOperationModel operation)
+        private static string GetMethodCallParameters(IOperation operation)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {
@@ -57,7 +57,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
                 .Aggregate((x, y) => $"{x}, {y}");
         }
 
-        private string GetMethodDefinitionParameters(IOperationModel operation)
+        private string GetMethodDefinitionParameters(IOperation operation)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {
@@ -65,7 +65,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
             }
 
             return operation.Parameters
-                .Select(x => $"{x.Name.ToCamelCase()}: {this.ConvertType(x.TypeReference)}")
+                .Select(x => $"{x.Name.ToCamelCase()}: {this.ConvertType(x.Type)}")
                 .Aggregate((x, y) => $"{x}, {y}");
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
@@ -34,7 +35,7 @@ namespace Intent.Modules.AspNet.SignalR.Interop.WebApi.Decorator
             _clientNotificationService = clientNotificationService;";
         }
 
-        public override string AfterTransaction(IServiceModel service, IOperationModel operation)
+        public override string AfterTransaction(IServiceModel service, IOperation operation)
         {
             return @"
                 _clientNotificationService.Flush();";

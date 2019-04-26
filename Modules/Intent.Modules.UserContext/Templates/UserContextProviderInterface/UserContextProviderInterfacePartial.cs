@@ -4,7 +4,8 @@ using Intent.Modules.Constants;
 using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.UserContext.Templates.UserContextProviderInterface
 {

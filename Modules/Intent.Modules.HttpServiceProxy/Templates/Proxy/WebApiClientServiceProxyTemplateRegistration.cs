@@ -7,7 +7,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy

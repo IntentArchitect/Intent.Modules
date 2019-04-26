@@ -1,15 +1,14 @@
-﻿using Intent.MetaModel.Common;
-using Intent.MetaModel.DTO;
+﻿using Intent.Modelers.Services.Api;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Templates
-
+using Intent.Templates;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using IApplication = Engine.IApplication;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {
@@ -31,9 +30,9 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
             return new TypescriptDtoTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IDTOModel> GetModels(IApplication application)
+        public override IEnumerable<IDTOModel> GetModels(Engine.IApplication application)
         {
-            var dtoModels = _metaDataManager.GetDTOModels(application);
+            var dtoModels = _metaDataManager.GetDTOs(application);
 
             // TODO JL: Temp, filter out ones for server only, will ultimately get replaced with concept of client applications in the future
             dtoModels = dtoModels.Where(x => x.Stereotypes.All(s => s.Name != "ServerOnly") && !FolderOrParentFolderHasStereoType(x.Folder, "ServerOnly"));

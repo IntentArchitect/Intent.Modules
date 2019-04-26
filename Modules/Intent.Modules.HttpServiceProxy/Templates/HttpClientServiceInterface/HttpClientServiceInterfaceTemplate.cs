@@ -9,7 +9,6 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
 {
-    using Intent.SoftwareFactory.MetaModels.UMLModel;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
@@ -35,14 +34,14 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
             this.Write(" \r\nusing System.Net.Http;\r\nusing System.Threading;\r\nusing System.Threading.Tasks;" +
                     "\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

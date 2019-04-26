@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 
@@ -10,7 +11,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 {
     internal static class WebApiHelpers
     {
-        public static bool UsesBodyContent(this IOperationModel operation)
+        public static bool UsesBodyContent(this IOperation operation)
         {
             if (!operation.Parameters.Any())
             {
@@ -27,7 +28,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         }
 
 
-        public static bool RequiresPayloadObject(this IOperationModel operation)
+        public static bool RequiresPayloadObject(this IOperation operation)
         {
             if (!operation.Parameters.Any())
             {
@@ -96,10 +97,10 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             "System.DateTime",
         };
 
-        public static bool IsFromBody(this IOperationParameterModel parameter)
+        public static bool IsFromBody(this IOperationParameter parameter)
         {
             // NB: Order of conditional checks is important here
-            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !UrlEncodablePrimitives.Contains(parameter.TypeReference.Name);
+            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !UrlEncodablePrimitives.Contains(parameter.Type.Name);
         }
 
         //public static string MakeUrlEncodeable(this IOperationParameterModel parameter)
@@ -112,7 +113,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         //    return string.Format(UrlEncodablePrimitives[parameter.TypeReference.Name], parameter.Name);
         //}
 
-        private static string GetParameterBindingAttribute(this IOperationParameterModel operationParameterModel)
+        private static string GetParameterBindingAttribute(this IOperationParameter operationParameterModel)
         {
             const string parameterBinding = "Parameter Binding";
             const string propertyType = "Type";
@@ -139,7 +140,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             return $"[{customAttributeValue}]";
         }
 
-        public static HttpVerb GetHttpVerb(this IOperationModel operation)
+        public static HttpVerb GetHttpVerb(this IOperation operation)
         {
             var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
             if (verb != "AUTO")

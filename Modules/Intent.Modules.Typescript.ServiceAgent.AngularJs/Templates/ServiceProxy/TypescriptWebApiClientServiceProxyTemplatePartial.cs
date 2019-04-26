@@ -4,17 +4,18 @@ using Intent.Modules.Constants;
 using Intent.Modules.Typescript.ServiceAgent.Contracts;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel.Common;
+using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
-    partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceModel>, ITemplate, IRequiresPreProcessing
+    partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceModel>, ITemplate, IBeforeTemplateExecutionHook
     {
         public const string RemoteIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Remote";
         public const string LocalIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Local";
@@ -56,7 +57,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                 );
         }
 
-        public void PreProcess()
+        public void BeforeTemplateExecution()
         {
             _eventDispatcher.Publish(ApplicationEvents.AngularJs_ConfigurationRequired, new Dictionary<string, string>()
             {
@@ -79,11 +80,11 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         //    return HttpVerb.GET;
         //}
 
-        private string GetReturnType(IOperationModel o)
+        private string GetReturnType(IOperation o)
         {
             return o.ReturnType == null
                 ? "void"
-                : this.ConvertType(o.ReturnType.TypeReference);
+                : this.ConvertType(o.ReturnType.Type);
         }
 
         private string GetAddress()
@@ -97,7 +98,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             return "http://localhost:" + (Project.ProjectType.Properties.FirstOrDefault(x => x.Name == "Port")?.Value ?? "???");
         }
 
-        private string GetMethodDefinitionParameters(IOperationModel operation)
+        private string GetMethodDefinitionParameters(IOperation operation)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {
@@ -105,11 +106,11 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             }
 
             return operation.Parameters
-                .Select(x => $"{x.Name.ToCamelCase()}: {this.ConvertType(x.TypeReference)}")
+                .Select(x => $"{x.Name.ToCamelCase()}: {this.ConvertType(x.Type)}")
                 .Aggregate((x, y) => $"{x}, {y}");
         }
 
-        private static string GetMethodCallParameters(IOperationModel operation, bool forcePayloadObject)
+        private static string GetMethodCallParameters(IOperation operation, bool forcePayloadObject)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {

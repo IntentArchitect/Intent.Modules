@@ -79,6 +79,10 @@
       <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj">
+      <Project>{C5A5AE9C-9137-4309-AC4E-F9494694390E}</Project>
+      <Name>Intent.Modules.Modelers.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Typescript.ServiceAgent.Contracts\Intent.Modules.Typescript.ServiceAgent.Contracts.csproj">
       <Project>{33ea449e-9d02-4dde-85bc-58ad664d9abd}</Project>
       <Name>Intent.Modules.Typescript.ServiceAgent.Contracts</Name>

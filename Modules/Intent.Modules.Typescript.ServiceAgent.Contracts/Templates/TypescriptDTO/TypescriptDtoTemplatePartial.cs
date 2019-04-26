@@ -1,7 +1,8 @@
-﻿using Intent.MetaModel.DTO;
+﻿using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Modules.Common;
+using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {

@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {
-    using Intent.MetaModel.DTO;
+    using Intent.Modelers.Services.Api;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
@@ -101,7 +101,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToCamelCase()));
         #line hidden
         
         #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.Contracts\Templates\TypescriptDTO\TypescriptDtoTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(field.TypeReference.IsNullable ? "?" : ""));
+this.Write(this.ToStringHelper.ToStringWithCulture(field.Type.IsNullable ? "?" : ""));
 
         
         #line default
@@ -115,7 +115,7 @@ this.Write(": ");
         #line hidden
         
         #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.Contracts\Templates\TypescriptDTO\TypescriptDtoTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(this.ConvertType(field.TypeReference)));
+this.Write(this.ToStringHelper.ToStringWithCulture(this.ConvertType(field.Type)));
 
         
         #line default

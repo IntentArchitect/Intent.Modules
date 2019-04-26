@@ -6,6 +6,7 @@ using Intent.Templates;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modelers.Services;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 
@@ -30,10 +31,9 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
         public override IEnumerable<IServiceModel> GetModels(IApplication applicationManager)
         {
             return _metaDataManager
-                .GetServiceModels(applicationManager)
+                .GetServices(applicationManager)
                 .Where(x => x.Stereotypes.Any(y => y.Name == "NodeEdgeService"))
                 .ToList();
-
         }
     }
 }

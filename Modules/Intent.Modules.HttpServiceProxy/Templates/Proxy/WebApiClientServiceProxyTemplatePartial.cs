@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel.Common;
-using Intent.MetaModel.DTO;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Metadata.Models;
+using Intent.Modules.Application.Contracts.Templates.DTO;
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
+using Intent.Utils;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
@@ -33,6 +35,8 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             _serviceContractTemplateId = GetMetaData().CustomMetaData[SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY];
             _httpClientServiceInterfaceTemplateId = GetMetaData().CustomMetaData[HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
             _dtoTemplateId = GetMetaData().CustomMetaData[DTO_TEMPLATE_ID_CONFIG_KEY];
+            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
+
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -71,17 +75,17 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string ApplicationName => Model.Application.Name;
 
-        private string GetOperationDefinitionParameters(IOperationModel o)
+        private string GetOperationDefinitionParameters(IOperation o)
         {
             if (!o.Parameters.Any())
             {
                 return "";
             }
 
-            return o.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+            return o.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationCallParameters(IOperationModel o)
+        private string GetOperationCallParameters(IOperation o)
         {
             if (!o.Parameters.Any())
             {
@@ -91,14 +95,14 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             return o.Parameters.Select(x => $"{x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationReturnType(IOperationModel o)
+        private string GetOperationReturnType(IOperation o)
         {
             if (o.ReturnType == null)
             {
                 return "void";
             }
 
-            return GetTypeName(o.ReturnType.TypeReference);
+            return GetTypeName(o.ReturnType.Type);
         }
 
         private string GetServiceInterfaceName()
@@ -133,33 +137,10 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            if (typeInfo.Type != ReferenceType.ClassType)
-            {
-                return NormalizeNamespace(typeInfo.IsCollection
-                    ? $"List<{Types.Get(typeInfo)}>"
-                    : Types.Get(typeInfo));
-            }
-
-            var templateInstance = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IDTOModel>(_dtoTemplateId, x => x.Id == typeInfo.Id));
-            if (templateInstance == null)
-            {
-                Logging.Log.Warning($"Could not find template with ID [{_dtoTemplateId}] " +
-                                    $"as configured for the [{DTO_TEMPLATE_ID_CONFIG_KEY}] " +
-                                    $"setting on the [{Id}] template.");
-
-                return NormalizeNamespace(typeInfo.IsCollection
-                    ? $"List<{Types.Get(typeInfo)}>"
-                    : Types.Get(typeInfo));
-            }
-
-            var typeName = $"{templateInstance.Namespace}.{templateInstance.ClassName}";
-
-            return NormalizeNamespace(typeInfo.IsCollection
-                ? $"List<{typeName}>"
-                : typeName);
+            return Types.Get(typeInfo, "List");
         }
 
-        private string GetReadAs(IOperationModel operation)
+        private string GetReadAs(IOperation operation)
         {
             return $"ReadAsAsync<{GetOperationReturnType(operation)}>()";
 

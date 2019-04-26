@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Plugins;

@@ -9,6 +9,7 @@ using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Plugins.FactoryExtensions;
+using Intent.Utils;
 
 namespace Intent.Modules.Angular
 {

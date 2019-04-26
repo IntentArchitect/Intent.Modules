@@ -1,5 +1,4 @@
-﻿using Intent.MetaModel.Common;
-using Intent.Templates;
+﻿using Intent.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;

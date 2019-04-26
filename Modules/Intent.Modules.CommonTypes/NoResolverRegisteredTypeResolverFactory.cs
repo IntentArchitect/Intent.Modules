@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Intent.Metadata.Models;
-using Intent.MetaModel.Common;
 using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.CommonTypes

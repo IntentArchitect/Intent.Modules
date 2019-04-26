@@ -1,9 +1,11 @@
-﻿using Intent.MetaModel.Service;
-using Intent.Modules.AspNet.WebApi.Templates.Controller;
+﻿using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.UserContext.Interop.AspNet.WebApi.Decorators
 {
@@ -29,17 +31,17 @@ namespace Intent.Modules.UserContext.Interop.AspNet.WebApi.Decorators
         public override string ConstructorInit(IServiceModel service) => @"
             _userContextProvider = userContextProvider;";
 
-        public override string BeginOperation(IServiceModel service, IOperationModel operation) => @"
+        public override string BeginOperation(IServiceModel service, IOperation operation) => @"
             var userContext = _userContextProvider.GetUserContext();
             ServiceCallContext.Instance.Set<IUserContextData>(userContext);";
 
         public override int Priority { get; set; } = -200;
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(UserContextInterfaceTemplate.Identifier),
+                TemplateDependency.OnTemplate(UserContextInterfaceTemplate.Identifier),
             };
         }
     }

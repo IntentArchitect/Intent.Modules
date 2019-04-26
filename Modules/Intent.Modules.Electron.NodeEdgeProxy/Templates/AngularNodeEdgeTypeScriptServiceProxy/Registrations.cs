@@ -1,5 +1,4 @@
-﻿using Intent.MetaModel.Hosting;
-using Intent.Modelers.Services.Api;
+﻿using Intent.Modelers.Services.Api;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Templates;
@@ -7,6 +6,7 @@ using Intent.Templates;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Modelers.Services;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 
@@ -34,7 +34,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
         public override IEnumerable<IServiceModel> GetModels(IApplication applicationManager)
         {
             return _metaDataManager
-                .GetServiceModels(applicationManager)
+                .GetServices(applicationManager)
                 .Where(x => x.Stereotypes.Any(y => y.Name == "NodeEdgeService"))
                 .ToList();
         }

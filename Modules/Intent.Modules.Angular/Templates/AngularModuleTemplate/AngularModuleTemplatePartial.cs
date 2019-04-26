@@ -8,7 +8,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 using Zu.TypeScript;
 using Zu.TypeScript.Change;
 using Zu.TypeScript.TsTypes;

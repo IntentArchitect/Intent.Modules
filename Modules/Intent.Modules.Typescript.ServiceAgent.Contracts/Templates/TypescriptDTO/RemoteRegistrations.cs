@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Intent.MetaModel.DTO;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {

@@ -82,10 +82,6 @@
       <Project>{56475e35-0cc7-4d75-937c-ff46c073bb66}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.IdentityServer\Intent.Modules.IdentityServer.csproj">
-      <Project>{e3a48fd5-8997-4f40-98c4-82a90636b761}</Project>
-      <Name>Intent.Modules.IdentityServer</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Templates\ReadMe\MigrationReadMeTemplate.tt">

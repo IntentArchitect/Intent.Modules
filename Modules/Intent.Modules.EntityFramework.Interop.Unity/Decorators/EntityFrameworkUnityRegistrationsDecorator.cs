@@ -1,6 +1,6 @@
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 using System.Collections.Generic;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;

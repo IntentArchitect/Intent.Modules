@@ -9,7 +9,6 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.HttpServiceProxy.Templates.Exception
 {
-    using Intent.SoftwareFactory.MetaModels.UMLModel;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
@@ -35,21 +34,21 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Exception
             this.Write(" \r\nusing System;\r\nusing System.Net;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully" +
                     ")]\r\n\r\nnamespace ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : Exception\r\n    {\r\n        public ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
