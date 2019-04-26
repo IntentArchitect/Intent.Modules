@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.NuGet.Installer</id>
-  <version>1.7.2</version>
+  <version>2.0.2</version>
   <summary>Installs NuGet dependencies on demand for the template / decorator components being installed for the application.</summary>
   <description>Installs NuGet dependencies on demand for the template / decorator components being installed for the application.</description>
   <authors>Intent Architect</authors>
@@ -36,7 +36,7 @@
     </factoryExtension>-->
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="1.7.0"/>
+    <dependency id="Intent.Common" version="2.0.0"/>
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll"/>
