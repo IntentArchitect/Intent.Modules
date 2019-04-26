@@ -7,8 +7,9 @@ using Intent.Modules.Common.Registrations;
 using Intent.Modules.EntityFramework.Repositories.Templates.Repository;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Modelers.Domain;
 using Intent.Registrations;
-using Intent.Templates
+using Intent.Templates;
 
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
@@ -33,7 +34,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
 
         public override IList<IClass> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetDomainModels(application).ToList();
+            return _metaDataManager.GetDomainClasses(application).ToList();
         }
     }
 }

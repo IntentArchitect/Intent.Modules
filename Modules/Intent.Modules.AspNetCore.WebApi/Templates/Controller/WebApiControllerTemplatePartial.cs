@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel.Common;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
@@ -10,8 +9,11 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Templates
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
+using Intent.Utils;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {
@@ -109,37 +111,37 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return GetDecorators().Aggregate(x => x.ConstructorInit(Model));
         }
 
-        public IEnumerable<string> PayloadPropertyDecorators(IOperationParameterModel parameter)
+        public IEnumerable<string> PayloadPropertyDecorators(IOperationParameter parameter)
         {
             return GetDecorators().SelectMany(x => x.PayloadPropertyDecorators(parameter));
         }
 
-        public string BeginOperation(IOperationModel operation)
+        public string BeginOperation(IOperation operation)
         {
             return GetDecorators().Aggregate(x => x.BeginOperation(Model, operation));
         }
 
-        public string BeforeTransaction(IOperationModel operation)
+        public string BeforeTransaction(IOperation operation)
         {
             return GetDecorators().Aggregate(x => x.BeforeTransaction(Model, operation));
         }
 
-        public string BeforeCallToAppLayer(IOperationModel operation)
+        public string BeforeCallToAppLayer(IOperation operation)
         {
             return GetDecorators().Aggregate(x => x.BeforeCallToAppLayer(Model, operation));
         }
 
-        public string AfterCallToAppLayer(IOperationModel operation)
+        public string AfterCallToAppLayer(IOperation operation)
         {
             return GetDecorators().Aggregate(x => x.AfterCallToAppLayer(Model, operation));
         }
 
-        public string AfterTransaction(IOperationModel operation)
+        public string AfterTransaction(IOperation operation)
         {
             return GetDecorators().Aggregate(x => x.AfterTransaction(Model, operation));
         }
 
-        public string OnExceptionCaught(IOperationModel operation)
+        public string OnExceptionCaught(IOperation operation)
         {
             var onExceptionCaught = GetDecorators().Aggregate(x => x.OnExceptionCaught(Model, operation));
 
@@ -167,7 +169,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return _decorators ?? (_decorators = Project.ResolveDecorators(this));
         }
 
-        private string GetSecurityAttribute(IOperationModel o)
+        private string GetSecurityAttribute(IOperation o)
         {
             if (o.HasStereotype("Secured") || Model.HasStereotype("Secured"))
             {
@@ -179,7 +181,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return "[AllowAnonymous]";
         }
 
-        private string GetOperationParameters(IOperationModel operation)
+        private string GetOperationParameters(IOperation operation)
         {
             if (!operation.Parameters.Any())
             {
@@ -190,22 +192,22 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             {
                 case HttpVerb.POST:
                 case HttpVerb.PUT:
-                    return operation.Parameters.Select(x => $"{GetParameterBindingAttribute(operation, x)}{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => $"{x}, {y}");
+                    return operation.Parameters.Select(x => $"{GetParameterBindingAttribute(operation, x)}{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => $"{x}, {y}");
                 case HttpVerb.GET:
                 case HttpVerb.DELETE:
-                    if (operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
+                    if (operation.Parameters.Any(x => x.Type.SpecializationType == "DTO"))
                     {
                         Logging.Log.Warning($@"Intent.AspNetCore.WebApi: [{Model.Name}.{operation.Name}] Passing objects into HTTP {GetHttpVerb(operation)} operations is not well supported by this module.
     We recommend using a POST or PUT verb");
                         // Log warning
                     }
-                    return operation.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+                    return operation.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => x + ", " + y);
                 default:
                     throw new NotSupportedException($"{verb} not supported");
             }
         }
 
-        private string GetOperationCallParameters(IOperationModel operation)
+        private string GetOperationCallParameters(IOperation operation)
         {
             if (!operation.Parameters.Any())
             {
@@ -225,25 +227,25 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             }
         }
 
-        private string GetOperationReturnType(IOperationModel operation)
+        private string GetOperationReturnType(IOperation operation)
         {
             if (operation.ReturnType == null)
             {
                 return "void";
             }
-            return GetTypeName(operation.ReturnType.TypeReference);
+            return GetTypeName(operation.ReturnType.Type);
         }
 
-        private HttpVerb GetHttpVerb(IOperationModel operation)
+        private HttpVerb GetHttpVerb(IOperation operation)
         {
             var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
             if (verb != "AUTO")
             {
                 return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
             }
-            if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
+            if (operation.ReturnType == null || operation.Parameters.Any(x => x.Type.SpecializationType == "DTO"))
             {
-                var hasIdParam = operation.Parameters.Any(x => x.Name.ToLower().EndsWith("id") && x.TypeReference.Type != ReferenceType.ClassType);
+                var hasIdParam = operation.Parameters.Any(x => x.Name.ToLower().EndsWith("id") && x.Type.SpecializationType != "DTO");
                 if (hasIdParam && new[] {"delete", "remove"}.Any(x => operation.Name.ToLower().Contains(x)))
                 {
                     return HttpVerb.DELETE;
@@ -253,13 +255,13 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return HttpVerb.GET;
         }
 
-        private string GetPath(IOperationModel operation)
+        private string GetPath(IOperation operation)
         {
             var path = operation.GetStereotypeProperty<string>("Http", "Route")?.ToLower();
             return path ?? operation.Name.ToLower();
         }
 
-        private string GetParameterBindingAttribute(IOperationModel operation, IOperationParameterModel parameter)
+        private string GetParameterBindingAttribute(IOperation operation, IOperationParameter parameter)
         {
             const string ParameterBinding = "Parameter Binding";
             const string PropertyType = "Type";
@@ -281,8 +283,8 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                 return $"[{attributeName}]";
             }
 
-            if (operation.Parameters.Count(p => p.TypeReference.Type == ReferenceType.ClassType) == 1 
-                && parameter.TypeReference.Type == ReferenceType.ClassType)
+            if (operation.Parameters.Count(p => p.Type.SpecializationType == "DTO") == 1 
+                && parameter.Type.SpecializationType == "DTO")
             {
                 return "[FromBody]";
             }

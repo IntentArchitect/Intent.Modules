@@ -4,8 +4,13 @@ using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Templates
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
+using AssociationType = Intent.Modelers.Domain.Api.AssociationType;
+using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
+using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.EntityFramework.Templates.EFMapping
 {

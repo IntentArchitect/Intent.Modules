@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScriptServiceProxy
 {
-    using Intent.MetaModel.Service;
+    using Intent.Modelers.Services.Api;
     using Intent.Modules.Common.Templates;
     using System;
     

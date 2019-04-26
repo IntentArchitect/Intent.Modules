@@ -1,5 +1,5 @@
 ﻿using Intent.MetaModel.Common;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Unity.Templates.UnityConfig;

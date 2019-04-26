@@ -7,7 +7,8 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Modelers.Domain;
+using Intent.Templates;
 
 
 namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
@@ -40,8 +41,8 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            var allModels = _metaDataManager.GetDomainModels(application);
-            var filteredModels = allModels.Where(p => _stereotypeNames.Any(q => p.HasStereotype(q)));
+            var allModels = _metaDataManager.GetDomainClasses(application);
+            var filteredModels = allModels.Where(p => _stereotypeNames.Any(p.HasStereotype));
 
             if (!filteredModels.Any())
             {

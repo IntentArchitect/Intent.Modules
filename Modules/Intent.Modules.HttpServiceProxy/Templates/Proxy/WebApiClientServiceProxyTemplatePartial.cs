@@ -2,7 +2,7 @@
 using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.MetaModel.DTO;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;

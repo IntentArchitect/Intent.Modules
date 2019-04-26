@@ -1,8 +1,9 @@
 ﻿using Intent.Templates;
 using System.Collections.Generic;
-using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.Templates;
-using IClass = Intent.Modelers.Domain.Api.IClass;
+using IAttribute = Intent.Metadata.Models.IAttribute;
+using IOperation = Intent.Metadata.Models.IOperation;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {

@@ -1,5 +1,5 @@
 ﻿using Intent.MetaModel.Hosting;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Templates

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.Modules.Common.Templates;

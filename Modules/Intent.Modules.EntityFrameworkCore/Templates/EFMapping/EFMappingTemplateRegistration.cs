@@ -6,7 +6,8 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Modelers.Domain;
+using Intent.Templates;
 
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
@@ -30,7 +31,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetDomainModels(application).ToList();
+            return _metaDataManager.GetDomainClasses(application).ToList();
         }
     }
 }

@@ -214,7 +214,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             #line 101 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\EFMapping\EFMappingTemplate.tt"
 
 
-        if (!attribute.IsNullable){
+        if (!attribute.Type.IsNullable){
             
             #line default
             #line hidden

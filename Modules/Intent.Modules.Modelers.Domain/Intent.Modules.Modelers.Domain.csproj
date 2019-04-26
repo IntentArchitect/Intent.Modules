@@ -49,7 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Association.cs" />
+    <Compile Include="Api\AssociationEnd.cs" />
+    <Compile Include="Api\AssociationType.cs" />
     <Compile Include="Api\Class.cs" />
+    <Compile Include="Api\IAssociation.cs" />
+    <Compile Include="Api\IAssociationEnd.cs" />
     <Compile Include="Api\IClass.cs" />
     <Compile Include="DomainMetadataManagerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

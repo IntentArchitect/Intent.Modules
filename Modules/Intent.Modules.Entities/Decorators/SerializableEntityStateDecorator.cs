@@ -5,6 +5,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using IClass = Intent.Modelers.Domain.Api.IClass;
+using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.Entities.Decorators
 {

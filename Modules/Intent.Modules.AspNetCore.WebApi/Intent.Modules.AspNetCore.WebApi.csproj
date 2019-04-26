@@ -93,6 +93,10 @@
       <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj">
+      <Project>{C5A5AE9C-9137-4309-AC4E-F9494694390E}</Project>
+      <Name>Intent.Modules.Modelers.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="metadata\Intent.AspNetCore.WebApi\Folders\Stereotypes.xml" />

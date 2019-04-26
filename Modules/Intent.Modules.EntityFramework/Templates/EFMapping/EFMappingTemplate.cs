@@ -309,7 +309,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             #line 127 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
 
         }
-        if (!attribute.IsNullable){
+        if (!attribute.Type.IsNullable){
             
             #line default
             #line hidden

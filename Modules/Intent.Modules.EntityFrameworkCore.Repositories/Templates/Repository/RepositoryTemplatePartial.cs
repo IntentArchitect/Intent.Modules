@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
@@ -9,17 +8,19 @@ using Intent.Modules.Constants;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.EntityFrameworkCore.Templates.DbContext;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Modelers.Domain.Api;
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
 {
     partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.EntityFrameworkCore.Repositories.Implementation";
-        private ITemplateDependency _entityStateTemplateDependancy;
-        private ITemplateDependency _entityInterfaceTemplateDependancy;
-        private ITemplateDependency _repositoryInterfaceTemplateDependancy;
-        private ITemplateDependency _dbContextTemplateDependancy;
+        private ITemplateDependency _entityStateTemplateDependency;
+        private ITemplateDependency _entityInterfaceTemplateDependency;
+        private ITemplateDependency _repositoryInterfaceTemplateDependency;
+        private ITemplateDependency _dbContextTemplateDependency;
 
         public RepositoryTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
@@ -28,17 +29,17 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
 
         public void Created()
         {
-            _entityStateTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
-            _entityInterfaceTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
-            _repositoryInterfaceTemplateDependancy = TemplateDependency.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
-            _dbContextTemplateDependancy = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
+            _entityStateTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+            _entityInterfaceTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
+            _repositoryInterfaceTemplateDependency = TemplateDependency.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
+            _dbContextTemplateDependency = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
         }
 
         public string EntityInterfaceName
         {
             get
             {
-                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityInterfaceTemplateDependancy);
+                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityInterfaceTemplateDependency);
                 return template != null ? NormalizeNamespace($"{template.Namespace}.{template.ClassName}") : $"{Model.Name}";
             }
         }
@@ -47,14 +48,14 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
         {
             get
             {
-                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityStateTemplateDependancy);
+                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityStateTemplateDependency);
                 return template != null ? NormalizeNamespace($"{template.Namespace}.{template.ClassName}") : $"{Model.Name}";
             }
         }
 
-        public string RepositoryContractName => Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependancy)?.ClassName ?? $"I{ClassName}";
+        public string RepositoryContractName => Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependency)?.ClassName ?? $"I{ClassName}";
 
-        public string DbContextName => Project.FindTemplateInstance<IHasClassDetails>(_dbContextTemplateDependancy)?.ClassName ?? $"{Model.Application.Name}DbContext";
+        public string DbContextName => Project.FindTemplateInstance<IHasClassDetails>(_dbContextTemplateDependency)?.ClassName ?? $"{Model.Application.Name}DbContext";
 
         public string PrimaryKeyType => Types.Get(Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Type) ?? "Guid";
         public string PrimaryKeyName => Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Name.ToPascalCase() ?? "Id";
@@ -85,10 +86,10 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
         {
             return new[]
             {
-                _entityStateTemplateDependancy,
-                _entityInterfaceTemplateDependancy,
-                _repositoryInterfaceTemplateDependancy,
-                _dbContextTemplateDependancy,
+                _entityStateTemplateDependency,
+                _entityInterfaceTemplateDependency,
+                _repositoryInterfaceTemplateDependency,
+                _dbContextTemplateDependency,
             };
         }
 
@@ -104,7 +105,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
 
         public void BeforeTemplateExecution()
         {
-            var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependancy);
+            var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependency);
             if (contractTemplate == null)
             {
                 return;

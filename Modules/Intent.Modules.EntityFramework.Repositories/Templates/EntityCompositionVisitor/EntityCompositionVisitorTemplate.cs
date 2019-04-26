@@ -10,6 +10,7 @@
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
 {
     using Intent.Modelers.Domain.Api;
+    using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
@@ -25,7 +26,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>
+    public partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<Modelers.Domain.Api.IClass>>
     {
 #line hidden
         /// <summary>

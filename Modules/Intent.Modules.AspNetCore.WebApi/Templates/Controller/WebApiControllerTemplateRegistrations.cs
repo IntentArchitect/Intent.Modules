@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Modelers.Services;
+using Intent.Templates;
 
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
@@ -29,7 +30,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetServiceModels(application);
+            return _metaDataManager.GetServices(application);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Engine;
 using Intent.Templates
 using System.Collections.Generic;

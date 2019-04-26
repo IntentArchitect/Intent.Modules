@@ -7,7 +7,8 @@ using Intent.Modules.Constants;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 {

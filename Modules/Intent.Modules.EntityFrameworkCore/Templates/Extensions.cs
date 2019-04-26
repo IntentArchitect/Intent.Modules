@@ -1,7 +1,7 @@
 ﻿using System;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.Templates;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates
 {

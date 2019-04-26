@@ -10,7 +10,7 @@
 namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy
 {
     using Intent.Modules.Common.Templates;
-    using Intent.MetaModel.Service;
+    using Intent.Modelers.Services.Api;
     using System;
     
     /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using Intent.MetaModel.Service;
-using Intent.Templates
+using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
+using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {
@@ -14,19 +15,19 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         public virtual string ConstructorInit(IServiceModel service) => string.Empty;
 
-        public virtual IEnumerable<string> PayloadPropertyDecorators(IOperationParameterModel parameter) => new string[] {};
+        public virtual IEnumerable<string> PayloadPropertyDecorators(IOperationParameter parameter) => new string[] {};
 
-        public virtual string BeginOperation(IServiceModel service, IOperationModel operation) => string.Empty;
+        public virtual string BeginOperation(IServiceModel service, IOperation operation) => string.Empty;
 
-        public virtual string BeforeTransaction(IServiceModel service, IOperationModel operation) => string.Empty;
+        public virtual string BeforeTransaction(IServiceModel service, IOperation operation) => string.Empty;
 
-        public virtual string BeforeCallToAppLayer(IServiceModel service, IOperationModel operation) => string.Empty;
+        public virtual string BeforeCallToAppLayer(IServiceModel service, IOperation operation) => string.Empty;
 
-        public virtual string AfterCallToAppLayer(IServiceModel service, IOperationModel operation) => string.Empty;
+        public virtual string AfterCallToAppLayer(IServiceModel service, IOperation operation) => string.Empty;
 
-        public virtual string AfterTransaction(IServiceModel service, IOperationModel operation) => string.Empty;
+        public virtual string AfterTransaction(IServiceModel service, IOperation operation) => string.Empty;
 
-        public virtual string OnExceptionCaught(IServiceModel service, IOperationModel operation) => string.Empty;
+        public virtual string OnExceptionCaught(IServiceModel service, IOperation operation) => string.Empty;
 
         public virtual bool HandlesCaughtException() => false;
 

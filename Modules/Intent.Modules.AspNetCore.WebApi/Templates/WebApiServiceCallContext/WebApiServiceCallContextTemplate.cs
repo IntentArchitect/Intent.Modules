@@ -9,7 +9,6 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.AspNetCore.WebApi.Templates.WebApiServiceCallContext
 {
-    using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
@@ -35,21 +34,21 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.WebApiServiceCallContext
             this.Write(" \r\n\r\nusing Intent.Framework.Core.Context;\r\nusing System;\r\nusing System.Collection" +
                     "s.Generic;\r\nusing Microsoft.AspNetCore.Http;\r\n");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -58,7 +57,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.WebApiServiceCallContext
                     "= new object();\r\n        private readonly IHttpContextAccessor _httpContextAcces" +
                     "sor;\r\n\r\n        public ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -106,7 +105,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.WebApiServiceCallContext
                 throw new InvalidOperationException(
                     $""{nameof(");
             
-            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 70 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -114,7 +113,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.WebApiServiceCallContext
             this.Write(")} can only be used in the context of an HTTP request. Possible causes for this e" +
                     "rror are using {nameof(");
             
-            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 70 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

@@ -1,5 +1,5 @@
 ﻿using System;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Constants;
 using Intent.Modules.Typescript.ServiceAgent.Contracts;
 using Intent.Engine;

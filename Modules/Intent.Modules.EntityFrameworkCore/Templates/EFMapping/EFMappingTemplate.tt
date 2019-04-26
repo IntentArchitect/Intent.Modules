@@ -100,7 +100,7 @@ namespace <#= Namespace #>
 	    }#>
             builder.Property(x => x.<#= attribute.Name.ToPascalCase()#>)<#
 
-        if (!attribute.IsNullable){#>
+        if (!attribute.Type.IsNullable){#>
 
                 .IsRequired()<#
         }

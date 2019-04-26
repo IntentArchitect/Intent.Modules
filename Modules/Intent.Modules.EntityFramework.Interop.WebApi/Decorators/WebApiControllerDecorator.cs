@@ -1,4 +1,4 @@
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.AspNet.WebApi;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using System.Collections.Generic;

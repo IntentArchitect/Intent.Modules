@@ -14,7 +14,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
     {
         public string TemplateId => CoreWebStartupTemplate.Identifier;
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
             var targetProjectIds = new List<string>
             {
@@ -25,7 +25,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
 
             foreach (var project in projects)
             {
-                registery.Register(TemplateId, project, p => new CoreWebStartupTemplate(project, application.EventDispatcher));
+                registry.Register(TemplateId, project, p => new CoreWebStartupTemplate(project, application.EventDispatcher));
             }
         }
     }

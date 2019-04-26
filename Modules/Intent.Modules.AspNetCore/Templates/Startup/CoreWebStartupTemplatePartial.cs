@@ -7,7 +7,8 @@ using Intent.Modules.Constants;
 using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Templates
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.Templates.Startup
 {

@@ -11,18 +11,19 @@ using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Engine;
-using Intent.Templates
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 {
     partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation, IBeforeTemplateExecutionHook
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.Implementation";
-        private ITemplateDependency _entityStateTemplateDependancy;
-        private ITemplateDependency _entityInterfaceTemplateDependancy;
-        private ITemplateDependency _repositoryInterfaceTemplateDependancy;
-        private ITemplateDependency _dbContextTemplateDependancy;
-        private ITemplateDependency _deleteVisitorTemplateDependancy;
+        private ITemplateDependency _entityStateTemplateDependency;
+        private ITemplateDependency _entityInterfaceTemplateDependency;
+        private ITemplateDependency _repositoryInterfaceTemplateDependency;
+        private ITemplateDependency _dbContextTemplateDependency;
+        private ITemplateDependency _deleteVisitorTemplateDependency;
 
         public RepositoryTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
@@ -31,11 +32,11 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 
         public void Created()
         {
-            _entityStateTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
-            _entityInterfaceTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
-            _repositoryInterfaceTemplateDependancy = TemplateDependency.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
-            _dbContextTemplateDependancy = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
-            _deleteVisitorTemplateDependancy = TemplateDependency.OnTemplate(EntityCompositionVisitorTemplate.Identifier);
+            _entityStateTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+            _entityInterfaceTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Interface Template Id"], (to) => to.Id == Model.Id);
+            _repositoryInterfaceTemplateDependency = TemplateDependency.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
+            _dbContextTemplateDependency = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
+            _deleteVisitorTemplateDependency = TemplateDependency.OnTemplate(EntityCompositionVisitorTemplate.Identifier);
         }
 
         public string EntityCompositionVisitorName
@@ -51,7 +52,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         {
             get
             {
-                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityInterfaceTemplateDependancy);
+                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityInterfaceTemplateDependency);
                 return template != null ? NormalizeNamespace($"{template.Namespace}.{template.ClassName}") : $"{Model.Name}";
             }
         }
@@ -60,16 +61,16 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         {
             get
             {
-                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityStateTemplateDependancy);
+                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityStateTemplateDependency);
                 return template != null ? NormalizeNamespace($"{template.Namespace}.{template.ClassName}") : $"{Model.Name}";
             }
         }
 
-        public string RepositoryContractName => Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependancy)?.ClassName ?? $"I{ClassName}";
+        public string RepositoryContractName => Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependency)?.ClassName ?? $"I{ClassName}";
 
-        public string DbContextName => Project.FindTemplateInstance<IHasClassDetails>(_dbContextTemplateDependancy)?.ClassName ?? $"{Model.Application.Name}DbContext";
+        public string DbContextName => Project.FindTemplateInstance<IHasClassDetails>(_dbContextTemplateDependency)?.ClassName ?? $"{Model.Application.Name}DbContext";
 
-        public string DeleteVisitorName => Project.FindTemplateInstance<IHasClassDetails>(_deleteVisitorTemplateDependancy)?.ClassName ?? $"{Model.Application.Name}DeleteVisitor";
+        public string DeleteVisitorName => Project.FindTemplateInstance<IHasClassDetails>(_deleteVisitorTemplateDependency)?.ClassName ?? $"{Model.Application.Name}DeleteVisitor";
 
         public string PrimaryKeyType => Types.Get(Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Type) ?? "Guid";
 
@@ -101,11 +102,11 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         {
             return new[]
             {
-                _entityStateTemplateDependancy,
-                _entityInterfaceTemplateDependancy,
-                _repositoryInterfaceTemplateDependancy,
-                _dbContextTemplateDependancy,
-                _deleteVisitorTemplateDependancy,
+                _entityStateTemplateDependency,
+                _entityInterfaceTemplateDependency,
+                _repositoryInterfaceTemplateDependency,
+                _dbContextTemplateDependency,
+                _deleteVisitorTemplateDependency,
             };
         }
 
@@ -121,7 +122,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 
         public void BeforeTemplateExecution()
         {
-            var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependancy);
+            var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependency);
             if (contractTemplate == null)
             {
                 return;

@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.AspNetCore.WebApi.Templates.Controller;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.EntityFrameworkCore.Templates.DbContext;
-using Intent.Engine;
-using Intent.Templates
+using Intent.Metadata.Models;
+using Intent.Templates;
 using Intent.Modules.Common;
+using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.EntityFrameworkCore.Interop.WebApi.Decorators
 {
@@ -31,7 +32,7 @@ namespace Intent.Modules.EntityFrameworkCore.Interop.WebApi.Decorators
         public override string ConstructorInit(IServiceModel service) => @"
             _dbContext = dbContext;";
 
-        public override string AfterCallToAppLayer(IServiceModel service, IOperationModel operation)
+        public override string AfterCallToAppLayer(IServiceModel service, IOperation operation)
         {
             if (operation.Stereotypes.Any(x => x.Name == "ReadOnly"))
             {

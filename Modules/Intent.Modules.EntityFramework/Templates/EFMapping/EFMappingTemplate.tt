@@ -126,7 +126,7 @@ namespace <#= Namespace #>
 			}#>
                     }))<#
         }
-        if (!attribute.IsNullable){#>
+        if (!attribute.Type.IsNullable){#>
 
                 .IsRequired()<#
         }

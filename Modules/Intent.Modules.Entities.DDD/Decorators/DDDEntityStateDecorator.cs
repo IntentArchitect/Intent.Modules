@@ -11,6 +11,7 @@ using Intent.Configuration;
 using Intent.Metadata.Models;
 using Intent.Plugins;
 using Intent.Templates;
+using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.DDD.Decorators

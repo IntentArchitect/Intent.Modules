@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Common;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;

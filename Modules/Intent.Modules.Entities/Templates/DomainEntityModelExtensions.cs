@@ -7,6 +7,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Templates;
+using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.Entities.Templates
 {

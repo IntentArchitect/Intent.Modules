@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Intent.Metadata.Models;
 
 namespace Intent.Modelers.Domain.Api
@@ -12,6 +13,8 @@ namespace Intent.Modelers.Domain.Api
         IEnumerable<string> GenericTypes { get; }
 
         IClass ParentClass { get; }
+
+        IEnumerable<IClass> ChildClasses { get; }
 
         bool IsMapped { get; }
 

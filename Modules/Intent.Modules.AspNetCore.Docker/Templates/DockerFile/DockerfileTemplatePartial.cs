@@ -4,7 +4,8 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Modules.Common;
+using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.Docker.Templates.DockerFile
 {

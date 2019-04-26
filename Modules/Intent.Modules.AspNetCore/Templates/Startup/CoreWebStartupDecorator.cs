@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
 {

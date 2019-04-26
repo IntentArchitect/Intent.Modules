@@ -1,5 +1,5 @@
 using Intent.MetaModel.Hosting;
-using Intent.MetaModel.Service;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Constants;
 using Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy;
 using Intent.Engine;

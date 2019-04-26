@@ -1,4 +1,4 @@
-﻿using Intent.MetaModel.Service;
+﻿using Intent.Modelers.Services.Api;
 using Intent.Templates
 using System.Collections.Generic;
 

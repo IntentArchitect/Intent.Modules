@@ -14,7 +14,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
     using System.Collections;
     using System.Collections.Generic;
     using Intent.Modules.Common.Templates;
-    using Intent.MetaModel.Service;
+    using Intent.Modelers.Services.Api;
     
     /// <summary>
     /// Class to produce the template output

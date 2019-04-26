@@ -6,8 +6,9 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Modelers.Domain;
 using Intent.Registrations;
-using Intent.Templates
+using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 {
@@ -30,7 +31,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public override IList<IClass> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetDomainModels(application).ToList();
+            return _metaDataManager.GetDomainClasses(application).ToList();
         }
     }
 }

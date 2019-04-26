@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Intent.Engine;
-using Intent.Templates
+using Intent.Templates;
 using Intent.Registrations;
 using System.ComponentModel;
 using Intent.Modules.AspNetCore.Templates.Program;

@@ -9,7 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
-    using Intent.MetaModel.Service;
+    using Intent.Modelers.Services.Api;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;

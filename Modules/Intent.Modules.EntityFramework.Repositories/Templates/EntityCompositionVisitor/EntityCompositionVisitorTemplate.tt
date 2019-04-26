@@ -1,9 +1,9 @@
-﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>" #>
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IEnumerable<Modelers.Domain.Api.IClass>>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
-<#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.Modelers.Domain.Api" #>
+<#@ import namespace="IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
