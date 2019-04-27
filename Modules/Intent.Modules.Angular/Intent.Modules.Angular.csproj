@@ -60,7 +60,13 @@
     <Compile Include="AngularCliInstaller.cs" />
     <Compile Include="AngularModuleEditor.cs" />
     <Compile Include="AngularTypescriptParser.cs" />
+    <Compile Include="Api\IModuleModel.cs" />
+    <Compile Include="Api\ComponentModel.cs" />
+    <Compile Include="Api\IComponentModel.cs" />
+    <Compile Include="Api\ModuleModel.cs" />
     <Compile Include="CommandLineProcessor.cs" />
+    <Compile Include="MetadataManagerExtensions.cs" />
+    <Compile Include="MetadataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="README.txt" />
     <Compile Include="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplate.cs">

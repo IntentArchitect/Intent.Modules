@@ -30,7 +30,7 @@ namespace Intent.Modelers.Services
         public IEnumerable<IServiceModel> GetServices(Engine.IApplication application)
         {
             var classes = _metaDataManager.GetMetaData<IClass>("Services").Where(x => x.Application.Name == application.ApplicationName
-                && x.SpecializationType == "DTO").ToList();
+                && x.SpecializationType == "Service").ToList();
             return classes.Select(x => new ServiceModel(x)).ToList();
         }
     }

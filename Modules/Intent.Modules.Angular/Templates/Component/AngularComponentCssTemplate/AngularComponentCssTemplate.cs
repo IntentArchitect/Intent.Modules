@@ -13,7 +13,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
-    using Intent.Metadata.Models;
+    using Intent.Modules.Angular.Api;
     using System;
     
     /// <summary>
@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class AngularComponentCssTemplate : IntentProjectItemTemplateBase<IClass>
+    public partial class AngularComponentCssTemplate : IntentProjectItemTemplateBase<IComponentModel>
     {
 #line hidden
         /// <summary>

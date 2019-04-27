@@ -8,6 +8,7 @@ using Intent.Engine;
 using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Angular.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -15,11 +16,11 @@ using System.Linq;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularComponentTsTemplate : IntentProjectItemTemplateBase<IClass>
+    partial class AngularComponentTsTemplate : IntentProjectItemTemplateBase<IComponentModel>
     {
         public const string TemplateId = "Angular.AngularComponentTsTemplate";
 
-        public AngularComponentTsTemplate(IProject project, IClass model) : base(TemplateId, project, model)
+        public AngularComponentTsTemplate(IProject project, IComponentModel model) : base(TemplateId, project, model)
         {
         }
 
@@ -55,7 +56,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
-            var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.ParentClass);
+            var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
             return new DefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,

@@ -22,11 +22,12 @@ namespace Intent.Modules.Common.Templates
         {
             return new ClassTypeSource((typeInfo) =>
             {
-                if (typeInfo.IsCollection)
+                var typeName = FullTypeNameInProject(project, templateId, typeInfo);
+                if (!string.IsNullOrWhiteSpace(typeName) && typeInfo.IsCollection)
                 {
-                    return $"{collectionType}<{FullTypeNameInProject(project, templateId, typeInfo)}>";
+                    return $"{collectionType}<{typeName}>";
                 }
-                return FullTypeNameInProject(project, templateId, typeInfo);
+                return typeName;
             });
         }
 

@@ -8,6 +8,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
+using Intent.Modules.Angular.Api;
 using Intent.Templates;
 using Zu.TypeScript;
 using Zu.TypeScript.Change;
@@ -19,11 +20,11 @@ using Zu.TypeScript.TsTypes;
 namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularModuleTemplate : IntentProjectItemTemplateBase<IClass>
+    partial class AngularModuleTemplate : IntentProjectItemTemplateBase<IModuleModel>
     {
         public const string TemplateId = "Angular.AngularModuleTemplate";
 
-        public AngularModuleTemplate(IProject project, IClass model) : base(TemplateId, project, model)
+        public AngularModuleTemplate(IProject project, IModuleModel model) : base(TemplateId, project, model)
         {
 
         }
@@ -47,7 +48,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
 
             var source = LoadOrCreate(fullFileName);
             var editor = new AngularModuleEditor(source);
-            foreach (var componentModel in Model.ChildClasses)
+            foreach (var componentModel in Model.Components)
             {
                 editor.AddImportIfNotExists($"{GetComponentName(componentModel)}Component", $"./{ GetComponentName(componentModel).ToAngularFileName() }/{ GetComponentName(componentModel).ToAngularFileName() }.component");
                 editor.AddDeclarationIfNotExists($"{GetComponentName(componentModel)}Component");
@@ -73,7 +74,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
             );
         }
 
-        private string GetComponentName(IClass componentModel)
+        private string GetComponentName(IComponentModel componentModel)
         {
             var componentTemplate = Project.FindTemplateInstance<Component.AngularComponentTsTemplate.AngularComponentTsTemplate>(Component.AngularComponentTsTemplate.AngularComponentTsTemplate.TemplateId, componentModel);
             return componentTemplate.ComponentName;

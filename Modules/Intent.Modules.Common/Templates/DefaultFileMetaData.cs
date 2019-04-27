@@ -19,7 +19,7 @@ namespace Intent.Modules.Common.Templates
             OverwriteBehaviour = overwriteBehaviour;
             FileName = fileName;
             FileExtension = fileExtension;
-            DefaultLocationInProject = defaultLocationInProject;
+            LocationInProject = defaultLocationInProject;
         }
 
         public virtual string CodeGenType { get; }
@@ -29,7 +29,6 @@ namespace Intent.Modules.Common.Templates
         public string LocationInProject { get; set; }
         IDictionary<string, string> ITemplateFileConfig.CustomMetaData => CustomMetaData;
 
-        public virtual string DefaultLocationInProject { get; }
         public virtual Dictionary<string, string> CustomMetaData { get; }
 
     }

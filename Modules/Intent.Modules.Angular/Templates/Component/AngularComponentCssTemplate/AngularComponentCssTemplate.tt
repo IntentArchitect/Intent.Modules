@@ -1,7 +1,7 @@
-<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IClass>" #>
+<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IComponentModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
-<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.Angular.Api" #>

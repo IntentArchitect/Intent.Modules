@@ -6,6 +6,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
+using Intent.Modules.Angular.Api;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -14,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AngularModuleTemplateRegistration : ModelTemplateRegistrationBase<IClass>
+    public class AngularModuleTemplateRegistration : ModelTemplateRegistrationBase<IModuleModel>
     {
         private readonly IMetadataManager _metaDataManager;
 
@@ -25,15 +26,15 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
 
         public override string TemplateId => AngularModuleTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        public override ITemplate CreateTemplateInstance(IProject project, IModuleModel model)
         {
             return new AngularModuleTemplate(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<IClass> GetModels(Engine.IApplication application)
+        public override IEnumerable<IModuleModel> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetClassModels(application, "Angular").Where(x => x.SpecializationType == "Module");
+            return _metaDataManager.GetModules(application);
         }
     }
 }
