@@ -61,8 +61,22 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                     continue;
                 }
 
-                var p = new ProjectSyncProcessor(_eventDispatcher, _fileCache, _changeManager, vsproject);
-                p.Process(project.Value);
+                switch (vsproject.ProjectType.Id)
+                {
+                    case VisualStudioProjectTypeIds.CSharpLibrary:
+                    case VisualStudioProjectTypeIds.ConsoleAppNetFramework:
+                    case VisualStudioProjectTypeIds.NodeJsConsoleApplication:
+                    case VisualStudioProjectTypeIds.WcfApplication:
+                    case VisualStudioProjectTypeIds.WebApiApplication:
+                        new FrameworkProjectSyncProcessor(_eventDispatcher, _fileCache, _changeManager, vsproject).Process(project.Value);
+                        break;
+                    case VisualStudioProjectTypeIds.CoreCSharpLibrary:
+                    case VisualStudioProjectTypeIds.CoreWebApp:
+                        new CoreProjectSyncProcessor(_eventDispatcher, _fileCache, _changeManager, vsproject).Process(project.Value);
+                        break;
+                    default:
+                        throw new Exception($"No syncer configured for project type '{vsproject.ProjectType.Name}' ({vsproject.ProjectType.Id})");
+                }
             }
 
             _actions.Clear();

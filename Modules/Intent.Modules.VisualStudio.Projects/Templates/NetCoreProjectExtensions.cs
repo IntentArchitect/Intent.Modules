@@ -15,7 +15,10 @@ namespace Intent.Modules.VisualStudio.Projects.Templates
                 .NugetPackages()
                 .Distinct()
                 .GroupBy(x => x.Name)
-                .ToDictionary(x => x.Key, x => x);
+                .ToDictionary(x => x.Key, x => x)
+                .Select(x => x.Value.OrderByDescending(y => y.Version).First())
+                .OrderBy(x => x.Name)
+                .ToArray();
 
             if (!nugetPackages.Any())
             {
@@ -34,23 +37,46 @@ namespace Intent.Modules.VisualStudio.Projects.Templates
                 projectElement.Add("  ");
                 projectElement.Add(packageReferenceItemGroup);
                 projectElement.Add(Environment.NewLine);
-                projectElement.Add("  ");
+                projectElement.Add(Environment.NewLine);
             }
 
-            foreach (var addFileBehaviour in nugetPackages)
+            foreach (var package in nugetPackages)
             {
-                var latestVersion = addFileBehaviour.Value.OrderByDescending(x => x.Version).First().Version;
                 var existingReference =
-                    packageReferenceItemGroup.XPathSelectElement($"PackageReference[@Include='{addFileBehaviour.Key}']");
+                    packageReferenceItemGroup.XPathSelectElement($"PackageReference[@Include='{package.Name}']");
 
+
+                // TODO: It would be nice if we inserted these alphatically into existing items
                 if (existingReference == null)
                 {
-                    //tracing.Info($"{TracingOutputPrefix}Installing {addFileBehaviour.Key} {latestVersion} into project {netCoreProject.Name}");
+                    //tracing.Info($"{TracingOutputPrefix}Installing {nugetPackageInfo.Name} {nugetPackageInfo} into project {netCoreProject.Name}");
 
                     packageReferenceItemGroup.Add("  ");
-                    packageReferenceItemGroup.Add(new XElement("PackageReference",
-                        new XAttribute("Include", addFileBehaviour.Key),
-                        new XAttribute("Version", latestVersion)));
+                    var xElement = new XElement("PackageReference",
+                        new XAttribute("Include", package.Name),
+                        new XAttribute("Version", package.Version));
+                    
+                    var subElementAdded = false;
+                    if (package.PrivateAssets != null && package.PrivateAssets.Any())
+                    {
+                        xElement.Add($"{Environment.NewLine}      ");
+                        xElement.Add(new XElement("PrivateAssets", package.PrivateAssets.Aggregate((x, y) => x + "; " + y)));
+                        subElementAdded = true;
+                    }
+
+                    if (package.IncludeAssets != null && package.IncludeAssets.Any())
+                    {
+                        xElement.Add($"{Environment.NewLine}      ");
+                        xElement.Add(new XElement("PrivateAssets", package.IncludeAssets.Aggregate((x, y) => x + "; " + y)));
+                        subElementAdded = true;
+                    }
+
+                    if (subElementAdded)
+                    {
+                        xElement.Add($"{Environment.NewLine}    ");
+                    }
+
+                    packageReferenceItemGroup.Add(xElement);
                     packageReferenceItemGroup.Add(Environment.NewLine);
                     packageReferenceItemGroup.Add("  ");
                 }

@@ -18,10 +18,16 @@
     <template id="Intent.ModuleBuilder.ProjectItemTemplate.T4Template">
       <role>Templates</role>
     </template>
+    <template id="Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed">
+      <role>Templates</role>
+    </template>
     <template id="Intent.ModuleBuilder.ProjectItemTemplate.Partial">
       <role>Templates</role>
     </template>
     <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template">
+      <role>Templates</role>
+    </template>
+    <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template.PreProcessed">
       <role>Templates</role>
     </template>
     <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial">
@@ -40,15 +46,17 @@
   <decorators>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.7.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0"/>
+    <dependency id="Intent.Common" version="1.9.0"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.9.0"/>
   </dependencies>
   <metadata>
     <install target="Module Builder" src="modeler"/>
     <install target="Module Builder" src="metadata/Intent.ModuleBuilder"/>
   </metadata>
   <files>
-    <file src="bin/$configuration$/$id$.dll"/>
-    <file src="bin/$configuration$/$id$.pdb"/>
+    <file src="$outDir$/$id$.dll"/>
+    <file src="$outDir$/$id$.pdb"/>
+    <file src="$outDir$/Mono.TextTemplating.dll"/>
+    <file src="$outDir$/System.CodeDom.dll"/>
   </files>
 </package>

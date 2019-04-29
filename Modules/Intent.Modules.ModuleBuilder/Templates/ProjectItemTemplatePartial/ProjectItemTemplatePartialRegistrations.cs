@@ -5,7 +5,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.Templates.Registrations;
+using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 {
@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
             return new ProjectItemTemplatePartialTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
+        public override IEnumerable<IClass> GetModels(IApplication applicationManager)
         {
             return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => x.IsFileTemplate())

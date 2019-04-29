@@ -14,5 +14,7 @@ namespace Intent.Modules.Common.VisualStudio
         /// Used for Web.config to set up Assembly Redirects.
         /// </summary>
         IList<AssemblyRedirectInfo> AssemblyRedirects { get; }
+        string[] PrivateAssets { get; }
+        string[] IncludeAssets { get; }
     }
 }

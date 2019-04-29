@@ -39,6 +39,8 @@ namespace Intent.Modules.Common.VisualStudio
                     throw new ArgumentOutOfRangeException(nameof(file));
             }
         }
+        public string[] PrivateAssets { get; private set; }
+        public string[] IncludeAssets { get; private set; }
 
         public NugetPackageInfo WithAssemblyRedirect(AssemblyRedirectInfo assemblyRedirect)
         {
@@ -85,6 +87,15 @@ namespace Intent.Modules.Common.VisualStudio
             _blacklistFileEntries = files.ToArray();
             return this;
         }
+
+        public NugetPackageInfo SpecifyAssetsBehaviour(IEnumerable<string> privateAssets, IEnumerable<string> includeAssets)
+        {
+            PrivateAssets = privateAssets as string[] ?? privateAssets.ToArray();
+            IncludeAssets = includeAssets as string[] ?? includeAssets.ToArray();
+            
+            return this;
+        }
+
 
         private AddFileBlacklistBehaviour _addFileBlacklistBehaviour = AddFileBlacklistBehaviour.None;
         private string[] _blacklistFileEntries = new string[0];

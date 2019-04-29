@@ -42,7 +42,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
             .Union(base.GetNugetDependencies())
             .ToArray();
         }
-        
+
         private string GetTemplateNameForTemplateId()
         {
             return Model.Name.Replace("Registrations", "Template");

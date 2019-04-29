@@ -256,6 +256,11 @@ namespace Intent.Modules.Common.Templates
             set => _types = value;
         }
 
+        public virtual void Initialize()
+        {
+            // NOP - Visual Studio for Mac generates templates which override this.
+        }
+
         #endregion
     }
 }

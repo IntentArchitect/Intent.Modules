@@ -92,7 +92,8 @@
     <Compile Include="Events\CsProjectEvents.cs" />
     <Compile Include="FactoryExtensions\DependencyResolutionApplicationProcessor.cs" />
     <Compile Include="Sync\ApplicationSyncProcessor.cs" />
-    <Compile Include="Sync\ProjectSyncProcessor.cs" />
+    <Compile Include="Sync\CoreProjectSyncProcessor.cs" />
+    <Compile Include="Sync\FrameworkProjectSyncProcessor.cs" />
     <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplate.cs">
       <DependentUpon>ConsoleAppProgramTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>

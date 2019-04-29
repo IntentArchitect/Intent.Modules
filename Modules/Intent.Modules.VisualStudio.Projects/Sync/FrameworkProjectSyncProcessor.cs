@@ -14,7 +14,7 @@ using Intent.SoftwareFactory.Eventing;
 
 namespace Intent.Modules.VisualStudio.Projects.Sync
 {
-    public class ProjectSyncProcessor
+    public class FrameworkProjectSyncProcessor
     {
         private readonly IXmlFileCache _xmlFileCache;
         private readonly IChanges _changeManager;
@@ -27,7 +27,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         private XNamespace _namespace;
         private XElement _projectElement;
 
-        public ProjectSyncProcessor(
+        public FrameworkProjectSyncProcessor(
             ISoftwareFactoryEventDispatcher softwareFactoryEventDispatcher,
             IXmlFileCache xmlFileCache,
             IChanges changeManager,
@@ -48,12 +48,6 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 return;
 
             filename = Path.GetFullPath(filename);
-
-            // Do not process .Net Core projects.
-            if (IsNetCoreProject())
-            {
-                return;
-            }
 
             //run events
             ProcessEvents(events);
@@ -659,11 +653,6 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             {
                 attribute.Value = value;
             }
-        }
-
-        private bool IsNetCoreProject()
-        {
-            return new[] { VisualStudioProjectTypeIds.CoreCSharpLibrary, VisualStudioProjectTypeIds.CoreWebApp }.Contains(_project.ProjectType.Id);
         }
 
         private static string NormalizePath(string value)
