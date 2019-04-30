@@ -16,8 +16,10 @@ namespace Intent.Modelers.Domain
 
         public IEnumerable<IClass> GetClasses()
         {
+            var cache = new Dictionary<string, Class>();
             var classes = _metaDataManager.GetMetaData<Metadata.Models.IClass>("Domain").Where(x => x.SpecializationType == "Class").ToList();
-            return classes.Select(x => new Class(x)).ToList();
+            var result = classes.Select(x => cache.ContainsKey(x.Id) ? cache[x.Id] : new Class(x, cache)).ToList();
+            return result;
         }
 
         public IEnumerable<IClass> GetClasses(IApplication application)

@@ -12,18 +12,23 @@ namespace Intent.Modelers.Domain.Api
         private readonly ICollection<IClass> _childClasses = new List<IClass>();
         private Class _parent;
 
-        public Class(Metadata.Models.IClass @class)
+        public Class(Metadata.Models.IClass @class, IDictionary<string, Class> classCache)
         {
             _class = @class;
+            classCache.Add(Id, this);
             var parent = _class.AssociatedClasses.FirstOrDefault(x =>
                 x.Association.AssociationType == Metadata.Models.AssociationType.Generalization)?.Class;
             if (parent != null)
             {
-                _parent = new Class(parent);
+                _parent = classCache.ContainsKey(parent.Id) ? classCache[parent.Id] : new Class(parent, classCache);
                 _parent._childClasses.Add(this);
             }
 
-            _associatedClasses = @class.AssociatedClasses.Select(x => new Association(x.Association).TargetEnd).ToList();
+            _associatedClasses = @class.AssociatedClasses.Select(x =>
+            {
+                var association = new Association(x.Association, classCache);
+                return Equals(association.TargetEnd.Class, this) ? association.SourceEnd : association.TargetEnd;
+            }).ToList();
         }
 
         public string Id => _class.Id;
@@ -51,6 +56,29 @@ namespace Intent.Modelers.Domain.Api
         }
 
         public string Comment => _class.Id;
+
+        public static bool operator ==(Class lhs, Class rhs)
+        {
+            // Check for null.
+            if (Object.ReferenceEquals(lhs, null))
+            {
+                if (Object.ReferenceEquals(rhs, null))
+                {
+                    // null == null = true.
+                    return true;
+                }
+
+                // Only the left side is null.
+                return false;
+            }
+            // Equals handles the case of null on right side.
+            return lhs.Equals(rhs);
+        }
+
+        public static bool operator !=(Class lhs, Class rhs)
+        {
+            return !(lhs == rhs);
+        }
 
         public bool Equals(IClass other)
         {

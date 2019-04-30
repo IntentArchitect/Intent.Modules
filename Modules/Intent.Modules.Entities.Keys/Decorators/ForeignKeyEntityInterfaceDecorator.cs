@@ -24,8 +24,8 @@ namespace Intent.Modules.Entities.Keys.Decorators
                 {
                     return base.PropertyBefore(associationEnd);
                 }
-                return $@"       {_foreignKeyType}{ (associationEnd.IsNullable ? "?" : "") } { associationEnd.Name().ToPascalCase() }Id {{ get; }}
-";
+                return $@"
+{_foreignKeyType}{ (associationEnd.IsNullable ? "?" : "") } { associationEnd.Name().ToPascalCase() }Id {{ get; }}";
             }
             return base.PropertyBefore(associationEnd);
         }

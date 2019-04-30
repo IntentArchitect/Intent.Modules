@@ -8,10 +8,14 @@ namespace Intent.Modelers.Domain.Api
     {
         private readonly Metadata.Models.IAssociationEnd _associationEnd;
 
-        public AssociationEnd(Metadata.Models.IAssociationEnd associationEnd, IAssociation association)
+        internal AssociationEnd(
+            Metadata.Models.IAssociationEnd associationEnd, 
+            IAssociation association,
+            IDictionary<string, Class> classCache)
         {
             _associationEnd = associationEnd;
             Association = association;
+            Class = classCache.ContainsKey(_associationEnd.Class.Id) ? classCache[_associationEnd.Class.Id] : new Class(_associationEnd.Class, classCache);
         }
 
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
@@ -24,16 +28,43 @@ namespace Intent.Modelers.Domain.Api
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
         public string Comment => _associationEnd.Comment;
         public IAssociation Association { get; }
-        public IClass Class => new Class(_associationEnd.Class);
+        public IClass Class { get; }
         public bool IsNavigable => _associationEnd.IsNavigable;
         public string MinMultiplicity => _associationEnd.MinMultiplicity;
         public string MaxMultiplicity => _associationEnd.MaxMultiplicity;
         public Multiplicity Multiplicity => (Multiplicity)_associationEnd.Multiplicity;
         public IAssociationEnd OtherEnd()
         {
-            return Association.TargetEnd == this ? Association.SourceEnd : Association.TargetEnd;
+            return Equals(Association.TargetEnd, this) ? Association.SourceEnd : Association.TargetEnd;
         }
 
+        public override string ToString()
+        {
+            return $"{Name} ({Class.Name})";
+        }
+
+        public static bool operator ==(AssociationEnd lhs, AssociationEnd rhs)
+        {
+            // Check for null.
+            if (Object.ReferenceEquals(lhs, null))
+            {
+                if (Object.ReferenceEquals(rhs, null))
+                {
+                    // null == null = true.
+                    return true;
+                }
+
+                // Only the left side is null.
+                return false;
+            }
+            // Equals handles the case of null on right side.
+            return lhs.Equals(rhs);
+        }
+
+        public static bool operator !=(AssociationEnd lhs, AssociationEnd rhs)
+        {
+            return !(lhs == rhs);
+        }
 
         public bool Equals(IAssociationEnd other)
         {
