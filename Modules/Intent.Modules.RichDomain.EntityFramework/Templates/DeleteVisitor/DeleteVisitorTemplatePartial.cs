@@ -39,7 +39,7 @@ namespace Intent.Modules.RichDomain.EntityFramework.Templates.DeleteVisitor
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{BoundedContextName}DeleteVisitor",
                 fileExtension: "cs",
-                defaultLocationInProject: "Generated\\DeleteVisitor"
+                defaultLocationInProject: "Generated/DeleteVisitor"
 
                 );
         }

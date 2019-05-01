@@ -1,4 +1,5 @@
-﻿using Intent.SoftwareFactory.Templates;
+﻿using System.IO;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
@@ -11,19 +12,19 @@ namespace Intent.Modules.Common.Templates
 
         public static string GetFullLocationPathWithFileName(this IFileMetaData fm)
         {
-            return $"{fm.GetFullLocationPath()}\\{fm.FileNameWithExtension()}";
+            return Path.Combine(fm.GetFullLocationPath(), fm.FileNameWithExtension());
         }
 
         public static string GetRelativeFilePathWithFileName(this IFileMetaData fm)
         {
-            string relativePath = fm.GetRelativeFilePath();
+            var relativePath = fm.GetRelativeFilePath();
             if (!string.IsNullOrWhiteSpace(relativePath))
             {
-                return $"{relativePath}\\{fm.FileNameWithExtension()}";
+                return Path.Combine(relativePath, fm.FileNameWithExtension());
             }
+
             return fm.FileNameWithExtension();
         }
 
     }
-
 }
