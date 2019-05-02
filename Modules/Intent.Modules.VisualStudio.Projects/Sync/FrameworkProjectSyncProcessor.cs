@@ -60,7 +60,10 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 var currentProjectFile = XDocument.Parse(File.ReadAllText(filename));
                 currentProjectFileContent = currentProjectFile.ToString();
             }
-            var outputContent = _doc.ToString();
+
+            // Re-parsing prevents issue where not all elements get created on a new line.
+            var outputContent = XDocument.Parse(_doc.ToString()).ToString();
+
             //trying to do a schemantic comparision as VS does inconsistence formatting 
             if (currentProjectFileContent != outputContent)
             {
