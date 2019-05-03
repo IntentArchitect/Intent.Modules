@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="1ce7509b-6349-4a4e-b5e2-ca30c9cfef64" type="File Template">
-  <name>AngularDTOTemplate</name>
+<class id="85935a0a-fcfd-4733-887f-d53be114b125" type="File Template">
+  <name>AngularServiceProxyTemplate</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

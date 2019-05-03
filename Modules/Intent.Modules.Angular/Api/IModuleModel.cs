@@ -14,6 +14,8 @@ namespace Intent.Modules.Angular.Api
 
         IEnumerable<IComponentModel> Components { get; }
 
+        IEnumerable<IServiceProxyModel> ServiceProxies { get; }
+
         string Comment { get; }
     }
 }

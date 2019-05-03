@@ -1,31 +1,26 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Intent.Metadata.Models;
 
 namespace Intent.Modules.Angular.Api
 {
-    public class ModuleModel : IModuleModel
+    public class ServiceProxyModel : IServiceProxyModel
     {
         private readonly IClass _class;
 
-        public ModuleModel(IClass @class)
+        public ServiceProxyModel(IClass @class, IModuleModel module)
         {
             _class = @class;
-            Components = @class.ChildClasses.Where(x => x.SpecializationType == "Component").Select(x => new ComponentModel(x, this));
-            ServiceProxies = @class.ChildClasses.Where(x => x.SpecializationType == "Service Proxy").Select(x => new ServiceProxyModel(x, this));
+            Module = module;
         }
 
         public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
-        public IFolder Folder => _class.Folder;
         public string Id => _class.Id;
         public string Name => _class.Name;
-        public IApplication Application => _class.Application;
-        public IEnumerable<IServiceProxyModel> ServiceProxies { get; }
         public string Comment => _class.Comment;
+        public IModuleModel Module { get; }
+        public IEnumerable<IOperation> Operations => _class.Operations;
 
-        public IEnumerable<IComponentModel> Components { get; }
-
-        public bool Equals(IModuleModel other)
+        public bool Equals(IComponentModel other)
         {
             return Equals(Id, other.Id);
         }
@@ -35,7 +30,7 @@ namespace Intent.Modules.Angular.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((IModuleModel)obj);
+            return Equals((IComponentModel)obj);
         }
 
         public override int GetHashCode()

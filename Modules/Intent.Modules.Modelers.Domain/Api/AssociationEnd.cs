@@ -15,7 +15,7 @@ namespace Intent.Modelers.Domain.Api
         {
             _associationEnd = associationEnd;
             Association = association;
-            Class = classCache.ContainsKey(_associationEnd.Class.Id) ? classCache[_associationEnd.Class.Id] : new Class(_associationEnd.Class, classCache);
+            Class = classCache.ContainsKey(_associationEnd.Model.Id) ? classCache[_associationEnd.Model.Id] : new Class(_associationEnd.Model, classCache);
         }
 
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
@@ -25,6 +25,8 @@ namespace Intent.Modelers.Domain.Api
         public string SpecializationType => _associationEnd.SpecializationType;
         public bool IsNullable => _associationEnd.IsNullable;
         public bool IsCollection => _associationEnd.IsCollection;
+        public Metadata.Models.IClass Model => _associationEnd.Model;
+
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
         public string Comment => _associationEnd.Comment;
         public IAssociation Association { get; }

@@ -22,6 +22,12 @@
     <template id="Angular.AngularModelTemplate">
       <role>Angular.AngularModelTemplate</role>
     </template>
+    <template id="Angular.AngularDTOTemplate">
+      <role>Angular.AngularDTOTemplate</role>
+    </template>
+    <template id="Angular.AngularServiceProxyTemplate">
+      <role>Angular.AngularServiceProxyTemplate</role>
+    </template>
   </templates>
   <factoryExtensions>
     <factoryExtension id="Intent.Angular.CLIInstaller" />

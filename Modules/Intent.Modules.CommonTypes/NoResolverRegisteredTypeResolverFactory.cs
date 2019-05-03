@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
 
-namespace Intent.Modules.CommonTypes
+namespace Intent.Modules.Common.Types
 {
     internal class NoResolverRegisteredTypeResolverFactory : Contracts.ITypeResolverFactory
     {

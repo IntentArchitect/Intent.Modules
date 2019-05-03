@@ -33,6 +33,8 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
+        public string Location => FileMetaData.LocationInProject;
+
         public sealed override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return DefineTypescriptDefaultFileMetaData();
@@ -50,7 +52,7 @@ namespace Intent.Modules.Common.Templates
                     string fileExtension,
                     string defaultLocationInProject,
                     string className,
-                    string @namespace,
+                    string @namespace = null,
                     string dependsUpon = null
                     )
             : base(overwriteBehaviour: overwriteBehaviour, 

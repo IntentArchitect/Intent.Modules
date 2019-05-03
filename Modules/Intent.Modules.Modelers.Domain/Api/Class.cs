@@ -7,17 +7,17 @@ namespace Intent.Modelers.Domain.Api
 {
     internal class Class : IClass, IEquatable<IClass>
     {
-        private IList<IAssociationEnd> _associatedClasses = new List<IAssociationEnd>();
+        private IList<IAssociationEnd> _associatedClasses;
         private readonly Metadata.Models.IClass _class;
         private readonly ICollection<IClass> _childClasses = new List<IClass>();
-        private Class _parent;
+        private readonly Class _parent;
 
         public Class(Metadata.Models.IClass @class, IDictionary<string, Class> classCache)
         {
             _class = @class;
             classCache.Add(Id, this);
             var parent = _class.AssociatedClasses.FirstOrDefault(x =>
-                x.Association.AssociationType == Metadata.Models.AssociationType.Generalization)?.Class;
+                x.Association.AssociationType == Metadata.Models.AssociationType.Generalization)?.Model;
             if (parent != null)
             {
                 _parent = classCache.ContainsKey(parent.Id) ? classCache[parent.Id] : new Class(parent, classCache);

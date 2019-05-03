@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Intent.Modules.Common.TypeResolution;
 
-namespace Intent.Modules.CommonTypes.Contracts
+namespace Intent.Modules.Common.Types.Contracts
 {
     public interface ITypeResolverFactory
     {

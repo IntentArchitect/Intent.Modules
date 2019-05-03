@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Intent.Modules.Common.Types.Contracts;
 using Intent.Templates;
 
-namespace Intent.Modules.CommonTypes
+namespace Intent.Modules.Common.Types
 {
     public class TypeResolverFactoryRepository : ITypeResolverFactoryRepository
     {

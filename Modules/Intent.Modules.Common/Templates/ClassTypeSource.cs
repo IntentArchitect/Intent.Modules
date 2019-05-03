@@ -34,18 +34,20 @@ namespace Intent.Modules.Common.Templates
         private static string FullTypeNameInProject(IProject project, string templateId, ITypeReference typeInfo)
         {
             // Hack for bug in 1.4:
-            var associationEnd = typeInfo as IAssociationEnd;
-            if (associationEnd != null && associationEnd.Id == associationEnd.Association.Id)
-            {
-                return project.FindTemplateInstance<IHasClassDetails>(
-                        TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == associationEnd.Class.Id))
-                    ?.FullTypeName();
-            }
+            //var associationEnd = typeInfo as IAssociationEnd;
+            //if (associationEnd != null && associationEnd.Id == associationEnd.Association.Id)
+            //{
+            //    return project.FindTemplateInstance<IHasClassDetails>(
+            //            TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == associationEnd.Model.Id))
+            //        ?.FullTypeName();
+            //}
 
-            var templateInstance = project.FindTemplateInstance<IHasClassDetails>(
-                TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id));
-            return templateInstance != null ? templateInstance.FullTypeName() 
-                + (typeInfo.GenericTypeParameters.Any() ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => FullTypeNameInProject(project, templateId, x)))}>" : "") 
+            var templateInstance = project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id));
+
+            return templateInstance != null ? 
+                templateInstance.FullTypeName() + (typeInfo.GenericTypeParameters.Any() 
+                    ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => FullTypeNameInProject(project, templateId, x)))}>" 
+                    : "") 
                 : null;
         }
 

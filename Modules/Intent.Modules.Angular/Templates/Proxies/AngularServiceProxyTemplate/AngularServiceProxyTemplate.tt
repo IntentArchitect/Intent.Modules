@@ -1,0 +1,16 @@
+<#@ template language="C#" inherits="IntentTypescriptProjectItemTemplateBase<IServiceProxyModel>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.Angular.Api" #>
+
+@Injectable()
+export class <#= ClassName #> {
+  constructor(
+    private dataService: DataService
+  ) { 
+  }
+}

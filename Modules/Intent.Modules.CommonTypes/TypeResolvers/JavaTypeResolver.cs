@@ -9,7 +9,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.Types.TypeResolvers;
 
-namespace Intent.Modules.CommonTypes.TypeResolvers
+namespace Intent.Modules.Common.Types.TypeResolvers
 {
     public class JavaTypeResolver : TypeResolverBase, ITypeResolver
     {

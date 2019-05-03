@@ -2,8 +2,12 @@
 <class id="3d1fe1c1-b396-4c8b-bc0f-f7ab2537ae7e" type="File Template">
   <name>AngularComponentCssTemplate</name>
   <isAbstract>false</isAbstract>
+  <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>64b3312f-d442-4283-81f4-8fdaa7676430</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6">
       <addedByDefault>false</addedByDefault>
@@ -13,6 +17,4 @@
       </properties>
     </stereotype>
   </stereotypes>
-  <attributes />
-  <operations />
 </class>

@@ -92,18 +92,33 @@
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Model\AngularModelTemplate\AngularModelTemplate.tt</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates\Model\AngularModelTemplate\AngularModelTemplate.tt</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Model\AngularModelTemplate\AngularModelTemplatePartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates\Model\AngularModelTemplate\AngularModelTemplatePartial.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\Proxies\AngularDTOTemplate\AngularDTOTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Model\AngularModelTemplate\AngularModelTemplateRegistration.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates\Model\AngularModelTemplate\AngularModelTemplateRegistration.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\Proxies\AngularDTOTemplate\AngularDTOTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

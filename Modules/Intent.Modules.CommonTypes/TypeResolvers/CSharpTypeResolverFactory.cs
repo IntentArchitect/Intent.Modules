@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.Types.TypeResolvers;
-using Intent.Modules.CommonTypes.Contracts;
+using Intent.Modules.Common.Types.Contracts;
 
-namespace Intent.Modules.CommonTypes.TypeResolvers
+namespace Intent.Modules.Common.Types.TypeResolvers
 {
     [Description("C# Type Resolver")]
     public class CSharpTypeResolverFactory : ITypeResolverFactory

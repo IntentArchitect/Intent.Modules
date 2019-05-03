@@ -15,7 +15,7 @@ namespace Intent.Modules.Common
         {
             if (string.IsNullOrEmpty(associationEnd.Name))
             {
-                var className = associationEnd.Class.Name;
+                var className = associationEnd.Model.Name;
                 if (associationEnd.Multiplicity == Multiplicity.Many)
                 {
                     return className.Pluralize(false);

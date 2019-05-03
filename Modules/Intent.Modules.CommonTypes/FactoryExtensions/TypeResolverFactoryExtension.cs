@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Intent.Modules.CommonTypes.Contracts;
+using Intent.Modules.Common.Types.Contracts;
 using Intent.Templates;
 using System.ComponentModel;
 using Intent.Engine;
@@ -16,7 +16,7 @@ using Intent.Plugins.FactoryExtensions;
 using Intent.SoftwareFactory;
 using Intent.Utils;
 
-namespace Intent.Modules.CommonTypes.FactoryExtensions
+namespace Intent.Modules.Common.Types.FactoryExtensions
 {
     [Description("Type Resolver (Factory Extension)")]
     public class TypeResolverFactoryExtension : IFactoryExtension, IDiscoverTypes, ITemplateLifeCycle

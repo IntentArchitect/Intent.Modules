@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Intent.Modules.Common.Types.Contracts;
 
-namespace Intent.Modules.CommonTypes.Contracts
+namespace Intent.Modules.Common.Types.Contracts
 {
     public interface ITypeResolverFactoryResolution
     {

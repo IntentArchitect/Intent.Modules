@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.Types.TypeResolvers;
-using Intent.Modules.CommonTypes.Contracts;
+using Intent.Modules.Common.Types.Contracts;
 using Intent.Templates;
 
-namespace Intent.Modules.CommonTypes.TypeResolvers
+namespace Intent.Modules.Common.Types.TypeResolvers
 {
     [Description("Type Script Type Resolver")]
     public class TypeScriptTypeResolverFactory : ITypeResolverFactory
