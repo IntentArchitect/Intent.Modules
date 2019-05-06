@@ -28,7 +28,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         public void Created()
         {
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
+            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
@@ -106,7 +106,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(Types.Get(typeInfo, "List"));
+            var result = NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
             //if (typeInfo.IsCollection && typeInfo.Type != ReferenceType.ClassType)
             //{
             //    result = string.Format(GetCollectionTypeFormatConfig(), result);

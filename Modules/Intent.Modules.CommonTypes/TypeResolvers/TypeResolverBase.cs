@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Types.TypeResolvers
 {
@@ -81,6 +83,11 @@ namespace Intent.Modules.Common.Types.TypeResolvers
             return new TypeResolverContext(_classTypeSources[contextName], ResolveType);
         }
 
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        {
+            return _classTypeSources.Values.SelectMany(x => x).SelectMany(x => x.GetTemplateDependencies()).ToList();
+        }
+
         public string Get(ITypeReference typeInfo)
         {
             return Get(typeInfo, null);
@@ -91,6 +98,6 @@ namespace Intent.Modules.Common.Types.TypeResolvers
             return InContext(DEFAULT_CONTEXT).Get(typeInfo, collectionType);
         }
 
-        protected abstract string ResolveType(ITypeReference typeInfo, string collectionType = null);
+        protected abstract string ResolveType(ITypeReference typeInfo, string collectionFormat = null);
     }
 }

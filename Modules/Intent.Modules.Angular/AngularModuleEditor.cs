@@ -37,6 +37,37 @@ import {{ {className} }} from '{location}';");
             _source = change.GetChangedSource(_source);
         }
 
+        public bool MethodExists(string methodName)
+        {
+            var ast = new TypeScriptAST(_source);
+            var methods = ast.OfKind(SyntaxKind.MethodDeclaration);
+
+            if (!methods.Any())
+            {
+                return false;
+            }
+
+            return methods.Any(x => x.Children.OfKind(SyntaxKind.Identifier).Any(i => i.IdentifierStr == methodName));
+        }
+
+        public void AddMethod(string method)
+        {
+            var ast = new TypeScriptAST(_source);
+            var change = new ChangeAST();
+            var methods = ast.OfKind(SyntaxKind.MethodDeclaration);
+
+            if (methods.Any())
+            {
+                change.InsertAfter(methods.Last(), method);
+            }
+            else
+            {
+                var classDeclaration = ast.OfKind(SyntaxKind.ClassDeclaration).First();
+                change.InsertAfter(classDeclaration.Children.Last(), method);
+            }
+            _source = change.GetChangedSource(_source);
+        }
+
         public void AddDeclarationIfNotExists(string className)
         {
             var ast = new TypeScriptAST(_source);

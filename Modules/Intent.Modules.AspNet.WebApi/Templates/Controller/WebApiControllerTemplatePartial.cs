@@ -32,7 +32,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
         public void Created()
         {
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
+            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public IEnumerable<string> DeclareUsings()
@@ -112,7 +112,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             //{
             //    result = "List<" + result + ">";
             //}
-            return Types.Get(typeInfo, "List");
+            return Types.Get(typeInfo, "List<{0}>");
         }
 
         public string DeclarePrivateVariables()

@@ -5,6 +5,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Angular.Templates.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -29,13 +30,13 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         protected override TypescriptDefaultFileMetaData DefineTypescriptDefaultFileMetaData()
         {
-            var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
+            //var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
             return new TypescriptDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client\\src\\app\\{moduleTemplate.ModuleName.ToAngularFileName()}\\models",
+                defaultLocationInProject: $"Client\\src\\app\\{Model.Module.GetModuleName().ToAngularFileName()}\\models",
                 className: "${Model.Name}"
             );
         }

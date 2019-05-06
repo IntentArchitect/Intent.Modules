@@ -105,7 +105,7 @@ namespace Intent.Modules.Entities.DDD.Decorators
                 return base.AssociationBefore(associationEnd);
             }
 
-            var t = ClassTypeSource.InProject(Template.Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable));
+            var t = CSharpTypeSource.InProject(Template.Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable));
             return $@"
         {t.GetClassType(associationEnd)} I{associationEnd.OtherEnd().Class.Name}.{associationEnd.Name().ToPascalCase()} => {associationEnd.Name().ToPascalCase()};
 ";

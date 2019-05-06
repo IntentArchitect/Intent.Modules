@@ -19,7 +19,7 @@ namespace Intent.Modules.Common.Templates
         public ITemplateContext Context { get; }
         public IFileMetadata FileMetaData { get; private set; }
 
-        public virtual string DependencyUsings => this.ResolveAllUsings(Project);
+        //public virtual string DependencyUsings => this.ResolveAllUsings(Project);
 
         object ITemplateWithModel.Model
         {

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 
 namespace Intent.Modules.Angular.Api
 {
-    public class ModuleModel : IModuleModel
+    public class ModuleModel : IModuleModel, IEquatable<IModuleModel>
     {
         private readonly IClass _class;
 

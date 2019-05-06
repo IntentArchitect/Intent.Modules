@@ -5,7 +5,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
 {
     public class TypeScriptTypeResolver : TypeResolverBase, ITypeResolver
     {
-        protected override string ResolveType(ITypeReference typeInfo, string collectionType = null)
+        protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {
             var type = typeInfo.GetStereotypeProperty<string>("TypeScript", "Type");
             

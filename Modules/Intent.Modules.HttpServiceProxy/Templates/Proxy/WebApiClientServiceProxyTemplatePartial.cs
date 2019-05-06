@@ -35,7 +35,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             _serviceContractTemplateId = GetMetaData().CustomMetaData[SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY];
             _httpClientServiceInterfaceTemplateId = GetMetaData().CustomMetaData[HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
             _dtoTemplateId = GetMetaData().CustomMetaData[DTO_TEMPLATE_ID_CONFIG_KEY];
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
+            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
 
         }
 
@@ -137,7 +137,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            return Types.Get(typeInfo, "List");
+            return Types.Get(typeInfo, "List<{0}>");
         }
 
         private string GetReadAs(IOperation operation)

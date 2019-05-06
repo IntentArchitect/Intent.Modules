@@ -27,7 +27,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
 
         public void Created()
         {
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
+            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
@@ -119,7 +119,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(Types.Get(typeInfo, "List"));
+            var result = NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
             return result;
         }
     }

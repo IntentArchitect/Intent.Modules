@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Types
 {
@@ -71,6 +72,11 @@ namespace Intent.Modules.Common.Types
             }
 
             public ITypeResolverContext InContext(string contextName)
+            {
+                throw new NotImplementedException();
+            }
+
+            public IEnumerable<ITemplateDependency> GetTemplateDependencies()
             {
                 throw new NotImplementedException();
             }

@@ -29,7 +29,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         public void Created()
         {
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
+            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public IEnumerable<string> DeclareUsings()
@@ -93,7 +93,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         private string GetTypeName(ITypeReference typeInfo)
         {
-            return NormalizeNamespace(Types.Get(typeInfo, "List"));
+            return NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
         }
 
         public string DeclarePrivateVariables()

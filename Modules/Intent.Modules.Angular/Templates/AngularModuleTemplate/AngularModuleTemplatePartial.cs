@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Intent.Metadata.Models;
 using Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate;
 using Intent.Modules.Common;
@@ -29,17 +30,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
 
         }
 
-        public string ModuleName
-        {
-            get
-            {
-                if (Model.Name.EndsWith("Module", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return Model.Name.Substring(0, Model.Name.Length - "Module".Length);
-                }
-                return Model.Name;
-            }
-        }
+        public string ModuleName => Model.GetModuleName();
 
         public override string RunTemplate()
         {
@@ -78,6 +69,18 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
         {
             var componentTemplate = Project.FindTemplateInstance<Component.AngularComponentTsTemplate.AngularComponentTsTemplate>(Component.AngularComponentTsTemplate.AngularComponentTsTemplate.TemplateId, componentModel);
             return componentTemplate.ComponentName;
+        }
+    }
+
+    public static class IModuleModelExtensions
+    {
+        public static string GetModuleName(this IModuleModel module)
+        {
+            if (module.Name.EndsWith("Module", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return module.Name.Substring(0, module.Name.Length - "Module".Length);
+            }
+            return module.Name;
         }
     }
 }

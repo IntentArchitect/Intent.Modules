@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modelers.Services;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Common;
@@ -41,13 +42,20 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
                     .SelectMany(x => x.Operations).ToList();
                 var classes = operations
                     .SelectMany(x => x.Parameters)
-                    .Select(x => x.Type.Model)
-                    .Concat(operations.Where(x => x.ReturnType != null).Select(x => x.ReturnType.Type.Model));
+                    .SelectMany(x => GetTypeModels(x.Type))
+                    .Concat(operations.Where(x => x.ReturnType != null).SelectMany(x => GetTypeModels(x.ReturnType.Type)));
 
                 dtoModels.AddRange(classes.Where(x => x.IsDTO()).Select(x => new ModuleDTOModel(x, moduleModel)).ToList());
             }
 
             return dtoModels;
+        }
+
+        private static IEnumerable<IClass> GetTypeModels(ITypeReference typeReference)
+        {
+            var models = new List<IClass>() { typeReference.Model };
+            models.AddRange(typeReference.GenericTypeParameters.SelectMany(GetTypeModels));
+            return models;
         }
     }
 }

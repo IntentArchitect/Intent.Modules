@@ -27,7 +27,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public void Created()
         {
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
+            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -100,7 +100,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         private string GetTypeInfo(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(Types.Get(typeInfo, "List"));
+            var result = NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
             // Don't check for nullables here because the type resolution system will take care of language specific nullables
 
             return result;

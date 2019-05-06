@@ -98,7 +98,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             //{
             //    result = "List<" + result + ">";
             //}
-            return NormalizeNamespace(Types.Get(typeInfo, "List"));
+            return NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
         }
 
         public void BeforeTemplateExecution()

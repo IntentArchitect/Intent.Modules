@@ -25,7 +25,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
 
         public void Created()
         {
-            Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List"));
+            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -84,7 +84,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
             //    result = "List<" + result + ">";
             //}
             //return result;
-            return Types.Get(typeInfo, "List");
+            return Types.Get(typeInfo, "List<{0}>");
         }
     }
 }

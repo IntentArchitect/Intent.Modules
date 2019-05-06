@@ -188,7 +188,7 @@ namespace Intent.Modules.Common.Templates
 
         protected abstract RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData();
 
-        public override string DependencyUsings => this.ResolveAllUsings(Project, namespacesToIgnore: Namespace);
+        public virtual string DependencyUsings => this.ResolveAllUsings(Project, namespacesToIgnore: Namespace);
 
         public virtual IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {

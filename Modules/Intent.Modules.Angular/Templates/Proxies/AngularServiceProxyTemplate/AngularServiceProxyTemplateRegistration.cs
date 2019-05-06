@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modelers.Services;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
@@ -34,8 +35,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<IServiceProxyModel> GetModels(Engine.IApplication application)
         {
-            // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == "Service") for services only)
-            return _metaDataManager.GetClassModels(application, "Custom");
+            return _metaDataManager.GetModules(application).SelectMany(x => x.ServiceProxies).ToList();
         }
     }
 }

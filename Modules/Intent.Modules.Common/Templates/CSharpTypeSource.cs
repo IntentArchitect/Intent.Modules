@@ -4,28 +4,30 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
 using IClassTypeSource = Intent.Modules.Common.TypeResolution.IClassTypeSource;
 
 namespace Intent.Modules.Common.Templates
 {
-    public class ClassTypeSource : IClassTypeSource
+    public class CSharpTypeSource : IClassTypeSource
     {
         private readonly Func<ITypeReference, string> _execute;
+        private static readonly IList<ITemplateDependency> _templateDependencies = new List<ITemplateDependency>();
 
-        internal ClassTypeSource(Func<ITypeReference, string> execute)
+        internal CSharpTypeSource(Func<ITypeReference, string> execute)
         {
             _execute = execute;
         }
 
-        public static IClassTypeSource InProject(IProject project, string templateId, string collectionType = nameof(IEnumerable))
+        public static IClassTypeSource InProject(IProject project, string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
-            return new ClassTypeSource((typeInfo) =>
+            return new CSharpTypeSource((typeInfo) =>
             {
                 var typeName = FullTypeNameInProject(project, templateId, typeInfo);
                 if (!string.IsNullOrWhiteSpace(typeName) && typeInfo.IsCollection)
                 {
-                    return $"{collectionType}<{typeName}>";
+                    return string.Format(collectionFormat, typeName);;
                 }
                 return typeName;
             });
@@ -33,16 +35,7 @@ namespace Intent.Modules.Common.Templates
 
         private static string FullTypeNameInProject(IProject project, string templateId, ITypeReference typeInfo)
         {
-            // Hack for bug in 1.4:
-            //var associationEnd = typeInfo as IAssociationEnd;
-            //if (associationEnd != null && associationEnd.Id == associationEnd.Association.Id)
-            //{
-            //    return project.FindTemplateInstance<IHasClassDetails>(
-            //            TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == associationEnd.Model.Id))
-            //        ?.FullTypeName();
-            //}
-
-            var templateInstance = project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id));
+            var templateInstance = GetTemplateInstance(project, templateId, typeInfo);
 
             return templateInstance != null ? 
                 templateInstance.FullTypeName() + (typeInfo.GenericTypeParameters.Any() 
@@ -53,7 +46,7 @@ namespace Intent.Modules.Common.Templates
 
         public static IClassTypeSource InApplication(IApplication application, string templateId, string collectionType = nameof(IEnumerable))
         {
-            return new ClassTypeSource((typeInfo) =>
+            return new CSharpTypeSource((typeInfo) =>
             {
                 if (typeInfo.IsCollection)
                 {
@@ -65,14 +58,33 @@ namespace Intent.Modules.Common.Templates
 
         private static string FullTypeNameInApplication(IApplication application, string templateId, ITypeReference typeInfo)
         {
-            return application.FindTemplateInstance<IHasClassDetails>(
-                    TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id))
-                ?.FullTypeName();
+            var templateInstance = application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id));
+            if (templateInstance != null)
+            {
+                _templateDependencies.Add(TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id));
+            }
+            return templateInstance?.FullTypeName();
         }
 
         public string GetClassType(ITypeReference typeInfo)
         {
             return _execute(typeInfo);
+        }
+
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        {
+            return _templateDependencies;
+        }
+
+        private static IHasClassDetails GetTemplateInstance(IProject project, string templateId, ITypeReference typeInfo)
+        {
+            var templateInstance = project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id));
+            if (templateInstance != null)
+            {
+                _templateDependencies.Add(TemplateDependency.OnModel<IMetaModel>(templateId, (x) => x.Id == typeInfo.Id));
+            }
+
+            return templateInstance;
         }
     }
 }

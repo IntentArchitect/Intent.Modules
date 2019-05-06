@@ -1,10 +1,13 @@
-﻿using Intent.Metadata.Models;
+﻿using System.Collections.Generic;
+using Intent.Metadata.Models;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeResolution
 {
     public interface IClassTypeSource
     {
         string GetClassType(ITypeReference typeInfo);
+        IEnumerable<ITemplateDependency> GetTemplateDependencies();
     }
 
     public interface ITypeResolver
@@ -43,6 +46,12 @@ namespace Intent.Modules.Common.TypeResolution
         /// <param name="contextName"></param>
         /// <returns></returns>
         ITypeResolverContext InContext(string contextName);
+
+        /// <summary>
+        /// Returns a collection of template dependencies discovered while discovering type names from templates.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<ITemplateDependency> GetTemplateDependencies();
     }
 
     public interface ITypeResolverContext

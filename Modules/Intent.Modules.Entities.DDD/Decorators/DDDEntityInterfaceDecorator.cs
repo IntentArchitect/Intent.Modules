@@ -45,7 +45,7 @@ namespace Intent.Modules.Entities.Decorators
             {
                 return base.PropertyBefore(associationEnd);
             }
-            var t = ClassTypeSource.InProject(Template.Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable));
+            var t = CSharpTypeSource.InProject(Template.Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable));
             return $@"
         {t.GetClassType(associationEnd)} {associationEnd.Name().ToPascalCase()} {{ get; }}
 ";
