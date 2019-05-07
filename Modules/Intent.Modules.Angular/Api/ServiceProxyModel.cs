@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 
 namespace Intent.Modules.Angular.Api
 {
@@ -11,6 +12,7 @@ namespace Intent.Modules.Angular.Api
         {
             _class = @class;
             Module = module;
+            MappedService = _class.MappedClass != null ? new ServiceModel(_class.MappedClass.Class) : null;
         }
 
         public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
@@ -18,6 +20,7 @@ namespace Intent.Modules.Angular.Api
         public string Name => _class.Name;
         public string Comment => _class.Comment;
         public IModuleModel Module { get; }
+        public IServiceModel MappedService { get; }
         public IEnumerable<IOperation> Operations => _class.Operations;
 
         public bool Equals(IComponentModel other)

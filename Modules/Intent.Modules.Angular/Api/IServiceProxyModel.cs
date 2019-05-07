@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 
 namespace Intent.Modules.Angular.Api
 {
@@ -8,6 +9,7 @@ namespace Intent.Modules.Angular.Api
         string Name { get; }
         string Comment { get; }
         IModuleModel Module { get; }
+        IServiceModel MappedService { get; }
         IEnumerable<IOperation> Operations { get; }
     }
 }

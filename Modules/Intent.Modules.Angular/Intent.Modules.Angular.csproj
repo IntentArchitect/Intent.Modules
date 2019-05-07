@@ -71,6 +71,8 @@
     <Compile Include="MetadataManagerExtensions.cs" />
     <Compile Include="MetadataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\AngularComponentCreatedEvent.cs" />
+    <Compile Include="Templates\PathExtensions.cs" />
     <Content Include="README.txt" />
     <Compile Include="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplate.cs">
       <AutoGen>True</AutoGen>

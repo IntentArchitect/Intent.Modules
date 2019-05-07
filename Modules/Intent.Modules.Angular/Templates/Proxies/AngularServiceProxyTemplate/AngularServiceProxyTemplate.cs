@@ -31,9 +31,11 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n@Injectable()\r\nexport class ");
+            this.Write("import { DataService } from \"./data.service\";\r\nimport { Injectable } from \'@angul" +
+                    "ar/core\';\r\n\r\nimport { Observable } from \'rxjs\';\r\nimport { map } from \'rxjs/opera" +
+                    "tors\';\r\n\r\n@Injectable()\r\nexport class ");
             
-            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

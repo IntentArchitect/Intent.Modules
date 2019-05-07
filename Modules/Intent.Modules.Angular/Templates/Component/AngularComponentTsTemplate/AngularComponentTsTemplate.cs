@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class AngularComponentTsTemplate : IntentProjectItemTemplateBase<IComponentModel>
+    public partial class AngularComponentTsTemplate : IntentTypescriptProjectItemTemplateBase<IComponentModel>
     {
 #line hidden
         /// <summary>
@@ -34,33 +34,32 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                     "ular/core\';\r\n\r\n@Component({\r\n  selector: \'app-");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToAngularFileName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToAngularFileName()));
             
             #line default
             #line hidden
             this.Write("\',\r\n  templateUrl: \'./");
             
             #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToAngularFileName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToAngularFileName()));
             
             #line default
             #line hidden
             this.Write(".component.html\',\r\n  styleUrls: [\'./");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToAngularFileName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToAngularFileName()));
             
             #line default
             #line hidden
             this.Write(".component.css\']\r\n})\r\nexport class ");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write("Component implements OnInit {\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit() {\r\n  }\r\n\r\n}\r" +
-                    "\n");
+            this.Write(" implements OnInit {\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit() {\r\n  }\r\n\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

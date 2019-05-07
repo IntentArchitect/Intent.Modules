@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IComponentModel>" #>
+<#@ template language="C#" inherits="IntentTypescriptProjectItemTemplateBase<IComponentModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -10,11 +10,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-<#= Model.Name.ToAngularFileName() #>',
-  templateUrl: './<#= Model.Name.ToAngularFileName() #>.component.html',
-  styleUrls: ['./<#= Model.Name.ToAngularFileName() #>.component.css']
+  selector: 'app-<#= ComponentName.ToAngularFileName() #>',
+  templateUrl: './<#= ComponentName.ToAngularFileName() #>.component.html',
+  styleUrls: ['./<#= ComponentName.ToAngularFileName() #>.component.css']
 })
-export class <#= ComponentName #>Component implements OnInit {
+export class <#= ClassName #> implements OnInit {
 
   constructor() { }
 

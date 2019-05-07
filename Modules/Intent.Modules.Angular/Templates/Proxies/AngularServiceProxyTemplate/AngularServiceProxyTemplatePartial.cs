@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modelers.Services;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Templates.AngularModuleTemplate;
 using Intent.Modules.Common;
@@ -30,6 +31,19 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         public void BeforeTemplateExecution()
         {
             Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.AngularDTOTemplate.TemplateId, "{0}[]"));
+
+            if (File.Exists(GetMetaData().GetFullLocationPathWithFileName()))
+            {
+                return;
+            }
+
+            // New Component:
+            Project.Application.EventDispatcher.Publish(AngularServiceProxyCreatedEvent.EventId,
+                new Dictionary<string, string>()
+                {
+                    {AngularServiceProxyCreatedEvent.ModuleId, Model.Module.Id },
+                    {AngularServiceProxyCreatedEvent.ModelId, Model.Id},
+                });
         }
 
         public override string RunTemplate()
@@ -41,21 +55,24 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             var editor = new AngularModuleEditor(source);
             foreach (var operation in Model.Operations)
             {
-                if (editor.MethodExists(operation.Name.ToCamelCase()))
-                {
-                    continue;
-                }
-                var url = $"api/{Model.Name.ToLower()}/{operation.Name.ToLower()}";
-                editor.AddMethod($@"
+                var url = $"api/{Model.MappedService.Name.ToLower()}/{Model.MappedService.Operations.First(x => x.Id == operation.Mapping.TargetId).Name.ToLower()}";
+                var method = $@"
 
-  {operation.Name.ToCamelCase()}({GetParameterDefinitions(operation)}): {GetReturnType(operation)} {{
-    let url = ""{url}"";
-    {GetUpdateUrl(operation)}
+  {operation.Name.ToCamelCase()}({GetParameterDefinitions(operation)}): Observable<{GetReturnType(operation)}> {{
+    let url = ""{url}"";{GetUpdateUrl(operation)}
     return this.dataService.{GetDataServiceCall(operation)}
-      .pipe(map((response: {GetReturnType(operation)}) => {{
+      .pipe(map((response: any) => {{
         return response;
       }}));
-  }}");
+  }}";
+                if (editor.MethodExists(operation.Name.ToCamelCase()))
+                {
+                    editor.ReplaceMethod(operation.Name.ToCamelCase(), method);
+                }
+                else
+                {
+                    editor.AddMethod(method);
+                }
             }
 
             var dependencies = Types.GetTemplateDependencies().Select(x => Project.FindTemplateInstance<ITemplate>(x));
@@ -66,7 +83,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                     continue;
                 }
 
-                editor.AddImportIfNotExists(((IHasClassDetails)template).ClassName, template.GetMetaData().LocationInProject.Replace("\\", "/")); // Temporary replacement until 1.9 changes are merged.
+                editor.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetaData().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetaData().GetRelativeFilePathWithFileName())); // Temporary replacement until 1.9 changes are merged.
             }
 
 
@@ -81,7 +98,6 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             }
 
             return Types.Get(operation.ReturnType.Type);
-
         }
 
         private string GetParameterDefinitions(IOperation operation)
@@ -91,7 +107,13 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         private string GetUpdateUrl(IOperation operation)
         {
-            return (GetHttpVerb(operation) == HttpVerb.GET || GetHttpVerb(operation) == HttpVerb.DELETE ? @"url = url + ""?pageNumber="" + pageNumber + ""&pageSize="" + pageSize;" : "");
+            if (!operation.Parameters.Any() || operation.Parameters.All(x => x.Type.Model.IsDTO()))
+            {
+                return "";
+            }
+
+            return $@"
+        url = `${{url}}?{string.Join("&", operation.Parameters.Where(x => !x.Type.Model.IsDTO()).Select(x => $"{x.Name.ToCamelCase()}=${{{x.Name.ToCamelCase()}}}"))}`;";
         }
 
         private string GetDataServiceCall(IOperation operation)
@@ -101,9 +123,9 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 case HttpVerb.GET:
                     return $"get(url)";
                 case HttpVerb.POST:
-                    return $"post(url, {operation.Parameters.FirstOrDefault()?.Name.ToCamelCase() ?? "null"})";
+                    return $"post(url, {operation.Parameters.FirstOrDefault(x => x.Type.Model.IsDTO())?.Name.ToCamelCase() ?? "null"})";
                 case HttpVerb.PUT:
-                    return $"put(url, {operation.Parameters.FirstOrDefault()?.Name.ToCamelCase() ?? "null"})";
+                    return $"put(url, {operation.Parameters.FirstOrDefault(x => x.Type.Model.IsDTO())?.Name.ToCamelCase() ?? "null"})";
                 case HttpVerb.DELETE:
                     return $"delete(url)";
                 default:
@@ -120,7 +142,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 fileName: $"{Model.Name.ToAngularFileName()}.service",
                 fileExtension: "ts", // Change to desired file extension.
                 defaultLocationInProject: $"Client\\src\\app\\{Model.Module.GetModuleName().ToAngularFileName()}",
-                className: "${Model.Name}ServiceProxy"
+                className: "${Model.Name}"
             );
         }
 

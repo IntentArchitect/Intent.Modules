@@ -19,6 +19,16 @@ namespace Intent.Modules.Common.Templates
             string relativePath = fm.GetRelativeFilePath();
             if (!string.IsNullOrWhiteSpace(relativePath))
             {
+                return $"{relativePath}\\{fm.FileName}";
+            }
+            return fm.FileNameWithExtension();
+        }
+
+        public static string GetRelativeFilePathWithFileNameWithExtension(this IFileMetadata fm)
+        {
+            string relativePath = fm.GetRelativeFilePath();
+            if (!string.IsNullOrWhiteSpace(relativePath))
+            {
                 return $"{relativePath}\\{fm.FileNameWithExtension()}";
             }
             return fm.FileNameWithExtension();

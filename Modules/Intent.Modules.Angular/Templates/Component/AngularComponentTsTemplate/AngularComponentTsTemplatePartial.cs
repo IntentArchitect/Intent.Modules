@@ -9,6 +9,8 @@ using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Angular.Templates.AngularModuleTemplate;
+using Intent.Modules.Common.Plugins;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -16,7 +18,7 @@ using Intent.Modules.Angular.Api;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularComponentTsTemplate : IntentProjectItemTemplateBase<IComponentModel>
+    partial class AngularComponentTsTemplate : IntentTypescriptProjectItemTemplateBase<IComponentModel>, IBeforeTemplateExecutionHook
     {
         public const string TemplateId = "Angular.AngularComponentTsTemplate";
 
@@ -54,16 +56,33 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        protected override TypescriptDefaultFileMetaData DefineTypescriptDefaultFileMetaData()
         {
             var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
-            return new DefaultFileMetaData(
+            return new TypescriptDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToAngularFileName()}.component",
-                fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client\\src\\app\\{moduleTemplate.ModuleName.ToAngularFileName()}\\{ComponentName.ToAngularFileName()}"
+                fileExtension: "ts", 
+                defaultLocationInProject: $"Client\\src\\app\\{moduleTemplate.ModuleName.ToAngularFileName()}\\{ComponentName.ToAngularFileName()}",
+                className: "${ComponentName}Component"
             );
+        }
+
+        public void BeforeTemplateExecution()
+        {
+            if (File.Exists(GetMetaData().GetFullLocationPathWithFileName()))
+            {
+                return;
+            }
+
+            // New Component:
+            Project.Application.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
+                new Dictionary<string, string>()
+                {
+                    {AngularComponentCreatedEvent.ModuleId, Model.Module.Id },
+                    {AngularComponentCreatedEvent.ModelId, Model.Id},
+                });
         }
     }
 }
