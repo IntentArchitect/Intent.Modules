@@ -14,15 +14,15 @@ namespace Intent.Modules.Angular
             _metaDataManager = metaDataManager;
         }
 
-        public IEnumerable<IModuleModel> GetClasses()
+        public IEnumerable<IModuleModel> GetModules()
         {
             var classes = _metaDataManager.GetMetaData<Metadata.Models.IClass>("Angular").Where(x => x.SpecializationType == "Module").ToList();
             return classes.Select(x => new ModuleModel(x)).ToList();
         }
 
-        public IEnumerable<IModuleModel> GetClasses(IApplication application)
+        public IEnumerable<IModuleModel> GetModules(IApplication application)
         {
-            return GetClasses().Where(x => x.Application.Name == application.ApplicationName);
+            return GetModules().Where(x => x.Application.Name == application.ApplicationName);
         }
     }
 }

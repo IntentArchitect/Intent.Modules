@@ -16,6 +16,8 @@ namespace Intent.Modules.Angular.Api
 
         IEnumerable<IServiceProxyModel> ServiceProxies { get; }
 
+        IEnumerable<IModuleDTOModel> ModelDefinitions { get; }
+
         string Comment { get; }
     }
 }

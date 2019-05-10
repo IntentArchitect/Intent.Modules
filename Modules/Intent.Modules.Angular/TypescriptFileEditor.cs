@@ -7,11 +7,11 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Angular
 {
-    public class AngularModuleEditor
+    public class TypescriptFileEditor
     {
         private string _source;
 
-        public AngularModuleEditor(string source)
+        public TypescriptFileEditor(string source)
         {
             _source = source;
         }
@@ -71,7 +71,6 @@ import {{ {className} }} from '{location}';");
 
         public void ReplaceMethod(string methodName, string method)
         {
-            var ast = new TypeScriptAST(_source);
             var change = new ChangeAST();
 
             var existing = FindNode($"ClassDeclaration/MethodDeclaration:{methodName}");
@@ -86,6 +85,24 @@ import {{ {className} }} from '{location}';");
                 change.ChangeNode(existing, method);
                 _source = change.GetChangedSource(_source);
             }
+        }
+
+        public void AddProperty(string propertyDeclaration)
+        {
+            var ast = new TypeScriptAST(_source);
+            var change = new ChangeAST();
+            var properties = ast.OfKind(SyntaxKind.PropertyDeclaration);
+
+            if (properties.Any())
+            {
+                change.InsertAfter(properties.Last(), propertyDeclaration);
+            }
+            else
+            {
+                var classDeclaration = ast.OfKind(SyntaxKind.ClassDeclaration).First();
+                change.InsertAfter(classDeclaration.Children.First(), propertyDeclaration);
+            }
+            _source = change.GetChangedSource(_source);
         }
 
         public bool NodeExists(string path)

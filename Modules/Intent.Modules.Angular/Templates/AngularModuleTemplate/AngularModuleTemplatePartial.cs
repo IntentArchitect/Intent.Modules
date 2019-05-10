@@ -63,7 +63,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
-            var editor = new AngularModuleEditor(source);
+            var editor = new TypescriptFileEditor(source);
             foreach (var componentInfo in _components)
             {
                 editor.AddImportIfNotExists(componentInfo.ComponentName, GetMetaData().GetRelativeFilePathWithFileName().GetRelativePath(componentInfo.Location));

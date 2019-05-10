@@ -14,6 +14,7 @@ namespace Intent.Modules.Angular.Api
             _class = @class;
             Components = @class.ChildClasses.Where(x => x.SpecializationType == "Component").Select(x => new ComponentModel(x, this));
             ServiceProxies = @class.ChildClasses.Where(x => x.SpecializationType == "Service Proxy").Select(x => new ServiceProxyModel(x, this));
+            ModelDefinitions = @class.ChildClasses.Where(x => x.SpecializationType == "Model Definition").Select(x => new ModuleDTOModel(x, this));
         }
 
         public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
@@ -22,6 +23,7 @@ namespace Intent.Modules.Angular.Api
         public string Name => _class.Name;
         public IApplication Application => _class.Application;
         public IEnumerable<IServiceProxyModel> ServiceProxies { get; }
+        public IEnumerable<IModuleDTOModel> ModelDefinitions { get; }
         public string Comment => _class.Comment;
 
         public IEnumerable<IComponentModel> Components { get; }

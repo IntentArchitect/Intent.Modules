@@ -52,7 +52,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
-            var editor = new AngularModuleEditor(source);
+            var editor = new TypescriptFileEditor(source);
             foreach (var operation in Model.Operations)
             {
                 var url = $"api/{Model.MappedService.Name.ToLower()}/{Model.MappedService.Operations.First(x => x.Id == operation.Mapping.TargetId).Name.ToLower()}";

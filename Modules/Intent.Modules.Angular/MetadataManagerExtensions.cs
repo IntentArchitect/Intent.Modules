@@ -8,7 +8,7 @@ namespace Intent.Modules.Angular
     {
         public static IEnumerable<IModuleModel> GetModules(this IMetadataManager metadataManager, IApplication application)
         {
-            return new MetadataProvider(metadataManager).GetClasses(application);
+            return new MetadataProvider(metadataManager).GetModules(application);
         }
     }
 }

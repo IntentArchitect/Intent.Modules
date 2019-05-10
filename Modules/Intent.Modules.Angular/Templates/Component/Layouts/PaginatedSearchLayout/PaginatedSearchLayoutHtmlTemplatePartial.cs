@@ -1,26 +1,23 @@
 using System;
 using System.IO;
-using Intent.Metadata.Models;
+using Intent.Engine;
+using Intent.Modules.Angular.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
-using Intent.Engine;
 using Intent.Templates;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.Modules.Angular.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplate
+namespace Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayout
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularComponentHtmlTemplate : IntentProjectItemTemplateBase<IComponentModel>, IPostTemplateCreation
+    partial class PaginatedSearchLayoutHtmlTemplate : IntentProjectItemTemplateBase<IComponentModel>, IPostTemplateCreation
     {
         public const string TemplateId = "Angular.AngularComponentHtmlTemplate";
 
-        public AngularComponentHtmlTemplate(IProject project, IComponentModel model) : base(TemplateId, project, model)
+        public PaginatedSearchLayoutHtmlTemplate(IProject project, IComponentModel model) : base(TemplateId, project, model)
         {
         }
 

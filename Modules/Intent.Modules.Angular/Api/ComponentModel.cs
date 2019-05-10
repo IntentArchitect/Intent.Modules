@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 
 namespace Intent.Modules.Angular.Api
@@ -19,6 +20,8 @@ namespace Intent.Modules.Angular.Api
         public string Name => _class.Name;
         public string Comment => _class.Comment;
         public IModuleModel Module { get; }
+        public IEnumerable<IAttribute> Models => _class.Attributes;
+        public IEnumerable<IOperation> Commands => _class.Operations;
 
         public bool Equals(IComponentModel other)
         {

@@ -35,7 +35,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<IModuleDTOModel> GetModels(Engine.IApplication application)
         {
-            var dtoModels = new List<ModuleDTOModel>();
+            var dtoModels = new List<IModuleDTOModel>();
             foreach (var moduleModel in _metaDataManager.GetModules(application))
             {
                 var operations = moduleModel.ServiceProxies
@@ -45,6 +45,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
                     .SelectMany(x => GetTypeModels(x.Type))
                     .Concat(operations.Where(x => x.ReturnType != null).SelectMany(x => GetTypeModels(x.ReturnType.Type)));
 
+                dtoModels.AddRange(moduleModel.ModelDefinitions);
                 dtoModels.AddRange(classes.Where(x => x.IsDTO()).Select(x => new ModuleDTOModel(x, moduleModel)).ToList());
             }
 
