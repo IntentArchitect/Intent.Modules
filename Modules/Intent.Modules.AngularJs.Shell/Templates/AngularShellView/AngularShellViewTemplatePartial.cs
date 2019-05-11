@@ -21,7 +21,7 @@ namespace Intent.Modules.AngularJs.Shell.Templates.AngularShellView
                 codeGenType: CodeGenType.Basic,
                 fileName: "ShellView",
                 fileExtension: "html",
-                defaultLocationInProject: @"wwwroot\App\Shell"
+                defaultLocationInProject: "wwwroot/App/Shell"
                 );
         }
 

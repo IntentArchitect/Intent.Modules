@@ -16,7 +16,7 @@ using Unity;
 
 namespace <#= Namespace #>
 {
-    public class <#=Model.Name#>NodeEdgeProxy
+    public class <#=Model.Name#>NodeEdgeProxy : IInvokable
     {
         private readonly I<#=Model.Name#> _appService;
         private readonly JsonSerializerSettings _jsonSerializerSettings;

@@ -12,7 +12,7 @@
     <factoryExtension id="Intent.Common.TemplateLifeCycleHooks" />
   </factoryExtensions>
   <files>
-    <file src="bin\$configuration$\$id$.dll"/>
-    <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="$outDir$/$id$.dll"/>
+    <file src="$outDir$/$id$.pdb"/>
   </files>
 </package>

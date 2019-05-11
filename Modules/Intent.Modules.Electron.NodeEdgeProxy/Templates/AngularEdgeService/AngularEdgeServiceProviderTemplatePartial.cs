@@ -41,7 +41,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularEdgeService
                 codeGenType: CodeGenType.Basic,
                 fileName: "EdgeServiceProvider",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App\Services\Edge");
+                defaultLocationInProject: "wwwroot/App/Services/Edge");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Intent.Modules.AngularJs.Shell.Templates.AngularShellState
                 codeGenType: CodeGenType.Basic,
                 fileName: "ShellStateManager",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App\Shell"
+                defaultLocationInProject: "wwwroot/App/Shell"
                 );
         }
     }

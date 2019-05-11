@@ -35,7 +35,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name}Proxy",
                 fileExtension: "ts",
-                defaultLocationInProject: $@"wwwroot\App\Proxies\Generated");
+                defaultLocationInProject: "wwwroot/App/Proxies/Generated");
         }
 
         private string GetReturnType(IOperation operation)

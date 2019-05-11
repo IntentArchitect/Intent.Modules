@@ -126,9 +126,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
                 .Aggregate((x, y) => $"{x}{y}");
         }
 
-        public string StereotypedNamespaceBasedPath => string.Join("\\", GetNamespaceParts());
+        public string StereotypedNamespaceBasedPath => string.Join("/", GetNamespaceParts());
         public string StereotypedNamespace => string.Join(".", GetNamespaceParts());
-        public string SlashIfInNamespace => !string.IsNullOrWhiteSpace(StereotypedNamespaceBasedPath) ? "\\" : string.Empty;
+        public string SlashIfInNamespace => !string.IsNullOrWhiteSpace(StereotypedNamespaceBasedPath) ? "/" : string.Empty;
         public string DotIfInNamespace => !string.IsNullOrWhiteSpace(StereotypedNamespaceBasedPath) ? "." : string.Empty;
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()

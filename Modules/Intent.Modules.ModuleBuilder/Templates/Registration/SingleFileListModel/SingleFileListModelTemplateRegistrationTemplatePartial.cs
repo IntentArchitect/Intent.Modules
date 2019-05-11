@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Engine;
 using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
@@ -19,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
         }
 
         public string FolderPath => string.Join("\\", new[] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
-        public string FolderNamespace => string.Join(".", new [] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
+        public string FolderNamespace => string.Join(".", new[] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -32,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Registration",
                 fileExtension: "cs",
-                defaultLocationInProject: "${FolderPath}\\${Model.Name}",
+                defaultLocationInProject: "${FolderPath}/${Model.Name}",
                 className: "${Model.Name}Registration",
                 @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
             );
@@ -47,7 +47,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
             .Union(base.GetNugetDependencies())
             .ToArray();
         }
-        
+
         private string GetTemplateNameForTemplateId()
         {
             return Model.Name.Replace("Registrations", "Template");

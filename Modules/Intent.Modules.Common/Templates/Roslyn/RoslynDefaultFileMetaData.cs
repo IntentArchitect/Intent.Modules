@@ -42,7 +42,7 @@ namespace Intent.Modules.Common.Templates
                 /*
                 if (!string.IsNullOrWhiteSpace(defaultLocationInProject))
                 {
-                    this.CustomMetaData["Depends On"] = defaultLocationInProject + "\\" + dependsUpon;
+                    this.CustomMetaData["Depends On"] = defaultLocationInProject + "/" + dependsUpon;
                 }
                 else
                 {

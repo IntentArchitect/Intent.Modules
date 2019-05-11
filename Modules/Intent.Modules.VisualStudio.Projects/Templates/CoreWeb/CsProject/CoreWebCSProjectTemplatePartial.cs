@@ -1,7 +1,5 @@
-﻿using System.IO;
-using System.Xml.Linq;
+﻿using System;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Templates;
@@ -17,36 +15,26 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
         {
         }
 
-        // GCB - Given that this template is a OnceOff, I don't see the need for the LoadOrCreate. Need to double check.
-        public override string RunTemplate()
-        {
-            var meta = GetMetaData();
-            var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
-
-            var doc = LoadOrCreate(fullFileName);
-
-            Project.InstallNugetPackages(doc);
-            Project.SyncProjectReferences(doc);
-
-            return doc.ToString();
-        }
-
-        private XDocument LoadOrCreate(string fullFileName)
-        {
-            return File.Exists(fullFileName)
-                ? XDocument.Load(fullFileName, LoadOptions.PreserveWhitespace)
-                : XDocument.Parse(TransformText(), LoadOptions.PreserveWhitespace);
-        }
-
         public override ITemplateFileConfig DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.Always,
+                overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: Project.Name,
                 fileExtension: "csproj",
                 defaultLocationInProject: ""
             );
+        }
+
+        public override string RunTemplate()
+        {
+            if (DefineDefaultFileMetaData().OverwriteBehaviour != OverwriteBehaviour.OnceOff)
+            {
+                // Unless onceOff, then on subsequent SF runs, the SF shows two outputs for the same .csproj file.
+                throw new Exception("Template must be configured with OverwriteBehaviour.OnceOff.");
+            }
+
+            return TransformText();
         }
     }
 }

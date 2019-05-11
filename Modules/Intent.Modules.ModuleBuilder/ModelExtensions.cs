@@ -1,6 +1,5 @@
 ﻿using Intent.Metadata.Models;
 using Intent.Modules.Common;
-using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder
 {

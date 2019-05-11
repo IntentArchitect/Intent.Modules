@@ -1,7 +1,6 @@
 ﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<object>"#>
-<#@ output extension=".cs" #>
+<#@ output extension=".csproj" #>
 <#@ Assembly Name="System.Core" #>
-<#@ Assembly Name="System.Windows.Forms" #>
 <#@ Assembly Name="Intent.SoftwareFactory.SDK" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Common.VisualStudio" #>
@@ -17,12 +16,4 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
-<#  if (Project.Dependencies().Any()) { #>
-  <ItemGroup>
-<#      foreach (var dependency in Project.Dependencies()) { #>
-    <ProjectReference Include="..\\<#= dependency.Name #>\\<#= dependency.Name #>.csproj" />
-<#      } #>
-  </ItemGroup>
-
-<#  } #>
 </Project>

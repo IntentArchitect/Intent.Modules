@@ -67,7 +67,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}SCH",
                 fileExtension: "cs",
-                defaultLocationInProject: $"ServiceCallHandlers\\{Service.Name}",
+                defaultLocationInProject: $"ServiceCallHandlers/{Service.Name}",
                 className: "${Model.Name}SCH",
                 @namespace: "${Project.ProjectName}.ServiceCallHandlers.${Service.Name}"
                 );

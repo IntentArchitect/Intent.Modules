@@ -50,7 +50,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name}WebApiClientProxy",
                 fileExtension: "cs",
-                defaultLocationInProject: @"Generated\ClientProxies",
+                defaultLocationInProject: @"Generated/ClientProxies",
                 className: "${Model.Name}WebApiClientProxy",
                 @namespace: "${Project.Name}");
         }

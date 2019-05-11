@@ -19,7 +19,7 @@ namespace Intent.Modules.AngularJs.Templates.ViewModel
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}ViewModel",
                 fileExtension: "ts",
-                defaultLocationInProject: $@"wwwroot\App\States\{Model.Name}",
+                defaultLocationInProject: $"wwwroot/App/States/{Model.Name}",
                 className: "${Model.Name}ViewModel",
                 @namespace: "${Project.ApplicationName}");
         }

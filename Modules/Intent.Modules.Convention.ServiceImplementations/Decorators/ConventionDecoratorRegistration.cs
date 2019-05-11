@@ -1,8 +1,7 @@
-﻿using Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation;
-using Intent.Modules.Common.Registrations;
+﻿using System.ComponentModel;
 using Intent.Engine;
-using System;
-using System.ComponentModel;
+using Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation;
+using Intent.Modules.Common.Registrations;
 
 namespace Intent.Modules.Convention.ServiceImplementations.Decorators
 {

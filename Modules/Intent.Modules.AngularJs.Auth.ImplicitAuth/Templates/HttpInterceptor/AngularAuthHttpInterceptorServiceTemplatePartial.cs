@@ -22,7 +22,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.HttpInterceptor
                 codeGenType: CodeGenType.Basic,
                 fileName: "AuthHttpInterceptorService",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App\Auth\Services"
+                defaultLocationInProject: "wwwroot/App/Auth/Services"
                 );  
         }
 

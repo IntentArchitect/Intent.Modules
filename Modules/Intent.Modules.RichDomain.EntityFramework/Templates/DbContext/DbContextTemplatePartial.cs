@@ -37,7 +37,7 @@ namespace Intent.Modules.RichDomain.EntityFramework.Templates.DbContext
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: BoundedContextName + "DbContext",
                 fileExtension: "cs",
-                defaultLocationInProject: "Generated\\DbContext"
+                defaultLocationInProject: "Generated/DbContext"
                 );
         }
 

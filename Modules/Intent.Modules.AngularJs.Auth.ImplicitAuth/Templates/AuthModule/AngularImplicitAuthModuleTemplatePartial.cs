@@ -42,7 +42,7 @@ namespace Intent.Modules.AngularJs.Auth.ImplicitAuth.Templates.AuthModule
                 codeGenType: CodeGenType.Basic,
                 fileName: "ImplicitAuthModule",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App\Auth"
+                defaultLocationInProject: "wwwroot/App/Auth"
                 );
         }
 

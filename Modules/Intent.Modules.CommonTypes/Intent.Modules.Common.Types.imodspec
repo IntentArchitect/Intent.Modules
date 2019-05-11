@@ -16,12 +16,12 @@
     <dependency id="Intent.Common" version="1.9.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\$id$.dll"/>
-    <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="bin/$configuration$/$id$.dll"/>
+    <file src="bin/$configuration$/$id$.pdb"/>
   </files>
   <metadata>
-    <install target="Domain" src="Metadata\Intent.Common.Types"/>
-    <install target="Services" src="Metadata\Intent.Common.Types"/>
-    <install target="Eventing" src="Metadata\Intent.Common.Types"/>
+    <install target="Domain" src="Metadata/Intent.Common.Types"/>
+    <install target="Services" src="Metadata/Intent.Common.Types"/>
+    <install target="Eventing" src="Metadata/Intent.Common.Types"/>
   </metadata>  
 </package>

@@ -28,7 +28,7 @@ namespace Intent.Modules.RichDomain.Templates.EntityState
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name}",
                 fileExtension: "cs",
-                defaultLocationInProject: "Generated\\State"
+                defaultLocationInProject: "Generated/State"
                 );
         }
 

@@ -9,7 +9,7 @@ namespace Intent.Modules.Common
         {
             //const string exp = @"(Person.Age > 3 AND Person.Weight > 50) OR Person.Age < 3";
             var p = Expression.Parameter(typeof(TParameter), parameterName);
-            var e = System.Linq.Dynamic.DynamicExpression.ParseLambda(new[] { p }, null, expression);
+            var e = System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(new[] { p }, null, expression);
 
             return new ParsedExpression<TParameter, TResult>(e.Compile());
         }

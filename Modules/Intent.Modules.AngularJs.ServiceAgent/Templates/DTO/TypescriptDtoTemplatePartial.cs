@@ -24,7 +24,7 @@ namespace Intent.Modules.AngularJs.ServiceAgent.Templates.DTO
                 codeGenType: CodeGenType.Basic,
                 fileName: Model.Class.ClassType.TypeName,
                 fileExtension: "ts",
-                defaultLocationInProject: Model.BoundedContextName == Project.ApplicationName().Replace("_Client", "") ? $@"wwwroot\App\DTOs\Generated" : $@"wwwroot\App\DTOs\Generated\{Model.BoundedContextName}",
+                defaultLocationInProject: Model.BoundedContextName == Project.ApplicationName().Replace("_Client", "") ? @"wwwroot/App/DTOs/Generated" : $"wwwroot/App/DTOs/Generated/{Model.BoundedContextName}",
                 className: Model.Class.ClassType.TypeName,
                 @namespace: Model.BoundedContextName == Project.ApplicationName().Replace("_Client", "") ? "App.Contracts" : $"App.Contracts.{Model.BoundedContextName}"
             );

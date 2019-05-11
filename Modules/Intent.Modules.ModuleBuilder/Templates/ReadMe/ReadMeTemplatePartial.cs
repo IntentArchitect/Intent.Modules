@@ -5,7 +5,6 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
-
 namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
 {
     partial class ReadMeTemplate : IntentProjectItemTemplateBase

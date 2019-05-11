@@ -19,7 +19,7 @@ namespace Intent.Modules.AngularJs.Shell.Templates.AngularShellViewModel
                 codeGenType: CodeGenType.Basic,
                 fileName: "ShellViewModel",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App\Shell"
+                defaultLocationInProject: "wwwroot/App/Shell"
                 );
         }
     }

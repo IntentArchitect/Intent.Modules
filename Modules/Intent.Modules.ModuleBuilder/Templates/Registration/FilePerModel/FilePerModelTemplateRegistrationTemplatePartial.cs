@@ -32,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Registration",
                 fileExtension: "cs",
-                defaultLocationInProject: "${FolderPath}\\${Model.Name}",
+                defaultLocationInProject: "${FolderPath}/${Model.Name}",
                 className: "${Model.Name}Registration",
                 @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
             );
@@ -47,7 +47,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
             .Union(base.GetNugetDependencies())
             .ToArray();
         }
-        
+
         private string GetTemplateNameForTemplateId()
         {
             return Model.Name.Replace("Registrations", "Template");

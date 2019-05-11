@@ -34,7 +34,7 @@
     </detect>
   </interoperability>
   <files>
-    <file src="bin\$configuration$\$id$.dll"/>
-    <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="bin/$configuration$/$id$.dll"/>
+    <file src="bin/$configuration$/$id$.pdb"/>
   </files>
 </package>

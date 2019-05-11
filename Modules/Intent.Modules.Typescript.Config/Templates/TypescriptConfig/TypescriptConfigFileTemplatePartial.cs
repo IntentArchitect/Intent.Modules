@@ -21,7 +21,7 @@ namespace Intent.Modules.Typescript.Config.Templates.TypescriptConfig
                 codeGenType: CodeGenType.Basic,
                 fileName: "tsconfig",
                 fileExtension: "json",
-                defaultLocationInProject: @"wwwroot\App"
+                defaultLocationInProject: "wwwroot/App"
                 );
         }
     }

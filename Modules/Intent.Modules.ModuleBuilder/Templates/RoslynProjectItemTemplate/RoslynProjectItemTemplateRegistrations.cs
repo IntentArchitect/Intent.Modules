@@ -6,7 +6,6 @@ using Intent.Modules.Common.Registrations;
 using Intent.Engine;
 using Intent.Templates;
 
-
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 {
     public class RoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IClass>

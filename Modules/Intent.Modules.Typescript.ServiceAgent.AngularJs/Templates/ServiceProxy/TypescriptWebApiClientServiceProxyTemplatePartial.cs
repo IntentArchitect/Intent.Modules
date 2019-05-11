@@ -11,7 +11,6 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
@@ -51,7 +50,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}Proxy",
                 fileExtension: "ts",
-                defaultLocationInProject: $@"wwwroot\App\Proxies\Generated",
+                defaultLocationInProject: $"wwwroot/App/Proxies/Generated",
                 className: "${Model.Name}Proxy",
                 @namespace: "App.Proxies"
                 );
@@ -66,25 +65,18 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             });
         }
 
-        //private HttpVerb GetHttpVerb(IOperationModel operation)
-        //{
-        //    var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
-        //    if (verb != "AUTO")
-        //    {
-        //        return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
-        //    }
-        //    if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Type == ReferenceType.ClassType))
-        //    {
-        //        return HttpVerb.POST;
-        //    }
-        //    return HttpVerb.GET;
-        //}
-
-        private string GetReturnType(IOperation o)
+        private HttpVerb GetHttpVerb(IOperation operation)
         {
-            return o.ReturnType == null
-                ? "void"
-                : this.ConvertType(o.ReturnType.Type);
+            var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
+            if (verb != "AUTO")
+            {
+                return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
+            }
+            if (operation.ReturnType == null || operation.Parameters.Any(x => x.Type.SpecializationType == "DTO"))
+            {
+                return HttpVerb.POST;
+            }
+            return HttpVerb.GET;
         }
 
         private string GetAddress()
@@ -110,20 +102,23 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                 .Aggregate((x, y) => $"{x}, {y}");
         }
 
-        private static string GetMethodCallParameters(IOperation operation, bool forcePayloadObject)
+        private string GetMethodCallParametersForGet(IOperation operation)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {
                 return "{ }";
             }
 
-            if (forcePayloadObject || operation.RequiresPayloadObject())
-            {
-                var keyValuePairs = operation.Parameters
-                    .Select(x => $"{x.Name.ToCamelCase()}: {x.Name.ToCamelCase()}")
-                    .Aggregate((x, y) => $"{x}, {y}");
+            return operation.Parameters
+                .Select(x => $"{x.Name.ToCamelCase()}: {x.Name.ToCamelCase()}")
+                .Aggregate((x, y) => $"{x}, {y}");
+        }
 
-                return $"{{ {keyValuePairs} }}";
+        private string GetMethodCallParametersForPost(IOperation operation)
+        {
+            if (operation.Parameters == null || !operation.Parameters.Any())
+            {
+                return "{ }";
             }
 
             return operation.Parameters

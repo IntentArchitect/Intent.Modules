@@ -68,7 +68,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}",
                 fileExtension: "cs",
-                defaultLocationInProject: string.Join("\\", GetNamespaceParts().DefaultIfEmpty("DTOs")),
+                defaultLocationInProject: string.Join("/", GetNamespaceParts().DefaultIfEmpty("DTOs")),
                 className: "${Model.Name}",
                 @namespace: "${FolderBasedNamespace}");
         }

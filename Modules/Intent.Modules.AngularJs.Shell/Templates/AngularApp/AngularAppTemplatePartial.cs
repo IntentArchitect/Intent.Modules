@@ -55,7 +55,7 @@ namespace Intent.Modules.AngularJs.Shell.Templates.AngularApp
                 codeGenType: CodeGenType.UserControlledTagWeave,
                 fileName: "App",
                 fileExtension: "ts",
-                defaultLocationInProject: @"wwwroot\App"
+                defaultLocationInProject: "wwwroot/App"
                 );
         }
 

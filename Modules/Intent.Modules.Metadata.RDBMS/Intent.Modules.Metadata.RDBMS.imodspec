@@ -17,6 +17,6 @@
   <files>
   </files>
   <metadata>
-    <install target="Domain" src="Metadata\Domain"/>
+    <install target="Domain" src="Metadata/Domain"/>
   </metadata>
 </package>

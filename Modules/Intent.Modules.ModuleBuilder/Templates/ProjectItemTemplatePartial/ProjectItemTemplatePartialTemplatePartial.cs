@@ -32,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"${{Model.Name}}Partial",
                 fileExtension: "cs",
-                defaultLocationInProject: "${FolderPath}\\${Model.Name}",
+                defaultLocationInProject: "${FolderPath}/${Model.Name}",
                 className: "${Model.Name}",
                 @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
             );

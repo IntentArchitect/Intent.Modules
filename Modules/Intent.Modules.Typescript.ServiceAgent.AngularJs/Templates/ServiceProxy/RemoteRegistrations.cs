@@ -1,12 +1,14 @@
 ﻿using System;
-using Intent.Modelers.Services.Api;
-using Intent.Engine;
-using Intent.Templates;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Templates;
+using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
@@ -14,9 +16,6 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
     public class RemoteRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetadataManager _metaDataManager;
-
-        private string _stereotypeName = "Consumers";
-        private string _stereotypePropertyName = "CommaSeperatedList";
 
         public RemoteRegistrations(IMetadataManager metaDataManager)
         {
@@ -34,23 +33,39 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         {
             var serviceModels = _metaDataManager.GetMetaData<IServiceModel>("Services");
 
-            serviceModels = serviceModels.Where(x => GetConsumers(x).Any(y => application.ApplicationName.Equals(y, StringComparison.OrdinalIgnoreCase)));
+            serviceModels = serviceModels
+                .Where(x => GetConsumers(x).Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
+                .ToList();
+
 
             return serviceModels.ToList();
         }
 
-        public override void Configure(IDictionary<string, string> settings)
+        public static IEnumerable<string> GetConsumers<T>(T item) where T : IHasFolder, IHasStereotypes
         {
-            base.Configure(settings);
-            settings.SetIfSupplied("Consumer Stereotype Name", (s) => _stereotypeName = s);
-            settings.SetIfSupplied("Consumer Stereotype Property Name", (s) => _stereotypePropertyName = s);
-        }
+            if (item.HasStereotype("Consumers"))
+            {
+                return item
+                    .GetStereotypeProperty(
+                        "Consumers",
+                        "CommaSeperatedList",
+                        item.GetStereotypeProperty(
+                            "Consumers",
+                            "TypeScript",
+                            ""))
+                    .Split(',')
+                    .Select(x => x.Trim());
+            }
 
-        private IEnumerable<string> GetConsumers(IServiceModel dto)
-        {
-            return dto.HasStereotype(_stereotypeName)
-                ? dto.GetStereotypeProperty(_stereotypeName, _stereotypePropertyName, "").Split(',').Select(x => x.Trim()).ToArray()
-                : dto.GetStereotypeInFolders(_stereotypeName).GetProperty(_stereotypePropertyName, "").Split(',').Select(x => x.Trim()).ToArray();
+            return item
+                .GetStereotypeInFolders("Consumers")
+                .GetProperty(
+                    "CommaSeperatedList",
+                    item
+                        .GetStereotypeInFolders("Consumers")
+                        .GetProperty("TypeScript", ""))
+                .Split(',')
+                .Select(x => x.Trim());
         }
     }
 }

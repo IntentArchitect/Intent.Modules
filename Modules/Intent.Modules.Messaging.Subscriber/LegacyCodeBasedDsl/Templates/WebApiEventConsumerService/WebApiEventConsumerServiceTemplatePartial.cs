@@ -78,7 +78,7 @@ namespace Intent.Modules.Messaging.Subscriber.LegacyCodeBasedDsl.Templates.WebAp
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "EventConsumerServiceController",
                 fileExtension: "cs",
-                defaultLocationInProject: "Controllers\\Generated",
+                defaultLocationInProject: "Controllers/Generated",
                 className: "MessageConsumingServiceController",
                 @namespace: "${Project.ProjectName}.Controllers.Generated");
         }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Intent.Engine;
@@ -11,7 +10,6 @@ using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory.Templates;
 using Intent.Templates;

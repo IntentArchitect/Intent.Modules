@@ -132,19 +132,19 @@
     <dependency id="Intent.Common" version="2.0.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\$id$.dll"/>
-    <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="bin/$configuration$/$id$.dll"/>
+    <file src="bin/$configuration$/$id$.pdb"/>
 
-    <file src="bin\$configuration$\Microsoft.Build.dll" inspect="false"/>
-    <file src="bin\$configuration$\Microsoft.Build.Framework.dll" inspect="false"/>
-    <file src="bin\$configuration$\Microsoft.Build.Utilities.Core.dll" inspect="false"/>
-    <file src="bin\$configuration$\System.Runtime.InteropServices.RuntimeInformation.dll" inspect="false"/>
+    <file src="bin/$configuration$/Microsoft.Build.dll" inspect="false"/>
+    <file src="bin/$configuration$/Microsoft.Build.Framework.dll" inspect="false"/>
+    <file src="bin/$configuration$/Microsoft.Build.Utilities.Core.dll" inspect="false"/>
+    <file src="bin/$configuration$/System.Runtime.InteropServices.RuntimeInformation.dll" inspect="false"/>
 
     <!-- Needs fix, see https://github.com/IntentSoftware/IntentArchitect/issues/65 -->
-    <!--<file src="bin\$configuration$\System.Collections.Immutable.dll" inspect="false"/>
-    <file src="bin\$configuration$\System.Runtime.InteropServices.RuntimeInformation.dll" inspect="false"/>
-    <file src="bin\$configuration$\System.Threading.Thread.dll" inspect="false"/>
-    <file src="bin\$configuration$\System.Threading.Tasks.Dataflow.dll" inspect="false"/>-->
+    <!--<file src="bin/$configuration$/System.Collections.Immutable.dll" inspect="false"/>
+    <file src="bin/$configuration$/System.Runtime.InteropServices.RuntimeInformation.dll" inspect="false"/>
+    <file src="bin/$configuration$/System.Threading.Thread.dll" inspect="false"/>
+    <file src="bin/$configuration$/System.Threading.Tasks.Dataflow.dll" inspect="false"/>-->
   </files>
 
 </package>

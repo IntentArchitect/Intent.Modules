@@ -39,7 +39,7 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name}NodeEdgeProxy",
                 fileExtension: "cs",
-                defaultLocationInProject: @"NodeEdgeProxies\Generated",
+                defaultLocationInProject: @"NodeEdgeProxies/Generated",
                 className: $"{Model.Name}NodeEdgeProxy",
                 @namespace: "${Project.ProjectName}");
         }

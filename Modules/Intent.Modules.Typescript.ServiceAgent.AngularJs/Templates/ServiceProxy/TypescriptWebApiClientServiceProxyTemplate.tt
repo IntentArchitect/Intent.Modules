@@ -2,6 +2,7 @@
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
+<#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.Modelers.Services.Api" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="System" #>
@@ -11,6 +12,9 @@
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic"#>
 <#@ import namespace="Intent.Modules.Typescript.ServiceAgent.Contracts"#>
+<#
+#>
+
 namespace <#= Namespace #> {
     export class <#=ClassName#> {
         private readonly baseUrl: string;
@@ -22,50 +26,35 @@ namespace <#= Namespace #> {
         ) {
             this.baseUrl = config["<#= ApiBasePathConfigKey #>"];
         }
-<#        
-    foreach (var o in Model.Operations)
-    {
+<#        foreach (var o in Model.Operations)
+        {
+            if (o.ReturnType != null)
+            {
+
 #>
 
-        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= GetReturnType(o) #>>
+        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= this.ConvertType(o.ReturnType.Type) #>>
         {
             const url = `${this.baseUrl}/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>`;
-<#
-        if (o.UsesBodyContent())
-        {
-            switch (o.GetHttpVerb())
-            {
-                case HttpVerb.POST:
-#>
-            return this.$http.post<<#= GetReturnType(o) #>>(url, <#= GetMethodCallParameters(o, forcePayloadObject: false) #>).then(<#= o.ReturnType != null ? "result => result.data" : "() => null" #>);
-<#
-                    break;
-                default:
-                    throw new NotSupportedException();
-            } // switch (o.GetHttpVerb())
-        } // if (o.UsesBodyContent())
-        else
-        {
-            switch (o.GetHttpVerb())
-            {
-                case HttpVerb.POST:
-#>
-            return this.$http.post<<#= GetReturnType(o) #>>(url, <#= GetMethodCallParameters(o, forcePayloadObject: false) #>).then(<#= o.ReturnType != null ? "result => result.data" : "() => null" #>);
-<#
-                    break;
-                case HttpVerb.GET:
-#>
-            return this.$http.get<<#= GetReturnType(o) #>>(url, { params: <#= GetMethodCallParameters(o, forcePayloadObject: true) #> }).then(<#= o.ReturnType != null ? "result => result.data" : "() => null" #>);
-<#
-                    break;
-                default:
-                    throw new NotSupportedException();
-            } // switch (o.GetHttpVerb())
-        } // !if (o.UsesBodyContent())
-#>
+<#              if (GetHttpVerb(o) == HttpVerb.GET) { #>
+            return this.$http.get<<#= this.ConvertType(o.ReturnType.Type) #>>(url, { params: { <#= GetMethodCallParametersForGet(o) #> } }).then(result => result.data);
+<#              } else {#>
+            return this.$http.post<<#= this.ConvertType(o.ReturnType.Type) #>>(url, <#= GetMethodCallParametersForPost(o) #>).then(result => result.data);
+<#              }#>
         }
 <#
-    } // foreach (var o in Model.Operations)
+            }
+            else
+            {
+#>
+
+        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<void>
+        {
+            const url = `${this.baseUrl}/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>`;
+            return this.$http.post<void>(url, <#= GetMethodCallParametersForPost(o) #>).then(() => null);
+        }
+<#            }
+        }
 #>
     }
 

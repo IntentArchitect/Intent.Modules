@@ -17,7 +17,7 @@ using Intent.Templates;
 
 namespace <#= Namespace #>
 {
-	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class <#= ClassName #> : ListModelTemplateRegistrationBase<<#= Model.GetTargetModel() #>>
     {
         private readonly IMetadataManager _metaDataManager;
@@ -31,10 +31,10 @@ namespace <#= Namespace #>
 
         public override ITemplate CreateTemplateInstance(IProject project, IList<<#= Model.GetTargetModel() #>> model)
         {
-			return new <#= GetTemplateNameForTemplateId() #>(project, model);
+            return new <#= GetTemplateNameForTemplateId() #>(project, model);
         }
 
-	    [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IList<<#= Model.GetTargetModel() #>> GetModels(Engine.IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == "Service") for services only)

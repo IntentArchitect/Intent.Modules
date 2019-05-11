@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Messaging.Publisher</id>
-  <version>1.7.1</version>
+  <version>1.9.0</version>
   <summary>Messaging infrastructure for publishing events and commands in a transactional manner.</summary>
   <description>Messaging infrastructure for publishing events and commands in a transactional manner.</description>
   <authors>Intent Architect</authors>
@@ -15,13 +15,13 @@
     <decorator id="Intent.Messaging.Publisher.WebConfigDecorator"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="1.7.0"/>
-    <dependency id="Intent.Unity" version="1.7.0"/>
-    <dependency id="Intent.AspNet.WebApi" version="1.7.0"/>
-    <dependency id="Intent.VisualStudio.Projects" version="1.7.0"/>
+    <dependency id="Intent.Common" version="1.9.0"/>
+    <dependency id="Intent.Unity" version="1.9.0"/>
+    <dependency id="Intent.AspNet.WebApi" version="1.9.0"/>
+    <dependency id="Intent.VisualStudio.Projects" version="1.9.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\$id$.dll"/>
-    <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="bin/$configuration$/$id$.dll"/>
+    <file src="bin/$configuration$/$id$.pdb"/>
   </files>
 </package>

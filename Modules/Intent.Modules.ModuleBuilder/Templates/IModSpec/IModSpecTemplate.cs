@@ -57,27 +57,27 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            if (Model.Any(x => x.IsCSharpTemplate()) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.OutputManager.RoslynWeaver\"]") == null)
+            if (Model.Any(x => x.IsCSharpTemplate()) && doc.XPathSelectElement("package/dependencies/dependency[@id=\"Intent.OutputManager.RoslynWeaver\"]") == null)
             {
-                var dependencies = doc.XPathSelectElement($"package/dependencies");
+                var dependencies = doc.XPathSelectElement("package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.OutputManager.RoslynWeaver"), new XAttribute("version", "1.7.0")));
             }
 
             if (Model.Any(x => x.GetModelerName() == "Domain" && x.GetRegistrationType() != RegistrationType.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Domain\"]") == null)
             {
-                var dependencies = doc.XPathSelectElement($"package/dependencies");
+                var dependencies = doc.XPathSelectElement("package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Domain"), new XAttribute("version", "1.0.0")));
             }
 
             if (Model.Any(x => x.GetModelerName() == "Services" && x.GetRegistrationType() != RegistrationType.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Services\"]") == null)
             {
-                var dependencies = doc.XPathSelectElement($"package/dependencies");
+                var dependencies = doc.XPathSelectElement("package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Services"), new XAttribute("version", "1.0.0")));
             }
 
             if (Model.Any(x => x.GetModelerName() == "Eventing" && x.GetRegistrationType() != RegistrationType.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Eventing\"]") == null)
             {
-                var dependencies = doc.XPathSelectElement($"package/dependencies");
+                var dependencies = doc.XPathSelectElement("package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Eventing"), new XAttribute("version", "1.0.0")));
             }
 
@@ -86,14 +86,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         private XDocument LoadOrCreateImodSpecFile(string filePath)
         {
-            XDocument doc;
-            if (File.Exists(filePath))
-            {
-                doc = XDocument.Load(filePath);
-            }
-            else
-            {
-                doc = XDocument.Parse($@"<?xml version=""1.0"" encoding=""utf-8"" ?>
+            var doc = File.Exists(filePath)
+                ? XDocument.Load(filePath)
+                : XDocument.Parse($@"<?xml version=""1.0"" encoding=""utf-8"" ?>
 <package>
   <id>{Project.Name}</id>
   <version>1.0.0</version>
@@ -103,15 +98,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
   <templates>
   </templates>
   <dependencies>
-    <dependency id=""Intent.Common"" version=""1.7.0"" />
-    <dependency id=""Intent.Common.Types"" version=""1.7.0"" />
+    <dependency id=""Intent.Common"" version=""1.9.0"" />
+    <dependency id=""Intent.Common.Types"" version=""1.9.0"" />
   </dependencies> 
   <files>
-    <file src=""bin\$configuration$\$id$.dll"" />
-    <file src=""bin\$configuration$\$id$.pdb"" />
+    <file src=""$outDir$/$id$.dll"" />
+    <file src=""$outDir$/$id$.pdb"" />
   </files>
 </package>");
-            }
+
             return doc;
         }
 
@@ -119,7 +114,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
             return new INugetPackageInfo[]
             {
-                NugetPackages.IntentArchitectPackager,
+                NugetPackages.IntentArchitectPackager
             };
         }
     }

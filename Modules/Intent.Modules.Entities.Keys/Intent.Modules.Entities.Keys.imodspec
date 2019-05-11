@@ -34,7 +34,7 @@
     <dependency id="Intent.Metadata.RDBMS" version="2.0.0"/>
   </dependencies>
   <files>
-    <file src="bin\$configuration$\$id$.dll"/>
-    <file src="bin\$configuration$\$id$.pdb"/>
+    <file src="bin/$configuration$/$id$.dll"/>
+    <file src="bin/$configuration$/$id$.pdb"/>
   </files>
 </package>
