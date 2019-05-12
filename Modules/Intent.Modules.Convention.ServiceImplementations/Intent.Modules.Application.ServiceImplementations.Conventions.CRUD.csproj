@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.0.0-pre2\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.0.0-pre3\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
