@@ -29,7 +29,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         private string _stereotypeNamespacePropertyConfigValue;
         private ITemplateDependency _domainTemplateDependancy;
         private ITemplateDependency _contractTemplateDependancy;
-        private IEnumerable<IMappingTemplateDecorator> _decorators;
+        private IList<IMappingTemplateDecorator> _decorators = new List<IMappingTemplateDecorator>();
 
         public MappingTemplate(IProject project, IDTOModel model)
             : base(IDENTIFIER, project, model)
@@ -61,9 +61,14 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
             return new[] { _contractTemplateDependancy, _domainTemplateDependancy };
         }
 
+        public void AddDecorator(IMappingTemplateDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<IMappingTemplateDecorator> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         public string ContractTypeName => Project.Application.FindTemplateInstance<IHasClassDetails>(_contractTemplateDependancy)?.ClassName ?? Model.Name;
@@ -127,8 +132,10 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         }
 
         public string StereotypedNamespaceBasedPath => string.Join("/", GetNamespaceParts());
+
         public string StereotypedNamespace => string.Join(".", GetNamespaceParts());
         public string SlashIfInNamespace => !string.IsNullOrWhiteSpace(StereotypedNamespaceBasedPath) ? "/" : string.Empty;
+
         public string DotIfInNamespace => !string.IsNullOrWhiteSpace(StereotypedNamespaceBasedPath) ? "." : string.Empty;
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()

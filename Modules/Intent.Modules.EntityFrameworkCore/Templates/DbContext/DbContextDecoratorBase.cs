@@ -4,7 +4,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
-    public abstract class DbContextDecoratorBase : ITemplateDecorator, IDeclareUsings, IPriorityDecorator
+    public abstract class DbContextDecoratorBase : ITemplateDecorator, IDeclareUsings
     {
         public virtual string GetBaseClass() { return null; }
             

@@ -9,6 +9,10 @@ namespace Intent.Modules.Entities.Decorators
     {
         public const string Identifier = "Intent.Entities.VisitableDomainEntityStateDecorator";
 
+        public VisitableDomainEntityStateDecorator(DomainEntityStateTemplate template) : base(template)
+        {
+        }
+
         public override IEnumerable<string> GetInterfaces(IClass @class)
         {
             return new List<string>() { "IVisitable" };

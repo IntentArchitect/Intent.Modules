@@ -16,7 +16,7 @@ namespace Intent.Modules.AspNetCore.Swashbuckle.Decorators
     {
         public override string DecoratorId => SwashbuckleCoreWebStartupDecorator.Identifier;
 
-        public override object CreateDecoratorInstance(IApplication application)
+        public override CoreWebStartupDecorator CreateDecoratorInstance(IApplication application)
         {
             return new SwashbuckleCoreWebStartupDecorator();
         }

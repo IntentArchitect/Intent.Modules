@@ -23,7 +23,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
     {
         public const string Identifier = "Intent.AspNet.WebApi.Controller";
 
-        private IEnumerable<WebApiControllerDecoratorBase> _decorators;
+        private readonly IList<WebApiControllerDecoratorBase> _decorators = new List<WebApiControllerDecoratorBase>();
 
         public WebApiControllerTemplate(IProject project, IServiceModel model, string identifier = Identifier)
             : base(identifier, project, model)
@@ -183,9 +183,15 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             return GetDecorators().Aggregate(x => x.ClassMethods(Model));
         }
 
+        public void AddDecorator(WebApiControllerDecoratorBase decorator)
+        {
+            _decorators.Add(decorator);
+
+        }
+
         public IEnumerable<WebApiControllerDecoratorBase> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         private string GetSecurityAttribute(IOperation o)

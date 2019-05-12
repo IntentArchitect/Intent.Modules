@@ -20,7 +20,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
     partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, IPostTemplateCreation
     {
         public const string Identifier = "Intent.EntityFrameworkCore.EFMapping";
-        private IEnumerable<IEFMappingTemplateDecorator> _decorators;
+        private IList<IEFMappingTemplateDecorator> _decorators = new List<IEFMappingTemplateDecorator>();
         private ITemplateDependency _domainTemplateDependancy;
 
         public EFMappingTemplate(IClass model, IProject project)
@@ -98,9 +98,14 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
                 @namespace: "${Project.Name}");
         }
 
+        public void AddDecorator(IEFMappingTemplateDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<IEFMappingTemplateDecorator> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         public string PropertyMappings(IClass @class)

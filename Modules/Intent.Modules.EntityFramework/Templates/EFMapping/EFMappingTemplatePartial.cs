@@ -17,8 +17,8 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
     partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, IPostTemplateCreation
     {
         public const string Identifier = "Intent.EntityFramework.EFMapping";
-        private IEnumerable<IEFMappingTemplateDecorator> _decorators;
-        private ITemplateDependency _domainTemplateDependancy;
+        private IList<IEFMappingTemplateDecorator> _decorators = new List<IEFMappingTemplateDecorator>();
+        private ITemplateDependency _domainTemplateDependency;
 
         public EFMappingTemplate(IClass model, IProject project)
             : base (Identifier, project, model)
@@ -28,7 +28,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
 
         public void Created()
         {
-            _domainTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+            _domainTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
@@ -45,7 +45,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
         {
             return new[]
             {
-                _domainTemplateDependancy,
+                _domainTemplateDependency,
             };
         }
 
@@ -93,9 +93,14 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
                 @namespace: "${Project.Name}");
         }
 
+        public void AddDecorator(IEFMappingTemplateDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<IEFMappingTemplateDecorator> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         public string PropertyMappings(IClass @class)

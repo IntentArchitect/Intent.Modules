@@ -8,6 +8,10 @@ namespace Intent.Modules.Entities.Decorators
     {
         public const string Identifier = "Intent.Entities.DefaultConstructorDomainEntityDecorator";
 
+        public DefaultConstructorDomainEntityDecorator(DomainEntityStateTemplate template) : base(template)
+        {
+        }
+
         public override string Constructors(IClass @class)
         {
             return $@"        public {@class.Name}()

@@ -15,7 +15,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
     partial class DomainEntityTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityDecoratorBase>, IPostTemplateCreation
     {
         public const string Identifier = "Intent.Entities.DomainEntity";
-        private IEnumerable<DomainEntityDecoratorBase> _decorators;
+        private readonly IList<DomainEntityDecoratorBase> _decorators = new List<DomainEntityDecoratorBase>();
 
         public DomainEntityTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
@@ -46,16 +46,13 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
                 );
         }
 
+        public void AddDecorator(DomainEntityDecoratorBase decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<DomainEntityDecoratorBase> GetDecorators()
         {
-            if (_decorators == null)
-            {
-                _decorators = Project.ResolveDecorators(this);
-                foreach (var decorator in _decorators)
-                {
-                    decorator.Template = this;
-                }
-            }
             return _decorators;
         }
 
@@ -79,7 +76,5 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             }
             return o.IsAsync() ? $"async Task<{this.ConvertType(o.ReturnType.Type)}>" : this.ConvertType(o.ReturnType.Type);
         }
-
-
     }
 }

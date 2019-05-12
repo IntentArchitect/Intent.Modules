@@ -16,7 +16,7 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
     {
         public const string Identifier = "Intent.Autofac.Config";
 
-        private IEnumerable<IAutofacRegistrationsDecorator> _decorators;
+        private readonly IList<IAutofacRegistrationsDecorator> _decorators = new List<IAutofacRegistrationsDecorator>();
         private readonly IList<ContainerRegistration> _registrations = new List<ContainerRegistration>();
 
         public AutofacConfigTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
@@ -100,9 +100,14 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
                 .ToList();
         }
 
+        public void AddDecorator(IAutofacRegistrationsDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<IAutofacRegistrationsDecorator> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         private void Handle(ApplicationEvent @event)

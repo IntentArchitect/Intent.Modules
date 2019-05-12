@@ -15,7 +15,7 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
     partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>, IHasTemplateDependencies, IDeclareUsings, IHasDecorators<CoreWebStartupDecorator>, IHasNugetDependencies
     {
         public const string Identifier = "Intent.AspNetCore.Startup";
-        private IEnumerable<CoreWebStartupDecorator> _decorators;
+        private readonly IList<CoreWebStartupDecorator> _decorators = new List<CoreWebStartupDecorator>();
         private readonly IList<ContainerRegistration> _registrations = new List<ContainerRegistration>();
         private readonly IList<DbContextContainerRegistration> _dbContextRegistrations = new List<DbContextContainerRegistration>();
         private readonly IList<Initializations> _serviceConfigurations = new List<Initializations>();
@@ -87,9 +87,14 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                                             $"{y}");
         }
 
+        public void AddDecorator(CoreWebStartupDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<CoreWebStartupDecorator> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         public string Configurations()

@@ -22,7 +22,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
     partial class OwinStartupTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasDecorators<IOwinStartupDecorator>, IHasAssemblyDependencies, IDeclareUsings
     {
         public const string Identifier = "Intent.Owin.OwinStartup";
-        private IEnumerable<IOwinStartupDecorator> _decorators;
+        private readonly IList<IOwinStartupDecorator> _decorators = new List<IOwinStartupDecorator>();
         private readonly IList<Initializations> _initializations = new List<Initializations>();
 
         public OwinStartupTemplate(IProject project)
@@ -120,9 +120,14 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
                                          $"{y}");
         }
 
+        public void AddDecorator(IOwinStartupDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<IOwinStartupDecorator> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         public IEnumerable<IAssemblyReference> GetAssemblyDependencies()

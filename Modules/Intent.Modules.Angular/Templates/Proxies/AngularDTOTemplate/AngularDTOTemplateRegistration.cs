@@ -38,25 +38,12 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
             var dtoModels = new List<IModuleDTOModel>();
             foreach (var moduleModel in _metaDataManager.GetModules(application))
             {
-                var operations = moduleModel.ServiceProxies
-                    .SelectMany(x => x.Operations).ToList();
-                var classes = operations
-                    .SelectMany(x => x.Parameters)
-                    .SelectMany(x => GetTypeModels(x.Type))
-                    .Concat(operations.Where(x => x.ReturnType != null).SelectMany(x => GetTypeModels(x.ReturnType.Type)));
-
-                dtoModels.AddRange(moduleModel.ModelDefinitions);
-                dtoModels.AddRange(classes.Where(x => x.IsDTO()).Select(x => new ModuleDTOModel(x, moduleModel)).ToList());
+                dtoModels.AddRange(moduleModel.GetModels());
             }
 
-            return dtoModels;
+            return dtoModels.Distinct().ToList();
         }
 
-        private static IEnumerable<IClass> GetTypeModels(ITypeReference typeReference)
-        {
-            var models = new List<IClass>() { typeReference.Model };
-            models.AddRange(typeReference.GenericTypeParameters.SelectMany(GetTypeModels));
-            return models;
-        }
+        
     }
 }

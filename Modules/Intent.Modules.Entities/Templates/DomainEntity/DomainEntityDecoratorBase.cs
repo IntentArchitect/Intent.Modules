@@ -5,9 +5,14 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.Templates.DomainEntity
 {
-    public abstract class DomainEntityDecoratorBase : ITemplateDecorator, IDeclareUsings, IPriorityDecorator
+    public abstract class DomainEntityDecoratorBase : ITemplateDecorator, IDeclareUsings
     {
-        public DomainEntityTemplate Template { get; internal set; }
+        protected DomainEntityDecoratorBase(DomainEntityTemplate template)
+        {
+            Template = template;
+        }
+
+        public DomainEntityTemplate Template { get; }
 
         public virtual IEnumerable<string> DeclareUsings() { return new List<string>(); }
 

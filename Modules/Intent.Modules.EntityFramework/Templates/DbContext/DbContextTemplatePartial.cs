@@ -18,7 +18,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
         public const string Identifier = "Intent.EntityFramework.DbContext";
 
         private readonly IApplicationEventDispatcher _eventDispatcher;
-        private IEnumerable<DbContextDecoratorBase> _decorators;
+        private IList<DbContextDecoratorBase> _decorators = new List<DbContextDecoratorBase>();
 
         public DbContextTemplate(IEnumerable<IClass> models, IProject project, IApplicationEventDispatcher eventDispatcher)
             : base (Identifier, project, models)
@@ -71,9 +71,14 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             });
         }
 
+        public void AddDecorator(DbContextDecoratorBase decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<DbContextDecoratorBase> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         public string GetBaseClass()

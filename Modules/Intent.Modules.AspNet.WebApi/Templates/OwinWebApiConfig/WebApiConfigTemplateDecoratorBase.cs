@@ -7,5 +7,6 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
     {
         public virtual IEnumerable<string> Configure() => new string[0];
         public virtual string Methods() => "";
+        public int Priority { get; } = 0;
     }
 }

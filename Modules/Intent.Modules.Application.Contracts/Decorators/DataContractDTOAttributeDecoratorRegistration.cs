@@ -6,11 +6,11 @@ using Intent.Modules.Common.Registrations;
 namespace Intent.Modules.Application.Contracts.Decorators
 {
     [Description("Intent Applications Contracts DTO - Data Contract decorator")]
-    public class DataContractDTOAttributeDecoratorRegistration : DecoratorRegistration<IDTOAttributeDecorator>
+    public class DataContractDTOAttributeDecoratorRegistration : DecoratorRegistration<DTOTemplate, IDTOAttributeDecorator>
     {
         public override string DecoratorId => DataContractDTOAttributeDecorator.Id;
 
-        public override object CreateDecoratorInstance(IApplication application)
+        public override IDTOAttributeDecorator CreateDecoratorInstance(DTOTemplate template, IApplication application)
         {
             return new DataContractDTOAttributeDecorator();
         }

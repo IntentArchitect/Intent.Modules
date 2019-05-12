@@ -21,13 +21,22 @@ namespace Intent.Modules.Entities.DDD.Decorators
         public const string Identifier = "Intent.Entities.DDD.EntityStateDecorator";
 
         private const string AggregateRootBaseClassSetting = "Aggregate Root Base Class";
+
         private const string EntityBaseClassSetting = "Entity Base Class";
+
         private const string ValueObjectBaseClassSetting = "Value Object Base Class";
+
         private const string DefaultBaseClassSetting = "Default Base Class";
 
         private string _aggregateRootBaseClass = null;
+
         private string _entityBaseClass = null;
+
         private string _valueObjectBaseClass = null;
+
+        public DDDEntityStateDecorator(DomainEntityStateTemplate template) : base(template)
+        {
+        }
 
         public override void Configure(IDictionary<string, string> settings)
         {

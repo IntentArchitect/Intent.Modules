@@ -5,13 +5,13 @@ using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    public class VisitableDomainEntityStateDecoratorRegistration : DecoratorRegistration<DomainEntityStateDecoratorBase>
+    public class VisitableDomainEntityStateDecoratorRegistration : DecoratorRegistration<DomainEntityStateTemplate, DomainEntityStateDecoratorBase>
     {
         public override string DecoratorId => VisitableDomainEntityStateDecorator.Identifier;
 
-        public override object CreateDecoratorInstance(IApplication application)
+        public override DomainEntityStateDecoratorBase CreateDecoratorInstance(DomainEntityStateTemplate template, IApplication application)
         {
-            return new VisitableDomainEntityStateDecorator();
+            return new VisitableDomainEntityStateDecorator(template);
         }
     }
 }

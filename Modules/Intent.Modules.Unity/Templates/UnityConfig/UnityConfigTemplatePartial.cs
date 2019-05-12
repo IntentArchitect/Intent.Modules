@@ -17,7 +17,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
     {
         public const string Identifier = "Intent.Unity.Config";
 
-        private IEnumerable<IUnityRegistrationsDecorator> _decorators;
+        private IList<IUnityRegistrationsDecorator> _decorators = new List<IUnityRegistrationsDecorator>();
         private readonly IList<ContainerRegistration> _registrations = new List<ContainerRegistration>();
 
         public UnityConfigTemplate(IProject project, IApplicationEventDispatcher eventDispatcher)
@@ -101,9 +101,15 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
             }
         }
 
+        public void AddDecorator(IUnityRegistrationsDecorator decorator)
+        {
+            _decorators.Add(decorator);
+
+        }
+
         public IEnumerable<IUnityRegistrationsDecorator> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         private void Handle(ApplicationEvent @event)

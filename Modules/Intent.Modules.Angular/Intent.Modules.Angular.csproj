@@ -55,12 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngularCliInstaller.cs" />
-    <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplate.cs">
-      <DependentUpon>PaginatedSearchLayoutHtmlTemplate.tt</DependentUpon>
+    <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.cs">
+      <DependentUpon>PaginatedSearchLayoutHtmlTemplateDecorator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplatePartial.cs" />
+    <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecoratorPartial.cs" />
+    <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecoratorRegistration.cs" />
     <Compile Include="TypescriptFileEditor.cs" />
     <Compile Include="AngularTypescriptParser.cs" />
     <Compile Include="Api\IModuleDTOModel.cs" />
@@ -135,9 +136,9 @@
       <DependentUpon>AngularServiceProxyTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplatePartial.cs" />
-    <Content Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplate.tt">
+    <Content Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>PaginatedSearchLayoutHtmlTemplate.cs</LastGenOutput>
+      <LastGenOutput>PaginatedSearchLayoutHtmlTemplateDecorator.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

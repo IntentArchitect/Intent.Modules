@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IComponentModel>" #>
+<#@ template language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -15,20 +15,16 @@
   <div *ngIf="pagination">
     <div class="">
       <div class="row border rounded-top">
-        <div class="col">Title</div>
-        <div class="col">Year</div>
-        <div class="col">Rating</div>
+<# foreach(var field in PagingModel.Fields) { #>
+        <div class="col"><#= field.Name.ToPascalCase() #></div>
+<# } #>
       </div>
       <div *ngFor="let item of pagination.items" class="row border">
+<# foreach(var field in PagingModel.Fields) { #>
         <div class="col">
-          <span>{{item.title}}</span>
+          <span>{{item.<#= field.Name #>}}</span>
         </div>
-        <div class="col">
-          <span>{{item.year}}</span>
-        </div>
-        <div class="col">
-          <span>{{item.imdbRating}}</span>
-        </div>
+<# } #>
       </div>
     </div>
     <div class="row mt-4">

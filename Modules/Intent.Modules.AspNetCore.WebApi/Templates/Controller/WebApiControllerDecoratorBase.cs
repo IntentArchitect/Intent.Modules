@@ -5,7 +5,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {
-    public abstract class WebApiControllerDecoratorBase : ITemplateDecorator, IPriorityDecorator
+    public abstract class WebApiControllerDecoratorBase : ITemplateDecorator
     {
         public virtual IEnumerable<string> DeclareUsings(IServiceModel service) => new List<string>();
 

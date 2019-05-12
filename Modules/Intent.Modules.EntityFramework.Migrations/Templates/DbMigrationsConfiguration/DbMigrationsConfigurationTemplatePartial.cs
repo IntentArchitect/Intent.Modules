@@ -19,7 +19,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
 
         private string _dbContextName;
         private string _dbContextNamespace;
-        private IEnumerable<IMigrationSeedDecorator> _decorators;
+        private IList<IMigrationSeedDecorator> _decorators = new List<IMigrationSeedDecorator>();
         private readonly ITracing _log = Logging.Log;
 
         public DbMigrationsConfigurationTemplate(IProject project)
@@ -140,7 +140,12 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
 
         public IEnumerable<IMigrationSeedDecorator> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
+        }
+
+        public void AddDecorator(IMigrationSeedDecorator decorator)
+        {
+            _decorators.Add(decorator);
         }
     }
 }

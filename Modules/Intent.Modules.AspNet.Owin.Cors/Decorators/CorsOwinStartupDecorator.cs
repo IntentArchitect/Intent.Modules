@@ -74,11 +74,6 @@ namespace Intent.Modules.AspNet.Owin.Cors.Decorators
             };
         }
 
-        public int Priority()
-        {
-            return 0;
-        }
-
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return new[]
@@ -93,6 +88,6 @@ namespace Intent.Modules.AspNet.Owin.Cors.Decorators
             //_eventDispatcher.Publish(new WebConfigAppSettingRequiredEvent(_applicationName, "IdentityServer.Issuer.Name", $"{_application.HostingConfig.GetBaseUrl()}/identity"))
         }
 
-        int IPriorityDecorator.Priority { get; set; } = 20;
+        public int Priority { get; } = 20;
     }
 }

@@ -7,7 +7,7 @@ namespace Intent.Modules.UserContext.Interop.AspNet.WebApi.Decorators
     public class UserContextWebApiControllerDecoratorRegistration : DecoratorRegistration<WebApiControllerDecoratorBase>
     {
         public override string DecoratorId => UserContextWebApiControllerDecorator.Identifier;
-        public override object CreateDecoratorInstance(IApplication application)
+        public override WebApiControllerDecoratorBase CreateDecoratorInstance(IApplication application)
         {
             return new UserContextWebApiControllerDecorator();
         }

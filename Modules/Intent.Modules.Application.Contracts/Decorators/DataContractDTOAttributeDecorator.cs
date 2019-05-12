@@ -13,7 +13,9 @@ namespace Intent.Modules.Application.Contracts.Decorators
     {
         public const string Id = "Intent.Application.Contracts.DataContractDecorator";
 
-        public string ClasssAttributes(IDTOModel dto)
+        public int Priority { get; } = 0;
+
+        public string ClassAttributes(IDTOModel dto)
         {
             
             return $"[DataContract{ GetDataContractPropertiesFormatted(dto) }]";

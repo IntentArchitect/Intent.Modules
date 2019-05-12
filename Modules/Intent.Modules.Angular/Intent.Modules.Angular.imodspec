@@ -29,6 +29,9 @@
       <role>Angular.AngularServiceProxyTemplate</role>
     </template>
   </templates>
+  <decorators>
+    <decorator id="Angular.AngularComponentHtmlTemplate.PagedSearchDecorator"/>
+  </decorators>
   <factoryExtensions>
     <factoryExtension id="Intent.Angular.CLIInstaller" />
   </factoryExtensions>

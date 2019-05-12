@@ -10,13 +10,12 @@ namespace Intent.Modules.Common.Templates
 
         public virtual void Configure(IDictionary<string, string> settings)
         {
-            if (this is IPriorityDecorator)
+            if (settings.ContainsKey(PRIORITY) && !string.IsNullOrWhiteSpace(settings[PRIORITY]))
             {
-                if (settings.ContainsKey(PRIORITY) && !string.IsNullOrWhiteSpace(settings[PRIORITY]))
-                {
-                    ((IPriorityDecorator)this).Priority = int.Parse(settings[PRIORITY]);
-                }
+                this.Priority = int.Parse(settings[PRIORITY]);
             }
         }
+
+        public int Priority { get; set; } = 0;
     }
 }

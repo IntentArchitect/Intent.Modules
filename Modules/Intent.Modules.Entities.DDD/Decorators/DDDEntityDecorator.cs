@@ -11,7 +11,11 @@ namespace Intent.Modules.Entities.DDD.Decorators
     public class DDDEntityDecorator : DomainEntityDecoratorBase
     {
         public const string Identifier = "Intent.Entities.DDD.EntityDecorator";
-        
+
+        public DDDEntityDecorator(DomainEntityTemplate template) : base(template)
+        {
+        }
+
         public override string Constructors(IClass @class)
         {
             var associatedClass = @class.AssociatedClasses.Where(x => x.IsNavigable).ToList();

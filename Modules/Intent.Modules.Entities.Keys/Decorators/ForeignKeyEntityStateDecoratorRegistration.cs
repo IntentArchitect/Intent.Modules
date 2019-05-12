@@ -3,17 +3,17 @@ using Intent.Modules.Common.Registrations;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.Engine;
 using Intent.Registrations;
+using Intent.Templates;
 
 namespace Intent.Modules.Entities.Keys.Decorators
 {
     [Description(ForeignKeyEntityStateDecorator.Identifier)]
-    public class ForeignKeyEntityStateDecoratorRegistration : DecoratorRegistration<DomainEntityStateDecoratorBase>
+    public class ForeignKeyEntityStateDecoratorRegistration : DecoratorRegistration<DomainEntityStateTemplate, DomainEntityStateDecoratorBase>
     {
         public override string DecoratorId => ForeignKeyEntityStateDecorator.Identifier;
-
-        public override object CreateDecoratorInstance(IApplication application)
+        public override DomainEntityStateDecoratorBase CreateDecoratorInstance(DomainEntityStateTemplate template, IApplication application)
         {
-            return new ForeignKeyEntityStateDecorator();
+            return new ForeignKeyEntityStateDecorator(template);
         }
     }
 }

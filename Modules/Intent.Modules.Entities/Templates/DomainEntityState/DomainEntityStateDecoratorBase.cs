@@ -9,7 +9,12 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
     public abstract class DomainEntityStateDecoratorBase : DecoratorBase, ITemplateDecorator, IDeclareUsings, IAttibuteTypeConverter
     {
-        public DomainEntityStateTemplate Template { get; internal set; }
+        public DomainEntityStateTemplate Template { get;}
+
+        protected DomainEntityStateDecoratorBase(DomainEntityStateTemplate template)
+        {
+            Template = template;
+        }
 
         public virtual string ClassAnnotations(IClass @class) { return null; }
         public virtual string GetBaseClass(IClass @class) { return null; }

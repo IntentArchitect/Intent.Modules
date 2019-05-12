@@ -15,6 +15,10 @@ namespace Intent.Modules.Entities.Keys.Decorators
         public const string Identifier = "Intent.Entities.Keys.ForeignKeyEntityDecorator";
         public const string ForeignKeyType = "Foreign Key Type";
 
+        public ForeignKeyEntityStateDecorator(DomainEntityStateTemplate template) : base(template)
+        {
+        }
+
         public override string AssociationBefore(IAssociationEnd associationEnd)
         {
             if ((associationEnd.Multiplicity == Multiplicity.One || associationEnd.Multiplicity == Multiplicity.ZeroToOne || (associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd == associationEnd)) &&

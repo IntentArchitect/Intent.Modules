@@ -12,6 +12,10 @@ namespace Intent.Modules.Entities.Decorators
     {
         public const string Identifier = "Intent.Entities.OrphanDetectionDomainEntityStateDecorator";
 
+        public OrphanDetectionDomainEntityStateDecorator(DomainEntityStateTemplate template) : base(template)
+        {
+        }
+
         public override IEnumerable<string> GetInterfaces(IClass @class)
         {
             if (!CanBeOrphaned(@class))

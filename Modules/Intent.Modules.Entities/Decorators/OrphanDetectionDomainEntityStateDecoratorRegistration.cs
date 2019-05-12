@@ -2,16 +2,17 @@
 using System;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.Entities.Templates.DomainEntityState;
+using Intent.Templates;
 
 namespace Intent.Modules.Entities.Decorators
 {
-    public class OrphanDetectionDomainEntityStateDecoratorRegistration : DecoratorRegistration<DomainEntityStateDecoratorBase>
+    public class OrphanDetectionDomainEntityStateDecoratorRegistration : DecoratorRegistration<DomainEntityStateTemplate, DomainEntityStateDecoratorBase>
     {
         public override string DecoratorId => OrphanDetectionDomainEntityStateDecorator.Identifier;
 
-        public override object CreateDecoratorInstance(IApplication application)
+        public override DomainEntityStateDecoratorBase CreateDecoratorInstance(DomainEntityStateTemplate template, IApplication application)
         {
-            return new OrphanDetectionDomainEntityStateDecorator();
+            return new OrphanDetectionDomainEntityStateDecorator(template);
         }
     }
 }

@@ -13,6 +13,10 @@ namespace Intent.Modules.Entities.Decorators
     {
         public const string Identifier = "Intent.Serializable.Entity.Decorator";
 
+        public SerializableEntityStateDecorator(DomainEntityStateTemplate template) : base(template)
+        {
+        }
+
         public override IEnumerable<string> DeclareUsings()
         {
             return new List<string>() { "System.Runtime.Serialization" };

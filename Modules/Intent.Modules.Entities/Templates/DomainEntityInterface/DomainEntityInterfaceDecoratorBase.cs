@@ -7,7 +7,7 @@ using IOperation = Intent.Metadata.Models.IOperation;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
-    public abstract class DomainEntityInterfaceDecoratorBase : DecoratorBase, ITemplateDecorator, IDeclareUsings, IAttibuteTypeConverter, IPriorityDecorator
+    public abstract class DomainEntityInterfaceDecoratorBase : DecoratorBase, ITemplateDecorator, IDeclareUsings, IAttibuteTypeConverter
     {
         public DomainEntityInterfaceTemplate Template { get; internal set; }
 

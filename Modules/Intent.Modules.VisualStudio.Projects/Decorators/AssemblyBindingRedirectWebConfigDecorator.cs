@@ -13,6 +13,8 @@ namespace Intent.Modules.VisualStudio.Projects.Decorators
         public const string IDENTIFIER = "Intent.VisualStudio.Projects.AssemblyBindingRedirectWebConfig";
         private XmlNamespaceManager _namespaces;
 
+        public int Priority { get; } = 0;
+
         public void Install(XDocument doc, IProject p)
         {
             _namespaces = new XmlNamespaceManager(new NameTable());

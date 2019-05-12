@@ -6,7 +6,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
     public interface IDTOAttributeDecorator : ITemplateDecorator
     {
-        string ClasssAttributes(IDTOModel dto);
+        string ClassAttributes(IDTOModel dto);
         string PropertyAttributes(IDTOModel dto, IAttribute field );
     }
 }

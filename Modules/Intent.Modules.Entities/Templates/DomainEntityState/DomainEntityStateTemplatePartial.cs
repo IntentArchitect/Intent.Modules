@@ -19,7 +19,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
     {
         public const string Identifier = "Intent.Entities.DomainEntityState";
 
-        private IEnumerable<DomainEntityStateDecoratorBase> _decorators;
+        private readonly IList<DomainEntityStateDecoratorBase> _decorators = new List<DomainEntityStateDecoratorBase>();
 
         public DomainEntityStateTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
@@ -54,16 +54,21 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
                 );
         }
 
+        public void AddDecorator(DomainEntityStateDecoratorBase decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<DomainEntityStateDecoratorBase> GetDecorators()
         {
-            if (_decorators == null)
-            {
-                _decorators = Project.ResolveDecorators(this);
-                foreach (var decorator in _decorators)
-                {
-                    decorator.Template = this;
-                }
-            }
+            //if (_decorators == null)
+            //{
+            //    _decorators = Project.ResolveDecorators(this);
+            //    foreach (var decorator in _decorators)
+            //    {
+            //        decorator.Template = this;
+            //    }
+            //}
             return _decorators;
         }
 

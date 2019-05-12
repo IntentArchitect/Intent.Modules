@@ -101,16 +101,16 @@ namespace Intent.Modules.Common.Templates
             {
                 result.AddRange(invoke((TInterface)template));
             }
-            var hasDecorators = template as IHasDecorators<ITemplateDecorator>;
-            if (hasDecorators != null)
+
+            if (template is IExposesDecorators<ITemplateDecorator> hasDecorators)
             {
                 result.AddRange(
                     hasDecorators.GetDecorators()
                         .Where(x => interfaceType.IsInstanceOfType(x))
+                        .OrderByDescending(d => d.Priority) // Higher value = Higher priority
                         .Cast<TInterface>()
                         .SelectMany(x => invoke((TInterface)x))
                         .Distinct()
-                        .OrderByDescending(d => (d as IPriorityDecorator) != null ? ((IPriorityDecorator)d).Priority : 0) // Higher value = Higher priority
                         .ToArray()
                     );
             }

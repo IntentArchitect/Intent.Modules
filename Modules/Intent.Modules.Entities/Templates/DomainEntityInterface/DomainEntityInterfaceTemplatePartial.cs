@@ -14,11 +14,10 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
     partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>, IPostTemplateCreation
     {
-
         public const string Identifier = "Intent.Entities.DomainEntityInterface";
         private const string OPERATIONS_CONTEXT = "Operations";
 
-        private IEnumerable<DomainEntityInterfaceDecoratorBase> _decorators;
+        private readonly IList<DomainEntityInterfaceDecoratorBase> _decorators = new List<DomainEntityInterfaceDecoratorBase>();
 
         public DomainEntityInterfaceTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
@@ -48,16 +47,13 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
                 );
         }
 
+        public void AddDecorator(DomainEntityInterfaceDecoratorBase decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<DomainEntityInterfaceDecoratorBase> GetDecorators()
         {
-            if (_decorators == null)
-            {
-                _decorators = Project.ResolveDecorators(this);
-                foreach (var decorator in _decorators)
-                {
-                    decorator.Template = this;
-                }
-            }
             return _decorators;
         }
 

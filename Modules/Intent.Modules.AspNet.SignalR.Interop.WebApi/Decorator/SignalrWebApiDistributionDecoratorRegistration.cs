@@ -8,7 +8,7 @@ namespace Intent.Modules.AspNet.SignalR.Interop.WebApi.Decorator
     public class SignalrWebApiDistributionDecoratorRegistration : DecoratorRegistration<WebApiControllerDecoratorBase>
     {
         public override string DecoratorId => SignalrWebApiWebApiControllerDecorator.Identifier;
-        public override object CreateDecoratorInstance(IApplication application)
+        public override WebApiControllerDecoratorBase CreateDecoratorInstance(IApplication application)
         {
             return new SignalrWebApiWebApiControllerDecorator();
         }

@@ -22,6 +22,8 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
         {
             return string.Empty;
         }
+
+        public int Priority { get; } = 0;
     }
 
     public class ConstructorParameter

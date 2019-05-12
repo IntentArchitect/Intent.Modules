@@ -5,7 +5,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
-    public abstract class WebApiControllerDecoratorBase : ITemplateDecorator, IPriorityDecorator, IDeclareUsings
+    public abstract class WebApiControllerDecoratorBase : ITemplateDecorator, IDeclareUsings
     {
         public virtual IEnumerable<string> DeclareUsings() => new List<string>();
 

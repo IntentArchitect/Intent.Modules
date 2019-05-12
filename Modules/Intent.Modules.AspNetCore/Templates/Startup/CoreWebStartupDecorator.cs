@@ -4,7 +4,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
 {
-    public abstract class CoreWebStartupDecorator : ITemplateDecorator, IPriorityDecorator
+    public abstract class CoreWebStartupDecorator : ITemplateDecorator
     {
         public virtual string Configuration() => @"";
         public virtual string Methods() => @"";

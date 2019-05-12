@@ -37,5 +37,7 @@ namespace Intent.Modules.AspNet.Owin.FileServer.Decorators
             owinWebServerHandler.Add(new XAttribute("type", "Microsoft.Owin.Host.SystemWeb.OwinHttpHandler, Microsoft.Owin.Host.SystemWeb"));
             webServerHandlers.Add(owinWebServerHandler);
         }
+
+        public int Priority { get; } = 0;
     }
 }

@@ -17,12 +17,11 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.DTO";
 
-        private readonly DecoratorDispatcher<IDTOAttributeDecorator> _decoratorDispatcher;
+        private IList<IDTOAttributeDecorator> _decorators = new List<IDTOAttributeDecorator>();
 
         public DTOTemplate(IProject project, IDTOModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
-            _decoratorDispatcher = new DecoratorDispatcher<IDTOAttributeDecorator>(project.ResolveDecorators<IDTOAttributeDecorator>);
         }
 
         public void Created()
@@ -45,12 +44,12 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public string ClassAttributes()
         {
-            return _decoratorDispatcher.Dispatch(x => x.ClasssAttributes(Model));
+            return _decorators.Aggregate(x => x.ClassAttributes(Model));
         }
 
         public string PropertyAttributes(IAttribute field)
         {
-            return _decoratorDispatcher.Dispatch(x => x.PropertyAttributes(Model, field));
+            return _decorators.Aggregate(x => x.PropertyAttributes(Model, field));
         }
 
         public string ConstructorParameters()
@@ -78,7 +77,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public IEnumerable<IDTOAttributeDecorator> GetDecorators()
         {
-            return _decoratorDispatcher.GetDecorators();
+            return _decorators;
         }
 
         private IEnumerable<string> GetNamespaceParts()
@@ -114,6 +113,11 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
                 throw new Exception("Collection Type Format not specified in module configuration");
             }
             return format;
+        }
+
+        public void AddDecorator(IDTOAttributeDecorator decorator)
+        {
+            _decorators.Add(decorator);
         }
     }
 }

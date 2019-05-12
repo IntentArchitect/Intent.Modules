@@ -8,7 +8,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
     {
         public override string DecoratorId => ExceptionHandlerFilterWebApiConfigDecorator.DecoratorId;
 
-        public override object CreateDecoratorInstance(IApplication application)
+        public override WebApiConfigTemplateDecoratorBase CreateDecoratorInstance(IApplication application)
         {
             return new ExceptionHandlerFilterWebApiConfigDecorator();
         }

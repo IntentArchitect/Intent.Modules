@@ -16,6 +16,10 @@ namespace Intent.Modules.Entities.Keys.Decorators
         public const string Identifier = "Intent.Entities.Keys.SurrogatePrimaryKeyEntityStateDecorator";
         public const string SurrogateKeyType = "Surrogate Key Type";
 
+        public SurrogatePrimaryKeyEntityStateDecorator(DomainEntityStateTemplate template) : base(template)
+        {
+        }
+
         public override string BeforeProperties(IClass @class)
         {
             if (@class.ParentClass != null || @class.Attributes.Any(x => x.HasStereotype("Primary Key")))

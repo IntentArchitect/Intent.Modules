@@ -21,7 +21,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
         public const string IDENTIFIER = "Intent.VisualStudio.Projects.WebConfig";
 
 
-        private IEnumerable<IWebConfigDecorator> _decorators;
+        private IList<IWebConfigDecorator> _decorators = new List<IWebConfigDecorator>();
         private readonly IDictionary<string, string> _appSettings = new Dictionary<string, string>();
         private readonly IDictionary<string, ConnectionStringElement> _connectionStrings = new Dictionary<string, ConnectionStringElement>();
 
@@ -186,7 +186,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 
         public IEnumerable<IWebConfigDecorator> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
+        }
+
+        public void AddDecorator(IWebConfigDecorator decorator)
+        {
+            _decorators.Add(decorator);
         }
     }
 

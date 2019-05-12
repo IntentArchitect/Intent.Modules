@@ -6,12 +6,12 @@ using Intent.Engine;
 namespace Intent.Modules.Entities.Decorators
 {
     [Description(SerializableEntityInterfaceDecorator.Identifier)]
-    public class SerializableEntityInterfaceDecoratorRegistration : DecoratorRegistration<DomainEntityInterfaceDecoratorBase>
+    public class SerializableEntityInterfaceDecoratorRegistration : DecoratorRegistration<DomainEntityInterfaceTemplate, DomainEntityInterfaceDecoratorBase>
     {
 
         public override string DecoratorId => SerializableEntityInterfaceDecorator.Identifier;
 
-        public override object CreateDecoratorInstance(IApplication application)
+        public override DomainEntityInterfaceDecoratorBase CreateDecoratorInstance(DomainEntityInterfaceTemplate template, IApplication application)
         {
             return new SerializableEntityInterfaceDecorator();
         }

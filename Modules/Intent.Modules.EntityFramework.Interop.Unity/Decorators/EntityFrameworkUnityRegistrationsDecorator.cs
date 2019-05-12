@@ -41,5 +41,7 @@ namespace Intent.Modules.EntityFramework.Interop.Unity.Decorators
                 new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0")
             };
         }
+
+        public int Priority { get; } = 0;
     }
 }

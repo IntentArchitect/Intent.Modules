@@ -20,7 +20,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
     partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings, IPostTemplateCreation
     {
         public const string Identifier = "Intent.AspNetCore.WebApi.Controller";
-        private IEnumerable<WebApiControllerDecoratorBase> _decorators;
+        private IList<WebApiControllerDecoratorBase> _decorators = new List<WebApiControllerDecoratorBase>();
 
         public WebApiControllerTemplate(IProject project, IServiceModel model)
             : base(Identifier, project, model)
@@ -164,9 +164,14 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             return GetDecorators().Aggregate(x => x.ClassMethods(Model));
         }
 
+        public void AddDecorator(WebApiControllerDecoratorBase decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<WebApiControllerDecoratorBase> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         private string GetSecurityAttribute(IOperation o)

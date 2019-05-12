@@ -12,7 +12,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
     partial class OwinWebApiConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<WebApiConfigTemplateDecoratorBase>
     {
         public const string Identifier = "Intent.AspNet.WebApi.OwinWebApiConfig";
-        private IEnumerable<WebApiConfigTemplateDecoratorBase> _decorators;
+        private readonly IList<WebApiConfigTemplateDecoratorBase> _decorators = new List<WebApiConfigTemplateDecoratorBase>();
 
         public OwinWebApiConfigTemplate(IProject project)
             : base (Identifier, project, null)
@@ -51,9 +51,14 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
             .ToArray();
         }
 
+        public void AddDecorator(WebApiConfigTemplateDecoratorBase decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<WebApiConfigTemplateDecoratorBase> GetDecorators()
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
     }
 }

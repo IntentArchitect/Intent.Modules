@@ -18,7 +18,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 {
     partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>, IPostTemplateCreation
     {
-        private IEnumerable<ServiceImplementationDecoratorBase> _decorators;
+        private IList<ServiceImplementationDecoratorBase> _decorators = new List<ServiceImplementationDecoratorBase>();
 
         public const string Identifier = "Intent.Application.ServiceImplementations";
         public ServiceImplementationTemplate(IProject project, IServiceModel model)
@@ -39,12 +39,13 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             }.Union(GetDecorators().SelectMany(x => x.GetConstructorDependencies(Model).Select(d => d.TemplateDependency)));
         }
 
+        public void AddDecorator(ServiceImplementationDecoratorBase decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
         public IEnumerable<ServiceImplementationDecoratorBase> GetDecorators()
         {
-            if (_decorators == null)
-            {
-                _decorators = Project.ResolveDecorators(this);
-            }
             return _decorators;
         }
 

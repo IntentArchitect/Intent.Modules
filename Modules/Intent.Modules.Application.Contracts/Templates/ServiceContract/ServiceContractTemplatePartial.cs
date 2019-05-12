@@ -4,6 +4,7 @@ using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.Runtime.InteropServices;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts.Templates.DTO;
@@ -16,14 +17,13 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
     partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IPostTemplateCreation, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
     {
-        public const string IDENTIFIER = "Intent.Application.Contracts.ServiceContract";
+        private IList<IServiceContractAttributeDecorator> _decorators = new List<IServiceContractAttributeDecorator>();
 
-        private readonly DecoratorDispatcher<IServiceContractAttributeDecorator> _decoratorDispatcher;
+        public const string IDENTIFIER = "Intent.Application.Contracts.ServiceContract";
 
         public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
-            _decoratorDispatcher = new DecoratorDispatcher<IServiceContractAttributeDecorator>(project.ResolveDecorators<IServiceContractAttributeDecorator>);
         }
 
         public void Created()
@@ -51,7 +51,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         public IEnumerable<IServiceContractAttributeDecorator> GetDecorators()
         {
-            return _decoratorDispatcher.GetDecorators();
+            return _decorators;
         }
 
         protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
@@ -69,12 +69,12 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         public string ContractAttributes()
         {
-            return _decoratorDispatcher.Dispatch(x => x.ContractAttributes(Model));
+            return _decorators.Aggregate(x => x.ContractAttributes(Model));
         }
 
         public string OperationAttributes(IOperation operation)
         {
-            return _decoratorDispatcher.Dispatch(x => x.OperationAttributes(Model, operation));
+            return _decorators.Aggregate(x => x.OperationAttributes(Model, operation));
         }
 
         private IEnumerable<string> GetNamespaceParts()
@@ -124,6 +124,11 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
                 throw new Exception("Collection Type Format not specified in module configuration");
             }
             return format;
+        }
+
+        public void AddDecorator(IServiceContractAttributeDecorator decorator)
+        {
+            _decorators.Add(decorator);
         }
     }
 }

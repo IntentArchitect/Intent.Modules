@@ -17,7 +17,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
             _metaDataManager = metaDataManager;
         }
 
-        public override object CreateDecoratorInstance(IApplication application)
+        public override ServiceImplementationDecoratorBase CreateDecoratorInstance(IApplication application)
         {
             return new ConventionDecorator(_metaDataManager, application);
         }
