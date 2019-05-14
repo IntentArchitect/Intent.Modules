@@ -58,7 +58,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             var currentProjectFileContent = "";
             if (File.Exists(filename))
             {
-                var currentProjectFile = XDocument.Parse(File.ReadAllText(filename));
+                var currentProjectFile = XDocument.Parse(File.ReadAllText(filename), LoadOptions.PreserveWhitespace);
                 currentProjectFileContent = currentProjectFile.ToString();
             }
             var outputContent = _doc.ToString();
