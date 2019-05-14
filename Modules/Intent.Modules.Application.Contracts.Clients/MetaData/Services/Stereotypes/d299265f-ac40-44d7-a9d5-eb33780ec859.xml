@@ -15,8 +15,13 @@
   </targetElements>
   <parentFolderId>87178626-6aba-4093-96b1-b5ac8558bf65</parentFolderId>
   <properties>
-    <property id="85f0698c-c66c-488d-8a58-6759c4726f12">
-      <name>CommaSeperatedList</name>
+    <property id="de6327c3-46ce-4663-869c-48b2ec7d4fa3">
+      <name>CSharp</name>
+      <type>string</type>
+      <defaultValue></defaultValue>
+    </property>
+    <property id="3b5ca83d-d0cc-4786-a72b-3f8c9bc984b0">
+      <name>TypeScript</name>
       <type>string</type>
       <defaultValue></defaultValue>
     </property>

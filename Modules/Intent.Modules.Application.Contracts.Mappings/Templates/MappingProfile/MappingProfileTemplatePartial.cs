@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.MetaModel.Domain;
 using Intent.MetaModel.DTO;
@@ -13,15 +14,32 @@ using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
-    partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, IBeforeTemplateExecutionHook
+    partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, IBeforeTemplateExecutionHook, IPostTemplateCreation
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.Mapping.Profile";
-        public const string CONTRACT_TEMPLATE_DEPENDANCY_ID = "ContractTemplateDependancyId";
-        public const string DOMAIN_TEMPLATE_DEPENDANCY_ID = "DomainTemplateDependancyId";
+
+        private const string ContractTemplateDependancyConfigId = "ContractTemplateDependancyId";
+        private const string DomainTemplateDependancyConfigId = "DomainTemplateDependancyId";
+        private const string StereotypeNameConfigId = "Stereotype Name";
+        private const string StereotypeTypePropertyConfigId = "Stereotype Property Name (Type)";
+        private const string StereotypeNamespacePropertyConfigId = "Stereotype Property Name (Namespace)";
+
+        private string _domainTemplateDependancyConfigValue;
+        private string _stereotypeNameConfigValue;
+        private string _stereotypeTypePropertyConfigValue;
+        private string _stereotypeNamespacePropertyConfigValue;
 
         public MappingProfileTemplate(IProject project, IList<IDTOModel> model)
             : base(IDENTIFIER, project, model)
         {
+        }
+
+        public void Created()
+        {
+            _domainTemplateDependancyConfigValue = GetMetaData().CustomMetaData[DomainTemplateDependancyConfigId];
+            _stereotypeNameConfigValue = GetMetaData().CustomMetaData[StereotypeNameConfigId];
+            _stereotypeTypePropertyConfigValue = GetMetaData().CustomMetaData[StereotypeTypePropertyConfigId];
+            _stereotypeNamespacePropertyConfigValue = GetMetaData().CustomMetaData[StereotypeNamespacePropertyConfigId];
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -36,22 +54,42 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public string GetContractType(IDTOModel model)
         {
-            var templateDependancy = TemplateDependancy.OnModel<IDTOModel>(GetMetaData().CustomMetaData[CONTRACT_TEMPLATE_DEPENDANCY_ID], (to) => to.Id == model.Id);
+            var templateDependancy = TemplateDependancy.OnModel<IDTOModel>(GetMetaData().CustomMetaData[ContractTemplateDependancyConfigId], (to) => to.Id == model.Id);
             var templateOutput = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {
-                Logging.Log.Failure($"Unable to resolve template dependancy. Template : {Id} Depends on : {CONTRACT_TEMPLATE_DEPENDANCY_ID} Model : {model.Id}");
+                Logging.Log.Failure($"Unable to resolve template dependancy. Template : {Id} Depends on : {ContractTemplateDependancyConfigId} Model : {model.Id}");
             }
             return templateOutput.FullTypeName();
         }
 
-        public string GetDomainType(IDTOModel model)
+        public string GetSourceType(IDTOModel model)
         {
-            var templateDependancy = TemplateDependancy.OnModel<IClass>(GetMetaData().CustomMetaData[DOMAIN_TEMPLATE_DEPENDANCY_ID], (to) => to.Id == model.MappedClassId);
+            var type = model.GetStereotypeProperty<string>(_stereotypeNameConfigValue, _stereotypeTypePropertyConfigValue);
+            var @namespace = model.GetStereotypeProperty<string>(_stereotypeNameConfigValue, _stereotypeNamespacePropertyConfigValue);
+
+            if (!string.IsNullOrWhiteSpace(type))
+            {
+                return !string.IsNullOrWhiteSpace(@namespace)
+                    ? $"{@namespace}.{type}"
+                    : type;
+            }
+
+            var templateDependancy = TemplateDependancy.OnModel<IClass>(_domainTemplateDependancyConfigValue, (to) => to.Id == model.MappedClassId);
             var templateOutput = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {
-                Logging.Log.Failure($"Unable to resolve template dependancy. Template : {Id} Depends on : {DOMAIN_TEMPLATE_DEPENDANCY_ID} Model : {model.MappedClassId}");
+                throw new Exception(message:
+                    $"\r\n" +
+                    $"\r\n" +
+                    $"Unable to resolve source type for DTO Mapping for '{model.Name}' ({model.Id}). " +
+                    $"\r\n" +
+                    $"\r\n" +
+                    $"First tried checking on the DTO for existence of a stereotype '{_stereotypeNameConfigValue}' with populated property '{_stereotypeTypePropertyConfigValue}', but the stereotype and/or property was not present. " +
+                    $"\r\n" +
+                    $"\r\n" +
+                    $"Then tried finding an instance of template with ID '{_domainTemplateDependancyConfigValue}' and model ID of {model.MappedClassId}, but none was found." +
+                    $"\r\n");
             }
             return templateOutput.FullTypeName();
         }

@@ -50,8 +50,7 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n   " +
-                    " partial class ");
+            this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge)]\r\n    partial class ");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
@@ -111,7 +110,7 @@ using System.Linq;
                     "t: \"");
             
             #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetRegistrationType() == RegistrationType.FilePerModel ? Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden
@@ -122,8 +121,14 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\",\r\n                @namespace: \"${Project.ProjectName}\"\r\n            );\r\n       " +
-                    " }\r\n    }\r\n}");
+            this.Write("\",\r\n                @namespace: \"${Project.Name}");
+            
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetRegistrationType() == RegistrationType.FilePerModel ? "." + Model.Name.Replace("Template", "") : ""));
+            
+            #line default
+            #line hidden
+            this.Write("\"\r\n            );\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

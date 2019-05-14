@@ -80,6 +80,8 @@ namespace Intent.Modules.Common.Templates
         {
             // NB: If changing this method, please run the unit tests against it
 
+            var localNamespaceParts = localNamespace.Split('.').ToArray();
+
             var foreignTypeParts = foreignType.Split('.').ToArray();
             if (foreignTypeParts.Length == 1)
             {
@@ -88,13 +90,13 @@ namespace Intent.Modules.Common.Templates
 
             // Is there already a using to which matches qualifier:
             // (It's not immediately clear what scenario "usings.All(x => x != foreignType)" covers, if you know, please document)
+            // localNamespaceParts.Contains(foreignTypeParts.Last()) - if name exists in local namespace, can't use name as is.
             var foreignTypeQualifier = foreignTypeParts.Take(foreignTypeParts.Length - 1).DefaultIfEmpty().Aggregate((x, y) => x + "." + y);
-            if (usingPaths.Contains(foreignTypeQualifier) && usingPaths.All(x => x != foreignType))
+            if (usingPaths.Contains(foreignTypeQualifier) && usingPaths.All(x => x != foreignType) && !localNamespaceParts.Contains(foreignTypeParts.Last()))
             {
                 return foreignTypeParts.Last();
             }
 
-            var localNamespaceParts = localNamespace.Split('.').ToArray();
             var otherPathsToCheck = knownOtherPaths
                 .Concat(new[] { localNamespace })
                 .Concat(usingPaths)

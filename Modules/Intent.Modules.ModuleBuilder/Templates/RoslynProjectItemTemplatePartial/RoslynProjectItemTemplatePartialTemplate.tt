@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace <#= Namespace #>
 {
-	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
+	[IntentManaged(Mode.Merge)]
     partial class <#= ClassName #> : IntentRoslynProjectItemTemplateBase<<#= GetModelType() #>>
     {
         public const string TemplateId = "<#= GetTemplateId() #>";
@@ -37,9 +37,9 @@ namespace <#= Namespace #>
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "cs",
-                defaultLocationInProject: "<#= Model.Name.Replace("Template", "") #>",
+                defaultLocationInProject: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? Model.Name.Replace("Template", "") : "" #>",
                 className: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                @namespace: "${Project.ProjectName}"
+                @namespace: "${Project.Name}<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? "." + Model.Name.Replace("Template", "") : "" #>"
             );
         }
     }

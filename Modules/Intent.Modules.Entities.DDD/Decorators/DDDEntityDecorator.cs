@@ -29,7 +29,7 @@ namespace Intent.Modules.Entities.DDD.Decorators
             }
             foreach (var associationEnd in associatedClass)
             {
-                sb.Append($"{Template.NormalizeNamespace(Template.Types.Get(associationEnd))} {associationEnd.Name().ToCamelCase()}{(associationEnd != @class.AssociatedClasses.Last() ? ", " : "")}");
+                sb.Append($"{Template.NormalizeNamespace(Template.Types.Get(associationEnd))} {associationEnd.Name().ToCamelCase()}{(associationEnd != associatedClass.Last() ? ", " : "")}");
             }
             sb.Append(")");
             sb.AppendLine("        {");
@@ -39,7 +39,8 @@ namespace Intent.Modules.Entities.DDD.Decorators
             }
             foreach (var associationEnd in associatedClass)
             {
-                sb.AppendLine($"            {associationEnd.Name()} = {associationEnd.Name().ToCamelCase()};");
+                var cast = associationEnd.IsCollection ? $"(ICollection<{associationEnd.Class.Name}>)" : $"({associationEnd.Class.Name})";
+                sb.AppendLine($"            {associationEnd.Name().ToPascalCase()} = {cast}{associationEnd.Name().ToCamelCase()};");
             }
             sb.AppendLine("        }");
             return sb.ToString();

@@ -72,7 +72,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
             _eventDispatcher.Publish(ApplicationEvents.Config_ConnectionString, new Dictionary<string, string>()
             {
                 { "Name", $"{Project.Application.ApplicationName}DB" },
-                { "ConnectionString", $"Server=.;Initial Catalog={ Project.Application.SolutionName };Integrated Security=true;MultipleActiveResultSets=True" },
+                { "ConnectionString", $"Server=.;Initial Catalog={Project.Application.SolutionName}.{ Project.Application.ApplicationName };Integrated Security=true;MultipleActiveResultSets=True" },
                 { "ProviderName", "System.Data.SqlClient" },
             });
 

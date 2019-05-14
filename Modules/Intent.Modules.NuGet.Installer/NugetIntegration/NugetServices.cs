@@ -19,6 +19,7 @@ using NuGet.Packaging.Core;
 using NuGet.ProjectManagement;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
+using SemVer1 = NuGet.SemanticVersion;
 
 namespace Intent.Modules.NuGet.Installer.NugetIntegration
 {
@@ -179,7 +180,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                 if (string.IsNullOrWhiteSpace(args.Data) || onErrorDataReceived == null) return;
                 onErrorDataReceived(args.Data);
             };
-            
+
             process.Exited += (sender, args) =>
             {
                 tcs.SetResult(process.ExitCode);
@@ -194,8 +195,10 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
 
         public IPackage GetPackage(string packageId, IVersionSpec versionSpec, bool allowPrereleaseVersions)
         {
-            var package =
-                _localPackageRepository
+            IPackage package = null;
+            try
+            {
+                package = _localPackageRepository
                     .FindPackages(
                         packageId: packageId,
                         versionSpec: new VersionSpec(versionSpec.MinVersion),
@@ -203,6 +206,21 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
                         allowUnlisted: false)
                     .OrderBy(x => x.Version)
                     .FirstOrDefault();
+            }
+            catch (ArgumentException e)
+            {
+                if (!e.Message.EndsWith("' is not a valid version string.\r\nParameter name: version") &&
+                    !e.Message.EndsWith("' is not a valid version string.") )
+                {
+                    throw;
+                }
+
+                _tracing.Warning(
+                    $"{NugetInstaller.TracingOutputPrefix}" +
+                    $"One or more packages, or one their dependencies, for package '{packageId}' in '{_packagesFolder}', is using " +
+                    $"an unsupported Semantic Version 2. The NuGet installer will atempt to continue by downloading the package " +
+                    $"instead.");
+            }
 
             if (package == null)
             {
@@ -216,7 +234,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
         {
             // Caching was implemented because in Inoxico commit 44a9bd3e6d19a39a2ba2939c57239d3bd871ae88, IntegrationApi
             // on run would download Newtonsoft.Json over a dozen times.
-            
+
             // What was happening is that a lot of the packages had a dependency on a lower version of Json than what was
             // installed, and the logic is such that we always get the minimum required version of dependencies to check
             // its dependepencies.
@@ -257,9 +275,9 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
             private readonly string _packageId;
             private readonly bool _allowPrereleaseVersions;
 
-            private readonly global::NuGet.SemanticVersion _minVersion;
+            private readonly SemVer1 _minVersion;
             private readonly bool _isMinInclusive;
-            private readonly global::NuGet.SemanticVersion _maxVersion;
+            private readonly SemVer1 _maxVersion;
             private readonly bool _isMaxInclusive;
 
             public static CachedPackageKey Create(string packageId, IVersionSpec versionSpec, bool allowPrereleaseVersions)
@@ -291,7 +309,7 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
             public override bool Equals(object obj)
             {
                 if (ReferenceEquals(null, obj)) return false;
-                return obj is CachedPackageKey && Equals((CachedPackageKey) obj);
+                return obj is CachedPackageKey && Equals((CachedPackageKey)obj);
             }
 
             public override int GetHashCode()
@@ -360,11 +378,43 @@ namespace Intent.Modules.NuGet.Installer.NugetIntegration
 
         public IPackage[] GetInstalled(string project)
         {
-            return GetProject(project)
-                .GetInstalledPackagesAsync(new CancellationToken()).Result
-                .Select(x => _localPackageRepository.FindPackage(
-                    packageId: x.PackageIdentity.Id,
-                    version: new global::NuGet.SemanticVersion(x.PackageIdentity.Version.ToString())))
+            var installedPackages = GetProject(project)
+                .GetInstalledPackagesAsync(new CancellationToken()).Result;
+
+            var semverV2Packages = installedPackages
+                .Where(x => x.PackageIdentity.Version.IsSemVer2)
+                .Select(x => x.PackageIdentity)
+                .ToArray();
+
+            foreach (var package in semverV2Packages)
+            {
+                _tracing.Warning($"{NugetInstaller.TracingOutputPrefix}Unsupported Semantic Version 2 string of '{package.Version}' found for package '{package.Id}' in project '{project}'. The NuGet installer will attempt to continue by ignoring this installed package.");
+            }
+
+            return installedPackages
+                .Where(x => !x.PackageIdentity.Version.IsSemVer2)
+                .Select(x =>
+                {
+                    var package = x.PackageIdentity;
+
+                    try
+                    {
+                        return _localPackageRepository.FindPackage(
+                            packageId: package.Id,
+                            version: new SemVer1(package.Version.ToString()));
+                    }
+                    catch (ArgumentException e)
+                    {
+                        if (!e.Message.EndsWith("' is not a valid version string."))
+                        {
+                            throw;
+                        }
+
+                        _tracing.Warning($"{NugetInstaller.TracingOutputPrefix}An unknown dependency of '{package.Id}' version '{package.Version}' in '{project}' has an unsupported Semantic Version 2. The NuGet installer will attempt to continue by ignoring this installed package.");
+                        return null;
+                    }
+                })
+                .Where(x => x != null)
                 .ToArray();
         }
 
