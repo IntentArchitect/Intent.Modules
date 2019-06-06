@@ -16,12 +16,12 @@ using Unity;
 
 namespace <#= Namespace #>
 {
-    public class <#=Model.Name#>NodeEdgeProxy : IInvokable
+    public class <#= ClassName #> : IInvokable
     {
         private readonly I<#=Model.Name#> _appService;
         private readonly JsonSerializerSettings _jsonSerializerSettings;
 
-        public <#=Model.Name#>NodeEdgeProxy()
+        public <#= ClassName #>()
         {
             _appService = UnityConfig.GetConfiguredContainer().Resolve<I<#=Model.Name#>>();
             _jsonSerializerSettings = new JsonSerializerSettings
@@ -62,8 +62,8 @@ namespace <#= Namespace #>
                 }
                 catch (Exception e)
                 {<# 
-                    // Sometimes Edge falls over with a StackOverflow exception when it tries 
-                    // to send some exceptions back to the client, so we just wrap all exceptions
+                    // Sometimes there is a StackOverflow exception when we try to send 
+                    // some exceptions back to the client, so we just wrap all exceptions
                     // just in case.
 
                     // For example, new System.IO.FileSystemWatcher("invalid path", filterCriteria);

@@ -1,17 +1,15 @@
-﻿using Intent.MetaModel.Service;
-using Intent.SoftwareFactory;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.Templates.Registrations;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Intent.MetaModel.Service;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy
+namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
 {
-    [Description("Intent.Packages.Electron.NodeEdgeProxy - CSharp Receiving Proxies")]
+    [Description(CSharpIpcReceivingProxyTemplate.Identifier)]
     public class Registrations : ModelTemplateRegistrationBase<IServiceModel>
     {
         private readonly IMetaDataManager _metaDataManager;
@@ -21,19 +19,19 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
             _metaDataManager = metaDataManager;
         }
 
-        public override string TemplateId => NodeEdgeCsharpReceivingProxyTemplate.Identifier;
+        public override string TemplateId => CSharpIpcReceivingProxyTemplate.Identifier;
+        
         public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
         {
-            return new NodeEdgeCsharpReceivingProxyTemplate(model, project);
+            return new CSharpIpcReceivingProxyTemplate(model, project);
         }
 
         public override IEnumerable<IServiceModel> GetModels(IApplication applicationManager)
         {
             return _metaDataManager
                 .GetServiceModels(applicationManager)
-                .Where(x => x.Stereotypes.Any(y => y.Name == "NodeEdgeService"))
+                .Where(x => x.Stereotypes.Any(y => y.Name == "IpcService"))
                 .ToList();
-
         }
     }
 }

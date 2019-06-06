@@ -6,9 +6,9 @@
 <#@ import namespace="System" #>
 namespace <#= Namespace #> {
     export class <#=Model.Name#>Proxy {
-        static $inject = ["EdgeService"];
+        static $inject = ["IpcProxyService"];
         constructor(
-            private readonly edgeService: IEdgeService
+            private readonly ipcProxyService: IpcProxyService
         ) { }
 <#      foreach (var o in Model.Operations)
         {
@@ -16,7 +16,7 @@ namespace <#= Namespace #> {
 #>
 
         <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= GetReturnType(o) #>> {
-            return this.edgeService.callMethod<<#= GetReturnType(o) #>>("<#= TypeName #>", "<#= o.Name #>"<#= GetMethodCallParameters(o) #>);
+            return this.ipcProxyService.callMethod<<#= GetReturnType(o) #>>("<#= TypeName #>", "<#= o.Name #>"<#= GetMethodCallParameters(o) #>);
         }
 <#
         }

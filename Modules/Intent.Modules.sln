@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.106
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AngularJs.Auth.ImplicitAuth", "Intent.Modules.AngularJs.Auth.ImplicitAuth\Intent.Modules.AngularJs.Auth.ImplicitAuth.csproj", "{C41EA8CB-E1DB-432C-BF2E-7C8188A009A6}"
 EndProject
@@ -38,8 +38,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Bower.Installer", "Intent.Modules.Bower.Installer\Intent.Modules.Bower.Installer.csproj", "{286642B8-1367-47A4-B5A5-2FD4494C110C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Constants", "Intent.Modules.Constants\Intent.Modules.Constants.csproj", "{DBADFA28-E995-4E75-9933-215A51E7B580}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Electron.NodeEdgeProxy", "Intent.Modules.Electron.NodeEdgeProxy\Intent.Modules.Electron.NodeEdgeProxy.csproj", "{FF32AC23-39E7-4D97-A2C9-D941520A5A2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Entities", "Intent.Modules.Entities\Intent.Modules.Entities.csproj", "{04CE09B0-68C2-4C8B-921F-65EEA14D3D58}"
 EndProject
@@ -173,6 +171,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common", "Intent.Modules.Common\Intent.Modules.Common.csproj", "{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Electron.IpcProxy", "Intent.Modules.Electron.IpcProxy\Intent.Modules.Electron.IpcProxy.csproj", "{239C2D0D-6B5F-495E-9149-B66067A24635}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -251,10 +251,6 @@ Global
 		{DBADFA28-E995-4E75-9933-215A51E7B580}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBADFA28-E995-4E75-9933-215A51E7B580}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBADFA28-E995-4E75-9933-215A51E7B580}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF32AC23-39E7-4D97-A2C9-D941520A5A2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF32AC23-39E7-4D97-A2C9-D941520A5A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF32AC23-39E7-4D97-A2C9-D941520A5A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF32AC23-39E7-4D97-A2C9-D941520A5A2F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{04CE09B0-68C2-4C8B-921F-65EEA14D3D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{04CE09B0-68C2-4C8B-921F-65EEA14D3D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04CE09B0-68C2-4C8B-921F-65EEA14D3D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -483,6 +479,10 @@ Global
 		{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239C2D0D-6B5F-495E-9149-B66067A24635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239C2D0D-6B5F-495E-9149-B66067A24635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239C2D0D-6B5F-495E-9149-B66067A24635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239C2D0D-6B5F-495E-9149-B66067A24635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -506,7 +506,6 @@ Global
 		{676FFB48-2B61-46BF-86B1-1A6D5F48888D} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 		{286642B8-1367-47A4-B5A5-2FD4494C110C} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 		{DBADFA28-E995-4E75-9933-215A51E7B580} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
-		{FF32AC23-39E7-4D97-A2C9-D941520A5A2F} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 		{04CE09B0-68C2-4C8B-921F-65EEA14D3D58} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 		{6F1E2AAB-73BC-47BE-978E-C8CA8E93379A} = {46C61870-A203-487D-9680-8D143871AA1F}
 		{5E7E8956-5DFA-44AF-9778-0EA6570A06C7} = {46C61870-A203-487D-9680-8D143871AA1F}
@@ -564,6 +563,7 @@ Global
 		{2AC9A9B5-8DBD-45E0-B340-5778C2C6EE8B} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 		{ADF69C43-E3B2-4048-866E-FBE9BFF55EC6} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 		{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{239C2D0D-6B5F-495E-9149-B66067A24635} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

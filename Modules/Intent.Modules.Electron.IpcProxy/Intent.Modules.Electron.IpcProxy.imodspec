@@ -1,18 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
-  <id>Intent.Electron.NodeEdgeProxy</id>
+  <id>Intent.Electron.IpcProxy</id>
   <version>1.9.0</version>
-  <summary>Creates service proxies allowing you to call C# code from within Node.js</summary>
+  <summary>Creates service proxies allowing you to make IPC calls within Node.js</summary>
   <description>Implements service contracts and infrastructure in both C# and TypeScript allowing C# service calls to be initiated from within a Node.js hosted Angular Application.</description>
   <authors>Intent Architect</authors>
   <templates>
-    <template id="Intent.Electron.NodeEdgeProxy.AngularEdgeServiceProvider">
+    <template id="Intent.Electron.IpcProxy.AngularTypeScriptIpcServiceProxy">
       <role>Presentation</role>
     </template>
-    <template id="Intent.Electron.NodeEdgeProxy.AngularNodeEdgeTypeScriptServiceProxy">
-      <role>Presentation</role>
-    </template>
-    <template id="Intent.Electron.NodeEdgeProxy.CsharpReceivingProxy">
+    <template id="Intent.Electron.IpcProxy.CSharpIpcReceivingProxy">
       <role>Distribution</role>
     </template>
   </templates>
@@ -26,7 +23,7 @@
     <dependency id="Intent.Typescript.ServiceAgent.Contracts" version="1.9.0"/>
   </dependencies>
   <files>
-    <file src="bin/$configuration$/$id$.dll"/>
-    <file src="bin/$configuration$/$id$.pdb"/>
+    <file src="$outDir$/$id$.dll"/>
+    <file src="$outDir$/$id$.pdb"/>
   </files>
 </package>

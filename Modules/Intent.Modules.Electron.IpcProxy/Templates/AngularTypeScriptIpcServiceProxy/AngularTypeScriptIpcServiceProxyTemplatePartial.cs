@@ -1,32 +1,28 @@
-using Intent.MetaModel.Hosting;
-using Intent.MetaModel.Service;
-using Intent.Modules.Constants;
-using Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Eventing;
-using Intent.SoftwareFactory.Templates;
-using System.Collections.Generic;
 using System.Linq;
+using Intent.MetaModel.Service;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy;
 using Intent.Modules.Typescript.ServiceAgent.Contracts;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
 
-namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScriptServiceProxy
+namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcServiceProxy
 {
-    partial class AngularNodeEdgeTypeScriptServiceProxyTemplate : IntentProjectItemTemplateBase<IServiceModel>, ITemplate
+    partial class AngularTypeScriptIpcServiceProxyTemplate : IntentProjectItemTemplateBase<IServiceModel>, ITemplate
     {
-        public const string Identifier = "Intent.Electron.NodeEdgeProxy.AngularNodeEdgeTypeScriptServiceProxy";
+        public const string Identifier = "Intent.Electron.IpcProxy.AngularTypeScriptIpcServiceProxy";
 
-        public AngularNodeEdgeTypeScriptServiceProxyTemplate(IServiceModel model, IProject project)
+        public AngularTypeScriptIpcServiceProxyTemplate(IServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
-            var receivingProxyProject = project.Application.FindProjectWithTemplateInstance(NodeEdgeCsharpReceivingProxyTemplate.Identifier, model);
+            var receivingProxyProject = project.Application.FindProjectWithTemplateInstance(CSharpIpcReceivingProxyTemplate.Identifier, model);
             AssemblyName = receivingProxyProject.Name;
         }
 
         public string Namespace => "App.Proxies";
         public string AssemblyName { get; }
-        public string TypeName => $"{AssemblyName}.{Model.Name}NodeEdgeProxy";
+        public string TypeName => $"{AssemblyName}.{Model.Name}NodeIpcProxy";
 
         public override DefaultFileMetaData DefineDefaultFileMetaData()
         {

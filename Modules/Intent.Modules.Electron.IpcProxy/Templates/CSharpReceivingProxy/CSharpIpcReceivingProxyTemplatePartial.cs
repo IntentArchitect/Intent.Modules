@@ -1,23 +1,23 @@
-﻿using Intent.MetaModel.Common;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Intent.MetaModel.Common;
 using Intent.MetaModel.Service;
+using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Unity.Templates.UnityConfig;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.Modules.Application.Contracts;
-using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.VisualStudio;
 
-namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivingProxy
+namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
 {
-    partial class NodeEdgeCsharpReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
+    partial class CSharpIpcReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies
     {
-        public const string Identifier = "Intent.Electron.NodeEdgeProxy.CsharpReceivingProxy";
+        public const string Identifier = "Intent.Electron.IpcProxy.CSharpIpcReceivingProxy";
 
-        public NodeEdgeCsharpReceivingProxyTemplate(IServiceModel model, IProject project)
+        public CSharpIpcReceivingProxyTemplate(IServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
         }
@@ -31,10 +31,10 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.NodeEdgeCsharpReceivin
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.Name}NodeEdgeProxy",
+                fileName: $"{Model.Name}NodeIpcProxy",
                 fileExtension: "cs",
-                defaultLocationInProject: @"NodeEdgeProxies/Generated",
-                className: $"{Model.Name}NodeEdgeProxy",
+                defaultLocationInProject: @"NodeIpcProxies/Generated",
+                className: $"{Model.Name}NodeIpcProxy",
                 @namespace: "${Project.ProjectName}");
         }
 
