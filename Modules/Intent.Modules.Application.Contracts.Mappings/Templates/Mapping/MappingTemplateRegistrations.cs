@@ -1,18 +1,14 @@
-﻿using Intent.SoftwareFactory;
-using Intent.Engine;
-using Intent.Templates;
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
+using Intent.Engine;
 using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
-using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
-    [Description(MappingTemplate.IDENTIFIER)]
+    [Description(MappingTemplate.Identifier)]
     public class MappingTemplateRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
         private readonly ServicesMetadataProvider _metaDataManager;
@@ -20,11 +16,11 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         public MappingTemplateRegistrations(ServicesMetadataProvider metaDataManager)
         {
             _metaDataManager = metaDataManager;
-            
+
             FilterExpression = "model.MappedClass != null";
         }
 
-        public override string TemplateId => MappingTemplate.IDENTIFIER;
+        public override string TemplateId => MappingTemplate.Identifier;
 
         public override ITemplate CreateTemplateInstance(IProject project, IDTOModel model)
         {

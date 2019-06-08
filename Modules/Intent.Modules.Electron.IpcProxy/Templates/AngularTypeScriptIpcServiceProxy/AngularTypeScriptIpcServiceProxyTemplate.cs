@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScriptServiceProxy
+namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcServiceProxy
 {
     using Intent.Modelers.Services.Api;
     using Intent.Modules.Common.Templates;
@@ -17,9 +17,9 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class AngularNodeEdgeTypeScriptServiceProxyTemplate : IntentProjectItemTemplateBase<IServiceModel>
+    public partial class AngularTypeScriptIpcServiceProxyTemplate : IntentProjectItemTemplateBase<IServiceModel>
     {
 #line hidden
         /// <summary>
@@ -29,22 +29,22 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
         {
             this.Write("namespace ");
             
-            #line 7 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 7 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write(" {\r\n    export class ");
             
-            #line 8 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 8 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
-            this.Write("Proxy {\r\n        static $inject = [\"EdgeService\"];\r\n        constructor(\r\n       " +
-                    "     private readonly edgeService: IEdgeService\r\n        ) { }\r\n");
+            this.Write("Proxy {\r\n        static $inject = [\"IpcProxyService\"];\r\n        constructor(\r\n   " +
+                    "         private readonly ipcProxyService: IpcProxyService\r\n        ) { }\r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
       foreach (var o in Model.Operations)
         {
 
@@ -54,56 +54,56 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
             #line hidden
             this.Write("\r\n        ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodDefinitionParameters(o)));
             
             #line default
             #line hidden
             this.Write("): ng.IPromise<");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetReturnType(o)));
             
             #line default
             #line hidden
-            this.Write("> {\r\n            return this.edgeService.callMethod<");
+            this.Write("> {\r\n            return this.ipcProxyService.callMethod<");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetReturnType(o)));
             
             #line default
             #line hidden
             this.Write(">(\"");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TypeName));
             
             #line default
             #line hidden
             this.Write("\", \"");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name));
             
             #line default
             #line hidden
             this.Write("\"");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodCallParameters(o)));
             
             #line default
             #line hidden
             this.Write(");\r\n        }\r\n");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
 
         }
 
@@ -112,14 +112,14 @@ namespace Intent.Modules.Electron.NodeEdgeProxy.Templates.AngularNodeEdgeTypeScr
             #line hidden
             this.Write("    }\r\n\r\n    angular.module(\"App\").service(\"");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("Proxy\", ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.NodeEdgeProxy\Templates\AngularNodeEdgeTypeScriptServiceProxy\AngularNodeEdgeTypeScriptServiceProxyTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default

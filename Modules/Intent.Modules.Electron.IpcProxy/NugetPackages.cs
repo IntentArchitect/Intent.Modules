@@ -1,6 +1,6 @@
 using Intent.Modules.Common.VisualStudio;
 
-namespace Intent.Modules.Electron.NodeEdgeProxy
+namespace Intent.Modules.Electron.IpcProxy
 {
     public static class NugetPackages
     {

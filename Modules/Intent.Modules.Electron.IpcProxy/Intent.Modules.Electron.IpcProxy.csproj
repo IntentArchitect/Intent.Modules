@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Intent.IntentArchitectPackager" Version="1.9.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.0.0-pre3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Application.ServiceCallHandlers\Intent.Modules.Application.ServiceCallHandlers.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Typescript.ServiceAgent.Contracts\Intent.Modules.Typescript.ServiceAgent.Contracts.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AngularTypeScriptIpcServiceProxyTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CSharpIpcReceivingProxyTemplate.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\AngularTypeScriptIpcServiceProxy\AngularTypeScriptIpcServiceProxyTemplate.tt">
+      <LastGenOutput>AngularTypeScriptIpcServiceProxyTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+    <None Update="Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt">
+      <LastGenOutput>CSharpIpcReceivingProxyTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

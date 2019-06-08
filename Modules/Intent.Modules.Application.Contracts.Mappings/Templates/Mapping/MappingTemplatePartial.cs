@@ -15,7 +15,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
     partial class MappingTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation, IHasDecorators<IMappingTemplateDecorator>
     {
-        public const string IDENTIFIER = "Intent.Application.Contracts.Mapping";
+        public const string Identifier = "Intent.Application.Contracts.Mapping";
 
         private const string ContractTemplateDependancyConfigId = "ContractTemplateDependancyId";
         private const string DomainTemplateDependancyConfigId = "DomainTemplateDependancyId";
@@ -32,7 +32,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         private IList<IMappingTemplateDecorator> _decorators = new List<IMappingTemplateDecorator>();
 
         public MappingTemplate(IProject project, IDTOModel model)
-            : base(IDENTIFIER, project, model)
+            : base(Identifier, project, model)
         {
         }
 

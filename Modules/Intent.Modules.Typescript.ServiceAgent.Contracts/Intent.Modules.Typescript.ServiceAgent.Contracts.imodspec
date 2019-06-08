@@ -19,7 +19,7 @@
              default="Consumers"
              description="The name of Stereotype to search for on DTOs in a different applications which contain the 'Consumer Stereotype Property Name' specified below." />
         <add key="Consumer Stereotype Property Name"
-             default="CommaSeparatedList"
+             default="TypeScript"
              description="The name of the Stereotype Property on the above 'Consumer Stereotype Name' containing a comma separated list of which are 'consuming' applications for the stereotyped DTO." />
       </config>
     </template>

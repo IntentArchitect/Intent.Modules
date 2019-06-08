@@ -16,7 +16,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
         private readonly IMetadataManager _metaDataManager;
 
         private string _stereotypeName = "Consumers";
-        private string _stereotypePropertyName = "CommaSeperatedList";
+        private string _stereotypePropertyName = "TypeScript";
 
         public RemoteRegistrations(IMetadataManager metaDataManager)
         {
