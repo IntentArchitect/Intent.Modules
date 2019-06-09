@@ -5,7 +5,7 @@ namespace Intent.Modules.NuGet.Installer.HelperTypes
         /// <summary>
         /// New lean format, required for use by .NET Standard and .NET Core project types.
         /// </summary>
-        Lean,
+        LeanScheme,
 
         /// <summary>
         /// The old verbose format used by .NET Framework projects, set to use newer PackageReference NuGet scheme.

@@ -15,7 +15,7 @@ namespace Intent.Modules.NuGet.Installer.Schemes
 
         public void InstallPackages(NuGetProject project, ITracing tracing)
         {
-            tracing.Debug($"Skipped processing project '{project.Project.Name}' as its type '{project.Project.ProjectType.Name}' is unsupported.");
+            tracing.Debug($"Skipped processing project '{project.ProjectName}' as its type '{project.ProjectTypeName}' is unsupported.");
         }
     }
 }

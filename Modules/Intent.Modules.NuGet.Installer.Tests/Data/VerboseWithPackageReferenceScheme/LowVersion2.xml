@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ItemGroup>
+    <PackageReference Include="TestPackage.Two">
+      <Version>1.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>

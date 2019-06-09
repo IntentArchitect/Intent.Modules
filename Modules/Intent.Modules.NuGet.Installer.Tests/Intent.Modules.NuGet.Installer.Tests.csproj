@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\LeanScheme\HighVersion1.xml" />
+    <None Remove="Data\LeanScheme\HighVersion2.xml" />
+    <None Remove="Data\LeanScheme\LowVersion1.xml" />
+    <None Remove="Data\LeanScheme\LowVersion2.xml" />
+    <None Remove="Data\VerboseWithNoScheme\csproj.xml" />
+    <None Remove="Data\VerboseWithPackageReferenceScheme\HighVersion1.xml" />
+    <None Remove="Data\VerboseWithPackageReferenceScheme\HighVersion2.xml" />
+    <None Remove="Data\VerboseWithPackageReferenceScheme\LowVersion1.xml" />
+    <None Remove="Data\VerboseWithPackageReferenceScheme\LowVersion2.xml" />
+    <None Remove="Data\VerboseWithPackagesDotConfigScheme\HighVersion1\csproj.xml" />
+    <None Remove="Data\VerboseWithPackagesDotConfigScheme\HighVersion1\packages.config" />
+    <None Remove="Data\VerboseWithPackagesDotConfigScheme\HighVersion2\csproj.xml" />
+    <None Remove="Data\VerboseWithPackagesDotConfigScheme\HighVersion2\packages.config" />
+    <None Remove="Data\VerboseWithPackagesDotConfigScheme\LowVersion1\csproj.xml" />
+    <None Remove="Data\VerboseWithPackagesDotConfigScheme\LowVersion1\packages.config" />
+    <None Remove="Data\VerboseWithPackagesDotConfigScheme\LowVersion2\csproj.xml" />
+    <None Remove="Data\VerboseWithPackagesDotConfigScheme\LowVersion2\packages.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\VerboseWithNoScheme\csproj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackageReferenceScheme\HighVersion1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackageReferenceScheme\HighVersion2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackageReferenceScheme\LowVersion1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackageReferenceScheme\LowVersion2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackagesDotConfigScheme\HighVersion1\csproj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackagesDotConfigScheme\HighVersion1\packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackagesDotConfigScheme\HighVersion2\csproj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackagesDotConfigScheme\HighVersion2\packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackagesDotConfigScheme\LowVersion1\csproj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackagesDotConfigScheme\LowVersion1\packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackagesDotConfigScheme\LowVersion2\csproj.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\VerboseWithPackagesDotConfigScheme\LowVersion2\packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\LeanScheme\HighVersion1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\LeanScheme\HighVersion2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\LeanScheme\LowVersion1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\LeanScheme\LowVersion2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="NuGet.Versioning" Version="5.1.0" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.NuGet.Installer\Intent.Modules.NuGet.Installer.csproj" />
+  </ItemGroup>
+
+</Project>

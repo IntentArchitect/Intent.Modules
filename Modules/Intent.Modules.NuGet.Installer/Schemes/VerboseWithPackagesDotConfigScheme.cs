@@ -28,15 +28,15 @@ namespace Intent.Modules.NuGet.Installer.Schemes
 
             var d = XDocument.Load(packagesDotConfigPath);
             var rootElements = d.Elements().ToArray();
-            if (rootElements.Length != 1 || rootElements.Single().Name != "Packages")
+            if (rootElements.Length != 1 || rootElements.Single().Name != "packages")
             {
-                throw new Exception($"Error reading '{packagesDotConfigPath}', expected single root element called 'Packages'");
+                throw new Exception($"Error reading '{packagesDotConfigPath}', expected single root element called 'packages'");
             }
 
             var subElements = rootElements.Single().Elements().ToArray();
-            if (subElements.Any(x => x.Name != "Package"))
+            if (subElements.Any(x => x.Name != "package"))
             {
-                throw new Exception($"Error reading '{packagesDotConfigPath}', expected all child elements to be called 'Package'");
+                throw new Exception($"Error reading '{packagesDotConfigPath}', expected all child elements to be called 'package'");
             }
 
             var nugetPackages = subElements
@@ -74,7 +74,7 @@ namespace Intent.Modules.NuGet.Installer.Schemes
             }
 
             var sb = new StringBuilder();
-            sb.AppendLine($"Installations and upgrades of NuGet packages is not supported for project {project.Project.Name}, only .csproj files using " +
+            sb.AppendLine($"Installations and upgrades of NuGet packages is not supported for project {project.ProjectName}, only .csproj files using " +
                           "PackageReferences are. Refer to https://blog.nuget.org/20180409/migrate-packages-config-to-package-reference.html for information " +
                           "on how to upgrade this existing project. You can alternatively manually install/upgrade the following packages using Visual Studio:");
             foreach (var item in installationsRequired)

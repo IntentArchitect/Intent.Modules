@@ -173,6 +173,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Electron.Ipc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.NuGet.Installer", "Intent.Modules.NuGet.Installer\Intent.Modules.NuGet.Installer.csproj", "{606BEADD-6E2B-4D00-9334-818684D070DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.NuGet.Installer.Tests", "Intent.Modules.NuGet.Installer.Tests\Intent.Modules.NuGet.Installer.Tests.csproj", "{F5097140-962E-4CD2-A778-585DC913D87A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -483,6 +485,10 @@ Global
 		{606BEADD-6E2B-4D00-9334-818684D070DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{606BEADD-6E2B-4D00-9334-818684D070DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{606BEADD-6E2B-4D00-9334-818684D070DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5097140-962E-4CD2-A778-585DC913D87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5097140-962E-4CD2-A778-585DC913D87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5097140-962E-4CD2-A778-585DC913D87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5097140-962E-4CD2-A778-585DC913D87A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -564,6 +570,7 @@ Global
 		{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{239C2D0D-6B5F-495E-9149-B66067A24635} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 		{606BEADD-6E2B-4D00-9334-818684D070DB} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
+		{F5097140-962E-4CD2-A778-585DC913D87A} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
