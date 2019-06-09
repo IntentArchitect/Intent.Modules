@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using Intent.Modules.NuGet.Installer.HelperTypes;
@@ -81,5 +82,10 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
                 actual: project.Document.ToString());
         }
 
+        [Fact]
+        public void SortsPackageReferencesInAlphabeticalOrder()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

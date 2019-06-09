@@ -18,7 +18,6 @@ namespace Intent.Modules.NuGet.Installer
 {
     public class NugetInstallerFactoryExtension : FactoryExtensionBase, IExecutionLifeCycle
     {
-        public override string Id => Identifier;
         public const string Identifier = "Intent.NugetInstaller";
         private const string SettingKeyForConsolidatePackageVersions = "Consolidate Package Versions"; // Must match the config entry in the .imodspec
         private const string SettingKeyForWarnOnMultipleVersionsOfSamePackage = "Warn On Multiple Versions of Same Package"; // Must match the config entry in the .imodspec
@@ -37,7 +36,9 @@ namespace Intent.Modules.NuGet.Installer
             };
         }
 
-        public override int Order { get; set; } = 100;
+        public override int Order => 100;
+
+        public override string Id => Identifier;
 
         public override void Configure(IDictionary<string, string> settings)
         {
@@ -99,6 +100,11 @@ namespace Intent.Modules.NuGet.Installer
 
             foreach (var projectPackage in projectPackages)
             {
+                if (projectPackage.RequestedPackages.Any())
+                {
+                    continue;
+                }
+
                 ResolveNuGetScheme(projectPackage.Type).InstallPackages(projectPackage, tracing);
                 saveDelegate(projectPackage);
             }
@@ -143,9 +149,19 @@ namespace Intent.Modules.NuGet.Installer
                     : null;
 
                 var projectType = GetProjectType(document);
-
-
                 var installedPackages = ResolveNuGetScheme(projectType).GetInstalledPackages(project, document);
+                
+                foreach (var installedPackage in installedPackages)
+                {
+                    var installedVersion = installedPackage.Value;
+                    var packageId = installedPackage.Key;
+
+                    if (!highestVersions.TryGetValue(packageId, out var highestVersion) ||
+                        highestVersion < installedVersion)
+                    {
+                        highestVersions[packageId] = installedVersion;
+                    }
+                }
 
                 var requestedPackages = project
                     .NugetPackages()
@@ -165,14 +181,12 @@ namespace Intent.Modules.NuGet.Installer
                         elementSelector: x =>
                         {
                             var requestedVersion = x.Max();
+                            var packageId = x.Key;
 
-                            if (!highestVersions.ContainsKey(x.Key))
+                            if (!highestVersions.TryGetValue(packageId, out var highestVersion) ||
+                                highestVersion < requestedVersion)
                             {
-                                highestVersions.Add(x.Key, requestedVersion);
-                            }
-                            else if (highestVersions[x.Key] < requestedVersion)
-                            {
-                                highestVersions[x.Key] = requestedVersion;
+                                highestVersions[packageId] = requestedVersion;
                             }
 
                             return requestedVersion;
@@ -224,6 +238,12 @@ namespace Intent.Modules.NuGet.Installer
                 {
                     if (projectPackage.RequestedPackages.TryGetValue(highestVersion.Key, out var requestedVersion) &&
                         requestedVersion < highestVersion.Value)
+                    {
+                        projectPackage.RequestedPackages[highestVersion.Key] = highestVersion.Value;
+                    }
+
+                    if (projectPackage.InstalledPackages.TryGetValue(highestVersion.Key, out var installedVersion) &&
+                        installedVersion < highestVersion.Value)
                     {
                         projectPackage.RequestedPackages[highestVersion.Key] = highestVersion.Value;
                     }

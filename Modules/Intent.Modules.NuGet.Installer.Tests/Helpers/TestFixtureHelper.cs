@@ -31,6 +31,8 @@ namespace Intent.Modules.NuGet.Installer.Tests.Helpers
                 loadDelegate: p => XDocument.Load(p.ProjectFile())).Projects.Single();
         }
 
+        public static Func<IProject, XDocument> LoadDelegate => p => XDocument.Load(Path.GetFullPath(p.ProjectFile()));
+
         private class ProjectImplementation : IProject
         {
             private readonly ProjectType? _projectType;
@@ -133,6 +135,20 @@ namespace Intent.Modules.NuGet.Installer.Tests.Helpers
             }
 
             return $"Data/{path}";
+        }
+
+        public static NugetInstallerFactoryExtension Configure(
+            this NugetInstallerFactoryExtension nugetInstaller,
+            bool consolidatePackageVersions,
+            bool warnOnMultipleVersionsOfSamePackage)
+        {
+            nugetInstaller.Configure(new Dictionary<string, string>
+                {
+                    { "Consolidate Package Versions", consolidatePackageVersions.ToString() },
+                    { "Warn On Multiple Versions of Same Package", warnOnMultipleVersionsOfSamePackage.ToString() }
+                });
+
+            return nugetInstaller;
         }
     }
 }

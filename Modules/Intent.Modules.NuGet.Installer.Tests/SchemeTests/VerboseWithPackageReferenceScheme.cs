@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using Intent.Modules.NuGet.Installer.HelperTypes;
@@ -5,6 +6,7 @@ using Intent.Modules.NuGet.Installer.Schemes;
 using Intent.Modules.NuGet.Installer.Tests.Helpers;
 using NuGet.Versioning;
 using Xunit;
+using static Intent.Modules.NuGet.Installer.Tests.Helpers.TestFixtureHelper;
 
 namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
 {
@@ -15,7 +17,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
         {
             // Arrange
             var sut = new VerboseWithPackageReferencesScheme();
-            var project = TestFixtureHelper.CreateProject(ProjectType.VerboseWithPackageReferenceScheme, TestVersion.Low, 1, new Dictionary<string, string>());
+            var project = CreateProject(ProjectType.VerboseWithPackageReferenceScheme, TestVersion.Low, 1, new Dictionary<string, string>());
             var doc = XDocument.Load(project.ProjectFile());
 
             // Act
@@ -35,7 +37,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
             // Arrange
             var sut = new VerboseWithPackageReferencesScheme();
             var tracing = new TestTracing();
-            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.VerboseWithPackageReferenceScheme, TestVersion.Low, 1, nugetPackagesToInstall: new Dictionary<string, string>
+            var project = CreateNuGetProject(ProjectType.VerboseWithPackageReferenceScheme, TestVersion.Low, 1, nugetPackagesToInstall: new Dictionary<string, string>
             {
                 { "PackageToInstall.Id", "1.0.0" }
             });
@@ -65,7 +67,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
             // Arrange
             var sut = new VerboseWithPackageReferencesScheme();
             var tracing = new TestTracing();
-            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.VerboseWithPackageReferenceScheme, TestVersion.Low, 1, nugetPackagesToInstall: new Dictionary<string, string>
+            var project = CreateNuGetProject(ProjectType.VerboseWithPackageReferenceScheme, TestVersion.Low, 1, nugetPackagesToInstall: new Dictionary<string, string>
             {
                 { "TestPackage.One", "3.0.0" }
             });
@@ -84,6 +86,12 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
                       </ItemGroup>
                     </Project>").ToString(),
                 actual: project.Document.ToString());
+        }
+  
+        [Fact]
+        public void SortsPackageReferencesInAlphabeticalOrder()
+        {
+            throw new NotImplementedException();
         }
     }
 }

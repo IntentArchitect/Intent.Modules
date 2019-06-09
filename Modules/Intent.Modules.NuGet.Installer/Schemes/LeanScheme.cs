@@ -61,6 +61,14 @@ namespace Intent.Modules.NuGet.Installer.Schemes
                 tracing.Info($"Upgrading {packageId} from {versionAttribute.Value} to {packageVersion} in project {project.ProjectName}");
                 versionAttribute.SetValue(packageVersion);
             }
+
+            // Remove and re-add the elements in alphabetical order
+            var packageReferenceElements = packageReferenceItemGroup.Elements();
+            foreach (var packageReferenceElement in packageReferenceElements.OrderBy(x => x.Attributes("Include").Single().Value))
+            {
+                packageReferenceElement.Remove();
+                packageReferenceItemGroup.Add(packageReferenceElement);
+            }
         }
     }
 }
