@@ -51,7 +51,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="metadata\Domain\Folders\Stereotypes.xml" />
+    <Content Include="metadata\Domain\Classes\Stereotypes.xml" />
     <Content Include="metadata\Domain\Stereotypes\Table.xml" />
     <Content Include="metadata\Domain\Stereotypes\Default Constraint.xml" />
     <Content Include="metadata\Domain\Stereotypes\Foreign Key.xml" />
