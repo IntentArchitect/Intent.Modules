@@ -12,7 +12,7 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessedFile
 {
-    public class ProjectItemTemplatePreProcessedFileRegistrations : ModelTemplateRegistrationBase<IClass>
+    public class ProjectItemTemplatePreProcessedFileRegistrations : ModelTemplateRegistrationBase<IElement>
     {
         private readonly IMetadataManager _metaDataManager;
 
@@ -23,7 +23,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessed
 
         public override string TemplateId => "Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed";
 
-        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        public override ITemplate CreateTemplateInstance(IProject project, IElement model)
         {
             return new TemplatePreProcessedFileTemplate(
                 templateId: TemplateId,
@@ -33,7 +33,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessed
                 partialTemplateId: ProjectItemTemplatePartialTemplate.TemplateId);
         }
 
-        public override IEnumerable<IClass> GetModels(IApplication applicationManager)
+        public override IEnumerable<IElement> GetModels(IApplication applicationManager)
         {
             return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => x.IsFileTemplate())

@@ -4,7 +4,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.Angular.Api
 {
-    public interface IComponentModel : IHasStereotypes, IMetaModel
+    public interface IComponentModel : IHasStereotypes, IMetadataModel
     {
         string Name { get; }
         string Comment { get; }

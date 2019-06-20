@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 
-namespace Intent.Modules.Common
+namespace Intent.Modelers.Services.Api
 {
     public static class FolderExtensions
     {
@@ -16,6 +17,20 @@ namespace Intent.Modules.Common
                 current = current.ParentFolder;
             }
             return result;
+        }
+
+        public static IStereotype GetStereotypeInFolders(this IHasFolder model, string stereotypeName)
+        {
+            var folder = model.Folder;
+            while (folder != null)
+            {
+                if (folder.HasStereotype(stereotypeName))
+                {
+                    return folder.GetStereotype(stereotypeName);
+                }
+                folder = folder.ParentFolder;
+            }
+            return null;
         }
     }
 }

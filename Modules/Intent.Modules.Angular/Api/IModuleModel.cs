@@ -6,7 +6,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.Angular.Api
 {
-    public interface IModuleModel : IHasStereotypes, IHasFolder, IMetaModel
+    public interface IModuleModel : IHasStereotypes, IMetadataModel
     {
         string Name { get; }
 

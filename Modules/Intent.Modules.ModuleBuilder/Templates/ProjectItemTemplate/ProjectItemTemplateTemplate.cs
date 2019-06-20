@@ -9,15 +9,15 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 {
-    public class ProjectItemTemplateTemplate : IntentProjectItemTemplateBase<IClass>
+    public class ProjectItemTemplateTemplate : IntentProjectItemTemplateBase<IElement>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ProjectItemTemplate.T4Template";
 
-        public ProjectItemTemplateTemplate(string templateId, IProject project, IClass model) : base(templateId, project, model)
+        public ProjectItemTemplateTemplate(string templateId, IProject project, IElement model) : base(templateId, project, model)
         {
         }
 
-        public string FolderPath => string.Join("\\", new [] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
+        public string FolderPath => string.Join("\\", new [] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
 
         public override ITemplateFileConfig DefineDefaultFileMetaData()
         {

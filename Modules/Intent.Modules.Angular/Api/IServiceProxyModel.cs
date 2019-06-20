@@ -4,7 +4,7 @@ using Intent.Modelers.Services.Api;
 
 namespace Intent.Modules.Angular.Api
 {
-    public interface IServiceProxyModel : IHasStereotypes, IMetaModel
+    public interface IServiceProxyModel : IHasStereotypes, IMetadataModel
     {
         string Name { get; }
         string Comment { get; }

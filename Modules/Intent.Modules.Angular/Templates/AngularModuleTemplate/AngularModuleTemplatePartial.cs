@@ -39,7 +39,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
                         return;
                     }
 
-                    var template = Project.FindTemplateInstance<ITemplate>(TemplateDependency.OnModel<IMetaModel>(AngularComponentTsTemplate.TemplateId, x => x.Id == @event.GetValue(AngularComponentCreatedEvent.ModelId)));
+                    var template = Project.FindTemplateInstance<ITemplate>(TemplateDependency.OnModel<IMetadataModel>(AngularComponentTsTemplate.TemplateId, x => x.Id == @event.GetValue(AngularComponentCreatedEvent.ModelId)));
                     _components.Add(new AngularComponentInfo(((IHasClassDetails)template).ClassName, template.GetMetaData().GetRelativeFilePathWithFileName()));
                 });
 
@@ -50,7 +50,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
                     return;
                 }
 
-                var template = Project.FindTemplateInstance<ITemplate>(TemplateDependency.OnModel<IMetaModel>(AngularServiceProxyTemplate.TemplateId, x => x.Id == @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
+                var template = Project.FindTemplateInstance<ITemplate>(TemplateDependency.OnModel<IMetadataModel>(AngularServiceProxyTemplate.TemplateId, x => x.Id == @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
                 _providers.Add(new AngularProviderInfo(((IHasClassDetails)template).ClassName, template.GetMetaData().GetRelativeFilePathWithFileName()));
             });
         }

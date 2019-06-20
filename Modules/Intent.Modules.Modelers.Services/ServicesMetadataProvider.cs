@@ -18,7 +18,7 @@ namespace Intent.Modelers.Services
 
         public IEnumerable<IDTOModel> GetAllDTOs()
         {
-            var classes = _metaDataManager.GetMetaData<IClass>("Services").Where(x => x.IsDTO()).ToList();
+            var classes = _metaDataManager.GetMetaData<IElement>("Services").Where(x => x.IsDTO()).ToList();
             return classes.Select(x => new DTOModel(x)).ToList();
         }
 
@@ -29,7 +29,7 @@ namespace Intent.Modelers.Services
 
         public IEnumerable<IServiceModel> GetServices(Engine.IApplication application)
         {
-            var classes = _metaDataManager.GetMetaData<IClass>("Services").Where(x => x.Application.Name == application.ApplicationName
+            var classes = _metaDataManager.GetMetaData<IElement>("Services").Where(x => x.Application.Name == application.ApplicationName
                 && x.IsService()).ToList();
             return classes.Select(x => new ServiceModel(x)).ToList();
         }
@@ -47,12 +47,12 @@ namespace Intent.Modelers.Services
             return new ServicesMetadataProvider(metadataManager).GetServices(application);
         }
 
-        public static bool IsDTO(this IClass model)
+        public static bool IsDTO(this IElement model)
         {
             return model.SpecializationType == "DTO";
         }
 
-        public static bool IsService(this IClass model)
+        public static bool IsService(this IElement model)
         {
             return model.SpecializationType == "Service";
         }

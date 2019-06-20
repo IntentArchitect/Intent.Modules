@@ -4,7 +4,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modelers.Domain.Api
 {
-    public interface IClass : IMetaModel, IHasStereotypes, IHasFolder
+    public interface IClass : IMetadataModel, IHasStereotypes, IHasFolder
     {
         string Name { get; }
 
@@ -18,7 +18,7 @@ namespace Intent.Modelers.Domain.Api
 
         bool IsMapped { get; }
 
-        IClassMapping MappedClass { get; }
+        IElementMapping MappedClass { get; }
 
         IApplication Application { get; }
 

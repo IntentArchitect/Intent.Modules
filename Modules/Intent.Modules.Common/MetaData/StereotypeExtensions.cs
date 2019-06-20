@@ -45,20 +45,6 @@ namespace Intent.Modules.Common
         {
             return model.Stereotypes.Any(x => x.Name == stereotypeName);
         }
-
-        public static IStereotype GetStereotypeInFolders(this IHasFolder model, string stereotypeName)
-        {
-            var folder = model.Folder;
-            while (folder != null)
-            {
-                if (folder.HasStereotype(stereotypeName))
-                {
-                    return folder.GetStereotype(stereotypeName);
-                }
-                folder = folder.ParentFolder;
-            }
-            return null;
-        }
     }
 
     //public static class CommonExtensions

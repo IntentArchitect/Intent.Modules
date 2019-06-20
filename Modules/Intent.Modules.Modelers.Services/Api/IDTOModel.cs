@@ -4,7 +4,7 @@ using Intent.Templates;
 
 namespace Intent.Modelers.Services.Api
 {
-    public interface IDTOModel : IMetaModel, IHasStereotypes, IHasFolder
+    public interface IDTOModel : IMetadataModel, IHasStereotypes, IHasFolder
     {
         string Name { get; }
 
@@ -12,7 +12,7 @@ namespace Intent.Modelers.Services.Api
 
         bool IsMapped { get; }
 
-        IClassMapping MappedClass { get; }
+        IElementMapping MappedClass { get; }
 
         IApplication Application { get; }
 

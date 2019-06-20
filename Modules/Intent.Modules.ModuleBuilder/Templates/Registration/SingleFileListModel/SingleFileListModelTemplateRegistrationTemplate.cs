@@ -19,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class SingleFileListModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IClass>
+    public partial class SingleFileListModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IElement>
     {
 #line hidden
         /// <summary>

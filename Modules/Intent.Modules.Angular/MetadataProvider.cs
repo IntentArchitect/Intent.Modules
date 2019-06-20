@@ -16,7 +16,7 @@ namespace Intent.Modules.Angular
 
         public IEnumerable<IModuleModel> GetModules()
         {
-            var classes = _metaDataManager.GetMetaData<Metadata.Models.IClass>("Angular").Where(x => x.SpecializationType == "Module").ToList();
+            var classes = _metaDataManager.GetMetaData<Metadata.Models.IElement>("Angular").Where(x => x.SpecializationType == "Module").ToList();
             return classes.Select(x => new ModuleModel(x)).ToList();
         }
 

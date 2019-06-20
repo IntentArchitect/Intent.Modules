@@ -5,15 +5,16 @@ namespace Intent.Modelers.Services.Api
 {
     public class ServiceModel : IServiceModel
     {
-        private readonly IClass _class;
-        public ServiceModel(IClass @class)
+        private readonly IElement _class;
+        public ServiceModel(IElement @class)
         {
             _class = @class;
+            Folder = _class.ParentElement?.SpecializationType == Api.Folder.SpecializationType ? new Folder(_class.ParentElement) : null;
         }
 
         public string Id => _class.Id;
         public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
-        public IFolder Folder => _class.Folder;
+        public IFolder Folder { get; }
         public string Name => _class.Name;
         public string ApplicationName => _class.Application.Name;
         public IApplication Application => _class.Application;

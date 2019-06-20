@@ -8,16 +8,17 @@ namespace Intent.Modelers.Domain.Api
     internal class Class : IClass, IEquatable<IClass>
     {
         private IList<IAssociationEnd> _associatedClasses;
-        private readonly Metadata.Models.IClass _class;
+        private readonly IElement _class;
         private readonly ICollection<IClass> _childClasses = new List<IClass>();
         private readonly Class _parent;
 
-        public Class(Metadata.Models.IClass @class, IDictionary<string, Class> classCache)
+        public Class(IElement @class, IDictionary<string, Class> classCache)
         {
             _class = @class;
             classCache.Add(Id, this);
-            var parent = _class.AssociatedClasses.FirstOrDefault(x =>
-                x.Association.AssociationType == Metadata.Models.AssociationType.Generalization)?.Model;
+            Folder = _class.ParentElement?.SpecializationType == Api.Folder.SpecializationType ? new Folder(_class.ParentElement) : null;
+
+            var parent = _class.AssociatedClasses.FirstOrDefault(x => x.Association.SpecializationType == "Generalization")?.Model;
             if (parent != null)
             {
                 _parent = classCache.ContainsKey(parent.Id) ? classCache[parent.Id] : new Class(parent, classCache);
@@ -33,14 +34,15 @@ namespace Intent.Modelers.Domain.Api
 
         public string Id => _class.Id;
         public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
-        public IFolder Folder => _class.Folder;
+        public IFolder Folder { get; }
         public string Name => _class.Name;
         public bool IsAbstract => _class.IsAbstract;
-        public IEnumerable<string> GenericTypes => _class.GenericTypes;
+        public IEnumerable<string> GenericTypes => _class.GenericTypes.Select(x => x.Name);
         public IClass ParentClass => _parent;
         public IEnumerable<IClass> ChildClasses => _childClasses;
         public bool IsMapped => _class.IsMapped;
-        public IClassMapping MappedClass => _class.MappedClass;
+        public string Comment => _class.Comment;
+        public IElementMapping MappedClass => _class.MappedElement;
         public IApplication Application => _class.Application;
         public IEnumerable<IAttribute> Attributes => _class.Attributes;
         public IEnumerable<IOperation> Operations => _class.Operations;
@@ -54,8 +56,6 @@ namespace Intent.Modelers.Domain.Api
         {
             get { return AssociatedClasses.Select(x => x.Association).Distinct().Where(x => Equals(x.SourceEnd.Class, this)); }
         }
-
-        public string Comment => _class.Id;
 
         public static bool operator ==(Class lhs, Class rhs)
         {

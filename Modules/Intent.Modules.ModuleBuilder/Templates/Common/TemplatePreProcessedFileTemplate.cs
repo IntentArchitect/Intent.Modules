@@ -7,7 +7,7 @@ using Mono.TextTemplating;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Common
 {
-    public class TemplatePreProcessedFileTemplate : IntentProjectItemTemplateBase<IClass>
+    public class TemplatePreProcessedFileTemplate : IntentProjectItemTemplateBase<IElement>
     {
         private readonly string _t4TemplateId;
         private readonly string _partialTemplateId;
@@ -15,7 +15,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
         public TemplatePreProcessedFileTemplate(
             string templateId,
             IProject project,
-            IClass model,
+            IElement model,
             string t4TemplateId,
             string partialTemplateId)
                 : base(templateId, project, model)

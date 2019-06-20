@@ -7,9 +7,9 @@ namespace Intent.Modules.Angular.Api
 {
     public class ComponentModel : IComponentModel, IEquatable<IComponentModel>
     {
-        private readonly IClass _class;
+        private readonly IElement _class;
 
-        public ComponentModel(IClass @class, IModuleModel module)
+        public ComponentModel(IElement @class, IModuleModel module)
         {
             _class = @class;
             Module = module;

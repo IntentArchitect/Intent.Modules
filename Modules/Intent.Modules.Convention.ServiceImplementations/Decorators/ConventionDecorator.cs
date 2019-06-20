@@ -43,7 +43,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
                 return new List<string>();
             }
 
-            var repoInterfaceTemplate = _application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IClass>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id));
+            var repoInterfaceTemplate = _application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id));
             if (repoInterfaceTemplate == null)
             {
                 return new List<string>();
@@ -64,7 +64,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
                 return new List<ConstructorParameter>();
             }
 
-            var templateDepenency = TemplateDependency.OnModel<IClass>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id);
+            var templateDepenency = TemplateDependency.OnModel<IMetadataModel>(_repositoryInterfaceTemplateId, p => p.Id == currentDomain.Id);
             var repoInterfaceTemplate = _application.FindTemplateInstance<IHasClassDetails>(templateDepenency);
             if (repoInterfaceTemplate == null)
             {

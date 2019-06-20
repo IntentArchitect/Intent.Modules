@@ -7,18 +7,17 @@ namespace Intent.Modules.Angular.Api
 {
     public class ModuleModel : IModuleModel, IEquatable<IModuleModel>
     {
-        private readonly IClass _class;
+        private readonly IElement _class;
 
-        public ModuleModel(IClass @class)
+        public ModuleModel(IElement @class)
         {
             _class = @class;
-            Components = @class.ChildClasses.Where(x => x.SpecializationType == "Component").Select(x => new ComponentModel(x, this));
-            ServiceProxies = @class.ChildClasses.Where(x => x.SpecializationType == "Service Proxy").Select(x => new ServiceProxyModel(x, this));
-            ModelDefinitions = @class.ChildClasses.Where(x => x.SpecializationType == "Model Definition").Select(x => new ModuleDTOModel(x, this));
+            Components = @class.ChildElements.Where(x => x.SpecializationType == "Component").Select(x => new ComponentModel(x, this));
+            ServiceProxies = @class.ChildElements.Where(x => x.SpecializationType == "Service Proxy").Select(x => new ServiceProxyModel(x, this));
+            ModelDefinitions = @class.ChildElements.Where(x => x.SpecializationType == "Model Definition").Select(x => new ModuleDTOModel(x, this));
         }
 
         public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
-        public IFolder Folder => _class.Folder;
         public string Id => _class.Id;
         public string Name => _class.Name;
         public IApplication Application => _class.Application;

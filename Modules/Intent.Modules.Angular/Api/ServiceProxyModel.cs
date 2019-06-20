@@ -6,13 +6,13 @@ namespace Intent.Modules.Angular.Api
 {
     public class ServiceProxyModel : IServiceProxyModel
     {
-        private readonly IClass _class;
+        private readonly IElement _class;
 
-        public ServiceProxyModel(IClass @class, IModuleModel module)
+        public ServiceProxyModel(IElement @class, IModuleModel module)
         {
             _class = @class;
             Module = module;
-            MappedService = _class.MappedClass != null ? new ServiceModel(_class.MappedClass.Class) : null;
+            MappedService = _class.MappedElement != null ? new ServiceModel(_class.MappedElement.Element) : null;
         }
 
         public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;

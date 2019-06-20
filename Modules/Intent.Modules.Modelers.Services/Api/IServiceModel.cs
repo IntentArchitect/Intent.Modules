@@ -3,7 +3,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modelers.Services.Api
 {
-    public interface IServiceModel : IMetaModel, IHasStereotypes, IHasFolder
+    public interface IServiceModel : IMetadataModel, IHasStereotypes, IHasFolder
     {
         string Name { get; }
 

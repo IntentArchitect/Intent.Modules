@@ -12,12 +12,12 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
-    public class IModSpecTemplate : IntentProjectItemTemplateBase<IEnumerable<IClass>>, IHasNugetDependencies
+    public class IModSpecTemplate : IntentProjectItemTemplateBase<IEnumerable<IElement>>, IHasNugetDependencies
     {
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
 
-        public IModSpecTemplate(string templateId, IProject project, IEnumerable<IClass> models)
+        public IModSpecTemplate(string templateId, IProject project, IEnumerable<IElement> models)
             : base(templateId, project, models)
         {
         }

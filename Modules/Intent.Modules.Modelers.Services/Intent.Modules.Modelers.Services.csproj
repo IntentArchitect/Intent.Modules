@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.0.0-pre3\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.0.0-pre5\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,7 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\DTOModel.cs" />
+    <Compile Include="Api\Folder.cs" />
+    <Compile Include="Api\FolderExtensions.cs" />
     <Compile Include="Api\IDTOModel.cs" />
+    <Compile Include="Api\IFolder.cs" />
+    <Compile Include="Api\IHasFolder.cs" />
     <Compile Include="Api\IServiceModel.cs" />
     <Compile Include="Api\ServiceModel.cs" />
     <Compile Include="ServicesMetadataProvider.cs" />
@@ -57,6 +61,12 @@
     <None Include="Intent.Modules.Modelers.Services.imodspec" />
     <None Include="modelers\Services.modeler.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
+      <Project>{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D}</Project>
+      <Name>Intent.Modules.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Intent.IntentArchitectPackager.1.9.3\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.9.3\build\Intent.IntentArchitectPackager.targets')" />

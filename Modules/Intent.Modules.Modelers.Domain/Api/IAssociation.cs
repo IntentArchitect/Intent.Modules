@@ -2,7 +2,7 @@
 
 namespace Intent.Modelers.Domain.Api
 {
-    public interface IAssociation : IMetaModel
+    public interface IAssociation : IMetadataModel
     {
         IAssociationEnd SourceEnd { get; }
 

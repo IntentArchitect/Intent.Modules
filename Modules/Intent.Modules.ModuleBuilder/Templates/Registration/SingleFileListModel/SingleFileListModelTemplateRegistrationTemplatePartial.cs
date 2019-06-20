@@ -10,16 +10,16 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListModel
 {
-    partial class SingleFileListModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IClass>
+    partial class SingleFileListModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IElement>
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel";
 
-        public SingleFileListModelTemplateRegistrationTemplate(IProject project, IClass model) : base(TemplateId, project, model)
+        public SingleFileListModelTemplateRegistrationTemplate(IProject project, IElement model) : base(TemplateId, project, model)
         {
         }
 
-        public string FolderPath => string.Join("\\", new[] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
-        public string FolderNamespace => string.Join(".", new[] { "Templates" }.Concat(Model.GetFolderPath(false).Select(x => x.Name).ToList()));
+        public string FolderPath => string.Join("\\", new[] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
+        public string FolderNamespace => string.Join(".", new[] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {

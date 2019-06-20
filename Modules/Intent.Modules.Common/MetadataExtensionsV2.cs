@@ -7,9 +7,9 @@ namespace Intent.Modules.Common
 {
     public static class MetadataExtensionsV2
     {
-        public static IEnumerable<IClass> GetClassModels(this IMetadataManager metaDataManager, Intent.Engine.IApplication application, string metadataIdentifier)
+        public static IEnumerable<IElement> GetClassModels(this IMetadataManager metaDataManager, Intent.Engine.IApplication application, string metadataIdentifier)
         {
-            return metaDataManager.GetMetaData<IClass>(metadataIdentifier).Where(x => x.Application.Name == application.ApplicationName).ToList();
+            return metaDataManager.GetMetaData<IElement>(metadataIdentifier).Where(x => x.Application.Name == application.ApplicationName).ToList();
         }
 
         //public static IEnumerable<IEnumModel> GetEnumModels(this IMetadataManager metaDataManager, IApplication application, string metadataIdentifier)

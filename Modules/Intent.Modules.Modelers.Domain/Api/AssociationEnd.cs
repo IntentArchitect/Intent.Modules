@@ -19,22 +19,21 @@ namespace Intent.Modelers.Domain.Api
         }
 
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
-        public IFolder Folder => _associationEnd.Folder;
         public string Id => _associationEnd.Id;
         public string Name => _associationEnd.Name;
         public string SpecializationType => _associationEnd.SpecializationType;
         public bool IsNullable => _associationEnd.IsNullable;
         public bool IsCollection => _associationEnd.IsCollection;
-        public Metadata.Models.IClass Model => _associationEnd.Model;
+        public Metadata.Models.IElement Model => _associationEnd.Model;
 
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
         public string Comment => _associationEnd.Comment;
         public IAssociation Association { get; }
         public IClass Class { get; }
         public bool IsNavigable => _associationEnd.IsNavigable;
-        public string MinMultiplicity => _associationEnd.MinMultiplicity;
-        public string MaxMultiplicity => _associationEnd.MaxMultiplicity;
-        public Multiplicity Multiplicity => (Multiplicity)_associationEnd.Multiplicity;
+        public string MinMultiplicity => _associationEnd.IsNullable ? "0" : "1";
+        public string MaxMultiplicity => _associationEnd.IsCollection ? "*" : "1";
+
         public IAssociationEnd OtherEnd()
         {
             return Equals(Association.TargetEnd, this) ? Association.SourceEnd : Association.TargetEnd;
@@ -43,6 +42,22 @@ namespace Intent.Modelers.Domain.Api
         public override string ToString()
         {
             return $"{Name} ({Class.Name})";
+        }
+
+        public Multiplicity Multiplicity
+        {
+            get
+            {
+                if (MinMultiplicity == "0" && MaxMultiplicity == "1")
+                {
+                    return Multiplicity.ZeroToOne;
+                }
+                if (MinMultiplicity == "1" && MaxMultiplicity == "1")
+                {
+                    return Multiplicity.One;
+                }
+                return Multiplicity.Many;
+            }
         }
 
         public static bool operator ==(AssociationEnd lhs, AssociationEnd rhs)

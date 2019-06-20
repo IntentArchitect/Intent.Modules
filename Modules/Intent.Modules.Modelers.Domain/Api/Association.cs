@@ -19,7 +19,24 @@ namespace Intent.Modelers.Domain.Api
         public string Id => _association.Id;
         public IAssociationEnd SourceEnd { get; }
         public IAssociationEnd TargetEnd { get; }
-        public AssociationType AssociationType => (AssociationType)_association.AssociationType;
+        public AssociationType AssociationType
+        {
+            get
+            {
+                switch (_association.SpecializationType.ToLower())
+                {
+                    case "composition":
+                        return AssociationType.Composition;
+                    case "aggregation":
+                        return AssociationType.Aggregation;
+                    case "generalization":
+                        return AssociationType.Generalization;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(AssociationType), $"Unable to convert association specialization type '{_association.SpecializationType}' to known association type.");
+                }
+            }
+        }
+
         public string Comment => _association.Comment;
 
         public override string ToString()

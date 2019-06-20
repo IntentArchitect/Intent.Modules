@@ -37,7 +37,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
                 typeReferences.Add(Model.ReturnType.Type);
             }
 
-            return typeReferences.Select(x => TemplateDependency.OnModel<IMetaModel>(DTOTemplate.IDENTIFIER, m => m.Id == x.Id)).ToArray();
+            return typeReferences.Select(x => TemplateDependency.OnModel<IMetadataModel>(DTOTemplate.IDENTIFIER, m => m.Id == x.Id)).ToArray();
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()

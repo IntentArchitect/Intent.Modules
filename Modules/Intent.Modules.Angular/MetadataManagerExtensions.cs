@@ -40,9 +40,9 @@ namespace Intent.Modules.Angular
                 .ToList();
         }
 
-        private static IEnumerable<IClass> GetTypeModels(ITypeReference typeReference)
+        private static IEnumerable<IElement> GetTypeModels(ITypeReference typeReference)
         {
-            var models = new List<IClass>() { typeReference.Model };
+            var models = new List<IElement>() { typeReference.Model };
             models.AddRange(typeReference.GenericTypeParameters.SelectMany(GetTypeModels));
             return models;
         }
