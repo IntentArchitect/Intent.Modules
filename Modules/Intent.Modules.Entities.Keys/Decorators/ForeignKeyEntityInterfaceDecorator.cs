@@ -16,12 +16,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
 
         public override string PropertyBefore(IAssociationEnd associationEnd)
         {
-            if (
-                (associationEnd.Multiplicity == Multiplicity.One 
-                || associationEnd.Multiplicity == Multiplicity.ZeroToOne 
-                || (associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd == associationEnd)) 
-                &&
-                associationEnd.OtherEnd().Multiplicity == Multiplicity.Many)
+            if (RequiresForeignKey(associationEnd))
             {
                 if (associationEnd.OtherEnd().HasStereotype("Foreign Key"))
                 {
@@ -40,6 +35,17 @@ namespace Intent.Modules.Entities.Keys.Decorators
             {
                 _foreignKeyType = settings[ForeignKeyType];
             }
+        }
+
+        private static bool RequiresForeignKey(IAssociationEnd associationEnd)
+        {
+            return (associationEnd.Multiplicity == Multiplicity.One
+                || associationEnd.Multiplicity == Multiplicity.ZeroToOne
+                || (associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd == associationEnd))
+                &&
+                associationEnd.OtherEnd().Multiplicity == Multiplicity.Many
+                &&
+                (associationEnd.Association.AssociationType == AssociationType.Composition || associationEnd.OtherEnd().IsNavigable);
         }
     }
 }
