@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities.Keys</id>
-  <version>1.7.0</version>
+  <version>1.7.2</version>
   <summary>Adds primary and foreign key properties to entities.</summary>
   <description>Adds primary and foreign key properties to entities. This is typically required for ORMs (Object Relational Mappers) such as Entity Framework.</description>
   <authors>Intent Architect</authors>
