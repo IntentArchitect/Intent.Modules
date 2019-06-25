@@ -14,7 +14,7 @@ namespace Intent.Modules.UserContext
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metadataManager)
         {
             RegisterTemplate(UserContextInterfaceTemplate.Identifier, project => new UserContextInterfaceTemplate(project));
             RegisterTemplate(UserContextStaticTemplate.Identifier, project => new UserContextStaticTemplate(project));

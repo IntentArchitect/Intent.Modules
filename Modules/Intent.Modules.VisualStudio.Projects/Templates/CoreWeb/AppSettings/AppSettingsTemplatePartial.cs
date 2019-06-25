@@ -28,7 +28,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
         // GCB - Given that this template is a OnceOff, I don't see the need for the LoadOrCreate. Need to double check.
         public override string RunTemplate()
         {
-            var meta = GetMetaData();
+            var meta = GetMetadata();
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var jsonObject = LoadOrCreate(fullFileName);
@@ -57,9 +57,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
                 : JsonConvert.DeserializeObject(TransformText());
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetaData(
+            return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "appsettings",

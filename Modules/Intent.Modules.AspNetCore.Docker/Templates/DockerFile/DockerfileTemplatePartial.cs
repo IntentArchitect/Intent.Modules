@@ -28,9 +28,9 @@ namespace Intent.Modules.AspNetCore.Docker.Templates.DockerFile
             };
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetaData(
+            return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: "Dockerfile",

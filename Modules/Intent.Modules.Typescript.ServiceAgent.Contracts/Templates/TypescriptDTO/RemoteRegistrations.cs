@@ -13,14 +13,14 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
     [Description("Intent Typescript ServiceAgent DTO - Remote")]
     public class RemoteRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
         private string _stereotypeName = "Consumers";
         private string _stereotypePropertyName = "TypeScript";
 
-        public RemoteRegistrations(IMetadataManager metaDataManager)
+        public RemoteRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
 
         }
 
@@ -33,10 +33,10 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override IEnumerable<IDTOModel> GetModels(IApplication application)
         {
-            var dtoModels = _metaDataManager.GetMetaData<IDTOModel>("Services").ToArray();
+            var dtoModels = _metadataManager.GetMetadata<IDTOModel>("Services").ToArray();
             if (!dtoModels.Any())
             {
-                dtoModels = _metaDataManager.GetMetaData<IDTOModel>("DTO").ToArray(); // backward compatibility
+                dtoModels = _metadataManager.GetMetadata<IDTOModel>("DTO").ToArray(); // backward compatibility
             }
 
             dtoModels = dtoModels

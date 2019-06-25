@@ -15,11 +15,11 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
     [Description("Intent Typescript ServiceAgent Proxy - Local Server")]
     public class LocalRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public LocalRegistrations(IMetadataManager metaDataManager)
+        public LocalRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => TypescriptWebApiClientServiceProxyTemplate.LocalIdentifier;
@@ -31,7 +31,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = _metaDataManager.GetServices(application);
+            var serviceModels = _metadataManager.GetServices(application);
 
             // TODO JL: Temp, filter out ones for server only, will ultimately get replaced with concept of client applications in the future
             serviceModels = serviceModels.Where(x => x.Stereotypes.All(s => s.Name != "ServerOnly"));

@@ -11,7 +11,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
 {
     public class DeleteImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
+        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             if (operationModel.Parameters.Count() != 1)
             {
@@ -38,7 +38,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
+        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             return $@"var existing{domainModel.Name} ={ (operationModel.IsAsync() ? " await" : "") } {domainModel.Name.ToPrivateMember()}Repository.FindById{ (operationModel.IsAsync() ? "Async" : "") }(id);
                 {domainModel.Name.ToPrivateMember()}Repository.Remove(existing{domainModel.Name});";

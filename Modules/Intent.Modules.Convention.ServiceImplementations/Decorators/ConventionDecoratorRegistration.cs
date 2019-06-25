@@ -10,16 +10,16 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
     {
         public override string DecoratorId => ConventionDecorator.Identifier;
 
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public ConventionDecoratorRegistration(IMetadataManager metaDataManager)
+        public ConventionDecoratorRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override ServiceImplementationDecoratorBase CreateDecoratorInstance(IApplication application)
         {
-            return new ConventionDecorator(_metaDataManager, application);
+            return new ConventionDecorator(_metadataManager, application);
         }
     }
 }

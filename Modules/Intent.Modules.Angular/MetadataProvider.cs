@@ -7,16 +7,16 @@ namespace Intent.Modules.Angular
 {
     public class MetadataProvider
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public MetadataProvider(IMetadataManager metaDataManager)
+        public MetadataProvider(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public IEnumerable<IModuleModel> GetModules()
         {
-            var classes = _metaDataManager.GetMetaData<Metadata.Models.IElement>("Angular").Where(x => x.SpecializationType == "Module").ToList();
+            var classes = _metadataManager.GetMetadata<Metadata.Models.IElement>("Angular").Where(x => x.SpecializationType == "Module").ToList();
             return classes.Select(x => new ModuleModel(x)).ToList();
         }
 

@@ -38,15 +38,15 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public void Created()
         {
-            _domainTemplateDependancyConfigValue = GetMetaData().CustomMetaData[DomainTemplateDependancyConfigId];
-            _stereotypeNameConfigValue = GetMetaData().CustomMetaData[StereotypeNameConfigId];
-            _stereotypeTypePropertyConfigValue = GetMetaData().CustomMetaData[StereotypeTypePropertyConfigId];
-            _stereotypeNamespacePropertyConfigValue = GetMetaData().CustomMetaData[StereotypeNamespacePropertyConfigId];
+            _domainTemplateDependancyConfigValue = GetMetadata().CustomMetadata[DomainTemplateDependancyConfigId];
+            _stereotypeNameConfigValue = GetMetadata().CustomMetadata[StereotypeNameConfigId];
+            _stereotypeTypePropertyConfigValue = GetMetadata().CustomMetadata[StereotypeTypePropertyConfigId];
+            _stereotypeNamespacePropertyConfigValue = GetMetadata().CustomMetadata[StereotypeNamespacePropertyConfigId];
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
@@ -56,7 +56,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public string GetContractType(IDTOModel model)
         {
-            var templateDependancy = TemplateDependency.OnModel<IDTOModel>(GetMetaData().CustomMetaData[ContractTemplateDependancyConfigId], (to) => to.Id == model.Id);
+            var templateDependancy = TemplateDependency.OnModel<IDTOModel>(GetMetadata().CustomMetadata[ContractTemplateDependancyConfigId], (to) => to.Id == model.Id);
             var templateOutput = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {
@@ -96,9 +96,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             return templateOutput.FullTypeName();
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "DtoProfile",
                 fileExtension: "cs",

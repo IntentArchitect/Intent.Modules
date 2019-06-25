@@ -3,10 +3,10 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public class DefaultFileMetaData : ITemplateFileConfig
+    public class DefaultFileMetadata : ITemplateFileConfig
     {
 
-        public DefaultFileMetaData(
+        public DefaultFileMetadata(
             OverwriteBehaviour overwriteBehaviour,
             string codeGenType,
             string fileName,
@@ -14,7 +14,7 @@ namespace Intent.Modules.Common.Templates
             string defaultLocationInProject
             )
         {
-            CustomMetaData = new Dictionary<string, string>();
+            CustomMetadata = new Dictionary<string, string>();
             CodeGenType = codeGenType;
             OverwriteBehaviour = overwriteBehaviour;
             FileName = fileName;
@@ -27,9 +27,9 @@ namespace Intent.Modules.Common.Templates
         public virtual OverwriteBehaviour OverwriteBehaviour { get; }
         public virtual string FileName { get; set; }
         public string LocationInProject { get; set; }
-        IDictionary<string, string> ITemplateFileConfig.CustomMetaData => CustomMetaData;
+        IDictionary<string, string> ITemplateFileConfig.CustomMetadata => CustomMetadata;
 
-        public virtual Dictionary<string, string> CustomMetaData { get; }
+        public virtual Dictionary<string, string> CustomMetadata { get; }
 
     }
 }

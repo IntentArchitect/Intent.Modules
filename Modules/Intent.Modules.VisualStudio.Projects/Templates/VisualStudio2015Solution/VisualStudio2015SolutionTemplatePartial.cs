@@ -18,12 +18,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
     {
         public const string Identifier = "Intent.VisualStudio.Projects.VisualStudio2015Solution";
         private readonly IApplication _application;
-        private readonly IFileMetadata _fileMetaData;
+        private readonly IFileMetadata _fileMetadata;
 
         public VisualStudio2015SolutionTemplate(IApplication application, SolutionFile existingSolution)
         {
             _application = application;
-            _fileMetaData = CreateMetaData();
+            _fileMetadata = CreateMetadata();
             Projects = _application.Projects;
             ExistingSolution = existingSolution;
             SolutionFolders = Projects.Where(x => x.SolutionFolder() != null && x.Folder.Id != application.Id)
@@ -58,7 +58,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
 
         public string RunTemplate()
         {
-            string targetFile = GetMetaData().GetFullLocationPathWithFileName();
+            string targetFile = GetMetadata().GetFullLocationPathWithFileName();
             if (!File.Exists(targetFile))
             {
                 return TransformText();
@@ -145,14 +145,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
             }
         }
 
-        public IFileMetadata GetMetaData()
+        public IFileMetadata GetMetadata()
         {
-            return _fileMetaData;
+            return _fileMetadata;
         }
 
-        private IFileMetadata CreateMetaData()
+        private IFileMetadata CreateMetadata()
         {            
-            return new SolutionFileMetaData(
+            return new SolutionFileMetadata(
                 outputType: "VisualStudio2015Solution", 
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.UserControlledWeave,

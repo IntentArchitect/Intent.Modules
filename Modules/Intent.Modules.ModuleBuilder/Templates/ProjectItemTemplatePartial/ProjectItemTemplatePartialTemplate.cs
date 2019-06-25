@@ -90,9 +90,9 @@ using System.Linq;
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetaData(
+            return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: """);

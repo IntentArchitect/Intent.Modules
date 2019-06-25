@@ -19,13 +19,13 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
     {
         public const string Identifier = "Intent.Conventions.ServiceImplementations.Decorator";
 
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
         private readonly Engine.IApplication _application;
         private string _repositoryInterfaceTemplateId;
 
-        public ConventionDecorator(IMetadataManager metaDataManager, Engine.IApplication application)
+        public ConventionDecorator(IMetadataManager metadataManager, Engine.IApplication application)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
             _application = application;
         }
 
@@ -89,13 +89,13 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
                 return string.Empty;
             }
 
-            return MethodImplementationStrategy.ImplementOnMatch(_metaDataManager, _application, currentDomain, operationModel);
+            return MethodImplementationStrategy.ImplementOnMatch(_metadataManager, _application, currentDomain, operationModel);
         }
 
         private Modelers.Domain.Api.IClass GetDomainForService(IServiceModel serviceModel)
         {
             var lowerServiceName = serviceModel.Name.ToLower();
-            var domains = _metaDataManager.GetDomainClasses(_application);
+            var domains = _metadataManager.GetDomainClasses(_application);
             return domains
                 .SingleOrDefault(p =>
                 {

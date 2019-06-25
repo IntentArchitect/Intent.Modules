@@ -15,9 +15,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
         {
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetaData(
+            return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: Project.Name,
@@ -28,7 +28,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 
         public override string RunTemplate()
         {
-            if (DefineDefaultFileMetaData().OverwriteBehaviour != OverwriteBehaviour.OnceOff)
+            if (DefineDefaultFileMetadata().OverwriteBehaviour != OverwriteBehaviour.OnceOff)
             {
                 // Unless onceOff, then on subsequent SF runs, the SF shows two outputs for the same .csproj file.
                 throw new Exception("Template must be configured with OverwriteBehaviour.OnceOff.");

@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.Templates
     public class TemplateDependency : ITemplateDependency
     {
         public string TemplateIdOrName { get; }
-        //public object MetaDataModel { get; }
+        //public object MetadataModel { get; }
         //public string ClassName { get; }
 
         private Func<ITemplate, bool> _isMatch;
@@ -15,7 +15,7 @@ namespace Intent.Modules.Common.Templates
         {
             TemplateIdOrName = templateIdOrName;
             _isMatch = isMatch;
-            //MetaDataModel = metaDataModel;
+            //MetadataModel = metadataModel;
             //ClassName = className;
         }
 
@@ -24,14 +24,14 @@ namespace Intent.Modules.Common.Templates
             return new TemplateDependency(templateIdOrName, (t) => true);
         }
 
-        public static ITemplateDependency OnModel(string templateIdOrName, object metaDataModel)
+        public static ITemplateDependency OnModel(string templateIdOrName, object metadataModel)
         {
-            return new TemplateDependency(templateIdOrName, (t) => t is ITemplateWithModel model && model.Model.Equals(metaDataModel));
+            return new TemplateDependency(templateIdOrName, (t) => t is ITemplateWithModel model && model.Model.Equals(metadataModel));
         }
 
         public static ITemplateDependency OnClassName(string templateIdOrName, string className)
         {
-            return new TemplateDependency(templateIdOrName, (t) => t.GetMetaData().CustomMetaData.ContainsKey("ClassName") && t.GetMetaData().CustomMetaData["ClassName"] == className);
+            return new TemplateDependency(templateIdOrName, (t) => t.GetMetadata().CustomMetadata.ContainsKey("ClassName") && t.GetMetadata().CustomMetadata["ClassName"] == className);
         }
 
         public static ITemplateDependency OnModel<TModel>(string templateIdOrName, Func<TModel, bool> isMatch)

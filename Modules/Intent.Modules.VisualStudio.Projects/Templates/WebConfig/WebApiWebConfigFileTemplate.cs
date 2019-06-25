@@ -59,9 +59,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
             _connectionStrings.Add(@event.GetValue("Name"), new ConnectionStringElement(name: @event.GetValue("Name"), connectionString: @event.GetValue("ConnectionString"), providerName: @event.GetValue("ProviderName")));
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetaData(
+            return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.UserControlledWeave,
                 fileName: "Web",
@@ -72,7 +72,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 
         public override string TransformText()
         {
-            var location = FileMetaData.GetFullLocationPathWithFileName();
+            var location = FileMetadata.GetFullLocationPathWithFileName();
 
             var doc = LoadOrCreateWebConfig(location);
             if (doc == null) throw new Exception("doc is null");

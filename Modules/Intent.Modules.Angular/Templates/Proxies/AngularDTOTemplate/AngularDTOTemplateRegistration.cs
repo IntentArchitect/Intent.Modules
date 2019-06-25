@@ -18,11 +18,11 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class AngularDTOTemplateRegistration : ModelTemplateRegistrationBase<IModuleDTOModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public AngularDTOTemplateRegistration(IMetadataManager metaDataManager)
+        public AngularDTOTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => AngularDTOTemplate.TemplateId;
@@ -36,7 +36,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         public override IEnumerable<IModuleDTOModel> GetModels(Engine.IApplication application)
         {
             var dtoModels = new List<IModuleDTOModel>();
-            foreach (var moduleModel in _metaDataManager.GetModules(application))
+            foreach (var moduleModel in _metadataManager.GetModules(application))
             {
                 dtoModels.AddRange(moduleModel.GetModels());
             }

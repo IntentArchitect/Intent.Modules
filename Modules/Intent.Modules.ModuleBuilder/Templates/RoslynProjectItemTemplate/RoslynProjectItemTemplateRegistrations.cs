@@ -10,11 +10,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 {
     public class RoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IElement>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public RoslynProjectItemTemplateRegistrations(IMetadataManager metaDataManager)
+        public RoslynProjectItemTemplateRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => RoslynProjectItemTemplateTemplate.TemplateId;
@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 
         public override IEnumerable<IElement> GetModels(Engine.IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
+            return _metadataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => x.IsCSharpTemplate())
                 .ToList();
         }

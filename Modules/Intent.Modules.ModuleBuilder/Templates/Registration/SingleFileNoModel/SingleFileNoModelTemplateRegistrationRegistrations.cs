@@ -10,11 +10,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
     public class SingleFileNoModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<IElement>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public SingleFileNoModelTemplateRegistrationRegistrations(IMetadataManager metaDataManager)
+        public SingleFileNoModelTemplateRegistrationRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => SingleFileNoModelTemplateRegistrationTemplate.TemplateId;
@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 
         public override IEnumerable<IElement> GetModels(Engine.IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
+            return _metadataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => (x.IsCSharpTemplate() || x.IsFileTemplate()) && x.GetRegistrationType() == RegistrationType.SingleFileNoModel)
                 .ToList();
         }

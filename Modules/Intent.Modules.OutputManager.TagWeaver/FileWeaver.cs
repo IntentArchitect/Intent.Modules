@@ -12,13 +12,13 @@ namespace Intent.Modules.OutputManager.TagWeaver
     {
         private readonly ISoftwareFactoryEventDispatcher _eventDispatcher;
         public IProject Project { get; }
-        public IFileMetadata FileMetaData { get; }
+        public IFileMetadata FileMetadata { get; }
 
-        public FileWeaver(ISoftwareFactoryEventDispatcher eventDispatcher, IProject project, IFileMetadata fileMetaData)
+        public FileWeaver(ISoftwareFactoryEventDispatcher eventDispatcher, IProject project, IFileMetadata fileMetadata)
         {
             _eventDispatcher = eventDispatcher;
             this.Project = project;
-            this.FileMetaData = fileMetaData;
+            this.FileMetadata = fileMetadata;
         }
 
 
@@ -80,7 +80,7 @@ namespace Intent.Modules.OutputManager.TagWeaver
                     {
                         _eventDispatcher.Publish(SoftwareFactoryEvents.CodeWeaveCodeLossEvent, new Dictionary<string, string>
                                         {
-                                            {"FullFileName", this.FileMetaData.GetFullLocationPathWithFileName()}
+                                            {"FullFileName", this.FileMetadata.GetFullLocationPathWithFileName()}
                                         });
                         if (catchToken == null)
                         {

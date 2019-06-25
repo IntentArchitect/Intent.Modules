@@ -15,11 +15,11 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
     [Description(EFMappingTemplate.Identifier)]
     public class EFMappingTemplateRegistration : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public EFMappingTemplateRegistration(IMetadataManager metaDataManager)
+        public EFMappingTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => EFMappingTemplate.Identifier;
@@ -31,7 +31,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetDomainClasses(application).ToList();
+            return _metadataManager.GetDomainClasses(application).ToList();
         }
     }
 }

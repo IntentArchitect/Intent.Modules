@@ -15,14 +15,14 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
     [Description("Intent Applications Contracts DTO")]
     public class DtoRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly ServicesMetadataProvider _metaDataManager;
+        private readonly ServicesMetadataProvider _metadataManager;
 
         private string _stereotypeName = "Consumers";
         private string _stereotypePropertyName = "CSharp";
 
-        public DtoRegistrations(ServicesMetadataProvider metaDataManager)
+        public DtoRegistrations(ServicesMetadataProvider metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => TemplateIds.ClientDto;
@@ -34,7 +34,7 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
 
         public override IEnumerable<IDTOModel> GetModels(IApplication application)
         {
-            var dtoModels = _metaDataManager.GetAllDTOs();
+            var dtoModels = _metadataManager.GetAllDTOs();
 
             return dtoModels
                 .Where(x => x.GetConsumers(_stereotypeName, _stereotypePropertyName).Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))

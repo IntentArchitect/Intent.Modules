@@ -13,7 +13,7 @@ namespace Intent.Modules.AspNet.WebApi
         {
         }
 
-        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metadataManager)
         {
             RegisterTemplate(RequireHttpsMiddlewareTemplate.Identifier, project => new RequireHttpsMiddlewareTemplate(project));
 

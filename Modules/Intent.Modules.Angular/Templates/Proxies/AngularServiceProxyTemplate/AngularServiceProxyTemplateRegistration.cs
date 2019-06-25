@@ -18,11 +18,11 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class AngularServiceProxyTemplateRegistration : ModelTemplateRegistrationBase<IServiceProxyModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public AngularServiceProxyTemplateRegistration(IMetadataManager metaDataManager)
+        public AngularServiceProxyTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => AngularServiceProxyTemplate.TemplateId;
@@ -35,7 +35,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<IServiceProxyModel> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetModules(application).SelectMany(x => x.ServiceProxies).ToList();
+            return _metadataManager.GetModules(application).SelectMany(x => x.ServiceProxies).ToList();
         }
     }
 }

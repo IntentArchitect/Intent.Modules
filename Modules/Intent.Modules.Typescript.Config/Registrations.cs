@@ -8,7 +8,7 @@ namespace Intent.Modules.Typescript.Config
 {
     public class Registrations : OldProjectTemplateRegistration
     {
-        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metadataManager)
         {
             RegisterTemplate(TypescriptConfigFileTemplate.Identifier, project => new TypescriptConfigFileTemplate(project));
             RegisterTemplate(TypescriptDefinitelyTypedReferencesTemplate.Identifier, project => new TypescriptDefinitelyTypedReferencesTemplate(project));

@@ -15,11 +15,11 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
     [Description("Intent Typescript ServiceAgent DTO - Local")]
     public class LocalRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public LocalRegistrations(IMetadataManager metaDataManager)
+        public LocalRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
 
         }
 
@@ -32,7 +32,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override IEnumerable<IDTOModel> GetModels(Engine.IApplication application)
         {
-            var dtoModels = _metaDataManager.GetDTOs(application);
+            var dtoModels = _metadataManager.GetDTOs(application);
 
             // TODO JL: Temp, filter out ones for server only, will ultimately get replaced with concept of client applications in the future
             dtoModels = dtoModels.Where(x => x.Stereotypes.All(s => s.Name != "ServerOnly") && !FolderOrParentFolderHasStereoType(x.Folder, "ServerOnly"));

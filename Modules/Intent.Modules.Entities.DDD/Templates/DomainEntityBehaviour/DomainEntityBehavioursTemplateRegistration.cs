@@ -14,11 +14,11 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
     [Description(DomainEntityBehavioursTemplate.Identifier)]
     public class DomainEntityBehavioursTemplateRegistration : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public DomainEntityBehavioursTemplateRegistration(IMetadataManager metaDataManager)
+        public DomainEntityBehavioursTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => DomainEntityBehavioursTemplate.Identifier;
@@ -30,7 +30,7 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetDomainClasses(application);
+            return _metadataManager.GetDomainClasses(application);
         }
     }
 }

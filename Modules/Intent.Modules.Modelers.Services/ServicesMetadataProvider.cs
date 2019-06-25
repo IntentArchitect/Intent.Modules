@@ -9,16 +9,16 @@ namespace Intent.Modelers.Services
 {
     public class ServicesMetadataProvider
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public ServicesMetadataProvider(IMetadataManager metaDataManager)
+        public ServicesMetadataProvider(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public IEnumerable<IDTOModel> GetAllDTOs()
         {
-            var classes = _metaDataManager.GetMetaData<IElement>("Services").Where(x => x.IsDTO()).ToList();
+            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.IsDTO()).ToList();
             return classes.Select(x => new DTOModel(x)).ToList();
         }
 
@@ -29,7 +29,7 @@ namespace Intent.Modelers.Services
 
         public IEnumerable<IServiceModel> GetServices(Engine.IApplication application)
         {
-            var classes = _metaDataManager.GetMetaData<IElement>("Services").Where(x => x.Application.Name == application.ApplicationName
+            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Name == application.ApplicationName
                 && x.IsService()).ToList();
             return classes.Select(x => new ServiceModel(x)).ToList();
         }

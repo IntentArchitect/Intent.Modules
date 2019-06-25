@@ -24,16 +24,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
             _partialTemplateId = partialTemplateId;
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            var metadata = new DefaultFileMetaData(
+            var metadata = new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "cs",
                 defaultLocationInProject: "Templates/${Model.Name}");
 
-            metadata.CustomMetaData.Add("Depends On", "${Model.Name}.tt");
+            metadata.CustomMetadata.Add("Depends On", "${Model.Name}.tt");
 
             return metadata;
         }
@@ -42,13 +42,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
         {
             var t4TemplateInstance = Project.FindTemplateInstance(_t4TemplateId, Model);
             var partialTemplateInstance = Project.FindTemplateInstance(_partialTemplateId, Model);
-            var partialTemplateMetadata = partialTemplateInstance.GetMetaData();
+            var partialTemplateMetadata = partialTemplateInstance.GetMetadata();
             var templateGenerator = new TemplateGenerator();
 
             templateGenerator.PreprocessTemplate(
                 inputFileName: string.Empty,
-                className: partialTemplateMetadata.CustomMetaData["ClassName"],
-                classNamespace: partialTemplateMetadata.CustomMetaData["Namespace"],
+                className: partialTemplateMetadata.CustomMetadata["ClassName"],
+                classNamespace: partialTemplateMetadata.CustomMetadata["Namespace"],
                 inputContent: t4TemplateInstance.RunTemplate(),
                 language: out _,
                 references: out _,

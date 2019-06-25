@@ -3,10 +3,10 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public class BasicFileMetaData : IFileMetadata
+    public class BasicFileMetadata : IFileMetadata
     {
 
-        public BasicFileMetaData(
+        public BasicFileMetadata(
             string fileName,
             string fileExtension,
             OverwriteBehaviour overwriteBehaviour,
@@ -32,7 +32,7 @@ namespace Intent.Modules.Common.Templates
             OverwriteBehaviour = overwriteBehaviour;
             FullLocationPath = fullLocationPath;
             RelativeFilePath = relativeFilePath;
-            CustomMetaData = new Dictionary<string, string>();
+            CustomMetadata = new Dictionary<string, string>();
         }
 
         public string CodeGenType { get; }
@@ -43,7 +43,7 @@ namespace Intent.Modules.Common.Templates
         public OverwriteBehaviour OverwriteBehaviour { get; }
         public string FullLocationPath { get; }
         public string RelativeFilePath { get; }
-        public IDictionary<string, string> CustomMetaData { get; }
+        public IDictionary<string, string> CustomMetadata { get; }
 
         public string GetFullLocationPath()
         {

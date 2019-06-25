@@ -8,18 +8,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
     public class IModSpecRegistrations : IProjectTemplateRegistration
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public IModSpecRegistrations(IMetadataManager metaDataManager)
+        public IModSpecRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public string TemplateId => IModSpecTemplate.TemplateId;
 
         public void DoRegistration(ITemplateInstanceRegistry registery, Engine.IApplication applicationManager)
         {
-            var model = _metaDataManager.GetClassModels(applicationManager, "Module Builder").ToArray();
+            var model = _metadataManager.GetClassModels(applicationManager, "Module Builder").ToArray();
             registery.Register(TemplateId, project => new IModSpecTemplate(TemplateId, project, model));
         }
     }

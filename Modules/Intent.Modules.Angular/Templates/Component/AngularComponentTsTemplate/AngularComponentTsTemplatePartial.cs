@@ -45,7 +45,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         {
             Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.TemplateId, "{0}[]"));
 
-            if (File.Exists(GetMetaData().GetFullLocationPathWithFileName()))
+            if (File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
             {
                 return;
             }
@@ -61,7 +61,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 
         public override string RunTemplate()
         {
-            var meta = GetMetaData();
+            var meta = GetMetadata();
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
@@ -97,7 +97,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                     continue;
                 }
 
-                editor.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetaData().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetaData().GetRelativeFilePathWithFileName())); // Temporary replacement until 1.9 changes are merged.
+                editor.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetadata().GetRelativeFilePathWithFileName())); // Temporary replacement until 1.9 changes are merged.
             }
 
             return editor.GetSource();
@@ -109,10 +109,10 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override TypescriptDefaultFileMetaData DefineTypescriptDefaultFileMetaData()
+        protected override TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata()
         {
             var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
-            return new TypescriptDefaultFileMetaData(
+            return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToAngularFileName()}.component",

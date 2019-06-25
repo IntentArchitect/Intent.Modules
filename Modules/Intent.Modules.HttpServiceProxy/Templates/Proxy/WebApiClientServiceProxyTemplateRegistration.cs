@@ -15,11 +15,11 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
     [Description(WebApiClientServiceProxyTemplate.IDENTIFIER)]
     public class WebApiClientServiceProxyTemplateRegistration : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public WebApiClientServiceProxyTemplateRegistration(IMetadataManager metaDataManager)
+        public WebApiClientServiceProxyTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => WebApiClientServiceProxyTemplate.IDENTIFIER;
@@ -31,7 +31,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            var results = _metaDataManager.GetMetaData<IServiceModel>("Services")
+            var results = _metadataManager.GetMetadata<IServiceModel>("Services")
                 .Where(x => x.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Any(y => y.Trim().Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
 

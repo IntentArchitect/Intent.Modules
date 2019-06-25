@@ -17,7 +17,7 @@ namespace Intent.Modules.Common.Templates
         public TModel Model { get; }
         public IProject Project { get; }
         public ITemplateContext Context { get; }
-        public IFileMetadata FileMetaData { get; private set; }
+        public IFileMetadata FileMetadata { get; private set; }
 
         //public virtual string DependencyUsings => this.ResolveAllUsings(Project);
 
@@ -29,21 +29,21 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        public void ConfigureFileMetaData(IFileMetadata fileMetaData)
+        public void ConfigureFileMetadata(IFileMetadata fileMetadata)
         {
-            FileMetaData = fileMetaData;
+            FileMetadata = fileMetadata;
         }
 
-        public abstract ITemplateFileConfig DefineDefaultFileMetaData();
+        public abstract ITemplateFileConfig DefineDefaultFileMetadata();
 
         public virtual string RunTemplate()
         {
             return TransformText();
         }
 
-        public IFileMetadata GetMetaData()
+        public IFileMetadata GetMetadata()
         {
-            return FileMetaData;
+            return FileMetadata;
         }
     }
 

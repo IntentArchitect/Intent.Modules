@@ -14,11 +14,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessed
 {
     public class ProjectItemTemplatePreProcessedFileRegistrations : ModelTemplateRegistrationBase<IElement>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public ProjectItemTemplatePreProcessedFileRegistrations(IMetadataManager metaDataManager)
+        public ProjectItemTemplatePreProcessedFileRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => "Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed";
@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessed
 
         public override IEnumerable<IElement> GetModels(IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
+            return _metadataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => x.IsFileTemplate())
                 .ToList();
         }

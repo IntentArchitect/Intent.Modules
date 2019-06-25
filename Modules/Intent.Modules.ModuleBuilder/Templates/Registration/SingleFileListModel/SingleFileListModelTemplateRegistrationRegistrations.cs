@@ -11,11 +11,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
 {
     public class SingleFileListModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<IElement>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public SingleFileListModelTemplateRegistrationRegistrations(IMetadataManager metaDataManager)
+        public SingleFileListModelTemplateRegistrationRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => SingleFileListModelTemplateRegistrationTemplate.TemplateId;
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
 
         public override IEnumerable<IElement> GetModels(Engine.IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
+            return _metadataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => (x.IsCSharpTemplate() || x.IsFileTemplate()) && x.GetRegistrationType() == RegistrationType.SingleFileListModel)
                 .ToList();
         }

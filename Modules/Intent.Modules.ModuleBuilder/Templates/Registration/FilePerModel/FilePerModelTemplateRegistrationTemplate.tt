@@ -17,28 +17,28 @@ using Intent.Templates;
 
 namespace <#= Namespace #>
 {
-	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class <#= ClassName #> : ModelTemplateRegistrationBase<<#= Model.GetTargetModel() #>>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public <#= ClassName #>(IMetadataManager metaDataManager)
+        public <#= ClassName #>(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
 
         public override ITemplate CreateTemplateInstance(IProject project, <#= Model.GetTargetModel() #> model)
         {
-			return new <#= GetTemplateNameForTemplateId() #>(project, model);
+            return new <#= GetTemplateNameForTemplateId() #>(project, model);
         }
 
-	    [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<<#= Model.GetTargetModel() #>> GetModels(Engine.IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == "Service") for services only)
-            return _metaDataManager.GetClassModels(application, "<#= Model.GetModelerName() #>"); 
+            return _metadataManager.GetClassModels(application, "<#= Model.GetModelerName() #>"); 
         }
     }
 }

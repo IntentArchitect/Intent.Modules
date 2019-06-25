@@ -17,11 +17,11 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class AngularModuleTemplateRegistration : ModelTemplateRegistrationBase<IModuleModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public AngularModuleTemplateRegistration(IMetadataManager metaDataManager)
+        public AngularModuleTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => AngularModuleTemplate.TemplateId;
@@ -34,7 +34,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<IModuleModel> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetModules(application);
+            return _metadataManager.GetModules(application);
         }
     }
 }

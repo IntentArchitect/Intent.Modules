@@ -15,11 +15,11 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
     [Description(DbContextTemplate.Identifier)]
     public class DbContextTemplateRegistration : ListModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public DbContextTemplateRegistration(IMetadataManager metaDataManager)
+        public DbContextTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => DbContextTemplate.Identifier;
@@ -31,7 +31,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public override IList<IClass> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetDomainClasses(application).ToList();
+            return _metadataManager.GetDomainClasses(application).ToList();
         }
     }
 }

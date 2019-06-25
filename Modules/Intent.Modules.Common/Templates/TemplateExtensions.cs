@@ -15,9 +15,9 @@ namespace Intent.Modules.Common.Templates
             var usings = template
                 .GetAllTemplateDependancies()
                     .SelectMany(project.FindTemplateInstances<ITemplate>)
-                    .Where(ti => ti != null && ti.GetMetaData().CustomMetaData.ContainsKey("Namespace"))
+                    .Where(ti => ti != null && ti.GetMetadata().CustomMetadata.ContainsKey("Namespace"))
                     .ToList()
-                    .Select(x => x.GetMetaData().CustomMetaData["Namespace"])
+                    .Select(x => x.GetMetadata().CustomMetadata["Namespace"])
                 .Union(template.GetAllDeclareUsing())
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Except(namespacesToIgnore)
@@ -26,7 +26,7 @@ namespace Intent.Modules.Common.Templates
 
             foreach (var @using in usings.Where(x => x != FixUsing(x)))
             {
-                Logging.Log.Warning($"When resolving usings for Template Id [{template.Id}] file [{template.GetMetaData().FileName}], " +
+                Logging.Log.Warning($"When resolving usings for Template Id [{template.Id}] file [{template.GetMetadata().FileName}], " +
                                     $"a using arrived with with the format [{@using}], but should have been in the format " +
                                     $"[{FixUsing(@using)}]. The module and/or decorator author should update this module.");
             }

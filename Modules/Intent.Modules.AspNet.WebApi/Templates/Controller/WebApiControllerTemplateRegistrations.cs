@@ -15,11 +15,11 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
     [Description(WebApiControllerTemplate.Identifier)]
     public class WebApiControllerTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public WebApiControllerTemplateRegistrations(IMetadataManager metaDataManager)
+        public WebApiControllerTemplateRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => WebApiControllerTemplate.Identifier;
@@ -31,7 +31,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetServices(application);
+            return _metadataManager.GetServices(application);
         }
     }
 }

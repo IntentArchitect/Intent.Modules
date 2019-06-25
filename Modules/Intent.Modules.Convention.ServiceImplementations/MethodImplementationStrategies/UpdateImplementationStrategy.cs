@@ -13,7 +13,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
 {
     public class UpdateImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
+        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             if (operationModel.Parameters.Count() != 2)
             {
@@ -42,19 +42,19 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
+        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             var idParam = operationModel.Parameters.First(p => string.Equals(p.Name, "id", StringComparison.OrdinalIgnoreCase));
             var dtoParam = operationModel.Parameters.First(p => !string.Equals(p.Name, "id", StringComparison.OrdinalIgnoreCase));
 
             return $@"var existing{domainModel.Name} ={ (operationModel.IsAsync() ? " await" : "") } {domainModel.Name.ToPrivateMember()}Repository.FindById{ (operationModel.IsAsync() ? "Async" : "") }({idParam.Name});
-                {EmitPropertyAssignments(metaDataManager, application, domainModel, "existing"+ domainModel.Name, dtoParam)}";
+                {EmitPropertyAssignments(metadataManager, application, domainModel, "existing"+ domainModel.Name, dtoParam)}";
         }
 
-        private string EmitPropertyAssignments(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, string domainVarName, IOperationParameter operationParameterModel)
+        private string EmitPropertyAssignments(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, string domainVarName, IOperationParameter operationParameterModel)
         {
             var sb = new StringBuilder();
-            var dto = metaDataManager.GetDTOs(application).First(p => p.Id == operationParameterModel.Type.Id);
+            var dto = metadataManager.GetDTOs(application).First(p => p.Id == operationParameterModel.Type.Id);
             foreach (var domainAttribute in domainModel.Attributes)
             {
                 var dtoField = dto.Fields.FirstOrDefault(p => p.Name.Equals(domainAttribute.Name, StringComparison.OrdinalIgnoreCase));

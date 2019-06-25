@@ -14,11 +14,11 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
     [Description(ServiceContractTemplate.IDENTIFIER)]
     public class ServiceContractTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly ServicesMetadataProvider _metaDataManager;
+        private readonly ServicesMetadataProvider _metadataManager;
 
-        public ServiceContractTemplateRegistrations(ServicesMetadataProvider metaDataManager)
+        public ServiceContractTemplateRegistrations(ServicesMetadataProvider metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => ServiceContractTemplate.IDENTIFIER;
@@ -30,7 +30,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         public override IEnumerable<IServiceModel> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetServices(application);
+            return _metadataManager.GetServices(application);
         }
     }
 }

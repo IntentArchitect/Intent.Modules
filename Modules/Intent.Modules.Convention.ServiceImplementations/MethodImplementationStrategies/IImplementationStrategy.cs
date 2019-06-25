@@ -7,7 +7,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
 {
     public interface IImplementationStrategy
     {
-        bool Match(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel);
-        string GetImplementation(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel);
+        bool Match(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel);
+        string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel);
     }
 }

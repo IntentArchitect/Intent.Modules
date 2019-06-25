@@ -35,7 +35,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             get
             {
                 string angularModule;
-                if (GetMetaData().CustomMetaData.TryGetValue("AngularModule", out angularModule))
+                if (GetMetadata().CustomMetadata.TryGetValue("AngularModule", out angularModule))
                 {
                     return angularModule;
                 }
@@ -43,9 +43,9 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             }
         }
 
-        protected override TypescriptDefaultFileMetaData DefineTypescriptDefaultFileMetaData()
+        protected override TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetaData(
+            return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}Proxy",

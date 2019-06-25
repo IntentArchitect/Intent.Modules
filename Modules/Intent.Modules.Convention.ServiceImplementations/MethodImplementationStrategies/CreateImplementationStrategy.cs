@@ -11,7 +11,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
 {
     public class CreateImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
+        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             if (operationModel.Parameters.Count() != 1)
             {
@@ -35,20 +35,20 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
+        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
         {
             return $@"var new{domainModel.Name} = new {domainModel.Name}
                 {{
-{EmitPropertyAssignments(metaDataManager, application, domainModel, operationModel.Parameters.First())}
+{EmitPropertyAssignments(metadataManager, application, domainModel, operationModel.Parameters.First())}
                 }};
                 
                 {domainModel.Name.ToPrivateMember()}Repository.Add(new{domainModel.Name});";
         }
 
-        private string EmitPropertyAssignments(IMetadataManager metaDataManager, Engine.IApplication application, IClass domainModel, IOperationParameter operationParameterModel)
+        private string EmitPropertyAssignments(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperationParameter operationParameterModel)
         {
             var sb = new StringBuilder();
-            var dto = metaDataManager.GetDTOs(application).First(p => p.Id == operationParameterModel.Type.Id);
+            var dto = metadataManager.GetDTOs(application).First(p => p.Id == operationParameterModel.Type.Id);
             foreach (var domainAttribute in domainModel.Attributes)
             {
                 var dtoField = dto.Fields.FirstOrDefault(p => p.Name.Equals(domainAttribute.Name, StringComparison.OrdinalIgnoreCase));

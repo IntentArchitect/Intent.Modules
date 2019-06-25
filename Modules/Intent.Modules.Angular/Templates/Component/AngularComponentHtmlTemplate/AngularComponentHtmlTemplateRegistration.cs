@@ -17,11 +17,11 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class AngularComponentHtmlTemplateRegistration : ModelTemplateRegistrationBase<IComponentModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public AngularComponentHtmlTemplateRegistration(IMetadataManager metaDataManager)
+        public AngularComponentHtmlTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => AngularComponentHtmlTemplate.TemplateId;
@@ -34,7 +34,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<IComponentModel> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetModules(application).SelectMany(x => x.Components);
+            return _metadataManager.GetModules(application).SelectMany(x => x.Components);
         }
     }
 }

@@ -36,21 +36,21 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
             var entity = Project.FindTemplateInstance(DomainEntityTemplate.Identifier, Model);
 
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}State",
                 fileExtension: "cs",
                 defaultLocationInProject: "Domain",
                 className: "${Model.Name}",
                 @namespace: "${Project.ProjectName}",
-                dependsUpon: entity?.GetMetaData().FileNameWithExtension()
+                dependsUpon: entity?.GetMetadata().FileNameWithExtension()
                 );
         }
 

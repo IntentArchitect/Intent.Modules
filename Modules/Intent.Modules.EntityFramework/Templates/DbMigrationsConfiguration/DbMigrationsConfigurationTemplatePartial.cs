@@ -31,9 +31,9 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 
         public string DbContextVariableName => "dbContext";
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Project.ApplicationName()}DbContextConfiguration".Replace(".", string.Empty),
                 fileExtension: "cs",
@@ -50,7 +50,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 
         public void Created()
         {
-            var fileMetaData = GetMetaData();
+            var fileMetadata = GetMetadata();
             _dbContextDependancy = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
         }
 
@@ -80,7 +80,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
     }

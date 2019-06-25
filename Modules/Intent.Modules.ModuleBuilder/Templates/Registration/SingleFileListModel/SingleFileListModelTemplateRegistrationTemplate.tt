@@ -20,11 +20,11 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class <#= ClassName #> : ListModelTemplateRegistrationBase<<#= Model.GetTargetModel() #>>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public <#= ClassName #>(IMetadataManager metaDataManager)
+        public <#= ClassName #>(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
@@ -38,7 +38,7 @@ namespace <#= Namespace #>
         public override IList<<#= Model.GetTargetModel() #>> GetModels(Engine.IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == "Service") for services only)
-            return _metaDataManager.GetClassModels(application, "<#= Model.GetModelerName() #>")
+            return _metadataManager.GetClassModels(application, "<#= Model.GetModelerName() #>")
                 .OrderBy(x => x.Name)
                 .ToList();
         }

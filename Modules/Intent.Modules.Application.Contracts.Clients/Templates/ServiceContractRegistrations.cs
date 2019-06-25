@@ -13,14 +13,14 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
     [Description("Intent Applications Service Contracts (Clients)")]
     public class ServiceContractRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
         private string _stereotypeName = "Consumers";
         private string _stereotypePropertyName = "CSharp";
 
-        public ServiceContractRegistrations(IMetadataManager metaDataManager)
+        public ServiceContractRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => TemplateIds.ClientServiceContract;
@@ -32,10 +32,10 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = _metaDataManager.GetMetaData<IServiceModel>("Services").ToArray();
+            var serviceModels = _metadataManager.GetMetadata<IServiceModel>("Services").ToArray();
             if (!serviceModels.Any())
             {
-                serviceModels = _metaDataManager.GetMetaData<IServiceModel>("Service").ToArray(); // backward compatibility
+                serviceModels = _metadataManager.GetMetadata<IServiceModel>("Service").ToArray(); // backward compatibility
             }
 
             return serviceModels

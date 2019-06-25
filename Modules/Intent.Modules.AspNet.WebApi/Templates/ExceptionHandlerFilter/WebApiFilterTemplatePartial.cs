@@ -20,7 +20,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
         public IEnumerable<string> DeclareUsings()
@@ -33,9 +33,9 @@ namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
             };
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "ExceptionHandlerFilter",
                 fileExtension: "cs",

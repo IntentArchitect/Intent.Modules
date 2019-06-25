@@ -14,11 +14,11 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
     [Description("Intent Applications Contract Mapping Profile Template")]
     public class MappingProfileTemplateRegistrations : ListModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly ServicesMetadataProvider _metaDataManager;
+        private readonly ServicesMetadataProvider _metadataManager;
 
-        public MappingProfileTemplateRegistrations(ServicesMetadataProvider metaDataManager)
+        public MappingProfileTemplateRegistrations(ServicesMetadataProvider metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
 
             FilterExpression = "model.MappedClass != null";
         }
@@ -32,7 +32,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public override IList<IDTOModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetDTOs(application).ToList();
+            return _metadataManager.GetDTOs(application).ToList();
         }
     }
 }

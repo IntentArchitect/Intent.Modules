@@ -9,12 +9,12 @@ namespace Intent.SoftwareFactory.Templates
 {
     public class RoslynMergeConfig
     {
-        public TemplateMetaData TemplateMetaData { get; }
+        public TemplateMetadata TemplateMetadata { get; }
         public ITemplateMigration[] Migrations { get; }
 
-        public RoslynMergeConfig(TemplateMetaData templateMetaData, params ITemplateMigration[] migrations)
+        public RoslynMergeConfig(TemplateMetadata templateMetadata, params ITemplateMigration[] migrations)
         {
-            TemplateMetaData = templateMetaData;
+            TemplateMetadata = templateMetadata;
             Migrations = migrations;
         }
     }

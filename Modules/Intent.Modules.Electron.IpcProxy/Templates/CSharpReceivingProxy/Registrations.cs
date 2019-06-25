@@ -12,11 +12,11 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
     [Description(CSharpIpcReceivingProxyTemplate.Identifier)]
     public class Registrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public Registrations(IMetadataManager metaDataManager)
+        public Registrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => CSharpIpcReceivingProxyTemplate.Identifier;
@@ -28,7 +28,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
 
         public override IEnumerable<IServiceModel> GetModels(IApplication applicationManager)
         {
-            return _metaDataManager
+            return _metadataManager
                 .GetServices(applicationManager)
                 .Where(x => x.Stereotypes.Any(y => y.Name == "IpcService"))
                 .ToList();

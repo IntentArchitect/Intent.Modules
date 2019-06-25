@@ -66,7 +66,7 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n        private readonly IMetadataManager _metaDataManager;\r\n\r\n        " +
+            this.Write(">\r\n    {\r\n        private readonly IMetadataManager _metadataManager;\r\n\r\n        " +
                     "public ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
@@ -74,8 +74,8 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write("(IMetadataManager metaDataManager)\r\n        {\r\n            _metaDataManager = met" +
-                    "aDataManager;\r\n        }\r\n\r\n        public override string TemplateId =>  ");
+            this.Write("(IMetadataManager metadataManager)\r\n        {\r\n            _metadataManager = met" +
+                    "adataManager;\r\n        }\r\n\r\n        public override string TemplateId =>  ");
             
             #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
@@ -108,7 +108,7 @@ using Intent.Templates;
             this.Write(@"> GetModels(Engine.IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == ""Service"") for services only)
-            return _metaDataManager.GetClassModels(application, """);
+            return _metadataManager.GetClassModels(application, """);
             
             #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelerName()));

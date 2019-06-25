@@ -31,7 +31,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
         public IEnumerable<IAssemblyReference> GetAssemblyDependencies()
@@ -61,9 +61,9 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
                 : "";
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}",
                 fileExtension: "cs",
@@ -92,7 +92,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         //{
         //    string value;
 
-        //    return GetMetaData().CustomMetaData.TryGetValue("Namespace", out value)
+        //    return GetMetadata().CustomMetadata.TryGetValue("Namespace", out value)
         //        ? value
         //        : FolderBasedNamespace;
         //}
@@ -107,7 +107,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         private string GetCollectionTypeFormatConfig()
         {
-            var format = FileMetaData.CustomMetaData["Collection Type Format"];
+            var format = FileMetadata.CustomMetadata["Collection Type Format"];
             if (string.IsNullOrEmpty(format))
             {
                 throw new Exception("Collection Type Format not specified in module configuration");

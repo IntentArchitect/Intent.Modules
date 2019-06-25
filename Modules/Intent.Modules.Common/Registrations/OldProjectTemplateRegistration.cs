@@ -17,6 +17,6 @@ namespace Intent.Modules.Common.Registrations
             RegisterDecoratorNonGeneric(id, typeof(TDecorator), decorator);
         }
 
-        public abstract void RegisterStuff(IApplication application, IMetadataManager metaDataManager);
+        public abstract void RegisterStuff(IApplication application, IMetadataManager metadataManager);
     }
 }

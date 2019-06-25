@@ -60,7 +60,7 @@ namespace Intent.Modules.Common.Types.FactoryExtensions
                 else
                 {
                     requireTypeResolver.Types =
-                        _typeResolverFactoryRepository.GetTypeResolver(templateInstance.GetMetaData())
+                        _typeResolverFactoryRepository.GetTypeResolver(templateInstance.GetMetadata())
                         .Create();
                 }
             }

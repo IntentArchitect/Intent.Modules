@@ -16,12 +16,12 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
     [Description(RepositoryTemplate.Identifier)]
     public class RepositoryTemplateRegistration : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
         private IEnumerable<string> _stereotypeNames;
 
-        public RepositoryTemplateRegistration(IMetadataManager metaDataManager)
+        public RepositoryTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => RepositoryTemplate.Identifier;
@@ -41,7 +41,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            var allModels = _metaDataManager.GetDomainClasses(application);
+            var allModels = _metadataManager.GetDomainClasses(application);
             var filteredModels = allModels.Where(p => _stereotypeNames.Any(p.HasStereotype));
 
             if (!filteredModels.Any())

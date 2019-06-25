@@ -20,9 +20,9 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public string ApplicationName => Model.Application.Name;
 
-        protected override TypescriptDefaultFileMetaData DefineTypescriptDefaultFileMetaData()
+        protected override TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetaData(
+            return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: Model.Name,

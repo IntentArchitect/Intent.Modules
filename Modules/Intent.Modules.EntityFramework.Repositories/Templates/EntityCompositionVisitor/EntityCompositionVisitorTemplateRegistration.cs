@@ -18,11 +18,11 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
     [Description(EntityCompositionVisitorTemplate.Identifier)]
     public class EntityCompositionVisitorTemplateRegistration : ListModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public EntityCompositionVisitorTemplateRegistration(IMetadataManager metaDataManager)
+        public EntityCompositionVisitorTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => EntityCompositionVisitorTemplate.Identifier;
@@ -34,7 +34,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
 
         public override IList<IClass> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetDomainClasses(application).ToList();
+            return _metadataManager.GetDomainClasses(application).ToList();
         }
     }
 }

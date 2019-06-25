@@ -19,12 +19,12 @@ namespace Intent.Modules.Entities.Keys.Templates.IdentityGenerator
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, new TemplateVersion(1, 0)));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "IdentityGenerator",
                 fileExtension: "cs",

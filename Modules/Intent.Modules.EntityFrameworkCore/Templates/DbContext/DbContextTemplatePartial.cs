@@ -31,18 +31,18 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public string GetEntityName(IClass model)
         {
-            var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == model.Id));
+            var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == model.Id));
             return template != null ? NormalizeNamespace($"{template.ClassName}") : $"{model.Name}";
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Project.Application.ApplicationName}DbContext".AsClassName(),
                 fileExtension: "cs",
@@ -86,7 +86,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
             });
         }
 
-        public bool UseLazyLoadingProxies => !bool.TryParse(GetMetaData().CustomMetaData["Use Lazy-Loading Proxies"], out var useLazyLoadingProxies) || useLazyLoadingProxies;
+        public bool UseLazyLoadingProxies => !bool.TryParse(GetMetadata().CustomMetadata["Use Lazy-Loading Proxies"], out var useLazyLoadingProxies) || useLazyLoadingProxies;
 
         public void AddDecorator(DbContextDecoratorBase decorator)
         {
@@ -112,12 +112,12 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return Model.Select(x => TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
+            return Model.Select(x => TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
         }
 
         private string GetDbContextDbServerSetupMethodName()
         {
-            var dbContextDbServerName = GetMetaData().CustomMetaData["DbContext DbServer Setup"];
+            var dbContextDbServerName = GetMetadata().CustomMetadata["DbContext DbServer Setup"];
             return dbContextDbServerName;
         }
     }

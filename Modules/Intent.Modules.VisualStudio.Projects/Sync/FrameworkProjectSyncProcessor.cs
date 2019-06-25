@@ -481,9 +481,9 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                     var child = new XElement(XName.Get(data.Key, _namespace.NamespaceName)) { Value = data.Value };
                     projectItem.Add(child);
                 }
-                foreach (var userAddedMetaData in children.Where(x => metadata.All(y => XName.Get(y.Key, _namespace.NamespaceName) != x.Name)))
+                foreach (var userAddedMetadata in children.Where(x => metadata.All(y => XName.Get(y.Key, _namespace.NamespaceName) != x.Name)))
                 {
-                    var child = new XElement(userAddedMetaData.Name) { Value = userAddedMetaData.Value };
+                    var child = new XElement(userAddedMetadata.Name) { Value = userAddedMetadata.Value };
                     projectItem.Add(child);
                 }
             }

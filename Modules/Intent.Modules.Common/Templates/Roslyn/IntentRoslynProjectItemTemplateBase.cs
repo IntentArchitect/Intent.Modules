@@ -24,9 +24,9 @@ namespace Intent.Modules.Common.Templates
         {
             get
             {
-                if (FileMetaData.CustomMetaData.ContainsKey("Namespace"))
+                if (FileMetadata.CustomMetadata.ContainsKey("Namespace"))
                 {
-                    return FileMetaData.CustomMetaData["Namespace"];
+                    return FileMetadata.CustomMetadata["Namespace"];
                 }
                 return this.Project.Name;
             }
@@ -36,11 +36,11 @@ namespace Intent.Modules.Common.Templates
         {
             get
             {
-                if (FileMetaData.CustomMetaData.ContainsKey("ClassName"))
+                if (FileMetadata.CustomMetadata.ContainsKey("ClassName"))
                 {
-                    return FileMetaData.CustomMetaData["ClassName"].AsClassName();
+                    return FileMetadata.CustomMetadata["ClassName"].AsClassName();
                 }
-                return FileMetaData.FileName.AsClassName();
+                return FileMetadata.FileName.AsClassName();
             }
         }
 
@@ -181,12 +181,12 @@ namespace Intent.Modules.Common.Templates
 
         public abstract RoslynMergeConfig ConfigureRoslynMerger();
 
-        public sealed override ITemplateFileConfig DefineDefaultFileMetaData()
+        public sealed override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return DefineRoslynDefaultFileMetaData();
+            return DefineRoslynDefaultFileMetadata();
         }
 
-        protected abstract RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData();
+        protected abstract RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata();
 
         public virtual string DependencyUsings => this.ResolveAllUsings(Project, namespacesToIgnore: Namespace);
 

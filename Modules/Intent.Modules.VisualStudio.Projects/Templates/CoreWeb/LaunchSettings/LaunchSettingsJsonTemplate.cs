@@ -38,7 +38,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
         public override string TransformText()
         {
             dynamic config;
-            if (!File.Exists(GetMetaData().GetFullLocationPathWithFileName()))
+            if (!File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
             {
                 var randomPort = new Random().Next(40000, 65535);
                 config = JsonConvert.DeserializeObject(JsonConvert.SerializeObject(new LaunchSettingsJson()
@@ -85,7 +85,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
             }
             else
             {
-                var existingFileContent = File.ReadAllText(GetMetaData().GetFullLocationPathWithFileName());
+                var existingFileContent = File.ReadAllText(GetMetadata().GetFullLocationPathWithFileName());
                 config = JsonConvert.DeserializeObject(existingFileContent, new JsonSerializerSettings());
             }
 
@@ -113,9 +113,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
             });
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetaData(
+            return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "launchsettings",

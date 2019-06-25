@@ -20,9 +20,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
         {
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetaData(
+            return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: Project.Name,
@@ -33,7 +33,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
 
         public override string TransformText()
         {
-            var meta = GetMetaData();
+            var meta = GetMetadata();
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var doc = LoadOrCreate(fullFileName);
@@ -123,19 +123,19 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
             return group;
         }
 
-        private static void AddItem(ProjectItemGroupElement itemGroup, string groupName, string item, IEnumerable<KeyValuePair<string, string>> metaData)
+        private static void AddItem(ProjectItemGroupElement itemGroup, string groupName, string item, IEnumerable<KeyValuePair<string, string>> metadata)
         {
-            itemGroup.AddItem(groupName, item, metaData);
+            itemGroup.AddItem(groupName, item, metadata);
         }
 
         private static void AddReference(ProjectItemGroupElement itemGroup, IAssemblyReference reference)
         {
-            var metaData = new List<KeyValuePair<string, string>>();
+            var metadata = new List<KeyValuePair<string, string>>();
             if (reference.HasHintPath())
             {
-                metaData.Add(new KeyValuePair<string, string>("HintPath", reference.HintPath));
+                metadata.Add(new KeyValuePair<string, string>("HintPath", reference.HintPath));
             }
-            AddItem(itemGroup, "Reference", reference.Library, metaData);
+            AddItem(itemGroup, "Reference", reference.Library, metadata);
         }
     }
 }

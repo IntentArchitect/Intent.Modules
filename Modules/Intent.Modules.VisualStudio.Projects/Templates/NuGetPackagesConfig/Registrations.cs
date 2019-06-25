@@ -14,11 +14,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.NuGetPackagesConfig
     [Description("NuGet Packages Config - VS Projects")]
     public class Registrations : IProjectTemplateRegistration
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public Registrations(IMetadataManager metaDataManager)
+        public Registrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public string TemplateId => NuGetPackagesConfigTemplate.Identifier;

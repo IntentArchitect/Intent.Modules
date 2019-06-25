@@ -5,11 +5,11 @@ using System.IO;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
 {
-    public class SolutionFileMetaData : IFileMetadata
+    public class SolutionFileMetadata : IFileMetadata
     {
         private readonly string _fileLocation;
 
-        public SolutionFileMetaData(
+        public SolutionFileMetadata(
             string outputType,
             OverwriteBehaviour overwriteBehaviour,
             string codeGenType,
@@ -21,7 +21,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
             OverwriteBehaviour = overwriteBehaviour;
             FileName = fileName;
             CodeGenType = codeGenType;
-            CustomMetaData = new Dictionary<string, string>();
+            CustomMetadata = new Dictionary<string, string>();
         }
 
         public string CodeGenType { get; }
@@ -31,7 +31,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
         public string LocationInProject { get; set; } = "";
         public string FileExtension => "sln";
         public string DependsUpon => null;
-        public IDictionary<string, string> CustomMetaData { get; }
+        public IDictionary<string, string> CustomMetadata { get; }
 
         public string GetFullLocationPath()
         {

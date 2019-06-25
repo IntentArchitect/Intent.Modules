@@ -51,8 +51,8 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n   " +
-                    " public class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n" +
+                    "    public class ");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
@@ -66,7 +66,7 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n        private readonly IMetadataManager _metaDataManager;\r\n\r\n        " +
+            this.Write(">\r\n    {\r\n        private readonly IMetadataManager _metadataManager;\r\n\r\n        " +
                     "public ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
@@ -74,8 +74,8 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write("(IMetadataManager metaDataManager)\r\n        {\r\n            _metaDataManager = met" +
-                    "aDataManager;\r\n        }\r\n\r\n        public override string TemplateId =>  ");
+            this.Write("(IMetadataManager metadataManager)\r\n        {\r\n            _metadataManager = met" +
+                    "adataManager;\r\n        }\r\n\r\n        public override string TemplateId =>  ");
             
             #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
@@ -90,15 +90,15 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write(" model)\r\n        {\r\n\t\t\treturn new ");
+            this.Write(" model)\r\n        {\r\n            return new ");
             
             #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default
             #line hidden
-            this.Write("(project, model);\r\n        }\r\n\r\n\t    [IntentManaged(Mode.Merge, Body = Mode.Ignor" +
-                    "e, Signature = Mode.Fully)]\r\n        public override IEnumerable<");
+            this.Write("(project, model);\r\n        }\r\n\r\n        [IntentManaged(Mode.Merge, Body = Mode.Ig" +
+                    "nore, Signature = Mode.Fully)]\r\n        public override IEnumerable<");
             
             #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetTargetModel()));
@@ -108,7 +108,7 @@ using Intent.Templates;
             this.Write(@"> GetModels(Engine.IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == ""Service"") for services only)
-            return _metaDataManager.GetClassModels(application, """);
+            return _metadataManager.GetClassModels(application, """);
             
             #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelerName()));

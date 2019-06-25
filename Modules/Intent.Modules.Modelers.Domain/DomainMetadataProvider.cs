@@ -7,17 +7,17 @@ namespace Intent.Modelers.Domain
 {
     public class DomainMetadataProvider
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public DomainMetadataProvider(IMetadataManager metaDataManager)
+        public DomainMetadataProvider(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public IEnumerable<IClass> GetClasses()
         {
             var cache = new Dictionary<string, Class>();
-            var classes = _metaDataManager.GetMetaData<Metadata.Models.IElement>("Domain").Where(x => x.SpecializationType == "Class").ToList();
+            var classes = _metadataManager.GetMetadata<Metadata.Models.IElement>("Domain").Where(x => x.SpecializationType == "Class").ToList();
             var result = classes.Select(x => cache.ContainsKey(x.Id) ? cache[x.Id] : new Class(x, cache)).ToList();
             return result;
         }

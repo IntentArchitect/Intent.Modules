@@ -20,9 +20,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.NodeJSProjectFile
         {
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetaData(
+            return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: Project.Name,
@@ -33,7 +33,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.NodeJSProjectFile
 
         public override string TransformText()
         {
-            var meta = GetMetaData();
+            var meta = GetMetadata();
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var doc = LoadOrCreate(fullFileName);

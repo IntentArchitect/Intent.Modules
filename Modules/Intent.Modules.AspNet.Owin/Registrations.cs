@@ -7,7 +7,7 @@ namespace Intent.Modules.AspNet.Owin
 {
     public class Registrations : OldProjectTemplateRegistration
     {
-        public override void RegisterStuff(IApplication application, IMetadataManager metaDataManager)
+        public override void RegisterStuff(IApplication application, IMetadataManager metadataManager)
         {
             RegisterTemplate(OwinStartupTemplate.Identifier, project => new OwinStartupTemplate(project));
         }

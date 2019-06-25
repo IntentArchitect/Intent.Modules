@@ -28,7 +28,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
 
         public void Created()
         {
-            _domainTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetaData().CustomMetaData["Entity Template Id"], (to) => to.Id == Model.Id);
+            _domainTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
@@ -55,7 +55,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             {
                 string useForeignKeysString;
                 bool useForeignKeys;
-                if (GetMetaData().CustomMetaData.TryGetValue("Use Foreign Keys", out useForeignKeysString) && bool.TryParse(useForeignKeysString, out useForeignKeys))
+                if (GetMetadata().CustomMetadata.TryGetValue("Use Foreign Keys", out useForeignKeysString) && bool.TryParse(useForeignKeysString, out useForeignKeys))
                 {
                     return useForeignKeys;
                 }
@@ -69,7 +69,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             {
                 string useForeignKeysString;
                 bool useForeignKeys;
-                if (GetMetaData().CustomMetaData.TryGetValue("Implicit Surrogate Key", out useForeignKeysString) && bool.TryParse(useForeignKeysString, out useForeignKeys))
+                if (GetMetadata().CustomMetadata.TryGetValue("Implicit Surrogate Key", out useForeignKeysString) && bool.TryParse(useForeignKeysString, out useForeignKeys))
                 {
                     return useForeignKeys;
                 }
@@ -79,12 +79,12 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name}Mapping",
                 fileExtension: "cs",

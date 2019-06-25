@@ -10,11 +10,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 {
     public class ProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IElement>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public ProjectItemTemplateRegistrations(IMetadataManager metaDataManager)
+        public ProjectItemTemplateRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => ProjectItemTemplateTemplate.TemplateId;
@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         public override IEnumerable<IElement> GetModels(Engine.IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
+            return _metadataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => x.IsFileTemplate())
                 .ToList();
         }

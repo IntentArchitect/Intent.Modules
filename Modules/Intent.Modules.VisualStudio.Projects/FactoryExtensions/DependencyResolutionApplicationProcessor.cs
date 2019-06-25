@@ -43,7 +43,7 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
 
             foreach (var project in application.Projects)
             {
-                project.InitializeVSMetaData();
+                project.InitializeVSMetadata();
                 // 1. Identify project dependencies.
                 var p = project.TemplateInstances.Select(x => new { x, deps = x.GetAllTemplateDependancies().ToList() }).Where(x => x.deps.Any()).ToList();
 

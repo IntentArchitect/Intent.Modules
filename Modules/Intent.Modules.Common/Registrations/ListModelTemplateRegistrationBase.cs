@@ -17,7 +17,7 @@ namespace Intent.Modules.Common.Registrations
         public abstract string TemplateId { get; }
         public abstract ITemplate CreateTemplateInstance(IProject project, IList<TModel> models);
         public abstract IList<TModel> GetModels(IApplication applicationManager);
-        public string MetaDataIdentifier { get; set; }
+        public string MetadataIdentifier { get; set; }
 
         public string FilterExpression
         {
@@ -86,7 +86,7 @@ namespace Intent.Modules.Common.Registrations
         public virtual void Configure(IDictionary<string, string> settings)
         {
             settings.SetIfSupplied("DataFilter", (s) => FilterExpression = s);
-            settings.SetIfSupplied("MetaDataIdentifier", (s) => MetaDataIdentifier = s);
+            settings.SetIfSupplied("MetadataIdentifier", (s) => MetadataIdentifier = s);
         }
     }
 }

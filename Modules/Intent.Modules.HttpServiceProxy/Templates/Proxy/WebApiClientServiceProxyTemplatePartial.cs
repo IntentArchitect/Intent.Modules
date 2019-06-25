@@ -32,21 +32,21 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         public void Created()
         {
-            _serviceContractTemplateId = GetMetaData().CustomMetaData[SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY];
-            _httpClientServiceInterfaceTemplateId = GetMetaData().CustomMetaData[HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
-            _dtoTemplateId = GetMetaData().CustomMetaData[DTO_TEMPLATE_ID_CONFIG_KEY];
+            _serviceContractTemplateId = GetMetadata().CustomMetadata[SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY];
+            _httpClientServiceInterfaceTemplateId = GetMetadata().CustomMetadata[HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
+            _dtoTemplateId = GetMetadata().CustomMetadata[DTO_TEMPLATE_ID_CONFIG_KEY];
             Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
 
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name}WebApiClientProxy",
                 fileExtension: "cs",

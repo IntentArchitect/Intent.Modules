@@ -29,9 +29,9 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
 
         public string DbContextVariableName => "dbContext";
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Project.ApplicationName()}DbContextConfiguration".Replace(".", string.Empty),
                 fileExtension: "cs",
@@ -51,7 +51,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
             var dbContextTemplate = Project.FindTemplateInstance(DbContextTemplate.Identifier);
             if (dbContextTemplate != null)
             {
-                return _dbContextName = dbContextTemplate.GetMetaData().FileName;
+                return _dbContextName = dbContextTemplate.GetMetadata().FileName;
             }
 
             _log.Warning($"{Identifier} - Could not find template with creates DbContext's name, default used instead.");
@@ -135,7 +135,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
         public IEnumerable<IMigrationSeedDecorator> GetDecorators()

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Intent.SoftwareFactory.Templates
 {
-    public class TemplateMetaData
+    public class TemplateMetadata
     {
         public string TemplateId { get; }
         public TemplateVersion Version { get; }
 
-        public TemplateMetaData(string templateId, TemplateVersion version)
+        public TemplateMetadata(string templateId, TemplateVersion version)
         {
             TemplateId = templateId;
             Version = version;

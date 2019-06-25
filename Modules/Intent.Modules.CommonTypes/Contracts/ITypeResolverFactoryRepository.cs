@@ -8,6 +8,6 @@ namespace Intent.Modules.Common.Types.Contracts
     {
         IEnumerable<ITypeResolverFactory> TypeResolvers { get; }
 
-        ITypeResolverFactory GetTypeResolver(IFileMetadata meta);
+        ITypeResolverFactory GetTypeResolver(IFileMetadata metadata);
     }
 }

@@ -32,7 +32,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         {
             Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.AngularDTOTemplate.TemplateId, "{0}[]"));
 
-            if (File.Exists(GetMetaData().GetFullLocationPathWithFileName()))
+            if (File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
             {
                 return;
             }
@@ -48,7 +48,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         public override string RunTemplate()
         {
-            var meta = GetMetaData();
+            var meta = GetMetadata();
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
@@ -83,7 +83,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                     continue;
                 }
 
-                editor.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetaData().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetaData().GetRelativeFilePathWithFileName())); // Temporary replacement until 1.9 changes are merged.
+                editor.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetadata().GetRelativeFilePathWithFileName())); // Temporary replacement until 1.9 changes are merged.
             }
 
 
@@ -134,9 +134,9 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override TypescriptDefaultFileMetaData DefineTypescriptDefaultFileMetaData()
+        protected override TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetaData(
+            return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name.ToAngularFileName()}.service",

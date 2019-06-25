@@ -10,11 +10,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 {
     public class ProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<IElement>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public ProjectItemTemplatePartialRegistrations(IMetadataManager metaDataManager)
+        public ProjectItemTemplatePartialRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => ProjectItemTemplatePartialTemplate.TemplateId;
@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 
         public override IEnumerable<IElement> GetModels(Engine.IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
+            return _metadataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => x.IsFileTemplate())
                 .ToList();
         }

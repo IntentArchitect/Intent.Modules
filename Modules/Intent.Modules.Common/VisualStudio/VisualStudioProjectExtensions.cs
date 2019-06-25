@@ -9,16 +9,16 @@ namespace Intent.Modules.Common.VisualStudio
         private const string NUGET_PACKAGES = "VS.NugetPackages";
         private const string REFERENCES = "VS.References";
 
-        public static void InitializeVSMetaData(this IProject project)
+        public static void InitializeVSMetadata(this IProject project)
         {
-            project.MetaData[NUGET_PACKAGES] = new List<INugetPackageInfo>();
-            project.MetaData[DEPENDENCIES] = new List<IProject>();
-            project.MetaData[REFERENCES] = new List<IAssemblyReference>();
+            project.Metadata[NUGET_PACKAGES] = new List<INugetPackageInfo>();
+            project.Metadata[DEPENDENCIES] = new List<IProject>();
+            project.Metadata[REFERENCES] = new List<IAssemblyReference>();
         }
 
         public static IList<IProject> Dependencies(this IProject project)
         {
-            return project.MetaData[DEPENDENCIES] as IList<IProject>;
+            return project.Metadata[DEPENDENCIES] as IList<IProject>;
         }
 
         public static void AddDependency(this IProject project, IProject dependency)
@@ -46,7 +46,7 @@ namespace Intent.Modules.Common.VisualStudio
 
         public static List<INugetPackageInfo> NugetPackages(this IProject project)
         {
-            return project.MetaData[NUGET_PACKAGES] as List<INugetPackageInfo>;
+            return project.Metadata[NUGET_PACKAGES] as List<INugetPackageInfo>;
         }
 
         /*
@@ -60,7 +60,7 @@ namespace Intent.Modules.Common.VisualStudio
 
         public static IList<IAssemblyReference> References(this IProject project)
         {
-            return project.MetaData[REFERENCES] as IList<IAssemblyReference>;
+            return project.Metadata[REFERENCES] as IList<IAssemblyReference>;
         }
 
 

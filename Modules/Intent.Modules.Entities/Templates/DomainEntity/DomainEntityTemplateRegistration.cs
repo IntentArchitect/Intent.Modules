@@ -14,11 +14,11 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
     [Description(DomainEntityTemplate.Identifier)]
     public class DomainEntityTemplateRegistration : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public DomainEntityTemplateRegistration(IMetadataManager metaDataManager)
+        public DomainEntityTemplateRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => DomainEntityTemplate.Identifier;
@@ -30,7 +30,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetDomainClasses(application);
+            return _metadataManager.GetDomainClasses(application);
         }
     }
 }

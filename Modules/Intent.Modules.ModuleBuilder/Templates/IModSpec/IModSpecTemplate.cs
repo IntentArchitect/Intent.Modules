@@ -22,9 +22,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetaData(
+            return new DefaultFileMetadata(
                 OverwriteBehaviour.Always,
                 CodeGenType.Basic,
                 "${Project.ProjectName}",
@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public override string TransformText()
         {
-            var location = FileMetaData.GetFullLocationPathWithFileName();
+            var location = FileMetadata.GetFullLocationPathWithFileName();
 
             var doc = LoadOrCreateImodSpecFile(location);
 

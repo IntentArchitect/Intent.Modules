@@ -15,11 +15,11 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
     [Description("Intent Typescript ServiceAgent Proxy - Other Servers")]
     public class RemoteRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly IMetadataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public RemoteRegistrations(IMetadataManager metaDataManager)
+        public RemoteRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => TypescriptWebApiClientServiceProxyTemplate.RemoteIdentifier;
@@ -31,7 +31,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = _metaDataManager.GetMetaData<IServiceModel>("Services");
+            var serviceModels = _metadataManager.GetMetadata<IServiceModel>("Services");
 
             serviceModels = serviceModels
                 .Where(x => GetConsumers(x).Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))

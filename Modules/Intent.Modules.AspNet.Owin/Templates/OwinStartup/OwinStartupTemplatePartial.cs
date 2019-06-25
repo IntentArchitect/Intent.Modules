@@ -42,7 +42,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
@@ -56,9 +56,9 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
             .ToArray();
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "Startup",
                 fileExtension: "cs",

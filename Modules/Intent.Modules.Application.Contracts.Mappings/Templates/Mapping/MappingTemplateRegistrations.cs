@@ -11,11 +11,11 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
     [Description(MappingTemplate.Identifier)]
     public class MappingTemplateRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly ServicesMetadataProvider _metaDataManager;
+        private readonly ServicesMetadataProvider _metadataManager;
 
-        public MappingTemplateRegistrations(ServicesMetadataProvider metaDataManager)
+        public MappingTemplateRegistrations(ServicesMetadataProvider metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
 
             FilterExpression = "model.MappedClass != null";
         }
@@ -29,7 +29,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 
         public override IEnumerable<IDTOModel> GetModels(IApplication application)
         {
-            return _metaDataManager.GetDTOs(application);
+            return _metadataManager.GetDTOs(application);
         }
     }
 }

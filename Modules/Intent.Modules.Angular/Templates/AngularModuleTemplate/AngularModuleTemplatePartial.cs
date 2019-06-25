@@ -40,7 +40,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
                     }
 
                     var template = Project.FindTemplateInstance<ITemplate>(TemplateDependency.OnModel<IMetadataModel>(AngularComponentTsTemplate.TemplateId, x => x.Id == @event.GetValue(AngularComponentCreatedEvent.ModelId)));
-                    _components.Add(new AngularComponentInfo(((IHasClassDetails)template).ClassName, template.GetMetaData().GetRelativeFilePathWithFileName()));
+                    _components.Add(new AngularComponentInfo(((IHasClassDetails)template).ClassName, template.GetMetadata().GetRelativeFilePathWithFileName()));
                 });
 
             project.Application.EventDispatcher.Subscribe(AngularServiceProxyCreatedEvent.EventId, @event =>
@@ -51,7 +51,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
                 }
 
                 var template = Project.FindTemplateInstance<ITemplate>(TemplateDependency.OnModel<IMetadataModel>(AngularServiceProxyTemplate.TemplateId, x => x.Id == @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
-                _providers.Add(new AngularProviderInfo(((IHasClassDetails)template).ClassName, template.GetMetaData().GetRelativeFilePathWithFileName()));
+                _providers.Add(new AngularProviderInfo(((IHasClassDetails)template).ClassName, template.GetMetadata().GetRelativeFilePathWithFileName()));
             });
         }
 
@@ -59,20 +59,20 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
 
         public override string RunTemplate()
         {
-            var meta = GetMetaData();
+            var meta = GetMetadata();
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
             var editor = new TypescriptFileEditor(source);
             foreach (var componentInfo in _components)
             {
-                editor.AddImportIfNotExists(componentInfo.ComponentName, GetMetaData().GetRelativeFilePathWithFileName().GetRelativePath(componentInfo.Location));
+                editor.AddImportIfNotExists(componentInfo.ComponentName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(componentInfo.Location));
                 editor.AddDeclarationIfNotExists(componentInfo.ComponentName);
             }
 
             foreach (var providerInfo in _providers)
             {
-                editor.AddImportIfNotExists(providerInfo.ProviderName, GetMetaData().GetRelativeFilePathWithFileName().GetRelativePath(providerInfo.Location));
+                editor.AddImportIfNotExists(providerInfo.ProviderName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(providerInfo.Location));
                 editor.AddProviderIfNotExists(providerInfo.ProviderName);
             }
 
@@ -85,9 +85,9 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetaData(
+            return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ModuleName.ToAngularFileName()}.module",

@@ -19,7 +19,7 @@ namespace Intent.Modules.Unity.Templates.UnityServiceProvider
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
         public void BeforeTemplateExecution()
@@ -33,9 +33,9 @@ namespace Intent.Modules.Unity.Templates.UnityServiceProvider
             });
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"UnityServiceProvider",
                 fileExtension: "cs",

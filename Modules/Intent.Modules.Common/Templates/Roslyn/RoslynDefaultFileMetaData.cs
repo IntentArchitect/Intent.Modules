@@ -3,10 +3,10 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public class RoslynDefaultFileMetaData : DefaultFileMetaData
+    public class RoslynDefaultFileMetadata : DefaultFileMetadata
     {
         [Obsolete("use the one with namespace and classname ans specify them, upgrade template to bind to ClassName and Namespace")]
-        public RoslynDefaultFileMetaData(
+        public RoslynDefaultFileMetadata(
                     OverwriteBehaviour overwriteBehaviour,
                     string fileName,
                     string fileExtension,
@@ -14,10 +14,10 @@ namespace Intent.Modules.Common.Templates
                     )
             : this(overwriteBehaviour, fileName, fileExtension, defaultLocationInProject, null, null, null)
         {
-            this.CustomMetaData["Namespace"] = "${Project.ProjectName}";
+            this.CustomMetadata["Namespace"] = "${Project.ProjectName}";
         }
 
-        public RoslynDefaultFileMetaData(
+        public RoslynDefaultFileMetadata(
                     OverwriteBehaviour overwriteBehaviour,
                     string fileName,
                     string fileExtension,
@@ -30,23 +30,23 @@ namespace Intent.Modules.Common.Templates
         {
             if (!string.IsNullOrWhiteSpace(className))
             {
-                this.CustomMetaData["ClassName"] = className;
+                this.CustomMetadata["ClassName"] = className;
             }
             if (!string.IsNullOrWhiteSpace(@namespace))
             {
-                this.CustomMetaData["Namespace"] = @namespace;
+                this.CustomMetadata["Namespace"] = @namespace;
             }
             if (!string.IsNullOrWhiteSpace(dependsUpon))
             {
-                this.CustomMetaData["Depends On"] = dependsUpon;
+                this.CustomMetadata["Depends On"] = dependsUpon;
                 /*
                 if (!string.IsNullOrWhiteSpace(defaultLocationInProject))
                 {
-                    this.CustomMetaData["Depends On"] = defaultLocationInProject + "/" + dependsUpon;
+                    this.CustomMetadata["Depends On"] = defaultLocationInProject + "/" + dependsUpon;
                 }
                 else
                 {
-                    this.CustomMetaData["Depends On"] = dependsUpon;
+                    this.CustomMetadata["Depends On"] = dependsUpon;
                 }*/
             }
         }

@@ -13,9 +13,9 @@ namespace Intent.Modules.Common.Templates
         {
             get
             {
-                if (FileMetaData.CustomMetaData.ContainsKey("Namespace"))
+                if (FileMetadata.CustomMetadata.ContainsKey("Namespace"))
                 {
-                    return FileMetaData.CustomMetaData["Namespace"];
+                    return FileMetadata.CustomMetadata["Namespace"];
                 }
                 return this.Project.Name;
             }
@@ -25,27 +25,27 @@ namespace Intent.Modules.Common.Templates
         {
             get
             {
-                if (FileMetaData.CustomMetaData.ContainsKey("ClassName"))
+                if (FileMetadata.CustomMetadata.ContainsKey("ClassName"))
                 {
-                    return FileMetaData.CustomMetaData["ClassName"];
+                    return FileMetadata.CustomMetadata["ClassName"];
                 }
-                return FileMetaData.FileName;
+                return FileMetadata.FileName;
             }
         }
 
-        public string Location => FileMetaData.LocationInProject;
+        public string Location => FileMetadata.LocationInProject;
 
-        public sealed override ITemplateFileConfig DefineDefaultFileMetaData()
+        public sealed override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return DefineTypescriptDefaultFileMetaData();
+            return DefineTypescriptDefaultFileMetadata();
         }
 
-        protected abstract TypescriptDefaultFileMetaData DefineTypescriptDefaultFileMetaData();
+        protected abstract TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata();
     }
 
-    public class TypescriptDefaultFileMetaData : DefaultFileMetaData
+    public class TypescriptDefaultFileMetadata : DefaultFileMetadata
     {
-        public TypescriptDefaultFileMetaData(
+        public TypescriptDefaultFileMetadata(
                     OverwriteBehaviour overwriteBehaviour,
                     string codeGenType,
                     string fileName,
@@ -63,15 +63,15 @@ namespace Intent.Modules.Common.Templates
         {
             if (!string.IsNullOrWhiteSpace(className))
             {
-                this.CustomMetaData["ClassName"] = className;
+                this.CustomMetadata["ClassName"] = className;
             }
             if (!string.IsNullOrWhiteSpace(@namespace))
             {
-                this.CustomMetaData["Namespace"] = @namespace;
+                this.CustomMetadata["Namespace"] = @namespace;
             }
             if (!string.IsNullOrWhiteSpace(dependsUpon))
             {
-                this.CustomMetaData["Depends On"] = dependsUpon;
+                this.CustomMetadata["Depends On"] = dependsUpon;
             }
         }
     }

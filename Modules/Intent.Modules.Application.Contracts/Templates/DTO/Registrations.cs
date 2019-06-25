@@ -16,11 +16,11 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
     [Description(DTOTemplate.IDENTIFIER)]
     public class Registrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly ServicesMetadataProvider _metaDataManager;
+        private readonly ServicesMetadataProvider _metadataManager;
 
-        public Registrations(ServicesMetadataProvider metaDataManager)
+        public Registrations(ServicesMetadataProvider metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
 
         }
 
@@ -33,7 +33,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public override IEnumerable<IDTOModel> GetModels(Engine.IApplication application)
         {
-            return _metaDataManager.GetDTOs(application);
+            return _metadataManager.GetDTOs(application);
         }
     }
 }

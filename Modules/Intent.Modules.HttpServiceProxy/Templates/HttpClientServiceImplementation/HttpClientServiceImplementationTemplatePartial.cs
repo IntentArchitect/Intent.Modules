@@ -24,18 +24,18 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementat
 
         public void Created()
         {
-            _httpClientInterceptorInterfaceTemplateId = GetMetaData().CustomMetaData[HTTP_CLIENT_INTERCEPTOR_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
-            _httpClientServiceInterfaceTemplateId = GetMetaData().CustomMetaData[HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
+            _httpClientInterceptorInterfaceTemplateId = GetMetadata().CustomMetadata[HTTP_CLIENT_INTERCEPTOR_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
+            _httpClientServiceInterfaceTemplateId = GetMetadata().CustomMetadata[HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "HttpClientService",
                 fileExtension: "cs",

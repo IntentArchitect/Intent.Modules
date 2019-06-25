@@ -90,11 +90,11 @@ namespace Intent.Modules.OutputManager.FileHeaders
         private string AppendHeader(IOutputFile output)
         {
             string content = output.Content;
-            IFileMetadata fileMetaData = output.FileMetadata;
+            IFileMetadata fileMetadata = output.FileMetadata;
 
             string header = GetHeader(output);
             //Deal with XML Declartions <?xml...>
-            switch (fileMetaData.FileExtension.ToLower())
+            switch (fileMetadata.FileExtension.ToLower())
             {
                 case "xml":
                 case "config":
@@ -115,7 +115,7 @@ namespace Intent.Modules.OutputManager.FileHeaders
         private string GetHeader(IOutputFile output)
         {
             string fileExtension = output.FileMetadata.FileExtension;
-            IFileMetadata fileMetaData = output.FileMetadata;
+            IFileMetadata fileMetadata = output.FileMetadata;
 
             var codeGenTypeDescription = output.FileMetadata.CodeGenType;
             var overwriteBehaviourDescription = output.FileMetadata.OverwriteBehaviour.GetDescription();
