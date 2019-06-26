@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="fec28ec4-88cf-490d-92ee-880cb0c3f8c5">
+  <sourceEnd classId="a6414cec-d16f-4a78-ae33-e4d805a9827f">
+    <isNavigable>true</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>1</maxMultiplicity>
+    <stereotypes />
+  </sourceEnd>
+  <targetEnd classId="9a7322b7-3f66-4c5e-a113-4447b0e85678">
+    <isNavigable>true</isNavigable>
+    <minMultiplicity>0</minMultiplicity>
+    <maxMultiplicity>1</maxMultiplicity>
+    <stereotypes />
+  </targetEnd>
+  <associationType>aggregation</associationType>
+  <stereotypes />
+</association>

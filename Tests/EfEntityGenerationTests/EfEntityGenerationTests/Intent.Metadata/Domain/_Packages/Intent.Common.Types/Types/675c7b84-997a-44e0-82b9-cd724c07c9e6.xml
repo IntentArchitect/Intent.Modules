@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataType id="675c7b84-997a-44e0-82b9-cd724c07c9e6">
+  <name>decimal</name>
+  <parentFolderId>29b10ff0-1c9f-422b-ac1e-caeea16e69ec</parentFolderId>
+  <defaultStereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="30c5995e-17ab-4cc7-8881-3e9561ab06fe">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="67913852-1e61-4d9d-997e-cdfb7d9196fb" value="decimal" />
+        <property name="8CCCD630-6AF9-41FA-8E5F-414860AD89BB" value="" />
+        <property name="76668E7B-8FC2-4C14-B6AA-E36854E5E499" value="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="822c6b64-82c2-4e5b-9d07-b79adc9a09e7">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="6591a390-5d73-422c-af7b-371184a8519a" value="number" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="1df2768a-5f1e-4bf5-a01c-b2dc74864b7f">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="7db2c33e-2fd7-44aa-a2da-39ac26a7f831" value="BigDecimal" />
+        <property name="9805D4BE-0962-428C-8CAF-E305A30833B4" value="java.math" />
+        <property name="AE91EFB3-56BB-451D-AA29-C20D221AB168" value="false" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+</dataType>

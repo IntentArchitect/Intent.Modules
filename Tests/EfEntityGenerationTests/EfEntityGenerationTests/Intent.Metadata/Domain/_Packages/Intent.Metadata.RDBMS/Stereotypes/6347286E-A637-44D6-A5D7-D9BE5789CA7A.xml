@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+  <name>Text</name>
+  <icon type="CharacterBox" source="T|#FFC107" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>[${(MaxLength == null) ? '*' : MaxLength}]</displayFunction>
+  <targetElements>
+    <element>attribute</element>
+  </targetElements>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>7C81DE70-0B90-44F4-9B18-F648B5976FC3</parentFolderId>
+  <properties>
+    <property id="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD">
+      <name>MaxLength</name>
+      <type>number</type>
+      <options />
+    </property>
+    <property id="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF">
+      <name>IsUnicode</name>
+      <type>boolean</type>
+      <defaultValue>true</defaultValue>
+      <options />
+    </property>
+  </properties>
+</stereotypeDefinition>
