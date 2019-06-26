@@ -39,13 +39,18 @@ namespace Intent.Modules.Entities.Keys.Decorators
 
         private static bool RequiresForeignKey(IAssociationEnd associationEnd)
         {
-            return (associationEnd.Multiplicity == Multiplicity.One
-                || associationEnd.Multiplicity == Multiplicity.ZeroToOne
-                || (associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd == associationEnd))
-                &&
-                associationEnd.OtherEnd().Multiplicity == Multiplicity.Many
-                &&
-                (associationEnd.Association.AssociationType == AssociationType.Composition || associationEnd.OtherEnd().IsNavigable);
+            return IsManyToVariantsOfOne(associationEnd) || IsSelfReferencingZeroToOne(associationEnd);
+        }
+
+        private static bool IsManyToVariantsOfOne(IAssociationEnd associationEnd)
+        {
+            return (associationEnd.Multiplicity == Multiplicity.One || associationEnd.Multiplicity == Multiplicity.ZeroToOne)
+                    && associationEnd.OtherEnd().Multiplicity == Multiplicity.Many;
+        }
+
+        private static bool IsSelfReferencingZeroToOne(IAssociationEnd associationEnd)
+        {
+            return associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd.Class == associationEnd.Association.SourceEnd.Class;
         }
     }
 }
