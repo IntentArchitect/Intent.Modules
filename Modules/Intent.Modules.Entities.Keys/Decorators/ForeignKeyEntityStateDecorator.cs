@@ -16,7 +16,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
 
         public override string AssociationBefore(IAssociationEnd associationEnd)
         {
-            if (RequiresForeignKey(associationEnd))
+            if (associationEnd.RequiresForeignKey())
             {
                 if (associationEnd.OtherEnd().HasStereotype("Foreign Key"))
                 {
@@ -35,22 +35,6 @@ namespace Intent.Modules.Entities.Keys.Decorators
             {
                 _foreignKeyType = settings[ForeignKeyType];
             }
-        }
-
-        private static bool RequiresForeignKey(IAssociationEnd associationEnd)
-        {
-            return IsManyToVariantsOfOne(associationEnd) || IsSelfReferencingZeroToOne(associationEnd);
-        }
-
-        private static bool IsManyToVariantsOfOne(IAssociationEnd associationEnd)
-        {
-            return (associationEnd.Multiplicity == Multiplicity.One || associationEnd.Multiplicity == Multiplicity.ZeroToOne)
-                    && associationEnd.OtherEnd().Multiplicity == Multiplicity.Many;
-        }
-
-        private static bool IsSelfReferencingZeroToOne(IAssociationEnd associationEnd)
-        {
-            return associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd.Class == associationEnd.Association.SourceEnd.Class;
         }
     }
 }
