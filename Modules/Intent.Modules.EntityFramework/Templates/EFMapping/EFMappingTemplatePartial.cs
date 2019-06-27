@@ -160,6 +160,13 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             }
             return $"x => new {{ {string.Join(", ", columns.Select(x => "x." + x))}}}";
         }
+
+        private static bool RequiresForeignKeyOnAssociatedEnd(IAssociationEnd associationEnd)
+        {
+            return associationEnd.Multiplicity == Multiplicity.Many
+                &&
+                (associationEnd.Association.AssociationType == AssociationType.Composition || associationEnd.OtherEnd().IsNavigable);
+        }
     }
 
     public interface IEFMappingTemplateDecorator : ITemplateDecorator

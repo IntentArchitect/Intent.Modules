@@ -16,8 +16,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
 
         public override string PropertyBefore(IAssociationEnd associationEnd)
         {
-            if ((associationEnd.Multiplicity == Multiplicity.One || associationEnd.Multiplicity == Multiplicity.ZeroToOne || (associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd == associationEnd)) &&
-                (associationEnd.OtherEnd().Multiplicity == Multiplicity.Many || associationEnd.OtherEnd().Multiplicity == Multiplicity.ZeroToOne))
+            if (associationEnd.RequiresForeignKey())
             {
                 if (associationEnd.OtherEnd().HasStereotype("Foreign Key"))
                 {

@@ -1,0 +1,101 @@
+﻿<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BAE57BF9-4AFD-4194-94C3-81DA26645342}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EfEntityGenerationTests.Infrastructure.Data.EF</RootNamespace>
+    <AssemblyName>EfEntityGenerationTests.Infrastructure.Data.EF</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Intent.RoslynWeaver.Attributes">
+      <HintPath>..\packages\Intent.RoslynWeaver.Attributes.1.0.0\lib\net45\Intent.RoslynWeaver.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RT.Comb">
+      <HintPath>..\packages\RT.Comb.2.3.0\lib\netstandard1.2\RT.Comb.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.config" />
+    <Compile Include="EfEntityGenerationTestsDbContextConfiguration.cs" />
+    <Compile Include="DbContext\EfEntityGenerationTestsDbContext.cs" />
+    <Compile Include="EFMapping\B_OptionalDependentMapping.cs" />
+    <Compile Include="EFMapping\A_OptionalDependentMapping.cs" />
+    <Compile Include="EFMapping\D_OptionalAggregateMapping.cs" />
+    <Compile Include="EFMapping\D_MultipleDependentMapping.cs" />
+    <Compile Include="EFMapping\J_MultipleAggregateMapping.cs" />
+    <Compile Include="EFMapping\K_SelfReferenceMapping.cs" />
+    <Compile Include="EFMapping\M_SelfReferenceBiNavMapping.cs" />
+    <Compile Include="EFMapping\L_SelfReferenceMultipleMapping.cs" />
+    <Compile Include="EFMapping\E_RequiredDependentMapping.cs" />
+    <Compile Include="EFMapping\C_RequiredCompositeMapping.cs" />
+    <Compile Include="EFMapping\G_RequiredCompositeNavMapping.cs" />
+    <Compile Include="EFMapping\F_OptionalDependentMapping.cs" />
+    <Compile Include="EFMapping\A_RequiredCompositeMapping.cs" />
+    <Compile Include="EFMapping\F_OptionalAggregateNavMapping.cs" />
+    <Compile Include="EFMapping\C_MultipleDependentMapping.cs" />
+    <Compile Include="EFMapping\H_MultipleDependentMapping.cs" />
+    <Compile Include="EFMapping\H_OptionalAggregateNavMapping.cs" />
+    <Compile Include="EFMapping\G_MultipleDependentMapping.cs" />
+    <Compile Include="EFMapping\E_RequiredCompositeNavMapping.cs" />
+    <Compile Include="EFMapping\J_RequiredDependentMapping.cs" />
+    <Compile Include="EFMapping\B_OptionalAggregateMapping.cs" />
+    <Content Include="MIGRATION_README.txt" />
+    <Content Include="packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Migrations\201906261202414_Test.cs" />
+    <Compile Include="Migrations\201906261202414_Test.Designer.cs">
+      <DependentUpon>201906261202414_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\EfEntityGenerationTests.Domain\EfEntityGenerationTests.Domain.csproj">
+      <Project>{7ef3d98a-9dd3-418d-9600-5ec85fe21a96}</Project>
+      <Name>Migrate.MigrateTest.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201906261202414_Test.resx">
+      <DependentUpon>201906261202414_Test.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

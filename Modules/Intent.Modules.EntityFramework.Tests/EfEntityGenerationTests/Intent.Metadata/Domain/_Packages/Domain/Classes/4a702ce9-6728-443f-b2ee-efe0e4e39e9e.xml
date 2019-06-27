@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="4a702ce9-6728-443f-b2ee-efe0e4e39e9e" type="Class">
+  <comment />
+  <name>D_MultipleDependent</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>288d0ede-2cf7-43cd-aa94-22346d771fe4</parentFolderId>
+  <stereotypes />
+  <attributes />
+  <operations />
+</class>
