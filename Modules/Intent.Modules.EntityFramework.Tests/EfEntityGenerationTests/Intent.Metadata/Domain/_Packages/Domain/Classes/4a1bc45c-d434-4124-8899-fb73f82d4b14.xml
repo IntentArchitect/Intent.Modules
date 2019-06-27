@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="4a1bc45c-d434-4124-8899-fb73f82d4b14" type="Class">
+  <name>D_OptionalAggregate</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>288d0ede-2cf7-43cd-aa94-22346d771fe4</parentFolderId>
+  <stereotypes />
+  <attributes />
+  <operations />
+</class>

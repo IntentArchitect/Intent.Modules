@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="433e38e6-ae03-4c09-ad82-b07831d6a96b" type="Class">
+  <name>A_OptionalDependent</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>288d0ede-2cf7-43cd-aa94-22346d771fe4</parentFolderId>
+  <stereotypes />
+  <attributes />
+  <operations />
+</class>

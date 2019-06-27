@@ -178,25 +178,29 @@ namespace <#= Namespace #>
             case RelationshipType.OneToMany :#>
             <#= string.Format("this.{0}(x => x.{1})", associationEnd.MinMultiplicity != "0" ? "HasRequired" : "HasOptional", associationEnd.Name().ToPascalCase())#>
                 .WithMany(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
-<#				if (UseForeignKeys) { #>
+<#              if (RequiresForeignKeyOnAssociatedEnd(associationEnd)) {
+                    if (UseForeignKeys) { #>
 				.HasForeignKey(<#= GetForeignKeyLambda(associationEnd.OtherEnd()) #>)
-<#				} else { #>
+<#				    } else { #>
                 .Map(m => m.MapKey("<#= associationEnd.Name().ToPascalCase()#>Id"))
-<#				} #>
+<#				    }
+                } #>
                 ;
 
 <#                  break;
             case RelationshipType.ManyToOne :#>
             this.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
+<#				if(RequiresForeignKeyOnAssociatedEnd(associationEnd)) {  #>
                 .<#= string.Format("{0}({1})", associationEnd.OtherEnd().MinMultiplicity != "0" ? "WithRequired" : "WithOptional", "x => x." + associationEnd.OtherEnd().Name().ToPascalCase())#>
-<#				if (UseForeignKeys) { #>
+<#				    if (UseForeignKeys) { #>
 				.HasForeignKey(<#= GetForeignKeyLambda(associationEnd) #>)
-<#				} else { #>
+<#				    } else { #>
 				.Map(m => m.MapKey("<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id"))
-<#				} #>
-<#				if(associationEnd.Association.AssociationType == AssociationType.Composition) {  #>
+<#				    } #>
+<#				    if(associationEnd.Association.AssociationType == AssociationType.Composition) {  #>
 				.WillCascadeOnDelete()
-<#				} #>
+<#				    }
+                } #>
                 ;
 
 <#                  break;

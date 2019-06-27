@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\AssociationEndHelperMethods.cs" />
     <Compile Include="Decorators\ForeignKeyEntityInterfaceDecorator.cs" />
     <Compile Include="Decorators\ForeignKeyEntityInterfaceDecoratorRegistration.cs" />
     <Compile Include="Decorators\SurrogatePrimaryKeyInterfaceDecoratorRegistration.cs" />

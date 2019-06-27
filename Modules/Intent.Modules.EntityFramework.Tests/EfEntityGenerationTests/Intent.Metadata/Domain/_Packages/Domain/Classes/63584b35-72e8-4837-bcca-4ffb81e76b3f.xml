@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="63584b35-72e8-4837-bcca-4ffb81e76b3f" type="Class">
+  <name>K_SelfReference</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>288d0ede-2cf7-43cd-aa94-22346d771fe4</parentFolderId>
+  <stereotypes />
+  <attributes />
+  <operations />
+</class>

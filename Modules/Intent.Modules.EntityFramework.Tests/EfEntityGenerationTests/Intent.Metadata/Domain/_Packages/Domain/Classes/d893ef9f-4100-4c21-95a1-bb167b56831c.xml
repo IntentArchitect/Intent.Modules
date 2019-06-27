@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d893ef9f-4100-4c21-95a1-bb167b56831c" type="Class">
+  <name>H_OptionalAggregateNav</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>288d0ede-2cf7-43cd-aa94-22346d771fe4</parentFolderId>
+  <stereotypes />
+  <attributes />
+  <operations />
+</class>
