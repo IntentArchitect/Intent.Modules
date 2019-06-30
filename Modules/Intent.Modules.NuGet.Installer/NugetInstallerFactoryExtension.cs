@@ -7,10 +7,12 @@ using System.Xml.XPath;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
+using Intent.Modules.Constants;
 using Intent.Modules.NuGet.Installer.HelperTypes;
 using Intent.Modules.NuGet.Installer.Schemes;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Eventing;
 using Intent.SoftwareFactory.Plugins.FactoryExtensions;
 using NuGet.Versioning;
 
@@ -18,6 +20,9 @@ namespace Intent.Modules.NuGet.Installer
 {
     public class NugetInstallerFactoryExtension : FactoryExtensionBase, IExecutionLifeCycle
     {
+        private readonly ISoftwareFactoryEventDispatcher _eventDispatcher;
+        private readonly IXmlFileCache _fileCache;
+        private readonly IChanges _changeManager;
         public const string Identifier = "Intent.NugetInstaller";
         private const string SettingKeyForConsolidatePackageVersions = "Consolidate Package Versions"; // Must match the config entry in the .imodspec
         private const string SettingKeyForWarnOnMultipleVersionsOfSamePackage = "Warn On Multiple Versions of Same Package"; // Must match the config entry in the .imodspec
@@ -34,6 +39,13 @@ namespace Intent.Modules.NuGet.Installer
                 { ProjectType.VerboseWithPackageReferenceScheme, new VerboseWithPackageReferencesScheme() },
                 { ProjectType.VerboseWithPackagesDotConfigScheme, new VerboseWithPackagesDotConfigScheme() }
             };
+        }
+
+        public NugetInstallerFactoryExtension(ISoftwareFactoryEventDispatcher eventDispatcher, IXmlFileCache fileCache, IChanges changeManager)
+        {
+            _eventDispatcher = eventDispatcher;
+            _fileCache = fileCache;
+            _changeManager = changeManager;
         }
 
         public override int Order => 100;
@@ -56,23 +68,63 @@ namespace Intent.Modules.NuGet.Installer
 
         public void OnStep(IApplication application, string step)
         {
-            if (step != ExecutionLifeCycleSteps.AfterCommitChanges)
+            if (step != ExecutionLifeCycleSteps.AfterTemplateExecution)
             {
                 return;
             }
 
             var tracing = new TracingWithPrefix(Logging.Log);
-                
+
             tracing.Info("Start processing packages");
-            
+
             // Call a separate method to do the actual execution which is internally accessible and more easily unit testable.
             Execute(
                 applicationProjects: application.Projects,
                 tracing: tracing,
-                saveDelegate: nuGetProject => nuGetProject.Document?.Save(nuGetProject.ProjectFile),
-                loadDelegate: project => XDocument.Load(Path.GetFullPath(project.ProjectFile())));
-            
+                saveDelegate: SaveProject,
+                loadDelegate: GetProject);
+
             tracing.Info("Package processing complete");
+        }
+
+        private XDocument GetProject(IProject project)
+        {
+            var change = _changeManager.FindChange(project.ProjectFile());
+            if (change != null)
+            {
+                return XDocument.Parse(change.Content, LoadOptions.PreserveWhitespace);
+            }
+
+            return XDocument.Load(Path.GetFullPath(project.ProjectFile()), LoadOptions.PreserveWhitespace);
+        }
+
+        private void SaveProject(NuGetProject nuGetProject)
+        {
+            var targetContentWithWhitespacePreserved = nuGetProject.Document.ToString();
+            var change = _changeManager.FindChange(nuGetProject.ProjectFile);
+
+            // Normalize the content of both by parsing with no whitespace and calling .ToString()
+            var targetContent = XDocument.Parse(targetContentWithWhitespacePreserved).ToString();
+            var existingContent = change != null
+                ? XDocument.Parse(change.Content).ToString()
+                : XDocument.Load(nuGetProject.ProjectFile).ToString();
+
+            if (existingContent == targetContent)
+            {
+                return;
+            }
+
+            if (change != null)
+            {
+                change.ChangeContent(targetContentWithWhitespacePreserved);
+                return;
+            }
+
+            _eventDispatcher.Publish(new SoftwareFactoryEvent(SoftwareFactoryEvents.OverwriteFileCommand, new Dictionary<string, string>
+            {
+                { "FullFileName", nuGetProject.ProjectFile },
+                { "Content", targetContentWithWhitespacePreserved },
+            }));
         }
 
         internal void Execute(
@@ -150,7 +202,7 @@ namespace Intent.Modules.NuGet.Installer
 
                 var projectType = GetProjectType(document);
                 var installedPackages = ResolveNuGetScheme(projectType).GetInstalledPackages(project, document);
-                
+
                 foreach (var installedPackage in installedPackages)
                 {
                     var installedVersion = installedPackage.Value;
