@@ -15,7 +15,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
         {
             // Arrange
             var sut = new VerboseWithPackagesDotConfigScheme();
-            var project = TestFixtureHelper.CreateProject(ProjectType.VerboseWithPackagesDotConfigScheme, TestVersion.Low, 1, new Dictionary<string, string>());
+            var project = TestFixtureHelper.CreateProject(ProjectType.VerboseWithPackagesDotConfigScheme, TestVersion.Low, TestPackage.One, new Dictionary<string, string>());
             var doc = XDocument.Load(project.ProjectFile());
 
             // Act
@@ -35,7 +35,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
             // Arrange
             var sut = new VerboseWithPackagesDotConfigScheme();
             var tracing = new TestTracing();
-            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.VerboseWithPackagesDotConfigScheme, TestVersion.Low, 1, nugetPackagesToInstall: new Dictionary<string, string>
+            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.VerboseWithPackagesDotConfigScheme, TestVersion.Low, TestPackage.One, nugetPackagesToInstall: new Dictionary<string, string>
             {
                 { "PackageToInstall.Id", "1.0.0" }
             });
@@ -56,7 +56,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
             // Arrange
             var sut = new VerboseWithPackagesDotConfigScheme();
             var tracing = new TestTracing();
-            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.VerboseWithPackagesDotConfigScheme, TestVersion.Low, 1, nugetPackagesToInstall: new Dictionary<string, string>
+            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.VerboseWithPackagesDotConfigScheme, TestVersion.Low, TestPackage.One, nugetPackagesToInstall: new Dictionary<string, string>
             {
                 { "TestPackage.One", "3.0.0" }
             });

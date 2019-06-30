@@ -100,7 +100,7 @@ namespace Intent.Modules.NuGet.Installer
 
             foreach (var projectPackage in projectPackages)
             {
-                if (projectPackage.RequestedPackages.Any())
+                if (!projectPackage.RequestedPackages.Any())
                 {
                     continue;
                 }
@@ -264,7 +264,7 @@ namespace Intent.Modules.NuGet.Installer
             var packagesWithMultipleVersions = resolvedProjects
                 .SelectMany(x => x.ConsolidatedPackageVersions)
                 .GroupBy(x => x.Key, x => x.Value)
-                .Where(x => x.Count() > 1)
+                .Where(x => x.Distinct().Count() > 1)
                 .Select(x => x.Key)
                 .ToArray();
 

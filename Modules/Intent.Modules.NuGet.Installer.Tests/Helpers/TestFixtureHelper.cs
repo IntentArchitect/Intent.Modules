@@ -16,17 +16,17 @@ namespace Intent.Modules.NuGet.Installer.Tests.Helpers
 {
     internal static class TestFixtureHelper
     {
-        internal static IProject CreateProject(ProjectType? projectType, TestVersion testVersion, int number, IDictionary<string, string> nugetPackagesToInstall)
+        internal static IProject CreateProject(ProjectType? projectType, TestVersion testVersion, TestPackage testPackage, IDictionary<string, string> nugetPackagesToInstall)
         {
-            return new ProjectImplementation(projectType, testVersion, number, nugetPackagesToInstall);
+            return new ProjectImplementation(projectType, testVersion, testPackage, nugetPackagesToInstall);
         }
 
-        internal static NuGetProject CreateNuGetProject(ProjectType? projectType, TestVersion testVersion, int number, IDictionary<string, string> nugetPackagesToInstall)
+        internal static NuGetProject CreateNuGetProject(ProjectType? projectType, TestVersion testVersion, TestPackage testPackage, IDictionary<string, string> nugetPackagesToInstall)
         {
             return NugetInstallerFactoryExtension.DeterminePackages(
                 applicationProjects: new[]
                 {
-                    CreateProject(projectType, testVersion, number, nugetPackagesToInstall)
+                    CreateProject(projectType, testVersion, testPackage, nugetPackagesToInstall)
                 },
                 loadDelegate: p => XDocument.Load(p.ProjectFile())).Projects.Single();
         }
@@ -39,13 +39,13 @@ namespace Intent.Modules.NuGet.Installer.Tests.Helpers
             private readonly TestVersion _testVersion;
             private readonly int _number;
 
-            public ProjectImplementation(ProjectType? projectType, TestVersion testVersion, int number, IDictionary<string, string> nugetPackagesToInstall)
+            public ProjectImplementation(ProjectType? projectType, TestVersion testVersion, TestPackage testPackage, IDictionary<string, string> nugetPackagesToInstall)
             {
                 _projectType = projectType;
                 _testVersion = testVersion;
-                _number = number;
+                _number = (int)testPackage;
 
-                Name = $"{(projectType.HasValue ? projectType.Value.ToString() : "null")}_{testVersion}_{number}";
+                Name = $"{(projectType.HasValue ? projectType.Value.ToString() : "null")}_{testVersion}_{_number}";
                 ProjectType = new ProjectTypeImplementation(Name);
                 this.InitializeVSMetaData();
                 this.NugetPackages().AddRange(nugetPackagesToInstall.Select(x => new NuGetPackages(x)));

@@ -16,7 +16,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
         {
             // Arrange
             var sut = new LeanScheme();
-            var project = TestFixtureHelper.CreateProject(ProjectType.LeanScheme, TestVersion.Low, 1, new Dictionary<string, string>());
+            var project = TestFixtureHelper.CreateProject(ProjectType.LeanScheme, TestVersion.Low, TestPackage.One, new Dictionary<string, string>());
             var doc = XDocument.Load(project.ProjectFile());
 
             // Act
@@ -36,8 +36,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
             // Arrange
             var sut = new LeanScheme();
             var tracing = new TestTracing();
-            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.LeanScheme, TestVersion.Low, 1,
-                nugetPackagesToInstall: new Dictionary<string, string>
+            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.LeanScheme, TestVersion.Low, TestPackage.One, new Dictionary<string, string>
                 {
                     {"PackageToInstall.Id", "1.0.0"}
                 });
@@ -50,8 +49,8 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
                 expected: XDocument.Parse(@"
                     <Project Sdk=""Microsoft.NET.Sdk"">
                       <ItemGroup>
-                        <PackageReference Include=""TestPackage.One"" Version=""1.0.0"" />
                         <PackageReference Include=""PackageToInstall.Id"" Version=""1.0.0"" />
+                        <PackageReference Include=""TestPackage.One"" Version=""1.0.0"" />
                       </ItemGroup>
                     </Project>").ToString(),
                 actual: project.Document.ToString());
@@ -63,7 +62,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
             // Arrange
             var sut = new LeanScheme();
             var tracing = new TestTracing();
-            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.LeanScheme, TestVersion.Low, 1, nugetPackagesToInstall: new Dictionary<string, string>
+            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.LeanScheme, TestVersion.Low, TestPackage.One, new Dictionary<string, string>
             {
                 { "TestPackage.One", "3.0.0" }
             });
@@ -82,10 +81,32 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
                 actual: project.Document.ToString());
         }
 
-        [Fact]
-        public void SortsPackageReferencesInAlphabeticalOrder()
+        [Theory]
+        [InlineData(TestPackage.One, TestPackage.Two)]
+        [InlineData(TestPackage.Two, TestPackage.One)]
+        public void SortsPackageReferencesInAlphabeticalOrder(TestPackage existingPackage, TestPackage testPackageToInstall)
         {
-            throw new NotImplementedException();
+            // Arrange
+            var sut = new LeanScheme();
+            var tracing = new TestTracing();
+            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.LeanScheme, TestVersion.Low, existingPackage, new Dictionary<string, string>
+            {
+                { $"{nameof(TestPackage)}.{testPackageToInstall}", "1.0.0" }
+            });
+
+            // Act
+            sut.InstallPackages(project, tracing);
+
+            // Assert
+            Assert.Equal(
+                expected: XDocument.Parse(@"
+                    <Project Sdk=""Microsoft.NET.Sdk"">
+                      <ItemGroup>
+                        <PackageReference Include=""TestPackage.One"" Version=""1.0.0"" />
+                        <PackageReference Include=""TestPackage.Two"" Version=""1.0.0"" />
+                      </ItemGroup>
+                    </Project>").ToString(),
+                actual: project.Document.ToString());
         }
     }
 }
