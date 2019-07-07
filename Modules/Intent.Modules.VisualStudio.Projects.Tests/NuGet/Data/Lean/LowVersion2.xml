@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="TestPackage.Two" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

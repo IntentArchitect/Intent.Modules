@@ -17,7 +17,7 @@
         <property id="TargetFramework">
           <name>TargetFramework</name>
           <type>string</type>
-          <defaultValue>4.5.2</defaultValue>
+          <defaultValue>4.7.2</defaultValue>
         </property>
       </properties>
     </projectType>
@@ -31,7 +31,7 @@
         <property id="TargetFramework">
           <name>TargetFramework</name>
           <type>string</type>
-          <defaultValue>4.5.2</defaultValue>
+          <defaultValue>4.7.2</defaultValue>
         </property>
         <property id="Port">
           <name>Port</name>
@@ -60,7 +60,7 @@
         <property id="TargetFramework">
           <name>TargetFramework</name>
           <type>string</type>
-          <defaultValue>4.5.2</defaultValue>
+          <defaultValue>4.7.2</defaultValue>
         </property>
       </properties>
     </projectType>
@@ -74,7 +74,7 @@
         <property id="TargetFramework">
           <name>TargetFramework</name>
           <type>string</type>
-          <defaultValue>4.5.2</defaultValue>
+          <defaultValue>4.7.2</defaultValue>
         </property>
       </properties>
     </projectType>
@@ -113,7 +113,6 @@
     <template id="Intent.VisualStudio.Projects.CoreWeb.CSProject"/>
     <template id="Intent.VisualStudio.Projects.CoreWeb.AppSettings"/>
     <template id="Intent.VisualStudio.Projects.CoreWeb.LaunchSettings"/>
-    <template id="Intent.VisualStudio.Projects.NuGetPackagesConfig"/>
     <template id="Intent.VisualStudio.Projects.VisualStudio2015Solution"/>
     <template id="Intent.VisualStudio.Projects.WebConfig"/>
   </templates>
@@ -127,18 +126,33 @@
     <factoryExtension id="Intent.ApplicationSyncProcessor">
       <order>100</order>
     </factoryExtension>
+    <factoryExtension id="Intent.VisualStudio.NuGet.Installer" >
+      <order>200</order>
+      <config>
+        <add key="Consolidate Package Versions"
+             description="When true, the installer will automatically consolidate versions of the NuGet packages within the solution to be the same as highest currently installed version. (true | false)"
+             type="boolean"
+             default="false" />
+        <add key="Warn On Multiple Versions of Same Package"
+             description="When true, the installer will show warnings if multiple versions of the same NuGet package are installed within the solution. Only applicable when 'Consolidate Package Versions' is set to false. (true | false)"
+             type="boolean"
+             default="true" />
+      </config>
+    </factoryExtension>
   </factoryExtensions>
   <dependencies>
     <dependency id="Intent.Common" version="2.0.0"/>
   </dependencies>
   <files>
-    <file src="bin/$configuration$/$id$.dll"/>
-    <file src="bin/$configuration$/$id$.pdb"/>
+    <file src="$outDir$/$id$.dll"/>
+    <file src="$outDir$/$id$.pdb"/>
+    
+    <file src="$outDir$/NuGet.Versioning.dll"/>
 
-    <file src="bin/$configuration$/Microsoft.Build.dll" inspect="false"/>
-    <file src="bin/$configuration$/Microsoft.Build.Framework.dll" inspect="false"/>
-    <file src="bin/$configuration$/Microsoft.Build.Utilities.Core.dll" inspect="false"/>
-    <file src="bin/$configuration$/System.Runtime.InteropServices.RuntimeInformation.dll" inspect="false"/>
+    <file src="$outDir$/Microsoft.Build.dll" inspect="false"/>
+    <file src="$outDir$/Microsoft.Build.Framework.dll" inspect="false"/>
+    <file src="$outDir$/Microsoft.Build.Utilities.Core.dll" inspect="false"/>
+    <file src="$outDir$/System.Runtime.InteropServices.RuntimeInformation.dll" inspect="false"/>
 
     <!-- Needs fix, see https://github.com/IntentSoftware/IntentArchitect/issues/65 -->
     <!--<file src="bin/$configuration$/System.Collections.Immutable.dll" inspect="false"/>

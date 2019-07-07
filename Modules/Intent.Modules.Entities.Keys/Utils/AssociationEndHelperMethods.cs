@@ -1,4 +1,4 @@
-﻿using Intent.MetaModel.Domain;
+﻿using Intent.Modelers.Domain.Api;
 
 namespace Intent.Modules.Entities.Keys
 {

@@ -49,7 +49,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
             filename = Path.GetFullPath(filename);
 
-            _project.InstallNugetPackages(_doc);
+            //_project.InstallNugetPackages(_doc);
             _project.SyncProjectReferences(_doc);
 
             //run events
