@@ -6,18 +6,22 @@ namespace Intent.Modules.NuGet.Installer.HelperTypes
     internal class TracingWithPrefix : ITracing
     {
         private readonly ITracing _tracing;
-        private const string TracingOutputPrefix = "NuGet - ";
+        private readonly string _prefix;
 
-        public TracingWithPrefix(ITracing tracing) => _tracing = tracing;
+        public TracingWithPrefix(ITracing tracing, string prefix)
+        {
+            _tracing = tracing;
+            _prefix = prefix;
+        }
 
-        public void Debug(string message) => _tracing.Debug($"{TracingOutputPrefix}{message}");
+        public void Debug(string message) => _tracing.Debug($"{_prefix}{message}");
 
         public void Failure(Exception exception) => _tracing.Failure(exception);
 
-        public void Failure(string exceptionMessage) => _tracing.Failure($"{TracingOutputPrefix}{exceptionMessage}");
+        public void Failure(string exceptionMessage) => _tracing.Failure($"{_prefix}{exceptionMessage}");
 
-        public void Info(string message) => _tracing.Info($"{TracingOutputPrefix}{message}");
+        public void Info(string message) => _tracing.Info($"{_prefix}{message}");
 
-        public void Warning(string message) => _tracing.Warning($"{TracingOutputPrefix}{message}");
+        public void Warning(string message) => _tracing.Warning($"{_prefix}{message}");
     }
 }

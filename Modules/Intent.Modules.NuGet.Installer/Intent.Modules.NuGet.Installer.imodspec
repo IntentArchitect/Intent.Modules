@@ -12,7 +12,7 @@
   <decorators />
   <factoryExtensions>
     <factoryExtension id="Intent.NugetInstaller" >
-      <order>100</order>
+      <order>200</order>
       <config>
         <add key="Consolidate Package Versions"
              description="When true, the installer will automatically consolidate versions of the NuGet packages within the solution to be the same as highest currently installed version. (true | false)"

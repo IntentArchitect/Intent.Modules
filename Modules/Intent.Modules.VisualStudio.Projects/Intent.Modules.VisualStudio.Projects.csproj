@@ -130,7 +130,6 @@
     <Compile Include="Templates\LibraryCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\NodeJSProjectFile\NodeJSProjectFileTemplate.cs" />
     <Compile Include="Templates\NodeJSProjectFile\Registrations.cs" />
-    <Compile Include="Templates\NuGetPackagesConfig\Registrations.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\Registrations.cs" />
     <Compile Include="Templates\WcfServiceCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\WebApiServiceCSProjectFile\Registrations.cs" />
@@ -151,12 +150,6 @@
     <Compile Include="Templates\AssemblyInfo\AssemblyInfoTemplatePartial.cs" />
     <Compile Include="Templates\ConsoleApp\CsProject\ConsoleAppCSProjectTemplate.cs" />
     <Compile Include="Templates\LibraryCSProjectFile\LibraryCSProjectFileTemplate.cs" />
-    <Compile Include="Templates\NuGetPackagesConfig\NuGetPackagesConfigTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NuGetPackagesConfigTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\NuGetPackagesConfig\NuGetPackagesConfigTemplatePartial.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\SolutionFileMetaData.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -190,10 +183,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AssemblyInfoTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\NuGetPackagesConfig\NuGetPackagesConfigTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>NuGetPackagesConfigTemplate.cs</LastGenOutput>
-    </Content>
     <Content Include="Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>VisualStudio2015SolutionTemplate.cs</LastGenOutput>
@@ -214,7 +203,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="NuGet\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>

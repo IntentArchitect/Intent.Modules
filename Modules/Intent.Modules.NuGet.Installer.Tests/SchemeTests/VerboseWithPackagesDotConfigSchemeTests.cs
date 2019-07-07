@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Xml.Linq;
 using Intent.Modules.NuGet.Installer.HelperTypes;
-using Intent.Modules.NuGet.Installer.Schemes;
+using Intent.Modules.NuGet.Installer.SchemeProcessors;
 using Intent.Modules.NuGet.Installer.Tests.Helpers;
 using NuGet.Versioning;
 using Xunit;
@@ -14,8 +14,8 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
         public void GetsInstalledPackages()
         {
             // Arrange
-            var sut = new VerboseWithPackagesDotConfigScheme();
-            var project = TestFixtureHelper.CreateProject(ProjectType.VerboseWithPackagesDotConfigScheme, TestVersion.Low, TestPackage.One, new Dictionary<string, string>());
+            var sut = new VerboseWithPackagesDotConfigSchemeProcessor();
+            var project = TestFixtureHelper.CreateProject(NuGetScheme.VerboseWithPackagesDotConfig, TestVersion.Low, TestPackage.One, new Dictionary<string, string>());
             var doc = XDocument.Load(project.ProjectFile());
 
             // Act
@@ -25,7 +25,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
             Assert.Collection(installedPackages, x =>
             {
                 Assert.Equal("TestPackage.One", x.Key);
-                Assert.Equal(x.Value, SemanticVersion.Parse("1.0.0"));
+                Assert.Equal(x.Value.Version, SemanticVersion.Parse("1.0.0"));
             });
         }
 
@@ -33,15 +33,20 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
         public void InstallPackageCreatesWarning()
         {
             // Arrange
-            var sut = new VerboseWithPackagesDotConfigScheme();
+            var sut = new VerboseWithPackagesDotConfigSchemeProcessor();
             var tracing = new TestTracing();
-            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.VerboseWithPackagesDotConfigScheme, TestVersion.Low, TestPackage.One, nugetPackagesToInstall: new Dictionary<string, string>
+            var project = TestFixtureHelper.CreateNuGetProject(NuGetScheme.VerboseWithPackagesDotConfig, TestVersion.Low, TestPackage.One, nugetPackagesToInstall: new Dictionary<string, string>
             {
                 { "PackageToInstall.Id", "1.0.0" }
             });
 
             // Act
-            sut.InstallPackages(project, tracing);
+            var result = sut.InstallPackages(
+                project.Content,
+                project.RequestedPackages,
+                project.InstalledPackages,
+                project.Name,
+                tracing);
 
             // Assert
             Assert.Collection(tracing.WarningEntries,
@@ -54,15 +59,20 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
         public void UpgradePackageCreatesWarning()
         {
             // Arrange
-            var sut = new VerboseWithPackagesDotConfigScheme();
+            var sut = new VerboseWithPackagesDotConfigSchemeProcessor();
             var tracing = new TestTracing();
-            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.VerboseWithPackagesDotConfigScheme, TestVersion.Low, TestPackage.One, nugetPackagesToInstall: new Dictionary<string, string>
+            var project = TestFixtureHelper.CreateNuGetProject(NuGetScheme.VerboseWithPackagesDotConfig, TestVersion.Low, TestPackage.One, nugetPackagesToInstall: new Dictionary<string, string>
             {
                 { "TestPackage.One", "3.0.0" }
             });
 
             // Act
-            sut.InstallPackages(project, tracing);
+            sut.InstallPackages(
+                project.Content,
+                project.RequestedPackages,
+                project.InstalledPackages,
+                project.Name,
+                tracing);
 
             // Assert
             Assert.Collection(tracing.WarningEntries,

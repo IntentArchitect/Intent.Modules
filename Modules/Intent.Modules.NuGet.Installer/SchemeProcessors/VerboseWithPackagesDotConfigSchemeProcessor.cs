@@ -8,11 +8,11 @@ using Intent.Modules.NuGet.Installer.HelperTypes;
 using Intent.SoftwareFactory.Engine;
 using NuGet.Versioning;
 
-namespace Intent.Modules.NuGet.Installer.Schemes
+namespace Intent.Modules.NuGet.Installer.SchemeProcessors
 {
-    internal class VerboseWithPackagesDotConfigScheme : INuGetScheme
+    internal class VerboseWithPackagesDotConfigSchemeProcessor : INuGetSchemeProcessor
     {
-        public Dictionary<string, SemanticVersion> GetInstalledPackages(IProject project, XNode xNode)
+        public Dictionary<string, NuGetPackage> GetInstalledPackages(IProject project, XNode xNode)
         {
             var projectFileDirectory = Path.GetDirectoryName(project.ProjectFile());
             if (projectFileDirectory == null)
@@ -23,7 +23,7 @@ namespace Intent.Modules.NuGet.Installer.Schemes
             var packagesDotConfigPath = Path.Combine(projectFileDirectory, "packages.config");
             if (!File.Exists(packagesDotConfigPath))
             {
-                return null;
+                throw new Exception($"Could not find `{packagesDotConfigPath}`");
             }
 
             var d = XDocument.Load(packagesDotConfigPath);
@@ -54,40 +54,47 @@ namespace Intent.Modules.NuGet.Installer.Schemes
                 throw new Exception($"Error reading '{packagesDotConfigPath}', expected all child elements to have both an 'id' and a valid Semantic Version 2.0 'version' value.");
             }
 
-            return nugetPackages.ToDictionary(x => x.Id, x => SemanticVersion.Parse(x.Version));
+            return nugetPackages.ToDictionary(x => x.Id, x => NuGetPackage.Create(x.Version, new string[0], new string[0]));
         }
 
-        public void InstallPackages(NuGetProject project, ITracing tracing)
+        public string InstallPackages(
+            string projectContent,
+            Dictionary<string, NuGetPackage> requestedPackages,
+            Dictionary<string, NuGetPackage> installedPackages,
+            string projectName,
+            ITracing tracing)
         {
-            // This format is now unsupported, but we will show a warning on it missing a requested NuGet package.
+            // This format is now unsupported, but we will show a warnings for missing packages.
 
-            var installationsRequired = project.RequestedPackages
-                .Where(x => !project.InstalledPackages.ContainsKey(x.Key))
+            var installationsRequired = requestedPackages
+                .Where(x => !installedPackages.ContainsKey(x.Key))
                 .ToArray();
-            var upgradesRequired = project.RequestedPackages
-                .Where(x => project.InstalledPackages.TryGetValue(x.Key, out var version) && version < x.Value)
+            var upgradesRequired = requestedPackages
+                .Where(x => installedPackages.TryGetValue(x.Key, out var nuGetPackage) && nuGetPackage.Version < x.Value.Version)
                 .ToArray();
 
             if (!installationsRequired.Any() && !upgradesRequired.Any())
             {
-                return;
+                return projectContent;
             }
 
             var sb = new StringBuilder();
-            sb.AppendLine($"Installations and upgrades of NuGet packages is not supported for project {project.ProjectName}, only .csproj files using " +
+            sb.AppendLine($"Installations and upgrades of NuGet packages is not supported for project {projectName}, only .csproj files using " +
                           "PackageReferences are. Refer to https://blog.nuget.org/20180409/migrate-packages-config-to-package-reference.html for information " +
                           "on how to upgrade this existing project. You can alternatively manually install/upgrade the following packages using Visual Studio:");
             foreach (var item in installationsRequired)
             {
-                sb.AppendLine($"  - Install {item.Key} version {item.Value}");
+                sb.AppendLine($"  - Install {item.Key} version {item.Value.Version}");
             }
 
             foreach (var item in upgradesRequired)
             {
-                sb.AppendLine($"  - Upgrade version of {item.Key} from {project.InstalledPackages[item.Key]} to {item.Value}");
+                sb.AppendLine($"  - Upgrade version of {item.Key} from {installedPackages[item.Key]} to {item.Value.Version}");
             }
 
             tracing.Warning(sb.ToString());
+
+            return projectContent;
         }
     }
 }

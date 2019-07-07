@@ -9,7 +9,7 @@ using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Modules.NuGet.Installer.HelperTypes;
-using Intent.Modules.NuGet.Installer.Schemes;
+using Intent.Modules.NuGet.Installer.SchemeProcessors;
 using Intent.SoftwareFactory;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
@@ -21,34 +21,32 @@ namespace Intent.Modules.NuGet.Installer
     public class NugetInstallerFactoryExtension : FactoryExtensionBase, IExecutionLifeCycle
     {
         private readonly ISoftwareFactoryEventDispatcher _eventDispatcher;
-        private readonly IXmlFileCache _fileCache;
         private readonly IChanges _changeManager;
         public const string Identifier = "Intent.NugetInstaller";
         private const string SettingKeyForConsolidatePackageVersions = "Consolidate Package Versions"; // Must match the config entry in the .imodspec
         private const string SettingKeyForWarnOnMultipleVersionsOfSamePackage = "Warn On Multiple Versions of Same Package"; // Must match the config entry in the .imodspec
         private bool _settingConsolidatePackageVersions;
         private bool _settingWarnOnMultipleVersionsOfSamePackage;
-        private static readonly IDictionary<ProjectType, INuGetScheme> NuGetProjectSchemes;
+        private static readonly IDictionary<NuGetScheme, INuGetSchemeProcessor> NuGetProjectSchemeProcessors;
 
         static NugetInstallerFactoryExtension()
         {
-            NuGetProjectSchemes = new Dictionary<ProjectType, INuGetScheme>
+            NuGetProjectSchemeProcessors = new Dictionary<NuGetScheme, INuGetSchemeProcessor>
             {
-                { ProjectType.LeanScheme, new LeanScheme() },
-                { ProjectType.Unsupported, new UnsupportedScheme() },
-                { ProjectType.VerboseWithPackageReferenceScheme, new VerboseWithPackageReferencesScheme() },
-                { ProjectType.VerboseWithPackagesDotConfigScheme, new VerboseWithPackagesDotConfigScheme() }
+                { NuGetScheme.Lean, new LeanSchemeProcessor() },
+                { NuGetScheme.Unsupported, new UnsupportedSchemeProcessor() },
+                { NuGetScheme.VerboseWithPackageReference, new VerboseWithPackageReferencesSchemeProcessor() },
+                { NuGetScheme.VerboseWithPackagesDotConfig, new VerboseWithPackagesDotConfigSchemeProcessor() }
             };
         }
 
-        public NugetInstallerFactoryExtension(ISoftwareFactoryEventDispatcher eventDispatcher, IXmlFileCache fileCache, IChanges changeManager)
+        public NugetInstallerFactoryExtension(ISoftwareFactoryEventDispatcher eventDispatcher, IChanges changeManager)
         {
             _eventDispatcher = eventDispatcher;
-            _fileCache = fileCache;
             _changeManager = changeManager;
         }
 
-        public override int Order => 100;
+        public override int Order => 200;
 
         public override string Id => Identifier;
 
@@ -73,7 +71,7 @@ namespace Intent.Modules.NuGet.Installer
                 return;
             }
 
-            var tracing = new TracingWithPrefix(Logging.Log);
+            var tracing = new TracingWithPrefix(Logging.Log, "NuGet - ");
 
             tracing.Info("Start processing packages");
 
@@ -81,33 +79,30 @@ namespace Intent.Modules.NuGet.Installer
             Execute(
                 applicationProjects: application.Projects,
                 tracing: tracing,
-                saveDelegate: SaveProject,
-                loadDelegate: GetProject);
+                saveProjectDelegate: SaveProject,
+                loadProjectDelegate: LoadProject);
 
             tracing.Info("Package processing complete");
         }
 
-        private XDocument GetProject(IProject project)
+        private string LoadProject(IProject project)
         {
             var change = _changeManager.FindChange(project.ProjectFile());
-            if (change != null)
-            {
-                return XDocument.Parse(change.Content, LoadOptions.PreserveWhitespace);
-            }
 
-            return XDocument.Load(Path.GetFullPath(project.ProjectFile()), LoadOptions.PreserveWhitespace);
+            return change != null
+                ? change.Content
+                : File.ReadAllText(Path.GetFullPath(project.ProjectFile()));
         }
 
-        private void SaveProject(NuGetProject nuGetProject)
+        private void SaveProject(string filePath, string content)
         {
-            var targetContentWithWhitespacePreserved = nuGetProject.Document.ToString();
-            var change = _changeManager.FindChange(nuGetProject.ProjectFile);
+            var change = _changeManager.FindChange(filePath);
 
             // Normalize the content of both by parsing with no whitespace and calling .ToString()
-            var targetContent = XDocument.Parse(targetContentWithWhitespacePreserved).ToString();
+            var targetContent = XDocument.Parse(content).ToString();
             var existingContent = change != null
                 ? XDocument.Parse(change.Content).ToString()
-                : XDocument.Load(nuGetProject.ProjectFile).ToString();
+                : XDocument.Load(filePath).ToString();
 
             if (existingContent == targetContent)
             {
@@ -116,25 +111,26 @@ namespace Intent.Modules.NuGet.Installer
 
             if (change != null)
             {
-                change.ChangeContent(targetContentWithWhitespacePreserved);
+                change.ChangeContent(content);
                 return;
             }
 
             _eventDispatcher.Publish(new SoftwareFactoryEvent(SoftwareFactoryEvents.OverwriteFileCommand, new Dictionary<string, string>
             {
-                { "FullFileName", nuGetProject.ProjectFile },
-                { "Content", targetContentWithWhitespacePreserved },
+                { "FullFileName", filePath },
+                { "Content", content },
             }));
         }
 
+        /// <param name="saveProjectDelegate">T1 = path, T2 = content</param>
         internal void Execute(
             IEnumerable<IProject> applicationProjects,
             ITracing tracing,
-            Action<NuGetProject> saveDelegate,
-            Func<IProject, XDocument> loadDelegate)
+            Action<string, string> saveProjectDelegate,
+            Func<IProject, string> loadProjectDelegate)
         {
             string report;
-            var (projectPackages, highestVersions) = DeterminePackages(applicationProjects, loadDelegate);
+            var (projectPackages, highestVersions) = DeterminePackages(applicationProjects, loadProjectDelegate);
 
             if (_settingConsolidatePackageVersions &&
                 !string.IsNullOrWhiteSpace(report = GetPackagesWithMultipleVersionsReport(projectPackages)))
@@ -157,8 +153,13 @@ namespace Intent.Modules.NuGet.Installer
                     continue;
                 }
 
-                ResolveNuGetScheme(projectPackage.Type).InstallPackages(projectPackage, tracing);
-                saveDelegate(projectPackage);
+                var updatedProjectContent = projectPackage.Processor.InstallPackages(
+                    projectContent: projectPackage.Content,
+                    requestedPackages: projectPackage.RequestedPackages,
+                    installedPackages: projectPackage.InstalledPackages,
+                    projectName: projectPackage.Name,
+                    tracing: tracing);
+                saveProjectDelegate(projectPackage.FilePath, updatedProjectContent);
             }
 
             if (_settingWarnOnMultipleVersionsOfSamePackage &&
@@ -176,110 +177,114 @@ namespace Intent.Modules.NuGet.Installer
 
         }
 
-        private static INuGetScheme ResolveNuGetScheme(ProjectType projectType)
-        {
-            if (!NuGetProjectSchemes.TryGetValue(projectType, out var scheme))
-            {
-                throw new ArgumentOutOfRangeException(nameof(projectType), $"No scheme registered for type {projectType}.");
-            }
-
-            return scheme;
-        }
-
         /// <summary>
         /// Internal so available to unit tests
         /// </summary>
-        internal static (IReadOnlyCollection<NuGetProject> Projects, Dictionary<string, SemanticVersion> HighestVersions) DeterminePackages(IEnumerable<IProject> applicationProjects, Func<IProject, XDocument> loadDelegate)
+        internal static (IReadOnlyCollection<NuGetProject> Projects, Dictionary<string, SemanticVersion> HighestVersions) DeterminePackages(IEnumerable<IProject> applicationProjects, Func<IProject, string> loadDelegate)
         {
             var projects = new List<NuGetProject>();
             var highestVersions = new Dictionary<string, SemanticVersion>();
 
             foreach (var project in applicationProjects.OrderBy(x => x.Name))
             {
+                string projectContent = null;
                 var document = project.ProjectFile() != null
-                    ? loadDelegate(project)
+                    ? XDocument.Parse(projectContent = loadDelegate(project))
                     : null;
 
-                var projectType = GetProjectType(document);
-                var installedPackages = ResolveNuGetScheme(projectType).GetInstalledPackages(project, document);
+                var projectType = ResolveNuGetScheme(document);
+                if (!NuGetProjectSchemeProcessors.TryGetValue(projectType, out var processor)) throw new ArgumentOutOfRangeException(nameof(projectType), $"No scheme registered for type {projectType}.");
+
+                var installedPackages = processor.GetInstalledPackages(project, document);
 
                 foreach (var installedPackage in installedPackages)
                 {
-                    var installedVersion = installedPackage.Value;
                     var packageId = installedPackage.Key;
 
                     if (!highestVersions.TryGetValue(packageId, out var highestVersion) ||
-                        highestVersion < installedVersion)
+                        highestVersion < installedPackage.Value.Version)
                     {
-                        highestVersions[packageId] = installedVersion;
+                        highestVersions[packageId] = installedPackage.Value.Version;
                     }
                 }
 
-                var requestedPackages = project
-                    .NugetPackages()
-                    .GroupBy(
-                        keySelector: x => x.Name,
-                        elementSelector: x =>
-                        {
-                            if (!SemanticVersion.TryParse(x.Version, out var semanticVersion))
-                            {
-                                throw new Exception($"Could not parse '{x.Version}' from Intent metadata for package '{x.Name}' in project '{project.Name}' as a valid Semantic Version 2.0 'version' value.");
-                            }
+                var consolidatedPackages = installedPackages.ToDictionary(x => x.Key, x => x.Value.Clone());
+                var requestedPackages = new Dictionary<string, NuGetPackage>();
 
-                            return semanticVersion;
-                        })
-                    .ToDictionary(
-                        keySelector: x => x.Key,
-                        elementSelector: x =>
-                        {
-                            var requestedVersion = x.Max();
-                            var packageId = x.Key;
+                foreach (var package in project.NugetPackages())
+                {
+                    if (!SemanticVersion.TryParse(package.Version, out var semanticVersion))
+                    {
+                        throw new Exception($"Could not parse '{package.Version}' from Intent metadata for package '{package.Name}' in project '{project.Name}' as a valid Semantic Version 2.0 'version' value.");
+                    }
 
-                            if (!highestVersions.TryGetValue(packageId, out var highestVersion) ||
-                                highestVersion < requestedVersion)
-                            {
-                                highestVersions[packageId] = requestedVersion;
-                            }
+                    if (!highestVersions.TryGetValue(package.Name, out var highestVersion) ||
+                        highestVersion < semanticVersion)
+                    {
+                        highestVersions[package.Name] = highestVersion = semanticVersion;
+                    }
 
-                            return requestedVersion;
-                        });
+                    if (consolidatedPackages.TryGetValue(package.Name, out var consolidatedPackage))
+                    {
+                        consolidatedPackage.Update(highestVersion, package);
+                    }
+                    else
+                    {
+                        consolidatedPackages.Add(package.Name, NuGetPackage.Create(package, highestVersion));
+                    }
+
+                    if (requestedPackages.TryGetValue(package.Name, out var requestedPackage))
+                    {
+                        requestedPackage.Update(highestVersion, package);
+                    }
+                    else
+                    {
+                        requestedPackages.Add(package.Name, NuGetPackage.Create(package, highestVersion));
+                    }
+                }
 
                 projects.Add(new NuGetProject
                 {
-                    Type = projectType,
-                    Document = document,
+                    Content = projectContent,
                     RequestedPackages = requestedPackages,
                     InstalledPackages = installedPackages,
-                    ProjectName = project.Name,
-                    ProjectTypeName = project.ProjectType.Name,
-                    ProjectFile = project.ProjectFile()
+                    Name = project.Name,
+                    FilePath = project.ProjectFile(),
+                    Processor = processor
                 });
             }
 
             return (projects, highestVersions);
         }
 
-        private static ProjectType GetProjectType(XNode xNode)
+        internal static NuGetScheme ResolveNuGetScheme(XNode xNode)
         {
             if (xNode == null)
             {
-                return ProjectType.Unsupported;
+                return NuGetScheme.Unsupported;
             }
 
-            if (xNode.XPathSelectElement("Project[@Sdk]") != null)
+            var (prefix, namespaceManager, namespaceName) = xNode.Document.GetNamespaceManager();
+            
+            if (xNode.XPathSelectElement("/Project[@Sdk]") != null)
             {
-                return ProjectType.LeanScheme;
+                return NuGetScheme.Lean;
             }
 
-            if (xNode.XPathSelectElement("/Project/ItemGroup/None[@Include='packages.config']") != null)
+            if (xNode.XPathSelectElement($"/{prefix}:Project/{prefix}:ItemGroup/{prefix}:None[@Include='packages.config']", namespaceManager) != null)
             {
-                return ProjectType.VerboseWithPackagesDotConfigScheme;
+                return NuGetScheme.VerboseWithPackagesDotConfig;
             }
 
-            // Even if there is no PackageReference element, so long as there is no packages.config, then we are free to to use
-            // PackageReferences going forward. In the event there is PackageReference element, then we are of course already
-            // using the PackageReference scheme.
-            return ProjectType.VerboseWithPackageReferenceScheme;
+            if (xNode.XPathSelectElement($"/{prefix}:Project", namespaceManager) != null)
+            {
+                // Even if there is no PackageReference element, so long as there is no packages.config, then we are free to to use
+                // PackageReferences going forward. In the event there is PackageReference element, then we are of course already
+                // using the PackageReference scheme.
+                return NuGetScheme.VerboseWithPackageReference;
+            }
+
+            return NuGetScheme.Unsupported;
         }
 
         private static void ConsolidatePackageVersions(IReadOnlyCollection<NuGetProject> projectPackages, IDictionary<string, SemanticVersion> highestVersions)
@@ -288,16 +293,16 @@ namespace Intent.Modules.NuGet.Installer
             {
                 foreach (var projectPackage in projectPackages)
                 {
-                    if (projectPackage.RequestedPackages.TryGetValue(highestVersion.Key, out var requestedVersion) &&
-                        requestedVersion < highestVersion.Value)
+                    if (projectPackage.RequestedPackages.TryGetValue(highestVersion.Key, out var requestedPackage) &&
+                        requestedPackage.Version < highestVersion.Value)
                     {
-                        projectPackage.RequestedPackages[highestVersion.Key] = highestVersion.Value;
+                        requestedPackage.Version = highestVersion.Value;
                     }
 
-                    if (projectPackage.InstalledPackages.TryGetValue(highestVersion.Key, out var installedVersion) &&
-                        installedVersion < highestVersion.Value)
+                    if (projectPackage.InstalledPackages.TryGetValue(highestVersion.Key, out var installedPackage) &&
+                        installedPackage.Version < highestVersion.Value)
                     {
-                        projectPackage.RequestedPackages[highestVersion.Key] = highestVersion.Value;
+                        projectPackage.RequestedPackages.Add(highestVersion.Key, installedPackage.Clone(highestVersion.Value));
                     }
                 }
             }
@@ -309,13 +314,13 @@ namespace Intent.Modules.NuGet.Installer
                 .Select(x => new
                 {
                     ConsolidatedPackageVersions = x.GetConsolidatedPackages(),
-                    x.ProjectName
+                    ProjectName = x.Name
                 })
                 .ToArray();
 
             var packagesWithMultipleVersions = resolvedProjects
                 .SelectMany(x => x.ConsolidatedPackageVersions)
-                .GroupBy(x => x.Key, x => x.Value)
+                .GroupBy(x => x.Key, x => x.Value.Version)
                 .Where(x => x.Distinct().Count() > 1)
                 .Select(x => x.Key)
                 .ToArray();
@@ -334,7 +339,7 @@ namespace Intent.Modules.NuGet.Installer
                         .Select(x => new
                         {
                             x.ProjectName,
-                            Version = x.ConsolidatedPackageVersions[packageId]
+                            x.ConsolidatedPackageVersions[packageId].Version
                         })
                         .OrderByDescending(x => x.Version)
                         .ThenBy(x => x.ProjectName)

@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using Intent.Modules.NuGet.Installer.HelperTypes;
-using Intent.Modules.NuGet.Installer.Schemes;
+using Intent.Modules.NuGet.Installer.SchemeProcessors;
 using Intent.Modules.NuGet.Installer.Tests.Helpers;
 using NuGet.Versioning;
 using Xunit;
@@ -16,8 +15,8 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
         public void GetsInstalledPackages()
         {
             // Arrange
-            var sut = new VerboseWithPackageReferencesScheme();
-            var project = CreateProject(ProjectType.VerboseWithPackageReferenceScheme, TestVersion.Low, TestPackage.One, new Dictionary<string, string>());
+            var sut = new VerboseWithPackageReferencesSchemeProcessor();
+            var project = CreateProject(NuGetScheme.VerboseWithPackageReference, TestVersion.Low, TestPackage.One, new Dictionary<string, string>());
             var doc = XDocument.Load(project.ProjectFile());
 
             // Act
@@ -27,7 +26,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
             Assert.Collection(installedPackages, x =>
             {
                 Assert.Equal("TestPackage.One", x.Key);
-                Assert.Equal(x.Value, SemanticVersion.Parse("1.0.0"));
+                Assert.Equal(x.Value.Version, SemanticVersion.Parse("1.0.0"));
             });
         }
 
@@ -35,89 +34,107 @@ namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
         public void InstallsPackage()
         {
             // Arrange
-            var sut = new VerboseWithPackageReferencesScheme();
+            var sut = new VerboseWithPackageReferencesSchemeProcessor();
             var tracing = new TestTracing();
-            var project = CreateNuGetProject(ProjectType.VerboseWithPackageReferenceScheme, TestVersion.Low, TestPackage.One, nugetPackagesToInstall: new Dictionary<string, string>
+            var project = CreateNuGetProject(NuGetScheme.VerboseWithPackageReference, TestVersion.Low, TestPackage.One, nugetPackagesToInstall: new Dictionary<string, string>
             {
                 { "PackageToInstall.Id", "1.0.0" }
             });
 
             // Act
-            sut.InstallPackages(project, tracing);
+            var result = sut.InstallPackages(
+                project.Content,
+                project.RequestedPackages,
+                project.InstalledPackages,
+                project.Name,
+                tracing);
 
             // Assert
             Assert.Equal(
-                expected: XDocument.Parse(@"
-                    <Project>
-                      <ItemGroup>
-                        <PackageReference Include=""PackageToInstall.Id"">
-                          <Version>1.0.0</Version>
-                        </PackageReference>
-                        <PackageReference Include=""TestPackage.One"">
-                          <Version>1.0.0</Version>
-                        </PackageReference>
-                      </ItemGroup>
-                    </Project>").ToString(),
-                actual: project.Document.ToString());
+                expected: 
+@"<?xml version=""1.0"" encoding=""utf-8""?>
+<Project xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"">
+  <ItemGroup>
+    <PackageReference Include=""PackageToInstall.Id"">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include=""TestPackage.One"">
+      <Version>1.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>",
+                actual: result);
         }
 
         [Fact]
         public void UpgradesPackage()
         {
             // Arrange
-            var sut = new VerboseWithPackageReferencesScheme();
+            var sut = new VerboseWithPackageReferencesSchemeProcessor();
             var tracing = new TestTracing();
-            var project = CreateNuGetProject(ProjectType.VerboseWithPackageReferenceScheme, TestVersion.Low, TestPackage.One, nugetPackagesToInstall: new Dictionary<string, string>
+            var project = CreateNuGetProject(NuGetScheme.VerboseWithPackageReference, TestVersion.Low, TestPackage.One, nugetPackagesToInstall: new Dictionary<string, string>
             {
                 { "TestPackage.One", "3.0.0" }
             });
 
             // Act
-            sut.InstallPackages(project, tracing);
+            var result = sut.InstallPackages(
+                project.Content,
+                project.RequestedPackages,
+                project.InstalledPackages,
+                project.Name,
+                tracing);
 
             // Assert
             Assert.Equal(
-                expected: XDocument.Parse(@"
-                    <Project>
-                      <ItemGroup>
-                        <PackageReference Include=""TestPackage.One"">
-                          <Version>3.0.0</Version>
-                        </PackageReference>
-                      </ItemGroup>
-                    </Project>").ToString(),
-                actual: project.Document.ToString());
+                expected:
+@"<?xml version=""1.0"" encoding=""utf-8""?>
+<Project xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"">
+  <ItemGroup>
+    <PackageReference Include=""TestPackage.One"">
+      <Version>3.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>",
+                actual: result);
         }
-  
+
         [Theory]
         [InlineData(TestPackage.One, TestPackage.Two)]
         [InlineData(TestPackage.Two, TestPackage.One)]
         public void SortsPackageReferencesInAlphabeticalOrder(TestPackage existingPackage, TestPackage testPackageToInstall)
         {
             // Arrange
-            var sut = new VerboseWithPackageReferencesScheme();
+            var sut = new VerboseWithPackageReferencesSchemeProcessor();
             var tracing = new TestTracing();
-            var project = TestFixtureHelper.CreateNuGetProject(ProjectType.VerboseWithPackageReferenceScheme, TestVersion.Low, existingPackage, new Dictionary<string, string>
+            var project = TestFixtureHelper.CreateNuGetProject(NuGetScheme.VerboseWithPackageReference, TestVersion.Low, existingPackage, new Dictionary<string, string>
             {
                 { $"{nameof(TestPackage)}.{testPackageToInstall}", "1.0.0" }
             });
 
             // Act
-            sut.InstallPackages(project, tracing);
+            var result = sut.InstallPackages(
+                project.Content,
+                project.RequestedPackages,
+                project.InstalledPackages,
+                project.Name,
+                tracing);
 
             // Assert
             Assert.Equal(
-                expected: XDocument.Parse(@"
-                    <Project>
-                      <ItemGroup>
-                        <PackageReference Include=""TestPackage.One"">
-                          <Version>1.0.0</Version>
-                        </PackageReference>
-                        <PackageReference Include=""TestPackage.Two"">
-                          <Version>1.0.0</Version>
-                        </PackageReference>
-                      </ItemGroup>
-                    </Project>").ToString(),
-                actual: project.Document.ToString());
+                expected:
+@"<?xml version=""1.0"" encoding=""utf-8""?>
+<Project xmlns=""http://schemas.microsoft.com/developer/msbuild/2003"">
+  <ItemGroup>
+    <PackageReference Include=""TestPackage.One"">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include=""TestPackage.Two"">
+      <Version>1.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>",
+                actual: result);
         }
     }
 }

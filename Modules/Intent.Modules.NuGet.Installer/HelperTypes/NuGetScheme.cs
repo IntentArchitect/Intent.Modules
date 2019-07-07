@@ -1,21 +1,21 @@
 namespace Intent.Modules.NuGet.Installer.HelperTypes
 {
-    internal enum ProjectType
+    internal enum NuGetScheme
     {
         /// <summary>
         /// New lean format, required for use by .NET Standard and .NET Core project types.
         /// </summary>
-        LeanScheme,
+        Lean,
 
         /// <summary>
         /// The old verbose format used by .NET Framework projects, set to use newer PackageReference NuGet scheme.
         /// </summary>
-        VerboseWithPackageReferenceScheme,
+        VerboseWithPackageReference,
 
         /// <summary>
         /// The old verbose format used by .NET Framework projects, set to use older packages.config NuGet scheme.
         /// </summary>
-        VerboseWithPackagesDotConfigScheme,
+        VerboseWithPackagesDotConfig,
 
         /// <summary>
         /// Unsupported / unknown projected type.

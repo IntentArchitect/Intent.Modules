@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.VisualStudio.Projects</id>
-  <version>1.9.0</version>
+  <version>1.9.1</version>
   <summary>Installs templates for Visual Studio projects that integrate with Intent Architect</summary>
   <description>Installs templates for Visual Studio projects that integrate with Intent Architect</description>
   <authors>Intent Architect</authors>
@@ -17,7 +17,7 @@
         <property id="TargetFramework">
           <name>TargetFramework</name>
           <type>string</type>
-          <defaultValue>4.5.2</defaultValue>
+          <defaultValue>4.7.2</defaultValue>
         </property>
       </properties>
     </projectType>
@@ -31,7 +31,7 @@
         <property id="TargetFramework">
           <name>TargetFramework</name>
           <type>string</type>
-          <defaultValue>4.5.2</defaultValue>
+          <defaultValue>4.7.2</defaultValue>
         </property>
         <property id="Port">
           <name>Port</name>
@@ -60,7 +60,7 @@
         <property id="TargetFramework">
           <name>TargetFramework</name>
           <type>string</type>
-          <defaultValue>4.5.2</defaultValue>
+          <defaultValue>4.7.2</defaultValue>
         </property>
       </properties>
     </projectType>
@@ -74,7 +74,7 @@
         <property id="TargetFramework">
           <name>TargetFramework</name>
           <type>string</type>
-          <defaultValue>4.5.2</defaultValue>
+          <defaultValue>4.7.2</defaultValue>
         </property>
       </properties>
     </projectType>
@@ -113,7 +113,6 @@
     <template id="Intent.VisualStudio.Projects.CoreWeb.CSProject"/>
     <template id="Intent.VisualStudio.Projects.CoreWeb.AppSettings"/>
     <template id="Intent.VisualStudio.Projects.CoreWeb.LaunchSettings"/>
-    <template id="Intent.VisualStudio.Projects.NuGetPackagesConfig"/>
     <template id="Intent.VisualStudio.Projects.VisualStudio2015Solution"/>
     <template id="Intent.VisualStudio.Projects.WebConfig"/>
   </templates>
