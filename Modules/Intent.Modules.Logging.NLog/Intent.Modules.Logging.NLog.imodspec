@@ -36,7 +36,7 @@
   <dependencies>
     <dependency id="Intent.Common" version="1.9.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="1.9.0"/>
-    <dependency id="Intent.VisualStudio.Projects" version="1.9.0"/>
+    <dependency id="Intent.VisualStudio.Projects" version="1.9.1"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>
