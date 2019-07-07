@@ -56,6 +56,9 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NuGet.Versioning, Version=5.1.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Versioning.5.1.0\lib\netstandard2.0\NuGet.Versioning.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
@@ -91,6 +94,18 @@
     <Compile Include="Decorators\AssemblyBindingRedirectWebConfigDecoratorRegistration.cs" />
     <Compile Include="Events\CsProjectEvents.cs" />
     <Compile Include="FactoryExtensions\DependencyResolutionApplicationProcessor.cs" />
+    <Compile Include="AssemblyInternalsVisibleTo.cs" />
+    <Compile Include="NuGet\HelperTypes\INuGetSchemeProcessor.cs" />
+    <Compile Include="NuGet\HelperTypes\NuGetPackage.cs" />
+    <Compile Include="NuGet\HelperTypes\NuGetProject.cs" />
+    <Compile Include="NuGet\HelperTypes\NuGetScheme.cs" />
+    <Compile Include="NuGet\HelperTypes\TracingWithPrefix.cs" />
+    <Compile Include="NuGet\NugetInstallerFactoryExtension.cs" />
+    <Compile Include="NuGet\SchemeProcessors\LeanSchemeProcessor.cs" />
+    <Compile Include="NuGet\SchemeProcessors\UnsupportedSchemeProcessor.cs" />
+    <Compile Include="NuGet\SchemeProcessors\VerboseWithPackageReferencesSchemeProcessor.cs" />
+    <Compile Include="NuGet\SchemeProcessors\VerboseWithPackagesDotConfigSchemeProcessor.cs" />
+    <Compile Include="NuGet\XmlNamespaceHelper.cs" />
     <Compile Include="Sync\ApplicationSyncProcessor.cs" />
     <Compile Include="Sync\CoreProjectSyncProcessor.cs" />
     <Compile Include="Sync\FrameworkProjectSyncProcessor.cs" />
@@ -130,7 +145,6 @@
     <Compile Include="Templates\LibraryCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\NodeJSProjectFile\NodeJSProjectFileTemplate.cs" />
     <Compile Include="Templates\NodeJSProjectFile\Registrations.cs" />
-    <Compile Include="Templates\NuGetPackagesConfig\Registrations.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\Registrations.cs" />
     <Compile Include="Templates\WcfServiceCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\WebApiServiceCSProjectFile\Registrations.cs" />
@@ -151,12 +165,6 @@
     <Compile Include="Templates\AssemblyInfo\AssemblyInfoTemplatePartial.cs" />
     <Compile Include="Templates\ConsoleApp\CsProject\ConsoleAppCSProjectTemplate.cs" />
     <Compile Include="Templates\LibraryCSProjectFile\LibraryCSProjectFileTemplate.cs" />
-    <Compile Include="Templates\NuGetPackagesConfig\NuGetPackagesConfigTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NuGetPackagesConfigTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\NuGetPackagesConfig\NuGetPackagesConfigTemplatePartial.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\SolutionFileMetaData.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -189,10 +197,6 @@
     <Content Include="Templates\AssemblyInfo\AssemblyInfoTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AssemblyInfoTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\NuGetPackagesConfig\NuGetPackagesConfigTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>NuGetPackagesConfigTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
