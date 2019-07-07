@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.106
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.Contracts", "Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj", "{2972A488-2F67-426D-8762-C85FB36FB32C}"
 EndProject
@@ -136,8 +136,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common", "Intent.Modules.Common\Intent.Modules.Common.csproj", "{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Electron.IpcProxy", "Intent.Modules.Electron.IpcProxy\Intent.Modules.Electron.IpcProxy.csproj", "{239C2D0D-6B5F-495E-9149-B66067A24635}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.NuGet.Installer", "Intent.Modules.NuGet.Installer\Intent.Modules.NuGet.Installer.csproj", "{606BEADD-6E2B-4D00-9334-818684D070DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.VisualStudio.Projects.Tests", "Intent.Modules.VisualStudio.Projects.Tests\Intent.Modules.VisualStudio.Projects.Tests.csproj", "{F5097140-962E-4CD2-A778-585DC913D87A}"
 EndProject
@@ -377,10 +375,6 @@ Global
 		{239C2D0D-6B5F-495E-9149-B66067A24635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{239C2D0D-6B5F-495E-9149-B66067A24635}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{239C2D0D-6B5F-495E-9149-B66067A24635}.Release|Any CPU.Build.0 = Release|Any CPU
-		{606BEADD-6E2B-4D00-9334-818684D070DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{606BEADD-6E2B-4D00-9334-818684D070DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{606BEADD-6E2B-4D00-9334-818684D070DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{606BEADD-6E2B-4D00-9334-818684D070DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5097140-962E-4CD2-A778-585DC913D87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5097140-962E-4CD2-A778-585DC913D87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5097140-962E-4CD2-A778-585DC913D87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -451,7 +445,6 @@ Global
 		{36F0AC19-B618-4C38-866D-BD75369E83D1} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
 		{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{239C2D0D-6B5F-495E-9149-B66067A24635} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
-		{606BEADD-6E2B-4D00-9334-818684D070DB} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 		{F5097140-962E-4CD2-A778-585DC913D87A} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 		{1B269103-042F-46EA-BD8C-441CAA0F1192} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 	EndGlobalSection
