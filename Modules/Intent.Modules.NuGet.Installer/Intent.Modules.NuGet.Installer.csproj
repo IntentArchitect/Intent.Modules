@@ -10,9 +10,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.SoftwareFactory.MetaModel" Version="1.9.0" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="1.9.0" />
-    <PackageReference Include="NuGet.Versioning" Version="5.1.0" />
   </ItemGroup>
 
   <ItemGroup>

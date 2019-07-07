@@ -13,16 +13,6 @@
   <factoryExtensions>
     <factoryExtension id="Intent.NugetInstaller" >
       <order>200</order>
-      <config>
-        <add key="Consolidate Package Versions"
-             description="When true, the installer will automatically consolidate versions of the NuGet packages within the solution to be the same as highest currently installed version. (true | false)"
-             type="boolean"
-             default="false" />
-        <add key="Warn On Multiple Versions of Same Package"
-             description="When true, the installer will show warnings if multiple versions of the same NuGet package are installed within the solution. Only applicable when 'Consolidate Package Versions' is set to false. (true | false)"
-             type="boolean"
-             default="true" />
-      </config>
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
@@ -31,6 +21,5 @@
   <files>
     <file src="$outDir$/$id$.dll"/>
     <file src="$outDir$/$id$.pdb"/>
-    <file src="$outDir$/NuGet.Versioning.dll"/>
   </files>
 </package>

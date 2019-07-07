@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Intent.Modules.NuGet.Installer.HelperTypes
+namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
 {
     internal class NuGetProject
     {

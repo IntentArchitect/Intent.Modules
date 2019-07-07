@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Xml.Linq;
-using Intent.Modules.NuGet.Installer.HelperTypes;
-using Intent.Modules.NuGet.Installer.SchemeProcessors;
-using Intent.Modules.NuGet.Installer.Tests.Helpers;
+using Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes;
+using Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors;
+using Intent.Modules.VisualStudio.Projects.Tests.NuGet.Helpers;
 using NuGet.Versioning;
 using Xunit;
 
-namespace Intent.Modules.NuGet.Installer.Tests.SchemeTests
+namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.SchemeTests
 {
     public class VerboseWithPackagesDotConfigSchemeTests
     {

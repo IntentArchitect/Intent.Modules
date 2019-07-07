@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using Intent.Modules.NuGet.Installer.HelperTypes;
+using Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes;
 using Intent.SoftwareFactory.Engine;
 using NuGet.Versioning;
 
-namespace Intent.Modules.NuGet.Installer.SchemeProcessors
+namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
 {
     internal class VerboseWithPackagesDotConfigSchemeProcessor : INuGetSchemeProcessor
     {

@@ -1,7 +1,7 @@
 using System;
 using Intent.SoftwareFactory.Engine;
 
-namespace Intent.Modules.NuGet.Installer.HelperTypes
+namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
 {
     internal class TracingWithPrefix : ITracing
     {

@@ -2,7 +2,7 @@
 using System.Xml;
 using System.Xml.Linq;
 
-namespace Intent.Modules.NuGet.Installer
+namespace Intent.Modules.VisualStudio.Projects.NuGet
 {
     public static class XmlNamespaceHelper
     {

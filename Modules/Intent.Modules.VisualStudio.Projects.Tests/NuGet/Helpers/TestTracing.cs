@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Intent.SoftwareFactory.Engine;
 
-namespace Intent.Modules.NuGet.Installer.Tests.Helpers
+namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.Helpers
 {
     internal class TestTracing : ITracing
     {

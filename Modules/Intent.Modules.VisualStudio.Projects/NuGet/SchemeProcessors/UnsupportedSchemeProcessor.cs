@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
-using Intent.Modules.NuGet.Installer.HelperTypes;
+using Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes;
 using Intent.SoftwareFactory.Engine;
 
-namespace Intent.Modules.NuGet.Installer.SchemeProcessors
+namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
 {
     internal class UnsupportedSchemeProcessor : INuGetSchemeProcessor
     {

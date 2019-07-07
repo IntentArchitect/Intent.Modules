@@ -171,9 +171,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common", "In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Electron.IpcProxy", "Intent.Modules.Electron.IpcProxy\Intent.Modules.Electron.IpcProxy.csproj", "{239C2D0D-6B5F-495E-9149-B66067A24635}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.NuGet.Installer", "Intent.Modules.NuGet.Installer\Intent.Modules.NuGet.Installer.csproj", "{606BEADD-6E2B-4D00-9334-818684D070DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.NuGet.Installer", "Intent.Modules.NuGet.Installer\Intent.Modules.NuGet.Installer.csproj", "{606BEADD-6E2B-4D00-9334-818684D070DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.NuGet.Installer.Tests", "Intent.Modules.NuGet.Installer.Tests\Intent.Modules.NuGet.Installer.Tests.csproj", "{F5097140-962E-4CD2-A778-585DC913D87A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.VisualStudio.Projects.Tests", "Intent.Modules.VisualStudio.Projects.Tests\Intent.Modules.VisualStudio.Projects.Tests.csproj", "{F5097140-962E-4CD2-A778-585DC913D87A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

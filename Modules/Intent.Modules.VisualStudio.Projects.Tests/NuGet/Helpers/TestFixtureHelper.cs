@@ -4,7 +4,8 @@ using System.IO;
 using System.Linq;
 using Intent.MetaModel.Common;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Modules.NuGet.Installer.HelperTypes;
+using Intent.Modules.VisualStudio.Projects.NuGet;
+using Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes;
 using Intent.SoftwareFactory.Configuration;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Eventing;
@@ -13,7 +14,7 @@ using NSubstitute;
 using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 using SearchOption = Intent.SoftwareFactory.Engine.SearchOption;
 
-namespace Intent.Modules.NuGet.Installer.Tests.Helpers
+namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.Helpers
 {
     internal static class TestFixtureHelper
     {
@@ -165,7 +166,7 @@ namespace Intent.Modules.NuGet.Installer.Tests.Helpers
         public static IChanges GetChangeManager()
         {
             var changeManager = Substitute.For<IChanges>();
-            
+
             changeManager.FindChange(Arg.Any<string>()).Returns(x => null);
 
             return changeManager;
