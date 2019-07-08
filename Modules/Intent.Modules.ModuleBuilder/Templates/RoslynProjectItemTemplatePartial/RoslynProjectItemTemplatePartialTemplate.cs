@@ -27,15 +27,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
         /// </summary>
         public override string TransformText()
         {
-            this.Write(@"using Intent.Metadata.Models;
-using Intent.RoslynWeaver.Attributes;
-using Intent.Engine;
-using Intent.Templates;
-using Intent.Modules.Common;
-using Intent.Modules.Common.Templates;
-using System;
+            this.Write(@"using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
+using Intent.RoslynWeaver.Attributes;
+using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 ");
             
             #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"

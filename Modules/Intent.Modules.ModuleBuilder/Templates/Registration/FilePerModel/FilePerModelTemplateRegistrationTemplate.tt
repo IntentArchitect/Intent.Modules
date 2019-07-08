@@ -35,7 +35,7 @@ namespace <#= Namespace #>
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<<#= Model.GetTargetModel() #>> GetModels(Engine.IApplication application)
+        public override IEnumerable<<#= Model.GetTargetModel() #>> GetModels(Intent.Engine.IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == "Service") for services only)
             return _metadataManager.GetClassModels(application, "<#= Model.GetModelerName() #>"); 

@@ -60,28 +60,36 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             if (Model.Any(x => x.IsCSharpTemplate()) && doc.XPathSelectElement("package/dependencies/dependency[@id=\"Intent.OutputManager.RoslynWeaver\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement("package/dependencies");
-                dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.OutputManager.RoslynWeaver"), new XAttribute("version", "1.7.0")));
+                dependencies.Add(CreateDependency(IntentModule.IntentRoslynWeaver));
             }
 
             if (Model.Any(x => x.GetModelerName() == "Domain" && x.GetRegistrationType() != RegistrationType.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Domain\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement("package/dependencies");
-                dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Domain"), new XAttribute("version", "1.0.0")));
+                dependencies.Add(CreateDependency(IntentModule.IntentDomainModeler));
             }
 
             if (Model.Any(x => x.GetModelerName() == "Services" && x.GetRegistrationType() != RegistrationType.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Services\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement("package/dependencies");
-                dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Services"), new XAttribute("version", "1.0.0")));
+                dependencies.Add(CreateDependency(IntentModule.IntentServicesModeler));
             }
 
             if (Model.Any(x => x.GetModelerName() == "Eventing" && x.GetRegistrationType() != RegistrationType.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Eventing\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement("package/dependencies");
-                dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Eventing"), new XAttribute("version", "1.0.0")));
+                dependencies.Add(CreateDependency(IntentModule.IntentEventingModeler));
             }
 
             return doc.ToStringUTF8();
+        }
+
+        private static XElement CreateDependency(IntentModule intentModule)
+        {
+            return new XElement(
+                "dependency",
+                new XAttribute("id", intentModule.Name),
+                new XAttribute("version", intentModule.Version));
         }
 
         private XDocument LoadOrCreateImodSpecFile(string filePath)
@@ -98,8 +106,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
   <templates>
   </templates>
   <dependencies>
-    <dependency id=""Intent.Common"" version=""1.9.0"" />
-    <dependency id=""Intent.Common.Types"" version=""1.9.0"" />
+    {CreateDependency(IntentModule.IntentCommon)}
+    {CreateDependency(IntentModule.IntentCommonTypes)}
   </dependencies> 
   <files>
     <file src=""$outDir$/$id$.dll"" />

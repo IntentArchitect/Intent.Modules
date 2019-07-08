@@ -105,7 +105,7 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write(@"> GetModels(Engine.IApplication application)
+            this.Write(@"> GetModels(Intent.Engine.IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == ""Service"") for services only)
             return _metadataManager.GetClassModels(application, """);
