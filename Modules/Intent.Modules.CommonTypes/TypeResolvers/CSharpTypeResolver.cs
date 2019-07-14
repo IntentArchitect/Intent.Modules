@@ -11,7 +11,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
 
         protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {
-            var result = typeInfo.Name;
+            var result = ((ITypeReference)typeInfo).Name;
             if (typeInfo.Stereotypes.Any(x => x.Name == "C#"))
             {
                 string typeName = typeInfo.GetStereotypeProperty<string>("C#", "Type", typeInfo.Name);

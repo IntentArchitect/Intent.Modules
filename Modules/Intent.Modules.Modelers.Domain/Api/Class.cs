@@ -25,11 +25,14 @@ namespace Intent.Modelers.Domain.Api
                 _parent._childClasses.Add(this);
             }
 
-            _associatedClasses = @class.AssociatedClasses.Select(x =>
-            {
-                var association = new Association(x.Association, classCache);
-                return Equals(association.TargetEnd.Class, this) ? association.SourceEnd : association.TargetEnd;
-            }).ToList();
+            _associatedClasses = @class.AssociatedClasses
+                .Where(x => x.Association.SpecializationType != "Generalization")
+                .Select(x =>
+                {
+                    var association = new Association(x.Association, classCache);
+                    return Equals(association.TargetEnd.Class, this) ? association.SourceEnd : association.TargetEnd;
+                })
+                .ToList();
         }
 
         public string Id => _class.Id;
@@ -60,9 +63,9 @@ namespace Intent.Modelers.Domain.Api
         public static bool operator ==(Class lhs, Class rhs)
         {
             // Check for null.
-            if (Object.ReferenceEquals(lhs, null))
+            if (ReferenceEquals(lhs, null))
             {
-                if (Object.ReferenceEquals(rhs, null))
+                if (ReferenceEquals(rhs, null))
                 {
                     // null == null = true.
                     return true;
@@ -82,20 +85,20 @@ namespace Intent.Modelers.Domain.Api
 
         public bool Equals(IClass other)
         {
-            return string.Equals(Id, other.Id);
+            return string.Equals(Id, other?.Id);
         }
 
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((IClass)obj);
         }
 
         public override int GetHashCode()
         {
-            return (Id != null ? Id.GetHashCode() : 0);
+            return Id != null ? Id.GetHashCode() : 0;
         }
     }
 }

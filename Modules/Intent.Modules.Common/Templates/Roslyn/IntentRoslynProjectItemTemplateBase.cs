@@ -45,9 +45,9 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Converts the namespae of a fully qualified class name to the relative namespace fo this class instance
+        /// Converts the namespace of a fully qualified class name to the relative namespace for this class instance
         /// </summary>
-        /// <param name="foreignType">Namespace to convert</param>
+        /// <param name="foreignType">The foreign type which is ideally fully qualified</param>
         /// <returns></returns>
         public virtual string NormalizeNamespace(string foreignType)
         {
@@ -89,7 +89,7 @@ namespace Intent.Modules.Common.Templates
                 return foreignType;
             }
 
-            // Is there already a using to which matches qualifier:
+            // Is there already a using which matches qualifier:
             // (It's not immediately clear what scenario "usings.All(x => x != foreignType)" covers, if you know, please document)
             // localNamespaceParts.Contains(foreignTypeParts.Last()) - if name exists in local namespace, can't use name as is.
             var foreignTypeQualifier = foreignTypeParts.Take(foreignTypeParts.Length - 1).DefaultIfEmpty().Aggregate((x, y) => x + "." + y);

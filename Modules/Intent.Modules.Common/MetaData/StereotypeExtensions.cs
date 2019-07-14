@@ -19,7 +19,15 @@ namespace Intent.Modules.Common
 
         public static IStereotype GetStereotype(this IHasStereotypes model, string stereotypeName)
         {
-            return model.Stereotypes.FirstOrDefault(x => x.Name == stereotypeName);
+            var stereotypes = model.Stereotypes.Where(x => x.Name == stereotypeName).ToArray();
+            if (stereotypes.Length > 1)
+            {
+                throw new Exception(model is IMetadataModel metadataModel
+                    ? $"More than one stereotype found with the name '{stereotypeName}' on element with ID {metadataModel.Id}"
+                    : $"More than one stereotype found with the name '{stereotypeName}'");
+            }
+
+            return stereotypes.SingleOrDefault();
         }
 
         public static T GetProperty<T>(this IStereotype stereotype, string propertyName, T defaultIfNotFound = default(T))
