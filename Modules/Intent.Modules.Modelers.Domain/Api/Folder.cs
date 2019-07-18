@@ -9,7 +9,7 @@ namespace Intent.Modelers.Domain.Api
         public const string SpecializationType = "Folder";
         public Folder(IElement element)
         {
-            if (element.SpecializationType != "Folder")
+            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.OrdinalIgnoreCase))
             {
                 throw new Exception($"Cannot create a folder from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }

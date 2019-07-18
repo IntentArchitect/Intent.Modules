@@ -16,9 +16,9 @@ namespace Intent.Modelers.Domain.Api
         {
             _class = @class;
             classCache.Add(Id, this);
-            Folder = _class.ParentElement?.SpecializationType == Api.Folder.SpecializationType ? new Folder(_class.ParentElement) : null;
+            Folder = Api.Folder.SpecializationType.Equals(_class.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_class.ParentElement) : null;
 
-            var parent = _class.AssociatedClasses.FirstOrDefault(x => x.Association.SpecializationType == "Generalization")?.Model;
+            var parent = _class.AssociatedClasses.FirstOrDefault(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))?.Model;
             if (parent != null)
             {
                 _parent = classCache.ContainsKey(parent.Id) ? classCache[parent.Id] : new Class(parent, classCache);
@@ -26,7 +26,7 @@ namespace Intent.Modelers.Domain.Api
             }
 
             _associatedClasses = @class.AssociatedClasses
-                .Where(x => x.Association.SpecializationType != "Generalization")
+                .Where(x => !"Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))
                 .Select(x =>
                 {
                     var association = new Association(x.Association, classCache);
