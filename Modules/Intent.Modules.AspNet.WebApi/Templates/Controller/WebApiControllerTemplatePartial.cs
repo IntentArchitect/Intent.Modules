@@ -391,7 +391,9 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             };
 
             // NB: Order of conditional checks is important here
-            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !csharpPrimitives.Contains(parameter.TypeReference.Name);
+            return GetParameterBindingAttribute(parameter) == "[FromBody]" 
+                || (!csharpPrimitives.Contains(parameter.TypeReference.Name)
+                    && parameter.TypeReference.Type != ReferenceType.Enum);
         }
 
         private enum HttpVerb
