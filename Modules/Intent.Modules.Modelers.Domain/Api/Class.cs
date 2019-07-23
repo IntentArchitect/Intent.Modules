@@ -18,7 +18,16 @@ namespace Intent.Modelers.Domain.Api
             classCache.Add(Id, this);
             Folder = Api.Folder.SpecializationType.Equals(_class.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_class.ParentElement) : null;
 
-            var parent = _class.AssociatedClasses.FirstOrDefault(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))?.Model;
+            var generalizedFrom = _class.AssociatedClasses
+                .Where(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase) &&
+                            x.Association.SourceEnd.Id == _class.Id)
+                .ToArray();
+            if (generalizedFrom.Length > 1)
+            {
+                throw new Exception($"[{_class.Name} - {_class.Id}] is generalized from more than one class.");
+            }
+
+            var parent = generalizedFrom.SingleOrDefault()?.Model;
             if (parent != null)
             {
                 _parent = classCache.ContainsKey(parent.Id) ? classCache[parent.Id] : new Class(parent, classCache);
