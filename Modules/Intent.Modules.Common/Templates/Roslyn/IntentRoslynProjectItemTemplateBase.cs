@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Intent.Engine;
@@ -62,7 +63,14 @@ namespace Intent.Modules.Common.Templates
                 foreignType = $"{foreignType.Substring(0, foreignType.IndexOf("<", StringComparison.Ordinal))}<{normalizedGenericTypes}>";
             }
 
-            var usingPaths = DependencyUsings.Split(';').Select(x => x.Trim().Replace("using ", "")).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+            var usingPaths = DependencyUsings
+                .Split(';')
+                .Select(x => x.Trim().Replace("using ", ""))
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Union(TemplateUsings)
+                .Union(ExistingContentUsings)
+                .Distinct()
+                .ToArray();
             var localNamespace = Namespace;
             var knownOtherPaths = usingPaths
                 .Concat(Project.Application.Projects.Select(x => x.Name))
@@ -71,6 +79,29 @@ namespace Intent.Modules.Common.Templates
                 .ToArray();
 
             return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths);
+        }
+
+        private IEnumerable<string> _templateUsings;
+        private IEnumerable<string> TemplateUsings => _templateUsings ?? (_templateUsings = GetUsingsFromContent(GenerationEnvironment.ToString()));
+
+        private IEnumerable<string> _existingContentUsings;
+        private IEnumerable<string> ExistingContentUsings
+        {
+            get
+            {
+                if (_existingContentUsings != null)
+                {
+                    return _existingContentUsings;
+                }
+
+                var filepath = FileMetadata.GetRelativeFilePathWithFileName();
+                if (!File.Exists(filepath))
+                {
+                    return _existingContentUsings = new string[0];
+                }
+
+                return _existingContentUsings = GetUsingsFromContent(File.ReadAllText(filepath));
+            }
         }
 
         internal static string NormalizeNamespace(
@@ -177,6 +208,32 @@ namespace Intent.Modules.Common.Templates
             }
 
             return foreignTypeParts.Skip(commonPartsCount).Aggregate((x, y) => x + "." + y);
+        }
+
+        private static IEnumerable<string> GetUsingsFromContent(string existingContent)
+        {
+            var lines = existingContent
+                .Replace("\r\n", "\n")
+                .Split('\n');
+            
+            var relevantContent = new List<string>();
+            foreach (var line in lines)
+            {
+                if (line.StartsWith("using ") && !line.Contains("="))
+                {
+                    relevantContent.Add(line
+                        .Replace(";", string.Empty)
+                        .Replace("using ", string.Empty)
+                        .Trim());
+                }
+
+                if (line.StartsWith("namespace"))
+                {
+                    break;
+                }
+            }
+
+            return relevantContent;
         }
 
         public abstract RoslynMergeConfig ConfigureRoslynMerger();
