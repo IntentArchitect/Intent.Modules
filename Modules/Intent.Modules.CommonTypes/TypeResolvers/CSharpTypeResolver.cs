@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
@@ -30,6 +29,14 @@ namespace Intent.Modules.Common.Types.TypeResolvers
                 {
                     result += "?";
                 }
+            }
+
+            if (typeInfo.GenericTypeParameters.Any())
+            {
+                var genericTypeParameters = typeInfo.GenericTypeParameters
+                    .Select(x => ResolveType(x, collectionFormat))
+                    .Aggregate((x, y) => x + ", " + y);
+                result += $"<{genericTypeParameters}>";
             }
 
             if (typeInfo.IsCollection)
