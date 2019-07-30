@@ -2,7 +2,7 @@
 using Intent.Modules.Common;
 using System;
 
-namespace Intent.Modules.ModuleBuilder
+namespace Intent.Modules.ModuleBuilder.Helpers
 {
     public static class ModelExtensions
     {

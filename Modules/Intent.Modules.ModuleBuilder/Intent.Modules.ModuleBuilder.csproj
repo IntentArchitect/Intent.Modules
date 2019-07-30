@@ -52,10 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelExtensions.cs" />
+    <Compile Include="Helpers\ModelExtensions.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CreationMode.cs" />
+    <Compile Include="Helpers\CreationMode.cs" />
     <Compile Include="Templates\IModSpec\IModSpecRegistrations.cs" />
     <Compile Include="Templates\IModSpec\IModSpecTemplate.cs" />
     <Compile Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationRegistrations.cs" />

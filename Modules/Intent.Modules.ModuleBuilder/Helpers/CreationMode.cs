@@ -1,4 +1,4 @@
-﻿namespace Intent.Modules.ModuleBuilder
+﻿namespace Intent.Modules.ModuleBuilder.Helpers
 {
     public enum CreationMode
     {

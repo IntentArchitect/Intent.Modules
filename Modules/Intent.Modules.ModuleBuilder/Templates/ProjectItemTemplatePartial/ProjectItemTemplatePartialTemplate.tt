@@ -2,6 +2,7 @@
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using Intent.SoftwareFactory.Engine;
