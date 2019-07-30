@@ -6,9 +6,11 @@ namespace Intent.Modules.ModuleBuilder.Helpers
 {
     public static class ModelExtensions
     {
+        private const string TemplateSettingsStereotype = "Template Settings";
+
         public static CreationMode GetCreationMode(this IClass model)
         {
-            switch (model.GetStereotypeProperty("Template Settings", "Creation Mode", "File per Model"))
+            switch (model.GetStereotypeProperty(TemplateSettingsStereotype, "Creation Mode", "File per Model"))
             {
                 case "Single File (No Model)":
                     return CreationMode.SingleFileNoModel;
@@ -25,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
 
         public static string GetModelerName(this IClass model)
         {
-            return model.GetStereotypeProperty("Template Settings", "Modeler", "Domain");
+            return model.GetStereotypeProperty(TemplateSettingsStereotype, "Modeler", "Domain");
         }
 
         public static bool IsCSharpTemplate(this IClass model)
@@ -49,7 +51,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
 
             if (GetModelerName(model) == "Custom")
             {
-                var customModel = model.GetStereotypeProperty<string>("Template Settings", "Custom Model", "object");
+                var customModel = model.GetStereotypeProperty<string>(TemplateSettingsStereotype, "Custom Model", "object");
                 if (string.IsNullOrWhiteSpace(customModel))
                 {
                     throw new Exception($"Model {model.Name} has a Creation Mode of 'Custom' but nothing specified in 'Custom Model'");
