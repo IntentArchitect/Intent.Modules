@@ -58,14 +58,14 @@ namespace <#= Namespace #>
 <#  } #>
 
 <#  if (HasTemplateDependancies()) { #>
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
             return new ITemplateDependancy[] 
             {
-<#  foreach (var name in GetTemplateDependantNames()) { #>
-                // <#= name #>
-<#  } #>
+<#      foreach (var name in GetTemplateDependantNames()) { #>
+                
+<#      } #>
             };
         }
 <#  } #>

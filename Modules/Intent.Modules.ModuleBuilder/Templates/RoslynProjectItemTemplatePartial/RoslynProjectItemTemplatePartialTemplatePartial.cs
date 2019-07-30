@@ -81,6 +81,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 .ToArray();
         }
 
+        private ITemplateDependancy GetTemplateDependancy(string templateName)
+        {
+            var templateDependancy = TemplateDependancy.OnTemplate(templateName);
+            return templateDependancy;
+        }
+
+        private string GetTemplateFullName(string templateName)
+        {
+            var templateDependancy = GetTemplateDependancy(templateName);
+            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependancy);
+            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
+        }
 
         private string GetConfiguredInterfaces()
         {

@@ -1,5 +1,7 @@
 ﻿using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial;
+using Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial;
 using System;
 
 namespace Intent.Modules.ModuleBuilder.Helpers
@@ -38,6 +40,20 @@ namespace Intent.Modules.ModuleBuilder.Helpers
         public static bool IsFileTemplate(this IClass model)
         {
             return model.SpecializationType == "File Template";
+        }
+
+        public static string GetDependancyTemplateId(this IClass model)
+        {
+            if (model.IsCSharpTemplate())
+            {
+                return RoslynProjectItemTemplatePartialTemplate.TemplateId;
+            }
+            if (model.IsFileTemplate())
+            {
+                return ProjectItemTemplatePartialTemplate.TemplateId;
+            }
+
+            return null;
         }
 
         public static string GetTargetModel(this IClass model)

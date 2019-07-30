@@ -167,26 +167,19 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]\r\n" +
-                    "        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()\r\n     " +
-                    "   {\r\n            return new ITemplateDependancy[] \r\n            {\r\n");
+            this.Write("        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]\r\n " +
+                    "       public IEnumerable<ITemplateDependancy> GetTemplateDependencies()\r\n      " +
+                    "  {\r\n            return new ITemplateDependancy[] \r\n            {\r\n");
             
             #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-  foreach (var name in GetTemplateDependantNames()) { 
+      foreach (var name in GetTemplateDependantNames()) { 
             
             #line default
             #line hidden
-            this.Write("                // ");
-            
-            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(name));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n");
+            this.Write("                \r\n");
             
             #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-  } 
+      } 
             
             #line default
             #line hidden
