@@ -44,7 +44,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
         private string GetModelType()
         {
             var type = Model.GetTargetModel();
-            if (Model.GetRegistrationType() == RegistrationType.SingleFileListModel)
+            if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
             {
                 type = $"IList<{type}>";
             }

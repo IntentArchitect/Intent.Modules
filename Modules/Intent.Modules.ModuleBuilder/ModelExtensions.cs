@@ -1,25 +1,25 @@
 ﻿using Intent.Metadata.Models;
 using Intent.Modules.Common;
-using Intent.Modules.Common;
+using System;
 
 namespace Intent.Modules.ModuleBuilder
 {
     public static class ModelExtensions
     {
-        public static RegistrationType GetRegistrationType(this IClass model)
+        public static CreationMode GetCreationMode(this IClass model)
         {
             switch (model.GetStereotypeProperty("Template Settings", "Creation Mode", "File per Model"))
             {
                 case "Single File (No Model)":
-                    return RegistrationType.SingleFileNoModel;
+                    return CreationMode.SingleFileNoModel;
                 case "File per Model":
-                    return RegistrationType.FilePerModel;
+                    return CreationMode.FilePerModel;
                 case "Single File (Model List)":
-                    return RegistrationType.SingleFileListModel;
+                    return CreationMode.SingleFileListModel;
                 case "Custom":
-                    return RegistrationType.Custom;
+                    return CreationMode.Custom;
                 default:
-                    return RegistrationType.SingleFileNoModel;
+                    return CreationMode.SingleFileNoModel;
             }
         }
 
@@ -40,17 +40,34 @@ namespace Intent.Modules.ModuleBuilder
 
         public static string GetTargetModel(this IClass model)
         {
-            switch (model.GetRegistrationType())
+            var selectedCreationMode = model.GetCreationMode();
+
+            if (selectedCreationMode == CreationMode.SingleFileNoModel)
             {
-                case RegistrationType.SingleFileNoModel:
-                    return "object";
-                case RegistrationType.FilePerModel:
-                case RegistrationType.SingleFileListModel:
-                    return "IClass";
-                case RegistrationType.Custom:
-                    return "object";
-                default:
-                    return "object";
+                return "object";
+            }
+
+            if (GetModelerName(model) == "Custom")
+            {
+                var customModel = model.GetStereotypeProperty<string>("Template Settings", "Custom Model", "object");
+                if (string.IsNullOrWhiteSpace(customModel))
+                {
+                    throw new Exception($"Model {model.Name} has a Creation Mode of 'Custom' but nothing specified in 'Custom Model'");
+                }
+
+                return customModel;
+            }
+            else
+            {
+                switch (selectedCreationMode)
+                {
+                    case CreationMode.FilePerModel:
+                    case CreationMode.SingleFileListModel:
+                        return "IClass";
+                    case CreationMode.Custom:
+                    default:
+                        return "object";
+                }
             }
         }
     }

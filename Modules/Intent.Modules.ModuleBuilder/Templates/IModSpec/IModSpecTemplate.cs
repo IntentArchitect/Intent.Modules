@@ -64,19 +64,19 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.OutputManager.RoslynWeaver"), new XAttribute("version", "1.7.0")));
             }
 
-            if (Model.Any(x => x.GetModelerName() == "Domain" && x.GetRegistrationType() != RegistrationType.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Domain\"]") == null)
+            if (Model.Any(x => x.GetModelerName() == "Domain" && x.GetCreationMode() != CreationMode.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Domain\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement($"package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Domain"), new XAttribute("version", "1.0.0")));
             }
 
-            if (Model.Any(x => x.GetModelerName() == "Services" && x.GetRegistrationType() != RegistrationType.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Services\"]") == null)
+            if (Model.Any(x => x.GetModelerName() == "Services" && x.GetCreationMode() != CreationMode.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Services\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement($"package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Services"), new XAttribute("version", "1.0.0")));
             }
 
-            if (Model.Any(x => x.GetModelerName() == "Eventing" && x.GetRegistrationType() != RegistrationType.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Eventing\"]") == null)
+            if (Model.Any(x => x.GetModelerName() == "Eventing" && x.GetCreationMode() != CreationMode.SingleFileNoModel) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Eventing\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement($"package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Eventing"), new XAttribute("version", "1.0.0")));

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
@@ -54,12 +55,49 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
         private string GetModelType()
         {
             var type = Model.GetTargetModel();
-            if (Model.GetRegistrationType() == RegistrationType.SingleFileListModel)
+            if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
             {
                 type = $"IList<{type}>";
             }
 
             return type;
+        }
+
+        private bool HasDeclaresUsings()
+        {
+            return Model.GetStereotypeProperty<bool>("Template Settings", "Declare Usings");
+        }
+
+        private bool HasTemplateDependancies()
+        {
+            return Model.HasStereotype("Template Dependancy");
+        }
+
+        private IReadOnlyCollection<string> GetTemplateDependantNames()
+        {
+            return Model.Stereotypes
+                .Where(p => p.Name == "Template Dependancy")
+                .Select(s => s.Properties.FirstOrDefault(p => p.Key == "Template Name")?.Value)
+                .Where(p => !string.IsNullOrEmpty(p))
+                .ToArray();
+        }
+
+
+        private string GetConfiguredInterfaces()
+        {
+            var interfaceList = new List<string>();
+
+            if (HasDeclaresUsings())
+            {
+                interfaceList.Add("IDeclareUsings");
+            }
+
+            if (HasTemplateDependancies())
+            {
+                interfaceList.Add("IHasTemplateDependencies");
+            }
+
+            return interfaceList.Any() ? (", " + string.Join(", ", interfaceList)) : string.Empty;
         }
     }
 }

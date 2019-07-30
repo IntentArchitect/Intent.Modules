@@ -17,10 +17,11 @@ using System.Linq;
 namespace <#= Namespace #>
 {
 	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    partial class <#= ClassName #> : IntentRoslynProjectItemTemplateBase<<#= GetModelType() #>>
+    partial class <#= ClassName #> : IntentRoslynProjectItemTemplateBase<<#= GetModelType() #>><#= GetConfiguredInterfaces() #>
     {
         public const string TemplateId = "<#= GetTemplateId() #>";
 
+        [IntentInitialGen]
         public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
         }
@@ -35,12 +36,37 @@ namespace <#= Namespace #>
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "cs",
-                defaultLocationInProject: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? Model.Name.Replace("Template", "") : "" #>",
-                className: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                @namespace: "${Project.Name}<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? "." + Model.Name.Replace("Template", "") : "" #>"
+                defaultLocationInProject: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? Model.Name.Replace("Template", "") : "" #>",
+                className: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                @namespace: "${Project.Name}<#= Model.GetCreationMode() == CreationMode.FilePerModel ? "." + Model.Name.Replace("Template", "") : "" #>"
             );
         }
+
+<#  if (HasDeclaresUsings()) { #>
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public IEnumerable<string> DeclareUsings()
+        {
+            // Specify list of Namespaces here, example:
+            return new string[]
+            {
+                "System.Linq"
+            };
+        }
+<#  } #>
+
+<#  if (HasTemplateDependancies()) { #>
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            return new ITemplateDependancy[] 
+            {
+<#  foreach (var name in GetTemplateDependantNames()) { #>
+                // <#= name #>
+<#  } #>
+            };
+        }
+<#  } #>
     }
 }

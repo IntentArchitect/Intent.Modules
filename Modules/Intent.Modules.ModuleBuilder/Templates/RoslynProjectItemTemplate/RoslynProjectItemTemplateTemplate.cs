@@ -53,7 +53,7 @@ namespace <#= Namespace #>
 
         private string TemplateBody()
         {
-            if (Model.GetRegistrationType() == RegistrationType.FilePerModel)
+            if (Model.GetCreationMode() == CreationMode.FilePerModel)
             {
                 return @"
 <#  // The following is an example template implementation
@@ -71,7 +71,7 @@ namespace <#= Namespace #>
 <#  } #>";
             }
 
-            if (Model.GetRegistrationType() == RegistrationType.SingleFileListModel)
+            if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
             {
                 return @"
 <#  // The following is an example template implementation
@@ -86,7 +86,7 @@ namespace <#= Namespace #>
         private string GetModelType()
         {
             var type = Model.GetTargetModel();
-            if (Model.GetRegistrationType() == RegistrationType.SingleFileListModel)
+            if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
             {
                 type = $"IList<{type}>";
             }
