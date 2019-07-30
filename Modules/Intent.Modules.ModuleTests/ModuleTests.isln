@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <solution id="22bf3da2-ae0e-44c5-ab09-301c938a2ec2">
-  <name>EfEntityGenerationTests</name>
+  <name>ModuleTests</name>
   <version>1.2.0</version>
   <icon>heart-o</icon>
   <iconType>FontAwesome</iconType>
