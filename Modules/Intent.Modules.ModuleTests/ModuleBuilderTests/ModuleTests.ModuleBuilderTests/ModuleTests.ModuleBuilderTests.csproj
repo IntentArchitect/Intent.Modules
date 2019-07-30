@@ -1,0 +1,93 @@
+﻿<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CE24636-36B9-4F37-9535-B723F3D29A0E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModuleTests.ModuleBuilderTests</RootNamespace>
+    <AssemblyName>ModuleTests.ModuleBuilderTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Intent.MetaModel">
+      <HintPath>..\packages\Intent.SoftwareFactory.MetaModel.1.7.0\lib\net452\Intent.MetaModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Intent.Modules.Common">
+      <HintPath>..\packages\Intent.Modules.Common.1.7.0\lib\net452\Intent.Modules.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Intent.RoslynWeaver.Attributes">
+      <HintPath>..\packages\Intent.RoslynWeaver.Attributes.1.0.0\lib\net45\Intent.RoslynWeaver.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Intent.SoftwareFactory.SDK">
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.1.7.0\lib\net452\Intent.SoftwareFactory.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.txt" />
+    <Content Include="Templates\Composite\Composite.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Composite.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\DependantA\DependantA.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DependantA.cs</LastGenOutput>
+    </Content>
+    <Compile Include="Templates\Composite\Composite.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Composite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Composite\CompositePartial.cs" />
+    <Compile Include="Templates\DependantA\DependantA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DependantA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DependantA\DependantAPartial.cs" />
+    <Compile Include="Templates\Composite\CompositeRegistration.cs" />
+    <Compile Include="Templates\DependantA\DependantARegistration.cs" />
+    <Content Include="ModuleTests.ModuleBuilderTests.imodspec" />
+    <Content Include="packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Intent.IntentArchitectPackager.1.3.0\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.3.0\build\Intent.IntentArchitectPackager.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.1.3.0\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.1.3.0\build\Intent.IntentArchitectPackager.targets'))" />
+  </Target>
+</Project>

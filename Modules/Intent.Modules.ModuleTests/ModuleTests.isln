@@ -2,10 +2,11 @@
 <solution id="22bf3da2-ae0e-44c5-ab09-301c938a2ec2">
   <name>ModuleTests</name>
   <version>1.2.0</version>
-  <icon>heart-o</icon>
+  <icon>shield</icon>
   <iconType>FontAwesome</iconType>
   <metadataRelativePath>Intent.MetaData</metadataRelativePath>
   <applications>
     <application id="7489cd09-dafa-49ea-be0d-be25287878a6" relativePath="EfEntityGenerationTests\EfEntityGenerationTests.application.config" />
+    <application id="f1fe42eb-130d-49c5-b785-b0ee6a362399" relativePath="ModuleBuilderTests\ModuleBuilderTests.application.config" />
   </applications>
 </solution>
