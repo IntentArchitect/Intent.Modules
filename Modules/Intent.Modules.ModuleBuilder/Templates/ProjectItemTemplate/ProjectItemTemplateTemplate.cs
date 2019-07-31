@@ -17,7 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
         public override DefaultFileMetaData DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
+                overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "tt",
@@ -26,6 +26,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         public override string TransformText()
         {
+            var content = TemplateHelper.GetExistingTemplateContent(this);
+            if (content != null)
+            {
+                return TemplateHelper.ReplaceTemplateInheritsTag(content, $"IntentProjectItemTemplateBase<{GetModelType()}>");
+            }
+
             return $@"<#@ template language=""C#"" inherits=""IntentProjectItemTemplateBase<{GetModelType()}>"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
