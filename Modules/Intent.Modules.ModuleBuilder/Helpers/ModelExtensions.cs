@@ -42,6 +42,11 @@ namespace Intent.Modules.ModuleBuilder.Helpers
 
         public static string GetTargetModel(this IClass model)
         {
+            if (model == null)
+            {
+                return string.Empty;
+            }
+
             var selectedCreationMode = model.GetCreationMode();
 
             if (selectedCreationMode == CreationMode.SingleFileNoModel)

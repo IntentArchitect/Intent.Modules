@@ -1,7 +1,7 @@
 using System;
+using System.Linq;
 using Intent.RoslynWeaver.Attributes;
 using ModuleBuilderOutputTest.DependantA;
-using System.Linq;
 // Mode.Fully will overwrite file on each run. 
 // Add in explicit [IntentManaged.Ignore] attributes to class or methods. Alternatively change to Mode.Merge (additive) or Mode.Ignore (once-off)
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -9,8 +9,8 @@ using System.Linq;
 
 namespace ModuleBuilderOutputTest.Composite
 {
-    public class NewClass
+    public class ClassB
     {
-        public NewClassDependant DependantA { get; }
+        public ClassBDependant DependantA { get; }
     }
 }

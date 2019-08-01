@@ -45,9 +45,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Composite\NewClass.cs" />
-    <Compile Include="DependantA\NewClassDependant.cs" />
-    <Content Include="DependantB\NewClass.txt" />
+    <Content Include="DependantB\ClassA.txt" />
+    <Content Include="DependantB\ClassB.txt" />
+    <Compile Include="DependantA\ClassADependant.cs" />
+    <Compile Include="DependantA\ClassBDependant.cs" />
+    <Compile Include="Composite\ClassA.cs" />
+    <Compile Include="Composite\ClassB.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

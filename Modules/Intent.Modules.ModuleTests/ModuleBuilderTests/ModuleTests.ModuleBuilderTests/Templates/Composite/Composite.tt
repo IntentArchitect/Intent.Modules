@@ -16,6 +16,6 @@ namespace <#= Namespace #>
 {
     public class <#= ClassName #>
     {
-        public <#= GetDependantATemplateFullName() #> DependantA { get; }
+        public <#= GetDependantATemplateFullName(Model) #> DependantA { get; }
     }
 }

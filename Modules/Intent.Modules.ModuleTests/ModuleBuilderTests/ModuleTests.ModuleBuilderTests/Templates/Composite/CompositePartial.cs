@@ -50,18 +50,16 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private string GetDependantATemplateFullName()
+        private string GetDependantATemplateFullName(IClass model)
         {
-            var templateDependency = TemplateDependancy.OnTemplate("ModuleBuilderTests.DependantA");
-            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependency);
+            var template = Project.FindTemplateInstance<IHasClassDetails>("ModuleBuilderTests.DependantA", model);
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private string GetDependantBTemplateFullName()
+        private string GetDependantBTemplateFullName(IClass model)
         {
-            var templateDependency = TemplateDependancy.OnTemplate("ModuleBuilderTests.DependantB");
-            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependency);
+            var template = Project.FindTemplateInstance<IHasClassDetails>("ModuleBuilderTests.DependantB", model);
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 

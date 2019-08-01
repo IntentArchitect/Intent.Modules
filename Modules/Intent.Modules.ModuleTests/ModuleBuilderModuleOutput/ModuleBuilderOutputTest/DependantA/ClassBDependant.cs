@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace ModuleBuilderOutputTest.DependantA
 {
-    public class NewClassDependant
+    public class ClassBDependant
     {
 
     }

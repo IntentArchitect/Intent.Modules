@@ -202,8 +202,15 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("TemplateFullName()\r\n        {\r\n            var templateDependency = TemplateDepen" +
-                    "dancy.OnTemplate(\"");
+            this.Write("TemplateFullName(");
+            
+            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateModel));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n        {\r\n            var templateDependency = TemplateDependancy.OnTem" +
+                    "plate(\"");
             
             #line 73 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateId));
@@ -211,8 +218,8 @@ using System.Linq;
             #line default
             #line hidden
             this.Write("\");\r\n            var template = Project.FindTemplateInstance<IHasClassDetails>(te" +
-                    "mplateDependency);\r\n            return NormalizeNamespace($\"{template.Namespace}" +
-                    ".{template.ClassName}\");\r\n        }\r\n");
+                    "mplateDependency, model);\r\n            return NormalizeNamespace($\"{template.Nam" +
+                    "espace}.{template.ClassName}\");\r\n        }\r\n");
             
             #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       } 

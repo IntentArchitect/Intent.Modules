@@ -42,12 +42,12 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                     if (s.IsCSharpTemplate())
                     {
                         var templateInstance = template.Project.FindTemplateInstance<RoslynProjectItemTemplatePartialTemplate>(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId());
+                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId(), templateInstance.Model.GetTargetModel());
                     }
                     else if (s.IsFileTemplate())
                     {
                         var templateInstance = template.Project.FindTemplateInstance<ProjectItemTemplatePartialTemplate>(ProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId());
+                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId(), templateInstance.Model.GetTargetModel());
                     }
                     return null;
                 })
@@ -74,16 +74,18 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                 IsCustom = true;
             }
 
-            public TemplateDependencyInfo(string templateName, string templateId)
+            public TemplateDependencyInfo(string templateName, string templateId, string templateModel)
             {
+                IsCustom = false;
                 TemplateName = templateName;
                 TemplateId = templateId;
-                IsCustom = false;
+                TemplateModel = templateModel;
             }
 
+            public bool IsCustom { get; }
             public string TemplateName { get; }
             public string TemplateId { get; }
-            public bool IsCustom { get; }
+            public string TemplateModel { get; }
         }
     }
 }
