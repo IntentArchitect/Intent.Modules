@@ -78,6 +78,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\DependantB\DependantB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DependantB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\DependantB\DependantBPartial.cs" />
+    <Content Include="Templates\DependantB\DependantB.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DependantB.cs</LastGenOutput>
+    </Content>
+    <Compile Include="Templates\DependantB\DependantBRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

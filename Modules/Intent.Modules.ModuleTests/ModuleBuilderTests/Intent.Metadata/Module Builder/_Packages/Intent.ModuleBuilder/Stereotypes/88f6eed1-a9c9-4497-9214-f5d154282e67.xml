@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="88f6eed1-a9c9-4497-9214-f5d154282e67">
-  <comment>Add a Dependancy to another Template (in this Intent Architect Project) which will help you to access that template from your template.</comment>
-  <name>Template Dependancy</name>
+  <comment>Add a Dependency to another Template (in this Intent Architect Project) which will help you to access that template from your template.</comment>
+  <name>Template Dependency</name>
   <icon type="FontAwesome" source="share-alt" />
   <displayIcon>false</displayIcon>
   <displayFunction />

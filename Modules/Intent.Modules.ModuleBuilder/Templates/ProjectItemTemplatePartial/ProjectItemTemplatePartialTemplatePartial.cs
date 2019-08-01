@@ -67,15 +67,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
             return Model.GetStereotypeProperty<bool>("Template Settings", "Declare Usings");
         }
 
-        private bool HasTemplateDependancies()
+        private bool HasTemplateDependencies()
         {
-            return Model.HasStereotype("Template Dependancy");
+            return Model.HasStereotype("Template Dependency");
         }
 
-        private IReadOnlyCollection<string> GetTemplateDependantNames()
+        private IReadOnlyCollection<string> GetTemplateDependentNames()
         {
             return Model.Stereotypes
-                .Where(p => p.Name == "Template Dependancy")
+                .Where(p => p.Name == "Template Dependency")
                 .Select(s => s.Properties.FirstOrDefault(p => p.Key == "Template Name")?.Value)
                 .Where(p => !string.IsNullOrEmpty(p))
                 .ToArray();
@@ -90,7 +90,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
                 interfaceList.Add("IDeclareUsings");
             }
 
-            if (HasTemplateDependancies())
+            if (HasTemplateDependencies())
             {
                 interfaceList.Add("IHasTemplateDependencies");
             }

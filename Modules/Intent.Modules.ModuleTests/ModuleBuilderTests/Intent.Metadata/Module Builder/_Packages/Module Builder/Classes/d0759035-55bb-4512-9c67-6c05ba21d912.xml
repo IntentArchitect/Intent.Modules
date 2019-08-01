@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="dcd111b1-b82a-454e-83e9-11b012361a37" type="C# Template">
-  <name>DependantA</name>
+<class id="d0759035-55bb-4512-9c67-6c05ba21d912" type="File Template">
+  <name>DependantB</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>acb1920c-19e3-4c38-9d3e-aa0a221b72cc</parentFolderId>
@@ -12,13 +12,6 @@
         <property name="C2283D15-4B57-4ED9-8AAE-6EFC73039034" value="Domain" />
         <property name="987590ee-a5ca-45ce-b742-0ee764b6b6e9" value="object" />
         <property name="5abe3a6a-90a5-4caf-b3cf-da883c3a090f" value="false" />
-      </properties>
-    </stereotype>
-    <stereotype stereotypeDefinitionId="88f6eed1-a9c9-4497-9214-f5d154282e67">
-      <comment>Add a Dependency to another Template (in this Intent Architect Project) which will help you to access that template from your template.</comment>
-      <addedByDefault>false</addedByDefault>
-      <properties>
-        <property name="ff796874-0e48-4ff2-af02-e77aeb256790" />
       </properties>
     </stereotype>
   </stereotypes>

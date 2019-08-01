@@ -51,13 +51,13 @@ namespace <#= Namespace #>
         }
 <#  } #>
 
-<#  if (HasTemplateDependancies()) { #>
+<#  if (HasTemplateDependencies()) { #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
             return new ITemplateDependancy[] 
             {
-<#  foreach (var name in GetTemplateDependantNames()) { #>
+<#  foreach (var name in GetTemplateDependentNames()) { #>
                 // <#= name #>
 <#  } #>
             };

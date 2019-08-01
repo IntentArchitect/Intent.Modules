@@ -145,7 +145,7 @@ using System.Linq;
             this.Write("\r\n");
             
             #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-  if (HasTemplateDependancies()) { 
+  if (HasTemplateDependencies()) { 
             
             #line default
             #line hidden
@@ -154,7 +154,7 @@ using System.Linq;
                     "   {\r\n            return new ITemplateDependancy[] \r\n            {\r\n");
             
             #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-  foreach (var name in GetTemplateDependantNames()) { 
+  foreach (var name in GetTemplateDependentNames()) { 
             
             #line default
             #line hidden

@@ -70,35 +70,44 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             return Model.GetStereotypeProperty<bool>("Template Settings", "Declare Usings");
         }
 
-        private bool HasTemplateDependancies()
+        private bool HasTemplateDependencies()
         {
-            return Model.HasStereotype("Template Dependancy");
+            return Model.HasStereotype("Template Dependency");
         }
 
-        private IReadOnlyCollection<TemplateDependancyInfo> GetTemplateDependancies()
+        private IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencies()
         {
-            var ids = Model.Stereotypes
-                .Where(p => p.Name == "Template Dependancy")
-                .Select(s => s.Properties.FirstOrDefault(p => p.Key == "Template Name")?.Value)
+            var infos = GetTemplateDependencyNames()
                 .Where(p => !string.IsNullOrEmpty(p))
                 .SelectMany(s => _templateModels.Where(p => p.Name == s))
-                .Select(s => 
+                .Select(s =>
                 {
                     if (s.IsCSharpTemplate())
                     {
                         var templateInstance = this.Project.FindTemplateInstance<RoslynProjectItemTemplatePartialTemplate>(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return new TemplateDependancyInfo(s.Name ,templateInstance.GetTemplateId());
+                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId());
                     }
                     else if (s.IsFileTemplate())
                     {
                         var templateInstance = this.Project.FindTemplateInstance<ProjectItemTemplatePartialTemplate>(ProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return new TemplateDependancyInfo(s.Name, templateInstance.GetTemplateId());
+                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId());
                     }
                     return null;
                 })
-                .Where(p => p != null)
-                .ToArray();
-            return ids;
+                .Where(p => p != null);
+            var customOne = GetTemplateDependencyNames()
+                .Where(p => string.IsNullOrEmpty(p))
+                .Distinct()
+                .Select(s => new TemplateDependencyInfo());
+            return infos.Union(customOne).ToArray();
+        }
+
+        private IEnumerable<string> GetTemplateDependencyNames()
+        {
+            return Model.Stereotypes
+                        .Where(p => p.Name == "Template Dependency")
+                        .Select(s => s.Properties.FirstOrDefault(p => p.Key == "Template Name")?.Value)
+                        .ToArray();
         }
 
         private string GetConfiguredInterfaces()
@@ -110,7 +119,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 interfaceList.Add("IDeclareUsings");
             }
 
-            if (HasTemplateDependancies())
+            if (HasTemplateDependencies())
             {
                 interfaceList.Add("IHasTemplateDependencies");
             }
@@ -118,16 +127,23 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             return interfaceList.Any() ? (", " + string.Join(", ", interfaceList)) : string.Empty;
         }
 
-        private class TemplateDependancyInfo
+        private class TemplateDependencyInfo
         {
-            public TemplateDependancyInfo(string templateName, string templateId)
+            public TemplateDependencyInfo()
+            {
+                IsCustom = true;
+            }
+
+            public TemplateDependencyInfo(string templateName, string templateId)
             {
                 TemplateName = templateName;
                 TemplateId = templateId;
+                IsCustom = false;
             }
 
             public string TemplateName { get; }
             public string TemplateId { get; }
+            public bool IsCustom { get; }
         }
     }
 }

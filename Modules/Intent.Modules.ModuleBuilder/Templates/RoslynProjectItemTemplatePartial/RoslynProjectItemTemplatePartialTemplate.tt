@@ -3,6 +3,7 @@
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
+<#@ import namespace="System.Linq" #>
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using Intent.SoftwareFactory.Engine;
@@ -57,32 +58,37 @@ namespace <#= Namespace #>
         }
 <#  } #>
 
-<#  if (HasTemplateDependancies()) { #>
+<#  if (HasTemplateDependencies()) { #>
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
+            var templateDependencies = new List<ITemplateDependancy>();
+<#      foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { #>
+                templateDependencies.Add(TemplateDependancy.OnTemplate("<#= templateDependency.TemplateId #>"));
+<#      } #>
+<#      if (GetTemplateDependencies().Any(p => p.IsCustom)) { #>
+                templateDependencies.AddRange(GetCustomTemplateDependencies());
+<#      } #>
+            return templateDependencies;
+        }
+
+<#      foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { #>
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        private string Get<#= templateDependency.TemplateName.ToPascalCase() #>TemplateFullName()
+        {
+            var templateDependency = TemplateDependancy.OnTemplate("<#= templateDependency.TemplateId #>");
+            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependency);
+            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
+        }
+<#      } #>
+
+<#      if (GetTemplateDependencies().Any(p => p.IsCustom)) { #>
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        private IEnumerable<ITemplateDependancy> GetCustomTemplateDependencies()
+        {
             return new ITemplateDependancy[] 
             {
-<#      foreach (var templateDependancy in GetTemplateDependancies()) { #>
-                GetTemplateDependancy("<#= templateDependancy.TemplateId #>")
-<#      } #>
             };
-        }
-
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private ITemplateDependancy GetTemplateDependancy(string templateName)
-        {
-            var templateDependancy = TemplateDependancy.OnTemplate(templateName);
-            return templateDependancy;
-        }
-
-<#      foreach (var templateDependancy in GetTemplateDependancies()) { #>
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private string Get<#= templateDependancy.TemplateName.ToPascalCase() #>TemplateFullName()
-        {
-            var templateDependancy = GetTemplateDependancy("<#= templateDependancy.TemplateId #>");
-            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependancy);
-            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 <#      } #>
 <#  } #>

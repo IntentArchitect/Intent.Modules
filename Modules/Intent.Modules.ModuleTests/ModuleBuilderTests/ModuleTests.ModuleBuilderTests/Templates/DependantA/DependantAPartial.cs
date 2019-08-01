@@ -14,7 +14,7 @@ using Intent.SoftwareFactory.Templates;
 namespace ModuleTests.ModuleBuilderTests.Templates.DependantA
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    partial class DependantA : IntentRoslynProjectItemTemplateBase<IClass>
+    partial class DependantA : IntentRoslynProjectItemTemplateBase<IClass>, IHasTemplateDependencies
     {
         public const string TemplateId = "ModuleBuilderTests.DependantA";
 
@@ -38,6 +38,22 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantA
                 className: "${Model.Name}Dependant",
                 @namespace: "${Project.Name}.DependantA"
             );
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        private IEnumerable<ITemplateDependancy> GetCustomTemplateDependencies()
+        {
+            return new ITemplateDependancy[]
+            {
+            };
+        }
+
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            var templateDependencies = new List<ITemplateDependancy>();
+            templateDependencies.AddRange(GetCustomTemplateDependencies());
+            return templateDependencies;
         }
 
 

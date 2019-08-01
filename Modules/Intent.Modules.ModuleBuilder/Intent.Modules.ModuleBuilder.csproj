@@ -116,7 +116,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="metadata\Intent.ModuleBuilder\Stereotypes\Template Dependancy.xml" />
+    <Content Include="metadata\Intent.ModuleBuilder\Stereotypes\Template Dependency.xml" />
     <Content Include="metadata\Intent.ModuleBuilder\Stereotypes\Template Settings.xml" />
     <Content Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

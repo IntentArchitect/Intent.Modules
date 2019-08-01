@@ -41,26 +41,27 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private ITemplateDependancy GetTemplateDependancy(string templateName)
-        {
-            var templateDependancy = TemplateDependancy.OnTemplate(templateName);
-            return templateDependancy;
-        }
-
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
-            return new ITemplateDependancy[]
-            {
-                GetTemplateDependancy("ModuleBuilderTests.DependantA")
-            };
+            var templateDependencies = new List<ITemplateDependancy>();
+            templateDependencies.Add(TemplateDependancy.OnTemplate("ModuleBuilderTests.DependantA"));
+            templateDependencies.Add(TemplateDependancy.OnTemplate("ModuleBuilderTests.DependantB"));
+            return templateDependencies;
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         private string GetDependantATemplateFullName()
         {
-            var templateDependancy = GetTemplateDependancy("ModuleBuilderTests.DependantA");
-            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependancy);
+            var templateDependency = TemplateDependancy.OnTemplate("ModuleBuilderTests.DependantA");
+            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependency);
+            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
+        }
+
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        private string GetDependantBTemplateFullName()
+        {
+            var templateDependency = TemplateDependancy.OnTemplate("ModuleBuilderTests.DependantB");
+            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependency);
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
     }

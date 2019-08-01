@@ -60,5 +60,20 @@
       <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantARegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates\DependantA\DependantARegistration.cs</ProjectRelativeFilePath>
     </FileLog>
+    <FileLog>
+      <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantB\DependantB.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\DependantB\DependantB.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantB\DependantBPartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\DependantB\DependantBPartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantB\DependantBRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\DependantB\DependantBRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
   </FileLogs>
 </outputLog>
