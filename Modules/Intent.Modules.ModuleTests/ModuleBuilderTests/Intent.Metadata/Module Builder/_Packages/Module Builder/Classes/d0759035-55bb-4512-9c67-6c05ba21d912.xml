@@ -14,6 +14,13 @@
         <property name="5abe3a6a-90a5-4caf-b3cf-da883c3a090f" value="false" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="88f6eed1-a9c9-4497-9214-f5d154282e67">
+      <comment>Add a Dependency to another Template (in this Intent Architect Project) which will help you to access that template from your template.</comment>
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="ff796874-0e48-4ff2-af02-e77aeb256790" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <attributes />
   <operations />

@@ -14,7 +14,7 @@ using Intent.SoftwareFactory.Templates;
 namespace ModuleTests.ModuleBuilderTests.Templates.DependantB
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    partial class DependantB : IntentProjectItemTemplateBase<IClass>
+    partial class DependantB : IntentProjectItemTemplateBase<IClass>, IHasTemplateDependencies
     {
         public const string TemplateId = "ModuleBuilderTests.DependantB";
 
@@ -32,6 +32,22 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantB
                 fileExtension: "txt", // Change to desired file extension.
                 defaultLocationInProject: "DependantB"
             );
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        private IEnumerable<ITemplateDependancy> GetCustomTemplateDependencies()
+        {
+            return new ITemplateDependancy[]
+            {
+            };
+        }
+
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            var templateDependencies = new List<ITemplateDependancy>();
+            templateDependencies.AddRange(GetCustomTemplateDependencies());
+            return templateDependencies;
         }
 
 
