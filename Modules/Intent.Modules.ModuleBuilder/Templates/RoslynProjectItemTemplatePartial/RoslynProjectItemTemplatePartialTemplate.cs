@@ -172,20 +172,44 @@ using System.Linq;
                     "  {\r\n            return new ITemplateDependancy[] \r\n            {\r\n");
             
             #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-      foreach (var name in GetTemplateDependantNames()) { 
+  foreach (var templateId in GetTemplateDependantIds()) { 
             
             #line default
             #line hidden
-            this.Write("                \r\n");
+            this.Write("                GetTemplateDependancy(\"");
+            
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateId));
+            
+            #line default
+            #line hidden
+            this.Write("\")\r\n");
             
             #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-      } 
+  } 
             
             #line default
             #line hidden
-            this.Write("            };\r\n        }\r\n");
+            this.Write(@"            };
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
+        private ITemplateDependancy GetTemplateDependancy(string templateName)
+        {
+            var templateDependancy = TemplateDependancy.OnTemplate(templateName);
+            return templateDependancy;
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
+        private string GetTemplateFullName(string templateName)
+        {
+            var templateDependancy = GetTemplateDependancy(templateName);
+            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependancy);
+            return NormalizeNamespace($""{template.Namespace}.{template.ClassName}"");
+        }
+");
             
-            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
   } 
             
             #line default

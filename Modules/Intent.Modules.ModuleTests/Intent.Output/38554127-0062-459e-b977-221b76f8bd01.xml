@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>38554127-0062-459e-b977-221b76f8bd01</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <SolutionRelativeFilePath>..\ModuleBuilderModuleOutput\ModuleBuilderModuleOutput.sln</SolutionRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f45a27d0-9d84-4f01-ac1f-9c55587aff45</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderModuleOutput\ModuleBuilderOutputTest\Composite\NewClass.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Composite\NewClass.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f45a27d0-9d84-4f01-ac1f-9c55587aff45</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderModuleOutput\ModuleBuilderOutputTest\DependantA\NewClassDependant.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>DependantA\NewClassDependant.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f45a27d0-9d84-4f01-ac1f-9c55587aff45</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderModuleOutput\ModuleBuilderOutputTest\ModuleBuilderOutputTest.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ModuleBuilderOutputTest.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f45a27d0-9d84-4f01-ac1f-9c55587aff45</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderModuleOutput\ModuleBuilderOutputTest\packages.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>packages.config</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f45a27d0-9d84-4f01-ac1f-9c55587aff45</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderModuleOutput\ModuleBuilderOutputTest\Properties\AssemblyInfo.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Properties\AssemblyInfo.cs</ProjectRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

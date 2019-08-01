@@ -2,8 +2,13 @@
 <assetRepositories>
   <entries>
     <entry>
-      <name>Local</name>
-      <address>C:\Dev\Intent.Modules\Modules\Intent.Modules</address>
+      <name>Local Intent.Modules</name>
+      <address>..\Intent.Modules</address>
+      <isBuiltIn>false</isBuiltIn>
+    </entry>
+    <entry>
+      <name>ModuleBuilderTest</name>
+      <address>..\Intent.Modules.ModuleTests\ModuleBuilderTests\Intent.Modules</address>
       <isBuiltIn>false</isBuiltIn>
     </entry>
     <entry>

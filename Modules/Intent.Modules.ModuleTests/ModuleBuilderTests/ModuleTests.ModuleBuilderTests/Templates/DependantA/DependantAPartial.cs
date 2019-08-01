@@ -32,10 +32,10 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantA
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}",
+                fileName: "${Model.Name}Dependant",
                 fileExtension: "cs",
                 defaultLocationInProject: "DependantA",
-                className: "${Model.Name}",
+                className: "${Model.Name}Dependant",
                 @namespace: "${Project.Name}.DependantA"
             );
         }

@@ -63,10 +63,25 @@ namespace <#= Namespace #>
         {
             return new ITemplateDependancy[] 
             {
-<#      foreach (var name in GetTemplateDependantNames()) { #>
-                
-<#      } #>
+<#  foreach (var templateId in GetTemplateDependantIds()) { #>
+                GetTemplateDependancy("<#= templateId #>")
+<#  } #>
             };
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
+        private ITemplateDependancy GetTemplateDependancy(string templateName)
+        {
+            var templateDependancy = TemplateDependancy.OnTemplate(templateName);
+            return templateDependancy;
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
+        private string GetTemplateFullName(string templateName)
+        {
+            var templateDependancy = GetTemplateDependancy(templateName);
+            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependancy);
+            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 <#  } #>
     }

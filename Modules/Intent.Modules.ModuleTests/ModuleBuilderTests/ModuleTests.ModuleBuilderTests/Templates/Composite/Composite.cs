@@ -56,71 +56,14 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n");
+            this.Write("\r\n    {\r\n        public ");
             
             #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-  // The following is an example template implementation
-    foreach(var attribute in Model.Attributes) { 
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateFullName("ModuleBuilderTests.DependantA")));
             
             #line default
             #line hidden
-            this.Write("        public ");
-            
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Types.Get(attribute.Type)));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
-            
-            #line default
-            #line hidden
-            this.Write(" { get; set; }\r\n\r\n");
-            
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-  } 
-            
-            #line default
-            #line hidden
-            this.Write("\r\n");
-            
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-  foreach(var operation in Model.Operations) { 
-            
-            #line default
-            #line hidden
-            this.Write("        public ");
-            
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : "void"));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToPascalCase()));
-            
-            #line default
-            #line hidden
-            this.Write("(");
-            
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(", ", operation.Parameters.Select(x => string.Format("{0} {1}", Types.Get(x.Type), x.Name)))));
-            
-            #line default
-            #line hidden
-            this.Write(")\r\n        {\r\n            throw new NotImplementedException();\r\n        }\r\n\r\n");
-            
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-  } 
-            
-            #line default
-            #line hidden
-            this.Write("    }\r\n}");
+            this.Write(" DependantA { get; }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

@@ -16,18 +16,6 @@ namespace <#= Namespace #>
 {
     public class <#= ClassName #>
     {
-<#  // The following is an example template implementation
-    foreach(var attribute in Model.Attributes) { #>
-        public <#= Types.Get(attribute.Type) #> <#= attribute.Name.ToPascalCase() #> { get; set; }
-
-<#  } #>
-
-<#  foreach(var operation in Model.Operations) { #>
-        public <#= operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : "void" #> <#= operation.Name.ToPascalCase() #>(<#= string.Join(", ", operation.Parameters.Select(x => string.Format("{0} {1}", Types.Get(x.Type), x.Name))) #>)
-        {
-            throw new NotImplementedException();
-        }
-
-<#  } #>
+        public <#= GetTemplateFullName("ModuleBuilderTests.DependantA") #> DependantA { get; }
     }
 }

@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
                 .ToArray();
         }
 
-        private string GetTemplateId()
+        public string GetTemplateId()
         {
             return $"{Project.ApplicationName()}.{Model.Name}";
         }

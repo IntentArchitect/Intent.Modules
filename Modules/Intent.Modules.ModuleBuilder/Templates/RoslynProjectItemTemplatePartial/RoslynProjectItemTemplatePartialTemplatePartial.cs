@@ -5,6 +5,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Helpers;
+using Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
@@ -13,9 +14,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
     partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IClass>
     {
         public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial";
+        private readonly IEnumerable<IClass> _templateModels;
 
-        public RoslynProjectItemTemplatePartialTemplate(string templateId, IProject project, IClass model) : base(templateId, project, model)
+        public RoslynProjectItemTemplatePartialTemplate(string templateId, IProject project, IClass model, IEnumerable<IClass> templateModels) : base(templateId, project, model)
         {
+            _templateModels = templateModels;
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -46,7 +49,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 .ToArray();
         }
 
-        private string GetTemplateId()
+        public string GetTemplateId()
         {
             return $"{Project.ApplicationName()}.{Model.Name}";
         }
@@ -72,26 +75,30 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             return Model.HasStereotype("Template Dependancy");
         }
 
-        private IReadOnlyCollection<string> GetTemplateDependantNames()
+        private IReadOnlyCollection<string> GetTemplateDependantIds()
         {
-            return Model.Stereotypes
+            var ids = Model.Stereotypes
                 .Where(p => p.Name == "Template Dependancy")
                 .Select(s => s.Properties.FirstOrDefault(p => p.Key == "Template Name")?.Value)
                 .Where(p => !string.IsNullOrEmpty(p))
+                .SelectMany(s => _templateModels.Where(p => p.Name == s))
+                .Select(s => 
+                {
+                    if (s.IsCSharpTemplate())
+                    {
+                        var templateInstance = this.Project.FindTemplateInstance<RoslynProjectItemTemplatePartialTemplate>(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
+                        return templateInstance.GetTemplateId();
+                    }
+                    else if (s.IsFileTemplate())
+                    {
+                        var templateInstance = this.Project.FindTemplateInstance<ProjectItemTemplatePartialTemplate>(ProjectItemTemplatePartialTemplate.TemplateId, s);
+                        return templateInstance.GetTemplateId();
+                    }
+                    return null;
+                })
+                .Where(p => p != null)
                 .ToArray();
-        }
-
-        private ITemplateDependancy GetTemplateDependancy(string templateName)
-        {
-            var templateDependancy = TemplateDependancy.OnTemplate(templateName);
-            return templateDependancy;
-        }
-
-        private string GetTemplateFullName(string templateName)
-        {
-            var templateDependancy = GetTemplateDependancy(templateName);
-            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependancy);
-            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
+            return ids;
         }
 
         private string GetConfiguredInterfaces()

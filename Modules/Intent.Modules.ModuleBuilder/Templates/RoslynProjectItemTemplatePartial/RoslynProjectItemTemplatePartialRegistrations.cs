@@ -22,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
 
         public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
-            return new RoslynProjectItemTemplatePartialTemplate(TemplateId, project, model);
+            return new RoslynProjectItemTemplatePartialTemplate(TemplateId, project, model, _metaDataManager.GetClassModels(project.Application, "Module Builder"));
         }
 
         public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
