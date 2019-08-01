@@ -14,7 +14,7 @@ using Intent.SoftwareFactory.Templates;
 namespace ModuleTests.ModuleBuilderTests.Templates.Composite
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    partial class Composite : IntentRoslynProjectItemTemplateBase<IClass>, IHasTemplateDependencies
+    partial class Composite : IntentRoslynProjectItemTemplateBase<IClass>, IDeclareUsings, IHasTemplateDependencies
     {
         public const string TemplateId = "ModuleBuilderTests.Composite";
 
@@ -63,6 +63,16 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
             var templateDependency = TemplateDependancy.OnTemplate("ModuleBuilderTests.DependantB");
             var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependency);
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public IEnumerable<string> DeclareUsings()
+        {
+            return new string[]
+            {
+                // Specify list of Namespaces here, example:
+                "System.Linq"
+            };
         }
     }
 }

@@ -11,7 +11,7 @@
         <property name="311d788f-7582-4c27-9a4d-e0db1439c327" value="File per Model" />
         <property name="C2283D15-4B57-4ED9-8AAE-6EFC73039034" value="Domain" />
         <property name="987590ee-a5ca-45ce-b742-0ee764b6b6e9" value="IClass" />
-        <property name="5abe3a6a-90a5-4caf-b3cf-da883c3a090f" value="false" />
+        <property name="5abe3a6a-90a5-4caf-b3cf-da883c3a090f" value="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="88f6eed1-a9c9-4497-9214-f5d154282e67">

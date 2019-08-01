@@ -130,9 +130,9 @@ using System.Linq;
             this.Write(@"        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public IEnumerable<string> DeclareUsings()
         {
-            // Specify list of Namespaces here, example:
             return new string[]
             {
+                // Specify list of Namespaces here, example:
                 ""System.Linq""
             };
         }
