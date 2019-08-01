@@ -7,6 +7,7 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using static Intent.Modules.ModuleBuilder.Helpers.TemplateHelper;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 {
@@ -14,8 +15,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
     {
         public const string TemplateId = "Intent.ModuleBuilder.ProjectItemTemplate.Partial";
 
-        public ProjectItemTemplatePartialTemplate(string templateId, IProject project, IClass model) : base(templateId, project, model)
+        private readonly IEnumerable<IClass> _templateModels;
+
+        public ProjectItemTemplatePartialTemplate(string templateId, IProject project, IClass model, IEnumerable<IClass> templateModels) : base(templateId, project, model)
         {
+            _templateModels = templateModels;
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -72,13 +76,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
             return Model.HasStereotype("Template Dependency");
         }
 
-        private IReadOnlyCollection<string> GetTemplateDependentNames()
+        private IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencies()
         {
-            return Model.Stereotypes
-                .Where(p => p.Name == "Template Dependency")
-                .Select(s => s.Properties.FirstOrDefault(p => p.Key == "Template Name")?.Value)
-                .Where(p => !string.IsNullOrEmpty(p))
-                .ToArray();
+            return TemplateHelper.GetTemplateDependencies(this, Model, _templateModels);
         }
 
         private string GetConfiguredInterfaces()

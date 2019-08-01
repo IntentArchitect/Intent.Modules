@@ -1,7 +1,11 @@
-﻿using Intent.Modules.Common.Templates;
-using System;
+﻿using Intent.Metadata.Models;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial;
+using Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial;
+using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Intent.Modules.ModuleBuilder.Helpers
@@ -26,6 +30,60 @@ namespace Intent.Modules.ModuleBuilder.Helpers
         public static string ReplaceTemplateInheritsTag(string templateContent, string inheritType)
         {
             return _templateInheritsTagRegex.Replace(templateContent, $"${{begin}}{inheritType}${{end}}");
+        }
+
+        public static IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencies(IntentProjectItemTemplateBase<IClass> template, IClass classRepresentingTemplate, IEnumerable<IClass> otherTemplateClasses)
+        {
+            var infos = GetTemplateDependencyNames(classRepresentingTemplate)
+                .Where(p => !string.IsNullOrEmpty(p))
+                .SelectMany(s => otherTemplateClasses.Where(p => p.Name == s))
+                .Select(s =>
+                {
+                    if (s.IsCSharpTemplate())
+                    {
+                        var templateInstance = template.Project.FindTemplateInstance<RoslynProjectItemTemplatePartialTemplate>(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
+                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId());
+                    }
+                    else if (s.IsFileTemplate())
+                    {
+                        var templateInstance = template.Project.FindTemplateInstance<ProjectItemTemplatePartialTemplate>(ProjectItemTemplatePartialTemplate.TemplateId, s);
+                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId());
+                    }
+                    return null;
+                })
+                .Where(p => p != null);
+            var customOne = GetTemplateDependencyNames(classRepresentingTemplate)
+                .Where(p => string.IsNullOrEmpty(p))
+                .Distinct()
+                .Select(s => new TemplateDependencyInfo());
+            return infos.Union(customOne).ToArray();
+        }
+
+        private static IEnumerable<string> GetTemplateDependencyNames(IClass targetClass)
+        {
+            return targetClass.Stereotypes
+                        .Where(p => p.Name == "Template Dependency")
+                        .Select(s => s.Properties.FirstOrDefault(p => p.Key == "Template Name")?.Value)
+                        .ToArray();
+        }
+
+        public class TemplateDependencyInfo
+        {
+            public TemplateDependencyInfo()
+            {
+                IsCustom = true;
+            }
+
+            public TemplateDependencyInfo(string templateName, string templateId)
+            {
+                TemplateName = templateName;
+                TemplateId = templateId;
+                IsCustom = false;
+            }
+
+            public string TemplateName { get; }
+            public string TemplateId { get; }
+            public bool IsCustom { get; }
         }
     }
 }

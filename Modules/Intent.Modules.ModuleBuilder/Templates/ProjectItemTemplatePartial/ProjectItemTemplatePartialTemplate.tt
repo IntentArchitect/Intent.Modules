@@ -3,6 +3,7 @@
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
+<#@ import namespace="System.Linq" #>
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using Intent.SoftwareFactory.Engine;
@@ -52,16 +53,38 @@ namespace <#= Namespace #>
 <#  } #>
 
 <#  if (HasTemplateDependencies()) { #>
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        {
+            var templateDependencies = new List<ITemplateDependancy>();
+<#      foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { #>
+                templateDependencies.Add(TemplateDependancy.OnTemplate("<#= templateDependency.TemplateId #>"));
+<#      } #>
+<#      if (GetTemplateDependencies().Any(p => p.IsCustom)) { #>
+                templateDependencies.AddRange(GetCustomTemplateDependencies());
+<#      } #>
+            return templateDependencies;
+        }
+
+<#      foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { #>
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        private string Get<#= templateDependency.TemplateName.ToPascalCase() #>TemplateFullName()
+        {
+            var templateDependency = TemplateDependancy.OnTemplate("<#= templateDependency.TemplateId #>");
+            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependency);
+            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
+        }
+<#      } #>
+
+<#      if (GetTemplateDependencies().Any(p => p.IsCustom)) { #>
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        private IEnumerable<ITemplateDependancy> GetCustomTemplateDependencies()
         {
             return new ITemplateDependancy[] 
             {
-<#  foreach (var name in GetTemplateDependentNames()) { #>
-                // <#= name #>
-<#  } #>
             };
         }
+<#      } #>
 <#  } #>
     }
 }

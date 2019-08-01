@@ -5,15 +5,16 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Helpers;
-using Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using static Intent.Modules.ModuleBuilder.Helpers.TemplateHelper;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial
 {
     partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IClass>
     {
         public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial";
+
         private readonly IEnumerable<IClass> _templateModels;
 
         public RoslynProjectItemTemplatePartialTemplate(string templateId, IProject project, IClass model, IEnumerable<IClass> templateModels) : base(templateId, project, model)
@@ -77,37 +78,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
 
         private IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencies()
         {
-            var infos = GetTemplateDependencyNames()
-                .Where(p => !string.IsNullOrEmpty(p))
-                .SelectMany(s => _templateModels.Where(p => p.Name == s))
-                .Select(s =>
-                {
-                    if (s.IsCSharpTemplate())
-                    {
-                        var templateInstance = this.Project.FindTemplateInstance<RoslynProjectItemTemplatePartialTemplate>(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId());
-                    }
-                    else if (s.IsFileTemplate())
-                    {
-                        var templateInstance = this.Project.FindTemplateInstance<ProjectItemTemplatePartialTemplate>(ProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId());
-                    }
-                    return null;
-                })
-                .Where(p => p != null);
-            var customOne = GetTemplateDependencyNames()
-                .Where(p => string.IsNullOrEmpty(p))
-                .Distinct()
-                .Select(s => new TemplateDependencyInfo());
-            return infos.Union(customOne).ToArray();
-        }
-
-        private IEnumerable<string> GetTemplateDependencyNames()
-        {
-            return Model.Stereotypes
-                        .Where(p => p.Name == "Template Dependency")
-                        .Select(s => s.Properties.FirstOrDefault(p => p.Key == "Template Name")?.Value)
-                        .ToArray();
+            return TemplateHelper.GetTemplateDependencies(this, Model, _templateModels);
         }
 
         private string GetConfiguredInterfaces()
@@ -125,25 +96,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             }
 
             return interfaceList.Any() ? (", " + string.Join(", ", interfaceList)) : string.Empty;
-        }
-
-        private class TemplateDependencyInfo
-        {
-            public TemplateDependencyInfo()
-            {
-                IsCustom = true;
-            }
-
-            public TemplateDependencyInfo(string templateName, string templateId)
-            {
-                TemplateName = templateName;
-                TemplateId = templateId;
-                IsCustom = false;
-            }
-
-            public string TemplateName { get; }
-            public string TemplateId { get; }
-            public bool IsCustom { get; }
         }
     }
 }
