@@ -37,7 +37,7 @@
       <comment>In the event that a 'Custom' Modeler is chosen, specify the desired Type to use ('object' by default).</comment>
       <name>Custom Model</name>
       <type>string</type>
-      <defaultValue>object</defaultValue>
+      <defaultValue>IClass</defaultValue>
       <options />
     </property>
     <property id="5abe3a6a-90a5-4caf-b3cf-da883c3a090f">

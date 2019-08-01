@@ -51,7 +51,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
 
             if (GetModelerName(model) == "Custom")
             {
-                var customModel = model.GetStereotypeProperty<string>(TemplateSettingsStereotype, "Custom Model", "object");
+                var customModel = model.GetStereotypeProperty<string>(TemplateSettingsStereotype, "Custom Model", "IClass");
                 if (string.IsNullOrWhiteSpace(customModel))
                 {
                     throw new Exception($"Model {model.Name} has a Creation Mode of 'Custom' but nothing specified in 'Custom Model'");
@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                         return "IClass";
                     case CreationMode.Custom:
                     default:
-                        return "object";
+                        return "IClass";
                 }
             }
         }
