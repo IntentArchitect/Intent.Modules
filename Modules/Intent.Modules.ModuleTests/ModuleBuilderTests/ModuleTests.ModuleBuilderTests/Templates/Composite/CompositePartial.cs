@@ -40,14 +40,14 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
             );
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         private ITemplateDependancy GetTemplateDependancy(string templateName)
         {
             var templateDependancy = TemplateDependancy.OnTemplate(templateName);
             return templateDependancy;
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
             return new ITemplateDependancy[]
@@ -56,10 +56,10 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
             };
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
-        private string GetTemplateFullName(string templateName)
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        private string GetDependantATemplateFullName()
         {
-            var templateDependancy = GetTemplateDependancy(templateName);
+            var templateDependancy = GetTemplateDependancy("ModuleBuilderTests.DependantA");
             var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }

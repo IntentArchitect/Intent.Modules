@@ -75,7 +75,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             return Model.HasStereotype("Template Dependancy");
         }
 
-        private IReadOnlyCollection<string> GetTemplateDependantIds()
+        private IReadOnlyCollection<TemplateDependancyInfo> GetTemplateDependancies()
         {
             var ids = Model.Stereotypes
                 .Where(p => p.Name == "Template Dependancy")
@@ -87,12 +87,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                     if (s.IsCSharpTemplate())
                     {
                         var templateInstance = this.Project.FindTemplateInstance<RoslynProjectItemTemplatePartialTemplate>(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return templateInstance.GetTemplateId();
+                        return new TemplateDependancyInfo(s.Name ,templateInstance.GetTemplateId());
                     }
                     else if (s.IsFileTemplate())
                     {
                         var templateInstance = this.Project.FindTemplateInstance<ProjectItemTemplatePartialTemplate>(ProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return templateInstance.GetTemplateId();
+                        return new TemplateDependancyInfo(s.Name, templateInstance.GetTemplateId());
                     }
                     return null;
                 })
@@ -116,6 +116,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             }
 
             return interfaceList.Any() ? (", " + string.Join(", ", interfaceList)) : string.Empty;
+        }
+
+        private class TemplateDependancyInfo
+        {
+            public TemplateDependancyInfo(string templateName, string templateId)
+            {
+                TemplateName = templateName;
+                TemplateId = templateId;
+            }
+
+            public string TemplateName { get; }
+            public string TemplateId { get; }
         }
     }
 }

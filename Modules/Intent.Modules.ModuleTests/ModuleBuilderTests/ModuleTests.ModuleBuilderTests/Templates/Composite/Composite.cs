@@ -59,7 +59,7 @@ namespace ");
             this.Write("\r\n    {\r\n        public ");
             
             #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateFullName("ModuleBuilderTests.DependantA")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetDependantATemplateFullName()));
             
             #line default
             #line hidden

@@ -16,6 +16,6 @@ namespace <#= Namespace #>
 {
     public class <#= ClassName #>
     {
-        public <#= GetTemplateFullName("ModuleBuilderTests.DependantA") #> DependantA { get; }
+        public <#= GetDependantATemplateFullName() #> DependantA { get; }
     }
 }

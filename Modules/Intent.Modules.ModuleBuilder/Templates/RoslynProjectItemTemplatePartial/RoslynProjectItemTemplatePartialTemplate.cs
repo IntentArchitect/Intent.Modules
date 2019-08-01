@@ -167,49 +167,73 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]\r\n " +
+            this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]\r\n " +
                     "       public IEnumerable<ITemplateDependancy> GetTemplateDependencies()\r\n      " +
                     "  {\r\n            return new ITemplateDependancy[] \r\n            {\r\n");
             
             #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-  foreach (var templateId in GetTemplateDependantIds()) { 
+      foreach (var templateDependancy in GetTemplateDependancies()) { 
             
             #line default
             #line hidden
             this.Write("                GetTemplateDependancy(\"");
             
             #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(templateId));
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateDependancy.TemplateId));
             
             #line default
             #line hidden
             this.Write("\")\r\n");
             
             #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-  } 
+      } 
             
             #line default
             #line hidden
             this.Write(@"            };
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         private ITemplateDependancy GetTemplateDependancy(string templateName)
         {
             var templateDependancy = TemplateDependancy.OnTemplate(templateName);
             return templateDependancy;
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
-        private string GetTemplateFullName(string templateName)
-        {
-            var templateDependancy = GetTemplateDependancy(templateName);
-            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependancy);
-            return NormalizeNamespace($""{template.Namespace}.{template.ClassName}"");
-        }
 ");
             
-            #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+      foreach (var templateDependancy in GetTemplateDependancies()) { 
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]\r\n " +
+                    "       private string Get");
+            
+            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateDependancy.TemplateName.ToPascalCase()));
+            
+            #line default
+            #line hidden
+            this.Write("TemplateFullName()\r\n        {\r\n            var templateDependancy = GetTemplateDe" +
+                    "pendancy(\"");
+            
+            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateDependancy.TemplateId));
+            
+            #line default
+            #line hidden
+            this.Write("\");\r\n            var template = Project.FindTemplateInstance<IHasClassDetails>(te" +
+                    "mplateDependancy);\r\n            return NormalizeNamespace($\"{template.Namespace}" +
+                    ".{template.ClassName}\");\r\n        }\r\n");
+            
+            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+      } 
+            
+            #line default
+            #line hidden
+            
+            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
   } 
             
             #line default
