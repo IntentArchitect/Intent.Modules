@@ -6,4 +6,4 @@
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 
-// Place your file template logic here
+Some dummy text file for <#= Model #>

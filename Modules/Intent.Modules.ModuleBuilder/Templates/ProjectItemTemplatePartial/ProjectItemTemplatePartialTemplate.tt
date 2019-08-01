@@ -71,7 +71,7 @@ namespace <#= Namespace #>
         private string Get<#= templateDependency.TemplateName.ToPascalCase() #>TemplateFullName(<#= templateDependency.TemplateModel #> model)
         {
             var templateDependency = TemplateDependancy.OnTemplate("<#= templateDependency.TemplateId #>");
-            var template = Project.FindTemplateInstance<IHasClassDetails>(templateDependency, model);
+            var template = Project.FindTemplateInstance<<#= templateDependency.InstanceType #>>(templateDependency, model);
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 <#      } #>

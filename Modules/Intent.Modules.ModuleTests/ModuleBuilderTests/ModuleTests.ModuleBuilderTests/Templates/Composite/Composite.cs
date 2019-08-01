@@ -13,6 +13,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.SoftwareFactory.Templates;
     using Intent.Metadata.Models;
     using System;
     
@@ -32,7 +33,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
         {
             this.Write("\r\nusing System;\r\n");
             
-            #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
+            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -44,26 +45,33 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
 
 namespace ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetDependantATemplateFullName(Model)));
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetDependantATemplate(Model).FullTypeName()));
             
             #line default
             #line hidden
-            this.Write(" DependantA { get; }\r\n    }\r\n}");
+            this.Write(" DependantA { get; }\r\n        public ");
+            
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetDependantBTemplate(Model).FileMetaData.FileName));
+            
+            #line default
+            #line hidden
+            this.Write(" DependantB { get; }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

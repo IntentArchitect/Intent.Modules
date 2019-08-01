@@ -11,6 +11,7 @@ namespace ModuleBuilderOutputTest.Composite
 {
     public class ClassB
     {
-        public ClassBDependant DependantA { get; }
+        public ModuleBuilderOutputTest.DependantA.ClassBDependant DependantA { get; }
+        public ClassB DependantB { get; }
     }
 }

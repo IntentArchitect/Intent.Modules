@@ -49,20 +49,6 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
             return templateDependencies;
         }
 
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private string GetDependantATemplateFullName(IClass model)
-        {
-            var template = Project.FindTemplateInstance<IHasClassDetails>("ModuleBuilderTests.DependantA", model);
-            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
-        }
-
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private string GetDependantBTemplateFullName(IClass model)
-        {
-            var template = Project.FindTemplateInstance<IHasClassDetails>("ModuleBuilderTests.DependantB", model);
-            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
-        }
-
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public IEnumerable<string> DeclareUsings()
         {
@@ -71,6 +57,18 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
                 // Specify list of Namespaces here, example:
                 "System.Linq"
             };
+        }
+
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        private IHasClassDetails GetDependantATemplate(IClass model)
+        {
+            return Project.FindTemplateInstance<IHasClassDetails>("ModuleBuilderTests.DependantA", model);
+        }
+
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        private IntentProjectItemTemplateBase<IClass> GetDependantBTemplate(IClass model)
+        {
+            return Project.FindTemplateInstance<IntentProjectItemTemplateBase<IClass>>("ModuleBuilderTests.DependantB", model);
         }
     }
 }

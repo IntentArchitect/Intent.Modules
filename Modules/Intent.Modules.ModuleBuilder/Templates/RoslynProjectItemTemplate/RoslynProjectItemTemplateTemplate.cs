@@ -38,6 +38,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 <#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
+<#@ import namespace=""Intent.SoftwareFactory.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 
 using System;

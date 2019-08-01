@@ -213,39 +213,51 @@ using System.Linq;
             #line default
             #line hidden
             this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]\r\n " +
-                    "       private string Get");
+                    "       private ");
+            
+            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.InstanceType));
+            
+            #line default
+            #line hidden
+            this.Write(" Get");
             
             #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateName.ToPascalCase()));
             
             #line default
             #line hidden
-            this.Write("TemplateFullName(");
+            this.Write("Template(");
             
             #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateModel));
             
             #line default
             #line hidden
-            this.Write(" model)\r\n        {\r\n            var template = Project.FindTemplateInstance<IHasC" +
-                    "lassDetails>(\"");
+            this.Write(" model)\r\n        {\r\n            return Project.FindTemplateInstance<");
+            
+            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.InstanceType));
+            
+            #line default
+            #line hidden
+            this.Write(">(\"");
             
             #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateId));
             
             #line default
             #line hidden
-            this.Write("\", model);\r\n            return NormalizeNamespace($\"{template.Namespace}.{templat" +
-                    "e.ClassName}\");\r\n        }\r\n");
+            this.Write("\", model);\r\n        }\r\n");
             
-            #line 82 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       if (GetTemplateDependencies().Any(p => p.IsCustom)) { 
             
             #line default
@@ -259,13 +271,13 @@ using System.Linq;
         }
 ");
             
-            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 91 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
   } 
             
             #line default

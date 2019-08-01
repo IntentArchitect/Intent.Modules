@@ -42,12 +42,12 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                     if (s.IsCSharpTemplate())
                     {
                         var templateInstance = template.Project.FindTemplateInstance<RoslynProjectItemTemplatePartialTemplate>(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId(), templateInstance.Model.GetTargetModel());
+                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId(), templateInstance.Model.GetTargetModel(), "IHasClassDetails");
                     }
                     else if (s.IsFileTemplate())
                     {
                         var templateInstance = template.Project.FindTemplateInstance<ProjectItemTemplatePartialTemplate>(ProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId(), templateInstance.Model.GetTargetModel());
+                        return new TemplateDependencyInfo(s.Name, templateInstance.GetTemplateId(), templateInstance.Model.GetTargetModel(), $"IntentProjectItemTemplateBase<{templateInstance.Model.GetTargetModel()}>");
                     }
                     return null;
                 })
@@ -74,18 +74,20 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                 IsCustom = true;
             }
 
-            public TemplateDependencyInfo(string templateName, string templateId, string templateModel)
+            public TemplateDependencyInfo(string templateName, string templateId, string templateModel, string instanceType)
             {
                 IsCustom = false;
                 TemplateName = templateName;
                 TemplateId = templateId;
                 TemplateModel = templateModel;
+                InstanceType = instanceType;
             }
 
             public bool IsCustom { get; }
             public string TemplateName { get; }
             public string TemplateId { get; }
             public string TemplateModel { get; }
+            public string InstanceType { get; }
         }
     }
 }

@@ -217,9 +217,15 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\");\r\n            var template = Project.FindTemplateInstance<IHasClassDetails>(te" +
-                    "mplateDependency, model);\r\n            return NormalizeNamespace($\"{template.Nam" +
-                    "espace}.{template.ClassName}\");\r\n        }\r\n");
+            this.Write("\");\r\n            var template = Project.FindTemplateInstance<");
+            
+            #line 74 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.InstanceType));
+            
+            #line default
+            #line hidden
+            this.Write(">(templateDependency, model);\r\n            return NormalizeNamespace($\"{template." +
+                    "Namespace}.{template.ClassName}\");\r\n        }\r\n");
             
             #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       } 

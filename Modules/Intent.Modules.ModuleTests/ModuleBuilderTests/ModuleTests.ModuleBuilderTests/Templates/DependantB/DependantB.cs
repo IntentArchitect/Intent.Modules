@@ -30,7 +30,14 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantB
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n// Place your file template logic here\r\n");
+            this.Write("\r\nSome dummy text file for ");
+            
+            #line 9 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantB\DependantB.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

@@ -74,10 +74,9 @@ namespace <#= Namespace #>
 
 <#      foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { #>
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private string Get<#= templateDependency.TemplateName.ToPascalCase() #>TemplateFullName(<#= templateDependency.TemplateModel #> model)
+        private <#= templateDependency.InstanceType #> Get<#= templateDependency.TemplateName.ToPascalCase() #>Template(<#= templateDependency.TemplateModel #> model)
         {
-            var template = Project.FindTemplateInstance<IHasClassDetails>("<#= templateDependency.TemplateId #>", model);
-            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
+            return Project.FindTemplateInstance<<#= templateDependency.InstanceType #>>("<#= templateDependency.TemplateId #>", model);
         }
 <#      } #>
 
