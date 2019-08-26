@@ -40,6 +40,11 @@ namespace Intent.Modules.ModuleBuilder.Helpers
             return model.SpecializationType == "File Template";
         }
 
+        public static bool IsDecoratorTemplate(this IClass model)
+        {
+            return model.SpecializationType == "Decorator";
+        }
+
         public static string GetTargetModel(this IClass model)
         {
             if (model == null)
@@ -76,6 +81,16 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                         return "IClass";
                 }
             }
+        }
+
+        public static string GetImplementerDecoratorContractType(this IClass model)
+        {
+            return model.GetStereotypeProperty<string>("Implements Decorator Contract", "Type Fullname");
+        }
+
+        public static string GetExposedDecoratorContractType(this IClass model)
+        {
+            return model.GetStereotypeProperty<string>("Exposes Decorator Contract", "Type Fullname");
         }
     }
 }

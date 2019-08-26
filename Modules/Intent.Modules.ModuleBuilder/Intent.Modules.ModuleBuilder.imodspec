@@ -36,6 +36,9 @@
     <template id="Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel">
       <role>Templates</role>
     </template>
+    <template id="Intent.ModuleBuilder.DecoratorTemplate">
+      <role>Decorators</role>
+    </template>
   </templates>
   <decorators>
   </decorators>

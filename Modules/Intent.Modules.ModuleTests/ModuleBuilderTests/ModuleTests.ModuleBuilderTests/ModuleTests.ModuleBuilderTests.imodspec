@@ -15,6 +15,9 @@
     <template id="ModuleBuilderTests.DependantB">
       <role>ModuleBuilderTests.DependantB</role>
     </template>
+    <template id="ModuleBuilderTests.TestDecorator">
+      <role>ModuleBuilderTests.TestDecorator</role>
+    </template>
   </templates>
   <dependencies>
     <dependency id="Intent.Common" version="1.7.0" />

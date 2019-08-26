@@ -81,16 +81,37 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\";\r\n\r\n        [IntentInitialGen]\r\n        public ");
+            this.Write("\";\r\n\r\n");
+            
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+  if (HasDecorators()) { 
+            
+            #line default
+            #line hidden
+            this.Write("        private IEnumerable<");
             
             #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetExposedDecoratorContractType()));
+            
+            #line default
+            #line hidden
+            this.Write("> _decorators;\r\n\r\n");
+            
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentInitialGen]\r\n        public ");
+            
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IProject project, ");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -107,7 +128,7 @@ using System.Linq;
                 codeGenType: CodeGenType.Basic,
                 fileName: """);
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
@@ -115,14 +136,14 @@ using System.Linq;
             this.Write("\",\r\n                fileExtension: \"txt\", // Change to desired file extension.\r\n " +
                     "               defaultLocationInProject: \"");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetCreationMode() == CreationMode.FilePerModel ? Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden
             this.Write("\"\r\n            );\r\n        }\r\n\r\n");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
   if (HasDeclaresUsings()) { 
             
             #line default
@@ -138,14 +159,37 @@ using System.Linq;
         }
 ");
             
-            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
   } 
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+  if (HasDecorators()) { 
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]\r\n " +
+                    "       public IEnumerable<");
+            
+            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetExposedDecoratorContractType()));
+            
+            #line default
+            #line hidden
+            this.Write("> GetDecorators()\r\n        {\r\n            return _decorators ?? (_decorators = Pr" +
+                    "oject.ResolveDecorators(this));\r\n        }\r\n");
+            
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
   if (HasTemplateDependencies()) { 
             
             #line default
@@ -154,27 +198,27 @@ using System.Linq;
                     "       public IEnumerable<ITemplateDependancy> GetTemplateDependencies()\r\n      " +
                     "  {\r\n            var templateDependencies = new List<ITemplateDependancy>();\r\n");
             
-            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 72 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { 
             
             #line default
             #line hidden
             this.Write("                templateDependencies.Add(TemplateDependancy.OnTemplate(\"");
             
-            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 73 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateId));
             
             #line default
             #line hidden
             this.Write("\"));\r\n");
             
-            #line 62 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 74 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       if (GetTemplateDependencies().Any(p => p.IsCustom)) { 
             
             #line default
@@ -182,14 +226,14 @@ using System.Linq;
             this.Write("                templateDependencies.AddRange(GetCustomTemplateDependencies());\r\n" +
                     "");
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("            return templateDependencies;\r\n        }\r\n\r\n");
             
-            #line 69 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { 
             
             #line default
@@ -197,14 +241,14 @@ using System.Linq;
             this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]\r\n " +
                     "       private string Get");
             
-            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateName.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("TemplateFullName(");
             
-            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateModel));
             
             #line default
@@ -212,14 +256,14 @@ using System.Linq;
             this.Write(" model)\r\n        {\r\n            var templateDependency = TemplateDependancy.OnTem" +
                     "plate(\"");
             
-            #line 73 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 85 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateId));
             
             #line default
             #line hidden
             this.Write("\");\r\n            var template = Project.FindTemplateInstance<");
             
-            #line 74 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.InstanceType));
             
             #line default
@@ -227,14 +271,14 @@ using System.Linq;
             this.Write(">(templateDependency, model);\r\n            return NormalizeNamespace($\"{template." +
                     "Namespace}.{template.ClassName}\");\r\n        }\r\n");
             
-            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 89 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 91 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       if (GetTemplateDependencies().Any(p => p.IsCustom)) { 
             
             #line default
@@ -248,13 +292,13 @@ using System.Linq;
         }
 ");
             
-            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 99 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            #line 100 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
   } 
             
             #line default

@@ -50,23 +50,30 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    public class ");
+            this.Write("\r\n{\r\n    /*\r\n        Decorator output:\r\n        ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetDecoratorOutput()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    */\r\n\r\n    public class ");
+            
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetDependantATemplate(Model).FullTypeName()));
             
             #line default
             #line hidden
             this.Write(" DependantA { get; }\r\n        public ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetDependantBTemplate(Model).FileMetaData.FileName));
             
             #line default

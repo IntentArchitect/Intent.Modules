@@ -65,6 +65,7 @@
       <DependentUpon>Composite.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Composite\CompositePartial.cs" />
+    <Compile Include="Templates\Composite\ICompositeContract.cs" />
     <Compile Include="Templates\DependantA\DependantA.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,6 +90,7 @@
       <LastGenOutput>DependantB.cs</LastGenOutput>
     </Content>
     <Compile Include="Templates\DependantB\DependantBRegistration.cs" />
+    <Compile Include="Decorators\TestDecorator\TestDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
@@ -14,7 +15,7 @@ using Intent.SoftwareFactory.Templates;
 namespace ModuleTests.ModuleBuilderTests.Templates.Composite
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    partial class Composite : IntentRoslynProjectItemTemplateBase<IClass>, IDeclareUsings, IHasTemplateDependencies
+    partial class Composite : IntentRoslynProjectItemTemplateBase<IClass>, IDeclareUsings, IHasTemplateDependencies, IHasDecorators<ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract>
     {
         public const string TemplateId = "ModuleBuilderTests.Composite";
 
@@ -69,6 +70,23 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
         private IntentProjectItemTemplateBase<IClass> GetDependantBTemplate(IClass model)
         {
             return Project.FindTemplateInstance<IntentProjectItemTemplateBase<IClass>>("ModuleBuilderTests.DependantB", model);
+        }
+
+        private IEnumerable<ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract> _decorators;
+
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        public IEnumerable<ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract> GetDecorators()
+        {
+            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+        }
+
+        private string GetDecoratorOutput()
+        {
+            var outputList = new List<string>();
+
+            outputList.AddRange(GetDecorators().Select(s => s.GetDecoratorText()));
+
+            return string.Join(Environment.NewLine, outputList);
         }
     }
 }

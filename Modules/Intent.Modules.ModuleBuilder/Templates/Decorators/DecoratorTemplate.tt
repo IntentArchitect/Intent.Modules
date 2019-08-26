@@ -1,0 +1,19 @@
+﻿<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
+using System;
+<#=DependencyUsings#>
+[assembly: DefaultIntentManaged(Mode.Merge)]
+
+namespace <#= Namespace #>
+{
+    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
+    public class <#= ClassName #> : <#= Model.GetImplementerDecoratorContractType() #>
+    {
+    }
+}

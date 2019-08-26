@@ -23,6 +23,10 @@ namespace <#= Namespace #>
     {
         public const string TemplateId = "<#= GetTemplateId() #>";
 
+<#  if (HasDecorators()) { #>
+        private IEnumerable<<#= Model.GetExposedDecoratorContractType() #>> _decorators;
+
+<#  } #>
         [IntentInitialGen]
         public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
@@ -49,6 +53,14 @@ namespace <#= Namespace #>
                 // Specify list of Namespaces here, example:
                 "System.Linq"
             };
+        }
+<#  } #>
+
+<#  if (HasDecorators()) { #>
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        public IEnumerable<<#= Model.GetExposedDecoratorContractType() #>> GetDecorators()
+        {
+            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
         }
 <#  } #>
 

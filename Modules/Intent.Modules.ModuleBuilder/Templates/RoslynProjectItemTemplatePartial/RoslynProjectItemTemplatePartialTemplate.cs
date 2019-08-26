@@ -81,16 +81,37 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("\";\r\n\r\n        [IntentInitialGen]\r\n        public ");
+            this.Write("\";\r\n\r\n");
+            
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+  if (HasDecorators()) { 
+            
+            #line default
+            #line hidden
+            this.Write("        private IEnumerable<");
             
             #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetExposedDecoratorContractType()));
+            
+            #line default
+            #line hidden
+            this.Write("> _decorators;\r\n\r\n");
+            
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentInitialGen]\r\n        public ");
+            
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IProject project, ");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -111,7 +132,7 @@ using System.Linq;
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: """);
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
@@ -119,28 +140,28 @@ using System.Linq;
             this.Write("\",\r\n                fileExtension: \"cs\",\r\n                defaultLocationInProjec" +
                     "t: \"");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetCreationMode() == CreationMode.FilePerModel ? Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden
             this.Write("\",\r\n                className: \"");
             
-            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
             this.Write("\",\r\n                @namespace: \"${Project.Name}");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetCreationMode() == CreationMode.FilePerModel ? "." + Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden
             this.Write("\"\r\n            );\r\n        }\r\n\r\n");
             
-            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
   if (HasDeclaresUsings()) { 
             
             #line default
@@ -156,14 +177,37 @@ using System.Linq;
         }
 ");
             
-            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
   } 
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+  if (HasDecorators()) { 
+            
+            #line default
+            #line hidden
+            this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]\r\n " +
+                    "       public IEnumerable<");
+            
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetExposedDecoratorContractType()));
+            
+            #line default
+            #line hidden
+            this.Write("> GetDecorators()\r\n        {\r\n            return _decorators ?? (_decorators = Pr" +
+                    "oject.ResolveDecorators(this));\r\n        }\r\n");
+            
+            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 73 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
   if (HasTemplateDependencies()) { 
             
             #line default
@@ -172,27 +216,27 @@ using System.Linq;
                     "       public IEnumerable<ITemplateDependancy> GetTemplateDependencies()\r\n      " +
                     "  {\r\n            var templateDependencies = new List<ITemplateDependancy>();\r\n");
             
-            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { 
             
             #line default
             #line hidden
             this.Write("                templateDependencies.Add(TemplateDependancy.OnTemplate(\"");
             
-            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateId));
             
             #line default
             #line hidden
             this.Write("\"));\r\n");
             
-            #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 80 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 69 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       if (GetTemplateDependencies().Any(p => p.IsCustom)) { 
             
             #line default
@@ -200,14 +244,14 @@ using System.Linq;
             this.Write("                templateDependencies.AddRange(GetCustomTemplateDependencies());\r\n" +
                     "");
             
-            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("            return templateDependencies;\r\n        }\r\n\r\n");
             
-            #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { 
             
             #line default
@@ -215,49 +259,49 @@ using System.Linq;
             this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]\r\n " +
                     "       private ");
             
-            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 89 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.InstanceType));
             
             #line default
             #line hidden
             this.Write(" Get");
             
-            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 89 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateName.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("Template(");
             
-            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 89 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateModel));
             
             #line default
             #line hidden
             this.Write(" model)\r\n        {\r\n            return Project.FindTemplateInstance<");
             
-            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 91 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.InstanceType));
             
             #line default
             #line hidden
             this.Write(">(\"");
             
-            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 91 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateId));
             
             #line default
             #line hidden
             this.Write("\", model);\r\n        }\r\n");
             
-            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 95 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       if (GetTemplateDependencies().Any(p => p.IsCustom)) { 
             
             #line default
@@ -271,13 +315,13 @@ using System.Linq;
         }
 ");
             
-            #line 91 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 103 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            #line 104 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
   } 
             
             #line default

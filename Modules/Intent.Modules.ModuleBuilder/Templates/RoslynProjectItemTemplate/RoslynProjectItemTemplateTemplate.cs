@@ -1,8 +1,11 @@
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 {
@@ -14,6 +17,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
         {
         }
 
+        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
+        public string FolderPath => string.Join("/", FolderBaseList);
+
         public override DefaultFileMetaData DefineDefaultFileMetaData()
         {
             return new DefaultFileMetaData(
@@ -21,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "tt",
-                defaultLocationInProject: "Templates\\${Model.Name}");
+                defaultLocationInProject: "${FolderPath}/${Model.Name}");
         }
 
         public override string TransformText()

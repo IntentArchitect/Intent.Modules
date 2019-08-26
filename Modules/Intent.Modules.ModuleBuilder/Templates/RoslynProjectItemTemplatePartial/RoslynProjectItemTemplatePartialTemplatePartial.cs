@@ -22,6 +22,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             _templateModels = templateModels;
         }
 
+        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
+        public string FolderPath => string.Join("/", FolderBaseList);
+        public string FolderNamespace => string.Join(".", FolderBaseList);
+
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
@@ -33,7 +37,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"${{Model.Name}}Partial",
                 fileExtension: "cs",
-                defaultLocationInProject: "Templates\\${Model.Name}",
+                defaultLocationInProject: "${FolderPath}/${Model.Name}",
                 className: "${Model.Name}",
                 @namespace: "${Project.Name}.Templates.${Model.Name}"
             );
@@ -76,6 +80,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             return Model.HasStereotype("Template Dependency");
         }
 
+        private bool HasDecorators()
+        {
+            return !string.IsNullOrEmpty(Model.GetExposedDecoratorContractType());
+        }
+
         private IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencies()
         {
             return TemplateHelper.GetTemplateDependencies(this, Model, _templateModels);
@@ -93,6 +102,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             if (HasTemplateDependencies())
             {
                 interfaceList.Add("IHasTemplateDependencies");
+            }
+
+            if (!string.IsNullOrEmpty(Model.GetExposedDecoratorContractType()))
+            {
+                interfaceList.Add($"IHasDecorators<{Model.GetExposedDecoratorContractType()}>");
             }
 
             return interfaceList.Any() ? (", " + string.Join(", ", interfaceList)) : string.Empty;

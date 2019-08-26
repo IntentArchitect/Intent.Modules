@@ -15,6 +15,11 @@ using System;
 
 namespace <#= Namespace #>
 {
+    /*
+        Decorator output:
+        <#= GetDecoratorOutput() #>
+    */
+
     public class <#= ClassName #>
     {
         public <#= GetDependantATemplate(Model).FullTypeName() #> DependantA { get; }
