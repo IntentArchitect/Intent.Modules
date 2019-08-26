@@ -7,8 +7,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>
-      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Decorators\TestDecorator\TestDecorator.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Decorators\TestDecorator\TestDecorator.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Decorators\CompositeDecorator\CompositeDecorator.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Decorators\CompositeDecorator\CompositeDecorator.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Decorators\CompositeDecorator\CompositeDecoratorRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Decorators\CompositeDecorator\CompositeDecoratorRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>

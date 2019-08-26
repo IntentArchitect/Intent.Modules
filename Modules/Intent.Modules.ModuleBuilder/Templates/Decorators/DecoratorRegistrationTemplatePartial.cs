@@ -1,6 +1,7 @@
 ﻿using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ using System.Linq;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Decorators
 {
-    partial class DecoratorTemplate : IntentRoslynProjectItemTemplateBase<IClass> 
+    partial class DecoratorRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IClass>, IHasTemplateDependencies
     {
-        public const string TemplateId = "Intent.ModuleBuilder.DecoratorTemplate";
+        public const string TemplateId = "Intent.ModuleBuilder.DecoratorRegistration.Template";
 
-        public DecoratorTemplate(SoftwareFactory.Engine.IProject project, IClass model) : base(DecoratorTemplate.TemplateId, project, model)
+        public DecoratorRegistrationTemplate(IProject project, IClass model) : base(TemplateId, project, model)
         {
         }
 
@@ -29,17 +30,30 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
         {
             return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}",
+                fileName: "${Model.Name}Registration",
                 fileExtension: "cs",
                 defaultLocationInProject: "${FolderPath}/${Model.Name}",
-                className: "${Model.Name}",
+                className: "${Model.Name}Registration",
                 @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
             );
         }
 
-        public string GetIdentifier()
+        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
-            return $"{Project.ApplicationName()}.{Model.Name}";
+            return new[]
+            {
+                TemplateDependancy.OnTemplate(DecoratorTemplate.TemplateId)
+            };
+        }
+
+        private IHasClassDetails GetDecoratorTemplate(IClass model)
+        {
+            return Project.FindTemplateInstance<IHasClassDetails>(DecoratorTemplate.TemplateId, model);
+        }
+
+        private string GetDecoratorTemplateFullName(IClass model)
+        {
+            return GetDecoratorTemplate(model).FullTypeName();
         }
     }
 }

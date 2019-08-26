@@ -41,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             var templatesElement = doc.Element("package").Element("templates");
 
-            foreach (var model in Model)
+            foreach (var model in Model.Where(p => p.IsCSharpTemplate() || p.IsFileTemplate()))
             {
                 var id = $"{Project.ApplicationName()}.{model.Name}";
                 var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{id}\"]");
@@ -55,6 +55,27 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (specificTemplate.Element("role") == null)
                 {
                     specificTemplate.Add(new XElement("role") { Value = id });
+                }
+            }
+
+            if (Model.Any(p => p.IsDecoratorTemplate()))
+            {
+                var decoratorsElement = doc.Element("package").Element("decorators");
+                if (decoratorsElement == null)
+                {
+                    decoratorsElement = new XElement("decorators");
+                    doc.Element("package").Add(decoratorsElement);
+                }
+
+                foreach (var model in Model.Where(p => p.IsDecoratorTemplate()))
+                {
+                    var id = $"{Project.ApplicationName()}.{model.Name}";
+                    var specificDecorator = doc.XPathSelectElement($"package/decorators/decorator[@id=\"{id}\"]");
+                    if (specificDecorator == null)
+                    {
+                        specificDecorator = new XElement("decorator", new XAttribute("id", id));
+                        decoratorsElement.Add(specificDecorator);
+                    }
                 }
             }
 

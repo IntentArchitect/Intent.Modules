@@ -7,6 +7,7 @@
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
 using System;
+using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory.Engine;
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -14,15 +15,13 @@ using Intent.SoftwareFactory.Engine;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class <#= ClassName #> : <#= Model.GetImplementerDecoratorContractType() #>
+    public class <#= ClassName #> : DecoratorRegistration<<#= Model.GetImplementerDecoratorContractType() #>>
     {
-        public const string Identifier = "<#= GetIdentifier() #>";
+        public override string DecoratorId => <#= GetDecoratorTemplateFullName(Model) #>.Identifier;
 
-        private readonly IApplication _application;
-
-        public <#= ClassName #>(IApplication application)
+        public override object CreateDecoratorInstance(IApplication application)
         {
-            _application = application;
+            return new <#= GetDecoratorTemplateFullName(Model) #>(application);
         }
     }
 }

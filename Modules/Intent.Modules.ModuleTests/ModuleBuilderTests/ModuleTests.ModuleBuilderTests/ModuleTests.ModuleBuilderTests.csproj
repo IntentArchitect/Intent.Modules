@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -90,7 +90,8 @@
       <LastGenOutput>DependantB.cs</LastGenOutput>
     </Content>
     <Compile Include="Templates\DependantB\DependantBRegistration.cs" />
-    <Compile Include="Decorators\TestDecorator\TestDecorator.cs" />
+    <Compile Include="Decorators\CompositeDecorator\CompositeDecorator.cs" />
+    <Compile Include="Decorators\CompositeDecorator\CompositeDecoratorRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

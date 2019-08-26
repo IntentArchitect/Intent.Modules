@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="9ecf3ee8-9849-4c8a-b750-085e3b63a8b3" type="Decorator">
-  <name>TestDecorator</name>
+  <name>CompositeDecorator</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>dd9eed3c-3d8f-42d7-b766-39c73a05dafe</parentFolderId>

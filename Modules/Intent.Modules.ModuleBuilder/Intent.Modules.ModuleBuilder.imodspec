@@ -39,6 +39,9 @@
     <template id="Intent.ModuleBuilder.DecoratorTemplate">
       <role>Decorators</role>
     </template>
+    <template id="Intent.ModuleBuilder.DecoratorRegistration.Template">
+      <role>Decorators</role>
+    </template>
   </templates>
   <decorators>
   </decorators>
