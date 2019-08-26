@@ -11,23 +11,23 @@ using Intent.SoftwareFactory.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
-namespace ModuleTests.ModuleBuilderTests.Templates.DependantB
+namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantA
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class DependantBRegistration : ModelTemplateRegistrationBase<IClass>
+    public class DependantARegistration : ModelTemplateRegistrationBase<IClass>
     {
         private readonly IMetaDataManager _metaDataManager;
 
-        public DependantBRegistration(IMetaDataManager metaDataManager)
+        public DependantARegistration(IMetaDataManager metaDataManager)
         {
             _metaDataManager = metaDataManager;
         }
 
-        public override string TemplateId => DependantB.TemplateId;
+        public override string TemplateId => DependantA.TemplateId;
 
         public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
-            return new DependantB(project, model);
+            return new DependantA(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

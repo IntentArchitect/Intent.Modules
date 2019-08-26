@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Decorators
 {
-    partial class DecoratorTemplate : IntentRoslynProjectItemTemplateBase<IClass> 
+    partial class DecoratorTemplate : IntentRoslynProjectItemTemplateBase<IClass>, IDeclareUsings
     {
         public const string TemplateId = "Intent.ModuleBuilder.DecoratorTemplate";
 
@@ -40,6 +40,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
         public string GetIdentifier()
         {
             return $"{Project.ApplicationName()}.{Model.Name}";
+        }
+
+        private bool HasDeclaresUsings()
+        {
+            return Model.GetStereotypeProperty<bool>("Decorator Settings", "Declare Usings");
+        }
+
+        private string GetConfiguredInterfaces()
+        {
+            var interfaceList = new List<string>();
+
+            if (HasDeclaresUsings())
+            {
+                interfaceList.Add("IDeclareUsings");
+            }
+
+            return interfaceList.Any() ? (", " + string.Join(", ", interfaceList)) : string.Empty;
+        }
+
+        public IEnumerable<string> DeclareUsings()
+        {
+            return new []{ "Intent.SoftwareFactory.Templates" };
         }
     }
 }

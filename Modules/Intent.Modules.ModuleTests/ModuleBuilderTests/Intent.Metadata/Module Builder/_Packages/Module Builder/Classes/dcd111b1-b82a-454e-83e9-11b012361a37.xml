@@ -3,7 +3,7 @@
   <name>DependantA</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
-  <parentFolderId>a9eaf03d-20b5-4bf8-9c99-7048c7436323</parentFolderId>
+  <parentFolderId>3dbf3d10-c3f9-4d7d-b260-f378f11fb252</parentFolderId>
   <stereotypes>
     <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6">
       <addedByDefault>false</addedByDefault>

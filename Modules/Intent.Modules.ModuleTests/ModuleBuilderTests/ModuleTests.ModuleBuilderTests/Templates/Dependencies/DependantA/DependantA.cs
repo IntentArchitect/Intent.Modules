@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace ModuleTests.ModuleBuilderTests.Templates.DependantA
+namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantA
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -20,7 +20,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantA
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class DependantA : IntentRoslynProjectItemTemplateBase<IClass>
     {
@@ -32,7 +32,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantA
         {
             this.Write("\r\nusing System;\r\n");
             
-            #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -44,21 +44,21 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantA
 
 namespace ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
   // The following is an example template implementation
     foreach(var attribute in Model.Attributes) { 
             
@@ -66,56 +66,56 @@ namespace ");
             #line hidden
             this.Write("        public ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Types.Get(attribute.Type)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n\r\n");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
   } 
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
   foreach(var operation in Model.Operations) { 
             
             #line default
             #line hidden
             this.Write("        public ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : "void"));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(", ", operation.Parameters.Select(x => string.Format("{0} {1}", Types.Get(x.Type), x.Name)))));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            throw new NotImplementedException();\r\n        }\r\n\r\n");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantA\DependantA.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantA\DependantA.tt"
   } 
             
             #line default

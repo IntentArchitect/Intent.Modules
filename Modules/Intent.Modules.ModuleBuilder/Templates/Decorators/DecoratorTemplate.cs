@@ -31,16 +31,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
         /// </summary>
         public override string TransformText()
         {
-            this.Write("using System;\r\nusing Intent.SoftwareFactory.Engine;\r\n");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing Intent.SoftwareFactory.En" +
+                    "gine;\r\n");
             
-            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
+            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
+            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -48,34 +49,63 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n" +
                     "    public class ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetImplementerDecoratorContractType()));
+            
+            #line default
+            #line hidden
+            
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetConfiguredInterfaces()));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public const string Identifier = \"");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetIdentifier()));
             
             #line default
             #line hidden
             this.Write("\";\r\n\r\n        private readonly IApplication _application;\r\n\r\n        public ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IApplication application)\r\n        {\r\n            _application = application;\r\n " +
-                    "       }\r\n    }\r\n}");
+                    "       }\r\n\r\n");
+            
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
+  if (HasDeclaresUsings()) { 
+            
+            #line default
+            #line hidden
+            this.Write(@"        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public IEnumerable<string> DeclareUsings()
+        {
+            return new string[]
+            {
+                // Specify list of Namespaces here, example:
+                ""System.Linq""
+            };
+        }
+");
+            
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

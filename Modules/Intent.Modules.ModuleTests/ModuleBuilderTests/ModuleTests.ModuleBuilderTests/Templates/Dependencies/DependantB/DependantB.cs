@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace ModuleTests.ModuleBuilderTests.Templates.DependantB
+namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantB
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -20,7 +20,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantB
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantB\DependantB.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantB\DependantB.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class DependantB : IntentProjectItemTemplateBase<IClass>
     {
@@ -32,7 +32,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantB
         {
             this.Write("\r\nSome dummy text file for ");
             
-            #line 9 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\DependantB\DependantB.tt"
+            #line 9 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Dependencies\DependantB\DependantB.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model));
             
             #line default

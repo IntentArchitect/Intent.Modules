@@ -39,7 +39,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 fileExtension: "cs",
                 defaultLocationInProject: "${FolderPath}/${Model.Name}",
                 className: "${Model.Name}",
-                @namespace: "${Project.Name}.Templates.${Model.Name}"
+                @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
             );
         }
 

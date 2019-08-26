@@ -11,7 +11,7 @@ using Intent.SoftwareFactory.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace ModuleTests.ModuleBuilderTests.Templates.DependantB
+namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantB
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     partial class DependantB : IntentProjectItemTemplateBase<IClass>, IHasTemplateDependencies
@@ -34,14 +34,6 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantB
             );
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        private IEnumerable<ITemplateDependancy> GetCustomTemplateDependencies()
-        {
-            return new ITemplateDependancy[]
-            {
-            };
-        }
-
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
         {
@@ -51,5 +43,12 @@ namespace ModuleTests.ModuleBuilderTests.Templates.DependantB
         }
 
 
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        private IEnumerable<ITemplateDependancy> GetCustomTemplateDependencies()
+        {
+            return new ITemplateDependancy[]
+            {
+            };
+        }
     }
 }

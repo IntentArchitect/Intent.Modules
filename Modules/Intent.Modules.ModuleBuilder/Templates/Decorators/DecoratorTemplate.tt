@@ -7,6 +7,7 @@
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
 using System;
+using System.Collections.Generic;
 using Intent.SoftwareFactory.Engine;
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -14,7 +15,7 @@ using Intent.SoftwareFactory.Engine;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class <#= ClassName #> : <#= Model.GetImplementerDecoratorContractType() #>
+    public class <#= ClassName #> : <#= Model.GetImplementerDecoratorContractType() #><#= GetConfiguredInterfaces() #>
     {
         public const string Identifier = "<#= GetIdentifier() #>";
 
@@ -24,5 +25,17 @@ namespace <#= Namespace #>
         {
             _application = application;
         }
+
+<#  if (HasDeclaresUsings()) { #>
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public IEnumerable<string> DeclareUsings()
+        {
+            return new string[]
+            {
+                // Specify list of Namespaces here, example:
+                "System.Linq"
+            };
+        }
+<#  } #>
     }
 }
