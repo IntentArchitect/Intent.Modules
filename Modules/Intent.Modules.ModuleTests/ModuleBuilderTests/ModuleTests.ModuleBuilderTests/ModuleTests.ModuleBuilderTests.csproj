@@ -100,6 +100,11 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>NoModelTemplate.cs</LastGenOutput>
     </Content>
+    <Compile Include="Templates\Other\CustomCreationMode\CustomCreationMode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomCreationMode.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\Other\ListModelTemplate\ListModelTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -114,6 +119,12 @@
     <Compile Include="Templates\Other\NoModelTemplate\NoModelTemplatePartial.cs" />
     <Compile Include="Templates\Other\ListModelTemplate\ListModelTemplateRegistration.cs" />
     <Compile Include="Templates\Other\NoModelTemplate\NoModelTemplateRegistration.cs" />
+    <Content Include="Templates\Other\CustomCreationMode\CustomCreationMode.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CustomCreationMode.cs</LastGenOutput>
+    </Content>
+    <Compile Include="Templates\Other\CustomCreationMode\CustomCreationModePartial.cs" />
+    <Compile Include="Templates\Other\CustomCreationMode\CustomCreationModeRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

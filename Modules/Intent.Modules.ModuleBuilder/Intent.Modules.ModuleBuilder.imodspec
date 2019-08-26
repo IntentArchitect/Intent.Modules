@@ -27,6 +27,9 @@
     <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial">
       <role>Templates</role>
     </template>
+    <template id="Intent.ModuleBuilder.TemplateRegistration.Custom">
+      <role>Templates</role>
+    </template>
     <template id="Intent.ModuleBuilder.TemplateRegistration.FilePerModel">
       <role>Templates</role>
     </template>

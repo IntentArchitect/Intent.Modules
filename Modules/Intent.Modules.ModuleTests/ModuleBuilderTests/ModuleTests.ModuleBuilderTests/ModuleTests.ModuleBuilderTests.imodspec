@@ -21,6 +21,9 @@
     <template id="ModuleBuilderTests.NoModelTemplate">
       <role>ModuleBuilderTests.NoModelTemplate</role>
     </template>
+    <template id="ModuleBuilderTests.CustomCreationMode">
+      <role>ModuleBuilderTests.CustomCreationMode</role>
+    </template>
   </templates>
   <decorators>
     <decorator id="ModuleBuilderTests.CompositeDecorator" />

@@ -87,6 +87,21 @@
     </FileLog>
     <FileLog>
       <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Other\CustomCreationMode\CustomCreationMode.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\Other\CustomCreationMode\CustomCreationMode.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Other\CustomCreationMode\CustomCreationModePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\Other\CustomCreationMode\CustomCreationModePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>
+      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Other\CustomCreationMode\CustomCreationModeRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates\Other\CustomCreationMode\CustomCreationModeRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>
       <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Other\ListModelTemplate\ListModelTemplate.tt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates\Other\ListModelTemplate\ListModelTemplate.tt</ProjectRelativeFilePath>
     </FileLog>

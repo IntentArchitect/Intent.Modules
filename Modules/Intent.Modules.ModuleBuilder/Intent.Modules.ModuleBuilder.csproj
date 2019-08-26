@@ -73,6 +73,13 @@
     <Compile Include="Templates\Decorators\DecoratorTemplatePartial.cs" />
     <Compile Include="Templates\IModSpec\IModSpecRegistrations.cs" />
     <Compile Include="Templates\IModSpec\IModSpecTemplate.cs" />
+    <Compile Include="Templates\Registration\Custom\CustomTemplateRegistrationRegistrations.cs" />
+    <Compile Include="Templates\Registration\Custom\CustomTemplateRegistrationTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomTemplateRegistrationTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Registration\Custom\CustomTemplateRegistrationTemplatePartial.cs" />
     <Compile Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationRegistrations.cs" />
     <Compile Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.cs">
       <DependentUpon>SingleFileNoModelTemplateRegistrationTemplate.tt</DependentUpon>
@@ -142,6 +149,10 @@
     <Content Include="Templates\Decorators\DecoratorTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DecoratorTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CustomTemplateRegistrationTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
