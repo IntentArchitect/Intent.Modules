@@ -92,6 +92,28 @@
     </Content>
     <Compile Include="Templates\Dependencies\DependantB\DependantBRegistration.cs" />
     <Compile Include="Templates\Dependencies\DependantA\DependantARegistration.cs" />
+    <Content Include="Templates\Other\ListModelTemplate\ListModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ListModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Other\NoModelTemplate\NoModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>NoModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Compile Include="Templates\Other\ListModelTemplate\ListModelTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListModelTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Other\ListModelTemplate\ListModelTemplatePartial.cs" />
+    <Compile Include="Templates\Other\NoModelTemplate\NoModelTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NoModelTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Other\NoModelTemplate\NoModelTemplatePartial.cs" />
+    <Compile Include="Templates\Other\ListModelTemplate\ListModelTemplateRegistration.cs" />
+    <Compile Include="Templates\Other\NoModelTemplate\NoModelTemplateRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

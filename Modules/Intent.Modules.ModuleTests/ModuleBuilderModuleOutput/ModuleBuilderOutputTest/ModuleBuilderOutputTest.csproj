@@ -51,6 +51,8 @@
     <Compile Include="DependantA\ClassBDependant.cs" />
     <Compile Include="Composite\ClassA.cs" />
     <Compile Include="Composite\ClassB.cs" />
+    <Compile Include="NoModel.cs" />
+    <Compile Include="ListModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

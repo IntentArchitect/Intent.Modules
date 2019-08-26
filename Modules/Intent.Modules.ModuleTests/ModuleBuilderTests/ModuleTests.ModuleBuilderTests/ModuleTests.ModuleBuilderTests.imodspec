@@ -15,6 +15,12 @@
     <template id="ModuleBuilderTests.DependantB">
       <role>ModuleBuilderTests.DependantB</role>
     </template>
+    <template id="ModuleBuilderTests.ListModelTemplate">
+      <role>ModuleBuilderTests.ListModelTemplate</role>
+    </template>
+    <template id="ModuleBuilderTests.NoModelTemplate">
+      <role>ModuleBuilderTests.NoModelTemplate</role>
+    </template>
   </templates>
   <decorators>
     <decorator id="ModuleBuilderTests.CompositeDecorator" />
