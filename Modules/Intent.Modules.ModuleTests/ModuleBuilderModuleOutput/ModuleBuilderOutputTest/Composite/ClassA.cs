@@ -9,6 +9,11 @@ using ModuleBuilderOutputTest.DependantA;
 
 namespace ModuleBuilderOutputTest.Composite
 {
+    /*
+        Decorator output:
+        This is text from my Test Decorator
+    */
+
     public class ClassA
     {
         public ModuleBuilderOutputTest.DependantA.ClassADependant DependantA { get; }
