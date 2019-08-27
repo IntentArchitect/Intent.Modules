@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\TransactionScopeDecorator.cs" />
+    <Compile Include="Decorators\TransactionScopeDecoratorRegistration.cs" />
     <Compile Include="Decorators\UseHttpsOwinStartupDecorator.cs" />
     <Compile Include="Decorators\WebApiConfigJsonValidationDecorator.cs" />
     <Compile Include="Decorators\WebApiOwinStartupDecorator.cs" />
