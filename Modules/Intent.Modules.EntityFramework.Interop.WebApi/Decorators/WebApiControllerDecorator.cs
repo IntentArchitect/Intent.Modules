@@ -25,20 +25,24 @@ namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
         public const string Identifier = "Intent.EntityFramework.Interop.WebApi.ControllerDecorator";
 
 
-        public override string DeclarePrivateVariables(IServiceModel service) => $@"
-        private readonly {GetDbContextTemplate().ClassName} _dbContext;";
+        public override string DeclarePrivateVariables(IServiceModel service) => HasExplicitTransactionScope(service) ? $@"
+        private readonly {GetDbContextTemplate().ClassName} _dbContext;" : string.Empty;
 
-        public override string ConstructorParams(IServiceModel service) => $@"
-            , {GetDbContextTemplate().ClassName} dbContext";
+        public override string ConstructorParams(IServiceModel service) => HasExplicitTransactionScope(service) ? $@"
+            , {GetDbContextTemplate().ClassName} dbContext" : string.Empty;
 
-        public override string ConstructorInit(IServiceModel service) => @"
-            _dbContext = dbContext;";
+        public override string ConstructorInit(IServiceModel service) => HasExplicitTransactionScope(service) ? @"
+            _dbContext = dbContext;" : string.Empty;
 
         public override string AfterCallToAppLayer(IServiceModel service, IOperationModel operation)
         {
+            if (!ShouldHaveTransactionScope(operation))
+            {
+                return string.Empty;
+            }
             if (operation.Stereotypes.Any(x => x.Name == "ReadOnly"))
             {
-                return "";
+                return string.Empty;
             }
             return operation.IsAsync() 
                 ? $@"
@@ -49,6 +53,10 @@ namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
 
         public override string OnDispose(IServiceModel service)
         {
+            if (!HasExplicitTransactionScope(service))
+            {
+                return string.Empty;
+            }
             return @"
             _dbContext.Dispose();";
         }
@@ -67,6 +75,16 @@ namespace Intent.Modules.EntityFramework.Interop.WebApi.Decorators
             {
                 TemplateDependancy.OnTemplate(DbContextTemplate.Identifier)
             };
+        }
+
+        private bool HasExplicitTransactionScope(IServiceModel service)
+        {
+            return service.Operations.Any(x => x.GetStereotypeProperty<bool>("Transactional Settings", "Explicit Scope", true));
+        }
+
+        private bool ShouldHaveTransactionScope(IOperationModel operation)
+        {
+            return operation.GetStereotypeProperty<bool>("Transactional Settings", "Explicit Scope", true);
         }
     }
 }
