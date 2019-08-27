@@ -81,7 +81,12 @@ namespace <#=Namespace#>
 <#      
         }
 #><#= AfterCallToAppLayer(operation) #><#= AfterTransaction(operation) #><#
-        if (operation.ReturnType != null)
+        if (!string.IsNullOrEmpty(OverrideReturnStatement(Model, operation)))
+        { #>
+            
+            <#= OverrideReturnStatement(Model, operation) #>
+<#      }
+        else if (operation.ReturnType != null)
         { #>
             
             return Ok(result);

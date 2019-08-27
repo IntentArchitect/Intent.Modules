@@ -353,28 +353,44 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             
             #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
-        if (operation.ReturnType != null)
+        if (!string.IsNullOrEmpty(OverrideReturnStatement(Model, operation)))
+        { 
+            
+            #line default
+            #line hidden
+            this.Write("            \r\n            ");
+            
+            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(OverrideReturnStatement(Model, operation)));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+      }
+        else if (operation.ReturnType != null)
         { 
             
             #line default
             #line hidden
             this.Write("            \r\n            return Ok(result);\r\n");
             
-            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
       } else { 
             
             #line default
             #line hidden
             this.Write("            \r\n            return StatusCode(HttpStatusCode.NoContent);\r\n");
             
-            #line 91 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 96 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("        }\r\n");
             
-            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 98 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
     } // foreach (var operation in Model.Operations)
 
         // Source code of base class: http://aspnetwebstack.codeplex.com/SourceControl/latest#src/System.Web.Http/ApiController.cs
@@ -387,14 +403,14 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                     " base.Dispose(disposing);\r\n\r\n            //dispose all resources\r\n            _a" +
                     "ppService.Dispose();");
             
-            #line 104 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 109 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(OnDispose()));
             
             #line default
             #line hidden
             this.Write("\r\n        }\r\n");
             
-            #line 106 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+            #line 111 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassMethods()));
             
             #line default

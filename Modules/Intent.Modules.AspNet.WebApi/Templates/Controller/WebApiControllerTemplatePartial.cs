@@ -165,6 +165,19 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 return InternalServerError(e);";
         }
 
+        public string OverrideReturnStatement(IServiceModel service, IOperationModel operation)
+        {
+            var returnOverrideDecoratorStatements = GetDecorators()
+                .Select(x => x.OverrideReturnStatement(Model, operation))
+                .Where(p => !string.IsNullOrEmpty(p))
+                .ToArray();
+            if (returnOverrideDecoratorStatements.Length > 1)
+            {
+                throw new Exception($"There is more than 1 Decorator that is attempting to override the return statement in {operation.Name} in {service.Name}");
+            }
+            return returnOverrideDecoratorStatements.FirstOrDefault() ?? string.Empty;
+        }
+
         public string OnDispose()
         {
             return GetDecorators().Aggregate(x => x.OnDispose(Model));
