@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="09249750-ba19-4c57-b8d2-4f0fd6afe28a" type="Service">
-  <name>TestServices</name>
+  <name>NormalTestServices</name>
   <isAbstract>false</isAbstract>
   <isMapped>false</isMapped>
   <parentFolderId>91efdd20-4c44-4b39-9615-6232d55b6def</parentFolderId>
   <stereotypes />
   <attributes />
   <operations>
-    <operation id="ce72ac55-5f59-464c-89ea-be4e976045e2" isAbstract="false">
-      <name>OperationWithNoSignature</name>
+    <operation id="2d1b9014-faac-4657-b93f-b2fa22689d44" isAbstract="false">
+      <name>OperationWithoutAnything</name>
       <parameters />
       <stereotypes />
     </operation>
-    <operation id="42fa42f2-08db-448b-b626-01579741078a" isAbstract="false">
+    <operation id="e1b8df11-8718-42bc-9f0f-826a2c1c4f10" isAbstract="false">
       <name>OperationWithPrimitiveArguments</name>
       <parameters>
-        <parameter id="9cfa5be8-ff52-46f4-b236-752deddce4c6">
+        <parameter id="b024b6bc-6f5a-4b73-a4d3-f7f94f2284e3">
           <name>stringVal</name>
           <isNullable>false</isNullable>
           <isCollection>false</isCollection>
           <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
           <stereotypes />
         </parameter>
-        <parameter id="2eb755f4-82aa-4ea9-b6b4-11369503ec18">
-          <name>intVal</name>
+        <parameter id="e5cf01ed-3bdb-4648-8e5d-8f912308cd37">
+          <name>longVal</name>
           <isNullable>false</isNullable>
           <isCollection>false</isCollection>
-          <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
+          <type>33013006-E404-48C2-AC46-24EF5A5774FD</type>
           <stereotypes />
         </parameter>
-        <parameter id="d6d0735c-db80-43ec-8c06-ff0beb265daa">
+        <parameter id="21e3f227-a26c-417e-868a-77bff3849abc">
+          <name>dateVal</name>
+          <isNullable>false</isNullable>
+          <isCollection>false</isCollection>
+          <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+          <stereotypes />
+        </parameter>
+        <parameter id="af748fa3-d768-4395-8797-f67f23847121">
           <name>enumVal</name>
           <isNullable>false</isNullable>
           <isCollection>false</isCollection>
           <type>55bab887-622b-4712-a988-00cdc0cfabbc</type>
           <stereotypes />
         </parameter>
-        <parameter id="6837274a-3a15-4369-8f4a-749a1df85fb8">
-          <name>guidVal</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>6b649125-18ea-48fd-a6ba-0bfff0d8f488</type>
-          <stereotypes />
-        </parameter>
       </parameters>
       <stereotypes />
     </operation>
-    <operation id="09d851d0-e960-4c6b-bae8-26d3a4dca4d5" isAbstract="false">
+    <operation id="ba8ef330-0c20-4a84-b74e-e5240c3256e8" isAbstract="false">
       <name>OperationWithPrimitiveResponse</name>
-      <returnType id="e6ecd03e-e849-495d-bda1-66e5b1204998">
+      <returnType id="16076ee1-557d-4704-ba22-e4c8ba73d9c8">
         <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -57,10 +57,10 @@
       <parameters />
       <stereotypes />
     </operation>
-    <operation id="1611e151-f050-4741-812f-70bbb3bc7fb4" isAbstract="false">
-      <name>OperationWithOneDTOArgument</name>
+    <operation id="279267f3-4e6c-4aef-89e6-8a0e33b7b203" isAbstract="false">
+      <name>OperationWithDTOArgument</name>
       <parameters>
-        <parameter id="00ee8b03-50ed-41ab-80ce-04a28ded06b5">
+        <parameter id="b66ca344-e6fb-4eaf-98aa-69d3bae26efd">
           <name>dto</name>
           <isNullable>false</isNullable>
           <isCollection>false</isCollection>
@@ -70,76 +70,38 @@
       </parameters>
       <stereotypes />
     </operation>
-    <operation id="6300ea7e-bad6-4459-9507-d153d9836618" isAbstract="false">
-      <name>AsyncOperationWithOneDTOArgument</name>
-      <parameters>
-        <parameter id="ea1cd8f0-b268-49d0-a4c5-784d1615533d">
-          <name>dto</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>3923c76a-02e3-41a5-a9c5-744f3ea043fe</type>
-          <stereotypes />
-        </parameter>
-      </parameters>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="A225C795-33E9-417D-8D58-E22826A08224">
-          <addedByDefault>false</addedByDefault>
-          <properties />
-        </stereotype>
-      </stereotypes>
-    </operation>
-    <operation id="c62fb955-3be3-483c-b05d-5e8e6249b9d7" isAbstract="false">
-      <name>AsyncOperationWithPrimitiveResponse</name>
-      <returnType id="0d5f38b7-3193-41ed-8ca3-ef510c1d722f">
-        <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+    <operation id="4dd807bf-d5d2-4e6f-ba99-289c92866b83" isAbstract="false">
+      <name>OperationWithDTOResponse</name>
+      <returnType id="1222895e-15b5-41c4-ab99-ffd60e788ad7">
+        <type>3923c76a-02e3-41a5-a9c5-744f3ea043fe</type>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
       </returnType>
       <parameters />
+      <stereotypes />
+    </operation>
+    <operation id="b9257f7e-8a99-4fac-a57b-22401a04f912" isAbstract="false">
+      <name>OperationWithExplicitTransactionScope</name>
+      <parameters />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="A225C795-33E9-417D-8D58-E22826A08224">
+        <stereotype stereotypeDefinitionId="bfa313ec-61ca-46e6-ba57-d71570d0e751">
           <addedByDefault>false</addedByDefault>
-          <properties />
+          <properties>
+            <property name="050b5ad7-d0b6-4b67-9e0d-25037a27c22d" value="true" />
+          </properties>
         </stereotype>
       </stereotypes>
     </operation>
-    <operation id="70392f08-b969-462a-9bba-d42943256f00" isAbstract="false">
-      <name>AsyncOperationWithPrimitiveArguments</name>
-      <parameters>
-        <parameter id="f2d4b070-1aa7-4ccb-98c8-720a6fd51560">
-          <name>stringVal</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
-          <stereotypes />
-        </parameter>
-        <parameter id="af8952dc-9fc2-4d17-8164-a0a810bf849c">
-          <name>intVal</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</type>
-          <stereotypes />
-        </parameter>
-        <parameter id="e5bc4300-d478-4b19-badd-a6fa3a09f1f6">
-          <name>enumVal</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>55bab887-622b-4712-a988-00cdc0cfabbc</type>
-          <stereotypes />
-        </parameter>
-        <parameter id="b61ed0e7-824a-4029-b03d-372cf5912768">
-          <name>guidVal</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>6b649125-18ea-48fd-a6ba-0bfff0d8f488</type>
-          <stereotypes />
-        </parameter>
-      </parameters>
+    <operation id="c12e7995-da2c-4d60-908f-9bf05417d991" isAbstract="false">
+      <name>OperationWithoutTransactionScope</name>
+      <parameters />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="A225C795-33E9-417D-8D58-E22826A08224">
+        <stereotype stereotypeDefinitionId="bfa313ec-61ca-46e6-ba57-d71570d0e751">
           <addedByDefault>false</addedByDefault>
-          <properties />
+          <properties>
+            <property name="050b5ad7-d0b6-4b67-9e0d-25037a27c22d" value="false" />
+          </properties>
         </stereotype>
       </stereotypes>
     </operation>

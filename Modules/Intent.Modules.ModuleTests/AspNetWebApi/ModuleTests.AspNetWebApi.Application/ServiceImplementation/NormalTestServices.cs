@@ -11,20 +11,20 @@ using ModuleTests.AspNetWebApi.Application.Enums;
 
 namespace ModuleTests.AspNetWebApi.Application.ServiceImplementation
 {
-    public class TestServices : ITestServices
+    public class NormalTestServices : INormalTestServices
     {
-        public TestServices()
+        public NormalTestServices()
         {
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public void OperationWithNoSignature()
+        public void OperationWithoutAnything()
         {
             throw new NotImplementedException("Write your implementation for this services here...");
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public void OperationWithPrimitiveArguments(string stringVal, int intVal, TestEnumA enumVal, System.Guid guidVal)
+        public void OperationWithPrimitiveArguments(string stringVal, long longVal, System.DateTime dateVal, TestEnumA enumVal)
         {
             throw new NotImplementedException("Write your implementation for this services here...");
         }
@@ -36,25 +36,25 @@ namespace ModuleTests.AspNetWebApi.Application.ServiceImplementation
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public void OperationWithOneDTOArgument(TestDTO dto)
+        public void OperationWithDTOArgument(TestDTO dto)
         {
             throw new NotImplementedException("Write your implementation for this services here...");
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public async Task AsyncOperationWithOneDTOArgument(TestDTO dto)
+        public TestDTO OperationWithDTOResponse()
         {
             throw new NotImplementedException("Write your implementation for this services here...");
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public async Task<string> AsyncOperationWithPrimitiveResponse()
+        public void OperationWithExplicitTransactionScope()
         {
             throw new NotImplementedException("Write your implementation for this services here...");
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public async Task AsyncOperationWithPrimitiveArguments(string stringVal, int intVal, TestEnumA enumVal, System.Guid guidVal)
+        public void OperationWithoutTransactionScope()
         {
             throw new NotImplementedException("Write your implementation for this services here...");
         }

@@ -16,12 +16,12 @@ using ModuleTests.AspNetWebApi.Application.Enums;
 
 namespace ModuleTests.AspNetWebApi.Api
 {
-    [RoutePrefix("api/testservices")]
-    public class TestServicesController : ApiController
+    [RoutePrefix("api/normaltestservices")]
+    public class NormalTestServicesController : ApiController
     {
-        private readonly ITestServices _appService;
+        private readonly INormalTestServices _appService;
 
-        public TestServicesController(ITestServices appService
+        public NormalTestServicesController(INormalTestServices appService
             )
         {
             _appService = appService ?? throw new ArgumentNullException(nameof(appService));
@@ -29,18 +29,14 @@ namespace ModuleTests.AspNetWebApi.Api
 
         [AcceptVerbs("POST")]
         [AllowAnonymous]
-        [Route("operationwithnosignature")]
+        [Route("operationwithoutanything")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult OperationWithNoSignature()
+        public IHttpActionResult OperationWithoutAnything()
         {
             var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
-
-
             using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso))
             {
-
-                _appService.OperationWithNoSignature();
-
+                _appService.OperationWithoutAnything();
                 ts.Complete();
             }
 
@@ -51,16 +47,12 @@ namespace ModuleTests.AspNetWebApi.Api
         [AllowAnonymous]
         [Route("operationwithprimitivearguments")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult OperationWithPrimitiveArguments(string stringVal, int intVal, TestEnumA enumVal, System.Guid guidVal)
+        public IHttpActionResult OperationWithPrimitiveArguments(string stringVal, long longVal, System.DateTime dateVal, TestEnumA enumVal)
         {
             var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
-
-
             using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso))
             {
-
-                _appService.OperationWithPrimitiveArguments(stringVal, intVal, enumVal, guidVal);
-
+                _appService.OperationWithPrimitiveArguments(stringVal, longVal, dateVal, enumVal);
                 ts.Complete();
             }
 
@@ -73,16 +65,12 @@ namespace ModuleTests.AspNetWebApi.Api
         [ResponseType(typeof(string))]
         public IHttpActionResult OperationWithPrimitiveResponse()
         {
-
             string result = default(string);
             var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
-
-
             using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso))
             {
                 var appServiceResult = _appService.OperationWithPrimitiveResponse();
                 result = appServiceResult;
-
                 ts.Complete();
             }
 
@@ -91,38 +79,14 @@ namespace ModuleTests.AspNetWebApi.Api
 
         [AcceptVerbs("POST")]
         [AllowAnonymous]
-        [Route("operationwithonedtoargument")]
+        [Route("operationwithdtoargument")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult OperationWithOneDTOArgument(TestDTO dto)
+        public IHttpActionResult OperationWithDTOArgument(TestDTO dto)
         {
             var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
-
-
             using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso))
             {
-
-                _appService.OperationWithOneDTOArgument(dto);
-
-                ts.Complete();
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        [AcceptVerbs("POST")]
-        [AllowAnonymous]
-        [Route("asyncoperationwithonedtoargument")]
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> AsyncOperationWithOneDTOArgument(TestDTO dto)
-        {
-            var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
-
-
-            using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso, TransactionScopeAsyncFlowOption.Enabled))
-            {
-
-                await _appService.AsyncOperationWithOneDTOArgument(dto);
-
+                _appService.OperationWithDTOArgument(dto);
                 ts.Complete();
             }
 
@@ -131,20 +95,16 @@ namespace ModuleTests.AspNetWebApi.Api
 
         [AcceptVerbs("GET")]
         [AllowAnonymous]
-        [Route("asyncoperationwithprimitiveresponse")]
-        [ResponseType(typeof(string))]
-        public async Task<IHttpActionResult> AsyncOperationWithPrimitiveResponse()
+        [Route("operationwithdtoresponse")]
+        [ResponseType(typeof(TestDTO))]
+        public IHttpActionResult OperationWithDTOResponse()
         {
-
-            string result = default(string);
+            TestDTO result = default(TestDTO);
             var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
-
-
-            using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso, TransactionScopeAsyncFlowOption.Enabled))
+            using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso))
             {
-                var appServiceResult = await _appService.AsyncOperationWithPrimitiveResponse();
+                var appServiceResult = _appService.OperationWithDTOResponse();
                 result = appServiceResult;
-
                 ts.Complete();
             }
 
@@ -153,20 +113,27 @@ namespace ModuleTests.AspNetWebApi.Api
 
         [AcceptVerbs("POST")]
         [AllowAnonymous]
-        [Route("asyncoperationwithprimitivearguments")]
+        [Route("operationwithexplicittransactionscope")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> AsyncOperationWithPrimitiveArguments(string stringVal, int intVal, TestEnumA enumVal, System.Guid guidVal)
+        public IHttpActionResult OperationWithExplicitTransactionScope()
         {
             var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
-
-
-            using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso, TransactionScopeAsyncFlowOption.Enabled))
+            using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso))
             {
-
-                await _appService.AsyncOperationWithPrimitiveArguments(stringVal, intVal, enumVal, guidVal);
-
+                _appService.OperationWithExplicitTransactionScope();
                 ts.Complete();
             }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        [AcceptVerbs("POST")]
+        [AllowAnonymous]
+        [Route("operationwithouttransactionscope")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult OperationWithoutTransactionScope()
+        {
+            _appService.OperationWithoutTransactionScope();
 
             return StatusCode(HttpStatusCode.NoContent);
         }

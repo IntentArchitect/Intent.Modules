@@ -1,5 +1,6 @@
 ﻿using Intent.MetaModel.Service;
 using Intent.SoftwareFactory.Templates;
+using System;
 using System.Collections.Generic;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
@@ -18,12 +19,14 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
         public virtual string BeginOperation(IServiceModel service, IOperationModel operation) => @"";
 
+        [Obsolete("Transactions are now in its own Decorator - please refrain from using this going forward")]
         public virtual string BeforeTransaction(IServiceModel service, IOperationModel operation) => @"";
 
         public virtual string BeforeCallToAppLayer(IServiceModel service, IOperationModel operation) => @"";
 
         public virtual string AfterCallToAppLayer(IServiceModel service, IOperationModel operation) => @"";
 
+        [Obsolete("Transactions are now in its own Decorator - please refrain from using this going forward")]
         public virtual string AfterTransaction(IServiceModel service, IOperationModel operation) => @"";
 
         public virtual string OnExceptionCaught(IServiceModel service, IOperationModel operation) => @"";

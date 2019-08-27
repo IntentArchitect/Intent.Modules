@@ -17,8 +17,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>2a1c15fa-aca6-40c9-bab0-79665dadb973</ProjectId>
-      <SolutionRelativeFilePath>..\AspNetWebApi\ModuleTests.AspNetWebApi.Api\Controllers\TestServicesController.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Controllers\TestServicesController.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\AspNetWebApi\ModuleTests.AspNetWebApi.Api\Controllers\AsyncTestServicesController.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Controllers\AsyncTestServicesController.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2a1c15fa-aca6-40c9-bab0-79665dadb973</ProjectId>
+      <SolutionRelativeFilePath>..\AspNetWebApi\ModuleTests.AspNetWebApi.Api\Controllers\NormalTestServicesController.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Controllers\NormalTestServicesController.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>2a1c15fa-aca6-40c9-bab0-79665dadb973</ProjectId>
@@ -72,13 +77,23 @@
     </FileLog>
     <FileLog>
       <ProjectId>4fa77bb9-0d1d-4420-979a-9321d13c33dc</ProjectId>
-      <SolutionRelativeFilePath>..\AspNetWebApi\ModuleTests.AspNetWebApi.Application\ServiceContracts\ITestServices.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ServiceContracts\ITestServices.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\AspNetWebApi\ModuleTests.AspNetWebApi.Application\ServiceContracts\IAsyncTestServices.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceContracts\IAsyncTestServices.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>4fa77bb9-0d1d-4420-979a-9321d13c33dc</ProjectId>
-      <SolutionRelativeFilePath>..\AspNetWebApi\ModuleTests.AspNetWebApi.Application\ServiceImplementation\TestServices.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ServiceImplementation\TestServices.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\AspNetWebApi\ModuleTests.AspNetWebApi.Application\ServiceContracts\INormalTestServices.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceContracts\INormalTestServices.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>4fa77bb9-0d1d-4420-979a-9321d13c33dc</ProjectId>
+      <SolutionRelativeFilePath>..\AspNetWebApi\ModuleTests.AspNetWebApi.Application\ServiceImplementation\AsyncTestServices.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceImplementation\AsyncTestServices.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>4fa77bb9-0d1d-4420-979a-9321d13c33dc</ProjectId>
+      <SolutionRelativeFilePath>..\AspNetWebApi\ModuleTests.AspNetWebApi.Application\ServiceImplementation\NormalTestServices.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceImplementation\NormalTestServices.cs</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>
