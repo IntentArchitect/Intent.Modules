@@ -54,7 +54,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
         private string EmitPropertyAssignments(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, string domainVarName, IOperationParameter operationParameterModel)
         {
             var sb = new StringBuilder();
-            var dto = metadataManager.GetDTOs(application).First(p => p.Id == operationParameterModel.Type.Id);
+            var dto = metadataManager.GetDTOs(application).First(p => p.Id == operationParameterModel.Type.Element.Id);
             foreach (var domainAttribute in domainModel.Attributes)
             {
                 var dtoField = dto.Fields.FirstOrDefault(p => p.Name.Equals(domainAttribute.Name, StringComparison.OrdinalIgnoreCase));
@@ -63,7 +63,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                     sb.AppendLine($"                    #warning No matching field found for {domainAttribute.Name}");
                     continue;
                 }
-                if (domainAttribute.Type.Id != dtoField.Type.Id)
+                if (domainAttribute.Type.Element.Id != dtoField.Type.Element.Id)
                 {
                     sb.AppendLine($"                    #warning No matching type for Domain: {domainAttribute.Name} and DTO: {dtoField.Name}");
                     continue;

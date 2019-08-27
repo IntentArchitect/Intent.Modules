@@ -17,7 +17,7 @@ namespace Intent.Modelers.Services.Api
         public IFolder Folder { get; }
         public string Name => _class.Name;
         public string ApplicationName => _class.Application.Name;
-        public IApplication Application => _class.Application;
+        public IElementApplication Application => _class.Application;
         public IEnumerable<IOperation> Operations => _class.Operations;
         public string Comment => _class.Id;
     }

@@ -10,22 +10,22 @@ namespace Intent.Modules.Common.Types.TypeResolvers
 
         protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {
-            var result = ((ITypeReference)typeInfo).Name;
-            if (typeInfo.Stereotypes.Any(x => x.Name == "C#"))
+            var result = typeInfo.Element.Name;
+            if (typeInfo.Element.Stereotypes.Any(x => x.Name == "C#"))
             {
-                string typeName = typeInfo.GetStereotypeProperty<string>("C#", "Type", typeInfo.Name);
-                string @namespace = typeInfo.GetStereotypeProperty<string>("C#", "Namespace");
+                string typeName = typeInfo.Element.GetStereotypeProperty<string>("C#", "Type", typeInfo.Element.Name);
+                string @namespace = typeInfo.Element.GetStereotypeProperty<string>("C#", "Namespace");
 
                 result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
 
-                if (typeInfo.IsNullable && (typeInfo.SpecializationType.Equals("Enum",StringComparison.InvariantCultureIgnoreCase) || (typeInfo.GetStereotypeProperty("C#", "IsPrimitive", false))))
+                if (typeInfo.IsNullable && (typeInfo.Element.SpecializationType.Equals("Enum",StringComparison.InvariantCultureIgnoreCase) || (typeInfo.Element.GetStereotypeProperty("C#", "IsPrimitive", false))))
                 {
                     result += "?";
                 }
             }
             else
             {
-                if (typeInfo.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase))
+                if (typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase))
                 {
                     result += "?";
                 }

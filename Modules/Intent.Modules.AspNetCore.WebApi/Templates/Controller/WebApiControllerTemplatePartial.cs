@@ -200,7 +200,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                     return operation.Parameters.Select(x => $"{GetParameterBindingAttribute(operation, x)}{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => $"{x}, {y}");
                 case HttpVerb.GET:
                 case HttpVerb.DELETE:
-                    if (operation.Parameters.Any(x => x.Type.SpecializationType == "DTO"))
+                    if (operation.Parameters.Any(x => x.Type.Element.SpecializationType == "DTO"))
                     {
                         Logging.Log.Warning($@"Intent.AspNetCore.WebApi: [{Model.Name}.{operation.Name}] Passing objects into HTTP {GetHttpVerb(operation)} operations is not well supported by this module.
     We recommend using a POST or PUT verb");
@@ -248,9 +248,9 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             {
                 return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
             }
-            if (operation.ReturnType == null || operation.Parameters.Any(x => x.Type.SpecializationType == "DTO"))
+            if (operation.ReturnType == null || operation.Parameters.Any(x => x.Type.Element.SpecializationType == "DTO"))
             {
-                var hasIdParam = operation.Parameters.Any(x => x.Name.ToLower().EndsWith("id") && x.Type.SpecializationType != "DTO");
+                var hasIdParam = operation.Parameters.Any(x => x.Name.ToLower().EndsWith("id") && x.Type.Element.SpecializationType != "DTO");
                 if (hasIdParam && new[] {"delete", "remove"}.Any(x => operation.Name.ToLower().Contains(x)))
                 {
                     return HttpVerb.DELETE;
@@ -288,8 +288,8 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
                 return $"[{attributeName}]";
             }
 
-            if (operation.Parameters.Count(p => p.Type.SpecializationType == "DTO") == 1 
-                && parameter.Type.SpecializationType == "DTO")
+            if (operation.Parameters.Count(p => p.Type.Element.SpecializationType == "DTO") == 1 
+                && parameter.Type.Element.SpecializationType == "DTO")
             {
                 return "[FromBody]";
             }

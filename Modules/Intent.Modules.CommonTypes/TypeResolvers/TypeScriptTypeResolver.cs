@@ -7,11 +7,11 @@ namespace Intent.Modules.Common.Types.TypeResolvers
     {
         protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {
-            var type = typeInfo.GetStereotypeProperty<string>("TypeScript", "Type");
-            
+            var type = typeInfo.Element.GetStereotypeProperty<string>("TypeScript", "Type");
+
             return !string.IsNullOrWhiteSpace(type)
                 ? type
-                : typeInfo.Name;
+                : typeInfo.Element.Name;
         }
 
     }

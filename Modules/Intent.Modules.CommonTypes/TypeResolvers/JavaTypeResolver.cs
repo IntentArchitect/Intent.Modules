@@ -16,11 +16,11 @@ namespace Intent.Modules.Common.Types.TypeResolvers
 
         protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {
-            var result = typeInfo.Name;
-            if (typeInfo.Stereotypes.Any(x => x.Name == "Java"))
+            var result = typeInfo.Element.Name;
+            if (typeInfo.Element.HasStereotype("Java"))
             {
-                string typeName = typeInfo.GetStereotypeProperty<string>("Java", "Type");
-                string @namespace = typeInfo.GetStereotypeProperty<string>("Java", "Namespace");
+                string typeName = typeInfo.Element.GetStereotypeProperty<string>("Java", "Type");
+                string @namespace = typeInfo.Element.GetStereotypeProperty<string>("Java", "Namespace");
                 result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
             }
 

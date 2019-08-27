@@ -72,7 +72,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             {
                 return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
             }
-            if (operation.ReturnType == null || operation.Parameters.Any(x => x.Type.SpecializationType == "DTO"))
+            if (operation.ReturnType == null || operation.Parameters.Any(x => x.Type.Element.SpecializationType == "DTO"))
             {
                 return HttpVerb.POST;
             }

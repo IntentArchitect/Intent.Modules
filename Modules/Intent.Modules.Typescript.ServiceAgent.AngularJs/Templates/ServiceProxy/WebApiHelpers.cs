@@ -100,7 +100,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         public static bool IsFromBody(this IOperationParameter parameter)
         {
             // NB: Order of conditional checks is important here
-            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !UrlEncodablePrimitives.Contains(parameter.Type.Name);
+            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !UrlEncodablePrimitives.Contains(parameter.Type.Element.Name);
         }
 
         //public static string MakeUrlEncodeable(this IOperationParameterModel parameter)

@@ -20,14 +20,14 @@ namespace Intent.Modelers.Domain.Api
 
             var generalizedFrom = _class.AssociatedClasses
                 .Where(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase) &&
-                            x.Association.SourceEnd.Id == _class.Id)
+                            x.Association.SourceEnd.Element.Id == _class.Id)
                 .ToArray();
             if (generalizedFrom.Length > 1)
             {
                 throw new Exception($"[{_class.Name} - {_class.Id}] is generalized from more than one class.");
             }
 
-            var parent = generalizedFrom.SingleOrDefault()?.Model;
+            var parent = generalizedFrom.SingleOrDefault()?.Element;
             if (parent != null)
             {
                 _parent = classCache.ContainsKey(parent.Id) ? classCache[parent.Id] : new Class(parent, classCache);
@@ -55,7 +55,7 @@ namespace Intent.Modelers.Domain.Api
         public bool IsMapped => _class.IsMapped;
         public string Comment => _class.Comment;
         public IElementMapping MappedClass => _class.MappedElement;
-        public IApplication Application => _class.Application;
+        public IElementApplication Application => _class.Application;
         public IEnumerable<IAttribute> Attributes => _class.Attributes;
         public IEnumerable<IOperation> Operations => _class.Operations;
         public IEnumerable<IAssociationEnd> AssociatedClasses

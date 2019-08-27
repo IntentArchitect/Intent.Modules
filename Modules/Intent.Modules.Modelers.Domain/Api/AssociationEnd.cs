@@ -15,16 +15,16 @@ namespace Intent.Modelers.Domain.Api
         {
             _associationEnd = associationEnd;
             Association = association;
-            Class = classCache.ContainsKey(_associationEnd.Model.Id) ? classCache[_associationEnd.Model.Id] : new Class(_associationEnd.Model, classCache);
+            Class = classCache.ContainsKey(_associationEnd.Element.Id) ? classCache[_associationEnd.Element.Id] : new Class(_associationEnd.Element, classCache);
         }
 
-        public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
-        public string Id => _associationEnd.Id;
+        public IEnumerable<IStereotype> Stereotypes => _associationEnd.Element.Stereotypes;
+        public string Id => _associationEnd.Element.Id;
         public string Name => _associationEnd.Name;
-        public string SpecializationType => _associationEnd.SpecializationType;
+        public string SpecializationType => _associationEnd.Element.SpecializationType;
         public bool IsNullable => _associationEnd.IsNullable;
         public bool IsCollection => _associationEnd.IsCollection;
-        public Metadata.Models.IElement Model => _associationEnd.Model;
+        public IElement Element => _associationEnd.Element;
 
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
         public string Comment => _associationEnd.Comment;
@@ -85,7 +85,7 @@ namespace Intent.Modelers.Domain.Api
 
         public bool Equals(IAssociationEnd other)
         {
-            return string.Equals(Id, other.Id);
+            return string.Equals(Id, other.Element.Id);
         }
 
         public override bool Equals(object obj)

@@ -20,7 +20,7 @@ namespace Intent.Modelers.Services.Api
         public IEnumerable<string> GenericTypes => _class.GenericTypes.Select(x => x.Name);
         public bool IsMapped => _class.IsMapped;
         public IElementMapping MappedClass => _class.MappedElement;
-        public IApplication Application => _class.Application;
+        public IElementApplication Application => _class.Application;
         public IEnumerable<IAttribute> Fields => _class.Attributes;
         public string Comment => _class.Id;
     }

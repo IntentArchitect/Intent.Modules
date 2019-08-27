@@ -9,7 +9,7 @@ namespace Intent.Modelers.Services.Api
 
         string ApplicationName { get; }
 
-        IApplication Application { get; }
+        IElementApplication Application { get; }
 
         IEnumerable<IOperation> Operations { get; }
 

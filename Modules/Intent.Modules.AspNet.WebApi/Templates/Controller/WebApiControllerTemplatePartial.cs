@@ -264,7 +264,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                         throw new Exception($"Intent.AspNet.WebApi: [{Model.Name}.{operation.Name}] HTTP {verb} does not support parameters with a [FromBody] attribute.");
                     }
 
-                    if (operation.Parameters.Any(x => x.Type.SpecializationType == "DTO"))
+                    if (operation.Parameters.Any(x => x.Type.Element.SpecializationType == "DTO"))
                     {
                         Logging.Log.Warning($@"Intent.AspNet.WebApi: [{Model.Name}.{operation.Name}] Passing complex types into HTTP {verb} operations is not well supported by this module.
     We recommend using a POST or PUT verb.");
@@ -405,7 +405,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             };
 
             // NB: Order of conditional checks is important here
-            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !csharpPrimitives.Contains(parameter.Type.Name);
+            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !csharpPrimitives.Contains(parameter.Type.Element.Name);
         }
 
         private enum HttpVerb

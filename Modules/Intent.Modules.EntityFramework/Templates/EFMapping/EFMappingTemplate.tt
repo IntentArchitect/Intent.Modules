@@ -131,7 +131,7 @@ namespace <#= Namespace #>
                 .IsRequired()<#
         }
 
-        if (attribute.Type.Name == "string" )
+        if (attribute.Type.Element.Name == "string" )
         {
             var maxLength = attribute.GetStereotypeProperty<int?>("StringOptions", "MaxLength") ?? attribute.GetStereotypeProperty<int?>("Text", "MaxLength");     // (Text for backwards compatibility with RichDomain)
             if (maxLength.HasValue){
@@ -211,7 +211,7 @@ namespace <#= Namespace #>
                     {
                         m.ToTable("<#= associationEnd.OtherEnd().Class.Name.ToPascalCase() + associationEnd.Name().ToPascalCase() #>");
                         m.MapLeftKey("<#= associationEnd.OtherEnd().Class.Name.ToPascalCase()#>Id");
-                        m.MapRightKey("<#= associationEnd.Name.ToPascalCase()#>Id");
+                        m.MapRightKey("<#= associationEnd.Name().ToPascalCase()#>Id");
                     });
 
 <#                  break;
@@ -234,9 +234,9 @@ public void MapOneToOne(IAssociationEnd associationEnd)
             <#= string.Format(".{0}({1})", withClause, associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase(): "" )#>
 <#+  if (((associationEnd.Association.AssociationType == AssociationType.Composition && associationEnd.Association.RelationshipString() == "0..1->1")
             || (associationEnd.Association.AssociationType == AssociationType.Aggregation && associationEnd.Association.RelationshipString() == "0..1->1"))
-         && Model.Attributes.All(a => a.Name.ToPascalCase() != associationEnd.OtherEnd().GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.Name().ToPascalCase() + "Id").ToPascalCase()))
+         && Model.Attributes.All(a => a.Name.ToPascalCase() != associationEnd.OtherEnd().Class.GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.Name().ToPascalCase() + "Id").ToPascalCase()))
     {#>
-            .Map(m => m.MapKey("<#= associationEnd.OtherEnd().GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.Name().ToPascalCase() + "Id")#>"))
+            .Map(m => m.MapKey("<#= associationEnd.OtherEnd().Class.GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.Name().ToPascalCase() + "Id")#>"))
 <#+    }#>
 <#+	if(associationEnd.Association.AssociationType == AssociationType.Composition) {  #>
 			.WillCascadeOnDelete()

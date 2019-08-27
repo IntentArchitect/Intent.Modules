@@ -10,7 +10,7 @@ namespace Intent.Modules.Angular.Api
     {
         string Name { get; }
 
-        IApplication Application { get; }
+        IElementApplication Application { get; }
 
         IEnumerable<IComponentModel> Components { get; }
 

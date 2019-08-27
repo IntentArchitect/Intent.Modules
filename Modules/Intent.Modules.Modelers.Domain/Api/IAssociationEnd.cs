@@ -8,6 +8,8 @@ namespace Intent.Modelers.Domain.Api
 
         IClass Class { get; }
 
+        string Name { get; }
+
         bool IsNavigable { get; }
 
         string MinMultiplicity { get; }

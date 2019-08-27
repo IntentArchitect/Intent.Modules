@@ -113,7 +113,7 @@ namespace <#= Namespace #>
                 .HasDefaultValueSql("<#= attribute.GetStereotypeProperty<string>("Default Constraint", "Value")#>")<#
         }
 
-        if (attribute.Type.Name == "string" )
+        if (attribute.Type.Element.Name == "string" )
         {
             var maxLength = attribute.GetStereotypeProperty<int?>("StringOptions", "MaxLength") ?? attribute.GetStereotypeProperty<int?>("Text", "MaxLength");     // (Text for backwards compatibility with RichDomain)
             if (maxLength.HasValue){

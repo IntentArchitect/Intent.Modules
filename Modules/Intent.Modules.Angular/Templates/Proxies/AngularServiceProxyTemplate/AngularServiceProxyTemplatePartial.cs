@@ -107,13 +107,13 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         private string GetUpdateUrl(IOperation operation)
         {
-            if (!operation.Parameters.Any() || operation.Parameters.All(x => x.Type.Model.IsDTO()))
+            if (!operation.Parameters.Any() || operation.Parameters.All(x => x.Type.Element.IsDTO()))
             {
                 return "";
             }
 
             return $@"
-        url = `${{url}}?{string.Join("&", operation.Parameters.Where(x => !x.Type.Model.IsDTO()).Select(x => $"{x.Name.ToCamelCase()}=${{{x.Name.ToCamelCase()}}}"))}`;";
+        url = `${{url}}?{string.Join("&", operation.Parameters.Where(x => !x.Type.Element.IsDTO()).Select(x => $"{x.Name.ToCamelCase()}=${{{x.Name.ToCamelCase()}}}"))}`;";
         }
 
         private string GetDataServiceCall(IOperation operation)
@@ -123,9 +123,9 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 case HttpVerb.GET:
                     return $"get(url)";
                 case HttpVerb.POST:
-                    return $"post(url, {operation.Parameters.FirstOrDefault(x => x.Type.Model.IsDTO())?.Name.ToCamelCase() ?? "null"})";
+                    return $"post(url, {operation.Parameters.FirstOrDefault(x => x.Type.Element.IsDTO())?.Name.ToCamelCase() ?? "null"})";
                 case HttpVerb.PUT:
-                    return $"put(url, {operation.Parameters.FirstOrDefault(x => x.Type.Model.IsDTO())?.Name.ToCamelCase() ?? "null"})";
+                    return $"put(url, {operation.Parameters.FirstOrDefault(x => x.Type.Element.IsDTO())?.Name.ToCamelCase() ?? "null"})";
                 case HttpVerb.DELETE:
                     return $"delete(url)";
                 default:
@@ -158,9 +158,9 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             {
                 return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
             }
-            if (operation.ReturnType == null || operation.Parameters.Any(x => x.Type.SpecializationType == "DTO"))
+            if (operation.ReturnType == null || operation.Parameters.Any(x => x.Type.Element.SpecializationType == "DTO"))
             {
-                var hasIdParam = operation.Parameters.Any(x => x.Name.ToLower().EndsWith("id") && x.Type.SpecializationType != "DTO");
+                var hasIdParam = operation.Parameters.Any(x => x.Name.ToLower().EndsWith("id") && x.Type.Element.SpecializationType != "DTO");
                 if (hasIdParam && new[] { "delete", "remove" }.Any(x => operation.Name.ToLower().Contains(x)))
                 {
                     return HttpVerb.DELETE;

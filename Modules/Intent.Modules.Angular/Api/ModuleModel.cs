@@ -20,7 +20,7 @@ namespace Intent.Modules.Angular.Api
         public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
         public string Id => _class.Id;
         public string Name => _class.Name;
-        public IApplication Application => _class.Application;
+        public IElementApplication Application => _class.Application;
         public IEnumerable<IServiceProxyModel> ServiceProxies { get; }
         public IEnumerable<IModuleDTOModel> ModelDefinitions { get; }
         public string Comment => _class.Comment;

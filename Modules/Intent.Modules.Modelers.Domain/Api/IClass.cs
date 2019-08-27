@@ -20,7 +20,7 @@ namespace Intent.Modelers.Domain.Api
 
         IElementMapping MappedClass { get; }
 
-        IApplication Application { get; }
+        IElementApplication Application { get; }
 
         IEnumerable<IAttribute> Attributes { get; }
 

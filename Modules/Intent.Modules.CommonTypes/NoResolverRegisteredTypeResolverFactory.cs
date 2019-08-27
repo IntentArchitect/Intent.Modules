@@ -61,14 +61,14 @@ namespace Intent.Modules.Common.Types
             {
                 if (typeInfo == null)
                     return string.Empty;
-                return typeInfo.Name;
+                return typeInfo.Element.Name;
             }
 
             public string Get(ITypeReference typeInfo, string contextName)
             {
                 if (typeInfo == null)
                     return string.Empty;
-                return typeInfo.Name;
+                return typeInfo.Element.Name;
             }
 
             public ITypeResolverContext InContext(string contextName)

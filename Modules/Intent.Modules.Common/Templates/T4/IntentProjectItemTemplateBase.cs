@@ -1,4 +1,5 @@
-﻿using Intent.Engine;
+﻿using System.Collections.Generic;
+using Intent.Engine;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
@@ -18,8 +19,6 @@ namespace Intent.Modules.Common.Templates
         public IProject Project { get; }
         public ITemplateContext Context { get; }
         public IFileMetadata FileMetadata { get; private set; }
-
-        //public virtual string DependencyUsings => this.ResolveAllUsings(Project);
 
         object ITemplateWithModel.Model
         {
@@ -44,6 +43,50 @@ namespace Intent.Modules.Common.Templates
         public IFileMetadata GetMetadata()
         {
             return FileMetadata;
+        }
+    }
+
+    public class TemplateContext : ITemplateContext
+    {
+        private object _defaultModelContext;
+        private Dictionary<string, object> _prefixLookup;
+
+        public TemplateContext(object defaultModelContext)
+        {
+            _defaultModelContext = defaultModelContext;
+        }
+
+        public TemplateContext() : this(null)
+        {
+        }
+
+        public void SetDefaultModel(object modelContext)
+        {
+            _defaultModelContext = modelContext;
+        }
+
+        public void AddFakeProperty<T>(string fakePropertyName, T obj)
+        {
+            if (_prefixLookup == null)
+            {
+                _prefixLookup = new Dictionary<string, object>();
+            }
+            _prefixLookup[fakePropertyName] = obj;
+        }
+
+        public object GetRootContext(string propertyName, out bool isDefault)
+        {
+            if (_prefixLookup != null && _prefixLookup.ContainsKey(propertyName))
+            {
+                isDefault = false;
+                return _prefixLookup[propertyName];
+            }
+            else
+            {
+                isDefault = true;
+                return _defaultModelContext;
+            }
+
         }
     }
 

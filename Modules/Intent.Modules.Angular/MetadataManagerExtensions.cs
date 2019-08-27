@@ -42,7 +42,7 @@ namespace Intent.Modules.Angular
 
         private static IEnumerable<IElement> GetTypeModels(ITypeReference typeReference)
         {
-            var models = new List<IElement>() { typeReference.Model };
+            var models = new List<IElement>() { typeReference.Element };
             models.AddRange(typeReference.GenericTypeParameters.SelectMany(GetTypeModels));
             return models;
         }

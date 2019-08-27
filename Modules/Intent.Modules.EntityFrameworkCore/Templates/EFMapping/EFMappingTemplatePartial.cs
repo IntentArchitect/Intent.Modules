@@ -125,7 +125,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
                 }
             }
 
-            var overrideTypeStereotype = attribute.Type.GetStereotype("EFMappingOptions");
+            var overrideTypeStereotype = attribute.Type.Element.GetStereotype("EFMappingOptions");
             if (overrideTypeStereotype != null)
             {
                 var columnType = overrideTypeStereotype.GetProperty<string>("ColumnType");
@@ -150,7 +150,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
                 }
             }
 
-            var overrideTypeStereotype = attribute.Type.GetStereotype("EFMappingOptions");
+            var overrideTypeStereotype = attribute.Type.Element.GetStereotype("EFMappingOptions");
             if (overrideTypeStereotype != null)
             {
                 var columnType = overrideTypeStereotype.GetProperty<string>("ColumnType");
@@ -165,7 +165,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
         private string GetForeignKeyLambda(IAssociationEnd associationEnd)
         {
-            var columns = associationEnd.GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.OtherEnd().Name().ToPascalCase() + "Id")
+            var columns = associationEnd.Class.GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.OtherEnd().Name().ToPascalCase() + "Id")
                 .Split(',')
                 .Select(x => x.Trim())
                 .ToList();

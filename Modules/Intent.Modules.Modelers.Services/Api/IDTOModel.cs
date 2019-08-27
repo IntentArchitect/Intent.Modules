@@ -14,7 +14,7 @@ namespace Intent.Modelers.Services.Api
 
         IElementMapping MappedClass { get; }
 
-        IApplication Application { get; }
+        IElementApplication Application { get; }
 
         IEnumerable<IAttribute> Fields { get; }
 
