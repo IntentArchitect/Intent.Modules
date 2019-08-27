@@ -13,7 +13,7 @@
     <property id="0b630897-667f-403a-9e4d-80b85ce0ee73">
       <name>Explicit Queue Processing</name>
       <type>boolean</type>
-      <defaultValue>false</defaultValue>
+      <defaultValue>true</defaultValue>
       <options />
     </property>
     <property id="eeb38d1d-d6b4-48dd-a2b8-aa4bf69e436b">
