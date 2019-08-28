@@ -17,7 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
         {
         }
 
-        public string FolderPath => string.Join("\\", new [] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
+        public string FolderPath => string.Join("/", new [] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {

@@ -18,7 +18,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
         {
         }
 
-        public string FolderPath => string.Join("\\", new[] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
+        public string FolderPath => string.Join("/", new[] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
         public string FolderNamespace => string.Join(".", new[] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
