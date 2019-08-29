@@ -1,3 +1,4 @@
+using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
@@ -24,6 +25,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
             _partialTemplateId = partialTemplateId;
         }
 
+        public string FolderPath => string.Join("/", new [] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
+
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             var metadata = new DefaultFileMetadata(
@@ -31,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "cs",
-                defaultLocationInProject: "Templates/${Model.Name}");
+                defaultLocationInProject: "${FolderPath}/${Model.Name}");
 
             metadata.CustomMetadata.Add("Depends On", "${Model.Name}.tt");
 
