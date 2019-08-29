@@ -2,7 +2,7 @@
 
 namespace Intent.Modelers.Domain.Api
 {
-    public interface IAssociationEnd : ITypeReference
+    public interface IAssociationEnd : ITypeReference, IHasStereotypes
     {
         IAssociation Association { get; }
 
