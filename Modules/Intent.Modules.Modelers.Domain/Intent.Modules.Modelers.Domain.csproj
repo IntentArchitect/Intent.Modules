@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.0-pre0</Version>
+    <Version>2.0.0-pre2</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Domain Modeller</Product>
@@ -18,7 +18,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.0.0-pre8" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.0.0-pre9" />
   </ItemGroup>
 
   <ItemGroup>

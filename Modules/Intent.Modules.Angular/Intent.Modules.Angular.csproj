@@ -36,7 +36,7 @@
       <HintPath>..\packages\Intent.RoslynWeaver.Attributes.1.0.0\lib\net45\Intent.RoslynWeaver.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.0.0-pre8\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.0.0-pre9\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
