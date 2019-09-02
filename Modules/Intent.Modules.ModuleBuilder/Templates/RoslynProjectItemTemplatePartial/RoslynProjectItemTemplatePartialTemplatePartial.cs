@@ -11,7 +11,7 @@ using static Intent.Modules.ModuleBuilder.Helpers.TemplateHelper;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial
 {
-    partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IClass>
+    partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IClass>, IHasTemplateDependencies
     {
         public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial";
 
@@ -54,6 +54,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 .ToArray();
         }
 
+        IEnumerable<ITemplateDependancy> IHasTemplateDependencies.GetTemplateDependencies()
+        {
+            return TemplateHelper.GetTemplateDependancies(Model, _templateModels);
+        }
+
         public string GetTemplateId()
         {
             return $"{Project.ApplicationName()}.{Model.Name}";
@@ -85,9 +90,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             return !string.IsNullOrEmpty(Model.GetExposedDecoratorContractType());
         }
 
-        private IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencies()
+        private IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencyInfos()
         {
-            return TemplateHelper.GetTemplateDependencies(this, Model, _templateModels);
+            return TemplateHelper.GetTemplateDependencyInfos(this, Model, _templateModels);
         }
 
         private string GetConfiguredInterfaces()

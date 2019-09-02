@@ -72,27 +72,27 @@ namespace <#= Namespace #>
 
 <#  if (HasTemplateDependencies()) { #>
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        IEnumerable<ITemplateDependancy> IHasTemplateDependencies.GetTemplateDependencies()
         {
             var templateDependencies = new List<ITemplateDependancy>();
-<#      foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { #>
-                templateDependencies.Add(TemplateDependancy.OnTemplate("<#= templateDependency.TemplateId #>"));
+<#      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { #>
+                templateDependencies.Add(TemplateDependancy.OnTemplate(<#= templateDependency.TemplateId #>));
 <#      } #>
-<#      if (GetTemplateDependencies().Any(p => p.IsCustom)) { #>
+<#      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { #>
                 templateDependencies.AddRange(GetCustomTemplateDependencies());
 <#      } #>
             return templateDependencies;
         }
 
-<#      foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { #>
+<#      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { #>
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         private <#= templateDependency.InstanceType #> Get<#= templateDependency.TemplateName.ToPascalCase() #>Template(<#= templateDependency.TemplateModel #> model)
         {
-            return Project.FindTemplateInstance<<#= templateDependency.InstanceType #>>("<#= templateDependency.TemplateId #>", model);
+            return Project.FindTemplateInstance<<#= templateDependency.InstanceType #>>(<#= templateDependency.TemplateId #>, model);
         }
 <#      } #>
 
-<#      if (GetTemplateDependencies().Any(p => p.IsCustom)) { #>
+<#      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         private IEnumerable<ITemplateDependancy> GetCustomTemplateDependencies()
         {

@@ -8,6 +8,8 @@ using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantA;
+using ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantB;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial", Version = "1.0")]
@@ -42,11 +44,11 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        IEnumerable<ITemplateDependancy> IHasTemplateDependencies.GetTemplateDependencies()
         {
             var templateDependencies = new List<ITemplateDependancy>();
-            templateDependencies.Add(TemplateDependancy.OnTemplate("ModuleBuilderTests.DependantA"));
-            templateDependencies.Add(TemplateDependancy.OnTemplate("ModuleBuilderTests.DependantB"));
+            templateDependencies.Add(TemplateDependancy.OnTemplate(DependantA.TemplateId));
+            templateDependencies.Add(TemplateDependancy.OnTemplate(DependantB.TemplateId));
             return templateDependencies;
         }
 
@@ -63,13 +65,13 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         private IHasClassDetails GetDependantATemplate(IClass model)
         {
-            return Project.FindTemplateInstance<IHasClassDetails>("ModuleBuilderTests.DependantA", model);
+            return Project.FindTemplateInstance<IHasClassDetails>(DependantA.TemplateId, model);
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         private IntentProjectItemTemplateBase<IClass> GetDependantBTemplate(IClass model)
         {
-            return Project.FindTemplateInstance<IntentProjectItemTemplateBase<IClass>>("ModuleBuilderTests.DependantB", model);
+            return Project.FindTemplateInstance<IntentProjectItemTemplateBase<IClass>>(DependantB.TemplateId, model);
         }
 
         private IEnumerable<ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract> _decorators;

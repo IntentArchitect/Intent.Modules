@@ -194,23 +194,25 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]\r\n " +
-                    "       public IEnumerable<ITemplateDependancy> GetTemplateDependencies()\r\n      " +
-                    "  {\r\n            var templateDependencies = new List<ITemplateDependancy>();\r\n");
+            this.Write(@"        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        IEnumerable<ITemplateDependancy> IHasTemplateDependencies.GetTemplateDependencies()
+        {
+            var templateDependencies = new List<ITemplateDependancy>();
+");
             
             #line 72 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-      foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { 
+      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { 
             
             #line default
             #line hidden
-            this.Write("                templateDependencies.Add(TemplateDependancy.OnTemplate(\"");
+            this.Write("                templateDependencies.Add(TemplateDependancy.OnTemplate(");
             
             #line 73 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateId));
             
             #line default
             #line hidden
-            this.Write("\"));\r\n");
+            this.Write("));\r\n");
             
             #line 74 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
       } 
@@ -219,7 +221,7 @@ using System.Linq;
             #line hidden
             
             #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-      if (GetTemplateDependencies().Any(p => p.IsCustom)) { 
+      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { 
             
             #line default
             #line hidden
@@ -234,7 +236,7 @@ using System.Linq;
             this.Write("            return templateDependencies;\r\n        }\r\n\r\n");
             
             #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-      foreach (var templateDependency in GetTemplateDependencies().Where(p => !p.IsCustom)) { 
+      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { 
             
             #line default
             #line hidden
@@ -254,14 +256,14 @@ using System.Linq;
             #line default
             #line hidden
             this.Write(" model)\r\n        {\r\n            var templateDependency = TemplateDependancy.OnTem" +
-                    "plate(\"");
+                    "plate(");
             
             #line 85 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.TemplateId));
             
             #line default
             #line hidden
-            this.Write("\");\r\n            var template = Project.FindTemplateInstance<");
+            this.Write(");\r\n            var template = Project.FindTemplateInstance<");
             
             #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(templateDependency.InstanceType));
@@ -279,7 +281,7 @@ using System.Linq;
             this.Write("\r\n");
             
             #line 91 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-      if (GetTemplateDependencies().Any(p => p.IsCustom)) { 
+      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { 
             
             #line default
             #line hidden

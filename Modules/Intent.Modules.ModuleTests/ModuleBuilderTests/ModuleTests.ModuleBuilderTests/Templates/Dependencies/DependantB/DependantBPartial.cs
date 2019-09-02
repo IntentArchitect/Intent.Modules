@@ -35,7 +35,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantB
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        IEnumerable<ITemplateDependancy> IHasTemplateDependencies.GetTemplateDependencies()
         {
             var templateDependencies = new List<ITemplateDependancy>();
             templateDependencies.AddRange(GetCustomTemplateDependencies());
