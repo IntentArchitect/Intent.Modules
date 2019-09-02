@@ -5,6 +5,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListModel
 {
@@ -15,6 +16,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
         public SingleFileListModelTemplateRegistrationTemplate(IProject project, IClass model) : base(TemplateId, project, model)
         {
         }
+
+        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
+        public string FolderPath => string.Join("/", FolderBaseList);
+        public string FolderNamespace => string.Join(".", FolderBaseList);
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -27,9 +32,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Registration",
                 fileExtension: "cs",
-                defaultLocationInProject: "Templates/${Model.Name}",
+                defaultLocationInProject: "${FolderPath}/${Model.Name}",
                 className: "${Model.Name}Registration",
-                @namespace: "${Project.Name}.Templates.${Model.Name}"
+                @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
             );
         }
 

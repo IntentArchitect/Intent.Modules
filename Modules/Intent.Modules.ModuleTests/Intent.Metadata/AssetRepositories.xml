@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<assetRepositories>
+  <entries>
+    <entry>
+      <name>Local Intent.Modules</name>
+      <address>..\Intent.Modules</address>
+      <isBuiltIn>false</isBuiltIn>
+    </entry>
+    <entry>
+      <name>ModuleBuilderTest</name>
+      <address>..\Intent.Modules.ModuleTests\ModuleBuilderTests\Intent.Modules</address>
+      <isBuiltIn>false</isBuiltIn>
+    </entry>
+    <entry>
+      <name>https://intentarchitect.com/</name>
+      <address>https://intentarchitect.com/</address>
+      <isBuiltIn>true</isBuiltIn>
+    </entry>
+  </entries>
+</assetRepositories>

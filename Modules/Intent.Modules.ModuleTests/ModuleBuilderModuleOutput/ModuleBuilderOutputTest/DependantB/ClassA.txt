@@ -1,0 +1,1 @@
+Some dummy text file for Intent.Metadata.Models.Class

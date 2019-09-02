@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3923c76a-02e3-41a5-a9c5-744f3ea043fe" type="DTO">
+  <name>TestDTO</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>91efdd20-4c44-4b39-9615-6232d55b6def</parentFolderId>
+  <stereotypes />
+  <attributes>
+    <attribute id="0db1abdf-0249-498d-b9ae-2915bcbd35df">
+      <name>fieldA</name>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+  </attributes>
+  <operations />
+</class>

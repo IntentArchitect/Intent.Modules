@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="818B5176-2580-4BE2-9A89-A204D2FBA693">
+  <name>DataContract</name>
+  <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADsUlEQVR42u2bTUhVQRSAPzOTV2RlohG5Sd0UYREZ2KLaVWb0A0lQkFAhhf1gSIuiaBPVorAoElpE4aKFRRC0yBZBmVBmpSZFkaRpoP1Y9mNmLd55dJnG5333+vTO9R44m+e958z53ryZc86MEEgggQQCScAW4Bpwz+daLbEmRYKfAFQCf8aYVkrslIzB4CNaAvBmDAN4g+bDYmChT7VYE+9/Hyzy8WK/yA6AfB8DyA8ABACcA6gGmgzR6ngAaDRoe2uMB4AGgwA0xANAPfDbEK2PB4BMINsQzQx2gQDA8ANIkvLRiSYBCaYDuAW0OtQWIM10AM9cbEs/gQwXAx8PJMtsShwtAE9cAPjmAEC2NCwuA4+kdn8N1AIXgM3AjJEEUCeBONEuIN3mILOAc8AHG2DfAodj+Hm5ApAmxJ1oBjDOxgA3SlBOMr/8eAOIt5QCvwYJsA/oFe0f5JluoMBUAJsGCf4BUAYsBmZKhrcMOAo81zzfJc8aBSAH6FTG8FFmRHKU91KB4xpwD4EpJgG4pAl+RQzv79JA2G8KgBzgi8X3ALDDgZ3TSgwvgKkmANij+L5rPbKKQTIk47SCXO11AOOkdWX1vdWFvVOKrRNeBxACmi1+e4E5LuytUeK46XUAKcB7ZR+f5sJerhJHnQkAOhUAqS7szdfkEJ7/CTQqBdM8F/bWK3Hc8DqABOCq4nu7C3tnFVvHTNgGdyu+70vNH6vMBNqUbXCVCQCygB7Ff6kDO+cVGy2yxhiRCl9U/PcAa2N4v0xTIe41qRaYDbQrY/gClAOThsj+KggfhFjfrR3k2/d0ObwO+K4Zy2PgELBUQOUAK4GTwCvN8x3AAlMbItuiNEQGpCnSF6Ur9AFYbnJHKEWzIA7HibAxAKa7BNA0XADyPDIDuoEDwHVpf7USbo0/Ba4AR5TV384MyLMDoEgWm5HWPOCrZRzv+HeclghMll0h0l2epewAL234KNIBaNMsOKNxpj+gWdFDUb7NbM0WGKuPNoB9ePOWhxMAseq+SFVWNQYBVFnth4CdQA3hQ9DR0GYlIBVAIbAkCoAfNv3USKwhPCapyi7QIYtgGuGzwn75+0EZfKYCoAnDRc0D2oENEpg6fWtkRe/zM4D+KKlxZMoP+BlAPDJBYwF8lt9+RZSCyLcA7ijpeSH6a7u+A/BJaoGJmmfTgTOE7x75CkCvBHOb8L+4DCUFUhz9kYLJaEknfD2mPMYkJU1a4g144y6iYwkBc128n4u9e0iBBGKRvwlbdlx3yBPTAAAAAElFTkSuQmCC" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>folder</element>
+    <element>dto</element>
+  </targetElements>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>A95EEA8B-6315-4729-A877-747E4FABF039</parentFolderId>
+  <properties>
+    <property id="1CC06704-20B7-4AA7-A2C8-EDE7D95CBD85">
+      <name>Namespace</name>
+      <type>string</type>
+      <options />
+    </property>
+    <property id="AAB7D273-F268-4FFC-8FDE-63A30517B970">
+      <name>IsReference</name>
+      <type>boolean</type>
+      <options />
+    </property>
+  </properties>
+</stereotypeDefinition>

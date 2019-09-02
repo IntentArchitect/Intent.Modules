@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d0759035-55bb-4512-9c67-6c05ba21d912" type="File Template">
+  <name>DependantB</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>3dbf3d10-c3f9-4d7d-b260-f378f11fb252</parentFolderId>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="311d788f-7582-4c27-9a4d-e0db1439c327" value="File per Model" />
+        <property name="C2283D15-4B57-4ED9-8AAE-6EFC73039034" value="Domain" />
+        <property name="987590ee-a5ca-45ce-b742-0ee764b6b6e9" value="IClass" />
+        <property name="5abe3a6a-90a5-4caf-b3cf-da883c3a090f" value="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="88f6eed1-a9c9-4497-9214-f5d154282e67">
+      <comment>Add a Dependency to another Template (in this Intent Architect Project) which will help you to access that template from your template.</comment>
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="ff796874-0e48-4ff2-af02-e77aeb256790" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <attributes />
+  <operations />
+</class>

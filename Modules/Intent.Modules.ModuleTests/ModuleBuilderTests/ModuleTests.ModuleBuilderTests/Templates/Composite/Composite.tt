@@ -1,0 +1,28 @@
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+
+using System;
+<#=DependencyUsings#>
+// Mode.Fully will overwrite file on each run. 
+// Add in explicit [IntentManaged.Ignore] attributes to class or methods. Alternatively change to Mode.Merge (additive) or Mode.Ignore (once-off)
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    /*
+        Decorator output:
+        <#= GetDecoratorOutput() #>
+    */
+
+    public class <#= ClassName #>
+    {
+        public <#= GetDependantATemplate(Model).FullTypeName() #> DependantA { get; }
+        public <#= GetDependantBTemplate(Model).FileMetaData.FileName #> DependantB { get; }
+    }
+}

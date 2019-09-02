@@ -1,0 +1,40 @@
+﻿<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Intent.Metadata.Models;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Registrations;
+using Intent.RoslynWeaver.Attributes;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Registrations;
+using Intent.SoftwareFactory.Templates;
+using Intent.SoftwareFactory.Templates.Registrations;
+<#=DependencyUsings#>
+[assembly: DefaultIntentManaged(Mode.Merge)]
+
+namespace <#= Namespace #>
+{
+	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
+    public class <#= ClassName #> : IProjectTemplateRegistration
+    {
+        private readonly IMetaDataManager _metaDataManager;
+
+        public <#= ClassName #>(IMetaDataManager metaDataManager)
+        {
+            _metaDataManager = metaDataManager;
+        }
+
+        public string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
+
+        public void DoRegistration(ITemplateInstanceRegistry registery, Intent.SoftwareFactory.Engine.IApplication applicationManager)
+        {
+            registery.Register(TemplateId, project => new <#= GetTemplateNameForTemplateId() #>(project, null));
+        }
+    }
+}

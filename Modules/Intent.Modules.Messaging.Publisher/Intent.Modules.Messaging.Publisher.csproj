@@ -62,6 +62,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Intent.Modules.Messaging.Publisher.imodspec" />
+    <None Include="metadata\Intent.Messaging.Publisher\Intent.Modules.Messaging.Publisher.services.pkg.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +89,10 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="metadata\Intent.Messaging.Publisher\Folders\Stereotypes.xml" />
+    <Content Include="metadata\Intent.Messaging.Publisher\Stereotypes\Business Queue.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

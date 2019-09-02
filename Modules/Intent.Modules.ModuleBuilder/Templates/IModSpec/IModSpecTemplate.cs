@@ -7,6 +7,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
+using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 
@@ -40,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             var templatesElement = doc.Element("package").Element("templates");
 
-            foreach (var model in Model)
+            foreach (var model in Model.Where(p => p.IsCSharpTemplate() || p.IsFileTemplate()))
             {
                 var id = $"{Project.ApplicationName()}.{model.Name}";
                 var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{id}\"]");
@@ -57,25 +58,46 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            if (Model.Any(x => x.IsCSharpTemplate()) && doc.XPathSelectElement("package/dependencies/dependency[@id=\"Intent.OutputManager.RoslynWeaver\"]") == null)
+            if (Model.Any(p => p.IsDecoratorTemplate()))
+            {
+                var decoratorsElement = doc.Element("package").Element("decorators");
+                if (decoratorsElement == null)
+                {
+                    decoratorsElement = new XElement("decorators");
+                    doc.Element("package").Add(decoratorsElement);
+                }
+
+                foreach (var model in Model.Where(p => p.IsDecoratorTemplate()))
+                {
+                    var id = $"{Project.ApplicationName()}.{model.Name}";
+                    var specificDecorator = doc.XPathSelectElement($"package/decorators/decorator[@id=\"{id}\"]");
+                    if (specificDecorator == null)
+                    {
+                        specificDecorator = new XElement("decorator", new XAttribute("id", id));
+                        decoratorsElement.Add(specificDecorator);
+                    }
+                }
+            }
+
+            if (Model.Any(x => x.IsCSharpTemplate()) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.OutputManager.RoslynWeaver\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement("package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.OutputManager.RoslynWeaver"), new XAttribute("version", "1.7.0")));
             }
 
-            if (Model.Any(x => x.GetModelerName() == "Domain") && doc.XPathSelectElement("package/dependencies/dependency[@id=\"Intent.Modelers.Domain\"]") == null)
+            if (Model.Any(x => x.GetModelerName() == "Domain") && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Domain\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement("package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Domain"), new XAttribute("version", "1.0.0")));
             }
 
-            if (Model.Any(x => x.GetModelerName() == "Services") && doc.XPathSelectElement("package/dependencies/dependency[@id=\"Intent.Modelers.Services\"]") == null)
+            if (Model.Any(x => x.GetModelerName() == "Services") && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Services\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement("package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Services"), new XAttribute("version", "1.0.0")));
             }
 
-            if (Model.Any(x => x.GetModelerName() == "Eventing") && doc.XPathSelectElement("package/dependencies/dependency[@id=\"Intent.Modelers.Eventing\"]") == null)
+            if (Model.Any(x => x.GetModelerName() == "Eventing") && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Eventing\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement("package/dependencies");
                 dependencies.Add(new XElement("dependency", new XAttribute("id", "Intent.Modelers.Eventing"), new XAttribute("version", "1.0.0")));

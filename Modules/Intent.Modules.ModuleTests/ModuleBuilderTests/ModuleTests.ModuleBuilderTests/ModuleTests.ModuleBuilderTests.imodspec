@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>ModuleTests.ModuleBuilderTests</id>
+  <version>1.0.0</version>
+  <summary>A custom module for ModuleTests.</summary>
+  <description>A custom module for ModuleTests.</description>
+  <authors>ModuleTests</authors>
+  <templates>
+    <template id="ModuleBuilderTests.Composite">
+      <role>ModuleBuilderTests.Composite</role>
+    </template>
+    <template id="ModuleBuilderTests.DependantA">
+      <role>ModuleBuilderTests.DependantA</role>
+    </template>
+    <template id="ModuleBuilderTests.DependantB">
+      <role>ModuleBuilderTests.DependantB</role>
+    </template>
+    <template id="ModuleBuilderTests.ListModelTemplate">
+      <role>ModuleBuilderTests.ListModelTemplate</role>
+    </template>
+    <template id="ModuleBuilderTests.NoModelTemplate">
+      <role>ModuleBuilderTests.NoModelTemplate</role>
+    </template>
+    <template id="ModuleBuilderTests.CustomCreationMode">
+      <role>ModuleBuilderTests.CustomCreationMode</role>
+    </template>
+  </templates>
+  <decorators>
+    <decorator id="ModuleBuilderTests.CompositeDecorator" />
+  </decorators>
+  <dependencies>
+    <dependency id="Intent.Common" version="1.7.0" />
+    <dependency id="Intent.Common.Types" version="1.7.0" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="1.7.0" />
+    <dependency id="Intent.Modelers.Domain" version="1.0.0" />
+  </dependencies>
+  <files>
+    <file src="bin\$configuration$\$id$.dll" />
+    <file src="bin\$configuration$\$id$.pdb" />
+  </files>
+</package>
