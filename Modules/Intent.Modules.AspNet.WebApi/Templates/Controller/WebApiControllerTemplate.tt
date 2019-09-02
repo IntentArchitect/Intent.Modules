@@ -63,43 +63,37 @@ namespace <#=Namespace#>
         [Route("<#= GetRoute(operation) #>")]
         [ResponseType(<#= string.Format("typeof({0})", operation.ReturnType != null ? GetOperationReturnType(operation) : "void") #>)]
         public <#= operation.IsAsync() ? "async Task<IHttpActionResult>" : "IHttpActionResult" #> <#= operation.Name #>(<#= GetOperationParameters(operation) #>)
-        {<#= BeginOperation(operation) #>
-<#
+        {<#= BeginOperation(operation) #><#
             if (operation.ReturnType != null)
-            {
-#>            
-            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);
-<#
-            } // if (operation.ReturnType != null)
-#>
-            var tso = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
-
+            { #>
+            <#= GetOperationReturnType(operation) #> result = default(<#= GetOperationReturnType(operation) #>);<#
+            } /* if (operation.ReturnType != null) */ #>
             <#= BeforeTransaction(operation) #>
-            using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso<#= operation.IsAsync() ? ", TransactionScopeAsyncFlowOption.Enabled" : "" #>))
-            {<#= BeforeCallToAppLayer(operation) #>
-<#
+            <#= BeforeCallToAppLayer(operation) #><#
         if (operation.ReturnType != null)
-        {
-#>
-                var appServiceResult = <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+        { 
+#>                var appServiceResult = <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
                 result = appServiceResult;
 <#      }
         else
-        {
-#>              
-                <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+        { 
+#>                <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
 <#      
         }
-#><#= AfterCallToAppLayer(operation) #>
-                ts.Complete();
-            }<#= AfterTransaction(operation) #>
-
-<#      if (operation.ReturnType != null)
-        {#>
+#><#= AfterCallToAppLayer(operation) #><#= AfterTransaction(operation) #><#
+        if (!string.IsNullOrEmpty(OverrideReturnStatement(Model, operation)))
+        { #>
+            
+            <#= OverrideReturnStatement(Model, operation) #>
+<#      }
+        else if (operation.ReturnType != null)
+        { #>
+            
             return Ok(result);
-<#      } else {#>
+<#      } else { #>
+            
             return StatusCode(HttpStatusCode.NoContent);
-<#      }#>
+<#      } #>
         }
 <#    } // foreach (var operation in Model.Operations)
 
@@ -112,8 +106,8 @@ namespace <#=Namespace#>
             base.Dispose(disposing);
 
             //dispose all resources
-            _appService.Dispose();<#=OnDispose()#>
+            _appService.Dispose();<#= OnDispose() #>
         }
-<#=ClassMethods()#>
+<#= ClassMethods() #>
     }
 }

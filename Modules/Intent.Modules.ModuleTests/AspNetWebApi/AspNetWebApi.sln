@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTests.AspNetWebApi.Api", "ModuleTests.AspNetWebApi.Api\ModuleTests.AspNetWebApi.Api.csproj", "{2A1C15FA-ACA6-40C9-BAB0-79665DADB973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTests.AspNetWebApi.Application", "ModuleTests.AspNetWebApi.Application\ModuleTests.AspNetWebApi.Application.csproj", "{4FA77BB9-0D1D-4420-979A-9321D13C33DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Distribution", "1 - Distribution", "{72047B74-7438-4BE9-901F-5784A637384E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{A61191B7-4763-4704-AE42-9E30211DBA09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A1C15FA-ACA6-40C9-BAB0-79665DADB973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A1C15FA-ACA6-40C9-BAB0-79665DADB973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A1C15FA-ACA6-40C9-BAB0-79665DADB973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A1C15FA-ACA6-40C9-BAB0-79665DADB973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FA77BB9-0D1D-4420-979A-9321D13C33DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FA77BB9-0D1D-4420-979A-9321D13C33DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FA77BB9-0D1D-4420-979A-9321D13C33DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA77BB9-0D1D-4420-979A-9321D13C33DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2A1C15FA-ACA6-40C9-BAB0-79665DADB973} = {72047B74-7438-4BE9-901F-5784A637384E}
+		{4FA77BB9-0D1D-4420-979A-9321D13C33DC} = {A61191B7-4763-4704-AE42-9E30211DBA09}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CF4C4EF-441D-4787-8D23-2AD51AFBACFE}
+	EndGlobalSection
+EndGlobal

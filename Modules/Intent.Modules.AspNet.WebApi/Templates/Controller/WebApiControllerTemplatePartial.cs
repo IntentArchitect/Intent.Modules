@@ -165,6 +165,19 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 return InternalServerError(e);";
         }
 
+        public string OverrideReturnStatement(IServiceModel service, IOperationModel operation)
+        {
+            var returnOverrideDecoratorStatements = GetDecorators()
+                .Select(x => x.OverrideReturnStatement(Model, operation))
+                .Where(p => !string.IsNullOrEmpty(p))
+                .ToArray();
+            if (returnOverrideDecoratorStatements.Length > 1)
+            {
+                throw new Exception($"There is more than 1 Decorator that is attempting to override the return statement in {operation.Name} in {service.Name}");
+            }
+            return returnOverrideDecoratorStatements.FirstOrDefault() ?? string.Empty;
+        }
+
         public string OnDispose()
         {
             return GetDecorators().Aggregate(x => x.OnDispose(Model));
@@ -391,7 +404,9 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             };
 
             // NB: Order of conditional checks is important here
-            return GetParameterBindingAttribute(parameter) == "[FromBody]" || !csharpPrimitives.Contains(parameter.TypeReference.Name);
+            return GetParameterBindingAttribute(parameter) == "[FromBody]" 
+                || (!csharpPrimitives.Contains(parameter.TypeReference.Name)
+                    && parameter.TypeReference.Type != ReferenceType.Enum);
         }
 
         private enum HttpVerb

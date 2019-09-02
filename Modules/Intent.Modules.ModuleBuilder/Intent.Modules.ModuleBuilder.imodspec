@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
-  <version>1.2.0</version>
+  <version>1.2.1</version>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>
   <authors>Intent Architect</authors>
@@ -27,6 +27,9 @@
     <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial">
       <role>Templates</role>
     </template>
+    <template id="Intent.ModuleBuilder.TemplateRegistration.Custom">
+      <role>Templates</role>
+    </template>
     <template id="Intent.ModuleBuilder.TemplateRegistration.FilePerModel">
       <role>Templates</role>
     </template>
@@ -35,6 +38,12 @@
     </template>
     <template id="Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel">
       <role>Templates</role>
+    </template>
+    <template id="Intent.ModuleBuilder.DecoratorTemplate">
+      <role>Decorators</role>
+    </template>
+    <template id="Intent.ModuleBuilder.DecoratorRegistration.Template">
+      <role>Decorators</role>
     </template>
   </templates>
   <decorators>

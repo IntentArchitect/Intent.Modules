@@ -52,11 +52,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelExtensions.cs" />
+    <Compile Include="Helpers\ModelExtensions.cs" />
+    <Compile Include="Helpers\TemplateHelper.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helpers\CreationMode.cs" />
+    <Compile Include="Templates\Decorators\DecoratorRegistrationTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DecoratorRegistrationTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Decorators\DecoratorRegistrationTemplatePartial.cs" />
+    <Compile Include="Templates\Decorators\DecoratorTemplateRegistrations.cs" />
+    <Compile Include="Templates\Decorators\DecoratorRegistrationRegistrations.cs" />
+    <Compile Include="Templates\Decorators\DecoratorTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DecoratorTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Decorators\DecoratorTemplatePartial.cs" />
     <Compile Include="Templates\IModSpec\IModSpecRegistrations.cs" />
     <Compile Include="Templates\IModSpec\IModSpecTemplate.cs" />
+    <Compile Include="Templates\Registration\Custom\CustomTemplateRegistrationRegistrations.cs" />
+    <Compile Include="Templates\Registration\Custom\CustomTemplateRegistrationTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomTemplateRegistrationTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Registration\Custom\CustomTemplateRegistrationTemplatePartial.cs" />
     <Compile Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationRegistrations.cs" />
     <Compile Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.cs">
       <DependentUpon>SingleFileNoModelTemplateRegistrationTemplate.tt</DependentUpon>
@@ -114,7 +137,23 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="metadata\Intent.ModuleBuilder\Stereotypes\Decorator Settings.xml" />
+    <Content Include="metadata\Intent.ModuleBuilder\Stereotypes\Exposes Decorator Contract.xml" />
+    <Content Include="metadata\Intent.ModuleBuilder\Stereotypes\Implements Decorator Contract.xml" />
+    <Content Include="metadata\Intent.ModuleBuilder\Stereotypes\Template Dependency.xml" />
     <Content Include="metadata\Intent.ModuleBuilder\Stereotypes\Template Settings.xml" />
+    <Content Include="Templates\Decorators\DecoratorRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DecoratorRegistrationTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Decorators\DecoratorTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DecoratorTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CustomTemplateRegistrationTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>SingleFileNoModelTemplateRegistrationTemplate.cs</LastGenOutput>

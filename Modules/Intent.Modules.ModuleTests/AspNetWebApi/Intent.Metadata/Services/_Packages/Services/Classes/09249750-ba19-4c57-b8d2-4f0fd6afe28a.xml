@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="09249750-ba19-4c57-b8d2-4f0fd6afe28a" type="Service">
+  <name>NormalTestServices</name>
+  <isAbstract>false</isAbstract>
+  <isMapped>false</isMapped>
+  <parentFolderId>91efdd20-4c44-4b39-9615-6232d55b6def</parentFolderId>
+  <stereotypes />
+  <attributes />
+  <operations>
+    <operation id="2d1b9014-faac-4657-b93f-b2fa22689d44" isAbstract="false">
+      <name>OperationWithoutAnything</name>
+      <parameters />
+      <stereotypes />
+    </operation>
+    <operation id="e1b8df11-8718-42bc-9f0f-826a2c1c4f10" isAbstract="false">
+      <name>OperationWithPrimitiveArguments</name>
+      <parameters>
+        <parameter id="b024b6bc-6f5a-4b73-a4d3-f7f94f2284e3">
+          <name>stringVal</name>
+          <isNullable>false</isNullable>
+          <isCollection>false</isCollection>
+          <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+          <stereotypes />
+        </parameter>
+        <parameter id="e5cf01ed-3bdb-4648-8e5d-8f912308cd37">
+          <name>longVal</name>
+          <isNullable>false</isNullable>
+          <isCollection>false</isCollection>
+          <type>33013006-E404-48C2-AC46-24EF5A5774FD</type>
+          <stereotypes />
+        </parameter>
+        <parameter id="21e3f227-a26c-417e-868a-77bff3849abc">
+          <name>dateVal</name>
+          <isNullable>false</isNullable>
+          <isCollection>false</isCollection>
+          <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+          <stereotypes />
+        </parameter>
+        <parameter id="af748fa3-d768-4395-8797-f67f23847121">
+          <name>enumVal</name>
+          <isNullable>false</isNullable>
+          <isCollection>false</isCollection>
+          <type>55bab887-622b-4712-a988-00cdc0cfabbc</type>
+          <stereotypes />
+        </parameter>
+      </parameters>
+      <stereotypes />
+    </operation>
+    <operation id="ba8ef330-0c20-4a84-b74e-e5240c3256e8" isAbstract="false">
+      <name>OperationWithPrimitiveResponse</name>
+      <returnType id="16076ee1-557d-4704-ba22-e4c8ba73d9c8">
+        <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+      </returnType>
+      <parameters />
+      <stereotypes />
+    </operation>
+    <operation id="279267f3-4e6c-4aef-89e6-8a0e33b7b203" isAbstract="false">
+      <name>OperationWithDTOArgument</name>
+      <parameters>
+        <parameter id="b66ca344-e6fb-4eaf-98aa-69d3bae26efd">
+          <name>dto</name>
+          <isNullable>false</isNullable>
+          <isCollection>false</isCollection>
+          <type>3923c76a-02e3-41a5-a9c5-744f3ea043fe</type>
+          <stereotypes />
+        </parameter>
+      </parameters>
+      <stereotypes />
+    </operation>
+    <operation id="4dd807bf-d5d2-4e6f-ba99-289c92866b83" isAbstract="false">
+      <name>OperationWithDTOResponse</name>
+      <returnType id="1222895e-15b5-41c4-ab99-ffd60e788ad7">
+        <type>3923c76a-02e3-41a5-a9c5-744f3ea043fe</type>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+      </returnType>
+      <parameters />
+      <stereotypes />
+    </operation>
+    <operation id="b9257f7e-8a99-4fac-a57b-22401a04f912" isAbstract="false">
+      <name>OperationWithExplicitTransactionScope</name>
+      <parameters />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="bfa313ec-61ca-46e6-ba57-d71570d0e751">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="050b5ad7-d0b6-4b67-9e0d-25037a27c22d" value="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </operation>
+    <operation id="c12e7995-da2c-4d60-908f-9bf05417d991" isAbstract="false">
+      <name>OperationWithoutTransactionScope</name>
+      <parameters />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="bfa313ec-61ca-46e6-ba57-d71570d0e751">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="050b5ad7-d0b6-4b67-9e0d-25037a27c22d" value="false" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </operation>
+  </operations>
+</class>
