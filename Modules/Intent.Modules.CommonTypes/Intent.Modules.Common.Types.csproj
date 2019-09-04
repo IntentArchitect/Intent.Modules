@@ -84,8 +84,8 @@
     <Content Include="Metadata\Intent.Common.Types\Classes\String.xml" />
     <Content Include="Metadata\Intent.Common.Types\Classes\Bool.xml" />
     <Content Include="Metadata\Intent.Common.Types\Classes\Int.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Folders\Stereotypes.xml" />
-    <Content Include="Metadata\Intent.Common.Types\Folders\Types.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Stereotypes.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Types.xml" />
     <Content Include="Metadata\Intent.Common.Types\Stereotypes\CSharp.xml" />
     <Content Include="Metadata\Intent.Common.Types\Stereotypes\Java.xml" />
     <Content Include="Metadata\Intent.Common.Types\Stereotypes\TypeScript.xml" />
@@ -95,6 +95,9 @@
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Metadata\Intent.Common.Types\Folders\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Intent.IntentArchitectPackager.1.9.3\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.9.3\build\Intent.IntentArchitectPackager.targets')" />

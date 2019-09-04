@@ -96,7 +96,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="metadata\Intent.AspNetCore.WebApi\Folders\Stereotypes.xml" />
+    <None Include="metadata\Intent.AspNetCore.WebApi\Classes\Stereotypes.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="metadata\Intent.AspNetCore.WebApi\Stereotypes\Secured.xml" />

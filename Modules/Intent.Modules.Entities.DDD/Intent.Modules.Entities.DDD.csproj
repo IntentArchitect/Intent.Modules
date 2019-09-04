@@ -83,7 +83,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="metadata\Intent.Entities.DDD\Folders\Stereotypes.xml" />
+    <Content Include="metadata\Intent.Entities.DDD\Classes\Stereotypes.xml" />
     <Content Include="metadata\Intent.Entities.DDD\Stereotypes\AggregateRoot.xml" />
     <Content Include="metadata\Intent.Entities.DDD\Stereotypes\CommandOperation.xml" />
     <Content Include="metadata\Intent.Entities.DDD\Stereotypes\ValueObject.xml" />

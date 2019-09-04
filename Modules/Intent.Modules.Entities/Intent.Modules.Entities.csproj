@@ -91,7 +91,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="metadata\Intent.Entities\Folders\Stereotypes.xml" />
+    <Content Include="metadata\Intent.Entities\Classes\Stereotypes.xml" />
     <Content Include="metadata\Intent.Entities\Stereotypes\Asynchronous.xml" />
     <Content Include="Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

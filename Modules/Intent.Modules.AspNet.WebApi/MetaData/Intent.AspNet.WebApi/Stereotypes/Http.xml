@@ -17,22 +17,22 @@
       <name>Verb</name>
       <type>options</type>
       <defaultValue>AUTO</defaultValue>
-      <options>
+      <valueOptions>
         <option>AUTO</option>
         <option>GET</option>
         <option>POST</option>
         <option>PUT</option>
         <option>DELETE</option>
-      </options>
+      </valueOptions>
     </property>
     <property id="e7bf9e77-935e-450d-93f2-00a770a4c047">
       <name>Payload</name>
       <type>options</type>
       <defaultValue>AUTO</defaultValue>
-      <options>
+      <valueOptions>
         <option>AUTO</option>
         <option>Payload Object</option>
-      </options>
+      </valueOptions>
     </property>
   </properties>
 </stereotypeDefinition>

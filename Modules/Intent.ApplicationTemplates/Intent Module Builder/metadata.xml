@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <applicationTemplate>
   <id>Intent.ApplicationTemplate.ModuleBuilder</id>
+  <version>2.0.0</version>
+  <supportedClientVersions>[2.0.0,3.0.0)</supportedClientVersions>
   <displayName>Intent Module Builder</displayName>
   <shortDescription>An application for effortlessly creating Intent Modules</shortDescription>
   <authors>Intent Architect</authors>

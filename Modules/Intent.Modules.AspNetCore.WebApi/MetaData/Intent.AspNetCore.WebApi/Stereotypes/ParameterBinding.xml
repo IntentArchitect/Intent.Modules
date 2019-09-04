@@ -16,7 +16,7 @@
       <name>Type</name>
       <type>options</type>
       <defaultValue>FromBody</defaultValue>
-      <options>
+      <valueOptions>
         <option>FromHeader</option>
         <option>FromQuery</option>
         <option>FromRoute</option>
@@ -24,7 +24,7 @@
         <option>FromBody</option>
         <option>FromServices</option>
         <option>Custom</option>
-      </options>
+      </valueOptions>
     </property>
     <property id="7db9971d-9a5d-4a59-ad85-a8c44f95b0fa">
       <name>Custom Type</name>

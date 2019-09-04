@@ -76,7 +76,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Metadata\Services\Folders\87178626-6aba-4093-96b1-b5ac8558bf65.xml" />
+    <Content Include="Metadata\Services\Classes\87178626-6aba-4093-96b1-b5ac8558bf65.xml" />
     <Content Include="Metadata\Services\Stereotypes\d299265f-ac40-44d7-a9d5-eb33780ec859.xml">
       <SubType>Designer</SubType>
     </Content>

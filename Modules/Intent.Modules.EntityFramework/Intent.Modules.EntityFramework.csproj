@@ -107,7 +107,7 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DbMigrationsReadMeTemplate.cs</LastGenOutput>
     </None>
-    <Content Include="Metadata\Domain\Folders\Stereotypes.xml" />
+    <Content Include="Metadata\Domain\Classes\Stereotypes.xml" />
     <Content Include="Metadata\Domain\Stereotypes\EFMappingOptions.xml" />
     <Content Include="Templates\DbContext\DbContextTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

@@ -142,7 +142,7 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>RequireHttpsMiddlewareTemplate.cs</LastGenOutput>
     </None>
-    <None Include="metadata\Intent.AspNet.WebApi\Folders\Stereotypes.xml" />
+    <None Include="metadata\Intent.AspNet.WebApi\Classes\Stereotypes.xml" />
     <None Include="Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>OwinWebApiConfigTemplate.cs</LastGenOutput>

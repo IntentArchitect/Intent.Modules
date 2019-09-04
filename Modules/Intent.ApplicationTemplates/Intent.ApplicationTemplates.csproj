@@ -51,7 +51,6 @@
     <Content Include="Icons\Autofac.png" />
     <None Include="Intent Module Builder\content\%24{field_application.name}.application.config" />
     <None Include="Web Application .NET Core\content\%24{field_application.name}.application.config" />
-    <None Include="Web Application .NET Core\content\modules.config" />
     <None Include="Web Application .NET Framework\content\%24{field_application.name}.application.config" />
     <Content Include="Intent Module Builder\description.html" />
     <Content Include="Intent Module Builder\metadata.xml">
@@ -65,15 +64,6 @@
     <Content Include="Web Application .NET Framework\metadata.xml">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Empty Visual Studio\content\%24{field_application.name}.application.config" />
-    <Content Include="Empty Visual Studio\metadata.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Empty Visual Studio\description.html" />
-    <None Include="Web Application .NET Framework\content\modules.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Empty Visual Studio\content\modules.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

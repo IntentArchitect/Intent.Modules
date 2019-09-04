@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<folder id="87d16e6c-ce99-4329-87c4-d39dcddf0764">
+<class id="87d16e6c-ce99-4329-87c4-d39dcddf0764" type="Folder">
   <name>Stereotypes</name>
   <parentFolderId>4685C0D9-8FF8-4471-82DC-B44D1B17D6DE</parentFolderId>
   <isStatic>false</isStatic>
   <stereotypes />
-</folder>
+</class>
