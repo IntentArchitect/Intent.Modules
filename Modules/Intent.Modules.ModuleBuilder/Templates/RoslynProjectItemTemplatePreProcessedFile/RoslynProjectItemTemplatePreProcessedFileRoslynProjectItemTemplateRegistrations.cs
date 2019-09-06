@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate;
 using Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial;

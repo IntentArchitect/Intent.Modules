@@ -1,34 +1,34 @@
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
+using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
-using Intent.Templates;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListModel
 {
-    partial class SingleFileListModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IElement>
+    partial class SingleFileListModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IClass>
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel";
 
-        public SingleFileListModelTemplateRegistrationTemplate(IProject project, IElement model) : base(TemplateId, project, model)
+        public SingleFileListModelTemplateRegistrationTemplate(IProject project, IClass model) : base(TemplateId, project, model)
         {
         }
 
-        public string FolderPath => string.Join("/", new[] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
-        public string FolderNamespace => string.Join(".", new[] { "Templates" }.Concat(Model.GetFolderPath().Select(x => x.Name).ToList()));
+        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
+        public string FolderPath => string.Join("/", FolderBaseList);
+        public string FolderNamespace => string.Join(".", FolderBaseList);
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
         {
-            return new RoslynDefaultFileMetadata(
+            return new RoslynDefaultFileMetaData(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Registration",
                 fileExtension: "cs",
@@ -47,7 +47,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
             .Union(base.GetNugetDependencies())
             .ToArray();
         }
-
+        
         private string GetTemplateNameForTemplateId()
         {
             return Model.Name.Replace("Registrations", "Template");

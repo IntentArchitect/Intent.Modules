@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\TransactionScopeDecorators.cs" />
+    <Compile Include="Decorators\TransactionScopeDecoratorsRegistration.cs" />
     <Compile Include="Decorators\UseHttpsOwinStartupDecorator.cs" />
     <Compile Include="Decorators\WebApiConfigJsonValidationDecorator.cs" />
     <Compile Include="Decorators\WebApiOwinStartupDecorator.cs" />
@@ -153,6 +155,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="metadata\Intent.AspNet.WebApi\Stereotypes\ParameterBinding.xml" />
+    <Content Include="metadata\Intent.AspNet.WebApi\Stereotypes\Transactional Settings.xml" />
     <Content Include="Templates\ExceptionHandlerFilter\WebApiFilterTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>WebApiFilterTemplate.cs</LastGenOutput>

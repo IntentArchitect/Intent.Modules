@@ -2,6 +2,8 @@
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
+<#@ import namespace="System.Linq" #>
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
@@ -17,10 +19,15 @@ using System.Linq;
 namespace <#= Namespace #>
 {
 	[IntentManaged(Mode.Merge)]
-    partial class <#= ClassName #> : IntentProjectItemTemplateBase<<#= GetModelType() #>>
+    partial class <#= ClassName #> : IntentProjectItemTemplateBase<<#= GetModelType() #>><#= GetConfiguredInterfaces() #>
     {
         public const string TemplateId = "<#= GetTemplateId() #>";
 
+<#  if (HasDecorators()) { #>
+        private IEnumerable<<#= Model.GetExposedDecoratorContractType() #>> _decorators;
+
+<#  } #>
+        [IntentInitialGen]
         public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
         }
@@ -31,10 +38,65 @@ namespace <#= Namespace #>
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "txt", // Change to desired file extension.
-                defaultLocationInProject: "<#= Model.GetRegistrationType() == RegistrationType.FilePerModel ? Model.Name.Replace("Template", "") : "" #>"
+                defaultLocationInProject: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? Model.Name.Replace("Template", "") : "" #>"
             );
         }
+
+<#  if (HasDeclaresUsings()) { #>
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public IEnumerable<string> DeclareUsings()
+        {
+            return new string[]
+            {
+                // Specify list of Namespaces here, example:
+                "System.Linq"
+            };
+        }
+<#  } #>
+
+<#  if (HasDecorators()) { #>
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        public IEnumerable<<#= Model.GetExposedDecoratorContractType() #>> GetDecorators()
+        {
+            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+        }
+<#  } #>
+
+<#  if (HasTemplateDependencies()) { #>
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        IEnumerable<ITemplateDependancy> IHasTemplateDependencies.GetTemplateDependencies()
+        {
+            var templateDependencies = new List<ITemplateDependancy>();
+<#      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { #>
+                templateDependencies.Add(TemplateDependancy.OnTemplate(<#= templateDependency.TemplateId #>));
+<#      } #>
+<#      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { #>
+                templateDependencies.AddRange(GetCustomTemplateDependencies());
+<#      } #>
+            return templateDependencies;
+        }
+
+<#      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { #>
+        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
+        private string Get<#= templateDependency.TemplateName.ToPascalCase() #>TemplateFullName(<#= templateDependency.TemplateModel #> model)
+        {
+            var templateDependency = TemplateDependancy.OnTemplate(<#= templateDependency.TemplateId #>);
+            var template = Project.FindTemplateInstance<<#= templateDependency.InstanceType #>>(templateDependency, model);
+            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
+        }
+<#      } #>
+
+<#      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { #>
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        private IEnumerable<ITemplateDependancy> GetCustomTemplateDependencies()
+        {
+            return new ITemplateDependancy[] 
+            {
+            };
+        }
+<#      } #>
+<#  } #>
     }
 }

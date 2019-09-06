@@ -30,6 +30,8 @@
     <decorator id="Intent.AspNet.WebApi.OwinStartup.UseHttpsDecorator" enabled="false"/>
     <decorator id="Intent.AspNet.WebApi.WebApiConfig.ExceptionHandlerFilter.Decorator" />
     <decorator id="Intent.AspNet.WebApi.WebApiConfig.JsonValidation.Decorator" enabled="false"/>
+    <decorator id="Intent.AspNet.WebApi.BeginTransactionScope.Decorator" />
+    <decorator id="Intent.AspNet.WebApi.EndTransactionScope.Decorator" />
   </decorators>
   <interoperability>
     <detect id="Intent.Unity">

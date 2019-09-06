@@ -3,31 +3,32 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.Engine;
-using Intent.Templates;
+using Intent.Modules.ModuleBuilder.Helpers;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
-    public class SingleFileNoModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<IElement>
+    public class SingleFileNoModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetadataManager _metadataManager;
+        private readonly IMetaDataManager _metaDataManager;
 
-        public SingleFileNoModelTemplateRegistrationRegistrations(IMetadataManager metadataManager)
+        public SingleFileNoModelTemplateRegistrationRegistrations(IMetaDataManager metaDataManager)
         {
-            _metadataManager = metadataManager;
+            _metaDataManager = metaDataManager;
         }
 
         public override string TemplateId => SingleFileNoModelTemplateRegistrationTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IElement model)
+        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
             return new SingleFileNoModelTemplateRegistrationTemplate(project, model);
         }
 
-        public override IEnumerable<IElement> GetModels(Engine.IApplication applicationManager)
+        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
         {
-            return _metadataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => (x.IsCSharpTemplate() || x.IsFileTemplate()) && x.GetRegistrationType() == RegistrationType.SingleFileNoModel)
+            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
+                .Where(x => (x.IsCSharpTemplate() || x.IsFileTemplate()) && x.GetCreationMode() == CreationMode.SingleFileNoModel)
                 .ToList();
         }
     }

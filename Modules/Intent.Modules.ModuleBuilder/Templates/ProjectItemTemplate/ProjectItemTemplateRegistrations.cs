@@ -1,32 +1,34 @@
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.Templates;
+using Intent.Modules.ModuleBuilder.Helpers;
+using Intent.SoftwareFactory.Engine;
+using Intent.SoftwareFactory.Templates;
+using IApplication = Intent.SoftwareFactory.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 {
-    public class ProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IElement>
+    public class ProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IClass>
     {
-        private readonly IMetadataManager _metadataManager;
+        private readonly IMetaDataManager _metaDataManager;
 
-        public ProjectItemTemplateRegistrations(IMetadataManager metadataManager)
+        public ProjectItemTemplateRegistrations(IMetaDataManager metaDataManager)
         {
-            _metadataManager = metadataManager;
+            _metaDataManager = metaDataManager;
         }
 
         public override string TemplateId => ProjectItemTemplateTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IElement model)
+        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
             return new ProjectItemTemplateTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IElement> GetModels(Engine.IApplication applicationManager)
+        public override IEnumerable<IClass> GetModels(IApplication applicationManager)
         {
-            return _metadataManager.GetClassModels(applicationManager, "Module Builder")
+            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
                 .Where(x => x.IsFileTemplate())
                 .ToList();
         }

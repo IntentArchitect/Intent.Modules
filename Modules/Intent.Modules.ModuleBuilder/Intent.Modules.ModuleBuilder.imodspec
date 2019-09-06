@@ -33,6 +33,9 @@
     <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial">
       <role>Templates</role>
     </template>
+    <template id="Intent.ModuleBuilder.TemplateRegistration.Custom">
+      <role>Templates</role>
+    </template>
     <template id="Intent.ModuleBuilder.TemplateRegistration.FilePerModel">
       <role>Templates</role>
     </template>
@@ -41,6 +44,12 @@
     </template>
     <template id="Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel">
       <role>Templates</role>
+    </template>
+    <template id="Intent.ModuleBuilder.DecoratorTemplate">
+      <role>Decorators</role>
+    </template>
+    <template id="Intent.ModuleBuilder.DecoratorRegistration.Template">
+      <role>Decorators</role>
     </template>
   </templates>
   <decorators>

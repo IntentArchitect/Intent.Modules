@@ -10,12 +10,4 @@ namespace Intent.Modules.ModuleBuilder
         public static NugetPackageInfo IntentModulesCommon = new NugetPackageInfo("Intent.Modules.Common", "2.0.0-pre4");
         public static NugetPackageInfo IntentRoslynWeaverAttributes = new NugetPackageInfo("Intent.RoslynWeaver.Attributes", "1.0.0");
     }
-
-    public enum RegistrationType
-    {
-        SingleFileNoModel,
-        FilePerModel,
-        SingleFileListModel,
-        Custom
-    }
 }
