@@ -13,7 +13,8 @@
     <property id="41c9145c-7ac7-4c60-acda-10544bfaa6c0">
       <name>Column Name</name>
       <type>string</type>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

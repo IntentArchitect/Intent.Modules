@@ -14,12 +14,12 @@
     <property id="1CC06704-20B7-4AA7-A2C8-EDE7D95CBD85">
       <name>Namespace</name>
       <type>string</type>
-      <options />
+      <valueOptions />
     </property>
     <property id="AAB7D273-F268-4FFC-8FDE-63A30517B970">
       <name>IsReference</name>
       <type>boolean</type>
-      <options />
+      <valueOptions />
     </property>
   </properties>
 </stereotypeDefinition>

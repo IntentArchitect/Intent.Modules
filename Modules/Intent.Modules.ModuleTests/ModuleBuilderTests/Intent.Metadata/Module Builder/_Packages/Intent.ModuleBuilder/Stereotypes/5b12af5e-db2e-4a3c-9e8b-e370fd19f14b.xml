@@ -14,7 +14,8 @@
       <comment>Specify the fully qualified namespace and Type that will define what the Contract looks like that Decorators will use</comment>
       <name>Type Fullname</name>
       <type>string</type>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

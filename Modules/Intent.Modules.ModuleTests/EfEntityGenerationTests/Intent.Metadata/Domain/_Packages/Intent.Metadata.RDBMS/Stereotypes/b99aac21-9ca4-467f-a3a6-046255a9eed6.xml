@@ -14,7 +14,8 @@
       <name>Identity</name>
       <type>boolean</type>
       <defaultValue>false</defaultValue>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

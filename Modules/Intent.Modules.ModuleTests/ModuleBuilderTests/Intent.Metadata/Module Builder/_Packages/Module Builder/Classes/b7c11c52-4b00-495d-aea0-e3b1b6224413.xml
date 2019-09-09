@@ -2,14 +2,18 @@
 <class id="b7c11c52-4b00-495d-aea0-e3b1b6224413" type="C# Template">
   <name>Composite</name>
   <isAbstract>false</isAbstract>
+  <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>a9eaf03d-20b5-4bf8-9c99-7048c7436323</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6">
       <addedByDefault>false</addedByDefault>
       <properties>
         <property name="311d788f-7582-4c27-9a4d-e0db1439c327" value="File per Model" />
-        <property name="C2283D15-4B57-4ED9-8AAE-6EFC73039034" value="Domain" />
+        <property name="c2283d15-4b57-4ed9-8aae-6efc73039034" value="Domain" />
         <property name="987590ee-a5ca-45ce-b742-0ee764b6b6e9" value="IClass" />
         <property name="5abe3a6a-90a5-4caf-b3cf-da883c3a090f" value="true" />
       </properties>
@@ -35,6 +39,4 @@
       </properties>
     </stereotype>
   </stereotypes>
-  <attributes />
-  <operations />
 </class>

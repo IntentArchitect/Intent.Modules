@@ -16,7 +16,7 @@
   <ItemGroup>
     <PackageReference Include="Intent.IntentArchitectPackager" Version="1.9.3">
       <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.0.0-pre9" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />

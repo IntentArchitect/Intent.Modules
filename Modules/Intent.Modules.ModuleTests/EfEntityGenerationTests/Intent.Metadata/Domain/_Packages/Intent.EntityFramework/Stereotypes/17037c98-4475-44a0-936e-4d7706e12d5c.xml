@@ -14,7 +14,8 @@
     <property id="1ed48bcb-9cdf-4c14-988c-ac17ec128469">
       <name>ColumnType</name>
       <type>string</type>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

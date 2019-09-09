@@ -22,30 +22,38 @@
       <parameters>
         <parameter id="4963be45-d0e2-465d-8458-713582c50c32">
           <name>stringVal</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+          <typeReference id="7e3470b9-9bed-4bef-9ee3-85ce119495c9">
+            <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+          </typeReference>
           <stereotypes />
         </parameter>
         <parameter id="f1b45ee1-baa6-46cd-9e61-79d2591ea8cd">
           <name>longVal</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>33013006-E404-48C2-AC46-24EF5A5774FD</type>
+          <typeReference id="dda8ac53-c469-41b0-a991-27a0689d98f1">
+            <typeId>33013006-E404-48C2-AC46-24EF5A5774FD</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+          </typeReference>
           <stereotypes />
         </parameter>
         <parameter id="f2c926ef-ffb6-4177-aa20-985d8e7a2be2">
           <name>dateVal</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>a4107c29-7851-4121-9416-cf1236908f1e</type>
+          <typeReference id="d68692de-8bb6-4061-a830-b63f5961578e">
+            <typeId>a4107c29-7851-4121-9416-cf1236908f1e</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+          </typeReference>
           <stereotypes />
         </parameter>
         <parameter id="f7a44632-1677-41f7-a9d6-c61b3e5e7748">
           <name>enumVal</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>55bab887-622b-4712-a988-00cdc0cfabbc</type>
+          <typeReference id="7f7d4fa6-c798-4da9-b050-1b6def467708">
+            <typeId>55bab887-622b-4712-a988-00cdc0cfabbc</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+          </typeReference>
           <stereotypes />
         </parameter>
       </parameters>
@@ -61,9 +69,11 @@
       <parameters>
         <parameter id="5cbb4aa2-5bf1-46d9-84b3-c7b2034fb35d">
           <name>dto</name>
-          <isNullable>false</isNullable>
-          <isCollection>false</isCollection>
-          <type>3923c76a-02e3-41a5-a9c5-744f3ea043fe</type>
+          <typeReference id="be754742-4bd2-4d17-979b-116b0cc54c8d">
+            <typeId>3923c76a-02e3-41a5-a9c5-744f3ea043fe</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+          </typeReference>
           <stereotypes />
         </parameter>
       </parameters>
@@ -77,7 +87,7 @@
     <operation id="2df8cd17-0311-4a33-8ed5-59b74f7ef447" isAbstract="false">
       <name>AsyncOperationWithDTOResponse</name>
       <returnType id="325373e2-6ee5-4c58-8fef-8ea83cc57efa">
-        <type>3923c76a-02e3-41a5-a9c5-744f3ea043fe</type>
+        <typeId>3923c76a-02e3-41a5-a9c5-744f3ea043fe</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

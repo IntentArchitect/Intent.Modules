@@ -2,9 +2,11 @@
 <class id="d5628eef-8297-49ca-892c-fb8aaeb7fee3" type="Class">
   <name>H_MultipleDependent</name>
   <isAbstract>false</isAbstract>
+  <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>288d0ede-2cf7-43cd-aa94-22346d771fe4</parentFolderId>
-  <stereotypes />
+  <literals />
   <attributes />
   <operations />
+  <stereotypes />
 </class>

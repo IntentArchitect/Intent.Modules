@@ -13,12 +13,14 @@
     <property id="a1a18b91-6ad7-4828-9d2c-d77e40638e4d">
       <name>Name</name>
       <type>string</type>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
     <property id="0b03f735-394c-4c12-8f10-bd14f9ab2dd0">
       <name>Value</name>
       <type>string</type>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

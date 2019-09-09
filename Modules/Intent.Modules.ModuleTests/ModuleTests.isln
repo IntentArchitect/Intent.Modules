@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <solution id="22bf3da2-ae0e-44c5-ab09-301c938a2ec2">
   <name>ModuleTests</name>
-  <version>1.2.0</version>
+  <version>2.0.0</version>
   <icon>shield</icon>
   <iconType>FontAwesome</iconType>
   <metadataRelativePath>Intent.MetaData</metadataRelativePath>

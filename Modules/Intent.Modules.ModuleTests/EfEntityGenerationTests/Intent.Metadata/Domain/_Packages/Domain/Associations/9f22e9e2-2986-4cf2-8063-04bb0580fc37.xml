@@ -2,12 +2,16 @@
 <association id="9f22e9e2-2986-4cf2-8063-04bb0580fc37">
   <sourceEnd classId="9f60b462-3124-4fd2-9745-10b2b36e2235">
     <isNavigable>false</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
     <minMultiplicity>1</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />
   </sourceEnd>
   <targetEnd classId="433e38e6-ae03-4c09-ad82-b07831d6a96b">
     <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
     <minMultiplicity>0</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />

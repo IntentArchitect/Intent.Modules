@@ -14,16 +14,16 @@
       <name>Type</name>
       <type>options</type>
       <defaultValue>FromBody</defaultValue>
-      <options>
+      <valueOptions>
         <option>FromUri</option>
         <option>FromBody</option>
         <option>Custom</option>
-      </options>
+      </valueOptions>
     </property>
     <property id="D9658EE8-B36C-49CF-A569-858A8BD687E9">
       <name>Custom Type</name>
       <type>string</type>
-      <options />
+      <valueOptions />
     </property>
   </properties>
 </stereotypeDefinition>

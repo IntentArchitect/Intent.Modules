@@ -14,17 +14,17 @@
     <property id="67913852-1e61-4d9d-997e-cdfb7d9196fb">
       <name>Type</name>
       <type>string</type>
-      <options />
+      <valueOptions />
     </property>
     <property id="8CCCD630-6AF9-41FA-8E5F-414860AD89BB">
       <name>Namespace</name>
       <type>string</type>
-      <options />
+      <valueOptions />
     </property>
     <property id="76668E7B-8FC2-4C14-B6AA-E36854E5E499">
       <name>IsPrimitive</name>
       <type>boolean</type>
-      <options />
+      <valueOptions />
     </property>
   </properties>
 </stereotypeDefinition>

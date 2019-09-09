@@ -3,6 +3,8 @@
   <sourceEnd classId="737899ad-a056-4e42-8443-5428327643b8">
     <name>original</name>
     <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
     <minMultiplicity>0</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />
@@ -10,6 +12,8 @@
   <targetEnd classId="737899ad-a056-4e42-8443-5428327643b8">
     <name>self</name>
     <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
     <minMultiplicity>0</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />

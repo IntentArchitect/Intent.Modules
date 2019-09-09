@@ -13,13 +13,15 @@
     <property id="2b3a9df7-65e1-4800-b919-bef1a6b8f5a9">
       <name>Name</name>
       <type>string</type>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
     <property id="13e6101f-0e37-4eda-a6ae-ec48cd9f8f4b">
       <name>Schema</name>
       <type>string</type>
       <defaultValue />
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

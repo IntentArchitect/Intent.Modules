@@ -16,7 +16,8 @@
       <comment>If you want to do something custom, leave this field blank.</comment>
       <name>Template Name</name>
       <type>string</type>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

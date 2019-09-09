@@ -8,9 +8,11 @@
   <attributes>
     <attribute id="0db1abdf-0249-498d-b9ae-2915bcbd35df">
       <name>fieldA</name>
-      <isNullable>false</isNullable>
-      <isCollection>false</isCollection>
-      <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+      <typeReference id="9b2333d2-3020-4ba9-908b-593af342ec8f">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+      </typeReference>
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>

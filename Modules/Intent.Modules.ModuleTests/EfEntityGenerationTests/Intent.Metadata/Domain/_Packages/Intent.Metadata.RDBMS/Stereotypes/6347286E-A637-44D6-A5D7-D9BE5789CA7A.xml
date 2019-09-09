@@ -13,13 +13,15 @@
     <property id="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD">
       <name>MaxLength</name>
       <type>number</type>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
     <property id="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF">
       <name>IsUnicode</name>
       <type>boolean</type>
       <defaultValue>true</defaultValue>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

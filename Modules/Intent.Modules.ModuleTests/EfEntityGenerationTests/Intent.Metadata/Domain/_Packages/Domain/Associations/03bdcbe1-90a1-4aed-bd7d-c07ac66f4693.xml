@@ -2,6 +2,8 @@
 <association id="03bdcbe1-90a1-4aed-bd7d-c07ac66f4693">
   <sourceEnd classId="7c481451-03a4-4efa-878c-70d366d23ee0">
     <isNavigable>false</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
     <minMultiplicity>0</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />
@@ -9,6 +11,8 @@
   <targetEnd classId="7c481451-03a4-4efa-878c-70d366d23ee0">
     <name>miniSelves</name>
     <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
     <minMultiplicity>0</minMultiplicity>
     <maxMultiplicity>*</maxMultiplicity>
     <stereotypes />

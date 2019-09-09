@@ -15,37 +15,41 @@
       <name>Creation Mode</name>
       <type>options</type>
       <defaultValue>File per Model</defaultValue>
-      <options>
+      <valueOptions>
         <option>File per Model</option>
         <option>Single File (No Model)</option>
         <option>Single File (Model List)</option>
         <option>Custom</option>
-      </options>
+      </valueOptions>
+      <lookupTypes />
     </property>
     <property id="C2283D15-4B57-4ED9-8AAE-6EFC73039034">
       <name>Modeler</name>
       <type>options</type>
       <defaultValue>Domain</defaultValue>
-      <options>
+      <valueOptions>
         <option>Domain</option>
         <option>Services</option>
         <option>Eventing</option>
         <option>Custom</option>
-      </options>
+      </valueOptions>
+      <lookupTypes />
     </property>
     <property id="987590ee-a5ca-45ce-b742-0ee764b6b6e9">
       <comment>In the event that a 'Custom' Modeler is chosen, specify the desired Type to use ('object' by default).</comment>
       <name>Custom Model</name>
       <type>string</type>
       <defaultValue>IClass</defaultValue>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
     <property id="5abe3a6a-90a5-4caf-b3cf-da883c3a090f">
       <comment>The template will specify namespaces that will be included when the template generation runs. In other words, if your template is aimed at C# code, you specify the namespaces that will form part of the "using My.Namespace;" code.</comment>
       <name>Declare Usings</name>
       <type>boolean</type>
       <defaultValue>false</defaultValue>
-      <options />
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

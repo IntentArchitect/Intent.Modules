@@ -58,10 +58,10 @@
     <dependency id="Intent.Common" version="2.0.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
   </dependencies>
-  <Metadata>
+  <metadata>
     <install target="Module Builder" src="modeler"/>
     <install target="Module Builder" src="Metadata/Intent.ModuleBuilder"/>
-  </Metadata>
+  </metadata>
   <files>
     <file src="$outDir$/$id$.dll"/>
     <file src="$outDir$/$id$.pdb"/>

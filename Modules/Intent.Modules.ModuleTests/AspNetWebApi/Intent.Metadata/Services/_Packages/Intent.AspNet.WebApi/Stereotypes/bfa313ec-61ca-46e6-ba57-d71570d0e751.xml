@@ -14,7 +14,7 @@
       <name>Explicit Scope</name>
       <type>boolean</type>
       <defaultValue>true</defaultValue>
-      <options />
+      <valueOptions />
     </property>
   </properties>
 </stereotypeDefinition>

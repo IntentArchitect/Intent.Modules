@@ -2,9 +2,11 @@
 <class id="9a7322b7-3f66-4c5e-a113-4447b0e85678" type="Class">
   <name>F_OptionalDependent</name>
   <isAbstract>false</isAbstract>
+  <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>288d0ede-2cf7-43cd-aa94-22346d771fe4</parentFolderId>
-  <stereotypes />
+  <literals />
   <attributes />
   <operations />
+  <stereotypes />
 </class>
