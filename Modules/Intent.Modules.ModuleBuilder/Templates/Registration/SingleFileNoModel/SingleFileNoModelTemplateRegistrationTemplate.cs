@@ -10,6 +10,7 @@
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.ModuleBuilder.Api;
     using Intent.Metadata.Models;
     using System;
     
@@ -19,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class SingleFileNoModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IClass>
+    public partial class SingleFileNoModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IModuleBuilderElement>
     {
 #line hidden
         /// <summary>
@@ -35,18 +36,18 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Engine;
+using Intent.Templates;
 ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -54,7 +55,7 @@ using Intent.SoftwareFactory.Templates;
             this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n   " +
                     " public class ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -62,7 +63,7 @@ using Intent.SoftwareFactory.Templates;
             this.Write(" : NoModelTemplateRegistrationBase\r\n    {\r\n        public override string Templat" +
                     "eId =>  ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default
@@ -70,7 +71,7 @@ using Intent.SoftwareFactory.Templates;
             this.Write(".TemplateId;\r\n\r\n        public override ITemplate CreateTemplateInstance(IProject" +
                     " project)\r\n        {\r\n\t\t\treturn new ");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default

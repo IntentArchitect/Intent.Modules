@@ -1,35 +1,33 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Helpers;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
-using IApplication = Intent.SoftwareFactory.Engine.IApplication;
+using Intent.Modules.ModuleBuilder.Api;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 {
-    public class ProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<IClass>
+    public class ProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<IFileTemplate>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public ProjectItemTemplatePartialRegistrations(IMetaDataManager metaDataManager)
+        public ProjectItemTemplatePartialRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => ProjectItemTemplatePartialTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        public override ITemplate CreateTemplateInstance(IProject project, IFileTemplate model)
         {
-            return new ProjectItemTemplatePartialTemplate(TemplateId, project, model, _metaDataManager.GetClassModels(project.Application, "Module Builder"));
+            return new ProjectItemTemplatePartialTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IClass> GetModels(IApplication applicationManager)
+        public override IEnumerable<IFileTemplate> GetModels(IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => x.IsFileTemplate())
+            return _metadataManager.GetFileTemplates(applicationManager)
                 .ToList();
         }
     }

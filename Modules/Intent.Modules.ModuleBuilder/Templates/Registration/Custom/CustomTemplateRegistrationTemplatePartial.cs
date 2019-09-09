@@ -1,19 +1,21 @@
 ﻿using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
+using Intent.Modules.ModuleBuilder.Api;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
 {
-    partial class CustomTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IClass>
+    partial class CustomTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IModuleBuilderElement>
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.Custom";
 
-        public CustomTemplateRegistrationTemplate(IProject project, IClass model) : base(TemplateId, project, model)
+        public CustomTemplateRegistrationTemplate(IProject project, IModuleBuilderElement model) : base(TemplateId, project, model)
         {
         }
 
@@ -23,12 +25,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Registration",
                 fileExtension: "cs",

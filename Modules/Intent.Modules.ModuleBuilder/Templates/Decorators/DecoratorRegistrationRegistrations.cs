@@ -2,34 +2,35 @@
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.ModuleBuilder.Helpers;
-using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
+using Intent.Modules.ModuleBuilder.Api;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Decorators
 {
-    public class DecoratorRegistrationRegistrations : ModelTemplateRegistrationBase<IClass>
+    public class DecoratorRegistrationRegistrations : ModelTemplateRegistrationBase<IDecoratorDefinition>
     {
         public override string TemplateId => DecoratorRegistrationTemplate.TemplateId;
 
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public DecoratorRegistrationRegistrations(IMetaDataManager metaDataManager)
+        public DecoratorRegistrationRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
-        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        public override ITemplate CreateTemplateInstance(IProject project, IDecoratorDefinition model)
         {
             return new DecoratorRegistrationTemplate(project, model);
         }
 
-        public override IEnumerable<IClass> GetModels(SoftwareFactory.Engine.IApplication applicationManager)
+        public override IEnumerable<IDecoratorDefinition> GetModels(IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => x.IsDecoratorTemplate())
+            return _metadataManager.GetDecorators(applicationManager)
                 .ToList();
         }
     }

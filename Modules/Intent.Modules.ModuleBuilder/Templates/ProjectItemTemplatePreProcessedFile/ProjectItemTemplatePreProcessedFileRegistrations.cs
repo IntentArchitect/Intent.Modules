@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate;
@@ -13,7 +14,7 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessedFile
 {
-    public class ProjectItemTemplatePreProcessedFileRegistrations : ModelTemplateRegistrationBase<IElement>
+    public class ProjectItemTemplatePreProcessedFileRegistrations : ModelTemplateRegistrationBase<IFileTemplate>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -24,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessed
 
         public override string TemplateId => "Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed";
 
-        public override ITemplate CreateTemplateInstance(IProject project, IElement model)
+        public override ITemplate CreateTemplateInstance(IProject project, IFileTemplate model)
         {
             return new TemplatePreProcessedFileTemplate(
                 templateId: TemplateId,
@@ -34,10 +35,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessed
                 partialTemplateId: ProjectItemTemplatePartialTemplate.TemplateId);
         }
 
-        public override IEnumerable<IElement> GetModels(IApplication applicationManager)
+        public override IEnumerable<IFileTemplate> GetModels(IApplication applicationManager)
         {
-            return _metadataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => x.IsFileTemplate())
+            return _metadataManager.GetFileTemplates(applicationManager)
                 .ToList();
         }
     }

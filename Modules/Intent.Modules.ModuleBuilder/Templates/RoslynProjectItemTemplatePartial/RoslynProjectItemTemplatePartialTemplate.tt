@@ -1,7 +1,8 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<ICSharpTemplate>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
 <#@ import namespace="System.Linq" #>
 using Intent.Metadata.Models;
@@ -34,13 +35,13 @@ namespace <#= Namespace #>
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "cs",
@@ -72,11 +73,11 @@ namespace <#= Namespace #>
 
 <#  if (HasTemplateDependencies()) { #>
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        IEnumerable<ITemplateDependancy> IHasTemplateDependencies.GetTemplateDependencies()
+        IEnumerable<ITemplateDependency> IHasTemplateDependencies.GetTemplateDependencies()
         {
-            var templateDependencies = new List<ITemplateDependancy>();
+            var templateDependencies = new List<ITemplateDependency>();
 <#      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { #>
-                templateDependencies.Add(TemplateDependancy.OnTemplate(<#= templateDependency.TemplateId #>));
+                templateDependencies.Add(TemplateDependency.OnTemplate(<#= templateDependency.TemplateId #>));
 <#      } #>
 <#      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { #>
                 templateDependencies.AddRange(GetCustomTemplateDependencies());
@@ -94,9 +95,9 @@ namespace <#= Namespace #>
 
 <#      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        private IEnumerable<ITemplateDependancy> GetCustomTemplateDependencies()
+        private IEnumerable<ITemplateDependency> GetCustomTemplateDependencies()
         {
-            return new ITemplateDependancy[] 
+            return new ITemplateDependency[] 
             {
             };
         }

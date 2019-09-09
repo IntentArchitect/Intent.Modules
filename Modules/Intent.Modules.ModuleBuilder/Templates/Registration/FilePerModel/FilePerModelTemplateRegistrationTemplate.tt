@@ -1,7 +1,8 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IElement>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IModuleBuilderElement>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
 
 using System;

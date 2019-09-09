@@ -1,10 +1,11 @@
-﻿<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+﻿<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IDecoratorDefinition>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
 using System;
 using Intent.Modules.Common.Registrations;

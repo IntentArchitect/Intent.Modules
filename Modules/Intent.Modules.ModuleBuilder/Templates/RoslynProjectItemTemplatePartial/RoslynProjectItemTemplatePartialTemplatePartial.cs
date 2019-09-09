@@ -1,25 +1,24 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
-using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 using static Intent.Modules.ModuleBuilder.Helpers.TemplateHelper;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial
 {
-    partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IClass>, IHasTemplateDependencies
+    partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<ICSharpTemplate>, IHasTemplateDependencies
     {
         public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial";
 
-        private readonly IEnumerable<IClass> _templateModels;
-
-        public RoslynProjectItemTemplatePartialTemplate(string templateId, IProject project, IClass model, IEnumerable<IClass> templateModels) : base(templateId, project, model)
+        public RoslynProjectItemTemplatePartialTemplate(string templateId, IProject project, ICSharpTemplate model) : base(templateId, project, model)
         {
-            _templateModels = templateModels;
         }
 
         public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
@@ -28,12 +27,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Partial",
                 fileExtension: "cs",
@@ -54,9 +53,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 .ToArray();
         }
 
-        IEnumerable<ITemplateDependancy> IHasTemplateDependencies.GetTemplateDependencies()
+        IEnumerable<ITemplateDependency> IHasTemplateDependencies.GetTemplateDependencies()
         {
-            return TemplateHelper.GetTemplateDependancies(Model, _templateModels);
+            return new ITemplateDependency[0];
+            //return TemplateHelper.GetTemplateDependencies(Model, _templateModels);
         }
 
         public string GetTemplateId()
@@ -92,7 +92,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
 
         private IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencyInfos()
         {
-            return TemplateHelper.GetTemplateDependencyInfos(this, Model, _templateModels);
+            return new TemplateDependencyInfo[0];
+            //return TemplateHelper.GetTemplateDependencyInfos(this, Model, _templateModels);
         }
 
         private string GetConfiguredInterfaces()

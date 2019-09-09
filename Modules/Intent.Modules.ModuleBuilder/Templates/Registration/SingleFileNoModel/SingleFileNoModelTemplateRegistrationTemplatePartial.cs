@@ -1,19 +1,21 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Engine;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
-    partial class SingleFileNoModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IClass>
+    partial class SingleFileNoModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IModuleBuilderElement>
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel";
 
-        public SingleFileNoModelTemplateRegistrationTemplate(IProject project, IClass model) : base(TemplateId, project, model)
+        public SingleFileNoModelTemplateRegistrationTemplate(IProject project, IModuleBuilderElement model) : base(TemplateId, project, model)
         {
         }
 
@@ -23,12 +25,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Registration",
                 fileExtension: "cs",

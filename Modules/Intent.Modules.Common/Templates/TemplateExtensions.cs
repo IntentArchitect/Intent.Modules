@@ -13,7 +13,7 @@ namespace Intent.Modules.Common.Templates
         public static string ResolveAllUsings(this ITemplate template, IProject project, params string[] namespacesToIgnore)
         {
             var usings = template
-                .GetAllTemplateDependancies()
+                .GetAllTemplateDependencies()
                     .SelectMany(project.FindTemplateInstances<ITemplate>)
                     .Where(ti => ti != null && ti.GetMetadata().CustomMetadata.ContainsKey("Namespace"))
                     .ToList()
@@ -61,7 +61,7 @@ namespace Intent.Modules.Common.Templates
             return template.GetAll<IDeclareUsings, string>((i) => i.DeclareUsings());
         }
 
-        public static IEnumerable<ITemplateDependency> GetAllTemplateDependancies(this ITemplate template)
+        public static IEnumerable<ITemplateDependency> GetAllTemplateDependencies(this ITemplate template)
         {
             return template.GetAll<IHasTemplateDependencies, ITemplateDependency>((i) => i.GetTemplateDependencies());
         }

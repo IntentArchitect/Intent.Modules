@@ -1,34 +1,35 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
-using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial
 {
-    public class RoslynProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<IClass>
+    public class RoslynProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<ICSharpTemplate>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public RoslynProjectItemTemplatePartialRegistrations(IMetaDataManager metaDataManager)
+        public RoslynProjectItemTemplatePartialRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => RoslynProjectItemTemplatePartialTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        public override ITemplate CreateTemplateInstance(IProject project, ICSharpTemplate model)
         {
-            return new RoslynProjectItemTemplatePartialTemplate(TemplateId, project, model, _metaDataManager.GetClassModels(project.Application, "Module Builder"));
+            return new RoslynProjectItemTemplatePartialTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
+        public override IEnumerable<ICSharpTemplate> GetModels(IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => x.IsCSharpTemplate())
+            return _metadataManager.GetCSharpTemplates(applicationManager)
                 .ToList();
         }
     }

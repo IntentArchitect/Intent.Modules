@@ -7,10 +7,11 @@ using Intent.Templates;
 using Mono.TextTemplating;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.ModuleBuilder.Api;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Common
 {
-    public class TemplatePreProcessedFileTemplate : IntentProjectItemTemplateBase<IElement>
+    public class TemplatePreProcessedFileTemplate : IntentProjectItemTemplateBase<IModuleBuilderElement>
     {
         private readonly string _t4TemplateId;
         private readonly string _partialTemplateId;
@@ -18,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
         public TemplatePreProcessedFileTemplate(
             string templateId,
             IProject project,
-            IElement model,
+            IModuleBuilderElement model,
             string t4TemplateId,
             string partialTemplateId)
                 : base(templateId, project, model)
@@ -30,18 +31,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
         public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
         public string FolderPath => string.Join("/", FolderBaseList);
 
-        public override DefaultFileMetaData DefineDefaultFileMetaData()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            var metadata = new DefaultFileMetadata(
+            var Metadata = new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "cs",
                 defaultLocationInProject: "${FolderPath}/${Model.Name}");
 
-            metadata.CustomMetadata.Add("Depends On", "${Model.Name}.tt");
+            Metadata.CustomMetadata.Add("Depends On", "${Model.Name}.tt");
 
-            return metadata;
+            return Metadata;
         }
 
         public override string TransformText()

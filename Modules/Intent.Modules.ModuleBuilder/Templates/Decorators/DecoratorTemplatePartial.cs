@@ -5,14 +5,17 @@ using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
+using Intent.Modules.ModuleBuilder.Api;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Decorators
 {
-    partial class DecoratorTemplate : IntentRoslynProjectItemTemplateBase<IClass>, IDeclareUsings
+    partial class DecoratorTemplate : IntentRoslynProjectItemTemplateBase<IDecoratorDefinition>, IDeclareUsings
     {
         public const string TemplateId = "Intent.ModuleBuilder.DecoratorTemplate";
 
-        public DecoratorTemplate(SoftwareFactory.Engine.IProject project, IClass model) : base(DecoratorTemplate.TemplateId, project, model)
+        public DecoratorTemplate(IProject project, IDecoratorDefinition model) : base(DecoratorTemplate.TemplateId, project, model)
         {
         }
 
@@ -22,12 +25,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}",
                 fileExtension: "cs",

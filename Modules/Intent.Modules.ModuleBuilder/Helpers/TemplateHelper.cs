@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Intent.Modules.ModuleBuilder.Api;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Helpers
 {
@@ -15,7 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
     {
         public static string GetExistingTemplateContent<T>(IntentProjectItemTemplateBase<T> template)
         {
-            var fileLocation = template.FileMetaData.GetFullLocationPathWithFileName();
+            var fileLocation = template.FileMetadata.GetFullLocationPathWithFileName();
 
             if (File.Exists(fileLocation))
             {
@@ -33,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
             return _templateInheritsTagRegex.Replace(templateContent, $"${{begin}}{inheritType}${{end}}");
         }
 
-        public static IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencyInfos(IntentProjectItemTemplateBase<IClass> template, IClass classRepresentingTemplate, IEnumerable<IClass> otherTemplateClasses)
+        public static IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencyInfos(IProjectItemTemplate template, IModuleBuilderElement classRepresentingTemplate, IEnumerable<IModuleBuilderElement> otherTemplateClasses)
         {
             var infos = GetTemplateDependencyNames(classRepresentingTemplate)
                 .Where(p => !string.IsNullOrEmpty(p))
@@ -54,13 +56,13 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                 })
                 .Where(p => p != null);
             var customOne = GetTemplateDependencyNames(classRepresentingTemplate)
-                .Where(p => string.IsNullOrEmpty(p))
+                .Where(string.IsNullOrEmpty)
                 .Distinct()
                 .Select(s => new TemplateDependencyInfo());
             return infos.Union(customOne).ToArray();
         }
 
-        public static IReadOnlyCollection<ITemplateDependancy> GetTemplateDependancies(IClass classRepresentingTemplate, IEnumerable<IClass> otherTemplateClasses)
+        public static IReadOnlyCollection<ITemplateDependency> GetTemplateDependencies(IModuleBuilderElement classRepresentingTemplate, IEnumerable<IModuleBuilderElement> otherTemplateClasses)
         {
             var infos = GetTemplateDependencyNames(classRepresentingTemplate)
                 .Where(p => !string.IsNullOrEmpty(p))
@@ -69,11 +71,11 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                 {
                     if (s.IsCSharpTemplate())
                     {
-                        return TemplateDependancy.OnModel(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
+                        return TemplateDependency.OnModel(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
                     }
                     else if (s.IsFileTemplate())
                     {
-                        return TemplateDependancy.OnModel(ProjectItemTemplatePartialTemplate.TemplateId, s);
+                        return TemplateDependency.OnModel(ProjectItemTemplatePartialTemplate.TemplateId, s);
                     }
                     return null;
                 })
@@ -82,7 +84,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
             return infos;
         }
 
-        private static IEnumerable<string> GetTemplateDependencyNames(IClass targetClass)
+        private static IEnumerable<string> GetTemplateDependencyNames(IModuleBuilderElement targetClass)
         {
             return targetClass.Stereotypes
                         .Where(p => p.Name == "Template Dependency")

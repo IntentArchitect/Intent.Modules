@@ -1,34 +1,31 @@
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Metadata.Models;
-using Intent.Modules.Common;
+using Intent.Engine;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Helpers;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Modules.ModuleBuilder.Api;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 {
-    public class RoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IClass>
+    public class RoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<ICSharpTemplate>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public RoslynProjectItemTemplateRegistrations(IMetaDataManager metaDataManager)
+        public RoslynProjectItemTemplateRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => RoslynProjectItemTemplateTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        public override ITemplate CreateTemplateInstance(IProject project, ICSharpTemplate model)
         {
             return new RoslynProjectItemTemplateTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
+        public override IEnumerable<ICSharpTemplate> GetModels(IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => x.IsCSharpTemplate())
+            return _metadataManager.GetCSharpTemplates(applicationManager)
                 .ToList();
         }
     }

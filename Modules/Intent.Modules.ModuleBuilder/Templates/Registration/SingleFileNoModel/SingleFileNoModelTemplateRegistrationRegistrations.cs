@@ -1,33 +1,34 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
-    public class SingleFileNoModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<IClass>
+    public class SingleFileNoModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<IModuleBuilderElement>
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public SingleFileNoModelTemplateRegistrationRegistrations(IMetaDataManager metaDataManager)
+        public SingleFileNoModelTemplateRegistrationRegistrations(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public override string TemplateId => SingleFileNoModelTemplateRegistrationTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        public override ITemplate CreateTemplateInstance(IProject project, IModuleBuilderElement model)
         {
             return new SingleFileNoModelTemplateRegistrationTemplate(project, model);
         }
 
-        public override IEnumerable<IClass> GetModels(Intent.SoftwareFactory.Engine.IApplication applicationManager)
+        public override IEnumerable<IModuleBuilderElement> GetModels(IApplication applicationManager)
         {
-            return _metaDataManager.GetClassModels(applicationManager, "Module Builder")
+            return _metadataManager.GetAllElements(applicationManager)
                 .Where(x => (x.IsCSharpTemplate() || x.IsFileTemplate()) && x.GetCreationMode() == CreationMode.SingleFileNoModel)
                 .ToList();
         }

@@ -1,6 +1,7 @@
 ﻿using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using System;
+using Intent.Modules.ModuleBuilder.Api;
 
 namespace Intent.Modules.ModuleBuilder.Helpers
 {
@@ -8,7 +9,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
     {
         private const string TemplateSettingsStereotype = "Template Settings";
 
-        public static CreationMode GetCreationMode(this IClass model)
+        public static CreationMode GetCreationMode(this IModuleBuilderElement model)
         {
             switch (model.GetStereotypeProperty(TemplateSettingsStereotype, "Creation Mode", "File per Model"))
             {
@@ -25,27 +26,12 @@ namespace Intent.Modules.ModuleBuilder.Helpers
             }
         }
 
-        public static string GetModelerName(this IClass model)
+        public static string GetModelerName(this IModuleBuilderElement model)
         {
             return model.GetStereotypeProperty(TemplateSettingsStereotype, "Modeler", "Domain");
         }
 
-        public static bool IsCSharpTemplate(this IClass model)
-        {
-            return model.SpecializationType == "C# Template";
-        }
-
-        public static bool IsFileTemplate(this IClass model)
-        {
-            return model.SpecializationType == "File Template";
-        }
-
-        public static bool IsDecoratorTemplate(this IClass model)
-        {
-            return model.SpecializationType == "Decorator";
-        }
-
-        public static string GetTargetModel(this IClass model)
+        public static string GetTargetModel(this IModuleBuilderElement model)
         {
             if (model == null)
             {
@@ -83,14 +69,29 @@ namespace Intent.Modules.ModuleBuilder.Helpers
             }
         }
 
-        public static string GetImplementerDecoratorContractType(this IClass model)
+        public static string GetImplementerDecoratorContractType(this IModuleBuilderElement model)
         {
             return model.GetStereotypeProperty<string>("Implements Decorator Contract", "Type Fullname");
         }
 
-        public static string GetExposedDecoratorContractType(this IClass model)
+        public static string GetExposedDecoratorContractType(this IModuleBuilderElement model)
         {
             return model.GetStereotypeProperty<string>("Exposes Decorator Contract", "Type Fullname");
+        }
+
+        public static bool IsCSharpTemplate(this IModuleBuilderElement model)
+        {
+            return model.SpecializationType == "CSharp Template";
+        }
+
+        public static bool IsFileTemplate(this IModuleBuilderElement model)
+        {
+            return model.SpecializationType == "File Template";
+        }
+
+        public static bool IsDecorator(this IModuleBuilderElement model)
+        {
+            return model.SpecializationType == "Decorator";
         }
     }
 }

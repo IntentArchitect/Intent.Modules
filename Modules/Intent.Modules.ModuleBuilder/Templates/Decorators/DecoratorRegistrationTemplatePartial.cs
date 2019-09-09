@@ -1,19 +1,21 @@
 ﻿using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Engine;
 using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Engine;
+using Intent.Modules.ModuleBuilder.Api;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Decorators
 {
-    partial class DecoratorRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IClass>, IHasTemplateDependencies
+    partial class DecoratorRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IDecoratorDefinition>, IHasTemplateDependencies
     {
         public const string TemplateId = "Intent.ModuleBuilder.DecoratorRegistration.Template";
 
-        public DecoratorRegistrationTemplate(IProject project, IClass model) : base(TemplateId, project, model)
+        public DecoratorRegistrationTemplate(IProject project, IDecoratorDefinition model) : base(TemplateId, project, model)
         {
         }
 
@@ -23,12 +25,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetaData(Id, "1.0"));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetaData DefineRoslynDefaultFileMetaData()
+        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            return new RoslynDefaultFileMetaData(
+            return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Registration",
                 fileExtension: "cs",
@@ -38,20 +40,20 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
             );
         }
 
-        public IEnumerable<ITemplateDependancy> GetTemplateDependencies()
+        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {
-                TemplateDependancy.OnTemplate(DecoratorTemplate.TemplateId)
+                TemplateDependency.OnTemplate(DecoratorTemplate.TemplateId)
             };
         }
 
-        private IHasClassDetails GetDecoratorTemplate(IClass model)
+        private IHasClassDetails GetDecoratorTemplate(IDecoratorDefinition model)
         {
             return Project.FindTemplateInstance<IHasClassDetails>(DecoratorTemplate.TemplateId, model);
         }
 
-        private string GetDecoratorTemplateFullName(IClass model)
+        private string GetDecoratorTemplateFullName(IDecoratorDefinition model)
         {
             return GetDecoratorTemplate(model).FullTypeName();
         }

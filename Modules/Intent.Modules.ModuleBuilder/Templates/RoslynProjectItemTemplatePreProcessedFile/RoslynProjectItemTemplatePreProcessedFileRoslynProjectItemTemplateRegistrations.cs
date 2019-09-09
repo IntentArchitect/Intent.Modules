@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate;
@@ -13,7 +14,7 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePreProcessedFile
 {
-    public class RoslynProjectItemTemplatePreProcessedFileRoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IElement>
+    public class RoslynProjectItemTemplatePreProcessedFileRoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<ICSharpTemplate>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -24,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePrePro
 
         public override string TemplateId => "Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template.PreProcessed";
 
-        public override ITemplate CreateTemplateInstance(IProject project, IElement model)
+        public override ITemplate CreateTemplateInstance(IProject project, ICSharpTemplate model)
         {
             return new TemplatePreProcessedFileTemplate(
                 templateId: TemplateId,
@@ -34,10 +35,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePrePro
                 partialTemplateId: RoslynProjectItemTemplatePartialTemplate.TemplateId);
         }
 
-        public override IEnumerable<IElement> GetModels(IApplication applicationManager)
+        public override IEnumerable<ICSharpTemplate> GetModels(IApplication applicationManager)
         {
-            return _metadataManager.GetClassModels(applicationManager, "Module Builder")
-                .Where(x => x.IsCSharpTemplate())
+            return _metadataManager.GetCSharpTemplates(applicationManager)
                 .ToList();
         }
     }

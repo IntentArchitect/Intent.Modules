@@ -19,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public void DoRegistration(ITemplateInstanceRegistry registery, Engine.IApplication applicationManager)
         {
-            var model = _metadataManager.GetClassModels(applicationManager, "Module Builder").ToArray();
+            var model = _metadataManager.GetAllElements(applicationManager);
             registery.Register(TemplateId, project => new IModSpecTemplate(TemplateId, project, model));
         }
     }

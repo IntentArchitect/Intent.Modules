@@ -1,7 +1,8 @@
-﻿<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+﻿<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IModuleBuilderElement>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
 
 using System;
@@ -23,11 +24,11 @@ namespace <#= Namespace #>
 	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class <#= ClassName #> : IProjectTemplateRegistration
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public <#= ClassName #>(IMetaDataManager metaDataManager)
+        public <#= ClassName #>(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;

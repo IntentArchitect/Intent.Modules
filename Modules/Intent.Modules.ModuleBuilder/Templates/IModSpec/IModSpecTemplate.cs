@@ -8,18 +8,18 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
-    public class IModSpecTemplate : IntentProjectItemTemplateBase<IEnumerable<IElement>>, IHasNugetDependencies
+    public class IModSpecTemplate : IntentProjectItemTemplateBase<IEnumerable<IModuleBuilderElement>>, IHasNugetDependencies
     {
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
 
-        public IModSpecTemplate(string templateId, IProject project, IEnumerable<IElement> models)
+        public IModSpecTemplate(string templateId, IProject project, IEnumerable<IModuleBuilderElement> models)
             : base(templateId, project, models)
         {
         }
@@ -59,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            if (Model.Any(p => p.IsDecoratorTemplate()))
+            if (Model.Any(p => p.IsDecorator()))
             {
                 var decoratorsElement = doc.Element("package").Element("decorators");
                 if (decoratorsElement == null)
@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     doc.Element("package").Add(decoratorsElement);
                 }
 
-                foreach (var model in Model.Where(p => p.IsDecoratorTemplate()))
+                foreach (var model in Model.Where(p => p.IsDecorator()))
                 {
                     var id = $"{Project.ApplicationName()}.{model.Name}";
                     var specificDecorator = doc.XPathSelectElement($"package/decorators/decorator[@id=\"{id}\"]");
