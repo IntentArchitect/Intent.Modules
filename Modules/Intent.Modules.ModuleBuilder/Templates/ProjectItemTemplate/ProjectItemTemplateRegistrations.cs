@@ -30,7 +30,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
         public override IEnumerable<IFileTemplate> GetModels(IApplication applicationManager)
         {
             return _metadataManager.GetFileTemplates(applicationManager)
-                .Where(x => x.IsFileTemplate())
                 .ToList();
         }
     }

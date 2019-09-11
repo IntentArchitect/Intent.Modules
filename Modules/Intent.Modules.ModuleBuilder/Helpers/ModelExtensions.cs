@@ -78,20 +78,5 @@ namespace Intent.Modules.ModuleBuilder.Helpers
         {
             return model.GetStereotypeProperty<string>("Exposes Decorator Contract", "Type Fullname");
         }
-
-        public static bool IsCSharpTemplate(this IModuleBuilderElement model)
-        {
-            return model.SpecializationType == "CSharp Template";
-        }
-
-        public static bool IsFileTemplate(this IModuleBuilderElement model)
-        {
-            return model.SpecializationType == "File Template";
-        }
-
-        public static bool IsDecorator(this IModuleBuilderElement model)
-        {
-            return model.SpecializationType == "Decorator";
-        }
     }
 }

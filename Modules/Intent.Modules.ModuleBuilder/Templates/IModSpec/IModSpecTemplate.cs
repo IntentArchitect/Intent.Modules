@@ -42,7 +42,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             var templatesElement = doc.Element("package").Element("templates");
 
-            foreach (var model in Model.Where(p => p.IsCSharpTemplate() || p.IsFileTemplate()))
+            foreach (var model in Model.Where(p => p.Type == ModuleBuilderElementType.CSharpTemplate || p.Type == ModuleBuilderElementType.FileTemplate))
             {
                 var id = $"{Project.ApplicationName()}.{model.Name}";
                 var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{id}\"]");
@@ -59,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            if (Model.Any(p => p.IsDecorator()))
+            if (Model.Any(p => p.Type == ModuleBuilderElementType.Decorator))
             {
                 var decoratorsElement = doc.Element("package").Element("decorators");
                 if (decoratorsElement == null)
@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     doc.Element("package").Add(decoratorsElement);
                 }
 
-                foreach (var model in Model.Where(p => p.IsDecorator()))
+                foreach (var model in Model.Where(p => p.Type == ModuleBuilderElementType.Decorator))
                 {
                     var id = $"{Project.ApplicationName()}.{model.Name}";
                     var specificDecorator = doc.XPathSelectElement($"package/decorators/decorator[@id=\"{id}\"]");
@@ -80,7 +80,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            if (Model.Any(x => x.IsCSharpTemplate()) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.OutputManager.RoslynWeaver\"]") == null)
+            if (Model.Any(x => x.Type == ModuleBuilderElementType.CSharpTemplate) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.OutputManager.RoslynWeaver\"]") == null)
             {
                 var dependencies = doc.XPathSelectElement("package/dependencies");
                 dependencies.Add(CreateDependency(IntentModule.IntentRoslynWeaver));

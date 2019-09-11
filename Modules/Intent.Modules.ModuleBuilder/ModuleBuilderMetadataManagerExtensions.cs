@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder
 
         public static bool IsCSharpTemplate(this IElement model)
         {
-            return model.SpecializationType == "CSharp Template";
+            return model.SpecializationType == "C# Template";
         }
 
         public static bool IsFileTemplate(this IElement model)

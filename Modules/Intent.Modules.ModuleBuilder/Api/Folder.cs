@@ -4,7 +4,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class Folder : IFolder
+    internal class Folder : IFolder, IEquatable<IFolder>
     {
         public const string SpecializationType = "Folder";
         public Folder(IElement element)
@@ -25,5 +25,23 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IFolder ParentFolder { get; }
         public bool IsPackage { get; }
         public IEnumerable<IStereotype> Stereotypes { get; }
+
+        public bool Equals(IFolder other)
+        {
+            return string.Equals(Id, other.Id);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Folder) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (Id != null ? Id.GetHashCode() : 0);
+        }
     }
 }

@@ -42,12 +42,12 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                 .SelectMany(s => otherTemplateClasses.Where(p => p.Name == s))
                 .Select(s =>
                 {
-                    if (s.IsCSharpTemplate())
+                    if (s.Type == ModuleBuilderElementType.CSharpTemplate)
                     {
                         var templateInstance = template.Project.FindTemplateInstance<RoslynProjectItemTemplatePartialTemplate>(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
                         return new TemplateDependencyInfo(s.Name, $"{templateInstance.NormalizeNamespace(templateInstance.FullTypeName())}.TemplateId", templateInstance.Model.GetTargetModel(), "IHasClassDetails");
                     }
-                    else if (s.IsFileTemplate())
+                    else if (s.Type == ModuleBuilderElementType.FileTemplate)
                     {
                         var templateInstance = template.Project.FindTemplateInstance<ProjectItemTemplatePartialTemplate>(ProjectItemTemplatePartialTemplate.TemplateId, s);
                         return new TemplateDependencyInfo(s.Name, $"{templateInstance.NormalizeNamespace(templateInstance.FullTypeName())}.TemplateId", templateInstance.Model.GetTargetModel(), $"IntentProjectItemTemplateBase<{templateInstance.Model.GetTargetModel()}>");
@@ -69,11 +69,11 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                 .SelectMany(s => otherTemplateClasses.Where(p => p.Name == s))
                 .Select(s => 
                 {
-                    if (s.IsCSharpTemplate())
+                    if (s.Type == ModuleBuilderElementType.CSharpTemplate)
                     {
                         return TemplateDependency.OnModel(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
                     }
-                    else if (s.IsFileTemplate())
+                    else if (s.Type == ModuleBuilderElementType.FileTemplate)
                     {
                         return TemplateDependency.OnModel(ProjectItemTemplatePartialTemplate.TemplateId, s);
                     }

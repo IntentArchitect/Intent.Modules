@@ -12,10 +12,10 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.Engine;
+using Intent.Registrations;
+using Intent.Templates;
+using Intent.Templates.Registrations;
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -33,7 +33,7 @@ namespace <#= Namespace #>
 
         public string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, Intent.SoftwareFactory.Engine.IApplication applicationManager)
+        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication applicationManager)
         {
             registery.Register(TemplateId, project => new <#= GetTemplateNameForTemplateId() #>(project, null));
         }

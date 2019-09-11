@@ -107,10 +107,10 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write(@"> GetModels(Intent.Engine.IApplication application)
-        {
-            // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == ""Service"") for services only)
-            return _metadataManager.GetClassModels(application, """);
+            this.Write("> GetModels(IApplication application)\r\n        {\r\n            // Filter classes b" +
+                    "y SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == \"Ser" +
+                    "vice\") for services only)\r\n            return _metadataManager.GetClassModels(ap" +
+                    "plication, \"");
             
             #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelerName()));

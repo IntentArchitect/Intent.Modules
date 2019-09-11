@@ -56,5 +56,10 @@ namespace Intent.Modelers.Services
         {
             return model.SpecializationType == "Service";
         }
+
+        public static bool IsEnum(this IElement model)
+        {
+            return model.SpecializationType == "Enum";
+        }
     }
 }

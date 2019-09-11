@@ -6,7 +6,6 @@ using Intent.Modules.Common.Templates;
 using Intent.Templates;
 using Mono.TextTemplating;
 using System.Collections.Generic;
-using System.Linq;
 using Intent.Modules.ModuleBuilder.Api;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Common

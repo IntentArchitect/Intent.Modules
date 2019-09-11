@@ -12,6 +12,7 @@ using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modelers.Services;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
@@ -173,7 +174,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 return InternalServerError(e);";
         }
 
-        public string OverrideReturnStatement(IServiceModel service, IOperationModel operation)
+        public string OverrideReturnStatement(IServiceModel service, IOperation operation)
         {
             var returnOverrideDecoratorStatements = GetDecorators()
                 .Select(x => x.OverrideReturnStatement(Model, operation))
@@ -419,8 +420,8 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
             // NB: Order of conditional checks is important here
             return GetParameterBindingAttribute(parameter) == "[FromBody]" 
-                || (!csharpPrimitives.Contains(parameter.TypeReference.Name)
-                    && parameter.TypeReference.Type != ReferenceType.Enum);
+                || (!csharpPrimitives.Contains(parameter.Type.Element.Name)
+                    && !parameter.Type.Element.IsEnum());
         }
 
         private enum HttpVerb

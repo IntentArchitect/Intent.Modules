@@ -1,7 +1,7 @@
 ﻿using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
 using System;
+using Intent.Engine;
 
 namespace Intent.Modules.AspNet.WebApi.Decorators
 {
@@ -9,7 +9,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
     {
         public override string DecoratorId => BeginTransactionScopeDecorator.Identifier;
 
-        public override object CreateDecoratorInstance(IApplication application)
+        public override WebApiControllerDecoratorBase CreateDecoratorInstance(IApplication application)
         {
             return new BeginTransactionScopeDecorator(application);
         }
@@ -19,7 +19,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
     {
         public override string DecoratorId => EndTransactionScopeDecorator.Identifier;
 
-        public override object CreateDecoratorInstance(IApplication application)
+        public override WebApiControllerDecoratorBase CreateDecoratorInstance(IApplication application)
         {
             return new EndTransactionScopeDecorator(application);
         }

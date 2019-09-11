@@ -1,10 +1,11 @@
-﻿using Intent.MetaModel.Service;
-using Intent.Modules.Application.Contracts;
+﻿using Intent.Modules.Application.Contracts;
 using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.Modules.Common;
-using Intent.SoftwareFactory.Engine;
 using System;
 using System.Text;
+using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 
 namespace Intent.Modules.AspNet.WebApi.Decorators
 {
@@ -21,7 +22,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
 
         public override int Priority => 1000;
 
-        public override string BeforeCallToAppLayer(IServiceModel service, IOperationModel operation)
+        public override string BeforeCallToAppLayer(IServiceModel service, IOperation operation)
         {
             if (!operation.GetStereotypeProperty<bool>("Transactional Settings", "Explicit Scope", true))
             {
@@ -55,7 +56,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
 
         public override int Priority => -1000;
 
-        public override string AfterCallToAppLayer(IServiceModel service, IOperationModel operation)
+        public override string AfterCallToAppLayer(IServiceModel service, IOperation operation)
         {
             if (!operation.GetStereotypeProperty<bool>("Transactional Settings", "Explicit Scope", true))
             {
