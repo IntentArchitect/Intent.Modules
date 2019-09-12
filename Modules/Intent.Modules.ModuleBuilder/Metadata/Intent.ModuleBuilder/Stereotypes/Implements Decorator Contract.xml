@@ -8,7 +8,7 @@
     <element>decorator</element>
   </targetElements>
   <autoAdd>true</autoAdd>
-  <parentFolderId>2435de84-8f7d-4bf8-951e-e469aa67e876</parentFolderId>
+  <parentFolderId>0140df12-410f-43a8-8c75-7a68c922474b</parentFolderId>
   <properties>
     <property id="ad61c60c-17e0-456c-b08d-ab9987b52c58">
       <comment>Specify the fully qualified namespace and Type that will define what the Contract looks like that Decorators will use</comment>

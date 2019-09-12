@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="83d93fef-d71f-4cad-9dc1-9239a3ccb821" type="Modeler">
+  <name>Domain</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>9518e616-749e-4111-9ea7-e8c8c17586e5</parentFolderId>
+  <literals>
+    <literal id="4570f6fe-bbf0-410f-b8c9-437c3f9bb639" type="Model Type">
+      <name>IClass</name>
+      <stereotypes />
+    </literal>
+    <literal id="82c5c3ca-f636-49d1-afa5-efc920f96dca" type="Model Type">
+      <name>IEnum</name>
+      <stereotypes />
+    </literal>
+    <literal id="22c649a6-a51a-4351-a5af-52100920b07a" type="Model Type">
+      <name>IElement</name>
+      <stereotypes />
+    </literal>
+  </literals>
+  <attributes />
+  <operations />
+  <stereotypes />
+</class>

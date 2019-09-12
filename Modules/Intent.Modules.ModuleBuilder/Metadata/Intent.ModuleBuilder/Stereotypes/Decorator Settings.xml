@@ -8,7 +8,7 @@
     <element>decorator</element>
   </targetElements>
   <autoAdd>true</autoAdd>
-  <parentFolderId>2435de84-8f7d-4bf8-951e-e469aa67e876</parentFolderId>
+  <parentFolderId>0140df12-410f-43a8-8c75-7a68c922474b</parentFolderId>
   <properties>
     <property id="8acbb25a-9b8a-4da2-ba42-7c349851f049">
       <comment>The decorator will specify namespaces that will be included when the template generation runs. In other words, if your decorator is aimed at C# code, you specify the namespaces that will form part of the "using My.Namespace;" code when any templates (that the decorator depends on) gets executed.</comment>
