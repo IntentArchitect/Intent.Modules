@@ -6,7 +6,6 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using Intent.SoftwareFactory.Templates;
 using IClass = Intent.Modelers.Domain.Api.IClass;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 

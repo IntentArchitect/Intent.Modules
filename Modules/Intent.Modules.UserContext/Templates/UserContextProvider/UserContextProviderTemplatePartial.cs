@@ -8,7 +8,6 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.UserContext.Templates.UserContextProviderInterface;
-using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.UserContext.Templates.UserContextProvider
 {

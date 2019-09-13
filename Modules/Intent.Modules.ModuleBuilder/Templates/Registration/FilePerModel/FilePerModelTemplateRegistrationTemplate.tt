@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IModuleBuilderElement>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<ITemplateDefinition>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
@@ -20,7 +20,7 @@ using Intent.Templates;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class <#= ClassName #> : ModelTemplateRegistrationBase<<#= Model.GetTargetModel() #>>
+    public class <#= ClassName #> : ModelTemplateRegistrationBase<<#= Model.GetModelTypeName() #>>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -31,13 +31,13 @@ namespace <#= Namespace #>
 
         public override string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, <#= Model.GetTargetModel() #> model)
+        public override ITemplate CreateTemplateInstance(IProject project, <#= Model.GetModelTypeName() #> model)
         {
             return new <#= GetTemplateNameForTemplateId() #>(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<<#= Model.GetTargetModel() #>> GetModels(IApplication application)
+        public override IEnumerable<<#= Model.GetModelTypeName() #>> GetModels(IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == "Service") for services only)
             return _metadataManager.GetClassModels(application, "<#= Model.GetModelerName() #>"); 

@@ -7,17 +7,16 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 using static Intent.Modules.ModuleBuilder.Helpers.TemplateHelper;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial
 {
-    partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<ICSharpTemplate>, IHasTemplateDependencies
+    partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<ITemplateDefinition>, IHasTemplateDependencies
     {
         public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial";
 
-        public RoslynProjectItemTemplatePartialTemplate(string templateId, IProject project, ICSharpTemplate model) : base(templateId, project, model)
+        public RoslynProjectItemTemplatePartialTemplate(string templateId, IProject project, ITemplateDefinition model) : base(templateId, project, model)
         {
         }
 
@@ -66,7 +65,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
 
         private string GetModelType()
         {
-            var type = Model.GetTargetModel();
+            if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
+            {
+                return "object";
+            }
+
+            var type = Model.GetModelTypeName();
             if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
             {
                 type = $"IList<{type}>";

@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class SingleFileListModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IModuleBuilderElement>
+    public partial class SingleFileListModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<ITemplateDefinition>
     {
 #line hidden
         /// <summary>
@@ -64,7 +64,7 @@ using Intent.Templates;
             this.Write(" : ListModelTemplateRegistrationBase<");
             
             #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetTargetModel()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelTypeName()));
             
             #line default
             #line hidden
@@ -88,7 +88,7 @@ using Intent.Templates;
                     " project, IList<");
             
             #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetTargetModel()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelTypeName()));
             
             #line default
             #line hidden
@@ -103,7 +103,7 @@ using Intent.Templates;
                     "nore, Signature = Mode.Fully)]\r\n        public override IList<");
             
             #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetTargetModel()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelTypeName()));
             
             #line default
             #line hidden

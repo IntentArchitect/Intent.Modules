@@ -11,7 +11,6 @@ using Intent.Modules.EntityFramework;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext

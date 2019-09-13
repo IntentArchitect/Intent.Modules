@@ -5,10 +5,10 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Registrations;
-using Intent.SoftwareFactory.Templates;
-using Intent.SoftwareFactory.Templates.Registrations;
+using Intent.Engine;
+using Intent.Registrations;
+using Intent.Templates;
+using Intent.Templates.Registrations;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.Custom", Version = "1.0")]
@@ -18,16 +18,16 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Other.CustomCreationMode
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class CustomCreationModeRegistration : IProjectTemplateRegistration
     {
-        private readonly IMetaDataManager _metaDataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public CustomCreationModeRegistration(IMetaDataManager metaDataManager)
+        public CustomCreationModeRegistration(IMetadataManager metadataManager)
         {
-            _metaDataManager = metaDataManager;
+            _metadataManager = metadataManager;
         }
 
         public string TemplateId => CustomCreationMode.TemplateId;
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, Intent.SoftwareFactory.Engine.IApplication applicationManager)
+        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication applicationManager)
         {
             registery.Register(TemplateId, project => new CustomCreationMode(project, null));
         }

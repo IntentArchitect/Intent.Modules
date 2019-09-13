@@ -9,7 +9,7 @@
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
 using System;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 

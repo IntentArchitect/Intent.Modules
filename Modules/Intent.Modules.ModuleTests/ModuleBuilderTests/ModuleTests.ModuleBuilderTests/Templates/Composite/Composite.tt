@@ -23,6 +23,6 @@ namespace <#= Namespace #>
     public class <#= ClassName #>
     {
         public <#= GetDependantATemplate(Model).FullTypeName() #> DependantA { get; }
-        public <#= GetDependantBTemplate(Model).FileMetaData.FileName #> DependantB { get; }
+        public <#= GetDependantBTemplate(Model).FileMetadata.FileName #> DependantB { get; }
     }
 }

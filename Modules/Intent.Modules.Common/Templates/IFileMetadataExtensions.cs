@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates

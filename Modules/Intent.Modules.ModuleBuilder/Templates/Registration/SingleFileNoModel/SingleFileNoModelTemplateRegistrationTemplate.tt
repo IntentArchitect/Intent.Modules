@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IModuleBuilderElement>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<ITemplateDefinition>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>

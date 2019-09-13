@@ -17,10 +17,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public string TemplateId => IModSpecTemplate.TemplateId;
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, Engine.IApplication applicationManager)
+        public void DoRegistration(ITemplateInstanceRegistry registry, Engine.IApplication applicationManager)
         {
-            var model = _metadataManager.GetAllElements(applicationManager);
-            registery.Register(TemplateId, project => new IModSpecTemplate(TemplateId, project, model));
+            registry.Register(TemplateId, project => new IModSpecTemplate(
+                templateId: TemplateId, 
+                project: project, 
+                models: new IModeSpecModel(
+                    templates: _metadataManager.GetTemplateDefinitions(applicationManager), 
+                    decorators: _metadataManager.GetDecorators(applicationManager))));
         }
     }
 }

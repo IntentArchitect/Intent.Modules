@@ -1,7 +1,7 @@
 using System;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory.Engine;
+using Intent.Engine;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.DecoratorRegistration.Template", Version = "1.0")]

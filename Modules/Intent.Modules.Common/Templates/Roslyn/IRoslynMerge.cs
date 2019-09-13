@@ -1,6 +1,4 @@
-﻿using Intent.SoftwareFactory.Templates;
-
-namespace Intent.SoftwareFactory.Templates
+﻿namespace Intent.Modules.Common.Templates
 {
     public interface IRoslynMerge
     {

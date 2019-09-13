@@ -1,7 +1,7 @@
 using System;
 using Intent.RoslynWeaver.Attributes;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
+using Intent.Engine;
+using Intent.Templates;
 using System.Collections.Generic;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]

@@ -1,4 +1,4 @@
-﻿using Intent.SoftwareFactory.Templates;
+﻿using Intent.Templates;
 using System;
 
 namespace ModuleTests.ModuleBuilderTests.Templates.Composite

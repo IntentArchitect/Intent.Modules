@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Intent.Engine;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
 [assembly:InternalsVisibleTo("Intent.Modules.Common.Tests")]

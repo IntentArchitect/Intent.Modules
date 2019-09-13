@@ -10,11 +10,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 {
-    public class ProjectItemTemplateTemplate : IntentProjectItemTemplateBase<IFileTemplate>
+    public class ProjectItemTemplateTemplate : IntentProjectItemTemplateBase<ITemplateDefinition>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ProjectItemTemplate.T4Template";
 
-        public ProjectItemTemplateTemplate(string templateId, IProject project, IFileTemplate model) : base(templateId, project, model)
+        public ProjectItemTemplateTemplate(string templateId, IProject project, ITemplateDefinition model) : base(templateId, project, model)
         {
         }
 
@@ -54,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         private string GetModelType()
         {
-            var type = Model.GetTargetModel();
+            var type = Model.GetModelTypeName();
             if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
             {
                 type = $"IList<{type}>";

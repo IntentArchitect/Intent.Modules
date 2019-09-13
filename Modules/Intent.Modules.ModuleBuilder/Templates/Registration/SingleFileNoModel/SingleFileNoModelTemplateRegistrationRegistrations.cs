@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
-    public class SingleFileNoModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<IModuleBuilderElement>
+    public class SingleFileNoModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<ITemplateDefinition>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -21,15 +21,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 
         public override string TemplateId => SingleFileNoModelTemplateRegistrationTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IModuleBuilderElement model)
+        public override ITemplate CreateTemplateInstance(IProject project, ITemplateDefinition model)
         {
             return new SingleFileNoModelTemplateRegistrationTemplate(project, model);
         }
 
-        public override IEnumerable<IModuleBuilderElement> GetModels(IApplication applicationManager)
+        public override IEnumerable<ITemplateDefinition> GetModels(IApplication applicationManager)
         {
-            return _metadataManager.GetAllElements(applicationManager)
-                .Where(x => x.IsTemplate() && x.GetCreationMode() == CreationMode.SingleFileNoModel)
+            return _metadataManager.GetTemplateDefinitions(applicationManager)
+                .Where(x => x.GetCreationMode() == CreationMode.SingleFileNoModel)
                 .ToList();
         }
     }

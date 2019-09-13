@@ -6,12 +6,11 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial
 {
-    public class RoslynProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<ICSharpTemplate>
+    public class RoslynProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<ITemplateDefinition>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -22,12 +21,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
 
         public override string TemplateId => RoslynProjectItemTemplatePartialTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ICSharpTemplate model)
+        public override ITemplate CreateTemplateInstance(IProject project, ITemplateDefinition model)
         {
             return new RoslynProjectItemTemplatePartialTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<ICSharpTemplate> GetModels(IApplication applicationManager)
+        public override IEnumerable<ITemplateDefinition> GetModels(IApplication applicationManager)
         {
             return _metadataManager.GetCSharpTemplates(applicationManager)
                 .ToList();

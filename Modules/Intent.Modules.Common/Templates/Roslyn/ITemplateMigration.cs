@@ -1,11 +1,4 @@
-﻿using Intent.SoftwareFactory.Templates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Intent.SoftwareFactory.RoslynMerge.Migrations
+﻿namespace Intent.Modules.Common.Templates
 {
     public interface ITemplateMigration
     {

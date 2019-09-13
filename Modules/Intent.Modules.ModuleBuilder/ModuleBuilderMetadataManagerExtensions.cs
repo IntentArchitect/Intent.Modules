@@ -7,12 +7,17 @@ namespace Intent.Modules.ModuleBuilder
 {
     public static class ModuleBuilderMetadataManagerExtensions
     {
-        public static IEnumerable<ICSharpTemplate> GetCSharpTemplates(this IMetadataManager metadataManager, IApplication application)
+        public static IEnumerable<ITemplateDefinition> GetTemplateDefinitions(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ModuleBuilderMetadataProvider(metadataManager).GetTemplateDefinitions(application);
+        }
+
+        public static IEnumerable<ITemplateDefinition> GetCSharpTemplates(this IMetadataManager metadataManager, IApplication application)
         {
             return new ModuleBuilderMetadataProvider(metadataManager).GetCSharpTemplates(application);
         }
 
-        public static IEnumerable<IFileTemplate> GetFileTemplates(this IMetadataManager metadataManager, IApplication application)
+        public static IEnumerable<ITemplateDefinition> GetFileTemplates(this IMetadataManager metadataManager, IApplication application)
         {
             return new ModuleBuilderMetadataProvider(metadataManager).GetFileTemplates(application);
         }
@@ -20,11 +25,6 @@ namespace Intent.Modules.ModuleBuilder
         public static IEnumerable<IDecoratorDefinition> GetDecorators(this IMetadataManager metadataManager, IApplication application)
         {
             return new ModuleBuilderMetadataProvider(metadataManager).GetDecorators(application);
-        }
-
-        public static IEnumerable<IModuleBuilderElement> GetAllElements(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ModuleBuilderMetadataProvider(metadataManager).GetAllElements(application);
         }
 
         public static bool IsCSharpTemplate(this IElement model)
@@ -37,9 +37,19 @@ namespace Intent.Modules.ModuleBuilder
             return model.SpecializationType == "File Template";
         }
 
+        public static bool IsTemplate(this IElement model)
+        {
+            return model.IsCSharpTemplate() || model.IsFileTemplate();
+        }
+
         public static bool IsDecorator(this IElement model)
         {
             return model.SpecializationType == "Decorator";
+        }
+
+        public static bool IsModeler(this IElement model)
+        {
+            return model.SpecializationType == Modeler.SpecializationType;
         }
     }
 }

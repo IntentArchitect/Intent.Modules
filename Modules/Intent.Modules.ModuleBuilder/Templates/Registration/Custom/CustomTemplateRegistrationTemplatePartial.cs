@@ -1,7 +1,6 @@
 ﻿using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +10,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
 {
-    partial class CustomTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IModuleBuilderElement>
+    partial class CustomTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<ITemplateDefinition>
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.Custom";
 
-        public CustomTemplateRegistrationTemplate(IProject project, IModuleBuilderElement model) : base(TemplateId, project, model)
+        public CustomTemplateRegistrationTemplate(IProject project, ITemplateDefinition model) : base(TemplateId, project, model)
         {
         }
 

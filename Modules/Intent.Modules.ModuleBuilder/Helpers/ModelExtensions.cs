@@ -7,7 +7,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
 {
     public static class ModelExtensions
     {
-        private const string TemplateSettingsStereotype = "Template Settings";
+        public const string TemplateSettingsStereotype = "Template Settings";
 
         public static CreationMode GetCreationMode(this IModuleBuilderElement model)
         {
@@ -26,48 +26,48 @@ namespace Intent.Modules.ModuleBuilder.Helpers
             }
         }
 
-        public static string GetModelerName(this IModuleBuilderElement model)
-        {
-            return model.GetStereotypeProperty(TemplateSettingsStereotype, "Modeler", "Domain");
-        }
+        //public static string GetModelerName(this IModuleBuilderElement model)
+        //{
+        //    return model.GetStereotypeProperty(TemplateSettingsStereotype, "Modeler", "Modeler");
+        //}
 
-        public static string GetTargetModel(this IModuleBuilderElement model)
-        {
-            if (model == null)
-            {
-                return string.Empty;
-            }
+        //public static string GetTargetModel(this IModuleBuilderElement model)
+        //{
+        //    if (model == null)
+        //    {
+        //        return string.Empty;
+        //    }
 
-            var selectedCreationMode = model.GetCreationMode();
+        //    var selectedCreationMode = model.GetCreationMode();
 
-            if (selectedCreationMode == CreationMode.SingleFileNoModel)
-            {
-                return "object";
-            }
+        //    if (selectedCreationMode == CreationMode.SingleFileNoModel)
+        //    {
+        //        return "object";
+        //    }
 
-            if (GetModelerName(model) == "Custom")
-            {
-                var customModel = model.GetStereotypeProperty<string>(TemplateSettingsStereotype, "Custom Model", "IClass");
-                if (string.IsNullOrWhiteSpace(customModel))
-                {
-                    throw new Exception($"Model {model.Name} has a Creation Mode of 'Custom' but nothing specified in 'Custom Model'");
-                }
+        //    if (GetModelerName(model) == "Custom")
+        //    {
+        //        var customModel = model.GetStereotypeProperty<string>(TemplateSettingsStereotype, "Custom Model", "IClass");
+        //        if (string.IsNullOrWhiteSpace(customModel))
+        //        {
+        //            throw new Exception($"Model {model.Name} has a Creation Mode of 'Custom' but nothing specified in 'Custom Model'");
+        //        }
 
-                return customModel;
-            }
-            else
-            {
-                switch (selectedCreationMode)
-                {
-                    case CreationMode.FilePerModel:
-                    case CreationMode.SingleFileListModel:
-                        return "IClass";
-                    case CreationMode.Custom:
-                    default:
-                        return "IClass";
-                }
-            }
-        }
+        //        return customModel;
+        //    }
+        //    else
+        //    {
+        //        switch (selectedCreationMode)
+        //        {
+        //            case CreationMode.FilePerModel:
+        //            case CreationMode.SingleFileListModel:
+        //                return "IClass";
+        //            case CreationMode.Custom:
+        //            default:
+        //                return "IClass";
+        //        }
+        //    }
+        //}
 
         public static string GetImplementerDecoratorContractType(this IModuleBuilderElement model)
         {

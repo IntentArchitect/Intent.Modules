@@ -9,7 +9,6 @@ using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.EntityFrameworkCore.Templates.DbContext;
 using Intent.Engine;
 using Intent.Modelers.Domain.Api;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository

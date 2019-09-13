@@ -8,7 +8,6 @@ using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 using IClass = Intent.Modelers.Domain.Api.IClass;

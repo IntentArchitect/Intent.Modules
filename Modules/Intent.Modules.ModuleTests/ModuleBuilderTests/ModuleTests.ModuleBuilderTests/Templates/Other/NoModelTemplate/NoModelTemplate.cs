@@ -13,7 +13,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Other.NoModelTemplate
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Templates;
     using Intent.Metadata.Models;
     using System;
     

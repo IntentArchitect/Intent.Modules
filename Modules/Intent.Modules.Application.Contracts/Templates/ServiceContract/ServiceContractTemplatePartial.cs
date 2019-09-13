@@ -11,7 +11,6 @@ using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {

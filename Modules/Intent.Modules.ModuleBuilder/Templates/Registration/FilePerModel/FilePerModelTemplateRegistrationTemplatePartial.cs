@@ -6,16 +6,15 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
 {
-    partial class FilePerModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IModuleBuilderElement>
+    partial class FilePerModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<ITemplateDefinition>
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.FilePerModel";
 
-        public FilePerModelTemplateRegistrationTemplate(IProject project, IModuleBuilderElement model) : base(TemplateId, project, model)
+        public FilePerModelTemplateRegistrationTemplate(IProject project, ITemplateDefinition model) : base(TemplateId, project, model)
         {
         }
 

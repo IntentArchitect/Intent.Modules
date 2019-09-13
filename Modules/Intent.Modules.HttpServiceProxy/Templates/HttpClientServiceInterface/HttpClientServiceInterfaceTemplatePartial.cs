@@ -3,7 +3,6 @@ using Intent.Templates;
 using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
 {

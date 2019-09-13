@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Intent.SoftwareFactory.RoslynMerge.Migrations;
-
-namespace Intent.SoftwareFactory.Templates
+﻿namespace Intent.Modules.Common.Templates
 {
     public class RoslynMergeConfig
     {

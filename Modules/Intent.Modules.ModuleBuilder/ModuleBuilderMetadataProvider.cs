@@ -15,28 +15,26 @@ namespace Intent.Modules.ModuleBuilder
             _metadataManager = metadataManager;
         }
 
-        public IEnumerable<ICSharpTemplate> GetCSharpTemplates()
+        public IEnumerable<ITemplateDefinition> GetTemplateDefinitions()
         {
-            var templates = _metadataManager.GetMetadata<IElement>("Module Builder").Where(x => x.IsCSharpTemplate()).ToList();
-            var result = templates.Select(x => new CSharpTemplate(x)).ToList();
+            var templates = _metadataManager.GetMetadata<IElement>("Module Builder").Where(x => x.IsTemplate()).ToList();
+            var result = templates.Select(x => new TemplateDefinition(x, this)).ToList();
             return result;
         }
 
-        public IEnumerable<ICSharpTemplate> GetCSharpTemplates(IApplication application)
+        public IEnumerable<ITemplateDefinition> GetTemplateDefinitions(IApplication application)
         {
-            return GetCSharpTemplates().Where(x => x.Application.Name == application.ApplicationName);
+            return GetTemplateDefinitions().Where(x => x.Application.Name == application.ApplicationName);
         }
 
-        public IEnumerable<IFileTemplate> GetFileTemplates()
+        public IEnumerable<ITemplateDefinition> GetCSharpTemplates(IApplication application)
         {
-            var classes = _metadataManager.GetMetadata<IElement>("Module Builder").Where(x => x.IsFileTemplate()).ToList();
-            var result = classes.Select(x => new FileTemplate(x)).ToList();
-            return result;
+            return GetTemplateDefinitions().Where(x => x.Type == ModuleBuilderElementType.CSharpTemplate && x.Application.Name == application.ApplicationName);
         }
 
-        public IEnumerable<IFileTemplate> GetFileTemplates(IApplication application)
+        public IEnumerable<ITemplateDefinition> GetFileTemplates(IApplication application)
         {
-            return GetFileTemplates().Where(x => x.Application.Name == application.ApplicationName);
+            return GetTemplateDefinitions().Where(x => x.Type == ModuleBuilderElementType.FileTemplate && x.Application.Name == application.ApplicationName);
         }
 
         public IEnumerable<IDecoratorDefinition> GetDecorators()
@@ -51,14 +49,11 @@ namespace Intent.Modules.ModuleBuilder
             return GetDecorators().Where(x => x.Application.Name == application.ApplicationName);
         }
 
-        public IEnumerable<IModuleBuilderElement> GetAllElements()
+        public IEnumerable<IModeler> GetModelers(IElementApplication application)
         {
-            return GetCSharpTemplates().Cast<IModuleBuilderElement>().Concat(GetFileTemplates()).Concat(GetDecorators());
-        }
-
-        public IEnumerable<IModuleBuilderElement> GetAllElements(IApplication application)
-        {
-            return GetAllElements().Where(x => x.Application.Name == application.ApplicationName);
+            var modelerElements = _metadataManager.GetMetadata<IElement>("Module Builder").Where(x => x.IsModeler() && x.Application.Name == application.Name).ToList();
+            var result = modelerElements.Select(x => new Modeler(x)).ToList();
+            return result;
         }
     }
 }

@@ -10,11 +10,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 {
-    public class RoslynProjectItemTemplateTemplate : IntentProjectItemTemplateBase<ICSharpTemplate>
+    public class RoslynProjectItemTemplateTemplate : IntentProjectItemTemplateBase<ITemplateDefinition>
     {
         public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template";
 
-        public RoslynProjectItemTemplateTemplate(string templateId, IProject project, ICSharpTemplate model) : base(templateId, project, model)
+        public RoslynProjectItemTemplateTemplate(string templateId, IProject project, ITemplateDefinition model) : base(templateId, project, model)
         {
         }
 
@@ -96,7 +96,12 @@ namespace <#= Namespace #>
 
         private string GetModelType()
         {
-            var type = Model.GetTargetModel();
+            if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
+            {
+                return "object";
+            }
+
+            var type = Model.GetModelTypeName();
             if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
             {
                 type = $"IList<{type}>";

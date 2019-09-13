@@ -10,7 +10,6 @@ using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Modelers.Domain.Api;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 using Intent.Utils;
 

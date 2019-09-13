@@ -5,7 +5,6 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Modules.Common.Plugins;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.WebApiServiceCallContext

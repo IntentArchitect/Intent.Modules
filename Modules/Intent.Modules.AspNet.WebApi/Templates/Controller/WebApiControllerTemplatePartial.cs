@@ -14,7 +14,6 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 using Intent.Utils;
 

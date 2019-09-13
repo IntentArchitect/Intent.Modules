@@ -8,7 +8,6 @@ using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Unity.Templates.UnityConfig;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy

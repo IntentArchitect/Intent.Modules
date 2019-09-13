@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<ICSharpTemplate>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<ITemplateDefinition>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
@@ -7,8 +7,6 @@
 <#@ import namespace="System.Linq" #>
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
-using Intent.SoftwareFactory.Engine;
-using Intent.SoftwareFactory.Templates;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using System;

@@ -8,7 +8,6 @@ using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Application.Contracts.Templates.DTO;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 using Intent.Utils;
 

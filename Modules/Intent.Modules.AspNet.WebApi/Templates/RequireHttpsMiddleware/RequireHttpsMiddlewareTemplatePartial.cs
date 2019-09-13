@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Templates;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
 {

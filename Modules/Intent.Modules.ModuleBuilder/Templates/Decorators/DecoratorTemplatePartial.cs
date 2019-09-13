@@ -1,7 +1,6 @@
 ﻿using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.SoftwareFactory.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Decorators
 {
-    partial class DecoratorTemplate : IntentRoslynProjectItemTemplateBase<IDecoratorDefinition>, IDeclareUsings
+    partial class DecoratorTemplate : IntentRoslynProjectItemTemplateBase<IDecoratorDefinition>
     {
         public const string TemplateId = "Intent.ModuleBuilder.DecoratorTemplate";
 
@@ -60,11 +59,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
             }
 
             return interfaceList.Any() ? (", " + string.Join(", ", interfaceList)) : string.Empty;
-        }
-
-        public IEnumerable<string> DeclareUsings()
-        {
-            return new []{ "Intent.SoftwareFactory.Templates" };
         }
     }
 }

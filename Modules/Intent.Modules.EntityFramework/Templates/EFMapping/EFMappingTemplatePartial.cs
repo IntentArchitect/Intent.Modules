@@ -6,7 +6,6 @@ using Intent.Modules.Common.Templates;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.VisualStudio;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 using AssociationType = Intent.Modelers.Domain.Api.AssociationType;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;

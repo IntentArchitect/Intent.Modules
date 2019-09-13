@@ -1,6 +1,5 @@
 ﻿using Intent.Modules.Common.Templates;
 using Intent.Engine;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.AspNet.Owin.Jwt.Templates.SigningCertificate

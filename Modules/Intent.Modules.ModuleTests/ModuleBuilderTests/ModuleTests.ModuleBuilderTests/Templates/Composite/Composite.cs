@@ -13,7 +13,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Templates;
     using Intent.Metadata.Models;
     using System;
     
@@ -74,7 +74,7 @@ namespace ");
             this.Write(" DependantA { get; }\r\n        public ");
             
             #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetDependantBTemplate(Model).FileMetaData.FileName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetDependantBTemplate(Model).FileMetadata.FileName));
             
             #line default
             #line hidden

@@ -8,8 +8,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         string Id { get; }
         ModuleBuilderElementType Type { get; }
         string Name { get; }
-        IEnumerable<IGenericType> GenericTypes { get; }
-        IElement ParentElement { get; }
         IElementApplication Application { get; }
         string Comment { get; }
         bool IsTemplate();

@@ -6,7 +6,6 @@ using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.SoftwareFactory.Templates;
 using Intent.Templates;
 using IClass = Intent.Modelers.Domain.Api.IClass;
 

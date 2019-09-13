@@ -3,7 +3,6 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial;
 using Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial;
-using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -45,12 +44,12 @@ namespace Intent.Modules.ModuleBuilder.Helpers
                     if (s.Type == ModuleBuilderElementType.CSharpTemplate)
                     {
                         var templateInstance = template.Project.FindTemplateInstance<RoslynProjectItemTemplatePartialTemplate>(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return new TemplateDependencyInfo(s.Name, $"{templateInstance.NormalizeNamespace(templateInstance.FullTypeName())}.TemplateId", templateInstance.Model.GetTargetModel(), "IHasClassDetails");
+                        return new TemplateDependencyInfo(s.Name, $"{templateInstance.NormalizeNamespace(templateInstance.FullTypeName())}.TemplateId", templateInstance.Model.GetModelTypeName(), "IHasClassDetails");
                     }
                     else if (s.Type == ModuleBuilderElementType.FileTemplate)
                     {
                         var templateInstance = template.Project.FindTemplateInstance<ProjectItemTemplatePartialTemplate>(ProjectItemTemplatePartialTemplate.TemplateId, s);
-                        return new TemplateDependencyInfo(s.Name, $"{templateInstance.NormalizeNamespace(templateInstance.FullTypeName())}.TemplateId", templateInstance.Model.GetTargetModel(), $"IntentProjectItemTemplateBase<{templateInstance.Model.GetTargetModel()}>");
+                        return new TemplateDependencyInfo(s.Name, $"{templateInstance.NormalizeNamespace(templateInstance.FullTypeName())}.TemplateId", templateInstance.Model.GetModelTypeName(), $"IntentProjectItemTemplateBase<{templateInstance.Model.GetModelTypeName()}>");
                     }
                     return null;
                 })

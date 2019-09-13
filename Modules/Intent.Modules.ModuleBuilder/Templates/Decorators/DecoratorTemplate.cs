@@ -32,8 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
         /// </summary>
         public override string TransformText()
         {
-            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing Intent.SoftwareFactory.En" +
-                    "gine;\r\n");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing Intent.Engine;\r\n");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));

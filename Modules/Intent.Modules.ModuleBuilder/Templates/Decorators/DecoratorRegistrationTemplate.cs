@@ -32,8 +32,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
         /// </summary>
         public override string TransformText()
         {
-            this.Write("using System;\r\nusing Intent.Modules.Common.Registrations;\r\nusing Intent.SoftwareF" +
-                    "actory.Engine;\r\n");
+            this.Write("using System;\r\nusing Intent.Modules.Common.Registrations;\r\nusing Intent.Engine;\r\n" +
+                    "");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));

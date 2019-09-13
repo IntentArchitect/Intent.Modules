@@ -1,6 +1,5 @@
 ﻿using Intent.Modules.AspNet.WebApi.Templates.Controller;
 using Intent.Modules.UserContext.Templates.UserContextInterface;
-using Intent.SoftwareFactory.Templates;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
