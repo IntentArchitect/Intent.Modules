@@ -6,6 +6,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
+using Intent.Modelers.Domain.Api;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -23,7 +24,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantB
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override DefaultFileMetadata DefineDefaultFileMetadata()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
@@ -32,23 +33,6 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantB
                 fileExtension: "txt", // Change to desired file extension.
                 defaultLocationInProject: "DependantB"
             );
-        }
-
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        IEnumerable<ITemplateDependancy> IHasTemplateDependencies.GetTemplateDependencies()
-        {
-            var templateDependencies = new List<ITemplateDependancy>();
-            templateDependencies.AddRange(GetCustomTemplateDependencies());
-            return templateDependencies;
-        }
-
-
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        private IEnumerable<ITemplateDependancy> GetCustomTemplateDependencies()
-        {
-            return new ITemplateDependancy[]
-            {
-            };
         }
     }
 }

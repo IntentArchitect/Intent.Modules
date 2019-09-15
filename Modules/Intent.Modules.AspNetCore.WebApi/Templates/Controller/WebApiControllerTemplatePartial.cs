@@ -16,7 +16,7 @@ using Intent.Utils;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {
-    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings, IPostTemplateCreation
+    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.AspNetCore.WebApi.Controller";
         private IList<WebApiControllerDecoratorBase> _decorators = new List<WebApiControllerDecoratorBase>();
@@ -26,7 +26,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
@@ -81,7 +81,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
         }
 

@@ -5,12 +5,13 @@ using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.Templates;
 using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 {
-    partial class DomainEntityBehavioursTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IPostTemplateCreation
+    partial class DomainEntityBehavioursTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.DDD.Behaviours";
 
@@ -19,7 +20,7 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable)));
         }

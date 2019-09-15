@@ -4,7 +4,7 @@ using Intent.Modelers.Services.Api;
 
 namespace Intent.Modules.Angular.Api
 {
-    public class ServiceProxyModel : IServiceProxyModel
+    internal class ServiceProxyModel : IServiceProxyModel
     {
         private readonly IElement _class;
 

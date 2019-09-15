@@ -15,7 +15,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 {
-    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation, IBeforeTemplateExecutionHook
+    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.Implementation";
         private ITemplateDependency _entityStateTemplateDependency;
@@ -29,7 +29,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             _entityStateTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
             _entityInterfaceTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Interface Template Id"], (to) => to.Id == Model.Id);

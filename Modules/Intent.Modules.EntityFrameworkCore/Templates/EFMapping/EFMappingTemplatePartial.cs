@@ -16,7 +16,7 @@ using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 {
-    partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, IPostTemplateCreation
+    partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.EntityFrameworkCore.EFMapping";
         private IList<IEFMappingTemplateDecorator> _decorators = new List<IEFMappingTemplateDecorator>();
@@ -28,7 +28,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             var x = Model.AssociatedClasses.Where(ae => ae.Association.AssociationType == AssociationType.Composition && ae.Association.TargetEnd == ae).ToList();
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             _domainTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
         }

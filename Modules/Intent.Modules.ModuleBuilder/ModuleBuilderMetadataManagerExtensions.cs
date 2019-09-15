@@ -9,7 +9,7 @@ namespace Intent.Modules.ModuleBuilder
     {
         public static IEnumerable<ITemplateDefinition> GetTemplateDefinitions(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ModuleBuilderMetadataProvider(metadataManager).GetTemplateDefinitions(application);
+            return new ModuleBuilderMetadataProvider(metadataManager).GetTemplateDefinitions(application.Id);
         }
 
         public static IEnumerable<ITemplateDefinition> GetCSharpTemplates(this IMetadataManager metadataManager, IApplication application)

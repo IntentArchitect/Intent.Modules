@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTests.ModuleBuilderTests", "ModuleTests.ModuleBuilderTests\ModuleTests.ModuleBuilderTests.csproj", "{7CE24636-36B9-4F37-9535-B723F3D29A0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTests.ModuleBuilderTests", "ModuleTests.ModuleBuilderTests\ModuleTests.ModuleBuilderTests.csproj", "{1030541C-8A2C-4E37-A009-4D9FC3222386}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,10 +10,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7CE24636-36B9-4F37-9535-B723F3D29A0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CE24636-36B9-4F37-9535-B723F3D29A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CE24636-36B9-4F37-9535-B723F3D29A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CE24636-36B9-4F37-9535-B723F3D29A0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1030541C-8A2C-4E37-A009-4D9FC3222386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1030541C-8A2C-4E37-A009-4D9FC3222386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1030541C-8A2C-4E37-A009-4D9FC3222386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1030541C-8A2C-4E37-A009-4D9FC3222386}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

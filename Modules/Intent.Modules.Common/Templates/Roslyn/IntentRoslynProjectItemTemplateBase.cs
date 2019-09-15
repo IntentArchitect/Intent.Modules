@@ -13,6 +13,7 @@ namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentRoslynProjectItemTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IHasNugetDependencies, IHasClassDetails, IRoslynMerge
     {
+        private readonly ICollection<ITemplateDependency> _detectedDependencies = new List<ITemplateDependency>();
 
         public IntentRoslynProjectItemTemplateBase(string templateId, IProject project, TModel model)
             : base(templateId, project, model)
@@ -78,6 +79,23 @@ namespace Intent.Modules.Common.Templates
                 .ToArray();
 
             return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths);
+        }
+
+        public virtual string GetTemplateClassName(string templateId)
+        {
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(templateId));
+            if (serviceContractTemplate != null)
+            {
+                _detectedDependencies.Add(TemplateDependency.OnTemplate(templateId));
+                return NormalizeNamespace(serviceContractTemplate.FullTypeName());
+            }
+            throw new Exception($"Could not find template with Id: {templateId}");
+        }
+
+        public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        {
+            return base.GetTemplateDependencies()
+                .Concat(_detectedDependencies);
         }
 
         private IEnumerable<string> _templateUsings;
@@ -246,12 +264,18 @@ namespace Intent.Modules.Common.Templates
 
         public virtual string DependencyUsings => this.ResolveAllUsings(Project, namespacesToIgnore: Namespace);
 
+        private readonly ICollection<INugetPackageInfo> _nugetDependencies = new List<INugetPackageInfo>();
         public virtual IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return new[]
+            return _nugetDependencies.Concat(new[]
             {
                 new NugetPackageInfo(name : "Intent.RoslynWeaver.Attributes", version : "1.0.0")
-            };
+            });
+        }
+
+        public void AddNugetDependency(INugetPackageInfo nugetPackageInfo)
+        {
+            _nugetDependencies.Add(nugetPackageInfo);
         }
     }
 

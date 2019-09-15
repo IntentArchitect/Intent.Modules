@@ -22,9 +22,9 @@ namespace Intent.Modules.ModuleBuilder
             return result;
         }
 
-        public IEnumerable<ITemplateDefinition> GetTemplateDefinitions(IApplication application)
+        public IEnumerable<ITemplateDefinition> GetTemplateDefinitions(string applicationId)
         {
-            return GetTemplateDefinitions().Where(x => x.Application.Name == application.ApplicationName);
+            return GetTemplateDefinitions().Where(x => x.Application.Id == applicationId);
         }
 
         public IEnumerable<ITemplateDefinition> GetCSharpTemplates(IApplication application)

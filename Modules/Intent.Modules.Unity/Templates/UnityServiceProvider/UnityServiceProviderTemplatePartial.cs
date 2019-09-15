@@ -3,11 +3,12 @@ using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Engine;
+using Intent.Modules.Common;
 using Intent.Templates;
 
 namespace Intent.Modules.Unity.Templates.UnityServiceProvider
 {
-    partial class UnityServiceProviderTemplate : IntentRoslynProjectItemTemplateBase<object>, IBeforeTemplateExecutionHook
+    partial class UnityServiceProviderTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.Unity.ServiceProvider";
 

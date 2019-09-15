@@ -13,8 +13,8 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
-    using Intent.Templates;
     using Intent.Metadata.Models;
+    using Intent.Modelers.Domain.Api;
     using System;
     
     /// <summary>

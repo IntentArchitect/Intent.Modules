@@ -13,7 +13,7 @@ using Intent.Utils;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
-    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, IPostTemplateCreation
+    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.HttpServiceProxy.Proxy";
         public const string SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY = "ServiceContractTemplateId";
@@ -29,7 +29,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             _serviceContractTemplateId = GetMetadata().CustomMetadata[SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY];
             _httpClientServiceInterfaceTemplateId = GetMetadata().CustomMetadata[HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
@@ -106,7 +106,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(_serviceContractTemplateId, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IServiceModel>(_serviceContractTemplateId, x => x.Id == Model.Id));
             if (serviceContractTemplate == null)
             {
                 Logging.Log.Warning($"Could not find template with ID [{_serviceContractTemplateId}] " +

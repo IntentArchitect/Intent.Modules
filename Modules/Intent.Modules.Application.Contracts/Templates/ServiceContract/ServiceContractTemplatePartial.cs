@@ -14,7 +14,7 @@ using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
-    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IPostTemplateCreation, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
+    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, ITemplatePostCreationHook, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
     {
         private IList<IServiceContractAttributeDecorator> _decorators = new List<IServiceContractAttributeDecorator>();
 
@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }

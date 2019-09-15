@@ -60,7 +60,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Project.ApplicationName()}.{Model.Name}";
+            return $"{Project.ApplicationName()}.{FolderNamespace}.{Model.Name}";
+        }
+
+        public override void BeforeTemplateExecution()
+        {
+            Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
+            {
+                { "TemplateId", GetTemplateId() }
+            });
         }
 
         private string GetModelType()

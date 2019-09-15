@@ -107,17 +107,15 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write("> GetModels(IApplication application)\r\n        {\r\n            // Filter classes b" +
-                    "y SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == \"Ser" +
-                    "vice\") for services only)\r\n            return _metadataManager.GetClassModels(ap" +
-                    "plication, \"");
+            this.Write("> GetModels(IApplication application)\r\n        {\r\n            return _metadataMan" +
+                    "ager.");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelerName()));
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetModelsMethod()));
             
             #line default
             #line hidden
-            this.Write("\"); \r\n        }\r\n    }\r\n}");
+            this.Write("(application); \r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

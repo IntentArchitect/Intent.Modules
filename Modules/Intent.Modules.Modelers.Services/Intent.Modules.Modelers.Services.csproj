@@ -54,6 +54,7 @@
     <Compile Include="Api\IHasFolder.cs" />
     <Compile Include="Api\IServiceModel.cs" />
     <Compile Include="Api\ServiceModel.cs" />
+    <Compile Include="AssemblyInternalsVisibleTo.cs" />
     <Compile Include="ServicesMetadataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

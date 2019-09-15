@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
@@ -60,34 +61,49 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
 
         public string GetTemplateId()
         {
-            return $"{Project.ApplicationName()}.{Model.Name}";
+            return $"{Project.ApplicationName()}.{FolderNamespace}.{Model.Name}";
+        }
+
+        public override void BeforeTemplateExecution()
+        {
+            Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
+            {
+                { "TemplateId", GetTemplateId() }
+            });
         }
 
         private string GetModelType()
         {
-            if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
+            try
             {
-                return "object";
-            }
+                if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
+                {
+                    return "object";
+                }
 
-            var type = Model.GetModelTypeName();
-            if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
+                var type = Model.GetModelTypeName();
+                if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
+                {
+                    type = $"IList<{type}>";
+                }
+
+                return type;
+            }
+            catch (Exception e)
             {
-                type = $"IList<{type}>";
+                throw new Exception($"Could not determine ModelType for C# Template [{Model.Name}]", e);
             }
-
-            return type;
         }
 
-        private bool HasDeclaresUsings()
-        {
-            return Model.GetStereotypeProperty<bool>("Template Settings", "Declare Usings");
-        }
+        //private bool HasDeclaresUsings()
+        //{
+        //    return Model.GetStereotypeProperty<bool>("Template Settings", "Declare Usings");
+        //}
 
-        private bool HasTemplateDependencies()
-        {
-            return Model.HasStereotype("Template Dependency");
-        }
+        //private bool HasTemplateDependencies()
+        //{
+        //    return Model.HasStereotype("Template Dependency");
+        //}
 
         private bool HasDecorators()
         {
@@ -104,15 +120,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
         {
             var interfaceList = new List<string>();
 
-            if (HasDeclaresUsings())
-            {
-                interfaceList.Add("IDeclareUsings");
-            }
+            //if (HasDeclaresUsings())
+            //{
+            //    interfaceList.Add("IDeclareUsings");
+            //}
 
-            if (HasTemplateDependencies())
-            {
-                interfaceList.Add("IHasTemplateDependencies");
-            }
+            //if (HasTemplateDependencies())
+            //{
+            //    interfaceList.Add("IHasTemplateDependencies");
+            //}
 
             if (!string.IsNullOrEmpty(Model.GetExposedDecoratorContractType()))
             {

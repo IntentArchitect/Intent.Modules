@@ -6,6 +6,8 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
+using Intent.Modelers.Domain;
+using Intent.Modelers.Domain.Api;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -33,8 +35,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantA
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<IClass> GetModels(IApplication application)
         {
-            // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == "Service") for services only)
-            return _metadataManager.GetClassModels(application, "Domain");
+            return _metadataManager.GetDomainClasses(application);
         }
     }
 }

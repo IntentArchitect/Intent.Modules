@@ -5,13 +5,10 @@
 <#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
 <#@ import namespace="System.Linq" #>
-using Intent.Metadata.Models;
-using Intent.RoslynWeaver.Attributes;
-using Intent.Modules.Common;
+using Intent.Engine;
 using Intent.Modules.Common.Templates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Intent.RoslynWeaver.Attributes;
+using Intent.Templates;
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -20,10 +17,11 @@ namespace <#= Namespace #>
 	[IntentManaged(Mode.Merge)]
     partial class <#= ClassName #> : IntentRoslynProjectItemTemplateBase<<#= GetModelType() #>><#= GetConfiguredInterfaces() #>
     {
+        [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
 <#  if (HasDecorators()) { #>
-        private IEnumerable<<#= Model.GetExposedDecoratorContractType() #>> _decorators;
+        private ICollection<<#= Model.GetExposedDecoratorContractType() #>> _decorators = new List<<#= Model.GetExposedDecoratorContractType() #>>;
 
 <#  } #>
         [IntentInitialGen]
@@ -49,27 +47,21 @@ namespace <#= Namespace #>
             );
         }
 
-<#  if (HasDeclaresUsings()) { #>
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public IEnumerable<string> DeclareUsings()
-        {
-            return new string[]
-            {
-                // Specify list of Namespaces here, example:
-                "System.Linq"
-            };
-        }
-<#  } #>
-
 <#  if (HasDecorators()) { #>
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        public IEnumerable<<#= Model.GetExposedDecoratorContractType() #>> GetDecorators()
+        [IntentManaged(Mode.Fully)]
+        public void AddDecorator(<#= Model.GetExposedDecoratorContractType() #> decorator)
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            _decorators.Add(decorator);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<ICompositeContract> GetDecorators()
+        {
+            return _decorators;
         }
 <#  } #>
 
-<#  if (HasTemplateDependencies()) { #>
+<# /* if (HasTemplateDependencies()) { #>
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         IEnumerable<ITemplateDependency> IHasTemplateDependencies.GetTemplateDependencies()
         {
@@ -100,6 +92,6 @@ namespace <#= Namespace #>
             };
         }
 <#      } #>
-<#  } #>
+<#  } */#>
     }
 }

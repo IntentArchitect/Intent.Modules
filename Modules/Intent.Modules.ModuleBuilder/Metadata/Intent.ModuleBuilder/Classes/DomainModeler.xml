@@ -8,15 +8,27 @@
   <literals>
     <literal id="4570f6fe-bbf0-410f-b8c9-437c3f9bb639" type="Model Type">
       <name>IClass</name>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="633c5122-2c61-43c2-b98c-8a6cca6edd87">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Domain.Api" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetDomainClasses" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </literal>
     <literal id="82c5c3ca-f636-49d1-afa5-efc920f96dca" type="Model Type">
       <name>IEnum</name>
-      <stereotypes />
-    </literal>
-    <literal id="22c649a6-a51a-4351-a5af-52100920b07a" type="Model Type">
-      <name>IElement</name>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="633c5122-2c61-43c2-b98c-8a6cca6edd87">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Domain.Api" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetEnums" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </literal>
   </literals>
   <attributes />

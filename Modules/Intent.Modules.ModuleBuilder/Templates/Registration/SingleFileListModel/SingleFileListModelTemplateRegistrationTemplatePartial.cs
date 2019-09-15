@@ -52,5 +52,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
         {
             return Model.Name.Replace("Registrations", "Template");
         }
+
+        public string GetModelsMethod()
+        {
+            return Model.GetModelType().LoadMethod;
+        }
     }
 }

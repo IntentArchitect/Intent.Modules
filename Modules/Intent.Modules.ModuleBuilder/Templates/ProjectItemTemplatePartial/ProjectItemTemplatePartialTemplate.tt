@@ -22,10 +22,11 @@ namespace <#= Namespace #>
 	[IntentManaged(Mode.Merge)]
     partial class <#= ClassName #> : IntentProjectItemTemplateBase<<#= GetModelType() #>><#= GetConfiguredInterfaces() #>
     {
+        [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
 <#  if (HasDecorators()) { #>
-        private IEnumerable<<#= Model.GetExposedDecoratorContractType() #>> _decorators;
+        private ICollection<<#= Model.GetExposedDecoratorContractType() #>> _decorators = new List<<#= Model.GetExposedDecoratorContractType() #>>();
 
 <#  } #>
         [IntentInitialGen]
@@ -45,27 +46,21 @@ namespace <#= Namespace #>
             );
         }
 
-<#  if (HasDeclaresUsings()) { #>
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public IEnumerable<string> DeclareUsings()
-        {
-            return new string[]
-            {
-                // Specify list of Namespaces here, example:
-                "System.Linq"
-            };
-        }
-<#  } #>
-
 <#  if (HasDecorators()) { #>
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        public IEnumerable<<#= Model.GetExposedDecoratorContractType() #>> GetDecorators()
+        [IntentManaged(Mode.Fully)]
+        public void AddDecorator(<#= Model.GetExposedDecoratorContractType() #> decorator)
         {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            _decorators.Add(decorator);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<ICompositeContract> GetDecorators()
+        {
+            return _decorators;
         }
 <#  } #>
 
-<#  if (HasTemplateDependencies()) { #>
+<# /* if (HasTemplateDependencies()) { #>
         [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
         IEnumerable<ITemplateDependency> IHasTemplateDependencies.GetTemplateDependencies()
         {
@@ -98,6 +93,6 @@ namespace <#= Namespace #>
             };
         }
 <#      } #>
-<#  } #>
+<#  } */#>
     }
 }

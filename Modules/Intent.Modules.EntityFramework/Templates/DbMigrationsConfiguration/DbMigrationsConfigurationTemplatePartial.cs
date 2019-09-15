@@ -11,7 +11,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 {
-    partial class DbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, IPostTemplateCreation
+    partial class DbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.EntityFramework.DbMigrationsConfiguration";
         private ITemplateDependency _dbContextDependancy;
@@ -47,7 +47,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
             return _seedDataRequiredEvents.ToArray();
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             var fileMetadata = GetMetadata();
             _dbContextDependancy = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);

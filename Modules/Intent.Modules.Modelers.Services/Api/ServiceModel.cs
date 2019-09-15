@@ -3,7 +3,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modelers.Services.Api
 {
-    public class ServiceModel : IServiceModel
+    internal class ServiceModel : IServiceModel
     {
         private readonly IElement _class;
         public ServiceModel(IElement @class)

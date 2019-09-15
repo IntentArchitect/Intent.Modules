@@ -14,7 +14,7 @@ using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
-    partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceModel>, ITemplate, IBeforeTemplateExecutionHook
+    partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceModel>, ITemplate, ITemplateBeforeExecutionHook
     {
         public const string RemoteIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Remote";
         public const string LocalIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Local";

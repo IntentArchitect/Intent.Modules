@@ -12,7 +12,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
-    partial class MappingTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation, IHasDecorators<IMappingTemplateDecorator>
+    partial class MappingTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplatePostCreationHook, IHasDecorators<IMappingTemplateDecorator>
     {
         public const string Identifier = "Intent.Application.Contracts.Mapping";
 
@@ -35,7 +35,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             _domainTemplateDependancyConfigValue = GetMetadata().CustomMetadata[DomainTemplateDependancyConfigId];
             _stereotypeNameConfigValue = GetMetadata().CustomMetadata[StereotypeNameConfigId];

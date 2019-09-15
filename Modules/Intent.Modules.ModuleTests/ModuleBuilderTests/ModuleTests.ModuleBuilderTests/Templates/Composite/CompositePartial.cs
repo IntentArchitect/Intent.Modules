@@ -7,6 +7,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
+using Intent.Modelers.Domain.Api;
 using Intent.Templates;
 using ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantA;
 using ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantB;
@@ -17,7 +18,7 @@ using ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantB;
 namespace ModuleTests.ModuleBuilderTests.Templates.Composite
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    partial class Composite : IntentRoslynProjectItemTemplateBase<IClass>, IDeclareUsings, IHasTemplateDependencies, IHasDecorators<ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract>
+    partial class Composite : IntentRoslynProjectItemTemplateBase<IClass>, IHasDecorators<ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract>
     {
         public const string TemplateId = "ModuleBuilderTests.Composite";
 
@@ -43,43 +44,18 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
             );
         }
 
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        IEnumerable<ITemplateDependancy> IHasTemplateDependencies.GetTemplateDependencies()
+        private ICollection<ICompositeContract> _decorators = new List<ICompositeContract>();
+
+        [IntentManaged(Mode.Fully)]
+        public void AddDecorator(ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract decorator)
         {
-            var templateDependencies = new List<ITemplateDependancy>();
-            templateDependencies.Add(TemplateDependancy.OnTemplate(DependantA.TemplateId));
-            templateDependencies.Add(TemplateDependancy.OnTemplate(DependantB.TemplateId));
-            return templateDependencies;
+            _decorators.Add(decorator);
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public IEnumerable<string> DeclareUsings()
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<ICompositeContract> GetDecorators()
         {
-            return new string[]
-            {
-                // Specify list of Namespaces here, example:
-                "System.Linq"
-            };
-        }
-
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private IHasClassDetails GetDependantATemplate(IClass model)
-        {
-            return Project.FindTemplateInstance<IHasClassDetails>(DependantA.TemplateId, model);
-        }
-
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private IntentProjectItemTemplateBase<IClass> GetDependantBTemplate(IClass model)
-        {
-            return Project.FindTemplateInstance<IntentProjectItemTemplateBase<IClass>>(DependantB.TemplateId, model);
-        }
-
-        private IEnumerable<ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract> _decorators;
-
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        public IEnumerable<ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract> GetDecorators()
-        {
-            return _decorators ?? (_decorators = Project.ResolveDecorators(this));
+            return _decorators;
         }
 
         private string GetDecoratorOutput()

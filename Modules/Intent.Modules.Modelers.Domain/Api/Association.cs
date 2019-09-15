@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Intent.Modelers.Domain.Api
 {
-    public class Association : IAssociation, IEquatable<IAssociation>
+    internal class Association : IAssociation, IEquatable<IAssociation>
     {
         private readonly Metadata.Models.IAssociation _association;
         private readonly IDictionary<string, Class> _classCache;

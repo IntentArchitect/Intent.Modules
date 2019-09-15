@@ -16,7 +16,7 @@ using Intent.Modules.Angular.Api;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularComponentCssTemplate : IntentProjectItemTemplateBase<IComponentModel>, IPostTemplateCreation
+    partial class AngularComponentCssTemplate : IntentProjectItemTemplateBase<IComponentModel>, ITemplatePostCreationHook
     {
         public const string TemplateId = "Angular.AngularComponentCssTemplate";
 
@@ -38,7 +38,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
 
         public string ModuleName { get; private set; }
 
-        public void Created()
+        public override void OnCreated()
         {
             var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
             ModuleName = moduleTemplate.ModuleName;

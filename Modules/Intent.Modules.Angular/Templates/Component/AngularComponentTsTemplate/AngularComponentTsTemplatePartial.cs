@@ -19,7 +19,7 @@ using Intent.Modules.Common.Plugins;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularComponentTsTemplate : IntentTypescriptProjectItemTemplateBase<IComponentModel>, IBeforeTemplateExecutionHook
+    partial class AngularComponentTsTemplate : IntentTypescriptProjectItemTemplateBase<IComponentModel>, ITemplateBeforeExecutionHook
     {
         public const string TemplateId = "Angular.AngularComponentTsTemplate";
 

@@ -1,12 +1,13 @@
 using Intent.Modules.AspNet.Owin.Templates.OwinStartup;
 using Intent.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.AspNet.Owin.Cors.Decorators
 {
-    public class CorsOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IBeforeTemplateExecutionHook
+    public class CorsOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.Owin.Cors.OwinStartupDecorator";
 

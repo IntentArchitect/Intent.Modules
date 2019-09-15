@@ -8,11 +8,27 @@
   <literals>
     <literal id="3b244aab-5e7a-4bdc-ab01-c48bdaf93476" type="Model Type">
       <name>IServiceModel</name>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="633c5122-2c61-43c2-b98c-8a6cca6edd87">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Services.Api" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetServices" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </literal>
     <literal id="9275f0d4-a143-47ec-923e-e987151ddc96" type="Model Type">
       <name>IDTOModel</name>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="633c5122-2c61-43c2-b98c-8a6cca6edd87">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Services.Api" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetDTOs" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </literal>
   </literals>
   <attributes />

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using Intent.Engine;
+using Intent.Modules.Common.Plugins;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public abstract class IntentProjectItemTemplateBase<TModel> : IntentTemplateBase, ITemplate, ITemplateWithModel, IProjectItemTemplate, IConfigurableTemplate
+    public abstract class IntentProjectItemTemplateBase<TModel> : IntentTemplateBase, ITemplate, ITemplateWithModel, IProjectItemTemplate, IConfigurableTemplate, IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
         public IntentProjectItemTemplateBase(string templateId, IProject project, TModel model)
         {
@@ -43,6 +44,28 @@ namespace Intent.Modules.Common.Templates
         public IFileMetadata GetMetadata()
         {
             return FileMetadata;
+        }
+
+        public virtual IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        {
+            if (!HasTypeResolver())
+            {
+                return new List<ITemplateDependency>();
+            }
+            return Types.GetTemplateDependencies();
+        }
+
+
+        public virtual void OnConfigured()
+        {
+        }
+
+        public virtual void OnCreated()
+        {
+        }
+
+        public virtual void BeforeTemplateExecution()
+        {
         }
     }
 

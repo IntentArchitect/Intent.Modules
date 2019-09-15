@@ -5,7 +5,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.Angular.Api
 {
-    public class ModuleModel : IModuleModel, IEquatable<IModuleModel>
+    internal class ModuleModel : IModuleModel, IEquatable<IModuleModel>
     {
         private readonly IElement _class;
 

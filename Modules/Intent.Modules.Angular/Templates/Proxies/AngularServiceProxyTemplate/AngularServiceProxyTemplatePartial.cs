@@ -20,7 +20,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceProxyModel>, IBeforeTemplateExecutionHook
+    partial class AngularServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceProxyModel>, ITemplateBeforeExecutionHook
     {
         public const string TemplateId = "Angular.AngularServiceProxyTemplate";
 

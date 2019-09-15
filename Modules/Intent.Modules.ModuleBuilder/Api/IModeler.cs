@@ -17,5 +17,6 @@ namespace Intent.Modules.ModuleBuilder.Api
     {
         string Id { get; }
         string Name { get; }
+        string LoadMethod { get; }
     }
 }

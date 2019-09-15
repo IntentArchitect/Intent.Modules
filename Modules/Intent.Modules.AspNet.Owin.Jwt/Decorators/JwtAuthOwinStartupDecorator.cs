@@ -3,12 +3,13 @@ using Intent.Modules.Constants;
 using Intent.Eventing;
 using Intent.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.AspNet.Owin.Jwt.Decorators
 {
-    public class JwtAuthOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IHasAssemblyDependencies, IBeforeTemplateExecutionHook
+    public class JwtAuthOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IHasAssemblyDependencies, ITemplateBeforeExecutionHook
     {
         private readonly ISolutionEventDispatcher _solutionEvents;
         public const string Identifier = "Intent.Owin.Jwt.JwtAuthOwinStartupDecorator";

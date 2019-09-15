@@ -4,12 +4,13 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Engine;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.WebApiServiceCallContext
 {
-    partial class WebApiServiceCallContextTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IBeforeTemplateExecutionHook
+    partial class WebApiServiceCallContextTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.AspNetCore.WebApi.ServiceCallContext";
 

@@ -11,7 +11,7 @@ using Intent.Modules.UserContext.Templates.UserContextProviderInterface;
 
 namespace Intent.Modules.UserContext.Templates.UserContextProvider
 {
-    partial class UserContextProviderTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook
+    partial class UserContextProviderTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.UserContext.UserContextProvider";
 

@@ -4,7 +4,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modelers.Domain.Api
 {
-    public class AssociationEnd : IAssociationEnd, IEquatable<IAssociationEnd>
+    internal class AssociationEnd : IAssociationEnd, IEquatable<IAssociationEnd>
     {
         private readonly Metadata.Models.IAssociationEnd _associationEnd;
 

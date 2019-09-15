@@ -7,7 +7,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementation
 {
-    partial class HttpClientServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasAssemblyDependencies, IPostTemplateCreation
+    partial class HttpClientServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasAssemblyDependencies, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementation";
         public const string HTTP_CLIENT_INTERCEPTOR_INTERFACE_TEMPLATE_ID_CONFIG_KEY = "HttpClientInterceptorInterfaceTemplateId";
@@ -21,7 +21,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementat
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             _httpClientInterceptorInterfaceTemplateId = GetMetadata().CustomMetadata[HTTP_CLIENT_INTERCEPTOR_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
             _httpClientServiceInterfaceTemplateId = GetMetadata().CustomMetadata[HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY];

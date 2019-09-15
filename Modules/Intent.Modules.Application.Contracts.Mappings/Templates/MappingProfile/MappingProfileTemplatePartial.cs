@@ -15,7 +15,7 @@ using Intent.Utils;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
-    partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, IBeforeTemplateExecutionHook, IPostTemplateCreation
+    partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, ITemplateBeforeExecutionHook, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.Mapping.Profile";
 
@@ -35,7 +35,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             _domainTemplateDependancyConfigValue = GetMetadata().CustomMetadata[DomainTemplateDependancyConfigId];
             _stereotypeNameConfigValue = GetMetadata().CustomMetadata[StereotypeNameConfigId];

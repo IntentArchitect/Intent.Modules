@@ -242,6 +242,11 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
+        public bool HasTypeResolver()
+        {
+            return _types != null;
+        }
+
         public virtual ITypeResolver Types
         {
             get

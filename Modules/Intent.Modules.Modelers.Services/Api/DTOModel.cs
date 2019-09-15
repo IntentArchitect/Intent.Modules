@@ -4,7 +4,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modelers.Services.Api
 {
-    public class DTOModel : IDTOModel
+    internal class DTOModel : IDTOModel
     {
         private readonly IElement _class;
         public DTOModel(IElement @class)

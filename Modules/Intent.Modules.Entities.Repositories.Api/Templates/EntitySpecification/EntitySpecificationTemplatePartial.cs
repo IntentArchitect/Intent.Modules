@@ -8,7 +8,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
 {
-    partial class EntitySpecificationTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IPostTemplateCreation
+    partial class EntitySpecificationTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.Repositories.Api.EntitySpecification";
         private ITemplateDependency _entityStateTemplateDependancy;
@@ -18,7 +18,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             _entityStateTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
         }

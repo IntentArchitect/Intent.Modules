@@ -6,7 +6,7 @@ using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class Modeler : IModeler, IEquatable<Modeler>
+    internal class Modeler : IModeler, IEquatable<Modeler>
     {
         private readonly IElement _element;
         public const string SpecializationType = "Modeler";

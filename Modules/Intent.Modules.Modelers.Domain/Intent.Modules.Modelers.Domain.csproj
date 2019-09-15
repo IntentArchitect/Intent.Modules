@@ -2,15 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.0-pre2</Version>
+    <Version>2.0.0-pre1</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Domain Modeller</Product>
     <Copyright>Copyright 2019</Copyright>
     <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
     <PackageIconUrl>https://intentarchitect.com/assets/images/logo.png</PackageIconUrl>
-    <PackageTags>Intent Architect Software Factory SDK Modules Domain Modeller</PackageTags>
+    <PackageTags>Intent Architect Software Factory SDK Modules Domain Modeler</PackageTags>
     <RootNamespace>Intent.Modelers.Domain</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

@@ -15,7 +15,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, IBeforeTemplateExecutionHook, IHasDecorators<DbContextDecoratorBase>, IHasTemplateDependencies
+    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplateBeforeExecutionHook, IHasDecorators<DbContextDecoratorBase>, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.EntityFrameworkCore.DbContext";
 

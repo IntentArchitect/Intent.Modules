@@ -9,7 +9,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
 {
-    partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IPostTemplateCreation
+    partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.EntityCompositionVisitor";
         private ITemplateDependency[] _entityStateTemplateDependancies;
@@ -23,7 +23,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
         public string BoundedContextName => Project.ApplicationName();
 
 
-        public void Created()
+        public override void OnCreated()
         {
             _entityStateTemplateDependancies = Model.Select(x => TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == x.Id)).ToArray();
         }

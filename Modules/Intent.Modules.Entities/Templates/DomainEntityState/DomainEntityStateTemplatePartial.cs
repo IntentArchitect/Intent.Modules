@@ -14,7 +14,7 @@ using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
-    partial class DomainEntityStateTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityStateDecoratorBase>, IPostTemplateCreation
+    partial class DomainEntityStateTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityStateDecoratorBase>, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.DomainEntityState";
 
@@ -28,7 +28,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
         public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
                                              ?? $"I{Model.Name}";
 
-        public void Created()
+        public override void OnCreated()
         {
             Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, Identifier, "ICollection<{0}>"));
         }

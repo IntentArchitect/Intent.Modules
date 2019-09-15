@@ -1,3 +1,4 @@
+using System;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
@@ -45,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 <#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
-<#@ import namespace=""Intent.SoftwareFactory.Templates"" #>
+<#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 
 using System;
@@ -96,20 +97,27 @@ namespace <#= Namespace #>
 
         private string GetModelType()
         {
-            if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
+            try
             {
-                return "object";
-            }
+                if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
+                {
+                    return "object";
+                }
 
-            var type = Model.GetModelTypeName();
-            if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
+                var type = Model.GetModelTypeName();
+                if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
+                {
+                    type = $"IList<{type}>";
+                }
+
+                return type;
+            }
+            catch (Exception e)
             {
-                type = $"IList<{type}>";
+                throw new Exception($"Could not determine ModelType for C# Template [{Model.Name}]", e);
             }
-
-            return type;
         }
 
     }
-    
+
 }

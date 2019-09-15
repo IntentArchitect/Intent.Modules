@@ -78,7 +78,7 @@ namespace Intent.Modules.Common.Types
 
             public IEnumerable<ITemplateDependency> GetTemplateDependencies()
             {
-                throw new NotImplementedException();
+                return new List<ITemplateDependency>();
             }
         }
     }

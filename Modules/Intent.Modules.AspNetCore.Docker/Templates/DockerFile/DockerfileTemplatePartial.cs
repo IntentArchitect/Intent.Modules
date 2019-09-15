@@ -9,7 +9,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.Docker.Templates.DockerFile
 {
-    partial class DockerfileTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IBeforeTemplateExecutionHook
+    partial class DockerfileTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.AspNetCore.Dockerfile";
 

@@ -16,7 +16,7 @@ using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
-    partial class ServiceCallHandlerImplementationTemplate : IntentRoslynProjectItemTemplateBase<IOperation>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook
+    partial class ServiceCallHandlerImplementationTemplate : IntentRoslynProjectItemTemplateBase<IOperation>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.Application.ServiceCallHandlers.Handler";
 

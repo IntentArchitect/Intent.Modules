@@ -5,9 +5,9 @@ using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public abstract class ModuleBuilderElementBase : IModuleBuilderElement, IEquatable<ModuleBuilderElementBase>
+    internal abstract class ModuleBuilderElementBase : IModuleBuilderElement, IEquatable<ModuleBuilderElementBase>
     {
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         protected ModuleBuilderElementBase(IElement element)
         {

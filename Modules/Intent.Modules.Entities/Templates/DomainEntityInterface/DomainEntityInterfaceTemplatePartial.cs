@@ -4,6 +4,7 @@ using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using IClass = Intent.Modelers.Domain.Api.IClass;
@@ -11,7 +12,7 @@ using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
-    partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>, IPostTemplateCreation
+    partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.DomainEntityInterface";
         private const string OPERATIONS_CONTEXT = "Operations";
@@ -23,7 +24,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DomainEntityStateTemplate.Identifier, "ICollection<{0}>"));
             Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DomainEntityInterfaceTemplate.Identifier), OPERATIONS_CONTEXT);

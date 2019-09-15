@@ -8,11 +8,12 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Eventing;
+using Intent.Modules.Common;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasNugetDependencies, IBeforeTemplateExecutionHook, IHasDecorators<DbContextDecoratorBase>
+    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook, IHasDecorators<DbContextDecoratorBase>
     {
         public const string Identifier = "Intent.EntityFramework.DbContext";
 

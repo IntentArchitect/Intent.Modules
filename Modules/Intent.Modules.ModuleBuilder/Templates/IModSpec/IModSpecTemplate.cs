@@ -28,12 +28,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
     public class IModSpecTemplate : IntentProjectItemTemplateBase<IModeSpecModel>, IHasNugetDependencies
     {
+        private ICollection<string> _templatesToRegister = new List<string>();
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
-
 
         public IModSpecTemplate(string templateId, IProject project, IModeSpecModel models)
             : base(templateId, project, models)
         {
+            Project.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
+            {
+                _templatesToRegister.Add(@event.GetValue("TemplateId"));
+            });
         }
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()
@@ -54,20 +58,19 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             var templatesElement = doc.Element("package").Element("templates");
 
-            foreach (var model in Model.Templates)
+            foreach (var templateId in _templatesToRegister)
             {
-                var id = $"{Project.ApplicationName()}.{model.Name}";
-                var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{id}\"]");
+                var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{templateId}\"]");
 
                 if (specificTemplate == null)
                 {
-                    specificTemplate = new XElement("template", new XAttribute("id", id));
+                    specificTemplate = new XElement("template", new XAttribute("id", templateId));
                     templatesElement.Add(specificTemplate);
                 }
 
                 if (specificTemplate.Element("role") == null)
                 {
-                    specificTemplate.Add(new XElement("role") { Value = id });
+                    specificTemplate.Add(new XElement("role") { Value = templateId });
                 }
             }
 

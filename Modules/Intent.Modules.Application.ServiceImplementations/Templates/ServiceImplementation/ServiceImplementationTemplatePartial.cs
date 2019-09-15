@@ -15,7 +15,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {
-    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, IBeforeTemplateExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>, IPostTemplateCreation
+    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>, ITemplatePostCreationHook
     {
         private IList<ServiceImplementationDecoratorBase> _decorators = new List<ServiceImplementationDecoratorBase>();
 
@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
@@ -34,7 +34,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
         {
             return new[]
             {
-                TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
+                TemplateDependency.OnModel<IServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
             }.Union(GetDecorators().SelectMany(x => x.GetConstructorDependencies(Model).Select(d => d.TemplateDependency)));
         }
 
@@ -125,7 +125,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
         }
 

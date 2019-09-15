@@ -7,12 +7,13 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Engine;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
-    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasAssemblyDependencies, IHasDecorators<IDTOAttributeDecorator>, IPostTemplateCreation
+    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasAssemblyDependencies, IHasDecorators<IDTOAttributeDecorator>, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.DTO";
 
@@ -23,7 +24,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }

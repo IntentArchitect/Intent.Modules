@@ -5,6 +5,7 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Unity.Templates.UnityConfig;
@@ -12,7 +13,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
 {
-    partial class CSharpIpcReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IPostTemplateCreation, IHasTemplateDependencies, IHasNugetDependencies
+    partial class CSharpIpcReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, ITemplatePostCreationHook, IHasTemplateDependencies, IHasNugetDependencies
     {
         public const string Identifier = "Intent.Electron.IpcProxy.CSharpIpcReceivingProxy";
 
@@ -21,7 +22,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }

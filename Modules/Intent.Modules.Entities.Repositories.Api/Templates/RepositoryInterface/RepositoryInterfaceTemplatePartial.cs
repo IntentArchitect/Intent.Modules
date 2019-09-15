@@ -9,7 +9,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
 {
-    partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IPostTemplateCreation
+    partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.Repositories.Api.Interface";
         private ITemplateDependency _entityStateTemplateDependancy;
@@ -20,7 +20,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
         {
         }
 
-        public void Created()
+        public override void OnCreated()
         {
             _entityStateTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
             _entityInterfaceTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Interface Template Id"], (to) => to.Id == Model.Id);
