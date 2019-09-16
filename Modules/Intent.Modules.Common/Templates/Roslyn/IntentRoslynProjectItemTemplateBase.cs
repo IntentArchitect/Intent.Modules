@@ -7,11 +7,11 @@ using Intent.Engine;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 
-[assembly:InternalsVisibleTo("Intent.Modules.Common.Tests")]
+[assembly: InternalsVisibleTo("Intent.Modules.Common.Tests")]
 
 namespace Intent.Modules.Common.Templates
 {
-    public abstract class IntentRoslynProjectItemTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IHasNugetDependencies, IHasClassDetails, IRoslynMerge
+    public abstract class IntentRoslynProjectItemTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IHasClassDetails, IRoslynMerge
     {
         private readonly ICollection<ITemplateDependency> _detectedDependencies = new List<ITemplateDependency>();
 
@@ -39,9 +39,9 @@ namespace Intent.Modules.Common.Templates
             {
                 if (FileMetadata.CustomMetadata.ContainsKey("ClassName"))
                 {
-                    return FileMetadata.CustomMetadata["ClassName"].AsClassName();
+                    return FileMetadata.CustomMetadata["ClassName"].Replace(".", "");
                 }
-                return FileMetadata.FileName.AsClassName();
+                return FileMetadata.FileName.Replace(".", "");
             }
         }
 
@@ -81,15 +81,18 @@ namespace Intent.Modules.Common.Templates
             return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths);
         }
 
-        public virtual string GetTemplateClassName(string templateId)
+        public Func<string> GetTemplateClassName(string templateId)
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(templateId));
-            if (serviceContractTemplate != null)
+            _detectedDependencies.Add(TemplateDependency.OnTemplate(templateId));
+            return () =>
             {
-                _detectedDependencies.Add(TemplateDependency.OnTemplate(templateId));
-                return NormalizeNamespace(serviceContractTemplate.FullTypeName());
-            }
-            throw new Exception($"Could not find template with Id: {templateId}");
+                var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(templateId));
+                if (serviceContractTemplate != null)
+                {
+                    return NormalizeNamespace(serviceContractTemplate.FullTypeName());
+                }
+                throw new Exception($"Could not find template with Id: {templateId}");
+            };
         }
 
         public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
@@ -199,10 +202,10 @@ namespace Intent.Modules.Common.Templates
                 var conflicts = namespacePartsSubPaths
                     // C# gives precendence to resolving types from the most to the least specific from the namespace
                     .Skip(i + 1)
-                    
+
                     // For namespaces with a matching sub-part:
                     .Where(x => proposedFirstForeignPart != null && x.LocalNamespacePartSubPaths.ContainsKey(proposedFirstForeignPart))
-                    
+
                     // Select filtered results (for easier debugging):
                     .Select(x => new
                     {
@@ -232,7 +235,7 @@ namespace Intent.Modules.Common.Templates
             var lines = existingContent
                 .Replace("\r\n", "\n")
                 .Split('\n');
-            
+
             var relevantContent = new List<string>();
             foreach (var line in lines)
             {
@@ -276,6 +279,17 @@ namespace Intent.Modules.Common.Templates
         public void AddNugetDependency(INugetPackageInfo nugetPackageInfo)
         {
             _nugetDependencies.Add(nugetPackageInfo);
+        }
+
+        private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
+        public IEnumerable<IAssemblyReference> GetAssemblyDependencies()
+        {
+            return _assemblyDependencies;
+        }
+
+        public void AddAssemblyReference(IAssemblyReference assemblyReference)
+        {
+            _assemblyDependencies.Add(assemblyReference);
         }
     }
 
