@@ -26,26 +26,53 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
             }
         }
 
+        public override int Order => 0;
 
         public void OnStep(IApplication application, string step)
         {
             if (step == ExecutionLifeCycleSteps.BeforeTemplateExecution)
             {
-                ResolveDependencies(application);
+                ResolveNuGetDependencies(application);
+            }
+            if (step == ExecutionLifeCycleSteps.AfterTemplateExecution)
+            {
+                ResolveProjectDependencies(application);
             }
         }
 
-        public void ResolveDependencies(IApplication application)
+        public void ResolveNuGetDependencies(IApplication application)
         {
             // Resolve all dependencies and events
-            Logging.Log.Info($"Resolving Dependencies");
-
+            Logging.Log.Info($"Resolving NuGet Dependencies");
 
             foreach (var project in application.Projects)
             {
                 project.InitializeVSMetadata();
-                // 1. Identify project dependencies.
-                var p = project.TemplateInstances.Select(x => new { x, deps = x.GetAllTemplateDependencies().ToList() }).Where(x => x.deps.Any()).ToList();
+
+                project.AddNugetPackages(GetTemplateNugetDependencies(project));
+
+                var assemblyDependencies = project.TemplateInstances
+                        .SelectMany(ti => ti.GetAllAssemblyDependencies())
+                        .Distinct()
+                        .ToList();
+
+                foreach (var assemblyDependency in assemblyDependencies)
+                {
+                    project.AddReference(assemblyDependency);
+                }
+            }
+        }
+
+
+        public void ResolveProjectDependencies(IApplication application)
+        {
+            // Resolve all dependencies and events
+            Logging.Log.Info($"Resolving Project Dependencies");
+
+            foreach (var project in application.Projects)
+            {
+                // 1. Identify project dependencies (for debugging purposes - does nothing):
+                //var p = project.TemplateInstances.Select(x => new { x, deps = x.GetAllTemplateDependencies().ToList() }).Where(x => x.deps.Any()).ToList();
 
                 var nullDependencies = project.TemplateInstances.Where(x => x.GetAllTemplateDependencies().Any(d => d == null)).ToList();
                 if (nullDependencies.Any())
@@ -53,6 +80,7 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
                     var templates = nullDependencies.First().Id;
                     throw new Exception($"The following template is returning a 'null' template dependency [{templates}]. Please check your GetTemplateDependencies() method.");
                 }
+
                 var templateDependencies = project.TemplateInstances
                         .SelectMany(ti => ti.GetAllTemplateDependencies())
                         .Distinct()
@@ -68,28 +96,6 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
                 {
                     // 2. Add project dependencies
                     project.AddDependency(projectDependency);
-
-                    // 3. Load nuget packages from project dependencies.
-                    //    Don't load for Core projects
-                    if (new[] { VisualStudioProjectTypeIds.CoreWebApp, VisualStudioProjectTypeIds.CoreCSharpLibrary }.Contains(project.ProjectType.Id))
-                    {
-                        continue;
-                    }
-                    project.AddNugetPackages(GetTemplateNugetDependencies(projectDependency));
-                }
-
-                // 4. Load this project's nuget dependencies.
-                project.AddNugetPackages(GetTemplateNugetDependencies(project));
-
-                // 5. Load reference assembly dependencies.            
-                var assemblyDependencies = project.TemplateInstances
-                        .SelectMany(ti => ti.GetAllAssemblyDependencies())
-                        .Distinct()
-                        .ToList();
-
-                foreach (var assemblyDependency in assemblyDependencies)
-                {
-                    project.AddReference(assemblyDependency);
                 }
             }
         }

@@ -31,7 +31,7 @@ namespace Intent.Modules.AspNet.Swashbuckle.Decorators
         //[IntentManaged(Mode.Ignore)] // Uncomment to take control of this method.
         private static void ConfigureSwashbuckle(HttpConfiguration config)
         {{
-            config.EnableSwagger(c => c.SingleApiVersion(""v1"", ""{_application.ApplicationName} API""))
+            config.EnableSwagger(c => c.SingleApiVersion(""v1"", ""{_application.Name} API""))
                 .EnableSwaggerUi();
         }}";
         }

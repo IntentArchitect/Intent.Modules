@@ -22,7 +22,7 @@ namespace <#= Namespace #>
 {
     public class <#= ClassName#> : <#= GetBaseClass() #>
     {
-        public <#= ClassName#>() : base("<#= Project.Application.ApplicationName#>DB")
+        public <#= ClassName#>() : base("<#= Project.Application.Name#>DB")
         {
 
         } 
@@ -44,7 +44,7 @@ namespace <#= Namespace #>
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
 			// Customize Default Schema
-			// modelBuilder.HasDefaultSchema("<#= Project.Application.ApplicationName#>");
+			// modelBuilder.HasDefaultSchema("<#= Project.Application.Name#>");
         }
     }
 }

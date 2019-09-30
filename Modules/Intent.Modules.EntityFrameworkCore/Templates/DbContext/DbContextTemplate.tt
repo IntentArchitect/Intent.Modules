@@ -45,7 +45,7 @@ namespace <#= Namespace #>
         private void ConfigureModel(ModelBuilder modelBuilder)
         {
             // Customize Default Schema
-            // modelBuilder.HasDefaultSchema("<#= Project.Application.ApplicationName #>");
+            // modelBuilder.HasDefaultSchema("<#= Project.Application.Name #>");
             
             // Seed data
             // https://rehansaeed.com/migrating-to-entity-framework-core-seed-data/

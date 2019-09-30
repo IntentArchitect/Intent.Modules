@@ -24,12 +24,12 @@ namespace Intent.Modelers.Services
 
         public IEnumerable<IDTOModel> GetDTOs(Engine.IApplication application)
         {
-            return GetAllDTOs().Where(x => x.Application.Name == application.ApplicationName);
+            return GetAllDTOs().Where(x => x.Application.Name == application.Name);
         }
 
         public IEnumerable<IServiceModel> GetServices(Engine.IApplication application)
         {
-            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Name == application.ApplicationName
+            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Name == application.Name
                 && x.IsService()).ToList();
             return classes.Select(x => new ServiceModel(x)).ToList();
         }

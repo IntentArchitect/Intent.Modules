@@ -24,7 +24,7 @@ namespace Intent.Modelers.Domain
 
         public IEnumerable<IClass> GetClasses(IApplication application)
         {
-            return GetClasses().Where(x => x.Application.Name == application.ApplicationName);
+            return GetClasses().Where(x => x.Application.Name == application.Name);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Intent.Modules.Common
     {
         public static string ApplicationName(this IProject project)
         {
-            return project.Application.ApplicationName;
+            return project.Application.Name;
         }
 
         public static bool HasTemplateInstance(this IProject project, string templateId)

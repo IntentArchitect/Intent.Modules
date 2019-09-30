@@ -74,6 +74,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
             group.AddProperty("DefineConstants", "DEBUG;TRACE");
             group.AddProperty("ErrorReport", "prompt");
             group.AddProperty("WarningLevel", "4");
+            group.AddProperty("LangVersion", "latest");
 
             group = root.AddPropertyGroup();
             group.Condition = " '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ";
@@ -83,6 +84,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
             group.AddProperty("DefineConstants", "TRACE");
             group.AddProperty("ErrorReport", "prompt");
             group.AddProperty("WarningLevel", "4");
+            group.AddProperty("LangVersion", "latest");
 
             var itemGroup = AddItems(root, "Reference", 
                 "Microsoft.CSharp"

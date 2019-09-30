@@ -43,7 +43,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
         {
             return new[]
             {
-                TemplateDependency.OnTemplate(DecoratorTemplate.TemplateId)
+                TemplateDependency.OnModel(DecoratorTemplate.TemplateId, Model)
             };
         }
 

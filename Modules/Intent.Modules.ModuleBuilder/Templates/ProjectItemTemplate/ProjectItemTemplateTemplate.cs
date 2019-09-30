@@ -45,7 +45,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 <#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
-<#@ import namespace=""Intent.SoftwareFactory.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 
 // Place your file template logic here
@@ -54,6 +53,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         private string GetModelType()
         {
+            if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
+            {
+                return "object";
+            }
+
             var type = Model.GetModelTypeName();
             if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
             {

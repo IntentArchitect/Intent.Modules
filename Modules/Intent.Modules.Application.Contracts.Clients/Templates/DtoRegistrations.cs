@@ -37,7 +37,7 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
             var dtoModels = _metadataManager.GetAllDTOs();
 
             return dtoModels
-                .Where(x => x.GetConsumers(_stereotypeName, _stereotypePropertyName).Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
+                .Where(x => x.GetConsumers(_stereotypeName, _stereotypePropertyName).Any(y => y.Equals(application.Name, StringComparison.OrdinalIgnoreCase)))
                 .ToArray();
         }
 

@@ -36,10 +36,10 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Project.Application.ApplicationName}DbContext".AsClassName(),
+                fileName: $"{Project.Application.Name}DbContext".AsClassName(),
                 fileExtension: "cs",
                 defaultLocationInProject: "DbContext",
-                className: $"{Project.Application.ApplicationName}DbContext".AsClassName(),
+                className: $"{Project.Application.Name}DbContext".AsClassName(),
                 @namespace: "${Project.ProjectName}"
                 );
         }
@@ -54,11 +54,11 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             .ToArray();
         }
 
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             _eventDispatcher.Publish(ApplicationEvents.Config_ConnectionString, new Dictionary<string, string>()
             {
-                { "Name", $"{Project.Application.ApplicationName}DB" },
+                { "Name", $"{Project.Application.Name}DB" },
                 { "ConnectionString", $"Server=.;Initial Catalog={ Project.Application.SolutionName };Integrated Security=true;MultipleActiveResultSets=True" },
                 { "ProviderName", "System.Data.SqlClient" },
             });

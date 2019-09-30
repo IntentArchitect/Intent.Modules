@@ -71,7 +71,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             this.Write("() : base(\"");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.ApplicationName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.Name));
             
             #line default
             #line hidden
@@ -109,7 +109,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
 			// modelBuilder.HasDefaultSchema(""");
             
             #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.ApplicationName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.Name));
             
             #line default
             #line hidden

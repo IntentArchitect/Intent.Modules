@@ -12,7 +12,7 @@ using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectFile
 {
-    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies, IProjectTemplate
+    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies, IProjectTemplate, IHasDecorators<IWebApiServiceCSProjectDecorator>
     {
         public const string Identifier = "Intent.VisualStudio.Projects.WebApiServiceCSProjectFile";
         private readonly string _sslPort = "";
@@ -46,6 +46,10 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var doc = LoadOrCreate(fullFileName);
+            foreach (var xmlDecorator in GetDecorators())
+            {
+                xmlDecorator.Install(doc, Project);
+            }
             return doc.ToStringUTF8();
         }
 
@@ -221,5 +225,20 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
                 NugetPackages.NewtonsoftJson,
             };
         }
+
+        private readonly ICollection<IWebApiServiceCSProjectDecorator> _decorators = new List<IWebApiServiceCSProjectDecorator>();
+        public IEnumerable<IWebApiServiceCSProjectDecorator> GetDecorators()
+        {
+            return _decorators;
+        }
+
+        public void AddDecorator(IWebApiServiceCSProjectDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+    }
+
+    public interface IWebApiServiceCSProjectDecorator : IXmlDecorator
+    {
     }
 }

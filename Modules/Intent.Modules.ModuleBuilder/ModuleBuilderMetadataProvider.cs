@@ -29,12 +29,12 @@ namespace Intent.Modules.ModuleBuilder
 
         public IEnumerable<ITemplateDefinition> GetCSharpTemplates(IApplication application)
         {
-            return GetTemplateDefinitions().Where(x => x.Type == ModuleBuilderElementType.CSharpTemplate && x.Application.Name == application.ApplicationName);
+            return GetTemplateDefinitions().Where(x => x.Type == ModuleBuilderElementType.CSharpTemplate && x.Application.Name == application.Name);
         }
 
         public IEnumerable<ITemplateDefinition> GetFileTemplates(IApplication application)
         {
-            return GetTemplateDefinitions().Where(x => x.Type == ModuleBuilderElementType.FileTemplate && x.Application.Name == application.ApplicationName);
+            return GetTemplateDefinitions().Where(x => x.Type == ModuleBuilderElementType.FileTemplate && x.Application.Name == application.Name);
         }
 
         public IEnumerable<IDecoratorDefinition> GetDecorators()
@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder
 
         public IEnumerable<IDecoratorDefinition> GetDecorators(IApplication application)
         {
-            return GetDecorators().Where(x => x.Application.Name == application.ApplicationName);
+            return GetDecorators().Where(x => x.Application.Name == application.Name);
         }
 
         public IEnumerable<IModeler> GetModelers(IElementApplication application)

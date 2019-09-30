@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular
 
         public IEnumerable<IModuleModel> GetModules(IApplication application)
         {
-            return GetModules().Where(x => x.Application.Name == application.ApplicationName);
+            return GetModules().Where(x => x.Application.Name == application.Name);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
             }
 
             return serviceModels
-                .Where(x => x.GetConsumers(_stereotypeName, _stereotypePropertyName).Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
+                .Where(x => x.GetConsumers(_stereotypeName, _stereotypePropertyName).Any(y => y.Equals(application.Name, StringComparison.OrdinalIgnoreCase)))
                 .ToArray();
         }
 

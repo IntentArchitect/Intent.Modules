@@ -69,8 +69,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
             
             #line default
             #line hidden
-            this.Write(".Identifier;\r\n\r\n        public override object CreateDecoratorInstance(IApplicati" +
-                    "on application)\r\n        {\r\n            return new ");
+            this.Write(".Identifier;\r\n\r\n        public override ");
+            
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorRegistrationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetImplementerDecoratorContractType()));
+            
+            #line default
+            #line hidden
+            this.Write(" CreateDecoratorInstance(IApplication application)\r\n        {\r\n            return" +
+                    " new ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Decorators\DecoratorRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetDecoratorTemplateFullName(Model)));

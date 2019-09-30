@@ -156,7 +156,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
                 outputType: "VisualStudio2015Solution", 
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.UserControlledWeave,
-                fileName: _application.ApplicationName,
+                fileName: _application.Name,
                 fileLocation: _application.RootLocation);
         }
     }

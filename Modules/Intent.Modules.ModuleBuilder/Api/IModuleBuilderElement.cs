@@ -3,9 +3,8 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface IModuleBuilderElement : IHasStereotypes, IHasFolder
+    public interface IModuleBuilderElement : IMetadataModel, IHasStereotypes, IHasFolder
     {
-        string Id { get; }
         ModuleBuilderElementType Type { get; }
         string Name { get; }
         IElementApplication Application { get; }

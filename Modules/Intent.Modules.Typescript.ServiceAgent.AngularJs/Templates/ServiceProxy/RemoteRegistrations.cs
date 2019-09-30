@@ -34,7 +34,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             var serviceModels = _metadataManager.GetMetadata<IServiceModel>("Services");
 
             serviceModels = serviceModels
-                .Where(x => GetConsumers(x).Any(y => y.Equals(application.ApplicationName, StringComparison.OrdinalIgnoreCase)))
+                .Where(x => GetConsumers(x).Any(y => y.Equals(application.Name, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
 
 

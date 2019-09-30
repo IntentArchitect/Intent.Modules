@@ -73,6 +73,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 
         private string GetModelType()
         {
+            if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
+            {
+                return "object";
+            }
+
             var type = Model.GetModelTypeName();
             if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
             {
@@ -82,40 +87,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
             return type;
         }
 
-        private bool HasDeclaresUsings()
-        {
-            return Model.GetStereotypeProperty<bool>("Template Settings", "Declare Usings");
-        }
-
-        private bool HasTemplateDependencies()
-        {
-            return Model.HasStereotype("Template Dependency");
-        }
-
         private bool HasDecorators()
         {
             return !string.IsNullOrEmpty(Model.GetExposedDecoratorContractType());
         }
 
-        private IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencyInfos()
-        {
-            return new TemplateDependencyInfo[0];
-            //return TemplateHelper.GetTemplateDependencyInfos(this, Model, _templateModels);
-        }
-
         private string GetConfiguredInterfaces()
         {
             var interfaceList = new List<string>();
-
-            if (HasDeclaresUsings())
-            {
-                interfaceList.Add("IDeclareUsings");
-            }
-
-            if (HasTemplateDependencies())
-            {
-                interfaceList.Add("IHasTemplateDependencies");
-            }
 
             if (!string.IsNullOrEmpty(Model.GetExposedDecoratorContractType()))
             {

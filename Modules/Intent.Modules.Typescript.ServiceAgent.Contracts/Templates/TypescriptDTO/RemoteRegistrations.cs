@@ -40,7 +40,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
             }
 
             dtoModels = dtoModels
-                .Where(x => GetConsumers(x).Any(y => application.ApplicationName.Equals(y, StringComparison.OrdinalIgnoreCase)))
+                .Where(x => GetConsumers(x).Any(y => application.Name.Equals(y, StringComparison.OrdinalIgnoreCase)))
                 .ToArray();
 
             return dtoModels.ToList();

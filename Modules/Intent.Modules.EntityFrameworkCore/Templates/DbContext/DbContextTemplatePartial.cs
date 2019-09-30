@@ -43,10 +43,10 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Project.Application.ApplicationName}DbContext".AsClassName(),
+                fileName: $"{Project.Application.Name}DbContext".AsClassName(),
                 fileExtension: "cs",
                 defaultLocationInProject: "DbContext",
-                className: $"{Project.Application.ApplicationName}DbContext".AsClassName(),
+                className: $"{Project.Application.Name}DbContext".AsClassName(),
                 @namespace: "${Project.ProjectName}"
                 );
         }
@@ -71,8 +71,8 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
         {
             _eventDispatcher.Publish(ApplicationEvents.Config_ConnectionString, new Dictionary<string, string>()
             {
-                { "Name", $"{Project.Application.ApplicationName}DB" },
-                { "ConnectionString", $"Server=.;Initial Catalog={Project.Application.SolutionName}.{ Project.Application.ApplicationName };Integrated Security=true;MultipleActiveResultSets=True" },
+                { "Name", $"{Project.Application.Name}DB" },
+                { "ConnectionString", $"Server=.;Initial Catalog={Project.Application.SolutionName}.{ Project.Application.Name };Integrated Security=true;MultipleActiveResultSets=True" },
                 { "ProviderName", "System.Data.SqlClient" },
             });
 
@@ -81,7 +81,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
                 { ContainerRegistrationForDbContextEvent.UsingsKey, $"Microsoft.EntityFrameworkCore;" },
                 { ContainerRegistrationForDbContextEvent.ConcreteTypeKey, $"{Namespace}.{ClassName}" },
                 { ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey, Identifier },
-                { ContainerRegistrationForDbContextEvent.OptionsKey, $@".{GetDbContextDbServerSetupMethodName()}(Configuration.GetConnectionString(""{Project.Application.ApplicationName}DB"")){(UseLazyLoadingProxies ? ".UseLazyLoadingProxies()" : "")}" },
+                { ContainerRegistrationForDbContextEvent.OptionsKey, $@".{GetDbContextDbServerSetupMethodName()}(Configuration.GetConnectionString(""{Project.Application.Name}DB"")){(UseLazyLoadingProxies ? ".UseLazyLoadingProxies()" : "")}" },
             });
         }
 

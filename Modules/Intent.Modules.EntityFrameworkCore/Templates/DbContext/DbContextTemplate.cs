@@ -123,7 +123,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
                     "hema\r\n            // modelBuilder.HasDefaultSchema(\"");
             
             #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.ApplicationName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.Name));
             
             #line default
             #line hidden
