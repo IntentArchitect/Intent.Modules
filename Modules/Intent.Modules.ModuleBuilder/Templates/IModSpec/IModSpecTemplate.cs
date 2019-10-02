@@ -26,9 +26,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         public IEnumerable<IDecoratorDefinition> Decorators { get; }
     }
 
+    public class TemplateRegistrationInfo
+    {
+        public TemplateRegistrationInfo(string templateId, string templateType)
+        {
+            TemplateId = templateId;
+            TemplateType = templateType;
+        }
+
+        public string TemplateId { get; set; }
+        public string TemplateType { get; set; }
+    }
+
     public class IModSpecTemplate : IntentProjectItemTemplateBase<IModeSpecModel>, IHasNugetDependencies
     {
-        private ICollection<string> _templatesToRegister = new List<string>();
+        private ICollection<TemplateRegistrationInfo> _templatesToRegister = new List<TemplateRegistrationInfo>();
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
         public IModSpecTemplate(string templateId, IProject project, IModeSpecModel models)
@@ -36,7 +48,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
             Project.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
-                _templatesToRegister.Add(@event.GetValue("TemplateId"));
+                _templatesToRegister.Add(new TemplateRegistrationInfo(@event.GetValue("TemplateId"), @event.GetValue("TemplateType")));
             });
         }
 
@@ -58,19 +70,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             var templatesElement = doc.Element("package").Element("templates");
 
-            foreach (var templateId in _templatesToRegister)
+            foreach (var template in _templatesToRegister)
             {
-                var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{templateId}\"]");
+                var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{template.TemplateId}\"]");
 
                 if (specificTemplate == null)
                 {
-                    specificTemplate = new XElement("template", new XAttribute("id", templateId));
+                    specificTemplate = new XElement("template", new XAttribute("id", template.TemplateId));
+                    if (template.TemplateType == "C# Template")
+                    {
+                        specificTemplate.Add(XElement.Parse(@"
+      <config>
+        <add key=""ClassName"" description=""Class name formula override (e.g. '${Model.Name}')"" />
+        <add key=""Namespace"" description=""Class namespace formula override (e.g. '${Project.Name}'"" />
+      </config>"));
+                    }
+
                     templatesElement.Add(specificTemplate);
                 }
 
                 if (specificTemplate.Element("role") == null)
                 {
-                    specificTemplate.Add(new XElement("role") { Value = templateId });
+                    specificTemplate.Add(new XElement("role") { Value = template.TemplateId });
                 }
             }
 

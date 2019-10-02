@@ -26,6 +26,23 @@ namespace Intent.Modules.ModuleBuilder.Helpers
             }
         }
 
+        public static string GetTemplateModelName(this ITemplateDefinition model)
+        {
+            var modelType = model.GetModelType();
+            if (model.GetCreationMode() == CreationMode.SingleFileNoModel || modelType == null)
+            {
+                return "object";
+            }
+
+            var type = modelType.Name;
+            if (model.GetCreationMode() == CreationMode.SingleFileListModel)
+            {
+                type = $"IList<{type}>";
+            }
+
+            return type;
+        }
+
         //public static string GetModelerName(this IModuleBuilderElement model)
         //{
         //    return model.GetStereotypeProperty(TemplateSettingsStereotype, "Modeler", "Modeler");

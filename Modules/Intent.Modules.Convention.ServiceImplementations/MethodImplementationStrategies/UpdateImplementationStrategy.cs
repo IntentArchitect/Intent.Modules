@@ -5,7 +5,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Common;
 using Intent.Engine;
-using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
 using IClass = Intent.Modelers.Domain.Api.IClass;
 

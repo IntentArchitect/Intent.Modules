@@ -53,18 +53,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         private string GetModelType()
         {
-            if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
-            {
-                return "object";
-            }
-
-            var type = Model.GetModelTypeName();
-            if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
-            {
-                type = $"IList<{type}>";
-            }
-
-            return type;
+            return Model.GetTemplateModelName();
         }
 
     }

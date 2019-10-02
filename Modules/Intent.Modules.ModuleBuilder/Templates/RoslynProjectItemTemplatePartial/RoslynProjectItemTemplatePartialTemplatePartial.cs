@@ -68,31 +68,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
         {
             Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
             {
-                { "TemplateId", GetTemplateId() }
+                { "TemplateId", GetTemplateId() },
+                { "TemplateType", "C# Template" }
             });
         }
 
         private string GetModelType()
         {
-            try
-            {
-                if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
-                {
-                    return "object";
-                }
-
-                var type = Model.GetModelTypeName();
-                if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
-                {
-                    type = $"IList<{type}>";
-                }
-
-                return type;
-            }
-            catch (Exception e)
-            {
-                throw new Exception($"Could not determine ModelType for C# Template [{Model.Name}]", e);
-            }
+            return Model.GetTemplateModelName();
         }
 
         //private bool HasDeclaresUsings()

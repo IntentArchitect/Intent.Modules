@@ -10,6 +10,7 @@
     <template id="Intent.Application.Contracts.DTO">
       <role>Application.Contracts</role>
       <config>
+        <add key="ClassName" description="Class name" default="${Model.Name}" />
         <add key="Namespace" description="Create the class within the specified namespace" default="${FolderBasedNamespace}" />
         <add key="Collection Type Format" description="Specify the equivalent format like you would in a string.Format() call in C# for collection types. Example: '{0}[]' for arrays or 'List&lt;{0}&gt;' for a generic list" default="List&lt;{0}&gt;" />
       </config>
@@ -17,6 +18,7 @@
     <template id="Intent.Application.Contracts.ServiceContract">
       <role>Application.Contracts</role>
       <config>
+        <add key="ClassName" description="Class name" default="I${Model.Name}" />
         <add key="Namespace" description="Create the class within the specified namespace" default="${FolderBasedNamespace}" />
         <add key="Collection Type Format" description="Specify the equivalent format like you would in a string.Format() call in C# for collection types. Example: '{0}[]' for arrays or 'List&lt;{0}&gt;' for a generic list" default="List&lt;{0}&gt;" />
       </config>

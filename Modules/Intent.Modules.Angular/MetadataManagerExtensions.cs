@@ -2,7 +2,7 @@
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Angular.Api;
 using IApplication = Intent.Engine.IApplication;
 

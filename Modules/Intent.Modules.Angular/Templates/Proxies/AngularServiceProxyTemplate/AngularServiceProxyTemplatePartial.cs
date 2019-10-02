@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Templates.AngularModuleTemplate;
 using Intent.Modules.Common;

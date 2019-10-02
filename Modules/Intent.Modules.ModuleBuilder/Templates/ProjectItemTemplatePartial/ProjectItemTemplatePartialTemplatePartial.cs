@@ -67,24 +67,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
         {
             Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
             {
-                { "TemplateId", GetTemplateId() }
+                { "TemplateId", GetTemplateId() },
+                { "TemplateType", "File Template" }
             });
         }
 
         private string GetModelType()
         {
-            if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
-            {
-                return "object";
-            }
-
-            var type = Model.GetModelTypeName();
-            if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
-            {
-                type = $"IList<{type}>";
-            }
-
-            return type;
+            return Model.GetTemplateModelName();
         }
 
         private bool HasDecorators()

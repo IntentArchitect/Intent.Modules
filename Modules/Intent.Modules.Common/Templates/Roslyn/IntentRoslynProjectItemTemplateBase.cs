@@ -110,7 +110,7 @@ namespace Intent.Modules.Common.Templates
                 _detectedDependencies.Add(TemplateDependency.OnModel(templateId, model));
                 return NormalizeNamespace(serviceContractTemplate.FullTypeName());
             }
-            throw new Exception($"Could not find template with Id: {templateId}");
+            throw new Exception($"Could not find template with Id: {templateId} for model {Model.ToString()}");
         }
         
         public string GetTemplateClassName(string templateId)

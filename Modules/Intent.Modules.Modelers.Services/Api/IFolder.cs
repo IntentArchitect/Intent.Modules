@@ -2,10 +2,8 @@
 
 namespace Intent.Modelers.Services.Api
 {
-    public interface IFolder : IHasStereotypes
+    public interface IFolder : IHasStereotypes, IMetadataModel
     {
-        string Id { get; }
-
         string Name { get; }
 
         IFolder ParentFolder { get; }

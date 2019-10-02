@@ -2,10 +2,8 @@
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.Modelers.Services.Api;
-using IApplication = Intent.Engine.IApplication;
 
-namespace Intent.Modelers.Services
+namespace Intent.Modelers.Services.Api
 {
     public class ServicesMetadataProvider
     {
@@ -22,12 +20,12 @@ namespace Intent.Modelers.Services
             return classes.Select(x => new DTOModel(x)).ToList();
         }
 
-        public IEnumerable<IDTOModel> GetDTOs(Engine.IApplication application)
+        public IEnumerable<IDTOModel> GetDTOs(IApplication application)
         {
             return GetAllDTOs().Where(x => x.Application.Name == application.Name);
         }
 
-        public IEnumerable<IServiceModel> GetServices(Engine.IApplication application)
+        public IEnumerable<IServiceModel> GetServices(IApplication application)
         {
             var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Name == application.Name
                 && x.IsService()).ToList();

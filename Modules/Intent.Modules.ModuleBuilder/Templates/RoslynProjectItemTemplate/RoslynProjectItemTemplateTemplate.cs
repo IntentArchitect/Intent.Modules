@@ -48,9 +48,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-
+{(Model.GetModelType() != null ? $"<#@ import namespace=\"{Model.GetModelType().Namespace}\" #>{Environment.NewLine}" : "")}
 using System;
-<#=DependencyUsings#>
 // Mode.Fully will overwrite file on each run. 
 // Add in explicit [IntentManaged.Ignore] attributes to class or methods. Alternatively change to Mode.Merge (additive) or Mode.Ignore (once-off)
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -97,25 +96,7 @@ namespace <#= Namespace #>
 
         private string GetModelType()
         {
-            try
-            {
-                if (Model.GetCreationMode() == CreationMode.SingleFileNoModel)
-                {
-                    return "object";
-                }
-
-                var type = Model.GetModelTypeName();
-                if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
-                {
-                    type = $"IList<{type}>";
-                }
-
-                return type;
-            }
-            catch (Exception e)
-            {
-                throw new Exception($"Could not determine ModelType for C# Template [{Model.Name}]", e);
-            }
+            return Model.GetTemplateModelName();
         }
 
     }

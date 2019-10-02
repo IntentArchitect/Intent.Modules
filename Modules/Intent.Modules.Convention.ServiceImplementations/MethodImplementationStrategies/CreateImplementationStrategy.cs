@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
 using IClass = Intent.Modelers.Domain.Api.IClass;
 
