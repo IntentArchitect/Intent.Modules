@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
-using Intent.Modelers.Domain.Api;
 
-namespace Intent.Modelers.Domain
+namespace Intent.Modelers.Domain.Api
 {
     public class DomainMetadataProvider
     {

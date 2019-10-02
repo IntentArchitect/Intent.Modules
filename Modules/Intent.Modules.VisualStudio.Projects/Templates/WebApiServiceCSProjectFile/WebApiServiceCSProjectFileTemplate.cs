@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             return new DefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
+                overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: Project.Name,
                 fileExtension: "csproj",
@@ -50,7 +51,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             {
                 xmlDecorator.Install(doc, Project);
             }
-            return doc.ToStringUTF8();
+
+            var text = doc.ToStringUTF8();
+            return text.Substring(text.IndexOf("<Project", StringComparison.InvariantCultureIgnoreCase));
         }
 
         private XDocument LoadOrCreate(string fullFileName)

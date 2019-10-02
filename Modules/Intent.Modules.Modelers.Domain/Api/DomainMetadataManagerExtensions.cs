@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using Intent.Engine;
-using Intent.Modelers.Domain.Api;
 
-namespace Intent.Modelers.Domain
+namespace Intent.Modelers.Domain.Api
 {
     public static class DomainMetadataManagerExtensions
     {
