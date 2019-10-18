@@ -117,7 +117,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Modelers.Eve
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata", "Metadata", "{E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules (Experimental Angular)", "Modules (Experimental Angular)", "{5F5C3F2E-DD11-4F45-A24D-9E8FB109592A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules (Experimental)", "Modules (Experimental)", "{5F5C3F2E-DD11-4F45-A24D-9E8FB109592A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Angular", "Intent.Modules.Angular\Intent.Modules.Angular.csproj", "{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C}"
 EndProject
