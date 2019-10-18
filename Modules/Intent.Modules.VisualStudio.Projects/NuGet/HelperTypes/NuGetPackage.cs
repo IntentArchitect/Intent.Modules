@@ -10,11 +10,11 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
         {
         }
 
-        public static NuGetPackage Create(INugetPackageInfo nugetPackageInfo, SemanticVersion version = null)
+        public static NuGetPackage Create(INugetPackageInfo nugetPackageInfo, NuGetVersion version = null)
         {
             return new NuGetPackage
             {
-                Version = version ?? SemanticVersion.Parse(nugetPackageInfo.Version),
+                Version = version ?? NuGetVersion.Parse(nugetPackageInfo.Version),
                 IncludeAssets = new List<string>(nugetPackageInfo.IncludeAssets ?? new string[0]),
                 PrivateAssets = new List<string>(nugetPackageInfo.PrivateAssets ?? new string[0])
             };
@@ -24,13 +24,13 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
         {
             return new NuGetPackage
             {
-                Version = SemanticVersion.Parse(version),
+                Version = NuGetVersion.Parse(version),
                 IncludeAssets = new List<string>(includeAssets),
                 PrivateAssets = new List<string>(privateAssets)
             };
         }
 
-        public void Update(SemanticVersion highestVersion, INugetPackageInfo nugetPackageInfo)
+        public void Update(NuGetVersion highestVersion, INugetPackageInfo nugetPackageInfo)
         {
             if (Version < highestVersion) Version = highestVersion;
 
@@ -51,7 +51,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
             }
         }
 
-        public NuGetPackage Clone(SemanticVersion version = null)
+        public NuGetPackage Clone(NuGetVersion version = null)
         {
             return new NuGetPackage
             {
@@ -61,7 +61,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
             };
         }
 
-        public SemanticVersion Version { get; set; }
+        public NuGetVersion Version { get; set; }
 
         public List<string> PrivateAssets { get; private set; }
 

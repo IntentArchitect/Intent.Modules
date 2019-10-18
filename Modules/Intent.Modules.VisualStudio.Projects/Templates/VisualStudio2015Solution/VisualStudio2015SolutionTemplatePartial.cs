@@ -7,66 +7,71 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Plugins;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
 {
+    public class VisualStudio2015SolutionTemplateModel
+    {
+        public VisualStudio2015SolutionTemplateModel(IApplication application)
+        {
+            Application = application;
+        }
+
+        public IApplication Application { get; }
+    }
+
     // NB! Solution Project Type GUIDS: http://www.codeproject.com/Reference/720512/List-of-Visual-Studio-Project-Type-GUIDs
-    partial class VisualStudio2015SolutionTemplate : ITemplate
+    partial class VisualStudio2015SolutionTemplate : ITemplate, IConfigurableTemplate
     {
         public const string Identifier = "Intent.VisualStudio.Projects.VisualStudio2015Solution";
-        private readonly IApplication _application;
-        private readonly IFileMetadata _fileMetadata;
+        private IFileMetadata _fileMetadata;
 
-        public VisualStudio2015SolutionTemplate(IApplication application, SolutionFile existingSolution)
+        public VisualStudio2015SolutionTemplate(IApplication application)
         {
-            _application = application;
-            _fileMetadata = CreateMetadata();
-            Projects = _application.Projects;
-            ExistingSolution = existingSolution;
-            SolutionFolders = Projects.Where(x => x.SolutionFolder() != null && x.Folder.Id != application.Id)
+            Application = application;
+            //_fileMetadata = CreateMetadata();
+            Context = new TemplateContext(new VisualStudio2015SolutionTemplateModel(Application));
+            Projects = Application.Projects;
+            //ExistingSolution = existingSolution;
+            SolutionFolders = Projects.Where(x => x.SolutionFolder() != null && x.Folder.Id != Application.Id)
                 .GroupBy(x => x.SolutionFolder())
                 .ToDictionary(x => x.Key, x => x.ToList())
                 .Select(x => new SolutionFolder(x.Key, x.Value))
                 .ToList();
-
-            foreach (var solutionFolder in SolutionFolders)
-            {
-                UpdateSolutionFolder(solutionFolder);
-            }
         }
 
         public string Id { get; } = Identifier;
+        public IApplication Application { get; }
         public IEnumerable<IProject> Projects { get; }
-        public SolutionFile ExistingSolution { get; }
+        //public SolutionFile ExistingSolution { get; }
         public IList<SolutionFolder> SolutionFolders { get; }
-
-        public void UpdateSolutionFolder(SolutionFolder solutionFolder)
-        {
-            if (ExistingSolution == null)
-                return;
-
-            var existingProject = ExistingSolution.ProjectsByGuid.FirstOrDefault(x => x.Value.ProjectName == solutionFolder.FolderName && x.Value.ProjectType == SolutionProjectType.SolutionFolder);
-            if (existingProject.Key != null)
-            {
-                solutionFolder.Id = Guid.Parse(existingProject.Key);
-            }
-        }
-
 
         public string RunTemplate()
         {
             string targetFile = GetMetadata().GetFullLocationPathWithFileName();
+
             if (!File.Exists(targetFile))
             {
                 return TransformText();
             }
             else
             {
-                var existingFolders = ExistingSolution.ProjectsByGuid.Values.Where(p => p.ProjectType == SolutionProjectType.SolutionFolder).Select(x => x.ProjectName).ToList();
-                var existingProjects = ExistingSolution.ProjectsByGuid.Values.Where(p => p.ProjectType != SolutionProjectType.SolutionFolder).Select(x => x.ProjectName).ToList();
+                SolutionFile existingSolution = SolutionFile.Parse(targetFile);
+
+                foreach (var solutionFolder in SolutionFolders)
+                {
+                    var existingProject = existingSolution.ProjectsByGuid.FirstOrDefault(x => x.Value.ProjectName == solutionFolder.FolderName && x.Value.ProjectType == SolutionProjectType.SolutionFolder);
+                    if (existingProject.Key != null)
+                    {
+                        solutionFolder.Id = Guid.Parse(existingProject.Key);
+                    }
+                }
+
+                var existingFolders = existingSolution.ProjectsByGuid.Values.Where(p => p.ProjectType == SolutionProjectType.SolutionFolder).Select(x => x.ProjectName).ToList();
+                var existingProjects = existingSolution.ProjectsByGuid.Values.Where(p => p.ProjectType != SolutionProjectType.SolutionFolder).Select(x => x.ProjectName).ToList();
 
                 var missingSolutionFolders = SolutionFolders.Select(f => f.FolderName).Except(existingFolders);
                 var missingProjects = Projects.Select(f => f.Name).Except(existingProjects);
@@ -147,18 +152,29 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
 
         public IFileMetadata GetMetadata()
         {
+            if (_fileMetadata == null)
+            {
+                throw new Exception("File Metadata must be specified.");
+            }
             return _fileMetadata;
         }
 
-        private IFileMetadata CreateMetadata()
-        {            
+        public void ConfigureFileMetadata(IFileMetadata fileMetadata)
+        {
+            _fileMetadata = fileMetadata;
+        }
+
+        public ITemplateFileConfig DefineDefaultFileMetadata()
+        {
             return new SolutionFileMetadata(
-                outputType: "VisualStudio2015Solution", 
+                outputType: "VisualStudio2015Solution",
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.UserControlledWeave,
-                fileName: _application.Name,
-                fileLocation: _application.RootLocation);
+                fileName: "${Application.SolutionName}.${Application.Name}",
+                fileLocation: Application.RootLocation);
         }
+
+        public ITemplateContext Context { get; }
     }
 
     public class SolutionFolder

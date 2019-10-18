@@ -180,10 +180,10 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
         /// <summary>
         /// Internal so available to unit tests
         /// </summary>
-        internal static (IReadOnlyCollection<NuGetProject> Projects, Dictionary<string, SemanticVersion> HighestVersions) DeterminePackages(IEnumerable<IProject> applicationProjects, Func<IProject, string> loadDelegate)
+        internal static (IReadOnlyCollection<NuGetProject> Projects, Dictionary<string, NuGetVersion> HighestVersions) DeterminePackages(IEnumerable<IProject> applicationProjects, Func<IProject, string> loadDelegate)
         {
             var projects = new List<NuGetProject>();
-            var highestVersions = new Dictionary<string, SemanticVersion>();
+            var highestVersions = new Dictionary<string, NuGetVersion>();
 
             foreach (var project in applicationProjects.OrderBy(x => x.Name))
             {
@@ -213,7 +213,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
 
                 foreach (var package in project.NugetPackages())
                 {
-                    if (!SemanticVersion.TryParse(package.Version, out var semanticVersion))
+                    if (!NuGetVersion.TryParse(package.Version, out var semanticVersion))
                     {
                         throw new Exception($"Could not parse '{package.Version}' from Intent metadata for package '{package.Name}' in project '{project.Name}' as a valid Semantic Version 2.0 'version' value.");
                     }
@@ -287,7 +287,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
             return NuGetScheme.Unsupported;
         }
 
-        private static void ConsolidatePackageVersions(IReadOnlyCollection<NuGetProject> projectPackages, IDictionary<string, SemanticVersion> highestVersions)
+        private static void ConsolidatePackageVersions(IReadOnlyCollection<NuGetProject> projectPackages, IDictionary<string, NuGetVersion> highestVersions)
         {
             foreach (var highestVersion in highestVersions)
             {

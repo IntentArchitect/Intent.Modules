@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
 {
-    public class SolutionFileMetadata : IFileMetadata
+    public class SolutionFileMetadata : IFileMetadata, ITemplateFileConfig
     {
         private readonly string _fileLocation;
 

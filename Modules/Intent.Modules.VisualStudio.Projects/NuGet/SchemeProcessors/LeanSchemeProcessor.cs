@@ -103,7 +103,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
                     throw new Exception("Missing version attribute from PackageReference element.");
                 }
 
-                if (SemanticVersion.Parse(versionAttribute.Value) >= package.Version)
+                if (NuGetVersion.Parse(versionAttribute.Value) >= package.Version)
                 {
                     continue;
                 }

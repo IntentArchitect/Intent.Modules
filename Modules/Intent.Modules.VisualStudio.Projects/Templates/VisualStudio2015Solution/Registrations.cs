@@ -20,12 +20,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
 
         public void DoRegistration(IApplicationTemplateInstanceRegistry registry, IApplication application)
         {
-            SolutionFile existingSolution = null;
-            if (File.Exists(application.GetSolutionPath()))
-            {
-                existingSolution = SolutionFile.Parse(application.GetSolutionPath());
-            }
-            registry.RegisterApplicationTemplate(VisualStudio2015SolutionTemplate.Identifier, () => new VisualStudio2015SolutionTemplate(application, existingSolution));
+            registry.RegisterApplicationTemplate(VisualStudio2015SolutionTemplate.Identifier, () => new VisualStudio2015SolutionTemplate(application));
         }
 
     }

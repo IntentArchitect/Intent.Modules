@@ -130,17 +130,19 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             var filename = _project.ProjectFile();
             if (string.IsNullOrWhiteSpace(filename))
                 return null;
-            _doc = _xmlFileCache.GetFile(filename);
 
-            if (_doc == null)
+            var change = _changeManager.FindChange(filename);
+            if (change == null)
             {
-                var change = _changeManager.FindChange(filename);
-                if (change == null)
+                _doc = _xmlFileCache.GetFile(filename);
+                if (_doc == null)
                 {
                     throw new Exception($"Trying to sync project file, but unable to find csproj content. {filename}");
                 }
+            }
+            else
+            {
                 _doc = XDocument.Parse(change.Content, LoadOptions.PreserveWhitespace);
-
                 _syncProjectFile = (f, c) => change.ChangeContent(c);
             }
 
