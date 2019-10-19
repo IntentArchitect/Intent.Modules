@@ -35,7 +35,8 @@ namespace Intent.Modelers.Domain.Api
             }
 
             _associatedClasses = @class.AssociatedClasses
-                .Where(x => !"Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))
+                .Where(x => "Composition".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase)
+                || "Aggregation".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))
                 .Select(x =>
                 {
                     var association = new Association(x.Association, classCache);
