@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Modules.AspNet.SignalR.Interop.WebApi</RootNamespace>
     <AssemblyName>Intent.Modules.AspNet.SignalR.Interop.WebApi</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -62,6 +62,10 @@
     <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
       <Project>{d6171cc1-577a-4123-9ca3-34e017a40071}</Project>
       <Name>Intent.Modules.AspNet.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.AspNetCore.WebApi\Intent.Modules.AspNetCore.WebApi.csproj">
+      <Project>{F66F26B3-E36F-4F27-AF96-E6DDB59CA0D2}</Project>
+      <Name>Intent.Modules.AspNetCore.WebApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>

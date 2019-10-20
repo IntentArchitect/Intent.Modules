@@ -1,5 +1,4 @@
-﻿using Intent.Modelers.Services.Api;
-using Intent.SoftwareFactory;
+﻿using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Templates;
 
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Intent.Modelers.Services;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 

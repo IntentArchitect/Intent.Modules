@@ -47,10 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Decorators\RootLocationOwinStartupDecorator.cs" />
+    <Compile Include="Decorators\RootLocationWebConfigDecoratorRegistration.cs" />
     <Compile Include="Decorators\RootLocationWebConfigDecorator.cs" />
+    <Compile Include="Decorators\RootLocationOwinStartupDecoratorRegistration.cs" />
     <Compile Include="NugetPackages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrations.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.AspNet.Owin\Intent.Modules.AspNet.Owin.csproj">

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Modules.AspNet.WebApi</RootNamespace>
     <AssemblyName>Intent.Modules.AspNet.WebApi</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\WebApiConfigJsonValidationDecoratorRegistration.cs" />
+    <Compile Include="Decorators\UseHttpsOwinStartupDecoratorRegistration.cs" />
+    <Compile Include="Decorators\WebApiOwinStartupDecoratorRegistration.cs" />
     <Compile Include="Decorators\TransactionScopeDecorators.cs" />
     <Compile Include="Decorators\TransactionScopeDecoratorsRegistration.cs" />
     <Compile Include="Decorators\UseHttpsOwinStartupDecorator.cs" />
@@ -69,7 +72,6 @@
     </Compile>
     <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplatePartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrations.cs" />
     <Compile Include="Templates\Controller\WebApiControllerDecoratorBase.cs" />
     <Compile Include="Templates\Controller\WebApiControllerTemplateRegistrations.cs" />
     <Compile Include="NugetPackages.cs" />
@@ -86,6 +88,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\Controller\WebApiControllerTemplatePartial.cs" />
+    <Compile Include="Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplateRegistration.cs" />
     <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplateRegistration.cs" />
     <Compile Include="Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.cs">
       <DependentUpon>WebApiServiceCallContextTemplate.tt</DependentUpon>

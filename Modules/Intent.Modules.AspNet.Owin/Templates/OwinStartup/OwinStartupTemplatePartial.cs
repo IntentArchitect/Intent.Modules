@@ -18,7 +18,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 
     }
 
-    partial class OwinStartupTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasDecorators<IOwinStartupDecorator>, IHasAssemblyDependencies, IDeclareUsings
+    partial class OwinStartupTemplate : IntentRoslynProjectItemTemplateBase, IHasDecorators<IOwinStartupDecorator>, IHasAssemblyDependencies, IDeclareUsings
     {
         public const string Identifier = "Intent.Owin.OwinStartup";
         private readonly IList<IOwinStartupDecorator> _decorators = new List<IOwinStartupDecorator>();

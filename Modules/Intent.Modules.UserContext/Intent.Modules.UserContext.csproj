@@ -48,25 +48,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrations.cs" />
+    <Compile Include="Templates\UserContextInterface\UserContextInterfaceTemplateRegistration.cs" />
     <Compile Include="Templates\UserContextInterface\UserContextInterfaceTemplate.cs">
       <DependentUpon>UserContextInterfaceTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\UserContextInterface\UserContextInterfaceTemplatePartial.cs" />
+    <Compile Include="Templates\UserContextProviderInterface\UserContextProviderInterfaceTemplateRegistration.cs" />
     <Compile Include="Templates\UserContextProviderInterface\UserContextProviderInterfaceTemplate.cs">
       <DependentUpon>UserContextProviderInterfaceTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\UserContextProviderInterface\UserContextProviderInterfacePartial.cs" />
+    <Compile Include="Templates\UserContextProvider\UserContextProviderTemplateRegistration.cs" />
     <Compile Include="Templates\UserContextProvider\UserContextProviderTemplate.cs">
       <DependentUpon>UserContextProviderTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\UserContextProvider\UserContextProviderTemplatePartial.cs" />
+    <Compile Include="Templates\UserContextStatic\UserContextStaticTemplateRegistration.cs" />
     <Compile Include="Templates\UserContextStatic\UserContextStaticTemplate.cs">
       <DependentUpon>UserContextStaticTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
