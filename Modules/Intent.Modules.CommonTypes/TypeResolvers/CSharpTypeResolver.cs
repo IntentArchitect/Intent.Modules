@@ -25,7 +25,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
             }
             else
             {
-                if (typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase))
+                if (typeInfo.IsNullable && typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase))
                 {
                     result += "?";
                 }
