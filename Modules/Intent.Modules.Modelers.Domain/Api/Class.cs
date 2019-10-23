@@ -8,23 +8,23 @@ namespace Intent.Modelers.Domain.Api
     internal class Class : IClass, IEquatable<IClass>
     {
         private IList<IAssociationEnd> _associatedClasses;
-        private readonly IElement _class;
+        private readonly IElement _element;
         private readonly ICollection<IClass> _childClasses = new List<IClass>();
         private readonly Class _parent;
 
-        public Class(IElement @class, IDictionary<string, Class> classCache)
+        public Class(IElement element, IDictionary<string, Class> classCache)
         {
-            _class = @class;
+            _element = element;
             classCache.Add(Id, this);
-            Folder = Api.Folder.SpecializationType.Equals(_class.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_class.ParentElement) : null;
+            Folder = Api.Folder.SpecializationType.Equals(_element.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_element.ParentElement) : null;
 
-            var generalizedFrom = _class.AssociatedClasses
+            var generalizedFrom = _element.AssociatedClasses
                 .Where(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase) &&
-                            x.Association.SourceEnd.Element.Id == _class.Id)
+                            x.Association.SourceEnd.Element.Id == _element.Id)
                 .ToArray();
             if (generalizedFrom.Length > 1)
             {
-                throw new Exception($"[{_class.Name} - {_class.Id}] is generalized from more than one class.");
+                throw new Exception($"[{_element.Name} - {_element.Id}] is generalized from more than one class.");
             }
 
             var parent = generalizedFrom.SingleOrDefault()?.Element;
@@ -34,7 +34,7 @@ namespace Intent.Modelers.Domain.Api
                 _parent._childClasses.Add(this);
             }
 
-            _associatedClasses = @class.AssociatedClasses
+            _associatedClasses = element.AssociatedClasses
                 .Where(x => "Composition".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase)
                 || "Aggregation".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))
                 .Select(x =>
@@ -45,20 +45,20 @@ namespace Intent.Modelers.Domain.Api
                 .ToList();
         }
 
-        public string Id => _class.Id;
-        public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
+        public string Id => _element.Id;
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public IFolder Folder { get; }
-        public string Name => _class.Name;
-        public bool IsAbstract => _class.IsAbstract;
-        public IEnumerable<string> GenericTypes => _class.GenericTypes.Select(x => x.Name);
+        public string Name => _element.Name;
+        public bool IsAbstract => _element.IsAbstract;
+        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
         public IClass ParentClass => _parent;
         public IEnumerable<IClass> ChildClasses => _childClasses;
-        public bool IsMapped => _class.IsMapped;
-        public string Comment => _class.Comment;
-        public IElementMapping MappedClass => _class.MappedElement;
-        public IElementApplication Application => _class.Application;
-        public IEnumerable<IAttribute> Attributes => _class.Attributes;
-        public IEnumerable<IOperation> Operations => _class.Operations;
+        public bool IsMapped => _element.IsMapped;
+        public string Comment => _element.Comment;
+        public IElementMapping MappedClass => _element.MappedElement;
+        public IElementApplication Application => _element.Application;
+        public IEnumerable<IAttribute> Attributes => _element.Attributes;
+        public IEnumerable<IOperation> Operations => _element.Operations;
         public IEnumerable<IAssociationEnd> AssociatedClasses
         {
             get => _associatedClasses;

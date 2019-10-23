@@ -30,7 +30,7 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetDomainClasses(application);
+            return _metadataManager.GetDomainClasses(application.Id);
         }
     }
 }

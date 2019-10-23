@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Metadata\Intent.Common.Types\Classes\Binary.xml" />
+    <Content Include="Metadata\Intent.Common.Types\Classes\Object.xml" />
     <Content Include="Metadata\Intent.Common.Types\Classes\Date.xml" />
     <Content Include="Metadata\Intent.Common.Types\Classes\DateTimeOffset.xml" />
     <Content Include="Metadata\Intent.Common.Types\Classes\Double.xml" />

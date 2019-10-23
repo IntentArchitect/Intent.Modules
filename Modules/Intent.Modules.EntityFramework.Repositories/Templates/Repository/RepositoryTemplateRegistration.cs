@@ -41,7 +41,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            var allModels = _metadataManager.GetDomainClasses(application);
+            var allModels = _metadataManager.GetDomainClasses(application.Id);
             var filteredModels = allModels.Where(p => _stereotypeNames.Any(p.HasStereotype));
 
             if (!filteredModels.Any())

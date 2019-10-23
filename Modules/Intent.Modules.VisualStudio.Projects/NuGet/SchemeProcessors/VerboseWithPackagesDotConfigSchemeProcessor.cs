@@ -49,7 +49,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
             if (nugetPackages.Any(x =>
                 string.IsNullOrWhiteSpace(x.Id) ||
                 string.IsNullOrWhiteSpace(x.Version) ||
-                !SemanticVersion.TryParse(x.Version, out _)))
+                !NuGetVersion.TryParse(x.Version, out _)))
             {
                 throw new Exception($"Error reading '{packagesDotConfigPath}', expected all child elements to have both an 'id' and a valid Semantic Version 2.0 'version' value.");
             }

@@ -8,7 +8,6 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.Templates;
-using static Intent.Modules.ModuleBuilder.Helpers.TemplateHelper;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 {
@@ -18,6 +17,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 
         public ProjectItemTemplatePartialTemplate(string templateId, IProject project, ITemplateDefinition model) : base(templateId, project, model)
         {
+            AddNugetDependency(NugetPackages.IntentModulesCommon);
+            AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
         }
 
         public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
@@ -39,23 +40,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
                 className: "${Model.Name}",
                 @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
             );
-        }
-
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new INugetPackageInfo[]
-                {
-                    NugetPackages.IntentModulesCommon,
-                    NugetPackages.IntentRoslynWeaverAttributes
-                }
-                .Union(base.GetNugetDependencies())
-                .ToArray();
-        }
-
-        IEnumerable<ITemplateDependency> IHasTemplateDependencies.GetTemplateDependencies()
-        {
-            return new ITemplateDependency[0];
-            //return TemplateHelper.GetTemplateDependencies(Model, _templateModels);
         }
 
         public string GetTemplateId()

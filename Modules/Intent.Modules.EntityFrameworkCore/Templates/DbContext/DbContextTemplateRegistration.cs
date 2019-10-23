@@ -31,7 +31,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public override IList<IClass> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetDomainClasses(application).ToList();
+            return _metadataManager.GetDomainClasses(application.Id).ToList();
         }
     }
 }

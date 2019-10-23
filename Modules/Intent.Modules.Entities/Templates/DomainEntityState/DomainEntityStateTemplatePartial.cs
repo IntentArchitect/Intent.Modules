@@ -8,6 +8,7 @@ using Intent.Modules.Entities.Templates.DomainEntity;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Templates;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 using IClass = Intent.Modelers.Domain.Api.IClass;
@@ -16,13 +17,15 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
     partial class DomainEntityStateTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityStateDecoratorBase>, ITemplatePostCreationHook
     {
+        private readonly IMetadataManager _metadataManager;
         public const string Identifier = "Intent.Entities.DomainEntityState";
 
         private readonly IList<DomainEntityStateDecoratorBase> _decorators = new List<DomainEntityStateDecoratorBase>();
 
-        public DomainEntityStateTemplate(IClass model, IProject project)
+        public DomainEntityStateTemplate(IClass model, IProject project, IMetadataManager metadataManager)
             : base(Identifier, project, model)
         {
+            _metadataManager = metadataManager;
         }
 
         public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
@@ -75,12 +78,28 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
         {
             try
             {
-                return GetDecorators().Select(x => x.GetBaseClass(@class)).SingleOrDefault(x => x != null) ?? @class.ParentClass?.Name ?? "Object";
+                return GetDecorators().Select(x => x.GetBaseClass(@class)).SingleOrDefault(x => x != null) ?? @class.ParentClass?.Name ?? GetBaseType();
             }
             catch (InvalidOperationException)
             {
                 throw new Exception($"Multiple decorators attempting to modify 'base class' on {@class.Name}");
             }
+        }
+
+        private string GetBaseType()
+        {
+            var typeId = Model.GetStereotypeProperty<string>("Base Type", "Type");
+            if (typeId == null)
+            {
+                return "Object";
+            }
+
+            var type = _metadataManager.GetTypeDefinitions(Project.Application.Id).FirstOrDefault(x => x.Id == typeId);
+            if (type != null)
+            {
+                return type.Name;
+            }
+            throw new Exception($"Could not find Base Type for class {Model.Name}");
         }
 
         public string GetInterfaces(IClass @class)

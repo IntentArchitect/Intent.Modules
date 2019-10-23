@@ -5,9 +5,19 @@ namespace Intent.Modelers.Domain.Api
 {
     public static class DomainMetadataManagerExtensions
     {
-        public static IEnumerable<IClass> GetDomainClasses(this IMetadataManager metadataManager, IApplication application)
+        public static IEnumerable<IClass> GetDomainClasses(this IMetadataManager metadataManager, string applicationId)
         {
-            return new DomainMetadataProvider(metadataManager).GetClasses(application);
+            return new DomainMetadataProvider(metadataManager).GetClasses(applicationId);
+        }
+
+        public static IEnumerable<IEnum> GetEnums(this IMetadataManager metadataManager, string applicationId)
+        {
+            return new DomainMetadataProvider(metadataManager).GetEnums(applicationId);
+        }
+
+        public static IEnumerable<ITypeDefinition> GetTypeDefinitions(this IMetadataManager metadataManager, string applicationId)
+        {
+            return new DomainMetadataProvider(metadataManager).GetTypeDefinitions(applicationId);
         }
     }
 }

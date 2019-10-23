@@ -41,7 +41,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            var allModels = _metadataManager.GetClasses(application);
+            var allModels = _metadataManager.GetClasses(application.Id);
             var filteredModels = allModels.Where(p => _stereotypeNames.Any(p.HasStereotype));
 
             if (!filteredModels.Any())

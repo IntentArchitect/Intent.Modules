@@ -25,12 +25,12 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 
         public override ITemplate CreateTemplateInstance(IProject project, IClass model)
         {
-            return new DomainEntityStateTemplate(model, project);
+            return new DomainEntityStateTemplate(model, project, _metadataManager);
         }
 
         public override IEnumerable<IClass> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetDomainClasses(application);
+            return _metadataManager.GetDomainClasses(application.Id);
         }
     }
 }

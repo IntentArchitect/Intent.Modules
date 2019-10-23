@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Intent.Engine;
 using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
@@ -14,14 +16,16 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
     partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>, ITemplatePostCreationHook
     {
+        private readonly IMetadataManager _metadataManager;
         public const string Identifier = "Intent.Entities.DomainEntityInterface";
         private const string OPERATIONS_CONTEXT = "Operations";
 
         private readonly IList<DomainEntityInterfaceDecoratorBase> _decorators = new List<DomainEntityInterfaceDecoratorBase>();
 
-        public DomainEntityInterfaceTemplate(IClass model, IProject project)
+        public DomainEntityInterfaceTemplate(IClass model, IProject project, IMetadataManager metadataManager)
             : base(Identifier, project, model)
         {
+            _metadataManager = metadataManager;
         }
 
         public override void OnCreated()
@@ -60,7 +64,27 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         public string GetInterfaces(IClass @class)
         {
             var interfaces = GetDecorators().SelectMany(x => x.GetInterfaces(@class)).Distinct().ToList();
+            if (Model.GetStereotypeProperty("Base Type", "Has Interface", false))
+            {
+                interfaces.Insert(0, GetBaseTypeInterface());
+            }
             return interfaces.Any() ? " : " + interfaces.Aggregate((x, y) => x + ", " + y) : "";
+        }
+
+        private string GetBaseTypeInterface()
+        {
+            var typeId = Model.GetStereotypeProperty<string>("Base Type", "Type");
+            if (typeId == null)
+            {
+                return null;
+            }
+
+            var type = _metadataManager.GetTypeDefinitions(Project.Application.Id).FirstOrDefault(x => x.Id == typeId);
+            if (type != null)
+            {
+                return $"I{type.Name}";
+            }
+            throw new Exception($"Could not find Base Type for class {Model.Name}");
         }
 
         public string InterfaceAnnotations(IClass @class)
