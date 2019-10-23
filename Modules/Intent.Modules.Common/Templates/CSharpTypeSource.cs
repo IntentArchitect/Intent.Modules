@@ -12,19 +12,19 @@ namespace Intent.Modules.Common.Templates
 {
     public class CSharpTypeSource : IClassTypeSource
     {
-        private readonly Func<ITypeReference, string> _execute;
-        private static readonly IList<ITemplateDependency> _templateDependencies = new List<ITemplateDependency>();
+        private readonly Func<ITypeReference, CSharpTypeSource, string> _execute;
+        private readonly IList<ITemplateDependency> _templateDependencies = new List<ITemplateDependency>();
 
-        internal CSharpTypeSource(Func<ITypeReference, string> execute)
+        internal CSharpTypeSource(Func<ITypeReference, CSharpTypeSource, string> execute)
         {
             _execute = execute;
         }
 
         public static IClassTypeSource InProject(IProject project, string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
-            return new CSharpTypeSource((typeInfo) =>
+            return new CSharpTypeSource((typeInfo, _this) =>
             {
-                var typeName = FullTypeNameInProject(project, templateId, typeInfo);
+                var typeName = _this.FullTypeNameInProject(project, templateId, typeInfo);
                 if (!string.IsNullOrWhiteSpace(typeName) && typeInfo.IsCollection)
                 {
                     return string.Format(collectionFormat, typeName);;
@@ -33,7 +33,7 @@ namespace Intent.Modules.Common.Templates
             });
         }
 
-        private static string FullTypeNameInProject(IProject project, string templateId, ITypeReference typeInfo)
+        private string FullTypeNameInProject(IProject project, string templateId, ITypeReference typeInfo)
         {
             var templateInstance = GetTemplateInstance(project, templateId, typeInfo);
 
@@ -46,17 +46,17 @@ namespace Intent.Modules.Common.Templates
 
         public static IClassTypeSource InApplication(IApplication application, string templateId, string collectionType = nameof(IEnumerable))
         {
-            return new CSharpTypeSource((typeInfo) =>
+            return new CSharpTypeSource((typeInfo, _this) =>
             {
                 if (typeInfo.IsCollection)
                 {
-                    return $"{collectionType}<{FullTypeNameInApplication(application, templateId, typeInfo)}>";
+                    return $"{collectionType}<{_this.FullTypeNameInApplication(application, templateId, typeInfo)}>";
                 }
-                return FullTypeNameInApplication(application, templateId, typeInfo);
+                return _this.FullTypeNameInApplication(application, templateId, typeInfo);
             });
         }
 
-        private static string FullTypeNameInApplication(IApplication application, string templateId, ITypeReference typeInfo)
+        private string FullTypeNameInApplication(IApplication application, string templateId, ITypeReference typeInfo)
         {
             var templateInstance = application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
             if (templateInstance != null)
@@ -68,7 +68,7 @@ namespace Intent.Modules.Common.Templates
 
         public string GetClassType(ITypeReference typeInfo)
         {
-            return _execute(typeInfo);
+            return _execute(typeInfo, this);
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
@@ -76,7 +76,7 @@ namespace Intent.Modules.Common.Templates
             return _templateDependencies;
         }
 
-        private static IHasClassDetails GetTemplateInstance(IProject project, string templateId, ITypeReference typeInfo)
+        private IHasClassDetails GetTemplateInstance(IProject project, string templateId, ITypeReference typeInfo)
         {
             var templateInstance = project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
             if (templateInstance != null)
