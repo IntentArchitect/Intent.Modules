@@ -6,7 +6,7 @@ namespace Intent.Modelers.Domain.Api
 {
     public static class FolderExtensions
     {
-        public static IList<IFolder> GetFolderPath(this IHasFolder model, bool includePackage = true)
+        public static IList<IFolder> GetFolderPath(this IHasFolder model, bool includePackage = false)
         {
             List<IFolder> result = new List<IFolder>();
 

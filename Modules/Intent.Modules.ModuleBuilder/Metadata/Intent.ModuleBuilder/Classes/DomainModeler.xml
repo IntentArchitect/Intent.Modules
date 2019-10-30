@@ -33,5 +33,15 @@
   </literals>
   <attributes />
   <operations />
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="92598848-c9f8-4c33-98b2-4817638c5ff5">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="47fada69-518a-4594-bff4-a52ce25a6ad7" value="Intent.Modelers.Domain" />
+        <property name="517b881a-4093-4f3a-a665-6da46c7eab6b" value="2.0.0" />
+        <property name="f971b61c-dbdf-45c8-8ecd-8b6a75e6f153" value="Intent.Modules.Modelers.Domain" />
+        <property name="92e95e19-06b7-4f28-889c-230a08250149" value="2.0.0" />
+      </properties>
+    </stereotype>
+  </stereotypes>
 </class>

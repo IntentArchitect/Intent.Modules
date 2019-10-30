@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 
@@ -89,44 +90,54 @@ namespace Intent.Modules.Common.Templates
             return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths);
         }
 
+        private readonly ICollection<IClassTypeSource> _classTypeSources = new List<IClassTypeSource>();
+
+        public void AddClassTypeSource(IClassTypeSource classTypeSource)
+        {
+            _classTypeSources.Add(classTypeSource);
+        }
 
         private bool _onCreatedHasHappened;
+
         public override void OnCreated()
         {
             base.OnCreated();
             _onCreatedHasHappened = true;
+            foreach (var classTypeSource in _classTypeSources)
+            {
+                Types.AddClassTypeSource(classTypeSource);
+            }
         }
 
-        public string GetTemplateClassName(string templateId, IMetadataModel model)
+        public string GetTemplateClassName(string templateId, ITemplateDependency templateDependency)
         {
             if (!_onCreatedHasHappened)
             {
                 throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
             }
 
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(templateId, model));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependency);
             if (serviceContractTemplate != null)
             {
-                _detectedDependencies.Add(TemplateDependency.OnModel(templateId, model));
+                _detectedDependencies.Add(templateDependency);
                 return NormalizeNamespace(serviceContractTemplate.FullTypeName());
             }
             throw new Exception($"Could not find template with Id: {templateId} for model {Model.ToString()}");
         }
-        
+
         public string GetTemplateClassName(string templateId)
         {
-            if (!_onCreatedHasHappened)
-            {
-                throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
-            }
+            return GetTemplateClassName(templateId, TemplateDependency.OnTemplate(templateId));
+        }
 
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(templateId));
-            if (serviceContractTemplate != null)
-            {
-                _detectedDependencies.Add(TemplateDependency.OnTemplate(templateId));
-                return NormalizeNamespace(serviceContractTemplate.FullTypeName());
-            }
-            throw new Exception($"Could not find template with Id: {templateId}");
+        public string GetTemplateClassName(string templateId, IMetadataModel model)
+        {
+            return GetTemplateClassName(templateId, TemplateDependency.OnModel(templateId, model));
+        }
+
+        public string GetTemplateClassName(string templateId, string modelId)
+        {
+            return GetTemplateClassName(templateId, TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
         }
 
         public override IEnumerable<ITemplateDependency> GetTemplateDependencies()

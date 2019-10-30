@@ -11,6 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 <#=(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().Namespace) : "")#>
 <#=DependencyUsings#>
+
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace <#= Namespace #>

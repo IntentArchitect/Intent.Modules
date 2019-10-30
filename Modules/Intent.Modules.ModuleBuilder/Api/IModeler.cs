@@ -10,6 +10,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         IEnumerable<IModelerModelType> ModelTypes { get; }
         string ModuleDependency { get; }
         string ModuleVersion { get; }
+        string NuGetDependency { get; }
+        string NuGetVersion { get; }
     }
 
     public interface IModelerModelType

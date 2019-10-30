@@ -131,7 +131,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-
             //if (Model.Any(x => x.GetModelerName() == "Domain") && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Domain\"]") == null)
             //{
             //    var dependencies = doc.XPathSelectElement("package/dependencies");

@@ -22,5 +22,17 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="f971b61c-dbdf-45c8-8ecd-8b6a75e6f153">
+      <name>NuGet Dependency</name>
+      <type>string</type>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="92e95e19-06b7-4f28-889c-230a08250149">
+      <name>NuGet Version</name>
+      <type>string</type>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

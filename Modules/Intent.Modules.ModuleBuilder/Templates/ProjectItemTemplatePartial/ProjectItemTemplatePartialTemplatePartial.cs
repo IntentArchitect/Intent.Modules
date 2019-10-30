@@ -19,9 +19,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
         {
             AddNugetDependency(NugetPackages.IntentModulesCommon);
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
+            if (!string.IsNullOrWhiteSpace(model.GetModeler()?.NuGetDependency))
+            {
+                AddNugetDependency(new NugetPackageInfo(model.GetModeler().NuGetDependency, model.GetModeler().NuGetVersion));
+            }
         }
 
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
+        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath().Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
         public string FolderPath => string.Join("/", FolderBaseList);
         public string FolderNamespace => string.Join(".", FolderBaseList);
 
