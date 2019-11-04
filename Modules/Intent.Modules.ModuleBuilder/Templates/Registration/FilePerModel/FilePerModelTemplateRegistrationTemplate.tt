@@ -40,7 +40,7 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<<#= Model.GetModelTypeName() #>> GetModels(IApplication application)
         {
-            return _metadataManager.<#= GetModelsMethod() #>(application); 
+            return <#= GetModelsMethod() #>;
         }
     }
 }

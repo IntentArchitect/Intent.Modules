@@ -22,5 +22,17 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="1c93bb75-11f4-4604-983d-f8ff5318e217">
+      <name>Per Model Template</name>
+      <type>text</type>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="78850c86-fc34-4c08-a9b0-6db549caf85c">
+      <name>Per List Template</name>
+      <type>text</type>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

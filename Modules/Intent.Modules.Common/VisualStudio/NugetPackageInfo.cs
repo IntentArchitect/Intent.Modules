@@ -6,22 +6,20 @@ namespace Intent.Modules.Common.VisualStudio
 {
     public class NugetPackageInfo : INugetPackageInfo, IEquatable<NugetPackageInfo>
     {
-        public NugetPackageInfo(string name, string version, string targetFramework = null)
+        public NugetPackageInfo(string name, string version)
         {
             Name = name;
             Version = version;
-            TargetFramework = targetFramework;
             AssemblyRedirects = new List<AssemblyRedirectInfo>();
         }
 
         public override string ToString()
         {
-            return $"{Name}, {Version}, {TargetFramework}";
+            return $"{Name}, {Version}";
         }
 
         public string Name { get; }
         public string Version { get; }
-        public string TargetFramework { get; }
         public IList<AssemblyRedirectInfo> AssemblyRedirects { get; }
         public bool CanAddFile(string file)
         {

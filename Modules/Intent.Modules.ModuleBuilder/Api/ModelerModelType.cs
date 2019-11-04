@@ -24,5 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Name => _element.Name;
         public string Namespace => _element.GetStereotypeProperty<string>("Model Type Settings", "Namespace");
         public string LoadMethod => _element.GetStereotypeProperty<string>("Model Type Settings", "Load Method");
+        public string PerModelTemplate => _element.GetStereotypeProperty<string>("Model Type Settings", "Per Model Template");
+        public string SingleListTemplate => _element.GetStereotypeProperty<string>("Model Type Settings", "Per List Template");
     }
 }

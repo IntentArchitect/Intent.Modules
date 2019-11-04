@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Intent.Modules.EntityFrameworkCore.Repositories</RootNamespace>
     <AssemblyName>Intent.Modules.EntityFrameworkCore.Repositories</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\Intent.Modules.EntityFrameworkCore\Intent.Modules.EntityFrameworkCore.csproj">
       <Project>{E9452E43-0EFB-448E-93AA-E084644C796E}</Project>
       <Name>Intent.Modules.EntityFrameworkCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.EntityFramework\Intent.Modules.EntityFramework.csproj">
+      <Project>{6F1E2AAB-73BC-47BE-978E-C8CA8E93379A}</Project>
+      <Name>Intent.Modules.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Modelers.Domain\Intent.Modules.Modelers.Domain.csproj">
       <Project>{944F5519-873F-4C88-BACE-1A383E0C5F49}</Project>

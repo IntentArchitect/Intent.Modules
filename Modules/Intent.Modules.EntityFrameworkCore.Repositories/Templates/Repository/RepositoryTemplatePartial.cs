@@ -6,9 +6,9 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
-using Intent.Modules.EntityFrameworkCore.Templates.DbContext;
 using Intent.Engine;
 using Intent.Modelers.Domain.Api;
+using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
@@ -96,7 +96,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
         {
             return new[]
                 {
-                    new NugetPackageInfo("Intent.Framework.EntityFrameworkCore", "1.0.0", null),
+                    new NugetPackageInfo("Intent.Framework.EntityFrameworkCore", "1.0.0"),
                 }
                 .Union(base.GetNugetDependencies())
                 .ToArray();

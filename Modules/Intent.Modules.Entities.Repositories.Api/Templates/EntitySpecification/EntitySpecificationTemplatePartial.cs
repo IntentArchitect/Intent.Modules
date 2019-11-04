@@ -48,7 +48,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntitySpecification
         {
             return new[]
             {
-                new NugetPackageInfo("Intent.Framework.Domain", "1.0.0", null),
+                new NugetPackageInfo("Intent.Framework.Domain", "1.0.0"),
             };
         }
     }

@@ -113,7 +113,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         {
             return new[]
                 {
-                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.1", null),
+                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.1"),
                 }
                 .Union(base.GetNugetDependencies())
                 .ToArray();

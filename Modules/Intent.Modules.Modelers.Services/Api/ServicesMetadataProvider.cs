@@ -22,14 +22,25 @@ namespace Intent.Modelers.Services.Api
 
         public IEnumerable<IDTOModel> GetDTOs(IApplication application)
         {
-            return GetAllDTOs().Where(x => x.Application.Name == application.Name);
+            return GetAllDTOs().Where(x => x.Application.Id == application.Id);
         }
 
         public IEnumerable<IServiceModel> GetServices(IApplication application)
         {
-            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Name == application.Name
+            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Id == application.Id
                 && x.IsService()).ToList();
             return classes.Select(x => new ServiceModel(x)).ToList();
+        }
+
+        public IEnumerable<IEnumModel> GetAllEnums()
+        {
+            var types = _metadataManager.GetMetadata<Metadata.Models.IElement>("Services").Where(x => x.IsEnum()).ToList();
+            return types.Select(x => new EnumModel(x)).ToList();
+        }
+
+        public IEnumerable<IEnumModel> GetEnums(IApplication application)
+        {
+            return GetAllEnums().Where(x => x.Application.Id == application.Id);
         }
     }
 

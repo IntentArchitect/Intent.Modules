@@ -5,6 +5,7 @@
 <#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
 <#@ import namespace="System.Linq" #>
+using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -29,6 +30,7 @@ namespace <#= Namespace #>
         [IntentInitialGen]
         public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
+            AddTypeSource(templateId: <#= ClassName #>.TemplateId, collectionFormat: "IEnumerable<{0}>");
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

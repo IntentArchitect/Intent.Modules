@@ -114,15 +114,14 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write("> GetModels(IApplication application)\r\n        {\r\n            return _metadataMan" +
-                    "ager.");
+            this.Write("> GetModels(IApplication application)\r\n        {\r\n            return ");
             
             #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelsMethod()));
             
             #line default
             #line hidden
-            this.Write("(application); \r\n        }\r\n    }\r\n}");
+            this.Write(";\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

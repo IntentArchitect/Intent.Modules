@@ -40,9 +40,7 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IList<<#= Model.GetModelTypeName() #>> GetModels(IApplication application)
         {
-            return _metadataManager.<#= GetModelsMethod() #>(application)
-                .OrderBy(x => x.Name)
-                .ToList();
+            return <#= GetModelsMethod() #>.ToList();
         }
     }
 }

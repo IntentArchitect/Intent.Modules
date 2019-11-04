@@ -13,12 +13,4 @@ namespace Intent.Modules.ModuleBuilder.Api
         string NuGetDependency { get; }
         string NuGetVersion { get; }
     }
-
-    public interface IModelerModelType
-    {
-        string Id { get; }
-        string Name { get; }
-        string Namespace { get; }
-        string LoadMethod { get; }
-    }
 }

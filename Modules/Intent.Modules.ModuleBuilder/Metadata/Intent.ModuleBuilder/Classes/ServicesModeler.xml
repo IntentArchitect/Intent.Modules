@@ -13,7 +13,9 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Services.Api" />
-            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetServices" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="_metadataManager.GetServices(application.Id)" />
+            <property name="1c93bb75-11f4-4604-983d-f8ff5318e217" value="&lt;#@ import namespace=&quot;Intent.Modelers.Services.Api&quot; #&gt;&#xA;&#xA;[assembly: DefaultIntentManaged(Mode.Fully)]&#xA;&#xA;namespace &lt;#= Namespace #&gt;&#xA;{&#xA;    public class &lt;#= ClassName #&gt;&#xA;    {&#xA;&lt;#  foreach(var operation in Model.Operations) { #&gt;&#xA;        public &lt;#= operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : &quot;void&quot; #&gt; &lt;#= operation.Name.ToPascalCase() #&gt;(&lt;#= string.Join(&quot;, &quot;, operation.Parameters.Select(x =&gt; string.Format(&quot;{0} {1}&quot;, Types.Get(x.Type), x.Name))) #&gt;)&#xA;        {&#xA;            throw new NotImplementedException();&#xA;        }&#xA;&#xA;&lt;#  } #&gt;&#xA;    }&#xA;}" />
+            <property name="78850c86-fc34-4c08-a9b0-6db549caf85c" value="&lt;#@ import namespace=&quot;Intent.Modelers.Services.Api&quot; #&gt;&#xA;&#xA;[assembly: DefaultIntentManaged(Mode.Fully)]&#xA;&#xA;namespace &lt;#= Namespace #&gt;&#xA;{&#xA;    public class &lt;#= ClassName #&gt;&#xA;    {&#xA;&lt;#  foreach(var model in Model) { #&gt;&#xA;        // Model found: &lt;#= model.Name #&gt;&#xA;&lt;#  } #&gt;&#xA;    }&#xA;}" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -25,7 +27,23 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Services.Api" />
-            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetDTOs" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="_metadataManager.GetDTOs(application.Id)" />
+            <property name="1c93bb75-11f4-4604-983d-f8ff5318e217" value="&lt;#@ import namespace=&quot;Intent.Modelers.Services.Api&quot; #&gt;&#xA;&#xA;[assembly: DefaultIntentManaged(Mode.Fully)]&#xA;&#xA;namespace &lt;#= Namespace #&gt;&#xA;{&#xA;    public class &lt;#= ClassName #&gt;&#xA;    {&#xA;&lt;#  // The following is an example template implementation&#xA;    foreach(var attribute in Model.Fields) { #&gt;&#xA;        public &lt;#= Types.Get(attribute.Type) #&gt; &lt;#= attribute.Name.ToPascalCase() #&gt; { get; set; }&#xA;&#xA;&lt;#  } #&gt;&#xA;    }&#xA;}" />
+            <property name="78850c86-fc34-4c08-a9b0-6db549caf85c" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </literal>
+    <literal id="EB367129-4CBC-4E9E-A36B-6AFBADC483C8" type="Model Type">
+      <name>IEnumModel</name>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="633c5122-2c61-43c2-b98c-8a6cca6edd87">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Services.Api" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetEnums" />
+            <property name="1c93bb75-11f4-4604-983d-f8ff5318e217" />
+            <property name="78850c86-fc34-4c08-a9b0-6db549caf85c" />
           </properties>
         </stereotype>
       </stereotypes>

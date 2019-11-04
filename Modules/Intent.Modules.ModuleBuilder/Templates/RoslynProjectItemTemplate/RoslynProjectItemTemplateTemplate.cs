@@ -48,45 +48,38 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetModelType() != null ? $"<#@ import namespace=\"{Model.GetModelType().Namespace}\" #>{Environment.NewLine}" : "")}
-
-[assembly: DefaultIntentManaged(Mode.Fully)]
-
-namespace <#= Namespace #>
-{{
-    public class <#= ClassName #>
-    {{{TemplateBody()}
-    }}
-}}";
+{TemplateBody()}";
         }
 
         private string TemplateBody()
         {
             if (Model.GetCreationMode() == CreationMode.FilePerModel)
             {
-                return @"
-<#  // The following is an example template implementation
-    foreach(var attribute in Model.Attributes) { #>
-        public <#= Types.Get(attribute.Type) #> <#= attribute.Name.ToPascalCase() #> { get; set; }
+                return Model.GetModelType().PerModelTemplate;
+//                return @"
+//<#  // The following is an example template implementation
+//    foreach(var attribute in Model.Attributes) { #>
+//        public <#= Types.Get(attribute.Type) #> <#= attribute.Name.ToPascalCase() #> { get; set; }
 
-<#  } #>
+//<#  } #>
 
-<#  foreach(var operation in Model.Operations) { #>
-        public <#= operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : ""void"" #> <#= operation.Name.ToPascalCase() #>(<#= string.Join("", "", operation.Parameters.Select(x => string.Format(""{0} {1}"", Types.Get(x.Type), x.Name))) #>)
-        {
-            throw new NotImplementedException();
-        }
+//<#  foreach(var operation in Model.Operations) { #>
+//        public <#= operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : ""void"" #> <#= operation.Name.ToPascalCase() #>(<#= string.Join("", "", operation.Parameters.Select(x => string.Format(""{0} {1}"", Types.Get(x.Type), x.Name))) #>)
+//        {
+//            throw new NotImplementedException();
+//        }
 
-<#  } #>";
+//<#  } #>";
             }
 
             if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
             {
-                return @"
-<#  // The following is an example template implementation
-    foreach(var model in Model) { #>
-        // Model found: <#= model.Name #>
-<#  } #>";
+                return Model.GetModelType().SingleListTemplate;
+//                return @"
+//<#  // The following is an example template implementation
+//    foreach(var model in Model) { #>
+//        // Model found: <#= model.Name #>
+//<#  } #>";
             }
 
             return string.Empty;

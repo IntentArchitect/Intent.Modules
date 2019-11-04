@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modelers.Domain.Api
 {

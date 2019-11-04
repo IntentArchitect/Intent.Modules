@@ -13,7 +13,9 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Domain.Api" />
-            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetDomainClasses" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="_metadataManager.GetDomainClasses(application.Id)" />
+            <property name="1c93bb75-11f4-4604-983d-f8ff5318e217" value="&lt;#@ import namespace=&quot;Intent.Modelers.Domain.Api&quot; #&gt;&#xA;&#xA;[assembly: DefaultIntentManaged(Mode.Fully)]&#xA;&#xA;namespace &lt;#= Namespace #&gt;&#xA;{&#xA;    public &lt;#= Model.IsAbstract ? &quot;abstract &quot; : &quot;&quot; #&gt;class &lt;#= ClassName #&gt;&lt;#= Model.ParentClass != null ? &quot; : &quot; + GetTemplateClassName(TemplateId, Model.ParentClass) : &quot;&quot; #&gt;&#xA;    {&#xA;&lt;#  foreach(var attribute in Model.Attributes) { #&gt;&#xA;        public &lt;#= GetTypeName(attribute.Type) #&gt; &lt;#= attribute.Name.ToPascalCase() #&gt; { get; set; }&#xA;&#xA;&lt;#  }&#xA;&#xA;    foreach (var associatedClass in Model.AssociatedClasses)&#xA;    {#&gt;&#xA;        public &lt;#= GetTypeName(associatedClass) #&gt; &lt;#= associatedClass.DefaultName().ToPascalCase() #&gt; { get; set; }&#xA;&#xA;&lt;#  }&#xA;&#xA;    foreach(var operation in Model.Operations) { #&gt;&#xA;        public &lt;#= operation.ReturnType != null ? GetTypeName(operation.ReturnType.Type) : &quot;void&quot; #&gt; &lt;#= operation.Name.ToPascalCase() #&gt;(&lt;#= string.Join(&quot;, &quot;, operation.Parameters.Select(x =&gt; string.Format(&quot;{0} {1}&quot;, GetTypeName(x.Type), x.Name))) #&gt;)&#xA;        {&#xA;            throw new NotImplementedException();&#xA;        }&#xA;&#xA;&lt;#  } #&gt;&#xA;    }&#xA;}" />
+            <property name="78850c86-fc34-4c08-a9b0-6db549caf85c" value="&lt;#@ import namespace=&quot;Intent.Modelers.Domain.Api&quot; #&gt;&#xA;&#xA;[assembly: DefaultIntentManaged(Mode.Fully)]&#xA;&#xA;namespace &lt;#= Namespace #&gt;&#xA;{&#xA;    public class &lt;#= ClassName #&gt;&#xA;    {&#xA;&lt;#  foreach(var model in Model) { #&gt;&#xA;        // Model found: &lt;#= model.Name #&gt;&#xA;&lt;#  } #&gt;&#xA;    }&#xA;}" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -25,7 +27,9 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Domain.Api" />
-            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetEnums" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="_metadataManager.GetEnums(application.Id)" />
+            <property name="1c93bb75-11f4-4604-983d-f8ff5318e217" value="&lt;#@ import namespace=&quot;Intent.Modelers.Domain.Api&quot; #&gt;" />
+            <property name="78850c86-fc34-4c08-a9b0-6db549caf85c" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -40,7 +44,7 @@
         <property name="47fada69-518a-4594-bff4-a52ce25a6ad7" value="Intent.Modelers.Domain" />
         <property name="517b881a-4093-4f3a-a665-6da46c7eab6b" value="2.0.0" />
         <property name="f971b61c-dbdf-45c8-8ecd-8b6a75e6f153" value="Intent.Modules.Modelers.Domain" />
-        <property name="92e95e19-06b7-4f28-889c-230a08250149" value="2.0.0" />
+        <property name="92e95e19-06b7-4f28-889c-230a08250149" value="2.0.0-pre2" />
       </properties>
     </stereotype>
   </stereotypes>

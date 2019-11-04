@@ -20,7 +20,7 @@ namespace Intent.Modules.Common.Templates
         public IntentRoslynProjectItemTemplateBase(string templateId, IProject project, TModel model)
             : base(templateId, project, model)
         {
-
+            AddNugetDependency("Intent.RoslynWeaver.Attributes", "1.0.0");
         }
 
         public string Namespace
@@ -92,7 +92,12 @@ namespace Intent.Modules.Common.Templates
 
         private readonly ICollection<IClassTypeSource> _classTypeSources = new List<IClassTypeSource>();
 
-        public void AddClassTypeSource(IClassTypeSource classTypeSource)
+        public void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
+        {
+            _classTypeSources.Add(CSharpTypeSource.InProject(Project, templateId, collectionFormat));
+        }
+
+        public void AddTypeSource(IClassTypeSource classTypeSource)
         {
             _classTypeSources.Add(classTypeSource);
         }
@@ -109,6 +114,11 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
+        public string GetTypeName(ITypeReference typeReference)
+        {
+            return NormalizeNamespace(Types.Get(typeReference));
+        }
+
         public string GetTemplateClassName(string templateId, ITemplateDependency templateDependency)
         {
             if (!_onCreatedHasHappened)
@@ -116,11 +126,11 @@ namespace Intent.Modules.Common.Templates
                 throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
             }
 
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependency);
-            if (serviceContractTemplate != null)
+            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependency);
+            if (template != null)
             {
                 _detectedDependencies.Add(templateDependency);
-                return NormalizeNamespace(serviceContractTemplate.FullTypeName());
+                return NormalizeNamespace(template.FullTypeName());
             }
             throw new Exception($"Could not find template with Id: {templateId} for model {Model.ToString()}");
         }
@@ -159,7 +169,7 @@ namespace Intent.Modules.Common.Templates
                     return _existingContentUsings;
                 }
 
-                var filepath = FileMetadata.GetRelativeFilePathWithFileName();
+                var filepath = FileMetadata.GetFullLocationPathWithFileName();
                 if (!File.Exists(filepath))
                 {
                     return _existingContentUsings = new string[0];
@@ -284,7 +294,7 @@ namespace Intent.Modules.Common.Templates
             var relevantContent = new List<string>();
             foreach (var line in lines)
             {
-                if (line.StartsWith("using ") && !line.Contains("="))
+                if (line.TrimStart().StartsWith("using ") && !line.Contains("="))
                 {
                     relevantContent.Add(line
                         .Replace(";", string.Empty)
@@ -292,7 +302,8 @@ namespace Intent.Modules.Common.Templates
                         .Trim());
                 }
 
-                if (line.StartsWith("namespace"))
+                // GCB - using clauses can exist after the namespace is declared. Rather check until class is declared.
+                if (line.Contains("class "))
                 {
                     break;
                 }
@@ -315,10 +326,14 @@ namespace Intent.Modules.Common.Templates
         private readonly ICollection<INugetPackageInfo> _nugetDependencies = new List<INugetPackageInfo>();
         public virtual IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return _nugetDependencies.Concat(new[]
-            {
-                new NugetPackageInfo(name : "Intent.RoslynWeaver.Attributes", version : "1.0.0")
-            });
+            return _nugetDependencies;
+        }
+
+        public NugetPackageInfo AddNugetDependency(string packageName, string packageVersion)
+        {
+            var package = new NugetPackageInfo(packageName, packageVersion);
+            _nugetDependencies.Add(package);
+            return package;
         }
 
         public void AddNugetDependency(INugetPackageInfo nugetPackageInfo)
