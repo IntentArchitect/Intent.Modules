@@ -9,6 +9,6 @@
     <application id="7489cd09-dafa-49ea-be0d-be25287878a6" relativePath="EfEntityGenerationTests\EfEntityGenerationTests.application.config" />
     <application id="f1fe42eb-130d-49c5-b785-b0ee6a362399" relativePath="ModuleBuilderTests\ModuleBuilderTests.application.config" />
     <application id="38554127-0062-459e-b977-221b76f8bd01" relativePath="ModuleBuilderModuleOutput\ModuleBuilderModuleOutput.application.config" />
-    <application id="e1ab92df-e9cd-400f-aa94-35c1037749f1" relativePath="AspNetWebApi\AspNetWebApi.application.config" />
+    <application id="d8cdb292-739f-4d3c-8cbd-db1dfa1ef42e" relativePath="AspNetWebApi\AspNetWebApi.application.config" />
   </applications>
 </solution>

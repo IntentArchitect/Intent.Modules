@@ -2,13 +2,15 @@
 <class id="030a72f6-5406-4d74-800b-35bab5fdd506" type="Service">
   <name>AsyncTestServices</name>
   <isAbstract>false</isAbstract>
+  <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>91efdd20-4c44-4b39-9615-6232d55b6def</parentFolderId>
-  <stereotypes />
+  <literals />
   <attributes />
   <operations>
-    <operation id="9c0ae4b6-ddc7-4e1f-ae9c-22051b226f18" isAbstract="false">
+    <operation id="9c0ae4b6-ddc7-4e1f-ae9c-22051b226f18" type="Operation" isAbstract="false">
       <name>AsyncOperationWithoutAnything</name>
+      <isMapped>false</isMapped>
       <parameters />
       <stereotypes>
         <stereotype stereotypeDefinitionId="A225C795-33E9-417D-8D58-E22826A08224">
@@ -17,8 +19,9 @@
         </stereotype>
       </stereotypes>
     </operation>
-    <operation id="613c9430-5507-459d-b633-cb7da177c54c" isAbstract="false">
+    <operation id="613c9430-5507-459d-b633-cb7da177c54c" type="Operation" isAbstract="false">
       <name>AsyncOperationWithPrimitiveArguments</name>
+      <isMapped>false</isMapped>
       <parameters>
         <parameter id="4963be45-d0e2-465d-8458-713582c50c32">
           <name>stringVal</name>
@@ -26,6 +29,8 @@
             <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
           </typeReference>
           <stereotypes />
         </parameter>
@@ -35,6 +40,8 @@
             <typeId>33013006-E404-48C2-AC46-24EF5A5774FD</typeId>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
           </typeReference>
           <stereotypes />
         </parameter>
@@ -44,6 +51,8 @@
             <typeId>a4107c29-7851-4121-9416-cf1236908f1e</typeId>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
           </typeReference>
           <stereotypes />
         </parameter>
@@ -53,6 +62,8 @@
             <typeId>55bab887-622b-4712-a988-00cdc0cfabbc</typeId>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
           </typeReference>
           <stereotypes />
         </parameter>
@@ -64,8 +75,9 @@
         </stereotype>
       </stereotypes>
     </operation>
-    <operation id="b4be921d-71d3-48f1-8cb6-79605005d79c" isAbstract="false">
+    <operation id="b4be921d-71d3-48f1-8cb6-79605005d79c" type="Operation" isAbstract="false">
       <name>AsyncOperationWithDTOArgument</name>
+      <isMapped>false</isMapped>
       <parameters>
         <parameter id="5cbb4aa2-5bf1-46d9-84b3-c7b2034fb35d">
           <name>dto</name>
@@ -73,6 +85,8 @@
             <typeId>3923c76a-02e3-41a5-a9c5-744f3ea043fe</typeId>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
           </typeReference>
           <stereotypes />
         </parameter>
@@ -84,13 +98,15 @@
         </stereotype>
       </stereotypes>
     </operation>
-    <operation id="2df8cd17-0311-4a33-8ed5-59b74f7ef447" isAbstract="false">
+    <operation id="2df8cd17-0311-4a33-8ed5-59b74f7ef447" type="Operation" isAbstract="false">
       <name>AsyncOperationWithDTOResponse</name>
+      <isMapped>false</isMapped>
       <returnType id="325373e2-6ee5-4c58-8fef-8ea83cc57efa">
         <typeId>3923c76a-02e3-41a5-a9c5-744f3ea043fe</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
+        <genericTypeParameters />
       </returnType>
       <parameters />
       <stereotypes>
@@ -100,13 +116,15 @@
         </stereotype>
       </stereotypes>
     </operation>
-    <operation id="dfcde359-c93d-45bb-a5ef-65d2daab20dc" isAbstract="false">
+    <operation id="dfcde359-c93d-45bb-a5ef-65d2daab20dc" type="Operation" isAbstract="false">
       <name>AsyncOperationWithPrimitiveResponse</name>
+      <isMapped>false</isMapped>
       <returnType id="729e77eb-6651-43ac-a49d-4e2bb1398d20">
-        <type>d384db9c-a279-45e1-801e-e4e8099625f2</type>
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
+        <genericTypeParameters />
       </returnType>
       <parameters />
       <stereotypes>
@@ -116,8 +134,9 @@
         </stereotype>
       </stereotypes>
     </operation>
-    <operation id="543cbb24-fc4e-498a-9c29-e5b26ea59528" isAbstract="false">
+    <operation id="543cbb24-fc4e-498a-9c29-e5b26ea59528" type="Operation" isAbstract="false">
       <name>AsyncOperationWithExplicitTransactionScope</name>
+      <isMapped>false</isMapped>
       <parameters />
       <stereotypes>
         <stereotype stereotypeDefinitionId="A225C795-33E9-417D-8D58-E22826A08224">
@@ -132,8 +151,9 @@
         </stereotype>
       </stereotypes>
     </operation>
-    <operation id="ebc21943-c2d5-4ce6-857c-c0a694889878" isAbstract="false">
+    <operation id="ebc21943-c2d5-4ce6-857c-c0a694889878" type="Operation" isAbstract="false">
       <name>AsyncOperationWithoutTransactionScope</name>
+      <isMapped>false</isMapped>
       <parameters />
       <stereotypes>
         <stereotype stereotypeDefinitionId="A225C795-33E9-417D-8D58-E22826A08224">
@@ -149,4 +169,5 @@
       </stereotypes>
     </operation>
   </operations>
+  <stereotypes />
 </class>
