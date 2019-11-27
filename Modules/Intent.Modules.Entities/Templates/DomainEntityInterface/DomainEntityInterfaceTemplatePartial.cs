@@ -64,7 +64,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         public string GetInterfaces(IClass @class)
         {
             var interfaces = GetDecorators().SelectMany(x => x.GetInterfaces(@class)).Distinct().ToList();
-            if (Model.GetStereotypeProperty("Base Type", "Has Interface", false))
+            if (Model.GetStereotypeProperty("Base Type", "Has Interface", false) && GetBaseTypeInterface() != null)
             {
                 interfaces.Insert(0, GetBaseTypeInterface());
             }

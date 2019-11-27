@@ -30,7 +30,9 @@ namespace <#= Namespace #>
         [IntentInitialGen]
         public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
+<#  if (Model.GetCreationMode() != CreationMode.SingleFileNoModel) { #>
             AddTypeSource(templateId: <#= ClassName #>.TemplateId, collectionFormat: "IEnumerable<{0}>");
+<#  } #>
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

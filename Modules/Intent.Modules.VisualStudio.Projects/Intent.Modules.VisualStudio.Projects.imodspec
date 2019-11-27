@@ -108,6 +108,11 @@
   </projectTypes>
   <templates>
     <template id="Intent.VisualStudio.Projects.AssemblyInfo"/>
+    <template id="Intent.VisualStudio.Projects.WebApiServiceCSProjectFile">
+      <config>
+        <add key="Ignore NuGet Dependencies" description="If enabled will not install any of the NuGet dependencies associated with this project type." value="false" type="boolean" />
+      </config>
+    </template>
     <template id="Intent.VisualStudio.Projects.ConsoleApp.Program"/>
     <template id="Intent.VisualStudio.Projects.CoreLibrary.CSProject"/>
     <template id="Intent.VisualStudio.Projects.CoreWeb.CSProject"/>

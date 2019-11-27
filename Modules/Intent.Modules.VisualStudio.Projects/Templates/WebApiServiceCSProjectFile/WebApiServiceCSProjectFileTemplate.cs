@@ -61,7 +61,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             XDocument doc;
             if (File.Exists(fullFileName))
             {
-                doc = XDocument.Load(fullFileName);
+                doc = XDocument.Load(fullFileName, LoadOptions.PreserveWhitespace);
             }
             else
             {
@@ -219,6 +219,10 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
+            if (FileMetadata.CustomMetadata.TryGetValue("Ignore NuGet Dependencies", out var ignoreNuGet) && ignoreNuGet == "true")
+            {
+                return new INugetPackageInfo[0];
+            }
             return new[]
             {
                 NugetPackages.MicrosoftAspNetWebApi,

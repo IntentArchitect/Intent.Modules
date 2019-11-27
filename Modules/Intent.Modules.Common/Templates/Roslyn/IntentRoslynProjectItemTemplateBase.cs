@@ -62,14 +62,15 @@ namespace Intent.Modules.Common.Templates
         public virtual string NormalizeNamespace(string foreignType)
         {
             // Handle Generics recursively:
+            string normalizedGenericTypes = null;
             if (foreignType.Contains("<") && foreignType.Contains(">"))
             {
                 var genericTypes = foreignType.Substring(foreignType.IndexOf("<", StringComparison.Ordinal) + 1, foreignType.Length - foreignType.IndexOf("<", StringComparison.Ordinal) - 2);
-                var normalizedGenericTypes = genericTypes
+                normalizedGenericTypes = genericTypes
                     .Split(',')
                     .Select(NormalizeNamespace)
                     .Aggregate((x, y) => x + ", " + y);
-                foreignType = $"{foreignType.Substring(0, foreignType.IndexOf("<", StringComparison.Ordinal))}<{normalizedGenericTypes}>";
+                foreignType = $"{foreignType.Substring(0, foreignType.IndexOf("<", StringComparison.Ordinal))}";
             }
 
             var usingPaths = DependencyUsings
@@ -87,7 +88,7 @@ namespace Intent.Modules.Common.Templates
                 .Distinct()
                 .ToArray();
 
-            return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths);
+            return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
         }
 
         private readonly ICollection<IClassTypeSource> _classTypeSources = new List<IClassTypeSource>();

@@ -15,6 +15,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
 
         public SingleFileListModelTemplateRegistrationTemplate(IProject project, ITemplateDefinition model) : base(TemplateId, project, model)
         {
+            AddNugetDependency("", "");
+            AddTypeSource(SingleFileListModelTemplateRegistrationTemplate.TemplateId, "List<{0}>");
         }
 
         public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();

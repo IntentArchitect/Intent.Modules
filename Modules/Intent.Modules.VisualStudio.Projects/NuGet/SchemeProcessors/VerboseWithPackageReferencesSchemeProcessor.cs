@@ -20,7 +20,8 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
                 element => element.Attribute("Include")?.Value,
                 element =>
                 {
-                    var version = element.XPathSelectElement($"{prefix}:Version", namespaceManager)?.Value;
+                    var version = element.XPathSelectElement($"{prefix}:Version", namespaceManager)?.Value ??
+                        element.Attributes("Version").FirstOrDefault()?.Value;
 
                     var privateAssetsElement = element.XPathSelectElement($"{prefix}:PrivateAssets", namespaceManager);
                     var privateAssets = privateAssetsElement != null
@@ -88,19 +89,21 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
                         new XElement(XName.Get("Version", namespaceName), package.Version)));
                 }
 
-                var versionElement = packageReferenceElement.XPathSelectElement($"{prefix}:Version", namespaceManager);
-                if (versionElement == null)
+                var versionElement = packageReferenceElement.XPathSelectElement($"{prefix}:Version", namespaceManager); // try element first
+                var versionAttribute = packageReferenceElement.Attributes("Version").FirstOrDefault(); // could be attribute
+                if (versionElement == null && versionAttribute == null)
                 {
                     throw new Exception("Missing version element from PackageReference element.");
                 }
 
-                if (NuGetVersion.Parse(versionElement.Value) >= package.Version)
+                if (NuGetVersion.Parse(versionElement?.Value ?? versionAttribute.Value) >= package.Version)
                 {
                     continue;
                 }
 
-                tracing.Info($"Upgrading {packageId} from {versionElement.Value} to {package.Version} in project {projectName}");
-                versionElement.SetValue(package.Version);
+                tracing.Info($"Upgrading {packageId} from {versionElement?.Value ?? versionAttribute.Value} to {package.Version} in project {projectName}");
+                versionElement?.SetValue(package.Version);
+                versionAttribute?.SetValue(package.Version);
             }
 
             SortAlphabetically(packageReferenceItemGroup);

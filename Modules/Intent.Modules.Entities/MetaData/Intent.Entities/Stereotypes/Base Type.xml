@@ -6,7 +6,7 @@
     <source>share-square-o</source>
   </icon>
   <displayIcon>false</displayIcon>
-  <displayFunction>: ${lookup(Type).label}</displayFunction>
+  <displayFunction>${ifError(() => ": " + lookup(Type).label, "")}</displayFunction>
   <autoAdd>false</autoAdd>
   <targetElements>
     <element>Class</element>
@@ -16,7 +16,6 @@
     <property id="C18FCCB3-1737-47CA-A87C-CF2AF256C709">
       <name>Type</name>
       <type>lookup-type</type>
-      <defaultValue>341DD965-D06C-4A40-9437-9516ADA77FF5</defaultValue>
       <lookupTypes>
         <type>Type-Definition</type>
       </lookupTypes>

@@ -183,8 +183,8 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
         internal static (IReadOnlyCollection<NuGetProject> Projects, Dictionary<string, NuGetVersion> HighestVersions) DeterminePackages(IEnumerable<IProject> applicationProjects, Func<IProject, string> loadDelegate)
         {
             var projects = new List<NuGetProject>();
-            var highestVersions = new Dictionary<string, NuGetVersion>();
 
+            var highestVersions = new Dictionary<string, NuGetVersion>();
             foreach (var project in applicationProjects.OrderBy(x => x.Name))
             {
                 string projectContent = null;
@@ -197,18 +197,19 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
 
                 var installedPackages = processor.GetInstalledPackages(project, document);
 
+                var highestVersionsInProject = new Dictionary<string, NuGetVersion>();
                 foreach (var installedPackage in installedPackages)
                 {
                     var packageId = installedPackage.Key;
 
-                    if (!highestVersions.TryGetValue(packageId, out var highestVersion) ||
+                    if (!highestVersionsInProject.TryGetValue(packageId, out var highestVersion) ||
                         highestVersion < installedPackage.Value.Version)
                     {
-                        highestVersions[packageId] = installedPackage.Value.Version;
+                        highestVersionsInProject[packageId] = installedPackage.Value.Version;
                     }
                 }
 
-                var consolidatedPackages = installedPackages.ToDictionary(x => x.Key, x => x.Value.Clone());
+                //var consolidatedPackages = installedPackages.ToDictionary(x => x.Key, x => x.Value.Clone());
                 var requestedPackages = new Dictionary<string, NuGetPackage>();
 
                 foreach (var package in project.NugetPackages())
@@ -218,20 +219,20 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
                         throw new Exception($"Could not parse '{package.Version}' from Intent metadata for package '{package.Name}' in project '{project.Name}' as a valid Semantic Version 2.0 'version' value.");
                     }
 
-                    if (!highestVersions.TryGetValue(package.Name, out var highestVersion) ||
+                    if (!highestVersionsInProject.TryGetValue(package.Name, out var highestVersion) ||
                         highestVersion < semanticVersion)
                     {
-                        highestVersions[package.Name] = highestVersion = semanticVersion;
+                        highestVersionsInProject[package.Name] = highestVersion = semanticVersion;
                     }
 
-                    if (consolidatedPackages.TryGetValue(package.Name, out var consolidatedPackage))
-                    {
-                        consolidatedPackage.Update(highestVersion, package);
-                    }
-                    else
-                    {
-                        consolidatedPackages.Add(package.Name, NuGetPackage.Create(package, highestVersion));
-                    }
+                    //if (consolidatedPackages.TryGetValue(package.Name, out var consolidatedPackage))
+                    //{
+                    //    consolidatedPackage.Update(highestVersion, package);
+                    //}
+                    //else
+                    //{
+                    //    consolidatedPackages.Add(package.Name, NuGetPackage.Create(package, highestVersion));
+                    //}
 
                     if (requestedPackages.TryGetValue(package.Name, out var requestedPackage))
                     {
@@ -240,6 +241,15 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
                     else
                     {
                         requestedPackages.Add(package.Name, NuGetPackage.Create(package, highestVersion));
+                    }
+                }
+
+                foreach (var nuGetVersion in highestVersionsInProject)
+                {
+                    if (!highestVersions.TryGetValue(nuGetVersion.Key, out var highestVersion) ||
+                        highestVersion < nuGetVersion.Value)
+                    {
+                        highestVersions[nuGetVersion.Key] = nuGetVersion.Value;
                     }
                 }
 
@@ -265,7 +275,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
             }
 
             var (prefix, namespaceManager, namespaceName) = xNode.Document.GetNamespaceManager();
-            
+
             if (xNode.XPathSelectElement("/Project[@Sdk]") != null)
             {
                 return NuGetScheme.Lean;
@@ -297,6 +307,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
                         requestedPackage.Version < highestVersion.Value)
                     {
                         requestedPackage.Version = highestVersion.Value;
+                        continue;
                     }
 
                     if (projectPackage.InstalledPackages.TryGetValue(highestVersion.Key, out var installedPackage) &&
