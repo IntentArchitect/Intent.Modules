@@ -53,36 +53,30 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 
         private string TemplateBody()
         {
-            if (Model.GetCreationMode() == CreationMode.FilePerModel)
+            switch (Model.GetCreationMode())
             {
-                return Model.GetModelType().PerModelTemplate;
-//                return @"
-//<#  // The following is an example template implementation
-//    foreach(var attribute in Model.Attributes) { #>
-//        public <#= Types.Get(attribute.Type) #> <#= attribute.Name.ToPascalCase() #> { get; set; }
+                case CreationMode.SingleFileNoModel:
+                    return @"
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
-//<#  } #>
+namespace <#= Namespace #>
+{
+    public class <#= ClassName #>
+    {
 
-//<#  foreach(var operation in Model.Operations) { #>
-//        public <#= operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : ""void"" #> <#= operation.Name.ToPascalCase() #>(<#= string.Join("", "", operation.Parameters.Select(x => string.Format(""{0} {1}"", Types.Get(x.Type), x.Name))) #>)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//<#  } #>";
+    }
+}";
+                    break;
+                case CreationMode.FilePerModel:
+                    return Model.GetModelType().PerModelTemplate;
+                case CreationMode.SingleFileListModel:
+                    return Model.GetModelType().SingleListTemplate;
+                case CreationMode.Custom:
+                    return string.Empty;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-
-            if (Model.GetCreationMode() == CreationMode.SingleFileListModel)
-            {
-                return Model.GetModelType().SingleListTemplate;
-//                return @"
-//<#  // The following is an example template implementation
-//    foreach(var model in Model) { #>
-//        // Model found: <#= model.Name #>
-//<#  } #>";
-            }
-
-            return string.Empty;
         }
 
         private string GetModelType()

@@ -253,7 +253,7 @@ namespace Intent.Modules.Common.Templates
             {
                 if (_types == null)
                 {
-                    throw new Exception("Attempting to access Types before a ITypeResolver has been set. Either install the Intent.Common.Types module or ensure Types is set manually.");
+                    throw new Exception($"Error in template {GetType().FullName}: Attempting to access Types before a ITypeResolver has been set. Either install the Intent.Common.Types module or ensure Types is set manually.");
                 }
                 return _types;
             }

@@ -60,7 +60,7 @@
   </dependencies>
   <metadata>
     <install target="Module Builder" src="modeler"/>
-    <install target="Module Builder" src="Metadata/Intent.ModuleBuilder"/>
+    <install target="Module Builder" src="metadata/Intent.ModuleBuilder"/>
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll"/>

@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Metadata\Intent.ModuleBuilder\Stereotypes\Template Settings.xml" />
+    <None Remove="metadata\Intent.ModuleBuilder\Stereotypes\Template Settings.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Metadata\Intent.ModuleBuilder\Stereotypes\Template Settings.xml" />
+    <Content Include="metadata\Intent.ModuleBuilder\Stereotypes\Template Settings.xml" />
   </ItemGroup>
 
   <ItemGroup>
