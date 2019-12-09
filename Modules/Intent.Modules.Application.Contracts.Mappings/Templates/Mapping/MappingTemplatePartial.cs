@@ -42,7 +42,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
             _stereotypeTypePropertyConfigValue = GetMetadata().CustomMetadata[StereotypeTypePropertyConfigId];
             _stereotypeNamespacePropertyConfigValue = GetMetadata().CustomMetadata[StereotypeNamespacePropertyConfigId];
             _contractTemplateDependancy = TemplateDependency.OnModel<IDTOModel>(GetMetadata().CustomMetadata[ContractTemplateDependancyConfigId], (to) => to.Id == Model.Id);
-            _domainTemplateDependancy = TemplateDependency.OnModel<IClass>(_domainTemplateDependancyConfigValue, (to) => to.Id == Model.MappedClass.ClassId);
+            _domainTemplateDependancy = TemplateDependency.OnModel<IClass>(_domainTemplateDependancyConfigValue, (to) => to.Id == Model.MappedClass.ElementId);
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -97,7 +97,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
                         $"First tried checking on the DTO for existence of a stereotype '{_stereotypeNameConfigValue}' with populated property '{_stereotypeTypePropertyConfigValue}', but the stereotype and/or property was not present. " +
                         $"\r\n" +
                         $"\r\n" +
-                        $"Then tried finding an instance of template with ID '{_domainTemplateDependancyConfigValue}' and model ID of {Model.MappedClass.ClassId}, but none was found." +
+                        $"Then tried finding an instance of template with ID '{_domainTemplateDependancyConfigValue}' and model ID of {Model.MappedClass.ElementId}, but none was found." +
                         $"\r\n");
             }
         }

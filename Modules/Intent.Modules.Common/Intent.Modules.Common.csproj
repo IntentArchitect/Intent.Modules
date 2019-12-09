@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
     <PackageIconUrl>https://intentarchitect.com/assets/images/logo.png</PackageIconUrl>
     <PackageTags>Intent Architect Software Factory SDK Modules Common</PackageTags>
-    <Version>2.0.0-pre8.1</Version>
+    <Version>2.0.0-pre8.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
@@ -19,7 +19,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.0.0-pre9.3" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.0.0-pre9.4" />
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
   </ItemGroup>
 
