@@ -7,7 +7,7 @@ namespace Intent.Modelers.Domain.Api
 {
     internal class Class : IClass, IEquatable<IClass>
     {
-        private IList<IAssociationEnd> _associatedClasses;
+        private IList<IAssociationEnd> _associatedElements;
         private readonly IElement _element;
         private readonly ICollection<IClass> _childClasses = new List<IClass>();
         private readonly Class _parent;
@@ -18,7 +18,7 @@ namespace Intent.Modelers.Domain.Api
             classCache.Add(Id, this);
             Folder = Api.Folder.SpecializationType.Equals(_element.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_element.ParentElement) : null;
 
-            var generalizedFrom = _element.AssociatedClasses
+            var generalizedFrom = _element.AssociatedElements
                 .Where(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase) &&
                             x.Association.SourceEnd.Element.Id == _element.Id)
                 .ToArray();
@@ -34,7 +34,7 @@ namespace Intent.Modelers.Domain.Api
                 _parent._childClasses.Add(this);
             }
 
-            _associatedClasses = element.AssociatedClasses
+            _associatedElements = element.AssociatedElements
                 .Where(x => "Composition".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase)
                 || "Aggregation".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))
                 .Select(x =>
@@ -61,8 +61,8 @@ namespace Intent.Modelers.Domain.Api
         public IEnumerable<IOperation> Operations => _element.Operations;
         public IEnumerable<IAssociationEnd> AssociatedClasses
         {
-            get => _associatedClasses;
-            set => _associatedClasses = (IList<IAssociationEnd>)value;
+            get => _associatedElements;
+            set => _associatedElements = (IList<IAssociationEnd>)value;
         }
 
         public IEnumerable<IAssociation> OwnedAssociations

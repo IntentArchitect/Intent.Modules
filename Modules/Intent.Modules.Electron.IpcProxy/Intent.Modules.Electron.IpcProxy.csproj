@@ -9,7 +9,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.0.0-pre9.3" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.0.0-pre9.4" />
   </ItemGroup>
 
   <ItemGroup>
