@@ -25,6 +25,12 @@ namespace Intent.Modelers.Services.Api
             return GetAllDTOs().Where(x => x.Application.Id == application.Id);
         }
 
+        public IEnumerable<IServiceModel> GetAllServices()
+        {
+            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.IsService()).ToList();
+            return classes.Select(x => new ServiceModel(x)).ToList();
+        }
+
         public IEnumerable<IServiceModel> GetServices(IApplication application)
         {
             var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Id == application.Id
