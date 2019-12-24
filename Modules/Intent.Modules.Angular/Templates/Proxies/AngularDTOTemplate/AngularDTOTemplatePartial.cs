@@ -19,7 +19,8 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
     [IntentManaged(Mode.Merge)]
     partial class AngularDTOTemplate : IntentTypescriptProjectItemTemplateBase<IModuleDTOModel>
     {
-        public const string TemplateId = "Angular.AngularDTOTemplate";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "Angular.Templates.Proxies.AngularDTOTemplate";
 
         public AngularDTOTemplate(IProject project, IModuleDTOModel model) : base(TemplateId, project, model)
         {
@@ -28,7 +29,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         public string GenericTypes => Model.GenericTypes.Any() ? $"<{ string.Join(", ", Model.GenericTypes) }>" : "";
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             //var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
             return new TypescriptDefaultFileMetadata(

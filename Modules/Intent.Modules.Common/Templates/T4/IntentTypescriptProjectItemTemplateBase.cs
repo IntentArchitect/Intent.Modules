@@ -35,12 +35,12 @@ namespace Intent.Modules.Common.Templates
 
         public string Location => FileMetadata.LocationInProject;
 
-        public sealed override ITemplateFileConfig DefineDefaultFileMetadata()
-        {
-            return DefineTypescriptDefaultFileMetadata();
-        }
+        //public sealed override ITemplateFileConfig DefineDefaultFileMetadata()
+        //{
+        //    return DefineTypescriptDefaultFileMetadata();
+        //}
 
-        protected abstract TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata();
+        //protected abstract TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata();
     }
 
     public class TypescriptDefaultFileMetadata : DefaultFileMetadata

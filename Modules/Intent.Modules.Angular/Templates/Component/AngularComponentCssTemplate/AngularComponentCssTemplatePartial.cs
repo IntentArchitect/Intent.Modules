@@ -18,7 +18,8 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
     [IntentManaged(Mode.Merge)]
     partial class AngularComponentCssTemplate : IntentProjectItemTemplateBase<IComponentModel>, ITemplatePostCreationHook
     {
-        public const string TemplateId = "Angular.AngularComponentCssTemplate";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "Angular.Templates.Component.AngularComponentCssTemplate";
 
         public AngularComponentCssTemplate(IProject project, IComponentModel model) : base(TemplateId, project, model)
         {

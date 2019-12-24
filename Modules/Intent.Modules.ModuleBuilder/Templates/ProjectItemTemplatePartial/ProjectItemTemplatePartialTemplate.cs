@@ -60,7 +60,14 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write(" : IntentProjectItemTemplateBase<");
+            this.Write(" : ");
+            
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateBaseClass()));
+            
+            #line default
+            #line hidden
+            this.Write("<");
             
             #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));

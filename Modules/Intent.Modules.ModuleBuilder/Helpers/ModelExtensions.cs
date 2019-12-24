@@ -26,6 +26,11 @@ namespace Intent.Modules.ModuleBuilder.Helpers
             }
         }
 
+        public static string GetTemplateBaseType(this ITemplateDefinition model)
+        {
+            return model.GetStereotypeProperty("Template Settings", "Base Type", "IntentProjectItemTemplateBase");
+        }
+
         public static string GetTemplateModelName(this ITemplateDefinition model)
         {
             var modelType = model.GetModelType();

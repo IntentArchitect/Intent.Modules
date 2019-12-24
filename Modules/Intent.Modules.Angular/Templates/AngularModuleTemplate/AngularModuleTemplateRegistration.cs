@@ -32,7 +32,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<IModuleModel> GetModels(Engine.IApplication application)
+        public override IEnumerable<IModuleModel> GetModels(IApplication application)
         {
             return _metadataManager.GetModules(application);
         }

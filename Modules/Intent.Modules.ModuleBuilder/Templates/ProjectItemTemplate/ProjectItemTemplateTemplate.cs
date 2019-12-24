@@ -36,10 +36,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
             var content = TemplateHelper.GetExistingTemplateContent(this);
             if (content != null)
             {
-                return TemplateHelper.ReplaceTemplateInheritsTag(content, $"IntentProjectItemTemplateBase<{GetModelType()}>");
+                return TemplateHelper.ReplaceTemplateInheritsTag(content, $"{GetTemplateBaseClass()}<{GetModelType()}>");
             }
 
-            return $@"<#@ template language=""C#"" inherits=""IntentProjectItemTemplateBase<{GetModelType()}>"" #>
+            return $@"<#@ template language=""C#"" inherits=""{GetTemplateBaseClass()}<{GetModelType()}>"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>
@@ -49,6 +49,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
 // Place your file template logic here
 ";
+        }
+
+        private string GetTemplateBaseClass()
+        {
+            return Model.GetTemplateBaseType();
         }
 
         private string GetModelType()

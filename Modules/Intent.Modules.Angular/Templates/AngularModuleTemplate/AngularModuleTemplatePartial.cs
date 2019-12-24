@@ -24,9 +24,10 @@ using Zu.TypeScript.TsTypes;
 namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularModuleTemplate : IntentProjectItemTemplateBase<IModuleModel>
+    partial class AngularModuleTemplate : IntentTypescriptProjectItemTemplateBase<IModuleModel>
     {
-        public const string TemplateId = "Angular.AngularModuleTemplate";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "Angular.Templates.AngularModuleTemplate";
         private readonly IList<AngularComponentInfo> _components = new List<AngularComponentInfo>();
         private readonly IList<AngularProviderInfo> _providers = new List<AngularProviderInfo>();
 
@@ -87,13 +88,13 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetadata(
+            return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ModuleName.ToAngularFileName()}.module",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client\\src\\app\\{ ModuleName.ToAngularFileName() }"
-            );
+                defaultLocationInProject: $"Client\\src\\app\\{ ModuleName.ToAngularFileName() }",
+                className: "${ModuleName}");
         }
 
         private string GetComponentName(IComponentModel componentModel)

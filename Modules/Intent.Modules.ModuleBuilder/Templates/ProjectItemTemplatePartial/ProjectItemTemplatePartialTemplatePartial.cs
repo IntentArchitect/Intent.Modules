@@ -60,6 +60,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
             });
         }
 
+        private string GetTemplateBaseClass()
+        {
+            return Model.GetTemplateBaseType();
+        }
+
         private string GetModelType()
         {
             return Model.GetTemplateModelName();

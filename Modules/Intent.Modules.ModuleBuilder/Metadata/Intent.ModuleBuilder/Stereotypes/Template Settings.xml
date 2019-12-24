@@ -41,5 +41,11 @@
       <lookupTypes />
       <lookupInternalTargetPropertyId>c2283d15-4b57-4ed9-8aae-6efc73039034</lookupInternalTargetPropertyId>
     </property>
+    <property id="3CC0FF7A-B4EC-4A2A-AA7F-603640901F30">
+      <comment></comment>
+      <name>Base Type</name>
+      <type>string</type>
+      <defaultValue>IntentProjectItemTemplateBase</defaultValue>
+    </property>
   </properties>
 </stereotypeDefinition>

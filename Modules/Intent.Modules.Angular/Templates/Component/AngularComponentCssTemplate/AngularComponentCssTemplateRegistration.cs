@@ -32,7 +32,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<IComponentModel> GetModels(Engine.IApplication application)
+        public override IEnumerable<IComponentModel> GetModels(IApplication application)
         {
             return _metadataManager.GetModules(application).SelectMany(x => x.Components);
         }

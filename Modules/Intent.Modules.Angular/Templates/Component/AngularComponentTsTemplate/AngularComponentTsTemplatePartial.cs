@@ -21,7 +21,8 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
     [IntentManaged(Mode.Merge)]
     partial class AngularComponentTsTemplate : IntentTypescriptProjectItemTemplateBase<IComponentModel>, ITemplateBeforeExecutionHook
     {
-        public const string TemplateId = "Angular.AngularComponentTsTemplate";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "Angular.Templates.Component.AngularComponentTsTemplate";
 
         public AngularComponentTsTemplate(IProject project, IComponentModel model) : base(TemplateId, project, model)
         {
@@ -67,7 +68,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             var source = LoadOrCreate(fullFileName);
 
             var editor = new TypescriptFileEditor(source);
-           
+
             foreach (var model in Model.Models)
             {
                 if (!editor.NodeExists($"PropertyDeclaration:{model.Name}"))
@@ -109,14 +110,14 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToAngularFileName()}.component",
-                fileExtension: "ts", 
+                fileExtension: "ts",
                 defaultLocationInProject: $"Client\\src\\app\\{moduleTemplate.ModuleName.ToAngularFileName()}\\{ComponentName.ToAngularFileName()}",
                 className: "${ComponentName}Component"
             );

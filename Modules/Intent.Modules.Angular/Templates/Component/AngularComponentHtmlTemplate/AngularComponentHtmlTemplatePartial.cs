@@ -20,7 +20,8 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
     partial class AngularComponentHtmlTemplate : IntentProjectItemTemplateBase<IComponentModel>, ITemplatePostCreationHook, IHasDecorators<IOverwriteDecorator>
     {
         private readonly IList<IOverwriteDecorator> _decorators = new List<IOverwriteDecorator>();
-        public const string TemplateId = "Angular.AngularComponentHtmlTemplate";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "Angular.Templates.Component.AngularComponentHtmlTemplate";
 
         public AngularComponentHtmlTemplate(IProject project, IComponentModel model) : base(TemplateId, project, model)
         {

@@ -22,13 +22,14 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
     [IntentManaged(Mode.Merge)]
     partial class AngularServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceProxyModel>, ITemplateBeforeExecutionHook
     {
-        public const string TemplateId = "Angular.AngularServiceProxyTemplate";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "Angular.Templates.Proxies.AngularServiceProxyTemplate";
 
         public AngularServiceProxyTemplate(IProject project, IServiceProxyModel model) : base(TemplateId, project, model)
         {
         }
 
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.AngularDTOTemplate.TemplateId, "{0}[]"));
 
@@ -134,7 +135,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,

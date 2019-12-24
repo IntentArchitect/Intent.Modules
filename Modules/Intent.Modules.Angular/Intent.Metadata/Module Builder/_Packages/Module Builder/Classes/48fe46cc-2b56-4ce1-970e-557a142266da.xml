@@ -13,7 +13,9 @@
       <addedByDefault>false</addedByDefault>
       <properties>
         <property name="311d788f-7582-4c27-9a4d-e0db1439c327" value="File per Model" />
-        <property name="C2283D15-4B57-4ED9-8AAE-6EFC73039034" value="Custom" />
+        <property name="c2283d15-4b57-4ed9-8aae-6efc73039034" value="e0414b5d-f5cb-4af3-8737-471e61bb86c6" />
+        <property name="987590ee-a5ca-45ce-b742-0ee764b6b6e9" value="0e8bf8a1-2503-4348-b63f-ff07bb219419" />
+        <property name="3CC0FF7A-B4EC-4A2A-AA7F-603640901F30" value="IntentTypescriptProjectItemTemplateBase" />
       </properties>
     </stereotype>
   </stereotypes>

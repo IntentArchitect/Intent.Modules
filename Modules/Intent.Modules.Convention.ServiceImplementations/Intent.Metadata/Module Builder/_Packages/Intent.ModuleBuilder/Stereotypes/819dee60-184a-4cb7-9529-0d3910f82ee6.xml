@@ -15,23 +15,23 @@
       <name>Registration</name>
       <type>options</type>
       <defaultValue>File per Model</defaultValue>
-      <options>
+      <valueOptions>
         <option>File per Model</option>
         <option>Single File (No Model)</option>
         <option>Single File (Model List)</option>
         <option>Custom</option>
-      </options>
+      </valueOptions>
     </property>
     <property id="C2283D15-4B57-4ED9-8AAE-6EFC73039034">
       <name>Modeler</name>
       <type>options</type>
       <defaultValue>Domain</defaultValue>
-      <options>
+      <valueOptions>
         <option>Domain</option>
         <option>Services</option>
         <option>Eventing</option>
         <option>Custom</option>
-      </options>
+      </valueOptions>
     </property>
   </properties>
 </stereotypeDefinition>

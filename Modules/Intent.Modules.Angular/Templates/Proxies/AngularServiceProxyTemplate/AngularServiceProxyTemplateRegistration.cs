@@ -33,7 +33,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<IServiceProxyModel> GetModels(Engine.IApplication application)
+        public override IEnumerable<IServiceProxyModel> GetModels(IApplication application)
         {
             return _metadataManager.GetModules(application).SelectMany(x => x.ServiceProxies).ToList();
         }

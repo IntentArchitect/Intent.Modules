@@ -33,7 +33,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<IModuleDTOModel> GetModels(Engine.IApplication application)
+        public override IEnumerable<IModuleDTOModel> GetModels(IApplication application)
         {
             var dtoModels = new List<IModuleDTOModel>();
             foreach (var moduleModel in _metadataManager.GetModules(application))
@@ -44,6 +44,6 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
             return dtoModels.Distinct().ToList();
         }
 
-        
+
     }
 }

@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -32,26 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Intent.RoslynWeaver.Attributes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.RoslynWeaver.Attributes.1.0.0\lib\net45\Intent.RoslynWeaver.Attributes.dll</HintPath>
-    </Reference>
-    <Reference Include="Intent.SoftwareFactory.SDK, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.0.0-pre9.4\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="TypeScriptAST, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TypeScriptAST.1.0.2\lib\net452\TypeScriptAST.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngularCliInstaller.cs" />
@@ -79,25 +68,25 @@
     <Compile Include="Templates\PathExtensions.cs" />
     <Content Include="README.txt" />
     <Compile Include="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplate.cs">
+      <DependentUpon>AngularComponentCssTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AngularComponentCssTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\AngularFileNameHelper.cs" />
     <Compile Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.cs">
+      <DependentUpon>AngularComponentHtmlTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AngularComponentHtmlTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.cs">
+      <DependentUpon>AngularComponentTsTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AngularComponentTsTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\AngularModuleTemplate\AngularModuleTemplate.cs">
+      <DependentUpon>AngularModuleTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AngularModuleTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\AngularModuleTemplate\AngularModuleTemplatePartial.cs" />
     <Compile Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplatePartial.cs" />
@@ -124,16 +113,16 @@
     </Content>
     <Compile Include="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplateRegistration.cs" />
     <Compile Include="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.cs">
+      <DependentUpon>AngularDTOTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AngularDTOTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplatePartial.cs" />
     <Compile Include="Api\ModuleDTOModel.cs" />
     <Compile Include="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.cs">
+      <DependentUpon>AngularServiceProxyTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AngularServiceProxyTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplatePartial.cs" />
     <Content Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt">
@@ -153,9 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Intent.Modules.Angular.imodspec" />
-    <Content Include="packages.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.AspNetCore\Intent.Modules.AspNetCore.csproj">
@@ -181,13 +167,24 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Intent.IntentArchitectPackager">
+      <Version>1.9.3</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.Modules.Common">
+      <Version>2.0.0-pre8.2</Version>
+    </PackageReference>
+    <PackageReference Include="Intent.RoslynWeaver.Attributes">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Intent.SoftwareFactory.SDK">
+      <Version>2.0.0-pre9.4</Version>
+    </PackageReference>
+    <PackageReference Include="TypeScriptAST">
+      <Version>1.0.2</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Intent.IntentArchitectPackager.1.9.3\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.9.3\build\Intent.IntentArchitectPackager.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.1.9.3\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.1.9.3\build\Intent.IntentArchitectPackager.targets'))" />
-  </Target>
 </Project>

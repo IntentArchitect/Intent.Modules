@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IModuleModel>" #>
+<#@ template language="C#" inherits="IntentTypescriptProjectItemTemplateBase<IModuleModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -16,4 +16,4 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class <#= Model.Name #>Module { }
+export class <#= ClassName #> { }
