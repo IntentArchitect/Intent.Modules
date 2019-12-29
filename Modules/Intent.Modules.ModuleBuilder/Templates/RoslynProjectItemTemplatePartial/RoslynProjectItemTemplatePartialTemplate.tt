@@ -24,7 +24,7 @@ namespace <#= Namespace #>
         public const string TemplateId = "<#= GetTemplateId() #>";
 
 <#  if (HasDecorators()) { #>
-        private ICollection<<#= Model.GetExposedDecoratorContractType() #>> _decorators = new List<<#= Model.GetExposedDecoratorContractType() #>>;
+        private ICollection<<#= Model.GetExposedDecoratorContractType() #>> _decorators = new List<<#= Model.GetExposedDecoratorContractType() #>>();
 
 <#  } #>
         [IntentInitialGen]
@@ -61,7 +61,7 @@ namespace <#= Namespace #>
         }
 
         [IntentManaged(Mode.Fully)]
-        public IEnumerable<ICompositeContract> GetDecorators()
+        public IEnumerable<<#= Model.GetExposedDecoratorContractType() #>> GetDecorators()
         {
             return _decorators;
         }

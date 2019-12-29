@@ -103,7 +103,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             
             #line default
             #line hidden
-            this.Write(">;\r\n\r\n");
+            this.Write(">();\r\n\r\n");
             
             #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
   } 
@@ -201,8 +201,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             #line default
             #line hidden
             this.Write(" decorator)\r\n        {\r\n            _decorators.Add(decorator);\r\n        }\r\n\r\n   " +
-                    "     [IntentManaged(Mode.Fully)]\r\n        public IEnumerable<ICompositeContract>" +
-                    " GetDecorators()\r\n        {\r\n            return _decorators;\r\n        }\r\n");
+                    "     [IntentManaged(Mode.Fully)]\r\n        public IEnumerable<");
+            
+            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetExposedDecoratorContractType()));
+            
+            #line default
+            #line hidden
+            this.Write("> GetDecorators()\r\n        {\r\n            return _decorators;\r\n        }\r\n");
             
             #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
   } 
