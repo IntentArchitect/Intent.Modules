@@ -7,6 +7,7 @@ using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Templates;
+using Intent.Modelers.Domain.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial", Version = "1.0")]
@@ -16,7 +17,8 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Other.CustomCreationMode
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     partial class CustomCreationMode : IntentRoslynProjectItemTemplateBase<IClass>
     {
-        public const string TemplateId = "ModuleBuilderTests.CustomCreationMode";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "ModuleBuilderTests.Templates.Other.CustomCreationMode";
 
         public CustomCreationMode(IProject project, IClass model) : base(TemplateId, project, model)
         {

@@ -35,7 +35,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantA
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<IClass> GetModels(IApplication application)
         {
-            return _metadataManager.GetDomainClasses(application);
+            return _metadataManager.GetDomainClasses(application.Id);
         }
     }
 }

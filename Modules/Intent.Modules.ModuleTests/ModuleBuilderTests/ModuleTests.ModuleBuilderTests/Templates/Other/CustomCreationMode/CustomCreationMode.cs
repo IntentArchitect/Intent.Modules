@@ -13,8 +13,8 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Other.CustomCreationMode
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
-    using Intent.SoftwareFactory.Templates;
     using Intent.Metadata.Models;
+    using Intent.Modelers.Domain.Api;
     using System;
     
     /// <summary>

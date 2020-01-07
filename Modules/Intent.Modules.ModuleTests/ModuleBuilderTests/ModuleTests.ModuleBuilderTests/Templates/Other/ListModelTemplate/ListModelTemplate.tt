@@ -4,7 +4,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
-<#@ import namespace="Intent.SoftwareFactory.Templates" #>
+<#@ import namespace="Intent.Modelers.Domain.Api" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 
 using System;

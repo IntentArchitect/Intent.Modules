@@ -16,7 +16,8 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Other.NoModelTemplate
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     partial class NoModelTemplate : IntentRoslynProjectItemTemplateBase<object>
     {
-        public const string TemplateId = "ModuleBuilderTests.NoModelTemplate";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "ModuleBuilderTests.Templates.Other.NoModelTemplate";
 
         public NoModelTemplate(IProject project, object model) : base(TemplateId, project, model)
         {

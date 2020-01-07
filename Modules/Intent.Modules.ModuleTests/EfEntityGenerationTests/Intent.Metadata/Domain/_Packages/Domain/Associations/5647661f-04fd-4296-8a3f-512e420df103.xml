@@ -3,7 +3,7 @@
   <sourceEnd classId="504e6e85-9d59-4b0f-a31c-0574b268f6f7">
     <isNavigable>false</isNavigable>
     <isNullable>false</isNullable>
-    <isCollection>false</isCollection>
+    <isCollection>true</isCollection>
     <minMultiplicity>0</minMultiplicity>
     <maxMultiplicity>*</maxMultiplicity>
     <stereotypes />

@@ -17,7 +17,8 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantA
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     partial class DependantA : IntentRoslynProjectItemTemplateBase<IClass>
     {
-        public const string TemplateId = "ModuleBuilderTests.DependantA";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "ModuleBuilderTests.Templates.Dependencies.DependantA";
 
         public DependantA(IProject project, IClass model) : base(TemplateId, project, model)
         {

@@ -13,7 +13,7 @@ namespace ModuleTests.ModuleBuilderTests.Decorators.CompositeDecorator
     {
         public override string DecoratorId => ModuleTests.ModuleBuilderTests.Decorators.CompositeDecorator.CompositeDecorator.Identifier;
 
-        public override object CreateDecoratorInstance(IApplication application)
+        public override ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract CreateDecoratorInstance(IApplication application)
         {
             return new ModuleTests.ModuleBuilderTests.Decorators.CompositeDecorator.CompositeDecorator(application);
         }

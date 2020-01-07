@@ -36,7 +36,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantB
         public override IEnumerable<IClass> GetModels(IApplication application)
         {
             // Filter classes by SpecializationType if necessary (e.g. .Where(x => x.SpecializationType == "Service") for services only)
-            return _metadataManager.GetDomainClasses(application);
+            return _metadataManager.GetDomainClasses(application.Id);
         }
     }
 }

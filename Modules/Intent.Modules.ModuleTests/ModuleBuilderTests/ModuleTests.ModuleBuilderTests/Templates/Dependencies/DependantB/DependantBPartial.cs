@@ -15,9 +15,10 @@ using Intent.Templates;
 namespace ModuleTests.ModuleBuilderTests.Templates.Dependencies.DependantB
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    partial class DependantB : IntentProjectItemTemplateBase<IClass>, IHasTemplateDependencies
+    partial class DependantB : IntentProjectItemTemplateBase<IClass>
     {
-        public const string TemplateId = "ModuleBuilderTests.DependantB";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "ModuleBuilderTests.Templates.Dependencies.DependantB";
 
         public DependantB(IProject project, IClass model) : base(TemplateId, project, model)
         {

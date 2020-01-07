@@ -10,7 +10,7 @@
   </sourceEnd>
   <targetEnd classId="433e38e6-ae03-4c09-ad82-b07831d6a96b">
     <isNavigable>true</isNavigable>
-    <isNullable>false</isNullable>
+    <isNullable>true</isNullable>
     <isCollection>false</isCollection>
     <minMultiplicity>0</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>

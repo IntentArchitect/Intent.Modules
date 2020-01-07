@@ -3,7 +3,7 @@
   <ApplicationId>f1fe42eb-130d-49c5-b785-b0ee6a362399</ApplicationId>
   <FileLogs>
     <FileLog>
-      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleBuilderTests.sln</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>..\ModuleBuilderTests\ModuleTests.ModuleBuilderTests.sln</SolutionRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>7ce24636-36b9-4f37-9535-b723f3d29a0e</ProjectId>

@@ -13,7 +13,7 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Other.ListModelTemplate
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
-    using Intent.SoftwareFactory.Templates;
+    using Intent.Modelers.Domain.Api;
     using Intent.Metadata.Models;
     using System;
     

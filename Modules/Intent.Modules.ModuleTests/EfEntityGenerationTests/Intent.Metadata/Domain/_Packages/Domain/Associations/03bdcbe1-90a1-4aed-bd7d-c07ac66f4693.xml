@@ -3,7 +3,7 @@
   <sourceEnd classId="7c481451-03a4-4efa-878c-70d366d23ee0">
     <isNavigable>false</isNavigable>
     <isNullable>false</isNullable>
-    <isCollection>false</isCollection>
+    <isCollection>true</isCollection>
     <minMultiplicity>0</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />
@@ -12,7 +12,7 @@
     <name>miniSelves</name>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
-    <isCollection>false</isCollection>
+    <isCollection>true</isCollection>
     <minMultiplicity>0</minMultiplicity>
     <maxMultiplicity>*</maxMultiplicity>
     <stereotypes />

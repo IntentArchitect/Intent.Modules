@@ -4,7 +4,7 @@
     <name>original</name>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
-    <isCollection>false</isCollection>
+    <isCollection>true</isCollection>
     <minMultiplicity>0</minMultiplicity>
     <maxMultiplicity>1</maxMultiplicity>
     <stereotypes />

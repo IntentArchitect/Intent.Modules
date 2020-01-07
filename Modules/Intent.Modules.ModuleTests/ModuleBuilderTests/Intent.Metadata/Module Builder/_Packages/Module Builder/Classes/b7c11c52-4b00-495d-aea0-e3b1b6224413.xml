@@ -7,10 +7,10 @@
   <parentFolderId>a9eaf03d-20b5-4bf8-9c99-7048c7436323</parentFolderId>
   <literals />
   <attributes>
-    <attribute id="e6752237-bfdf-4550-ba5a-6b7d471f0b41" type="Template Dependency">
-      <name>default</name>
-      <typeReference id="92999a3f-5e9a-4d86-bd13-e4e9d20353f4">
-        <typeId>cf5c75f0-c949-40c6-a639-6b7a51783a0d</typeId>
+    <attribute id="b3459847-e877-4a4c-8be2-429a1768d47a" type="Template Dependency">
+      <name>dependentA</name>
+      <typeReference id="d97dff72-be05-4ff8-8c27-717d987b95ed">
+        <typeId>dcd111b1-b82a-454e-83e9-11b012361a37</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

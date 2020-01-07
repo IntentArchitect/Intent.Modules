@@ -7,6 +7,7 @@ using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Templates;
+using Intent.Modelers.Domain.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial", Version = "1.0")]
@@ -16,7 +17,8 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Other.ListModelTemplate
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     partial class ListModelTemplate : IntentRoslynProjectItemTemplateBase<IList<IClass>>
     {
-        public const string TemplateId = "ModuleBuilderTests.ListModelTemplate";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "ModuleBuilderTests.Templates.Other.ListModelTemplate";
 
         public ListModelTemplate(IProject project, IList<IClass> model) : base(TemplateId, project, model)
         {

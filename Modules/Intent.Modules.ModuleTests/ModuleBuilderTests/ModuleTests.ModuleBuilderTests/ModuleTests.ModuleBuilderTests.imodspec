@@ -6,23 +6,43 @@
   <description>A custom module for ModuleTests.</description>
   <authors>ModuleTests</authors>
   <templates>
-    <template id="ModuleBuilderTests.Composite">
-      <role>ModuleBuilderTests.Composite</role>
+    <template id="ModuleBuilderTests.Templates.Other.ListModelTemplate">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>ModuleBuilderTests.Templates.Other.ListModelTemplate</role>
     </template>
-    <template id="ModuleBuilderTests.DependantA">
-      <role>ModuleBuilderTests.DependantA</role>
+    <template id="ModuleBuilderTests.Templates.Composite">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>ModuleBuilderTests.Templates.Composite</role>
     </template>
-    <template id="ModuleBuilderTests.DependantB">
-      <role>ModuleBuilderTests.DependantB</role>
+    <template id="ModuleBuilderTests.Templates.Other.CustomCreationMode">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>ModuleBuilderTests.Templates.Other.CustomCreationMode</role>
     </template>
-    <template id="ModuleBuilderTests.ListModelTemplate">
-      <role>ModuleBuilderTests.ListModelTemplate</role>
+    <template id="ModuleBuilderTests.Templates.Other.NoModelTemplate">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>ModuleBuilderTests.Templates.Other.NoModelTemplate</role>
     </template>
-    <template id="ModuleBuilderTests.NoModelTemplate">
-      <role>ModuleBuilderTests.NoModelTemplate</role>
+    <template id="ModuleBuilderTests.Templates.Dependencies.DependantA">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>ModuleBuilderTests.Templates.Dependencies.DependantA</role>
     </template>
-    <template id="ModuleBuilderTests.CustomCreationMode">
-      <role>ModuleBuilderTests.CustomCreationMode</role>
+    <template id="ModuleBuilderTests.Templates.Dependencies.DependantB">
+      <role>ModuleBuilderTests.Templates.Dependencies.DependantB</role>
     </template>
   </templates>
   <decorators>

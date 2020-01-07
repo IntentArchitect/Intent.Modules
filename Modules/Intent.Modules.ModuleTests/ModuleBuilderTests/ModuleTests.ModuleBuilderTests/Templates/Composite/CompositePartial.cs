@@ -20,7 +20,8 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     partial class Composite : IntentRoslynProjectItemTemplateBase<IClass>, IHasDecorators<ModuleTests.ModuleBuilderTests.Templates.Composite.ICompositeContract>
     {
-        public const string TemplateId = "ModuleBuilderTests.Composite";
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "ModuleBuilderTests.Templates.Composite";
 
         public Composite(IProject project, IClass model) : base(TemplateId, project, model)
         {
@@ -56,6 +57,12 @@ namespace ModuleTests.ModuleBuilderTests.Templates.Composite
         public IEnumerable<ICompositeContract> GetDecorators()
         {
             return _decorators;
+        }
+
+        private string GetDependentATemplateFullName(IClass model)
+        {
+            var template = Project.Application.FindTemplateInstance<DependantA>(DependantA.TemplateId, model);
+            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 
         private string GetDecoratorOutput()

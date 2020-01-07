@@ -67,18 +67,11 @@ namespace ");
             this.Write("\r\n    {\r\n        public ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetDependantATemplate(Model).FullTypeName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetDependentATemplateFullName(Model)));
             
             #line default
             #line hidden
-            this.Write(" DependantA { get; }\r\n        public ");
-            
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleTests\ModuleBuilderTests\ModuleTests.ModuleBuilderTests\Templates\Composite\Composite.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetDependantBTemplate(Model).FileMetadata.FileName));
-            
-            #line default
-            #line hidden
-            this.Write(" DependantB { get; }\r\n    }\r\n}");
+            this.Write(" DependantA { get; }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

@@ -8,7 +8,6 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Registrations;
 using Intent.Templates;
-using Intent.Templates.Registrations;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.Custom", Version = "1.0")]

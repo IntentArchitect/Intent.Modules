@@ -16,6 +16,8 @@ namespace ModuleTests.ModuleBuilderTests.Decorators.CompositeDecorator
 
         private readonly IApplication _application;
 
+        public int Priority => 0;
+
         public CompositeDecorator(IApplication application)
         {
             _application = application;
