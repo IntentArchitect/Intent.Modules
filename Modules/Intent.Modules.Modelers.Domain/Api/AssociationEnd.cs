@@ -5,7 +5,7 @@ using Intent.Modules.Common.Templates;
 
 namespace Intent.Modelers.Domain.Api
 {
-    internal class AssociationEnd : IAssociationEnd, IEquatable<IAssociationEnd>
+    internal class AssociationEnd : IAssociationEnd, IEquatable<AssociationEnd>
     {
         private readonly Metadata.Models.IAssociationEnd _associationEnd;
 
@@ -84,17 +84,18 @@ namespace Intent.Modelers.Domain.Api
             return !(lhs == rhs);
         }
 
-        public bool Equals(IAssociationEnd other)
+        public bool Equals(AssociationEnd other)
         {
-            return string.Equals(Id, other.Element.Id);
+            //return string.Equals(Id, other.Element.Id);
+            return Object.ReferenceEquals(this._associationEnd, other._associationEnd);
         }
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
+            if (Object.ReferenceEquals(null, obj)) return false;
+            if (Object.ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((IAssociationEnd)obj);
+            return Equals((AssociationEnd)obj);
         }
 
         public override int GetHashCode()
