@@ -7,6 +7,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
@@ -53,7 +54,8 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
-            var editor = new TypescriptFileEditor(source);
+            var file = new TypescriptFileEditor(source);
+            var @class = file.Classes().First();
             foreach (var operation in Model.Operations)
             {
                 var url = $"api/{Model.MappedService.Name.ToLower()}/{Model.MappedService.Operations.First(x => x.Id == operation.Mapping.TargetId).Name.ToLower()}";
@@ -66,13 +68,13 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         return response;
       }}));
   }}";
-                if (editor.MethodExists(operation.Name.ToCamelCase()))
+                if (@class.MethodExists(operation.Name.ToCamelCase()))
                 {
-                    editor.ReplaceMethod(operation.Name.ToCamelCase(), method);
+                    @class.ReplaceMethod(operation.Name.ToCamelCase(), method);
                 }
                 else
                 {
-                    editor.AddMethod(method);
+                    @class.AddMethod(method);
                 }
             }
 
@@ -84,11 +86,11 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                     continue;
                 }
 
-                editor.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetadata().GetRelativeFilePathWithFileName())); // Temporary replacement until 1.9 changes are merged.
+                file.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetadata().GetRelativeFilePathWithFileName())); // Temporary replacement until 1.9 changes are merged.
             }
 
 
-            return editor.GetSource();
+            return file.GetSource();
         }
 
         private string GetReturnType(IOperation operation)
@@ -142,7 +144,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name.ToAngularFileName()}.service",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client\\src\\app\\{Model.Module.GetModuleName().ToAngularFileName()}",
+                defaultLocationInProject: $"Client/src/app\\{Model.Module.GetModuleName().ToAngularFileName()}",
                 className: "${Model.Name}"
             );
         }

@@ -85,7 +85,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToAngularFileName()}.component",
                 fileExtension: "html",
-                defaultLocationInProject: $"Client\\src\\app\\{moduleTemplate.ModuleName.ToAngularFileName()}\\{ComponentName.ToAngularFileName()}"
+                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToAngularFileName()}/{ComponentName.ToAngularFileName()}"
                     );
         }
     }

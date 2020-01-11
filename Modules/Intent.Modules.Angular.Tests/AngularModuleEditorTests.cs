@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Intent.Modules.Angular;
+using Intent.Modules.Angular.Editor;
 using Xunit;
 using Zu.TypeScript;
 using Zu.TypeScript.Change;

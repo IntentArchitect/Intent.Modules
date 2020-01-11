@@ -69,7 +69,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToAngularFileName()}.component",
                 fileExtension: "css", // Change to desired file extension.
-                defaultLocationInProject: $"Client\\src\\app\\{moduleTemplate.ModuleName.ToAngularFileName()}\\{ComponentName.ToAngularFileName()}"
+                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToAngularFileName()}/{ComponentName.ToAngularFileName()}"
             );
         }
     }

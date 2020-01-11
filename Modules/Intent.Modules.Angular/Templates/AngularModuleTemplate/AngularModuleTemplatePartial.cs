@@ -10,6 +10,7 @@ using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
 using Intent.Modules.Common.Plugins;
@@ -68,13 +69,13 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
             foreach (var componentInfo in _components)
             {
                 editor.AddImportIfNotExists(componentInfo.ComponentName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(componentInfo.Location));
-                editor.AddDeclarationIfNotExists(componentInfo.ComponentName);
+                editor.Classes().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.AddDeclarationIfNotExists(componentInfo.ComponentName);
             }
 
             foreach (var providerInfo in _providers)
             {
                 editor.AddImportIfNotExists(providerInfo.ProviderName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(providerInfo.Location));
-                editor.AddProviderIfNotExists(providerInfo.ProviderName);
+                editor.Classes().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.AddProviderIfNotExists(providerInfo.ProviderName);
             }
 
             return editor.GetSource();
@@ -93,7 +94,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ModuleName.ToAngularFileName()}.module",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client\\src\\app\\{ ModuleName.ToAngularFileName() }",
+                defaultLocationInProject: $"Client/src/app/{ ModuleName.ToAngularFileName() }",
                 className: "${ModuleName}");
         }
 

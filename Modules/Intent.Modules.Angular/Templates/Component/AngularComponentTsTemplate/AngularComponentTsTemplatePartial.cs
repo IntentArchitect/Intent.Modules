@@ -9,6 +9,7 @@ using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.AngularModuleTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
 using Intent.Modules.Common.Plugins;
@@ -19,7 +20,7 @@ using Intent.Modules.Common.Plugins;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularComponentTsTemplate : IntentTypescriptProjectItemTemplateBase<IComponentModel>, ITemplateBeforeExecutionHook
+    partial class AngularComponentTsTemplate : IntentTypescriptProjectItemTemplateBase<IComponentModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Component.AngularComponentTsTemplate";
@@ -42,7 +43,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 
         public string ModuleName { get; private set; }
 
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.TemplateId, "{0}[]"));
 
@@ -68,21 +69,22 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             var source = LoadOrCreate(fullFileName);
 
             var editor = new TypescriptFileEditor(source);
+            var @class = editor.Classes().First();
 
             foreach (var model in Model.Models)
             {
-                if (!editor.NodeExists($"PropertyDeclaration:{model.Name}"))
+                if (!@class.NodeExists($"PropertyDeclaration:{model.Name}"))
                 {
-                    editor.AddProperty($@"
+                    @class.AddProperty($@"
   {model.Name}: {Types.Get(model.Type)};");
                 }
             }
 
             foreach (var operation in Model.Commands)
             {
-                if (!editor.MethodExists(operation.Name.ToCamelCase()))
+                if (!@class.MethodExists(operation.Name.ToCamelCase()))
                 {
-                    editor.AddMethod($@"
+                    @class.AddMethod($@"
 
   {operation.Name.ToCamelCase()}({string.Join(", ", operation.Parameters.Select(x => x.Name.ToCamelCase() + (x.Type.IsNullable ? "?" : "") + ": " + Types.Get(x.Type, "{0}[]")))}): {(operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : "void")} {{
 
@@ -118,7 +120,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToAngularFileName()}.component",
                 fileExtension: "ts",
-                defaultLocationInProject: $"Client\\src\\app\\{moduleTemplate.ModuleName.ToAngularFileName()}\\{ComponentName.ToAngularFileName()}",
+                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToAngularFileName()}/{ComponentName.ToAngularFileName()}",
                 className: "${ComponentName}Component"
             );
         }

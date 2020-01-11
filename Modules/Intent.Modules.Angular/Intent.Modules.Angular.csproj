@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AngularCliInstaller.cs" />
+    <Compile Include="Editor\TypescriptClass.cs" />
+    <Compile Include="Editor\TypescriptNode.cs" />
     <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.cs">
       <DependentUpon>PaginatedSearchLayoutHtmlTemplateDecorator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -51,7 +53,8 @@
     </Compile>
     <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecoratorPartial.cs" />
     <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecoratorRegistration.cs" />
-    <Compile Include="TypescriptFileEditor.cs" />
+    <Compile Include="Editor\TypescriptClassDecorator.cs" />
+    <Compile Include="Editor\TypescriptFileEditor.cs" />
     <Compile Include="AngularTypescriptParser.cs" />
     <Compile Include="Api\IModuleDTOModel.cs" />
     <Compile Include="Api\IModuleModel.cs" />
