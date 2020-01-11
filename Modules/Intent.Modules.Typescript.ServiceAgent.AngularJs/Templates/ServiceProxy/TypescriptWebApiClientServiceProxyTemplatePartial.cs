@@ -43,7 +43,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             }
         }
 
-        protected override TypescriptDefaultFileMetadata DefineTypescriptDefaultFileMetadata()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
@@ -56,7 +56,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                 );
         }
 
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             _eventDispatcher.Publish(ApplicationEvents.AngularJs_ConfigurationRequired, new Dictionary<string, string>()
             {
