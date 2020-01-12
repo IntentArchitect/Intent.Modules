@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
+namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -20,9 +20,9 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\AngularModuleTemplate\AngularModuleTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class AngularModuleTemplate : IntentTypescriptProjectItemTemplateBase<IModuleModel>
+    public partial class AngularRoutingModuleTemplate : IntentTypescriptProjectItemTemplateBase<IModuleModel>
     {
 #line hidden
         /// <summary>
@@ -30,16 +30,24 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n// Place your file template logic here\r\nimport { NgModule } from \'@angular/core" +
-                    "\';\r\nimport { CommonModule } from \'@angular/common\';\r\n\r\n@NgModule({\r\n  declaratio" +
-                    "ns: [],\r\n  imports: [\r\n    CommonModule\r\n  ]\r\n})\r\nexport class ");
-            
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\AngularModuleTemplate\AngularModuleTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
-            
-            #line default
-            #line hidden
-            this.Write(" { }\r\n");
+            this.Write(@"import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { MainComponent } from ""./main/main.component"";
+
+
+const routes: Routes = [
+  {
+    path: '',
+    component: MainComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class MainRoutingModule { }
+");
             return this.GenerationEnvironment.ToString();
         }
     }

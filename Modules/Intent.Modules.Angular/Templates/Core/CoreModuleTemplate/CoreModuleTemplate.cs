@@ -7,23 +7,22 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
+namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
 {
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
     using Intent.Metadata.Models;
-    using Intent.Modules.Angular.Api;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Core\CoreModuleTemplate\CoreModuleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class AngularServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceProxyModel>
+    public partial class CoreModuleTemplate : IntentTypescriptProjectItemTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -31,22 +30,29 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         /// </summary>
         public override string TransformText()
         {
-            this.Write("import { Injectable } from \'@angular/core\';\r\n\r\nimport { Observable } from \'rxjs\';" +
-                    "\r\nimport { map } from \'rxjs/operators\';\r\n\r\n@Injectable()\r\nexport class ");
+            this.Write(@"import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from ""./api.service"";
+
+@NgModule({
+  imports: [
+    CommonModule,
+    HttpClientModule
+  ],
+  providers: [
+    ApiService
+  ],
+  declarations: []
+})
+export class ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Core\CoreModuleTemplate\CoreModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(" {\r\n  constructor(\r\n    private apiService: ");
-            
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ApiServiceClassName));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n  ) { \r\n  }\r\n}\r\n");
+            this.Write(" { }\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

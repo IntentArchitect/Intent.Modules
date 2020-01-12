@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
-using Intent.Modules.Angular.Templates.AngularModuleTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
 using Intent.Modules.Common.Plugins;
 
@@ -68,7 +67,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 
             var source = LoadOrCreate(fullFileName);
 
-            var editor = new TypescriptFileEditor(source);
+            var editor = new TypescriptFile(source);
             var @class = editor.Classes().First();
 
             foreach (var model in Model.Models)
@@ -114,7 +113,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
+            var moduleTemplate = Project.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,

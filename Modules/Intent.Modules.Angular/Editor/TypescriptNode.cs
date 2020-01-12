@@ -7,9 +7,9 @@ namespace Intent.Modules.Angular.Editor
     public abstract class TypescriptNode
     {
         protected readonly Node Node;
-        protected readonly TypescriptFileEditor File;
+        protected readonly TypescriptFile File;
 
-        public TypescriptNode(Node node, TypescriptFileEditor file)
+        public TypescriptNode(Node node, TypescriptFile file)
         {
             Node = node;
             File = file;

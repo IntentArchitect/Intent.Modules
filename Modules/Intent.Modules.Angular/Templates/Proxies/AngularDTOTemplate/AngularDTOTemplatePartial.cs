@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Angular.Api;
-using Intent.Modules.Angular.Templates.AngularModuleTemplate;
+using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -24,6 +25,11 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 
         public AngularDTOTemplate(IProject project, IModuleDTOModel model) : base(TemplateId, project, model)
         {
+        }
+
+        public override void BeforeTemplateExecution()
+        {
+            Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, TemplateId, "{0}[]"));
         }
 
         public string GenericTypes => Model.GenericTypes.Any() ? $"<{ string.Join(", ", Model.GenericTypes) }>" : "";

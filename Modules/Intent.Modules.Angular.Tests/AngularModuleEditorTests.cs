@@ -14,7 +14,7 @@ namespace Intent.Modules.Common.Tests
         [Fact]
         public void FindsCodeWithinAnnotation()
         {
-            var editor = new TypescriptFileEditor(Source.AngularModule);
+            var editor = new TypescriptFile(Source.AngularModule);
             editor.AddImportIfNotExists("NewComponent", "./new/new.component");
 
             var x = editor.GetSource();

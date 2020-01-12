@@ -8,7 +8,7 @@ namespace Intent.Modules.Angular.Editor
 {
     public class TypescriptClass : TypescriptNode
     {
-        public TypescriptClass(Node node, TypescriptFileEditor file) : base(node, file)
+        public TypescriptClass(Node node, TypescriptFile file) : base(node, file)
         {
 
         }
@@ -43,8 +43,7 @@ namespace Intent.Modules.Angular.Editor
             }
             else
             {
-                var classDeclaration = Node.OfKind(SyntaxKind.ClassDeclaration).First();
-                change.InsertAfter(classDeclaration.Children.Last(), method);
+                change.InsertAfter(Node.Children.Last(), method);
             }
 
             File.UpdateChanges(change);

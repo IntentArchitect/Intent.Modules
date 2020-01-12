@@ -6,7 +6,7 @@ namespace Intent.Modules.Angular.Editor
 {
     public class TypescriptClassDecorator : TypescriptNode
     {
-        public TypescriptClassDecorator(Node node, TypescriptFileEditor file) : base(node, file)
+        public TypescriptClassDecorator(Node node, TypescriptFile file) : base(node, file)
         {
         }
 

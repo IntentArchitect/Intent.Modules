@@ -8,7 +8,8 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
-using Intent.Modules.Angular.Templates.AngularModuleTemplate;
+using Intent.Modules.Angular.Templates.Core.ApiServiceTemplate;
+using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
@@ -28,12 +29,13 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         public AngularServiceProxyTemplate(IProject project, IServiceProxyModel model) : base(TemplateId, project, model)
         {
+            AddTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.AngularDTOTemplate.TemplateId));
         }
+
+        public string ApiServiceClassName => GetTemplateClassName(ApiServiceTemplate.TemplateId);
 
         public override void BeforeTemplateExecution()
         {
-            Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.AngularDTOTemplate.TemplateId, "{0}[]"));
-
             if (File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
             {
                 return;
@@ -54,16 +56,16 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
-            var file = new TypescriptFileEditor(source);
+            var file = new TypescriptFile(source);
             var @class = file.Classes().First();
             foreach (var operation in Model.Operations)
             {
-                var url = $"api/{Model.MappedService.Name.ToLower()}/{Model.MappedService.Operations.First(x => x.Id == operation.Mapping.TargetId).Name.ToLower()}";
+                var url = $"/{Model.MappedService.Name.ToLower()}/{Model.MappedService.Operations.First(x => x.Id == operation.Mapping.TargetId).Name.ToLower()}";
                 var method = $@"
 
   {operation.Name.ToCamelCase()}({GetParameterDefinitions(operation)}): Observable<{GetReturnType(operation)}> {{
     let url = ""{url}"";{GetUpdateUrl(operation)}
-    return this.dataService.{GetDataServiceCall(operation)}
+    return this.apiService.{GetDataServiceCall(operation)}
       .pipe(map((response: any) => {{
         return response;
       }}));
@@ -79,13 +81,8 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             }
 
             var dependencies = Types.GetTemplateDependencies().Select(x => Project.FindTemplateInstance<ITemplate>(x));
-            foreach (var template in dependencies)
+            foreach (var template in dependencies.Where(x => x is IHasClassDetails))
             {
-                if (!(template is IHasClassDetails))
-                {
-                    continue;
-                }
-
                 file.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetadata().GetRelativeFilePathWithFileName())); // Temporary replacement until 1.9 changes are merged.
             }
 
@@ -144,14 +141,14 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name.ToAngularFileName()}.service",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app\\{Model.Module.GetModuleName().ToAngularFileName()}",
+                defaultLocationInProject: $"Client/src/app/{Model.Module.GetModuleName().ToAngularFileName()}",
                 className: "${Model.Name}"
             );
         }
 
         private string LoadOrCreate(string fullFileName)
         {
-            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : TransformText();
+            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : base.RunTemplate();
         }
 
         private HttpVerb GetHttpVerb(IOperation operation)

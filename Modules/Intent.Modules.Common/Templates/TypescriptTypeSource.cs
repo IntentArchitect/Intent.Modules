@@ -20,39 +20,39 @@ namespace Intent.Modules.Common.Templates
             _execute = execute;
         }
 
-        public static IClassTypeSource InProject(IProject project, string templateId, string collectionFormat = "IEnumerable<{0}>")
+        public static IClassTypeSource InProject(IProject project, string templateId, string collectionFormat = "{0}[]")
         {
             return new TypescriptTypeSource((_this, typeInfo) =>
             {
                 var typeName = _this.GetTypeName(project, templateId, typeInfo);
                 if (!string.IsNullOrWhiteSpace(typeName) && typeInfo.IsCollection)
                 {
-                    return string.Format(collectionFormat, typeName);;
+                    return string.Format(collectionFormat, typeName);
                 }
                 return typeName;
             });
         }
 
-        public static IClassTypeSource InApplication(IApplication application, string templateId, string collectionType = nameof(IEnumerable))
+        public static IClassTypeSource InApplication(IApplication application, string templateId, string collectionFormat = "{0}[]")
         {
             return new TypescriptTypeSource((_this, typeInfo) =>
             {
                 if (typeInfo.IsCollection)
                 {
-                    return $"{collectionType}<{_this.FullTypeNameInApplication(application, templateId, typeInfo)}>";
+                    return string.Format(collectionFormat, _this.ClassNameInApplication(application, templateId, typeInfo));
                 }
-                return _this.FullTypeNameInApplication(application, templateId, typeInfo);
+                return _this.ClassNameInApplication(application, templateId, typeInfo);
             });
         }
 
-        private string FullTypeNameInApplication(IApplication application, string templateId, ITypeReference typeInfo)
+        private string ClassNameInApplication(IApplication application, string templateId, ITypeReference typeInfo)
         {
             var templateInstance = application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
             if (templateInstance != null)
             {
                 _templateDependencies.Add(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
             }
-            return templateInstance?.FullTypeName();
+            return templateInstance?.ClassName;
         }
 
         public string GetClassType(ITypeReference typeInfo)

@@ -13,9 +13,6 @@
     <template id="Angular.Templates.Component.AngularComponentCssTemplate">
       <role>Angular.Templates.Component.AngularComponentCssTemplate</role>
     </template>
-    <template id="Angular.Templates.AngularModuleTemplate">
-      <role>Angular.Templates.AngularModuleTemplate</role>
-    </template>
     <template id="Angular.Templates.Proxies.AngularServiceProxyTemplate">
       <role>Angular.Templates.Proxies.AngularServiceProxyTemplate</role>
     </template>
@@ -24,6 +21,18 @@
     </template>
     <template id="Angular.Templates.Component.AngularComponentTsTemplate">
       <role>Angular.Templates.Component.AngularComponentTsTemplate</role>
+    </template>
+    <template id="Angular.Templates.Module.AngularModuleTemplate">
+      <role>Angular.Templates.Module.AngularModuleTemplate</role>
+    </template>
+    <template id="Angular.Templates.Core.CoreModuleTemplate">
+      <role>Angular.Templates.Core.CoreModuleTemplate</role>
+    </template>
+    <template id="Angular.Templates.Core.ApiServiceTemplate">
+      <role>Angular.Templates.Core.ApiServiceTemplate</role>
+    </template>
+    <template id="Angular.Templates.Module.AngularRoutingModuleTemplate">
+      <role>Angular.Templates.Module.AngularRoutingModuleTemplate</role>
     </template>
   </templates>
   <decorators>

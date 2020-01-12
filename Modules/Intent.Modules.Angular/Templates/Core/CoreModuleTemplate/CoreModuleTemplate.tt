@@ -1,0 +1,23 @@
+<#@ template language="C#" inherits="IntentTypescriptProjectItemTemplateBase<object>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from "./api.service";
+
+@NgModule({
+  imports: [
+    CommonModule,
+    HttpClientModule
+  ],
+  providers: [
+    ApiService
+  ],
+  declarations: []
+})
+export class <#= ClassName #> { }

@@ -6,9 +6,8 @@
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
-
 export interface <#= ClassName #><#= GenericTypes #> {
-<# foreach (var field in Model.Fields) {#>
+<#  foreach (var field in Model.Fields) { #>
     <#=field.Name.ToCamelCase()#><#= field.Type.IsNullable ? "?" : "" #>: <#= this.Types.Get(field.Type) #>;
-<#}#>
+<#  } #>
 }

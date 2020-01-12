@@ -6,11 +6,11 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Angular.Editor
 {
-    public class TypescriptFileEditor
+    public class TypescriptFile
     {
         private string _source;
 
-        public TypescriptFileEditor(string source)
+        public TypescriptFile(string source)
         {
             _source = source;
         }

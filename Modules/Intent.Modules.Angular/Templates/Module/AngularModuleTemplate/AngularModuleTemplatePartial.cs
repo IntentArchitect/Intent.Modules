@@ -2,33 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using Intent.Metadata.Models;
-using Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate;
-using Intent.Modules.Common;
-using Intent.Modules.Common.Templates;
-using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
-using Intent.Modules.Common.Plugins;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-using Zu.TypeScript;
-using Zu.TypeScript.Change;
-using Zu.TypeScript.TsTypes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
+namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 {
     [IntentManaged(Mode.Merge)]
     partial class AngularModuleTemplate : IntentTypescriptProjectItemTemplateBase<IModuleModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.AngularModuleTemplate";
+        public const string TemplateId = "Angular.Templates.Module.AngularModuleTemplate";
         private readonly IList<AngularComponentInfo> _components = new List<AngularComponentInfo>();
         private readonly IList<AngularProviderInfo> _providers = new List<AngularProviderInfo>();
 
@@ -65,7 +59,7 @@ namespace Intent.Modules.Angular.Templates.AngularModuleTemplate
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
-            var editor = new TypescriptFileEditor(source);
+            var editor = new TypescriptFile(source);
             foreach (var componentInfo in _components)
             {
                 editor.AddImportIfNotExists(componentInfo.ComponentName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(componentInfo.Location));
