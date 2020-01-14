@@ -173,6 +173,37 @@
     <Compile Include="Templates\Core\CoreModuleTemplate\CoreModuleTemplatePartial.cs" />
     <Compile Include="Templates\Core\ApiServiceTemplate\ApiServiceTemplatePartial.cs" />
     <Compile Include="Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplatePartial.cs" />
+    <Compile Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplateRegistration.cs" />
+    <Content Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EnvironmentTemplate.cs</LastGenOutput>
+    </Content>
+    <Compile Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.cs">
+      <DependentUpon>EnvironmentTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplatePartial.cs" />
+    <Compile Include="Templates\AppRoutingModuleTemplate\AppRoutingModuleTemplateRegistration.cs" />
+    <Compile Include="Templates\AppModuleTemplate\AppModuleTemplateRegistration.cs" />
+    <Content Include="Templates\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AppRoutingModuleTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\AppModuleTemplate\AppModuleTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AppModuleTemplate.cs</LastGenOutput>
+    </Content>
+    <Compile Include="Templates\AppRoutingModuleTemplate\AppRoutingModuleTemplate.cs">
+      <DependentUpon>AppRoutingModuleTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\AppModuleTemplate\AppModuleTemplate.cs">
+      <DependentUpon>AppModuleTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\AppRoutingModuleTemplate\AppRoutingModuleTemplatePartial.cs" />
+    <Compile Include="Templates\AppModuleTemplate\AppModuleTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Intent.Modules.Angular.imodspec" />

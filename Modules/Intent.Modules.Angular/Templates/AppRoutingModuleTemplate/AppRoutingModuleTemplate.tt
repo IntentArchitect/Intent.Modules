@@ -1,0 +1,29 @@
+<#@ template language="C#" inherits="IntentTypescriptProjectItemTemplateBase<IList<IModuleModel>>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.Angular.Api" #>
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+
+const routes: Routes = [
+<# foreach(var module in Model) {
+// All of the below is not gonna work; but for now just to test idea...
+#>
+  {
+    path: '<#= module.Name.Replace("Module","").ToLower() #>',
+    loadChildren: './<#= module.Name.Replace("Module","").ToLower() #>/<#= module.Name.Replace("Module","").ToLower() #>.module#<#= module.Name #>'
+  },
+<# } #>
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

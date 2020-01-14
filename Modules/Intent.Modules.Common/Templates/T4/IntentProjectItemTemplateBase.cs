@@ -67,6 +67,11 @@ namespace Intent.Modules.Common.Templates
         public virtual void BeforeTemplateExecution()
         {
         }
+
+        public override string ToString()
+        {
+            return $"{Id}#{Model?.ToString()}";
+        }
     }
 
     public class TemplateContext : ITemplateContext
@@ -109,7 +114,6 @@ namespace Intent.Modules.Common.Templates
                 isDefault = true;
                 return _defaultModelContext;
             }
-
         }
     }
 

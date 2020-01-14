@@ -23,6 +23,16 @@ namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
         {
         }
 
+        public override void BeforeTemplateExecution()
+        {
+            Project.Application.EventDispatcher.Publish(AngularConfigVariableRequiredEvent.EventId,
+                new Dictionary<string, string>()
+                {
+                    {AngularConfigVariableRequiredEvent.VariableId, "api_url" },
+                    {AngularConfigVariableRequiredEvent.DefaultValueId, "\"http://localhost:{port}/api\"" },
+                });
+        }
+
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {

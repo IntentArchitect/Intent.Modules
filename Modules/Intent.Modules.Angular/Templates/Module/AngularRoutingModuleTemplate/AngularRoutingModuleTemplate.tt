@@ -7,18 +7,18 @@
 <#@ import namespace="Intent.Modules.Angular.Api" #>
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from "./main/main.component";
-
 
 const routes: Routes = [
+<# foreach(var component in Model.Components) { #>
   {
-    path: '',
-    component: MainComponent
-  }
+    path: '<#= GetPath(component) #>',
+    component: <#= GetClassName(component)  #>
+  },
+<# } #>
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MainRoutingModule { }
+export class <#= ClassName #> { }

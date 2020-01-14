@@ -57,7 +57,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
             var source = LoadOrCreate(fullFileName);
             var file = new TypescriptFile(source);
-            var @class = file.Classes().First();
+            var @class = file.ClassDeclarations().First();
             foreach (var operation in Model.Operations)
             {
                 var url = $"/{Model.MappedService.Name.ToLower()}/{Model.MappedService.Operations.First(x => x.Id == operation.Mapping.TargetId).Name.ToLower()}";

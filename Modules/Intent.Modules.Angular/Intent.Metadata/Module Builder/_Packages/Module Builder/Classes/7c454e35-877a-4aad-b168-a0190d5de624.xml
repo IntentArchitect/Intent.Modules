@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="81587730-17e1-49a1-97c7-220666ad3989" type="File Template">
-  <name>ApiServiceTemplate</name>
+<class id="7c454e35-877a-4aad-b168-a0190d5de624" type="File Template">
+  <name>EnvironmentTemplate</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>5be4309a-b59b-4d53-af62-f0ef3b3310c5</parentFolderId>
+  <parentFolderId>433f0fec-55d0-484f-b3dd-81d59d806674</parentFolderId>
   <literals />
   <attributes />
   <operations />

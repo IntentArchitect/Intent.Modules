@@ -34,6 +34,15 @@
     <template id="Angular.Templates.Module.AngularRoutingModuleTemplate">
       <role>Angular.Templates.Module.AngularRoutingModuleTemplate</role>
     </template>
+    <template id="Angular.Templates.Environment.EnvironmentTemplate">
+      <role>Angular.Templates.Environment.EnvironmentTemplate</role>
+    </template>
+    <template id="Angular.Templates.AppRoutingModuleTemplate">
+      <role>Angular.Templates.AppRoutingModuleTemplate</role>
+    </template>
+    <template id="Angular.Templates.AppModuleTemplate">
+      <role>Angular.Templates.AppModuleTemplate</role>
+    </template>
   </templates>
   <decorators>
     <decorator id="Angular.AngularComponentHtmlTemplate.PagedSearchDecorator" />

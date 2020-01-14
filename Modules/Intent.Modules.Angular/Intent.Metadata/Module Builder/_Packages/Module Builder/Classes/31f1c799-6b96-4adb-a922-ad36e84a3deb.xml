@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="81587730-17e1-49a1-97c7-220666ad3989" type="File Template">
-  <name>ApiServiceTemplate</name>
+<class id="31f1c799-6b96-4adb-a922-ad36e84a3deb" type="File Template">
+  <name>AppModuleTemplate</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>5be4309a-b59b-4d53-af62-f0ef3b3310c5</parentFolderId>
+  <parentFolderId>af05bb66-305f-4791-bec8-d9f9cf0c3c34</parentFolderId>
   <literals />
   <attributes />
   <operations />

@@ -7,22 +7,22 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
+namespace Intent.Modules.Angular.Templates.AppModuleTemplate
 {
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
-    using Intent.Modules.Angular.Api;
+    using Intent.Metadata.Models;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\AppModuleTemplate\AppModuleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class AngularModuleTemplate : IntentTypescriptProjectItemTemplateBase<IModuleModel>
+    public partial class AppModuleTemplate : IntentTypescriptProjectItemTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -30,18 +30,26 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
         /// </summary>
         public override string TransformText()
         {
-            this.Write("import { NgModule } from \'@angular/core\';\r\nimport { CommonModule } from \'@angular" +
-                    "/common\';\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [\r\n    CommonModule,\r\n" +
-                    "    ");
+            this.Write(@"import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(RoutingModuleClassName));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n  ]\r\n})\r\nexport class ");
-            
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
+            #line 8 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\AppModuleTemplate\AppModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

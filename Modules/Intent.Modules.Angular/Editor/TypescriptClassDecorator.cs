@@ -53,5 +53,26 @@ namespace Intent.Modules.Angular.Editor
             }
             File.UpdateChanges(change);
         }
+
+        public void AddImportIfNotExists(string className)
+        {
+            var change = new ChangeAST();
+            var declarations = FindNode("PropertyAssignment:imports/ArrayLiteralExpression");
+            if (declarations != null)
+            {
+                if (declarations.Children.Count == 0)
+                {
+                    change.ChangeNode(declarations, $@" [
+    {className}
+  ]");
+                }
+                else if (declarations.Children.All(x => x.IdentifierStr != className))
+                {
+                    change.InsertAfter(declarations.Children.Last(), $@", 
+    {className}");
+                }
+            }
+            File.UpdateChanges(change);
+        }
     }
 }

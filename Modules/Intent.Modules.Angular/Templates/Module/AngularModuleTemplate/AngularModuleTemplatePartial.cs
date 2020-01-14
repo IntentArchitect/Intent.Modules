@@ -53,6 +53,8 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string ModuleName => Model.GetModuleName();
 
+        public string RoutingModuleClassName => GetTemplateClassName(AngularRoutingModuleTemplate.AngularRoutingModuleTemplate.TemplateId, Model);
+
         public override string RunTemplate()
         {
             var meta = GetMetadata();
@@ -63,13 +65,13 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
             foreach (var componentInfo in _components)
             {
                 editor.AddImportIfNotExists(componentInfo.ComponentName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(componentInfo.Location));
-                editor.Classes().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.AddDeclarationIfNotExists(componentInfo.ComponentName);
+                editor.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.AddDeclarationIfNotExists(componentInfo.ComponentName);
             }
 
             foreach (var providerInfo in _providers)
             {
                 editor.AddImportIfNotExists(providerInfo.ProviderName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(providerInfo.Location));
-                editor.Classes().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.AddProviderIfNotExists(providerInfo.ProviderName);
+                editor.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.AddProviderIfNotExists(providerInfo.ProviderName);
             }
 
             return editor.GetSource();
@@ -77,7 +79,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         private string LoadOrCreate(string fullFileName)
         {
-            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : TransformText();
+            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : base.RunTemplate();
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
@@ -89,7 +91,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                 fileName: $"{ModuleName.ToAngularFileName()}.module",
                 fileExtension: "ts", // Change to desired file extension.
                 defaultLocationInProject: $"Client/src/app/{ ModuleName.ToAngularFileName() }",
-                className: "${ModuleName}");
+                className: "${ModuleName}Module");
         }
 
         private string GetComponentName(IComponentModel componentModel)

@@ -120,20 +120,27 @@ namespace Intent.Modules.Common.Templates
             return NormalizeNamespace(Types.Get(typeReference));
         }
 
-        public string GetTemplateClassName(string templateId, ITemplateDependency templateDependency)
+        // This should probably be generalized
+        public TTemplate GetTemplate<TTemplate>(string templateId, ITemplateDependency templateDependency)
+            where TTemplate: class
         {
             if (!_onCreatedHasHappened)
             {
                 throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
             }
 
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependency);
+            var template = Project.Application.FindTemplateInstance<TTemplate>(templateDependency);
             if (template != null)
             {
                 _detectedDependencies.Add(templateDependency);
-                return NormalizeNamespace(template.FullTypeName());
+                return template;
             }
             throw new Exception($"Could not find template with Id: {templateId} for model {Model.ToString()}");
+        }
+
+        public string GetTemplateClassName(string templateId, ITemplateDependency templateDependency)
+        {
+            return NormalizeNamespace(GetTemplate<IHasClassDetails>(templateId, templateDependency)?.FullTypeName());
         }
 
         public string GetTemplateClassName(string templateId)

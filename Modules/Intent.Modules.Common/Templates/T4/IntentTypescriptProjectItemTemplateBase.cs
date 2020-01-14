@@ -109,7 +109,7 @@ namespace Intent.Modules.Common.Templates
             get
             {
                 var sb = new StringBuilder();
-                foreach (var dependency in GetTemplateDependencies().Select(x => Project.FindTemplateInstance<ITemplate>(x)))
+                foreach (var dependency in GetTemplateDependencies().Select(x => Project.FindTemplateInstance<ITemplate>(x)).Distinct())
                 {
                     var className = ((IHasClassDetails)dependency).ClassName;
                     var location = GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(dependency.GetMetadata().GetRelativeFilePathWithFileName());

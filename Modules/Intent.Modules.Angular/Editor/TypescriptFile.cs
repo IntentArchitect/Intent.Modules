@@ -37,10 +37,14 @@ import {{ {className} }} from '{location}';");
             _source = change.GetChangedSource(_source);
         }
 
-        public IList<TypescriptClass> Classes()
+        public IList<TypescriptClass> ClassDeclarations()
         {
-            var ast = new TypeScriptAST(_source);
-            return ast.OfKind(SyntaxKind.ClassDeclaration).Select(x => new TypescriptClass(x, this)).ToList();
+            return new TypeScriptAST(_source).OfKind(SyntaxKind.ClassDeclaration).Select(x => new TypescriptClass(x, this)).ToList();
+        }
+
+        public IList<TypescriptVariableDeclaration> VariableDeclarations()
+        {
+            return new TypeScriptAST(_source).OfKind(SyntaxKind.VariableDeclaration).Select(x => new TypescriptVariableDeclaration(x, this)).ToList();
         }
 
         public string GetSource()

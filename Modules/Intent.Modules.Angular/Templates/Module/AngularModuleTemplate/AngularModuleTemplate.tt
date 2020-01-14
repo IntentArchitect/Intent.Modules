@@ -5,15 +5,14 @@
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
-
-// Place your file template logic here
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    <#= RoutingModuleClassName #>
   ]
 })
 export class <#= ClassName #> { }

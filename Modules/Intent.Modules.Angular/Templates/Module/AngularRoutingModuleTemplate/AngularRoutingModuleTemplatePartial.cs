@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
@@ -41,5 +43,14 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
         }
 
 
+        private string GetPath(IComponentModel component)
+        {
+            return GetTemplateClassName(AngularComponentTsTemplate.TemplateId, component).Replace("Component", "").ToAngularFileName();
+        }
+
+        private string GetClassName(IComponentModel component)
+        {
+            return GetTemplateClassName(AngularComponentTsTemplate.TemplateId, component);
+        }
     }
 }

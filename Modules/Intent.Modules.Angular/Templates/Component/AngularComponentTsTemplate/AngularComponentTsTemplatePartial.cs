@@ -68,7 +68,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             var source = LoadOrCreate(fullFileName);
 
             var editor = new TypescriptFile(source);
-            var @class = editor.Classes().First();
+            var @class = editor.ClassDeclarations().First();
 
             foreach (var model in Model.Models)
             {

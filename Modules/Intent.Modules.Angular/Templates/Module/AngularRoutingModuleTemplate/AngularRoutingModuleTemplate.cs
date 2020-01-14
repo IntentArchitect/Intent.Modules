@@ -30,24 +30,44 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
         /// </summary>
         public override string TransformText()
         {
-            this.Write(@"import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from ""./main/main.component"";
-
-
-const routes: Routes = [
-  {
-    path: '',
-    component: MainComponent
-  }
-];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class MainRoutingModule { }
-");
+            this.Write("import { NgModule } from \'@angular/core\';\r\nimport { RouterModule, Routes } from \'" +
+                    "@angular/router\';\r\n\r\nconst routes: Routes = [\r\n");
+            
+            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
+ foreach(var component in Model.Components) { 
+            
+            #line default
+            #line hidden
+            this.Write("  {\r\n    path: \'");
+            
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetPath(component)));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n    component: ");
+            
+            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(component)));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n  },\r\n");
+            
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [Route" +
+                    "rModule]\r\n})\r\nexport class ");
+            
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(" { }\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

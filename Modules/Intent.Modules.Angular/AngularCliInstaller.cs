@@ -23,9 +23,9 @@ namespace Intent.Modules.Angular
             if (step == ExecutionLifeCycleSteps.BeforeTemplateExecution)
             {
                 RequestInitialization(application);
-            }
-            else if (step == ExecutionLifeCycleSteps.AfterCommitChanges)
-            {
+            //}
+            //else if (step == ExecutionLifeCycleSteps.BeforeCommitChanges )
+            //{
                 if (!AngularInstalled(application))
                 {
                     RunAngularCli(application);
@@ -100,7 +100,7 @@ namespace Intent.Modules.Angular
 
             CommandLineProcessor cmd = new CommandLineProcessor();
 
-            var command = $@"ng new {application.Name} --directory Client --minimal --defaults";
+            var command = $@"ng new {application.Name} --directory Client --minimal --defaults --force=true";
             try
             {
                 var output = cmd.ExecuteCommand(Path.GetFullPath(project.ProjectLocation),

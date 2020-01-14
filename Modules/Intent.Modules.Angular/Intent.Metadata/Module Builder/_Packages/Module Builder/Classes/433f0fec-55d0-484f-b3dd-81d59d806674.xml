@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="433f0fec-55d0-484f-b3dd-81d59d806674" type="Folder">
+  <name>Environment</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>af05bb66-305f-4791-bec8-d9f9cf0c3c34</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+</class>
