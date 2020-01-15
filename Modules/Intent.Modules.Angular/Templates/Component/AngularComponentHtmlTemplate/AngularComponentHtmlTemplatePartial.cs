@@ -83,9 +83,9 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{ComponentName.ToAngularFileName()}.component",
+                fileName: $"{ComponentName.ToKebabCase()}.component",
                 fileExtension: "html",
-                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToAngularFileName()}/{ComponentName.ToAngularFileName()}"
+                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
                     );
         }
     }

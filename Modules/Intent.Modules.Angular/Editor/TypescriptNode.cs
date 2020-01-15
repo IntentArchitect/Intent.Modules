@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Zu.TypeScript.Change;
 using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Angular.Editor
@@ -8,11 +9,14 @@ namespace Intent.Modules.Angular.Editor
     {
         protected readonly Node Node;
         protected readonly TypescriptFile File;
+        protected readonly ChangeAST Change;
+        
 
         public TypescriptNode(Node node, TypescriptFile file)
         {
             Node = node;
             File = file;
+            Change = new ChangeAST();
         }
 
         public bool NodeExists(string path)
@@ -62,5 +66,10 @@ namespace Intent.Modules.Angular.Editor
 
             return FindNode(node.GetDescendants().OfKind(syntaxKind).FirstOrDefault(x => x.IdentifierStr == identifier), path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
         }
+
+        //public void UpdateChanges(ChangeAST change)
+        //{
+        //    File.UpdateChanges(change);
+        //}
     }
 }

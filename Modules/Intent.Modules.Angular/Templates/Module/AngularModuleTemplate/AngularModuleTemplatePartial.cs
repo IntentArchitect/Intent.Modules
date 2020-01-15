@@ -61,20 +61,21 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
-            var editor = new TypescriptFile(source);
+            var file = new TypescriptFile(source);
+            var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
             foreach (var componentInfo in _components)
             {
-                editor.AddImportIfNotExists(componentInfo.ComponentName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(componentInfo.Location));
-                editor.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.AddDeclarationIfNotExists(componentInfo.ComponentName);
+                file.AddImportIfNotExists(componentInfo.ComponentName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(componentInfo.Location));
+                ngModuleDecorator?.AddDeclarationIfNotExists(componentInfo.ComponentName);
             }
 
             foreach (var providerInfo in _providers)
             {
-                editor.AddImportIfNotExists(providerInfo.ProviderName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(providerInfo.Location));
-                editor.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.AddProviderIfNotExists(providerInfo.ProviderName);
+                file.AddImportIfNotExists(providerInfo.ProviderName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(providerInfo.Location));
+                ngModuleDecorator?.AddProviderIfNotExists(providerInfo.ProviderName);
             }
 
-            return editor.GetSource();
+            return file.GetSource();
         }
 
         private string LoadOrCreate(string fullFileName)
@@ -88,9 +89,9 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{ModuleName.ToAngularFileName()}.module",
+                fileName: $"{ModuleName.ToKebabCase()}.module",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{ ModuleName.ToAngularFileName() }",
+                defaultLocationInProject: $"Client/src/app/{ ModuleName.ToKebabCase() }",
                 className: "${ModuleName}Module");
         }
 

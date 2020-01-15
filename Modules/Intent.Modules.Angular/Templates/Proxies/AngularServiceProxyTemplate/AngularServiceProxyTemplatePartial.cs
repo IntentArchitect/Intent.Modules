@@ -41,7 +41,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 return;
             }
 
-            // New Component:
+            // New Proxy:
             Project.Application.EventDispatcher.Publish(AngularServiceProxyCreatedEvent.EventId,
                 new Dictionary<string, string>()
                 {
@@ -139,9 +139,9 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{Model.Name.ToAngularFileName()}.service",
+                fileName: $"{Model.Name.ToKebabCase()}.service",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{Model.Module.GetModuleName().ToAngularFileName()}",
+                defaultLocationInProject: $"Client/src/app/{Model.Module.GetModuleName().ToKebabCase()}",
                 className: "${Model.Name}"
             );
         }

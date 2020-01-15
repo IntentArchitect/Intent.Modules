@@ -39,7 +39,7 @@ namespace Intent.Modules.Angular.Templates.AppModuleTemplate
             var file = new TypescriptFile(source);
             var moduleClass = file.ClassDeclarations().First();
 
-            var moduleDecorator = moduleClass.Decorators().FirstOrDefault(x => x.Name == "NgModule");
+            var moduleDecorator = moduleClass.Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
 
             moduleDecorator?.AddImportIfNotExists(CoreModule);
             moduleDecorator?.AddImportIfNotExists(AppRoutingModuleClassName);

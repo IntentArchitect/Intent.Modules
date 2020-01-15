@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -22,6 +23,14 @@ namespace Intent.Modules.Angular.Templates.AppRoutingModuleTemplate
 
         public AppRoutingModuleTemplate(IProject project, IList<IModuleModel> model) : base(TemplateId, project, model)
         {
+        }
+
+        public IEnumerable<AngularModuleTemplate> ModuleTemplates
+        {
+            get
+            {
+                return Model.Select(x => Project.FindTemplateInstance<AngularModuleTemplate>(TemplateDependency.OnModel(AngularModuleTemplate.TemplateId, x)));
+            }
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

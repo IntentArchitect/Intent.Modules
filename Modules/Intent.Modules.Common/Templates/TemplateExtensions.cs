@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using Humanizer.Inflections;
 using Intent.Engine;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
@@ -19,7 +21,7 @@ namespace Intent.Modules.Common.Templates
                     .ToList()
                     .Select(x => x.GetMetadata().CustomMetadata["Namespace"])
                 .Union(template.GetAllDeclareUsing())
-                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Where(x => !String.IsNullOrWhiteSpace(x))
                 .Except(namespacesToIgnore)
                 .Distinct()
                 .ToArray();
@@ -38,7 +40,7 @@ namespace Intent.Modules.Common.Templates
 
             return usings.Any()
                     ? usings.Aggregate((x, y) => x + Environment.NewLine + y)
-                    : string.Empty;
+                    : String.Empty;
         }
 
         private static string FixUsing(string @using)
@@ -119,7 +121,7 @@ namespace Intent.Modules.Common.Templates
 
         public static string ToPascalCase(this string s)
         {
-            if (string.IsNullOrWhiteSpace(s))
+            if (String.IsNullOrWhiteSpace(s))
             {
                 return s;
             }
@@ -133,13 +135,24 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        public static string AsClassName(this string s)
+        public static string ToKebabCase(this string name)
         {
-            if (s.StartsWith("I") && s.Length >= 2 && char.IsUpper(s[1]))
+            var sb = new StringBuilder(name);
+            for (int i = 0; i < sb.Length; i++)
             {
-                s = s.Substring(1);
+                var c = sb[i];
+                if (Char.IsUpper(c))
+                {
+                    sb.Remove(i, 1);
+                    sb.Insert(i, Char.ToLower(c));
+                    if (i != 0 && i < sb.Length - 1)
+                    {
+                        sb.Insert(i, "-");
+                    }
+                }
             }
-            return s.Replace(".", "");
+
+            return sb.ToString();
         }
 
         public static string ToPluralName(this string s)
@@ -156,7 +169,7 @@ namespace Intent.Modules.Common.Templates
 
         public static string ToCamelCase(this string s, bool reservedWordEscape)
         {
-            if (string.IsNullOrWhiteSpace(s))
+            if (String.IsNullOrWhiteSpace(s))
             {
                 return s;
             }
@@ -182,9 +195,18 @@ namespace Intent.Modules.Common.Templates
             return result;
         }
 
+        public static string AsClassName(this string s)
+        {
+            if (s.StartsWith("I") && s.Length >= 2 && Char.IsUpper(s[1]))
+            {
+                s = s.Substring(1);
+            }
+            return s.Replace(".", "");
+        }
+
         public static string ToPrivateMember(this string s)
         {
-            if (string.IsNullOrWhiteSpace(s))
+            if (String.IsNullOrWhiteSpace(s))
             {
                 return s;
             }
@@ -193,14 +215,13 @@ namespace Intent.Modules.Common.Templates
 
         public static string Pluralize(this string word, bool inputIsKnownToBeSingular = true)
         {
-            return Humanizer.Inflections.Vocabularies.Default.Pluralize(word, inputIsKnownToBeSingular);
+            return Vocabularies.Default.Pluralize(word, inputIsKnownToBeSingular);
         }
 
         public static string Singularize(this string word, bool inputIsKnownToBePlural = true)
         {
-            return Humanizer.Inflections.Vocabularies.Default.Singularize(word, inputIsKnownToBePlural);
+            return Vocabularies.Default.Singularize(word, inputIsKnownToBePlural);
         }
-
     }
 
 }

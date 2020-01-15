@@ -1,12 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.Plugins;
+using Intent.Modules.Common.TypeResolution;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentProjectItemTemplateBase<TModel> : IntentTemplateBase, ITemplate, ITemplateWithModel, IProjectItemTemplate, IConfigurableTemplate, IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
+        protected readonly ICollection<ITemplateDependency> DetectedDependencies = new List<ITemplateDependency>();
+
         public IntentProjectItemTemplateBase(string templateId, IProject project, TModel model)
         {
             Project = project;
@@ -50,22 +56,86 @@ namespace Intent.Modules.Common.Templates
         {
             if (!HasTypeResolver())
             {
-                return new List<ITemplateDependency>();
+                return DetectedDependencies;
             }
-            return Types.GetTemplateDependencies();
+            return Types.GetTemplateDependencies().Concat(DetectedDependencies); ;
         }
-
 
         public virtual void OnConfigured()
         {
         }
 
-        public virtual void OnCreated()
+        public virtual void BeforeTemplateExecution()
         {
         }
 
-        public virtual void BeforeTemplateExecution()
+        private readonly ICollection<IClassTypeSource> _typeSources = new List<IClassTypeSource>();
+
+        public void AddTypeSource(IClassTypeSource classTypeSource)
         {
+            _typeSources.Add(classTypeSource);
+        }
+
+        private bool _onCreatedHasHappened;
+
+        public virtual void OnCreated()
+        {
+            _onCreatedHasHappened = true;
+            foreach (var typeSource in _typeSources)
+            {
+                Types.AddClassTypeSource(typeSource);
+            }
+        }
+
+        public string GetTypeName(ITypeReference typeReference)
+        {
+            return Types.Get(typeReference);
+        }
+
+        public string GetTemplateClassName(string templateId, ITemplateDependency templateDependency)
+        {
+            if (!_onCreatedHasHappened)
+            {
+                throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
+            }
+
+            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependency);
+            if (template != null)
+            {
+                DetectedDependencies.Add(templateDependency);
+                return template.ClassName;
+            }
+            throw new Exception($"Could not find template with Id: {templateId} for model {Model.ToString()}");
+        }
+
+        public string GetTemplateClassName(string templateId)
+        {
+            return GetTemplateClassName(templateId, TemplateDependency.OnTemplate(templateId));
+        }
+
+        public string GetTemplateClassName(string templateId, IMetadataModel model)
+        {
+            return GetTemplateClassName(templateId, TemplateDependency.OnModel(templateId, model));
+        }
+
+        public string GetTemplateClassName(string templateId, string modelId)
+        {
+            return GetTemplateClassName(templateId, TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId) where TTemplate : class
+        {
+            return Project.FindTemplateInstance<TTemplate>(templateId);
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId, IMetadataModel model) where TTemplate : class
+        {
+            return Project.FindTemplateInstance<TTemplate>(TemplateDependency.OnModel(templateId, model));
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId, string modelId) where TTemplate : class
+        {
+            return Project.FindTemplateInstance<TTemplate>(templateId, TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
         }
 
         public override string ToString()

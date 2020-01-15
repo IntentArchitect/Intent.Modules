@@ -117,9 +117,9 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{ComponentName.ToAngularFileName()}.component",
+                fileName: $"{ComponentName.ToKebabCase()}.component",
                 fileExtension: "ts",
-                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToAngularFileName()}/{ComponentName.ToAngularFileName()}",
+                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}",
                 className: "${ComponentName}Component"
             );
         }

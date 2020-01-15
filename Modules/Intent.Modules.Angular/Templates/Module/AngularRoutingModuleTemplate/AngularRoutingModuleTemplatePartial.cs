@@ -35,9 +35,9 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{ModuleName.ToAngularFileName()}.module",
+                fileName: $"{ModuleName.ToKebabCase()}.module",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{ Model.GetModuleName().ToAngularFileName() }",
+                defaultLocationInProject: $"Client/src/app/{ Model.GetModuleName().ToKebabCase() }",
                 className: "${ModuleName}"
             );
         }
@@ -45,7 +45,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 
         private string GetPath(IComponentModel component)
         {
-            return GetTemplateClassName(AngularComponentTsTemplate.TemplateId, component).Replace("Component", "").ToAngularFileName();
+            return GetTemplateClassName(AngularComponentTsTemplate.TemplateId, component).Replace("Component", "").ToKebabCase();
         }
 
         private string GetClassName(IComponentModel component)

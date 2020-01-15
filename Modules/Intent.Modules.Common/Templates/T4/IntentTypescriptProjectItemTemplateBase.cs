@@ -11,8 +11,6 @@ namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IHasClassDetails
     {
-        private readonly ICollection<ITemplateDependency> _detectedDependencies = new List<ITemplateDependency>();
-
         public IntentTypescriptProjectItemTemplateBase(string templateId, IProject project, TModel model) : base(templateId, project, model)
         {
         }
@@ -43,65 +41,9 @@ namespace Intent.Modules.Common.Templates
 
         public string Location => FileMetadata.LocationInProject;
 
-
-        private readonly ICollection<IClassTypeSource> _classTypeSources = new List<IClassTypeSource>();
-
-        public void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
+        public void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
         {
-            _classTypeSources.Add(CSharpTypeSource.InProject(Project, templateId, collectionFormat));
-        }
-
-        public void AddTypeSource(IClassTypeSource classTypeSource)
-        {
-            _classTypeSources.Add(classTypeSource);
-        }
-
-        private bool _onCreatedHasHappened;
-
-        public override void OnCreated()
-        {
-            base.OnCreated();
-            _onCreatedHasHappened = true;
-            foreach (var classTypeSource in _classTypeSources)
-            {
-                Types.AddClassTypeSource(classTypeSource);
-            }
-        }
-
-        public string GetTypeName(ITypeReference typeReference)
-        {
-            return Types.Get(typeReference);
-        }
-
-        public string GetTemplateClassName(string templateId, ITemplateDependency templateDependency)
-        {
-            if (!_onCreatedHasHappened)
-            {
-                throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
-            }
-
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependency);
-            if (template != null)
-            {
-                _detectedDependencies.Add(templateDependency);
-                return template.ClassName;
-            }
-            throw new Exception($"Could not find template with Id: {templateId} for model {Model.ToString()}");
-        }
-
-        public string GetTemplateClassName(string templateId)
-        {
-            return GetTemplateClassName(templateId, TemplateDependency.OnTemplate(templateId));
-        }
-
-        public string GetTemplateClassName(string templateId, IMetadataModel model)
-        {
-            return GetTemplateClassName(templateId, TemplateDependency.OnModel(templateId, model));
-        }
-
-        public string GetTemplateClassName(string templateId, string modelId)
-        {
-            return GetTemplateClassName(templateId, TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
+            AddTypeSource(TypescriptTypeSource.InProject(Project, templateId, collectionFormat));
         }
 
         public string DependencyImports
@@ -118,12 +60,6 @@ namespace Intent.Modules.Common.Templates
 
                 return sb.ToString();
             }
-        }
-
-        public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
-        {
-            return base.GetTemplateDependencies()
-                .Concat(_detectedDependencies);
         }
 
         public override string RunTemplate()

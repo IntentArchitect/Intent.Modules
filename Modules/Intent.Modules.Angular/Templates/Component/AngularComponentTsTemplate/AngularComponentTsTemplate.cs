@@ -34,21 +34,21 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                     "ular/core\';\r\n\r\n@Component({\r\n  selector: \'app-");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToAngularFileName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToKebabCase()));
             
             #line default
             #line hidden
             this.Write("\',\r\n  templateUrl: \'./");
             
             #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToAngularFileName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToKebabCase()));
             
             #line default
             #line hidden
             this.Write(".component.html\',\r\n  styleUrls: [\'./");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToAngularFileName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToKebabCase()));
             
             #line default
             #line hidden
