@@ -80,14 +80,9 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 }
             }
 
-            var dependencies = Types.GetTemplateDependencies().Select(x => Project.FindTemplateInstance<ITemplate>(x));
-            foreach (var template in dependencies.Where(x => x is IHasClassDetails))
-            {
-                file.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetadata().GetRelativeFilePathWithFileName())); // Temporary replacement until 1.9 changes are merged.
-            }
+            file.AddDependencyImports(this);
 
-
-            return file.GetSource();
+            return file.GetChangedSource();
         }
 
         private string GetReturnType(IOperation operation)

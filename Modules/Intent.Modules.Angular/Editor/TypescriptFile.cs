@@ -9,32 +9,33 @@ namespace Intent.Modules.Angular.Editor
     public class TypescriptFile
     {
         private string _source;
+        public TypeScriptAST Ast;
+        public ChangeAST Change;
 
         public TypescriptFile(string source)
         {
             _source = source;
+            Ast = new TypeScriptAST(_source);
+            Change = new ChangeAST();
         }
 
         public void AddImportIfNotExists(string className, string location)
         {
-            var ast = new TypeScriptAST(_source);
-            var change = new ChangeAST();
-            var imports = ast.OfKind(SyntaxKind.ImportDeclaration);
+            var imports = Ast.OfKind(SyntaxKind.ImportDeclaration);
 
             if (imports.Any())
             {
                 if (imports.All(x => x.GetDescendants(false).OfKind(SyntaxKind.Identifier).FirstOrDefault()?.IdentifierStr != className))
                 {
-                    change.InsertAfter(imports.Last(), $@"
+                    Change.InsertAfter(imports.Last(), $@"
 import {{ {className} }} from '{location}';");
                 }
             }
             else
             {
-                change.InsertBefore(ast.RootNode, $@"
+                Change.InsertBefore(Ast.RootNode, $@"
 import {{ {className} }} from '{location}';");
             }
-            _source = change.GetChangedSource(_source);
         }
 
         public IList<TypescriptClass> ClassDeclarations()
@@ -47,14 +48,17 @@ import {{ {className} }} from '{location}';");
             return new TypeScriptAST(_source).OfKind(SyntaxKind.VariableDeclaration).Select(x => new TypescriptVariableDeclaration(x, this)).ToList();
         }
 
-        public string GetSource()
+        public string GetChangedSource()
         {
+            UpdateChanges();
             return _source;
         }
 
-        public void UpdateChanges(ChangeAST change)
+        public void UpdateChanges()
         {
-            _source = change.GetChangedSource(_source);
+            _source = Change.GetChangedSource(_source);
+            Ast = new TypeScriptAST(_source);
+            Change = new ChangeAST();
         }
     }
 }

@@ -91,77 +91,14 @@ namespace Intent.Modules.Common.Templates
             return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
         }
 
-        private readonly ICollection<IClassTypeSource> _classTypeSources = new List<IClassTypeSource>();
-
-        public void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
-        {
-            _classTypeSources.Add(CSharpTypeSource.InProject(Project, templateId, collectionFormat));
-        }
-
-        public void AddTypeSource(IClassTypeSource classTypeSource)
-        {
-            _classTypeSources.Add(classTypeSource);
-        }
-
-        private bool _onCreatedHasHappened;
-
-        public override void OnCreated()
-        {
-            base.OnCreated();
-            _onCreatedHasHappened = true;
-            foreach (var classTypeSource in _classTypeSources)
-            {
-                Types.AddClassTypeSource(classTypeSource);
-            }
-        }
-
-        public string GetTypeName(ITypeReference typeReference)
+        public override string GetTypeName(ITypeReference typeReference)
         {
             return NormalizeNamespace(Types.Get(typeReference));
         }
 
-        // This should probably be generalized
-        public TTemplate GetTemplate<TTemplate>(string templateId, ITemplateDependency templateDependency)
-            where TTemplate: class
+        public override string GetTemplateClassName(ITemplateDependency templateDependency)
         {
-            if (!_onCreatedHasHappened)
-            {
-                throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
-            }
-
-            var template = Project.Application.FindTemplateInstance<TTemplate>(templateDependency);
-            if (template != null)
-            {
-                _detectedDependencies.Add(templateDependency);
-                return template;
-            }
-            throw new Exception($"Could not find template with Id: {templateId} for model {Model.ToString()}");
-        }
-
-        public string GetTemplateClassName(string templateId, ITemplateDependency templateDependency)
-        {
-            return NormalizeNamespace(GetTemplate<IHasClassDetails>(templateId, templateDependency)?.FullTypeName());
-        }
-
-        public string GetTemplateClassName(string templateId)
-        {
-            return GetTemplateClassName(templateId, TemplateDependency.OnTemplate(templateId));
-        }
-
-        public string GetTemplateClassName(string templateId, IMetadataModel model)
-        {
-            return GetTemplateClassName(templateId, TemplateDependency.OnModel(templateId, model));
-        }
-
-        public string GetTemplateClassName(string templateId, string modelId)
-        {
-            return GetTemplateClassName(templateId, TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
-        }
-
-        public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
-        {
-            return base.GetTemplateDependencies()
-                .Concat(_detectedDependencies);
+            return NormalizeNamespace(FindTemplate<IHasClassDetails>(templateDependency)?.FullTypeName());
         }
 
         private IEnumerable<string> _templateUsings;

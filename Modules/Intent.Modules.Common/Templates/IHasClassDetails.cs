@@ -10,6 +10,10 @@
     {
         public static string FullTypeName(this IHasClassDetails item)
         {
+            if (string.IsNullOrWhiteSpace(item.Namespace))
+            {
+                return item.ClassName;
+            }
             return item.Namespace + "." + item.ClassName;
         }
     }

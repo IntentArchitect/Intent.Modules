@@ -46,12 +46,18 @@ namespace Intent.Modules.Common.Templates
             AddTypeSource(TypescriptTypeSource.InProject(Project, templateId, collectionFormat));
         }
 
+
+        public override string GetTemplateClassName(ITemplateDependency templateDependency)
+        {
+            return FindTemplate<IHasClassDetails>(templateDependency)?.ClassName;
+        }
+
         public string DependencyImports
         {
             get
             {
                 var sb = new StringBuilder();
-                foreach (var dependency in GetTemplateDependencies().Select(x => Project.FindTemplateInstance<ITemplate>(x)).Distinct())
+                foreach (var dependency in GetTemplateDependencies().Select(Project.FindTemplateInstance<ITemplate>).Distinct())
                 {
                     var className = ((IHasClassDetails)dependency).ClassName;
                     var location = GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(dependency.GetMetadata().GetRelativeFilePathWithFileName());

@@ -23,8 +23,8 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularModuleTemplate";
-        private readonly IList<AngularComponentInfo> _components = new List<AngularComponentInfo>();
-        private readonly IList<AngularProviderInfo> _providers = new List<AngularProviderInfo>();
+        private readonly IList<ITemplate> _components = new List<ITemplate>();
+        private readonly IList<ITemplate> _providers = new List<ITemplate>();
 
         public AngularModuleTemplate(IProject project, IModuleModel model) : base(TemplateId, project, model)
         {
@@ -35,8 +35,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                         return;
                     }
 
-                    var template = Project.FindTemplateInstance<ITemplate>(TemplateDependency.OnModel<IMetadataModel>(AngularComponentTsTemplate.TemplateId, x => x.Id == @event.GetValue(AngularComponentCreatedEvent.ModelId)));
-                    _components.Add(new AngularComponentInfo(((IHasClassDetails)template).ClassName, template.GetMetadata().GetRelativeFilePathWithFileName()));
+                    _components.Add(FindTemplate<ITemplate>(AngularComponentTsTemplate.TemplateId, @event.GetValue(AngularComponentCreatedEvent.ModelId)));
                 });
 
             project.Application.EventDispatcher.Subscribe(AngularServiceProxyCreatedEvent.EventId, @event =>
@@ -46,8 +45,8 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                     return;
                 }
 
-                var template = Project.FindTemplateInstance<ITemplate>(TemplateDependency.OnModel<IMetadataModel>(AngularServiceProxyTemplate.TemplateId, x => x.Id == @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
-                _providers.Add(new AngularProviderInfo(((IHasClassDetails)template).ClassName, template.GetMetadata().GetRelativeFilePathWithFileName()));
+                _components.Add(FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
+                //_providers.Add(new AngularProviderInfo(((IHasClassDetails)template).ClassName, template.GetMetadata().GetRelativeFilePathWithFileName()));
             });
         }
 
@@ -62,20 +61,24 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
             var source = LoadOrCreate(fullFileName);
             var file = new TypescriptFile(source);
-            var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
-            foreach (var componentInfo in _components)
+
+            foreach (var template in _components)
             {
-                file.AddImportIfNotExists(componentInfo.ComponentName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(componentInfo.Location));
-                ngModuleDecorator?.AddDeclarationIfNotExists(componentInfo.ComponentName);
+                var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
+                ngModuleDecorator?.AddDeclarationIfNotExists(GetTemplateClassName(template));
+                file.UpdateChanges();
             }
 
-            foreach (var providerInfo in _providers)
+            foreach (var template in _providers)
             {
-                file.AddImportIfNotExists(providerInfo.ProviderName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(providerInfo.Location));
-                ngModuleDecorator?.AddProviderIfNotExists(providerInfo.ProviderName);
+                var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
+                ngModuleDecorator?.AddProviderIfNotExists(GetTemplateClassName(template));
+                file.UpdateChanges();
             }
 
-            return file.GetSource();
+            file.AddDependencyImports(this);
+
+            return file.GetChangedSource();
         }
 
         private string LoadOrCreate(string fullFileName)

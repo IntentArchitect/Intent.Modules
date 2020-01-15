@@ -17,7 +17,7 @@ namespace Intent.Modules.Common.Tests
             var editor = new TypescriptFile(Source.AngularModule);
             editor.AddImportIfNotExists("NewComponent", "./new/new.component");
 
-            var x = editor.GetSource();
+            var x = editor.GetChangedSource();
         }
     }
 

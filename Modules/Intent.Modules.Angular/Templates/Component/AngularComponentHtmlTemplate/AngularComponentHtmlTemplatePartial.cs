@@ -52,13 +52,20 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
             var meta = GetMetadata();
             var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
-            var source = LoadOrCreate(fullFileName);
-            if (source.StartsWith("<!--IntentManaged-->"))
+            if (File.Exists(fullFileName))
             {
-                return GetDecorators().Any() ? GetDecorators().First().GetOverwrite() ?? TransformText() : TransformText();
+                var source = File.ReadAllText(fullFileName);
+                if (source.StartsWith("<!--IntentManaged-->"))
+                {
+                    return GetDecorators().Any() ? GetDecorators().First().GetOverwrite() ?? base.RunTemplate() : base.RunTemplate();
+                }
+                else
+                {
+                    return source;
+                }
             }
 
-            return source;
+            return base.RunTemplate();
         }
 
         public void AddDecorator(IOverwriteDecorator decorator)
@@ -73,7 +80,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
 
         private string LoadOrCreate(string fullFileName)
         {
-            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : TransformText();
+            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : base.RunTemplate();
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

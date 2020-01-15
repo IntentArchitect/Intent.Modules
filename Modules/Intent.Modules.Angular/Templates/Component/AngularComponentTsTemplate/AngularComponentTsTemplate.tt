@@ -5,14 +5,12 @@
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
-
-// Place your file template logic here
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-<#= ComponentName.ToAngularFileName() #>',
-  templateUrl: './<#= ComponentName.ToAngularFileName() #>.component.html',
-  styleUrls: ['./<#= ComponentName.ToAngularFileName() #>.component.css']
+  selector: 'app-<#= ComponentName.ToKebabCase() #>',
+  templateUrl: './<#= ComponentName.ToKebabCase() #>.component.html',
+  styleUrls: ['./<#= ComponentName.ToKebabCase() #>.component.css']
 })
 export class <#= ClassName #> implements OnInit {
 

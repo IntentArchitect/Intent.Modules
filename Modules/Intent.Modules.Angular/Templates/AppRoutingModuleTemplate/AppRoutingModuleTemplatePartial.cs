@@ -29,7 +29,7 @@ namespace Intent.Modules.Angular.Templates.AppRoutingModuleTemplate
         {
             get
             {
-                return Model.Select(x => Project.FindTemplateInstance<AngularModuleTemplate>(TemplateDependency.OnModel(AngularModuleTemplate.TemplateId, x)));
+                return Model.Select(x => FindTemplate<AngularModuleTemplate>(TemplateDependency.OnModel(AngularModuleTemplate.TemplateId, x)));
             }
         }
 

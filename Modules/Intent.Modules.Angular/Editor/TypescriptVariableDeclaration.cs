@@ -19,18 +19,16 @@ namespace Intent.Modules.Angular.Editor
 
         public void AddPropertyAssignment(string propertyAssignment)
         {
-            var change = new ChangeAST();
             var assignments = Node.OfKind(SyntaxKind.PropertyAssignment);
 
             if (assignments.Any())
             {
-                change.InsertAfter(assignments.Last(), propertyAssignment);
+                Change.InsertAfter(assignments.Last(), propertyAssignment);
             }
             else
             {
-                change.InsertBefore(Node.Children.Last(), propertyAssignment);
+                Change.InsertBefore(Node.Children.Last(), propertyAssignment);
             }
-            File.UpdateChanges(change);
         }
     }
 }

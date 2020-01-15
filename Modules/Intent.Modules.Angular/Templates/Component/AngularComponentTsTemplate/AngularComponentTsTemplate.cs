@@ -30,31 +30,31 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n// Place your file template logic here\r\nimport { Component, OnInit } from \'@ang" +
-                    "ular/core\';\r\n\r\n@Component({\r\n  selector: \'app-");
+            this.Write("import { Component, OnInit } from \'@angular/core\';\r\n\r\n@Component({\r\n  selector: \'" +
+                    "app-");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
+            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToKebabCase()));
             
             #line default
             #line hidden
             this.Write("\',\r\n  templateUrl: \'./");
             
-            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
+            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToKebabCase()));
             
             #line default
             #line hidden
             this.Write(".component.html\',\r\n  styleUrls: [\'./");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName.ToKebabCase()));
             
             #line default
             #line hidden
             this.Write(".component.css\']\r\n})\r\nexport class ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
+            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

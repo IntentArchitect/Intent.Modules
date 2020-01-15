@@ -54,7 +54,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
                 }
             }
 
-            return file.GetSource();
+            return file.GetChangedSource();
         }
 
         private string LoadOrCreate(string fullFileName)

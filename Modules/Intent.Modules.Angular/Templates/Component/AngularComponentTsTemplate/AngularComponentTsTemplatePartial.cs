@@ -67,8 +67,8 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 
             var source = LoadOrCreate(fullFileName);
 
-            var editor = new TypescriptFile(source);
-            var @class = editor.ClassDeclarations().First();
+            var file = new TypescriptFile(source);
+            var @class = file.ClassDeclarations().First();
 
             foreach (var model in Model.Models)
             {
@@ -91,18 +91,9 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 }
             }
 
-            var dependencies = Types.GetTemplateDependencies().Select(x => Project.FindTemplateInstance<ITemplate>(x));
-            foreach (var template in dependencies)
-            {
-                if (!(template is IHasClassDetails))
-                {
-                    continue;
-                }
+            file.AddDependencyImports(this);
 
-                editor.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetadata().GetRelativeFilePathWithFileName())); // Temporary replacement until 1.9 changes are merged.
-            }
-
-            return editor.GetSource();
+            return file.GetChangedSource();
         }
 
         private string LoadOrCreate(string fullFileName)

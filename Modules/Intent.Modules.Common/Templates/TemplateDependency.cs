@@ -24,6 +24,11 @@ namespace Intent.Modules.Common.Templates
             return new TemplateDependency(templateIdOrName, (t) => true);
         }
 
+        public static ITemplateDependency OnTemplate(ITemplate template)
+        {
+            return new TemplateDependency(template.Id, (t) => t == template);
+        }
+
         public static ITemplateDependency OnModel(string templateIdOrName, object metadataModel)
         {
             return new TemplateDependency(templateIdOrName, (t) => t is ITemplateWithModel model && model.Model.Equals(metadataModel));

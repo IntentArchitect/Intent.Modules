@@ -44,6 +44,7 @@ namespace Intent.Modules.Common.Templates
 
         public virtual string RunTemplate()
         {
+            // NOTE: If this method is run multiple times for a template instance, the output is duplicated. Perhaps put in a check here?
             return TransformText();
         }
 
@@ -87,55 +88,65 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        public string GetTypeName(ITypeReference typeReference)
+        public virtual string GetTypeName(ITypeReference typeReference)
         {
             return Types.Get(typeReference);
         }
 
-        public string GetTemplateClassName(string templateId, ITemplateDependency templateDependency)
+        public virtual string GetTemplateClassName(ITemplateDependency templateDependency)
+        {
+            return FindTemplate<IHasClassDetails>(templateDependency).FullTypeName();
+        }
+
+        public string GetTemplateClassName(ITemplate template)
+        {
+            return GetTemplateClassName(TemplateDependency.OnTemplate(template));
+        }
+
+        public string GetTemplateClassName(string templateId)
+        {
+            return GetTemplateClassName(TemplateDependency.OnTemplate(templateId));
+        }
+
+        public string GetTemplateClassName(string templateId, IMetadataModel model)
+        {
+            return GetTemplateClassName(TemplateDependency.OnModel(templateId, model));
+        }
+
+        public string GetTemplateClassName(string templateId, string modelId)
+        {
+            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
+        }
+
+        public TTemplate FindTemplate<TTemplate>(ITemplateDependency dependency) where TTemplate : class
         {
             if (!_onCreatedHasHappened)
             {
                 throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
             }
 
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependency);
+            var template = Project.Application.FindTemplateInstance<TTemplate>(dependency);
             if (template != null)
             {
-                DetectedDependencies.Add(templateDependency);
-                return template.ClassName;
+                DetectedDependencies.Add(dependency);
+                return template;
             }
-            throw new Exception($"Could not find template with Id: {templateId} for model {Model.ToString()}");
-        }
-
-        public string GetTemplateClassName(string templateId)
-        {
-            return GetTemplateClassName(templateId, TemplateDependency.OnTemplate(templateId));
-        }
-
-        public string GetTemplateClassName(string templateId, IMetadataModel model)
-        {
-            return GetTemplateClassName(templateId, TemplateDependency.OnModel(templateId, model));
-        }
-
-        public string GetTemplateClassName(string templateId, string modelId)
-        {
-            return GetTemplateClassName(templateId, TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
+            throw new Exception($"Could not find template with Id: {dependency.TemplateIdOrName} for model {Model.ToString()}");
         }
 
         public TTemplate FindTemplate<TTemplate>(string templateId) where TTemplate : class
         {
-            return Project.FindTemplateInstance<TTemplate>(templateId);
+            return FindTemplate<TTemplate>(TemplateDependency.OnTemplate(templateId));
         }
 
         public TTemplate FindTemplate<TTemplate>(string templateId, IMetadataModel model) where TTemplate : class
         {
-            return Project.FindTemplateInstance<TTemplate>(TemplateDependency.OnModel(templateId, model));
+            return FindTemplate<TTemplate>(TemplateDependency.OnModel(templateId, model));
         }
 
         public TTemplate FindTemplate<TTemplate>(string templateId, string modelId) where TTemplate : class
         {
-            return Project.FindTemplateInstance<TTemplate>(templateId, TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
+            return FindTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
         }
 
         public override string ToString()

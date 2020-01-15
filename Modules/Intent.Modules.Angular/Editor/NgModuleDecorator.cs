@@ -28,41 +28,38 @@ namespace Intent.Modules.Angular.Editor
 
         public void AddProviderIfNotExists(string className)
         {
-            var change = new ChangeAST();
             var providers = _decorator.FindNode("PropertyAssignment:providers/ArrayLiteralExpression");
             if (providers == null)
             {
                 var parameter = _decorator.Parameters().First();
-                parameter.InsertPropertyAssignment($@",
+                parameter.InsertPropertyAssignment($@"
   providers: [
     {className}
-  ]", _decorator.FindNode("PropertyAssignment:declarations/ArrayLiteralExpression"));
+  ]", _decorator.FindNode("PropertyAssignment:declarations"));
             }
             else
             {
                 if (providers.Children.Count == 0)
                 {
-                    change.ChangeNode(providers, $@" [
+                    _decorator.Change.ChangeNode(providers, $@" [
     {className}
   ]");
                 }
                 else if (providers.Children.All(x => x.IdentifierStr != className))
                 {
-                    change.InsertAfter(providers.Children.Last(), $@", 
+                    _decorator.Change.InsertAfter(providers.Children.Last(), $@", 
     {className}");
                 }
             }
-            _decorator.UpdateChanges(change);
         }
 
         public void AddDeclarationIfNotExists(string className)
         {
-            var change = new ChangeAST();
             var declarations = _decorator.FindNode("PropertyAssignment:declarations/ArrayLiteralExpression");
             if (declarations == null)
             {
                 var parameter = _decorator.Parameters().First();
-                parameter.InsertPropertyAssignment($@",
+                parameter.InsertPropertyAssignment($@"
   declarations: [
     {className}
   ]", _decorator.FindNode($"ObjectLiteralExpression"));
@@ -71,38 +68,35 @@ namespace Intent.Modules.Angular.Editor
             {
                 if (declarations.Children.Count == 0)
                 {
-                    change.ChangeNode(declarations, $@" [
+                    _decorator.Change.ChangeNode(declarations, $@" [
     {className}
   ]");
                 }
                 else if (declarations.Children.All(x => x.IdentifierStr != className))
                 {
-                    change.InsertAfter(declarations.Children.Last(), $@", 
+                    _decorator.Change.InsertAfter(declarations.Children.Last(), $@", 
     {className}");
                 }
             }
-            _decorator.UpdateChanges(change);
         }
 
         public void AddImportIfNotExists(string className)
         {
-            var change = new ChangeAST();
             var declarations = _decorator.FindNode("PropertyAssignment:imports/ArrayLiteralExpression");
             if (declarations != null)
             {
                 if (declarations.Children.Count == 0)
                 {
-                    change.ChangeNode(declarations, $@" [
+                    _decorator.Change.ChangeNode(declarations, $@" [
     {className}
   ]");
                 }
                 else if (declarations.Children.All(x => x.IdentifierStr != className))
                 {
-                    change.InsertAfter(declarations.Children.Last(), $@", 
+                    _decorator.Change.InsertAfter(declarations.Children.Last(), $@", 
     {className}");
                 }
             }
-            _decorator.UpdateChanges(change);
         }
     }
 }

@@ -8,15 +8,14 @@ namespace Intent.Modules.Angular.Editor
     public abstract class TypescriptNode
     {
         protected readonly Node Node;
-        protected readonly TypescriptFile File;
-        protected readonly ChangeAST Change;
+        public readonly TypescriptFile File;
+        public ChangeAST Change => File.Change;
         
 
         public TypescriptNode(Node node, TypescriptFile file)
         {
             Node = node;
             File = file;
-            Change = new ChangeAST();
         }
 
         public bool NodeExists(string path)

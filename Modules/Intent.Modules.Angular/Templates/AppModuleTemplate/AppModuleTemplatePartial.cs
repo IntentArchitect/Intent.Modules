@@ -50,7 +50,7 @@ namespace Intent.Modules.Angular.Templates.AppModuleTemplate
                 file.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetadata().GetRelativeFilePathWithFileName()));
             }
 
-            return file.GetSource();
+            return file.GetChangedSource();
         }
 
         private string LoadOrCreate(string fullFileName)

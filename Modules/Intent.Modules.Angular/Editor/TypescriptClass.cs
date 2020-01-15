@@ -34,25 +34,20 @@ namespace Intent.Modules.Angular.Editor
 
         public void AddMethod(string method)
         {
-            var change = new ChangeAST();
             var methods = Node.OfKind(SyntaxKind.MethodDeclaration);
 
             if (methods.Any())
             {
-                change.InsertAfter(methods.Last(), method);
+                Change.InsertAfter(methods.Last(), method);
             }
             else
             {
-                change.InsertAfter(Node.Children.Last(), method);
+                Change.InsertAfter(Node.Children.Last(), method);
             }
-
-            File.UpdateChanges(change);
         }
 
         public void ReplaceMethod(string methodName, string method)
         {
-            var change = new ChangeAST();
-
             var existing = FindNode($"ClassDeclaration/MethodDeclaration:{methodName}");
 
             if (existing == null)
@@ -62,25 +57,22 @@ namespace Intent.Modules.Angular.Editor
 
             if (existing.GetTextWithComments() != method)
             {
-                change.ChangeNode(existing, method);
-                File.UpdateChanges(change);
+                Change.ChangeNode(existing, method);
             }
         }
 
         public void AddProperty(string propertyDeclaration)
         {
-            var change = new ChangeAST();
             var properties = Node.OfKind(SyntaxKind.PropertyDeclaration);
 
             if (properties.Any())
             {
-                change.InsertAfter(properties.Last(), propertyDeclaration);
+                Change.InsertAfter(properties.Last(), propertyDeclaration);
             }
             else
             {
-                change.InsertBefore(Node.Children.OfKind(SyntaxKind.Constructor).FirstOrDefault() ?? Node.Children.OfKind(SyntaxKind.MethodDeclaration).FirstOrDefault() ?? Node.Children.Last(), propertyDeclaration);
+                Change.InsertBefore(Node.Children.OfKind(SyntaxKind.Constructor).FirstOrDefault() ?? Node.Children.OfKind(SyntaxKind.MethodDeclaration).FirstOrDefault() ?? Node.Children.Last(), propertyDeclaration);
             }
-            File.UpdateChanges(change);
         }
 
         public bool PropertyExists(string propertyName)
