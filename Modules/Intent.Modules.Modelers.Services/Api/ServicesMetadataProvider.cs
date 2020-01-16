@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
@@ -20,9 +21,9 @@ namespace Intent.Modelers.Services.Api
             return classes.Select(x => new DTOModel(x)).ToList();
         }
 
-        public IEnumerable<IDTOModel> GetDTOs(IApplication application)
+        public IEnumerable<IDTOModel> GetDTOs(string applicationId)
         {
-            return GetAllDTOs().Where(x => x.Application.Id == application.Id);
+            return GetAllDTOs().Where(x => x.Application.Id == applicationId);
         }
 
         public IEnumerable<IServiceModel> GetAllServices()
@@ -31,9 +32,9 @@ namespace Intent.Modelers.Services.Api
             return classes.Select(x => new ServiceModel(x)).ToList();
         }
 
-        public IEnumerable<IServiceModel> GetServices(IApplication application)
+        public IEnumerable<IServiceModel> GetServices(string applicationId)
         {
-            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Id == application.Id
+            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Id == applicationId
                 && x.IsService()).ToList();
             return classes.Select(x => new ServiceModel(x)).ToList();
         }
@@ -44,37 +45,42 @@ namespace Intent.Modelers.Services.Api
             return types.Select(x => new EnumModel(x)).ToList();
         }
 
-        public IEnumerable<IEnumModel> GetEnums(IApplication application)
+        public IEnumerable<IEnumModel> GetEnums(string applicationId)
         {
-            return GetAllEnums().Where(x => x.Application.Id == application.Id);
+            return GetAllEnums().Where(x => x.Application.Id == applicationId);
         }
     }
 
     public static class ServicesMetadataManagerExtensions
     {
-        public static IEnumerable<IDTOModel> GetDTOs(this IMetadataManager metadataManager, IApplication application)
+        public static IEnumerable<IDTOModel> GetDTOs(this IMetadataManager metadataManager, string applicationId)
         {
-            return new ServicesMetadataProvider(metadataManager).GetDTOs(application);
+            return new ServicesMetadataProvider(metadataManager).GetDTOs(applicationId);
         }
 
-        public static IEnumerable<IServiceModel> GetServices(this IMetadataManager metadataManager, IApplication application)
+        public static IEnumerable<IServiceModel> GetServices(this IMetadataManager metadataManager, string applicationId)
         {
-            return new ServicesMetadataProvider(metadataManager).GetServices(application);
+            return new ServicesMetadataProvider(metadataManager).GetServices(applicationId);
+        }
+
+        public static IEnumerable<IEnumModel> GetEnums(this IMetadataManager metadataManager, string applicationId)
+        {
+            return new ServicesMetadataProvider(metadataManager).GetEnums(applicationId);
         }
 
         public static bool IsDTO(this IElement model)
         {
-            return model.SpecializationType == "DTO";
+            return model.SpecializationType.Equals("DTO", StringComparison.InvariantCultureIgnoreCase);
         }
 
         public static bool IsService(this IElement model)
         {
-            return model.SpecializationType == "Service";
+            return model.SpecializationType.Equals("Service", StringComparison.InvariantCultureIgnoreCase);
         }
 
         public static bool IsEnum(this IElement model)
         {
-            return model.SpecializationType == "Enum";
+            return model.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

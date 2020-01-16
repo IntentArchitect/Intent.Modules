@@ -131,14 +131,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             
             #line default
             #line hidden
-            this.Write("            AddTypeSource(templateId: ");
+            this.Write("            AddTypeSource(CSharpTypeSource.InProject(Project, ");
             
             #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(".TemplateId, collectionFormat: \"IEnumerable<{0}>\");\r\n");
+            this.Write(".TemplateId, collectionFormat: \"IEnumerable<{0}>\"));\r\n");
             
             #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
   } 

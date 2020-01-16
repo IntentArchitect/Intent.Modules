@@ -48,6 +48,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
+<#@ import namespace=""{Model.GetModelType().Namespace}"" #>
 {TemplateBody()}";
         }
 

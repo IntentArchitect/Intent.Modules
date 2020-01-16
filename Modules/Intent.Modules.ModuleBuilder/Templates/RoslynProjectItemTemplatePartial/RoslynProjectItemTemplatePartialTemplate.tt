@@ -31,7 +31,7 @@ namespace <#= Namespace #>
         public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
 <#  if (Model.GetCreationMode() != CreationMode.SingleFileNoModel) { #>
-            AddTypeSource(templateId: <#= ClassName #>.TemplateId, collectionFormat: "IEnumerable<{0}>");
+            AddTypeSource(CSharpTypeSource.InProject(Project, <#= ClassName #>.TemplateId, collectionFormat: "IEnumerable<{0}>"));
 <#  } #>
         }
 
