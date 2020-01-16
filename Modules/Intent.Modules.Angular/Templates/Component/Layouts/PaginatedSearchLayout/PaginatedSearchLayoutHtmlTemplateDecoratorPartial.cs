@@ -32,7 +32,7 @@ namespace Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayo
         }
 
         public IComponentModel Model => _template.Model;
-        public IModuleDTOModel PagingModel => _metadataManager.GetModels(_template.Project.Application).FirstOrDefault(x => x.Id == _pagingModelReference.GenericTypeParameters.First().Element.Id);
+        public IModuleDTOModel PagingModel => _metadataManager.GetModels(_template.Project.Application.Id).FirstOrDefault(x => x.Id == _pagingModelReference.GenericTypeParameters.First().Element.Id);
 
         public int Priority { get; } = 0;
         public string GetOverwrite() => _template.Model.HasStereotype("Paginated Search Layout") ? TransformText() : null;

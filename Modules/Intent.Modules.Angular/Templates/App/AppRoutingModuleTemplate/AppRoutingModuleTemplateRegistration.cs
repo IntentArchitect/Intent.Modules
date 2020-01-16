@@ -17,11 +17,11 @@ namespace Intent.Modules.Angular.Templates.AppRoutingModuleTemplate
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class AppRoutingModuleTemplateRegistration : ListModelTemplateRegistrationBase<IModuleModel>
     {
-        public override string TemplateId => AppRoutingModuleTemplate.TemplateId;
+        public override string TemplateId => App.AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId;
 
         public override ITemplate CreateTemplateInstance(IProject project, IList<IModuleModel> model)
         {
-            return new AppRoutingModuleTemplate(project, model);
+            return new App.AppRoutingModuleTemplate.AppRoutingModuleTemplate(project, model);
         }
         private readonly IMetadataManager _metadataManager;
 
@@ -33,7 +33,7 @@ namespace Intent.Modules.Angular.Templates.AppRoutingModuleTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IList<IModuleModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetModules(application).ToList();
+            return _metadataManager.GetModules(application.Id).ToList();
         }
     }
 }

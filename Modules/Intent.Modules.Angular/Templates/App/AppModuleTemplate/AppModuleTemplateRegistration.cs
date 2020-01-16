@@ -16,11 +16,11 @@ namespace Intent.Modules.Angular.Templates.AppModuleTemplate
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class AppModuleTemplateRegistration : NoModelTemplateRegistrationBase
     {
-        public override string TemplateId => AppModuleTemplate.TemplateId;
+        public override string TemplateId => App.AppModuleTemplate.AppModuleTemplate.TemplateId;
 
         public override ITemplate CreateTemplateInstance(IProject project)
         {
-            return new AppModuleTemplate(project, null);
+            return new App.AppModuleTemplate.AppModuleTemplate(project, null);
         }
     }
 }

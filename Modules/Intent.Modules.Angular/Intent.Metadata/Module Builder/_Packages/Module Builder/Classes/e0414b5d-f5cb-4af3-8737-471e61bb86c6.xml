@@ -13,7 +13,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modules.Angular.Api" />
-            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetModules(application).SelectMany(x =&gt; x.Components)" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetModules(application.Id).SelectMany(x =&gt; x.Components)" />
             <property name="1c93bb75-11f4-4604-983d-f8ff5318e217" />
             <property name="78850c86-fc34-4c08-a9b0-6db549caf85c" />
           </properties>
@@ -27,7 +27,7 @@
           <addedByDefault>false</addedByDefault>
           <properties>
             <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modules.Angular.Api" />
-            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="GetModules(application.Id)" />
             <property name="1c93bb75-11f4-4604-983d-f8ff5318e217" />
             <property name="78850c86-fc34-4c08-a9b0-6db549caf85c" />
           </properties>

@@ -20,9 +20,9 @@ namespace Intent.Modules.Angular
             return classes.Select(x => new ModuleModel(x)).ToList();
         }
 
-        public IEnumerable<IModuleModel> GetModules(IApplication application)
+        public IEnumerable<IModuleModel> GetModules(string applicationId)
         {
-            return GetModules().Where(x => x.Application.Name == application.Name);
+            return GetModules().Where(x => x.Application.Id == applicationId);
         }
     }
 }

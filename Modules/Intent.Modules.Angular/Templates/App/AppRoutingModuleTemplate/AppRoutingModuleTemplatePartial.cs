@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
-using Intent.Metadata.Models;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
@@ -13,13 +11,13 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.Angular.Templates.AppRoutingModuleTemplate
+namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
 {
     [IntentManaged(Mode.Merge)]
     partial class AppRoutingModuleTemplate : IntentTypescriptProjectItemTemplateBase<IList<IModuleModel>>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.AppRoutingModuleTemplate";
+        public const string TemplateId = "Angular.Templates.App.AppRoutingModuleTemplate";
 
         public AppRoutingModuleTemplate(IProject project, IList<IModuleModel> model) : base(TemplateId, project, model)
         {

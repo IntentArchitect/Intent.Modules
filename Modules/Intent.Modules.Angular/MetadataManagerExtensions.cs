@@ -10,15 +10,15 @@ namespace Intent.Modules.Angular
 {
     public static class MetadataManagerExtensions
     {
-        public static IEnumerable<IModuleModel> GetModules(this IMetadataManager metadataManager, IApplication application)
+        public static IEnumerable<IModuleModel> GetModules(this IMetadataManager metadataManager, string applicationId)
         {
-            return new MetadataProvider(metadataManager).GetModules(application);
+            return new MetadataProvider(metadataManager).GetModules(applicationId);
         }
 
-        public static IEnumerable<IModuleDTOModel> GetModels(this IMetadataManager metadataManager, Engine.IApplication application)
+        public static IEnumerable<IModuleDTOModel> GetModels(this IMetadataManager metadataManager, string applicationId)
         {
             var dtoModels = new List<IModuleDTOModel>();
-            foreach (var moduleModel in metadataManager.GetModules(application))
+            foreach (var moduleModel in metadataManager.GetModules(applicationId))
             {
                 dtoModels.AddRange(moduleModel.GetModels());
             }

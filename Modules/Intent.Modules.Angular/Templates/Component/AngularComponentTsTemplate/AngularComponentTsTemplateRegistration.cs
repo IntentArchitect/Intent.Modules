@@ -34,7 +34,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<IComponentModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetModules(application).SelectMany(x => x.Components);
+            return _metadataManager.GetModules(application.Id).SelectMany(x => x.Components);
         }
     }
 }

@@ -76,7 +76,7 @@
 
     public static class LaunchProfileRegistrationEvent
     {
-        public const string EventId = "Container.LaunchProfileRegistration";
+        public const string EventId = nameof(LaunchProfileRegistrationEvent);
         public const string ProfileNameKey = "profileName";
         public const string CommandNameKey = "commandName";
         public const string LaunchBrowserKey = "launchBrowser";

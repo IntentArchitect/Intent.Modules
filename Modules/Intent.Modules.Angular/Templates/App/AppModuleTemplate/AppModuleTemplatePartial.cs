@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Intent.Engine;
-using Intent.Metadata.Models;
 using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Core.CoreModuleTemplate;
 using Intent.Modules.Common;
@@ -15,13 +11,13 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.Angular.Templates.AppModuleTemplate
+namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
     [IntentManaged(Mode.Merge)]
     partial class AppModuleTemplate : IntentTypescriptProjectItemTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.AppModuleTemplate";
+        public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
 
         public AppModuleTemplate(IProject project, object model) : base(TemplateId, project, model)
         {

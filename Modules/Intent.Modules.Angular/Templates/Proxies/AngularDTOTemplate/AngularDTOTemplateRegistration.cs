@@ -36,7 +36,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         public override IEnumerable<IModuleDTOModel> GetModels(IApplication application)
         {
             var dtoModels = new List<IModuleDTOModel>();
-            foreach (var moduleModel in _metadataManager.GetModules(application))
+            foreach (var moduleModel in _metadataManager.GetModules(application.Id))
             {
                 dtoModels.AddRange(moduleModel.GetModels());
             }
