@@ -2,7 +2,6 @@
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
-<#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.Modelers.Domain.Api" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="System" #>
@@ -19,7 +18,6 @@ using Intent.Framework.Domain.Repositories;
 using Intent.Framework.EntityFrameworkCore;
 using Intent.Framework.EntityFrameworkCore.Repositories;
 using Microsoft.EntityFrameworkCore;
-<#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

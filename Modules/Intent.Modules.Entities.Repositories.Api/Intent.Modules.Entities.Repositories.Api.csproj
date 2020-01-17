@@ -46,6 +46,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.cs">
+      <DependentUpon>EntityRepositoryInterfaceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplatePartial.cs" />
+    <Compile Include="Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplateRegistration.cs" />
     <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplate.cs">
       <DependentUpon>EntitySpecificationTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -66,6 +73,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EntityRepositoryInterfaceTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\EntitySpecification\EntitySpecificationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntitySpecificationTemplate.cs</LastGenOutput>

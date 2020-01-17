@@ -11,6 +11,9 @@
   <templates>
     <template id="Intent.Entities.Repositories.Api.Interface">
       <role>Repository.Interface</role>
+    </template>
+    <template id="Intent.Entities.Repositories.Api.EntityInterface">
+      <role>Repository.Interface</role>
       <config>
         <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
         <add key="Entity Interface Template Id" description="The template Id for the template producing the Domain Entity Interfaces" default="Intent.Entities.DomainEntityInterface" />

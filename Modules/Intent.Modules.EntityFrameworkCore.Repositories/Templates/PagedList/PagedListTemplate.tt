@@ -1,0 +1,75 @@
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="Intent.Modelers.Domain.Api" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Intent.Framework.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public class <#= ClassName #><T> : List<T>, IPagedResult<T>
+    {
+        public int TotalCount { get; private set; }
+        public int PageCount { get; private set; }
+        public int Page { get; private set; }
+        public int PageSize { get; private set; }
+
+        public <#= ClassName #>(IQueryable<T> source, int page, int pageSize)
+        {
+            TotalCount = source.Count();
+            PageCount = GetPageCount(pageSize, TotalCount);
+            Page = page;
+            PageSize = pageSize;
+            var skip = ((Page - 1) * PageSize);
+
+            AddRange(source
+                //using delgates here is a SQL optomization - causes plan to get cached for all pages
+                .Skip(skip)
+                .Take(PageSize)
+                .ToList());
+        }
+
+        public <#= ClassName #>(int totalCount, int page, int pageSize, List<T> results)
+        {
+            TotalCount = totalCount;
+            PageCount = GetPageCount(pageSize, TotalCount);
+            Page = page;
+            PageSize = pageSize;
+            AddRange(results);
+        }
+
+        public static Task<IPagedResult<T>> CreateAsync(IQueryable<T> source, int page, int pageSize)
+        {
+            var count = source.CountAsync();
+            var skip = ((page - 1) * pageSize);
+            var results = source
+                //using delgates here is a SQL optomization - causes plan to get cacheed for all pages
+                .Skip(skip)
+                .Take(pageSize)
+                .ToListAsync();
+            return Task.WhenAll(count, results).ContinueWith<IPagedResult<T>>(x => new <#= ClassName #><T>(count.Result, page, pageSize, results.Result));
+        }
+
+        private int GetPageCount(int pageSize, int totalCount)
+        {
+            if (pageSize == 0)
+                return 0;
+
+            var remainder = totalCount % pageSize;
+            return (totalCount / pageSize) + (remainder == 0 ? 0 : 1);
+        }
+    }
+}
