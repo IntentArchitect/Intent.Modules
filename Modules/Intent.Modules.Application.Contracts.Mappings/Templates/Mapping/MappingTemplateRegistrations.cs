@@ -29,7 +29,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 
         public override IEnumerable<IDTOModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetDTOs(application);
+            return _metadataManager.GetDTOs(application.Id);
         }
     }
 }

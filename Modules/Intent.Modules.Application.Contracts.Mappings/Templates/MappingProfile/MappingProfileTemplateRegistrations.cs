@@ -32,7 +32,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public override IList<IDTOModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetDTOs(application).ToList();
+            return _metadataManager.GetDTOs(application.Id).ToList();
         }
     }
 }

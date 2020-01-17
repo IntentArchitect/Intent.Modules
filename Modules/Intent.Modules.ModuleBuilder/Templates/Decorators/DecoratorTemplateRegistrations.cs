@@ -27,9 +27,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Decorators
             return new DecoratorTemplate(project, model);
         }
 
-        public override IEnumerable<IDecoratorDefinition> GetModels(IApplication applicationManager)
+        public override IEnumerable<IDecoratorDefinition> GetModels(IApplication application)
         {
-            return _metadataManager.GetDecorators(applicationManager)
+            return _metadataManager.GetDecorators(application)
                 .ToList();
         }
     }

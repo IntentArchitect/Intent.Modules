@@ -35,9 +35,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessed
                 partialTemplateId: ProjectItemTemplatePartialTemplate.TemplateId);
         }
 
-        public override IEnumerable<ITemplateDefinition> GetModels(IApplication applicationManager)
+        public override IEnumerable<ITemplateDefinition> GetModels(IApplication application)
         {
-            return _metadataManager.GetFileTemplates(applicationManager)
+            return _metadataManager.GetFileTemplates(application)
                 .ToList();
         }
     }

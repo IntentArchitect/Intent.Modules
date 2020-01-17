@@ -31,7 +31,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication applicationManager)
         {
-            var serviceModels = _metadataProvider.GetServices(applicationManager);
+            var serviceModels = _metadataProvider.GetServices(applicationManager.Id);
             foreach (var serviceModel in serviceModels)
             {
                 foreach (var operationModel in serviceModel.Operations)

@@ -30,7 +30,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         public override IEnumerable<IServiceModel> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetServices(application);
+            return _metadataManager.GetServices(application.Id);
         }
     }
 }

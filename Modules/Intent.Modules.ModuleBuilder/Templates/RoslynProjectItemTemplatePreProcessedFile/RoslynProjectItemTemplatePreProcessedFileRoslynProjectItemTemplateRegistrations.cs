@@ -35,9 +35,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePrePro
                 partialTemplateId: RoslynProjectItemTemplatePartialTemplate.TemplateId);
         }
 
-        public override IEnumerable<ITemplateDefinition> GetModels(IApplication applicationManager)
+        public override IEnumerable<ITemplateDefinition> GetModels(IApplication application)
         {
-            return _metadataManager.GetCSharpTemplates(applicationManager)
+            return _metadataManager.GetCSharpTemplates(application)
                 .ToList();
         }
     }

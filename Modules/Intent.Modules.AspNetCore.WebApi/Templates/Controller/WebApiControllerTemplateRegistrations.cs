@@ -30,7 +30,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetServices(application);
+            return _metadataManager.GetServices(application.Id);
         }
     }
 }

@@ -23,9 +23,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
             return new RoslynProjectItemTemplateTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<ITemplateDefinition> GetModels(IApplication applicationManager)
+        public override IEnumerable<ITemplateDefinition> GetModels(IApplication application)
         {
-            return _metadataManager.GetCSharpTemplates(applicationManager)
+            return _metadataManager.GetCSharpTemplates(application)
                 .ToList();
         }
     }

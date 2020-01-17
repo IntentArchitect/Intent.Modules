@@ -29,7 +29,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            return _metadataProvider.GetServices(application);
+            return _metadataProvider.GetServices(application.Id);
         }
     }
 }

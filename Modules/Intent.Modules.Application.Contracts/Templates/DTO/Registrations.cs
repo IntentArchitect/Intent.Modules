@@ -33,7 +33,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public override IEnumerable<IDTOModel> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetDTOs(application);
+            return _metadataManager.GetDTOs(application.Id);
         }
     }
 }

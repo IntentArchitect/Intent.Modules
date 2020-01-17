@@ -26,9 +26,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
             return new CustomTemplateRegistrationTemplate(project, model);
         }
 
-        public override IEnumerable<ITemplateDefinition> GetModels(IApplication applicationManager)
+        public override IEnumerable<ITemplateDefinition> GetModels(IApplication application)
         {
-            return _metadataManager.GetTemplateDefinitions(applicationManager)
+            return _metadataManager.GetTemplateDefinitions(application)
                 .Where(x => x.GetCreationMode() == CreationMode.Custom)
                 .ToList();
         }

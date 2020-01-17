@@ -48,7 +48,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
         private string EmitPropertyAssignments(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperationParameter operationParameterModel)
         {
             var sb = new StringBuilder();
-            var dto = metadataManager.GetDTOs(application).First(p => p.Id == operationParameterModel.Type.Element.Id);
+            var dto = metadataManager.GetDTOs(application.Id).First(p => p.Id == operationParameterModel.Type.Element.Id);
             foreach (var domainAttribute in domainModel.Attributes)
             {
                 var dtoField = dto.Fields.FirstOrDefault(p => p.Name.Equals(domainAttribute.Name, StringComparison.OrdinalIgnoreCase));

@@ -16,7 +16,7 @@ namespace Intent.Modules.Common.Registrations
 
         public abstract string TemplateId { get; }
         public abstract ITemplate CreateTemplateInstance(IProject project, TModel model);
-        public abstract IEnumerable<TModel> GetModels(IApplication applicationManager);
+        public abstract IEnumerable<TModel> GetModels(IApplication application);
         public string MetadataIdentifier { get; set; }
 
         public string FilterExpression

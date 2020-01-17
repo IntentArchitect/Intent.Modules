@@ -23,9 +23,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
             return new ProjectItemTemplateTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<ITemplateDefinition> GetModels(IApplication applicationManager)
+        public override IEnumerable<ITemplateDefinition> GetModels(IApplication application)
         {
-            return _metadataManager.GetFileTemplates(applicationManager)
+            return _metadataManager.GetFileTemplates(application)
                 .ToList();
         }
     }

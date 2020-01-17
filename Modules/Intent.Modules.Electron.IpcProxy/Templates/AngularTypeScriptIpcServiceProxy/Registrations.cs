@@ -26,10 +26,10 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcService
             return new AngularTypeScriptIpcServiceProxyTemplate(model, project);
         }
 
-        public override IEnumerable<IServiceModel> GetModels(IApplication applicationManager)
+        public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
             return _metadataManager
-                .GetServices(applicationManager)
+                .GetServices(application.Id)
                 .Where(x => x.Stereotypes.Any(y => y.Name == "IpcService"))
                 .ToList();
         }
