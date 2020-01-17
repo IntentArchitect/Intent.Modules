@@ -33,45 +33,46 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.PagedList
         public override string TransformText()
         {
             this.Write("using System.Collections.Generic;\r\nusing System.Linq;\r\nusing System.Threading.Tas" +
-                    "ks;\r\nusing Intent.Framework.Domain.Repositories;\r\nusing Microsoft.EntityFramewor" +
-                    "kCore;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+                    "ks;\r\nusing Microsoft.EntityFrameworkCore;\r\n\r\n[assembly: DefaultIntentManaged(Mod" +
+                    "e.Fully)]\r\n\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(@"<T> : List<T>, IPagedResult<T>
-    {
-        public int TotalCount { get; private set; }
-        public int PageCount { get; private set; }
-        public int Page { get; private set; }
-        public int PageSize { get; private set; }
-
-        public ");
+            this.Write("<T> : List<T>, ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(PagedResultInterfaceName));
+            
+            #line default
+            #line hidden
+            this.Write("<T>\r\n    {\r\n        public int TotalCount { get; private set; }\r\n        public i" +
+                    "nt PageCount { get; private set; }\r\n        public int PageIndex { get; private " +
+                    "set; }\r\n        public int PageSize { get; private set; }\r\n\r\n        public ");
+            
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(@"(IQueryable<T> source, int page, int pageSize)
+            this.Write(@"(IQueryable<T> source, int pageIndex, int pageSize)
         {
             TotalCount = source.Count();
             PageCount = GetPageCount(pageSize, TotalCount);
-            Page = page;
+            PageIndex = pageIndex;
             PageSize = pageSize;
-            var skip = ((Page - 1) * PageSize);
+            var skip = (PageIndex * PageSize);
 
             AddRange(source
-                //using delgates here is a SQL optomization - causes plan to get cached for all pages
                 .Skip(skip)
                 .Take(PageSize)
                 .ToList());
@@ -79,37 +80,50 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.PagedList
 
         public ");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(@"(int totalCount, int page, int pageSize, List<T> results)
+            this.Write(@"(int totalCount, int pageIndex, int pageSize, List<T> results)
         {
             TotalCount = totalCount;
             PageCount = GetPageCount(pageSize, TotalCount);
-            Page = page;
+            PageIndex = pageIndex;
             PageSize = pageSize;
             AddRange(results);
         }
 
-        public static Task<IPagedResult<T>> CreateAsync(IQueryable<T> source, int page, int pageSize)
+        public static Task<");
+            
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(PagedResultInterfaceName));
+            
+            #line default
+            #line hidden
+            this.Write(@"<T>> CreateAsync(IQueryable<T> source, int pageIndex, int pageSize)
         {
             var count = source.CountAsync();
-            var skip = ((page - 1) * pageSize);
+            var skip = (pageIndex * pageSize);
             var results = source
-                //using delgates here is a SQL optomization - causes plan to get cacheed for all pages
                 .Skip(skip)
                 .Take(pageSize)
                 .ToListAsync();
-            return Task.WhenAll(count, results).ContinueWith<IPagedResult<T>>(x => new ");
+            return Task.WhenAll(count, results).ContinueWith<");
             
-            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(PagedResultInterfaceName));
+            
+            #line default
+            #line hidden
+            this.Write("<T>>(x => new ");
+            
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(@"<T>(count.Result, page, pageSize, results.Result));
+            this.Write(@"<T>(count.Result, pageIndex, pageSize, results.Result));
         }
 
         private int GetPageCount(int pageSize, int totalCount)

@@ -6,7 +6,6 @@ using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
-using Intent.Modules.Entities.DDD.Templates.RepositoryInterface;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor;
 using Intent.Modules.EntityFramework.Templates.DbContext;

@@ -13,10 +13,6 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Intent.Framework.Core.Context;
-using Intent.Framework.Domain.Repositories;
-using Intent.Framework.EntityFrameworkCore;
-using Intent.Framework.EntityFrameworkCore.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -30,14 +26,9 @@ namespace <#= Namespace #>
         {
         }
 
-        public <#= EntityInterfaceName #> FindById(<#= PrimaryKeyType #> id)
-        {
-            return CreateQuery().SingleOrDefault(x => x.<#= PrimaryKeyName #> == id);
-        }
-
         public async Task<<#= EntityInterfaceName #>> FindByIdAsync(<#= PrimaryKeyType #> id)
         {
-            return await CreateQuery().SingleOrDefaultAsync(x => x.<#= PrimaryKeyName #> == id);
+            return await FindAsync(x => x.<#= PrimaryKeyName #> == id);
         }
     }
 }

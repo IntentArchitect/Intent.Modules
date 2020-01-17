@@ -32,180 +32,90 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.RepositoryBa
         /// </summary>
         public override string TransformText()
         {
-            this.Write(@"using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Intent.Framework.Domain.Repositories;
-using Intent.Framework.Domain.Specification;
-using Microsoft.EntityFrameworkCore;
-
-[assembly: DefaultIntentManaged(Mode.Fully)]
-
-namespace ");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Syste" +
+                    "m.Threading;\r\nusing System.Threading.Tasks;\r\nusing Microsoft.EntityFrameworkCore" +
+                    ";\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(@"<TDomain, TPersistence, TDbContext> : IRepository<TDomain, TPersistence>
-        where TDbContext : DbContext
-        where TPersistence : class, TDomain
-        where TDomain : class
-    {
-        private readonly TDbContext _dbContext;
-
-        public ");
+            this.Write("<TDomain, TPersistence, TDbContext> : ");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RepositoryInterfaceName));
+            
+            #line default
+            #line hidden
+            this.Write("<TDomain, TPersistence>\r\n        where TDbContext : DbContext\r\n        where TPer" +
+                    "sistence : class, TDomain\r\n        where TDomain : class\r\n    {\r\n        private" +
+                    " readonly TDbContext _dbContext;\r\n\r\n        public ");
+            
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(TDbContext dbContext)\r\n        {\r\n            _dbContext = dbContext ?? throw ne" +
                     "w ArgumentNullException(nameof(dbContext));\r\n        }\r\n\r\n        public virtual" +
-                    " void Remove(TDomain entity)\r\n        {\r\n            Remove((TPersistence)entity" +
-                    ");\r\n        }\r\n\r\n        public virtual void Remove(TPersistence entity)\r\n      " +
-                    "  {\r\n            GetSet().Remove(entity);\r\n        }\r\n\r\n        public virtual v" +
-                    "oid Add(TDomain entity)\r\n        {\r\n            Add((TPersistence)entity);\r\n    " +
-                    "    }\r\n\r\n        public virtual void Add(TPersistence entity)\r\n        {\r\n      " +
-                    "      GetSet().Add(entity);\r\n        }\r\n\r\n        public int SaveChanges()\r\n    " +
-                    "    {\r\n            return _dbContext.SaveChanges();\r\n        }\r\n\r\n        public" +
-                    " Task<int> SaveChangesAsync()\r\n        {\r\n            return _dbContext.SaveChan" +
-                    "gesAsync();\r\n        }\r\n\r\n        public async Task<int> SaveChangesAsync(Cancel" +
-                    "lationToken cancellationToken)\r\n        {\r\n            return await _dbContext.S" +
-                    "aveChangesAsync(cancellationToken);\r\n        }\r\n\r\n        public virtual TDomain" +
-                    " Find(ISpecification<TPersistence> specification)\r\n        {\r\n            return" +
-                    " QueryInternal(specification, null).SingleOrDefault();\r\n        }\r\n\r\n        pub" +
-                    "lic virtual async Task<TDomain> FindAsync(ISpecification<TPersistence> specifica" +
-                    "tion)\r\n        {\r\n            return await QueryInternal(specification, null).Si" +
-                    "ngleOrDefaultAsync<TDomain>();\r\n        }\r\n\r\n        public virtual TDomain Find" +
-                    "(ISpecification<TPersistence> specification, IQueryOptions<TPersistence> options" +
-                    ")\r\n        {\r\n            return QueryInternal(specification, options).SingleOrD" +
-                    "efault();\r\n        }\r\n\r\n        public virtual async Task<TDomain> FindAsync(ISp" +
-                    "ecification<TPersistence> specification, IQueryOptions<TPersistence> options)\r\n " +
-                    "       {\r\n            return await QueryInternal(specification, options).SingleO" +
-                    "rDefaultAsync<TDomain>();\r\n        }\r\n\r\n        public virtual List<TDomain> Fin" +
-                    "dAll()\r\n        {\r\n            return QueryInternal(null, null).ToList<TDomain>(" +
-                    ");\r\n        }\r\n\r\n        public virtual async Task<List<TDomain>> FindAllAsync()" +
-                    "\r\n        {\r\n            return await QueryInternal(null, null).ToListAsync<TDom" +
-                    "ain>();\r\n        }\r\n\r\n        public virtual List<TDomain> FindAll(ISpecificatio" +
-                    "n<TPersistence> specification)\r\n        {\r\n            return QueryInternal(spec" +
-                    "ification, null).ToList<TDomain>();\r\n        }\r\n\r\n        public virtual async T" +
-                    "ask<List<TDomain>> FindAllAsync(ISpecification<TPersistence> specification)\r\n   " +
-                    "     {\r\n            return await QueryInternal(specification, null).ToListAsync<" +
-                    "TDomain>();\r\n        }\r\n\r\n        public virtual List<TDomain> FindAll(ISpecific" +
-                    "ation<TPersistence> specification, IQueryOptions<TPersistence> options)\r\n       " +
-                    " {\r\n            return QueryInternal(specification, options).ToList<TDomain>();\r" +
-                    "\n        }\r\n\r\n        public virtual async Task<List<TDomain>> FindAllAsync(ISpe" +
-                    "cification<TPersistence> specification, IQueryOptions<TPersistence> options)\r\n  " +
-                    "      {\r\n            return await QueryInternal(specification, options).ToListAs" +
-                    "ync<TDomain>();\r\n        }\r\n\r\n        public virtual IPagedResult<TDomain> FindA" +
-                    "ll(ISpecification<TPersistence> specification, IPagingCriteria<TPersistence> pag" +
-                    "ingCriteria, IQueryOptions<TPersistence> options)\r\n        {\r\n            var qu" +
-                    "ery = QueryInternal(specification, options);\r\n            query = pagingCriteria" +
-                    ".OrderBy(query);\r\n            return new ");
+                    " void Remove(TDomain entity)\r\n        {\r\n            GetSet().Remove((TPersisten" +
+                    "ce)entity);\r\n        }\r\n\r\n        public virtual void Add(TDomain entity)\r\n     " +
+                    "   {\r\n            GetSet().Add((TPersistence)entity);\r\n        }\r\n\r\n        publ" +
+                    "ic Task<int> SaveChangesAsync()\r\n        {\r\n            return _dbContext.SaveCh" +
+                    "angesAsync();\r\n        }\r\n\r\n        public Task<int> SaveChangesAsync(Cancellati" +
+                    "onToken cancellationToken)\r\n        {\r\n            return _dbContext.SaveChanges" +
+                    "Async(cancellationToken);\r\n        }\r\n\r\n        public virtual async Task<TDomai" +
+                    "n> FindAsync(Expression<Func<TPersistence, bool>> filterExpression)\r\n        {\r\n" +
+                    "            return await QueryInternal(filterExpression).SingleOrDefaultAsync<TD" +
+                    "omain>();\r\n        }\r\n\r\n        public virtual async Task<List<TDomain>> FindAll" +
+                    "Async()\r\n        {\r\n            return await QueryInternal(x => true).ToListAsyn" +
+                    "c<TDomain>();\r\n        }\r\n        \r\n        public virtual async Task<List<TDoma" +
+                    "in>> FindAllAsync(Expression<Func<TPersistence, bool>> filterExpression)\r\n      " +
+                    "  {\r\n            return await QueryInternal(filterExpression).ToListAsync<TDomai" +
+                    "n>();\r\n        }\r\n\r\n        public virtual async Task<IPagedResult<TDomain>> Fin" +
+                    "dAllAsync(int pageIndex, int pageSize)\r\n        {\r\n            var query = Query" +
+                    "Internal(x => true);\r\n            return await PagedList<TDomain>.CreateAsync(\r\n" +
+                    "                query,\r\n                pageIndex,\r\n                pageSize);\r\n" +
+                    "        }\r\n        \r\n        public virtual async Task<IPagedResult<TDomain>> Fi" +
+                    "ndAllAsync(Expression<Func<TPersistence, bool>> filterExpression, int pageIndex," +
+                    " int pageSize)\r\n        {\r\n            var query = QueryInternal(filterExpressio" +
+                    "n);\r\n            return await ");
             
-            #line 127 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PagedListClassName));
             
             #line default
             #line hidden
-            this.Write(@"<TDomain>(
-                query,
-                pagingCriteria.PageNo,
-                pagingCriteria.PageSize);
-        }
-
-        public virtual async Task<IPagedResult<TDomain>> FindAllAsync(ISpecification<TPersistence> specification, IPagingCriteria<TPersistence> pagingCriteria, IQueryOptions<TPersistence> options)
-        {
-            var query = QueryInternal(specification, options);
-            query = pagingCriteria.OrderBy(query);
-            return await ");
-            
-            #line 137 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(PagedListClassName));
-            
-            #line default
-            #line hidden
-            this.Write(@"<TDomain>.CreateAsync(
-                query,
-                pagingCriteria.PageNo,
-                pagingCriteria.PageSize);
-        }
-
-        public virtual List<TResult> FindAll<TResult>(ISpecification<TPersistence> specification, Func<IQueryable<TPersistence>, IQueryable<TResult>> linq)
-        {
-            return QueryInternal(specification, linq).ToList();
-        }
-
-        public virtual async Task<List<TResult>> FindAllAsync<TResult>(ISpecification<TPersistence> specification, Func<IQueryable<TPersistence>, IQueryable<TResult>> linq)
-        {
-            return await QueryInternal(specification, linq).ToListAsync();
-        }
-
-        public virtual IPagedResult<TResult> FindAll<TResult>(ISpecification<TPersistence> specification, Func<IQueryable<TPersistence>, IQueryable<TResult>> linq, IPagingCriteria<TResult> pagingCriteria)
-        {
-            var query = QueryInternal(specification, linq);
-            query = pagingCriteria.OrderBy(query);
-            return new ");
-            
-            #line 157 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(PagedListClassName));
-            
-            #line default
-            #line hidden
-            this.Write(@"<TResult>(
-                query,
-                pagingCriteria.PageNo,
-                pagingCriteria.PageSize);
-        }
-
-        public virtual async Task<IPagedResult<TResult>> FindAllAsync<TResult>(ISpecification<TPersistence> specification, Func<IQueryable<TPersistence>, IQueryable<TResult>> linq, IPagingCriteria<TResult> pagingCriteria)
-        {
-            var query = QueryInternal(specification, linq);
-            query = pagingCriteria.OrderBy(query);
-            return await ");
-            
-            #line 167 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(PagedListClassName));
-            
-            #line default
-            #line hidden
-            this.Write("<TResult>.CreateAsync(\r\n                query,\r\n                pagingCriteria.Pa" +
-                    "geNo,\r\n                pagingCriteria.PageSize);\r\n        }\r\n\r\n        public in" +
-                    "t Count(ISpecification<TPersistence> specification)\r\n        {\r\n            retu" +
-                    "rn QueryInternal(specification, null).Count();\r\n        }\r\n\r\n        public virt" +
-                    "ual async Task<int> CountAsync(ISpecification<TPersistence> specification)\r\n    " +
-                    "    {\r\n            return await QueryInternal(specification, null).CountAsync();" +
-                    "\r\n        }\r\n\r\n        public bool Any(ISpecification<TPersistence> specificatio" +
-                    "n)\r\n        {\r\n            return QueryInternal(specification, null).Any();\r\n   " +
-                    "     }\r\n\r\n        public virtual async Task<bool> AnyAsync(ISpecification<TPersi" +
-                    "stence> specification)\r\n        {\r\n            return await QueryInternal(specif" +
-                    "ication, null).AnyAsync();\r\n        }\r\n\r\n        protected virtual IQueryable<TP" +
-                    "ersistence> QueryInternal(ISpecification<TPersistence> specification, IQueryOpti" +
-                    "ons<TPersistence> options)\r\n        {\r\n            var queryable = CreateQuery()" +
-                    ";\r\n            if (specification != null)\r\n            {\r\n                querya" +
-                    "ble = queryable.Where(specification.SatisfiedBy());\r\n            }\r\n            " +
-                    "if (options != null)\r\n            {\r\n                queryable = options.Apply(q" +
-                    "ueryable);\r\n            }\r\n            return queryable;\r\n        }\r\n\r\n        p" +
-                    "rotected virtual IQueryable<TResult> QueryInternal<TResult>(ISpecification<TPers" +
-                    "istence> specification, Func<IQueryable<TPersistence>, IQueryable<TResult>> linq" +
-                    ")\r\n        {\r\n            var queryable = CreateQuery();\r\n            queryable " +
-                    "= queryable.Where(specification.SatisfiedBy());\r\n\r\n            var result = linq" +
-                    "(queryable);\r\n            return result;\r\n        }\r\n\r\n        protected virtual" +
-                    " IQueryable<TPersistence> CreateQuery()\r\n        {\r\n            return GetSet();" +
-                    "\r\n        }\r\n\r\n        protected virtual DbSet<TPersistence> GetSet()\r\n        {" +
-                    "\r\n            return _dbContext.Set<TPersistence>();\r\n        }\r\n    }\r\n}\r\n");
+            this.Write("<TDomain>.CreateAsync(\r\n                query,\r\n                pageIndex,\r\n     " +
+                    "           pageSize);\r\n        }\r\n\r\n        public virtual async Task<int> Count" +
+                    "Async(Expression<Func<TPersistence, bool>> filterExpression)\r\n        {\r\n       " +
+                    "     return await QueryInternal(filterExpression).CountAsync();\r\n        }\r\n\r\n  " +
+                    "      public bool Any(Expression<Func<TPersistence, bool>> filterExpression)\r\n  " +
+                    "      {\r\n            return QueryInternal(filterExpression).Any();\r\n        }\r\n\r" +
+                    "\n        public virtual async Task<bool> AnyAsync(Expression<Func<TPersistence, " +
+                    "bool>> filterExpression)\r\n        {\r\n            return await QueryInternal(filt" +
+                    "erExpression).AnyAsync();\r\n        }\r\n\r\n        protected virtual IQueryable<TPe" +
+                    "rsistence> QueryInternal(Expression<Func<TPersistence, bool>> filterExpression)\r" +
+                    "\n        {\r\n            var queryable = CreateQuery();\r\n            if (filterEx" +
+                    "pression != null)\r\n            {\r\n                queryable = queryable.Where(fi" +
+                    "lterExpression);\r\n            }\r\n            return queryable;\r\n        }\r\n\r\n   " +
+                    "     protected virtual IQueryable<TResult> QueryInternal<TResult>(Expression<Fun" +
+                    "c<TPersistence, bool>> filterExpression, Func<IQueryable<TPersistence>, IQueryab" +
+                    "le<TResult>> linq)\r\n        {\r\n            var queryable = CreateQuery();\r\n     " +
+                    "       queryable = queryable.Where(filterExpression);\r\n\r\n            var result " +
+                    "= linq(queryable);\r\n            return result;\r\n        }\r\n\r\n        protected v" +
+                    "irtual IQueryable<TPersistence> CreateQuery()\r\n        {\r\n            return Get" +
+                    "Set();\r\n        }\r\n\r\n        protected virtual DbSet<TPersistence> GetSet()\r\n   " +
+                    "     {\r\n            return _dbContext.Set<TPersistence>();\r\n        }\r\n    }\r\n}\r" +
+                    "\n");
             return this.GenerationEnvironment.ToString();
         }
     }

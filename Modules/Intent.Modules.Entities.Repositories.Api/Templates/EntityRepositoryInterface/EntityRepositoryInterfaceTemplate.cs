@@ -42,65 +42,52 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInt
             #line default
             #line hidden
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Syste" +
-                    "m.Threading.Tasks;\r\nusing Intent.Framework.Domain.Repositories;\r\n");
+                    "m.Threading.Tasks;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace " +
+                    "");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
-            
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(" : IRepository<");
+            this.Write(" : ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(RepositoryInterfaceName));
+            
+            #line default
+            #line hidden
+            this.Write("<");
+            
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityStateName));
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n        ");
+            this.Write(">\r\n    {\r\n        Task<");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
-            
-            #line default
-            #line hidden
-            this.Write(" FindById(");
-            
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyType));
-            
-            #line default
-            #line hidden
-            this.Write(" id);\r\n        Task<");
-            
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
             
             #line default
             #line hidden
             this.Write("> FindByIdAsync(");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyType));
             
             #line default

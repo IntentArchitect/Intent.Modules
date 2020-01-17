@@ -8,6 +8,7 @@ using Intent.Modules.Constants;
 using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Engine;
 using Intent.Modelers.Domain.Api;
+using Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInterface;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Templates;
 
@@ -30,7 +31,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
         {
             _entityStateTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
             _entityInterfaceTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Interface Template Id"], (to) => to.Id == Model.Id);
-            _repositoryInterfaceTemplateDependency = TemplateDependency.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
+            _repositoryInterfaceTemplateDependency = TemplateDependency.OnModel(EntityRepositoryInterfaceTemplate.Identifier, Model);
             _dbContextTemplateDependency = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
         }
 
@@ -90,16 +91,6 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
                 _repositoryInterfaceTemplateDependency,
                 _dbContextTemplateDependency,
             };
-        }
-
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new[]
-                {
-                    new NugetPackageInfo("Intent.Framework.EntityFrameworkCore", "1.0.0"),
-                }
-                .Union(base.GetNugetDependencies())
-                .ToArray();
         }
 
         public void BeforeTemplateExecution()

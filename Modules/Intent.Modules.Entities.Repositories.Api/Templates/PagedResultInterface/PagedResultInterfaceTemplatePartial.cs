@@ -1,23 +1,19 @@
 ﻿using Intent.Engine;
-using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Modules.Entities.Repositories.Api.Templates.PagedResultInterface;
 using Intent.Templates;
 
-namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.PagedList
+namespace Intent.Modules.Entities.Repositories.Api.Templates.PagedResultInterface
 {
-    partial class PagedListTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
+    partial class PagedResultInterfaceTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
-        public const string Identifier = "Intent.EntityFrameworkCore.Repositories.PagedList";
+        public const string Identifier = "Intent.Entities.Repositories.Api.PagedResultInterface";
 
-        public PagedListTemplate(IProject project)
+        public PagedResultInterfaceTemplate(IProject project)
             : base(Identifier, project)
         {
         }
-
-        public string PagedResultInterfaceName => GetTemplateClassName(PagedResultInterfaceTemplate.Identifier);
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -28,10 +24,10 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.PagedList
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"PagedList",
+                fileName: $"IPagedResult",
                 fileExtension: "cs",
                 defaultLocationInProject: "",
-                className: "PagedList",
+                className: "IPagedResult",
                 @namespace: "${Project.Name}"
                 );
         }

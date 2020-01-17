@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -9,22 +9,18 @@
 <#@ import namespace="System.Diagnostics" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
-<#@ import namespace="System.Collections.Generic"#>
-<#
-
-
-#>
-using System;
+<#@ import namespace="System.Collections.Generic" #>
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
-    public interface <#= ClassName #> : <#= RepositoryInterfaceName #><<#= EntityInterfaceName #>, <#= EntityStateName #>>
+    public interface <#= ClassName #><out T> : IEnumerable<T>
     {
-        Task<<#= EntityInterfaceName #>> FindByIdAsync(<#= PrimaryKeyType #> id);
+        int TotalCount { get;  }
+        int PageCount { get; }
+        int PageIndex { get; }
+        int PageSize { get; }
     }
 }

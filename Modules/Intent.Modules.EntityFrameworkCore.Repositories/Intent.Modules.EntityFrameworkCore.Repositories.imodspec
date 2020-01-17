@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.EntityFrameworkCore.Repositories</id>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
   <summary>Repository Patterns for Entity Framework Core.</summary>
   <description>Repository Patterns for Entity Framework Core.</description>
   <authors>Intent Architect</authors>
@@ -17,6 +17,12 @@
         <add key="Create On Stereotype" description="Limits Repository creation only on Entities marked with the 'Aggregate Root' or 'Repository' stereotype (if present). Pipe delimited." default="Aggregate Root|Repository" />
       </config>
     </template>
+    <template id="Intent.EntityFrameworkCore.Repositories.BaseRepository">
+      <role>Repository.Implementation</role>
+    </template>
+    <template id="Intent.EntityFrameworkCore.Repositories.PagedList">
+      <role>Repository.Implementation</role>
+    </template>
   </templates>
   <decorators>
   </decorators>
@@ -24,7 +30,7 @@
     <dependency id="Intent.Common" version="2.0.0"/>
     <dependency id="Intent.Common.Types" version="2.0.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
-    <dependency id="Intent.Entities.Repositories.Api" version="2.0.0"/>
+    <dependency id="Intent.Entities.Repositories.Api" version="2.1.0"/>
     <dependency id="Intent.EntityFrameworkCore" version="2.0.0"/>
   </dependencies>
   <files>

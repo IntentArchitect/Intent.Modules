@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -10,24 +10,27 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic"#>
-<#
-
-
-#>
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Intent.Framework.Domain.Repositories;
-<#= DependencyUsings #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
-    public interface <#= ClassName #> : IRepository<<#= EntityInterfaceName #>, <#= EntityStateName #>>
+    public interface <#= ClassName #><TDomain, TPersistence>
     {
-        <#= EntityInterfaceName #> FindById(<#= PrimaryKeyType #> id);
-        Task<<#= EntityInterfaceName #>> FindByIdAsync(<#= PrimaryKeyType #> id);
+        void Add(TDomain entity);
+        void Remove(TDomain entity);
+        Task<int> SaveChangesAsync();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        Task<TDomain> FindAsync(Expression<Func<TPersistence, bool>> filterExpression);
+        Task<List<TDomain>> FindAllAsync();
+        Task<List<TDomain>> FindAllAsync(Expression<Func<TPersistence, bool>> filterExpression);
+        Task<IPagedResult<TDomain>> FindAllAsync(int pageIndex, int pageSize);
+        Task<IPagedResult<TDomain>> FindAllAsync(Expression<Func<TPersistence, bool>> filterExpression, int pageIndex, int pageSize);
+        Task<int> CountAsync(Expression<Func<TPersistence, bool>> filterExpression);
+        Task<bool> AnyAsync(Expression<Func<TPersistence, bool>> filterExpression);
     }
 }

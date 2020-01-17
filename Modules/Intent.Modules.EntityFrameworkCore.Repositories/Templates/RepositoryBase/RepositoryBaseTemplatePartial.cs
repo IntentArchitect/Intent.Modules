@@ -20,11 +20,10 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.RepositoryBa
         public RepositoryBaseTemplate(IProject project)
             : base(Identifier, project)
         {
-            AddNugetDependency(new NugetPackageInfo("Intent.Framework.Core", "2.1.1"));
-            AddNugetDependency(new NugetPackageInfo("Intent.Framework.Domain", "2.1.1"));
             AddNugetDependency(new NugetPackageInfo("Microsoft.EntityFrameworkCore.SqlServer", "2.1.1"));
         }
 
+        public string RepositoryInterfaceName => GetTemplateClassName(RepositoryInterfaceTemplate.Identifier);
         public string PagedListClassName => GetTemplateClassName(PagedListTemplate.Identifier);
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

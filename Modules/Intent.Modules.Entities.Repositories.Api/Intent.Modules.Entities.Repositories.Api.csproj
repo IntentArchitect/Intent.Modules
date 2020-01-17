@@ -60,6 +60,13 @@
     </Compile>
     <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplatePartial.cs" />
     <Compile Include="Templates\EntitySpecification\EntitySpecificationTemplateRegistration.cs" />
+    <Compile Include="Templates\PagedResultInterface\PagedResultInterfaceTemplate.cs">
+      <DependentUpon>PagedResultInterfaceTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\PagedResultInterface\PagedResultInterfaceTemplatePartial.cs" />
+    <Compile Include="Templates\PagedResultInterface\PagedResultInterfaceTemplateRegistration.cs" />
     <Compile Include="Templates\RepositoryInterface\RepositoryInterfaceTemplate.cs">
       <DependentUpon>RepositoryInterfaceTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -81,6 +88,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntitySpecificationTemplate.cs</LastGenOutput>
     </Content>
+    <None Include="Templates\PagedResultInterface\PagedResultInterfaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>PagedResultInterfaceTemplate.cs</LastGenOutput>
+    </None>
     <Content Include="Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>RepositoryInterfaceTemplate.cs</LastGenOutput>
