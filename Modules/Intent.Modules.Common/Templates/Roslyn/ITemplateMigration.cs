@@ -3,6 +3,6 @@
     public interface ITemplateMigration
     {
         TemplateMigrationCriteria Criteria { get; }
-        string Execute(string solutionFileLocation);
+        string Execute(string currentText);
     }
 }
