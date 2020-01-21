@@ -12,8 +12,15 @@ namespace Intent.Modules.Entities.Keys.Decorators
     public class ForeignKeyEntityInterfaceDecorator : DomainEntityInterfaceDecoratorBase, ISupportsConfiguration
     {
         private string _foreignKeyType = "Guid";
+
         public const string Identifier = "Intent.Entities.Keys.ForeignKeyEntityInterfaceDecorator";
+
         public const string ForeignKeyType = "Foreign Key Type";
+
+        public ForeignKeyEntityInterfaceDecorator(DomainEntityInterfaceTemplate template) : base(template)
+        {
+            Priority = -100;
+        }
 
         public override string PropertyBefore(IAssociationEnd associationEnd)
         {

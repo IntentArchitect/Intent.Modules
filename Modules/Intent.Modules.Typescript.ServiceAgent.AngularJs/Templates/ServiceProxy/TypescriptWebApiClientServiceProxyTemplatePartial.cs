@@ -11,6 +11,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
@@ -26,6 +27,8 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             : base(identifier, project, model)
         {
             _eventDispatcher = eventDispatcher;
+            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.LocalIdentifier));
+            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.RemoteIdentifier));
         }
 
         public string ApiBasePathConfigKey => $"{Project.Application.SolutionName.ToLower()}_{Model.Application.Name.ToLower()}_api_basepath".AsClassName().ToLower();
@@ -98,7 +101,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             }
 
             return operation.Parameters
-                .Select(x => $"{x.Name.ToCamelCase()}: {this.ConvertType(x.Type)}")
+                .Select(x => $"{x.Name.ToCamelCase()}: {GetTypeName(x.Type)}")
                 .Aggregate((x, y) => $"{x}, {y}");
         }
 
@@ -106,7 +109,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {
-                return "{ }";
+                return "";
             }
 
             return operation.Parameters

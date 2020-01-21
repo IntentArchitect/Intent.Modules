@@ -13,6 +13,8 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
         public TypescriptDtoTemplate(string identifier, IProject project, IDTOModel model)
             : base(identifier, project, model)
         {
+            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.LocalIdentifier));
+            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.RemoteIdentifier));
             // For reference purposes only:
             //Namespace = model.BoundedContextName == project.ApplicationName().Replace("_Client", "") ? "App.Contracts" : $"App.Contracts.{model.BoundedContextName}";
             //Location = model.BoundedContextName == project.ApplicationName().Replace("_Client", "") ? $"wwwroot/App/DTOs/Generated" : $@"wwwroot/App/DTOs/Generated/{model.BoundedContextName}";

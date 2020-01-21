@@ -70,7 +70,13 @@ namespace Intent.Modules.Common.Templates
         {
         }
 
+        private string _defaultTypeCollectionFormat;
         private readonly ICollection<IClassTypeSource> _typeSources = new List<IClassTypeSource>();
+
+        public void SetDefaultTypeCollectionFormat(string collectionFormat)
+        {
+            _defaultTypeCollectionFormat = collectionFormat;
+        }
 
         public void AddTypeSource(IClassTypeSource classTypeSource)
         {
@@ -82,10 +88,20 @@ namespace Intent.Modules.Common.Templates
         public virtual void OnCreated()
         {
             _onCreatedHasHappened = true;
+            if (_defaultTypeCollectionFormat != null)
+            {
+                Types.DefaultCollectionFormat = _defaultTypeCollectionFormat;
+            }
+
             foreach (var typeSource in _typeSources)
             {
                 Types.AddClassTypeSource(typeSource);
             }
+        }
+
+        public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
+        {
+            return Types.Get(typeReference, collectionFormat);
         }
 
         public virtual string GetTypeName(ITypeReference typeReference)

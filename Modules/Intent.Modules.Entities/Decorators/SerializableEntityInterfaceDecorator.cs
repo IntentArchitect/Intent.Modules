@@ -10,6 +10,10 @@ namespace Intent.Modules.Entities.Decorators
     {
         public const string Identifier = "Intent.Serializable.Entity.Interfaces.Decorator";
 
+        public SerializableEntityInterfaceDecorator(DomainEntityInterfaceTemplate template) : base(template)
+        {
+        }
+
         public override IEnumerable<string> GetInterfaces(IClass @class)
         {
             var baseClass = @class.GetStereotypeProperty<string>("Serializable", "BaseType");

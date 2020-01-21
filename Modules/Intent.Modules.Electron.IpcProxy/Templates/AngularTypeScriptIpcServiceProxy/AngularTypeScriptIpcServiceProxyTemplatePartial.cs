@@ -6,6 +6,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy;
 using Intent.Modules.Typescript.ServiceAgent.Contracts;
+using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
 using Intent.Templates;
 
 namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcServiceProxy
@@ -17,6 +18,8 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcService
         public AngularTypeScriptIpcServiceProxyTemplate(IServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
+            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.LocalIdentifier));
+            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.RemoteIdentifier));
             var receivingProxyProject = project.Application.FindProjectWithTemplateInstance(CSharpIpcReceivingProxyTemplate.Identifier, model);
             AssemblyName = receivingProxyProject.Name;
         }
@@ -38,7 +41,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcService
         private string GetReturnType(IOperation operation)
         {
             return operation.ReturnType != null
-                ? this.ConvertType(operation.ReturnType.Type)
+                ? GetTypeName(operation.ReturnType.Type)
                 : "void";
         }
 
@@ -62,7 +65,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcService
             }
 
             return operation.Parameters
-                .Select(x => $"{x.Name.ToCamelCase()}: {this.ConvertType(x.Type)}")
+                .Select(x => $"{x.Name.ToCamelCase()}: {GetTypeName(x.Type)}")
                 .Aggregate((x, y) => $"{x}, {y}");
         }
     }

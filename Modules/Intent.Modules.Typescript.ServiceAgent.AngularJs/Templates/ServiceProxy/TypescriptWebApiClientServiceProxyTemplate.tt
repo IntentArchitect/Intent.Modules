@@ -33,13 +33,13 @@ namespace <#= Namespace #> {
 
 #>
 
-        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= this.ConvertType(o.ReturnType.Type) #>>
+        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= GetTypeName(o.ReturnType.Type) #>>
         {
             const url = `${this.baseUrl}/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>`;
 <#              if (GetHttpVerb(o) == HttpVerb.GET) { #>
-            return this.$http.get<<#= this.ConvertType(o.ReturnType.Type) #>>(url, { params: { <#= GetMethodCallParametersForGet(o) #> } }).then(result => result.data);
+            return this.$http.get<<#= GetTypeName(o.ReturnType.Type) #>>(url, { params: { <#= GetMethodCallParametersForGet(o) #> } }).then(result => result.data);
 <#              } else {#>
-            return this.$http.post<<#= this.ConvertType(o.ReturnType.Type) #>>(url, <#= GetMethodCallParametersForPost(o) #>).then(result => result.data);
+            return this.$http.post<<#= GetTypeName(o.ReturnType.Type) #>>(url, <#= GetMethodCallParametersForPost(o) #>).then(result => result.data);
 <#              }#>
         }
 <#

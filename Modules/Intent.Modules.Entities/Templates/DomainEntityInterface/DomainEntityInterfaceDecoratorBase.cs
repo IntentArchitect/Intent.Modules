@@ -9,7 +9,12 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
     public abstract class DomainEntityInterfaceDecoratorBase : DecoratorBase, ITemplateDecorator, IDeclareUsings, IAttibuteTypeConverter
     {
-        public DomainEntityInterfaceTemplate Template { get; internal set; }
+        protected DomainEntityInterfaceDecoratorBase(DomainEntityInterfaceTemplate template)
+        {
+            Template = template;
+        }
+
+        public DomainEntityInterfaceTemplate Template { get; private set; }
 
         public virtual IEnumerable<string> DeclareUsings() { return new List<string>(); }
 
@@ -36,7 +41,5 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         public virtual bool CanWriteDefaultAttribute(IAttribute attribute) { return true; }
         public virtual bool CanWriteDefaultAssociation(IAssociationEnd association) { return true; }
         public virtual bool CanWriteDefaultOperation(IOperation operation) { return true; }
-
-        public int Priority { get; set; } = 0;
     }
 }

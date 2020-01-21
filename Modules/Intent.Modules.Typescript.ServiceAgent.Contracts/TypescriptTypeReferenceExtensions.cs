@@ -17,10 +17,6 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts
             where T : IProjectItemTemplate, IRequireTypeResolver
         {
             var result = template.GetQualifiedName(typeInfo);
-            if (typeInfo.IsCollection)
-            {
-                result = "" + result + "[]";
-            }
             return result;
         }
 

@@ -93,7 +93,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             this.Write("): ng.IPromise<");
             
             #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ConvertType(o.ReturnType.Type)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(o.ReturnType.Type)));
             
             #line default
             #line hidden
@@ -121,7 +121,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             this.Write("            return this.$http.get<");
             
             #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ConvertType(o.ReturnType.Type)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(o.ReturnType.Type)));
             
             #line default
             #line hidden
@@ -142,7 +142,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             this.Write("            return this.$http.post<");
             
             #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.ConvertType(o.ReturnType.Type)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(o.ReturnType.Type)));
             
             #line default
             #line hidden

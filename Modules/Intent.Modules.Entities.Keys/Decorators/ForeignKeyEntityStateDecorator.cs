@@ -17,6 +17,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
 
         public ForeignKeyEntityStateDecorator(DomainEntityStateTemplate template) : base(template)
         {
+            Priority = -100;
         }
 
         public override string AssociationBefore(IAssociationEnd associationEnd)

@@ -13,6 +13,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
 {
     public class JavaTypeResolver : TypeResolverBase, ITypeResolver
     {
+        public override string DefaultCollectionFormat { get; set; } = "{0}[]";
 
         protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {

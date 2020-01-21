@@ -7,6 +7,11 @@ namespace Intent.Modules.Common.Types.TypeResolvers
 {
     public class CSharpTypeResolver : TypeResolverBase, ITypeResolver
     {
+        public CSharpTypeResolver()
+        {
+        }
+
+        public override string DefaultCollectionFormat { get; set; } = "IEnumerable<{0}>";
 
         protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {
@@ -41,7 +46,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
 
             if (typeInfo.IsCollection)
             {
-                result = string.Format(collectionFormat ?? "IEnumerable<{0}>", result);
+                result = string.Format(collectionFormat ?? DefaultCollectionFormat, result);
             }
 
             return result;

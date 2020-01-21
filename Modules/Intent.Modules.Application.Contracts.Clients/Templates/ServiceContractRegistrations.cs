@@ -32,11 +32,7 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = _metadataManager.GetMetadata<IServiceModel>("Services").ToArray();
-            if (!serviceModels.Any())
-            {
-                serviceModels = _metadataManager.GetMetadata<IServiceModel>("Service").ToArray(); // backward compatibility
-            }
+            var serviceModels = new ServicesMetadataProvider(_metadataManager).GetAllServices().ToArray();
 
             return serviceModels
                 .Where(x => x.GetConsumers(_stereotypeName, _stereotypePropertyName).Any(y => y.Equals(application.Name, StringComparison.OrdinalIgnoreCase)))

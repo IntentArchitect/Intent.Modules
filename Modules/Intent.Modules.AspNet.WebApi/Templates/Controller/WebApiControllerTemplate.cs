@@ -224,10 +224,10 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             
             #line default
             #line hidden
+            this.Write("\r\n");
             
-            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-
-            if (operation.ReturnType != null)
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
+          if (operation.ReturnType != null)
             { 
             
             #line default

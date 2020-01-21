@@ -14,6 +14,7 @@ using Intent.Modules.Common.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+<#=(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().Namespace) : "")#>
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 

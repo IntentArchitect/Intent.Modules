@@ -53,14 +53,29 @@ namespace Intent.Modelers.Services.Api
 
     public static class ServicesMetadataManagerExtensions
     {
+        public static IEnumerable<IDTOModel> GetAllDTOs(this IMetadataManager metadataManager)
+        {
+            return new ServicesMetadataProvider(metadataManager).GetAllDTOs();
+        }
+
         public static IEnumerable<IDTOModel> GetDTOs(this IMetadataManager metadataManager, string applicationId)
         {
             return new ServicesMetadataProvider(metadataManager).GetDTOs(applicationId);
         }
 
+        public static IEnumerable<IServiceModel> GetAllServices(this IMetadataManager metadataManager)
+        {
+            return new ServicesMetadataProvider(metadataManager).GetAllServices();
+        }
+
         public static IEnumerable<IServiceModel> GetServices(this IMetadataManager metadataManager, string applicationId)
         {
             return new ServicesMetadataProvider(metadataManager).GetServices(applicationId);
+        }
+
+        public static IEnumerable<IEnumModel> GetAllEnums(this IMetadataManager metadataManager)
+        {
+            return new ServicesMetadataProvider(metadataManager).GetAllEnums();
         }
 
         public static IEnumerable<IEnumModel> GetEnums(this IMetadataManager metadataManager, string applicationId)

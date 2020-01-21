@@ -115,7 +115,7 @@ this.Write(": ");
         #line hidden
         
         #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.Contracts\Templates\TypescriptDTO\TypescriptDtoTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(this.ConvertType(field.Type)));
+this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(field.Type)));
 
         
         #line default

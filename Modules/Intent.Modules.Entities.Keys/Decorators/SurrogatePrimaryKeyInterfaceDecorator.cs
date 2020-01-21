@@ -9,8 +9,14 @@ namespace Intent.Modules.Entities.Keys.Decorators
     public class SurrogatePrimaryKeyInterfaceDecorator : DomainEntityInterfaceDecoratorBase
     {
         private string _surrogateKeyType = "Guid";
+
         public const string Identifier = "Intent.Entities.Keys.SurrogatePrimaryKeyInterfaceDecorator";
+
         public string SurrogateKeyType => "Surrogate Key Type";
+
+        public SurrogatePrimaryKeyInterfaceDecorator(DomainEntityInterfaceTemplate template) : base(template)
+        {
+        }
 
         public override string BeforeProperties(IClass @class)
         {
@@ -34,6 +40,5 @@ namespace Intent.Modules.Entities.Keys.Decorators
                 _surrogateKeyType = settings[SurrogateKeyType];
             }
         }
-
     }
 }

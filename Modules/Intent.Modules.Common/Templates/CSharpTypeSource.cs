@@ -44,13 +44,13 @@ namespace Intent.Modules.Common.Templates
                 : null;
         }
 
-        public static IClassTypeSource InApplication(IApplication application, string templateId, string collectionType = nameof(IEnumerable))
+        public static IClassTypeSource InApplication(IApplication application, string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
             return new CSharpTypeSource((typeInfo, _this) =>
             {
                 if (typeInfo.IsCollection)
                 {
-                    return $"{collectionType}<{_this.FullTypeNameInApplication(application, templateId, typeInfo)}>";
+                    return string.Format(collectionFormat, _this.FullTypeNameInApplication(application, templateId, typeInfo));
                 }
                 return _this.FullTypeNameInApplication(application, templateId, typeInfo);
             });

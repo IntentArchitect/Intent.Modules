@@ -80,7 +80,7 @@ namespace Intent.Modules.Common.Templates
         {
             var templateInstance = GetTemplateInstance(project, templateId, typeInfo);
 
-            return templateInstance != null ? 
+            return templateInstance != null ? (string.IsNullOrWhiteSpace(templateInstance.Namespace) ? "" : templateInstance.Namespace + ".") +
                 templateInstance.ClassName + (typeInfo.GenericTypeParameters.Any() 
                     ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(project, templateId, x)))}>" 
                     : "") 

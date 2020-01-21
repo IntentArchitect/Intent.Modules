@@ -23,37 +23,12 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
         public ServiceCallHandlerImplementationTemplate(IProject project, IServiceModel service, IOperation model)
             : base(Identifier, project, model)
         {
+            SetDefaultTypeCollectionFormat("List<{0}>");
+            AddTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
             Service = service;
         }
 
         public IServiceModel Service { get; set; }
-
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
-        {
-            var typeReferences = Model.Parameters.Select(x => x.Type).ToList();
-            if (Model.ReturnType != null)
-            {
-                typeReferences.Add(Model.ReturnType.Type);
-            }
-
-            return typeReferences.Select(x => TemplateDependency.OnModel<IMetadataModel>(DTOTemplate.IDENTIFIER, m => m.Id == x.Element.Id)).ToArray();
-        }
-
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            // GCB - This is a hack to get the Intent.Framework.Domain package installed in the Application layer if repositories are detected.
-            // Note: the project reference dependency on Repositories.Api is not needed in the .imodspec since all we are using is the constant value of RepositoryInterfaceTemplate.Identifier
-            if (Project.FindTemplateInstances<IHasClassDetails>(TemplateDependency.OnTemplate(RepositoryInterfaceTemplate.Identifier)).Any())
-            {
-                return new[]
-                    {
-                        NugetPackages.IntentFrameworkDomain,
-                    }
-                    .Union(base.GetNugetDependencies())
-                    .ToArray();
-            }
-            return base.GetNugetDependencies();
-        }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -90,17 +65,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType.Type)}>" : GetTypeName(o.ReturnType.Type);
         }
 
-        private string GetTypeName(ITypeReference typeInfo)
-        {
-            //var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
-            //if (typeInfo.IsCollection)
-            //{
-            //    result = "List<" + result + ">";
-            //}
-            return NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
-        }
-
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {

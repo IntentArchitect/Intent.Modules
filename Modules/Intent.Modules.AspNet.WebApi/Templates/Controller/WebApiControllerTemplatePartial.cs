@@ -28,24 +28,12 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         public WebApiControllerTemplate(IProject project, IServiceModel model, string identifier = Identifier)
             : base(identifier, project, model)
         {
-        }
-
-        public override void OnCreated()
-        {
-            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            AddTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public IEnumerable<string> DeclareUsings()
         {
             return GetDecorators().SelectMany(x => x.DeclareUsings());
-        }
-
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
-        {
-            return new[]
-            {
-                TemplateDependency.OnTemplate(ServiceContractTemplate.IDENTIFIER)
-            };
         }
 
         public IEnumerable<IAssemblyReference> GetAssemblyDependencies()
@@ -101,18 +89,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
-            return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
-        }
-
-        private string GetTypeName(ITypeReference typeInfo)
-        {
-            //var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
-            //if (typeInfo.IsCollection)
-            //{
-            //    result = "List<" + result + ">";
-            //}
-            return Types.Get(typeInfo, "List<{0}>");
+            return GetTemplateClassName(ServiceContractTemplate.IDENTIFIER, Model);
         }
 
         public string DeclarePrivateVariables()
@@ -199,12 +176,11 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         public void AddDecorator(WebApiControllerDecoratorBase decorator)
         {
             _decorators.Add(decorator);
-
         }
 
         public IEnumerable<WebApiControllerDecoratorBase> GetDecorators()
         {
-            return _decorators;
+            return _decorators.OrderByDescending(x => x.Priority);
         }
 
         private string GetSecurityAttribute(IOperation o)

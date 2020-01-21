@@ -58,7 +58,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 
         public IEnumerable<DomainEntityInterfaceDecoratorBase> GetDecorators()
         {
-            return _decorators;
+            return _decorators.OrderBy(x => x.Priority);
         }
 
         public string GetInterfaces(IClass @class)

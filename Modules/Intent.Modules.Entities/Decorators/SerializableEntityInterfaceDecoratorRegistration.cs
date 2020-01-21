@@ -13,7 +13,7 @@ namespace Intent.Modules.Entities.Decorators
 
         public override DomainEntityInterfaceDecoratorBase CreateDecoratorInstance(DomainEntityInterfaceTemplate template, IApplication application)
         {
-            return new SerializableEntityInterfaceDecorator();
+            return new SerializableEntityInterfaceDecorator(template);
         }
     }
 }

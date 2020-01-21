@@ -15,7 +15,7 @@
     <template id="Intent.AspNet.WebApi.OwinWebApiConfig">
       <role>Distribution.WebApi</role>
     </template>
-    <template id="Intent.AspNet.WebApi.ServiceCallContext">
+    <template id="Intent.AspNet.WebApi.ServiceCallContext" enabled="false">
       <role>Distribution.WebApi</role>
     </template>
     <template id="Intent.AspNet.WebApi.ExceptionHandlerFilter">

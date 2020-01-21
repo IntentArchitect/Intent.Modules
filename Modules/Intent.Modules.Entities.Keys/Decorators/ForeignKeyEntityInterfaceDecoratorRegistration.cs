@@ -13,7 +13,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
         public override string DecoratorId => ForeignKeyEntityInterfaceDecorator.Identifier;
         public override DomainEntityInterfaceDecoratorBase CreateDecoratorInstance(DomainEntityInterfaceTemplate template, IApplication application)
         {
-            return new ForeignKeyEntityInterfaceDecorator();
+            return new ForeignKeyEntityInterfaceDecorator(template);
         }
     }
 }

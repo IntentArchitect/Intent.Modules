@@ -42,6 +42,8 @@ namespace Intent.Modules.Common.Types
 
         internal class NoResolverRegisteredTypeResolver : ITypeResolver
         {
+            public string DefaultCollectionFormat { get; set; } = "{0}";
+
             public void AddClassTypeSource(Func<ITypeReference, string> typeLookup)
             {
                 throw new NotImplementedException();
@@ -64,7 +66,7 @@ namespace Intent.Modules.Common.Types
                 return typeInfo.Element.Name;
             }
 
-            public string Get(ITypeReference typeInfo, string contextName)
+            public string Get(ITypeReference typeInfo, string collectionFormat)
             {
                 if (typeInfo == null)
                     return string.Empty;

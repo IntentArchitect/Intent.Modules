@@ -24,7 +24,7 @@ namespace <#= Namespace #>
     export interface <#= ClassName #>
     {
 <#+ foreach (var field in Model.Fields) {#>
-        <#=field.Name.ToCamelCase()#><#= field.Type.IsNullable ? "?" : "" #>: <#= this.ConvertType(field.Type) #>;
+        <#=field.Name.ToCamelCase()#><#= field.Type.IsNullable ? "?" : "" #>: <#= GetTypeName(field.Type) #>;
 <#+}#>
     }
 <#+

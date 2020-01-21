@@ -91,6 +91,11 @@ namespace Intent.Modules.Common.Templates
             return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
         }
 
+        public override string GetTypeName(ITypeReference typeReference, string collectionFormat)
+        {
+            return NormalizeNamespace(Types.Get(typeReference, collectionFormat));
+        }
+
         public override string GetTypeName(ITypeReference typeReference)
         {
             return NormalizeNamespace(Types.Get(typeReference));

@@ -52,28 +52,29 @@ namespace Intent.Modules.Common.Templates
             return FindTemplate<IHasClassDetails>(templateDependency)?.ClassName;
         }
 
-        public string DependencyImports
-        {
-            get
-            {
-                var sb = new StringBuilder();
-                foreach (var dependency in GetTemplateDependencies().Select(Project.FindTemplateInstance<ITemplate>).Distinct())
-                {
-                    var className = ((IHasClassDetails)dependency).ClassName;
-                    var location = GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(dependency.GetMetadata().GetRelativeFilePathWithFileName());
-                    sb.AppendLine($"import {{ {className} }} from '{location}';");
-                }
+        //public string DependencyImports
+        //{
+        //    get
+        //    {
+        //        var sb = new StringBuilder();
+        //        foreach (var dependency in GetTemplateDependencies().Select(Project.FindTemplateInstance<ITemplate>).Distinct())
+        //        {
+        //            var className = ((IHasClassDetails)dependency).ClassName;
+        //            var location = GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(dependency.GetMetadata().GetRelativeFilePathWithFileName());
+        //            sb.AppendLine($"import {{ {className} }} from '{location}';");
+        //        }
 
-                return sb.ToString();
-            }
-        }
+        //        return sb.ToString();
+        //    }
+        //}
 
         public override string RunTemplate()
         {
             var templateOutput = base.RunTemplate();
 
-            return $@"{DependencyImports}
-{templateOutput}";
+            return templateOutput;
+//            return $@"{DependencyImports}
+//{templateOutput}";
         }
     }
 

@@ -20,11 +20,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
         public CSharpIpcReceivingProxyTemplate(IServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
-        }
-
-        public override void OnCreated()
-        {
-            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            AddTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -41,16 +37,6 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
                 defaultLocationInProject: @"NodeIpcProxies/Generated",
                 className: $"{Model.Name}NodeIpcProxy",
                 @namespace: "${Project.ProjectName}");
-        }
-
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
-        {
-            return new[]
-            {
-                TemplateDependency.OnTemplate(UnityConfigTemplate.Identifier),
-                TemplateDependency.OnModel(ServiceContractTemplate.IDENTIFIER, Model),
-                TemplateDependency.OnTemplate(DTOTemplate.IDENTIFIER)
-            };
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
@@ -71,19 +57,8 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             }
 
             return o.Parameters
-                .Select((x, i) => $"Deserialize<{GetTypeName(x.Type)}>(methodParameters[{i}])")
+                .Select((x, i) => $"Deserialize<{GetTypeName(x.Type, "List<{0}>")}>(methodParameters[{i}])")
                 .Aggregate((x, y) => x + ", " + y);
-        }
-
-        private string GetTypeName(ITypeReference typeInfo)
-        {
-            //var result = NormalizeNamespace(typeInfo.GetQualifiedName(this));
-            //if (typeInfo.IsCollection)
-            //{
-            //    result = "List<" + result + ">";
-            //}
-            //return result;
-            return Types.Get(typeInfo, "List<{0}>");
         }
     }
 }

@@ -14,6 +14,10 @@ namespace Intent.Modules.Entities.Decorators
     {
         public const string Id = "Intent.Entities.DDD.EntityInterfaceDecorator";
 
+        public DDDEntityInterfaceDecorator(DomainEntityInterfaceTemplate template) : base(template)
+        {
+        }
+
         public override string ConvertAttributeType(IAttribute attribute)
         {
             //var @namespace = attribute.Type.GetStereotypeProperty<string>("CommonType", "Namespace");
@@ -45,9 +49,9 @@ namespace Intent.Modules.Entities.Decorators
             {
                 return base.PropertyBefore(associationEnd);
             }
-            var t = CSharpTypeSource.InProject(Template.Project, DomainEntityInterfaceTemplate.Identifier, nameof(IEnumerable));
+            var t = CSharpTypeSource.InProject(Template.Project, DomainEntityInterfaceTemplate.Identifier);
             return $@"
-        {t.GetClassType(associationEnd)} {associationEnd.Name().ToPascalCase()} {{ get; }}
+        {Template.NormalizeNamespace(t.GetClassType(associationEnd))} {associationEnd.Name().ToPascalCase()} {{ get; }}
 ";
         }
 

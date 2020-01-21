@@ -23,7 +23,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
             return Get(typeInfo, null);
         }
 
-        public string Get(ITypeReference typeInfo, string collectionType)
+        public string Get(ITypeReference typeInfo, string collectionFormat)
         {
             if (typeInfo == null)
             {
@@ -38,7 +38,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
                     return foundClass;
                 }
             }
-            return _resolveTypeFunc(typeInfo, collectionType);
+            return _resolveTypeFunc(typeInfo, collectionFormat);
         }
     }
 
@@ -55,6 +55,8 @@ namespace Intent.Modules.Common.Types.TypeResolvers
                 { DEFAULT_CONTEXT, new List<IClassTypeSource>() }
             };
         }
+
+        public abstract string DefaultCollectionFormat { get; set; }
 
         public void AddClassTypeSource(IClassTypeSource classTypeSource)
         {
@@ -93,9 +95,9 @@ namespace Intent.Modules.Common.Types.TypeResolvers
             return Get(typeInfo, null);
         }
 
-        public string Get(ITypeReference typeInfo, string collectionType)
+        public string Get(ITypeReference typeInfo, string collectionFormat)
         {
-            return InContext(DEFAULT_CONTEXT).Get(typeInfo, collectionType);
+            return InContext(DEFAULT_CONTEXT).Get(typeInfo, collectionFormat);
         }
 
         protected abstract string ResolveType(ITypeReference typeInfo, string collectionFormat = null);

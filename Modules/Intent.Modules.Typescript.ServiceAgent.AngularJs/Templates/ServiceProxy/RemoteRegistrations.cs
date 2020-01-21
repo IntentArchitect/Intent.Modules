@@ -31,12 +31,11 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = _metadataManager.GetMetadata<IServiceModel>("Services");
+            var serviceModels = new ServicesMetadataProvider(_metadataManager).GetAllServices();
 
             serviceModels = serviceModels
                 .Where(x => GetConsumers(x).Any(y => y.Equals(application.Name, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
-
 
             return serviceModels.ToList();
         }

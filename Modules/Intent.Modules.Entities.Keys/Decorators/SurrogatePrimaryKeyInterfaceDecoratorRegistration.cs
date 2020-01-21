@@ -13,7 +13,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
         public override string DecoratorId => SurrogatePrimaryKeyInterfaceDecorator.Identifier;
         public override DomainEntityInterfaceDecoratorBase CreateDecoratorInstance(DomainEntityInterfaceTemplate template, IApplication application)
         {
-            return new SurrogatePrimaryKeyInterfaceDecorator();
+            return new SurrogatePrimaryKeyInterfaceDecorator(template);
         }
     }
 }
