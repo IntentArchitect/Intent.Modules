@@ -108,25 +108,25 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             this.Write("\r\n{\r\n    public partial class ");
             
             #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write("Mapping : EntityTypeConfiguration<");
+            this.Write(" : EntityTypeConfiguration<");
             
             #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetEntityName(Model)));
             
             #line default
             #line hidden
             this.Write(">\r\n    {\r\n    \r\n        public ");
             
             #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write("Mapping()\r\n        {\r\n");
+            this.Write("()\r\n        {\r\n");
             
             #line 80 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
   if (Model.ParentClass == null || Model.ParentClass.GetStereotypeProperty<string>("InheritanceMapping", "Type") != "TPH")
@@ -220,18 +220,32 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             
             #line 108 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
   }
-    if (Model.ParentClass != null) {
+    foreach (var childClass in Model.ChildClasses) {
             
             #line default
             #line hidden
-            this.Write("            this.HasBaseType<");
+            this.Write("            this.Map<");
             
             #line 110 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentClass.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetEntityName(childClass)));
             
             #line default
             #line hidden
-            this.Write(">();\r\n");
+            this.Write(">(m => m.Requires(\"");
+            
+            #line 110 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
+            
+            #line default
+            #line hidden
+            this.Write("Type\").HasValue(\"");
+            
+            #line 110 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetEntityName(childClass)));
+            
+            #line default
+            #line hidden
+            this.Write("\"));\r\n");
             
             #line 111 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
   }  

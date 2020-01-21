@@ -72,10 +72,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace <#= Namespace #>
 {
-    public partial class <#= Model.Name.ToPascalCase() #>Mapping : EntityTypeConfiguration<<#= Model.Name.ToPascalCase() #>>
+    public partial class <#= ClassName #> : EntityTypeConfiguration<<#= GetEntityName(Model) #>>
     {
     
-        public <#= Model.Name.ToPascalCase() #>Mapping()
+        public <#= ClassName #>()
         {
 <#  if (Model.ParentClass == null || Model.ParentClass.GetStereotypeProperty<string>("InheritanceMapping", "Type") != "TPH")
     {#>
@@ -106,8 +106,8 @@ namespace <#= Namespace #>
 <#  } else {#>
             this.HasKey(x => <#= (explicitPrimaryKeys.Count() == 1 ? "x." + explicitPrimaryKeys.Single().Name.ToPascalCase() : string.Format("new {{ {0} }}", string.Join(", ", explicitPrimaryKeys.Select(x => "x." + x.Name)))) #>);
 <#  }
-    if (Model.ParentClass != null) {#>
-            this.HasBaseType<<#= Model.ParentClass.Name #>>();
+    foreach (var childClass in Model.ChildClasses) {#>
+            this.Map<<#= GetEntityName(childClass) #>>(m => m.Requires("<#= Model.Name #>Type").HasValue("<#= GetEntityName(childClass) #>"));
 <#  }  
     foreach (var attribute in Model.Attributes)
     {

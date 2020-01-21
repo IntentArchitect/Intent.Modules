@@ -27,6 +27,9 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
         public OwinStartupTemplate(IProject project)
             : base(Identifier, project)
         {
+            AddNugetDependency(NugetPackage.MicrosoftOwin);
+            AddNugetDependency(NugetPackage.MicrosoftOwinHostSystemWeb);
+
             Project.Application.EventDispatcher.Subscribe(InitializationRequiredEvent.EventId, Handle);
         }
 
@@ -36,23 +39,13 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
                 usings: @event.GetValue(InitializationRequiredEvent.UsingsKey),
                 code: @event.GetValue(InitializationRequiredEvent.CallKey),
                 method: @event.TryGetValue(InitializationRequiredEvent.MethodKey),
-                priority: @event.TryGetValue(InitializationRequiredEvent.PriorityKey)));
+                priority: @event.TryGetValue(InitializationRequiredEvent.PriorityKey),
+                templateDependency: @event.TryGetValue(InitializationRequiredEvent.TemplateDependencyIdKey)));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new[]
-            {
-                NugetPackage.MicrosoftOwin,
-                NugetPackage.MicrosoftOwinHostSystemWeb,
-            }
-            .Union(base.GetNugetDependencies())
-            .ToArray();
         }
 
         protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
@@ -65,6 +58,18 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
                 className: "Startup",
                 @namespace: "${Project.Name}"
                 );
+        }
+
+        public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        {
+            return base.GetTemplateDependencies()
+                .Concat(_initializations.Where(x => x.TemplateDependency != null).Select(x => TemplateDependency.OnTemplate(x.TemplateDependency)));
+        }
+
+        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        {
+            return base.GetNugetDependencies()
+                    .Concat(_initializations.Where(x => x.TemplateDependency != null).SelectMany(x => FindTemplate<IHasNugetDependencies>(TemplateDependency.OnTemplate(x.TemplateDependency))?.GetNugetDependencies()));
         }
 
         public string Configuration()
@@ -153,12 +158,15 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
         public string Code { get; }
         public string Method { get; }
         public int Priority { get; }
+        public string TemplateDependency { get; }
 
-        public Initializations(string usings, string code, string method, string priority)
+
+        public Initializations(string usings, string code, string method, string priority, string templateDependency)
         {
             Usings = usings;
             Code = code;
             Method = method;
+            TemplateDependency = templateDependency;
             Priority = int.TryParse(priority, out var parsedPriority)
                 ? parsedPriority
                 : 0;

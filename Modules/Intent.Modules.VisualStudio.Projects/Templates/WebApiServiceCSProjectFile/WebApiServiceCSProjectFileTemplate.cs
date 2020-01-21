@@ -53,7 +53,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             }
 
             var text = doc.ToStringUTF8();
-            return text.Substring(text.IndexOf("<Project", StringComparison.InvariantCultureIgnoreCase));
+            return text;//.Substring(text.IndexOf("<Project", StringComparison.InvariantCultureIgnoreCase));
         }
 
         private XDocument LoadOrCreate(string fullFileName)

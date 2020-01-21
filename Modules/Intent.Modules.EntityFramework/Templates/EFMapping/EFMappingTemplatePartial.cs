@@ -17,35 +17,17 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
     {
         public const string Identifier = "Intent.EntityFramework.EFMapping";
         private IList<IEFMappingTemplateDecorator> _decorators = new List<IEFMappingTemplateDecorator>();
-        private ITemplateDependency _domainTemplateDependency;
 
         public EFMappingTemplate(IClass model, IProject project)
             : base (Identifier, project, model)
         {
+            AddNugetDependency(NugetPackages.EntityFramework);
             var x = Model.AssociatedClasses.Where(ae => ae.Association.AssociationType == AssociationType.Composition && ae.Association.TargetEnd == ae).ToList();
         }
 
-        public override void OnCreated()
+        public string GetEntityName(IClass model)
         {
-            _domainTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
-        }
-
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new[]
-            {
-                NugetPackages.EntityFramework,
-            }
-            .Union(base.GetNugetDependencies())
-            .ToArray();
-        }
-
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
-        {
-            return new[]
-            {
-                _domainTemplateDependency,
-            };
+            return GetTemplateClassName(GetMetadata().CustomMetadata["Entity Template Id"], model);
         }
 
         public bool UseForeignKeys

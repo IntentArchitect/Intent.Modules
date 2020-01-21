@@ -9,6 +9,7 @@ using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Eventing;
 using Intent.Modules.Common;
+using Intent.Modules.EntityFramework.Templates.EFMapping;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext
@@ -91,6 +92,11 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             {
                 throw new Exception($"Multiple decorators attempting to modify 'base class' on {Identifier}");
             }
+        }
+
+        private string GetMappingName(IClass model)
+        {
+            return GetTemplateClassName(EFMappingTemplate.Identifier, model);
         }
     }
 }

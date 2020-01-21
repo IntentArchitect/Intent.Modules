@@ -207,9 +207,9 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                 );
         }
 
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return _registrations
+            return base.GetTemplateDependencies().Concat(_registrations
                 .Where(x => x.InterfaceType != null && x.InterfaceTypeTemplateDependency != null)
                 .Select(x => x.InterfaceTypeTemplateDependency)
                 .Union(_registrations
@@ -221,7 +221,7 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                 .Union(_dbContextRegistrations
                     .Where(x => x.ConcreteTypeTemplateDependency != null)
                     .Select(x => x.ConcreteTypeTemplateDependency))
-                .ToList();
+                .ToList());
         }
 
         public IEnumerable<string> DeclareUsings()

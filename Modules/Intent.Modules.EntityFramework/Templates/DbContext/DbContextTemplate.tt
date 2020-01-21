@@ -34,7 +34,7 @@ namespace <#= Namespace #>
             ConfigureConventions(modelBuilder);
             
 <# foreach (var model in Model) {#>
-            modelBuilder.Configurations.Add(new <#= model.Name.ToPascalCase()#>Mapping());
+            modelBuilder.Configurations.Add(new <#= GetMappingName(model) #>());
 <# }#>
         }
 

@@ -87,11 +87,11 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             this.Write("            modelBuilder.Configurations.Add(new ");
             
             #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetMappingName(model)));
             
             #line default
             #line hidden
-            this.Write("Mapping());\r\n");
+            this.Write("());\r\n");
             
             #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
  }
