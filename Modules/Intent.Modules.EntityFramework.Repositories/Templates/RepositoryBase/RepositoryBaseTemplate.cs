@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.RepositoryBase
+namespace Intent.Modules.EntityFramework.Repositories.Templates.RepositoryBase
 {
     using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common.Templates;
@@ -22,7 +22,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.RepositoryBa
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class RepositoryBaseTemplate : IntentRoslynProjectItemTemplateBase
     {
@@ -32,33 +32,26 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.RepositoryBa
         /// </summary>
         public override string TransformText()
         {
-            this.Write(@"using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-
-[assembly: DefaultIntentManaged(Mode.Fully)]
-
-namespace ");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Data.Entity;\r\nusin" +
+                    "g System.Linq;\r\nusing System.Linq.Expressions;\r\nusing System.Threading;\r\nusing S" +
+                    "ystem.Threading.Tasks;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamesp" +
+                    "ace ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("<TDomain, TPersistence, TDbContext> : ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RepositoryInterfaceName));
             
             #line default
@@ -67,7 +60,7 @@ namespace ");
                     "sistence : class, TDomain\r\n        where TDomain : class\r\n    {\r\n        private" +
                     " readonly TDbContext _dbContext;\r\n\r\n        public ");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -97,7 +90,7 @@ namespace ");
                     " int pageSize)\r\n        {\r\n            var query = QueryInternal(filterExpressio" +
                     "n);\r\n            return await ");
             
-            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PagedListClassName));
             
             #line default

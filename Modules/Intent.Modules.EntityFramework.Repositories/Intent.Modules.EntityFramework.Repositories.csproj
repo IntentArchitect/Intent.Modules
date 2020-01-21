@@ -54,6 +54,20 @@
     </Compile>
     <Compile Include="Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplatePartial.cs" />
     <Compile Include="Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplateRegistration.cs" />
+    <Compile Include="Templates\PagedList\PagedListTemplate.cs">
+      <DependentUpon>PagedListTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\PagedList\PagedListTemplatePartial.cs" />
+    <Compile Include="Templates\PagedList\PagedListTemplateRegistration.cs" />
+    <Compile Include="Templates\RepositoryBase\RepositoryBaseTemplate.cs">
+      <DependentUpon>RepositoryBaseTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\RepositoryBase\RepositoryBaseTemplatePartial.cs" />
+    <Compile Include="Templates\RepositoryBase\RepositoryBaseTemplateRegistration.cs" />
     <Compile Include="Templates\Repository\RepositoryTemplateRegistration.cs" />
     <Compile Include="Templates\Repository\RepositoryTemplate.cs">
       <DependentUpon>RepositoryTemplate.tt</DependentUpon>
@@ -101,7 +115,18 @@
       <Name>Intent.Modules.Modelers.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Templates\RepositoryBase\RepositoryBaseTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RepositoryBaseTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Templates\PagedList\PagedListTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>PagedListTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Intent.IntentArchitectPackager.1.9.3\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.1.9.3\build\Intent.IntentArchitectPackager.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

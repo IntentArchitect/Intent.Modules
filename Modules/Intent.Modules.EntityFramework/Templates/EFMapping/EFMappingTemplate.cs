@@ -441,7 +441,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             this.Write(")\r\n");
             
             #line 181 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-              if (RequiresForeignKeyOnAssociatedEnd(associationEnd)) {
+              if (RequiresForeignKeyOnAssociatedEnd(associationEnd.OtherEnd())) {
                     if (UseForeignKeys) { 
             
             #line default

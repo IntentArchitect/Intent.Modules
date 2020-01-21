@@ -32,124 +32,82 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         /// </summary>
         public override string TransformText()
         {
-            this.Write(@"using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using Intent.Framework.Core.Context;
-using Intent.Framework.Domain.Repositories;
-using Intent.Framework.EntityFramework;
-using Intent.Framework.EntityFramework.Repositories;
-");
+            this.Write("using System;\r\nusing System.Data.Entity;\r\nusing System.Linq;\r\nusing System.Linq.E" +
+                    "xpressions;\r\nusing System.Threading.Tasks;\r\n\r\n[assembly: DefaultIntentManaged(Mo" +
+                    "de.Ignore)]\r\n\r\nnamespace ");
             
             #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
-            
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n\tpublic class ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : RepositoryBase<");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityName));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DbContextName));
             
             #line default
             #line hidden
             this.Write(">, ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RepositoryContractName));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public ");
+            this.Write("\r\n    {\r\n        public ");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DbContextName));
             
             #line default
             #line hidden
-            this.Write(" dbContext) : base (dbContext");
+            this.Write(" dbContext) : base (dbContext)\r\n        {\r\n        }\r\n\r\n        public async Task" +
+                    "<");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(EntityCompositionVisitorName != null ? string.Format(", new {0}()", EntityCompositionVisitorName) : ""));
-            
-            #line default
-            #line hidden
-            this.Write(")\r\n        {\r\n        }\r\n\r\n        [IntentManaged(Mode.Fully)]\r\n        public ");
-            
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
-            
-            #line default
-            #line hidden
-            this.Write(" FindById(");
-            
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyType));
-            
-            #line default
-            #line hidden
-            this.Write(" id)\r\n        {\r\n            return CreateQuery().SingleOrDefault(x => x.");
-            
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyName));
-            
-            #line default
-            #line hidden
-            this.Write(" == id);\r\n        }\r\n\r\n        [IntentManaged(Mode.Fully)]\r\n        public async " +
-                    "Task<");
-            
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityInterfaceName));
             
             #line default
             #line hidden
             this.Write("> FindByIdAsync(");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyType));
             
             #line default
             #line hidden
-            this.Write(" id)\r\n        {\r\n            return await CreateQuery().SingleOrDefaultAsync(x =>" +
-                    " x.");
+            this.Write(" id)\r\n        {\r\n            return await FindAsync(x => x.");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\Repository\RepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PrimaryKeyName));
             
             #line default

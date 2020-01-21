@@ -23,13 +23,6 @@
         <add key="Create On Stereotype" description="Limits Repository creation only on Entities marked with the 'Aggregate Root' or 'Repository' stereotype (if present). Pipe delimited." default="Aggregate Root|Repository" />
       </config>
     </template>
-    <template id="Intent.Entities.Repositories.Api.EntitySpecification">
-      <role>Repository.Interface</role>
-      <config>
-        <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
-        <add key="Create On Stereotype" description="Limits Repository creation only on Entities marked with the 'Aggregate Root' or 'Repository' stereotype (if present). Pipe delimited." default="Aggregate Root|Repository" />
-      </config>
-    </template>
   </templates>
   <decorators>
   </decorators>

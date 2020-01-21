@@ -29,6 +29,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
 
         public override void OnCreated()
         {
+            base.OnCreated();
             _entityStateTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
             _entityInterfaceTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Interface Template Id"], (to) => to.Id == Model.Id);
             _repositoryInterfaceTemplateDependency = TemplateDependency.OnModel(EntityRepositoryInterfaceTemplate.Identifier, Model);

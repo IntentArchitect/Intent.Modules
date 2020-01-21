@@ -6,10 +6,10 @@ using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
-using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Engine;
+using Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInterface;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
@@ -32,7 +32,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         {
             _entityStateTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
             _entityInterfaceTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Interface Template Id"], (to) => to.Id == Model.Id);
-            _repositoryInterfaceTemplateDependency = TemplateDependency.OnModel(RepositoryInterfaceTemplate.Identifier, Model);
+            _repositoryInterfaceTemplateDependency = TemplateDependency.OnModel(EntityRepositoryInterfaceTemplate.Identifier, Model);
             _dbContextTemplateDependency = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
             _deleteVisitorTemplateDependency = TemplateDependency.OnTemplate(EntityCompositionVisitorTemplate.Identifier);
         }
@@ -106,16 +106,6 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
                 _dbContextTemplateDependency,
                 _deleteVisitorTemplateDependency,
             };
-        }
-
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new[]
-                {
-                    new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.1"),
-                }
-                .Union(base.GetNugetDependencies())
-                .ToArray();
         }
 
         public void BeforeTemplateExecution()

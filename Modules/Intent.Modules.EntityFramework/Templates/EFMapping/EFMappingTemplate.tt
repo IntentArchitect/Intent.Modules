@@ -178,7 +178,7 @@ namespace <#= Namespace #>
             case RelationshipType.OneToMany :#>
             <#= string.Format("this.{0}(x => x.{1})", associationEnd.MinMultiplicity != "0" ? "HasRequired" : "HasOptional", associationEnd.Name().ToPascalCase())#>
                 .WithMany(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
-<#              if (RequiresForeignKeyOnAssociatedEnd(associationEnd)) {
+<#              if (RequiresForeignKeyOnAssociatedEnd(associationEnd.OtherEnd())) {
                     if (UseForeignKeys) { #>
 				.HasForeignKey(<#= GetForeignKeyLambda(associationEnd.OtherEnd()) #>)
 <#				    } else { #>
