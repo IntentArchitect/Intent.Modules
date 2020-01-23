@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
@@ -17,17 +18,35 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularRoutingModuleTemplate : IntentTypescriptProjectItemTemplateBase<IModuleModel>
+    partial class AngularRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<IModuleModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularRoutingModuleTemplate";
 
-        public AngularRoutingModuleTemplate(IProject project, IModuleModel model) : base(TemplateId, project, model)
+        public AngularRoutingModuleTemplate(IProject project, IModuleModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
         }
 
         public string ModuleName => Model.GetModuleName() + "Routing";
 
+        protected override void ApplyFileChanges(TypescriptFile file)
+        {
+            var routes = file.VariableDeclarations().FirstOrDefault();
+            foreach (var component in Model.Components)
+            {
+                var routeExists = routes.GetAssignedValue<TypescriptArrayLiteralExpression>()
+                    .GetValues<TypescriptObjectLiteralExpression>()
+                    .Any(x => x.PropertyAssignmentExists("component", GetClassName(component)));
+                if (!routeExists)
+                {
+                    var array = routes.GetAssignedValue<TypescriptArrayLiteralExpression>();
+                    array.AddValue($@"{{
+    path: '{GetPath(component)}',
+    component: {GetClassName(component)}  #>
+  }}");
+                }
+            }
+        }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
@@ -41,7 +60,6 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
                 className: "${ModuleName}"
             );
         }
-
 
         private string GetPath(IComponentModel component)
         {

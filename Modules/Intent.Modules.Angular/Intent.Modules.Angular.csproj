@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AngularCliInstaller.cs" />
     <Compile Include="Editor\NgModuleDecorator.cs" />
+    <Compile Include="Editor\TypescriptArrayLiteralExpression.cs" />
     <Compile Include="Editor\TypescriptClass.cs" />
     <Compile Include="Editor\TypescriptNode.cs" />
     <Compile Include="Editor\TypescriptObjectLiteralExpression.cs" />
@@ -76,6 +77,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="AngularTypescriptProjectItemTemplateBase.cs" />
     <Compile Include="Templates\TypescriptFileHelper.cs" />
     <Compile Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.cs">
       <DependentUpon>AngularComponentHtmlTemplate.tt</DependentUpon>

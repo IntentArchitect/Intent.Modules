@@ -14,44 +14,26 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AppModuleTemplate : IntentTypescriptProjectItemTemplateBase<object>
+    partial class AppModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
 
-        public AppModuleTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public AppModuleTemplate(IProject project, object model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
         }
 
         public string AppRoutingModuleClassName => GetTemplateClassName(AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId);
         public string CoreModule => GetTemplateClassName(CoreModuleTemplate.TemplateId);
 
-        public override string RunTemplate()
+        protected override void ApplyFileChanges(TypescriptFile file)
         {
-            var meta = GetMetadata();
-            var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
-
-            var source = LoadOrCreate(fullFileName);
-            var file = new TypescriptFile(source);
             var moduleClass = file.ClassDeclarations().First();
 
             var moduleDecorator = moduleClass.Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
 
             moduleDecorator?.AddImportIfNotExists(CoreModule);
             moduleDecorator?.AddImportIfNotExists(AppRoutingModuleClassName);
-
-            foreach (var templateDependency in GetTemplateDependencies())
-            {
-                var template = Project.FindTemplateInstance<ITemplate>(templateDependency);
-                file.AddImportIfNotExists(((IHasClassDetails)template).ClassName, GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(template.GetMetadata().GetRelativeFilePathWithFileName()));
-            }
-
-            return file.GetChangedSource();
-        }
-
-        private string LoadOrCreate(string fullFileName)
-        {
-            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : base.RunTemplate();
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

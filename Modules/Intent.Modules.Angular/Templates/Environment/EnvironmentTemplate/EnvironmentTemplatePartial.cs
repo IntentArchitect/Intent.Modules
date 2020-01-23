@@ -17,14 +17,14 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class EnvironmentTemplate : IntentTypescriptProjectItemTemplateBase<object>
+    partial class EnvironmentTemplate : AngularTypescriptProjectItemTemplateBase<object>
     {
         private IList<ConfigVariable> _configVariables = new List<ConfigVariable>();
 
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Environment.EnvironmentTemplate";
 
-        public EnvironmentTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public EnvironmentTemplate(IProject project, object model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
             project.Application.EventDispatcher.Subscribe(AngularConfigVariableRequiredEvent.EventId, HandleConfigVariableRequiredEvent);
         }
@@ -36,30 +36,19 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
                 defaultValue: @event.GetValue(AngularConfigVariableRequiredEvent.DefaultValueId)));
         }
 
-        public override string RunTemplate()
+        protected override void ApplyFileChanges(TypescriptFile file)
         {
-            var meta = GetMetadata();
-            var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
-
-            var source = LoadOrCreate(fullFileName);
-            var file = new TypescriptFile(source);
             var variable = file.VariableDeclarations().First();
 
             foreach (var configVariable in _configVariables)
             {
-                if (!variable.PropertyAssignmentExists(configVariable.Name))
+                var assigned = variable.GetAssignedValue<TypescriptObjectLiteralExpression>();
+                if (assigned != null && !assigned.PropertyAssignmentExists(configVariable.Name))
                 {
-                    variable.AddPropertyAssignment($@",
+                    assigned.AddPropertyAssignment($@",
   {configVariable.Name}: {configVariable.DefaultValue}");
                 }
             }
-
-            return file.GetChangedSource();
-        }
-
-        private string LoadOrCreate(string fullFileName)
-        {
-            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : base.RunTemplate();
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

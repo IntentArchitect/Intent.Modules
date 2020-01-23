@@ -23,7 +23,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class AngularServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceProxyModel>
+    public partial class AngularServiceProxyTemplate : AngularTypescriptProjectItemTemplateBase<IServiceProxyModel>
     {
 #line hidden
         /// <summary>

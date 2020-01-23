@@ -19,14 +19,14 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularModuleTemplate : IntentTypescriptProjectItemTemplateBase<IModuleModel>
+    partial class AngularModuleTemplate : AngularTypescriptProjectItemTemplateBase<IModuleModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularModuleTemplate";
         private readonly IList<ITemplate> _components = new List<ITemplate>();
         private readonly IList<ITemplate> _providers = new List<ITemplate>();
 
-        public AngularModuleTemplate(IProject project, IModuleModel model) : base(TemplateId, project, model)
+        public AngularModuleTemplate(IProject project, IModuleModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
             project.Application.EventDispatcher.Subscribe(AngularComponentCreatedEvent.EventId, @event =>
                 {
@@ -54,14 +54,8 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string RoutingModuleClassName => GetTemplateClassName(AngularRoutingModuleTemplate.AngularRoutingModuleTemplate.TemplateId, Model);
 
-        public override string RunTemplate()
+        protected override void ApplyFileChanges(TypescriptFile file)
         {
-            var meta = GetMetadata();
-            var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
-
-            var source = LoadOrCreate(fullFileName);
-            var file = new TypescriptFile(source);
-
             foreach (var template in _components)
             {
                 var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
@@ -75,15 +69,6 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                 ngModuleDecorator?.AddProviderIfNotExists(GetTemplateClassName(template));
                 file.UpdateChanges();
             }
-
-            file.AddDependencyImports(this);
-
-            return file.GetChangedSource();
-        }
-
-        private string LoadOrCreate(string fullFileName)
-        {
-            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : base.RunTemplate();
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
@@ -96,12 +81,6 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                 fileExtension: "ts", // Change to desired file extension.
                 defaultLocationInProject: $"Client/src/app/{ ModuleName.ToKebabCase() }",
                 className: "${ModuleName}Module");
-        }
-
-        private string GetComponentName(IComponentModel componentModel)
-        {
-            var componentTemplate = Project.FindTemplateInstance<Component.AngularComponentTsTemplate.AngularComponentTsTemplate>(Component.AngularComponentTsTemplate.AngularComponentTsTemplate.TemplateId, componentModel);
-            return componentTemplate.ComponentName;
         }
     }
 

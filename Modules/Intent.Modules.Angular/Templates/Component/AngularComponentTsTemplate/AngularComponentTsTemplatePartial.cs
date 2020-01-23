@@ -19,12 +19,12 @@ using Intent.Modules.Common.Plugins;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularComponentTsTemplate : IntentTypescriptProjectItemTemplateBase<IComponentModel>
+    partial class AngularComponentTsTemplate : AngularTypescriptProjectItemTemplateBase<IComponentModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Component.AngularComponentTsTemplate";
 
-        public AngularComponentTsTemplate(IProject project, IComponentModel model) : base(TemplateId, project, model)
+        public AngularComponentTsTemplate(IProject project, IComponentModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
         }
 
@@ -60,14 +60,8 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 });
         }
 
-        public override string RunTemplate()
+        protected override void ApplyFileChanges(TypescriptFile file)
         {
-            var meta = GetMetadata();
-            var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
-
-            var source = LoadOrCreate(fullFileName);
-
-            var file = new TypescriptFile(source);
             var @class = file.ClassDeclarations().First();
 
             foreach (var model in Model.Models)
@@ -90,15 +84,6 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
   }}");
                 }
             }
-
-            file.AddDependencyImports(this);
-
-            return file.GetChangedSource();
-        }
-
-        private string LoadOrCreate(string fullFileName)
-        {
-            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : TransformText();
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

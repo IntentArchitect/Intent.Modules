@@ -14,12 +14,12 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class CoreModuleTemplate : IntentTypescriptProjectItemTemplateBase<object>
+    partial class CoreModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Core.CoreModuleTemplate";
 
-        public CoreModuleTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public CoreModuleTemplate(IProject project, object model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
         {
         }
 

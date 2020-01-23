@@ -14,12 +14,12 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AppRoutingModuleTemplate : IntentTypescriptProjectItemTemplateBase<IList<IModuleModel>>
+    partial class AppRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<IList<IModuleModel>>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppRoutingModuleTemplate";
 
-        public AppRoutingModuleTemplate(IProject project, IList<IModuleModel> model) : base(TemplateId, project, model)
+        public AppRoutingModuleTemplate(IProject project, IList<IModuleModel> model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
         {
         }
 

@@ -16,12 +16,12 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class ApiServiceTemplate : IntentTypescriptProjectItemTemplateBase<object>
+    partial class ApiServiceTemplate : AngularTypescriptProjectItemTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Core.ApiServiceTemplate";
 
-        public ApiServiceTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public ApiServiceTemplate(IProject project, object model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
         {
         }
 

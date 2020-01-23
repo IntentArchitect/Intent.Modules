@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class EnvironmentTemplate : IntentTypescriptProjectItemTemplateBase<object>
+    public partial class EnvironmentTemplate : AngularTypescriptProjectItemTemplateBase<object>
     {
 #line hidden
         /// <summary>

@@ -22,12 +22,12 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceProxyModel>, ITemplateBeforeExecutionHook
+    partial class AngularServiceProxyTemplate : AngularTypescriptProjectItemTemplateBase<IServiceProxyModel>, ITemplateBeforeExecutionHook
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularServiceProxyTemplate";
 
-        public AngularServiceProxyTemplate(IProject project, IServiceProxyModel model) : base(TemplateId, project, model)
+        public AngularServiceProxyTemplate(IProject project, IServiceProxyModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
             AddTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.AngularDTOTemplate.TemplateId));
         }
@@ -50,13 +50,8 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 });
         }
 
-        public override string RunTemplate()
+        protected override void ApplyFileChanges(TypescriptFile file)
         {
-            var meta = GetMetadata();
-            var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
-
-            var source = LoadOrCreate(fullFileName);
-            var file = new TypescriptFile(source);
             var @class = file.ClassDeclarations().First();
             foreach (var operation in Model.Operations)
             {
@@ -79,10 +74,6 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                     @class.AddMethod(method);
                 }
             }
-
-            file.AddDependencyImports(this);
-
-            return file.GetChangedSource();
         }
 
         private string GetReturnType(IOperation operation)
@@ -139,11 +130,6 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 defaultLocationInProject: $"Client/src/app/{Model.Module.GetModuleName().ToKebabCase()}",
                 className: "${Model.Name}"
             );
-        }
-
-        private string LoadOrCreate(string fullFileName)
-        {
-            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : base.RunTemplate();
         }
 
         private HttpVerb GetHttpVerb(IOperation operation)

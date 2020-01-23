@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="AngularModuleEditorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypescriptArrayLiteralTests.cs" />
+    <Compile Include="TypescriptObjectLiteralExpressionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

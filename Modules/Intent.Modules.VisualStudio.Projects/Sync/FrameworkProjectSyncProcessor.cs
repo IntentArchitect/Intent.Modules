@@ -70,7 +70,8 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             {
                 Logging.Log.Debug($"Syncing changes to Project File {filename}");
                 //string content = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine + outputContent;
-                _syncProjectFile(filename, outputContent);
+
+                _syncProjectFile(filename, $"<?xml version=\"1.0\" encoding=\"utf-8\"?>{Environment.NewLine}{outputContent}");
             }
         }
 

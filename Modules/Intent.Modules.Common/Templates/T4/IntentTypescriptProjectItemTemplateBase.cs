@@ -23,7 +23,7 @@ namespace Intent.Modules.Common.Templates
                 {
                     return FileMetadata.CustomMetadata["Namespace"];
                 }
-                return this.Project.Name;
+                return null;
             }
         }
 

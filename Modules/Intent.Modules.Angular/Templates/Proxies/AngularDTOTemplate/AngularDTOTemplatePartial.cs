@@ -18,18 +18,14 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AngularDTOTemplate : IntentTypescriptProjectItemTemplateBase<IModuleDTOModel>
+    partial class AngularDTOTemplate : AngularTypescriptProjectItemTemplateBase<IModuleDTOModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularDTOTemplate";
 
-        public AngularDTOTemplate(IProject project, IModuleDTOModel model) : base(TemplateId, project, model)
+        public AngularDTOTemplate(IProject project, IModuleDTOModel model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
         {
-        }
-
-        public override void BeforeTemplateExecution()
-        {
-            Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, TemplateId, "{0}[]"));
+            AddTypeSource(TypescriptTypeSource.InProject(Project, TemplateId));
         }
 
         public string GenericTypes => Model.GenericTypes.Any() ? $"<{ string.Join(", ", Model.GenericTypes) }>" : "";

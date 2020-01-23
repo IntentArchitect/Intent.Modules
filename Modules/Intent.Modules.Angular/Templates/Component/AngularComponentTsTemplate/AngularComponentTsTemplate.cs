@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class AngularComponentTsTemplate : IntentTypescriptProjectItemTemplateBase<IComponentModel>
+    public partial class AngularComponentTsTemplate : AngularTypescriptProjectItemTemplateBase<IComponentModel>
     {
 #line hidden
         /// <summary>

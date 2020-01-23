@@ -9,11 +9,16 @@ namespace Intent.Modules.Angular.Editor
         {
         }
 
-        public bool PropertyAssignmentExists(string propertyName)
+        public bool PropertyAssignmentExists(string propertyName, string valueLiteral = null)
         {
-            var properties = Node.OfKind(SyntaxKind.PropertyAssignment);
+            var properties = Node.Children.Where(x => x.Kind == SyntaxKind.PropertyAssignment);
 
-            return properties.Any(x => x.IdentifierStr == propertyName);
+            var property = properties.FirstOrDefault(x => x.IdentifierStr == propertyName);
+            if (property == null)
+            {
+                return false;
+            }
+            return valueLiteral == null || property.Children[1].IdentifierStr == valueLiteral || property.Children[1].GetText() == valueLiteral;
         }
 
         public void InsertPropertyAssignment(string propertyAssignment, Node afterNode)

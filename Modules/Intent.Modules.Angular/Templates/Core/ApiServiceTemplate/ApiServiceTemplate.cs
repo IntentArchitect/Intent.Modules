@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Core\ApiServiceTemplate\ApiServiceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ApiServiceTemplate : IntentTypescriptProjectItemTemplateBase<object>
+    public partial class ApiServiceTemplate : AngularTypescriptProjectItemTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -61,15 +61,24 @@ export class ");
   put(path: string, body: Object = {}): Observable<any> {
     return this.http.put(
       `${environment.api_url}${path}`,
-      JSON.stringify(body)
+      JSON.stringify(body),
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      }
     ).pipe(catchError(this.formatErrors));
   }
 
   post(path: string, body: Object = {}): Observable<any> {
     return this.http.post(
       `${environment.api_url}${path}`,
-      JSON.stringify(body)
-    ).pipe(catchError(this.formatErrors));
+      JSON.stringify(body),
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      }).pipe(catchError(this.formatErrors));
   }
 
   delete(path): Observable<any> {

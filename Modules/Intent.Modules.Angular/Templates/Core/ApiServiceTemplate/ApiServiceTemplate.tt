@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentTypescriptProjectItemTemplateBase<object>" #>
+<#@ template language="C#" inherits="AngularTypescriptProjectItemTemplateBase<object>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -29,15 +29,24 @@ export class <#= ClassName #> {
   put(path: string, body: Object = {}): Observable<any> {
     return this.http.put(
       `${environment.api_url}${path}`,
-      JSON.stringify(body)
+      JSON.stringify(body),
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      }
     ).pipe(catchError(this.formatErrors));
   }
 
   post(path: string, body: Object = {}): Observable<any> {
     return this.http.post(
       `${environment.api_url}${path}`,
-      JSON.stringify(body)
-    ).pipe(catchError(this.formatErrors));
+      JSON.stringify(body),
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      }).pipe(catchError(this.formatErrors));
   }
 
   delete(path): Observable<any> {

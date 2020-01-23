@@ -10,7 +10,7 @@ namespace Intent.Modules.Angular.Templates
 {
     public static class TypescriptFileHelper
     {
-        public static void AddDependencyImports<T>(this TypescriptFile file, IntentTypescriptProjectItemTemplateBase<T> template)
+        public static void AddDependencyImports<T>(this TypescriptFile file, AngularTypescriptProjectItemTemplateBase<T> template)
         {
             var dependencies = template.GetTemplateDependencies().Select(template.Project.FindTemplateInstance<ITemplate>).Distinct();
             foreach (var dependency in dependencies)
