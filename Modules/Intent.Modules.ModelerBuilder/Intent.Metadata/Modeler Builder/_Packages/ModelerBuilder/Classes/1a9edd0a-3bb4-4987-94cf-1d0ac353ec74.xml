@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="1a9edd0a-3bb4-4987-94cf-1d0ac353ec74" type="Element Settings">
+  <comment>This find of folder can only be made within a "Modeler" and "Modeler Folder" element and it's creation options are also generally the same "Modeler".
+
+Meanwhile, a normal folder cannot be made inside "Modeler" elements and only allows creation of "Modeler"s, "Stereotype-Definitions" and other "Folder"s. We need a normal folder so that the referenced package can have stereotype defintions which can just live more simply in it without any "Modeler" needing to defined in it.</comment>
   <name>Modeler Folder</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>7b219c46-dd53-4395-a487-72807ddaccde</parentFolderId>
+  <parentFolderId>a13c66de-1088-4622-89b9-324b8ae023ea</parentFolderId>
   <literals />
   <attributes />
   <operations />

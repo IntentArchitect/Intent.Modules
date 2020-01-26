@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="c1ac77b8-8a6e-4721-aea3-c7314e5ded4e" type="Modeler Folder">
+  <name>Association Settings</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>80c38512-027a-43f5-aa47-763595653ceb</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+</class>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="44cd95b4-96d1-4b3b-ae0c-992f2e6895f4">
+<stereotypeDefinition id="a5de089b-457e-49b7-8ec7-f78677e83300">
   <name>Additional Properties</name>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
   <targetElements>
-    <element>attribute setting</element>
+    <element>literal settings</element>
   </targetElements>
   <autoAdd>true</autoAdd>
-  <parentFolderId>d2c9bada-4d6d-46ca-97a7-d9cf91f66821</parentFolderId>
+  <parentFolderId>88659367-ef0f-48a7-af64-bae4ef69de1b</parentFolderId>
   <properties>
-    <property id="b3a042c8-e7da-4a06-8494-9298feecb218">
+    <property id="52e011ae-7e2a-4c37-9924-db1ae509f1c9">
       <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
       <name>Text</name>
       <type>string</type>
@@ -19,55 +19,35 @@
         <type>element settings</type>
       </lookupTypes>
     </property>
-    <property id="b388176e-d7d3-4b2b-ab61-6ed89e122128">
+    <property id="64880c5c-f079-459c-a944-7e54aaa4f299">
       <name>Shortcut</name>
       <type>string</type>
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="64c51293-1b59-44f8-96fb-f5cf5faaef9e">
-      <name>Display Function</name>
-      <type>string</type>
-      <valueOptions />
-      <lookupTypes />
-    </property>
-    <property id="84ec61a2-3f17-45e4-9076-ba7dfa43ecf0">
+    <property id="e317fec6-3097-44db-bc50-b07caff6300a">
       <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
       <name>Default Name</name>
       <type>string</type>
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="ecd5dbf2-9d19-40c5-867f-d1811c5b085e">
+    <property id="b9bbd318-6c76-41b4-9a03-1ee53255a972">
       <name>Allow Rename</name>
       <type>boolean</type>
       <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="d7c14894-38bd-4649-afac-f3b21d9cf619">
+    <property id="0ccb7dcc-c08d-4ef4-bbbc-2683f1a17dd0">
       <name>Allow Duplicate Names</name>
       <type>boolean</type>
       <defaultValue>false</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="44aa964a-5653-4074-a743-ee3088ab0093">
+    <property id="85631731-a208-47a9-bd97-1e54e1cb444a">
       <name>Allow Find in View</name>
-      <type>boolean</type>
-      <defaultValue>true</defaultValue>
-      <valueOptions />
-      <lookupTypes />
-    </property>
-    <property id="937b5d92-ea4f-4565-aab8-ff8e1d980935">
-      <name>Default Type Id</name>
-      <type>string</type>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
-    </property>
-    <property id="fcca5e99-fb8d-468c-a15a-3cdad662e847">
-      <name>Is Stereotype Property Target</name>
       <type>boolean</type>
       <defaultValue>true</defaultValue>
       <valueOptions />

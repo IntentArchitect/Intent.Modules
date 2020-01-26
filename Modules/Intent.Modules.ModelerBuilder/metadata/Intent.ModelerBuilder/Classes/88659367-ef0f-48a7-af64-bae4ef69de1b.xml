@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="88659367-ef0f-48a7-af64-bae4ef69de1b" type="Folder">
+  <name>Literal Settings</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+</class>

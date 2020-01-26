@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="2377644e-2ea8-44a8-b090-181b757ddefa" type="Element Settings">
+  <comment />
   <name>Folder</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>7b219c46-dd53-4395-a487-72807ddaccde</parentFolderId>
+  <parentFolderId>0b00a9e1-a7e8-4ab1-90a2-d809a29d2106</parentFolderId>
   <literals />
   <attributes />
   <operations />

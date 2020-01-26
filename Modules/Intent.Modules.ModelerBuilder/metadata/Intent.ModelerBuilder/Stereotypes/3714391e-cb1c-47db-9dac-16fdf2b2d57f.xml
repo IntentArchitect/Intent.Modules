@@ -9,6 +9,8 @@
     <element>element settings definition</element>
     <element>icon</element>
     <element>attribute setting</element>
+    <element>association settings</element>
+    <element>literal settings</element>
   </targetElements>
   <autoAdd>true</autoAdd>
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>

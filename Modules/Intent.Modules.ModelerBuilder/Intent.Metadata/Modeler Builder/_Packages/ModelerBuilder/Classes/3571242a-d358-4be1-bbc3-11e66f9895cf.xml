@@ -19,10 +19,10 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="515a32ff-f4d3-414e-b3d2-5ade03587f5c" type="Creation Option">
+    <attribute id="e6aae3ab-c0fe-4004-b3d3-d26ce41983d5" type="Creation Option">
       <name>_</name>
-      <typeReference id="bc8869e5-2cba-44a9-81fa-12dfe3d660bc">
-        <typeId>8ef50e5a-ca0b-432d-888d-f4eca6165557</typeId>
+      <typeReference id="be5a08f8-1c1c-43cd-aa8c-4524f5e5fff3">
+        <typeId>16d21684-d5ea-4fde-b648-f88d292fa272</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -47,6 +47,18 @@
       <name>_</name>
       <typeReference id="377f6b2b-ff14-4d33-be1c-67e5f7b1e1e0">
         <typeId>24518bb0-2201-430f-81c9-09307be49d4b</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="515a32ff-f4d3-414e-b3d2-5ade03587f5c" type="Creation Option">
+      <name>_</name>
+      <typeReference id="bc8869e5-2cba-44a9-81fa-12dfe3d660bc">
+        <typeId>8ef50e5a-ca0b-432d-888d-f4eca6165557</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
