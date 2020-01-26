@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="b3246543-79be-421a-9c1e-7b85d568da0d" type="Creation Options">
+  <name>Creation Options</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>921706bd-c055-4cbd-ba7e-deb5419d529e</parentFolderId>
+  <literals />
+  <attributes>
+    <attribute id="f8becd8a-1f8e-4a38-9be8-c56afee0382c" type="Creation Option">
+      <name>_</name>
+      <typeReference id="05e0a019-a057-4b2e-964e-6c0437ff1985">
+        <typeId>1a9edd0a-3bb4-4987-94cf-1d0ac353ec74</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="58a552b3-341d-4b40-81de-05e28392d075" type="Creation Option">
+      <name>_</name>
+      <typeReference id="ab7865e2-edf5-415b-a239-8b5217c2249b">
+        <typeId>8ef50e5a-ca0b-432d-888d-f4eca6165557</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="08ad2f99-12b8-4a41-bcf4-830b80f3fbd9" type="Creation Option">
+      <name>_</name>
+      <typeReference id="ed6c6c5d-1ffd-4889-80a1-04b5700e257e">
+        <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="3dd707ec-0782-4a77-8158-1354092f3cab" type="Creation Option">
+      <name>_</name>
+      <typeReference id="8d8f83f9-e5a9-4a6d-b755-f13602e24713">
+        <typeId>24518bb0-2201-430f-81c9-09307be49d4b</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="1843863b-db81-4d2a-b6a4-d0d4196ec296" type="Creation Option">
+      <name>_</name>
+      <typeReference id="855bb808-ead3-49b7-8c61-7b10c787b527">
+        <typeId>89333f72-3960-4159-bf61-9c40d4b65088</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="56c38a41-4de9-4811-96dc-90e3b2b1baba" type="Creation Option">
+      <name>_</name>
+      <typeReference id="0a5b51eb-75f9-42e0-816a-45d54c2b5f13">
+        <typeId>10313427-b050-46aa-8523-aff10e40797e</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+  </attributes>
+  <operations />
+  <stereotypes />
+</class>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="beb36a70-ec3a-4a82-930d-44eae74df8d4" type="Attribute Settings">
+  <name>Attribute Settings</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d45e383d-90ba-4b64-aca7-34ca100cea21</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+</class>

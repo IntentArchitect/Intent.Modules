@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>b5bde67b-ed7f-47e8-a39a-fd04c0edb5ef</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>7a20c6a2-d083-4c10-90c6-61131f022ad1</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModelerBuilder\modeler\ModelerBuilder.modeler.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modeler\ModelerBuilder.modeler.config</ProjectRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

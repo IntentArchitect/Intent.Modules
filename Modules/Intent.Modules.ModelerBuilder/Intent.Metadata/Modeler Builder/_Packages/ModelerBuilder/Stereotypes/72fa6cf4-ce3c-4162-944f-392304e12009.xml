@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="72fa6cf4-ce3c-4162-944f-392304e12009">
+  <comment>Sets the default creation options for this element when used.</comment>
+  <name>Default Creation Options</name>
+  <icon type="FontAwesome" source="check-square-o" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
+  <targetElements>
+    <element>element settings</element>
+    <element>element settings definition</element>
+  </targetElements>
+  <autoAdd>true</autoAdd>
+  <parentFolderId>1bc49dbb-291a-4ae4-9b74-38f02a52dc7c</parentFolderId>
+  <properties>
+    <property id="b8079180-01aa-4dce-b00a-e1d22e82e070">
+      <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
+      <name>Text</name>
+      <type>string</type>
+      <valueOptions />
+      <lookupTypes>
+        <type>element settings</type>
+      </lookupTypes>
+    </property>
+    <property id="d984e71b-0e2f-4155-a190-83d986e1c29b">
+      <name>Shortcut</name>
+      <type>string</type>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="b199adea-c16b-411d-a2db-c881345a421b">
+      <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
+      <name>Default Name</name>
+      <type>string</type>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

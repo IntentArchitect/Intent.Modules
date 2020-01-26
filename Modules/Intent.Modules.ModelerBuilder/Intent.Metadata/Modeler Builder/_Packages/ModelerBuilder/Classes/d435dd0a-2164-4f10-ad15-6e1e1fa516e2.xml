@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d435dd0a-2164-4f10-ad15-6e1e1fa516e2" type="Attribute Setting">
+  <name>Creation Option</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>beb36a70-ec3a-4a82-930d-44eae74df8d4</parentFolderId>
+  <literals />
+  <attributes>
+    <attribute id="0d5e5a35-a5ec-498c-a2f5-7d61329af6a4" type="Attribute Setting Target Type">
+      <name>_</name>
+      <typeReference id="8f923c67-12f6-4e80-8431-925c7b6b7de8">
+        <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="408264b0-c5ef-4ca8-a6dd-74df4c060f43" type="Attribute Setting Target Type">
+      <name>_</name>
+      <typeReference id="63660946-b440-48dd-92b2-437f7eb15438">
+        <typeId>24518bb0-2201-430f-81c9-09307be49d4b</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+  </attributes>
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="44cd95b4-96d1-4b3b-ae0c-992f2e6895f4">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="b3a042c8-e7da-4a06-8494-9298feecb218" value="Add Creation Option" />
+        <property name="b388176e-d7d3-4b2b-ab61-6ed89e122128" value="ctrl + shift + a" />
+        <property name="64c51293-1b59-44f8-96fb-f5cf5faaef9e" />
+        <property name="84ec61a2-3f17-45e4-9076-ba7dfa43ecf0" value="_" />
+        <property name="ecd5dbf2-9d19-40c5-867f-d1811c5b085e" value="true" />
+        <property name="d7c14894-38bd-4649-afac-f3b21d9cf619" value="true" />
+        <property name="44aa964a-5653-4074-a743-ee3088ab0093" value="true" />
+        <property name="937b5d92-ea4f-4565-aab8-ff8e1d980935" value="" />
+        <property name="fcca5e99-fb8d-468c-a15a-3cdad662e847" value="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="3714391e-cb1c-47db-9dac-16fdf2b2d57f">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" value="CharacterBox" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="C|#04007a" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+</class>

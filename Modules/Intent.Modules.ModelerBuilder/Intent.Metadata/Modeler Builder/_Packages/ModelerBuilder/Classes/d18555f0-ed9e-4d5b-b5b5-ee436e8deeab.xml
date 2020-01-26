@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d18555f0-ed9e-4d5b-b5b5-ee436e8deeab" type="Folder">
+  <name>Element Settings</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1bc49dbb-291a-4ae4-9b74-38f02a52dc7c</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+</class>

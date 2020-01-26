@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="74289bfb-d9bb-4f8d-b8ac-94b65ebd1c7b" type="Creation Options">
+  <name>Creation Options</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>7520b401-fae7-4379-a04a-7f5135a8eb06</parentFolderId>
+  <literals />
+  <attributes>
+    <attribute id="c2b84773-f159-4abe-8e9c-247627d855d9" type="Creation Option">
+      <name>_</name>
+      <typeReference id="2d71474b-a090-444c-9c8f-ac36e7ca097f">
+        <typeId>2e33879b-04af-4fbe-bf98-af4fcaf4f087</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+  </attributes>
+  <operations />
+  <stereotypes />
+</class>

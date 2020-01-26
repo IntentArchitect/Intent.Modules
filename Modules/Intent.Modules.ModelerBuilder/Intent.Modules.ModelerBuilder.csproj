@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Intent.Metadata\**" />
+    <Compile Remove="Intent.Modules.Config\**" />
+    <EmbeddedResource Remove="Intent.Metadata\**" />
+    <EmbeddedResource Remove="Intent.Modules.Config\**" />
+    <None Remove="Intent.Metadata\**" />
+    <None Remove="Intent.Modules.Config\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Intent.IntentArchitectPackager" Version="1.9.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.Modules.Common" Version="2.0.0" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if exist &quot;..\Intent.Modules\Intent.Modules.ModelerBuilder.1.0.0&quot; rmdir &quot;..\Intent.Modules\Intent.Modules.ModelerBuilder.1.0.0&quot; /s /q" />
+  </Target>
+
+</Project>
