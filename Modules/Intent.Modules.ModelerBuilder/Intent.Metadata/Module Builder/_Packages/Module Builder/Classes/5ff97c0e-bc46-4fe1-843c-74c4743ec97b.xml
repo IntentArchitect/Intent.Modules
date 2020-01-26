@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="5ff97c0e-bc46-4fe1-843c-74c4743ec97b" type="File Template">
+  <comment>The module builder doesn't really help out much here unfortunately.</comment>
   <name>ModelerConfig</name>
   <isAbstract>false</isAbstract>
   <genericTypes />

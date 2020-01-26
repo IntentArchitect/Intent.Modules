@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="1bc49dbb-291a-4ae4-9b74-38f02a52dc7c" type="Folder">
+<class id="aa05ffb4-d445-497d-9903-e54dcf1e0c15" type="Folder">
   <name>Stereotypes</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>80c38512-027a-43f5-aa47-763595653ceb</parentFolderId>
+  <parentFolderId>87bc093d-49ce-4ccf-a23f-95fbbbabc873</parentFolderId>
   <literals />
   <attributes />
   <operations />

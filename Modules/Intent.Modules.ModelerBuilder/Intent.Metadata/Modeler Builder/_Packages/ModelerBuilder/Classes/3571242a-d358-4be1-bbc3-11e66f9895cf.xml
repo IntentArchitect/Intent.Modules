@@ -55,18 +55,6 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="ac9a9d06-6de7-4c2f-8dcb-63e9730b1552" type="Creation Option">
-      <name>_</name>
-      <typeReference id="b8a4318b-3a9c-432a-b063-ec79d8268aa5">
-        <typeId>10313427-b050-46aa-8523-aff10e40797e</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <stereotypes />
-    </attribute>
   </attributes>
   <operations />
   <stereotypes />

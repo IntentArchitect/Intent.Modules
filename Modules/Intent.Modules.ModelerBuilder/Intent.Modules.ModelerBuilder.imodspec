@@ -14,6 +14,10 @@
     <dependency id="Intent.Common" version="2.0.0" />
     <dependency id="Intent.Common.Types" version="2.0.0" />
   </dependencies>
+  <metadata>
+    <install target="Modeler Builder" src="modeler"/>
+    <install target="Modeler Builder" src="metadata/Intent.ModelerBuilder"/>
+  </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />

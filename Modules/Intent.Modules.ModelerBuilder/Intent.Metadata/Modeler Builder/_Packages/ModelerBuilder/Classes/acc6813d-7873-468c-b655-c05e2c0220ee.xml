@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b034d81b-94d8-4097-aa16-2b6228647e7a" type="Creation Options">
+<class id="acc6813d-7873-468c-b655-c05e2c0220ee" type="Creation Options">
   <name>Creation Options</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>a6c01201-4191-46ca-bb5d-0532c71d3d00</parentFolderId>
+  <parentFolderId>2377644e-2ea8-44a8-b090-181b757ddefa</parentFolderId>
   <literals />
   <attributes>
-    <attribute id="dd807b76-1a7d-42f8-80dd-587c9b1c6987" type="Creation Option">
+    <attribute id="8d7b2ee0-31d9-486f-b949-ccff9e6247f5" type="Creation Option">
       <name>_</name>
-      <typeReference id="b7517a71-e5a1-468f-a39f-fc0347660307">
+      <typeReference id="db427df2-1050-45f1-b7bd-3006a4d34a73">
         <typeId>2377644e-2ea8-44a8-b090-181b757ddefa</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -19,9 +19,9 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="190da4c1-11d8-4fde-87d0-93329f7f398c" type="Creation Option">
+    <attribute id="93742f53-024c-45c9-a6e9-c9de93d82449" type="Creation Option">
       <name>_</name>
-      <typeReference id="d9ba0a26-f2a9-4bc1-a535-f88299e1a42b">
+      <typeReference id="65105489-cc7b-4139-90b7-50d231ccccd5">
         <typeId>921706bd-c055-4cbd-ba7e-deb5419d529e</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -31,9 +31,9 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="5900b269-4d46-4fca-b8c3-8c18a8936dc0" type="Creation Option">
+    <attribute id="ac9a9d06-6de7-4c2f-8dcb-63e9730b1552" type="Creation Option">
       <name>_</name>
-      <typeReference id="b047bca5-3314-459a-91e3-0ae654fb2b72">
+      <typeReference id="b8a4318b-3a9c-432a-b063-ec79d8268aa5">
         <typeId>10313427-b050-46aa-8523-aff10e40797e</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>

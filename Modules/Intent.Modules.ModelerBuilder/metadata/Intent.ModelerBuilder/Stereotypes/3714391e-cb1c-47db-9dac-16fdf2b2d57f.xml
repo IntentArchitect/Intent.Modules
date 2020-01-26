@@ -11,12 +11,11 @@
     <element>attribute setting</element>
   </targetElements>
   <autoAdd>true</autoAdd>
-  <parentFolderId>1bc49dbb-291a-4ae4-9b74-38f02a52dc7c</parentFolderId>
+  <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
   <properties>
     <property id="d6a4f65c-4748-401d-b872-a01df468a2e8">
       <name>Type</name>
       <type>options</type>
-      <defaultValue>FontAwesome</defaultValue>
       <valueOptions>
         <option>UrlImagePath</option>
         <option>RelativeImagePath</option>
@@ -29,7 +28,7 @@
     <property id="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec">
       <name>Source</name>
       <type>string</type>
-      <defaultValue>file-o</defaultValue>
+      <defaultValue />
       <valueOptions />
       <lookupTypes />
     </property>

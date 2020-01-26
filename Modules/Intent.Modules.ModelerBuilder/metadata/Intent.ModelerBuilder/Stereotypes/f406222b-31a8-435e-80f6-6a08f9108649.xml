@@ -8,7 +8,7 @@
     <element>element settings</element>
   </targetElements>
   <autoAdd>true</autoAdd>
-  <parentFolderId>d18555f0-ed9e-4d5b-b5b5-ee436e8deeab</parentFolderId>
+  <parentFolderId>ac2b161d-10ef-408e-b084-3f2ba850e9a4</parentFolderId>
   <properties>
     <property id="c48d9593-c1f4-4610-9cb3-54de9c2f0c06">
       <name>Allow Rename</name>

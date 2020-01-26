@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="e28d2efb-c30b-4543-83ca-e3fc99364fb6" type="Folder">
-  <name>Attribute Setting</name>
+<class id="999e90da-7be7-4cf4-8323-e8f03e2c65b4" type="Modeler Folder">
+  <name>Element Settings Definitions</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>1bc49dbb-291a-4ae4-9b74-38f02a52dc7c</parentFolderId>
+  <parentFolderId>80c38512-027a-43f5-aa47-763595653ceb</parentFolderId>
   <literals />
   <attributes />
   <operations />
