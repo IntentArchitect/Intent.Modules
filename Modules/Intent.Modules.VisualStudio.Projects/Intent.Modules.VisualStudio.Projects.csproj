@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Intent.SoftwareFactory.SDK, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.0.0\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Build, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Build.15.9.20\lib\net46\Microsoft.Build.dll</HintPath>
     </Reference>
@@ -88,6 +85,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Folder.cs" />
+    <Compile Include="Api\IFolder.cs" />
+    <Compile Include="Api\IHasFolder.cs" />
+    <Compile Include="Api\IVisualStudioProject.cs" />
     <Compile Include="Decorators\AssemblyBindingRedirectWebConfigDecoratorRegistration.cs" />
     <Compile Include="Events\CsProjectEvents.cs" />
     <Compile Include="FactoryExtensions\DependencyResolutionApplicationProcessor.cs" />
@@ -211,12 +212,19 @@
     <None Include="Intent.Modules.VisualStudio.Projects.imodspec">
       <SubType>Designer</SubType>
     </None>
+    <None Include="modelers\VisualStudio.modeler.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj">
+      <Project>{830547c8-938e-4958-af78-7c2665588a6e}</Project>
+      <Name>Intent.SoftwareFactory.SDK</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>

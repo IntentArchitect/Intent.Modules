@@ -17,10 +17,10 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
         {
             var targetProjectIds = new List<string>
             {
-                VisualStudioProjectTypeIds.WebApiApplication
+                WebApiServiceCSProjectFileTemplate.
             };
 
-            var projects = application.Projects.Where(p => targetProjectIds.Contains(p.ProjectType.Id));
+            var projects = application.Projects.Where(p => targetProjectIds.Contains(p.Type));
 
             foreach (var project in projects)
             {
