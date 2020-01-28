@@ -15,6 +15,7 @@ using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Utils;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -52,9 +53,19 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         protected override void ApplyFileChanges(TypescriptFile file)
         {
+            if (Model.MappedService == null)
+            {
+                Logging.Log.Warning($"{ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service");
+                return;
+            }
             var @class = file.ClassDeclarations().First();
             foreach (var operation in Model.Operations)
             {
+                if (!operation.IsMapped || operation.Mapping == null)
+                {
+                    Logging.Log.Warning($"Operation [{operation.Name}] on {ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service Operation");
+                    continue;
+                }
                 var url = $"/{Model.MappedService.Name.ToLower()}/{Model.MappedService.Operations.First(x => x.Id == operation.Mapping.TargetId).Name.ToLower()}";
                 var method = $@"
 
@@ -93,13 +104,19 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         private string GetUpdateUrl(IOperation operation)
         {
-            if (!operation.Parameters.Any() || operation.Parameters.All(x => x.Type.Element.IsDTO()))
+            var mappedOperation = Model.MappedService?.Operations.FirstOrDefault(x => x.Id == operation.Mapping.TargetId);
+            if (mappedOperation?.Parameters.Count != operation.Parameters.Count)
+            {
+                throw new Exception($"Different number of properties for mapped operation [{operation.Name}] on {ServiceProxyModel.SpecializationType} [{Model.Name}]");
+            }
+            if (!mappedOperation.Parameters.Any() || mappedOperation.Parameters.All(x => x.Type.Element.IsDTO()))
             {
                 return "";
             }
 
             return $@"
-        url = `${{url}}?{string.Join("&", operation.Parameters.Where(x => !x.Type.Element.IsDTO()).Select(x => $"{x.Name.ToCamelCase()}=${{{x.Name.ToCamelCase()}}}"))}`;";
+        url = `${{url}}?{string.Join("&", mappedOperation.Parameters.Where(x => !x.Type.Element.IsDTO())
+                .Select((x, index) => $"{x.Name.ToCamelCase()}=${{{operation.Parameters[index].Name.ToCamelCase()}}}"))}`;";
         }
 
         private string GetDataServiceCall(IOperation operation)

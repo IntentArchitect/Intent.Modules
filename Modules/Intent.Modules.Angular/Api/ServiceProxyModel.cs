@@ -6,6 +6,7 @@ namespace Intent.Modules.Angular.Api
 {
     internal class ServiceProxyModel : IServiceProxyModel
     {
+        public const string SpecializationType = "Service Proxy";
         private readonly IElement _class;
 
         public ServiceProxyModel(IElement @class, IModuleModel module)

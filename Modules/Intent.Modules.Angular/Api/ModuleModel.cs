@@ -13,7 +13,7 @@ namespace Intent.Modules.Angular.Api
         {
             _class = @class;
             Components = @class.ChildElements.Where(x => x.SpecializationType == "Component").Select(x => new ComponentModel(x, this));
-            ServiceProxies = @class.ChildElements.Where(x => x.SpecializationType == "Service Proxy").Select(x => new ServiceProxyModel(x, this));
+            ServiceProxies = @class.ChildElements.Where(x => x.SpecializationType == ServiceProxyModel.SpecializationType).Select(x => new ServiceProxyModel(x, this));
             ModelDefinitions = @class.ChildElements.Where(x => x.SpecializationType == "Model Definition").Select(x => new ModuleDTOModel(x, this));
         }
 
