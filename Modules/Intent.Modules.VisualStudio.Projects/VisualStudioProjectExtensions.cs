@@ -7,16 +7,16 @@ namespace Intent.Modules.VisualStudio.Projects
 {
     public static class VisualStudioProjectExtensions
     {
-        public static string SolutionFolder(this IProject project)
-        {
-            return project.Folder.Name;
-        }
+        //public static string SolutionFolder(this IProject project)
+        //{
+        //    return project.Folder.Name;
+        //}
 
-        public static string TargetFrameworkVersion(this IProject project)
-        {
-            var targetFramework = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "TargetFramework");
-            return project.GetStereotypeProperty("C# .NET", "FrameworkVersion", targetFramework != null ? $"v{targetFramework.Value}" : "v4.5.2");
-        }
+        //public static string TargetFrameworkVersion(this IProject project)
+        //{
+        //    var targetFramework = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "TargetFramework");
+        //    return project.GetStereotypeProperty("C# .NET", "FrameworkVersion", targetFramework != null ? $"v{targetFramework.Value}" : "v4.5.2");
+        //}
     }
 
     //public static class ApplicationStructureExtensions

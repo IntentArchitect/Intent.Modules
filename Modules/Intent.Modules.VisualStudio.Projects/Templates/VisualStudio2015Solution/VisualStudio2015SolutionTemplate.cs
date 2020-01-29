@@ -52,21 +52,21 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
             this.Write("Project(\"{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}\") = \"");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(project.ProjectName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(project.Name));
             
             #line default
             #line hidden
             this.Write("\", \"");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(project.ProjectName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(project.Name));
             
             #line default
             #line hidden
             this.Write("\\");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(project.ProjectName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(project.Name));
             
             #line default
             #line hidden

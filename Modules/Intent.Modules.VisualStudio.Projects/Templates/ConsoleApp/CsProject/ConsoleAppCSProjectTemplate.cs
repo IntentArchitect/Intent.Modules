@@ -6,17 +6,18 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects.Api;
 using Intent.Templates;
 using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
 {
-    public class ConsoleAppCsProjectTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate
+    public class ConsoleAppCsProjectTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IProjectTemplate
     {
         public const string Identifier = "Intent.VisualStudio.Projects.ConsoleApp.CSProject";
 
-        public ConsoleAppCsProjectTemplate(IProject project)
-            : base (Identifier, project, null)
+        public ConsoleAppCsProjectTemplate(IProject project, IVisualStudioProject model)
+            : base (Identifier, project, model)
         {
         }
 
@@ -56,12 +57,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
             var group = root.AddPropertyGroup();
             group.AddProperty("Configuration", "Debug").Condition = " '$(Configuration)' == '' ";
             group.AddProperty("Platform", "AnyCPU").Condition = " '$(Platform)' == '' ";
-            group.AddProperty("ProjectGuid", $"{{{Project.Id}}}");
+            group.AddProperty("ProjectGuid", $"{{{Model.Id}}}");
             group.AddProperty("OutputType", "Exe");
             group.AddProperty("AppDesignerFolder", "Properties");
-            group.AddProperty("RootNamespace", $"{Project.Name}");
-            group.AddProperty("AssemblyName", $"{Project.Name}");
-            group.AddProperty("TargetFrameworkVersion", Project.TargetFrameworkVersion());
+            group.AddProperty("RootNamespace", $"{Model.Name}");
+            group.AddProperty("AssemblyName", $"{Model.Name}");
+            group.AddProperty("TargetFrameworkVersion", Model.TargetFrameworkVersion());
             group.AddProperty("FileAlignment", "512");
             group.AddProperty("TargetFrameworkProfile", "");
 

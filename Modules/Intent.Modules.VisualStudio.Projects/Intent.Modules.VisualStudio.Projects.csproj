@@ -85,10 +85,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ClassLibraryDotNetCoreProject.cs" />
+    <Compile Include="Api\ClassLibraryDotNetFrameworkProject.cs" />
+    <Compile Include="Api\ConsoleAppDotNetFrameworkProject.cs" />
+    <Compile Include="Api\VisualStudioMetadataManagerExtensions.cs" />
+    <Compile Include="Api\VisualStudioMetadataProvider.cs" />
     <Compile Include="Api\Folder.cs" />
     <Compile Include="Api\IFolder.cs" />
     <Compile Include="Api\IHasFolder.cs" />
     <Compile Include="Api\IVisualStudioProject.cs" />
+    <Compile Include="Api\ProjectConfig.cs" />
+    <Compile Include="Api\VisualStudioProject.cs" />
+    <Compile Include="Api\WcfServiceApplicationDotNetFrameworkProject.cs" />
+    <Compile Include="Api\WebApplicationDotNetCoreProject.cs" />
+    <Compile Include="Api\WebApplicationDotNetFrameworkProject.cs" />
     <Compile Include="Decorators\AssemblyBindingRedirectWebConfigDecoratorRegistration.cs" />
     <Compile Include="Events\CsProjectEvents.cs" />
     <Compile Include="FactoryExtensions\DependencyResolutionApplicationProcessor.cs" />
@@ -141,8 +151,6 @@
     <Compile Include="Templates\AssemblyInfo\Registrations.cs" />
     <Compile Include="Templates\ConsoleApp\CsProject\ConsoleAppCsProjectTemplateRegistration.cs" />
     <Compile Include="Templates\LibraryCSProjectFile\Registrations.cs" />
-    <Compile Include="Templates\NodeJSProjectFile\NodeJSProjectFileTemplate.cs" />
-    <Compile Include="Templates\NodeJSProjectFile\Registrations.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\Registrations.cs" />
     <Compile Include="Templates\WcfServiceCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\WebApiServiceCSProjectFile\Registrations.cs" />

@@ -2,16 +2,17 @@
 using Intent.Modules.Common.Templates;
 using Intent.Engine;
 using Intent.Modules.Common;
+using Intent.Modules.VisualStudio.Projects.Api;
 using Intent.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
 {
-    partial class CoreLibraryCSProjectTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IProjectTemplate
+    partial class CoreLibraryCSProjectTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, ITemplate, IProjectTemplate
     {
         public const string Identifier = "Intent.VisualStudio.Projects.CoreLibrary.CSProject";
 
-        public CoreLibraryCSProjectTemplate(IProject project)
-            : base(Identifier, project, null)
+        public CoreLibraryCSProjectTemplate(IProject project, IVisualStudioProject model)
+            : base(Identifier, project, model)
         {
         }
 

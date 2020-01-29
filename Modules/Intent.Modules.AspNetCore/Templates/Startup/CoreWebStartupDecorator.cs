@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using Intent.Templates;
 
-namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
+namespace Intent.Modules.AspNetCore.Templates.Startup
 {
     public abstract class CoreWebStartupDecorator : ITemplateDecorator
     {
@@ -11,5 +9,4 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
 
         public virtual int Priority { get; set; } = 0;
     }
-
 }

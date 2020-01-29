@@ -55,14 +55,14 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         {
             foreach (var project in _actions)
             {
-                var vsproject = application.Projects.FirstOrDefault(x => x.Id == new Guid(project.Key));
+                var vsproject = application.Projects.FirstOrDefault(x => x.Id == project.Key);
                 if (vsproject == null)
                 {
                     //This scenario occurs when projects have been deleted
                     continue;
                 }
 
-                switch (vsproject.ProjectType.Id)
+                switch (vsproject.Type)
                 {
                     case VisualStudioProjectTypeIds.CSharpLibrary:
                     case VisualStudioProjectTypeIds.ConsoleAppNetFramework:
@@ -76,7 +76,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                         new CoreProjectSyncProcessor(_eventDispatcher, _fileCache, _changeManager, vsproject).Process(project.Value);
                         break;
                     default:
-                        throw new Exception($"No syncer configured for project type '{vsproject.ProjectType.Name}' ({vsproject.ProjectType.Id})");
+                        throw new Exception($"No syncer configured for project '{vsproject.Name}' with type ({vsproject.Type})");
                 }
             }
 

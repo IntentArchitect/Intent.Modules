@@ -3,28 +3,40 @@ using System.ComponentModel;
 using System.Linq;
 using Intent.Modules.Constants;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects.Api;
 using Intent.Registrations;
 
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectFile
 {
     [Description("Web Api Service CS Project File - VS Projects")] 
-    public class Registrations : IProjectTemplateRegistration
+    public class Registrations : IProjectTemplateRegistration, IProjectRegistration
     {
         public string TemplateId => WebApiServiceCSProjectFileTemplate.Identifier;
+        private readonly IMetadataManager _metadataManager;
+
+        public Registrations(IMetadataManager metadataManager)
+        {
+            _metadataManager = metadataManager;
+        }
+
+        public void Register(IProjectRegistry registry, IApplication application)
+        {
+            var models = _metadataManager.GetWebApplicationDotNetFrameworkProjects(application.Id);
+            foreach (var model in models)
+            {
+                registry.RegisterProject(model.ToProjectConfig());
+            }
+        }
 
         public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
         {
-            var targetProjectIds = new List<string>
-            {
-                WebApiServiceCSProjectFileTemplate.
-            };
+            var models = _metadataManager.GetWebApplicationDotNetFrameworkProjects(application.Id);
 
-            var projects = application.Projects.Where(p => targetProjectIds.Contains(p.Type));
-
-            foreach (var project in projects)
+            foreach (var model in models)
             {
-                registery.Register(TemplateId, project, p => new WebApiServiceCSProjectFileTemplate(project));
+                var project = application.Projects.Single(x => x.Id == model.Id);
+                registery.RegisterProjectTemplate(TemplateId, project, p => new WebApiServiceCSProjectFileTemplate(project, model));
             }
         }
     }

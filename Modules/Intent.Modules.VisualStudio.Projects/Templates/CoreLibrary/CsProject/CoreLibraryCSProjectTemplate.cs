@@ -17,6 +17,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
     using System.Linq;
     using System.Collections;
     using System.Collections.Generic;
+    using Intent.Modules.VisualStudio.Projects.Api;
     
     /// <summary>
     /// Class to produce the template output
@@ -24,7 +25,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class CoreLibraryCSProjectTemplate : IntentProjectItemTemplateBase<object>
+    public partial class CoreLibraryCSProjectTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>
     {
 #line hidden
         /// <summary>
@@ -34,8 +35,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
         {
             this.Write(" \r\n");
             this.Write(" \r\n");
-            this.Write("<Project Sdk=\"Microsoft.NET.Sdk\">\r\n\r\n  <PropertyGroup>\r\n    <TargetFramework>netc" +
-                    "oreapp2.1</TargetFramework>\r\n  </PropertyGroup>\r\n\r\n</Project>\r\n");
+            this.Write("<Project Sdk=\"Microsoft.NET.Sdk\">\r\n\r\n  <PropertyGroup>\r\n    <TargetFramework>");
+            
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.TargetFrameworkVersion()));
+            
+            #line default
+            #line hidden
+            this.Write("</TargetFramework>\r\n  </PropertyGroup>\r\n\r\n</Project>\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

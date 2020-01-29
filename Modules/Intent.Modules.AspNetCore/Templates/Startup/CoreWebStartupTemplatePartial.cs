@@ -4,7 +4,6 @@ using System.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
-using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup;
 using Intent.Engine;
 using Intent.Eventing;
 using Intent.Templates;

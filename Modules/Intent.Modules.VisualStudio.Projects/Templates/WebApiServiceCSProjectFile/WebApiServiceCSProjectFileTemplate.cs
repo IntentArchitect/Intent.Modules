@@ -8,26 +8,27 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects.Api;
 using Intent.Templates;
 using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectFile
 {
-    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies, IProjectTemplate, IHasDecorators<IWebApiServiceCSProjectDecorator>
+    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IHasNugetDependencies, IProjectTemplate, IHasDecorators<IWebApiServiceCSProjectDecorator>
     {
         public const string Identifier = "Intent.VisualStudio.Projects.WebApiServiceCSProjectFile";
         private readonly string _sslPort = "";
         private readonly string _port;
 
-        public WebApiServiceCSProjectFileTemplate(IProject project)
-            : base(Identifier, project, null)
+        public WebApiServiceCSProjectFileTemplate(IProject project, IVisualStudioProject model)
+            : base(Identifier, project, model)
         {
-            _port = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "Port")?.Value;
-            bool.TryParse(project.ProjectType.Properties.FirstOrDefault(x => x.Name == "UseSsl")?.Value, out var useSsl);
-            if (useSsl)
-            {
-                _sslPort = project.ProjectType.Properties.First(x => x.Name == "SslPort").Value;
-            }
+            //_port = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "Port")?.Value;
+            //bool.TryParse(project.ProjectType.Properties.FirstOrDefault(x => x.Name == "UseSsl")?.Value, out var useSsl);
+            //if (useSsl)
+            //{
+            //    _sslPort = project.ProjectType.Properties.First(x => x.Name == "SslPort").Value;
+            //}
         }
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()
@@ -83,13 +84,13 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             group.AddProperty("Platform", "AnyCPU").Condition = " '$(Platform)' == '' ";
             group.AddProperty("ProductVersion", "");
             group.AddProperty("SchemaVersion", "2.0");
-            group.AddProperty("ProjectGuid", Project.Id.ToString());
+            group.AddProperty("ProjectGuid", Model.ToString());
             group.AddProperty("ProjectTypeGuids", "{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}");
             group.AddProperty("OutputType", "Library");
             group.AddProperty("AppDesignerFolder", "Properties");
-            group.AddProperty("RootNamespace", Project.Name);
-            group.AddProperty("AssemblyName", Project.Name);
-            group.AddProperty("TargetFrameworkVersion", Project.TargetFrameworkVersion());
+            group.AddProperty("RootNamespace", Model.Name);
+            group.AddProperty("AssemblyName", Model.Name);
+            group.AddProperty("TargetFrameworkVersion", Model.TargetFrameworkVersion());
             group.AddProperty("WcfConfigValidationEnabled", "True");
             group.AddProperty("AutoGenerateBindingRedirects", "true");
             group.AddProperty("UseIISExpress", "True");

@@ -1,31 +1,39 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
-using Intent.Modules.Constants;
-using Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects.Api;
 using Intent.Registrations;
 
-
-namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleAppCsProjectFile
+namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
 {
     [Description(ConsoleAppCsProjectTemplate.Identifier)]
-    public class ConsoleAppCsProjectTemplateRegistration : IProjectTemplateRegistration
+    public class ConsoleAppCsProjectTemplateRegistration : IProjectTemplateRegistration, IProjectRegistration
     {
         public string TemplateId => ConsoleAppCsProjectTemplate.Identifier;
+        private readonly IMetadataManager _metadataManager;
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
+        public ConsoleAppCsProjectTemplateRegistration(IMetadataManager metadataManager)
         {
-            var targetProjectIds = new List<string>
-            {
-                VisualStudioProjectTypeIds.ConsoleAppNetFramework
-            };
+            _metadataManager = metadataManager;
+        }
 
-            var projects = application.Projects.Where(p => targetProjectIds.Contains(p.ProjectType.Id));
-
-            foreach (var project in projects)
+        public void Register(IProjectRegistry registry, IApplication application)
+        {
+            var models = _metadataManager.GetConsoleAppDotNetFrameworkProjects(application.Id);
+            foreach (var model in models)
             {
-                registery.Register(TemplateId, project, p => new ConsoleAppCsProjectTemplate(project));
+                registry.RegisterProject(model.ToProjectConfig());
+            }
+        }
+
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
+        {
+            var models = _metadataManager.GetConsoleAppDotNetFrameworkProjects(application.Id);
+
+            foreach (var model in models)
+            {
+                var project = application.Projects.Single(x => x.Id == model.Id);
+                registry.Register(TemplateId, project, p => new ConsoleAppCsProjectTemplate(project, model));
             }
         }
     }

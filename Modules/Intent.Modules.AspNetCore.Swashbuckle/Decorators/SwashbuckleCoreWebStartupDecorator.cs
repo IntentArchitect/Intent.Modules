@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Intent.Modules.AspNetCore.Templates.Startup;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup;
 
 namespace Intent.Modules.AspNetCore.Swashbuckle.Decorators
 {
