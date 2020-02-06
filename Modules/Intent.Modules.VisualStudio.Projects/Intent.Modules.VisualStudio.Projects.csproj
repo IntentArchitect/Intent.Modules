@@ -103,6 +103,7 @@
     <Compile Include="Events\CsProjectEvents.cs" />
     <Compile Include="FactoryExtensions\DependencyResolutionApplicationProcessor.cs" />
     <Compile Include="AssemblyInternalsVisibleTo.cs" />
+    <Compile Include="Macros\TestMacro.cs" />
     <Compile Include="NuGet\HelperTypes\INuGetSchemeProcessor.cs" />
     <Compile Include="NuGet\HelperTypes\NuGetPackage.cs" />
     <Compile Include="NuGet\HelperTypes\NuGetProject.cs" />
