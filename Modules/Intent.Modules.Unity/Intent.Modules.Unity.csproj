@@ -73,6 +73,7 @@
     <Compile Include="Templates\UnityConfig\UnityConfigTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Intent.Modules.Unity.nuspec" />
     <None Include="packages.config" />
     <None Include="Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
