@@ -130,13 +130,14 @@ namespace Intent.Modules.ModelerBuilder.Templates.ModelerConfig
             var targetTypeOptions = GetAllChildElementsOfTypes(Model,
                     Constants.ElementSpecializationTypes.ElementSettings,
                     Constants.ElementSpecializationTypes.AttributeSetting)
-                .Select(x => new StereotypeTargetTypeOption
+                .Select(x => x.Name)
+                .Distinct()
+                .OrderBy(name => name)
+                .Select(name => new StereotypeTargetTypeOption
                 {
-                    SpecializationType = x.Name,
-                    DisplayText = x.Name
+                    SpecializationType = name,
+                    DisplayText = name
                 })
-                .OrderBy(x => x.SpecializationType)
-                .ThenBy(x => x.DisplayText)
                 .ToArray();
 
             return new StereotypeSettings
@@ -149,6 +150,7 @@ namespace Intent.Modules.ModelerBuilder.Templates.ModelerConfig
         {
             var items = GetAllChildElementsOfTypes(Model, Constants.ElementSpecializationTypes.AssociationSettings)
                 .OrderBy(x => x.Name)
+                .Distinct()
                 .ToArray();
 
             return items
@@ -220,6 +222,18 @@ namespace Intent.Modules.ModelerBuilder.Templates.ModelerConfig
                 .OrderBy(x => x.Name)
                 .ToArray();
 
+            var duplicates = items
+                .GroupBy(x => x.Name)
+                .Where(x => x.Count() > 1)
+                .Select(x => x.Key)
+                .DefaultIfEmpty()
+                .Aggregate((x, y) => $"{x}{Environment.NewLine}{y}");
+            if (!string.IsNullOrWhiteSpace(duplicates))
+            {
+                throw new Exception($"More than one '{Constants.ElementSpecializationTypes.ElementSettings}' " +
+                                    $"exist for the following:{Environment.NewLine}{duplicates}");
+            }
+
             return items
                 .Select(elementSettingsElement =>
                 {
@@ -234,6 +248,13 @@ namespace Intent.Modules.ModelerBuilder.Templates.ModelerConfig
                         GetSingleChildElement(elementSettingsElement, Constants.ElementSpecializationTypes.AttributeSettings, true)?
                         .ChildElements.Where(x => x.SpecializationType == Constants.ElementSpecializationTypes.AttributeSetting)
                         .Select(GetAttributeSetting)
+                        .ToArray();
+
+                    var typeOrder = (creationOptions ?? Enumerable.Empty<ElementCreationOption>())
+                        .Select(x => x.SpecializationType)
+                        .Union((attributeSettings ?? Enumerable.Empty<AttributeSettings>()).Select(x =>
+                            x.SpecializationType))
+                        .Distinct()
                         .ToArray();
 
                     return new ElementSettings
@@ -257,8 +278,8 @@ namespace Intent.Modules.ModelerBuilder.Templates.ModelerConfig
                         CreationOptions = creationOptions?.Any() == true
                             ? creationOptions
                             : null,
-                        TypeOrder = creationOptions?.Any() == true
-                            ? creationOptions.Select(y => y.SpecializationType).ToArray()
+                        TypeOrder = typeOrder.Any()
+                            ? typeOrder
                             : null
                     };
                 })
@@ -338,18 +359,20 @@ namespace Intent.Modules.ModelerBuilder.Templates.ModelerConfig
                     yield return childElement;
                 }
 
-                if (childElement.SpecializationType == Constants.ElementSpecializationTypes.ModelerFolder)
+                foreach (var folderChildElement in GetAllChildElementsOfTypes(childElement, specializationTypes))
                 {
-                    foreach (var folderChildElement in GetAllChildElementsOfTypes(childElement, specializationTypes))
-                    {
-                        yield return folderChildElement;
-                    }
+                    yield return folderChildElement;
                 }
             }
         }
 
         private static string ValueOrFallback(IStereotypeProperty property, string fallback)
         {
+            if (property.Value == "_")
+            {
+                return string.Empty;
+            }
+
             return !string.IsNullOrWhiteSpace(property.Value)
                 ? property.Value
                 : fallback;
