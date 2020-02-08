@@ -21,7 +21,7 @@ namespace Intent.Modules.Common.Templates
                     .ToList()
                     .Select(x => x.GetMetadata().CustomMetadata["Namespace"])
                 .Union(template.GetAllDeclareUsing())
-                .Where(x => !String.IsNullOrWhiteSpace(x))
+                .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Except(namespacesToIgnore)
                 .Distinct()
                 .ToArray();
@@ -40,7 +40,7 @@ namespace Intent.Modules.Common.Templates
 
             return usings.Any()
                     ? usings.Aggregate((x, y) => x + Environment.NewLine + y)
-                    : String.Empty;
+                    : string.Empty;
         }
 
         private static string FixUsing(string @using)
@@ -111,7 +111,7 @@ namespace Intent.Modules.Common.Templates
                         .Where(x => interfaceType.IsInstanceOfType(x))
                         .OrderByDescending(d => d.Priority) // Higher value = Higher priority
                         .Cast<TInterface>()
-                        .SelectMany(x => invoke((TInterface)x))
+                        .SelectMany(invoke)
                         .Distinct()
                         .ToArray()
                     );
@@ -121,17 +121,17 @@ namespace Intent.Modules.Common.Templates
 
         public static string ToPascalCase(this string s)
         {
-            if (String.IsNullOrWhiteSpace(s))
+            if (string.IsNullOrWhiteSpace(s))
             {
                 return s;
             }
-            if (Char.IsUpper(s[0]))
+            if (char.IsUpper(s[0]))
             {
                 return s;
             }
             else
             {
-                return Char.ToUpper(s[0]) + s.Substring(1);
+                return char.ToUpper(s[0]) + s.Substring(1);
             }
         }
 
@@ -141,10 +141,10 @@ namespace Intent.Modules.Common.Templates
             for (int i = 0; i < sb.Length; i++)
             {
                 var c = sb[i];
-                if (Char.IsUpper(c))
+                if (char.IsUpper(c))
                 {
                     sb.Remove(i, 1);
-                    sb.Insert(i, Char.ToLower(c));
+                    sb.Insert(i, char.ToLower(c));
                     if (i != 0 && i < sb.Length - 1)
                     {
                         sb.Insert(i, "-");
@@ -169,35 +169,30 @@ namespace Intent.Modules.Common.Templates
 
         public static string ToCamelCase(this string s, bool reservedWordEscape)
         {
-            if (String.IsNullOrWhiteSpace(s))
+            if (string.IsNullOrWhiteSpace(s))
             {
                 return s;
             }
             string result;
-            if (Char.IsLower(s[0]))
+            if (char.IsLower(s[0]))
             {
                 result = s;
             }
             else
             {
-                result = Char.ToLower(s[0]) + s.Substring(1);
+                result = char.ToLower(s[0]) + s.Substring(1);
             }
 
-            if (reservedWordEscape)
+            if (reservedWordEscape && CSharp.ReservedWords.Contains(result))
             {
-                switch (result)
-                {
-                    case "class":
-                    case "namespace":
-                        return "@" + result;
-                }
+                return $"@{result}";
             }
             return result;
         }
 
         public static string AsClassName(this string s)
         {
-            if (s.StartsWith("I") && s.Length >= 2 && Char.IsUpper(s[1]))
+            if (s.StartsWith("I") && s.Length >= 2 && char.IsUpper(s[1]))
             {
                 s = s.Substring(1);
             }
@@ -206,7 +201,7 @@ namespace Intent.Modules.Common.Templates
 
         public static string ToPrivateMember(this string s)
         {
-            if (String.IsNullOrWhiteSpace(s))
+            if (string.IsNullOrWhiteSpace(s))
             {
                 return s;
             }
