@@ -11,57 +11,6 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-
-<#//Some initial validation
-    foreach (var associationEnd in Model.AssociatedClasses)
-    {
-        var association = associationEnd.Association;
- 
-        //if there is more than 1 parent association && there are any which are not 0..1->1 (this is a manual inheritance mapping)
-        var multipleCompositions = Model.AssociatedClasses.Where(ae => ae.Association.AssociationType == AssociationType.Composition && ae.Association.TargetEnd.Class == Model);
-        if (multipleCompositions.Count() > 1)
-        {
-            throw new Exception(string.Format("Unsupported Mapping - {0} each have a Compositional relationship with {1}.", multipleCompositions.Select(x => x.Class.Name).Aggregate((x, y) => x + ", " + y), Model.Name));
-        }
-
-        if (!association.TargetEnd.IsNavigable)
-        {
-            throw new Exception(string.Format("Unsupported Source Needs to be Navigable to Target relationship  {0} on {1} ", association.ToString(), association.TargetEnd.Class.Name));
-        }
-
-        //Unsupported Associations
-        if ((association.AssociationType == AssociationType.Aggregation ) && ( association.RelationshipString() == "1->0..1"))
-        {
-            throw new Exception(string.Format("Unsupported Aggregation relationship  {0} - this relationship implies composition", association.ToString()));
-        }
-        if ((association.AssociationType == AssociationType.Aggregation ) && ( association.RelationshipString() == "1->1"))
-        {
-            throw new Exception(string.Format("Unsupported Aggregation relationship  {0} - this relationship implies composition", association.ToString()));
-        }
-        if ((association.AssociationType == AssociationType.Aggregation ) && ( association.RelationshipString() == "1->*"))
-        {
-            throw new Exception(string.Format("Unsupported Aggregation relationship {0}, this relationship implies Composition", association.ToString()));
-        }
-        if ((association.AssociationType == AssociationType.Composition ) && ( association.RelationshipString() == "0..1->0..1"))
-        {
-            throw new Exception(string.Format("Unsupported Composition relationship {0}", association.ToString()));
-        }
-        if ((association.AssociationType == AssociationType.Composition ) && ( association.RelationshipString() == "0..1->*"))
-        {
-            throw new Exception(string.Format("Unsupported Composition relationship {0}, this relationship implies aggregation", association.ToString()));
-        }
-        if ((association.AssociationType == AssociationType.Composition ) && ( association.RelationshipString().StartsWith("*->")))
-        {
-            throw new Exception(string.Format("Unsupported Composition relationship {0}, this relationship implies aggregation", association.ToString()));
-        }
-        //Naviagability Requirement
-        if ((association.AssociationType == AssociationType.Composition ) && ( association.RelationshipString() == "0..1->1") && (!association.SourceEnd.IsNavigable))
-        {
-            throw new Exception(string.Format("Unsupported. IsNavigable from Composition Required for Composition relationship {0}", association.ToString()));
-        }
-    }
-
-#>
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -75,135 +24,215 @@ namespace <#= Namespace #>
     {
         public void Configure(EntityTypeBuilder<<#= EntityStateName #>> builder)
         {
-<#  if (Model.ParentClass == null)
-    {#>
-            builder.ToTable("<#= Model.GetStereotypeProperty("Table", "Name", Model.Name) #>", "<#= Model.GetStereotypeProperty("Table", "Schema", "dbo") #>");
-<#  }
-    var explicitPrimaryKeys = Model.Attributes.Where(x => x.HasStereotype("Primary Key")).ToList();
-    var addedImplicitKey = false;
-    if (Model.ParentClass == null && !explicitPrimaryKeys.Any()) {
-        addedImplicitKey = true;#>
+<#
+if (Model.ParentClass == null)
+{
+#>
+            builder.ToTable("<#= Model.GetStereotypeProperty(Stereotypes.Rdbms.Table.Name, Stereotypes.Rdbms.Table.Property.Name, Model.Name) #>", "<#= Model.GetStereotypeProperty(Stereotypes.Rdbms.Table.Name, Stereotypes.Rdbms.Table.Property.Schema, "dbo") #>");
+<#
+}
+
+var explicitPrimaryKeys = Model.Attributes.Where(x => x.HasStereotype(Stereotypes.Rdbms.PrimaryKey.Name)).ToList();
+var addedImplicitKey = false;
+if (Model.ParentClass == null && !explicitPrimaryKeys.Any())
+{
+    addedImplicitKey = true;
+#>
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("Id");
-<#  } else {#>
+<#
+}
+else
+{
+#>
             builder.HasKey(x => <#= (explicitPrimaryKeys.Count() == 1 ? "x." + explicitPrimaryKeys.Single().Name.ToPascalCase() : string.Format("new {{ {0} }}", string.Join(", ", explicitPrimaryKeys.Select(x => "x." + x.Name)))) #>);
-<#  }
-    if (Model.ParentClass != null) {#>
+<#
+}
+
+if (Model.ParentClass != null) {
+#>
             builder.HasBaseType<<#= Model.ParentClass.Name #>>();
-<#  }
+<#
+}
 
-    foreach (var attribute in Model.Attributes)
+foreach (var attribute in Model.Attributes)
+{
+    if (attribute.Name.ToLower() == "id" && addedImplicitKey)
     {
-        if (attribute.Name.ToLower() == "id" && addedImplicitKey)
-        {
-            throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable the 'Implicit Surrogate Key' option for this template", Model.Name));
-	    }#>
-            builder.Property(x => x.<#= attribute.Name.ToPascalCase()#>)<#
-
-        if (!attribute.Type.IsNullable){#>
+        throw new Exception(string.Format("Surrogate Key is implicit for class {0}. Either remove the 'id' attribute, or disable the 'Implicit Surrogate Key' option for this template", Model.Name));
+    }
+#>
+            builder.Property(x => x.<#= attribute.Name.ToPascalCase()#>)
+<#
+    if (!attribute.Type.IsNullable)
+    {
+#>
 
                 .IsRequired()<#
-        }
-        if (attribute.GetStereotypeProperty("Primary Key", "Identity", false)){#>
+    }
 
-                .UseSqlServerIdentityColumn()<#
-        }
-        if (attribute.HasStereotype("Default Constraint") && attribute.GetStereotypeProperty<string>("Default Constraint", "Value") != null){#>
+    if (attribute.GetStereotypeProperty(Stereotypes.Rdbms.PrimaryKey.Name, Stereotypes.Rdbms.PrimaryKey.Property.Identity, false)){
+#>
 
-                .HasDefaultValueSql("<#= attribute.GetStereotypeProperty<string>("Default Constraint", "Value")#>")<#
-        }
+                .UseSqlServerIdentityColumn()
+<#
+    }
 
-        if (attribute.Type.Element.Name == "string" )
+    if (attribute.HasStereotype(Stereotypes.Rdbms.DefaultConstraint.Name) && attribute.GetStereotypeProperty<string>(Stereotypes.Rdbms.DefaultConstraint.Name, Stereotypes.Rdbms.DefaultConstraint.Property.Value) != null)
+    {
+#>
+
+                .HasDefaultValueSql("<#= attribute.GetStereotypeProperty<string>(Stereotypes.Rdbms.DefaultConstraint.Name, Stereotypes.Rdbms.DefaultConstraint.Property.Value)#>")
+<#
+    }
+
+    if (attribute.Type.Element.Name == "string" )
+    {
+        var maxLength =
+            attribute.GetStereotypeProperty<int?>(Stereotypes.Rdbms.Text.Name, Stereotypes.Rdbms.Text.Property.MaxLength) ??
+            attribute.GetStereotypeProperty<int?>(Stereotypes.Legacy.StringOptions.Name, Stereotypes.Legacy.StringOptions.Property.MaxLength);
+        if (maxLength.HasValue)
         {
-            var maxLength = attribute.GetStereotypeProperty<int?>("StringOptions", "MaxLength") ?? attribute.GetStereotypeProperty<int?>("Text", "MaxLength");     // (Text for backwards compatibility with RichDomain)
-            if (maxLength.HasValue){
-        #>
+#>
 
-                .HasMaxLength(<#= maxLength.Value#>)<#
-            }
+                .HasMaxLength(<#= maxLength.Value#>)
+<#
         }
+    }
 
-        var dataType = attribute.GetStereotypeProperty<string>("Numeric", "DataType", "decimal");
-        var decimalPrecision = attribute.GetStereotypeProperty<int?>("Numeric", "Precision");
-        var decimalScale = attribute.GetStereotypeProperty<int?>("Numeric", "Scale");
-        if (decimalPrecision.HasValue && decimalScale.HasValue){#>
+    var dataType = attribute.GetStereotypeProperty<string>(Stereotypes.Legacy.Numeric.Name, Stereotypes.Legacy.Numeric.Property.DataType, "decimal");
+    var decimalPrecision = attribute.GetStereotypeProperty<int?>(Stereotypes.Rdbms.Numeric.Name, Stereotypes.Rdbms.Numeric.Property.Precision);
+    var decimalScale = attribute.GetStereotypeProperty<int?>(Stereotypes.Rdbms.Numeric.Name, Stereotypes.Rdbms.Numeric.Property.Scale);
+    if (decimalPrecision.HasValue && decimalScale.HasValue)
+    {
+#>
 
-                .HasColumnType("<#= dataType #>(<#= decimalPrecision#>, <#= decimalScale #>)")<#
-        }
+                .HasColumnType("<#= dataType #>(<#= decimalPrecision#>, <#= decimalScale #>)")
+<#
+    }
 
-        if (HasTypeOverride(attribute))
-        { #>
+    if (HasTypeOverride(attribute))
+    {
+#>
                 .HasColumnType("<#= GetTypeOverride(attribute) #>")
-<#      } #>
+<#
+    }
+#>
                 ;
 
-<#  }
-    var indexes = Model.Attributes.Where(x => x.HasStereotype("Index")).GroupBy(x => x.GetStereotypeProperty("Index", "UniqueKey", "IX_" + Model.Name + "_" + x.Name));
-    foreach(var index in indexes) { #>
+<#
+}
+
+var indexes = Model.Attributes
+    .Where(x => x.HasStereotype(Stereotypes.Rdbms.Index.Name))
+    .GroupBy(x => x.GetStereotypeProperty(Stereotypes.Rdbms.Index.Name, Stereotypes.Rdbms.Index.Property.UniqueKey, "IX_" + Model.Name + "_" + x.Name));
+foreach(var index in indexes)
+{
+#>
             builder.HasIndex(x => <#= index.Count() == 1 ? "x." + index.Single().Name.ToPascalCase() : string.Format("new {{ {0} }}", string.Join(", ", index.OrderBy(x => x.GetStereotypeProperty<int>("Index", "Order", 0)).Select(x => "x." + x.Name))) #>)
                 .HasName("<#= index.Key #>")
-                .IsUnique(<#= index.First().GetStereotypeProperty("Index", "IsUnique", "false") #>)
+                .IsUnique(<#= index.First().GetStereotypeProperty(Stereotypes.Rdbms.Index.Name, Stereotypes.Rdbms.Index.Property.IsUnique, "false") #>)
                 ;
-<#  }
-    foreach (var associationEnd in Model.AssociatedClasses)
+<#
+}
+
+foreach (var associationEnd in Model.AssociatedClasses)
+{
+
+    if (associationEnd != associationEnd.Association.TargetEnd)
     {
+        continue;
+    }
 
-        if (associationEnd != associationEnd.Association.TargetEnd)
-        {
-            continue;
-        }
-
-        switch (associationEnd.Relationship())
-        {
-            case RelationshipType.OneToOne :#>
+    switch (associationEnd.Relationship())
+    {
+        case RelationshipType.OneToOne:
+#>
             builder.HasOne(x => x.<#=associationEnd.Name().ToPascalCase()#>)
                 .WithOne(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
-<#				if (associationEnd.OtherEnd().MinMultiplicity != "0") { #>
+<#
+            if (associationEnd.OtherEnd().MinMultiplicity != "0")
+            {
+#>
                 .HasForeignKey<<#= Model.Name #>>(x => x.Id)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade)
-<#				} else {#>
+<#
+            }
+            else
+            {
+#>
                 .HasForeignKey<<#= Model.Name #>>(<#= GetForeignKeyLambda(associationEnd.OtherEnd()) #>)
                 .OnDelete(DeleteBehavior.Restrict)
-<#              } #>
+<#
+            }
+#>
                 ;
 
-<#              break;
-            case RelationshipType.OneToMany :#>
+<#
+            break;
+        case RelationshipType.OneToMany:
+#>
             builder.HasOne(x => x.<#=associationEnd.Name().ToPascalCase()#>)
                 .WithMany(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
-<#				if (UseForeignKeys) { #>
+<#
+            if (UseForeignKeys)
+            {
+#>
                 .HasForeignKey(<#= GetForeignKeyLambda(associationEnd.OtherEnd()) #>)
-<#				} else { #>
+<#
+            }
+            else
+            {
+#>
                 .HasForeignKey("<#= associationEnd.Name().ToPascalCase()#>Id"))
-<#				} #>
+<#
+            }
+#>
                 .OnDelete(DeleteBehavior.Restrict)
                 ;
 
-<#                  break;
-            case RelationshipType.ManyToOne :#>
+<#
+            break;
+        case RelationshipType.ManyToOne:
+#>
             builder.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
                 .WithOne(x => x.<#= associationEnd.OtherEnd().Name().ToPascalCase() #>)
-<#				if (UseForeignKeys) { #>
+<#
+            if (UseForeignKeys)
+            {
+#>
                 .HasForeignKey(<#= GetForeignKeyLambda(associationEnd) #>)
-<#				} else { #>
+<#
+            }
+            else
+            {
+#>
                 .Map(m => m.MapKey("<#= associationEnd.OtherEnd().Name().ToPascalCase()#>Id"))
-<#				} #>
-<#				if (associationEnd.OtherEnd().MinMultiplicity != "0") { #>
+<#
+            }
+
+            if (associationEnd.OtherEnd().MinMultiplicity != "0")
+            {
+#>
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade)
-<#				}#>
+<#
+            }
+#>
                 ;
 
-<#                  break;
-            case RelationshipType.ManyToMany :#>
+<#          break;
+        case RelationshipType.ManyToMany:
+            IssueManyToManyWarning(associationEnd);
+#>
             builder.Ignore(x => x.<#= associationEnd.Name().ToPascalCase()#>)
-                <# IssueManyToManyWarning(associationEnd); #>
                 ;
 
-<#                  break;
-        }       
+<#
+            break;
     }
+}
 #>
         }
     }

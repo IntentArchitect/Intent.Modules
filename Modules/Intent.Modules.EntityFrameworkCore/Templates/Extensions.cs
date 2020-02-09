@@ -1,7 +1,6 @@
 ﻿using System;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.Templates;
-using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates
 {
@@ -14,7 +13,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates
                 var className = associationEnd.Class.Name;
                 if (associationEnd.MaxMultiplicity == "*" || int.Parse(associationEnd.MaxMultiplicity) > 1)
                 {
-                    return className.EndsWith("y") ? className.Substring(0, className.Length - 1) + "ies" : string.Format("{0}s", className);
+                    return className.EndsWith("y") ? className.Substring(0, className.Length - 1) + "ies" : $"{className}s";
                 }
                 return associationEnd.Class.Name;
             }
@@ -33,7 +32,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates
             if (associationEnd.Multiplicity == Multiplicity.Many && associationEnd.OtherEnd().Multiplicity == Multiplicity.Many)
                 return RelationshipType.ManyToMany;
 
-            throw new Exception(string.Format("The relationship type from [{0}] to [{1}] could not be determined.", associationEnd.Class.Name, associationEnd.OtherEnd().Class.Name));
+            throw new Exception($"The relationship type from [{associationEnd.Class.Name}] to [{associationEnd.OtherEnd().Class.Name}] could not be determined.");
         }
 
         public static string MultiplicityString(this IAssociationEnd associationEnd)
@@ -48,7 +47,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates
 
         public static string RelationshipString(this IAssociation association)
         {
-            return string.Format("{0}->{1}", association.SourceEnd.MultiplicityString(), association.TargetEnd.MultiplicityString());
+            return $"{association.SourceEnd.MultiplicityString()}->{association.TargetEnd.MultiplicityString()}";
         }
 
         public static string IdentifierType(this IClass obj)

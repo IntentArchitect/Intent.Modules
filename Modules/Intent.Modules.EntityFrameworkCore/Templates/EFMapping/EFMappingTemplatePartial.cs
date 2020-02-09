@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Intent.Modelers.Domain.Api;
-using Intent.Modules.Common;
-using Intent.Modules.Common.Templates;
-using Intent.Modules.EntityFramework;
-using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 using Intent.Utils;
@@ -19,13 +17,84 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
     partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.EntityFrameworkCore.EFMapping";
-        private IList<IEFMappingTemplateDecorator> _decorators = new List<IEFMappingTemplateDecorator>();
+        private readonly IList<IEFMappingTemplateDecorator> _decorators = new List<IEFMappingTemplateDecorator>();
         private ITemplateDependency _domainTemplateDependancy;
 
         public EFMappingTemplate(IClass model, IProject project)
             : base(Identifier, project, model)
         {
-            var x = Model.AssociatedClasses.Where(ae => ae.Association.AssociationType == AssociationType.Composition && ae.Association.TargetEnd == ae).ToList();
+            ValidateAssociations();
+        }
+
+        public void ValidateAssociations()
+        {
+            foreach (var associationEnd in Model.AssociatedClasses)
+            {
+                var association = associationEnd.Association;
+
+                //if there is more than 1 parent association && there are any which are not 0..1->1 (this is a manual inheritance mapping)
+                var multipleCompositions = Model.AssociatedClasses
+                    .Where(ae => ae.Association.AssociationType == AssociationType.Composition && ReferenceEquals(ae.Association.TargetEnd.Class, Model))
+                    .ToArray();
+
+                if (multipleCompositions.Length > 1)
+                {
+                    var compositionNames = multipleCompositions
+                        .Select(x => x.Class.Name)
+                        .Aggregate((x, y) => x + ", " + y);
+                    throw new Exception($"Unsupported Mapping - {compositionNames} each have a Compositional relationship with {Model.Name}.");
+                }
+
+                if (!association.TargetEnd.IsNavigable)
+                {
+                    throw new Exception($"Unsupported Source Needs to be Navigable to Target relationship  {association} on {association.TargetEnd.Class.Name} ");
+                }
+
+                //Unsupported Associations
+                if (association.AssociationType == AssociationType.Aggregation &&
+                    association.RelationshipString() == "1->0..1")
+                {
+                    throw new Exception($"Unsupported Aggregation relationship  {association} - this relationship implies composition");
+                }
+
+                if (association.AssociationType == AssociationType.Aggregation &&
+                    association.RelationshipString() == "1->1")
+                {
+                    throw new Exception($"Unsupported Aggregation relationship  {association} - this relationship implies composition");
+                }
+
+                if (association.AssociationType == AssociationType.Aggregation &&
+                    association.RelationshipString() == "1->*")
+                {
+                    throw new Exception($"Unsupported Aggregation relationship {association}, this relationship implies Composition");
+                }
+
+                if (association.AssociationType == AssociationType.Composition &&
+                    association.RelationshipString() == "0..1->0..1")
+                {
+                    throw new Exception($"Unsupported Composition relationship {association}");
+                }
+
+                if (association.AssociationType == AssociationType.Composition &&
+                    association.RelationshipString() == "0..1->*")
+                {
+                    throw new Exception($"Unsupported Composition relationship {association}, this relationship implies aggregation");
+                }
+
+                if (association.AssociationType == AssociationType.Composition &&
+                    association.RelationshipString().StartsWith("*->"))
+                {
+                    throw new Exception($"Unsupported Composition relationship {association}, this relationship implies aggregation");
+                }
+
+                //Navigability Requirement
+                if (association.AssociationType == AssociationType.Composition &&
+                    association.RelationshipString() == "0..1->1" && !association.SourceEnd.IsNavigable)
+                {
+                    throw new Exception(
+                        $"Unsupported. IsNavigable from Composition Required for Composition relationship {association}");
+                }
+            }
         }
 
         public override void OnCreated()
@@ -45,7 +114,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             .ToArray();
         }
 
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {
@@ -57,12 +126,11 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
         {
             get
             {
-                string useForeignKeysString;
-                bool useForeignKeys;
-                if (GetMetadata().CustomMetadata.TryGetValue("Use Foreign Keys", out useForeignKeysString) && bool.TryParse(useForeignKeysString, out useForeignKeys))
+                if (GetMetadata().CustomMetadata.TryGetValue("Use Foreign Keys", out var useForeignKeysString) && bool.TryParse(useForeignKeysString, out var useForeignKeys))
                 {
                     return useForeignKeys;
                 }
+
                 return true;
             }
         }
@@ -71,12 +139,11 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
         {
             get
             {
-                string useForeignKeysString;
-                bool useForeignKeys;
-                if (GetMetadata().CustomMetadata.TryGetValue("Implicit Surrogate Key", out useForeignKeysString) && bool.TryParse(useForeignKeysString, out useForeignKeys))
+                if (GetMetadata().CustomMetadata.TryGetValue("Implicit Surrogate Key", out var useForeignKeysString) && bool.TryParse(useForeignKeysString, out var useForeignKeys))
                 {
                     return useForeignKeys;
                 }
+
                 return true;
             }
         }
@@ -114,20 +181,20 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
         private bool HasTypeOverride(IAttribute attribute)
         {
-            var overrideAttributeStereotype = attribute.GetStereotype("EFMappingOptions");
+            var overrideAttributeStereotype = attribute.GetStereotype(Stereotypes.EntityFrameworkCore.EFMappingOptions.Name);
             if (overrideAttributeStereotype != null)
             {
-                var columnType = overrideAttributeStereotype.GetProperty<string>("ColumnType");
+                var columnType = overrideAttributeStereotype.GetProperty<string>(Stereotypes.EntityFrameworkCore.EFMappingOptions.Property.ColumnType);
                 if (!string.IsNullOrEmpty(columnType))
                 {
                     return true;
                 }
             }
 
-            var overrideTypeStereotype = attribute.Type.Element.GetStereotype("EFMappingOptions");
+            var overrideTypeStereotype = attribute.Type.Element.GetStereotype(Stereotypes.EntityFrameworkCore.EFMappingOptions.Name);
             if (overrideTypeStereotype != null)
             {
-                var columnType = overrideTypeStereotype.GetProperty<string>("ColumnType");
+                var columnType = overrideTypeStereotype.GetProperty<string>(Stereotypes.EntityFrameworkCore.EFMappingOptions.Property.ColumnType);
                 if (!string.IsNullOrEmpty(columnType))
                 {
                     return true;
@@ -139,20 +206,20 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
         private string GetTypeOverride(IAttribute attribute)
         {
-            var overrideAttributeStereotype = attribute.GetStereotype("EFMappingOptions");
+            var overrideAttributeStereotype = attribute.GetStereotype(Stereotypes.EntityFrameworkCore.EFMappingOptions.Name);
             if (overrideAttributeStereotype != null)
             {
-                var columnType = overrideAttributeStereotype.GetProperty<string>("ColumnType");
+                var columnType = overrideAttributeStereotype.GetProperty<string>(Stereotypes.EntityFrameworkCore.EFMappingOptions.Property.ColumnType);
                 if (!string.IsNullOrEmpty(columnType))
                 {
                     return columnType;
                 }
             }
 
-            var overrideTypeStereotype = attribute.Type.Element.GetStereotype("EFMappingOptions");
+            var overrideTypeStereotype = attribute.Type.Element.GetStereotype(Stereotypes.EntityFrameworkCore.EFMappingOptions.Name);
             if (overrideTypeStereotype != null)
             {
-                var columnType = overrideTypeStereotype.GetProperty<string>("ColumnType");
+                var columnType = overrideTypeStereotype.GetProperty<string>(Stereotypes.EntityFrameworkCore.EFMappingOptions.Property.ColumnType);
                 if (!string.IsNullOrEmpty(columnType))
                 {
                     return columnType;
@@ -162,17 +229,22 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             return string.Empty;
         }
 
-        private string GetForeignKeyLambda(IAssociationEnd associationEnd)
+        private static string GetForeignKeyLambda(IAssociationEnd associationEnd)
         {
-            var columns = associationEnd.Class.GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.OtherEnd().Name().ToPascalCase() + "Id")
+            var columns = associationEnd.Class.GetStereotypeProperty(
+                    stereotypeName: Stereotypes.Rdbms.ForeignKey.Name,
+                    propertyName: Stereotypes.Rdbms.ForeignKey.Property.ColumnName,
+                    defaultIfNotFound: associationEnd.OtherEnd().Name().ToPascalCase() + "Id")
                 .Split(',')
                 .Select(x => x.Trim())
                 .ToList();
-            if (columns.Count() == 1)
+
+            if (columns.Count == 1)
             {
                 return $"x => x.{columns.Single()}";
             }
-            return $"x => new {{ {string.Join(", ", columns.Select(x => "x."+ x))}}}";
+
+            return $"x => new {{ {string.Join(", ", columns.Select(x => "x." + x))}}}";
         }
 
         private void IssueManyToManyWarning(IAssociationEnd associationEnd)
