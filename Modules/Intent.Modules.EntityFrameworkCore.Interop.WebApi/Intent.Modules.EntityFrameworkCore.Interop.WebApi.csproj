@@ -64,7 +64,7 @@
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.EntityFrameworkCore\Intent.Modules.EntityFrameworkCore.csproj">
-      <Project>{E9452E43-0EFB-448E-93AA-E084644C796E}</Project>
+      <Project>{e3054741-163b-4df0-8ae0-eab74a57341d}</Project>
       <Name>Intent.Modules.EntityFrameworkCore</Name>
     </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj">

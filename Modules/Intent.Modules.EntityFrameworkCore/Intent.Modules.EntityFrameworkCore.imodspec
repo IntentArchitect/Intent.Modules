@@ -48,8 +48,8 @@
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
   </dependencies>
   <files>
-    <file src="bin/$configuration$/$id$.dll"/>
-    <file src="bin/$configuration$/$id$.pdb"/>
+    <file src="bin/$configuration$/netstandard2.0/$id$.dll"/>
+    <file src="bin/$configuration$/netstandard2.0/$id$.pdb"/>
   </files>
   <metadata>
     <install target="Domain" src="Metadata/Domain"/>
