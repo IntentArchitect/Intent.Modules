@@ -117,6 +117,20 @@ foreach (var attribute in Model.Attributes)
                 .HasColumnType("<#= GetTypeOverride(attribute) #>")
 <#
     }
+
+    if (attribute.HasStereotype(Stereotypes.EntityFrameworkCore.ConcurrencyToken.Name))
+    {
+#>
+                .IsConcurrencyToken()
+<#
+    }
+
+    if (attribute.HasStereotype(Stereotypes.EntityFrameworkCore.RowVersion.Name))
+    {
+#>
+                .IsRowVersion()
+<#
+    }
 #>
                 ;
 

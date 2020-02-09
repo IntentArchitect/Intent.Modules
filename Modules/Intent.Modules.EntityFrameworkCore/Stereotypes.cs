@@ -16,6 +16,16 @@ namespace Intent.Modules.EntityFrameworkCore
                     public const string ColumnType = "ColumnType";
                 }
             }
+
+            public static class ConcurrencyToken
+            {
+                public const string Name = "ConcurrencyToken";
+            }
+
+            public static class RowVersion
+            {
+                public const string Name = "RowVersion";
+            }
         }
 
         public static class Rdbms

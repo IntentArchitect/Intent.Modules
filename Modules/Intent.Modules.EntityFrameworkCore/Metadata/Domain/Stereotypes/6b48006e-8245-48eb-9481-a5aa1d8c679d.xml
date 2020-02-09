@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="6b48006e-8245-48eb-9481-a5aa1d8c679d">
+  <comment>https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.builders.propertybuilder.isrowversion?view=efcore-2.1</comment>
+  <name>RowVersion</name>
+  <icon type="CharacterBox" source="R|#B3E5FC" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>attribute</element>
+  </targetElements>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>7ee81eb9-ea65-42c5-9a80-3ac6f4859ea9</parentFolderId>
+  <properties />
+</stereotypeDefinition>
