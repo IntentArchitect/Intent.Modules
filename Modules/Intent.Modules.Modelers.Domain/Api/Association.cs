@@ -38,6 +38,10 @@ namespace Intent.Modelers.Domain.Api
         }
 
         public string Comment => _association.Comment;
+        public bool IsSelfReference()
+        {
+            return SourceEnd.Class.Equals(TargetEnd.Class);
+        }
 
         public override string ToString()
         {

@@ -91,6 +91,11 @@ namespace Intent.Modules.Common.Templates
             return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
         }
 
+        public void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
+        {
+            AddTypeSource(CSharpTypeSource.InProject(Project, templateId, collectionFormat));
+        }
+
         public override string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
             return NormalizeNamespace(Types.Get(typeReference, collectionFormat));

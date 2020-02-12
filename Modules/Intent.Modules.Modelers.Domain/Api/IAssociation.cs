@@ -11,5 +11,7 @@ namespace Intent.Modelers.Domain.Api
         AssociationType AssociationType { get; }
 
         string Comment { get; }
+
+        bool IsSelfReference();
     }
 }

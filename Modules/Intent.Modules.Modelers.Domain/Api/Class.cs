@@ -37,10 +37,11 @@ namespace Intent.Modelers.Domain.Api
             _associatedElements = element.AssociatedElements
                 .Where(x => "Composition".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase)
                 || "Aggregation".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))
+                .Where(end => !(end.Association.TargetEnd.Element.Equals(end.Association.SourceEnd.Element) && end == end.Association.SourceEnd))
                 .Select(x =>
                 {
                     var association = new Association(x.Association, classCache);
-                    return Equals(association.TargetEnd.Class, this) ? association.SourceEnd : association.TargetEnd;
+                    return Equals(association.TargetEnd.Class, this) && !association.IsSelfReference() ? association.SourceEnd : association.TargetEnd;
                 })
                 .ToList();
         }
