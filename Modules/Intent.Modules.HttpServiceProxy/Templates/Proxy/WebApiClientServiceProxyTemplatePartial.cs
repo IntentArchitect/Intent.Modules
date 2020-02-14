@@ -134,11 +134,6 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 
-        private string GetTypeName(ITypeReference typeInfo)
-        {
-            return Types.Get(typeInfo, "List<{0}>");
-        }
-
         private string GetReadAs(IOperation operation)
         {
             return $"ReadAsAsync<{GetOperationReturnType(operation)}>()";

@@ -18,7 +18,7 @@ namespace Intent.Modelers.Domain.Api
         public IEnumerable<IClass> GetClasses()
         {
             var cache = new Dictionary<string, Class>();
-            var classes = _metadataManager.GetMetadata<Metadata.Models.IElement>("Domain").Where(x => x.SpecializationType == "Class").ToList();
+            var classes = _metadataManager.GetMetadata<IElement>("Domain").Where(x => x.IsClass()).ToList();
             var result = classes.Select(x => cache.ContainsKey(x.Id) ? cache[x.Id] : new Class(x, cache)).ToList();
             return result;
         }
@@ -30,7 +30,7 @@ namespace Intent.Modelers.Domain.Api
 
         public IEnumerable<IEnum> GetEnums()
         {
-            var types = _metadataManager.GetMetadata<Metadata.Models.IElement>("Domain").Where(x => x.SpecializationType == "Enum").ToList();
+            var types = _metadataManager.GetMetadata<IElement>("Domain").Where(x => x.IsEnum()).ToList();
             return types.Select(x => new EnumModel(x)).ToList();
         }
 
@@ -41,7 +41,7 @@ namespace Intent.Modelers.Domain.Api
 
         public IEnumerable<ITypeDefinition> GetTypeDefinitions()
         {
-            var types = _metadataManager.GetMetadata<Metadata.Models.IElement>("Domain").Where(x => x.SpecializationType == "Type-Definition").ToList();
+            var types = _metadataManager.GetMetadata<IElement>("Domain").Where(x => x.IsTypeDefinition()).ToList();
             return types.Select(x => new TypeDefinition(x)).ToList();
         }
 
@@ -49,6 +49,23 @@ namespace Intent.Modelers.Domain.Api
         {
             return GetTypeDefinitions().Where(x => x.Application.Id == applicationId);
         }
+    }
 
+    public static class ElementExtensions
+    {
+        public static bool IsClass(this IElement x)
+        {
+            return "Class".Equals(x.SpecializationType, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        public static bool IsEnum(this IElement x)
+        {
+            return "Enum".Equals(x.SpecializationType, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        public static bool IsTypeDefinition(this IElement x)
+        {
+            return "Type-Definition".Equals(x.SpecializationType, StringComparison.InvariantCultureIgnoreCase);
+        }
     }
 }
