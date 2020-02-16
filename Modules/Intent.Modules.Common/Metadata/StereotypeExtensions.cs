@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 
@@ -17,18 +18,28 @@ namespace Intent.Modules.Common
             return model.GetStereotype(stereotypeName).GetProperty(propertyName, defaultIfNotFound);
         }
 
+        /// <summary>
+        /// Lookup only one stereotype with a given name. If more than one is found with the same name, it fails.
+        /// </summary>
         public static IStereotype GetStereotype(this IHasStereotypes model, string stereotypeName)
         {
             var stereotypes = model.Stereotypes.Where(x => x.Name == stereotypeName).ToArray();
-            // Perhaps a warning will be more appropriate? (module configuration?)
-            /*if (stereotypes.Length > 1)
+            if (stereotypes.Length > 1)
             {
                 throw new Exception(model is IMetadataModel metadataModel
                     ? $"More than one stereotype found with the name '{stereotypeName}' on element with ID {metadataModel.Id}"
                     : $"More than one stereotype found with the name '{stereotypeName}'");
-            }*/
+            }
 
             return stereotypes.SingleOrDefault();
+        }
+
+        /// <summary>
+        /// Look up multiple stereotypes by the same name.
+        /// </summary>
+        public static IReadOnlyCollection<IStereotype> GetStereotypes(this IHasStereotypes model, string stereotypeName)
+        {
+            return model.Stereotypes.Where(p => p.Name == stereotypeName).ToArray();
         }
 
         public static T GetProperty<T>(this IStereotype stereotype, string propertyName, T defaultIfNotFound = default(T))
