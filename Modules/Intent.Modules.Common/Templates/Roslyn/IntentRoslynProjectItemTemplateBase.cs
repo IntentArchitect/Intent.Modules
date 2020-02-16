@@ -108,7 +108,13 @@ namespace Intent.Modules.Common.Templates
 
         public override string GetTemplateClassName(ITemplateDependency templateDependency)
         {
-            return NormalizeNamespace(FindTemplate<IHasClassDetails>(templateDependency)?.FullTypeName());
+            return NormalizeNamespace(FindTemplate<IHasClassDetails>(templateDependency).FullTypeName());
+        }
+
+        public override string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound)
+        {
+            var template = FindTemplate<IHasClassDetails>(templateDependency, throwIfNotFound);
+            return template == null ? null : NormalizeNamespace(template.FullTypeName());
         }
 
         private IEnumerable<string> _templateUsings;

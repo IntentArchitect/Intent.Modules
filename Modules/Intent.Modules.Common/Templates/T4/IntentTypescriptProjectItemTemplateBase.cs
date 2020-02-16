@@ -47,9 +47,9 @@ namespace Intent.Modules.Common.Templates
         }
 
 
-        public override string GetTemplateClassName(ITemplateDependency templateDependency)
+        public override string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound = true)
         {
-            return FindTemplate<IHasClassDetails>(templateDependency)?.ClassName;
+            return FindTemplate<IHasClassDetails>(templateDependency, throwIfNotFound).ClassName;
         }
 
         //public string DependencyImports

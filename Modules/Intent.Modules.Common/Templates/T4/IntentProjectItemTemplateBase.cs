@@ -76,11 +76,19 @@ namespace Intent.Modules.Common.Templates
         public void SetDefaultTypeCollectionFormat(string collectionFormat)
         {
             _defaultTypeCollectionFormat = collectionFormat;
+            if (_onCreatedHasHappened)
+            {
+                Types.DefaultCollectionFormat = collectionFormat;
+            }
         }
 
         public void AddTypeSource(IClassTypeSource classTypeSource)
         {
             _typeSources.Add(classTypeSource);
+            if (_onCreatedHasHappened)
+            {
+                Types.AddClassTypeSource(classTypeSource);
+            }
         }
 
         private bool _onCreatedHasHappened;
@@ -134,20 +142,35 @@ namespace Intent.Modules.Common.Templates
             return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
         }
 
-        public TTemplate FindTemplate<TTemplate>(ITemplateDependency dependency) where TTemplate : class
+        public virtual string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound)
         {
-            if (!_onCreatedHasHappened)
-            {
-                throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
-            }
+            return FindTemplate<IHasClassDetails>(templateDependency, throwIfNotFound).FullTypeName();
+        }
 
-            var template = Project.Application.FindTemplateInstance<TTemplate>(dependency);
-            if (template != null)
-            {
-                DetectedDependencies.Add(dependency);
-                return template;
-            }
-            throw new Exception($"Could not find template with Id: {dependency.TemplateIdOrName} for model {Model.ToString()}");
+        public string GetTemplateClassName(ITemplate template, bool throwIfNotFound)
+        {
+            return GetTemplateClassName(TemplateDependency.OnTemplate(template), throwIfNotFound);
+        }
+
+        public string GetTemplateClassName(string templateId, bool throwIfNotFound)
+        {
+            return GetTemplateClassName(TemplateDependency.OnTemplate(templateId), throwIfNotFound);
+        }
+
+        public string GetTemplateClassName(string templateId, IMetadataModel model, bool throwIfNotFound)
+        {
+            return GetTemplateClassName(TemplateDependency.OnModel(templateId, model), throwIfNotFound);
+        }
+
+        public string GetTemplateClassName(string templateId, string modelId, bool throwIfNotFound)
+        {
+            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId), throwIfNotFound);
+        }
+
+        public TTemplate FindTemplate<TTemplate>(ITemplateDependency dependency)
+            where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(dependency, true);
         }
 
         public TTemplate FindTemplate<TTemplate>(string templateId) where TTemplate : class
@@ -163,6 +186,43 @@ namespace Intent.Modules.Common.Templates
         public TTemplate FindTemplate<TTemplate>(string templateId, string modelId) where TTemplate : class
         {
             return FindTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
+        }
+
+        public TTemplate FindTemplate<TTemplate>(ITemplateDependency dependency, bool throwIfNotFound) where TTemplate : class
+        {
+            if (!_onCreatedHasHappened)
+            {
+                throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
+            }
+
+            var template = Project.Application.FindTemplateInstance<TTemplate>(dependency);
+            if (template != null)
+            {
+                DetectedDependencies.Add(dependency);
+                return template;
+            }
+
+            if (throwIfNotFound)
+            {
+                throw new Exception($"Could not find template with Id: {dependency.TemplateIdOrName} for model {Model.ToString()}");
+            }
+
+            return null;
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId, bool throwIfNotFound = true) where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(TemplateDependency.OnTemplate(templateId), throwIfNotFound);
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId, IMetadataModel model, bool throwIfNotFound = true) where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(TemplateDependency.OnModel(templateId, model), throwIfNotFound);
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId, string modelId, bool throwIfNotFound = true) where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId), throwIfNotFound);
         }
 
         public override string ToString()

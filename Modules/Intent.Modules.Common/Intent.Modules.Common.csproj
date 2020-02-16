@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
     <PackageIconUrl>https://intentarchitect.com/assets/images/logo.png</PackageIconUrl>
     <PackageTags>Intent Architect Software Factory SDK Modules Common</PackageTags>
-    <Version>2.0.2</Version>
+    <Version>2.0.3</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
