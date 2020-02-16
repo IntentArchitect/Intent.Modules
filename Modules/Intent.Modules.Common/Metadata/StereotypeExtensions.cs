@@ -15,7 +15,14 @@ namespace Intent.Modules.Common
 
         public static T GetStereotypeProperty<T>(this IHasStereotypes model, string stereotypeName, string propertyName, T defaultIfNotFound = default(T))
         {
-            return model.GetStereotype(stereotypeName).GetProperty(propertyName, defaultIfNotFound);
+            try
+            {
+                return model.GetStereotype(stereotypeName).GetProperty(propertyName, defaultIfNotFound);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Failed to get stereotype property for element [{model}]", e);
+            }
         }
 
         /// <summary>

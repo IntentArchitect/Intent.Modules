@@ -37,22 +37,13 @@ namespace Intent.Modules.Common.Templates
         {
             return new TypescriptTypeSource((_this, typeInfo) =>
             {
+                var typeName = _this.GetTypeName(application, templateId, typeInfo);
                 if (typeInfo.IsCollection)
                 {
-                    return string.Format(collectionFormat, _this.ClassNameInApplication(application, templateId, typeInfo));
+                    return string.Format(collectionFormat, typeName);
                 }
-                return _this.ClassNameInApplication(application, templateId, typeInfo);
+                return typeName;
             });
-        }
-
-        private string ClassNameInApplication(IApplication application, string templateId, ITypeReference typeInfo)
-        {
-            var templateInstance = application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
-            if (templateInstance != null)
-            {
-                _templateDependencies.Add(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
-            }
-            return templateInstance?.ClassName;
         }
 
         public string GetClassType(ITypeReference typeInfo)
@@ -76,6 +67,17 @@ namespace Intent.Modules.Common.Templates
             return templateInstance;
         }
 
+        private IHasClassDetails GetTemplateInstance(IApplication application, string templateId, ITypeReference typeInfo)
+        {
+            var templateInstance = application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
+            if (templateInstance != null)
+            {
+                _templateDependencies.Add(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
+            }
+
+            return templateInstance;
+        }
+
         private string GetTypeName(IProject project, string templateId, ITypeReference typeInfo)
         {
             var templateInstance = GetTemplateInstance(project, templateId, typeInfo);
@@ -84,6 +86,17 @@ namespace Intent.Modules.Common.Templates
                 templateInstance.ClassName + (typeInfo.GenericTypeParameters.Any() 
                     ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(project, templateId, x)))}>" 
                     : "") 
+                : null;
+        }
+
+        private string GetTypeName(IApplication application, string templateId, ITypeReference typeInfo)
+        {
+            var templateInstance = GetTemplateInstance(application, templateId, typeInfo);
+
+            return templateInstance != null ? (string.IsNullOrWhiteSpace(templateInstance.Namespace) ? "" : templateInstance.Namespace + ".") +
+                                              templateInstance.ClassName + (typeInfo.GenericTypeParameters.Any()
+                                                  ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(application, templateId, x)))}>"
+                                                  : "")
                 : null;
         }
     }
