@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Intent.Metadata.Models;
 
 namespace Intent.Modelers.Domain.Api
@@ -15,7 +16,7 @@ namespace Intent.Modelers.Domain.Api
         public Class(IElement element, IDictionary<string, Class> classCache)
         {
             _element = element;
-            classCache.Add(Id, this);
+            classCache.Add(_element.UniqueKey(), this);
             Folder = Api.Folder.SpecializationType.Equals(_element.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_element.ParentElement) : null;
 
             var generalizedFrom = _element.AssociatedElements
@@ -30,7 +31,7 @@ namespace Intent.Modelers.Domain.Api
             var parent = generalizedFrom.SingleOrDefault()?.Element;
             if (parent != null)
             {
-                _parent = classCache.ContainsKey(parent.Id) ? classCache[parent.Id] : new Class(parent, classCache);
+                _parent = classCache.ContainsKey(parent.UniqueKey()) ? classCache[parent.UniqueKey()] : new Class(parent, classCache);
                 _parent._childClasses.Add(this);
             }
 
@@ -46,6 +47,7 @@ namespace Intent.Modelers.Domain.Api
                 .ToList();
         }
 
+        public string UniqueKey => $"{_element.Application.Id}_{Id}";
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public IFolder Folder { get; }

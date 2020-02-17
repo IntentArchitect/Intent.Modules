@@ -16,7 +16,7 @@ namespace Intent.Modelers.Domain.Api
         {
             _associationEnd = associationEnd;
             Association = association;
-            Class = classCache.ContainsKey(_associationEnd.Element.Id) ? classCache[_associationEnd.Element.Id] : new Class(_associationEnd.Element, classCache);
+            Class = classCache.ContainsKey(_associationEnd.Element.UniqueKey()) ? classCache[_associationEnd.Element.UniqueKey()] : new Class(_associationEnd.Element, classCache);
         }
 
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;

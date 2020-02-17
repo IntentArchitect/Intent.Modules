@@ -19,7 +19,7 @@ namespace Intent.Modelers.Domain.Api
         {
             var cache = new Dictionary<string, Class>();
             var classes = _metadataManager.GetMetadata<IElement>("Domain").Where(x => x.IsClass()).ToList();
-            var result = classes.Select(x => cache.ContainsKey(x.Id) ? cache[x.Id] : new Class(x, cache)).ToList();
+            var result = classes.Select(x => cache.ContainsKey(x.UniqueKey()) ? cache[x.UniqueKey()] : new Class(x, cache)).ToList();
             return result;
         }
 
@@ -66,6 +66,11 @@ namespace Intent.Modelers.Domain.Api
         public static bool IsTypeDefinition(this IElement x)
         {
             return "Type-Definition".Equals(x.SpecializationType, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        internal static string UniqueKey(this IElement element)
+        {
+            return $"{element.Application.Id}_{element.Id}";
         }
     }
 }
