@@ -10,21 +10,19 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic"#>
-<#
-
-
-#>
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace <#= Namespace #>
 {
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public interface <#= ClassName #> : <#= RepositoryInterfaceName #><<#= EntityInterfaceName #>, <#= EntityStateName #>>
     {
+        [IntentManaged(Mode.Fully)]
         Task<<#= EntityInterfaceName #>> FindByIdAsync(<#= PrimaryKeyType #> id);
     }
 }
