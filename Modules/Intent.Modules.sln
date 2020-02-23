@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1000
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.Contracts", "Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj", "{2972A488-2F67-426D-8762-C85FB36FB32C}"
 EndProject
@@ -145,9 +145,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unofficial", "Unofficial", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModelerBuilder", "Intent.Modules.ModelerBuilder\Intent.Modules.ModelerBuilder.csproj", "{643AF54D-F97E-401D-860F-AE8F8011B6E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.EntityFrameworkCore", "Intent.Modules.EntityFrameworkCore\Intent.Modules.EntityFrameworkCore.csproj", "{E3054741-163B-4DF0-8AE0-EAB74A57341D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.SoftwareFactory.SDK", "..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj", "{830547C8-938E-4958-AF78-7C2665588A6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.EntityFrameworkCore", "Intent.Modules.EntityFrameworkCore\Intent.Modules.EntityFrameworkCore.csproj", "{E3054741-163B-4DF0-8AE0-EAB74A57341D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -395,10 +393,6 @@ Global
 		{E3054741-163B-4DF0-8AE0-EAB74A57341D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3054741-163B-4DF0-8AE0-EAB74A57341D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3054741-163B-4DF0-8AE0-EAB74A57341D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{830547C8-938E-4958-AF78-7C2665588A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{830547C8-938E-4958-AF78-7C2665588A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{830547C8-938E-4958-AF78-7C2665588A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{830547C8-938E-4958-AF78-7C2665588A6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -474,7 +468,6 @@ Global
 		{0888C831-E052-44C0-895E-20690E65B3C7} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{643AF54D-F97E-401D-860F-AE8F8011B6E5} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 		{E3054741-163B-4DF0-8AE0-EAB74A57341D} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
-		{830547C8-938E-4958-AF78-7C2665588A6E} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
