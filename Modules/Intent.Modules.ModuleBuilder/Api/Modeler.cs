@@ -9,7 +9,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     internal class Modeler : IModeler, IEquatable<Modeler>
     {
         private readonly IElement _element;
-        public const string SpecializationType = "Modeler";
+        public const string SpecializationType = "Modeler Reference";
 
         public Modeler(IElement element)
         {

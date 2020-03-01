@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
@@ -16,11 +15,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("elementSettings")]
         [XmlArrayItem("elementSetting")]
-        public List<ElementSettings> ElementSettings { get; set; }
+        public ElementSettings[] ElementSettings { get; set; }
 
         [XmlArray("associationSettings")]
         [XmlArrayItem("associationSetting")]
-        public List<AssociationSettings> AssociationSettings { get; set; }
+        public AssociationSettings[] AssociationSettings { get; set; }
 
         [XmlElement("stereotypeSettings")]
         public StereotypeSettings StereotypeSettings { get; set; }
@@ -30,7 +29,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
     {
         [XmlArray("targetTypeOptions")]
         [XmlArrayItem("option")]
-        public List<StereotypeTargetTypeOption> TargetTypeOptions { get; set; }
+        public StereotypeTargetTypeOption[] TargetTypeOptions { get; set; }
     }
 
     public class StereotypeTargetTypeOption
@@ -50,17 +49,8 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class ElementSettings
     {
-        private string _specializationType;
-
-        [XmlAttribute("type")]
-        public string SpecializationType
-        {
-            get => _specializationType ?? SpecializationTypeOld;
-            set => _specializationType = value;
-        }
-
         [XmlElement("specializationType")]
-        public string SpecializationTypeOld { get; set; }
+        public string SpecializationType { get; set; }
 
         [XmlElement("icon")]
         public IconModel Icon { get; set; }
@@ -88,7 +78,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("typeOrder")]
         [XmlArrayItem("type")]
-        public List<string> TypeOrder { get; set; }
+        public string[] TypeOrder { get; set; }
 
         [XmlElement("diagramSettings")]
         public DiagramSettings DiagramSettings { get; set; }
@@ -110,7 +100,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
-        public List<ElementCreationOption> CreationOptions { get; set; }
+        public ElementCreationOption[] CreationOptions { get; set; }
 
         public override string ToString()
         {
@@ -238,11 +228,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
     {
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
-        public List<ElementCreationOption> CreationOptions { get; set; }
+        public ElementCreationOption[] CreationOptions { get; set; }
 
         [XmlArray("typeOrder")]
         [XmlArrayItem("type")]
-        public List<string> TypeOrder { get; set; }
+        public string[] TypeOrder { get; set; }
     }
 
     public class ElementMappingSettings
@@ -274,7 +264,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("icon")]
         public IconModel Icon { get; set; }
-
+    
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}', " +

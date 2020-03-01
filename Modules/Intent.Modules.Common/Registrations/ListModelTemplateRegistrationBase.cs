@@ -54,7 +54,7 @@ namespace Intent.Modules.Common.Registrations
 
             int templateInstancesRegistered = 0;
             var models = GetModels(application);
-            Logging.Log.Debug($"Models found : {models.Count()}");
+            Logging.Log.Debug($"Models found [{typeof(TModel).FullName}] : {models.Count}");
             if (_filterExpression != null)
             {
                 Logging.Log.Debug($"Applying filter : {_filterExpression}");

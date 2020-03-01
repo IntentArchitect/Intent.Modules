@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="83d93fef-d71f-4cad-9dc1-9239a3ccb821" type="Modeler">
+<class id="83d93fef-d71f-4cad-9dc1-9239a3ccb821" type="Modeler Reference">
   <name>Domain</name>
   <isAbstract>false</isAbstract>
   <genericTypes />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="5d03d549-647d-4099-9188-823e8300a717" type="Modeler">
+<class id="5d03d549-647d-4099-9188-823e8300a717" type="Modeler Reference">
   <name>Services</name>
   <isAbstract>false</isAbstract>
   <genericTypes />

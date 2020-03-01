@@ -30,8 +30,9 @@
       <type>lookup-type</type>
       <defaultValue/>
       <lookupTypes>
-        <type>modeler</type>
+        <type>Modeler Reference</type>
       </lookupTypes>
+      <isActiveFunction>CreationMode != 'Single File (No Model)'</isActiveFunction>
     </property>
     <property id="987590ee-a5ca-45ce-b742-0ee764b6b6e9">
       <comment>In the event that a 'Custom' Modeler is chosen, specify the desired Type to use ('object' by default).</comment>
@@ -41,6 +42,7 @@
       <valueOptions />
       <lookupTypes />
       <lookupInternalTargetPropertyId>c2283d15-4b57-4ed9-8aae-6efc73039034</lookupInternalTargetPropertyId>
+      <isActiveFunction>CreationMode != 'Single File (No Model)'</isActiveFunction>
     </property>
     <property id="3CC0FF7A-B4EC-4A2A-AA7F-603640901F30">
       <comment></comment>

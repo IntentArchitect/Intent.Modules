@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="5a410b57-e6a8-4567-b387-71a89290b2c9">
+  <name>Additional Properties</name>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>association end settings</element>
+  </targetElements>
+  <autoAdd>true</autoAdd>
+  <parentFolderId>5a60c1d1-d504-45f6-a32a-de24c7d60e44</parentFolderId>
+  <properties>
+    <property id="c81dddd3-8e13-4fe9-b923-1ad339b30746">
+      <name>Is Navigable Enabled</name>
+      <type>boolean</type>
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="9419ab85-5421-4b54-82f2-da502a9651d6">
+      <name>Is Nullable Enabled</name>
+      <type>boolean</type>
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="9b861271-feb0-4d57-ae86-7e053ed441ae">
+      <name>Is Collection Enabled</name>
+      <type>boolean</type>
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="18131f3e-1c29-4c21-a32a-3946204d0d29">
+      <name>Is Navigable Default</name>
+      <type>boolean</type>
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0">
+      <name>Is Nullable Default</name>
+      <type>boolean</type>
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="bb49808b-06e1-45f1-9f6b-08dede577305">
+      <name>Is Collection Default</name>
+      <type>boolean</type>
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>
