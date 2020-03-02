@@ -45,19 +45,19 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
 
         private PackageSettings GetPackageSettings()
         {
-            var packageSettingsElement = GetSingleChildElement(Model, Constants.ElementSpecializationTypes.PackageSettings);
-            var creationOptionsElement = GetSingleChildElement(packageSettingsElement, Constants.ElementSpecializationTypes.CreationOptions);
+            var packageSettingsElement = GetSingleChildElement(Model, Constants.ElementSpecializationTypes.PackageSettings, allowNull: true);
+            var creationOptionsElement = GetSingleChildElement(packageSettingsElement, Constants.ElementSpecializationTypes.CreationOptions, allowNull: true);
 
-            var creationOptions = GetElementCreationOptions(creationOptionsElement).ToArray();
+            var creationOptions = GetElementCreationOptions(creationOptionsElement);
 
             return new PackageSettings
             {
                 CreationOptions = creationOptions,
-                TypeOrder = creationOptions.Select(x => x.SpecializationType).ToArray()
+                TypeOrder = creationOptions?.Select(x => new TypeOrder() { Type =  x.SpecializationType }).ToList()
             };
         }
 
-        private IEnumerable<ElementCreationOption> GetElementCreationOptions(IElement creationOptionsElement)
+        private List<ElementCreationOption> GetElementCreationOptions(IElement creationOptionsElement)
         {
             return creationOptionsElement?.Attributes
                 .Where(x => x.SpecializationType == Constants.AttributeSpecializationTypes.CreationOption)
@@ -74,7 +74,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                         DefaultName = creationOptions.defaultName,
                         Icon = creationOptions.icon ?? _defaultIconModel
                     };
-                });
+                }).ToList();
         }
 
         private (string text, string shortcut, string defaultName, IconModel icon) GetCreationOptionsFields(IElement elementSettingsElement, IHasStereotypes referencingObject)
@@ -139,7 +139,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     SpecializationType = name,
                     DisplayText = name
                 })
-                .ToArray();
+                .ToList();
 
             return new StereotypeSettings
             {
@@ -147,7 +147,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             };
         }
 
-        private AssociationSettings[] GetAssociationSettings()
+        private List<AssociationSettings> GetAssociationSettings()
         {
             var items = GetAllChildElementsOfTypes(Model, Constants.ElementSpecializationTypes.AssociationSettings)
                 .OrderBy(x => x.Name)
@@ -214,10 +214,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                         }
                     };
                 })
-                .ToArray();
+                .ToList();
         }
 
-        private ElementSettings[] GetElementSettings()
+        private List<ElementSettings> GetElementSettings()
         {
             var items = GetAllChildElementsOfTypes(Model, Constants.ElementSpecializationTypes.ElementSettings)
                 .OrderBy(x => x.Name)
@@ -240,7 +240,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 {
                     var creationOptions =
                         GetElementCreationOptions(GetSingleChildElement(elementSettingsElement, Constants.ElementSpecializationTypes.CreationOptions, true))?
-                        .ToArray();
+                        .ToList();
 
                     var additionalProperties =
                         GetSingleStereotype(elementSettingsElement, Constants.Stereotypes.ElementAdditionalProperties.Name);
@@ -256,7 +256,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                         .Union((attributeSettings ?? Enumerable.Empty<AttributeSettings>()).Select(x =>
                             x.SpecializationType))
                         .Distinct()
-                        .ToArray();
+                        .Select(x => new TypeOrder() { Type = x })
+                        .ToList();
 
                     return new ElementSettings
                     {
@@ -284,7 +285,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                             : null
                     };
                 })
-                .ToArray();
+                .ToList();
         }
 
         private ClassLiteralSettings[] GetLiteralSettings(IElement elementSettingsElement)

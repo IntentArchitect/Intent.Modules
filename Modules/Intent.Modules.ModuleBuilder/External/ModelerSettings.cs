@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
@@ -15,11 +16,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("elementSettings")]
         [XmlArrayItem("elementSetting")]
-        public ElementSettings[] ElementSettings { get; set; }
+        public List<ElementSettings> ElementSettings { get; set; }
 
         [XmlArray("associationSettings")]
         [XmlArrayItem("associationSetting")]
-        public AssociationSettings[] AssociationSettings { get; set; }
+        public List<AssociationSettings> AssociationSettings { get; set; }
 
         [XmlElement("stereotypeSettings")]
         public StereotypeSettings StereotypeSettings { get; set; }
@@ -29,7 +30,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
     {
         [XmlArray("targetTypeOptions")]
         [XmlArrayItem("option")]
-        public StereotypeTargetTypeOption[] TargetTypeOptions { get; set; }
+        public List<StereotypeTargetTypeOption> TargetTypeOptions { get; set; }
     }
 
     public class StereotypeTargetTypeOption
@@ -49,8 +50,18 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class ElementSettings
     {
+        private string _specializationType;
+        private List<TypeOrder> _typeOrder;
+
+        [XmlAttribute("type")]
+        public string SpecializationType
+        {
+            get => _specializationType ?? SpecializationTypeOld;
+            set => _specializationType = value;
+        }
+
         [XmlElement("specializationType")]
-        public string SpecializationType { get; set; }
+        public string SpecializationTypeOld { get; set; }
 
         [XmlElement("icon")]
         public IconModel Icon { get; set; }
@@ -77,8 +88,28 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public bool? AllowFindInView { get; set; }
 
         [XmlArray("typeOrder")]
-        [XmlArrayItem("type")]
-        public string[] TypeOrder { get; set; }
+        [XmlArrayItem("type", typeof(TypeOrder))]
+        public List<TypeOrder> TypeOrder
+        {
+            get => _typeOrder;
+            set
+            {
+                _typeOrder = value;
+                if (_typeOrder == null)
+                {
+                    return;
+                }
+                for (int i = 0; i < _typeOrder.Count; i++)
+                {
+                    if (_typeOrder[i].Order == default(int))
+                    {
+                        _typeOrder[i].Order = i;
+                    }
+                }
+
+                _typeOrder = _typeOrder.OrderBy(x => x.Order).ToList();
+            }
+        }
 
         [XmlElement("diagramSettings")]
         public DiagramSettings DiagramSettings { get; set; }
@@ -100,12 +131,21 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
-        public ElementCreationOption[] CreationOptions { get; set; }
+        public List<ElementCreationOption> CreationOptions { get; set; }
 
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}'";
         }
+    }
+
+    public class TypeOrder
+    {
+        [XmlText]
+        public string Type { get; set; }
+
+        [XmlAttribute("order")]
+        public int Order { get; set; }
     }
 
     public class AttributeSettings
@@ -226,13 +266,35 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class PackageSettings
     {
+        private List<TypeOrder> _typeOrder;
+
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
-        public ElementCreationOption[] CreationOptions { get; set; }
+        public List<ElementCreationOption> CreationOptions { get; set; }
 
         [XmlArray("typeOrder")]
         [XmlArrayItem("type")]
-        public string[] TypeOrder { get; set; }
+        public List<TypeOrder> TypeOrder
+        {
+            get => _typeOrder;
+            set
+            {
+                _typeOrder = value;
+                if (_typeOrder == null)
+                {
+                    return;
+                }
+                for (int i = 0; i < _typeOrder.Count; i++)
+                {
+                    if (_typeOrder[i].Order == default(int))
+                    {
+                        _typeOrder[i].Order = i;
+                    }
+                }
+
+                _typeOrder = _typeOrder.OrderBy(x => x.Order).ToList();
+            }
+        }
     }
 
     public class ElementMappingSettings
@@ -264,7 +326,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("icon")]
         public IconModel Icon { get; set; }
-    
+
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
