@@ -55,15 +55,20 @@ namespace Intent.Modules.Common
             {
                 return defaultIfNotFound;
             }
-            foreach (var tag in stereotype.Properties)
+            foreach (var property in stereotype.Properties)
             {
-                if (tag.Key != propertyName || string.IsNullOrWhiteSpace(tag.Value)) continue;
+                if (property.Key != propertyName || string.IsNullOrWhiteSpace(property.Value)) continue;
 
-                if (Nullable.GetUnderlyingType(typeof(T)) != null)
+                if (Nullable.GetUnderlyingType(typeof(T)) != null) // is nullable type
                 {
-                    return (T)Convert.ChangeType(tag.Value, Nullable.GetUnderlyingType(typeof(T)));
+                    return (T)Convert.ChangeType(property.Value, Nullable.GetUnderlyingType(typeof(T)));
                 }
-                return (T)Convert.ChangeType(tag.Value, typeof(T));
+
+                if (property is IStereotypeProperty<T> stereotypeProperty)
+                {
+                    return stereotypeProperty.Value;
+                }
+                return (T)Convert.ChangeType(property.Value, typeof(T));
             }
             return defaultIfNotFound;
         }
