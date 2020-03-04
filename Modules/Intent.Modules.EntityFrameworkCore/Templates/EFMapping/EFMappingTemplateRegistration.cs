@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Intent.Modelers.Domain.Api;
-using Intent.Modules.Common;
-using Intent.Modules.Common.Registrations;
-using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Modelers.Domain;
+using Intent.Modelers.Domain.Api;
+using Intent.Modules.Common.Registrations;
 using Intent.Templates;
-
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 {

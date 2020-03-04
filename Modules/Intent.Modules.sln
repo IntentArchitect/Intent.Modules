@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1000
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.Contracts", "Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj", "{2972A488-2F67-426D-8762-C85FB36FB32C}"
 EndProject
@@ -72,8 +72,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNetCore.WebApi", "Intent.Modules.AspNetCore.WebApi\Intent.Modules.AspNetCore.WebApi.csproj", "{F66F26B3-E36F-4F27-AF96-E6DDB59CA0D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.EntityFramework.Interop.Unity", "Intent.Modules.EntityFramework.Interop.Unity\Intent.Modules.EntityFramework.Interop.Unity.csproj", "{43F7EB29-6F2C-4C2E-8072-7B9278A38244}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.EntityFrameworkCore", "Intent.Modules.EntityFrameworkCore\Intent.Modules.EntityFrameworkCore.csproj", "{E9452E43-0EFB-448E-93AA-E084644C796E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.EntityFrameworkCore.Repositories", "Intent.Modules.EntityFrameworkCore.Repositories\Intent.Modules.EntityFrameworkCore.Repositories.csproj", "{3695D671-4A21-4586-86F9-434602EA241C}"
 EndProject
@@ -147,7 +145,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unofficial", "Unofficial", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModelerBuilder", "Intent.Modules.ModelerBuilder\Intent.Modules.ModelerBuilder.csproj", "{643AF54D-F97E-401D-860F-AE8F8011B6E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.SoftwareFactory.SDK", "..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj", "{830547C8-938E-4958-AF78-7C2665588A6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.EntityFrameworkCore", "Intent.Modules.EntityFrameworkCore\Intent.Modules.EntityFrameworkCore.csproj", "{E3054741-163B-4DF0-8AE0-EAB74A57341D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -279,10 +277,6 @@ Global
 		{43F7EB29-6F2C-4C2E-8072-7B9278A38244}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43F7EB29-6F2C-4C2E-8072-7B9278A38244}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43F7EB29-6F2C-4C2E-8072-7B9278A38244}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E9452E43-0EFB-448E-93AA-E084644C796E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9452E43-0EFB-448E-93AA-E084644C796E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9452E43-0EFB-448E-93AA-E084644C796E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9452E43-0EFB-448E-93AA-E084644C796E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3695D671-4A21-4586-86F9-434602EA241C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3695D671-4A21-4586-86F9-434602EA241C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3695D671-4A21-4586-86F9-434602EA241C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -395,10 +389,10 @@ Global
 		{643AF54D-F97E-401D-860F-AE8F8011B6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{643AF54D-F97E-401D-860F-AE8F8011B6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{643AF54D-F97E-401D-860F-AE8F8011B6E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{830547C8-938E-4958-AF78-7C2665588A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{830547C8-938E-4958-AF78-7C2665588A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{830547C8-938E-4958-AF78-7C2665588A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{830547C8-938E-4958-AF78-7C2665588A6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3054741-163B-4DF0-8AE0-EAB74A57341D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3054741-163B-4DF0-8AE0-EAB74A57341D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3054741-163B-4DF0-8AE0-EAB74A57341D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3054741-163B-4DF0-8AE0-EAB74A57341D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -439,7 +433,6 @@ Global
 		{9A223AC6-CBF7-418E-93E0-F2326ADDAC07} = {02E19E01-F2C6-4FAC-A57B-2A496B6129AD}
 		{F66F26B3-E36F-4F27-AF96-E6DDB59CA0D2} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 		{43F7EB29-6F2C-4C2E-8072-7B9278A38244} = {DAA8B90E-4708-4842-A22C-916B07A2D048}
-		{E9452E43-0EFB-448E-93AA-E084644C796E} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 		{3695D671-4A21-4586-86F9-434602EA241C} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 		{DC43DD5D-0776-4345-853D-DEF3A95F0CDF} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
 		{F24A3FC4-85CD-4089-9C1C-0A9DA1900B86} = {41EB094E-7906-4D47-85B8-42FAC60C5178}
@@ -474,7 +467,7 @@ Global
 		{1B269103-042F-46EA-BD8C-441CAA0F1192} = {5F5C3F2E-DD11-4F45-A24D-9E8FB109592A}
 		{0888C831-E052-44C0-895E-20690E65B3C7} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{643AF54D-F97E-401D-860F-AE8F8011B6E5} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
-		{830547C8-938E-4958-AF78-7C2665588A6E} = {3621A3CE-CF23-4454-B901-013B2A16A5FE}
+		{E3054741-163B-4DF0-8AE0-EAB74A57341D} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

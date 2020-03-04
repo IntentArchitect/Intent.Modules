@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.Engine;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
@@ -13,7 +12,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
 
 
         public DbMigrationsReadMeTemplate(IProject project)
-            : base (Identifier, project, null)
+            : base(Identifier, project, null)
         {
         }
 
@@ -28,8 +27,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
                 codeGenType: CodeGenType.Basic,
                 fileName: "MIGRATION_README",
                 fileExtension: "txt",
-                defaultLocationInProject: ""
-                );
+                defaultLocationInProject: "");
         }
     }
 }

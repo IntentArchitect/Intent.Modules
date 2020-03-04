@@ -3,7 +3,6 @@ using Intent.Modules.Common.Registrations;
 using Intent.Engine;
 using Intent.Templates;
 
-
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
 {
     [Description(DbMigrationsReadMeTemplate.Identifier)]
