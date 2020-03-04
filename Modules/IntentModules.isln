@@ -10,6 +10,5 @@
     <application id="9605cb81-cdac-46ca-95e8-b6d53256088e" relativePath="Intent.Modules.Convention.ServiceImplementations\Convention.ServiceImplementations.application.config" />
     <application id="1cecc65d-e804-4de6-a27f-e8e4ad0190d7" relativePath="Intent.Modules.Angular\Angular.application.config" />
     <application id="b5bde67b-ed7f-47e8-a39a-fd04c0edb5ef" relativePath="Intent.Modules.ModelerBuilder\ModelerBuilder.application.config" />
-    <application id="550a7712-04ba-4a24-a9b0-48712c92a369" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
   </applications>
 </solution>
