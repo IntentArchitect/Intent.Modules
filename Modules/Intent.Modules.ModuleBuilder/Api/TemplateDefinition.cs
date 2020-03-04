@@ -9,11 +9,9 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     internal class TemplateDefinition : ModuleBuilderElementBase, ITemplateDefinition
     {
-        private readonly ModuleBuilderMetadataProvider _metadataProvider;
 
-        public TemplateDefinition(IElement element, ModuleBuilderMetadataProvider metadataProvider) : base(element)
+        public TemplateDefinition(IElement element) : base(element)
         {
-            _metadataProvider = metadataProvider;
         }
 
         public string GetModelerName()
@@ -34,8 +32,8 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IModeler GetModeler()
         {
-            var modelerId = this.GetStereotypeProperty(ModelExtensions.TemplateSettingsStereotype, "Modeler", string.Empty);
-            return _metadataProvider.GetModelers(Application).SingleOrDefault(x => x.Id == modelerId);
+            var element = this.GetStereotypeProperty<IElement>(ModelExtensions.TemplateSettingsStereotype, "Modeler");
+            return element == null ? null : new Modeler(element);
         }
 
         public IEnumerable<ITemplateDependencyDefinition> GetTemplateDependencies()

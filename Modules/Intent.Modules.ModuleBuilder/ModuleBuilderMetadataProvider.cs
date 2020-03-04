@@ -18,7 +18,7 @@ namespace Intent.Modules.ModuleBuilder
         public IEnumerable<ITemplateDefinition> GetTemplateDefinitions()
         {
             var templates = _metadataManager.GetMetadata<IElement>("Module Builder").Where(x => x.IsTemplate()).ToList();
-            var result = templates.Select(x => new TemplateDefinition(x, this)).ToList();
+            var result = templates.Select(x => new TemplateDefinition(x)).ToList();
             return result;
         }
 
