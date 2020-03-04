@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Intent.Metadata\**" />
+    <EmbeddedResource Remove="Intent.Metadata\**" />
+    <None Remove="Intent.Metadata\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="metadata\Intent.ModuleBuilder\Stereotypes\Template Settings.xml" />
   </ItemGroup>
 
@@ -116,6 +122,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>RoslynProjectItemTemplatePartialTemplate.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Api\Modeler\" />
   </ItemGroup>
 
 </Project>

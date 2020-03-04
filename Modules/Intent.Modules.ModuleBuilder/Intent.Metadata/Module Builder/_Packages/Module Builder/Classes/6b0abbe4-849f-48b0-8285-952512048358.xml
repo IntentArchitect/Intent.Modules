@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="6b0abbe4-849f-48b0-8285-952512048358" type="Creation Options">
+  <name>Creation Options</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>26f606b9-71e2-4e21-b185-04f90cb7d603</parentFolderId>
+  <literals />
+  <attributes>
+    <attribute id="34a0fc50-2465-4a53-bfea-e505c728bde5" type="Creation Option">
+      <name>New C# Template</name>
+      <typeReference id="a1040b64-4158-407d-82c7-1cc0ed50428e">
+        <typeId>1cc4388d-3e66-4079-9101-9ed4f5ffbdb7</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="0a1525e1-7875-4737-82c8-77e0d2baf222" type="Creation Option">
+      <name>New File Template</name>
+      <typeReference id="05e590cb-5d25-44f6-97ae-a63e3f3990af">
+        <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="2822e884-39f3-487d-966a-b00a6fe497f9" type="Creation Option">
+      <name>New Template Decorator</name>
+      <typeReference id="2ae697b8-16d9-4921-9f39-b0f3b9afb424">
+        <typeId>f0f46278-29ea-42bd-9206-0e7034f623bc</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="37980f6e-e789-42d9-940a-945c09e5bc93" type="Creation Option">
+      <name>New Metadata Folder</name>
+      <typeReference id="e4f3e742-0594-43ac-926e-1a2eb182a455">
+        <typeId>10c058e5-d1c7-46bd-a912-db83eab42ae1</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="9966502f-91d4-43ac-a4d9-58861e64bd72" type="Creation Option">
+      <name>New Modeler Reference</name>
+      <typeReference id="6b10d1da-3618-4a1a-b85b-af5ee5db78c5">
+        <typeId>4c7af41a-663f-4f7e-93a9-46a9006b6a88</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="b35841cf-62f3-4559-a072-353b8f33f393" type="Creation Option">
+      <name>New Type</name>
+      <typeReference id="bc3559df-6b9c-4144-ba61-947b009ea94f">
+        <typeId>3c00249f-f1d9-47a7-b7fc-028e9aaf9bce</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="b8bcd440-0dc5-4e0e-9443-d9e693f1a5cd" type="Creation Option">
+      <name>New Folder</name>
+      <typeReference id="70984ff2-3602-46c7-a8da-3fc5545c9051">
+        <typeId>26f606b9-71e2-4e21-b185-04f90cb7d603</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+  </attributes>
+  <operations />
+  <stereotypes />
+</class>

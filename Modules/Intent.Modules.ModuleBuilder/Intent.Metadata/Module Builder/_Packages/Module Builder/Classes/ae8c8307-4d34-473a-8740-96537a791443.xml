@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ae8c8307-4d34-473a-8740-96537a791443" type="Modeler">
+  <name>ModuleBuilder</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>973ca1d1-54fb-4d40-90c4-dae00cbdaef4</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+</class>

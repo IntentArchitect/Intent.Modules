@@ -56,6 +56,7 @@
                     public const string Text = "Text";
                     public const string Shortcut = "Shortcut";
                     public const string DefaultName = "Default Name";
+                    public const string TypeOrder = "Type Order";
                 }
             }
 

@@ -49,7 +49,7 @@ namespace Intent.Modules.ModuleBuilder
 
         public static bool IsModeler(this IElement model)
         {
-            return model.SpecializationType == Modeler.SpecializationType;
+            return model.SpecializationType == ModelerReference.SpecializationType;
         }
     }
 }

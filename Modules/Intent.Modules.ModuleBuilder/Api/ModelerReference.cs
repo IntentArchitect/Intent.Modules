@@ -6,12 +6,12 @@ using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class Modeler : IModeler, IEquatable<Modeler>
+    internal class ModelerReference : IModelerReference, IEquatable<Modeler>
     {
         private readonly IElement _element;
         public const string SpecializationType = "Modeler Reference";
 
-        public Modeler(IElement element)
+        public ModelerReference(IElement element)
         {
             if (element.SpecializationType != SpecializationType)
             {

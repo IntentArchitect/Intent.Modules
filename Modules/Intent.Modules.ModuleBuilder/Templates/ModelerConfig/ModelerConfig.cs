@@ -6,22 +6,26 @@ using System.Text;
 using System.Xml.Serialization;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
-using Intent.IArchitect.Common.Types;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModelerBuilder;
 using Intent.Modules.ModelerBuilder.External;
+using Intent.Modules.ModuleBuilder.Api.Modeler;
 using Intent.Templates;
+using IconModel = Intent.IArchitect.Agent.Persistence.Model.Common.IconModel;
+using IconType = Intent.IArchitect.Common.Types.IconType;
+using PackageSettings = Intent.IArchitect.Agent.Persistence.Model.Common.PackageSettings;
+using TypeOrder = Intent.IArchitect.Agent.Persistence.Model.Common.TypeOrder;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
 {
-    public class ModelerConfig : IntentProjectItemTemplateBase<IElement>
+    public class ModelerConfig : IntentProjectItemTemplateBase<Modeler>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ModelerConfig";
         private static readonly IconModel _defaultIconModel = new IconModel { Type = IconType.FontAwesome, Source = "file-o" };
 
-        public ModelerConfig(IProject project, IElement model) : base(TemplateId, project, model)
+        public ModelerConfig(IProject project, Modeler model) : base(TemplateId, project, model)
         {
         }
 
@@ -35,49 +39,64 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             var modelerSettings = applicationModelerModeler.Settings;
 
             //modelerSettings.DiagramSettings // TODO JL
-            modelerSettings.PackageSettings = GetPackageSettings();
-            modelerSettings.ElementSettings = GetElementSettings();
+            modelerSettings.PackageSettings = GetPackageSettings(Model.PackageSettings);
+            modelerSettings.ElementSettings = GetElementSettings(Model.ElementSettings);
             modelerSettings.AssociationSettings = GetAssociationSettings();
             modelerSettings.StereotypeSettings = GetStereotypeSettings();
 
             return Serialize(applicationModelerModeler);
         }
 
-        private PackageSettings GetPackageSettings()
+        private PackageSettings GetPackageSettings(Api.Modeler.PackageSettings settings)
         {
-            var packageSettingsElement = GetSingleChildElement(Model, Constants.ElementSpecializationTypes.PackageSettings, allowNull: true);
-            var creationOptionsElement = GetSingleChildElement(packageSettingsElement, Constants.ElementSpecializationTypes.CreationOptions, allowNull: true);
-
-            var creationOptions = GetElementCreationOptions(creationOptionsElement);
-
             return new PackageSettings
             {
-                CreationOptions = creationOptions,
-                TypeOrder = creationOptions?.Select(x => new TypeOrder() { Type =  x.SpecializationType }).ToList()
+                CreationOptions = settings.CreationOptions.Select(GetElementCreationOptions).ToList(),
+            };
+            //var packageSettingsElement = GetSingleChildElement(Model, Constants.ElementSpecializationTypes.PackageSettings, allowNull: true);
+            //var creationOptionsElement = GetSingleChildElement(packageSettingsElement, Constants.ElementSpecializationTypes.CreationOptions, allowNull: true);
+
+            //var creationOptions = GetElementCreationOptions(creationOptionsElement);
+
+            //return new PackageSettings
+            //{
+            //    CreationOptions = creationOptions,
+            //};
+        }
+
+        private ElementCreationOption GetElementCreationOptions(CreationOption option)
+        {
+            return new ElementCreationOption
+            {
+                SpecializationType = option.SpecializationType,
+                Text = option.Text,
+                Shortcut = option.Shortcut,
+                DefaultName = option.DefaultName,
+                Icon = option.Icon != null ? new IconModel { Type =  option.Icon.Type, Source = option.Icon.Source} : _defaultIconModel
             };
         }
 
-        private List<ElementCreationOption> GetElementCreationOptions(IElement creationOptionsElement)
-        {
-            return creationOptionsElement?.Attributes
-                .Where(x => x.SpecializationType == Constants.AttributeSpecializationTypes.CreationOption)
-                .Select(x =>
-                {
-                    var elementSettings = x.Type.Element;
-                    var creationOptions = GetCreationOptionsFields(elementSettings, x);
+        //private List<ElementCreationOption> GetElementCreationOptions(IElement creationOptionsElement)
+        //{
+        //    return creationOptionsElement?.Attributes
+        //        .Where(x => x.SpecializationType == Constants.AttributeSpecializationTypes.CreationOption)
+        //        .Select(x =>
+        //        {
+        //            var elementSettings = x.Type.Element;
+        //            var creationOptions = GetCreationOptionsFields(elementSettings, x);
 
-                    return new ElementCreationOption
-                    {
-                        SpecializationType = elementSettings.Name,
-                        Text = creationOptions.text,
-                        Shortcut = creationOptions.shortcut,
-                        DefaultName = creationOptions.defaultName,
-                        Icon = creationOptions.icon ?? _defaultIconModel
-                    };
-                }).ToList();
-        }
+        //            return new ElementCreationOption
+        //            {
+        //                SpecializationType = elementSettings.Name,
+        //                Text = creationOptions.text,
+        //                Shortcut = creationOptions.shortcut,
+        //                DefaultName = creationOptions.defaultName,
+        //                Icon = creationOptions.icon ?? _defaultIconModel
+        //            };
+        //        }).ToList();
+        //}
 
-        private (string text, string shortcut, string defaultName, IconModel icon) GetCreationOptionsFields(IElement elementSettingsElement, IHasStereotypes referencingObject)
+        private (string text, string shortcut, string defaultName, IconModel icon, int? typeOrder) GetCreationOptionsFields(IElement elementSettingsElement, IHasStereotypes referencingObject)
         {
             // TODO JL: This is not respecting overrides from the referencingObject, only the defaults for now
 
@@ -85,13 +104,20 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             var textProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Text);
             var defaultNameProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.DefaultName);
             var shortcutProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Shortcut);
+            int.TryParse(GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Shortcut, true)?.Value, out var typeOrderProperty);
             var iconModel = GetIcon(elementSettingsElement, overrideStereotypes: referencingObject);
 
             return (
                 text: ValueOrFallback(textProperty, $"New {elementSettingsElement.Name}"),
                 shortcut: ValueOrFallback(shortcutProperty, null),
                 defaultName: ValueOrFallback(defaultNameProperty, $"New {elementSettingsElement.Name}"),
-                icon: iconModel);
+                icon: iconModel,
+                typeOrder: typeOrderProperty);
+        }
+
+        private IconModel GetIcon(Api.Modeler.IconModel icon)
+        {
+            return icon != null ? new IconModel {Type = icon.Type, Source = icon.Source} : null;
         }
 
         private IconModel GetIcon(IElement elementSettingsElement, bool expanded = false, IHasStereotypes overrideStereotypes = null)
@@ -217,75 +243,102 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 .ToList();
         }
 
-        private List<ElementSettings> GetElementSettings()
+        private List<ElementSettings> GetElementSettings(IList<Api.Modeler.ElementSetting> elementSettings)
         {
-            var items = GetAllChildElementsOfTypes(Model, Constants.ElementSpecializationTypes.ElementSettings)
-                .OrderBy(x => x.Name)
-                .ToArray();
-
-            var duplicates = items
-                .GroupBy(x => x.Name)
-                .Where(x => x.Count() > 1)
-                .Select(x => x.Key)
-                .DefaultIfEmpty()
-                .Aggregate((x, y) => $"{x}{Environment.NewLine}{y}");
-            if (!string.IsNullOrWhiteSpace(duplicates))
-            {
-                throw new Exception($"More than one '{Constants.ElementSpecializationTypes.ElementSettings}' " +
-                                    $"exist for the following:{Environment.NewLine}{duplicates}");
-            }
-
-            return items
-                .Select(elementSettingsElement =>
+            return elementSettings.Select(x =>
+                new ElementSettings
                 {
-                    var creationOptions =
-                        GetElementCreationOptions(GetSingleChildElement(elementSettingsElement, Constants.ElementSpecializationTypes.CreationOptions, true))?
-                        .ToList();
-
-                    var additionalProperties =
-                        GetSingleStereotype(elementSettingsElement, Constants.Stereotypes.ElementAdditionalProperties.Name);
-
-                    var attributeSettings =
-                        GetSingleChildElement(elementSettingsElement, Constants.ElementSpecializationTypes.AttributeSettings, true)?
-                        .ChildElements.Where(x => x.SpecializationType == Constants.ElementSpecializationTypes.AttributeSetting)
-                        .Select(GetAttributeSetting)
-                        .ToArray();
-
-                    var typeOrder = (creationOptions ?? Enumerable.Empty<ElementCreationOption>())
-                        .Select(x => x.SpecializationType)
-                        .Union((attributeSettings ?? Enumerable.Empty<AttributeSettings>()).Select(x =>
-                            x.SpecializationType))
-                        .Distinct()
-                        .Select(x => new TypeOrder() { Type = x })
-                        .ToList();
-
-                    return new ElementSettings
-                    {
-                        SpecializationType = elementSettingsElement.Name,
-                        Icon = GetIcon(elementSettingsElement),
-                        ExpandedIcon = GetIcon(elementSettingsElement, expanded: true),
-                        AllowRename = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowRename),
-                        AllowAbstract = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowAbstract),
-                        AllowGenericTypes = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowGenericTypes),
-                        AllowMapping = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowMapping),
-                        AllowSorting = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowSorting),
-                        AllowFindInView = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowFindInView),
-                        DiagramSettings = null, // TODO JL
-                        LiteralSettings = GetLiteralSettings(elementSettingsElement), // TODO JL
-                        AttributeSettings = attributeSettings?.Any() == true
-                            ? attributeSettings
+                    SpecializationType = x.SpecializationType,
+                    Icon = GetIcon(x.Icon),
+                    ExpandedIcon = GetIcon(x.ExpandedIcon),
+                    AllowRename = x.AllowRename,
+                    AllowAbstract = x.AllowAbstract,
+                    AllowGenericTypes = x.AllowGenericTypes,
+                    AllowMapping = x.AllowMapping,
+                    AllowSorting = x.AllowSorting,
+                    AllowFindInView = x.AllowFindInView,
+                    DiagramSettings = null, // TODO JL
+                    LiteralSettings = new ClassLiteralSettings[0], // TODO JL
+                    AttributeSettings = x.AttributeSettings?.Any() == true
+                            ? x.AttributeSettings.Select(GetAttributeSetting).ToArray()
                             : null,
-                        OperationSettings = null, // TODO JL
-                        MappingSettings = null, // TODO JL
-                        CreationOptions = creationOptions?.Any() == true
-                            ? creationOptions
+                    OperationSettings = null, // TODO JL
+                    MappingSettings = null, // TODO JL
+                    CreationOptions = x.CreationOptions?.Any() == true
+                            ? x.CreationOptions.Select(GetElementCreationOptions).ToList()
                             : null,
-                        TypeOrder = typeOrder.Any()
-                            ? typeOrder
+                    TypeOrder = x.TypeOrder.Any()
+                            ? x.TypeOrder.Select((t, index) => new TypeOrder { Type = t.Type, Order = t.Order ?? index }).ToList()
                             : null
-                    };
                 })
                 .ToList();
+            //var items = GetAllChildElementsOfTypes(Model, Constants.ElementSpecializationTypes.ElementSettings)
+            //    .OrderBy(x => x.Name)
+            //    .ToArray();
+
+            //var duplicates = items
+            //    .GroupBy(x => x.Name)
+            //    .Where(x => x.Count() > 1)
+            //    .Select(x => x.Key)
+            //    .DefaultIfEmpty()
+            //    .Aggregate((x, y) => $"{x}{Environment.NewLine}{y}");
+            //if (!string.IsNullOrWhiteSpace(duplicates))
+            //{
+            //    throw new Exception($"More than one '{Constants.ElementSpecializationTypes.ElementSettings}' " +
+            //                        $"exist for the following:{Environment.NewLine}{duplicates}");
+            //}
+
+            //return items
+            //    .Select(elementSettingsElement =>
+            //    {
+            //        var creationOptions =
+            //            GetElementCreationOptions(GetSingleChildElement(elementSettingsElement, Constants.ElementSpecializationTypes.CreationOptions, true))?
+            //            .ToList();
+
+            //        var additionalProperties =
+            //            GetSingleStereotype(elementSettingsElement, Constants.Stereotypes.ElementAdditionalProperties.Name);
+
+            //        var attributeSettings =
+            //            GetSingleChildElement(elementSettingsElement, Constants.ElementSpecializationTypes.AttributeSettings, true)?
+            //            .ChildElements.Where(x => x.SpecializationType == Constants.ElementSpecializationTypes.AttributeSetting)
+            //            .Select(GetAttributeSetting)
+            //            .ToArray();
+
+            //        var typeOrder = (creationOptions ?? Enumerable.Empty<ElementCreationOption>())
+            //            .Select(x => x.SpecializationType)
+            //            .Union((attributeSettings ?? Enumerable.Empty<AttributeSettings>()).Select(x =>
+            //                x.SpecializationType))
+            //            .Distinct()
+            //            .Select(x => new TypeOrder() { Type = x })
+            //            .ToList();
+
+            //        return new ElementSettings
+            //        {
+            //            SpecializationType = elementSettingsElement.Name,
+            //            Icon = GetIcon(elementSettingsElement),
+            //            ExpandedIcon = GetIcon(elementSettingsElement, expanded: true),
+            //            AllowRename = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowRename),
+            //            AllowAbstract = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowAbstract),
+            //            AllowGenericTypes = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowGenericTypes),
+            //            AllowMapping = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowMapping),
+            //            AllowSorting = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowSorting),
+            //            AllowFindInView = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowFindInView),
+            //            DiagramSettings = null, // TODO JL
+            //            LiteralSettings = GetLiteralSettings(elementSettingsElement), // TODO JL
+            //            AttributeSettings = attributeSettings?.Any() == true
+            //                ? attributeSettings
+            //                : null,
+            //            OperationSettings = null, // TODO JL
+            //            MappingSettings = null, // TODO JL
+            //            CreationOptions = creationOptions?.Any() == true
+            //                ? creationOptions
+            //                : null,
+            //            TypeOrder = typeOrder.Any()
+            //                ? typeOrder
+            //                : null
+            //        };
+            //    })
+            //    .ToList();
         }
 
         private ClassLiteralSettings[] GetLiteralSettings(IElement elementSettingsElement)
@@ -322,34 +375,48 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 .ToArray();
         }
 
-        private AttributeSettings GetAttributeSetting(IElement element)
+        private AttributeSettings GetAttributeSetting(AttributeSetting setting)
         {
-            var additionalProperties = GetSingleStereotype(element, Constants.Stereotypes.AttributeAdditionalProperties.Name);
-            var text = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.Text);
-            var shortcut = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.Shortcut);
-            var displayFunction = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.DisplayFunction);
-            var defaultName = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.DefaultName);
-            var allowRename = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.AllowRename);
-            var allowDuplicateNames = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.AllowDuplicateNames);
-            var allowFindInView = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.AllowFindInView);
-            var defaultTypeId = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.DefaultTypeId);
-
-            return new AttributeSettings
+            return new AttributeSettings()
             {
-                SpecializationType = element.Name,
-                Icon = GetIcon(element) ?? _defaultIconModel,
-                Text = ValueOrFallback(text, $"New {element.Name}"),
-                Shortcut = ValueOrFallback(shortcut, null),
-                DisplayFunction = ValueOrFallback(displayFunction, null),
-                DefaultName = ValueOrFallback(defaultName, $"New {element.Name}"),
-                AllowRename = allowRename,
-                AllowDuplicateNames = allowDuplicateNames,
-                AllowFindInView = allowFindInView,
-                DefaultTypeId = ValueOrFallback(defaultTypeId, null),
-                TargetTypes = element.Attributes
-                    .Select(x => x.Type.Element.Name)
-                    .ToArray()
+                SpecializationType = setting.SpecializationType,
+                Icon = GetIcon(setting.Icon) ?? _defaultIconModel,
+                Text = setting.Text,
+                Shortcut = setting.Shortcut,
+                DisplayFunction = setting.DisplayFunction,
+                DefaultName = setting.DefaultName,
+                AllowRename = setting.AllowRename,
+                AllowDuplicateNames = setting.AllowDuplicateNames,
+                AllowFindInView = setting.AllowFindInView,
+                DefaultTypeId = setting.DefaultTypeId,
+                TargetTypes = setting.TargetTypes
             };
+            //var additionalProperties = GetSingleStereotype(element, Constants.Stereotypes.AttributeAdditionalProperties.Name);
+            //var text = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.Text);
+            //var shortcut = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.Shortcut);
+            //var displayFunction = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.DisplayFunction);
+            //var defaultName = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.DefaultName);
+            //var allowRename = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.AllowRename);
+            //var allowDuplicateNames = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.AllowDuplicateNames);
+            //var allowFindInView = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.AllowFindInView);
+            //var defaultTypeId = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.DefaultTypeId);
+
+            //return new AttributeSettings
+            //{
+            //    SpecializationType = element.Name,
+            //    Icon = GetIcon(element) ?? _defaultIconModel,
+            //    Text = ValueOrFallback(text, $"New {element.Name}"),
+            //    Shortcut = ValueOrFallback(shortcut, null),
+            //    DisplayFunction = ValueOrFallback(displayFunction, null),
+            //    DefaultName = ValueOrFallback(defaultName, $"New {element.Name}"),
+            //    AllowRename = allowRename,
+            //    AllowDuplicateNames = allowDuplicateNames,
+            //    AllowFindInView = allowFindInView,
+            //    DefaultTypeId = ValueOrFallback(defaultTypeId, null),
+            //    TargetTypes = element.Attributes
+            //        .Select(x => x.Type.Element.Name)
+            //        .ToArray()
+            //};
         }
 
         private static IEnumerable<IElement> GetAllChildElementsOfTypes(IElement element, params string[] specializationTypes)
