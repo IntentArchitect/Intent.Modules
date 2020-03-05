@@ -30,10 +30,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             return GetModeler()?.ModelTypes.SingleOrDefault(x => x.Id == modelTypeId);
         }
 
-        public IModeler GetModeler()
+        public IModelerReference GetModeler()
         {
             var element = this.GetStereotypeProperty<IElement>(ModelExtensions.TemplateSettingsStereotype, "Modeler");
-            return element == null ? null : new Modeler(element);
+            return element == null ? null : new ModelerReference(element);
         }
 
         public IEnumerable<ITemplateDependencyDefinition> GetTemplateDependencies()

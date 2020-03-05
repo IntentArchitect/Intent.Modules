@@ -22,10 +22,12 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
             Name = element.Name;
             PackageSettings = new PackageSettings(element.ChildElements.SingleOrDefault(x => x.SpecializationType == PackageSettings.SpecializationType));
             ElementSettings = element.ChildElements.Where(x => x.SpecializationType == ElementSetting.RequiredSpecializationType).Select(x => new ElementSetting(x)).ToList();
+            AssociationSettings = element.ChildElements.Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType).Select(x => new ElementSetting(x)).ToList();
         }
 
         public PackageSettings PackageSettings { get; }
         public IList<ElementSetting> ElementSettings { get; }
+        public IList<AssociationSetting> AssociationSettings { get; }
         public string Name { get; }
     }
 
@@ -33,41 +35,6 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
     {
         public int? Order { get; set; }
         public string Type { get; set; }
-    }
-
-    public class CreationOption
-    {
-        public const string RequiredSpecializationType = "Creation Option";
-
-        public CreationOption(IAttribute attribute)
-        {
-            if (attribute.SpecializationType != RequiredSpecializationType)
-            {
-                throw new ArgumentException($"Invalid element [{attribute}]");
-            }
-
-            SpecializationType = attribute.Type.Element.SpecializationType;
-            Text = attribute.Name;
-            Shortcut = attribute.Type.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
-            DefaultName = attribute.Type.Element.GetStereotypeProperty<string>("Default Creation Options", "Default Name") ?? $"New{attribute.Type.Element.Name.Replace(" " ,"")}";
-            Icon = attribute.Type.Element.HasStereotype("Icon (Full)") ? new IconModel(attribute.Type.Element.GetStereotype("Icon (Full)")) : null;
-        }
-
-        public string SpecializationType { get; }
-
-        public string Text { get; }
-
-        public string Shortcut { get; }
-
-        public string DefaultName { get; }
-
-        public IconModel Icon { get; }
-
-        public override string ToString()
-        {
-            return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
-                   $"{nameof(Text)} = '{Text}'";
-        }
     }
 
     public class IconModel
@@ -80,6 +47,52 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
 
         public IconType Type { get; set; }
         public string Source { get; set; }
+    }
+
+    public class AssociationSetting
+    {
+        public const string RequiredSpecializationType = "Association Setting";
+
+        public AssociationSetting(IElement element)
+        {
+            if (element.SpecializationType != RequiredSpecializationType)
+            {
+                throw new ArgumentException($"Invalid element [{element}]");
+            }
+
+            SpecializationType = element.Name;
+            Icon = new IconModel(element.GetStereotype("Icon (Full)"));
+        }
+
+        public string SpecializationType { get; set; }
+
+        public IconModel Icon { get; set; }
+
+        public AssociationEndSetting SourceEnd { get; set; }
+
+        public AssociationEndSetting TargetEnd { get; set; }
+
+        public override string ToString()
+        {
+            return $"{nameof(SpecializationType)} = '{SpecializationType}'";
+        }
+    }
+
+    public class AssociationEndSetting
+    {
+        public string[] TargetTypes { get; set; }
+
+        public bool? IsNavigableEnabled { get; set; }
+
+        public bool? IsNullableEnabled { get; set; }
+
+        public bool? IsCollectionEnabled { get; set; }
+
+        public bool? IsNavigableDefault { get; set; }
+
+        public bool? IsNullableDefault { get; set; }
+
+        public bool? IsCollectionDefault { get; set; }
     }
 
     public class OperationSetting
