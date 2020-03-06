@@ -17,6 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
             }
 
             CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
+            TypeOrder = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new TypeOrder(x)).ToList();
         }
 
         public IList<CreationOption> CreationOptions { get; set; }

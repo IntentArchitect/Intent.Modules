@@ -94,20 +94,18 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
             get => _typeOrder;
             set
             {
-                _typeOrder = value;
-                if (_typeOrder == null)
+                if (value == null)
                 {
+                    _typeOrder = null;
                     return;
                 }
-                for (int i = 0; i < _typeOrder.Count; i++)
-                {
-                    if (_typeOrder[i].Order == default(int))
-                    {
-                        _typeOrder[i].Order = i;
-                    }
-                }
 
-                _typeOrder = _typeOrder.OrderBy(x => x.Order).ToList();
+                _typeOrder = new List<TypeOrder>();
+                foreach (var typeOrder in value)
+                {
+                    _typeOrder.Insert(typeOrder.Order != null ? Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count) : _typeOrder.Count, typeOrder);
+                    typeOrder.Order = null;
+                }
             }
         }
 
@@ -141,11 +139,17 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class TypeOrder
     {
+        private string _order;
+
         [XmlText]
         public string Type { get; set; }
 
         [XmlAttribute("order")]
-        public int Order { get; set; }
+        public string Order
+        {
+            get => _order;
+            set => _order = int.TryParse(value, out var o) ? o.ToString() : null;
+        }
     }
 
     public class AttributeSettings
@@ -279,20 +283,18 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
             get => _typeOrder;
             set
             {
-                _typeOrder = value;
-                if (_typeOrder == null)
+                if (value == null)
                 {
+                    _typeOrder = null;
                     return;
                 }
-                for (int i = 0; i < _typeOrder.Count; i++)
-                {
-                    if (_typeOrder[i].Order == default(int))
-                    {
-                        _typeOrder[i].Order = i;
-                    }
-                }
 
-                _typeOrder = _typeOrder.OrderBy(x => x.Order).ToList();
+                _typeOrder = new List<TypeOrder>();
+                foreach (var typeOrder in value)
+                {
+                    _typeOrder.Insert(typeOrder.Order != null ? Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count) : _typeOrder.Count, typeOrder);
+                    typeOrder.Order = null;
+                }
             }
         }
     }
@@ -312,6 +314,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class ElementCreationOption
     {
+        [XmlAttribute("order")]
+        public string Order { get; set; }
+
         [XmlElement("specializationType")]
         public string SpecializationType { get; set; }
 

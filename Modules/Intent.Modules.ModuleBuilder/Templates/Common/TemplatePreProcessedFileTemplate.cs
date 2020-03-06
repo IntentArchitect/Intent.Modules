@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
@@ -51,7 +52,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
             var partialTemplateMetadata = partialTemplateInstance.GetMetadata();
             var templateGenerator = new TemplateGenerator();
 
-            templateGenerator.PreprocessTemplate(
+            var hasErrors = templateGenerator.PreprocessTemplate(
                 inputFileName: string.Empty,
                 className: partialTemplateMetadata.CustomMetadata["ClassName"],
                 classNamespace: partialTemplateMetadata.CustomMetadata["Namespace"],
@@ -59,6 +60,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
                 language: out _,
                 references: out _,
                 outputContent: out var outputContent);
+
+            if (hasErrors)
+            {
+                throw new Exception($"An error was found while generating the .cs code-behind file for template [{t4TemplateInstance}]: {string.Join(";", templateGenerator.Errors)}");
+            }
 
             return outputContent;
         }

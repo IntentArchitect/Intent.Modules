@@ -21,28 +21,44 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
 
             Name = element.Name;
             PackageSettings = new PackageSettings(element.ChildElements.SingleOrDefault(x => x.SpecializationType == PackageSettings.SpecializationType));
-            ElementSettings = element.ChildElements.Where(x => x.SpecializationType == ElementSetting.RequiredSpecializationType).Select(x => new ElementSetting(x)).ToList();
-            AssociationSettings = element.ChildElements.Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType).Select(x => new ElementSetting(x)).ToList();
+            ElementSettings = element.ChildElements.Where(x => x.SpecializationType == ElementSetting.RequiredSpecializationType).Select(x => new ElementSetting(x)).OrderBy(x => x.SpecializationType).ToList();
+            AssociationSettings = element.ChildElements.Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType).Select(x => new AssociationSetting(x)).OrderBy(x => x.SpecializationType).ToList();
         }
 
+        public string Name { get; }
         public PackageSettings PackageSettings { get; }
         public IList<ElementSetting> ElementSettings { get; }
         public IList<AssociationSetting> AssociationSettings { get; }
-        public string Name { get; }
     }
 
     public class TypeOrder
     {
+        public TypeOrder(IAttribute attribute)
+        {
+            Order = attribute.GetStereotypeProperty("Creation Options", "Type Order", attribute.Type.Element.GetStereotypeProperty<int?>("Default Creation Options", "Type Order", null));
+            Type = attribute.Type.Element.Name;
+        }
         public int? Order { get; set; }
         public string Type { get; set; }
     }
 
     public class IconModel
     {
-        public IconModel(IStereotype stereotype)
+        public static IconModel CreateIfSpecified(IStereotype stereotype)
         {
-            Type = (IconType) Enum.Parse(typeof(IconType), stereotype.GetProperty<string>("Type"));
-            Source = stereotype.GetProperty<string>("Source");
+            if (stereotype == null)
+            {
+                return null;
+            }
+            if (!Enum.TryParse<IconType>(stereotype.GetProperty<string>("Type"), out var type))
+            {
+                type = IconType.UrlImagePath;
+            }
+            return new IconModel()
+            {
+                Type = type,
+                Source = stereotype.GetProperty<string>("Source"),
+            };
         }
 
         public IconType Type { get; set; }
@@ -61,7 +77,9 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
             }
 
             SpecializationType = element.Name;
-            Icon = new IconModel(element.GetStereotype("Icon (Full)"));
+            Icon = IconModel.CreateIfSpecified(element.GetStereotype("Icon (Full)"));
+            //SourceEnd =
+            throw new NotImplementedException();
         }
 
         public string SpecializationType { get; set; }
@@ -93,10 +111,5 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
         public bool? IsNullableDefault { get; set; }
 
         public bool? IsCollectionDefault { get; set; }
-    }
-
-    public class OperationSetting
-    {
-
     }
 }

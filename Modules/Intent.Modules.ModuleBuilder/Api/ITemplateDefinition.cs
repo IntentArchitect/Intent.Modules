@@ -8,7 +8,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public interface ITemplateDefinition : IModuleBuilderElement
     {
         IModelerModelType GetModelType();
-        IModeler GetModeler();
+        IModelerReference GetModeler();
         string GetModelTypeName();
         string GetModelerName();
     }

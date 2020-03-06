@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d2ab8083-3750-4656-bfd5-f169cdb56178" type="Module Metadata">
+  <name>metadata</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>5ac7c1ad-1f54-46e0-8216-37d8f0353db8</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+</class>

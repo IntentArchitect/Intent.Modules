@@ -17,7 +17,18 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </attribute>
     <attribute id="0a1525e1-7875-4737-82c8-77e0d2baf222" type="Creation Option">
       <name>New File Template</name>
@@ -29,7 +40,18 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </attribute>
     <attribute id="2822e884-39f3-487d-966a-b00a6fe497f9" type="Creation Option">
       <name>New Template Decorator</name>
@@ -41,19 +63,18 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <stereotypes />
-    </attribute>
-    <attribute id="37980f6e-e789-42d9-940a-945c09e5bc93" type="Creation Option">
-      <name>New Metadata Folder</name>
-      <typeReference id="e4f3e742-0594-43ac-926e-1a2eb182a455">
-        <typeId>10c058e5-d1c7-46bd-a912-db83eab42ae1</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </attribute>
     <attribute id="9966502f-91d4-43ac-a4d9-58861e64bd72" type="Creation Option">
       <name>New Modeler Reference</name>
@@ -65,7 +86,18 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </attribute>
     <attribute id="b35841cf-62f3-4559-a072-353b8f33f393" type="Creation Option">
       <name>New Type</name>
@@ -77,7 +109,18 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </attribute>
     <attribute id="b8bcd440-0dc5-4e0e-9443-d9e693f1a5cd" type="Creation Option">
       <name>New Folder</name>
@@ -89,7 +132,18 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" value="0" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </attribute>
   </attributes>
   <operations />

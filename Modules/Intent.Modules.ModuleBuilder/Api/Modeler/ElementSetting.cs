@@ -18,18 +18,25 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
             }
 
             SpecializationType = element.Name;
-            Icon = new IconModel(element.GetStereotype("Icon (Full)"));
-            ExpandedIcon = new IconModel(element.GetStereotype("Icon (Full, Expanded)"));
-            AllowRename = element.GetStereotypeProperty<bool?>("Addition Properties", "Allow Rename");
-            AllowAbstract = element.GetStereotypeProperty<bool?>("Addition Properties", "Allow Abstract");
-            AllowGenericTypes = element.GetStereotypeProperty<bool?>("Addition Properties", "Allow Generic Types");
-            AllowMapping = element.GetStereotypeProperty<bool?>("Addition Properties", "Allow Mapping");
-            AllowSorting = element.GetStereotypeProperty<bool?>("Addition Properties", "Allow Sorting");
-            AllowFindInView = element.GetStereotypeProperty<bool?>("Addition Properties", "Allow Find in View");
+            Icon = IconModel.CreateIfSpecified(element.GetStereotype("Icon (Full)"));
+            ExpandedIcon = IconModel.CreateIfSpecified(element.GetStereotype("Icon (Full, Expanded)"));
+            AllowRename = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Rename");
+            AllowAbstract = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Abstract");
+            AllowGenericTypes = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Generic Types");
+            AllowMapping = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Mapping");
+            AllowSorting = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Sorting");
+            AllowFindInView = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Find in View");
+            LiteralSettings = element.ChildElements
+                .Where(x => x.SpecializationType == LiteralSetting.RequiredSpecializationType)
+                .Select(x => new LiteralSetting(x)).ToList();
             AttributeSettings = element.ChildElements
                 .Where(x => x.SpecializationType == AttributeSetting.RequiredSpecializationType)
                 .Select(x => new AttributeSetting(x)).ToList();
+            OperationSettings = element.ChildElements
+                .Where(x => x.SpecializationType == OperationSetting.RequiredSpecializationType)
+                .Select(x => new OperationSetting(x)).ToList();
             CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
+            TypeOrder = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new TypeOrder(x)).ToList();
         }
 
         public string SpecializationType { get; set; }
@@ -52,6 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
 
         public List<TypeOrder> TypeOrder { get; set; }
 
+        public IList<LiteralSetting> LiteralSettings { get; set; }
         public IList<AttributeSetting> AttributeSettings { get; set; }
         public IList<OperationSetting> OperationSettings { get; set; }
         public IList<CreationOption> CreationOptions { get; set; }

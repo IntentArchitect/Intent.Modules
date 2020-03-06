@@ -15,11 +15,11 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
                 throw new ArgumentException($"Invalid element [{attribute}]");
             }
 
-            SpecializationType = attribute.Type.Element.SpecializationType;
+            SpecializationType = attribute.Type.Element.Name;
             Text = attribute.Name;
             Shortcut = attribute.Type.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
             DefaultName = attribute.Type.Element.GetStereotypeProperty<string>("Default Creation Options", "Default Name") ?? $"New{attribute.Type.Element.Name.Replace(" " ,"")}";
-            Icon = attribute.Type.Element.HasStereotype("Icon (Full)") ? new IconModel(attribute.Type.Element.GetStereotype("Icon (Full)")) : null;
+            Icon = IconModel.CreateIfSpecified(attribute.Type.Element.GetStereotype("Icon (Full)"));
         }
 
         public string SpecializationType { get; }

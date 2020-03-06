@@ -41,8 +41,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             //modelerSettings.DiagramSettings // TODO JL
             modelerSettings.PackageSettings = GetPackageSettings(Model.PackageSettings);
             modelerSettings.ElementSettings = GetElementSettings(Model.ElementSettings);
-            modelerSettings.AssociationSettings = GetAssociationSettings();
-            modelerSettings.StereotypeSettings = GetStereotypeSettings();
+            modelerSettings.AssociationSettings = GetAssociationSettings(Model.AssociationSettings);
+            modelerSettings.StereotypeSettings = GetStereotypeSettings(Model);
 
             return Serialize(applicationModelerModeler);
         }
@@ -52,6 +52,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             return new PackageSettings
             {
                 CreationOptions = settings.CreationOptions.Select(GetElementCreationOptions).ToList(),
+                TypeOrder = settings.TypeOrder.Select(x => new TypeOrder { Type = x.Type, Order = x.Order?.ToString() }).ToList()
             };
             //var packageSettingsElement = GetSingleChildElement(Model, Constants.ElementSpecializationTypes.PackageSettings, allowNull: true);
             //var creationOptionsElement = GetSingleChildElement(packageSettingsElement, Constants.ElementSpecializationTypes.CreationOptions, allowNull: true);
@@ -72,7 +73,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 Text = option.Text,
                 Shortcut = option.Shortcut,
                 DefaultName = option.DefaultName,
-                Icon = option.Icon != null ? new IconModel { Type =  option.Icon.Type, Source = option.Icon.Source} : _defaultIconModel
+                Icon = option.Icon != null ? new IconModel { Type = option.Icon.Type, Source = option.Icon.Source } : _defaultIconModel
             };
         }
 
@@ -96,28 +97,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         //        }).ToList();
         //}
 
-        private (string text, string shortcut, string defaultName, IconModel icon, int? typeOrder) GetCreationOptionsFields(IElement elementSettingsElement, IHasStereotypes referencingObject)
-        {
-            // TODO JL: This is not respecting overrides from the referencingObject, only the defaults for now
+        //private (string text, string shortcut, string defaultName, IconModel icon, int? typeOrder) GetCreationOptionsFields(IElement elementSettingsElement, IHasStereotypes referencingObject)
+        //{
+        //    // TODO JL: This is not respecting overrides from the referencingObject, only the defaults for now
 
-            var stereotype = GetSingleStereotype(elementSettingsElement, Constants.Stereotypes.DefaultCreationOptions.Name);
-            var textProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Text);
-            var defaultNameProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.DefaultName);
-            var shortcutProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Shortcut);
-            int.TryParse(GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Shortcut, true)?.Value, out var typeOrderProperty);
-            var iconModel = GetIcon(elementSettingsElement, overrideStereotypes: referencingObject);
+        //    var stereotype = GetSingleStereotype(elementSettingsElement, Constants.Stereotypes.DefaultCreationOptions.Name);
+        //    var textProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Text);
+        //    var defaultNameProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.DefaultName);
+        //    var shortcutProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Shortcut);
+        //    int.TryParse(GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Shortcut, true)?.Value, out var typeOrderProperty);
+        //    var iconModel = GetIcon(elementSettingsElement, overrideStereotypes: referencingObject);
 
-            return (
-                text: ValueOrFallback(textProperty, $"New {elementSettingsElement.Name}"),
-                shortcut: ValueOrFallback(shortcutProperty, null),
-                defaultName: ValueOrFallback(defaultNameProperty, $"New {elementSettingsElement.Name}"),
-                icon: iconModel,
-                typeOrder: typeOrderProperty);
-        }
+        //    return (
+        //        text: ValueOrFallback(textProperty, $"New {elementSettingsElement.Name}"),
+        //        shortcut: ValueOrFallback(shortcutProperty, null),
+        //        defaultName: ValueOrFallback(defaultNameProperty, $"New {elementSettingsElement.Name}"),
+        //        icon: iconModel,
+        //        typeOrder: typeOrderProperty);
+        //}
 
         private IconModel GetIcon(Api.Modeler.IconModel icon)
         {
-            return icon != null ? new IconModel {Type = icon.Type, Source = icon.Source} : null;
+            return icon != null ? new IconModel { Type = icon.Type, Source = icon.Source } : null;
         }
 
         private IconModel GetIcon(IElement elementSettingsElement, bool expanded = false, IHasStereotypes overrideStereotypes = null)
@@ -152,95 +153,116 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             };
         }
 
-        private StereotypeSettings GetStereotypeSettings()
+        private StereotypeSettings GetStereotypeSettings(Modeler model)
         {
-            var targetTypeOptions = GetAllChildElementsOfTypes(Model,
-                    Constants.ElementSpecializationTypes.ElementSettings,
-                    Constants.ElementSpecializationTypes.AttributeSetting)
-                .Select(x => x.Name)
-                .Distinct()
-                .OrderBy(name => name)
-                .Select(name => new StereotypeTargetTypeOption
-                {
-                    SpecializationType = name,
-                    DisplayText = name
-                })
+            var targetTypes = model.ElementSettings.Select(x => x.SpecializationType)
+                .Concat(model.ElementSettings.SelectMany(x => x.AttributeSettings).Select(x => x.SpecializationType))
+                .Concat(model.AssociationSettings.Select(x => x.SpecializationType))
                 .ToList();
 
             return new StereotypeSettings
             {
-                TargetTypeOptions = targetTypeOptions
+                TargetTypeOptions = targetTypes.Select(x => new StereotypeTargetTypeOption()
+                {
+                    SpecializationType = x,
+                    DisplayText = x
+                }).ToList()
             };
         }
 
-        private List<AssociationSettings> GetAssociationSettings()
+        private List<AssociationSettings> GetAssociationSettings(IList<AssociationSetting> associationSettings)
         {
-            var items = GetAllChildElementsOfTypes(Model, Constants.ElementSpecializationTypes.AssociationSettings)
-                .OrderBy(x => x.Name)
-                .Distinct()
-                .ToArray();
-
-            return items
-                .Select(associationSettingsElement =>
+            return associationSettings.Select(x => new AssociationSettings
+            {
+                SpecializationType = x.SpecializationType,
+                Icon = GetIcon(x.Icon),
+                SourceEnd = new AssociationEndSettings
                 {
-                    var sourceEnd =
-                        GetSingleChildElement(associationSettingsElement, Constants.ElementSpecializationTypes.SourceEnd);
-                    var destinationEnd =
-                        GetSingleChildElement(associationSettingsElement, Constants.ElementSpecializationTypes.DestinationEnd);
+                    TargetTypes = x.SourceEnd.TargetTypes,
+                    IsCollectionDefault = x.SourceEnd.IsCollectionDefault,
+                    IsCollectionEnabled = x.SourceEnd.IsCollectionEnabled,
+                    IsNavigableDefault = x.SourceEnd.IsNavigableEnabled,
+                    IsNavigableEnabled = x.SourceEnd.IsNavigableEnabled,
+                    IsNullableDefault = x.SourceEnd.IsNullableDefault,
+                    IsNullableEnabled = x.SourceEnd.IsNullableEnabled
+                },
+                TargetEnd = new AssociationEndSettings
+                {
+                    TargetTypes = x.TargetEnd.TargetTypes,
+                    IsCollectionDefault = x.TargetEnd.IsCollectionDefault,
+                    IsCollectionEnabled = x.TargetEnd.IsCollectionEnabled,
+                    IsNavigableDefault = x.TargetEnd.IsNavigableEnabled,
+                    IsNavigableEnabled = x.TargetEnd.IsNavigableEnabled,
+                    IsNullableDefault = x.TargetEnd.IsNullableDefault,
+                    IsNullableEnabled = x.TargetEnd.IsNullableEnabled
+                },
+            }).ToList();
+            //var items = GetAllChildElementsOfTypes(Model, Constants.ElementSpecializationTypes.AssociationSettings)
+            //    .OrderBy(x => x.Name)
+            //    .Distinct()
+            //    .ToArray();
 
-                    var sourceEndSettings =
-                        GetSingleChildElement(sourceEnd, Constants.ElementSpecializationTypes.AssociationEndSettings);
-                    var destinationEndSettings =
-                        GetSingleChildElement(destinationEnd, Constants.ElementSpecializationTypes.AssociationEndSettings);
+            //return items
+            //    .Select(associationSettingsElement =>
+            //    {
+            //        var sourceEnd =
+            //            GetSingleChildElement(associationSettingsElement, Constants.ElementSpecializationTypes.SourceEnd);
+            //        var destinationEnd =
+            //            GetSingleChildElement(associationSettingsElement, Constants.ElementSpecializationTypes.DestinationEnd);
 
-                    var sourceEndAdditionalProperties =
-                        GetSingleStereotype(sourceEndSettings, Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Name);
-                    var destinationEndAdditionalProperties =
-                        GetSingleStereotype(destinationEndSettings, Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Name);
+            //        var sourceEndSettings =
+            //            GetSingleChildElement(sourceEnd, Constants.ElementSpecializationTypes.AssociationEndSettings);
+            //        var destinationEndSettings =
+            //            GetSingleChildElement(destinationEnd, Constants.ElementSpecializationTypes.AssociationEndSettings);
 
-                    return new AssociationSettings
-                    {
-                        SpecializationType = associationSettingsElement.Name,
-                        Icon = GetIcon(associationSettingsElement) ?? _defaultIconModel, // Confirm the default is needed
-                        SourceEnd = new AssociationEndSettings
-                        {
-                            TargetTypes = sourceEndSettings.Attributes
-                                .Select(x => x.Type.Element.Name)
-                                .ToArray(),
-                            IsNavigableEnabled = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableEnabled),
-                            IsNullableEnabled = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableEnabled),
-                            IsCollectionEnabled = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionEnabled),
-                            IsNavigableDefault = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableDefault),
-                            IsNullableDefault = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableDefault),
-                            IsCollectionDefault = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionDefault),
-                        },
-                        TargetEnd = new AssociationEndSettings
-                        {
-                            TargetTypes = destinationEndSettings.Attributes
-                            .Select(x => x.Type.Element.Name)
-                            .ToArray(),
-                            IsNavigableEnabled = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableEnabled),
-                            IsNullableEnabled = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableEnabled),
-                            IsCollectionEnabled = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionEnabled),
-                            IsNavigableDefault = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableDefault),
-                            IsNullableDefault = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableDefault),
-                            IsCollectionDefault = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-                                Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionDefault),
-                        }
-                    };
-                })
-                .ToList();
+            //        var sourceEndAdditionalProperties =
+            //            GetSingleStereotype(sourceEndSettings, Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Name);
+            //        var destinationEndAdditionalProperties =
+            //            GetSingleStereotype(destinationEndSettings, Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Name);
+
+            //        return new AssociationSettings
+            //        {
+            //            SpecializationType = associationSettingsElement.Name,
+            //            Icon = GetIcon(associationSettingsElement) ?? _defaultIconModel, // Confirm the default is needed
+            //            SourceEnd = new AssociationEndSettings
+            //            {
+            //                TargetTypes = sourceEndSettings.Attributes
+            //                    .Select(x => x.Type.Element.Name)
+            //                    .ToArray(),
+            //                IsNavigableEnabled = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableEnabled),
+            //                IsNullableEnabled = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableEnabled),
+            //                IsCollectionEnabled = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionEnabled),
+            //                IsNavigableDefault = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableDefault),
+            //                IsNullableDefault = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableDefault),
+            //                IsCollectionDefault = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionDefault),
+            //            },
+            //            TargetEnd = new AssociationEndSettings
+            //            {
+            //                TargetTypes = destinationEndSettings.Attributes
+            //                .Select(x => x.Type.Element.Name)
+            //                .ToArray(),
+            //                IsNavigableEnabled = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableEnabled),
+            //                IsNullableEnabled = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableEnabled),
+            //                IsCollectionEnabled = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionEnabled),
+            //                IsNavigableDefault = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableDefault),
+            //                IsNullableDefault = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableDefault),
+            //                IsCollectionDefault = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
+            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionDefault),
+            //            }
+            //        };
+            //    })
+            //    .ToList();
         }
 
         private List<ElementSettings> GetElementSettings(IList<Api.Modeler.ElementSetting> elementSettings)
@@ -258,18 +280,22 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     AllowSorting = x.AllowSorting,
                     AllowFindInView = x.AllowFindInView,
                     DiagramSettings = null, // TODO JL
-                    LiteralSettings = new ClassLiteralSettings[0], // TODO JL
+                    LiteralSettings = x.LiteralSettings?.Any() == true
+                        ? x.LiteralSettings.Select(GetLiteralSettings).ToArray()
+                        : null,
                     AttributeSettings = x.AttributeSettings?.Any() == true
-                            ? x.AttributeSettings.Select(GetAttributeSetting).ToArray()
-                            : null,
-                    OperationSettings = null, // TODO JL
+                        ? x.AttributeSettings.Select(GetAttributeSettings).ToArray()
+                        : null,
+                    OperationSettings = x.OperationSettings?.Any() == true
+                        ? x.OperationSettings.Select(GetOperationSettings).ToArray()
+                        : null,
                     MappingSettings = null, // TODO JL
                     CreationOptions = x.CreationOptions?.Any() == true
-                            ? x.CreationOptions.Select(GetElementCreationOptions).ToList()
-                            : null,
-                    TypeOrder = x.TypeOrder.Any()
-                            ? x.TypeOrder.Select((t, index) => new TypeOrder { Type = t.Type, Order = t.Order ?? index }).ToList()
-                            : null
+                        ? x.CreationOptions.Select(GetElementCreationOptions).ToList()
+                        : null,
+                    TypeOrder = x.TypeOrder?.Any() == true
+                        ? x.TypeOrder.Select((t, index) => new TypeOrder { Type = t.Type, Order = t.Order?.ToString() }).ToList()
+                        : null
                 })
                 .ToList();
             //var items = GetAllChildElementsOfTypes(Model, Constants.ElementSpecializationTypes.ElementSettings)
@@ -341,41 +367,54 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             //    .ToList();
         }
 
-        private ClassLiteralSettings[] GetLiteralSettings(IElement elementSettingsElement)
+        private ClassLiteralSettings GetLiteralSettings(LiteralSetting literal)
         {
-            var items = GetAllChildElementsOfTypes(elementSettingsElement, Constants.ElementSpecializationTypes.LiteralSettings)
-                .OrderBy(x => x.Name)
-                .ToArray();
-
-            if (!items.Any())
+            return new ClassLiteralSettings
             {
-                return null;
-            }
+                SpecializationType = literal.SpecializationType,
+                Icon = GetIcon(literal.Icon) ?? _defaultIconModel, // TODO JL: Check if the default actually needed
+                Text = literal.Text,
+                Shortcut = literal.Shortcut,
+                DefaultName = literal.DefaultName,
+                AllowRename = literal.AllowRename,
+                AllowDuplicateNames = literal.AllowDuplicateNames,
+                AllowFindInView = literal.AllowFindInView
+            };
+            //var items = GetAllChildElementsOfTypes(elementSettingsElement, Constants.ElementSpecializationTypes.LiteralSettings)
+            //    .OrderBy(x => x.Name)
+            //    .ToArray();
 
-            return items
-                .Select(element =>
-                {
-                    var additionalProperties = GetSingleStereotype(element, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Name);
-                    var text = GetSingleProperty(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.Text);
-                    var shortcut = GetSingleProperty(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.Shortcut);
-                    var defaultName = GetSingleProperty(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.DefaultName);
+            //if (!items.Any())
+            //{
+            //    return null;
+            //}
 
-                    return new ClassLiteralSettings
-                    {
-                        SpecializationType = element.Name,
-                        Icon = GetIcon(element) ?? _defaultIconModel, // TODO JL: Check if the default actually needed
-                        Text = ValueOrFallback(text, $"New {element.Name}"),
-                        Shortcut = ValueOrFallback(shortcut, null),
-                        DefaultName = ValueOrFallback(defaultName, $"New {element.Name}"),
-                        AllowRename = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.AllowRename),
-                        AllowDuplicateNames = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.AllowDuplicateNames),
-                        AllowFindInView = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.AllowFindInView)
-                    };
-                })
-                .ToArray();
+            //return items
+            //    .Select(element =>
+            //    {
+            //        var additionalProperties = GetSingleStereotype(element, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Name);
+            //        var text = GetSingleProperty(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.Text);
+            //        var shortcut = GetSingleProperty(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.Shortcut);
+            //        var defaultName = GetSingleProperty(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.DefaultName);
+
+            //        return new ClassLiteralSettings
+            //        {
+            //            SpecializationType = element.Name,
+            //            Icon = GetIcon(element) ?? _defaultIconModel, // TODO JL: Check if the default actually needed
+            //            Text = ValueOrFallback(text, $"New {element.Name}"),
+            //            Shortcut = ValueOrFallback(shortcut, null),
+            //            DefaultName = ValueOrFallback(defaultName, $"New {element.Name}"),
+            //            AllowRename = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.AllowRename),
+            //            AllowDuplicateNames = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.AllowDuplicateNames),
+            //            AllowFindInView = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.AllowFindInView)
+            //        };
+            //    })
+            //    .ToArray();
         }
 
-        private AttributeSettings GetAttributeSetting(AttributeSetting setting)
+        
+
+        private AttributeSettings GetAttributeSettings(AttributeSetting setting)
         {
             return new AttributeSettings()
             {
@@ -417,6 +456,23 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             //        .Select(x => x.Type.Element.Name)
             //        .ToArray()
             //};
+        }
+
+        private OperationSettings GetOperationSettings(OperationSetting setting)
+        {
+            return new OperationSettings()
+            {
+                SpecializationType = setting.SpecializationType,
+                Icon = GetIcon(setting.Icon) ?? _defaultIconModel,
+                Text = setting.Text,
+                Shortcut = setting.Shortcut,
+                DefaultName = setting.DefaultName,
+                AllowRename = setting.AllowRename,
+                AllowDuplicateNames = setting.AllowDuplicateNames,
+                AllowFindInView = setting.AllowFindInView,
+                DefaultTypeId = setting.DefaultTypeId,
+                TargetTypes = setting.TargetTypes
+            };
         }
 
         private static IEnumerable<IElement> GetAllChildElementsOfTypes(IElement element, params string[] specializationTypes)

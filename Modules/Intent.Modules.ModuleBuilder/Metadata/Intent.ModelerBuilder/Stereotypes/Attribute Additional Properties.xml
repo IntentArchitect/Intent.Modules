@@ -73,5 +73,15 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="bbec066d-b03a-41cf-854e-2d31b354fe1f">
+      <name>Target Types</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <valueOptions />
+      <lookupTypes>
+        <type>element settings</type>
+      </lookupTypes>
+    </property>
   </properties>
 </stereotypeDefinition>

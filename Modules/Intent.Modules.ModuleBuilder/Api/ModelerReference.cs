@@ -6,7 +6,7 @@ using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class ModelerReference : IModelerReference, IEquatable<Modeler>
+    internal class ModelerReference : IModelerReference, IEquatable<ModelerReference>
     {
         private readonly IElement _element;
         public const string SpecializationType = "Modeler Reference";
@@ -33,7 +33,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string NuGetDependency => _element.GetStereotypeProperty<string>("Modeler Settings", "NuGet Dependency");
         public string NuGetVersion => _element.GetStereotypeProperty<string>("Modeler Settings", "NuGet Version");
 
-        public bool Equals(Modeler other)
+        public bool Equals(ModelerReference other)
         {
             return string.Equals(Id, other.Id);
         }
@@ -43,7 +43,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((Modeler) obj);
+            return Equals((ModelerReference) obj);
         }
 
         public override int GetHashCode()

@@ -49,10 +49,10 @@ namespace Intent.Modules.ModuleBuilder
             return GetDecorators().Where(x => x.Application.Name == application.Name);
         }
 
-        public IEnumerable<IModeler> GetModelers(IElementApplication application)
+        public IEnumerable<IModelerReference> GetModelers(IElementApplication application)
         {
             var modelerElements = _metadataManager.GetMetadata<IElement>("Module Builder").Where(x => x.IsModeler() && x.Application.Name == application.Name).ToList();
-            var result = modelerElements.Select(x => new Modeler(x)).ToList();
+            var result = modelerElements.Select(x => new ModelerReference(x)).ToList();
             return result;
         }
     }

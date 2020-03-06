@@ -4,6 +4,8 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 {
     public class AssociationSettings
     {
+
+
         [XmlElement("specializationType")]
         public string SpecializationType { get; set; }
 
