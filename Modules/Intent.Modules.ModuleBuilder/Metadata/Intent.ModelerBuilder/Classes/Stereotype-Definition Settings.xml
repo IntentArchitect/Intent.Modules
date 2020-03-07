@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="83EB0B0F-262B-49BF-BFCD-1B061F19BEB0" type="Element Settings">
+  <name>Stereotype-Definition</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>EBD29F02-DB01-4045-A977-993C9DFC7F38</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+</class>

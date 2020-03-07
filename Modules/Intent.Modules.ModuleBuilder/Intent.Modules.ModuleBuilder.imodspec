@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
   <version>2.1.0</version>
@@ -55,21 +55,20 @@
       <role>Decorators</role>
     </template>
   </templates>
-  <decorators>
-  </decorators>
+  <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="2.0.2"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
+    <dependency id="Intent.Common" version="2.0.2" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0" />
   </dependencies>
   <metadata>
-    <install target="Module Builder" src="modeler"/>
-    <install target="Module Builder" src="metadata/Intent.ModuleBuilder"/>
-    <install target="Module Builder" src="metadata/Intent.ModelerBuilder"/>
+    <install target="Module Builder" src="modeler" />
+    <install target="Module Builder" src="metadata/Intent.ModuleBuilder" />
+    <install target="Module Builder" src="metadata/Intent.ModelerBuilder" />
   </metadata>
   <files>
-    <file src="$outDir$/$id$.dll"/>
-    <file src="$outDir$/$id$.pdb"/>
-    <file src="$outDir$/Mono.TextTemplating.dll"/>
-    <file src="$outDir$/System.CodeDom.dll"/>
+    <file src="$outDir$/$id$.dll" />
+    <file src="$outDir$/$id$.pdb" />
+    <file src="$outDir$/Mono.TextTemplating.dll" />
+    <file src="$outDir$/System.CodeDom.dll" />
   </files>
 </package>
