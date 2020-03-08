@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="5bfb1629-e4b6-4326-9ecd-a10897ce03f9" type="Element Settings">
-  <name>Module Stereotype</name>
+<class id="11e14da2-fde2-482f-b6a1-bd1cc2a1d6cd" type="Element Settings">
+  <name>Module Stereotype Property</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -25,9 +25,9 @@
       <comment>Sets the default creation options for this element when used.</comment>
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" value="New Module Stereotype" isActive="true" />
-        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" value="ctrl + shift + s" isActive="true" />
-        <property name="b199adea-c16b-411d-a2db-c881345a421b" value="StereotypeDefinition" isActive="true" />
+        <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" isActive="true" />
+        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" value="ctrl + shift + p" isActive="true" />
+        <property name="b199adea-c16b-411d-a2db-c881345a421b" value="Property" isActive="true" />
         <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
       </properties>
     </stereotype>
@@ -35,7 +35,7 @@
       <addedByDefault>false</addedByDefault>
       <properties>
         <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" value="CharacterBox" isActive="true" />
-        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="S|#0277BD" isActive="true" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="P|#29B6F6" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

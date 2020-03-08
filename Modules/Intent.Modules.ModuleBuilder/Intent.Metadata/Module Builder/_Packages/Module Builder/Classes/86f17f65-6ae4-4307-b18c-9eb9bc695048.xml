@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="86f17f65-6ae4-4307-b18c-9eb9bc695048" type="Creation Options">
+  <name>Creation Options</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>5bfb1629-e4b6-4326-9ecd-a10897ce03f9</parentFolderId>
+  <literals />
+  <attributes>
+    <attribute id="0cd41bc3-fa7c-420b-a3df-8c59e3abe8b3" type="Creation Option">
+      <name>Add Property</name>
+      <typeReference id="dfde1a9c-3546-43ec-934b-e0c67c366262">
+        <typeId>11e14da2-fde2-482f-b6a1-bd1cc2a1d6cd</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+  </attributes>
+  <operations />
+  <stereotypes />
+</class>

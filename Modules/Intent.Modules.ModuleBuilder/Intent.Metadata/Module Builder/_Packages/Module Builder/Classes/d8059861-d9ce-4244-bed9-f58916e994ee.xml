@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d8059861-d9ce-4244-bed9-f58916e994ee" type="Literal Settings">
+  <name>Stereotype Property Option</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>11e14da2-fde2-482f-b6a1-bd1cc2a1d6cd</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="a5de089b-457e-49b7-8ec7-f78677e83300">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="52e011ae-7e2a-4c37-9924-db1ae509f1c9" value="Add Option" isActive="true" />
+        <property name="64880c5c-f079-459c-a944-7e54aaa4f299" value="ctrl + shift + o" isActive="true" />
+        <property name="e317fec6-3097-44db-bc50-b07caff6300a" isActive="true" />
+        <property name="b9bbd318-6c76-41b4-9a03-1ee53255a972" value="true" isActive="true" />
+        <property name="0ccb7dcc-c08d-4ef4-bbbc-2683f1a17dd0" value="false" isActive="true" />
+        <property name="85631731-a208-47a9-bd97-1e54e1cb444a" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="3714391e-cb1c-47db-9dac-16fdf2b2d57f">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" value="UrlImagePath" isActive="true" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="./img/icons/uml/Enumeration_256x.png" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+</class>

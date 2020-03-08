@@ -20,6 +20,10 @@
     <Content Update="modeler\ModuleBuilder.modeler.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  
+    <Content Update="modeler\ModelerBuilder.modeler.extension.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
