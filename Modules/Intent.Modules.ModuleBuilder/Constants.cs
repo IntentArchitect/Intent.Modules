@@ -5,6 +5,7 @@
         public static class ElementSpecializationTypes
         {
             public const string Modeler = "Modeler";
+            public const string ModelerExtension = "Modeler Extension";
             public const string PackageSettings = "Package Settings";
             public const string CreationOptions = "Creation Options";
             public const string ModelerFolder = "Modeler Folder";

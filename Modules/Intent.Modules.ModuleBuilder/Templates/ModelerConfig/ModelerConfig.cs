@@ -54,15 +54,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 CreationOptions = settings.CreationOptions.Select(GetElementCreationOptions).ToList(),
                 TypeOrder = settings.TypeOrder.Select(x => new TypeOrder { Type = x.Type, Order = x.Order?.ToString() }).ToList()
             };
-            //var packageSettingsElement = GetSingleChildElement(Model, Constants.ElementSpecializationTypes.PackageSettings, allowNull: true);
-            //var creationOptionsElement = GetSingleChildElement(packageSettingsElement, Constants.ElementSpecializationTypes.CreationOptions, allowNull: true);
-
-            //var creationOptions = GetElementCreationOptions(creationOptionsElement);
-
-            //return new PackageSettings
-            //{
-            //    CreationOptions = creationOptions,
-            //};
         }
 
         private ElementCreationOption GetElementCreationOptions(CreationOption option)
@@ -76,45 +67,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 Icon = option.Icon != null ? new IconModel { Type = option.Icon.Type, Source = option.Icon.Source } : _defaultIconModel
             };
         }
-
-        //private List<ElementCreationOption> GetElementCreationOptions(IElement creationOptionsElement)
-        //{
-        //    return creationOptionsElement?.Attributes
-        //        .Where(x => x.SpecializationType == Constants.AttributeSpecializationTypes.CreationOption)
-        //        .Select(x =>
-        //        {
-        //            var elementSettings = x.Type.Element;
-        //            var creationOptions = GetCreationOptionsFields(elementSettings, x);
-
-        //            return new ElementCreationOption
-        //            {
-        //                SpecializationType = elementSettings.Name,
-        //                Text = creationOptions.text,
-        //                Shortcut = creationOptions.shortcut,
-        //                DefaultName = creationOptions.defaultName,
-        //                Icon = creationOptions.icon ?? _defaultIconModel
-        //            };
-        //        }).ToList();
-        //}
-
-        //private (string text, string shortcut, string defaultName, IconModel icon, int? typeOrder) GetCreationOptionsFields(IElement elementSettingsElement, IHasStereotypes referencingObject)
-        //{
-        //    // TODO JL: This is not respecting overrides from the referencingObject, only the defaults for now
-
-        //    var stereotype = GetSingleStereotype(elementSettingsElement, Constants.Stereotypes.DefaultCreationOptions.Name);
-        //    var textProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Text);
-        //    var defaultNameProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.DefaultName);
-        //    var shortcutProperty = GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Shortcut);
-        //    int.TryParse(GetSingleProperty(stereotype, Constants.Stereotypes.DefaultCreationOptions.Property.Shortcut, true)?.Value, out var typeOrderProperty);
-        //    var iconModel = GetIcon(elementSettingsElement, overrideStereotypes: referencingObject);
-
-        //    return (
-        //        text: ValueOrFallback(textProperty, $"New {elementSettingsElement.Name}"),
-        //        shortcut: ValueOrFallback(shortcutProperty, null),
-        //        defaultName: ValueOrFallback(defaultNameProperty, $"New {elementSettingsElement.Name}"),
-        //        icon: iconModel,
-        //        typeOrder: typeOrderProperty);
-        //}
 
         private IconModel GetIcon(Api.Modeler.IconModel icon)
         {
@@ -197,72 +149,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     IsNullableEnabled = x.TargetEnd.IsNullableEnabled
                 },
             }).ToList();
-            //var items = GetAllChildElementsOfTypes(Model, Constants.ElementSpecializationTypes.AssociationSettings)
-            //    .OrderBy(x => x.Name)
-            //    .Distinct()
-            //    .ToArray();
-
-            //return items
-            //    .Select(associationSettingsElement =>
-            //    {
-            //        var sourceEnd =
-            //            GetSingleChildElement(associationSettingsElement, Constants.ElementSpecializationTypes.SourceEnd);
-            //        var destinationEnd =
-            //            GetSingleChildElement(associationSettingsElement, Constants.ElementSpecializationTypes.DestinationEnd);
-
-            //        var sourceEndSettings =
-            //            GetSingleChildElement(sourceEnd, Constants.ElementSpecializationTypes.AssociationEndSettings);
-            //        var destinationEndSettings =
-            //            GetSingleChildElement(destinationEnd, Constants.ElementSpecializationTypes.AssociationEndSettings);
-
-            //        var sourceEndAdditionalProperties =
-            //            GetSingleStereotype(sourceEndSettings, Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Name);
-            //        var destinationEndAdditionalProperties =
-            //            GetSingleStereotype(destinationEndSettings, Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Name);
-
-            //        return new AssociationSettings
-            //        {
-            //            SpecializationType = associationSettingsElement.Name,
-            //            Icon = GetIcon(associationSettingsElement) ?? _defaultIconModel, // Confirm the default is needed
-            //            SourceEnd = new AssociationEndSettings
-            //            {
-            //                TargetTypes = sourceEndSettings.Attributes
-            //                    .Select(x => x.Type.Element.Name)
-            //                    .ToArray(),
-            //                IsNavigableEnabled = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableEnabled),
-            //                IsNullableEnabled = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableEnabled),
-            //                IsCollectionEnabled = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionEnabled),
-            //                IsNavigableDefault = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableDefault),
-            //                IsNullableDefault = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableDefault),
-            //                IsCollectionDefault = GetSinglePropertyAsBool(sourceEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionDefault),
-            //            },
-            //            TargetEnd = new AssociationEndSettings
-            //            {
-            //                TargetTypes = destinationEndSettings.Attributes
-            //                .Select(x => x.Type.Element.Name)
-            //                .ToArray(),
-            //                IsNavigableEnabled = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableEnabled),
-            //                IsNullableEnabled = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableEnabled),
-            //                IsCollectionEnabled = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionEnabled),
-            //                IsNavigableDefault = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNavigableDefault),
-            //                IsNullableDefault = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsNullableDefault),
-            //                IsCollectionDefault = GetSinglePropertyAsBool(destinationEndAdditionalProperties,
-            //                    Constants.Stereotypes.AssociationEndSettingsAdditionalProperties.Property.IsCollectionDefault),
-            //            }
-            //        };
-            //    })
-            //    .ToList();
         }
 
         private List<ElementSettings> GetElementSettings(IList<Api.Modeler.ElementSetting> elementSettings)
@@ -298,73 +184,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                         : null
                 })
                 .ToList();
-            //var items = GetAllChildElementsOfTypes(Model, Constants.ElementSpecializationTypes.ElementSettings)
-            //    .OrderBy(x => x.Name)
-            //    .ToArray();
-
-            //var duplicates = items
-            //    .GroupBy(x => x.Name)
-            //    .Where(x => x.Count() > 1)
-            //    .Select(x => x.Key)
-            //    .DefaultIfEmpty()
-            //    .Aggregate((x, y) => $"{x}{Environment.NewLine}{y}");
-            //if (!string.IsNullOrWhiteSpace(duplicates))
-            //{
-            //    throw new Exception($"More than one '{Constants.ElementSpecializationTypes.ElementSettings}' " +
-            //                        $"exist for the following:{Environment.NewLine}{duplicates}");
-            //}
-
-            //return items
-            //    .Select(elementSettingsElement =>
-            //    {
-            //        var creationOptions =
-            //            GetElementCreationOptions(GetSingleChildElement(elementSettingsElement, Constants.ElementSpecializationTypes.CreationOptions, true))?
-            //            .ToList();
-
-            //        var additionalProperties =
-            //            GetSingleStereotype(elementSettingsElement, Constants.Stereotypes.ElementAdditionalProperties.Name);
-
-            //        var attributeSettings =
-            //            GetSingleChildElement(elementSettingsElement, Constants.ElementSpecializationTypes.AttributeSettings, true)?
-            //            .ChildElements.Where(x => x.SpecializationType == Constants.ElementSpecializationTypes.AttributeSetting)
-            //            .Select(GetAttributeSetting)
-            //            .ToArray();
-
-            //        var typeOrder = (creationOptions ?? Enumerable.Empty<ElementCreationOption>())
-            //            .Select(x => x.SpecializationType)
-            //            .Union((attributeSettings ?? Enumerable.Empty<AttributeSettings>()).Select(x =>
-            //                x.SpecializationType))
-            //            .Distinct()
-            //            .Select(x => new TypeOrder() { Type = x })
-            //            .ToList();
-
-            //        return new ElementSettings
-            //        {
-            //            SpecializationType = elementSettingsElement.Name,
-            //            Icon = GetIcon(elementSettingsElement),
-            //            ExpandedIcon = GetIcon(elementSettingsElement, expanded: true),
-            //            AllowRename = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowRename),
-            //            AllowAbstract = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowAbstract),
-            //            AllowGenericTypes = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowGenericTypes),
-            //            AllowMapping = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowMapping),
-            //            AllowSorting = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowSorting),
-            //            AllowFindInView = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.ElementAdditionalProperties.Property.AllowFindInView),
-            //            DiagramSettings = null, // TODO JL
-            //            LiteralSettings = GetLiteralSettings(elementSettingsElement), // TODO JL
-            //            AttributeSettings = attributeSettings?.Any() == true
-            //                ? attributeSettings
-            //                : null,
-            //            OperationSettings = null, // TODO JL
-            //            MappingSettings = null, // TODO JL
-            //            CreationOptions = creationOptions?.Any() == true
-            //                ? creationOptions
-            //                : null,
-            //            TypeOrder = typeOrder.Any()
-            //                ? typeOrder
-            //                : null
-            //        };
-            //    })
-            //    .ToList();
         }
 
         private ClassLiteralSettings GetLiteralSettings(LiteralSetting literal)
@@ -380,40 +199,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 AllowDuplicateNames = literal.AllowDuplicateNames,
                 AllowFindInView = literal.AllowFindInView
             };
-            //var items = GetAllChildElementsOfTypes(elementSettingsElement, Constants.ElementSpecializationTypes.LiteralSettings)
-            //    .OrderBy(x => x.Name)
-            //    .ToArray();
-
-            //if (!items.Any())
-            //{
-            //    return null;
-            //}
-
-            //return items
-            //    .Select(element =>
-            //    {
-            //        var additionalProperties = GetSingleStereotype(element, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Name);
-            //        var text = GetSingleProperty(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.Text);
-            //        var shortcut = GetSingleProperty(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.Shortcut);
-            //        var defaultName = GetSingleProperty(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.DefaultName);
-
-            //        return new ClassLiteralSettings
-            //        {
-            //            SpecializationType = element.Name,
-            //            Icon = GetIcon(element) ?? _defaultIconModel, // TODO JL: Check if the default actually needed
-            //            Text = ValueOrFallback(text, $"New {element.Name}"),
-            //            Shortcut = ValueOrFallback(shortcut, null),
-            //            DefaultName = ValueOrFallback(defaultName, $"New {element.Name}"),
-            //            AllowRename = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.AllowRename),
-            //            AllowDuplicateNames = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.AllowDuplicateNames),
-            //            AllowFindInView = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.LiteralSettingsAdditionalProperties.Property.AllowFindInView)
-            //        };
-            //    })
-            //    .ToArray();
         }
 
         
-
         private AttributeSettings GetAttributeSettings(AttributeSetting setting)
         {
             return new AttributeSettings()
@@ -430,32 +218,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 DefaultTypeId = setting.DefaultTypeId,
                 TargetTypes = setting.TargetTypes
             };
-            //var additionalProperties = GetSingleStereotype(element, Constants.Stereotypes.AttributeAdditionalProperties.Name);
-            //var text = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.Text);
-            //var shortcut = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.Shortcut);
-            //var displayFunction = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.DisplayFunction);
-            //var defaultName = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.DefaultName);
-            //var allowRename = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.AllowRename);
-            //var allowDuplicateNames = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.AllowDuplicateNames);
-            //var allowFindInView = GetSinglePropertyAsBool(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.AllowFindInView);
-            //var defaultTypeId = GetSingleProperty(additionalProperties, Constants.Stereotypes.AttributeAdditionalProperties.Property.DefaultTypeId);
-
-            //return new AttributeSettings
-            //{
-            //    SpecializationType = element.Name,
-            //    Icon = GetIcon(element) ?? _defaultIconModel,
-            //    Text = ValueOrFallback(text, $"New {element.Name}"),
-            //    Shortcut = ValueOrFallback(shortcut, null),
-            //    DisplayFunction = ValueOrFallback(displayFunction, null),
-            //    DefaultName = ValueOrFallback(defaultName, $"New {element.Name}"),
-            //    AllowRename = allowRename,
-            //    AllowDuplicateNames = allowDuplicateNames,
-            //    AllowFindInView = allowFindInView,
-            //    DefaultTypeId = ValueOrFallback(defaultTypeId, null),
-            //    TargetTypes = element.Attributes
-            //        .Select(x => x.Type.Element.Name)
-            //        .ToArray()
-            //};
         }
 
         private OperationSettings GetOperationSettings(OperationSetting setting)
@@ -473,34 +235,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 DefaultTypeId = setting.DefaultTypeId,
                 TargetTypes = setting.TargetTypes
             };
-        }
-
-        private static IEnumerable<IElement> GetAllChildElementsOfTypes(IElement element, params string[] specializationTypes)
-        {
-            foreach (var childElement in element.ChildElements)
-            {
-                if (specializationTypes.Contains(childElement.SpecializationType))
-                {
-                    yield return childElement;
-                }
-
-                foreach (var folderChildElement in GetAllChildElementsOfTypes(childElement, specializationTypes))
-                {
-                    yield return folderChildElement;
-                }
-            }
-        }
-
-        private static string ValueOrFallback(IStereotypeProperty property, string fallback)
-        {
-            if (property.Value == "_")
-            {
-                return string.Empty;
-            }
-
-            return !string.IsNullOrWhiteSpace(property.Value)
-                ? property.Value
-                : fallback;
         }
 
         private static IStereotype GetSingleStereotype(IHasStereotypes hasStereotypes, string name, bool allowNull = false)
@@ -531,31 +265,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             }
         }
 
-        private static bool GetSinglePropertyAsBool(IStereotype stereotype, string key)
-        {
-            return true.ToString().Equals(GetSingleProperty(stereotype, key).Value, StringComparison.OrdinalIgnoreCase);
-        }
-
-        private static IElement GetSingleChildElement(IElement parentElement, string specializationType, bool allowNull = false)
-        {
-            try
-            {
-                return allowNull
-                    ? parentElement?.ChildElements.SingleOrDefault(x => x.SpecializationType == specializationType)
-                    : parentElement.ChildElements.Single(x => x.SpecializationType == specializationType);
-            }
-            catch (Exception e)
-            {
-                throw new InvalidOperationException($"Expected single ChildElement of type [{specializationType}]", e);
-            }
-        }
-
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{Model.Name}.modeler",
+                fileName: $"{Model.Name}.modeler{(Model.IsExtension ? ".extension" : "")}",
                 fileExtension: "config",
                 defaultLocationInProject: "modeler");
         }

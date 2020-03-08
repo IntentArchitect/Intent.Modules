@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="b034d81b-94d8-4097-aa16-2b6228647e7a" type="Creation Options">
+  <name>Creation Options</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>a6c01201-4191-46ca-bb5d-0532c71d3d00</parentFolderId>
+  <literals />
+  <attributes>
+    <attribute id="190da4c1-11d8-4fde-87d0-93329f7f398c" type="Creation Option">
+      <name>Add Modeler</name>
+      <typeReference id="d9ba0a26-f2a9-4bc1-a535-f88299e1a42b">
+        <typeId>b5b5445a-27a7-4bfd-b8c7-2f914ae51e53</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+  </attributes>
+  <operations />
+  <stereotypes />
+</class>

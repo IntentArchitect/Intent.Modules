@@ -5,7 +5,7 @@
   <displayIcon>false</displayIcon>
   <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
   <targetElements>
-    <element>attribute setting</element>
+    <element>attribute settings</element>
   </targetElements>
   <autoAdd>true</autoAdd>
   <parentFolderId>d2c9bada-4d6d-46ca-97a7-d9cf91f66821</parentFolderId>

@@ -33,14 +33,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<Modeler> GetModels(IApplication application)
         {
-            var elements = _metadataManager
+            var modelers = _metadataManager
                 .GetMetadata<IElement>("Module Builder")
-                .ToList();
-
-            return elements
-                .Where(x => x.Application.Id == application.Id && x.SpecializationType == Constants.ElementSpecializationTypes.Modeler)
+                .Where(x => x.Application.Id == application.Id && (x.SpecializationType == Constants.ElementSpecializationTypes.Modeler || x.SpecializationType == Constants.ElementSpecializationTypes.ModelerExtension))
                 .Select(x => new Modeler(x))
                 .ToList();
+
+            return modelers;
         }
     }
 }

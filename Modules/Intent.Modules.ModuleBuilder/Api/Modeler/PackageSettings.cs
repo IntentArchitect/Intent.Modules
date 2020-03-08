@@ -11,13 +11,15 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
 
         public PackageSettings(IElement element)
         {
-            if (element.SpecializationType != SpecializationType)
+            if (element != null && element.SpecializationType != SpecializationType)
             {
                 throw new ArgumentException($"Invalid element [{element}]");
             }
 
-            CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
-            TypeOrder = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new TypeOrder(x)).ToList();
+            CreationOptions = element?.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList()
+                ?? new List<CreationOption>();
+            TypeOrder = element?.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new TypeOrder(x)).ToList()
+                ?? new List<TypeOrder>();
         }
 
         public IList<CreationOption> CreationOptions { get; set; }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37" type="Element Settings">
-  <name>Association End Settings</name>
+<class id="89333f72-3960-4159-bf61-9c40d4b65088" type="Element Settings">
+  <comment />
+  <name>Package Settings</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>c1ac77b8-8a6e-4721-aea3-c7314e5ded4e</parentFolderId>
+  <parentFolderId>71a2800b-b56d-4d54-9e3c-f0d51a5d907d</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -25,16 +26,17 @@
       <comment>Sets the default creation options for this element when used.</comment>
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" value="Add Association End Settings" isActive="true" />
-        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" value="ctrl + shift + e" isActive="true" />
-        <property name="b199adea-c16b-411d-a2db-c881345a421b" value="Association End Settings" isActive="true" />
+        <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" value="Add Package Settings" isActive="true" />
+        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" value="ctrl + shift + p" isActive="true" />
+        <property name="b199adea-c16b-411d-a2db-c881345a421b" value="Package Settings" isActive="true" />
+        <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="3714391e-cb1c-47db-9dac-16fdf2b2d57f">
       <addedByDefault>false</addedByDefault>
       <properties>
         <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" value="CharacterBox" isActive="true" />
-        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="E|#00f7ff" isActive="true" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="P|#7d7d7d" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

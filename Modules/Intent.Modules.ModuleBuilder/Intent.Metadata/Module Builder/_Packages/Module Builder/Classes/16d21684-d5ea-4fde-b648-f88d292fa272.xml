@@ -4,7 +4,7 @@
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>c1ac77b8-8a6e-4721-aea3-c7314e5ded4e</parentFolderId>
+  <parentFolderId>71a2800b-b56d-4d54-9e3c-f0d51a5d907d</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -23,6 +23,7 @@
         <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" value="" isActive="true" />
         <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" value="ctrl + shift + n" isActive="true" />
         <property name="b199adea-c16b-411d-a2db-c881345a421b" value="" isActive="true" />
+        <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649">

@@ -10,22 +10,24 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
 {
     public class Modeler
     {
-        public const string RequiredSpecializationType = "Modeler";
+        public static string[] RequiredSpecializationTypes = new string[] { Constants.ElementSpecializationTypes.Modeler, Constants.ElementSpecializationTypes.ModelerExtension };
 
         public Modeler(IElement element)
         {
-            if (element.SpecializationType != RequiredSpecializationType)
+            if (!RequiredSpecializationTypes.Contains(element.SpecializationType))
             {
                 throw new ArgumentException($"Invalid element [{element}]");
             }
 
             Name = element.Name;
+            IsExtension = element.SpecializationType == Constants.ElementSpecializationTypes.ModelerExtension;
             PackageSettings = new PackageSettings(element.ChildElements.SingleOrDefault(x => x.SpecializationType == PackageSettings.SpecializationType));
             ElementSettings = element.ChildElements.Where(x => x.SpecializationType == ElementSetting.RequiredSpecializationType).Select(x => new ElementSetting(x)).OrderBy(x => x.SpecializationType).ToList();
             AssociationSettings = element.ChildElements.Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType).Select(x => new AssociationSetting(x)).OrderBy(x => x.SpecializationType).ToList();
         }
 
         public string Name { get; }
+        public bool IsExtension { get; }
         public PackageSettings PackageSettings { get; }
         public IList<ElementSetting> ElementSettings { get; }
         public IList<AssociationSetting> AssociationSettings { get; }

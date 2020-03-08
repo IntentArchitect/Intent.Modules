@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="d2ab8083-3750-4656-bfd5-f169cdb56178" type="Module Metadata">
-  <name>metadata</name>
+<class id="71a2800b-b56d-4d54-9e3c-f0d51a5d907d" type="Modeler Extension">
+  <name>ModelerBuilder</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>5ac7c1ad-1f54-46e0-8216-37d8f0353db8</parentFolderId>
+  <parentFolderId>973ca1d1-54fb-4d40-90c4-dae00cbdaef4</parentFolderId>
   <literals />
   <attributes />
   <operations />

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37" type="Element Settings">
-  <name>Association End Settings</name>
+<class id="921706bd-c055-4cbd-ba7e-deb5419d529e" type="Element Settings">
+  <name>Modeler</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>c1ac77b8-8a6e-4721-aea3-c7314e5ded4e</parentFolderId>
+  <parentFolderId>71a2800b-b56d-4d54-9e3c-f0d51a5d907d</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -12,12 +12,12 @@
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649">
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" value="false" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" value="false" isActive="true" />
         <property name="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" value="false" isActive="true" />
-        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" value="false" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" value="true" isActive="true" />
         <property name="c0b17839-1d85-4237-ba72-e013511ad379" value="true" isActive="true" />
       </properties>
     </stereotype>
@@ -25,16 +25,17 @@
       <comment>Sets the default creation options for this element when used.</comment>
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" value="Add Association End Settings" isActive="true" />
-        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" value="ctrl + shift + e" isActive="true" />
-        <property name="b199adea-c16b-411d-a2db-c881345a421b" value="Association End Settings" isActive="true" />
+        <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" isActive="true" />
+        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" value="ctrl + shift + m" isActive="true" />
+        <property name="b199adea-c16b-411d-a2db-c881345a421b" value="NewModeler" isActive="true" />
+        <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="3714391e-cb1c-47db-9dac-16fdf2b2d57f">
       <addedByDefault>false</addedByDefault>
       <properties>
         <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" value="CharacterBox" isActive="true" />
-        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="E|#00f7ff" isActive="true" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="M|#00ffc8" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

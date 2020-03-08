@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="cfd00dcf-764d-4b28-8728-5e516f60facd" type="Module Stereotype">
-  <name>NewStereotype</name>
+<class id="a6c01201-4191-46ca-bb5d-0532c71d3d00" type="Package Settings">
+  <name>Package Settings</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>d2ab8083-3750-4656-bfd5-f169cdb56178</parentFolderId>
+  <parentFolderId>71a2800b-b56d-4d54-9e3c-f0d51a5d907d</parentFolderId>
   <literals />
   <attributes />
   <operations />
