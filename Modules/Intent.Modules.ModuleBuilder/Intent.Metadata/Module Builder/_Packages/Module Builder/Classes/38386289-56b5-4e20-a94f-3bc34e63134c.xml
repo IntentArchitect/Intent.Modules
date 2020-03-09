@@ -8,6 +8,7 @@
   <literals />
   <attributes />
   <operations />
+  <childElements />
   <stereotypes>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649">
       <addedByDefault>false</addedByDefault>
@@ -35,7 +36,7 @@
       <addedByDefault>false</addedByDefault>
       <properties>
         <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" value="CharacterBox" isActive="true" />
-        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="M|#00ffc8" isActive="true" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="E|#00ffc8" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

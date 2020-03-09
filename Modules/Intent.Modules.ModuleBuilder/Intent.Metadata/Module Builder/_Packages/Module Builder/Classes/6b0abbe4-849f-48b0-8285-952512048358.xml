@@ -170,5 +170,6 @@
     </attribute>
   </attributes>
   <operations />
+  <childElements />
   <stereotypes />
 </class>

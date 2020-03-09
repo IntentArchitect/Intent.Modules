@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="7d4d5bf3-fcdc-4b0c-9604-6e5776382b0a" type="Creation Options">
+<class id="74ad7eb9-d17a-40ea-864e-646a745d72ec" type="Creation Options">
   <name>Creation Options</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>16d21684-d5ea-4fde-b648-f88d292fa272</parentFolderId>
+  <parentFolderId>1f8e7abd-0376-4473-8a74-566f9a129114</parentFolderId>
   <literals />
   <attributes>
-    <attribute id="8b547bad-24e9-49f4-b10e-f5342bd2c657" type="Creation Option">
-      <name>Add Source End</name>
-      <typeReference id="0dea1d48-7b02-4b8b-906f-6a8731396a6a">
-        <typeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</typeId>
+    <attribute id="96d7242b-7619-4e03-8dc0-0d034a8441a0" type="Creation Option">
+      <name>New Folder</name>
+      <typeReference id="e5f3ef9e-cf99-408a-a5a6-e3f0c76a6101">
+        <typeId>c996fb1c-6ae7-4b94-a5f3-b18f54c2e75a</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -19,10 +19,10 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="44ff1d65-e1ad-403a-94cc-22b40832d780" type="Creation Option">
-      <name>Add Destination End</name>
-      <typeReference id="657efec7-1047-4982-8620-42a287926ac7">
-        <typeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</typeId>
+    <attribute id="e7e7ac2c-bc69-4009-9482-2aba45ba2216" type="Creation Option">
+      <name>New Module Stereotype</name>
+      <typeReference id="f243cc4e-0d5d-464f-9441-c5488da79dea">
+        <typeId>5bfb1629-e4b6-4326-9ecd-a10897ce03f9</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

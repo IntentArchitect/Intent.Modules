@@ -8,6 +8,7 @@
   <literals />
   <attributes />
   <operations />
+  <childElements />
   <stereotypes>
     <stereotype stereotypeDefinitionId="a5de089b-457e-49b7-8ec7-f78677e83300">
       <addedByDefault>false</addedByDefault>

@@ -8,5 +8,6 @@
   <literals />
   <attributes />
   <operations />
+  <childElements />
   <stereotypes />
 </class>

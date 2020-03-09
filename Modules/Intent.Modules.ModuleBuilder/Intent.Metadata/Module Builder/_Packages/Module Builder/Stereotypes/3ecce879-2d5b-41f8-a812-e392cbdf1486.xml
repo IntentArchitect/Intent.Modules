@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="3ecce879-2d5b-41f8-a812-e392cbdf1486">
+  <name>Module Stereotype Settings</name>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>module stereotype</element>
+  </targetElements>
+  <autoAdd>true</autoAdd>
+  <parentFolderId>5ac7c1ad-1f54-46e0-8216-37d8f0353db8</parentFolderId>
+  <properties>
+    <property id="faf28f66-3939-4b0b-b9b0-3e033ac89bdd">
+      <name>Targets</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>element settings</type>
+      </lookupTypes>
+    </property>
+    <property id="8fb777ee-a250-424a-a654-a11a3d095c8e">
+      <name>Icon</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(URL or Base64 image)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="6bc59487-86cb-49ea-a734-0df5c6274fa0">
+      <name>Display Icon</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="05ded680-d41e-465f-abc3-e2e5e05bd66e">
+      <name>Auto Add</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="b918512e-a2bf-4f9d-ae96-a6a4bd4ebd8a">
+      <name>Display Text</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>
