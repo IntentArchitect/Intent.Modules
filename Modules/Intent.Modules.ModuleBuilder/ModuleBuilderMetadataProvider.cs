@@ -15,24 +15,24 @@ namespace Intent.Modules.ModuleBuilder
             _metadataManager = metadataManager;
         }
 
-        public IEnumerable<ITemplateDefinition> GetTemplateDefinitions()
+        public IEnumerable<IFileTemplate> GetTemplateDefinitions()
         {
             var templates = _metadataManager.GetMetadata<IElement>("Module Builder").Where(x => x.IsTemplate()).ToList();
-            var result = templates.Select(x => new TemplateDefinition(x)).ToList();
+            var result = templates.Select(x => new FileTemplate(x)).ToList();
             return result;
         }
 
-        public IEnumerable<ITemplateDefinition> GetTemplateDefinitions(string applicationId)
+        public IEnumerable<IFileTemplate> GetTemplateDefinitions(string applicationId)
         {
             return GetTemplateDefinitions().Where(x => x.Application.Id == applicationId);
         }
 
-        public IEnumerable<ITemplateDefinition> GetCSharpTemplates(IApplication application)
+        public IEnumerable<IFileTemplate> GetCSharpTemplates(IApplication application)
         {
             return GetTemplateDefinitions().Where(x => x.Type == ModuleBuilderElementType.CSharpTemplate && x.Application.Name == application.Name);
         }
 
-        public IEnumerable<ITemplateDefinition> GetFileTemplates(IApplication application)
+        public IEnumerable<IFileTemplate> GetFileTemplates(IApplication application)
         {
             return GetTemplateDefinitions().Where(x => x.Type == ModuleBuilderElementType.FileTemplate && x.Application.Name == application.Name);
         }

@@ -7,10 +7,10 @@ using Intent.Modules.ModuleBuilder.Helpers;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class TemplateDefinition : ModuleBuilderElementBase, ITemplateDefinition
+    internal class FileTemplate : ModuleBuilderElementBase, IFileTemplate
     {
 
-        public TemplateDefinition(IElement element) : base(element)
+        public FileTemplate(IElement element) : base(element)
         {
         }
 
@@ -26,19 +26,24 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IModelerModelType GetModelType()
         {
-            var modelTypeId = this.GetStereotypeProperty(ModelExtensions.TemplateSettingsStereotype, "Model Type", string.Empty);
+            var modelTypeId = this.GetStereotypeProperty(ModelExtensions.FileTemplateSettingsStereotype, "Model Type", string.Empty);
             return GetModeler()?.ModelTypes.SingleOrDefault(x => x.Id == modelTypeId);
         }
 
         public IModelerReference GetModeler()
         {
-            var element = this.GetStereotypeProperty<IElement>(ModelExtensions.TemplateSettingsStereotype, "Modeler");
+            var element = this.GetStereotypeProperty<IElement>(ModelExtensions.FileTemplateSettingsStereotype, "Modeler");
             return element == null ? null : new ModelerReference(element);
         }
 
         public IEnumerable<ITemplateDependencyDefinition> GetTemplateDependencies()
         {
             return _element.Attributes.Where(x => true).Select(x => new TemplateDependencyDefinition(x.Type.Element)).ToList();
+        }
+
+        public override string ToString()
+        {
+            return $"[{nameof(FileTemplate)}: {Name}]";
         }
     }
 }

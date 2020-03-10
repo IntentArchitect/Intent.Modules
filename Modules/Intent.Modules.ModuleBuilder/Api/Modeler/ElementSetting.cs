@@ -35,6 +35,9 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
             OperationSettings = element.ChildElements
                 .Where(x => x.SpecializationType == OperationSetting.RequiredSpecializationType)
                 .Select(x => new OperationSetting(x)).ToList();
+            ChildElementSettings = element.ChildElements
+                .Where(x => x.SpecializationType == ElementSetting.RequiredSpecializationType)
+                .Select(x => new ElementSetting(x)).ToList();
             CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
             TypeOrder = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new TypeOrder(x)).ToList();
         }
@@ -62,6 +65,7 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
         public IList<LiteralSetting> LiteralSettings { get; set; }
         public IList<AttributeSetting> AttributeSettings { get; set; }
         public IList<OperationSetting> OperationSettings { get; set; }
+        public IList<ElementSetting> ChildElementSettings { get; set; }
         public IList<CreationOption> CreationOptions { get; set; }
     }
 }

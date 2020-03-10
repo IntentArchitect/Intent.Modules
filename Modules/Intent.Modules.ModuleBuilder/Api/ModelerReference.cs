@@ -9,7 +9,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     internal class ModelerReference : IModelerReference, IEquatable<ModelerReference>
     {
         private readonly IElement _element;
-        public const string SpecializationType = "Modeler Reference";
+        public const string SpecializationType = "Modeler";
 
         public ModelerReference(IElement element)
         {
@@ -20,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
             _element = element;
             Folder = Api.Folder.SpecializationType.Equals(_element.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_element.ParentElement) : null;
-            ModelTypes = _element.Literals.Select(x => new ModelerModelType(x)).ToList();
+            ModelTypes = _element.ChildElements.Where(x => x.SpecializationType == ModelerModelType.RequiredSpecializationType).Select(x => new ModelerModelType(x)).ToList();
         }
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;

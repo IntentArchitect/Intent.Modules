@@ -5,7 +5,7 @@ using Intent.Engine;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface ITemplateDefinition : IModuleBuilderElement
+    public interface IFileTemplate : IModuleBuilderElement
     {
         IModelerModelType GetModelType();
         IModelerReference GetModeler();

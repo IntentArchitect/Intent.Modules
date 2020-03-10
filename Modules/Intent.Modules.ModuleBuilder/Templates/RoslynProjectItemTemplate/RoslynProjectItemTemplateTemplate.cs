@@ -11,11 +11,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 {
-    public class RoslynProjectItemTemplateTemplate : IntentProjectItemTemplateBase<ITemplateDefinition>
+    public class RoslynProjectItemTemplateTemplate : IntentProjectItemTemplateBase<IFileTemplate>
     {
         public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template";
 
-        public RoslynProjectItemTemplateTemplate(string templateId, IProject project, ITemplateDefinition model) : base(templateId, project, model)
+        public RoslynProjectItemTemplateTemplate(string templateId, IProject project, IFileTemplate model) : base(templateId, project, model)
         {
         }
 
@@ -56,7 +56,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
         {
             switch (Model.GetCreationMode())
             {
-                case CreationMode.SingleFileNoModel:
+                case CreationMode.SingleFile:
                     return @"
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -70,8 +70,8 @@ namespace <#= Namespace #>
                     break;
                 case CreationMode.FilePerModel:
                     return Model.GetModelType().PerModelTemplate;
-                case CreationMode.SingleFileListModel:
-                    return Model.GetModelType().SingleListTemplate;
+                //case CreationMode.SingleFileListModel:
+                //    return Model.GetModelType().SingleListTemplate;
                 case CreationMode.Custom:
                     return string.Empty;
                     break;

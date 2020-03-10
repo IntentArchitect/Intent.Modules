@@ -15,7 +15,24 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>807a280e-6317-40d0-acd7-aacaa2723010</parentFolderId>
-      <literals />
+      <literals>
+        <literal id="b82051ac-98ae-4e3f-8b94-5129101cebd1" type="Stereotype Property Option">
+          <name>Single File (No Model)</name>
+          <stereotypes />
+        </literal>
+        <literal id="de1a08ab-d9ca-4c1f-ad00-abc9251dfce0" type="Stereotype Property Option">
+          <name>Single File (Model List)</name>
+          <stereotypes />
+        </literal>
+        <literal id="091011af-4e00-457f-8d10-9729f40d1251" type="Stereotype Property Option">
+          <name>File Per Model</name>
+          <stereotypes />
+        </literal>
+        <literal id="206add5d-d395-45f6-8525-14bb08e19db7" type="Stereotype Property Option">
+          <name>Custom</name>
+          <stereotypes />
+        </literal>
+      </literals>
       <attributes />
       <operations />
       <childElements />
@@ -25,7 +42,38 @@
           <properties>
             <property name="ca85168a-52f3-44eb-8b1c-f6e3612409e5" value="Select" isActive="true" />
             <property name="7d1c8406-bfff-46a2-b1c0-06463ddb4358" value="Options" isActive="true" />
-            <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" isActive="true" />
+            <property name="2884e58b-f287-44cb-b12b-5d97678d3c15" isActive="false" />
+            <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" value="Single File (No Model)" isActive="false" />
+            <property name="9c0ee379-6c9c-41a5-9133-3c537610a538" isActive="false" />
+            <property name="879069fa-266f-4380-91be-7ee56bd3f91f" value="false" isActive="false" />
+            <property name="b2585b83-a8e0-4058-8b9b-0d4c41b5eb66" isActive="false" />
+            <property name="c0c90041-2958-4e5b-bd71-577e0004fe0b" value="(required)" isActive="true" />
+            <property name="bc6ba55e-ae4a-4fff-8693-0bbe46716238" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </childElement>
+    <childElement id="98467111-22fd-44fc-a52c-a491ad2ee97f" type="Module Stereotype Property">
+      <name>Modeler</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>807a280e-6317-40d0-acd7-aacaa2723010</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <childElements />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c51d3d71-bcba-48b4-9ac5-98b2e27814c9">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="ca85168a-52f3-44eb-8b1c-f6e3612409e5" value="Select" isActive="true" />
+            <property name="7d1c8406-bfff-46a2-b1c0-06463ddb4358" value="Lookup Element" isActive="true" />
+            <property name="2884e58b-f287-44cb-b12b-5d97678d3c15" isActive="false" />
+            <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" value="ljklj" isActive="false" />
+            <property name="9c0ee379-6c9c-41a5-9133-3c537610a538" isActive="false" />
+            <property name="879069fa-266f-4380-91be-7ee56bd3f91f" value="false" isActive="false" />
+            <property name="b2585b83-a8e0-4058-8b9b-0d4c41b5eb66" isActive="true" />
             <property name="c0c90041-2958-4e5b-bd71-577e0004fe0b" isActive="true" />
             <property name="bc6ba55e-ae4a-4fff-8693-0bbe46716238" isActive="true" />
           </properties>
@@ -46,9 +94,13 @@
         <stereotype stereotypeDefinitionId="c51d3d71-bcba-48b4-9ac5-98b2e27814c9">
           <addedByDefault>false</addedByDefault>
           <properties>
-            <property name="ca85168a-52f3-44eb-8b1c-f6e3612409e5" value="Text Box" isActive="true" />
-            <property name="7d1c8406-bfff-46a2-b1c0-06463ddb4358" isActive="false" />
-            <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" isActive="true" />
+            <property name="ca85168a-52f3-44eb-8b1c-f6e3612409e5" value="Select" isActive="true" />
+            <property name="7d1c8406-bfff-46a2-b1c0-06463ddb4358" value="Nested Lookup" isActive="true" />
+            <property name="2884e58b-f287-44cb-b12b-5d97678d3c15" value="Modeler" isActive="true" />
+            <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" isActive="false" />
+            <property name="9c0ee379-6c9c-41a5-9133-3c537610a538" isActive="false" />
+            <property name="879069fa-266f-4380-91be-7ee56bd3f91f" value="false" isActive="false" />
+            <property name="b2585b83-a8e0-4058-8b9b-0d4c41b5eb66" isActive="false" />
             <property name="c0c90041-2958-4e5b-bd71-577e0004fe0b" isActive="true" />
             <property name="bc6ba55e-ae4a-4fff-8693-0bbe46716238" isActive="true" />
           </properties>
@@ -71,30 +123,11 @@
           <properties>
             <property name="ca85168a-52f3-44eb-8b1c-f6e3612409e5" value="Text Box" isActive="true" />
             <property name="7d1c8406-bfff-46a2-b1c0-06463ddb4358" isActive="false" />
+            <property name="2884e58b-f287-44cb-b12b-5d97678d3c15" isActive="false" />
             <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" isActive="true" />
-            <property name="c0c90041-2958-4e5b-bd71-577e0004fe0b" isActive="true" />
-            <property name="bc6ba55e-ae4a-4fff-8693-0bbe46716238" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-    </childElement>
-    <childElement id="98467111-22fd-44fc-a52c-a491ad2ee97f" type="Module Stereotype Property">
-      <name>Modeler</name>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>807a280e-6317-40d0-acd7-aacaa2723010</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <childElements />
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="c51d3d71-bcba-48b4-9ac5-98b2e27814c9">
-          <addedByDefault>false</addedByDefault>
-          <properties>
-            <property name="ca85168a-52f3-44eb-8b1c-f6e3612409e5" value="Text Box" isActive="true" />
-            <property name="7d1c8406-bfff-46a2-b1c0-06463ddb4358" isActive="false" />
-            <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" isActive="true" />
+            <property name="9c0ee379-6c9c-41a5-9133-3c537610a538" isActive="false" />
+            <property name="879069fa-266f-4380-91be-7ee56bd3f91f" value="false" isActive="false" />
+            <property name="b2585b83-a8e0-4058-8b9b-0d4c41b5eb66" isActive="false" />
             <property name="c0c90041-2958-4e5b-bd71-577e0004fe0b" isActive="true" />
             <property name="bc6ba55e-ae4a-4fff-8693-0bbe46716238" isActive="true" />
           </properties>

@@ -28,6 +28,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class StereotypeSettings
     {
+        [XmlAttribute("specializationType")]
+        public string SpecializationType { get; set; }
+
         [XmlArray("targetTypeOptions")]
         [XmlArrayItem("option")]
         public List<StereotypeTargetTypeOption> TargetTypeOptions { get; set; }
@@ -104,7 +107,6 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                 foreach (var typeOrder in value)
                 {
                     _typeOrder.Insert(typeOrder.Order != null ? Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count) : _typeOrder.Count, typeOrder);
-                    typeOrder.Order = null;
                 }
             }
         }
@@ -123,6 +125,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArray("operationSettings")]
         [XmlArrayItem("operationSetting")]
         public OperationSettings[] OperationSettings { get; set; }
+
+        [XmlArray("childElementSettings")]
+        [XmlArrayItem("childElementSetting")]
+        public ElementSettings[] ChildElementSettings { get; set; }
 
         [XmlElement("mappingSettings")]
         public ElementMappingSettings MappingSettings { get; set; }
@@ -293,7 +299,6 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                 foreach (var typeOrder in value)
                 {
                     _typeOrder.Insert(typeOrder.Order != null ? Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count) : _typeOrder.Count, typeOrder);
-                    typeOrder.Order = null;
                 }
             }
         }

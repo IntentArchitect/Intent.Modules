@@ -29,7 +29,7 @@
         <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" value="Add Modeler" isActive="true" />
         <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" isActive="true" />
         <property name="b199adea-c16b-411d-a2db-c881345a421b" value="modeler" isActive="true" />
-        <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" value="2" isActive="true" />
+        <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" value="1" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="3714391e-cb1c-47db-9dac-16fdf2b2d57f">

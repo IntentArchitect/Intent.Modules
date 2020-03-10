@@ -7,45 +7,39 @@ namespace Intent.Modules.ModuleBuilder.Helpers
 {
     public static class ModelExtensions
     {
-        public const string TemplateSettingsStereotype = "Template Settings";
+        public const string FileTemplateSettingsStereotype = "File Template Settings";
 
         public static CreationMode GetCreationMode(this IModuleBuilderElement model)
         {
-            switch (model.GetStereotypeProperty(TemplateSettingsStereotype, "Creation Mode", "File per Model"))
+            switch (model.GetStereotypeProperty(FileTemplateSettingsStereotype, "Creation Mode", "File per Model"))
             {
-                case "Single File (No Model)":
-                    return CreationMode.SingleFileNoModel;
-                case "File per Model":
+                case "Single file":
+                    return CreationMode.SingleFile;
+                case "File per model":
                     return CreationMode.FilePerModel;
-                case "Single File (Model List)":
-                    return CreationMode.SingleFileListModel;
+                case "File per project": // TODO: File per project doesn't always make sense.
+                    return CreationMode.FilePerProject;
                 case "Custom":
                     return CreationMode.Custom;
                 default:
-                    return CreationMode.SingleFileNoModel;
+                    return CreationMode.SingleFile;
             }
         }
 
-        public static string GetTemplateBaseType(this ITemplateDefinition model)
+        public static string GetTemplateBaseType(this IFileTemplate model)
         {
-            return model.GetStereotypeProperty("Template Settings", "Base Type", "IntentProjectItemTemplateBase");
+            return model.GetStereotypeProperty(FileTemplateSettingsStereotype, "Base Type", "IntentProjectItemTemplateBase");
         }
 
-        public static string GetTemplateModelName(this ITemplateDefinition model)
+        public static string GetTemplateModelName(this IFileTemplate model)
         {
             var modelType = model.GetModelType();
-            if (model.GetCreationMode() == CreationMode.SingleFileNoModel || modelType == null)
+            if (model.GetCreationMode() == CreationMode.SingleFile)
             {
-                return "object";
+                return  modelType == null ? "object" : $"IList<{modelType.Name}>";
             }
 
-            var type = modelType.Name;
-            if (model.GetCreationMode() == CreationMode.SingleFileListModel)
-            {
-                type = $"IList<{type}>";
-            }
-
-            return type;
+            return modelType.Name;
         }
 
         //public static string GetModelerName(this IModuleBuilderElement model)

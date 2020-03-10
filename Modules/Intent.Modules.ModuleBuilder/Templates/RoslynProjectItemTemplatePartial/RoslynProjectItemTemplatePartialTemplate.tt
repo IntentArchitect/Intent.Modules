@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<ITemplateDefinition>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IFileTemplate>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
@@ -30,7 +30,7 @@ namespace <#= Namespace #>
         [IntentInitialGen]
         public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
-<#  if (Model.GetCreationMode() != CreationMode.SingleFileNoModel) { #>
+<#  if (Model.GetCreationMode() != CreationMode.SingleFile) { #>
             AddTypeSource(CSharpTypeSource.InProject(Project, <#= ClassName #>.TemplateId, collectionFormat: "IEnumerable<{0}>"));
 <#  } #>
         }

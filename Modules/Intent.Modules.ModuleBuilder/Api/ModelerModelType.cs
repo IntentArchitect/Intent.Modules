@@ -6,13 +6,13 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     internal class ModelerModelType : IModelerModelType
     {
-        public const string SpecializationType = "Model Type";
+        public const string RequiredSpecializationType = "Element Settings";
 
-        private readonly ILiteral _element;
+        private readonly IElement _element;
 
-        public ModelerModelType(ILiteral element)
+        public ModelerModelType(IElement element)
         {
-            if (element.SpecializationType != SpecializationType)
+            if (element.SpecializationType != RequiredSpecializationType)
             {
                 throw new InvalidOperationException($"Cannot load {nameof(ModelerModelType)} from element of type {element.SpecializationType}");
             }
@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         public string Id => _element.Id;
-        public string Name => _element.Name;
+        public string Name => "I" +_element.Name.Replace(" ", "").Replace("-", "");
         public string Namespace => _element.GetStereotypeProperty<string>("Model Type Settings", "Namespace");
         public string LoadMethod => _element.GetStereotypeProperty<string>("Model Type Settings", "Load Method");
         public string PerModelTemplate => _element.GetStereotypeProperty<string>("Model Type Settings", "Per Model Template");

@@ -16,13 +16,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
     public class IModeSpecModel
     {
-        public IModeSpecModel(IEnumerable<ITemplateDefinition> templates, IEnumerable<IDecoratorDefinition> decorators)
+        public IModeSpecModel(IEnumerable<IFileTemplate> templates, IEnumerable<IDecoratorDefinition> decorators)
         {
             Templates = templates;
             Decorators = decorators;
         }
 
-        public IEnumerable<ITemplateDefinition> Templates { get; }
+        public IEnumerable<IFileTemplate> Templates { get; }
         public IEnumerable<IDecoratorDefinition> Decorators { get; }
     }
 

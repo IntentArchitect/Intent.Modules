@@ -2,9 +2,9 @@
 {
     public enum CreationMode
     {
-        SingleFileNoModel,
+        SingleFile,
         FilePerModel,
-        SingleFileListModel,
+        FilePerProject,
         Custom
     }
 }

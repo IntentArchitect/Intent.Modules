@@ -7,17 +7,17 @@ namespace Intent.Modules.ModuleBuilder
 {
     public static class ModuleBuilderMetadataManagerExtensions
     {
-        public static IEnumerable<ITemplateDefinition> GetTemplateDefinitions(this IMetadataManager metadataManager, IApplication application)
+        public static IEnumerable<IFileTemplate> GetTemplateDefinitions(this IMetadataManager metadataManager, IApplication application)
         {
             return new ModuleBuilderMetadataProvider(metadataManager).GetTemplateDefinitions(application.Id);
         }
 
-        public static IEnumerable<ITemplateDefinition> GetCSharpTemplates(this IMetadataManager metadataManager, IApplication application)
+        public static IEnumerable<IFileTemplate> GetCSharpTemplates(this IMetadataManager metadataManager, IApplication application)
         {
             return new ModuleBuilderMetadataProvider(metadataManager).GetCSharpTemplates(application);
         }
 
-        public static IEnumerable<ITemplateDefinition> GetFileTemplates(this IMetadataManager metadataManager, IApplication application)
+        public static IEnumerable<IFileTemplate> GetFileTemplates(this IMetadataManager metadataManager, IApplication application)
         {
             return new ModuleBuilderMetadataProvider(metadataManager).GetFileTemplates(application);
         }

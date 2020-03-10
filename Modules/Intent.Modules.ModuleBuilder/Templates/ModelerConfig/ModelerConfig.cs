@@ -175,6 +175,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     OperationSettings = x.OperationSettings?.Any() == true
                         ? x.OperationSettings.Select(GetOperationSettings).ToArray()
                         : null,
+                    ChildElementSettings = GetElementSettings(x.ChildElementSettings).ToArray(),
                     MappingSettings = null, // TODO JL
                     CreationOptions = x.CreationOptions?.Any() == true
                         ? x.CreationOptions.Select(GetElementCreationOptions).ToList()

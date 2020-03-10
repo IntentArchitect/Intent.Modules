@@ -9,7 +9,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 {
-    public class ProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<ITemplateDefinition>
+    public class ProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<IFileTemplate>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -20,12 +20,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 
         public override string TemplateId => ProjectItemTemplatePartialTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ITemplateDefinition model)
+        public override ITemplate CreateTemplateInstance(IProject project, IFileTemplate model)
         {
             return new ProjectItemTemplatePartialTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<ITemplateDefinition> GetModels(IApplication application)
+        public override IEnumerable<IFileTemplate> GetModels(IApplication application)
         {
             return _metadataManager.GetFileTemplates(application)
                 .ToList();

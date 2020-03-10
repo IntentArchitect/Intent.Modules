@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="8c476c69-ecf0-4c01-8abb-127807bc33ee" type="File Template">
+  <name>StereotypeDefinitionFileTemplate</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1e203c0d-d0a7-4d77-9204-d78fabb1b796</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <childElements />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="c1b6793c-7800-4bc8-822e-f1bf5e757048">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="93163f77-b427-482c-954a-3b71113688ba" value="File per model" isActive="true" />
+        <property name="29ea944c-a971-4dde-97db-1a856f1cf95c" value="ae8c8307-4d34-473a-8740-96537a791443" isActive="true" />
+        <property name="0f4d2797-317f-425f-9726-70cbd976bbc2" value="5bfb1629-e4b6-4326-9ecd-a10897ce03f9" isActive="true" />
+        <property name="efb7c160-e1e8-4977-b68b-9eb012d0b27f" value="txt" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+</class>

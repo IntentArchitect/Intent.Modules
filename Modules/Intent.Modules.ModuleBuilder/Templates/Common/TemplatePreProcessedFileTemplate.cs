@@ -1,4 +1,5 @@
 using System;
+using System.CodeDom.Compiler;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
@@ -7,6 +8,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Templates;
 using Mono.TextTemplating;
 using System.Collections.Generic;
+using System.Text;
 using Intent.Modules.ModuleBuilder.Api;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Common
@@ -52,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
             var partialTemplateMetadata = partialTemplateInstance.GetMetadata();
             var templateGenerator = new TemplateGenerator();
 
-            var hasErrors = templateGenerator.PreprocessTemplate(
+            var hasErrors = !templateGenerator.PreprocessTemplate(
                 inputFileName: string.Empty,
                 className: partialTemplateMetadata.CustomMetadata["ClassName"],
                 classNamespace: partialTemplateMetadata.CustomMetadata["Namespace"],
@@ -63,7 +65,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
 
             if (hasErrors)
             {
-                throw new Exception($"An error was found while generating the .cs code-behind file for template [{t4TemplateInstance}]: {string.Join(";", templateGenerator.Errors)}");
+                throw new Exception($"An error was found while generating the .cs code-behind file for template [{t4TemplateInstance}]: {string.Join(";", templateGenerator.Errors.Cast<CompilerError>().Select(x => x.ErrorText))}");
             }
 
             return outputContent;

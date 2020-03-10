@@ -22,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<ITemplateDefinition>
+    public partial class RoslynProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<IFileTemplate>
     {
 #line hidden
         /// <summary>
@@ -127,7 +127,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             this.Write(" model) : base(TemplateId, project, model)\r\n        {\r\n");
             
             #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-  if (Model.GetCreationMode() != CreationMode.SingleFileNoModel) { 
+  if (Model.GetCreationMode() != CreationMode.SingleFile) { 
             
             #line default
             #line hidden
