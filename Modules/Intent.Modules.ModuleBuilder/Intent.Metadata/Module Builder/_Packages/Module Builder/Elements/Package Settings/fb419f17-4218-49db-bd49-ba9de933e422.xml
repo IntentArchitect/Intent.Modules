@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="fb419f17-4218-49db-bd49-ba9de933e422" type="Package Settings">
+  <name>Package Settings</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>ae8c8307-4d34-473a-8740-96537a791443</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

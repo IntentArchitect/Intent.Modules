@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="c996fb1c-6ae7-4b94-a5f3-b18f54c2e75a" type="Element Settings">
+  <name>Module Package Folder</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>ae8c8307-4d34-473a-8740-96537a791443</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" value="false" isActive="true" />
+        <property name="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" value="false" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" value="true" isActive="true" />
+        <property name="c0b17839-1d85-4237-ba72-e013511ad379" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="72fa6cf4-ce3c-4162-944f-392304e12009">
+      <comment>Sets the default creation options for this element when used.</comment>
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" isActive="true" />
+        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" value="ctrl + shift + f" isActive="true" />
+        <property name="b199adea-c16b-411d-a2db-c881345a421b" value="NewFolder" isActive="true" />
+        <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="3714391e-cb1c-47db-9dac-16fdf2b2d57f">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" value="UrlImagePath" isActive="true" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" value="./img/icons/uml/Folder_02_256x.png" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="8034e9bf-e9eb-4feb-a49b-6dcbfeb388ba">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="6ea811e2-2878-4120-a48e-a36994545623" value="UrlImagePath" isActive="true" />
+        <property name="d78c944b-71c3-46af-9093-8cb59631a69a" value="./img/icons/uml/FolderOpen_02_256x.png" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

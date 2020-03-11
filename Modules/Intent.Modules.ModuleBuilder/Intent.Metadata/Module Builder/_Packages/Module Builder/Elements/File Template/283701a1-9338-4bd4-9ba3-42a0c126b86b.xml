@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="283701a1-9338-4bd4-9ba3-42a0c126b86b" type="File Template">
+  <name>FolderFileTemplate</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>0d690a31-5a5b-49b1-901c-3d1bddb5cda9</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="c1b6793c-7800-4bc8-822e-f1bf5e757048">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="93163f77-b427-482c-954a-3b71113688ba" value="File per model" isActive="true" />
+        <property name="29ea944c-a971-4dde-97db-1a856f1cf95c" value="ae8c8307-4d34-473a-8740-96537a791443" isActive="true" />
+        <property name="0f4d2797-317f-425f-9726-70cbd976bbc2" value="c996fb1c-6ae7-4b94-a5f3-b18f54c2e75a" isActive="true" />
+        <property name="efb7c160-e1e8-4977-b68b-9eb012d0b27f" value="xml" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

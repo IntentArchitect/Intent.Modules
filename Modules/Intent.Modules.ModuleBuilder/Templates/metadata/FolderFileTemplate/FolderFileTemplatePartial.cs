@@ -32,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.FolderFileTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "xml",
-                defaultLocationInProject: $"metadata/{Model.Parent.Name}/Classes"
+                defaultLocationInProject: $"metadata/{Model.FolderPath}/Elements/{ModulePackageFolder.SpecializationType}"
             );
         }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0d690a31-5a5b-49b1-901c-3d1bddb5cda9" type="Folder">
+  <name>metadata</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1e203c0d-d0a7-4d77-9204-d78fabb1b796</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

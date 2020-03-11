@@ -36,5 +36,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.PackageFileTemplate
             );
         }
 
+        public override void BeforeTemplateExecution()
+        {
+            foreach (var targetModeler in Model.TargetModelers)
+            {
+                Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
+                {
+                    { "Target", targetModeler },
+                    { "Folder", $"metadata/{Model.Name}" }
+                });
+            }
+        }
+
     }
 }

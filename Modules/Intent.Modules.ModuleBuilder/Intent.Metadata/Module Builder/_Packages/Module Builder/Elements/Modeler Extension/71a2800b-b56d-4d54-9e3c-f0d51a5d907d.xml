@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="71a2800b-b56d-4d54-9e3c-f0d51a5d907d" type="Modeler Extension">
+  <name>Modeler Builder</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>973ca1d1-54fb-4d40-90c4-dae00cbdaef4</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" value="Intent.Modules.ModuleBuilder.Modeler.Api" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

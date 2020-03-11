@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="5bfd81de-a1ee-421d-8db3-5657c7c740a7">
+  <name>Module Package Settings</name>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>module package</element>
+  </targetElements>
+  <autoAdd>true</autoAdd>
+  <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
+  <properties>
+    <property id="e61e2a7f-4472-48f3-81a2-0abde2c8f37a">
+      <name>Target Modelers</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(required)</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>modeler</type>
+      </lookupTypes>
+    </property>
+  </properties>
+</stereotypeDefinition>

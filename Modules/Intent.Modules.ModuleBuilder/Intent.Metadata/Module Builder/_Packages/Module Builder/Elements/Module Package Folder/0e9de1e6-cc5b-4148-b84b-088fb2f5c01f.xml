@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0e9de1e6-cc5b-4148-b84b-088fb2f5c01f" type="Module Package Folder">
+  <name>Stereotypes</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>8e65b31b-cc1c-40a2-bb1f-05f70c51c286</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

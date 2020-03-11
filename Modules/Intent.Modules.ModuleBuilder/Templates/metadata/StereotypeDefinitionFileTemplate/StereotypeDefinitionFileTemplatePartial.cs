@@ -32,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.StereotypeDefinitionFi
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "xml",
-                defaultLocationInProject: "StereotypeDefinitionFile"
+                defaultLocationInProject: $"metadata/{Model.GetPackage().Name}/Stereotypes"
             );
         }
 

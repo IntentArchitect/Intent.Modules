@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 
@@ -9,6 +10,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     {
         string Name { get; }
         string IconUrl { get; }
+        List<string> TargetModelers { get; }
     }
 
     public class ModulePackage : IModulePackage
@@ -29,5 +31,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
         public string IconUrl => "./img/icons/common/Intent-Package-Dark.png";
+
+        public List<string> TargetModelers => _element
+            .GetStereotypeProperty<IElement[]>("Module Package Settings", "Target Modelers", new IElement[0])
+            .Select(x => x.Name).ToList();
     }
 }

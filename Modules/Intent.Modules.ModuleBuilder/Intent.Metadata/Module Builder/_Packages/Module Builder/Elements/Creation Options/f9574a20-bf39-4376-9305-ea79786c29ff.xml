@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f9574a20-bf39-4376-9305-ea79786c29ff" type="Creation Options">
+  <name>Creation Options</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>38386289-56b5-4e20-a94f-3bc34e63134c</parentFolderId>
+  <literals />
+  <attributes>
+    <attribute id="27debc8e-dd79-4f24-ad0d-faa081a4175a" type="Creation Option">
+      <name>New Association Type</name>
+      <typeReference id="0ce6ef2a-fe82-40e9-bb53-5adcab6fc6ac">
+        <typeId>16d21684-d5ea-4fde-b648-f88d292fa272</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="1789a8c8-e53d-4298-ba21-8282f30f5208" type="Creation Option">
+      <name>New Element Type</name>
+      <typeReference id="4fe5654a-11bf-471b-97d0-39640587a6dd">
+        <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+    <attribute id="7cacf7a4-8328-4ba9-bd40-fc4b32f7794f" type="Creation Option">
+      <name>Add Package Settings</name>
+      <typeReference id="6ab67fe4-992e-4d7a-b9be-a06a6b675bf1">
+        <typeId>89333f72-3960-4159-bf61-9c40d4b65088</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <stereotypes />
+    </attribute>
+  </attributes>
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

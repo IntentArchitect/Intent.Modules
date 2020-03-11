@@ -38,9 +38,23 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         public string TemplateType { get; set; }
     }
 
+    public class MetadataRegistrationInfo
+    {
+        public string Target { get; }
+        public string Folder { get; }
+
+        public MetadataRegistrationInfo(string target, string folder)
+        {
+            Target = target;
+            Folder = folder;
+        }
+    }
+
     public class IModSpecTemplate : IntentProjectItemTemplateBase<IModeSpecModel>, IHasNugetDependencies
     {
-        private ICollection<TemplateRegistrationInfo> _templatesToRegister = new List<TemplateRegistrationInfo>();
+        private readonly ICollection<TemplateRegistrationInfo> _templatesToRegister = new List<TemplateRegistrationInfo>();
+        private readonly ICollection<MetadataRegistrationInfo> _metadataToRegister = new List<MetadataRegistrationInfo>();
+
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
         public IModSpecTemplate(string templateId, IProject project, IModeSpecModel models)
@@ -49,6 +63,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             Project.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
                 _templatesToRegister.Add(new TemplateRegistrationInfo(@event.GetValue("TemplateId"), @event.GetValue("TemplateType")));
+            });
+
+            Project.Application.EventDispatcher.Subscribe("MetadataRegistrationRequired", @event =>
+            {
+                _metadataToRegister.Add(new MetadataRegistrationInfo(@event.GetValue("Target"), @event.GetValue("Folder")));
             });
         }
 
@@ -128,6 +147,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 {
                     var dependencies = doc.XPathSelectElement("package/dependencies");
                     dependencies.Add(CreateDependency(new IntentModule(template.GetModeler().ModuleDependency, template.GetModeler().ModuleVersion)));
+                }
+            }
+
+            foreach (var metadataRegistration in _metadataToRegister)
+            {
+                if (doc.XPathSelectElement($"package/metadata/install[@src=\"{metadataRegistration.Folder}\"]") == null)
+                {
+                    var metadataRegistrations = doc.XPathSelectElement("package/metadata");
+                    metadataRegistrations.Add(new XElement("install", new XAttribute("target", metadataRegistration.Target), new XAttribute("src", metadataRegistration.Folder)));
                 }
             }
 

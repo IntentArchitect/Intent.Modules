@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="807a280e-6317-40d0-acd7-aacaa2723010" type="Module Stereotype">
+  <name>Template Settings</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>0e9de1e6-cc5b-4148-b84b-088fb2f5c01f</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="3ecce879-2d5b-41f8-a812-e392cbdf1486">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="faf28f66-3939-4b0b-b9b0-3e033ac89bdd" value="[&quot;1cc4388d-3e66-4079-9101-9ed4f5ffbdb7&quot;,&quot;43eae4bd-4613-4d15-88ac-52b7e743b7b2&quot;]" isActive="true" />
+        <property name="8fb777ee-a250-424a-a654-a11a3d095c8e" isActive="true" />
+        <property name="6bc59487-86cb-49ea-a734-0df5c6274fa0" value="false" isActive="true" />
+        <property name="05ded680-d41e-465f-abc3-e2e5e05bd66e" value="false" isActive="true" />
+        <property name="b918512e-a2bf-4f9d-ae96-a6a4bd4ebd8a" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="2eeff747-3ed1-4318-beb0-deedd2d3d666" type="Module Stereotype Property">
+      <name>Creation Mode</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>807a280e-6317-40d0-acd7-aacaa2723010</parentFolderId>
+      <literals>
+        <literal id="b82051ac-98ae-4e3f-8b94-5129101cebd1" type="Stereotype Property Option">
+          <name>Single File (No Model)</name>
+          <stereotypes />
+        </literal>
+        <literal id="de1a08ab-d9ca-4c1f-ad00-abc9251dfce0" type="Stereotype Property Option">
+          <name>Single File (Model List)</name>
+          <stereotypes />
+        </literal>
+        <literal id="091011af-4e00-457f-8d10-9729f40d1251" type="Stereotype Property Option">
+          <name>File Per Model</name>
+          <stereotypes />
+        </literal>
+        <literal id="206add5d-d395-45f6-8525-14bb08e19db7" type="Stereotype Property Option">
+          <name>Custom</name>
+          <stereotypes />
+        </literal>
+      </literals>
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c51d3d71-bcba-48b4-9ac5-98b2e27814c9">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="ca85168a-52f3-44eb-8b1c-f6e3612409e5" value="Select" isActive="true" />
+            <property name="7d1c8406-bfff-46a2-b1c0-06463ddb4358" value="Options" isActive="true" />
+            <property name="2884e58b-f287-44cb-b12b-5d97678d3c15" isActive="false" />
+            <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" value="Single File (No Model)" isActive="false" />
+            <property name="9c0ee379-6c9c-41a5-9133-3c537610a538" isActive="false" />
+            <property name="879069fa-266f-4380-91be-7ee56bd3f91f" value="false" isActive="false" />
+            <property name="b2585b83-a8e0-4058-8b9b-0d4c41b5eb66" isActive="false" />
+            <property name="c0c90041-2958-4e5b-bd71-577e0004fe0b" value="(required)" isActive="true" />
+            <property name="bc6ba55e-ae4a-4fff-8693-0bbe46716238" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="98467111-22fd-44fc-a52c-a491ad2ee97f" type="Module Stereotype Property">
+      <name>Modeler</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>807a280e-6317-40d0-acd7-aacaa2723010</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c51d3d71-bcba-48b4-9ac5-98b2e27814c9">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="ca85168a-52f3-44eb-8b1c-f6e3612409e5" value="Select" isActive="true" />
+            <property name="7d1c8406-bfff-46a2-b1c0-06463ddb4358" value="Lookup Element" isActive="true" />
+            <property name="2884e58b-f287-44cb-b12b-5d97678d3c15" isActive="false" />
+            <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" value="ljklj" isActive="false" />
+            <property name="9c0ee379-6c9c-41a5-9133-3c537610a538" isActive="false" />
+            <property name="879069fa-266f-4380-91be-7ee56bd3f91f" value="false" isActive="false" />
+            <property name="b2585b83-a8e0-4058-8b9b-0d4c41b5eb66" isActive="true" />
+            <property name="c0c90041-2958-4e5b-bd71-577e0004fe0b" isActive="true" />
+            <property name="bc6ba55e-ae4a-4fff-8693-0bbe46716238" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="b102be32-b76e-47a2-b58d-b206113f3f8c" type="Module Stereotype Property">
+      <name>Model Type</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>807a280e-6317-40d0-acd7-aacaa2723010</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c51d3d71-bcba-48b4-9ac5-98b2e27814c9">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="ca85168a-52f3-44eb-8b1c-f6e3612409e5" value="Select" isActive="true" />
+            <property name="7d1c8406-bfff-46a2-b1c0-06463ddb4358" value="Nested Lookup" isActive="true" />
+            <property name="2884e58b-f287-44cb-b12b-5d97678d3c15" value="Modeler" isActive="true" />
+            <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" isActive="false" />
+            <property name="9c0ee379-6c9c-41a5-9133-3c537610a538" isActive="false" />
+            <property name="879069fa-266f-4380-91be-7ee56bd3f91f" value="false" isActive="false" />
+            <property name="b2585b83-a8e0-4058-8b9b-0d4c41b5eb66" isActive="false" />
+            <property name="c0c90041-2958-4e5b-bd71-577e0004fe0b" isActive="true" />
+            <property name="bc6ba55e-ae4a-4fff-8693-0bbe46716238" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="69a8fe76-5a7c-43d0-9bd7-6402846e9d05" type="Module Stereotype Property">
+      <name>Base Type</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>807a280e-6317-40d0-acd7-aacaa2723010</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c51d3d71-bcba-48b4-9ac5-98b2e27814c9">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="ca85168a-52f3-44eb-8b1c-f6e3612409e5" value="Text Box" isActive="true" />
+            <property name="7d1c8406-bfff-46a2-b1c0-06463ddb4358" isActive="false" />
+            <property name="2884e58b-f287-44cb-b12b-5d97678d3c15" isActive="false" />
+            <property name="474fec7b-e966-4bd1-b5fd-6a78783d41d7" isActive="true" />
+            <property name="9c0ee379-6c9c-41a5-9133-3c537610a538" isActive="false" />
+            <property name="879069fa-266f-4380-91be-7ee56bd3f91f" value="false" isActive="false" />
+            <property name="b2585b83-a8e0-4058-8b9b-0d4c41b5eb66" isActive="false" />
+            <property name="c0c90041-2958-4e5b-bd71-577e0004fe0b" isActive="true" />
+            <property name="bc6ba55e-ae4a-4fff-8693-0bbe46716238" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+  </childElements>
+</class>
