@@ -37,6 +37,30 @@ namespace Intent.Modules.ModuleBuilder
             return GetTemplateDefinitions().Where(x => x.Type == ModuleBuilderElementType.FileTemplate && x.Application.Name == application.Name);
         }
 
+        public IEnumerable<IModulePackage> GetModulePackages(string applicationId)
+        {
+            var packages = _metadataManager.GetMetadata<IElement>("Module Builder")
+                .Where(x => x.Application.Id == applicationId && x.SpecializationType == ModulePackage.SpecializationType)
+                .Select(x => new ModulePackage(x)).ToList();
+            return packages;
+        }
+
+        public IEnumerable<IModuleStereotype> GetModuleStereotypes(string applicationId)
+        {
+            var results = _metadataManager.GetMetadata<IElement>("Module Builder")
+                .Where(x => x.Application.Id == applicationId && x.SpecializationType == ModuleStereotype.SpecializationType)
+                .Select(x => new ModuleStereotype(x)).ToList();
+            return results;
+        }
+
+        public IEnumerable<IModulePackageFolder> GetModulePackageFolders(string applicationId)
+        {
+            var results = _metadataManager.GetMetadata<IElement>("Module Builder")
+                .Where(x => x.Application.Id == applicationId && x.SpecializationType == ModulePackageFolder.SpecializationType)
+                .Select(x => new ModulePackageFolder(x)).ToList();
+            return results;
+        }
+
         public IEnumerable<IDecoratorDefinition> GetDecorators()
         {
             var templates = _metadataManager.GetMetadata<IElement>("Module Builder").Where(x => x.IsDecorator()).ToList();

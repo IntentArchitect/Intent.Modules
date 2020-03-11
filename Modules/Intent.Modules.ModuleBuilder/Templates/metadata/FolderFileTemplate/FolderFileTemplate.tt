@@ -1,0 +1,20 @@
+<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IModulePackageFolder>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
+<?xml version="1.0" encoding="utf-8"?>
+<class id="<#= Model.Id #>" type="Folder">
+  <name><#= Model.Name #></name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId><#= Model.Parent.Id #></parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+</class>

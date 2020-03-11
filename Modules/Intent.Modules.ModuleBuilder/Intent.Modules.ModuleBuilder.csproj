@@ -9,6 +9,39 @@
     <Compile Remove="Intent.Metadata\**" />
     <EmbeddedResource Remove="Intent.Metadata\**" />
     <None Remove="Intent.Metadata\**" />
+  
+    <None Update="Templates\metadata\FolderFileTemplate\FolderFileTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FolderFileTemplate.cs</LastGenOutput>
+    </None>
+  
+    <None Update="Templates\metadata\PackageFileTemplate\PackageFileTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>PackageFileTemplate.cs</LastGenOutput>
+    </None>
+  
+    <None Update="Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StereotypeDefinitionFileTemplate.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\metadata\FolderFileTemplate\FolderFileTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FolderFileTemplate.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Update="Templates\metadata\PackageFileTemplate\PackageFileTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PackageFileTemplate.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Update="Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StereotypeDefinitionFileTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -20,7 +53,6 @@
     <Content Update="modeler\ModuleBuilder.modeler.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  
     <Content Update="modeler\ModelerBuilder.modeler.extension.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -31,6 +63,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Intent.Modules.Common" Version="2.0.0" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.0.1" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />

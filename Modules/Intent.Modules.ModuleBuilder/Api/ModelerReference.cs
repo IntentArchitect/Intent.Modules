@@ -28,6 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => _element.Id;
         public string Name => _element.Name;
         public IEnumerable<IModelerModelType> ModelTypes { get; }
+        public string ApiNamespace => _element.GetStereotypeProperty<string>("Modeler Settings", "API Namespace");
         public string ModuleDependency => _element.GetStereotypeProperty<string>("Modeler Settings", "Module Dependency");
         public string ModuleVersion => _element.GetStereotypeProperty<string>("Modeler Settings", "Module Version");
         public string NuGetDependency => _element.GetStereotypeProperty<string>("Modeler Settings", "NuGet Dependency");

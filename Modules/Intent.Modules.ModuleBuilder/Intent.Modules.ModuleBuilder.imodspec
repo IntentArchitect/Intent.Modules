@@ -54,6 +54,15 @@
     <template id="Intent.ModuleBuilder.DecoratorRegistration.Template">
       <role>Decorators</role>
     </template>
+    <template id="ModuleBuilder.Templates.metadata.FolderFileTemplate">
+      <role>Metadata</role>
+    </template>
+    <template id="ModuleBuilder.Templates.metadata.PackageFileTemplate">
+      <role>Metadata</role>
+    </template>
+    <template id="ModuleBuilder.Templates.metadata.StereotypeDefinitionFileTemplate">
+      <role>Metadata</role>
+    </template>
   </templates>
   <decorators></decorators>
   <dependencies>

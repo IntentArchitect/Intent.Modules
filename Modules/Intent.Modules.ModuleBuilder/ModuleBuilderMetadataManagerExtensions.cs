@@ -22,6 +22,21 @@ namespace Intent.Modules.ModuleBuilder
             return new ModuleBuilderMetadataProvider(metadataManager).GetFileTemplates(application);
         }
 
+        public static IEnumerable<IModulePackage> GetModulePackages(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ModuleBuilderMetadataProvider(metadataManager).GetModulePackages(application.Id);
+        }
+
+        public static IEnumerable<IModulePackageFolder> GetModulePackageFolders(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ModuleBuilderMetadataProvider(metadataManager).GetModulePackageFolders(application.Id);
+        }
+
+        public static IEnumerable<IModuleStereotype> GetModuleStereotypes(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ModuleBuilderMetadataProvider(metadataManager).GetModuleStereotypes(application.Id);
+        }
+
         public static IEnumerable<IDecoratorDefinition> GetDecorators(this IMetadataManager metadataManager, IApplication application)
         {
             return new ModuleBuilderMetadataProvider(metadataManager).GetDecorators(application);

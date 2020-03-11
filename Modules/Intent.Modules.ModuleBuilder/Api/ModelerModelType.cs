@@ -21,7 +21,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         public string Id => _element.Id;
-        public string Name => "I" +_element.Name.Replace(" ", "").Replace("-", "");
+        public string ClassName => _element.Name.Replace(" ", "").Replace("-", "");
+        public string InterfaceName => $"I{ClassName}";
         public string Namespace => _element.GetStereotypeProperty<string>("Model Type Settings", "Namespace");
         public string LoadMethod => _element.GetStereotypeProperty<string>("Model Type Settings", "Load Method");
         public string PerModelTemplate => _element.GetStereotypeProperty<string>("Model Type Settings", "Per Model Template");

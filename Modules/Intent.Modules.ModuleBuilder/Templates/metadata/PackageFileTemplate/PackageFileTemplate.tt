@@ -1,0 +1,16 @@
+<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IModulePackage>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
+<?xml version="1.0" encoding="utf-8"?>
+<package id="<#= Model.Id #>">
+  <name><#= Model.Name #></name>
+  <icon type="UrlImagePath" source="<#= Model.IconUrl #>" />
+  <isExternal>true</isExternal>
+  <references />
+  <stereotypes />
+</package>

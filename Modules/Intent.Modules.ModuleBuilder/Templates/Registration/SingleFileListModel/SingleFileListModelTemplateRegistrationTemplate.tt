@@ -14,7 +14,7 @@ using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Templates;
-<#=(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().Namespace) : "")#>
+<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")#>
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 

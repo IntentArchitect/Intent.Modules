@@ -11,5 +11,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         IModelerReference GetModeler();
         string GetModelTypeName();
         string GetModelerName();
+        string FileExtension { get; }
+
     }
 }

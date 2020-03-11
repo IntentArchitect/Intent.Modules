@@ -3,7 +3,8 @@
     public interface IModelerModelType
     {
         string Id { get; }
-        string Name { get; }
+        string ClassName { get; }
+        string InterfaceName { get; }
         string Namespace { get; }
         string LoadMethod { get; }
         string PerModelTemplate { get; }

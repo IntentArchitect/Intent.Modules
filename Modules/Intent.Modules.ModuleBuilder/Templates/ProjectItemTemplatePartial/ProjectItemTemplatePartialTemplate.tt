@@ -14,7 +14,7 @@ using Intent.Modules.Common.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-<#=(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().Namespace) : "")#>
+<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")#>
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -42,7 +42,7 @@ namespace <#= Namespace #>
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                fileExtension: "txt", // Change to desired file extension.
+                fileExtension: "<#= Model.FileExtension #>",
                 defaultLocationInProject: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? Model.Name.Replace("Template", "") : "" #>"
             );
         }
@@ -60,40 +60,5 @@ namespace <#= Namespace #>
             return _decorators;
         }
 <#  } #>
-
-<# /* if (HasTemplateDependencies()) { #>
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        IEnumerable<ITemplateDependency> IHasTemplateDependencies.GetTemplateDependencies()
-        {
-            var templateDependencies = new List<ITemplateDependency>();
-<#      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { #>
-                templateDependencies.Add(TemplateDependency.OnTemplate(<#= templateDependency.TemplateId #>));
-<#      } #>
-<#      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { #>
-                templateDependencies.AddRange(GetCustomTemplateDependencies());
-<#      } #>
-            return templateDependencies;
-        }
-
-<#      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { #>
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private string Get<#= templateDependency.TemplateName.ToPascalCase() #>TemplateFullName(<#= templateDependency.TemplateModel #> model)
-        {
-            var templateDependency = TemplateDependency.OnTemplate(<#= templateDependency.TemplateId #>);
-            var template = Project.FindTemplateInstance<<#= templateDependency.InstanceType #>>(templateDependency, model);
-            return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
-        }
-<#      } #>
-
-<#      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { #>
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        private IEnumerable<ITemplateDependency> GetCustomTemplateDependencies()
-        {
-            return new ITemplateDependency[] 
-            {
-            };
-        }
-<#      } #>
-<#  } */#>
     }
 }

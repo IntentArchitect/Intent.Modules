@@ -8,6 +8,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     {
         string Name { get; }
         IEnumerable<IModelerModelType> ModelTypes { get; }
+        string ApiNamespace { get; }
         string ModuleDependency { get; }
         string ModuleVersion { get; }
         string NuGetDependency { get; }

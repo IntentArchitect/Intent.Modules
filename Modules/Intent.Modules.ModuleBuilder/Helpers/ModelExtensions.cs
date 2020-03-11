@@ -36,10 +36,10 @@ namespace Intent.Modules.ModuleBuilder.Helpers
             var modelType = model.GetModelType();
             if (model.GetCreationMode() == CreationMode.SingleFile)
             {
-                return  modelType == null ? "object" : $"IList<{modelType.Name}>";
+                return  modelType == null ? "object" : $"IList<{modelType.InterfaceName}>";
             }
 
-            return modelType.Name;
+            return modelType.InterfaceName;
         }
 
         //public static string GetModelerName(this IModuleBuilderElement model)

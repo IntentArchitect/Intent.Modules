@@ -19,9 +19,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return GetModeler().Name;
         }
 
+        public string FileExtension => _element.GetStereotypeProperty(ModelExtensions.FileTemplateSettingsStereotype, "File Extension", "unknown");
+
         public string GetModelTypeName()
         {
-            return GetModelType().Name;
+            return GetModelType().InterfaceName;
         }
 
         public IModelerModelType GetModelType()

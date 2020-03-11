@@ -22,5 +22,65 @@
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modeler\ModuleBuilder.modeler.config</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>modeler/ModuleBuilder.modeler.config</ProjectRelativeFilePath>
     </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\FolderFileTemplate\FolderFileTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/FolderFileTemplate/FolderFileTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\FolderFileTemplate\FolderFileTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/FolderFileTemplate/FolderFileTemplate.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\FolderFileTemplate\FolderFileTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/FolderFileTemplate/FolderFileTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\FolderFileTemplate\FolderFileTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/FolderFileTemplate/FolderFileTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\PackageFileTemplate\PackageFileTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/PackageFileTemplate/PackageFileTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\PackageFileTemplate\PackageFileTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/PackageFileTemplate/PackageFileTemplate.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\PackageFileTemplate\PackageFileTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/PackageFileTemplate/PackageFileTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\PackageFileTemplate\PackageFileTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/PackageFileTemplate/PackageFileTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/StereotypeDefinitionFileTemplate/StereotypeDefinitionFileTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/StereotypeDefinitionFileTemplate/StereotypeDefinitionFileTemplate.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/StereotypeDefinitionFileTemplate/StereotypeDefinitionFileTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/StereotypeDefinitionFileTemplate/StereotypeDefinitionFileTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
   </FileLogs>
 </outputLog>

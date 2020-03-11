@@ -9,5 +9,12 @@
   <attributes />
   <operations />
   <childElements />
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" value="Intent.Modules.ModuleBuilder.Modeler.Api" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
 </class>
