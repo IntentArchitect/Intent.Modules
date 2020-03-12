@@ -38,72 +38,215 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.StereotypeDefinitionFi
             
             #line default
             #line hidden
-            this.Write("\">\r\n  <name>Decorator Settings</name>\r\n  <icon type=\"UrlImagePath\" source=\"data:i" +
-                    "mage/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAMAAAEzGGjgAAAAAXNSR0IArs4c6QAA" +
-                    "AARnQU1BAACxjwv8YQUAAAKpUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+            this.Write("\">\r\n  <name>");
+            
+            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
+            
+            #line default
+            #line hidden
+            this.Write("</name>\r\n  <icon type=\"UrlImagePath\" source=\"data:image/png;base64,iVBORw0KGgoAAA" +
+                    "ANSUhEUgAAAD4AAAA+CAMAAAEzGGjgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKpUExURQ" +
                     "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
                     "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
                     "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
-                    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
-                    "AAICAgICAgICAgAAAAAAAAAAAAICAgAAAAICAgAAAAAAAAICAgAAAAAAAAAAAAAAAAAAAAICAgAAAAAA" +
-                    "AAAAAAAAAAAAAAAAAAICAgICAgICAgAAAAAAAAICAgAAAAAAAAAAAAAAAAICAgICAgAAAAICAgAAAAIC" +
-                    "AgAAAAAAAAAAAAAAAAAAAAAAAAICAgAAAAAAAAAAAAAAAAICAgAAAAAAAAAAAAICAgAAAAICAgAAAAEB" +
-                    "AQAAAAEBAQAAAAAAAAAAAAAAAAEBAQAAAAEBAQAAAAAAAAEBAQEBAQAAAAAAAAEBAQAAAAEBAQAAAAEB" +
-                    "AQAAAAAAAAAAAAAAAAAAAAAAAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB" +
-                    "AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB" +
-                    "AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAdjMGGkAAADidFJOUwABAgME" +
-                    "BQYHCAoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKywtLi8wMTIzNDc4OTo7PD0+P0BBQkNE" +
-                    "RUZHSElKS0xNTk9QU1RVVldZWltcXV5hY2RmZ2lqa21ub3BxcXJzc3R1dnd4eHl6e3x9gISFhoeIiIyO" +
-                    "j5CQk5WVlpaXmZqcnZ6en6ChoqKmp6ipqqqrq6ysra6vsLCxsbKztba5urq8vL29wMHCw8bHycrLzM7P" +
-                    "0NPU1dfY2drb3uDh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7eFprpAAAACXBIWXMAAAsSAAAL" +
-                    "EgHS3X78AAAFJUlEQVRIS82W+VuVVRDH57LI4pKUyRKJSGq5QZJgIBqRFzQDDJGypGi1QJGiVHJrd69s" +
-                    "Na2MSm3XwsrSsiKhAOHCBRKFYP6SZubMC+8Ll4R6fJ4+P9wz8/2ec9/tLAMOUBtGAjibwAHib6H0w5Eb" +
-                    "8FGxEFdY3U3TB95qGiaVgvLaU9JpOcL7vf88wrQHVej3NyVlGjCHMHEzYrW5AyYa8WcX3I1YKWke/8cJ" +
-                    "LEe5JCszj+N6SqICEedJF3MzwpVGgEQW82G0pkMipCxHI0ND7y0RiBO6EZcdwLmSntHrEZLzLSRAaG9K" +
-                    "OYS0PEfNWJNRjtdhJD9NkJX74ZKFJg90U/4WtpNRPEnG98g/0QuUDDbwCIPksYhPU9yCeFhyGAfQyF6y" +
-                    "SZkiPK/Rf6KWLzpFEweVXXyvHvbvoWAT2i4OsJf1/piHEy5XCbHWqwHuUU8IZ2WbPflQE4BQT3MrfQ+c" +
-                    "A4H0phCrAL6hpsPb9LL4y1lE7OSveBO/71WQaiR+3QDxmkRBobTnAGgWCn7yB8TNnM2kIGcO/eyn5ILo" +
-                    "FvvYR6x7JCt7jwlxmlpMm2oO0tVkYhB3USP9KugLdlrf0kkd+7zSBiMgIECjS4K7rKz0H9YRz3ms18QH" +
-                    "Cew3a+JgBu6g30Xst1EQ0f6FyBbTSf8Ysn9iv+f5uGupOeZSj4hkvT+fqklcr5KDLjWZTaphe99ijlBP" +
-                    "eEmkB8ZQOP1biacaQ5GPHqvJU5zEaSLQ9iTf7cl672nalk5Q9qxaABVN3nMkVAMc4W44Th63p7XZw5eD" +
-                    "ABERi8APces1PXja7BlEqd3PhKWILpiMXoAaI621+7kwG3G0ayt/oD+NJD78ZZJXAGgLIdbBZdIiLhQf" +
-                    "Jqbcy9koGMkdjgA8RM2PmfEhxmb+IOUotbOX0vyjDQnxNmMod7L0ZajE8zi29kbDBJEQ9+Zm3verCe3z" +
-                    "f4yRnGxXk0hSyYmazJuc3yGrh9gtX3OGesLrtKcDyGOeo4lF88Fh0yV475Ztg14vzahI/u2PPHijJr7g" +
-                    "975OY59c4vU7LPyDhH95Q+vO88ugZWY24WESZ30rbEpT6aJEp8+3jvy0Jh2N3gKVwlIyJvlr7IMZh7l3" +
-                    "pWzaIcXtMpbo2DKKlRiZMcdu5NgHZjDzefEburYsOj4qqdQQv3IcihZzO9S+OBk6xE7oaj78hsJGqT8G" +
-                    "MH6b+obvNxfckpqSsWx9lQqG/THafSArtAt1SrbNFv/47Sojlqjmg8xm7XPQbJlhi+9flXOVhOHWnfXk" +
-                    "Se7A/+q0xfkrK05ql8eCSYv6hHdSovNrXr+uu0yG1VsKC5bMn2y7uTnqKLvGk7bGdkxfeIaEkbZSi8m2" +
-                    "JlCA1hQW2aQl8dGxk7a44HIKGnJJymgV12KtlBtEv+FdWaTlUomJbi44plHQ8iAFqVJu9dI3nCtHGw/z" +
-                    "UXico/fc6Tu5PRVGSgFHfZRYwyG46Pe6hkZPW5cx6qSgeFuPAXrZn/HGnvCDybrbPE1n6+ufMHu3Db9S" +
-                    "0wG95phYWXWmoaHmuzUjOEn+Rc2Nsn58MZaLVuGdmb11FuOK26EGvhat2kCmfqB9CM+G1CgpB1zhSY/b" +
-                    "yvGjVPr7JGK39rDR1amBjXdtNWofiVRdD5H5OsTOuBfVJLqlYh2MA74ffyKdVsy+KXDFgtKq3g/XfbLc" +
-                    "HQHRuuoOTdfuA4l9ob1xfbiJs6RmZ9oKjRK2uqbj1cEHO5nF01bwLFJpOARqpUKzkM7f4RM06/Z8Iu8G" +
-                    "Wy3yfwLgb/eqG6zzFeEWAAAAAElFTkSuQmCC\" />\r\n  <displayIcon>");
+                    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+                    "AAAAMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAgICAgICAgAAAAAAAAAAAAICAg" +
+                    "AAAAICAgAAAAAAAAICAgAAAAAAAAAAAAAAAAAAAAICAgAAAAAAAAAAAAAAAAAAAAAAAAICAgICAgICAg" +
+                    "AAAAAAAAICAgAAAAAAAAAAAAAAAAICAgICAgAAAAICAgAAAAICAgAAAAAAAAAAAAAAAAAAAAAAAAICAg" +
+                    "AAAAAAAAAAAAAAAAICAgAAAAAAAAAAAAICAgAAAAICAgAAAAEBAQAAAAEBAQAAAAAAAAAAAAAAAAEBAQ" +
+                    "AAAAEBAQAAAAAAAAEBAQEBAQAAAAAAAAEBAQAAAAEBAQAAAAEBAQAAAAAAAAAAAAAAAAAAAAAAAAEBAQ" +
+                    "EBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ" +
+                    "EBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ" +
+                    "EBAQEBAQEBAQEBAQEBAQEBAQEBAdjMGGkAAADidFJOUwABAgMEBQYHCAoLDA0ODxAREhMUFRYXGBkaGx" +
+                    "wdHh8gISIjJCUmJygpKywtLi8wMTIzNDc4OTo7PD0+P0BBQkNERUZHSElKS0xNTk9QU1RVVldZWltcXV" +
+                    "5hY2RmZ2lqa21ub3BxcXJzc3R1dnd4eHl6e3x9gISFhoeIiIyOj5CQk5WVlpaXmZqcnZ6en6ChoqKmp6" +
+                    "ipqqqrq6ysra6vsLCxsbKztba5urq8vL29wMHCw8bHycrLzM7P0NPU1dfY2drb3uDh4uPk5ebn6Onq6+" +
+                    "zt7u/w8fLz9PX29/j5+vv8/f7eFprpAAAACXBIWXMAAAsSAAALEgHS3X78AAAFJUlEQVRIS82W+VuVVR" +
+                    "DH57LI4pKUyRKJSGq5QZJgIBqRFzQDDJGypGi1QJGiVHJrd69sNa2MSm3XwsrSsiKhAOHCBRKFYP6SZu" +
+                    "bMC+8Ll4R6fJ4+P9wz8/2ec9/tLAMOUBtGAjibwAHib6H0w5Eb8FGxEFdY3U3TB95qGiaVgvLaU9JpOc" +
+                    "L7vf88wrQHVej3NyVlGjCHMHEzYrW5AyYa8WcX3I1YKWke/8cJLEe5JCszj+N6SqICEedJF3MzwpVGgE" +
+                    "QW82G0pkMipCxHI0ND7y0RiBO6EZcdwLmSntHrEZLzLSRAaG9KOYS0PEfNWJNRjtdhJD9NkJX74ZKFJg" +
+                    "90U/4WtpNRPEnG98g/0QuUDDbwCIPksYhPU9yCeFhyGAfQyF6ySZkiPK/Rf6KWLzpFEweVXXyvHvbvoW" +
+                    "AT2i4OsJf1/piHEy5XCbHWqwHuUU8IZ2WbPflQE4BQT3MrfQ+cA4H0phCrAL6hpsPb9LL4y1lE7OSveB" +
+                    "O/71WQaiR+3QDxmkRBobTnAGgWCn7yB8TNnM2kIGcO/eyn5ILoFvvYR6x7JCt7jwlxmlpMm2oO0tVkYh" +
+                    "B3USP9KugLdlrf0kkd+7zSBiMgIECjS4K7rKz0H9YRz3ms18QHCew3a+JgBu6g30Xst1EQ0f6FyBbTSf" +
+                    "8Ysn9iv+f5uGupOeZSj4hkvT+fqklcr5KDLjWZTaphe99ijlBPeEmkB8ZQOP1biacaQ5GPHqvJU5zEaS" +
+                    "LQ9iTf7cl672nalk5Q9qxaABVN3nMkVAMc4W44Th63p7XZw5eDABERi8APces1PXja7BlEqd3PhKWILp" +
+                    "iMXoAaI621+7kwG3G0ayt/oD+NJD78ZZJXAGgLIdbBZdIiLhQfJqbcy9koGMkdjgA8RM2PmfEhxmb+IO" +
+                    "UotbOX0vyjDQnxNmMod7L0ZajE8zi29kbDBJEQ9+Zm3verCe3zf4yRnGxXk0hSyYmazJuc3yGrh9gtX3" +
+                    "OGesLrtKcDyGOeo4lF88Fh0yV475Ztg14vzahI/u2PPHijJr7g975OY59c4vU7LPyDhH95Q+vO88ugZW" +
+                    "Y24WESZ30rbEpT6aJEp8+3jvy0Jh2N3gKVwlIyJvlr7IMZh7l3pWzaIcXtMpbo2DKKlRiZMcdu5NgHZj" +
+                    "DzefEburYsOj4qqdQQv3IcihZzO9S+OBk6xE7oaj78hsJGqT8GMH6b+obvNxfckpqSsWx9lQqG/THafS" +
+                    "ArtAt1SrbNFv/47Sojlqjmg8xm7XPQbJlhi+9flXOVhOHWnfXkSe7A/+q0xfkrK05ql8eCSYv6hHdSov" +
+                    "NrXr+uu0yG1VsKC5bMn2y7uTnqKLvGk7bGdkxfeIaEkbZSi8m2JlCA1hQW2aQl8dGxk7a44HIKGnJJym" +
+                    "gV12KtlBtEv+FdWaTlUomJbi44plHQ8iAFqVJu9dI3nCtHGw/zUXico/fc6Tu5PRVGSgFHfZRYwyG46P" +
+                    "e6hkZPW5cx6qSgeFuPAXrZn/HGnvCDybrbPE1n6+ufMHu3Db9S0wG95phYWXWmoaHmuzUjOEn+Rc2Nsn" +
+                    "58MZaLVuGdmb11FuOK26EGvhat2kCmfqB9CM+G1CgpB1zhSY/byvGjVPr7JGK39rDR1amBjXdtNWofiV" +
+                    "RdD5H5OsTOuBfVJLqlYh2MA74ffyKdVsy+KXDFgtKq3g/XfbLcHQHRuuoOTdfuA4l9ob1xfbiJs6RmZ9" +
+                    "oKjRK2uqbj1cEHO5nF01bwLFJpOARqpUKzkM7f4RM06/Z8Iu8GWy3yfwLgb/eqG6zzFeEWAAAAAElFTk" +
+                    "SuQmCC\" />\r\n  <displayIcon>");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.DisplayIcon));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.DisplayIcon.ToString().ToLower()));
             
             #line default
             #line hidden
-            this.Write("</displayIcon>\r\n  <displayFunction />\r\n  <targetElements>\r\n    <element>decorator" +
-                    "</element>\r\n  </targetElements>\r\n  <autoAdd>");
+            this.Write("</displayIcon>\r\n  <displayFunction>");
+            
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.DisplayFunction));
+            
+            #line default
+            #line hidden
+            this.Write("</displayFunction>\r\n  <targetElements>\r\n");
+            
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+  foreach(var targetType in Model.TargetTypes) { 
+            
+            #line default
+            #line hidden
+            this.Write("    <element>");
+            
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(targetType));
+            
+            #line default
+            #line hidden
+            this.Write("</element>\r\n");
             
             #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.AutoAdd));
+  } 
             
             #line default
             #line hidden
-            this.Write(@"</autoAdd>
-  <parentFolderId>0140df12-410f-43a8-8c75-7a68c922474b</parentFolderId>
-  <properties>
-    <property id=""8acbb25a-9b8a-4da2-ba42-7c349851f049"">
-      <comment>The decorator will specify namespaces that will be included when the template generation runs. In other words, if your decorator is aimed at C# code, you specify the namespaces that will form part of the ""using My.Namespace;"" code when any templates (that the decorator depends on) gets executed.</comment>
-      <name>Declare Usings</name>
-      <type>boolean</type>
-      <options />
-    </property>
-  </properties>
-</stereotypeDefinition>");
+            this.Write("  </targetElements>\r\n  <autoAdd>");
+            
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.AutoAdd.ToString().ToLower()));
+            
+            #line default
+            #line hidden
+            this.Write("</autoAdd>\r\n  <parentFolderId>");
+            
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Parent.Id));
+            
+            #line default
+            #line hidden
+            this.Write("</parentFolderId>\r\n  <properties>\r\n");
+            
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+  foreach(var property in Model.Properties) { 
+            
+            #line default
+            #line hidden
+            this.Write("    <property id=\"");
+            
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\">\r\n      <name>");
+            
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
+            
+            #line default
+            #line hidden
+            this.Write("</name>\r\n      <controlType>");
+            
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.ControlType));
+            
+            #line default
+            #line hidden
+            this.Write("</controlType>\r\n      <optionsSource>");
+            
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.OptionsSource));
+            
+            #line default
+            #line hidden
+            this.Write("</optionsSource>\r\n      <defaultValue>");
+            
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.DefaultValue));
+            
+            #line default
+            #line hidden
+            this.Write("</defaultValue>\r\n      <valueOptions>\r\n");
+            
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+  foreach(var option in property.ValueOptions) { 
+            
+            #line default
+            #line hidden
+            this.Write("        <option>");
+            
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(option));
+            
+            #line default
+            #line hidden
+            this.Write("</option> \r\n");
+            
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("      </valueOptions>\r\n      <lookupTypes>\r\n");
+            
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+  foreach(var type in property.LookupTypes) { 
+            
+            #line default
+            #line hidden
+            this.Write("        <type>");
+            
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(type));
+            
+            #line default
+            #line hidden
+            this.Write("</type>\r\n");
+            
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("      </lookupTypes>\r\n      <lookupInternalTargetPropertyId>");
+            
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.TargetPropertyId));
+            
+            #line default
+            #line hidden
+            this.Write("</lookupInternalTargetPropertyId>\r\n      <isActiveFunction>");
+            
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.IsActiveFunction));
+            
+            #line default
+            #line hidden
+            this.Write("</isActiveFunction>\r\n      <comment>");
+            
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.Comment));
+            
+            #line default
+            #line hidden
+            this.Write("</comment>\r\n    </property>\r\n");
+            
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("  </properties>\r\n</stereotypeDefinition>");
             return this.GenerationEnvironment.ToString();
         }
     }

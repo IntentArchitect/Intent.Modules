@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="51f91448-ccd4-437b-a56e-968e718ff74e" type="Module Package">
-  <name>TestPackage</name>
+  <name>Intent.ModuleBuilder.Test</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

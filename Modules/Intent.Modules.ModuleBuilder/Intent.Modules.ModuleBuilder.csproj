@@ -56,6 +56,18 @@
     <Content Update="modeler\ModelerBuilder.modeler.extension.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  
+    <Content Update="modeler\Modeler Builder.modeler.extension.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  
+    <Content Update="modeler\Module Builder.modeler.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  
+    <Content Update="metadata\Intent.ModuleBuilder.Test\Intent.ModuleBuilder.Test.pkg.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

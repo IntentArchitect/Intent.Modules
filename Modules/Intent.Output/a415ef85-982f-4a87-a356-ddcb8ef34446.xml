@@ -14,13 +14,28 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modeler\ModelerBuilder.modeler.extension.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modeler/ModelerBuilder.modeler.extension.config</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder.Test\Elements\Module Package Folder\Stereotypes.xml</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder.Test/Elements/Module Package Folder/Stereotypes.xml</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modeler\ModuleBuilder.modeler.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modeler/ModuleBuilder.modeler.config</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder.Test\Intent.ModuleBuilder.Test.pkg.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder.Test/Intent.ModuleBuilder.Test.pkg.config</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder.Test\Stereotypes\Template Settings Test.xml</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder.Test/Stereotypes/Template Settings Test.xml</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modeler\Modeler Builder.modeler.extension.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modeler/Modeler Builder.modeler.extension.config</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modeler\Module Builder.modeler.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modeler/Module Builder.modeler.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
