@@ -4,7 +4,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.ModelerBuilder;
-using Intent.Modules.ModuleBuilder.Api.Modeler;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 

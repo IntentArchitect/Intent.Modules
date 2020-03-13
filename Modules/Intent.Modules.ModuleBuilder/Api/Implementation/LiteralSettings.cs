@@ -2,12 +2,12 @@
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 
-namespace Intent.Modules.ModuleBuilder.Api.Modeler
+namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class LiteralSetting
+    public class LiteralSettings
     {
         public const string RequiredSpecializationType = "Literal Settings";
-        public LiteralSetting(IElement element)
+        public LiteralSettings(IElement element)
         {
             if (element.SpecializationType != RequiredSpecializationType)
             {

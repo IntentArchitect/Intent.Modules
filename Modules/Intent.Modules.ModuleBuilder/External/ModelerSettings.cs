@@ -20,7 +20,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("associationSettings")]
         [XmlArrayItem("associationSetting")]
-        public List<AssociationSettings> AssociationSettings { get; set; }
+        public List<AssociationSettingsPersistable> AssociationSettings { get; set; }
 
         [XmlElement("stereotypeSettings")]
         public StereotypeSettings StereotypeSettings { get; set; }
@@ -124,7 +124,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("operationSettings")]
         [XmlArrayItem("operationSetting")]
-        public OperationSettings[] OperationSettings { get; set; }
+        public OperationSettingsPersistable[] OperationSettingsPersistable { get; set; }
 
         [XmlArray("childElementSettings")]
         [XmlArrayItem("childElementSetting")]
@@ -234,7 +234,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-    public class OperationSettings
+    public class OperationSettingsPersistable
     {
         [XmlElement("specializationType")]
         public string SpecializationType { get; set; }

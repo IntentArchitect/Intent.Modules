@@ -7,7 +7,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
-namespace Intent.Modules.ModuleBuilder.Api.Modeler
+namespace Intent.Modules.ModuleBuilder.Api
 {
     public class Modeler
     {
@@ -23,14 +23,14 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
             Name = element.Name;
             IsExtension = element.SpecializationType == Constants.ElementSpecializationTypes.ModelerExtension;
             PackageSettings = new PackageSettings(element.ChildElements.SingleOrDefault(x => x.SpecializationType == PackageSettings.SpecializationType));
-            ElementSettings = element.ChildElements.Where(x => x.SpecializationType == ElementSetting.RequiredSpecializationType).Select(x => new ElementSetting(x)).OrderBy(x => x.SpecializationType).ToList();
+            ElementSettings = element.ChildElements.Where(x => x.SpecializationType == Api.ElementSettings.RequiredSpecializationType).Select(x => new ElementSettings(x)).OrderBy(x => x.SpecializationType).ToList();
             AssociationSettings = element.ChildElements.Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType).Select(x => new AssociationSetting(x)).OrderBy(x => x.SpecializationType).ToList();
         }
 
         public string Name { get; }
         public bool IsExtension { get; }
         public PackageSettings PackageSettings { get; }
-        public IList<ElementSetting> ElementSettings { get; }
+        public IList<ElementSettings> ElementSettings { get; }
         public IList<AssociationSetting> AssociationSettings { get; }
     }
 

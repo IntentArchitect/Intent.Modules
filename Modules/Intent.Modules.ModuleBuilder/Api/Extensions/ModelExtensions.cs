@@ -11,60 +11,60 @@ namespace Intent.Modules.ModuleBuilder.Api
     {
         public const string FileTemplateSettingsStereotype = "File Template Settings";
 
-        public static CreationMode GetCreationMode(this ITemplateCreationSettings model)
-        {
-            switch (model.GetStereotypeProperty(FileTemplateSettingsStereotype, "Creation Mode", "File per Model"))
-            {
-                case "Single file":
-                    return CreationMode.SingleFile;
-                case "File per Model":
-                    return CreationMode.FilePerModel;
-                case "File per Project": // TODO: File per project doesn't always make sense.
-                    return CreationMode.FilePerProject;
-                case "Custom":
-                    return CreationMode.Custom;
-                default:
-                    return CreationMode.SingleFile;
-            }
-        }
+        //public static CreationMode GetCreationMode(this IHasStereotypes model)
+        //{
+        //    switch (model.GetStereotypeProperty(FileTemplateSettingsStereotype, "Creation Mode", "File per Model"))
+        //    {
+        //        case "Single file":
+        //            return CreationMode.SingleFile;
+        //        case "File per Model":
+        //            return CreationMode.FilePerModel;
+        //        case "File per Project": // TODO: File per project doesn't always make sense.
+        //            return CreationMode.FilePerProject;
+        //        case "Custom":
+        //            return CreationMode.Custom;
+        //        default:
+        //            return CreationMode.SingleFile;
+        //    }
+        //}
 
-        public static IModelerModelType GetModelType(this ITemplateCreationSettings model)
-        {
-            var modelTypeId = model.GetStereotypeProperty(ModelExtensions.FileTemplateSettingsStereotype, "Model Type", string.Empty);
-            return model.GetModeler()?.ModelTypes.SingleOrDefault(x => x.Id == modelTypeId);
-        }
+        //public static IModelerModelType GetModelType(this IHasStereotypes model)
+        //{
+        //    var modelTypeId = model.GetStereotypeProperty(ModelExtensions.FileTemplateSettingsStereotype, "Model Type", string.Empty);
+        //    return model.GetModeler()?.ModelTypes.SingleOrDefault(x => x.Id == modelTypeId);
+        //}
 
-        public static IModelerReference GetModeler(this ITemplateCreationSettings model)
-        {
-            var element = model.GetStereotypeProperty<IElement>(ModelExtensions.FileTemplateSettingsStereotype, "Modeler");
-            return element == null ? null : new ModelerReference(element);
-        }
+        //public static IModelerReference GetModeler(this IHasStereotypes model)
+        //{
+        //    var element = model.GetStereotypeProperty<IElement>(ModelExtensions.FileTemplateSettingsStereotype, "Modeler");
+        //    return element == null ? null : new ModelerReference(element);
+        //}
 
-        public static string GetTemplateBaseType(this IFileTemplate model)
-        {
-            return model.GetStereotypeProperty(FileTemplateSettingsStereotype, "Base Type", "IntentProjectItemTemplateBase");
-        }
+        //public static string GetTemplateBaseType(this IFileTemplate model)
+        //{
+        //    return model.GetStereotypeProperty(FileTemplateSettingsStereotype, "Base Type", "IntentProjectItemTemplateBase");
+        //}
 
-        public static string GetTemplateModelName(this ITemplateCreationSettings model)
-        {
-            var modelType = model.GetModelType();
-            if (model.GetCreationMode() == CreationMode.SingleFile)
-            {
-                return  modelType == null ? "object" : $"IList<{modelType.InterfaceName}>";
-            }
+        //public static string GetTemplateModelName(this IHasStereotypes model)
+        //{
+        //    var modelType = model.GetModelType();
+        //    if (model.GetCreationMode() == CreationMode.SingleFile)
+        //    {
+        //        return  modelType == null ? "object" : $"IList<{modelType.InterfaceName}>";
+        //    }
 
-            return modelType.InterfaceName;
-        }
+        //    return modelType.InterfaceName;
+        //}
 
-        public static string GetModelerName(this ITemplateCreationSettings model)
-        {
-            return model.GetModeler().Name;
-        }
+        //public static string GetModelerName(this IHasStereotypes model)
+        //{
+        //    return model.GetModeler().Name;
+        //}
 
-        public static string GetModelTypeName(this ITemplateCreationSettings model)
-        {
-            return model.GetModelType().InterfaceName;
-        }
+        //public static string GetModelTypeName(this IHasStereotypes model)
+        //{
+        //    return model.GetModelType().InterfaceName;
+        //}
 
         //public static string GetModelerName(this IModuleBuilderElement model)
         //{

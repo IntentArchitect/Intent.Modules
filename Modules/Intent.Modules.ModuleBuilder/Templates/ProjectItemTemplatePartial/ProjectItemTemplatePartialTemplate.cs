@@ -7,7 +7,6 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 {
     using Intent.Modules.Common.Templates;
@@ -43,7 +42,7 @@ using System.Linq;
 ");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture((GetModeler() != null ? string.Format("using {0};", GetModeler().ApiNamespace) : "")));
             
             #line default
             #line hidden
@@ -152,7 +151,7 @@ using System.Linq;
                 fileName: """);
             
             #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel  ? "${Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
@@ -166,7 +165,7 @@ using System.Linq;
             this.Write("\",\r\n                defaultLocationInProject: \"");
             
             #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetCreationMode() == CreationMode.FilePerModel ? Model.Name.Replace("Template", "") : ""));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel  ? Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden

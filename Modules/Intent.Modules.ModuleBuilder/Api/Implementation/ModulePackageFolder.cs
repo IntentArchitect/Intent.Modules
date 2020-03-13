@@ -1,12 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    class ModulePackageFolder : IModulePackageFolder
+    internal class ModulePackageFolder : IModulePackageFolder
     {
         public const string SpecializationType = "Module Package Folder";
         private readonly IElement _element;
@@ -24,23 +29,11 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
         public IElement Parent => _element.ParentElement;
-        public string FolderPath => Path.Combine(GetParentPath(_element)
+        public string FolderPath => Path.Combine(_element.GetParentPath()
             .Reverse()
             .TakeWhile(x => x.SpecializationType != "Metadata Folder")
             .Reverse()
             .Select(x => x.Name).ToArray());
-
-        private static IList<IElement> GetParentPath(IElement model)
-        {
-            List<IElement> result = new List<IElement>();
-
-            var current = model.ParentElement;
-            while (current != null)
-            {
-                result.Insert(0, current);
-                current = current.ParentElement;
-            }
-            return result;
-        }
+        
     }
 }

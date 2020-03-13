@@ -15,7 +15,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
     using Intent.Modules.Common.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
-    using Intent.Modules.ModuleBuilder.Api.Modeler;
+    using Intent.Modules.ModuleBuilder.Api;
+    using Intent.Modules.ModuleBuilder.Helpers;
     using System;
     
     /// <summary>
@@ -32,22 +33,52 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+            this.Write("using Intent.Metadata.Models;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\n" +
+                    "namespace ");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt"
+            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(" : IMetadataModel, IHasStereotypes\r\n    {\r\n        string Name { get; }\r\n    }\r\n}" +
-                    "");
+            this.Write(" : IMetadataModel, IHasStereotypes\r\n    {\r\n        string Name { get; }\r\n");
+            
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt"
+  if (Model.CreationOptions != null) {
+        foreach(var creationOption in Model.CreationOptions.Options.Where(x => GetCreationOptionModel(x) != null)) { 
+            
+            #line default
+            #line hidden
+            this.Write("        IList<");
+            
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionModel(creationOption)));
+            
+            #line default
+            #line hidden
+            this.Write("> ");
+            
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.Type.Name.ToCSharpIdentifier().ToPluralName()));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; }\r\n");
+            
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt"
+      }
+    }
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

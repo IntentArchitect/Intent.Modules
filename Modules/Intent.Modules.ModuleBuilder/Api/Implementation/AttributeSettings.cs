@@ -3,13 +3,13 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 
-namespace Intent.Modules.ModuleBuilder.Api.Modeler
+namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class AttributeSetting
+    public class AttributeSettings
     {
         public const string RequiredSpecializationType = "Attribute Settings";
 
-        public AttributeSetting(IElement element)
+        public AttributeSettings(IElement element)
         {
             if (element.SpecializationType != RequiredSpecializationType)
             {

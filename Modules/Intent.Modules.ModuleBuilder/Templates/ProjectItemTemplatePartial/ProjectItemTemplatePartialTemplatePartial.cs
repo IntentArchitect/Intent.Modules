@@ -19,9 +19,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
         {
             AddNugetDependency(NugetPackages.IntentModulesCommon);
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
-            if (!string.IsNullOrWhiteSpace(model.GetModeler()?.NuGetDependency))
+            if (!string.IsNullOrWhiteSpace(GetModeler()?.NuGetDependency))
             {
-                AddNugetDependency(new NugetPackageInfo(model.GetModeler().NuGetDependency, model.GetModeler().NuGetVersion));
+                AddNugetDependency(new NugetPackageInfo(GetModeler().NuGetDependency, GetModeler().NuGetVersion));
             }
         }
 
@@ -60,15 +60,27 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
             });
         }
 
-        private string GetTemplateBaseClass()
+        private IModelerReference GetModeler()
         {
-            return Model.GetTemplateBaseType();
+            return Model.Modeler() != null ? new ModelerReference(Model.Modeler()) : null;
         }
 
         private string GetModelType()
         {
-            return Model.GetTemplateModelName();
+            var modelType = Model.ModelType() != null ? new ModelerModelType(Model.ModelType()) : null;
+            if (Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel)
+            {
+                return modelType?.InterfaceName ?? "object";
+            }
+
+            return modelType == null ? "object" : $"IList<{modelType.InterfaceName}>";
         }
+
+        private string GetTemplateBaseClass()
+        {
+            return Model.BaseType();
+        }
+
 
         private bool HasDecorators()
         {

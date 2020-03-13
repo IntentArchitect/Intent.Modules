@@ -143,6 +143,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             foreach (var template in Model.Templates)
             {
+                // TODO: GCB - this should probably come from the registration
                 if (!string.IsNullOrWhiteSpace(template.GetModeler()?.ModuleDependency) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{template.GetModeler().ModuleDependency}\"]") == null)
                 {
                     var dependencies = doc.XPathSelectElement("package/dependencies");

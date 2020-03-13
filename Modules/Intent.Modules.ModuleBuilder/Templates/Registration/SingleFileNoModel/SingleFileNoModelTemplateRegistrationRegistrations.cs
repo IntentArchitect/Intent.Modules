@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
         public override IEnumerable<IFileTemplate> GetModels(IApplication application)
         {
             return _metadataManager.GetTemplateDefinitions(application)
-                .Where(x => x.GetCreationMode() == CreationMode.SingleFile && x.GetModelType() == null)
+                .Where(x => x.CreationMode() == FileTemplateExtensions.CreationModeOptions.SingleFileNoModel && x.ModelType() == null)
                 .ToList();
         }
     }

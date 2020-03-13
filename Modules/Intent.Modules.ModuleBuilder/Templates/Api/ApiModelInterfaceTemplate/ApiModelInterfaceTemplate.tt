@@ -6,14 +6,21 @@
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
-<#@ import namespace="Intent.Modules.ModuleBuilder.Api.Modeler" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
+using Intent.Metadata.Models;
 
-[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace <#= Namespace #>
 {
     public interface <#= ClassName #> : IMetadataModel, IHasStereotypes
     {
         string Name { get; }
+<#  if (Model.CreationOptions != null) {
+        foreach(var creationOption in Model.CreationOptions.Options.Where(x => GetCreationOptionModel(x) != null)) { #>
+        IList<<#= GetCreationOptionModel(creationOption) #>> <#= creationOption.Type.Name.ToCSharpIdentifier().ToPluralName() #> { get; }
+<#      }
+    }#>
     }
 }

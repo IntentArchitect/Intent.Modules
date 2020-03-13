@@ -1,16 +1,20 @@
-﻿using System;
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
     internal class ModelerReference : IModelerReference, IEquatable<ModelerReference>
     {
         private readonly IElement _element;
-        public static string[] SpecializationType = {"Modeler", "Modeler Extension"};
+        public static string[] SpecializationType = { "Modeler", "Modeler Extension" };
 
         public ModelerReference(IElement element)
         {
@@ -45,7 +49,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ModelerReference) obj);
+            return Equals((ModelerReference)obj);
         }
 
         public override int GetHashCode()

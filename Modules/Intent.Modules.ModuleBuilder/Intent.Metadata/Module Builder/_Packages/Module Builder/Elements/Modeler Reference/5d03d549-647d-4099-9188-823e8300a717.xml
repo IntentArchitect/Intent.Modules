@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="5d03d549-647d-4099-9188-823e8300a717" type="Modeler Reference">
+  <name>Services</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>9518e616-749e-4111-9ea7-e8c8c17586e5</parentFolderId>
+  <literals>
+    <literal id="9275f0d4-a143-47ec-923e-e987151ddc96" type="Model Type">
+      <name>IDTOModel</name>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="633c5122-2c61-43c2-b98c-8a6cca6edd87">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Services.Api" isActive="true" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="_metadataManager.GetDTOs(application.Id)" isActive="true" />
+            <property name="1c93bb75-11f4-4604-983d-f8ff5318e217" value="&#xA;&#xA;[assembly: DefaultIntentManaged(Mode.Fully)]&#xA;&#xA;namespace &lt;#= Namespace #&gt;&#xA;{&#xA;    public class &lt;#= ClassName #&gt;&#xA;    {&#xA;&lt;#  // The following is an example template implementation&#xA;    foreach(var attribute in Model.Fields) { #&gt;&#xA;        public &lt;#= Types.Get(attribute.Type) #&gt; &lt;#= attribute.Name.ToPascalCase() #&gt; { get; set; }&#xA;&#xA;&lt;#  } #&gt;&#xA;    }&#xA;}" isActive="true" />
+            <property name="78850c86-fc34-4c08-a9b0-6db549caf85c" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </literal>
+    <literal id="EB367129-4CBC-4E9E-A36B-6AFBADC483C8" type="Model Type">
+      <name>IEnumModel</name>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="633c5122-2c61-43c2-b98c-8a6cca6edd87">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Services.Api" isActive="true" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="_metadataManager.GetEnums(application.Id)" isActive="true" />
+            <property name="1c93bb75-11f4-4604-983d-f8ff5318e217" isActive="true" />
+            <property name="78850c86-fc34-4c08-a9b0-6db549caf85c" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </literal>
+    <literal id="3b244aab-5e7a-4bdc-ab01-c48bdaf93476" type="Model Type">
+      <name>IServiceModel</name>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="633c5122-2c61-43c2-b98c-8a6cca6edd87">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="7ff3d40f-7df8-4093-9177-3baf46d000c5" value="Intent.Modelers.Services.Api" isActive="true" />
+            <property name="01d209e5-660d-4b09-a211-ad54670b7bf1" value="_metadataManager.GetServices(application.Id)" isActive="true" />
+            <property name="1c93bb75-11f4-4604-983d-f8ff5318e217" value="&#xA;&#xA;[assembly: DefaultIntentManaged(Mode.Fully)]&#xA;&#xA;namespace &lt;#= Namespace #&gt;&#xA;{&#xA;    public class &lt;#= ClassName #&gt;&#xA;    {&#xA;&lt;#  foreach(var operation in Model.Operations) { #&gt;&#xA;        public &lt;#= operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : &quot;void&quot; #&gt; &lt;#= operation.Name.ToPascalCase() #&gt;(&lt;#= string.Join(&quot;, &quot;, operation.Parameters.Select(x =&gt; string.Format(&quot;{0} {1}&quot;, Types.Get(x.Type), x.Name))) #&gt;)&#xA;        {&#xA;            throw new NotImplementedException();&#xA;        }&#xA;&#xA;&lt;#  } #&gt;&#xA;    }&#xA;}" isActive="true" />
+            <property name="78850c86-fc34-4c08-a9b0-6db549caf85c" value="&#xA;&#xA;[assembly: DefaultIntentManaged(Mode.Fully)]&#xA;&#xA;namespace &lt;#= Namespace #&gt;&#xA;{&#xA;    public class &lt;#= ClassName #&gt;&#xA;    {&#xA;&lt;#  foreach(var model in Model) { #&gt;&#xA;        // Model found: &lt;#= model.Name #&gt;&#xA;&lt;#  } #&gt;&#xA;    }&#xA;}" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </literal>
+  </literals>
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="92598848-c9f8-4c33-98b2-4817638c5ff5">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="47fada69-518a-4594-bff4-a52ce25a6ad7" value="Intent.Modelers.Services" isActive="true" />
+        <property name="517b881a-4093-4f3a-a665-6da46c7eab6b" value="2.0.0" isActive="true" />
+        <property name="f971b61c-dbdf-45c8-8ecd-8b6a75e6f153" value="Intent.Modules.Modelers.Services" isActive="true" />
+        <property name="92e95e19-06b7-4f28-889c-230a08250149" value="2.0.1" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

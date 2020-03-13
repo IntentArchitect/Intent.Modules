@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 
-namespace Intent.Modules.ModuleBuilder.Api.Modeler
+namespace Intent.Modules.ModuleBuilder.Api
 {
     public class PackageSettings
     {

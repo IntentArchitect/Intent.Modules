@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 <#@ import namespace=""Intent.Modules.Common"" #>
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetModeler() != null ? $@"<#@ import namespace=""{Model.GetModeler().ApiNamespace}"" #>" : "")}
+{(GetModeler() != null ? $@"<#@ import namespace=""{GetModeler().ApiNamespace}"" #>" : "")}
 
 // Place your file template logic here
 ";
@@ -54,12 +54,23 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         private string GetTemplateBaseClass()
         {
-            return Model.GetTemplateBaseType();
+            return Model.BaseType();
+        }
+
+        private IModelerReference GetModeler()
+        {
+            return Model.Modeler() != null ? new ModelerReference(Model.Modeler()) : null;
         }
 
         private string GetModelType()
         {
-            return Model.GetTemplateModelName();
+            var modelType = Model.ModelType() != null ? new ModelerModelType(Model.ModelType()) : null;
+            if (Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel)
+            {
+                return modelType?.InterfaceName ?? "object";
+            }
+
+            return modelType == null ? "object" : $"IList<{modelType.InterfaceName}>";
         }
 
     }

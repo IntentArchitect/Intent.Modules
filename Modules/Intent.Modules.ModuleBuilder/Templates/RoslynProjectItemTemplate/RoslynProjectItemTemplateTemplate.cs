@@ -48,7 +48,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetModeler() != null ? $@"<#@ import namespace=""{Model.GetModeler().ApiNamespace}"" #>" : "")}
+{(GetModeler() != null ? $@"<#@ import namespace=""{GetModeler().ApiNamespace}"" #>" : "")}
 {TemplateBody()}";
         }
 
@@ -66,9 +66,21 @@ namespace <#= Namespace #>
 }";
         }
 
+
+        private IModelerReference GetModeler()
+        {
+            return Model.Modeler() != null ? new ModelerReference(Model.Modeler()) : null;
+        }
+
         private string GetModelType()
         {
-            return Model.GetTemplateModelName();
+            var modelType = Model.ModelType() != null ? new ModelerModelType(Model.ModelType()) : null;
+            if (Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel)
+            {
+                return modelType?.InterfaceName ?? "object";
+            }
+
+            return modelType == null ? "object" : $"IList<{modelType.InterfaceName}>";
         }
 
     }

@@ -14,7 +14,7 @@ using Intent.Modules.Common.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")#>
+<#=(GetModeler() != null ? string.Format("using {0};", GetModeler().ApiNamespace) : "")#>
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -41,9 +41,9 @@ namespace <#= Namespace #>
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: "<#= Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel  ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "<#= Model.FileExtension #>",
-                defaultLocationInProject: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? Model.Name.Replace("Template", "") : "" #>"
+                defaultLocationInProject: "<#= Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel  ? Model.Name.Replace("Template", "") : "" #>"
             );
         }
 

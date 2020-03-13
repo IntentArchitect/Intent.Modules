@@ -3,7 +3,6 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Api.Modeler;
 
 namespace Intent.Modules.ModuleBuilder
 {
@@ -62,8 +61,8 @@ namespace Intent.Modules.ModuleBuilder
         public IEnumerable<IElementSettings> GetElementSettingses(string applicationId)
         {
             var results = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId)
-                .Where(x => x.SpecializationType == ElementSetting.RequiredSpecializationType)
-                .Select(x => new ElementSetting(x)).ToList();
+                .Where(x => x.SpecializationType == ElementSettings.RequiredSpecializationType)
+                .Select(x => new ElementSettings(x)).ToList();
             return results;
         }
 

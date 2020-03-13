@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Api.Modeler;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -40,6 +40,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
             );
         }
 
+        private string GetCreationOptionModel(ICreationOption option)
+        {
+            return GetTemplateClassName(ApiModelInterfaceTemplate.TemplateId, option.Type.Id, throwIfNotFound: false);
+        }
 
     }
 }

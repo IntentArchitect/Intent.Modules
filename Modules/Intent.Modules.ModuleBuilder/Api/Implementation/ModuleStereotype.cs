@@ -1,13 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    class ModuleStereotype : IModuleStereotype
+    internal class ModuleStereotype : IModuleStereotype
     {
         public const string SpecializationType = "Module Stereotype";
         private readonly IElement _element;
@@ -24,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-        public string Name => _element.Name; 
+        public string Name => _element.Name;
         public IEnumerable<string> TargetTypes => _element.GetStereotypeProperty("Module Stereotype Settings", "Targets", new IElement[0]).Select(x => x.Name);
         public string ParentFolderId => _element.ParentElement.Id;
         public bool DisplayIcon => _element.GetStereotypeProperty("Module Stereotype Settings", "Display Icon", false);

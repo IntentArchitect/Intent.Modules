@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Text;
-using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface ITemplateCreationSettings : IHasStereotypes
+    public interface IFileTemplate : IMetadataModel, IHasStereotypes, IHasFolder, IModuleBuilderElement
     {
-    }
-
-    public interface ICSharpTemplate : ITemplateCreationSettings, IModuleBuilderElement
-    {
-
-    }
-
-    public interface IFileTemplate : ITemplateCreationSettings, IModuleBuilderElement
-    {
+        string Name { get; }
         string FileExtension { get; }
     }
 }

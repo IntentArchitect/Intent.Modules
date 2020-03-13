@@ -12,7 +12,7 @@
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649">
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" value="true" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" value="false" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" value="false" isActive="true" />
         <property name="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd" value="false" isActive="true" />

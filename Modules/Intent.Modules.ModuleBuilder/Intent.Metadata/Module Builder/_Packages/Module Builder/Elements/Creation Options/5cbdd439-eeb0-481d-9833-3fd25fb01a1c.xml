@@ -44,7 +44,7 @@
       <stereotypes />
     </attribute>
     <attribute id="057c49ab-b11c-4133-8dd9-45b91446cd96" type="Creation Option">
-      <name>New Metadata Folder</name>
+      <name>Add Metadata Folder</name>
       <typeReference id="4f9e4801-135d-4143-91d3-07cc2c824f89">
         <typeId>10c058e5-d1c7-46bd-a912-db83eab42ae1</typeId>
         <isNullable>false</isNullable>

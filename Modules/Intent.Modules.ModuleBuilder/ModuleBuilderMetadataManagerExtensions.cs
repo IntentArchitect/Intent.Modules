@@ -3,7 +3,6 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Api.Modeler;
 
 namespace Intent.Modules.ModuleBuilder
 {

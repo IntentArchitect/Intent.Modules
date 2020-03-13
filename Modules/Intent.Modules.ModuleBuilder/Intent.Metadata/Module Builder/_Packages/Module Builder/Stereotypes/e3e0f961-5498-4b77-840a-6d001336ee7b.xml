@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="e3e0f961-5498-4b77-840a-6d001336ee7b">
+  <name>Additional Properties</name>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>element settings definition</element>
+  </targetElements>
+  <autoAdd>true</autoAdd>
+  <parentFolderId>64514d1f-63f5-40c0-9fd2-88e908951519</parentFolderId>
+  <properties>
+    <property id="cc7a58a7-836e-47c1-b3af-190610e571f0">
+      <name>Is Stereotype Property Target</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

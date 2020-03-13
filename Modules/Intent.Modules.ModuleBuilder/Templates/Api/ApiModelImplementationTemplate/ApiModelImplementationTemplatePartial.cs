@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Api.Modeler;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -18,7 +18,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiModelImplementationTemplate";
 
         public ApiModelImplementationTemplate(IProject project, IElementSettings model) : base(TemplateId, project, model)
-        { 
+        {
             AddTypeSource(CSharpTypeSource.InProject(Project, ApiModelImplementationTemplate.TemplateId, collectionFormat: "IEnumerable<{0}>"));
         }
 

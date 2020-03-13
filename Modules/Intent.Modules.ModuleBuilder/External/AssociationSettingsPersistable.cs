@@ -2,10 +2,8 @@
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
 {
-    public class AssociationSettings
+    public class AssociationSettingsPersistable
     {
-
-
         [XmlElement("specializationType")]
         public string SpecializationType { get; set; }
 
@@ -13,10 +11,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public IconModelPersistable Icon { get; set; }
 
         [XmlElement("sourceEnd")]
-        public AssociationEndSettings SourceEnd { get; set; }
+        public AssociationEndSettingsPersistable SourceEnd { get; set; }
 
         [XmlElement("targetEnd")]
-        public AssociationEndSettings TargetEnd { get; set; }
+        public AssociationEndSettingsPersistable TargetEnd { get; set; }
 
         public override string ToString()
         {
@@ -24,7 +22,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-    public class AssociationEndSettings
+    public class AssociationEndSettingsPersistable
     {
         [XmlArray("targetTypes")]
         [XmlArrayItem("type")]

@@ -208,7 +208,7 @@ namespace Intent.Modules.Common.Templates
 
             if (throwIfNotFound)
             {
-                throw new Exception($"Could not find template with Id: {dependency.TemplateIdOrName} for model {Model.ToString()}");
+                throw new Exception($"Could not find template with Id: {dependency.TemplateIdOrName}");
             }
 
             return null;

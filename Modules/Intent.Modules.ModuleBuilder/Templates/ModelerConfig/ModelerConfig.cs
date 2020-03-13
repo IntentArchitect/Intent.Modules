@@ -11,8 +11,10 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModelerBuilder;
 using Intent.Modules.ModelerBuilder.External;
-using Intent.Modules.ModuleBuilder.Api.Modeler;
+using Intent.Modules.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Templates;
+using AttributeSettings = Intent.Modules.ModuleBuilder.Api.AttributeSettings;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 using TypeOrder = Intent.IArchitect.Agent.Persistence.Model.Common.TypeOrder;
 
@@ -54,7 +56,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             };
         }
 
-        private ElementCreationOption GetElementCreationOptions(CreationOption option)
+        private ElementCreationOption GetElementCreationOptions(ICreationOption option)
         {
             return new ElementCreationOption
             {
@@ -120,13 +122,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             };
         }
 
-        private List<AssociationSettings> GetAssociationSettings(IList<AssociationSetting> associationSettings)
+        private List<AssociationSettingsPersistable> GetAssociationSettings(IList<AssociationSetting> associationSettings)
         {
-            return associationSettings.Select(x => new AssociationSettings
+            return associationSettings.Select(x => new AssociationSettingsPersistable
             {
                 SpecializationType = x.SpecializationType,
                 Icon = GetIcon(x.Icon),
-                SourceEnd = new AssociationEndSettings
+                SourceEnd = new AssociationEndSettingsPersistable
                 {
                     TargetTypes = x.SourceEnd.TargetTypes,
                     IsCollectionDefault = x.SourceEnd.IsCollectionDefault,
@@ -136,7 +138,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     IsNullableDefault = x.SourceEnd.IsNullableDefault,
                     IsNullableEnabled = x.SourceEnd.IsNullableEnabled
                 },
-                TargetEnd = new AssociationEndSettings
+                TargetEnd = new AssociationEndSettingsPersistable
                 {
                     TargetTypes = x.TargetEnd.TargetTypes,
                     IsCollectionDefault = x.TargetEnd.IsCollectionDefault,
@@ -149,7 +151,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             }).ToList();
         }
 
-        private List<ElementSettingsPersistable> GetElementSettings(IList<ElementSetting> elementSettings)
+        private List<ElementSettingsPersistable> GetElementSettings(IList<ElementSettings> elementSettings)
         {
             return elementSettings.Select(x =>
                 new ElementSettingsPersistable
@@ -170,13 +172,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     AttributeSettings = x.AttributeSettings?.Any() == true
                         ? x.AttributeSettings.Select(GetAttributeSettings).ToArray()
                         : null,
-                    OperationSettings = x.OperationSettings?.Any() == true
+                    OperationSettingsPersistable = x.OperationSettings?.Any() == true
                         ? x.OperationSettings.Select(GetOperationSettings).ToArray()
                         : null,
                     ChildElementSettings = GetElementSettings(x.ChildElementSettings).ToArray(),
                     MappingSettings = null, // TODO JL
-                    CreationOptions = x.CreationOptions?.Any() == true
-                        ? x.CreationOptions.Select(GetElementCreationOptions).ToList()
+                    CreationOptions = x.CreationOptions != null
+                        ? x.CreationOptions.Options.Select(GetElementCreationOptions).ToList()
                         : null,
                     TypeOrder = x.TypeOrder?.Any() == true
                         ? x.TypeOrder.Select((t, index) => new TypeOrder { Type = t.Type, Order = t.Order?.ToString() }).ToList()
@@ -185,7 +187,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 .ToList();
         }
 
-        private ClassLiteralSettings GetLiteralSettings(LiteralSetting literal)
+        private ClassLiteralSettings GetLiteralSettings(LiteralSettings literal)
         {
             return new ClassLiteralSettings
             {
@@ -201,27 +203,27 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         }
 
         
-        private AttributeSettings GetAttributeSettings(AttributeSetting setting)
+        private IArchitect.Agent.Persistence.Model.Common.AttributeSettings GetAttributeSettings(AttributeSettings settings)
         {
-            return new AttributeSettings()
+            return new IArchitect.Agent.Persistence.Model.Common.AttributeSettings()
             {
-                SpecializationType = setting.SpecializationType,
-                Icon = GetIcon(setting.Icon) ?? _defaultIconModel,
-                Text = setting.Text,
-                Shortcut = setting.Shortcut,
-                DisplayFunction = setting.DisplayFunction,
-                DefaultName = setting.DefaultName,
-                AllowRename = setting.AllowRename,
-                AllowDuplicateNames = setting.AllowDuplicateNames,
-                AllowFindInView = setting.AllowFindInView,
-                DefaultTypeId = setting.DefaultTypeId,
-                TargetTypes = setting.TargetTypes
+                SpecializationType = settings.SpecializationType,
+                Icon = GetIcon(settings.Icon) ?? _defaultIconModel,
+                Text = settings.Text,
+                Shortcut = settings.Shortcut,
+                DisplayFunction = settings.DisplayFunction,
+                DefaultName = settings.DefaultName,
+                AllowRename = settings.AllowRename,
+                AllowDuplicateNames = settings.AllowDuplicateNames,
+                AllowFindInView = settings.AllowFindInView,
+                DefaultTypeId = settings.DefaultTypeId,
+                TargetTypes = settings.TargetTypes
             };
         }
 
-        private OperationSettings GetOperationSettings(OperationSetting setting)
+        private OperationSettingsPersistable GetOperationSettings(OperationSetting setting)
         {
-            return new OperationSettings()
+            return new OperationSettingsPersistable()
             {
                 SpecializationType = setting.SpecializationType,
                 Icon = GetIcon(setting.Icon) ?? _defaultIconModel,

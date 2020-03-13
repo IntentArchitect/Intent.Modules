@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
         public override IEnumerable<IFileTemplate> GetModels(IApplication application)
         {
             return _metadataManager.GetTemplateDefinitions(application)
-                .Where(x => x.GetCreationMode() == CreationMode.Custom)
+                .Where(x => x.CreationMode() == FileTemplateExtensions.CreationModeOptions.Custom)
                 .ToList();
         }
     }

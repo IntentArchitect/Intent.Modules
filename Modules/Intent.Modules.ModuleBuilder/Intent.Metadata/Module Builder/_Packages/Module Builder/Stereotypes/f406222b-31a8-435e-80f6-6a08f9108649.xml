@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="f406222b-31a8-435e-80f6-6a08f9108649">
+  <name>Additional Properties</name>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>element settings</element>
+  </targetElements>
+  <autoAdd>true</autoAdd>
+  <parentFolderId>ac2b161d-10ef-408e-b084-3f2ba850e9a4</parentFolderId>
+  <properties>
+    <property id="c48d9593-c1f4-4610-9cb3-54de9c2f0c06">
+      <name>Allow Rename</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="4b17e907-bd58-4f70-b376-383c6046ad8a">
+      <name>Allow Abstract</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac">
+      <name>Allow Generic Types</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd">
+      <name>Allow Mapping</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb">
+      <name>Allow Sorting</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="46180320-9a7e-4fe3-8351-f7524612a52c">
+      <name>Allow Find in View</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="c0b17839-1d85-4237-ba72-e013511ad379">
+      <name>Is Stereotype Property Target</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

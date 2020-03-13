@@ -1,12 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    class ModuleStereotypeProperty : IModuleStereotypeProperty
+    internal class ModuleStereotypeProperty : IModuleStereotypeProperty
     {
         public const string SpecializationType = "Module Stereotype Property";
         private readonly IElement _element;
@@ -17,12 +21,12 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 throw new ArgumentException($"Invalid element type {element.SpecializationType}", nameof(element));
             }
-            _element = element; 
+            _element = element;
         }
 
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-        public string Name => _element.Name; 
+        public string Name => _element.Name;
         public string ControlType
         {
             get
@@ -54,6 +58,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string TargetPropertyId => _element.GetStereotypeProperty("Module Stereotype Property Settings", "Target Property", string.Empty);
         public string DefaultValue => _element.GetStereotypeProperty("Module Stereotype Property Settings", "Default Value", string.Empty);
         public string IsActiveFunction => _element.GetStereotypeProperty("Module Stereotype Property Settings", "Is Active Function", string.Empty);
-        public string Comment => _element.Comment; 
+        public string Comment => _element.Comment;
     }
 }

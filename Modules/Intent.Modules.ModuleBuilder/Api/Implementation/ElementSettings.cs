@@ -4,19 +4,14 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 
-namespace Intent.Modules.ModuleBuilder.Api.Modeler
+namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface IElementSettings : IMetadataModel, IHasStereotypes
-    {
-        string Name { get; }
-    }
-
-    public class ElementSetting : IElementSettings
+    public class ElementSettings : IElementSettings
     {
         private readonly IElement _element;
         public const string RequiredSpecializationType = "Element Settings";
 
-        public ElementSetting(IElement element) 
+        public ElementSettings(IElement element) 
         {
             if (element.SpecializationType != RequiredSpecializationType)
             {
@@ -35,18 +30,19 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
             AllowSorting = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Sorting");
             AllowFindInView = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Find in View");
             LiteralSettings = element.ChildElements
-                .Where(x => x.SpecializationType == LiteralSetting.RequiredSpecializationType)
-                .Select(x => new LiteralSetting(x)).ToList();
+                .Where(x => x.SpecializationType == Api.LiteralSettings.RequiredSpecializationType)
+                .Select(x => new LiteralSettings(x)).ToList();
             AttributeSettings = element.ChildElements
-                .Where(x => x.SpecializationType == AttributeSetting.RequiredSpecializationType)
-                .Select(x => new AttributeSetting(x)).ToList();
+                .Where(x => x.SpecializationType == Api.AttributeSettings.RequiredSpecializationType)
+                .Select(x => new AttributeSettings(x)).ToList();
             OperationSettings = element.ChildElements
                 .Where(x => x.SpecializationType == OperationSetting.RequiredSpecializationType)
                 .Select(x => new OperationSetting(x)).ToList();
             ChildElementSettings = element.ChildElements
-                .Where(x => x.SpecializationType == ElementSetting.RequiredSpecializationType)
-                .Select(x => new ElementSetting(x)).ToList();
-            CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
+                .Where(x => x.SpecializationType == ElementSettings.RequiredSpecializationType)
+                .Select(x => new ElementSettings(x)).ToList();
+            //CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
+            CreationOptions = element.ChildElements.Any(x => x.SpecializationType == "Creation Options") ? new CreationOptions(element.ChildElements.Single(x => x.SpecializationType == "Creation Options")) : null;
             TypeOrder = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new TypeOrder(x)).ToList();
         }
 
@@ -54,7 +50,6 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
-
         public string SpecializationType { get; set; }
 
         public IconModel Icon { get; set; }
@@ -75,11 +70,11 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
 
         public List<TypeOrder> TypeOrder { get; set; }
 
-        public IList<LiteralSetting> LiteralSettings { get; set; }
-        public IList<AttributeSetting> AttributeSettings { get; set; }
+        public IList<LiteralSettings> LiteralSettings { get; set; }
+        public IList<AttributeSettings> AttributeSettings { get; set; }
         public IList<OperationSetting> OperationSettings { get; set; }
-        public IList<ElementSetting> ChildElementSettings { get; set; }
-        public IList<CreationOption> CreationOptions { get; set; }
+        public IList<ElementSettings> ChildElementSettings { get; set; }
+        public ICreationOptions CreationOptions { get; set; }
 
         public override string ToString()
         {

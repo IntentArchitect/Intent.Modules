@@ -10,7 +10,7 @@ using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")#>
+<#=(GetModeler() != null ? string.Format("using {0};", GetModeler().ApiNamespace) : "")#>
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -29,9 +29,6 @@ namespace <#= Namespace #>
         [IntentInitialGen]
         public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
-<#  if (Model.GetCreationMode() != CreationMode.SingleFile) { #>
-            AddTypeSource(CSharpTypeSource.InProject(Project, <#= ClassName #>.TemplateId, collectionFormat: "IEnumerable<{0}>"));
-<#  } #>
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -44,11 +41,11 @@ namespace <#= Namespace #>
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: "<#= Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "cs",
-                defaultLocationInProject: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? Model.Name.Replace("Template", "") : "" #>",
-                className: "<#= Model.GetCreationMode() == CreationMode.FilePerModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                @namespace: "${Project.Name}<#= Model.GetCreationMode() == CreationMode.FilePerModel ? "." + Model.Name.Replace("Template", "") : "" #>"
+                defaultLocationInProject: "<#= Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? Model.Name.Replace("Template", "") : "" #>",
+                className: "<#= Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                @namespace: "${Project.Name}<#= Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? "." + Model.Name.Replace("Template", "") : "" #>"
             );
         }
 
