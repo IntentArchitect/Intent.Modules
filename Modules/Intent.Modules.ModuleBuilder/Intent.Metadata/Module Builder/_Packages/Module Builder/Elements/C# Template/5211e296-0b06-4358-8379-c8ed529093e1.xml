@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="5211e296-0b06-4358-8379-c8ed529093e1" type="C# Template">
+  <name>ApiModelInterfaceTemplate</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>b24f3bdf-3ba1-4c66-8aa8-cf63a3ae7436</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="311d788f-7582-4c27-9a4d-e0db1439c327" value="File per Model" isActive="true" />
+        <property name="c2283d15-4b57-4ed9-8aae-6efc73039034" value="71a2800b-b56d-4d54-9e3c-f0d51a5d907d" isActive="true" />
+        <property name="987590ee-a5ca-45ce-b742-0ee764b6b6e9" value="727577aa-3e07-4b41-be7d-7359bb1e48c8" isActive="true" />
+        <property name="3CC0FF7A-B4EC-4A2A-AA7F-603640901F30" value="IntentProjectItemTemplateBase" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

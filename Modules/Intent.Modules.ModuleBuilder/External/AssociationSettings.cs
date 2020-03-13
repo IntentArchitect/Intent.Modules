@@ -10,7 +10,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public string SpecializationType { get; set; }
 
         [XmlElement("icon")]
-        public IconModel Icon { get; set; }
+        public IconModelPersistable Icon { get; set; }
 
         [XmlElement("sourceEnd")]
         public AssociationEndSettings SourceEnd { get; set; }

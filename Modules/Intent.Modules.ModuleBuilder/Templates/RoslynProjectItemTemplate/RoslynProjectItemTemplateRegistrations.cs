@@ -7,7 +7,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 {
-    public class RoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IFileTemplate>
+    public class RoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<ICSharpTemplate>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -18,12 +18,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 
         public override string TemplateId => RoslynProjectItemTemplateTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IFileTemplate model)
+        public override ITemplate CreateTemplateInstance(IProject project, ICSharpTemplate model)
         {
             return new RoslynProjectItemTemplateTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IFileTemplate> GetModels(IApplication application)
+        public override IEnumerable<ICSharpTemplate> GetModels(IApplication application)
         {
             return _metadataManager.GetCSharpTemplates(application)
                 .ToList();

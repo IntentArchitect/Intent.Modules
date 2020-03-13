@@ -5,6 +5,7 @@ using System.Text;
 using Intent.IArchitect.Common.Types;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Api.Modeler
 {

@@ -11,5 +11,6 @@
     <application id="1cecc65d-e804-4de6-a27f-e8e4ad0190d7" relativePath="Intent.Modules.Angular\Angular.application.config" />
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />
+    <application id="b980295a-75ce-48ac-9ef8-0368f8a1a174" relativePath="Intent.Modules.Modelers.Domain\Modelers.Domain.application.config" />
   </applications>
 </solution>

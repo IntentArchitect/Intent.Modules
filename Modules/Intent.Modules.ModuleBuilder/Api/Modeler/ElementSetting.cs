@@ -6,8 +6,14 @@ using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder.Api.Modeler
 {
-    public class ElementSetting
+    public interface IElementSettings : IMetadataModel, IHasStereotypes
     {
+        string Name { get; }
+    }
+
+    public class ElementSetting : IElementSettings
+    {
+        private readonly IElement _element;
         public const string RequiredSpecializationType = "Element Settings";
 
         public ElementSetting(IElement element) 
@@ -16,6 +22,8 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
             {
                 throw new ArgumentException($"Invalid element [{element}]");
             }
+
+            _element = element;
 
             SpecializationType = element.Name;
             Icon = IconModel.CreateIfSpecified(element.GetStereotype("Icon (Full)"));
@@ -42,6 +50,11 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
             TypeOrder = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new TypeOrder(x)).ToList();
         }
 
+
+        public string Id => _element.Id;
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+        public string Name => _element.Name;
+
         public string SpecializationType { get; set; }
 
         public IconModel Icon { get; set; }
@@ -67,5 +80,10 @@ namespace Intent.Modules.ModuleBuilder.Api.Modeler
         public IList<OperationSetting> OperationSettings { get; set; }
         public IList<ElementSetting> ChildElementSettings { get; set; }
         public IList<CreationOption> CreationOptions { get; set; }
+
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 }

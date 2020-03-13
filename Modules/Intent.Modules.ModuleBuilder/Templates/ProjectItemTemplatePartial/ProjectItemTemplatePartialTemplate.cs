@@ -7,6 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
+
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 {
     using Intent.Modules.Common.Templates;

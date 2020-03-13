@@ -13,9 +13,7 @@ using Intent.Modules.ModelerBuilder;
 using Intent.Modules.ModelerBuilder.External;
 using Intent.Modules.ModuleBuilder.Api.Modeler;
 using Intent.Templates;
-using IconModel = Intent.IArchitect.Agent.Persistence.Model.Common.IconModel;
 using IconType = Intent.IArchitect.Common.Types.IconType;
-using PackageSettings = Intent.IArchitect.Agent.Persistence.Model.Common.PackageSettings;
 using TypeOrder = Intent.IArchitect.Agent.Persistence.Model.Common.TypeOrder;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
@@ -23,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
     public class ModelerConfig : IntentProjectItemTemplateBase<Modeler>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ModelerConfig";
-        private static readonly IconModel _defaultIconModel = new IconModel { Type = IconType.FontAwesome, Source = "file-o" };
+        private static readonly IconModelPersistable _defaultIconModel = new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" };
 
         public ModelerConfig(IProject project, Modeler model) : base(TemplateId, project, model)
         {
@@ -47,9 +45,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             return Serialize(applicationModelerModeler);
         }
 
-        private PackageSettings GetPackageSettings(Api.Modeler.PackageSettings settings)
+        private PackageSettingsPersistable GetPackageSettings(PackageSettings settings)
         {
-            return new PackageSettings
+            return new PackageSettingsPersistable
             {
                 CreationOptions = settings.CreationOptions.Select(GetElementCreationOptions).ToList(),
                 TypeOrder = settings.TypeOrder.Select(x => new TypeOrder { Type = x.Type, Order = x.Order?.ToString() }).ToList()
@@ -64,16 +62,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 Text = option.Text,
                 Shortcut = option.Shortcut,
                 DefaultName = option.DefaultName,
-                Icon = option.Icon != null ? new IconModel { Type = option.Icon.Type, Source = option.Icon.Source } : _defaultIconModel
+                Icon = GetIcon(option.Icon) ?? _defaultIconModel
             };
         }
 
-        private IconModel GetIcon(Api.Modeler.IconModel icon)
+        private IconModelPersistable GetIcon(IconModel icon)
         {
-            return icon != null ? new IconModel { Type = icon.Type, Source = icon.Source } : null;
+            return icon != null ? new IconModelPersistable { Type = icon.Type, Source = icon.Source } : null;
         }
 
-        private IconModel GetIcon(IElement elementSettingsElement, bool expanded = false, IHasStereotypes overrideStereotypes = null)
+        private IconModelPersistable GetIcon(IElement elementSettingsElement, bool expanded = false, IHasStereotypes overrideStereotypes = null)
         {
             // TODO JL: Referenced icons not implemented
 
@@ -98,7 +96,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 return null;
             }
 
-            return new IconModel
+            return new IconModelPersistable
             {
                 Type = (IconType)Enum.Parse(typeof(IconType), type.Value),
                 Source = source.Value
@@ -151,13 +149,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             }).ToList();
         }
 
-        private List<ElementSettings> GetElementSettings(IList<Api.Modeler.ElementSetting> elementSettings)
+        private List<ElementSettingsPersistable> GetElementSettings(IList<ElementSetting> elementSettings)
         {
             return elementSettings.Select(x =>
-                new ElementSettings
+                new ElementSettingsPersistable
                 {
                     SpecializationType = x.SpecializationType,
-                    Icon = GetIcon(x.Icon),
+                    Icon = GetIcon(x.Icon) ?? _defaultIconModel,
                     ExpandedIcon = GetIcon(x.ExpandedIcon),
                     AllowRename = x.AllowRename,
                     AllowAbstract = x.AllowAbstract,
@@ -273,7 +271,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name}.modeler{(Model.IsExtension ? ".extension" : "")}",
                 fileExtension: "config",
-                defaultLocationInProject: "modeler");
+                defaultLocationInProject: "modelers");
         }
 
         private static T LoadAndDeserialize<T>(string path)

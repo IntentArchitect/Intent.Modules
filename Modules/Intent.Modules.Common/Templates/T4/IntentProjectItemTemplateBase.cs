@@ -96,6 +96,10 @@ namespace Intent.Modules.Common.Templates
         public virtual void OnCreated()
         {
             _onCreatedHasHappened = true;
+            if (!HasTypeResolver())
+            {
+                return;
+            }
             if (_defaultTypeCollectionFormat != null)
             {
                 Types.DefaultCollectionFormat = _defaultTypeCollectionFormat;
@@ -134,7 +138,7 @@ namespace Intent.Modules.Common.Templates
 
         public string GetTemplateClassName(string templateId, IMetadataModel model)
         {
-            return GetTemplateClassName(TemplateDependency.OnModel(templateId, model));
+            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == model.Id));
         }
 
         public string GetTemplateClassName(string templateId, string modelId)

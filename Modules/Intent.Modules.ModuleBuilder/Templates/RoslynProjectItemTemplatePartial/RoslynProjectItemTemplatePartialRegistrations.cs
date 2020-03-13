@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartial
 {
-    public class RoslynProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<IFileTemplate>
+    public class RoslynProjectItemTemplatePartialRegistrations : ModelTemplateRegistrationBase<ICSharpTemplate>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -21,12 +21,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
 
         public override string TemplateId => RoslynProjectItemTemplatePartialTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IFileTemplate model)
+        public override ITemplate CreateTemplateInstance(IProject project, ICSharpTemplate model)
         {
             return new RoslynProjectItemTemplatePartialTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IFileTemplate> GetModels(IApplication application)
+        public override IEnumerable<ICSharpTemplate> GetModels(IApplication application)
         {
             return _metadataManager.GetCSharpTemplates(application)
                 .ToList();

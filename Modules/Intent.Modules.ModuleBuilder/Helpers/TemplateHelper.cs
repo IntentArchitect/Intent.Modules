@@ -14,6 +14,11 @@ namespace Intent.Modules.ModuleBuilder.Helpers
 {
     public static class TemplateHelper
     {
+        public static string ToCSharpIdentifier(this string s)
+        {
+            return s.Replace(" ", "").Replace("-", "").Replace("#", "Sharp");
+        }
+
         public static string GetExistingTemplateContent<T>(IntentProjectItemTemplateBase<T> template)
         {
             var fileLocation = template.FileMetadata.GetFullLocationPathWithFileName();

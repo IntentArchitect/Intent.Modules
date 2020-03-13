@@ -63,16 +63,38 @@
     <template id="ModuleBuilder.Templates.metadata.StereotypeDefinitionFileTemplate">
       <role>Metadata</role>
     </template>
+    <template id="ModuleBuilder.Templates.Api.ApiStereotypeExtensionsTemplate">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+    </template>
+    <template id="ModuleBuilder.Templates.Api.ApiModelImplementationTemplate">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+    </template>
+    <template id="ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+    </template>
   </templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="2.0.2" />
+    <dependency id="Intent.Common" version="2.0.3" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0" />
   </dependencies>
   <metadata>
-    <install target="Module Builder" src="modeler" />
+    <install target="Module Builder" src="modelers" />
     <install target="Module Builder" src="metadata/Intent.ModuleBuilder" />
     <install target="Module Builder" src="metadata/Intent.ModelerBuilder" />
+    <install target="Module Builder" src="metadata/Intent.ModuleBuilder.Test" />
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />

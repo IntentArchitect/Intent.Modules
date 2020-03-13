@@ -1,4 +1,5 @@
 ﻿using System;
+using Intent.Metadata.Models;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates

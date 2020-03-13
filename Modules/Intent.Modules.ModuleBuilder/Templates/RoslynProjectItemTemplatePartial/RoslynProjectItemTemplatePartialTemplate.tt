@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IFileTemplate>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<ICSharpTemplate>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
@@ -10,8 +10,7 @@ using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-<#=(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().Namespace) : "")#>
-<#=DependencyUsings#>
+<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")#>
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 

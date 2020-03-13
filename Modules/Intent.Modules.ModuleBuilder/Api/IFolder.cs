@@ -10,4 +10,5 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         bool IsPackage { get; }
     }
+
 }

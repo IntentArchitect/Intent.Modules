@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Api.Modeler;
 
 namespace Intent.Modules.ModuleBuilder
 {
@@ -12,7 +14,7 @@ namespace Intent.Modules.ModuleBuilder
             return new ModuleBuilderMetadataProvider(metadataManager).GetTemplateDefinitions(application.Id);
         }
 
-        public static IEnumerable<IFileTemplate> GetCSharpTemplates(this IMetadataManager metadataManager, IApplication application)
+        public static IEnumerable<ICSharpTemplate> GetCSharpTemplates(this IMetadataManager metadataManager, IApplication application)
         {
             return new ModuleBuilderMetadataProvider(metadataManager).GetCSharpTemplates(application);
         }
@@ -35,6 +37,11 @@ namespace Intent.Modules.ModuleBuilder
         public static IEnumerable<IModuleStereotype> GetModuleStereotypes(this IMetadataManager metadataManager, IApplication application)
         {
             return new ModuleBuilderMetadataProvider(metadataManager).GetModuleStereotypes(application.Id);
+        }
+
+        public static IEnumerable<IElementSettings> GetElementSettingses(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ModuleBuilderMetadataProvider(metadataManager).GetElementSettingses(application.Id);
         }
 
         public static IEnumerable<IDecoratorDefinition> GetDecorators(this IMetadataManager metadataManager, IApplication application)
@@ -64,7 +71,7 @@ namespace Intent.Modules.ModuleBuilder
 
         public static bool IsModeler(this IElement model)
         {
-            return model.SpecializationType == ModelerReference.SpecializationType;
+            return ModelerReference.SpecializationType.Contains(model.SpecializationType);
         }
     }
 }

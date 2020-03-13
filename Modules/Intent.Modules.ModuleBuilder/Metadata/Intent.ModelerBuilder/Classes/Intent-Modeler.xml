@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="EBD29F02-DB01-4045-A977-993C9DFC7F38" type="Modeler">
+  <name>Intent</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>BD3CC999-CB22-4D24-80DA-40DAFE75C610</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" value="Intent.Metadata.Models" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+</class>

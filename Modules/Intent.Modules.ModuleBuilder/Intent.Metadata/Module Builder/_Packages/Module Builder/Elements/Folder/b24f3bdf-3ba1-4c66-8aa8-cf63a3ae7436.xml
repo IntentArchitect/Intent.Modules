@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="b24f3bdf-3ba1-4c66-8aa8-cf63a3ae7436" type="Folder">
+  <name>Api</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1e203c0d-d0a7-4d77-9204-d78fabb1b796</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

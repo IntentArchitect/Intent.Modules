@@ -15,7 +15,7 @@ namespace Intent.Modules.ModelerBuilder.External
         }
 
         [XmlElement("icon")]
-        public IconModel Icon { get; set; }
+        public IconModelPersistable Icon { get; set; }
 
         [XmlElement("loadStartPage")]
         public bool LoadStartPage { get; set; }

@@ -12,11 +12,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public DiagramSettings DiagramSettings { get; set; }
 
         [XmlElement("packageSettings")]
-        public PackageSettings PackageSettings { get; set; }
+        public PackageSettingsPersistable PackageSettings { get; set; }
 
         [XmlArray("elementSettings")]
         [XmlArrayItem("elementSetting")]
-        public List<ElementSettings> ElementSettings { get; set; }
+        public List<ElementSettingsPersistable> ElementSettings { get; set; }
 
         [XmlArray("associationSettings")]
         [XmlArrayItem("associationSetting")]
@@ -51,7 +51,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-    public class ElementSettings
+    public class ElementSettingsPersistable
     {
         private string _specializationType;
         private List<TypeOrder> _typeOrder;
@@ -67,10 +67,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public string SpecializationTypeOld { get; set; }
 
         [XmlElement("icon")]
-        public IconModel Icon { get; set; }
+        public IconModelPersistable Icon { get; set; }
 
         [XmlElement("expandedIcon")]
-        public IconModel ExpandedIcon { get; set; }
+        public IconModelPersistable ExpandedIcon { get; set; }
 
         [XmlElement("allowRename")]
         public bool? AllowRename { get; set; } = true;
@@ -128,7 +128,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("childElementSettings")]
         [XmlArrayItem("childElementSetting")]
-        public ElementSettings[] ChildElementSettings { get; set; }
+        public ElementSettingsPersistable[] ChildElementSettings { get; set; }
 
         [XmlElement("mappingSettings")]
         public ElementMappingSettings MappingSettings { get; set; }
@@ -164,7 +164,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public string SpecializationType { get; set; }
 
         [XmlElement("icon")]
-        public IconModel Icon { get; set; }
+        public IconModelPersistable Icon { get; set; }
 
         [XmlElement("text")]
         public string Text { get; set; }
@@ -207,7 +207,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public string SpecializationType { get; set; }
 
         [XmlElement("icon")]
-        public IconModel Icon { get; set; }
+        public IconModelPersistable Icon { get; set; }
 
         [XmlElement("text")]
         public string Text { get; set; }
@@ -240,7 +240,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public string SpecializationType { get; set; }
 
         [XmlElement("icon")]
-        public IconModel Icon { get; set; }
+        public IconModelPersistable Icon { get; set; }
 
         [XmlElement("text")]
         public string Text { get; set; }
@@ -274,7 +274,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-    public class PackageSettings
+    public class PackageSettingsPersistable
     {
         private List<TypeOrder> _typeOrder;
 
@@ -335,7 +335,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public string DefaultName { get; set; }
 
         [XmlElement("icon")]
-        public IconModel Icon { get; set; }
+        public IconModelPersistable Icon { get; set; }
 
         public override string ToString()
         {

@@ -14,7 +14,7 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePreProcessedFile
 {
-    public class RoslynProjectItemTemplatePreProcessedFileRoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<IFileTemplate>
+    public class RoslynProjectItemTemplatePreProcessedFileRoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<ICSharpTemplate>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePrePro
 
         public override string TemplateId => "Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template.PreProcessed";
 
-        public override ITemplate CreateTemplateInstance(IProject project, IFileTemplate model)
+        public override ITemplate CreateTemplateInstance(IProject project, ICSharpTemplate model)
         {
             return new TemplatePreProcessedFileTemplate(
                 templateId: TemplateId,
@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePrePro
                 partialTemplateId: RoslynProjectItemTemplatePartialTemplate.TemplateId);
         }
 
-        public override IEnumerable<IFileTemplate> GetModels(IApplication application)
+        public override IEnumerable<ICSharpTemplate> GetModels(IApplication application)
         {
             return _metadataManager.GetCSharpTemplates(application)
                 .ToList();

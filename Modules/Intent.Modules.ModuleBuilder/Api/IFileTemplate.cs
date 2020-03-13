@@ -2,16 +2,21 @@
 using System.Collections;
 using System.Text;
 using Intent.Engine;
+using Intent.Metadata.Models;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface IFileTemplate : IModuleBuilderElement
+    public interface ITemplateCreationSettings : IHasStereotypes
     {
-        IModelerModelType GetModelType();
-        IModelerReference GetModeler();
-        string GetModelTypeName();
-        string GetModelerName();
-        string FileExtension { get; }
+    }
 
+    public interface ICSharpTemplate : ITemplateCreationSettings, IModuleBuilderElement
+    {
+
+    }
+
+    public interface IFileTemplate : ITemplateCreationSettings, IModuleBuilderElement
+    {
+        string FileExtension { get; }
     }
 }

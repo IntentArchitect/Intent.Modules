@@ -11,11 +11,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 {
-    public class RoslynProjectItemTemplateTemplate : IntentProjectItemTemplateBase<IFileTemplate>
+    public class RoslynProjectItemTemplateTemplate : IntentProjectItemTemplateBase<ICSharpTemplate>
     {
         public const string TemplateId = "Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template";
 
-        public RoslynProjectItemTemplateTemplate(string templateId, IProject project, IFileTemplate model) : base(templateId, project, model)
+        public RoslynProjectItemTemplateTemplate(string templateId, IProject project, ICSharpTemplate model) : base(templateId, project, model)
         {
         }
 
@@ -48,16 +48,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType().Namespace}"" #>" : "")}
+{(Model.GetModeler() != null ? $@"<#@ import namespace=""{Model.GetModeler().ApiNamespace}"" #>" : "")}
 {TemplateBody()}";
         }
 
         private string TemplateBody()
         {
-            switch (Model.GetCreationMode())
-            {
-                case CreationMode.SingleFile:
-                    return @"
+            return @"
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
@@ -67,17 +64,6 @@ namespace <#= Namespace #>
 
     }
 }";
-                    break;
-                case CreationMode.FilePerModel:
-                    return Model.GetModelType().PerModelTemplate;
-                //case CreationMode.SingleFileListModel:
-                //    return Model.GetModelType().SingleListTemplate;
-                case CreationMode.Custom:
-                    return string.Empty;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
 
         private string GetModelType()

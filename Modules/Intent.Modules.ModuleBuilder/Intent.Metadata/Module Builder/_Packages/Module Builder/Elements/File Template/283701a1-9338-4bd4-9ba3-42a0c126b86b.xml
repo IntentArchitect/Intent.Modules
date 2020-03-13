@@ -9,13 +9,13 @@
   <attributes />
   <operations />
   <stereotypes>
-    <stereotype stereotypeDefinitionId="c1b6793c-7800-4bc8-822e-f1bf5e757048">
+    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6">
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="93163f77-b427-482c-954a-3b71113688ba" value="File per model" isActive="true" />
-        <property name="29ea944c-a971-4dde-97db-1a856f1cf95c" value="ae8c8307-4d34-473a-8740-96537a791443" isActive="true" />
-        <property name="0f4d2797-317f-425f-9726-70cbd976bbc2" value="c996fb1c-6ae7-4b94-a5f3-b18f54c2e75a" isActive="true" />
-        <property name="efb7c160-e1e8-4977-b68b-9eb012d0b27f" value="xml" isActive="true" />
+        <property name="311d788f-7582-4c27-9a4d-e0db1439c327" value="File per Model" isActive="true" />
+        <property name="c2283d15-4b57-4ed9-8aae-6efc73039034" value="ae8c8307-4d34-473a-8740-96537a791443" isActive="true" />
+        <property name="987590ee-a5ca-45ce-b742-0ee764b6b6e9" value="c996fb1c-6ae7-4b94-a5f3-b18f54c2e75a" isActive="true" />
+        <property name="3CC0FF7A-B4EC-4A2A-AA7F-603640901F30" value="IntentProjectItemTemplateBase" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
