@@ -42,10 +42,10 @@ namespace Intent.Modules.ModuleBuilder.Api
 
     public class TypeOrder
     {
-        public TypeOrder(IAttribute attribute)
+        public TypeOrder(IElement attribute)
         {
-            Order = attribute.GetStereotypeProperty("Creation Options", "Type Order", attribute.Type.Element.GetStereotypeProperty<int?>("Default Creation Options", "Type Order", null));
-            Type = attribute.Type.Element.Name;
+            Order = attribute.GetStereotypeProperty("Creation Options", "Type Order", attribute.TypeReference.Element.GetStereotypeProperty<int?>("Default Creation Options", "Type Order", null));
+            Type = attribute.TypeReference.Element.Name;
         }
         public int? Order { get; set; }
         public string Type { get; set; }

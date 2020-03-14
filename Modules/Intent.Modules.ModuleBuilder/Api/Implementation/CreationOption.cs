@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 
@@ -6,23 +7,30 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public class CreationOption : ICreationOption
     {
+        private readonly IElement _element;
         public const string RequiredSpecializationType = "Creation Option";
 
-        public CreationOption(IAttribute attribute)
+        public CreationOption(IElement element)
         {
-            if (attribute.SpecializationType != RequiredSpecializationType)
+            if (element.SpecializationType != RequiredSpecializationType)
             {
-                throw new ArgumentException($"Invalid element [{attribute}]");
+                throw new ArgumentException($"Invalid element [{element}]");
             }
 
-            SpecializationType = attribute.Type.Element.Name;
-            Text = attribute.Name;
-            Shortcut = attribute.Type.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
-            DefaultName = attribute.Type.Element.GetStereotypeProperty<string>("Default Creation Options", "Default Name") ?? $"New{attribute.Type.Element.Name.Replace(" " ,"")}";
-            Icon = IconModel.CreateIfSpecified(attribute.Type.Element.GetStereotype("Icon (Full)"));
-            Type = attribute.Type.Element;
-            AllowMultiple = attribute.GetStereotypeProperty("Creation Options", "Allow Multiple", true);
+            _element = element;
+
+            SpecializationType = element.TypeReference.Element.Name;
+            Text = element.Name;
+            Shortcut = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
+            DefaultName = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Default Name") ?? $"New{element.TypeReference.Element.Name.Replace(" " ,"")}";
+            Icon = IconModel.CreateIfSpecified(element.TypeReference.Element.GetStereotype("Icon (Full)"));
+            Type = element.TypeReference.Element;
+            AllowMultiple = element.GetStereotypeProperty("Creation Options", "Allow Multiple", true);
         }
+
+        public string Id => _element.Id;
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+        public string Name => _element.Name;
 
         public string SpecializationType { get; }
 

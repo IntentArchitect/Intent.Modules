@@ -92,6 +92,16 @@
       </lookupTypes>
       <isActiveFunction>AllowTypeReference == true</isActiveFunction>
     </property>
+    <property id="ff4b18c5-397b-4639-ba79-89939deb9834">
+      <name>Default Type Id</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(optional)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>AllowTypeReference == true</isActiveFunction>
+    </property>
     <property id="c0b17839-1d85-4237-ba72-e013511ad379">
       <name>Is Stereotype Property Target</name>
       <type>boolean</type>

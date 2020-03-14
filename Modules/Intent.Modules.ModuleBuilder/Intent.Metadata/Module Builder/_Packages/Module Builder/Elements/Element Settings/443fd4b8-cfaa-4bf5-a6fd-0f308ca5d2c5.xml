@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="443fd4b8-cfaa-4bf5-a6fd-0f308ca5d2c5" type="Element Settings">
-  <name>Creation Option XXX</name>
+  <name>Creation Option</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -20,6 +20,7 @@
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" value="true" isActive="true" />
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" value="true" isActive="true" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" value="[&quot;727577aa-3e07-4b41-be7d-7359bb1e48c8&quot;]" isActive="true" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" isActive="true" />
         <property name="c0b17839-1d85-4237-ba72-e013511ad379" value="true" isActive="true" />
       </properties>
     </stereotype>

@@ -21,8 +21,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                 throw new ArgumentException($"Invalid element type {element.SpecializationType}", nameof(element));
             }
             _element = element;
-            CreationOptions = element.Attributes.Select(x => new CreationOption(x)).ToList<ICreationOption>();
-            TypeOrder = element.Attributes.Select(x => new TypeOrder(x)).ToList();
+            CreationOptions = element.ChildElements.Select(x => new CreationOption(x)).ToList<ICreationOption>();
+            TypeOrder = element.ChildElements.Select(x => new TypeOrder(x)).ToList();
         }
 
         public string Id => _element.Id;

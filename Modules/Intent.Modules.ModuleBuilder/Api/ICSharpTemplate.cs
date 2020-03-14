@@ -1,6 +1,7 @@
 using System;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using System.Collections.Generic;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate", Version = "1.0")]

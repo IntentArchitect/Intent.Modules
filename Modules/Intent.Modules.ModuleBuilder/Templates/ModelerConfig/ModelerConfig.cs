@@ -166,7 +166,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     AllowMapping = x.AllowMapping(),
                     AllowSorting = x.AllowSorting(),
                     AllowFindInView = x.AllowFindinView(),
-                    DiagramSettings = null, // TODO JL
+                    AllowTypeReference = x.AllowTypeReference(),
+                    TargetTypes = x.TargetTypes()?.Select(e => e.SpecializationType).ToArray(),
+                    DefaultTypeId = x.DefaultTypeId(),
+                    DiagramSettings = null, // TODO JL / GCB
                     LiteralSettings = x.LiteralSettings?.Any() == true
                         ? x.LiteralSettings.Select(GetLiteralSettings).ToArray()
                         : null,

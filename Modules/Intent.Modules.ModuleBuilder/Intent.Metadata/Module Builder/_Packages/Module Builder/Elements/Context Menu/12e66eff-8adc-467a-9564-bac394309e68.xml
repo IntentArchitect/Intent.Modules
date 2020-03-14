@@ -6,9 +6,14 @@
   <isMapped>false</isMapped>
   <parentFolderId>b5b5445a-27a7-4bfd-b8c7-2f914ae51e53</parentFolderId>
   <literals />
-  <attributes>
-    <attribute id="a44e7f89-ce82-4382-b870-95307e8cc57e" type="Creation Option">
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="a44e7f89-ce82-4382-b870-95307e8cc57e" type="Creation Option">
       <name>New Modeler</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
       <typeReference id="7278956a-2bbc-4c84-83c6-3483d16301a9">
         <typeId>921706bd-c055-4cbd-ba7e-deb5419d529e</typeId>
         <isNullable>false</isNullable>
@@ -17,6 +22,10 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
+      <parentFolderId>12e66eff-8adc-467a-9564-bac394309e68</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
       <stereotypes>
         <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
           <comment>Overrides the default creation option settings.</comment>
@@ -30,9 +39,12 @@
           </properties>
         </stereotype>
       </stereotypes>
-    </attribute>
-    <attribute id="274642cf-8e90-4787-b10e-2f5c7126d3e6" type="Creation Option">
+      <childElements />
+    </childElement>
+    <childElement id="274642cf-8e90-4787-b10e-2f5c7126d3e6" type="Creation Option">
       <name>New Modeler Extension</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
       <typeReference id="6dcd30db-8293-41c9-a219-709423aafccf">
         <typeId>38386289-56b5-4e20-a94f-3bc34e63134c</typeId>
         <isNullable>false</isNullable>
@@ -41,6 +53,10 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
+      <parentFolderId>12e66eff-8adc-467a-9564-bac394309e68</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
       <stereotypes>
         <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
           <comment>Overrides the default creation option settings.</comment>
@@ -54,9 +70,7 @@
           </properties>
         </stereotype>
       </stereotypes>
-    </attribute>
-  </attributes>
-  <operations />
-  <stereotypes />
-  <childElements />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

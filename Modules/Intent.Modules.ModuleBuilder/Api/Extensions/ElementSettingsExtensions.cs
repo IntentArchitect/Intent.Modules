@@ -50,6 +50,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return model.GetStereotypeProperty<IElement[]>("Additional Properties", "Target Types");
         }
 
+        public static string DefaultTypeId(this IElementSettings model)
+        {
+            return model.GetStereotypeProperty<string>("Additional Properties", "Default Type Id");
+        }
+
         public static bool IsStereotypePropertyTarget(this IElementSettings model)
         {
             return model.GetStereotypeProperty<bool>("Additional Properties", "Is Stereotype Property Target");

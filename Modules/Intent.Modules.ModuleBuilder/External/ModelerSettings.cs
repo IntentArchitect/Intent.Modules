@@ -90,6 +90,16 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("allowFindInView")]
         public bool? AllowFindInView { get; set; }
 
+        [XmlElement("allowTypeReference")]
+        public bool? AllowTypeReference { get; set; }
+
+        [XmlArray("targetTypes")]
+        [XmlArrayItem("type")]
+        public string[] TargetTypes { get; set; }
+
+        [XmlElement("defaultTypeId")]
+        public string DefaultTypeId { get; set; }
+
         [XmlArray("typeOrder")]
         [XmlArrayItem("type", typeof(TypeOrder))]
         public List<TypeOrder> TypeOrder
@@ -104,7 +114,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                 }
 
                 _typeOrder = value;
-                foreach (var typeOrder in value.ToArray().Where(x => !string.IsNullOrWhiteSpace(x.Order)))
+                foreach (var typeOrder in value.ToList().Where(x => !string.IsNullOrWhiteSpace(x.Order)))
                 {
                     _typeOrder.Remove(typeOrder);
                     _typeOrder.Insert(Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count), typeOrder);
@@ -297,7 +307,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                 }
 
                 _typeOrder = value;
-                foreach (var typeOrder in value.ToArray().Where(x => !string.IsNullOrWhiteSpace(x.Order)))
+                foreach (var typeOrder in value.ToList().Where(x => !string.IsNullOrWhiteSpace(x.Order)))
                 {
                     _typeOrder.Remove(typeOrder);
                     _typeOrder.Insert(Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count), typeOrder);

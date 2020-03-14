@@ -6,9 +6,14 @@
   <isMapped>false</isMapped>
   <parentFolderId>a6c01201-4191-46ca-bb5d-0532c71d3d00</parentFolderId>
   <literals />
-  <attributes>
-    <attribute id="190da4c1-11d8-4fde-87d0-93329f7f398c" type="Creation Option">
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="190da4c1-11d8-4fde-87d0-93329f7f398c" type="Creation Option">
       <name>Add Modeler</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
       <typeReference id="d9ba0a26-f2a9-4bc1-a535-f88299e1a42b">
         <typeId>b5b5445a-27a7-4bfd-b8c7-2f914ae51e53</typeId>
         <isNullable>false</isNullable>
@@ -17,6 +22,10 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
+      <parentFolderId>b034d81b-94d8-4097-aa16-2b6228647e7a</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
       <stereotypes>
         <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
           <comment>Overrides the default creation option settings.</comment>
@@ -30,9 +39,7 @@
           </properties>
         </stereotype>
       </stereotypes>
-    </attribute>
-  </attributes>
-  <operations />
-  <stereotypes />
-  <childElements />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

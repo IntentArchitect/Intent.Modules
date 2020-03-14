@@ -36,16 +36,20 @@ namespace Intent.Modules.ModuleBuilder.Api
             AllowFindInView = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Find in View");
             LiteralSettings = element.ChildElements
                 .Where(x => x.SpecializationType == Api.LiteralSettings.SpecializationType)
-                .Select(x => new LiteralSettings(x)).ToList<ILiteralSettings>();
+                .Select(x => new LiteralSettings(x))
+                .ToList<ILiteralSettings>();
             AttributeSettings = element.ChildElements
                 .Where(x => x.SpecializationType == Api.AttributeSettings.RequiredSpecializationType)
-                .Select(x => new AttributeSettings(x)).ToList<IAttributeSettings>();
+                .Select(x => new AttributeSettings(x))
+                .ToList<IAttributeSettings>();
             OperationSettings = element.ChildElements
                 .Where(x => x.SpecializationType == Api.OperationSettings.SpecializationType)
-                .Select(x => new OperationSettings(x)).ToList<IOperationSettings>();
+                .Select(x => new OperationSettings(x))
+                .ToList<IOperationSettings>();
             ChildElementSettings = element.ChildElements
                 .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)
-                .Select(x => new ElementSettings(x)).ToList<IElementSettings>();
+                .Select(x => new ElementSettings(x))
+                .ToList<IElementSettings>();
             //CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
             ContextMenu = element.ChildElements.Any(x => x.SpecializationType == Api.ContextMenu.SpecializationType) ? new ContextMenu(element.ChildElements.Single(x => x.SpecializationType == Api.ContextMenu.SpecializationType)) : null;
         }

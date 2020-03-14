@@ -6,9 +6,14 @@
   <isMapped>false</isMapped>
   <parentFolderId>10c058e5-d1c7-46bd-a912-db83eab42ae1</parentFolderId>
   <literals />
-  <attributes>
-    <attribute id="3660b753-2e68-41a5-9b08-d2596b9cb0f6" type="Creation Option">
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="3660b753-2e68-41a5-9b08-d2596b9cb0f6" type="Creation Option">
       <name>New Package</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
       <typeReference id="7ea6783b-598c-45c4-ac76-54bac0493fc9">
         <typeId>1f8e7abd-0376-4473-8a74-566f9a129114</typeId>
         <isNullable>false</isNullable>
@@ -17,10 +22,12 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
+      <parentFolderId>016fc5e4-28ec-4637-8a70-7600dd1bed6c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
       <stereotypes />
-    </attribute>
-  </attributes>
-  <operations />
-  <stereotypes />
-  <childElements />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

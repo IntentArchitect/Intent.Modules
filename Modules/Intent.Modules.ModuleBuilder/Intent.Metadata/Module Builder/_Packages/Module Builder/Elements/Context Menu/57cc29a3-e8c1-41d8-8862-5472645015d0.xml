@@ -6,9 +6,14 @@
   <isMapped>false</isMapped>
   <parentFolderId>d45e383d-90ba-4b64-aca7-34ca100cea21</parentFolderId>
   <literals />
-  <attributes>
-    <attribute id="88263caf-1b21-4aac-bcbd-3e81dd240e58" type="Creation Option">
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="88263caf-1b21-4aac-bcbd-3e81dd240e58" type="Creation Option">
       <name>Add Creation Option</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
       <typeReference id="d6923583-af1b-4b98-a1f0-4b8d4d879de0">
         <typeId>443fd4b8-cfaa-4bf5-a6fd-0f308ca5d2c5</typeId>
         <isNullable>false</isNullable>
@@ -17,6 +22,10 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
+      <parentFolderId>57cc29a3-e8c1-41d8-8862-5472645015d0</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
       <stereotypes>
         <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
           <comment>Overrides the default creation option settings.</comment>
@@ -30,9 +39,7 @@
           </properties>
         </stereotype>
       </stereotypes>
-    </attribute>
-  </attributes>
-  <operations />
-  <stereotypes />
-  <childElements />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

@@ -6,9 +6,14 @@
   <isMapped>false</isMapped>
   <parentFolderId>89333f72-3960-4159-bf61-9c40d4b65088</parentFolderId>
   <literals />
-  <attributes>
-    <attribute id="7075d52c-ca67-4368-9b3b-ff8719ef6252" type="Creation Option">
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="7075d52c-ca67-4368-9b3b-ff8719ef6252" type="Creation Option">
       <name>Add Menu Options</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
       <typeReference id="c233df2b-eb63-4f30-b171-0d79639d2289">
         <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
         <isNullable>false</isNullable>
@@ -17,6 +22,10 @@
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
+      <parentFolderId>bcb1c656-0ea3-4fbe-9646-2735825f5453</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
       <stereotypes>
         <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
           <comment>Overrides the default creation option settings.</comment>
@@ -30,9 +39,7 @@
           </properties>
         </stereotype>
       </stereotypes>
-    </attribute>
-  </attributes>
-  <operations />
-  <stereotypes />
-  <childElements />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>
