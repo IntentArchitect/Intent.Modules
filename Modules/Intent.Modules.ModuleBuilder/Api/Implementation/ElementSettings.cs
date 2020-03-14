@@ -51,7 +51,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 .Select(x => new ElementSettings(x))
                 .ToList<IElementSettings>();
             //CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
-            ContextMenu = element.ChildElements.Any(x => x.SpecializationType == Api.ContextMenu.SpecializationType) ? new ContextMenu(element.ChildElements.Single(x => x.SpecializationType == Api.ContextMenu.SpecializationType)) : null;
+            MenuOptions = element.ChildElements.Any(x => x.SpecializationType == Api.ContextMenu.SpecializationType) ? new ContextMenu(element.ChildElements.Single(x => x.SpecializationType == Api.ContextMenu.SpecializationType)) : null;
         }
 
         public string Id => _element.Id;
@@ -74,7 +74,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public bool? AllowFindInView { get; set; }
 
-        public IContextMenu ContextMenu { get; set; }
+        public IContextMenu MenuOptions { get; set; }
         public IList<ILiteralSettings> LiteralSettings { get; set; }
         public IList<IAttributeSettings> AttributeSettings { get; set; }
         public IList<IOperationSettings> OperationSettings { get; set; }

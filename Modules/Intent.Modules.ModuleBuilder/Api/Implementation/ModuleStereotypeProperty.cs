@@ -59,5 +59,23 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string DefaultValue => _element.GetStereotypeProperty("Module Stereotype Property Settings", "Default Value", string.Empty);
         public string IsActiveFunction => _element.GetStereotypeProperty("Module Stereotype Property Settings", "Is Active Function", string.Empty);
         public string Comment => _element.Comment;
+
+        protected bool Equals(ModuleStereotypeProperty other)
+        {
+            return Equals(_element, other._element);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((ModuleStereotypeProperty)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (_element != null ? _element.GetHashCode() : 0);
+        }
     }
 }

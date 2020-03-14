@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class Folder : IFolder, IEquatable<IFolder>
+    internal class Folder : IFolder
     {
         public const string SpecializationType = "Folder";
         private readonly IElement _element;
@@ -23,19 +23,31 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
 
             ParentFolder = element.ParentElement != null ? new Folder(element.ParentElement) : null;
-            IsPackage = false;
             Stereotypes = element.Stereotypes;
         }
 
         public string Id => _element.Id;
         public string Name => _element.Name;
         public IFolder ParentFolder { get; }
-        public bool IsPackage { get; }
         public IEnumerable<IStereotype> Stereotypes { get; }
 
-        public bool Equals(IFolder other)
+        public IList<ICSharpTemplate> CSharpTemplates { get; }
+
+        public IList<IFileTemplate> FileTemplates { get; }
+
+        public IList<IFolder> Folders { get; }
+
+        public IList<IModelerReference> ModelerReferences { get; }
+
+        public IList<IStereotypeDefinition> StereotypeDefinitions { get; }
+
+        public IList<IDecorator> TemplateDecorators { get; }
+
+        public IList<ITypeDefinition> Types { get; }
+
+        protected bool Equals(Folder other)
         {
-            return string.Equals(Id, other.Id);
+            return Equals(_element, other._element);
         }
 
         public override bool Equals(object obj)
@@ -48,7 +60,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public override int GetHashCode()
         {
-            return (Id != null ? Id.GetHashCode() : 0);
+            return (_element != null ? _element.GetHashCode() : 0);
         }
     }
 }

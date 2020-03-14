@@ -86,8 +86,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
 ");
             
             #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
-  if (Model.ContextMenu != null) {
-        foreach(var creationOption in Model.ContextMenu.CreationOptions.Where(x => GetCreationOptionType(x) != null)) { 
+  if (Model.MenuOptions != null) {
+        foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => GetCreationOptionType(x) != null)) { 
             
             #line default
             #line hidden

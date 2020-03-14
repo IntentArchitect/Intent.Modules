@@ -51,8 +51,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         {
             return new PackageSettingsPersistable
             {
-                CreationOptions = settings?.ContextMenu.CreationOptions.Select(GetElementCreationOptions).ToList(),
-                TypeOrder = settings?.ContextMenu.TypeOrder.Select(x => new TypeOrder { Type = x.Type, Order = x.Order?.ToString() }).ToList()
+                CreationOptions = settings?.MenuOptions.CreationOptions.Select(GetElementCreationOptions).ToList(),
+                TypeOrder = settings?.MenuOptions.TypeOrder.Select(x => new TypeOrder { Type = x.Type, Order = x.Order?.ToString() }).ToList()
             };
         }
 
@@ -109,8 +109,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         private StereotypeSettingsPersistable GetStereotypeSettings(Modeler model)
         {
             var targetTypes = model.ElementSettings.Select(x => x.Name)
+                .Concat(model.ElementSettings.SelectMany(x => x.ChildElementSettings).Select(x => x.Name))
+                .Concat(model.ElementSettings.SelectMany(x => x.LiteralSettings).Select(x => x.Name))
                 .Concat(model.ElementSettings.SelectMany(x => x.AttributeSettings).Select(x => x.Name))
+                .Concat(model.ElementSettings.SelectMany(x => x.OperationSettings).Select(x => x.Name))
                 .Concat(model.AssociationSettings.Select(x => x.SpecializationType))
+                .OrderBy(x => x)
                 .ToList();
 
             return new StereotypeSettingsPersistable
@@ -181,8 +185,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                         : null,
                     ChildElementSettings = GetElementSettings(x.ChildElementSettings).ToArray(),
                     MappingSettings = null, // TODO JL
-                    CreationOptions = x.ContextMenu?.CreationOptions.Select(GetElementCreationOptions).ToList(),
-                    TypeOrder = x.ContextMenu?.TypeOrder.Select((t, index) => new TypeOrder { Type = t.Type, Order = t.Order?.ToString() }).ToList()
+                    CreationOptions = x.MenuOptions?.CreationOptions.Select(GetElementCreationOptions).ToList(),
+                    TypeOrder = x.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrder { Type = t.Type, Order = t.Order?.ToString() }).ToList()
                 })
                 .ToList();
         }

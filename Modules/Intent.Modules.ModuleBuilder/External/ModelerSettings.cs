@@ -122,6 +122,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
             }
         }
 
+        [XmlArray("creationOptions")]
+        [XmlArrayItem("option")]
+        public List<ElementCreationOption> CreationOptions { get; set; }
+
         [XmlElement("diagramSettings")]
         public DiagramSettings DiagramSettings { get; set; }
 
@@ -143,10 +147,6 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("mappingSettings")]
         public ElementMappingSettings MappingSettings { get; set; }
-
-        [XmlArray("creationOptions")]
-        [XmlArrayItem("option")]
-        public List<ElementCreationOption> CreationOptions { get; set; }
 
         public override string ToString()
         {

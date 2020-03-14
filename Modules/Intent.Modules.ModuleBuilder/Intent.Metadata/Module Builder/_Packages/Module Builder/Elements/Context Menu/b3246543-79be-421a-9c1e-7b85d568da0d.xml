@@ -10,12 +10,12 @@
   <operations />
   <stereotypes />
   <childElements>
-    <childElement id="cd1b38f0-cbb2-46b6-8a98-a3a2a1314bd0" type="Creation Option">
-      <name>New Association Type</name>
+    <childElement id="08ad2f99-12b8-4a41-bcf4-830b80f3fbd9" type="Creation Option">
+      <name>New Element Type</name>
       <isAbstract>false</isAbstract>
       <genericTypes />
-      <typeReference id="531b52a3-6c54-48b3-a349-16632ff43245">
-        <typeId>16d21684-d5ea-4fde-b648-f88d292fa272</typeId>
+      <typeReference id="ed6c6c5d-1ffd-4889-80a1-04b5700e257e">
+        <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -26,15 +26,27 @@
       <literals />
       <attributes />
       <operations />
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <childElements />
     </childElement>
-    <childElement id="08ad2f99-12b8-4a41-bcf4-830b80f3fbd9" type="Creation Option">
-      <name>New Element Type</name>
+    <childElement id="cd1b38f0-cbb2-46b6-8a98-a3a2a1314bd0" type="Creation Option">
+      <name>New Association Type</name>
       <isAbstract>false</isAbstract>
       <genericTypes />
-      <typeReference id="ed6c6c5d-1ffd-4889-80a1-04b5700e257e">
-        <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
+      <typeReference id="531b52a3-6c54-48b3-a349-16632ff43245">
+        <typeId>16d21684-d5ea-4fde-b648-f88d292fa272</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

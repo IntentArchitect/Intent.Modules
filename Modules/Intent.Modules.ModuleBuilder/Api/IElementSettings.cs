@@ -11,7 +11,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public interface IElementSettings : IMetadataModel, IHasStereotypes
     {
         string Name { get; }
-        IContextMenu ContextMenu { get; }
+        IContextMenu MenuOptions { get; }
         IList<IAttributeSettings> AttributeSettings { get; }
         IList<IDiagramSettings> DiagramSettings { get; }
         IList<ILiteralSettings> LiteralSettings { get; }

@@ -12,6 +12,6 @@ namespace Intent.Modules.ModuleBuilder.Api
     {
         string Name { get; }
 
-        IContextMenu ContextMenu { get; }
+        IContextMenu MenuOptions { get; }
     }
 }

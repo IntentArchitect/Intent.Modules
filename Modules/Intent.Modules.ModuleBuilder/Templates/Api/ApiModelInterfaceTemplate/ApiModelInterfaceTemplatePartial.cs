@@ -48,7 +48,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
 
         private string GetCreationOptionName(ICreationOption option)
         {
-            var name = option.Type.Name.ToCSharpIdentifier();
+            var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
             return option.AllowMultiple ? name.ToPluralName() : name;
         }
 

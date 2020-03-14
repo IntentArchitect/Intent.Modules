@@ -5,7 +5,7 @@ using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class CreationOption : ICreationOption
+    internal class CreationOption : ICreationOption
     {
         private readonly IElement _element;
         public const string RequiredSpecializationType = "Creation Option";
