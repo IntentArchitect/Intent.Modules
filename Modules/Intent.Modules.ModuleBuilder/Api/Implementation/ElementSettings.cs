@@ -1,26 +1,31 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class ElementSettings : IElementSettings
+    internal class ElementSettings : IElementSettings
     {
-        private readonly IElement _element;
+        public const string SpecializationType = "Element Settings";
         public const string RequiredSpecializationType = "Element Settings";
+        private readonly IElement _element;
 
-        public ElementSettings(IElement element) 
+
+        public ElementSettings(IElement element)
         {
-            if (element.SpecializationType != RequiredSpecializationType)
+            if (element.SpecializationType != SpecializationType)
             {
                 throw new ArgumentException($"Invalid element [{element}]");
             }
 
             _element = element;
 
-            SpecializationType = element.Name;
             Icon = IconModel.CreateIfSpecified(element.GetStereotype("Icon (Full)"));
             ExpandedIcon = IconModel.CreateIfSpecified(element.GetStereotype("Icon (Full, Expanded)"));
             AllowRename = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Rename");
@@ -31,26 +36,23 @@ namespace Intent.Modules.ModuleBuilder.Api
             AllowFindInView = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Find in View");
             LiteralSettings = element.ChildElements
                 .Where(x => x.SpecializationType == Api.LiteralSettings.RequiredSpecializationType)
-                .Select(x => new LiteralSettings(x)).ToList();
+                .Select(x => new LiteralSettings(x)).ToList<ILiteralSettings>();
             AttributeSettings = element.ChildElements
                 .Where(x => x.SpecializationType == Api.AttributeSettings.RequiredSpecializationType)
-                .Select(x => new AttributeSettings(x)).ToList();
+                .Select(x => new AttributeSettings(x)).ToList<IAttributeSettings>();
             OperationSettings = element.ChildElements
-                .Where(x => x.SpecializationType == OperationSetting.RequiredSpecializationType)
-                .Select(x => new OperationSetting(x)).ToList();
+                .Where(x => x.SpecializationType == Api.OperationSettings.RequiredSpecializationType)
+                .Select(x => new OperationSettings(x)).ToList<IOperationSettings>();
             ChildElementSettings = element.ChildElements
-                .Where(x => x.SpecializationType == ElementSettings.RequiredSpecializationType)
-                .Select(x => new ElementSettings(x)).ToList();
+                .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)
+                .Select(x => new ElementSettings(x)).ToList<IElementSettings>();
             //CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
-            ContextMenu = element.ChildElements.Any(x => x.SpecializationType == Api.ContextMenu.SpecializationType) ? new ContextMenu(element.ChildElements.Single(x => x.SpecializationType == "Creation Options")) : null;
-            TypeOrder = element.ChildElements.SingleOrDefault(x => x.SpecializationType == Api.ContextMenu.SpecializationType)?.Attributes.Select(x => new TypeOrder(x)).ToList();
+            ContextMenu = element.ChildElements.Any(x => x.SpecializationType == Api.ContextMenu.SpecializationType) ? new ContextMenu(element.ChildElements.Single(x => x.SpecializationType == Api.ContextMenu.SpecializationType)) : null;
         }
-
 
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
-        public string SpecializationType { get; set; }
 
         public IconModel Icon { get; set; }
 
@@ -68,13 +70,16 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public bool? AllowFindInView { get; set; }
 
-        public List<TypeOrder> TypeOrder { get; set; }
-
-        public IList<LiteralSettings> LiteralSettings { get; set; }
-        public IList<AttributeSettings> AttributeSettings { get; set; }
-        public IList<OperationSetting> OperationSettings { get; set; }
-        public IList<ElementSettings> ChildElementSettings { get; set; }
         public IContextMenu ContextMenu { get; set; }
+        public IList<ILiteralSettings> LiteralSettings { get; set; }
+        public IList<IAttributeSettings> AttributeSettings { get; set; }
+        public IList<IOperationSettings> OperationSettings { get; set; }
+        public IList<IElementSettings> ChildElementSettings { get; set; }
+
+
+        public IList<IDiagramSettings> DiagramSettings { get; }
+
+        public IList<IMappingSettings> MappingSettings { get; }
 
         public override string ToString()
         {

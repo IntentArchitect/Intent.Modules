@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -10,5 +12,13 @@ namespace Intent.Modules.ModuleBuilder.Api
     {
         string Name { get; }
         IContextMenu ContextMenu { get; }
+        IList<IAttributeSettings> AttributeSettings { get; }
+        IList<IDiagramSettings> DiagramSettings { get; }
+        IList<ILiteralSettings> LiteralSettings { get; }
+        IList<IMappingSettings> MappingSettings { get; }
+        IList<IOperationSettings> OperationSettings { get; }
+        IList<IElementSettings> ChildElementSettings { get; }
+        IconModel Icon { get; }
+        IconModel ExpandedIcon { get; }
     }
 }

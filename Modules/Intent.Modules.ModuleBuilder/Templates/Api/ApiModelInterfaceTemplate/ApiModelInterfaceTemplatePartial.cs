@@ -40,9 +40,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
             );
         }
 
-        private string GetCreationOptionModel(ICreationOption option)
+        private string GetCreationOptionType(ICreationOption option)
         {
-            return GetTemplateClassName(ApiModelInterfaceTemplate.TemplateId, option.Type.Id, throwIfNotFound: false);
+            var @interface = GetTemplateClassName(ApiModelInterfaceTemplate.TemplateId, option.Type.Id, throwIfNotFound: false);
+            return option.AllowMultiple ? $"IList<{@interface}>" : @interface;
+        }
+
+        private string GetCreationOptionName(ICreationOption option)
+        {
+            var name = option.Type.Name.ToCSharpIdentifier();
+            return option.AllowMultiple ? name.ToPluralName() : name;
         }
 
     }

@@ -11,7 +11,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     internal class ContextMenu : IContextMenu
     {
-        public const string SpecializationType = "Creation Options";
+        public const string SpecializationType = "Context Menu";
         private readonly IElement _element;
 
         public ContextMenu(IElement element)
@@ -22,11 +22,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             }
             _element = element;
             CreationOptions = element.Attributes.Select(x => new CreationOption(x)).ToList<ICreationOption>();
+            TypeOrder = element.Attributes.Select(x => new TypeOrder(x)).ToList();
         }
 
         public string Id => _element.Id;
         public string Name => _element.Name;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public IList<ICreationOption> CreationOptions { get; }
+        public IList<TypeOrder> TypeOrder { get; }
     }
 }

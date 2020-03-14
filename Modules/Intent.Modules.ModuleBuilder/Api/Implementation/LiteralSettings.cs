@@ -1,18 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class LiteralSettings
+    public class LiteralSettings : ILiteralSettings
     {
         public const string RequiredSpecializationType = "Literal Settings";
+        private readonly IElement _element;
+
         public LiteralSettings(IElement element)
         {
             if (element.SpecializationType != RequiredSpecializationType)
             {
                 throw new ArgumentException($"Invalid element [{element}]");
             }
+
+            _element = element;
 
             SpecializationType = element.Name;
             Icon = IconModel.CreateIfSpecified(element.GetStereotype("Icon (Full)"));
@@ -23,6 +28,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             AllowDuplicateNames = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Duplicate Names");
             AllowFindInView = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Find in View");
         }
+
+        public string Id => _element.Id;
+        public string Name => _element.Name;
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         public string SpecializationType { get; set; }
 

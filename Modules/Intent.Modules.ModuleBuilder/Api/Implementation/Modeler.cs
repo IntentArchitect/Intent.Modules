@@ -22,15 +22,21 @@ namespace Intent.Modules.ModuleBuilder.Api
 
             Name = element.Name;
             IsExtension = element.SpecializationType == Constants.ElementSpecializationTypes.ModelerExtension;
-            PackageSettings = new PackageSettings(element.ChildElements.SingleOrDefault(x => x.SpecializationType == PackageSettings.SpecializationType));
-            ElementSettings = element.ChildElements.Where(x => x.SpecializationType == Api.ElementSettings.RequiredSpecializationType).Select(x => new ElementSettings(x)).OrderBy(x => x.SpecializationType).ToList();
-            AssociationSettings = element.ChildElements.Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType).Select(x => new AssociationSetting(x)).OrderBy(x => x.SpecializationType).ToList();
+            PackageSettings = Api.PackageSettings.Create(element.ChildElements.SingleOrDefault(x => x.SpecializationType == Api.PackageSettings.SpecializationType));
+            ElementSettings = element.ChildElements
+                .Where(x => x.SpecializationType == Api.ElementSettings.RequiredSpecializationType)
+                .Select(x => new ElementSettings(x)).OrderBy(x => x.Name)
+                .ToList<IElementSettings>();
+            AssociationSettings = element.ChildElements
+                .Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType)
+                .Select(x => new AssociationSetting(x)).OrderBy(x => x.SpecializationType)
+                .ToList();
         }
 
         public string Name { get; }
         public bool IsExtension { get; }
-        public PackageSettings PackageSettings { get; }
-        public IList<ElementSettings> ElementSettings { get; }
+        public IPackageSettings PackageSettings { get; }
+        public IList<IElementSettings> ElementSettings { get; }
         public IList<AssociationSetting> AssociationSettings { get; }
     }
 

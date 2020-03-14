@@ -8,6 +8,8 @@
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
+using System;
+using System.Collections.Generic;
 using Intent.Metadata.Models;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -17,9 +19,9 @@ namespace <#= Namespace #>
     public interface <#= ClassName #> : IMetadataModel, IHasStereotypes
     {
         string Name { get; }
-<#  if (Model.CreationOptions != null) {
-        foreach(var creationOption in Model.CreationOptions.Options.Where(x => GetCreationOptionModel(x) != null)) { #>
-        IList<<#= GetCreationOptionModel(creationOption) #>> <#= creationOption.Type.Name.ToCSharpIdentifier().ToPluralName() #> { get; }
+<#  if (Model.ContextMenu != null) {
+        foreach(var creationOption in Model.ContextMenu.CreationOptions.Where(x => GetCreationOptionType(x) != null)) { #>
+        <#= GetCreationOptionType(creationOption) #> <#= GetCreationOptionName(creationOption) #> { get; }
 <#      }
     }#>
     }

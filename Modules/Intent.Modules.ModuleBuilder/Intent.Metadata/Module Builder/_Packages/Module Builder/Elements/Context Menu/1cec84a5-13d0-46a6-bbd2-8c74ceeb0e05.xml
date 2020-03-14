@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="090a3b87-d79d-411b-bd93-57cd97e2ff17" type="Context Menu">
+<class id="1cec84a5-13d0-46a6-bbd2-8c74ceeb0e05" type="Context Menu">
   <name>Creation Options</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>727577aa-3e07-4b41-be7d-7359bb1e48c8</parentFolderId>
+  <parentFolderId>c8949299-5023-4f15-a6b8-5b5ceddd03e6</parentFolderId>
   <literals />
   <attributes>
-    <attribute id="db737fe7-ac06-48e8-99a3-e55b450a0d94" type="Creation Option">
+    <attribute id="5177f5a7-f4ec-4d2c-9d38-2f9ac58a0706" type="Creation Option">
       <name>Add Menu Options</name>
-      <typeReference id="f852285f-fe07-4310-b942-f05f27d05b75">
+      <typeReference id="91ca69fc-01b2-4f81-b78c-95229793102e">
         <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -31,9 +31,9 @@
         </stereotype>
       </stereotypes>
     </attribute>
-    <attribute id="585a35a4-87c8-47db-965d-668c4a1ea073" type="Creation Option">
+    <attribute id="08837f55-4f9d-4e6d-9841-54080b7666c2" type="Creation Option">
       <name>Add Attribute Settings</name>
-      <typeReference id="b6c33fe2-49d8-4edd-b62b-1d76e514e5ea">
+      <typeReference id="609c85db-b254-47a0-a61b-8a172c7143d7">
         <typeId>2e33879b-04af-4fbe-bf98-af4fcaf4f087</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -43,9 +43,9 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="c40b7800-98fc-4fe1-ab3e-2e20da7706a4" type="Creation Option">
+    <attribute id="02163db3-bafd-45ec-8b3c-0ec94b75f874" type="Creation Option">
       <name>Add Diagram Settings</name>
-      <typeReference id="1c55c907-a1d5-4076-af84-631a8e77ff6b">
+      <typeReference id="a84d75b1-3671-4194-86c6-8333aa94cf97">
         <typeId>67d711dd-3918-4b28-b2a0-4d845884e17a</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -55,9 +55,9 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="627c3360-3989-455b-8f58-8e32a21ca18d" type="Creation Option">
+    <attribute id="d1594f84-9ffa-4d53-8291-5b89cd8f8cac" type="Creation Option">
       <name>Add Literal Settings</name>
-      <typeReference id="112e1817-fd6e-474a-8d91-5132becce3c9">
+      <typeReference id="c523ca5c-ff1e-4fa8-ab53-03ec8a7c2099">
         <typeId>81d3c3f7-a522-470a-90d6-bfff19db464c</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -67,9 +67,9 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="b767b8da-d1b7-4578-9dea-25ba7ea1ad9c" type="Creation Option">
+    <attribute id="85124226-98c4-4735-912f-22833b0e682a" type="Creation Option">
       <name>Add Mapping Settings</name>
-      <typeReference id="cd26f705-7d46-443e-8647-23d0b75474f8">
+      <typeReference id="936358af-bb4a-4d6e-b1fc-7869d39bb6f5">
         <typeId>89aeb444-f01d-4ce8-9835-8e2714500962</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -79,9 +79,9 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="b38deee2-b72f-462b-aace-1aacf429ea3a" type="Creation Option">
+    <attribute id="16a2b3f8-cac8-4b2f-bb7a-dc0912b49624" type="Creation Option">
       <name>Add Operation Settings</name>
-      <typeReference id="6b116ef7-8e66-4417-a42b-62bba74372c5">
+      <typeReference id="b90ce6ca-f9f1-45da-951a-0b5b0afca28d">
         <typeId>0dc97172-6f1f-443d-bb3b-ec5392dc99b6</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
@@ -91,9 +91,9 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="4d0543ff-9bad-4077-bef8-fca4e86ae0a2" type="Creation Option">
+    <attribute id="0ebee566-1f0f-4115-929a-55d5c6c08215" type="Creation Option">
       <name>Add Child Element Settings</name>
-      <typeReference id="175cba34-20a1-430a-8fe8-539b45827cd8">
+      <typeReference id="60417257-4694-4c2e-9cd4-0660cfb4a9a0">
         <typeId>c8949299-5023-4f15-a6b8-5b5ceddd03e6</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>

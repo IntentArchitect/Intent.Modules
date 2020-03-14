@@ -5,24 +5,35 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class PackageSettings
+    public class PackageSettings : IPackageSettings
     {
+        private readonly IElement _element;
         public const string SpecializationType = "Package Settings";
 
         public PackageSettings(IElement element)
         {
-            if (element != null && element.SpecializationType != SpecializationType)
+            if (element?.SpecializationType != SpecializationType)
             {
                 throw new ArgumentException($"Invalid element [{element}]");
             }
 
-            CreationOptions = element?.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList()
-                ?? new List<CreationOption>();
-            TypeOrder = element?.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new TypeOrder(x)).ToList()
-                ?? new List<TypeOrder>();
+            _element = element;
+
+            ContextMenu = element.ChildElements.Any(x => x.SpecializationType == Api.ContextMenu.SpecializationType) 
+                ? new ContextMenu(element.ChildElements.Single(x => x.SpecializationType == Api.ContextMenu.SpecializationType)) 
+                : null;
         }
 
-        public IList<CreationOption> CreationOptions { get; set; }
-        public IList<TypeOrder> TypeOrder { get; set; }
+        public static IPackageSettings Create(IElement element)
+        {
+            return element != null ? new PackageSettings(element) : null;
+        }
+
+        public string Id => _element.Id;
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+        public string Name => _element.Name;
+        public IContextMenu ContextMenu { get; }
+
+
     }
 }

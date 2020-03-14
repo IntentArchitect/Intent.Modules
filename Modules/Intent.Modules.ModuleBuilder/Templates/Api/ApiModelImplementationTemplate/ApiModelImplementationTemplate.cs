@@ -78,10 +78,42 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
         }
 
         public string Id => _element.Id;
+        
         public string Name => _element.Name;
+        
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+        
+");
+            
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+  if (Model.ContextMenu != null) {
+        foreach(var creationOption in Model.ContextMenu.CreationOptions.Where(x => GetCreationOptionType(x) != null)) { 
+            
+            #line default
+            #line hidden
+            this.Write("        public ");
+            
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionType(creationOption)));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionName(creationOption)));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; }\r\n\r\n");
+            
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+      }
     }
-}");
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

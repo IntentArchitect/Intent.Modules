@@ -47,12 +47,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             return Serialize(applicationModelerModeler);
         }
 
-        private PackageSettingsPersistable GetPackageSettings(PackageSettings settings)
+        private PackageSettingsPersistable GetPackageSettings(IPackageSettings settings)
         {
             return new PackageSettingsPersistable
             {
-                CreationOptions = settings.CreationOptions.Select(GetElementCreationOptions).ToList(),
-                TypeOrder = settings.TypeOrder.Select(x => new TypeOrder { Type = x.Type, Order = x.Order?.ToString() }).ToList()
+                CreationOptions = settings?.ContextMenu.CreationOptions.Select(GetElementCreationOptions).ToList(),
+                TypeOrder = settings?.ContextMenu.TypeOrder.Select(x => new TypeOrder { Type = x.Type, Order = x.Order?.ToString() }).ToList()
             };
         }
 
@@ -108,8 +108,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
 
         private StereotypeSettingsPersistable GetStereotypeSettings(Modeler model)
         {
-            var targetTypes = model.ElementSettings.Select(x => x.SpecializationType)
-                .Concat(model.ElementSettings.SelectMany(x => x.AttributeSettings).Select(x => x.SpecializationType))
+            var targetTypes = model.ElementSettings.Select(x => x.Name)
+                .Concat(model.ElementSettings.SelectMany(x => x.AttributeSettings).Select(x => x.Name))
                 .Concat(model.AssociationSettings.Select(x => x.SpecializationType))
                 .ToList();
 
@@ -152,20 +152,20 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             }).ToList();
         }
 
-        private List<ElementSettingsPersistable> GetElementSettings(IList<ElementSettings> elementSettings)
+        private List<ElementSettingsPersistable> GetElementSettings(IList<IElementSettings> elementSettings)
         {
             return elementSettings.Select(x =>
                 new ElementSettingsPersistable
                 {
-                    SpecializationType = x.SpecializationType,
+                    SpecializationType = x.Name,
                     Icon = GetIcon(x.Icon) ?? _defaultIconModel,
                     ExpandedIcon = GetIcon(x.ExpandedIcon),
-                    AllowRename = x.AllowRename,
-                    AllowAbstract = x.AllowAbstract,
-                    AllowGenericTypes = x.AllowGenericTypes,
-                    AllowMapping = x.AllowMapping,
-                    AllowSorting = x.AllowSorting,
-                    AllowFindInView = x.AllowFindInView,
+                    AllowRename = x.AllowRename(),
+                    AllowAbstract = x.AllowAbstract(),
+                    AllowGenericTypes = x.AllowGenericTypes(),
+                    AllowMapping = x.AllowMapping(),
+                    AllowSorting = x.AllowSorting(),
+                    AllowFindInView = x.AllowFindinView(),
                     DiagramSettings = null, // TODO JL
                     LiteralSettings = x.LiteralSettings?.Any() == true
                         ? x.LiteralSettings.Select(GetLiteralSettings).ToArray()
@@ -178,64 +178,60 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                         : null,
                     ChildElementSettings = GetElementSettings(x.ChildElementSettings).ToArray(),
                     MappingSettings = null, // TODO JL
-                    CreationOptions = x.ContextMenu != null
-                        ? x.ContextMenu.CreationOptions.Select(GetElementCreationOptions).ToList()
-                        : null,
-                    TypeOrder = x.TypeOrder?.Any() == true
-                        ? x.TypeOrder.Select((t, index) => new TypeOrder { Type = t.Type, Order = t.Order?.ToString() }).ToList()
-                        : null
+                    CreationOptions = x.ContextMenu?.CreationOptions.Select(GetElementCreationOptions).ToList(),
+                    TypeOrder = x.ContextMenu?.TypeOrder.Select((t, index) => new TypeOrder { Type = t.Type, Order = t.Order?.ToString() }).ToList()
                 })
                 .ToList();
         }
 
-        private ClassLiteralSettings GetLiteralSettings(LiteralSettings literal)
+        private ClassLiteralSettings GetLiteralSettings(ILiteralSettings literal)
         {
             return new ClassLiteralSettings
             {
-                SpecializationType = literal.SpecializationType,
-                Icon = GetIcon(literal.Icon) ?? _defaultIconModel, // TODO JL: Check if the default actually needed
-                Text = literal.Text,
-                Shortcut = literal.Shortcut,
-                DefaultName = literal.DefaultName,
-                AllowRename = literal.AllowRename,
-                AllowDuplicateNames = literal.AllowDuplicateNames,
-                AllowFindInView = literal.AllowFindInView
+                SpecializationType = literal.Name,
+                Icon = GetIcon(literal.Icon) ?? _defaultIconModel,
+                Text = literal.Text(),
+                Shortcut = literal.Shortcut(),
+                DefaultName = literal.DefaultName(),
+                AllowRename = literal.AllowRename(),
+                AllowDuplicateNames = literal.AllowDuplicateNames(),
+                AllowFindInView = literal.AllowFindinView()
             };
         }
 
         
-        private AttributeSettingsPersistable GetAttributeSettings(AttributeSettings settings)
+        private AttributeSettingsPersistable GetAttributeSettings(IAttributeSettings settings)
         {
             return new AttributeSettingsPersistable
             {
-                SpecializationType = settings.SpecializationType,
+                SpecializationType = settings.Name,
                 Icon = GetIcon(settings.Icon) ?? _defaultIconModel,
-                Text = settings.Text,
-                Shortcut = settings.Shortcut,
-                DisplayFunction = settings.DisplayFunction,
-                DefaultName = settings.DefaultName,
-                AllowRename = settings.AllowRename,
-                AllowDuplicateNames = settings.AllowDuplicateNames,
-                AllowFindInView = settings.AllowFindInView,
-                DefaultTypeId = settings.DefaultTypeId,
-                TargetTypes = settings.TargetTypes
+                Text = settings.Text(),
+                Shortcut = settings.Shortcut(),
+                DisplayFunction = settings.DisplayFunction(),
+                DefaultName = settings.DefaultName(),
+                AllowRename = settings.AllowRename(),
+                AllowDuplicateNames = settings.AllowDuplicateNames(),
+                AllowFindInView = settings.AllowFindinView(),
+                DefaultTypeId = settings.DefaultTypeId(),
+                TargetTypes = settings.TargetTypes().Select(x => x.Name).ToArray()
             };
         }
 
-        private OperationSettingsPersistable GetOperationSettings(OperationSetting setting)
+        private OperationSettingsPersistable GetOperationSettings(IOperationSettings settings)
         {
             return new OperationSettingsPersistable()
             {
-                SpecializationType = setting.SpecializationType,
-                Icon = GetIcon(setting.Icon) ?? _defaultIconModel,
-                Text = setting.Text,
-                Shortcut = setting.Shortcut,
-                DefaultName = setting.DefaultName,
-                AllowRename = setting.AllowRename,
-                AllowDuplicateNames = setting.AllowDuplicateNames,
-                AllowFindInView = setting.AllowFindInView,
-                DefaultTypeId = setting.DefaultTypeId,
-                TargetTypes = setting.TargetTypes
+                SpecializationType = settings.Name,
+                Icon = GetIcon(settings.Icon) ?? _defaultIconModel,
+                Text = settings.Text(),
+                Shortcut = settings.Shortcut(),
+                DefaultName = settings.DefaultName(),
+                AllowRename = settings.AllowRename(),
+                AllowDuplicateNames = settings.AllowDuplicateNames(),
+                AllowFindInView = settings.AllowFindinView(),
+                DefaultTypeId = settings.DefaultTypeId(),
+                TargetTypes = settings.TargetTypes().Select(x => x.Name).ToArray()
             };
         }
 

@@ -9,5 +9,6 @@ namespace Intent.Modules.ModuleBuilder.Api
     public interface ILiteralSettings : IMetadataModel, IHasStereotypes
     {
         string Name { get; }
+        IconModel Icon { get; set; }
     }
 }

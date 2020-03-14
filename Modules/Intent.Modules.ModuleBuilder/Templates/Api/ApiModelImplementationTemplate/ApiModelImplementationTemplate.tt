@@ -30,7 +30,16 @@ namespace <#= Namespace #>
         }
 
         public string Id => _element.Id;
+        
         public string Name => _element.Name;
+        
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+        
+<#  if (Model.ContextMenu != null) {
+        foreach(var creationOption in Model.ContextMenu.CreationOptions.Where(x => GetCreationOptionType(x) != null)) { #>
+        public <#= GetCreationOptionType(creationOption) #> <#= GetCreationOptionName(creationOption) #> { get; }
+
+<#      }
+    }#>
     }
 }
