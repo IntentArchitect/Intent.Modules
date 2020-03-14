@@ -54,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         private string GetTemplateBaseClass()
         {
-            return Model.BaseType();
+            return nameof(IntentProjectItemTemplateBase);
         }
 
         private IModelerReference GetModeler()

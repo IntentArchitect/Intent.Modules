@@ -81,25 +81,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 
         private string GetTemplateBaseClass()
         {
-            return Model.BaseType();
-        }
-
-
-        private bool HasDecorators()
-        {
-            return !string.IsNullOrEmpty(Model.GetExposedDecoratorContractType());
-        }
-
-        private string GetConfiguredInterfaces()
-        {
-            var interfaceList = new List<string>();
-
-            if (!string.IsNullOrEmpty(Model.GetExposedDecoratorContractType()))
-            {
-                interfaceList.Add($"IHasDecorators<{Model.GetExposedDecoratorContractType()}>");
-            }
-
-            return interfaceList.Any() ? (", " + string.Join(", ", interfaceList)) : string.Empty;
+            return nameof(IntentProjectItemTemplateBase);
         }
     }
 }

@@ -15,7 +15,7 @@
         <property name="311d788f-7582-4c27-9a4d-e0db1439c327" value="File per Model" isActive="true" />
         <property name="c2283d15-4b57-4ed9-8aae-6efc73039034" value="ae8c8307-4d34-473a-8740-96537a791443" isActive="true" />
         <property name="987590ee-a5ca-45ce-b742-0ee764b6b6e9" value="5bfb1629-e4b6-4326-9ecd-a10897ce03f9" isActive="true" />
-        <property name="3CC0FF7A-B4EC-4A2A-AA7F-603640901F30" value="IntentProjectItemTemplateBase" isActive="true" />
+        <property name="329d0550-b81b-4db6-a99b-05d90360d432" value="xml" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

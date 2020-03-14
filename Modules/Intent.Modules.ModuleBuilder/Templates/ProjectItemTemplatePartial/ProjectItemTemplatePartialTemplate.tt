@@ -21,15 +21,11 @@ using System.Linq;
 namespace <#= Namespace #>
 {
 	[IntentManaged(Mode.Merge)]
-    partial class <#= ClassName #> : <#= GetTemplateBaseClass() #><<#= GetModelType() #>><#= GetConfiguredInterfaces() #>
+    partial class <#= ClassName #> : <#= GetTemplateBaseClass() #><<#= GetModelType() #>>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
-<#  if (HasDecorators()) { #>
-        private ICollection<<#= Model.GetExposedDecoratorContractType() #>> _decorators = new List<<#= Model.GetExposedDecoratorContractType() #>>();
-
-<#  } #>
         [IntentInitialGen]
         public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
@@ -42,23 +38,9 @@ namespace <#= Namespace #>
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "<#= Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel  ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                fileExtension: "<#= Model.FileExtension #>",
+                fileExtension: "<#= Model.FileExtension() #>",
                 defaultLocationInProject: "<#= Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel  ? Model.Name.Replace("Template", "") : "" #>"
             );
         }
-
-<#  if (HasDecorators()) { #>
-        [IntentManaged(Mode.Fully)]
-        public void AddDecorator(<#= Model.GetExposedDecoratorContractType() #> decorator)
-        {
-            _decorators.Add(decorator);
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public IEnumerable<ICompositeContract> GetDecorators()
-        {
-            return _decorators;
-        }
-<#  } #>
     }
 }

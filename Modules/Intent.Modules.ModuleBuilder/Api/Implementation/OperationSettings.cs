@@ -9,17 +9,16 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class OperationSettings : IOperationSettings
     {
         private readonly IElement _element;
-        public const string RequiredSpecializationType = "Operation Settings";
+        public const string SpecializationType = "Operation Settings";
 
         public OperationSettings(IElement element)
         {
-            if (element.SpecializationType != RequiredSpecializationType)
+            if (element.SpecializationType != SpecializationType)
             {
                 throw new ArgumentException($"Invalid element [{element}]");
             }
 
             _element = element;
-            SpecializationType = element.Name;
             Icon = IconModel.CreateIfSpecified(element.GetStereotype("Icon (Full)"));
             Text = element.GetStereotypeProperty("Additional Properties", "Text", "New " + element.Name);
             Shortcut = element.GetStereotypeProperty("Additional Properties", "Shortcut", default(string));
@@ -35,8 +34,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => _element.Id;
         public string Name => _element.Name;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-
-        public string SpecializationType { get; set; }
 
         public IconModel Icon { get; set; }
 
@@ -60,7 +57,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public override string ToString()
         {
-            return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
+            return $"{nameof(Name)} = '{Name}', " +
                    $"{nameof(Text)} = '{Text}'";
         }
     }

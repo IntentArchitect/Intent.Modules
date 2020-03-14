@@ -5,12 +5,12 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public interface IModuleBuilderElement : IMetadataModel, IHasStereotypes, IHasFolder
     {
-        ModuleBuilderElementType Type { get; }
-        string Name { get; }
-        IElementApplication Application { get; }
-        string Comment { get; }
-        bool IsTemplate();
-        bool IsDecorator();
+        //ModuleBuilderElementType Type { get; }
+        //string Name { get; }
+        //IElementApplication Application { get; }
+        //string Comment { get; }
+        //bool IsTemplate();
+        //bool IsDecorator();
     }
 
     public enum ModuleBuilderElementType

@@ -1,3 +1,4 @@
+using System;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -6,7 +7,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface ICSharpTemplate : IMetadataModel, IHasStereotypes, IModuleBuilderElement
+    public interface ICSharpTemplate : IMetadataModel, IHasStereotypes, IHasFolder, IModuleBuilderElement
     {
         string Name { get; }
     }

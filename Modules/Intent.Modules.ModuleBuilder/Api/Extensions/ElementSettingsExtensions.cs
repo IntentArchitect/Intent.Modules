@@ -40,6 +40,16 @@ namespace Intent.Modules.ModuleBuilder.Api
             return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Find in View");
         }
 
+        public static bool AllowTypeReference(this IElementSettings model)
+        {
+            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Type Reference");
+        }
+
+        public static IElement[] TargetTypes(this IElementSettings model)
+        {
+            return model.GetStereotypeProperty<IElement[]>("Additional Properties", "Target Types");
+        }
+
         public static bool IsStereotypePropertyTarget(this IElementSettings model)
         {
             return model.GetStereotypeProperty<bool>("Additional Properties", "Is Stereotype Property Target");
@@ -89,7 +99,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return model.GetStereotypeProperty<string>("Icon (Full)", "Source");
         }
-
 
         public enum TypeOptions
         {

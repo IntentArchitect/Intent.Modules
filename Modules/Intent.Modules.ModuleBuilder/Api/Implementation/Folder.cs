@@ -11,21 +11,24 @@ namespace Intent.Modules.ModuleBuilder.Api
     internal class Folder : IFolder, IEquatable<IFolder>
     {
         public const string SpecializationType = "Folder";
+        private readonly IElement _element;
+
         public Folder(IElement element)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.OrdinalIgnoreCase))
             {
                 throw new Exception($"Cannot create a folder from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
-            Id = element.Id;
-            Name = element.Name;
+
+            _element = element;
+
             ParentFolder = element.ParentElement != null ? new Folder(element.ParentElement) : null;
             IsPackage = false;
             Stereotypes = element.Stereotypes;
         }
 
-        public string Id { get; }
-        public string Name { get; }
+        public string Id => _element.Id;
+        public string Name => _element.Name;
         public IFolder ParentFolder { get; }
         public bool IsPackage { get; }
         public IEnumerable<IStereotype> Stereotypes { get; }
@@ -47,6 +50,5 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (Id != null ? Id.GetHashCode() : 0);
         }
-        private readonly IElement _element;
     }
 }

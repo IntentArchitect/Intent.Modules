@@ -43,9 +43,9 @@ namespace Intent.Modules.ModuleBuilder.Api
             return model.GetStereotypeProperty<IElement>("File Template Settings", "Model Type");
         }
 
-        public static string BaseType(this ICSharpTemplate model)
+        public static string FileExtension(this ICSharpTemplate model)
         {
-            return model.GetStereotypeProperty<string>("File Template Settings", "Base Type");
+            return model.GetStereotypeProperty<string>("File Template Settings", "File Extension");
         }
 
         public enum CreationModeOptions

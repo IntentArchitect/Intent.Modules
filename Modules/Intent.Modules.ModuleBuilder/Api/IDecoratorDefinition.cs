@@ -2,6 +2,6 @@
 {
     public interface IDecoratorDefinition : IModuleBuilderElement
     {
-
+        string Name { get; }
     }
 }

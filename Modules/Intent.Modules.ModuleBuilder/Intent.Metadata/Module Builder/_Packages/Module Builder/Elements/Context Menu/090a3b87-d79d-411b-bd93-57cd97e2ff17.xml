@@ -94,7 +94,7 @@
     <attribute id="4d0543ff-9bad-4077-bef8-fca4e86ae0a2" type="Creation Option">
       <name>Add Child Element Settings</name>
       <typeReference id="175cba34-20a1-430a-8fe8-539b45827cd8">
-        <typeId>c8949299-5023-4f15-a6b8-5b5ceddd03e6</typeId>
+        <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

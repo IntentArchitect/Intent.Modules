@@ -5,21 +5,20 @@ using Intent.Modules.Common;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class LiteralSettings : ILiteralSettings
+    internal class LiteralSettings : ILiteralSettings
     {
-        public const string RequiredSpecializationType = "Literal Settings";
+        public const string SpecializationType = "Literal Settings";
         private readonly IElement _element;
 
         public LiteralSettings(IElement element)
         {
-            if (element.SpecializationType != RequiredSpecializationType)
+            if (element.SpecializationType != SpecializationType)
             {
                 throw new ArgumentException($"Invalid element [{element}]");
             }
 
             _element = element;
 
-            SpecializationType = element.Name;
             Icon = IconModel.CreateIfSpecified(element.GetStereotype("Icon (Full)"));
             Text = element.GetStereotypeProperty("Additional Properties", "Text", "New " + element.Name);
             Shortcut = element.GetStereotypeProperty("Additional Properties", "Shortcut", default(string));
@@ -32,8 +31,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => _element.Id;
         public string Name => _element.Name;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-
-        public string SpecializationType { get; set; }
 
         public IconModel Icon { get; set; }
 

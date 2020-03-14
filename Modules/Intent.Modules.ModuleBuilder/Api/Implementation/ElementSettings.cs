@@ -35,13 +35,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             AllowSorting = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Sorting");
             AllowFindInView = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Find in View");
             LiteralSettings = element.ChildElements
-                .Where(x => x.SpecializationType == Api.LiteralSettings.RequiredSpecializationType)
+                .Where(x => x.SpecializationType == Api.LiteralSettings.SpecializationType)
                 .Select(x => new LiteralSettings(x)).ToList<ILiteralSettings>();
             AttributeSettings = element.ChildElements
                 .Where(x => x.SpecializationType == Api.AttributeSettings.RequiredSpecializationType)
                 .Select(x => new AttributeSettings(x)).ToList<IAttributeSettings>();
             OperationSettings = element.ChildElements
-                .Where(x => x.SpecializationType == Api.OperationSettings.RequiredSpecializationType)
+                .Where(x => x.SpecializationType == Api.OperationSettings.SpecializationType)
                 .Select(x => new OperationSettings(x)).ToList<IOperationSettings>();
             ChildElementSettings = element.ChildElements
                 .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)

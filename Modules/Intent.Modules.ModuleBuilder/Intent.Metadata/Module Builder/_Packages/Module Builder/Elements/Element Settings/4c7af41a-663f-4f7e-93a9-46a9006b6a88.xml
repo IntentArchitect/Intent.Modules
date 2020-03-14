@@ -35,6 +35,8 @@
         <property name="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" value="false" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" value="false" isActive="true" />
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" value="false" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" isActive="false" />
         <property name="c0b17839-1d85-4237-ba72-e013511ad379" value="true" isActive="true" />
       </properties>
     </stereotype>

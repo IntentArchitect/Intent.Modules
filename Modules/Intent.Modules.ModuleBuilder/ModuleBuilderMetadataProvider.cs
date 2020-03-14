@@ -15,6 +15,7 @@ namespace Intent.Modules.ModuleBuilder
             _metadataManager = metadataManager;
         }
 
+
         public IEnumerable<IFileTemplate> GetTemplateDefinitions(string applicationId)
         {
             var templates = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId).Where(x => x.IsTemplate()).ToList();
@@ -31,7 +32,9 @@ namespace Intent.Modules.ModuleBuilder
 
         public IEnumerable<IFileTemplate> GetFileTemplates(IApplication application)
         {
-            return GetTemplateDefinitions(application.Id).Where(x => x.Type == ModuleBuilderElementType.FileTemplate && x.Application.Name == application.Name);
+            var templates = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id).Where(x => x.IsFileTemplate()).ToList();
+            var result = templates.Select(x => new FileTemplate(x)).ToList();
+            return result;
         }
 
         public IEnumerable<IModulePackage> GetModulePackages(string applicationId)

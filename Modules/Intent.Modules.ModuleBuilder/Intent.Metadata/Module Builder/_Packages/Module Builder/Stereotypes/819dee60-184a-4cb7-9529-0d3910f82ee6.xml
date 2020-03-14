@@ -56,14 +56,13 @@
       <lookupInternalTargetPropertyId>c2283d15-4b57-4ed9-8aae-6efc73039034</lookupInternalTargetPropertyId>
       <isActiveFunction>CreationMode != 'Single File (No Model)'</isActiveFunction>
     </property>
-    <property id="3CC0FF7A-B4EC-4A2A-AA7F-603640901F30">
-      <comment />
-      <name>Base Type</name>
+    <property id="329d0550-b81b-4db6-a99b-05d90360d432">
+      <name>File Extension</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <defaultValue>IntentProjectItemTemplateBase</defaultValue>
+      <placeholder>(required)</placeholder>
+      <defaultValue>txt</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>

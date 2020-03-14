@@ -9,6 +9,5 @@ namespace Intent.Modules.ModuleBuilder.Api
     public interface IFileTemplate : IMetadataModel, IHasStereotypes, IHasFolder, IModuleBuilderElement
     {
         string Name { get; }
-        string FileExtension { get; }
     }
 }

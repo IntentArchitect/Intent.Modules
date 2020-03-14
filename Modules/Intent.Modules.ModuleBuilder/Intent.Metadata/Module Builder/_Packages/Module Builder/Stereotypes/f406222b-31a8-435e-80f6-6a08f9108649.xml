@@ -70,6 +70,28 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="8da796ff-e5b8-4a53-9c18-9176bfff8fbc">
+      <name>Allow Type Reference</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="b94f760c-0ce7-4176-bbae-97e26914b39c">
+      <name>Target Types</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(required)</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>element settings</type>
+      </lookupTypes>
+      <isActiveFunction>AllowTypeReference == true</isActiveFunction>
+    </property>
     <property id="c0b17839-1d85-4237-ba72-e013511ad379">
       <name>Is Stereotype Property Target</name>
       <type>boolean</type>
