@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="090a3b87-d79d-411b-bd93-57cd97e2ff17" type="Creation Options">
+<class id="090a3b87-d79d-411b-bd93-57cd97e2ff17" type="Context Menu">
   <name>Creation Options</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
@@ -7,22 +7,34 @@
   <parentFolderId>727577aa-3e07-4b41-be7d-7359bb1e48c8</parentFolderId>
   <literals />
   <attributes>
-    <attribute id="585a35a4-87c8-47db-965d-668c4a1ea073" type="Creation Option">
-      <name>Add Attribute Settings</name>
-      <typeReference id="b6c33fe2-49d8-4edd-b62b-1d76e514e5ea">
-        <typeId>2e33879b-04af-4fbe-bf98-af4fcaf4f087</typeId>
+    <attribute id="db737fe7-ac06-48e8-99a3-e55b450a0d94" type="Creation Option">
+      <name>Add Menu Options</name>
+      <typeReference id="f852285f-fe07-4310-b942-f05f27d05b75">
+        <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="false" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
     </attribute>
-    <attribute id="db737fe7-ac06-48e8-99a3-e55b450a0d94" type="Creation Option">
-      <name>Add Creation Options</name>
-      <typeReference id="f852285f-fe07-4310-b942-f05f27d05b75">
-        <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
+    <attribute id="585a35a4-87c8-47db-965d-668c4a1ea073" type="Creation Option">
+      <name>Add Attribute Settings</name>
+      <typeReference id="b6c33fe2-49d8-4edd-b62b-1d76e514e5ea">
+        <typeId>2e33879b-04af-4fbe-bf98-af4fcaf4f087</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

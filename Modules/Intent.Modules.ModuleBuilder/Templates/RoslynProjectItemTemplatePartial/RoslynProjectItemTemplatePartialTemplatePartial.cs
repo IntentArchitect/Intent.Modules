@@ -59,7 +59,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
             {
                 { "TemplateId", GetTemplateId() },
-                { "TemplateType", "C# Template" }
+                { "TemplateType", "C# Template" },
+                { "Module Dependency", GetModeler().ModuleDependency },
+                { "Module Dependency Version", GetModeler().ModuleVersion },
+                { "ModelId", Model.Id }
             });
         }
 

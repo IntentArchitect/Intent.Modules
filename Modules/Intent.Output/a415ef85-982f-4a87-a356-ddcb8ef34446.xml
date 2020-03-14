@@ -19,8 +19,8 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\CreationOptionsExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/CreationOptionsExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ContextMenuExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/ContextMenuExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -129,6 +129,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\StereotypeDefinitionExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/StereotypeDefinitionExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\TypeDefinitionExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/TypeDefinitionExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -149,8 +154,8 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ICreationOptions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ICreationOptions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IContextMenu.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IContextMenu.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -264,8 +269,8 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\CreationOptions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/CreationOptions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\ContextMenu.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/ContextMenu.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -374,6 +379,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\StereotypeDefinition.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/StereotypeDefinition.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\TypeDefinition.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/TypeDefinition.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -386,6 +396,11 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IPackageSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IPackageSettings.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IStereotypeDefinition.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IStereotypeDefinition.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -419,6 +434,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Intent.modeler.extension.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Intent.modeler.extension.config</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Modeler Builder.modeler.extension.config</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>modelers/Modeler Builder.modeler.extension.config</ProjectRelativeFilePath>
     </FileLog>
@@ -449,6 +469,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensionsRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Api/ApiModelExtensions/ApiModelExtensionsRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiModelImplementationTemplate/ApiModelImplementationTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -461,6 +486,11 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiModelImplementationTemplate/ApiModelImplementationTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Api/ApiModelImplementationTemplate/ApiModelImplementationTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -489,6 +519,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Api/ApiModelInterfaceTemplate/ApiModelInterfaceTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiStereotypeExtensionsTemplate\ApiStereotypeExtensionsTemplate.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiStereotypeExtensionsTemplate/ApiStereotypeExtensionsTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -501,6 +536,11 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiStereotypeExtensionsTemplate\ApiStereotypeExtensionsTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiStereotypeExtensionsTemplate/ApiStereotypeExtensionsTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiStereotypeExtensionsTemplate\ApiStereotypeExtensionsTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Api/ApiStereotypeExtensionsTemplate/ApiStereotypeExtensionsTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -529,6 +569,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\FolderFileTemplate\FolderFileTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/FolderFileTemplate/FolderFileTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\PackageFileTemplate\PackageFileTemplate.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/metadata/PackageFileTemplate/PackageFileTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -549,6 +594,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\PackageFileTemplate\PackageFileTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/PackageFileTemplate/PackageFileTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/metadata/StereotypeDefinitionFileTemplate/StereotypeDefinitionFileTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -561,6 +611,11 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/metadata/StereotypeDefinitionFileTemplate/StereotypeDefinitionFileTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/metadata/StereotypeDefinitionFileTemplate/StereotypeDefinitionFileTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>

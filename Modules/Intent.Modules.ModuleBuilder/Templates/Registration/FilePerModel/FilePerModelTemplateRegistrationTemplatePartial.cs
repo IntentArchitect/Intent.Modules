@@ -54,6 +54,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
             return Model.Name.Replace("Registrations", "Template");
         }
 
+        private IModelerReference GetModeler()
+        {
+            return Model.Modeler() != null ? new ModelerReference(Model.Modeler()) : null;
+        }
+
+        private string GetModelType()
+        {
+            var modelType = Model.ModelType() != null ? new ModelerModelType(Model.ModelType()) : null;
+            return modelType?.InterfaceName ?? "object";
+        }
+
         public string GetModelsMethod()
         {
             var model = new ModelerModelType(Model.ModelType());

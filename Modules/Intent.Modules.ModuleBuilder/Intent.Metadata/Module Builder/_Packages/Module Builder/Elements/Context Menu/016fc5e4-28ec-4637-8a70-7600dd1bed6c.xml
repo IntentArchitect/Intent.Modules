@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="016fc5e4-28ec-4637-8a70-7600dd1bed6c" type="Creation Options">
+<class id="016fc5e4-28ec-4637-8a70-7600dd1bed6c" type="Context Menu">
   <name>Creation Options</name>
   <isAbstract>false</isAbstract>
   <genericTypes />

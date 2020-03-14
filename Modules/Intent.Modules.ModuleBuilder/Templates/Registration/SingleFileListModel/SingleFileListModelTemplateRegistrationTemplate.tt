@@ -21,7 +21,7 @@ using Intent.Templates;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class <#= ClassName #> : ListModelTemplateRegistrationBase<<#= Model.GetModelTypeName() #>>
+    public class <#= ClassName #> : ListModelTemplateRegistrationBase<<#= Model.GetModelType().InterfaceName #>>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -32,13 +32,13 @@ namespace <#= Namespace #>
 
         public override string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<<#= Model.GetModelTypeName() #>> model)
+        public override ITemplate CreateTemplateInstance(IProject project, IList<<#= Model.GetModelType().InterfaceName #>> model)
         {
             return new <#= GetTemplateNameForTemplateId() #>(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IList<<#= Model.GetModelTypeName() #>> GetModels(IApplication application)
+        public override IList<<#= Model.GetModelType().InterfaceName #>> GetModels(IApplication application)
         {
             return <#= GetModelsMethod() #>.ToList();
         }

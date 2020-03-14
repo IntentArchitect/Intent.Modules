@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
 {
-    public class ModelerSettings
+    public class ModelerSettingsPersistable
     {
         [XmlElement("diagramSettings")]
         public DiagramSettings DiagramSettings { get; set; }
@@ -23,10 +23,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public List<AssociationSettingsPersistable> AssociationSettings { get; set; }
 
         [XmlElement("stereotypeSettings")]
-        public StereotypeSettings StereotypeSettings { get; set; }
+        public StereotypeSettingsPersistable StereotypeSettings { get; set; }
     }
 
-    public class StereotypeSettings
+    public class StereotypeSettingsPersistable
     {
         [XmlAttribute("specializationType")]
         public string SpecializationType { get; set; }
@@ -103,10 +103,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                     return;
                 }
 
-                _typeOrder = new List<TypeOrder>();
-                foreach (var typeOrder in value)
+                _typeOrder = value;
+                foreach (var typeOrder in value.ToArray().Where(x => !string.IsNullOrWhiteSpace(x.Order)))
                 {
-                    _typeOrder.Insert(typeOrder.Order != null ? Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count) : _typeOrder.Count, typeOrder);
+                    _typeOrder.Remove(typeOrder);
+                    _typeOrder.Insert(Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count), typeOrder);
                 }
             }
         }
@@ -120,11 +121,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("attributeSettings")]
         [XmlArrayItem("attributeSetting")]
-        public AttributeSettings[] AttributeSettings { get; set; }
+        public AttributeSettingsPersistable[] AttributeSettings { get; set; }
 
         [XmlArray("operationSettings")]
         [XmlArrayItem("operationSetting")]
-        public OperationSettingsPersistable[] OperationSettingsPersistable { get; set; }
+        public OperationSettingsPersistable[] OperationSettings { get; set; }
 
         [XmlArray("childElementSettings")]
         [XmlArrayItem("childElementSetting")]
@@ -158,7 +159,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-    public class AttributeSettings
+    public class AttributeSettingsPersistable
     {
         [XmlElement("specializationType")]
         public string SpecializationType { get; set; }
@@ -295,10 +296,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                     return;
                 }
 
-                _typeOrder = new List<TypeOrder>();
-                foreach (var typeOrder in value)
+                _typeOrder = value;
+                foreach (var typeOrder in value.ToArray().Where(x => !string.IsNullOrWhiteSpace(x.Order)))
                 {
-                    _typeOrder.Insert(typeOrder.Order != null ? Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count) : _typeOrder.Count, typeOrder);
+                    _typeOrder.Remove(typeOrder);
+                    _typeOrder.Insert(Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count), typeOrder);
                 }
             }
         }
@@ -336,6 +338,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("icon")]
         public IconModelPersistable Icon { get; set; }
+
+        [XmlElement("allowMultiple")]
+        public bool AllowMultiple { get; set; } = true;
 
         public override string ToString()
         {

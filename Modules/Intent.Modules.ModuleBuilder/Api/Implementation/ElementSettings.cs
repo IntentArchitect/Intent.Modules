@@ -42,8 +42,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                 .Where(x => x.SpecializationType == ElementSettings.RequiredSpecializationType)
                 .Select(x => new ElementSettings(x)).ToList();
             //CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
-            CreationOptions = element.ChildElements.Any(x => x.SpecializationType == "Creation Options") ? new CreationOptions(element.ChildElements.Single(x => x.SpecializationType == "Creation Options")) : null;
-            TypeOrder = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new TypeOrder(x)).ToList();
+            ContextMenu = element.ChildElements.Any(x => x.SpecializationType == Api.ContextMenu.SpecializationType) ? new ContextMenu(element.ChildElements.Single(x => x.SpecializationType == "Creation Options")) : null;
+            TypeOrder = element.ChildElements.SingleOrDefault(x => x.SpecializationType == Api.ContextMenu.SpecializationType)?.Attributes.Select(x => new TypeOrder(x)).ToList();
         }
 
 
@@ -74,7 +74,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IList<AttributeSettings> AttributeSettings { get; set; }
         public IList<OperationSetting> OperationSettings { get; set; }
         public IList<ElementSettings> ChildElementSettings { get; set; }
-        public ICreationOptions CreationOptions { get; set; }
+        public IContextMenu ContextMenu { get; set; }
 
         public override string ToString()
         {

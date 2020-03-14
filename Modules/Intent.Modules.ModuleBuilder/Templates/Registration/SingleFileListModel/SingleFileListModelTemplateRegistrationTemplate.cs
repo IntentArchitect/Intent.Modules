@@ -71,7 +71,7 @@ using Intent.Templates;
             this.Write(" : ListModelTemplateRegistrationBase<");
             
             #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelTypeName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType().InterfaceName));
             
             #line default
             #line hidden
@@ -95,7 +95,7 @@ using Intent.Templates;
                     " project, IList<");
             
             #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelTypeName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType().InterfaceName));
             
             #line default
             #line hidden
@@ -110,7 +110,7 @@ using Intent.Templates;
                     "nore, Signature = Mode.Fully)]\r\n        public override IList<");
             
             #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelTypeName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType().InterfaceName));
             
             #line default
             #line hidden

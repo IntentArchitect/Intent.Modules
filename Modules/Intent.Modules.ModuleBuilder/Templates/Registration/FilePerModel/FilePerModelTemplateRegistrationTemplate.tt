@@ -14,14 +14,14 @@ using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Templates;
-<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")#>
+<#=(GetModeler() != null ? string.Format("using {0};", GetModeler().ApiNamespace) : "")#>
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class <#= ClassName #> : ModelTemplateRegistrationBase<<#= Model.GetModelTypeName() #>>
+    public class <#= ClassName #> : ModelTemplateRegistrationBase<<#= GetModelType() #>>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -32,13 +32,13 @@ namespace <#= Namespace #>
 
         public override string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, <#= Model.GetModelTypeName() #> model)
+        public override ITemplate CreateTemplateInstance(IProject project, <#= GetModelType() #> model)
         {
             return new <#= GetTemplateNameForTemplateId() #>(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<<#= Model.GetModelTypeName() #>> GetModels(IApplication application)
+        public override IEnumerable<<#= GetModelType() #>> GetModels(IApplication application)
         {
             return <#= GetModelsMethod() #>;
         }

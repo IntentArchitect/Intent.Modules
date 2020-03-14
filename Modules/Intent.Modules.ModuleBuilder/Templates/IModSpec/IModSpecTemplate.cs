@@ -16,26 +16,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
     public class IModeSpecModel
     {
-        public IModeSpecModel(IEnumerable<IFileTemplate> templates, IEnumerable<IDecoratorDefinition> decorators)
+        public IModeSpecModel(IEnumerable<IDecoratorDefinition> decorators)
         {
-            Templates = templates;
             Decorators = decorators;
         }
 
-        public IEnumerable<IFileTemplate> Templates { get; }
         public IEnumerable<IDecoratorDefinition> Decorators { get; }
     }
 
     public class TemplateRegistrationInfo
     {
-        public TemplateRegistrationInfo(string templateId, string templateType)
+        public TemplateRegistrationInfo(string templateId, string templateType, string moduleDependency, string moduleVersion)
         {
             TemplateId = templateId;
             TemplateType = templateType;
+            ModuleDependency = moduleDependency;
+            ModuleVersion = moduleVersion;
         }
 
         public string TemplateId { get; set; }
         public string TemplateType { get; set; }
+        public string ModuleDependency { get; }
+        public string ModuleVersion { get; }
     }
 
     public class MetadataRegistrationInfo
@@ -62,7 +64,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
             Project.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
-                _templatesToRegister.Add(new TemplateRegistrationInfo(@event.GetValue("TemplateId"), @event.GetValue("TemplateType")));
+                _templatesToRegister.Add(new TemplateRegistrationInfo(@event.GetValue("TemplateId"), @event.GetValue("TemplateType"), @event.TryGetValue("Module Dependency"), @event.TryGetValue("Module Dependency Version")));
             });
 
             Project.Application.EventDispatcher.Subscribe("MetadataRegistrationRequired", @event =>
@@ -112,6 +114,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 {
                     specificTemplate.Add(new XElement("role") { Value = template.TemplateId });
                 }
+
+                if (!string.IsNullOrWhiteSpace(template.ModuleDependency) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{template.ModuleDependency}\"]") == null)
+                {
+                    var dependencies = doc.XPathSelectElement("package/dependencies");
+                    dependencies.Add(CreateDependency(new IntentModule(template.ModuleDependency, template.ModuleVersion)));
+                }
+            }
+
+            if (_templatesToRegister.Any(x => x.TemplateType == "C# Template") && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.OutputManager.RoslynWeaver\"]") == null)
+            {
+                var dependencies = doc.XPathSelectElement("package/dependencies");
+                dependencies.Add(CreateDependency(IntentModule.IntentRoslynWeaver));
             }
 
             if (Model.Decorators.Any())
@@ -135,21 +149,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            if (Model.Templates.Any(x => x.Type == ModuleBuilderElementType.CSharpTemplate) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.OutputManager.RoslynWeaver\"]") == null)
-            {
-                var dependencies = doc.XPathSelectElement("package/dependencies");
-                dependencies.Add(CreateDependency(IntentModule.IntentRoslynWeaver));
-            }
-
-            foreach (var template in Model.Templates)
-            {
-                // TODO: GCB - this should probably come from the registration
-                if (!string.IsNullOrWhiteSpace(template.GetModeler()?.ModuleDependency) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{template.GetModeler().ModuleDependency}\"]") == null)
-                {
-                    var dependencies = doc.XPathSelectElement("package/dependencies");
-                    dependencies.Add(CreateDependency(new IntentModule(template.GetModeler().ModuleDependency, template.GetModeler().ModuleVersion)));
-                }
-            }
+            //foreach (var template in Model.Templates)
+            //{
+            //    // TODO: GCB - this should probably come from the registration
+            //    if (!string.IsNullOrWhiteSpace(template.GetModeler()?.ModuleDependency) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{template.GetModeler().ModuleDependency}\"]") == null)
+            //    {
+            //        var dependencies = doc.XPathSelectElement("package/dependencies");
+            //        dependencies.Add(CreateDependency(new IntentModule(template.GetModeler().ModuleDependency, template.GetModeler().ModuleVersion)));
+            //    }
+            //}
 
             foreach (var metadataRegistration in _metadataToRegister)
             {

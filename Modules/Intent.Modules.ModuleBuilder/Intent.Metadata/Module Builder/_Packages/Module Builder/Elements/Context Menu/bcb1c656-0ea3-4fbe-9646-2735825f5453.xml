@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b034d81b-94d8-4097-aa16-2b6228647e7a" type="Creation Options">
+<class id="bcb1c656-0ea3-4fbe-9646-2735825f5453" type="Context Menu">
   <name>Creation Options</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>a6c01201-4191-46ca-bb5d-0532c71d3d00</parentFolderId>
+  <parentFolderId>89333f72-3960-4159-bf61-9c40d4b65088</parentFolderId>
   <literals />
   <attributes>
-    <attribute id="190da4c1-11d8-4fde-87d0-93329f7f398c" type="Creation Option">
-      <name>Add Modeler</name>
-      <typeReference id="d9ba0a26-f2a9-4bc1-a535-f88299e1a42b">
-        <typeId>b5b5445a-27a7-4bfd-b8c7-2f914ae51e53</typeId>
+    <attribute id="7075d52c-ca67-4368-9b3b-ff8719ef6252" type="Creation Option">
+      <name>Add Menu Options</name>
+      <typeReference id="c233df2b-eb63-4f30-b171-0d79639d2289">
+        <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -25,7 +25,8 @@
             <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
             <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
             <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" value="1" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="false" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

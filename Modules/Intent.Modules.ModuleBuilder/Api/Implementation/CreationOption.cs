@@ -17,6 +17,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         IconModel Icon { get; }
 
         IElement Type { get; }
+
+        bool AllowMultiple { get; }
     }
     public class CreationOption : ICreationOption
     {
@@ -35,6 +37,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             DefaultName = attribute.Type.Element.GetStereotypeProperty<string>("Default Creation Options", "Default Name") ?? $"New{attribute.Type.Element.Name.Replace(" " ,"")}";
             Icon = IconModel.CreateIfSpecified(attribute.Type.Element.GetStereotype("Icon (Full)"));
             Type = attribute.Type.Element;
+            AllowMultiple = attribute.GetStereotypeProperty("Creation Options", "Allow Multiple", true);
         }
 
         public string SpecializationType { get; }
@@ -48,6 +51,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IconModel Icon { get; }
 
         public IElement Type { get; }
+
+        public bool AllowMultiple { get; }
 
         public override string ToString()
         {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="da59d635-7f86-4257-9edd-a0214546fa9f" type="Modeler Extension">
+  <name>Intent</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>973ca1d1-54fb-4d40-90c4-dae00cbdaef4</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" value="Intent.Metadata.Models" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

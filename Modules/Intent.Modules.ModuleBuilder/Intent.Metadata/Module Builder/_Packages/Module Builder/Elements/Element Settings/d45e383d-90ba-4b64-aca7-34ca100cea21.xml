@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="d45e383d-90ba-4b64-aca7-34ca100cea21" type="Element Settings">
-  <name>Creation Options</name>
+  <name>Context Menu</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

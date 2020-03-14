@@ -42,7 +42,7 @@ using Intent.Templates;
 ");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture((GetModeler() != null ? string.Format("using {0};", GetModeler().ApiNamespace) : "")));
             
             #line default
             #line hidden
@@ -71,7 +71,7 @@ using Intent.Templates;
             this.Write(" : ModelTemplateRegistrationBase<");
             
             #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelTypeName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
@@ -95,7 +95,7 @@ using Intent.Templates;
                     " project, ");
             
             #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelTypeName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
@@ -110,7 +110,7 @@ using Intent.Templates;
                     "nore, Signature = Mode.Fully)]\r\n        public override IEnumerable<");
             
             #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelTypeName()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden

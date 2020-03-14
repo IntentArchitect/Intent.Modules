@@ -56,7 +56,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
             Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
             {
                 { "TemplateId", GetTemplateId() },
-                { "TemplateType", "File Template" }
+                { "TemplateType", "File Template" },
+                { "Module Dependency", GetModeler().ModuleDependency },
+                { "Module Dependency Version", GetModeler().ModuleVersion },
+                { "ModelId", Model.Id }
             });
         }
 

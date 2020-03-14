@@ -23,7 +23,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 templateId: TemplateId, 
                 project: project, 
                 models: new IModeSpecModel(
-                    templates: _metadataManager.GetTemplateDefinitions(applicationManager), 
                     decorators: _metadataManager.GetDecorators(applicationManager))));
         }
     }

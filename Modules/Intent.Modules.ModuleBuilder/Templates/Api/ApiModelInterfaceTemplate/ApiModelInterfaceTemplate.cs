@@ -51,8 +51,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
             this.Write(" : IMetadataModel, IHasStereotypes\r\n    {\r\n        string Name { get; }\r\n");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt"
-  if (Model.CreationOptions != null) {
-        foreach(var creationOption in Model.CreationOptions.Options.Where(x => GetCreationOptionModel(x) != null)) { 
+  if (Model.ContextMenu != null) {
+        foreach(var creationOption in Model.ContextMenu.CreationOptions.Where(x => GetCreationOptionModel(x) != null)) { 
             
             #line default
             #line hidden

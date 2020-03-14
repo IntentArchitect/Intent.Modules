@@ -21,7 +21,7 @@ namespace Intent.Modules.ModelerBuilder.External
         public bool LoadStartPage { get; set; }
 
         [XmlElement("settings")]
-        public ModelerSettings Settings { get; set; }
+        public ModelerSettingsPersistable Settings { get; set; }
 
         [XmlArray("packages")]
         [XmlArrayItem("package")]

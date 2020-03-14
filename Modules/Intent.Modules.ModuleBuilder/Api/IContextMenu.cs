@@ -7,9 +7,9 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface ICreationOptions : IMetadataModel, IHasStereotypes
+    public interface IContextMenu : IMetadataModel, IHasStereotypes
     {
         string Name { get; }
-        IEnumerable<ICreationOption> Options { get; }
+        IList<ICreationOption> CreationOptions { get; }
     }
 }

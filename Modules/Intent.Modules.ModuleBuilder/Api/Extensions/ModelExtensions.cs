@@ -28,17 +28,25 @@ namespace Intent.Modules.ModuleBuilder.Api
         //    }
         //}
 
-        //public static IModelerModelType GetModelType(this IHasStereotypes model)
-        //{
-        //    var modelTypeId = model.GetStereotypeProperty(ModelExtensions.FileTemplateSettingsStereotype, "Model Type", string.Empty);
-        //    return model.GetModeler()?.ModelTypes.SingleOrDefault(x => x.Id == modelTypeId);
-        //}
+        public static IModelerReference GetModeler(this IFileTemplate model)
+        {
+            return model.Modeler() != null ? new ModelerReference(model.Modeler()) : null;
+        }
 
-        //public static IModelerReference GetModeler(this IHasStereotypes model)
-        //{
-        //    var element = model.GetStereotypeProperty<IElement>(ModelExtensions.FileTemplateSettingsStereotype, "Modeler");
-        //    return element == null ? null : new ModelerReference(element);
-        //}
+        public static IModelerReference GetModeler(this ICSharpTemplate model)
+        {
+            return model.Modeler() != null ? new ModelerReference(model.Modeler()) : null;
+        }
+
+        public static IModelerModelType GetModelType(this IFileTemplate model)
+        {
+            return model.ModelType() != null ? new ModelerModelType(model.ModelType()) : null;
+        }
+
+        public static IModelerModelType GetModelType(this ICSharpTemplate model)
+        {
+            return model.ModelType() != null ? new ModelerModelType(model.ModelType()) : null;
+        }
 
         //public static string GetTemplateBaseType(this IFileTemplate model)
         //{

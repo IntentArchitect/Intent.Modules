@@ -120,6 +120,10 @@
     <Content Update="modelers\Module Builder.modeler.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  
+    <Content Update="modelers\Intent.modeler.extension.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

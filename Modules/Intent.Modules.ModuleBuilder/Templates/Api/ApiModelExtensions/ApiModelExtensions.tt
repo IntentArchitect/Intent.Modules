@@ -18,24 +18,25 @@ namespace <#= Namespace #>
 {
     public static class <#= ClassName #>
     {
-<#  foreach(var property in StereotypeDefinitions.SelectMany(x => x.Properties)) { 
+<#  foreach(var stereotypeDefinition in StereotypeDefinitions) { 
+    foreach(var property in stereotypeDefinition.Properties) { 
         switch (property.ControlType) {
             case StereotypePropertyControlType.TextBox:
             case StereotypePropertyControlType.TextArea:#>
         public static string <#= property.Name.ToCSharpIdentifier() #>(this <#= ModelInterfaceName #> model) {
-            return model.GetStereotypeProperty<string>("<#= Model.Name #>", "<#= property.Name #>");
+            return model.GetStereotypeProperty<string>("<#= stereotypeDefinition.Name #>", "<#= property.Name #>");
         }
 
 <#              break;
             case StereotypePropertyControlType.Number:#>
         public static int? <#= property.Name.ToCSharpIdentifier() #>(this <#= ModelInterfaceName #> model) {
-            return model.GetStereotypeProperty<int?>("<#= Model.Name #>", "<#= property.Name #>");
+            return model.GetStereotypeProperty<int?>("<#= stereotypeDefinition.Name #>", "<#= property.Name #>");
         }
 
 <#              break;
             case StereotypePropertyControlType.Boolean:#>
         public static bool <#= property.Name.ToCSharpIdentifier() #>(this <#= ModelInterfaceName #> model) {
-            return model.GetStereotypeProperty<bool>("<#= Model.Name #>", "<#= property.Name #>");
+            return model.GetStereotypeProperty<bool>("<#= stereotypeDefinition.Name #>", "<#= property.Name #>");
         }
 
 <#              break;
@@ -44,13 +45,13 @@ namespace <#= Namespace #>
                     case StereotypePropertyOptionsSource.LookupElement:
                     case StereotypePropertyOptionsSource.NestedLookup:#>
         public static IElement <#= property.Name.ToCSharpIdentifier() #>(this <#= ModelInterfaceName #> model) {
-            return model.GetStereotypeProperty<IElement>("<#= Model.Name #>", "<#= property.Name #>");
+            return model.GetStereotypeProperty<IElement>("<#= stereotypeDefinition.Name #>", "<#= property.Name #>");
         }
 
 <#                      break;
                 case StereotypePropertyOptionsSource.Options:#>
         public static <#= property.Name.ToCSharpIdentifier() #>Options <#= property.Name.ToCSharpIdentifier() #>(this <#= ModelInterfaceName #> model) {
-            var result = model.GetStereotypeProperty<string>("<#= Model.Name #>", "<#= property.Name #>");
+            var result = model.GetStereotypeProperty<string>("<#= stereotypeDefinition.Name #>", "<#= property.Name #>");
             switch (result) 
             {
 <#      foreach(var option in property.ValueOptions) { #>
@@ -58,7 +59,7 @@ namespace <#= Namespace #>
                     return <#= property.Name.ToCSharpIdentifier() #>Options.<#= option.ToCSharpIdentifier() #>;
 <#      } #>
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("<#= stereotypeDefinition.Name #> -> <#= property.Name #>", result, $"Invalid value: {result}");
             }
         }
 
@@ -69,14 +70,15 @@ namespace <#= Namespace #>
 <#              break;
             case StereotypePropertyControlType.MultiSelect:#>
         public static IElement[] <#= property.Name.ToCSharpIdentifier() #>(this <#= ModelInterfaceName #> model) {
-            return model.GetStereotypeProperty<IElement[]>("<#= Model.Name #>", "<#= property.Name #>");
+            return model.GetStereotypeProperty<IElement[]>("<#= stereotypeDefinition.Name #>", "<#= property.Name #>");
         }
 
 <#              break;
             default:
                 throw new ArgumentOutOfRangeException();
         } #>
-<#  } 
+<#  }
+    } 
     foreach (var property in StereotypeDefinitions.SelectMany(x => x.Properties).Where(x => x.ValueOptions.Any())) { #>
         public enum <#= property.Name.ToCSharpIdentifier() #>Options 
         {

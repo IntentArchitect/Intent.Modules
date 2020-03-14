@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             var path = FileMetadata.GetFullLocationPathWithFileName();
             var applicationModelerModeler = File.Exists(path)
                 ? LoadAndDeserialize<ApplicationModelerModel>(path)
-                : new ApplicationModelerModel { Settings = new ModelerSettings() };
+                : new ApplicationModelerModel { Settings = new ModelerSettingsPersistable() };
 
             var modelerSettings = applicationModelerModeler.Settings;
 
@@ -64,7 +64,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 Text = option.Text,
                 Shortcut = option.Shortcut,
                 DefaultName = option.DefaultName,
-                Icon = GetIcon(option.Icon) ?? _defaultIconModel
+                Icon = GetIcon(option.Icon) ?? _defaultIconModel,
+                AllowMultiple = option.AllowMultiple
             };
         }
 
@@ -105,14 +106,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             };
         }
 
-        private StereotypeSettings GetStereotypeSettings(Modeler model)
+        private StereotypeSettingsPersistable GetStereotypeSettings(Modeler model)
         {
             var targetTypes = model.ElementSettings.Select(x => x.SpecializationType)
                 .Concat(model.ElementSettings.SelectMany(x => x.AttributeSettings).Select(x => x.SpecializationType))
                 .Concat(model.AssociationSettings.Select(x => x.SpecializationType))
                 .ToList();
 
-            return new StereotypeSettings
+            return new StereotypeSettingsPersistable
             {
                 TargetTypeOptions = targetTypes.Select(x => new StereotypeTargetTypeOption()
                 {
@@ -172,13 +173,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     AttributeSettings = x.AttributeSettings?.Any() == true
                         ? x.AttributeSettings.Select(GetAttributeSettings).ToArray()
                         : null,
-                    OperationSettingsPersistable = x.OperationSettings?.Any() == true
+                    OperationSettings = x.OperationSettings?.Any() == true
                         ? x.OperationSettings.Select(GetOperationSettings).ToArray()
                         : null,
                     ChildElementSettings = GetElementSettings(x.ChildElementSettings).ToArray(),
                     MappingSettings = null, // TODO JL
-                    CreationOptions = x.CreationOptions != null
-                        ? x.CreationOptions.Options.Select(GetElementCreationOptions).ToList()
+                    CreationOptions = x.ContextMenu != null
+                        ? x.ContextMenu.CreationOptions.Select(GetElementCreationOptions).ToList()
                         : null,
                     TypeOrder = x.TypeOrder?.Any() == true
                         ? x.TypeOrder.Select((t, index) => new TypeOrder { Type = t.Type, Order = t.Order?.ToString() }).ToList()
@@ -203,9 +204,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         }
 
         
-        private IArchitect.Agent.Persistence.Model.Common.AttributeSettings GetAttributeSettings(AttributeSettings settings)
+        private AttributeSettingsPersistable GetAttributeSettings(AttributeSettings settings)
         {
-            return new IArchitect.Agent.Persistence.Model.Common.AttributeSettings()
+            return new AttributeSettingsPersistable
             {
                 SpecializationType = settings.SpecializationType,
                 Icon = GetIcon(settings.Icon) ?? _defaultIconModel,

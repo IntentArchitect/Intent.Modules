@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b3246543-79be-421a-9c1e-7b85d568da0d" type="Creation Options">
+<class id="74ad7eb9-d17a-40ea-864e-646a745d72ec" type="Context Menu">
   <name>Creation Options</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>921706bd-c055-4cbd-ba7e-deb5419d529e</parentFolderId>
+  <parentFolderId>1f8e7abd-0376-4473-8a74-566f9a129114</parentFolderId>
   <literals />
   <attributes>
-    <attribute id="cd1b38f0-cbb2-46b6-8a98-a3a2a1314bd0" type="Creation Option">
-      <name>New Association Type</name>
-      <typeReference id="531b52a3-6c54-48b3-a349-16632ff43245">
-        <typeId>16d21684-d5ea-4fde-b648-f88d292fa272</typeId>
+    <attribute id="96d7242b-7619-4e03-8dc0-0d034a8441a0" type="Creation Option">
+      <name>New Module Folder (delete)</name>
+      <typeReference id="e5f3ef9e-cf99-408a-a5a6-e3f0c76a6101">
+        <typeId>c996fb1c-6ae7-4b94-a5f3-b18f54c2e75a</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -19,10 +19,10 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="08ad2f99-12b8-4a41-bcf4-830b80f3fbd9" type="Creation Option">
-      <name>New Element Type</name>
-      <typeReference id="ed6c6c5d-1ffd-4889-80a1-04b5700e257e">
-        <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
+    <attribute id="97d320cf-b031-44af-a5e5-e68546fe2a5c" type="Creation Option">
+      <name>New Folder</name>
+      <typeReference id="b0126e67-c119-4b94-872e-57b489d3609e">
+        <typeId>26f606b9-71e2-4e21-b185-04f90cb7d603</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -31,10 +31,10 @@
       <isMapped>false</isMapped>
       <stereotypes />
     </attribute>
-    <attribute id="1843863b-db81-4d2a-b6a4-d0d4196ec296" type="Creation Option">
-      <name>Add Package Settings</name>
-      <typeReference id="855bb808-ead3-49b7-8c61-7b10c787b527">
-        <typeId>89333f72-3960-4159-bf61-9c40d4b65088</typeId>
+    <attribute id="e7e7ac2c-bc69-4009-9482-2aba45ba2216" type="Creation Option">
+      <name>New Module Stereotype</name>
+      <typeReference id="f243cc4e-0d5d-464f-9441-c5488da79dea">
+        <typeId>5bfb1629-e4b6-4326-9ecd-a10897ce03f9</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

@@ -52,5 +52,15 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="8e092aa6-7d1a-4a06-af82-903e7642cef6">
+      <name>Allow Multiple</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>
