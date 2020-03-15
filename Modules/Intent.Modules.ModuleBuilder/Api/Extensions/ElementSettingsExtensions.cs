@@ -10,108 +10,225 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class ElementSettingsExtensions
     {
-        public static bool AllowRename(this IElementSettings model)
+        public static AdditionalProperties GetAdditionalProperties(this IElementSettings model)
         {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Rename");
+            var stereotype = model.GetStereotype("Additional Properties");
+            return stereotype != null ? new AdditionalProperties(stereotype) : null;
         }
 
-        public static bool AllowAbstract(this IElementSettings model)
+        public static DefaultCreationOptions GetDefaultCreationOptions(this IElementSettings model)
         {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Abstract");
+            var stereotype = model.GetStereotype("Default Creation Options");
+            return stereotype != null ? new DefaultCreationOptions(stereotype) : null;
         }
 
-        public static bool AllowGenericTypes(this IElementSettings model)
+        public static IconFull GetIconFull(this IElementSettings model)
         {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Generic Types");
+            var stereotype = model.GetStereotype("Icon (Full)");
+            return stereotype != null ? new IconFull(stereotype) : null;
         }
 
-        public static bool AllowMapping(this IElementSettings model)
+        public static IconFullExpanded GetIconFullExpanded(this IElementSettings model)
         {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Mapping");
+            var stereotype = model.GetStereotype("Icon (Full, Expanded)");
+            return stereotype != null ? new IconFullExpanded(stereotype) : null;
         }
 
-        public static bool AllowSorting(this IElementSettings model)
-        {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Sorting");
-        }
 
-        public static bool AllowFindinView(this IElementSettings model)
+        public class AdditionalProperties
         {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Find in View");
-        }
+            private IStereotype _stereotype;
 
-        public static bool AllowTypeReference(this IElementSettings model)
-        {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Type Reference");
-        }
-
-        public static IElement[] TargetTypes(this IElementSettings model)
-        {
-            return model.GetStereotypeProperty<IElement[]>("Additional Properties", "Target Types");
-        }
-
-        public static string DefaultTypeId(this IElementSettings model)
-        {
-            return model.GetStereotypeProperty<string>("Additional Properties", "Default Type Id");
-        }
-
-        public static bool IsStereotypePropertyTarget(this IElementSettings model)
-        {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Is Stereotype Property Target");
-        }
-
-        public static string Text(this IElementSettings model)
-        {
-            return model.GetStereotypeProperty<string>("Default Creation Options", "Text");
-        }
-
-        public static string Shortcut(this IElementSettings model)
-        {
-            return model.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
-        }
-
-        public static string DefaultName(this IElementSettings model)
-        {
-            return model.GetStereotypeProperty<string>("Default Creation Options", "Default Name");
-        }
-
-        public static int? TypeOrder(this IElementSettings model)
-        {
-            return model.GetStereotypeProperty<int?>("Default Creation Options", "Type Order");
-        }
-
-        public static TypeOptions Type(this IElementSettings model)
-        {
-            var result = model.GetStereotypeProperty<string>("Icon (Full)", "Type");
-            switch (result)
+            public AdditionalProperties(IStereotype stereotype)
             {
-                case "UrlImagePath":
-                    return TypeOptions.UrlImagePath;
-                case "RelativeImagePath":
-                    return TypeOptions.RelativeImagePath;
-                case "FontAwesome":
-                    return TypeOptions.FontAwesome;
-                case "CharacterBox":
-                    return TypeOptions.CharacterBox;
-                case "Internal":
-                    return TypeOptions.Internal;
-                default:
-                    throw new ArgumentOutOfRangeException("Icon (Full) -> Type", result, $"Invalid value: {result}");
+                _stereotype = stereotype;
             }
+
+            public bool AllowRename()
+            {
+                return _stereotype.GetProperty<bool>("Allow Rename");
+            }
+
+            public bool AllowAbstract()
+            {
+                return _stereotype.GetProperty<bool>("Allow Abstract");
+            }
+
+            public bool AllowGenericTypes()
+            {
+                return _stereotype.GetProperty<bool>("Allow Generic Types");
+            }
+
+            public bool AllowMapping()
+            {
+                return _stereotype.GetProperty<bool>("Allow Mapping");
+            }
+
+            public bool AllowSorting()
+            {
+                return _stereotype.GetProperty<bool>("Allow Sorting");
+            }
+
+            public bool AllowFindinView()
+            {
+                return _stereotype.GetProperty<bool>("Allow Find in View");
+            }
+
+            public bool AllowTypeReference()
+            {
+                return _stereotype.GetProperty<bool>("Allow Type Reference");
+            }
+
+            public IElement[] TargetTypes()
+            {
+                return _stereotype.GetProperty<IElement[]>("Target Types");
+            }
+
+            public string DefaultTypeId()
+            {
+                return _stereotype.GetProperty<string>("Default Type Id");
+            }
+
+            public bool IsStereotypePropertyTarget()
+            {
+                return _stereotype.GetProperty<bool>("Is Stereotype Property Target");
+            }
+
         }
 
-        public static string Source(this IElementSettings model)
+        public class DefaultCreationOptions
         {
-            return model.GetStereotypeProperty<string>("Icon (Full)", "Source");
+            private IStereotype _stereotype;
+
+            public DefaultCreationOptions(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Text()
+            {
+                return _stereotype.GetProperty<string>("Text");
+            }
+
+            public string Shortcut()
+            {
+                return _stereotype.GetProperty<string>("Shortcut");
+            }
+
+            public string DefaultName()
+            {
+                return _stereotype.GetProperty<string>("Default Name");
+            }
+
+            public int? TypeOrder()
+            {
+                return _stereotype.GetProperty<int?>("Type Order");
+            }
+
         }
 
-        public enum TypeOptions
+        public class IconFull
         {
-            UrlImagePath,
-            RelativeImagePath,
-            FontAwesome,
-            CharacterBox,
-            Internal,
+            private IStereotype _stereotype;
+
+            public IconFull(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public TypeOptions Type()
+            {
+                return new TypeOptions(_stereotype.GetProperty<string>("Type"));
+            }
+
+            public string Source()
+            {
+                return _stereotype.GetProperty<string>("Source");
+            }
+
+            public class TypeOptions
+            {
+                public readonly string Value;
+
+                public TypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsUrlImagePath()
+                {
+                    return Value == "UrlImagePath";
+                }
+                public bool IsRelativeImagePath()
+                {
+                    return Value == "RelativeImagePath";
+                }
+                public bool IsFontAwesome()
+                {
+                    return Value == "FontAwesome";
+                }
+                public bool IsCharacterBox()
+                {
+                    return Value == "CharacterBox";
+                }
+                public bool IsInternal()
+                {
+                    return Value == "Internal";
+                }
+            }
+
+        }
+
+        public class IconFullExpanded
+        {
+            private IStereotype _stereotype;
+
+            public IconFullExpanded(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public TypeOptions Type()
+            {
+                return new TypeOptions(_stereotype.GetProperty<string>("Type"));
+            }
+
+            public string Source()
+            {
+                return _stereotype.GetProperty<string>("Source");
+            }
+
+            public class TypeOptions
+            {
+                public readonly string Value;
+
+                public TypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsUrlImagePath()
+                {
+                    return Value == "UrlImagePath";
+                }
+                public bool IsRelativeImagePath()
+                {
+                    return Value == "RelativeImagePath";
+                }
+                public bool IsFontAwesome()
+                {
+                    return Value == "FontAwesome";
+                }
+                public bool IsCharacterBox()
+                {
+                    return Value == "CharacterBox";
+                }
+                public bool IsInternal()
+                {
+                    return Value == "Internal";
+                }
+            }
+
         }
 
     }

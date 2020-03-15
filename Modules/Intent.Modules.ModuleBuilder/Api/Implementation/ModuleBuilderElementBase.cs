@@ -79,7 +79,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             List<IFolder> result = new List<IFolder>();
 
             var current = model.Folder;
-            while (current != null && (includePackage || !current.IsPackage))
+            while (current != null)
             {
                 result.Insert(0, current);
                 current = current.ParentFolder;

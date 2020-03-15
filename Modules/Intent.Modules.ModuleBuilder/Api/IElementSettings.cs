@@ -18,7 +18,5 @@ namespace Intent.Modules.ModuleBuilder.Api
         IList<IMappingSettings> MappingSettings { get; }
         IList<IOperationSettings> OperationSettings { get; }
         IList<IElementSettings> ChildElementSettings { get; }
-        IconModel Icon { get; }
-        IconModel ExpandedIcon { get; }
     }
 }

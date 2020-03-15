@@ -28,6 +28,7 @@
         <option>Internal</option>
       </valueOptions>
       <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="d78c944b-71c3-46af-9093-8cb59631a69a">
       <name>Source</name>
@@ -38,6 +39,7 @@
       <defaultValue>file-o</defaultValue>
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

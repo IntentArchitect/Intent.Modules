@@ -9,9 +9,11 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class Modeler
+    public class Modeler : IModeler
     {
+        private readonly IElement _element;
         public static string[] RequiredSpecializationTypes = new string[] { Constants.ElementSpecializationTypes.Modeler, Constants.ElementSpecializationTypes.ModelerExtension };
+        public const string SpecializationType = "Modeler";
 
         public Modeler(IElement element)
         {
@@ -19,6 +21,8 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 throw new ArgumentException($"Invalid element [{element}]");
             }
+
+            _element = element;
 
             Name = element.Name;
             IsExtension = element.SpecializationType == Constants.ElementSpecializationTypes.ModelerExtension;
@@ -33,11 +37,14 @@ namespace Intent.Modules.ModuleBuilder.Api
                 .ToList();
         }
 
+        public string Id => _element.Id;
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name { get; }
         public bool IsExtension { get; }
         public IPackageSettings PackageSettings { get; }
         public IList<IElementSettings> ElementSettings { get; }
         public IList<AssociationSetting> AssociationSettings { get; }
+
     }
 
     public class TypeOrder

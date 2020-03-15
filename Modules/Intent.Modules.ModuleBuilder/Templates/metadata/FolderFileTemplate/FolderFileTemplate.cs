@@ -23,7 +23,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.FolderFileTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\FolderFileTemplate\FolderFileTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class FolderFileTemplate : IntentProjectItemTemplateBase<IModulePackageFolder>
+    public partial class FolderFileTemplate : IntentProjectItemTemplateBase<IFolder>
     {
 #line hidden
         /// <summary>
@@ -49,7 +49,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.FolderFileTemplate
                     "/isMapped>\r\n  <parentFolderId>");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\FolderFileTemplate\FolderFileTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Parent.Id));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentFolder.Id));
             
             #line default
             #line hidden

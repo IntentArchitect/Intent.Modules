@@ -116,21 +116,21 @@ using System.Linq;
                 fileName: """);
             
             #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel  ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileTemplateSettings().CreationMode().IsFileperModel()  ? "${Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
             this.Write("\",\r\n                fileExtension: \"");
             
             #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.FileExtension()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileTemplateSettings().FileExtension()));
             
             #line default
             #line hidden
             this.Write("\",\r\n                defaultLocationInProject: \"");
             
             #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel  ? Model.Name.Replace("Template", "") : ""));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileTemplateSettings().CreationMode().IsFileperModel()  ? Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden

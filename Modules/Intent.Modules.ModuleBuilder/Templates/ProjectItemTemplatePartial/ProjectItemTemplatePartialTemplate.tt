@@ -37,9 +37,9 @@ namespace <#= Namespace #>
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "<#= Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel  ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                fileExtension: "<#= Model.FileExtension() #>",
-                defaultLocationInProject: "<#= Model.CreationMode() == FileTemplateExtensions.CreationModeOptions.FileperModel  ? Model.Name.Replace("Template", "") : "" #>"
+                fileName: "<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel()  ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileExtension: "<#= Model.GetFileTemplateSettings().FileExtension() #>",
+                defaultLocationInProject: "<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel()  ? Model.Name.Replace("Template", "") : "" #>"
             );
         }
     }

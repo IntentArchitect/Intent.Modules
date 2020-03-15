@@ -16,7 +16,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
     {
         public static string ToCSharpIdentifier(this string s)
         {
-            return s.Replace(" ", "").Replace("-", "").Replace("#", "Sharp").Replace("(", "").Replace(")", "");
+            return s.Replace(" ", "").Replace("-", "").Replace("#", "Sharp").Replace("(", "").Replace(")", "").Replace(",", "");
         }
 
         public static string GetExistingTemplateContent<T>(IntentProjectItemTemplateBase<T> template)

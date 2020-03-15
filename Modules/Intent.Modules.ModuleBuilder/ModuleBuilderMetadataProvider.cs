@@ -45,22 +45,6 @@ namespace Intent.Modules.ModuleBuilder
             return packages;
         }
 
-        public IEnumerable<IModuleStereotype> GetModuleStereotypes(string applicationId)
-        {
-            var results = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId)
-                .Where(x => x.SpecializationType == ModuleStereotype.SpecializationType)
-                .Select(x => new ModuleStereotype(x)).ToList();
-            return results;
-        }
-
-        public IEnumerable<IModulePackageFolder> GetModulePackageFolders(string applicationId)
-        {
-            var results = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId)
-                .Where(x => x.SpecializationType == ModulePackageFolder.SpecializationType)
-                .Select(x => new ModulePackageFolder(x)).ToList();
-            return results;
-        }
-
         public IEnumerable<IElementSettings> GetElementSettingses(string applicationId)
         {
             var results = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId)

@@ -23,6 +23,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
     public class ModelerConfig : IntentProjectItemTemplateBase<Modeler>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ModelerConfig";
+
         private static readonly IconModelPersistable _defaultIconModel = new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" };
 
         public ModelerConfig(IProject project, Modeler model) : base(TemplateId, project, model)
@@ -60,7 +61,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         {
             return new ElementCreationOption
             {
-                SpecializationType = option.SpecializationType,
+                SpecializationType = option.Name,
                 Text = option.Text,
                 Shortcut = option.Shortcut,
                 DefaultName = option.DefaultName,
@@ -69,41 +70,24 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             };
         }
 
+        private IconModelPersistable GetIcon(ElementSettingsExtensions.IconFullExpanded icon)
+        {
+            return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
+        }
+
+        private IconModelPersistable GetIcon(ElementSettingsExtensions.IconFull icon)
+        {
+            return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
+        }
+
+        private IconModelPersistable GetIcon(LiteralSettingsExtensions.IconFull icon)
+        {
+            return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
+        }
+
         private IconModelPersistable GetIcon(IconModel icon)
         {
             return icon != null ? new IconModelPersistable { Type = icon.Type, Source = icon.Source } : null;
-        }
-
-        private IconModelPersistable GetIcon(IElement elementSettingsElement, bool expanded = false, IHasStereotypes overrideStereotypes = null)
-        {
-            // TODO JL: Referenced icons not implemented
-
-            var iconStereotypeName = expanded
-                ? Constants.Stereotypes.IconFullExpanded.Name
-                : Constants.Stereotypes.IconFull.Name;
-
-            var icon =
-                GetSingleStereotype(overrideStereotypes, iconStereotypeName, true) ??
-                GetSingleStereotype(elementSettingsElement, iconStereotypeName, true);
-
-            if (icon == null)
-            {
-                return null;
-            }
-
-            var type = GetSingleProperty(icon, Constants.Stereotypes.IconFull.Property.Type);
-            var source = GetSingleProperty(icon, Constants.Stereotypes.IconFull.Property.Source);
-
-            if (string.IsNullOrWhiteSpace(type.Value))
-            {
-                return null;
-            }
-
-            return new IconModelPersistable
-            {
-                Type = (IconType)Enum.Parse(typeof(IconType), type.Value),
-                Source = source.Value
-            };
         }
 
         private StereotypeSettingsPersistable GetStereotypeSettings(Modeler model)
@@ -162,17 +146,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 new ElementSettingsPersistable
                 {
                     SpecializationType = x.Name,
-                    Icon = GetIcon(x.Icon) ?? _defaultIconModel,
-                    ExpandedIcon = GetIcon(x.ExpandedIcon),
-                    AllowRename = x.AllowRename(),
-                    AllowAbstract = x.AllowAbstract(),
-                    AllowGenericTypes = x.AllowGenericTypes(),
-                    AllowMapping = x.AllowMapping(),
-                    AllowSorting = x.AllowSorting(),
-                    AllowFindInView = x.AllowFindinView(),
-                    AllowTypeReference = x.AllowTypeReference(),
-                    TargetTypes = x.TargetTypes()?.Select(e => e.SpecializationType).ToArray(),
-                    DefaultTypeId = x.DefaultTypeId(),
+                    Icon = GetIcon(x.GetIconFull()) ?? _defaultIconModel,
+                    ExpandedIcon = GetIcon(x.GetIconFullExpanded()),
+                    AllowRename = x.GetAdditionalProperties().AllowRename(),
+                    AllowAbstract = x.GetAdditionalProperties().AllowAbstract(),
+                    AllowGenericTypes = x.GetAdditionalProperties().AllowGenericTypes(),
+                    AllowMapping = x.GetAdditionalProperties().AllowMapping(),
+                    AllowSorting = x.GetAdditionalProperties().AllowSorting(),
+                    AllowFindInView = x.GetAdditionalProperties().AllowFindinView(),
+                    AllowTypeReference = x.GetAdditionalProperties().AllowTypeReference(),
+                    TargetTypes = x.GetAdditionalProperties().TargetTypes()?.Select(e => e.SpecializationType).ToArray(),
+                    DefaultTypeId = x.GetAdditionalProperties().DefaultTypeId(),
                     DiagramSettings = null, // TODO JL / GCB
                     LiteralSettings = x.LiteralSettings?.Any() == true
                         ? x.LiteralSettings.Select(GetLiteralSettings).ToArray()
@@ -196,32 +180,32 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             return new ClassLiteralSettings
             {
                 SpecializationType = literal.Name,
-                Icon = GetIcon(literal.Icon) ?? _defaultIconModel,
-                Text = literal.Text(),
-                Shortcut = literal.Shortcut(),
-                DefaultName = literal.DefaultName(),
-                AllowRename = literal.AllowRename(),
-                AllowDuplicateNames = literal.AllowDuplicateNames(),
-                AllowFindInView = literal.AllowFindinView()
+                Icon = GetIcon(literal.GetIconFull()) ?? _defaultIconModel,
+                Text = literal.GetAdditionalProperties().Text(),
+                Shortcut = literal.GetAdditionalProperties().Shortcut(),
+                DefaultName = literal.GetAdditionalProperties().DefaultName(),
+                AllowRename = literal.GetAdditionalProperties().AllowRename(),
+                AllowDuplicateNames = literal.GetAdditionalProperties().AllowDuplicateNames(),
+                AllowFindInView = literal.GetAdditionalProperties().AllowFindinView()
             };
         }
 
-        
+
         private AttributeSettingsPersistable GetAttributeSettings(IAttributeSettings settings)
         {
             return new AttributeSettingsPersistable
             {
                 SpecializationType = settings.Name,
                 Icon = GetIcon(settings.Icon) ?? _defaultIconModel,
-                Text = settings.Text(),
-                Shortcut = settings.Shortcut(),
-                DisplayFunction = settings.DisplayFunction(),
-                DefaultName = settings.DefaultName(),
-                AllowRename = settings.AllowRename(),
-                AllowDuplicateNames = settings.AllowDuplicateNames(),
-                AllowFindInView = settings.AllowFindinView(),
-                DefaultTypeId = settings.DefaultTypeId(),
-                TargetTypes = settings.TargetTypes().Select(x => x.Name).ToArray()
+                Text = settings.GetAdditionalProperties().Text(),
+                Shortcut = settings.GetAdditionalProperties().Shortcut(),
+                DisplayFunction = settings.GetAdditionalProperties().DisplayFunction(),
+                DefaultName = settings.GetAdditionalProperties().DefaultName(),
+                AllowRename = settings.GetAdditionalProperties().AllowRename(),
+                AllowDuplicateNames = settings.GetAdditionalProperties().AllowDuplicateNames(),
+                AllowFindInView = settings.GetAdditionalProperties().AllowFindinView(),
+                DefaultTypeId = settings.GetAdditionalProperties().DefaultTypeId(),
+                TargetTypes = settings.GetAdditionalProperties().TargetTypes().Select(x => x.Name).ToArray()
             };
         }
 
@@ -231,14 +215,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             {
                 SpecializationType = settings.Name,
                 Icon = GetIcon(settings.Icon) ?? _defaultIconModel,
-                Text = settings.Text(),
-                Shortcut = settings.Shortcut(),
-                DefaultName = settings.DefaultName(),
-                AllowRename = settings.AllowRename(),
-                AllowDuplicateNames = settings.AllowDuplicateNames(),
-                AllowFindInView = settings.AllowFindinView(),
-                DefaultTypeId = settings.DefaultTypeId(),
-                TargetTypes = settings.TargetTypes().Select(x => x.Name).ToArray()
+                Text = settings.GetAdditionalProperties().Text(),
+                Shortcut = settings.GetAdditionalProperties().Shortcut(),
+                DefaultName = settings.GetAdditionalProperties().DefaultName(),
+                AllowRename = settings.GetAdditionalProperties().AllowRename(),
+                AllowDuplicateNames = settings.GetAdditionalProperties().AllowDuplicateNames(),
+                AllowFindInView = settings.GetAdditionalProperties().AllowFindinView(),
+                DefaultTypeId = settings.GetAdditionalProperties().DefaultTypeId(),
+                TargetTypes = settings.GetAdditionalProperties().TargetTypes().Select(x => x.Name).ToArray()
             };
         }
 

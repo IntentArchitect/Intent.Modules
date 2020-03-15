@@ -28,16 +28,6 @@ namespace Intent.Modules.ModuleBuilder
             return new ModuleBuilderMetadataProvider(metadataManager).GetModulePackages(application.Id);
         }
 
-        public static IEnumerable<IModulePackageFolder> GetModulePackageFolders(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ModuleBuilderMetadataProvider(metadataManager).GetModulePackageFolders(application.Id);
-        }
-
-        public static IEnumerable<IModuleStereotype> GetModuleStereotypes(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ModuleBuilderMetadataProvider(metadataManager).GetModuleStereotypes(application.Id);
-        }
-
         public static IEnumerable<IElementSettings> GetElementSettingses(this IMetadataManager metadataManager, IApplication application)
         {
             return new ModuleBuilderMetadataProvider(metadataManager).GetElementSettingses(application.Id);

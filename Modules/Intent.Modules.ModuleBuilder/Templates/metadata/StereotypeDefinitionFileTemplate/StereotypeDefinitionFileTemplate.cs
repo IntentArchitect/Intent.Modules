@@ -23,7 +23,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.StereotypeDefinitionFi
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class StereotypeDefinitionFileTemplate : IntentProjectItemTemplateBase<IModuleStereotype>
+    public partial class StereotypeDefinitionFileTemplate : IntentProjectItemTemplateBase<IStereotypeDefinition>
     {
 #line hidden
         /// <summary>
@@ -102,7 +102,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.StereotypeDefinitionFi
             this.Write("</displayFunction>\r\n  <targetElements>\r\n");
             
             #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
-  foreach(var targetType in Model.TargetTypes) { 
+  foreach(var targetType in Model.TargetElements) { 
             
             #line default
             #line hidden
@@ -130,7 +130,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.StereotypeDefinitionFi
             this.Write("</autoAdd>\r\n  <parentFolderId>");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Parent.Id));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentElement.Id));
             
             #line default
             #line hidden
@@ -221,18 +221,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.StereotypeDefinitionFi
             this.Write("      </lookupTypes>\r\n      <lookupInternalTargetPropertyId>");
             
             #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(property.TargetPropertyId));
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.LookupInternalTargetPropertyId));
             
             #line default
             #line hidden
-            this.Write("</lookupInternalTargetPropertyId>\r\n      <isActiveFunction>");
-            
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(property.IsActiveFunction));
-            
-            #line default
-            #line hidden
-            this.Write("</isActiveFunction>\r\n      <comment>");
+            this.Write("</lookupInternalTargetPropertyId>\r\n      <isActiveFunction>TODO: property.IsActiv" +
+                    "eFunction</isActiveFunction>\r\n      <comment>");
             
             #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Comment));

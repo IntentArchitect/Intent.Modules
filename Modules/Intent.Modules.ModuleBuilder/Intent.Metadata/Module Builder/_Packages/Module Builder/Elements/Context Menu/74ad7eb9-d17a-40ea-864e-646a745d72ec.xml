@@ -10,50 +10,12 @@
   <operations />
   <stereotypes />
   <childElements>
-    <childElement id="96d7242b-7619-4e03-8dc0-0d034a8441a0" type="Creation Option">
-      <name>New Module Folder (delete)</name>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="e5f3ef9e-cf99-408a-a5a6-e3f0c76a6101">
-        <typeId>c996fb1c-6ae7-4b94-a5f3-b18f54c2e75a</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>74ad7eb9-d17a-40ea-864e-646a745d72ec</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes />
-      <childElements />
-    </childElement>
     <childElement id="97d320cf-b031-44af-a5e5-e68546fe2a5c" type="Creation Option">
       <name>New Folder</name>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="b0126e67-c119-4b94-872e-57b489d3609e">
         <typeId>26f606b9-71e2-4e21-b185-04f90cb7d603</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>74ad7eb9-d17a-40ea-864e-646a745d72ec</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes />
-      <childElements />
-    </childElement>
-    <childElement id="e7e7ac2c-bc69-4009-9482-2aba45ba2216" type="Creation Option">
-      <name>New Module Stereotype</name>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="f243cc4e-0d5d-464f-9441-c5488da79dea">
-        <typeId>5bfb1629-e4b6-4326-9ecd-a10897ce03f9</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

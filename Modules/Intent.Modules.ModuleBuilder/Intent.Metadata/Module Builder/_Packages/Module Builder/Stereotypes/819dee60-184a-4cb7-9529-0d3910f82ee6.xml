@@ -27,6 +27,7 @@
         <option>Custom</option>
       </valueOptions>
       <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="c2283d15-4b57-4ed9-8aae-6efc73039034">
       <name>Modeler</name>
@@ -41,7 +42,8 @@
         <type>Modeler</type>
         <type>Modeler Extension</type>
       </lookupTypes>
-      <isActiveFunction>CreationMode != 'Single File (No Model)'</isActiveFunction>
+      <isActiveFunction>property['Creation Mode'].value != 'Single File (No Model)'</isActiveFunction>
+      <isRequiredFunction>property['Creation Mode'].value != 'Single File (No Model)'</isRequiredFunction>
     </property>
     <property id="987590ee-a5ca-45ce-b742-0ee764b6b6e9">
       <comment>In the event that a 'Custom' Modeler is chosen, specify the desired Type to use ('object' by default).</comment>
@@ -54,7 +56,8 @@
       <valueOptions />
       <lookupTypes />
       <lookupInternalTargetPropertyId>c2283d15-4b57-4ed9-8aae-6efc73039034</lookupInternalTargetPropertyId>
-      <isActiveFunction>CreationMode != 'Single File (No Model)'</isActiveFunction>
+      <isActiveFunction>property['Creation Mode'].value != 'Single File (No Model)'</isActiveFunction>
+      <isRequiredFunction>property['Creation Mode'].value != 'Single File (No Model)'</isRequiredFunction>
     </property>
     <property id="329d0550-b81b-4db6-a99b-05d90360d432">
       <name>File Extension</name>
@@ -65,6 +68,7 @@
       <defaultValue>txt</defaultValue>
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction />
     </property>
   </properties>
 </stereotypeDefinition>

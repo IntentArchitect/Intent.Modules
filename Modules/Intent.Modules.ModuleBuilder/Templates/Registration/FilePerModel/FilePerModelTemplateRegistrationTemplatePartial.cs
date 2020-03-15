@@ -56,18 +56,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
 
         private IModelerReference GetModeler()
         {
-            return Model.Modeler() != null ? new ModelerReference(Model.Modeler()) : null;
+            return Model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(Model.GetFileTemplateSettings().Modeler()) : null;
         }
 
         private string GetModelType()
         {
-            var modelType = Model.ModelType() != null ? new ModelerModelType(Model.ModelType()) : null;
+            var modelType = Model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(Model.GetFileTemplateSettings().ModelType()) : null;
             return modelType?.InterfaceName ?? "object";
         }
 
         public string GetModelsMethod()
         {
-            var model = new ModelerModelType(Model.ModelType());
+            var model = new ModelerModelType(Model.GetFileTemplateSettings().ModelType());
             return $"_metadataManager.Get{model.ClassName.ToPluralName()}(application)";
         }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using System.Linq;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
@@ -25,10 +26,17 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => _element.Id;
         public string Name => _element.Name;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+        [IntentManaged(Mode.Fully)]
+        public IAssociationEndSettings DestinationEnd => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.AssociationEndSettings.SpecializationType)
+            .Select(x => new AssociationEndSettings(x))
+            .SingleOrDefault();
 
-        public IAssociationEndSettings DestinationEnd { get; }
-
-        public IAssociationEndSettings SourceEnd { get; }
+        [IntentManaged(Mode.Fully)]
+        public IAssociationEndSettings SourceEnd => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.AssociationEndSettings.SpecializationType)
+            .Select(x => new AssociationEndSettings(x))
+            .SingleOrDefault();
 
         protected bool Equals(AssociationSettings other)
         {

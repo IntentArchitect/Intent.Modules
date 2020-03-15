@@ -14,13 +14,14 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.metadata.StereotypeDefinitionFileTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class StereotypeDefinitionFileTemplate : IntentProjectItemTemplateBase<IModuleStereotype>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class StereotypeDefinitionFileTemplate : IntentProjectItemTemplateBase<IStereotypeDefinition>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.metadata.StereotypeDefinitionFileTemplate";
 
-        public StereotypeDefinitionFileTemplate(IProject project, IModuleStereotype model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully, Body = Mode.Ignore)]
+        public StereotypeDefinitionFileTemplate(IProject project, IStereotypeDefinition model) : base(TemplateId, project, model)
         {
         }
 
@@ -32,7 +33,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.StereotypeDefinitionFi
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "xml",
-                defaultLocationInProject: $"metadata/{Model.GetPackage().Name}/Stereotypes"
+                defaultLocationInProject: $"metadata/{Model.GetParentPath().Single(x => x.SpecializationType == ModulePackage.SpecializationType).Name}/Stereotypes"
             );
         }
 

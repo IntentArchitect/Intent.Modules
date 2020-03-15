@@ -10,50 +10,91 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class CSharpTemplateExtensions
     {
-        public static string TypeFullname(this ICSharpTemplate model)
+        public static ExposesDecoratorContract GetExposesDecoratorContract(this ICSharpTemplate model)
         {
-            return model.GetStereotypeProperty<string>("Exposes Decorator Contract", "Type Fullname");
+            var stereotype = model.GetStereotype("Exposes Decorator Contract");
+            return stereotype != null ? new ExposesDecoratorContract(stereotype) : null;
         }
 
-        public static CreationModeOptions CreationMode(this ICSharpTemplate model)
+        public static FileTemplateSettings GetFileTemplateSettings(this ICSharpTemplate model)
         {
-            var result = model.GetStereotypeProperty<string>("File Template Settings", "Creation Mode");
-            switch (result)
+            var stereotype = model.GetStereotype("File Template Settings");
+            return stereotype != null ? new FileTemplateSettings(stereotype) : null;
+        }
+
+
+        public class ExposesDecoratorContract
+        {
+            private IStereotype _stereotype;
+
+            public ExposesDecoratorContract(IStereotype stereotype)
             {
-                case "Single File (No Model)":
-                    return CreationModeOptions.SingleFileNoModel;
-                case "Single File (Model List)":
-                    return CreationModeOptions.SingleFileModelList;
-                case "File per Model":
-                    return CreationModeOptions.FileperModel;
-                case "Custom":
-                    return CreationModeOptions.Custom;
-                default:
-                    throw new ArgumentOutOfRangeException("File Template Settings -> Creation Mode", result, $"Invalid value: {result}");
+                _stereotype = stereotype;
             }
+
+            public string TypeFullname()
+            {
+                return _stereotype.GetProperty<string>("Type Fullname");
+            }
+
         }
 
-        public static IElement Modeler(this ICSharpTemplate model)
+        public class FileTemplateSettings
         {
-            return model.GetStereotypeProperty<IElement>("File Template Settings", "Modeler");
-        }
+            private IStereotype _stereotype;
 
-        public static IElement ModelType(this ICSharpTemplate model)
-        {
-            return model.GetStereotypeProperty<IElement>("File Template Settings", "Model Type");
-        }
+            public FileTemplateSettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
 
-        public static string FileExtension(this ICSharpTemplate model)
-        {
-            return model.GetStereotypeProperty<string>("File Template Settings", "File Extension");
-        }
+            public CreationModeOptions CreationMode()
+            {
+                return new CreationModeOptions(_stereotype.GetProperty<string>("Creation Mode"));
+            }
 
-        public enum CreationModeOptions
-        {
-            SingleFileNoModel,
-            SingleFileModelList,
-            FileperModel,
-            Custom,
+            public IElement Modeler()
+            {
+                return _stereotype.GetProperty<IElement>("Modeler");
+            }
+
+            public IElement ModelType()
+            {
+                return _stereotype.GetProperty<IElement>("Model Type");
+            }
+
+            public string FileExtension()
+            {
+                return _stereotype.GetProperty<string>("File Extension");
+            }
+
+            public class CreationModeOptions
+            {
+                public readonly string Value;
+
+                public CreationModeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsSingleFileNoModel()
+                {
+                    return Value == "Single File (No Model)";
+                }
+                public bool IsSingleFileModelList()
+                {
+                    return Value == "Single File (Model List)";
+                }
+                public bool IsFileperModel()
+                {
+                    return Value == "File per Model";
+                }
+                public bool IsCustom()
+                {
+                    return Value == "Custom";
+                }
+            }
+
         }
 
     }

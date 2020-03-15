@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -25,5 +26,35 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => _element.Id;
         public string Name => _element.Name;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        [IntentManaged(Mode.Fully)]
+        public IModeler Modeler => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.Modeler.SpecializationType)
+            .Select(x => new Modeler(x))
+            .SingleOrDefault();
+
+        [IntentManaged(Mode.Fully)]
+        public IModelerExtension ModelerExtension => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ModelerExtension.SpecializationType)
+            .Select(x => new ModelerExtension(x))
+            .SingleOrDefault();
+
+        protected bool Equals(ModelersFolder other)
+        {
+            return Equals(_element, other._element);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((ModelersFolder)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (_element != null ? _element.GetHashCode() : 0);
+        }
     }
 }

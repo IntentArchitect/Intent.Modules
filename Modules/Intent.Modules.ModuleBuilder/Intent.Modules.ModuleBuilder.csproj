@@ -43,17 +43,6 @@
       <DependentUpon>StereotypeDefinitionFileTemplate.tt</DependentUpon>
     </Compile>
   
-    <None Update="Templates\Api\ApiStereotypeExtensionsTemplate\ApiStereotypeExtensionsTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiStereotypeExtensionsTemplate.cs</LastGenOutput>
-    </None>
-  
-    <Compile Update="Templates\Api\ApiStereotypeExtensionsTemplate\ApiStereotypeExtensionsTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ApiStereotypeExtensionsTemplate.tt</DependentUpon>
-    </Compile>
-  
     <None Update="Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiModelImplementationTemplate.cs</LastGenOutput>
@@ -106,10 +95,6 @@
     </Content>
   
     <Content Update="modeler\Module Builder.modeler.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  
-    <Content Update="metadata\Intent.ModuleBuilder.Test\Intent.ModuleBuilder.Test.pkg.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   

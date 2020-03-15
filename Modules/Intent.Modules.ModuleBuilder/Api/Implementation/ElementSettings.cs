@@ -39,7 +39,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 .Select(x => new LiteralSettings(x))
                 .ToList<ILiteralSettings>();
             AttributeSettings = element.ChildElements
-                .Where(x => x.SpecializationType == Api.AttributeSettings.RequiredSpecializationType)
+                .Where(x => x.SpecializationType == Api.AttributeSettings.SpecializationType)
                 .Select(x => new AttributeSettings(x))
                 .ToList<IAttributeSettings>();
             OperationSettings = element.ChildElements

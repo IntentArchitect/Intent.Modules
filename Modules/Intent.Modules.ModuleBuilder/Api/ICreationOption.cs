@@ -11,8 +11,6 @@ namespace Intent.Modules.ModuleBuilder.Api
     public interface ICreationOption
         : IMetadataModel, IHasStereotypes
     {
-        string SpecializationType { get; }
-
         string Text { get; }
 
         string Shortcut { get; }
@@ -26,5 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         bool AllowMultiple { get; }
 
         string Name { get; }
+
+        string TargetSpecializationType { get; }
     }
 }

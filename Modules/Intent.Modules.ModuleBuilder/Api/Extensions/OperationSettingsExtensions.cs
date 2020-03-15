@@ -10,54 +10,72 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class OperationSettingsExtensions
     {
-        public static string Text(this IOperationSettings model)
+        public static AdditionalProperties GetAdditionalProperties(this IOperationSettings model)
         {
-            return model.GetStereotypeProperty<string>("Additional Properties", "Text");
+            var stereotype = model.GetStereotype("Additional Properties");
+            return stereotype != null ? new AdditionalProperties(stereotype) : null;
         }
 
-        public static string Shortcut(this IOperationSettings model)
-        {
-            return model.GetStereotypeProperty<string>("Additional Properties", "Shortcut");
-        }
 
-        public static string DisplayFunction(this IOperationSettings model)
+        public class AdditionalProperties
         {
-            return model.GetStereotypeProperty<string>("Additional Properties", "Display Function");
-        }
+            private IStereotype _stereotype;
 
-        public static string DefaultName(this IOperationSettings model)
-        {
-            return model.GetStereotypeProperty<string>("Additional Properties", "Default Name");
-        }
+            public AdditionalProperties(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
 
-        public static bool AllowRename(this IOperationSettings model)
-        {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Rename");
-        }
+            public string Text()
+            {
+                return _stereotype.GetProperty<string>("Text");
+            }
 
-        public static bool AllowDuplicateNames(this IOperationSettings model)
-        {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Duplicate Names");
-        }
+            public string Shortcut()
+            {
+                return _stereotype.GetProperty<string>("Shortcut");
+            }
 
-        public static bool AllowFindinView(this IOperationSettings model)
-        {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Allow Find in View");
-        }
+            public string DisplayFunction()
+            {
+                return _stereotype.GetProperty<string>("Display Function");
+            }
 
-        public static string DefaultTypeId(this IOperationSettings model)
-        {
-            return model.GetStereotypeProperty<string>("Additional Properties", "Default Type Id");
-        }
+            public string DefaultName()
+            {
+                return _stereotype.GetProperty<string>("Default Name");
+            }
 
-        public static bool IsStereotypePropertyTarget(this IOperationSettings model)
-        {
-            return model.GetStereotypeProperty<bool>("Additional Properties", "Is Stereotype Property Target");
-        }
+            public bool AllowRename()
+            {
+                return _stereotype.GetProperty<bool>("Allow Rename");
+            }
 
-        public static IElement[] TargetTypes(this IOperationSettings model)
-        {
-            return model.GetStereotypeProperty<IElement[]>("Additional Properties", "Target Types");
+            public bool AllowDuplicateNames()
+            {
+                return _stereotype.GetProperty<bool>("Allow Duplicate Names");
+            }
+
+            public bool AllowFindinView()
+            {
+                return _stereotype.GetProperty<bool>("Allow Find in View");
+            }
+
+            public string DefaultTypeId()
+            {
+                return _stereotype.GetProperty<string>("Default Type Id");
+            }
+
+            public bool IsStereotypePropertyTarget()
+            {
+                return _stereotype.GetProperty<bool>("Is Stereotype Property Target");
+            }
+
+            public IElement[] TargetTypes()
+            {
+                return _stereotype.GetProperty<IElement[]>("Target Types");
+            }
+
         }
 
     }

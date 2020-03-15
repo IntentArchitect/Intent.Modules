@@ -30,22 +30,22 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public static IModelerReference GetModeler(this IFileTemplate model)
         {
-            return model.Modeler() != null ? new ModelerReference(model.Modeler()) : null;
+            return model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(model.GetFileTemplateSettings().Modeler()) : null;
         }
 
         public static IModelerReference GetModeler(this ICSharpTemplate model)
         {
-            return model.Modeler() != null ? new ModelerReference(model.Modeler()) : null;
+            return model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(model.GetFileTemplateSettings().Modeler()) : null;
         }
 
         public static IModelerModelType GetModelType(this IFileTemplate model)
         {
-            return model.ModelType() != null ? new ModelerModelType(model.ModelType()) : null;
+            return model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(model.GetFileTemplateSettings().ModelType()) : null;
         }
 
         public static IModelerModelType GetModelType(this ICSharpTemplate model)
         {
-            return model.ModelType() != null ? new ModelerModelType(model.ModelType()) : null;
+            return model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(model.GetFileTemplateSettings().ModelType()) : null;
         }
 
         //public static string GetTemplateBaseType(this IFileTemplate model)

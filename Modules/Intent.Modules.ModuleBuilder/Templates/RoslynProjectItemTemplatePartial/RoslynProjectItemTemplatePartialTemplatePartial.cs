@@ -68,13 +68,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
 
         private IModelerReference GetModeler()
         {
-            return Model.Modeler() != null ? new ModelerReference(Model.Modeler()) : null;
+            return Model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(Model.GetFileTemplateSettings().Modeler()) : null;
         }
 
         private string GetModelType()
         {
-            var modelType = Model.ModelType() != null ? new ModelerModelType(Model.ModelType()) : null;
-            if (Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel)
+            var modelType = Model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(Model.GetFileTemplateSettings().ModelType()) : null;
+            if (Model.GetFileTemplateSettings().CreationMode().IsFileperModel())
             {
                 return modelType?.InterfaceName ?? "object";
             }

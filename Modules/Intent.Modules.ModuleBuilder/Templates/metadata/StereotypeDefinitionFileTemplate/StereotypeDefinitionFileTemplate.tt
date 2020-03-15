@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IModuleStereotype>" #>
+<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IStereotypeDefinition>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -13,12 +13,12 @@
   <displayIcon><#= Model.DisplayIcon.ToString().ToLower() #></displayIcon>
   <displayFunction><#= Model.DisplayFunction #></displayFunction>
   <targetElements>
-<#  foreach(var targetType in Model.TargetTypes) { #>
+<#  foreach(var targetType in Model.TargetElements) { #>
     <element><#= targetType #></element>
 <#  } #>
   </targetElements>
   <autoAdd><#= Model.AutoAdd.ToString().ToLower() #></autoAdd>
-  <parentFolderId><#= Model.Parent.Id #></parentFolderId>
+  <parentFolderId><#= Model.ParentElement.Id #></parentFolderId>
   <properties>
 <#  foreach(var property in Model.Properties) { #>
     <property id="<#= property.Id #>">
@@ -36,8 +36,8 @@
         <type><#= type #></type>
 <#  } #>
       </lookupTypes>
-      <lookupInternalTargetPropertyId><#= property.TargetPropertyId #></lookupInternalTargetPropertyId>
-      <isActiveFunction><#= property.IsActiveFunction #></isActiveFunction>
+      <lookupInternalTargetPropertyId><#= property.LookupInternalTargetPropertyId #></lookupInternalTargetPropertyId>
+      <isActiveFunction>TODO: property.IsActiveFunction</isActiveFunction>
       <comment><#= property.Comment #></comment>
     </property>
 <#  } #>

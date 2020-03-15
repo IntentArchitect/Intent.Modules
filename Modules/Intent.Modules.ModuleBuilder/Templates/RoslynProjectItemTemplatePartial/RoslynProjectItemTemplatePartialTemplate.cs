@@ -134,7 +134,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                 fileName: """);
             
             #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? "${Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
@@ -142,21 +142,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
                     "t: \"");
             
             #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? Model.Name.Replace("Template", "") : ""));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden
             this.Write("\",\r\n                className: \"");
             
             #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? "${Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
             this.Write("\",\r\n                @namespace: \"${Project.Name}");
             
             #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? "." + Model.Name.Replace("Template", "") : ""));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? "." + Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden

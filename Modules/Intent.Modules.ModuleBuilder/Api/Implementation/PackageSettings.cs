@@ -22,10 +22,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             }
 
             _element = element;
-
-            MenuOptions = element.ChildElements.Any(x => x.SpecializationType == Api.ContextMenu.SpecializationType)
-                ? new ContextMenu(element.ChildElements.Single(x => x.SpecializationType == Api.ContextMenu.SpecializationType))
-                : null;
         }
 
         public static IPackageSettings Create(IElement element)
@@ -36,7 +32,12 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
-        public IContextMenu MenuOptions { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public IContextMenu MenuOptions => _element.ChildElements
+            .Where(x => x.SpecializationType == ContextMenu.SpecializationType)
+            .Select(x => new ContextMenu(x))
+            .SingleOrDefault();
 
         protected bool Equals(PackageSettings other)
         {

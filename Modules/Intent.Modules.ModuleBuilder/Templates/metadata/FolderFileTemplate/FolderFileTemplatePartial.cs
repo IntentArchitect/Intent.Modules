@@ -14,13 +14,14 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.metadata.FolderFileTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class FolderFileTemplate : IntentProjectItemTemplateBase<IModulePackageFolder>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class FolderFileTemplate : IntentProjectItemTemplateBase<IFolder>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.metadata.FolderFileTemplate";
 
-        public FolderFileTemplate(IProject project, IModulePackageFolder model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully, Body = Mode.Ignore)]
+        public FolderFileTemplate(IProject project, IFolder model) : base(TemplateId, project, model)
         {
         }
 
@@ -32,7 +33,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.FolderFileTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "xml",
-                defaultLocationInProject: $"metadata/{Model.FolderPath}/Elements/{ModulePackageFolder.SpecializationType}"
+                defaultLocationInProject: $"metadata/FolderPath/Elements/{Folder.SpecializationType}"
             );
         }
 

@@ -49,6 +49,7 @@
       <defaultValue>false</defaultValue>
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction />
     </property>
     <property id="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb">
       <name>Allow Sorting</name>
@@ -90,7 +91,8 @@
       <lookupTypes>
         <type>element settings</type>
       </lookupTypes>
-      <isActiveFunction>AllowTypeReference == true</isActiveFunction>
+      <isActiveFunction>property['Allow Type Reference'].value == true</isActiveFunction>
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="ff4b18c5-397b-4639-ba79-89939deb9834">
       <name>Default Type Id</name>
@@ -100,7 +102,7 @@
       <placeholder>(optional)</placeholder>
       <valueOptions />
       <lookupTypes />
-      <isActiveFunction>AllowTypeReference == true</isActiveFunction>
+      <isActiveFunction>property['Allow Type Reference'].value == true</isActiveFunction>
     </property>
     <property id="c0b17839-1d85-4237-ba72-e013511ad379">
       <name>Is Stereotype Property Target</name>

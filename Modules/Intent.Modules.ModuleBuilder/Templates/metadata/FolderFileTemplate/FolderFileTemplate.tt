@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IModulePackageFolder>" #>
+<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IFolder>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -12,7 +12,7 @@
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId><#= Model.Parent.Id #></parentFolderId>
+  <parentFolderId><#= Model.ParentFolder.Id #></parentFolderId>
   <literals />
   <attributes />
   <operations />

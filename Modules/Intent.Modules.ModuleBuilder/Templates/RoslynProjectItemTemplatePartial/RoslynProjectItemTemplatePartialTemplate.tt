@@ -41,11 +41,11 @@ namespace <#= Namespace #>
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "<#= Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: "<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "cs",
-                defaultLocationInProject: "<#= Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? Model.Name.Replace("Template", "") : "" #>",
-                className: "<#= Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                @namespace: "${Project.Name}<#= Model.CreationMode() == CSharpTemplateExtensions.CreationModeOptions.FileperModel ? "." + Model.Name.Replace("Template", "") : "" #>"
+                defaultLocationInProject: "<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? Model.Name.Replace("Template", "") : "" #>",
+                className: "<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                @namespace: "${Project.Name}<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? "." + Model.Name.Replace("Template", "") : "" #>"
             );
         }
 

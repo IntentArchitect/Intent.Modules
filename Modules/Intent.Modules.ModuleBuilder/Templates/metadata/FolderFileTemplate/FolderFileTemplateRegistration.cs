@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.metadata.FolderFileTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class FolderFileTemplateRegistration : ModelTemplateRegistrationBase<IModulePackageFolder>
+    public class FolderFileTemplateRegistration : ModelTemplateRegistrationBase<IFolder>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,15 +26,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.FolderFileTemplate
 
         public override string TemplateId => FolderFileTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IModulePackageFolder model)
+        public override ITemplate CreateTemplateInstance(IProject project, IFolder model)
         {
             return new FolderFileTemplate(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<IModulePackageFolder> GetModels(IApplication application)
+        public override IEnumerable<IFolder> GetModels(IApplication application)
         {
-            return _metadataManager.GetModulePackageFolders(application);
+            return new IFolder[0];
+            //return _metadataManager.Get(application);
         }
     }
 }

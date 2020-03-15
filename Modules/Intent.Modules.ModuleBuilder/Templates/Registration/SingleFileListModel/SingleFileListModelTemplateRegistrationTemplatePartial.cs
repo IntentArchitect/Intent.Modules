@@ -55,7 +55,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
 
         public string GetModelsMethod()
         {
-            var model = new ModelerModelType(Model.ModelType());
+            var model = new ModelerModelType(Model.GetFileTemplateSettings().ModelType());
             return $"_metadataManager.Get{model.ClassName.ToPluralName()}(application)";
         }
     }

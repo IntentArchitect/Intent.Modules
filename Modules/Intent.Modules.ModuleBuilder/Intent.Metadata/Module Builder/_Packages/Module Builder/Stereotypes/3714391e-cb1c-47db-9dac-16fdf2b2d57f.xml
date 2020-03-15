@@ -29,6 +29,7 @@
         <option>Internal</option>
       </valueOptions>
       <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec">
       <name>Source</name>
@@ -39,6 +40,7 @@
       <defaultValue />
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>
