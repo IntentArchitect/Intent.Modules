@@ -27,18 +27,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Name => _element.Name;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        [IntentManaged(Mode.Fully)]
-        public IModeler Modeler => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.Modeler.SpecializationType)
-            .Select(x => new Modeler(x))
-            .SingleOrDefault();
-
-        [IntentManaged(Mode.Fully)]
-        public IModelerExtension ModelerExtension => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ModelerExtension.SpecializationType)
-            .Select(x => new ModelerExtension(x))
-            .SingleOrDefault();
-
         protected bool Equals(ModelersFolder other)
         {
             return Equals(_element, other._element);
@@ -56,5 +44,11 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<IModeler> Modelers => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.Modeler.SpecializationType)
+            .Select(x => new Modeler(x))
+            .ToList<IModeler>();
     }
 }

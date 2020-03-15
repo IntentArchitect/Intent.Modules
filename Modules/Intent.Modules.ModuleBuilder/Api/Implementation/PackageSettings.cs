@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IContextMenu MenuOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == ContextMenu.SpecializationType)
+            .Where(x => x.SpecializationType == Api.ContextMenu.SpecializationType)
             .Select(x => new ContextMenu(x))
             .SingleOrDefault();
 

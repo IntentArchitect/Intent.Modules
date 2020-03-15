@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="da59d635-7f86-4257-9edd-a0214546fa9f" type="Modeler Extension">
+<class id="e23975b9-f738-4593-aebd-9fa15b30dc29" type="Modeler">
   <name>Intent</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
@@ -12,6 +12,7 @@
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47">
       <addedByDefault>false</addedByDefault>
       <properties>
+        <property name="4aa74c35-6eff-41a3-be11-a2f82ca80150" value="Reference" isActive="true" />
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" value="Intent.Metadata.Models" isActive="true" />
       </properties>
     </stereotype>

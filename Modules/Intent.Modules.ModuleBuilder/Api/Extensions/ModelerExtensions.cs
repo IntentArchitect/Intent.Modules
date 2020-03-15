@@ -26,9 +26,37 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public ModelerTypeOptions ModelerType()
+            {
+                return new ModelerTypeOptions(_stereotype.GetProperty<string>("Modeler Type"));
+            }
+
             public string APINamespace()
             {
                 return _stereotype.GetProperty<string>("API Namespace");
+            }
+
+            public class ModelerTypeOptions
+            {
+                public readonly string Value;
+
+                public ModelerTypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsStandard()
+                {
+                    return Value == "Standard";
+                }
+                public bool IsExtension()
+                {
+                    return Value == "Extension";
+                }
+                public bool IsReference()
+                {
+                    return Value == "Reference";
+                }
             }
 
         }

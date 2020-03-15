@@ -6,11 +6,25 @@
   <displayFunction />
   <targetElements>
     <element>modeler</element>
-    <element>modeler extension</element>
   </targetElements>
   <autoAdd>true</autoAdd>
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
   <properties>
+    <property id="4aa74c35-6eff-41a3-be11-a2f82ca80150">
+      <name>Modeler Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue>Standard</defaultValue>
+      <valueOptions>
+        <option>Standard</option>
+        <option>Extension</option>
+        <option>Reference</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
     <property id="c141a969-5a1a-49b8-8935-9d235ab0d835">
       <name>API Namespace</name>
       <type>string</type>
@@ -19,6 +33,7 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

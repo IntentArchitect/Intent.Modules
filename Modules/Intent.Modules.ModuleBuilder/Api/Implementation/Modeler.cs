@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +6,14 @@ using Intent.IArchitect.Common.Types;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using IconType = Intent.IArchitect.Common.Types.IconType;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class Modeler : IModeler
+    internal class Modeler : IModeler
     {
         private readonly IElement _element;
         public static string[] RequiredSpecializationTypes = new string[] { Constants.ElementSpecializationTypes.Modeler, Constants.ElementSpecializationTypes.ModelerExtension };
@@ -26,24 +30,60 @@ namespace Intent.Modules.ModuleBuilder.Api
 
             Name = element.Name;
             IsExtension = element.SpecializationType == Constants.ElementSpecializationTypes.ModelerExtension;
-            PackageSettings = Api.PackageSettings.Create(element.ChildElements.SingleOrDefault(x => x.SpecializationType == Api.PackageSettings.SpecializationType));
-            ElementSettings = element.ChildElements
-                .Where(x => x.SpecializationType == Api.ElementSettings.RequiredSpecializationType)
-                .Select(x => new ElementSettings(x)).OrderBy(x => x.Name)
-                .ToList<IElementSettings>();
-            AssociationSettings = element.ChildElements
-                .Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType)
-                .Select(x => new AssociationSetting(x)).OrderBy(x => x.SpecializationType)
-                .ToList();
+            //PackageSettings = Api.PackageSettings.Create(element.ChildElements.SingleOrDefault(x => x.SpecializationType == Api.PackageSettings.SpecializationType));
+            //ElementSettings = element.ChildElements
+            //    .Where(x => x.SpecializationType == Api.ElementSettings.RequiredSpecializationType)
+            //    .Select(x => new ElementSettings(x)).OrderBy(x => x.Name)
+            //    .ToList<IElementSettings>();
+            //AssociationSettings = element.ChildElements
+            //    .Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType)
+            //    .Select(x => new AssociationSetting(x)).OrderBy(x => x.SpecializationType)
+            //    .ToList();
         }
 
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name { get; }
         public bool IsExtension { get; }
-        public IPackageSettings PackageSettings { get; }
-        public IList<IElementSettings> ElementSettings { get; }
-        public IList<AssociationSetting> AssociationSettings { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public IPackageSettings PackageSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.PackageSettings.SpecializationType)
+            .Select(x => new PackageSettings(x))
+            .SingleOrDefault();
+
+        //public IList<IElementSettings> ElementSettings { get; }
+        //public IList<AssociationSetting> AssociationSettings { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<IAssociationSettings> AssociationTypes => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.AssociationSettings.SpecializationType)
+            .Select(x => new AssociationSettings(x))
+            .ToList<IAssociationSettings>();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<IElementSettings> ElementTypes => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)
+            .Select(x => new ElementSettings(x))
+            .ToList<IElementSettings>();
+
+        protected bool Equals(Modeler other)
+        {
+            return Equals(_element, other._element);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Modeler)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (_element != null ? _element.GetHashCode() : 0);
+        }
 
     }
 

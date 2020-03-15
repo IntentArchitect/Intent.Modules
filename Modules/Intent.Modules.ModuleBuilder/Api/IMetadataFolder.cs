@@ -11,5 +11,6 @@ namespace Intent.Modules.ModuleBuilder.Api
     public interface IMetadataFolder : IMetadataModel, IHasStereotypes
     {
         string Name { get; }
+        IList<IModulePackage> Packages { get; }
     }
 }

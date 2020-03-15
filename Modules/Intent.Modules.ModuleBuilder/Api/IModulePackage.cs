@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using System;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -12,5 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         string Name { get; }
         string IconUrl { get; }
         List<string> TargetModelers { get; }
+
+        IList<IFolder> Folders { get; }
     }
 }

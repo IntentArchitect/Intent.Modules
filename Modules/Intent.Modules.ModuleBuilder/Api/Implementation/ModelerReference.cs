@@ -11,10 +11,10 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class ModelerReference : IModelerReference, IEquatable<ModelerReference>
+    internal class ModelerReference : IModelerReference
     {
         private readonly IElement _element;
-        public static string[] SpecializationType = { "Modeler", "Modeler Extension" };
+        public const string SpecializationType = "Modeler";
 
         public ModelerReference(IElement element)
         {
@@ -39,7 +39,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string NuGetDependency => _element.GetStereotypeProperty<string>("Modeler Settings", "NuGet Dependency");
         public string NuGetVersion => _element.GetStereotypeProperty<string>("Modeler Settings", "NuGet Version");
 
-        public bool Equals(ModelerReference other)
+        protected bool Equals(ModelerReference other)
         {
             return string.Equals(Id, other.Id);
         }

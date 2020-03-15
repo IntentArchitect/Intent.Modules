@@ -22,8 +22,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         IList<IModelerReference> ModelerReferences { get; }
 
-        IList<IStereotypeDefinition> StereotypeDefinitions { get; }
-
         IList<IDecorator> TemplateDecorators { get; }
 
         IList<ITypeDefinition> Types { get; }

@@ -34,24 +34,24 @@ namespace Intent.Modules.ModuleBuilder.Api
             AllowMapping = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Mapping");
             AllowSorting = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Sorting");
             AllowFindInView = element.GetStereotypeProperty<bool>("Additional Properties", "Allow Find in View");
-            LiteralSettings = element.ChildElements
-                .Where(x => x.SpecializationType == Api.LiteralSettings.SpecializationType)
-                .Select(x => new LiteralSettings(x))
-                .ToList<ILiteralSettings>();
-            AttributeSettings = element.ChildElements
-                .Where(x => x.SpecializationType == Api.AttributeSettings.SpecializationType)
-                .Select(x => new AttributeSettings(x))
-                .ToList<IAttributeSettings>();
-            OperationSettings = element.ChildElements
-                .Where(x => x.SpecializationType == Api.OperationSettings.SpecializationType)
-                .Select(x => new OperationSettings(x))
-                .ToList<IOperationSettings>();
-            ChildElementSettings = element.ChildElements
-                .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)
-                .Select(x => new ElementSettings(x))
-                .ToList<IElementSettings>();
-            //CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
-            MenuOptions = element.ChildElements.Any(x => x.SpecializationType == Api.ContextMenu.SpecializationType) ? new ContextMenu(element.ChildElements.Single(x => x.SpecializationType == Api.ContextMenu.SpecializationType)) : null;
+            //LiteralSettings = element.ChildElements
+            //    .Where(x => x.SpecializationType == Api.LiteralSettings.SpecializationType)
+            //    .Select(x => new LiteralSettings(x))
+            //    .ToList<ILiteralSettings>();
+            //AttributeSettings = element.ChildElements
+            //    .Where(x => x.SpecializationType == Api.AttributeSettings.SpecializationType)
+            //    .Select(x => new AttributeSettings(x))
+            //    .ToList<IAttributeSettings>();
+            //OperationSettings = element.ChildElements
+            //    .Where(x => x.SpecializationType == Api.OperationSettings.SpecializationType)
+            //    .Select(x => new OperationSettings(x))
+            //    .ToList<IOperationSettings>();
+            //ChildElementSettings = element.ChildElements
+            //    .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)
+            //    .Select(x => new ElementSettings(x))
+            //    .ToList<IElementSettings>();
+            ////CreationOptions = element.ChildElements.SingleOrDefault(x => x.SpecializationType == "Creation Options")?.Attributes.Select(x => new CreationOption(x)).ToList();
+            //MenuOptions = element.ChildElements.Any(x => x.SpecializationType == Api.ContextMenu.SpecializationType) ? new ContextMenu(element.ChildElements.Single(x => x.SpecializationType == Api.ContextMenu.SpecializationType)) : null;
         }
 
         public string Id => _element.Id;
@@ -74,20 +74,69 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public bool? AllowFindInView { get; set; }
 
-        public IContextMenu MenuOptions { get; set; }
-        public IList<ILiteralSettings> LiteralSettings { get; set; }
-        public IList<IAttributeSettings> AttributeSettings { get; set; }
-        public IList<IOperationSettings> OperationSettings { get; set; }
-        public IList<IElementSettings> ChildElementSettings { get; set; }
+        [IntentManaged(Mode.Fully)]
+        public IContextMenu MenuOptions => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ContextMenu.SpecializationType)
+            .Select(x => new ContextMenu(x))
+            .SingleOrDefault();
 
+        [IntentManaged(Mode.Fully)]
+        public IList<ILiteralSettings> LiteralSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.LiteralSettings.SpecializationType)
+            .Select(x => new LiteralSettings(x))
+            .ToList<ILiteralSettings>();
 
-        public IList<IDiagramSettings> DiagramSettings { get; }
+        [IntentManaged(Mode.Fully)]
+        public IList<IAttributeSettings> AttributeSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.AttributeSettings.SpecializationType)
+            .Select(x => new AttributeSettings(x))
+            .ToList<IAttributeSettings>();
 
-        public IList<IMappingSettings> MappingSettings { get; }
+        [IntentManaged(Mode.Fully)]
+        public IList<IOperationSettings> OperationSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.OperationSettings.SpecializationType)
+            .Select(x => new OperationSettings(x))
+            .ToList<IOperationSettings>();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<IElementSettings> ChildElementSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)
+            .Select(x => new ElementSettings(x))
+            .ToList<IElementSettings>();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<IDiagramSettings> DiagramSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.DiagramSettings.SpecializationType)
+            .Select(x => new DiagramSettings(x))
+            .ToList<IDiagramSettings>();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<IMappingSettings> MappingSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.MappingSettings.SpecializationType)
+            .Select(x => new MappingSettings(x))
+            .ToList<IMappingSettings>();
 
         public override string ToString()
         {
             return _element.ToString();
+        }
+
+        protected bool Equals(ElementSettings other)
+        {
+            return Equals(_element, other._element);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((ElementSettings)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (_element != null ? _element.GetHashCode() : 0);
         }
     }
 }

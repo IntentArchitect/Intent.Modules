@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using System.Linq;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -31,19 +32,41 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IFolder ParentFolder { get; }
         public IEnumerable<IStereotype> Stereotypes { get; }
 
-        public IList<ICSharpTemplate> CSharpTemplates { get; }
+        [IntentManaged(Mode.Fully)]
+        public IList<ICSharpTemplate> CSharpTemplates => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.CSharpTemplate.SpecializationType)
+            .Select(x => new CSharpTemplate(x))
+            .ToList<ICSharpTemplate>();
 
-        public IList<IFileTemplate> FileTemplates { get; }
+        [IntentManaged(Mode.Fully)]
+        public IList<IFileTemplate> FileTemplates => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.FileTemplate.SpecializationType)
+            .Select(x => new FileTemplate(x))
+            .ToList<IFileTemplate>();
 
-        public IList<IFolder> Folders { get; }
+        [IntentManaged(Mode.Fully)]
+        public IList<IFolder> Folders => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.Folder.SpecializationType)
+            .Select(x => new Folder(x))
+            .ToList<IFolder>();
 
-        public IList<IModelerReference> ModelerReferences { get; }
+        [IntentManaged(Mode.Fully)]
+        public IList<IModelerReference> ModelerReferences => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ModelerReference.SpecializationType)
+            .Select(x => new ModelerReference(x))
+            .ToList<IModelerReference>();
 
-        public IList<IStereotypeDefinition> StereotypeDefinitions { get; }
+        [IntentManaged(Mode.Fully)]
+        public IList<IDecorator> TemplateDecorators => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.Decorator.SpecializationType)
+            .Select(x => new Decorator(x))
+            .ToList<IDecorator>();
 
-        public IList<IDecorator> TemplateDecorators { get; }
-
-        public IList<ITypeDefinition> Types { get; }
+        [IntentManaged(Mode.Fully)]
+        public IList<ITypeDefinition> Types => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.TypeDefinition.SpecializationType)
+            .Select(x => new TypeDefinition(x))
+            .ToList<ITypeDefinition>();
 
         protected bool Equals(Folder other)
         {

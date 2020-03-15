@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="71a2800b-b56d-4d54-9e3c-f0d51a5d907d" type="Modeler Extension">
+<class id="4f0ed839-5d9b-4e2e-924c-34fbc283466c" type="Modeler">
   <name>Modeler Builder</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
@@ -12,6 +12,7 @@
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47">
       <addedByDefault>false</addedByDefault>
       <properties>
+        <property name="4aa74c35-6eff-41a3-be11-a2f82ca80150" value="Extension" isActive="true" />
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" value="Intent.Modules.ModuleBuilder.Api" isActive="true" />
       </properties>
     </stereotype>

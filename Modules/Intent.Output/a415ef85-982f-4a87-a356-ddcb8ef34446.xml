@@ -79,11 +79,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ModelerExtensionExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/ModelerExtensionExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ModelerExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/ModelerExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -204,11 +199,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IModelerExtension.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IModelerExtension.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IModelerReference.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IModelerReference.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -304,11 +294,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\ModelerExtension.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/ModelerExtension.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\ModelerReference.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/ModelerReference.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -374,8 +359,8 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Intent.modeler.extension.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Intent.modeler.extension.config</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Intent.modeler.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Intent.modeler.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>

@@ -20,13 +20,13 @@ using TypeOrder = Intent.IArchitect.Agent.Persistence.Model.Common.TypeOrder;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
 {
-    public class ModelerConfig : IntentProjectItemTemplateBase<Modeler>
+    public class ModelerConfig : IntentProjectItemTemplateBase<IModeler>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ModelerConfig";
 
         private static readonly IconModelPersistable _defaultIconModel = new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" };
 
-        public ModelerConfig(IProject project, Modeler model) : base(TemplateId, project, model)
+        public ModelerConfig(IProject project, IModeler model) : base(TemplateId, project, model)
         {
         }
 
@@ -41,8 +41,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
 
             //modelerSettings.DiagramSettings // TODO JL
             modelerSettings.PackageSettings = GetPackageSettings(Model.PackageSettings);
-            modelerSettings.ElementSettings = GetElementSettings(Model.ElementSettings);
-            modelerSettings.AssociationSettings = GetAssociationSettings(Model.AssociationSettings);
+            modelerSettings.ElementSettings = GetElementSettings(Model.ElementTypes);
+            modelerSettings.AssociationSettings = GetAssociationSettings(Model.AssociationTypes);
             modelerSettings.StereotypeSettings = GetStereotypeSettings(Model);
 
             return Serialize(applicationModelerModeler);
@@ -61,7 +61,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         {
             return new ElementCreationOption
             {
-                SpecializationType = option.Name,
+                SpecializationType = option.TargetSpecializationType,
                 Text = option.Text,
                 Shortcut = option.Shortcut,
                 DefaultName = option.DefaultName,
@@ -85,19 +85,24 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
         }
 
+        private IconModelPersistable GetIcon(AssociationSettingsExtensions.IconFull icon)
+        {
+            return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
+        }
+
         private IconModelPersistable GetIcon(IconModel icon)
         {
             return icon != null ? new IconModelPersistable { Type = icon.Type, Source = icon.Source } : null;
         }
 
-        private StereotypeSettingsPersistable GetStereotypeSettings(Modeler model)
+        private StereotypeSettingsPersistable GetStereotypeSettings(IModeler model)
         {
-            var targetTypes = model.ElementSettings.Select(x => x.Name)
-                .Concat(model.ElementSettings.SelectMany(x => x.ChildElementSettings).Select(x => x.Name))
-                .Concat(model.ElementSettings.SelectMany(x => x.LiteralSettings).Select(x => x.Name))
-                .Concat(model.ElementSettings.SelectMany(x => x.AttributeSettings).Select(x => x.Name))
-                .Concat(model.ElementSettings.SelectMany(x => x.OperationSettings).Select(x => x.Name))
-                .Concat(model.AssociationSettings.Select(x => x.SpecializationType))
+            var targetTypes = model.ElementTypes.Select(x => x.Name)
+                .Concat(model.ElementTypes.SelectMany(x => x.ChildElementSettings).Select(x => x.Name))
+                .Concat(model.ElementTypes.SelectMany(x => x.LiteralSettings).Select(x => x.Name))
+                .Concat(model.ElementTypes.SelectMany(x => x.AttributeSettings).Select(x => x.Name))
+                .Concat(model.ElementTypes.SelectMany(x => x.OperationSettings).Select(x => x.Name))
+                .Concat(model.AssociationTypes.Select(x => x.Name))
                 .OrderBy(x => x)
                 .ToList();
 
@@ -111,38 +116,38 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             };
         }
 
-        private List<AssociationSettingsPersistable> GetAssociationSettings(IList<AssociationSetting> associationSettings)
+        private List<AssociationSettingsPersistable> GetAssociationSettings(IList<IAssociationSettings> associationSettings)
         {
-            return associationSettings.Select(x => new AssociationSettingsPersistable
+            return associationSettings.OrderBy(x => x.Name).Select(x => new AssociationSettingsPersistable
             {
-                SpecializationType = x.SpecializationType,
-                Icon = GetIcon(x.Icon),
+                SpecializationType = x.Name,
+                Icon = GetIcon(x.GetIconFull()),
                 SourceEnd = new AssociationEndSettingsPersistable
                 {
-                    TargetTypes = x.SourceEnd.TargetTypes,
-                    IsCollectionDefault = x.SourceEnd.IsCollectionDefault,
-                    IsCollectionEnabled = x.SourceEnd.IsCollectionEnabled,
-                    IsNavigableDefault = x.SourceEnd.IsNavigableEnabled,
-                    IsNavigableEnabled = x.SourceEnd.IsNavigableEnabled,
-                    IsNullableDefault = x.SourceEnd.IsNullableDefault,
-                    IsNullableEnabled = x.SourceEnd.IsNullableEnabled
+                    TargetTypes = x.SourceEnd.GetAdditionalProperties().TargetTypes().Select(t => t.Name).ToArray(),
+                    IsCollectionDefault = x.SourceEnd.GetAdditionalProperties().IsCollectionDefault(),
+                    IsCollectionEnabled = x.SourceEnd.GetAdditionalProperties().IsCollectionEnabled(),
+                    IsNavigableDefault = x.SourceEnd.GetAdditionalProperties().IsNavigableEnabled(),
+                    IsNavigableEnabled = x.SourceEnd.GetAdditionalProperties().IsNavigableEnabled(),
+                    IsNullableDefault = x.SourceEnd.GetAdditionalProperties().IsNullableDefault(),
+                    IsNullableEnabled = x.SourceEnd.GetAdditionalProperties().IsNullableEnabled()
                 },
                 TargetEnd = new AssociationEndSettingsPersistable
                 {
-                    TargetTypes = x.TargetEnd.TargetTypes,
-                    IsCollectionDefault = x.TargetEnd.IsCollectionDefault,
-                    IsCollectionEnabled = x.TargetEnd.IsCollectionEnabled,
-                    IsNavigableDefault = x.TargetEnd.IsNavigableEnabled,
-                    IsNavigableEnabled = x.TargetEnd.IsNavigableEnabled,
-                    IsNullableDefault = x.TargetEnd.IsNullableDefault,
-                    IsNullableEnabled = x.TargetEnd.IsNullableEnabled
+                    TargetTypes = x.DestinationEnd.GetAdditionalProperties().TargetTypes().Select(t => t.Name).ToArray(),
+                    IsCollectionDefault = x.DestinationEnd.GetAdditionalProperties().IsCollectionDefault(),
+                    IsCollectionEnabled = x.DestinationEnd.GetAdditionalProperties().IsCollectionEnabled(),
+                    IsNavigableDefault = x.DestinationEnd.GetAdditionalProperties().IsNavigableEnabled(),
+                    IsNavigableEnabled = x.DestinationEnd.GetAdditionalProperties().IsNavigableEnabled(),
+                    IsNullableDefault = x.DestinationEnd.GetAdditionalProperties().IsNullableDefault(),
+                    IsNullableEnabled = x.DestinationEnd.GetAdditionalProperties().IsNullableEnabled()
                 },
             }).ToList();
         }
 
         private List<ElementSettingsPersistable> GetElementSettings(IList<IElementSettings> elementSettings)
         {
-            return elementSettings.Select(x =>
+            return elementSettings.OrderBy(x => x.Name).Select(x =>
                 new ElementSettingsPersistable
                 {
                     SpecializationType = x.Name,
@@ -259,7 +264,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{Model.Name}.modeler{(Model.IsExtension ? ".extension" : "")}",
+                fileName: $"{Model.Name}.modeler{(Model.GetModelerSettings().ModelerType().IsExtension() ? ".extension" : "")}",
                 fileExtension: "config",
                 defaultLocationInProject: "modelers");
         }

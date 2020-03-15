@@ -37,13 +37,13 @@ namespace <#= Namespace #>
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         
 <#  if (Model.MenuOptions != null) {
-        foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => GetCreationOptionTypeInterface(x) != null)) { #>
+        foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => GetCreationOptionTypeInterface(x, false) != null)) { #>
         [IntentManaged(Mode.Fully)]
-        public <#= GetCreationOptionTypeInterface(creationOption) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
+        public <#= GetCreationOptionTypeInterface(creationOption, creationOption.AllowMultiple) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
             .Where(x => x.SpecializationType == Api.<#= GetCreationOptionTypeClass(creationOption) #>.SpecializationType)
             .Select(x => new <#= GetCreationOptionTypeClass(creationOption) #>(x))
 <#      if (creationOption.AllowMultiple) { #>
-            .ToList<<#= GetCreationOptionTypeClass(creationOption) #>>();
+            .ToList<<#= GetCreationOptionTypeInterface(creationOption, false) #>>();
 <#      } else { #>
             .SingleOrDefault();
 <#      } #>

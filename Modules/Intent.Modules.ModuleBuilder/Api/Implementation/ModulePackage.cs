@@ -32,5 +32,29 @@ namespace Intent.Modules.ModuleBuilder.Api
         public List<string> TargetModelers => _element
             .GetStereotypeProperty<IElement[]>("Module Package Settings", "Target Modelers", new IElement[0])
             .Select(x => x.Name).ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<IFolder> Folders => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.Folder.SpecializationType)
+            .Select(x => new Folder(x))
+            .ToList<IFolder>();
+
+        protected bool Equals(ModulePackage other)
+        {
+            return Equals(_element, other._element);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((ModulePackage)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (_element != null ? _element.GetHashCode() : 0);
+        }
     }
 }

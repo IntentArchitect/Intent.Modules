@@ -26,6 +26,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public IElement[] TargetTypes()
+            {
+                return _stereotype.GetProperty<IElement[]>("Target Types");
+            }
+
             public bool IsNavigableEnabled()
             {
                 return _stereotype.GetProperty<bool>("Is Navigable Enabled");
