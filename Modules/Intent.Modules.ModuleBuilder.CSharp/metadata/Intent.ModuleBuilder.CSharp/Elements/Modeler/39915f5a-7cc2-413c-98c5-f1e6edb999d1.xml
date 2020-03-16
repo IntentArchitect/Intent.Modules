@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="39915f5a-7cc2-413c-98c5-f1e6edb999d1" type="Modeler">
+  <name>CSharp</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>79f33fed-14c9-4304-ba6c-9835a7fefd00</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="4aa74c35-6eff-41a3-be11-a2f82ca80150" value="Extension" isActive="true" />
+        <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" value="Intent.Modules.ModuleBuilder.CSharp.Api" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

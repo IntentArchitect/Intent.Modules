@@ -93,7 +93,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         private IconModelPersistable GetIcon(IconModel icon)
         {
             return icon != null ? new IconModelPersistable { Type = icon.Type, Source = icon.Source } : null;
-        }
+        } 
 
         private StereotypeSettingsPersistable GetStereotypeSettings(IModeler model)
         {
@@ -103,6 +103,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 .Concat(model.ElementTypes.SelectMany(x => x.AttributeSettings).Select(x => x.Name))
                 .Concat(model.ElementTypes.SelectMany(x => x.OperationSettings).Select(x => x.Name))
                 .Concat(model.AssociationTypes.Select(x => x.Name))
+                .Concat(new [] { "Package" })
                 .OrderBy(x => x)
                 .ToList();
 
@@ -160,7 +161,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     AllowSorting = x.GetAdditionalProperties().AllowSorting(),
                     AllowFindInView = x.GetAdditionalProperties().AllowFindinView(),
                     AllowTypeReference = x.GetAdditionalProperties().AllowTypeReference(),
-                    TargetTypes = x.GetAdditionalProperties().TargetTypes()?.Select(e => e.SpecializationType).ToArray(),
+                    TargetTypes = x.GetAdditionalProperties().TargetTypes()?.Select(e => e.Name).ToArray(),
                     DefaultTypeId = x.GetAdditionalProperties().DefaultTypeId(),
                     DiagramSettings = null, // TODO JL / GCB
                     LiteralSettings = x.LiteralSettings?.Any() == true

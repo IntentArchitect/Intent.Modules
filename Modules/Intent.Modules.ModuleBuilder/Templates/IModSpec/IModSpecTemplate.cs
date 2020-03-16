@@ -52,16 +52,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         }
     }
 
-    public class IModSpecTemplate : IntentProjectItemTemplateBase<IModeSpecModel>, IHasNugetDependencies
+    public class IModSpecTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies
     {
+        private readonly IMetadataManager _metadataManager;
         private readonly ICollection<TemplateRegistrationInfo> _templatesToRegister = new List<TemplateRegistrationInfo>();
         private readonly ICollection<MetadataRegistrationInfo> _metadataToRegister = new List<MetadataRegistrationInfo>();
 
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
-        public IModSpecTemplate(string templateId, IProject project, IModeSpecModel models)
-            : base(templateId, project, models)
+        public IModSpecTemplate(string templateId, IProject project, IMetadataManager metadataManager)
+            : base(templateId, project, null)
         {
+            _metadataManager = metadataManager;
             Project.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
                 _templatesToRegister.Add(new TemplateRegistrationInfo(@event.GetValue("TemplateId"), @event.GetValue("TemplateType"), @event.TryGetValue("Module Dependency"), @event.TryGetValue("Module Dependency Version")));
@@ -128,7 +130,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 dependencies.Add(CreateDependency(IntentModule.IntentRoslynWeaver));
             }
 
-            if (Model.Decorators.Any())
+            var decorators = _metadataManager.GetDecorators(Project.Application).ToList();
+            if (decorators.Any())
             {
                 var decoratorsElement = doc.Element("package").Element("decorators");
                 if (decoratorsElement == null)
@@ -137,7 +140,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     doc.Element("package").Add(decoratorsElement);
                 }
 
-                foreach (var model in Model.Decorators)
+                foreach (var model in decorators)
                 {
                     var id = $"{Project.ApplicationName()}.{model.Name}";
                     var specificDecorator = doc.XPathSelectElement($"package/decorators/decorator[@id=\"{id}\"]");

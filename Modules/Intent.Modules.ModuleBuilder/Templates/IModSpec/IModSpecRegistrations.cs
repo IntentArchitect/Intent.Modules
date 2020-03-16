@@ -22,8 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             registry.Register(TemplateId, project => new IModSpecTemplate(
                 templateId: TemplateId, 
                 project: project, 
-                models: new IModeSpecModel(
-                    decorators: _metadataManager.GetDecorators(applicationManager))));
+                metadataManager:_metadataManager));
         }
     }
 }

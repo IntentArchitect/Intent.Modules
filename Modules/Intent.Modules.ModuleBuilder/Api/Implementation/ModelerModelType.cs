@@ -1,6 +1,7 @@
 ﻿using System;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.ModuleBuilder.Helpers;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
@@ -21,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         public string Id => _element.Id;
-        public string ClassName => _element.Name.Replace(" ", "").Replace("-", "");
+        public string ClassName => _element.Name.ToCSharpIdentifier();
         public string InterfaceName => $"I{ClassName}";
         public string Namespace => _element.GetStereotypeProperty<string>("Model Type Settings", "Namespace");
         public string LoadMethod => _element.GetStereotypeProperty<string>("Model Type Settings", "Load Method");

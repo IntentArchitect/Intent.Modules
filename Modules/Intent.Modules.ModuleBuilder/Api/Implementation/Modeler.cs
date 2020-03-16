@@ -100,13 +100,9 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 return null;
             }
-            if (!Enum.TryParse<IconType>(stereotype.GetProperty<string>("Type"), out var type))
-            {
-                type = IconType.UrlImagePath;
-            }
             return new IconModel()
             {
-                Type = type,
+                Type = Enum.Parse<IconType>(stereotype.GetProperty<string>("Type")),
                 Source = stereotype.GetProperty<string>("Source"),
             };
         }

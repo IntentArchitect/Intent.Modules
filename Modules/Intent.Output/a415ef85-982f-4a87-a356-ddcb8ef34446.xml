@@ -64,6 +64,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\IncludedPackageExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/IncludedPackageExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\LiteralSettingsExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/LiteralSettingsExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -101,6 +106,11 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\OperationSettingsExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/OperationSettingsExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\PackageExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/PackageExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -176,6 +186,11 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IFolder.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IFolder.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IIncludedPackage.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IIncludedPackage.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -274,6 +289,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\IncludedPackage.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/IncludedPackage.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\LiteralSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/LiteralSettings.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -314,6 +334,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\Package.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/Package.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\PackageSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/PackageSettings.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -331,6 +356,11 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IOperationSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IOperationSettings.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IPackage.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IPackage.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -356,141 +386,6 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.imodspec</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Elements\Folder\Association End Settings.xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Elements/Folder/Association End Settings.xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Elements\Folder\Attribute Settings.xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Elements/Folder/Attribute Settings.xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Elements\Folder\Element Settings Definition.xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Elements/Folder/Element Settings Definition.xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Elements\Folder\Element Settings.xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Elements/Folder/Element Settings.xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Elements\Folder\Literal Settings.xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Elements/Folder/Literal Settings.xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Elements\Folder\Modeler.xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Elements/Folder/Modeler.xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Elements\Folder\Stereotypes.xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Elements/Folder/Stereotypes.xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Intent.ModuleBuilder.pkg.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Intent.ModuleBuilder.pkg.config</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Additional Properties [44cd95b4-96d1-4b3b-ae0c-992f2e6895f4].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Additional Properties [44cd95b4-96d1-4b3b-ae0c-992f2e6895f4].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Additional Properties [5a410b57-e6a8-4567-b387-71a89290b2c9].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Additional Properties [5a410b57-e6a8-4567-b387-71a89290b2c9].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Additional Properties [a5de089b-457e-49b7-8ec7-f78677e83300].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Additional Properties [a5de089b-457e-49b7-8ec7-f78677e83300].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Additional Properties [e3e0f961-5498-4b77-840a-6d001336ee7b].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Additional Properties [e3e0f961-5498-4b77-840a-6d001336ee7b].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Additional Properties [f406222b-31a8-435e-80f6-6a08f9108649].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Additional Properties [f406222b-31a8-435e-80f6-6a08f9108649].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Creation Options [f4250b35-559d-4c0b-91ee-c3d7aa239814].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Creation Options [f4250b35-559d-4c0b-91ee-c3d7aa239814].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Decorator Settings [0c076747-04f0-4849-abf6-91bc536fecd5].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Decorator Settings [0c076747-04f0-4849-abf6-91bc536fecd5].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Default Creation Options [72fa6cf4-ce3c-4162-944f-392304e12009].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Default Creation Options [72fa6cf4-ce3c-4162-944f-392304e12009].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Exposes Decorator Contract [6c5afdfa-b948-4789-8f5b-6c6a8895fc47].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Exposes Decorator Contract [6c5afdfa-b948-4789-8f5b-6c6a8895fc47].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\File Template Settings [819dee60-184a-4cb7-9529-0d3910f82ee6].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/File Template Settings [819dee60-184a-4cb7-9529-0d3910f82ee6].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Icon (Full) [3714391e-cb1c-47db-9dac-16fdf2b2d57f].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Icon (Full) [3714391e-cb1c-47db-9dac-16fdf2b2d57f].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Icon (Full, Expanded) [8034e9bf-e9eb-4feb-a49b-6dcbfeb388ba].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Icon (Full, Expanded) [8034e9bf-e9eb-4feb-a49b-6dcbfeb388ba].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Implements Decorator Contract [5b12af5e-db2e-4a3c-9e8b-e370fd19f14b].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Implements Decorator Contract [5b12af5e-db2e-4a3c-9e8b-e370fd19f14b].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Model Type Settings [633c5122-2c61-43c2-b98c-8a6cca6edd87].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Model Type Settings [633c5122-2c61-43c2-b98c-8a6cca6edd87].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Modeler Reference Settings [92598848-c9f8-4c33-98b2-4817638c5ff5].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Modeler Reference Settings [92598848-c9f8-4c33-98b2-4817638c5ff5].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Modeler Settings [81e5637b-05d7-43a4-9619-6ef873be9f47].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Modeler Settings [81e5637b-05d7-43a4-9619-6ef873be9f47].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Module Package Settings [5bfd81de-a1ee-421d-8db3-5657c7c740a7].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Module Package Settings [5bfd81de-a1ee-421d-8db3-5657c7c740a7].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Module Stereotype Property Settings [c51d3d71-bcba-48b4-9ac5-98b2e27814c9].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Module Stereotype Property Settings [c51d3d71-bcba-48b4-9ac5-98b2e27814c9].xml</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\metadata\Intent.ModuleBuilder\Stereotypes\Module Stereotype Settings [3ecce879-2d5b-41f8-a812-e392cbdf1486].xml</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>metadata/Intent.ModuleBuilder/Stereotypes/Module Stereotype Settings [3ecce879-2d5b-41f8-a812-e392cbdf1486].xml</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>

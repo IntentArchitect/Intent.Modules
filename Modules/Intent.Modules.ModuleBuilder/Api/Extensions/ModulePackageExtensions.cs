@@ -10,28 +10,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class ModulePackageExtensions
     {
-        public static ModulePackageSettings GetModulePackageSettings(this IModulePackage model)
-        {
-            var stereotype = model.GetStereotype("Module Package Settings");
-            return stereotype != null ? new ModulePackageSettings(stereotype) : null;
-        }
-
-
-        public class ModulePackageSettings
-        {
-            private IStereotype _stereotype;
-
-            public ModulePackageSettings(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public IElement[] TargetModelers()
-            {
-                return _stereotype.GetProperty<IElement[]>("Target Modelers");
-            }
-
-        }
 
     }
 }
