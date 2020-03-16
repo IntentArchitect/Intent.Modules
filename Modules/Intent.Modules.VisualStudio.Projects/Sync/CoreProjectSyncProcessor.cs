@@ -276,7 +276,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                     break;
                 case "config":
                     itemType = itemType ?? "Content";
-                    metadata["CopyToOutputDirectory"] = "PreserveNewest";
+                    //metadata["CopyToOutputDirectory"] = "PreserveNewest"; // Why is this needed? I've taken out.
 
                     implicitlyPresent =
                         linkSource == null &&

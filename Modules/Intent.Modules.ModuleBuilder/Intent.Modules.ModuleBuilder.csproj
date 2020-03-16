@@ -20,11 +20,6 @@
       <LastGenOutput>PackageFileTemplate.cs</LastGenOutput>
     </None>
   
-    <None Update="Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>StereotypeDefinitionFileTemplate.cs</LastGenOutput>
-    </None>
-  
     <Compile Update="Templates\metadata\FolderFileTemplate\FolderFileTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -35,12 +30,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>PackageFileTemplate.tt</DependentUpon>
-    </Compile>
-  
-    <Compile Update="Templates\metadata\StereotypeDefinitionFileTemplate\StereotypeDefinitionFileTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>StereotypeDefinitionFileTemplate.tt</DependentUpon>
     </Compile>
   
     <None Update="Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt">
@@ -78,11 +67,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="metadata\Intent.ModuleBuilder\Stereotypes\Template Settings.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="metadata\Intent.ModuleBuilder\Stereotypes\Template Settings.xml" />
     <Content Update="modeler\ModuleBuilder.modeler.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -98,13 +82,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   
-    <Content Update="modelers\Modeler Builder.modeler.extension.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    
   
-    <Content Update="modelers\Module Builder.modeler.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    
   
     <Content Update="modelers\Intent.modeler.extension.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -118,7 +98,7 @@
     </PackageReference>
     <PackageReference Include="Intent.Modules.Common" Version="2.0.3" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.0-pre.3" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.0-pre.4.2" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
   </ItemGroup>
 
@@ -218,7 +198,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ApiStereotypeExtensions\" />
     <Folder Include="Api\Modeler\" />
     <Folder Include="Templates\Api\" />
   </ItemGroup>

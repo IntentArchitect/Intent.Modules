@@ -20,7 +20,8 @@
       <type>options</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
+      <placeholder>(required)</placeholder>
+      <defaultValue>UrlImagePath</defaultValue>
       <valueOptions>
         <option>UrlImagePath</option>
         <option>RelativeImagePath</option>
@@ -36,8 +37,8 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <defaultValue />
+      <placeholder>(required)</placeholder>
+      <defaultValue>file-o</defaultValue>
       <valueOptions />
       <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>

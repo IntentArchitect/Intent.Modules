@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="a5de089b-457e-49b7-8ec7-f78677e83300">
+  <name>Additional Properties</name>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
+  <targetElements>
+    <element>literal settings</element>
+  </targetElements>
+  <autoAdd>true</autoAdd>
+  <parentFolderId>88659367-ef0f-48a7-af64-bae4ef69de1b</parentFolderId>
+  <properties>
+    <property id="52e011ae-7e2a-4c37-9924-db1ae509f1c9">
+      <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
+      <name>Text</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>element settings</type>
+      </lookupTypes>
+    </property>
+    <property id="64880c5c-f079-459c-a944-7e54aaa4f299">
+      <name>Shortcut</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="e317fec6-3097-44db-bc50-b07caff6300a">
+      <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
+      <name>Default Name</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="b9bbd318-6c76-41b4-9a03-1ee53255a972">
+      <name>Allow Rename</name>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="0ccb7dcc-c08d-4ef4-bbbc-2683f1a17dd0">
+      <name>Allow Duplicate Names</name>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="85631731-a208-47a9-bd97-1e54e1cb444a">
+      <name>Allow Find in View</name>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

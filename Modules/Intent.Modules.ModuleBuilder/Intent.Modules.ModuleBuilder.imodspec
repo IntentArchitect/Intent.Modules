@@ -100,7 +100,6 @@
   <metadata>
     <install target="Module Builder" src="modelers" />
     <install target="Module Builder" src="metadata/Intent.ModuleBuilder" />
-    <install target="Module Builder" src="metadata/Intent.ModelerBuilder" />
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />

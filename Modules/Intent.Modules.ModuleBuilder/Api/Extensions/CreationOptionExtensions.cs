@@ -10,34 +10,12 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class CreationOptionExtensions
     {
-        public static ApiSettings GetApiSettings(this ICreationOption model)
-        {
-            var stereotype = model.GetStereotype("Api Settings");
-            return stereotype != null ? new ApiSettings(stereotype) : null;
-        }
-
         public static CreationOptions GetCreationOptions(this ICreationOption model)
         {
             var stereotype = model.GetStereotype("Creation Options");
             return stereotype != null ? new CreationOptions(stereotype) : null;
         }
 
-
-        public class ApiSettings
-        {
-            private IStereotype _stereotype;
-
-            public ApiSettings(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string PropertyName()
-            {
-                return _stereotype.GetProperty<string>("PropertyName");
-            }
-
-        }
 
         public class CreationOptions
         {

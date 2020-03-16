@@ -33,9 +33,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.FolderFileTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "xml",
-                defaultLocationInProject: $"metadata/FolderPath/Elements/{Folder.SpecializationType}"
+                defaultLocationInProject: $"metadata/{Model.UnderlyingElement.GetParentPath().Single(x => x.SpecializationType == ModulePackage.SpecializationType).Name}/Elements/{ Folder.SpecializationType}"
             );
         }
+
+        private string FolderPath => string.Join("/", Model.UnderlyingElement.GetParentPath()
+            .Reverse()
+            .TakeWhile(x => x.SpecializationType != MetadataFolder.SpecializationType)
+            .Reverse()
+            .Select(x => x.Name));
 
     }
 }

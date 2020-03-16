@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="72fa6cf4-ce3c-4162-944f-392304e12009">
+  <comment>Sets the default creation options for this element when used.</comment>
+  <name>Default Creation Options</name>
+  <icon type="FontAwesome" source="check-square-o" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
+  <targetElements>
+    <element>element settings</element>
+    <element>element settings definition</element>
+  </targetElements>
+  <autoAdd>true</autoAdd>
+  <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
+  <properties>
+    <property id="b8079180-01aa-4dce-b00a-e1d22e82e070">
+      <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
+      <name>Text</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>element settings</type>
+      </lookupTypes>
+      <isRequiredFunction />
+    </property>
+    <property id="d984e71b-0e2f-4155-a190-83d986e1c29b">
+      <name>Shortcut</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="b199adea-c16b-411d-a2db-c881345a421b">
+      <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
+      <name>Default Name</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="C63F388B-DAFF-422C-BD8D-FB433EFEC51B">
+      <comment>Sets the order of the type against the other types</comment>
+      <name>Type Order</name>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

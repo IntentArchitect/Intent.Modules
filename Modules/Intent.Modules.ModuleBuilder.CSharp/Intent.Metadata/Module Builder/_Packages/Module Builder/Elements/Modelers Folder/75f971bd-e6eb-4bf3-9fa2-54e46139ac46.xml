@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="75f971bd-e6eb-4bf3-9fa2-54e46139ac46" type="Modelers Folder">
+  <name>modeler</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>08bc8c10-c239-4257-9921-a2c401f0f0ac</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

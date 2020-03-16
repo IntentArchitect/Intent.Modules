@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="c51d3d71-bcba-48b4-9ac5-98b2e27814c9">
+  <name>Module Stereotype Property Settings</name>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>module stereotype property</element>
+  </targetElements>
+  <autoAdd>true</autoAdd>
+  <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
+  <properties>
+    <property id="ca85168a-52f3-44eb-8b1c-f6e3612409e5">
+      <name>Control Type</name>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue>Text Box</defaultValue>
+      <valueOptions>
+        <option>Text Box</option>
+        <option>Number</option>
+        <option>Checkbox</option>
+        <option>Text Area</option>
+        <option>Select</option>
+        <option>Multi-select</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+    <property id="7d1c8406-bfff-46a2-b1c0-06463ddb4358">
+      <name>Options Source</name>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(required)</placeholder>
+      <valueOptions>
+        <option>Options</option>
+        <option>Lookup Element</option>
+        <option>Nested Lookup</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction>ControlType == "Select" || ControlType == "Multi-select"</isActiveFunction>
+    </property>
+    <property id="6fd6c32f-0343-4f40-8d6b-7795cf03b779">
+      <name>Lookup Types</name>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>element settings</type>
+      </lookupTypes>
+      <isActiveFunction>OptionsSource == "Lookup Element"</isActiveFunction>
+    </property>
+    <property id="2884e58b-f287-44cb-b12b-5d97678d3c15">
+      <name>Target Property</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>OptionsSource == "Nested Lookup"</isActiveFunction>
+    </property>
+    <property id="474fec7b-e966-4bd1-b5fd-6a78783d41d7">
+      <name>Default Value</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(optional)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>ControlType == "Text Box" || ControlType == "Text Area" 
+|| (ControlType == "Select" &amp;&amp; OptionsSource == "Options")</isActiveFunction>
+    </property>
+    <property id="9c0ee379-6c9c-41a5-9133-3c537610a538">
+      <name>Default Value</name>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(optional)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>ControlType == "Number"</isActiveFunction>
+    </property>
+    <property id="879069fa-266f-4380-91be-7ee56bd3f91f">
+      <name>Default Value</name>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(optional)</placeholder>
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>ControlType == "Checkbox"</isActiveFunction>
+    </property>
+    <property id="b2585b83-a8e0-4058-8b9b-0d4c41b5eb66">
+      <name>Default Value</name>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(optional)</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>modeler</type>
+        <type>modeler extension</type>
+      </lookupTypes>
+      <isActiveFunction>(ControlType == "Select" || ControlType == "Multi-select") &amp;&amp; OptionsSource == "Lookup Element"</isActiveFunction>
+    </property>
+    <property id="c0c90041-2958-4e5b-bd71-577e0004fe0b">
+      <name>Placeholder</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(optional)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="bc6ba55e-ae4a-4fff-8693-0bbe46716238">
+      <name>Is Active Function</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(e.g. Property == "Value")</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

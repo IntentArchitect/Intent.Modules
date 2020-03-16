@@ -12,7 +12,7 @@
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId><#= Model.ParentFolder.Id #></parentFolderId>
+  <parentFolderId><#= Model.ParentId #></parentFolderId>
   <literals />
   <attributes />
   <operations />

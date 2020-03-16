@@ -34,8 +34,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.FolderFileTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<IFolder> GetModels(IApplication application)
         {
-            return new IFolder[0];
-            //return _metadataManager.Get(application);
+            return _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == Folder.SpecializationType && x.GetParentPath().Any(p => p.SpecializationType == ModulePackage.SpecializationType))
+                .Select(x => new Folder(x))
+                .ToList();
         }
     }
 }

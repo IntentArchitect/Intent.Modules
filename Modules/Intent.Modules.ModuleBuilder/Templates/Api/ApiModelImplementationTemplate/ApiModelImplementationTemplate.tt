@@ -23,9 +23,9 @@ namespace <#= Namespace #>
 
         public <#= ClassName #>(IElement element)
         {
-            if (element.SpecializationType != SpecializationType)
+            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException($"Invalid element type {element.SpecializationType}", nameof(element));
+                throw new Exception($"Cannot create a '<#= ClassName #>' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
         }

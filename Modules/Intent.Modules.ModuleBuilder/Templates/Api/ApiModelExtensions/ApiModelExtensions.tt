@@ -51,7 +51,7 @@ namespace <#= Namespace #>
             }
 
 <#              break;
-            case StereotypePropertyControlType.Boolean:#>
+            case StereotypePropertyControlType.Checkbox:#>
             public bool <#= property.Name.ToCSharpIdentifier() #>() {
                 return _stereotype.GetProperty<bool>("<#= property.Name #>");
             }

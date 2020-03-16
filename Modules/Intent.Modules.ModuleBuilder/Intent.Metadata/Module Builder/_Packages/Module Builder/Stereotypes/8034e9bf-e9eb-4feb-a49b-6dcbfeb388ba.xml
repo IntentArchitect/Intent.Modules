@@ -18,7 +18,7 @@
       <type>options</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
-      <placeholder />
+      <placeholder>(required)</placeholder>
       <defaultValue>FontAwesome</defaultValue>
       <valueOptions>
         <option>UrlImagePath</option>
@@ -35,7 +35,7 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
+      <placeholder>(required)</placeholder>
       <defaultValue>file-o</defaultValue>
       <valueOptions />
       <lookupTypes />

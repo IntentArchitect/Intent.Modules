@@ -169,7 +169,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             
             #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
               break;
-            case StereotypePropertyControlType.Boolean:
+            case StereotypePropertyControlType.Checkbox:
             
             #line default
             #line hidden

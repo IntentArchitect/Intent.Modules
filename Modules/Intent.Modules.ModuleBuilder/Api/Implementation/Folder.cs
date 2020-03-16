@@ -16,20 +16,21 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public Folder(IElement element)
         {
-            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.OrdinalIgnoreCase))
+            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a folder from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
 
             _element = element;
 
-            ParentFolder = element.ParentElement != null ? new Folder(element.ParentElement) : null;
+            ParentFolder = element.ParentElement?.SpecializationType == SpecializationType ? new Folder(element.ParentElement) : null;
             Stereotypes = element.Stereotypes;
         }
 
         public string Id => _element.Id;
         public string Name => _element.Name;
         public IFolder ParentFolder { get; }
+        public string ParentId => _element.ParentElement.Id;
         public IEnumerable<IStereotype> Stereotypes { get; }
 
         [IntentManaged(Mode.Fully)]
@@ -67,6 +68,8 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == Api.TypeDefinition.SpecializationType)
             .Select(x => new TypeDefinition(x))
             .ToList<ITypeDefinition>();
+
+        public IElement UnderlyingElement => _element;
 
         protected bool Equals(Folder other)
         {

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="95a45145-b038-4398-80a0-bba550fc3c82" type="Creation Option">
+  <name>New C# Template</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="6a6e7b5f-a47f-4536-9f62-64e3ee24aaf8">
+    <typeId>110ebca3-3046-4791-aa05-2ca7552ddac5</typeId>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>80bfb717-2f8b-41b8-a8d9-f559e1b97f9e</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+        <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+        <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+        <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+        <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

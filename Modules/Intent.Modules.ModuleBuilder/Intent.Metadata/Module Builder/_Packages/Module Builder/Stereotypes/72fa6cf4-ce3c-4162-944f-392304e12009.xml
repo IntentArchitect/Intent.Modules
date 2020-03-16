@@ -23,6 +23,7 @@
       <lookupTypes>
         <type>element settings</type>
       </lookupTypes>
+      <isRequiredFunction />
     </property>
     <property id="d984e71b-0e2f-4155-a190-83d986e1c29b">
       <name>Shortcut</name>

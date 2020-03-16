@@ -16,12 +16,11 @@ namespace Intent.Modules.ModuleBuilder.Api
     internal class Modeler : IModeler
     {
         private readonly IElement _element;
-        public static string[] RequiredSpecializationTypes = new string[] { Constants.ElementSpecializationTypes.Modeler, Constants.ElementSpecializationTypes.ModelerExtension };
         public const string SpecializationType = "Modeler";
 
         public Modeler(IElement element)
         {
-            if (!RequiredSpecializationTypes.Contains(element.SpecializationType))
+            if (SpecializationType != element.SpecializationType)
             {
                 throw new ArgumentException($"Invalid element [{element}]");
             }
@@ -29,7 +28,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
 
             Name = element.Name;
-            IsExtension = element.SpecializationType == Constants.ElementSpecializationTypes.ModelerExtension;
             //PackageSettings = Api.PackageSettings.Create(element.ChildElements.SingleOrDefault(x => x.SpecializationType == Api.PackageSettings.SpecializationType));
             //ElementSettings = element.ChildElements
             //    .Where(x => x.SpecializationType == Api.ElementSettings.RequiredSpecializationType)
@@ -44,16 +42,12 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name { get; }
-        public bool IsExtension { get; }
 
         [IntentManaged(Mode.Fully)]
         public IPackageSettings PackageSettings => _element.ChildElements
             .Where(x => x.SpecializationType == Api.PackageSettings.SpecializationType)
             .Select(x => new PackageSettings(x))
             .SingleOrDefault();
-
-        //public IList<IElementSettings> ElementSettings { get; }
-        //public IList<AssociationSetting> AssociationSettings { get; }
 
         [IntentManaged(Mode.Fully)]
         public IList<IAssociationSettings> AssociationTypes => _element.ChildElements

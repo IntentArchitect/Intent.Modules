@@ -69,11 +69,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             
             #line default
             #line hidden
-            this.Write(@"(IElement element)
-        {
-            if (element.SpecializationType != SpecializationType)
-            {
-                throw new ArgumentException($""Invalid element type {element.SpecializationType}"", nameof(element));
+            this.Write("(IElement element)\r\n        {\r\n            if (!SpecializationType.Equals(element" +
+                    ".SpecializationType, StringComparison.InvariantCultureIgnoreCase))\r\n            " +
+                    "{\r\n                throw new Exception($\"Cannot create a \'");
+            
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(@"' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'"");
             }
             _element = element;
         }

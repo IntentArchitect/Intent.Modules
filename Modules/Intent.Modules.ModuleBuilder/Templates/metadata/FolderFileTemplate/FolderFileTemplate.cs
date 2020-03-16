@@ -49,7 +49,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.metadata.FolderFileTemplate
                     "/isMapped>\r\n  <parentFolderId>");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\metadata\FolderFileTemplate\FolderFileTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentFolder.Id));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ParentId));
             
             #line default
             #line hidden

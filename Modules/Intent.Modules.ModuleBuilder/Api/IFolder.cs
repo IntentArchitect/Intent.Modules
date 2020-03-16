@@ -12,6 +12,8 @@ namespace Intent.Modules.ModuleBuilder.Api
     {
         string Name { get; }
 
+        string ParentId { get; }
+
         IFolder ParentFolder { get; }
 
         IList<ICSharpTemplate> CSharpTemplates { get; }
@@ -25,6 +27,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         IList<IDecorator> TemplateDecorators { get; }
 
         IList<ITypeDefinition> Types { get; }
+
+        IElement UnderlyingElement { get; }
     }
 
 }

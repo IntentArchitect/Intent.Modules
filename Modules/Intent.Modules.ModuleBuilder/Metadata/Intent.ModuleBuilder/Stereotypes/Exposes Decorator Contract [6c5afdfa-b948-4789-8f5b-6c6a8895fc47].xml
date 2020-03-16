@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="6c5afdfa-b948-4789-8f5b-6c6a8895fc47">
+  <name>Exposes Decorator Contract</name>
+  <icon type="FontAwesome" source="dot-circle-o" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <targetElements>
+    <element>c# template</element>
+    <element>file template</element>
+  </targetElements>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
+  <properties>
+    <property id="825aea0e-ee1c-4e77-927e-658b67bc8189">
+      <comment>Specify the fully qualified namespace and Type that will define what the Contract looks like that Decorators will use</comment>
+      <name>Type Fullname</name>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

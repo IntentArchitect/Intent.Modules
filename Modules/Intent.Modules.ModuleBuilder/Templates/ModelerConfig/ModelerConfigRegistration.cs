@@ -34,9 +34,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         public override IEnumerable<IModeler> GetModels(IApplication application)
         {
             var modelers = _metadataManager
-                .GetMetadata<IElement>("Module Builder")
-                .Where(x => x.Application.Id == application.Id && (x.SpecializationType == Constants.ElementSpecializationTypes.Modeler || x.SpecializationType == Constants.ElementSpecializationTypes.ModelerExtension))
+                .GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == Constants.ElementSpecializationTypes.Modeler)
                 .Select(x => new Modeler(x))
+                .Where(x => !x.GetModelerSettings().ModelerType().IsReference())
                 .ToList();
 
             return modelers;
