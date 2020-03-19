@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="633c5122-2c61-43c2-b98c-8a6cca6edd87">
   <name>Model Type Settings</name>
-  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
-  <displayIcon>false</displayIcon>
-  <displayFunction />
+  <targetMode>of-type</targetMode>
   <targetElements>
     <element>model type</element>
   </targetElements>
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
   <autoAdd>false</autoAdd>
   <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
   <properties>

@@ -60,8 +60,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             {
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "C# Template" },
-                { "Module Dependency", GetModeler().ModuleDependency },
-                { "Module Dependency Version", GetModeler().ModuleVersion },
+                { "Module Dependency", GetModeler()?.ModuleDependency },
+                { "Module Dependency Version", GetModeler()?.ModuleVersion },
                 { "ModelId", Model.Id }
             });
         }
@@ -71,7 +71,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplatePartia
             return Model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(Model.GetFileTemplateSettings().Modeler()) : null;
         }
 
-        private string GetModelType()
+        private string GetModelType() 
         {
             var modelType = Model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(Model.GetFileTemplateSettings().ModelType()) : null;
             if (Model.GetFileTemplateSettings().CreationMode().IsFileperModel())

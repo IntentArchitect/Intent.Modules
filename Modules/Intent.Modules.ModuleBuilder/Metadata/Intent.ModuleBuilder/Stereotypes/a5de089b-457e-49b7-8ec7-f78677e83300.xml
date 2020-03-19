@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="a5de089b-457e-49b7-8ec7-f78677e83300">
   <name>Additional Properties</name>
-  <icon type="FontAwesome" source="cogs" />
-  <displayIcon>false</displayIcon>
-  <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
+  <targetMode>of-type</targetMode>
   <targetElements>
     <element>literal settings</element>
   </targetElements>
-  <autoAdd>true</autoAdd>
+  <applyMode>on-create</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
+  <autoAdd>false</autoAdd>
   <parentFolderId>88659367-ef0f-48a7-af64-bae4ef69de1b</parentFolderId>
   <properties>
     <property id="52e011ae-7e2a-4c37-9924-db1ae509f1c9">

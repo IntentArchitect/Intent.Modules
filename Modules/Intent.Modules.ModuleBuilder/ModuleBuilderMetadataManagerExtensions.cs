@@ -13,31 +13,6 @@ namespace Intent.Modules.ModuleBuilder
             return new ModuleBuilderMetadataProvider(metadataManager).GetTemplateDefinitions(application.Id);
         }
 
-        public static IEnumerable<ICSharpTemplate> GetCSharpTemplates(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ModuleBuilderMetadataProvider(metadataManager).GetCSharpTemplates(application);
-        }
-
-        public static IEnumerable<IFileTemplate> GetFileTemplates(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ModuleBuilderMetadataProvider(metadataManager).GetFileTemplates(application);
-        }
-
-        public static IEnumerable<IModulePackage> GetModulePackages(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ModuleBuilderMetadataProvider(metadataManager).GetModulePackages(application.Id);
-        }
-
-        public static IEnumerable<IElementSettings> GetElementSettingses(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ModuleBuilderMetadataProvider(metadataManager).GetElementSettingses(application.Id);
-        }
-
-        public static IEnumerable<IDecoratorDefinition> GetDecorators(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ModuleBuilderMetadataProvider(metadataManager).GetDecorators(application);
-        }
-
         public static bool IsCSharpTemplate(this IElement model)
         {
             return model.SpecializationType == "C# Template";
@@ -53,14 +28,14 @@ namespace Intent.Modules.ModuleBuilder
             return model.IsCSharpTemplate() || model.IsFileTemplate();
         }
 
-        public static bool IsDecorator(this IElement model)
-        {
-            return model.SpecializationType == "Decorator";
-        }
+        //public static bool IsDecorator(this IElement model)
+        //{
+        //    return model.SpecializationType == "Decorator";
+        //}
 
-        public static bool IsModeler(this IElement model)
-        {
-            return ModelerReference.SpecializationType.Contains(model.SpecializationType);
-        }
+        //public static bool IsModeler(this IElement model)
+        //{
+        //    return ModelerReference.SpecializationType.Contains(model.SpecializationType);
+        //}
     }
 }

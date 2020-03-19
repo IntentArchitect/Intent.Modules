@@ -21,7 +21,6 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
     }
 
     public enum StereotypePropertyControlType
-
     {
         [XmlEnum("text")]
         TextBox = 0,

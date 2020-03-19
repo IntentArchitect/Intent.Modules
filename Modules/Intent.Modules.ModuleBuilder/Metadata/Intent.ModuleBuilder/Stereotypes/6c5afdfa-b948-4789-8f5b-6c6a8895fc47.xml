@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="6c5afdfa-b948-4789-8f5b-6c6a8895fc47">
   <name>Exposes Decorator Contract</name>
-  <icon type="FontAwesome" source="dot-circle-o" />
-  <displayIcon>false</displayIcon>
-  <displayFunction />
+  <targetMode>of-type</targetMode>
   <targetElements>
     <element>c# template</element>
     <element>file template</element>
   </targetElements>
+  <applyMode>manually</applyMode>
+  <icon type="FontAwesome" source="dot-circle-o" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
   <autoAdd>false</autoAdd>
   <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
   <properties>

@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="f406222b-31a8-435e-80f6-6a08f9108649">
   <name>Additional Properties</name>
-  <icon type="FontAwesome" source="cogs" />
-  <displayIcon>false</displayIcon>
-  <displayFunction />
+  <targetMode>of-type</targetMode>
   <targetElements>
     <element>element settings</element>
   </targetElements>
-  <autoAdd>true</autoAdd>
+  <applyMode>on-create</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
   <parentFolderId>ac2b161d-10ef-408e-b084-3f2ba850e9a4</parentFolderId>
   <properties>
+    <property id="0632053a-6b40-47a0-857f-6840e322344c">
+      <name>Display Text Function</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="c48d9593-c1f4-4610-9cb3-54de9c2f0c06">
       <name>Allow Rename</name>
       <type>boolean</type>
@@ -72,13 +83,17 @@
       <lookupTypes />
     </property>
     <property id="8da796ff-e5b8-4a53-9c18-9176bfff8fbc">
-      <name>Allow Type Reference</name>
+      <name>Type Reference</name>
       <type>string</type>
-      <controlType>checkbox</controlType>
-      <optionsSource>n/a</optionsSource>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
       <placeholder />
-      <defaultValue>false</defaultValue>
-      <valueOptions />
+      <defaultValue>Disabled</defaultValue>
+      <valueOptions>
+        <option>Disabled</option>
+        <option>Optional</option>
+        <option>Required</option>
+      </valueOptions>
       <lookupTypes />
     </property>
     <property id="b94f760c-0ce7-4176-bbae-97e26914b39c">
@@ -91,7 +106,7 @@
       <lookupTypes>
         <type>element settings</type>
       </lookupTypes>
-      <isActiveFunction>property['Allow Type Reference'].value == true</isActiveFunction>
+      <isActiveFunction>property['Type Reference'].value == 'Optional' || property['Type Reference'].value == 'Required'</isActiveFunction>
       <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="ff4b18c5-397b-4639-ba79-89939deb9834">
@@ -102,17 +117,29 @@
       <placeholder>(optional)</placeholder>
       <valueOptions />
       <lookupTypes />
-      <isActiveFunction>property['Allow Type Reference'].value == true</isActiveFunction>
+      <isActiveFunction>property['Type Reference'].value == 'Optional' || property['Type Reference'].value == 'Required'</isActiveFunction>
     </property>
-    <property id="c0b17839-1d85-4237-ba72-e013511ad379">
-      <name>Is Stereotype Property Target</name>
-      <type>boolean</type>
+    <property id="229dcbe7-f000-4ee9-a06a-febad727f7e1">
+      <name>Allow Nullable</name>
+      <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
       <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
+      <isActiveFunction>property['Type Reference'].value == 'Optional' || property['Type Reference'].value == 'Required'</isActiveFunction>
+    </property>
+    <property id="d04ec558-6f6a-462b-b16a-9da1d7b4e9db">
+      <name>Allow Collection</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>property['Type Reference'].value == 'Optional' || property['Type Reference'].value == 'Required'</isActiveFunction>
     </property>
   </properties>
 </stereotypeDefinition>

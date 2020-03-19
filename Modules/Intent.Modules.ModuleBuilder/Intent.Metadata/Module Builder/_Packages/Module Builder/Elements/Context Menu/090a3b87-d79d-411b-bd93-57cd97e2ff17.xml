@@ -57,7 +57,19 @@
       <literals />
       <attributes />
       <operations />
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <childElements />
     </childElement>
     <childElement id="c40b7800-98fc-4fe1-ab3e-2e20da7706a4" type="Creation Option">
@@ -76,7 +88,19 @@
       <literals />
       <attributes />
       <operations />
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <childElements />
     </childElement>
     <childElement id="627c3360-3989-455b-8f58-8e32a21ca18d" type="Creation Option">
@@ -95,7 +119,19 @@
       <literals />
       <attributes />
       <operations />
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <childElements />
     </childElement>
     <childElement id="b767b8da-d1b7-4578-9dea-25ba7ea1ad9c" type="Creation Option">
@@ -114,7 +150,19 @@
       <literals />
       <attributes />
       <operations />
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <childElements />
     </childElement>
     <childElement id="b38deee2-b72f-462b-aace-1aacf429ea3a" type="Creation Option">
@@ -133,7 +181,19 @@
       <literals />
       <attributes />
       <operations />
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <childElements />
     </childElement>
     <childElement id="4d0543ff-9bad-4077-bef8-fca4e86ae0a2" type="Creation Option">
@@ -152,7 +212,19 @@
       <literals />
       <attributes />
       <operations />
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <childElements />
     </childElement>
   </childElements>

@@ -22,6 +22,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new FileTemplateSettings(stereotype) : null;
         }
 
+        //public static TemplateSettings GetFileTemplateSettings(this ICSharpTemplate model)
+        //{
+        //    var stereotype = model.GetStereotype("Template Settings");
+        //    return stereotype != null ? new TemplateSettings(stereotype) : null;
+        //}
 
         public class ExposesDecoratorContract
         {
@@ -94,8 +99,26 @@ namespace Intent.Modules.ModuleBuilder.Api
                     return Value == "Custom";
                 }
             }
-
         }
 
+        public class TemplateSettings
+        {
+            private IStereotype _stereotype;
+
+            public TemplateSettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public IElement Modeler()
+            {
+                return _stereotype.GetProperty<IElement>("Modeler");
+            }
+
+            public IElement ModelType()
+            {
+                return _stereotype.GetProperty<IElement>("Model Type");
+            }
+        }
     }
 }

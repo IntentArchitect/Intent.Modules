@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface ICSharpTemplate : IMetadataModel, IHasStereotypes, IHasFolder, IModuleBuilderElement
+    public interface ICSharpTemplate : IMetadataModel, IHasStereotypes, IHasFolder, IModuleBuilderElement, IReferences<ITemplateRegistration>
     {
         string Name { get; }
     }

@@ -72,6 +72,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("expandedIcon")]
         public IconModelPersistable ExpandedIcon { get; set; }
 
+        [XmlElement("displayFunction")]
+        public string DisplayFunction { get; set; }
+
         [XmlElement("allowRename")]
         public bool? AllowRename { get; set; } = true;
 
@@ -93,9 +96,8 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("allowTypeReference")]
         public bool? AllowTypeReference { get; set; }
 
-        [XmlArray("targetTypes")]
-        [XmlArrayItem("type")]
-        public string[] TargetTypes { get; set; }
+        [XmlElement("typeReferenceSetting")]
+        public TypeReferenceSettingPersistable TypeReferenceSetting { get; set; }
 
         [XmlElement("defaultTypeId")]
         public string DefaultTypeId { get; set; }
@@ -152,6 +154,22 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}'";
         }
+    }
+
+    public class TypeReferenceSettingPersistable
+    {
+        [XmlElement("isRequired")]
+        public bool IsRequired { get; set; } = true;
+
+        [XmlArray("targetTypes")]
+        [XmlArrayItem("type")]
+        public string[] TargetTypes { get; set; }
+
+        [XmlElement("allowIsNullable")]
+        public bool AllowIsNullable { get; set; } = true;
+
+        [XmlElement("allowIsCollection")]
+        public bool AllowIsCollection { get; set; } = true;
     }
 
     public class TypeOrder

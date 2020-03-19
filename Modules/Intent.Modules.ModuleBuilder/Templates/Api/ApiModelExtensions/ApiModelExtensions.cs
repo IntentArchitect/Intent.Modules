@@ -394,7 +394,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             
             #line default
             #line hidden
-            this.Write("        }\r\n    }\r\n}");
+            this.Write("    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

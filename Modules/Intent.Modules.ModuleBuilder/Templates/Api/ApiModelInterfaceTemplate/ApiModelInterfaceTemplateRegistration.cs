@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<IElementSettings> GetModels(IApplication application)
         {
-            return _metadataManager.GetElementSettingses(application);
+            return _metadataManager.GetElementSettings(application);
         }
     }
 }

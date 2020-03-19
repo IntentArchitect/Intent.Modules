@@ -2,13 +2,15 @@
 <stereotypeDefinition id="f4250b35-559d-4c0b-91ee-c3d7aa239814">
   <comment>Overrides the default creation option settings.</comment>
   <name>Creation Options</name>
-  <icon type="FontAwesome" source="check-square" />
-  <displayIcon>false</displayIcon>
-  <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
+  <targetMode>of-type</targetMode>
   <targetElements>
     <element>creation option</element>
   </targetElements>
-  <autoAdd>true</autoAdd>
+  <applyMode>on-create</applyMode>
+  <icon type="FontAwesome" source="check-square" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
+  <autoAdd>false</autoAdd>
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
   <properties>
     <property id="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25">

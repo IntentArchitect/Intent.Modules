@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="99cb461f-ec82-4dde-a804-e3393a5e2a8d" type="Template Registration">
+  <name>File Per Model</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>318a9f15-a162-4a58-ac04-eb9d6a12bf98</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

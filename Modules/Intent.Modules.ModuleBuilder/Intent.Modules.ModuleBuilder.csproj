@@ -6,30 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Api\Modeler\**" />
     <Compile Remove="Intent.Metadata\**" />
+    <EmbeddedResource Remove="Api\Modeler\**" />
     <EmbeddedResource Remove="Intent.Metadata\**" />
+    <None Remove="Api\Modeler\**" />
     <None Remove="Intent.Metadata\**" />
-  
-    <None Update="Templates\metadata\FolderFileTemplate\FolderFileTemplate.tt">
+    <None Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>FolderFileTemplate.cs</LastGenOutput>
+      <LastGenOutput>ApiMetadataProviderExtensions.cs</LastGenOutput>
     </None>
   
-    <None Update="Templates\metadata\PackageFileTemplate\PackageFileTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>PackageFileTemplate.cs</LastGenOutput>
-    </None>
-  
-    <Compile Update="Templates\metadata\FolderFileTemplate\FolderFileTemplate.cs">
+    <Compile Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>FolderFileTemplate.tt</DependentUpon>
-    </Compile>
-  
-    <Compile Update="Templates\metadata\PackageFileTemplate\PackageFileTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>PackageFileTemplate.tt</DependentUpon>
+      <DependentUpon>ApiMetadataProviderExtensions.tt</DependentUpon>
     </Compile>
   
     <None Update="Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt">
@@ -63,6 +54,17 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiModelExtensions.tt</DependentUpon>
+    </Compile>
+  
+    <None Update="Templates\Api\ApiMetadataProvider\ApiMetadataProvider.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ApiMetadataProvider.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\Api\ApiMetadataProvider\ApiMetadataProvider.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiMetadataProvider.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -107,16 +109,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Templates\Decorators\DecoratorRegistrationTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DecoratorRegistrationTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Update="Templates\Decorators\DecoratorTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DecoratorTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Update="Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -159,14 +151,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Templates\Decorators\DecoratorRegistrationTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DecoratorRegistrationTemplate.cs</LastGenOutput>
-    </None>
-    <None Update="Templates\Decorators\DecoratorTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DecoratorTemplate.cs</LastGenOutput>
-    </None>
     <None Update="Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ProjectItemTemplatePartialTemplate.cs</LastGenOutput>
@@ -198,7 +182,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Api\Modeler\" />
     <Folder Include="Templates\Api\" />
   </ItemGroup>
 

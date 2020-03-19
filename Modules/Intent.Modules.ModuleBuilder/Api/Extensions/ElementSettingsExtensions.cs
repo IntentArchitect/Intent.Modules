@@ -44,6 +44,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public string DisplayTextFunction()
+            {
+                return _stereotype.GetProperty<string>("Display Text Function");
+            }
+
             public bool AllowRename()
             {
                 return _stereotype.GetProperty<bool>("Allow Rename");
@@ -74,9 +79,9 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Allow Find in View");
             }
 
-            public bool AllowTypeReference()
+            public TypeReferenceOptions TypeReference()
             {
-                return _stereotype.GetProperty<bool>("Allow Type Reference");
+                return new TypeReferenceOptions(_stereotype.GetProperty<string>("Type Reference"));
             }
 
             public IElement[] TargetTypes()
@@ -89,9 +94,37 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Default Type Id");
             }
 
-            public bool IsStereotypePropertyTarget()
+            public bool AllowNullable()
             {
-                return _stereotype.GetProperty<bool>("Is Stereotype Property Target");
+                return _stereotype.GetProperty<bool>("Allow Nullable");
+            }
+
+            public bool AllowCollection()
+            {
+                return _stereotype.GetProperty<bool>("Allow Collection");
+            }
+
+            public class TypeReferenceOptions
+            {
+                public readonly string Value;
+
+                public TypeReferenceOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsDisabled()
+                {
+                    return Value == "Disabled";
+                }
+                public bool IsOptional()
+                {
+                    return Value == "Optional";
+                }
+                public bool IsRequired()
+                {
+                    return Value == "Required";
+                }
             }
 
         }

@@ -91,6 +91,20 @@
       </config>
       <role>Api</role>
     </template>
+    <template id="ModuleBuilder.Templates.Api.ApiMetadataProvider">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+    </template>
+    <template id="ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+    </template>
   </templates>
   <decorators></decorators>
   <dependencies>

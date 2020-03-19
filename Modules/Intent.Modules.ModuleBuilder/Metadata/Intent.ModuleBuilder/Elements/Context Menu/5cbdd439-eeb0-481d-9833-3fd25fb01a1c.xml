@@ -10,12 +10,167 @@
   <operations />
   <stereotypes />
   <childElements>
-    <childElement id="575a041e-c579-45f5-ab66-9feeab1c2576" type="Creation Option">
-      <name>Include Package</name>
+    <childElement id="f7652e5a-3c33-4520-934a-4d7b84ba0dd6" type="Creation Option">
+      <name>New C# Template</name>
       <isAbstract>false</isAbstract>
       <genericTypes />
-      <typeReference id="e8a75594-2970-4279-b6f5-dc1379fb6816">
-        <typeId>3071a43f-0ad2-49a9-b169-146af85f1943</typeId>
+      <typeReference id="a43b8b76-7fbf-430d-b298-fb589746f8bc">
+        <typeId>1cc4388d-3e66-4079-9101-9ed4f5ffbdb7</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="99d5ef34-276f-4470-bb1c-f83ce1863782" type="Creation Option">
+      <name>New File Template</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="3d8d6a46-e775-4531-8225-b3ee52768b6c">
+        <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="9739b58c-b3ee-4fa8-a792-57533a73788d" type="Creation Option">
+      <name>New Template Decorator</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="a0da4e52-a996-4477-85f0-0ff1d00466d5">
+        <typeId>f0f46278-29ea-42bd-9206-0e7034f623bc</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="9212b822-e5c7-4941-a07e-7eca40f87edc" type="Creation Option">
+      <name>New Modeler Reference</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="ed45d10a-8bef-4e2f-b50e-57b9b98d4b5c">
+        <typeId>4c7af41a-663f-4f7e-93a9-46a9006b6a88</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="a961f249-830c-47ec-9d5b-7daeef7dfd3e" type="Creation Option">
+      <name>New Type</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="07f9ef78-158c-4f86-8032-962422445ec0">
+        <typeId>3c00249f-f1d9-47a7-b7fc-028e9aaf9bce</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="29b67ea8-ccf0-41a3-87bc-ca35537d0d37" type="Creation Option">
+      <name>New Template Registraion</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="954e27fc-cc3c-4cf9-8854-6d069b37bf4f">
+        <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -39,132 +194,6 @@
           </properties>
         </stereotype>
       </stereotypes>
-      <childElements />
-    </childElement>
-    <childElement id="f7652e5a-3c33-4520-934a-4d7b84ba0dd6" type="Creation Option">
-      <name>New C# Template</name>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="a43b8b76-7fbf-430d-b298-fb589746f8bc">
-        <typeId>1cc4388d-3e66-4079-9101-9ed4f5ffbdb7</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes />
-      <childElements />
-    </childElement>
-    <childElement id="99d5ef34-276f-4470-bb1c-f83ce1863782" type="Creation Option">
-      <name>New File Template</name>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="3d8d6a46-e775-4531-8225-b3ee52768b6c">
-        <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes />
-      <childElements />
-    </childElement>
-    <childElement id="9739b58c-b3ee-4fa8-a792-57533a73788d" type="Creation Option">
-      <name>New Template Decorator</name>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="a0da4e52-a996-4477-85f0-0ff1d00466d5">
-        <typeId>f0f46278-29ea-42bd-9206-0e7034f623bc</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes />
-      <childElements />
-    </childElement>
-    <childElement id="057c49ab-b11c-4133-8dd9-45b91446cd96" type="Creation Option">
-      <name>Add Metadata Folder</name>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="4f9e4801-135d-4143-91d3-07cc2c824f89">
-        <typeId>10c058e5-d1c7-46bd-a912-db83eab42ae1</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
-          <comment>Overrides the default creation option settings.</comment>
-          <addedByDefault>false</addedByDefault>
-          <properties>
-            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
-            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
-            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
-            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="false" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <childElements />
-    </childElement>
-    <childElement id="9212b822-e5c7-4941-a07e-7eca40f87edc" type="Creation Option">
-      <name>New Modeler Reference</name>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="ed45d10a-8bef-4e2f-b50e-57b9b98d4b5c">
-        <typeId>4c7af41a-663f-4f7e-93a9-46a9006b6a88</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes />
-      <childElements />
-    </childElement>
-    <childElement id="a961f249-830c-47ec-9d5b-7daeef7dfd3e" type="Creation Option">
-      <name>New Type</name>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="07f9ef78-158c-4f86-8032-962422445ec0">
-        <typeId>3c00249f-f1d9-47a7-b7fc-028e9aaf9bce</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes />
       <childElements />
     </childElement>
     <childElement id="f4400708-458c-420d-b995-8ae3e5afb595" type="Creation Option">
@@ -214,7 +243,19 @@
       <literals />
       <attributes />
       <operations />
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <childElements />
     </childElement>
   </childElements>

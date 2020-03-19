@@ -17,6 +17,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("name")]
         public string Name { get; set; }
 
+        [XmlArray("targetElements")]
+        [XmlArrayItem("element")]
+        public List<string> TargetElements { get; set; }
+
         [XmlElement("icon")]
         public IconModelPersistable Icon { get; set; }
 
@@ -25,10 +29,6 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("displayFunction")]
         public string DisplayFunction { get; set; }
-
-        [XmlArray("targetElements")]
-        [XmlArrayItem("element")]
-        public List<string> TargetElements { get; set; }
 
         [XmlElement("autoAdd")]
         public bool AutoAdd { get; set; }

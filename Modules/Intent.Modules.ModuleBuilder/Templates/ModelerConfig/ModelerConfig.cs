@@ -103,7 +103,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 .Concat(model.ElementTypes.SelectMany(x => x.AttributeSettings).Select(x => x.Name))
                 .Concat(model.ElementTypes.SelectMany(x => x.OperationSettings).Select(x => x.Name))
                 .Concat(model.AssociationTypes.Select(x => x.Name))
-                .Concat(new [] { "Package" })
                 .OrderBy(x => x)
                 .ToList();
 
@@ -160,8 +159,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     AllowMapping = x.GetAdditionalProperties().AllowMapping(),
                     AllowSorting = x.GetAdditionalProperties().AllowSorting(),
                     AllowFindInView = x.GetAdditionalProperties().AllowFindinView(),
-                    AllowTypeReference = x.GetAdditionalProperties().AllowTypeReference(),
-                    TargetTypes = x.GetAdditionalProperties().TargetTypes()?.Select(e => e.Name).ToArray(),
+                    AllowTypeReference = !x.GetAdditionalProperties().TypeReference().IsDisabled(),
+                    TypeReferenceSetting = !x.GetAdditionalProperties().TypeReference().IsDisabled() ? new TypeReferenceSettingPersistable()
+                    {
+                        IsRequired = x.GetAdditionalProperties().TypeReference().IsRequired(),
+                        TargetTypes = x.GetAdditionalProperties().TargetTypes()?.Select(e => e.Name).ToArray(),
+                        AllowIsNullable = x.GetAdditionalProperties().AllowNullable(),
+                        AllowIsCollection = x.GetAdditionalProperties().AllowCollection(),
+                    } : null, 
                     DefaultTypeId = x.GetAdditionalProperties().DefaultTypeId(),
                     DiagramSettings = null, // TODO JL / GCB
                     LiteralSettings = x.LiteralSettings?.Any() == true

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="65807faa-9a61-4958-8554-3d0a0865e587" type="C# Template">
+  <name>ApiMetadataProvider</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="297aba48-261c-45cd-998a-e2dc9c3f2bc6">
+    <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>b24f3bdf-3ba1-4c66-8aa8-cf63a3ae7436</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="76256322-88f1-4efb-8bd6-7cc4a6c54cb9">
   <name>Package Settings</name>
-  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
-  <displayIcon>false</displayIcon>
-  <displayFunction />
+  <targetMode>of-type</targetMode>
   <targetElements>
     <element>package</element>
   </targetElements>
-  <autoAdd>true</autoAdd>
+  <applyMode>on-create</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
   <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
   <properties>
     <property id="d40394fc-ed23-45a0-9c56-cbcf1c928e47">

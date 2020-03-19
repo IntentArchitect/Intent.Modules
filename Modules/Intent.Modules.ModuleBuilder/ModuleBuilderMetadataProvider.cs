@@ -15,56 +15,12 @@ namespace Intent.Modules.ModuleBuilder
             _metadataManager = metadataManager;
         }
 
-
         public IEnumerable<IFileTemplate> GetTemplateDefinitions(string applicationId)
         {
-            var templates = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId).Where(x => x.IsTemplate()).ToList();
+            var templates = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId)
+                .Where(x => x.TypeReference?.Element.SpecializationType == TemplateRegistration.SpecializationType).ToList();
             var result = templates.Select(x => new FileTemplate(x)).ToList();
-            return result;
-        }
-
-        public IEnumerable<ICSharpTemplate> GetCSharpTemplates(IApplication application)
-        {
-            var templates = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id).Where(x => x.IsCSharpTemplate()).ToList();
-            var result = templates.Select(x => new CSharpTemplate(x)).ToList();
-            return result;
-        }
-
-        public IEnumerable<IFileTemplate> GetFileTemplates(IApplication application)
-        {
-            var templates = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id).Where(x => x.IsFileTemplate()).ToList();
-            var result = templates.Select(x => new FileTemplate(x)).ToList();
-            return result;
-        }
-
-        public IEnumerable<IModulePackage> GetModulePackages(string applicationId)
-        {
-            var packages = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId)
-                .Where(x => x.SpecializationType == ModulePackage.SpecializationType)
-                .Select(x => new ModulePackage(x)).ToList();
-            return packages;
-        }
-
-        public IEnumerable<IElementSettings> GetElementSettingses(string applicationId)
-        {
-            var results = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId)
-                .Where(x => x.SpecializationType == ElementSettings.RequiredSpecializationType)
-                .Select(x => new ElementSettings(x)).ToList();
-            return results;
-        }
-
-        public IEnumerable<IDecoratorDefinition> GetDecorators(IApplication application)
-        {
-            var templates = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id).Where(x => x.IsDecorator()).ToList();
-            var result = templates.Select(x => new DecoratorDefinition(x)).ToList();
-            return result;
-        }
-
-        public IEnumerable<IModelerReference> GetModelers(IElementApplication application)
-        {
-            var modelerElements = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id).Where(x => x.IsModeler()).ToList();
-            var result = modelerElements.Select(x => new ModelerReference(x)).ToList();
-            return result;
-        }
+            return result; 
+        } 
     }
 }
