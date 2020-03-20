@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="54eff27b-2dfc-4853-8498-1a2c4700e385" type="Core Type">
+  <name>Stereotype-Definition</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>e23975b9-f738-4593-aebd-9fa15b30dc29</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="72fa6cf4-ce3c-4162-944f-392304e12009" name="Default Creation Options">
+      <comment>Sets the default creation options for this element when used.</comment>
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" display="Text" isActive="true" />
+        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
+        <property name="b199adea-c16b-411d-a2db-c881345a421b" display="Default Name" value="NewStereotype" isActive="true" />
+        <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="3714391e-cb1c-47db-9dac-16fdf2b2d57f" name="Icon (Full)">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" display="Type" value="UrlImagePath" isActive="true" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" display="Source" value="./img/icons/common/StereotypeDef_256x.png" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

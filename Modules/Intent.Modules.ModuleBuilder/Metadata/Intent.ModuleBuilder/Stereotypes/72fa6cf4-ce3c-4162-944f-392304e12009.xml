@@ -5,7 +5,7 @@
   <targetMode>of-type</targetMode>
   <targetElements>
     <element>element settings</element>
-    <element>element settings definition</element>
+    <element>core type</element>
   </targetElements>
   <applyMode>on-create</applyMode>
   <icon type="FontAwesome" source="check-square-o" />

@@ -88,5 +88,11 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ITemplateRegistration> TemplateRegistrations => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.TemplateRegistration.SpecializationType)
+            .Select(x => new TemplateRegistration(x))
+            .ToList<ITemplateRegistration>();
     }
 }

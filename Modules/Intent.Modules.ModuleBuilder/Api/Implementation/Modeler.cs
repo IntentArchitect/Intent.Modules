@@ -85,6 +85,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
+        [IntentManaged(Mode.Fully)]
+        public IList<ICoreType> CoreTypes => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.CoreType.SpecializationType)
+            .Select(x => new CoreType(x))
+            .ToList<ICoreType>();
     }
 
     public class TypeOrder

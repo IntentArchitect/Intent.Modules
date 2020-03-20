@@ -14,6 +14,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         IList<IElementSettings> ElementTypes { get; }
         IList<IAssociationSettings> AssociationTypes { get; }
         IPackageSettings PackageSettings { get; }
+        IList<ICoreType> CoreTypes { get; }
 
         string ApiNamespace { get; }
         string ModuleDependency { get; }

@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 
         public override IEnumerable<ITemplateRegistration> GetModels(IApplication application)
         {
-            return _metadataManager.GetMetadata<IElement>("Module Builder")
+            return _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
                 .Where(x => x.ReferencesSingleFile())
                 .Select(x => new TemplateRegistration(x))
                 .Where(x => x.GetTemplateSettings().ModelType() == null)

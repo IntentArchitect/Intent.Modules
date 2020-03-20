@@ -151,6 +151,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 new ElementSettingsPersistable
                 {
                     SpecializationType = x.Name,
+                    DisplayFunction = x.GetAdditionalProperties().DisplayTextFunction(),
                     Icon = GetIcon(x.GetIconFull()) ?? _defaultIconModel,
                     ExpandedIcon = GetIcon(x.GetIconFullExpanded()),
                     AllowRename = x.GetAdditionalProperties().AllowRename(),
@@ -161,7 +162,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     AllowFindInView = x.GetAdditionalProperties().AllowFindInView(),
                     AllowTypeReference = !x.GetAdditionalProperties().TypeReference().IsDisabled(),
                     TypeReferenceSetting = !x.GetAdditionalProperties().TypeReference().IsDisabled() ? new TypeReferenceSettingPersistable()
-                    { 
+                    {
                         IsRequired = x.GetAdditionalProperties().TypeReference().IsRequired(),
                         TargetTypes = x.GetAdditionalProperties().TargetTypes()?.Select(e => e.Name).ToArray(),
                         AllowIsNullable = x.GetAdditionalProperties().AllowNullable(),

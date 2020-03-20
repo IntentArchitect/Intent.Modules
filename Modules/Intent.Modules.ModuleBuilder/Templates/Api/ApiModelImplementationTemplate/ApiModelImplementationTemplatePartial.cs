@@ -45,6 +45,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
         private string GetCreationOptionTypeInterface(ICreationOption option, bool asCollection)
         {
             var @interface = GetTemplateClassName(ApiModelInterfaceTemplate.ApiModelInterfaceTemplate.TemplateId, option.Type.Id, throwIfNotFound: false);
+            if (@interface == null)
+            {
+                return null;
+            }
             return asCollection ? $"IList<{@interface}>" : @interface;
         }
 

@@ -24,6 +24,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\CoreTypeExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/CoreTypeExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\CreationOptionExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/CreationOptionExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -89,21 +94,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\OperationExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/OperationExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\OperationParameterExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/OperationParameterExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\OperationReturnTypeExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/OperationReturnTypeExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\OperationSettingsExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/OperationSettingsExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -111,11 +101,6 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\PackageSettingsExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/PackageSettingsExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\StereotypeDefinitionExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/StereotypeDefinitionExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -146,6 +131,11 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IContextMenu.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IContextMenu.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ICoreType.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ICoreType.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -234,6 +224,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\CoreType.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/CoreType.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\CreationOption.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/CreationOption.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -299,21 +294,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\Operation.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/Operation.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\OperationParameter.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/OperationParameter.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\OperationReturnType.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/OperationReturnType.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\OperationSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/OperationSettings.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -321,11 +301,6 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\PackageSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/PackageSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\StereotypeDefinition.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/StereotypeDefinition.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -339,21 +314,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IOperation.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IOperation.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IOperationParameter.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IOperationParameter.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IOperationReturnType.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IOperationReturnType.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IOperationSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IOperationSettings.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -361,11 +321,6 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IPackageSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IPackageSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IStereotypeDefinition.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IStereotypeDefinition.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>

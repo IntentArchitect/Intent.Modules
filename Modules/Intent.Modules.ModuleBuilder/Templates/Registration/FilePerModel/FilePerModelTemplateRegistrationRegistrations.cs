@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
 
         public override IEnumerable<ITemplateRegistration> GetModels(IApplication application)
         {
-            return _metadataManager.GetMetadata<IElement>("Module Builder")
+            return _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
                 .Where(x => x.ReferencesFilePerModel())
                 .Select(x => new TemplateRegistration(x))
                 .ToList();

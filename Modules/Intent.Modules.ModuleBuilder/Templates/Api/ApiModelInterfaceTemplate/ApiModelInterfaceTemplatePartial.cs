@@ -43,6 +43,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
         private string GetCreationOptionType(ICreationOption option)
         {
             var @interface = GetTemplateClassName(ApiModelInterfaceTemplate.TemplateId, option.Type.Id, throwIfNotFound: false);
+            if (@interface == null)
+            {
+                return null;
+            }
             return option.AllowMultiple ? $"IList<{@interface}>" : @interface;
         }
 

@@ -27,15 +27,15 @@
       <attributes />
       <operations />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
           <comment>Overrides the default creation option settings.</comment>
           <addedByDefault>false</addedByDefault>
           <properties>
-            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
-            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
-            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
-            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" display="Text" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -58,15 +58,15 @@
       <attributes />
       <operations />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
           <comment>Overrides the default creation option settings.</comment>
           <addedByDefault>false</addedByDefault>
           <properties>
-            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
-            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
-            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
-            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" display="Text" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -89,15 +89,15 @@
       <attributes />
       <operations />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
           <comment>Overrides the default creation option settings.</comment>
           <addedByDefault>false</addedByDefault>
           <properties>
-            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
-            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
-            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
-            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" display="Text" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -120,15 +120,15 @@
       <attributes />
       <operations />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
           <comment>Overrides the default creation option settings.</comment>
           <addedByDefault>false</addedByDefault>
           <properties>
-            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
-            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
-            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
-            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" display="Text" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -151,22 +151,22 @@
       <attributes />
       <operations />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
           <comment>Overrides the default creation option settings.</comment>
           <addedByDefault>false</addedByDefault>
           <properties>
-            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
-            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
-            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
-            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" display="Text" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <childElements />
     </childElement>
     <childElement id="3080c9c5-66d5-4571-973d-78f734440214" type="Creation Option">
-      <name>New Template Registraion</name>
+      <name>New Template Registration</name>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="3a871be2-b046-47c7-a17c-b403f09e6ac5">
@@ -182,15 +182,15 @@
       <attributes />
       <operations />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
           <comment>Overrides the default creation option settings.</comment>
           <addedByDefault>false</addedByDefault>
           <properties>
-            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
-            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
-            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
-            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" display="Text" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -201,7 +201,7 @@
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="5dd9b40f-fe17-465c-b750-c2024f424711">
-        <typeId>83EB0B0F-262B-49BF-BFCD-1B061F19BEB0</typeId>
+        <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -213,15 +213,15 @@
       <attributes />
       <operations />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
           <comment>Overrides the default creation option settings.</comment>
           <addedByDefault>false</addedByDefault>
           <properties>
-            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
-            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
-            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" isActive="true" />
-            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" display="Text" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -244,15 +244,15 @@
       <attributes />
       <operations />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
           <comment>Overrides the default creation option settings.</comment>
           <addedByDefault>false</addedByDefault>
           <properties>
-            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" isActive="true" />
-            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" isActive="true" />
-            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" value="0" isActive="true" />
-            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" value="true" isActive="true" />
+            <property name="241ad2ab-cf3c-4d1d-83df-bf7fc45fff25" display="Text" isActive="true" />
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="0" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

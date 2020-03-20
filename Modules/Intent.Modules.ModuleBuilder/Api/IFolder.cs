@@ -29,6 +29,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         IList<ITypeDefinition> Types { get; }
 
         IElement UnderlyingElement { get; }
+
+        IList<ITemplateRegistration> TemplateRegistrations { get; }
     }
 
 }
