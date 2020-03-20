@@ -11,35 +11,29 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class TemplateSettingsExtensions
     {
-        private static string[] TargetElementIds = new[]
-        {
-            "f65d2904-88c9-4501-873a-a4eec8303b1d", // Single File
-            "99cb461f-ec82-4dde-a804-e3393a5e2a8d", // File per Model
-            "d2931361-7cf0-4c79-9847-621c60886ef9"  // Custom
-        };
+        public const string SingleFileId = "f65d2904-88c9-4501-873a-a4eec8303b1d";
+        public const string FilePerModelId = "99cb461f-ec82-4dde-a804-e3393a5e2a8d";
+        public const string CustomId = "d2931361-7cf0-4c79-9847-621c60886ef9";
 
-        public static bool ReferencesSingleFile(IElement element)
+        public static bool ReferencesSingleFile(this IElement element)
         {
-            return element.TypeReference.Element.Id == TargetElementIds[0];
+            return element.TypeReference?.Element.Id == SingleFileId;
         }
 
-        public static bool ReferencesFilePerModel(IElement element)
+        public static bool ReferencesFilePerModel(this IElement element)
         {
-            return element.TypeReference.Element.Id == TargetElementIds[1];
+            return element.TypeReference?.Element.Id == FilePerModelId;
         }
 
-        public static bool ReferencesCustom(IElement element)
+        public static bool ReferencesCustom(this IElement element)
         {
-            return element.TypeReference.Element.Id == TargetElementIds[2];
+            return element.TypeReference?.Element.Id == CustomId;
         }
 
-        public static TemplateSettings GetTemplateSettings(IElement element)
+        public static TemplateSettings GetTemplateSettings(this ITemplateRegistration element)
         {
-            if (TargetElementIds.Contains(element.TypeReference?.Element?.Id))
-            {
-                return new TemplateSettings(element.GetStereotype("Template Settings"));
-            }
-            return null;
+            var stereotype = element.GetStereotype("Template Settings");
+            return stereotype != null ? new TemplateSettings(stereotype) : null;
         }
 
         public class TemplateSettings

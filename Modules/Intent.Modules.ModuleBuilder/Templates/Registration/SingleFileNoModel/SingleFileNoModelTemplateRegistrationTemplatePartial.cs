@@ -10,11 +10,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
-    partial class SingleFileNoModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IFileTemplate>
+    partial class SingleFileNoModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<ITemplateRegistration>
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel";
 
-        public SingleFileNoModelTemplateRegistrationTemplate(IProject project, IFileTemplate model) : base(TemplateId, project, model)
+        public SingleFileNoModelTemplateRegistrationTemplate(IProject project, ITemplateRegistration model) : base(TemplateId, project, model)
         {
         }
 

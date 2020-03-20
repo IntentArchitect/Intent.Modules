@@ -10,7 +10,7 @@ using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-<#=(GetModeler() != null ? string.Format("using {0};", GetModeler().ApiNamespace) : "")#>
+<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")#>
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -41,11 +41,11 @@ namespace <#= Namespace #>
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: "<#= Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "cs",
-                defaultLocationInProject: "<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? Model.Name.Replace("Template", "") : "" #>",
-                className: "<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                @namespace: "${Project.Name}<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel() ? "." + Model.Name.Replace("Template", "") : "" #>"
+                defaultLocationInProject: "<#= Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : "" #>",
+                className: "<#= Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                @namespace: "${Project.Name}<#= Model.IsFilePerModelTemplateRegistration() ? "." + Model.Name.Replace("Template", "") : "" #>"
             );
         }
 

@@ -33,20 +33,20 @@ namespace Intent.Modules.ModuleBuilder.Api
             return model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(model.GetFileTemplateSettings().Modeler()) : null;
         }
 
-        public static IModelerReference GetModeler(this ICSharpTemplate model)
-        {
-            return model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(model.GetFileTemplateSettings().Modeler()) : null;
-        }
+        //public static IModelerReference GetModeler(this ICSharpTemplate model)
+        //{
+        //    return model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(model.GetFileTemplateSettings().Modeler()) : null;
+        //}
 
         public static IModelerModelType GetModelType(this IFileTemplate model)
         {
             return model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(model.GetFileTemplateSettings().ModelType()) : null;
         }
 
-        public static IModelerModelType GetModelType(this ICSharpTemplate model)
-        {
-            return model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(model.GetFileTemplateSettings().ModelType()) : null;
-        }
+        //public static IModelerModelType GetModelType(this ICSharpTemplate model)
+        //{
+        //    return model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(model.GetFileTemplateSettings().ModelType()) : null;
+        //}
 
         //public static string GetTemplateBaseType(this IFileTemplate model)
         //{

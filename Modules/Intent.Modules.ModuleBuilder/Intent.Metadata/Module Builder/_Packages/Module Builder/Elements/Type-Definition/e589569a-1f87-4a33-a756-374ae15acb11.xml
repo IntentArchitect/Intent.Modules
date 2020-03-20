@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="6f9118d1-4e40-4749-a97b-2c429f79560c" type="Metadata Folder">
-  <name>metadata</name>
+<class id="e589569a-1f87-4a33-a756-374ae15acb11" type="Type-Definition">
+  <name>NewType</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>6572b98d-5e13-4d4b-9ffc-820057da974e</parentFolderId>
+  <parentFolderId>b24f3bdf-3ba1-4c66-8aa8-cf63a3ae7436</parentFolderId>
   <literals />
   <attributes />
   <operations />

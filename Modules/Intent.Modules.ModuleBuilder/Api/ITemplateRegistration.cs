@@ -8,8 +8,13 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface ITemplateRegistration : IMetadataModel, IHasStereotypes
+    public interface ITemplateRegistration : IMetadataModel, IHasStereotypes, IHasFolder
     {
         string Name { get; }
+        IModeler GetModeler();
+        IModelerModelType GetModelType();
+        bool IsSingleFileTemplateRegistration();
+        bool IsFilePerModelTemplateRegistration();
+        bool IsCustomTemplateRegistration();
     }
 }

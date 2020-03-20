@@ -13,7 +13,7 @@ using Intent.Modules.ModuleBuilder.Api;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Common
 {
-    public class TemplatePreProcessedFileTemplate : IntentProjectItemTemplateBase<IModuleBuilderElement>
+    public class TemplatePreProcessedFileTemplate : IntentProjectItemTemplateBase<ITemplateRegistration>
     {
         private readonly string _t4TemplateId;
         private readonly string _partialTemplateId;
@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
         public TemplatePreProcessedFileTemplate(
             string templateId,
             IProject project,
-            IModuleBuilderElement model,
+            ITemplateRegistration model,
             string t4TemplateId,
             string partialTemplateId)
                 : base(templateId, project, model)

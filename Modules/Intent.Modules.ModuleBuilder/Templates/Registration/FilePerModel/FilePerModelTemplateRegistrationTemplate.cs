@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class FilePerModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IFileTemplate>
+    public partial class FilePerModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<ITemplateRegistration>
     {
 #line hidden
         /// <summary>
@@ -42,7 +42,7 @@ using Intent.Templates;
 ");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((GetModeler() != null ? string.Format("using {0};", GetModeler().ApiNamespace) : "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().GetModelerSettings().APINamespace()) : "")));
             
             #line default
             #line hidden

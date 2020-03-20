@@ -8,10 +8,10 @@ namespace Intent.Modules.ModuleBuilder
 {
     public static class ModuleBuilderMetadataManagerExtensions
     {
-        public static IEnumerable<IFileTemplate> GetTemplateDefinitions(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ModuleBuilderMetadataProvider(metadataManager).GetTemplateDefinitions(application.Id);
-        }
+        //public static IEnumerable<IFileTemplate> GetTemplateDefinitions(this IMetadataManager metadataManager, IApplication application)
+        //{
+        //    return new ModuleBuilderMetadataProvider(metadataManager).GetTemplateDefinitions(application.Id);
+        //}
 
         public static bool IsCSharpTemplate(this IElement model)
         {

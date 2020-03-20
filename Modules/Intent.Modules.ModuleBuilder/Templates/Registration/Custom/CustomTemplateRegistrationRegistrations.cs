@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
 {
-    public class CustomTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<IFileTemplate>
+    public class CustomTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<ITemplateRegistration>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -21,15 +21,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
 
         public override string TemplateId => CustomTemplateRegistrationTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IFileTemplate model)
+        public override ITemplate CreateTemplateInstance(IProject project, ITemplateRegistration model)
         {
             return new CustomTemplateRegistrationTemplate(project, model);
         }
 
-        public override IEnumerable<IFileTemplate> GetModels(IApplication application)
+        public override IEnumerable<ITemplateRegistration> GetModels(IApplication application)
         {
-            return _metadataManager.GetTemplateDefinitions(application)
-                .Where(x => x.GetFileTemplateSettings().CreationMode().IsCustom())
+            return _metadataManager.GetMetadata<IElement>("Module Builder")
+                .Where(x => x.ReferencesCustom())
+                .Select(x => new TemplateRegistration(x))
                 .ToList();
         }
     }

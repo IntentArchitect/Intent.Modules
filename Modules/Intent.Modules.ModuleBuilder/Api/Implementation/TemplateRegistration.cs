@@ -16,19 +16,50 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public TemplateRegistration(IElement element)
         {
-            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (element.TypeReference == null)
             {
-                throw new Exception($"Cannot create a 'TemplateRegistration' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+                throw new Exception("Cannot create 'TemplateRegistration'. Element must have a type reference.");
+            }
+            if (!SpecializationType.Equals(element.TypeReference?.Element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new Exception($"Cannot create a 'TemplateRegistration' from element that has type-reference with specialization type '{element.TypeReference?.Element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = element.ParentElement != null ? new Folder(element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
 
         public string Name => _element.Name;
 
+        public IModeler GetModeler()
+        {
+            return GetModelType()?.Modeler;
+        }
+
+        public IModelerModelType GetModelType()
+        {
+            return this.GetTemplateSettings()?.ModelType() != null ? new ModelerModelType(this.GetTemplateSettings().ModelType()) : null;
+        }
+
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public IFolder Folder { get; }
+
+        public bool IsSingleFileTemplateRegistration()
+        {
+            return _element.ReferencesSingleFile();
+        }
+
+        public bool IsFilePerModelTemplateRegistration()
+        {
+            return _element.ReferencesFilePerModel();
+        }
+
+        public bool IsCustomTemplateRegistration()
+        {
+            return _element.ReferencesCustom();
+        }
 
         protected bool Equals(TemplateRegistration other)
         {

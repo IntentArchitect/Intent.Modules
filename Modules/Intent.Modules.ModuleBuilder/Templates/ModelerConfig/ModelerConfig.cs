@@ -158,10 +158,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                     AllowGenericTypes = x.GetAdditionalProperties().AllowGenericTypes(),
                     AllowMapping = x.GetAdditionalProperties().AllowMapping(),
                     AllowSorting = x.GetAdditionalProperties().AllowSorting(),
-                    AllowFindInView = x.GetAdditionalProperties().AllowFindinView(),
+                    AllowFindInView = x.GetAdditionalProperties().AllowFindInView(),
                     AllowTypeReference = !x.GetAdditionalProperties().TypeReference().IsDisabled(),
                     TypeReferenceSetting = !x.GetAdditionalProperties().TypeReference().IsDisabled() ? new TypeReferenceSettingPersistable()
-                    {
+                    { 
                         IsRequired = x.GetAdditionalProperties().TypeReference().IsRequired(),
                         TargetTypes = x.GetAdditionalProperties().TargetTypes()?.Select(e => e.Name).ToArray(),
                         AllowIsNullable = x.GetAdditionalProperties().AllowNullable(),
@@ -197,7 +197,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 DefaultName = literal.GetAdditionalProperties().DefaultName(),
                 AllowRename = literal.GetAdditionalProperties().AllowRename(),
                 AllowDuplicateNames = literal.GetAdditionalProperties().AllowDuplicateNames(),
-                AllowFindInView = literal.GetAdditionalProperties().AllowFindinView()
+                AllowFindInView = literal.GetAdditionalProperties().AllowFindInView()
             };
         }
 
@@ -214,7 +214,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 DefaultName = settings.GetAdditionalProperties().DefaultName(),
                 AllowRename = settings.GetAdditionalProperties().AllowRename(),
                 AllowDuplicateNames = settings.GetAdditionalProperties().AllowDuplicateNames(),
-                AllowFindInView = settings.GetAdditionalProperties().AllowFindinView(),
+                AllowFindInView = settings.GetAdditionalProperties().AllowFindInView(),
                 DefaultTypeId = settings.GetAdditionalProperties().DefaultTypeId(),
                 TargetTypes = settings.GetAdditionalProperties().TargetTypes().Select(x => x.Name).ToArray()
             };
@@ -231,7 +231,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 DefaultName = settings.GetAdditionalProperties().DefaultName(),
                 AllowRename = settings.GetAdditionalProperties().AllowRename(),
                 AllowDuplicateNames = settings.GetAdditionalProperties().AllowDuplicateNames(),
-                AllowFindInView = settings.GetAdditionalProperties().AllowFindinView(),
+                AllowFindInView = settings.GetAdditionalProperties().AllowFindInView(),
                 DefaultTypeId = settings.GetAdditionalProperties().DefaultTypeId(),
                 TargetTypes = settings.GetAdditionalProperties().TargetTypes().Select(x => x.Name).ToArray()
             };

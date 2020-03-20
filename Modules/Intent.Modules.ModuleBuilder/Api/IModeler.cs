@@ -3,7 +3,7 @@ using Intent.RoslynWeaver.Attributes;
 using System;
 using System.Collections.Generic;
 
-[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
@@ -14,5 +14,11 @@ namespace Intent.Modules.ModuleBuilder.Api
         IList<IElementSettings> ElementTypes { get; }
         IList<IAssociationSettings> AssociationTypes { get; }
         IPackageSettings PackageSettings { get; }
+
+        string ApiNamespace { get; }
+        string ModuleDependency { get; }
+        string ModuleVersion { get; }
+        string NuGetDependency { get; }
+        string NuGetVersion { get; }
     }
 }

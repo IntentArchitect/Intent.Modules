@@ -5,33 +5,33 @@ using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 using System.Linq;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Ignore)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class FileTemplate : IFileTemplate
+    internal class FileTemplate : TemplateRegistration, IFileTemplate
     {
         public const string SpecializationType = "File Template";
         private readonly IElement _element;
 
-        public FileTemplate(IElement element)
+        public FileTemplate(IElement element) : base(element)
         {
-            //if (element.SpecializationType != SpecializationType)
-            //{
-            //    throw new ArgumentException($"Invalid element type {element.SpecializationType}", nameof(element));
-            //}
+            if (element.SpecializationType != SpecializationType)
+            {
+                throw new ArgumentException($"Invalid element type {element.SpecializationType}", nameof(element));
+            }
             _element = element;
-            Folder = element.ParentElement != null ? new Folder(element.ParentElement) : null;
+            //Folder = element.ParentElement != null ? new Folder(element.ParentElement) : null;
         }
 
-        public string Id => _element.Id;
+        //public string Id => _element.Id;
 
-        public string Name => _element.Name;
+        //public string Name => _element.Name;
 
-        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+        //public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public IFolder Folder { get; }
+        //public IFolder Folder { get; }
 
         protected bool Equals(FileTemplate other)
         {

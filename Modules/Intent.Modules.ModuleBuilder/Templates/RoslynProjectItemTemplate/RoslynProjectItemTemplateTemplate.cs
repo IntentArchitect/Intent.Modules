@@ -48,7 +48,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.RoslynProjectItemTemplate
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(GetModeler() != null ? $@"<#@ import namespace=""{GetModeler().ApiNamespace}"" #>" : "")}
+{(Model.GetModeler() != null ? $@"<#@ import namespace=""{Model.GetModeler().ApiNamespace}"" #>" : "")}
 {TemplateBody()}";
         }
 
@@ -66,16 +66,10 @@ namespace <#= Namespace #>
 }";
         }
 
-
-        private IModelerReference GetModeler()
-        {
-            return Model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(Model.GetFileTemplateSettings().Modeler()) : null;
-        }
-
         private string GetModelType()
         {
-            var modelType = Model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(Model.GetFileTemplateSettings().ModelType()) : null;
-            if (Model.GetFileTemplateSettings().CreationMode().IsFileperModel())
+            var modelType = Model.GetModelType();
+            if (Model.IsFilePerModelTemplateRegistration())
             {
                 return modelType?.InterfaceName ?? "object";
             }

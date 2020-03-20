@@ -9,5 +9,6 @@
         string LoadMethod { get; }
         string PerModelTemplate { get; }
         string SingleListTemplate { get; }
+        IModeler Modeler { get; }
     }
 }

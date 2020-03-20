@@ -23,5 +23,76 @@
       </properties>
     </stereotype>
   </stereotypes>
-  <childElements />
+  <childElements>
+    <childElement id="c100b531-4e9c-42c4-a3b6-68b1bcbc2a67" type="Operation">
+      <name>Operation</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>90f7caba-f510-4b74-be1b-01893a724656</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="3edfa569-16f9-4157-9e9b-4d096f6d307a" type="Operation Parameter">
+          <name>param</name>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="bda12da3-9125-4456-9788-661e02f4ee55">
+            <typeId>e589569a-1f87-4a33-a756-374ae15acb11</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>c100b531-4e9c-42c4-a3b6-68b1bcbc2a67</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+        <childElement id="771dfdd9-62e0-451e-be5e-1e94df87dc2c" type="Operation Parameter">
+          <name>param2</name>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="f40fc102-af67-4444-bf4e-b59faa821de7">
+            <typeId>e589569a-1f87-4a33-a756-374ae15acb11</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>c100b531-4e9c-42c4-a3b6-68b1bcbc2a67</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+        <childElement id="967a9093-eac1-4b8c-8629-88794da230af" type="Operation Return Type">
+          <name>Operation Return Type</name>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="73227759-3c7c-4c65-bdf7-4d5f584eb47f">
+            <typeId>e589569a-1f87-4a33-a756-374ae15acb11</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>c100b531-4e9c-42c4-a3b6-68b1bcbc2a67</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
 </class>

@@ -61,6 +61,12 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new ElementSettings(x))
             .ToList<IElementSettings>();
 
+        public string ApiNamespace => this.GetModelerSettings().APINamespace();
+        public string ModuleDependency => null;
+        public string ModuleVersion => null;
+        public string NuGetDependency => null;
+        public string NuGetVersion => null;
+
         protected bool Equals(Modeler other)
         {
             return Equals(_element, other._element);

@@ -74,7 +74,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Allow Sorting");
             }
 
-            public bool AllowFindinView()
+            public bool AllowFindInView()
             {
                 return _stereotype.GetProperty<bool>("Allow Find in View");
             }

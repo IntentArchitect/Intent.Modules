@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class SingleFileListModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IFileTemplate>
+    public partial class SingleFileListModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<ITemplateRegistration>
     {
 #line hidden
         /// <summary>
@@ -42,7 +42,7 @@ using Intent.Templates;
 ");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().GetModelerSettings().APINamespace()) : "")));
             
             #line default
             #line hidden

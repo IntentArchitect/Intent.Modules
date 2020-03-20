@@ -8,8 +8,9 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface ICSharpTemplate : IMetadataModel, IHasStereotypes, IHasFolder, IModuleBuilderElement, IReferences<ITemplateRegistration>
+    public interface ICSharpTemplate : ITemplateRegistration
     {
         string Name { get; }
+        string GetExposedDecoratorContractType();
     }
 }

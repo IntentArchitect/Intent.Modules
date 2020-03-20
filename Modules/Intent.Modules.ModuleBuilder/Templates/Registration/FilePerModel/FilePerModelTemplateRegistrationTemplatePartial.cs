@@ -6,15 +6,16 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
 {
-    partial class FilePerModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<IFileTemplate>
+    partial class FilePerModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<ITemplateRegistration>
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.FilePerModel";
 
-        public FilePerModelTemplateRegistrationTemplate(IProject project, IFileTemplate model) : base(TemplateId, project, model)
+        public FilePerModelTemplateRegistrationTemplate(IProject project, ITemplateRegistration model) : base(TemplateId, project, model)
         {
         }
 
@@ -54,20 +55,20 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
             return Model.Name.Replace("Registrations", "Template");
         }
 
-        private IModelerReference GetModeler()
-        {
-            return Model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(Model.GetFileTemplateSettings().Modeler()) : null;
-        }
-
         private string GetModelType()
         {
-            var modelType = Model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(Model.GetFileTemplateSettings().ModelType()) : null;
-            return modelType?.InterfaceName ?? "object";
+            var modelType = Model.GetModelType();
+            if (Model.IsFilePerModelTemplateRegistration())
+            {
+                return modelType?.InterfaceName ?? "object";
+            }
+
+            return modelType == null ? "object" : $"IList<{modelType.InterfaceName}>";
         }
 
         public string GetModelsMethod()
         {
-            var model = new ModelerModelType(Model.GetFileTemplateSettings().ModelType());
+            var model = Model.GetModelType();
             return $"_metadataManager.Get{model.ClassName.ToPluralName()}(application)";
         }
     }
