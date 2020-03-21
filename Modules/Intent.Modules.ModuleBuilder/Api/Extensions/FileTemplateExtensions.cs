@@ -16,10 +16,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new ExposesDecoratorContract(stereotype) : null;
         }
 
-        public static FileTemplateSettings GetFileTemplateSettings(this IFileTemplate model)
+        public static FileSettings GetFileSettings(this IFileTemplate model)
         {
-            var stereotype = model.GetStereotype("File Template Settings");
-            return stereotype != null ? new FileTemplateSettings(stereotype) : null;
+            var stereotype = model.GetStereotype("File Settings");
+            return stereotype != null ? new FileSettings(stereotype) : null;
         }
 
 
@@ -39,28 +39,13 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         }
 
-        public class FileTemplateSettings
+        public class FileSettings
         {
             private IStereotype _stereotype;
 
-            public FileTemplateSettings(IStereotype stereotype)
+            public FileSettings(IStereotype stereotype)
             {
                 _stereotype = stereotype;
-            }
-
-            public CreationModeOptions CreationMode()
-            {
-                return new CreationModeOptions(_stereotype.GetProperty<string>("Creation Mode"));
-            }
-
-            public IElement Modeler()
-            {
-                return _stereotype.GetProperty<IElement>("Modeler");
-            }
-
-            public IElement ModelType()
-            {
-                return _stereotype.GetProperty<IElement>("Model Type");
             }
 
             public string FileExtension()
@@ -68,26 +53,23 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("File Extension");
             }
 
-            public class CreationModeOptions
+            public TemplatingMethodOptions TemplatingMethod()
+            {
+                return new TemplatingMethodOptions(_stereotype.GetProperty<string>("Templating Method"));
+            }
+
+            public class TemplatingMethodOptions
             {
                 public readonly string Value;
 
-                public CreationModeOptions(string value)
+                public TemplatingMethodOptions(string value)
                 {
                     Value = value;
                 }
 
-                public bool IsSingleFileNoModel()
+                public bool IsT4Template()
                 {
-                    return Value == "Single File (No Model)";
-                }
-                public bool IsSingleFileModelList()
-                {
-                    return Value == "Single File (Model List)";
-                }
-                public bool IsFileperModel()
-                {
-                    return Value == "File per Model";
+                    return Value == "T4 Template";
                 }
                 public bool IsCustom()
                 {

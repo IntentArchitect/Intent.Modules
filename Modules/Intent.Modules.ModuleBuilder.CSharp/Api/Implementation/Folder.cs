@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -10,21 +9,33 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.CSharp.Api
 {
-    internal class CSharpTemplate : TemplateRegistration, ICSharpTemplate
+    internal class Folder : IFolder
     {
-        public const string SpecializationType = "C# Template";
+        public const string SpecializationType = "Folder";
         private readonly IElement _element;
 
-        public CSharpTemplate(IElement element) : base(element)
+        public Folder(IElement element)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new Exception($"Cannot create a 'CSharpTemplate' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+                throw new Exception($"Cannot create a 'Folder' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
         }
 
-        protected bool Equals(CSharpTemplate other)
+        public string Id => _element.Id;
+
+        public string Name => _element.Name;
+
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ICSharpTemplate> CSharpTemplates => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.CSharpTemplate.SpecializationType)
+            .Select(x => new CSharpTemplate(x))
+            .ToList<ICSharpTemplate>();
+
+        protected bool Equals(Folder other)
         {
             return Equals(_element, other._element);
         }
@@ -34,7 +45,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CSharpTemplate)obj);
+            return Equals((Folder)obj);
         }
 
         public override int GetHashCode()

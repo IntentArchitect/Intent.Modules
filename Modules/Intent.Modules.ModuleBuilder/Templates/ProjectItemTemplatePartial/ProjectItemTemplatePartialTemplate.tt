@@ -14,7 +14,7 @@ using Intent.Modules.Common.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-<#=(GetModeler() != null ? string.Format("using {0};", GetModeler().ApiNamespace) : "")#>
+<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")#>
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -37,10 +37,17 @@ namespace <#= Namespace #>
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel()  ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                fileExtension: "<#= Model.GetFileTemplateSettings().FileExtension() #>",
-                defaultLocationInProject: "<#= Model.GetFileTemplateSettings().CreationMode().IsFileperModel()  ? Model.Name.Replace("Template", "") : "" #>"
+                fileName: "<#= Model.IsFilePerModelTemplateRegistration()  ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileExtension: "<#= Model.GetFileSettings().FileExtension() #>",
+                defaultLocationInProject: "<#= Model.IsFilePerModelTemplateRegistration()  ? Model.Name.Replace("Template", "") : "" #>"
             );
         }
+<#  if (Model.GetFileSettings().TemplatingMethod().IsCustom()) { #>
+
+        public override string TransformText()
+        {
+            throw new NotImplementedException("Implement custom template here");
+        }
+<#  } #>
     }
 }

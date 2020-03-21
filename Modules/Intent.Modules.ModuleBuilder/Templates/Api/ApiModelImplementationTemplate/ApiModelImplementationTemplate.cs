@@ -51,6 +51,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             this.Write(" : ");
             
             #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? (BaseType + ", ") : ""));
+            
+            #line default
+            #line hidden
+            
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(InterfaceName));
             
             #line default
@@ -69,29 +75,42 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             
             #line default
             #line hidden
-            this.Write("(IElement element)\r\n        {\r\n            if (!SpecializationType.Equals(element" +
-                    ".SpecializationType, StringComparison.InvariantCultureIgnoreCase))\r\n            " +
-                    "{\r\n                throw new Exception($\"Cannot create a \'");
+            this.Write("(IElement element)");
+            
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? " : base(element)" : ""));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        {\r\n            if (!SpecializationType.Equals(element.SpecializationTyp" +
+                    "e, StringComparison.InvariantCultureIgnoreCase))\r\n            {\r\n               " +
+                    " throw new Exception($\"Cannot create a \'");
             
             #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(@"' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'"");
-            }
-            _element = element;
-        }
-
-        public string Id => _element.Id;
-        
-        public string Name => _element.Name;
-        
-        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-        
-");
+            this.Write("\' from element with specialization type \'{element.SpecializationType}\'. Must be o" +
+                    "f type \'{SpecializationType}\'\");\r\n            }\r\n            _element = element;" +
+                    "\r\n        }\r\n\r\n");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+ if (BaseType == null) { 
+            
+            #line default
+            #line hidden
+            this.Write("        public string Id => _element.Id;\r\n        \r\n        public string Name =>" +
+                    " _element.Name;\r\n        \r\n        public IEnumerable<IStereotype> Stereotypes =" +
+                    "> _element.Stereotypes;\r\n\r\n");
+            
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
   if (Model.MenuOptions != null) {
         foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => GetCreationOptionTypeInterface(x, false) != null)) { 
             
@@ -99,62 +118,62 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             #line hidden
             this.Write("        [IntentManaged(Mode.Fully)]\r\n        public ");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeInterface(creationOption, creationOption.AllowMultiple)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionName(creationOption)));
             
             #line default
             #line hidden
             this.Write(" => _element.ChildElements\r\n            .Where(x => x.SpecializationType == Api.");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeClass(creationOption)));
             
             #line default
             #line hidden
             this.Write(".SpecializationType)\r\n            .Select(x => new ");
             
-            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeClass(creationOption)));
             
             #line default
             #line hidden
             this.Write("(x))\r\n");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
       if (creationOption.AllowMultiple) { 
             
             #line default
             #line hidden
             this.Write("            .ToList<");
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeInterface(creationOption, false)));
             
             #line default
             #line hidden
             this.Write(">();\r\n");
             
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
       } else { 
             
             #line default
             #line hidden
             this.Write("            .SingleOrDefault();\r\n");
             
-            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
       }
     }
             
@@ -162,7 +181,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             #line hidden
             this.Write("\r\n        protected bool Equals(");
             
-            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -179,7 +198,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             if (obj.GetType() != this.GetType()) return false;
             return Equals((");
             
-            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

@@ -12,6 +12,7 @@
   <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>d2c9bada-4d6d-46ca-97a7-d9cf91f66821</parentFolderId>
+  <order>0</order>
   <properties>
     <property id="b3a042c8-e7da-4a06-8494-9298feecb218">
       <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>

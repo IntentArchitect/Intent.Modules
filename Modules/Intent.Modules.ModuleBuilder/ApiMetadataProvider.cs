@@ -64,6 +64,15 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
+        public IList<ICoreType> GetCoreTypes(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == CoreType.SpecializationType)
+                .Select(x => new CoreType(x))
+                .ToList<ICoreType>();
+            return models;
+        }
+
         public IList<ICreationOption> GetCreationOptions(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
@@ -187,6 +196,15 @@ namespace Intent.Modules.ModuleBuilder
                 .Where(x => x.SpecializationType == PackageSettings.SpecializationType)
                 .Select(x => new PackageSettings(x))
                 .ToList<IPackageSettings>();
+            return models;
+        }
+
+        public IList<ITemplateRegistration> GetTemplateRegistrations(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == TemplateRegistration.SpecializationType)
+                .Select(x => new TemplateRegistration(x))
+                .ToList<ITemplateRegistration>();
             return models;
         }
 

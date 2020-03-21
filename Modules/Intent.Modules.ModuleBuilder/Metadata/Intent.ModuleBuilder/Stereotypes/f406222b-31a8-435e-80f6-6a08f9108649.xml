@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="f406222b-31a8-435e-80f6-6a08f9108649">
-  <name>Additional Properties</name>
+  <name>Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
     <element>element settings</element>
   </targetElements>
-  <applyMode>on-create</applyMode>
+  <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayFunction />
   <autoAdd>false</autoAdd>
   <parentFolderId>ac2b161d-10ef-408e-b084-3f2ba850e9a4</parentFolderId>
+  <order>0</order>
   <properties>
     <property id="0632053a-6b40-47a0-857f-6840e322344c">
       <name>Display Text Function</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
+      <placeholder>(default)</placeholder>
+      <defaultValue />
       <valueOptions />
       <lookupTypes />
     </property>

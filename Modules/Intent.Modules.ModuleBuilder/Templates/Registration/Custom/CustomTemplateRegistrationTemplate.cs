@@ -40,17 +40,16 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Registrations;
 using Intent.Templates;
-using Intent.Templates.Registrations;
 ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -58,7 +57,7 @@ using Intent.Templates.Registrations;
             this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n   " +
                     " public class ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -66,7 +65,7 @@ using Intent.Templates.Registrations;
             this.Write(" : IProjectTemplateRegistration\r\n    {\r\n        private readonly IMetadataManager" +
                     " _metadataManager;\r\n\r\n        public ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -74,7 +73,7 @@ using Intent.Templates.Registrations;
             this.Write("(IMetadataManager metadataManager)\r\n        {\r\n            _metadataManager = met" +
                     "adataManager;\r\n        }\r\n\r\n        public string TemplateId =>  ");
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default
@@ -83,7 +82,7 @@ using Intent.Templates.Registrations;
                     "stery, IApplication applicationManager)\r\n        {\r\n            registery.Regist" +
                     "er(TemplateId, project => new ");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default

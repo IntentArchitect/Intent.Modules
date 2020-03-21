@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 <#@ import namespace=""Intent.Modules.Common"" #>
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(GetModeler() != null ? $@"<#@ import namespace=""{GetModeler().ApiNamespace}"" #>" : "")}
+{(Model.GetModeler() != null ? $@"<#@ import namespace=""{Model.GetModeler().ApiNamespace}"" #>" : "")}
 
 // Place your file template logic here
 ";
@@ -57,15 +57,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
             return nameof(IntentProjectItemTemplateBase);
         }
 
-        private IModelerReference GetModeler()
-        {
-            return Model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(Model.GetFileTemplateSettings().Modeler()) : null;
-        }
-
         private string GetModelType()
         {
-            var modelType = Model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(Model.GetFileTemplateSettings().ModelType()) : null;
-            if (Model.GetFileTemplateSettings().CreationMode().IsFileperModel())
+            var modelType = Model.GetModelType();
+            if (Model.IsFilePerModelTemplateRegistration())
             {
                 return modelType?.InterfaceName ?? "object";
             }

@@ -11,6 +11,7 @@
   <displayFunction>[${ModelerType}]</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
+  <order>0</order>
   <properties>
     <property id="4aa74c35-6eff-41a3-be11-a2f82ca80150">
       <name>Modeler Type</name>

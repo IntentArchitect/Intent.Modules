@@ -9,7 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class TemplateRegistration : ITemplateRegistration
+    public class TemplateRegistration : ITemplateRegistration
     {
         public const string SpecializationType = "Template Registration";
         private readonly IElement _element;

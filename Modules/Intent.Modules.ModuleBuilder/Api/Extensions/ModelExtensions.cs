@@ -28,20 +28,20 @@ namespace Intent.Modules.ModuleBuilder.Api
         //    }
         //}
 
-        public static IModelerReference GetModeler(this IFileTemplate model)
-        {
-            return model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(model.GetFileTemplateSettings().Modeler()) : null;
-        }
+        //public static IModelerReference GetModeler(this IFileTemplate model)
+        //{
+        //    return model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(model.GetFileTemplateSettings().Modeler()) : null;
+        //}
 
         //public static IModelerReference GetModeler(this ICSharpTemplate model)
         //{
         //    return model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(model.GetFileTemplateSettings().Modeler()) : null;
         //}
 
-        public static IModelerModelType GetModelType(this IFileTemplate model)
-        {
-            return model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(model.GetFileTemplateSettings().ModelType()) : null;
-        }
+        //public static IModelerModelType GetModelType(this IFileTemplate model)
+        //{
+        //    return model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(model.GetFileTemplateSettings().ModelType()) : null;
+        //}
 
         //public static IModelerModelType GetModelType(this ICSharpTemplate model)
         //{
@@ -117,12 +117,12 @@ namespace Intent.Modules.ModuleBuilder.Api
         //    }
         //}
 
-        public static string GetImplementerDecoratorContractType(this IModuleBuilderElement model)
+        public static string GetImplementerDecoratorContractType(this ITemplateRegistration model)
         {
             return model.GetStereotypeProperty<string>("Implements Decorator Contract", "Type Fullname");
         }
 
-        public static string GetExposedDecoratorContractType(this IModuleBuilderElement model)
+        public static string GetExposedDecoratorContractType(this ITemplateRegistration model)
         {
             return model.GetStereotypeProperty<string>("Exposes Decorator Contract", "Type Fullname");
         }

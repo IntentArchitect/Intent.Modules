@@ -151,24 +151,24 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
                 new ElementSettingsPersistable
                 {
                     SpecializationType = x.Name,
-                    DisplayFunction = x.GetAdditionalProperties().DisplayTextFunction(),
+                    DisplayFunction = x.GetSettings().DisplayTextFunction(),
                     Icon = GetIcon(x.GetIconFull()) ?? _defaultIconModel,
                     ExpandedIcon = GetIcon(x.GetIconFullExpanded()),
-                    AllowRename = x.GetAdditionalProperties().AllowRename(),
-                    AllowAbstract = x.GetAdditionalProperties().AllowAbstract(),
-                    AllowGenericTypes = x.GetAdditionalProperties().AllowGenericTypes(),
-                    AllowMapping = x.GetAdditionalProperties().AllowMapping(),
-                    AllowSorting = x.GetAdditionalProperties().AllowSorting(),
-                    AllowFindInView = x.GetAdditionalProperties().AllowFindInView(),
-                    AllowTypeReference = !x.GetAdditionalProperties().TypeReference().IsDisabled(),
-                    TypeReferenceSetting = !x.GetAdditionalProperties().TypeReference().IsDisabled() ? new TypeReferenceSettingPersistable()
+                    AllowRename = x.GetSettings().AllowRename(),
+                    AllowAbstract = x.GetSettings().AllowAbstract(),
+                    AllowGenericTypes = x.GetSettings().AllowGenericTypes(),
+                    AllowMapping = x.GetSettings().AllowMapping(),
+                    AllowSorting = x.GetSettings().AllowSorting(),
+                    AllowFindInView = x.GetSettings().AllowFindInView(),
+                    AllowTypeReference = !x.GetSettings().TypeReference().IsDisabled(),
+                    TypeReferenceSetting = !x.GetSettings().TypeReference().IsDisabled() ? new TypeReferenceSettingPersistable()
                     {
-                        IsRequired = x.GetAdditionalProperties().TypeReference().IsRequired(),
-                        TargetTypes = x.GetAdditionalProperties().TargetTypes()?.Select(e => e.Name).ToArray(),
-                        AllowIsNullable = x.GetAdditionalProperties().AllowNullable(),
-                        AllowIsCollection = x.GetAdditionalProperties().AllowCollection(),
+                        IsRequired = x.GetSettings().TypeReference().IsRequired(),
+                        TargetTypes = x.GetSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
+                        AllowIsNullable = x.GetSettings().AllowNullable(),
+                        AllowIsCollection = x.GetSettings().AllowCollection(),
                     } : null, 
-                    DefaultTypeId = x.GetAdditionalProperties().DefaultTypeId(),
+                    DefaultTypeId = x.GetSettings().DefaultTypeId(),
                     DiagramSettings = null, // TODO JL / GCB
                     LiteralSettings = x.LiteralSettings?.Any() == true
                         ? x.LiteralSettings.Select(GetLiteralSettings).ToArray()

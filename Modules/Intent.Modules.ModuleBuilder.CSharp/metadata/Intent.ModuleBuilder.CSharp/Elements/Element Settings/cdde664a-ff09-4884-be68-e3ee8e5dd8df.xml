@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="dc79fd61-7e57-44c8-ad40-14a7643b89c8" type="Element Settings">
-  <name>Core Type</name>
+<class id="cdde664a-ff09-4884-be68-e3ee8e5dd8df" type="Element Settings">
+  <name>Folder</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>4f0ed839-5d9b-4e2e-924c-34fbc283466c</parentFolderId>
+  <parentFolderId>39915f5a-7cc2-413c-98c5-f1e6edb999d1</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -12,8 +12,8 @@
     <stereotype stereotypeDefinitionId="3714391e-cb1c-47db-9dac-16fdf2b2d57f" name="Icon (Full)">
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" display="Type" value="UrlImagePath" isActive="true" />
-        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" display="Source" value="./img/icons/common/StereotypeDef_256x.png" isActive="true" />
+        <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" display="Type" value="FontAwesome" isActive="true" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" display="Source" value="file-o" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="72fa6cf4-ce3c-4162-944f-392304e12009" name="Default Creation Options">
@@ -26,10 +26,10 @@
         <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
       </properties>
     </stereotype>
-    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Additional Properties">
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />

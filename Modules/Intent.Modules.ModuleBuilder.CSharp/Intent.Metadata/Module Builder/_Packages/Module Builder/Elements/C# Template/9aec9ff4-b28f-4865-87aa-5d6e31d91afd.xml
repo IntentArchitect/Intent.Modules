@@ -4,7 +4,7 @@
   <isAbstract>false</isAbstract>
   <genericTypes />
   <typeReference id="7ee96288-b847-450e-8aef-1cb54f61aa9c">
-    <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
+    <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <stereotypes />
@@ -16,19 +16,10 @@
   <attributes />
   <operations />
   <stereotypes>
-    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6">
-      <addedByDefault>false</addedByDefault>
-      <properties>
-        <property name="311d788f-7582-4c27-9a4d-e0db1439c327" value="File per Model" isActive="true" />
-        <property name="c2283d15-4b57-4ed9-8aae-6efc73039034" value="39915f5a-7cc2-413c-98c5-f1e6edb999d1" isActive="true" />
-        <property name="987590ee-a5ca-45ce-b742-0ee764b6b6e9" value="f6456232-0f1b-4235-b5f8-b4cce548ca59" isActive="true" />
-        <property name="329d0550-b81b-4db6-a99b-05d90360d432" value="txt" isActive="true" />
-      </properties>
-    </stereotype>
-    <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61">
+    <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="75b89367-1808-43f8-9f18-785915ec1630" value="" isActive="true" />
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="f6456232-0f1b-4235-b5f8-b4cce548ca59" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

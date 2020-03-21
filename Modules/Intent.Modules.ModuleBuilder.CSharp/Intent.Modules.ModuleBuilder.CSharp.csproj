@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CSharpTemplatePartial.cs</LastGenOutput>
@@ -23,13 +27,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CSharpTemplate.cs</LastGenOutput>
     </None>
+  
     <None Update="Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CSharpTemplatePartial.cs</LastGenOutput>
-    </None>
-    <None Update="Templates\CSharpTemplate\CSharpTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>CSharpTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -48,15 +49,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>CSharpTemplate.tt</DependentUpon>
     </Compile>
+  
     <Compile Update="Templates\CSharpTemplatePartial\CSharpTemplatePartial.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>CSharpTemplatePartial.tt</DependentUpon>
-    </Compile>
-    <Compile Update="Templates\CSharpTemplate\CSharpTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>CSharpTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

@@ -15,6 +15,7 @@
   <displayFunction>${!Source || Source == "file-o" ? "[Default Icon!]" : ""}</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
+  <order>2</order>
   <properties>
     <property id="d6a4f65c-4748-401d-b872-a01df468a2e8">
       <name>Type</name>

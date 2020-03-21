@@ -42,7 +42,7 @@ using System.Linq;
 ");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((GetModeler() != null ? string.Format("using {0};", GetModeler().ApiNamespace) : "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")));
             
             #line default
             #line hidden
@@ -116,25 +116,40 @@ using System.Linq;
                 fileName: """);
             
             #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileTemplateSettings().CreationMode().IsFileperModel()  ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration()  ? "${Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
             this.Write("\",\r\n                fileExtension: \"");
             
             #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileTemplateSettings().FileExtension()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileSettings().FileExtension()));
             
             #line default
             #line hidden
             this.Write("\",\r\n                defaultLocationInProject: \"");
             
             #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetFileTemplateSettings().CreationMode().IsFileperModel()  ? Model.Name.Replace("Template", "") : ""));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration()  ? Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden
-            this.Write("\"\r\n            );\r\n        }\r\n    }\r\n}");
+            this.Write("\"\r\n            );\r\n        }\r\n");
+            
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+  if (Model.GetFileSettings().TemplatingMethod().IsCustom()) { 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        public override string TransformText()\r\n        {\r\n            throw ne" +
+                    "w NotImplementedException(\"Implement custom template here\");\r\n        }\r\n");
+            
+            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

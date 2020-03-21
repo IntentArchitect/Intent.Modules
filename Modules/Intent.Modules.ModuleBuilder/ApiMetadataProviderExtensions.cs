@@ -37,6 +37,11 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetContextMenus(application);
         }
 
+        public static IList<ICoreType> GetCoreTypes(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetCoreTypes(application);
+        }
+
         public static IList<ICreationOption> GetCreationOptions(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetCreationOptions(application);
@@ -105,6 +110,11 @@ namespace Intent.Modules.ModuleBuilder
         public static IList<IPackageSettings> GetPackageSettings(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetPackageSettings(application);
+        }
+
+        public static IList<ITemplateRegistration> GetTemplateRegistrations(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetTemplateRegistrations(application);
         }
 
         public static IList<ITypeDefinition> GetTypeDefinitions(this IMetadataManager metadataManager, IApplication application)

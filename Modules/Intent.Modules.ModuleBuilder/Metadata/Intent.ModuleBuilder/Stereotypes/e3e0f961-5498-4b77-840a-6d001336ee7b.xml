@@ -11,6 +11,7 @@
   <displayFunction />
   <autoAdd>false</autoAdd>
   <parentFolderId>64514d1f-63f5-40c0-9fd2-88e908951519</parentFolderId>
+  <order>0</order>
   <properties>
     <property id="cc7a58a7-836e-47c1-b3af-190610e571f0">
       <name>Is Stereotype Property Target</name>

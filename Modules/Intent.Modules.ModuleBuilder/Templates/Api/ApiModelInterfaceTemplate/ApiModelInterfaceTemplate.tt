@@ -12,15 +12,17 @@ using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
-    public interface <#= ClassName #> : IMetadataModel, IHasStereotypes
+    public interface <#= ClassName #> : <#= BaseType != null ? BaseType : "IMetadataModel, IHasStereotypes" #>
     {
+<# if (BaseType == null) { #>
         string Name { get; }
-<#  if (Model.ContextMenu != null) {
-        foreach(var creationOption in Model.ContextMenu.CreationOptions.Where(x => GetCreationOptionType(x) != null)) { #>
+<#  } #>
+<#  if (Model.MenuOptions != null) {
+        foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => GetCreationOptionType(x) != null)) { #>
         <#= GetCreationOptionType(creationOption) #> <#= GetCreationOptionName(creationOption) #> { get; }
 <#      }
     }#>

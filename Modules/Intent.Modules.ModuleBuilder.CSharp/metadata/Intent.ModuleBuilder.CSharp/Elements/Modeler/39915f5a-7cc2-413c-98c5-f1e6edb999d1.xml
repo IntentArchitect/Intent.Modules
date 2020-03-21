@@ -9,11 +9,11 @@
   <attributes />
   <operations />
   <stereotypes>
-    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47">
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Modeler Settings">
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="4aa74c35-6eff-41a3-be11-a2f82ca80150" value="Extension" isActive="true" />
-        <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" value="Intent.Modules.ModuleBuilder.CSharp.Api" isActive="true" />
+        <property name="4aa74c35-6eff-41a3-be11-a2f82ca80150" display="Modeler Type" value="Extension" isActive="true" />
+        <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Modules.ModuleBuilder.CSharp.Api" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

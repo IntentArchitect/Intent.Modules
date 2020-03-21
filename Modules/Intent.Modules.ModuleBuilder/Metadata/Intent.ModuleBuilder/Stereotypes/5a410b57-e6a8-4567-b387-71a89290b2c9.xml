@@ -11,6 +11,7 @@
   <displayFunction />
   <autoAdd>false</autoAdd>
   <parentFolderId>5a60c1d1-d504-45f6-a32a-de24c7d60e44</parentFolderId>
+  <order>0</order>
   <properties>
     <property id="763a1f02-cdc2-4b43-a763-5ff38d59af60">
       <name>Target Types</name>

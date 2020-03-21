@@ -12,13 +12,38 @@
     </FileLog>
     <FileLog>
       <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Api\Extensions\FolderExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/FolderExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Api\ICSharpTemplate.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/ICSharpTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Api\IFolder.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IFolder.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Api\Implementation\CSharpTemplate.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/CSharpTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Api\Implementation\Folder.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/Folder.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\ApiMetadataProvider.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
@@ -39,16 +64,6 @@
       <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplate\CSharpTemplate.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/CSharpTemplate/CSharpTemplate.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplate\CSharpTemplate.tt</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/CSharpTemplate/CSharpTemplate.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>

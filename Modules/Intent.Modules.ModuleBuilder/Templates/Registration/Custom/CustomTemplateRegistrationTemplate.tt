@@ -15,7 +15,6 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Registrations;
 using Intent.Templates;
-using Intent.Templates.Registrations;
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 

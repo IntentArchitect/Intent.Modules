@@ -11,6 +11,7 @@
   <displayFunction />
   <autoAdd>false</autoAdd>
   <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
+  <order>0</order>
   <properties>
     <property id="8acbb25a-9b8a-4da2-ba42-7c349851f049">
       <comment>The decorator will specify namespaces that will be included when the template generation runs. In other words, if your decorator is aimed at C# code, you specify the namespaces that will form part of the "using My.Namespace;" code when any templates (that the decorator depends on) gets executed.</comment>

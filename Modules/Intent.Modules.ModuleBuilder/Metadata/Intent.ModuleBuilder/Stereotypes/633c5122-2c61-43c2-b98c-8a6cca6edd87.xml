@@ -11,6 +11,7 @@
   <displayFunction />
   <autoAdd>false</autoAdd>
   <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
+  <order>0</order>
   <properties>
     <property id="7ff3d40f-7df8-4093-9177-3baf46d000c5">
       <name>Namespace</name>

@@ -10,12 +10,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class ElementSettingsExtensions
     {
-        public static AdditionalProperties GetAdditionalProperties(this IElementSettings model)
-        {
-            var stereotype = model.GetStereotype("Additional Properties");
-            return stereotype != null ? new AdditionalProperties(stereotype) : null;
-        }
-
         public static DefaultCreationOptions GetDefaultCreationOptions(this IElementSettings model)
         {
             var stereotype = model.GetStereotype("Default Creation Options");
@@ -34,100 +28,12 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new IconFullExpanded(stereotype) : null;
         }
 
-
-        public class AdditionalProperties
+        public static Settings GetSettings(this IElementSettings model)
         {
-            private IStereotype _stereotype;
-
-            public AdditionalProperties(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string DisplayTextFunction()
-            {
-                return _stereotype.GetProperty<string>("Display Text Function");
-            }
-
-            public bool AllowRename()
-            {
-                return _stereotype.GetProperty<bool>("Allow Rename");
-            }
-
-            public bool AllowAbstract()
-            {
-                return _stereotype.GetProperty<bool>("Allow Abstract");
-            }
-
-            public bool AllowGenericTypes()
-            {
-                return _stereotype.GetProperty<bool>("Allow Generic Types");
-            }
-
-            public bool AllowMapping()
-            {
-                return _stereotype.GetProperty<bool>("Allow Mapping");
-            }
-
-            public bool AllowSorting()
-            {
-                return _stereotype.GetProperty<bool>("Allow Sorting");
-            }
-
-            public bool AllowFindInView()
-            {
-                return _stereotype.GetProperty<bool>("Allow Find in View");
-            }
-
-            public TypeReferenceOptions TypeReference()
-            {
-                return new TypeReferenceOptions(_stereotype.GetProperty<string>("Type Reference"));
-            }
-
-            public IElement[] TargetTypes()
-            {
-                return _stereotype.GetProperty<IElement[]>("Target Types");
-            }
-
-            public string DefaultTypeId()
-            {
-                return _stereotype.GetProperty<string>("Default Type Id");
-            }
-
-            public bool AllowNullable()
-            {
-                return _stereotype.GetProperty<bool>("Allow Nullable");
-            }
-
-            public bool AllowCollection()
-            {
-                return _stereotype.GetProperty<bool>("Allow Collection");
-            }
-
-            public class TypeReferenceOptions
-            {
-                public readonly string Value;
-
-                public TypeReferenceOptions(string value)
-                {
-                    Value = value;
-                }
-
-                public bool IsDisabled()
-                {
-                    return Value == "Disabled";
-                }
-                public bool IsOptional()
-                {
-                    return Value == "Optional";
-                }
-                public bool IsRequired()
-                {
-                    return Value == "Required";
-                }
-            }
-
+            var stereotype = model.GetStereotype("Settings");
+            return stereotype != null ? new Settings(stereotype) : null;
         }
+
 
         public class DefaultCreationOptions
         {
@@ -259,6 +165,100 @@ namespace Intent.Modules.ModuleBuilder.Api
                 public bool IsInternal()
                 {
                     return Value == "Internal";
+                }
+            }
+
+        }
+
+        public class Settings
+        {
+            private IStereotype _stereotype;
+
+            public Settings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string DisplayTextFunction()
+            {
+                return _stereotype.GetProperty<string>("Display Text Function");
+            }
+
+            public bool AllowRename()
+            {
+                return _stereotype.GetProperty<bool>("Allow Rename");
+            }
+
+            public bool AllowAbstract()
+            {
+                return _stereotype.GetProperty<bool>("Allow Abstract");
+            }
+
+            public bool AllowGenericTypes()
+            {
+                return _stereotype.GetProperty<bool>("Allow Generic Types");
+            }
+
+            public bool AllowMapping()
+            {
+                return _stereotype.GetProperty<bool>("Allow Mapping");
+            }
+
+            public bool AllowSorting()
+            {
+                return _stereotype.GetProperty<bool>("Allow Sorting");
+            }
+
+            public bool AllowFindInView()
+            {
+                return _stereotype.GetProperty<bool>("Allow Find in View");
+            }
+
+            public TypeReferenceOptions TypeReference()
+            {
+                return new TypeReferenceOptions(_stereotype.GetProperty<string>("Type Reference"));
+            }
+
+            public IElement[] TargetTypes()
+            {
+                return _stereotype.GetProperty<IElement[]>("Target Types");
+            }
+
+            public string DefaultTypeId()
+            {
+                return _stereotype.GetProperty<string>("Default Type Id");
+            }
+
+            public bool AllowNullable()
+            {
+                return _stereotype.GetProperty<bool>("Allow Nullable");
+            }
+
+            public bool AllowCollection()
+            {
+                return _stereotype.GetProperty<bool>("Allow Collection");
+            }
+
+            public class TypeReferenceOptions
+            {
+                public readonly string Value;
+
+                public TypeReferenceOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsDisabled()
+                {
+                    return Value == "Disabled";
+                }
+                public bool IsOptional()
+                {
+                    return Value == "Optional";
+                }
+                public bool IsRequired()
+                {
+                    return Value == "Required";
                 }
             }
 

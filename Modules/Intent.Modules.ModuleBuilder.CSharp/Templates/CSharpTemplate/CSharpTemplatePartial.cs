@@ -35,5 +35,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
                 defaultLocationInProject: "CSharp"
             );
         }
+
+        public override string TransformText()
+        {
+            throw new NotImplementedException("Implement custom template here");
+        }
     }
 }

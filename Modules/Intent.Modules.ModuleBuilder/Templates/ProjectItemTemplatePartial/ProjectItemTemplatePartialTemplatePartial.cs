@@ -19,9 +19,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
         {
             AddNugetDependency(NugetPackages.IntentModulesCommon);
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
-            if (!string.IsNullOrWhiteSpace(GetModeler()?.NuGetDependency))
+            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.NuGetDependency))
             {
-                AddNugetDependency(new NugetPackageInfo(GetModeler().NuGetDependency, GetModeler().NuGetVersion));
+                AddNugetDependency(new NugetPackageInfo(Model.GetModeler().NuGetDependency, Model.GetModeler().NuGetVersion));
             }
         }
 
@@ -57,21 +57,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
             {
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "File Template" },
-                { "Module Dependency", GetModeler()?.ModuleDependency },
-                { "Module Dependency Version", GetModeler()?.ModuleVersion }, 
+                { "Module Dependency", Model.GetModeler()?.ModuleDependency },
+                { "Module Dependency Version", Model.GetModeler()?.ModuleVersion }, 
                 { "ModelId", Model.Id }
             });
         }
 
-        private IModelerReference GetModeler()
-        {
-            return Model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(Model.GetFileTemplateSettings().Modeler()) : null;
-        }
-
         private string GetModelType()
         {
-            var modelType = Model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(Model.GetFileTemplateSettings().ModelType()) : null;
-            if (Model.GetFileTemplateSettings().CreationMode().IsFileperModel())
+            var modelType = Model.GetModelType();
+            if (Model.IsFilePerModelTemplateRegistration())
             {
                 return modelType?.InterfaceName ?? "object";
             }

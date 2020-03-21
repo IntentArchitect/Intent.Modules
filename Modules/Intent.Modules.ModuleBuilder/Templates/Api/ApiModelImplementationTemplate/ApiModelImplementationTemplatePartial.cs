@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api;
@@ -41,6 +42,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
         }
 
         public string InterfaceName => GetTemplateClassName(ApiModelInterfaceTemplate.ApiModelInterfaceTemplate.TemplateId, Model);
+
+        public string BaseType => (!Model.GetSettings().TypeReference().IsDisabled()
+                                   && Model.GetSettings().TargetTypes().Length == 1)
+            ? GetTemplateClassName(TemplateId, Model.GetSettings().TargetTypes().Single().Id, throwIfNotFound: false) ?? Model.GetSettings().TargetTypes().Single().Name.ToCSharpIdentifier()
+            : null;
+
 
         private string GetCreationOptionTypeInterface(ICreationOption option, bool asCollection)
         {

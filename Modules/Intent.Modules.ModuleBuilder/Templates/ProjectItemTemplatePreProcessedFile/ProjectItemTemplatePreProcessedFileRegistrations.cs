@@ -38,6 +38,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessed
         public override IEnumerable<IFileTemplate> GetModels(IApplication application)
         {
             return _metadataManager.GetFileTemplates(application)
+                .Where(x => x.GetFileSettings().TemplatingMethod().IsT4Template())
                 .ToList();
         }
     }
