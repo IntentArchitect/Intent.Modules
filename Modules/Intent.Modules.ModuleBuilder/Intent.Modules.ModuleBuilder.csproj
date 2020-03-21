@@ -8,10 +8,19 @@
   <ItemGroup>
     <Compile Remove="Api\Modeler\**" />
     <Compile Remove="Intent.Metadata\**" />
+    <Compile Remove="Templates\RoslynProjectItemTemplatePartial\**" />
+    <Compile Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
+    <Compile Remove="Templates\RoslynProjectItemTemplate\**" />
     <EmbeddedResource Remove="Api\Modeler\**" />
     <EmbeddedResource Remove="Intent.Metadata\**" />
+    <EmbeddedResource Remove="Templates\RoslynProjectItemTemplatePartial\**" />
+    <EmbeddedResource Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
+    <EmbeddedResource Remove="Templates\RoslynProjectItemTemplate\**" />
     <None Remove="Api\Modeler\**" />
     <None Remove="Intent.Metadata\**" />
+    <None Remove="Templates\RoslynProjectItemTemplatePartial\**" />
+    <None Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
+    <None Remove="Templates\RoslynProjectItemTemplate\**" />
     <None Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiMetadataProviderExtensions.cs</LastGenOutput>
@@ -139,11 +148,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>SingleFileNoModelTemplateRegistrationTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Update="Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>RoslynProjectItemTemplatePartialTemplate.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -174,10 +178,6 @@
     <None Update="Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>SingleFileNoModelTemplateRegistrationTemplate.cs</LastGenOutput>
-    </None>
-    <None Update="Templates\RoslynProjectItemTemplatePartial\RoslynProjectItemTemplatePartialTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>RoslynProjectItemTemplatePartialTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

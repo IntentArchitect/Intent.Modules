@@ -34,12 +34,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes { get; }
 
         [IntentManaged(Mode.Fully)]
-        public IList<ICSharpTemplate> CSharpTemplates => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.CSharpTemplate.SpecializationType)
-            .Select(x => new CSharpTemplate(x))
-            .ToList<ICSharpTemplate>();
-
-        [IntentManaged(Mode.Fully)]
         public IList<IFileTemplate> FileTemplates => _element.ChildElements
             .Where(x => x.SpecializationType == Api.FileTemplate.SpecializationType)
             .Select(x => new FileTemplate(x))

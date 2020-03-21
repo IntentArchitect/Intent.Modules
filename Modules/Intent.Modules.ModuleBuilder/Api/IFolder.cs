@@ -16,8 +16,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         IFolder ParentFolder { get; }
 
-        IList<ICSharpTemplate> CSharpTemplates { get; }
-
         IList<IFileTemplate> FileTemplates { get; }
 
         IList<IFolder> Folders { get; }

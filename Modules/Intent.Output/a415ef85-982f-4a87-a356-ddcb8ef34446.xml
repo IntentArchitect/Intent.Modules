@@ -34,11 +34,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\CSharpTemplateExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/CSharpTemplateExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\DecoratorExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/DecoratorExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -144,11 +139,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ICSharpTemplate.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ICSharpTemplate.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IDecorator.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IDecorator.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -231,11 +221,6 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\CreationOption.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/CreationOption.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\CSharpTemplate.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/CSharpTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>

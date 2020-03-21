@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="79f33fed-14c9-4304-ba6c-9835a7fefd00" type="Modelers Folder">
-  <name>modeler</name>
+<class id="70bb8550-9ff1-488f-a044-be46dff677a5" type="Folder">
+  <name>Templates</name>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>f2bfb0f7-d304-466f-b923-021d4016b48d</parentFolderId>
+  <parentFolderId>4bc923af-11c5-4255-b97a-79de29be5060</parentFolderId>
   <literals />
   <attributes />
   <operations />

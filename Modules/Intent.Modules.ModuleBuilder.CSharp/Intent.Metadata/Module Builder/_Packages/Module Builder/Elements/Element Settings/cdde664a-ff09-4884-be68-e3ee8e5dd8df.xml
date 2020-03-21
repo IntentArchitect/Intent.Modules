@@ -26,7 +26,7 @@
         <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
       </properties>
     </stereotype>
-    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Additional Properties">
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>true</addedByDefault>
       <properties>
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />

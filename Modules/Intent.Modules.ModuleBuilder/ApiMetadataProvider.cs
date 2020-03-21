@@ -46,15 +46,6 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
-        public IList<ICSharpTemplate> GetCSharpTemplates(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == CSharpTemplate.SpecializationType)
-                .Select(x => new CSharpTemplate(x))
-                .ToList<ICSharpTemplate>();
-            return models;
-        }
-
         public IList<IContextMenu> GetContextMenus(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)

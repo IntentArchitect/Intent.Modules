@@ -62,38 +62,5 @@ namespace <#= Namespace #>
             return _decorators;
         }
 <#  } #>
-
-<# /* if (HasTemplateDependencies()) { #>
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        IEnumerable<ITemplateDependency> IHasTemplateDependencies.GetTemplateDependencies()
-        {
-            var templateDependencies = new List<ITemplateDependency>();
-<#      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { #>
-                templateDependencies.Add(TemplateDependency.OnTemplate(<#= templateDependency.TemplateId #>));
-<#      } #>
-<#      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { #>
-                templateDependencies.AddRange(GetCustomTemplateDependencies());
-<#      } #>
-            return templateDependencies;
-        }
-
-<#      foreach (var templateDependency in GetTemplateDependencyInfos().Where(p => !p.IsCustom)) { #>
-        [IntentManaged(Mode.Fully, Body = Mode.Fully, Signature = Mode.Fully)]
-        private <#= templateDependency.InstanceType #> Get<#= templateDependency.TemplateName.ToPascalCase() #>Template(<#= templateDependency.TemplateModel #> model)
-        {
-            return Project.FindTemplateInstance<<#= templateDependency.InstanceType #>>(<#= templateDependency.TemplateId #>, model);
-        }
-<#      } #>
-
-<#      if (GetTemplateDependencyInfos().Any(p => p.IsCustom)) { #>
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        private IEnumerable<ITemplateDependency> GetCustomTemplateDependencies()
-        {
-            return new ITemplateDependency[] 
-            {
-            };
-        }
-<#      } #>
-<#  } */#>
     }
 }

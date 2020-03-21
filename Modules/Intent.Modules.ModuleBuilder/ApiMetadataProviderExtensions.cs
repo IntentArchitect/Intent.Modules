@@ -27,11 +27,6 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetAttributeSettings(application);
         }
 
-        public static IList<ICSharpTemplate> GetCSharpTemplates(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetCSharpTemplates(application);
-        }
-
         public static IList<IContextMenu> GetContextMenus(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetContextMenus(application);
