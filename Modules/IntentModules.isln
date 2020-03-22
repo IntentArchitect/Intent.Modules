@@ -12,5 +12,6 @@
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />
     <application id="b980295a-75ce-48ac-9ef8-0368f8a1a174" relativePath="Intent.Modules.Modelers.Domain\Modelers.Domain.application.config" />
+    <application id="4e2487dd-3fec-4611-95fb-d49687929743" relativePath="Intent.Modules.ModuleBuilder.Typescript\ModuleBuilder.Typescript.application.config" />
   </applications>
 </solution>

@@ -145,7 +145,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unofficial", "Unofficial", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.EntityFrameworkCore", "Intent.Modules.EntityFrameworkCore\Intent.Modules.EntityFrameworkCore.csproj", "{E3054741-163B-4DF0-8AE0-EAB74A57341D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.ModuleBuilder.CSharp", "Intent.Modules.ModuleBuilder.CSharp\Intent.Modules.ModuleBuilder.CSharp.csproj", "{FC0DF4DD-975B-40A0-8534-871752B685B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.CSharp", "Intent.Modules.ModuleBuilder.CSharp\Intent.Modules.ModuleBuilder.CSharp.csproj", "{FC0DF4DD-975B-40A0-8534-871752B685B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Typescript", "Intent.Modules.ModuleBuilder.Typescript\Intent.Modules.ModuleBuilder.Typescript.csproj", "{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -393,6 +395,10 @@ Global
 		{FC0DF4DD-975B-40A0-8534-871752B685B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC0DF4DD-975B-40A0-8534-871752B685B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC0DF4DD-975B-40A0-8534-871752B685B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -468,6 +474,7 @@ Global
 		{0888C831-E052-44C0-895E-20690E65B3C7} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{E3054741-163B-4DF0-8AE0-EAB74A57341D} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 		{FC0DF4DD-975B-40A0-8534-871752B685B5} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
+		{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
