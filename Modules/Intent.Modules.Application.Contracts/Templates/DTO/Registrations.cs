@@ -16,9 +16,9 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
     [Description(DTOTemplate.IDENTIFIER)]
     public class Registrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly ServicesMetadataProvider _metadataManager;
+        private readonly ApiMetadataProvider _metadataManager;
 
-        public Registrations(ServicesMetadataProvider metadataManager)
+        public Registrations(ApiMetadataProvider metadataManager)
         {
             _metadataManager = metadataManager;
 

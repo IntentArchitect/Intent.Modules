@@ -15,19 +15,6 @@
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
   <order>1</order>
   <properties>
-    <property id="b8079180-01aa-4dce-b00a-e1d22e82e070">
-      <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
-      <name>Text</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes>
-        <type>element settings</type>
-      </lookupTypes>
-      <isRequiredFunction />
-    </property>
     <property id="d984e71b-0e2f-4155-a190-83d986e1c29b">
       <name>Shortcut</name>
       <type>string</type>

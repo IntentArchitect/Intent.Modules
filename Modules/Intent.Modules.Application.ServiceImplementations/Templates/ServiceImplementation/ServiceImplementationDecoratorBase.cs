@@ -8,17 +8,17 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 {
     public abstract class ServiceImplementationDecoratorBase : ITemplateDecorator
     {
-        public virtual IEnumerable<string> GetUsings(IServiceModel serviceModel)
+        public virtual IEnumerable<string> GetUsings(IServiceModel service)
         {
             return new List<string>();
         }
 
-        public virtual IEnumerable<ConstructorParameter> GetConstructorDependencies(IServiceModel serviceModel)
+        public virtual IEnumerable<ConstructorParameter> GetConstructorDependencies(IServiceModel service)
         {
             return new List<ConstructorParameter>();
         }
 
-        public virtual string GetDecoratedImplementation(IServiceModel serviceModel, IOperation operationModel)
+        public virtual string GetDecoratedImplementation(IServiceModel service, IOperation operationModel)
         {
             return string.Empty;
         }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="442b724c-5cb9-41f6-9f05-e4c49573551a" type="Service">
+  <name>NewService</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>c4f33203-2c5c-4f32-985c-a5f2b154cdae</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="0d4dda44-e0af-432d-8367-2d77ff201ba0" type="Operation">
+      <name>Operation</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes>
+        <genericType id="6942639e-9a84-4136-ad25-2d6715fc3b12">
+          <name>TResult</name>
+        </genericType>
+      </genericTypes>
+      <isMapped>false</isMapped>
+      <parentFolderId>442b724c-5cb9-41f6-9f05-e4c49573551a</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="043bd162-fa77-41a4-bce2-226f15a5c0ec" type="Parameter">
+          <name>Parameter</name>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="8953f046-68de-45f5-93ac-195431d52992">
+            <typeId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0d4dda44-e0af-432d-8367-2d77ff201ba0</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+        <childElement id="e8e8bc35-bb5e-4960-a9bc-8c071c723978" type="Parameter">
+          <name>Parameter</name>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="1df1e623-01e7-44dc-aacf-ec69bb43b1a9">
+            <typeId>892c2c64-dd04-44f9-a0d8-37b27da645ab</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0d4dda44-e0af-432d-8367-2d77ff201ba0</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+        <childElement id="c552b435-1e5e-4c2b-b50b-9ef0110611a2" type="Return Type">
+          <name>Return Type</name>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="b4228c23-1b31-4aeb-add3-988db64ab455">
+            <typeId>6942639e-9a84-4136-ad25-2d6715fc3b12</typeId>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0d4dda44-e0af-432d-8367-2d77ff201ba0</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

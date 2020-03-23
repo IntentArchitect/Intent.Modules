@@ -37,7 +37,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
                 fileExtension: "cs",
                 defaultLocationInProject: "Api",
                 className: $"I{Model.Name.ToCSharpIdentifier()}",
-                @namespace: "${Project.Name}.Api"
+                @namespace: Model.Modeler.ApiNamespace
             );
         }
 

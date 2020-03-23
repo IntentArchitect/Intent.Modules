@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="59f70da0-36f9-498b-a611-39a68528e395" type="Context Menu">
+  <name>Creation Options</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>767e34b3-14c3-4769-a135-ab361564ba10</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="792d5ace-8307-46b5-bc9c-5960d5927378" type="Creation Option">
+      <name>New Service</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="877cd4ab-4540-44ea-83eb-b4589e8046cf">
+        <typeId>b16578a5-27b1-4047-a8df-f0b783d706bd</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>59f70da0-36f9-498b-a611-39a68528e395</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="d4e0c7d7-04a9-4a09-877b-7cd458e29cc3" type="Creation Option">
+      <name>New DTO</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="8a8c2bca-2c74-442f-be3b-9c56d4b0c7da">
+        <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>59f70da0-36f9-498b-a611-39a68528e395</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="3b3fc1ff-3bdf-4aed-bd4f-21dce0ac6e92" type="Creation Option">
+      <name>New Type</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="2f19b9cc-6dbc-455a-b668-282e54549485">
+        <typeId>9eb5a490-c5da-4283-9086-2f214b62a9c1</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>59f70da0-36f9-498b-a611-39a68528e395</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="8c3215d9-82d0-4970-a94f-3c6e2dadb639" type="Creation Option">
+      <name>New Enum</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="1955c34d-b5c7-4987-8e06-3788fea952d9">
+        <typeId>bc763e02-b38f-41e4-aac3-ea62e39d34f2</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>59f70da0-36f9-498b-a611-39a68528e395</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="8eb67ef9-325a-46c2-b3ff-28bd2540c9ec" type="Creation Option">
+      <name>New Stereotype-Definition</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="28e65414-d907-48c2-8e0d-92689efa7bae">
+        <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>59f70da0-36f9-498b-a611-39a68528e395</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="c38313a3-1266-4833-acc9-4cb05f35cc3b" type="Creation Option">
+      <name>New Folder</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="6b97fb09-de29-48b4-ac85-fec0af3df53c">
+        <typeId>767e34b3-14c3-4769-a135-ab361564ba10</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>59f70da0-36f9-498b-a611-39a68528e395</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+          <comment>Overrides the default creation option settings.</comment>
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="0" isActive="true" />
+            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

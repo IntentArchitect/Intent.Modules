@@ -12,9 +12,9 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
     [Description(ServiceImplementationTemplate.Identifier)]
     public class ServiceImplementationTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly ServicesMetadataProvider _metadataManager;
+        private readonly ApiMetadataProvider _metadataManager;
 
-        public ServiceImplementationTemplateRegistrations(ServicesMetadataProvider metadataManager)
+        public ServiceImplementationTemplateRegistrations(ApiMetadataProvider metadataManager)
         {
             _metadataManager = metadataManager;
         }

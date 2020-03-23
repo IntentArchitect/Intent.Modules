@@ -13,7 +13,7 @@ namespace Intent.Modules.Angular.Api
         {
             _class = @class;
             Module = module;
-            MappedService = _class.MappedElement != null ? new ServiceModel(_class.MappedElement.Element) : null;
+            MappedService = _class.MappedElement != null ? new Service(_class.MappedElement.Element) : null;
         }
 
         public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;

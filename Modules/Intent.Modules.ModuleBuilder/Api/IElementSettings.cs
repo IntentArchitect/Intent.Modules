@@ -18,5 +18,11 @@ namespace Intent.Modules.ModuleBuilder.Api
         IList<IMappingSettings> MappingSettings { get; }
         IList<IOperationSettings> OperationSettings { get; }
         IList<IElementSettings> ChildElementSettings { get; }
+
+        [IntentManaged(Mode.Ignore)]
+        IModeler Modeler { get; }
+
+        [IntentManaged(Mode.Ignore)]
+        bool IsChild { get; }
     }
 }

@@ -14,9 +14,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
     [Description(ServiceCallHandlerImplementationTemplate.Identifier)]
     public class ServiceCallHandlerImplementationTemplateRegistrations : IProjectTemplateRegistration
     {
-        private readonly ServicesMetadataProvider _metadataProvider;
+        private readonly ApiMetadataProvider _metadataProvider;
 
-        public ServiceCallHandlerImplementationTemplateRegistrations(ServicesMetadataProvider metadataProvider)
+        public ServiceCallHandlerImplementationTemplateRegistrations(ApiMetadataProvider metadataProvider)
         {
             _metadataProvider = metadataProvider;
         }
@@ -24,9 +24,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
         public string TemplateId => ServiceCallHandlerImplementationTemplate.Identifier;
 
 
-        private ITemplate CreateTemplateInstance(IProject project, IServiceModel serviceModel, IOperation operationModel)
+        private ITemplate CreateTemplateInstance(IProject project, IServiceModel service, IOperation operationModel)
         {
-            return new ServiceCallHandlerImplementationTemplate(project, serviceModel, operationModel);
+            return new ServiceCallHandlerImplementationTemplate(project, service, operationModel);
         }
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication applicationManager)

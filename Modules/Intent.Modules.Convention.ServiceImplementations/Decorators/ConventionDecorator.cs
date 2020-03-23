@@ -35,9 +35,9 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
             _repositoryInterfaceTemplateId = settings["Repository Interface Template Id"];
         }
 
-        public override IEnumerable<string> GetUsings(IServiceModel serviceModel)
+        public override IEnumerable<string> GetUsings(IServiceModel service)
         {
-            var currentDomain = GetDomainForService(serviceModel);
+            var currentDomain = GetDomainForService(service);
 
             if (currentDomain == null)
             {
@@ -56,9 +56,9 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
             };
         }
 
-        public override IEnumerable<ConstructorParameter> GetConstructorDependencies(IServiceModel serviceModel)
+        public override IEnumerable<ConstructorParameter> GetConstructorDependencies(IServiceModel service)
         {
-            var currentDomain = GetDomainForService(serviceModel);
+            var currentDomain = GetDomainForService(service);
 
             if (currentDomain == null)
             {
@@ -81,9 +81,9 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
             };
         }
 
-        public override string GetDecoratedImplementation(IServiceModel serviceModel, IOperation operationModel)
+        public override string GetDecoratedImplementation(IServiceModel service, IOperation operationModel)
         {
-            var currentDomain = GetDomainForService(serviceModel);
+            var currentDomain = GetDomainForService(service);
 
             if (currentDomain == null)
             {
@@ -93,9 +93,9 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
             return MethodImplementationStrategy.ImplementOnMatch(_metadataManager, _application, currentDomain, operationModel);
         }
 
-        private Modelers.Domain.Api.IClass GetDomainForService(IServiceModel serviceModel)
+        private Modelers.Domain.Api.IClass GetDomainForService(IServiceModel service)
         {
-            var lowerServiceName = serviceModel.Name.ToLower();
+            var lowerServiceName = service.Name.ToLower();
             var domains = _metadataManager.GetDomainClasses(_application.Id);
             return domains
                 .SingleOrDefault(p =>

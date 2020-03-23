@@ -14,9 +14,9 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
     [Description(ServiceContractTemplate.IDENTIFIER)]
     public class ServiceContractTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly ServicesMetadataProvider _metadataManager;
+        private readonly ApiMetadataProvider _metadataManager;
 
-        public ServiceContractTemplateRegistrations(ServicesMetadataProvider metadataManager)
+        public ServiceContractTemplateRegistrations(ApiMetadataProvider metadataManager)
         {
             _metadataManager = metadataManager;
         }

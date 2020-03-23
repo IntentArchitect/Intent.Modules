@@ -11,9 +11,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
     [Description(MappingTemplate.Identifier)]
     public class MappingTemplateRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly ServicesMetadataProvider _metadataManager;
+        private readonly ApiMetadataProvider _metadataManager;
 
-        public MappingTemplateRegistrations(ServicesMetadataProvider metadataManager)
+        public MappingTemplateRegistrations(ApiMetadataProvider metadataManager)
         {
             _metadataManager = metadataManager;
 

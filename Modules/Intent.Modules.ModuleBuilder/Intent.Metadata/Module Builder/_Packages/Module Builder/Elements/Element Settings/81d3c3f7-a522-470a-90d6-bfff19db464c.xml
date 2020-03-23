@@ -30,7 +30,6 @@
       <comment>When applied to an 'Element  Settings' sets the default creation options. When applied to a Creation Option will override any non-blank fields.</comment>
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" display="Text" value="" isActive="true" />
         <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" display="Shortcut" value="ctrl + shift + l" isActive="true" />
         <property name="b199adea-c16b-411d-a2db-c881345a421b" display="Default Name" value="" isActive="true" />
         <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />

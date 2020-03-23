@@ -26,11 +26,6 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
-            public string Text()
-            {
-                return _stereotype.GetProperty<string>("Text");
-            }
-
             public string Shortcut()
             {
                 return _stereotype.GetProperty<string>("Shortcut");

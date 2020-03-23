@@ -31,6 +31,10 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
 
+        public IModeler Modeler => new Modeler(_element.GetParentPath().Single(x => x.SpecializationType == Api.Modeler.SpecializationType));
+
+        public bool IsChild => _element.ParentElement.SpecializationType == SpecializationType;
+
         [IntentManaged(Mode.Fully)]
         public IContextMenu MenuOptions => _element.ChildElements
             .Where(x => x.SpecializationType == Api.ContextMenu.SpecializationType)

@@ -12,11 +12,6 @@ namespace Intent.Modules.ModuleBuilder
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<IAssociationEndSettings> GetAssociationEndSettings(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetAssociationEndSettings(application);
-        }
-
         public static IList<IAssociationSettings> GetAssociationSettings(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetAssociationSettings(application);
@@ -37,11 +32,6 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetCoreTypes(application);
         }
 
-        public static IList<ICreationOption> GetCreationOptions(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetCreationOptions(application);
-        }
-
         public static IList<IDecorator> GetDecorators(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetDecorators(application);
@@ -55,11 +45,6 @@ namespace Intent.Modules.ModuleBuilder
         public static IList<IElementSettings> GetElementSettings(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetElementSettings(application);
-        }
-
-        public static IList<IElementVisualSettings> GetElementVisualSettings(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetElementVisualSettings(application);
         }
 
         public static IList<IFileTemplate> GetFileTemplates(this IMetadataManager metadataManager, IApplication application)

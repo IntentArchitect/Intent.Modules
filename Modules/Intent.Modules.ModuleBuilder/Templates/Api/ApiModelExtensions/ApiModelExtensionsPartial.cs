@@ -39,7 +39,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
                 fileExtension: "cs",
                 defaultLocationInProject: "Api/Extensions",
                 className: $"{Model.Name.ToCSharpIdentifier()}Extensions",
-                @namespace: "${Project.Name}.Api"
+                @namespace: Model.Modeler.ApiNamespace
             );
         }
 

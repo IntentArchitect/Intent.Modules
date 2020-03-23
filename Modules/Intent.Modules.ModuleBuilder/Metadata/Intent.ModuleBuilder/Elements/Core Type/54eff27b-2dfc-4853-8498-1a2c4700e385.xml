@@ -13,7 +13,6 @@
       <comment>Sets the default creation options for this element when used.</comment>
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="b8079180-01aa-4dce-b00a-e1d22e82e070" display="Text" isActive="true" />
         <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
         <property name="b199adea-c16b-411d-a2db-c881345a421b" display="Default Name" value="NewStereotype" isActive="true" />
         <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />

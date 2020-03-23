@@ -19,15 +19,6 @@ namespace Intent.Modules.ModuleBuilder
             _metadataManager = metadataManager;
         }
 
-        public IList<IAssociationEndSettings> GetAssociationEndSettings(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == AssociationEndSettings.SpecializationType)
-                .Select(x => new AssociationEndSettings(x))
-                .ToList<IAssociationEndSettings>();
-            return models;
-        }
-
         public IList<IAssociationSettings> GetAssociationSettings(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
@@ -64,15 +55,6 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
-        public IList<ICreationOption> GetCreationOptions(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == CreationOption.SpecializationType)
-                .Select(x => new CreationOption(x))
-                .ToList<ICreationOption>();
-            return models;
-        }
-
         public IList<IDecorator> GetDecorators(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
@@ -97,15 +79,6 @@ namespace Intent.Modules.ModuleBuilder
                 .Where(x => x.SpecializationType == ElementSettings.SpecializationType)
                 .Select(x => new ElementSettings(x))
                 .ToList<IElementSettings>();
-            return models;
-        }
-
-        public IList<IElementVisualSettings> GetElementVisualSettings(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == ElementVisualSettings.SpecializationType)
-                .Select(x => new ElementVisualSettings(x))
-                .ToList<IElementVisualSettings>();
             return models;
         }
 

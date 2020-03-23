@@ -13,9 +13,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
     [Description(ServiceImplementationTemplate.Identifier)]
     public class ServiceImplementationTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
     {
-        private readonly ServicesMetadataProvider _metadataProvider;
+        private readonly ApiMetadataProvider _metadataProvider;
 
-        public ServiceImplementationTemplateRegistrations(ServicesMetadataProvider metadataProvider)
+        public ServiceImplementationTemplateRegistrations(ApiMetadataProvider metadataProvider)
         {
             _metadataProvider = metadataProvider;
         }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="892c2c64-dd04-44f9-a0d8-37b27da645ab" type="DTO">
+  <name>MyDTO</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="818e7e76-7875-42a1-997c-a6e20c52ce41" type="DTO-Field">
+      <name>ref</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="286fd076-a5cf-432d-81cd-8ce3e0d2d20f">
+        <typeId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

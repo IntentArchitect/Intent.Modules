@@ -33,7 +33,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override IEnumerable<IDTOModel> GetModels(IApplication application)
         {
-            var dtoModels = new ServicesMetadataProvider(_metadataManager).GetAllDTOs();
+            var dtoModels = new ApiMetadataProvider(_metadataManager).GetAllDTOs();
 
             dtoModels = dtoModels
                 .Where(x => GetConsumers(x).Any(y => application.Name.Equals(y, StringComparison.OrdinalIgnoreCase)))

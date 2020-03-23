@@ -14,9 +14,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
     [Description("Intent Applications Contract Mapping Profile Template")]
     public class MappingProfileTemplateRegistrations : ListModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly ServicesMetadataProvider _metadataManager;
+        private readonly ApiMetadataProvider _metadataManager;
 
-        public MappingProfileTemplateRegistrations(ServicesMetadataProvider metadataManager)
+        public MappingProfileTemplateRegistrations(ApiMetadataProvider metadataManager)
         {
             _metadataManager = metadataManager;
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.ModuleBuilder.Typescript</id>
+  <version>2.1.0</version>
+  <summary>A custom module for Intent.Modules.</summary>
+  <description>A custom module for Intent.Modules.</description>
+  <authors>Intent.Modules</authors>
+  <templates>
+    <template id="Intent.ModuleBuilder.Typescript.Templates.TypescriptTemplate">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+    </template>
+  </templates>
+  <dependencies>
+    <dependency id="Intent.Common" version="2.0.3" />
+    <dependency id="Intent.ModuleBuilder" version="2.1.0" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0" />
+  </dependencies>
+  <metadata>
+    <install target="Module Builder" src="modelers" />
+  </metadata>
+  <files>
+    <file src="$outDir$/$id$.dll" />
+    <file src="$outDir$/$id$.pdb" />
+  </files>
+</package>

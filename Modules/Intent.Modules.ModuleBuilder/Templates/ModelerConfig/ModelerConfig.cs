@@ -145,7 +145,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             }).ToList();
         }
 
-        private List<ElementSettingsPersistable> GetElementSettings(IList<IElementSettings> elementSettings)
+        private List<ElementSettingsPersistable> GetElementSettings(IEnumerable<IElementSettings> elementSettings)
         {
             return elementSettings.OrderBy(x => x.Name).Select(x =>
                 new ElementSettingsPersistable

@@ -4,6 +4,7 @@
   <targetMode>of-type</targetMode>
   <targetElements>
     <element>element settings</element>
+    <element>child element settings</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
@@ -106,7 +107,8 @@
       <placeholder>(required)</placeholder>
       <valueOptions />
       <lookupTypes>
-        <type>element settings</type>
+        <type>Element Settings</type>
+        <type>Child Element Settings</type>
       </lookupTypes>
       <isActiveFunction>property['Type Reference'].value == 'Optional' || property['Type Reference'].value == 'Required'</isActiveFunction>
       <isRequiredFunction>true</isRequiredFunction>

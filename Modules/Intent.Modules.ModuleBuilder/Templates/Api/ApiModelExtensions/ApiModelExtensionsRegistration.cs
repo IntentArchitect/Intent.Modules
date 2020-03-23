@@ -36,7 +36,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
         public override IEnumerable<IElementSettings> GetModels(IApplication application)
         {
             _stereotypeDefinitions = _metadataManager.GetMetadata<IStereotypeDefinition>("Module Builder", application.Id);
-            return _metadataManager.GetElementSettings(application);
+            return _metadataManager.GetElementSettings(application)
+                .Where(e => _stereotypeDefinitions.Any(x => x.TargetElements.Any(t => t.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase))))
+                .ToList();
         }
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d7d556f4-b35d-418f-b0e2-cd3c04ef9294" type="C# Template">
+  <name>TypescriptTemplate</name>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="9511a4bd-485c-4b10-b20c-cb6ae4a8c413">
+    <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>717a04f4-49a6-4638-a931-42723215d399</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="61bc67c8-068f-4a9b-bd52-e63ab616a00e" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

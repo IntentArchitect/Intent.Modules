@@ -15,12 +15,12 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
     [Description("Intent Applications Contracts DTO")]
     public class DtoRegistrations : ModelTemplateRegistrationBase<IDTOModel>
     {
-        private readonly ServicesMetadataProvider _metadataManager;
+        private readonly ApiMetadataProvider _metadataManager;
 
         private string _stereotypeName = "Consumers";
         private string _stereotypePropertyName = "CSharp";
 
-        public DtoRegistrations(ServicesMetadataProvider metadataManager)
+        public DtoRegistrations(ApiMetadataProvider metadataManager)
         {
             _metadataManager = metadataManager;
         }
