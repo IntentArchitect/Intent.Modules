@@ -10,12 +10,50 @@
   <operations />
   <stereotypes />
   <childElements>
-    <childElement id="818e7e76-7875-42a1-997c-a6e20c52ce41" type="DTO-Field">
-      <name>ref</name>
+    <childElement id="482d758a-0f49-41df-b8db-33afdc04f410" type="DTO-Field">
+      <name>field</name>
       <isAbstract>false</isAbstract>
       <genericTypes />
-      <typeReference id="286fd076-a5cf-432d-81cd-8ce3e0d2d20f">
-        <typeId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</typeId>
+      <typeReference id="cc871773-5322-4671-86c2-930bfa989b4d">
+        <typeId>C1B3A361-B1C6-48C3-B34C-7999B3E071F0</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="3f65ef47-f8a4-4e31-99a3-493295400977" type="DTO-Field">
+      <name>field2</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="04c274ae-13ba-4127-bcc2-b5ad19c19e03">
+        <typeId>f1ba4df3-a5bc-427e-a591-4f6029f89bd7</typeId>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="10dc5efb-d1c4-4959-8db0-3dc8ae1ac6ed" type="DTO-Field">
+      <name>isRequired</name>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="aab7a05e-5366-4c01-a1be-c9cefe73cb99">
+        <typeId>a4107c29-7851-4121-9416-cf1236908f1e</typeId>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

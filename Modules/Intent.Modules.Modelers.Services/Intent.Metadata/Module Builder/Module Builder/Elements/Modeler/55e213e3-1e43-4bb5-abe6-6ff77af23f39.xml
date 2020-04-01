@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="55e213e3-1e43-4bb5-abe6-6ff77af23f39" type="Modeler">
   <name>Services</name>
+  <display>Services : Modeler</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

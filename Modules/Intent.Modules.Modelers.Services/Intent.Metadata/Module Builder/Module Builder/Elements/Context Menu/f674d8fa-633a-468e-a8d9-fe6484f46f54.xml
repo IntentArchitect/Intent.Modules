@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="f674d8fa-633a-468e-a8d9-fe6484f46f54" type="Context Menu">
   <name>Creation Options</name>
+  <display>Creation Options</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -12,6 +13,7 @@
   <childElements>
     <childElement id="d42e6f69-09ee-4a76-8be1-120c0756e990" type="Creation Option">
       <name>Add Field</name>
+      <display>Add Field : DTO-Field</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="57919b3d-1eeb-493b-b49f-4aabc30fed1e">

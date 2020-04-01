@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="b16578a5-27b1-4047-a8df-f0b783d706bd" type="Element Settings">
   <name>Service</name>
+  <display>Service</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

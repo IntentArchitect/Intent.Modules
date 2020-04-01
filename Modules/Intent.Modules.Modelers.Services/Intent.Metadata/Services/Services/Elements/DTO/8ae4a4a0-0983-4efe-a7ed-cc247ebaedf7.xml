@@ -9,25 +9,5 @@
   <attributes />
   <operations />
   <stereotypes />
-  <childElements>
-    <childElement id="6a7355f8-f5f9-49ac-a305-74621cdb63a4" type="DTO-Field">
-      <name>field</name>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="36c99549-46e1-4540-a30b-3b867d18fa53">
-        <typeId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</typeId>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes />
-      <childElements />
-    </childElement>
-  </childElements>
+  <childElements />
 </class>

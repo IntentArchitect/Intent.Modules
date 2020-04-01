@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="e636917a-8d51-4d41-b34f-4b58439949c8" type="Context Menu">
   <name>Creation Options</name>
+  <display>Creation Options</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -12,6 +13,7 @@
   <childElements>
     <childElement id="762c52eb-b408-46ca-9ff3-80727818f5b0" type="Creation Option">
       <name>Add Literal</name>
+      <display>Add Literal : Enum-Literal</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="96d1ca10-5ed1-40ff-9ec1-57853a356918">

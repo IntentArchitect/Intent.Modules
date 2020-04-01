@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="bfc26967-7cbd-40c5-a062-c779ba2eefbc" type="Context Menu">
   <name>Creation Options</name>
+  <display>Creation Options</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -12,6 +13,7 @@
   <childElements>
     <childElement id="e94b8cca-7cac-4f63-acb9-b4fd371dac1b" type="Creation Option">
       <name>Add Operation</name>
+      <display>Add Operation : Operation</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="0928d26d-dde5-4ef3-8a20-59e8c85fdf80">
