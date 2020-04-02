@@ -13,7 +13,7 @@
   <childElements>
     <childElement id="792d5ace-8307-46b5-bc9c-5960d5927378" type="Creation Option">
       <name>New Service</name>
-      <display>New Service : Service</display>
+      <display>New Service: Service</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="877cd4ab-4540-44ea-83eb-b4589e8046cf">
@@ -44,7 +44,7 @@
     </childElement>
     <childElement id="d4e0c7d7-04a9-4a09-877b-7cd458e29cc3" type="Creation Option">
       <name>New DTO</name>
-      <display>New DTO : DTO</display>
+      <display>New DTO: DTO</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="8a8c2bca-2c74-442f-be3b-9c56d4b0c7da">
@@ -75,7 +75,7 @@
     </childElement>
     <childElement id="3b3fc1ff-3bdf-4aed-bd4f-21dce0ac6e92" type="Creation Option">
       <name>New Type</name>
-      <display>New Type : Type-Definition</display>
+      <display>New Type: Type-Definition</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="2f19b9cc-6dbc-455a-b668-282e54549485">
@@ -106,7 +106,7 @@
     </childElement>
     <childElement id="8c3215d9-82d0-4970-a94f-3c6e2dadb639" type="Creation Option">
       <name>New Enum</name>
-      <display>New Enum : Enum</display>
+      <display>New Enum: Enum</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="1955c34d-b5c7-4987-8e06-3788fea952d9">
@@ -137,7 +137,7 @@
     </childElement>
     <childElement id="8eb67ef9-325a-46c2-b3ff-28bd2540c9ec" type="Creation Option">
       <name>New Stereotype-Definition</name>
-      <display>New Stereotype-Definition : Stereotype-Definition</display>
+      <display>New Stereotype-Definition: Stereotype-Definition</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="28e65414-d907-48c2-8e0d-92689efa7bae">
@@ -168,7 +168,7 @@
     </childElement>
     <childElement id="c38313a3-1266-4833-acc9-4cb05f35cc3b" type="Creation Option">
       <name>New Folder</name>
-      <display>New Folder : Folder</display>
+      <display>New Folder: Folder</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="6b97fb09-de29-48b4-ac85-fec0af3df53c">

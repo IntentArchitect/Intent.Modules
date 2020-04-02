@@ -13,7 +13,7 @@
   <childElements>
     <childElement id="efe63fa6-92fc-4775-af54-9105b38f2aef" type="Creation Option">
       <name>Add Parameter</name>
-      <display>Add Parameter : Parameter</display>
+      <display>Add Parameter: Parameter</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="939f0104-dd25-4fc2-a761-b9c3f1ff8edd">

@@ -13,7 +13,7 @@
   <childElements>
     <childElement id="d42e6f69-09ee-4a76-8be1-120c0756e990" type="Creation Option">
       <name>Add Field</name>
-      <display>Add Field : DTO-Field</display>
+      <display>Add Field: DTO-Field</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="57919b3d-1eeb-493b-b49f-4aabc30fed1e">

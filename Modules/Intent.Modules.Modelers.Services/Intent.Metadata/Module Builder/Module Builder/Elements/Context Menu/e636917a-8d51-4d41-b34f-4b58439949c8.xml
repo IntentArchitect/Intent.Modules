@@ -13,7 +13,7 @@
   <childElements>
     <childElement id="762c52eb-b408-46ca-9ff3-80727818f5b0" type="Creation Option">
       <name>Add Literal</name>
-      <display>Add Literal : Enum-Literal</display>
+      <display>Add Literal: Enum-Literal</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="96d1ca10-5ed1-40ff-9ec1-57853a356918">

@@ -4,6 +4,16 @@
   <FileLogs>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IController.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IController.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IControllerOperation.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IControllerOperation.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IDTO.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IDTO.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -26,6 +36,16 @@
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IFolder.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IFolder.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\Controller.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/Controller.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\ControllerOperation.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/ControllerOperation.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
@@ -111,6 +131,11 @@
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\modelers\Controllers.modeler.extension.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Controllers.modeler.extension.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
