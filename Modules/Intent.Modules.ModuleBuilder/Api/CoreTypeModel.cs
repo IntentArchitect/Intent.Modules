@@ -10,33 +10,28 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ContextMenu
+    public class CoreTypeModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Context Menu";
+        public const string SpecializationType = "Core Type";
         private readonly IElement _element;
 
-        public ContextMenu(IElement element)
+        public CoreTypeModel(IElement element)
         {
-            if (element.SpecializationType != SpecializationType)
+            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException($"Invalid element type {element.SpecializationType}", nameof(element));
+                throw new Exception($"Cannot create a 'CoreTypeModel' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            TypeOrder = element.ChildElements.Select(x => new TypeOrder(x)).ToList();
         }
 
         public string Id => _element.Id;
+
         public string Name => _element.Name;
+
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        [IntentManaged(Mode.Fully)]
-        public IList<CreationOptionModel> CreationOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.CreationOptionModel.SpecializationType)
-            .Select(x => new CreationOptionModel(x))
-            .ToList<CreationOptionModel>();
-        public IList<TypeOrder> TypeOrder { get; }
 
-        protected bool Equals(ContextMenu other)
+        protected bool Equals(CoreTypeModel other)
         {
             return Equals(_element, other._element);
         }
@@ -46,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ContextMenu)obj);
+            return Equals((CoreTypeModel)obj);
         }
 
         public override int GetHashCode()

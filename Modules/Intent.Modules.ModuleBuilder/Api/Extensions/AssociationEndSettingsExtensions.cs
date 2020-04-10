@@ -10,7 +10,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class AssociationEndSettingsExtensions
     {
-        public static Settings GetSettings(this AssociationEndSettings model)
+        public static Settings GetSettings(this AssociationEndSettingsModel model)
         {
             var stereotype = model.GetStereotype("Settings");
             return stereotype != null ? new Settings(stereotype) : null;

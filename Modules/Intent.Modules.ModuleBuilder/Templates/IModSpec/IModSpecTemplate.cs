@@ -16,12 +16,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
     public class IModeSpecModel
     {
-        public IModeSpecModel(IEnumerable<Decorator> decorators)
+        public IModeSpecModel(IEnumerable<DecoratorModel> decorators)
         {
             Decorators = decorators;
         }
 
-        public IEnumerable<Decorator> Decorators { get; }
+        public IEnumerable<DecoratorModel> Decorators { get; }
     }
 
     public class TemplateRegistrationInfo
@@ -130,7 +130,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 dependencies.Add(CreateDependency(IntentModule.IntentRoslynWeaver));
             }
 
-            var decorators = _metadataManager.GetDecorators(Project.Application).ToList();
+            var decorators = _metadataManager.GetDecoratorModels(Project.Application).ToList();
             if (decorators.Any())
             {
                 var decoratorsElement = doc.Element("package").Element("decorators");

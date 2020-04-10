@@ -10,16 +10,16 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class CoreType : IHasStereotypes, IMetadataModel
+    public class TemplateRegistrationModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Core Type";
+        public const string SpecializationType = "Template Registration";
         private readonly IElement _element;
 
-        public CoreType(IElement element)
+        public TemplateRegistrationModel(IElement element)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new Exception($"Cannot create a 'CoreType' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+                throw new Exception($"Cannot create a 'TemplateRegistrationModel' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
         }
@@ -31,7 +31,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
 
-        protected bool Equals(CoreType other)
+        protected bool Equals(TemplateRegistrationModel other)
         {
             return Equals(_element, other._element);
         }
@@ -41,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CoreType)obj);
+            return Equals((TemplateRegistrationModel)obj);
         }
 
         public override int GetHashCode()

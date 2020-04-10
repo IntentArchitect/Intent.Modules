@@ -51,10 +51,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
-        public IList<AssociationSettings> AssociationTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.AssociationSettings.SpecializationType)
-            .Select(x => new AssociationSettings(x))
-            .ToList<AssociationSettings>();
+        public IList<AssociationSettingsModel> AssociationTypes => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.AssociationSettingsModel.SpecializationType)
+            .Select(x => new AssociationSettingsModel(x))
+            .ToList<AssociationSettingsModel>();
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementSettingsModel> ElementTypes => _element.ChildElements
@@ -87,10 +87,10 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<CoreType> CoreTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.CoreType.SpecializationType)
-            .Select(x => new CoreType(x))
-            .ToList<CoreType>();
+        public IList<CoreTypeModel> CoreTypes => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.CoreTypeModel.SpecializationType)
+            .Select(x => new CoreTypeModel(x))
+            .ToList<CoreTypeModel>();
     }
 
     public class TypeOrder

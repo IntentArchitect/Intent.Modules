@@ -10,7 +10,7 @@ using System.Linq;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class FolderModel : IHasStereotypes
+    public class FolderModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Folder";
         private readonly IElement _element;
@@ -47,16 +47,16 @@ namespace Intent.Modules.ModuleBuilder.Api
             .ToList<FolderModel>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<Decorator> TemplateDecorators => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.Decorator.SpecializationType)
-            .Select(x => new Decorator(x))
-            .ToList<Decorator>();
+        public IList<DecoratorModel> TemplateDecorators => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.DecoratorModel.SpecializationType)
+            .Select(x => new DecoratorModel(x))
+            .ToList<DecoratorModel>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<TypeDefinition> Types => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.TypeDefinition.SpecializationType)
-            .Select(x => new TypeDefinition(x))
-            .ToList<TypeDefinition>();
+        public IList<TypeDefinitionModel> Types => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.TypeDefinitionModel.SpecializationType)
+            .Select(x => new TypeDefinitionModel(x))
+            .ToList<TypeDefinitionModel>();
 
         public IElement UnderlyingElement => _element;
 
@@ -79,9 +79,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<TemplateRegistration> TemplateRegistrations => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.TemplateRegistration.SpecializationType)
-            .Select(x => new TemplateRegistration(x))
-            .ToList<TemplateRegistration>();
+        public IList<TemplateRegistrationModel> TemplateRegistrations => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.TemplateRegistrationModel.SpecializationType)
+            .Select(x => new TemplateRegistrationModel(x))
+            .ToList<TemplateRegistrationModel>();
     }
 }

@@ -10,13 +10,13 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class CoreTypeExtensions
     {
-        public static DefaultCreationOptions GetDefaultCreationOptions(this CoreType model)
+        public static DefaultCreationOptions GetDefaultCreationOptions(this CoreTypeModel model)
         {
             var stereotype = model.GetStereotype("Default Creation Options");
             return stereotype != null ? new DefaultCreationOptions(stereotype) : null;
         }
 
-        public static IconFull GetIconFull(this CoreType model)
+        public static IconFull GetIconFull(this CoreTypeModel model)
         {
             var stereotype = model.GetStereotype("Icon (Full)");
             return stereotype != null ? new IconFull(stereotype) : null;

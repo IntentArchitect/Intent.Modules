@@ -71,7 +71,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             };
         }
 
-        private List<AssociationSettingsPersistable> GetAssociationSettings(IList<AssociationSettings> associationSettings)
+        private List<AssociationSettingsPersistable> GetAssociationSettings(IList<AssociationSettingsModel> associationSettings)
         {
             return associationSettings.OrderBy(x => x.Name).Select(x => new AssociationSettingsPersistable
             {

@@ -12,69 +12,69 @@ namespace Intent.Modules.ModuleBuilder
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<AssociationSettings> GetAssociationSettings(this IMetadataManager metadataManager, IApplication application)
+        public static IList<AssociationSettingsModel> GetAssociationSettingsModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetAssociationSettings(application);
+            return new ApiMetadataProvider(metadataManager).GetAssociationSettingsModels(application);
         }
 
-        public static IList<ContextMenu> GetContextMenus(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ContextMenuModel> GetContextMenuModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetContextMenus(application);
+            return new ApiMetadataProvider(metadataManager).GetContextMenuModels(application);
         }
 
-        public static IList<CoreType> GetCoreTypes(this IMetadataManager metadataManager, IApplication application)
+        public static IList<CoreTypeModel> GetCoreTypeModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetCoreTypes(application);
+            return new ApiMetadataProvider(metadataManager).GetCoreTypeModels(application);
         }
 
-        public static IList<Decorator> GetDecorators(this IMetadataManager metadataManager, IApplication application)
+        public static IList<DecoratorModel> GetDecoratorModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetDecorators(application);
+            return new ApiMetadataProvider(metadataManager).GetDecoratorModels(application);
         }
 
-        public static IList<DiagramSettings> GetDiagramSettings(this IMetadataManager metadataManager, IApplication application)
+        public static IList<DiagramSettingsModel> GetDiagramSettingsModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetDiagramSettings(application);
+            return new ApiMetadataProvider(metadataManager).GetDiagramSettingsModels(application);
         }
 
-        public static IList<ElementSettingsModel> GetElementSettings(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ElementSettingsModel> GetElementSettingsModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetElementSettings(application);
+            return new ApiMetadataProvider(metadataManager).GetElementSettingsModels(application);
         }
 
-        public static IList<FileTemplateModel> GetFileTemplates(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FileTemplateModel> GetFileTemplateModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetFileTemplates(application);
+            return new ApiMetadataProvider(metadataManager).GetFileTemplateModels(application);
         }
 
-        public static IList<FolderModel> GetFolders(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetFolders(application);
+            return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
         }
 
-        public static IList<ModelerModel> GetModelers(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ModelerModel> GetModelerModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetModelers(application);
+            return new ApiMetadataProvider(metadataManager).GetModelerModels(application);
         }
 
-        public static IList<ModelersFolder> GetModelersFolders(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ModelersFolderModel> GetModelersFolderModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetModelersFolders(application);
+            return new ApiMetadataProvider(metadataManager).GetModelersFolderModels(application);
         }
 
-        public static IList<PackageSettingsModel> GetPackageSettings(this IMetadataManager metadataManager, IApplication application)
+        public static IList<PackageSettingsModel> GetPackageSettingsModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetPackageSettings(application);
+            return new ApiMetadataProvider(metadataManager).GetPackageSettingsModels(application);
         }
 
-        public static IList<TemplateRegistration> GetTemplateRegistrations(this IMetadataManager metadataManager, IApplication application)
+        public static IList<TemplateRegistrationModel> GetTemplateRegistrationModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetTemplateRegistrations(application);
+            return new ApiMetadataProvider(metadataManager).GetTemplateRegistrationModels(application);
         }
 
-        public static IList<TypeDefinition> GetTypeDefinitions(this IMetadataManager metadataManager, IApplication application)
+        public static IList<TypeDefinitionModel> GetTypeDefinitionModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetTypeDefinitions(application);
+            return new ApiMetadataProvider(metadataManager).GetTypeDefinitionModels(application);
         }
 
     }

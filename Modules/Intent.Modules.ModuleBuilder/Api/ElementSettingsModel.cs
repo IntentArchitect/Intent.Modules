@@ -81,9 +81,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public ContextMenu MenuOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ContextMenu.SpecializationType)
-            .Select(x => new ContextMenu(x))
+        public ContextMenuModel MenuOptions => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ContextMenuModel.SpecializationType)
+            .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
@@ -93,15 +93,15 @@ namespace Intent.Modules.ModuleBuilder.Api
             .ToList<ElementSettingsModel>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<DiagramSettings> DiagramSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DiagramSettings.SpecializationType)
-            .Select(x => new DiagramSettings(x))
-            .ToList<DiagramSettings>();
+        public IList<DiagramSettingsModel> DiagramSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.DiagramSettingsModel.SpecializationType)
+            .Select(x => new DiagramSettingsModel(x))
+            .ToList<DiagramSettingsModel>();
 
         [IntentManaged(Mode.Fully)]
-        public MappingSettings MappingSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.MappingSettings.SpecializationType)
-            .Select(x => new MappingSettings(x))
+        public MappingSettingsModel MappingSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.MappingSettingsModel.SpecializationType)
+            .Select(x => new MappingSettingsModel(x))
             .SingleOrDefault();
 
         public override string ToString()

@@ -12,6 +12,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class PackageSettingsModel
+        : IHasStereotypes, IMetadataModel
     {
         private readonly IElement _element;
         public const string SpecializationType = "Package Settings";
@@ -36,9 +37,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Name => _element.Name;
 
         [IntentManaged(Mode.Fully)]
-        public ContextMenu MenuOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ContextMenu.SpecializationType)
-            .Select(x => new ContextMenu(x))
+        public ContextMenuModel MenuOptions => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ContextMenuModel.SpecializationType)
+            .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 
         public PackageSettingsPersistable ToPersistable()
