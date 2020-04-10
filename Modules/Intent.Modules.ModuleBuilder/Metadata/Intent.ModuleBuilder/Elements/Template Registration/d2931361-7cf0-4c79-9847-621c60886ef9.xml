@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="d2931361-7cf0-4c79-9847-621c60886ef9" type="Template Registration">
   <name>Custom</name>
+  <display>Custom</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

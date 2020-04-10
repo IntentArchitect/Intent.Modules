@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="364cafd9-7024-4a38-b97a-87150e044024" type="Type-Definition">
+  <name>xxx</name>
+  <display>xxx</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="b24f3bdf-3ba1-4c66-8aa8-cf63a3ae7436" type="Folder">
   <name>Api</name>
+  <display>Api</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

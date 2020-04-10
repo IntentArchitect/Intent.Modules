@@ -17,7 +17,8 @@
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="bfead40a-6ce9-4f2a-8f52-ce7f3a61f9ab">
-        <typeId>7db9100a-57ea-4327-afb7-9d70f6d45571</typeId>
+        <typeId>f3e6cd35-a7d4-4f61-acbe-61b47862ff74</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

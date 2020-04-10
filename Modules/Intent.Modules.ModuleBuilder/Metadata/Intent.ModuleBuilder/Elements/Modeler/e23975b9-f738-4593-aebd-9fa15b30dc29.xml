@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="e23975b9-f738-4593-aebd-9fa15b30dc29" type="Modeler">
   <name>Intent</name>
+  <display>Intent : Modeler</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

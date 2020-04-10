@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="12e66eff-8adc-467a-9564-bac394309e68" type="Context Menu">
   <name>Creation Options</name>
+  <display>Creation Options</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -12,10 +13,12 @@
   <childElements>
     <childElement id="a44e7f89-ce82-4382-b870-95307e8cc57e" type="Creation Option">
       <name>New Modeler</name>
+      <display>New Modeler: Modeler</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="7278956a-2bbc-4c84-83c6-3483d16301a9">
         <typeId>921706bd-c055-4cbd-ba7e-deb5419d529e</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

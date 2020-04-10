@@ -2,6 +2,7 @@
 <class id="89333f72-3960-4159-bf61-9c40d4b65088" type="Element Settings">
   <comment />
   <name>Package Settings</name>
+  <display>Package Settings</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

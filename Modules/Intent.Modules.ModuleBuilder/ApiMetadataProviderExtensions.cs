@@ -17,11 +17,6 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetAssociationSettings(application);
         }
 
-        public static IList<IAttributeSettings> GetAttributeSettings(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetAttributeSettings(application);
-        }
-
         public static IList<IContextMenu> GetContextMenus(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetContextMenus(application);
@@ -57,16 +52,6 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetFolders(application);
         }
 
-        public static IList<ILiteralSettings> GetLiteralSettings(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetLiteralSettings(application);
-        }
-
-        public static IList<IMappingSettings> GetMappingSettings(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetMappingSettings(application);
-        }
-
         public static IList<IModeler> GetModelers(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetModelers(application);
@@ -80,11 +65,6 @@ namespace Intent.Modules.ModuleBuilder
         public static IList<IModelersFolder> GetModelersFolders(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetModelersFolders(application);
-        }
-
-        public static IList<IOperationSettings> GetOperationSettings(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetOperationSettings(application);
         }
 
         public static IList<IPackageSettings> GetPackageSettings(this IMetadataManager metadataManager, IApplication application)

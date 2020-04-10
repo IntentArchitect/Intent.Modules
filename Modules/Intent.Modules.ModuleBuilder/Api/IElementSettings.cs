@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -12,11 +13,8 @@ namespace Intent.Modules.ModuleBuilder.Api
     {
         string Name { get; }
         IContextMenu MenuOptions { get; }
-        IList<IAttributeSettings> AttributeSettings { get; }
         IList<IDiagramSettings> DiagramSettings { get; }
-        IList<ILiteralSettings> LiteralSettings { get; }
-        IList<IMappingSettings> MappingSettings { get; }
-        IList<IOperationSettings> OperationSettings { get; }
+        IMappingSettings MappingSettings { get; }
         IList<IElementSettings> ChildElementSettings { get; }
 
         [IntentManaged(Mode.Ignore)]
@@ -24,5 +22,8 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Ignore)]
         bool IsChild { get; }
+
+        [IntentManaged(Mode.Ignore)]
+        ElementSettingsPersistable ToPersistable();
     }
 }

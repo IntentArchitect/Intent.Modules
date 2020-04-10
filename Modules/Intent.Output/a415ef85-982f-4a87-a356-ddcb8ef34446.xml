@@ -14,11 +14,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AttributeSettingsExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AttributeSettingsExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\CoreTypeExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/CoreTypeExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -44,11 +39,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\LiteralSettingsExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/LiteralSettingsExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ModelerExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/ModelerExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -59,11 +49,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\OperationSettingsExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/OperationSettingsExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IAssociationEndSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IAssociationEndSettings.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -71,11 +56,6 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IAssociationSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IAssociationSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IAttributeSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IAttributeSettings.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -104,6 +84,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IElementMapping.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IElementMapping.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IElementSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IElementSettings.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -124,8 +109,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ILiteralSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ILiteralSettings.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IMappingCriteria.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IMappingCriteria.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IMappingOutput.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IMappingOutput.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -159,11 +149,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\AttributeSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/AttributeSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\ContextMenu.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/ContextMenu.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -189,6 +174,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\ElementMapping.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/ElementMapping.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\ElementSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/ElementSettings.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -209,8 +199,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\LiteralSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/LiteralSettings.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\MappingCriteria.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/MappingCriteria.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\MappingOutput.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/MappingOutput.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -234,11 +229,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\OperationSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/OperationSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\PackageSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/PackageSettings.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -251,11 +241,6 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\TypeDefinition.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/TypeDefinition.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IOperationSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IOperationSettings.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>

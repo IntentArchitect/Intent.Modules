@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d6de4ffb-0fcc-40bc-ba91-6f2460adeb43" type="DTO">
+  <name>EmptyDTO</name>
+  <display>EmptyDTO</display>
+  <isAbstract>true</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

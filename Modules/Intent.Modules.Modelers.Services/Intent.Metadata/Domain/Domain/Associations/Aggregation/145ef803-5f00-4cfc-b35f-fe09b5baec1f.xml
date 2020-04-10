@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="145ef803-5f00-4cfc-b35f-fe09b5baec1f">
+  <sourceEnd id="9eeb65f2-f6c4-4451-b59f-686479a57637">
+    <name>OldClasses</name>
+    <display>OldClasses : OldClass?[*]</display>
+    <typeReference id="a259597c-e904-471d-a54e-d573d1c0719e">
+      <typeId>4579d512-e91e-4582-a0d3-d0137d328164</typeId>
+      <isNavigable>false</isNavigable>
+      <isNullable>true</isNullable>
+      <isCollection>true</isCollection>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+  </sourceEnd>
+  <targetEnd id="145ef803-5f00-4cfc-b35f-fe09b5baec1f">
+    <name>asdf</name>
+    <display>asdf : Movie</display>
+    <typeReference id="3e1ec93a-47cb-4a8f-b9c7-7097abcfb029">
+      <typeId>a97429c9-464a-4618-8692-2d1019bc732c</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+  </targetEnd>
+  <associationType>Aggregation</associationType>
+  <stereotypes />
+</association>

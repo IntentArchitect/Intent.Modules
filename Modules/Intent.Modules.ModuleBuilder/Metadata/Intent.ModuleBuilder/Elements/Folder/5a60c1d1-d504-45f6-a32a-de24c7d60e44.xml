@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="5a60c1d1-d504-45f6-a32a-de24c7d60e44" type="Folder">
   <name>Association End Settings</name>
+  <display>Association End Settings</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

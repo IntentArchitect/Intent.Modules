@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="1f36b795-f7d1-4673-b2ce-79282125a058" type="Literal Settings">
   <name>Model Type</name>
+  <display>Model Type</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

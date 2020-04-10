@@ -1,6 +1,7 @@
 using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate", Version = "1.0")]
@@ -26,5 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         string Name { get; }
 
         string TargetSpecializationType { get; }
+
+        ElementCreationOption ToPersistable();
     }
 }

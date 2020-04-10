@@ -14,6 +14,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IControllerParameter.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/IControllerParameter.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IDTO.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/IDTO.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -46,6 +51,11 @@
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\ControllerOperation.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/ControllerOperation.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\ControllerParameter.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Implementation/ControllerParameter.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="f0f46278-29ea-42bd-9206-0e7034f623bc" type="Element Settings">
   <name>Decorator</name>
+  <display>Decorator</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

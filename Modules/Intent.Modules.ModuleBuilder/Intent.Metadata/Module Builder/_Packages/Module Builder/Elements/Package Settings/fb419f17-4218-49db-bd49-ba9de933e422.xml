@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="fb419f17-4218-49db-bd49-ba9de933e422" type="Package Settings">
   <name>Package Settings</name>
+  <display>Package Settings</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

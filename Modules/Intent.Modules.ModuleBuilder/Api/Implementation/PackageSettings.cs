@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -38,6 +39,15 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == Api.ContextMenu.SpecializationType)
             .Select(x => new ContextMenu(x))
             .SingleOrDefault();
+
+        public PackageSettingsPersistable ToPersistable()
+        {
+            return new PackageSettingsPersistable
+            {
+                CreationOptions = this?.MenuOptions.CreationOptions.Select(x => x.ToPersistable()).ToList(),
+                TypeOrder = this?.MenuOptions.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList()
+            };
+        }
 
         protected bool Equals(PackageSettings other)
         {

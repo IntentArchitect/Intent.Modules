@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="443fd4b8-cfaa-4bf5-a6fd-0f308ca5d2c5" type="Element Settings">
   <name>Creation Option</name>
+  <display>Creation Option</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

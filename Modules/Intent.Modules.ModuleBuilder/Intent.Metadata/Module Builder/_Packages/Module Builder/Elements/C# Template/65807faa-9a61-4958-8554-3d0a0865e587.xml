@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="65807faa-9a61-4958-8554-3d0a0865e587" type="C# Template">
   <name>ApiMetadataProvider</name>
+  <display>ApiMetadataProvider: Single File</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <typeReference id="297aba48-261c-45cd-998a-e2dc9c3f2bc6">
     <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
+    <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <stereotypes />

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.RoslynWeaver.Attributes;
+using IconType = Intent.IArchitect.Common.Types.IconType;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -37,6 +39,25 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
         public string TargetSpecializationType { get; }
+
+        public ElementCreationOption ToPersistable()
+        {
+            return new ElementCreationOption
+            {
+                SpecializationType = this.TargetSpecializationType,
+                Text = this.Text,
+                Shortcut = this.Shortcut,
+                DefaultName = this.DefaultName,
+                Icon = GetIcon(this.Icon) ?? new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" },
+                AllowMultiple = this.AllowMultiple
+            };
+        }
+
+
+        private IconModelPersistable GetIcon(IconModel icon)
+        {
+            return icon != null ? new IconModelPersistable { Type = icon.Type, Source = icon.Source } : null;
+        }
 
         public string Text { get; }
 

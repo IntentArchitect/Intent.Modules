@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="6b0abbe4-849f-48b0-8285-952512048358" type="Context Menu">
   <name>Creation Options</name>
+  <display>Creation Options</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -12,10 +13,12 @@
   <childElements>
     <childElement id="0a1525e1-7875-4737-82c8-77e0d2baf222" type="Creation Option">
       <name>New File Template</name>
+      <display>New File Template: File Template</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="05e590cb-5d25-44f6-97ae-a63e3f3990af">
         <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -42,10 +45,12 @@
     </childElement>
     <childElement id="2822e884-39f3-487d-966a-b00a6fe497f9" type="Creation Option">
       <name>New Template Decorator</name>
+      <display>New Template Decorator: Decorator</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="2ae697b8-16d9-4921-9f39-b0f3b9afb424">
         <typeId>f0f46278-29ea-42bd-9206-0e7034f623bc</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -72,10 +77,12 @@
     </childElement>
     <childElement id="9966502f-91d4-43ac-a4d9-58861e64bd72" type="Creation Option">
       <name>New Modeler Reference</name>
+      <display>New Modeler Reference: Modeler Reference</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="6b10d1da-3618-4a1a-b85b-af5ee5db78c5">
         <typeId>4c7af41a-663f-4f7e-93a9-46a9006b6a88</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -102,10 +109,12 @@
     </childElement>
     <childElement id="b35841cf-62f3-4559-a072-353b8f33f393" type="Creation Option">
       <name>New Type</name>
+      <display>New Type: Type-Definition</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="bc3559df-6b9c-4144-ba61-947b009ea94f">
         <typeId>3c00249f-f1d9-47a7-b7fc-028e9aaf9bce</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -132,10 +141,12 @@
     </childElement>
     <childElement id="3080c9c5-66d5-4571-973d-78f734440214" type="Creation Option">
       <name>New Template Registration</name>
+      <display>New Template Registration: Template Registration</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="3a871be2-b046-47c7-a17c-b403f09e6ac5">
         <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -162,10 +173,12 @@
     </childElement>
     <childElement id="2aa269c3-e335-47e9-b028-d59014a8a34b" type="Creation Option">
       <name>New Stereotype-Definition</name>
+      <display>New Stereotype-Definition: Stereotype-Definition</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="5dd9b40f-fe17-465c-b750-c2024f424711">
         <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -192,10 +205,12 @@
     </childElement>
     <childElement id="b8bcd440-0dc5-4e0e-9443-d9e693f1a5cd" type="Creation Option">
       <name>New Folder</name>
+      <display>New Folder: Folder</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="70984ff2-3602-46c7-a8da-3fc5545c9051">
         <typeId>26f606b9-71e2-4e21-b185-04f90cb7d603</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

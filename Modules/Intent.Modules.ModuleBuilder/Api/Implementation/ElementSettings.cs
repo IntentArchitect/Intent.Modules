@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
+using IconType = Intent.IArchitect.Common.Types.IconType;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -35,29 +37,53 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public bool IsChild => _element.ParentElement.SpecializationType == SpecializationType;
 
+        public ElementSettingsPersistable ToPersistable()
+        {
+            return new ElementSettingsPersistable()
+            {
+                SpecializationType = this.Name,
+                DisplayFunction = this.GetSettings().DisplayTextFunction(),
+                Icon = GetIcon(this.GetIconFull()) ?? new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" },
+                ExpandedIcon = GetIcon(this.GetIconFullExpanded()),
+                AllowRename = this.GetSettings().AllowRename(),
+                AllowAbstract = this.GetSettings().AllowAbstract(),
+                AllowGenericTypes = this.GetSettings().AllowGenericTypes(),
+                AllowMapping = this.GetSettings().AllowMapping(),
+                AllowSorting = this.GetSettings().AllowSorting(),
+                AllowFindInView = this.GetSettings().AllowFindInView(),
+                AllowTypeReference = !this.GetSettings().TypeReference().IsDisabled(),
+                TypeReferenceSetting = !this.GetSettings().TypeReference().IsDisabled() ? new TypeReferenceSettingPersistable()
+                {
+                    IsRequired = this.GetSettings().TypeReference().IsRequired(),
+                    TargetTypes = this.GetSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
+                    AllowIsNullable = this.GetSettings().AllowNullable(),
+                    AllowIsCollection = this.GetSettings().AllowCollection(),
+                } : null,
+                DefaultTypeId = this.GetSettings().DefaultTypeId(),
+                DiagramSettings = null, // TODO JL / GCB
+                ChildElementSettings = this.ChildElementSettings.Select(x => x.ToPersistable()).ToArray(),
+                MappingSettings = this.MappingSettings?.ToPersistable(),
+                CreationOptions = this.MenuOptions?.CreationOptions.Select(x => x.ToPersistable()).ToList(),
+                TypeOrder = this.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList()
+            };
+        }
+
+
+        private IconModelPersistable GetIcon(ElementSettingsExtensions.IconFullExpanded icon)
+        {
+            return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
+        }
+
+        private IconModelPersistable GetIcon(ElementSettingsExtensions.IconFull icon)
+        {
+            return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
+        }
+
         [IntentManaged(Mode.Fully)]
         public IContextMenu MenuOptions => _element.ChildElements
             .Where(x => x.SpecializationType == Api.ContextMenu.SpecializationType)
             .Select(x => new ContextMenu(x))
             .SingleOrDefault();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<ILiteralSettings> LiteralSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.LiteralSettings.SpecializationType)
-            .Select(x => new LiteralSettings(x))
-            .ToList<ILiteralSettings>();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<IAttributeSettings> AttributeSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.AttributeSettings.SpecializationType)
-            .Select(x => new AttributeSettings(x))
-            .ToList<IAttributeSettings>();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<IOperationSettings> OperationSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.OperationSettings.SpecializationType)
-            .Select(x => new OperationSettings(x))
-            .ToList<IOperationSettings>();
 
         [IntentManaged(Mode.Fully)]
         public IList<IElementSettings> ChildElementSettings => _element.ChildElements
@@ -72,10 +98,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             .ToList<IDiagramSettings>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<IMappingSettings> MappingSettings => _element.ChildElements
+        public IMappingSettings MappingSettings => _element.ChildElements
             .Where(x => x.SpecializationType == Api.MappingSettings.SpecializationType)
             .Select(x => new MappingSettings(x))
-            .ToList<IMappingSettings>();
+            .SingleOrDefault();
 
         public override string ToString()
         {

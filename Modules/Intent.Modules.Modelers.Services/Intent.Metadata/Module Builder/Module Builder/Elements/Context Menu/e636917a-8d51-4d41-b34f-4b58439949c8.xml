@@ -18,6 +18,7 @@
       <genericTypes />
       <typeReference id="96d1ca10-5ed1-40ff-9ec1-57853a356918">
         <typeId>cd1dc4bd-30cb-473b-9922-05d9179c4e93</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

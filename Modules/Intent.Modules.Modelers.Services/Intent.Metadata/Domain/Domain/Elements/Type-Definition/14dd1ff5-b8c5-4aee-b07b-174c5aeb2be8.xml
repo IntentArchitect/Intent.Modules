@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="14dd1ff5-b8c5-4aee-b07b-174c5aeb2be8" type="Type-Definition">
+  <name>NewType</name>
+  <display>NewType</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

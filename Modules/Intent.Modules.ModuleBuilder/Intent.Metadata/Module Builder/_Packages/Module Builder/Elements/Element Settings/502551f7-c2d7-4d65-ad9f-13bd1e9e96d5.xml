@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="502551f7-c2d7-4d65-ad9f-13bd1e9e96d5" type="Element Settings">
   <name>Template Registration</name>
+  <display>Template Registration</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

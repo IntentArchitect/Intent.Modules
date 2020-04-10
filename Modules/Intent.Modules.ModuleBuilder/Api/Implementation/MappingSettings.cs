@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
@@ -43,6 +44,17 @@ namespace Intent.Modules.ModuleBuilder.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<IElementMapping> Mappings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ElementMapping.SpecializationType)
+            .Select(x => new ElementMapping(x))
+            .ToList<IElementMapping>();
+
+        public ElementMappingSettings ToPersistable()
+        {
+            throw new NotImplementedException();
         }
     }
 }

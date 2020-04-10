@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="3877283b-1f5c-4171-a8da-55595c1905b8" type="C# Template">
   <name>ApiModelExtensions</name>
+  <display>ApiModelExtensions: File Per Model</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <typeReference id="be57d8a2-15f6-4ed5-abbe-46d03a054844">
     <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
+    <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <stereotypes />

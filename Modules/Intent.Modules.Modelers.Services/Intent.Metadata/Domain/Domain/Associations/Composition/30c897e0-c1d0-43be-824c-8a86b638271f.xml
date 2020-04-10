@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="30c897e0-c1d0-43be-824c-8a86b638271f">
+  <sourceEnd id="19f77567-9358-4ac3-8643-591bafcccd54">
+    <name>NewClass</name>
+    <display>NewClass : NewClass</display>
+    <typeReference id="428eb8a9-d65e-46aa-ac14-3d92a52374c4">
+      <typeId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+  </sourceEnd>
+  <targetEnd id="30c897e0-c1d0-43be-824c-8a86b638271f">
+    <name>OldClass</name>
+    <display>OldClass : OldClass?</display>
+    <typeReference id="0e40269a-f01b-4cf0-a927-218a91f4e3b1">
+      <typeId>4579d512-e91e-4582-a0d3-d0137d328164</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>true</isNullable>
+      <isCollection>false</isCollection>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+  </targetEnd>
+  <associationType>Composition</associationType>
+  <stereotypes />
+</association>

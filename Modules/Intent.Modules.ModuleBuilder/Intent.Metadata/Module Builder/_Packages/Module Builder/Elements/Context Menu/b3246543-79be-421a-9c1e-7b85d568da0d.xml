@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="b3246543-79be-421a-9c1e-7b85d568da0d" type="Context Menu">
   <name>Creation Options</name>
+  <display>Creation Options</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -12,10 +13,12 @@
   <childElements>
     <childElement id="08ad2f99-12b8-4a41-bcf4-830b80f3fbd9" type="Creation Option">
       <name>New Element Type</name>
+      <display>New Element Type: Element Settings</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="ed6c6c5d-1ffd-4889-80a1-04b5700e257e">
         <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -42,10 +45,12 @@
     </childElement>
     <childElement id="cd1b38f0-cbb2-46b6-8a98-a3a2a1314bd0" type="Creation Option">
       <name>New Association Type</name>
+      <display>New Association Type: Association Settings</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="531b52a3-6c54-48b3-a349-16632ff43245">
         <typeId>16d21684-d5ea-4fde-b648-f88d292fa272</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -72,10 +77,12 @@
     </childElement>
     <childElement id="2bfec41d-2577-4065-bc31-acbb8604edc1" type="Creation Option">
       <name>New Core Type</name>
+      <display>New Core Type: Core Type</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="1d2d295f-9376-4094-91d9-0ab6492672b3">
         <typeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />
@@ -102,10 +109,12 @@
     </childElement>
     <childElement id="1843863b-db81-4d2a-b6a4-d0d4196ec296" type="Creation Option">
       <name>Add Package Settings</name>
+      <display>Add Package Settings: Package Settings</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="855bb808-ead3-49b7-8c61-7b10c787b527">
         <typeId>89333f72-3960-4159-bf61-9c40d4b65088</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

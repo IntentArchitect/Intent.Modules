@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="43eae4bd-4613-4d15-88ac-52b7e743b7b2" type="Element Settings">
   <name>File Template</name>
+  <display>File Template</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

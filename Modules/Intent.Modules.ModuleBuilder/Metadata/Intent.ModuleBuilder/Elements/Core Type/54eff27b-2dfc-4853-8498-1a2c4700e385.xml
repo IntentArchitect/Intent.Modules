@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="54eff27b-2dfc-4853-8498-1a2c4700e385" type="Core Type">
   <name>Stereotype-Definition</name>
+  <display>Stereotype-Definition</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

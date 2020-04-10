@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="b5b5445a-27a7-4bfd-b8c7-2f914ae51e53" type="Element Settings">
   <name>Modelers Folder</name>
+  <display>Modelers Folder</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="dc79fd61-7e57-44c8-ad40-14a7643b89c8" type="Element Settings">
   <name>Core Type</name>
+  <display>Core Type</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

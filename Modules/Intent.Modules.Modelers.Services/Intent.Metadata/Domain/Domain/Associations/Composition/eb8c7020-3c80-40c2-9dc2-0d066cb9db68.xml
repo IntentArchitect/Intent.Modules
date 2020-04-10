@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="eb8c7020-3c80-40c2-9dc2-0d066cb9db68">
+  <sourceEnd id="77908cb3-eceb-48ae-9e87-152e40d51f01">
+    <name>Movie</name>
+    <display>Movie : Movie</display>
+    <typeReference id="00102400-633d-41bd-a55e-13321277ec42">
+      <typeId>a97429c9-464a-4618-8692-2d1019bc732c</typeId>
+      <isNavigable>false</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+  </sourceEnd>
+  <targetEnd id="eb8c7020-3c80-40c2-9dc2-0d066cb9db68">
+    <name>Characters</name>
+    <display>Characters : Character?[*]</display>
+    <typeReference id="a1ddf57f-b182-4449-8c4e-b01265fae71b">
+      <typeId>06919864-4a6b-4894-ab64-f660d41e583d</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>true</isNullable>
+      <isCollection>true</isCollection>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+  </targetEnd>
+  <associationType>Composition</associationType>
+  <stereotypes />
+</association>

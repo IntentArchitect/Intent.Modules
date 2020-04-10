@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37" type="Element Settings">
   <name>Association End Settings</name>
+  <display>Association End Settings</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

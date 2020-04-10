@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="921706bd-c055-4cbd-ba7e-deb5419d529e" type="Element Settings">
   <name>Modeler</name>
+  <display>Modeler</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

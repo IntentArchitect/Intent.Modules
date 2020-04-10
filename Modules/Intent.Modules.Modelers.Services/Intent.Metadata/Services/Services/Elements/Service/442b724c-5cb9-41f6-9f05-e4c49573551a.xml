@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="442b724c-5cb9-41f6-9f05-e4c49573551a" type="Service">
   <name>NewService</name>
+  <display>NewService</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

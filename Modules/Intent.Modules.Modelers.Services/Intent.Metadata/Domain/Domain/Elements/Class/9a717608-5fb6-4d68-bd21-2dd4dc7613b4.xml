@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9a717608-5fb6-4d68-bd21-2dd4dc7613b4" type="Class">
+  <name>NewClass</name>
+  <display>NewClass</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="661db42b-5a42-48cb-84f6-dde2d64b881d" type="Attribute">
+      <name>listingType</name>
+      <display>listingType: &lt;no type&gt;</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="b13bd726-286d-4bc4-995a-715b2751c621">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="6bb818e0-16e2-4ddf-a817-25b43ee61910" type="Attribute">
+      <name>isDisputeAllowed</name>
+      <display>isDisputeAllowed: bool</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="155a1081-5fe2-4c39-a1ba-85dcfe595a5e">
+        <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="0d4137fc-b3c9-4e65-8dea-123b8ac2a39a" type="Attribute">
+      <name>expiryPeriod</name>
+      <display>expiryPeriod: &lt;no type&gt;</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="13ce5519-5e6d-48d9-8cde-3f6c2ef8ab59">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="02b85a61-d9b8-41b7-9509-f909aa9011f9" type="Attribute">
+      <name>clientResponsePeriod</name>
+      <display>clientResponsePeriod: int?</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="6d255e62-c6de-47b6-b835-f200a44e6899">
+        <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>true</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="153b1e56-8398-4f02-bbfc-301c6f1b34cb">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="62a1e47b-3b2c-4f77-8a2a-c2bcab1867ec" value="0" isActive="true" />
+            <property name="ab5c2188-68fe-46b5-9356-11a6efb5d8fa" value="1000" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="3cc273c4-b625-4b77-8f4e-492e0180baaa" type="Attribute">
+      <name>subjectResponsePeriod</name>
+      <display>subjectResponsePeriod: int?</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="f078190a-0ad5-4584-b1f8-19b27b2c3ead">
+        <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>true</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="153b1e56-8398-4f02-bbfc-301c6f1b34cb">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="62a1e47b-3b2c-4f77-8a2a-c2bcab1867ec" value="0" isActive="true" />
+            <property name="ab5c2188-68fe-46b5-9356-11a6efb5d8fa" value="1000" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="077d1cbf-7192-4ece-8fc4-8b44106ce6a2" type="Attribute">
+      <name>monitoringPeriod</name>
+      <display>monitoringPeriod: int?</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="02ea7a61-266c-4c6b-b99f-06ce72972771">
+        <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>true</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="153b1e56-8398-4f02-bbfc-301c6f1b34cb">
+          <addedByDefault>false</addedByDefault>
+          <properties>
+            <property name="62a1e47b-3b2c-4f77-8a2a-c2bcab1867ec" value="0" isActive="true" />
+            <property name="ab5c2188-68fe-46b5-9356-11a6efb5d8fa" value="1000" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="0a3c107a-e9b9-4e47-89b4-b1efb48e71ae" type="Operation">
+      <name>ChangeDetails</name>
+      <display>ChangeDetails(details: &lt;no type&gt;): void</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="794ced38-a7ea-411d-a77a-063dec76fec1">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cf363a0-ab00-4e50-a627-7d5f31f39dd1">
+          <addedByDefault>false</addedByDefault>
+          <properties />
+        </stereotype>
+      </stereotypes>
+      <childElements>
+        <childElement id="716d35be-7f8b-499e-915f-10e31b11b280" type="Parameter">
+          <name>details</name>
+          <display>in : details: &lt;no type&gt;</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e97a1ce3-af2a-449b-b93c-413a5b7d1e3b">
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0a3c107a-e9b9-4e47-89b4-b1efb48e71ae</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="31651611-8b12-48a7-b03c-68c06229bc6a" type="Operation">
+      <name>ChangeUsageBands</name>
+      <display>ChangeUsageBands(countries: &lt;no type&gt;[*], usageBands: &lt;no type&gt;[*]): void</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="777662ed-88f0-4061-b396-59edea99e6b0">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cf363a0-ab00-4e50-a627-7d5f31f39dd1">
+          <addedByDefault>false</addedByDefault>
+          <properties />
+        </stereotype>
+      </stereotypes>
+      <childElements>
+        <childElement id="98b40b0c-6419-4bb0-a6b2-f0420657cebd" type="Parameter">
+          <name>countries</name>
+          <display>in : countries: &lt;no type&gt;[*]</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="95bcb7ba-985f-45cb-863d-cd7de83138c3">
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>true</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>31651611-8b12-48a7-b03c-68c06229bc6a</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+        <childElement id="01566532-3f8c-4825-9d33-c3a6eefb164b" type="Parameter">
+          <name>usageBands</name>
+          <display>in : usageBands: &lt;no type&gt;[*]</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="9898ef56-27f9-4a97-85cc-54aa928b712c">
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>true</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>31651611-8b12-48a7-b03c-68c06229bc6a</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="facc389e-6b16-4435-9d5a-87e365252eb7" type="Operation">
+      <name>ChangeReasons</name>
+      <display>ChangeReasons(reasons: string[*]): void</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="3bdedf91-8dd3-4cd5-806b-a09de88ab497">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cf363a0-ab00-4e50-a627-7d5f31f39dd1">
+          <addedByDefault>false</addedByDefault>
+          <properties />
+        </stereotype>
+      </stereotypes>
+      <childElements>
+        <childElement id="3f1ad084-100d-4aad-80ff-18667aeff3aa" type="Parameter">
+          <name>reasons</name>
+          <display>in : reasons: string[*]</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="55b480ae-b88d-457b-b647-d15d68f4ef97">
+            <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>true</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>facc389e-6b16-4435-9d5a-87e365252eb7</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="a5005ab4-c80b-4954-ba39-a4beb3471fb7" type="Operation">
+      <name>GetSomething</name>
+      <display>GetSomething(): string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="941cb6c4-054b-4e5c-a3a0-c5085b0de76d">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="f1a7ecd2-6a06-495f-8a5a-424bf02c0b55" type="Operation">
+      <name>GetThis</name>
+      <display>GetThis(param: bool, param2: string): string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="f63f03e4-dc6e-426c-b987-ded2ab8a5ff5">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="0517531e-46ea-446e-8bb5-96c8cde83cae" type="Parameter">
+          <name>param</name>
+          <display>in : param: bool</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="19942c73-3f34-4432-a425-daaa9c7ffecc">
+            <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>f1a7ecd2-6a06-495f-8a5a-424bf02c0b55</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+        <childElement id="178a4511-bf09-4bdc-9257-ee8b08b4a571" type="Parameter">
+          <name>param2</name>
+          <display>in : param2: string</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="028f377d-4333-457c-b15c-9980ea0ceed7">
+            <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>f1a7ecd2-6a06-495f-8a5a-424bf02c0b55</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

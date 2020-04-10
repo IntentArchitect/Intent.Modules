@@ -54,7 +54,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
     public class ElementSettingsPersistable
     {
         private string _specializationType;
-        private List<TypeOrder> _typeOrder;
+        private List<TypeOrderPersistable> _typeOrder;
 
         [XmlAttribute("type")]
         public string SpecializationType
@@ -103,8 +103,8 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public string DefaultTypeId { get; set; }
 
         [XmlArray("typeOrder")]
-        [XmlArrayItem("type", typeof(TypeOrder))]
-        public List<TypeOrder> TypeOrder
+        [XmlArrayItem("type", typeof(TypeOrderPersistable))]
+        public List<TypeOrderPersistable> TypeOrder
         {
             get => _typeOrder;
             set
@@ -172,7 +172,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public bool AllowIsCollection { get; set; } = true;
     }
 
-    public class TypeOrder
+    public class TypeOrderPersistable
     {
         private string _order;
 
@@ -305,7 +305,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class PackageSettingsPersistable
     {
-        private List<TypeOrder> _typeOrder;
+        private List<TypeOrderPersistable> _typeOrder;
 
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
@@ -313,7 +313,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("typeOrder")]
         [XmlArrayItem("type")]
-        public List<TypeOrder> TypeOrder
+        public List<TypeOrderPersistable> TypeOrder
         {
             get => _typeOrder;
             set

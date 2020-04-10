@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="67d711dd-3918-4b28-b2a0-4d845884e17a" type="Element Settings">
   <name>Diagram Settings</name>
+  <display>Diagram Settings</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

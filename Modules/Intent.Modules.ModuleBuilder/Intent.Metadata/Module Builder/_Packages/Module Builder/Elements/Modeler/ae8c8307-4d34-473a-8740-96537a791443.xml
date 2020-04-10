@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="ae8c8307-4d34-473a-8740-96537a791443" type="Modeler">
   <name>Module Builder</name>
+  <display>Module Builder : Modeler</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

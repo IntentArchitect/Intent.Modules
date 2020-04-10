@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="64514d1f-63f5-40c0-9fd2-88e908951519" type="Folder">
   <name>Element Settings Definition</name>
+  <display>Element Settings Definition</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

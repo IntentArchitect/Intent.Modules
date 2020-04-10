@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="79796a18-c023-4db9-8d3a-0f847e9158c1" type="Modelers Folder">
   <name>modeler</name>
+  <display>modeler</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

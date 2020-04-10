@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="701f2095-7051-46a4-b836-7b9cb85918b6" type="Element Settings">
   <name>Element Visual Settings</name>
+  <display>Element Visual Settings</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

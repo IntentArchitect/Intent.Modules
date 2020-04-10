@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="57cc29a3-e8c1-41d8-8862-5472645015d0" type="Context Menu">
   <name>Creation Options</name>
+  <display>Creation Options</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -12,10 +13,12 @@
   <childElements>
     <childElement id="88263caf-1b21-4aac-bcbd-3e81dd240e58" type="Creation Option">
       <name>Add Creation Option</name>
+      <display>Add Creation Option: Creation Option</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="d6923583-af1b-4b98-a1f0-4b8d4d879de0">
         <typeId>443fd4b8-cfaa-4bf5-a6fd-0f308ca5d2c5</typeId>
+        <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <stereotypes />

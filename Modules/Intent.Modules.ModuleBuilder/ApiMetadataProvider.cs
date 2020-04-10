@@ -28,15 +28,6 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
-        public IList<IAttributeSettings> GetAttributeSettings(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == AttributeSettings.SpecializationType)
-                .Select(x => new AttributeSettings(x))
-                .ToList<IAttributeSettings>();
-            return models;
-        }
-
         public IList<IContextMenu> GetContextMenus(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
@@ -100,24 +91,6 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
-        public IList<ILiteralSettings> GetLiteralSettings(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == LiteralSettings.SpecializationType)
-                .Select(x => new LiteralSettings(x))
-                .ToList<ILiteralSettings>();
-            return models;
-        }
-
-        public IList<IMappingSettings> GetMappingSettings(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == MappingSettings.SpecializationType)
-                .Select(x => new MappingSettings(x))
-                .ToList<IMappingSettings>();
-            return models;
-        }
-
         public IList<IModeler> GetModelers(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
@@ -142,15 +115,6 @@ namespace Intent.Modules.ModuleBuilder
                 .Where(x => x.SpecializationType == ModelersFolder.SpecializationType)
                 .Select(x => new ModelersFolder(x))
                 .ToList<IModelersFolder>();
-            return models;
-        }
-
-        public IList<IOperationSettings> GetOperationSettings(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == OperationSettings.SpecializationType)
-                .Select(x => new OperationSettings(x))
-                .ToList<IOperationSettings>();
             return models;
         }
 

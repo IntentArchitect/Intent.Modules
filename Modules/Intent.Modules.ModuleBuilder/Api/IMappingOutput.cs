@@ -1,16 +1,15 @@
-using Intent.Metadata.Models;
-using Intent.RoslynWeaver.Attributes;
 using System;
 using System.Collections.Generic;
+using Intent.Metadata.Models;
+using Intent.RoslynWeaver.Attributes;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public interface IOperationSettings : IMetadataModel, IHasStereotypes
+    public interface IMappingOutput : IMetadataModel, IHasStereotypes
     {
         string Name { get; }
-        IconModel Icon { get; set; }
     }
 }

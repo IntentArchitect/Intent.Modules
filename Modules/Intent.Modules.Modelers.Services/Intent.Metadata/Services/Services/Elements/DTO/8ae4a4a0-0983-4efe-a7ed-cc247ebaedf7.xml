@@ -1,13 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7" type="DTO">
   <name>NewDTO</name>
+  <display>NewDTO</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <isMapped>false</isMapped>
+  <isMapped>true</isMapped>
+  <mappedClass>
+    <applicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</applicationId>
+    <metadataId>Domain</metadataId>
+    <mappedPath>
+      <target id="a97429c9-464a-4618-8692-2d1019bc732c" name="Movie" />
+    </mappedPath>
+  </mappedClass>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
   <literals />
   <attributes />
   <operations />
   <stereotypes />
-  <childElements />
+  <childElements>
+    <childElement id="9ae50aa5-c718-4be9-bac7-143eb040821e" type="DTO-Field">
+      <name>Characters</name>
+      <display>Characters: CharacterDTO?[*]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="c976cc97-a450-40ac-96bf-2ab718e983ad">
+        <typeId>640558b4-4104-4a96-baea-8b97643314cb</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>true</isNullable>
+        <isCollection>true</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>true</isMapped>
+      <mappedClass>
+        <mappedPath>
+          <target id="eb8c7020-3c80-40c2-9dc2-0d066cb9db68" name="Characters" />
+        </mappedPath>
+      </mappedClass>
+      <parentFolderId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="640558b4-4104-4a96-baea-8b97643314cb" type="DTO">
+      <name>CharacterDTO</name>
+      <display>CharacterDTO</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>true</isMapped>
+      <mappedClass>
+        <applicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</applicationId>
+        <metadataId>Domain</metadataId>
+        <mappedPath>
+          <target id="06919864-4a6b-4894-ab64-f660d41e583d" name="Character" />
+        </mappedPath>
+      </mappedClass>
+      <parentFolderId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="4662bb04-f0f5-4b94-87f0-49e1b29de1a3" type="DTO-Field">
+          <name>name</name>
+          <display>name: string</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="7bbae95a-ad15-438b-8d0e-5fa13145e790">
+            <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>true</isMapped>
+          <mappedClass>
+            <mappedPath>
+              <target id="69c58551-e882-45e4-905f-a90f164a0948" name="name" />
+            </mappedPath>
+          </mappedClass>
+          <parentFolderId>640558b4-4104-4a96-baea-8b97643314cb</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+        <childElement id="e340b47b-0fad-4c7d-96ff-b210b03b9833" type="DTO-Field">
+          <name>isVillain</name>
+          <display>isVillain: bool</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="225019e3-a4b2-4992-804d-ac30d3cd06de">
+            <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>true</isMapped>
+          <mappedClass>
+            <mappedPath>
+              <target id="4df91bc2-dbee-4ded-9e82-0f3b4371a543" name="isVillain" />
+            </mappedPath>
+          </mappedClass>
+          <parentFolderId>640558b4-4104-4a96-baea-8b97643314cb</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
 </class>

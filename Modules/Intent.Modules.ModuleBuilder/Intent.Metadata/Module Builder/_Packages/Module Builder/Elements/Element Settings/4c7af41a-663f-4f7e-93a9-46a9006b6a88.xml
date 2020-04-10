@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="4c7af41a-663f-4f7e-93a9-46a9006b6a88" type="Element Settings">
   <name>Modeler Reference</name>
+  <display>Modeler Reference</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
