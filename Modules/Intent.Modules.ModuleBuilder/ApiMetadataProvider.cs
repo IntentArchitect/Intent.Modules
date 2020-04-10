@@ -64,39 +64,39 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
-        public IList<ElementSettings> GetElementSettings(IApplication application)
+        public IList<ElementSettingsModel> GetElementSettings(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == ElementSettings.SpecializationType)
-                .Select(x => new ElementSettings(x))
-                .ToList<ElementSettings>();
+                .Where(x => x.SpecializationType == ElementSettingsModel.SpecializationType)
+                .Select(x => new ElementSettingsModel(x))
+                .ToList<ElementSettingsModel>();
             return models;
         }
 
-        public IList<FileTemplate> GetFileTemplates(IApplication application)
+        public IList<FileTemplateModel> GetFileTemplates(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == FileTemplate.SpecializationType)
-                .Select(x => new FileTemplate(x))
-                .ToList<FileTemplate>();
+                .Where(x => x.SpecializationType == FileTemplateModel.SpecializationType)
+                .Select(x => new FileTemplateModel(x))
+                .ToList<FileTemplateModel>();
             return models;
         }
 
-        public IList<Folder> GetFolders(IApplication application)
+        public IList<FolderModel> GetFolders(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == Folder.SpecializationType)
-                .Select(x => new Folder(x))
-                .ToList<Folder>();
+                .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+                .Select(x => new FolderModel(x))
+                .ToList<FolderModel>();
             return models;
         }
 
-        public IList<Modeler> GetModelers(IApplication application)
+        public IList<ModelerModel> GetModelers(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == Modeler.SpecializationType)
-                .Select(x => new Modeler(x))
-                .ToList<Modeler>();
+                .Where(x => x.SpecializationType == ModelerModel.SpecializationType)
+                .Select(x => new ModelerModel(x))
+                .ToList<ModelerModel>();
             return models;
         }
 
@@ -109,12 +109,12 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
-        public IList<PackageSettings> GetPackageSettings(IApplication application)
+        public IList<PackageSettingsModel> GetPackageSettings(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == PackageSettings.SpecializationType)
-                .Select(x => new PackageSettings(x))
-                .ToList<PackageSettings>();
+                .Where(x => x.SpecializationType == PackageSettingsModel.SpecializationType)
+                .Select(x => new PackageSettingsModel(x))
+                .ToList<PackageSettingsModel>();
             return models;
         }
 

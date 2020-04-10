@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ApiMetadataProviderExtensionsRegistration : ListModelTemplateRegistrationBase<ElementSettings>
+    public class ApiMetadataProviderExtensionsRegistration : ListModelTemplateRegistrationBase<ElementSettingsModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,13 +26,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
 
         public override string TemplateId => ApiMetadataProviderExtensions.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<ElementSettings> model)
+        public override ITemplate CreateTemplateInstance(IProject project, IList<ElementSettingsModel> model)
         {
             return new ApiMetadataProviderExtensions(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IList<ElementSettings> GetModels(IApplication application)
+        public override IList<ElementSettingsModel> GetModels(IApplication application)
         {
             return _metadataManager.GetElementSettings(application).Where(x => !x.IsChild).ToList();
         }

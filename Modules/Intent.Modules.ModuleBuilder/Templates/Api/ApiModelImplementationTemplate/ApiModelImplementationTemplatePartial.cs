@@ -13,12 +13,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class ApiModelImplementationTemplate : IntentRoslynProjectItemTemplateBase<ElementSettings>
+    partial class ApiModelImplementationTemplate : IntentRoslynProjectItemTemplateBase<ElementSettingsModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiModelImplementationTemplate";
 
-        public ApiModelImplementationTemplate(IProject project, ElementSettings model) : base(TemplateId, project, model)
+        public ApiModelImplementationTemplate(IProject project, ElementSettingsModel model) : base(TemplateId, project, model)
         {
             AddTypeSource(CSharpTypeSource.InProject(Project, ApiModelImplementationTemplate.TemplateId, collectionFormat: "IEnumerable<{0}>"));
         }
@@ -33,10 +33,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: Model.Name.ToCSharpIdentifier(),
+                fileName: $"{Model.Name.ToCSharpIdentifier()}Model",
                 fileExtension: "cs",
-                defaultLocationInProject: "Api/Implementation",
-                className: Model.Name.ToCSharpIdentifier(),
+                defaultLocationInProject: "Api",
+                className: $"{Model.Name.ToCSharpIdentifier()}Model",
                 @namespace: Model.Modeler.ApiNamespace
             );
         }
@@ -47,7 +47,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             : null;
 
 
-        private string GetCreationOptionTypeInterface(CreationOption option, bool asCollection)
+        private string GetCreationOptionTypeInterface(CreationOptionModel option, bool asCollection)
         {
             var @interface = GetTemplateClassName(ApiModelImplementationTemplate.TemplateId, option.Type.Id, throwIfNotFound: false);
             if (@interface == null)
@@ -57,13 +57,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             return asCollection ? $"IList<{@interface}>" : @interface;
         }
 
-        private string GetCreationOptionTypeClass(CreationOption option)
+        private string GetCreationOptionTypeClass(CreationOptionModel option)
         {
             var className = GetTemplateClassName(TemplateId, option.Type.Id, throwIfNotFound: false);
             return className;
         }
 
-        private string GetCreationOptionName(CreationOption option)
+        private string GetCreationOptionName(CreationOptionModel option)
         {
             var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
             return option.AllowMultiple ? name.ToPluralName() : name;

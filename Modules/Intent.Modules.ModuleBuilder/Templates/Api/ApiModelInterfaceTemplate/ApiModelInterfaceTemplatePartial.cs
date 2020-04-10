@@ -13,12 +13,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class ApiModelInterfaceTemplate : IntentRoslynProjectItemTemplateBase<ElementSettings>
+    partial class ApiModelInterfaceTemplate : IntentRoslynProjectItemTemplateBase<ElementSettingsModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate";
 
-        public ApiModelInterfaceTemplate(IProject project, ElementSettings model) : base(TemplateId, project, model)
+        public ApiModelInterfaceTemplate(IProject project, ElementSettingsModel model) : base(TemplateId, project, model)
         {
             AddTypeSource(CSharpTypeSource.InProject(Project, ApiModelInterfaceTemplate.TemplateId, collectionFormat: "IEnumerable<{0}>"));
         }
@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
             ? GetTemplateClassName(TemplateId, Model.GetSettings().TargetTypes().Single().Id, throwIfNotFound: false) ?? $"I{Model.GetSettings().TargetTypes().Single().Name.ToCSharpIdentifier()}"
             : null;
 
-        private string GetCreationOptionType(CreationOption option)
+        private string GetCreationOptionType(CreationOptionModel option)
         {
             var @interface = GetTemplateClassName(ApiModelInterfaceTemplate.TemplateId, option.Type.Id, throwIfNotFound: false);
             if (@interface == null)
@@ -56,7 +56,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
             return option.AllowMultiple ? $"IList<{@interface}>" : @interface;
         }
 
-        private string GetCreationOptionName(CreationOption option)
+        private string GetCreationOptionName(CreationOptionModel option)
         {
             var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
             return option.AllowMultiple ? name.ToPluralName() : name;

@@ -15,11 +15,11 @@ namespace Intent.Modules.ModuleBuilder
             _metadataManager = metadataManager;
         }
 
-        public IEnumerable<FileTemplate> GetTemplateDefinitions(string applicationId)
+        public IEnumerable<FileTemplateModel> GetTemplateDefinitions(string applicationId)
         {
             var templates = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId)
                 .Where(x => x.TypeReference?.Element.SpecializationType == TemplateRegistration.SpecializationType).ToList();
-            var result = templates.Select(x => new FileTemplate(x)).ToList();
+            var result = templates.Select(x => new FileTemplateModel(x)).ToList();
             return result; 
         } 
     }

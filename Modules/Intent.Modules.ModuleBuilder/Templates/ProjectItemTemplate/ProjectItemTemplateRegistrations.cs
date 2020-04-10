@@ -7,7 +7,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 {
-    public class ProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<FileTemplate>
+    public class ProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<FileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -18,12 +18,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         public override string TemplateId => ProjectItemTemplateTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, FileTemplate model)
+        public override ITemplate CreateTemplateInstance(IProject project, FileTemplateModel model)
         {
             return new ProjectItemTemplateTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<FileTemplate> GetModels(IApplication application)
+        public override IEnumerable<FileTemplateModel> GetModels(IApplication application)
         {
             return _metadataManager.GetFileTemplates(application)
                 .Where(x => x.GetFileSettings().TemplatingMethod().IsT4Template())

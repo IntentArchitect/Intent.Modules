@@ -10,25 +10,25 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class ElementSettingsExtensions
     {
-        public static DefaultCreationOptions GetDefaultCreationOptions(this ElementSettings model)
+        public static DefaultCreationOptions GetDefaultCreationOptions(this ElementSettingsModel model)
         {
             var stereotype = model.GetStereotype("Default Creation Options");
             return stereotype != null ? new DefaultCreationOptions(stereotype) : null;
         }
 
-        public static IconFull GetIconFull(this ElementSettings model)
+        public static IconFull GetIconFull(this ElementSettingsModel model)
         {
             var stereotype = model.GetStereotype("Icon (Full)");
             return stereotype != null ? new IconFull(stereotype) : null;
         }
 
-        public static IconFullExpanded GetIconFullExpanded(this ElementSettings model)
+        public static IconFullExpanded GetIconFullExpanded(this ElementSettingsModel model)
         {
             var stereotype = model.GetStereotype("Icon (Full, Expanded)");
             return stereotype != null ? new IconFullExpanded(stereotype) : null;
         }
 
-        public static Settings GetSettings(this ElementSettings model)
+        public static Settings GetSettings(this ElementSettingsModel model)
         {
             var stereotype = model.GetStereotype("Settings");
             return stereotype != null ? new Settings(stereotype) : null;

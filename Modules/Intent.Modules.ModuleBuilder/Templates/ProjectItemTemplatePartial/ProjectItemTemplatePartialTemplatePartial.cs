@@ -11,11 +11,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 {
-    partial class ProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<FileTemplate>, IHasTemplateDependencies
+    partial class ProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<FileTemplateModel>, IHasTemplateDependencies
     {
         public const string TemplateId = "Intent.ModuleBuilder.ProjectItemTemplate.Partial";
 
-        public ProjectItemTemplatePartialTemplate(string templateId, IProject project, FileTemplate model) : base(templateId, project, model)
+        public ProjectItemTemplatePartialTemplate(string templateId, IProject project, FileTemplateModel model) : base(templateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentModulesCommon);
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);

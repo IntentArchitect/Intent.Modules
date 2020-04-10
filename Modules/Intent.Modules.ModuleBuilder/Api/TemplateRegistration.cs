@@ -26,14 +26,14 @@ namespace Intent.Modules.ModuleBuilder.Api
                 throw new Exception($"Cannot create a 'TemplateRegistration' from element that has type-reference with specialization type '{element.TypeReference?.Element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            Folder = element.ParentElement != null ? new Folder(element.ParentElement) : null;
+            Folder = element.ParentElement != null ? new FolderModel(element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
 
         public string Name => _element.Name;
 
-        public Modeler GetModeler()
+        public ModelerModel GetModeler()
         {
             return GetModelType()?.Modeler;
         }
@@ -45,7 +45,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public Folder Folder { get; }
+        public FolderModel Folder { get; }
 
         public bool IsSingleFileTemplateRegistration()
         {

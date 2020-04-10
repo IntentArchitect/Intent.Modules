@@ -30,10 +30,10 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
-        public IList<CreationOption> CreationOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.CreationOption.SpecializationType)
-            .Select(x => new CreationOption(x))
-            .ToList<CreationOption>();
+        public IList<CreationOptionModel> CreationOptions => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.CreationOptionModel.SpecializationType)
+            .Select(x => new CreationOptionModel(x))
+            .ToList<CreationOptionModel>();
         public IList<TypeOrder> TypeOrder { get; }
 
         protected bool Equals(ContextMenu other)

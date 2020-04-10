@@ -10,11 +10,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 {
-    public class ProjectItemTemplateTemplate : IntentProjectItemTemplateBase<FileTemplate>
+    public class ProjectItemTemplateTemplate : IntentProjectItemTemplateBase<FileTemplateModel>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ProjectItemTemplate.T4Template";
 
-        public ProjectItemTemplateTemplate(string templateId, IProject project, FileTemplate model) : base(templateId, project, model)
+        public ProjectItemTemplateTemplate(string templateId, IProject project, FileTemplateModel model) : base(templateId, project, model)
         {
         }
 

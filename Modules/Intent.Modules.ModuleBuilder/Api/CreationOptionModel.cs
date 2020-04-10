@@ -13,12 +13,12 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class CreationOption : IHasStereotypes, IMetadataModel
+    public class CreationOptionModel : IHasStereotypes, IMetadataModel
     {
         private readonly IElement _element;
         public const string SpecializationType = "Creation Option";
 
-        public CreationOption(IElement element)
+        public CreationOptionModel(IElement element)
         {
             if (element.SpecializationType != SpecializationType)
             {
@@ -79,7 +79,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
 
-        protected bool Equals(CreationOption other)
+        protected bool Equals(CreationOptionModel other)
         {
             return Equals(_element, other._element);
         }
@@ -89,7 +89,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CreationOption)obj);
+            return Equals((CreationOptionModel)obj);
         }
 
         public override int GetHashCode()

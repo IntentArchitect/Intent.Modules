@@ -12,9 +12,9 @@ namespace Intent.Modules.ModuleBuilder.Api
     public static class FolderExtensions
     {
         [IntentManaged(Mode.Ignore)]
-        public static IList<Folder> GetFolderPath(this IHasFolder model, bool includePackage = false)
+        public static IList<FolderModel> GetFolderPath(this IHasFolder model, bool includePackage = false)
         {
-            List<Folder> result = new List<Folder>();
+            List<FolderModel> result = new List<FolderModel>();
 
             var current = model.Folder;
             while (current != null)

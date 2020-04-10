@@ -13,14 +13,14 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ElementSettings : IHasStereotypes, IMetadataModel
+    public class ElementSettingsModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Element Settings";
         public const string RequiredSpecializationType = "Element Settings";
         private readonly IElement _element;
 
 
-        public ElementSettings(IElement element)
+        public ElementSettingsModel(IElement element)
         {
             if (element.SpecializationType != SpecializationType)
             {
@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
 
-        public Modeler Modeler => new Modeler(_element.GetParentPath().Single(x => x.SpecializationType == Api.Modeler.SpecializationType));
+        public ModelerModel Modeler => new ModelerModel(_element.GetParentPath().Single(x => x.SpecializationType == Api.ModelerModel.SpecializationType));
 
         public bool IsChild => _element.ParentElement.SpecializationType == SpecializationType;
 
@@ -87,10 +87,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
-        public IList<ElementSettings> ChildElementSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)
-            .Select(x => new ElementSettings(x))
-            .ToList<ElementSettings>();
+        public IList<ElementSettingsModel> ChildElementSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ElementSettingsModel.SpecializationType)
+            .Select(x => new ElementSettingsModel(x))
+            .ToList<ElementSettingsModel>();
 
         [IntentManaged(Mode.Fully)]
         public IList<DiagramSettings> DiagramSettings => _element.ChildElements
@@ -109,7 +109,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return _element.ToString();
         }
 
-        protected bool Equals(ElementSettings other)
+        protected bool Equals(ElementSettingsModel other)
         {
             return Equals(_element, other._element);
         }
@@ -119,7 +119,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ElementSettings)obj);
+            return Equals((ElementSettingsModel)obj);
         }
 
         public override int GetHashCode()

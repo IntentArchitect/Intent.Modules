@@ -17,13 +17,13 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
 {
-    public class ModelerConfig : IntentProjectItemTemplateBase<Modeler>
+    public class ModelerConfig : IntentProjectItemTemplateBase<ModelerModel>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ModelerConfig";
 
         private static readonly IconModelPersistable _defaultIconModel = new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" };
 
-        public ModelerConfig(IProject project, Modeler model) : base(TemplateId, project, model)
+        public ModelerConfig(IProject project, ModelerModel model) : base(TemplateId, project, model)
         {
         }
 
@@ -53,7 +53,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
         }
 
-        private StereotypeSettingsPersistable GetStereotypeSettings(Modeler model)
+        private StereotypeSettingsPersistable GetStereotypeSettings(ModelerModel model)
         {
             var targetTypes = model.ElementTypes.Select(x => x.Name)
                 .Concat(model.ElementTypes.SelectMany(x => x.ChildElementSettings).Select(x => x.Name))

@@ -10,12 +10,12 @@ using System.Linq;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class Folder : IHasStereotypes
+    public class FolderModel : IHasStereotypes
     {
         public const string SpecializationType = "Folder";
         private readonly IElement _element;
 
-        public Folder(IElement element)
+        public FolderModel(IElement element)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -24,27 +24,27 @@ namespace Intent.Modules.ModuleBuilder.Api
 
             _element = element;
 
-            ParentFolder = element.ParentElement?.SpecializationType == SpecializationType ? new Folder(element.ParentElement) : null;
+            ParentFolder = element.ParentElement?.SpecializationType == SpecializationType ? new FolderModel(element.ParentElement) : null;
             Stereotypes = element.Stereotypes;
         }
 
         public string Id => _element.Id;
         public string Name => _element.Name;
-        public Folder ParentFolder { get; }
+        public FolderModel ParentFolder { get; }
         public string ParentId => _element.ParentElement.Id;
         public IEnumerable<IStereotype> Stereotypes { get; }
 
         [IntentManaged(Mode.Fully)]
-        public IList<FileTemplate> FileTemplates => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.FileTemplate.SpecializationType)
-            .Select(x => new FileTemplate(x))
-            .ToList<FileTemplate>();
+        public IList<FileTemplateModel> FileTemplates => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.FileTemplateModel.SpecializationType)
+            .Select(x => new FileTemplateModel(x))
+            .ToList<FileTemplateModel>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<Folder> Folders => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.Folder.SpecializationType)
-            .Select(x => new Folder(x))
-            .ToList<Folder>();
+        public IList<FolderModel> Folders => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.FolderModel.SpecializationType)
+            .Select(x => new FolderModel(x))
+            .ToList<FolderModel>();
 
         [IntentManaged(Mode.Fully)]
         public IList<Decorator> TemplateDecorators => _element.ChildElements
@@ -60,7 +60,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IElement UnderlyingElement => _element;
 
-        protected bool Equals(Folder other)
+        protected bool Equals(FolderModel other)
         {
             return Equals(_element, other._element);
         }
@@ -70,7 +70,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((Folder)obj);
+            return Equals((FolderModel)obj);
         }
 
         public override int GetHashCode()

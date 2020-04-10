@@ -37,22 +37,22 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetDiagramSettings(application);
         }
 
-        public static IList<ElementSettings> GetElementSettings(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ElementSettingsModel> GetElementSettings(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetElementSettings(application);
         }
 
-        public static IList<FileTemplate> GetFileTemplates(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FileTemplateModel> GetFileTemplates(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetFileTemplates(application);
         }
 
-        public static IList<Folder> GetFolders(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FolderModel> GetFolders(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetFolders(application);
         }
 
-        public static IList<Modeler> GetModelers(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ModelerModel> GetModelers(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetModelers(application);
         }
@@ -62,7 +62,7 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetModelersFolders(application);
         }
 
-        public static IList<PackageSettings> GetPackageSettings(this IMetadataManager metadataManager, IApplication application)
+        public static IList<PackageSettingsModel> GetPackageSettings(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetPackageSettings(application);
         }

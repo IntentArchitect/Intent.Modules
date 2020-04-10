@@ -14,12 +14,12 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class Modeler : IHasStereotypes, IMetadataModel
+    public class ModelerModel : IHasStereotypes, IMetadataModel
     {
         private readonly IElement _element;
         public const string SpecializationType = "Modeler";
 
-        public Modeler(IElement element)
+        public ModelerModel(IElement element)
         {
             if (SpecializationType != element.SpecializationType)
             {
@@ -45,9 +45,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Name { get; }
 
         [IntentManaged(Mode.Fully)]
-        public PackageSettings PackageSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.PackageSettings.SpecializationType)
-            .Select(x => new PackageSettings(x))
+        public PackageSettingsModel PackageSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.PackageSettingsModel.SpecializationType)
+            .Select(x => new PackageSettingsModel(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
@@ -57,10 +57,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             .ToList<AssociationSettings>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<ElementSettings> ElementTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)
-            .Select(x => new ElementSettings(x))
-            .ToList<ElementSettings>();
+        public IList<ElementSettingsModel> ElementTypes => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ElementSettingsModel.SpecializationType)
+            .Select(x => new ElementSettingsModel(x))
+            .ToList<ElementSettingsModel>();
 
         public string ApiNamespace => this.GetModelerSettings().APINamespace();
         public string ModuleDependency => null;
@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string NuGetDependency => null;
         public string NuGetVersion => null;
 
-        protected bool Equals(Modeler other)
+        protected bool Equals(ModelerModel other)
         {
             return Equals(_element, other._element);
         }
@@ -78,7 +78,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((Modeler)obj);
+            return Equals((ModelerModel)obj);
         }
 
         public override int GetHashCode()

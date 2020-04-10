@@ -11,12 +11,12 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class PackageSettings
+    public class PackageSettingsModel
     {
         private readonly IElement _element;
         public const string SpecializationType = "Package Settings";
 
-        public PackageSettings(IElement element)
+        public PackageSettingsModel(IElement element)
         {
             if (element?.SpecializationType != SpecializationType)
             {
@@ -26,9 +26,9 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
         }
 
-        public static PackageSettings Create(IElement element)
+        public static PackageSettingsModel Create(IElement element)
         {
-            return element != null ? new PackageSettings(element) : null;
+            return element != null ? new PackageSettingsModel(element) : null;
         }
 
         public string Id => _element.Id;
@@ -50,7 +50,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             };
         }
 
-        protected bool Equals(PackageSettings other)
+        protected bool Equals(PackageSettingsModel other)
         {
             return Equals(_element, other._element);
         }
@@ -60,7 +60,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((PackageSettings)obj);
+            return Equals((PackageSettingsModel)obj);
         }
 
         public override int GetHashCode()
