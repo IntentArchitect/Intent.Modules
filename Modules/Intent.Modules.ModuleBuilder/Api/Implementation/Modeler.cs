@@ -13,7 +13,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class Modeler : IModeler
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class Modeler : IHasStereotypes, IMetadataModel
     {
         private readonly IElement _element;
         public const string SpecializationType = "Modeler";
@@ -44,22 +45,22 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Name { get; }
 
         [IntentManaged(Mode.Fully)]
-        public IPackageSettings PackageSettings => _element.ChildElements
+        public PackageSettings PackageSettings => _element.ChildElements
             .Where(x => x.SpecializationType == Api.PackageSettings.SpecializationType)
             .Select(x => new PackageSettings(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
-        public IList<IAssociationSettings> AssociationTypes => _element.ChildElements
+        public IList<AssociationSettings> AssociationTypes => _element.ChildElements
             .Where(x => x.SpecializationType == Api.AssociationSettings.SpecializationType)
             .Select(x => new AssociationSettings(x))
-            .ToList<IAssociationSettings>();
+            .ToList<AssociationSettings>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<IElementSettings> ElementTypes => _element.ChildElements
+        public IList<ElementSettings> ElementTypes => _element.ChildElements
             .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)
             .Select(x => new ElementSettings(x))
-            .ToList<IElementSettings>();
+            .ToList<ElementSettings>();
 
         public string ApiNamespace => this.GetModelerSettings().APINamespace();
         public string ModuleDependency => null;
@@ -86,10 +87,10 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<ICoreType> CoreTypes => _element.ChildElements
+        public IList<CoreType> CoreTypes => _element.ChildElements
             .Where(x => x.SpecializationType == Api.CoreType.SpecializationType)
             .Select(x => new CoreType(x))
-            .ToList<ICoreType>();
+            .ToList<CoreType>();
     }
 
     public class TypeOrder

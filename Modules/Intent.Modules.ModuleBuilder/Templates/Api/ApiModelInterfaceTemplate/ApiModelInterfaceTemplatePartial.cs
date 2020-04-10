@@ -13,12 +13,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class ApiModelInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IElementSettings>
+    partial class ApiModelInterfaceTemplate : IntentRoslynProjectItemTemplateBase<ElementSettings>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate";
 
-        public ApiModelInterfaceTemplate(IProject project, IElementSettings model) : base(TemplateId, project, model)
+        public ApiModelInterfaceTemplate(IProject project, ElementSettings model) : base(TemplateId, project, model)
         {
             AddTypeSource(CSharpTypeSource.InProject(Project, ApiModelInterfaceTemplate.TemplateId, collectionFormat: "IEnumerable<{0}>"));
         }
@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
             ? GetTemplateClassName(TemplateId, Model.GetSettings().TargetTypes().Single().Id, throwIfNotFound: false) ?? $"I{Model.GetSettings().TargetTypes().Single().Name.ToCSharpIdentifier()}"
             : null;
 
-        private string GetCreationOptionType(ICreationOption option)
+        private string GetCreationOptionType(CreationOption option)
         {
             var @interface = GetTemplateClassName(ApiModelInterfaceTemplate.TemplateId, option.Type.Id, throwIfNotFound: false);
             if (@interface == null)
@@ -56,7 +56,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
             return option.AllowMultiple ? $"IList<{@interface}>" : @interface;
         }
 
-        private string GetCreationOptionName(ICreationOption option)
+        private string GetCreationOptionName(CreationOption option)
         {
             var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
             return option.AllowMultiple ? name.ToPluralName() : name;

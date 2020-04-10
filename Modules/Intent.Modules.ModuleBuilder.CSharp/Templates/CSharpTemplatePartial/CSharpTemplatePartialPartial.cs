@@ -14,12 +14,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 {
     [IntentManaged(Mode.Merge)]
-    partial class CSharpTemplatePartial : IntentRoslynProjectItemTemplateBase<ICSharpTemplate>
+    partial class CSharpTemplatePartial : IntentRoslynProjectItemTemplateBase<CSharpTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.CSharp.Templates.CSharpTemplatePartial";
 
-        public CSharpTemplatePartial(IProject project, ICSharpTemplate model) : base(TemplateId, project, model)
+        public CSharpTemplatePartial(IProject project, CSharpTemplateModel model) : base(TemplateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentModulesCommon);
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);

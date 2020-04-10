@@ -9,7 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class ElementMapping : IElementMapping
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class ElementMapping
     {
         public const string SpecializationType = "Element Mapping";
         private readonly IElement _element;
@@ -30,20 +31,20 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
-        public IMappingCriteria Criteria => _element.ChildElements
+        public MappingCriteria Criteria => _element.ChildElements
             .Where(x => x.SpecializationType == Api.MappingCriteria.SpecializationType)
             .Select(x => new MappingCriteria(x))
             .SingleOrDefault();
         [IntentManaged(Mode.Fully)]
-        public IMappingOutput Output => _element.ChildElements
+        public MappingOutput Output => _element.ChildElements
             .Where(x => x.SpecializationType == Api.MappingOutput.SpecializationType)
             .Select(x => new MappingOutput(x))
             .SingleOrDefault();
         [IntentManaged(Mode.Fully)]
-        public IList<IElementMapping> ChildMappings => _element.ChildElements
+        public IList<ElementMapping> ChildMappings => _element.ChildElements
             .Where(x => x.SpecializationType == Api.ElementMapping.SpecializationType)
             .Select(x => new ElementMapping(x))
-            .ToList<IElementMapping>();
+            .ToList<ElementMapping>();
 
         protected bool Equals(ElementMapping other)
         {

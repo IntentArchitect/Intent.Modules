@@ -19,21 +19,21 @@ namespace Intent.Modules.ModuleBuilder.CSharp
             _metadataManager = metadataManager;
         }
 
-        public IList<ICSharpTemplate> GetCSharpTemplates(IApplication application)
+        public IEnumerable<CSharpTemplateModel> GetCSharpTemplates(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == CSharpTemplate.SpecializationType)
-                .Select(x => new CSharpTemplate(x))
-                .ToList<ICSharpTemplate>();
+                .Where(x => x.SpecializationType == CSharpTemplateModel.SpecializationType)
+                .Select(x => new CSharpTemplateModel(x))
+                .ToList<CSharpTemplateModel>();
             return models;
         }
 
-        public IList<IFolder> GetFolders(IApplication application)
+        public IEnumerable<FolderModel> GetFolders(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == Folder.SpecializationType)
-                .Select(x => new Folder(x))
-                .ToList<IFolder>();
+                .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+                .Select(x => new FolderModel(x))
+                .ToList<FolderModel>();
             return models;
         }
 

@@ -10,13 +10,13 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class DecoratorExtensions
     {
-        public static DecoratorSettings GetDecoratorSettings(this IDecorator model)
+        public static DecoratorSettings GetDecoratorSettings(this Decorator model)
         {
             var stereotype = model.GetStereotype("Decorator Settings");
             return stereotype != null ? new DecoratorSettings(stereotype) : null;
         }
 
-        public static ImplementsDecoratorContract GetImplementsDecoratorContract(this IDecorator model)
+        public static ImplementsDecoratorContract GetImplementsDecoratorContract(this Decorator model)
         {
             var stereotype = model.GetStereotype("Implements Decorator Contract");
             return stereotype != null ? new ImplementsDecoratorContract(stereotype) : null;

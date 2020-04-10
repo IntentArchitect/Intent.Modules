@@ -9,7 +9,8 @@ using System.Linq;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class AssociationSettings : IAssociationSettings
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class AssociationSettings : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Association Settings";
         private readonly IElement _element;
@@ -27,13 +28,13 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Name => _element.Name;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         [IntentManaged(Mode.Fully)]
-        public IAssociationEndSettings DestinationEnd => _element.ChildElements
+        public AssociationEndSettings DestinationEnd => _element.ChildElements
             .Where(x => x.SpecializationType == Api.AssociationEndSettings.SpecializationType)
             .Select(x => new AssociationEndSettings(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
-        public IAssociationEndSettings SourceEnd => _element.ChildElements
+        public AssociationEndSettings SourceEnd => _element.ChildElements
             .Where(x => x.SpecializationType == Api.AssociationEndSettings.SpecializationType)
             .Select(x => new AssociationEndSettings(x))
             .SingleOrDefault();

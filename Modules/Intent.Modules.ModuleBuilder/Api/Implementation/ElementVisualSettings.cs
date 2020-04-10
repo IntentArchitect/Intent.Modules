@@ -9,7 +9,8 @@ using System.Linq;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class ElementVisualSettings : IElementVisualSettings
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class ElementVisualSettings
     {
         public const string SpecializationType = "Element Visual Settings";
         private readonly IElement _element;

@@ -10,11 +10,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
 {
-    partial class CustomTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<ITemplateRegistration>
+    partial class CustomTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<TemplateRegistration>
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.Custom";
 
-        public CustomTemplateRegistrationTemplate(IProject project, ITemplateRegistration model) : base(TemplateId, project, model)
+        public CustomTemplateRegistrationTemplate(IProject project, TemplateRegistration model) : base(TemplateId, project, model)
         {
         }
 

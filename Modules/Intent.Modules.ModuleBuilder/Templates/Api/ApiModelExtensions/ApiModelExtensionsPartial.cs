@@ -13,14 +13,14 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
 {
     [IntentManaged(Mode.Merge)]
-    partial class ApiModelExtensions : IntentRoslynProjectItemTemplateBase<IElementSettings>
+    partial class ApiModelExtensions : IntentRoslynProjectItemTemplateBase<ElementSettings>
     {
         protected readonly List<IStereotypeDefinition> StereotypeDefinitions;
 
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiModelExtensions";
 
-        public ApiModelExtensions(IProject project, IElementSettings model, List<IStereotypeDefinition> stereotypeDefinitions) : base(TemplateId, project, model)
+        public ApiModelExtensions(IProject project, ElementSettings model, List<IStereotypeDefinition> stereotypeDefinitions) : base(TemplateId, project, model)
         {
             StereotypeDefinitions = stereotypeDefinitions;
         }

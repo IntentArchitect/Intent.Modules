@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ApiModelExtensionsRegistration : ModelTemplateRegistrationBase<IElementSettings>
+    public class ApiModelExtensionsRegistration : ModelTemplateRegistrationBase<ElementSettings>
     {
         private readonly IMetadataManager _metadataManager;
         private IEnumerable<IStereotypeDefinition> _stereotypeDefinitions;
@@ -27,13 +27,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
 
         public override string TemplateId => ApiModelExtensions.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IElementSettings model)
+        public override ITemplate CreateTemplateInstance(IProject project, ElementSettings model)
         {
             return new ApiModelExtensions(project, model, _stereotypeDefinitions.Where(x => x.TargetElements.Any(t => t.Equals(model.Name, StringComparison.InvariantCultureIgnoreCase))).ToList());
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<IElementSettings> GetModels(IApplication application)
+        public override IEnumerable<ElementSettings> GetModels(IApplication application)
         {
             _stereotypeDefinitions = _metadataManager.GetMetadata<IStereotypeDefinition>("Module Builder", application.Id);
             return _metadataManager.GetElementSettings(application)

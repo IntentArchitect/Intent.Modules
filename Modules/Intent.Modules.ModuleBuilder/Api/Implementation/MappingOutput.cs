@@ -9,7 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class MappingOutput : IMappingOutput
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class MappingOutput
     {
         public const string SpecializationType = "Mapping Output";
         private readonly IElement _element;

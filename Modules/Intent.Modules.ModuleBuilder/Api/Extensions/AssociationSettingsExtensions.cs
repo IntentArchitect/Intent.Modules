@@ -10,7 +10,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class AssociationSettingsExtensions
     {
-        public static IconFull GetIconFull(this IAssociationSettings model)
+        public static IconFull GetIconFull(this AssociationSettings model)
         {
             var stereotype = model.GetStereotype("Icon (Full)");
             return stereotype != null ? new IconFull(stereotype) : null;

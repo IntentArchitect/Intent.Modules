@@ -10,7 +10,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class CreationOptionExtensions
     {
-        public static CreationOptions GetCreationOptions(this ICreationOption model)
+        public static CreationOptions GetCreationOptions(this CreationOption model)
         {
             var stereotype = model.GetStereotype("Creation Options");
             return stereotype != null ? new CreationOptions(stereotype) : null;

@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         //    }
         //}
 
-        //public static IModelerReference GetModeler(this IFileTemplate model)
+        //public static IModelerReference GetModeler(this FileTemplate model)
         //{
         //    return model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(model.GetFileTemplateSettings().Modeler()) : null;
         //}
@@ -38,7 +38,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         //    return model.GetFileTemplateSettings().Modeler() != null ? new ModelerReference(model.GetFileTemplateSettings().Modeler()) : null;
         //}
 
-        //public static IModelerModelType GetModelType(this IFileTemplate model)
+        //public static IModelerModelType GetModelType(this FileTemplate model)
         //{
         //    return model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(model.GetFileTemplateSettings().ModelType()) : null;
         //}
@@ -48,7 +48,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         //    return model.GetFileTemplateSettings().ModelType() != null ? new ModelerModelType(model.GetFileTemplateSettings().ModelType()) : null;
         //}
 
-        //public static string GetTemplateBaseType(this IFileTemplate model)
+        //public static string GetTemplateBaseType(this FileTemplate model)
         //{
         //    return model.GetStereotypeProperty(FileTemplateSettingsStereotype, "Base Type", "IntentProjectItemTemplateBase");
         //}
@@ -117,12 +117,12 @@ namespace Intent.Modules.ModuleBuilder.Api
         //    }
         //}
 
-        public static string GetImplementerDecoratorContractType(this ITemplateRegistration model)
+        public static string GetImplementerDecoratorContractType(this TemplateRegistration model)
         {
             return model.GetStereotypeProperty<string>("Implements Decorator Contract", "Type Fullname");
         }
 
-        public static string GetExposedDecoratorContractType(this ITemplateRegistration model)
+        public static string GetExposedDecoratorContractType(this TemplateRegistration model)
         {
             return model.GetStereotypeProperty<string>("Exposes Decorator Contract", "Type Fullname");
         }

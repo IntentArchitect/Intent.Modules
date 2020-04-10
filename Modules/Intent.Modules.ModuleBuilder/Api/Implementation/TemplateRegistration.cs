@@ -9,7 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class TemplateRegistration : ITemplateRegistration
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class TemplateRegistration : IHasFolder, IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Template Registration";
         private readonly IElement _element;
@@ -32,19 +33,19 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public string Name => _element.Name;
 
-        public IModeler GetModeler()
+        public Modeler GetModeler()
         {
             return GetModelType()?.Modeler;
         }
 
-        public IModelerModelType GetModelType()
+        public ModelerModelType GetModelType()
         {
             return this.GetTemplateSettings()?.ModelType() != null ? new ModelerModelType(this.GetTemplateSettings().ModelType()) : null;
         }
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public IFolder Folder { get; }
+        public Folder Folder { get; }
 
         public bool IsSingleFileTemplateRegistration()
         {

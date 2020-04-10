@@ -11,12 +11,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions
 {
     [IntentManaged(Mode.Merge)]
-    partial class ApiMetadataProviderExtensions : IntentRoslynProjectItemTemplateBase<IList<IElementSettings>>
+    partial class ApiMetadataProviderExtensions : IntentRoslynProjectItemTemplateBase<IList<ElementSettings>>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions";
 
-        public ApiMetadataProviderExtensions(IProject project, IList<IElementSettings> model) : base(TemplateId, project, model)
+        public ApiMetadataProviderExtensions(IProject project, IList<ElementSettings> model) : base(TemplateId, project, model)
         {
         }
 
@@ -40,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
 
         public string MetadataProviderClassName => GetTemplateClassName(ApiMetadataProvider.ApiMetadataProvider.TemplateId);
 
-        private string GetClassName(IElementSettings elementSettings)
+        private string GetClassName(ElementSettings elementSettings)
         {
             return GetTemplateClassName(ApiModelImplementationTemplate.ApiModelImplementationTemplate.TemplateId, elementSettings);
         }

@@ -12,7 +12,8 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class ElementSettings : IElementSettings
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class ElementSettings : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Element Settings";
         public const string RequiredSpecializationType = "Element Settings";
@@ -33,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
 
-        public IModeler Modeler => new Modeler(_element.GetParentPath().Single(x => x.SpecializationType == Api.Modeler.SpecializationType));
+        public Modeler Modeler => new Modeler(_element.GetParentPath().Single(x => x.SpecializationType == Api.Modeler.SpecializationType));
 
         public bool IsChild => _element.ParentElement.SpecializationType == SpecializationType;
 
@@ -80,25 +81,25 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IContextMenu MenuOptions => _element.ChildElements
+        public ContextMenu MenuOptions => _element.ChildElements
             .Where(x => x.SpecializationType == Api.ContextMenu.SpecializationType)
             .Select(x => new ContextMenu(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
-        public IList<IElementSettings> ChildElementSettings => _element.ChildElements
+        public IList<ElementSettings> ChildElementSettings => _element.ChildElements
             .Where(x => x.SpecializationType == Api.ElementSettings.SpecializationType)
             .Select(x => new ElementSettings(x))
-            .ToList<IElementSettings>();
+            .ToList<ElementSettings>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<IDiagramSettings> DiagramSettings => _element.ChildElements
+        public IList<DiagramSettings> DiagramSettings => _element.ChildElements
             .Where(x => x.SpecializationType == Api.DiagramSettings.SpecializationType)
             .Select(x => new DiagramSettings(x))
-            .ToList<IDiagramSettings>();
+            .ToList<DiagramSettings>();
 
         [IntentManaged(Mode.Fully)]
-        public IMappingSettings MappingSettings => _element.ChildElements
+        public MappingSettings MappingSettings => _element.ChildElements
             .Where(x => x.SpecializationType == Api.MappingSettings.SpecializationType)
             .Select(x => new MappingSettings(x))
             .SingleOrDefault();

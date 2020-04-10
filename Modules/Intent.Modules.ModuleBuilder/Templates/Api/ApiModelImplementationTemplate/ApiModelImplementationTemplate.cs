@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ApiModelImplementationTemplate : IntentRoslynProjectItemTemplateBase<IElementSettings>
+    public partial class ApiModelImplementationTemplate : IntentRoslynProjectItemTemplateBase<ElementSettings>
     {
 #line hidden
         /// <summary>
@@ -48,13 +48,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             
             #line default
             #line hidden
+            this.Write(" : ");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? (" : " + BaseType) : ""));
+            this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? (BaseType + ", ") : ""));
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        public const string SpecializationType = \"");
+            this.Write("IHasStereotypes, IMetadataModel\r\n    {\r\n        public const string Specializatio" +
+                    "nType = \"");
             
             #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));

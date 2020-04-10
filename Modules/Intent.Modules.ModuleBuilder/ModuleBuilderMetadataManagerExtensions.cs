@@ -8,7 +8,7 @@ namespace Intent.Modules.ModuleBuilder
 {
     public static class ModuleBuilderMetadataManagerExtensions
     {
-        //public static IEnumerable<IFileTemplate> GetTemplateDefinitions(this IMetadataManager metadataManager, IApplication application)
+        //public static IEnumerable<FileTemplate> GetTemplateDefinitions(this IMetadataManager metadataManager, IApplication application)
         //{
         //    return new ModuleBuilderMetadataProvider(metadataManager).GetTemplateDefinitions(application.Id);
         //}

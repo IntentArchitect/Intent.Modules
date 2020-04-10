@@ -9,7 +9,8 @@ using System.Linq;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class Folder : IFolder
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class Folder : IHasStereotypes
     {
         public const string SpecializationType = "Folder";
         private readonly IElement _element;
@@ -29,39 +30,33 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public string Id => _element.Id;
         public string Name => _element.Name;
-        public IFolder ParentFolder { get; }
+        public Folder ParentFolder { get; }
         public string ParentId => _element.ParentElement.Id;
         public IEnumerable<IStereotype> Stereotypes { get; }
 
         [IntentManaged(Mode.Fully)]
-        public IList<IFileTemplate> FileTemplates => _element.ChildElements
+        public IList<FileTemplate> FileTemplates => _element.ChildElements
             .Where(x => x.SpecializationType == Api.FileTemplate.SpecializationType)
             .Select(x => new FileTemplate(x))
-            .ToList<IFileTemplate>();
+            .ToList<FileTemplate>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<IFolder> Folders => _element.ChildElements
+        public IList<Folder> Folders => _element.ChildElements
             .Where(x => x.SpecializationType == Api.Folder.SpecializationType)
             .Select(x => new Folder(x))
-            .ToList<IFolder>();
+            .ToList<Folder>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<IModelerReference> ModelerReferences => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ModelerReference.SpecializationType)
-            .Select(x => new ModelerReference(x))
-            .ToList<IModelerReference>();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<IDecorator> TemplateDecorators => _element.ChildElements
+        public IList<Decorator> TemplateDecorators => _element.ChildElements
             .Where(x => x.SpecializationType == Api.Decorator.SpecializationType)
             .Select(x => new Decorator(x))
-            .ToList<IDecorator>();
+            .ToList<Decorator>();
 
         [IntentManaged(Mode.Fully)]
-        public IList<ITypeDefinition> Types => _element.ChildElements
+        public IList<TypeDefinition> Types => _element.ChildElements
             .Where(x => x.SpecializationType == Api.TypeDefinition.SpecializationType)
             .Select(x => new TypeDefinition(x))
-            .ToList<ITypeDefinition>();
+            .ToList<TypeDefinition>();
 
         public IElement UnderlyingElement => _element;
 
@@ -84,9 +79,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<ITemplateRegistration> TemplateRegistrations => _element.ChildElements
+        public IList<TemplateRegistration> TemplateRegistrations => _element.ChildElements
             .Where(x => x.SpecializationType == Api.TemplateRegistration.SpecializationType)
             .Select(x => new TemplateRegistration(x))
-            .ToList<ITemplateRegistration>();
+            .ToList<TemplateRegistration>();
     }
 }

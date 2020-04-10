@@ -9,7 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class ModelersFolder : IModelersFolder
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class ModelersFolder
     {
         public const string SpecializationType = "Modelers Folder";
         private readonly IElement _element;
@@ -46,9 +47,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<IModeler> Modelers => _element.ChildElements
+        public IList<Modeler> Modelers => _element.ChildElements
             .Where(x => x.SpecializationType == Api.Modeler.SpecializationType)
             .Select(x => new Modeler(x))
-            .ToList<IModeler>();
+            .ToList<Modeler>();
     }
 }

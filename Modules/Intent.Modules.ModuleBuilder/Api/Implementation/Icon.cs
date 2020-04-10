@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class Icon : IIcon
+    internal class Icon
     {
         public const string SpecializationType = "Icon";
         private readonly IElement _element;

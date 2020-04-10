@@ -9,7 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class CoreType : ICoreType
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class CoreType : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Core Type";
         private readonly IElement _element;

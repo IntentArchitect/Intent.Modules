@@ -15,7 +15,7 @@ namespace Intent.Modules.ModuleBuilder
             _metadataManager = metadataManager;
         }
 
-        public IEnumerable<IFileTemplate> GetTemplateDefinitions(string applicationId)
+        public IEnumerable<FileTemplate> GetTemplateDefinitions(string applicationId)
         {
             var templates = _metadataManager.GetMetadata<IElement>("Module Builder", applicationId)
                 .Where(x => x.TypeReference?.Element.SpecializationType == TemplateRegistration.SpecializationType).ToList();

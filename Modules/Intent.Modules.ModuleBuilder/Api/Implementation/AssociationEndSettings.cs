@@ -9,7 +9,8 @@ using System.Linq;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class AssociationEndSettings : IAssociationEndSettings
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class AssociationEndSettings : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Association End Settings";
         private readonly IElement _element;

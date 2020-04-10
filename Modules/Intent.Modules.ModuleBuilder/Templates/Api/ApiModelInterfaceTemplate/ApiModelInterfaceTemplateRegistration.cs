@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ApiModelInterfaceTemplateRegistration : ModelTemplateRegistrationBase<IElementSettings>
+    public class ApiModelInterfaceTemplateRegistration : ModelTemplateRegistrationBase<ElementSettings>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,13 +26,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelInterfaceTemplate
 
         public override string TemplateId => ApiModelInterfaceTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IElementSettings model)
+        public override ITemplate CreateTemplateInstance(IProject project, ElementSettings model)
         {
             return new ApiModelInterfaceTemplate(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<IElementSettings> GetModels(IApplication application)
+        public override IEnumerable<ElementSettings> GetModels(IApplication application)
         {
             return _metadataManager.GetElementSettings(application);
         }

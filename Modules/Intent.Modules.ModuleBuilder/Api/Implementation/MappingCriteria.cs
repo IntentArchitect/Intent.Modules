@@ -9,7 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class MappingCriteria : IMappingCriteria
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class MappingCriteria
     {
         public const string SpecializationType = "Mapping Criteria";
         private readonly IElement _element;

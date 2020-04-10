@@ -19,12 +19,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class CSharpTemplate : IntentProjectItemTemplateBase<ICSharpTemplate>
+    public class CSharpTemplate : IntentProjectItemTemplateBase<CSharpTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.CSharp.Templates.CSharpTemplate";
 
-        public CSharpTemplate(IProject project, ICSharpTemplate model) : base(TemplateId, project, model)
+        public CSharpTemplate(IProject project, CSharpTemplateModel model) : base(TemplateId, project, model)
         {
         }
 

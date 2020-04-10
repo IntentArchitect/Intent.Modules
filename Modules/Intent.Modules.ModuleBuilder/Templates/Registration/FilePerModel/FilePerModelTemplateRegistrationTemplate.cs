@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class FilePerModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<ITemplateRegistration>
+    public partial class FilePerModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<TemplateRegistration>
     {
 #line hidden
         /// <summary>

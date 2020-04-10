@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IElementSettings>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<ElementSettings>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -17,7 +17,7 @@ using Intent.Metadata.Models;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class <#= ClassName #><#= BaseType != null ? (" : " + BaseType) : "" #>
+    public class <#= ClassName #> : <#= BaseType != null ? (BaseType + ", ") : "" #>IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "<#= Model.Name #>";
         private readonly IElement _element;

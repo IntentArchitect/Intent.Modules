@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Roslyn\**" />
+    <EmbeddedResource Remove="Roslyn\**" />
+    <None Remove="Roslyn\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Intent.IntentArchitectPackager" Version="1.9.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

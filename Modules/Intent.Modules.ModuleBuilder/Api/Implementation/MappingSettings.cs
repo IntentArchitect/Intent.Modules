@@ -10,7 +10,8 @@ using Intent.IArchitect.Agent.Persistence.Model.Common;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class MappingSettings : IMappingSettings
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class MappingSettings
     {
         public const string SpecializationType = "Mapping Settings";
         private readonly IElement _element;
@@ -47,10 +48,10 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<IElementMapping> Mappings => _element.ChildElements
+        public IList<ElementMapping> Mappings => _element.ChildElements
             .Where(x => x.SpecializationType == Api.ElementMapping.SpecializationType)
             .Select(x => new ElementMapping(x))
-            .ToList<IElementMapping>();
+            .ToList<ElementMapping>();
 
         public ElementMappingSettings ToPersistable()
         {

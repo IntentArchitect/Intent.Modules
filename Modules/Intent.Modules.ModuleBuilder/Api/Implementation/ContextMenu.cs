@@ -9,7 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class ContextMenu : IContextMenu
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class ContextMenu
     {
         public const string SpecializationType = "Context Menu";
         private readonly IElement _element;
@@ -29,10 +30,10 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
-        public IList<ICreationOption> CreationOptions => _element.ChildElements
+        public IList<CreationOption> CreationOptions => _element.ChildElements
             .Where(x => x.SpecializationType == Api.CreationOption.SpecializationType)
             .Select(x => new CreationOption(x))
-            .ToList<ICreationOption>();
+            .ToList<CreationOption>();
         public IList<TypeOrder> TypeOrder { get; }
 
         protected bool Equals(ContextMenu other)

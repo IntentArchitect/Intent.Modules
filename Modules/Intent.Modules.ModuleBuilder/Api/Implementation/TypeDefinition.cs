@@ -9,7 +9,8 @@ using System.Linq;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class TypeDefinition : ITypeDefinition
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class TypeDefinition
     {
         public const string SpecializationType = "Type-Definition";
         private readonly IElement _element;

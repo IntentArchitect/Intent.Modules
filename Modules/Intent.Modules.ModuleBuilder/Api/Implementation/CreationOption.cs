@@ -12,7 +12,8 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class CreationOption : ICreationOption
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class CreationOption : IHasStereotypes, IMetadataModel
     {
         private readonly IElement _element;
         public const string SpecializationType = "Creation Option";

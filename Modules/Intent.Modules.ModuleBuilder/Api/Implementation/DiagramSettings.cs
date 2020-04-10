@@ -9,7 +9,8 @@ using System.Linq;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class DiagramSettings : IDiagramSettings
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class DiagramSettings
     {
         public const string SpecializationType = "Diagram Settings";
         private readonly IElement _element;

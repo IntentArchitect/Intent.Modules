@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IList<IElementSettings>>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<IList<ElementSettings>>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>

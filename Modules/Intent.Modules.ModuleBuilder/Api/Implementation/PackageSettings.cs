@@ -10,7 +10,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    internal class PackageSettings : IPackageSettings
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class PackageSettings
     {
         private readonly IElement _element;
         public const string SpecializationType = "Package Settings";
@@ -25,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
         }
 
-        public static IPackageSettings Create(IElement element)
+        public static PackageSettings Create(IElement element)
         {
             return element != null ? new PackageSettings(element) : null;
         }
@@ -35,7 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Name => _element.Name;
 
         [IntentManaged(Mode.Fully)]
-        public IContextMenu MenuOptions => _element.ChildElements
+        public ContextMenu MenuOptions => _element.ChildElements
             .Where(x => x.SpecializationType == Api.ContextMenu.SpecializationType)
             .Select(x => new ContextMenu(x))
             .SingleOrDefault();

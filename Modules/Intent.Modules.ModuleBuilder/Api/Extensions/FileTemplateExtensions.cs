@@ -10,13 +10,13 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class FileTemplateExtensions
     {
-        public static ExposesDecoratorContract GetExposesDecoratorContract(this IFileTemplate model)
+        public static ExposesDecoratorContract GetExposesDecoratorContract(this FileTemplate model)
         {
             var stereotype = model.GetStereotype("Exposes Decorator Contract");
             return stereotype != null ? new ExposesDecoratorContract(stereotype) : null;
         }
 
-        public static FileSettings GetFileSettings(this IFileTemplate model)
+        public static FileSettings GetFileSettings(this FileTemplate model)
         {
             var stereotype = model.GetStereotype("File Settings");
             return stereotype != null ? new FileSettings(stereotype) : null;

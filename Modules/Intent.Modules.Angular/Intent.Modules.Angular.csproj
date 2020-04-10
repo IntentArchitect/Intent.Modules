@@ -185,6 +185,8 @@
     </Content>
     <Compile Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.cs">
       <DependentUpon>EnvironmentTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplatePartial.cs" />
     <Compile Include="Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplateRegistration.cs" />

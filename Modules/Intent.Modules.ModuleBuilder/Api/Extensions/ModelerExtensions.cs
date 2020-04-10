@@ -10,7 +10,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class ModelerExtensions
     {
-        public static ModelerSettings GetModelerSettings(this IModeler model)
+        public static ModelerSettings GetModelerSettings(this Modeler model)
         {
             var stereotype = model.GetStereotype("Modeler Settings");
             return stereotype != null ? new ModelerSettings(stereotype) : null;
