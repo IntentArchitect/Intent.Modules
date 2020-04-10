@@ -67,7 +67,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProvider
             this.Write("        public IList<");
             
             #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProvider\ApiMetadataProvider.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetInterfaceName(elementSettings)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(elementSettings)));
             
             #line default
             #line hidden
@@ -97,7 +97,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProvider
             this.Write("(x))\r\n                .ToList<");
             
             #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProvider\ApiMetadataProvider.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetInterfaceName(elementSettings)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(elementSettings)));
             
             #line default
             #line hidden

@@ -41,43 +41,36 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    internal class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    public class ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(" : ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? (BaseType + ", ") : ""));
-            
-            #line default
-            #line hidden
-            
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(InterfaceName));
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? (" : " + BaseType) : ""));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public const string SpecializationType = \"");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("\";\r\n        private readonly IElement _element;\r\n\r\n        public ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IElement element)");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? " : base(element)" : ""));
             
             #line default
@@ -86,7 +79,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
                     "e, StringComparison.InvariantCultureIgnoreCase))\r\n            {\r\n               " +
                     " throw new Exception($\"Cannot create a \'");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -95,7 +88,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
                     "f type \'{SpecializationType}\'\");\r\n            }\r\n            _element = element;" +
                     "\r\n        }\r\n\r\n");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
  if (BaseType == null) { 
             
             #line default
@@ -104,13 +97,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
                     " _element.Name;\r\n        \r\n        public IEnumerable<IStereotype> Stereotypes =" +
                     "> _element.Stereotypes;\r\n\r\n");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
   } 
             
             #line default
             #line hidden
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
   if (Model.MenuOptions != null) {
         foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => GetCreationOptionTypeInterface(x, false) != null)) { 
             
@@ -118,62 +111,62 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             #line hidden
             this.Write("        [IntentManaged(Mode.Fully)]\r\n        public ");
             
-            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeInterface(creationOption, creationOption.AllowMultiple)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionName(creationOption)));
             
             #line default
             #line hidden
             this.Write(" => _element.ChildElements\r\n            .Where(x => x.SpecializationType == Api.");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeClass(creationOption)));
             
             #line default
             #line hidden
             this.Write(".SpecializationType)\r\n            .Select(x => new ");
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeClass(creationOption)));
             
             #line default
             #line hidden
             this.Write("(x))\r\n");
             
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
       if (creationOption.AllowMultiple) { 
             
             #line default
             #line hidden
             this.Write("            .ToList<");
             
-            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeInterface(creationOption, false)));
             
             #line default
             #line hidden
             this.Write(">();\r\n");
             
-            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
       } else { 
             
             #line default
             #line hidden
             this.Write("            .SingleOrDefault();\r\n");
             
-            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
       }
     }
             
@@ -181,7 +174,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             #line hidden
             this.Write("\r\n        protected bool Equals(");
             
-            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -198,7 +191,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             if (obj.GetType() != this.GetType()) return false;
             return Equals((");
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

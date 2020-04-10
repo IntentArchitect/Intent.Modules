@@ -58,7 +58,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
             this.Write("        public static IList<");
             
             #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetInterfaceName(elementSettings)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(elementSettings)));
             
             #line default
             #line hidden

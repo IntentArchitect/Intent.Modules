@@ -19,7 +19,7 @@ namespace <#= Namespace #>
     public static class <#= ClassName #>
     {
 <#  foreach(var stereotypeDefinition in StereotypeDefinitions) { #>
-        public static <#= stereotypeDefinition.Name.ToCSharpIdentifier() #> Get<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelInterfaceName #> model)
+        public static <#= stereotypeDefinition.Name.ToCSharpIdentifier() #> Get<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model)
         {
             var stereotype = model.GetStereotype("<#= stereotypeDefinition.Name #>");
             return stereotype != null ? new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(stereotype) : null;

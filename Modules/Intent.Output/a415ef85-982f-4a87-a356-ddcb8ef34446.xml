@@ -44,101 +44,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ModelerReferenceExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/ModelerReferenceExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IAssociationEndSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IAssociationEndSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IAssociationSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IAssociationSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IContextMenu.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IContextMenu.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ICoreType.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ICoreType.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ICreationOption.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ICreationOption.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IDecorator.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IDecorator.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IDiagramSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IDiagramSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IElementMapping.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IElementMapping.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IElementSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IElementSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IElementVisualSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IElementVisualSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IFileTemplate.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IFileTemplate.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IFolder.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IFolder.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IMappingCriteria.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IMappingCriteria.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IMappingOutput.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IMappingOutput.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IMappingSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IMappingSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IModeler.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IModeler.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IModelerReference.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IModelerReference.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IModelersFolder.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IModelersFolder.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\AssociationEndSettings.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/AssociationEndSettings.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -219,11 +124,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\ModelerReference.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/ModelerReference.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\ModelersFolder.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/ModelersFolder.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -241,21 +141,6 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Implementation\TypeDefinition.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Implementation/TypeDefinition.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IPackageSettings.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IPackageSettings.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ITemplateRegistration.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ITemplateRegistration.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ITypeDefinition.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ITypeDefinition.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>

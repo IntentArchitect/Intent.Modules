@@ -41,8 +41,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             );
         }
 
-        public string InterfaceName => GetTemplateClassName(ApiModelInterfaceTemplate.ApiModelInterfaceTemplate.TemplateId, Model);
-
         public string BaseType => (!Model.GetSettings().TypeReference().IsDisabled()
                                    && Model.GetSettings().TargetTypes().Length == 1)
             ? GetTemplateClassName(TemplateId, Model.GetSettings().TargetTypes().Single().Id, throwIfNotFound: false) ?? Model.GetSettings().TargetTypes().Single().Name.ToCSharpIdentifier()
@@ -51,7 +49,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
 
         private string GetCreationOptionTypeInterface(ICreationOption option, bool asCollection)
         {
-            var @interface = GetTemplateClassName(ApiModelInterfaceTemplate.ApiModelInterfaceTemplate.TemplateId, option.Type.Id, throwIfNotFound: false);
+            var @interface = GetTemplateClassName(ApiModelImplementationTemplate.TemplateId, option.Type.Id, throwIfNotFound: false);
             if (@interface == null)
             {
                 return null;

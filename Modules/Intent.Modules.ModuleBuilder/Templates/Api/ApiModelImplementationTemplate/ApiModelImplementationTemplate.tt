@@ -16,7 +16,8 @@ using Intent.Metadata.Models;
 
 namespace <#= Namespace #>
 {
-    internal class <#= ClassName #> : <#= BaseType != null ? (BaseType + ", ") : "" #><#= InterfaceName #>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class <#= ClassName #><#= BaseType != null ? (" : " + BaseType) : "" #>
     {
         public const string SpecializationType = "<#= Model.Name #>";
         private readonly IElement _element;

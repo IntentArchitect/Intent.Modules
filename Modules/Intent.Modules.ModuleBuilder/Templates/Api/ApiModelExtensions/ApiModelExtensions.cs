@@ -72,7 +72,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             this.Write("(this ");
             
             #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModelInterfaceName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModelClassName));
             
             #line default
             #line hidden

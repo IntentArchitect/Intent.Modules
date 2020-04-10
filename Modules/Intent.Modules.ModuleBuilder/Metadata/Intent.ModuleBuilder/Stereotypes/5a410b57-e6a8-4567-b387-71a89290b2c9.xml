@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="5a410b57-e6a8-4567-b387-71a89290b2c9">
-  <name>Additional Properties</name>
+  <name>Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
     <element>association end settings</element>

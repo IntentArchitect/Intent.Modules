@@ -75,38 +75,6 @@
       </stereotypes>
       <childElements />
     </childElement>
-    <childElement id="9966502f-91d4-43ac-a4d9-58861e64bd72" type="Creation Option">
-      <name>New Modeler Reference</name>
-      <display>New Modeler Reference: Modeler Reference</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <typeReference id="6b10d1da-3618-4a1a-b85b-af5ee5db78c5">
-        <typeId>4c7af41a-663f-4f7e-93a9-46a9006b6a88</typeId>
-        <isNavigable>true</isNavigable>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>6b0abbe4-849f-48b0-8285-952512048358</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
-          <comment>Overrides the default creation option settings.</comment>
-          <addedByDefault>false</addedByDefault>
-          <properties>
-            <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-            <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-            <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-            <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <childElements />
-    </childElement>
     <childElement id="b35841cf-62f3-4559-a072-353b8f33f393" type="Creation Option">
       <name>New Type</name>
       <display>New Type: Type-Definition</display>

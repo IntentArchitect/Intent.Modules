@@ -40,11 +40,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
 
         public string MetadataProviderClassName => GetTemplateClassName(ApiMetadataProvider.ApiMetadataProvider.TemplateId);
 
-        private string GetInterfaceName(IElementSettings elementSettings)
-        {
-            return GetTemplateClassName(ApiModelInterfaceTemplate.ApiModelInterfaceTemplate.TemplateId, elementSettings);
-        }
-
         private string GetClassName(IElementSettings elementSettings)
         {
             return GetTemplateClassName(ApiModelImplementationTemplate.ApiModelImplementationTemplate.TemplateId, elementSettings);

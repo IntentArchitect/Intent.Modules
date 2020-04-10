@@ -10,18 +10,18 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class AssociationEndSettingsExtensions
     {
-        public static AdditionalProperties GetAdditionalProperties(this IAssociationEndSettings model)
+        public static Settings GetSettings(this IAssociationEndSettings model)
         {
-            var stereotype = model.GetStereotype("Additional Properties");
-            return stereotype != null ? new AdditionalProperties(stereotype) : null;
+            var stereotype = model.GetStereotype("Settings");
+            return stereotype != null ? new Settings(stereotype) : null;
         }
 
 
-        public class AdditionalProperties
+        public class Settings
         {
             private IStereotype _stereotype;
 
-            public AdditionalProperties(IStereotype stereotype)
+            public Settings(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }

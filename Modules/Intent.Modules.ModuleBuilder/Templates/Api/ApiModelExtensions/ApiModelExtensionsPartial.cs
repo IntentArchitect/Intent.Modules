@@ -43,6 +43,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             );
         }
 
-        public string ModelInterfaceName => GetTemplateClassName(ApiModelInterfaceTemplate.ApiModelInterfaceTemplate.TemplateId, Model);
+        public string ModelClassName => GetTemplateClassName(ApiModelImplementationTemplate.ApiModelImplementationTemplate.TemplateId, Model);
     }
 }
