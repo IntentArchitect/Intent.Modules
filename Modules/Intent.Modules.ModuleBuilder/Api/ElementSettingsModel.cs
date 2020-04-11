@@ -61,7 +61,6 @@ namespace Intent.Modules.ModuleBuilder.Api
                     AllowIsNullable = this.GetSettings().AllowNullable(),
                     AllowIsCollection = this.GetSettings().AllowCollection(),
                 } : null,
-                DefaultTypeId = this.GetSettings().DefaultTypeId(),
                 DiagramSettings = null, // TODO JL / GCB
                 ChildElementSettings = this.ChildElementSettings.Select(x => x.ToPersistable()).ToArray(),
                 MappingSettings = this.MappingSettings?.ToPersistable(),

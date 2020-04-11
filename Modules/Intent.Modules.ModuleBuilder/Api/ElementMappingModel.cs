@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -45,6 +47,16 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == Api.ElementMappingModel.SpecializationType)
             .Select(x => new ElementMappingModel(x))
             .ToList<ElementMappingModel>();
+
+        public ElementMappingSettingPersistable ToPersistable()
+        {
+            return new ElementMappingSettingPersistable()
+            {
+                Criteria = Criteria.ToPersistable(),
+                MapTo = Output.ToPersistable(),
+                ChildMappingSettings = ChildMappings.Select(x => x.ToPersistable()).ToList()
+            };
+        }
 
         protected bool Equals(ElementMappingModel other)
         {

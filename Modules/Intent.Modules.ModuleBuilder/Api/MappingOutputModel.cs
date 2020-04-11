@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -30,6 +31,13 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public ElementMappingMapToSettingPersistable ToPersistable()
+        {
+            return new ElementMappingMapToSettingPersistable()
+            {
+                SpecializationType = _element.TypeReference.Element.Name
+            };
+        }
 
         protected bool Equals(MappingOutputModel other)
         {

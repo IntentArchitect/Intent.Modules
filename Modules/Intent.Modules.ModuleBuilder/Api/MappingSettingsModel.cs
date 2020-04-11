@@ -55,9 +55,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-        public ElementMappingSettings ToPersistable()
+        public MappingSettingsPersistable ToPersistable()
         {
-            return null;
+            return new MappingSettingsPersistable()
+            {
+                DefaultModeler = this.GetMappingSettings().DefaultDesigner(),
+                MappedTypes = this.Mappings.Select(x => x.ToPersistable()).ToList()
+            };
         }
     }
 }

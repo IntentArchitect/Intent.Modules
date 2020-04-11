@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -47,6 +48,20 @@ namespace Intent.Modules.ModuleBuilder.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        public ElementMappingCriteriaSettingPersistable ToPersistable()
+        {
+            return new ElementMappingCriteriaSettingPersistable()
+            {
+                SpecializationType = new ElementSettingsModel(_element.TypeReference.Element).Name,
+                HasTypeReference = this.GetCriteriaSettings().HasTypeReference().IsYes() ? true :
+                    this.GetCriteriaSettings().HasTypeReference().IsNo() ? false : (bool?)null,
+                HasChildren = this.GetCriteriaSettings().HasChildren().IsYes() ? true :
+                    this.GetCriteriaSettings().HasChildren().IsNo() ? false : (bool?)null,
+                IsCollection = this.GetCriteriaSettings().IsCollection().IsYes() ? true :
+                    this.GetCriteriaSettings().IsCollection().IsNo() ? false : (bool?)null,
+            };
         }
     }
 }
