@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="740ed66f-c70d-45b0-80d5-6f663da53ed5">
+  <name>Output Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>mapping output</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>a4cb5f8c-aef3-435f-8b08-3bdc9c98d5af</parentFolderId>
+  <order>0</order>
+  <properties />
+</stereotypeDefinition>

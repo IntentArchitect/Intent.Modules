@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="79f33fed-14c9-4304-ba6c-9835a7fefd00" type="Modelers Folder">
-  <name>modeler</name>
-  <display>modeler</display>
+<class id="a4cb5f8c-aef3-435f-8b08-3bdc9c98d5af" type="Folder">
+  <name>Mapping</name>
+  <display>Mapping</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>f2bfb0f7-d304-466f-b923-021d4016b48d</parentFolderId>
+  <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
   <literals />
   <attributes />
   <operations />

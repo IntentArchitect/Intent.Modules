@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="c677f491-8290-47ee-9e98-4c26bc76b592">
+  <name>Criteria Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>mapping criteria</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>a4cb5f8c-aef3-435f-8b08-3bdc9c98d5af</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="a272509a-3819-4631-b27c-a4680055efa4">
+      <name>Has Type-Reference</name>
+      <type>boolean</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Not Applicable</defaultValue>
+      <valueOptions>
+        <option>Yes</option>
+        <option>No</option>
+        <option>Not Applicable</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+    <property id="315a6b58-efa4-421c-8345-1cde99ba7262">
+      <name>Has Children</name>
+      <type>boolean</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Not Applicable</defaultValue>
+      <valueOptions>
+        <option>Yes</option>
+        <option>No</option>
+        <option>Not Applicable</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+    <property id="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912">
+      <name>Is Collection</name>
+      <type>boolean</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Not Applicable</defaultValue>
+      <valueOptions>
+        <option>Yes</option>
+        <option>No</option>
+        <option>Not Applicable</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

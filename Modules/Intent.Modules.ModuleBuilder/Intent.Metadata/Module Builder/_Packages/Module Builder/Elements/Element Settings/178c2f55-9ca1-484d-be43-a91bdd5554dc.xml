@@ -40,8 +40,8 @@
     <stereotype stereotypeDefinitionId="3714391e-cb1c-47db-9dac-16fdf2b2d57f" name="Icon (Full)">
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" display="Type" value="FontAwesome" isActive="true" />
-        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" display="Source" value="file-o" isActive="true" />
+        <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" display="Type" value="CharacterBox" isActive="true" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" display="Source" value="M|#095c00" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

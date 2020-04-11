@@ -55,7 +55,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public ElementMappingSettings ToPersistable()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
-}
+}   

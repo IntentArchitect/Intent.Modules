@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="39915f5a-7cc2-413c-98c5-f1e6edb999d1" type="Designer">
+  <name>CSharp</name>
+  <display>CSharp : Designer</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>79f33fed-14c9-4304-ba6c-9835a7fefd00</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Modeler Settings">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="4aa74c35-6eff-41a3-be11-a2f82ca80150" display="Modeler Type" value="Extension" isActive="true" />
+        <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Modules.ModuleBuilder.CSharp.Api" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="7fac2a1d-f7e0-4295-8d68-0aa3b5f000e4" type="Package Settings">
+      <name>Package Settings</name>
+      <display>Package Settings</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>39915f5a-7cc2-413c-98c5-f1e6edb999d1</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="0886a357-3565-4baf-95df-994eb4bbb54d" type="Context Menu">
+          <name>Creation Options</name>
+          <display>Creation Options</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>7fac2a1d-f7e0-4295-8d68-0aa3b5f000e4</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements>
+            <childElement id="ea3de284-3b4e-4f71-8220-50d1766b9aed" type="Creation Option">
+              <name>New C# Template</name>
+              <display>New C# Template: C# Template</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="26dfc249-d594-4c34-b37f-9fd470b4dd4a">
+                <typeId>f6456232-0f1b-4235-b5f8-b4cce548ca59</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>0886a357-3565-4baf-95df-994eb4bbb54d</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>
