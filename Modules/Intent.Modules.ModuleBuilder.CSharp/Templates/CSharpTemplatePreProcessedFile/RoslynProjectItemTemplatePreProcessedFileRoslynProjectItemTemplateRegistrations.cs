@@ -33,7 +33,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePreProcess
 
         public override IEnumerable<CSharpTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetCSharpTemplates(application);
+            return _metadataManager.GetCSharpTemplateModels(application);
         }
     }
 }

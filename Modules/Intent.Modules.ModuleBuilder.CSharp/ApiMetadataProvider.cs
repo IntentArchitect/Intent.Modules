@@ -19,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp
             _metadataManager = metadataManager;
         }
 
-        public IEnumerable<CSharpTemplateModel> GetCSharpTemplates(IApplication application)
+        public IList<CSharpTemplateModel> GetCSharpTemplateModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
                 .Where(x => x.SpecializationType == CSharpTemplateModel.SpecializationType)
@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp
             return models;
         }
 
-        public IEnumerable<FolderModel> GetFolders(IApplication application)
+        public IList<FolderModel> GetFolderModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
                 .Where(x => x.SpecializationType == FolderModel.SpecializationType)

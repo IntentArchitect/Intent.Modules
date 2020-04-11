@@ -17,7 +17,7 @@ namespace Intent.Modelers.Services.Api
         public IEnumerable<IDTOModel> GetAllDTOs()
         {
             var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.IsDTO()).ToList();
-            return classes.Select(x => new DTO(x)).ToList();
+            return classes.Select(x => new DTOModel(x)).ToList();
         }
 
         public IEnumerable<IDTOModel> GetDTOs(string applicationId)
@@ -28,14 +28,14 @@ namespace Intent.Modelers.Services.Api
         public IEnumerable<IServiceModel> GetAllServices()
         {
             var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.IsService()).ToList();
-            return classes.Select(x => new Service(x)).ToList();
+            return classes.Select(x => new ServiceModel(x)).ToList();
         }
 
         public IEnumerable<IServiceModel> GetServices(string applicationId)
         {
             var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Id == applicationId
                 && x.IsService()).ToList();
-            return classes.Select(x => new Service(x)).ToList();
+            return classes.Select(x => new ServiceModel(x)).ToList();
         }
 
         public IEnumerable<IEnumModel> GetAllEnums()

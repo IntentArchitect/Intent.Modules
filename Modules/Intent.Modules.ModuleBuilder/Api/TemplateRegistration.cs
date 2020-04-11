@@ -33,9 +33,9 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public string Name => _element.Name;
 
-        public ModelerModel GetModeler()
+        public DesignerModel GetModeler()
         {
-            return GetModelType()?.Modeler;
+            return GetModelType()?.Designer;
         }
 
         public ModelerModelType GetModelType()

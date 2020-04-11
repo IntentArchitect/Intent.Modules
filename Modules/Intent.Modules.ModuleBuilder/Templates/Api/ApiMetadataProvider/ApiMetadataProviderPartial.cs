@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProvider
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class ApiMetadataProvider : IntentRoslynProjectItemTemplateBase<IList<ElementSettingsModel>>
     {
         [IntentManaged(Mode.Fully)]

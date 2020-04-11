@@ -13,6 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class ModelersFolder
     {
         public const string SpecializationType = "Modelers Folder";
+
         private readonly IElement _element;
 
         public ModelersFolder(IElement element)
@@ -25,8 +26,16 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         public string Id => _element.Id;
+
         public string Name => _element.Name;
+
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<DesignerModel> Modelers => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.DesignerModel.SpecializationType)
+            .Select(x => new DesignerModel(x))
+            .ToList<DesignerModel>();
 
         protected bool Equals(ModelersFolder other)
         {
@@ -45,11 +54,5 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        [IntentManaged(Mode.Fully)]
-        public IList<ModelerModel> Modelers => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ModelerModel.SpecializationType)
-            .Select(x => new ModelerModel(x))
-            .ToList<ModelerModel>();
     }
 }

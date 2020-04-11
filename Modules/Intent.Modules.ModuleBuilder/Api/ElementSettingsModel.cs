@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
 
-        public ModelerModel Modeler => new ModelerModel(_element.GetParentPath().Single(x => x.SpecializationType == Api.ModelerModel.SpecializationType));
+        public DesignerModel Designer => new DesignerModel(_element.GetParentPath().Single(x => x.SpecializationType == Api.DesignerModel.SpecializationType));
 
         public bool IsChild => _element.ParentElement.SpecializationType == SpecializationType;
 
@@ -43,6 +43,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return new ElementSettingsPersistable()
             {
                 SpecializationType = this.Name,
+                SaveAsOwnFile = this.GetSettings().SaveMode().IsOwnFile(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
                 Icon = GetIcon(this.GetIconFull()) ?? new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" },
                 ExpandedIcon = GetIcon(this.GetIconFullExpanded()),

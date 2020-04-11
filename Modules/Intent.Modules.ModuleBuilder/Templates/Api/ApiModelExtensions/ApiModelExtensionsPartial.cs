@@ -12,7 +12,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class ApiModelExtensions : IntentRoslynProjectItemTemplateBase<ElementSettingsModel>
     {
         protected readonly List<IStereotypeDefinition> StereotypeDefinitions;
@@ -39,7 +39,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
                 fileExtension: "cs",
                 defaultLocationInProject: "Api/Extensions",
                 className: $"{Model.Name.ToCSharpIdentifier()}Extensions",
-                @namespace: Model.Modeler.ApiNamespace
+                @namespace: Model.Designer.ApiNamespace
             );
         }
 

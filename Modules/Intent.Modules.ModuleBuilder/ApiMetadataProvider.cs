@@ -55,6 +55,24 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
+        public IList<DesignerModel> GetDesignerModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == DesignerModel.SpecializationType)
+                .Select(x => new DesignerModel(x))
+                .ToList<DesignerModel>();
+            return models;
+        }
+
+        public IList<DesignersFolderModel> GetDesignersFolderModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == DesignersFolderModel.SpecializationType)
+                .Select(x => new DesignersFolderModel(x))
+                .ToList<DesignersFolderModel>();
+            return models;
+        }
+
         public IList<DiagramSettingsModel> GetDiagramSettingsModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
@@ -88,24 +106,6 @@ namespace Intent.Modules.ModuleBuilder
                 .Where(x => x.SpecializationType == FolderModel.SpecializationType)
                 .Select(x => new FolderModel(x))
                 .ToList<FolderModel>();
-            return models;
-        }
-
-        public IList<ModelerModel> GetModelerModels(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == ModelerModel.SpecializationType)
-                .Select(x => new ModelerModel(x))
-                .ToList<ModelerModel>();
-            return models;
-        }
-
-        public IList<ModelersFolderModel> GetModelersFolderModels(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == ModelersFolderModel.SpecializationType)
-                .Select(x => new ModelersFolderModel(x))
-                .ToList<ModelersFolderModel>();
             return models;
         }
 

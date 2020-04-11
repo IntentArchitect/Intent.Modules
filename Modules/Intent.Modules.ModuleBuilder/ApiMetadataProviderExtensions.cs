@@ -32,6 +32,16 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetDecoratorModels(application);
         }
 
+        public static IList<DesignerModel> GetDesignerModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetDesignerModels(application);
+        }
+
+        public static IList<DesignersFolderModel> GetDesignersFolderModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetDesignersFolderModels(application);
+        }
+
         public static IList<DiagramSettingsModel> GetDiagramSettingsModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetDiagramSettingsModels(application);
@@ -50,16 +60,6 @@ namespace Intent.Modules.ModuleBuilder
         public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
-        }
-
-        public static IList<ModelerModel> GetModelerModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetModelerModels(application);
-        }
-
-        public static IList<ModelersFolderModel> GetModelersFolderModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetModelersFolderModels(application);
         }
 
         public static IList<PackageSettingsModel> GetPackageSettingsModels(this IMetadataManager metadataManager, IApplication application)

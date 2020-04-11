@@ -12,7 +12,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTemplate
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class ApiModelImplementationTemplate : IntentRoslynProjectItemTemplateBase<ElementSettingsModel>
     {
         [IntentManaged(Mode.Fully)]
@@ -37,7 +37,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
                 fileExtension: "cs",
                 defaultLocationInProject: "Api",
                 className: $"{Model.Name.ToCSharpIdentifier()}Model",
-                @namespace: Model.Modeler.ApiNamespace
+                @namespace: Model.Designer.ApiNamespace
             );
         }
 

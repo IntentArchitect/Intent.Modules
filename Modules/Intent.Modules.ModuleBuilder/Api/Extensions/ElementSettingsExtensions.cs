@@ -174,6 +174,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public SaveModeOptions SaveMode()
+            {
+                return new SaveModeOptions(_stereotype.GetProperty<string>("Save Mode"));
+            }
+
             public string DisplayTextFunction()
             {
                 return _stereotype.GetProperty<string>("Display Text Function");
@@ -232,6 +237,25 @@ namespace Intent.Modules.ModuleBuilder.Api
             public bool AllowCollection()
             {
                 return _stereotype.GetProperty<bool>("Allow Collection");
+            }
+
+            public class SaveModeOptions
+            {
+                public readonly string Value;
+
+                public SaveModeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsOwnFile()
+                {
+                    return Value == "Own File";
+                }
+                public bool IsAsChild()
+                {
+                    return Value == "As Child";
+                }
             }
 
             public class TypeReferenceOptions

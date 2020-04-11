@@ -14,6 +14,20 @@
   <parentFolderId>ac2b161d-10ef-408e-b084-3f2ba850e9a4</parentFolderId>
   <order>0</order>
   <properties>
+    <property id="5a9277a9-b808-4ade-bb57-840b51b0da3a">
+      <name>Save Mode</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Own File</defaultValue>
+      <valueOptions>
+        <option>Own File</option>
+        <option>As Child</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
     <property id="0632053a-6b40-47a0-857f-6840e322344c">
       <name>Display Text Function</name>
       <type>string</type>

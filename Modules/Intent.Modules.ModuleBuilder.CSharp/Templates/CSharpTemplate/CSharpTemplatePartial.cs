@@ -19,7 +19,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
 {
     [IntentManaged(Mode.Merge)]
-    public class CSharpTemplate : IntentProjectItemTemplateBase<CSharpTemplateModel>
+    public partial class CSharpTemplate : IntentProjectItemTemplateBase<CSharpTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.CSharp.Templates.CSharpTemplate";

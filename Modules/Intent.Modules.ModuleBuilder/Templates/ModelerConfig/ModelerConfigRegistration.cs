@@ -14,7 +14,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ModelerConfigRegistration : ModelTemplateRegistrationBase<ModelerModel>
+    public class ModelerConfigRegistration : ModelTemplateRegistrationBase<DesignerModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -25,18 +25,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
 
         public override string TemplateId => ModuleBuilder.Templates.ModelerConfig.ModelerConfig.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ModelerModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, DesignerModel model)
         {
             return new ModuleBuilder.Templates.ModelerConfig.ModelerConfig(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<ModelerModel> GetModels(IApplication application)
+        public override IEnumerable<DesignerModel> GetModels(IApplication application)
         {
             var modelers = _metadataManager
-                .GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == Constants.ElementSpecializationTypes.Modeler)
-                .Select(x => new ModelerModel(x))
+                .GetDesignerModels(application)
                 .Where(x => !x.GetModelerSettings().ModelerType().IsReference())
                 .ToList();
 

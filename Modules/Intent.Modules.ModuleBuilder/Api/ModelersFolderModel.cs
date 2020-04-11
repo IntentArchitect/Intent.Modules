@@ -31,10 +31,10 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
-        public IList<ModelerModel> Modelers => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ModelerModel.SpecializationType)
-            .Select(x => new ModelerModel(x))
-            .ToList<ModelerModel>();
+        public IList<DesignerModel> Modelers => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.DesignerModel.SpecializationType)
+            .Select(x => new DesignerModel(x))
+            .ToList<DesignerModel>();
 
         protected bool Equals(ModelersFolderModel other)
         {

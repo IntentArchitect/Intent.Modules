@@ -12,14 +12,14 @@ namespace Intent.Modules.ModuleBuilder.CSharp
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IEnumerable<CSharpTemplateModel> GetCSharpTemplates(this IMetadataManager metadataManager, IApplication application)
+        public static IList<CSharpTemplateModel> GetCSharpTemplateModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetCSharpTemplates(application);
+            return new ApiMetadataProvider(metadataManager).GetCSharpTemplateModels(application);
         }
 
-        public static IEnumerable<FolderModel> GetFolders(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetFolders(application);
+            return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
         }
 
     }

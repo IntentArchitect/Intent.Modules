@@ -72,6 +72,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("expandedIcon")]
         public IconModelPersistable ExpandedIcon { get; set; }
 
+        [XmlElement("saveAsOwnFile")]
+        public bool SaveAsOwnFile { get; set; } = true;
+
         [XmlElement("displayFunction")]
         public string DisplayFunction { get; set; }
 
