@@ -11,10 +11,10 @@ namespace Intent.Modules.Common
             return FindTemplateInstance(application, TemplateDependency.OnModel(templateId, model));
         }
 
-        public static ITemplate FindTemplateInstance(this IApplication application, string templateId, string className)
-        {
-            return application.FindTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
-        }
+        //public static ITemplate FindTemplateInstance(this IApplication application, string templateId, string className)
+        //{
+        //    return application.FindTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
+        //}
 
         public static ITemplate FindTemplateInstance(this IApplication application, ITemplateDependency templateDependency)
         {
@@ -47,10 +47,10 @@ namespace Intent.Modules.Common
             return FindProjectWithTemplateInstance(application, TemplateDependency.OnModel(templateId, model));
         }
 
-        public static IProject FindProjectWithTemplateInstance(this IApplication application, string templateId, string className)
-        {
-            return application.FindProjectWithTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
-        }
+        //public static IProject FindProjectWithTemplateInstance(this IApplication application, string templateId, string className)
+        //{
+        //    return application.FindProjectWithTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
+        //}
 
         public static IProject FindProjectWithTemplateInstance(this IApplication application, ITemplateDependency templateDependency)
         {

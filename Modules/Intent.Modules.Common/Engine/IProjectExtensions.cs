@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 
@@ -18,17 +19,17 @@ namespace Intent.Modules.Common
             return project.FindTemplateInstance(templateId, (t) => true, SearchOption.OnlyThisProject) != null;
         }
 
-        public static ITemplate FindTemplateInstance(this IProject project, string templateId, string className)
-        {
-            return project.FindTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
-        }
+        //public static ITemplate FindTemplateInstance(this IProject project, string templateId, string className)
+        //{
+        //    return project.FindTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
+        //}
 
-        public static ITemplate FindTemplateInstance(this IProject project, string templateId, object model)
+        public static ITemplate FindTemplateInstance(this IProject project, string templateId, IMetadataModel model)
         {
             return project.FindTemplateInstance(TemplateDependency.OnModel(templateId, model));
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IProject project, string templateId, object model) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this IProject project, string templateId, IMetadataModel model) where TTemplate : class
         {
             return project.FindTemplateInstance(templateId, model) as TTemplate;
         }

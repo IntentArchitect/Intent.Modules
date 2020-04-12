@@ -34,7 +34,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IList<ElementSettingsModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetElementSettingsModels(application).Where(x => !x.IsChild).ToList();
+            return _metadataManager.GetElementSettingsModels(application)
+                .Where(x => x.GetSettings().SaveMode().IsOwnFile() && !x.Designer.GetModelerSettings().ModelerType().IsReference())
+                .ToList();
         }
     }
 }

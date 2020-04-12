@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.Registrations;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]

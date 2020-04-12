@@ -4,123 +4,63 @@
   <FileLogs>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IController.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IController.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ControllerModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ControllerModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IControllerOperation.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IControllerOperation.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ControllerOperationModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ControllerOperationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IControllerParameter.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IControllerParameter.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ControllerParameterModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ControllerParameterModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IDTO.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IDTO.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\DTOFieldModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/DTOFieldModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IDTOField.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IDTOField.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\DTOModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/DTOModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IEnum.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IEnum.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\EnumLiteralModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/EnumLiteralModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IEnumLiteral.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IEnumLiteral.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\EnumModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/EnumModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IFolder.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IFolder.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\FolderModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\Controller.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/Controller.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\OperationModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/OperationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\ControllerOperation.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/ControllerOperation.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ParameterModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ParameterModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\ControllerParameter.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/ControllerParameter.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ServiceModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ServiceModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\DTO.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/DTO.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\DTOField.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/DTOField.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\Enum.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/Enum.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\EnumLiteral.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/EnumLiteral.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\Folder.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/Folder.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\Operation.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/Operation.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\Parameter.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/Parameter.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\Service.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/Service.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\Implementation\TypeDefinition.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Implementation/TypeDefinition.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IOperation.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IOperation.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IParameter.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IParameter.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\IService.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IService.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ITypeDefinition.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ITypeDefinition.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\TypeDefinitionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/TypeDefinitionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>

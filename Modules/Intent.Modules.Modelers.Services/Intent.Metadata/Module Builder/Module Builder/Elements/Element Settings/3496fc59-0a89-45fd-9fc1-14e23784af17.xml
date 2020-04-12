@@ -92,5 +92,236 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="53cb2567-8524-4b83-b8a9-a3362042b073" type="Mapping Settings">
+      <name>NewMappingSettings</name>
+      <display>Mapping</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3496fc59-0a89-45fd-9fc1-14e23784af17</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="Services" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements>
+        <childElement id="4980e3ae-0c2c-4d6d-9bad-47ec6a16fa6a" type="Element Mapping">
+          <name>NewElementMapping</name>
+          <display>[mapping] Service -&gt; Controller</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>53cb2567-8524-4b83-b8a9-a3362042b073</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements>
+            <childElement id="f609f811-7841-49d2-9998-7ccf9fb75d70" type="Mapping Criteria">
+              <name>NewMappingCriteria</name>
+              <display>[criteria] : Service</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="96a610c5-5e95-4a58-83ed-08d1c7be495d">
+                <typeId>b16578a5-27b1-4047-a8df-f0b783d706bd</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>4980e3ae-0c2c-4d6d-9bad-47ec6a16fa6a</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <properties>
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
+            <childElement id="2112303b-fca1-4ee9-81f5-f53c9d07faf9" type="Mapping Output">
+              <name>NewMappingOutput</name>
+              <display>[output] : Controller</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="83829211-3ef3-481e-896a-cc3af3ab53a6">
+                <typeId>3496fc59-0a89-45fd-9fc1-14e23784af17</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>4980e3ae-0c2c-4d6d-9bad-47ec6a16fa6a</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <properties />
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
+            <childElement id="b0388ef3-390a-4f90-a31d-302b8b2b73a0" type="Element Mapping">
+              <name>NewElementMapping</name>
+              <display>[mapping] Operation -&gt; Controller Operation</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>4980e3ae-0c2c-4d6d-9bad-47ec6a16fa6a</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes />
+              <childElements>
+                <childElement id="3a51e682-2e12-4b6d-b327-6b6135f63148" type="Mapping Criteria">
+                  <name>NewMappingCriteria</name>
+                  <display>[criteria] : Operation</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <typeReference id="ff94092b-9340-490e-94a4-6b957939df2d">
+                    <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
+                    <isNavigable>true</isNavigable>
+                    <isNullable>false</isNullable>
+                    <isCollection>false</isCollection>
+                    <stereotypes />
+                    <genericTypeParameters />
+                  </typeReference>
+                  <isMapped>false</isMapped>
+                  <parentFolderId>b0388ef3-390a-4f90-a31d-302b8b2b73a0</parentFolderId>
+                  <literals />
+                  <attributes />
+                  <operations />
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <properties>
+                        <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                        <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                        <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <childElements />
+                </childElement>
+                <childElement id="62299a32-6bd6-48f3-b06b-d979343cd10c" type="Mapping Output">
+                  <name>NewMappingOutput</name>
+                  <display>[output] : Controller Operation</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <typeReference id="871c1148-1183-4729-8a2c-1f896289d3b0">
+                    <typeId>f3e6cd35-a7d4-4f61-acbe-61b47862ff74</typeId>
+                    <isNavigable>true</isNavigable>
+                    <isNullable>false</isNullable>
+                    <isCollection>false</isCollection>
+                    <stereotypes />
+                    <genericTypeParameters />
+                  </typeReference>
+                  <isMapped>false</isMapped>
+                  <parentFolderId>b0388ef3-390a-4f90-a31d-302b8b2b73a0</parentFolderId>
+                  <literals />
+                  <attributes />
+                  <operations />
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <properties />
+                    </stereotype>
+                  </stereotypes>
+                  <childElements />
+                </childElement>
+                <childElement id="973f1795-82d9-4445-9a87-288d4235412e" type="Element Mapping">
+                  <name>NewElementMapping</name>
+                  <display>[mapping] Parameter -&gt; Controller Parameter</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <isMapped>false</isMapped>
+                  <parentFolderId>b0388ef3-390a-4f90-a31d-302b8b2b73a0</parentFolderId>
+                  <literals />
+                  <attributes />
+                  <operations />
+                  <stereotypes />
+                  <childElements>
+                    <childElement id="dc9f4733-2d0b-4fdc-9858-f3e9f295ce13" type="Mapping Criteria">
+                      <name>NewMappingCriteria</name>
+                      <display>[criteria] : Parameter</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="74e756ec-13d0-4ef6-8c5d-9274b0780f3b">
+                        <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>973f1795-82d9-4445-9a87-288d4235412e</parentFolderId>
+                      <literals />
+                      <attributes />
+                      <operations />
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <properties>
+                            <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                            <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                            <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <childElements />
+                    </childElement>
+                    <childElement id="4888b93f-6001-4334-b458-d39a832e6e4e" type="Mapping Output">
+                      <name>NewMappingOutput</name>
+                      <display>[output] : Controller Parameter</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="3a02a511-1091-4a12-ac4c-f3fc4ee48643">
+                        <typeId>6261aa18-38c6-4983-98c6-7831d67f3c7a</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>973f1795-82d9-4445-9a87-288d4235412e</parentFolderId>
+                      <literals />
+                      <attributes />
+                      <operations />
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <properties />
+                        </stereotype>
+                      </stereotypes>
+                      <childElements />
+                    </childElement>
+                  </childElements>
+                </childElement>
+              </childElements>
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

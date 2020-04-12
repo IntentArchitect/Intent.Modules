@@ -138,12 +138,12 @@ namespace Intent.Modules.Common.Templates
 
         public string GetTemplateClassName(string templateId, IMetadataModel model)
         {
-            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == model.Id));
+            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == model.Id, model));
         }
 
         public string GetTemplateClassName(string templateId, string modelId)
         {
-            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
+            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"));
         }
 
         public virtual string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound)
@@ -168,7 +168,7 @@ namespace Intent.Modules.Common.Templates
 
         public string GetTemplateClassName(string templateId, string modelId, bool throwIfNotFound)
         {
-            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId), throwIfNotFound);
+            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), throwIfNotFound);
         }
 
         public TTemplate FindTemplate<TTemplate>(ITemplateDependency dependency)
@@ -189,7 +189,7 @@ namespace Intent.Modules.Common.Templates
 
         public TTemplate FindTemplate<TTemplate>(string templateId, string modelId) where TTemplate : class
         {
-            return FindTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId));
+            return FindTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"));
         }
 
         public TTemplate FindTemplate<TTemplate>(ITemplateDependency dependency, bool throwIfNotFound) where TTemplate : class
@@ -208,7 +208,7 @@ namespace Intent.Modules.Common.Templates
 
             if (throwIfNotFound)
             {
-                throw new Exception($"Could not find template with Id: {dependency.TemplateIdOrName}");
+                throw new Exception($"Could not find template from dependency: {dependency}");
             }
 
             return null;
@@ -226,7 +226,7 @@ namespace Intent.Modules.Common.Templates
 
         public TTemplate FindTemplate<TTemplate>(string templateId, string modelId, bool throwIfNotFound = true) where TTemplate : class
         {
-            return FindTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId), throwIfNotFound);
+            return FindTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), throwIfNotFound);
         }
 
         public override string ToString()

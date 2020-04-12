@@ -28,15 +28,6 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
-        public IList<ContextMenuModel> GetContextMenuModels(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == ContextMenuModel.SpecializationType)
-                .Select(x => new ContextMenuModel(x))
-                .ToList<ContextMenuModel>();
-            return models;
-        }
-
         public IList<CoreTypeModel> GetCoreTypeModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
@@ -106,15 +97,6 @@ namespace Intent.Modules.ModuleBuilder
                 .Where(x => x.SpecializationType == FolderModel.SpecializationType)
                 .Select(x => new FolderModel(x))
                 .ToList<FolderModel>();
-            return models;
-        }
-
-        public IList<PackageSettingsModel> GetPackageSettingsModels(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == PackageSettingsModel.SpecializationType)
-                .Select(x => new PackageSettingsModel(x))
-                .ToList<PackageSettingsModel>();
             return models;
         }
 

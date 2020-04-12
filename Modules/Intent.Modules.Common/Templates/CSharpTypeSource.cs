@@ -80,10 +80,10 @@ namespace Intent.Modules.Common.Templates
 
         private IHasClassDetails GetTemplateInstance(IProject project, string templateId, ITypeReference typeInfo)
         {
-            var templateInstance = project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
+            var templateInstance = project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id, $"Model Id: {typeInfo.Element.Id}"));
             if (templateInstance != null)
             {
-                _templateDependencies.Add(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
+                _templateDependencies.Add(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id, $"Model Id: {typeInfo.Element.Id}"));
             }
 
             return templateInstance;
@@ -91,10 +91,10 @@ namespace Intent.Modules.Common.Templates
 
         private IHasClassDetails GetTemplateInstance(IApplication application, string templateId, ITypeReference typeInfo)
         {
-            var templateInstance = application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
+            var templateInstance = application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id, $"Model Id: {typeInfo.Element.Id}"));
             if (templateInstance != null)
             {
-                _templateDependencies.Add(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id));
+                _templateDependencies.Add(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id, $"Model Id: {typeInfo.Element.Id}"));
             }
 
             return templateInstance;

@@ -33,7 +33,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
         {
             return new[]
             {
-                TemplateDependency.OnModel<IServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
+                TemplateDependency.OnModel(ServiceContractTemplate.IDENTIFIER, Model)
             }
             .Union(Model.Operations.Select(x => TemplateDependency.OnModel(ServiceCallHandlerImplementationTemplate.Identifier, x)).ToArray());
         }

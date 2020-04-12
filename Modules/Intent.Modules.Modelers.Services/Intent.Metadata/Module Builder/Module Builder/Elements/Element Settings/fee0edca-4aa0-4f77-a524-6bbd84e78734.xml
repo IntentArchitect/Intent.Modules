@@ -145,7 +145,7 @@
       <childElements>
         <childElement id="e45defc1-8775-49c0-bf70-5ec59684e944" type="Element Mapping">
           <name>NewElementMapping</name>
-          <display>[mapping] Class -&gt; &lt;not found&gt;</display>
+          <display>[mapping] Class -&gt; DTO</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>
@@ -213,7 +213,7 @@
             </childElement>
             <childElement id="a4c91030-1ba4-4939-8896-1a219e98de3e" type="Element Mapping">
               <name>NewElementMapping</name>
-              <display>[mapping] &lt;no type&gt; -&gt; &lt;no type&gt;</display>
+              <display>[mapping] Attribute -&gt; DTO-Field</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -283,7 +283,7 @@
             </childElement>
             <childElement id="8988ddc1-c496-4ff3-9606-bebef9015fcd" type="Element Mapping">
               <name>NewElementMapping</name>
-              <display>&lt;EVALUATION ERROR&gt;</display>
+              <display>[mapping] Operation -&gt; DTO-Field</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>

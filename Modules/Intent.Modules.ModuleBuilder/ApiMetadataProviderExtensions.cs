@@ -17,11 +17,6 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetAssociationSettingsModels(application);
         }
 
-        public static IList<ContextMenuModel> GetContextMenuModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetContextMenuModels(application);
-        }
-
         public static IList<CoreTypeModel> GetCoreTypeModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetCoreTypeModels(application);
@@ -60,11 +55,6 @@ namespace Intent.Modules.ModuleBuilder
         public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
-        }
-
-        public static IList<PackageSettingsModel> GetPackageSettingsModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetPackageSettingsModels(application);
         }
 
         public static IList<TemplateRegistrationModel> GetTemplateRegistrationModels(this IMetadataManager metadataManager, IApplication application)
