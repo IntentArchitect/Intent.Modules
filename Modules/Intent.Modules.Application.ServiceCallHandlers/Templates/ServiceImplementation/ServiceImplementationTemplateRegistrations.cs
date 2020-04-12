@@ -7,11 +7,12 @@ using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.Modelers.Services;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
     [Description(ServiceImplementationTemplate.Identifier)]
-    public class ServiceImplementationTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
+    public class ServiceImplementationTemplateRegistrations : ModelTemplateRegistrationBase<ServiceModel>
     {
         private readonly ApiMetadataProvider _metadataProvider;
 
@@ -22,14 +23,14 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
 
         public override string TemplateId => ServiceImplementationTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
         {
             return new ServiceImplementationTemplate(project, model);
         }
 
-        public override IEnumerable<IServiceModel> GetModels(IApplication application)
+        public override IEnumerable<ServiceModel> GetModels(IApplication application)
         {
-            return _metadataProvider.GetServices(application.Id);
+            return _metadataProvider.GetServiceModels(application);
         }
     }
 }

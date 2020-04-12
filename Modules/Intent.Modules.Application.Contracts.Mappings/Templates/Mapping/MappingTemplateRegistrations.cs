@@ -4,12 +4,13 @@ using Intent.Engine;
 using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.Modelers.Services;
 using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
     [Description(MappingTemplate.Identifier)]
-    public class MappingTemplateRegistrations : ModelTemplateRegistrationBase<IDTOModel>
+    public class MappingTemplateRegistrations : ModelTemplateRegistrationBase<DTOModel>
     {
         private readonly ApiMetadataProvider _metadataManager;
 
@@ -22,14 +23,14 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 
         public override string TemplateId => MappingTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IDTOModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, DTOModel model)
         {
             return new MappingTemplate(project, model);
         }
 
-        public override IEnumerable<IDTOModel> GetModels(IApplication application)
+        public override IEnumerable<DTOModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetDTOs(application.Id);
+            return _metadataManager.GetDTOModels(application);
         }
     }
 }

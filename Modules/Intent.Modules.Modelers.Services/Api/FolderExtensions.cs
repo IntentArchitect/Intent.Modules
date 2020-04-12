@@ -6,9 +6,9 @@ namespace Intent.Modelers.Services.Api
 {
     public static class FolderExtensions
     {
-        public static IList<IFolder> GetFolderPath(this IHasFolder model, bool includePackage = false)
+        public static IList<FolderModel> GetFolderPath(this IHasFolder model, bool includePackage = false)
         {
-            List<IFolder> result = new List<IFolder>();
+            List<FolderModel> result = new List<FolderModel>();
 
             var current = model.Folder;
             while (current != null && (includePackage || !current.IsPackage))

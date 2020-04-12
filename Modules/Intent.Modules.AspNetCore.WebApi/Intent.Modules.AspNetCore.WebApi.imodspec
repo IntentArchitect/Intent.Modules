@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AspNetCore.WebApi</id>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
+  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>ASP.NET Core Web API distribution pattern for services.</summary>
   <description>ASP.NET Core Web API distribution pattern for services.</description>
   <authors>Intent Architect</authors>

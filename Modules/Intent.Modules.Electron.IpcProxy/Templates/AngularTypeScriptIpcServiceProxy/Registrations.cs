@@ -29,7 +29,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcService
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
             return _metadataManager
-                .GetServices(application.Id)
+                .GetServiceModels(application)
                 .Where(x => x.Stereotypes.Any(y => y.Name == "IpcService"))
                 .ToList();
         }

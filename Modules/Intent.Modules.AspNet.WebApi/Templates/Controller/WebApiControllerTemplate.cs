@@ -25,7 +25,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>
+    public partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>
     {
 #line hidden
         /// <summary>
@@ -139,7 +139,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             this.Write("                public ");
             
             #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(parameter.Type)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(parameter.TypeReference)));
             
             #line default
             #line hidden
@@ -192,7 +192,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             this.Write("\")]\r\n        [ResponseType(");
             
             #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("typeof({0})", operation.ReturnType != null ? GetOperationReturnType(operation) : "void")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("typeof({0})", operation.TypeReference.Element != null ? GetOperationReturnType(operation) : "void")));
             
             #line default
             #line hidden
@@ -227,7 +227,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             this.Write("\r\n");
             
             #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-          if (operation.ReturnType != null)
+          if (operation.TypeReference.Element != null)
             { 
             
             #line default
@@ -250,7 +250,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             
             #line 69 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
-            } /* if (operation.ReturnType != null) */ 
+            } /* if (operation.TypeReference.Element != null) */ 
             
             #line default
             #line hidden
@@ -271,7 +271,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             
             #line 72 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
-        if (operation.ReturnType != null)
+        if (operation.TypeReference.Element != null)
         { 
 
             
@@ -369,7 +369,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             
             #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
       }
-        else if (operation.ReturnType != null)
+        else if (operation.TypeReference.Element != null)
         { 
             
             #line default

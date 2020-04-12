@@ -15,13 +15,13 @@ namespace Intent.Modules.Application.Contracts.Decorators
 
         public int Priority { get; } = 0;
 
-        public string ClassAttributes(IDTOModel dto)
+        public string ClassAttributes(DTOModel dto)
         {
             
             return $"[DataContract{ GetDataContractPropertiesFormatted(dto) }]";
         }
 
-        public string PropertyAttributes(IDTOModel dto, IAttribute field)
+        public string PropertyAttributes(DTOModel dto, DTOFieldModel field)
         {
             return "[DataMember]";
         }
@@ -31,7 +31,7 @@ namespace Intent.Modules.Application.Contracts.Decorators
             yield return "System.Runtime.Serialization";
         }
 
-        private string GetDataContractPropertiesFormatted(IDTOModel dto)
+        private string GetDataContractPropertiesFormatted(DTOModel dto)
         {
             var dataContractStereotype = GetDataContractStereotype(dto);
             if (dataContractStereotype != null)
@@ -66,7 +66,7 @@ namespace Intent.Modules.Application.Contracts.Decorators
             return string.Empty;
         }
 
-        private IStereotype GetDataContractStereotype(IDTOModel dto)
+        private IStereotype GetDataContractStereotype(DTOModel dto)
         {
             IStereotype stereotype;
             stereotype = dto.GetStereotype("DataContract");

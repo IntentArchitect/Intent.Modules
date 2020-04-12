@@ -1,9 +1,14 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
+using Intent.RoslynWeaver.Attributes;
 
-namespace Intent.Modelers.Services.Api
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiMetadataProvider", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Intent.Modules.Modelers.Services
 {
     public class ApiMetadataProvider
     {
@@ -14,39 +19,77 @@ namespace Intent.Modelers.Services.Api
             _metadataManager = metadataManager;
         }
 
-        public IEnumerable<IDTOModel> GetAllDTOs()
+        public IList<ControllerModel> GetControllerModels(IApplication application)
         {
-            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.IsDTO()).ToList();
-            return classes.Select(x => new DTOModel(x)).ToList();
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == ControllerModel.SpecializationType)
+                .Select(x => new ControllerModel(x))
+                .ToList<ControllerModel>();
+            return models;
         }
 
-        public IEnumerable<IDTOModel> GetDTOs(string applicationId)
+        public IList<ControllerOperationModel> GetControllerOperationModels(IApplication application)
         {
-            return GetAllDTOs().Where(x => x.Application.Id == applicationId);
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == ControllerOperationModel.SpecializationType)
+                .Select(x => new ControllerOperationModel(x))
+                .ToList<ControllerOperationModel>();
+            return models;
         }
 
-        public IEnumerable<IServiceModel> GetAllServices()
+        public IList<ControllerParameterModel> GetControllerParameterModels(IApplication application)
         {
-            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.IsService()).ToList();
-            return classes.Select(x => new ServiceModel(x)).ToList();
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == ControllerParameterModel.SpecializationType)
+                .Select(x => new ControllerParameterModel(x))
+                .ToList<ControllerParameterModel>();
+            return models;
         }
 
-        public IEnumerable<IServiceModel> GetServices(string applicationId)
+        public IList<DTOModel> GetDTOModels(IApplication application)
         {
-            var classes = _metadataManager.GetMetadata<IElement>("Services").Where(x => x.Application.Id == applicationId
-                && x.IsService()).ToList();
-            return classes.Select(x => new ServiceModel(x)).ToList();
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == DTOModel.SpecializationType)
+                .Select(x => new DTOModel(x))
+                .ToList<DTOModel>();
+            return models;
         }
 
-        public IEnumerable<IEnumModel> GetAllEnums()
+        public IList<EnumModel> GetEnumModels(IApplication application)
         {
-            var types = _metadataManager.GetMetadata<Metadata.Models.IElement>("Services").Where(x => x.IsEnum()).ToList();
-            return types.Select(x => new EnumModel(x)).ToList();
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == EnumModel.SpecializationType)
+                .Select(x => new EnumModel(x))
+                .ToList<EnumModel>();
+            return models;
         }
 
-        public IEnumerable<IEnumModel> GetEnums(string applicationId)
+        public IList<FolderModel> GetFolderModels(IApplication application)
         {
-            return GetAllEnums().Where(x => x.Application.Id == applicationId);
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+                .Select(x => new FolderModel(x))
+                .ToList<FolderModel>();
+            return models;
         }
+
+        public IList<ServiceModel> GetServiceModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == ServiceModel.SpecializationType)
+                .Select(x => new ServiceModel(x))
+                .ToList<ServiceModel>();
+            return models;
+        }
+
+        public IList<TypeDefinitionModel> GetTypeDefinitionModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
+                .Select(x => new TypeDefinitionModel(x))
+                .ToList<TypeDefinitionModel>();
+            return models;
+        }
+
     }
 }

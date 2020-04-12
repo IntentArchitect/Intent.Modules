@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 
 namespace Intent.Modules.Application.Contracts
@@ -113,7 +114,7 @@ namespace Intent.Modules.Application.Contracts
 
     public static class OperationExtensions
     {
-        public static bool IsAsync(this IOperation operation)
+        public static bool IsAsync(this OperationModel operation)
         {
             return operation.HasStereotype("Asynchronous");
         }

@@ -56,5 +56,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public ITypeReference TypeReference => _element.TypeReference;
     }
 }

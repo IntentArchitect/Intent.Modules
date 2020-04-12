@@ -14,13 +14,13 @@ using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
-    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, ITemplatePostCreationHook, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
+    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, ITemplatePostCreationHook, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
     {
         private IList<IServiceContractAttributeDecorator> _decorators = new List<IServiceContractAttributeDecorator>();
 
         public const string IDENTIFIER = "Intent.Application.Contracts.ServiceContract";
 
-        public ServiceContractTemplate(IProject project, IServiceModel model, string identifier = IDENTIFIER)
+        public ServiceContractTemplate(IProject project, ServiceModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
         }
@@ -71,7 +71,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             return _decorators.Aggregate(x => x.ContractAttributes(Model));
         }
 
-        public string OperationAttributes(IOperation operation)
+        public string OperationAttributes(OperationModel operation)
         {
             return _decorators.Aggregate(x => x.OperationAttributes(Model, operation));
         }
@@ -85,22 +85,22 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         }
 
 
-        private string GetOperationDefinitionParameters(IOperation o)
+        private string GetOperationDefinitionParameters(OperationModel o)
         {
             if (!o.Parameters.Any())
             {
                 return "";
             }
-            return o.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+            return o.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationReturnType(IOperation o)
+        private string GetOperationReturnType(OperationModel o)
         {
-            if (o.ReturnType == null)
+            if (o.TypeReference.Element == null)
             {
                 return o.IsAsync() ? "Task" : "void";
             }
-            return o.IsAsync() ? $"Task<{GetTypeName(o.ReturnType.Type)}>" : GetTypeName(o.ReturnType.Type);
+            return o.IsAsync() ? $"Task<{GetTypeName(o.TypeReference)}>" : GetTypeName(o.TypeReference);
         }
 
         private string GetTypeName(ITypeReference typeInfo)

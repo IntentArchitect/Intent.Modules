@@ -25,7 +25,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>
+    public partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>
     {
 #line hidden
         /// <summary>
@@ -155,7 +155,7 @@ using Microsoft.AspNetCore.Mvc;
             this.Write("\r\n        [ProducesResponseType(");
             
             #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(operation.ReturnType != null ? string.Format("typeof({0}), ", GetOperationReturnType(operation)) : ""));
+            this.Write(this.ToStringHelper.ToStringWithCulture(operation.TypeReference.Element != null ? string.Format("typeof({0}), ", GetOperationReturnType(operation)) : ""));
             
             #line default
             #line hidden
@@ -190,7 +190,7 @@ using Microsoft.AspNetCore.Mvc;
             this.Write("\r\n");
             
             #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-      if (operation.ReturnType != null)
+      if (operation.TypeReference.Element != null)
         {
 
             
@@ -244,7 +244,7 @@ using Microsoft.AspNetCore.Mvc;
             
             #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
 
-        if (operation.ReturnType != null)
+        if (operation.TypeReference.Element != null)
         {
 
             
@@ -333,7 +333,7 @@ using Microsoft.AspNetCore.Mvc;
             this.Write("\r\n            }\r\n\r\n");
             
             #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.WebApi\Templates\Controller\WebApiControllerTemplate.tt"
-      if (operation.ReturnType != null)
+      if (operation.TypeReference.Element != null)
         {
             
             #line default

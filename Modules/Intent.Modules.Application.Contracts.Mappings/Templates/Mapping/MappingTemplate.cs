@@ -20,7 +20,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\Mapping\MappingTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class MappingTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>
+    public partial class MappingTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<DTOModel>
     {
 #line hidden
         /// <summary>

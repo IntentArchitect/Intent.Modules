@@ -1,10 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
+using System.Linq;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modelers.Services.Api
 {
-    internal class ServiceModel : IServiceModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class ServiceModel : IHasStereotypes, IMetadataModel, IHasFolder
     {
         private readonly IElement _element;
         public ServiceModel(IElement element)
@@ -15,11 +21,16 @@ namespace Intent.Modelers.Services.Api
 
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-        public IFolder Folder { get; }
+        public FolderModel Folder { get; }
         public string Name => _element.Name;
         public string ApplicationName => _element.Application.Name;
         public IElementApplication Application => _element.Application;
-        public IEnumerable<IOperation> Operations => _element.Operations;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<OperationModel> Operations => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.OperationModel.SpecializationType)
+            .Select(x => new OperationModel(x))
+            .ToList<OperationModel>();
         public string Comment => _element.Id;
 
         public override string ToString()
@@ -39,12 +50,13 @@ namespace Intent.Modelers.Services.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ServiceModel) obj);
+            return Equals((ServiceModel)obj);
         }
 
         public override int GetHashCode()
         {
             return (Id != null ? Id.GetHashCode() : 0);
         }
+        public const string SpecializationType = "Service";
     }
 }

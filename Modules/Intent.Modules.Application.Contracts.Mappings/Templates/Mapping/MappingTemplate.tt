@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>" #>
+﻿<#@ template  debug="true"  inherits="Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<DTOModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #> 

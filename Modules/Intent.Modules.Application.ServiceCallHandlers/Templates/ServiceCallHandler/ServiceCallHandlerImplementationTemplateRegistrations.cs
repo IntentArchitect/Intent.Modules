@@ -6,6 +6,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
+using Intent.Modules.Modelers.Services;
 using Intent.Registrations;
 using IApplication = Intent.Engine.IApplication;
 
@@ -24,14 +25,14 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
         public string TemplateId => ServiceCallHandlerImplementationTemplate.Identifier;
 
 
-        private ITemplate CreateTemplateInstance(IProject project, IServiceModel service, IOperation operationModel)
+        private ITemplate CreateTemplateInstance(IProject project, ServiceModel service, OperationModel operationModel)
         {
             return new ServiceCallHandlerImplementationTemplate(project, service, operationModel);
         }
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication applicationManager)
         {
-            var serviceModels = _metadataProvider.GetServices(applicationManager.Id);
+            var serviceModels = _metadataProvider.GetServiceModels(applicationManager);
             foreach (var serviceModel in serviceModels)
             {
                 foreach (var operationModel in serviceModel.Operations)

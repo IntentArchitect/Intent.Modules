@@ -38,6 +38,11 @@ namespace <#= Namespace #>
         
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+<#  if (!Model.GetSettings().TypeReference().IsDisabled()) { #>
+        [IntentManaged(Mode.Fully)]
+        public ITypeReference TypeReference => _element.TypeReference;
+
+<#      } #>
 <#  } #>
 <#  if (Model.MenuOptions != null) {
         foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => GetCreationOptionTypeInterface(x, false) != null)) { #>

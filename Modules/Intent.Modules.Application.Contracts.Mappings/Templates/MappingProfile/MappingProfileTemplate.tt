@@ -1,4 +1,4 @@
-﻿<#@ template debug="true" inherits="IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>" #>
+﻿<#@ template debug="true" inherits="IntentRoslynProjectItemTemplateBase<IList<DTOModel>>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #> 
@@ -40,10 +40,10 @@ namespace <#= Namespace #>
 <#
         foreach (var field in model.Fields)
         {
-            if (field.Mapping != null && field.Name != field.Mapping.Path)
+            if (field.Mapping != null && field.Name.ToPascalCase() != GetPath(field.Mapping.Path))
             {
 #>
-                .ForMember(dest => dest.<#=field.Name.ToPascalCase()#>, opt => opt.MapFrom(src => src.<#=ToPascalCasePath(field.Mapping.Path)#>))
+                .ForMember(dest => dest.<#=field.Name.ToPascalCase()#>, opt => opt.MapFrom(src => src.<#=GetPath(field.Mapping.Path)#>))
 <#
             }
         }

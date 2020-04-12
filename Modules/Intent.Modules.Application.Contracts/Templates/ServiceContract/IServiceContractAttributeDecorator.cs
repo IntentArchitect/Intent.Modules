@@ -6,7 +6,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
     public interface IServiceContractAttributeDecorator : ITemplateDecorator
     {
-        string ContractAttributes(IServiceModel service);
-        string OperationAttributes(IServiceModel service, IOperation operation);
+        string ContractAttributes(ServiceModel service);
+        string OperationAttributes(ServiceModel service, OperationModel operation);
     }
 }

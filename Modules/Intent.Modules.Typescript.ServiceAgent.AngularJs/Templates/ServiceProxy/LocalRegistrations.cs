@@ -31,7 +31,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 
         public override IEnumerable<IServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = _metadataManager.GetServices(application.Id);
+            var serviceModels = _metadataManager.GetServiceModels(application);
 
             // TODO JL: Temp, filter out ones for server only, will ultimately get replaced with concept of client applications in the future
             serviceModels = serviceModels.Where(x => x.Stereotypes.All(s => s.Name != "ServerOnly"));

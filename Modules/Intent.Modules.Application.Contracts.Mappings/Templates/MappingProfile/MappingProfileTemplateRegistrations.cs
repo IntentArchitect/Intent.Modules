@@ -7,12 +7,13 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Modules.Modelers.Services;
 using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
     [Description("Intent Applications Contract Mapping Profile Template")]
-    public class MappingProfileTemplateRegistrations : ListModelTemplateRegistrationBase<IDTOModel>
+    public class MappingProfileTemplateRegistrations : ListModelTemplateRegistrationBase<DTOModel>
     {
         private readonly ApiMetadataProvider _metadataManager;
 
@@ -25,14 +26,14 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public override string TemplateId => MappingProfileTemplate.IDENTIFIER;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<IDTOModel> models)
+        public override ITemplate CreateTemplateInstance(IProject project, IList<DTOModel> models)
         {
             return new MappingProfileTemplate(project, models);
         }
 
-        public override IList<IDTOModel> GetModels(IApplication application)
+        public override IList<DTOModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetDTOs(application.Id).ToList();
+            return _metadataManager.GetDTOModels(application).ToList();
         }
     }
 }

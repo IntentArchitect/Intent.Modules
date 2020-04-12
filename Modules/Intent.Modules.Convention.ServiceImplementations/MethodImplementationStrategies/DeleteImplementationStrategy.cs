@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Application.Contracts;
 using Intent.Engine;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
 using IClass = Intent.Modelers.Domain.Api.IClass;
 
@@ -11,7 +12,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
 {
     public class DeleteImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
+        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, OperationModel operationModel)
         {
             if (operationModel.Parameters.Count() != 1)
             {
@@ -23,7 +24,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                 return false;
             }
 
-            if (operationModel.ReturnType != null)
+            if (operationModel.TypeReference.Element != null)
             {
                 return false;
             }
@@ -38,7 +39,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, IOperation operationModel)
+        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, OperationModel operationModel)
         {
             return $@"var existing{domainModel.Name} ={ (operationModel.IsAsync() ? " await" : "") } {domainModel.Name.ToPrivateMember()}Repository.FindById{ (operationModel.IsAsync() ? "Async" : "") }(id);
                 {domainModel.Name.ToPrivateMember()}Repository.Remove(existing{domainModel.Name});";

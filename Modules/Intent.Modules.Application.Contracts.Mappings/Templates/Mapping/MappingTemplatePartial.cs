@@ -12,7 +12,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
-    partial class MappingTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplatePostCreationHook, IHasDecorators<IMappingTemplateDecorator>
+    partial class MappingTemplate : IntentRoslynProjectItemTemplateBase<DTOModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplatePostCreationHook, IHasDecorators<IMappingTemplateDecorator>
     {
         public const string Identifier = "Intent.Application.Contracts.Mapping";
 
@@ -30,7 +30,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         private ITemplateDependency _contractTemplateDependancy;
         private IList<IMappingTemplateDecorator> _decorators = new List<IMappingTemplateDecorator>();
 
-        public MappingTemplate(IProject project, IDTOModel model)
+        public MappingTemplate(IProject project, DTOModel model)
             : base(Identifier, project, model)
         {
         }
@@ -41,7 +41,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
             _stereotypeNameConfigValue = GetMetadata().CustomMetadata[StereotypeNameConfigId];
             _stereotypeTypePropertyConfigValue = GetMetadata().CustomMetadata[StereotypeTypePropertyConfigId];
             _stereotypeNamespacePropertyConfigValue = GetMetadata().CustomMetadata[StereotypeNamespacePropertyConfigId];
-            _contractTemplateDependancy = TemplateDependency.OnModel<IDTOModel>(GetMetadata().CustomMetadata[ContractTemplateDependancyConfigId], (to) => to.Id == Model.Id);
+            _contractTemplateDependancy = TemplateDependency.OnModel<DTOModel>(GetMetadata().CustomMetadata[ContractTemplateDependancyConfigId], (to) => to.Id == Model.Id);
             _domainTemplateDependancy = TemplateDependency.OnModel<IClass>(_domainTemplateDependancyConfigValue, (to) => to.Id == Model.MappedClass.ElementId);
         }
 

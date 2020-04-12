@@ -15,12 +15,12 @@ using Intent.Templates;
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {
-    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>, ITemplatePostCreationHook
+    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>, ITemplatePostCreationHook
     {
         private IList<ServiceImplementationDecoratorBase> _decorators = new List<ServiceImplementationDecoratorBase>();
 
         public const string Identifier = "Intent.Application.ServiceImplementations";
-        public ServiceImplementationTemplate(IProject project, IServiceModel model)
+        public ServiceImplementationTemplate(IProject project, ServiceModel model)
             : base(Identifier, project, model)
         {
         }
@@ -34,7 +34,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
         {
             return new[]
             {
-                TemplateDependency.OnModel<IServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
+                TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id)
             }.Union(GetDecorators().SelectMany(x => x.GetConstructorDependencies(Model).Select(d => d.TemplateDependency)));
         }
 
@@ -96,16 +96,16 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             }
         }
 
-        private string GetOperationDefinitionParameters(IOperation o)
+        private string GetOperationDefinitionParameters(OperationModel o)
         {
             if (!o.Parameters.Any())
             {
                 return "";
             }
-            return o.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+            return o.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationCallParameters(IOperation o)
+        private string GetOperationCallParameters(OperationModel o)
         {
             if (!o.Parameters.Any())
             {
@@ -114,18 +114,18 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             return o.Parameters.Select(x => $"{x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationReturnType(IOperation o)
+        private string GetOperationReturnType(OperationModel o)
         {
-            if (o.ReturnType == null)
+            if (o.TypeReference.Element == null)
             {
                 return o.IsAsync() ? "async Task" : "void";
             }
-            return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType.Type)}>" : GetTypeName(o.ReturnType.Type);
+            return o.IsAsync() ? $"async Task<{GetTypeName(o.TypeReference)}>" : GetTypeName(o.TypeReference);
         }
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
         }
 
@@ -144,7 +144,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             return parameters;
         }
 
-        private string GetImplementation(IOperation operation)
+        private string GetImplementation(OperationModel operation)
         {
             var output = GetDecorators().Aggregate(x => x.GetDecoratedImplementation(Model, operation));
             if (string.IsNullOrWhiteSpace(output))

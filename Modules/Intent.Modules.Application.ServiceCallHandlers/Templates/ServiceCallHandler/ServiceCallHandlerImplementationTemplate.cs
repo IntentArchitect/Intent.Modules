@@ -11,7 +11,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
 {
     using Intent.Modules.Common.Templates;
     using Intent.Modules.Application.Contracts;
-    using Intent.Metadata.Models;
+    using Intent.Modelers.Services.Api;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ServiceCallHandlerImplementationTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IOperation>
+    public partial class ServiceCallHandlerImplementationTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<OperationModel>
     {
 #line hidden
         /// <summary>

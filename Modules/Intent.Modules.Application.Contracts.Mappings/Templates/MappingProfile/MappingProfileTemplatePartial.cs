@@ -9,13 +9,14 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Templates;
 using Intent.Utils;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
-    partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>, ITemplateBeforeExecutionHook, ITemplatePostCreationHook
+    partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<DTOModel>>, ITemplateBeforeExecutionHook, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.Mapping.Profile";
 
@@ -30,7 +31,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
         private string _stereotypeTypePropertyConfigValue;
         private string _stereotypeNamespacePropertyConfigValue;
 
-        public MappingProfileTemplate(IProject project, IList<IDTOModel> model)
+        public MappingProfileTemplate(IProject project, IList<DTOModel> model)
             : base(IDENTIFIER, project, model)
         {
         }
@@ -53,9 +54,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             return base.GetNugetDependencies().Concat(new[] { NugetPackages.AutoMapper });
         }
 
-        public string GetContractType(IDTOModel model)
+        public string GetContractType(DTOModel model)
         {
-            var templateDependancy = TemplateDependency.OnModel<IDTOModel>(GetMetadata().CustomMetadata[ContractTemplateDependancyConfigId], (to) => to.Id == model.Id);
+            var templateDependancy = TemplateDependency.OnModel<DTOModel>(GetMetadata().CustomMetadata[ContractTemplateDependancyConfigId], (to) => to.Id == model.Id);
             var templateOutput = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {
@@ -64,7 +65,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             return templateOutput.FullTypeName();
         }
 
-        public string GetSourceType(IDTOModel model)
+        public string GetSourceType(DTOModel model)
         {
             var type = model.GetStereotypeProperty<string>(_stereotypeNameConfigValue, _stereotypeTypePropertyConfigValue);
             var @namespace = model.GetStereotypeProperty<string>(_stereotypeNameConfigValue, _stereotypeNamespacePropertyConfigValue);
@@ -122,10 +123,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             });
         }
 
-        private string ToPascalCasePath(string path)
+        public string GetPath(IEnumerable<IElementMappingPathTarget> path)
         {
-            var piecies = path.Split('.');
-            return piecies.Select(x => x.ToPascalCase()).Aggregate((x, y) => x + "." + y);
+            return string.Join(".", path.Select(x => x.Element != null ? x.Name.ToPascalCase() : x.Name));
         }
     }
 }

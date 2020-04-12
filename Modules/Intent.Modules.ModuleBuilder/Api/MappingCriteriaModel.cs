@@ -63,5 +63,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                     this.GetCriteriaSettings().IsCollection().IsNo() ? false : (bool?)null,
             };
         }
+
+        [IntentManaged(Mode.Fully)]
+        public ITypeReference TypeReference => _element.TypeReference;
     }
 }

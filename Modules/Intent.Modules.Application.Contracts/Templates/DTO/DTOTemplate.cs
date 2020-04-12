@@ -24,7 +24,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class DTOTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>
+    public partial class DTOTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<DTOModel>
     {
 #line hidden
         /// <summary>
@@ -213,7 +213,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             this.Write("\r\n        public ");
             
             #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeInfo(field.Type)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeInfo(field.TypeReference)));
             
             #line default
             #line hidden

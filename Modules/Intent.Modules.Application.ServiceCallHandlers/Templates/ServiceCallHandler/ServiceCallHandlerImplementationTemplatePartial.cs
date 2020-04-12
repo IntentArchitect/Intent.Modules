@@ -16,11 +16,11 @@ using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
-    partial class ServiceCallHandlerImplementationTemplate : IntentRoslynProjectItemTemplateBase<IOperation>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook
+    partial class ServiceCallHandlerImplementationTemplate : IntentRoslynProjectItemTemplateBase<OperationModel>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.Application.ServiceCallHandlers.Handler";
 
-        public ServiceCallHandlerImplementationTemplate(IProject project, IServiceModel service, IOperation model)
+        public ServiceCallHandlerImplementationTemplate(IProject project, ServiceModel service, OperationModel model)
             : base(Identifier, project, model)
         {
             SetDefaultTypeCollectionFormat("List<{0}>");
@@ -28,7 +28,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             Service = service;
         }
 
-        public IServiceModel Service { get; set; }
+        public ServiceModel Service { get; set; }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -47,22 +47,22 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
                 );
         }
 
-        private string GetOperationDefinitionParameters(IOperation o)
+        private string GetOperationDefinitionParameters(OperationModel o)
         {
             if (!o.Parameters.Any())
             {
                 return "";
             }
-            return o.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => x + ", " + y);
+            return o.Parameters.Select(x => $"{GetTypeName(x.TypeReference)} {x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationReturnType(IOperation o)
+        private string GetOperationReturnType(OperationModel o)
         {
-            if (o.ReturnType == null)
+            if (o.TypeReference.Element == null)
             {
                 return o.IsAsync() ? "async Task" : "void";
             }
-            return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType.Type)}>" : GetTypeName(o.ReturnType.Type);
+            return o.IsAsync() ? $"async Task<{GetTypeName(o.TypeReference)}>" : GetTypeName(o.TypeReference);
         }
 
         public override void BeforeTemplateExecution()

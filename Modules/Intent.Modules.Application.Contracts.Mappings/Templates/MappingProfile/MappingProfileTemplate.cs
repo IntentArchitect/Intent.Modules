@@ -20,7 +20,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<IDTOModel>>
+    public partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<DTOModel>>
     {
 #line hidden
         /// <summary>
@@ -154,7 +154,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         foreach (var field in model.Fields)
         {
-            if (field.Mapping != null && field.Name != field.Mapping.Path)
+            if (field.Mapping != null && field.Name.ToPascalCase() != GetPath(field.Mapping.Path))
             {
 
             
@@ -170,7 +170,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             this.Write(", opt => opt.MapFrom(src => src.");
             
             #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ToPascalCasePath(field.Mapping.Path)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetPath(field.Mapping.Path)));
             
             #line default
             #line hidden

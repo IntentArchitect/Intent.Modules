@@ -1,55 +1,57 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
+using System.Linq;
+using Intent.RoslynWeaver.Attributes;
 
-namespace Intent.Modelers.Services.Api
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Intent.Modules.Modelers.Services
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IEnumerable<IDTOModel> GetAllDTOs(this IMetadataManager metadataManager)
+        public static IList<ControllerModel> GetControllerModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetAllDTOs();
+            return new ApiMetadataProvider(metadataManager).GetControllerModels(application);
         }
 
-        public static IEnumerable<IDTOModel> GetDTOs(this IMetadataManager metadataManager, string applicationId)
+        public static IList<ControllerOperationModel> GetControllerOperationModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetDTOs(applicationId);
+            return new ApiMetadataProvider(metadataManager).GetControllerOperationModels(application);
         }
 
-        public static IEnumerable<IServiceModel> GetAllServices(this IMetadataManager metadataManager)
+        public static IList<ControllerParameterModel> GetControllerParameterModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetAllServices();
+            return new ApiMetadataProvider(metadataManager).GetControllerParameterModels(application);
         }
 
-        public static IEnumerable<IServiceModel> GetServices(this IMetadataManager metadataManager, string applicationId)
+        public static IList<DTOModel> GetDTOModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetServices(applicationId);
+            return new ApiMetadataProvider(metadataManager).GetDTOModels(application);
         }
 
-        public static IEnumerable<IEnumModel> GetAllEnums(this IMetadataManager metadataManager)
+        public static IList<EnumModel> GetEnumModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetAllEnums();
+            return new ApiMetadataProvider(metadataManager).GetEnumModels(application);
         }
 
-        public static IEnumerable<IEnumModel> GetEnums(this IMetadataManager metadataManager, string applicationId)
+        public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetEnums(applicationId);
+            return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
         }
 
-        public static bool IsDTO(this IElement model)
+        public static IList<ServiceModel> GetServiceModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return model.SpecializationType.Equals("DTO", StringComparison.InvariantCultureIgnoreCase);
+            return new ApiMetadataProvider(metadataManager).GetServiceModels(application);
         }
 
-        public static bool IsService(this IElement model)
+        public static IList<TypeDefinitionModel> GetTypeDefinitionModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return model.SpecializationType.Equals("Service", StringComparison.InvariantCultureIgnoreCase);
+            return new ApiMetadataProvider(metadataManager).GetTypeDefinitionModels(application);
         }
 
-        public static bool IsEnum(this IElement model)
-        {
-            return model.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase);
-        }
     }
 }

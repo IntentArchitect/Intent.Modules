@@ -10,11 +10,12 @@ using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.Modelers.Services;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
     [Description(DTOTemplate.IDENTIFIER)]
-    public class Registrations : ModelTemplateRegistrationBase<IDTOModel>
+    public class Registrations : ModelTemplateRegistrationBase<DTOModel>
     {
         private readonly ApiMetadataProvider _metadataManager;
 
@@ -26,14 +27,14 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public override string TemplateId => DTOTemplate.IDENTIFIER;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IDTOModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, DTOModel model)
         {
             return new DTOTemplate(project, model);
         }
 
-        public override IEnumerable<IDTOModel> GetModels(Engine.IApplication application)
+        public override IEnumerable<DTOModel> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetDTOs(application.Id);
+            return _metadataManager.GetDTOModels(application);
         }
     }
 }

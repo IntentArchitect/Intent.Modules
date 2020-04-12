@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IServiceModel>" #>
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<ServiceModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -41,7 +41,7 @@ namespace <#=Namespace#>
         {
             var sch = (<#= NormalizeNamespace(GetHandlerClassName(o)) #>)_serviceProvider.GetService(typeof(<#= NormalizeNamespace(GetHandlerClassName(o)) #>));
             <#
-        if (o.ReturnType != null)
+        if (o.TypeReference.Element != null)
         {
 #>return <#
         }

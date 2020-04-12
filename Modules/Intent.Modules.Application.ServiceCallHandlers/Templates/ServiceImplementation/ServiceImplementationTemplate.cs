@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>
+    public partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>
     {
 #line hidden
         /// <summary>
@@ -129,7 +129,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             
             #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
 
-        if (o.ReturnType != null)
+        if (o.TypeReference.Element != null)
         {
 
             

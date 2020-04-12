@@ -1,21 +1,52 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Intent.Metadata.Models;
+using System;
+using System.Linq;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modelers.Services.Api
 {
-    internal class EnumLiteralModel : IEnumLiteralModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class EnumLiteralModel
+        : IHasStereotypes, IMetadataModel
     {
-        private readonly ILiteral _literal;
+        private readonly IElement _element;
+        public const string SpecializationType = "Enum-Literal";
 
-        public EnumLiteralModel(ILiteral literal)
+        public EnumLiteralModel(IElement element)
         {
-            _literal = literal;
+            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new Exception($"Cannot create a 'EnumLiteralModel' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+            }
+            _element = element;
         }
 
-        public string Id => _literal.Id;
-        public IEnumerable<IStereotype> Stereotypes => _literal.Stereotypes;
-        public string Name => _literal.Name;
-        public string Value => _literal.Value;
-        public string Comment => _literal.Comment;
+        public string Id => _element.Id;
+
+        public string Name => _element.Name;
+
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        protected bool Equals(EnumLiteralModel other)
+        {
+            return Equals(_element, other._element);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((EnumLiteralModel)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (_element != null ? _element.GetHashCode() : 0);
+        }
     }
 }

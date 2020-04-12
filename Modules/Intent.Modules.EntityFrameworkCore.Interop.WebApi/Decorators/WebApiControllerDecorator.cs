@@ -23,16 +23,16 @@ namespace Intent.Modules.EntityFrameworkCore.Interop.WebApi.Decorators
 
         public const string Identifier = "Intent.EntityFrameworkCore.Interop.WebApi.ControllerDecorator";
 
-        public override string DeclarePrivateVariables(IServiceModel service) => $@"
+        public override string DeclarePrivateVariables(ServiceModel service) => $@"
         private readonly {GetDbContextTemplate().ClassName} _dbContext;";
 
-        public override string ConstructorParams(IServiceModel service) => $@"
+        public override string ConstructorParams(ServiceModel service) => $@"
             , {GetDbContextTemplate().ClassName} dbContext";
 
-        public override string ConstructorInit(IServiceModel service) => @"
+        public override string ConstructorInit(ServiceModel service) => @"
             _dbContext = dbContext;";
 
-        public override string AfterCallToAppLayer(IServiceModel service, IOperation operation)
+        public override string AfterCallToAppLayer(ServiceModel service, OperationModel operation)
         {
             if (operation.Stereotypes.Any(x => x.Name == "ReadOnly"))
             {
@@ -45,7 +45,7 @@ namespace Intent.Modules.EntityFrameworkCore.Interop.WebApi.Decorators
                     _dbContext.SaveChanges();";
         }
 
-        public override string OnDispose(IServiceModel service)
+        public override string OnDispose(ServiceModel service)
         {
             return @"
             _dbContext.Dispose();";

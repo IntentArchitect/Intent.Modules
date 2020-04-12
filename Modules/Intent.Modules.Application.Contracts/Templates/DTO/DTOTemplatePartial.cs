@@ -13,13 +13,13 @@ using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
-    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<IDTOModel>, ITemplate, IHasAssemblyDependencies, IHasDecorators<IDTOAttributeDecorator>, ITemplatePostCreationHook
+    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<DTOModel>, ITemplate, IHasAssemblyDependencies, IHasDecorators<IDTOAttributeDecorator>, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.DTO";
 
         private IList<IDTOAttributeDecorator> _decorators = new List<IDTOAttributeDecorator>();
 
-        public DTOTemplate(IProject project, IDTOModel model, string identifier = IDENTIFIER)
+        public DTOTemplate(IProject project, DTOModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
         }
@@ -47,7 +47,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             return _decorators.Aggregate(x => x.ClassAttributes(Model));
         }
 
-        public string PropertyAttributes(IAttribute field)
+        public string PropertyAttributes(DTOFieldModel field)
         {
             return _decorators.Aggregate(x => x.PropertyAttributes(Model, field));
         }
@@ -56,7 +56,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         {
             return Model.Fields.Any()
                 ? Model.Fields
-                    .Select(x => "\r\n            " + GetTypeInfo(x.Type) + " " + x.Name.ToCamelCase().PrefixIdentifierIfKeyword())
+                    .Select(x => "\r\n            " + GetTypeInfo(x.TypeReference) + " " + x.Name.ToCamelCase().PrefixIdentifierIfKeyword())
                     .Aggregate((x, y) => x + ", " + y)
                 : "";
         }

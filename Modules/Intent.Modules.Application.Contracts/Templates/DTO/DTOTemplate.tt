@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<IDTOModel>" #>
+﻿<#@ template  debug="true"  inherits="Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<DTOModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -56,7 +56,7 @@ namespace <#= Namespace #>
         }
 #>
         <#= PropertyAttributes(field)#>
-        public <#= GetTypeInfo(field.Type)#> <#=field.Name.ToPascalCase()#> {get; set;}
+        public <#= GetTypeInfo(field.TypeReference)#> <#=field.Name.ToPascalCase()#> {get; set;}
 <#
     }
 #>

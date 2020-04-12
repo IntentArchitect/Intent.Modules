@@ -22,7 +22,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
 
         public override int Priority => 1000;
 
-        public override string BeforeCallToAppLayer(IServiceModel service, IOperation operation)
+        public override string BeforeCallToAppLayer(ServiceModel service, OperationModel operation)
         {
             if (!operation.GetStereotypeProperty<bool>("Transactional Settings", "Explicit Scope", true))
             {
@@ -56,7 +56,7 @@ namespace Intent.Modules.AspNet.WebApi.Decorators
 
         public override int Priority => -1000;
 
-        public override string AfterCallToAppLayer(IServiceModel service, IOperation operation)
+        public override string AfterCallToAppLayer(ServiceModel service, OperationModel operation)
         {
             if (!operation.GetStereotypeProperty<bool>("Transactional Settings", "Explicit Scope", true))
             {

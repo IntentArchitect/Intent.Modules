@@ -9,11 +9,12 @@ using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.Modelers.Services;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
     [Description(WebApiControllerTemplate.Identifier)]
-    public class WebApiControllerTemplateRegistrations : ModelTemplateRegistrationBase<IServiceModel>
+    public class WebApiControllerTemplateRegistrations : ModelTemplateRegistrationBase<ServiceModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -24,14 +25,14 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
         public override string TemplateId => WebApiControllerTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
         {
             return new WebApiControllerTemplate(project, model);
         }
 
-        public override IEnumerable<IServiceModel> GetModels(IApplication application)
+        public override IEnumerable<ServiceModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetServices(application.Id);
+            return _metadataManager.GetServiceModels(application);
         }
     }
 }
