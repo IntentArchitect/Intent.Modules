@@ -13,7 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class TemplateRegistrationModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Template Registration";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public TemplateRegistrationModel(IElement element)
         {

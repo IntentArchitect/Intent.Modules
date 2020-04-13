@@ -13,7 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class AssociationSettingsModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Association Settings";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public AssociationSettingsModel(IElement element)
         {

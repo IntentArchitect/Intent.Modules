@@ -13,7 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class DiagramSettingsModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Diagram Settings";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public DiagramSettingsModel(IElement element)
         {

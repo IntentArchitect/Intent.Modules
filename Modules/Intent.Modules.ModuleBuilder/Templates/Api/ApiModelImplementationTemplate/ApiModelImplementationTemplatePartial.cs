@@ -41,11 +41,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             );
         }
 
-        public string BaseType => null;
-        //public string BaseType => (!Model.GetSettings().TypeReference().IsDisabled()
-        //                           && Model.GetSettings().TargetTypes().Length == 1)
-        //    ? GetTemplateClassName(TemplateId, Model.GetSettings().TargetTypes().Single().Id, throwIfNotFound: false) ?? Model.GetSettings().TargetTypes().Single().Name.ToCSharpIdentifier()
-        //    : null;
+        public string BaseType => !Model.GetTypeReferenceSettings().Mode().IsDisabled() && Model.GetTypeReferenceSettings().Represents().IsInheritance()
+            ? GetTemplateClassName(TemplateId, Model.GetTypeReferenceSettings().TargetTypes().Single().Id, throwIfNotFound: false)
+                ?? Model.GetTypeReferenceSettings().TargetTypes().Single().Name.ToCSharpIdentifier()
+            : null;
 
 
         private string GetCreationOptionTypeInterface(CreationOptionModel option, bool asCollection)

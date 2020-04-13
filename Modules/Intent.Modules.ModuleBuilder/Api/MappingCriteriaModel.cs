@@ -14,7 +14,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class MappingCriteriaModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Mapping Criteria";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public MappingCriteriaModel(IElement element)
         {
@@ -31,6 +31,19 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public ElementMappingCriteriaSettingPersistable ToPersistable()
+        {
+            return new ElementMappingCriteriaSettingPersistable()
+            {
+                SpecializationType = new ElementSettingsModel(_element.TypeReference.Element).Name,
+                HasTypeReference = this.GetCriteriaSettings().HasTypeReference().IsYes() ? true :
+                    this.GetCriteriaSettings().HasTypeReference().IsNo() ? false : (bool?)null,
+                HasChildren = this.GetCriteriaSettings().HasChildren().IsYes() ? true :
+                    this.GetCriteriaSettings().HasChildren().IsNo() ? false : (bool?)null,
+                IsCollection = this.GetCriteriaSettings().IsCollection().IsYes() ? true :
+                    this.GetCriteriaSettings().IsCollection().IsNo() ? false : (bool?)null,
+            };
+        }
 
         protected bool Equals(MappingCriteriaModel other)
         {
@@ -48,20 +61,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
-        }
-
-        public ElementMappingCriteriaSettingPersistable ToPersistable()
-        {
-            return new ElementMappingCriteriaSettingPersistable()
-            {
-                SpecializationType = new ElementSettingsModel(_element.TypeReference.Element).Name,
-                HasTypeReference = this.GetCriteriaSettings().HasTypeReference().IsYes() ? true :
-                    this.GetCriteriaSettings().HasTypeReference().IsNo() ? false : (bool?)null,
-                HasChildren = this.GetCriteriaSettings().HasChildren().IsYes() ? true :
-                    this.GetCriteriaSettings().HasChildren().IsNo() ? false : (bool?)null,
-                IsCollection = this.GetCriteriaSettings().IsCollection().IsYes() ? true :
-                    this.GetCriteriaSettings().IsCollection().IsNo() ? false : (bool?)null,
-            };
         }
 
         [IntentManaged(Mode.Fully)]

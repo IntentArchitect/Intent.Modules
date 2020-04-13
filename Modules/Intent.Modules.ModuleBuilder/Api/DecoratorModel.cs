@@ -13,7 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class DecoratorModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Decorator";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public DecoratorModel(IElement element)
         {

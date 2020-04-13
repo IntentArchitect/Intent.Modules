@@ -10,25 +10,13 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DesignerExtensionModel : IHasStereotypes, IMetadataModel
+    public class DesignerExtensionModel : DesignerModel, IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Designer Extension";
-        private readonly IElement _element;
+        public new const string SpecializationType = "Designer Extension";
 
-        public DesignerExtensionModel(IElement element)
+        public DesignerExtensionModel(IElement element) : base(element, SpecializationType)
         {
-            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
-            {
-                throw new Exception($"Cannot create a 'DesignerExtensionModel' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
-            }
-            _element = element;
         }
-
-        public string Id => _element.Id;
-
-        public string Name => _element.Name;
-
-        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementExtensionModel> ElementExtensions => _element.ChildElements

@@ -14,7 +14,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class MappingSettingsModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Mapping Settings";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public MappingSettingsModel(IElement element)
         {

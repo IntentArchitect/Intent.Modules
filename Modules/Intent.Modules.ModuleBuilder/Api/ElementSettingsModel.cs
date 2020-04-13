@@ -17,14 +17,14 @@ namespace Intent.Modules.ModuleBuilder.Api
     {
         public const string SpecializationType = "Element Settings";
         public const string RequiredSpecializationType = "Element Settings";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
 
-        public ElementSettingsModel(IElement element)
+        public ElementSettingsModel(IElement element, string requiredType = SpecializationType)
         {
-            if (element.SpecializationType != SpecializationType)
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException($"Invalid element [{element}]");
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
 
             _element = element;
@@ -53,13 +53,13 @@ namespace Intent.Modules.ModuleBuilder.Api
                 AllowMapping = this.GetSettings().AllowMapping(),
                 AllowSorting = this.GetSettings().AllowSorting(),
                 AllowFindInView = this.GetSettings().AllowFindInView(),
-                AllowTypeReference = !this.GetSettings().TypeReference().IsDisabled(),
-                TypeReferenceSetting = !this.GetSettings().TypeReference().IsDisabled() ? new TypeReferenceSettingPersistable()
+                AllowTypeReference = !this.GetTypeReferenceSettings().Mode().IsDisabled(),
+                TypeReferenceSetting = !this.GetTypeReferenceSettings().Mode().IsDisabled() ? new TypeReferenceSettingPersistable()
                 {
-                    IsRequired = this.GetSettings().TypeReference().IsRequired(),
-                    TargetTypes = this.GetSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
-                    AllowIsNullable = this.GetSettings().AllowNullable(),
-                    AllowIsCollection = this.GetSettings().AllowCollection(),
+                    IsRequired = this.GetTypeReferenceSettings().Mode().IsRequired(),
+                    TargetTypes = this.GetTypeReferenceSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
+                    AllowIsNullable = this.GetTypeReferenceSettings().AllowNullable(),
+                    AllowIsCollection = this.GetTypeReferenceSettings().AllowCollection(),
                 } : null,
                 DiagramSettings = null, // TODO JL / GCB
                 ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),

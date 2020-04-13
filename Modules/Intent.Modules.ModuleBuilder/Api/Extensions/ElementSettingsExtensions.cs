@@ -34,6 +34,12 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new Settings(stereotype) : null;
         }
 
+        public static TypeReferenceSettings GetTypeReferenceSettings(this ElementSettingsModel model)
+        {
+            var stereotype = model.GetStereotype("Type Reference Settings");
+            return stereotype != null ? new TypeReferenceSettings(stereotype) : null;
+        }
+
 
         public class DefaultCreationOptions
         {
@@ -214,31 +220,6 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Allow Find in View");
             }
 
-            public TypeReferenceOptions TypeReference()
-            {
-                return new TypeReferenceOptions(_stereotype.GetProperty<string>("Type Reference"));
-            }
-
-            public IElement[] TargetTypes()
-            {
-                return _stereotype.GetProperty<IElement[]>("Target Types");
-            }
-
-            public string DefaultTypeId()
-            {
-                return _stereotype.GetProperty<string>("Default Type Id");
-            }
-
-            public bool AllowNullable()
-            {
-                return _stereotype.GetProperty<bool>("Allow Nullable");
-            }
-
-            public bool AllowCollection()
-            {
-                return _stereotype.GetProperty<bool>("Allow Collection");
-            }
-
             public class SaveModeOptions
             {
                 public readonly string Value;
@@ -258,11 +239,52 @@ namespace Intent.Modules.ModuleBuilder.Api
                 }
             }
 
-            public class TypeReferenceOptions
+        }
+
+        public class TypeReferenceSettings
+        {
+            private IStereotype _stereotype;
+
+            public TypeReferenceSettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public ModeOptions Mode()
+            {
+                return new ModeOptions(_stereotype.GetProperty<string>("Mode"));
+            }
+
+            public IElement[] TargetTypes()
+            {
+                return _stereotype.GetProperty<IElement[]>("Target Types");
+            }
+
+            public RepresentsOptions Represents()
+            {
+                return new RepresentsOptions(_stereotype.GetProperty<string>("Represents"));
+            }
+
+            public string DefaultTypeId()
+            {
+                return _stereotype.GetProperty<string>("Default Type Id");
+            }
+
+            public bool AllowNullable()
+            {
+                return _stereotype.GetProperty<bool>("Allow Nullable");
+            }
+
+            public bool AllowCollection()
+            {
+                return _stereotype.GetProperty<bool>("Allow Collection");
+            }
+
+            public class ModeOptions
             {
                 public readonly string Value;
 
-                public TypeReferenceOptions(string value)
+                public ModeOptions(string value)
                 {
                     Value = value;
                 }
@@ -278,6 +300,25 @@ namespace Intent.Modules.ModuleBuilder.Api
                 public bool IsRequired()
                 {
                     return Value == "Required";
+                }
+            }
+
+            public class RepresentsOptions
+            {
+                public readonly string Value;
+
+                public RepresentsOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsReference()
+                {
+                    return Value == "Reference";
+                }
+                public bool IsInheritance()
+                {
+                    return Value == "Inheritance";
                 }
             }
 

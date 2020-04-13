@@ -13,7 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class DesignersFolderModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Designers Folder";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public DesignersFolderModel(IElement element)
         {

@@ -15,7 +15,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class CreationOptionModel : IHasStereotypes, IMetadataModel
     {
-        private readonly IElement _element;
+        protected readonly IElement _element;
         public const string SpecializationType = "Creation Option";
 
         public CreationOptionModel(IElement element)

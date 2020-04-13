@@ -14,7 +14,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Context Menu";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public ContextMenuModel(IElement element)
         {

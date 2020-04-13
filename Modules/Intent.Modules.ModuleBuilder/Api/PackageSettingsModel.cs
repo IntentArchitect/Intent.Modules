@@ -14,7 +14,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class PackageSettingsModel
         : IHasStereotypes, IMetadataModel
     {
-        private readonly IElement _element;
+        protected readonly IElement _element;
         public const string SpecializationType = "Package Settings";
 
         public PackageSettingsModel(IElement element)

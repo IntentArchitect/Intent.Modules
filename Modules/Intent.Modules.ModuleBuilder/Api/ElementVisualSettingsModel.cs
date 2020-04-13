@@ -13,7 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class ElementVisualSettingsModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Element Visual Settings";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public ElementVisualSettingsModel(IElement element)
         {

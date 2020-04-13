@@ -14,7 +14,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class MappingOutputModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Mapping Output";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public MappingOutputModel(IElement element)
         {

@@ -19,30 +19,38 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class <#= ClassName #> : <#= BaseType != null ? (BaseType + ", ") : "" #>IHasStereotypes, IMetadataModel
     {
+<#  if (BaseType == null) { #>
         public const string SpecializationType = "<#= Model.Name #>";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
-        public <#= ClassName #>(IElement element)<#= BaseType != null ? " : base(element)" : "" #>
+        [IntentInitialGen]
+        public <#= ClassName #>(IElement element, string requiredType = SpecializationType)
         {
-            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new Exception($"Cannot create a '<#= ClassName #>' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
         }
 
-<# if (BaseType == null) { #>
         public string Id => _element.Id;
         
         public string Name => _element.Name;
         
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-<#  if (!Model.GetSettings().TypeReference().IsDisabled()) { #>
+<#      if (!Model.GetTypeReferenceSettings().Mode().IsDisabled()) { #>
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
 <#      } #>
+<#  } else { #>
+        public new const string SpecializationType = "<#= Model.Name #>";
+
+        public <#= ClassName #>(IElement element) : base(element, SpecializationType)
+        {
+        }
+
 <#  } #>
 <#  if (Model.MenuOptions != null) {
         foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => GetCreationOptionTypeInterface(x, false) != null)) { #>

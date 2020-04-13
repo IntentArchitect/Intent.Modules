@@ -13,7 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class CoreTypeModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Core Type";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public CoreTypeModel(IElement element)
         {

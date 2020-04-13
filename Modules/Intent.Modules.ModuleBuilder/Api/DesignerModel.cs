@@ -16,14 +16,14 @@ namespace Intent.Modules.ModuleBuilder.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class DesignerModel : IHasStereotypes, IMetadataModel
     {
-        private readonly IElement _element;
+        protected readonly IElement _element;
         public const string SpecializationType = "Designer";
 
-        public DesignerModel(IElement element)
+        public DesignerModel(IElement element, string requiredType = SpecializationType)
         {
-            if (SpecializationType != element.SpecializationType)
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException($"Invalid element [{element}]");
+                throw new Exception($"Cannot create a '{nameof(DesignerModel)}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
 
             _element = element;
