@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="e4c0d250-d82d-47b1-9f5b-20f1403fb81e" type="Designer">
   <name>Module Builder</name>
-  <display>Module Builder : Designer</display>
+  <display>Module Builder: void</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
+  <typeReference id="3ca8a6fc-5f7d-4e5e-a4dd-06414ad02b13">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>b54ca450-86a6-4a9e-9797-9e628aaeebdd</parentFolderId>
   <literals />
@@ -141,7 +148,7 @@
             </childElement>
             <childElement id="f4400708-458c-420d-b995-8ae3e5afb595" type="Creation Option">
               <name>New Stereotype-Definition</name>
-              <display>New Stereotype-Definition: &lt;not found&gt;</display>
+              <display>New Stereotype-Definition: Stereotype-Definition</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="bea9490f-4297-43bc-9a36-1aef9eb78ba5">

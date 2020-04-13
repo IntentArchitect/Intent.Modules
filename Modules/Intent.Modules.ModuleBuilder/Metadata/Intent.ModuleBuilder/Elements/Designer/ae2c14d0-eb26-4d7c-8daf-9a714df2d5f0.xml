@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="ae2c14d0-eb26-4d7c-8daf-9a714df2d5f0" type="Designer">
   <name>Intent</name>
-  <display>Intent : Designer</display>
+  <display>Intent: void</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
+  <typeReference id="cbf0b467-3ac7-4aac-924a-fea1d148ab86">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>b54ca450-86a6-4a9e-9797-9e628aaeebdd</parentFolderId>
   <literals />

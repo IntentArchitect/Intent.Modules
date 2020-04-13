@@ -17,17 +17,17 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public static bool ReferencesSingleFile(this IElement element)
         {
-            return element.TypeReference?.Element.Id == SingleFileId;
+            return element.TypeReference?.Element?.Id == SingleFileId;
         }
 
         public static bool ReferencesFilePerModel(this IElement element)
         {
-            return element.TypeReference?.Element.Id == FilePerModelId;
+            return element.TypeReference?.Element?.Id == FilePerModelId;
         }
 
         public static bool ReferencesCustom(this IElement element)
         {
-            return element.TypeReference?.Element.Id == CustomId;
+            return element.TypeReference?.Element?.Id == CustomId;
         }
 
         public static TemplateSettings GetTemplateSettings(this TemplateRegistration element)

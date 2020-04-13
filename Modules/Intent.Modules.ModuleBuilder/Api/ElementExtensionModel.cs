@@ -18,22 +18,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
         }
 
-        [IntentManaged(Mode.Fully)]
-        public ContextMenuModel MenuOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ContextMenuModel.SpecializationType)
-            .Select(x => new ContextMenuModel(x))
-            .SingleOrDefault();
-        [IntentManaged(Mode.Fully)]
-        public IList<DiagramSettingsModel> DiagramSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DiagramSettingsModel.SpecializationType)
-            .Select(x => new DiagramSettingsModel(x))
-            .ToList<DiagramSettingsModel>();
-        [IntentManaged(Mode.Fully)]
-        public MappingSettingsModel MappingSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.MappingSettingsModel.SpecializationType)
-            .Select(x => new MappingSettingsModel(x))
-            .SingleOrDefault();
-
         protected bool Equals(ElementExtensionModel other)
         {
             return Equals(_element, other._element);

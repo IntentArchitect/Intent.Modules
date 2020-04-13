@@ -91,6 +91,20 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == Api.CoreTypeModel.SpecializationType)
             .Select(x => new CoreTypeModel(x))
             .ToList<CoreTypeModel>();
+
+        public virtual bool IsReference()
+        {
+            return this.GetModelerSettings().ModelerType().IsReference();
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ElementExtensionModel> ElementExtensions => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.ElementExtensionModel.SpecializationType)
+            .Select(x => new ElementExtensionModel(x))
+            .ToList<ElementExtensionModel>();
+
+        [IntentManaged(Mode.Fully)]
+        public ITypeReference TypeReference => _element.TypeReference;
     }
 
     public class TypeOrder

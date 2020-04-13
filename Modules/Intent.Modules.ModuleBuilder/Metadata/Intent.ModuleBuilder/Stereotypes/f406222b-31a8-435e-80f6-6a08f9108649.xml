@@ -31,7 +31,7 @@
     <property id="0632053a-6b40-47a0-857f-6840e322344c">
       <name>Display Text Function</name>
       <type>string</type>
-      <controlType>text</controlType>
+      <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
       <defaultValue />

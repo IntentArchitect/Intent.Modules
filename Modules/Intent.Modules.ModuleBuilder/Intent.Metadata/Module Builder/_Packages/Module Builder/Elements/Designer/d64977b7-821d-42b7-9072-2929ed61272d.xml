@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="d64977b7-821d-42b7-9072-2929ed61272d" type="Designer">
   <name>Modeler Builder</name>
-  <display>Modeler Builder : Designer</display>
+  <display>Modeler Builder: void</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
+  <typeReference id="cdc0c482-efc5-44d2-bea9-a341d1d68d52">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>2231f80d-9ec2-475e-bd7a-473f0b419c9e</parentFolderId>
   <literals />

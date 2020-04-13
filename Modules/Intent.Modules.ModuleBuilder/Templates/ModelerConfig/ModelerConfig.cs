@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             var modelerSettings = applicationModelerModeler.Settings;
 
             //modelerSettings.DiagramSettings // TODO
-            modelerSettings.PackageSettings = Model.PackageSettings.ToPersistable();
+            modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable();
             modelerSettings.ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.AssociationSettings = GetAssociationSettings(Model.AssociationTypes);
             modelerSettings.StereotypeSettings = GetStereotypeSettings(Model);

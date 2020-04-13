@@ -169,7 +169,7 @@
         </childElement>
         <childElement id="2aa269c3-e335-47e9-b028-d59014a8a34b" type="Creation Option">
           <name>New Stereotype-Definition</name>
-          <display>New Stereotype-Definition: &lt;not found&gt;</display>
+          <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="5dd9b40f-fe17-465c-b750-c2024f424711">

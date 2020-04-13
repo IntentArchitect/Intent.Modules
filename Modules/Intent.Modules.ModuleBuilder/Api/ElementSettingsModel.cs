@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.ModuleBuilder.Api.Factories;
 using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
@@ -34,13 +36,13 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
 
-        public DesignerModel Designer => new DesignerModel(_element.GetParentPath().Single(x => x.SpecializationType == Api.DesignerModel.SpecializationType));
+        public DesignerModel Designer => DesignerModelFactory.GetDesigner(_element);
 
         public bool IsChild => _element.ParentElement.SpecializationType == SpecializationType;
 
-        public ElementSettingsPersistable ToPersistable()
+        public ElementSettingPersistable ToPersistable()
         {
-            return new ElementSettingsPersistable()
+            return new ElementSettingPersistable()
             {
                 SpecializationType = this.Name,
                 SaveAsOwnFile = this.GetSettings().SaveMode().IsOwnFile(),
@@ -79,6 +81,11 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
         }
+
+        public ElementSettingsModel GetInheritedType => !this.GetTypeReferenceSettings().Mode().IsDisabled() &&
+                                                        this.GetTypeReferenceSettings().Represents().IsInheritance()
+            ? new ElementSettingsModel(this.GetTypeReferenceSettings().TargetTypes().Single())
+            : null;
 
         [IntentManaged(Mode.Fully)]
         public ContextMenuModel MenuOptions => _element.ChildElements

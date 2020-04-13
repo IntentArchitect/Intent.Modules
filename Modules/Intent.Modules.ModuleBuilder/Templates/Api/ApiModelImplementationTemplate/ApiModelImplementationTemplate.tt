@@ -53,7 +53,9 @@ namespace <#= Namespace #>
 
 <#  } #>
 <#  if (Model.MenuOptions != null) {
-        foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => GetCreationOptionTypeInterface(x, false) != null)) { #>
+        foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => GetCreationOptionTypeInterface(x, false) != null)) { 
+            if (ExistsInBase(creationOption))
+                continue;#>
         [IntentManaged(Mode.Fully)]
         public <#= GetCreationOptionTypeInterface(creationOption, creationOption.AllowMultiple) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
             .Where(x => x.SpecializationType == Api.<#= GetCreationOptionTypeClass(creationOption) #>.SpecializationType)

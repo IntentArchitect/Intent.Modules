@@ -16,11 +16,15 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("elementSettings")]
         [XmlArrayItem("elementSetting")]
-        public List<ElementSettingsPersistable> ElementSettings { get; set; }
+        public List<ElementSettingPersistable> ElementSettings { get; set; }
 
         [XmlArray("associationSettings")]
         [XmlArrayItem("associationSetting")]
         public List<AssociationSettingsPersistable> AssociationSettings { get; set; }
+
+        [XmlArray("elementExtensions")]
+        [XmlArrayItem("elementExtension")]
+        public List<ElementSettingExtensionPersistable> ElementExtensions { get; set; }
 
         [XmlElement("stereotypeSettings")]
         public StereotypeSettingsPersistable StereotypeSettings { get; set; }
@@ -60,11 +64,26 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("type")]
         public string[] TargetTypes { get; set; }
 
+        [XmlElement("defaultTypeId")]
+        public string DefaultTypeId { get; set; }
+
+        [XmlElement("allowIsNavigable")]
+        public bool AllowIsNavigable { get; set; } = true;
+
         [XmlElement("allowIsNullable")]
         public bool AllowIsNullable { get; set; } = true;
 
         [XmlElement("allowIsCollection")]
         public bool AllowIsCollection { get; set; } = true;
+
+        [XmlElement("isNavigableDefault")]
+        public bool IsNavigableDefault { get; set; } = true;
+
+        [XmlElement("isNullableDefault")]
+        public bool IsNullableDefault { get; set; }
+
+        [XmlElement("isCollectionDefault")]
+        public bool IsCollectionDefault { get; set; }
     }
 
     public class TypeOrderPersistable
@@ -79,6 +98,12 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         {
             get => _order;
             set => _order = int.TryParse(value, out var o) ? o.ToString() : null;
+        }
+
+        public override string ToString()
+        {
+            return $"{nameof(Type)} = '{Type}', " +
+                   $"{nameof(Order)} = '{Order}'";
         }
     }
 
@@ -202,6 +227,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
     {
         private List<TypeOrderPersistable> _typeOrder;
 
+        [XmlArray("requiredPackages")]
+        [XmlArrayItem("package")]
+        public string[] RequiredPackages { get; set; } = new string[0];
+
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
         public List<ElementCreationOption> CreationOptions { get; set; }
@@ -229,18 +258,6 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-    public class ElementMappingSettings
-    {
-        [XmlElement("defaultModeler")]
-        public string DefaultModeler { get; set; }
-
-        [XmlElement("inheritanceAssociationType")]
-        public string InheritanceAssociationType { get; set; }
-
-        [XmlArray("specializationTypes")]
-        [XmlArrayItem("type")]
-        public string[] SpecializationTypes { get; set; }
-    }
 
     public class ElementCreationOption
     {

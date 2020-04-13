@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="4a6775cf-184a-432d-8d32-ffdda432720b" type="Element Extension">
+  <name>FolderExtension</name>
+  <display>FolderExtension: Folder</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="789767ac-a1f0-4216-b3bc-65c13bda7e7c">
+    <typeId>26f606b9-71e2-4e21-b185-04f90cb7d603</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>d64977b7-821d-42b7-9072-2929ed61272d</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

@@ -39,7 +39,9 @@ namespace <#= Namespace #>
 <#      foreach(var property in stereotypeDefinition.Properties) { 
         switch (property.ControlType) {
             case StereotypePropertyControlType.TextBox:
-            case StereotypePropertyControlType.TextArea:#>
+            case StereotypePropertyControlType.TextArea:
+            case StereotypePropertyControlType.Function:
+            #>
             public string <#= property.Name.ToCSharpIdentifier() #>() {
                 return _stereotype.GetProperty<string>("<#= property.Name #>");
             }

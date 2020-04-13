@@ -1,6 +1,7 @@
 ﻿using System;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.ModuleBuilder.Api.Factories;
 using Intent.Modules.ModuleBuilder.Helpers;
 
 namespace Intent.Modules.ModuleBuilder.Api
@@ -28,6 +29,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string LoadMethod => _element.GetStereotypeProperty<string>("Model Type Settings", "Load Method");
         public string PerModelTemplate => _element.GetStereotypeProperty<string>("Model Type Settings", "Per Model Template");
         public string SingleListTemplate => _element.GetStereotypeProperty<string>("Model Type Settings", "Per List Template");
-        public DesignerModel Designer => new DesignerModel(this._element.ParentElement);
+        public DesignerModel Designer => DesignerModelFactory.GetDesigner(forElement: this._element);
     }
 }

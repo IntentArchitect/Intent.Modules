@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
 {
-    public class ElementSettingsPersistable
+    public class ElementSettingPersistable
     {
         private string _specializationType;
         private List<TypeOrderPersistable> _typeOrder;
@@ -102,7 +102,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("childElementSettings")]
         [XmlArrayItem("childElementSetting")]
-        public ElementSettingsPersistable[] ChildElementSettings { get; set; }
+        public ElementSettingPersistable[] ChildElementSettings { get; set; }
 
         public override string ToString()
         {

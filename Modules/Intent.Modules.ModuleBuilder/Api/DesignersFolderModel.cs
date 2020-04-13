@@ -53,11 +53,5 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        [IntentManaged(Mode.Fully)]
-        public IList<DesignerExtensionModel> DesignerExtensions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DesignerExtensionModel.SpecializationType)
-            .Select(x => new DesignerExtensionModel(x))
-            .ToList<DesignerExtensionModel>();
     }
 }

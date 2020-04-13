@@ -53,7 +53,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new ElementMapping(x))
             .ToList<ElementMapping>();
 
-        public ElementMappingSettings ToPersistable()
+        public ElementMappingSettingPersistable ToPersistable()
         {
             return null;
         }

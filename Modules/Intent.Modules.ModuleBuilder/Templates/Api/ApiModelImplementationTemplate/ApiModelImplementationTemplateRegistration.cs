@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
         public override IEnumerable<ElementSettingsModel> GetModels(IApplication application)
         {
             return _metadataManager.GetElementSettingsModels(application)
-                .Where(x => !x.Designer.GetModelerSettings().ModelerType().IsReference())
+                .Where(x => !x.Designer.IsReference())
                 .ToList();
         }
     }

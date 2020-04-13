@@ -68,5 +68,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
             return option.AllowMultiple ? name.ToPluralName() : name;
         }
+
+        private bool ExistsInBase(CreationOptionModel creationOption)
+        {
+            return Model.GetInheritedType?.MenuOptions.CreationOptions.Any(x => x.Type.Id == creationOption.Type.Id) ??
+                   false;
+        }
     }
 }
