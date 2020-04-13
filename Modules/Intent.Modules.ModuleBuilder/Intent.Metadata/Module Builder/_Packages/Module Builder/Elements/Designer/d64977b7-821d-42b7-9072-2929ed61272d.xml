@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="d64977b7-821d-42b7-9072-2929ed61272d" type="Designer">
   <name>Modeler Builder</name>
-  <display>Modeler Builder: void</display>
+  <display>Modeler Builder: Module Builder</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <typeReference id="cdc0c482-efc5-44d2-bea9-a341d1d68d52">
+    <typeId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

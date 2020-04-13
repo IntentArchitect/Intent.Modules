@@ -6,22 +6,20 @@ using System.Text;
 using System.Xml.Serialization;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
-using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModelerBuilder;
 using Intent.Modules.ModelerBuilder.External;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Templates;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
-namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
+namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 {
-    public class ModelerConfig : IntentProjectItemTemplateBase<DesignerModel>
+    public class DesignerConfigTemplate : IntentProjectItemTemplateBase<DesignerModel>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ModelerConfig";
 
-        public ModelerConfig(IProject project, DesignerModel model) : base(TemplateId, project, model)
+        public DesignerConfigTemplate(IProject project, DesignerModel model) : base(TemplateId, project, model)
         {
         }
 
@@ -38,6 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
             modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable();
             modelerSettings.ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.AssociationSettings = GetAssociationSettings(Model.AssociationTypes);
+            modelerSettings.ElementExtensions = Model.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.StereotypeSettings = GetStereotypeSettings(Model);
 
             return Serialize(applicationModelerModeler);
