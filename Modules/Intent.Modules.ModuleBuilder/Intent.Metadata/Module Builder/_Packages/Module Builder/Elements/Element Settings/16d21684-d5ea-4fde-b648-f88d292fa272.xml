@@ -48,7 +48,7 @@
   <childElements>
     <childElement id="7d4d5bf3-fcdc-4b0c-9604-6e5776382b0a" type="Context Menu">
       <name>Creation Options</name>
-      <display>Creation Options</display>
+      <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>

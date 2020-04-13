@@ -32,6 +32,11 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetDesignerModels(application);
         }
 
+        public static IList<DesignerExtensionModel> GetDesignerExtensionModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetDesignerExtensionModels(application);
+        }
+
         public static IList<DesignersFolderModel> GetDesignersFolderModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetDesignersFolderModels(application);
@@ -40,6 +45,11 @@ namespace Intent.Modules.ModuleBuilder
         public static IList<DiagramSettingsModel> GetDiagramSettingsModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetDiagramSettingsModels(application);
+        }
+
+        public static IList<ElementExtensionModel> GetElementExtensionModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetElementExtensionModels(application);
         }
 
         public static IList<ElementSettingsModel> GetElementSettingsModels(this IMetadataManager metadataManager, IApplication application)
@@ -60,11 +70,6 @@ namespace Intent.Modules.ModuleBuilder
         public static IList<TemplateRegistrationModel> GetTemplateRegistrationModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetTemplateRegistrationModels(application);
-        }
-
-        public static IList<TypeDefinitionModel> GetTypeDefinitionModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetTypeDefinitionModels(application);
         }
 
     }

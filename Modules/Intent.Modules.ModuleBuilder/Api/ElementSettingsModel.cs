@@ -62,7 +62,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                     AllowIsCollection = this.GetSettings().AllowCollection(),
                 } : null,
                 DiagramSettings = null, // TODO JL / GCB
-                ChildElementSettings = this.ChildElementSettings.Select(x => x.ToPersistable()).ToArray(),
+                ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),
                 MappingSettings = this.MappingSettings?.ToPersistable(),
                 CreationOptions = this.MenuOptions?.CreationOptions.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = this.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList()
@@ -87,7 +87,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
-        public IList<ElementSettingsModel> ChildElementSettings => _element.ChildElements
+        public IList<ElementSettingsModel> ElementSettings => _element.ChildElements
             .Where(x => x.SpecializationType == Api.ElementSettingsModel.SpecializationType)
             .Select(x => new ElementSettingsModel(x))
             .ToList<ElementSettingsModel>();

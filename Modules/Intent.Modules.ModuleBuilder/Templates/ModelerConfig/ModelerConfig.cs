@@ -21,8 +21,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
     {
         public const string TemplateId = "Intent.ModuleBuilder.ModelerConfig";
 
-        private static readonly IconModelPersistable _defaultIconModel = new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" };
-
         public ModelerConfig(IProject project, DesignerModel model) : base(TemplateId, project, model)
         {
         }
@@ -36,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
 
             var modelerSettings = applicationModelerModeler.Settings;
 
-            //modelerSettings.DiagramSettings // TODO JL
+            //modelerSettings.DiagramSettings // TODO
             modelerSettings.PackageSettings = Model.PackageSettings.ToPersistable();
             modelerSettings.ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.AssociationSettings = GetAssociationSettings(Model.AssociationTypes);
@@ -53,7 +51,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModelerConfig
         private StereotypeSettingsPersistable GetStereotypeSettings(DesignerModel model)
         {
             var targetTypes = model.ElementTypes.Select(x => x.Name)
-                .Concat(model.ElementTypes.SelectMany(x => x.ChildElementSettings).Select(x => x.Name))
+                .Concat(model.ElementTypes.SelectMany(x => x.ElementSettings).Select(x => x.Name))
                 .Concat(model.AssociationTypes.Select(x => x.Name))
                 .OrderBy(x => x)
                 .ToList();

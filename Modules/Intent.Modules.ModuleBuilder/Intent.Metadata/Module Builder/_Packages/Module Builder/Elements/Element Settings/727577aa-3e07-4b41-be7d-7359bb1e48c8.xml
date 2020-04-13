@@ -48,7 +48,7 @@
   <childElements>
     <childElement id="090a3b87-d79d-411b-bd93-57cd97e2ff17" type="Context Menu">
       <name>Creation Options</name>
-      <display>Creation Options</display>
+      <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -155,8 +155,8 @@
           <childElements />
         </childElement>
         <childElement id="4d0543ff-9bad-4077-bef8-fca4e86ae0a2" type="Creation Option">
-          <name>Add Child Element Settings</name>
-          <display>Add Child Element Settings: Element Settings</display>
+          <name>Add Element Settings</name>
+          <display>Add Element Settings: Element Settings</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="175cba34-20a1-430a-8fe8-539b45827cd8">

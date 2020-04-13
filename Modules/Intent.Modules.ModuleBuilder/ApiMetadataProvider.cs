@@ -55,6 +55,15 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
+        public IList<DesignerExtensionModel> GetDesignerExtensionModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == DesignerExtensionModel.SpecializationType)
+                .Select(x => new DesignerExtensionModel(x))
+                .ToList<DesignerExtensionModel>();
+            return models;
+        }
+
         public IList<DesignersFolderModel> GetDesignersFolderModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
@@ -70,6 +79,15 @@ namespace Intent.Modules.ModuleBuilder
                 .Where(x => x.SpecializationType == DiagramSettingsModel.SpecializationType)
                 .Select(x => new DiagramSettingsModel(x))
                 .ToList<DiagramSettingsModel>();
+            return models;
+        }
+
+        public IList<ElementExtensionModel> GetElementExtensionModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == ElementExtensionModel.SpecializationType)
+                .Select(x => new ElementExtensionModel(x))
+                .ToList<ElementExtensionModel>();
             return models;
         }
 
@@ -106,15 +124,6 @@ namespace Intent.Modules.ModuleBuilder
                 .Where(x => x.SpecializationType == TemplateRegistrationModel.SpecializationType)
                 .Select(x => new TemplateRegistrationModel(x))
                 .ToList<TemplateRegistrationModel>();
-            return models;
-        }
-
-        public IList<TypeDefinitionModel> GetTypeDefinitionModels(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
-                .Select(x => new TypeDefinitionModel(x))
-                .ToList<TypeDefinitionModel>();
             return models;
         }
 

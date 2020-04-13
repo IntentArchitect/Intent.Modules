@@ -55,7 +55,7 @@
   <childElements>
     <childElement id="6b0abbe4-849f-48b0-8285-952512048358" type="Context Menu">
       <name>Creation Options</name>
-      <display>Creation Options</display>
+      <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -104,38 +104,6 @@
           <genericTypes />
           <typeReference id="2ae697b8-16d9-4921-9f39-b0f3b9afb424">
             <typeId>f0f46278-29ea-42bd-9206-0e7034f623bc</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>6b0abbe4-849f-48b0-8285-952512048358</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
-              <comment>Overrides the default creation option settings.</comment>
-              <addedByDefault>false</addedByDefault>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-        <childElement id="b35841cf-62f3-4559-a072-353b8f33f393" type="Creation Option">
-          <name>New Type</name>
-          <display>New Type: Type-Definition</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="bc3559df-6b9c-4144-ba61-947b009ea94f">
-            <typeId>3c00249f-f1d9-47a7-b7fc-028e9aaf9bce</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

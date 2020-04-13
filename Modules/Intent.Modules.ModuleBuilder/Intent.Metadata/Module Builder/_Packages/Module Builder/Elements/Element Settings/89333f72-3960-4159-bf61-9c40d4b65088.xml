@@ -49,7 +49,7 @@
   <childElements>
     <childElement id="bcb1c656-0ea3-4fbe-9646-2735825f5453" type="Context Menu">
       <name>Creation Options</name>
-      <display>Creation Options</display>
+      <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>

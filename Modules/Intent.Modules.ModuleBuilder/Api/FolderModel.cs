@@ -52,12 +52,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new DecoratorModel(x))
             .ToList<DecoratorModel>();
 
-        [IntentManaged(Mode.Fully)]
-        public IList<TypeDefinitionModel> Types => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.TypeDefinitionModel.SpecializationType)
-            .Select(x => new TypeDefinitionModel(x))
-            .ToList<TypeDefinitionModel>();
-
         public IElement UnderlyingElement => _element;
 
         protected bool Equals(FolderModel other)

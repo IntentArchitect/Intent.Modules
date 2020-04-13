@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="0f427fd8-8f26-42db-aaaf-169200b3d3a9" type="Package Settings">
-  <name>Package Settings</name>
+<class id="696e26c8-1840-4564-8eee-fef4c77d1439" type="Designers Folder">
+  <name>modeler</name>
+  <display>designers</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
+  <parentFolderId>6572b98d-5e13-4d4b-9ffc-820057da974e</parentFolderId>
   <literals />
   <attributes />
   <operations />

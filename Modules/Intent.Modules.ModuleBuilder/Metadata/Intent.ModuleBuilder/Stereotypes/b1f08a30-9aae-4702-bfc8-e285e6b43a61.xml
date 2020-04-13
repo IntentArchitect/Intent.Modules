@@ -21,7 +21,7 @@
       <type>internal-lookup</type>
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
+      <placeholder>(optional)</placeholder>
       <defaultValue />
       <valueOptions />
       <lookupTypes>
