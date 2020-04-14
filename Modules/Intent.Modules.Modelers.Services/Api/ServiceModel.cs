@@ -12,7 +12,7 @@ namespace Intent.Modelers.Services.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class ServiceModel : IHasStereotypes, IMetadataModel, IHasFolder
     {
-        private readonly IElement _element;
+        protected readonly IElement _element;
         public ServiceModel(IElement element)
         {
             _element = element;

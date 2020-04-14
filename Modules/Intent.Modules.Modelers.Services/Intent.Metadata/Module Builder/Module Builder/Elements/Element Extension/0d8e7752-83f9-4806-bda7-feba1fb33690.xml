@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0d8e7752-83f9-4806-bda7-feba1fb33690" type="Element Extension">
+  <name>Folder</name>
+  <display>Folder: Folder</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="1265d65f-fdb2-403f-9dd2-14e030ff847d">
+    <typeId>767e34b3-14c3-4769-a135-ab361564ba10</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>924cb0a4-390e-40b9-b395-3cb1e71ff414</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="a1b523eb-e9fd-4d3e-bb6a-83d9c6473f43" type="Context Menu">
+      <name>Creation Options</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>0d8e7752-83f9-4806-bda7-feba1fb33690</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="6ad0643f-d16d-49f0-a860-742e8c5d7427" type="Creation Option">
+          <name>New Controller</name>
+          <display>New Controller: Controller</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="4149baf1-9914-491f-b6e6-aeceb758edd4">
+            <typeId>3496fc59-0a89-45fd-9fc1-14e23784af17</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>a1b523eb-e9fd-4d3e-bb6a-83d9c6473f43</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+              <comment>Overrides the default creation option settings.</comment>
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

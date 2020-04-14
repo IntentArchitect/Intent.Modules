@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="54c2b921-9d91-4c45-ad91-70bc71a284a2" type="Element Settings">
-  <name>Operation</name>
-  <display>Operation</display>
+<class id="4215f417-25d2-4509-9309-5076a1452eaa" type="Element Settings">
+  <name>Enum-Literal</name>
+  <display>Enum-Literal</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>0323cf02-d729-4954-b52c-b167cdd6f53b</parentFolderId>
+  <parentFolderId>85fba0e9-9161-4c85-a603-a229ef312beb</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -21,22 +21,9 @@
       <comment>Sets the default creation options for this element when used.</comment>
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" display="Shortcut" isActive="true" />
-        <property name="b199adea-c16b-411d-a2db-c881345a421b" display="Default Name" isActive="true" />
+        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" display="Shortcut" value="ctrl + shift + l" isActive="true" />
+        <property name="b199adea-c16b-411d-a2db-c881345a421b" display="Default Name" value="Literal" isActive="true" />
         <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-      </properties>
-    </stereotype>
-    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
-      <addedByDefault>true</addedByDefault>
-      <properties>
-        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Own File" isActive="true" />
-        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
-        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
-        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
-        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
-        <property name="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd" display="Allow Mapping" value="false" isActive="true" />
-        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
-        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
@@ -48,6 +35,19 @@
         <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
         <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
         <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd" display="Allow Mapping" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

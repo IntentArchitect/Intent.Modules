@@ -13,7 +13,7 @@ namespace Intent.Modelers.Services.Api
     public class EnumLiteralModel
         : IHasStereotypes, IMetadataModel
     {
-        private readonly IElement _element;
+        protected readonly IElement _element;
         public const string SpecializationType = "Enum-Literal";
 
         public EnumLiteralModel(IElement element)

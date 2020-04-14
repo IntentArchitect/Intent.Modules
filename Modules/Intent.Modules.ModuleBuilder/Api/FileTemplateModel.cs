@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public class FileTemplateModel : TemplateRegistration, IHasStereotypes, IMetadataModel
+    public class FileTemplateModel : TemplateRegistrationModel, IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "File Template";
         private readonly IElement _element;

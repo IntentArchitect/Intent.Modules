@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="9769c5f8-923b-48f4-b551-3dbb58fb6c71" type="Designer">
   <name>References</name>
-  <display>References : Designer</display>
+  <display>References: void</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
+  <typeReference id="a24e127b-429a-42b0-8f4b-be3b51cd350b">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>01b3428c-7433-4542-a856-0479954a6a4c</parentFolderId>
   <literals />

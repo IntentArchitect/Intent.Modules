@@ -54,7 +54,7 @@ namespace Intent.Modelers.Services.Api
         {
             return (Id != null ? Id.GetHashCode() : 0);
         }
-        private readonly IElement _element;
+        protected readonly IElement _element;
         public const string SpecializationType = "DTO";
 
         [IntentManaged(Mode.Fully)]

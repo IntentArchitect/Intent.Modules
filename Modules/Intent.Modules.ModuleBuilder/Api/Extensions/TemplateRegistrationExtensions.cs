@@ -30,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return element.TypeReference?.Element?.Id == CustomId;
         }
 
-        public static TemplateSettings GetTemplateSettings(this TemplateRegistration element)
+        public static TemplateSettings GetTemplateSettings(this TemplateRegistrationModel element)
         {
             var stereotype = element.GetStereotype("Template Settings");
             return stereotype != null ? new TemplateSettings(stereotype) : null;

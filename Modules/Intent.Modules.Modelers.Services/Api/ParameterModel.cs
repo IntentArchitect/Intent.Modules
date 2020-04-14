@@ -13,7 +13,7 @@ namespace Intent.Modelers.Services.Api
     public class ParameterModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Parameter";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public ParameterModel(IElement element)
         {

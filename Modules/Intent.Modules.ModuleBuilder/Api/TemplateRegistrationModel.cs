@@ -9,27 +9,59 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class TemplateRegistrationModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class TemplateRegistrationModel : IHasFolder, IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Template Registration";
         protected readonly IElement _element;
 
-        public TemplateRegistrationModel(IElement element)
+        public TemplateRegistrationModel(IElement element, string requiredType = SpecializationType)
         {
-            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (element.TypeReference == null)
             {
-                throw new Exception($"Cannot create a 'TemplateRegistrationModel' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+                throw new Exception("Cannot create 'TemplateRegistration'. Element must have a type reference.");
+            }
+            if (!SpecializationType.Equals(element.TypeReference?.Element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new Exception($"Cannot create a 'TemplateRegistration' from element that has type-reference with specialization type '{element.TypeReference?.Element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = element.ParentElement != null ? new FolderModel(element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
 
-        public string Name => _element.Name;
-
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public string Name => _element.Name;
+
+
+        public DesignerModel GetModeler()
+        {
+            return GetModelType()?.Designer;
+        }
+
+        public ModelerModelType GetModelType()
+        {
+            return this.GetTemplateSettings()?.ModelType() != null ? new ModelerModelType(this.GetTemplateSettings().ModelType()) : null;
+        }
+
+        public FolderModel Folder { get; }
+
+        public bool IsSingleFileTemplateRegistration()
+        {
+            return _element.ReferencesSingleFile();
+        }
+
+        public bool IsFilePerModelTemplateRegistration()
+        {
+            return _element.ReferencesFilePerModel();
+        }
+
+        public bool IsCustomTemplateRegistration()
+        {
+            return _element.ReferencesCustom();
+        }
 
         protected bool Equals(TemplateRegistrationModel other)
         {

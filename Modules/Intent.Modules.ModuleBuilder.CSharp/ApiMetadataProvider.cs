@@ -28,14 +28,5 @@ namespace Intent.Modules.ModuleBuilder.CSharp
             return models;
         }
 
-        public IList<FolderModel> GetFolderModels(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == FolderModel.SpecializationType)
-                .Select(x => new FolderModel(x))
-                .ToList<FolderModel>();
-            return models;
-        }
-
     }
 }

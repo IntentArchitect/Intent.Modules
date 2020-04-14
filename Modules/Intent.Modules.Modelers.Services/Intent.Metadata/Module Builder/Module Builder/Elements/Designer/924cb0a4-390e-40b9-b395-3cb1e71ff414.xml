@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="924cb0a4-390e-40b9-b395-3cb1e71ff414" type="Designer">
   <name>Controllers</name>
-  <display>Controllers : Designer</display>
+  <display>Controllers: void</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
+  <typeReference id="3558bc96-95e0-4de4-81d5-3bcc30ad7739">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>01b3428c-7433-4542-a856-0479954a6a4c</parentFolderId>
   <literals />
@@ -33,7 +40,7 @@
       <childElements>
         <childElement id="6b663693-99b5-4aba-935d-e6374b323d8d" type="Context Menu">
           <name>Creation Options</name>
-          <display>Creation Options</display>
+          <display>[context menu]</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>

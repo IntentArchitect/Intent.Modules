@@ -41,9 +41,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             );
         }
 
-        public string BaseType => !Model.GetTypeReferenceSettings().Mode().IsDisabled() && Model.GetTypeReferenceSettings().Represents().IsInheritance()
-            ? GetTemplateClassName(TemplateId, Model.GetTypeReferenceSettings().TargetTypes().Single().Id, throwIfNotFound: false)
-                ?? Model.GetTypeReferenceSettings().TargetTypes().Single().Name.ToCSharpIdentifier()
+        public string BaseType => Model.GetInheritedType() != null
+            ? GetTemplateClassName(TemplateId, Model.GetInheritedType().Id, throwIfNotFound: false)
+                ?? $"{Model.GetInheritedType().Name.ToCSharpIdentifier()}Model"
             : null;
 
 
@@ -71,7 +71,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
 
         private bool ExistsInBase(CreationOptionModel creationOption)
         {
-            return Model.GetInheritedType?.MenuOptions.CreationOptions.Any(x => x.Type.Id == creationOption.Type.Id) ??
+            return Model.GetInheritedType()?.MenuOptions.CreationOptions.Any(x => x.Type.Id == creationOption.Type.Id) ??
                    false;
         }
     }

@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="55e213e3-1e43-4bb5-abe6-6ff77af23f39" type="Designer">
   <name>Services</name>
-  <display>Services : Designer</display>
+  <display>Services: void</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
+  <typeReference id="4039ce03-691c-427d-9f34-e629b939507d">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>01b3428c-7433-4542-a856-0479954a6a4c</parentFolderId>
   <literals />
@@ -33,7 +40,7 @@
       <childElements>
         <childElement id="9e87ca6d-91d9-466a-8ca6-69d72814e49f" type="Context Menu">
           <name>Creation Options</name>
-          <display>Creation Options</display>
+          <display>[context menu]</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>

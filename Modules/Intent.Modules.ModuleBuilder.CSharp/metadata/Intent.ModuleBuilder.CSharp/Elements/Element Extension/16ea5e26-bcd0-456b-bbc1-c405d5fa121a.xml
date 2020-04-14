@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="16ea5e26-bcd0-456b-bbc1-c405d5fa121a" type="Element Extension">
+  <name>Folder</name>
+  <display>Folder: Folder</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="4f06ca96-5aed-4560-aa83-5736779dba2e">
+    <typeId>26f606b9-71e2-4e21-b185-04f90cb7d603</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>39915f5a-7cc2-413c-98c5-f1e6edb999d1</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements>
+    <childElement id="a6d59caa-bd86-4fe9-8d9b-cae64e63a061" type="Context Menu">
+      <name>Creation Options</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>16ea5e26-bcd0-456b-bbc1-c405d5fa121a</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="760abdcd-fb2f-4adc-bf4a-d0d1d8dd24c5" type="Creation Option">
+          <name>New C# Template</name>
+          <display>New C# Template: C# Template</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="4d67fb7d-80c2-4436-a69f-d7b8c4835081">
+            <typeId>f6456232-0f1b-4235-b5f8-b4cce548ca59</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>a6d59caa-bd86-4fe9-8d9b-cae64e63a061</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

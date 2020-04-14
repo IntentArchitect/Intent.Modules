@@ -13,7 +13,7 @@ namespace Intent.Modelers.Services.Api
     public class EnumModel
         : IHasStereotypes, IMetadataModel
     {
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public EnumModel(IElement element)
         {

@@ -117,12 +117,12 @@ namespace Intent.Modules.ModuleBuilder.Api
         //    }
         //}
 
-        public static string GetImplementerDecoratorContractType(this TemplateRegistration model)
+        public static string GetImplementerDecoratorContractType(this TemplateRegistrationModel model)
         {
             return model.GetStereotypeProperty<string>("Implements Decorator Contract", "Type Fullname");
         }
 
-        public static string GetExposedDecoratorContractType(this TemplateRegistration model)
+        public static string GetExposedDecoratorContractType(this TemplateRegistrationModel model)
         {
             return model.GetStereotypeProperty<string>("Exposes Decorator Contract", "Type Fullname");
         }

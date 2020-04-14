@@ -13,7 +13,7 @@ namespace Intent.Modelers.Services.Api
     public class TypeDefinitionModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Type-Definition";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public TypeDefinitionModel(IElement element)
         {

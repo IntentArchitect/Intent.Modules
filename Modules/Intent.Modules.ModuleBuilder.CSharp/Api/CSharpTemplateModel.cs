@@ -11,19 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.CSharp.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class CSharpTemplateModel : TemplateRegistration, IHasStereotypes, IMetadataModel
+    public class CSharpTemplateModel : TemplateRegistrationModel, IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "C# Template";
-        private readonly IElement _element;
+        public new const string SpecializationType = "C# Template";
 
-        public CSharpTemplateModel(IElement element) : base(element)
+        public CSharpTemplateModel(IElement element) : base(element, SpecializationType)
         {
-            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
-            {
-                throw new Exception($"Cannot create a 'CSharpTemplate' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
-            }
-            _element = element;
         }
+
 
         protected bool Equals(CSharpTemplateModel other)
         {

@@ -17,10 +17,5 @@ namespace Intent.Modules.ModuleBuilder.CSharp
             return new ApiMetadataProvider(metadataManager).GetCSharpTemplateModels(application);
         }
 
-        public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
-        }
-
     }
 }

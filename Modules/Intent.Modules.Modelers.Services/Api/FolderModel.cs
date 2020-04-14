@@ -51,7 +51,7 @@ namespace Intent.Modelers.Services.Api
         {
             return (Id != null ? Id.GetHashCode() : 0);
         }
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
         public IList<DTOModel> DTOs => _element.ChildElements

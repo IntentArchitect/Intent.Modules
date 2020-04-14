@@ -82,10 +82,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
         }
 
-        public ElementSettingsModel GetInheritedType => !this.GetTypeReferenceSettings().Mode().IsDisabled() &&
-                                                        this.GetTypeReferenceSettings().Represents().IsInheritance()
-            ? new ElementSettingsModel(this.GetTypeReferenceSettings().TargetTypes().Single())
-            : null;
+        public ElementSettingsModel GetInheritedType()
+        {
+            return !this.GetTypeReferenceSettings().Mode().IsDisabled() &&
+                   this.GetTypeReferenceSettings().Represents().IsInheritance()
+                ? new ElementSettingsModel(this.GetTypeReferenceSettings().TargetTypes().Single())
+                : null;
+        }
 
         [IntentManaged(Mode.Fully)]
         public ContextMenuModel MenuOptions => _element.ChildElements

@@ -12,11 +12,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Api\FolderModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\ApiMetadataProvider.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
     </FileLog>

@@ -28,24 +28,6 @@ namespace Intent.Modules.Modelers.Services
             return models;
         }
 
-        public IList<ControllerOperationModel> GetControllerOperationModels(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == ControllerOperationModel.SpecializationType)
-                .Select(x => new ControllerOperationModel(x))
-                .ToList<ControllerOperationModel>();
-            return models;
-        }
-
-        public IList<ControllerParameterModel> GetControllerParameterModels(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == ControllerParameterModel.SpecializationType)
-                .Select(x => new ControllerParameterModel(x))
-                .ToList<ControllerParameterModel>();
-            return models;
-        }
-
         public IList<DTOModel> GetDTOModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)

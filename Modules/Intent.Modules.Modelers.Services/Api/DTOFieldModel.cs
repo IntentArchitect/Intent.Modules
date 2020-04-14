@@ -13,7 +13,7 @@ namespace Intent.Modelers.Services.Api
     public class DTOFieldModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "DTO-Field";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public DTOFieldModel(IElement element)
         {

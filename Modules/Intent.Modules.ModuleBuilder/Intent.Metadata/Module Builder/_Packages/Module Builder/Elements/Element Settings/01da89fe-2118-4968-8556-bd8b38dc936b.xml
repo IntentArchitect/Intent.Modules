@@ -36,7 +36,7 @@
       <addedByDefault>true</addedByDefault>
       <properties>
         <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" display="Type" value="CharacterBox" isActive="true" />
-        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" display="Source" value="O|#095c00" isActive="true" />
+        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" display="Source" value="O|#095cff" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">

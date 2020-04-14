@@ -13,7 +13,7 @@ namespace Intent.Modelers.Services.Api
     public class ControllerModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Controller";
-        private readonly IElement _element;
+        protected readonly IElement _element;
 
         public ControllerModel(IElement element)
         {

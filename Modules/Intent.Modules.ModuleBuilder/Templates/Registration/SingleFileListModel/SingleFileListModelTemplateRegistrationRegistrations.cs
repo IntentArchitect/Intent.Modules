@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListModel
 {
-    public class SingleFileListModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<TemplateRegistration>
+    public class SingleFileListModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<TemplateRegistrationModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -21,16 +21,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
 
         public override string TemplateId => SingleFileListModelTemplateRegistrationTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, TemplateRegistration model)
+        public override ITemplate CreateTemplateInstance(IProject project, TemplateRegistrationModel model)
         {
             return new SingleFileListModelTemplateRegistrationTemplate(project, model);
         }
 
-        public override IEnumerable<TemplateRegistration> GetModels(IApplication application)
+        public override IEnumerable<TemplateRegistrationModel> GetModels(IApplication application)
         {
             return _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
                 .Where(x => x.ReferencesSingleFile())
-                .Select(x => new TemplateRegistration(x))
+                .Select(x => new TemplateRegistrationModel(x))
                 .Where(x => x.GetTemplateSettings().ModelType() != null)
                 .ToList();
         }

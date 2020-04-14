@@ -4,11 +4,175 @@
   <display>EmptyDTO</display>
   <isAbstract>true</isAbstract>
   <genericTypes />
-  <isMapped>false</isMapped>
+  <isMapped>true</isMapped>
+  <mappedClass>
+    <applicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</applicationId>
+    <metadataId>Domain</metadataId>
+    <mappedPath>
+      <target id="9a717608-5fb6-4d68-bd21-2dd4dc7613b4" name="NewClass" />
+    </mappedPath>
+  </mappedClass>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
   <literals />
   <attributes />
   <operations />
   <stereotypes />
-  <childElements />
+  <childElements>
+    <childElement id="0f7f3fd3-0012-45e2-92a4-07b38472d5a6" type="DTO-Field">
+      <name>isDisputeAllowed</name>
+      <display>isDisputeAllowed: bool</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="53212dec-785b-4e5b-9d5a-26485ba34dce">
+        <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>true</isMapped>
+      <mappedClass>
+        <mappedPath>
+          <target id="6bb818e0-16e2-4ddf-a817-25b43ee61910" name="isDisputeAllowed" />
+        </mappedPath>
+      </mappedClass>
+      <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="329074b7-fde5-46e8-9b95-e188d2a49a57" type="DTO-Field">
+      <name>clientResponsePeriod</name>
+      <display>clientResponsePeriod: int?</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="4c82635a-b032-4508-be42-56468b827a55">
+        <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>true</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>true</isMapped>
+      <mappedClass>
+        <mappedPath>
+          <target id="02b85a61-d9b8-41b7-9509-f909aa9011f9" name="clientResponsePeriod" />
+        </mappedPath>
+      </mappedClass>
+      <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="e67a38ce-dc95-4d83-82da-9c1b5a197dea" type="DTO-Field">
+      <name>subjectResponsePeriod</name>
+      <display>subjectResponsePeriod: int?</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="5c978b33-5060-4c51-962a-8c94d156b717">
+        <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>true</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>true</isMapped>
+      <mappedClass>
+        <mappedPath>
+          <target id="3cc273c4-b625-4b77-8f4e-492e0180baaa" name="subjectResponsePeriod" />
+        </mappedPath>
+      </mappedClass>
+      <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="ee6b22c4-fe47-4480-91a1-283fa6b48276" type="DTO-Field">
+      <name>monitoringPeriod</name>
+      <display>monitoringPeriod: int?</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="8b62a077-caec-4f69-aec2-8d4a96b84362">
+        <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>true</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>true</isMapped>
+      <mappedClass>
+        <mappedPath>
+          <target id="077d1cbf-7192-4ece-8fc4-8b44106ce6a2" name="monitoringPeriod" />
+        </mappedPath>
+      </mappedClass>
+      <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="f26cf388-512c-4935-a7e6-f6ee8f900b68" type="DTO-Field">
+      <name>GetSomething</name>
+      <display>GetSomething: string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="8907092e-3424-4fd1-a7e7-5884b72ab98c">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>true</isMapped>
+      <mappedClass>
+        <mappedPath>
+          <target id="a5005ab4-c80b-4954-ba39-a4beb3471fb7" name="GetSomething" />
+        </mappedPath>
+      </mappedClass>
+      <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="5e59b182-6e5c-48b2-9d9d-2fe5e789c54e" type="DTO-Field">
+      <name>field</name>
+      <display>field: string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="5283de5e-092d-4b39-a26f-817630c7ea97">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>true</isMapped>
+      <mappedClass>
+        <mappedPath>
+          <target id="30c897e0-c1d0-43be-824c-8a86b638271f" name="OldClass" />
+        </mappedPath>
+      </mappedClass>
+      <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

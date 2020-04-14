@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
 {
-    public class FilePerModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<TemplateRegistration>
+    public class FilePerModelTemplateRegistrationRegistrations : ModelTemplateRegistrationBase<TemplateRegistrationModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -21,16 +21,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
 
         public override string TemplateId => FilePerModelTemplateRegistrationTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, TemplateRegistration model)
+        public override ITemplate CreateTemplateInstance(IProject project, TemplateRegistrationModel model)
         {
             return new FilePerModelTemplateRegistrationTemplate(project, model);
         }
 
-        public override IEnumerable<TemplateRegistration> GetModels(IApplication application)
+        public override IEnumerable<TemplateRegistrationModel> GetModels(IApplication application)
         {
             return _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
                 .Where(x => x.ReferencesFilePerModel())
-                .Select(x => new TemplateRegistration(x))
+                .Select(x => new TemplateRegistrationModel(x))
                 .ToList();
         }
     }

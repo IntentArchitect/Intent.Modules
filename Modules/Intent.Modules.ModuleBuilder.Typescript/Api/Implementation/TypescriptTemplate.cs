@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Typescript.Api
 {
-    internal class TypescriptTemplate : TemplateRegistration, ITypescriptTemplate
+    internal class TypescriptTemplate : TemplateRegistrationModel, ITypescriptTemplate
     {
         public const string SpecializationType = "Typescript Template";
         private readonly IElement _element;

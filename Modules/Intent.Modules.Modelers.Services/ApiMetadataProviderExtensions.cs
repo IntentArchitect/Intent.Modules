@@ -18,16 +18,6 @@ namespace Intent.Modules.Modelers.Services
             return new ApiMetadataProvider(metadataManager).GetControllerModels(application);
         }
 
-        public static IList<ControllerOperationModel> GetControllerOperationModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetControllerOperationModels(application);
-        }
-
-        public static IList<ControllerParameterModel> GetControllerParameterModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetControllerParameterModels(application);
-        }
-
         public static IList<DTOModel> GetDTOModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetDTOModels(application);

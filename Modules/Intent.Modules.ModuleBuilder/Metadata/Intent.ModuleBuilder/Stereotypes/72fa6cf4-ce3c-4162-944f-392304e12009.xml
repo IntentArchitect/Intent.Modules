@@ -13,7 +13,7 @@
   <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
-  <order>1</order>
+  <order>2</order>
   <properties>
     <property id="d984e71b-0e2f-4155-a190-83d986e1c29b">
       <name>Shortcut</name>
