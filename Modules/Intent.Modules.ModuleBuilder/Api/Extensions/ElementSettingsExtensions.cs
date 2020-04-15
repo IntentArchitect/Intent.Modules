@@ -16,18 +16,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new DefaultCreationOptions(stereotype) : null;
         }
 
-        public static IconFull GetIconFull(this ElementSettingsModel model)
-        {
-            var stereotype = model.GetStereotype("Icon (Full)");
-            return stereotype != null ? new IconFull(stereotype) : null;
-        }
-
-        public static IconFullExpanded GetIconFullExpanded(this ElementSettingsModel model)
-        {
-            var stereotype = model.GetStereotype("Icon (Full, Expanded)");
-            return stereotype != null ? new IconFullExpanded(stereotype) : null;
-        }
-
         public static Settings GetSettings(this ElementSettingsModel model)
         {
             var stereotype = model.GetStereotype("Settings");
@@ -67,110 +55,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         }
 
-        public class IconFull
-        {
-            private IStereotype _stereotype;
-
-            public IconFull(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public TypeOptions Type()
-            {
-                return new TypeOptions(_stereotype.GetProperty<string>("Type"));
-            }
-
-            public string Source()
-            {
-                return _stereotype.GetProperty<string>("Source");
-            }
-
-            public class TypeOptions
-            {
-                public readonly string Value;
-
-                public TypeOptions(string value)
-                {
-                    Value = value;
-                }
-
-                public bool IsUrlImagePath()
-                {
-                    return Value == "UrlImagePath";
-                }
-                public bool IsRelativeImagePath()
-                {
-                    return Value == "RelativeImagePath";
-                }
-                public bool IsFontAwesome()
-                {
-                    return Value == "FontAwesome";
-                }
-                public bool IsCharacterBox()
-                {
-                    return Value == "CharacterBox";
-                }
-                public bool IsInternal()
-                {
-                    return Value == "Internal";
-                }
-            }
-
-        }
-
-        public class IconFullExpanded
-        {
-            private IStereotype _stereotype;
-
-            public IconFullExpanded(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public TypeOptions Type()
-            {
-                return new TypeOptions(_stereotype.GetProperty<string>("Type"));
-            }
-
-            public string Source()
-            {
-                return _stereotype.GetProperty<string>("Source");
-            }
-
-            public class TypeOptions
-            {
-                public readonly string Value;
-
-                public TypeOptions(string value)
-                {
-                    Value = value;
-                }
-
-                public bool IsUrlImagePath()
-                {
-                    return Value == "UrlImagePath";
-                }
-                public bool IsRelativeImagePath()
-                {
-                    return Value == "RelativeImagePath";
-                }
-                public bool IsFontAwesome()
-                {
-                    return Value == "FontAwesome";
-                }
-                public bool IsCharacterBox()
-                {
-                    return Value == "CharacterBox";
-                }
-                public bool IsInternal()
-                {
-                    return Value == "Internal";
-                }
-            }
-
-        }
-
         public class Settings
         {
             private IStereotype _stereotype;
@@ -183,6 +67,16 @@ namespace Intent.Modules.ModuleBuilder.Api
             public SaveModeOptions SaveMode()
             {
                 return new SaveModeOptions(_stereotype.GetProperty<string>("Save Mode"));
+            }
+
+            public IIconModel Icon()
+            {
+                return _stereotype.GetProperty<IIconModel>("Icon");
+            }
+
+            public IIconModel ExpandedIcon()
+            {
+                return _stereotype.GetProperty<IIconModel>("Expanded Icon");
             }
 
             public string DisplayTextFunction()

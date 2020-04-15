@@ -325,6 +325,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             
             #line 90 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
               break;
+            case StereotypePropertyControlType.Icon:
+            
+            #line default
+            #line hidden
+            this.Write("            public IIconModel ");
+            
+            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("() {\r\n                return _stereotype.GetProperty<IIconModel>(\"");
+            
+            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\");\r\n            }\r\n\r\n");
+            
+            #line 96 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+              break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -333,14 +355,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             #line default
             #line hidden
             
-            #line 95 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            #line 101 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
   foreach (var property in stereotypeDefinition.Properties.Where(x => x.ValueOptions.Any())) { 
             
             #line default
             #line hidden
             this.Write("            public class ");
             
-            #line 96 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            #line 102 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
@@ -348,7 +370,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             this.Write("Options\r\n            {\r\n                public readonly string Value;\r\n\r\n        " +
                     "        public ");
             
-            #line 100 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            #line 106 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
@@ -356,42 +378,42 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             this.Write("Options(string value)\r\n                {\r\n                    Value = value;\r\n   " +
                     "             }\r\n\r\n");
             
-            #line 105 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            #line 111 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
       foreach(var option in property.ValueOptions) { 
             
             #line default
             #line hidden
             this.Write("                public bool Is");
             
-            #line 106 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            #line 112 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(option.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("()\r\n                {\r\n                    return Value == \"");
             
-            #line 108 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            #line 114 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(option));
             
             #line default
             #line hidden
             this.Write("\";\r\n                }\r\n");
             
-            #line 110 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            #line 116 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
       } 
             
             #line default
             #line hidden
             this.Write("            }\r\n\r\n");
             
-            #line 113 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            #line 119 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
   } 
             
             #line default
             #line hidden
             this.Write("        }\r\n\r\n");
             
-            #line 116 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
+            #line 122 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
   }
             
             #line default

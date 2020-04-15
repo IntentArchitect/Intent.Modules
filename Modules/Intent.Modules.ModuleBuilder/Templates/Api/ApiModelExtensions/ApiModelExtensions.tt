@@ -88,6 +88,12 @@ namespace <#= Namespace #>
             }
 
 <#              break;
+            case StereotypePropertyControlType.Icon:#>
+            public IIconModel <#= property.Name.ToCSharpIdentifier() #>() {
+                return _stereotype.GetProperty<IIconModel>("<#= property.Name #>");
+            }
+
+<#              break;
             default:
                 throw new ArgumentOutOfRangeException();
         }

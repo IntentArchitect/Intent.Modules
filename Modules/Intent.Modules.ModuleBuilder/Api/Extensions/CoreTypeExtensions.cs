@@ -16,12 +16,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new DefaultCreationOptions(stereotype) : null;
         }
 
-        public static IconFull GetIconFull(this CoreTypeModel model)
-        {
-            var stereotype = model.GetStereotype("Icon (Full)");
-            return stereotype != null ? new IconFull(stereotype) : null;
-        }
-
 
         public class DefaultCreationOptions
         {
@@ -45,58 +39,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             public int? TypeOrder()
             {
                 return _stereotype.GetProperty<int?>("Type Order");
-            }
-
-        }
-
-        public class IconFull
-        {
-            private IStereotype _stereotype;
-
-            public IconFull(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public TypeOptions Type()
-            {
-                return new TypeOptions(_stereotype.GetProperty<string>("Type"));
-            }
-
-            public string Source()
-            {
-                return _stereotype.GetProperty<string>("Source");
-            }
-
-            public class TypeOptions
-            {
-                public readonly string Value;
-
-                public TypeOptions(string value)
-                {
-                    Value = value;
-                }
-
-                public bool IsUrlImagePath()
-                {
-                    return Value == "UrlImagePath";
-                }
-                public bool IsRelativeImagePath()
-                {
-                    return Value == "RelativeImagePath";
-                }
-                public bool IsFontAwesome()
-                {
-                    return Value == "FontAwesome";
-                }
-                public bool IsCharacterBox()
-                {
-                    return Value == "CharacterBox";
-                }
-                public bool IsInternal()
-                {
-                    return Value == "Internal";
-                }
             }
 
         }

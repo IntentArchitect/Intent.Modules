@@ -15,6 +15,8 @@
       <addedByDefault>false</addedByDefault>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:3,&quot;source&quot;:&quot;P|#7d7d7d&quot;}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
@@ -31,13 +33,6 @@
         <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" display="Shortcut" value="ctrl + shift + p" isActive="true" />
         <property name="b199adea-c16b-411d-a2db-c881345a421b" display="Default Name" value="Package Settings" isActive="true" />
         <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-      </properties>
-    </stereotype>
-    <stereotype stereotypeDefinitionId="3714391e-cb1c-47db-9dac-16fdf2b2d57f" name="Icon (Full)">
-      <addedByDefault>false</addedByDefault>
-      <properties>
-        <property name="d6a4f65c-4748-401d-b872-a01df468a2e8" display="Type" value="CharacterBox" isActive="true" />
-        <property name="f4ff4b95-a7c3-4bfd-8bf7-de441eff06ec" display="Source" value="P|#7d7d7d" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">

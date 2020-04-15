@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
+using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModelerBuilder.External;
@@ -42,9 +43,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             return Serialize(applicationModelerModeler);
         }
 
-        private IconModelPersistable GetIcon(AssociationSettingsExtensions.IconFull icon)
+        private IconModelPersistable GetIcon(IIconModel icon)
         {
-            return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
+            return icon != null ? new IconModelPersistable { Type = (IconType)icon.Type, Source = icon.Source } : null;
         }
 
         private StereotypeSettingsPersistable GetStereotypeSettings(DesignerModel model)
@@ -70,7 +71,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             return associationSettings.OrderBy(x => x.Name).Select(x => new AssociationSettingsPersistable
             {
                 SpecializationType = x.Name,
-                Icon = GetIcon(x.GetIconFull()),
+                Icon = GetIcon(x.SourceEnd.GetSettings().Icon()),
                 SourceEnd = new AssociationEndSettingsPersistable
                 {
                     TargetTypes = x.SourceEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),

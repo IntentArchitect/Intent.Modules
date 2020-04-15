@@ -47,8 +47,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                 SpecializationType = this.Name,
                 SaveAsOwnFile = this.GetSettings().SaveMode().IsOwnFile(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
-                Icon = GetIcon(this.GetIconFull()) ?? new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" },
-                ExpandedIcon = GetIcon(this.GetIconFullExpanded()),
+                Icon = GetIcon(this.GetSettings().Icon()) ?? new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" },
+                ExpandedIcon = GetIcon(this.GetSettings().ExpandedIcon()),
                 AllowRename = this.GetSettings().AllowRename(),
                 AllowAbstract = this.GetSettings().AllowAbstract(),
                 AllowGenericTypes = this.GetSettings().AllowGenericTypes(),
@@ -71,15 +71,9 @@ namespace Intent.Modules.ModuleBuilder.Api
             };
         }
 
-
-        private IconModelPersistable GetIcon(ElementSettingsExtensions.IconFullExpanded icon)
+        private IconModelPersistable GetIcon(IIconModel icon)
         {
-            return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
-        }
-
-        private IconModelPersistable GetIcon(ElementSettingsExtensions.IconFull icon)
-        {
-            return icon != null ? new IconModelPersistable { Type = Enum.Parse<IconType>(icon.Type().Value), Source = icon.Source() } : null;
+            return icon != null ? new IconModelPersistable { Type = (IconType)icon.Type, Source = icon.Source } : null;
         }
 
         public ElementSettingsModel GetInheritedType()

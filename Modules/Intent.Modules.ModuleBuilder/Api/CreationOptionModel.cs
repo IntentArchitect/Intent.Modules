@@ -31,7 +31,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             Text = element.Name;
             Shortcut = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
             DefaultName = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Default Name") ?? $"New{element.TypeReference.Element.Name.Replace(" ", "")}";
-            Icon = IconModel.CreateIfSpecified(element.TypeReference.Element.GetStereotype("Icon (Full)"));
+            Icon = element.TypeReference.Element.GetStereotypeProperty<IIconModel>("Settings", "Icon");
             Type = element.TypeReference.Element;
             AllowMultiple = element.GetStereotypeProperty("Creation Options", "Allow Multiple", true);
         }
@@ -55,9 +55,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
 
-        private IconModelPersistable GetIcon(IconModel icon)
+        private IconModelPersistable GetIcon(IIconModel icon)
         {
-            return icon != null ? new IconModelPersistable { Type = icon.Type, Source = icon.Source } : null;
+            return icon != null ? new IconModelPersistable { Type = (IconType)icon.Type, Source = icon.Source } : null;
         }
 
         public string Text { get; }
@@ -66,7 +66,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public string DefaultName { get; }
 
-        public IconModel Icon { get; }
+        public IIconModel Icon { get; }
 
         public IElement Type { get; }
 

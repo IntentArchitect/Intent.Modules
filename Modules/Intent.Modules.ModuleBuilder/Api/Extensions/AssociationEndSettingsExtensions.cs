@@ -26,6 +26,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public IIconModel Icon()
+            {
+                return _stereotype.GetProperty<IIconModel>("Icon");
+            }
+
             public IElement[] TargetTypes()
             {
                 return _stereotype.GetProperty<IElement[]>("Target Types");

@@ -74,11 +74,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AssociationSettingsExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AssociationSettingsExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\CoreTypeExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/CoreTypeExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
