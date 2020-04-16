@@ -10,18 +10,18 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class CreationOptionExtensions
     {
-        public static CreationOptions GetCreationOptions(this CreationOptionModel model)
+        public static OptionSettings GetOptionSettings(this CreationOptionModel model)
         {
-            var stereotype = model.GetStereotype("Creation Options");
-            return stereotype != null ? new CreationOptions(stereotype) : null;
+            var stereotype = model.GetStereotype("Option Settings");
+            return stereotype != null ? new OptionSettings(stereotype) : null;
         }
 
 
-        public class CreationOptions
+        public class OptionSettings
         {
             private IStereotype _stereotype;
 
-            public CreationOptions(IStereotype stereotype)
+            public OptionSettings(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }

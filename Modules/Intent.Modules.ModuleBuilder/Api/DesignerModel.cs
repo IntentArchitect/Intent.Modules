@@ -107,14 +107,34 @@ namespace Intent.Modules.ModuleBuilder.Api
         public ITypeReference TypeReference => _element.TypeReference;
     }
 
-    public class TypeOrder
+    public class TypeOrder : IEquatable<TypeOrder>
     {
-        public TypeOrder(IElement attribute)
+        public TypeOrder(CreationOptionModel element)
         {
-            Order = attribute.GetStereotypeProperty("Creation Options", "Type Order", attribute.TypeReference.Element.GetStereotypeProperty<int?>("Default Creation Options", "Type Order", null));
-            Type = attribute.TypeReference.Element.Name;
+            Order = element.GetOptionSettings().TypeOrder();
+            Type = element.TypeReference.Element.Name;
         }
         public int? Order { get; set; }
         public string Type { get; set; }
+
+        public bool Equals(TypeOrder other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return string.Equals(Type, other.Type);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((TypeOrder)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (Type != null ? Type.GetHashCode() : 0);
+        }
     }
 }

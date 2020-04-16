@@ -146,7 +146,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             this.Write("        [IntentManaged(Mode.Fully)]\r\n        public ");
             
             #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeInterface(creationOption, creationOption.AllowMultiple)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeInterface(creationOption, creationOption.GetOptionSettings().AllowMultiple())));
             
             #line default
             #line hidden
@@ -174,7 +174,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
             this.Write("(x))\r\n");
             
             #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt"
-      if (creationOption.AllowMultiple) { 
+      if (creationOption.GetOptionSettings().AllowMultiple()) { 
             
             #line default
             #line hidden

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="dbb71aa5-0db2-4a2a-97a9-501950f36f99" type="Element Settings">
-  <name>Designers Folder</name>
-  <display>Designers Folder</display>
+<class id="89333f72-3960-4159-bf61-9c40d4b65088" type="Element Settings">
+  <comment />
+  <name>Package Settings</name>
+  <display>Package Settings</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -13,25 +14,16 @@
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Own File" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/Folder_03_256x.png&quot;}" isActive="true" />
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:3,&quot;source&quot;:&quot;P|#7d7d7d&quot;}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
-        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="designers" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
         <property name="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd" display="Allow Mapping" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
-        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="true" isActive="true" />
-      </properties>
-    </stereotype>
-    <stereotype stereotypeDefinitionId="72fa6cf4-ce3c-4162-944f-392304e12009" name="Default Creation Options">
-      <comment>Sets the default creation options for this element when used.</comment>
-      <addedByDefault>false</addedByDefault>
-      <properties>
-        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" display="Shortcut" isActive="true" />
-        <property name="b199adea-c16b-411d-a2db-c881345a421b" display="Default Name" value="modeler" isActive="true" />
-        <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="1" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
@@ -47,25 +39,25 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="2f9ce669-d9ee-45ae-be5c-ed7a3ad68614" type="Context Menu">
+    <childElement id="bcb1c656-0ea3-4fbe-9646-2735825f5453" type="Context Menu">
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</parentFolderId>
+      <parentFolderId>89333f72-3960-4159-bf61-9c40d4b65088</parentFolderId>
       <literals />
       <attributes />
       <operations />
       <stereotypes />
       <childElements>
-        <childElement id="2f7eaf64-da41-4534-bbea-82a37bdcfb70" type="Creation Option">
-          <name>New Designer</name>
-          <display>New Designer: Designer</display>
+        <childElement id="7075d52c-ca67-4368-9b3b-ff8719ef6252" type="Creation Option">
+          <name>Add Menu Options</name>
+          <display>Add Menu Options: Context Menu</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="31274192-00ab-4c20-82a4-0f5ba82a1dc5">
-            <typeId>7a6411a8-ffef-4209-91c6-8d12755a806a</typeId>
+          <typeReference id="c233df2b-eb63-4f30-b171-0d79639d2289">
+            <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -73,19 +65,19 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>2f9ce669-d9ee-45ae-be5c-ed7a3ad68614</parentFolderId>
+          <parentFolderId>bcb1c656-0ea3-4fbe-9646-2735825f5453</parentFolderId>
           <literals />
           <attributes />
           <operations />
           <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment>Overrides the default creation option settings.</comment>
               <addedByDefault>false</addedByDefault>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[context menu]" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

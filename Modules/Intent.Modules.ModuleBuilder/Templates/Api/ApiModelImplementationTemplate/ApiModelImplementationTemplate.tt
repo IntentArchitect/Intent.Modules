@@ -57,10 +57,10 @@ namespace <#= Namespace #>
             if (ExistsInBase(creationOption))
                 continue;#>
         [IntentManaged(Mode.Fully)]
-        public <#= GetCreationOptionTypeInterface(creationOption, creationOption.AllowMultiple) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
+        public <#= GetCreationOptionTypeInterface(creationOption, creationOption.GetCreationOptions().AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
             .Where(x => x.SpecializationType == Api.<#= GetCreationOptionTypeClass(creationOption) #>.SpecializationType)
             .Select(x => new <#= GetCreationOptionTypeClass(creationOption) #>(x))
-<#      if (creationOption.AllowMultiple) { #>
+<#      if (creationOption.GetCreationOptions().AllowMultiple()) { #>
             .ToList<<#= GetCreationOptionTypeInterface(creationOption, false) #>>();
 <#      } else { #>
             .SingleOrDefault();

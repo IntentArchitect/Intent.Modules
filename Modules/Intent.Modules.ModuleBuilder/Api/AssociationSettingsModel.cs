@@ -31,14 +31,14 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
-        public AssociationEndSettingsModel SourceEnd => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.AssociationEndSettingsModel.SpecializationType)
-            .Select(x => new AssociationEndSettingsModel(x))
+        public AssociationSourceEndSettingsModel SourceEnd => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.AssociationSourceEndSettingsModel.SpecializationType)
+            .Select(x => new AssociationSourceEndSettingsModel(x))
             .SingleOrDefault();
         [IntentManaged(Mode.Fully)]
-        public AssociationEndSettingsModel DestinationEnd => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.AssociationEndSettingsModel.SpecializationType)
-            .Select(x => new AssociationEndSettingsModel(x))
+        public AssociationDestinationEndSettingsModel DestinationEnd => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.AssociationDestinationEndSettingsModel.SpecializationType)
+            .Select(x => new AssociationDestinationEndSettingsModel(x))
             .SingleOrDefault();
 
         protected bool Equals(AssociationSettingsModel other)

@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using System.Linq;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
+using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
@@ -28,12 +29,12 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
 
             TargetSpecializationType = _element.TypeReference.Element.Name;
-            Text = element.Name;
-            Shortcut = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
-            DefaultName = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Default Name") ?? $"New{element.TypeReference.Element.Name.Replace(" ", "")}";
+            //Text = element.Name;
+            //Shortcut = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
+            //DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{element.TypeReference.Element.Name.ToCSharpIdentifier()}";
             Icon = element.TypeReference.Element.GetStereotypeProperty<IIconModel>("Settings", "Icon");
             Type = element.TypeReference.Element;
-            AllowMultiple = element.GetStereotypeProperty("Creation Options", "Allow Multiple", true);
+            //AllowMultiple = element.GetStereotypeProperty("Creation Options", "Allow Multiple", true);
         }
 
         public string Id => _element.Id;
@@ -46,11 +47,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return new ElementCreationOption
             {
                 SpecializationType = this.TargetSpecializationType,
-                Text = this.Text,
-                Shortcut = this.Shortcut,
-                DefaultName = this.DefaultName,
+                Text = this.Name,
+                Shortcut = this.GetOptionSettings().Shortcut(),
+                DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
                 Icon = GetIcon(this.Icon) ?? new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" },
-                AllowMultiple = this.AllowMultiple
+                AllowMultiple = this.GetOptionSettings().AllowMultiple()
             };
         }
 
@@ -60,22 +61,15 @@ namespace Intent.Modules.ModuleBuilder.Api
             return icon != null ? new IconModelPersistable { Type = (IconType)icon.Type, Source = icon.Source } : null;
         }
 
-        public string Text { get; }
-
-        public string Shortcut { get; }
-
-        public string DefaultName { get; }
 
         public IIconModel Icon { get; }
 
         public IElement Type { get; }
 
-        public bool AllowMultiple { get; }
-
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
-                   $"{nameof(Text)} = '{Text}'";
+                   $"{nameof(Name)} = '{Name}'";
         }
 
 

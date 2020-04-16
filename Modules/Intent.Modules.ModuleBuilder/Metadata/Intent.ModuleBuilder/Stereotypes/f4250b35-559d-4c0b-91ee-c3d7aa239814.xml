@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="f4250b35-559d-4c0b-91ee-c3d7aa239814">
-  <comment>Overrides the default creation option settings.</comment>
-  <name>Creation Options</name>
+  <comment />
+  <name>Option Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
     <element>creation option</element>
   </targetElements>
-  <applyMode>on-create</applyMode>
+  <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />
   <displayIcon>false</displayIcon>
   <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
@@ -22,6 +22,7 @@
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction />
     </property>
     <property id="ba8a3ecd-0f08-499e-bb5b-929d40f56a45">
       <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>

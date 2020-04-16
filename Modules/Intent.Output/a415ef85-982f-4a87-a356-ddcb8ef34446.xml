@@ -4,13 +4,18 @@
   <FileLogs>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationEndSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AssociationEndSettingsModel.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationDestinationEndSettingsModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/AssociationDestinationEndSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/AssociationSettingsModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationSourceEndSettingsModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/AssociationSourceEndSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -69,8 +74,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AssociationEndSettingsExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AssociationEndSettingsExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AssociationDestinationEndSettingsExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/AssociationDestinationEndSettingsExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AssociationSourceEndSettingsExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/AssociationSourceEndSettingsExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>

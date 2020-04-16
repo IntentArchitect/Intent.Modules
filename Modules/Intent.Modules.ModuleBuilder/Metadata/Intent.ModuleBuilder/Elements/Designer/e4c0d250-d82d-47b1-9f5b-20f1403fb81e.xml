@@ -50,12 +50,12 @@
           <operations />
           <stereotypes />
           <childElements>
-            <childElement id="99d5ef34-276f-4470-bb1c-f83ce1863782" type="Creation Option">
+            <childElement id="9a0a194c-b718-4052-be57-cee27bcd2ecc" type="Creation Option">
               <name>New File Template</name>
               <display>New File Template: File Template</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="3d8d6a46-e775-4531-8225-b3ee52768b6c">
+              <typeReference id="dcc31b39-11d0-4d75-9d13-51df683e44f3">
                 <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -69,11 +69,11 @@
               <attributes />
               <operations />
               <stereotypes>
-                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
-                  <addedByDefault>true</addedByDefault>
+                  <addedByDefault>false</addedByDefault>
                   <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + f" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                     <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
@@ -82,12 +82,12 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="9739b58c-b3ee-4fa8-a792-57533a73788d" type="Creation Option">
+            <childElement id="6ac7d5ec-9354-49f6-b3fa-a23cefda24c4" type="Creation Option">
               <name>New Template Decorator</name>
               <display>New Template Decorator: Decorator</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="a0da4e52-a996-4477-85f0-0ff1d00466d5">
+              <typeReference id="b842c716-1e48-414e-9e8e-778283d65cc8">
                 <typeId>f0f46278-29ea-42bd-9206-0e7034f623bc</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -101,11 +101,11 @@
               <attributes />
               <operations />
               <stereotypes>
-                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
-                  <addedByDefault>true</addedByDefault>
+                  <addedByDefault>false</addedByDefault>
                   <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + d" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                     <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
@@ -114,12 +114,12 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="29b67ea8-ccf0-41a3-87bc-ca35537d0d37" type="Creation Option">
+            <childElement id="f272f1a9-89fe-4925-bbf1-73360de59b79" type="Creation Option">
               <name>New Template Registration</name>
               <display>New Template Registration: Template Registration</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="954e27fc-cc3c-4cf9-8854-6d069b37bf4f">
+              <typeReference id="753d7f62-381a-495c-8078-9974f70fbfa8">
                 <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -133,11 +133,11 @@
               <attributes />
               <operations />
               <stereotypes>
-                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
                   <addedByDefault>false</addedByDefault>
                   <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + r" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                     <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
@@ -146,12 +146,12 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="f4400708-458c-420d-b995-8ae3e5afb595" type="Creation Option">
+            <childElement id="379ed16f-d6ac-40b0-93b0-d3448efe42d9" type="Creation Option">
               <name>New Stereotype-Definition</name>
               <display>New Stereotype-Definition: Stereotype-Definition</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="bea9490f-4297-43bc-9a36-1aef9eb78ba5">
+              <typeReference id="c6b0f9fe-51ae-479d-92bd-1e43c1f33031">
                 <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -165,25 +165,25 @@
               <attributes />
               <operations />
               <stereotypes>
-                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
                   <addedByDefault>false</addedByDefault>
                   <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="e0d03685-cd2c-49fd-8c3a-be216f882d09" type="Creation Option">
+            <childElement id="c9b99362-2e29-4ca9-8bc5-ee73696d927f" type="Creation Option">
               <name>New Folder</name>
               <display>New Folder: Folder</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="5311a461-b626-4f35-b20a-6c566080b7a2">
+              <typeReference id="111c1646-2727-4313-b28e-93f0ce7b7564">
                 <typeId>26f606b9-71e2-4e21-b185-04f90cb7d603</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -197,13 +197,13 @@
               <attributes />
               <operations />
               <stereotypes>
-                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Creation Options">
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
-                  <addedByDefault>true</addedByDefault>
+                  <addedByDefault>false</addedByDefault>
                   <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + f" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="0" isActive="true" />
                     <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                   </properties>
                 </stereotype>

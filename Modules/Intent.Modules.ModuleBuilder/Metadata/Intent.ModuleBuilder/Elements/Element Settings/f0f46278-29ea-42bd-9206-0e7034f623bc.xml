@@ -10,15 +10,6 @@
   <attributes />
   <operations />
   <stereotypes>
-    <stereotype stereotypeDefinitionId="72fa6cf4-ce3c-4162-944f-392304e12009" name="Default Creation Options">
-      <comment>Sets the default creation options for this element when used.</comment>
-      <addedByDefault>false</addedByDefault>
-      <properties>
-        <property name="d984e71b-0e2f-4155-a190-83d986e1c29b" display="Shortcut" value="ctrl + shift + d" isActive="true" />
-        <property name="b199adea-c16b-411d-a2db-c881345a421b" display="Default Name" value="NewDecorator" isActive="true" />
-        <property name="C63F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-      </properties>
-    </stereotype>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>false</addedByDefault>
       <properties>

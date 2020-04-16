@@ -4,7 +4,7 @@
   <targetMode>of-type</targetMode>
   <targetElements>
     <element>element settings</element>
-    <element>child element settings</element>
+    <element>core type</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />

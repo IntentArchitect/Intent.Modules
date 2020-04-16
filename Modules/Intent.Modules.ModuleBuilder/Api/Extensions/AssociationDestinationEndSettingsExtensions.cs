@@ -8,9 +8,9 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public static class AssociationEndSettingsExtensions
+    public static class AssociationDestinationEndSettingsExtensions
     {
-        public static Settings GetSettings(this AssociationEndSettingsModel model)
+        public static Settings GetSettings(this AssociationDestinationEndSettingsModel model)
         {
             var stereotype = model.GetStereotype("Settings");
             return stereotype != null ? new Settings(stereotype) : null;

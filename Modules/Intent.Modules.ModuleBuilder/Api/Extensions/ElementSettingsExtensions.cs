@@ -10,12 +10,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class ElementSettingsExtensions
     {
-        public static DefaultCreationOptions GetDefaultCreationOptions(this ElementSettingsModel model)
-        {
-            var stereotype = model.GetStereotype("Default Creation Options");
-            return stereotype != null ? new DefaultCreationOptions(stereotype) : null;
-        }
-
         public static Settings GetSettings(this ElementSettingsModel model)
         {
             var stereotype = model.GetStereotype("Settings");
@@ -28,32 +22,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new TypeReferenceSettings(stereotype) : null;
         }
 
-
-        public class DefaultCreationOptions
-        {
-            private IStereotype _stereotype;
-
-            public DefaultCreationOptions(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string Shortcut()
-            {
-                return _stereotype.GetProperty<string>("Shortcut");
-            }
-
-            public string DefaultName()
-            {
-                return _stereotype.GetProperty<string>("Default Name");
-            }
-
-            public int? TypeOrder()
-            {
-                return _stereotype.GetProperty<int?>("Type Order");
-            }
-
-        }
 
         public class Settings
         {

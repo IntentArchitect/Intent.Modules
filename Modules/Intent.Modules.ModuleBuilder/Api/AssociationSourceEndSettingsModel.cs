@@ -10,16 +10,16 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationEndSettingsModel : IHasStereotypes, IMetadataModel
+    public class AssociationSourceEndSettingsModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Association End Settings";
+        public const string SpecializationType = "Association Source End Settings";
         protected readonly IElement _element;
 
-        public AssociationEndSettingsModel(IElement element)
+        public AssociationSourceEndSettingsModel(IElement element, string requiredType = SpecializationType)
         {
-            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new Exception($"Cannot create a 'AssociationEndSettingsModel' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
         }
@@ -31,7 +31,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
 
-        protected bool Equals(AssociationEndSettingsModel other)
+        protected bool Equals(AssociationSourceEndSettingsModel other)
         {
             return Equals(_element, other._element);
         }
@@ -41,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((AssociationEndSettingsModel)obj);
+            return Equals((AssociationSourceEndSettingsModel)obj);
         }
 
         public override int GetHashCode()

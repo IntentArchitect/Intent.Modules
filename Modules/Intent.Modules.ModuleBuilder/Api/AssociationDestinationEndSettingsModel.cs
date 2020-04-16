@@ -10,35 +10,28 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ContextMenuModel
-        : IHasStereotypes, IMetadataModel
+    public class AssociationDestinationEndSettingsModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Context Menu";
+        public const string SpecializationType = "Association Destination End Settings";
         protected readonly IElement _element;
 
-        public ContextMenuModel(IElement element)
+        public AssociationDestinationEndSettingsModel(IElement element, string requiredType = SpecializationType)
         {
-            if (element.SpecializationType != SpecializationType)
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException($"Invalid element type {element.SpecializationType}", nameof(element));
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            TypeOrder = CreationOptions.Select(x => new TypeOrder(x)).Distinct().ToList();
         }
 
         public string Id => _element.Id;
+
         public string Name => _element.Name;
+
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        [IntentManaged(Mode.Fully)]
-        public IList<CreationOptionModel> CreationOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.CreationOptionModel.SpecializationType)
-            .Select(x => new CreationOptionModel(x))
-            .ToList<CreationOptionModel>();
 
-        public IList<TypeOrder> TypeOrder { get; }
-
-        protected bool Equals(ContextMenuModel other)
+        protected bool Equals(AssociationDestinationEndSettingsModel other)
         {
             return Equals(_element, other._element);
         }
@@ -48,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ContextMenuModel)obj);
+            return Equals((AssociationDestinationEndSettingsModel)obj);
         }
 
         public override int GetHashCode()

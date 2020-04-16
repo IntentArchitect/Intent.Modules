@@ -3,7 +3,8 @@
   <name>Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>association end settings</element>
+    <element>association source end settings</element>
+    <element>association destination end settings</element>
   </targetElements>
   <applyMode>on-create</applyMode>
   <icon type="FontAwesome" source="cogs" />

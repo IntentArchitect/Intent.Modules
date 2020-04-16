@@ -66,7 +66,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
         private string GetCreationOptionName(CreationOptionModel option)
         {
             var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
-            return option.AllowMultiple ? name.ToPluralName() : name;
+            return option.GetOptionSettings().AllowMultiple() ? name.ToPluralName() : name;
         }
 
         private bool ExistsInBase(CreationOptionModel creationOption)

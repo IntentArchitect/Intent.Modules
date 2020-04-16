@@ -10,35 +10,89 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class CoreTypeExtensions
     {
-        public static DefaultCreationOptions GetDefaultCreationOptions(this CoreTypeModel model)
+        public static Settings GetSettings(this CoreTypeModel model)
         {
-            var stereotype = model.GetStereotype("Default Creation Options");
-            return stereotype != null ? new DefaultCreationOptions(stereotype) : null;
+            var stereotype = model.GetStereotype("Settings");
+            return stereotype != null ? new Settings(stereotype) : null;
         }
 
 
-        public class DefaultCreationOptions
+        public class Settings
         {
             private IStereotype _stereotype;
 
-            public DefaultCreationOptions(IStereotype stereotype)
+            public Settings(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }
 
-            public string Shortcut()
+            public SaveModeOptions SaveMode()
             {
-                return _stereotype.GetProperty<string>("Shortcut");
+                return new SaveModeOptions(_stereotype.GetProperty<string>("Save Mode"));
             }
 
-            public string DefaultName()
+            public IIconModel Icon()
             {
-                return _stereotype.GetProperty<string>("Default Name");
+                return _stereotype.GetProperty<IIconModel>("Icon");
             }
 
-            public int? TypeOrder()
+            public IIconModel ExpandedIcon()
             {
-                return _stereotype.GetProperty<int?>("Type Order");
+                return _stereotype.GetProperty<IIconModel>("Expanded Icon");
+            }
+
+            public string DisplayTextFunction()
+            {
+                return _stereotype.GetProperty<string>("Display Text Function");
+            }
+
+            public bool AllowRename()
+            {
+                return _stereotype.GetProperty<bool>("Allow Rename");
+            }
+
+            public bool AllowAbstract()
+            {
+                return _stereotype.GetProperty<bool>("Allow Abstract");
+            }
+
+            public bool AllowGenericTypes()
+            {
+                return _stereotype.GetProperty<bool>("Allow Generic Types");
+            }
+
+            public bool AllowMapping()
+            {
+                return _stereotype.GetProperty<bool>("Allow Mapping");
+            }
+
+            public bool AllowSorting()
+            {
+                return _stereotype.GetProperty<bool>("Allow Sorting");
+            }
+
+            public bool AllowFindInView()
+            {
+                return _stereotype.GetProperty<bool>("Allow Find in View");
+            }
+
+            public class SaveModeOptions
+            {
+                public readonly string Value;
+
+                public SaveModeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsOwnFile()
+                {
+                    return Value == "Own File";
+                }
+                public bool IsAsChild()
+                {
+                    return Value == "As Child";
+                }
             }
 
         }
