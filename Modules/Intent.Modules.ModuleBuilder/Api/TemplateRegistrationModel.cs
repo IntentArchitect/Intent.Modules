@@ -46,6 +46,25 @@ namespace Intent.Modules.ModuleBuilder.Api
             return this.GetTemplateSettings()?.ModelType() != null ? new ModelerModelType(this.GetTemplateSettings().ModelType()) : null;
         }
 
+        public string GetModelName()
+        {
+            if (this.GetTemplateSettings().Source().IsLookupType())
+            {
+                var modelType = this.GetModelType();
+                if (this.IsSingleFileTemplateRegistration())
+                {
+                    return modelType == null ? "object" : $"IList<{modelType.ClassName}>";
+                }
+                return modelType?.ClassName ?? "object";
+            }
+
+            if (this.GetTemplateSettings().Source().IsCustomType())
+            {
+                return this.GetTemplateSettings().ModelName() ?? "object";
+            }
+            throw new Exception("Could not determine model type for template [" + this.ToString() + "]");
+        }
+
         public FolderModel Folder { get; }
 
         public bool IsSingleFileTemplateRegistration()

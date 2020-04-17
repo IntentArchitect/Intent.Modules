@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="717a04f4-49a6-4638-a931-42723215d399" type="Folder">
   <name>Templates</name>
+  <display>Templates</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

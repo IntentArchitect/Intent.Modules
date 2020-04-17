@@ -59,13 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         private string GetModelType()
         {
-            var modelType = Model.GetModelType();
-            if (Model.IsFilePerModelTemplateRegistration())
-            {
-                return modelType?.InterfaceName ?? "object";
-            }
-
-            return modelType == null ? "object" : $"IList<{modelType.InterfaceName}>";
+            return Model.GetModelName();
         }
 
     }

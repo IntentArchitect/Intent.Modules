@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public static class CreationOptionExtensions
+    public static class CreationOptionModelExtensions
     {
         public static OptionSettings GetOptionSettings(this CreationOptionModel model)
         {

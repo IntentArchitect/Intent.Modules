@@ -6,6 +6,7 @@ using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.ModuleBuilder.Api.Factories;
+using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
@@ -35,6 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
+        public string ApiClassName => $"{Name.ToCSharpIdentifier()}Model";
 
         public DesignerModel Designer => DesignerModelFactory.GetDesigner(_element);
 

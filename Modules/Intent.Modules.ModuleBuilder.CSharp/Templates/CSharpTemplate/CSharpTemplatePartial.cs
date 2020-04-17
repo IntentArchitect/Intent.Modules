@@ -48,10 +48,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
             var content = GetExistingTemplateContent();
             if (content != null)
             {
-                return ReplaceTemplateInheritsTag(content, $"IntentRoslynProjectItemTemplateBase<{GetModelType()}>");
+                return ReplaceTemplateInheritsTag(content, $"IntentRoslynProjectItemTemplateBase<{Model.GetModelName()}>");
             }
 
-            return $@"<#@ template language=""C#"" inherits=""IntentRoslynProjectItemTemplateBase<{GetModelType()}>"" #>
+            return $@"<#@ template language=""C#"" inherits=""IntentRoslynProjectItemTemplateBase<{Model.GetModelName()}>"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>
@@ -77,16 +77,7 @@ namespace <#= Namespace #>
 }";
         }
 
-        private string GetModelType()
-        {
-            var modelType = Model.GetModelType();
-            if (Model.IsFilePerModelTemplateRegistration())
-            {
-                return modelType?.InterfaceName ?? "object";
-            }
 
-            return modelType == null ? "object" : $"IList<{modelType.InterfaceName}>";
-        }
 
         private string GetExistingTemplateContent()
         {

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0d4137fc-b3c9-4e65-8dea-123b8ac2a39a" type="Attribute">
+  <name>expiryPeriod</name>
+  <display>expiryPeriod: &lt;no type&gt;</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="13ce5519-5e6d-48d9-8cde-3f6c2ef8ab59">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

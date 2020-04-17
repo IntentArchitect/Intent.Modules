@@ -34,6 +34,7 @@
       <lookupTypes>
         <type>element settings</type>
       </lookupTypes>
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="c81dddd3-8e13-4fe9-b923-1ad339b30746">
       <name>Is Navigable Enabled</name>
@@ -41,7 +42,7 @@
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <defaultValue>false</defaultValue>
+      <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>
@@ -51,7 +52,7 @@
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <defaultValue>false</defaultValue>
+      <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>
@@ -61,7 +62,7 @@
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <defaultValue>false</defaultValue>
+      <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>
@@ -71,7 +72,7 @@
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <defaultValue>false</defaultValue>
+      <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>

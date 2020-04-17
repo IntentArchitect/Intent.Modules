@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="062f7656-03fd-4d84-94c1-0d8940764076" type="Operation">
+  <name>IReturnSomething</name>
+  <display>IReturnSomething(): string</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="937f6e33-3f51-4814-98c0-99cd59d6cbc6">
+    <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>a97429c9-464a-4618-8692-2d1019bc732c</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

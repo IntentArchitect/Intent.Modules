@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="98b40b0c-6419-4bb0-a6b2-f0420657cebd" type="Parameter">
+  <name>countries</name>
+  <display>in : countries: &lt;no type&gt;[*]</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="95bcb7ba-985f-45cb-863d-cd7de83138c3">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>true</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>31651611-8b12-48a7-b03c-68c06229bc6a</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

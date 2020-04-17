@@ -36,17 +36,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             //modelerSettings.DiagramSettings // TODO
             modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable();
             modelerSettings.ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
-            modelerSettings.AssociationSettings = GetAssociationSettings(Model.AssociationTypes);
+            modelerSettings.AssociationSettings = Model.AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.ElementExtensions = Model.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.StereotypeSettings = GetStereotypeSettings(Model);
 
             return Serialize(applicationModelerModeler);
         }
 
-        private IconModelPersistable GetIcon(IIconModel icon)
-        {
-            return icon != null ? new IconModelPersistable { Type = (IconType)icon.Type, Source = icon.Source } : null;
-        }
 
         private StereotypeSettingsPersistable GetStereotypeSettings(DesignerModel model)
         {
@@ -64,35 +60,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                     DisplayText = x
                 }).ToList()
             };
-        }
-
-        private List<AssociationSettingsPersistable> GetAssociationSettings(IList<AssociationSettingsModel> associationSettings)
-        {
-            return associationSettings.OrderBy(x => x.Name).Select(x => new AssociationSettingsPersistable
-            {
-                SpecializationType = x.Name,
-                Icon = GetIcon(x.SourceEnd.GetSettings().Icon()),
-                SourceEnd = new AssociationEndSettingsPersistable
-                {
-                    TargetTypes = x.SourceEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
-                    IsCollectionDefault = x.SourceEnd.GetSettings().IsCollectionDefault(),
-                    IsCollectionEnabled = x.SourceEnd.GetSettings().IsCollectionEnabled(),
-                    IsNavigableDefault = x.SourceEnd.GetSettings().IsNavigableEnabled(),
-                    IsNavigableEnabled = x.SourceEnd.GetSettings().IsNavigableEnabled(),
-                    IsNullableDefault = x.SourceEnd.GetSettings().IsNullableDefault(),
-                    IsNullableEnabled = x.SourceEnd.GetSettings().IsNullableEnabled()
-                },
-                TargetEnd = new AssociationEndSettingsPersistable
-                {
-                    TargetTypes = x.DestinationEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
-                    IsCollectionDefault = x.DestinationEnd.GetSettings().IsCollectionDefault(),
-                    IsCollectionEnabled = x.DestinationEnd.GetSettings().IsCollectionEnabled(),
-                    IsNavigableDefault = x.DestinationEnd.GetSettings().IsNavigableEnabled(),
-                    IsNavigableEnabled = x.DestinationEnd.GetSettings().IsNavigableEnabled(),
-                    IsNullableDefault = x.DestinationEnd.GetSettings().IsNullableDefault(),
-                    IsNullableEnabled = x.DestinationEnd.GetSettings().IsNullableEnabled()
-                },
-            }).ToList();
         }
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

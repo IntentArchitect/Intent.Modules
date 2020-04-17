@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="716d35be-7f8b-499e-915f-10e31b11b280" type="Parameter">
+  <name>details</name>
+  <display>in : details: &lt;no type&gt;</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="e97a1ce3-af2a-449b-b93c-413a5b7d1e3b">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>0a3c107a-e9b9-4e47-89b4-b1efb48e71ae</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ApiModelExtensions : IntentRoslynProjectItemTemplateBase<ElementSettingsModel>
+    public partial class ApiModelExtensions : IntentRoslynProjectItemTemplateBase<ExtensionModel>
     {
 #line hidden
         /// <summary>
@@ -51,7 +51,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             this.Write("\r\n    {\r\n");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
-  foreach(var stereotypeDefinition in StereotypeDefinitions) { 
+  foreach(var stereotypeDefinition in Model.StereotypeDefinitions) { 
             
             #line default
             #line hidden
@@ -86,7 +86,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             this.Write("\");\r\n            return stereotype != null ? new ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name.ToCSharpIdentifier()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name.  ToCSharpIdentifier()));
             
             #line default
             #line hidden
@@ -100,7 +100,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
             this.Write(" \r\n");
             
             #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiModelExtensions\ApiModelExtensions.tt"
-  foreach(var stereotypeDefinition in StereotypeDefinitions) { 
+  foreach(var stereotypeDefinition in Model.StereotypeDefinitions) { 
             
             #line default
             #line hidden

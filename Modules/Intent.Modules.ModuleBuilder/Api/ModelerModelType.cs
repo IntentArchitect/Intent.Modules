@@ -24,11 +24,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public string Id => _element.Id;
         public string ClassName => $"{_element.Name.ToCSharpIdentifier()}Model";
-        public string InterfaceName => $"{ClassName}";
-        public string Namespace => _element.GetStereotypeProperty<string>("Model Type Settings", "Namespace");
-        public string LoadMethod => _element.GetStereotypeProperty<string>("Model Type Settings", "Load Method");
-        public string PerModelTemplate => _element.GetStereotypeProperty<string>("Model Type Settings", "Per Model Template");
-        public string SingleListTemplate => _element.GetStereotypeProperty<string>("Model Type Settings", "Per List Template");
         public DesignerModel Designer => DesignerModelFactory.GetDesigner(forElement: this._element);
     }
 }

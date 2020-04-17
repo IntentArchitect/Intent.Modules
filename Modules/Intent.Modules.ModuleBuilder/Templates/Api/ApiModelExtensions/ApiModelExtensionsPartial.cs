@@ -3,6 +3,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Api.Factories;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -13,16 +14,14 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiModelExtensions : IntentRoslynProjectItemTemplateBase<ElementSettingsModel>
+    partial class ApiModelExtensions : IntentRoslynProjectItemTemplateBase<ExtensionModel>
     {
-        protected readonly List<IStereotypeDefinition> StereotypeDefinitions;
 
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiModelExtensions";
 
-        public ApiModelExtensions(IProject project, ElementSettingsModel model, List<IStereotypeDefinition> stereotypeDefinitions) : base(TemplateId, project, model)
+        public ApiModelExtensions(IProject project, ExtensionModel model) : base(TemplateId, project, model)
         {
-            StereotypeDefinitions = stereotypeDefinitions;
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -35,14 +34,45 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.Name.ToCSharpIdentifier()}Extensions",
+                fileName: $"{Model.Type.ApiClassName}Extensions",
                 fileExtension: "cs",
                 defaultLocationInProject: "Api/Extensions",
-                className: $"{Model.Name.ToCSharpIdentifier()}Extensions",
-                @namespace: Model.Designer.ApiNamespace
+                className: $"{Model.Type.ApiClassName}Extensions",
+                @namespace: "${Project.Name}.Api"
             );
         }
 
-        public string ModelClassName => GetTemplateClassName(ApiModelImplementationTemplate.ApiModelImplementationTemplate.TemplateId, Model);
+        public string ModelClassName => Model.Type.ApiClassName;
+    }
+
+    public class ExtensionModel
+    {
+        public IEnumerable<IStereotypeDefinition> StereotypeDefinitions { get; }
+        public ExtensionModelType Type { get; set; }
+
+        public ExtensionModel(ExtensionModelType type, IEnumerable<IStereotypeDefinition> stereotypeDefinitions)
+        {
+            StereotypeDefinitions = stereotypeDefinitions;
+            Type = type;
+        }
+
+        //public ElementSettingsModel Type { get; }
+
+        //public ExtensionModel(ElementSettingsModel element, IEnumerable<IStereotypeDefinition> stereotypeDefinitions)
+        //{
+        //    StereotypeDefinitions = stereotypeDefinitions;
+        //    Type = element;
+        //}
+    }
+
+    public class ExtensionModelType
+    {
+        public string Name { get; }
+        public string ApiClassName => $"{Name.ToCSharpIdentifier()}Model";
+
+        public ExtensionModelType(string name)
+        {
+            Name = name;
+        }
     }
 }

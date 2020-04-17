@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public static class MappingCriteriaExtensions
+    public static class MappingCriteriaModelExtensions
     {
         public static CriteriaSettings GetCriteriaSettings(this MappingCriteriaModel model)
         {

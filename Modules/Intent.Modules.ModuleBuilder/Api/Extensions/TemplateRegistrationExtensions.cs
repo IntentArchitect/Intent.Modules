@@ -45,9 +45,38 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public TemplateSettingsSource Source()
+            {
+                return new TemplateSettingsSource(_stereotype.GetProperty<string>("Source"));
+            }
+
             public IElement ModelType()
             {
                 return _stereotype.GetProperty<IElement>("Model Type");
+            }
+
+            public string ModelName()
+            {
+                return _stereotype.GetProperty<string>("Model Name");
+            }
+
+            public class TemplateSettingsSource
+            {
+                public readonly string Value;
+
+                public TemplateSettingsSource(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsLookupType()
+                {
+                    return Value == "Lookup Type";
+                }
+                public bool IsCustomType()
+                {
+                    return Value == "Custom Type";
+                }
             }
         }
     }

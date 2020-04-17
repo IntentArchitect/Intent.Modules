@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using IconType = Intent.IArchitect.Common.Types.IconType;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
@@ -40,6 +42,40 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == Api.AssociationDestinationEndSettingsModel.SpecializationType)
             .Select(x => new AssociationDestinationEndSettingsModel(x))
             .SingleOrDefault();
+
+        public AssociationSettingsPersistable ToPersistable()
+        {
+            return new AssociationSettingsPersistable
+            {
+                SpecializationType = this.Name,
+                Icon = GetIcon(this.SourceEnd.GetSettings().Icon()),
+                SourceEnd = new AssociationEndSettingsPersistable
+                {
+                    TargetTypes = this.SourceEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
+                    IsCollectionDefault = this.SourceEnd.GetSettings().IsCollectionDefault(),
+                    IsCollectionEnabled = this.SourceEnd.GetSettings().IsCollectionEnabled(),
+                    IsNavigableDefault = this.SourceEnd.GetSettings().IsNavigableEnabled(),
+                    IsNavigableEnabled = this.SourceEnd.GetSettings().IsNavigableEnabled(),
+                    IsNullableDefault = this.SourceEnd.GetSettings().IsNullableDefault(),
+                    IsNullableEnabled = this.SourceEnd.GetSettings().IsNullableEnabled()
+                },
+                TargetEnd = new AssociationEndSettingsPersistable
+                {
+                    TargetTypes = this.DestinationEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
+                    IsCollectionDefault = this.DestinationEnd.GetSettings().IsCollectionDefault(),
+                    IsCollectionEnabled = this.DestinationEnd.GetSettings().IsCollectionEnabled(),
+                    IsNavigableDefault = this.DestinationEnd.GetSettings().IsNavigableEnabled(),
+                    IsNavigableEnabled = this.DestinationEnd.GetSettings().IsNavigableEnabled(),
+                    IsNullableDefault = this.DestinationEnd.GetSettings().IsNullableDefault(),
+                    IsNullableEnabled = this.DestinationEnd.GetSettings().IsNullableEnabled()
+                },
+            };
+        }
+
+        private IconModelPersistable GetIcon(IIconModel icon)
+        {
+            return icon != null ? new IconModelPersistable { Type = (IconType)icon.Type, Source = icon.Source } : null;
+        }
 
         protected bool Equals(AssociationSettingsModel other)
         {

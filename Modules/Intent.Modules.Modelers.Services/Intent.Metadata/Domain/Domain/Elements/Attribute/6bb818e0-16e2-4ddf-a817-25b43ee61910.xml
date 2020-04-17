@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="6bb818e0-16e2-4ddf-a817-25b43ee61910" type="Attribute">
+  <name>isDisputeAllowed</name>
+  <display>isDisputeAllowed: bool</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="155a1081-5fe2-4c39-a1ba-85dcfe595a5e">
+    <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

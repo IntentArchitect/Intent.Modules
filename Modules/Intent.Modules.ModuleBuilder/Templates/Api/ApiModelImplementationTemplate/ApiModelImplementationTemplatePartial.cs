@@ -33,10 +33,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelImplementationTempl
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.Name.ToCSharpIdentifier()}Model",
+                fileName: $"{Model.ApiClassName}",
                 fileExtension: "cs",
                 defaultLocationInProject: "Api",
-                className: $"{Model.Name.ToCSharpIdentifier()}Model",
+                className: $"{Model.ApiClassName}",
                 @namespace: Model.Designer.ApiNamespace
             );
         }

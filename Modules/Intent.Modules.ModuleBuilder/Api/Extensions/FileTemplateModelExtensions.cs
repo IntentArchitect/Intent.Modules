@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public static class FileTemplateExtensions
+    public static class FileTemplateModelExtensions
     {
         public static FileSettings GetFileSettings(this FileTemplateModel model)
         {

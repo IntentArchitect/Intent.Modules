@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="a5005ab4-c80b-4954-ba39-a4beb3471fb7" type="Operation">
+  <name>GetSomething</name>
+  <display>GetSomething(): string</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="941cb6c4-054b-4e5c-a3a0-c5085b0de76d">
+    <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

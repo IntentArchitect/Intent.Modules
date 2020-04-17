@@ -12,6 +12,16 @@
     </FileLog>
     <FileLog>
       <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Api\Extensions\CSharpTemplateModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/CSharpTemplateModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Api\Extensions\FileTemplateModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/FileTemplateModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\ApiMetadataProvider.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
     </FileLog>

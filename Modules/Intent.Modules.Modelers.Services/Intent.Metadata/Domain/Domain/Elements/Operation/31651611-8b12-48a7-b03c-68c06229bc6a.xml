@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="31651611-8b12-48a7-b03c-68c06229bc6a" type="Operation">
+  <name>ChangeUsageBands</name>
+  <display>ChangeUsageBands(countries: &lt;no type&gt;[*], usageBands: &lt;no type&gt;[*]): void</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="777662ed-88f0-4061-b396-59edea99e6b0">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="1cf363a0-ab00-4e50-a627-7d5f31f39dd1">
+      <addedByDefault>false</addedByDefault>
+      <properties />
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

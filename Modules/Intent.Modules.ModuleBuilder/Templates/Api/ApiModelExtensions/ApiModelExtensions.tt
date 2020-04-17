@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<ElementSettingsModel>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<ExtensionModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -18,15 +18,15 @@ namespace <#= Namespace #>
 {
     public static class <#= ClassName #>
     {
-<#  foreach(var stereotypeDefinition in StereotypeDefinitions) { #>
+<#  foreach(var stereotypeDefinition in Model.StereotypeDefinitions) { #>
         public static <#= stereotypeDefinition.Name.ToCSharpIdentifier() #> Get<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model)
         {
             var stereotype = model.GetStereotype("<#= stereotypeDefinition.Name #>");
-            return stereotype != null ? new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(stereotype) : null;
+            return stereotype != null ? new <#= stereotypeDefinition.Name.  ToCSharpIdentifier() #>(stereotype) : null;
         }
 
 <#  } #> 
-<#  foreach(var stereotypeDefinition in StereotypeDefinitions) { #>
+<#  foreach(var stereotypeDefinition in Model.StereotypeDefinitions) { #>
         public class <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>
         {
             private IStereotype _stereotype;

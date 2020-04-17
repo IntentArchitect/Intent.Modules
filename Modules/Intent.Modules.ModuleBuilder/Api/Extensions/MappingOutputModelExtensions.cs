@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public static class MappingOutputExtensions
+    public static class MappingOutputModelExtensions
     {
         public static OutputSettings GetOutputSettings(this MappingOutputModel model)
         {

@@ -57,19 +57,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
 
         private string GetModelType()
         {
-            var modelType = Model.GetModelType();
-            if (Model.IsFilePerModelTemplateRegistration())
-            {
-                return modelType?.InterfaceName ?? "object";
-            }
-
-            return modelType == null ? "object" : $"IList<{modelType.InterfaceName}>";
+            return Model.GetModelName();
         }
 
         public string GetModelsMethod()
         {
-            var model = Model.GetModelType();
-            return $"_metadataManager.Get{model.ClassName.ToPluralName()}(application)";
+            var modelName = Model.GetModelName();
+            return $"_metadataManager.Get{modelName.ToPluralName()}(application)";
         }
     }
 }

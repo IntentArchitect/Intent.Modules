@@ -6,6 +6,7 @@ using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.Engine;
+using Intent.Modules.Modelers.Services;
 using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
@@ -33,7 +34,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override IEnumerable<IDTOModel> GetModels(IApplication application)
         {
-            var dtoModels = new ApiMetadataProvider(_metadataManager).GetAllDTOs();
+            var dtoModels = new ApiMetadataProvider(_metadataManager).GetDTOModels(application);
 
             dtoModels = dtoModels
                 .Where(x => GetConsumers(x).Any(y => application.Name.Equals(y, StringComparison.OrdinalIgnoreCase)))

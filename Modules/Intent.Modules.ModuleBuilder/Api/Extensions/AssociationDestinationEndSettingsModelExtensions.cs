@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public static class AssociationDestinationEndSettingsExtensions
+    public static class AssociationDestinationEndSettingsModelExtensions
     {
         public static Settings GetSettings(this AssociationDestinationEndSettingsModel model)
         {

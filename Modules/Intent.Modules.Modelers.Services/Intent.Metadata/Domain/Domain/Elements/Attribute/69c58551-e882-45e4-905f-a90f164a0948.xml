@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="69c58551-e882-45e4-905f-a90f164a0948" type="Attribute">
+  <name>name</name>
+  <display>name: string</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="8db4bd64-5afd-4d88-8a6d-33bd92adb2fc">
+    <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>06919864-4a6b-4894-ab64-f660d41e583d</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>
