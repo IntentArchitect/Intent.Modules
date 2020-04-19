@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             var modelers = _metadataManager
                 .GetDesignerModels(application)
                 .Concat(_metadataManager.GetDesignerExtensionModels(application))
-                .Where(x => !x.GetModelerSettings().IsReference())
+                .Where(x => !x.GetDesignerSettings().IsReference())
                 .ToList();
 
             return modelers;

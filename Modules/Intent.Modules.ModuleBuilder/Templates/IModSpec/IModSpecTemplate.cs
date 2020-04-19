@@ -161,8 +161,22 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            var packagesToInclude = _metadataManager.
-           
+            var packagesToInclude = _metadataManager.GetMetadata<IPackage>("Module Builder", Project.Application.Id)
+                .Where(x => x.GetStereotypeProperty("Package Settings", "Include in Module", false))
+                .ToList();
+            foreach (var package in packagesToInclude)
+            {
+                var path = CrossPlatformPathHelpers.NormalizePath(Path.GetRelativePath(GetMetadata().GetFullLocationPath(), Path.GetDirectoryName(package.FileLocation)));
+                if (doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") == null)
+                {
+                    var metadataRegistrations = doc.XPathSelectElement("package/metadata");
+                    metadataRegistrations.Add(new XElement("install",
+                        new XAttribute("target", package.GetStereotypeProperty<IElement>("Package Settings", "Reference in Designer")?.Name ?? string.Empty),
+                        new XAttribute("src", path)));
+                }
+            }
+
+
             return doc.ToStringUTF8();
         }
 

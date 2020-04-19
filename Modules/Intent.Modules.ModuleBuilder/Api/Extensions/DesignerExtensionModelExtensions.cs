@@ -10,18 +10,18 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class DesignerExtensionModelExtensions
     {
-        public static ModelerSettings GetModelerSettings(this DesignerExtensionModel model)
+        public static DesignerSettings GetDesignerSettings(this DesignerExtensionModel model)
         {
-            var stereotype = model.GetStereotype("Modeler Settings");
-            return stereotype != null ? new ModelerSettings(stereotype) : null;
+            var stereotype = model.GetStereotype("Designer Settings");
+            return stereotype != null ? new DesignerSettings(stereotype) : null;
         }
 
 
-        public class ModelerSettings
+        public class DesignerSettings
         {
             private IStereotype _stereotype;
 
-            public ModelerSettings(IStereotype stereotype)
+            public DesignerSettings(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }

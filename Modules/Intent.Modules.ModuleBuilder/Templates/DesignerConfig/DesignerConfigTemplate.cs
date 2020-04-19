@@ -24,6 +24,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
         {
         }
 
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
+            {
+                { "Target", Model.Name },
+                { "Folder", GetMetadata().LocationInProject }
+            });
+        }
+
         public override string TransformText()
         {
             var path = FileMetadata.GetFullLocationPathWithFileName();
@@ -31,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                 ? LoadAndDeserialize<ApplicationModelerModel>(path)
                 : new ApplicationModelerModel { Settings = new ModelerSettingsPersistable() };
 
-            applicationModelerModeler.Icon = Model.GetModelerSettings().Icon().ToPersistable();
+            applicationModelerModeler.Icon = Model.GetDesignerSettings().Icon().ToPersistable();
             var modelerSettings = applicationModelerModeler.Settings;
 
             //modelerSettings.DiagramSettings // TODO

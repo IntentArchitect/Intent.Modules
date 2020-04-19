@@ -25,51 +25,42 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiMetadataProviderExtensions.cs</LastGenOutput>
     </None>
-  
     <Compile Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiMetadataProviderExtensions.tt</DependentUpon>
     </Compile>
-  
     <None Update="Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiModelImplementationTemplate.cs</LastGenOutput>
     </None>
-  
     <None Update="Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiModelInterfaceTemplate.cs</LastGenOutput>
     </None>
-  
     <Compile Update="Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiModelImplementationTemplate.tt</DependentUpon>
     </Compile>
-  
     <Compile Update="Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiModelInterfaceTemplate.tt</DependentUpon>
     </Compile>
-  
     <None Update="Templates\Api\ApiModelExtensions\ApiModelExtensions.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiModelExtensions.cs</LastGenOutput>
     </None>
-  
     <Compile Update="Templates\Api\ApiModelExtensions\ApiModelExtensions.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiModelExtensions.tt</DependentUpon>
     </Compile>
-  
     <None Update="Templates\Api\ApiMetadataProvider\ApiMetadataProvider.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiMetadataProvider.cs</LastGenOutput>
     </None>
-  
     <Compile Update="Templates\Api\ApiMetadataProvider\ApiMetadataProvider.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -84,19 +75,12 @@
     <Content Update="modeler\ModelerBuilder.modeler.extension.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  
     <Content Update="modeler\Modeler Builder.modeler.extension.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  
     <Content Update="modeler\Module Builder.modeler.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  
-    
-  
-    
-  
     <Content Update="modelers\Intent.modeler.extension.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -107,14 +91,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.Modules.Common" Version="2.0.3" />
+    <PackageReference Include="Intent.Modules.Common" Version="2.0.0" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.0-pre.8" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -183,6 +163,10 @@
 
   <ItemGroup>
     <Folder Include="Templates\Api\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
   </ItemGroup>
 
 </Project>

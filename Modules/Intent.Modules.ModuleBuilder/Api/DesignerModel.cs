@@ -62,7 +62,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new ElementSettingsModel(x))
             .ToList<ElementSettingsModel>();
 
-        public string ApiNamespace => this.GetModelerSettings().APINamespace();
+        public string ApiNamespace => this.GetDesignerSettings().APINamespace();
         public string ModuleDependency => null;
         public string ModuleVersion => null;
         public string NuGetDependency => null;
@@ -97,7 +97,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public virtual bool IsReference()
         {
-            return this.GetModelerSettings().IsReference();
+            return this.GetDesignerSettings().IsReference();
         }
 
         [IntentManaged(Mode.Fully)]

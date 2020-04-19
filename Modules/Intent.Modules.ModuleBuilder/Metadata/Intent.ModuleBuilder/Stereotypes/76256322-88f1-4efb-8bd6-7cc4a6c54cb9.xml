@@ -23,5 +23,16 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="27d378b6-9011-4ced-86b7-b976d690ceb7">
+      <name>Reference in Designer</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>designer</type>
+      </lookupTypes>
+    </property>
   </properties>
 </stereotypeDefinition>
