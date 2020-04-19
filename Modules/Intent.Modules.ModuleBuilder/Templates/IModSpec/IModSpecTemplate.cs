@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -167,6 +168,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             foreach (var package in packagesToInclude)
             {
                 var path = CrossPlatformPathHelpers.NormalizePath(Path.GetRelativePath(GetMetadata().GetFullLocationPath(), Path.GetDirectoryName(package.FileLocation)));
+                if (path.StartsWith(".."))
+                {
+                    throw new Exception($"Package [{package.Name}] cannot be included because it is not within the Module Builder root location [{GetMetadata().GetFullLocationPath()}]");
+                }
                 if (doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") == null)
                 {
                     var metadataRegistrations = doc.XPathSelectElement("package/metadata");

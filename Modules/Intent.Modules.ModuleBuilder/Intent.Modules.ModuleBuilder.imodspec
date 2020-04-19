@@ -106,6 +106,8 @@
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0" />
   </dependencies>
   <metadata>
+    <install target="Module Builder" src="modelers" />
+    <install target="Module Builder" src="metadata/Intent.ModuleBuilder" />
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />
