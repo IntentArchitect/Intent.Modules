@@ -5,7 +5,7 @@
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>d64977b7-821d-42b7-9072-2929ed61272d</parentFolderId>
+  <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -20,7 +20,6 @@
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
-        <property name="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd" display="Allow Mapping" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="true" isActive="true" />
       </properties>
@@ -57,6 +56,38 @@
           <genericTypes />
           <typeReference id="31274192-00ab-4c20-82a4-0f5ba82a1dc5">
             <typeId>7a6411a8-ffef-4209-91c6-8d12755a806a</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2f9ce669-d9ee-45ae-be5c-ed7a3ad68614</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment>Overrides the default creation option settings.</comment>
+              <addedByDefault>false</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="2f4cc6a5-6e24-498d-bf51-10639e54829d" type="Creation Option">
+          <name>New Designer Extension</name>
+          <display>New Designer Extension: Designer Extension</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="7a6b8bff-1090-4c1e-a34f-1192be9829aa">
+            <typeId>a747162d-696b-49ed-9075-b5da8d852e15</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

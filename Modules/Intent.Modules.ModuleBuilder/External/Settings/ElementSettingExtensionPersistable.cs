@@ -15,5 +15,8 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArray("typeOrder")]
         [XmlArrayItem("type")]
         public List<TypeOrderPersistable> TypeOrder { get; set; }
+
+        [XmlElement("mappingSettings")]
+        public MappingSettingsPersistable MappingSettings { get; set; }
     }
 }

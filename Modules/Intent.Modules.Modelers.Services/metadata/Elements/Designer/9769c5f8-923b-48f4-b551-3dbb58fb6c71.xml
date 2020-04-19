@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9769c5f8-923b-48f4-b551-3dbb58fb6c71" type="Designer">
+  <name>References</name>
+  <display>References</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>6968d532-461a-4cc8-a30e-d3ec87c50cdc</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Modeler Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="bd56e4e2-b75c-4400-8088-a1a3f21988f0" display="Icon" value="{&quot;source&quot;:&quot;question-circle&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="asdf" isActive="true" />
+        <property name="c3f89951-374a-4bb5-bcf7-10a8f208f317" display="Is Reference" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

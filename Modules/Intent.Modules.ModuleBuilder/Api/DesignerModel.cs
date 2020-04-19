@@ -68,11 +68,13 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string NuGetDependency => null;
         public string NuGetVersion => null;
 
-        protected bool Equals(DesignerModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(DesignerModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -81,6 +83,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return Equals((DesignerModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
@@ -94,7 +97,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public virtual bool IsReference()
         {
-            return this.GetModelerSettings().ModelerType().IsReference();
+            return this.GetModelerSettings().IsReference();
         }
 
         [IntentManaged(Mode.Fully)]
@@ -102,9 +105,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == Api.ElementExtensionModel.SpecializationType)
             .Select(x => new ElementExtensionModel(x))
             .ToList<ElementExtensionModel>();
-
-        [IntentManaged(Mode.Fully)]
-        public ITypeReference TypeReference => _element.TypeReference;
     }
 
     public class TypeOrder : IEquatable<TypeOrder>

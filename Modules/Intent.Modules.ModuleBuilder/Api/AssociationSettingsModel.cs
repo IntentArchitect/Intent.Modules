@@ -48,7 +48,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return new AssociationSettingsPersistable
             {
                 SpecializationType = this.Name,
-                Icon = GetIcon(this.SourceEnd.GetSettings().Icon()),
+                Icon = this.SourceEnd.GetSettings().Icon().ToPersistable(),
                 SourceEnd = new AssociationEndSettingsPersistable
                 {
                     TargetTypes = this.SourceEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
@@ -72,16 +72,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             };
         }
 
-        private IconModelPersistable GetIcon(IIconModel icon)
-        {
-            return icon != null ? new IconModelPersistable { Type = (IconType)icon.Type, Source = icon.Source } : null;
-        }
-
-        protected bool Equals(AssociationSettingsModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(AssociationSettingsModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -90,6 +87,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return Equals((AssociationSettingsModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

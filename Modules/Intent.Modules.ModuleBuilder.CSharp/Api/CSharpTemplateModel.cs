@@ -20,11 +20,13 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Api
         }
 
 
-        protected bool Equals(CSharpTemplateModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(CSharpTemplateModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -33,6 +35,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Api
             return Equals((CSharpTemplateModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="ae2c14d0-eb26-4d7c-8daf-9a714df2d5f0" type="Designer">
   <name>Intent</name>
-  <display>Intent: void</display>
+  <display>Intent</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="cbf0b467-3ac7-4aac-924a-fea1d148ab86">
-    <isNavigable>true</isNavigable>
-    <isNullable>false</isNullable>
-    <isCollection>false</isCollection>
-    <stereotypes />
-    <genericTypeParameters />
-  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>b54ca450-86a6-4a9e-9797-9e628aaeebdd</parentFolderId>
   <literals />
@@ -20,8 +13,9 @@
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Modeler Settings">
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="4aa74c35-6eff-41a3-be11-a2f82ca80150" display="Modeler Type" value="Reference" isActive="true" />
+        <property name="bd56e4e2-b75c-4400-8088-a1a3f21988f0" display="Icon" value="{&quot;source&quot;:&quot;file&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Metadata.Models" isActive="true" />
+        <property name="c3f89951-374a-4bb5-bcf7-10a8f208f317" display="Is Reference" value="true" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

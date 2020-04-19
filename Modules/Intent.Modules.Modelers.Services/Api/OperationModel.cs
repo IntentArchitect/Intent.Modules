@@ -36,11 +36,13 @@ namespace Intent.Modelers.Services.Api
             .Select(x => new ParameterModel(x))
             .ToList<ParameterModel>();
 
-        protected bool Equals(OperationModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(OperationModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -49,6 +51,7 @@ namespace Intent.Modelers.Services.Api
             return Equals((OperationModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

@@ -54,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 AllowRename = this.GetSettings().AllowRename(),
                 AllowAbstract = this.GetSettings().AllowAbstract(),
                 AllowGenericTypes = this.GetSettings().AllowGenericTypes(),
-                AllowMapping = this.GetSettings().AllowMapping(),
+                AllowMapping = this.MappingSettings != null,
                 AllowSorting = this.GetSettings().AllowSorting(),
                 AllowFindInView = this.GetSettings().AllowFindInView(),
                 AllowTypeReference = !this.GetTypeReferenceSettings().Mode().IsDisabled(),
@@ -115,11 +115,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             return _element.ToString();
         }
 
-        protected bool Equals(ElementSettingsModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(ElementSettingsModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -128,6 +130,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return Equals((ElementSettingsModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

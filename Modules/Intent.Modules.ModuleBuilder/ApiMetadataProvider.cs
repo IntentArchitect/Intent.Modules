@@ -55,6 +55,15 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
+        public IList<DesignerExtensionModel> GetDesignerExtensionModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == DesignerExtensionModel.SpecializationType)
+                .Select(x => new DesignerExtensionModel(x))
+                .ToList<DesignerExtensionModel>();
+            return models;
+        }
+
         public IList<DesignersFolderModel> GetDesignersFolderModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)

@@ -35,13 +35,13 @@ namespace Intent.Modelers.Services.Api
             .ToList<DTOFieldModel>();
         public string Comment => _class.Id;
 
-        protected bool Equals(DTOModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(DTOModel other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return string.Equals(Id, other.Id);
+            return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -50,9 +50,10 @@ namespace Intent.Modelers.Services.Api
             return Equals((DTOModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
-            return (Id != null ? Id.GetHashCode() : 0);
+            return (_element != null ? _element.GetHashCode() : 0);
         }
         protected readonly IElement _element;
         public const string SpecializationType = "DTO";

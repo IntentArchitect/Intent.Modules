@@ -5,7 +5,7 @@
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>d64977b7-821d-42b7-9072-2929ed61272d</parentFolderId>
+  <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -20,7 +20,6 @@
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
-        <property name="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd" display="Allow Mapping" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="true" isActive="true" />
       </properties>
@@ -28,12 +27,12 @@
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Optional" isActive="true" />
-        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;7a6411a8-ffef-4209-91c6-8d12755a806a&quot;]" isActive="true" />
-        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
-        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="true" />
-        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="false" isActive="true" />
-        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="false" isActive="true" />
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;7a6411a8-ffef-4209-91c6-8d12755a806a&quot;]" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="false" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="false" isActive="false" />
       </properties>
     </stereotype>
   </stereotypes>
@@ -82,12 +81,12 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="3489746c-2bd8-41cb-9323-8698fced688c" type="Creation Option">
+        <childElement id="5fd01a4f-ec01-4de8-9262-e6df2731cc42" type="Creation Option">
           <name>New Element Extension</name>
           <display>New Element Extension: Element Extension</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="64f0988a-edba-4abd-8091-820f9fd16d6f">
+          <typeReference id="08967828-f3f7-4699-885d-170b41d143ae">
             <typeId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>

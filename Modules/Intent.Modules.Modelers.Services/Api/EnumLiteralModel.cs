@@ -31,11 +31,14 @@ namespace Intent.Modelers.Services.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        protected bool Equals(EnumLiteralModel other)
+
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(EnumLiteralModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -44,6 +47,7 @@ namespace Intent.Modelers.Services.Api
             return Equals((EnumLiteralModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

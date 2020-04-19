@@ -57,10 +57,10 @@ namespace <#= Namespace #>
             if (ExistsInBase(creationOption))
                 continue;#>
         [IntentManaged(Mode.Fully)]
-        public <#= GetCreationOptionTypeInterface(creationOption, creationOption.GetCreationOptions().AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
+        public <#= GetCreationOptionTypeInterface(creationOption, creationOption.GetOptionSettings().AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
             .Where(x => x.SpecializationType == Api.<#= GetCreationOptionTypeClass(creationOption) #>.SpecializationType)
             .Select(x => new <#= GetCreationOptionTypeClass(creationOption) #>(x))
-<#      if (creationOption.GetCreationOptions().AllowMultiple()) { #>
+<#      if (creationOption.GetOptionSettings().AllowMultiple()) { #>
             .ToList<<#= GetCreationOptionTypeInterface(creationOption, false) #>>();
 <#      } else { #>
             .SingleOrDefault();
@@ -68,11 +68,13 @@ namespace <#= Namespace #>
 <#      }
     }#>
 
-        protected bool Equals(<#= ClassName #> other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(<#= ClassName #> other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -81,6 +83,7 @@ namespace <#= Namespace #>
             return Equals((<#= ClassName #>)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

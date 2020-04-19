@@ -13,11 +13,6 @@ namespace Intent.Modules.Modelers.Services
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<ControllerModel> GetControllerModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetControllerModels(application);
-        }
-
         public static IList<DTOModel> GetDTOModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetDTOModels(application);

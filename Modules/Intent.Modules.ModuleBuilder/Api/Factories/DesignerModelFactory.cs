@@ -15,6 +15,8 @@ namespace Intent.Modules.ModuleBuilder.Api.Factories
             {
                 case DesignerModel.SpecializationType:
                     return new DesignerModel(element);
+                case DesignerExtensionModel.SpecializationType:
+                    return new DesignerExtensionModel(element);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -23,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Api.Factories
         public static DesignerModel GetDesigner(IElement forElement)
         {
             var designerElement = forElement.GetParentPath()
-                .Single(x => x.SpecializationType == Api.DesignerModel.SpecializationType);
+                .Single(x => x.SpecializationType == Api.DesignerModel.SpecializationType || x.SpecializationType == Api.DesignerExtensionModel.SpecializationType);
             return Create(designerElement);
         }
     }

@@ -38,11 +38,13 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<TypeOrder> TypeOrder { get; }
 
-        protected bool Equals(ContextMenuModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(ContextMenuModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -51,6 +53,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return Equals((ContextMenuModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

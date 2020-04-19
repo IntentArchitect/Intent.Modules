@@ -30,7 +30,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-
         protected bool Equals(MappingCriteria other)
         {
             return Equals(_element, other._element);

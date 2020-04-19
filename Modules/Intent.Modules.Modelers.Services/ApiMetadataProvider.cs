@@ -19,15 +19,6 @@ namespace Intent.Modules.Modelers.Services
             _metadataManager = metadataManager;
         }
 
-        public IList<ControllerModel> GetControllerModels(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == ControllerModel.SpecializationType)
-                .Select(x => new ControllerModel(x))
-                .ToList<ControllerModel>();
-            return models;
-        }
-
         public IList<DTOModel> GetDTOModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)

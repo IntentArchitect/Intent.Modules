@@ -87,17 +87,6 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="7bfd2a2c-bb18-474e-b25e-6f6de45f29bd">
-      <name>Allow Mapping</name>
-      <type>boolean</type>
-      <controlType>checkbox</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <defaultValue>false</defaultValue>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction />
-    </property>
     <property id="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb">
       <name>Allow Sorting</name>
       <type>boolean</type>

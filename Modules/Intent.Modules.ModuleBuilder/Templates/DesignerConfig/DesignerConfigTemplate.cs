@@ -31,13 +31,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                 ? LoadAndDeserialize<ApplicationModelerModel>(path)
                 : new ApplicationModelerModel { Settings = new ModelerSettingsPersistable() };
 
+            applicationModelerModeler.Icon = Model.GetModelerSettings().Icon().ToPersistable();
             var modelerSettings = applicationModelerModeler.Settings;
 
             //modelerSettings.DiagramSettings // TODO
             modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable();
             modelerSettings.ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.AssociationSettings = Model.AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
-            modelerSettings.ElementExtensions = Model.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
+            modelerSettings.ElementExtensions = (Model as DesignerExtensionModel)?.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
+
             modelerSettings.StereotypeSettings = GetStereotypeSettings(Model);
 
             return Serialize(applicationModelerModeler);
@@ -67,7 +69,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{Model.Name}.modeler{(Model.GetModelerSettings().ModelerType().IsExtension() ? ".extension" : "")}",
+                fileName: $"{Model.Name}.modeler{(Model is DesignerExtensionModel ? ".extension" : "")}",
                 fileExtension: "config",
                 defaultLocationInProject: "modelers");
         }

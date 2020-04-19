@@ -15,6 +15,7 @@
     <dependency id="Intent.Common" version="2.0.0" />
   </dependencies>
   <metadata>
+    <install target="Module Builder" src="metadata" />
     <install target="Services" src="modelers" />
   </metadata>
   <files></files>

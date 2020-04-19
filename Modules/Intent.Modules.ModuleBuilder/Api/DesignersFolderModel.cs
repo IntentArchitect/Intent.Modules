@@ -36,11 +36,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new DesignerModel(x))
             .ToList<DesignerModel>();
 
-        protected bool Equals(DesignersFolderModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(DesignersFolderModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -49,9 +51,16 @@ namespace Intent.Modules.ModuleBuilder.Api
             return Equals((DesignersFolderModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<DesignerExtensionModel> DesignerExtensions => _element.ChildElements
+            .Where(x => x.SpecializationType == Api.DesignerExtensionModel.SpecializationType)
+            .Select(x => new DesignerExtensionModel(x))
+            .ToList<DesignerExtensionModel>();
     }
 }

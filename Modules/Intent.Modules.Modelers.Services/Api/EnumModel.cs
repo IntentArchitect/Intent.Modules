@@ -35,11 +35,13 @@ namespace Intent.Modelers.Services.Api
         public string Comment => _element.Comment;
         public const string SpecializationType = "Enum";
 
-        protected bool Equals(EnumModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(EnumModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -48,6 +50,7 @@ namespace Intent.Modelers.Services.Api
             return Equals((EnumModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

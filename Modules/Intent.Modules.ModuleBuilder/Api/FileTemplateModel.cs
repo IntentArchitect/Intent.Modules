@@ -19,11 +19,13 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
 
-        protected bool Equals(FileTemplateModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(FileTemplateModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -32,6 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return Equals((FileTemplateModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

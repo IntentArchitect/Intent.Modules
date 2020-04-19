@@ -152,16 +152,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            //foreach (var template in Model.Templates)
-            //{
-            //    // TODO: GCB - this should probably come from the registration
-            //    if (!string.IsNullOrWhiteSpace(template.GetModeler()?.ModuleDependency) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{template.GetModeler().ModuleDependency}\"]") == null)
-            //    {
-            //        var dependencies = doc.XPathSelectElement("package/dependencies");
-            //        dependencies.Add(CreateDependency(new IntentModule(template.GetModeler().ModuleDependency, template.GetModeler().ModuleVersion)));
-            //    }
-            //}
-
             foreach (var metadataRegistration in _metadataToRegister)
             {
                 if (doc.XPathSelectElement($"package/metadata/install[@src=\"{metadataRegistration.Folder}\"]") == null)
@@ -171,24 +161,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            //if (Model.Any(x => x.GetModelerName() == "Domain") && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Domain\"]") == null)
-            //{
-            //    var dependencies = doc.XPathSelectElement("package/dependencies");
-            //    dependencies.Add(CreateDependency(IntentModule.IntentDomainModeler));
-            //}
-
-            //if (Model.Any(x => x.GetModelerName() == "Services") && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Services\"]") == null)
-            //{
-            //    var dependencies = doc.XPathSelectElement("package/dependencies");
-            //    dependencies.Add(CreateDependency(IntentModule.IntentServicesModeler));
-            //}
-
-            //if (Model.Any(x => x.GetModelerName() == "Eventing") && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.Modelers.Eventing\"]") == null)
-            //{
-            //    var dependencies = doc.XPathSelectElement("package/dependencies");
-            //    dependencies.Add(CreateDependency(IntentModule.IntentEventingModeler));
-            //}
-
+            var packagesToInclude = _metadataManager.
+           
             return doc.ToStringUTF8();
         }
 

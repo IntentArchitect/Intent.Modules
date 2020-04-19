@@ -82,11 +82,14 @@ namespace Intent.Modules.ModuleBuilder.Api
             return _element.ReferencesCustom();
         }
 
-        protected bool Equals(TemplateRegistrationModel other)
+
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(TemplateRegistrationModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -95,6 +98,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return Equals((TemplateRegistrationModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

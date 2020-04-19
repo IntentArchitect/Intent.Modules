@@ -4,27 +4,24 @@
   <targetMode>of-type</targetMode>
   <targetElements>
     <element>designer</element>
+    <element>designer extension</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="UrlImagePath" source="data:image/png;base64,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" />
   <displayIcon>false</displayIcon>
-  <displayFunction>[${ModelerType}]</displayFunction>
+  <displayFunction>${property["Is Reference"].value ? "[Reference]" : ""}</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
   <order>0</order>
   <properties>
-    <property id="4aa74c35-6eff-41a3-be11-a2f82ca80150">
-      <name>Modeler Type</name>
+    <property id="bd56e4e2-b75c-4400-8088-a1a3f21988f0">
+      <name>Icon</name>
       <type>string</type>
-      <controlType>select</controlType>
-      <optionsSource>options</optionsSource>
-      <placeholder>(required)</placeholder>
-      <defaultValue>Standard</defaultValue>
-      <valueOptions>
-        <option>Standard</option>
-        <option>Extension</option>
-        <option>Reference</option>
-      </valueOptions>
+      <controlType>icon</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>{"source":"question-circle","type":2,"absolutePathRelativeTo":null}</defaultValue>
+      <valueOptions />
       <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
@@ -37,6 +34,16 @@
       <valueOptions />
       <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
+    </property>
+    <property id="c3f89951-374a-4bb5-bcf7-10a8f208f317">
+      <name>Is Reference</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>

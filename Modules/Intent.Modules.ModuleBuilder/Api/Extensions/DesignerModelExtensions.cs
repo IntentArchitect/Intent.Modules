@@ -26,9 +26,9 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
-            public ModelerTypeOptions ModelerType()
+            public IIconModel Icon()
             {
-                return new ModelerTypeOptions(_stereotype.GetProperty<string>("Modeler Type"));
+                return _stereotype.GetProperty<IIconModel>("Icon");
             }
 
             public string APINamespace()
@@ -36,27 +36,9 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("API Namespace");
             }
 
-            public class ModelerTypeOptions
+            public bool IsReference()
             {
-                public readonly string Value;
-
-                public ModelerTypeOptions(string value)
-                {
-                    Value = value;
-                }
-
-                public bool IsStandard()
-                {
-                    return Value == "Standard";
-                }
-                public bool IsExtension()
-                {
-                    return Value == "Extension";
-                }
-                public bool IsReference()
-                {
-                    return Value == "Reference";
-                }
+                return _stereotype.GetProperty<bool>("Is Reference");
             }
 
         }

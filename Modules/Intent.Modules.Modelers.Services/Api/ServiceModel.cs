@@ -38,13 +38,13 @@ namespace Intent.Modelers.Services.Api
             return $"Service: {Name}";
         }
 
-        protected bool Equals(ServiceModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(ServiceModel other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return string.Equals(Id, other.Id);
+            return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -53,9 +53,10 @@ namespace Intent.Modelers.Services.Api
             return Equals((ServiceModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
-            return (Id != null ? Id.GetHashCode() : 0);
+            return (_element != null ? _element.GetHashCode() : 0);
         }
         public const string SpecializationType = "Service";
     }

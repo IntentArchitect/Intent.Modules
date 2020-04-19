@@ -4,21 +4,6 @@
   <FileLogs>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ControllerModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ControllerModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ControllerOperationModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ControllerOperationModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ControllerParameterModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ControllerParameterModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\DTOFieldModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/DTOFieldModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -81,11 +66,6 @@
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.imodspec</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\modelers\Controllers.modeler.extension.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Controllers.modeler.extension.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>

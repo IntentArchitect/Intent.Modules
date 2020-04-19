@@ -31,11 +31,13 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
 
-        protected bool Equals(CoreTypeModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(CoreTypeModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -44,6 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return Equals((CoreTypeModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

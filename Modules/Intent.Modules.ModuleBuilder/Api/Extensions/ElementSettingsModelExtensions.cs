@@ -67,11 +67,6 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Allow Generic Types");
             }
 
-            public bool AllowMapping()
-            {
-                return _stereotype.GetProperty<bool>("Allow Mapping");
-            }
-
             public bool AllowSorting()
             {
                 return _stereotype.GetProperty<bool>("Allow Sorting");

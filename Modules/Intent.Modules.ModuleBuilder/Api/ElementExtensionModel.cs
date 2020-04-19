@@ -58,15 +58,18 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 SpecializationType = TypeReference.Element.Name,
                 CreationOptions = MenuOptions?.CreationOptions.Select(x => x.ToPersistable()).ToList(),
-                TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList()
+                TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
+                MappingSettings = MappingSettings?.ToPersistable()
             };
         }
 
-        protected bool Equals(ElementExtensionModel other)
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(ElementExtensionModel other)
         {
             return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -75,6 +78,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return Equals((ElementExtensionModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
