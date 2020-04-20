@@ -7,7 +7,7 @@ using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
@@ -34,19 +34,19 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public MappingCriteriaModel Criteria => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.MappingCriteriaModel.SpecializationType)
+            .Where(x => x.SpecializationType == MappingCriteriaModel.SpecializationType)
             .Select(x => new MappingCriteriaModel(x))
             .SingleOrDefault();
         [IntentManaged(Mode.Fully)]
         public MappingOutputModel Output => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.MappingOutputModel.SpecializationType)
+            .Where(x => x.SpecializationType == MappingOutputModel.SpecializationType)
             .Select(x => new MappingOutputModel(x))
             .SingleOrDefault();
         [IntentManaged(Mode.Fully)]
         public IList<ElementMappingModel> ChildMappings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ElementMappingModel.SpecializationType)
+            .Where(x => x.SpecializationType == ElementMappingModel.SpecializationType)
             .Select(x => new ElementMappingModel(x))
-            .ToList<ElementMappingModel>();
+            .ToList();
 
         public ElementMappingSettingPersistable ToPersistable()
         {

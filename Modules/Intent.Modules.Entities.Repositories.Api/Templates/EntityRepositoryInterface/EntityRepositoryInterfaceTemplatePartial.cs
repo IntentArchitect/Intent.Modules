@@ -10,11 +10,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInterface
 {
-    partial class EntityRepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook
+    partial class EntityRepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.Repositories.Api.EntityInterface";
 
-        public EntityRepositoryInterfaceTemplate(IClass model, IProject project)
+        public EntityRepositoryInterfaceTemplate(ClassModel model, IProject project)
             : base(Identifier, project, model)
         {
         }

@@ -5,7 +5,7 @@ namespace Intent.Modelers.Domain.Api
 {
     public static class DomainMetadataManagerExtensions
     {
-        public static IEnumerable<IClass> GetDomainClasses(this IMetadataManager metadataManager, string applicationId)
+        public static IEnumerable<ClassModel> GetDomainClasses(this IMetadataManager metadataManager, string applicationId)
         {
             return new DomainMetadataProvider(metadataManager).GetClasses(applicationId);
         }

@@ -77,7 +77,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
                     : type;
             }
 
-            var templateDependancy = TemplateDependency.OnModel<IClass>(_domainTemplateDependancyConfigValue, (to) => to.Id == model.MappedClass.ElementId);
+            var templateDependancy = TemplateDependency.OnModel<ClassModel>(_domainTemplateDependancyConfigValue, (to) => to.Id == model.MappedClass.ElementId);
             var templateOutput = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {

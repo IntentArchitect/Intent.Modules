@@ -14,7 +14,7 @@ namespace Intent.Modules.Entities.Decorators
         {
         }
 
-        public override IEnumerable<string> GetInterfaces(IClass @class)
+        public override IEnumerable<string> GetInterfaces(ClassModel @class)
         {
             var baseClass = @class.GetStereotypeProperty<string>("Serializable", "BaseType");
             if (baseClass != null)

@@ -6,13 +6,12 @@ using Intent.Modules.Application.Contracts;
 using Intent.Engine;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {
     public class DeleteImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, OperationModel operationModel)
+        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, ClassModel domainModel, OperationModel operationModel)
         {
             if (operationModel.Parameters.Count() != 1)
             {
@@ -39,7 +38,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, OperationModel operationModel)
+        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, ClassModel domainModel, OperationModel operationModel)
         {
             return $@"var existing{domainModel.Name} ={ (operationModel.IsAsync() ? " await" : "") } {domainModel.Name.ToPrivateMember()}Repository.FindById{ (operationModel.IsAsync() ? "Async" : "") }(id);
                 {domainModel.Name.ToPrivateMember()}Repository.Remove(existing{domainModel.Name});";

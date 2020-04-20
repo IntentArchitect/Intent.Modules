@@ -6,11 +6,11 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modelers.Domain.Api
 {
-    internal class Class : IClass, IEquatable<IClass>
+    internal class Class : ClassModel, IEquatable<ClassModel>
     {
         private IList<IAssociationEnd> _associatedElements;
         private readonly IElement _element;
-        private readonly ICollection<IClass> _childClasses = new List<IClass>();
+        private readonly ICollection<ClassModel> _childClasses = new List<ClassModel>();
         private readonly Class _parent;
 
         public Class(IElement element, IDictionary<string, Class> classCache)
@@ -54,8 +54,8 @@ namespace Intent.Modelers.Domain.Api
         public string Name => _element.Name;
         public bool IsAbstract => _element.IsAbstract;
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
-        public IClass ParentClass => _parent;
-        public IEnumerable<IClass> ChildClasses => _childClasses;
+        public ClassModel ParentClass => _parent;
+        public IEnumerable<ClassModel> ChildClasses => _childClasses;
         public bool IsMapped => _element.IsMapped;
         public string Comment => _element.Comment;
         public IElementMapping MappedClass => _element.MappedElement;
@@ -96,7 +96,7 @@ namespace Intent.Modelers.Domain.Api
             return !(lhs == rhs);
         }
 
-        public bool Equals(IClass other)
+        public bool Equals(ClassModel other)
         {
             return string.Equals(Id, other?.Id);
         }
@@ -106,7 +106,7 @@ namespace Intent.Modelers.Domain.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((IClass)obj);
+            return Equals((ClassModel)obj);
         }
 
         public override int GetHashCode()

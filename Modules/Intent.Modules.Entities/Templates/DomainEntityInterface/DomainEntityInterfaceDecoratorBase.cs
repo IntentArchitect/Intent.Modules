@@ -18,11 +18,11 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 
         public virtual IEnumerable<string> DeclareUsings() { return new List<string>(); }
 
-        public virtual IEnumerable<string> GetInterfaces(IClass @class) { return new List<string>(); }
+        public virtual IEnumerable<string> GetInterfaces(ClassModel @class) { return new List<string>(); }
 
-        public virtual string InterfaceAnnotations(IClass @class) { return null; }
+        public virtual string InterfaceAnnotations(ClassModel @class) { return null; }
 
-        public virtual string BeforeProperties(IClass @class) { return null; }
+        public virtual string BeforeProperties(ClassModel @class) { return null; }
 
         public virtual string PropertyBefore(IAttribute attribute) { return null; }
 

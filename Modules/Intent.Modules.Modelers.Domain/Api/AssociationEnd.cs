@@ -30,7 +30,7 @@ namespace Intent.Modelers.Domain.Api
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
         public string Comment => _associationEnd.Comment;
         public IAssociation Association { get; }
-        public IClass Class { get; }
+        public ClassModel Class { get; }
         public bool IsNavigable => _associationEnd.IsNavigable;
         public string MinMultiplicity => _associationEnd.IsNullable ? "0" : "1";
         public string MaxMultiplicity => _associationEnd.IsCollection ? "*" : "1";

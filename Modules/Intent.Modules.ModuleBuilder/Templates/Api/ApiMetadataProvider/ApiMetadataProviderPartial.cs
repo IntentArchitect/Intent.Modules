@@ -40,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProvider
 
         private string GetClassName(ElementSettingsModel elementSettings)
         {
-            return GetTemplateClassName(ApiModelImplementationTemplate.ApiModelImplementationTemplate.TemplateId, elementSettings);
+            return GetTemplateClassName(ApiElementModel.ApiElementModel.TemplateId, elementSettings);
         }
     }
 }

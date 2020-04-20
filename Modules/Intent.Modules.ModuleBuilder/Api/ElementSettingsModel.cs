@@ -10,7 +10,7 @@ using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Api
@@ -88,25 +88,25 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public ContextMenuModel MenuOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ContextMenuModel.SpecializationType)
+            .Where(x => x.SpecializationType == ContextMenuModel.SpecializationType)
             .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementSettingsModel> ElementSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ElementSettingsModel.SpecializationType)
+            .Where(x => x.SpecializationType == ElementSettingsModel.SpecializationType)
             .Select(x => new ElementSettingsModel(x))
-            .ToList<ElementSettingsModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<DiagramSettingsModel> DiagramSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DiagramSettingsModel.SpecializationType)
+            .Where(x => x.SpecializationType == DiagramSettingsModel.SpecializationType)
             .Select(x => new DiagramSettingsModel(x))
-            .ToList<DiagramSettingsModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public MappingSettingsModel MappingSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.MappingSettingsModel.SpecializationType)
+            .Where(x => x.SpecializationType == MappingSettingsModel.SpecializationType)
             .Select(x => new MappingSettingsModel(x))
             .SingleOrDefault();
 

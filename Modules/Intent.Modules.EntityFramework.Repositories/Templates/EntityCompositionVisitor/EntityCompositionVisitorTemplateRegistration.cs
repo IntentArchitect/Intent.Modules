@@ -16,7 +16,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
 {
     // Disabled for now as this is only needed in more complex use cases (e.g. using the DbContext for Auditing purposes)
     [Description(EntityCompositionVisitorTemplate.Identifier)]
-    public class EntityCompositionVisitorTemplateRegistration : ListModelTemplateRegistrationBase<IClass>
+    public class EntityCompositionVisitorTemplateRegistration : ListModelTemplateRegistrationBase<ClassModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -27,12 +27,12 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
 
         public override string TemplateId => EntityCompositionVisitorTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<IClass> models)
+        public override ITemplate CreateTemplateInstance(IProject project, IList<ClassModel> models)
         {
             return new EntityCompositionVisitorTemplate(models, project);
         }
 
-        public override IList<IClass> GetModels(Engine.IApplication application)
+        public override IList<ClassModel> GetModels(Engine.IApplication application)
         {
             return _metadataManager.GetDomainClasses(application.Id).ToList();
         }

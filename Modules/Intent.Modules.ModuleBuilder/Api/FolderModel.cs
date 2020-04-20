@@ -4,7 +4,7 @@ using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using System.Linq;
 
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Api
@@ -36,21 +36,21 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<FileTemplateModel> FileTemplates => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.FileTemplateModel.SpecializationType)
+            .Where(x => x.SpecializationType == FileTemplateModel.SpecializationType)
             .Select(x => new FileTemplateModel(x))
-            .ToList<FileTemplateModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<FolderModel> Folders => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.FolderModel.SpecializationType)
+            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
             .Select(x => new FolderModel(x))
-            .ToList<FolderModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<DecoratorModel> TemplateDecorators => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DecoratorModel.SpecializationType)
+            .Where(x => x.SpecializationType == DecoratorModel.SpecializationType)
             .Select(x => new DecoratorModel(x))
-            .ToList<DecoratorModel>();
+            .ToList();
 
         public IElement UnderlyingElement => _element;
 
@@ -77,8 +77,8 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<TemplateRegistrationModel> TemplateRegistrations => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.TemplateRegistrationModel.SpecializationType)
+            .Where(x => x.SpecializationType == TemplateRegistrationModel.SpecializationType)
             .Select(x => new TemplateRegistrationModel(x))
-            .ToList<TemplateRegistrationModel>();
+            .ToList();
     }
 }

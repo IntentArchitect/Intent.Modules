@@ -6,18 +6,18 @@ using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Templates;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.Templates.DomainEntity
 {
-    partial class DomainEntityTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityDecoratorBase>, ITemplatePostCreationHook
+    partial class DomainEntityTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasDecorators<DomainEntityDecoratorBase>, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.DomainEntity";
         private readonly IList<DomainEntityDecoratorBase> _decorators = new List<DomainEntityDecoratorBase>();
 
-        public DomainEntityTemplate(IClass model, IProject project)
+        public DomainEntityTemplate(ClassModel model, IProject project)
             : base(Identifier, project, model)
         {
             
@@ -56,7 +56,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             return _decorators;
         }
 
-        public string Constructors(IClass @class)
+        public string Constructors(ClassModel @class)
         {
             return GetDecorators().Aggregate(x => x.Constructors(@class));
         }

@@ -1,0 +1,42 @@
+using System.Collections.Generic;
+using System.Linq;
+using Intent.Engine;
+using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
+using Intent.RoslynWeaver.Attributes;
+using Intent.Templates;
+using Intent.Metadata.Models;
+using Intent.Modules.Common;
+using System;
+
+[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
+
+namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
+{
+    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
+    public class ApiElementModelRegistration : ModelTemplateRegistrationBase<ElementSettingsModel>
+    {
+        private readonly IMetadataManager _metadataManager;
+
+        public ApiElementModelRegistration(IMetadataManager metadataManager)
+        {
+            _metadataManager = metadataManager;
+        }
+
+        public override string TemplateId => ApiElementModel.TemplateId;
+
+        public override ITemplate CreateTemplateInstance(IProject project, ElementSettingsModel model)
+        {
+            return new ApiElementModel(project, model);
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public override IEnumerable<ElementSettingsModel> GetModels(IApplication application)
+        {
+            return _metadataManager.GetElementSettingsModels(application)
+                .Where(x => !x.Designer.IsReference())
+                .ToList();
+        }
+    }
+}

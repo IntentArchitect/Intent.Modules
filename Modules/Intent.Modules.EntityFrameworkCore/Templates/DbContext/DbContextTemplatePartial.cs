@@ -13,22 +13,22 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplateBeforeExecutionHook, IHasDecorators<DbContextDecoratorBase>, IHasTemplateDependencies
+    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<ClassModel>>, ITemplateBeforeExecutionHook, IHasDecorators<DbContextDecoratorBase>, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.EntityFrameworkCore.DbContext";
 
         private readonly IApplicationEventDispatcher _eventDispatcher;
         private IList<DbContextDecoratorBase> _decorators = new List<DbContextDecoratorBase>();
 
-        public DbContextTemplate(IEnumerable<IClass> models, IProject project, IApplicationEventDispatcher eventDispatcher)
+        public DbContextTemplate(IEnumerable<ClassModel> models, IProject project, IApplicationEventDispatcher eventDispatcher)
             : base(Identifier, project, models)
         {
             _eventDispatcher = eventDispatcher;
         }
 
-        public string GetEntityName(IClass model)
+        public string GetEntityName(ClassModel model)
         {
-            var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == model.Id));
+            var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == model.Id));
             return template != null ? NormalizeNamespace($"{template.ClassName}") : $"{model.Name}";
         }
 
@@ -109,7 +109,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return Model.Select(x => TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
+            return Model.Select(x => TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
         }
 
         private string GetDbContextDbServerSetupMethodName()

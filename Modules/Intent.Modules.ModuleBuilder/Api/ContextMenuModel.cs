@@ -5,7 +5,7 @@ using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
@@ -32,9 +32,9 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<CreationOptionModel> CreationOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.CreationOptionModel.SpecializationType)
+            .Where(x => x.SpecializationType == CreationOptionModel.SpecializationType)
             .Select(x => new CreationOptionModel(x))
-            .ToList<CreationOptionModel>();
+            .ToList();
 
         public IList<TypeOrder> TypeOrder { get; }
 

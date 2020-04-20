@@ -6,7 +6,7 @@ using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
@@ -27,21 +27,21 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<DiagramSettingsModel> DiagramSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DiagramSettingsModel.SpecializationType)
+            .Where(x => x.SpecializationType == DiagramSettingsModel.SpecializationType)
             .Select(x => new DiagramSettingsModel(x))
-            .ToList<DiagramSettingsModel>();
+            .ToList();
 
         public string Id => _element.Id;
 
         [IntentManaged(Mode.Fully)]
         public MappingSettingsModel MappingSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.MappingSettingsModel.SpecializationType)
+            .Where(x => x.SpecializationType == MappingSettingsModel.SpecializationType)
             .Select(x => new MappingSettingsModel(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public ContextMenuModel MenuOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ContextMenuModel.SpecializationType)
+            .Where(x => x.SpecializationType == ContextMenuModel.SpecializationType)
             .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 

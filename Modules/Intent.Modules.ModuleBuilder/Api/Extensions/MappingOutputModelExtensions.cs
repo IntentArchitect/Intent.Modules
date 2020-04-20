@@ -16,6 +16,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new OutputSettings(stereotype) : null;
         }
 
+        public static bool HasOutputSettings(this MappingOutputModel model)
+        {
+            return model.HasStereotype("Output Settings");
+        }
+
 
         public class OutputSettings
         {

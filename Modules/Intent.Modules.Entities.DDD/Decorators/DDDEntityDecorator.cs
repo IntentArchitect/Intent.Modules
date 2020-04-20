@@ -16,7 +16,7 @@ namespace Intent.Modules.Entities.DDD.Decorators
         {
         }
 
-        public override string Constructors(IClass @class)
+        public override string Constructors(ClassModel @class)
         {
             var associatedClass = @class.AssociatedClasses.Where(x => x.IsNavigable).ToList();
             if (!@class.Attributes.Any() && !@class.AssociatedClasses.Any())

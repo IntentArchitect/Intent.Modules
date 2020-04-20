@@ -15,7 +15,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
     {
         public static string ToCSharpIdentifier(this string s)
         {
-            return string.Concat(s.Split(' ').Select(x => x.ToPascalCase())).Replace("-", "").Replace("#", "Sharp").Replace("(", "").Replace(")", "").Replace(",", "");
+            return string.Concat(s.Split(' ').Select(x => x.ToPascalCase())).Replace("-", "").Replace("#", "Sharp").Replace("(", "").Replace(")", "").Replace(",", "").Replace("[", "").Replace("]", "").Replace("{", "").Replace("}", "");
         }
 
         public static string GetExistingTemplateContent<T>(IntentProjectItemTemplateBase<T> template)

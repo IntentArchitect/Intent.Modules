@@ -11,18 +11,17 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Templates;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
-    partial class DomainEntityStateTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityStateDecoratorBase>, ITemplatePostCreationHook
+    partial class DomainEntityStateTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasDecorators<DomainEntityStateDecoratorBase>, ITemplatePostCreationHook
     {
         private readonly IMetadataManager _metadataManager;
         public const string Identifier = "Intent.Entities.DomainEntityState";
 
         private readonly IList<DomainEntityStateDecoratorBase> _decorators = new List<DomainEntityStateDecoratorBase>();
 
-        public DomainEntityStateTemplate(IClass model, IProject project, IMetadataManager metadataManager)
+        public DomainEntityStateTemplate(ClassModel model, IProject project, IMetadataManager metadataManager)
             : base(Identifier, project, model)
         {
             _metadataManager = metadataManager;
@@ -74,7 +73,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             return _decorators;
         }
 
-        public string GetBaseClass(IClass @class)
+        public string GetBaseClass(ClassModel @class)
         {
             try
             {
@@ -102,23 +101,23 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             throw new Exception($"Could not find Base Type for class {Model.Name}");
         }
 
-        public string GetInterfaces(IClass @class)
+        public string GetInterfaces(ClassModel @class)
         {
             var interfaces = GetDecorators().SelectMany(x => x.GetInterfaces(@class)).Distinct().ToList();
             return interfaces.Any() ? ", " + interfaces.Aggregate((x, y) => x + ", " + y) : "";
         }
 
-        public string ClassAnnotations(IClass @class)
+        public string ClassAnnotations(ClassModel @class)
         {
             return GetDecorators().Aggregate(x => x.ClassAnnotations(@class));
         }
 
-        public string Constructors(IClass @class)
+        public string Constructors(ClassModel @class)
         {
             return GetDecorators().Aggregate(x => x.Constructors(@class));
         }
 
-        public string BeforeProperties(IClass @class)
+        public string BeforeProperties(ClassModel @class)
         {
             return GetDecorators().Aggregate(x => x.BeforeProperties(@class));
         }

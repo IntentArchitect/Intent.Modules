@@ -5,16 +5,16 @@ using Intent.Metadata.Models;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Common;
 using Intent.Engine;
+using Intent.Modelers.Domain.Api;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Modelers.Services;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {
     public class UpdateImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, OperationModel operationModel)
+        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, ClassModel domainModel, OperationModel operationModel)
         {
             if (operationModel.Parameters.Count() != 2)
             {
@@ -43,7 +43,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, OperationModel operationModel)
+        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, ClassModel domainModel, OperationModel operationModel)
         {
             var idParam = operationModel.Parameters.First(p => string.Equals(p.Name, "id", StringComparison.OrdinalIgnoreCase));
             var dtoParam = operationModel.Parameters.First(p => !string.Equals(p.Name, "id", StringComparison.OrdinalIgnoreCase));
@@ -52,7 +52,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                 {EmitPropertyAssignments(metadataManager, application, domainModel, "existing"+ domainModel.Name, dtoParam)}";
         }
 
-        private string EmitPropertyAssignments(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, string domainVarName, ParameterModel operationParameterModel)
+        private string EmitPropertyAssignments(IMetadataManager metadataManager, Engine.IApplication application, ClassModel domainModel, string domainVarName, ParameterModel operationParameterModel)
         {
             var sb = new StringBuilder();
             var dto = metadataManager.GetDTOModels(application).First(p => p.Id == operationParameterModel.TypeReference.Element.Id);

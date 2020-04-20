@@ -93,7 +93,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
             return MethodImplementationStrategy.ImplementOnMatch(_metadataManager, _application, currentDomain, operationModel);
         }
 
-        private Intent.Modelers.Domain.Api.IClass GetDomainForService(ServiceModel service)
+        private Intent.Modelers.Domain.Api.ClassModel GetDomainForService(ServiceModel service)
         {
             var lowerServiceName = service.Name.ToLower();
             var domains = _metadataManager.GetDomainClasses(_application.Id);

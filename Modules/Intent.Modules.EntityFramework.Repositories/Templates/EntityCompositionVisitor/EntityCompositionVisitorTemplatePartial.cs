@@ -9,12 +9,12 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
 {
-    partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplatePostCreationHook
+    partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<ClassModel>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.EntityCompositionVisitor";
         private ITemplateDependency[] _entityStateTemplateDependancies;
 
-        public EntityCompositionVisitorTemplate(IEnumerable<IClass> models, IProject project)
+        public EntityCompositionVisitorTemplate(IEnumerable<ClassModel> models, IProject project)
             : base (Identifier, project, models)
         {
 
@@ -25,7 +25,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
 
         public override void OnCreated()
         {
-            _entityStateTemplateDependancies = Model.Select(x => TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == x.Id)).ToArray();
+            _entityStateTemplateDependancies = Model.Select(x => TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == x.Id)).ToArray();
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
@@ -33,9 +33,9 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             return _entityStateTemplateDependancies;
         }
 
-        public string GetClassName(IClass @class)
+        public string GetClassName(ClassModel @class)
         {
-            return Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == @class.Id))?.ClassName ?? $"{@class.Name}";
+            return Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == @class.Id))?.ClassName ?? $"{@class.Name}";
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

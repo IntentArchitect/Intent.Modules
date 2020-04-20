@@ -25,6 +25,11 @@ namespace <#= Namespace #>
             return stereotype != null ? new <#= stereotypeDefinition.Name.  ToCSharpIdentifier() #>(stereotype) : null;
         }
 
+        public static bool Has<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model)
+        {
+            return model.HasStereotype("<#= stereotypeDefinition.Name #>");
+        }
+
 <#  } #> 
 <#  foreach(var stereotypeDefinition in Model.StereotypeDefinitions) { #>
         public class <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>

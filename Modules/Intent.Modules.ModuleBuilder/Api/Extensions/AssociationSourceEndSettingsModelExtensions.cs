@@ -16,6 +16,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new Settings(stereotype) : null;
         }
 
+        public static bool HasSettings(this AssociationSourceEndSettingsModel model)
+        {
+            return model.HasStereotype("Settings");
+        }
+
 
         public class Settings
         {

@@ -12,7 +12,7 @@ using Intent.Templates;
 namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
     [Description(DomainEntityStateTemplate.Identifier)]
-    public class DomainEntityStateTemplateRegistrations : ModelTemplateRegistrationBase<IClass>
+    public class DomainEntityStateTemplateRegistrations : ModelTemplateRegistrationBase<ClassModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -23,12 +23,12 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 
         public override string TemplateId => DomainEntityStateTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        public override ITemplate CreateTemplateInstance(IProject project, ClassModel model)
         {
             return new DomainEntityStateTemplate(model, project, _metadataManager);
         }
 
-        public override IEnumerable<IClass> GetModels(Engine.IApplication application)
+        public override IEnumerable<ClassModel> GetModels(Engine.IApplication application)
         {
             return _metadataManager.GetDomainClasses(application.Id);
         }

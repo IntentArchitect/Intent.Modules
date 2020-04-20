@@ -6,7 +6,7 @@ namespace Intent.Modelers.Domain.Api
     {
         IAssociation Association { get; }
 
-        IClass Class { get; }
+        ClassModel Class { get; }
 
         string Name { get; }
 

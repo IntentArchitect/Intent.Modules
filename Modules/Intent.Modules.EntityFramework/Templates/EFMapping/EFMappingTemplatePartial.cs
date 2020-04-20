@@ -9,23 +9,22 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 using AssociationType = Intent.Modelers.Domain.Api.AssociationType;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.EntityFramework.Templates.EFMapping
 {
-    partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, ITemplatePostCreationHook
+    partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.EntityFramework.EFMapping";
         private IList<IEFMappingTemplateDecorator> _decorators = new List<IEFMappingTemplateDecorator>();
 
-        public EFMappingTemplate(IClass model, IProject project)
+        public EFMappingTemplate(ClassModel model, IProject project)
             : base (Identifier, project, model)
         {
             AddNugetDependency(NugetPackages.EntityFramework);
             var x = Model.AssociatedClasses.Where(ae => ae.Association.AssociationType == AssociationType.Composition && ae.Association.TargetEnd == ae).ToList();
         }
 
-        public string GetEntityName(IClass model)
+        public string GetEntityName(ClassModel model)
         {
             return GetTemplateClassName(GetMetadata().CustomMetadata["Entity Template Id"], model);
         }
@@ -84,7 +83,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             return _decorators;
         }
 
-        public string PropertyMappings(IClass @class)
+        public string PropertyMappings(ClassModel @class)
         {
             return GetDecorators().Aggregate(x => x.PropertyMappings(@class));
         }
@@ -162,6 +161,6 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
 
     public interface IEFMappingTemplateDecorator : ITemplateDecorator
     {
-        string[] PropertyMappings(IClass @class);
+        string[] PropertyMappings(ClassModel @class);
     }
 }

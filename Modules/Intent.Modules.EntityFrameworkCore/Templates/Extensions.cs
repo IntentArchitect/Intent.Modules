@@ -50,7 +50,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates
             return $"{association.SourceEnd.MultiplicityString()}->{association.TargetEnd.MultiplicityString()}";
         }
 
-        public static string IdentifierType(this IClass obj)
+        public static string IdentifierType(this ClassModel obj)
         {
             return obj.Name.ToPascalCase() + "Id";
         }

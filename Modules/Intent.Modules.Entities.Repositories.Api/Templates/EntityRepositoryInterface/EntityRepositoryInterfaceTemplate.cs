@@ -24,7 +24,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInt
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\EntityRepositoryInterface\EntityRepositoryInterfaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class EntityRepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>
+    public partial class EntityRepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>
     {
 #line hidden
         /// <summary>

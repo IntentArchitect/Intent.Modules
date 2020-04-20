@@ -16,6 +16,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new FileSettings(stereotype) : null;
         }
 
+        public static bool HasFileSettings(this FileTemplateModel model)
+        {
+            return model.HasStereotype("File Settings");
+        }
+
 
         public class FileSettings
         {

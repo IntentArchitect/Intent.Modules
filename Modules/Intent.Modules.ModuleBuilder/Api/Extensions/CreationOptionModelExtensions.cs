@@ -16,6 +16,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new OptionSettings(stereotype) : null;
         }
 
+        public static bool HasOptionSettings(this CreationOptionModel model)
+        {
+            return model.HasStereotype("Option Settings");
+        }
+
 
         public class OptionSettings
         {

@@ -14,7 +14,7 @@ using Intent.Templates;
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 {
     [Description(RepositoryTemplate.Identifier)]
-    public class RepositoryTemplateRegistration : ModelTemplateRegistrationBase<IClass>
+    public class RepositoryTemplateRegistration : ModelTemplateRegistrationBase<ClassModel>
     {
         private readonly IMetadataManager _metadataManager;
         private IEnumerable<string> _stereotypeNames;
@@ -34,12 +34,12 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             _stereotypeNames = createOnStereotypeValues.Split(new[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
         }
 
-        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        public override ITemplate CreateTemplateInstance(IProject project, ClassModel model)
         {
             return new RepositoryTemplate(model, project);
         }
 
-        public override IEnumerable<IClass> GetModels(Engine.IApplication application)
+        public override IEnumerable<ClassModel> GetModels(Engine.IApplication application)
         {
             var allModels = _metadataManager.GetDomainClasses(application.Id);
             var filteredModels = allModels.Where(p => _stereotypeNames.Any(p.HasStereotype));

@@ -9,12 +9,11 @@ using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
-    partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>, ITemplatePostCreationHook
+    partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>, ITemplatePostCreationHook
     {
         private readonly IMetadataManager _metadataManager;
         public const string Identifier = "Intent.Entities.DomainEntityInterface";
@@ -22,7 +21,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 
         private readonly IList<DomainEntityInterfaceDecoratorBase> _decorators = new List<DomainEntityInterfaceDecoratorBase>();
 
-        public DomainEntityInterfaceTemplate(IClass model, IProject project, IMetadataManager metadataManager)
+        public DomainEntityInterfaceTemplate(ClassModel model, IProject project, IMetadataManager metadataManager)
             : base(Identifier, project, model)
         {
             _metadataManager = metadataManager;
@@ -61,7 +60,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return _decorators.OrderBy(x => x.Priority);
         }
 
-        public string GetInterfaces(IClass @class)
+        public string GetInterfaces(ClassModel @class)
         {
             var interfaces = GetDecorators().SelectMany(x => x.GetInterfaces(@class)).Distinct().ToList();
             if (Model.GetStereotypeProperty("Base Type", "Has Interface", false) && GetBaseTypeInterface() != null)
@@ -87,12 +86,12 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             throw new Exception($"Could not find Base Type for class {Model.Name}");
         }
 
-        public string InterfaceAnnotations(IClass @class)
+        public string InterfaceAnnotations(ClassModel @class)
         {
             return GetDecorators().Aggregate(x => x.InterfaceAnnotations(@class));
         }
 
-        public string BeforeProperties(IClass @class)
+        public string BeforeProperties(ClassModel @class)
         {
             return GetDecorators().Aggregate(x => x.BeforeProperties(@class));
         }

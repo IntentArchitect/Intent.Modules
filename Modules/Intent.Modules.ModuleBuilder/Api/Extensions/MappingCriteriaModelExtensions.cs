@@ -16,6 +16,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new CriteriaSettings(stereotype) : null;
         }
 
+        public static bool HasCriteriaSettings(this MappingCriteriaModel model)
+        {
+            return model.HasStereotype("Criteria Settings");
+        }
+
 
         public class CriteriaSettings
         {

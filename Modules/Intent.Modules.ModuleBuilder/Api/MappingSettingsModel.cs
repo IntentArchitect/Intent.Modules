@@ -6,7 +6,7 @@ using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
@@ -33,9 +33,9 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementMappingModel> Mappings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ElementMappingModel.SpecializationType)
+            .Where(x => x.SpecializationType == ElementMappingModel.SpecializationType)
             .Select(x => new ElementMappingModel(x))
-            .ToList<ElementMappingModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(MappingSettingsModel other)

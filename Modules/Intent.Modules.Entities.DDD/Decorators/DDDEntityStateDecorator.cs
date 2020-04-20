@@ -9,10 +9,10 @@ using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.Configuration;
 using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Plugins;
 using Intent.Templates;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.DDD.Decorators
 {
@@ -70,7 +70,7 @@ namespace Intent.Modules.Entities.DDD.Decorators
             return base.ConvertAttributeType(attribute);
         }
 
-        public override string GetBaseClass(IClass @class)
+        public override string GetBaseClass(ClassModel @class)
         {
             var baseClass = @class.GetStereotypeProperty<string>("Aggregate Root", "BaseType");
             if (baseClass != null)
@@ -102,7 +102,7 @@ namespace Intent.Modules.Entities.DDD.Decorators
             return base.GetBaseClass(@class);
         }
 
-        public override IEnumerable<string> GetInterfaces(IClass @class)
+        public override IEnumerable<string> GetInterfaces(ClassModel @class)
         {
             return new[] { $"I{@class.Name}Behaviours" };
         }

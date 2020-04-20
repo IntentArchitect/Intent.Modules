@@ -14,7 +14,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
 {
-    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
+    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.EntityFrameworkCore.Repositories.Implementation";
         private ITemplateDependency _entityStateTemplateDependency;
@@ -22,7 +22,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
         private ITemplateDependency _repositoryInterfaceTemplateDependency;
         private ITemplateDependency _dbContextTemplateDependency;
 
-        public RepositoryTemplate(IClass model, IProject project)
+        public RepositoryTemplate(ClassModel model, IProject project)
             : base(Identifier, project, model)
         {
         }
@@ -30,8 +30,8 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
         public override void OnCreated()
         {
             base.OnCreated();
-            _entityStateTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
-            _entityInterfaceTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Interface Template Id"], (to) => to.Id == Model.Id);
+            _entityStateTemplateDependency = TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
+            _entityInterfaceTemplateDependency = TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Interface Template Id"], (to) => to.Id == Model.Id);
             _repositoryInterfaceTemplateDependency = TemplateDependency.OnModel(EntityRepositoryInterfaceTemplate.Identifier, Model);
             _dbContextTemplateDependency = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
         }

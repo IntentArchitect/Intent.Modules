@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
@@ -10,17 +11,16 @@ using Intent.Templates;
 using Intent.Utils;
 using AssociationType = Intent.Modelers.Domain.Api.AssociationType;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 {
-    partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, ITemplatePostCreationHook
+    partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.EntityFrameworkCore.EFMapping";
         private readonly IList<IEFMappingTemplateDecorator> _decorators = new List<IEFMappingTemplateDecorator>();
         private ITemplateDependency _domainTemplateDependancy;
 
-        public EFMappingTemplate(IClass model, IProject project)
+        public EFMappingTemplate(ClassModel model, IProject project)
             : base(Identifier, project, model)
         {
             ValidateAssociations();
@@ -99,7 +99,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
         public override void OnCreated()
         {
-            _domainTemplateDependancy = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
+            _domainTemplateDependancy = TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
         }
 
         public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(_domainTemplateDependancy)?.ClassName ?? Model.Name;
@@ -174,7 +174,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             return _decorators;
         }
 
-        public string PropertyMappings(IClass @class)
+        public string PropertyMappings(ClassModel @class)
         {
             return GetDecorators().Aggregate(x => x.PropertyMappings(@class));
         }
@@ -258,6 +258,6 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
     public interface IEFMappingTemplateDecorator : ITemplateDecorator
     {
-        string[] PropertyMappings(IClass @class);
+        string[] PropertyMappings(ClassModel @class);
     }
 }

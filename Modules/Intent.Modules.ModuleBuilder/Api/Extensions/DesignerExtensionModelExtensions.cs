@@ -16,6 +16,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new DesignerSettings(stereotype) : null;
         }
 
+        public static bool HasDesignerSettings(this DesignerExtensionModel model)
+        {
+            return model.HasStereotype("Designer Settings");
+        }
+
 
         public class DesignerSettings
         {

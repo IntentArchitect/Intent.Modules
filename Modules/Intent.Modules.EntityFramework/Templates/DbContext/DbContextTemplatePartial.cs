@@ -14,14 +14,14 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook, IHasDecorators<DbContextDecoratorBase>
+    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<ClassModel>>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook, IHasDecorators<DbContextDecoratorBase>
     {
         public const string Identifier = "Intent.EntityFramework.DbContext";
 
         private readonly IApplicationEventDispatcher _eventDispatcher;
         private IList<DbContextDecoratorBase> _decorators = new List<DbContextDecoratorBase>();
 
-        public DbContextTemplate(IEnumerable<IClass> models, IProject project, IApplicationEventDispatcher eventDispatcher)
+        public DbContextTemplate(IEnumerable<ClassModel> models, IProject project, IApplicationEventDispatcher eventDispatcher)
             : base (Identifier, project, models)
         {
             _eventDispatcher = eventDispatcher;
@@ -94,7 +94,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             }
         }
 
-        private string GetMappingName(IClass model)
+        private string GetMappingName(ClassModel model)
         {
             return GetTemplateClassName(EFMappingTemplate.Identifier, model);
         }

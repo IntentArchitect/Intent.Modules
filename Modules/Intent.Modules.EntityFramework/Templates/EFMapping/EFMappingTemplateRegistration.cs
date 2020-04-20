@@ -13,7 +13,7 @@ using Intent.Templates;
 namespace Intent.Modules.EntityFramework.Templates.EFMapping
 {
     [Description(EFMappingTemplate.Identifier)]
-    public class EFMappingTemplateRegistration : ModelTemplateRegistrationBase<IClass>
+    public class EFMappingTemplateRegistration : ModelTemplateRegistrationBase<ClassModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -24,12 +24,12 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
 
         public override string TemplateId => EFMappingTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IClass model)
+        public override ITemplate CreateTemplateInstance(IProject project, ClassModel model)
         {
             return new EFMappingTemplate(model, project);
         }
 
-        public override IEnumerable<IClass> GetModels(Engine.IApplication application)
+        public override IEnumerable<ClassModel> GetModels(Engine.IApplication application)
         {
             return _metadataManager.GetDomainClasses(application.Id).ToList();
         }

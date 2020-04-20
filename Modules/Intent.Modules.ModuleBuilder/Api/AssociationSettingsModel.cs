@@ -7,7 +7,7 @@ using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
@@ -34,12 +34,12 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public AssociationSourceEndSettingsModel SourceEnd => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.AssociationSourceEndSettingsModel.SpecializationType)
+            .Where(x => x.SpecializationType == AssociationSourceEndSettingsModel.SpecializationType)
             .Select(x => new AssociationSourceEndSettingsModel(x))
             .SingleOrDefault();
         [IntentManaged(Mode.Fully)]
         public AssociationDestinationEndSettingsModel DestinationEnd => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.AssociationDestinationEndSettingsModel.SpecializationType)
+            .Where(x => x.SpecializationType == AssociationDestinationEndSettingsModel.SpecializationType)
             .Select(x => new AssociationDestinationEndSettingsModel(x))
             .SingleOrDefault();
 

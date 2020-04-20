@@ -8,7 +8,7 @@ using Intent.Modules.Common;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Api
@@ -46,21 +46,21 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public PackageSettingsModel PackageSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.PackageSettingsModel.SpecializationType)
+            .Where(x => x.SpecializationType == PackageSettingsModel.SpecializationType)
             .Select(x => new PackageSettingsModel(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public IList<AssociationSettingsModel> AssociationTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.AssociationSettingsModel.SpecializationType)
+            .Where(x => x.SpecializationType == AssociationSettingsModel.SpecializationType)
             .Select(x => new AssociationSettingsModel(x))
-            .ToList<AssociationSettingsModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementSettingsModel> ElementTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ElementSettingsModel.SpecializationType)
+            .Where(x => x.SpecializationType == ElementSettingsModel.SpecializationType)
             .Select(x => new ElementSettingsModel(x))
-            .ToList<ElementSettingsModel>();
+            .ToList();
 
         public string ApiNamespace => this.GetDesignerSettings().APINamespace();
         public string ModuleDependency => null;
@@ -91,9 +91,9 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<CoreTypeModel> CoreTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.CoreTypeModel.SpecializationType)
+            .Where(x => x.SpecializationType == CoreTypeModel.SpecializationType)
             .Select(x => new CoreTypeModel(x))
-            .ToList<CoreTypeModel>();
+            .ToList();
 
         public virtual bool IsReference()
         {
@@ -102,9 +102,9 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementExtensionModel> ElementExtensions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ElementExtensionModel.SpecializationType)
+            .Where(x => x.SpecializationType == ElementExtensionModel.SpecializationType)
             .Select(x => new ElementExtensionModel(x))
-            .ToList<ElementExtensionModel>();
+            .ToList();
     }
 
     public class TypeOrder : IEquatable<TypeOrder>

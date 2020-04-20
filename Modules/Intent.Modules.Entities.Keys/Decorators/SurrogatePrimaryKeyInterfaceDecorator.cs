@@ -18,7 +18,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
         {
         }
 
-        public override string BeforeProperties(IClass @class)
+        public override string BeforeProperties(ClassModel @class)
         {
             if (@class.ParentClass != null || @class.Attributes.Any(x => x.HasStereotype("Primary Key")))
             {

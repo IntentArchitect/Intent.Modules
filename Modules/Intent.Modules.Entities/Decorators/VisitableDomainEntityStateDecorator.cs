@@ -13,7 +13,7 @@ namespace Intent.Modules.Entities.Decorators
         {
         }
 
-        public override IEnumerable<string> GetInterfaces(IClass @class)
+        public override IEnumerable<string> GetInterfaces(ClassModel @class)
         {
             return new List<string>() { "IVisitable" };
         }
@@ -23,7 +23,7 @@ namespace Intent.Modules.Entities.Decorators
             return new List<string>() { "Intent.Framework.Core.Visitor" };
         }
 
-        public override string BeforeProperties(IClass @class)
+        public override string BeforeProperties(ClassModel @class)
         {
             return @"
         void IVisitable.Accept(IVisitor v)

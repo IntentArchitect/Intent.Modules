@@ -16,7 +16,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
 
         public virtual IEnumerable<string> DeclareUsings() { return new List<string>(); }
 
-        public virtual string Constructors(IClass @class) { return null; }
+        public virtual string Constructors(ClassModel @class) { return null; }
 
         public int Priority { get; set; } = 0;
     }

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
@@ -16,10 +16,10 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             Template = template;
         }
 
-        public virtual string ClassAnnotations(IClass @class) { return null; }
-        public virtual string GetBaseClass(IClass @class) { return null; }
-        public virtual string Constructors(IClass @class) { return null; }
-        public virtual string BeforeProperties(IClass @class) { return null; }
+        public virtual string ClassAnnotations(ClassModel @class) { return null; }
+        public virtual string GetBaseClass(ClassModel @class) { return null; }
+        public virtual string Constructors(ClassModel @class) { return null; }
+        public virtual string BeforeProperties(ClassModel @class) { return null; }
         public virtual string PropertyBefore(IAttribute attribute) { return null; }
         public virtual string PropertyFieldAnnotations(IAttribute attribute) { return null; }
         public virtual string PropertyAnnotations(IAttribute attribute) { return null; }
@@ -35,7 +35,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
         public virtual bool CanWriteDefaultAttribute(IAttribute attribute) { return true; }
         public virtual bool CanWriteDefaultAssociation(IAssociationEnd association) { return true; }
 
-        public virtual IEnumerable<string> GetInterfaces(IClass @class) { return new List<string>(); }
+        public virtual IEnumerable<string> GetInterfaces(ClassModel @class) { return new List<string>(); }
 
         public virtual IEnumerable<string> DeclareUsings() { return new List<string>(); }
     }

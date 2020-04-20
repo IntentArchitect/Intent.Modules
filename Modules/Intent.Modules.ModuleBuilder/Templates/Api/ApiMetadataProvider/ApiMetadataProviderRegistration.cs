@@ -34,9 +34,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProvider
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IList<ElementSettingsModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetElementSettingsModels(application)
+            var models = _metadataManager.GetElementSettingsModels(application)
                 .Where(x => x.GetSettings().SaveMode().IsOwnFile() && !x.Designer.IsReference())
                 .ToList();
+
+            if (!models.Any())
+            {
+                AbortRegistration = true;
+            }
+
+            return models;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Intent.Modules.Entities.Decorators
         {
         }
 
-        public override string Constructors(IClass @class)
+        public override string Constructors(ClassModel @class)
         {
             return $@"        public {@class.Name}()
         {{

@@ -50,7 +50,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Signature = Model.Fully)]\r\n    partial class ");
+            this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

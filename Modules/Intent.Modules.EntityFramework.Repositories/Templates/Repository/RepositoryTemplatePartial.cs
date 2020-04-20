@@ -14,7 +14,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 {
-    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
+    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.Implementation";
         private ITemplateDependency _entityStateTemplateDependency;
@@ -23,15 +23,15 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
         private ITemplateDependency _dbContextTemplateDependency;
         private ITemplateDependency _deleteVisitorTemplateDependency;
 
-        public RepositoryTemplate(IClass model, IProject project)
+        public RepositoryTemplate(ClassModel model, IProject project)
             : base(Identifier, project, model)
         {
         }
 
         public override void OnCreated()
         {
-            _entityStateTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
-            _entityInterfaceTemplateDependency = TemplateDependency.OnModel<IClass>(GetMetadata().CustomMetadata["Entity Interface Template Id"], (to) => to.Id == Model.Id);
+            _entityStateTemplateDependency = TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
+            _entityInterfaceTemplateDependency = TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Interface Template Id"], (to) => to.Id == Model.Id);
             _repositoryInterfaceTemplateDependency = TemplateDependency.OnModel(EntityRepositoryInterfaceTemplate.Identifier, Model);
             _dbContextTemplateDependency = TemplateDependency.OnTemplate(DbContextTemplate.Identifier);
             _deleteVisitorTemplateDependency = TemplateDependency.OnTemplate(EntityCompositionVisitorTemplate.Identifier);

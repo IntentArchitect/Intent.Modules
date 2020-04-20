@@ -3,16 +3,16 @@ using System.Linq;
 using System.Text;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Modelers.Services;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {
     public class CreateImplementationStrategy : IImplementationStrategy
     {
-        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, OperationModel operationModel)
+        public bool Match(IMetadataManager metadataManager, Engine.IApplication application, ClassModel domainModel, OperationModel operationModel)
         {
             if (operationModel.Parameters.Count() != 1)
             {
@@ -36,7 +36,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
             .Contains(lowerOperationName);
         }
 
-        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, OperationModel operationModel)
+        public string GetImplementation(IMetadataManager metadataManager, Engine.IApplication application, ClassModel domainModel, OperationModel operationModel)
         {
             return $@"var new{domainModel.Name} = new {domainModel.Name}
                 {{
@@ -46,7 +46,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationS
                 {domainModel.Name.ToPrivateMember()}Repository.Add(new{domainModel.Name});";
         }
 
-        private string EmitPropertyAssignments(IMetadataManager metadataManager, Engine.IApplication application, IClass domainModel, ParameterModel operationParameterModel)
+        private string EmitPropertyAssignments(IMetadataManager metadataManager, Engine.IApplication application, ClassModel domainModel, ParameterModel operationParameterModel)
         {
             var sb = new StringBuilder();
             var dto = metadataManager.GetDTOModels(application).First(p => p.Id == operationParameterModel.TypeReference.Element.Id);

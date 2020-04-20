@@ -52,7 +52,6 @@ namespace Intent.Modules.Common.Registrations
                 return;
             }
 
-            int templateInstancesRegistered = 0;
             var models = GetModels(application);
             Logging.Log.Debug($"Models found [{typeof(TModel).FullName}] : {models.Count}");
             if (_filterExpression != null)
@@ -65,10 +64,16 @@ namespace Intent.Modules.Common.Registrations
                 models = Filter(models);
             }
 
+            if (AbortRegistration)
+            {
+                Logging.Log.Debug($"Template registration aborted : {TemplateId}");
+                return;
+            }
             registry.Register(TemplateId, project => CreateTemplateInstance(project, models));
-            templateInstancesRegistered++;
-            Logging.Log.Debug($"Template instances registered : {templateInstancesRegistered}");
+            Logging.Log.Debug($"Template instances registered : {TemplateId}");
         }
+
+        protected virtual bool AbortRegistration { get; set; } = false;
 
         public IList<TModel> Filter(IList<TModel> list)
         {

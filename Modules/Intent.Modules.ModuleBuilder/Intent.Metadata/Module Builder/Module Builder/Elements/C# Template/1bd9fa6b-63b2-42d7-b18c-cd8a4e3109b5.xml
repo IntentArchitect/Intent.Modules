@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5" type="C# Template">
+  <name>ApiAssociationModel</name>
+  <display>ApiAssociationModel: File Per Model</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="4084dfeb-3bf7-403f-8d33-9728d71c1ccb">
+    <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>b24f3bdf-3ba1-4c66-8aa8-cf63a3ae7436</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709" display="Source" value="Lookup Type" isActive="true" />
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="16d21684-d5ea-4fde-b648-f88d292fa272" isActive="true" />
+        <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

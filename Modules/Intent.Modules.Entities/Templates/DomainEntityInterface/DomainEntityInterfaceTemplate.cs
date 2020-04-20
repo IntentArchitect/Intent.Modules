@@ -24,7 +24,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<IClass>
+    public partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>
     {
 #line hidden
         /// <summary>

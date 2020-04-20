@@ -42,7 +42,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
             _stereotypeTypePropertyConfigValue = GetMetadata().CustomMetadata[StereotypeTypePropertyConfigId];
             _stereotypeNamespacePropertyConfigValue = GetMetadata().CustomMetadata[StereotypeNamespacePropertyConfigId];
             _contractTemplateDependancy = TemplateDependency.OnModel<DTOModel>(GetMetadata().CustomMetadata[ContractTemplateDependancyConfigId], (to) => to.Id == Model.Id);
-            _domainTemplateDependancy = TemplateDependency.OnModel<IClass>(_domainTemplateDependancyConfigValue, (to) => to.Id == Model.MappedClass.ElementId);
+            _domainTemplateDependancy = TemplateDependency.OnModel<ClassModel>(_domainTemplateDependancyConfigValue, (to) => to.Id == Model.MappedClass.ElementId);
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

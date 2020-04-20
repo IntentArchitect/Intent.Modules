@@ -16,7 +16,7 @@ namespace Intent.Modules.Entities.Decorators
         {
         }
 
-        public override IEnumerable<string> GetInterfaces(IClass @class)
+        public override IEnumerable<string> GetInterfaces(ClassModel @class)
         {
             if (!CanBeOrphaned(@class))
             {
@@ -30,7 +30,7 @@ namespace Intent.Modules.Entities.Decorators
             return new List<string>() { "Intent.Framework.Domain" };
         }
 
-        public override string BeforeProperties(IClass @class)
+        public override string BeforeProperties(ClassModel @class)
         {
             if (!CanBeOrphaned(@class))
             {
@@ -43,7 +43,7 @@ namespace Intent.Modules.Entities.Decorators
         }}";
         }
 
-        private List<IAssociationEnd> GetOrphanableAssociations(IClass model)
+        private List<IAssociationEnd> GetOrphanableAssociations(ClassModel model)
         {
             var result = new List<IAssociationEnd>();
             foreach (var a in model.AssociatedClasses)
@@ -56,7 +56,7 @@ namespace Intent.Modules.Entities.Decorators
             return result;
         }
 
-        private bool CanBeOrphaned(IClass @class)
+        private bool CanBeOrphaned(ClassModel @class)
         {
             return GetOrphanableAssociations(@class).Any();
         }

@@ -15,7 +15,7 @@ namespace Intent.Modelers.Domain.Api
             _metadataManager = metadataManager;
         }
 
-        public IEnumerable<IClass> GetClasses()
+        public IEnumerable<ClassModel> GetClasses()
         {
             var cache = new Dictionary<string, Class>();
             var classes = _metadataManager.GetMetadata<IElement>("Domain").Where(x => x.IsClass()).ToList();
@@ -23,7 +23,7 @@ namespace Intent.Modelers.Domain.Api
             return result;
         }
 
-        public IEnumerable<IClass> GetClasses(string applicationId)
+        public IEnumerable<ClassModel> GetClasses(string applicationId)
         {
             return GetClasses().Where(x => x.Application.Id == applicationId);
         }

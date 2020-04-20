@@ -1,0 +1,105 @@
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<AssociationSettingsModel>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Intent.Metadata.Models;
+
+[assembly: DefaultIntentManaged(Mode.Merge)]
+
+namespace <#= Namespace #>
+{
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class <#= ClassName #> : IMetadataModel
+    {
+        public const string SpecializationType = "<#= Model.Name #>";
+        protected readonly IAssociation _association;
+
+        [IntentInitialGen]
+        public <#= ClassName #>(IAssociation association, string requiredType = SpecializationType)
+        {
+            if (!requiredType.Equals(association.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new Exception($"Cannot create a '{GetType().Name}' from association with specialization type '{association.SpecializationType}'. Must be of type '{SpecializationType}'");
+            }
+            _association = association;
+            SourceEnd = new <#= Model.Name #>EndModel(association.SourceEnd, this);
+            TargetEnd = new <#= Model.Name #>EndModel(association.TargetEnd, this);
+        }
+
+        public string Id => _association.Id;
+        
+        public <#= Model.Name #>EndModel SourceEnd { get; }
+        public <#= Model.Name #>EndModel TargetEnd { get; }
+        
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(<#= ClassName #> other)
+        {
+            return Equals(_association, other._association);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((<#= ClassName #>)obj);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public override int GetHashCode()
+        {
+            return (_association != null ? _association.GetHashCode() : 0);
+        }
+    }
+
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class <#= Model.Name #>EndModel : IHasStereotypes, IMetadataModel
+    {
+        protected readonly IAssociationEnd _associationEnd;
+
+        [IntentInitialGen]
+        public <#= Model.Name #>EndModel(IAssociationEnd associationEnd, <#= ClassName #> association)
+        {
+            _associationEnd = associationEnd;
+        }
+
+        public string Id => _associationEnd.Id;
+        
+        public string Name => _associationEnd.Name;
+
+        public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
+
+        public ITypeReference TypeReference => _element.TypeReference;
+        
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(<#= Model.Name #>EndModel other)
+        {
+            return Equals(_associationEnd, other._associationEnd);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((<#= Model.Name #>EndModel)obj);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public override int GetHashCode()
+        {
+            return (_associationEnd != null ? _associationEnd.GetHashCode() : 0);
+        }
+    }
+}

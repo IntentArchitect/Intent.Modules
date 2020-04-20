@@ -13,7 +13,7 @@ using Intent.Templates;
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
     [Description(DbContextTemplate.Identifier)]
-    public class DbContextTemplateRegistration : ListModelTemplateRegistrationBase<IClass>
+    public class DbContextTemplateRegistration : ListModelTemplateRegistrationBase<ClassModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -24,12 +24,12 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
 
         public override string TemplateId => DbContextTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<IClass> models)
+        public override ITemplate CreateTemplateInstance(IProject project, IList<ClassModel> models)
         {
             return new DbContextTemplate(models, project, project.Application.EventDispatcher);
         }
 
-        public override IList<IClass> GetModels(Engine.IApplication application)
+        public override IList<ClassModel> GetModels(Engine.IApplication application)
         {
             return _metadataManager.GetDomainClasses(application.Id).ToList();
         }

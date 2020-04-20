@@ -5,17 +5,17 @@ using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Templates;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 {
-    partial class DomainEntityBehavioursTemplate : IntentRoslynProjectItemTemplateBase<IClass>, ITemplate, ITemplatePostCreationHook
+    partial class DomainEntityBehavioursTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.DDD.Behaviours";
 
-        public DomainEntityBehavioursTemplate(IClass model, IProject project)
+        public DomainEntityBehavioursTemplate(ClassModel model, IProject project)
             : base(Identifier, project, model)
         {
         }

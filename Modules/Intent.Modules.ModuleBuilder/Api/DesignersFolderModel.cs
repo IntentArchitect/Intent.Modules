@@ -5,7 +5,7 @@ using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
@@ -32,9 +32,9 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<DesignerModel> Designers => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DesignerModel.SpecializationType)
+            .Where(x => x.SpecializationType == DesignerModel.SpecializationType)
             .Select(x => new DesignerModel(x))
-            .ToList<DesignerModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(DesignersFolderModel other)
@@ -59,8 +59,8 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<DesignerExtensionModel> DesignerExtensions => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DesignerExtensionModel.SpecializationType)
+            .Where(x => x.SpecializationType == DesignerExtensionModel.SpecializationType)
             .Select(x => new DesignerExtensionModel(x))
-            .ToList<DesignerExtensionModel>();
+            .ToList();
     }
 }

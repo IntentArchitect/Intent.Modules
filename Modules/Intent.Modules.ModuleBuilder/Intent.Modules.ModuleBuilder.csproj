@@ -30,18 +30,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiMetadataProviderExtensions.tt</DependentUpon>
     </Compile>
-    <None Update="Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.tt">
+    <None Update="Templates\Api\ApiElementModel\ApiElementModel.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiModelImplementationTemplate.cs</LastGenOutput>
+      <LastGenOutput>ApiElementModel.cs</LastGenOutput>
     </None>
     <None Update="Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiModelInterfaceTemplate.cs</LastGenOutput>
     </None>
-    <Compile Update="Templates\Api\ApiModelImplementationTemplate\ApiModelImplementationTemplate.cs">
+    <Compile Update="Templates\Api\ApiElementModel\ApiElementModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiModelImplementationTemplate.tt</DependentUpon>
+      <DependentUpon>ApiElementModel.tt</DependentUpon>
     </Compile>
     <Compile Update="Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.cs">
       <DesignTime>True</DesignTime>
@@ -65,6 +65,17 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiMetadataProvider.tt</DependentUpon>
+    </Compile>
+  
+    <None Update="Templates\Api\ApiAssociationModel\ApiAssociationModel.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ApiAssociationModel.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\Api\ApiAssociationModel\ApiAssociationModel.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiAssociationModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -93,7 +104,7 @@
     </PackageReference>
     <PackageReference Include="Intent.Modules.Common" Version="2.0.0" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.0-pre.8" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.0-pre.9" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
   </ItemGroup>
 
@@ -159,10 +170,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>SingleFileNoModelTemplateRegistrationTemplate.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Templates\Api\" />
   </ItemGroup>
 
   <ItemGroup>

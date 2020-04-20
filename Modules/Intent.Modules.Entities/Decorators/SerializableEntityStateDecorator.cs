@@ -2,9 +2,9 @@
 using Intent.Modules.Entities.Templates.DomainEntity;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
+using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using IClass = Intent.Modelers.Domain.Api.IClass;
 using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.Entities.Decorators
@@ -22,7 +22,7 @@ namespace Intent.Modules.Entities.Decorators
             return new List<string>() { "System.Runtime.Serialization" };
         }
 
-        public override string ClassAnnotations(IClass @class)
+        public override string ClassAnnotations(ClassModel @class)
         {
             return "    [DataContract]";
         }
@@ -37,7 +37,7 @@ namespace Intent.Modules.Entities.Decorators
             return "        [DataMember]";
         }
 
-        public override string GetBaseClass(IClass @class)
+        public override string GetBaseClass(ClassModel @class)
         {
             var baseClass = @class.GetStereotypeProperty<string>("Serializable", "BaseType");
             if (baseClass != null)

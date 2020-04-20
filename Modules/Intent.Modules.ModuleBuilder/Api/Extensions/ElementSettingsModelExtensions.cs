@@ -16,10 +16,20 @@ namespace Intent.Modules.ModuleBuilder.Api
             return stereotype != null ? new Settings(stereotype) : null;
         }
 
+        public static bool HasSettings(this ElementSettingsModel model)
+        {
+            return model.HasStereotype("Settings");
+        }
+
         public static TypeReferenceSettings GetTypeReferenceSettings(this ElementSettingsModel model)
         {
             var stereotype = model.GetStereotype("Type Reference Settings");
             return stereotype != null ? new TypeReferenceSettings(stereotype) : null;
+        }
+
+        public static bool HasTypeReferenceSettings(this ElementSettingsModel model)
+        {
+            return model.HasStereotype("Type Reference Settings");
         }
 
 
