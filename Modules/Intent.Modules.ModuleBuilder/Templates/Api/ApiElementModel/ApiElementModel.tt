@@ -53,11 +53,11 @@ namespace <#= Namespace #>
 
 <#  } #>
 <#  if (Model.MenuOptions != null) {
-        foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => x.Type.SpecializationType != "Core Type")) { 
+        foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => !(x.Type is CoreTypeModel))) { 
             if (ExistsInBase(creationOption))
                 continue;#>
         [IntentManaged(Mode.Fully)]
-        public <#= GetCreationOptionTypeClass(creationOption, creationOption.GetOptionSettings().AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
+        public <#= GetCreationOptionTypeClass(creationOption, creationOption.GetOptionSettings().AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => _element.<#= (creationOption.Type is ElementSettingsModel) ? "ChildElement" : "OwnedAssociations" #>
             .Where(x => x.SpecializationType == <#= GetCreationOptionTypeClass(creationOption) #>.SpecializationType)
             .Select(x => new <#= GetCreationOptionTypeClass(creationOption) #>(x))
 <#      if (creationOption.GetOptionSettings().AllowMultiple()) { #>

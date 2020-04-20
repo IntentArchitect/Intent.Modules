@@ -49,7 +49,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 
         private string GetCreationOptionTypeClass(CreationOptionModel option, bool asCollection = false)
         {
-            var @interface = GetTemplateClassName(ApiElementModel.TemplateId, option.Type.Id, throwIfNotFound: false) ?? new ElementSettingsModel(option.Type).ApiClassName;
+            var @interface = GetTemplateClassName(ApiElementModel.TemplateId, option.Type.Id, throwIfNotFound: false) ?? option.Type.ApiClassName;
             return asCollection ? $"IList<{@interface}>" : @interface;
         }
 

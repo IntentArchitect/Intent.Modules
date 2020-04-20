@@ -12,7 +12,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationSettingsModel : IHasStereotypes, IMetadataModel
+    public class AssociationSettingsModel : IHasStereotypes, IMetadataModel, ICreatableType
     {
         public const string SpecializationType = "Association Settings";
         protected readonly IElement _element;
@@ -29,6 +29,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => _element.Id;
 
         public string Name => _element.Name;
+
+        public string ApiClassName => $"{Name}Model";
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 

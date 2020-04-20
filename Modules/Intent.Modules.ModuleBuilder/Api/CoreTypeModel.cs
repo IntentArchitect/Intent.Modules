@@ -9,8 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class CoreTypeModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class CoreTypeModel : IHasStereotypes, IMetadataModel, ICreatableType
     {
         public const string SpecializationType = "Core Type";
         protected readonly IElement _element;
@@ -30,6 +30,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public string ApiClassName => $"{Name}Model";
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(CoreTypeModel other)

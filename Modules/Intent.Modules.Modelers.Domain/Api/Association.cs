@@ -6,9 +6,9 @@ namespace Intent.Modelers.Domain.Api
     internal class Association : IAssociation, IEquatable<IAssociation>
     {
         private readonly Metadata.Models.IAssociation _association;
-        private readonly IDictionary<string, Class> _classCache;
+        private readonly IDictionary<string, ClassModel> _classCache;
 
-        internal Association(Metadata.Models.IAssociation association, IDictionary<string, Class> classCache)
+        internal Association(Metadata.Models.IAssociation association, IDictionary<string, ClassModel> classCache)
         {
             _association = association;
             _classCache = classCache;

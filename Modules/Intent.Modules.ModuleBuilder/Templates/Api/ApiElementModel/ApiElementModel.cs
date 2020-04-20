@@ -137,7 +137,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             
             #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModel.tt"
   if (Model.MenuOptions != null) {
-        foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => x.Type.SpecializationType != "Core Type")) { 
+        foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => !(x.Type is CoreTypeModel))) { 
             if (ExistsInBase(creationOption))
                 continue;
             
@@ -157,7 +157,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             
             #line default
             #line hidden
-            this.Write(" => _element.ChildElements\r\n            .Where(x => x.SpecializationType == ");
+            this.Write(" => _element.");
+            
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModel.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture((creationOption.Type is ElementSettingsModel) ? "ChildElement" : "OwnedAssociations"));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n            .Where(x => x.SpecializationType == ");
             
             #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionTypeClass(creationOption)));

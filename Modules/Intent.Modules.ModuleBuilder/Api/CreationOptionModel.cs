@@ -33,7 +33,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             //Shortcut = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
             //DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{element.TypeReference.Element.Name.ToCSharpIdentifier()}";
             Icon = element.TypeReference.Element.GetStereotypeProperty<IIconModel>("Settings", "Icon");
-            Type = element.TypeReference.Element;
+            Type = CreatableTypeFactory.Create(element.TypeReference.Element);
             //AllowMultiple = element.GetStereotypeProperty("Creation Options", "Allow Multiple", true);
         }
 
@@ -64,7 +64,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IIconModel Icon { get; }
 
-        public IElement Type { get; }
+        public ICreatableType Type { get; }
 
         public override string ToString()
         {

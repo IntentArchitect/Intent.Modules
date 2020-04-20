@@ -15,8 +15,8 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ElementSettingsModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class ElementSettingsModel : IHasStereotypes, IMetadataModel, ICreatableType
     {
         public const string SpecializationType = "Element Settings";
         public const string RequiredSpecializationType = "Element Settings";

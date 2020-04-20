@@ -4,11 +4,6 @@
   <FileLogs>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AggregationModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AggregationModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationDestinationEndSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/AssociationDestinationEndSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>

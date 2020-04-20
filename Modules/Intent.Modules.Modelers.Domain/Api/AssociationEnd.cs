@@ -12,11 +12,11 @@ namespace Intent.Modelers.Domain.Api
         internal AssociationEnd(
             Metadata.Models.IAssociationEnd associationEnd, 
             IAssociation association,
-            IDictionary<string, Class> classCache)
+            IDictionary<string, ClassModel> classCache)
         {
             _associationEnd = associationEnd;
             Association = association;
-            Class = classCache.ContainsKey(_associationEnd.Element.UniqueKey()) ? classCache[_associationEnd.Element.UniqueKey()] : new Class(_associationEnd.Element, classCache);
+            Class = classCache.ContainsKey(_associationEnd.Element.UniqueKey()) ? classCache[_associationEnd.Element.UniqueKey()] : new ClassModel(_associationEnd.Element, classCache);
         }
 
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;

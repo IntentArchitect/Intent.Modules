@@ -17,9 +17,9 @@ namespace Intent.Modelers.Domain.Api
 
         public IEnumerable<ClassModel> GetClasses()
         {
-            var cache = new Dictionary<string, Class>();
+            var cache = new Dictionary<string, ClassModel>();
             var classes = _metadataManager.GetMetadata<IElement>("Domain").Where(x => x.IsClass()).ToList();
-            var result = classes.Select(x => cache.ContainsKey(x.UniqueKey()) ? cache[x.UniqueKey()] : new Class(x, cache)).ToList();
+            var result = classes.Select(x => cache.ContainsKey(x.UniqueKey()) ? cache[x.UniqueKey()] : new ClassModel(x, cache)).ToList();
             return result;
         }
 
