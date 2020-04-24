@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new PackageSettingsPersistable
             {
-                CreationOptions = this?.MenuOptions.CreationOptions.Select(x => x.ToPersistable()).ToList(),
+                CreationOptions = this?.MenuOptions.ElementCreations.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = this?.MenuOptions.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList()
             };
         }
@@ -70,6 +70,12 @@ namespace Intent.Modules.ModuleBuilder.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
         }
 
 

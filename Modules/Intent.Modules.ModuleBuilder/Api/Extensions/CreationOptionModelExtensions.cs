@@ -10,16 +10,16 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class CreationOptionModelExtensions
     {
-        public static OptionSettings GetOptionSettings(this CreationOptionModel model)
-        {
-            var stereotype = model.GetStereotype("Option Settings");
-            return stereotype != null ? new OptionSettings(stereotype) : null;
-        }
+        //public static OptionSettings GetOptionSettings(this ElementCreationOptionModel model)
+        //{
+        //    var stereotype = model.GetStereotype("Option Settings");
+        //    return stereotype != null ? new OptionSettings(stereotype) : null;
+        //}
 
-        public static bool HasOptionSettings(this CreationOptionModel model)
-        {
-            return model.HasStereotype("Option Settings");
-        }
+        //public static bool HasOptionSettings(this ElementCreationOptionModel model)
+        //{
+        //    return model.HasStereotype("Option Settings");
+        //}
 
 
         public class OptionSettings
@@ -49,6 +49,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             public bool AllowMultiple()
             {
                 return _stereotype.GetProperty<bool>("Allow Multiple");
+            }
+
+            public string ApiModelName()
+            {
+                return _stereotype.GetProperty<string>("Api Model Name");
             }
 
         }

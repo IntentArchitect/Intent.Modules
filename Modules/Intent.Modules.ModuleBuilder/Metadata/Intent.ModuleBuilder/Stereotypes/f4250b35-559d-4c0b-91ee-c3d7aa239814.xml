@@ -5,6 +5,7 @@
   <targetMode>of-type</targetMode>
   <targetElements>
     <element>creation option</element>
+    <element>element creation option</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />
@@ -51,6 +52,15 @@
       <optionsSource>n/a</optionsSource>
       <placeholder />
       <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="719e9dff-2b8d-407d-912d-fac99a158721">
+      <name>Api Model Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
     </property>

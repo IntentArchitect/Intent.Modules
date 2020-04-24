@@ -49,39 +49,7 @@
       <operations />
       <stereotypes />
       <childElements>
-        <childElement id="8b547bad-24e9-49f4-b10e-f5342bd2c657" type="Creation Option">
-          <name>Add Source End</name>
-          <display>Add Source End: Association Source End Settings</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="0dea1d48-7b02-4b8b-906f-6a8731396a6a">
-            <typeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>7d4d5bf3-fcdc-4b0c-9604-6e5776382b0a</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment>Overrides the default creation option settings.</comment>
-              <addedByDefault>false</addedByDefault>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[source]" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-        <childElement id="44ff1d65-e1ad-403a-94cc-22b40832d780" type="Creation Option">
+        <childElement id="44ff1d65-e1ad-403a-94cc-22b40832d780" type="Element Creation Option">
           <name>Add Destination End</name>
           <display>Add Destination End: Association Destination End Settings</display>
           <isAbstract>false</isAbstract>
@@ -108,6 +76,40 @@
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="destination" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="8b547bad-24e9-49f4-b10e-f5342bd2c657" type="Element Creation Option">
+          <name>Add Source End</name>
+          <display>Add Source End: Association Source End Settings</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="0dea1d48-7b02-4b8b-906f-6a8731396a6a">
+            <typeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>7d4d5bf3-fcdc-4b0c-9604-6e5776382b0a</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment>Overrides the default creation option settings.</comment>
+              <addedByDefault>false</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[source]" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

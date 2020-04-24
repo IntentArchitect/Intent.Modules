@@ -2,29 +2,29 @@
 
 namespace Intent.Modelers.Domain.Api
 {
-    public interface IAssociationEnd : ITypeReference, IHasStereotypes
-    {
-        IAssociation Association { get; }
+    //public interface IAssociationEnd : ITypeReference, IHasStereotypes
+    //{
+    //    IAssociation Association { get; }
 
-        ClassModel Class { get; }
+    //    ClassModel Class { get; }
 
-        string Name { get; }
+    //    string Name { get; }
 
-        bool IsNavigable { get; }
+    //    bool IsNavigable { get; }
 
-        string MinMultiplicity { get; }
+    //    string MinMultiplicity { get; }
 
-        string MaxMultiplicity { get; }
+    //    string MaxMultiplicity { get; }
 
-        Multiplicity Multiplicity { get; }
+    //    Multiplicity Multiplicity { get; }
 
-        IAssociationEnd OtherEnd();
-    }
+    //    IAssociationEnd OtherEnd();
+    //}
 
-    public enum Multiplicity
-    {
-        ZeroToOne,
-        One,
-        Many
-    }
+    //public enum Multiplicity
+    //{
+    //    ZeroToOne,
+    //    One,
+    //    Many
+    //}
 }

@@ -50,7 +50,7 @@
       <operations />
       <stereotypes />
       <childElements>
-        <childElement id="7075d52c-ca67-4368-9b3b-ff8719ef6252" type="Creation Option">
+        <childElement id="7075d52c-ca67-4368-9b3b-ff8719ef6252" type="Element Creation Option">
           <name>Add Menu Options</name>
           <display>Add Menu Options: Context Menu</display>
           <isAbstract>false</isAbstract>
@@ -77,6 +77,7 @@
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[context menu]" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

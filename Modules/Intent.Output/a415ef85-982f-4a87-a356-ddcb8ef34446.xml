@@ -4,6 +4,11 @@
   <FileLogs>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationCreationOptionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/AssociationCreationOptionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationDestinationEndSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/AssociationDestinationEndSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -59,6 +64,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementCreationOptionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ElementCreationOptionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementExtensionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/ElementExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -106,6 +116,11 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\DesignerModelExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/DesignerModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ElementCreationOptionModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/ElementCreationOptionModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
@@ -161,6 +176,11 @@
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/PackageSettingsModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\StereotypeDefinitionCreationOptionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/StereotypeDefinitionCreationOptionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>

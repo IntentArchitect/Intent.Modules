@@ -56,10 +56,17 @@ namespace <#= Namespace #>
         foreach(var creationOption in Model.MenuOptions.CreationOptions.Where(x => !(x.Type is CoreTypeModel))) { 
             if (ExistsInBase(creationOption))
                 continue;#>
+<#          if (creationOption.CreatesElement()) {#>
         [IntentManaged(Mode.Fully)]
-        public <#= GetCreationOptionTypeClass(creationOption, creationOption.GetOptionSettings().AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => _element.<#= (creationOption.Type is ElementSettingsModel) ? "ChildElement" : "OwnedAssociations" #>
+        public <#= GetCreationOptionTypeClass(creationOption, creationOption.GetOptionSettings().AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
             .Where(x => x.SpecializationType == <#= GetCreationOptionTypeClass(creationOption) #>.SpecializationType)
             .Select(x => new <#= GetCreationOptionTypeClass(creationOption) #>(x))
+<#          } else if (creationOption.CreatesAssociation()) { #>
+        [IntentManaged(Mode.Fully)]
+        public <#= GetCreationOptionTypeClass(creationOption, creationOption.GetOptionSettings().AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => _element.AssociatedElements
+            .Where(x => x.Association.SpecializationType == <#= GetCreationOptionTypeClass(creationOption) #>.SpecializationType)
+            .Select(x => new <#= GetCreationOptionTypeClass(creationOption) #>(x.Association))
+<#          } #>
 <#      if (creationOption.GetOptionSettings().AllowMultiple()) { #>
             .ToList();
 <#      } else { #>
@@ -67,6 +74,12 @@ namespace <#= Namespace #>
 <#      } #>
 <#      }
     }#>
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(<#= ClassName #> other)

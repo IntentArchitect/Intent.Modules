@@ -20,6 +20,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
         {
         }
 
+        public string AssociationEndClassName => $"{Model.Name}EndModel";
+
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
@@ -34,7 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
                 fileExtension: "cs",
                 defaultLocationInProject: "Api",
                 className: "${Model.Name}Model",
-                @namespace: "${Project.Name}.ApiAssociationModel"
+                @namespace: Model.Designer.ApiNamespace
             );
         }
 

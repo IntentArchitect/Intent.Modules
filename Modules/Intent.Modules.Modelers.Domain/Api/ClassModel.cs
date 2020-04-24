@@ -1,15 +1,20 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Intent.Metadata.Models;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modelers.Domain.Api
 {
-    public class ClassModel : IEquatable<ClassModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class ClassModel : IHasStereotypes, IMetadataModel
     {
         private IList<IAssociationEnd> _associatedElements;
-        private readonly IElement _element;
+        protected readonly IElement _element;
         private readonly ICollection<ClassModel> _childClasses = new List<ClassModel>();
         private readonly ClassModel _parent;
 
@@ -60,8 +65,43 @@ namespace Intent.Modelers.Domain.Api
         public string Comment => _element.Comment;
         public IElementMapping MappedClass => _element.MappedElement;
         public IElementApplication Application => _element.Application;
-        public IEnumerable<IAttribute> Attributes => _element.Attributes;
-        public IEnumerable<IOperation> Operations => _element.Operations;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<AttributeModel> Attributes => _element.ChildElements
+            .Where(x => x.SpecializationType == AttributeModel.SpecializationType)
+            .Select(x => new AttributeModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<OperationModel> Operations => _element.ChildElements
+            .Where(x => x.SpecializationType == OperationModel.SpecializationType)
+            .Select(x => new OperationModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<CompositionModel> Compositions => _element.AssociatedElements
+            .Where(x => x.Association.SpecializationType == CompositionModel.SpecializationType)
+            .Select(x => new CompositionModel(x.Association))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<AggregationModel> Aggregations => _element.AssociatedElements
+            .Where(x => x.Association.SpecializationType == AggregationModel.SpecializationType)
+            .Select(x => new AggregationModel(x.Association))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public GeneralizationEndModel Generalization => _element.AssociatedElements
+            .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsTargetEnd())
+            .Select(x => GeneralizationModel.CreateFromEnd(x))
+            .SingleOrDefault();
+
+        [IntentManaged(Mode.Fully)]
+        public GeneralizationEndModel Specializations => _element.AssociatedElements
+            .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsSourceEnd())
+            .Select(x => GeneralizationModel.CreateFromEnd(x))
+            .SingleOrDefault();
+
         public IEnumerable<IAssociationEnd> AssociatedClasses
         {
             get => _associatedElements;
@@ -70,7 +110,7 @@ namespace Intent.Modelers.Domain.Api
 
         public IEnumerable<IAssociation> OwnedAssociations
         {
-            get { return AssociatedClasses.Select(x => x.Association).Distinct().Where(x => Equals(x.SourceEnd.Class, this)); }
+            get { return AssociatedClasses.Select(x => x.Association).Distinct().Where(x => Equals(x.SourceEnd.Element, this._element)); }
         }
 
         public static bool operator ==(ClassModel lhs, ClassModel rhs)
@@ -96,22 +136,34 @@ namespace Intent.Modelers.Domain.Api
             return !(lhs == rhs);
         }
 
+        [IntentManaged(Mode.Fully)]
         public bool Equals(ClassModel other)
         {
-            return string.Equals(Id, other?.Id);
+            return Equals(_element, other._element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
+            if (obj.GetType() != this.GetType()) return false;
             return Equals((ClassModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
-            return Id != null ? Id.GetHashCode() : 0;
+            return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+
+        public const string SpecializationType = "Class";
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
         }
     }
 }

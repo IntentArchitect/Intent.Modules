@@ -44,13 +44,13 @@
           <operations />
           <stereotypes />
           <childElements>
-            <childElement id="9a0a194c-b718-4052-be57-cee27bcd2ecc" type="Creation Option">
-              <name>New File Template</name>
-              <display>New File Template: File Template</display>
+            <childElement id="379ed16f-d6ac-40b0-93b0-d3448efe42d9" type="Element Creation Option">
+              <name>New Stereotype-Definition</name>
+              <display>New Stereotype-Definition: &lt;not found&gt;</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="dcc31b39-11d0-4d75-9d13-51df683e44f3">
-                <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
+              <typeReference id="c6b0f9fe-51ae-479d-92bd-1e43c1f33031">
+                <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -67,16 +67,17 @@
                   <comment>Overrides the default creation option settings.</comment>
                   <addedByDefault>false</addedByDefault>
                   <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + t" isActive="true" />
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                     <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="6ac7d5ec-9354-49f6-b3fa-a23cefda24c4" type="Creation Option">
+            <childElement id="6ac7d5ec-9354-49f6-b3fa-a23cefda24c4" type="Element Creation Option">
               <name>New Template Decorator</name>
               <display>New Template Decorator: Decorator</display>
               <isAbstract>false</isAbstract>
@@ -103,18 +104,19 @@
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                     <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="f272f1a9-89fe-4925-bbf1-73360de59b79" type="Creation Option">
-              <name>New Template Registration</name>
-              <display>New Template Registration: Template Registration</display>
+            <childElement id="9a0a194c-b718-4052-be57-cee27bcd2ecc" type="Element Creation Option">
+              <name>New File Template</name>
+              <display>New File Template: File Template</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="753d7f62-381a-495c-8078-9974f70fbfa8">
-                <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
+              <typeReference id="dcc31b39-11d0-4d75-9d13-51df683e44f3">
+                <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -131,48 +133,17 @@
                   <comment>Overrides the default creation option settings.</comment>
                   <addedByDefault>false</addedByDefault>
                   <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + r" isActive="true" />
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + t" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                     <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="379ed16f-d6ac-40b0-93b0-d3448efe42d9" type="Creation Option">
-              <name>New Stereotype-Definition</name>
-              <display>New Stereotype-Definition: Stereotype-Definition</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="c6b0f9fe-51ae-479d-92bd-1e43c1f33031">
-                <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-                  <comment>Overrides the default creation option settings.</comment>
-                  <addedByDefault>false</addedByDefault>
-                  <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
-                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <childElements />
-            </childElement>
-            <childElement id="c9b99362-2e29-4ca9-8bc5-ee73696d927f" type="Creation Option">
+            <childElement id="c9b99362-2e29-4ca9-8bc5-ee73696d927f" type="Element Creation Option">
               <name>New Folder</name>
               <display>New Folder: Folder</display>
               <isAbstract>false</isAbstract>
@@ -199,6 +170,40 @@
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="0" isActive="true" />
                     <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
+            <childElement id="f272f1a9-89fe-4925-bbf1-73360de59b79" type="Element Creation Option">
+              <name>New Template Registration</name>
+              <display>New Template Registration: Template Registration</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="753d7f62-381a-495c-8078-9974f70fbfa8">
+                <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+                  <comment>Overrides the default creation option settings.</comment>
+                  <addedByDefault>false</addedByDefault>
+                  <properties>
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + r" isActive="true" />
+                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>

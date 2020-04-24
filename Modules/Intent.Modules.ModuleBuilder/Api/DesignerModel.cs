@@ -101,15 +101,15 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<ElementExtensionModel> ElementExtensions => _element.ChildElements
-            .Where(x => x.SpecializationType == ElementExtensionModel.SpecializationType)
-            .Select(x => new ElementExtensionModel(x))
-            .ToList();
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 
     public class TypeOrder : IEquatable<TypeOrder>
     {
-        public TypeOrder(CreationOptionModel element)
+        public TypeOrder(ElementCreationOptionModel element)
         {
             Order = element.GetOptionSettings().TypeOrder();
             Type = element.TypeReference.Element.Name;

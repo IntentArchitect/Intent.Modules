@@ -62,5 +62,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == DesignerExtensionModel.SpecializationType)
             .Select(x => new DesignerExtensionModel(x))
             .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 }

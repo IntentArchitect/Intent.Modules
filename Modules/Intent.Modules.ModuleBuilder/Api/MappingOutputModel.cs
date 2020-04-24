@@ -63,5 +63,11 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 }

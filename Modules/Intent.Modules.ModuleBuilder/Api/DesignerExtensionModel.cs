@@ -38,5 +38,17 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ElementExtensionModel> ElementExtensions => _element.ChildElements
+            .Where(x => x.SpecializationType == ElementExtensionModel.SpecializationType)
+            .Select(x => new ElementExtensionModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 }

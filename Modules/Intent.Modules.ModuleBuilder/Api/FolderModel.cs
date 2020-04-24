@@ -80,5 +80,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == TemplateRegistrationModel.SpecializationType)
             .Select(x => new TemplateRegistrationModel(x))
             .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 }

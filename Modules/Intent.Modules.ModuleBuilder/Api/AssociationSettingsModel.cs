@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
+using Intent.Modules.ModuleBuilder.Api.Factories;
 using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
@@ -33,6 +34,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string ApiClassName => $"{Name}Model";
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        public DesignerModel Designer => DesignerModelFactory.GetDesigner(_element);
 
         [IntentManaged(Mode.Fully)]
         public AssociationSourceEndSettingsModel SourceEnd => _element.ChildElements

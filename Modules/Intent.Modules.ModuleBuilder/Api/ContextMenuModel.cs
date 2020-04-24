@@ -23,17 +23,17 @@ namespace Intent.Modules.ModuleBuilder.Api
                 throw new ArgumentException($"Invalid element type {element.SpecializationType}", nameof(element));
             }
             _element = element;
-            TypeOrder = CreationOptions.Select(x => new TypeOrder(x)).Distinct().ToList();
+            TypeOrder = ElementCreations.Select(x => new TypeOrder(x)).Distinct().ToList();
         }
-
+         
         public string Id => _element.Id;
         public string Name => _element.Name;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
-        public IList<CreationOptionModel> CreationOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == CreationOptionModel.SpecializationType)
-            .Select(x => new CreationOptionModel(x))
+        public IList<ElementCreationOptionModel> ElementCreations => _element.ChildElements
+            .Where(x => x.SpecializationType == ElementCreationOptionModel.SpecializationType)
+            .Select(x => new ElementCreationOptionModel(x))
             .ToList();
 
         public IList<TypeOrder> TypeOrder { get; }
@@ -57,6 +57,24 @@ namespace Intent.Modules.ModuleBuilder.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<AssociationCreationOptionModel> AssociationCreations => _element.ChildElements
+            .Where(x => x.SpecializationType == AssociationCreationOptionModel.SpecializationType)
+            .Select(x => new AssociationCreationOptionModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public StereotypeDefinitionCreationOptionModel StereotypeDefinitionCreation => _element.ChildElements
+            .Where(x => x.SpecializationType == StereotypeDefinitionCreationOptionModel.SpecializationType)
+            .Select(x => new StereotypeDefinitionCreationOptionModel(x))
+            .SingleOrDefault();
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
         }
     }
 }

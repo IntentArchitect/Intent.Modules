@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 DiagramSettings = null, // TODO JL / GCB
                 ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),
                 MappingSettings = this.MappingSettings?.ToPersistable(),
-                CreationOptions = this.MenuOptions?.CreationOptions.Select(x => x.ToPersistable()).ToList(),
+                CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = this.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList()
             };
         }
@@ -110,6 +110,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new MappingSettingsModel(x))
             .SingleOrDefault();
 
+        [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
             return _element.ToString();

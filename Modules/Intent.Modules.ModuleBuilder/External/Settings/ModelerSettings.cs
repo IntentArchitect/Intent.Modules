@@ -258,11 +258,13 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-
     public class ElementCreationOption
     {
         [XmlAttribute("order")]
         public string Order { get; set; }
+
+        [XmlAttribute("type")]
+        public ElementType Type { get; set; }
 
         [XmlElement("specializationType")]
         public string SpecializationType { get; set; }
@@ -291,13 +293,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public enum ElementType
     {
-        Unknown = 0,
-        Class = 1,
-        Literal = 2,
-        Attribute = 3,
-        Operation = 4,
-        Association = 5,
-        StereotypeDefinition = 6,
-        Folder = 7
+        [XmlEnum("element")]
+        Element = 0,
+        [XmlEnum("association")]
+        Association = 1,
+        [XmlEnum("stereotype-definition")]
+        StereotypeDefinition = 2
     }
 }

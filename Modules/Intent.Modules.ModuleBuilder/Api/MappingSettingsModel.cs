@@ -66,5 +66,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 MappedTypes = this.Mappings.Select(x => x.ToPersistable()).ToList()
             };
         }
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 }

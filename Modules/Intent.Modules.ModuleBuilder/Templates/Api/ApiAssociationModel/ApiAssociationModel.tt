@@ -20,7 +20,9 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class <#= ClassName #> : IMetadataModel
     {
+        [IntentManaged(Mode.Fully)]
         public const string SpecializationType = "<#= Model.Name #>";
+        [IntentManaged(Mode.Fully)]
         protected readonly IAssociation _association;
 
         [IntentInitialGen]
@@ -31,15 +33,37 @@ namespace <#= Namespace #>
                 throw new Exception($"Cannot create a '{GetType().Name}' from association with specialization type '{association.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _association = association;
-            SourceEnd = new <#= Model.Name #>EndModel(association.SourceEnd, this);
-            TargetEnd = new <#= Model.Name #>EndModel(association.TargetEnd, this);
+            SourceEnd = new <#=AssociationEndClassName #>(association.SourceEnd, this);
+            TargetEnd = new <#=AssociationEndClassName #>(association.TargetEnd, this);
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _association.Id;
         
-        public <#= Model.Name #>EndModel SourceEnd { get; }
-        public <#= Model.Name #>EndModel TargetEnd { get; }
+        [IntentManaged(Mode.Fully)]
+        public <#=AssociationEndClassName #> SourceEnd { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public <#=AssociationEndClassName #> TargetEnd { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public CompositionEndModel GetEnd(string endId)
+        {
+            if (SourceEnd.Id == Id)
+                return SourceEnd;
+            if (TargetEnd.Id == endId)
+            {
+                return TargetEnd;
+            }
+            throw new Exception($"Could not match Composition End to Id {endId} for Composition [{ToString()}]");
+        }
         
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _association.ToString();
+        }
+
         [IntentManaged(Mode.Fully)]
         public bool Equals(<#= ClassName #> other)
         {
@@ -62,41 +86,63 @@ namespace <#= Namespace #>
         }
     }
 
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class <#= Model.Name #>EndModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
+    public class <#=AssociationEndClassName #> : IAssociationEnd
     {
         protected readonly IAssociationEnd _associationEnd;
+        private readonly <#= ClassName #> _association;
 
-        [IntentInitialGen]
-        public <#= Model.Name #>EndModel(IAssociationEnd associationEnd, <#= ClassName #> association)
+        public <#=AssociationEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association)
         {
             _associationEnd = associationEnd;
+            _association = association;
         }
 
         public string Id => _associationEnd.Id;
-        
         public string Name => _associationEnd.Name;
-
+        public <#= ClassName #> Association => _association;
+        IAssociation IAssociationEnd.Association => _association.InternalAssociation;
+        public bool IsNavigable => _associationEnd.IsNavigable;
+        public bool IsNullable => _associationEnd.IsNullable;
+        public bool IsCollection => _associationEnd.IsCollection;
+        public IElement Element => _associationEnd.Element;
+        public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
+        public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
-        public ITypeReference TypeReference => _element.TypeReference;
+        public IAssociationEnd OtherEnd()
+        {
+            return this.Equals(_association.SourceEnd) ? _association.TargetEnd : _association.SourceEnd;
+        }
+
+        public bool IsTargetEnd()
+        {
+            return _associationEnd.IsTargetEnd();
+        }
+
+        public bool IsSourceEnd()
+        {
+            return _associationEnd.IsSourceEnd();
+        }
         
-        [IntentManaged(Mode.Fully)]
-        public bool Equals(<#= Model.Name #>EndModel other)
+        public override string ToString()
+        {
+            return _associationEnd.ToString();
+        }
+
+        public bool Equals(<#=AssociationEndClassName #> other)
         {
             return Equals(_associationEnd, other._associationEnd);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((<#= Model.Name #>EndModel)obj);
+            return Equals((<#=AssociationEndClassName #>)obj);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_associationEnd != null ? _associationEnd.GetHashCode() : 0);

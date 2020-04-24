@@ -18,7 +18,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public ModelersFolder(IElement element)
         {
-            if (element.SpecializationType != SpecializationType)
+            if (element.SpecializationType != SpecializationType) 
             {
                 throw new ArgumentException($"Invalid element type {element.SpecializationType}", nameof(element));
             }

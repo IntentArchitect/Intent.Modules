@@ -57,7 +57,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return new ElementSettingExtensionPersistable()
             {
                 SpecializationType = TypeReference.Element.Name,
-                CreationOptions = MenuOptions?.CreationOptions.Select(x => x.ToPersistable()).ToList(),
+                CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
                 MappingSettings = MappingSettings?.ToPersistable()
             };
@@ -82,6 +82,12 @@ namespace Intent.Modules.ModuleBuilder.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
         }
     }
 }

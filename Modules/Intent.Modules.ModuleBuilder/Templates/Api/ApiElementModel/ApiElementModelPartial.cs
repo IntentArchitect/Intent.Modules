@@ -47,21 +47,25 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             : null;
 
 
-        private string GetCreationOptionTypeClass(CreationOptionModel option, bool asCollection = false)
+        private string GetCreationOptionTypeClass(ElementCreationOptionModel option, bool asCollection = false)
         {
             var @interface = GetTemplateClassName(ApiElementModel.TemplateId, option.Type.Id, throwIfNotFound: false) ?? option.Type.ApiClassName;
             return asCollection ? $"IList<{@interface}>" : @interface;
         }
 
-        private string GetCreationOptionName(CreationOptionModel option)
+        private string GetCreationOptionName(ElementCreationOptionModel option)
         {
+            if (option.GetOptionSettings().ApiModelName() != null)
+            {
+                return option.GetOptionSettings().ApiModelName();
+            }
             var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
             return option.GetOptionSettings().AllowMultiple() ? name.ToPluralName() : name;
         }
 
-        private bool ExistsInBase(CreationOptionModel creationOption)
+        private bool ExistsInBase(ElementCreationOptionModel creationOption)
         {
-            return Model.GetInheritedType()?.MenuOptions.CreationOptions.Any(x => x.Type.Id == creationOption.Type.Id) ??
+            return Model.GetInheritedType()?.MenuOptions.ElementCreations.Any(x => x.Type.Id == creationOption.Type.Id) ??
                    false;
         }
     }
