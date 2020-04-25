@@ -31,6 +31,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new DiagramSettingsModel(x))
             .ToList();
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
 
         [IntentManaged(Mode.Fully)]
@@ -45,8 +46,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
@@ -89,5 +92,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

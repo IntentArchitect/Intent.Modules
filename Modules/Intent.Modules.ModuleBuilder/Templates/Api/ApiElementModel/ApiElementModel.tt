@@ -33,11 +33,17 @@ namespace <#= Namespace #>
             _element = element;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
         
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
 
 <#      if (!Model.GetTypeReferenceSettings().Mode().IsDisabled()) { #>
         [IntentManaged(Mode.Fully)]
@@ -66,28 +72,8 @@ namespace <#= Namespace #>
             .SingleOrDefault();
 <#          } #>
 
-<#      }
-        foreach(var associationSettings in AssociationSettings) { 
-            if (ExistsInBase(associationSettings))
-                continue;#>
-<#          if (associationSettings.SourceEnd.TargetsType(Model.Id)) { #>
-        [IntentManaged(Mode.Fully)]
-        public <#= associationSettings.SourceEnd.ApiModelName #> <#= associationSettings.SourceEnd.ApiPropertyName #> => _element.AssociatedElements
-            .Where(x => x.Association.SpecializationType == <#= associationSettings.ApiModelName #>.SpecializationType && x.IsSourceEnd())
-            .Select(x => <#= associationSettings.ApiModelName #>.CreateFromEnd(x))
-            .SingleOrDefault();
-
-<#          } #>
-<#          if (associationSettings.DestinationEnd.TargetsType(Model.Id)) { #>
-        [IntentManaged(Mode.Fully)]
-        public <#= associationSettings.DestinationEnd.ApiModelName #> <#= associationSettings.DestinationEnd.ApiPropertyName #> => _element.AssociatedElements
-            .Where(x => x.Association.SpecializationType == <#= associationSettings.ApiModelName #>.SpecializationType && x.IsTargetEnd())
-            .Select(x => <#= associationSettings.ApiModelName #>.CreateFromEnd(x))
-            .SingleOrDefault();
-
-<#          } #>
-<#      }
-    } #>
+<#      } #>
+<#  } #>
         [IntentManaged(Mode.Fully)]
         public override string ToString()
         {

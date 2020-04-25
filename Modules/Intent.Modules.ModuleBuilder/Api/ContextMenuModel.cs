@@ -26,8 +26,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             TypeOrder = ElementCreations.Select(x => new TypeOrder(x)).Distinct().ToList();
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
@@ -82,5 +87,8 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == CreationOptionModel.SpecializationType)
             .Select(x => new CreationOptionModel(x))
             .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

@@ -49,7 +49,7 @@
       <operations />
       <stereotypes />
       <childElements>
-        <childElement id="792d5ace-8307-46b5-bc9c-5960d5927378" type="Creation Option">
+        <childElement id="792d5ace-8307-46b5-bc9c-5960d5927378" type="Element Creation Option">
           <name>New Service</name>
           <display>New Service: Service</display>
           <isAbstract>false</isAbstract>
@@ -76,12 +76,13 @@
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="d4e0c7d7-04a9-4a09-877b-7cd458e29cc3" type="Creation Option">
+        <childElement id="d4e0c7d7-04a9-4a09-877b-7cd458e29cc3" type="Element Creation Option">
           <name>New DTO</name>
           <display>New DTO: DTO</display>
           <isAbstract>false</isAbstract>
@@ -108,12 +109,13 @@
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="3b3fc1ff-3bdf-4aed-bd4f-21dce0ac6e92" type="Creation Option">
+        <childElement id="3b3fc1ff-3bdf-4aed-bd4f-21dce0ac6e92" type="Element Creation Option">
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
@@ -140,12 +142,13 @@
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="NewType" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="8c3215d9-82d0-4970-a94f-3c6e2dadb639" type="Creation Option">
+        <childElement id="8c3215d9-82d0-4970-a94f-3c6e2dadb639" type="Element Creation Option">
           <name>New Enum</name>
           <display>New Enum: Enum</display>
           <isAbstract>false</isAbstract>
@@ -172,44 +175,13 @@
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="8eb67ef9-325a-46c2-b3ff-28bd2540c9ec" type="Creation Option">
-          <name>New Stereotype-Definition</name>
-          <display>New Stereotype-Definition: Stereotype-Definition</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="28e65414-d907-48c2-8e0d-92689efa7bae">
-            <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>59f70da0-36f9-498b-a611-39a68528e395</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment>Overrides the default creation option settings.</comment>
-              <addedByDefault>true</addedByDefault>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="NewStereotype" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-        <childElement id="c38313a3-1266-4833-acc9-4cb05f35cc3b" type="Creation Option">
+        <childElement id="c38313a3-1266-4833-acc9-4cb05f35cc3b" type="Element Creation Option">
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
@@ -236,6 +208,40 @@
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="0" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="5ae15350-4343-4e93-b194-c92383869c15" type="Stereotype-Definition Creation Option">
+          <name>New Stereotype-Definition</name>
+          <display>New Stereotype-Definition: Stereotype-Definition</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="4bfc3588-539e-4ca3-9b9e-372cd826c740">
+            <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>59f70da0-36f9-498b-a611-39a68528e395</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

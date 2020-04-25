@@ -4,7 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modelers.Services.Api
@@ -21,17 +21,22 @@ namespace Intent.Modelers.Services.Api
             Folder = Api.FolderModel.SpecializationType.Equals(_element.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new FolderModel(_element.ParentElement) : null;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public FolderModel Folder { get; }
+
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         public IElementApplication Application => _element.Application;
 
         [IntentManaged(Mode.Fully)]
         public IList<EnumLiteralModel> Literals => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.EnumLiteralModel.SpecializationType)
+            .Where(x => x.SpecializationType == EnumLiteralModel.SpecializationType)
             .Select(x => new EnumLiteralModel(x))
-            .ToList<EnumLiteralModel>();
+            .ToList();
         public string Comment => _element.Comment;
         public const string SpecializationType = "Enum";
 
@@ -54,6 +59,15 @@ namespace Intent.Modelers.Services.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
         }
     }
 }

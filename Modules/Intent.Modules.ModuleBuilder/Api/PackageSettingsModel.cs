@@ -32,8 +32,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             return element != null ? new PackageSettingsModel(element) : null;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
         [IntentManaged(Mode.Fully)]
@@ -46,7 +51,10 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new PackageSettingsPersistable
             {
-                CreationOptions = this?.MenuOptions.ElementCreations.Select(x => x.ToPersistable()).ToList(),
+                CreationOptions = this?.MenuOptions.ElementCreations.Select(x => x.ToPersistable())
+                    .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
+                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
+                    .ToList(),
                 TypeOrder = this?.MenuOptions.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList()
             };
         }
@@ -77,6 +85,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
 
 
     }

@@ -4,7 +4,7 @@ using Intent.Metadata.Models;
 using System.Linq;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modelers.Services.Api
@@ -19,23 +19,29 @@ namespace Intent.Modelers.Services.Api
             Folder = _element.ParentElement?.SpecializationType == Api.FolderModel.SpecializationType ? new FolderModel(_element.ParentElement) : null;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public FolderModel Folder { get; }
+
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         public string ApplicationName => _element.Application.Name;
         public IElementApplication Application => _element.Application;
 
         [IntentManaged(Mode.Fully)]
         public IList<OperationModel> Operations => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.OperationModel.SpecializationType)
+            .Where(x => x.SpecializationType == OperationModel.SpecializationType)
             .Select(x => new OperationModel(x))
-            .ToList<OperationModel>();
+            .ToList();
         public string Comment => _element.Id;
 
+        [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
-            return $"Service: {Name}";
+            return _element.ToString();
         }
 
         [IntentManaged(Mode.Fully)]
@@ -59,5 +65,8 @@ namespace Intent.Modelers.Services.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
         public const string SpecializationType = "Service";
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

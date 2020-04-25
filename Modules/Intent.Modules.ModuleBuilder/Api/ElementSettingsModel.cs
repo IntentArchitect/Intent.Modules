@@ -33,8 +33,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         public string ApiModelName => $"{Name.ToCSharpIdentifier()}Model";
 
@@ -68,7 +73,10 @@ namespace Intent.Modules.ModuleBuilder.Api
                 DiagramSettings = null, // TODO JL / GCB
                 ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),
                 MappingSettings = this.MappingSettings?.ToPersistable(),
-                CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable()).ToList(),
+                CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
+                    .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
+                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
+                    .ToList(),
                 TypeOrder = this.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList()
             };
         }
@@ -136,5 +144,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

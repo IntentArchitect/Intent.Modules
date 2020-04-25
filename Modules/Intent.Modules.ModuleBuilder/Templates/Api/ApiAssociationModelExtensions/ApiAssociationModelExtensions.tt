@@ -7,6 +7,8 @@
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
+using System.Collections.Generic;
+using System.Linq;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -18,9 +20,9 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully)]
         public static IList<<#= Model.SourceEnd.ApiModelName #>> <#= Model.SourceEnd.ApiPropertyName #>(this <#= targetType.ApiModelName #> model)
         {
-            return model.AssociatedElements
-                .Where(x => x.Association.SpecializationType == <#= Model.SourceEnd.ApiModelName #>.SpecializationType && x.IsTargetEnd())
-                .Select(x => <#= Model.SourceEnd.ApiModelName #>.CreateFromEnd(x))
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == <#= Model.ApiModelName #>.SpecializationType && x.IsTargetEnd())
+                .Select(x => <#= Model.ApiModelName #>.CreateFromEnd(x))
                 .ToList();
         }
 
@@ -29,9 +31,9 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully)]
         public static IList<<#= Model.DestinationEnd.ApiModelName #>> <#= Model.DestinationEnd.ApiPropertyName #>(this <#= targetType.ApiModelName #> model)
         {
-            return model.AssociatedElements
-                .Where(x => x.Association.SpecializationType == <#= Model.DestinationEnd.ApiModelName #>.SpecializationType && x.IsSourceEnd())
-                .Select(x => <#= Model.DestinationEnd.ApiModelName #>.CreateFromEnd(x))
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == <#= Model.ApiModelName #>.SpecializationType && x.IsSourceEnd())
+                .Select(x => <#= Model.ApiModelName #>.CreateFromEnd(x))
                 .ToList();
         }
     }

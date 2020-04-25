@@ -28,8 +28,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
             _element = element;
 
-            Name = element.Name;
-            //PackageSettings = Api.PackageSettings.Create(element.ChildElements.SingleOrDefault(x => x.SpecializationType == Api.PackageSettings.SpecializationType));
             //ElementSettings = element.ChildElements
             //    .Where(x => x.SpecializationType == Api.ElementSettings.RequiredSpecializationType)
             //    .Select(x => new ElementSettings(x)).OrderBy(x => x.Name)
@@ -40,9 +38,14 @@ namespace Intent.Modules.ModuleBuilder.Api
             //    .ToList();
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-        public string Name { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public string Name => _element.Name;
 
         [IntentManaged(Mode.Fully)]
         public PackageSettingsModel PackageSettings => _element.ChildElements
@@ -105,6 +108,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 
     public class TypeOrder : IEquatable<TypeOrder>

@@ -5,7 +5,7 @@ using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modelers.Services.Api
 {
@@ -24,10 +24,13 @@ namespace Intent.Modelers.Services.Api
             _element = element;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
 
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
 
@@ -54,5 +57,14 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 }

@@ -28,10 +28,13 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
 
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         public IIconModel Icon { get; }
@@ -87,5 +90,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

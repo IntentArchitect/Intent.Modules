@@ -25,14 +25,18 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
 
             ParentFolder = element.ParentElement?.SpecializationType == SpecializationType ? new FolderModel(element.ParentElement) : null;
-            Stereotypes = element.Stereotypes;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         public FolderModel ParentFolder { get; }
         public string ParentId => _element.ParentElement.Id;
-        public IEnumerable<IStereotype> Stereotypes { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
         public IList<FileTemplateModel> FileTemplates => _element.ChildElements
@@ -80,5 +84,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

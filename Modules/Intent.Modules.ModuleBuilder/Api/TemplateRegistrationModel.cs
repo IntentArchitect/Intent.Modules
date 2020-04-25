@@ -29,10 +29,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             Folder = element.ParentElement != null ? new FolderModel(element.ParentElement) : null;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
 
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
 
@@ -109,5 +112,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

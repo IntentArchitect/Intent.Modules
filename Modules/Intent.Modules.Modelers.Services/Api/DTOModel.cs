@@ -4,7 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modelers.Services.Api
@@ -19,10 +19,15 @@ namespace Intent.Modelers.Services.Api
             Folder = _class.ParentElement?.SpecializationType == Api.FolderModel.SpecializationType ? new FolderModel(_class.ParentElement) : null;
         }
 
-        public string Id => _class.Id;
-        public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
+        [IntentManaged(Mode.Fully)]
+        public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public FolderModel Folder { get; }
-        public string Name => _class.Name;
+
+        [IntentManaged(Mode.Fully)]
+        public string Name => _element.Name;
         public IEnumerable<string> GenericTypes => _class.GenericTypes.Select(x => x.Name);
         public bool IsMapped => _class.IsMapped;
         public IElementMapping MappedClass => _class.MappedElement;
@@ -30,9 +35,9 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<DTOFieldModel> Fields => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DTOFieldModel.SpecializationType)
+            .Where(x => x.SpecializationType == DTOFieldModel.SpecializationType)
             .Select(x => new DTOFieldModel(x))
-            .ToList<DTOFieldModel>();
+            .ToList();
         public string Comment => _class.Id;
 
         [IntentManaged(Mode.Fully)]
@@ -60,8 +65,17 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<DTOModel> DTOs => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DTOModel.SpecializationType)
+            .Where(x => x.SpecializationType == DTOModel.SpecializationType)
             .Select(x => new DTOModel(x))
-            .ToList<DTOModel>();
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 }

@@ -38,8 +38,13 @@ namespace Intent.Modules.ModuleBuilder.Api
             //AllowMultiple = element.GetStereotypeProperty("Creation Options", "Allow Multiple", true);
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         public string TargetSpecializationType { get; }
         public string ApiModelName => Type.ApiModelName;
@@ -98,5 +103,8 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

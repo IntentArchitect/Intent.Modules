@@ -17,14 +17,6 @@
   <literals />
   <attributes />
   <operations />
-  <stereotypes>
-    <stereotype stereotypeDefinitionId="153b1e56-8398-4f02-bbfc-301c6f1b34cb">
-      <addedByDefault>false</addedByDefault>
-      <properties>
-        <property name="62a1e47b-3b2c-4f77-8a2a-c2bcab1867ec" value="0" isActive="true" />
-        <property name="ab5c2188-68fe-46b5-9356-11a6efb5d8fa" value="1000" isActive="true" />
-      </properties>
-    </stereotype>
-  </stereotypes>
+  <stereotypes />
   <childElements />
 </class>

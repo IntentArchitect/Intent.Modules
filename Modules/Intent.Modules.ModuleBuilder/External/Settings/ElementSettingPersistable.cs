@@ -88,17 +88,17 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("diagramSettings")]
         public DiagramSettings DiagramSettings { get; set; }
 
-        [XmlArray("literalSettings")]
-        [XmlArrayItem("literalSetting")]
-        public ClassLiteralSettings[] LiteralSettings { get; set; }
+        //[XmlArray("literalSettings")]
+        //[XmlArrayItem("literalSetting")]
+        //public ClassLiteralSettings[] LiteralSettings { get; set; }
 
-        [XmlArray("attributeSettings")]
-        [XmlArrayItem("attributeSetting")]
-        public AttributeSettingsPersistable[] AttributeSettings { get; set; }
+        //[XmlArray("attributeSettings")]
+        //[XmlArrayItem("attributeSetting")]
+        //public AttributeSettingsPersistable[] AttributeSettings { get; set; }
 
-        [XmlArray("operationSettings")]
-        [XmlArrayItem("operationSetting")]
-        public OperationSettingsPersistable[] OperationSettings { get; set; }
+        //[XmlArray("operationSettings")]
+        //[XmlArrayItem("operationSetting")]
+        //public OperationSettingsPersistable[] OperationSettings { get; set; }
 
         [XmlArray("childElementSettings")]
         [XmlArrayItem("childElementSetting")]

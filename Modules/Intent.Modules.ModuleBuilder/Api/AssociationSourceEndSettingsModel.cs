@@ -24,14 +24,17 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
 
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
         public string ApiModelName => $"{_element.ParentElement.Name}EndModel";
 
         public string ApiPropertyName => this.GetSettings().ApiPropertyName();
 
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         public bool TargetsType(string elementSettingsId)
@@ -70,5 +73,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
+using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -22,17 +25,40 @@ namespace Intent.Modules.ModuleBuilder.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Icon = element.TypeReference.Element.GetStereotypeProperty<IIconModel>("Settings", "Icon");
+            Type = new CoreTypeModel(TypeReference.Element);
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
 
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
+        public IIconModel Icon { get; }
+
+        public CoreTypeModel Type { get; }
+
+        public ElementCreationOption ToPersistable()
+        {
+            return new ElementCreationOption
+            {
+                Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                Type = ElementType.StereotypeDefinition,
+                SpecializationType = this.Type.Name,
+                Text = this.Name,
+                Shortcut = this.GetOptionSettings().Shortcut(),
+                DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
+                Icon = Icon?.ToPersistable(),
+                AllowMultiple = this.GetOptionSettings().AllowMultiple()
+            };
+        }
 
         [IntentManaged(Mode.Fully)]
         public override string ToString()
@@ -60,5 +86,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

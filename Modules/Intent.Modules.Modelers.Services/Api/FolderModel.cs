@@ -4,7 +4,7 @@ using Intent.Metadata.Models;
 using System.Linq;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modelers.Services.Api
@@ -19,18 +19,22 @@ namespace Intent.Modelers.Services.Api
             {
                 throw new Exception($"Cannot create a folder from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
-            Id = element.Id;
-            Name = element.Name;
             ParentFolder = element.ParentElement != null ? new FolderModel(element.ParentElement) : null;
             IsPackage = false;
-            Stereotypes = element.Stereotypes;
         }
 
-        public string Id { get; }
-        public string Name { get; }
+        [IntentManaged(Mode.Fully)]
+        public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
+        public string Name => _element.Name;
+
         public FolderModel ParentFolder { get; }
+
         public bool IsPackage { get; }
-        public IEnumerable<IStereotype> Stereotypes { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(FolderModel other)
@@ -56,32 +60,41 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<DTOModel> DTOs => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.DTOModel.SpecializationType)
+            .Where(x => x.SpecializationType == DTOModel.SpecializationType)
             .Select(x => new DTOModel(x))
-            .ToList<DTOModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<EnumModel> Enums => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.EnumModel.SpecializationType)
+            .Where(x => x.SpecializationType == EnumModel.SpecializationType)
             .Select(x => new EnumModel(x))
-            .ToList<EnumModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<FolderModel> Folders => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.FolderModel.SpecializationType)
+            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
             .Select(x => new FolderModel(x))
-            .ToList<FolderModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<ServiceModel> Services => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.ServiceModel.SpecializationType)
+            .Where(x => x.SpecializationType == ServiceModel.SpecializationType)
             .Select(x => new ServiceModel(x))
-            .ToList<ServiceModel>();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<TypeDefinitionModel> Types => _element.ChildElements
-            .Where(x => x.SpecializationType == Api.TypeDefinitionModel.SpecializationType)
+            .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
             .Select(x => new TypeDefinitionModel(x))
-            .ToList<TypeDefinitionModel>();
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 }

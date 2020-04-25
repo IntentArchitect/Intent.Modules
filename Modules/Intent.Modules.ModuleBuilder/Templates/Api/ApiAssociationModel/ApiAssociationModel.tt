@@ -38,6 +38,14 @@ namespace <#= Namespace #>
         }
 
         [IntentManaged(Mode.Fully)]
+        public static <#=AssociationEndClassName #> CreateFromEnd(IAssociationEnd associationEnd)
+        {
+            var association = new <#= ClassName #>(associationEnd.Association);
+            return associationEnd.IsSourceEnd() ? association.SourceEnd : association.TargetEnd;
+        }
+
+
+        [IntentManaged(Mode.Fully)]
         public string Id => _association.Id;
         
         [IntentManaged(Mode.Fully)]
@@ -47,16 +55,7 @@ namespace <#= Namespace #>
         public <#=AssociationEndClassName #> TargetEnd { get; }
 
         [IntentManaged(Mode.Fully)]
-        public CompositionEndModel GetEnd(string endId)
-        {
-            if (SourceEnd.Id == Id)
-                return SourceEnd;
-            if (TargetEnd.Id == endId)
-            {
-                return TargetEnd;
-            }
-            throw new Exception($"Could not match Composition End to Id {endId} for Composition [{ToString()}]");
-        }
+        public IAssociation InternalAssociation => _association;
         
         [IntentManaged(Mode.Fully)]
         public override string ToString()
