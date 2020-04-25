@@ -15,11 +15,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class ApiElementModel : IntentRoslynProjectItemTemplateBase<ElementSettingsModel>
     {
+        public List<AssociationSettingsModel> AssociationSettings { get; }
+
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiElementModel";
 
-        public ApiElementModel(IProject project, ElementSettingsModel model) : base(TemplateId, project, model)
+        public ApiElementModel(IProject project, ElementSettingsModel model, List<AssociationSettingsModel> associationSettings) : base(TemplateId, project, model)
         {
+            AssociationSettings = associationSettings;
             AddTypeSource(CSharpTypeSource.InProject(Project, ApiElementModel.TemplateId, collectionFormat: "IEnumerable<{0}>"));
         }
 
@@ -33,10 +36,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.ApiClassName}",
+                fileName: $"{Model.ApiModelName}",
                 fileExtension: "cs",
                 defaultLocationInProject: "Api",
-                className: $"{Model.ApiClassName}",
+                className: $"{Model.ApiModelName}",
                 @namespace: Model.Designer.ApiNamespace
             );
         }
@@ -47,10 +50,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             : null;
 
 
-        private string GetCreationOptionTypeClass(ElementCreationOptionModel option, bool asCollection = false)
+        private string FormatForCollection(string name, bool asCollection)
         {
-            var @interface = GetTemplateClassName(ApiElementModel.TemplateId, option.Type.Id, throwIfNotFound: false) ?? option.Type.ApiClassName;
-            return asCollection ? $"IList<{@interface}>" : @interface;
+            return asCollection ? $"IList<{name}>" : name;
+        }
+
+        private string FormatForCollection(AssociationCreationOptionModel option)
+        {
+            var asCollection = option.GetOptionSettings().AllowMultiple();
+            return asCollection ? $"IList<{option.Type.ApiModelName}>" : option.Type.ApiModelName;
         }
 
         private string GetCreationOptionName(ElementCreationOptionModel option)
@@ -67,6 +75,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
         {
             return Model.GetInheritedType()?.MenuOptions.ElementCreations.Any(x => x.Type.Id == creationOption.Type.Id) ??
                    false;
+        }
+
+        private bool ExistsInBase(AssociationCreationOptionModel creationOption)
+        {
+            return Model.GetInheritedType()?.MenuOptions.AssociationCreations.Any(x => x.Type.Id == creationOption.Type.Id) ??
+                   false;
+        }
+
+        private bool ExistsInBase(AssociationSettingsModel associationSettings)
+        {
+            return false;
+            //throw new System.NotImplementedException();
         }
     }
 }

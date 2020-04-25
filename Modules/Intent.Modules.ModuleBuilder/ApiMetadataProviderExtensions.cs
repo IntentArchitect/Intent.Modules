@@ -22,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder
             return new ApiMetadataProvider(metadataManager).GetCoreTypeModels(application);
         }
 
-        public static IList<ElementCreationOptionModel> GetCreationOptionModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<CreationOptionModel> GetCreationOptionModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetCreationOptionModels(application);
         }

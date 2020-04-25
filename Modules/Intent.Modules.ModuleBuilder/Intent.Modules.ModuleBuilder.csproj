@@ -48,14 +48,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiModelInterfaceTemplate.tt</DependentUpon>
     </Compile>
-    <None Update="Templates\Api\ApiModelExtensions\ApiModelExtensions.tt">
+    <None Update="Templates\Api\ApiElementModelExtensions\ApiElementModelExtensions.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiModelExtensions.cs</LastGenOutput>
+      <LastGenOutput>ApiElementModelExtensions.cs</LastGenOutput>
     </None>
-    <Compile Update="Templates\Api\ApiModelExtensions\ApiModelExtensions.cs">
+    <Compile Update="Templates\Api\ApiElementModelExtensions\ApiElementModelExtensions.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiModelExtensions.tt</DependentUpon>
+      <DependentUpon>ApiElementModelExtensions.tt</DependentUpon>
     </Compile>
     <None Update="Templates\Api\ApiMetadataProvider\ApiMetadataProvider.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -76,6 +76,17 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiAssociationModel.tt</DependentUpon>
+    </Compile>
+  
+    <None Update="Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ApiAssociationModelExtensions.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiAssociationModelExtensions.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

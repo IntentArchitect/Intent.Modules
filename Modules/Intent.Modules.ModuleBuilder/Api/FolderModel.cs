@@ -46,12 +46,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new FolderModel(x))
             .ToList();
 
-        [IntentManaged(Mode.Fully)]
-        public IList<DecoratorModel> TemplateDecorators => _element.ChildElements
-            .Where(x => x.SpecializationType == DecoratorModel.SpecializationType)
-            .Select(x => new DecoratorModel(x))
-            .ToList();
-
         public IElement UnderlyingElement => _element;
 
         [IntentManaged(Mode.Fully)]

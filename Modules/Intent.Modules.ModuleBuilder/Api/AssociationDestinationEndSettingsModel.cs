@@ -30,6 +30,19 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public bool TargetsType(string elementSettingsId)
+        {
+            return this.GetSettings().TargetTypes().Any(t => t.Id == elementSettingsId);
+        }
+
+        public List<ElementSettingsModel> TargetTypes()
+        {
+            return this.GetSettings().TargetTypes().Select(x => new ElementSettingsModel(x)).ToList();
+        }
+
+        public string ApiModelName => $"{_element.ParentElement.Name}EndModel";
+
+        public string ApiPropertyName => this.GetSettings().ApiPropertyName();
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(AssociationDestinationEndSettingsModel other)

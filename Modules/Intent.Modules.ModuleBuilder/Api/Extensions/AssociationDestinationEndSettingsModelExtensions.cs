@@ -4,7 +4,7 @@ using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelExtensions", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModelExtensions", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
@@ -39,6 +39,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             public IElement[] TargetTypes()
             {
                 return _stereotype.GetProperty<IElement[]>("Target Types");
+            }
+
+            public string ApiPropertyName()
+            {
+                return _stereotype.GetProperty<string>("Api Property Name");
             }
 
             public bool IsNavigableEnabled()

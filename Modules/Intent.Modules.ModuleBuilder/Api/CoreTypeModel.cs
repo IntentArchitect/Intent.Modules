@@ -30,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public string ApiClassName => $"{Name}Model";
+        public string ApiModelName => $"{Name}Model";
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(CoreTypeModel other)

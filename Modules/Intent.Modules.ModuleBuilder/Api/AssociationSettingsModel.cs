@@ -13,7 +13,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationSettingsModel : IHasStereotypes, IMetadataModel, ICreatableType
+    public class AssociationSettingsModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Association Settings";
         protected readonly IElement _element;
@@ -31,7 +31,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public string Name => _element.Name;
 
-        public string ApiClassName => $"{Name}Model";
+        public string ApiModelName => $"{Name}Model";
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
@@ -42,6 +42,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == AssociationSourceEndSettingsModel.SpecializationType)
             .Select(x => new AssociationSourceEndSettingsModel(x))
             .SingleOrDefault();
+
         [IntentManaged(Mode.Fully)]
         public AssociationDestinationEndSettingsModel DestinationEnd => _element.ChildElements
             .Where(x => x.SpecializationType == AssociationDestinationEndSettingsModel.SpecializationType)
@@ -96,6 +97,12 @@ namespace Intent.Modules.ModuleBuilder.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
         }
     }
 }

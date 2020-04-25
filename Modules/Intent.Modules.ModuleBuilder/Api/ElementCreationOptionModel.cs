@@ -14,8 +14,8 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ElementCreationOptionModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class ElementCreationOptionModel : IHasStereotypes, IMetadataModel, ICreationOptionModel
     {
         protected readonly IElement _element;
         public const string SpecializationType = "Element Creation Option";
@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             //Shortcut = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
             //DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{element.TypeReference.Element.Name.ToCSharpIdentifier()}";
             Icon = element.TypeReference.Element.GetStereotypeProperty<IIconModel>("Settings", "Icon");
-            Type = CreatableTypeFactory.Create(element.TypeReference.Element);
+            Type = new ElementSettingsModel(TypeReference.Element);
             //AllowMultiple = element.GetStereotypeProperty("Creation Options", "Allow Multiple", true);
         }
 
@@ -42,58 +42,31 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
         public string TargetSpecializationType { get; }
+        public string ApiModelName => Type.ApiModelName;
+
+        public bool AllowMultiple()
+        {
+            return this.GetOptionSettings().AllowMultiple();
+        }
 
         public ElementCreationOption ToPersistable()
         {
             return new ElementCreationOption
             {
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
-                Type = GetElementType(),
+                Type = ElementType.Element,
                 SpecializationType = this.TargetSpecializationType,
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),
                 DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
-                Icon = GetIcon(this.Icon) ?? new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" },
+                Icon = Icon?.ToPersistable(),
                 AllowMultiple = this.GetOptionSettings().AllowMultiple()
             };
         }
 
-        public bool CreatesElement()
-        {
-            return TypeReference.Element.SpecializationType == ElementSettingsModel.SpecializationType;
-        }
-
-        public bool CreatesAssociation()
-        {
-            return TypeReference.Element.SpecializationType == AssociationSettingsModel.SpecializationType;
-        }
-
-        private ElementType GetElementType()
-        {
-            switch (TypeReference.Element.SpecializationType)
-            {
-                case ElementSettingsModel.SpecializationType:
-                    return ElementType.Element;
-                case AssociationSettingsModel.SpecializationType:
-                    return ElementType.Association;
-                case CoreTypeModel.SpecializationType:
-                    return ElementType.StereotypeDefinition;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-
-        private IconModelPersistable GetIcon(IIconModel icon)
-        {
-            return icon != null ? new IconModelPersistable { Type = (IconType)icon.Type, Source = icon.Source } : null;
-        }
-
-
         public IIconModel Icon { get; }
 
-        public ICreatableType Type { get; }
-
+        public ElementSettingsModel Type { get; }
 
         [IntentManaged(Mode.Fully)]
         public override string ToString()

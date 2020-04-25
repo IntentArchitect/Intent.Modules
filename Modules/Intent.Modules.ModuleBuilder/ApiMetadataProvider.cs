@@ -37,12 +37,12 @@ namespace Intent.Modules.ModuleBuilder
             return models;
         }
 
-        public IList<ElementCreationOptionModel> GetCreationOptionModels(IApplication application)
+        public IList<CreationOptionModel> GetCreationOptionModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == ElementCreationOptionModel.SpecializationType)
-                .Select(x => new ElementCreationOptionModel(x))
-                .ToList<ElementCreationOptionModel>();
+                .Where(x => x.SpecializationType == CreationOptionModel.SpecializationType)
+                .Select(x => new CreationOptionModel(x))
+                .ToList<CreationOptionModel>();
             return models;
         }
 

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+<stereotypeDefinition id="9682fe8b-bf51-4c87-b198-5fcfe8983852">
   <comment />
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>creation option</element>
-    <element>element creation option</element>
-    <element>stereotype-definition creation option</element>
+    <element>association creation option</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />
@@ -16,7 +14,7 @@
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
   <order>0</order>
   <properties>
-    <property id="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b">
+    <property id="46678a0e-dbb3-479a-a434-092390ec23ec">
       <name>Shortcut</name>
       <type>string</type>
       <controlType>text</controlType>
@@ -26,8 +24,8 @@
       <lookupTypes />
       <isRequiredFunction />
     </property>
-    <property id="ba8a3ecd-0f08-499e-bb5b-929d40f56a45">
-      <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
+    <property id="10f05e81-2da2-403f-9c7d-b712c7d202ba">
+      <comment />
       <name>Default Name</name>
       <type>string</type>
       <controlType>text</controlType>
@@ -36,7 +34,7 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="A43F388B-DAFF-422C-BD8D-FB433EFEC51B">
+    <property id="eb46bd10-e8b6-4852-8e6b-659f42c82797">
       <comment>Sets the order of the type against the other types</comment>
       <name>Type Order</name>
       <type>number</type>
@@ -46,7 +44,7 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="8e092aa6-7d1a-4a06-af82-903e7642cef6">
+    <property id="aa9aed36-437b-4f74-896d-5cffef1817a2">
       <name>Allow Multiple</name>
       <type>string</type>
       <controlType>checkbox</controlType>
@@ -56,14 +54,25 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="719e9dff-2b8d-407d-912d-fac99a158721">
-      <name>Api Model Name</name>
+    <property id="eb546a74-f95c-45b3-914a-ec66aef8e017">
+      <name>Api Source End Name</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+    <property id="d1784462-c11f-431d-b5d9-0f1fd09e4f52">
+      <name>Api Target End Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

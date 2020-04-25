@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
+using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -9,8 +11,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationCreationOptionModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class AssociationCreationOptionModel : IHasStereotypes, IMetadataModel, ICreationOptionModel
     {
         public const string SpecializationType = "Association Creation Option";
         protected readonly IElement _element;
@@ -22,6 +24,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Type = new AssociationSettingsModel(TypeReference.Element);
+
         }
 
         public string Id => _element.Id;
@@ -30,9 +34,32 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public IIconModel Icon { get; }
+
+        public AssociationSettingsModel Type { get; }
+
+        public bool AllowMultiple()
+        {
+            return this.GetOptionSettings().AllowMultiple();
+        }
+
+        public ElementCreationOption ToPersistable()
+        {
+            return new ElementCreationOption
+            {
+                Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                Type = ElementType.Association,
+                SpecializationType = this.Type.Name,
+                Text = this.Name,
+                Shortcut = this.GetOptionSettings().Shortcut(),
+                DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
+                Icon = Icon?.ToPersistable(),
+                AllowMultiple = this.GetOptionSettings().AllowMultiple()
+            };
+        }
+
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
-
 
         [IntentManaged(Mode.Fully)]
         public override string ToString()

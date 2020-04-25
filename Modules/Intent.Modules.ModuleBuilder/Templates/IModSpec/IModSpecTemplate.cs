@@ -27,14 +27,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
     public class TemplateRegistrationInfo
     {
-        public TemplateRegistrationInfo(string templateId, string templateType, string moduleDependency, string moduleVersion)
+        public TemplateRegistrationInfo(string modelId, string templateId, string templateType, string moduleDependency, string moduleVersion)
         {
+            ModelId = modelId;
             TemplateId = templateId;
             TemplateType = templateType;
             ModuleDependency = moduleDependency;
             ModuleVersion = moduleVersion;
         }
 
+        public string ModelId { get; }
         public string TemplateId { get; set; }
         public string TemplateType { get; set; }
         public string ModuleDependency { get; }
@@ -67,7 +69,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             _metadataManager = metadataManager;
             Project.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
-                _templatesToRegister.Add(new TemplateRegistrationInfo(@event.GetValue("TemplateId"), @event.GetValue("TemplateType"), @event.TryGetValue("Module Dependency"), @event.TryGetValue("Module Dependency Version")));
+                _templatesToRegister.Add(new TemplateRegistrationInfo(@event.GetValue("ModelId"), @event.GetValue("TemplateId"), @event.GetValue("TemplateType"), @event.TryGetValue("Module Dependency"), @event.TryGetValue("Module Dependency Version")));
             });
 
             Project.Application.EventDispatcher.Subscribe("MetadataRegistrationRequired", @event =>
@@ -96,11 +98,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             foreach (var template in _templatesToRegister)
             {
-                var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{template.TemplateId}\"]");
+                var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{template.TemplateId}\"]") ?? doc.XPathSelectElement($"package/templates/template[@externalReference=\"{template.ModelId}\"]");
 
                 if (specificTemplate == null)
                 {
-                    specificTemplate = new XElement("template", new XAttribute("id", template.TemplateId));
+                    specificTemplate = new XElement("template", new XAttribute("id", template.TemplateId), new XAttribute("externalReference", template.ModelId));
                     if (template.TemplateType == "C# Template")
                     {
                         specificTemplate.Add(XElement.Parse(@"
@@ -113,10 +115,20 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     templatesElement.Add(specificTemplate);
                 }
 
+                specificTemplate.Attributes("id").Single().Value = template.TemplateId;
+                if (!specificTemplate.Attributes("externalReference").Any())
+                {
+                    specificTemplate.Add(new XAttribute("externalReference", template.ModelId));
+                }
+
                 if (specificTemplate.Element("role") == null)
                 {
                     specificTemplate.Add(new XElement("role") { Value = template.TemplateId });
                 }
+                //else
+                //{
+                //    specificTemplate.Element("role").Value = template.Role;
+                //}
 
                 if (!string.IsNullOrWhiteSpace(template.ModuleDependency) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{template.ModuleDependency}\"]") == null)
                 {

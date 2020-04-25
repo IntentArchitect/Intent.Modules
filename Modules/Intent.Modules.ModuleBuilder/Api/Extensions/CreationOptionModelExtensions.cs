@@ -4,22 +4,22 @@ using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelExtensions", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModelExtensions", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class CreationOptionModelExtensions
     {
-        //public static OptionSettings GetOptionSettings(this ElementCreationOptionModel model)
-        //{
-        //    var stereotype = model.GetStereotype("Option Settings");
-        //    return stereotype != null ? new OptionSettings(stereotype) : null;
-        //}
+        public static OptionSettings GetOptionSettings(this CreationOptionModel model)
+        {
+            var stereotype = model.GetStereotype("Option Settings");
+            return stereotype != null ? new OptionSettings(stereotype) : null;
+        }
 
-        //public static bool HasOptionSettings(this ElementCreationOptionModel model)
-        //{
-        //    return model.HasStereotype("Option Settings");
-        //}
+        public static bool HasOptionSettings(this CreationOptionModel model)
+        {
+            return model.HasStereotype("Option Settings");
+        }
 
 
         public class OptionSettings

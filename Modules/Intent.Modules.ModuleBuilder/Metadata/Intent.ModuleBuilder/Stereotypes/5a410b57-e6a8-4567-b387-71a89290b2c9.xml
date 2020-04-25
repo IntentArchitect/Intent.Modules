@@ -36,6 +36,16 @@
       </lookupTypes>
       <isRequiredFunction>true</isRequiredFunction>
     </property>
+    <property id="b534060a-c8a3-4631-b4a9-db0baeecd1b3">
+      <name>Api Property Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
     <property id="c81dddd3-8e13-4fe9-b923-1ad339b30746">
       <name>Is Navigable Enabled</name>
       <type>boolean</type>

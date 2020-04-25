@@ -36,7 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => _element.Id;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public string Name => _element.Name;
-        public string ApiClassName => $"{Name.ToCSharpIdentifier()}Model";
+        public string ApiModelName => $"{Name.ToCSharpIdentifier()}Model";
 
         public DesignerModel Designer => DesignerModelFactory.GetDesigner(_element);
 

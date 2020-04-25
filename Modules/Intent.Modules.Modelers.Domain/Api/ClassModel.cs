@@ -10,6 +10,27 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.Domain.Api
 {
+    public static class GeneralizationAssociationExtensions
+    {
+        [IntentManaged(Mode.Fully)]
+        public static GeneralizationEndModel Generalization(this ClassModel _element)
+        {
+            return _element.AssociatedElements
+                .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => GeneralizationModel.CreateFromEnd(x))
+                .SingleOrDefault();
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public static GeneralizationEndModel Specializations(this ClassModel _element)
+        {
+            return _element.AssociatedElements
+                .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsSourceEnd())
+                .Select(x => GeneralizationModel.CreateFromEnd(x))
+                .SingleOrDefault();
+        }
+    }
+
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class ClassModel : IHasStereotypes, IMetadataModel
     {
@@ -102,6 +123,12 @@ namespace Intent.Modelers.Domain.Api
             .Select(x => GeneralizationModel.CreateFromEnd(x))
             .SingleOrDefault();
 
+
+        public IEnumerable<IAssociationEnd> AssociatedElements
+        {
+            get => _associatedElements;
+            set => _associatedElements = (IList<IAssociationEnd>)value;
+        }
         public IEnumerable<IAssociationEnd> AssociatedClasses
         {
             get => _associatedElements;

@@ -28,10 +28,21 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public string Name => _element.Name;
 
-        public string ApiClassName => $"{Name}Model";
+        public string ApiModelName => $"{_element.ParentElement.Name}EndModel";
+
+        public string ApiPropertyName => this.GetSettings().ApiPropertyName();
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public bool TargetsType(string elementSettingsId)
+        {
+            return this.GetSettings().TargetTypes().Any(t => t.Id == elementSettingsId);
+        }
+
+        public List<ElementSettingsModel> TargetTypes()
+        {
+            return this.GetSettings().TargetTypes().Select(x => new ElementSettingsModel(x)).ToList();
+        }
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(AssociationSourceEndSettingsModel other)

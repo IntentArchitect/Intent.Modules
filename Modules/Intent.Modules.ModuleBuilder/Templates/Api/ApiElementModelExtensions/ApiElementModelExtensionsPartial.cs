@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Api.Factories;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -11,16 +9,16 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
+namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiModelExtensions : IntentRoslynProjectItemTemplateBase<ExtensionModel>
+    partial class ApiElementModelExtensions : IntentRoslynProjectItemTemplateBase<ExtensionModel>
     {
 
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiModelExtensions";
+        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiElementModelExtensions";
 
-        public ApiModelExtensions(IProject project, ExtensionModel model) : base(TemplateId, project, model)
+        public ApiElementModelExtensions(IProject project, ExtensionModel model) : base(TemplateId, project, model)
         {
         }
 

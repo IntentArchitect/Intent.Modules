@@ -8,15 +8,15 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public static class ElementCreationOptionModelExtensions
+    public static class AssociationCreationOptionModelExtensions
     {
-        public static OptionSettings GetOptionSettings(this ElementCreationOptionModel model)
+        public static OptionSettings GetOptionSettings(this AssociationCreationOptionModel model)
         {
             var stereotype = model.GetStereotype("Option Settings");
             return stereotype != null ? new OptionSettings(stereotype) : null;
         }
 
-        public static bool HasOptionSettings(this ElementCreationOptionModel model)
+        public static bool HasOptionSettings(this AssociationCreationOptionModel model)
         {
             return model.HasStereotype("Option Settings");
         }
@@ -51,9 +51,14 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Allow Multiple");
             }
 
-            public string ApiModelName()
+            public string ApiSourceEndName()
             {
-                return _stereotype.GetProperty<string>("Api Model Name");
+                return _stereotype.GetProperty<string>("Api Source End Name");
+            }
+
+            public string ApiTargetEndName()
+            {
+                return _stereotype.GetProperty<string>("Api Target End Name");
             }
 
         }

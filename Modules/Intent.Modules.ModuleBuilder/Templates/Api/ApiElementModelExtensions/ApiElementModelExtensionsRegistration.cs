@@ -6,30 +6,31 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiModelExtensions
+namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ApiModelExtensionsRegistration : ModelTemplateRegistrationBase<ExtensionModel>
+    public class ApiElementModelExtensionsRegistration : ModelTemplateRegistrationBase<ExtensionModel>
     {
         private readonly IMetadataManager _metadataManager;
         private IEnumerable<IStereotypeDefinition> _stereotypeDefinitions;
 
-        public ApiModelExtensionsRegistration(IMetadataManager metadataManager)
+        public ApiElementModelExtensionsRegistration(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
 
-        public override string TemplateId => ApiModelExtensions.TemplateId;
+        public override string TemplateId => ApiElementModelExtensions.TemplateId;
 
         public override ITemplate CreateTemplateInstance(IProject project, ExtensionModel model)
         {
-            return new ApiModelExtensions(project, model);
+            return new ApiElementModelExtensions(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

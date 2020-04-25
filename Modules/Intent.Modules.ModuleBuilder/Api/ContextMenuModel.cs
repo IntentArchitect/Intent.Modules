@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
             TypeOrder = ElementCreations.Select(x => new TypeOrder(x)).Distinct().ToList();
         }
-         
+
         public string Id => _element.Id;
         public string Name => _element.Name;
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
@@ -35,6 +35,18 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == ElementCreationOptionModel.SpecializationType)
             .Select(x => new ElementCreationOptionModel(x))
             .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<AssociationCreationOptionModel> AssociationCreations => _element.ChildElements
+            .Where(x => x.SpecializationType == AssociationCreationOptionModel.SpecializationType)
+            .Select(x => new AssociationCreationOptionModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public StereotypeDefinitionCreationOptionModel StereotypeDefinitionCreation => _element.ChildElements
+            .Where(x => x.SpecializationType == StereotypeDefinitionCreationOptionModel.SpecializationType)
+            .Select(x => new StereotypeDefinitionCreationOptionModel(x))
+            .SingleOrDefault();
 
         public IList<TypeOrder> TypeOrder { get; }
 
@@ -60,21 +72,15 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<AssociationCreationOptionModel> AssociationCreations => _element.ChildElements
-            .Where(x => x.SpecializationType == AssociationCreationOptionModel.SpecializationType)
-            .Select(x => new AssociationCreationOptionModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
-        public StereotypeDefinitionCreationOptionModel StereotypeDefinitionCreation => _element.ChildElements
-            .Where(x => x.SpecializationType == StereotypeDefinitionCreationOptionModel.SpecializationType)
-            .Select(x => new StereotypeDefinitionCreationOptionModel(x))
-            .SingleOrDefault();
-
-        [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<CreationOptionModel> CreationOptions => _element.ChildElements
+            .Where(x => x.SpecializationType == CreationOptionModel.SpecializationType)
+            .Select(x => new CreationOptionModel(x))
+            .ToList();
     }
 }
