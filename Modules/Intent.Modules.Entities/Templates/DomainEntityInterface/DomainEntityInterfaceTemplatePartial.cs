@@ -9,7 +9,6 @@ using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
@@ -96,12 +95,12 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().Aggregate(x => x.BeforeProperties(@class));
         }
 
-        public string PropertyBefore(IAttribute attribute)
+        public string PropertyBefore(AttributeModel attribute)
         {
             return GetDecorators().Aggregate(x => x.PropertyBefore(attribute));
         }
 
-        public string PropertyAnnotations(IAttribute attribute)
+        public string PropertyAnnotations(AttributeModel attribute)
         {
             return GetDecorators().Aggregate(x => x.PropertyAnnotations(attribute));
         }
@@ -116,7 +115,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().Aggregate(x => x.PropertyAnnotations(associationEnd));
         }
 
-        public string AttributeAccessors(IAttribute attribute)
+        public string AttributeAccessors(AttributeModel attribute)
         {
             return GetDecorators().Select(x => x.AttributeAccessors(attribute)).FirstOrDefault(x => x != null) ?? "get; set;";
         }
@@ -126,7 +125,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().Select(x => x.AssociationAccessors(associationEnd)).FirstOrDefault(x => x != null) ?? "get; set;";
         }
 
-        public bool CanWriteDefaultAttribute(IAttribute attribute)
+        public bool CanWriteDefaultAttribute(AttributeModel attribute)
         {
             return GetDecorators().All(x => x.CanWriteDefaultAttribute(attribute));
         }
@@ -136,25 +135,25 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().All(x => x.CanWriteDefaultAssociation(association));
         }
 
-        public bool CanWriteDefaultOperation(IOperation operation)
+        public bool CanWriteDefaultOperation(OperationModel operation)
         {
             return GetDecorators().All(x => x.CanWriteDefaultOperation(operation));
         }
 
-        public string GetParametersDefinition(IOperation operation)
+        public string GetParametersDefinition(OperationModel operation)
         {
             return operation.Parameters.Any()
-                ? operation.Parameters.Select(x => this.ConvertType(x.Type, OPERATIONS_CONTEXT) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
+                ? operation.Parameters.Select(x => this.ConvertType(x.TypeReference, OPERATIONS_CONTEXT) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
                 : "";
         }
 
-        public string EmitOperationReturnType(IOperation o)
+        public string EmitOperationReturnType(OperationModel o)
         {
-            if (o.ReturnType == null)
+            if (o.TypeReference.Element == null)
             {
                 return o.IsAsync() ? "Task" : "void";
             }
-            return o.IsAsync() ? $"Task<{this.ConvertType(o.ReturnType.Type, OPERATIONS_CONTEXT)}>" : this.ConvertType(o.ReturnType.Type, OPERATIONS_CONTEXT);
+            return o.IsAsync() ? $"Task<{this.ConvertType(o.TypeReference, OPERATIONS_CONTEXT)}>" : this.ConvertType(o.TypeReference, OPERATIONS_CONTEXT);
         }
     }
 }

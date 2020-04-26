@@ -1,31 +1,46 @@
-using System.Collections.Generic;
-using Intent.Metadata.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class EnumLiteralModel : IHasStereotypes, IMetadataModel
     {
-        private readonly ILiteral _literal;
+        public const string SpecializationType = "Enum-Literal";
+        protected readonly IElement _element;
 
-        public EnumLiteralModel(ILiteral literal)
+        public EnumLiteralModel(IElement element, string requiredType = SpecializationType)
         {
-            _literal = literal;
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+            }
+            _element = element;
         }
 
-        public string Id => _literal.Id;
-        public IEnumerable<IStereotype> Stereotypes => _literal.Stereotypes;
-        public string Name => _literal.Name;
-        public string Value => _literal.Value;
-        public string Comment => _literal.Comment;
-        protected readonly IElement _element;
-        public const string SpecializationType = "Enum-Literal";
+        [IntentManaged(Mode.Fully)]
+        public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
+        public string Name => _element.Name;
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(EnumLiteralModel other)
@@ -46,12 +61,6 @@ namespace Intent.Modelers.Domain.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public override string ToString()
-        {
-            return _element.ToString();
         }
     }
 }

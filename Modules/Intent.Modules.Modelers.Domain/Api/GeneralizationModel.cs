@@ -28,6 +28,7 @@ namespace Intent.Modelers.Domain.Api
             TargetEnd = new GeneralizationEndModel(association.TargetEnd, this);
         }
 
+        [IntentManaged(Mode.Fully)]
         public static GeneralizationEndModel CreateFromEnd(IAssociationEnd associationEnd)
         {
             var association = new GeneralizationModel(associationEnd.Association);
@@ -65,22 +66,13 @@ namespace Intent.Modelers.Domain.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public GeneralizationEndModel GetEnd(string endId)
-        {
-            if (SourceEnd.Id == Id)
-                return SourceEnd;
-            if (TargetEnd.Id == endId)
-            {
-                return TargetEnd;
-            }
-            throw new Exception($"Could not match Composition End to Id {endId} for Composition [{ToString()}]");
-        }
-
-        [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
             return _association.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IAssociation InternalAssociation => _association;
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]

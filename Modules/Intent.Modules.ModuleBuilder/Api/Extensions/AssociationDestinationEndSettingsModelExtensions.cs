@@ -76,6 +76,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Is Collection Default");
             }
 
+            public bool AllowMultiple()
+            {
+                return _stereotype.GetProperty<bool>("Allow Multiple");
+            }
+
         }
 
     }

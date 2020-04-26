@@ -11,7 +11,7 @@ namespace Intent.Modules.Entities
 {
     public static class OperationExtensions
     {
-        public static bool IsAsync(this IOperation operation)
+        public static bool IsAsync(this OperationModel operation)
         {
             return operation.HasStereotype("Asynchronous");
         }

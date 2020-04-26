@@ -49,7 +49,7 @@
       <operations />
       <stereotypes />
       <childElements>
-        <childElement id="513ec6e5-0f2a-4aa7-bbb1-bf5d1ed5c507" type="Creation Option">
+        <childElement id="513ec6e5-0f2a-4aa7-bbb1-bf5d1ed5c507" type="Element Creation Option">
           <name>Add Literal</name>
           <display>Add Literal: Enum-Literal</display>
           <isAbstract>false</isAbstract>

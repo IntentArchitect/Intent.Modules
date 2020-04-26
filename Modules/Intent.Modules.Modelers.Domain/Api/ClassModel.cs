@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Intent.Metadata.Models;
+using Intent.Modules.Modelers.Domain.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -12,76 +13,72 @@ namespace Intent.Modelers.Domain.Api
 {
     public static class GeneralizationAssociationExtensions
     {
-        [IntentManaged(Mode.Fully)]
-        public static GeneralizationEndModel Generalization(this ClassModel _element)
-        {
-            return _element.AssociatedElements
-                .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsTargetEnd())
-                .Select(x => GeneralizationModel.CreateFromEnd(x))
-                .SingleOrDefault();
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public static GeneralizationEndModel Specializations(this ClassModel _element)
-        {
-            return _element.AssociatedElements
-                .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsSourceEnd())
-                .Select(x => GeneralizationModel.CreateFromEnd(x))
-                .SingleOrDefault();
-        }
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class ClassModel : IHasStereotypes, IMetadataModel
     {
-        private IList<IAssociationEnd> _associatedElements;
+        private IList<AssociationEndModel> _associatedElements;
         protected readonly IElement _element;
         private readonly ICollection<ClassModel> _childClasses = new List<ClassModel>();
         private readonly ClassModel _parent;
 
-        public ClassModel(IElement element, IDictionary<string, ClassModel> classCache)
+        public ClassModel(IElement element)
         {
+            //if (classCache == null)
+            //{
+            //    classCache = new Dictionary<string, ClassModel>();
+            //}
             _element = element;
-            classCache.Add(_element.UniqueKey(), this);
+            //classCache.Add(_element.UniqueKey(), this);
             Folder = Api.Folder.SpecializationType.Equals(_element.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_element.ParentElement) : null;
 
-            var generalizedFrom = _element.AssociatedElements
-                .Where(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase) &&
-                            x.Association.SourceEnd.Element.Id == _element.Id)
-                .ToArray();
-            if (generalizedFrom.Length > 1)
-            {
-                throw new Exception($"[{_element.Name} - {_element.Id}] is generalized from more than one class.");
-            }
+            //var generalizedFrom = _element.AssociatedElements
+            //    .Where(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase) &&
+            //                x.Association.SourceEnd.Element.Id == _element.Id)
+            //    .ToArray();
+            //if (generalizedFrom.Length > 1)
+            //{
+            //    throw new Exception($"[{_element.Name} - {_element.Id}] is generalized from more than one class.");
+            //}
 
-            var parent = generalizedFrom.SingleOrDefault()?.Element;
-            if (parent != null)
-            {
-                _parent = classCache.ContainsKey(parent.UniqueKey()) ? classCache[parent.UniqueKey()] : new ClassModel(parent, classCache);
-                _parent._childClasses.Add(this);
-            }
+            //var parent = this.Generalizations().SingleOrDefault()?.Element;
+            //if (parent != null)
+            //{
+            //    _parent = classCache.ContainsKey(parent.UniqueKey()) ? classCache[parent.UniqueKey()] : new ClassModel(parent, classCache);
+            //    _parent._childClasses.Add(this);
+            //}
 
-            _associatedElements = element.AssociatedElements
-                .Where(x => "Composition".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase)
-                || "Aggregation".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))
-                .Where(end => !(end.Association.TargetEnd.Element.Equals(end.Association.SourceEnd.Element) && end == end.Association.SourceEnd))
-                .Select(x =>
-                {
-                    var association = new Association(x.Association, classCache);
-                    return Equals(association.TargetEnd.Class, this) && !association.IsSelfReference() ? association.SourceEnd : association.TargetEnd;
-                })
+            _associatedElements = this.AssociatedToClasses()
+                .Concat(this.AssociatedFromClasses().Where(x => x.OtherEnd().Element.Id != Id))
                 .ToList();
+            //_associatedElements = element.AssociatedElements
+            //    .Where(x => "Composition".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase)
+            //    || "Aggregation".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))
+            //    .Where(end => !(end.Association.TargetEnd.Element.Equals(end.Association.SourceEnd.Element) && end == end.Association.SourceEnd))
+            //    .Select(x =>
+            //    {
+            //        var association = new Association(x.Association, classCache);
+            //        return Equals(association.TargetEnd.Class, this) && !association.IsSelfReference() ? association.SourceEnd : association.TargetEnd;
+            //    })
+            //    .ToList();
         }
 
         public string UniqueKey => $"{_element.Application.Id}_{Id}";
+
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public IFolder Folder { get; }
+
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         public bool IsAbstract => _element.IsAbstract;
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
-        public ClassModel ParentClass => _parent;
-        public IEnumerable<ClassModel> ChildClasses => _childClasses;
+        public ClassModel ParentClass => this.Generalizations().Select(x => new ClassModel(x.Element)).SingleOrDefault();
+        public IEnumerable<ClassModel> ChildClasses => this.Specializations().Select(x => new ClassModel(x.Element)).ToList();
         public bool IsMapped => _element.IsMapped;
         public string Comment => _element.Comment;
         public IElementMapping MappedClass => _element.MappedElement;
@@ -99,45 +96,11 @@ namespace Intent.Modelers.Domain.Api
             .Select(x => new OperationModel(x))
             .ToList();
 
-        [IntentManaged(Mode.Fully)]
-        public IList<CompositionModel> Compositions => _element.AssociatedElements
-            .Where(x => x.Association.SpecializationType == CompositionModel.SpecializationType)
-            .Select(x => new CompositionModel(x.Association))
-            .ToList();
 
-        [IntentManaged(Mode.Fully)]
-        public IList<AggregationModel> Aggregations => _element.AssociatedElements
-            .Where(x => x.Association.SpecializationType == AggregationModel.SpecializationType)
-            .Select(x => new AggregationModel(x.Association))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
-        public GeneralizationEndModel Generalization => _element.AssociatedElements
-            .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsTargetEnd())
-            .Select(x => GeneralizationModel.CreateFromEnd(x))
-            .SingleOrDefault();
-
-        [IntentManaged(Mode.Fully)]
-        public GeneralizationEndModel Specializations => _element.AssociatedElements
-            .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsSourceEnd())
-            .Select(x => GeneralizationModel.CreateFromEnd(x))
-            .SingleOrDefault();
-
-
-        public IEnumerable<IAssociationEnd> AssociatedElements
+        public IEnumerable<AssociationEndModel> AssociatedClasses
         {
             get => _associatedElements;
-            set => _associatedElements = (IList<IAssociationEnd>)value;
-        }
-        public IEnumerable<IAssociationEnd> AssociatedClasses
-        {
-            get => _associatedElements;
-            set => _associatedElements = (IList<IAssociationEnd>)value;
-        }
-
-        public IEnumerable<IAssociation> OwnedAssociations
-        {
-            get { return AssociatedClasses.Select(x => x.Association).Distinct().Where(x => Equals(x.SourceEnd.Element, this._element)); }
+            set => _associatedElements = (IList<AssociationEndModel>)value;
         }
 
         public static bool operator ==(ClassModel lhs, ClassModel rhs)
@@ -192,5 +155,8 @@ namespace Intent.Modelers.Domain.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

@@ -42,6 +42,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                 : new ApplicationModelerModel { Settings = new ModelerSettingsPersistable() };
 
             applicationModelerModeler.Icon = Model.GetDesignerSettings().Icon().ToPersistable();
+            applicationModelerModeler.DisplayOrder = Model.GetDesignerSettings().DisplayOrder() ?? 0;
             var modelerSettings = applicationModelerModeler.Settings;
 
             //modelerSettings.DiagramSettings // TODO

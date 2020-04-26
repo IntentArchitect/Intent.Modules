@@ -1,13 +1,12 @@
 ﻿using Intent.Templates;
 using System.Collections.Generic;
+using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.Templates;
-using IAttribute = Intent.Metadata.Models.IAttribute;
-using IOperation = Intent.Metadata.Models.IOperation;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
-    public abstract class DomainEntityInterfaceDecoratorBase : DecoratorBase, ITemplateDecorator, IDeclareUsings, IAttibuteTypeConverter
+    public abstract class DomainEntityInterfaceDecoratorBase : DecoratorBase, ITemplateDecorator, IDeclareUsings, IAttributeTypeConverter
     {
         protected DomainEntityInterfaceDecoratorBase(DomainEntityInterfaceTemplate template)
         {
@@ -24,22 +23,22 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 
         public virtual string BeforeProperties(ClassModel @class) { return null; }
 
-        public virtual string PropertyBefore(IAttribute attribute) { return null; }
+        public virtual string PropertyBefore(AttributeModel attribute) { return null; }
 
-        public virtual string PropertyAnnotations(IAttribute attribute) { return null; }
+        public virtual string PropertyAnnotations(AttributeModel attribute) { return null; }
 
         public virtual string PropertyBefore(IAssociationEnd associationEnd) { return null; }
 
         public virtual string PropertyAnnotations(IAssociationEnd associationEnd) { return null; }
 
-        public virtual string AttributeAccessors(IAttribute attribute) { return null; }
+        public virtual string AttributeAccessors(AttributeModel attribute) { return null; }
 
         public virtual string AssociationAccessors(IAssociationEnd associationEnd) { return null; }
 
-        public virtual string ConvertAttributeType(IAttribute attribute) { return null; }
+        public virtual string ConvertAttributeType(AttributeModel attribute) { return null; }
 
-        public virtual bool CanWriteDefaultAttribute(IAttribute attribute) { return true; }
+        public virtual bool CanWriteDefaultAttribute(AttributeModel attribute) { return true; }
         public virtual bool CanWriteDefaultAssociation(IAssociationEnd association) { return true; }
-        public virtual bool CanWriteDefaultOperation(IOperation operation) { return true; }
+        public virtual bool CanWriteDefaultOperation(OperationModel operation) { return true; }
     }
 }

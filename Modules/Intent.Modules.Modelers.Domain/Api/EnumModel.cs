@@ -20,9 +20,14 @@ namespace Intent.Modelers.Domain.Api
             Folder = Api.Folder.SpecializationType.Equals(_element.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_element.ParentElement) : null;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public IFolder Folder { get; }
+
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         public IElementApplication Application => _element.Application;
 
@@ -60,5 +65,8 @@ namespace Intent.Modelers.Domain.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

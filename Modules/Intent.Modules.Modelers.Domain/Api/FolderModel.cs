@@ -24,10 +24,13 @@ namespace Intent.Modelers.Domain.Api
             _element = element;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
 
+        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
@@ -35,6 +38,7 @@ namespace Intent.Modelers.Domain.Api
             .Where(x => x.SpecializationType == ClassModel.SpecializationType)
             .Select(x => new ClassModel(x))
             .ToList();
+
         [IntentManaged(Mode.Fully)]
         public IList<TypeDefinitionModel> Types => _element.ChildElements
             .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
@@ -87,5 +91,8 @@ namespace Intent.Modelers.Domain.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
     }
 }

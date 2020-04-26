@@ -36,14 +36,19 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<IIconModel>("Icon");
             }
 
-            public string APINamespace()
+            public int? DisplayOrder()
             {
-                return _stereotype.GetProperty<string>("API Namespace");
+                return _stereotype.GetProperty<int?>("Display Order");
             }
 
             public bool IsReference()
             {
                 return _stereotype.GetProperty<bool>("Is Reference");
+            }
+
+            public string APINamespace()
+            {
+                return _stereotype.GetProperty<string>("API Namespace");
             }
 
         }

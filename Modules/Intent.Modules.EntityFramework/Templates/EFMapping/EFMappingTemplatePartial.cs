@@ -7,8 +7,6 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
-using AssociationType = Intent.Modelers.Domain.Api.AssociationType;
-using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.EntityFramework.Templates.EFMapping
 {
@@ -21,7 +19,6 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             : base (Identifier, project, model)
         {
             AddNugetDependency(NugetPackages.EntityFramework);
-            var x = Model.AssociatedClasses.Where(ae => ae.Association.AssociationType == AssociationType.Composition && ae.Association.TargetEnd == ae).ToList();
         }
 
         public string GetEntityName(ClassModel model)

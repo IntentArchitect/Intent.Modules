@@ -25,15 +25,14 @@
       <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>
     </property>
-    <property id="c141a969-5a1a-49b8-8935-9d235ab0d835">
-      <name>API Namespace</name>
+    <property id="f577290d-ea2e-4609-8c90-7fd7bcf327d9">
+      <name>Display Order</name>
       <type>string</type>
-      <controlType>text</controlType>
+      <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
+      <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="c3f89951-374a-4bb5-bcf7-10a8f208f317">
       <name>Is Reference</name>
@@ -44,6 +43,16 @@
       <defaultValue>false</defaultValue>
       <valueOptions />
       <lookupTypes />
+    </property>
+    <property id="c141a969-5a1a-49b8-8935-9d235ab0d835">
+      <name>API Namespace</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

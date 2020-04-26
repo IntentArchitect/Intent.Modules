@@ -7,7 +7,6 @@ using Intent.Modules.Common.Templates;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Templates;
-using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.Entities.Templates
 {
@@ -51,15 +50,15 @@ namespace Intent.Modules.Entities.Templates
 
         public static string Name(this IAssociationEnd associationEnd)
         {
-            if (string.IsNullOrEmpty(associationEnd.Name))
-            {
-                var className = associationEnd.Class.Name;
-                if (associationEnd.MaxMultiplicity == "*" || int.Parse(associationEnd.MaxMultiplicity) > 1)
-                {
-                    return className.EndsWith("y") ? className.Substring(0, className.Length - 1) + "ies" : string.Format("{0}s", className);
-                }
-                return associationEnd.Class.Name;
-            }
+            //if (string.IsNullOrEmpty(associationEnd.Name))
+            //{
+            //    var className = associationEnd.Class.Name;
+            //    if (associationEnd.MaxMultiplicity == "*" || int.Parse(associationEnd.MaxMultiplicity) > 1)
+            //    {
+            //        return className.EndsWith("y") ? className.Substring(0, className.Length - 1) + "ies" : string.Format("{0}s", className);
+            //    }
+            //    return associationEnd.Class.Name;
+            //}
 
             return associationEnd.Name;
         }
@@ -102,8 +101,8 @@ namespace Intent.Modules.Entities.Templates
         //}
     }
 
-    public interface IAttibuteTypeConverter
+    public interface IAttributeTypeConverter
     {
-        string ConvertAttributeType(IAttribute attribute);
+        string ConvertAttributeType(AttributeModel attribute);
     }
 }

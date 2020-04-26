@@ -17,6 +17,9 @@ namespace Intent.Modules.ModelerBuilder.External
         [XmlElement("icon")]
         public IconModelPersistable Icon { get; set; }
 
+        [XmlElement("displayOrder")]
+        public int DisplayOrder { get; set; }
+
         [XmlElement("loadStartPage")]
         public bool LoadStartPage { get; set; }
 

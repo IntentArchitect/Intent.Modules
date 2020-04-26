@@ -49,7 +49,7 @@
       <operations />
       <stereotypes />
       <childElements>
-        <childElement id="47a27eff-6313-46af-a636-d289483628bf" type="Creation Option">
+        <childElement id="47a27eff-6313-46af-a636-d289483628bf" type="Element Creation Option">
           <name>Add Parameter</name>
           <display>Add Parameter: Parameter</display>
           <isAbstract>false</isAbstract>

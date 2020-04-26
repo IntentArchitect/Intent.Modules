@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="330867e2-0c19-4ef8-9a87-75a1095e655e" type="Class">
+  <name>NewClass1</name>
+  <display>NewClass1</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

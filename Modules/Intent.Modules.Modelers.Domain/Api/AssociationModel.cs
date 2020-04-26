@@ -10,48 +10,52 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class CompositionModel : IMetadataModel
+    public class AssociationModel : IMetadataModel
     {
         [IntentManaged(Mode.Fully)]
-        public const string SpecializationType = "Composition";
-        internal readonly IAssociation InternalAssociation;
+        public const string SpecializationType = "Association";
+        [IntentManaged(Mode.Fully)]
+        protected readonly IAssociation _association;
 
-        public CompositionModel(IAssociation association, string requiredType = SpecializationType)
+        public AssociationModel(IAssociation association, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(association.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from association with specialization type '{association.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
-            InternalAssociation = association;
-            SourceEnd = new CompositionEndModel(association.SourceEnd, this);
-            TargetEnd = new CompositionEndModel(association.TargetEnd, this);
+            _association = association;
+            SourceEnd = new AssociationEndModel(association.SourceEnd, this);
+            TargetEnd = new AssociationEndModel(association.TargetEnd, this);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public static AssociationEndModel CreateFromEnd(IAssociationEnd associationEnd)
+        {
+            var association = new AssociationModel(associationEnd.Association);
+            return associationEnd.IsSourceEnd() ? association.SourceEnd : association.TargetEnd;
+        }
+
 
         [IntentManaged(Mode.Fully)]
         public string Id => _association.Id;
 
         [IntentManaged(Mode.Fully)]
-        public CompositionEndModel SourceEnd { get; }
+        public AssociationEndModel SourceEnd { get; }
 
         [IntentManaged(Mode.Fully)]
-        public CompositionEndModel TargetEnd { get; }
+        public AssociationEndModel TargetEnd { get; }
 
         [IntentManaged(Mode.Fully)]
-        public CompositionEndModel GetEnd(string endId)
+        public IAssociation InternalAssociation => _association;
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
         {
-            if (SourceEnd.Id == Id)
-                return SourceEnd;
-            if (TargetEnd.Id == endId)
-            {
-                return TargetEnd;
-            }
-            throw new Exception($"Could not match Composition End to Id {endId} for Composition [{ToString()}]");
+            return _association.ToString();
         }
 
-        AssociationType AssociationType { get; }
-
         [IntentManaged(Mode.Fully)]
-        public bool Equals(CompositionModel other)
+        public bool Equals(AssociationModel other)
         {
             return Equals(_association, other._association);
         }
@@ -62,7 +66,7 @@ namespace Intent.Modelers.Domain.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CompositionModel)obj);
+            return Equals((AssociationModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -70,23 +74,15 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_association != null ? _association.GetHashCode() : 0);
         }
-
-        [IntentManaged(Mode.Fully)]
-        public override string ToString()
-        {
-            return _association.ToString();
-        }
-        [IntentManaged(Mode.Fully)]
-        protected readonly IAssociation _association;
     }
 
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class CompositionEndModel : IAssociationEnd
+    public class AssociationEndModel : IAssociationEnd
     {
         protected readonly IAssociationEnd _associationEnd;
-        private readonly CompositionModel _association;
+        private readonly AssociationModel _association;
 
-        public CompositionEndModel(IAssociationEnd associationEnd, CompositionModel association)
+        public AssociationEndModel(IAssociationEnd associationEnd, AssociationModel association)
         {
             _associationEnd = associationEnd;
             _association = association;
@@ -94,7 +90,7 @@ namespace Intent.Modelers.Domain.Api
 
         public string Id => _associationEnd.Id;
         public string Name => _associationEnd.Name;
-        public CompositionModel Association => _association;
+        public AssociationModel Association => _association;
         IAssociation IAssociationEnd.Association => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
         public bool IsNullable => _associationEnd.IsNullable;
@@ -124,7 +120,7 @@ namespace Intent.Modelers.Domain.Api
             return _associationEnd.ToString();
         }
 
-        public bool Equals(CompositionEndModel other)
+        public bool Equals(AssociationEndModel other)
         {
             return Equals(_associationEnd, other._associationEnd);
         }
@@ -134,7 +130,7 @@ namespace Intent.Modelers.Domain.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CompositionEndModel)obj);
+            return Equals((AssociationEndModel)obj);
         }
 
         public override int GetHashCode()

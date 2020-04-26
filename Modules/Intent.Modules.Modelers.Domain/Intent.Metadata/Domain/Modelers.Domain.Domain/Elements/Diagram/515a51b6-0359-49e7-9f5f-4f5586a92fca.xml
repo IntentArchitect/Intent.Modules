@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="515a51b6-0359-49e7-9f5f-4f5586a92fca" type="Diagram">
+  <name>NewDiagram</name>
+  <display>NewDiagram</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <diagram>
+    <targetPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</targetPackageId>
+  </diagram>
+  <childElements />
+</class>

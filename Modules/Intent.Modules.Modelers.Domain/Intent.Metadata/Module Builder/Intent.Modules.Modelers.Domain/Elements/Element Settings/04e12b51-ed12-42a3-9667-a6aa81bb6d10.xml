@@ -49,7 +49,7 @@
       <operations />
       <stereotypes />
       <childElements>
-        <childElement id="832377ce-9bce-4c2a-9240-0765a2396784" type="Creation Option">
+        <childElement id="832377ce-9bce-4c2a-9240-0765a2396784" type="Element Creation Option">
           <name>Add Attribute</name>
           <display>Add Attribute: Attribute</display>
           <isAbstract>false</isAbstract>
@@ -82,7 +82,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="8790a464-9cb8-44a7-a7dc-6651991eb44f" type="Creation Option">
+        <childElement id="8790a464-9cb8-44a7-a7dc-6651991eb44f" type="Element Creation Option">
           <name>Add Operation</name>
           <display>Add Operation: Operation</display>
           <isAbstract>false</isAbstract>
@@ -110,105 +110,6 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-        <childElement id="4f3bf2f0-01ed-4e76-afa0-975bcdd3c0a9" type="Creation Option">
-          <name>Add Association (Composition)</name>
-          <display>Add Association (Composition): Composition</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="539a2579-708b-40f6-940d-5522dda491b7">
-            <typeId>459c1b34-d749-497f-a17b-af473f2afc59</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>788b13a2-7dd9-4d99-8091-dd96d19ab0bf</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" value="Compositions" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-        <childElement id="17f87efd-6b7d-406e-b19e-2d91c3de39a1" type="Creation Option">
-          <name>Add Association (Aggregation)</name>
-          <display>Add Association (Aggregation): Aggregation</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="d3dc82ef-4bc3-4910-a70e-a4c517a38f5e">
-            <typeId>70294cd5-ad20-47c5-9d7d-89913c36abc2</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>788b13a2-7dd9-4d99-8091-dd96d19ab0bf</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" value="Aggregations" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-        <childElement id="793fa8d7-33cd-4876-984a-14fc0abeb0fe" type="Creation Option">
-          <name>Add Association (Generalization)</name>
-          <display>Add Association (Generalization): Generalization</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="27a4d286-9d9b-4386-b09f-2988dad95469">
-            <typeId>5de35973-3ac7-4e65-b48c-385605aec561</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>788b13a2-7dd9-4d99-8091-dd96d19ab0bf</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" value="Generalizations" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
