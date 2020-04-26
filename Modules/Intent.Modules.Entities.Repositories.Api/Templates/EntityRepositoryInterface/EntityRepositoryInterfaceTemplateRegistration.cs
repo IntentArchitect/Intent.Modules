@@ -6,6 +6,7 @@ using Intent.Engine;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.Modelers.Domain;
 using Intent.Templates;
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInterface
@@ -13,10 +14,10 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInt
     [Description(EntityRepositoryInterfaceTemplate.Identifier)]
     public class EntityRepositoryInterfaceTemplateRegistration : ModelTemplateRegistrationBase<ClassModel>
     {
-        private readonly DomainMetadataProvider _metadataManager;
+        private readonly IMetadataManager _metadataManager;
         private IEnumerable<string> _stereotypeNames;
 
-        public EntityRepositoryInterfaceTemplateRegistration(DomainMetadataProvider metadataManager)
+        public EntityRepositoryInterfaceTemplateRegistration(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
@@ -38,7 +39,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInt
 
         public override IEnumerable<ClassModel> GetModels(Engine.IApplication application)
         {
-            var allModels = _metadataManager.GetClasses(application.Id);
+            var allModels = _metadataManager.GetClassModels(application);
             var filteredModels = allModels.Where(p => _stereotypeNames.Any(p.HasStereotype));
 
             if (!filteredModels.Any())

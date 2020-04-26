@@ -204,7 +204,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         {
             continue;
         }
-        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
+        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.TypeReference) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
 
             
             #line default

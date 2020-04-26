@@ -5,7 +5,6 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Entities.Templates.DomainEntityState;
-using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.Entities.Decorators
 {
@@ -27,12 +26,12 @@ namespace Intent.Modules.Entities.Decorators
             return "    [DataContract]";
         }
 
-        public override string PropertyAnnotations(IAttribute attribute)
+        public override string PropertyAnnotations(AttributeModel attribute)
         {
             return "        [DataMember]";
         }
 
-        public override string PropertyAnnotations(IAssociationEnd associationEnd)
+        public override string PropertyAnnotations(AssociationEndModel associationEnd)
         {
             return "        [DataMember]";
         }

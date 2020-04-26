@@ -10,7 +10,6 @@
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
 {
     using Intent.Modelers.Domain.Api;
-    using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
@@ -26,7 +25,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<Modelers.Domain.Api.ClassModel>>
+    public partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<ClassModel>>
     {
 #line hidden
         /// <summary>
@@ -38,14 +37,14 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             this.Write(" \r\n\r\nusing System;\r\nusing Intent.Framework.Core.Visitor;\r\nusing Intent.Framework." +
                     "EntityFramework.Interceptors;\r\nusing System.Collections.Generic;\r\n");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -55,7 +54,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
                     " entities should be deleted when their root is deleted.\r\n    /// </summary>\r\n   " +
                     " public class ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -63,7 +62,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             this.Write(" : IEntityCompositionVisitor\r\n    {\r\n        private readonly IList<object> _enti" +
                     "ties;\r\n\r\n        public ");
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -93,7 +92,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
 
 ");
             
-            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
  foreach (var model in Model) {
 
             
@@ -101,14 +100,14 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             #line hidden
             this.Write("        public void Visit(");
             
-            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(model)));
             
             #line default
             #line hidden
             this.Write(" state)\r\n        {\r\n");
             
-            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
  
         if (model.ParentClass != null)
         {
@@ -118,14 +117,14 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             #line hidden
             this.Write("            Visit((");
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(model.ParentClass)));
             
             #line default
             #line hidden
             this.Write(") state);\r\n");
             
-            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
  
         }
 
@@ -140,14 +139,14 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             #line hidden
             this.Write("            foreach (IVisitable item in state.");
             
-            #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 74 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(")\r\n            {\r\n                item.Accept(this);\r\n            }\r\n");
             
-            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
               }
                 else
                 {
@@ -156,21 +155,21 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             #line hidden
             this.Write("            if (state.");
             
-            #line 82 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.Name()));
             
             #line default
             #line hidden
             this.Write(" != null)\r\n            {\r\n                ((IVisitable)state.");
             
-            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(associationEnd.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(").Accept(this);\r\n            }\r\n");
             
-            #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 85 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
                 }
             }
         }
@@ -180,7 +179,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             #line hidden
             this.Write("            _entities.Add(state);\r\n        }\r\n\r\n");
             
-            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
+            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
  }
             
             #line default

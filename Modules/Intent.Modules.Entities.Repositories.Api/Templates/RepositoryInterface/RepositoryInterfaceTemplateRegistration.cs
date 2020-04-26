@@ -13,10 +13,10 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
     [Description(RepositoryInterfaceTemplate.Identifier)]
     public class RepositoryInterfaceTemplateRegistration : NoModelTemplateRegistrationBase
     {
-        private readonly DomainMetadataProvider _metadataManager;
+        private readonly IMetadataManager _metadataManager;
         private IEnumerable<string> _stereotypeNames;
 
-        public RepositoryInterfaceTemplateRegistration(DomainMetadataProvider metadataManager)
+        public RepositoryInterfaceTemplateRegistration(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }

@@ -10,7 +10,6 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 using Intent.Utils;
 using AssociationType = Intent.Modelers.Domain.Api.AssociationType;
-using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 {
@@ -179,7 +178,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             return GetDecorators().Aggregate(x => x.PropertyMappings(@class));
         }
 
-        private bool HasTypeOverride(IAttribute attribute)
+        private bool HasTypeOverride(AttributeModel attribute)
         {
             var overrideAttributeStereotype = attribute.GetStereotype(Stereotypes.EntityFrameworkCore.EFMappingOptions.Name);
             if (overrideAttributeStereotype != null)
@@ -204,7 +203,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             return false;
         }
 
-        private string GetTypeOverride(IAttribute attribute)
+        private string GetTypeOverride(AttributeModel attribute)
         {
             var overrideAttributeStereotype = attribute.GetStereotype(Stereotypes.EntityFrameworkCore.EFMappingOptions.Name);
             if (overrideAttributeStereotype != null)
@@ -229,7 +228,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             return string.Empty;
         }
 
-        private static string GetForeignKeyLambda(IAssociationEnd associationEnd)
+        private static string GetForeignKeyLambda(AssociationEndModel associationEnd)
         {
             var columns = associationEnd.Class.GetStereotypeProperty(
                     stereotypeName: Stereotypes.Rdbms.ForeignKey.Name,
@@ -247,7 +246,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             return $"x => new {{ {string.Join(", ", columns.Select(x => "x." + x))}}}";
         }
 
-        private void IssueManyToManyWarning(IAssociationEnd associationEnd)
+        private void IssueManyToManyWarning(AssociationEndModel associationEnd)
         {
             Logging.Log.Warning($@"Intent.EntityFrameworkCore: Cannot create mapping relationship from {Model.Name} to {associationEnd.Class.Name}. It has been ignored, and will not be persisted.
     Many-to-Many relationships are not yet supported by EntityFrameworkCore as yet.

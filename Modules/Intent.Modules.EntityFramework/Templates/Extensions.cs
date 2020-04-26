@@ -7,7 +7,7 @@ namespace Intent.Modules.EntityFramework.Templates
 {
     public static class Extensions
     {
-        public static string Name(this IAssociationEnd associationEnd)
+        public static string Name(this AssociationEndModel associationEnd)
         {
             //if (string.IsNullOrEmpty(associationEnd.Name))
             //{
@@ -22,7 +22,7 @@ namespace Intent.Modules.EntityFramework.Templates
             return associationEnd.Name;
         }
 
-        public static RelationshipType Relationship(this IAssociationEnd associationEnd)
+        public static RelationshipType Relationship(this AssociationEndModel associationEnd)
         {
             if (!associationEnd.IsCollection && !associationEnd.OtherEnd().IsCollection)
                 return RelationshipType.OneToOne;
@@ -36,7 +36,7 @@ namespace Intent.Modules.EntityFramework.Templates
             throw new Exception($"The relationship type from [{associationEnd.Element.Name}] to [{associationEnd.OtherEnd().Element.Name}] could not be determined.");
         }
 
-        public static string MultiplicityString(this IAssociationEnd associationEnd)
+        public static string MultiplicityString(this AssociationEndModel associationEnd)
         {
             if (associationEnd.IsCollection)
             {
@@ -48,7 +48,7 @@ namespace Intent.Modules.EntityFramework.Templates
             }
         }
 
-        public static string RelationshipString(this IAssociation association)
+        public static string RelationshipString(this AssociationModel association)
         {
             return string.Format("{0}->{1}", association.SourceEnd.MultiplicityString(), association.TargetEnd.MultiplicityString());
         }
@@ -58,7 +58,7 @@ namespace Intent.Modules.EntityFramework.Templates
             return obj.Name.ToPascalCase() + "Id";
         }
 
-        public static string IdentifierName(this IAssociationEnd associationEnd)
+        public static string IdentifierName(this AssociationEndModel associationEnd)
         {
             if (string.IsNullOrEmpty(associationEnd.Name))
             {

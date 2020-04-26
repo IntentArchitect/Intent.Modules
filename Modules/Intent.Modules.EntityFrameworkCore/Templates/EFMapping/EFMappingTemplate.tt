@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase<ClassModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -165,7 +165,7 @@ foreach (var associationEnd in Model.AssociatedClasses)
             builder.HasOne(x => x.<#=associationEnd.Name().ToPascalCase()#>)
                 .WithOne(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
 <#
-            if (associationEnd.OtherEnd().MinMultiplicity != "0")
+            if (!associationEnd.OtherEnd().IsNullable)
             {
 #>
                 .HasForeignKey<<#= Model.Name #>>(x => x.Id)
@@ -226,7 +226,7 @@ foreach (var associationEnd in Model.AssociatedClasses)
 <#
             }
 
-            if (associationEnd.OtherEnd().MinMultiplicity != "0")
+            if (!associationEnd.OtherEnd().IsNullable)
             {
 #>
                 .IsRequired()

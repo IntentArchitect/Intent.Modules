@@ -22,7 +22,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
             Priority = -100;
         }
 
-        public override string PropertyBefore(IAssociationEnd associationEnd)
+        public override string PropertyBefore(AssociationEndModel associationEnd)
         {
             if (associationEnd.RequiresForeignKey())
             {

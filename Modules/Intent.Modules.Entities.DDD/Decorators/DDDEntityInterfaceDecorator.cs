@@ -6,7 +6,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Templates;
-using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
+using AssociationEndModel = Intent.Modelers.Domain.Api.AssociationEndModel;
 
 namespace Intent.Modules.Entities.Decorators
 {
@@ -18,7 +18,7 @@ namespace Intent.Modules.Entities.Decorators
         {
         }
 
-        public override string ConvertAttributeType(IAttribute attribute)
+        public override string ConvertAttributeType(AttributeModel attribute)
         {
             //var @namespace = attribute.Type.GetStereotypeProperty<string>("CommonType", "Namespace");
             //if (@namespace != null)
@@ -33,17 +33,17 @@ namespace Intent.Modules.Entities.Decorators
             return base.ConvertAttributeType(attribute);
         }
 
-        public override string AttributeAccessors(IAttribute attribute)
+        public override string AttributeAccessors(AttributeModel attribute)
         {
             return "get;";
         }
 
-        public override bool CanWriteDefaultAssociation(IAssociationEnd association)
+        public override bool CanWriteDefaultAssociation(AssociationEndModel association)
         {
             return false;
         }
 
-        public override string PropertyBefore(IAssociationEnd associationEnd)
+        public override string PropertyBefore(AssociationEndModel associationEnd)
         {
             if (!associationEnd.IsNavigable)
             {
@@ -55,7 +55,7 @@ namespace Intent.Modules.Entities.Decorators
 ";
         }
 
-        public override bool CanWriteDefaultOperation(IOperation operation)
+        public override bool CanWriteDefaultOperation(OperationModel operation)
         {
             return !operation.HasStereotype("Command Operation");
         }

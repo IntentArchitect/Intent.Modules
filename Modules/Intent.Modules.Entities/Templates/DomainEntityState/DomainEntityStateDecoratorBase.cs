@@ -24,15 +24,15 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
         public virtual string PropertyAnnotations(AttributeModel attribute) { return null; }
         public virtual string PropertySetterBefore(AttributeModel attribute) { return null; }
         public virtual string PropertySetterAfter(AttributeModel attribute) { return null; }
-        public virtual string PropertyAnnotations(IAssociationEnd associationEnd) { return null; }
-        public virtual string PropertySetterBefore(IAssociationEnd associationEnd) { return null; }
-        public virtual string PropertySetterAfter(IAssociationEnd associationEnd) { return null; }
-        public virtual string AssociationBefore(IAssociationEnd associationEnd) { return null; }
-        public virtual string AssociationAfter(IAssociationEnd associationEnd) { return null; }
+        public virtual string PropertyAnnotations(AssociationEndModel associationEnd) { return null; }
+        public virtual string PropertySetterBefore(AssociationEndModel associationEnd) { return null; }
+        public virtual string PropertySetterAfter(AssociationEndModel associationEnd) { return null; }
+        public virtual string AssociationBefore(AssociationEndModel associationEnd) { return null; }
+        public virtual string AssociationAfter(AssociationEndModel associationEnd) { return null; }
         public virtual string ConvertAttributeType(AttributeModel attribute) { return null; }
 
         public virtual bool CanWriteDefaultAttribute(AttributeModel attribute) { return true; }
-        public virtual bool CanWriteDefaultAssociation(IAssociationEnd association) { return true; }
+        public virtual bool CanWriteDefaultAssociation(AssociationEndModel association) { return true; }
 
         public virtual IEnumerable<string> GetInterfaces(ClassModel @class) { return new List<string>(); }
 

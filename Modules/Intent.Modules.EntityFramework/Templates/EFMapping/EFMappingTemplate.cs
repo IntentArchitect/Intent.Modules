@@ -441,7 +441,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             this.Write("            ");
             
             #line 179 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("this.{0}(x => x.{1})", associationEnd.MinMultiplicity != "0" ? "HasRequired" : "HasOptional", associationEnd.Name().ToPascalCase())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("this.{0}(x => x.{1})", !associationEnd.IsNullable ? "HasRequired" : "HasOptional", associationEnd.Name().ToPascalCase())));
             
             #line default
             #line hidden
@@ -514,7 +514,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             this.Write("                .");
             
             #line 194 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{0}({1})", associationEnd.OtherEnd().MinMultiplicity != "0" ? "WithRequired" : "WithOptional", "x => x." + associationEnd.OtherEnd().Name().ToPascalCase())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{0}({1})", !associationEnd.OtherEnd().IsNullable ? "WithRequired" : "WithOptional", "x => x." + associationEnd.OtherEnd().Name().ToPascalCase())));
             
             #line default
             #line hidden
@@ -627,13 +627,13 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
         
         #line 224 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\EFMapping\EFMappingTemplate.tt"
 
-public void MapOneToOne(IAssociationEnd associationEnd)
+public void MapOneToOne(AssociationEndModel associationEnd)
 {
     var parent = associationEnd.Association.SourceEnd;
     var child = associationEnd.Association.TargetEnd;
 
-    string hasClause = associationEnd.MinMultiplicity != "0" ? "HasRequired" : "HasOptional";
-    string withClause = "With" + (associationEnd.OtherEnd().MinMultiplicity != "0" ? "Required" : "Optional") + ((associationEnd.MinMultiplicity != "0") == (associationEnd.OtherEnd().MinMultiplicity != "0") ?  DeterminePrinciple(associationEnd)  : "");    
+    string hasClause = !associationEnd.IsNullable ? "HasRequired" : "HasOptional";
+    string withClause = "With" + (!associationEnd.OtherEnd().IsNullable ? "Required" : "Optional") + ((!associationEnd.IsNullable) == (!associationEnd.OtherEnd().IsNullable) ?  DeterminePrinciple(associationEnd)  : "");    
 
         
         #line default
@@ -740,7 +740,7 @@ this.Write("            ;\r\n");
     
 }
 
-public string DeterminePrinciple(IAssociationEnd associationEnd)
+public string DeterminePrinciple(AssociationEndModel associationEnd)
 {
     if (associationEnd.Association.AssociationType == AssociationType.Composition )
     {

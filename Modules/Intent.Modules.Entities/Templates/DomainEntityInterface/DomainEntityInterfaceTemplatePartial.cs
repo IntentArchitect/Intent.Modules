@@ -9,6 +9,7 @@ using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
+using Intent.Modules.Modelers.Domain;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
@@ -77,7 +78,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
                 return null;
             }
 
-            var type = _metadataManager.GetTypeDefinitions(Project.Application.Id).FirstOrDefault(x => x.Id == typeId);
+            var type = _metadataManager.GetTypeDefinitionModels(Project.Application).FirstOrDefault(x => x.Id == typeId);
             if (type != null)
             {
                 return $"I{type.Name}";
@@ -105,12 +106,12 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().Aggregate(x => x.PropertyAnnotations(attribute));
         }
 
-        public string PropertyBefore(IAssociationEnd associationEnd)
+        public string PropertyBefore(AssociationEndModel associationEnd)
         {
             return GetDecorators().Aggregate(x => x.PropertyBefore(associationEnd));
         }
 
-        public string PropertyAnnotations(IAssociationEnd associationEnd)
+        public string PropertyAnnotations(AssociationEndModel associationEnd)
         {
             return GetDecorators().Aggregate(x => x.PropertyAnnotations(associationEnd));
         }
@@ -120,7 +121,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().Select(x => x.AttributeAccessors(attribute)).FirstOrDefault(x => x != null) ?? "get; set;";
         }
 
-        public string AssociationAccessors(IAssociationEnd associationEnd)
+        public string AssociationAccessors(AssociationEndModel associationEnd)
         {
             return GetDecorators().Select(x => x.AssociationAccessors(associationEnd)).FirstOrDefault(x => x != null) ?? "get; set;";
         }
@@ -130,7 +131,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             return GetDecorators().All(x => x.CanWriteDefaultAttribute(attribute));
         }
 
-        public bool CanWriteDefaultAssociation(IAssociationEnd association)
+        public bool CanWriteDefaultAssociation(AssociationEndModel association)
         {
             return GetDecorators().All(x => x.CanWriteDefaultAssociation(association));
         }

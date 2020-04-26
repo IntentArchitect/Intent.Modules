@@ -396,7 +396,7 @@ foreach (var associationEnd in Model.AssociatedClasses)
             
             #line 167 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\EFMapping\EFMappingTemplate.tt"
 
-            if (associationEnd.OtherEnd().MinMultiplicity != "0")
+            if (!associationEnd.OtherEnd().IsNullable)
             {
 
             
@@ -577,7 +577,7 @@ foreach (var associationEnd in Model.AssociatedClasses)
 
             }
 
-            if (associationEnd.OtherEnd().MinMultiplicity != "0")
+            if (!associationEnd.OtherEnd().IsNullable)
             {
 
             

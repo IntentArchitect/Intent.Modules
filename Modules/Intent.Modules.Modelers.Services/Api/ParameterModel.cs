@@ -58,6 +58,8 @@ namespace Intent.Modelers.Services.Api
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
+        public ITypeReference Type => _element.TypeReference;
+
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
 

@@ -36,6 +36,8 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
+        public ITypeReference Type => _element.TypeReference;
+
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(AttributeModel other)

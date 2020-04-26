@@ -61,20 +61,20 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             return GetDecorators().Aggregate(x => x.Constructors(@class));
         }
 
-        public string GetParametersDefinition(IOperation operation)
+        public string GetParametersDefinition(OperationModel operation)
         {
             return operation.Parameters.Any() 
                 ? operation.Parameters.Select(x => this.ConvertType(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) 
                 : "";
         }
 
-        public string EmitOperationReturnType(IOperation o)
+        public string EmitOperationReturnType(OperationModel o)
         {
             if (o.ReturnType == null)
             {
                 return o.IsAsync() ? "async Task" : "void";
             }
-            return o.IsAsync() ? $"async Task<{this.ConvertType(o.ReturnType.Type)}>" : this.ConvertType(o.ReturnType.Type);
+            return o.IsAsync() ? $"async Task<{this.ConvertType(o.ReturnType)}>" : this.ConvertType(o.ReturnType);
         }
     }
 }

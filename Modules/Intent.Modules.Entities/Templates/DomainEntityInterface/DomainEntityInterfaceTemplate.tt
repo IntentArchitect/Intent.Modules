@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<ClassModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -53,7 +53,7 @@ namespace <#= Namespace #>
         {
             continue;
         }
-        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
+        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.TypeReference) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
 #>
         <#= EmitOperationReturnType(operation) #> <#= operation.Name.ToPascalCase() #>(<#= GetParametersDefinition(operation) #>);
 <#  }#>

@@ -7,6 +7,7 @@ using Intent.Modules.Application.Contracts;
 using Intent.Engine;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
+using OperationModel = Intent.Modelers.Services.Api.OperationModel;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {

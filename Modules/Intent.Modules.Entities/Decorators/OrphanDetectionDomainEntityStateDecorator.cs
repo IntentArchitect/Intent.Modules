@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
+using Intent.Modules.Modelers.Domain.Api;
 
 namespace Intent.Modules.Entities.Decorators
 {
@@ -43,12 +45,12 @@ namespace Intent.Modules.Entities.Decorators
         }}";
         }
 
-        private List<IAssociationEnd> GetOrphanableAssociations(ClassModel model)
+        private List<AssociationEndModel> GetOrphanableAssociations(ClassModel model)
         {
-            var result = new List<IAssociationEnd>();
-            foreach (var a in model.AssociatedClasses)
+            var result = new List<AssociationEndModel>();
+            foreach (var a in model.AssociatedFromClasses())
             {
-                if (a.Association.AssociationType == AssociationType.Composition && a.Association.SourceEnd.Multiplicity == Multiplicity.One && a.Association.TargetEnd.Multiplicity != Multiplicity.One && a == a.Association.SourceEnd)
+                if (a.Association.AssociationType == AssociationType.Composition && !a.Association.SourceEnd.IsNullable && a.Association.TargetEnd.IsCollection)
                 {
                     result.Add(a);
                 }

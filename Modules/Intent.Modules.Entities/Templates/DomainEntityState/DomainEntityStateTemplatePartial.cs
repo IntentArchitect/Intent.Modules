@@ -9,8 +9,8 @@ using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
+using Intent.Modules.Modelers.Domain;
 using Intent.Templates;
-using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
@@ -93,7 +93,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
                 return "Object";
             }
 
-            var type = _metadataManager.GetTypeDefinitions(Project.Application.Id).FirstOrDefault(x => x.Id == typeId);
+            var type = _metadataManager.GetTypeDefinitionModels(Project.Application).FirstOrDefault(x => x.Id == typeId);
             if (type != null)
             {
                 return type.Name;
@@ -122,62 +122,62 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             return GetDecorators().Aggregate(x => x.BeforeProperties(@class));
         }
 
-        public string PropertyBefore(IAttribute attribute)
+        public string PropertyBefore(AttributeModel attribute)
         {
             return GetDecorators().Aggregate(x => x.PropertyBefore(attribute));
         }
 
-        public string PropertyFieldAnnotations(IAttribute attribute)
+        public string PropertyFieldAnnotations(AttributeModel attribute)
         { 
             return GetDecorators().Aggregate(x => x.PropertyFieldAnnotations(attribute));
         }
 
-        public string PropertyAnnotations(IAttribute attribute)
+        public string PropertyAnnotations(AttributeModel attribute)
         {
             return GetDecorators().Aggregate(x => x.PropertyAnnotations(attribute));
         }
 
-        public string PropertySetterBefore(IAttribute attribute)
+        public string PropertySetterBefore(AttributeModel attribute)
         {
             return GetDecorators().Aggregate(x => x.PropertySetterBefore(attribute));
         }
 
-        public string PropertySetterAfter(IAttribute attribute)
+        public string PropertySetterAfter(AttributeModel attribute)
         {
             return GetDecorators().Aggregate(x => x.PropertySetterAfter(attribute));
         }
 
-        public string AssociationBefore(IAssociationEnd associationEnd)
+        public string AssociationBefore(AssociationEndModel associationEnd)
         {
             return GetDecorators().Aggregate(x => x.AssociationBefore(associationEnd));
         }
 
-        public string PropertyAnnotations(IAssociationEnd associationEnd)
+        public string PropertyAnnotations(AssociationEndModel associationEnd)
         {
             return GetDecorators().Aggregate(x => x.PropertyAnnotations(associationEnd));
         }
 
-        public string PropertySetterBefore(IAssociationEnd associationEnd)
+        public string PropertySetterBefore(AssociationEndModel associationEnd)
         {
             return GetDecorators().Aggregate(x => x.PropertySetterBefore(associationEnd));
         }
 
-        public string PropertySetterAfter(IAssociationEnd associationEnd)
+        public string PropertySetterAfter(AssociationEndModel associationEnd)
         {
             return GetDecorators().Aggregate(x => x.PropertySetterAfter(associationEnd));
         }
 
-        public string AssociationAfter(IAssociationEnd associationEnd)
+        public string AssociationAfter(AssociationEndModel associationEnd)
         {
             return GetDecorators().Aggregate(x => x.AssociationAfter(associationEnd));
         }
 
-        public bool CanWriteDefaultAttribute(IAttribute attribute)
+        public bool CanWriteDefaultAttribute(AttributeModel attribute)
         {
             return GetDecorators().All(x => x.CanWriteDefaultAttribute(attribute));
         }
 
-        public bool CanWriteDefaultAssociation(IAssociationEnd association)
+        public bool CanWriteDefaultAssociation(AssociationEndModel association)
         {
             return GetDecorators().All(x => x.CanWriteDefaultAssociation(association));
         }

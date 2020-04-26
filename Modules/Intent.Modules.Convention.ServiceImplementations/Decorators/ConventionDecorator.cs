@@ -12,7 +12,9 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain;
 using Intent.Modelers.Domain.Api;
 using Intent.Modelers.Services.Api;
+using Intent.Modules.Modelers.Domain;
 using Intent.Plugins;
+using OperationModel = Intent.Modelers.Services.Api.OperationModel;
 
 namespace Intent.Modules.Convention.ServiceImplementations.Decorators
 {
@@ -96,7 +98,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
         private Intent.Modelers.Domain.Api.ClassModel GetDomainForService(ServiceModel service)
         {
             var lowerServiceName = service.Name.ToLower();
-            var domains = _metadataManager.GetDomainClasses(_application.Id);
+            var domains = _metadataManager.GetClassModels(_application);
             return domains
                 .SingleOrDefault(p =>
                 {

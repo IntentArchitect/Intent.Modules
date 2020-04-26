@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase<IClass>" #>
+﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase<ClassModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -176,7 +176,7 @@ namespace <#= Namespace #>
                 MapOneToOne(associationEnd);
                 break;
             case RelationshipType.OneToMany :#>
-            <#= string.Format("this.{0}(x => x.{1})", associationEnd.MinMultiplicity != "0" ? "HasRequired" : "HasOptional", associationEnd.Name().ToPascalCase())#>
+            <#= string.Format("this.{0}(x => x.{1})", !associationEnd.IsNullable ? "HasRequired" : "HasOptional", associationEnd.Name().ToPascalCase())#>
                 .WithMany(<#= associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase() : "" #>)
 <#              if (RequiresForeignKeyOnAssociatedEnd(associationEnd.OtherEnd())) {
                     if (UseForeignKeys) { #>
@@ -191,7 +191,7 @@ namespace <#= Namespace #>
             case RelationshipType.ManyToOne :#>
             this.HasMany(x => x.<#= associationEnd.Name().ToPascalCase()#>)
 <#				if(RequiresForeignKeyOnAssociatedEnd(associationEnd)) {  #>
-                .<#= string.Format("{0}({1})", associationEnd.OtherEnd().MinMultiplicity != "0" ? "WithRequired" : "WithOptional", "x => x." + associationEnd.OtherEnd().Name().ToPascalCase())#>
+                .<#= string.Format("{0}({1})", !associationEnd.OtherEnd().IsNullable ? "WithRequired" : "WithOptional", "x => x." + associationEnd.OtherEnd().Name().ToPascalCase())#>
 <#				    if (UseForeignKeys) { #>
 				.HasForeignKey(<#= GetForeignKeyLambda(associationEnd) #>)
 <#				    } else { #>
@@ -222,13 +222,13 @@ namespace <#= Namespace #>
     }
 }
 <#+
-public void MapOneToOne(IAssociationEnd associationEnd)
+public void MapOneToOne(AssociationEndModel associationEnd)
 {
     var parent = associationEnd.Association.SourceEnd;
     var child = associationEnd.Association.TargetEnd;
 
-    string hasClause = associationEnd.MinMultiplicity != "0" ? "HasRequired" : "HasOptional";
-    string withClause = "With" + (associationEnd.OtherEnd().MinMultiplicity != "0" ? "Required" : "Optional") + ((associationEnd.MinMultiplicity != "0") == (associationEnd.OtherEnd().MinMultiplicity != "0") ?  DeterminePrinciple(associationEnd)  : "");    
+    string hasClause = !associationEnd.IsNullable ? "HasRequired" : "HasOptional";
+    string withClause = "With" + (!associationEnd.OtherEnd().IsNullable ? "Required" : "Optional") + ((!associationEnd.IsNullable) == (!associationEnd.OtherEnd().IsNullable) ?  DeterminePrinciple(associationEnd)  : "");    
 #>
             <#= string.Format("this.{0}(x => x.{1})", hasClause, associationEnd.Name().ToPascalCase())#>
             <#= string.Format(".{0}({1})", withClause, associationEnd.OtherEnd().IsNavigable ? "x => x." + associationEnd.OtherEnd().Name().ToPascalCase(): "" )#>
@@ -245,7 +245,7 @@ public void MapOneToOne(IAssociationEnd associationEnd)
 <#+    
 }
 
-public string DeterminePrinciple(IAssociationEnd associationEnd)
+public string DeterminePrinciple(AssociationEndModel associationEnd)
 {
     if (associationEnd.Association.AssociationType == AssociationType.Composition )
     {

@@ -7,6 +7,8 @@ using Intent.Modelers.Domain.Api;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Modelers.Services;
+using OperationModel = Intent.Modelers.Services.Api.OperationModel;
+using ParameterModel = Intent.Modelers.Services.Api.ParameterModel;
 
 namespace Intent.Modules.Convention.ServiceImplementations.MethodImplementationStrategies
 {

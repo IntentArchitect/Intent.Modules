@@ -36,6 +36,10 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
+        public ITypeReference ReturnType => TypeReference.Element != null ? TypeReference : null;
+
+        public bool IsAbstract => _element.IsAbstract;
+
         [IntentManaged(Mode.Fully)]
         public IList<ParameterModel> Parameters => _element.ChildElements
             .Where(x => x.SpecializationType == ParameterModel.SpecializationType)

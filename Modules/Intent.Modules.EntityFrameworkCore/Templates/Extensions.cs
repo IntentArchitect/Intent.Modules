@@ -6,22 +6,22 @@ namespace Intent.Modules.EntityFrameworkCore.Templates
 {
     public static class Extensions
     {
-        public static string Name(this IAssociationEnd associationEnd)
+        public static string Name(this AssociationEndModel associationEnd)
         {
-            if (string.IsNullOrEmpty(associationEnd.Name))
-            {
-                var className = associationEnd.Class.Name;
-                if (associationEnd.MaxMultiplicity == "*" || int.Parse(associationEnd.MaxMultiplicity) > 1)
-                {
-                    return className.EndsWith("y") ? className.Substring(0, className.Length - 1) + "ies" : $"{className}s";
-                }
-                return associationEnd.Class.Name;
-            }
+            //if (string.IsNullOrEmpty(associationEnd.Name))
+            //{
+            //    var className = associationEnd.Class.Name;
+            //    if (associationEnd.MaxMultiplicity == "*" || int.Parse(associationEnd.MaxMultiplicity) > 1)
+            //    {
+            //        return className.EndsWith("y") ? className.Substring(0, className.Length - 1) + "ies" : $"{className}s";
+            //    }
+            //    return associationEnd.Class.Name;
+            //}
 
             return associationEnd.Name;
         }
 
-        public static RelationshipType Relationship(this IAssociationEnd associationEnd)
+        public static RelationshipType Relationship(this AssociationEndModel associationEnd)
         {
             if ((associationEnd.Multiplicity == Multiplicity.One || associationEnd.Multiplicity == Multiplicity.ZeroToOne) && (associationEnd.OtherEnd().Multiplicity == Multiplicity.One || associationEnd.OtherEnd().Multiplicity == Multiplicity.ZeroToOne))
                 return RelationshipType.OneToOne;
@@ -35,17 +35,19 @@ namespace Intent.Modules.EntityFrameworkCore.Templates
             throw new Exception($"The relationship type from [{associationEnd.Class.Name}] to [{associationEnd.OtherEnd().Class.Name}] could not be determined.");
         }
 
-        public static string MultiplicityString(this IAssociationEnd associationEnd)
+        public static string MultiplicityString(this AssociationEndModel associationEnd)
         {
-            if (associationEnd.MaxMultiplicity == "*")
-                return "*";
-            if (associationEnd.MaxMultiplicity == associationEnd.MinMultiplicity)
-                return associationEnd.MinMultiplicity;
-
-            return associationEnd.MinMultiplicity + ".." + associationEnd.MaxMultiplicity;
+            if (associationEnd.IsCollection)
+            {
+                return associationEnd.IsNullable ? "0..*" : "1..*";
+            }
+            else
+            {
+                return associationEnd.IsNullable ? "0..1" : "1";
+            }
         }
 
-        public static string RelationshipString(this IAssociation association)
+        public static string RelationshipString(this AssociationModel association)
         {
             return $"{association.SourceEnd.MultiplicityString()}->{association.TargetEnd.MultiplicityString()}";
         }
@@ -55,7 +57,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates
             return obj.Name.ToPascalCase() + "Id";
         }
 
-        public static string IdentifierName(this IAssociationEnd associationEnd)
+        public static string IdentifierName(this AssociationEndModel associationEnd)
         {
             if (string.IsNullOrEmpty(associationEnd.Name))
             {

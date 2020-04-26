@@ -48,6 +48,8 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public IAssociation InternalAssociation => _association;
 
+        public AssociationType AssociationType => !SourceEnd.IsNullable && !SourceEnd.IsCollection ? AssociationType.Composition : AssociationType.Aggregation;
+
         [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
@@ -100,9 +102,32 @@ namespace Intent.Modelers.Domain.Api
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
-        public IAssociationEnd OtherEnd()
+        public ClassModel Class => new ClassModel(_associationEnd.Element);
+
+        public Multiplicity Multiplicity
+        {
+            get
+            {
+                if (IsNullable && !IsCollection)
+                {
+                    return Multiplicity.ZeroToOne;
+                }
+                if (!IsNullable && !IsCollection)
+                {
+                        return Multiplicity.One;
+                }
+                return Multiplicity.Many;
+            }
+        }
+
+        public AssociationEndModel OtherEnd()
         {
             return this.Equals(_association.SourceEnd) ? _association.TargetEnd : _association.SourceEnd;
+        }
+
+        IAssociationEnd IAssociationEnd.OtherEnd()
+        {
+            return OtherEnd();
         }
 
         public bool IsTargetEnd()

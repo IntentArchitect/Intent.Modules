@@ -14,7 +14,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
         {
         }
 
-        public override string AssociationBefore(IAssociationEnd associationEnd)
+        public override string AssociationBefore(AssociationEndModel associationEnd)
         {
             if (!associationEnd.IsNavigable && associationEnd.Multiplicity == Multiplicity.One && associationEnd.OtherEnd().Multiplicity == Multiplicity.Many)
             {

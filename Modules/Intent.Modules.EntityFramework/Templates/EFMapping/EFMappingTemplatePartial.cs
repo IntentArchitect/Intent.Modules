@@ -85,7 +85,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             return GetDecorators().Aggregate(x => x.PropertyMappings(@class));
         }
 
-        private bool HasTypeOverride(IAttribute attribute)
+        private bool HasTypeOverride(AttributeModel attribute)
         {
             var overrideAttributeStereotype = attribute.GetStereotype("EFMappingOptions");
             if (overrideAttributeStereotype != null)
@@ -110,7 +110,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             return false;
         }
 
-        private string GetTypeOverride(IAttribute attribute)
+        private string GetTypeOverride(AttributeModel attribute)
         {
             var overrideAttributeStereotype = attribute.GetStereotype("EFMappingOptions");
             if (overrideAttributeStereotype != null)
@@ -135,7 +135,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             return string.Empty;
         }
 
-        private string GetForeignKeyLambda(IAssociationEnd associationEnd)
+        private string GetForeignKeyLambda(AssociationEndModel associationEnd)
         {
             var columns = associationEnd.Element.GetStereotypeProperty("Foreign Key", "Column Name", associationEnd.OtherEnd().Name().ToPascalCase() + "Id")
                 .Split(',')
@@ -148,7 +148,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             return $"x => new {{ {string.Join(", ", columns.Select(x => "x." + x))}}}";
         }
 
-        private static bool RequiresForeignKeyOnAssociatedEnd(IAssociationEnd associationEnd)
+        private static bool RequiresForeignKeyOnAssociatedEnd(AssociationEndModel associationEnd)
         {
             return associationEnd.Multiplicity == Multiplicity.Many
                 &&

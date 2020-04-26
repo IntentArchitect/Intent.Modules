@@ -12,7 +12,6 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Plugins;
 using Intent.Templates;
-using IAssociationEnd = Intent.Modelers.Domain.Api.IAssociationEnd;
 
 namespace Intent.Modules.Entities.DDD.Decorators
 {
@@ -55,7 +54,7 @@ namespace Intent.Modules.Entities.DDD.Decorators
             }
         }
 
-        public override string ConvertAttributeType(IAttribute attribute)
+        public override string ConvertAttributeType(AttributeModel attribute)
         {
             //var @namespace = attribute.Type.GetStereotypeProperty<string>("CommonType", "Namespace");
             //if (@namespace != null)
@@ -107,7 +106,7 @@ namespace Intent.Modules.Entities.DDD.Decorators
             return new[] { $"I{@class.Name}Behaviours" };
         }
 
-        public override string AssociationAfter(IAssociationEnd associationEnd)
+        public override string AssociationAfter(AssociationEndModel associationEnd)
         {
             if (!associationEnd.IsNavigable)
             {

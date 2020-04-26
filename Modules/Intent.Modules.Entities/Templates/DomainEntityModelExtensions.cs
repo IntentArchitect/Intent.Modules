@@ -48,43 +48,39 @@ namespace Intent.Modules.Entities.Templates
             return template.NormalizeNamespace(returnType);
         }
 
-        public static string Name(this IAssociationEnd associationEnd)
+        public static string Name(this AssociationEndModel associationEnd)
         {
-            //if (string.IsNullOrEmpty(associationEnd.Name))
-            //{
-            //    var className = associationEnd.Class.Name;
-            //    if (associationEnd.MaxMultiplicity == "*" || int.Parse(associationEnd.MaxMultiplicity) > 1)
-            //    {
-            //        return className.EndsWith("y") ? className.Substring(0, className.Length - 1) + "ies" : string.Format("{0}s", className);
-            //    }
-            //    return associationEnd.Class.Name;
-            //}
+            if (string.IsNullOrEmpty(associationEnd.Name))
+            {
+                var className = associationEnd.Class.Name;
+                return associationEnd.IsCollection ? className.ToPluralName() : className;
+            }
 
             return associationEnd.Name;
         }
 
-        //public static string Type(this IAssociationEnd associationEnd)
+        //public static string Type(this AssociationEndModel associationEnd)
         //{
         //    return associationEnd.Type("", false);
         //}
 
-        //public static string Type(this IAssociationEnd associationEnd, string suffix)
+        //public static string Type(this AssociationEndModel associationEnd, string suffix)
         //{
         //    return associationEnd.Type("", suffix, false);
         //}
 
-        //public static string Type(this IAssociationEnd associationEnd, string prefix, string suffix)
+        //public static string Type(this AssociationEndModel associationEnd, string prefix, string suffix)
         //{
         //    return associationEnd.Type(prefix, suffix, false);
         //}
 
 
-        //public static string Type(this IAssociationEnd associationEnd, string suffix, bool readOnly)
+        //public static string Type(this AssociationEndModel associationEnd, string suffix, bool readOnly)
         //{
         //    return associationEnd.Type("", suffix, readOnly);
         //}
 
-        //public static string Type(this IAssociationEnd associationEnd, string prefix, string suffix, bool readOnly)
+        //public static string Type(this AssociationEndModel associationEnd, string prefix, string suffix, bool readOnly)
         //{
         //    if (associationEnd.Multiplicity == Multiplicity.Many)
         //    {

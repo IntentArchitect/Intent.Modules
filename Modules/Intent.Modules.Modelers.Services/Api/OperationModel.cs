@@ -39,6 +39,8 @@ namespace Intent.Modelers.Services.Api
             .Select(x => new ParameterModel(x))
             .ToList();
 
+        public ITypeReference ReturnType => TypeReference.Element != null ? TypeReference : null;
+
         [IntentManaged(Mode.Fully)]
         public bool Equals(OperationModel other)
         {
