@@ -35,7 +35,7 @@
     <decorator id="Intent.Entities.Keys.BidirectionalOneToManyEntityDecorator"  enabled="true"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Entities" version="2.0.0"/>
+    <dependency id="Intent.Entities" version="2.1.0"/>
     <dependency id="Intent.Metadata.RDBMS" version="2.0.0"/>
   </dependencies>
   <files>

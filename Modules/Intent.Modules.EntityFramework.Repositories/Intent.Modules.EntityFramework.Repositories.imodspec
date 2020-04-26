@@ -37,7 +37,7 @@
     <dependency id="Intent.Common.Types" version="2.0.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
     <dependency id="Intent.Entities.Repositories.Api" version="2.1.0"/>
-    <dependency id="Intent.EntityFramework" version="2.0.0"/>
+    <dependency id="Intent.EntityFramework" version="2.1.0"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>
