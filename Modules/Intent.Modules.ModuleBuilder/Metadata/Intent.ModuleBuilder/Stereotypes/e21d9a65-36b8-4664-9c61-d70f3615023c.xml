@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="e21d9a65-36b8-4664-9c61-d70f3615023c">
+  <name>Setting</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>association visual settings</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>963f40e1-0be9-4450-bbc3-60fd501f5329</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="4d46ba5f-c4c5-4160-989e-1e76128d3efa">
+      <name>Line Color</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="f248a382-66c9-4107-aa92-5ee83dd3d08c">
+      <name>Line Width</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="93499f0b-8590-42ea-bdbf-e943597e8e1e">
+      <name>Line Dash Array</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

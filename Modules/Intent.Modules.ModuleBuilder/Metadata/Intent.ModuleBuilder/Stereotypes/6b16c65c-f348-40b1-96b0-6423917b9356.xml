@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="6b16c65c-f348-40b1-96b0-6423917b9356">
+  <name>Label Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>association source end visual settings</element>
+    <element>association destination end visual settings</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>963f40e1-0be9-4450-bbc3-60fd501f5329</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61">
+      <name>Primary Label</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="9c086eb0-801b-413b-a666-24a96cfabe49">
+      <name>Secondary Label</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+  </properties>
+</stereotypeDefinition>

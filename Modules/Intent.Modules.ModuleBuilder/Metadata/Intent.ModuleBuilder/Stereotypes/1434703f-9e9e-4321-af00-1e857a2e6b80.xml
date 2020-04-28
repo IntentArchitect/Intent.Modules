@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="a82e406f-efc6-4d9c-86ea-6c28d9509da4">
-  <name>Path Settings</name>
+<stereotypeDefinition id="1434703f-9e9e-4321-af00-1e857a2e6b80">
+  <name>Point Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>path draw settings</element>
+    <element>association source end visual settings</element>
+    <element>association destination end visual settings</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayFunction />
   <autoAdd>false</autoAdd>
-  <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>
-  <order>0</order>
+  <parentFolderId>963f40e1-0be9-4450-bbc3-60fd501f5329</parentFolderId>
+  <order>1</order>
   <properties>
-    <property id="27138300-900e-4a82-ad06-8abcedf0864a">
+    <property id="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27">
       <name>Path</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -21,19 +22,9 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
-    </property>
-    <property id="8996260d-790c-4e7b-8607-65fa2dd4ac24">
-      <name>Condition</name>
-      <type>string</type>
-      <controlType>function</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
       <isRequiredFunction />
     </property>
-    <property id="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24">
+    <property id="39eb4c46-204c-4f3d-9cf9-348f137f43dc">
       <name>Line Color</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -42,7 +33,7 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="d644b3e2-bb71-4d18-8a2a-e222a02da4ae">
+    <property id="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df">
       <name>Line Width</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -51,7 +42,7 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="30ba379d-6d61-4e6e-b038-81cd322241e6">
+    <property id="33bc633b-e627-49df-b105-398e32e080ee">
       <name>Line Dash Array</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -60,7 +51,7 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="4fb316a4-ebee-45c1-96e0-636698f52976">
+    <property id="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f">
       <name>Fill Color</name>
       <type>string</type>
       <controlType>function</controlType>

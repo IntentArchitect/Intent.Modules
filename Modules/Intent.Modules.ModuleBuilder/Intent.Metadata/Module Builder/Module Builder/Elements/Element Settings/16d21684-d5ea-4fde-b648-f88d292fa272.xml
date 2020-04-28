@@ -115,6 +115,39 @@
           </stereotypes>
           <childElements />
         </childElement>
+        <childElement id="4056a5f3-cf20-4e98-bd43-1695d738d8a4" type="Element Creation Option">
+          <name>Add Visual Settings</name>
+          <display>Add Visual Settings: Association Visual Settings</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="b5fff5c5-cf4c-47c5-9800-95782825a1bb">
+            <typeId>153a4063-82a1-4515-87f1-44c189004fad</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>7d4d5bf3-fcdc-4b0c-9604-6e5776382b0a</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment>Overrides the default creation option settings.</comment>
+              <addedByDefault>false</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[visual]" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
   </childElements>

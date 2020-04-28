@@ -84,9 +84,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                         AllowIsNullable = this.DestinationEnd.GetSettings().IsNullableEnabled()
                     }
                 },
-                VisualSettings = new AssociationVisualSettingsPersistable()
-                {
-                }
+                VisualSettings = VisualSettings?.ToPersistable()
             };
         }
 
@@ -119,5 +117,11 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public AssociationVisualSettingsModel VisualSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == AssociationVisualSettingsModel.SpecializationType)
+            .Select(x => new AssociationVisualSettingsModel(x))
+            .SingleOrDefault();
     }
 }
