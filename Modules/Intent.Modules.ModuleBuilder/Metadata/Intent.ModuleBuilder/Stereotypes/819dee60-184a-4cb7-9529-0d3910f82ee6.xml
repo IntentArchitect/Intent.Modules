@@ -8,7 +8,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="file" />
   <displayIcon>false</displayIcon>
-  <displayFunction>[.${this.property['File Extension'].value}]</displayFunction>
+  <displayFunction>return `[.${this.property['File Extension'].value}]`;</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
   <order>0</order>
@@ -22,7 +22,7 @@
       <defaultValue>txt</defaultValue>
       <valueOptions />
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe">
       <name>Templating Method</name>
@@ -36,7 +36,7 @@
         <option>Custom</option>
       </valueOptions>
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

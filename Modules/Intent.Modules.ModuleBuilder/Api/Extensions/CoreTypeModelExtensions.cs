@@ -85,6 +85,10 @@ namespace Intent.Modules.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public bool IsDefault()
+                {
+                    return Value == "Default";
+                }
                 public bool IsOwnFile()
                 {
                     return Value == "Own File";

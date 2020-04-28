@@ -63,5 +63,23 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<PathDrawSettingsModel> Paths => _element.ChildElements
+            .Where(x => x.SpecializationType == PathDrawSettingsModel.SpecializationType)
+            .Select(x => new PathDrawSettingsModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public StereotypesVisualSettingsModel StereotypesVisual => _element.ChildElements
+            .Where(x => x.SpecializationType == StereotypesVisualSettingsModel.SpecializationType)
+            .Select(x => new StereotypesVisualSettingsModel(x))
+            .SingleOrDefault();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<TextDrawSettingsModel> Texts => _element.ChildElements
+            .Where(x => x.SpecializationType == TextDrawSettingsModel.SpecializationType)
+            .Select(x => new TextDrawSettingsModel(x))
+            .ToList();
     }
 }

@@ -9,7 +9,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
-  <displayFunction />
+  <displayFunction>return ``;</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>ac2b161d-10ef-408e-b084-3f2ba850e9a4</parentFolderId>
   <order>0</order>
@@ -20,13 +20,14 @@
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder />
-      <defaultValue>Own File</defaultValue>
+      <defaultValue>Default</defaultValue>
       <valueOptions>
+        <option>Default</option>
         <option>Own File</option>
         <option>As Child</option>
       </valueOptions>
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="736b1337-6f35-4e38-85a8-69ff5d69fb7d">
       <name>Icon</name>

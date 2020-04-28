@@ -8,7 +8,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
-  <displayFunction />
+  <displayFunction>return ``;</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>ac2b161d-10ef-408e-b084-3f2ba850e9a4</parentFolderId>
   <order>1</order>
@@ -38,8 +38,8 @@
         <type>Element Settings</type>
         <type>Child Element Settings</type>
       </lookupTypes>
-      <isActiveFunction>property['Mode'].value == 'Optional' || property['Mode'].value == 'Required'</isActiveFunction>
-      <isRequiredFunction>true</isRequiredFunction>
+      <isActiveFunction>return property['Mode'].value == 'Optional' || property['Mode'].value == 'Required';</isActiveFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8">
       <name>Represents</name>
@@ -53,8 +53,8 @@
         <option>Inheritance</option>
       </valueOptions>
       <lookupTypes />
-      <isActiveFunction>property['Mode'].value == 'Optional' || property['Mode'].value == 'Required'</isActiveFunction>
-      <isRequiredFunction>true</isRequiredFunction>
+      <isActiveFunction>return property['Mode'].value == 'Optional' || property['Mode'].value == 'Required';</isActiveFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="ff4b18c5-397b-4639-ba79-89939deb9834">
       <name>Default Type Id</name>
@@ -64,7 +64,7 @@
       <placeholder>(optional)</placeholder>
       <valueOptions />
       <lookupTypes />
-      <isActiveFunction>property['Mode'].value == 'Optional' || property['Mode'].value == 'Required'</isActiveFunction>
+      <isActiveFunction>return property['Mode'].value == 'Optional' || property['Mode'].value == 'Required';</isActiveFunction>
     </property>
     <property id="229dcbe7-f000-4ee9-a06a-febad727f7e1">
       <name>Allow Nullable</name>
@@ -75,7 +75,7 @@
       <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
-      <isActiveFunction>property['Represents'].value == 'Reference' &amp;&amp; (property['Mode'].value == 'Optional' || property['Mode'].value == 'Required')</isActiveFunction>
+      <isActiveFunction>return property['Represents'].value == 'Reference' &amp;&amp; (property['Mode'].value == 'Optional' || property['Mode'].value == 'Required');</isActiveFunction>
     </property>
     <property id="d04ec558-6f6a-462b-b16a-9da1d7b4e9db">
       <name>Allow Collection</name>
@@ -86,7 +86,7 @@
       <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
-      <isActiveFunction>property['Represents'].value == 'Reference' &amp;&amp; (property['Mode'].value == 'Optional' || property['Mode'].value == 'Required')</isActiveFunction>
+      <isActiveFunction>return property['Represents'].value == 'Reference' &amp;&amp; (property['Mode'].value == 'Optional' || property['Mode'].value == 'Required');</isActiveFunction>
     </property>
   </properties>
 </stereotypeDefinition>

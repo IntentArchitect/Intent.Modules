@@ -8,7 +8,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
-  <displayFunction />
+  <displayFunction>return ``;</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>a4cb5f8c-aef3-435f-8b08-3bdc9c98d5af</parentFolderId>
   <order>0</order>
@@ -26,7 +26,7 @@
         <option>Not Applicable</option>
       </valueOptions>
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="315a6b58-efa4-421c-8345-1cde99ba7262">
       <name>Has Children</name>
@@ -41,7 +41,7 @@
         <option>Not Applicable</option>
       </valueOptions>
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912">
       <name>Is Collection</name>
@@ -56,7 +56,7 @@
         <option>Not Applicable</option>
       </valueOptions>
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

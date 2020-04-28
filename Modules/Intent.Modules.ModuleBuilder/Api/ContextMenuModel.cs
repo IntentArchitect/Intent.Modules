@@ -23,7 +23,13 @@ namespace Intent.Modules.ModuleBuilder.Api
                 throw new ArgumentException($"Invalid element type {element.SpecializationType}", nameof(element));
             }
             _element = element;
-            TypeOrder = ElementCreations.Select(x => new TypeOrder(x)).Distinct().ToList();
+            TypeOrder = ElementCreations.Select(x => new TypeOrder(x))
+                .Concat(AssociationCreations.Select(x => new TypeOrder(x)))
+                .Distinct().ToList();
+            if (StereotypeDefinitionCreation != null)
+            {
+                TypeOrder.Add(new TypeOrder(StereotypeDefinitionCreation));
+            }
         }
 
         [IntentManaged(Mode.Fully)]

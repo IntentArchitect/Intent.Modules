@@ -52,7 +52,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return new ElementSettingPersistable()
             {
                 SpecializationType = this.Name,
-                SaveAsOwnFile = this.GetSettings().SaveMode().IsOwnFile(),
+                SaveAsOwnFile = MustSaveInOwnFile(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
                 Icon = GetIcon(this.GetSettings().Icon()) ?? new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" },
                 ExpandedIcon = GetIcon(this.GetSettings().ExpandedIcon()),
@@ -147,5 +147,20 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public ElementVisualSettingsModel VisualSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == ElementVisualSettingsModel.SpecializationType)
+            .Select(x => new ElementVisualSettingsModel(x))
+            .SingleOrDefault();
+
+        public bool MustSaveInOwnFile()
+        {
+            if (this.GetSettings().SaveMode().IsDefault())
+            {
+                return _element.ParentElement.SpecializationType != ElementSettingsModel.SpecializationType;
+            }
+            return this.GetSettings().SaveMode().IsOwnFile();
+        }
     }
 }

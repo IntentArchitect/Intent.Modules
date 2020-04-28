@@ -64,7 +64,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),
                 DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
-                Icon = Icon?.ToPersistable(),
+                Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "file-o" },
                 AllowMultiple = this.GetOptionSettings().AllowMultiple()
             };
         }

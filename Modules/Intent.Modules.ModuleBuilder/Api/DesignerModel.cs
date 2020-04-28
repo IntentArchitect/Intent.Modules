@@ -120,6 +120,19 @@ namespace Intent.Modules.ModuleBuilder.Api
             Order = element.GetOptionSettings().TypeOrder();
             Type = element.TypeReference.Element.Name;
         }
+
+        public TypeOrder(StereotypeDefinitionCreationOptionModel element)
+        {
+            Order = element.GetOptionSettings().TypeOrder();
+            Type = element.TypeReference.Element.Name;
+        }
+
+        public TypeOrder(AssociationCreationOptionModel element)
+        {
+            Order = element.GetOptionSettings().TypeOrder();
+            Type = element.TypeReference.Element.Name;
+        }
+
         public int? Order { get; set; }
         public string Type { get; set; }
 

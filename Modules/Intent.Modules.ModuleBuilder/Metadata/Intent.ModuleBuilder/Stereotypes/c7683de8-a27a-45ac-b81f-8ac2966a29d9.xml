@@ -8,7 +8,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
-  <displayFunction />
+  <displayFunction>return ``;</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>a4cb5f8c-aef3-435f-8b08-3bdc9c98d5af</parentFolderId>
   <order>0</order>
@@ -21,7 +21,7 @@
       <placeholder>(e.g. Domain)</placeholder>
       <valueOptions />
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

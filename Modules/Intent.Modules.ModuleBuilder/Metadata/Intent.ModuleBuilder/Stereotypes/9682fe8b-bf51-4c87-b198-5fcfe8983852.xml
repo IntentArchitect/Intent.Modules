@@ -9,7 +9,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />
   <displayIcon>false</displayIcon>
-  <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
+  <displayFunction>return `[${!Shortcut ? "No Shortcut" : Shortcut}]`;</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
   <order>0</order>
@@ -62,7 +62,7 @@
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="d1784462-c11f-431d-b5d9-0f1fd09e4f52">
       <name>Api Target End Name</name>
@@ -72,7 +72,7 @@
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

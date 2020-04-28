@@ -9,6 +9,15 @@
   <literals />
   <attributes />
   <operations />
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="c9afb965-bd6d-4bc6-bacf-1a91c5d6314f" name="Stereotype">
+      <addedByDefault>false</addedByDefault>
+      <properties />
+    </stereotype>
+    <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
+      <addedByDefault>false</addedByDefault>
+      <properties />
+    </stereotype>
+  </stereotypes>
   <childElements />
 </class>

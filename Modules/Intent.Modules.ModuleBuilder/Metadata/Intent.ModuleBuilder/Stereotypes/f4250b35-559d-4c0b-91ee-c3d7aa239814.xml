@@ -11,7 +11,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />
   <displayIcon>false</displayIcon>
-  <displayFunction>[${!Shortcut ? "No Shortcut" : Shortcut}]</displayFunction>
+  <displayFunction>return `[${!Shortcut ? "No Shortcut" : Shortcut}]`;</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
   <order>0</order>

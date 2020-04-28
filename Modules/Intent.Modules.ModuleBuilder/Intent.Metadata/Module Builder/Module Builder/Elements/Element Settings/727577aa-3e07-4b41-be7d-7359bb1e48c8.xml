@@ -181,6 +181,39 @@
           </stereotypes>
           <childElements />
         </childElement>
+        <childElement id="a72e9835-e9d4-4c8d-a614-cf8b1431d9f6" type="Element Creation Option">
+          <name>Add Visual Settings</name>
+          <display>Add Visual Settings: Element Visual Settings</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e5f10ca8-e955-466c-bdef-2b540f43c06e">
+            <typeId>5eea5fba-15df-4971-8541-6f19bad4297d</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>090a3b87-d79d-411b-bd93-57cd97e2ff17</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + v" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[visual]" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
   </childElements>

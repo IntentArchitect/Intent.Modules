@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
         public override IList<ElementSettingsModel> GetModels(IApplication application)
         {
             var models = _metadataManager.GetElementSettingsModels(application)
-                .Where(x => x.GetSettings().SaveMode().IsOwnFile() && !x.Designer.IsReference())
+                .Where(x => x.MustSaveInOwnFile() && !x.Designer.IsReference())
                 .ToList();
 
             if (!models.Any())
