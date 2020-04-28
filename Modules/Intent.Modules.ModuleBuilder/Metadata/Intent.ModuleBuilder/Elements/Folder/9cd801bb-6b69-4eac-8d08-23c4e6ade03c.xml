@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9cd801bb-6b69-4eac-8d08-23c4e6ade03c" type="Folder">
+  <name>Visual</name>
+  <display>Visual</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>ac2b161d-10ef-408e-b084-3f2ba850e9a4</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

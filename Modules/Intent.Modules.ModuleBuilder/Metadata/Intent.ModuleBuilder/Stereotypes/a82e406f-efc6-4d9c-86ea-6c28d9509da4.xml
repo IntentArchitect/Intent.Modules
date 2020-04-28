@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="a82e406f-efc6-4d9c-86ea-6c28d9509da4">
+  <name>Path Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>path draw settings</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>return ``;</displayFunction>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="27138300-900e-4a82-ad06-8abcedf0864a">
+      <name>Path</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+    <property id="8996260d-790c-4e7b-8607-65fa2dd4ac24">
+      <name>Condition</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24">
+      <name>Line Color</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="d644b3e2-bb71-4d18-8a2a-e222a02da4ae">
+      <name>Line Width</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="30ba379d-6d61-4e6e-b038-81cd322241e6">
+      <name>Line Dash Array</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="4fb316a4-ebee-45c1-96e0-636698f52976">
+      <name>Fill Color</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

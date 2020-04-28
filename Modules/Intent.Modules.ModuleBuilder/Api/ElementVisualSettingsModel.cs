@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -71,15 +72,48 @@ namespace Intent.Modules.ModuleBuilder.Api
             .ToList();
 
         [IntentManaged(Mode.Fully)]
+        public IList<TextDrawSettingsModel> Texts => _element.ChildElements
+            .Where(x => x.SpecializationType == TextDrawSettingsModel.SpecializationType)
+            .Select(x => new TextDrawSettingsModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
         public StereotypesVisualSettingsModel StereotypesVisual => _element.ChildElements
             .Where(x => x.SpecializationType == StereotypesVisualSettingsModel.SpecializationType)
             .Select(x => new StereotypesVisualSettingsModel(x))
             .SingleOrDefault();
 
+        public ElementVisualSettingsPersistable ToPersistable()
+        {
+            return new ElementVisualSettingsPersistable()
+            {
+                SpecializationType = this.GetSettings().TargetType().Name,
+                Position = new PositionSettings()
+                {
+                    X = this.GetPositionSettings().X(),
+                    Y = this.GetPositionSettings().Y()
+                },
+                Size = new SizeSettings()
+                {
+                    Width = this.GetPositionSettings().Width(),
+                    Height = this.GetPositionSettings().Height()
+                },
+                DefaultSize = new SizeSettings()
+                {
+                    Width = this.GetPositionSettings().Width(),
+                    Height = this.GetPositionSettings().Height()
+                },
+                DisplayElements = Paths.Select(x => x.ToPersistable()).Cast<object>()
+                    .Concat(Texts.Select(x => x.ToPersistable())).ToList(),
+                StereotypesVisualSettings = StereotypesVisual?.ToPersistable(),
+                ChildElementVisualSettings = ChildVisuals.Select(x => x.ToPersistable()).ToList()
+            };
+        }
+
         [IntentManaged(Mode.Fully)]
-        public IList<TextDrawSettingsModel> Texts => _element.ChildElements
-            .Where(x => x.SpecializationType == TextDrawSettingsModel.SpecializationType)
-            .Select(x => new TextDrawSettingsModel(x))
+        public IList<ElementVisualSettingsModel> ChildVisuals => _element.ChildElements
+            .Where(x => x.SpecializationType == ElementVisualSettingsModel.SpecializationType)
+            .Select(x => new ElementVisualSettingsModel(x))
             .ToList();
     }
 }

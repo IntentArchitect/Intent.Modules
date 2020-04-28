@@ -88,6 +88,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("diagramSettings")]
         public DiagramSettings DiagramSettings { get; set; }
 
+        [XmlElement("visualSettings")]
+        public ElementVisualSettingsPersistable VisualSettings { get; set; }
+
         //[XmlArray("literalSettings")]
         //[XmlArrayItem("literalSetting")]
         //public ClassLiteralSettings[] LiteralSettings { get; set; }

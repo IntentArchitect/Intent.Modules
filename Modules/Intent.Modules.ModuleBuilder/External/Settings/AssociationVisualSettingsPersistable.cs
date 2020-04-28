@@ -2,7 +2,7 @@
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
 {
-    public class AssociationVisualSettings
+    public class AssociationVisualSettingsPersistable
     {
         [XmlElement("specializationType")]
         public string SpecializationType { get; set; }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="fc50924a-9e51-40b9-88b6-c7556febdaea">
+  <name>Position Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>text draw settings</element>
+    <element>stereotypes visual settings</element>
+    <element>element visual settings</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="39117662-2823-4915-865e-4a0a178f1507">
+      <name>X</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0">
+      <name>Y</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="b26180c1-e60a-4640-8284-51e760290a17">
+      <name>Width</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="51148847-9d8b-4294-9aba-f84211ba82d0">
+      <name>Height</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+  </properties>
+</stereotypeDefinition>

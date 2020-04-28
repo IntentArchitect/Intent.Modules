@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="c9afb965-bd6d-4bc6-bacf-1a91c5d6314f">
+  <name>Stereotype</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>class</element>
+  </targetElements>
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>true</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
+  <order>0</order>
+  <properties />
+</stereotypeDefinition>

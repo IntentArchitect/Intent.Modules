@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="1cb12b3c-f000-4331-b3fc-4250a5ced3fa">
+  <name>Text Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>text draw settings</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>return ``;</displayFunction>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="30a84702-a35a-415d-bd8f-66a20d4c858b">
+      <name>Text</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <defaultValue />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="3b7f711f-8a28-42c0-903d-c683a2eea56e">
+      <name>Condition</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="9d47b9f2-f715-4762-b276-1dc702dad067">
+      <name>Style</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

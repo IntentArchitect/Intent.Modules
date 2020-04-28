@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="0b0ae607-852f-425a-8679-07b4731a62a9">
+  <name>StereotypeXX</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>class</element>
+    <element>attribute</element>
+  </targetElements>
+  <applyMode>manually</applyMode>
+  <icon type="CharacterBox" source="F|#FFF176" />
+  <displayIcon>true</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
+  <order>0</order>
+  <properties />
+</stereotypeDefinition>

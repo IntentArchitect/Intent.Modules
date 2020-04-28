@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="1c274c4c-2c2f-44f7-84a1-b96533aa1bfb" type="Operation">
+  <name>Operation</name>
+  <display>Operation(): void</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="0cd36cdf-4b30-4beb-8730-5d05426adf48">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

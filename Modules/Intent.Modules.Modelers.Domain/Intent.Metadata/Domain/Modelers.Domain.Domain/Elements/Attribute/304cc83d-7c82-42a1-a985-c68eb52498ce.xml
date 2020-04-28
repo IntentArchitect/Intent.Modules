@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="304cc83d-7c82-42a1-a985-c68eb52498ce" type="Attribute">
+  <name>firstAttr</name>
+  <display>firstAttr: &lt;not found&gt;</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="0868421f-95f9-420e-9e8c-82937502c79e">
+    <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

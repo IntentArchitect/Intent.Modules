@@ -60,24 +60,33 @@ namespace Intent.Modules.ModuleBuilder.Api
                 Icon = this.SourceEnd.GetSettings().Icon().ToPersistable(),
                 SourceEnd = new AssociationEndSettingsPersistable
                 {
-                    TargetTypes = this.SourceEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
-                    IsCollectionDefault = this.SourceEnd.GetSettings().IsCollectionDefault(),
-                    IsCollectionEnabled = this.SourceEnd.GetSettings().IsCollectionEnabled(),
-                    IsNavigableDefault = this.SourceEnd.GetSettings().IsNavigableEnabled(),
-                    IsNavigableEnabled = this.SourceEnd.GetSettings().IsNavigableEnabled(),
-                    IsNullableDefault = this.SourceEnd.GetSettings().IsNullableDefault(),
-                    IsNullableEnabled = this.SourceEnd.GetSettings().IsNullableEnabled()
+                    TypeReferenceSetting = new TypeReferenceSettingPersistable()
+                    {
+                        TargetTypes = this.SourceEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
+                        IsCollectionDefault = this.SourceEnd.GetSettings().IsCollectionDefault(),
+                        AllowIsCollection = this.SourceEnd.GetSettings().IsCollectionEnabled(),
+                        IsNavigableDefault = this.SourceEnd.GetSettings().IsNavigableEnabled(),
+                        AllowIsNavigable = this.SourceEnd.GetSettings().IsNavigableEnabled(),
+                        IsNullableDefault = this.SourceEnd.GetSettings().IsNullableDefault(),
+                        AllowIsNullable = this.SourceEnd.GetSettings().IsNullableEnabled()
+                    }
                 },
                 TargetEnd = new AssociationEndSettingsPersistable
                 {
-                    TargetTypes = this.DestinationEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
-                    IsCollectionDefault = this.DestinationEnd.GetSettings().IsCollectionDefault(),
-                    IsCollectionEnabled = this.DestinationEnd.GetSettings().IsCollectionEnabled(),
-                    IsNavigableDefault = this.DestinationEnd.GetSettings().IsNavigableEnabled(),
-                    IsNavigableEnabled = this.DestinationEnd.GetSettings().IsNavigableEnabled(),
-                    IsNullableDefault = this.DestinationEnd.GetSettings().IsNullableDefault(),
-                    IsNullableEnabled = this.DestinationEnd.GetSettings().IsNullableEnabled()
+                    TypeReferenceSetting = new TypeReferenceSettingPersistable()
+                    {
+                        TargetTypes = this.DestinationEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
+                        IsCollectionDefault = this.DestinationEnd.GetSettings().IsCollectionDefault(),
+                        AllowIsCollection = this.DestinationEnd.GetSettings().IsCollectionEnabled(),
+                        IsNavigableDefault = this.DestinationEnd.GetSettings().IsNavigableEnabled(),
+                        AllowIsNavigable = this.DestinationEnd.GetSettings().IsNavigableEnabled(),
+                        IsNullableDefault = this.DestinationEnd.GetSettings().IsNullableDefault(),
+                        AllowIsNullable = this.DestinationEnd.GetSettings().IsNullableEnabled()
+                    }
                 },
+                VisualSettings = new AssociationVisualSettingsPersistable()
+                {
+                }
             };
         }
 

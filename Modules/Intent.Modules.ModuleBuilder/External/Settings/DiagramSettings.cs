@@ -13,11 +13,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("classVisualSettings")]
         [XmlArrayItem("classVisualSetting")]
-        public ClassVisualSettings[] ClassVisualSettings { get; set; }
+        public ElementVisualSettingsPersistable[] ClassVisualSettings { get; set; }
 
         [XmlArray("associationVisualSettings")]
         [XmlArrayItem("associationVisualSetting")]
-        public AssociationVisualSettings[] AssociationVisualSettings { get; set; }
+        public AssociationVisualSettingsPersistable[] AssociationVisualSettings { get; set; }
     }
 
     public enum DiagramAddNewElementsTo

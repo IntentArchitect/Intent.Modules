@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="bb9e704b-b83a-4ec5-83fc-931a517f6771" type="Attribute">
+  <name>attribute</name>
+  <display>attribute: &lt;not found&gt;</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="c831eaaa-7e6f-4c75-82ec-06a80aeda762">
+    <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>
