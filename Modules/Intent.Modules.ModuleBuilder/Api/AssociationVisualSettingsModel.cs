@@ -87,27 +87,43 @@ namespace Intent.Modules.ModuleBuilder.Api
                 {
                     PrimaryLabel = SourceVisual.GetLabelSettings().PrimaryLabel(),
                     SecondaryLabel = SourceVisual.GetLabelSettings().SecondaryLabel(),
-                    PointIndicator = new AssociationPointerSettings()
+                    PointIndicator = SourceVisual.GetPointSettings().Path() != null ? new AssociationPointerSettings()
                     {
                         Path = SourceVisual.GetPointSettings().Path(),
                         LineColor = SourceVisual.GetPointSettings().LineColor(),
                         LineWidth = SourceVisual.GetPointSettings().LineWidth(),
                         LineDashArray = SourceVisual.GetPointSettings().LineDashArray(),
                         FillColor = SourceVisual.GetPointSettings().FillColor(),
-                    }
+                    } : null,
+                    NavigableIndicator = SourceVisual.GetNavigableIndicatorSettings().Path() != null ? new AssociationPointerSettings()
+                    {
+                        Path = SourceVisual.GetNavigableIndicatorSettings().Path(),
+                        LineColor = SourceVisual.GetNavigableIndicatorSettings().LineColor(),
+                        LineWidth = SourceVisual.GetNavigableIndicatorSettings().LineWidth(),
+                        LineDashArray = SourceVisual.GetNavigableIndicatorSettings().LineDashArray(),
+                        FillColor = SourceVisual.GetNavigableIndicatorSettings().FillColor(),
+                    } : null
                 } : null,
                 TargetEnd = DestinationVisual != null ? new AssociationEndVisualSettings()
                 {
                     PrimaryLabel = DestinationVisual.GetLabelSettings().PrimaryLabel(),
                     SecondaryLabel = DestinationVisual.GetLabelSettings().SecondaryLabel(),
-                    PointIndicator = new AssociationPointerSettings()
+                    PointIndicator = DestinationVisual.GetPointSettings().Path() != null ? new AssociationPointerSettings()
                     {
                         Path = DestinationVisual.GetPointSettings().Path(),
                         LineColor = DestinationVisual.GetPointSettings().LineColor(),
                         LineWidth = DestinationVisual.GetPointSettings().LineWidth(),
                         LineDashArray = DestinationVisual.GetPointSettings().LineDashArray(),
                         FillColor = DestinationVisual.GetPointSettings().FillColor(),
-                    }
+                    } : null,
+                    NavigableIndicator = DestinationVisual.GetNavigableIndicatorSettings().Path() != null ? new AssociationPointerSettings()
+                    {
+                        Path = DestinationVisual.GetNavigableIndicatorSettings().Path(),
+                        LineColor = DestinationVisual.GetNavigableIndicatorSettings().LineColor(),
+                        LineWidth = DestinationVisual.GetNavigableIndicatorSettings().LineWidth(),
+                        LineDashArray = DestinationVisual.GetNavigableIndicatorSettings().LineDashArray(),
+                        FillColor = DestinationVisual.GetNavigableIndicatorSettings().FillColor(),
+                    } : null
                 } : null,
             };
         }

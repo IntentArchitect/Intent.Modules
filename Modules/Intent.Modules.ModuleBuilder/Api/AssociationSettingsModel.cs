@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.ModuleBuilder.Api.Factories;
+using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
@@ -33,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
-        public string ApiModelName => $"{Name}Model";
+        public string ApiModelName => $"{Name.ToCSharpIdentifier()}Model";
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
@@ -65,7 +66,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                         TargetTypes = this.SourceEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
                         IsCollectionDefault = this.SourceEnd.GetSettings().IsCollectionDefault(),
                         AllowIsCollection = this.SourceEnd.GetSettings().IsCollectionEnabled(),
-                        IsNavigableDefault = this.SourceEnd.GetSettings().IsNavigableEnabled(),
+                        IsNavigableDefault = this.SourceEnd.GetSettings().IsNavigableDefault(),
                         AllowIsNavigable = this.SourceEnd.GetSettings().IsNavigableEnabled(),
                         IsNullableDefault = this.SourceEnd.GetSettings().IsNullableDefault(),
                         AllowIsNullable = this.SourceEnd.GetSettings().IsNullableEnabled()
@@ -78,7 +79,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                         TargetTypes = this.DestinationEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
                         IsCollectionDefault = this.DestinationEnd.GetSettings().IsCollectionDefault(),
                         AllowIsCollection = this.DestinationEnd.GetSettings().IsCollectionEnabled(),
-                        IsNavigableDefault = this.DestinationEnd.GetSettings().IsNavigableEnabled(),
+                        IsNavigableDefault = this.DestinationEnd.GetSettings().IsNavigableDefault(),
                         AllowIsNavigable = this.DestinationEnd.GetSettings().IsNavigableEnabled(),
                         IsNullableDefault = this.DestinationEnd.GetSettings().IsNullableDefault(),
                         AllowIsNullable = this.DestinationEnd.GetSettings().IsNullableEnabled()

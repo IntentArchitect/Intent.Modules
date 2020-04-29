@@ -19,5 +19,52 @@
       <properties />
     </stereotype>
   </stereotypes>
-  <childElements />
+  <childElements>
+    <childElement id="7627151d-224f-4aed-8465-9da33234d451" type="Attribute">
+      <name>attribute</name>
+      <display>attribute: NewType</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="bd2e1030-d0a0-4e5e-b41d-829ba6d713ba">
+        <typeId>074dee25-3c96-494e-9b0f-339eeabed1e6</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>7c7ea20f-0a80-4beb-a1b1-44b1bcd63a6e</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
+          <addedByDefault>false</addedByDefault>
+          <properties />
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="d1452b39-e063-48b4-a746-f08c1594cbfe" type="Operation">
+      <name>Operation</name>
+      <display>Operation(): void</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="8f2e93d7-6281-4ab5-a31f-122e7ed66b97">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>7c7ea20f-0a80-4beb-a1b1-44b1bcd63a6e</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

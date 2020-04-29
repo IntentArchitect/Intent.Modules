@@ -70,7 +70,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                     AllowIsNullable = this.GetTypeReferenceSettings().AllowNullable(),
                     AllowIsCollection = this.GetTypeReferenceSettings().AllowCollection(),
                 } : null,
-                DiagramSettings = null, // TODO JL / GCB
+                DiagramSettings = DiagramSettings?.ToPersistable(),
                 ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),
                 MappingSettings = this.MappingSettings?.ToPersistable(),
                 CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
@@ -108,10 +108,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             .ToList();
 
         [IntentManaged(Mode.Fully)]
-        public IList<DiagramSettingsModel> DiagramSettings => _element.ChildElements
+        public DiagramSettingsModel DiagramSettings => _element.ChildElements
             .Where(x => x.SpecializationType == DiagramSettingsModel.SpecializationType)
             .Select(x => new DiagramSettingsModel(x))
-            .ToList();
+            .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public MappingSettingsModel MappingSettings => _element.ChildElements

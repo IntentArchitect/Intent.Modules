@@ -85,55 +85,75 @@ namespace <#= Namespace #>
         }
     }
 
-    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class <#=AssociationEndClassName #> : IAssociationEnd
     {
+        [IntentManaged(Mode.Fully)]
         protected readonly IAssociationEnd _associationEnd;
+        [IntentManaged(Mode.Fully)]
         private readonly <#= ClassName #> _association;
 
+        [IntentManaged(Mode.Fully)]
         public <#=AssociationEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association)
         {
             _associationEnd = associationEnd;
             _association = association;
         }
 
+        [IntentManaged(Mode.Fully)]
         public string Id => _associationEnd.Id;
+        [IntentManaged(Mode.Fully)]
         public string Name => _associationEnd.Name;
+        [IntentManaged(Mode.Fully)]
         public <#= ClassName #> Association => _association;
+        [IntentManaged(Mode.Fully)]
         IAssociation IAssociationEnd.Association => _association.InternalAssociation;
+        [IntentManaged(Mode.Fully)]
         public bool IsNavigable => _associationEnd.IsNavigable;
+        [IntentManaged(Mode.Fully)]
         public bool IsNullable => _associationEnd.IsNullable;
+        [IntentManaged(Mode.Fully)]
         public bool IsCollection => _associationEnd.IsCollection;
+        [IntentManaged(Mode.Fully)]
         public IElement Element => _associationEnd.Element;
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
+        [IntentManaged(Mode.Fully)]
         public string Comment => _associationEnd.Comment;
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
-        public IAssociationEnd OtherEnd()
+        [IntentManaged(Mode.Fully)]
+        IAssociationEnd IAssociationEnd.OtherEnd()
         {
             return this.Equals(_association.SourceEnd) ? _association.TargetEnd : _association.SourceEnd;
         }
 
+        [IntentManaged(Mode.Fully)]
         public bool IsTargetEnd()
         {
             return _associationEnd.IsTargetEnd();
         }
 
+        [IntentManaged(Mode.Fully)]
         public bool IsSourceEnd()
         {
             return _associationEnd.IsSourceEnd();
         }
         
+        [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
             return _associationEnd.ToString();
         }
 
+        [IntentManaged(Mode.Fully)]
         public bool Equals(<#=AssociationEndClassName #> other)
         {
             return Equals(_associationEnd, other._associationEnd);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -142,6 +162,7 @@ namespace <#= Namespace #>
             return Equals((<#=AssociationEndClassName #>)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_associationEnd != null ? _associationEnd.GetHashCode() : 0);

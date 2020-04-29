@@ -189,6 +189,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\NewAssociationSettingsModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/NewAssociationSettingsModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa6b1306-49db-46f6-b29e-e777387cfef0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\PathDrawSettingsModelExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/PathDrawSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>

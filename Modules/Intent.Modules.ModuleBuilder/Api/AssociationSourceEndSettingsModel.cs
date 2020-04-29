@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -30,7 +31,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
-        public string ApiModelName => $"{_element.ParentElement.Name}EndModel";
+        public string ApiModelName => $"{_element.ParentElement.Name.ToCSharpIdentifier()}EndModel";
 
         public string ApiPropertyName => this.GetSettings().ApiPropertyName();
 

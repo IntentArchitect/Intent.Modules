@@ -10,5 +10,170 @@
   <attributes />
   <operations />
   <stereotypes />
-  <childElements />
+  <childElements>
+    <childElement id="304cc83d-7c82-42a1-a985-c68eb52498ce" type="Attribute">
+      <name>firstAttr</name>
+      <display>firstAttr: &lt;not found&gt;</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="0868421f-95f9-420e-9e8c-82937502c79e">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="6f48db24-d7fc-419c-8beb-f67b26121014" type="Attribute">
+      <name>attribute</name>
+      <display>attribute: &lt;not found&gt;</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="4766271a-c33f-43db-970a-22026d4b83a8">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="7507ff07-7f7c-4e9a-bce7-5962ca1c76a8" type="Attribute">
+      <name>attribute</name>
+      <display>attribute: NewType</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="56bd3c57-4d81-4b6e-89ad-e17916224f14">
+        <typeId>074dee25-3c96-494e-9b0f-339eeabed1e6</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="7733c257-c6e3-4ee6-9e7e-6a641dcac66a" type="Attribute">
+      <name>attribute</name>
+      <display>attribute: &lt;no type&gt;</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="bc8d3d77-e2d2-4a71-82f1-c85a1e0554d8">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="bb9e704b-b83a-4ec5-83fc-931a517f6771" type="Attribute">
+      <name>attribute</name>
+      <display>attribute: &lt;not found&gt;</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="c831eaaa-7e6f-4c75-82ec-06a80aeda762">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="1c274c4c-2c2f-44f7-84a1-b96533aa1bfb" type="Operation">
+      <name>Operation</name>
+      <display>Operation(): void</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="0cd36cdf-4b30-4beb-8730-5d05426adf48">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="206fea2e-4c82-477a-8828-e3ced5264a27" type="Operation">
+      <name>Operation</name>
+      <display>Operation(): void</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="a4a6ee58-3326-4fd1-993b-987774e397ca">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="c5cdd0da-c691-4278-b5d2-78c81d5d75b3" type="Operation">
+      <name>Operation</name>
+      <display>Operation(): void</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="e59201f4-08a2-436d-a530-11f39f9f1203">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

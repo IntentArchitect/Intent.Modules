@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -33,6 +34,25 @@ namespace Intent.Modules.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public ContextMenuModel MenuOptions => _element.ChildElements
+            .Where(x => x.SpecializationType == ContextMenuModel.SpecializationType)
+            .Select(x => new ContextMenuModel(x))
+            .SingleOrDefault();
+
+        public DiagramSettings ToPersistable()
+        {
+            return new DiagramSettings()
+            {
+                CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable()).ToArray(),
+                AddNewElementsTo = DiagramAddNewElementsTo.Package,
+                ClassVisualSettings = new ElementVisualSettingsPersistable[0],
+                AssociationVisualSettings = new AssociationVisualSettingsPersistable[0]
+            };
+        }
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(DiagramSettingsModel other)
@@ -60,8 +80,5 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return _element.ToString();
         }
-
-        [IntentManaged(Mode.Fully)]
-        public IElement InternalElement => _element;
     }
 }

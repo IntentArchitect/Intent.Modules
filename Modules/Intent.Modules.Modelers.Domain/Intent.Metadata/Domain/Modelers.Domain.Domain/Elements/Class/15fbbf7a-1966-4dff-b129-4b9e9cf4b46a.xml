@@ -10,5 +10,26 @@
   <attributes />
   <operations />
   <stereotypes />
-  <childElements />
+  <childElements>
+    <childElement id="98385541-17b1-4868-8466-5f82fbf8f0f3" type="Operation">
+      <name>Operation</name>
+      <display>Operation(): void</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="0bd76fb8-a40b-4966-82a7-2d119602e5ad">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>15fbbf7a-1966-4dff-b129-4b9e9cf4b46a</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

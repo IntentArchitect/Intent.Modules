@@ -5,6 +5,7 @@ using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
+using IconType = Intent.IArchitect.Common.Types.IconType;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -56,7 +57,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),
                 DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
-                Icon = Icon?.ToPersistable(),
+                Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = (IconType) Metadata.Models.IconType.UrlImagePath, Source = "./img/icons/uml/Association_256x.png" },
                 AllowMultiple = this.GetOptionSettings().AllowMultiple()
             };
         }

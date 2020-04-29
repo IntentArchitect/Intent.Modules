@@ -90,18 +90,18 @@ namespace Intent.Modules.ModuleBuilder.Api
                 SpecializationType = this.GetSettings().TargetType().Name,
                 Position = new PositionSettings()
                 {
-                    X = this.GetPositionSettings().X(),
-                    Y = this.GetPositionSettings().Y()
+                    X = this.GetPositionSettings().X() ?? "${x}",
+                    Y = this.GetPositionSettings().Y() ?? "${y}"
                 },
                 Size = new SizeSettings()
                 {
-                    Width = this.GetPositionSettings().Width(),
-                    Height = this.GetPositionSettings().Height()
+                    Width = this.GetPositionSettings().Width() ?? "${w}",
+                    Height = this.GetPositionSettings().Height() ?? "${h}"
                 },
                 DefaultSize = new SizeSettings()
                 {
-                    Width = this.GetPositionSettings().Width(),
-                    Height = this.GetPositionSettings().Height()
+                    Width = this.GetPositionSettings().Width() ?? "${x}",
+                    Height = this.GetPositionSettings().Height() ?? "${y}"
                 },
                 DisplayElements = Paths.Select(x => x.ToPersistable()).Cast<object>()
                     .Concat(Texts.Select(x => x.ToPersistable())).ToList(),

@@ -4,6 +4,11 @@
   <FileLogs>
     <FileLog>
       <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\AggregationModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/AggregationModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\AssociationModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/AssociationModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -19,8 +24,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\CommentAssociationModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/CommentAssociationModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\CommentModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/CommentModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\CompositionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/CompositionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
@@ -39,8 +54,23 @@
     </FileLog>
     <FileLog>
       <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\AggregationModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/AggregationModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\AssociationModelExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/AssociationModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\CommentAssociationModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/CommentAssociationModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\CompositionModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/CompositionModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>

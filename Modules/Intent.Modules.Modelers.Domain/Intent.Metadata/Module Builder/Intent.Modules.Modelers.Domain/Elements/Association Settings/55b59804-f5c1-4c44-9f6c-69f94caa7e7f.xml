@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="eaf9ed4e-0b61-4ac1-ba88-09f912c12087" type="Association Settings">
-  <name>Association</name>
-  <display>Association</display>
+<class id="55b59804-f5c1-4c44-9f6c-69f94caa7e7f" type="Association Settings">
+  <name>Aggregation</name>
+  <display>Aggregation</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -11,13 +11,13 @@
   <operations />
   <stereotypes />
   <childElements>
-    <childElement id="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" type="Association Source End Settings">
+    <childElement id="01e339ce-27d1-4f45-a54a-5fabe2a30cae" type="Association Source End Settings">
       <name>[source]</name>
       <display>[source]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</parentFolderId>
+      <parentFolderId>55b59804-f5c1-4c44-9f6c-69f94caa7e7f</parentFolderId>
       <literals />
       <attributes />
       <operations />
@@ -27,37 +27,8 @@
           <properties>
             <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;]" isActive="true" />
-            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="AssociatedFromClasses" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="AggregatedFromClasses" isActive="true" />
             <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="true" isActive="true" />
-            <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="true" isActive="true" />
-            <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="true" isActive="true" />
-            <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="false" isActive="true" />
-            <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
-            <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
-            <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="true" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <childElements />
-    </childElement>
-    <childElement id="0a66489f-30aa-417b-a75d-b945863366fd" type="Association Destination End Settings">
-      <name>destination</name>
-      <display>[destination]</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
-          <addedByDefault>true</addedByDefault>
-          <properties>
-            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
-            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;]" isActive="true" />
-            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="AssociatedToClasses" isActive="true" />
-            <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
             <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="true" isActive="true" />
             <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="true" isActive="true" />
             <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="true" isActive="true" />
@@ -69,13 +40,42 @@
       </stereotypes>
       <childElements />
     </childElement>
-    <childElement id="bcafdaf4-f57a-4cec-ae2c-55c2f9fe8719" type="Association Visual Settings">
+    <childElement id="6e96cff5-d5e9-4727-b46c-114d330e2808" type="Association Destination End Settings">
+      <name>destination</name>
+      <display>[destination]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>55b59804-f5c1-4c44-9f6c-69f94caa7e7f</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
+            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;]" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="AggregatedToClasses" isActive="true" />
+            <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="true" isActive="true" />
+            <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="true" isActive="true" />
+            <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="true" isActive="true" />
+            <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="true" isActive="true" />
+            <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
+            <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
+            <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements />
+    </childElement>
+    <childElement id="5b1341a1-bee7-4354-8196-864b61fd1c56" type="Association Visual Settings">
       <name>[visual]</name>
       <display>[visual]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</parentFolderId>
+      <parentFolderId>55b59804-f5c1-4c44-9f6c-69f94caa7e7f</parentFolderId>
       <literals />
       <attributes />
       <operations />
@@ -90,13 +90,13 @@
         </stereotype>
       </stereotypes>
       <childElements>
-        <childElement id="d5245782-7d8f-48b5-a50c-64fc45c0cec3" type="Association Source End Visual Settings">
+        <childElement id="275d3b0b-861d-4f92-ade7-e7b606de52b7" type="Association Source End Visual Settings">
           <name>[source]</name>
           <display>[source]</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>
-          <parentFolderId>bcafdaf4-f57a-4cec-ae2c-55c2f9fe8719</parentFolderId>
+          <parentFolderId>5b1341a1-bee7-4354-8196-864b61fd1c56</parentFolderId>
           <literals />
           <attributes />
           <operations />
@@ -114,7 +114,7 @@
             <stereotype stereotypeDefinitionId="6b16c65c-f348-40b1-96b0-6423917b9356" name="Label Settings">
               <addedByDefault>true</addedByDefault>
               <properties>
-                <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="`${name &amp;&amp; typeReference.isNavigable ? name : &quot;&quot;}`" isActive="true" />
+                <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="${name &amp;&amp; typeReference.isNavigable ? name : &quot;&quot;}" isActive="true" />
                 <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" value="${typeReference.isCollection ? &quot;*&quot; : typeReference.isNullable ? &quot;0..1&quot; : &quot;1&quot;}" isActive="true" />
               </properties>
             </stereotype>
@@ -131,13 +131,13 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="29e2668b-fdf1-4c10-a39b-1e6b7689210f" type="Association Destination End Visual Settings">
+        <childElement id="6e9c10eb-4e2c-408d-b21b-dcc5e8c209e9" type="Association Destination End Visual Settings">
           <name>[desintation]</name>
           <display>[destination]</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>
-          <parentFolderId>bcafdaf4-f57a-4cec-ae2c-55c2f9fe8719</parentFolderId>
+          <parentFolderId>5b1341a1-bee7-4354-8196-864b61fd1c56</parentFolderId>
           <literals />
           <attributes />
           <operations />

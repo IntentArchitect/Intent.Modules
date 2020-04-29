@@ -115,6 +115,12 @@ namespace Intent.Modules.ModuleBuilder.Api
 
     public class TypeOrder : IEquatable<TypeOrder>
     {
+        public TypeOrder(CreationOptionModel element)
+        {
+            Order = element.GetOptionSettings().TypeOrder();
+            Type = element.TypeReference.Element.Name;
+        }
+
         public TypeOrder(ElementCreationOptionModel element)
         {
             Order = element.GetOptionSettings().TypeOrder();

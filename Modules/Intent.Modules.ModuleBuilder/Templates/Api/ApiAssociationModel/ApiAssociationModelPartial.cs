@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -20,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
         {
         }
 
-        public string AssociationEndClassName => $"{Model.Name}EndModel";
+        public string AssociationEndClassName => $"{Model.Name.ToCSharpIdentifier()}EndModel";
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -32,10 +33,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}Model",
+                fileName: $"{Model.ApiModelName}",
                 fileExtension: "cs",
                 defaultLocationInProject: "Api",
-                className: "${Model.Name}Model",
+                className: $"{Model.ApiModelName}",
                 @namespace: Model.Designer.ApiNamespace
             );
         }

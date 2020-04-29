@@ -54,25 +54,5 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="eb546a74-f95c-45b3-914a-ec66aef8e017">
-      <name>Api Source End Name</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction>return true;</isRequiredFunction>
-    </property>
-    <property id="d1784462-c11f-431d-b5d9-0f1fd09e4f52">
-      <name>Api Target End Name</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isRequiredFunction>return true;</isRequiredFunction>
-    </property>
   </properties>
 </stereotypeDefinition>

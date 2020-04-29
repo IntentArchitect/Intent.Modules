@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="827ae4cf-948a-4c69-8d11-c47f1bab26b2">
+  <sourceEnd id="7d8ee0e5-87ed-42fa-9a53-929ac6f393d7">
+    <name>NewClass1</name>
+    <display>NewClass1 : NewClass1</display>
+    <typeReference id="9309fd2a-b504-479f-8374-88f5aacd874a">
+      <typeId>330867e2-0c19-4ef8-9a87-75a1095e655e</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+  </sourceEnd>
+  <targetEnd id="827ae4cf-948a-4c69-8d11-c47f1bab26b2">
+    <name>NewClass2</name>
+    <display>NewClass2 : NewClass2</display>
+    <typeReference id="850cbf6b-a9cb-417d-b0d4-6d30e6f9215b">
+      <typeId>7c7ea20f-0a80-4beb-a1b1-44b1bcd63a6e</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+  </targetEnd>
+  <associationType>Generalization</associationType>
+  <stereotypes />
+</association>

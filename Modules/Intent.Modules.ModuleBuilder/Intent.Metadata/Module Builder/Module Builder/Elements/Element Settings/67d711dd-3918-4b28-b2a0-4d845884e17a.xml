@@ -5,7 +5,7 @@
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
+  <parentFolderId>727577aa-3e07-4b41-be7d-7359bb1e48c8</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -36,5 +36,53 @@
       </properties>
     </stereotype>
   </stereotypes>
-  <childElements />
+  <childElements>
+    <childElement id="fa87f13a-32ea-49cb-ac65-af14b9bd10fa" type="Context Menu">
+      <name>Creation Options</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>67d711dd-3918-4b28-b2a0-4d845884e17a</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="3e304152-b9f4-4baf-9621-cbda17405f49" type="Element Creation Option">
+          <name>Add Menu Options</name>
+          <display>Add Menu Options: Context Menu</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="4a0c55c1-8d88-4591-b4e5-84c14318ef12">
+            <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>fa87f13a-32ea-49cb-ac65-af14b9bd10fa</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment>Overrides the default creation option settings.</comment>
+              <addedByDefault>false</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[context menu]" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
 </class>
