@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
 {
-    public class ModelerSettingsPersistable
+    public class DesignerSettingsPersistable
     {
         [XmlElement("diagramSettings")]
         public DiagramSettings DiagramSettings { get; set; }

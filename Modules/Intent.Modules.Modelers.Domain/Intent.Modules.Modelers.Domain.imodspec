@@ -16,6 +16,7 @@
   </dependencies>
   <metadata>
     <install target="Domain" src="modelers" />
+    <install target="Domain" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain" />
   </metadata>
   <files></files>
 </package>

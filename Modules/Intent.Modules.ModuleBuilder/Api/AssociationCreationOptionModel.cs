@@ -57,7 +57,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),
                 DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
-                Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = (IconType) Metadata.Models.IconType.UrlImagePath, Source = "./img/icons/uml/Association_256x.png" },
+                Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = (IconType)Metadata.Models.IconType.UrlImagePath, Source = "./img/icons/uml/Association_256x.png" },
                 AllowMultiple = this.GetOptionSettings().AllowMultiple()
             };
         }

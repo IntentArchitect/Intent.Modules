@@ -4,7 +4,6 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using System.Linq;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
-using Intent.Modules.ModelerBuilder.External;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;

@@ -6,10 +6,10 @@ using System.Text;
 using System.Xml.Serialization;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
+using Intent.IArchitect.Agent.Persistence.Model.Settings;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModelerBuilder.External;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Templates;
 using IconType = Intent.IArchitect.Common.Types.IconType;
@@ -38,14 +38,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
         {
             var path = FileMetadata.GetFullLocationPathWithFileName();
             var applicationModelerModeler = File.Exists(path)
-                ? LoadAndDeserialize<ApplicationModelerModel>(path)
-                : new ApplicationModelerModel { Settings = new ModelerSettingsPersistable() };
+                ? LoadAndDeserialize<ApplicationDesignerSettingsPersistable>(path)
+                : new ApplicationDesignerSettingsPersistable { Settings = new DesignerSettingsPersistable() };
 
             applicationModelerModeler.Icon = Model.GetDesignerSettings().Icon().ToPersistable();
             applicationModelerModeler.DisplayOrder = Model.GetDesignerSettings().DisplayOrder() ?? 0;
             var modelerSettings = applicationModelerModeler.Settings;
 
-            //modelerSettings.DiagramSettings // TODO
             modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable();
             modelerSettings.ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.AssociationSettings = Model.AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
