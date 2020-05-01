@@ -26,6 +26,6 @@
     </typeReference>
     <stereotypes />
   </targetEnd>
-  <associationType>Composition</associationType>
+  <associationType>Association</associationType>
   <stereotypes />
 </association>

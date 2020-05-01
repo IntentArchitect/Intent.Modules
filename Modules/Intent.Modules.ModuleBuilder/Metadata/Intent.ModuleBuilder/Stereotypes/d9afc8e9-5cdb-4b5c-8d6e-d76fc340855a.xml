@@ -23,7 +23,7 @@
       <lookupTypes>
         <type>element settings</type>
       </lookupTypes>
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>true;</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

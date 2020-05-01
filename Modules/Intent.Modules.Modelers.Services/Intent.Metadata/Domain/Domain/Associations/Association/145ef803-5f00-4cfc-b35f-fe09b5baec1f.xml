@@ -26,6 +26,6 @@
     </typeReference>
     <stereotypes />
   </targetEnd>
-  <associationType>Aggregation</associationType>
+  <associationType>Association</associationType>
   <stereotypes />
 </association>

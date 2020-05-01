@@ -21,7 +21,7 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction>true;</isRequiredFunction>
     </property>
     <property id="8996260d-790c-4e7b-8607-65fa2dd4ac24">
       <name>Condition</name>
