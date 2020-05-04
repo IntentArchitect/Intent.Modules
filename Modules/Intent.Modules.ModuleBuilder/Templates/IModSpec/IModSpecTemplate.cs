@@ -143,6 +143,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 dependencies.Add(CreateDependency(IntentModule.IntentRoslynWeaver));
             }
 
+            // TODO: Test
+            foreach (var template in doc.XPathSelectElements($"package/templates/template"))
+            {
+                if (template.Attribute("externalReference") != null && _templatesToRegister.All(x => x.ModelId != template.Attribute("externalReference").Value))
+                {
+                    template.Remove();
+                }
+            }
+
             var decorators = _metadataManager.GetDecoratorModels(Project.Application).ToList();
             if (decorators.Any())
             {

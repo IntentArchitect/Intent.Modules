@@ -39,7 +39,7 @@
       <defaultValue />
       <valueOptions />
       <lookupTypes>
-        <type>Element Settings</type>
+        <type>element settings</type>
       </lookupTypes>
       <lookupInternalTargetPropertyId>96176aa0-9da3-4a3a-bfb0-344603fa7e6c</lookupInternalTargetPropertyId>
       <isActiveFunction>return property["Source"].value == "Lookup Type";</isActiveFunction>

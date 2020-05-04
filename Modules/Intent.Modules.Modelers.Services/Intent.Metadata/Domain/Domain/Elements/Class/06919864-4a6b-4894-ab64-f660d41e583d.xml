@@ -10,5 +10,48 @@
   <attributes />
   <operations />
   <stereotypes />
-  <childElements />
+  <childElements>
+    <childElement id="4df91bc2-dbee-4ded-9e82-0f3b4371a543" type="Attribute">
+      <name>isVillain</name>
+      <display>isVillain: bool</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="2656c0d9-cce3-45ec-a293-836919cf857c">
+        <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>06919864-4a6b-4894-ab64-f660d41e583d</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="69c58551-e882-45e4-905f-a90f164a0948" type="Attribute">
+      <name>name</name>
+      <display>name: string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="8db4bd64-5afd-4d88-8a6d-33bd92adb2fc">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>06919864-4a6b-4894-ab64-f660d41e583d</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

@@ -10,5 +10,89 @@
   <attributes />
   <operations />
   <stereotypes />
-  <childElements />
+  <childElements>
+    <childElement id="090a004e-768c-49a4-aec9-5677d582e062" type="Attribute">
+      <name>attribute</name>
+      <display>attribute: char</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="b024982a-7c30-484b-a8c8-cbbb464055e9">
+        <typeId>C1B3A361-B1C6-48C3-B34C-7999B3E071F0</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>a97429c9-464a-4618-8692-2d1019bc732c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="4f14e6ed-ca42-4061-bd21-8b5aa38caab2" type="Attribute">
+      <name>attribute2</name>
+      <display>attribute2: datetimeoffset</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="1364b3d6-ca1b-4f46-8e98-7b16aa4b652b">
+        <typeId>f1ba4df3-a5bc-427e-a591-4f6029f89bd7</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>a97429c9-464a-4618-8692-2d1019bc732c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="062f7656-03fd-4d84-94c1-0d8940764076" type="Operation">
+      <name>IReturnSomething</name>
+      <display>IReturnSomething(): string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="937f6e33-3f51-4814-98c0-99cd59d6cbc6">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>a97429c9-464a-4618-8692-2d1019bc732c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="10504794-6a7c-4f1c-8a09-a9734b0649a1" type="Operation">
+      <name>Operation</name>
+      <display>Operation(): void</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="27a1ba62-c25f-4ee6-a7dd-4ee7db99f8e7">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>a97429c9-464a-4618-8692-2d1019bc732c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

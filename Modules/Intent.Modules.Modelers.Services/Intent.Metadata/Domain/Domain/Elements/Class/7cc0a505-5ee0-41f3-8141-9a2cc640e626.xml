@@ -10,5 +10,27 @@
   <attributes />
   <operations />
   <stereotypes />
-  <childElements />
+  <childElements>
+    <childElement id="a58b6de0-9a32-4830-ab56-6d401b4cc1c0" type="Attribute">
+      <name>attribute</name>
+      <display>attribute: string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="08ebd79f-7a2e-4656-99ea-90d56f293b79">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>7cc0a505-5ee0-41f3-8141-9a2cc640e626</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

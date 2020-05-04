@@ -11,7 +11,12 @@
       <stereotypes />
       <genericTypeParameters />
     </typeReference>
-    <stereotypes />
+    <stereotypes>
+      <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
+        <addedByDefault>false</addedByDefault>
+        <properties />
+      </stereotype>
+    </stereotypes>
   </sourceEnd>
   <targetEnd id="bff90e72-3f59-4682-9b7f-2d0f52845654">
     <name>NewClass2</name>
@@ -24,8 +29,18 @@
       <stereotypes />
       <genericTypeParameters />
     </typeReference>
-    <stereotypes />
+    <stereotypes>
+      <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
+        <addedByDefault>false</addedByDefault>
+        <properties />
+      </stereotype>
+    </stereotypes>
   </targetEnd>
   <associationType>Association</associationType>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
+      <addedByDefault>false</addedByDefault>
+      <properties />
+    </stereotype>
+  </stereotypes>
 </association>

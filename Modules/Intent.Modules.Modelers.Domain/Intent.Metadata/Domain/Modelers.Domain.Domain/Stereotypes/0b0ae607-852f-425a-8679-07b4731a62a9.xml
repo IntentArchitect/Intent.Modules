@@ -5,6 +5,7 @@
   <targetElements>
     <element>class</element>
     <element>attribute</element>
+    <element>association</element>
   </targetElements>
   <applyMode>manually</applyMode>
   <icon type="CharacterBox" source="F|#FFF176" />

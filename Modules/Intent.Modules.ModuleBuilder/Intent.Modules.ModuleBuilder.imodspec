@@ -55,15 +55,6 @@
     <template id="Intent.ModuleBuilder.DecoratorRegistration.Template">
       <role>Decorators</role>
     </template>
-    <template id="ModuleBuilder.Templates.metadata.FolderFileTemplate">
-      <role>Metadata</role>
-    </template>
-    <template id="ModuleBuilder.Templates.metadata.PackageFileTemplate">
-      <role>Metadata</role>
-    </template>
-    <template id="ModuleBuilder.Templates.metadata.StereotypeDefinitionFileTemplate">
-      <role>Metadata</role>
-    </template>
     <template id="ModuleBuilder.Templates.Api.ApiMetadataProvider" externalReference="65807faa-9a61-4958-8554-3d0a0865e587">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />

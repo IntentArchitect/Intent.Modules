@@ -6,7 +6,7 @@ using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.CSharp.Api
 {
@@ -39,6 +39,12 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
         }
     }
 }

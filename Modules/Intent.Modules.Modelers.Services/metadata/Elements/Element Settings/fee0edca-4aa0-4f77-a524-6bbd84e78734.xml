@@ -180,7 +180,7 @@
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="d4b2babd-38fc-42f3-a5ce-d62a21b0b3d4">
-                <typeId>0323cf02-d729-4954-b52c-b167cdd6f53b</typeId>
+                <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -248,7 +248,7 @@
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <typeReference id="e0577971-2236-430e-b17d-ff8b33456e86">
-                    <typeId>df7fb5a1-a1d4-45d8-999c-33f950008d42</typeId>
+                    <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
                     <isCollection>false</isCollection>
@@ -318,7 +318,7 @@
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <typeReference id="53f79f81-c314-43b9-b13e-3a408394690a">
-                    <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
+                    <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
                     <isCollection>false</isCollection>
