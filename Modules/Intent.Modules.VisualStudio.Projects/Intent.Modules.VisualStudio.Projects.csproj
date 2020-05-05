@@ -88,10 +88,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ClassLibraryDotNetCoreProject.cs" />
+    <Compile Include="Api\ClassLibraryDotNetFrameworkProject.cs" />
+    <Compile Include="Api\ConsoleAppDotNetFrameworkProject.cs" />
+    <Compile Include="Api\VisualStudioMetadataManagerExtensions.cs" />
+    <Compile Include="Api\VisualStudioMetadataProvider.cs" />
+    <Compile Include="Api\Folder.cs" />
+    <Compile Include="Api\IFolder.cs" />
+    <Compile Include="Api\IHasFolder.cs" />
+    <Compile Include="Api\IVisualStudioProject.cs" />
+    <Compile Include="Api\ProjectConfig.cs" />
+    <Compile Include="Api\VisualStudioProject.cs" />
+    <Compile Include="Api\WcfServiceApplicationDotNetFrameworkProject.cs" />
+    <Compile Include="Api\WebApplicationDotNetCoreProject.cs" />
+    <Compile Include="Api\WebApplicationDotNetFrameworkProject.cs" />
     <Compile Include="Decorators\AssemblyBindingRedirectWebConfigDecoratorRegistration.cs" />
     <Compile Include="Events\CsProjectEvents.cs" />
     <Compile Include="FactoryExtensions\DependencyResolutionApplicationProcessor.cs" />
     <Compile Include="AssemblyInternalsVisibleTo.cs" />
+    <Compile Include="Macros\TestMacro.cs" />
     <Compile Include="NuGet\HelperTypes\INuGetSchemeProcessor.cs" />
     <Compile Include="NuGet\HelperTypes\NuGetPackage.cs" />
     <Compile Include="NuGet\HelperTypes\NuGetProject.cs" />
@@ -140,8 +155,6 @@
     <Compile Include="Templates\AssemblyInfo\Registrations.cs" />
     <Compile Include="Templates\ConsoleApp\CsProject\ConsoleAppCsProjectTemplateRegistration.cs" />
     <Compile Include="Templates\LibraryCSProjectFile\Registrations.cs" />
-    <Compile Include="Templates\NodeJSProjectFile\NodeJSProjectFileTemplate.cs" />
-    <Compile Include="Templates\NodeJSProjectFile\Registrations.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\Registrations.cs" />
     <Compile Include="Templates\WcfServiceCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\WebApiServiceCSProjectFile\Registrations.cs" />
@@ -211,12 +224,19 @@
     <None Include="Intent.Modules.VisualStudio.Projects.imodspec">
       <SubType>Designer</SubType>
     </None>
+    <None Include="modelers\VisualStudio.modeler.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj">
+      <Project>{830547c8-938e-4958-af78-7c2665588a6e}</Project>
+      <Name>Intent.SoftwareFactory.SDK</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>

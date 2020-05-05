@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Intent.Engine;
 using System.IO;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects.Api;
 using Intent.Registrations;
 using Microsoft.Build.Construction;
 
@@ -17,10 +18,17 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
     {
 
         public string TemplateId => VisualStudio2015SolutionTemplate.Identifier;
+        private readonly IMetadataManager _metadataManager;
+
+        public Registrations(IMetadataManager metadataManager)
+        {
+            _metadataManager = metadataManager;
+        }
 
         public void DoRegistration(IApplicationTemplateInstanceRegistry registry, IApplication application)
         {
-            registry.RegisterApplicationTemplate(VisualStudio2015SolutionTemplate.Identifier, () => new VisualStudio2015SolutionTemplate(application));
+            var projects = _metadataManager.GetAllProjects(application.Id);
+            registry.RegisterApplicationTemplate(VisualStudio2015SolutionTemplate.Identifier, () => new VisualStudio2015SolutionTemplate(application, projects));
         }
 
     }

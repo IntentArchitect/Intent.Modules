@@ -6,17 +6,18 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects.Api;
 using Intent.Templates;
 using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 {
-    public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, IHasNugetDependencies
+    public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IProjectTemplate, IHasNugetDependencies
     {
         public const string IDENTIFIER = "Intent.VisualStudio.Projects.WcfServiceCSProjectFile";
 
-        public WcfServiceCSProjectFileTemplate(IProject project)
-            : base(IDENTIFIER, project, null)
+        public WcfServiceCSProjectFileTemplate(IProject project, IVisualStudioProject model)
+            : base(IDENTIFIER, project, model)
         {
         }
 
@@ -25,7 +26,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
-                fileName: Project.ProjectName,
+                fileName: Project.Name,
                 fileExtension: "csproj",
                 defaultLocationInProject: ""
             );
@@ -66,7 +67,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             group.AddProperty("AppDesignerFolder", "Properties");
             group.AddProperty("RootNamespace", Project.Name);
             group.AddProperty("AssemblyName", Project.Name);
-            group.AddProperty("TargetFrameworkVersion", Project.TargetFrameworkVersion());
+            group.AddProperty("TargetFrameworkVersion", Model.TargetFrameworkVersion());
             group.AddProperty("WcfConfigValidationEnabled", "True");
             group.AddProperty("AutoGenerateBindingRedirects", "true");
             group.AddProperty("UseIISExpress", "True");
@@ -128,11 +129,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 
             foreach (var dependency in Project.Dependencies())
             {
-                AddItem(itemGroup, "ProjectReference", string.Format("..\\{0}\\{0}.csproj", dependency.ProjectName),
+                AddItem(itemGroup, "ProjectReference", string.Format("..\\{0}\\{0}.csproj", dependency.Name),
                     new[]
                     {
                         new KeyValuePair<string, string>("Project", $"{{{dependency.Id}}}"),
-                        new KeyValuePair<string, string>("Name", $"{dependency.ProjectName}"),
+                        new KeyValuePair<string, string>("Name", $"{dependency.Name}"),
                     });
             }
 

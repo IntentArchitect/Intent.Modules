@@ -6,17 +6,18 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects.Api;
 using Intent.Templates;
 using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
 {
-    public class LibraryCSProjectFileTemplate : IntentProjectItemTemplateBase<object>, IProjectTemplate, IHasNugetDependencies
+    public class LibraryCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IProjectTemplate, IHasNugetDependencies
     {
         public const string IDENTIFIER = "Intent.VisualStudio.Projects.LibraryCSProjectFile";
 
-        public LibraryCSProjectFileTemplate(IProject project)
-            : base (IDENTIFIER, project, null)
+        public LibraryCSProjectFileTemplate(IProject project, IVisualStudioProject model)
+            : base (IDENTIFIER, project, model)
         {
         }
 
@@ -25,7 +26,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
-                fileName: Project.Name,
+                fileName: Model.Name,
                 fileExtension: "csproj",
                 defaultLocationInProject: ""
                 );
@@ -56,12 +57,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
             var group = root.AddPropertyGroup();
             group.AddProperty("Configuration", "Debug").Condition = " '$(Configuration)' == '' ";
             group.AddProperty("Platform", "AnyCPU").Condition = " '$(Platform)' == '' ";
-            group.AddProperty("ProjectGuid", $"{{{Project.Id}}}");
+            group.AddProperty("ProjectGuid", $"{{{Model.Id}}}");
             group.AddProperty("OutputType", "Library");
             group.AddProperty("AppDesignerFolder", "Properties");
-            group.AddProperty("RootNamespace", $"{Project.Name}");
-            group.AddProperty("AssemblyName", $"{Project.Name}");
-            group.AddProperty("TargetFrameworkVersion", Project.TargetFrameworkVersion());
+            group.AddProperty("RootNamespace", $"{Model.Name}");
+            group.AddProperty("AssemblyName", $"{Model.Name}");
+            group.AddProperty("TargetFrameworkVersion", Model.TargetFrameworkVersion());
             group.AddProperty("FileAlignment", "512");
             group.AddProperty("TargetFrameworkProfile", "");
 
@@ -102,11 +103,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
 
             foreach (var dependency in Project.Dependencies())
             {
-                AddItem(itemGroup, "ProjectReference", string.Format("..\\{0}\\{0}.csproj", dependency.ProjectName),
+                AddItem(itemGroup, "ProjectReference", string.Format("..\\{0}\\{0}.csproj", dependency.Name),
                     new[]
                     {
                         new KeyValuePair<string, string>("Project", $"{{{dependency.Id}}}"),
-                        new KeyValuePair<string, string>("Name", $"{dependency.ProjectName}"),
+                        new KeyValuePair<string, string>("Name", $"{dependency.Name}"),
                     });
             }
 

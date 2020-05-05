@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<object>"#>
+﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<IVisualStudioProject>"#>
 <#@ output extension=".csproj" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="Intent.SoftwareFactory.SDK" #>
@@ -10,10 +10,11 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #> 
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Intent.Modules.VisualStudio.Projects.Api" #>
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework><#= Model.TargetFrameworkVersion() #></TargetFramework>
   </PropertyGroup>
 
 </Project>

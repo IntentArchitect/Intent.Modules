@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.VisualStudio.Projects.Api;
 using Intent.Plugins;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution
@@ -29,15 +30,15 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
         public const string Identifier = "Intent.VisualStudio.Projects.VisualStudio2015Solution";
         private IFileMetadata _fileMetadata;
 
-        public VisualStudio2015SolutionTemplate(IApplication application)
+        public VisualStudio2015SolutionTemplate(IApplication application, IEnumerable<IVisualStudioProject> projects)
         {
             Application = application;
             //_fileMetadata = CreateMetadata();
             Context = new TemplateContext(new VisualStudio2015SolutionTemplateModel(Application));
-            Projects = Application.Projects;
+            Projects = projects;
             //ExistingSolution = existingSolution;
-            SolutionFolders = Projects.Where(x => x.SolutionFolder() != null && x.Folder.Id != Application.Id)
-                .GroupBy(x => x.SolutionFolder())
+            SolutionFolders = Projects.Where(x => x.Folder != null && x.Folder.Id != Application.Id)
+                .GroupBy(x => x.Folder.Name)
                 .ToDictionary(x => x.Key, x => x.ToList())
                 .Select(x => new SolutionFolder(x.Key, x.Value))
                 .ToList();
@@ -45,7 +46,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
 
         public string Id { get; } = Identifier;
         public IApplication Application { get; }
-        public IEnumerable<IProject> Projects { get; }
+        public IEnumerable<IVisualStudioProject> Projects { get; }
         //public SolutionFile ExistingSolution { get; }
         public IList<SolutionFolder> SolutionFolders { get; }
 
@@ -137,7 +138,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
                             foreach (var projectName in missingProjects)
                             {
                                 var project = Projects.First(f => f.Name == projectName);
-                                var solutionFolder = SolutionFolders.FirstOrDefault(f => f.FolderName == project.SolutionFolder());
+                                var solutionFolder = SolutionFolders.FirstOrDefault(f => f.FolderName == project.Folder?.Name);
                                 if (solutionFolder != null)
                                 {
                                     parser.Insert($"\t\t{{{project.Id.ToString().ToUpper()}}} = {{{solutionFolder.Id.ToString().ToUpper()}}}\r\n");
@@ -181,9 +182,9 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
     {
         public Guid Id { get; set;  }
         public string FolderName { get; }
-        public List<IProject> AssociatedProjects { get; }
+        public List<IVisualStudioProject> AssociatedProjects { get; }
 
-        public SolutionFolder(string folderName, List<IProject> associatedProjects)
+        public SolutionFolder(string folderName, List<IVisualStudioProject> associatedProjects)
         {
             Id = Guid.NewGuid();
             FolderName = folderName;

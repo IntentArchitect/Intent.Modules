@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Intent.Modules.AspNetCore.Templates.Startup;
-using Intent.Modules.Constants;
 using Intent.Engine;
+using Intent.Modules.Constants;
 using Intent.Registrations;
 
-
-namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.Startup
+namespace Intent.Modules.AspNetCore.Templates.Startup
 {
     [Description(CoreWebStartupTemplate.Identifier)]
     public class CoreWebStartupTemplateRegistration : IProjectTemplateRegistration

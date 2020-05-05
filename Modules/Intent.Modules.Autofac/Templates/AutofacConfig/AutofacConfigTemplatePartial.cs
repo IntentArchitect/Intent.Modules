@@ -24,8 +24,6 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
             eventDispatcher.Subscribe(Constants.ContainerRegistrationEvent.EventId, Handle);
         }
 
-        public IEnumerable<IProject> ApplicationProjects => Project.Application.Projects;
-
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));

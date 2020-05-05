@@ -18,7 +18,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 <#  foreach(var project in Projects)
     {#>
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<#= project.ProjectName #>", "<#= project.ProjectName #>\\<#= project.ProjectName #>.csproj", "{<#= project.Id.ToString().ToUpper() #>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<#= project.Name #>", "<#= project.Name #>\\<#= project.Name #>.csproj", "{<#= project.Id.ToString().ToUpper() #>}"
 EndProject
 <#    } #>
 <#    foreach(var solutionFolder in SolutionFolders)

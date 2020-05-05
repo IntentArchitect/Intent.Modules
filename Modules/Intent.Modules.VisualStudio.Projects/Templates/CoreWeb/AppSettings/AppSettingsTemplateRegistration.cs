@@ -20,7 +20,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
                 VisualStudioProjectTypeIds.CoreWebApp
             };
 
-            var projects = application.Projects.Where(p => targetProjectIds.Contains(p.ProjectType.Id));
+            var projects = application.Projects.Where(p => targetProjectIds.Contains(p.Type));
 
             foreach (var project in projects)
             {
