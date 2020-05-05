@@ -42,6 +42,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public string Name => _stereotype.Name;
+
             public string X()
             {
                 return _stereotype.GetProperty<string>("X");
@@ -72,6 +74,8 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 _stereotype = stereotype;
             }
+
+            public string Name => _stereotype.Name;
 
             public IElement TargetType()
             {

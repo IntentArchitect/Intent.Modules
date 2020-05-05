@@ -14,7 +14,7 @@ namespace Intent.Modules.Modelers.Domain.Api
         public static IList<GeneralizationEndModel> Specializations(this ClassModel model)
         {
             return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsTargetEnd())
+                .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsSourceEnd())
                 .Select(x => GeneralizationModel.CreateFromEnd(x))
                 .ToList();
         }
@@ -23,7 +23,7 @@ namespace Intent.Modules.Modelers.Domain.Api
         public static IList<GeneralizationEndModel> Generalizations(this ClassModel model)
         {
             return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsSourceEnd())
+                .Where(x => x.Association.SpecializationType == GeneralizationModel.SpecializationType && x.IsTargetEnd())
                 .Select(x => GeneralizationModel.CreateFromEnd(x))
                 .ToList();
         }

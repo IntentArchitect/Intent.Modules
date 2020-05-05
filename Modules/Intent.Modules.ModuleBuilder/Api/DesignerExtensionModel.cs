@@ -18,10 +18,15 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
         }
 
+        public override string MetadataName()
+        {
+            return _element.TypeReference.Element.Name;
+        }
+
         [IntentManaged(Mode.Fully)]
         public bool Equals(DesignerExtensionModel other)
         {
-            return Equals(_element, other._element);
+            return Equals(_element, other?._element);
         }
 
         [IntentManaged(Mode.Fully)]

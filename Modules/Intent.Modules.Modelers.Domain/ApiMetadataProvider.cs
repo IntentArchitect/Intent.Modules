@@ -21,7 +21,7 @@ namespace Intent.Modules.Modelers.Domain
 
         public IList<ClassModel> GetClassModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Domain", application.Id)
                 .Where(x => x.SpecializationType == ClassModel.SpecializationType)
                 .Select(x => new ClassModel(x))
                 .ToList<ClassModel>();
@@ -30,7 +30,7 @@ namespace Intent.Modules.Modelers.Domain
 
         public IList<CommentModel> GetCommentModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Domain", application.Id)
                 .Where(x => x.SpecializationType == CommentModel.SpecializationType)
                 .Select(x => new CommentModel(x))
                 .ToList<CommentModel>();
@@ -39,7 +39,7 @@ namespace Intent.Modules.Modelers.Domain
 
         public IList<DiagramModel> GetDiagramModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Domain", application.Id)
                 .Where(x => x.SpecializationType == DiagramModel.SpecializationType)
                 .Select(x => new DiagramModel(x))
                 .ToList<DiagramModel>();
@@ -48,7 +48,7 @@ namespace Intent.Modules.Modelers.Domain
 
         public IList<EnumModel> GetEnumModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Domain", application.Id)
                 .Where(x => x.SpecializationType == EnumModel.SpecializationType)
                 .Select(x => new EnumModel(x))
                 .ToList<EnumModel>();
@@ -57,7 +57,7 @@ namespace Intent.Modules.Modelers.Domain
 
         public IList<FolderModel> GetFolderModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Domain", application.Id)
                 .Where(x => x.SpecializationType == FolderModel.SpecializationType)
                 .Select(x => new FolderModel(x))
                 .ToList<FolderModel>();
@@ -66,7 +66,7 @@ namespace Intent.Modules.Modelers.Domain
 
         public IList<TypeDefinitionModel> GetTypeDefinitionModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Domain", application.Id)
                 .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
                 .Select(x => new TypeDefinitionModel(x))
                 .ToList<TypeDefinitionModel>();

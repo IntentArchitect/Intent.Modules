@@ -62,7 +62,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public bool Equals(PackageSettingsModel other)
         {
-            return Equals(_element, other._element);
+            return Equals(_element, other?._element);
         }
 
         [IntentManaged(Mode.Fully)]

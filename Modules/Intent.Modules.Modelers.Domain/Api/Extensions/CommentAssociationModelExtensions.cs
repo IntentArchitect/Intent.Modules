@@ -14,7 +14,7 @@ namespace Intent.Modules.Modelers.Domain.Api
         public static IList<CommentAssociationEndModel> AssociatedComments(this CommentModel model)
         {
             return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == CommentAssociationModel.SpecializationType && x.IsTargetEnd())
+                .Where(x => x.Association.SpecializationType == CommentAssociationModel.SpecializationType && x.IsSourceEnd())
                 .Select(x => CommentAssociationModel.CreateFromEnd(x))
                 .ToList();
         }
@@ -23,7 +23,7 @@ namespace Intent.Modules.Modelers.Domain.Api
         public static IList<CommentAssociationEndModel> CommentedClasses(this ClassModel model)
         {
             return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == CommentAssociationModel.SpecializationType && x.IsSourceEnd())
+                .Where(x => x.Association.SpecializationType == CommentAssociationModel.SpecializationType && x.IsTargetEnd())
                 .Select(x => CommentAssociationModel.CreateFromEnd(x))
                 .ToList();
         }

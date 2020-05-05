@@ -28,7 +28,7 @@ namespace <#= Namespace #>
 <#  foreach(var elementSettings in Model) { #>
         public IList<<#= GetClassName(elementSettings) #>> Get<#= GetClassName(elementSettings).ToPluralName() #>(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("<#= elementSettings.Designer.MetadataName() #>", application.Id)
                 .Where(x => x.SpecializationType == <#= GetClassName(elementSettings) #>.SpecializationType)
                 .Select(x => new <#= GetClassName(elementSettings) #>(x))
                 .ToList<<#= GetClassName(elementSettings) #>>();

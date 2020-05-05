@@ -83,7 +83,7 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully)]
         public bool Equals(<#= ClassName #> other)
         {
-            return Equals(_element, other._element);
+            return Equals(_element, other?._element);
         }
 
         [IntentManaged(Mode.Fully)]

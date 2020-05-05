@@ -145,7 +145,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
             #line hidden
             this.Write(@" other)
         {
-            return Equals(_association, other._association);
+            return Equals(_association, other?._association);
         }
 
         [IntentManaged(Mode.Fully)]

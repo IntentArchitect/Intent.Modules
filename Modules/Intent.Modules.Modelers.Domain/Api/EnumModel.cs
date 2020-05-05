@@ -42,7 +42,7 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public bool Equals(EnumModel other)
         {
-            return Equals(_element, other._element);
+            return Equals(_element, other?._element);
         }
 
         [IntentManaged(Mode.Fully)]

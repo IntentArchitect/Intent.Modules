@@ -53,6 +53,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public string Name => _stereotype.Name;
+
             public string PrimaryLabel()
             {
                 return _stereotype.GetProperty<string>("Primary Label");
@@ -73,6 +75,8 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 _stereotype = stereotype;
             }
+
+            public string Name => _stereotype.Name;
 
             public string Path()
             {
@@ -109,6 +113,8 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 _stereotype = stereotype;
             }
+
+            public string Name => _stereotype.Name;
 
             public string Path()
             {

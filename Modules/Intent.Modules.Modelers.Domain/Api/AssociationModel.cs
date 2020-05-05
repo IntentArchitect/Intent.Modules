@@ -59,7 +59,7 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public bool Equals(AssociationModel other)
         {
-            return Equals(_association, other._association);
+            return Equals(_association, other?._association);
         }
 
         [IntentManaged(Mode.Fully)]

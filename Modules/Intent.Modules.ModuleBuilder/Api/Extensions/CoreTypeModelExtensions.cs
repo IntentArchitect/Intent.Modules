@@ -31,6 +31,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public string Name => _stereotype.Name;
+
             public SaveModeOptions SaveMode()
             {
                 return new SaveModeOptions(_stereotype.GetProperty<string>("Save Mode"));

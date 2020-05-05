@@ -41,6 +41,8 @@ namespace <#= Namespace #>
                 _stereotype = stereotype;
             }
 
+            public string Name => _stereotype.Name;
+
 <#      foreach(var property in stereotypeDefinition.Properties) { 
         switch (property.ControlType) {
             case StereotypePropertyControlType.TextBox:

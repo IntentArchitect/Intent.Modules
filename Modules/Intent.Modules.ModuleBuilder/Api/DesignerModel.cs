@@ -47,6 +47,11 @@ namespace Intent.Modules.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
+        public virtual string MetadataName()
+        {
+            return Name;
+        }
+
         [IntentManaged(Mode.Fully)]
         public PackageSettingsModel PackageSettings => _element.ChildElements
             .Where(x => x.SpecializationType == PackageSettingsModel.SpecializationType)
@@ -74,7 +79,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public bool Equals(DesignerModel other)
         {
-            return Equals(_element, other._element);
+            return Equals(_element, other?._element);
         }
 
         [IntentManaged(Mode.Fully)]

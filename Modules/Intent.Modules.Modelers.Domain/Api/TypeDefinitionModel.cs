@@ -37,7 +37,7 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public bool Equals(TypeDefinitionModel other)
         {
-            return Equals(_element, other._element);
+            return Equals(_element, other?._element);
         }
 
         [IntentManaged(Mode.Fully)]

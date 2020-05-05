@@ -43,7 +43,7 @@ namespace Intent.Modelers.Services.Api
         [IntentManaged(Mode.Fully)]
         public bool Equals(DTOModel other)
         {
-            return Equals(_element, other._element);
+            return Equals(_element, other?._element);
         }
 
         [IntentManaged(Mode.Fully)]

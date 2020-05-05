@@ -31,6 +31,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public string Name => _stereotype.Name;
+
             public HasTypeReferenceOptions HasTypeReference()
             {
                 return new HasTypeReferenceOptions(_stereotype.GetProperty<string>("Has Type-Reference"));
