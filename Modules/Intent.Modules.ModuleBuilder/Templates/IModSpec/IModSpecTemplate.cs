@@ -95,6 +95,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             var doc = LoadOrCreateImodSpecFile(location);
 
             var templatesElement = doc.Element("package").Element("templates");
+            if (templatesElement == null)
+            {
+                templatesElement = new XElement("templates");
+                doc.Element("package").Add(templatesElement);
+            }
 
             foreach (var template in _templatesToRegister)
             {

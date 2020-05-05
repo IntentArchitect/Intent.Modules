@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
-  <id>Intent.Modules.ModuleBuilder.CSharp</id>
+  <id>Intent.ModuleBuilder.CSharp</id>
   <version>2.1.0</version>
   <summary>Module Builder support for C# files that use Roslyn for intelligent code generation</summary>
   <description>Module Builder support for C# files that use Roslyn for intelligent code generation</description>

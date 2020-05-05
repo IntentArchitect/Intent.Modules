@@ -25,7 +25,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
             TypeOrder = ElementCreations.Select(x => new TypeOrder(x))
                 .Concat(AssociationCreations.Select(x => new TypeOrder(x)))
-                .Concat(CreationOptions.Select(x => new TypeOrder(x)))
                 .Distinct().ToList();
             if (StereotypeDefinitionCreation != null)
             {
@@ -41,12 +40,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-
-        [IntentManaged(Mode.Fully)]
-        public IList<CreationOptionModel> CreationOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == CreationOptionModel.SpecializationType)
-            .Select(x => new CreationOptionModel(x))
-            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementCreationOptionModel> ElementCreations => _element.ChildElements
