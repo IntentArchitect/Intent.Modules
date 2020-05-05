@@ -51,11 +51,11 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new PackageSettingsPersistable
             {
-                CreationOptions = this?.MenuOptions.ElementCreations.Select(x => x.ToPersistable())
-                    .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
+                CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
+                    .Concat(MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
                     .ToList(),
-                TypeOrder = this?.MenuOptions.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList()
+                TypeOrder = MenuOptions?.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList()
             };
         }
 

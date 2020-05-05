@@ -47,7 +47,7 @@
       <role>Templates</role>
     </template>
     <template id="Intent.ModuleBuilder.ModelerConfig">
-      <role>ModelerConfig</role>
+      <role>DesignerConfig</role>
     </template>
     <template id="Intent.ModuleBuilder.DecoratorTemplate">
       <role>Decorators</role>

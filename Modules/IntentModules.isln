@@ -15,5 +15,6 @@
     <application id="4e2487dd-3fec-4611-95fb-d49687929743" relativePath="Intent.Modules.ModuleBuilder.Typescript\ModuleBuilder.Typescript.application.config" />
     <application id="a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb" relativePath="Intent.Modules.Modelers.Services\Modeler.Services.application.config" />
     <application id="ff3070c6-4626-4a8b-85ab-7d56887a1445" relativePath="Intent.Modules.Common.Types\Common.Types.application.config" />
+    <application id="ad79943a-b771-42b0-9563-9e01f7ea2dbc" relativePath="Intent.Modules.VisualStudio.Projects\VisualStudio.Projects.application.config" />
   </applications>
 </solution>

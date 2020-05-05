@@ -69,6 +69,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                     TargetTypes = this.GetTypeReferenceSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
                     AllowIsNullable = this.GetTypeReferenceSettings().AllowNullable(),
                     AllowIsCollection = this.GetTypeReferenceSettings().AllowCollection(),
+                    DefaultTypeId = this.GetTypeReferenceSettings().DefaultTypeId(),
                 } : null,
                 DiagramSettings = DiagramSettings?.ToPersistable(),
                 ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="43351e35-d2b9-4f02-bac4-e3d218ace834" type="Element Settings">
+  <name>Class Library (.NET Core)</name>
+  <display>Class Library (.NET Core)</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>2ef69545-61ca-42b7-89bd-4ae3d5970280</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;data:image/png;base64,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&quot;}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="fa62c8f5-a60c-445e-8fdf-16237b3cea7a" type="Context Menu">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>43351e35-d2b9-4f02-bac4-e3d218ace834</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="2d002674-dc10-4cef-89f8-8b07fb279ede" type="Element Creation Option">
+          <name>Add Role</name>
+          <display>Add Role: Role</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="7e81d3f4-7c68-4383-8db9-a7d31e4e03f2">
+            <typeId>025e933b-b602-4b6d-95ab-0ec36ae940da</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>fa62c8f5-a60c-445e-8fdf-16237b3cea7a</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

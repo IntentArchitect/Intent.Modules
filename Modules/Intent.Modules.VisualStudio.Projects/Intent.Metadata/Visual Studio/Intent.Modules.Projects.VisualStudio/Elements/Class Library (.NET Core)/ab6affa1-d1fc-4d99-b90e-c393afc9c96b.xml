@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ab6affa1-d1fc-4d99-b90e-c393afc9c96b" type="Class Library (.NET Core)">
+  <name>Intent.Modules.VisualStudio.Projects</name>
+  <display>Intent.Modules.VisualStudio.Projects</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>c7f8a24d-aeac-46c7-a54d-6c2580cef8f9</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>
