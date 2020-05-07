@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<IServiceModel>" #>
+﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<ServiceModel>" #>
 <#@ output extension=".ts" #>
 <#@ Assembly Name="System.Core" #>
 <#@ import namespace="Intent.Modelers.Services.Api" #>

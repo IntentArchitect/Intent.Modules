@@ -292,11 +292,11 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
         private string GetOperationReturnType(OperationModel operation)
         {
-            if (operation.TypeReference == null)
+            if (operation.ReturnType == null)
             {
                 return "void";
             }
-            return GetTypeName(operation.TypeReference);
+            return GetTypeName(operation.ReturnType);
         }
 
         private static HttpVerb GetHttpVerb(OperationModel operation)
@@ -307,7 +307,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                 return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
             }
 
-            if (operation.TypeReference.Element == null || operation.Parameters.Any(IsFromBody))
+            if (operation.ReturnType == null || operation.Parameters.Any(IsFromBody))
             {
                 return HttpVerb.POST;
             }

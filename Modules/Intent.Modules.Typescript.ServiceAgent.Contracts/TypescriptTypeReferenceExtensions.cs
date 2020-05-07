@@ -27,8 +27,8 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts
             string result = typeInfo.Element.Name;
             if (typeInfo.Element.SpecializationType == "DTO")
             {
-                var templateInstance = template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IDTOModel>(TypescriptDtoTemplate.LocalIdentifier, (x) => x.Id == typeInfo.Element.Id))
-                    ?? template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IDTOModel>(TypescriptDtoTemplate.RemoteIdentifier, (x) => x.Id == typeInfo.Element.Id));
+                var templateInstance = template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<DTOModel>(TypescriptDtoTemplate.LocalIdentifier, (x) => x.Id == typeInfo.Element.Id))
+                    ?? template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<DTOModel>(TypescriptDtoTemplate.RemoteIdentifier, (x) => x.Id == typeInfo.Element.Id));
                 if (templateInstance != null)
                 {
                     return $"{templateInstance.Namespace}.{templateInstance.ClassName}";

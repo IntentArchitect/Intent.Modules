@@ -87,7 +87,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             }
         }
 
-        private string GetReturnType(IOperation operation)
+        private string GetReturnType(OperationModel operation)
         {
             if (operation.ReturnType == null)
             {
@@ -97,12 +97,12 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             return Types.Get(operation.ReturnType.Type);
         }
 
-        private string GetParameterDefinitions(IOperation operation)
+        private string GetParameterDefinitions(OperationModel operation)
         {
             return string.Join(", ", operation.Parameters.Select(x => x.Name.ToCamelCase() + (x.Type.IsNullable ? "?" : "") + ": " + Types.Get(x.Type, "{0}[]")));
         }
 
-        private string GetUpdateUrl(IOperation operation)
+        private string GetUpdateUrl(OperationModel operation)
         {
             var mappedOperation = Model.MappedService?.Operations.FirstOrDefault(x => x.Id == operation.Mapping.TargetId);
             if (mappedOperation?.Parameters.Count != operation.Parameters.Count)
@@ -119,7 +119,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 .Select((x, index) => $"{x.Name.ToCamelCase()}=${{{operation.Parameters[index].Name.ToCamelCase()}}}"))}`;";
         }
 
-        private string GetDataServiceCall(IOperation operation)
+        private string GetDataServiceCall(OperationModel operation)
         {
             switch (GetHttpVerb(operation))
             {
@@ -149,7 +149,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             );
         }
 
-        private HttpVerb GetHttpVerb(IOperation operation)
+        private HttpVerb GetHttpVerb(OperationModel operation)
         {
             var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
             if (verb != "AUTO")
@@ -168,7 +168,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             return HttpVerb.GET;
         }
 
-        private string GetPath(IOperation operation)
+        private string GetPath(OperationModel operation)
         {
             var path = operation.GetStereotypeProperty<string>("Http", "Route")?.ToLower();
             return path ?? operation.Name.ToLower();

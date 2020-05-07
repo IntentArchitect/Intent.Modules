@@ -31,7 +31,7 @@ namespace Intent.Modelers.Domain.Api
             //}
             _element = element;
             //classCache.Add(_element.UniqueKey(), this);
-            Folder = Api.Folder.SpecializationType.Equals(_element.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_element.ParentElement) : null;
+            Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
 
             //var generalizedFrom = _element.AssociatedElements
             //    .Where(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase) &&
@@ -50,7 +50,7 @@ namespace Intent.Modelers.Domain.Api
             //}
 
             _associatedElements = this.AssociatedToClasses()
-                .Concat(this.AssociatedFromClasses().Where(x => x.OtherEnd().Element.Id != Id))
+                .Concat(this.AssociatedFromClasses().Where(x => x.Element.Id != Id))
                 .ToList();
             //_associatedElements = element.AssociatedElements
             //    .Where(x => "Composition".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase)
@@ -71,7 +71,7 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-        public IFolder Folder { get; }
+        public FolderModel Folder { get; }
 
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;

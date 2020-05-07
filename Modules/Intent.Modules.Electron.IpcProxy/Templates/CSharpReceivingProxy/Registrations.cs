@@ -5,12 +5,13 @@ using Intent.Engine;
 using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.Modelers.Services;
 using Intent.Templates;
 
 namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
 {
     [Description(CSharpIpcReceivingProxyTemplate.Identifier)]
-    public class Registrations : ModelTemplateRegistrationBase<IServiceModel>
+    public class Registrations : ModelTemplateRegistrationBase<ServiceModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -21,12 +22,12 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
 
         public override string TemplateId => CSharpIpcReceivingProxyTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
         {
             return new CSharpIpcReceivingProxyTemplate(model, project);
         }
 
-        public override IEnumerable<IServiceModel> GetModels(IApplication application)
+        public override IEnumerable<ServiceModel> GetModels(IApplication application)
         {
             return _metadataManager
                 .GetServiceModels(application)

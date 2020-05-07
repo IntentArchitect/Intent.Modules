@@ -13,11 +13,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
 {
-    partial class CSharpIpcReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, ITemplatePostCreationHook, IHasTemplateDependencies, IHasNugetDependencies
+    partial class CSharpIpcReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, ITemplatePostCreationHook, IHasTemplateDependencies, IHasNugetDependencies
     {
         public const string Identifier = "Intent.Electron.IpcProxy.CSharpIpcReceivingProxy";
 
-        public CSharpIpcReceivingProxyTemplate(IServiceModel model, IProject project)
+        public CSharpIpcReceivingProxyTemplate(ServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
             AddTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
@@ -49,7 +49,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             .ToArray();
         }
 
-        private string GetOperationCallParameters(IOperation o)
+        private string GetOperationCallParameters(OperationModel o)
         {
             if (!o.Parameters.Any())
             {

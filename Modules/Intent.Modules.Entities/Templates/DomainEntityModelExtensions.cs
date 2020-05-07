@@ -33,7 +33,7 @@ namespace Intent.Modules.Entities.Templates
         //    return defaultValue;
         //}
 
-        //public static string TypeName(this IAttribute attribute)
+        //public static string TypeName(this AttributeModel attribute)
         //{
         //    return attribute.Type.ConvertType();
         //}

@@ -17,25 +17,25 @@ namespace Intent.Modules.AspNet.SignalR.Interop.WebApi.Decorator
             
         }
 
-        public override string DeclarePrivateVariables(IServiceModel service)
+        public override string DeclarePrivateVariables(ServiceModel service)
         {
             return @"
         private readonly IClientNotificationService _clientNotificationService;";
         }
 
-        public override string ConstructorParams(IServiceModel service)
+        public override string ConstructorParams(ServiceModel service)
         {
             return @"
             , IClientNotificationService clientNotificationService";
         }
 
-        public override string ConstructorInit(IServiceModel service)
+        public override string ConstructorInit(ServiceModel service)
         {
             return @"
             _clientNotificationService = clientNotificationService;";
         }
 
-        public override string AfterTransaction(IServiceModel service, IOperation operation)
+        public override string AfterTransaction(ServiceModel service, OperationModel operation)
         {
             return @"
                 _clientNotificationService.Flush();";

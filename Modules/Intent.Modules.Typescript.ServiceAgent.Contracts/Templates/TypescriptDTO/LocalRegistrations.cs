@@ -9,11 +9,12 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Services;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.Modelers.Services;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {
     [Description("Intent Typescript ServiceAgent DTO - Local")]
-    public class LocalRegistrations : ModelTemplateRegistrationBase<IDTOModel>
+    public class LocalRegistrations : ModelTemplateRegistrationBase<DTOModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -25,22 +26,22 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override string TemplateId => TypescriptDtoTemplate.LocalIdentifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IDTOModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, DTOModel model)
         {
             return new TypescriptDtoTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IDTOModel> GetModels(Engine.IApplication application)
+        public override IEnumerable<DTOModel> GetModels(Engine.IApplication application)
         {
             var dtoModels = _metadataManager.GetDTOModels(application);
 
             // TODO JL: Temp, filter out ones for server only, will ultimately get replaced with concept of client applications in the future
-            dtoModels = dtoModels.Where(x => x.Stereotypes.All(s => s.Name != "ServerOnly") && !FolderOrParentFolderHasStereoType(x.Folder, "ServerOnly"));
+            dtoModels = dtoModels.Where(x => x.Stereotypes.All(s => s.Name != "ServerOnly") && !FolderOrParentFolderHasStereoType(x.Folder, "ServerOnly")).ToList();
 
-            return dtoModels.ToList();
+            return dtoModels;
         }
 
-        private static bool FolderOrParentFolderHasStereoType(IFolder folder, string name)
+        private static bool FolderOrParentFolderHasStereoType(FolderModel folder, string name)
         {
             if (folder == null)
             {
@@ -52,7 +53,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
                 return true;
             }
 
-            return FolderOrParentFolderHasStereoType(folder.ParentFolder, name);
+            return FolderOrParentFolderHasStereoType(folder.Folder, name);
         }
     }
 }

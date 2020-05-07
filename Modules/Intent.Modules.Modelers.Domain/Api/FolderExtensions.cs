@@ -6,15 +6,15 @@ namespace Intent.Modelers.Domain.Api
 {
     public static class FolderExtensions
     {
-        public static IList<IFolder> GetFolderPath(this IHasFolder model, bool includePackage = false)
+        public static IList<FolderModel> GetFolderPath(this IHasFolder model)
         {
-            List<IFolder> result = new List<IFolder>();
+            List<FolderModel> result = new List<FolderModel>();
 
             var current = model.Folder;
-            while (current != null && (includePackage || !current.IsPackage))
+            while (current != null)
             {
                 result.Insert(0, current);
-                current = current.ParentFolder;
+                current = current.Folder;
             }
             return result;
         }
@@ -28,7 +28,7 @@ namespace Intent.Modelers.Domain.Api
                 {
                     return folder.GetStereotype(stereotypeName);
                 }
-                folder = folder.ParentFolder;
+                folder = folder.Folder;
             }
             return null;
         }

@@ -21,8 +21,8 @@ namespace Intent.Modules.Angular.Api
         public string Name => _class.Name;
         public string Comment => _class.Comment;
         public IModuleModel Module { get; }
-        public IServiceModel MappedService { get; }
-        public IEnumerable<IOperation> Operations => _class.Operations;
+        public ServiceModel MappedService { get; }
+        public IEnumerable<OperationModel> Operations => _class.Operations;
 
         public bool Equals(IComponentModel other)
         {

@@ -344,6 +344,215 @@
                 </childElement>
               </childElements>
             </childElement>
+            <childElement id="608eb600-d24e-4bee-9318-b6523c9b3f17" type="Element Mapping">
+              <name>NewElementMapping</name>
+              <display>[mapping] Association -&gt; void</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>e45defc1-8775-49c0-bf70-5ec59684e944</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes />
+              <childElements>
+                <childElement id="f44fc7ed-bffd-4805-a315-f5fa8a1f8cb6" type="Mapping Output">
+                  <name>NewMappingOutput</name>
+                  <display>[output] : void</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <typeReference id="00e0056f-6923-4d99-840b-6a2c90d93b6e">
+                    <isNavigable>true</isNavigable>
+                    <isNullable>false</isNullable>
+                    <isCollection>false</isCollection>
+                    <stereotypes />
+                    <genericTypeParameters />
+                  </typeReference>
+                  <isMapped>false</isMapped>
+                  <parentFolderId>608eb600-d24e-4bee-9318-b6523c9b3f17</parentFolderId>
+                  <literals />
+                  <attributes />
+                  <operations />
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <properties />
+                    </stereotype>
+                  </stereotypes>
+                  <childElements />
+                </childElement>
+                <childElement id="9ac494b4-65a4-4d16-abe8-13baa6702390" type="Mapping Criteria">
+                  <name>NewMappingCriteria</name>
+                  <display>[criteria] : Association</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <typeReference id="0b5f20f6-1852-4bff-beb8-b732815c9a60">
+                    <typeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</typeId>
+                    <isNavigable>true</isNavigable>
+                    <isNullable>false</isNullable>
+                    <isCollection>false</isCollection>
+                    <stereotypes />
+                    <genericTypeParameters />
+                  </typeReference>
+                  <isMapped>false</isMapped>
+                  <parentFolderId>608eb600-d24e-4bee-9318-b6523c9b3f17</parentFolderId>
+                  <literals />
+                  <attributes />
+                  <operations />
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <properties>
+                        <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                        <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                        <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <childElements />
+                </childElement>
+                <childElement id="74cba38d-64d1-481a-9cb6-125c085d25cc" type="Element Mapping">
+                  <name>NewElementMapping</name>
+                  <display>[mapping] Attribute -&gt; DTO-Field</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <isMapped>false</isMapped>
+                  <parentFolderId>608eb600-d24e-4bee-9318-b6523c9b3f17</parentFolderId>
+                  <literals />
+                  <attributes />
+                  <operations />
+                  <stereotypes />
+                  <childElements>
+                    <childElement id="57d3b33c-9dde-471f-8cc9-15f038996d56" type="Mapping Output">
+                      <name>NewMappingOutput</name>
+                      <display>[output] : DTO-Field</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="6aac5897-3e1a-4fb5-a2b3-767550888330">
+                        <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>74cba38d-64d1-481a-9cb6-125c085d25cc</parentFolderId>
+                      <literals />
+                      <attributes />
+                      <operations />
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <properties />
+                        </stereotype>
+                      </stereotypes>
+                      <childElements />
+                    </childElement>
+                    <childElement id="cca1b45a-25a0-48fe-9b40-5ea7d25e1905" type="Mapping Criteria">
+                      <name>NewMappingCriteria</name>
+                      <display>[criteria] : Attribute</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="70c9e354-4361-48e0-b88e-1c64a1f4b662">
+                        <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>74cba38d-64d1-481a-9cb6-125c085d25cc</parentFolderId>
+                      <literals />
+                      <attributes />
+                      <operations />
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <properties>
+                            <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                            <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="No" isActive="true" />
+                            <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <childElements />
+                    </childElement>
+                  </childElements>
+                </childElement>
+                <childElement id="a6917ab4-ca8e-47cd-98ea-5be189b2e402" type="Element Mapping">
+                  <name>NewElementMapping</name>
+                  <display>[mapping] Operation -&gt; DTO-Field</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <isMapped>false</isMapped>
+                  <parentFolderId>608eb600-d24e-4bee-9318-b6523c9b3f17</parentFolderId>
+                  <literals />
+                  <attributes />
+                  <operations />
+                  <stereotypes />
+                  <childElements>
+                    <childElement id="c24482cf-972e-4276-958c-4227b37f60c9" type="Mapping Output">
+                      <name>NewMappingOutput</name>
+                      <display>[output] : DTO-Field</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="2b8e6bb1-dda1-4a43-8460-6a3ca3be23c7">
+                        <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>a6917ab4-ca8e-47cd-98ea-5be189b2e402</parentFolderId>
+                      <literals />
+                      <attributes />
+                      <operations />
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <properties />
+                        </stereotype>
+                      </stereotypes>
+                      <childElements />
+                    </childElement>
+                    <childElement id="ba07a504-6607-43e4-b7c9-6dfffc34c298" type="Mapping Criteria">
+                      <name>NewMappingCriteria</name>
+                      <display>[criteria] : Operation</display>
+                      <isAbstract>false</isAbstract>
+                      <genericTypes />
+                      <typeReference id="fa5cfaba-f9b0-4b72-979c-12bbc745b049">
+                        <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
+                        <isNavigable>true</isNavigable>
+                        <isNullable>false</isNullable>
+                        <isCollection>false</isCollection>
+                        <stereotypes />
+                        <genericTypeParameters />
+                      </typeReference>
+                      <isMapped>false</isMapped>
+                      <parentFolderId>a6917ab4-ca8e-47cd-98ea-5be189b2e402</parentFolderId>
+                      <literals />
+                      <attributes />
+                      <operations />
+                      <stereotypes>
+                        <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                          <addedByDefault>true</addedByDefault>
+                          <properties>
+                            <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                            <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="No" isActive="true" />
+                            <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                          </properties>
+                        </stereotype>
+                      </stereotypes>
+                      <childElements />
+                    </childElement>
+                  </childElements>
+                </childElement>
+              </childElements>
+            </childElement>
           </childElements>
         </childElement>
       </childElements>

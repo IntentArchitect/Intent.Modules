@@ -38,7 +38,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new ElementMappingMapToSettingPersistable()
             {
-                SpecializationType = _element.TypeReference.Element.Name
+                SpecializationType = _element.TypeReference.Element?.Name
             };
         }
 

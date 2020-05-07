@@ -5,13 +5,14 @@ using System.Linq;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Clients.Templates
 {
     [Description("Intent Applications Service Contracts (Clients)")]
-    public class ServiceContractRegistrations : ModelTemplateRegistrationBase<IServiceModel>
+    public class ServiceContractRegistrations : ModelTemplateRegistrationBase<ServiceModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -25,15 +26,17 @@ namespace Intent.Modules.Application.Contracts.Clients.Templates
 
         public override string TemplateId => TemplateIds.ClientServiceContract;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
         {
             return new Contracts.Templates.ServiceContract.ServiceContractTemplate(project, model, TemplateId);
         }
 
-        public override IEnumerable<IServiceModel> GetModels(IApplication application)
+        public override IEnumerable<ServiceModel> GetModels(IApplication application)
         {
-            var serviceModels = new ApiMetadataProvider(_metadataManager).GetAllServices().ToArray();
-
+            var serviceModels = _metadataManager.GetSolutionMetadata<IElement>("Services")
+                .Where(x => x.SpecializationType == ServiceModel.SpecializationType)
+                .Select(x => new ServiceModel(x))
+                .ToList();
             return serviceModels
                 .Where(x => x.GetConsumers(_stereotypeName, _stereotypePropertyName).Any(y => y.Equals(application.Name, StringComparison.OrdinalIgnoreCase)))
                 .ToArray();

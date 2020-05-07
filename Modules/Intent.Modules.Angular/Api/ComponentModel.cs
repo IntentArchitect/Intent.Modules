@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 
 namespace Intent.Modules.Angular.Api
 {
@@ -20,8 +21,8 @@ namespace Intent.Modules.Angular.Api
         public string Name => _class.Name;
         public string Comment => _class.Comment;
         public IModuleModel Module { get; }
-        public IEnumerable<IAttribute> Models => _class.Attributes;
-        public IEnumerable<IOperation> Commands => _class.Operations;
+        public IEnumerable<AttributeModel> Models => _class.Attributes;
+        public IEnumerable<OperationModel> Commands => _class.Operations;
 
         public bool Equals(IComponentModel other)
         {

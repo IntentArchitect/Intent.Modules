@@ -6,11 +6,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {
-    partial class TypescriptDtoTemplate : IntentTypescriptProjectItemTemplateBase<IDTOModel>, ITemplate
+    partial class TypescriptDtoTemplate : IntentTypescriptProjectItemTemplateBase<DTOModel>, ITemplate
     {
         public const string LocalIdentifier = "Intent.Typescript.ServiceAgent.Contracts.DTO.Local";
         public const string RemoteIdentifier = "Intent.Typescript.ServiceAgent.Contracts.DTO.Remote";
-        public TypescriptDtoTemplate(string identifier, IProject project, IDTOModel model)
+        public TypescriptDtoTemplate(string identifier, IProject project, DTOModel model)
             : base(identifier, project, model)
         {
             AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.LocalIdentifier));

@@ -23,16 +23,6 @@ namespace Intent.Modules.AspNet.WebApi
 
         public static NugetPackageInfo IntentFrameworkCore = new NugetPackageInfo("Intent.Framework.Core", "1.0.0");
 
-        public static NugetPackageInfo IntentFrameworkDomain = new NugetPackageInfo("Intent.Framework.Domain", "1.0.0");
-
-        public static NugetPackageInfo IntentFrameworkEntityFramework = new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.0");
-        
-        public static NugetPackageInfo IntentFrameworkUnity = new NugetPackageInfo("Intent.Framework.Unity","0.1.2-beta");
-
-        public static NugetPackageInfo IntentFrameworkWcf = new NugetPackageInfo("Intent.Framework.WCF", "0.1.4-beta");
-
-        public static NugetPackageInfo IntentFrameworkAutoMapper = new NugetPackageInfo("Intent.Framework.AutoMapper","0.1.1-beta");
-
         public static NugetPackageInfo MicrosoftAspNetIdentityCore =new NugetPackageInfo("Microsoft.AspNet.Identity.Core", "2.2.1");
 
         public static NugetPackageInfo MicrosoftAspNetIdentityEntityFramework =new NugetPackageInfo("Microsoft.AspNet.Identity.EntityFramework", "2.2.1");

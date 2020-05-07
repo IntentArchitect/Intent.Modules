@@ -13,7 +13,7 @@ using Intent.Templates;
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
     [Description(WebApiClientServiceProxyTemplate.IDENTIFIER)]
-    public class WebApiClientServiceProxyTemplateRegistration : ModelTemplateRegistrationBase<IServiceModel>
+    public class WebApiClientServiceProxyTemplateRegistration : ModelTemplateRegistrationBase<ServiceModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -24,14 +24,14 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         public override string TemplateId => WebApiClientServiceProxyTemplate.IDENTIFIER;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IServiceModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, ServiceModel model)
         {
             return new WebApiClientServiceProxyTemplate(project, model);
         }
 
-        public override IEnumerable<IServiceModel> GetModels(IApplication application)
+        public override IEnumerable<ServiceModel> GetModels(IApplication application)
         {
-            var results = _metadataManager.GetMetadata<IServiceModel>("Services")
+            var results = _metadataManager.GetMetadata<ServiceModel>("Services")
                 .Where(x => x.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Any(y => y.Trim().Equals(application.Name, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
 

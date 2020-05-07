@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentTypescriptProjectItemTemplateBase<IServiceModel>" #>
+﻿<#@ template  debug="true"  inherits="IntentTypescriptProjectItemTemplateBase<ServiceModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -33,13 +33,13 @@ namespace <#= Namespace #> {
 
 #>
 
-        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= GetTypeName(o.ReturnType.Type) #>>
+        <#= o.Name.ToCamelCase() #>(<#= GetMethodDefinitionParameters(o) #>): ng.IPromise<<#= GetTypeName(o.ReturnType) #>>
         {
             const url = `${this.baseUrl}/api/<#= Model.Name.ToLower().Replace("service","") #>/<#= o.Name.ToLower() #>`;
 <#              if (GetHttpVerb(o) == HttpVerb.GET) { #>
-            return this.$http.get<<#= GetTypeName(o.ReturnType.Type) #>>(url, { params: { <#= GetMethodCallParametersForGet(o) #> } }).then(result => result.data);
+            return this.$http.get<<#= GetTypeName(o.ReturnType) #>>(url, { params: { <#= GetMethodCallParametersForGet(o) #> } }).then(result => result.data);
 <#              } else {#>
-            return this.$http.post<<#= GetTypeName(o.ReturnType.Type) #>>(url, <#= GetMethodCallParametersForPost(o) #>).then(result => result.data);
+            return this.$http.post<<#= GetTypeName(o.ReturnType) #>>(url, <#= GetMethodCallParametersForPost(o) #>).then(result => result.data);
 <#              }#>
         }
 <#

@@ -36,8 +36,7 @@ namespace Intent.Modelers.Services.Api
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
-        public IElementMapping Mapping { get; private set; }
-
+        public IElementMapping Mapping => _element.MappedElement;
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(DTOFieldModel other)

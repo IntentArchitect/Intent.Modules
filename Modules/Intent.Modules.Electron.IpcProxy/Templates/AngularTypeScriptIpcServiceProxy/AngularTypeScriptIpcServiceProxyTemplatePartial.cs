@@ -11,11 +11,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcServiceProxy
 {
-    partial class AngularTypeScriptIpcServiceProxyTemplate : IntentProjectItemTemplateBase<IServiceModel>, ITemplate
+    partial class AngularTypeScriptIpcServiceProxyTemplate : IntentProjectItemTemplateBase<ServiceModel>, ITemplate
     {
         public const string Identifier = "Intent.Electron.IpcProxy.AngularTypeScriptIpcServiceProxy";
 
-        public AngularTypeScriptIpcServiceProxyTemplate(IServiceModel model, IProject project)
+        public AngularTypeScriptIpcServiceProxyTemplate(ServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
             AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.LocalIdentifier));
@@ -38,14 +38,14 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcService
                 defaultLocationInProject: "wwwroot/App/Proxies/Generated");
         }
 
-        private string GetReturnType(IOperation operation)
+        private string GetReturnType(OperationModel operation)
         {
             return operation.ReturnType != null
-                ? GetTypeName(operation.ReturnType.Type)
+                ? GetTypeName(operation.ReturnType)
                 : "void";
         }
 
-        private static string GetMethodCallParameters(IOperation operation)
+        private static string GetMethodCallParameters(OperationModel operation)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {
@@ -57,7 +57,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcService
                 .Aggregate((x, y) => $"{x}, {y}");
         }
 
-        private string GetMethodDefinitionParameters(IOperation operation)
+        private string GetMethodDefinitionParameters(OperationModel operation)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {

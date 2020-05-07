@@ -12,11 +12,13 @@ namespace Intent.Modelers.Services.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class DTOModel : IHasStereotypes, IMetadataModel, IHasFolder
     {
-        private readonly IElement _class;
-        public DTOModel(IElement @class)
+        private readonly IElement _element;
+        public const string SpecializationType = "DTO";
+
+        public DTOModel(IElement element)
         {
-            _class = @class;
-            Folder = _class.ParentElement?.SpecializationType == Api.FolderModel.SpecializationType ? new FolderModel(_class.ParentElement) : null;
+            _element = element;
+            Folder = _element.ParentElement?.SpecializationType == Api.FolderModel.SpecializationType ? new FolderModel(_element.ParentElement) : null;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -28,17 +30,17 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
-        public IEnumerable<string> GenericTypes => _class.GenericTypes.Select(x => x.Name);
-        public bool IsMapped => _class.IsMapped;
-        public IElementMapping MappedClass => _class.MappedElement;
-        public IElementApplication Application => _class.Application;
+        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+        public bool IsMapped => _element.IsMapped;
+        public IElementMapping MappedClass => _element.MappedElement;
+        public IElementApplication Application => _element.Application;
 
         [IntentManaged(Mode.Fully)]
         public IList<DTOFieldModel> Fields => _element.ChildElements
             .Where(x => x.SpecializationType == DTOFieldModel.SpecializationType)
             .Select(x => new DTOFieldModel(x))
             .ToList();
-        public string Comment => _class.Id;
+        public string Comment => _element.Id;
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(DTOModel other)
@@ -60,8 +62,6 @@ namespace Intent.Modelers.Services.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-        protected readonly IElement _element;
-        public const string SpecializationType = "DTO";
 
         [IntentManaged(Mode.Fully)]
         public IList<DTOModel> DTOs => _element.ChildElements

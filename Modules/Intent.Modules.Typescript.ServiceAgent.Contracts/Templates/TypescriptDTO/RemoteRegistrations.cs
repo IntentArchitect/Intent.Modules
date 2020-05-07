@@ -6,13 +6,14 @@ using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Modelers.Services;
 using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {
     [Description("Intent Typescript ServiceAgent DTO - Remote")]
-    public class RemoteRegistrations : ModelTemplateRegistrationBase<IDTOModel>
+    public class RemoteRegistrations : ModelTemplateRegistrationBase<DTOModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -27,20 +28,20 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override string TemplateId => TypescriptDtoTemplate.RemoteIdentifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IDTOModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, DTOModel model)
         {
             return new TypescriptDtoTemplate(TemplateId, project, model);
         }
 
-        public override IEnumerable<IDTOModel> GetModels(IApplication application)
+        public override IEnumerable<DTOModel> GetModels(IApplication application)
         {
-            var dtoModels = new ApiMetadataProvider(_metadataManager).GetDTOModels(application);
-
-            dtoModels = dtoModels
+            var dtoModels = _metadataManager.GetSolutionMetadata<IElement>("Services")
+                .Where(x => x.SpecializationType == DTOModel.SpecializationType)
+                .Select(x => new DTOModel(x))
                 .Where(x => GetConsumers(x).Any(y => application.Name.Equals(y, StringComparison.OrdinalIgnoreCase)))
-                .ToArray();
+                .ToList<DTOModel>();
 
-            return dtoModels.ToList();
+            return dtoModels;
         }
 
         public override void Configure(IDictionary<string, string> settings)
@@ -50,7 +51,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
             settings.SetIfSupplied("Consumer Stereotype Property Name", (s) => _stereotypePropertyName = s);
         }
 
-        private IEnumerable<string> GetConsumers(IDTOModel dto)
+        private IEnumerable<string> GetConsumers(DTOModel dto)
         {
             return dto.HasStereotype(_stereotypeName)
                 ? dto.GetStereotypeProperty(_stereotypeName, _stereotypePropertyName, "").Split(',').Select(x => x.Trim()).ToArray()

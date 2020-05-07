@@ -15,7 +15,7 @@ using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
-    partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<IServiceModel>, ITemplate, ITemplateBeforeExecutionHook
+    partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<ServiceModel>, ITemplate, ITemplateBeforeExecutionHook
     {
         public const string RemoteIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Remote";
         public const string LocalIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Local";
@@ -23,7 +23,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         public const string DomainTemplateDependancyId = "DomainTemplateDependancyId";
         private readonly IApplicationEventDispatcher _eventDispatcher;
 
-        public TypescriptWebApiClientServiceProxyTemplate(string identifier, IProject project, IServiceModel model, IApplicationEventDispatcher eventDispatcher)
+        public TypescriptWebApiClientServiceProxyTemplate(string identifier, IProject project, ServiceModel model, IApplicationEventDispatcher eventDispatcher)
             : base(identifier, project, model)
         {
             _eventDispatcher = eventDispatcher;
@@ -68,7 +68,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             });
         }
 
-        private HttpVerb GetHttpVerb(IOperation operation)
+        private HttpVerb GetHttpVerb(OperationModel operation)
         {
             var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
             if (verb != "AUTO")
@@ -93,7 +93,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             return "http://localhost:" + (Project.ProjectType.Properties.FirstOrDefault(x => x.Name == "Port")?.Value ?? "???");
         }
 
-        private string GetMethodDefinitionParameters(IOperation operation)
+        private string GetMethodDefinitionParameters(OperationModel operation)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {
@@ -105,7 +105,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                 .Aggregate((x, y) => $"{x}, {y}");
         }
 
-        private string GetMethodCallParametersForGet(IOperation operation)
+        private string GetMethodCallParametersForGet(OperationModel operation)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {
@@ -117,7 +117,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                 .Aggregate((x, y) => $"{x}, {y}");
         }
 
-        private string GetMethodCallParametersForPost(IOperation operation)
+        private string GetMethodCallParametersForPost(OperationModel operation)
         {
             if (operation.Parameters == null || !operation.Parameters.Any())
             {

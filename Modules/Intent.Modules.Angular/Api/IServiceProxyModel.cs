@@ -9,7 +9,7 @@ namespace Intent.Modules.Angular.Api
         string Name { get; }
         string Comment { get; }
         IModuleModel Module { get; }
-        IServiceModel MappedService { get; }
-        IEnumerable<IOperation> Operations { get; }
+        ServiceModel MappedService { get; }
+        IEnumerable<OperationModel> Operations { get; }
     }
 }
