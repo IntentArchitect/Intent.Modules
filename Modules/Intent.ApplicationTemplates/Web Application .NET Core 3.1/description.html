@@ -1,0 +1,23 @@
+﻿<div>
+    <p>A full technology stack for building a web server using ASP.NET Core in Visual Studio 2017+.</p>
+    <p>This template configures a hexagonal architecture with a technology agnostic Domain and Application layer.</p>
+    <p>The following technologies are used:</p>
+    <ul>
+        <li><strong>ASP.NET Core</strong> - framework for building HTTP services</li>
+        <li><strong>Entity Framework Core</strong> - Microsoft's recommended ORM (Object Relational Mapper), providing an abstraction on the database.</li>
+    </ul>
+    <p>Other notes:</p>
+    <ul>
+        <li>
+            <strong>Service Calls</strong> - Service calls are implemented using a lazy dispatch pattern which is abstracted away from the WebApi technology and technical concernts.
+            Your service call business code should be implemented in the 'SCH' classes.
+        </li>
+        <li>
+            <strong>Repository Pattern</strong> - A collection oriented repository pattern provides access to the underlying database via Entity Framework.
+            The DbContext backing each repository is isolated to each service call. The same instance is returned for any instantiation of a repository during the service call.
+        </li>
+        <li>
+            <strong>Dependency Injection</strong> - Dependency injection is implemented using the standard ASP.NET Core DI container.
+        </li>
+    </ul>
+</div>
