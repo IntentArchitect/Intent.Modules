@@ -125,7 +125,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public string GetPath(IEnumerable<IElementMappingPathTarget> path)
         {
-            return string.Join(".", path.Select(x => x.Element != null ? x.Name.ToPascalCase() : x.Name.ToPascalCase()));
+            return string.Join(".", path.Where(x => x.Specialization != GeneralizationModel.SpecializationType).Select(x => x.Name.ToPascalCase()));
         }
     }
 }

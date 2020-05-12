@@ -5,6 +5,7 @@
     <type>FontAwesome</type>
     <source>chain-broken</source>
   </icon>
+  <applyMode>manually</applyMode>
   <displayIcon>false</displayIcon>
   <displayFunction>[${Type}]</displayFunction>
   <targetElements>

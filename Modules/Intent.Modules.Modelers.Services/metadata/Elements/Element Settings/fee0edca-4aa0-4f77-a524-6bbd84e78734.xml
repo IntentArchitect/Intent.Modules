@@ -211,7 +211,7 @@
                   <properties>
                     <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Traverse" isActive="true" />
                     <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="false" />
-                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="e45defc1-8775-49c0-bf70-5ec59684e944" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
@@ -242,7 +242,7 @@
                   <properties>
                     <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Traverse" isActive="true" />
                     <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="false" />
-                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="e45defc1-8775-49c0-bf70-5ec59684e944" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
