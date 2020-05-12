@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
@@ -15,6 +16,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class ElementMappingSettingPersistable
     {
+        [XmlAttribute("id")]
+        public string Id { get; set; }
+
         [XmlElement("criteria")]
         public ElementMappingCriteriaSettingPersistable Criteria { get; set; } = new ElementMappingCriteriaSettingPersistable();
 
@@ -26,7 +30,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public List<ElementMappingSettingPersistable> ChildMappingSettings { get; set; } = new List<ElementMappingSettingPersistable>();
     }
 
-    public class ElementMappingCriteriaSettingPersistable
+    public class ElementMappingCriteriaSettingPersistable : IEquatable<ElementMappingCriteriaSettingPersistable>
     {
         [XmlAttribute("specializationType")]
         public string SpecializationType { get; set; }
@@ -39,12 +43,43 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("hasChildren")]
         public bool? HasChildren { get; set; }
+
+        public override string ToString()
+        {
+            return $"{nameof(SpecializationType)} : {SpecializationType}{Environment.NewLine}" +
+                   $"{nameof(HasTypeReference)} : {HasTypeReference.ToString() ?? "null"}{Environment.NewLine}" +
+                   $"{nameof(IsCollection)} : {IsCollection.ToString() ?? "null"}{Environment.NewLine}" +
+                   $"{nameof(HasChildren)} : {HasChildren.ToString() ?? "null"}{Environment.NewLine}";
+        }
+
+        public bool Equals(ElementMappingCriteriaSettingPersistable other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return string.Equals(SpecializationType, other.SpecializationType) && HasTypeReference == other.HasTypeReference && IsCollection == other.IsCollection && HasChildren == other.HasChildren;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((ElementMappingCriteriaSettingPersistable)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return SpecializationType.GetHashCode();
+        }
     }
 
     public class ElementMappingMapToSettingPersistable
     {
         [XmlAttribute("specializationType")]
         public string SpecializationType { get; set; }
+
+        [XmlAttribute("useMappingSettings")]
+        public string UseMappingSettings { get; set; }
 
         [XmlElement("typeReferenceCreation")]
         public ElementMappingTypeCreationSettingPersistable TypeReferenceCreation { get; set; }

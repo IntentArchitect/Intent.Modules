@@ -16,7 +16,7 @@
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:3,&quot;source&quot;:&quot;M|#095cff&quot;}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
-        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="function mappingType(childType){&#xD;&#xA;    return children(childType)[0].typeReference ? children(childType)[0].typeReference.display : &quot;&lt;no type&gt;&quot;;&#xD;&#xA;}&#xD;&#xA;return `[mapping] ${mappingType(&quot;Mapping Criteria&quot;)} -&gt; ${mappingType(&quot;Mapping Output&quot;)}`;" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="&#xD;&#xA;function getTypeName(stereotypeName, propertyName) {&#xD;&#xA;    var type = getStereotype(stereotypeName).properties[propertyName].getSelected();&#xD;&#xA;    if (type) {&#xD;&#xA;        return type.name;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;return `[mapping]: ${getTypeName(&quot;Criteria Settings&quot;, &quot;From Type&quot;)} -&gt; ${getTypeName(&quot;Output Settings&quot;, &quot;To Type&quot;) || &quot;(Traverse)&quot;}`;" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
@@ -49,72 +49,6 @@
       <operations />
       <stereotypes />
       <childElements>
-        <childElement id="1845f0b2-a99e-4f09-8581-e5130e173db3" type="Element Creation Option">
-          <name>Add Output</name>
-          <display>Add Output: Mapping Output</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="417b0234-023a-4dbd-ba46-e8c631cbe181">
-            <typeId>01da89fe-2118-4968-8556-bd8b38dc936b</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>7e02d6ad-9180-4f62-b118-af349005f18b</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + o" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-        <childElement id="93cf9ea4-a453-4a7b-ba23-670f30f0bdb0" type="Element Creation Option">
-          <name>Add Criteria</name>
-          <display>Add Criteria: Mapping Criteria</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="b12667f2-a2e1-415d-ad26-d543db3cedd7">
-            <typeId>4e8412ba-d966-48cf-baaf-a919df9de64f</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>7e02d6ad-9180-4f62-b118-af349005f18b</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
         <childElement id="bef5aae8-3fc2-4890-91ec-c48cabc66ca2" type="Element Creation Option">
           <name>Add Child Mapping</name>
           <display>Add Child Mapping: Element Mapping</display>

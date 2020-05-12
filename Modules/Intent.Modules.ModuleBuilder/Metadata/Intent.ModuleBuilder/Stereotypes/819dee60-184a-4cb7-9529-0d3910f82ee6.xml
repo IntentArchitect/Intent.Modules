@@ -8,7 +8,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="file" />
   <displayIcon>false</displayIcon>
-  <displayFunction>return `[.${this.property['File Extension'].value}]`;</displayFunction>
+  <displayFunction>return `[.${this.properties['File Extension'].value}]`;</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
   <order>0</order>

@@ -39,21 +39,23 @@
   <childElements>
     <childElement id="c70584cf-c40f-45e5-84c4-c65691336c4b" type="Element Visual Settings">
       <name>[visual]</name>
-      <display>[visual]</display>
+      <display>[visual]: Comment</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
+      <typeReference id="9474870f-44e4-48a5-8645-e39fcf72df93">
+        <typeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</parentFolderId>
       <literals />
       <attributes />
       <operations />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="d9afc8e9-5cdb-4b5c-8d6e-d76fc340855a" name="Settings">
-          <addedByDefault>true</addedByDefault>
-          <properties>
-            <property name="b5e1e1b6-1903-4526-a87d-0b9301b283a9" display="Target Type" value="c4c0c77f-720b-4e91-9c48-b58d2164d30a" isActive="true" />
-          </properties>
-        </stereotype>
         <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
           <addedByDefault>true</addedByDefault>
           <properties>

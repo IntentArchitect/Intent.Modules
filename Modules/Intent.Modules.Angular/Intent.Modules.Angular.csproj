@@ -246,13 +246,13 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Intent.Modules.Common">
-      <Version>2.0.0-pre8.2</Version>
+      <Version>2.1.0-pre.1</Version>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes">
       <Version>1.0.0</Version>
     </PackageReference>
     <PackageReference Include="Intent.SoftwareFactory.SDK">
-      <Version>2.1.0-pre.10</Version>
+      <Version>2.1.0-pre.12</Version>
     </PackageReference>
     <PackageReference Include="TypeScriptAST">
       <Version>1.0.2</Version>

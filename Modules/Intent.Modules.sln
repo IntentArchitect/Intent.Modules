@@ -103,7 +103,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Metadata.RDB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Metadata.AdventureWorks", "Intent.Modules.Metadata.AdventureWorks\Intent.Modules.Metadata.AdventureWorks.csproj", "{E8F8E83D-81EE-4EE1-AB7E-B5B4B9A88E03}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modelers", "Modelers", "{C643FF80-0938-4E5C-81AD-E9FDFE6D9654}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designers", "Designers", "{C643FF80-0938-4E5C-81AD-E9FDFE6D9654}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain", "Intent.Modules.Modelers.Domain\Intent.Modules.Modelers.Domain.csproj", "{944F5519-873F-4C88-BACE-1A383E0C5F49}"
 EndProject

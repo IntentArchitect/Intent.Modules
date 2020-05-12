@@ -57,10 +57,16 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             {
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "C# Template" },
+                { "Role", GetRole() },
                 { "Module Dependency", Model.GetModeler()?.ModuleDependency },
                 { "Module Dependency Version",Model.GetModeler()?.ModuleVersion },
                 { "ModelId", Model.Id }
             });
+        }
+
+        private string GetRole()
+        {
+            return Model.GetRole() ?? GetTemplateId();
         }
 
         public string GetTemplateId()

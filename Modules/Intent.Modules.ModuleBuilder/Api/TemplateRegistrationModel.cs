@@ -68,6 +68,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             throw new Exception("Could not determine model type for template [" + this.ToString() + "]");
         }
 
+        public string GetRole()
+        {
+            return this.GetTemplateSettings().GetRole();
+        }
+
         public FolderModel Folder { get; }
 
         public bool IsSingleFileTemplateRegistration()

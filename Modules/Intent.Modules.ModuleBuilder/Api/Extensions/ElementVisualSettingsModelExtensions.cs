@@ -21,17 +21,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             return model.HasStereotype("Position Settings");
         }
 
-        public static Settings GetSettings(this ElementVisualSettingsModel model)
-        {
-            var stereotype = model.GetStereotype("Settings");
-            return stereotype != null ? new Settings(stereotype) : null;
-        }
-
-        public static bool HasSettings(this ElementVisualSettingsModel model)
-        {
-            return model.HasStereotype("Settings");
-        }
-
 
         public class PositionSettings
         {
@@ -62,24 +51,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             public string Height()
             {
                 return _stereotype.GetProperty<string>("Height");
-            }
-
-        }
-
-        public class Settings
-        {
-            private IStereotype _stereotype;
-
-            public Settings(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string Name => _stereotype.Name;
-
-            public IElement TargetType()
-            {
-                return _stereotype.GetProperty<IElement>("Target Type");
             }
 
         }

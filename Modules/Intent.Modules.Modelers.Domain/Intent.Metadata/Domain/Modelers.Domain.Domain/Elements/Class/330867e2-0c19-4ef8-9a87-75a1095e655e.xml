@@ -9,7 +9,12 @@
   <literals />
   <attributes />
   <operations />
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
+      <addedByDefault>false</addedByDefault>
+      <properties />
+    </stereotype>
+  </stereotypes>
   <childElements>
     <childElement id="304cc83d-7c82-42a1-a985-c68eb52498ce" type="Attribute">
       <name>firstAttr</name>
@@ -71,7 +76,16 @@
       <literals />
       <attributes />
       <operations />
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
+          <addedByDefault>false</addedByDefault>
+          <properties />
+        </stereotype>
+        <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
+          <addedByDefault>false</addedByDefault>
+          <properties />
+        </stereotype>
+      </stereotypes>
       <childElements />
     </childElement>
     <childElement id="7733c257-c6e3-4ee6-9e7e-6a641dcac66a" type="Attribute">
@@ -117,7 +131,7 @@
     </childElement>
     <childElement id="1c274c4c-2c2f-44f7-84a1-b96533aa1bfb" type="Operation">
       <name>Operation</name>
-      <display>Operation(): void</display>
+      <display>Operation(param: NewClass2, param: NewType): void</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="0cd36cdf-4b30-4beb-8730-5d05426adf48">
@@ -133,7 +147,50 @@
       <attributes />
       <operations />
       <stereotypes />
-      <childElements />
+      <childElements>
+        <childElement id="fc18591a-dec0-4a35-8a05-84b7425eded3" type="Parameter">
+          <name>param</name>
+          <display>param(): NewClass2</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="87f8f873-f7e3-4e31-a8e6-130d85355185">
+            <typeId>7c7ea20f-0a80-4beb-a1b1-44b1bcd63a6e</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>1c274c4c-2c2f-44f7-84a1-b96533aa1bfb</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+        <childElement id="722460a0-e8ea-402a-9788-a9c09775346d" type="Parameter">
+          <name>param</name>
+          <display>param(): NewType</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="cdc186f6-33d1-4787-b3ef-496f61618d72">
+            <typeId>074dee25-3c96-494e-9b0f-339eeabed1e6</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>1c274c4c-2c2f-44f7-84a1-b96533aa1bfb</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
     </childElement>
     <childElement id="206fea2e-4c82-477a-8828-e3ced5264a27" type="Operation">
       <name>Operation</name>

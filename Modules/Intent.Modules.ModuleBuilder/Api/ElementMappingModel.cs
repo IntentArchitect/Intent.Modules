@@ -34,17 +34,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-
-        [IntentManaged(Mode.Fully)]
-        public MappingCriteriaModel Criteria => _element.ChildElements
-            .Where(x => x.SpecializationType == MappingCriteriaModel.SpecializationType)
-            .Select(x => new MappingCriteriaModel(x))
-            .SingleOrDefault();
-        [IntentManaged(Mode.Fully)]
-        public MappingOutputModel Output => _element.ChildElements
-            .Where(x => x.SpecializationType == MappingOutputModel.SpecializationType)
-            .Select(x => new MappingOutputModel(x))
-            .SingleOrDefault();
         [IntentManaged(Mode.Fully)]
         public IList<ElementMappingModel> ChildMappings => _element.ChildElements
             .Where(x => x.SpecializationType == ElementMappingModel.SpecializationType)
@@ -55,8 +44,22 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new ElementMappingSettingPersistable()
             {
-                Criteria = Criteria.ToPersistable(),
-                MapTo = Output.ToPersistable(),
+                Id = Id,
+                Criteria = new ElementMappingCriteriaSettingPersistable()
+                {
+                    SpecializationType = this.GetCriteriaSettings().FromType().Name,
+                    HasTypeReference = this.GetCriteriaSettings().HasTypeReference().IsYes() ? true :
+                        this.GetCriteriaSettings().HasTypeReference().IsNo() ? false : (bool?)null,
+                    HasChildren = this.GetCriteriaSettings().HasChildren().IsYes() ? true :
+                        this.GetCriteriaSettings().HasChildren().IsNo() ? false : (bool?)null,
+                    IsCollection = this.GetCriteriaSettings().IsCollection().IsYes() ? true :
+                        this.GetCriteriaSettings().IsCollection().IsNo() ? false : (bool?)null,
+                },
+                MapTo = new ElementMappingMapToSettingPersistable()
+                {
+                    SpecializationType = this.GetOutputSettings().Action().IsMapToType() ? this.GetOutputSettings().ToType().Name : null,
+                    UseMappingSettings = this.GetOutputSettings().UseMappingSettings()?.Id
+                },
                 ChildMappingSettings = ChildMappings.Select(x => x.ToPersistable()).ToList()
             };
         }

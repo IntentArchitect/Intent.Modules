@@ -27,11 +27,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
     public class TemplateRegistrationInfo
     {
-        public TemplateRegistrationInfo(string modelId, string templateId, string templateType, string moduleDependency, string moduleVersion)
+        public TemplateRegistrationInfo(string modelId, string templateId, string templateType, string role, string moduleDependency, string moduleVersion)
         {
             ModelId = modelId;
             TemplateId = templateId;
             TemplateType = templateType;
+            Role = role;
             ModuleDependency = moduleDependency;
             ModuleVersion = moduleVersion;
         }
@@ -39,6 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         public string ModelId { get; }
         public string TemplateId { get; set; }
         public string TemplateType { get; set; }
+        public string Role { get; }
         public string ModuleDependency { get; }
         public string ModuleVersion { get; }
     }
@@ -69,7 +71,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             _metadataManager = metadataManager;
             Project.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
-                _templatesToRegister.Add(new TemplateRegistrationInfo(@event.GetValue("ModelId"), @event.GetValue("TemplateId"), @event.GetValue("TemplateType"), @event.TryGetValue("Module Dependency"), @event.TryGetValue("Module Dependency Version")));
+                _templatesToRegister.Add(new TemplateRegistrationInfo(@event.GetValue("ModelId"), @event.GetValue("TemplateId"), @event.GetValue("TemplateType"), @event.GetValue("Role"), @event.TryGetValue("Module Dependency"), @event.TryGetValue("Module Dependency Version")));
             });
 
             Project.Application.EventDispatcher.Subscribe("MetadataRegistrationRequired", @event =>
@@ -128,7 +130,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
                 if (specificTemplate.Element("role") == null)
                 {
-                    specificTemplate.Add(new XElement("role") { Value = template.TemplateId });
+                    specificTemplate.Add(new XElement("role") { Value = template.Role });
+                }
+                else
+                {
+                    specificTemplate.Element("role").Value = template.Role;
                 }
                 //else
                 //{

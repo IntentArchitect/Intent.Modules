@@ -12,7 +12,7 @@ namespace Intent.Modelers.Services.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class DTOModel : IHasStereotypes, IMetadataModel, IHasFolder
     {
-        private readonly IElement _element;
+        protected readonly IElement _element;
         public const string SpecializationType = "DTO";
 
         public DTOModel(IElement element)
@@ -62,12 +62,6 @@ namespace Intent.Modelers.Services.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        [IntentManaged(Mode.Fully)]
-        public IList<DTOModel> DTOs => _element.ChildElements
-            .Where(x => x.SpecializationType == DTOModel.SpecializationType)
-            .Select(x => new DTOModel(x))
-            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
