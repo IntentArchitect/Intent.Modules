@@ -31,7 +31,7 @@
   <interoperability>
     <detect id="Intent.AspNet.WebApi">
       <install>
-        <package id="Intent.EntityFramework.Interop.WebApi" version="2.0.0"/>
+        <package id="Intent.EntityFramework.Interop.WebApi" version="2.1.0"/>
       </install>
     </detect>
   </interoperability>

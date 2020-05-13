@@ -190,6 +190,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (doc.XPathSelectElement($"package/metadata/install[@src=\"{metadataRegistration.Folder}\"]") == null)
                 {
                     var metadataRegistrations = doc.XPathSelectElement("package/metadata");
+                    if (metadataRegistrations == null)
+                    {
+                        metadataRegistrations = new XElement("metadata");
+                        doc.XPathSelectElement("package").Add(metadataRegistrations);
+                    }
                     metadataRegistrations.Add(new XElement("install", new XAttribute("target", metadataRegistration.Target), new XAttribute("src", metadataRegistration.Folder)));
                 }
             }
