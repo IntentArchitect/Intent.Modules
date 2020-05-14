@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api;
@@ -34,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
                 fileExtension: "cs",
                 defaultLocationInProject: "",
                 className: "ApiMetadataProviderExtensions",
-                @namespace: "${Project.Name}"
+                @namespace: Model.First().Designer.ApiNamespace // Dirty. Maybe need an Metadata Provider per Designer
             );
         }
 

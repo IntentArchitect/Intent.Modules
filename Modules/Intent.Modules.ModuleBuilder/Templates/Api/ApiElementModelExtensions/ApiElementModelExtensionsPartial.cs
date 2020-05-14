@@ -36,7 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
                 fileExtension: "cs",
                 defaultLocationInProject: "Api/Extensions",
                 className: $"{Model.Type.ApiClassName}Extensions",
-                @namespace: "${Project.Name}.Api"
+                @namespace: "${Project.Name}.Api" // Not robust. Stereotypes should reference the ID of their targets as well as the name
             );
         }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="433f0fec-55d0-484f-b3dd-81d59d806674" type="Folder">
   <name>Environment</name>
+  <display>Environment</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

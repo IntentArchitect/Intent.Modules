@@ -79,11 +79,13 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+
         public ClassModel ParentClass => this.Generalizations().Select(x => new ClassModel(x.Element)).SingleOrDefault();
+
         public IEnumerable<ClassModel> ChildClasses => this.Specializations().Select(x => new ClassModel(x.Element)).ToList();
-        public bool IsMapped => _element.IsMapped;
+
         public string Comment => _element.Comment;
-        public IElementMapping MappedClass => _element.MappedElement;
+
         public IElementApplication Application => _element.Application;
 
         [IntentManaged(Mode.Fully)]

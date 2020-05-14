@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="2d4ad132-e574-4319-9ae9-4d6e4b81110c" type="Element Settings">
+  <name>Service Proxy</name>
+  <display>Service Proxy</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>cac14331-198a-4f9a-bbb9-171eb0bd4efe</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="63caff3b-385b-473e-852e-b6727b31bc6f" type="Context Menu">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>2d4ad132-e574-4319-9ae9-4d6e4b81110c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="ba654988-2a18-43fe-9c5e-2af648d3dd64" type="Element Creation Option">
+          <name>Add Operation</name>
+          <display>Add Operation: Operation</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="0599eebe-7247-404d-98c8-a9ae1360d443">
+            <typeId>6ac4e262-f718-4bf6-849e-f4b1450dfa8b</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>63caff3b-385b-473e-852e-b6727b31bc6f</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

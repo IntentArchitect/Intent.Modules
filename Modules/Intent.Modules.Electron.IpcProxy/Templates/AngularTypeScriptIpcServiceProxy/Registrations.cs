@@ -5,7 +5,6 @@ using Intent.Engine;
 using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.Modelers.Services;
 using Intent.Templates;
 
 namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcServiceProxy

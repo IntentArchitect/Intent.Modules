@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="c39d6711-5d0f-4071-8833-fac4dd9c054a" type="Folder">
   <name>Module</name>
+  <display>Module</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

@@ -16,8 +16,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
 
         public CustomTemplateRegistrationTemplate(IProject project, TemplateRegistrationModel model) : base(TemplateId, project, model)
         {
-            if (!string.IsNullOrWhiteSpace(Model.GetModeler().GetDesignerSettings().NuGetPackageId()) &&
-                !string.IsNullOrWhiteSpace(Model.GetModeler().GetDesignerSettings().NuGetPackageVersion()))
+            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.GetDesignerSettings().NuGetPackageId()) &&
+                !string.IsNullOrWhiteSpace(Model.GetModeler()?.GetDesignerSettings().NuGetPackageVersion()))
             {
                 AddNugetDependency(packageName: Model.GetModeler().GetDesignerSettings().NuGetPackageId(), packageVersion: Model.GetModeler().GetDesignerSettings().NuGetPackageVersion());
             }
