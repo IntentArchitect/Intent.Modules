@@ -30,16 +30,24 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
-        public bool IsMapped => _element.IsMapped;
-        public IElementMapping MappedClass => _element.MappedElement;
+
         public IElementApplication Application => _element.Application;
+
+        [IntentManaged(Mode.Fully)]
+        public bool IsMapped => _element.IsMapped;
+
+        [IntentManaged(Mode.Fully)]
+        public IElementMapping Mapping => _element.MappedElement;
 
         [IntentManaged(Mode.Fully)]
         public IList<DTOFieldModel> Fields => _element.ChildElements
             .Where(x => x.SpecializationType == DTOFieldModel.SpecializationType)
             .Select(x => new DTOFieldModel(x))
             .ToList();
+
         public string Comment => _element.Id;
 
         [IntentManaged(Mode.Fully)]

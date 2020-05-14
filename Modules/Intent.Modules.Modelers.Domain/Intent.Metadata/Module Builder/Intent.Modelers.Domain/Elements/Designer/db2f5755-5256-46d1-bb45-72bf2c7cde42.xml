@@ -18,7 +18,7 @@
         <property name="c3f89951-374a-4bb5-bcf7-10a8f208f317" display="Is Reference" value="false" isActive="true" />
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Modelers.Domain.Api" isActive="true" />
         <property name="6f3c57c5-c50d-46bb-b690-2cf081ceb0b3" display="NuGet Package Id" value="Intent.Modules.Modelers.Domain" isActive="true" />
-        <property name="e0c92be7-3836-4bf6-bc89-9dca2ac28c6d" display="NuGet Package Version" value="2.1.0-pre.2" isActive="true" />
+        <property name="e0c92be7-3836-4bf6-bc89-9dca2ac28c6d" display="NuGet Package Version" value="2.1.0" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

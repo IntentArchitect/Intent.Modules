@@ -77,7 +77,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
                     : type;
             }
 
-            var templateDependancy = TemplateDependency.OnModel<ClassModel>(_domainTemplateDependancyConfigValue, (to) => to.Id == model.MappedClass.ElementId);
+            var templateDependancy = TemplateDependency.OnModel<ClassModel>(_domainTemplateDependancyConfigValue, (to) => to.Id == model.Mapping.ElementId);
             var templateOutput = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
             if (templateOutput == null)
             {
@@ -90,7 +90,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
                     $"First tried checking on the DTO for existence of a stereotype '{_stereotypeNameConfigValue}' with populated property '{_stereotypeTypePropertyConfigValue}', but the stereotype and/or property was not present. " +
                     $"\r\n" +
                     $"\r\n" +
-                    $"Then tried finding an instance of template with ID '{_domainTemplateDependancyConfigValue}' and model ID of {model.MappedClass.ElementId}, but none was found." +
+                    $"Then tried finding an instance of template with ID '{_domainTemplateDependancyConfigValue}' and model ID of {model.Mapping.ElementId}, but none was found." +
                     $"\r\n");
             }
             return templateOutput.FullTypeName();

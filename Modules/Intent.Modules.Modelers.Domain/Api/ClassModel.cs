@@ -76,6 +76,8 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         public bool IsAbstract => _element.IsAbstract;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
         public ClassModel ParentClass => this.Generalizations().Select(x => new ClassModel(x.Element)).SingleOrDefault();
         public IEnumerable<ClassModel> ChildClasses => this.Specializations().Select(x => new ClassModel(x.Element)).ToList();

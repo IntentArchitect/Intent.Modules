@@ -67,5 +67,8 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
     }
 }
