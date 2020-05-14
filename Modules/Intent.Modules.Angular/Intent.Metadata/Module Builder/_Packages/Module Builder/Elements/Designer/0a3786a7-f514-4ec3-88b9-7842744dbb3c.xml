@@ -115,7 +115,7 @@
             </childElement>
             <childElement id="aba3b1fe-270b-4b18-ba94-32be66e08cea" type="Element Creation Option">
               <name>New Type-Definition</name>
-              <display>New Type-Definition: Type Definition</display>
+              <display>New Type-Definition: Type-Definition</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="04c0b5ec-3a8c-4220-a648-94745a2ce4ba">

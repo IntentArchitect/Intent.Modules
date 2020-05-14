@@ -10,13 +10,13 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class TypescriptTemplate : IntentRoslynProjectItemTemplateBase<ITypescriptTemplate>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class TypescriptTemplate : IntentRoslynProjectItemTemplateBase<TypescriptFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Intent.ModuleBuilder.Typescript.Templates.TypescriptTemplate";
+        public const string TemplateId = "ModuleBuilder.Typescript.Templates.TypescriptTemplate";
 
-        public TypescriptTemplate(IProject project, ITypescriptTemplate model) : base(TemplateId, project, model)
+        public TypescriptTemplate(IProject project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {
         }
 

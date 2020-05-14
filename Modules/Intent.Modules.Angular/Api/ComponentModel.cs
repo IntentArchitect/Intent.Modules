@@ -73,5 +73,17 @@ namespace Intent.Modules.Angular.Api
             .Where(x => x.SpecializationType == ComponentModelModel.SpecializationType)
             .Select(x => new ComponentModelModel(x))
             .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ModelDefinitionModel> ModelDefinitions => _element.ChildElements
+            .Where(x => x.SpecializationType == ModelDefinitionModel.SpecializationType)
+            .Select(x => new ModelDefinitionModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ComponentViewModel> Views => _element.ChildElements
+            .Where(x => x.SpecializationType == ComponentViewModel.SpecializationType)
+            .Select(x => new ComponentViewModel(x))
+            .ToList();
     }
 }

@@ -62,5 +62,17 @@ namespace Intent.Modules.Angular.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ModelDefinitionFieldModel> Fields => _element.ChildElements
+            .Where(x => x.SpecializationType == ModelDefinitionFieldModel.SpecializationType)
+            .Select(x => new ModelDefinitionFieldModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public bool IsMapped => _element.IsMapped;
+
+        [IntentManaged(Mode.Fully)]
+        public IElementMapping Mapping => _element.MappedElement;
     }
 }

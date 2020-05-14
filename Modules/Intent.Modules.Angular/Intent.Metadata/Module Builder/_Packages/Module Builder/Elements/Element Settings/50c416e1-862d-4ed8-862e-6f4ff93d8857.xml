@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="50c416e1-862d-4ed8-862e-6f4ff93d8857" type="Element Settings">
-  <name>Type Definition</name>
-  <display>Type Definition</display>
+  <name>Type-Definition</name>
+  <display>Type-Definition</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

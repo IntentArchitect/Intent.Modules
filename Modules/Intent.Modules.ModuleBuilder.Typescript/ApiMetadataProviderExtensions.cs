@@ -8,13 +8,13 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Typescript
+namespace Intent.Modules.ModuleBuilder.Typescript.Api
 {
-    internal static class ApiMetadataProviderExtensions
+    public static class ApiMetadataProviderExtensions
     {
-        internal static IList<ITypescriptTemplate> GetTypescriptTemplates(this IMetadataManager metadataManager, IApplication application)
+        public static IList<TypescriptFileTemplateModel> GetTypescriptFileTemplateModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new ApiMetadataProvider(metadataManager).GetTypescriptTemplates(application);
+            return new ApiMetadataProvider(metadataManager).GetTypescriptFileTemplateModels(application);
         }
 
     }

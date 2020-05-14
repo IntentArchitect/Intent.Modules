@@ -17,6 +17,7 @@ namespace Intent.Modules.Angular.Api
 
         public ModuleModel(IElement element)
         {
+            _element = element;
         }
 
         [IntentManaged(Mode.Fully)]

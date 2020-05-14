@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ac7fa580-f66f-4257-a160-0bb82b56f4f9" type="Designer Extension">
+  <name>Typescript</name>
+  <display>Typescript: Module Builder</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="f792f9fa-295e-4d2b-a51d-0e7901ee1f31">
+    <typeId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>52e023eb-f6ec-4f46-8ad5-dd59bdfb1bab</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="bd56e4e2-b75c-4400-8088-a1a3f21988f0" display="Icon" value="{&quot;source&quot;:&quot;question-circle&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="f577290d-ea2e-4609-8c90-7fd7bcf327d9" display="Display Order" isActive="true" />
+        <property name="c3f89951-374a-4bb5-bcf7-10a8f208f317" display="Is Reference" value="false" isActive="true" />
+        <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Modules.ModuleBuilder.Typescript.Api" isActive="true" />
+        <property name="6f3c57c5-c50d-46bb-b690-2cf081ceb0b3" display="NuGet Package Id" isActive="true" />
+        <property name="e0c92be7-3836-4bf6-bc89-9dca2ac28c6d" display="NuGet Package Version" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="aa872f0a-cca5-4a7f-957f-e4b8836560de" type="Package Settings">
+      <name>Package Settings</name>
+      <display>Package Settings</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>ac7fa580-f66f-4257-a160-0bb82b56f4f9</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="29d89c64-fc26-48f2-98eb-2f7bcc69d128" type="Context Menu">
+          <name>[context menu]</name>
+          <display>[context menu]</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>aa872f0a-cca5-4a7f-957f-e4b8836560de</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes />
+          <childElements>
+            <childElement id="76e03b82-5024-4c1f-9549-0fb07599c3ea" type="Element Creation Option">
+              <name>New Typescript Template</name>
+              <display>New Typescript Template: Typescript File Template</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="9269dad2-f8b6-4e6c-8369-9a8660077fd3">
+                <typeId>e6e41d88-2829-41b6-a791-065d2bb44eb3</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>29d89c64-fc26-48f2-98eb-2f7bcc69d128</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+                  <comment />
+                  <addedByDefault>true</addedByDefault>
+                  <properties>
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="2" isActive="true" />
+                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

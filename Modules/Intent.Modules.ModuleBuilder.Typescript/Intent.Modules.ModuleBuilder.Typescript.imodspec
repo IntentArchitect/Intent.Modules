@@ -13,6 +13,13 @@
       </config>
       <role>Templates</role>
     </template>
+    <template id="ModuleBuilder.Typescript.Templates.TypescriptTemplate" externalReference="d7d556f4-b35d-418f-b0e2-cd3c04ef9294">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>ModuleBuilder.Typescript.Templates.TypescriptTemplate</role>
+    </template>
   </templates>
   <dependencies>
     <dependency id="Intent.Common" version="2.0.3" />
