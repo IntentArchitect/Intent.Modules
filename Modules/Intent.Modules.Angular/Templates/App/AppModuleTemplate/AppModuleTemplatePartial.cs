@@ -7,13 +7,16 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Metadata.Models;
+using System;
+using System.Collections.Generic;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class AppModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]

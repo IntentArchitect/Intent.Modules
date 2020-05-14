@@ -18,15 +18,15 @@ using Intent.Templates;
 
 namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class AngularModuleTemplate : AngularTypescriptProjectItemTemplateBase<IModuleModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class AngularModuleTemplate : AngularTypescriptProjectItemTemplateBase<ModuleModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularModuleTemplate";
         private readonly IList<ITemplate> _components = new List<ITemplate>();
         private readonly IList<ITemplate> _providers = new List<ITemplate>();
 
-        public AngularModuleTemplate(IProject project, IModuleModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AngularModuleTemplate(IProject project, ModuleModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
             project.Application.EventDispatcher.Subscribe(AngularComponentCreatedEvent.EventId, @event =>
                 {
@@ -106,17 +106,5 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string ProviderName { get; set; }
         public string Location { get; set; }
-    }
-
-    public static class IModuleModelExtensions
-    {
-        public static string GetModuleName(this IModuleModel module)
-        {
-            if (module.Name.EndsWith("Module", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return module.Name.Substring(0, module.Name.Length - "Module".Length);
-            }
-            return module.Name;
-        }
     }
 }

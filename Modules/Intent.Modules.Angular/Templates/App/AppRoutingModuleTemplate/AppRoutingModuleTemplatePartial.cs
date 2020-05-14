@@ -7,19 +7,21 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Metadata.Models;
+using System;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class AppRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<IList<IModuleModel>>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class AppRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<IList<ModuleModel>>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppRoutingModuleTemplate";
 
-        public AppRoutingModuleTemplate(IProject project, IList<IModuleModel> model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
+        public AppRoutingModuleTemplate(IProject project, IList<ModuleModel> model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
         {
         }
 

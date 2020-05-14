@@ -17,13 +17,13 @@ using Intent.Templates;
 
 namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class AngularDTOTemplate : AngularTypescriptProjectItemTemplateBase<IModuleDTOModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class AngularDTOTemplate : AngularTypescriptProjectItemTemplateBase<ModuleDTOModel> 
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularDTOTemplate";
 
-        public AngularDTOTemplate(IProject project, IModuleDTOModel model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
+        public AngularDTOTemplate(IProject project, ModuleDTOModel model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
         {
             AddTypeSource(TypescriptTypeSource.InProject(Project, TemplateId));
         }

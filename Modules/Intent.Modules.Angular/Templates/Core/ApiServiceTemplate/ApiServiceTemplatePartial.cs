@@ -15,7 +15,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class ApiServiceTemplate : AngularTypescriptProjectItemTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]

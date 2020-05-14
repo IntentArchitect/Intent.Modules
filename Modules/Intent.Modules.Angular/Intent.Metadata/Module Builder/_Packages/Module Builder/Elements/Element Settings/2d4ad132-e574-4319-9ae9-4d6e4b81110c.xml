@@ -51,7 +51,7 @@
       <childElements>
         <childElement id="ba654988-2a18-43fe-9c5e-2af648d3dd64" type="Element Creation Option">
           <name>Add Operation</name>
-          <display>Add Operation: Operation</display>
+          <display>Add Operation: Service Proxy Operation</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="0599eebe-7247-404d-98c8-a9ae1360d443">
@@ -81,6 +81,122 @@
             </stereotype>
           </stereotypes>
           <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="5ac97e2c-2e26-4730-a82f-e27bc0586c97" type="Mapping Settings">
+      <name>NewMappingSettings</name>
+      <display>[mappings]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>2d4ad132-e574-4319-9ae9-4d6e4b81110c</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
+          <addedByDefault>true</addedByDefault>
+          <properties>
+            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="Services" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements>
+        <childElement id="a5c0ad5a-0c9d-418f-b5d0-3c16442d2b18" type="Element Mapping">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Service -&gt; Service Proxy</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>5ac97e2c-2e26-4730-a82f-e27bc0586c97</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Map to Type" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="2d4ad132-e574-4319-9ae9-4d6e4b81110c" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="b16578a5-27b1-4047-a8df-f0b783d706bd" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements>
+            <childElement id="e511a31a-cb71-4ab1-a127-10606eaf329c" type="Element Mapping">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Operation -&gt; Service Proxy Operation</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>a5c0ad5a-0c9d-418f-b5d0-3c16442d2b18</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="6ac4e262-f718-4bf6-849e-f4b1450dfa8b" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="e030c97a-e066-40a7-8188-808c275df3cb" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements>
+                <childElement id="4e8acdb2-e010-410b-8d6e-5f137440b104" type="Element Mapping">
+                  <name>NewElementMapping</name>
+                  <display>[mapping]: Parameter -&gt; Parameter</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <isMapped>false</isMapped>
+                  <parentFolderId>e511a31a-cb71-4ab1-a127-10606eaf329c</parentFolderId>
+                  <literals />
+                  <attributes />
+                  <operations />
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <properties>
+                        <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Map to Type" isActive="true" />
+                        <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="cad78742-0d76-4270-8704-59d47e773753" isActive="true" />
+                        <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <properties>
+                        <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="00208d20-469d-41cb-8501-768fd5eb796b" isActive="true" />
+                        <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                        <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                        <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <childElements />
+                </childElement>
+              </childElements>
+            </childElement>
+          </childElements>
         </childElement>
       </childElements>
     </childElement>

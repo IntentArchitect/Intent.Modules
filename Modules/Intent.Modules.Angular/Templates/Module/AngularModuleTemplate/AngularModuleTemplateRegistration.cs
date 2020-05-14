@@ -15,7 +15,7 @@ using System.Linq;
 namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AngularModuleTemplateRegistration : ModelTemplateRegistrationBase<IModuleModel>
+    public class AngularModuleTemplateRegistration : ModelTemplateRegistrationBase<ModuleModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,15 +26,15 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public override string TemplateId => Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IModuleModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, ModuleModel model)
         {
             return new Module.AngularModuleTemplate.AngularModuleTemplate(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<IModuleModel> GetModels(IApplication application)
+        public override IEnumerable<ModuleModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetModules(application.Id);
+            return _metadataManager.GetModuleModels(application);
         }
     }
 }

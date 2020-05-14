@@ -82,6 +82,39 @@
           </stereotypes>
           <childElements />
         </childElement>
+        <childElement id="8f56971b-e253-4e2e-af59-0d8156f8be15" type="Element Creation Option">
+          <name>New Model Definition</name>
+          <display>New Model Definition: Model Definition</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="ce9f4ee2-2575-47ba-bc37-0aaa7d0dd6fb">
+            <typeId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>62ff7421-5417-4fdc-bb44-c005cd42ab60</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
         <childElement id="59493cc0-e39e-4d33-a261-59a9031ec403" type="Element Creation Option">
           <name>New Service Proxy</name>
           <display>New Service Proxy: Service Proxy</display>

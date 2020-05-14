@@ -16,7 +16,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class EnvironmentTemplate : AngularTypescriptProjectItemTemplateBase<object>
     {
         private IList<ConfigVariable> _configVariables = new List<ConfigVariable>();

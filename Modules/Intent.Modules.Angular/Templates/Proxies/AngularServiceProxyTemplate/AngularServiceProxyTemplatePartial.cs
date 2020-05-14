@@ -22,13 +22,13 @@ using Intent.Utils;
 
 namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class AngularServiceProxyTemplate : AngularTypescriptProjectItemTemplateBase<IServiceProxyModel>, ITemplateBeforeExecutionHook
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class AngularServiceProxyTemplate : AngularTypescriptProjectItemTemplateBase<ServiceProxyModel>, ITemplateBeforeExecutionHook
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularServiceProxyTemplate";
 
-        public AngularServiceProxyTemplate(IProject project, IServiceProxyModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AngularServiceProxyTemplate(IProject project, ServiceProxyModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
             AddTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.AngularDTOTemplate.TemplateId));
         }
@@ -66,7 +66,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                     Logging.Log.Warning($"Operation [{operation.Name}] on {ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service Operation");
                     continue;
                 }
-                var url = $"/{Model.MappedService.Name.ToLower()}/{Model.MappedService.Operations.First(x => x.Id == operation.Mapping.TargetId).Name.ToLower()}";
+                var url = $"/{Model.MappedService.Name.ToLower()}/{operation.Mapping.Element.Name.ToLower()}";
                 var method = $@"
 
   {operation.Name.ToCamelCase()}({GetParameterDefinitions(operation)}): Observable<{GetReturnType(operation)}> {{
@@ -87,48 +87,48 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             }
         }
 
-        private string GetReturnType(OperationModel operation)
+        private string GetReturnType(ServiceProxyOperationModel operation)
         {
             if (operation.ReturnType == null)
             {
                 return "boolean";
             }
 
-            return Types.Get(operation.ReturnType.Type);
+            return Types.Get(operation.ReturnType);
         }
 
-        private string GetParameterDefinitions(OperationModel operation)
+        private string GetParameterDefinitions(ServiceProxyOperationModel operation)
         {
-            return string.Join(", ", operation.Parameters.Select(x => x.Name.ToCamelCase() + (x.Type.IsNullable ? "?" : "") + ": " + Types.Get(x.Type, "{0}[]")));
+            return string.Join(", ", operation.Parameters.Select(x => x.Name.ToCamelCase() + (x.TypeReference.IsNullable ? "?" : "") + ": " + Types.Get(x.TypeReference, "{0}[]")));
         }
 
-        private string GetUpdateUrl(OperationModel operation)
+        private string GetUpdateUrl(ServiceProxyOperationModel operation)
         {
-            var mappedOperation = Model.MappedService?.Operations.FirstOrDefault(x => x.Id == operation.Mapping.TargetId);
+            var mappedOperation = new OperationModel(operation.Mapping.Element);
             if (mappedOperation?.Parameters.Count != operation.Parameters.Count)
             {
                 throw new Exception($"Different number of properties for mapped operation [{operation.Name}] on {ServiceProxyModel.SpecializationType} [{Model.Name}]");
             }
-            if (!mappedOperation.Parameters.Any() || mappedOperation.Parameters.All(x => x.Type.Element.IsDTO()))
+            if (!mappedOperation.Parameters.Any() || mappedOperation.Parameters.All(x => x.Type.Element.SpecializationType == DTOModel.SpecializationType))
             {
                 return "";
             }
 
             return $@"
-        url = `${{url}}?{string.Join("&", mappedOperation.Parameters.Where(x => !x.Type.Element.IsDTO())
+        url = `${{url}}?{string.Join("&", mappedOperation.Parameters.Where(x => x.Type.Element.SpecializationType != DTOModel.SpecializationType)
                 .Select((x, index) => $"{x.Name.ToCamelCase()}=${{{operation.Parameters[index].Name.ToCamelCase()}}}"))}`;";
         }
 
-        private string GetDataServiceCall(OperationModel operation)
+        private string GetDataServiceCall(ServiceProxyOperationModel operation)
         {
             switch (GetHttpVerb(operation))
             {
                 case HttpVerb.GET:
                     return $"get(url)";
                 case HttpVerb.POST:
-                    return $"post(url, {operation.Parameters.FirstOrDefault(x => x.Type.Element.IsDTO())?.Name.ToCamelCase() ?? "null"})";
+                    return $"post(url, {operation.Parameters.FirstOrDefault(x => x.TypeReference.Element.SpecializationType == DTOModel.SpecializationType)?.Name.ToCamelCase() ?? "null"})";
                 case HttpVerb.PUT:
-                    return $"put(url, {operation.Parameters.FirstOrDefault(x => x.Type.Element.IsDTO())?.Name.ToCamelCase() ?? "null"})";
+                    return $"put(url, {operation.Parameters.FirstOrDefault(x => x.TypeReference.Element.SpecializationType == DTOModel.SpecializationType)?.Name.ToCamelCase() ?? "null"})";
                 case HttpVerb.DELETE:
                     return $"delete(url)";
                 default:
@@ -149,16 +149,16 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             );
         }
 
-        private HttpVerb GetHttpVerb(OperationModel operation)
+        private HttpVerb GetHttpVerb(ServiceProxyOperationModel operation)
         {
             var verb = operation.GetStereotypeProperty("Http", "Verb", "AUTO").ToUpper();
             if (verb != "AUTO")
             {
                 return Enum.TryParse(verb, out HttpVerb verbEnum) ? verbEnum : HttpVerb.POST;
             }
-            if (operation.ReturnType == null || operation.Parameters.Any(x => x.Type.Element.SpecializationType == "DTO"))
+            if (operation.ReturnType == null || operation.Parameters.Any(x => x.TypeReference.Element.SpecializationType == DTOModel.SpecializationType))
             {
-                var hasIdParam = operation.Parameters.Any(x => x.Name.ToLower().EndsWith("id") && x.Type.Element.SpecializationType != "DTO");
+                var hasIdParam = operation.Parameters.Any(x => x.Name.ToLower().EndsWith("id") && x.TypeReference.Element.SpecializationType != DTOModel.SpecializationType);
                 if (hasIdParam && new[] { "delete", "remove" }.Any(x => operation.Name.ToLower().Contains(x)))
                 {
                     return HttpVerb.DELETE;
@@ -168,7 +168,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             return HttpVerb.GET;
         }
 
-        private string GetPath(OperationModel operation)
+        private string GetPath(ServiceProxyOperationModel operation)
         {
             var path = operation.GetStereotypeProperty<string>("Http", "Route")?.ToLower();
             return path ?? operation.Name.ToLower();

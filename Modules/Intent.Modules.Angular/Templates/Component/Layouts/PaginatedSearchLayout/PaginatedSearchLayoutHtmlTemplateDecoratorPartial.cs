@@ -15,7 +15,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayout
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class PaginatedSearchLayoutHtmlTemplateDecorator : IOverwriteDecorator
     {
         public const string DecoratorId = "Angular.AngularComponentHtmlTemplate.PagedSearchDecorator";
@@ -28,11 +28,11 @@ namespace Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayo
         {
             _template = template;
             _metadataManager = metadataManager;
-            _pagingModelReference = _template.Model.Models.FirstOrDefault(x => x.Name == _template.Model.GetStereotypeProperty("Paginated Search Layout", "Paging Model", ""))?.Type;
+            _pagingModelReference = _template.Model.Models.FirstOrDefault(x => x.Name == _template.Model.GetStereotypeProperty("Paginated Search Layout", "Paging Model", ""))?.TypeReference;
         }
 
-        public IComponentModel Model => _template.Model;
-        public IModuleDTOModel PagingModel => _metadataManager.GetModels(_template.Project.Application.Id).FirstOrDefault(x => x.Id == _pagingModelReference.GenericTypeParameters.First().Element.Id);
+        public ComponentModel Model => _template.Model;
+        public ModuleDTOModel PagingModel => _metadataManager.GetDTOModels(_template.Project.Application).FirstOrDefault(x => x.Id == _pagingModelReference.GenericTypeParameters.First().Element.Id);
 
         public int Priority { get; } = 0;
         public string GetOverwrite() => _template.Model.HasStereotype("Paginated Search Layout") ? TransformText() : null;

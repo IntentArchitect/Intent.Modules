@@ -13,7 +13,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class CoreModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]

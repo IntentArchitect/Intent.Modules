@@ -17,13 +17,13 @@ using Intent.Templates;
 
 namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class AngularRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<IModuleModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class AngularRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<ModuleModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularRoutingModuleTemplate";
 
-        public AngularRoutingModuleTemplate(IProject project, IModuleModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AngularRoutingModuleTemplate(IProject project, ModuleModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
         }
 
@@ -61,12 +61,12 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
             );
         }
 
-        private string GetPath(IComponentModel component)
+        private string GetPath(ComponentModel component)
         {
             return GetTemplateClassName(AngularComponentTsTemplate.TemplateId, component).Replace("Component", "").ToKebabCase();
         }
 
-        private string GetClassName(IComponentModel component)
+        private string GetClassName(ComponentModel component)
         {
             return GetTemplateClassName(AngularComponentTsTemplate.TemplateId, component);
         }
