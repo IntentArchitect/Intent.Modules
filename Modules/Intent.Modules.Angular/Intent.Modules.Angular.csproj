@@ -45,12 +45,6 @@
   <ItemGroup>
     <Compile Include="AngularCliInstaller.cs" />
     <Compile Include="Api\ComponentCommandModel.cs" />
-    <Compile Include="Editor\NgModuleDecorator.cs" />
-    <Compile Include="Editor\TypescriptArrayLiteralExpression.cs" />
-    <Compile Include="Editor\TypescriptClass.cs" />
-    <Compile Include="Editor\TypescriptNode.cs" />
-    <Compile Include="Editor\TypescriptObjectLiteralExpression.cs" />
-    <Compile Include="Editor\TypescriptVariableDeclaration.cs" />
     <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.cs">
       <DependentUpon>PaginatedSearchLayoutHtmlTemplateDecorator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -58,9 +52,6 @@
     </Compile>
     <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecoratorPartial.cs" />
     <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecoratorRegistration.cs" />
-    <Compile Include="Editor\TypescriptClassDecorator.cs" />
-    <Compile Include="Editor\TypescriptFile.cs" />
-    <Compile Include="AngularTypescriptParser.cs" />
     <Compile Include="Api\ComponentModel.cs" />
     <Compile Include="Api\ModuleModel.cs" />
     <Compile Include="Api\ServiceProxyModel.cs" />
@@ -74,8 +65,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="AngularTypescriptProjectItemTemplateBase.cs" />
-    <Compile Include="Templates\TypescriptFileHelper.cs" />
     <Compile Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.cs">
       <DependentUpon>AngularComponentHtmlTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -274,9 +263,6 @@
     <PackageReference Include="TypeScriptAST">
       <Version>1.0.2</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
