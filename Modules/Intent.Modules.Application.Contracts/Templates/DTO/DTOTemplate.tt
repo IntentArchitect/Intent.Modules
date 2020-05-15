@@ -38,7 +38,7 @@ namespace <#= Namespace #>
             return new <#=ClassName#><#= GenericTypes #>
             {
 <# foreach (var field in Model.Fields) {#>
-                <#= field.Name.ToPascalCase() #> = <#= field.Name.ToCamelCase().PrefixIdentifierIfKeyword() #>,
+                <#= field.Name.ToPascalCase() #> = <#= field.Name.ToCamelCase(reservedWordEscape: true) #>,
 <#}#>
             };
         }

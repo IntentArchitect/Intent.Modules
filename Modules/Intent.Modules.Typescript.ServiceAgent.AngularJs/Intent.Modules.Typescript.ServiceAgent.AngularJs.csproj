@@ -65,6 +65,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj">
+      <Project>{6C36DDFE-EF6F-4C09-8CBC-208E6544DAC7}</Project>
+      <Name>Intent.Modules.Common.TypeScript</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>

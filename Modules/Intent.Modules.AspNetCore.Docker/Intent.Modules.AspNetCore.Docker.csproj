@@ -81,6 +81,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj">
+      <Project>{B9FCF2B2-C126-41CD-B5B2-43B4F9166AC1}</Project>
+      <Name>Intent.Modules.Common.CSharp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>

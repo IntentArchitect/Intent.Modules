@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>3517d53b-f6f7-4d96-8315-efcc6d5622ec</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.CSharp.sln</SolutionRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3fbbcab0-e180-47a5-a377-4ac81127aaaf</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.CSharp.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3fbbcab0-e180-47a5-a377-4ac81127aaaf</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.CSharp.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3fbbcab0-e180-47a5-a377-4ac81127aaaf</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.CSharp\README.txt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

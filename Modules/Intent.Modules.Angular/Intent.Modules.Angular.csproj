@@ -228,6 +228,10 @@
       <Project>{5CD69B39-BFF1-4713-86C7-D5D7D7F397EA}</Project>
       <Name>Intent.Modules.AspNetCore</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj">
+      <Project>{6C36DDFE-EF6F-4C09-8CBC-208E6544DAC7}</Project>
+      <Name>Intent.Modules.Common.TypeScript</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>

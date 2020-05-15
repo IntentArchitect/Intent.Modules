@@ -149,6 +149,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.Types", "Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj", "{ED404A63-FC25-4C42-AB4C-619815D8A6EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.CSharp", "Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj", "{B9FCF2B2-C126-41CD-B5B2-43B4F9166AC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeScript", "Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj", "{6C36DDFE-EF6F-4C09-8CBC-208E6544DAC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -399,6 +403,14 @@ Global
 		{ED404A63-FC25-4C42-AB4C-619815D8A6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED404A63-FC25-4C42-AB4C-619815D8A6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED404A63-FC25-4C42-AB4C-619815D8A6EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9FCF2B2-C126-41CD-B5B2-43B4F9166AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9FCF2B2-C126-41CD-B5B2-43B4F9166AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9FCF2B2-C126-41CD-B5B2-43B4F9166AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9FCF2B2-C126-41CD-B5B2-43B4F9166AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C36DDFE-EF6F-4C09-8CBC-208E6544DAC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C36DDFE-EF6F-4C09-8CBC-208E6544DAC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C36DDFE-EF6F-4C09-8CBC-208E6544DAC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C36DDFE-EF6F-4C09-8CBC-208E6544DAC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -475,6 +487,8 @@ Global
 		{FC0DF4DD-975B-40A0-8534-871752B685B5} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 		{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 		{ED404A63-FC25-4C42-AB4C-619815D8A6EB} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{B9FCF2B2-C126-41CD-B5B2-43B4F9166AC1} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{6C36DDFE-EF6F-4C09-8CBC-208E6544DAC7} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

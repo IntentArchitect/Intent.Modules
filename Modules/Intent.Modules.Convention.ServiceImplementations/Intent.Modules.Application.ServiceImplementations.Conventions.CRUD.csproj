@@ -68,6 +68,10 @@
       <Project>{925156ed-76e0-44b3-9fc4-4cd14ab7312c}</Project>
       <Name>Intent.Modules.Application.ServiceImplementations</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj">
+      <Project>{b9fcf2b2-c126-41cd-b5b2-43b4f9166ac1}</Project>
+      <Name>Intent.Modules.Common.CSharp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{7707D643-B398-4467-B451-459202E92FED}</Project>
       <Name>Intent.Modules.Common</Name>
