@@ -74,5 +74,8 @@ namespace Intent.Modules.Angular.Api
 
         [IntentManaged(Mode.Fully)]
         public IElementMapping Mapping => _element.MappedElement;
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
     }
 }
