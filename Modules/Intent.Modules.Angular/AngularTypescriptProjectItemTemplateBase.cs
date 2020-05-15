@@ -25,8 +25,8 @@ namespace Intent.Modules.Angular
 
         public override string RunTemplate()
         {
-            var meta = GetMetadata();
-            var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
+            var metadata = GetMetadata();
+            var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
             var file = new TypescriptFile(source);

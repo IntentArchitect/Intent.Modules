@@ -16,7 +16,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiServiceTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    partial class ApiServiceTemplate
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Core.ApiServiceTemplate";
