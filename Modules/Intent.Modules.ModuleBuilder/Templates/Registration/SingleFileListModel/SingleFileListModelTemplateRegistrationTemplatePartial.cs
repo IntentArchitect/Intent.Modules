@@ -63,5 +63,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
             var modelName = Model.GetModelName();
             return $"_metadataManager.Get{modelName.ToPluralName()}(application)";
         }
+
+        public string GetModelType()
+        {
+            return Model.GetModelType()?.ClassName ?? Model.GetTemplateSettings().ModelName();
+        }
     }
 }

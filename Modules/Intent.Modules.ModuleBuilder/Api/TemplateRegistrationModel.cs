@@ -63,7 +63,12 @@ namespace Intent.Modules.ModuleBuilder.Api
 
             if (this.GetTemplateSettings().Source().IsCustomType())
             {
-                return this.GetTemplateSettings().ModelName() ?? "object";
+                var modelType = this.GetTemplateSettings().ModelName() ?? "object";
+                if (this.IsSingleFileTemplateRegistration())
+                {
+                    return $"IList<{modelType}>";
+                }
+                return modelType;
             }
             throw new Exception("Could not determine model type for template [" + this.ToString() + "]");
         }
