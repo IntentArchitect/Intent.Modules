@@ -1,11 +1,12 @@
-<#@ template language="C#" inherits="TypeScriptTemplateBase<ModuleDTOModel>" #>
+<#@ template language="C#" inherits="TypeScriptTemplateBase<DTOModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
-<#@ import namespace="Intent.Modules.Angular.Api" #>
+<#@ import namespace="Intent.Modelers.Services.Api" #>
 
 export interface <#= ClassName #><#= GenericTypes #> {
 <#  foreach (var field in Model.Fields) { #>

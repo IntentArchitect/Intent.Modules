@@ -16,8 +16,8 @@ using Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayout;
 
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplate
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularComponentHtmlTemplate : IntentProjectItemTemplateBase<ComponentModel>, ITemplatePostCreationHook, IHasDecorators<IOverwriteDecorator>
+    [IntentManaged(Mode.Merge, Signature = Mode.Ignore)]
+    partial class AngularComponentHtmlTemplate : IntentProjectItemTemplateBase<ComponentModel>, IHasDecorators<IOverwriteDecorator>
     {
         private readonly IList<IOverwriteDecorator> _decorators = new List<IOverwriteDecorator>();
         [IntentManaged(Mode.Fully)]

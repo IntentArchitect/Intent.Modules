@@ -52,6 +52,7 @@
   </factoryExtensions>
   <dependencies>
     <dependency id="Intent.Common.Typescript" version="2.2.0" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="2.2.0" />
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll" />

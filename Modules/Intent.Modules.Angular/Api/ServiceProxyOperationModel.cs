@@ -12,8 +12,7 @@ namespace Intent.Modules.Angular.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class ServiceProxyOperationModel : IHasStereotypes, IMetadataModel
     {
-        [IntentManaged(Mode.Fully)] 
-        public const string SpecializationType = "Service Proxy Operation";
+        [IntentManaged(Mode.Fully)] public const string SpecializationType = "Service Proxy Operation";
 
         protected readonly IElement _element;
 

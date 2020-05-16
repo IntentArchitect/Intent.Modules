@@ -15,12 +15,12 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularDTOTemplate : TypeScriptTemplateBase<ModuleDTOModel> 
+    partial class AngularDTOTemplate : TypeScriptTemplateBase<DTOModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularDTOTemplate";
@@ -41,7 +41,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{Model.Module.GetModuleName().ToKebabCase()}/models",
+                defaultLocationInProject: $"Client/src/app/{((ModuleDTOModel)Model).Module.GetModuleName().ToKebabCase()}/models",
                 className: "${Model.Name}"
             );
         }

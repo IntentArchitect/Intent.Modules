@@ -21,12 +21,12 @@ using Intent.Templates;
 using Intent.Utils;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularServiceProxyTemplate : TypeScriptTemplateBase<ServiceProxyModel>, ITemplateBeforeExecutionHook
+    partial class AngularServiceProxyTemplate : TypeScriptTemplateBase<ServiceProxyModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularServiceProxyTemplate";
