@@ -9,6 +9,8 @@ using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Editor;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -18,7 +20,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<ModuleModel>
+    partial class AngularRoutingModuleTemplate : TypeScriptTemplateBase<ModuleModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularRoutingModuleTemplate";
@@ -29,17 +31,17 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 
         public string ModuleName => Model.GetModuleName() + "Routing";
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+        protected override void ApplyFileChanges(TypeScriptFile file)
         {
             var routes = file.VariableDeclarations().FirstOrDefault();
             foreach (var component in Model.Components)
             {
-                var routeExists = routes.GetAssignedValue<TypescriptArrayLiteralExpression>()
-                    .GetValues<TypescriptObjectLiteralExpression>()
+                var routeExists = routes.GetAssignedValue<TypeScriptArrayLiteralExpression>()
+                    .GetValues<TypeScriptObjectLiteralExpression>()
                     .Any(x => x.PropertyAssignmentExists("component", GetClassName(component)));
                 if (!routeExists)
                 {
-                    var array = routes.GetAssignedValue<TypescriptArrayLiteralExpression>();
+                    var array = routes.GetAssignedValue<TypeScriptArrayLiteralExpression>();
                     array.AddValue($@"{{
     path: '{GetPath(component)}',
     component: {GetClassName(component)}  #>

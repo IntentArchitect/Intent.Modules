@@ -7,6 +7,9 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
+
+using Intent.Modules.Common.TypeScript.Templates;
+
 namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
     using System.Collections.Generic;
@@ -22,7 +25,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class AppModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    public partial class AppModuleTemplate : TypeScriptTemplateBase<object>
     {
 #line hidden
         /// <summary>

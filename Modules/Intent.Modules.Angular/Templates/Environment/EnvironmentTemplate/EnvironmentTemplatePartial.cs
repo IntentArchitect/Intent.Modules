@@ -8,6 +8,8 @@ using Intent.Metadata.Models;
 using Intent.Modules.Angular.Editor;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Editor;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -17,7 +19,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class EnvironmentTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    partial class EnvironmentTemplate : TypeScriptTemplateBase<object>
     {
         private IList<ConfigVariable> _configVariables = new List<ConfigVariable>();
 
@@ -36,13 +38,13 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
                 defaultValue: @event.GetValue(AngularConfigVariableRequiredEvent.DefaultValueId)));
         }
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+        protected override void ApplyFileChanges(TypeScriptFile file)
         {
             var variable = file.VariableDeclarations().First();
 
             foreach (var configVariable in _configVariables)
             {
-                var assigned = variable.GetAssignedValue<TypescriptObjectLiteralExpression>();
+                var assigned = variable.GetAssignedValue<TypeScriptObjectLiteralExpression>();
                 if (assigned != null && !assigned.PropertyAssignmentExists(configVariable.Name))
                 {
                     assigned.AddPropertyAssignment($@",

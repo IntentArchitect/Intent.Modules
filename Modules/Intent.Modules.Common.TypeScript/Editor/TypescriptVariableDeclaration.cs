@@ -1,8 +1,7 @@
 using System.Linq;
-using Zu.TypeScript.Change;
 using Zu.TypeScript.TsTypes;
 
-namespace Intent.Modules.Angular.Editor
+namespace Intent.Modules.Common.TypeScript.Editor
 {
     //public class TypescriptObjectLiteral : TypescriptNode
     //{
@@ -44,26 +43,26 @@ namespace Intent.Modules.Angular.Editor
     //    }
     //}
 
-    public class TypescriptVariableDeclaration : TypescriptNode
+    public class TypeScriptVariableDeclaration : TypeScriptNode
     {
-        public TypescriptVariableDeclaration(Node node, TypescriptFile file) : base(node, file)
+        public TypeScriptVariableDeclaration(Node node, TypeScriptFile file) : base(node, file)
         {
         }
 
         public string Name => Node.IdentifierStr;
 
         public T GetAssignedValue<T>()
-            where T : TypescriptNode
+            where T : TypeScriptNode
         {
             var arrayLiteral = Node.Children.FirstOrDefault(x => x.Kind == SyntaxKind.ArrayLiteralExpression);
             if (arrayLiteral != null)
             {
-                return new TypescriptArrayLiteralExpression(arrayLiteral, File) as T;
+                return new TypeScriptArrayLiteralExpression(arrayLiteral, File) as T;
             }
             var objectLiteral = Node.Children.FirstOrDefault(x => x.Kind == SyntaxKind.ObjectLiteralExpression);
             if (objectLiteral != null)
             {
-                return new TypescriptObjectLiteralExpression(objectLiteral, File) as T;
+                return new TypeScriptObjectLiteralExpression(objectLiteral, File) as T;
             }
             // TODO: ValueLiteral
 

@@ -5,18 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Update="modelers\Typescript.modeler.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="modelers\Typescript.modeler.extension.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Templates\TypescriptTemplate\TypescriptTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TypescriptTemplate.cs</LastGenOutput>
+    </None>
+  
+    <None Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TypescriptTemplatePartial.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -25,6 +21,12 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>TypescriptTemplate.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TypescriptTemplatePartial.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -39,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
     <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
   </ItemGroup>

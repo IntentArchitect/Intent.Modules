@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="31f1c799-6b96-4adb-a922-ad36e84a3deb" type="File Template">
+<class id="31f1c799-6b96-4adb-a922-ad36e84a3deb" type="Typescript File Template">
   <name>AppModuleTemplate</name>
   <display>AppModuleTemplate: Single File</display>
   <isAbstract>false</isAbstract>

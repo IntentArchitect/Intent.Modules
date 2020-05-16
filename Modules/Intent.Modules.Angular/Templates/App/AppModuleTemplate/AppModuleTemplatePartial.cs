@@ -10,6 +10,8 @@ using Intent.Templates;
 using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
+using Intent.Modules.Common.TypeScript.Editor;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -17,7 +19,7 @@ using System.Collections.Generic;
 namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AppModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    partial class AppModuleTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
@@ -29,7 +31,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
         public string AppRoutingModuleClassName => GetTemplateClassName(AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId);
         public string CoreModule => GetTemplateClassName(CoreModuleTemplate.TemplateId);
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+        protected override void ApplyFileChanges(TypeScriptFile file)
         {
             var moduleClass = file.ClassDeclarations().First();
 

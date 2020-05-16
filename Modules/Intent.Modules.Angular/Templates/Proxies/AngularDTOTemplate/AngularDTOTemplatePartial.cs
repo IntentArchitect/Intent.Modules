@@ -9,6 +9,8 @@ using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -18,7 +20,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularDTOTemplate : AngularTypescriptProjectItemTemplateBase<ModuleDTOModel> 
+    partial class AngularDTOTemplate : TypeScriptTemplateBase<ModuleDTOModel> 
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularDTOTemplate";

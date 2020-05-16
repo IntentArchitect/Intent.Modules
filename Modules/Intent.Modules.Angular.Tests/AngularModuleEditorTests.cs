@@ -2,6 +2,7 @@
 using System.Linq;
 using Intent.Modules.Angular;
 using Intent.Modules.Angular.Editor;
+using Intent.Modules.Common.TypeScript.Editor;
 using Xunit;
 using Zu.TypeScript;
 using Zu.TypeScript.Change;
@@ -14,10 +15,10 @@ namespace Intent.Modules.Common.Tests
         [Fact]
         public void FindsCodeWithinAnnotation()
         {
-            var editor = new TypescriptFile(Source.AngularModule);
+            var editor = new TypeScriptFile(Source.AngularModule);
             editor.AddImportIfNotExists("NewComponent", "./new/new.component");
 
-            var x = editor.GetChangedSource();
+            var x = editor.GetSource();
         }
     }
 

@@ -1,16 +1,13 @@
-using System;
 using System.Linq;
-using System.Text;
-using Intent.Modules.Angular.Editor;
-using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Editor;
 using Intent.Templates;
 
-namespace Intent.Modules.Angular.Templates
+namespace Intent.Modules.Common.TypeScript.Templates
 {
     public static class TypescriptFileHelper
     {
-        public static void AddDependencyImports<T>(this TypescriptFile file, AngularTypescriptProjectItemTemplateBase<T> template)
+        public static void AddDependencyImports<T>(this TypeScriptFile file, TypeScriptTemplateBase<T> template)
         {
             var dependencies = template.GetTemplateDependencies().Select(template.Project.FindTemplateInstance<ITemplate>).Distinct();
             foreach (var dependency in dependencies)

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="7c454e35-877a-4aad-b168-a0190d5de624" type="File Template">
-  <name>EnvironmentTemplate</name>
-  <display>EnvironmentTemplate: Single File</display>
+<class id="48fe46cc-2b56-4ce1-970e-557a142266da" type="Typescript File Template">
+  <name>AngularModuleTemplate</name>
+  <display>AngularModuleTemplate: File Per Model</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="ebe02bd3-3b91-4614-a07c-1339d69f6d3f">
-    <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
+  <typeReference id="fbacc44a-eb19-4ee9-b040-0ae07d5ab9ae">
+    <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -13,7 +13,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>433f0fec-55d0-484f-b3dd-81d59d806674</parentFolderId>
+  <parentFolderId>c39d6711-5d0f-4071-8833-fac4dd9c054a</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -29,7 +29,7 @@
       <addedByDefault>true</addedByDefault>
       <properties>
         <property name="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709" display="Source" value="Lookup Type" isActive="true" />
-        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="" isActive="true" />
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="cac14331-198a-4f9a-bbb9-171eb0bd4efe" isActive="true" />
         <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
         <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" isActive="true" />
       </properties>

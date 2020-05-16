@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="81587730-17e1-49a1-97c7-220666ad3989" type="File Template">
+<class id="81587730-17e1-49a1-97c7-220666ad3989" type="Typescript File Template">
   <name>ApiServiceTemplate</name>
   <display>ApiServiceTemplate: Single File</display>
   <isAbstract>false</isAbstract>

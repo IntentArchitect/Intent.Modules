@@ -1,21 +1,20 @@
 using System.Collections.Generic;
 using System.Linq;
-using Zu.TypeScript.Change;
 using Zu.TypeScript.TsTypes;
 
-namespace Intent.Modules.Angular.Editor
+namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypescriptClassDecorator : TypescriptNode
+    public class TypeScriptClassDecorator : TypeScriptNode
     {
-        public TypescriptClassDecorator(Node node, TypescriptFile file) : base(node, file)
+        public TypeScriptClassDecorator(Node node, TypeScriptFile file) : base(node, file)
         {
         }
 
         public string Name => Node.First.IdentifierStr;
 
-        public IEnumerable<TypescriptObjectLiteralExpression> Parameters()
+        public IEnumerable<TypeScriptObjectLiteralExpression> Parameters()
         {
-            return Node.OfKind(SyntaxKind.ObjectLiteralExpression).Select(x => new TypescriptObjectLiteralExpression(x, File));
+            return Node.OfKind(SyntaxKind.ObjectLiteralExpression).Select(x => new TypeScriptObjectLiteralExpression(x, File));
         }
     }
 }

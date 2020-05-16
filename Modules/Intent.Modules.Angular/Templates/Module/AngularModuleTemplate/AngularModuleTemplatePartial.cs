@@ -10,6 +10,8 @@ using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Editor;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -19,7 +21,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularModuleTemplate : AngularTypescriptProjectItemTemplateBase<ModuleModel>
+    partial class AngularModuleTemplate : TypeScriptTemplateBase<ModuleModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularModuleTemplate";
@@ -54,20 +56,18 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string RoutingModuleClassName => GetTemplateClassName(AngularRoutingModuleTemplate.AngularRoutingModuleTemplate.TemplateId, Model);
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+        protected override void ApplyFileChanges(TypeScriptFile file)
         {
             foreach (var template in _components)
             {
                 var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
                 ngModuleDecorator?.AddDeclarationIfNotExists(GetTemplateClassName(template));
-                file.UpdateChanges();
             }
 
             foreach (var template in _providers)
             {
                 var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
                 ngModuleDecorator?.AddProviderIfNotExists(GetTemplateClassName(template));
-                file.UpdateChanges();
             }
         }
 

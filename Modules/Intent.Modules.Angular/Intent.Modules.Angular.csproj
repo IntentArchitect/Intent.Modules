@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AngularCliInstaller.cs" />
     <Compile Include="Api\ComponentCommandModel.cs" />
+    <Compile Include="Editor\NgModuleDecorator.cs" />
     <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.cs">
       <DependentUpon>PaginatedSearchLayoutHtmlTemplateDecorator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -264,5 +265,6 @@
       <Version>1.0.2</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

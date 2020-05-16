@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="48fe46cc-2b56-4ce1-970e-557a142266da" type="File Template">
-  <name>AngularModuleTemplate</name>
-  <display>AngularModuleTemplate: File Per Model</display>
+<class id="23c0eede-1ce7-4bb3-a63e-0b38e5c6c226" type="Typescript File Template">
+  <name>AppRoutingModuleTemplate</name>
+  <display>AppRoutingModuleTemplate: Single File</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="fbacc44a-eb19-4ee9-b040-0ae07d5ab9ae">
-    <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
+  <typeReference id="4db0f406-fe07-49c3-a4c7-85ef099d0314">
+    <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -13,7 +13,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>c39d6711-5d0f-4071-8833-fac4dd9c054a</parentFolderId>
+  <parentFolderId>8567ac64-6be4-4ea7-8db8-5e7c6eb285c0</parentFolderId>
   <literals />
   <attributes />
   <operations />

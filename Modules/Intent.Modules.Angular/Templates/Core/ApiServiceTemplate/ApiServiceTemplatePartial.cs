@@ -6,6 +6,7 @@ using Intent.Eventing;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.Modules.Constants;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -16,7 +17,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiServiceTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    partial class ApiServiceTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Core.ApiServiceTemplate";

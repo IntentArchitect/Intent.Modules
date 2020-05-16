@@ -11,6 +11,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript;
 using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy

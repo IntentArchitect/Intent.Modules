@@ -4,15 +4,15 @@ using Zu.TypeScript;
 using Zu.TypeScript.Change;
 using Zu.TypeScript.TsTypes;
 
-namespace Intent.Modules.Angular.Editor
+namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypescriptFile
+    public class TypeScriptFile
     {
         private string _source;
         public TypeScriptAST Ast;
         public ChangeAST Change;
 
-        public TypescriptFile(string source)
+        public TypeScriptFile(string source)
         {
             _source = source;
             Ast = new TypeScriptAST(_source);
@@ -36,21 +36,21 @@ import {{ {className} }} from '{location}';");
                 Change.InsertBefore(Ast.RootNode, $@"
 import {{ {className} }} from '{location}';");
             }
-        }
-
-        public IList<TypescriptClass> ClassDeclarations()
-        {
-            return new TypeScriptAST(_source).OfKind(SyntaxKind.ClassDeclaration).Select(x => new TypescriptClass(x, this)).ToList();
-        }
-
-        public IList<TypescriptVariableDeclaration> VariableDeclarations()
-        {
-            return new TypeScriptAST(_source).OfKind(SyntaxKind.VariableDeclaration).Select(x => new TypescriptVariableDeclaration(x, this)).ToList();
-        }
-
-        public string GetChangedSource()
-        {
             UpdateChanges();
+        }
+
+        public IList<TypeScriptClass> ClassDeclarations()
+        {
+            return new TypeScriptAST(_source).OfKind(SyntaxKind.ClassDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
+        }
+
+        public IList<TypeScriptVariableDeclaration> VariableDeclarations()
+        {
+            return new TypeScriptAST(_source).OfKind(SyntaxKind.VariableDeclaration).Select(x => new TypeScriptVariableDeclaration(x, this)).ToList();
+        }
+
+        public string GetSource()
+        {
             return _source;
         }
 

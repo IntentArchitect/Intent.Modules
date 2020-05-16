@@ -5,6 +5,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -14,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class CoreModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    partial class CoreModuleTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Core.CoreModuleTemplate";

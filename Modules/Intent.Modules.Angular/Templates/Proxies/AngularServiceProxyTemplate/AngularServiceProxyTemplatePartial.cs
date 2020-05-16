@@ -13,6 +13,9 @@ using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript;
+using Intent.Modules.Common.TypeScript.Editor;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Utils;
@@ -23,7 +26,7 @@ using Intent.Utils;
 namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularServiceProxyTemplate : AngularTypescriptProjectItemTemplateBase<ServiceProxyModel>, ITemplateBeforeExecutionHook
+    partial class AngularServiceProxyTemplate : TypeScriptTemplateBase<ServiceProxyModel>, ITemplateBeforeExecutionHook
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularServiceProxyTemplate";
@@ -51,7 +54,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 });
         }
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+        protected override void ApplyFileChanges(TypeScriptFile file)
         {
             if (Model.MappedService == null)
             {

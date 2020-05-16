@@ -1,22 +1,20 @@
 using System.IO;
-using System.Linq;
 using Intent.Engine;
-using Intent.Modules.Angular.Editor;
-using Intent.Modules.Angular.Templates;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Editor;
 
-namespace Intent.Modules.Angular
+namespace Intent.Modules.Common.TypeScript.Templates
 {
-    public abstract class AngularTypescriptProjectItemTemplateBase : AngularTypescriptProjectItemTemplateBase<object>
+    public abstract class TypeScriptTemplateBase : TypeScriptTemplateBase<object>
     {
-        protected AngularTypescriptProjectItemTemplateBase(string templateId, IProject project, TypescriptTemplateMode mode) : base(templateId, project, null, mode)
+        protected TypeScriptTemplateBase(string templateId, IProject project, TypescriptTemplateMode mode) : base(templateId, project, null, mode)
         {
         }
     }
 
-    public abstract class AngularTypescriptProjectItemTemplateBase<TModel> : IntentTypescriptProjectItemTemplateBase<TModel>
+    public abstract class TypeScriptTemplateBase<TModel> : IntentTypescriptProjectItemTemplateBase<TModel>
     {
-        protected AngularTypescriptProjectItemTemplateBase(string templateId, IProject project, TModel model, TypescriptTemplateMode mode) : base(templateId, project, model)
+        protected TypeScriptTemplateBase(string templateId, IProject project, TModel model, TypescriptTemplateMode mode) : base(templateId, project, model)
         {
             TemplateMode = mode;
         }
@@ -29,16 +27,16 @@ namespace Intent.Modules.Angular
             var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
 
             var source = LoadOrCreate(fullFileName);
-            var file = new TypescriptFile(source);
+            var file = new TypeScriptFile(source);
 
             ApplyFileChanges(file);
 
             file.AddDependencyImports(this);
 
-            return file.GetChangedSource();
+            return file.GetSource();
         }
 
-        protected virtual void ApplyFileChanges(TypescriptFile file) { }
+        protected virtual void ApplyFileChanges(TypeScriptFile file) { }
 
         protected string LoadOrCreate(string fullFileName)
         {

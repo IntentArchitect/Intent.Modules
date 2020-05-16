@@ -7,6 +7,9 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
+
+using Intent.Modules.Common.TypeScript.Templates;
+
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
     using System.Collections.Generic;
@@ -22,7 +25,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AngularComponentTsTemplate : AngularTypescriptProjectItemTemplateBase<ComponentModel>
+    public partial class AngularComponentTsTemplate : TypeScriptTemplateBase<ComponentModel>
     {
 #line hidden
         /// <summary>

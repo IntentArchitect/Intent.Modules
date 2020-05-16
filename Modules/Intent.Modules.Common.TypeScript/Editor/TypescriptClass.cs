@@ -1,23 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Zu.TypeScript.Change;
 using Zu.TypeScript.TsTypes;
 
-namespace Intent.Modules.Angular.Editor
+namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypescriptClass : TypescriptNode
+    public class TypeScriptClass : TypeScriptNode
     {
-        public TypescriptClass(Node node, TypescriptFile file) : base(node, file)
+        public TypeScriptClass(Node node, TypeScriptFile file) : base(node, file)
         {
 
         }
 
         public string Name => Node.IdentifierStr;
 
-        public IList<TypescriptClassDecorator> Decorators()
+        public IList<TypeScriptClassDecorator> Decorators()
         {
-            return Node.OfKind(SyntaxKind.Decorator).Select(x => new TypescriptClassDecorator(x, File)).ToList();
+            return Node.OfKind(SyntaxKind.Decorator).Select(x => new TypeScriptClassDecorator(x, File)).ToList();
         }
 
         public bool MethodExists(string methodName)
@@ -44,6 +43,8 @@ namespace Intent.Modules.Angular.Editor
             {
                 Change.InsertAfter(Node.Children.Last(), method);
             }
+
+            UpdateChanges();
         }
 
         public void ReplaceMethod(string methodName, string method)
@@ -59,6 +60,8 @@ namespace Intent.Modules.Angular.Editor
             {
                 Change.ChangeNode(existing, method);
             }
+
+            UpdateChanges();
         }
 
         public void AddProperty(string propertyDeclaration)
@@ -73,6 +76,8 @@ namespace Intent.Modules.Angular.Editor
             {
                 Change.InsertBefore(Node.Children.OfKind(SyntaxKind.Constructor).FirstOrDefault() ?? Node.Children.OfKind(SyntaxKind.MethodDeclaration).FirstOrDefault() ?? Node.Children.Last(), propertyDeclaration);
             }
+
+            UpdateChanges();
         }
 
         public bool PropertyExists(string propertyName)

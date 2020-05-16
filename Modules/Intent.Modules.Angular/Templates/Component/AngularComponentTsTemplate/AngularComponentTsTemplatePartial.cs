@@ -12,6 +12,9 @@ using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
 using Intent.Modules.Common.Plugins;
+using Intent.Modules.Common.TypeScript;
+using Intent.Modules.Common.TypeScript.Editor;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -19,7 +22,7 @@ using Intent.Modules.Common.Plugins;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularComponentTsTemplate : AngularTypescriptProjectItemTemplateBase<ComponentModel>
+    partial class AngularComponentTsTemplate : TypeScriptTemplateBase<ComponentModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Component.AngularComponentTsTemplate";
@@ -60,7 +63,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 });
         }
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+        protected override void ApplyFileChanges(TypeScriptFile file)
         {
             var @class = file.ClassDeclarations().First();
 

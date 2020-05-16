@@ -1,11 +1,11 @@
 using System.Linq;
 using Zu.TypeScript.TsTypes;
 
-namespace Intent.Modules.Angular.Editor
+namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypescriptObjectLiteralExpression : TypescriptNode
+    public class TypeScriptObjectLiteralExpression : TypeScriptNode
     {
-        public TypescriptObjectLiteralExpression(Node node, TypescriptFile file) : base(node, file)
+        public TypeScriptObjectLiteralExpression(Node node, TypeScriptFile file) : base(node, file)
         {
         }
 
@@ -40,6 +40,7 @@ namespace Intent.Modules.Angular.Editor
                 }
                 Change.InsertBefore(Node.Children.Last(), propertyAssignment);
             }
+            UpdateChanges();
         }
 
         public void AddPropertyAssignment(string propertyAssignment)

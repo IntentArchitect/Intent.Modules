@@ -3,16 +3,16 @@ using System.Linq;
 using Zu.TypeScript.Change;
 using Zu.TypeScript.TsTypes;
 
-namespace Intent.Modules.Angular.Editor
+namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public abstract class TypescriptNode
+    public abstract class TypeScriptNode
     {
-        protected readonly Node Node;
-        public readonly TypescriptFile File;
+        protected Node Node;
+        public readonly TypeScriptFile File;
         public ChangeAST Change => File.Change;
         
 
-        public TypescriptNode(Node node, TypescriptFile file)
+        public TypeScriptNode(Node node, TypeScriptFile file)
         {
             Node = node;
             File = file;
@@ -66,9 +66,10 @@ namespace Intent.Modules.Angular.Editor
             return FindNode(node.GetDescendants().OfKind(syntaxKind).FirstOrDefault(x => x.IdentifierStr == identifier), path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
         }
 
-        //public void UpdateChanges(ChangeAST change)
-        //{
-        //    File.UpdateChanges(change);
-        //}
+        public void UpdateChanges()
+        {
+            File.UpdateChanges();
+            Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
+        }
     }
 }

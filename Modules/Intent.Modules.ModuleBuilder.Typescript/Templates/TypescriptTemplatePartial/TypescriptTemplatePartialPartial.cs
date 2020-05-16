@@ -2,36 +2,25 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.VisualStudio;
-using Intent.Modules.ModuleBuilder.CSharp.Api;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Typescript.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
+namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial
 {
-    [IntentManaged(Mode.Merge)]
-    partial class CSharpTemplatePartial : IntentRoslynProjectItemTemplateBase<CSharpTemplateModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class TypescriptTemplatePartial : IntentRoslynProjectItemTemplateBase<TypescriptFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.CSharp.Templates.CSharpTemplatePartial";
+        public const string TemplateId = "ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial";
 
-        public CSharpTemplatePartial(IProject project, CSharpTemplateModel model) : base(TemplateId, project, model)
+        public TypescriptTemplatePartial(IProject project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {
-            AddNugetDependency("Intent.Modules.Common.CSharp", "2.2.0");
-            AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
-            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.NuGetDependency))
-            {
-                AddNugetDependency(new NugetPackageInfo(Model.GetModeler().NuGetDependency, Model.GetModeler().NuGetVersion));
-            }
         }
-
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
-        public string FolderPath => string.Join("/", FolderBaseList);
-        public string FolderNamespace => string.Join(".", FolderBaseList);
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
@@ -50,6 +39,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
                 @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
             );
         }
+
+        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
+        public string FolderPath => string.Join("/", FolderBaseList);
+        public string FolderNamespace => string.Join(".", FolderBaseList);
 
         public override void BeforeTemplateExecution()
         {

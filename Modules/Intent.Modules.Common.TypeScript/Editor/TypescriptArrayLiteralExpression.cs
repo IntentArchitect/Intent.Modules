@@ -2,25 +2,25 @@ using System.Collections.Generic;
 using System.Linq;
 using Zu.TypeScript.TsTypes;
 
-namespace Intent.Modules.Angular.Editor
+namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypescriptArrayLiteralExpression : TypescriptNode
+    public class TypeScriptArrayLiteralExpression : TypeScriptNode
     {
-        public TypescriptArrayLiteralExpression(Node node, TypescriptFile file) : base(node, file)
+        public TypeScriptArrayLiteralExpression(Node node, TypeScriptFile file) : base(node, file)
         {
         }
 
         public List<T> GetValues<T>()
-            where T : TypescriptNode
+            where T : TypeScriptNode
         {
-            return Node.Children.Select<Node, TypescriptNode> (x =>
+            return Node.Children.Select<Node, TypeScriptNode> (x =>
             {
                 switch (x.Kind)
                 {
                     case SyntaxKind.ObjectLiteralExpression:
-                        return new TypescriptObjectLiteralExpression(x, File);
+                        return new TypeScriptObjectLiteralExpression(x, File);
                     case SyntaxKind.ArrayLiteralExpression:
-                        return new TypescriptArrayLiteralExpression(x, File);
+                        return new TypeScriptArrayLiteralExpression(x, File);
                     case SyntaxKind.FirstLiteralToken:
                     case SyntaxKind.StringLiteral:
                         return new TypescriptLiteral(x, File);
@@ -43,12 +43,13 @@ namespace Intent.Modules.Angular.Editor
                 Change.InsertAfter(Node.Children.Last(), $@",
   {literal}");
             }
+            UpdateChanges();
         }
     }
 
-    public class TypescriptLiteral : TypescriptNode
+    public class TypescriptLiteral : TypeScriptNode
     {
-        public TypescriptLiteral(Node node, TypescriptFile file) : base(node, file)
+        public TypescriptLiteral(Node node, TypeScriptFile file) : base(node, file)
         {
         }
 

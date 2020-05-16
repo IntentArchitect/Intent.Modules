@@ -7,6 +7,9 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
+
+using Intent.Modules.Common.TypeScript.Templates;
+
 namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 {
     using System.Collections.Generic;
@@ -22,7 +25,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AngularRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<ModuleModel>
+    public partial class AngularRoutingModuleTemplate : TypeScriptTemplateBase<ModuleModel>
     {
 #line hidden
         /// <summary>

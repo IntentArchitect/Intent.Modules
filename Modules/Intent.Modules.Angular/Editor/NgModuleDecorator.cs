@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Intent.Modules.Common.TypeScript.Editor;
 using Zu.TypeScript.Change;
 using Zu.TypeScript.TsTypes;
 
@@ -7,7 +8,7 @@ namespace Intent.Modules.Angular.Editor
 {
     public static class TypescriptClassDecoratorExtensions
     {
-        public static NgModuleDecorator ToNgModule(this TypescriptClassDecorator decorator)
+        public static NgModuleDecorator ToNgModule(this TypeScriptClassDecorator decorator)
         {
             return decorator.Name != "NgModule" ? null : new NgModuleDecorator(decorator);
         }
@@ -15,13 +16,13 @@ namespace Intent.Modules.Angular.Editor
 
     public class NgModuleDecorator
     {
-        private readonly TypescriptClassDecorator _decorator;
+        private readonly TypeScriptClassDecorator _decorator;
 
-        public NgModuleDecorator(TypescriptClassDecorator decorator)
+        public NgModuleDecorator(TypeScriptClassDecorator decorator)
         {
             if (decorator.Name != "NgModule")
             {
-                throw new Exception($"Cannot create {nameof(NgModuleDecorator)} for underlying {nameof(TypescriptClassDecorator)} \"{decorator.Name}\"");
+                throw new Exception($"Cannot create {nameof(NgModuleDecorator)} for underlying {nameof(TypeScriptClassDecorator)} \"{decorator.Name}\"");
             }
             _decorator = decorator;
         }
