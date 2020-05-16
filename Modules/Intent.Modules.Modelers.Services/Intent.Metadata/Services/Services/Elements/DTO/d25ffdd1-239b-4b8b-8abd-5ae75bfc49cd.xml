@@ -9,7 +9,7 @@
     <applicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</applicationId>
     <metadataId>Domain</metadataId>
     <mappedPath>
-      <target id="4579d512-e91e-4582-a0d3-d0137d328164" name="OldClass" />
+      <target id="4579d512-e91e-4582-a0d3-d0137d328164" name="OldClass" type="element" specialization="Class" />
     </mappedPath>
   </mappedClass>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
@@ -34,7 +34,7 @@
       <isMapped>true</isMapped>
       <mappedClass>
         <mappedPath>
-          <target id="6aa34f3e-f0ff-4f92-ad5e-14a27e027150" name="xxxx" />
+          <target id="6aa34f3e-f0ff-4f92-ad5e-14a27e027150" name="xxxx" type="element" specialization="Attribute" />
         </mappedPath>
       </mappedClass>
       <parentFolderId>d25ffdd1-239b-4b8b-8abd-5ae75bfc49cd</parentFolderId>

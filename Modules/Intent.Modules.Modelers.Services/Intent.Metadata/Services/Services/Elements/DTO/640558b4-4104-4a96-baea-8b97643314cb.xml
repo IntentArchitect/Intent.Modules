@@ -9,7 +9,7 @@
     <applicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</applicationId>
     <metadataId>Domain</metadataId>
     <mappedPath>
-      <target id="06919864-4a6b-4894-ab64-f660d41e583d" name="Character" />
+      <target id="06919864-4a6b-4894-ab64-f660d41e583d" name="Character" type="element" specialization="Class" />
     </mappedPath>
   </mappedClass>
   <parentFolderId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</parentFolderId>
@@ -34,7 +34,7 @@
       <isMapped>true</isMapped>
       <mappedClass>
         <mappedPath>
-          <target id="69c58551-e882-45e4-905f-a90f164a0948" name="name" />
+          <target id="69c58551-e882-45e4-905f-a90f164a0948" name="name" type="element" specialization="Attribute" />
         </mappedPath>
       </mappedClass>
       <parentFolderId>640558b4-4104-4a96-baea-8b97643314cb</parentFolderId>
@@ -60,7 +60,7 @@
       <isMapped>true</isMapped>
       <mappedClass>
         <mappedPath>
-          <target id="4df91bc2-dbee-4ded-9e82-0f3b4371a543" name="isVillain" />
+          <target id="4df91bc2-dbee-4ded-9e82-0f3b4371a543" name="isVillain" type="element" specialization="Attribute" />
         </mappedPath>
       </mappedClass>
       <parentFolderId>640558b4-4104-4a96-baea-8b97643314cb</parentFolderId>

@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<TypescriptFileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetTypescriptTemplates(application);
+            return _metadataManager.GetTypescriptFileTemplateModels(application);
         }
     }
 }

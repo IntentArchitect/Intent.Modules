@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class CommentModel : IHasStereotypes, IMetadataModel
+    public class CommentModel : IHasStereotypes, IMetadataModel, IHasFolder
     {
         public const string SpecializationType = "Comment";
         protected readonly IElement _element;
@@ -22,6 +22,7 @@ namespace Intent.Modelers.Domain.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -63,5 +64,7 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        public FolderModel Folder { get; }
     }
 }
