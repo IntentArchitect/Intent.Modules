@@ -9,7 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.Domain.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class CommentModel : IHasStereotypes, IMetadataModel, IHasFolder
     {
         public const string SpecializationType = "Comment";
