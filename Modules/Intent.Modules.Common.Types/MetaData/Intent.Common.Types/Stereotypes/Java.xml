@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="1df2768a-5f1e-4bf5-a01c-b2dc74864b7f">
+  <targetMode>all</targetMode>
+  <targetElements />
+  <applyMode>manually</applyMode>
   <name>Java</name>
   <icon>
     <type>UrlImagePath</type>
@@ -7,10 +10,6 @@
   </icon>
   <displayIcon>false</displayIcon>
   <displayFunction />
-  <targetElements>
-    <element>type-definition</element>
-    <element>enum</element>
-  </targetElements>
   <parentFolderId>90fdf72a-6d98-4204-aa3d-7f838789633d</parentFolderId>
   <properties>
     <property id="7db2c33e-2fd7-44aa-a2da-39ac26a7f831">

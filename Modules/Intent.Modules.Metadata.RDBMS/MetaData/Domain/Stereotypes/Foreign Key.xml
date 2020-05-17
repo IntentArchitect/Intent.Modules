@@ -5,8 +5,7 @@
   <displayIcon>true</displayIcon>
   <displayFunction>[FK: ${ColumnName}]</displayFunction>
   <targetElements>
-    <element>Composition End</element>
-    <element>Aggregation End</element>
+    <element>association</element>
   </targetElements>
   <autoAdd>false</autoAdd>
   <parentFolderId>7C81DE70-0B90-44F4-9B18-F648B5976FC3</parentFolderId>
