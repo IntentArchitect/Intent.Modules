@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.1.1-pre.1\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
+      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.1.1\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
