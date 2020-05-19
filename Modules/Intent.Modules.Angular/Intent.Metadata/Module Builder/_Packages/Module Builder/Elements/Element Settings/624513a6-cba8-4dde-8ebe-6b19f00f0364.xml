@@ -30,11 +30,60 @@
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
-  <childElements />
+  <childElements>
+    <childElement id="de3c3401-4c54-4670-8332-1c309f3affc0" type="Context Menu">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>624513a6-cba8-4dde-8ebe-6b19f00f0364</parentFolderId>
+      <literals />
+      <attributes />
+      <operations />
+      <stereotypes />
+      <childElements>
+        <childElement id="994f872a-b7ff-4da1-b42c-da376d404afc" type="Element Creation Option">
+          <name>Add Control</name>
+          <display>Add Control: Component View Control</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="76229138-bc18-4dc3-8408-302c2439ec0a">
+            <typeId>71816754-67be-4a5d-8af4-e1c3d06f7737</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>de3c3401-4c54-4670-8332-1c309f3affc0</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
 </class>

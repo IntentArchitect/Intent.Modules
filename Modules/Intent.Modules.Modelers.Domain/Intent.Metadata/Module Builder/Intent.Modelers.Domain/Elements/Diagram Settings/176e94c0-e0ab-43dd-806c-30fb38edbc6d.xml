@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="176e94c0-e0ab-43dd-806c-30fb38edbc6d" type="Diagram Settings">
   <name>NewDiagramSettings</name>
-  <display>NewDiagramSettings</display>
+  <display>[diagram]</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

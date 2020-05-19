@@ -7,7 +7,6 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.MetaData</metadataRelativePath>
   <applications>
-    <application id="9605cb81-cdac-46ca-95e8-b6d53256088e" relativePath="Intent.Modules.Convention.ServiceImplementations\Convention.ServiceImplementations.application.config" />
     <application id="1cecc65d-e804-4de6-a27f-e8e4ad0190d7" relativePath="Intent.Modules.Angular\Angular.application.config" />
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />
@@ -15,5 +14,6 @@
     <application id="4e2487dd-3fec-4611-95fb-d49687929743" relativePath="Intent.Modules.ModuleBuilder.Typescript\ModuleBuilder.Typescript.application.config" />
     <application id="a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb" relativePath="Intent.Modules.Modelers.Services\Modeler.Services.application.config" />
     <application id="ff3070c6-4626-4a8b-85ab-7d56887a1445" relativePath="Intent.Modules.Common.Types\Common.Types.application.config" />
+    <application id="85e9832c-87f9-4abd-a02a-4fa41d9a9f62" relativePath="Intent.Modules.Modelers.ServiceProxies\Modelers.ServiceProxies.application.config" />
   </applications>
 </solution>
