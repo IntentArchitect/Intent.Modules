@@ -73,10 +73,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if not exist "$(SolutionDir)Intent.Modules" mkdir "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.1.9.3\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Framework\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.1.9.3\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Core 2.2\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.1.9.3\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Core 3.1\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.1.9.3\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Intent Module Builder\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.2.1.0\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Framework\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.2.1.0\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Core 2.2\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.2.1.0\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Core 3.1\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.2.1.0\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Intent Module Builder\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

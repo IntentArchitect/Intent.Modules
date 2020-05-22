@@ -94,7 +94,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.PagedList
             AddRange(results);
         }
 
-        public static Task<");
+        public static async Task<");
             
             #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PagedResultInterfaceName));
@@ -103,27 +103,20 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.PagedList
             #line hidden
             this.Write(@"<T>> CreateAsync(IQueryable<T> source, int pageNo, int pageSize)
         {
-            var count = source.CountAsync();
+            var count = await source.CountAsync();
             var skip = ((pageNo - 1) * pageSize);
-            var results = source
+            var results = await source
                 .Skip(skip)
                 .Take(pageSize)
                 .ToListAsync();
-            return Task.WhenAll(count, results).ContinueWith<");
-            
-            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(PagedResultInterfaceName));
-            
-            #line default
-            #line hidden
-            this.Write("<T>>(x => new ");
+            return new ");
             
             #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(@"<T>(count.Result, pageNo, pageSize, results.Result));
+            this.Write(@"<T>(totalCount: count, pageNo: pageNo, pageSize: pageSize, results: results);
         }
 
         private int GetPageCount(int pageSize, int totalCount)
