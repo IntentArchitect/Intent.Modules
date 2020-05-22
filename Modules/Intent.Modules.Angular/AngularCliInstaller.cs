@@ -100,6 +100,10 @@ namespace Intent.Modules.Angular
 
             CommandLineProcessor cmd = new CommandLineProcessor();
 
+            if (!Directory.Exists(Path.GetFullPath(project.ProjectLocation)))
+            {
+                Directory.CreateDirectory(Path.GetFullPath(project.ProjectLocation));
+            }
             var command = $@"ng new {application.Name} --directory Client --minimal --defaults --force=true";
             try
             {

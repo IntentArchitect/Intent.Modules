@@ -2,6 +2,7 @@
 <package>
   <id>Intent.Common.Types</id>
   <version>2.1.0</version>
+  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Common Types for Modelling.</summary>
   <description>Common data types for modelling.</description>
   <authors>Intent Architect</authors>

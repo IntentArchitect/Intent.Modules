@@ -10,6 +10,7 @@ using Intent.Templates;
 using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
+using Intent.Modules.Common.VisualStudio;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -17,7 +18,7 @@ using System.Collections.Generic;
 namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AppModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    partial class AppModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>, IHasNugetDependencies
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
@@ -52,6 +53,12 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
             );
         }
 
-
+        public IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        {
+            // Reason for this version:
+            // Angular 8 wants Typescript >= 3.4.0 and < 3.6.0, but Visual Studio 2019 builds using 3.7.
+            // https://stackoverflow.com/questions/58485673/vs2019-error-ts2300-duplicate-identifier-iteratorresult
+            return new[] {new NugetPackageInfo("Microsoft.TypeScript.MsBuild", "3.5.3") };
+        }
     }
 }

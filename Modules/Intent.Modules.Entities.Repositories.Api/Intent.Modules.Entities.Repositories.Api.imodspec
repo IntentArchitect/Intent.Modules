@@ -2,6 +2,7 @@
 <package>
   <id>Intent.Entities.Repositories.Api</id>
   <version>2.1.0</version>
+  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Repository contracts and specifications for Entities.</summary>
   <description>Repository contracts and specifications for Entities.</description>
   <authors>Intent Architect</authors>

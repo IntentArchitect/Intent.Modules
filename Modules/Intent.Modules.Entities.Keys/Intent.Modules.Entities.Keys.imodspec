@@ -2,6 +2,7 @@
 <package>
   <id>Intent.Entities.Keys</id>
   <version>2.1.0</version>
+  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Adds primary and foreign key properties to entities.</summary>
   <description>Adds primary and foreign key properties to entities. This is typically required for ORMs (Object Relational Mappers) such as Entity Framework.</description>
   <authors>Intent Architect</authors>

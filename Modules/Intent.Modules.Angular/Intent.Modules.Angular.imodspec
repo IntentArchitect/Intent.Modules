@@ -2,6 +2,7 @@
 <package>
   <id>Intent.Angular</id>
   <version>0.3.0</version>
+  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Angular for ASP.NET Core</summary>
   <description>This module installs and wires up Angular to run from within the ASP.NET Core environment.</description>
   <authors>Intent Architect</authors>

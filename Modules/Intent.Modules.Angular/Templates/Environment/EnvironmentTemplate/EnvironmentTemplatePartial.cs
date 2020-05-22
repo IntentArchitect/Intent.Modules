@@ -45,7 +45,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
                 var assigned = variable.GetAssignedValue<TypescriptObjectLiteralExpression>();
                 if (assigned != null && !assigned.PropertyAssignmentExists(configVariable.Name))
                 {
-                    assigned.AddPropertyAssignment($@",
+                    assigned.AddPropertyAssignment($@"
   {configVariable.Name}: {configVariable.DefaultValue}");
                 }
             }

@@ -2,6 +2,7 @@
 <package>
   <id>Intent.AspNetCore</id>
   <version>2.0.0</version>
+  <supportedClientVersions>[2.0.0,3.0.0)</supportedClientVersions>
   <summary>Startup files for an ASP.NET Core application.</summary>
   <description>Startup files for an ASP.NET Core application.</description>
   <authors>Intent Architect</authors>
