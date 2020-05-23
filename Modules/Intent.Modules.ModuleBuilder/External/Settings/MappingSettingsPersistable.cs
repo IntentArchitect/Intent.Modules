@@ -78,11 +78,22 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("specializationType")]
         public string SpecializationType { get; set; }
 
+        [XmlAttribute("childMappingMode")]
+        public ChildMappingMode ChildMappingMode { get; set; }
+
         [XmlAttribute("useMappingSettings")]
         public string UseMappingSettings { get; set; }
 
         [XmlElement("typeReferenceCreation")]
         public ElementMappingTypeCreationSettingPersistable TypeReferenceCreation { get; set; }
+    }
+
+    public enum ChildMappingMode
+    {
+        [XmlEnum("map-to-child")]
+        MapToChild = 0,
+        [XmlEnum("traverse")]
+        Traverse = 1
     }
 
     public class ElementMappingTypeCreationSettingPersistable

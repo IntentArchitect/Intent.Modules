@@ -57,7 +57,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                 },
                 MapTo = new ElementMappingMapToSettingPersistable()
                 {
-                    SpecializationType = this.GetOutputSettings().Action().IsMapToType() ? this.GetOutputSettings().ToType().Name : null,
+                    SpecializationType = this.GetOutputSettings().ToType()?.Name,
+                    ChildMappingMode = this.GetOutputSettings().ChildMappingMode().IsTraverse() ? ChildMappingMode.Traverse : ChildMappingMode.MapToChild,
                     UseMappingSettings = this.GetOutputSettings().UseMappingSettings()?.Id
                 },
                 ChildMappingSettings = ChildMappings.Select(x => x.ToPersistable()).ToList()
