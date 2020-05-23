@@ -95,7 +95,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToKebabCase()}.component",
                 fileExtension: "ts",
-                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}",
+                defaultLocationInProject: $"ClientApp/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}",
                 className: "${ComponentName}Component"
             );
         }

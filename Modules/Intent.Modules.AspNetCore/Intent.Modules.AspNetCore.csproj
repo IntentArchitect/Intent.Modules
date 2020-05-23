@@ -88,6 +88,10 @@
       <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
       <Name>Intent.Modules.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.csproj">
+      <Project>{7FEA24FE-C3AC-43BF-A8B0-099AABFBD526}</Project>
+      <Name>Intent.Modules.VisualStudio.Projects</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

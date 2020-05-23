@@ -59,7 +59,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "environment",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: "Client/src/environments"
+                defaultLocationInProject: "ClientApp/src/environments"
             );
         }
 

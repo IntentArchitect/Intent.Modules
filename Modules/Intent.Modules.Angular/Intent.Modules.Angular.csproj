@@ -240,6 +240,10 @@
       <Project>{C5A5AE9C-9137-4309-AC4E-F9494694390E}</Project>
       <Name>Intent.Modules.Modelers.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.csproj">
+      <Project>{7FEA24FE-C3AC-43BF-A8B0-099AABFBD526}</Project>
+      <Name>Intent.Modules.VisualStudio.Projects</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="modelers\Angular.modeler.config">

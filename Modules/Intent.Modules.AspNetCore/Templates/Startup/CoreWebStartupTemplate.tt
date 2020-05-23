@@ -24,7 +24,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-<#=DependencyUsings#>
+<#  if (!IsNetCore2App()) { #>
+using Microsoft.Extensions.Hosting;
+<#  } #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -43,20 +45,46 @@ namespace <#= Namespace #>
         // [IntentManaged(Mode.Ignore)] // Uncomment this line to take over management of configuring services
         public void ConfigureServices(IServiceCollection services)
         {
+<#  if (IsNetCore2App()) { #>
             services.AddMvc();
+<#  } else { #>
+            services.AddControllers();
+<#  } #>
             IntentConfiguredServices(services);
 <#= ServiceConfigurations() #>
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, <#= (IsNetCore2App() ? "IHostingEnvironment" : "IWebHostEnvironment") #> env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+<#  if (IsNetCore2App()) { #>
+            else
+            {
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+<#  } #>
 
+<#  if (IsNetCore2App()) { #>
+            app.UseHttpsRedirection();
+            
             app.UseMvc();
+<#  } else { #>
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+<#  } #>
 <#= Configurations() #>
         }
 

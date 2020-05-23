@@ -39,7 +39,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{Model.Module.GetModuleName().ToKebabCase()}/models",
+                defaultLocationInProject: $"ClientApp/src/app/{Model.Module.GetModuleName().ToKebabCase()}/models",
                 className: "${Model.Name}"
             );
         }

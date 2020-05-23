@@ -79,7 +79,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ModuleName.ToKebabCase()}.module",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{ ModuleName.ToKebabCase() }",
+                defaultLocationInProject: $"ClientApp/src/app/{ ModuleName.ToKebabCase() }",
                 className: "${ModuleName}Module");
         }
     }

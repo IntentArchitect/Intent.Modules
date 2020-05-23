@@ -42,10 +42,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
             
             #line default
             #line hidden
-            this.Write(@"</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
+            this.Write("</TargetFramework>\r\n  </PropertyGroup>\r\n\r\n");
+            
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
+  if (Project.TargetFramework().StartsWith("netcoreapp2")) { 
+            
+            #line default
+            #line hidden
+            this.Write(@"  <ItemGroup>
     <PackageReference Include=""Microsoft.AspNetCore.All"" Version=""2.1.1"" />
     <PackageReference Include=""Microsoft.VisualStudio.Web.CodeGeneration.Design"" Version=""2.1.1"" />
   </ItemGroup>
@@ -54,8 +58,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
     <DotNetCliToolReference Include=""Microsoft.VisualStudio.Web.CodeGeneration.Tools"" Version=""2.0.4"" />
   </ItemGroup>
 
-</Project>
 ");
+            
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("</Project>\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

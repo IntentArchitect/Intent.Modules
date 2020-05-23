@@ -69,7 +69,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToKebabCase()}.component",
                 fileExtension: "css", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
+                defaultLocationInProject: $"ClientApp/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
             );
         }
     }
