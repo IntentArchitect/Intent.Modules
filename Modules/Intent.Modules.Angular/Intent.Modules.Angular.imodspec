@@ -52,7 +52,7 @@
     <factoryExtension id="Intent.Angular.CLIInstaller" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="2.0.0" />
+    <dependency id="Intent.Common" version="2.0.4" />
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll" />
