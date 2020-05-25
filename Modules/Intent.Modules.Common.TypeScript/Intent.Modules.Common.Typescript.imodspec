@@ -13,5 +13,6 @@
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
+    <file src="$outDir$/TypeScriptAST.dll" inspect="false" />
   </files>
 </package>

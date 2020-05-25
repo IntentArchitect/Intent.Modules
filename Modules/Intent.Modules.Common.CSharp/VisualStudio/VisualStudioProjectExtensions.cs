@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 
 namespace Intent.Modules.Common.VisualStudio
@@ -63,6 +64,32 @@ namespace Intent.Modules.Common.VisualStudio
             return project.Metadata[REFERENCES] as IList<IAssemblyReference>;
         }
 
+        public static string SolutionFolder(this IProject project)
+        {
+            return project.Folder.Name;
+        }
+
+        public static string TargetFrameworkVersion(this IProject project)
+        {
+            var targetFramework = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "TargetFramework");
+            return project.GetStereotypeProperty("C# .NET", "FrameworkVersion", targetFramework != null ? $"v{targetFramework.Value}" : "v4.5.2");
+        }
+
+        public static string TargetFramework(this IProject project)
+        {
+            var targetFramework = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "TargetFramework");
+            return targetFramework?.Value ?? "netcoreapp2.1";
+        }
+
+        public static bool IsNetCore2App(this IProject project)
+        {
+            return project.TargetFramework().StartsWith("netcoreapp2");
+        }
+
+        public static bool IsNetCore3App(this IProject project)
+        {
+            return project.TargetFramework().StartsWith("netcoreapp3");
+        }
 
     }
 }

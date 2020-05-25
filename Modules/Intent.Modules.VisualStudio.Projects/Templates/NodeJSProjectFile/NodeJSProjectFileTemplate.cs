@@ -4,6 +4,7 @@ using System.Xml.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.Engine;
 using Intent.Modules.Common;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 using Microsoft.Build.Construction;
 

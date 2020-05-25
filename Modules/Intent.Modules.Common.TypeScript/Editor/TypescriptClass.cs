@@ -28,7 +28,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 return false;
             }
 
-            return NodeExists($"MethodDeclaration/Identifier:{methodName}");
+            return NodeExists($"MethodDeclaration/MethodDeclaration:{methodName}");
         }
 
         public void AddMethod(string method)

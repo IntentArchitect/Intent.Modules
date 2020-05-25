@@ -15,16 +15,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Templates\Typescript\**" />
+    <EmbeddedResource Remove="Templates\Typescript\**" />
+    <None Remove="Templates\Typescript\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Intent.IntentArchitectPackager" Version="2.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.1" />
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Templates\Typescript\" />
   </ItemGroup>
 
 </Project>

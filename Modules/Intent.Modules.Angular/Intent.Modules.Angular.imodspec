@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Angular</id>
-  <version>0.3.0</version>
+  <version>0.4.0</version>
   <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Angular for ASP.NET Core</summary>
   <description>This module installs and wires up Angular to run from within the ASP.NET Core environment.</description>
@@ -56,9 +56,8 @@
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.2.0" />
   </dependencies>
   <files>
-    <file src="bin\$configuration$\$id$.dll" />
-    <file src="bin\$configuration$\$id$.pdb" />
-    <file src="bin\$configuration$\TypeScriptAST.dll" inspect="false" />
+    <file src="$outDir$\$id$.dll" />
+    <file src="$outDir$\$id$.pdb" />
   </files>
   <metadata>
     <install target="Angular" src="modelers" />

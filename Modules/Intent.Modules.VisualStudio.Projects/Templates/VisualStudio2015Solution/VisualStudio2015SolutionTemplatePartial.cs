@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Plugins;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solution

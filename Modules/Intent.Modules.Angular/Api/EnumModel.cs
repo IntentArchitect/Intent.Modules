@@ -62,5 +62,11 @@ namespace Intent.Modules.Angular.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<EnumLiteralModel> Literls => _element.ChildElements
+            .Where(x => x.SpecializationType == EnumLiteralModel.SpecializationType)
+            .Select(x => new EnumLiteralModel(x))
+            .ToList();
     }
 }

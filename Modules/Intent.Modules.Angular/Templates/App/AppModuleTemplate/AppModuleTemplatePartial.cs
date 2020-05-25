@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using Intent.Modules.Common.TypeScript.Editor;
 using Intent.Modules.Common.TypeScript.Templates;
+using Intent.Modules.Common.VisualStudio;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]

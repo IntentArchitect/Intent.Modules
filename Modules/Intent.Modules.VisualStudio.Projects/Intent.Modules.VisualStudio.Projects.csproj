@@ -146,7 +146,6 @@
     <Compile Include="Templates\WcfServiceCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\WebApiServiceCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\WebConfig\Registrations.cs" />
-    <Compile Include="VisualStudioProjectExtensions.cs" />
     <Compile Include="Decorators\AssemblyBindingRedirectWebConfigDecorator.cs" />
     <Compile Include="Decorators\IWebConfigDecorator.cs" />
     <Compile Include="NugetPackages.cs" />

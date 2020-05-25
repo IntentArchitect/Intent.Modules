@@ -30,7 +30,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 
         public override ITemplate CreateTemplateInstance(IProject project, DTOModel model)
         {
-            return new AngularDTOTemplate(project, (ModuleDTOModel) model);
+            return new AngularDTOTemplate(project, (ModuleDTOModel)model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

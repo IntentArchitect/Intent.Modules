@@ -28,7 +28,7 @@
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
   </dependencies>
   <files>
-    <file src="bin/$configuration$/$id$.dll"/>
-    <file src="bin/$configuration$/$id$.pdb"/>
+    <file src="$outDir$/$id$.dll"/>
+    <file src="$outDir$/$id$.pdb"/>
   </files>
 </package>
