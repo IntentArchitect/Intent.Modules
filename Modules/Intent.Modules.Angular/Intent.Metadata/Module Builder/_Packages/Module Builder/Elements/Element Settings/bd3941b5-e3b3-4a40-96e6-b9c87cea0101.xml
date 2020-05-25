@@ -118,7 +118,7 @@
             <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
               <addedByDefault>true</addedByDefault>
               <properties>
-                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Map to Type" isActive="true" />
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
                 <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" isActive="true" />
                 <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
               </properties>
@@ -148,7 +148,7 @@
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
                   <properties>
-                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Map to Type" isActive="true" />
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
                     <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="0dfc489c-7456-4a3d-a28b-50a633631a48" isActive="true" />
                     <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
                   </properties>

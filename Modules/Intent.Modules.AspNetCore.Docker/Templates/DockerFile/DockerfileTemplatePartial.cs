@@ -39,7 +39,7 @@ namespace Intent.Modules.AspNetCore.Docker.Templates.DockerFile
                 );
         }
 
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             Project.Application.EventDispatcher.Publish(LaunchProfileRegistrationEvent.EventId, new Dictionary<string, string>()
             {

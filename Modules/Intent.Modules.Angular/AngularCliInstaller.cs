@@ -105,7 +105,7 @@ namespace Intent.Modules.Angular
             {
                 Directory.CreateDirectory(Path.GetFullPath(project.ProjectLocation));
             }
-            var command = $@"ng new {application.Name} --directory ClientApp --minimal --defaults --force=true";
+            var command = $@"ng new {application.Name} --directory ClientApp --minimal --defaults --skipGit=true --force=true";
             try
             {
                 var output = cmd.ExecuteCommand(Path.GetFullPath(project.ProjectLocation),

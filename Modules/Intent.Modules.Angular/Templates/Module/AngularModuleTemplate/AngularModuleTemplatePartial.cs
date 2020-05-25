@@ -45,8 +45,9 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                     return;
                 }
 
-                _components.Add(FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
-                //_providers.Add(new AngularProviderInfo(((IHasClassDetails)template).ClassName, template.GetMetadata().GetRelativeFilePathWithFileName()));
+                //_components.Add(FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
+                var template = FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
+                _providers.Add(template);
             });
         }
 

@@ -13,6 +13,7 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Templates;
 using Intent.Utils;
+using OperationModel = Intent.Modelers.Services.Api.OperationModel;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
@@ -125,7 +126,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public string GetPath(IEnumerable<IElementMappingPathTarget> path)
         {
-            return string.Join(".", path.Where(x => x.Specialization != GeneralizationModel.SpecializationType).Select(x => x.Name.ToPascalCase()));
+            return string.Join(".", path
+                .Where(x => x.Specialization != GeneralizationModel.SpecializationType)
+                .Select(x => x.Specialization == OperationModel.SpecializationType ? $"{x.Name.ToPascalCase()}()" : x.Name.ToPascalCase()));
         }
     }
 }
