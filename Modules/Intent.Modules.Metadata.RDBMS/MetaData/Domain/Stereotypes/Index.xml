@@ -8,6 +8,7 @@
   <displayIcon>true</displayIcon>
   <targetElements>
     <element>attribute</element>
+    <element>association</element>
   </targetElements>
   <parentFolderId>7C81DE70-0B90-44F4-9B18-F648B5976FC3</parentFolderId>
   <properties>

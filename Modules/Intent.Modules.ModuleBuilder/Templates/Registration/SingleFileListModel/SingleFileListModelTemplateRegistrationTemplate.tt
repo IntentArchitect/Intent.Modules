@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<TemplateRegistration>" #>
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<TemplateRegistrationModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
@@ -14,14 +14,14 @@ using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Templates;
-<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().GetModelerSettings().APINamespace()) : "")#>
+<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")#>
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class <#= ClassName #> : ListModelTemplateRegistrationBase<<#= Model.GetModelType().InterfaceName #>>
+    public class <#= ClassName #> : ListModelTemplateRegistrationBase<<#= GetModelType() #>>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -32,13 +32,13 @@ namespace <#= Namespace #>
 
         public override string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<<#= Model.GetModelType().InterfaceName #>> model)
+        public override ITemplate CreateTemplateInstance(IProject project, IList<<#= GetModelType() #>> model)
         {
             return new <#= GetTemplateNameForTemplateId() #>(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IList<<#= Model.GetModelType().InterfaceName #>> GetModels(IApplication application)
+        public override IList<<#= GetModelType() #>> GetModels(IApplication application)
         {
             return <#= GetModelsMethod() #>.ToList();
         }

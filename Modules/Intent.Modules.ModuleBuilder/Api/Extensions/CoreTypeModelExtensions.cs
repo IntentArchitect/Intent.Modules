@@ -63,6 +63,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Allow Abstract");
             }
 
+            public bool AllowSetValue()
+            {
+                return _stereotype.GetProperty<bool>("Allow Set Value");
+            }
+
             public bool AllowGenericTypes()
             {
                 return _stereotype.GetProperty<bool>("Allow Generic Types");

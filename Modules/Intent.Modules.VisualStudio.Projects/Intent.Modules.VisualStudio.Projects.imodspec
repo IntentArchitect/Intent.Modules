@@ -2,6 +2,7 @@
 <package>
   <id>Intent.VisualStudio.Projects</id>
   <version>2.2.0</version>
+  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Installs templates for Visual Studio projects that integrate with Intent Architect</summary>
   <description>Installs templates for Visual Studio projects that integrate with Intent Architect</description>
   <authors>Intent Architect</authors>
@@ -146,7 +147,7 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="2.0.0"/>
+    <dependency id="Intent.Common" version="2.0.4"/>
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll"/>

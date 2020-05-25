@@ -47,8 +47,9 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                     return;
                 }
 
-                _components.Add(FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
-                //_providers.Add(new AngularProviderInfo(((IHasClassDetails)template).ClassName, template.GetMetadata().GetRelativeFilePathWithFileName()));
+                //_components.Add(FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
+                var template = FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
+                _providers.Add(template);
             });
         }
 
@@ -79,7 +80,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ModuleName.ToKebabCase()}.module",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{ ModuleName.ToKebabCase() }",
+                defaultLocationInProject: $"ClientApp/src/app/{ ModuleName.ToKebabCase() }",
                 className: "${ModuleName}Module");
         }
     }

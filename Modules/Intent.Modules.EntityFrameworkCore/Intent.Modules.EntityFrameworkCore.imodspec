@@ -2,6 +2,7 @@
 <package>
   <id>Intent.EntityFrameworkCore</id>
   <version>2.1.0</version>
+  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Entity Framework Core implementation.</summary>
   <description>Entity Framework Core implementation.</description>
   <authors>Intent Architect</authors>

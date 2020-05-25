@@ -53,6 +53,12 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("allowTypeReference")]
         public bool? AllowTypeReference { get; set; }
 
+        [XmlElement("allowConvertToType")]
+        public bool? AllowConvertToType { get; set; }
+
+        [XmlElement("allowSetValue")]
+        public bool? AllowSetValue { get; set; }
+
         [XmlElement("typeReferenceSetting")]
         public TypeReferenceSettingPersistable TypeReferenceSetting { get; set; }
 

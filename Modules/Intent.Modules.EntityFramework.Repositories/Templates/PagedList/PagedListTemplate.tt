@@ -49,15 +49,15 @@ namespace <#= Namespace #>
             AddRange(results);
         }
 
-        public static Task<<#= PagedResultInterfaceName #><T>> CreateAsync(IQueryable<T> source, int pageNo, int pageSize)
+        public static async Task<<#= PagedResultInterfaceName #><T>> CreateAsync(IQueryable<T> source, int pageNo, int pageSize)
         {
-            var count = source.CountAsync();
+            var count = await source.CountAsync();
             var skip = ((pageNo - 1) * pageSize);
-            var results = source
+            var results = await source
                 .Skip(skip)
                 .Take(pageSize)
                 .ToListAsync();
-            return Task.WhenAll(count, results).ContinueWith<<#= PagedResultInterfaceName #><T>>(x => new <#= ClassName #><T>(count.Result, pageNo, pageSize, results.Result));
+            return new <#= ClassName #><T>(totalCount: count, pageNo: pageNo, pageSize: pageSize, results: results);
         }
 
         private int GetPageCount(int pageSize, int totalCount)

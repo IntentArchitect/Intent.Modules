@@ -31,7 +31,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
             return _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
                 .Where(x => x.ReferencesSingleFile())
                 .Select(x => new TemplateRegistrationModel(x))
-                .Where(x => x.GetTemplateSettings().ModelType() != null)
+                .Where(x => x.GetTemplateSettings().ModelType() != null || x.GetTemplateSettings().ModelName() != null)
                 .ToList();
         }
     }

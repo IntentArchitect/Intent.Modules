@@ -49,11 +49,27 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"app.module",
                 fileExtension: "ts",
-                defaultLocationInProject: $"Client/src/app",
+                defaultLocationInProject: $"ClientApp/src/app",
                 className: "AppModule"
             );
         }
 
+        public IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        {
+            // Reason for this version:
+            // Angular 8 wants Typescript >= 3.4.0 and < 3.6.0, but Visual Studio 2019 builds using 3.7.
+            // https://stackoverflow.com/questions/58485673/vs2019-error-ts2300-duplicate-identifier-iteratorresult
+            var packages = new List<INugetPackageInfo>()
+            {
+                new NugetPackageInfo("Microsoft.TypeScript.MsBuild", "3.5.3")
+            };
 
+            if (Project.IsNetCore3App())
+            {
+                packages.Add(new NugetPackageInfo("Microsoft.AspNetCore.SpaServices.Extensions", "3.1.4"));
+            }
+
+            return packages;
+        }
     }
 }

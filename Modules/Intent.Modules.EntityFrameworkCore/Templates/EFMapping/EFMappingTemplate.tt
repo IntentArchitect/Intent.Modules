@@ -39,7 +39,7 @@ if (Model.ParentClass == null && !explicitPrimaryKeys.Any())
     addedImplicitKey = true;
 #>
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).HasColumnName("Id");
+            builder.Property(x => x.Id).UsePropertyAccessMode(PropertyAccessMode.Property);
 <#
 }
 else
@@ -65,23 +65,17 @@ foreach (var attribute in Model.Attributes)
             builder.Property(x => x.<#= attribute.Name.ToPascalCase()#>)
 <#
     if (!attribute.Type.IsNullable)
-    {
-#>
-
+    {#>
                 .IsRequired()<#
     }
 
-    if (attribute.GetStereotypeProperty(Stereotypes.Rdbms.PrimaryKey.Name, Stereotypes.Rdbms.PrimaryKey.Property.Identity, false)){
-#>
-
+    if (attribute.GetStereotypeProperty(Stereotypes.Rdbms.PrimaryKey.Name, Stereotypes.Rdbms.PrimaryKey.Property.Identity, false)){#>
                 .UseSqlServerIdentityColumn()
 <#
     }
 
     if (attribute.HasStereotype(Stereotypes.Rdbms.DefaultConstraint.Name) && attribute.GetStereotypeProperty<string>(Stereotypes.Rdbms.DefaultConstraint.Name, Stereotypes.Rdbms.DefaultConstraint.Property.Value) != null)
-    {
-#>
-
+    {#>
                 .HasDefaultValueSql("<#= attribute.GetStereotypeProperty<string>(Stereotypes.Rdbms.DefaultConstraint.Name, Stereotypes.Rdbms.DefaultConstraint.Property.Value)#>")
 <#
     }
@@ -94,7 +88,6 @@ foreach (var attribute in Model.Attributes)
         if (maxLength.HasValue)
         {
 #>
-
                 .HasMaxLength(<#= maxLength.Value#>)
 <#
         }
@@ -106,7 +99,6 @@ foreach (var attribute in Model.Attributes)
     if (decimalPrecision.HasValue && decimalScale.HasValue)
     {
 #>
-
                 .HasColumnType("<#= dataType #>(<#= decimalPrecision#>, <#= decimalScale #>)")
 <#
     }

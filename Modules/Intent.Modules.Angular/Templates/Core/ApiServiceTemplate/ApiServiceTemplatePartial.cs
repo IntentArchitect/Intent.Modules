@@ -44,7 +44,7 @@ namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "api.service",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: "Client/src/app/core",
+                defaultLocationInProject: "ClientApp/src/app/core",
                 className: "ApiService"
             );
         }

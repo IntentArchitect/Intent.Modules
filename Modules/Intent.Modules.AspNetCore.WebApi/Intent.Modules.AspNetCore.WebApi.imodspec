@@ -17,14 +17,14 @@
         <add key="Namespace" description="Namespace" default="${Project.Name}.Controllers" />
       </config>
     </template>
-    <template id="Intent.AspNetCore.WebApi.ServiceCallContext" enabled="false">
+    <!--<template id="Intent.AspNetCore.WebApi.ServiceCallContext" enabled="false">
       <role>Distribution.WebApi</role>
-    </template>
+    </template>-->
   </templates>
   <decorators>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common.Types" version="2.0.0"/>
+    <dependency id="Intent.Common.Types" version="2.1.0"/>
     <dependency id="Intent.Application.Contracts" version="2.0.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
   </dependencies>

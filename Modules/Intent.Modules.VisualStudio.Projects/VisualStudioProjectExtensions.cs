@@ -21,7 +21,17 @@ namespace Intent.Modules.VisualStudio.Projects
         public static string TargetFramework(this IProject project)
         {
             var targetFramework = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "TargetFramework");
-            return targetFramework?.Value ?? "netcoreapp3.0";
+            return targetFramework?.Value ?? "netcoreapp2.1";
+        }
+
+        public static bool IsNetCore2App(this IProject project)
+        {
+            return project.TargetFramework().StartsWith("netcoreapp2");
+        }
+
+        public static bool IsNetCore3App(this IProject project)
+        {
+            return project.TargetFramework().StartsWith("netcoreapp3");
         }
     }
 

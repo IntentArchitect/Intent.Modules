@@ -42,7 +42,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"app-routing.module",
                 fileExtension: "ts",
-                defaultLocationInProject: $"Client/src/app",
+                defaultLocationInProject: $"ClientApp/src/app",
                 className: "AppRoutingModule"
             );
         }

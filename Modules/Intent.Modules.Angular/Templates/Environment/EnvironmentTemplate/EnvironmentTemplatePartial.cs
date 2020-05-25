@@ -47,7 +47,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
                 var assigned = variable.GetAssignedValue<TypeScriptObjectLiteralExpression>();
                 if (assigned != null && !assigned.PropertyAssignmentExists(configVariable.Name))
                 {
-                    assigned.AddPropertyAssignment($@",
+                    assigned.AddPropertyAssignment($@"
   {configVariable.Name}: {configVariable.DefaultValue}");
                 }
             }
@@ -61,7 +61,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "environment",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: "Client/src/environments"
+                defaultLocationInProject: "ClientApp/src/environments"
             );
         }
 

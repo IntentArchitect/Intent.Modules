@@ -2,6 +2,7 @@
 <package>
   <id>Intent.EntityFramework</id>
   <version>2.1.0</version>
+  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Entity Framework implementation.</summary>
   <description>Entity Framework implementation.</description>
   <authors>Intent Architect</authors>
@@ -38,7 +39,7 @@
   <dependencies>
     <dependency id="Intent.Modelers.Domain" version="2.1.0"/>
     <dependency id="Intent.Common" version="2.0.0"/>
-    <dependency id="Intent.Metadata.RDBMS" version="2.0.0"/>
+    <dependency id="Intent.Metadata.RDBMS" version="2.1.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
   </dependencies>
   <files>

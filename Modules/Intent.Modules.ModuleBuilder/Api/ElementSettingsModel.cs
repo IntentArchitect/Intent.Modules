@@ -59,6 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 ExpandedIcon = GetIcon(this.GetSettings().ExpandedIcon()),
                 AllowRename = this.GetSettings().AllowRename(),
                 AllowAbstract = this.GetSettings().AllowAbstract(),
+                AllowSetValue = this.GetSettings().AllowSetValue(),
                 AllowGenericTypes = this.GetSettings().AllowGenericTypes(),
                 AllowMapping = this.MappingSettings != null,
                 AllowSorting = this.GetSettings().AllowSorting(),

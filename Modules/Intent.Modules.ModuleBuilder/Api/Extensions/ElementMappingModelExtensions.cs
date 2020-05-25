@@ -146,9 +146,9 @@ namespace Intent.Modules.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
-            public ActionOptions Action()
+            public ChildMappingModeOptions ChildMappingMode()
             {
-                return new ActionOptions(_stereotype.GetProperty<string>("Action"));
+                return new ChildMappingModeOptions(_stereotype.GetProperty<string>("Child Mapping Mode"));
             }
 
             public IElement ToType()
@@ -161,11 +161,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<IElement>("Use Mapping Settings");
             }
 
-            public class ActionOptions
+            public class ChildMappingModeOptions
             {
                 public readonly string Value;
 
-                public ActionOptions(string value)
+                public ChildMappingModeOptions(string value)
                 {
                     Value = value;
                 }

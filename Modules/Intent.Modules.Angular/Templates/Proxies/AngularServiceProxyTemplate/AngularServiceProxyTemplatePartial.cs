@@ -147,7 +147,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name.ToKebabCase()}.service",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{Model.Module.GetModuleName().ToKebabCase()}",
+                defaultLocationInProject: $"ClientApp/src/app/{Model.Module.GetModuleName().ToKebabCase()}",
                 className: "${Model.Name}"
             );
         }

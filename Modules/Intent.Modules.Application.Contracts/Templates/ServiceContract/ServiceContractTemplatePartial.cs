@@ -23,11 +23,8 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         public ServiceContractTemplate(IProject project, ServiceModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
-        }
-
-        public override void OnCreated()
-        {
-            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            AddTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            SetDefaultTypeCollectionFormat("List<{0}>");
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()

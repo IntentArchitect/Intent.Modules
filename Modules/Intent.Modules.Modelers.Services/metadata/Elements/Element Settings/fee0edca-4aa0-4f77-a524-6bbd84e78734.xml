@@ -19,6 +19,7 @@
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="true" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="true" isActive="true" />
@@ -117,7 +118,7 @@
             <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
               <addedByDefault>true</addedByDefault>
               <properties>
-                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Map to Type" isActive="true" />
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
                 <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="fee0edca-4aa0-4f77-a524-6bbd84e78734" isActive="true" />
                 <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
               </properties>
@@ -147,7 +148,7 @@
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
                   <properties>
-                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Map to Type" isActive="true" />
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
                     <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
                     <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
                   </properties>
@@ -178,7 +179,7 @@
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
                   <properties>
-                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Map to Type" isActive="true" />
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
                     <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
                     <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
                   </properties>
@@ -209,7 +210,7 @@
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
                   <properties>
-                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Map to Type" isActive="true" />
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
                     <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
                     <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
                   </properties>
@@ -228,7 +229,7 @@
             </childElement>
             <childElement id="608eb600-d24e-4bee-9318-b6523c9b3f17" type="Element Mapping">
               <name>NewElementMapping</name>
-              <display>[mapping]: Association -&gt; (Traverse)</display>
+              <display>[mapping]: Association -&gt; DTO-Field</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -240,8 +241,8 @@
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
                   <properties>
-                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Traverse" isActive="true" />
-                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="false" />
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
                     <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="e45defc1-8775-49c0-bf70-5ec59684e944" isActive="true" />
                   </properties>
                 </stereotype>
@@ -271,8 +272,8 @@
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
                   <properties>
-                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Action" value="Traverse" isActive="true" />
-                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="false" />
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="true" />
                     <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="e45defc1-8775-49c0-bf70-5ec59684e944" isActive="true" />
                   </properties>
                 </stereotype>

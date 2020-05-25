@@ -64,5 +64,8 @@ namespace Intent.Modelers.Services.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public string Value => _element.Value;
     }
 }

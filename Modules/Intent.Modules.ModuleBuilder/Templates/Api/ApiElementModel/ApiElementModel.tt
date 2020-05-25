@@ -42,6 +42,11 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+<#      if (Model.GetSettings().AllowSetValue()) { #>
+        [IntentManaged(Mode.Fully)]
+        public string Value => _element.Value;
+
+<#      } #>
 <#      if (Model.GetSettings().AllowGenericTypes()) { #>
         [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);

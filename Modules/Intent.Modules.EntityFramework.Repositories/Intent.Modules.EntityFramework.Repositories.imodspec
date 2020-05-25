@@ -2,6 +2,7 @@
 <package>
   <id>Intent.EntityFramework.Repositories</id>
   <version>2.1.0</version>
+  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Repository Patterns for Entity Framework.</summary>
   <description>Repository Patterns for Entity Framework.</description>
   <authors>Intent Architect</authors>
@@ -34,7 +35,7 @@
   </decorators>
   <dependencies>
     <dependency id="Intent.Common" version="2.0.0"/>
-    <dependency id="Intent.Common.Types" version="2.0.0"/>
+    <dependency id="Intent.Common.Types" version="2.1.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
     <dependency id="Intent.Entities.Repositories.Api" version="2.1.0"/>
     <dependency id="Intent.EntityFramework" version="2.1.0"/>

@@ -58,7 +58,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ModuleName.ToKebabCase()}.module",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{ Model.GetModuleName().ToKebabCase() }",
+                defaultLocationInProject: $"ClientApp/src/app/{ Model.GetModuleName().ToKebabCase() }",
                 className: "${ModuleName}"
             );
         }

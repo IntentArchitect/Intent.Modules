@@ -32,7 +32,7 @@ namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "core.module",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: "Client/src/app/core",
+                defaultLocationInProject: "ClientApp/src/app/core",
                 className: "CoreModule"
             );
         }

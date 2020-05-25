@@ -14,7 +14,7 @@
   <order>1</order>
   <properties>
     <property id="d87242ea-697e-4ab6-b9f9-f48e9af2d3af">
-      <name>Action</name>
+      <name>Child Mapping Mode</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
@@ -31,13 +31,13 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
+      <placeholder>(Not Mapped to Type)</placeholder>
       <valueOptions />
       <lookupTypes>
         <type>element settings</type>
       </lookupTypes>
-      <isActiveFunction>return properties['Action'].value == "Map to Type"</isActiveFunction>
-      <isRequiredFunction>return true</isRequiredFunction>
+      <isActiveFunction />
+      <isRequiredFunction>return properties['Child Mapping Mode'].value == "Map to Type"</isRequiredFunction>
     </property>
     <property id="f87c0289-fb95-46aa-a06d-3599e312324a">
       <name>Use Mapping Settings</name>

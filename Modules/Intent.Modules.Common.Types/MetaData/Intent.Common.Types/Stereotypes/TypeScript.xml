@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="822c6b64-82c2-4e5b-9d07-b79adc9a09e7">
+  <targetMode>all</targetMode>
+  <targetElements />
+  <applyMode>manually</applyMode>
   <name>TypeScript</name>
   <icon>
     <type>UrlImagePath</type>
@@ -7,10 +10,6 @@
   </icon>
   <displayIcon>false</displayIcon>
   <displayFunction />
-  <targetElements>
-    <element>type-definition</element>
-    <element>enum</element>
-  </targetElements>
   <parentFolderId>90fdf72a-6d98-4204-aa3d-7f838789633d</parentFolderId>
   <properties>
     <property id="6591a390-5d73-422c-af7b-371184a8519a">

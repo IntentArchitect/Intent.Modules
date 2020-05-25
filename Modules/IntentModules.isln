@@ -7,7 +7,6 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.MetaData</metadataRelativePath>
   <applications>
-    <application id="9605cb81-cdac-46ca-95e8-b6d53256088e" relativePath="Intent.Modules.Convention.ServiceImplementations\Convention.ServiceImplementations.application.config" />
     <application id="1cecc65d-e804-4de6-a27f-e8e4ad0190d7" relativePath="Intent.Modules.Angular\Angular.application.config" />
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />

@@ -8,6 +8,7 @@ using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects;
 using Intent.Plugins.FactoryExtensions;
 using Intent.Utils;
 
@@ -52,7 +53,7 @@ namespace Intent.Modules.Angular
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {{
-                configuration.RootPath = ""Client/dist"";
+                configuration.RootPath = ""ClientApp/dist"";
             }});
         }}" }
             });
@@ -63,14 +64,14 @@ namespace Intent.Modules.Angular
                 { InitializationRequiredEvent.CallKey, $@"InitializeAngularSpa(app, env);" },
                 { InitializationRequiredEvent.MethodKey, $@"
         //[IntentManaged(Mode.Ignore)] // Uncomment to take control of this method.
-        private void InitializeAngularSpa(IApplicationBuilder app, IHostingEnvironment env)
+        private void InitializeAngularSpa(IApplicationBuilder app, { (GetWebCoreProject(application).IsNetCore2App() ? "IHostingEnvironment" : "IWebHostEnvironment") } env)
         {{
             app.UseSpa(spa =>
             {{
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = ""Client"";
+                spa.Options.SourcePath = ""ClientApp"";
 
                 if (env.IsDevelopment())
                 {{
@@ -83,13 +84,13 @@ namespace Intent.Modules.Angular
 
         public bool AngularInstalled(IApplication application)
         {
-            var project = application.Projects.FirstOrDefault(x => x.ProjectType.Id == VisualStudioProjectTypeIds.CoreWebApp);
-            return project != null && File.Exists(Path.Combine(project.ProjectLocation, "Client", "angular.json"));
+            var project = GetWebCoreProject(application);
+            return project != null && File.Exists(Path.Combine(project.ProjectLocation, "ClientApp", "angular.json"));
         }
 
         public void RunAngularCli(IApplication application)
         {
-            var project = application.Projects.FirstOrDefault(x => x.ProjectType.Id == VisualStudioProjectTypeIds.CoreWebApp);
+            var project = GetWebCoreProject(application);
             if (project == null)
             {
                 Logging.Log.Failure("Could not find project to install Angular application.");
@@ -100,7 +101,11 @@ namespace Intent.Modules.Angular
 
             CommandLineProcessor cmd = new CommandLineProcessor();
 
-            var command = $@"ng new {application.Name} --directory Client --minimal --defaults --force=true";
+            if (!Directory.Exists(Path.GetFullPath(project.ProjectLocation)))
+            {
+                Directory.CreateDirectory(Path.GetFullPath(project.ProjectLocation));
+            }
+            var command = $@"ng new {application.Name} --directory ClientApp --minimal --defaults --skipGit=true --force=true";
             try
             {
                 var output = cmd.ExecuteCommand(Path.GetFullPath(project.ProjectLocation),
@@ -119,6 +124,11 @@ To install the CLI using npm, open a terminal/console window and enter the follo
                 Logging.Log.Failure(e);
             }
 
+        }
+
+        private IProject GetWebCoreProject(IApplication application)
+        {
+            return application.Projects.FirstOrDefault(x => x.ProjectType.Id == VisualStudioProjectTypeIds.CoreWebApp);
         }
     }
 }
