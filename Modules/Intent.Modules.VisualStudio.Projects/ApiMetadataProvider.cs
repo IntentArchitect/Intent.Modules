@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiMetadataProvider", Version = "1.0")]
 
-namespace Intent.Modules.VisualStudio.Projects
+namespace Intent.Modules.VisualStudio.Projects.Api
 {
     public class ApiMetadataProvider
     {

@@ -37,30 +37,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public IElement InternalElement => _element;
 
         [IntentManaged(Mode.Fully)]
-        public IList<ClassLibrary.NETCoreModel> ClassLibrary.NETCores => _element.ChildElements
-            .Where(x => x.SpecializationType == ClassLibrary.NETCoreModel.SpecializationType)
-            .Select(x => new ClassLibrary.NETCoreModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<ClassLibrary.NETFrameworkModel> ClassLibrary.NETFrameworks => _element.ChildElements
-            .Where(x => x.SpecializationType == ClassLibrary.NETFrameworkModel.SpecializationType)
-            .Select(x => new ClassLibrary.NETFrameworkModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<ASP.NETCoreWebApplicationModel> ASP.NETCoreWebApplications => _element.ChildElements
-            .Where(x => x.SpecializationType == ASP.NETCoreWebApplicationModel.SpecializationType)
-            .Select(x => new ASP.NETCoreWebApplicationModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<ASP.NETWebApplication.NETFrameworkModel> ASP.NETWebApplication.NETFrameworks => _element.ChildElements
-            .Where(x => x.SpecializationType == ASP.NETWebApplication.NETFrameworkModel.SpecializationType)
-            .Select(x => new ASP.NETWebApplication.NETFrameworkModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
         public IList<FolderModel> Folders => _element.ChildElements
             .Where(x => x.SpecializationType == FolderModel.SpecializationType)
             .Select(x => new FolderModel(x))
@@ -92,5 +68,29 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ASPNETCoreWebApplicationModel> ASPNETCoreWebApplications => _element.ChildElements
+            .Where(x => x.SpecializationType == ASPNETCoreWebApplicationModel.SpecializationType)
+            .Select(x => new ASPNETCoreWebApplicationModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ASPNETWebApplicationNETFrameworkModel> ASPNETWebApplicationNETFrameworks => _element.ChildElements
+            .Where(x => x.SpecializationType == ASPNETWebApplicationNETFrameworkModel.SpecializationType)
+            .Select(x => new ASPNETWebApplicationNETFrameworkModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ClassLibraryNETCoreModel> ClassLibraryNETCores => _element.ChildElements
+            .Where(x => x.SpecializationType == ClassLibraryNETCoreModel.SpecializationType)
+            .Select(x => new ClassLibraryNETCoreModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ClassLibraryNETFrameworkModel> ClassLibraryNETFrameworks => _element.ChildElements
+            .Where(x => x.SpecializationType == ClassLibraryNETFrameworkModel.SpecializationType)
+            .Select(x => new ClassLibraryNETFrameworkModel(x))
+            .ToList();
     }
 }

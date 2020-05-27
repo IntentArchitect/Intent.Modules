@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="5d85edfb-490c-42c2-81ef-c57c0300eb5a">
+  <name>Core Project Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40">
+      <name>Target Framework</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>.NET Core 3.1</defaultValue>
+      <valueOptions>
+        <option>.NET Core 2.1</option>
+        <option>.NET Core 2.2</option>
+        <option>.NET Core 3.1</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

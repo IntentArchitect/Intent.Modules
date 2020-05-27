@@ -66,10 +66,6 @@
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.csproj">
-      <Project>{7fea24fe-c3ac-43bf-a8b0-099aabfbd526}</Project>
-      <Name>Intent.Modules.VisualStudio.Projects</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

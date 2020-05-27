@@ -3,64 +3,54 @@
   <ApplicationId>ad79943a-b771-42b0-9563-9e01f7ea2dbc</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ASP.NETCoreWebApplicationModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ASP.NETCoreWebApplicationModel.cs</ProjectRelativeFilePath>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ASPNETCoreWebApplicationModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ASPNETCoreWebApplicationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ASP.NETWebApplication.NETFrameworkModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ASP.NETWebApplication.NETFrameworkModel.cs</ProjectRelativeFilePath>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ASPNETWebApplicationNETFrameworkModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ASPNETWebApplicationNETFrameworkModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ClassLibrary.NETCoreModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ClassLibrary.NETCoreModel.cs</ProjectRelativeFilePath>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ClassLibraryNETCoreModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ClassLibraryNETCoreModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ClassLibrary.NETFrameworkModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ClassLibrary.NETFrameworkModel.cs</ProjectRelativeFilePath>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ClassLibraryNETFrameworkModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ClassLibraryNETFrameworkModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ConsoleApp.NETFrameworkModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ConsoleApp.NETFrameworkModel.cs</ProjectRelativeFilePath>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ConsoleAppNETFrameworkModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ConsoleAppNETFrameworkModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\FolderModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\RoleModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/RoleModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\ApiMetadataProvider.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.VisualStudio.Projects.csproj</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.imodspec</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.VisualStudio.Projects.imodspec</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ed142519-2e09-48a2-9fd0-2bc2dbfef6ca</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\modelers\Visual Studio.modeler.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Visual Studio.modeler.config</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

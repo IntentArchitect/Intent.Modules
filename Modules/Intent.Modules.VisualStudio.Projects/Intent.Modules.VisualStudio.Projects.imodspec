@@ -149,8 +149,8 @@
     <file src="$outDir$/NuGet.Versioning.dll" />
     <file src="$outDir$/Microsoft.Build.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Build.Framework.dll" inspect="false" />
-    <file src="$outDir$/Microsoft.Build.Utilities.Core.dll" inspect="false" />
-    <file src="$outDir$/System.Runtime.InteropServices.RuntimeInformation.dll" inspect="false" />
+    <!--<file src="$outDir$/Microsoft.Build.Utilities.Core.dll" inspect="false" />-->
+    <!--<file src="$outDir$/System.Runtime.InteropServices.RuntimeInformation.dll" inspect="false" />-->
     <!-- Needs fix, see https://github.com/IntentSoftware/IntentArchitect/issues/65 -->
     <!--<file src="bin/$configuration$/System.Collections.Immutable.dll" inspect="false"/>
     <file src="bin/$configuration$/System.Runtime.InteropServices.RuntimeInformation.dll" inspect="false"/>

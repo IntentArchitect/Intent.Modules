@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3ff20de1-253f-4f42-82ca-55a1345f9042" type="Class Library (.NET Core)">
+  <name>Intent.Modules.VisualStudio.Projects</name>
+  <display>Intent.Modules.VisualStudio.Projects</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>8d6f4aac-236d-4bc7-83f6-f9ce6a516654</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="5d85edfb-490c-42c2-81ef-c57c0300eb5a" name="Core Project Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value=".NET Core 3.1" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

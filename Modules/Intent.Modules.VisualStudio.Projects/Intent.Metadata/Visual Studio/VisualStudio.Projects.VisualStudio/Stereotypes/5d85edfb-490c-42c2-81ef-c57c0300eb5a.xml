@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="5d85edfb-490c-42c2-81ef-c57c0300eb5a">
+  <name>.NET Core Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>class library (.net core)</element>
+    <element>asp.net core web application</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>8d6f4aac-236d-4bc7-83f6-f9ce6a516654</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40">
+      <name>Target Framework</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>.NET Core 3.1</defaultValue>
+      <valueOptions>
+        <option>.NET Core 2.1</option>
+        <option>.NET Core 2.2</option>
+        <option>.NET Core 3.1</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

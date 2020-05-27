@@ -11,10 +11,5 @@
       <address>https://intentarchitect.com/</address>
       <isBuiltIn>true</isBuiltIn>
     </entry>
-    <entry>
-      <name>Test</name>
-      <address>./Modelers.ServiceProxies/Intent.Modules</address>
-      <isBuiltIn>false</isBuiltIn>
-    </entry>
   </entries>
 </assetRepositories>
