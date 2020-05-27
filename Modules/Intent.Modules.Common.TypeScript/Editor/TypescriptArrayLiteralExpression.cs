@@ -45,6 +45,9 @@ namespace Intent.Modules.Common.TypeScript.Editor
             }
             UpdateChanges();
         }
+
+        public override bool IsIgnored() => false;
+
     }
 
     public class TypescriptLiteral : TypeScriptNode
@@ -54,5 +57,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         }
 
         public string Value => Node.GetText();
+
+        public override bool IsIgnored() => false;
     }
 }

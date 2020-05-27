@@ -66,8 +66,14 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return FindNode(node.GetDescendants().OfKind(syntaxKind).FirstOrDefault(x => x.IdentifierStr == identifier), path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
         }
 
+        public abstract bool IsIgnored();
+
         public void UpdateChanges()
         {
+            if (IsIgnored())
+            {
+                throw new Exception($"Cannot add method to TypeScript node [{ToString()}] as it has been decorated with @IntentIgnore()");
+            }
             File.UpdateChanges();
             Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
         }

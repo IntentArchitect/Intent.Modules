@@ -68,5 +68,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
             return null;
         }
+
+        public override bool IsIgnored() => false;
     }
 }

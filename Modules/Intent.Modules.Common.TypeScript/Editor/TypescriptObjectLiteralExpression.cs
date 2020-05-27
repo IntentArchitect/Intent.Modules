@@ -47,5 +47,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             InsertPropertyAssignment(propertyAssignment, Node.OfKind(SyntaxKind.PropertyAssignment).LastOrDefault());
         }
+
+        public override bool IsIgnored() => false;
     }
 }

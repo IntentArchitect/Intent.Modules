@@ -4,9 +4,9 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypeScriptClassDecorator : TypeScriptNode
+    public class TypeScriptDecorator : TypeScriptNode
     {
-        public TypeScriptClassDecorator(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptDecorator(Node node, TypeScriptFile file) : base(node, file)
         {
         }
 
@@ -16,5 +16,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             return Node.OfKind(SyntaxKind.ObjectLiteralExpression).Select(x => new TypeScriptObjectLiteralExpression(x, File));
         }
+
+        public override bool IsIgnored() => false;
     }
 }

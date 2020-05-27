@@ -62,6 +62,10 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 return;
             }
             var @class = file.ClassDeclarations().First();
+            if (@class.IsIgnored())
+            {
+                return;
+            }
             foreach (var operation in Model.Operations)
             {
                 if (!operation.IsMapped || operation.Mapping == null)

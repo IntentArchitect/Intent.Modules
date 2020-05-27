@@ -77,6 +77,21 @@
     </FileLog>
     <FileLog>
       <ProjectId>aabaa696-49aa-4109-be55-b5741ced6c5e</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\TableControlColumnModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/TableControlColumnModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aabaa696-49aa-4109-be55-b5741ced6c5e</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\TableControlDataModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/TableControlDataModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aabaa696-49aa-4109-be55-b5741ced6c5e</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\TableControlModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/TableControlModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aabaa696-49aa-4109-be55-b5741ced6c5e</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\TypeDefinitionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/TypeDefinitionModel.cs</ProjectRelativeFilePath>
     </FileLog>

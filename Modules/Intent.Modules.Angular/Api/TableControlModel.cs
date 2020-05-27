@@ -10,12 +10,12 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Angular.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ComponentViewModel : IHasStereotypes, IMetadataModel
+    public class TableControlModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Component View";
+        public const string SpecializationType = "Table Control";
         protected readonly IElement _element;
 
-        public ComponentViewModel(IElement element, string requiredType = SpecializationType)
+        public TableControlModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -34,6 +34,12 @@ namespace Intent.Modules.Angular.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
+        public bool IsMapped => _element.IsMapped;
+
+        [IntentManaged(Mode.Fully)]
+        public IElementMapping Mapping => _element.MappedElement;
+
+        [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
 
         [IntentManaged(Mode.Fully)]
@@ -43,7 +49,7 @@ namespace Intent.Modules.Angular.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public bool Equals(ComponentViewModel other)
+        public bool Equals(TableControlModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -54,7 +60,7 @@ namespace Intent.Modules.Angular.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ComponentViewModel)obj);
+            return Equals((TableControlModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -64,9 +70,9 @@ namespace Intent.Modules.Angular.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<TableControlModel> TableControls => _element.ChildElements
-            .Where(x => x.SpecializationType == TableControlModel.SpecializationType)
-            .Select(x => new TableControlModel(x))
-            .ToList();
+        public TableControlDataModel Data => _element.ChildElements
+            .Where(x => x.SpecializationType == TableControlDataModel.SpecializationType)
+            .Select(x => new TableControlDataModel(x))
+            .SingleOrDefault();
     }
 }

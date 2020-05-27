@@ -18,6 +18,15 @@ namespace Intent.Modules.Angular.Api
             _metadataManager = metadataManager;
         }
 
+        public IList<ComponentModel> GetComponentModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)
+                .Where(x => x.SpecializationType == ComponentModel.SpecializationType)
+                .Select(x => new ComponentModel(x))
+                .ToList<ComponentModel>();
+            return models;
+        }
+
         public IList<EnumModel> GetEnumModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)
@@ -51,6 +60,15 @@ namespace Intent.Modules.Angular.Api
                 .Where(x => x.SpecializationType == ModuleModel.SpecializationType)
                 .Select(x => new ModuleModel(x))
                 .ToList<ModuleModel>();
+            return models;
+        }
+
+        public IList<ServiceProxyModel> GetServiceProxyModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)
+                .Where(x => x.SpecializationType == ServiceProxyModel.SpecializationType)
+                .Select(x => new ServiceProxyModel(x))
+                .ToList<ServiceProxyModel>();
             return models;
         }
 

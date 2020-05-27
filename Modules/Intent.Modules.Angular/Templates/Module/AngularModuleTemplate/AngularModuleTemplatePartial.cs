@@ -59,15 +59,21 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         protected override void ApplyFileChanges(TypeScriptFile file)
         {
+            var @class = file.ClassDeclarations().First();
+            if (@class.IsIgnored())
+            {
+                return;
+            }
+
+            var ngModuleDecorator = @class.GetDecorator("NgModule")?.ToNgModule();
+
             foreach (var template in _components)
             {
-                var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
                 ngModuleDecorator?.AddDeclarationIfNotExists(GetTemplateClassName(template));
             }
 
             foreach (var template in _providers)
             {
-                var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
                 ngModuleDecorator?.AddProviderIfNotExists(GetTemplateClassName(template));
             }
         }

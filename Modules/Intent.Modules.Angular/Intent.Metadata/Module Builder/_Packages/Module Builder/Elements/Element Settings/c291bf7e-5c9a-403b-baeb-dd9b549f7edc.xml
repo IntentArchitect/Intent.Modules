@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="624513a6-cba8-4dde-8ebe-6b19f00f0364" type="Element Settings">
-  <name>Component View</name>
-  <display>Component View</display>
+<class id="c291bf7e-5c9a-403b-baeb-dd9b549f7edc" type="Element Settings">
+  <name>Table Control Data</name>
+  <display>Table Control Data</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>b1c481e1-e91e-4c29-9817-00ab9cad4b6b</parentFolderId>
+  <parentFolderId>0349275e-d8d0-4f52-8a6e-5fdb9a16c059</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -25,7 +25,7 @@
       <addedByDefault>true</addedByDefault>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC4HpUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHja7ZddsuMoDIXfWcUswZIQEsvB/FT1Dmb5c8Bc5yb3dldNTz/MQ0zFYFkIOJ8gSeh//xjhL1yU5QhRzVNO6cAVc8xc0PDjuq6ajrju6+L9Cs9P9nC/YJgEtVyPqW//Ars+Oljc9vPZHqzuOL4D7RcfAWWOPEfbfr4DCV922s8h734lflrO/ohdK/lwfn2OBjGawigcuAvJgfvsyIIZSJaCWtfdeVpmmyQuS/5eu3A3X8S7Wy/aHWXb5VmKcKTtkF402nbS77VbCn2eET1Gfnphcg/xRbsxmo/Rr9WVmKBUCntRH0tZLTiekFJWt4Ri+CjatkpGcSyxQvQGmidKDZSJofagSI0KDeqrrlQxxcidDTVzZVk2F+PMdUGJs9BgA54WxMGqgprAzPdcaI2b13iVHCM3gicTghF6fCnhO+PvlDvQGDN1iQ6/tcK8eCYgpjHJzTu8AITG1lSXvquET3lzfAIrIKhLZscCy3FeIU6lR27J4izw0yOG40p3srYDQCKMrZgMCQgcCYlNiQ5jNiLo6OBTMHOWyCcIkCo3CgNsRBLgYDdgbPQxWr6sfJlxtACEShIDGmwgwIpRkT8WHTlUVDQGVU1q6pq1JEkxaUrJ0jyjiolFU0tm5patuHh09eTm7tlL5iw4wjSnbCF7zrkUDFoQuqB3gUcpJ59yxlPPdNrpZz5LRfrUWLWmatVrrqVxk4bt31Kz0LzlVjp1pFKPXXvq1r3nXgZybciIQ0caNnzkUW5qm+ozNXoh92tqtKlNYnH52YMazGYfIWgeJzqZgRhHAnGbBJDQPJkdTjHyJDeZHZmxKZRBjXTCaTSJgWDsxDroZvcg90tuQeO/4sY/Ixcmuj9BLkx0m9xXbt9Qa2V9o8gCNHfh1PSQgYMNDt0Le5nfSb9dh/8a4B3oHegd6B3oHegd6B3o/xNo4McD/vCFfwBJhJDcOfhZLwAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+MFCA0ODM69luUAAAGOSURBVFjD7daxS1VhGMfxj3LrKoR/QpBLf4CDSIGb7m4hRNamtImjmC2JgkI02GpYQ1sirREuDg7XJRWHchAJyRbrZnFcXiEu57z33HuPNXh/cDjved7nPe/3nPd5n/ehrauujhTbJO5fwlzfMYov9QAqOMWHAie/jscYw0o9523MFfz1Paim/dlSZFAnHqDc4uTvcZzVGQPownKNT7UJoEd4G/vKvPqKW9gtcm0aAXiJQzzE2b8GOMXz0N7AfE3/Hvrx9LIAVnD01/MstkL7I+5gE9NYKBrgD5ZqbFXcwwyGQ3xcaCoEb2EAa/iUYt/FE/yosSeYwGoegFIOn9t40UR8dbUK8Avv0I3eFpLQfrMAvzFSYCpuGKAjrGV3Rv8B3mAAdzN8ErwK2zi3Lg6jcliGJOOqBP/FiE+Codhh1Ok/qw0QA0jqjE0a9GsqD/RFEsq3cH+G15H3VGI1RClSw/Xgc479/RM7EZ8ybmTUn6kAJ6GAHC+4+r6WVpqlUd3EYBZxCzrGeo6YaeuK6RxijFbuOr4dPQAAAABJRU5ErkJggg==&quot;}" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
@@ -38,25 +38,25 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="de3c3401-4c54-4670-8332-1c309f3affc0" type="Context Menu">
+    <childElement id="9ec063d2-7710-425c-af5d-52c685bb91c0" type="Context Menu">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>624513a6-cba8-4dde-8ebe-6b19f00f0364</parentFolderId>
+      <parentFolderId>c291bf7e-5c9a-403b-baeb-dd9b549f7edc</parentFolderId>
       <literals />
       <attributes />
       <operations />
       <stereotypes />
       <childElements>
-        <childElement id="172348a5-ddd5-41cc-be29-279cee3ccd10" type="Element Creation Option">
-          <name>Add Table Control</name>
-          <display>Add Table Control: Table Control</display>
+        <childElement id="c9f8ee1b-4ff2-4ead-b217-9d6efdccffa1" type="Element Creation Option">
+          <name>Add Column</name>
+          <display>Add Column: Table Control Column</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="632eaa40-8e15-4328-bae2-12aa40bb67ee">
-            <typeId>0349275e-d8d0-4f52-8a6e-5fdb9a16c059</typeId>
+          <typeReference id="79090abe-99aa-454e-bb06-879edde77d2f">
+            <typeId>b0f80779-9131-4219-a98d-c891f38fbe2a</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -64,7 +64,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>de3c3401-4c54-4670-8332-1c309f3affc0</parentFolderId>
+          <parentFolderId>9ec063d2-7710-425c-af5d-52c685bb91c0</parentFolderId>
           <literals />
           <attributes />
           <operations />

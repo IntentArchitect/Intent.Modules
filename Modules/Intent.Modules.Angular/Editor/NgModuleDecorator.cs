@@ -8,7 +8,7 @@ namespace Intent.Modules.Angular.Editor
 {
     public static class TypescriptClassDecoratorExtensions
     {
-        public static NgModuleDecorator ToNgModule(this TypeScriptClassDecorator decorator)
+        public static NgModuleDecorator ToNgModule(this TypeScriptDecorator decorator)
         {
             return decorator.Name != "NgModule" ? null : new NgModuleDecorator(decorator);
         }
@@ -16,13 +16,13 @@ namespace Intent.Modules.Angular.Editor
 
     public class NgModuleDecorator
     {
-        private readonly TypeScriptClassDecorator _decorator;
+        private readonly TypeScriptDecorator _decorator;
 
-        public NgModuleDecorator(TypeScriptClassDecorator decorator)
+        public NgModuleDecorator(TypeScriptDecorator decorator)
         {
             if (decorator.Name != "NgModule")
             {
-                throw new Exception($"Cannot create {nameof(NgModuleDecorator)} for underlying {nameof(TypeScriptClassDecorator)} \"{decorator.Name}\"");
+                throw new Exception($"Cannot create {nameof(NgModuleDecorator)} for underlying {nameof(TypeScriptDecorator)} \"{decorator.Name}\"");
             }
             _decorator = decorator;
         }

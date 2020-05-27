@@ -14,9 +14,19 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public string Name => Node.IdentifierStr;
 
-        public IList<TypeScriptClassDecorator> Decorators()
+        public IList<TypeScriptDecorator> Decorators()
         {
-            return Node.OfKind(SyntaxKind.Decorator).Select(x => new TypeScriptClassDecorator(x, File)).ToList();
+            return Node.OfKind(SyntaxKind.Decorator).Select(x => new TypeScriptDecorator(x, File)).ToList();
+        }
+
+        public TypeScriptDecorator GetDecorator(string name)
+        {
+            return Decorators().SingleOrDefault(x => x.Name == name);
+        }
+
+        public IList<TypeScriptMethod> Methods()
+        {
+            return Node.OfKind(SyntaxKind.MethodDeclaration).Select(x => new TypeScriptMethod(x, File)).ToList();
         }
 
         public bool MethodExists(string methodName)
@@ -49,19 +59,20 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public void ReplaceMethod(string methodName, string method)
         {
-            var existing = FindNode($"ClassDeclaration/MethodDeclaration:{methodName}");
+            var methodNode = FindNode($"ClassDeclaration/MethodDeclaration:{methodName}");
 
-            if (existing == null)
+            if (methodNode == null)
             {
                 throw new InvalidOperationException($"Method ({methodName}) could not be found.");
             }
 
+            var existing = new TypeScriptMethod(methodNode, File);
+            
+
             if (existing.GetTextWithComments() != method)
             {
-                Change.ChangeNode(existing, method);
+                Change.ChangeNode(methodNode, method);
             }
-
-            UpdateChanges();
         }
 
         public void AddProperty(string propertyDeclaration)
@@ -85,6 +96,11 @@ namespace Intent.Modules.Common.TypeScript.Editor
             var properties = Node.OfKind(SyntaxKind.PropertyDeclaration);
 
             return properties.Any(x => x.IdentifierStr == propertyName);
+        }
+
+        public override bool IsIgnored()
+        {
+            return GetDecorator("IntentIgnore") != null;
         }
     }
 }

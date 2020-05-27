@@ -66,6 +66,10 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         protected override void ApplyFileChanges(TypeScriptFile file)
         {
             var @class = file.ClassDeclarations().First();
+            if (@class.IsIgnored())
+            {
+                return;
+            }
 
             foreach (var model in Model.Models)
             {
