@@ -78,6 +78,10 @@
       <Project>{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C}</Project>
       <Name>Intent.Modules.Angular</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj">
+      <Project>{6C36DDFE-EF6F-4C09-8CBC-208E6544DAC7}</Project>
+      <Name>Intent.Modules.Common.TypeScript</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

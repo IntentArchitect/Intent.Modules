@@ -12,19 +12,22 @@ using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
 using Intent.Modules.Common.Plugins;
+using Intent.Modules.Common.TypeScript;
+using Intent.Modules.Common.TypeScript.Editor;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class AngularComponentTsTemplate : AngularTypescriptProjectItemTemplateBase<IComponentModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class AngularComponentTsTemplate : TypeScriptTemplateBase<ComponentModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Component.AngularComponentTsTemplate";
 
-        public AngularComponentTsTemplate(IProject project, IComponentModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AngularComponentTsTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
         }
 
@@ -60,26 +63,30 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 });
         }
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+        protected override void ApplyFileChanges(TypeScriptFile file)
         {
             var @class = file.ClassDeclarations().First();
+            if (@class.IsIgnored())
+            {
+                return;
+            }
 
             foreach (var model in Model.Models)
             {
                 if (!@class.NodeExists($"PropertyDeclaration:{model.Name}"))
                 {
                     @class.AddProperty($@"
-  {model.Name}: {Types.Get(model.Type)};");
+  {model.Name}: {Types.Get(model.TypeReference)};");
                 }
             }
 
-            foreach (var operation in Model.Commands)
+            foreach (var command in Model.Commands)
             {
-                if (!@class.MethodExists(operation.Name.ToCamelCase()))
+                if (!@class.MethodExists(command.Name.ToCamelCase()))
                 {
                     @class.AddMethod($@"
 
-  {operation.Name.ToCamelCase()}({string.Join(", ", operation.Parameters.Select(x => x.Name.ToCamelCase() + (x.Type.IsNullable ? "?" : "") + ": " + Types.Get(x.Type, "{0}[]")))}): {(operation.ReturnType != null ? Types.Get(operation.ReturnType.Type) : "void")} {{
+  {command.Name.ToCamelCase()}({string.Join(", ", command.Parameters.Select(x => x.Name.ToCamelCase() + (x.TypeReference.IsNullable ? "?" : "") + ": " + Types.Get(x.TypeReference, "{0}[]")))}): {(command.ReturnType != null ? Types.Get(command.ReturnType) : "void")} {{
 
   }}");
                 }
@@ -95,7 +102,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToKebabCase()}.component",
                 fileExtension: "ts",
-                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}",
+                defaultLocationInProject: $"ClientApp/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}",
                 className: "${ComponentName}Component"
             );
         }

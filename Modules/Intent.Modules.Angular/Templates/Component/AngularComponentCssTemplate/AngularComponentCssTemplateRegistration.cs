@@ -15,7 +15,7 @@ using Intent.Modules.Angular.Api;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AngularComponentCssTemplateRegistration : ModelTemplateRegistrationBase<IComponentModel>
+    public class AngularComponentCssTemplateRegistration : ModelTemplateRegistrationBase<ComponentModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,15 +26,15 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
 
         public override string TemplateId => Component.AngularComponentCssTemplate.AngularComponentCssTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IComponentModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, ComponentModel model)
         {
             return new Component.AngularComponentCssTemplate.AngularComponentCssTemplate(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<IComponentModel> GetModels(IApplication application)
+        public override IEnumerable<ComponentModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetModules(application.Id).SelectMany(x => x.Components);
+            return _metadataManager.GetModuleModels(application).SelectMany(x => x.Components);
         }
     }
 }

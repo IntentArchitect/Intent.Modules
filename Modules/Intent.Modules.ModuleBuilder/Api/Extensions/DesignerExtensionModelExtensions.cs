@@ -53,6 +53,16 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("API Namespace");
             }
 
+            public string NuGetPackageId()
+            {
+                return _stereotype.GetProperty<string>("NuGet Package Id");
+            }
+
+            public string NuGetPackageVersion()
+            {
+                return _stereotype.GetProperty<string>("NuGet Package Version");
+            }
+
         }
 
     }

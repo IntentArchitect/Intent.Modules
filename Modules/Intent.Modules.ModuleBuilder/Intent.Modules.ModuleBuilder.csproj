@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Version>2.2.0-pre.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -66,23 +68,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiMetadataProvider.tt</DependentUpon>
     </Compile>
-  
     <None Update="Templates\Api\ApiAssociationModel\ApiAssociationModel.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiAssociationModel.cs</LastGenOutput>
     </None>
-  
     <Compile Update="Templates\Api\ApiAssociationModel\ApiAssociationModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiAssociationModel.tt</DependentUpon>
     </Compile>
-  
     <None Update="Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiAssociationModelExtensions.cs</LastGenOutput>
     </None>
-  
     <Compile Update="Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -109,13 +107,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.IntentArchitectPackager" Version="1.9.3">
+    <PackageReference Include="Intent.IntentArchitectPackager" Version="2.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.Modules.Common" Version="2.0.0" />
+    <PackageReference Include="Intent.Modules.Common" Version="2.1.0" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.0-pre.10" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.1" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
   </ItemGroup>
 
@@ -184,6 +182,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
   </ItemGroup>
 

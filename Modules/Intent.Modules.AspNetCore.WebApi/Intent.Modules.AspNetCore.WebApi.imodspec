@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AspNetCore.WebApi</id>
-  <version>2.1.0</version>
+  <version>2.1.1</version>
   <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>ASP.NET Core Web API distribution pattern for services.</summary>
   <description>ASP.NET Core Web API distribution pattern for services.</description>
@@ -17,14 +17,14 @@
         <add key="Namespace" description="Namespace" default="${Project.Name}.Controllers" />
       </config>
     </template>
-    <template id="Intent.AspNetCore.WebApi.ServiceCallContext" enabled="false">
+    <!--<template id="Intent.AspNetCore.WebApi.ServiceCallContext" enabled="false">
       <role>Distribution.WebApi</role>
-    </template>
+    </template>-->
   </templates>
   <decorators>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common.Types" version="2.0.0"/>
+    <dependency id="Intent.Common.Types" version="2.1.0"/>
     <dependency id="Intent.Application.Contracts" version="2.0.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
   </dependencies>

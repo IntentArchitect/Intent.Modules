@@ -21,16 +21,16 @@ namespace Intent.Modules.UserContext.Interop.AspNet.WebApi.Decorators
             };
         }
 
-        public override string DeclarePrivateVariables(IServiceModel service) => @"
+        public override string DeclarePrivateVariables(ServiceModel service) => @"
         private readonly IUserContextProvider<IUserContextData> _userContextProvider;";
 
-        public override string ConstructorParams(IServiceModel service) => @"
+        public override string ConstructorParams(ServiceModel service) => @"
             , IUserContextProvider<IUserContextData> userContextProvider";
 
-        public override string ConstructorInit(IServiceModel service) => @"
+        public override string ConstructorInit(ServiceModel service) => @"
             _userContextProvider = userContextProvider;";
 
-        public override string BeginOperation(IServiceModel service, IOperation operation) => @"
+        public override string BeginOperation(ServiceModel service, OperationModel operation) => @"
             var userContext = _userContextProvider.GetUserContext();
             ServiceCallContext.Instance.Set<IUserContextData>(userContext);";
 

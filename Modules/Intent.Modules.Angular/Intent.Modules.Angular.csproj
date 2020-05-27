@@ -1,205 +1,145 @@
-﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Modules.Angular</RootNamespace>
-    <AssemblyName>Intent.Modules.Angular</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Intent.IntentArchitectPackager" Version="2.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.Modules.Common" Version="2.1.0" />
+    <PackageReference Include="Intent.Modules.Modelers.Services" Version="2.1.0" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.1" />
+    <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="AngularCliInstaller.cs" />
-    <Compile Include="Editor\NgModuleDecorator.cs" />
-    <Compile Include="Editor\TypescriptArrayLiteralExpression.cs" />
-    <Compile Include="Editor\TypescriptClass.cs" />
-    <Compile Include="Editor\TypescriptNode.cs" />
-    <Compile Include="Editor\TypescriptObjectLiteralExpression.cs" />
-    <Compile Include="Editor\TypescriptVariableDeclaration.cs" />
-    <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.cs">
-      <DependentUpon>PaginatedSearchLayoutHtmlTemplateDecorator.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecoratorPartial.cs" />
-    <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecoratorRegistration.cs" />
-    <Compile Include="Editor\TypescriptClassDecorator.cs" />
-    <Compile Include="Editor\TypescriptFile.cs" />
-    <Compile Include="AngularTypescriptParser.cs" />
-    <Compile Include="Api\IModuleDTOModel.cs" />
-    <Compile Include="Api\IModuleModel.cs" />
-    <Compile Include="Api\ComponentModel.cs" />
-    <Compile Include="Api\IComponentModel.cs" />
-    <Compile Include="Api\IServiceProxyModel.cs" />
-    <Compile Include="Api\ModuleModel.cs" />
-    <Compile Include="Api\ServiceProxyModel.cs" />
-    <Compile Include="CommandLineProcessor.cs" />
-    <Compile Include="MetadataManagerExtensions.cs" />
-    <Compile Include="MetadataProvider.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates\AngularComponentCreatedEvent.cs" />
-    <Content Include="README.txt" />
-    <Compile Include="AngularTypescriptProjectItemTemplateBase.cs" />
-    <Compile Include="Templates\TypescriptFileHelper.cs" />
-    <Compile Include="Templates\Module\AngularModuleTemplate\AngularModuleTemplatePartial.cs" />
-    <Compile Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplatePartial.cs" />
-    <Compile Include="Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplatePartial.cs" />
-    <Content Include="Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>AngularModuleTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>AngularComponentHtmlTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>AngularComponentTsTemplate.cs</LastGenOutput>
-    </Content>
-    <Compile Include="Templates\Module\AngularModuleTemplate\AngularModuleTemplateRegistration.cs" />
-    <Compile Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplateRegistration.cs" />
-    <Compile Include="Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplateRegistration.cs" />
-    <Compile Include="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplatePartial.cs" />
-    <Content Include="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplate.tt">
+    <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AngularComponentCssTemplate.cs</LastGenOutput>
-    </Content>
-    <Compile Include="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplateRegistration.cs" />
-    <Compile Include="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplatePartial.cs" />
-    <Compile Include="Api\ModuleDTOModel.cs" />
-    <Compile Include="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplatePartial.cs" />
-    <Content Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt">
+    </None>
+    <None Update="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>PaginatedSearchLayoutHtmlTemplateDecorator.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt">
+      <LastGenOutput>AngularComponentHtmlTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AngularComponentTsTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AngularDTOTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt">
+    </None>
+    <None Update="Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>AngularServiceProxyTemplate.cs</LastGenOutput>
-    </Content>
-    <Compile Include="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplateRegistration.cs" />
-    <Compile Include="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplateRegistration.cs" />
-    <Compile Include="Templates\Core\CoreModuleTemplate\CoreModuleTemplateRegistration.cs" />
-    <Compile Include="Templates\Core\ApiServiceTemplate\ApiServiceTemplateRegistration.cs" />
-    <Compile Include="Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplateRegistration.cs" />
-    <Content Include="Templates\Core\CoreModuleTemplate\CoreModuleTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>CoreModuleTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Core\ApiServiceTemplate\ApiServiceTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiServiceTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt">
+      <LastGenOutput>AngularModuleTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AngularRoutingModuleTemplate.cs</LastGenOutput>
-    </Content>
-    <Compile Include="Templates\Core\CoreModuleTemplate\CoreModuleTemplatePartial.cs" />
-    <Compile Include="Templates\Core\ApiServiceTemplate\ApiServiceTemplatePartial.cs" />
-    <Compile Include="Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplatePartial.cs" />
-    <Compile Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplateRegistration.cs" />
-    <Content Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.tt">
+    </None>
+    <None Update="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EnvironmentTemplate.cs</LastGenOutput>
-    </Content>
-    <Compile Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplatePartial.cs" />
-    <Compile Include="Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplateRegistration.cs" />
-    <Compile Include="Templates\App\AppModuleTemplate\AppModuleTemplateRegistration.cs" />
-    <Content Include="Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt">
+      <LastGenOutput>AngularServiceProxyTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Core\ApiServiceTemplate\ApiServiceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>AppRoutingModuleTemplate.cs</LastGenOutput>
-    </Content>
-    <Content Include="Templates\App\AppModuleTemplate\AppModuleTemplate.tt">
+      <LastGenOutput>ApiServiceTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\App\AppModuleTemplate\AppModuleTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AppModuleTemplate.cs</LastGenOutput>
-    </Content>
-    <Compile Include="Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplatePartial.cs" />
-    <Compile Include="Templates\App\AppModuleTemplate\AppModuleTemplatePartial.cs" />
+    </None>
+    <None Update="Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AppRoutingModuleTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Core\CoreModuleTemplate\CoreModuleTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CoreModuleTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EnvironmentTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
+
   <ItemGroup>
-    <Content Include="Intent.Modules.Angular.imodspec" />
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.AspNetCore\Intent.Modules.AspNetCore.csproj">
-      <Project>{5CD69B39-BFF1-4713-86C7-D5D7D7F397EA}</Project>
-      <Name>Intent.Modules.AspNetCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
-      <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
-      <Name>Intent.Modules.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
-      <Project>{DBADFA28-E995-4E75-9933-215A51E7B580}</Project>
-      <Name>Intent.Modules.Constants</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj">
-      <Project>{C5A5AE9C-9137-4309-AC4E-F9494694390E}</Project>
-      <Name>Intent.Modules.Modelers.Services</Name>
-    </ProjectReference>
+    <Compile Update="Templates\App\AppModuleTemplate\AppModuleTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppModuleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppRoutingModuleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AngularComponentCssTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AngularComponentHtmlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AngularComponentTsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Core\ApiServiceTemplate\ApiServiceTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Core\CoreModuleTemplate\CoreModuleTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CoreModuleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EnvironmentTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Module\AngularModuleTemplate\AngularModuleTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AngularModuleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AngularRoutingModuleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AngularDTOTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AngularServiceProxyTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="modelers\Angular.modeler.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Intent.IntentArchitectPackager">
-      <Version>1.9.3</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Intent.Modules.Common">
-      <Version>2.0.0-pre8.2</Version>
-    </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes">
-      <Version>1.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="Intent.SoftwareFactory.SDK">
-      <Version>2.1.0-pre.10</Version>
-    </PackageReference>
-    <PackageReference Include="TypeScriptAST">
-      <Version>1.0.2</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

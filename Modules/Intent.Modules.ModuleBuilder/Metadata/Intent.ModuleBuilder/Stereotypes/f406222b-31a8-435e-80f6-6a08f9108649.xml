@@ -78,6 +78,16 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536">
+      <name>Allow Set Value</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac">
       <name>Allow Generic Types</name>
       <type>boolean</type>

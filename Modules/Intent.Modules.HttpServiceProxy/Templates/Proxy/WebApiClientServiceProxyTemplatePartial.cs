@@ -13,7 +13,7 @@ using Intent.Utils;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
-    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<IServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, ITemplatePostCreationHook
+    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.HttpServiceProxy.Proxy";
         public const string SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY = "ServiceContractTemplateId";
@@ -24,7 +24,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
         private string _httpClientServiceInterfaceTemplateId;
         private string _dtoTemplateId;
 
-        public WebApiClientServiceProxyTemplate(IProject project, IServiceModel model, string identifier = IDENTIFIER)
+        public WebApiClientServiceProxyTemplate(IProject project, ServiceModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
         }
@@ -74,7 +74,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string ApplicationName => Model.Application.Name;
 
-        private string GetOperationDefinitionParameters(IOperation o)
+        private string GetOperationDefinitionParameters(OperationModel o)
         {
             if (!o.Parameters.Any())
             {
@@ -84,7 +84,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             return o.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationCallParameters(IOperation o)
+        private string GetOperationCallParameters(OperationModel o)
         {
             if (!o.Parameters.Any())
             {
@@ -94,19 +94,19 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             return o.Parameters.Select(x => $"{x.Name}").Aggregate((x, y) => x + ", " + y);
         }
 
-        private string GetOperationReturnType(IOperation o)
+        private string GetOperationReturnType(OperationModel o)
         {
             if (o.ReturnType == null)
             {
                 return "void";
             }
 
-            return GetTypeName(o.ReturnType.Type);
+            return GetTypeName(o.ReturnType);
         }
 
         private string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IServiceModel>(_serviceContractTemplateId, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(_serviceContractTemplateId, x => x.Id == Model.Id));
             if (serviceContractTemplate == null)
             {
                 Logging.Log.Warning($"Could not find template with ID [{_serviceContractTemplateId}] " +
@@ -134,7 +134,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             return NormalizeNamespace($"{template.Namespace}.{template.ClassName}");
         }
 
-        private string GetReadAs(IOperation operation)
+        private string GetReadAs(OperationModel operation)
         {
             return $"ReadAsAsync<{GetOperationReturnType(operation)}>()";
 

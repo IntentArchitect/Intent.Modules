@@ -9,21 +9,23 @@ using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class AngularDTOTemplate : AngularTypescriptProjectItemTemplateBase<IModuleDTOModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class AngularDTOTemplate : TypeScriptTemplateBase<DTOModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularDTOTemplate";
 
-        public AngularDTOTemplate(IProject project, IModuleDTOModel model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
+        public AngularDTOTemplate(IProject project, ModuleDTOModel model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
         {
             AddTypeSource(TypescriptTypeSource.InProject(Project, TemplateId));
         }
@@ -39,7 +41,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{Model.Module.GetModuleName().ToKebabCase()}/models",
+                defaultLocationInProject: $"ClientApp/src/app/{((ModuleDTOModel)Model).Module.GetModuleName().ToKebabCase()}/models",
                 className: "${Model.Name}"
             );
         }

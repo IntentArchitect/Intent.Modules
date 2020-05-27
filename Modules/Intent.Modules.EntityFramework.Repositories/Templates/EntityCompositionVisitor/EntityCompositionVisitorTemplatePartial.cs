@@ -54,15 +54,5 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
                 @namespace: "${Project.ProjectName}"
             );
         }
-
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new[]
-            {
-                new NugetPackageInfo("Intent.Framework.EntityFramework", "1.0.1"),
-            }
-            .Union(base.GetNugetDependencies())
-            .ToArray();
-        }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="aa05ffb4-d445-497d-9903-e54dcf1e0c15" type="Folder">
-  <name>Modeler</name>
-  <display>Modeler</display>
+  <name>Designer</name>
+  <display>Designer</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

@@ -78,6 +78,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                     return Value == "Custom Type";
                 }
             }
+
+            public string GetRole()
+            {
+                return _stereotype.GetProperty<string>("Role");
+            }
         }
     }
 }

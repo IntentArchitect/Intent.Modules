@@ -3,14 +3,52 @@
   <name>Output Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>mapping output</element>
+    <element>element mapping</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
-  <displayFunction>return ``;</displayFunction>
+  <displayFunction />
   <autoAdd>false</autoAdd>
   <parentFolderId>a4cb5f8c-aef3-435f-8b08-3bdc9c98d5af</parentFolderId>
-  <order>0</order>
-  <properties />
+  <order>1</order>
+  <properties>
+    <property id="d87242ea-697e-4ab6-b9f9-f48e9af2d3af">
+      <name>Child Mapping Mode</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Map to Type</defaultValue>
+      <valueOptions>
+        <option>Map to Type</option>
+        <option>Traverse</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+    <property id="0b8166de-1c91-41d3-ae3f-155687be6220">
+      <name>To Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(Not Mapped to Type)</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>element settings</type>
+      </lookupTypes>
+      <isActiveFunction />
+      <isRequiredFunction>return properties['Child Mapping Mode'].value == "Map to Type"</isRequiredFunction>
+    </property>
+    <property id="f87c0289-fb95-46aa-a06d-3599e312324a">
+      <name>Use Mapping Settings</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>element mapping</type>
+      </lookupTypes>
+    </property>
+  </properties>
 </stereotypeDefinition>

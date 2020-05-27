@@ -41,6 +41,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
             if (!File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
             {
                 var randomPort = new Random().Next(40000, 65535);
+                var randomSslPort = new Random().Next(44300, 44399);
                 config = JsonConvert.DeserializeObject(JsonConvert.SerializeObject(new LaunchSettingsJson()
                 {
                     iisSettings = new IISSettings()
@@ -50,7 +51,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
                         iisExpress = new IISExpress()
                         {
                             applicationUrl = $"http://localhost:{randomPort}/",
-                            sslPort = 0
+                            sslPort = randomSslPort
                         }
                     },
                     profiles = new Dictionary<string, Profile>()

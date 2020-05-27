@@ -13,6 +13,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
     using Intent.Modules.Angular.Api;
     using System;
@@ -23,7 +24,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AppRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<IList<IModuleModel>>
+    public partial class AppRoutingModuleTemplate : TypeScriptTemplateBase<IList<ModuleModel>>
     {
 #line hidden
         /// <summary>
@@ -34,7 +35,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
             this.Write("import { NgModule } from \'@angular/core\';\r\nimport { Routes, RouterModule, Preload" +
                     "AllModules } from \'@angular/router\';\r\n\r\nconst routes: Routes = [\r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
  foreach(var module in Model) {
 // All of the below is not gonna work; but for now just to test idea...
 
@@ -43,35 +44,35 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
             #line hidden
             this.Write("  {\r\n    path: \'");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(module.Name.Replace("Module","").ToLower()));
             
             #line default
             #line hidden
             this.Write("\',\r\n    loadChildren: \'./");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(module.Name.Replace("Module","").ToLower()));
             
             #line default
             #line hidden
             this.Write("/");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(module.Name.Replace("Module","").ToLower()));
             
             #line default
             #line hidden
             this.Write(".module#");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(module.Name));
             
             #line default
             #line hidden
             this.Write("\'\r\n  },\r\n");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
  } 
             
             #line default

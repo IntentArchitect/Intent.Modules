@@ -57,10 +57,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
             {
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "File Template" },
+                { "Role", GetRole() },
                 { "Module Dependency", Model.GetModeler()?.ModuleDependency },
                 { "Module Dependency Version", Model.GetModeler()?.ModuleVersion }, 
                 { "ModelId", Model.Id }
             });
+        }
+
+        private string GetRole()
+        {
+            return Model.GetRole() ?? GetTemplateId();
         }
 
         private string GetModelType()

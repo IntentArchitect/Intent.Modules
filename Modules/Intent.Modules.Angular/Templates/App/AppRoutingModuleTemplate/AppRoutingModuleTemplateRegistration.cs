@@ -12,17 +12,13 @@ using Intent.Modules.Angular.Api;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel", Version = "1.0")]
 
-namespace Intent.Modules.Angular.Templates.AppRoutingModuleTemplate
+namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AppRoutingModuleTemplateRegistration : ListModelTemplateRegistrationBase<IModuleModel>
+    public class AppRoutingModuleTemplateRegistration : ListModelTemplateRegistrationBase<ModuleModel>
     {
         public override string TemplateId => App.AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<IModuleModel> model)
-        {
-            return new App.AppRoutingModuleTemplate.AppRoutingModuleTemplate(project, model);
-        }
         private readonly IMetadataManager _metadataManager;
 
         public AppRoutingModuleTemplateRegistration(IMetadataManager metadataManager)
@@ -30,10 +26,15 @@ namespace Intent.Modules.Angular.Templates.AppRoutingModuleTemplate
             _metadataManager = metadataManager;
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IList<IModuleModel> GetModels(IApplication application)
+        public override ITemplate CreateTemplateInstance(IProject project, IList<ModuleModel> model)
         {
-            return _metadataManager.GetModules(application.Id).ToList();
+            return new App.AppRoutingModuleTemplate.AppRoutingModuleTemplate(project, model);
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public override IList<ModuleModel> GetModels(IApplication application)
+        {
+            return _metadataManager.GetModuleModels(application).ToList();
         }
     }
 }

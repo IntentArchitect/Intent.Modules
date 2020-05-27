@@ -13,8 +13,9 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
-    using Intent.Modules.Angular.Api;
+    using Intent.Modelers.Services.Api;
     using System;
     
     /// <summary>
@@ -23,7 +24,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AngularDTOTemplate : AngularTypescriptProjectItemTemplateBase<IModuleDTOModel>
+    public partial class AngularDTOTemplate : TypeScriptTemplateBase<DTOModel>
     {
 #line hidden
         /// <summary>
@@ -33,47 +34,47 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         {
             this.Write("\r\nexport interface ");
             
-            #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
+            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             
-            #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
+            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GenericTypes));
             
             #line default
             #line hidden
             this.Write(" {\r\n");
             
-            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
+            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
   foreach (var field in Model.Fields) { 
             
             #line default
             #line hidden
             this.Write("    ");
             
-            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToCamelCase()));
             
             #line default
             #line hidden
             
-            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.Type.IsNullable ? "?" : ""));
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.TypeReference.IsNullable ? "?" : ""));
             
             #line default
             #line hidden
             this.Write(": ");
             
-            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Types.Get(field.Type)));
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.Types.Get(field.TypeReference)));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
   } 
             
             #line default

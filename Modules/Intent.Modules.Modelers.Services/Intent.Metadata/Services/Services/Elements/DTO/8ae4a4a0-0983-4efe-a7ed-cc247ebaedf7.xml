@@ -9,7 +9,7 @@
     <applicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</applicationId>
     <metadataId>Domain</metadataId>
     <mappedPath>
-      <target id="a97429c9-464a-4618-8692-2d1019bc732c" name="Movie" />
+      <target id="a97429c9-464a-4618-8692-2d1019bc732c" name="Movie" type="element" specialization="Class" />
     </mappedPath>
   </mappedClass>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
@@ -34,7 +34,7 @@
       <isMapped>true</isMapped>
       <mappedClass>
         <mappedPath>
-          <target id="eb8c7020-3c80-40c2-9dc2-0d066cb9db68" name="Characters" />
+          <target id="eb8c7020-3c80-40c2-9dc2-0d066cb9db68" name="Characters" type="association" specialization="Association" />
         </mappedPath>
       </mappedClass>
       <parentFolderId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</parentFolderId>

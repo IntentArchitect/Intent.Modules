@@ -13,6 +13,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
     using Intent.Modules.Angular.Api;
     using System;
@@ -23,7 +24,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AngularServiceProxyTemplate : AngularTypescriptProjectItemTemplateBase<IServiceProxyModel>
+    public partial class AngularServiceProxyTemplate : TypeScriptTemplateBase<ServiceProxyModel>
     {
 #line hidden
         /// <summary>
@@ -34,14 +35,14 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             this.Write("import { Injectable } from \'@angular/core\';\r\n\r\nimport { Observable } from \'rxjs\';" +
                     "\r\nimport { map } from \'rxjs/operators\';\r\n\r\n@Injectable()\r\nexport class ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" {\r\n  constructor(\r\n    private apiService: ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ApiServiceClassName));
             
             #line default

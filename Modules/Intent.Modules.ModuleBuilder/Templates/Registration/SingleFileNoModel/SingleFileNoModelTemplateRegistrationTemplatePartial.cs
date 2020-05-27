@@ -16,6 +16,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 
         public SingleFileNoModelTemplateRegistrationTemplate(IProject project, TemplateRegistrationModel model) : base(TemplateId, project, model)
         {
+            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.GetDesignerSettings().NuGetPackageId()) &&
+                !string.IsNullOrWhiteSpace(Model.GetModeler()?.GetDesignerSettings().NuGetPackageVersion()))
+            {
+                AddNugetDependency(packageName: Model.GetModeler().GetDesignerSettings().NuGetPackageId(), packageVersion: Model.GetModeler().GetDesignerSettings().NuGetPackageVersion());
+            }
         }
 
         public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();

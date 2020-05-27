@@ -55,27 +55,34 @@ using Microsoft.Extensions.Options;
 ");
             
             #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
+  if (!IsNetCore2App()) { 
             
             #line default
             #line hidden
-            this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+            this.Write("using Microsoft.Extensions.Hosting;\r\n");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+            
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -90,30 +97,86 @@ using Microsoft.Extensions.Options;
         // [IntentManaged(Mode.Ignore)] // Uncomment this line to take over management of configuring services
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-            IntentConfiguredServices(services);
 ");
             
             #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+  if (IsNetCore2App()) { 
+            
+            #line default
+            #line hidden
+            this.Write("            services.AddMvc();\r\n");
+            
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+  } else { 
+            
+            #line default
+            #line hidden
+            this.Write("            services.AddControllers();\r\n");
+            
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("            IntentConfiguredServices(services);\r\n");
+            
+            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ServiceConfigurations()));
             
             #line default
             #line hidden
-            this.Write(@"
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseMvc();
-");
+            this.Write("\r\n        }\r\n\r\n        // This method gets called by the runtime. Use this method" +
+                    " to configure the HTTP request pipeline.\r\n        public void Configure(IApplica" +
+                    "tionBuilder app, ");
             
-            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture((IsNetCore2App() ? "IHostingEnvironment" : "IWebHostEnvironment")));
+            
+            #line default
+            #line hidden
+            this.Write(" env)\r\n        {\r\n            if (env.IsDevelopment())\r\n            {\r\n          " +
+                    "      app.UseDeveloperExceptionPage();\r\n            }\r\n");
+            
+            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+  if (IsNetCore2App()) { 
+            
+            #line default
+            #line hidden
+            this.Write("            else\r\n            {\r\n                // The default HSTS value is 30 " +
+                    "days. You may want to change this for production scenarios, see https://aka.ms/a" +
+                    "spnetcore-hsts.\r\n                app.UseHsts();\r\n            }\r\n");
+            
+            #line 70 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 72 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+  if (IsNetCore2App()) { 
+            
+            #line default
+            #line hidden
+            this.Write("            app.UseHttpsRedirection();\r\n            \r\n            app.UseMvc();\r\n" +
+                    "");
+            
+            #line 76 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+  } else { 
+            
+            #line default
+            #line hidden
+            this.Write("            app.UseHttpsRedirection();\r\n\r\n            app.UseRouting();\r\n\r\n      " +
+                    "      app.UseAuthorization();\r\n\r\n            app.UseEndpoints(endpoints =>\r\n    " +
+                    "        {\r\n                endpoints.MapControllers();\r\n            });\r\n");
+            
+            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            
+            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Configurations()));
             
             #line default
@@ -121,14 +184,14 @@ using Microsoft.Extensions.Options;
             this.Write("\r\n        }\r\n\r\n        public void IntentConfiguredServices(IServiceCollection se" +
                     "rvices) \r\n        {\r\n");
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Registrations()));
             
             #line default
             #line hidden
             this.Write("\r\n        }\r\n\r\n");
             
-            #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
+            #line 96 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Startup\CoreWebStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Methods()));
             
             #line default

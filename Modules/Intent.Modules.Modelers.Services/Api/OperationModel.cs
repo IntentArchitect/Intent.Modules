@@ -39,7 +39,22 @@ namespace Intent.Modelers.Services.Api
             .Select(x => new ParameterModel(x))
             .ToList();
 
-        public ITypeReference ReturnType => TypeReference.Element != null ? TypeReference : null;
+        public ITypeReference ReturnType => TypeReference?.Element != null ? TypeReference : null;
+
+        [IntentManaged(Mode.Fully)]
+        public ITypeReference TypeReference => _element.TypeReference;
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(OperationModel other)
@@ -60,18 +75,6 @@ namespace Intent.Modelers.Services.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public ITypeReference TypeReference => _element.TypeReference;
-
-        [IntentManaged(Mode.Fully)]
-        public IElement InternalElement => _element;
-
-        [IntentManaged(Mode.Fully)]
-        public override string ToString()
-        {
-            return _element.ToString();
         }
     }
 }

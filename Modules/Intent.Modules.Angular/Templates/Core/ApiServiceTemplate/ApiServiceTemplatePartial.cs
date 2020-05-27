@@ -6,17 +6,18 @@ using Intent.Eventing;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.Modules.Constants;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class ApiServiceTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class ApiServiceTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Core.ApiServiceTemplate";
@@ -43,7 +44,7 @@ namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "api.service",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: "Client/src/app/core",
+                defaultLocationInProject: "ClientApp/src/app/core",
                 className: "ApiService"
             );
         }

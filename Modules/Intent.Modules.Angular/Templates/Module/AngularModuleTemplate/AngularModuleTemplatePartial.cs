@@ -10,23 +10,25 @@ using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Editor;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class AngularModuleTemplate : AngularTypescriptProjectItemTemplateBase<IModuleModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class AngularModuleTemplate : TypeScriptTemplateBase<ModuleModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularModuleTemplate";
         private readonly IList<ITemplate> _components = new List<ITemplate>();
         private readonly IList<ITemplate> _providers = new List<ITemplate>();
 
-        public AngularModuleTemplate(IProject project, IModuleModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AngularModuleTemplate(IProject project, ModuleModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
             project.Application.EventDispatcher.Subscribe(AngularComponentCreatedEvent.EventId, @event =>
                 {
@@ -45,8 +47,9 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                     return;
                 }
 
-                _components.Add(FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
-                //_providers.Add(new AngularProviderInfo(((IHasClassDetails)template).ClassName, template.GetMetadata().GetRelativeFilePathWithFileName()));
+                //_components.Add(FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
+                var template = FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
+                _providers.Add(template);
             });
         }
 
@@ -54,20 +57,24 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string RoutingModuleClassName => GetTemplateClassName(AngularRoutingModuleTemplate.AngularRoutingModuleTemplate.TemplateId, Model);
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+        protected override void ApplyFileChanges(TypeScriptFile file)
         {
+            var @class = file.ClassDeclarations().First();
+            if (@class.IsIgnored())
+            {
+                return;
+            }
+
+            var ngModuleDecorator = @class.GetDecorator("NgModule")?.ToNgModule();
+
             foreach (var template in _components)
             {
-                var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
                 ngModuleDecorator?.AddDeclarationIfNotExists(GetTemplateClassName(template));
-                file.UpdateChanges();
             }
 
             foreach (var template in _providers)
             {
-                var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
                 ngModuleDecorator?.AddProviderIfNotExists(GetTemplateClassName(template));
-                file.UpdateChanges();
             }
         }
 
@@ -79,7 +86,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ModuleName.ToKebabCase()}.module",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"Client/src/app/{ ModuleName.ToKebabCase() }",
+                defaultLocationInProject: $"ClientApp/src/app/{ ModuleName.ToKebabCase() }",
                 className: "${ModuleName}Module");
         }
     }
@@ -106,17 +113,5 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string ProviderName { get; set; }
         public string Location { get; set; }
-    }
-
-    public static class IModuleModelExtensions
-    {
-        public static string GetModuleName(this IModuleModel module)
-        {
-            if (module.Name.EndsWith("Module", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return module.Name.Substring(0, module.Name.Length - "Module".Length);
-            }
-            return module.Name;
-        }
     }
 }

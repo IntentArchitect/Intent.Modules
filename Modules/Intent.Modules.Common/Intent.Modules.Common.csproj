@@ -6,20 +6,26 @@
     <Authors>Intent Architect</Authors>
     <Product>Intent - Modules Common</Product>
     <Description>Base classes and helpers for building your own modules for Intent Architect.</Description>
-    <Copyright>Copyright 2018</Copyright>
+    <Copyright>Copyright 2020</Copyright>
     <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
     <PackageIconUrl>https://intentarchitect.com/assets/images/logo.png</PackageIconUrl>
     <PackageTags>Intent Architect Software Factory SDK Modules Common</PackageTags>
-    <Version>2.1.0-pre.1</Version>
+    <Version>2.2.0-pre.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.IntentArchitectPackager" Version="1.9.3">
+    <Compile Remove="Templates\Typescript\**" />
+    <EmbeddedResource Remove="Templates\Typescript\**" />
+    <None Remove="Templates\Typescript\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Intent.IntentArchitectPackager" Version="2.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.0-pre.10" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.1" />
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
   </ItemGroup>
 

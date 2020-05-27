@@ -12,7 +12,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
-    using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
     using System;
     
@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AppModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    public partial class AppModuleTemplate : TypeScriptTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -49,7 +49,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

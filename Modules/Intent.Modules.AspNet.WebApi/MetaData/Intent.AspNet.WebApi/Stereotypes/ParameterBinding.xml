@@ -5,10 +5,11 @@
     <type>FontAwesome</type>
     <source>chain-broken</source>
   </icon>
+  <applyMode>manually</applyMode>
   <displayIcon>false</displayIcon>
   <displayFunction>[${Type}]</displayFunction>
   <targetElements>
-    <element>operation-parameter</element>
+    <element>parameter</element>
   </targetElements>
   <parentFolderId>87d16e6c-ce99-4329-87c4-d39dcddf0764</parentFolderId>
   <properties>

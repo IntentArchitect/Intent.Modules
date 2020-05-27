@@ -52,16 +52,6 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             };
         }
 
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new[]
-            {
-                NugetPackages.AspNetCoreAll,
-            }
-            .Union(base.GetNugetDependencies())
-            .ToArray();
-        }
-
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
@@ -150,7 +140,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             }
 
             return onExceptionCaught + @"
-                return StatusCode(500, e);";
+                throw e;";
         }
 
         public string OnDispose()

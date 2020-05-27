@@ -7,7 +7,6 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.MetaData</metadataRelativePath>
   <applications>
-    <application id="9605cb81-cdac-46ca-95e8-b6d53256088e" relativePath="Intent.Modules.Convention.ServiceImplementations\Convention.ServiceImplementations.application.config" />
     <application id="1cecc65d-e804-4de6-a27f-e8e4ad0190d7" relativePath="Intent.Modules.Angular\Angular.application.config" />
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />
@@ -15,6 +14,8 @@
     <application id="4e2487dd-3fec-4611-95fb-d49687929743" relativePath="Intent.Modules.ModuleBuilder.Typescript\ModuleBuilder.Typescript.application.config" />
     <application id="a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb" relativePath="Intent.Modules.Modelers.Services\Modeler.Services.application.config" />
     <application id="ff3070c6-4626-4a8b-85ab-7d56887a1445" relativePath="Intent.Modules.Common.Types\Common.Types.application.config" />
+    <application id="3517d53b-f6f7-4d96-8315-efcc6d5622ec" relativePath="Intent.Modules.Common.CSharp\Common.CSharp.application.config" />
+    <application id="45b6cbb2-bbe2-4a28-a65b-1100ec6a550c" relativePath="Intent.Modules.Common.TypeScript\Common.Typescript.application.config" />
     <application id="ad79943a-b771-42b0-9563-9e01f7ea2dbc" relativePath="Intent.Modules.VisualStudio.Projects\VisualStudio.Projects.application.config" />
   </applications>
 </solution>

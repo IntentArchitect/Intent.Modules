@@ -58,17 +58,12 @@ namespace <#=Namespace#>
             {<#= BeforeTransaction(operation) #>
                 using (TransactionScope ts = new TransactionScope(TransactionScopeOption.Required, tso<#= operation.IsAsync() ? ", TransactionScopeAsyncFlowOption.Enabled" : "" #>))
                 {<#= BeforeCallToAppLayer(operation) #>
-<#
-        if (operation.ReturnType != null)
-        {
-#>                    var appServiceResult = <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+<#      if (operation.ReturnType != null) {#>
+                    var appServiceResult = <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
                     result = appServiceResult;
-<#      }
-        else
-        {
-#>                        <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
-<#      }
-#><#= AfterCallToAppLayer(operation) #>
+<#      } else { #>
+                    <#= operation.IsAsync() ? "await " : "" #>_appService.<#= operation.Name#>(<#= GetOperationCallParameters(operation) #>);
+<#      } #><#= AfterCallToAppLayer(operation) #>
                     ts.Complete();
                 }<#= AfterTransaction(operation) #>
             }

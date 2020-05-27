@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api.Factories;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
@@ -58,6 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 ExpandedIcon = GetIcon(this.GetSettings().ExpandedIcon()),
                 AllowRename = this.GetSettings().AllowRename(),
                 AllowAbstract = this.GetSettings().AllowAbstract(),
+                AllowSetValue = this.GetSettings().AllowSetValue(),
                 AllowGenericTypes = this.GetSettings().AllowGenericTypes(),
                 AllowMapping = this.MappingSettings != null,
                 AllowSorting = this.GetSettings().AllowSorting(),
@@ -69,7 +71,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                     TargetTypes = this.GetTypeReferenceSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
                     AllowIsNullable = this.GetTypeReferenceSettings().AllowNullable(),
                     AllowIsCollection = this.GetTypeReferenceSettings().AllowCollection(),
-                    DefaultTypeId = this.GetTypeReferenceSettings().DefaultTypeId(),
+                    DefaultTypeId = this.GetTypeReferenceSettings().DefaultTypeId()
                 } : null,
                 DiagramSettings = DiagramSettings?.ToPersistable(),
                 ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),

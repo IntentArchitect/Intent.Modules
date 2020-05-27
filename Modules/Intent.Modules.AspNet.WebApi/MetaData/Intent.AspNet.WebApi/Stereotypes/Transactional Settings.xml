@@ -4,6 +4,7 @@
   <icon type="FontAwesome" source="btc" />
   <displayIcon>true</displayIcon>
   <displayFunction />
+  <applyMode>manually</applyMode>
   <targetElements>
     <element>operation</element>
   </targetElements>

@@ -87,7 +87,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new ElementVisualSettingsPersistable()
             {
-                SpecializationType = this.GetSettings().TargetType().Name,
+                SpecializationType = this.TypeReference.Element.Name,
                 Position = new PositionSettings()
                 {
                     X = this.GetPositionSettings().X() ?? "${x}",
@@ -115,5 +115,8 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == ElementVisualSettingsModel.SpecializationType)
             .Select(x => new ElementVisualSettingsModel(x))
             .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public ITypeReference TypeReference => _element.TypeReference;
     }
 }

@@ -23,16 +23,16 @@ namespace <#= Namespace #>
     {
         public int TotalCount { get; private set; }
         public int PageCount { get; private set; }
-        public int PageIndex { get; private set; }
+        public int PageNo { get; private set; }
         public int PageSize { get; private set; }
 
-        public <#= ClassName #>(IQueryable<T> source, int pageIndex, int pageSize)
+        public <#= ClassName #>(IQueryable<T> source, int pageNo, int pageSize)
         {
             TotalCount = source.Count();
             PageCount = GetPageCount(pageSize, TotalCount);
-            PageIndex = pageIndex;
+            PageNo = pageNo;
             PageSize = pageSize;
-            var skip = (PageIndex * PageSize);
+            var skip = ((PageNo - 1) * PageSize);
 
             AddRange(source
                 .Skip(skip)
@@ -40,24 +40,24 @@ namespace <#= Namespace #>
                 .ToList());
         }
 
-        public <#= ClassName #>(int totalCount, int pageIndex, int pageSize, List<T> results)
+        public <#= ClassName #>(int totalCount, int pageNo, int pageSize, List<T> results)
         {
             TotalCount = totalCount;
             PageCount = GetPageCount(pageSize, TotalCount);
-            PageIndex = pageIndex;
+            PageNo = pageNo;
             PageSize = pageSize;
             AddRange(results);
         }
 
-        public static Task<<#= PagedResultInterfaceName #><T>> CreateAsync(IQueryable<T> source, int pageIndex, int pageSize)
+        public static async Task<<#= PagedResultInterfaceName #><T>> CreateAsync(IQueryable<T> source, int pageNo, int pageSize)
         {
-            var count = source.CountAsync();
-            var skip = (pageIndex * pageSize);
-            var results = source
+            var count = await source.CountAsync();
+            var skip = ((pageNo - 1) * pageSize);
+            var results = await source
                 .Skip(skip)
                 .Take(pageSize)
                 .ToListAsync();
-            return Task.WhenAll(count, results).ContinueWith<<#= PagedResultInterfaceName #><T>>(x => new <#= ClassName #><T>(count.Result, pageIndex, pageSize, results.Result));
+            return new <#= ClassName #><T>(totalCount: count, pageNo: pageNo, pageSize: pageSize, results: results);
         }
 
         private int GetPageCount(int pageSize, int totalCount)

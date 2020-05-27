@@ -4,7 +4,6 @@ using Intent.Engine;
 using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.Modelers.Services;
 using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
@@ -18,7 +17,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         {
             _metadataManager = metadataManager;
 
-            FilterExpression = "model.MappedClass != null";
+            FilterExpression = "model.Mapping != null";
         }
 
         public override string TemplateId => MappingTemplate.Identifier;

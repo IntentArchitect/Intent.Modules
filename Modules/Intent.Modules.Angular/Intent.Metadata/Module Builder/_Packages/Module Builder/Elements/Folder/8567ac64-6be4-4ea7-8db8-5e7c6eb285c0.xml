@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="8567ac64-6be4-4ea7-8db8-5e7c6eb285c0" type="Folder">
   <name>App</name>
+  <display>App</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

@@ -9,8 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.Services.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class FolderModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class FolderModel : IHasStereotypes, IMetadataModel, IHasFolder
     {
         public const string SpecializationType = "Folder";
         public FolderModel(IElement element)
@@ -19,7 +19,9 @@ namespace Intent.Modelers.Services.Api
             {
                 throw new Exception($"Cannot create a folder from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
-            ParentFolder = element.ParentElement != null ? new FolderModel(element.ParentElement) : null;
+
+            _element = element;
+            Folder = element.ParentElement != null ? new FolderModel(element.ParentElement) : null;
             IsPackage = false;
         }
 
@@ -29,7 +31,7 @@ namespace Intent.Modelers.Services.Api
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
-        public FolderModel ParentFolder { get; }
+        public FolderModel Folder { get; }
 
         public bool IsPackage { get; }
 

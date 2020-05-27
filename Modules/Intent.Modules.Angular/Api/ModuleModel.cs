@@ -1,48 +1,94 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.Angular.Api
 {
-    internal class ModuleModel : IModuleModel, IEquatable<IModuleModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public class ModuleModel : IHasStereotypes, IMetadataModel
     {
-        private readonly IElement _class;
+        protected readonly IElement _element;
+        public const string SpecializationType = "Module";
 
-        public ModuleModel(IElement @class)
+        public ModuleModel(IElement element)
         {
-            _class = @class;
-            Components = @class.ChildElements.Where(x => x.SpecializationType == "Component").Select(x => new ComponentModel(x, this));
-            ServiceProxies = @class.ChildElements.Where(x => x.SpecializationType == ServiceProxyModel.SpecializationType).Select(x => new ServiceProxyModel(x, this));
-            ModelDefinitions = @class.ChildElements.Where(x => x.SpecializationType == "Model Definition").Select(x => new ModuleDTOModel(x, this));
+            _element = element;
         }
 
-        public IEnumerable<IStereotype> Stereotypes => _class.Stereotypes;
-        public string Id => _class.Id;
-        public string Name => _class.Name;
-        public IElementApplication Application => _class.Application;
-        public IEnumerable<IServiceProxyModel> ServiceProxies { get; }
-        public IEnumerable<IModuleDTOModel> ModelDefinitions { get; }
-        public string Comment => _class.Comment;
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public IEnumerable<IComponentModel> Components { get; }
+        [IntentManaged(Mode.Fully)]
+        public string Id => _element.Id;
 
-        public bool Equals(IModuleModel other)
+        [IntentManaged(Mode.Fully)]
+        public string Name => _element.Name;
+        public IElementApplication Application => _element.Application;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ServiceProxyModel> ServiceProxies => _element.ChildElements
+            .Where(x => x.SpecializationType == ServiceProxyModel.SpecializationType)
+            .Select(x => new ServiceProxyModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ModelDefinitionModel> ModelDefinitions => _element.ChildElements
+            .Where(x => x.SpecializationType == ModelDefinitionModel.SpecializationType)
+            .Select(x => new ModelDefinitionModel(x))
+            .ToList();
+
+        public string Comment => _element.Comment;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ComponentModel> Components => _element.ChildElements
+            .Where(x => x.SpecializationType == ComponentModel.SpecializationType)
+            .Select(x => new ComponentModel(x))
+            .ToList();
+
+
+        public string GetModuleName()
         {
-            return Equals(Id, other.Id);
+            if (Name.EndsWith("Module", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return Name.Substring(0, Name.Length - "Module".Length);
+            }
+            return Name;
         }
 
+        [IntentManaged(Mode.Fully)]
+        public bool Equals(ModuleModel other)
+        {
+            return Equals(_element, other?._element);
+        }
+
+        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((IModuleModel)obj);
+            return Equals((ModuleModel)obj);
         }
 
+        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
-            return (_class != null ? _class.GetHashCode() : 0);
+            return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
         }
     }
 }

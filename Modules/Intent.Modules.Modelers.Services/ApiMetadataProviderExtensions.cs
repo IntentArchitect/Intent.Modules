@@ -9,7 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
-namespace Intent.Modules.Modelers.Services
+namespace Intent.Modelers.Services.Api
 {
     public static class ApiMetadataProviderExtensions
     {

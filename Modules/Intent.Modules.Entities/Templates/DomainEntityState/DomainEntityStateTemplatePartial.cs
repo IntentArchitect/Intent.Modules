@@ -42,7 +42,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 
         protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            var entity = Project.FindTemplateInstance(DomainEntityTemplate.Identifier, Model);
+            var entity = Project.FindTemplateInstance(DomainEntityTemplate.Identifier);
 
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,

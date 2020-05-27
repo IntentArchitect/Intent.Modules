@@ -31,7 +31,7 @@ namespace Intent.Modelers.Domain.Api
             //}
             _element = element;
             //classCache.Add(_element.UniqueKey(), this);
-            Folder = Api.Folder.SpecializationType.Equals(_element.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_element.ParentElement) : null;
+            Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
 
             //var generalizedFrom = _element.AssociatedElements
             //    .Where(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase) &&
@@ -50,7 +50,7 @@ namespace Intent.Modelers.Domain.Api
             //}
 
             _associatedElements = this.AssociatedToClasses()
-                .Concat(this.AssociatedFromClasses().Where(x => x.OtherEnd().Element.Id != Id))
+                .Concat(this.AssociatedFromClasses().Where(x => x.Element.Id != Id))
                 .ToList();
             //_associatedElements = element.AssociatedElements
             //    .Where(x => "Composition".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase)
@@ -71,17 +71,21 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-        public IFolder Folder { get; }
+        public FolderModel Folder { get; }
 
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         public bool IsAbstract => _element.IsAbstract;
+
+        [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+
         public ClassModel ParentClass => this.Generalizations().Select(x => new ClassModel(x.Element)).SingleOrDefault();
+
         public IEnumerable<ClassModel> ChildClasses => this.Specializations().Select(x => new ClassModel(x.Element)).ToList();
-        public bool IsMapped => _element.IsMapped;
+
         public string Comment => _element.Comment;
-        public IElementMapping MappedClass => _element.MappedElement;
+
         public IElementApplication Application => _element.Application;
 
         [IntentManaged(Mode.Fully)]

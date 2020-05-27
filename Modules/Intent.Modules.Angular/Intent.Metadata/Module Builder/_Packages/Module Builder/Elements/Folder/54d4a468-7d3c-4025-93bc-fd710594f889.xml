@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="54d4a468-7d3c-4025-93bc-fd710594f889" type="Folder">
   <name>Proxies</name>
+  <display>Proxies</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

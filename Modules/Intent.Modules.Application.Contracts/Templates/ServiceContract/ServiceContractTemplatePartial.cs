@@ -23,11 +23,8 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         public ServiceContractTemplate(IProject project, ServiceModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
-        }
-
-        public override void OnCreated()
-        {
-            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            AddTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            SetDefaultTypeCollectionFormat("List<{0}>");
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
@@ -96,24 +93,24 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         private string GetOperationReturnType(OperationModel o)
         {
-            if (o.TypeReference.Element == null)
+            if (o.ReturnType == null)
             {
                 return o.IsAsync() ? "Task" : "void";
             }
-            return o.IsAsync() ? $"Task<{GetTypeName(o.TypeReference)}>" : GetTypeName(o.TypeReference);
+            return o.IsAsync() ? $"Task<{GetTypeName(o.ReturnType)}>" : GetTypeName(o.TypeReference);
         }
 
-        private string GetTypeName(ITypeReference typeInfo)
-        {
-            var result = NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
-            //if (typeInfo.IsCollection && typeInfo.Type != ReferenceType.ClassType)
-            //{
-            //    result = string.Format(GetCollectionTypeFormatConfig(), result);
-            //}
-            // Don't check for nullables here because the type resolution system will take care of language specific nullables
+        //private string GetTypeName(ITypeReference typeInfo)
+        //{
+        //    var result = NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
+        //    //if (typeInfo.IsCollection && typeInfo.Type != ReferenceType.ClassType)
+        //    //{
+        //    //    result = string.Format(GetCollectionTypeFormatConfig(), result);
+        //    //}
+        //    // Don't check for nullables here because the type resolution system will take care of language specific nullables
 
-            return result;
-        }
+        //    return result;
+        //}
 
         private string GetCollectionTypeFormatConfig()
         {

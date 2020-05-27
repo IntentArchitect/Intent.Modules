@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>45b6cbb2-bbe2-4a28-a65b-1100ec6a550c</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>6b7eb211-24b5-4a37-b15b-42215b5d1fa0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Typescript\Intent.Modules.Common.Typescript.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Typescript.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>6b7eb211-24b5-4a37-b15b-42215b5d1fa0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Typescript\Intent.Modules.Common.Typescript.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Typescript.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

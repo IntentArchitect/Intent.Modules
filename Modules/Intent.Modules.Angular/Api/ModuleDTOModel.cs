@@ -3,13 +3,13 @@ using Intent.Modelers.Services.Api;
 
 namespace Intent.Modules.Angular.Api
 {
-    internal class ModuleDTOModel : DTOModel, IModuleDTOModel
+    public class ModuleDTOModel : DTOModel
     {
-        public ModuleDTOModel(IElement @class, IModuleModel module) : base(@class)
+        public ModuleDTOModel(IElement @class, ModuleModel module) : base(@class)
         {
             Module = module;
         }
 
-        public IModuleModel Module { get; }
+        public ModuleModel Module { get; }
     }
 }

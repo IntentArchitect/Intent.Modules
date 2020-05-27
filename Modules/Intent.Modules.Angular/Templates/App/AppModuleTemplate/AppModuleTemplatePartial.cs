@@ -7,14 +7,20 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Metadata.Models;
+using System;
+using System.Collections.Generic;
+using Intent.Modules.Common.TypeScript.Editor;
+using Intent.Modules.Common.TypeScript.Templates;
+using Intent.Modules.Common.VisualStudio;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class AppModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class AppModuleTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
@@ -26,7 +32,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
         public string AppRoutingModuleClassName => GetTemplateClassName(AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId);
         public string CoreModule => GetTemplateClassName(CoreModuleTemplate.TemplateId);
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+        protected override void ApplyFileChanges(TypeScriptFile file)
         {
             var moduleClass = file.ClassDeclarations().First();
 
@@ -44,11 +50,27 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"app.module",
                 fileExtension: "ts",
-                defaultLocationInProject: $"Client/src/app",
+                defaultLocationInProject: $"ClientApp/src/app",
                 className: "AppModule"
             );
         }
 
+        public IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        {
+            // Reason for this version:
+            // Angular 8 wants Typescript >= 3.4.0 and < 3.6.0, but Visual Studio 2019 builds using 3.7.
+            // https://stackoverflow.com/questions/58485673/vs2019-error-ts2300-duplicate-identifier-iteratorresult
+            var packages = new List<INugetPackageInfo>()
+            {
+                new NugetPackageInfo("Microsoft.TypeScript.MsBuild", "3.5.3")
+            };
 
+            if (Project.IsNetCore3App())
+            {
+                packages.Add(new NugetPackageInfo("Microsoft.AspNetCore.SpaServices.Extensions", "3.1.4"));
+            }
+
+            return packages;
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
-        public ITypeReference ReturnType => TypeReference.Element != null ? TypeReference : null;
+        public ITypeReference ReturnType => TypeReference?.Element != null ? TypeReference : null;
 
         public bool IsAbstract => _element.IsAbstract;
 
@@ -75,5 +75,8 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
     }
 }

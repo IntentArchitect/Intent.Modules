@@ -6,6 +6,7 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Eventing;
+using Intent.Modules.VisualStudio.Projects;
 using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.Templates.Startup
@@ -232,6 +233,11 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
                 .SelectMany(x => x)
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Select(x => x.Trim());
+        }
+
+        private bool IsNetCore2App() // Dirty way to get this info. Should not have this dependency
+        {
+            return Project.TargetFramework().StartsWith("netcoreapp2");
         }
 
         internal class ContainerRegistration

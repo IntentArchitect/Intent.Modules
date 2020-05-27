@@ -42,14 +42,32 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+<#      if (Model.GetSettings().AllowSetValue()) { #>
         [IntentManaged(Mode.Fully)]
-        public IElement InternalElement => _element;
+        public string Value => _element.Value;
 
+<#      } #>
+<#      if (Model.GetSettings().AllowGenericTypes()) { #>
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+
+<#      } #>
 <#      if (!Model.GetTypeReferenceSettings().Mode().IsDisabled()) { #>
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
 <#      } #>
+<#      if (Model.MappingSettings != null) { #>
+        [IntentManaged(Mode.Fully)]
+        public bool IsMapped => _element.IsMapped;
+
+        [IntentManaged(Mode.Fully)]
+        public IElementMapping Mapping => _element.MappedElement;
+
+<#      } #>
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
 <#  } else { #>
         public new const string SpecializationType = "<#= Model.Name #>";
 

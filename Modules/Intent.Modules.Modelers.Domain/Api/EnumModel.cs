@@ -9,15 +9,15 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.Domain.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class EnumModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class EnumModel : IHasStereotypes, IMetadataModel, IHasFolder
     {
         protected readonly IElement _element;
 
         public EnumModel(IElement element)
         {
             _element = element;
-            Folder = Api.Folder.SpecializationType.Equals(_element.ParentElement?.SpecializationType, StringComparison.OrdinalIgnoreCase) ? new Folder(_element.ParentElement) : null;
+            Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -25,7 +25,8 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-        public IFolder Folder { get; }
+
+        public FolderModel Folder { get; }
 
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;

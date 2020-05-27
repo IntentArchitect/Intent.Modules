@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AspNetCore</id>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
+  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Startup files for an ASP.NET Core application.</summary>
   <description>Startup files for an ASP.NET Core application.</description>
   <authors>Intent Architect</authors>
@@ -22,11 +23,12 @@
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="2.0.0"/>
+    <dependency id="Intent.Common" version="2.0.4"/>
+    <dependency id="Intent.VisualStudio.Projects" version="2.1.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0"/>
   </dependencies>
   <files>
-    <file src="bin/$configuration$/$id$.dll"/>
-    <file src="bin/$configuration$/$id$.pdb"/>
+    <file src="$outDir$/$id$.dll"/>
+    <file src="$outDir$/$id$.pdb"/>
   </files>
 </package>

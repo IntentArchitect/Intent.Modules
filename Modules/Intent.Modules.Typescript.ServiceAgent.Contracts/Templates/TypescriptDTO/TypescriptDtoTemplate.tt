@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentTypescriptProjectItemTemplateBase<IDTOModel>" #>
+﻿<#@ template  debug="true"  inherits="IntentTypescriptProjectItemTemplateBase<DTOModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -18,13 +18,13 @@ namespace <#= Namespace #>
 } 
 
 <#+
-    void AddClass(IDTOModel model)
+    void AddClass(DTOModel model)
     {
 #>
     export interface <#= ClassName #>
     {
 <#+ foreach (var field in Model.Fields) {#>
-        <#=field.Name.ToCamelCase()#><#= field.Type.IsNullable ? "?" : "" #>: <#= GetTypeName(field.Type) #>;
+        <#=field.Name.ToCamelCase(false)#><#= field.TypeReference.IsNullable ? "?" : "" #>: <#= GetTypeName(field.TypeReference) #>;
 <#+}#>
     }
 <#+

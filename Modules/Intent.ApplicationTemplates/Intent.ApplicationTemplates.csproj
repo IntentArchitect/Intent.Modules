@@ -50,14 +50,19 @@
     <Content Include="Icons\Unity.png" />
     <Content Include="Icons\Autofac.png" />
     <None Include="Intent Module Builder\content\%24{field_application.name}.application.config" />
-    <None Include="Web Application .NET Core\content\%24{field_application.name}.application.config" />
+    <None Include="Web Application .NET Core 3.1\content\%24{field_application.name}.application.config" />
+    <None Include="Web Application .NET Core 2.1\content\%24{field_application.name}.application.config" />
     <None Include="Web Application .NET Framework\content\%24{field_application.name}.application.config" />
     <Content Include="Intent Module Builder\description.html" />
     <Content Include="Intent Module Builder\metadata.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web Application .NET Core\description.html" />
-    <Content Include="Web Application .NET Core\metadata.xml">
+    <Content Include="Web Application .NET Core 3.1\description.html" />
+    <Content Include="Web Application .NET Core 3.1\metadata.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web Application .NET Core 2.1\description.html" />
+    <Content Include="Web Application .NET Core 2.1\metadata.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web Application .NET Framework\description.html" />
@@ -68,9 +73,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if not exist "$(SolutionDir)Intent.Modules" mkdir "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.1.9.3\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Framework\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.1.9.3\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Core\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.1.9.3\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Intent Module Builder\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.2.1.0\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Framework\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.2.1.0\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Core 2.1\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.2.1.0\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Core 3.1\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
+dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.2.1.0\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Intent Module Builder\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

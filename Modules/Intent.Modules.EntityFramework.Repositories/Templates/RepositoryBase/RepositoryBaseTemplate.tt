@@ -69,21 +69,35 @@ namespace <#= Namespace #>
             return await QueryInternal(filterExpression).ToListAsync<TDomain>();
         }
 
-        public virtual async Task<IPagedResult<TDomain>> FindAllAsync(int pageIndex, int pageSize)
+        public virtual async Task<List<TDomain>> FindAllAsync(Expression<Func<TPersistence, bool>> filterExpression, Func<IQueryable<TPersistence>, IQueryable<TPersistence>> linq)
+        {
+            return await QueryInternal(filterExpression, linq).ToListAsync<TDomain>();
+        }
+
+        public virtual async Task<IPagedResult<TDomain>> FindAllAsync(int pageNo, int pageSize)
         {
             var query = QueryInternal(x => true);
-            return await PagedList<TDomain>.CreateAsync(
+            return await <#= PagedListClassName #><TDomain>.CreateAsync(
                 query,
-                pageIndex,
+                pageNo,
                 pageSize);
         }
         
-        public virtual async Task<IPagedResult<TDomain>> FindAllAsync(Expression<Func<TPersistence, bool>> filterExpression, int pageIndex, int pageSize)
+        public virtual async Task<IPagedResult<TDomain>> FindAllAsync(Expression<Func<TPersistence, bool>> filterExpression, int pageNo, int pageSize)
         {
             var query = QueryInternal(filterExpression);
             return await <#= PagedListClassName #><TDomain>.CreateAsync(
                 query,
-                pageIndex,
+                pageNo,
+                pageSize);
+        }
+
+        public virtual async Task<IPagedResult<TDomain>> FindAllAsync(Expression<Func<TPersistence, bool>> filterExpression, int pageNo, int pageSize, Func<IQueryable<TPersistence>, IQueryable<TPersistence>> linq)
+        {
+            var query = QueryInternal(filterExpression, linq);
+            return await <#= PagedListClassName #><TDomain>.CreateAsync(
+                query,
+                pageNo,
                 pageSize);
         }
 

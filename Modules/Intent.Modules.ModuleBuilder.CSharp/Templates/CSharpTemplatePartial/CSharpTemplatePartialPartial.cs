@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         public CSharpTemplatePartial(IProject project, CSharpTemplateModel model) : base(TemplateId, project, model)
         {
-            AddNugetDependency(NugetPackages.IntentModulesCommon);
+            AddNugetDependency("Intent.Modules.Common.CSharp", "2.2.0");
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
             if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.NuGetDependency))
             {
@@ -57,10 +57,16 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             {
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "C# Template" },
+                { "Role", GetRole() },
                 { "Module Dependency", Model.GetModeler()?.ModuleDependency },
                 { "Module Dependency Version",Model.GetModeler()?.ModuleVersion },
                 { "ModelId", Model.Id }
             });
+        }
+
+        private string GetRole()
+        {
+            return Model.GetRole() ?? GetTemplateId();
         }
 
         public string GetTemplateId()

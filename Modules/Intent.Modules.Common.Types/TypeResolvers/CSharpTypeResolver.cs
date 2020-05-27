@@ -39,7 +39,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
             if (typeInfo.GenericTypeParameters.Any())
             {
                 var genericTypeParameters = typeInfo.GenericTypeParameters
-                    .Select(x => ResolveType(x, collectionFormat))
+                    .Select(x => Get(x, collectionFormat))
                     .Aggregate((x, y) => x + ", " + y);
                 result += $"<{genericTypeParameters}>";
             }

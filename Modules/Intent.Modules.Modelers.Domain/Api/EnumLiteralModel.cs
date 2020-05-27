@@ -62,5 +62,8 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public string Value => _element.Value;
     }
 }

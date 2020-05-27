@@ -63,9 +63,19 @@ namespace Intent.Modules.ModuleBuilder.Api
 
             if (this.GetTemplateSettings().Source().IsCustomType())
             {
-                return this.GetTemplateSettings().ModelName() ?? "object";
+                var modelType = this.GetTemplateSettings().ModelName() ?? "object";
+                if (this.IsSingleFileTemplateRegistration())
+                {
+                    return $"IList<{modelType}>";
+                }
+                return modelType;
             }
             throw new Exception("Could not determine model type for template [" + this.ToString() + "]");
+        }
+
+        public string GetRole()
+        {
+            return this.GetTemplateSettings().GetRole();
         }
 
         public FolderModel Folder { get; }
@@ -115,5 +125,8 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
     }
 }

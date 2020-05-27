@@ -29,7 +29,7 @@ namespace Intent.Modules.AspNetCore.Swashbuckle.FactoryExtensions
         {
             application.EventDispatcher.Publish(ServiceConfigurationRequiredEvent.EventId, new Dictionary<string, string>()
             {
-                { ServiceConfigurationRequiredEvent.UsingsKey, $@"Swashbuckle.AspNetCore.Swagger;" },
+                { ServiceConfigurationRequiredEvent.UsingsKey, $@"Microsoft.OpenApi.Models;" },
                 { ServiceConfigurationRequiredEvent.CallKey, "ConfigureSwagger(services);" },
                 { ServiceConfigurationRequiredEvent.MethodKey, $@"
         //[IntentManaged(Mode.Ignore)] // Uncomment to take control of this method.
@@ -37,14 +37,14 @@ namespace Intent.Modules.AspNetCore.Swashbuckle.FactoryExtensions
         {{
             services.AddSwaggerGen(c =>
             {{
-                c.SwaggerDoc(""v1"", new Info {{ Title = ""{application.Name} API"", Version = ""v1"" }});
+                c.SwaggerDoc(""v1"", new OpenApiInfo {{ Title = ""{application.Name} API"", Version = ""v1"" }});
             }});
         }}" }
             });
 
             application.EventDispatcher.Publish(InitializationRequiredEvent.EventId, new Dictionary<string, string>()
             {
-                { InitializationRequiredEvent.UsingsKey, $@"Swashbuckle.AspNetCore.Swagger;" },
+                { InitializationRequiredEvent.UsingsKey, $@"Microsoft.OpenApi.Models;" },
                 { InitializationRequiredEvent.CallKey, $@"InitializeSwagger(app);" },
                 { InitializationRequiredEvent.MethodKey, $@"
         //[IntentManaged(Mode.Ignore)] // Uncomment to take control of this method.

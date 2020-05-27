@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <Version>2.1.0-pre.1</Version>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Version>2.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,16 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.IntentArchitectPackager" Version="1.9.3">
+    <PackageReference Include="Intent.IntentArchitectPackager" Version="2.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.Modules.Common" Version="2.0.3" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
     <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
   </ItemGroup>
 

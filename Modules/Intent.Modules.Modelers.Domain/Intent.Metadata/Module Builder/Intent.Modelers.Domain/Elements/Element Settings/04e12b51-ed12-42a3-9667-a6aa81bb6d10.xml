@@ -19,6 +19,7 @@
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="true" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="true" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="true" isActive="true" />
@@ -183,21 +184,23 @@
     </childElement>
     <childElement id="b3668b13-7c9a-4a2b-81fd-877c387dd1cf" type="Element Visual Settings">
       <name>[visual]</name>
-      <display>[visual]</display>
+      <display>[visual]: Class</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
+      <typeReference id="13a385fc-1fe7-4fdb-ade1-8ce6807b546d">
+        <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</parentFolderId>
       <literals />
       <attributes />
       <operations />
       <stereotypes>
-        <stereotype stereotypeDefinitionId="d9afc8e9-5cdb-4b5c-8d6e-d76fc340855a" name="Settings">
-          <addedByDefault>true</addedByDefault>
-          <properties>
-            <property name="b5e1e1b6-1903-4526-a87d-0b9301b283a9" display="Target Type" value="04e12b51-ed12-42a3-9667-a6aa81bb6d10" isActive="true" />
-          </properties>
-        </stereotype>
         <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
           <addedByDefault>true</addedByDefault>
           <properties>
@@ -248,7 +251,7 @@
             <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
               <addedByDefault>true</addedByDefault>
               <properties>
-                <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="`${name}${genericTypes}${hasType ? ' : ' + typeReference.display : ''}`" isActive="true" />
+                <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
                 <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
                 <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;color: black; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;`" isActive="true" />
               </properties>
@@ -265,9 +268,9 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="ef5a5552-db98-4c62-8388-12d0acdbf87a" type="Element Visual Settings">
-          <name>NewElementVisualSettings</name>
-          <display>[visual]</display>
+        <childElement id="c99bff24-412d-4c3e-8844-26a2ae3f52c5" type="Stereotypes Visual Settings">
+          <name>NewStereotypesVisualSettings</name>
+          <display>[stereotypes]</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>
@@ -276,12 +279,37 @@
           <attributes />
           <operations />
           <stereotypes>
-            <stereotype stereotypeDefinitionId="d9afc8e9-5cdb-4b5c-8d6e-d76fc340855a" name="Settings">
+            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
               <addedByDefault>true</addedByDefault>
               <properties>
-                <property name="b5e1e1b6-1903-4526-a87d-0b9301b283a9" display="Target Type" value="0090fb93-483e-41af-a11d-5ad2dc796adf" isActive="true" />
+                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
+                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
               </properties>
             </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="ef5a5552-db98-4c62-8388-12d0acdbf87a" type="Element Visual Settings">
+          <name>NewElementVisualSettings</name>
+          <display>[visual]: Attribute</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="68df2b19-cb42-4e35-80c7-77b07bc91e82">
+            <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>b3668b13-7c9a-4a2b-81fd-877c387dd1cf</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
             <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
               <addedByDefault>true</addedByDefault>
               <properties>
@@ -349,25 +377,50 @@
               </stereotypes>
               <childElements />
             </childElement>
+            <childElement id="06e8842d-a15f-4a99-8047-db90d70a9b75" type="Stereotypes Visual Settings">
+              <name>NewStereotypesVisualSettings</name>
+              <display>[stereotypes]</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>ef5a5552-db98-4c62-8388-12d0acdbf87a</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <properties>
+                    <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                    <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
+                    <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                    <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
           </childElements>
         </childElement>
         <childElement id="b90bcb52-db66-458d-962a-8eeeb95cd110" type="Element Visual Settings">
           <name>NewElementVisualSettings</name>
-          <display>[visual]</display>
+          <display>[visual]: Operation</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
+          <typeReference id="ea44734b-b901-4d8e-86e2-a902cae30ffa">
+            <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>b3668b13-7c9a-4a2b-81fd-877c387dd1cf</parentFolderId>
           <literals />
           <attributes />
           <operations />
           <stereotypes>
-            <stereotype stereotypeDefinitionId="d9afc8e9-5cdb-4b5c-8d6e-d76fc340855a" name="Settings">
-              <addedByDefault>true</addedByDefault>
-              <properties>
-                <property name="b5e1e1b6-1903-4526-a87d-0b9301b283a9" display="Target Type" value="e042bb67-a1df-480c-9935-b26210f78591" isActive="true" />
-              </properties>
-            </stereotype>
             <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
               <addedByDefault>true</addedByDefault>
               <properties>
@@ -430,6 +483,29 @@
                     <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
                     <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
                     <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="${h}" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
+            <childElement id="b1f12cc1-b82d-4422-bbe3-3cf24958811d" type="Stereotypes Visual Settings">
+              <name>NewStereotypesVisualSettings</name>
+              <display>[stereotypes]</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>b90bcb52-db66-458d-962a-8eeeb95cd110</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <properties>
+                    <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                    <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
+                    <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                    <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>

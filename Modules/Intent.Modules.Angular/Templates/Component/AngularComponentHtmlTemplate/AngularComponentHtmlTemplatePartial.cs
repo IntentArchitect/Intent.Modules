@@ -16,14 +16,14 @@ using Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayout;
 
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class AngularComponentHtmlTemplate : IntentProjectItemTemplateBase<IComponentModel>, ITemplatePostCreationHook, IHasDecorators<IOverwriteDecorator>
+    [IntentManaged(Mode.Merge, Signature = Mode.Ignore)]
+    partial class AngularComponentHtmlTemplate : IntentProjectItemTemplateBase<ComponentModel>, IHasDecorators<IOverwriteDecorator>
     {
         private readonly IList<IOverwriteDecorator> _decorators = new List<IOverwriteDecorator>();
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Component.AngularComponentHtmlTemplate";
 
-        public AngularComponentHtmlTemplate(IProject project, IComponentModel model) : base(TemplateId, project, model)
+        public AngularComponentHtmlTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model)
         {
         }
 
@@ -92,7 +92,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToKebabCase()}.component",
                 fileExtension: "html",
-                defaultLocationInProject: $"Client/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
+                defaultLocationInProject: $"ClientApp/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
                     );
         }
     }

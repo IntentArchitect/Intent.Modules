@@ -10,32 +10,27 @@ namespace Intent.Modules.Angular
 {
     public static class MetadataManagerExtensions
     {
-        public static IEnumerable<IModuleModel> GetModules(this IMetadataManager metadataManager, string applicationId)
+        public static IEnumerable<ModuleDTOModel> GetDTOModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return new MetadataProvider(metadataManager).GetModules(applicationId);
-        }
-
-        public static IEnumerable<IModuleDTOModel> GetModels(this IMetadataManager metadataManager, string applicationId)
-        {
-            var dtoModels = new List<IModuleDTOModel>();
-            foreach (var moduleModel in metadataManager.GetModules(applicationId))
+            var dtoModels = new List<ModuleDTOModel>();
+            foreach (var moduleModel in metadataManager.GetModuleModels(application))
             {
-                dtoModels.AddRange(moduleModel.GetModels());
+                dtoModels.AddRange(moduleModel.GetDTOModels());
             }
 
             return dtoModels.Distinct().ToList();
         }
 
-        public static IEnumerable<IModuleDTOModel> GetModels(this IModuleModel moduleModel)
+        public static IEnumerable<ModuleDTOModel> GetDTOModels(this ModuleModel moduleModel)
         {
             var operations = moduleModel.ServiceProxies
                 .SelectMany(x => x.Operations).ToList();
             var classes = operations
                 .SelectMany(x => x.Parameters)
-                .SelectMany(x => GetTypeModels(x.Type))
-                .Concat(operations.Where(x => x.ReturnType != null).SelectMany(x => GetTypeModels(x.ReturnType.Type)));
+                .SelectMany(x => GetTypeModels(x.TypeReference))
+                .Concat(operations.Where(x => x.ReturnType != null).SelectMany(x => GetTypeModels(x.ReturnType)));
 
-            return moduleModel.ModelDefinitions.Concat(classes.Where(x => x.IsDTO()).Select(x => new ModuleDTOModel(x, moduleModel)).ToList())
+            return classes.Where(x => x.SpecializationType == DTOModel.SpecializationType).Select(x => new ModuleDTOModel(x, moduleModel)).ToList()
                 .Distinct()
                 .ToList();
         }

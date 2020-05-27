@@ -14,7 +14,7 @@ namespace Intent.Modelers.Services.Api
             while (current != null && (includePackage || !current.IsPackage))
             {
                 result.Insert(0, current);
-                current = current.ParentFolder;
+                current = current.Folder;
             }
             return result;
         }
@@ -28,7 +28,7 @@ namespace Intent.Modelers.Services.Api
                 {
                     return folder.GetStereotype(stereotypeName);
                 }
-                folder = folder.ParentFolder;
+                folder = folder.Folder;
             }
             return null;
         }

@@ -5,16 +5,17 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
 {
-    [IntentManaged(Mode.Merge)]
-    partial class CoreModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class CoreModuleTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Core.CoreModuleTemplate";
@@ -31,7 +32,7 @@ namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "core.module",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: "Client/src/app/core",
+                defaultLocationInProject: "ClientApp/src/app/core",
                 className: "CoreModule"
             );
         }

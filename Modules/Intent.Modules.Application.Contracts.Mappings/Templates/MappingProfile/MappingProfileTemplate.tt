@@ -16,7 +16,7 @@ namespace <#= Namespace #>
     {
         public <#= ClassName #>()
         {
-            // The intent is to have a seperate method for each mapping profile, this allows independant use of profiles if desired,
+            // The intent is to have a separate method for each mapping profile, this allows independent use of profiles if desired,
             // for example for unit testing. Rather than try and make unique method names for the different profiles to create, we
             // instead configure each method to have the same name, but with different type overloads. We then use the default keyword
             // when calling the method to be passing in the correct type so that the compiler chooses the correct overload.

@@ -33,6 +33,17 @@ namespace Intent.Modelers.Services.Api
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(TypeDefinitionModel other)
@@ -53,15 +64,6 @@ namespace Intent.Modelers.Services.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public IElement InternalElement => _element;
-
-        [IntentManaged(Mode.Fully)]
-        public override string ToString()
-        {
-            return _element.ToString();
         }
     }
 }

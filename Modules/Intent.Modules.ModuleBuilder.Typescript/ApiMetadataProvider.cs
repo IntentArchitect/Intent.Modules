@@ -8,9 +8,9 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiMetadataProvider", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Typescript
+namespace Intent.Modules.ModuleBuilder.Typescript.Api
 {
-    internal class ApiMetadataProvider
+    public class ApiMetadataProvider
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -19,12 +19,12 @@ namespace Intent.Modules.ModuleBuilder.Typescript
             _metadataManager = metadataManager;
         }
 
-        public IList<ITypescriptTemplate> GetTypescriptTemplates(IApplication application)
+        public IList<TypescriptFileTemplateModel> GetTypescriptFileTemplateModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
-                .Where(x => x.SpecializationType == TypescriptTemplate.SpecializationType)
-                .Select(x => new TypescriptTemplate(x))
-                .ToList<ITypescriptTemplate>();
+                .Where(x => x.SpecializationType == TypescriptFileTemplateModel.SpecializationType)
+                .Select(x => new TypescriptFileTemplateModel(x))
+                .ToList<TypescriptFileTemplateModel>();
             return models;
         }
 
