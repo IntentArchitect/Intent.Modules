@@ -73,7 +73,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             
             #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\EFMapping\EFMappingTemplate.tt"
 
-if (Model.ParentClass == null)
+if (Model.ParentClass == null && Model.HasStereotype(Stereotypes.Rdbms.Table.Name))
 {
 
             
