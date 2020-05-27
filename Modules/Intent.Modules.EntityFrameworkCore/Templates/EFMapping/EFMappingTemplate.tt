@@ -25,7 +25,7 @@ namespace <#= Namespace #>
         public void Configure(EntityTypeBuilder<<#= EntityStateName #>> builder)
         {
 <#
-if (Model.ParentClass == null)
+if (Model.ParentClass == null && Model.HasStereotype(Stereotypes.Rdbms.Table.Name))
 {
 #>
             builder.ToTable("<#= Model.GetStereotypeProperty(Stereotypes.Rdbms.Table.Name, Stereotypes.Rdbms.Table.Property.Name, Model.Name) #>", "<#= Model.GetStereotypeProperty(Stereotypes.Rdbms.Table.Name, Stereotypes.Rdbms.Table.Property.Schema, "dbo") #>");

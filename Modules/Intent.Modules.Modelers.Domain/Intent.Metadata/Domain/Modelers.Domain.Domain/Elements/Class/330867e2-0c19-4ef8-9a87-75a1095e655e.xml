@@ -150,7 +150,7 @@
       <childElements>
         <childElement id="fc18591a-dec0-4a35-8a05-84b7425eded3" type="Parameter">
           <name>param</name>
-          <display>param(): NewClass2</display>
+          <display>in : param: NewClass2</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="87f8f873-f7e3-4e31-a8e6-130d85355185">
@@ -171,7 +171,7 @@
         </childElement>
         <childElement id="722460a0-e8ea-402a-9788-a9c09775346d" type="Parameter">
           <name>param</name>
-          <display>param(): NewType</display>
+          <display>in : param: NewType</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="cdc186f6-33d1-4787-b3ef-496f61618d72">

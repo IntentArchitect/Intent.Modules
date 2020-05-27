@@ -22,6 +22,11 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
         public EFMappingTemplate(ClassModel model, IProject project)
             : base(Identifier, project, model)
         {
+            if (Model.HasStereotype(Stereotypes.Rdbms.Table.Name))
+            {
+                AddNugetDependency(NugetPackages.EntityFrameworkCoreSqlServer);
+            }
+
             ValidateAssociations();
         }
 
