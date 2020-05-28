@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="1f724085-f4df-46fa-8254-339135b16128" type="Role">
-  <name>DesignerConfig</name>
-  <display>DesignerConfig</display>
+<class id="6dfa762d-9046-48a5-898a-2772e42c519c" type="Role">
+  <name>Decorators</name>
+  <display>Decorators</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

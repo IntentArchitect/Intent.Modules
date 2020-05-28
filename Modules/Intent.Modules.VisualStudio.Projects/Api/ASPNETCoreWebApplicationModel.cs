@@ -34,11 +34,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public string ProjectTypeId => VisualStudioProjectTypeIds.CoreCSharpLibrary;
         public FolderModel Folder { get; }
 
-        public IList<IProjectOutputTarget> GetRoles()
-        {
-            return Roles.Select(x => new ProjectOutput(x.Name, x.Folder?.Name)).ToList<IProjectOutputTarget>();
-        }
-
         public IProjectConfig ToProjectConfig()
         {
             return new ProjectConfig(this);

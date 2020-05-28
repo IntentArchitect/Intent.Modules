@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="1f724085-f4df-46fa-8254-339135b16128" type="Role">
-  <name>DesignerConfig</name>
-  <display>DesignerConfig</display>
+<class id="c4d049d5-d8ca-46af-ac94-b58adf8b2639" type="Folder">
+  <name>Templates</name>
+  <display>Templates</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
