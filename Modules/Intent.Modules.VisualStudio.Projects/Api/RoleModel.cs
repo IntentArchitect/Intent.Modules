@@ -22,7 +22,10 @@ namespace Intent.Modules.VisualStudio.Projects.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
         }
+
+        public FolderModel Folder { get; }
 
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;

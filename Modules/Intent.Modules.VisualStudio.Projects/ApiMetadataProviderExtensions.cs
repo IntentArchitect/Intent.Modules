@@ -66,5 +66,10 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             return new ApiMetadataProvider(metadataManager).GetWCFServiceApplicationModels(application);
         }
 
+        public static IList<SolutionFolderModel> GetSolutionFolderModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetSolutionFolderModels(application);
+        }
+
     }
 }

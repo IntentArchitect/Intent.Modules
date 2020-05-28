@@ -82,6 +82,15 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             return models;
         }
 
+        public IList<SolutionFolderModel> GetSolutionFolderModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Visual Studio", application.Id)
+                .Where(x => x.SpecializationType == SolutionFolderModel.SpecializationType)
+                .Select(x => new SolutionFolderModel(x))
+                .ToList<SolutionFolderModel>();
+            return models;
+        }
+
         public IList<WCFServiceApplicationModel> GetWCFServiceApplicationModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Visual Studio", application.Id)

@@ -22,7 +22,10 @@ namespace Intent.Modules.VisualStudio.Projects.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
         }
+
+        public FolderModel Folder { get; }
 
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
@@ -35,12 +38,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
-
-        [IntentManaged(Mode.Fully)]
-        public IList<FolderModel> Folders => _element.ChildElements
-            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
-            .Select(x => new FolderModel(x))
-            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public override string ToString()
@@ -70,33 +67,9 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<ASPNETCoreWebApplicationModel> ASPNETCoreWebApplications => _element.ChildElements
-            .Where(x => x.SpecializationType == ASPNETCoreWebApplicationModel.SpecializationType)
-            .Select(x => new ASPNETCoreWebApplicationModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<ASPNETWebApplicationNETFrameworkModel> ASPNETWebApplicationNETFrameworks => _element.ChildElements
-            .Where(x => x.SpecializationType == ASPNETWebApplicationNETFrameworkModel.SpecializationType)
-            .Select(x => new ASPNETWebApplicationNETFrameworkModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<ClassLibraryNETCoreModel> ClassLibraryNETCores => _element.ChildElements
-            .Where(x => x.SpecializationType == ClassLibraryNETCoreModel.SpecializationType)
-            .Select(x => new ClassLibraryNETCoreModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<ClassLibraryNETFrameworkModel> ClassLibraryNETFrameworks => _element.ChildElements
-            .Where(x => x.SpecializationType == ClassLibraryNETFrameworkModel.SpecializationType)
-            .Select(x => new ClassLibraryNETFrameworkModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<WCFServiceApplicationModel> WCFServiceApplications => _element.ChildElements
-            .Where(x => x.SpecializationType == WCFServiceApplicationModel.SpecializationType)
-            .Select(x => new WCFServiceApplicationModel(x))
+        public IList<RoleModel> Roles => _element.ChildElements
+            .Where(x => x.SpecializationType == RoleModel.SpecializationType)
+            .Select(x => new RoleModel(x))
             .ToList();
     }
 }

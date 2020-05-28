@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>2ef69545-61ca-42b7-89bd-4ae3d5970280</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -45,11 +42,38 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>afcdd8e6-790f-49b3-8ba3-7ca19584e695</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
+        <childElement id="a8f1d688-36b9-4eaf-862a-93ef0a7a18b1" type="Element Creation Option">
+          <name>New Folder</name>
+          <display>New Folder: Folder</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="43f325d2-f534-4229-826f-15c850204713">
+            <typeId>f608a46f-b6a1-4536-b227-b48f6431855f</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>d8f266ca-1af2-470f-be34-5d3494aae378</parentFolderId>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
         <childElement id="bae1f609-a7e5-43ca-979b-f65b32e93daf" type="Element Creation Option">
           <name>Add Role</name>
           <display>Add Role: Role</display>
@@ -65,9 +89,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>d8f266ca-1af2-470f-be34-5d3494aae378</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />

@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 namespace Intent.Modules.Bower.Installer
 {
-    public class CommandLineProcessor
+    public class WindowsCommandLineProcessor
     {
         public string ExecuteCommand(string workingDirectory, params string[] commands)
         {

@@ -19,6 +19,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public string Name => _project.Name;
         public string RelativeLocation => _project.RelativeLocation ?? _project.Name;
         public string TargetFrameworks => _project.TargetFrameworkVersion();
-        public IList<string> Roles => _project.GetRoles();
+        public IList<IProjectOutputTarget> Roles => _project.GetRoles();
     }
 }

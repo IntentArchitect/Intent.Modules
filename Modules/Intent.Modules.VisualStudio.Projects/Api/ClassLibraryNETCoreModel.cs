@@ -34,9 +34,9 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public string ProjectTypeId => VisualStudioProjectTypeIds.CoreCSharpLibrary;
         public FolderModel Folder { get; }
 
-        public IList<string> GetRoles()
+        public IList<IProjectOutputTarget> GetRoles()
         {
-            return Roles.Select(x => x.Name).ToList();
+            return Roles.Select(x => new ProjectOutput(x.Name, x.Folder?.Name)).ToList<IProjectOutputTarget>();
         }
 
         public IProjectConfig ToProjectConfig()
@@ -94,6 +94,12 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<FolderModel> Folders => _element.ChildElements
+            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+            .Select(x => new FolderModel(x))
+            .ToList();
 
     }
 }

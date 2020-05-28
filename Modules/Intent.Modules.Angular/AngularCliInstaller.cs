@@ -99,7 +99,7 @@ namespace Intent.Modules.Angular
 
             Logging.Log.Info($"Installing Angular into project: [{ project.Name }]");
 
-            CommandLineProcessor cmd = new CommandLineProcessor();
+            WindowsCommandLineProcessor cmd = new WindowsCommandLineProcessor();
 
             if (!Directory.Exists(Path.GetFullPath(project.ProjectLocation)))
             {
