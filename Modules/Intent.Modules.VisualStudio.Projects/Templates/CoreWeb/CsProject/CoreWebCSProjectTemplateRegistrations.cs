@@ -22,21 +22,21 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 
         public void Register(IProjectRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetWebApplicationDotNetCoreProjects(application.Id);
+            var models = _metadataManager.GetASPNETCoreWebApplicationModels(application);
             foreach (var model in models)
             {
                 registry.RegisterProject(model.ToProjectConfig());
             }
         }
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetWebApplicationDotNetCoreProjects(application.Id);
+            var models = _metadataManager.GetASPNETCoreWebApplicationModels(application);
 
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registery.RegisterProjectTemplate(TemplateId, project, p => new CoreWebCSProjectTemplate(project));
+                registry.RegisterProjectTemplate(TemplateId, project, p => new CoreWebCSProjectTemplate(project));
             }
             //var targetProjectIds = new List<string>
             //{

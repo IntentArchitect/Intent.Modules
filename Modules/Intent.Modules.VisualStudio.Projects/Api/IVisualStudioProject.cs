@@ -10,9 +10,9 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         string Name { get; }
         string Type { get; }
         string ProjectTypeId { get; }
-        IList<string> Roles { get; }
         string RelativeLocation { get; }
 
+        IList<string> GetRoles();
         IProjectConfig ToProjectConfig();
         string TargetFrameworkVersion();
     }

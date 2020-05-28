@@ -82,5 +82,14 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             return models;
         }
 
+        public IList<WCFServiceApplicationModel> GetWCFServiceApplicationModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Visual Studio", application.Id)
+                .Where(x => x.SpecializationType == WCFServiceApplicationModel.SpecializationType)
+                .Select(x => new WCFServiceApplicationModel(x))
+                .ToList<WCFServiceApplicationModel>();
+            return models;
+        }
+
     }
 }

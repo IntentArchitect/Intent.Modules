@@ -27,7 +27,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
 
         public void DoRegistration(IApplicationTemplateInstanceRegistry registry, IApplication application)
         {
-            var projects = _metadataManager.GetAllProjects(application.Id);
+            var projects = _metadataManager.GetAllProjectModels(application);
             registry.RegisterApplicationTemplate(VisualStudio2015SolutionTemplate.Identifier, () => new VisualStudio2015SolutionTemplate(application, projects));
         }
 

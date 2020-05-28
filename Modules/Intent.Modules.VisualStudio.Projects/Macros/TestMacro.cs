@@ -24,7 +24,7 @@ namespace Intent.Modules.VisualStudio.Projects.Macros
         public string Trigger { get; } = "trigger";
         public void Execute(IApplication application)
         {
-            var models = _metadataManager.GetAllProjects(application.Id);
+            var models = _metadataManager.GetAllProjectModels(application);
             foreach (var project in models)
             {
                 Logging.Log.Info("FOUND:" + project.ToString());

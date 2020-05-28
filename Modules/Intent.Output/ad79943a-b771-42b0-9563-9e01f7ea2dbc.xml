@@ -39,6 +39,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\WCFServiceApplicationModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/WCFServiceApplicationModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\ApiMetadataProvider.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -51,6 +56,16 @@
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.VisualStudio.Projects.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.VisualStudio.Projects.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\modelers\Visual Studio.modeler.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Visual Studio.modeler.config</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

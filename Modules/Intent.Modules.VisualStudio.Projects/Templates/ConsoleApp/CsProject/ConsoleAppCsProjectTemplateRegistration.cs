@@ -19,7 +19,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
 
         public void Register(IProjectRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetConsoleAppDotNetFrameworkProjects(application.Id);
+            var models = _metadataManager.GetConsoleAppNETFrameworkModels(application);
             foreach (var model in models)
             {
                 registry.RegisterProject(model.ToProjectConfig());
@@ -28,12 +28,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetConsoleAppDotNetFrameworkProjects(application.Id);
+            var models = _metadataManager.GetConsoleAppNETFrameworkModels(application);
 
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registry.Register(TemplateId, project, p => new ConsoleAppCsProjectTemplate(project, model));
+                registry.RegisterProjectTemplate(TemplateId, project, p => new ConsoleAppCsProjectTemplate(project, model));
             }
         }
     }

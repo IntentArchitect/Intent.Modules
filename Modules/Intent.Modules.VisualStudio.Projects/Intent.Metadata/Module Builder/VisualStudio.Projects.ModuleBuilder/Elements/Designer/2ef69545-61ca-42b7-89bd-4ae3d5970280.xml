@@ -179,6 +179,39 @@
               </stereotypes>
               <childElements />
             </childElement>
+            <childElement id="3a380adf-85ef-4078-a4ef-163fa86818f9" type="Element Creation Option">
+              <name>WCF Service Application</name>
+              <display>WCF Service Application: WCF Service Application</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="eeb23b50-6fb3-4886-aa8c-2eb41683291e">
+                <typeId>ed058414-83d9-4c97-b551-95a8cefe2569</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+              <literals />
+              <attributes />
+              <operations />
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+                  <comment />
+                  <addedByDefault>true</addedByDefault>
+                  <properties>
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
             <childElement id="fc95b0a5-c91e-4dfe-abba-f60672af2c45" type="Element Creation Option">
               <name>New Folder</name>
               <display>New Folder: Folder</display>

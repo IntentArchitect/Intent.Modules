@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Configuration;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
+using Intent.Modules.Constants;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -9,8 +12,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ConsoleAppNETFrameworkModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class ConsoleAppNETFrameworkModel : IHasStereotypes, IMetadataModel, IVisualStudioProject
     {
         public const string SpecializationType = "Console App (.NET Framework)";
         protected readonly IElement _element;
@@ -22,6 +25,28 @@ namespace Intent.Modules.VisualStudio.Projects.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            RelativeLocation = this.GetStereotypeProperty<string>("Project Settings", "Relative Location");
+            Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
+        }
+
+        public string RelativeLocation { get; }
+        public string Type => SpecializationType;
+        public string ProjectTypeId => VisualStudioProjectTypeIds.CSharpLibrary;
+        public FolderModel Folder { get; }
+
+        public IList<string> GetRoles()
+        {
+            return Roles.Select(x => x.Name).ToList();
+        }
+
+        public IProjectConfig ToProjectConfig()
+        {
+            return new ProjectConfig(this);
+        }
+
+        public string TargetFrameworkVersion()
+        {
+            return this.GetStereotypeProperty<string>(".NET Core Settings", "Target Framework") ?? throw new Exception($"[.NET Core Settings] stereotype is missing on project {Name}");
         }
 
         [IntentManaged(Mode.Fully)]

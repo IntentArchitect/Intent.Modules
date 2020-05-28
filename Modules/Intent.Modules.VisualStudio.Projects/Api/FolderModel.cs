@@ -92,5 +92,11 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .Where(x => x.SpecializationType == ClassLibraryNETFrameworkModel.SpecializationType)
             .Select(x => new ClassLibraryNETFrameworkModel(x))
             .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<WCFServiceApplicationModel> WCFServiceApplications => _element.ChildElements
+            .Where(x => x.SpecializationType == WCFServiceApplicationModel.SpecializationType)
+            .Select(x => new WCFServiceApplicationModel(x))
+            .ToList();
     }
 }

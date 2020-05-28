@@ -23,7 +23,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 
         public void Register(IProjectRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetWcfServiceApplicationDotNetFrameworkProjects(application.Id);
+            var models = _metadataManager.GetWCFServiceApplicationModels(application);
             foreach (var model in models)
             {
                 registry.RegisterProject(model.ToProjectConfig());
@@ -32,7 +32,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetWcfServiceApplicationDotNetFrameworkProjects(application.Id);
+            var models = _metadataManager.GetWCFServiceApplicationModels(application);
 
             foreach (var model in models)
             {

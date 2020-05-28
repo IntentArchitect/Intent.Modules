@@ -22,21 +22,21 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
 
         public void Register(IProjectRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetWebApplicationDotNetFrameworkProjects(application.Id);
+            var models = _metadataManager.GetASPNETWebApplicationNETFrameworkModels(application);
             foreach (var model in models)
             {
                 registry.RegisterProject(model.ToProjectConfig());
             }
         }
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetWebApplicationDotNetFrameworkProjects(application.Id);
+            var models = _metadataManager.GetASPNETWebApplicationNETFrameworkModels(application);
 
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registery.RegisterProjectTemplate(TemplateId, project, p => new WebApiServiceCSProjectFileTemplate(project, model));
+                registry.RegisterProjectTemplate(TemplateId, project, p => new WebApiServiceCSProjectFileTemplate(project, model));
             }
         }
     }

@@ -2,6 +2,6 @@
 {
     public interface IHasFolder
     {
-        IFolder Folder { get; }
+        FolderModel Folder { get; }
     }
 }

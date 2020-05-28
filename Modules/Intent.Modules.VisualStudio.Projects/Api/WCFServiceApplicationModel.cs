@@ -13,12 +13,12 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class ASPNETWebApplicationNETFrameworkModel : IHasStereotypes, IMetadataModel, IVisualStudioProject
+    public class WCFServiceApplicationModel : IHasStereotypes, IMetadataModel, IVisualStudioProject
     {
-        public const string SpecializationType = "ASP.NET Web Application (.NET Framework)";
+        public const string SpecializationType = "WCF Service Application";
         protected readonly IElement _element;
 
-        public ASPNETWebApplicationNETFrameworkModel(IElement element, string requiredType = SpecializationType)
+        public WCFServiceApplicationModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -74,7 +74,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public bool Equals(ASPNETWebApplicationNETFrameworkModel other)
+        public bool Equals(WCFServiceApplicationModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -85,7 +85,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ASPNETWebApplicationNETFrameworkModel)obj);
+            return Equals((WCFServiceApplicationModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]

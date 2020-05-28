@@ -10,8 +10,22 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
+    [IntentManaged(Mode.Merge)]
     public static class ApiMetadataProviderExtensions
     {
+        [IntentManaged(Mode.Ignore)]
+        public static IList<IVisualStudioProject> GetAllProjectModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return metadataManager.GetASPNETCoreWebApplicationModels(application).Cast<IVisualStudioProject>()
+                .Concat(metadataManager.GetASPNETWebApplicationNETFrameworkModels(application))
+                .Concat(metadataManager.GetClassLibraryNETCoreModels(application))
+                .Concat(metadataManager.GetClassLibraryNETFrameworkModels(application))
+                .Concat(metadataManager.GetConsoleAppNETFrameworkModels(application))
+                .Concat(metadataManager.GetWCFServiceApplicationModels(application))
+                .ToList();
+        }
+
+
         public static IList<ASPNETCoreWebApplicationModel> GetASPNETCoreWebApplicationModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetASPNETCoreWebApplicationModels(application);
@@ -45,6 +59,11 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public static IList<RoleModel> GetRoleModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetRoleModels(application);
+        }
+
+        public static IList<WCFServiceApplicationModel> GetWCFServiceApplicationModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetWCFServiceApplicationModels(application);
         }
 
     }
