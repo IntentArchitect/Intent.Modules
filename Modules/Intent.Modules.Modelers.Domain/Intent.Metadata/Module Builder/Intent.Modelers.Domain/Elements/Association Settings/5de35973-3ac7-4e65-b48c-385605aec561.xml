@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes />
   <childElements>
     <childElement id="8190bf43-222c-4b53-8a44-14626efe3574" type="Association Source End Settings">
@@ -18,9 +15,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5de35973-3ac7-4e65-b48c-385605aec561</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes>
         <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
           <addedByDefault>true</addedByDefault>
@@ -47,9 +41,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5de35973-3ac7-4e65-b48c-385605aec561</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes>
         <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
           <addedByDefault>true</addedByDefault>
@@ -76,9 +67,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5de35973-3ac7-4e65-b48c-385605aec561</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes>
         <stereotype stereotypeDefinitionId="e21d9a65-36b8-4664-9c61-d70f3615023c" name="Setting">
           <addedByDefault>true</addedByDefault>
@@ -97,9 +85,6 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>4f08a3b7-adcb-4e3d-9b27-8306925a7e9f</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="1434703f-9e9e-4321-af00-1e857a2e6b80" name="Point Settings">
               <addedByDefault>true</addedByDefault>
@@ -138,9 +123,6 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>4f08a3b7-adcb-4e3d-9b27-8306925a7e9f</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="1434703f-9e9e-4321-af00-1e857a2e6b80" name="Point Settings">
               <addedByDefault>true</addedByDefault>

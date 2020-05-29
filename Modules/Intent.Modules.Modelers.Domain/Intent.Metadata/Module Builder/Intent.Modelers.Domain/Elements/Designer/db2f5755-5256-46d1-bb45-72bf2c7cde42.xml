@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>696e26c8-1840-4564-8eee-fef4c77d1439</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>
@@ -30,9 +27,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
         <childElement id="1da67b2e-82ae-4708-9b09-123d981c4533" type="Context Menu">
@@ -42,9 +36,6 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>0f427fd8-8f26-42db-aaaf-169200b3d3a9</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes />
           <childElements>
             <childElement id="e5580bca-7b08-4ce9-bcab-ef354c5a6ccf" type="Element Creation Option">
@@ -62,9 +53,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -95,9 +83,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -128,9 +113,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -161,9 +143,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -194,9 +173,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -227,9 +203,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -260,9 +233,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment />

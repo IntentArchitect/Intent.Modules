@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes />
   <childElements>
     <childElement id="00d22977-8670-45ac-8cd4-18b0f123ea14" type="Attribute">
@@ -26,9 +23,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>e3ab1103-695b-43cb-9dad-feea553c2711</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>

@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>false</addedByDefault>
@@ -45,9 +42,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>d45e383d-90ba-4b64-aca7-34ca100cea21</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
         <childElement id="45be99fb-038c-4d0a-92fb-95686ecee1ce" type="Element Creation Option">
@@ -65,9 +59,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>57cc29a3-e8c1-41d8-8862-5472645015d0</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment>Overrides the default creation option settings.</comment>
@@ -98,9 +89,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>57cc29a3-e8c1-41d8-8862-5472645015d0</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment>Overrides the default creation option settings.</comment>
@@ -131,9 +119,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>57cc29a3-e8c1-41d8-8862-5472645015d0</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment>Overrides the default creation option settings.</comment>

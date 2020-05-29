@@ -13,9 +13,6 @@
     </mappedPath>
   </mappedClass>
   <parentFolderId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes />
   <childElements>
     <childElement id="4662bb04-f0f5-4b94-87f0-49e1b29de1a3" type="DTO-Field">
@@ -38,9 +35,6 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>640558b4-4104-4a96-baea-8b97643314cb</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -64,9 +58,6 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>640558b4-4104-4a96-baea-8b97643314cb</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>

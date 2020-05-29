@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
       <addedByDefault>false</addedByDefault>
@@ -31,9 +28,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -52,9 +46,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -73,9 +64,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes>
         <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
           <addedByDefault>false</addedByDefault>
@@ -102,9 +90,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -123,9 +108,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -143,9 +125,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
         <childElement id="fc18591a-dec0-4a35-8a05-84b7425eded3" type="Parameter">
@@ -163,9 +142,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>1c274c4c-2c2f-44f7-84a1-b96533aa1bfb</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes />
           <childElements />
         </childElement>
@@ -184,9 +160,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>1c274c4c-2c2f-44f7-84a1-b96533aa1bfb</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes />
           <childElements />
         </childElement>
@@ -206,9 +179,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -226,9 +196,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>

@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>true</addedByDefault>
@@ -45,9 +42,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>fee0edca-4aa0-4f77-a524-6bbd84e78734</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
         <childElement id="d42e6f69-09ee-4a76-8be1-120c0756e990" type="Element Creation Option">
@@ -65,9 +59,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>f674d8fa-633a-468e-a8d9-fe6484f46f54</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment>Overrides the default creation option settings.</comment>
@@ -92,9 +83,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>fee0edca-4aa0-4f77-a524-6bbd84e78734</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes>
         <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
           <addedByDefault>true</addedByDefault>
@@ -111,9 +99,6 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>1f747d14-681c-4a20-8c68-34223f41b825</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
               <addedByDefault>true</addedByDefault>
@@ -141,9 +126,6 @@
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>e45defc1-8775-49c0-bf70-5ec59684e944</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
@@ -172,9 +154,6 @@
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>e45defc1-8775-49c0-bf70-5ec59684e944</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
@@ -203,9 +182,6 @@
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>e45defc1-8775-49c0-bf70-5ec59684e944</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
@@ -234,9 +210,6 @@
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>e45defc1-8775-49c0-bf70-5ec59684e944</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
@@ -265,9 +238,6 @@
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>e45defc1-8775-49c0-bf70-5ec59684e944</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>

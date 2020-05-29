@@ -2,10 +2,11 @@
 <solution id="9cde682f-ade0-4c8b-a474-5356f8c3cedf">
   <name>Intent.Modules</name>
   <description>Designer workspace for official Intent Modules</description>
-  <version>2.1.0</version>
+  <version>2.2.0</version>
   <icon>https://intentarchitect.com/assets/images/logo-white.png</icon>
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.MetaData</metadataRelativePath>
+  <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
   <applications>
     <application id="1cecc65d-e804-4de6-a27f-e8e4ad0190d7" relativePath="Intent.Modules.Angular\Angular.application.config" />
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />

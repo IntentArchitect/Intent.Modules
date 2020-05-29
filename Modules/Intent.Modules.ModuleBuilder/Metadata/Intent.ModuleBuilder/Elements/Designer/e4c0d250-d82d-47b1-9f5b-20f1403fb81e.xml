@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b54ca450-86a6-4a9e-9797-9e628aaeebdd</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>
@@ -30,9 +27,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
         <childElement id="5cbdd439-eeb0-481d-9833-3fd25fb01a1c" type="Context Menu">
@@ -42,9 +36,6 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>fb419f17-4218-49db-bd49-ba9de933e422</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes />
           <childElements>
             <childElement id="9a0a194c-b718-4052-be57-cee27bcd2ecc" type="Element Creation Option">
@@ -62,9 +53,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -95,9 +83,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -128,9 +113,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -161,9 +143,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment />

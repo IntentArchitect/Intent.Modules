@@ -14,9 +14,6 @@
   </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>79f33fed-14c9-4304-ba6c-9835a7fefd00</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>
@@ -36,9 +33,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1e3cc0d3-8901-498a-960b-4a51f915b92b</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
         <childElement id="0886a357-3565-4baf-95df-994eb4bbb54d" type="Context Menu">
@@ -48,9 +42,6 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>7fac2a1d-f7e0-4295-8d68-0aa3b5f000e4</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes />
           <childElements>
             <childElement id="85db7622-9ab9-44d4-9a57-ca33ac16b635" type="Element Creation Option">
@@ -68,9 +59,6 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>0886a357-3565-4baf-95df-994eb4bbb54d</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment />

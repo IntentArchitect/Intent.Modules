@@ -7,9 +7,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>false</addedByDefault>
@@ -46,9 +43,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>89333f72-3960-4159-bf61-9c40d4b65088</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
         <childElement id="7075d52c-ca67-4368-9b3b-ff8719ef6252" type="Element Creation Option">
@@ -66,9 +60,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>bcb1c656-0ea3-4fbe-9646-2735825f5453</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment>Overrides the default creation option settings.</comment>

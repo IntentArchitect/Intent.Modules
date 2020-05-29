@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes />
   <childElements>
     <childElement id="3dd4d1e7-a64f-4433-b4bc-6694224f7ce6" type="Operation">
@@ -26,9 +23,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>6dc447c6-cd9a-45de-9c5b-82cb77077d2d</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -46,9 +40,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>6dc447c6-cd9a-45de-9c5b-82cb77077d2d</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -67,9 +58,6 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>6dc447c6-cd9a-45de-9c5b-82cb77077d2d</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
         <childElement id="1979068f-3d35-4d93-9838-580c90727bff" type="Parameter">
@@ -87,9 +75,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>bbeb812f-57e8-4276-8f02-f3d6784bd647</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes />
           <childElements />
         </childElement>

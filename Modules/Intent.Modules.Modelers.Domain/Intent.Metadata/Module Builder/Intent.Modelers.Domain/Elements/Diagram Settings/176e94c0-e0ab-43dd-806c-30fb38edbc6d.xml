@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>4d66fecd-e9b8-436f-aa50-c59040ad0879</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes />
   <childElements>
     <childElement id="898ceb3b-b0a3-4c54-b378-a05e49efef16" type="Context Menu">
@@ -18,9 +15,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>176e94c0-e0ab-43dd-806c-30fb38edbc6d</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
         <childElement id="0488c28c-333c-4ba4-a405-c013a2e9dbc5" type="Element Creation Option">
@@ -38,9 +32,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>898ceb3b-b0a3-4c54-b378-a05e49efef16</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />

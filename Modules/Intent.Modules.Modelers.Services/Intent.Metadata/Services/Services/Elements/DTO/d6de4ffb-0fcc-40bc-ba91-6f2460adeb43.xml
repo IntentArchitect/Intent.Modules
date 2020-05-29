@@ -13,9 +13,6 @@
     </mappedPath>
   </mappedClass>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes />
   <childElements>
     <childElement id="0f7f3fd3-0012-45e2-92a4-07b38472d5a6" type="DTO-Field">
@@ -38,9 +35,6 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -64,9 +58,6 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -90,9 +81,6 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -116,9 +104,6 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -142,9 +127,6 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
@@ -168,9 +150,6 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements />
     </childElement>
