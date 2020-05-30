@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="f3fcc35a-4bb2-44e7-aca2-d721e047a4c9">
+  <name>.NET Framework Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>asp.net web application (.net framework)</element>
+    <element>class library (.net framework)</element>
+    <element>console app (.net framework)</element>
+    <element>wcf service application</element>
+  </targetElements>
+  <applyMode>on-create</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="117cf9ee-04da-4f1c-915a-b62c61e2c558">
+      <name>Target Framework</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <defaultValue>net452</defaultValue>
+      <valueOptions>
+        <option>net452</option>
+        <option>net462</option>
+        <option>net472</option>
+      </valueOptions>
+      <lookupTypes>
+        <type>.net framework version</type>
+      </lookupTypes>
+    </property>
+  </properties>
+</stereotypeDefinition>

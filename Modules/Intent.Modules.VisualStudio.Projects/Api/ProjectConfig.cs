@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Configuration;
 using Intent.Metadata.Models;
 
@@ -18,7 +20,9 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public string Type => _project.ProjectTypeId;
         public string Name => _project.Name;
         public string RelativeLocation => _project.RelativeLocation ?? _project.Name;
-        public string TargetFrameworks => _project.TargetFrameworkVersion();
+        public IEnumerable<string> TargetFrameworks => _project.TargetFrameworkVersion()
+            .Select(x => x.Trim())
+            .ToArray();
         public IList<IProjectOutputTarget> Roles => _project.GetRoles();
     }
 }

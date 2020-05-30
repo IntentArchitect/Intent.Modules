@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="043eee26-1591-42ac-9f2c-fc911b070eb1" type="Script">
+  <name>Script</name>
+  <display>Script</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>ae2c14d0-eb26-4d7c-8daf-9a714df2d5f0</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

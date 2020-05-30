@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3ddeeeb6-7c66-4593-a646-73501400102b" type="Class Library (.NET Core)">
+  <name>Intent.Modules.ModuleBuilder</name>
+  <display>Intent.Modules.ModuleBuilder</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>82102275-5703-4063-af56-14ae960258bb</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

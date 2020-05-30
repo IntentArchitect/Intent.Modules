@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="6453c4bd-78b8-4589-a223-9f57a348a1a1" type="Element Settings">
+  <name>.NET Framework Version</name>
+  <display>.NET Framework Version</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>2ef69545-61ca-42b7-89bd-4ae3d5970280</parentFolderId>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="true" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="993fc98b-35a0-440c-9dd2-8f1c8af3dadd" type="Context Menu">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>6453c4bd-78b8-4589-a223-9f57a348a1a1</parentFolderId>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

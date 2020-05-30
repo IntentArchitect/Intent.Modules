@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="bedbaca1-c82b-4285-bf68-f27bb96d6b36" type="Role">
+  <name>IModSpec</name>
+  <display>IModSpec</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

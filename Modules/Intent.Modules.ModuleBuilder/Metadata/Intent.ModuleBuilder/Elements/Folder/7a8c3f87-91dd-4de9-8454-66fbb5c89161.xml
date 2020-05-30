@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="7a8c3f87-91dd-4de9-8454-66fbb5c89161" type="Folder">
+  <name>Macros</name>
+  <display>Macros</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

@@ -4,7 +4,6 @@
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>creation option</element>
     <element>element creation option</element>
     <element>stereotype-definition creation option</element>
   </targetElements>

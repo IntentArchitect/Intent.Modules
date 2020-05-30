@@ -14,7 +14,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         string RelativeLocation { get; }
 
         IProjectConfig ToProjectConfig();
-        string TargetFrameworkVersion();
+        IEnumerable<string> TargetFrameworkVersion();
         IList<RoleModel> Roles { get; }
         IList<FolderModel> Folders { get; }
     }

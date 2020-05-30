@@ -90,7 +90,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             group.AddProperty("AppDesignerFolder", "Properties");
             group.AddProperty("RootNamespace", Model.Name);
             group.AddProperty("AssemblyName", Model.Name);
-            group.AddProperty("TargetFrameworkVersion", Model.TargetFrameworkVersion());
+            group.AddProperty("TargetFrameworkVersion", GetTargetFrameworkVersion());
             group.AddProperty("WcfConfigValidationEnabled", "True");
             group.AddProperty("AutoGenerateBindingRedirects", "true");
             group.AddProperty("UseIISExpress", "True");
@@ -191,6 +191,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             }
 
             return root.RawXml.Replace("utf-16", "utf-8");
+        }
+
+        private string GetTargetFrameworkVersion()
+        {
+            return Model.TargetFrameworkVersion().SingleOrDefault() ?? "4.7.2";
         }
 
         private static ProjectItemGroupElement AddItems(ProjectRootElement elem, string groupName, params string[] items)

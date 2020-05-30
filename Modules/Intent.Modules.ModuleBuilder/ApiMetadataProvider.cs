@@ -118,6 +118,15 @@ namespace Intent.Modules.ModuleBuilder.Api
             return models;
         }
 
+        public IList<ScriptModel> GetScriptModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == ScriptModel.SpecializationType)
+                .Select(x => new ScriptModel(x))
+                .ToList<ScriptModel>();
+            return models;
+        }
+
         public IList<TemplateRegistrationModel> GetTemplateRegistrationModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)

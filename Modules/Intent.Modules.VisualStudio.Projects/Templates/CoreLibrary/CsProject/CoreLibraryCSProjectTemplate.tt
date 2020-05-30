@@ -14,7 +14,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework><#= Model.TargetFrameworkVersion() #></TargetFramework>
+    <TargetFramework><#= string.Join(";", Model.TargetFrameworkVersion()) #></TargetFramework>
   </PropertyGroup>
 
 </Project>

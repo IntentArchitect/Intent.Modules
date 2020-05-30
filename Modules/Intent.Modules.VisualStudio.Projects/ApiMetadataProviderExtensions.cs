@@ -71,5 +71,15 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             return new ApiMetadataProvider(metadataManager).GetSolutionFolderModels(application);
         }
 
+        public static IList<NETCoreVersionModel> GetNETCoreVersionModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetNETCoreVersionModels(application);
+        }
+
+        public static IList<NETFrameworkVersionModel> GetNETFrameworkVersionModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetNETFrameworkVersionModels(application);
+        }
+
     }
 }

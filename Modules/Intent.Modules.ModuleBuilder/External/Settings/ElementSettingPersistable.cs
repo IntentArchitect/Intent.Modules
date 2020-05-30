@@ -97,17 +97,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("visualSettings")]
         public ElementVisualSettingsPersistable VisualSettings { get; set; }
 
-        //[XmlArray("literalSettings")]
-        //[XmlArrayItem("literalSetting")]
-        //public ClassLiteralSettings[] LiteralSettings { get; set; }
-
-        //[XmlArray("attributeSettings")]
-        //[XmlArrayItem("attributeSetting")]
-        //public AttributeSettingsPersistable[] AttributeSettings { get; set; }
-
-        //[XmlArray("operationSettings")]
-        //[XmlArrayItem("operationSetting")]
-        //public OperationSettingsPersistable[] OperationSettings { get; set; }
+        [XmlArray("macros")]
+        [XmlArrayItem("macro")]
+        public List<ElementMacroPersistable> Macros { get; set; }
 
         [XmlArray("childElementSettings")]
         [XmlArrayItem("childElementSetting")]
@@ -117,5 +109,14 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}'";
         }
+    }
+
+    public class ElementMacroPersistable
+    {
+        [XmlAttribute("trigger")]
+        public string Trigger { get; set; }
+
+        [XmlElement("script")]
+        public string Script { get; set; }
     }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="11c06b56-05e5-42d4-ab41-da5765516230" type=".NET Core Version">
+  <name>.NET Core 2.2</name>
+  <display>.NET Core 2.2</display>
+  <isAbstract>false</isAbstract>
+  <value>netcoreapp2.2</value>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>8d6f4aac-236d-4bc7-83f6-f9ce6a516654</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

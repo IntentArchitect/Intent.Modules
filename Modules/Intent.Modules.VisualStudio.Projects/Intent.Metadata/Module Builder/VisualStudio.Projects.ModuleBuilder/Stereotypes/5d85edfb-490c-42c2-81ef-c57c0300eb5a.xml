@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="5d85edfb-490c-42c2-81ef-c57c0300eb5a">
-  <name>Core Project Settings</name>
+  <name>.NET Core Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements />
-  <applyMode>manually</applyMode>
+  <targetElements>
+    <element>asp.net core web application</element>
+    <element>class library (.net core)</element>
+  </targetElements>
+  <applyMode>on-create</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>
   <displayFunction />
@@ -11,19 +14,57 @@
   <parentFolderId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</parentFolderId>
   <order>0</order>
   <properties>
+    <property id="4756bd10-23e2-473b-9957-d7083759cd42">
+      <name>Target Multiple Frameworks</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40">
       <name>Target Framework</name>
       <type>string</type>
       <controlType>select</controlType>
-      <optionsSource>options</optionsSource>
-      <placeholder />
-      <defaultValue>.NET Core 3.1</defaultValue>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue />
       <valueOptions>
-        <option>.NET Core 2.1</option>
-        <option>.NET Core 2.2</option>
-        <option>.NET Core 3.1</option>
+        <option>netcoreapp2.1</option>
+        <option>netcoreapp2.2</option>
+        <option>netcoreapp3.0</option>
+        <option>netcoreapp3.1</option>
+        <option>netcoreapp3.2</option>
       </valueOptions>
-      <lookupTypes />
+      <lookupTypes>
+        <type>.net core version</type>
+        <type>.net framework version</type>
+      </lookupTypes>
+      <isActiveFunction>return properties["Target Multiple Frameworks"].value == false;</isActiveFunction>
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+    <property id="5215b600-32fc-4a6d-af72-9eb88a6f30e7">
+      <name>Target Frameworks</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue />
+      <valueOptions>
+        <option>netcoreapp2.1</option>
+        <option>netcoreapp2.2</option>
+        <option>netcoreapp3.0</option>
+        <option>netcoreapp3.1</option>
+        <option>netcoreapp3.2</option>
+      </valueOptions>
+      <lookupTypes>
+        <type>.net core version</type>
+        <type>.net framework version</type>
+      </lookupTypes>
+      <isActiveFunction>return properties["Target Multiple Frameworks"].value == true;</isActiveFunction>
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

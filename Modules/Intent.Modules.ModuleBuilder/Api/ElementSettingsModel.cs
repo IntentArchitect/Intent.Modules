@@ -81,7 +81,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
                     .ToList(),
                 TypeOrder = this.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
-                VisualSettings = this.VisualSettings?.ToPersistable()
+                VisualSettings = this.VisualSettings?.ToPersistable(),
+                Macros = this.EventSettings?.ToPersistable()
             };
         }
 
@@ -166,5 +167,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             }
             return this.GetSettings().SaveMode().IsOwnFile();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public ElementEventSettingsModel EventSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == ElementEventSettingsModel.SpecializationType)
+            .Select(x => new ElementEventSettingsModel(x))
+            .SingleOrDefault();
     }
 }

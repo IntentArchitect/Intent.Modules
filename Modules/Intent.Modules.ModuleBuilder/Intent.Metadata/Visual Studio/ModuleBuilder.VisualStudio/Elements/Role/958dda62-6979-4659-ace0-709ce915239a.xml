@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="958dda62-6979-4659-ace0-709ce915239a" type="Role">
+  <name>MyTestRoleOfDoom</name>
+  <display>MyTestRoleOfDoom</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

@@ -115,6 +115,6 @@
     <file src="$outDir$/$id$.pdb" />
     <file src="$outDir$/Mono.TextTemplating.dll" />
     <file src="$outDir$/System.CodeDom.dll" />
-    <file src="$outDir$/Intent.Modules.Common.CSharp.dll"/>
+    <file src="$outDir$/Intent.Modules.Common.CSharp.dll" />
   </files>
 </package>

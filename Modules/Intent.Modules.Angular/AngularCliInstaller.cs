@@ -128,7 +128,7 @@ To install the CLI using npm, open a terminal/console window and enter the follo
 
         private IProject GetWebCoreProject(IApplication application)
         {
-            return application.Projects.FirstOrDefault(x => x.ProjectType.Id == VisualStudioProjectTypeIds.CoreWebApp);
+            return application.Projects.FirstOrDefault(x => x.HasRole("Angular"));
         }
     }
 }

@@ -7,15 +7,15 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Api
+namespace Intent.Modules.VisualStudio.Projects.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class CreationOptionModel : IHasStereotypes, IMetadataModel
+    public class NETCoreVersionModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Creation Option";
+        public const string SpecializationType = ".NET Core Version";
         protected readonly IElement _element;
 
-        public CreationOptionModel(IElement element, string requiredType = SpecializationType)
+        public NETCoreVersionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -34,8 +34,10 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
-        public ITypeReference TypeReference => _element.TypeReference;
+        public string Value => _element.Value;
 
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
 
         [IntentManaged(Mode.Fully)]
         public override string ToString()
@@ -44,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public bool Equals(CreationOptionModel other)
+        public bool Equals(NETCoreVersionModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -55,7 +57,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CreationOptionModel)obj);
+            return Equals((NETCoreVersionModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -63,8 +65,5 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        [IntentManaged(Mode.Fully)]
-        public IElement InternalElement => _element;
     }
 }

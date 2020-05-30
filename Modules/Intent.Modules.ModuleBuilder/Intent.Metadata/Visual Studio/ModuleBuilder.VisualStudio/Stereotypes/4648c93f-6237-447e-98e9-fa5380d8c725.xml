@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="4648c93f-6237-447e-98e9-fa5380d8c725">
+  <name>Class Library (.NET Core)</name>
+  <targetMode>of-type</targetMode>
+  <targetElements />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>82102275-5703-4063-af56-14ae960258bb</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="766b87f0-dc22-4dc7-9a97-23ea11619665">
+      <name>Target Framework</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

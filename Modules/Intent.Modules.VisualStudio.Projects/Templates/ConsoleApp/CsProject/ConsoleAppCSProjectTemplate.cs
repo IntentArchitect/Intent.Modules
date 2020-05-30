@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
@@ -62,7 +63,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
             group.AddProperty("AppDesignerFolder", "Properties");
             group.AddProperty("RootNamespace", $"{Model.Name}");
             group.AddProperty("AssemblyName", $"{Model.Name}");
-            group.AddProperty("TargetFrameworkVersion", Model.TargetFrameworkVersion());
+            group.AddProperty("TargetFrameworkVersion", GetTargetFrameworkVersion());
             group.AddProperty("FileAlignment", "512");
             group.AddProperty("TargetFrameworkProfile", "");
 
@@ -112,6 +113,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
             root.AddImport("$(MSBuildToolsPath)\\Microsoft.CSharp.targets");
 
             return root.RawXml.Replace("utf-16", "utf-8");
+        }
+
+        private string GetTargetFrameworkVersion()
+        {
+            return Model.TargetFrameworkVersion().SingleOrDefault() ?? "4.7.2";
         }
 
         private static ProjectItemGroupElement AddItems(ProjectRootElement elem, string groupName, params string[] items)

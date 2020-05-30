@@ -116,16 +116,16 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ScriptModel> ScriptTypes => _element.ChildElements
+            .Where(x => x.SpecializationType == ScriptModel.SpecializationType)
+            .Select(x => new ScriptModel(x))
+            .ToList();
     }
 
     public class TypeOrder : IEquatable<TypeOrder>
     {
-        public TypeOrder(CreationOptionModel element)
-        {
-            Order = element.GetOptionSettings().TypeOrder();
-            Type = element.TypeReference.Element.Name;
-        }
-
         public TypeOrder(ElementCreationOptionModel element)
         {
             Order = element.GetOptionSettings().TypeOrder();

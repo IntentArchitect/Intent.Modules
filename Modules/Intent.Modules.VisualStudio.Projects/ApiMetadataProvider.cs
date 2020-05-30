@@ -19,6 +19,24 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             _metadataManager = metadataManager;
         }
 
+        public IList<NETCoreVersionModel> GetNETCoreVersionModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Visual Studio", application.Id)
+                .Where(x => x.SpecializationType == NETCoreVersionModel.SpecializationType)
+                .Select(x => new NETCoreVersionModel(x))
+                .ToList<NETCoreVersionModel>();
+            return models;
+        }
+
+        public IList<NETFrameworkVersionModel> GetNETFrameworkVersionModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Visual Studio", application.Id)
+                .Where(x => x.SpecializationType == NETFrameworkVersionModel.SpecializationType)
+                .Select(x => new NETFrameworkVersionModel(x))
+                .ToList<NETFrameworkVersionModel>();
+            return models;
+        }
+
         public IList<ASPNETCoreWebApplicationModel> GetASPNETCoreWebApplicationModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Visual Studio", application.Id)

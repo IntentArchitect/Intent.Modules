@@ -38,7 +38,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
             this.Write("<Project Sdk=\"Microsoft.NET.Sdk\">\r\n\r\n  <PropertyGroup>\r\n    <TargetFramework>");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.TargetFrameworkVersion()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(";", Model.TargetFrameworkVersion())));
             
             #line default
             #line hidden
