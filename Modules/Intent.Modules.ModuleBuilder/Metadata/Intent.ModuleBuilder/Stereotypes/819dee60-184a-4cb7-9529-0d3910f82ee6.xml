@@ -3,7 +3,7 @@
   <name>File Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>file template</element>
+    <element id="43eae4bd-4613-4d15-88ac-52b7e743b7b2">File Template</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="file" />

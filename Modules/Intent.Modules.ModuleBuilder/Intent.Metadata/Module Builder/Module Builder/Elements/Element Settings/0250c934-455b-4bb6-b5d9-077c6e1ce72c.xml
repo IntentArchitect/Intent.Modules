@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="0250c934-455b-4bb6-b5d9-077c6e1ce72c" type="Element Settings">
+<class id="0250c934-455b-4bb6-b5d9-077c6e1ce72c" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Text Draw Settings</name>
   <display>Text Draw Settings</display>
   <isAbstract>false</isAbstract>

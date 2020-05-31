@@ -17,11 +17,11 @@ namespace Intent.Modules.ModuleBuilder.Api
         protected readonly IElement _element;
         public const string SpecializationType = "Package Settings";
 
-        public PackageSettingsModel(IElement element)
+        public PackageSettingsModel(IElement element, string requiredType = SpecializationType)
         {
-            if (element?.SpecializationType != SpecializationType)
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new ArgumentException($"Invalid element [{element}]");
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
 
             _element = element;
@@ -51,6 +51,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new PackageSettingsPersistable
             {
+                SpecializationTypeId = Id,
+                SpecializationType = Name,
                 CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
                     .Concat(MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])

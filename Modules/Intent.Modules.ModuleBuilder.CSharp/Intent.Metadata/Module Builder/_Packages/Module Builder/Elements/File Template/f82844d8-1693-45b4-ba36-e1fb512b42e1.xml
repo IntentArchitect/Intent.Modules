@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="f82844d8-1693-45b4-ba36-e1fb512b42e1" type="File Template">
+<class id="f82844d8-1693-45b4-ba36-e1fb512b42e1" type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2">
   <name>CSharpTemplate</name>
   <display>CSharpTemplate: File Per Model</display>
   <isAbstract>false</isAbstract>

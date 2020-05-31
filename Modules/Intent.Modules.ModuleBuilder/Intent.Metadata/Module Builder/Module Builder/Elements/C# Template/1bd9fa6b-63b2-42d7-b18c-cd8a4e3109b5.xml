@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5" type="C# Template">
+<class id="1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5" type="C# Template" typeId="f6456232-0f1b-4235-b5f8-b4cce548ca59">
   <name>ApiAssociationModel</name>
   <display>ApiAssociationModel: File Per Model</display>
   <isAbstract>false</isAbstract>

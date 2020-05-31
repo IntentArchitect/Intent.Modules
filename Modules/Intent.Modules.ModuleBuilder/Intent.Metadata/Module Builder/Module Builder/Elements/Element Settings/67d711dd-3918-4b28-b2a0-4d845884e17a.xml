@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="67d711dd-3918-4b28-b2a0-4d845884e17a" type="Element Settings">
+<class id="67d711dd-3918-4b28-b2a0-4d845884e17a" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Diagram Settings</name>
   <display>Diagram Settings</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="fa87f13a-32ea-49cb-ac65-af14b9bd10fa" type="Context Menu">
+    <childElement id="fa87f13a-32ea-49cb-ac65-af14b9bd10fa" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>67d711dd-3918-4b28-b2a0-4d845884e17a</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="3e304152-b9f4-4baf-9621-cbda17405f49" type="Element Creation Option">
+        <childElement id="3e304152-b9f4-4baf-9621-cbda17405f49" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Menu Options</name>
           <display>Add Menu Options: Context Menu</display>
           <isAbstract>false</isAbstract>

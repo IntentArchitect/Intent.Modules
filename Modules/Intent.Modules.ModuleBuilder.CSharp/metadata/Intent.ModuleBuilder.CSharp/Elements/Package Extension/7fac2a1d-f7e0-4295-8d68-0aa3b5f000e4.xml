@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="7fac2a1d-f7e0-4295-8d68-0aa3b5f000e4" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Package Settings</name>
+  <display>Package Settings: Package Settings</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="f40018dc-af29-4693-9d81-f4d1770a966d">
+    <typeId>fb419f17-4218-49db-bd49-ba9de933e422</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>1e3cc0d3-8901-498a-960b-4a51f915b92b</parentFolderId>
+  <stereotypes />
+  <childElements>
+    <childElement id="0886a357-3565-4baf-95df-994eb4bbb54d" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>Creation Options</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>7fac2a1d-f7e0-4295-8d68-0aa3b5f000e4</parentFolderId>
+      <stereotypes />
+      <childElements>
+        <childElement id="85db7622-9ab9-44d4-9a57-ca33ac16b635" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New C# Template</name>
+          <display>New C# Template: C# Template</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d5b9dce9-0b82-4c24-9168-acb2e637d10f">
+            <typeId>f6456232-0f1b-4235-b5f8-b4cce548ca59</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0886a357-3565-4baf-95df-994eb4bbb54d</parentFolderId>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="NewCSharpTemplate" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="1" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

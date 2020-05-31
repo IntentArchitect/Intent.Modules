@@ -4,8 +4,8 @@
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>element creation option</element>
-    <element>stereotype-definition creation option</element>
+    <element id="5fa12f89-da1e-49c5-b8e9-427b22407f19">Element Creation Option</element>
+    <element id="0c721d5d-7721-414c-adaf-4c9f5c5531a9">Stereotype-Definition Creation Option</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />

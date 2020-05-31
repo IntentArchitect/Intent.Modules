@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b24f3bdf-3ba1-4c66-8aa8-cf63a3ae7436" type="Folder">
+<class id="b24f3bdf-3ba1-4c66-8aa8-cf63a3ae7436" type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
   <name>Api</name>
   <display>Api</display>
   <isAbstract>false</isAbstract>

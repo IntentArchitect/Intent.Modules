@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="a747162d-696b-49ed-9075-b5da8d852e15" type="Element Settings">
+<class id="a747162d-696b-49ed-9075-b5da8d852e15" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Designer Extension</name>
   <display>Designer Extension</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="cb96b068-b6cb-4c25-b964-a00f0a145a2e" type="Context Menu">
+    <childElement id="cb96b068-b6cb-4c25-b964-a00f0a145a2e" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,13 +44,13 @@
       <parentFolderId>a747162d-696b-49ed-9075-b5da8d852e15</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="06c144a2-a00f-4590-916e-6135a34fc6aa" type="Element Creation Option">
-          <name>Add Package Settings</name>
-          <display>Add Package Settings: Package Settings</display>
+        <childElement id="06c144a2-a00f-4590-916e-6135a34fc6aa" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Package Extension</name>
+          <display>New Package Extension: Package Extension</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="86cc6e65-3fd0-437a-a188-ecd96a477f90">
-            <typeId>89333f72-3960-4159-bf61-9c40d4b65088</typeId>
+            <typeId>ab4152df-3add-4a08-81b6-0fefc7cbb204</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -74,7 +74,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="3787183e-7ffc-4887-b45e-de9a28223af2" type="Element Creation Option">
+        <childElement id="3787183e-7ffc-4887-b45e-de9a28223af2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Element Type</name>
           <display>New Element Type: Element Settings</display>
           <isAbstract>false</isAbstract>
@@ -104,7 +104,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="476fd741-c631-491c-9a78-c3dc11aa70aa" type="Element Creation Option">
+        <childElement id="476fd741-c631-491c-9a78-c3dc11aa70aa" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Core Type</name>
           <display>New Core Type: Core Type</display>
           <isAbstract>false</isAbstract>
@@ -134,7 +134,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="9bd06b90-f3d9-49ce-9211-373f92292af5" type="Element Creation Option">
+        <childElement id="9bd06b90-f3d9-49ce-9211-373f92292af5" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Element Extension</name>
           <display>New Element Extension: Element Extension</display>
           <isAbstract>false</isAbstract>
@@ -164,7 +164,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="caacb291-6376-4cd8-aa3e-975b37bca7fc" type="Element Creation Option">
+        <childElement id="caacb291-6376-4cd8-aa3e-975b37bca7fc" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Association Type</name>
           <display>New Association Type: Association Settings</display>
           <isAbstract>false</isAbstract>

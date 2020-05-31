@@ -3,7 +3,7 @@
   <name>Type Reference Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>element settings</element>
+    <element id="727577aa-3e07-4b41-be7d-7359bb1e48c8">Element Settings</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />

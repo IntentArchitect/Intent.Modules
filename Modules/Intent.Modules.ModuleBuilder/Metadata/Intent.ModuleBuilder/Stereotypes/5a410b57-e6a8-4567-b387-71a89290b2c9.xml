@@ -3,8 +3,8 @@
   <name>Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>association source end settings</element>
-    <element>association destination end settings</element>
+    <element id="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">Association Source End Settings</element>
+    <element id="c4c61fdc-464d-41d2-8e0e-5a734d588302">Association Destination End Settings</element>
   </targetElements>
   <applyMode>on-create</applyMode>
   <icon type="FontAwesome" source="cogs" />

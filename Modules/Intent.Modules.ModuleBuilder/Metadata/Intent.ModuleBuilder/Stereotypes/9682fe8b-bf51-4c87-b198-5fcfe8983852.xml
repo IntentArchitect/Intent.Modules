@@ -4,7 +4,7 @@
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>association creation option</element>
+    <element id="3dcfa78b-17ee-45b6-be03-8407d089ce76">Association Creation Option</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />

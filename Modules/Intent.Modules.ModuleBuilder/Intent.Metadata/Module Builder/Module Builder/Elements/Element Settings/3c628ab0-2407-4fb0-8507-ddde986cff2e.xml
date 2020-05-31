@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="3c628ab0-2407-4fb0-8507-ddde986cff2e" type="Element Settings">
+<class id="3c628ab0-2407-4fb0-8507-ddde986cff2e" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Element Event Settings</name>
   <display>Element Event Settings</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="f23144af-5fab-4095-ad4b-2e6db108c606" type="Context Menu">
+    <childElement id="f23144af-5fab-4095-ad4b-2e6db108c606" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>3c628ab0-2407-4fb0-8507-ddde986cff2e</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="fbe6c7b3-cc83-40fe-b9c5-95643ff4a924" type="Element Creation Option">
+        <childElement id="fbe6c7b3-cc83-40fe-b9c5-95643ff4a924" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>On Loaded Event</name>
           <display>On Loaded Event: Element Event Handler</display>
           <isAbstract>false</isAbstract>
@@ -74,7 +74,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="1310091e-bfbe-4189-b639-e2a8e48f19e2" type="Element Creation Option">
+        <childElement id="1310091e-bfbe-4189-b639-e2a8e48f19e2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>On Created Event</name>
           <display>On Created Event: Element Event Handler</display>
           <isAbstract>false</isAbstract>

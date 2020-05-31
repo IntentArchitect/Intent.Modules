@@ -3,7 +3,7 @@
   <name>Text Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>text draw settings</element>
+    <element id="0250c934-455b-4bb6-b5d9-077c6e1ce72c">Text Draw Settings</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="318a9f15-a162-4a58-ac04-eb9d6a12bf98" type="Folder">
+<class id="318a9f15-a162-4a58-ac04-eb9d6a12bf98" type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
   <name>Registration Types</name>
   <display>Registration Types</display>
   <isAbstract>false</isAbstract>

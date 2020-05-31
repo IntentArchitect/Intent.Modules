@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="70bb8550-9ff1-488f-a044-be46dff677a5" type="Folder">
+<class id="70bb8550-9ff1-488f-a044-be46dff677a5" type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
   <name>Templates</name>
   <display>Templates</display>
   <isAbstract>false</isAbstract>

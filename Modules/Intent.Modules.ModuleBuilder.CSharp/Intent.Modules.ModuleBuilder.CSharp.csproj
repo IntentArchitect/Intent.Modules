@@ -16,11 +16,16 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Intent.Modules.Common" Version="2.1.0" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="2.2.0" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
     <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
   </ItemGroup>
 
@@ -33,7 +38,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CSharpTemplate.cs</LastGenOutput>
     </None>
-  
     <None Update="Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CSharpTemplatePartial.cs</LastGenOutput>
@@ -55,7 +59,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>CSharpTemplate.tt</DependentUpon>
     </Compile>
-  
     <Compile Update="Templates\CSharpTemplatePartial\CSharpTemplatePartial.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -63,11 +66,7 @@
     </Compile>
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="modelers\CSharp.modeler.extension.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+  <ItemGroup></ItemGroup>
 
   <ItemGroup>
     <Folder Include="Api\" />

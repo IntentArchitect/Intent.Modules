@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="dbb71aa5-0db2-4a2a-97a9-501950f36f99" type="Element Settings">
+<class id="dbb71aa5-0db2-4a2a-97a9-501950f36f99" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Designers Folder</name>
   <display>Designers Folder</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="2f9ce669-d9ee-45ae-be5c-ed7a3ad68614" type="Context Menu">
+    <childElement id="2f9ce669-d9ee-45ae-be5c-ed7a3ad68614" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="2f4cc6a5-6e24-498d-bf51-10639e54829d" type="Element Creation Option">
+        <childElement id="2f4cc6a5-6e24-498d-bf51-10639e54829d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Designer Extension</name>
           <display>New Designer Extension: Designer Extension</display>
           <isAbstract>false</isAbstract>
@@ -74,7 +74,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="2f7eaf64-da41-4534-bbea-82a37bdcfb70" type="Element Creation Option">
+        <childElement id="2f7eaf64-da41-4534-bbea-82a37bdcfb70" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Designer</name>
           <display>New Designer: Designer</display>
           <isAbstract>false</isAbstract>

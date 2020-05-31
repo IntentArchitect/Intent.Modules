@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="5fa12f89-da1e-49c5-b8e9-427b22407f19" type="Element Settings">
+<class id="5fa12f89-da1e-49c5-b8e9-427b22407f19" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Element Creation Option</name>
   <display>Element Creation Option</display>
   <isAbstract>false</isAbstract>

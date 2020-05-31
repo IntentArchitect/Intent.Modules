@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="e4c0d250-d82d-47b1-9f5b-20f1403fb81e" type="Designer">
+<class id="e4c0d250-d82d-47b1-9f5b-20f1403fb81e" type="Designer" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
   <name>Module Builder</name>
   <display>Module Builder</display>
   <isAbstract>false</isAbstract>
@@ -20,16 +20,16 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="fb419f17-4218-49db-bd49-ba9de933e422" type="Package Settings">
-      <name>Package Settings</name>
-      <display>Package Settings</display>
+    <childElement id="fb419f17-4218-49db-bd49-ba9de933e422" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
+      <name>Package</name>
+      <display>Package</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="5cbdd439-eeb0-481d-9833-3fd25fb01a1c" type="Context Menu">
+        <childElement id="5cbdd439-eeb0-481d-9833-3fd25fb01a1c" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
           <name>Creation Options</name>
           <display>[context menu]</display>
           <isAbstract>false</isAbstract>
@@ -38,7 +38,7 @@
           <parentFolderId>fb419f17-4218-49db-bd49-ba9de933e422</parentFolderId>
           <stereotypes />
           <childElements>
-            <childElement id="9a0a194c-b718-4052-be57-cee27bcd2ecc" type="Element Creation Option">
+            <childElement id="9a0a194c-b718-4052-be57-cee27bcd2ecc" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New File Template</name>
               <display>New File Template: File Template</display>
               <isAbstract>false</isAbstract>
@@ -68,7 +68,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="f272f1a9-89fe-4925-bbf1-73360de59b79" type="Element Creation Option">
+            <childElement id="f272f1a9-89fe-4925-bbf1-73360de59b79" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Template Registration</name>
               <display>New Template Registration: Template Registration</display>
               <isAbstract>false</isAbstract>
@@ -98,7 +98,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="c9b99362-2e29-4ca9-8bc5-ee73696d927f" type="Element Creation Option">
+            <childElement id="c9b99362-2e29-4ca9-8bc5-ee73696d927f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Folder</name>
               <display>New Folder: Folder</display>
               <isAbstract>false</isAbstract>
@@ -128,7 +128,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="bbb893b9-4ad7-4487-ab41-468a5fe0512c" type="Stereotype-Definition Creation Option">
+            <childElement id="bbb893b9-4ad7-4487-ab41-468a5fe0512c" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
               <name>New Stereotype-Definition</name>
               <display>New Stereotype-Definition: Stereotype-Definition</display>
               <isAbstract>false</isAbstract>

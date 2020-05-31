@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="101fd5b6-3159-4810-9490-a103ef323e9c" type="Element Settings">
+<class id="101fd5b6-3159-4810-9490-a103ef323e9c" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Script</name>
   <display>Script</display>
   <isAbstract>false</isAbstract>

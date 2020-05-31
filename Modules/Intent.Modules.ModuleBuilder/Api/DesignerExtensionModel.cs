@@ -55,5 +55,11 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public PackageExtensionModel PackageExtension => _element.ChildElements
+            .Where(x => x.SpecializationType == PackageExtensionModel.SpecializationType)
+            .Select(x => new PackageExtensionModel(x))
+            .SingleOrDefault();
     }
 }

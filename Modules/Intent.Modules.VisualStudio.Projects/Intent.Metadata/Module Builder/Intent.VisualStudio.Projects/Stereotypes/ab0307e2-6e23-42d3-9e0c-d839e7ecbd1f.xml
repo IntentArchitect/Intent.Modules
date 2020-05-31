@@ -3,7 +3,7 @@
   <name>.NET Framework Version Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>.net framework version</element>
+    <element id=".net framework version">.net framework version</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />

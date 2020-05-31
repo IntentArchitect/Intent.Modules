@@ -45,7 +45,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             applicationModelerModeler.DisplayOrder = Model.GetDesignerSettings().DisplayOrder() ?? 0;
             var modelerSettings = applicationModelerModeler.Settings;
 
-            modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable();
+            modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable() ?? (Model as DesignerExtensionModel)?.PackageExtension?.ToPersistable();
             modelerSettings.ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.AssociationSettings = Model.AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.ElementExtensions = (Model as DesignerExtensionModel)?.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();

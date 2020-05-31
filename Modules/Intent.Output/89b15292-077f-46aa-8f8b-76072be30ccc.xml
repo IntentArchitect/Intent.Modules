@@ -6,67 +6,67 @@
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp.sln</SolutionRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Api\CSharpTemplateModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/CSharpTemplateModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\ApiMetadataProvider.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Intent.Modules.ModuleBuilder.CSharp.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.CSharp.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Intent.Modules.ModuleBuilder.CSharp.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.CSharp.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\modelers\CSharp.modeler.extension.config</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>modelers/CSharp.modeler.extension.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplate\CSharpTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/CSharpTemplate/CSharpTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplate\CSharpTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/CSharpTemplate/CSharpTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartial.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialPartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialPartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>10993ebd-89d1-4d06-837f-44a7a4adf953</ProjectId>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialRegistration.cs</ProjectRelativeFilePath>
     </FileLog>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ff86b4fd-d613-4983-8066-605f97b58581" type="C# Template">
+<class id="ff86b4fd-d613-4983-8066-605f97b58581" type="C# Template" typeId="f6456232-0f1b-4235-b5f8-b4cce548ca59">
   <name>ApiMetadataProviderExtensions</name>
   <display>ApiMetadataProviderExtensions: Single File</display>
   <isAbstract>false</isAbstract>

@@ -118,6 +118,15 @@ namespace Intent.Modules.ModuleBuilder.Api
             return models;
         }
 
+        public IList<PackageExtensionModel> GetPackageExtensionModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+                .Where(x => x.SpecializationType == PackageExtensionModel.SpecializationType)
+                .Select(x => new PackageExtensionModel(x))
+                .ToList<PackageExtensionModel>();
+            return models;
+        }
+
         public IList<ScriptModel> GetScriptModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)

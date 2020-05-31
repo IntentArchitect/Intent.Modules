@@ -219,6 +219,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/PackageExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/PackageSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>

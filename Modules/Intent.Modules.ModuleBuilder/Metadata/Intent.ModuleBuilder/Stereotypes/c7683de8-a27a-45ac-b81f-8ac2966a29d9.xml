@@ -3,7 +3,7 @@
   <name>Mapping Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>mapping settings</element>
+    <element id="178c2f55-9ca1-484d-be43-a91bdd5554dc">Mapping Settings</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />

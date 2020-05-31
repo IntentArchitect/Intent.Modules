@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="89333f72-3960-4159-bf61-9c40d4b65088" type="Element Settings">
+<class id="89333f72-3960-4159-bf61-9c40d4b65088" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <comment />
   <name>Package Settings</name>
   <display>Package Settings</display>
@@ -15,7 +15,7 @@
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:3,&quot;source&quot;:&quot;P|#7d7d7d&quot;}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" isActive="true" />
-        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
@@ -36,7 +36,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="bcb1c656-0ea3-4fbe-9646-2735825f5453" type="Context Menu">
+    <childElement id="bcb1c656-0ea3-4fbe-9646-2735825f5453" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -45,7 +45,7 @@
       <parentFolderId>89333f72-3960-4159-bf61-9c40d4b65088</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="7075d52c-ca67-4368-9b3b-ff8719ef6252" type="Element Creation Option">
+        <childElement id="7075d52c-ca67-4368-9b3b-ff8719ef6252" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Menu Options</name>
           <display>Add Menu Options: Context Menu</display>
           <isAbstract>false</isAbstract>
@@ -77,7 +77,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="9fe1811c-21b1-47a9-bd35-a8069cab19e7" type="Element Event Settings">
+    <childElement id="9fe1811c-21b1-47a9-bd35-a8069cab19e7" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
@@ -86,7 +86,7 @@
       <parentFolderId>89333f72-3960-4159-bf61-9c40d4b65088</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="fa06dc9f-ddad-4c90-a4b5-efcef371b03f" type="Element Event Handler">
+        <childElement id="fa06dc9f-ddad-4c90-a4b5-efcef371b03f" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>

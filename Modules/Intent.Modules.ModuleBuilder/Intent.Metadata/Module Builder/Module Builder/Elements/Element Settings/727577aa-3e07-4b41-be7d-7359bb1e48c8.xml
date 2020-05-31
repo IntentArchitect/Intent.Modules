@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="727577aa-3e07-4b41-be7d-7359bb1e48c8" type="Element Settings">
+<class id="727577aa-3e07-4b41-be7d-7359bb1e48c8" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Element Settings</name>
   <display>Element Settings</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="090a3b87-d79d-411b-bd93-57cd97e2ff17" type="Context Menu">
+    <childElement id="090a3b87-d79d-411b-bd93-57cd97e2ff17" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>727577aa-3e07-4b41-be7d-7359bb1e48c8</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="db737fe7-ac06-48e8-99a3-e55b450a0d94" type="Element Creation Option">
+        <childElement id="db737fe7-ac06-48e8-99a3-e55b450a0d94" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Menu Options</name>
           <display>Add Menu Options: Context Menu</display>
           <isAbstract>false</isAbstract>
@@ -74,7 +74,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="4d0543ff-9bad-4077-bef8-fca4e86ae0a2" type="Element Creation Option">
+        <childElement id="4d0543ff-9bad-4077-bef8-fca4e86ae0a2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Element Settings</name>
           <display>Add Element Settings: Element Settings</display>
           <isAbstract>false</isAbstract>
@@ -104,7 +104,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="b767b8da-d1b7-4578-9dea-25ba7ea1ad9c" type="Element Creation Option">
+        <childElement id="b767b8da-d1b7-4578-9dea-25ba7ea1ad9c" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Mapping Settings</name>
           <display>Add Mapping Settings: Mapping Settings</display>
           <isAbstract>false</isAbstract>
@@ -134,7 +134,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="c40b7800-98fc-4fe1-ab3e-2e20da7706a4" type="Element Creation Option">
+        <childElement id="c40b7800-98fc-4fe1-ab3e-2e20da7706a4" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Diagram Settings</name>
           <display>Add Diagram Settings: Diagram Settings</display>
           <isAbstract>false</isAbstract>
@@ -164,7 +164,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="a72e9835-e9d4-4c8d-a614-cf8b1431d9f6" type="Element Creation Option">
+        <childElement id="a72e9835-e9d4-4c8d-a614-cf8b1431d9f6" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Visual Settings</name>
           <display>Add Visual Settings: Element Visual Settings</display>
           <isAbstract>false</isAbstract>
@@ -194,7 +194,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="d1ac7f22-bf8a-48b6-a969-ec43c8f32aee" type="Element Creation Option">
+        <childElement id="d1ac7f22-bf8a-48b6-a969-ec43c8f32aee" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Event Settings</name>
           <display>Add Event Settings: Element Event Settings</display>
           <isAbstract>false</isAbstract>
@@ -226,7 +226,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="dd43b49c-899f-42af-8b91-018ae621c550" type="Element Event Settings">
+    <childElement id="dd43b49c-899f-42af-8b91-018ae621c550" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
@@ -235,7 +235,7 @@
       <parentFolderId>727577aa-3e07-4b41-be7d-7359bb1e48c8</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="797cbd49-75fa-457e-a0e0-9eab1f4ec5da" type="Element Event Handler">
+        <childElement id="797cbd49-75fa-457e-a0e0-9eab1f4ec5da" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>

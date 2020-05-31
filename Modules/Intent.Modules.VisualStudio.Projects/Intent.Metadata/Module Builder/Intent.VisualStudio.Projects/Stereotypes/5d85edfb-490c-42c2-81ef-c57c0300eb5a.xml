@@ -3,8 +3,8 @@
   <name>.NET Core Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>asp.net core web application</element>
-    <element>class library (.net core)</element>
+    <element id="asp.net core web application">asp.net core web application</element>
+    <element id="class library (.net core)">class library (.net core)</element>
   </targetElements>
   <applyMode>on-create</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />

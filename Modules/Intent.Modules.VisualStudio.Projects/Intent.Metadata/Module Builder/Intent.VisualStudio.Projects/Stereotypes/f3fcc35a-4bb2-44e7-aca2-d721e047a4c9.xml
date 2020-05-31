@@ -3,10 +3,10 @@
   <name>.NET Framework Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>asp.net web application (.net framework)</element>
-    <element>class library (.net framework)</element>
-    <element>console app (.net framework)</element>
-    <element>wcf service application</element>
+    <element id="asp.net web application (.net framework)">asp.net web application (.net framework)</element>
+    <element id="class library (.net framework)">class library (.net framework)</element>
+    <element id="console app (.net framework)">console app (.net framework)</element>
+    <element id="wcf service application">wcf service application</element>
   </targetElements>
   <applyMode>on-create</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />

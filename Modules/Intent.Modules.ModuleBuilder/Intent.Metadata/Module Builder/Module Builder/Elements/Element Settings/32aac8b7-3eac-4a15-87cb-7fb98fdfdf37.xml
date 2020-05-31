@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37" type="Element Settings">
+<class id="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Association Source End Settings</name>
   <display>Association Source End Settings</display>
   <isAbstract>false</isAbstract>

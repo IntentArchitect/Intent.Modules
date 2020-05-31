@@ -3,8 +3,8 @@
   <name>Navigable Indicator Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>association source end visual settings</element>
-    <element>association destination end visual settings</element>
+    <element id="77fdd377-950a-46e4-8d25-ab3c962d6105">Association Source End Visual Settings</element>
+    <element id="b59113a4-209c-45d6-b395-352362864fd1">Association Destination End Visual Settings</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />

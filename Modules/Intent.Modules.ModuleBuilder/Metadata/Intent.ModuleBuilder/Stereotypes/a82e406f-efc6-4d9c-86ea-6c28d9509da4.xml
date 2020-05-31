@@ -3,7 +3,7 @@
   <name>Path Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>path draw settings</element>
+    <element id="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">Path Draw Settings</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />

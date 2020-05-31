@@ -3,9 +3,9 @@
   <name>Position Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>text draw settings</element>
-    <element>stereotypes visual settings</element>
-    <element>element visual settings</element>
+    <element id="0250c934-455b-4bb6-b5d9-077c6e1ce72c">Text Draw Settings</element>
+    <element id="08620c8b-f6d3-472e-86b6-926fe110d526">Stereotypes Visual Settings</element>
+    <element id="5eea5fba-15df-4971-8541-6f19bad4297d">Element Visual Settings</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />

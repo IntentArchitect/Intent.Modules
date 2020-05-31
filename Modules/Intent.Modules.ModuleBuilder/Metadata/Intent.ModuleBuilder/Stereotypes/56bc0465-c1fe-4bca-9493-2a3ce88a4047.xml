@@ -3,7 +3,7 @@
   <name>Script Settings</name>
   <targetMode>that-reference</targetMode>
   <targetElements>
-    <element>043eee26-1591-42ac-9f2c-fc911b070eb1</element>
+    <element id="043eee26-1591-42ac-9f2c-fc911b070eb1">Script</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />

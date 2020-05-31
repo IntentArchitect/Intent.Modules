@@ -67,6 +67,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
         }
 
+        public static IList<PackageExtensionModel> GetPackageExtensionModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetPackageExtensionModels(application);
+        }
+
         public static IList<ScriptModel> GetScriptModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetScriptModels(application);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="f9800e0d-99ea-4d27-850b-4e6d07250ede" type="C# Template">
+<class id="f9800e0d-99ea-4d27-850b-4e6d07250ede" type="C# Template" typeId="f6456232-0f1b-4235-b5f8-b4cce548ca59">
   <name>ApiElementModel</name>
   <display>ApiElementModel: File Per Model</display>
   <isAbstract>false</isAbstract>

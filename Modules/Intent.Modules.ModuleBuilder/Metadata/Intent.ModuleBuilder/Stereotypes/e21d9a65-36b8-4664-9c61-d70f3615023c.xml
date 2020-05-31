@@ -3,7 +3,7 @@
   <name>Setting</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>association visual settings</element>
+    <element id="153a4063-82a1-4515-87f1-44c189004fad">Association Visual Settings</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
