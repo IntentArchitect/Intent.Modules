@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="6dfa762d-9046-48a5-898a-2772e42c519c" type="Role">
+<class id="6dfa762d-9046-48a5-898a-2772e42c519c" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
   <name>Decorators</name>
   <display>Decorators</display>
   <isAbstract>false</isAbstract>

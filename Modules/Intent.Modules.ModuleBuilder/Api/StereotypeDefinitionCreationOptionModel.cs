@@ -52,6 +52,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                 Type = ElementType.StereotypeDefinition,
+                SpecializationTypeId = this.Type.Name,
                 SpecializationType = this.Type.Name,
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),

@@ -159,6 +159,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("specializationType")]
         public string SpecializationType { get; set; }
 
+        [XmlElement("specializationTypeId")]
+        public string SpecializationTypeId { get; set; }
+
         [XmlElement("text")]
         public string Text { get; set; }
 

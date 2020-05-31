@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="2ef69545-61ca-42b7-89bd-4ae3d5970280" type="Designer">
+<class id="2ef69545-61ca-42b7-89bd-4ae3d5970280" type="Designer" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
   <name>Visual Studio</name>
   <display>Visual Studio</display>
   <isAbstract>false</isAbstract>
@@ -20,16 +20,16 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="07e7b690-a59d-4b72-8440-4308a121d32c" type="Package Settings">
-      <name>Package Settings</name>
-      <display>Package Settings</display>
+    <childElement id="07e7b690-a59d-4b72-8440-4308a121d32c" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
+      <name>Package</name>
+      <display>Package</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>2ef69545-61ca-42b7-89bd-4ae3d5970280</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="3b1cc619-f3d8-40ef-8989-8449ab0efecb" type="Context Menu">
+        <childElement id="3b1cc619-f3d8-40ef-8989-8449ab0efecb" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
           <name>[context menu]</name>
           <display>[context menu]</display>
           <isAbstract>false</isAbstract>
@@ -38,7 +38,7 @@
           <parentFolderId>07e7b690-a59d-4b72-8440-4308a121d32c</parentFolderId>
           <stereotypes />
           <childElements>
-            <childElement id="fc95b0a5-c91e-4dfe-abba-f60672af2c45" type="Element Creation Option">
+            <childElement id="fc95b0a5-c91e-4dfe-abba-f60672af2c45" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Folder</name>
               <display>New Folder: Solution Folder</display>
               <isAbstract>false</isAbstract>
@@ -68,7 +68,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="10941e6e-c628-460a-92bf-a4d3a8bb85ea" type="Element Creation Option">
+            <childElement id="10941e6e-c628-460a-92bf-a4d3a8bb85ea" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>Class Library (.NET Core)</name>
               <display>Class Library (.NET Core): Class Library (.NET Core)</display>
               <isAbstract>false</isAbstract>
@@ -98,7 +98,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="148e9b09-8bea-4f22-aced-8fa2d5fe67e2" type="Element Creation Option">
+            <childElement id="148e9b09-8bea-4f22-aced-8fa2d5fe67e2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>Class Library (.NET Framework)</name>
               <display>Class Library (.NET Framework): Class Library (.NET Framework)</display>
               <isAbstract>false</isAbstract>
@@ -128,7 +128,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="741dd8df-563e-4c6c-ab1a-780863cc4382" type="Element Creation Option">
+            <childElement id="741dd8df-563e-4c6c-ab1a-780863cc4382" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>Class Library (.NET Standard)</name>
               <display>Class Library (.NET Standard): Class Library (.NET Framework)</display>
               <isAbstract>false</isAbstract>
@@ -158,7 +158,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="8d0592fa-87fc-4140-b502-44066cb39165" type="Element Creation Option">
+            <childElement id="8d0592fa-87fc-4140-b502-44066cb39165" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>ASP.NET Core Web Application</name>
               <display>ASP.NET Core Web Application: ASP.NET Core Web Application</display>
               <isAbstract>false</isAbstract>
@@ -188,7 +188,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="98eb9945-e505-4b9d-b304-c241121afef1" type="Element Creation Option">
+            <childElement id="98eb9945-e505-4b9d-b304-c241121afef1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>ASP.NET Web Application (.NET Framework)</name>
               <display>ASP.NET Web Application (.NET Framework): ASP.NET Web Application (.NET Framework)</display>
               <isAbstract>false</isAbstract>
@@ -218,7 +218,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="3a380adf-85ef-4078-a4ef-163fa86818f9" type="Element Creation Option">
+            <childElement id="3a380adf-85ef-4078-a4ef-163fa86818f9" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>WCF Service Application</name>
               <display>WCF Service Application: WCF Service Application</display>
               <isAbstract>false</isAbstract>
@@ -248,7 +248,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="9ccd6b7c-8f27-4298-abf9-ff36f9ed2583" type="Element Creation Option">
+            <childElement id="9ccd6b7c-8f27-4298-abf9-ff36f9ed2583" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>Add Role</name>
               <display>Add Role: Role</display>
               <isAbstract>false</isAbstract>
@@ -278,7 +278,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="e8057355-7568-4bf9-8abf-6869cdb5a82c" type="Element Creation Option">
+            <childElement id="e8057355-7568-4bf9-8abf-6869cdb5a82c" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>Add .NET Core Version</name>
               <display>Add .NET Core Version: .NET Core Version</display>
               <isAbstract>false</isAbstract>
@@ -308,7 +308,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="a1f9dd9f-6398-41e2-a51e-b8da432fe2e8" type="Element Creation Option">
+            <childElement id="a1f9dd9f-6398-41e2-a51e-b8da432fe2e8" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>Add .NET Framework Version</name>
               <display>Add .NET Framework Version: .NET Framework Version</display>
               <isAbstract>false</isAbstract>
@@ -338,7 +338,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="f5212cbd-2d95-413a-8dd5-e18a245b6e6a" type="Stereotype-Definition Creation Option">
+            <childElement id="f5212cbd-2d95-413a-8dd5-e18a245b6e6a" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
               <name>New Stereotype-Definition</name>
               <display>New Stereotype-Definition: Stereotype-Definition</display>
               <isAbstract>false</isAbstract>

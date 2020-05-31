@@ -29,7 +29,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
             _element = element;
 
-            TargetSpecializationType = _element.TypeReference.Element.Name;
             //Text = element.Name;
             //Shortcut = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
             //DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{element.TypeReference.Element.Name.ToCSharpIdentifier()}";
@@ -46,7 +45,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
-        public string TargetSpecializationType { get; }
         public string ApiModelName => Type.ApiModelName;
 
         public bool AllowMultiple()
@@ -60,7 +58,8 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                 Type = ElementType.Element,
-                SpecializationType = this.TargetSpecializationType,
+                SpecializationTypeId = _element.TypeReference.Element.Id,
+                SpecializationType = _element.TypeReference.Element.Name,
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),
                 DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",

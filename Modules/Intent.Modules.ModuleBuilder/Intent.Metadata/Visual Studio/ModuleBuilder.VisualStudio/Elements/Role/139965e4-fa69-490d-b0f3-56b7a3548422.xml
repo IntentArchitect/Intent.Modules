@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="139965e4-fa69-490d-b0f3-56b7a3548422" type="Role">
+<class id="139965e4-fa69-490d-b0f3-56b7a3548422" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
   <name>Angular</name>
   <display>Angular</display>
   <isAbstract>false</isAbstract>

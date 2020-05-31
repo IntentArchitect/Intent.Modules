@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="958dda62-6979-4659-ace0-709ce915239a" type="Role">
+<class id="958dda62-6979-4659-ace0-709ce915239a" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
   <name>MyTestRoleOfDoom</name>
   <display>MyTestRoleOfDoom</display>
   <isAbstract>false</isAbstract>

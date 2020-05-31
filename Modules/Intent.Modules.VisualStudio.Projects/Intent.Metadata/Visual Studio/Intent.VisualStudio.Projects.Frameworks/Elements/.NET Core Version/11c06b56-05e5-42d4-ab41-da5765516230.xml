@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="11c06b56-05e5-42d4-ab41-da5765516230" type=".NET Core Version">
+<class id="11c06b56-05e5-42d4-ab41-da5765516230" type=".NET Core Version" typeId="65fb2757-ce97-41a8-9c53-b03d53c2c03f">
   <name>.NET Core 2.2</name>
   <display>.NET Core 2.2</display>
   <isAbstract>false</isAbstract>

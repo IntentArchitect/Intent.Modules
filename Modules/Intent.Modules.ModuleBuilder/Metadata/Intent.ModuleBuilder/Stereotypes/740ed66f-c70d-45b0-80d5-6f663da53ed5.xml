@@ -34,7 +34,7 @@
       <placeholder>(Not Mapped to Type)</placeholder>
       <valueOptions />
       <lookupTypes>
-        <type>element settings</type>
+        <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
       </lookupTypes>
       <isActiveFunction />
       <isRequiredFunction>return properties['Child Mapping Mode'].value == "Map to Type"</isRequiredFunction>
@@ -47,7 +47,7 @@
       <placeholder />
       <valueOptions />
       <lookupTypes>
-        <type>element mapping</type>
+        <type>4a16943b-702c-4fb0-bfcc-2afd98b8814c</type>
       </lookupTypes>
     </property>
   </properties>

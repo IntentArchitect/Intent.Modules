@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ed058414-83d9-4c97-b551-95a8cefe2569" type="Element Settings">
+<class id="ed058414-83d9-4c97-b551-95a8cefe2569" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>WCF Service Application</name>
   <display>WCF Service Application</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="2e74cee0-67ea-4a8a-b520-2e7818c36528" type="Context Menu">
+    <childElement id="2e74cee0-67ea-4a8a-b520-2e7818c36528" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>ed058414-83d9-4c97-b551-95a8cefe2569</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="81eb0815-3b58-4976-a0a5-a5956bf50b44" type="Element Creation Option">
+        <childElement id="81eb0815-3b58-4976-a0a5-a5956bf50b44" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Role</name>
           <display>Add Role: Role</display>
           <isAbstract>false</isAbstract>
@@ -74,7 +74,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="cde9d52b-ba5c-4fef-92ab-e79261fdc775" type="Element Creation Option">
+        <childElement id="cde9d52b-ba5c-4fef-92ab-e79261fdc775" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>

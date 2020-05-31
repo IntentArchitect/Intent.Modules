@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="5eb745a7-917d-4397-bc88-d2cec7b606b4" type=".NET Core Version" typeId="65fb2757-ce97-41a8-9c53-b03d53c2c03f">
+  <name>.NET Standard 1.1</name>
+  <display>.NET Standard 1.1</display>
+  <isAbstract>false</isAbstract>
+  <value>netstandard1.1</value>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>4aab5ac2-71c3-4d2b-a616-0ad39a8193ba</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

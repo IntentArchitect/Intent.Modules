@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
-    public static class ClassLibrarynetCoreModelExtensions
+    public static class ClassLibraryNETCoreModelExtensions
     {
         public static NETCoreSettings GetNETCoreSettings(this ClassLibraryNETCoreModel model)
         {

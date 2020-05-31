@@ -29,33 +29,38 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\AspnetCoreWebApplicationModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AspnetCoreWebApplicationModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ASPNETCoreWebApplicationModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/ASPNETCoreWebApplicationModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\AspnetWebApplicationnetFrameworkModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AspnetWebApplicationnetFrameworkModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ASPNETWebApplicationNETFrameworkModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/ASPNETWebApplicationNETFrameworkModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ClassLibrarynetCoreModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/ClassLibrarynetCoreModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ClassLibraryNETCoreModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/ClassLibraryNETCoreModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ClassLibrarynetFrameworkModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/ClassLibrarynetFrameworkModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ClassLibraryNETFrameworkModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/ClassLibraryNETFrameworkModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ConsoleAppnetFrameworkModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/ConsoleAppnetFrameworkModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ConsoleAppNETFrameworkModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/ConsoleAppNETFrameworkModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\WcfServiceApplicationModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/WcfServiceApplicationModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\NETFrameworkVersionModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/NETFrameworkVersionModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\WCFServiceApplicationModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/WCFServiceApplicationModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>

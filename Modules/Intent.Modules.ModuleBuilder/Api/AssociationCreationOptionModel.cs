@@ -27,7 +27,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             }
             _element = element;
             Type = new AssociationSettingsModel(TypeReference.Element);
-
         }
 
         [IntentManaged(Mode.Fully)]
@@ -54,6 +53,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                 Type = ElementType.Association,
+                SpecializationTypeId = Type.Id,
                 SpecializationType = this.Type.Name,
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),

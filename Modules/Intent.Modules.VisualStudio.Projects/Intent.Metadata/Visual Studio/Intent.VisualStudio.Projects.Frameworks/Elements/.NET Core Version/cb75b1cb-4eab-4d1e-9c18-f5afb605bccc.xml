@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="cb75b1cb-4eab-4d1e-9c18-f5afb605bccc" type=".NET Core Version">
+<class id="cb75b1cb-4eab-4d1e-9c18-f5afb605bccc" type=".NET Core Version" typeId="65fb2757-ce97-41a8-9c53-b03d53c2c03f">
   <name>.NET Core 1.0</name>
   <display>.NET Core 1.0</display>
   <isAbstract>false</isAbstract>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="3ff20de1-253f-4f42-82ca-55a1345f9042" type="Class Library (.NET Core)">
+<class id="3ff20de1-253f-4f42-82ca-55a1345f9042" type="Class Library (.NET Core)" typeId="43351e35-d2b9-4f02-bac4-e3d218ace834">
   <name>Intent.Modules.VisualStudio.Projects</name>
   <display>Intent.Modules.VisualStudio.Projects</display>
   <isAbstract>false</isAbstract>
