@@ -17,6 +17,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
             set => _specializationType = value;
         }
 
+        [XmlAttribute("typeId")]
+        public string SpecializationTypeId { get; set; }
+
         [XmlElement("specializationType")]
         public string SpecializationTypeOld { get; set; }
 

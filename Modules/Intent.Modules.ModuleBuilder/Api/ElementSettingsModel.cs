@@ -52,6 +52,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new ElementSettingPersistable()
             {
+                SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
                 SaveAsOwnFile = MustSaveInOwnFile(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),

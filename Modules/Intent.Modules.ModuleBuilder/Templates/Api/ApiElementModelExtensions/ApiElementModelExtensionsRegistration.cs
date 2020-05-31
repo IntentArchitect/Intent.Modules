@@ -39,8 +39,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 
             _stereotypeDefinitions = _metadataManager.GetMetadata<IStereotypeDefinition>("Module Builder", application.Id)
                 .Where(x => x.TargetMode == StereotypeTargetMode.ElementsOfType);
-            var targetTypes = _stereotypeDefinitions.SelectMany(x => x.TargetElements).Where(x => !x.Equals("Package", StringComparison.InvariantCultureIgnoreCase)).Distinct();
-            return targetTypes.Select(x => new ExtensionModel(new ExtensionModelType(x), _stereotypeDefinitions.Where(s => s.TargetElements.Any(t => t.Equals(x, StringComparison.InvariantCultureIgnoreCase))).ToList()));
+            var targetTypes = _stereotypeDefinitions.SelectMany(x => x.TargetElements).Where(x => !x.Id.Equals("Package", StringComparison.InvariantCultureIgnoreCase)).Distinct();
+            return targetTypes.Select(x => new ExtensionModel(new ExtensionModelType(x.Name), _stereotypeDefinitions.Where(s => s.TargetElements.Any(t => t.Id.Equals(x.Id, StringComparison.InvariantCultureIgnoreCase))).ToList()));
             //return _metadataManager.GetElementSettingsModels(application)
             //    .Where(e => _stereotypeDefinitions.Any(x => x.TargetElements.Any(t => t.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase))))
             //    .Select(model => new ExtensionModel(

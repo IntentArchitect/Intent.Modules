@@ -2,8 +2,10 @@
 <stereotypeDefinition id="4648c93f-6237-447e-98e9-fa5380d8c725">
   <name>Class Library (.NET Core)</name>
   <targetMode>of-type</targetMode>
-  <targetElements />
-  <applyMode>manually</applyMode>
+  <targetElements>
+    <element id="43351e35-d2b9-4f02-bac4-e3d218ace834">Class Library (.NET Core)</element>
+  </targetElements>
+  <applyMode>always</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>
   <displayFunction />
