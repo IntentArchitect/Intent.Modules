@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="21cd7c00-cf82-4526-8539-8685dfca3791">
+  <name>.NET Framework Version Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element>.net framework version</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>4aab5ac2-71c3-4d2b-a616-0ad39a8193ba</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="e8fa78be-9cc6-4848-9077-b3129310152c">
+      <name>Legacy Version Identifier</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="475ed40d-d952-4056-9509-afdec875a10f" type=".NET Framework Version">
+  <name>.NET Framework 4.8</name>
+  <display>.NET Framework 4.8</display>
+  <isAbstract>false</isAbstract>
+  <value>net48</value>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>4aab5ac2-71c3-4d2b-a616-0ad39a8193ba</parentFolderId>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="21cd7c00-cf82-4526-8539-8685dfca3791" name=".NET Framework Version Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="e8fa78be-9cc6-4848-9077-b3129310152c" display="Legacy Version Identifier" value="v4.8" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

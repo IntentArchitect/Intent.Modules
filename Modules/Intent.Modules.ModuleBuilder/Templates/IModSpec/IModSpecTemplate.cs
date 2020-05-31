@@ -154,7 +154,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 dependencies.Add(CreateDependency(IntentModule.IntentRoslynWeaver));
             }
 
-            // TODO: Test
             foreach (var template in doc.XPathSelectElements($"package/templates/template"))
             {
                 if (template.Attribute("externalReference") != null && _templatesToRegister.All(x => x.ModelId != template.Attribute("externalReference").Value))
@@ -209,15 +208,33 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 {
                     throw new Exception($"Package [{package.Name}] cannot be included because it is not within the Module Builder root location [{GetMetadata().GetFullLocationPath()}]");
                 }
-                if (doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") == null)
+                var installedPackage = doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
+                if (installedPackage == null)
                 {
                     var metadataRegistrations = doc.XPathSelectElement("package/metadata");
                     metadataRegistrations.Add(new XElement("install",
                         new XAttribute("target", package.GetStereotypeProperty<IElement>("Package Settings", "Reference in Designer")?.Name ?? string.Empty),
-                        new XAttribute("src", path)));
+                        new XAttribute("src", path),
+                        new XAttribute("externalReference", package.Id)));
+                }
+                else
+                {
+                    installedPackage.Attribute("target").Value = package.GetStereotypeProperty<IElement>("Package Settings", "Reference in Designer")?.Name ?? string.Empty;
+                    installedPackage.Attribute("src").Value = path;
+
+                    if (!installedPackage.Attributes("externalReference").Any())
+                    {
+                        installedPackage.Add(new XAttribute("externalReference", package.Id));
+                    }
                 }
             }
-
+            foreach (var installElements in doc.XPathSelectElements($"package/metadata/install"))
+            {
+                if (installElements.Attribute("externalReference") != null && packagesToInclude.All(x => x.Id != installElements.Attribute("externalReference").Value))
+                {
+                    installElements.Remove();
+                }
+            }
 
             return doc.ToStringUTF8();
         }

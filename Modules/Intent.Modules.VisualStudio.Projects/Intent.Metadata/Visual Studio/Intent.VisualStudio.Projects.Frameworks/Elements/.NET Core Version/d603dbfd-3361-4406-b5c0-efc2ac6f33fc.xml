@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d603dbfd-3361-4406-b5c0-efc2ac6f33fc" type=".NET Core Version">
+  <name>.NET Core 3.1</name>
+  <display>.NET Core 3.1</display>
+  <isAbstract>false</isAbstract>
+  <value>netcoreapp3.1</value>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>4aab5ac2-71c3-4d2b-a616-0ad39a8193ba</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

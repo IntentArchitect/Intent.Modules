@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f96815bb-6707-413e-b1b7-0b177f20229b" type=".NET Framework Version">
+  <name>.NET Framework 4.7.1</name>
+  <display>.NET Framework 4.7.1</display>
+  <isAbstract>false</isAbstract>
+  <value>net471</value>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>4aab5ac2-71c3-4d2b-a616-0ad39a8193ba</parentFolderId>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="21cd7c00-cf82-4526-8539-8685dfca3791" name=".NET Framework Version Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="e8fa78be-9cc6-4848-9077-b3129310152c" display="Legacy Version Identifier" value="v4.7.1" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

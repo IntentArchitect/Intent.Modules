@@ -65,7 +65,7 @@ Auto-compiling of module failed. If the problem persists, consider disabling thi
 
         private IProject GetProject(IApplication application)
         {
-            return application.Projects.FirstOrDefault(); // TODO: make more robust (i.e. lookup where .imodspec file was installed)
+            return application.Projects.SingleOrDefault(x => x.HasRole("IModSpec")); // TODO: make more robust (i.e. lookup where .imodspec file was installed)
         }
     }
 }
