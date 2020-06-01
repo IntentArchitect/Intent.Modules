@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="176e94c0-e0ab-43dd-806c-30fb38edbc6d" type="Diagram Settings">
+<class id="176e94c0-e0ab-43dd-806c-30fb38edbc6d" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a">
   <name>NewDiagramSettings</name>
   <display>[diagram]</display>
   <isAbstract>false</isAbstract>
@@ -8,7 +8,7 @@
   <parentFolderId>4d66fecd-e9b8-436f-aa50-c59040ad0879</parentFolderId>
   <stereotypes />
   <childElements>
-    <childElement id="898ceb3b-b0a3-4c54-b378-a05e49efef16" type="Context Menu">
+    <childElement id="898ceb3b-b0a3-4c54-b378-a05e49efef16" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -17,7 +17,7 @@
       <parentFolderId>176e94c0-e0ab-43dd-806c-30fb38edbc6d</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="0488c28c-333c-4ba4-a405-c013a2e9dbc5" type="Element Creation Option">
+        <childElement id="0488c28c-333c-4ba4-a405-c013a2e9dbc5" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Class</name>
           <display>New Class: Class</display>
           <isAbstract>false</isAbstract>

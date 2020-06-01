@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="c4c0c77f-720b-4e91-9c48-b58d2164d30a" type="Element Settings">
+<class id="c4c0c77f-720b-4e91-9c48-b58d2164d30a" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Comment</name>
   <display>Comment</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="c70584cf-c40f-45e5-84c4-c65691336c4b" type="Element Visual Settings">
+    <childElement id="c70584cf-c40f-45e5-84c4-c65691336c4b" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
       <name>[visual]</name>
       <display>[visual]: Comment</display>
       <isAbstract>false</isAbstract>
@@ -62,7 +62,7 @@
         </stereotype>
       </stereotypes>
       <childElements>
-        <childElement id="f5422fd4-406b-4174-9033-b48f69634735" type="Path Draw Settings">
+        <childElement id="f5422fd4-406b-4174-9033-b48f69634735" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
           <name>NewPathDrawSettings</name>
           <display>[draw path]</display>
           <isAbstract>false</isAbstract>
@@ -84,7 +84,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="b22f6124-db4a-4a0e-99b2-3ad4cc9a824d" type="Text Draw Settings">
+        <childElement id="b22f6124-db4a-4a0e-99b2-3ad4cc9a824d" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
           <name>[draw text]</name>
           <display>[draw text]</display>
           <isAbstract>false</isAbstract>

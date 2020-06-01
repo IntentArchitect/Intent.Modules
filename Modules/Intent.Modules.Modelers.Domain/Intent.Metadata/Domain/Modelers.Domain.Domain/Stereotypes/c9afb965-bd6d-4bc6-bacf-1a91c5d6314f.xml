@@ -3,7 +3,7 @@
   <name>Stereotype</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element>class</element>
+    <element id="04e12b51-ed12-42a3-9667-a6aa81bb6d10">Class</element>
   </targetElements>
   <applyMode>manually</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />

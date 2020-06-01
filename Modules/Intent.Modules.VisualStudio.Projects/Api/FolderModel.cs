@@ -71,5 +71,11 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .Where(x => x.SpecializationType == RoleModel.SpecializationType)
             .Select(x => new RoleModel(x))
             .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<FolderModel> Folders => _element.ChildElements
+            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+            .Select(x => new FolderModel(x))
+            .ToList();
     }
 }

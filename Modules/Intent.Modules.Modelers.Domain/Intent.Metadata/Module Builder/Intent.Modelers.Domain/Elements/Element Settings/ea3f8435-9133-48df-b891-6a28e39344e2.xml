@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ea3f8435-9133-48df-b891-6a28e39344e2" type="Element Settings">
+<class id="ea3f8435-9133-48df-b891-6a28e39344e2" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Folder</name>
   <display>Folder</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="71b6f717-f8d0-40f4-bb2c-25f2a083b886" type="Context Menu">
+    <childElement id="71b6f717-f8d0-40f4-bb2c-25f2a083b886" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>ea3f8435-9133-48df-b891-6a28e39344e2</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="bef7c32b-f894-4c46-864d-e2288721d066" type="Element Creation Option">
+        <childElement id="bef7c32b-f894-4c46-864d-e2288721d066" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Class</name>
           <display>New Class: Class</display>
           <isAbstract>false</isAbstract>
@@ -74,7 +74,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="8327b46e-9f1b-4bb6-bed9-0be26a874c4d" type="Element Creation Option">
+        <childElement id="8327b46e-9f1b-4bb6-bed9-0be26a874c4d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
@@ -104,7 +104,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="211e5b22-25d1-4c89-b8c5-6aac1a4cc31f" type="Element Creation Option">
+        <childElement id="211e5b22-25d1-4c89-b8c5-6aac1a4cc31f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Enum</name>
           <display>New Enum: Enum</display>
           <isAbstract>false</isAbstract>
@@ -134,7 +134,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="697ad0a5-40f0-4641-915f-ec41b97961a1" type="Element Creation Option">
+        <childElement id="697ad0a5-40f0-4641-915f-ec41b97961a1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Comment</name>
           <display>New Comment: Comment</display>
           <isAbstract>false</isAbstract>
@@ -164,7 +164,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="90456353-d7f7-487c-b895-e4baf9be9195" type="Element Creation Option">
+        <childElement id="90456353-d7f7-487c-b895-e4baf9be9195" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Diagram</name>
           <display>New Diagram: Diagram</display>
           <isAbstract>false</isAbstract>
@@ -194,7 +194,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="43a4a95d-22c0-402a-9dd4-081553b7cae9" type="Element Creation Option">
+        <childElement id="43a4a95d-22c0-402a-9dd4-081553b7cae9" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
@@ -224,7 +224,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="d35cc767-9f10-4fc7-acb2-df97e34cb7f8" type="Stereotype-Definition Creation Option">
+        <childElement id="d35cc767-9f10-4fc7-acb2-df97e34cb7f8" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>

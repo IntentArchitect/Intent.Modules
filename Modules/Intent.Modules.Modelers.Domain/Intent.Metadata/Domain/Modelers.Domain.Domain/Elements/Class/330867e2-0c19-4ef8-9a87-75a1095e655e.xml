@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="330867e2-0c19-4ef8-9a87-75a1095e655e" type="Class">
+<class id="330867e2-0c19-4ef8-9a87-75a1095e655e" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
   <name>NewClass1</name>
   <display>NewClass1</display>
   <isAbstract>false</isAbstract>
@@ -13,7 +13,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="304cc83d-7c82-42a1-a985-c68eb52498ce" type="Attribute">
+    <childElement id="304cc83d-7c82-42a1-a985-c68eb52498ce" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>firstAttr</name>
       <display>firstAttr: &lt;not found&gt;</display>
       <isAbstract>false</isAbstract>
@@ -31,7 +31,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="6f48db24-d7fc-419c-8beb-f67b26121014" type="Attribute">
+    <childElement id="6f48db24-d7fc-419c-8beb-f67b26121014" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
       <display>attribute: &lt;not found&gt;</display>
       <isAbstract>false</isAbstract>
@@ -49,7 +49,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="7507ff07-7f7c-4e9a-bce7-5962ca1c76a8" type="Attribute">
+    <childElement id="7507ff07-7f7c-4e9a-bce7-5962ca1c76a8" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
       <display>attribute: NewType</display>
       <isAbstract>false</isAbstract>
@@ -76,7 +76,7 @@
       </stereotypes>
       <childElements />
     </childElement>
-    <childElement id="7733c257-c6e3-4ee6-9e7e-6a641dcac66a" type="Attribute">
+    <childElement id="7733c257-c6e3-4ee6-9e7e-6a641dcac66a" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
       <display>attribute: &lt;no type&gt;</display>
       <isAbstract>false</isAbstract>
@@ -93,7 +93,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="bb9e704b-b83a-4ec5-83fc-931a517f6771" type="Attribute">
+    <childElement id="bb9e704b-b83a-4ec5-83fc-931a517f6771" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
       <display>attribute: &lt;not found&gt;</display>
       <isAbstract>false</isAbstract>
@@ -111,7 +111,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="1c274c4c-2c2f-44f7-84a1-b96533aa1bfb" type="Operation">
+    <childElement id="1c274c4c-2c2f-44f7-84a1-b96533aa1bfb" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
       <name>Operation</name>
       <display>Operation(param: NewClass2, param: NewType): void</display>
       <isAbstract>false</isAbstract>
@@ -127,7 +127,7 @@
       <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="fc18591a-dec0-4a35-8a05-84b7425eded3" type="Parameter">
+        <childElement id="fc18591a-dec0-4a35-8a05-84b7425eded3" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
           <name>param</name>
           <display>in : param: NewClass2</display>
           <isAbstract>false</isAbstract>
@@ -145,7 +145,7 @@
           <stereotypes />
           <childElements />
         </childElement>
-        <childElement id="722460a0-e8ea-402a-9788-a9c09775346d" type="Parameter">
+        <childElement id="722460a0-e8ea-402a-9788-a9c09775346d" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
           <name>param</name>
           <display>in : param: NewType</display>
           <isAbstract>false</isAbstract>
@@ -165,7 +165,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="206fea2e-4c82-477a-8828-e3ced5264a27" type="Operation">
+    <childElement id="206fea2e-4c82-477a-8828-e3ced5264a27" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>
@@ -182,7 +182,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="c5cdd0da-c691-4278-b5d2-78c81d5d75b3" type="Operation">
+    <childElement id="c5cdd0da-c691-4278-b5d2-78c81d5d75b3" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>

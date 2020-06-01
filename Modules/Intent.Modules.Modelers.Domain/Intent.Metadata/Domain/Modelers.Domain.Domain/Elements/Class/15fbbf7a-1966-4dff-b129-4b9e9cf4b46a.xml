@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="15fbbf7a-1966-4dff-b129-4b9e9cf4b46a" type="Class">
+<class id="15fbbf7a-1966-4dff-b129-4b9e9cf4b46a" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
   <name>OperationOnly</name>
   <display>OperationOnly</display>
   <isAbstract>false</isAbstract>
@@ -8,7 +8,7 @@
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
   <stereotypes />
   <childElements>
-    <childElement id="98385541-17b1-4868-8466-5f82fbf8f0f3" type="Operation">
+    <childElement id="98385541-17b1-4868-8466-5f82fbf8f0f3" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>

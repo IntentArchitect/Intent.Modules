@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="e3ab1103-695b-43cb-9dad-feea553c2711" type="Class">
+<class id="e3ab1103-695b-43cb-9dad-feea553c2711" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
   <name>EmptyClass</name>
   <display>EmptyClass</display>
   <isAbstract>false</isAbstract>
@@ -8,7 +8,7 @@
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
   <stereotypes />
   <childElements>
-    <childElement id="00d22977-8670-45ac-8cd4-18b0f123ea14" type="Attribute">
+    <childElement id="00d22977-8670-45ac-8cd4-18b0f123ea14" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
       <display>attribute: &lt;not found&gt;</display>
       <isAbstract>false</isAbstract>

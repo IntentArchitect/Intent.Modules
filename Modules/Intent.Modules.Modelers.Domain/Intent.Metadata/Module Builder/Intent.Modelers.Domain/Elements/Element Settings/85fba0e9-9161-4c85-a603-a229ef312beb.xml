@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="85fba0e9-9161-4c85-a603-a229ef312beb" type="Element Settings">
+<class id="85fba0e9-9161-4c85-a603-a229ef312beb" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Enum</name>
   <display>Enum</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="623adf8a-cf65-44bf-b330-cc460db920f6" type="Context Menu">
+    <childElement id="623adf8a-cf65-44bf-b330-cc460db920f6" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>85fba0e9-9161-4c85-a603-a229ef312beb</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="513ec6e5-0f2a-4aa7-bbb1-bf5d1ed5c507" type="Element Creation Option">
+        <childElement id="513ec6e5-0f2a-4aa7-bbb1-bf5d1ed5c507" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Literal</name>
           <display>Add Literal: Enum-Literal</display>
           <isAbstract>false</isAbstract>

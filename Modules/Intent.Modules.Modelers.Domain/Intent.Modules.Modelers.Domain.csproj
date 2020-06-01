@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -29,9 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="modelers\Domain.modeler.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    
   </ItemGroup>
 
 </Project>

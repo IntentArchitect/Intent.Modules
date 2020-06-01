@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="db2f5755-5256-46d1-bb45-72bf2c7cde42" type="Designer">
+<class id="db2f5755-5256-46d1-bb45-72bf2c7cde42" type="Designer" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
   <name>Domain</name>
   <display>Domain</display>
   <isAbstract>false</isAbstract>
@@ -20,7 +20,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="0f427fd8-8f26-42db-aaaf-169200b3d3a9" type="Package Settings">
+    <childElement id="0f427fd8-8f26-42db-aaaf-169200b3d3a9" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
       <name>Package Settings</name>
       <display>Package Settings</display>
       <isAbstract>false</isAbstract>
@@ -29,7 +29,7 @@
       <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="1da67b2e-82ae-4708-9b09-123d981c4533" type="Context Menu">
+        <childElement id="1da67b2e-82ae-4708-9b09-123d981c4533" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
           <name>Creation Options</name>
           <display>[context menu]</display>
           <isAbstract>false</isAbstract>
@@ -38,7 +38,7 @@
           <parentFolderId>0f427fd8-8f26-42db-aaaf-169200b3d3a9</parentFolderId>
           <stereotypes />
           <childElements>
-            <childElement id="e5580bca-7b08-4ce9-bcab-ef354c5a6ccf" type="Element Creation Option">
+            <childElement id="e5580bca-7b08-4ce9-bcab-ef354c5a6ccf" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Class</name>
               <display>New Class: Class</display>
               <isAbstract>false</isAbstract>
@@ -68,7 +68,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="bacc1f80-3b20-4574-8b2d-ab39ae48608c" type="Element Creation Option">
+            <childElement id="bacc1f80-3b20-4574-8b2d-ab39ae48608c" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Type</name>
               <display>New Type: Type-Definition</display>
               <isAbstract>false</isAbstract>
@@ -98,7 +98,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="92588db6-4382-4b52-acd2-219e1124157f" type="Element Creation Option">
+            <childElement id="92588db6-4382-4b52-acd2-219e1124157f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Enum</name>
               <display>New Enum: Enum</display>
               <isAbstract>false</isAbstract>
@@ -128,7 +128,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="899fc2dc-15e6-4797-9e4c-9a55d4f60a32" type="Element Creation Option">
+            <childElement id="899fc2dc-15e6-4797-9e4c-9a55d4f60a32" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Comment</name>
               <display>New Comment: Comment</display>
               <isAbstract>false</isAbstract>
@@ -158,7 +158,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="a0070c6d-6c52-47f2-9bc9-c3529a142cbe" type="Element Creation Option">
+            <childElement id="a0070c6d-6c52-47f2-9bc9-c3529a142cbe" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Diagram</name>
               <display>New Diagram: Diagram</display>
               <isAbstract>false</isAbstract>
@@ -188,7 +188,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="b60ef628-b0b6-45fa-bef9-67826859fd43" type="Element Creation Option">
+            <childElement id="b60ef628-b0b6-45fa-bef9-67826859fd43" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Folder</name>
               <display>New Folder: Folder</display>
               <isAbstract>false</isAbstract>
@@ -218,7 +218,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="6ae0f6c3-9dd2-4a25-b754-7b808dab4ee8" type="Stereotype-Definition Creation Option">
+            <childElement id="6ae0f6c3-9dd2-4a25-b754-7b808dab4ee8" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
               <name>New Stereotype-Definition</name>
               <display>New Stereotype-Definition: Stereotype-Definition</display>
               <isAbstract>false</isAbstract>

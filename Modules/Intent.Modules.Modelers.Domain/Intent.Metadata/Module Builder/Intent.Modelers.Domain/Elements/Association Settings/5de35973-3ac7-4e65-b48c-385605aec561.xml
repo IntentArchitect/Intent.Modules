@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="5de35973-3ac7-4e65-b48c-385605aec561" type="Association Settings">
+<class id="5de35973-3ac7-4e65-b48c-385605aec561" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
   <name>Generalization</name>
   <display>Generalization</display>
   <isAbstract>false</isAbstract>
@@ -8,7 +8,7 @@
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
   <stereotypes />
   <childElements>
-    <childElement id="8190bf43-222c-4b53-8a44-14626efe3574" type="Association Source End Settings">
+    <childElement id="8190bf43-222c-4b53-8a44-14626efe3574" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
       <name>[source]</name>
       <display>[source]</display>
       <isAbstract>false</isAbstract>
@@ -34,7 +34,7 @@
       </stereotypes>
       <childElements />
     </childElement>
-    <childElement id="4686cc1d-b4d8-4b99-b45b-f77bd5496946" type="Association Destination End Settings">
+    <childElement id="4686cc1d-b4d8-4b99-b45b-f77bd5496946" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
       <name>destination</name>
       <display>[destination]</display>
       <isAbstract>false</isAbstract>
@@ -60,7 +60,7 @@
       </stereotypes>
       <childElements />
     </childElement>
-    <childElement id="4f08a3b7-adcb-4e3d-9b27-8306925a7e9f" type="Association Visual Settings">
+    <childElement id="4f08a3b7-adcb-4e3d-9b27-8306925a7e9f" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
       <name>[visual]</name>
       <display>[visual]</display>
       <isAbstract>false</isAbstract>
@@ -78,7 +78,7 @@
         </stereotype>
       </stereotypes>
       <childElements>
-        <childElement id="3bf98e55-c57c-4013-a893-efca99b12234" type="Association Source End Visual Settings">
+        <childElement id="3bf98e55-c57c-4013-a893-efca99b12234" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
           <name>[source]</name>
           <display>[source]</display>
           <isAbstract>false</isAbstract>
@@ -116,7 +116,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="bdc22779-4ae3-4a6d-8cc3-d2abb5c5b5a2" type="Association Destination End Visual Settings">
+        <childElement id="bdc22779-4ae3-4a6d-8cc3-d2abb5c5b5a2" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
           <name>[desintation]</name>
           <display>[destination]</display>
           <isAbstract>false</isAbstract>
