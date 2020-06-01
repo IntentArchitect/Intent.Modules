@@ -22,7 +22,7 @@
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder />
-      <defaultValue>net452</defaultValue>
+      <defaultValue>475ed40d-d952-4056-9509-afdec875a10f</defaultValue>
       <valueOptions>
         <option>net452</option>
         <option>net462</option>

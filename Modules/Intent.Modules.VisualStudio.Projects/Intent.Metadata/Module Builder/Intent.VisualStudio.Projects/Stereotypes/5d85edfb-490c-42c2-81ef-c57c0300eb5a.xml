@@ -30,7 +30,7 @@
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(required)</placeholder>
-      <defaultValue />
+      <defaultValue>d603dbfd-3361-4406-b5c0-efc2ac6f33fc</defaultValue>
       <valueOptions>
         <option>netcoreapp2.1</option>
         <option>netcoreapp2.2</option>
