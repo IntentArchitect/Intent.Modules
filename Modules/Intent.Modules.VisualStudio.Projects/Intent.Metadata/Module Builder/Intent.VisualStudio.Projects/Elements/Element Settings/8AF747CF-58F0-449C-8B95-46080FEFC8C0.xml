@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="afcdd8e6-790f-49b3-8ba3-7ca19584e695" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+<class id="8AF747CF-58F0-449C-8B95-46080FEFC8C0" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>ASP.NET Web Application (.NET Framework)</name>
   <display>ASP.NET Web Application (.NET Framework)</display>
   <isAbstract>false</isAbstract>
@@ -41,7 +41,7 @@
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>afcdd8e6-790f-49b3-8ba3-7ca19584e695</parentFolderId>
+      <parentFolderId>8AF747CF-58F0-449C-8B95-46080FEFC8C0</parentFolderId>
       <stereotypes />
       <childElements>
         <childElement id="a8f1d688-36b9-4eaf-862a-93ef0a7a18b1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">

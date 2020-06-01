@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="43351e35-d2b9-4f02-bac4-e3d218ace834" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Class Library (.NET Core)</name>
-  <display>Class Library (.NET Core)</display>
+<class id="0FEBBF41-7C8E-4F98-85A5-F8B5236CFD7D" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Class Library (.NET Framework)</name>
+  <display>Class Library (.NET Framework)</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -35,21 +35,21 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="fa62c8f5-a60c-445e-8fdf-16237b3cea7a" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="bb7f4496-5eba-4120-8b3f-b3199754f619" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>43351e35-d2b9-4f02-bac4-e3d218ace834</parentFolderId>
+      <parentFolderId>0FEBBF41-7C8E-4F98-85A5-F8B5236CFD7D</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="72b9097a-cea8-4f60-88be-a4d84143b556" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+        <childElement id="2c290a03-16ad-4c63-b4a5-67d60e36ddc5" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="09ba26d9-6f1f-4a38-be91-45dd8a8c8fff">
+          <typeReference id="10928e1d-beb7-4cff-aeb3-ed3096e725c1">
             <typeId>f608a46f-b6a1-4536-b227-b48f6431855f</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -58,7 +58,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>fa62c8f5-a60c-445e-8fdf-16237b3cea7a</parentFolderId>
+          <parentFolderId>bb7f4496-5eba-4120-8b3f-b3199754f619</parentFolderId>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -74,12 +74,12 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="2d002674-dc10-4cef-89f8-8b07fb279ede" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+        <childElement id="08e114e8-ef66-4df7-932e-0a688a072d59" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Role</name>
           <display>Add Role: Role</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="7e81d3f4-7c68-4383-8db9-a7d31e4e03f2">
+          <typeReference id="1fa6d099-06ac-4e5f-981d-fa7f6e345a57">
             <typeId>025e933b-b602-4b6d-95ab-0ec36ae940da</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -88,7 +88,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>fa62c8f5-a60c-445e-8fdf-16237b3cea7a</parentFolderId>
+          <parentFolderId>bb7f4496-5eba-4120-8b3f-b3199754f619</parentFolderId>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />

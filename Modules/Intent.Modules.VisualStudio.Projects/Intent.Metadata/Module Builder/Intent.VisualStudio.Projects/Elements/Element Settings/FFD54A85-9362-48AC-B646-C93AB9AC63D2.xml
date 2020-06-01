@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="33cb84ed-ca1c-4015-985f-2d236824110b" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Console App (.NET Framework)</name>
-  <display>Console App (.NET Framework)</display>
+<class id="FFD54A85-9362-48AC-B646-C93AB9AC63D2" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>ASP.NET Core Web Application</name>
+  <display>ASP.NET Core Web Application</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -22,7 +22,7 @@
       <addedByDefault>true</addedByDefault>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAdhwAAHYcBj+XxZQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAATGSURBVFiF7Zd9aJVVHMc/53me+7o5N3e9V13DOTWF/RH5ApuzBbokS8opRlZEEAVR/5X0hwQRCA4iDQzDQkPoxdockymlWZorUUPLaSZzM7e2e/d22+7rc+/zcvpj29X5MnZHZJA/eODhd15+n3PO9/c7HPi/m0gkEvJuAih3MziANvqzZs2afzVwU1MT8B/YgXsA9wC0mx376xsAEEIgFIGiKAgxto+UIG0by7KzDrhufc34AACqqqBq6h0nEQJQVFRNxbJsbMtCTrKcjQEIBAI4nBpiZMmXBg3qryY4EdIJJixMKZnpVanwu1lX4mWRz4mqKiiKwDTMSUFkAAKBALW1tQghGEjZbDoV5sv2OPbIpFUz3cQNm5M9KU72pHivZYjVxR7er5jGfTkamkObFEQGYPPmzfh8Pi4PGtR828u1qMkz83I505fCowq+fjRA0pSU1XUxf6qDsgIHH1+OUXkgSF21n6XTXWgODSNtZgWQyYLS0lL6dZu1R3rp023qqv1sWZJPW8TgxYVTAPBoglfLpnCmL8Vbi/I5vDqALWHdkV7aIyZCiHG1My4AwOunwlyLmexaXsjqYg/HgzqWhEeK3Jk+60ty0C3J4T+TlPtdNKwKEDEkr/00AAwLOBvLHEFL2KCuPQ7AC8f72X7BiW7Z5DkEZ/vTtEUMVCGwpGSWV+XDS1EOdiT5IaRj2JJjQZ2jXUlWFnlQVWXCKZoBqLsaRwJfVfvpjluc7NVp6kgSMyTPft93y8BQ0iJu2Dw528OKWR6eP9bPvvYEK4s8CEWBbAGOB3Xm5jl4vNgDwEsLc1l2IMhin5PtFYVEjesTbmuJsLc1xum1szK+cr+LH3t0gFsK13iWObDuhMWcKWMFlLQkHk1BFZDvVMZ8SWtsvpXmaXTGLUw7uzzMACRNm8GUTeuQkWnM0cSYlY9aT9Ki0HVdbN0Ji664iS0lw+EnvgWZIyjK0fi5P80D+7spzdMo97sZ0G2uRk3Oh9PkOxWcqiBpSlojBkLAlnODNPekaA4NZ4vfo+JQBDKLapQBKPe7OB9Os61iGp2xYRGGkhbXYibljcHbDt7xW5Ryv4t3Fhfw9tlBKvwugKyqYQZgQ6mXXb9H6YiZbFlSAMDe1hivNA/QsCqAAkQMm1DC4o1TYXZX+Xh6bg4A2y9EMGxJTYkXANue+C2ZOcjKgJvlM9x8cDHK6b4UAFUz3EggYdhUFw1fQD1JizyHyAS7PGiw9dchFuQ7WD8nByklMgshjrkNdyybRlVTiI3f9VFX7efBQidlBQ6aOpOsLfGStiWfXonxVGkOLlVwJWKw4Wgfuin56CEfqoA9ez6hvr4++x0AuH+qgy9WTCdmSKoPhdj6yxCPFXtp+CPOYNpmX1ucYMLiufm57LwUpfJAiM64ye6HfSzxOWlvb6exsXHCweEOL6OLfxm8fKKfcwNpVAGWhCdme2kJp+mKWzhVQcywWZDvYGdlIeUj4puM3fFpZkk42JHgs7Y4zSGdcGpYWAVOhaXTnWycl0tNiRenkkXZux3AzQ4ppUvX9U1SyjeB3FF/JG1jM1wRb7CoEKLW7Xa/K4RI/SMAN4DkJRKJjUKIVcAiwD/S1AuclVJ+4/V6PxdCRCcTeNT+Bl+3EBrjY6K7AAAAAElFTkSuQmCC&quot;}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
@@ -35,21 +35,21 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="fb9868e7-5c5f-4dcd-bcbf-2c9391d95e17" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="893002c2-8155-42ea-b79e-4e4d2ffb2e6e" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>33cb84ed-ca1c-4015-985f-2d236824110b</parentFolderId>
+      <parentFolderId>FFD54A85-9362-48AC-B646-C93AB9AC63D2</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="a21a5103-03d2-4560-a365-8219b96dc336" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+        <childElement id="32c5368d-8c07-4544-98c9-2d2fe49990c2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="a18c7887-cc5a-4213-9553-793c72b710f9">
+          <typeReference id="02a9c278-f041-4d86-9d43-b7e6359a5580">
             <typeId>f608a46f-b6a1-4536-b227-b48f6431855f</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -58,7 +58,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>fb9868e7-5c5f-4dcd-bcbf-2c9391d95e17</parentFolderId>
+          <parentFolderId>893002c2-8155-42ea-b79e-4e4d2ffb2e6e</parentFolderId>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -74,12 +74,12 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="c7440d66-ebaa-486d-8051-c35b6d001e9d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+        <childElement id="a1e375f2-a4e3-4bd1-b8c2-434115014178" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Role</name>
           <display>Add Role: Role</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="7acadf70-4b69-4e8c-9300-903107b9b007">
+          <typeReference id="6772690d-2811-45a2-802a-ba45a78bd56e">
             <typeId>025e933b-b602-4b6d-95ab-0ec36ae940da</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -88,7 +88,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>fb9868e7-5c5f-4dcd-bcbf-2c9391d95e17</parentFolderId>
+          <parentFolderId>893002c2-8155-42ea-b79e-4e4d2ffb2e6e</parentFolderId>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />

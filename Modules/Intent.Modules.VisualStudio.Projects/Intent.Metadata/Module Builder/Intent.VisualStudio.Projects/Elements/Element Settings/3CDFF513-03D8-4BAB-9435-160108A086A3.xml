@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ed058414-83d9-4c97-b551-95a8cefe2569" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+<class id="3CDFF513-03D8-4BAB-9435-160108A086A3" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>WCF Service Application</name>
   <display>WCF Service Application</display>
   <isAbstract>false</isAbstract>
@@ -41,7 +41,7 @@
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>ed058414-83d9-4c97-b551-95a8cefe2569</parentFolderId>
+      <parentFolderId>3CDFF513-03D8-4BAB-9435-160108A086A3</parentFolderId>
       <stereotypes />
       <childElements>
         <childElement id="81eb0815-3b58-4976-a0a5-a5956bf50b44" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
