@@ -1,12 +1,14 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
 {
-    partial class DbMigrationsReadMeTemplate : IntentProjectItemTemplateBase<object>, ITemplate
+    partial class DbMigrationsReadMeTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies
     {
         public const string Identifier = "Intent.EntityFrameworkCore.DbMigrationsReadMe";
 
@@ -28,6 +30,16 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
                 fileName: "MIGRATION_README",
                 fileExtension: "txt",
                 defaultLocationInProject: "");
+        }
+
+        public IEnumerable<INugetPackageInfo> GetNugetDependencies()
+        {
+            return new[]
+            {
+                NugetPackages.EntityFrameworkCoreDesign,
+                NugetPackages.EntityFrameworkCoreTools,
+            }
+            .ToArray();
         }
     }
 }
