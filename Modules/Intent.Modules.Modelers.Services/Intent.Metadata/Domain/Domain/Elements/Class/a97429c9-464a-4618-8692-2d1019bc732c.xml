@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="a97429c9-464a-4618-8692-2d1019bc732c" type="Class">
+<class id="a97429c9-464a-4618-8692-2d1019bc732c" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
   <name>Movie</name>
   <display>Movie</display>
   <isAbstract>false</isAbstract>
@@ -8,7 +8,7 @@
   <parentFolderId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</parentFolderId>
   <stereotypes />
   <childElements>
-    <childElement id="090a004e-768c-49a4-aec9-5677d582e062" type="Attribute">
+    <childElement id="090a004e-768c-49a4-aec9-5677d582e062" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
       <display>attribute: char</display>
       <isAbstract>false</isAbstract>
@@ -26,7 +26,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="4f14e6ed-ca42-4061-bd21-8b5aa38caab2" type="Attribute">
+    <childElement id="4f14e6ed-ca42-4061-bd21-8b5aa38caab2" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute2</name>
       <display>attribute2: datetimeoffset</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="062f7656-03fd-4d84-94c1-0d8940764076" type="Operation">
+    <childElement id="062f7656-03fd-4d84-94c1-0d8940764076" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
       <name>IReturnSomething</name>
       <display>IReturnSomething(): string</display>
       <isAbstract>false</isAbstract>
@@ -62,7 +62,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="10504794-6a7c-4f1c-8a09-a9734b0649a1" type="Operation">
+    <childElement id="10504794-6a7c-4f1c-8a09-a9734b0649a1" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>

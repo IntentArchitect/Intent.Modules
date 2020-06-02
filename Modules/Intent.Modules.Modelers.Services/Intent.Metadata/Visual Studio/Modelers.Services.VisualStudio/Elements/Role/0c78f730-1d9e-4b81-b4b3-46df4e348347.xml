@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0c78f730-1d9e-4b81-b4b3-46df4e348347" type="Role">
+  <name>Metadata</name>
+  <display>Metadata</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

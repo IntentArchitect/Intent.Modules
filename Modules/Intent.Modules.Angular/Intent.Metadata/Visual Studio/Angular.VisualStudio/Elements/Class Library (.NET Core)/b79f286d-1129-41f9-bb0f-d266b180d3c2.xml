@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="b79f286d-1129-41f9-bb0f-d266b180d3c2" type="Class Library (.NET Core)">
+  <name>Intent.Modules.Angular</name>
+  <display>Intent.Modules.Angular</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>ad91f155-bad0-4aaf-97d6-d72d8d08f389</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

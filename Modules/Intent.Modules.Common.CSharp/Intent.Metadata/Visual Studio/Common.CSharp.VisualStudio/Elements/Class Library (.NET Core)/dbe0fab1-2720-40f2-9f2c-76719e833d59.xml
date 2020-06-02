@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="dbe0fab1-2720-40f2-9f2c-76719e833d59" type="Class Library (.NET Core)">
+  <name>Intent.Modules.Common.CSharp</name>
+  <display>Intent.Modules.Common.CSharp</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d7572075-96b5-4374-89fc-f4c831ee3147</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

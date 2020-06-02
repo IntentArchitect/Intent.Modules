@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Linq;
 using Intent.Modules.Constants;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects.Api;
+using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject;
 using Intent.Registrations;
 using Intent.Templates;
 
@@ -12,20 +14,22 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
     [Description(LaunchSettingsJsonTemplate.Identifier)]
     public class LaunchSettingsJsonTemplateRegistration : IProjectTemplateRegistration
     {
+        private readonly IMetadataManager _metadataManager;
         public string TemplateId => LaunchSettingsJsonTemplate.Identifier;
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
+        public LaunchSettingsJsonTemplateRegistration(IMetadataManager metadataManager)
         {
-            var targetProjectIds = new List<string>
-            {
-                VisualStudioProjectTypeIds.CoreWebApp
-            };
+            _metadataManager = metadataManager;
+        }
 
-            var projects = application.Projects.Where(p => targetProjectIds.Contains(p.Type));
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
+        {
+            var models = _metadataManager.GetASPNETCoreWebApplicationModels(application);
 
-            foreach (var project in projects)
+            foreach (var model in models)
             {
-                registery.Register(TemplateId, project, p => new LaunchSettingsJsonTemplate(project, application.EventDispatcher));
+                var project = application.Projects.Single(x => x.Id == model.Id);
+                registry.RegisterProjectTemplate(TemplateId, project, p => new LaunchSettingsJsonTemplate(project, project.Application.EventDispatcher));
             }
         }
     }

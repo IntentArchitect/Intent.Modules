@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="03e34444-fb26-4ee7-850a-a55159efafc6" type="Role">
+  <name>IModSpec</name>
+  <display>IModSpec</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>dbe0fab1-2720-40f2-9f2c-76719e833d59</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

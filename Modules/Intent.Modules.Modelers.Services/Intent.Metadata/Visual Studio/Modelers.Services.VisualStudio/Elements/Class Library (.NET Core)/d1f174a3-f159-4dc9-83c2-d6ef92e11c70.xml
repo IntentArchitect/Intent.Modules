@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d1f174a3-f159-4dc9-83c2-d6ef92e11c70" type="Class Library (.NET Core)">
+  <name>Intent.Modules.Modelers.Services</name>
+  <display>Intent.Modules.Modelers.Services</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>6e118a7e-7636-4d2d-8cdd-0086bd0c6af2</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

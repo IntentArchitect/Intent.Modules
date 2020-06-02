@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="7cc0a505-5ee0-41f3-8141-9a2cc640e626" type="Class">
+<class id="7cc0a505-5ee0-41f3-8141-9a2cc640e626" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
   <name>Subclass</name>
   <display>Subclass</display>
   <isAbstract>false</isAbstract>
@@ -8,7 +8,7 @@
   <parentFolderId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</parentFolderId>
   <stereotypes />
   <childElements>
-    <childElement id="a58b6de0-9a32-4830-ab56-6d401b4cc1c0" type="Attribute">
+    <childElement id="a58b6de0-9a32-4830-ab56-6d401b4cc1c0" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
       <display>attribute: string</display>
       <isAbstract>false</isAbstract>

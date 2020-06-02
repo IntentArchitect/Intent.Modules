@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using Intent.Modules.Constants;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects.Api;
 using Intent.Registrations;
 
 
@@ -11,20 +12,23 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
     [Description(AppSettingsTemplate.Identifier)]
     public class AppSettingsTemplateRegistration : IProjectTemplateRegistration
     {
+        private readonly IMetadataManager _metadataManager;
         public string TemplateId => AppSettingsTemplate.Identifier;
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
+
+        public AppSettingsTemplateRegistration(IMetadataManager metadataManager)
         {
-            var targetProjectIds = new List<string>
-            {
-                VisualStudioProjectTypeIds.CoreWebApp
-            };
+            _metadataManager = metadataManager;
+        }
 
-            var projects = application.Projects.Where(p => targetProjectIds.Contains(p.Type));
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
+        {
+            var models = _metadataManager.GetASPNETCoreWebApplicationModels(application);
 
-            foreach (var project in projects)
+            foreach (var model in models)
             {
-                registery.Register(TemplateId, project, p => new AppSettingsTemplate(project, application.EventDispatcher));
+                var project = application.Projects.Single(x => x.Id == model.Id);
+                registry.RegisterProjectTemplate(TemplateId, project, p => new AppSettingsTemplate(project, project.Application.EventDispatcher));
             }
         }
     }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f4082a7d-ae53-4db4-ac33-cc7b24838867" type="Class Library (.NET Framework)" typeId="0FEBBF41-7C8E-4F98-85A5-F8B5236CFD7D">
+  <name>Intent.Modules.Common.Types</name>
+  <display>Intent.Modules.Common.Types</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>eae2d6bc-9572-4814-8feb-43953ea41f6a</parentFolderId>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="f3fcc35a-4bb2-44e7-aca2-d721e047a4c9" name=".NET Framework Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="117cf9ee-04da-4f1c-915a-b62c61e2c558" display="Target Framework" value="13b3a401-3f7d-491a-83c2-a160c7035bf1" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

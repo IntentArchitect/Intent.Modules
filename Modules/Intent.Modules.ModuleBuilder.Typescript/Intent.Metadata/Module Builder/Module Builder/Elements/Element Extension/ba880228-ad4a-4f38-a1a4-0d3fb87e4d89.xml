@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ba880228-ad4a-4f38-a1a4-0d3fb87e4d89" type="Element Extension">
+<class id="ba880228-ad4a-4f38-a1a4-0d3fb87e4d89" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
   <name>Folder</name>
   <display>Folder: Folder</display>
   <isAbstract>false</isAbstract>
@@ -16,7 +16,7 @@
   <parentFolderId>ac7fa580-f66f-4257-a160-0bb82b56f4f9</parentFolderId>
   <stereotypes />
   <childElements>
-    <childElement id="b45101dc-a3fc-451d-92e8-460b9d6f2a80" type="Context Menu">
+    <childElement id="b45101dc-a3fc-451d-92e8-460b9d6f2a80" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -25,7 +25,7 @@
       <parentFolderId>ba880228-ad4a-4f38-a1a4-0d3fb87e4d89</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="7d771b11-9a22-4212-abdf-7505e6278b11" type="Element Creation Option">
+        <childElement id="7d771b11-9a22-4212-abdf-7505e6278b11" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Typescript Template</name>
           <display>New Typescript Template: Typescript File Template</display>
           <isAbstract>false</isAbstract>

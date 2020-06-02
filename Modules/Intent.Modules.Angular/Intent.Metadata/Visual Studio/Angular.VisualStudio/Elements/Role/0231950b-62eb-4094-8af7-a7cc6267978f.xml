@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0231950b-62eb-4094-8af7-a7cc6267978f" type="Role">
+  <name>Decorators</name>
+  <display>Decorators</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>b79f286d-1129-41f9-bb0f-d266b180d3c2</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

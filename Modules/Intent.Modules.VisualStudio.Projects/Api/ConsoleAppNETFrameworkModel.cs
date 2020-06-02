@@ -41,7 +41,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
 
         public IEnumerable<string> TargetFrameworkVersion()
         {
-            return new[] { this.GetStereotypeProperty<string>(".NET Framework Settings", "Target Framework") } ?? throw new Exception($"[.NET Core Settings] stereotype is missing on project {Name}");
+            return new[] { this.GetNETFrameworkSettings().TargetFramework().Value };
         }
 
         [IntentManaged(Mode.Fully)]

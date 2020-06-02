@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="6f80f17f-d174-4db6-8c11-aa0b3b2a4c1f" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+  <name>Templates</name>
+  <display>Templates</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>f4082a7d-ae53-4db4-ac33-cc7b24838867</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

@@ -6,8 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Templates\NodeJSProjectFile\**" />
+    <EmbeddedResource Remove="Templates\NodeJSProjectFile\**" />
+    <None Remove="Templates\NodeJSProjectFile\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Api\Extensions\" />
-    <Folder Include="Templates\NodeJSProjectFile\" />
   </ItemGroup>
 
   <ItemGroup>

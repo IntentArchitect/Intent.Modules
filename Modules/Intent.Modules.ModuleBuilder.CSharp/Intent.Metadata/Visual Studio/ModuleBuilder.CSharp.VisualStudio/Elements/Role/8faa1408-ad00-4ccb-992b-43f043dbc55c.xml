@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="8faa1408-ad00-4ccb-992b-43f043dbc55c" type="Role">
+<class id="8faa1408-ad00-4ccb-992b-43f043dbc55c" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
   <name>DesignerConfig</name>
   <display>DesignerConfig</display>
   <isAbstract>false</isAbstract>

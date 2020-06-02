@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="5cd87d01-d4b1-4655-915f-dd1288456aca" type="Role">
+  <name>DesignerConfig</name>
+  <display>DesignerConfig</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

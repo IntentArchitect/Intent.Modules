@@ -2,7 +2,7 @@
 <solution id="9cde682f-ade0-4c8b-a474-5356f8c3cedf">
   <name>Intent.Modules</name>
   <description>Designer workspace for official Intent Modules</description>
-  <version>2.1.0</version>
+  <version>2.2.0</version>
   <icon>https://intentarchitect.com/assets/images/logo-white.png</icon>
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.MetaData</metadataRelativePath>

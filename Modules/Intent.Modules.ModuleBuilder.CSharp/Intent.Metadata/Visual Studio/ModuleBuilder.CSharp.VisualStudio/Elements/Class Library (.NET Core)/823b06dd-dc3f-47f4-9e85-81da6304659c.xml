@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="823b06dd-dc3f-47f4-9e85-81da6304659c" type="Class Library (.NET Core)">
+<class id="823b06dd-dc3f-47f4-9e85-81da6304659c" type="Class Library (.NET Core)" typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE">
   <name>Intent.Modules.ModuleBuilder.CSharp</name>
   <display>Intent.Modules.ModuleBuilder.CSharp</display>
   <isAbstract>false</isAbstract>

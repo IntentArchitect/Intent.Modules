@@ -3,67 +3,67 @@
   <ApplicationId>4e2487dd-3fec-4611-95fb-d49687929743</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\Api\TypescriptFileTemplateModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/TypescriptFileTemplateModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\ApiMetadataProvider.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\Intent.Modules.ModuleBuilder.Typescript.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Typescript.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\Intent.Modules.ModuleBuilder.Typescript.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Typescript.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\modelers\Typescript.modeler.extension.config</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>modelers/Typescript.modeler.extension.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplate\TypescriptTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplate/TypescriptTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplate\TypescriptTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplate/TypescriptTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartial.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartialPartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialPartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>970195f4-fb4e-4b5b-ba66-db20de37f142</ProjectId>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartialRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialRegistration.cs</ProjectRelativeFilePath>
     </FileLog>

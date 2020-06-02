@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="4579d512-e91e-4582-a0d3-d0137d328164" type="Class">
+<class id="4579d512-e91e-4582-a0d3-d0137d328164" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
   <name>OldClass</name>
   <display>OldClass</display>
   <isAbstract>false</isAbstract>
@@ -8,7 +8,7 @@
   <parentFolderId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</parentFolderId>
   <stereotypes />
   <childElements>
-    <childElement id="6aa34f3e-f0ff-4f92-ad5e-14a27e027150" type="Attribute">
+    <childElement id="6aa34f3e-f0ff-4f92-ad5e-14a27e027150" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>xxxx</name>
       <display>xxxx: string</display>
       <isAbstract>false</isAbstract>
