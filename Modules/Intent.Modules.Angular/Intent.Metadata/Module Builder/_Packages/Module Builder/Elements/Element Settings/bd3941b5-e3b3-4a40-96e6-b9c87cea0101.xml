@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" type="Element Settings">
+<class id="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Model Definition</name>
   <display>Model Definition</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="f70eef83-8b7d-40f3-a0d7-44e2e799fffa" type="Context Menu">
+    <childElement id="f70eef83-8b7d-40f3-a0d7-44e2e799fffa" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="a94b1eb0-4dce-4183-a86e-5c625c9259fe" type="Element Creation Option">
+        <childElement id="a94b1eb0-4dce-4183-a86e-5c625c9259fe" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Field</name>
           <display>Add Field: Model Definition Field</display>
           <isAbstract>false</isAbstract>
@@ -76,7 +76,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="963abe09-e38a-4248-ac03-c6498c614e67" type="Mapping Settings">
+    <childElement id="963abe09-e38a-4248-ac03-c6498c614e67" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>NewMappingSettings</name>
       <display>[mappings]</display>
       <isAbstract>false</isAbstract>
@@ -92,7 +92,7 @@
         </stereotype>
       </stereotypes>
       <childElements>
-        <childElement id="22ba6711-485c-4ffc-b222-faeba5720947" type="Element Mapping">
+        <childElement id="22ba6711-485c-4ffc-b222-faeba5720947" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
           <display>[mapping]: DTO -&gt; Model Definition</display>
           <isAbstract>false</isAbstract>
@@ -119,7 +119,7 @@
             </stereotype>
           </stereotypes>
           <childElements>
-            <childElement id="46217ad2-743c-4d19-9a67-d4d0fd439496" type="Element Mapping">
+            <childElement id="46217ad2-743c-4d19-9a67-d4d0fd439496" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: DTO-Field -&gt; Model Definition Field</display>
               <isAbstract>false</isAbstract>

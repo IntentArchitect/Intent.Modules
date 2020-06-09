@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="bfbdbd73-3617-4a34-bf89-3f32b0a512a2" type="Role">
+<class id="bfbdbd73-3617-4a34-bf89-3f32b0a512a2" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
   <name>Templates</name>
   <display>Templates</display>
   <isAbstract>false</isAbstract>

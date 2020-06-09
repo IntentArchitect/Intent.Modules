@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="5be4309a-b59b-4d53-af62-f0ef3b3310c5" type="Folder">
+<class id="5be4309a-b59b-4d53-af62-f0ef3b3310c5" type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
   <name>Core</name>
   <display>Core</display>
   <isAbstract>false</isAbstract>

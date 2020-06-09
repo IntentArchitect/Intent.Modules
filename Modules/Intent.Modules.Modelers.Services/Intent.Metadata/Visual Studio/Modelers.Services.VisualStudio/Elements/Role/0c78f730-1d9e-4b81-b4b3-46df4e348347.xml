@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="0c78f730-1d9e-4b81-b4b3-46df4e348347" type="Role">
+<class id="0c78f730-1d9e-4b81-b4b3-46df4e348347" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
   <name>Metadata</name>
   <display>Metadata</display>
   <isAbstract>false</isAbstract>

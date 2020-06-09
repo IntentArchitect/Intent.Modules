@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="356fbe17-bc63-4e16-b915-feefbc063cbe" type="Element Settings">
+<class id="356fbe17-bc63-4e16-b915-feefbc063cbe" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Component Model</name>
   <display>Component Model</display>
   <isAbstract>false</isAbstract>

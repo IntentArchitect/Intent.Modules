@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="c39d6711-5d0f-4071-8833-fac4dd9c054a" type="Folder">
+<class id="c39d6711-5d0f-4071-8833-fac4dd9c054a" type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
   <name>Module</name>
   <display>Module</display>
   <isAbstract>false</isAbstract>

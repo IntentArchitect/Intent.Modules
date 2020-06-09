@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="54d4a468-7d3c-4025-93bc-fd710594f889" type="Folder">
+<class id="54d4a468-7d3c-4025-93bc-fd710594f889" type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
   <name>Proxies</name>
   <display>Proxies</display>
   <isAbstract>false</isAbstract>

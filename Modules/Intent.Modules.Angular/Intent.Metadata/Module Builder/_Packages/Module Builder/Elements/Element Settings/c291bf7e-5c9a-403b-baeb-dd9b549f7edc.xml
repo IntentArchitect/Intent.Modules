@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="c291bf7e-5c9a-403b-baeb-dd9b549f7edc" type="Element Settings">
+<class id="c291bf7e-5c9a-403b-baeb-dd9b549f7edc" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Table Control Data</name>
   <display>Table Control Data</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="9ec063d2-7710-425c-af5d-52c685bb91c0" type="Context Menu">
+    <childElement id="9ec063d2-7710-425c-af5d-52c685bb91c0" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>c291bf7e-5c9a-403b-baeb-dd9b549f7edc</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="c9f8ee1b-4ff2-4ead-b217-9d6efdccffa1" type="Element Creation Option">
+        <childElement id="c9f8ee1b-4ff2-4ead-b217-9d6efdccffa1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Column</name>
           <display>Add Column: Table Control Column</display>
           <isAbstract>false</isAbstract>

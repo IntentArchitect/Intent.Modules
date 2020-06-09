@@ -12,7 +12,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class SolutionFolderModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Soluction Folder";
+        public const string SpecializationType = "Solution Folder";
         protected readonly IElement _element;
 
         public SolutionFolderModel(IElement element, string requiredType = SpecializationType)
@@ -22,10 +22,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            Folder = element.ParentElement?.SpecializationType == SolutionFolderModel.SpecializationType ? new SolutionFolderModel(element.ParentElement) : null;
-
         }
-        public SolutionFolderModel Folder { get; }
 
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
@@ -38,6 +35,12 @@ namespace Intent.Modules.VisualStudio.Projects.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<SolutionFolderModel> Folders => _element.ChildElements
+            .Where(x => x.SpecializationType == SolutionFolderModel.SpecializationType)
+            .Select(x => new SolutionFolderModel(x))
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<ClassLibraryNETCoreModel> ClassLibraryNETCores => _element.ChildElements
@@ -67,12 +70,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public IList<WCFServiceApplicationModel> WCFServiceApplications => _element.ChildElements
             .Where(x => x.SpecializationType == WCFServiceApplicationModel.SpecializationType)
             .Select(x => new WCFServiceApplicationModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
-        public IList<SolutionFolderModel> Folders => _element.ChildElements
-            .Where(x => x.SpecializationType == SolutionFolderModel.SpecializationType)
-            .Select(x => new SolutionFolderModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]

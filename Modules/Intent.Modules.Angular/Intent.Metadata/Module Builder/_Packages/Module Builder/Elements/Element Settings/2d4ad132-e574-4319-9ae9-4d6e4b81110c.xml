@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="2d4ad132-e574-4319-9ae9-4d6e4b81110c" type="Element Settings">
+<class id="2d4ad132-e574-4319-9ae9-4d6e4b81110c" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Service Proxy</name>
   <display>Service Proxy</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="63caff3b-385b-473e-852e-b6727b31bc6f" type="Context Menu">
+    <childElement id="63caff3b-385b-473e-852e-b6727b31bc6f" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>2d4ad132-e574-4319-9ae9-4d6e4b81110c</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="ba654988-2a18-43fe-9c5e-2af648d3dd64" type="Element Creation Option">
+        <childElement id="ba654988-2a18-43fe-9c5e-2af648d3dd64" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Operation</name>
           <display>Add Operation: Service Proxy Operation</display>
           <isAbstract>false</isAbstract>
@@ -76,7 +76,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="5ac97e2c-2e26-4730-a82f-e27bc0586c97" type="Mapping Settings">
+    <childElement id="5ac97e2c-2e26-4730-a82f-e27bc0586c97" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>NewMappingSettings</name>
       <display>[mappings]</display>
       <isAbstract>false</isAbstract>
@@ -92,7 +92,7 @@
         </stereotype>
       </stereotypes>
       <childElements>
-        <childElement id="a5c0ad5a-0c9d-418f-b5d0-3c16442d2b18" type="Element Mapping">
+        <childElement id="a5c0ad5a-0c9d-418f-b5d0-3c16442d2b18" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
           <display>[mapping]: Service -&gt; Service Proxy</display>
           <isAbstract>false</isAbstract>
@@ -119,7 +119,7 @@
             </stereotype>
           </stereotypes>
           <childElements>
-            <childElement id="e511a31a-cb71-4ab1-a127-10606eaf329c" type="Element Mapping">
+            <childElement id="e511a31a-cb71-4ab1-a127-10606eaf329c" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: Operation -&gt; Service Proxy Operation</display>
               <isAbstract>false</isAbstract>
@@ -146,7 +146,7 @@
                 </stereotype>
               </stereotypes>
               <childElements>
-                <childElement id="4e8acdb2-e010-410b-8d6e-5f137440b104" type="Element Mapping">
+                <childElement id="4e8acdb2-e010-410b-8d6e-5f137440b104" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                   <name>NewElementMapping</name>
                   <display>[mapping]: Parameter -&gt; Parameter</display>
                   <isAbstract>false</isAbstract>

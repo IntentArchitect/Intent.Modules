@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="0349275e-d8d0-4f52-8a6e-5fdb9a16c059" type="Element Settings">
+<class id="0349275e-d8d0-4f52-8a6e-5fdb9a16c059" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Table Control</name>
   <display>Table Control</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="0eb565ca-64a4-4fe5-9101-ba237fef5e7f" type="Context Menu">
+    <childElement id="0eb565ca-64a4-4fe5-9101-ba237fef5e7f" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>0349275e-d8d0-4f52-8a6e-5fdb9a16c059</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="0d61527d-6cb9-4905-a3ce-2ab5a5446ae7" type="Element Creation Option">
+        <childElement id="0d61527d-6cb9-4905-a3ce-2ab5a5446ae7" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Data</name>
           <display>Add Data: Table Control Data</display>
           <isAbstract>false</isAbstract>
@@ -76,7 +76,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="de94df7e-7013-4908-91af-f3f4e34bc4a6" type="Mapping Settings">
+    <childElement id="de94df7e-7013-4908-91af-f3f4e34bc4a6" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>NewMappingSettings</name>
       <display>[mappings]</display>
       <isAbstract>false</isAbstract>
@@ -92,7 +92,7 @@
         </stereotype>
       </stereotypes>
       <childElements>
-        <childElement id="00f04939-f347-4f03-a1cc-7b4516a4b8fd" type="Element Mapping">
+        <childElement id="00f04939-f347-4f03-a1cc-7b4516a4b8fd" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
           <display>[mapping]: Component -&gt; Table Control</display>
           <isAbstract>false</isAbstract>
@@ -119,7 +119,7 @@
             </stereotype>
           </stereotypes>
           <childElements>
-            <childElement id="f1569c8f-1534-4421-b675-9b1d37eaef80" type="Element Mapping">
+            <childElement id="f1569c8f-1534-4421-b675-9b1d37eaef80" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: Component Model -&gt; (Traverse)</display>
               <isAbstract>false</isAbstract>
@@ -146,7 +146,7 @@
                 </stereotype>
               </stereotypes>
               <childElements>
-                <childElement id="e2cecfa9-a953-44c3-8637-5843157c2069" type="Element Mapping">
+                <childElement id="e2cecfa9-a953-44c3-8637-5843157c2069" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                   <name>NewElementMapping</name>
                   <display>[mapping]: Model Definition Field -&gt; Table Control Data</display>
                   <isAbstract>false</isAbstract>
@@ -173,7 +173,7 @@
                     </stereotype>
                   </stereotypes>
                   <childElements>
-                    <childElement id="c5c7b647-0775-403a-a25d-6476fed8e12b" type="Element Mapping">
+                    <childElement id="c5c7b647-0775-403a-a25d-6476fed8e12b" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                       <name>NewElementMapping</name>
                       <display>[mapping]: Model Definition Field -&gt; Table Control Column</display>
                       <isAbstract>false</isAbstract>
@@ -201,7 +201,7 @@
                       </stereotypes>
                       <childElements />
                     </childElement>
-                    <childElement id="76394187-1dcc-41d1-90a8-90071d3bde84" type="Element Mapping">
+                    <childElement id="76394187-1dcc-41d1-90a8-90071d3bde84" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                       <name>NewElementMapping</name>
                       <display>[mapping]: DTO-Field -&gt; Table Control Column</display>
                       <isAbstract>false</isAbstract>
@@ -231,7 +231,7 @@
                     </childElement>
                   </childElements>
                 </childElement>
-                <childElement id="6099f844-a061-495b-a8a7-65ae3763114f" type="Element Mapping">
+                <childElement id="6099f844-a061-495b-a8a7-65ae3763114f" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                   <name>NewElementMapping</name>
                   <display>[mapping]: DTO-Field -&gt; Table Control Data</display>
                   <isAbstract>false</isAbstract>
@@ -258,7 +258,7 @@
                     </stereotype>
                   </stereotypes>
                   <childElements>
-                    <childElement id="813dce80-afbc-4b8c-b145-537b867ba0b6" type="Element Mapping">
+                    <childElement id="813dce80-afbc-4b8c-b145-537b867ba0b6" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                       <name>NewElementMapping</name>
                       <display>[mapping]: DTO-Field -&gt; Table Control Column</display>
                       <isAbstract>false</isAbstract>
@@ -290,7 +290,7 @@
                 </childElement>
               </childElements>
             </childElement>
-            <childElement id="d2753f36-3963-4b4b-b6b0-29bec504a472" type="Element Mapping">
+            <childElement id="d2753f36-3963-4b4b-b6b0-29bec504a472" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: DTO -&gt; (Traverse)</display>
               <isAbstract>false</isAbstract>
@@ -317,7 +317,7 @@
                 </stereotype>
               </stereotypes>
               <childElements>
-                <childElement id="07088987-1166-415c-aaa1-ca7b6ec8135b" type="Element Mapping">
+                <childElement id="07088987-1166-415c-aaa1-ca7b6ec8135b" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                   <name>NewElementMapping</name>
                   <display>[mapping]: DTO-Field -&gt; Table Control Data</display>
                   <isAbstract>false</isAbstract>
@@ -344,7 +344,7 @@
                     </stereotype>
                   </stereotypes>
                   <childElements>
-                    <childElement id="aac962a2-281b-4a40-b748-d126a17b8255" type="Element Mapping">
+                    <childElement id="aac962a2-281b-4a40-b748-d126a17b8255" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                       <name>NewElementMapping</name>
                       <display>[mapping]: DTO-Field -&gt; Table Control Column</display>
                       <isAbstract>false</isAbstract>
@@ -376,7 +376,7 @@
                 </childElement>
               </childElements>
             </childElement>
-            <childElement id="66c5fe99-8381-4605-957c-aea9fc382db3" type="Element Mapping">
+            <childElement id="66c5fe99-8381-4605-957c-aea9fc382db3" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: Component Model -&gt; Table Control Data</display>
               <isAbstract>false</isAbstract>
@@ -403,7 +403,7 @@
                 </stereotype>
               </stereotypes>
               <childElements>
-                <childElement id="8e893bdf-892c-4ca5-8001-d79331bcff02" type="Element Mapping">
+                <childElement id="8e893bdf-892c-4ca5-8001-d79331bcff02" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                   <name>NewElementMapping</name>
                   <display>[mapping]: DTO-Field -&gt; Table Control Column</display>
                   <isAbstract>false</isAbstract>
@@ -431,7 +431,7 @@
                   </stereotypes>
                   <childElements />
                 </childElement>
-                <childElement id="1680c0ea-1bab-4a33-939f-6d1778b2449b" type="Element Mapping">
+                <childElement id="1680c0ea-1bab-4a33-939f-6d1778b2449b" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                   <name>NewElementMapping</name>
                   <display>[mapping]: Model Definition Field -&gt; Table Control Column</display>
                   <isAbstract>false</isAbstract>

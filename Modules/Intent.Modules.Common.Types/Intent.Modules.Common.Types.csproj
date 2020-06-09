@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Intent.RoslynWeaver.Attributes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Intent.RoslynWeaver.Attributes.1.0.0\lib\net45\Intent.RoslynWeaver.Attributes.dll</HintPath>
+    </Reference>
     <Reference Include="Intent.SoftwareFactory.SDK, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.1.1\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
     </Reference>
@@ -59,6 +62,13 @@
     <Compile Include="TypeResolvers\TypeScriptTypeResolver.cs" />
     <Compile Include="TypeResolvers\TypeScriptTypeResolverFactory.cs" />
     <Compile Include="TypeResolvers\CSharpTypeResolverFactory.cs" />
+    <Content Include="modelers\Common Types.modeler.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="ApiMetadataProvider.cs" />
+    <Compile Include="ApiMetadataProviderExtensions.cs" />
+    <Compile Include="Api\TypeDefinitionModel.cs" />
+    <Compile Include="Api\FolderModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Intent.Modules.Common.Types.imodspec">

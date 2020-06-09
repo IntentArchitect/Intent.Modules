@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="82d87202-bbf1-476b-9d92-8b11f8d600be" type="Role">
+<class id="82d87202-bbf1-476b-9d92-8b11f8d600be" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
   <name>Api</name>
   <display>Api</display>
   <isAbstract>false</isAbstract>

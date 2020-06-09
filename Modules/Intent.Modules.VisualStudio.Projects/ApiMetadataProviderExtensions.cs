@@ -66,11 +66,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             return new ApiMetadataProvider(metadataManager).GetWCFServiceApplicationModels(application);
         }
 
-        public static IList<SolutionFolderModel> GetSolutionFolderModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetSolutionFolderModels(application);
-        }
-
         public static IList<NETCoreVersionModel> GetNETCoreVersionModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetNETCoreVersionModels(application);
@@ -79,6 +74,11 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public static IList<NETFrameworkVersionModel> GetNETFrameworkVersionModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetNETFrameworkVersionModels(application);
+        }
+
+        public static IList<SolutionFolderModel> GetSolutionFolderModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetSolutionFolderModels(application);
         }
 
     }

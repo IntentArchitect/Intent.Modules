@@ -31,13 +31,7 @@
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(required)</placeholder>
       <defaultValue>d603dbfd-3361-4406-b5c0-efc2ac6f33fc</defaultValue>
-      <valueOptions>
-        <option>netcoreapp2.1</option>
-        <option>netcoreapp2.2</option>
-        <option>netcoreapp3.0</option>
-        <option>netcoreapp3.1</option>
-        <option>netcoreapp3.2</option>
-      </valueOptions>
+      <valueOptions />
       <lookupTypes>
         <type>65fb2757-ce97-41a8-9c53-b03d53c2c03f</type>
         <type>6453c4bd-78b8-4589-a223-9f57a348a1a1</type>
@@ -52,13 +46,7 @@
       <optionsSource>lookup-element</optionsSource>
       <placeholder>(required)</placeholder>
       <defaultValue />
-      <valueOptions>
-        <option>netcoreapp2.1</option>
-        <option>netcoreapp2.2</option>
-        <option>netcoreapp3.0</option>
-        <option>netcoreapp3.1</option>
-        <option>netcoreapp3.2</option>
-      </valueOptions>
+      <valueOptions />
       <lookupTypes>
         <type>65fb2757-ce97-41a8-9c53-b03d53c2c03f</type>
         <type>6453c4bd-78b8-4589-a223-9f57a348a1a1</type>

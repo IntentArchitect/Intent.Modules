@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="8567ac64-6be4-4ea7-8db8-5e7c6eb285c0" type="Folder">
+<class id="8567ac64-6be4-4ea7-8db8-5e7c6eb285c0" type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
   <name>App</name>
   <display>App</display>
   <isAbstract>false</isAbstract>

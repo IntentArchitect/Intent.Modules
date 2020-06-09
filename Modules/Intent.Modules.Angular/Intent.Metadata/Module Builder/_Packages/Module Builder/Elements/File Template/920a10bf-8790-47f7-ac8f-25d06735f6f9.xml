@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="920a10bf-8790-47f7-ac8f-25d06735f6f9" type="File Template">
+<class id="920a10bf-8790-47f7-ac8f-25d06735f6f9" type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2">
   <name>AngularComponentHtmlTemplate</name>
   <display>AngularComponentHtmlTemplate: File Per Model</display>
   <isAbstract>false</isAbstract>

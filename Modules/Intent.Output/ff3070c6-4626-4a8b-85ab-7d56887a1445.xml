@@ -4,6 +4,26 @@
   <FileLogs>
     <FileLog>
       <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\FolderModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\TypeDefinitionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/TypeDefinitionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\ApiMetadataProvider.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Types.csproj</ProjectRelativeFilePath>
     </FileLog>
@@ -11,6 +31,11 @@
       <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Types.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\modelers\Common Types.modeler.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Common Types.modeler.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
