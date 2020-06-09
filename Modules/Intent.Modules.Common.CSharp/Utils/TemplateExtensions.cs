@@ -53,7 +53,23 @@ namespace Intent.Modules.Common.Templates
 
         public static string ToCSharpIdentifier(this string s)
         {
-            return string.Concat(s.Split(' ').SelectMany(x => x.Split('-')).Select(x => x.ToPascalCase())).Replace("-", "").Replace("#", "Sharp").Replace("(", "").Replace(")", "").Replace(",", "").Replace("[", "").Replace("]", "").Replace("{", "").Replace("}", "").Replace(".", "");
+            return string.Concat(s.Split(' ').SelectMany(x => x.Split('-')).Select(x => x.ToPascalCase()))
+                .Replace("#", "Sharp")
+                .Replace("&", "And")
+                .Replace("-", "")
+                .Replace("(", "")
+                .Replace(")", "")
+                .Replace(",", "")
+                .Replace("[", "")
+                .Replace("]", "")
+                .Replace("{", "")
+                .Replace("}", "")
+                .Replace(".", "")
+                .Replace("/", "")
+                .Replace("\\", "")
+                .Replace("?", "")
+                .Replace("@", "")
+                ;
         }
 
     }
