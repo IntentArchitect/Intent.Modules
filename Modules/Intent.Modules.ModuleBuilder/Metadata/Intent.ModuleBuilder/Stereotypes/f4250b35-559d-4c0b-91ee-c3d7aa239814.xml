@@ -30,9 +30,10 @@
       <comment>When left blank will be the Element Settings Name with "New" prefixed.</comment>
       <name>Default Name</name>
       <type>string</type>
-      <controlType>text</controlType>
+      <controlType>function</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
+      <defaultValue />
       <valueOptions />
       <lookupTypes />
     </property>

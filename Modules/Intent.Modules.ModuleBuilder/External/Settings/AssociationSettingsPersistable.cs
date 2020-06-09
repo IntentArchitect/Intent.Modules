@@ -27,6 +27,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class AssociationEndSettingsPersistable
     {
+        [XmlElement("specializationType")]
+        public string SpecializationType { get; set; }
+
         [XmlElement("typeReferenceSetting")]
         public TypeReferenceSettingPersistable TypeReferenceSetting { get; set; }
     }

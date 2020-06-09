@@ -99,21 +99,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             #line hidden
             
             #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt"
-  foreach(var targetType in Model.DestinationEnd.TargetTypes()) {  
+  foreach(var targetType in Model.TargetEnd.TargetTypes()) {  
             
             #line default
             #line hidden
             this.Write("        [IntentManaged(Mode.Fully)]\r\n        public static IList<");
             
             #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.DestinationEnd.ApiModelName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.TargetEnd.ApiModelName));
             
             #line default
             #line hidden
             this.Write("> ");
             
             #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.DestinationEnd.ApiPropertyName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.TargetEnd.ApiPropertyName));
             
             #line default
             #line hidden
