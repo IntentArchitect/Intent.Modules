@@ -22,6 +22,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
         }
 
         public string AssociationEndClassName => $"{Model.Name.ToCSharpIdentifier()}EndModel";
+        public string AssociationSourceEndClassName => $"{Model.SourceEnd.Name.ToCSharpIdentifier()}Model";
+        public string AssociationTargetEndClassName => $"{Model.TargetEnd.Name.ToCSharpIdentifier()}Model";
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {

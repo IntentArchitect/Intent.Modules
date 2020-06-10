@@ -90,7 +90,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             
             #line default
             #line hidden
-            this.Write(".CreateFromEnd(x))\r\n                .ToList();\r\n        }\r\n\r\n");
+            this.Write(".CreateFromEnd(x).SourceEnd)\r\n                .ToList();\r\n        }\r\n\r\n");
             
             #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt"
   }  
@@ -139,14 +139,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             
             #line default
             #line hidden
-            this.Write(".CreateFromEnd(x))\r\n                .ToList();\r\n        }\r\n    }\r\n\r\n");
+            this.Write(".CreateFromEnd(x).TargetEnd)\r\n                .ToList();\r\n        }\r\n\r\n");
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt"
   }  
             
             #line default
             #line hidden
-            this.Write("}");
+            this.Write("    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
