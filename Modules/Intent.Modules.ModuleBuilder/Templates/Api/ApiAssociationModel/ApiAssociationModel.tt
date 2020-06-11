@@ -33,8 +33,6 @@ namespace <#= Namespace #>
                 throw new Exception($"Cannot create a '{GetType().Name}' from association with specialization type '{association.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _association = association;
-            SourceEnd = new <#=AssociationSourceEndClassName #>(association.SourceEnd, this);
-            TargetEnd = new <#=AssociationTargetEndClassName #>(association.TargetEnd, this);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -49,10 +47,10 @@ namespace <#= Namespace #>
         public string Id => _association.Id;
         
         [IntentManaged(Mode.Fully)]
-        public <#=AssociationSourceEndClassName #> SourceEnd { get; }
+        public <#=AssociationSourceEndClassName #> SourceEnd => new <#=AssociationSourceEndClassName #>(_association.SourceEnd, this);
 
         [IntentManaged(Mode.Fully)]
-        public <#=AssociationTargetEndClassName #> TargetEnd { get; }
+        public <#=AssociationTargetEndClassName #> TargetEnd => new <#=AssociationTargetEndClassName #>(_association.TargetEnd, this);
 
         [IntentManaged(Mode.Fully)]
         public IAssociation InternalAssociation => _association;
