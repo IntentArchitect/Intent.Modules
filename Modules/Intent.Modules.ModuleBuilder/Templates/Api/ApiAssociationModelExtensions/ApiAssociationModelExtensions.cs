@@ -50,7 +50,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             this.Write("\r\n    {\r\n");
             
             #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt"
-  foreach(var targetType in Model.SourceEnd.TargetTypes()) {  
+  foreach(var targetType in Model.TargetEnd.TargetTypes()) {  
             
             #line default
             #line hidden
@@ -99,7 +99,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             #line hidden
             
             #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt"
-  foreach(var targetType in Model.TargetEnd.TargetTypes()) {  
+  foreach(var targetType in Model.SourceEnd.TargetTypes()) {  
             
             #line default
             #line hidden

@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
                 fileExtension: "cs",
                 defaultLocationInProject: "Api/Extensions",
                 className: $"{Model.ApiModelName}AssociationExtensions",
-                @namespace: "${Project.Name}.Api"
+                @namespace: Model.Designer.ApiNamespace
             );
         }
 
