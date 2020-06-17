@@ -24,15 +24,13 @@ namespace Intent.Modelers.Domain.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from association with specialization type '{association.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _association = association;
-            SourceEnd = new AssociationEndModel(association.SourceEnd, this);
-            TargetEnd = new AssociationEndModel(association.TargetEnd, this);
         }
 
         [IntentManaged(Mode.Fully)]
-        public static AssociationEndModel CreateFromEnd(IAssociationEnd associationEnd)
+        public static AssociationModel CreateFromEnd(IAssociationEnd associationEnd)
         {
             var association = new AssociationModel(associationEnd.Association);
-            return associationEnd.IsSourceEnd() ? association.SourceEnd : association.TargetEnd;
+            return association;
         }
 
 
@@ -40,10 +38,10 @@ namespace Intent.Modelers.Domain.Api
         public string Id => _association.Id;
 
         [IntentManaged(Mode.Fully)]
-        public AssociationEndModel SourceEnd { get; }
+        public AssociationSourceEndModel SourceEnd => new AssociationSourceEndModel(_association.SourceEnd, this);
 
         [IntentManaged(Mode.Fully)]
-        public AssociationEndModel TargetEnd { get; }
+        public AssociationTargetEndModel TargetEnd => new AssociationTargetEndModel(_association.TargetEnd, this);
 
         [IntentManaged(Mode.Fully)]
         public IAssociation InternalAssociation => _association;
@@ -139,13 +137,13 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Ignore)]
         public AssociationEndModel OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? _association.TargetEnd : _association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (AssociationEndModel)_association.TargetEnd : (AssociationEndModel)_association.SourceEnd;
         }
 
         [IntentManaged(Mode.Fully)]
         IAssociationEnd IAssociationEnd.OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? _association.TargetEnd : _association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -185,6 +183,22 @@ namespace Intent.Modelers.Domain.Api
         public override int GetHashCode()
         {
             return (_associationEnd != null ? _associationEnd.GetHashCode() : 0);
+        }
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public class AssociationSourceEndModel : AssociationEndModel
+    {
+        public AssociationSourceEndModel(IAssociationEnd associationEnd, AssociationModel association) : base(associationEnd, association)
+        {
+        }
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public class AssociationTargetEndModel : AssociationEndModel
+    {
+        public AssociationTargetEndModel(IAssociationEnd associationEnd, AssociationModel association) : base(associationEnd, association)
+        {
         }
     }
 }

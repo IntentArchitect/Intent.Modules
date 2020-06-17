@@ -12,8 +12,8 @@
   <stereotypes />
   <childElements>
     <childElement id="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" type="Association Source End Settings">
-      <name>[source]</name>
-      <display>[source]</display>
+      <name>Association Source End</name>
+      <display>Association Source End</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -41,8 +41,8 @@
       <childElements />
     </childElement>
     <childElement id="0a66489f-30aa-417b-a75d-b945863366fd" type="Association Destination End Settings">
-      <name>destination</name>
-      <display>[destination]</display>
+      <name>Association Target End</name>
+      <display>Association Target End</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>

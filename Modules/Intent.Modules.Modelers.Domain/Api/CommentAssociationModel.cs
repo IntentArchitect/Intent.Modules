@@ -24,8 +24,6 @@ namespace Intent.Modelers.Domain.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from association with specialization type '{association.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _association = association;
-            SourceEnd = new CommentAssociationEndModel(association.SourceEnd, this);
-            TargetEnd = new CommentAssociationEndModel(association.TargetEnd, this);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -35,16 +33,16 @@ namespace Intent.Modelers.Domain.Api
         public IAssociation InternalAssociation => _association;
 
         [IntentManaged(Mode.Fully)]
-        public CommentAssociationEndModel SourceEnd { get; }
+        public CommentSourceEndModel SourceEnd => new CommentSourceEndModel(_association.SourceEnd, this);
 
         [IntentManaged(Mode.Fully)]
-        public CommentAssociationEndModel TargetEnd { get; }
+        public CommentTargetEndModel TargetEnd => new CommentTargetEndModel(_association.TargetEnd, this);
 
         [IntentManaged(Mode.Fully)]
-        public static CommentAssociationEndModel CreateFromEnd(IAssociationEnd associationEnd)
+        public static CommentAssociationModel CreateFromEnd(IAssociationEnd associationEnd)
         {
             var association = new CommentAssociationModel(associationEnd.Association);
-            return associationEnd.IsSourceEnd() ? association.SourceEnd : association.TargetEnd;
+            return association;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -116,7 +114,7 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         IAssociationEnd IAssociationEnd.OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? _association.TargetEnd : _association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -156,6 +154,22 @@ namespace Intent.Modelers.Domain.Api
         public override int GetHashCode()
         {
             return (_associationEnd != null ? _associationEnd.GetHashCode() : 0);
+        }
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public class CommentSourceEndModel : CommentAssociationEndModel
+    {
+        public CommentSourceEndModel(IAssociationEnd associationEnd, CommentAssociationModel association) : base(associationEnd, association)
+        {
+        }
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public class CommentTargetEndModel : CommentAssociationEndModel
+    {
+        public CommentTargetEndModel(IAssociationEnd associationEnd, CommentAssociationModel association) : base(associationEnd, association)
+        {
         }
     }
 }

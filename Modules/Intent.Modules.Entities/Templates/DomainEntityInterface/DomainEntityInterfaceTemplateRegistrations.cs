@@ -9,7 +9,6 @@ using System.Linq;
 using Intent.Modelers.Domain;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.Modelers.Domain;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {

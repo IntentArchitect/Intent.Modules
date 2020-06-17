@@ -24,25 +24,23 @@ namespace Intent.Modelers.Domain.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from association with specialization type '{association.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _association = association;
-            SourceEnd = new GeneralizationEndModel(association.SourceEnd, this);
-            TargetEnd = new GeneralizationEndModel(association.TargetEnd, this);
         }
 
         [IntentManaged(Mode.Fully)]
-        public static GeneralizationEndModel CreateFromEnd(IAssociationEnd associationEnd)
+        public static GeneralizationModel CreateFromEnd(IAssociationEnd associationEnd)
         {
             var association = new GeneralizationModel(associationEnd.Association);
-            return associationEnd.IsSourceEnd() ? association.SourceEnd : association.TargetEnd;
+            return association;
         }
 
         [IntentManaged(Mode.Fully)]
         public string Id => _association.Id;
 
         [IntentManaged(Mode.Fully)]
-        public GeneralizationEndModel SourceEnd { get; }
+        public GeneralizationSourceEndModel SourceEnd => new GeneralizationSourceEndModel(_association.SourceEnd, this);
 
         [IntentManaged(Mode.Fully)]
-        public GeneralizationEndModel TargetEnd { get; }
+        public GeneralizationTargetEndModel TargetEnd => new GeneralizationTargetEndModel(_association.TargetEnd, this);
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(GeneralizationModel other)
@@ -151,13 +149,29 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         IAssociationEnd IAssociationEnd.OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? _association.TargetEnd : _association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
         }
 
         [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
             return _associationEnd.ToString();
+        }
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public class GeneralizationSourceEndModel : GeneralizationEndModel
+    {
+        public GeneralizationSourceEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
+        {
+        }
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public class GeneralizationTargetEndModel : GeneralizationEndModel
+    {
+        public GeneralizationTargetEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
+        {
         }
     }
 }

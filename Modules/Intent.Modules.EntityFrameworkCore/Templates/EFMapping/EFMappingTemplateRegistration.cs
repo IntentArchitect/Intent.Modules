@@ -4,7 +4,6 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.Modelers.Domain;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping

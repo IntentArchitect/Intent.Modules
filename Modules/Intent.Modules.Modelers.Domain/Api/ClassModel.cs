@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Intent.Metadata.Models;
-using Intent.Modules.Modelers.Domain.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -49,7 +48,7 @@ namespace Intent.Modelers.Domain.Api
             //    _parent._childClasses.Add(this);
             //}
 
-            _associatedElements = this.AssociatedToClasses()
+            _associatedElements = this.AssociatedToClasses().Cast<AssociationEndModel>()
                 .Concat(this.AssociatedFromClasses().Where(x => x.Element.Id != Id))
                 .ToList();
             //_associatedElements = element.AssociatedElements

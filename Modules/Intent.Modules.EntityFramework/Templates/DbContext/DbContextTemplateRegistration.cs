@@ -7,7 +7,6 @@ using Intent.Modules.Common.Registrations;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Modelers.Domain;
-using Intent.Modules.Modelers.Domain;
 using Intent.Registrations;
 using Intent.Templates;
 

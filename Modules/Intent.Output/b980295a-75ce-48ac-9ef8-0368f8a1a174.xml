@@ -44,18 +44,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\AssociationModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AssociationModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\AssociationModelAssociationExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/AssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\CommentAssociationModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/CommentAssociationModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\CommentAssociationModelAssociationExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/CommentAssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\GeneralizationModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/GeneralizationModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\GeneralizationModelAssociationExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/GeneralizationModelAssociationExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>0a4c4889-f408-4d30-9d28-33911ed73d4c</ProjectId>
