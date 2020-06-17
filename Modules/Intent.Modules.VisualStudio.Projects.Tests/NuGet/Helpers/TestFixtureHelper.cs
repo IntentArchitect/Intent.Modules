@@ -40,6 +40,7 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.Helpers
             private readonly NuGetScheme? _nuGetScheme;
             private readonly TestVersion _testVersion;
             private readonly int _number;
+            private string _id;
 
             public ProjectImplementation(NuGetScheme? scheme, TestVersion testVersion, TestPackage testPackage, IDictionary<string, string> nugetPackagesToInstall)
             {
@@ -48,17 +49,34 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.Helpers
                 _number = (int)testPackage;
 
                 Name = $"{(scheme.HasValue ? scheme.Value.ToString() : "null")}_{testVersion}_{_number}";
-                ProjectType = new ProjectTypeImplementation(Name);
+                ProjectType = Name;
                 this.InitializeVSMetadata();
                 this.NugetPackages().AddRange(nugetPackagesToInstall.Select(x => new NuGetPackages(x)));
             }
 
             public string ProjectFile() => GetPath(_nuGetScheme, _testVersion, _number);
+            public ITemplateTargetInfo AsTarget(string subLocation = null)
+            {
+                throw new NotImplementedException();
+            }
+
+            public bool HasRole(string role)
+            {
+                throw new NotImplementedException();
+            }
+
+            public IEnumerable<string> GetTargetFrameworks()
+            {
+                throw new NotImplementedException();
+            }
+
+            string IProject.Id => _id;
 
             public string Name { get; }
 
-            public IProjectType ProjectType { get; }
+            public string ProjectType { get; }
 
+            public string Type { get; }
             public IDictionary<string, object> Metadata { get; } = new Dictionary<string, object>();
 
             #region throw new NotImplementedException() implementations
@@ -94,21 +112,6 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.Helpers
                 public string TargetFramework => throw new NotImplementedException();
                 public bool CanAddFile(string file) => throw new NotImplementedException();
                 public IList<AssemblyRedirectInfo> AssemblyRedirects => throw new NotImplementedException();
-                #endregion
-            }
-
-            private class ProjectTypeImplementation : IProjectType
-            {
-                public ProjectTypeImplementation(string name)
-                {
-                    Name = name;
-                }
-
-                public string Name { get; }
-
-                #region throw new NotImplementedException() implementations
-                public string Id => throw new NotImplementedException();
-                public IEnumerable<IProjectTypeProperty> Properties => throw new NotImplementedException();
                 #endregion
             }
         }

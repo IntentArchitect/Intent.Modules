@@ -108,6 +108,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj">
+      <Project>{3F63877E-B9BF-46A6-82BB-133659F57521}</Project>
+      <Name>Intent.SoftwareFactory.SDK</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj">
       <Project>{2972a488-2f67-426d-8762-c85fb36fb32c}</Project>
       <Name>Intent.Modules.Application.Contracts</Name>
