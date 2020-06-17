@@ -45,7 +45,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return this.GetSettings().TargetTypes().Select(x => new ElementSettingsModel(x)).ToList();
         }
 
-        public string ApiModelName => $"{_element.ParentElement.Name.ToCSharpIdentifier()}EndModel";
+        public string ApiModelName => $"{Name.ToCSharpIdentifier()}Model";
 
         public string ApiPropertyName => this.GetSettings().ApiPropertyName();
 

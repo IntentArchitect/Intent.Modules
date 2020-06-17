@@ -12,7 +12,6 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain;
 using Intent.Modelers.Domain.Api;
 using Intent.Modelers.Services.Api;
-using Intent.Modules.Modelers.Domain;
 using Intent.Plugins;
 using OperationModel = Intent.Modelers.Services.Api.OperationModel;
 

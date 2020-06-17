@@ -18,25 +18,25 @@ namespace <#= Namespace #>
     {
 <#  foreach(var targetType in Model.SourceEnd.TargetTypes()) {  #>
         [IntentManaged(Mode.Fully)]
+        public static IList<<#= Model.TargetEnd.ApiModelName #>> <#= Model.TargetEnd.ApiPropertyName #>(this <#= targetType.ApiModelName #> model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == <#= Model.ApiModelName #>.SpecializationType && x.IsTargetEnd())
+                .Select(x => <#= Model.ApiModelName #>.CreateFromEnd(x).TargetEnd)
+                .ToList();
+        }
+
+<#  }  #>
+<#  foreach(var targetType in Model.TargetEnd.TargetTypes()) {  #>
+        [IntentManaged(Mode.Fully)]
         public static IList<<#= Model.SourceEnd.ApiModelName #>> <#= Model.SourceEnd.ApiPropertyName #>(this <#= targetType.ApiModelName #> model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == <#= Model.ApiModelName #>.SpecializationType && x.IsSourceEnd())
-                .Select(x => <#= Model.ApiModelName #>.CreateFromEnd(x))
+                .Select(x => <#= Model.ApiModelName #>.CreateFromEnd(x).SourceEnd)
                 .ToList();
         }
 
 <#  }  #>
-<#  foreach(var targetType in Model.DestinationEnd.TargetTypes()) {  #>
-        [IntentManaged(Mode.Fully)]
-        public static IList<<#= Model.DestinationEnd.ApiModelName #>> <#= Model.DestinationEnd.ApiPropertyName #>(this <#= targetType.ApiModelName #> model)
-        {
-            return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == <#= Model.ApiModelName #>.SpecializationType && x.IsTargetEnd())
-                .Select(x => <#= Model.ApiModelName #>.CreateFromEnd(x))
-                .ToList();
-        }
     }
-
-<#  }  #>
 }

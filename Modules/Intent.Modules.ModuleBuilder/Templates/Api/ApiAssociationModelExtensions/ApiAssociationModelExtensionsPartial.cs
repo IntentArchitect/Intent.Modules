@@ -30,11 +30,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.ApiModelName}Extensions",
+                fileName: $"{Model.ApiModelName}AssociationExtensions",
                 fileExtension: "cs",
                 defaultLocationInProject: "Api/Extensions",
-                className: $"{Model.ApiModelName}Extensions",
-                @namespace: "${Project.Name}.Api"
+                className: $"{Model.ApiModelName}AssociationExtensions",
+                @namespace: Model.Designer.ApiNamespace
             );
         }
 

@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
         public override ITemplate CreateTemplateInstance(IProject project, ElementSettingsModel model)
         {
             var associationSettings = _metadataManager.GetAssociationSettingsModels(project.Application)
-                .Where(x => x.DestinationEnd.TargetsType(model.Id) || x.SourceEnd.TargetsType(model.Id))
+                .Where(x => x.TargetEnd.TargetsType(model.Id) || x.SourceEnd.TargetsType(model.Id))
                 .ToList();
             return new ApiElementModel(project, model, associationSettings);
         }

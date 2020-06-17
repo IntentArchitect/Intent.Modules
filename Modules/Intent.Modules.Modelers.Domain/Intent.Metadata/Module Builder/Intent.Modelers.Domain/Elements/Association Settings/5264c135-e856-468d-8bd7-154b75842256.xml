@@ -9,8 +9,8 @@
   <stereotypes />
   <childElements>
     <childElement id="7e98213c-4a9c-4d6f-98fc-f185948cc9e8" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
-      <name>[source]</name>
-      <display>[source]</display>
+      <name>Comment Source End</name>
+      <display>Comment Source End</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -35,8 +35,8 @@
       <childElements />
     </childElement>
     <childElement id="b7edce45-ccf0-47ed-b79f-86d5145c9f62" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
-      <name>destination</name>
-      <display>[destination]</display>
+      <name>Comment Target End</name>
+      <display>Comment Target End</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>

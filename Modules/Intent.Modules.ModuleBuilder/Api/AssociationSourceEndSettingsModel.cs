@@ -32,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
-        public string ApiModelName => $"{_element.ParentElement.Name.ToCSharpIdentifier()}EndModel";
+        public string ApiModelName => $"{Name.ToCSharpIdentifier()}Model";
 
         public string ApiPropertyName => this.GetSettings().ApiPropertyName();
 

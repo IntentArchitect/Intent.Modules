@@ -49,10 +49,10 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder />
+      <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
-      <isRequiredFunction>return true;</isRequiredFunction>
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="6f3c57c5-c50d-46bb-b690-2cf081ceb0b3">
       <name>NuGet Package Id</name>

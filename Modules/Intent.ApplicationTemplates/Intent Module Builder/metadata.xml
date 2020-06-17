@@ -2,7 +2,7 @@
 <applicationTemplate>
   <id>Intent.ApplicationTemplate.ModuleBuilder</id>
   <version>2.2.0</version>
-  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
+  <supportedClientVersions>[2.1.2,3.0.0)</supportedClientVersions>
   <displayName>Intent Module Builder</displayName>
   <shortDescription>An application for effortlessly creating Intent Modules</shortDescription>
   <authors>Intent Architect</authors>

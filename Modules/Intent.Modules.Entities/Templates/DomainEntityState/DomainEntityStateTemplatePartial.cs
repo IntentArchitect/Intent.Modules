@@ -9,7 +9,6 @@ using Intent.Modules.Entities.Templates.DomainEntityInterface;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
-using Intent.Modules.Modelers.Domain;
 using Intent.Templates;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState

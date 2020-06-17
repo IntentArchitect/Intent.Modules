@@ -33,15 +33,13 @@ namespace <#= Namespace #>
                 throw new Exception($"Cannot create a '{GetType().Name}' from association with specialization type '{association.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _association = association;
-            SourceEnd = new <#=AssociationEndClassName #>(association.SourceEnd, this);
-            TargetEnd = new <#=AssociationEndClassName #>(association.TargetEnd, this);
         }
 
         [IntentManaged(Mode.Fully)]
-        public static <#=AssociationEndClassName #> CreateFromEnd(IAssociationEnd associationEnd)
+        public static <#= ClassName #> CreateFromEnd(IAssociationEnd associationEnd)
         {
             var association = new <#= ClassName #>(associationEnd.Association);
-            return associationEnd.IsSourceEnd() ? association.SourceEnd : association.TargetEnd;
+            return association;
         }
 
 
@@ -49,10 +47,10 @@ namespace <#= Namespace #>
         public string Id => _association.Id;
         
         [IntentManaged(Mode.Fully)]
-        public <#=AssociationEndClassName #> SourceEnd { get; }
+        public <#=AssociationSourceEndClassName #> SourceEnd => new <#=AssociationSourceEndClassName #>(_association.SourceEnd, this);
 
         [IntentManaged(Mode.Fully)]
-        public <#=AssociationEndClassName #> TargetEnd { get; }
+        public <#=AssociationTargetEndClassName #> TargetEnd => new <#=AssociationTargetEndClassName #>(_association.TargetEnd, this);
 
         [IntentManaged(Mode.Fully)]
         public IAssociation InternalAssociation => _association;
@@ -82,6 +80,22 @@ namespace <#= Namespace #>
         public override int GetHashCode()
         {
             return (_association != null ? _association.GetHashCode() : 0);
+        }
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public class <#=AssociationSourceEndClassName #> : <#=AssociationEndClassName #>
+    {
+        public <#=AssociationSourceEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
+        {
+        }
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public class <#=AssociationTargetEndClassName #> : <#=AssociationEndClassName #>
+    {
+        public <#=AssociationTargetEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
+        {
         }
     }
 
@@ -126,7 +140,7 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully)]
         IAssociationEnd IAssociationEnd.OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? _association.TargetEnd : _association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
         }
 
         [IntentManaged(Mode.Fully)]
