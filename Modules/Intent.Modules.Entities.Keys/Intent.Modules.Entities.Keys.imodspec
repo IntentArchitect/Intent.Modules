@@ -37,7 +37,7 @@
   </decorators>
   <dependencies>
     <dependency id="Intent.Entities" version="2.1.1"/>
-    <dependency id="Intent.Metadata.RDBMS" version="2.1.0"/>
+    <dependency id="Intent.Metadata.RDBMS" version="2.1.1"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

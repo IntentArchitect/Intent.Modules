@@ -6,6 +6,7 @@
   <displayFunction>[FK: ${ColumnName}]</displayFunction>
   <targetElements>
     <element>association</element>
+    <element>association source end</element>
   </targetElements>
   <autoAdd>false</autoAdd>
   <parentFolderId>7C81DE70-0B90-44F4-9B18-F648B5976FC3</parentFolderId>
