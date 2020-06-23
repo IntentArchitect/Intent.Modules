@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
+  <id>Modeler Builder</id>
+  <name>Modeler Builder</name>
   <packageExtensions>
     <packageExtension type="Package" typeId="fb419f17-4218-49db-bd49-ba9de933e422">
       <requiredPackages />

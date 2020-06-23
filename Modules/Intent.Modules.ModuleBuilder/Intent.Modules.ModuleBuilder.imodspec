@@ -129,8 +129,10 @@
     </include>
   </packages>
   <metadata>
-    <install target="Module Builder" src="modelers" />
-    <install target="Module Builder" src="metadata/Intent.ModuleBuilder" externalReference="9972b2a9-b749-4bba-b5c8-824bf694c6ef" />
+    <install target="Module Builder" src="modelers/Module Builder.designer.config" />
+    <install target="Module Builder" src="modelers/Module Builder.designer.settings" />
+    <install target="Module Builder" src="modelers/Modeler Builder.designer.settings" />
+    <install target="Module Builder" src="metadata/Intent.ModuleBuilder/Intent.ModuleBuilder.pkg.config" externalReference="9972b2a9-b749-4bba-b5c8-824bf694c6ef" />
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />

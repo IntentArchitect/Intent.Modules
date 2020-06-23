@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
+  <id>Module Builder</id>
+  <name>Module Builder</name>
   <packageSettings>
     <packageSetting type="Package" typeId="fb419f17-4218-49db-bd49-ba9de933e422">
       <requiredPackages />
