@@ -69,28 +69,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\AngularComponentCreatedEvent.cs" />
     <Content Include="README.txt" />
-    <Compile Include="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplate.cs">
-      <DependentUpon>AngularComponentCssTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="AngularTypescriptProjectItemTemplateBase.cs" />
     <Compile Include="Templates\TypescriptFileHelper.cs" />
-    <Compile Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.cs">
-      <DependentUpon>AngularComponentHtmlTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.cs">
-      <DependentUpon>AngularComponentTsTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\Module\AngularModuleTemplate\AngularModuleTemplate.cs">
-      <DependentUpon>AngularModuleTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Module\AngularModuleTemplate\AngularModuleTemplatePartial.cs" />
     <Compile Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplatePartial.cs" />
     <Compile Include="Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplatePartial.cs" />
@@ -115,18 +95,8 @@
       <LastGenOutput>AngularComponentCssTemplate.cs</LastGenOutput>
     </Content>
     <Compile Include="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplateRegistration.cs" />
-    <Compile Include="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.cs">
-      <DependentUpon>AngularDTOTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplatePartial.cs" />
     <Compile Include="Api\ModuleDTOModel.cs" />
-    <Compile Include="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.cs">
-      <DependentUpon>AngularServiceProxyTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplatePartial.cs" />
     <Content Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -157,21 +127,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AngularRoutingModuleTemplate.cs</LastGenOutput>
     </Content>
-    <Compile Include="Templates\Core\CoreModuleTemplate\CoreModuleTemplate.cs">
-      <DependentUpon>CoreModuleTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\Core\ApiServiceTemplate\ApiServiceTemplate.cs">
-      <DependentUpon>ApiServiceTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.cs">
-      <DependentUpon>AngularRoutingModuleTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Core\CoreModuleTemplate\CoreModuleTemplatePartial.cs" />
     <Compile Include="Templates\Core\ApiServiceTemplate\ApiServiceTemplatePartial.cs" />
     <Compile Include="Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplatePartial.cs" />
@@ -180,11 +135,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EnvironmentTemplate.cs</LastGenOutput>
     </Content>
-    <Compile Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.cs">
-      <DependentUpon>EnvironmentTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplatePartial.cs" />
     <Compile Include="Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplateRegistration.cs" />
     <Compile Include="Templates\App\AppModuleTemplate\AppModuleTemplateRegistration.cs" />
@@ -196,16 +146,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AppModuleTemplate.cs</LastGenOutput>
     </Content>
-    <Compile Include="Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.cs">
-      <DependentUpon>AppRoutingModuleTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\App\AppModuleTemplate\AppModuleTemplate.cs">
-      <DependentUpon>AppModuleTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplatePartial.cs" />
     <Compile Include="Templates\App\AppModuleTemplate\AppModuleTemplatePartial.cs" />
     <Compile Include="ApiMetadataProvider.cs" />

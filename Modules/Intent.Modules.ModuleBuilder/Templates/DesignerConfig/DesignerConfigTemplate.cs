@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             base.OnCreated();
             Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
             {
-                { "Target", Model.Name },
+                { "Target", (Model as DesignerExtensionModel)?.TypeReference.Element?.Name ?? Model.Name },
                 { "Folder", GetMetadata().LocationInProject }
             });
         }

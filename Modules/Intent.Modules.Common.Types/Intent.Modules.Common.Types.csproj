@@ -56,7 +56,6 @@
     <Compile Include="TypeResolvers\CSharpTypeResolver.cs" />
     <Compile Include="TypeResolvers\JavaTypeResolver.cs" />
     <Compile Include="TypeResolvers\JavaTypeResolverFactory.cs" />
-    <Compile Include="TypeResolvers\TypeResolverBase.cs" />
     <Compile Include="TypeResolvers\TypeScriptTypeResolver.cs" />
     <Compile Include="TypeResolvers\TypeScriptTypeResolverFactory.cs" />
     <Compile Include="TypeResolvers\CSharpTypeResolverFactory.cs" />

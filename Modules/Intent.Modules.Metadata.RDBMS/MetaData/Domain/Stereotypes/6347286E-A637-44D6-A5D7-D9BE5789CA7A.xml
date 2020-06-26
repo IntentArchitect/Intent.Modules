@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="6347286E-A637-44D6-A5D7-D9BE5789CA7A">
+  <name>Text</name>
+  <targetMode>that-reference</targetMode>
+  <targetElements>
+    <element>d384db9c-a279-45e1-801e-e4e8099625f2</element>
+  </targetElements>
+  <applyMode>on-create</applyMode>
+  <icon type="CharacterBox" source="T|#FFC107" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>`[${properties["SQL Data Type"].value}(${properties["MaxLength"].value})]`</displayFunction>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>7C81DE70-0B90-44F4-9B18-F648B5976FC3</parentFolderId>
+  <order>0</order>
+  <properties>
+    <property id="1288cfcd-ee51-437e-9713-73b80118f026">
+      <name>SQL Data Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue>NVARCHAR</defaultValue>
+      <valueOptions>
+        <option>VARCHAR</option>
+        <option>NVARCHAR</option>
+        <option>TEXT</option>
+        <option>NTEXT</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+    <property id="A04CC24D-81FB-4EA2-A34A-B3C58E04DCFD">
+      <name>MaxLength</name>
+      <type>number</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <defaultValue>MAX</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="67EC4CF4-7706-4B39-BC7C-DF539EE2B0AF">
+      <name>IsUnicode</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

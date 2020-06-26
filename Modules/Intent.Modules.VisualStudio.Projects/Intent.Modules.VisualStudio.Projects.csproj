@@ -106,35 +106,15 @@
     <Compile Include="Sync\ApplicationSyncProcessor.cs" />
     <Compile Include="Sync\CoreProjectSyncProcessor.cs" />
     <Compile Include="Sync\FrameworkProjectSyncProcessor.cs" />
-    <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplate.cs">
-      <DependentUpon>ConsoleAppProgramTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplatePartial.cs" />
     <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplateRegistration.cs" />
-    <Compile Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.cs">
-      <DependentUpon>CoreLibraryCSProjectTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplatePartial.cs" />
     <Compile Include="Templates\CoreLibrary\CsProject\CoreWebCSProjectTemplateRegistrations.cs" />
-    <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplate.cs">
-      <DependentUpon>AppSettingsTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplatePartial.cs" />
     <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplateRegistration.cs" />
     <Compile Include="Templates\CoreWeb\LaunchSettings\LaunchSettingsJsonTemplate.cs" />
     <Compile Include="Templates\CoreWeb\LaunchSettings\LaunchSettingsJsonTemplateRegistration.cs" />
     <Compile Include="Templates\NetCoreProjectExtensions.cs" />
-    <Compile Include="Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.cs">
-      <DependentUpon>CoreWebCSProjectTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\CoreWeb\CsProject\CoreWebCSProjectTemplatePartial.cs" />
     <Compile Include="Templates\CoreWeb\CsProject\CoreWebCSProjectTemplateRegistrations.cs" />
     <Compile Include="Templates\AssemblyInfo\Registrations.cs" />
@@ -154,20 +134,10 @@
     <Compile Include="Parsing\EditableParser.cs" />
     <Compile Include="Parsing\EditableParserExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates\AssemblyInfo\AssemblyInfoTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AssemblyInfoTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\AssemblyInfo\AssemblyInfoTemplatePartial.cs" />
     <Compile Include="Templates\ConsoleApp\CsProject\ConsoleAppCSProjectTemplate.cs" />
     <Compile Include="Templates\LibraryCSProjectFile\LibraryCSProjectFileTemplate.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\SolutionFileMetadata.cs" />
-    <Compile Include="Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>VisualStudio2015SolutionTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplatePartial.cs" />
     <Compile Include="Templates\WcfServiceCSProjectFile\WcfServiceCSProjectFileTemplate.cs" />
     <Compile Include="Templates\WebApiServiceCSProjectFile\WebApiServiceCSProjectFileTemplate.cs" />

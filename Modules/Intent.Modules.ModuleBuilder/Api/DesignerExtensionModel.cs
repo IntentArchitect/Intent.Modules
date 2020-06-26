@@ -50,6 +50,8 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new ElementExtensionModel(x))
             .ToList();
 
+        public ITypeReference TypeReference => _element.TypeReference;
+
         [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
