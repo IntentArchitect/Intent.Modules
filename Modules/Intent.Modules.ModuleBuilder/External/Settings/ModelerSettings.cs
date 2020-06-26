@@ -107,121 +107,121 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         }
     }
 
-    public class AttributeSettingsPersistable
-    {
-        [XmlElement("specializationType")]
-        public string SpecializationType { get; set; }
+    //public class AttributeSettingsPersistable
+    //{
+    //    [XmlElement("specializationType")]
+    //    public string SpecializationType { get; set; }
 
-        [XmlElement("icon")]
-        public IconModelPersistable Icon { get; set; }
+    //    [XmlElement("icon")]
+    //    public IconModelPersistable Icon { get; set; }
 
-        [XmlElement("text")]
-        public string Text { get; set; }
+    //    [XmlElement("text")]
+    //    public string Text { get; set; }
 
-        [XmlElement("shortcut")]
-        public string Shortcut { get; set; }
+    //    [XmlElement("shortcut")]
+    //    public string Shortcut { get; set; }
 
-        [XmlElement("displayFunction")]
-        public string DisplayFunction { get; set; }
+    //    [XmlElement("displayFunction")]
+    //    public string DisplayFunction { get; set; }
 
-        [XmlElement("defaultName")]
-        public string DefaultName { get; set; }
+    //    [XmlElement("defaultName")]
+    //    public string DefaultName { get; set; }
 
-        [XmlElement("allowRename")]
-        public bool? AllowRename { get; set; } = true;
+    //    [XmlElement("allowRename")]
+    //    public bool? AllowRename { get; set; } = true;
 
-        [XmlElement("allowDuplicateNames")]
-        public bool? AllowDuplicateNames { get; set; }
+    //    [XmlElement("allowDuplicateNames")]
+    //    public bool? AllowDuplicateNames { get; set; }
 
-        [XmlElement("allowFindInView")]
-        public bool? AllowFindInView { get; set; }
+    //    [XmlElement("allowFindInView")]
+    //    public bool? AllowFindInView { get; set; }
 
-        [XmlElement("defaultTypeId")]
-        public string DefaultTypeId { get; set; }
+    //    [XmlElement("defaultTypeId")]
+    //    public string DefaultTypeId { get; set; }
 
-        [XmlArray("targetTypes")]
-        [XmlArrayItem("type")]
-        public string[] TargetTypes { get; set; }
+    //    [XmlArray("targetTypes")]
+    //    [XmlArrayItem("type")]
+    //    public string[] TargetTypes { get; set; }
 
-        public override string ToString()
-        {
-            return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
-                   $"{nameof(Text)} = '{Text}'";
-        }
-    }
+    //    public override string ToString()
+    //    {
+    //        return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
+    //               $"{nameof(Text)} = '{Text}'";
+    //    }
+    //}
 
-    public class ClassLiteralSettings
-    {
-        [XmlElement("specializationType")]
-        public string SpecializationType { get; set; }
+    //public class ClassLiteralSettings
+    //{
+    //    [XmlElement("specializationType")]
+    //    public string SpecializationType { get; set; }
 
-        [XmlElement("icon")]
-        public IconModelPersistable Icon { get; set; }
+    //    [XmlElement("icon")]
+    //    public IconModelPersistable Icon { get; set; }
 
-        [XmlElement("text")]
-        public string Text { get; set; }
+    //    [XmlElement("text")]
+    //    public string Text { get; set; }
 
-        [XmlElement("shortcut")]
-        public string Shortcut { get; set; }
+    //    [XmlElement("shortcut")]
+    //    public string Shortcut { get; set; }
 
-        [XmlElement("defaultName")]
-        public string DefaultName { get; set; }
+    //    [XmlElement("defaultName")]
+    //    public string DefaultName { get; set; }
 
-        [XmlElement("allowRename")]
-        public bool? AllowRename { get; set; } = true;
+    //    [XmlElement("allowRename")]
+    //    public bool? AllowRename { get; set; } = true;
 
-        [XmlElement("allowDuplicateNames")]
-        public bool? AllowDuplicateNames { get; set; }
+    //    [XmlElement("allowDuplicateNames")]
+    //    public bool? AllowDuplicateNames { get; set; }
 
-        [XmlElement("allowFindInView")]
-        public bool? AllowFindInView { get; set; }
+    //    [XmlElement("allowFindInView")]
+    //    public bool? AllowFindInView { get; set; }
 
-        public override string ToString()
-        {
-            return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
-                   $"{nameof(Text)} = '{Text}'";
-        }
-    }
+    //    public override string ToString()
+    //    {
+    //        return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
+    //               $"{nameof(Text)} = '{Text}'";
+    //    }
+    //}
 
-    public class OperationSettingsPersistable
-    {
-        [XmlElement("specializationType")]
-        public string SpecializationType { get; set; }
+    //public class OperationSettingsPersistable
+    //{
+    //    [XmlElement("specializationType")]
+    //    public string SpecializationType { get; set; }
 
-        [XmlElement("icon")]
-        public IconModelPersistable Icon { get; set; }
+    //    [XmlElement("icon")]
+    //    public IconModelPersistable Icon { get; set; }
 
-        [XmlElement("text")]
-        public string Text { get; set; }
+    //    [XmlElement("text")]
+    //    public string Text { get; set; }
 
-        [XmlElement("shortcut")]
-        public string Shortcut { get; set; }
+    //    [XmlElement("shortcut")]
+    //    public string Shortcut { get; set; }
 
-        [XmlElement("defaultName")]
-        public string DefaultName { get; set; }
+    //    [XmlElement("defaultName")]
+    //    public string DefaultName { get; set; }
 
-        [XmlElement("allowRename")]
-        public bool? AllowRename { get; set; } = true;
+    //    [XmlElement("allowRename")]
+    //    public bool? AllowRename { get; set; } = true;
 
-        [XmlElement("allowDuplicateNames")]
-        public bool? AllowDuplicateNames { get; set; }
+    //    [XmlElement("allowDuplicateNames")]
+    //    public bool? AllowDuplicateNames { get; set; }
 
-        [XmlElement("allowFindInView")]
-        public bool? AllowFindInView { get; set; }
+    //    [XmlElement("allowFindInView")]
+    //    public bool? AllowFindInView { get; set; }
 
-        [XmlElement("defaultTypeId")]
-        public string DefaultTypeId { get; set; }
+    //    [XmlElement("defaultTypeId")]
+    //    public string DefaultTypeId { get; set; }
 
-        [XmlArray("targetTypes")]
-        [XmlArrayItem("type")]
-        public string[] TargetTypes { get; set; }
+    //    [XmlArray("targetTypes")]
+    //    [XmlArrayItem("type")]
+    //    public string[] TargetTypes { get; set; }
 
-        public override string ToString()
-        {
-            return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
-                   $"{nameof(Text)} = '{Text}'";
-        }
-    }
+    //    public override string ToString()
+    //    {
+    //        return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
+    //               $"{nameof(Text)} = '{Text}'";
+    //    }
+    //}
 
     public class PackageSettingsPersistable
     {
@@ -252,9 +252,25 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                 foreach (var typeOrder in value.ToList().Where(x => !string.IsNullOrWhiteSpace(x.Order)))
                 {
                     _typeOrder.Remove(typeOrder);
-                    _typeOrder.Insert(Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count), typeOrder);
+                    _typeOrder.Insert(Math.Max(Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count), 0), typeOrder);
                 }
+                UpdateTypesOrdering();
             }
+        }
+
+        public void AddType(TypeOrderPersistable typeOrder)
+        {
+            TypeOrder.Add(typeOrder);
+            UpdateTypesOrdering();
+        }
+
+        private void UpdateTypesOrdering()
+        {
+            _typeOrder = TypeOrder.Select((x, index) => new TypeOrderPersistable()
+            {
+                Type = x.Type,
+                Order = !string.IsNullOrWhiteSpace(x.Order) ? x.Order : index.ToString()
+            }).OrderBy(x => int.Parse(x.Order)).ThenBy(x => x.Type).ToList();
         }
     }
 
@@ -293,6 +309,8 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public enum ElementType
     {
+        [XmlEnum("n/a")]
+        NotApplicable = -1,
         [XmlEnum("element")]
         Element = 0,
         [XmlEnum("association")]

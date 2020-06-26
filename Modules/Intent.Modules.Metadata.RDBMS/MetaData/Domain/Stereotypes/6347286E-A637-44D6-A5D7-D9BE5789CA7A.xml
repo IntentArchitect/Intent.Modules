@@ -8,7 +8,7 @@
   <applyMode>on-create</applyMode>
   <icon type="CharacterBox" source="T|#FFC107" />
   <displayIcon>false</displayIcon>
-  <displayFunction>`[${properties["SQL Data Type"].value}(${properties["MaxLength"].value})]`</displayFunction>
+  <displayFunction>`[${properties["MaxLength"].value || "MAX"}]`</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>7C81DE70-0B90-44F4-9B18-F648B5976FC3</parentFolderId>
   <order>0</order>

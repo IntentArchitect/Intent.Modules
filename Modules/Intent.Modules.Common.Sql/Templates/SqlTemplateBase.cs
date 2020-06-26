@@ -9,6 +9,11 @@ namespace Intent.Modules.Common.Sql.Templates
     {
         protected SqlTemplateBase(string templateId, IProject project, TModel model) : base(templateId, project, model)
         {
+        }
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
             Types = new SqlTypeResolver();
         }
 

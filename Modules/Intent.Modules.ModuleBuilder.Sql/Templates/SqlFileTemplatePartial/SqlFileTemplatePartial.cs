@@ -33,8 +33,8 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
         public override string TransformText()
         {
             this.Write("using System.Collections.Generic;\r\nusing Intent.Engine;\r\nusing Intent.Modules.Com" +
-                    "mon.Templates;\r\nusing Intent.RoslynWeaver.Attributes;\r\nusing Intent.Templates;\r\n" +
-                    "");
+                    "mon.Sql.Templates;\r\nusing Intent.RoslynWeaver.Attributes;\r\nusing Intent.Template" +
+                    "s;\r\n");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")));
@@ -89,7 +89,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected DefaultFileMetadata DefineDefaultFileMetadata()
+        public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             return new SqlFileConfiguration(
                 overwriteBehaviour: OverwriteBehaviour.Always,
