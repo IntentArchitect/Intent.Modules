@@ -145,7 +145,7 @@ foreach(var index in indexes)
 foreach (var associationEnd in Model.AssociatedClasses)
 {
 
-    if (associationEnd != associationEnd.Association.TargetEnd)
+    if (!associationEnd.Equals(associationEnd.Association.TargetEnd))
     {
         continue;
     }

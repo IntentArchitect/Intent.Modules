@@ -67,7 +67,7 @@ namespace <#= Namespace #>
 
         foreach(var associationEnd in model.AssociatedClasses)
         {
-            if (associationEnd.Association.AssociationType ==  AssociationType.Composition && associationEnd.Association.TargetEnd == associationEnd)
+            if (associationEnd.Association.AssociationType ==  AssociationType.Composition && associationEnd.Association.TargetEnd.Equals(associationEnd))
             {
                 if (associationEnd.Multiplicity == Multiplicity.Many) {
 #>
