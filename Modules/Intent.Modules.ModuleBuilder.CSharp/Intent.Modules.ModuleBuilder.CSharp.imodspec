@@ -20,6 +20,9 @@
     <template id="ModuleBuilder.CSharp.Templates.CSharpTemplate" externalReference="f82844d8-1693-45b4-ba36-e1fb512b42e1">
       <role>Templates</role>
     </template>
+    <template id="ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed">
+      <role>Templates</role>
+    </template>
   </templates>
   <dependencies>
     <dependency id="Intent.Common" version="2.2.0" />

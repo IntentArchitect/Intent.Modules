@@ -82,8 +82,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                 foreach (var typeOrder in value.ToList().Where(x => !string.IsNullOrWhiteSpace(x.Order)))
                 {
                     _typeOrder.Remove(typeOrder);
-                    _typeOrder.Insert(Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count), typeOrder);
+                    _typeOrder.Insert(Math.Max(Math.Min(int.Parse(typeOrder.Order), _typeOrder.Count), 0), typeOrder);
                 }
+                UpdateTypesOrdering();
             }
         }
 
@@ -111,6 +112,21 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}'";
+        }
+
+        public void AddType(TypeOrderPersistable typeOrder)
+        {
+            TypeOrder.Add(typeOrder);
+            UpdateTypesOrdering();
+        }
+
+        private void UpdateTypesOrdering()
+        {
+            _typeOrder = _typeOrder.Select((x, index) => new TypeOrderPersistable()
+            {
+                Type = x.Type,
+                Order = !string.IsNullOrWhiteSpace(x.Order) ? x.Order : index.ToString()
+            }).OrderBy(x => int.Parse(x.Order)).ThenBy(x => x.Type).ToList();
         }
     }
 

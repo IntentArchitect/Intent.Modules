@@ -10,16 +10,16 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePreProcessedFile
 {
-    public class RoslynProjectItemTemplatePreProcessedFileRoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<CSharpTemplateModel>
+    public class CSharpTemplatePreProcessedFileTemplateRegistration : ModelTemplateRegistrationBase<CSharpTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
-        public RoslynProjectItemTemplatePreProcessedFileRoslynProjectItemTemplateRegistrations(IMetadataManager metadataManager)
+        public CSharpTemplatePreProcessedFileTemplateRegistration(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
 
-        public override string TemplateId => "Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template.PreProcessed";
+        public override string TemplateId => "ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed";
 
         public override ITemplate CreateTemplateInstance(IProject project, CSharpTemplateModel model)
         {

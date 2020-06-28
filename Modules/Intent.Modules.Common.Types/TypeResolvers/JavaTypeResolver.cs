@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.TypeResolution;
-using Intent.Modules.Common.Types.TypeResolvers;
 
 namespace Intent.Modules.Common.Types.TypeResolvers
 {

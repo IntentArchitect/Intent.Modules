@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.TypeResolution;
 using Intent.Templates;
 
-namespace Intent.Modules.Common.Types.TypeResolvers
+namespace Intent.Modules.Common.TypeResolution
 {
     public class TypeResolverContext : ITypeResolverContext
     {

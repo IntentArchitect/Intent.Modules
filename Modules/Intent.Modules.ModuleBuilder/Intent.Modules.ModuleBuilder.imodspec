@@ -28,15 +28,6 @@
     <template id="Intent.ModuleBuilder.ProjectItemTemplate.Partial">
       <role>Templates</role>
     </template>
-    <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template">
-      <role>Templates</role>
-    </template>
-    <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template.PreProcessed">
-      <role>Templates</role>
-    </template>
-    <template id="Intent.ModuleBuilder.RoslynProjectItemTemplate.Partial">
-      <role>Templates</role>
-    </template>
     <template id="Intent.ModuleBuilder.TemplateRegistration.Custom">
       <role>Templates</role>
     </template>
