@@ -76,7 +76,7 @@
         </childElement>
         <childElement id="2f7eaf64-da41-4534-bbea-82a37bdcfb70" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Designer</name>
-          <display>New Designer: Designer</display>
+          <display>New Designer: Designer Settings</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="31274192-00ab-4c20-82a4-0f5ba82a1dc5">

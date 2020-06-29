@@ -55,6 +55,25 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             return Serialize(applicationModelerModeler);
         }
 
+
+        private StereotypeSettingsPersistable GetStereotypeSettings(DesignerModel model)
+        {
+            var targetTypes = model.ElementTypes.Select(x => x.Name)
+                .Concat(model.ElementTypes.SelectMany(x => x.ElementSettings).Select(x => x.Name))
+                .Concat(model.AssociationTypes.Select(x => x.Name))
+                .OrderBy(x => x)
+                .ToList();
+
+            return new StereotypeSettingsPersistable
+            {
+                TargetTypeOptions = targetTypes.Select(x => new StereotypeTargetTypeOption()
+                {
+                    SpecializationType = x,
+                    DisplayText = x
+                }).ToList()
+            };
+        }
+
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             return new DefaultFileMetadata(

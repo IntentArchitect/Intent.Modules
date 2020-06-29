@@ -6,13 +6,20 @@ using System.Xml.Serialization;
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
 {
+    [XmlRoot("settings")]
     public class DesignerSettingsPersistable
     {
-        [XmlElement("diagramSettings")]
-        public DiagramSettings DiagramSettings { get; set; }
+        public const string FileExtension = "designer.settings";
 
-        [XmlElement("packageSettings")]
-        public PackageSettingsPersistable PackageSettings { get; set; }
+        [XmlElement("id")]
+        public string Id { get; set; }
+
+        [XmlElement("name")]
+        public string Name { get; set; }
+
+        [XmlArray("packageSettings")]
+        [XmlArrayItem("packageSetting")]
+        public List<PackageSettingsPersistable> PackageSettings { get; set; } = new List<PackageSettingsPersistable>();
 
         [XmlArray("elementSettings")]
         [XmlArrayItem("elementSetting")]
