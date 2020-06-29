@@ -31,7 +31,7 @@ namespace Intent.Modules.Common.Sql
                     result = "BIT";
                     break;
                 case "byte":
-                    result = "BYTE";
+                    result = "TINYINT";
                     break;
                 case "char":
                     result = "CHAR";
