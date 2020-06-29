@@ -1,4 +1,4 @@
-﻿<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<TemplateRegistration>" #>
+﻿<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<TemplateRegistrationModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>

@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase<IEnumerable<IClass>>"#>
+﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase<IEnumerable<ClassModel>>"#>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>

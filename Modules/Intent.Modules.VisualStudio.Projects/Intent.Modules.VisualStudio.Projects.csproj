@@ -33,52 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Intent.SoftwareFactory.SDK, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.1.1\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Build, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Build.15.9.20\lib\net46\Microsoft.Build.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Build.Framework, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Build.Framework.15.9.20\lib\net46\Microsoft.Build.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Build.Utilities.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Build.Utilities.Core.15.9.20\lib\net46\Microsoft.Build.Utilities.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.Setup.Configuration.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.VisualStudio.Setup.Configuration.Interop.1.16.30\lib\net35\Microsoft.VisualStudio.Setup.Configuration.Interop.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet.Versioning, Version=5.1.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\NuGet.Versioning.5.1.0\lib\netstandard2.0\NuGet.Versioning.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.5.24\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Thread, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Thread.4.0.0\lib\net46\System.Threading.Thread.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -106,12 +65,37 @@
     <Compile Include="Sync\ApplicationSyncProcessor.cs" />
     <Compile Include="Sync\CoreProjectSyncProcessor.cs" />
     <Compile Include="Sync\FrameworkProjectSyncProcessor.cs" />
+    <Compile Include="Templates\AssemblyInfo\AssemblyInfoTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfoTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConsoleAppProgramTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplatePartial.cs" />
     <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplateRegistration.cs" />
+    <Compile Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreLibraryCSProjectTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplatePartial.cs" />
     <Compile Include="Templates\CoreLibrary\CsProject\CoreWebCSProjectTemplateRegistrations.cs" />
+    <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppSettingsTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplatePartial.cs" />
     <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplateRegistration.cs" />
+    <Compile Include="Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreWebCSProjectTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\CoreWeb\LaunchSettings\LaunchSettingsJsonTemplate.cs" />
     <Compile Include="Templates\CoreWeb\LaunchSettings\LaunchSettingsJsonTemplateRegistration.cs" />
     <Compile Include="Templates\NetCoreProjectExtensions.cs" />
@@ -123,6 +107,11 @@
     <Compile Include="Templates\NodeJSProjectFile\NodeJSProjectFileTemplate.cs" />
     <Compile Include="Templates\NodeJSProjectFile\Registrations.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\Registrations.cs" />
+    <Compile Include="Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VisualStudio2015SolutionTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\WcfServiceCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\WebApiServiceCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\WebConfig\Registrations.cs" />
@@ -181,11 +170,59 @@
     <None Include="Intent.Modules.VisualStudio.Projects.imodspec">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Intent.IntentArchitectPackager">
+      <Version>2.1.0</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.SoftwareFactory.SDK">
+      <Version>2.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Build">
+      <Version>15.9.20</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Build.Utilities.Core">
+      <Version>15.9.20</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="NuGet.Versioning">
+      <Version>5.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Collections">
+      <Version>4.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="System.Diagnostics.Debug">
+      <Version>4.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="System.Globalization">
+      <Version>4.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="System.Linq">
+      <Version>4.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Resources.ResourceManager">
+      <Version>4.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime">
+      <Version>4.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.InteropServices">
+      <Version>4.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading">
+      <Version>4.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading.Tasks.Parallel">
+      <Version>4.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading.Thread">
+      <Version>4.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
@@ -201,13 +238,6 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <Import Project="..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
