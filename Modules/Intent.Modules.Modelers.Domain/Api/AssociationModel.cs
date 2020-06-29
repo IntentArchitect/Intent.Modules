@@ -14,6 +14,8 @@ namespace Intent.Modelers.Domain.Api
     {
         public const string SpecializationType = "Association";
         protected readonly IAssociation _association;
+        protected AssociationSourceEndModel _sourceEnd;
+        protected AssociationTargetEndModel _targetEnd;
 
         public AssociationModel(IAssociation association, string requiredType = SpecializationType)
         {
@@ -23,7 +25,6 @@ namespace Intent.Modelers.Domain.Api
             }
             _association = association;
         }
-
 
         public static AssociationModel CreateFromEnd(IAssociationEnd associationEnd)
         {
@@ -64,8 +65,6 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_association != null ? _association.GetHashCode() : 0);
         }
-        protected AssociationSourceEndModel _sourceEnd;
-        protected AssociationTargetEndModel _targetEnd;
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
@@ -120,36 +119,30 @@ namespace Intent.Modelers.Domain.Api
             return this.Equals(_association.SourceEnd) ? (AssociationEndModel)_association.TargetEnd : (AssociationEndModel)_association.SourceEnd;
         }
 
-
         IAssociationEnd IAssociationEnd.OtherEnd()
         {
             return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
         }
-
 
         public bool IsTargetEnd()
         {
             return _associationEnd.IsTargetEnd();
         }
 
-
         public bool IsSourceEnd()
         {
             return _associationEnd.IsSourceEnd();
         }
-
 
         public override string ToString()
         {
             return _associationEnd.ToString();
         }
 
-
         public bool Equals(AssociationEndModel other)
         {
             return Equals(_associationEnd, other._associationEnd);
         }
-
 
         public override bool Equals(object obj)
         {
@@ -158,7 +151,6 @@ namespace Intent.Modelers.Domain.Api
             if (obj.GetType() != this.GetType()) return false;
             return Equals((AssociationEndModel)obj);
         }
-
 
         public override int GetHashCode()
         {
