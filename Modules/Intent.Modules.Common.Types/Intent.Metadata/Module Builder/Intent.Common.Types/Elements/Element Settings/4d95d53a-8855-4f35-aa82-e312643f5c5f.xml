@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="4d95d53a-8855-4f35-aa82-e312643f5c5f" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Folder</name>
-  <display>Folder</display>
+  <name>Folder (Generic)</name>
+  <display>Folder (Generic)</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -46,7 +46,7 @@
       <childElements>
         <childElement id="ea56e83c-a629-43a6-a982-d75c52b7c8fb" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Folder</name>
-          <display>New Folder: Folder</display>
+          <display>New Folder: Folder (Generic)</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="f4b30cb5-3555-423c-bf72-866476469dfd">

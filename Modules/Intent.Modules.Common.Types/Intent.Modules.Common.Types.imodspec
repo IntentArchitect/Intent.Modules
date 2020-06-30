@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Types</id>
-  <version>2.1.1</version>
-  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
+  <version>2.2.0</version>
+  <supportedClientVersions>[2.2.0,3.0.0)</supportedClientVersions>
   <summary>Provides common types supported by the majority of programming languages.</summary>
   <description>Provides common types supported by the majority of programming languages.</description>
   <authors>Intent Architect</authors>
@@ -13,17 +13,18 @@
     <factoryExtension id="Intent.CommonTypes.TypeResolvers"></factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="2.1.0"/>
+    <dependency id="Intent.Common" version="2.1.0" />
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll" />
     <file src="bin/$configuration$/$id$.pdb" />
   </files>
   <metadata>
-    <install target="Domain" src="Metadata/Intent.Common.Types" />
+    <!--<install target="Domain" src="Metadata/Intent.Common.Types" />
     <install target="Services" src="Metadata/Intent.Common.Types" />
-    <install target="Eventing" src="Metadata/Intent.Common.Types" />
-    <install target="Common Types" src="modelers" />
+    <install target="Eventing" src="Metadata/Intent.Common.Types" />-->
+    <install target="Module Builder" src="modelers" />
+    <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Common.Types" externalReference="870ad967-cbd4-4ea9-b86d-9c3a5d55ea67" />
   </metadata>
   <templates />
 </package>

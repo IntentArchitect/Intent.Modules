@@ -40,7 +40,10 @@
     <template id="Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel">
       <role>Templates</role>
     </template>
-    <template id="Intent.ModuleBuilder.ModelerConfig">
+    <template id="Intent.ModuleBuilder.DesignerConfig">
+      <role>DesignerConfig</role>
+    </template>
+    <template id="Intent.ModuleBuilder.DesignerSettings">
       <role>DesignerConfig</role>
     </template>
     <template id="Intent.ModuleBuilder.DecoratorTemplate">

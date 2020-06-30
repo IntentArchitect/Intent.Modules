@@ -8,6 +8,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("type")]
         public string SpecializationType { get; set; }
 
+        [XmlAttribute("typeId")]
+        public string SpecializationTypeId { get; set; }
+
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
         public List<ElementCreationOption> CreationOptions { get; set; }

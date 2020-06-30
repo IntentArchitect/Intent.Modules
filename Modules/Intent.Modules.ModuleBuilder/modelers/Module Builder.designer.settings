@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
-  <id>Module Builder</id>
+  <id>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</id>
   <name>Module Builder</name>
   <packageSettings>
     <packageSetting type="Package" typeId="fb419f17-4218-49db-bd49-ba9de933e422">
@@ -33,6 +33,15 @@
           <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
+        <option order="0" type="element">
+          <specializationType>Folder (Generic)</specializationType>
+          <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
+          <text>New Generic Folder</text>
+          <shortcut>ctrl + shift + f</shortcut>
+          <defaultName>NewFolderGeneric</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
         <option type="stereotype-definition">
           <specializationType>Stereotype-Definition</specializationType>
           <specializationTypeId>Stereotype-Definition</specializationTypeId>
@@ -45,12 +54,14 @@
       </creationOptions>
       <typeOrder>
         <type order="0">Folder</type>
-        <type>File Template</type>
-        <type>Template Registration</type>
-        <type>Stereotype-Definition</type>
+        <type order="0">Folder (Generic)</type>
+        <type order="2">File Template</type>
+        <type order="3">Template Registration</type>
+        <type order="4">Stereotype-Definition</type>
       </typeOrder>
     </packageSetting>
   </packageSettings>
+  <packageExtensions />
   <elementSettings>
     <elementSetting type="Decorator" typeId="f0f46278-29ea-42bd-9206-0e7034f623bc">
       <icon type="FontAwesome" source="wpforms" />
@@ -62,7 +73,7 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <childElementSettings />
     </elementSetting>
@@ -76,7 +87,7 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>true</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeReferenceSetting>
         <isRequired>true</isRequired>
@@ -103,13 +114,13 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">Folder</type>
-        <type>File Template</type>
-        <type>Template Registration</type>
-        <type>Stereotype-Definition</type>
+        <type order="1">File Template</type>
+        <type order="2">Template Registration</type>
+        <type order="3">Stereotype-Definition</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -161,18 +172,39 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <childElementSettings />
     </elementSetting>
   </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Folder (Generic)" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <creationOptions>
+        <option type="element">
+          <specializationType>File Template</specializationType>
+          <specializationTypeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</specializationTypeId>
+          <text>New File Template</text>
+          <shortcut>ctrl + shift + t</shortcut>
+          <defaultName>NewFileTemplate</defaultName>
+          <icon type="FontAwesome" source="file-code-o" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Template Registration</specializationType>
+          <specializationTypeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</specializationTypeId>
+          <text>New Template Registration</text>
+          <shortcut>ctrl + shift + r</shortcut>
+          <defaultName>NewTemplateRegistration</defaultName>
+          <icon type="CharacterBox" source="C|#04007a" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <typeOrder>
+        <type>File Template</type>
+        <type>Template Registration</type>
+        <type>Stereotype-Definition</type>
+      </typeOrder>
+    </elementExtension>
+  </elementExtensions>
   <associationSettings />
-  <stereotypeSettings>
-    <targetTypeOptions>
-      <option specializationType="Decorator" displayText="Decorator" />
-      <option specializationType="File Template" displayText="File Template" />
-      <option specializationType="Folder" displayText="Folder" />
-      <option specializationType="Template Registration" displayText="Template Registration" />
-    </targetTypeOptions>
-  </stereotypeSettings>
 </settings>

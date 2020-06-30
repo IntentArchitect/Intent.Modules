@@ -50,8 +50,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new PackageSettingsExtensionPersistable
             {
-                SpecializationTypeId = Id,
-                SpecializationType = Name,
+                SpecializationTypeId = TypeReference.Element.Id,
+                SpecializationType = TypeReference.Element.Name,
                 CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
                     .Concat(MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])

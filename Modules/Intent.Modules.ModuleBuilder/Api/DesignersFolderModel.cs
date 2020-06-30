@@ -34,9 +34,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
-        public IList<DesignerSettingsModel> Designers => _element.ChildElements
-            .Where(x => x.SpecializationType == DesignerSettingsModel.SpecializationType)
-            .Select(x => new DesignerSettingsModel(x))
+        public IList<DesignerModel> Designers => _element.ChildElements
+            .Where(x => x.SpecializationType == DesignerModel.SpecializationType)
+            .Select(x => new DesignerModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
@@ -61,12 +61,6 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<DesignerExtensionModel> DesignerExtensions => _element.ChildElements
-            .Where(x => x.SpecializationType == DesignerExtensionModel.SpecializationType)
-            .Select(x => new DesignerExtensionModel(x))
-            .ToList();
-
-        [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
             return _element.ToString();
@@ -74,5 +68,11 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<DesignerSettingsModel> DesignerSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == DesignerSettingsModel.SpecializationType)
+            .Select(x => new DesignerSettingsModel(x))
+            .ToList();
     }
 }

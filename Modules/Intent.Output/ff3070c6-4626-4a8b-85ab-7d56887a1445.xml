@@ -4,8 +4,8 @@
   <FileLogs>
     <FileLog>
       <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\FolderModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\FolderGenericModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/FolderGenericModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
@@ -34,8 +34,8 @@
     </FileLog>
     <FileLog>
       <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\modelers\Common Types.modeler.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Common Types.modeler.config</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\modelers\Common Types.designer.settings</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Common Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>

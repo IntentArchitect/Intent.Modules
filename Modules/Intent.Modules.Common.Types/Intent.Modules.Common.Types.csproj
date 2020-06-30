@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -11,7 +11,8 @@
     <AssemblyName>Intent.Modules.Common.Types</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -61,13 +62,11 @@
     <Compile Include="TypeResolvers\TypeScriptTypeResolver.cs" />
     <Compile Include="TypeResolvers\TypeScriptTypeResolverFactory.cs" />
     <Compile Include="TypeResolvers\CSharpTypeResolverFactory.cs" />
-    <Content Include="modelers\Common Types.modeler.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Compile Include="ApiMetadataProvider.cs" />
     <Compile Include="ApiMetadataProviderExtensions.cs" />
     <Compile Include="Api\TypeDefinitionModel.cs" />
     <Compile Include="Api\FolderModel.cs" />
+    <Content Include="modelers\Common Types.designer.settings" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Intent.Modules.Common.Types.imodspec">
@@ -109,12 +108,12 @@
     <Folder Include="Metadata\Intent.Common.Types\Folders\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets')" />
+  <Import Project="..\packages\Intent.IntentArchitectPackager.2.2.0-pre.1\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.2.2.0-pre.1\build\Intent.IntentArchitectPackager.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets'))" />
+    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.2.2.0-pre.1\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.2.2.0-pre.1\build\Intent.IntentArchitectPackager.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

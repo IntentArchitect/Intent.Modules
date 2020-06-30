@@ -45,12 +45,12 @@
       <stereotypes />
       <childElements>
         <childElement id="2f4cc6a5-6e24-498d-bf51-10639e54829d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Designer Extension</name>
-          <display>New Designer Extension: Designer Extension</display>
+          <name>New Designer</name>
+          <display>New Designer: Designer</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="7a6b8bff-1090-4c1e-a34f-1192be9829aa">
-            <typeId>a747162d-696b-49ed-9075-b5da8d852e15</typeId>
+            <typeId>7f5fcc9f-c721-4a31-bfe2-7909f4289420</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -75,8 +75,8 @@
           <childElements />
         </childElement>
         <childElement id="2f7eaf64-da41-4534-bbea-82a37bdcfb70" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Designer</name>
-          <display>New Designer: Designer Settings</display>
+          <name>New Designer Settings</name>
+          <display>New Designer Settings: Designer Settings</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="31274192-00ab-4c20-82a4-0f5ba82a1dc5">

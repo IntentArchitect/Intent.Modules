@@ -18,7 +18,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 {
     public class DesignerConfigTemplate : IntentProjectItemTemplateBase<DesignerModel>
     {
-        public const string TemplateId = "Intent.ModuleBuilder.ModelerConfig";
+        public const string TemplateId = "Intent.ModuleBuilder.DesignerConfig";
 
         public DesignerConfigTemplate(IProject project, DesignerModel model) : base(TemplateId, project, model)
         {

@@ -64,6 +64,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DesignerReferenceModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/DesignerReferenceModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DesignerSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/DesignerSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -291,16 +296,6 @@
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.imodspec</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Intent.designer.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Intent.designer.config</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Modeler Builder.designer.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Modeler Builder.designer.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>

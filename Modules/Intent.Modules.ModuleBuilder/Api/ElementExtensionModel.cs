@@ -60,6 +60,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return new ElementSettingExtensionPersistable()
             {
                 SpecializationType = TypeReference.Element.Name,
+                SpecializationTypeId = TypeReference.Element.Id, 
                 CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
                 MappingSettings = MappingSettings?.ToPersistable()

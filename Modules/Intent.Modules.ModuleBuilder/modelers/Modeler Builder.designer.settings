@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
-  <id>Modeler Builder</id>
+  <id>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</id>
   <name>Modeler Builder</name>
+  <packageSettings />
   <packageExtensions>
     <packageExtension type="Package" typeId="fb419f17-4218-49db-bd49-ba9de933e422">
       <requiredPackages />
@@ -32,12 +33,12 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type>Association Source End Settings</type>
-        <type>Association Destination End Settings</type>
-        <type>Association Visual Settings</type>
+        <type order="0">Association Source End Settings</type>
+        <type order="1">Association Destination End Settings</type>
+        <type order="2">Association Visual Settings</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -70,10 +71,8 @@
       </creationOptions>
       <macros>
         <macro trigger="on-created">
-          <script>
-            createElement("Association Source End Settings", "[source]", context.id);
-            createElement("Association Destination End Settings", "[destination]", context.id);
-          </script>
+          <script>createElement("Association Source End Settings", "[source]", context.id);
+createElement("Association Destination End Settings", "[destination]", context.id);</script>
         </macro>
       </macros>
       <childElementSettings>
@@ -88,11 +87,11 @@
           <allowSorting>true</allowSorting>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType d7p1:nil="true" xmlns:d7p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type>Association Source End Visual Settings</type>
-            <type>Association Destination End Visual Settings</type>
+            <type order="0">Association Source End Visual Settings</type>
+            <type order="1">Association Destination End Visual Settings</type>
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -124,7 +123,7 @@
               <allowSorting>false</allowSorting>
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>false</allowTypeReference>
-              <allowConvertToType d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <childElementSettings />
             </childElementSetting>
@@ -139,7 +138,7 @@
               <allowSorting>false</allowSorting>
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>false</allowTypeReference>
-              <allowConvertToType d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <childElementSettings />
             </childElementSetting>
@@ -155,7 +154,7 @@
           <allowSorting>false</allowSorting>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType d7p1:nil="true" xmlns:d7p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <childElementSettings />
         </childElementSetting>
@@ -169,7 +168,7 @@
           <allowSorting>false</allowSorting>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType d7p1:nil="true" xmlns:d7p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <childElementSettings />
         </childElementSetting>
@@ -186,12 +185,12 @@
       <allowSorting>true</allowSorting>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type>Element Creation Option</type>
-        <type>Association Creation Option</type>
-        <type>Stereotype-Definition Creation Option</type>
+        <type order="0">Element Creation Option</type>
+        <type order="1">Association Creation Option</type>
+        <type order="2">Stereotype-Definition Creation Option</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -233,7 +232,7 @@
           <allowSorting>true</allowSorting>
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType d7p1:nil="true" xmlns:d7p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeReferenceSetting>
             <isRequired>true</isRequired>
@@ -260,7 +259,7 @@
           <allowSorting>true</allowSorting>
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType d7p1:nil="true" xmlns:d7p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeReferenceSetting>
             <isRequired>true</isRequired>
@@ -286,7 +285,7 @@
           <allowSorting>true</allowSorting>
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType d7p1:nil="true" xmlns:d7p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeReferenceSetting>
             <isRequired>true</isRequired>
@@ -314,12 +313,126 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <childElementSettings />
     </elementSetting>
-    <elementSetting type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
+    <elementSetting type="Designer" typeId="7f5fcc9f-c721-4a31-bfe2-7909f4289420">
       <icon type="CharacterBox" source="D|#00ffc8" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Designer Reference</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Designer Reference</specializationType>
+          <specializationTypeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</specializationTypeId>
+          <text>Add Designer Reference</text>
+          <defaultName>NewDesignerReference</defaultName>
+          <icon type="CharacterBox" source="R|#00BFA5" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <childElementSettings>
+        <childElementSetting type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+          <icon type="CharacterBox" source="R|#00BFA5" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type>Designer Settings</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <typeOrder />
+          <creationOptions />
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+    <elementSetting type="Designer Extension" typeId="a747162d-696b-49ed-9075-b5da8d852e15">
+      <icon type="CharacterBox" source="X|#00ffc8" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>true</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeReferenceSetting>
+        <isRequired>true</isRequired>
+        <targetTypes>
+          <type>Designer Settings</type>
+        </targetTypes>
+        <allowIsNavigable>true</allowIsNavigable>
+        <allowIsNullable>false</allowIsNullable>
+        <allowIsCollection>false</allowIsCollection>
+        <isNavigableDefault>true</isNavigableDefault>
+        <isNullableDefault>false</isNullableDefault>
+        <isCollectionDefault>false</isCollectionDefault>
+      </typeReferenceSetting>
+      <typeOrder>
+        <type order="0">Element Settings</type>
+        <type order="1">Core Type</type>
+        <type order="2">Association Settings</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Element Settings</specializationType>
+          <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
+          <text>New Element Type</text>
+          <shortcut>ctrl + shift + e</shortcut>
+          <defaultName>NewElementType</defaultName>
+          <icon type="CharacterBox" source="E|#095c00" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Core Type</specializationType>
+          <specializationTypeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</specializationTypeId>
+          <text>New Core Type</text>
+          <defaultName>NewCoreType</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Association Settings</specializationType>
+          <specializationTypeId>16d21684-d5ea-4fde-b648-f88d292fa272</specializationTypeId>
+          <text>New Association Type</text>
+          <defaultName>NewAssociationSettings</defaultName>
+          <icon type="CharacterBox" source="A|#ff8000" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <childElementSettings />
+    </elementSetting>
+    <elementSetting type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
+      <icon type="CharacterBox" source="S|#00ffc8" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
@@ -328,16 +441,16 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type>Package Settings</type>
-        <type>Package Extension</type>
-        <type>Element Settings</type>
-        <type>Element Extension</type>
-        <type>Association Settings</type>
-        <type>Core Type</type>
-        <type>Script</type>
+        <type order="0">Element Settings</type>
+        <type order="1">Element Extension</type>
+        <type order="2">Association Settings</type>
+        <type order="3">Package Settings</type>
+        <type order="4">Package Extension</type>
+        <type order="5">Core Type</type>
+        <type order="6">Script</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -369,11 +482,11 @@
         <option type="element">
           <specializationType>Package Settings</specializationType>
           <specializationTypeId>89333f72-3960-4159-bf61-9c40d4b65088</specializationTypeId>
-          <text>New Package Settings</text>
+          <text>New Package Type</text>
           <shortcut>ctrl + shift + p</shortcut>
           <defaultName>Package</defaultName>
           <icon type="CharacterBox" source="P|#7d7d7d" />
-          <allowMultiple>false</allowMultiple>
+          <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
           <specializationType>Package Extension</specializationType>
@@ -382,7 +495,7 @@
           <shortcut>ctrl + shift + p</shortcut>
           <defaultName>Package Settings</defaultName>
           <icon type="CharacterBox" source="X|#7d7d7d" />
-          <allowMultiple>false</allowMultiple>
+          <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
           <specializationType>Core Type</specializationType>
@@ -408,84 +521,6 @@
       </macros>
       <childElementSettings />
     </elementSetting>
-    <elementSetting type="Designer Extension" typeId="a747162d-696b-49ed-9075-b5da8d852e15">
-      <icon type="CharacterBox" source="X|#00ffc8" />
-      <saveAsOwnFile>true</saveAsOwnFile>
-      <allowRename>true</allowRename>
-      <allowAbstract>false</allowAbstract>
-      <allowGenericTypes>false</allowGenericTypes>
-      <allowMapping>false</allowMapping>
-      <allowSorting>false</allowSorting>
-      <allowFindInView>true</allowFindInView>
-      <allowTypeReference>true</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowSetValue>false</allowSetValue>
-      <typeReferenceSetting>
-        <isRequired>true</isRequired>
-        <targetTypes>
-          <type>Designer</type>
-        </targetTypes>
-        <allowIsNavigable>true</allowIsNavigable>
-        <allowIsNullable>false</allowIsNullable>
-        <allowIsCollection>false</allowIsCollection>
-        <isNavigableDefault>true</isNavigableDefault>
-        <isNullableDefault>false</isNullableDefault>
-        <isCollectionDefault>false</isCollectionDefault>
-      </typeReferenceSetting>
-      <typeOrder>
-        <type>Package Extension</type>
-        <type>Element Settings</type>
-        <type>Core Type</type>
-        <type>Element Extension</type>
-        <type>Association Settings</type>
-      </typeOrder>
-      <creationOptions>
-        <option type="element">
-          <specializationType>Package Extension</specializationType>
-          <specializationTypeId>ab4152df-3add-4a08-81b6-0fefc7cbb204</specializationTypeId>
-          <text>New Package Extension</text>
-          <shortcut>ctrl + shift + p</shortcut>
-          <defaultName>Package Settings</defaultName>
-          <icon type="CharacterBox" source="X|#7d7d7d" />
-          <allowMultiple>false</allowMultiple>
-        </option>
-        <option type="element">
-          <specializationType>Element Settings</specializationType>
-          <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
-          <text>New Element Type</text>
-          <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>NewElementType</defaultName>
-          <icon type="CharacterBox" source="E|#095c00" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
-          <specializationType>Core Type</specializationType>
-          <specializationTypeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</specializationTypeId>
-          <text>New Core Type</text>
-          <defaultName>NewCoreType</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
-          <specializationType>Element Extension</specializationType>
-          <specializationTypeId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</specializationTypeId>
-          <text>New Element Extension</text>
-          <shortcut>ctrl + shift + x</shortcut>
-          <defaultName>NewElementExtension</defaultName>
-          <icon type="CharacterBox" source="X|#095c00" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
-          <specializationType>Association Settings</specializationType>
-          <specializationTypeId>16d21684-d5ea-4fde-b648-f88d292fa272</specializationTypeId>
-          <text>New Association Type</text>
-          <defaultName>NewAssociationSettings</defaultName>
-          <icon type="CharacterBox" source="A|#ff8000" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <childElementSettings />
-    </elementSetting>
     <elementSetting type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
       <icon type="UrlImagePath" source="./img/icons/uml/Folder_03_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
@@ -497,27 +532,27 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type>Designer Extension</type>
-        <type>Designer Settings</type>
+        <type order="0">Designer</type>
+        <type order="1">Designer Settings</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Designer Extension</specializationType>
-          <specializationTypeId>a747162d-696b-49ed-9075-b5da8d852e15</specializationTypeId>
-          <text>New Designer Extension</text>
-          <defaultName>NewDesignerExtension</defaultName>
-          <icon type="CharacterBox" source="X|#00ffc8" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
           <specializationType>Designer</specializationType>
-          <specializationTypeId>7a6411a8-ffef-4209-91c6-8d12755a806a</specializationTypeId>
+          <specializationTypeId>7f5fcc9f-c721-4a31-bfe2-7909f4289420</specializationTypeId>
           <text>New Designer</text>
           <defaultName>NewDesigner</defaultName>
           <icon type="CharacterBox" source="D|#00ffc8" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Designer Settings</specializationType>
+          <specializationTypeId>7a6411a8-ffef-4209-91c6-8d12755a806a</specializationTypeId>
+          <text>New Designer Settings</text>
+          <defaultName>NewDesignerSettings</defaultName>
+          <icon type="CharacterBox" source="S|#00ffc8" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -533,7 +568,7 @@
       <allowSorting>true</allowSorting>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>true</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeReferenceSetting>
         <isRequired>true</isRequired>
@@ -548,9 +583,9 @@
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type>Context Menu</type>
-        <type>Diagram Settings</type>
-        <type>Mapping Settings</type>
+        <type order="0">Context Menu</type>
+        <type order="1">Diagram Settings</type>
+        <type order="2">Mapping Settings</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -592,15 +627,15 @@
       <allowSorting>true</allowSorting>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type>Context Menu</type>
-        <type>Element Settings</type>
-        <type>Mapping Settings</type>
-        <type>Diagram Settings</type>
-        <type>Element Visual Settings</type>
-        <type>Element Event Settings</type>
+        <type order="0">Context Menu</type>
+        <type order="1">Element Settings</type>
+        <type order="2">Mapping Settings</type>
+        <type order="3">Diagram Settings</type>
+        <type order="4">Element Visual Settings</type>
+        <type order="5">Element Event Settings</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -672,10 +707,10 @@
           <allowSorting>false</allowSorting>
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType d7p1:nil="true" xmlns:d7p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type>Element Mapping</type>
+            <type order="0">Element Mapping</type>
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -693,14 +728,13 @@
               <icon type="CharacterBox" source="M|#095cff" />
               <saveAsOwnFile>false</saveAsOwnFile>
               <displayFunction>
-                function getTypeName(stereotypeName, propertyName) {
-                var type = getStereotype(stereotypeName).properties[propertyName].getSelected();
-                if (type) {
-                return type.name;
-                }
-                }
-                return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getTypeName("Output Settings", "To Type") || "(Traverse)"}`;
-              </displayFunction>
+function getTypeName(stereotypeName, propertyName) {
+    var type = getStereotype(stereotypeName).properties[propertyName].getSelected();
+    if (type) {
+        return type.name;
+    }
+}
+return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getTypeName("Output Settings", "To Type") || "(Traverse)"}`;</displayFunction>
               <allowRename>false</allowRename>
               <allowAbstract>false</allowAbstract>
               <allowGenericTypes>false</allowGenericTypes>
@@ -708,10 +742,10 @@
               <allowSorting>false</allowSorting>
               <allowFindInView>true</allowFindInView>
               <allowTypeReference>false</allowTypeReference>
-              <allowConvertToType d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <typeOrder>
-                <type>Element Mapping</type>
+                <type order="0">Element Mapping</type>
               </typeOrder>
               <creationOptions>
                 <option type="element">
@@ -739,10 +773,10 @@
           <allowSorting>false</allowSorting>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType d7p1:nil="true" xmlns:d7p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type>Element Event Handler</type>
+            <type order="0">Element Event Handler</type>
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -773,7 +807,7 @@
               <allowSorting>false</allowSorting>
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>true</allowTypeReference>
-              <allowConvertToType d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
@@ -803,7 +837,7 @@
           <allowSorting>true</allowSorting>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType d7p1:nil="true" xmlns:d7p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeReferenceSetting>
             <isRequired>true</isRequired>
@@ -818,10 +852,10 @@
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <typeOrder>
-            <type>Path Draw Settings</type>
-            <type>Text Draw Settings</type>
-            <type>Stereotypes Visual Settings</type>
-            <type>Element Visual Settings</type>
+            <type order="0">Path Draw Settings</type>
+            <type order="1">Text Draw Settings</type>
+            <type order="2">Stereotypes Visual Settings</type>
+            <type order="3">Element Visual Settings</type>
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -869,7 +903,7 @@
               <allowSorting>false</allowSorting>
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>false</allowTypeReference>
-              <allowConvertToType d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <childElementSettings />
             </childElementSetting>
@@ -884,7 +918,7 @@
               <allowSorting>false</allowSorting>
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>false</allowTypeReference>
-              <allowConvertToType d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <childElementSettings />
             </childElementSetting>
@@ -899,7 +933,7 @@
               <allowSorting>false</allowSorting>
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>false</allowTypeReference>
-              <allowConvertToType d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <childElementSettings />
             </childElementSetting>
@@ -916,10 +950,10 @@
           <allowSorting>false</allowSorting>
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType d7p1:nil="true" xmlns:d7p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type>Context Menu</type>
+            <type order="0">Context Menu</type>
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -946,7 +980,7 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>true</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeReferenceSetting>
         <isRequired>true</isRequired>
@@ -961,7 +995,7 @@
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type>Context Menu</type>
+        <type order="0">Context Menu</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -991,10 +1025,11 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type>Context Menu</type>
+        <type order="0">Context Menu</type>
+        <type order="1">Package Event Settings</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -1006,13 +1041,86 @@
           <icon type="CharacterBox" source="C|#ad2121" />
           <allowMultiple>false</allowMultiple>
         </option>
+        <option type="element">
+          <specializationType>Package Event Settings</specializationType>
+          <specializationTypeId>48bcdd5f-690c-425b-8f5e-99097a7188dc</specializationTypeId>
+          <text>Add Event Settings</text>
+          <defaultName>NewPackageEventSettings</defaultName>
+          <icon type="FontAwesome" source="bolt" />
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <macros>
         <macro trigger="on-created">
           <script>createElement("Context Menu", "[context menu]", context.id)</script>
         </macro>
       </macros>
-      <childElementSettings />
+      <childElementSettings>
+        <childElementSetting type="Package Event Settings" typeId="48bcdd5f-690c-425b-8f5e-99097a7188dc">
+          <icon type="FontAwesome" source="bolt" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>[events]</displayFunction>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Element Event Handler</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <text>On Loaded Event</text>
+              <defaultName>On Loaded</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <text>On Created Event</text>
+              <defaultName>On Created</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <childElementSettings>
+            <childElementSetting type="Element Event Handler" typeId="e59f6c30-69ba-427c-9a73-33d69e44f765">
+              <icon type="FontAwesome" source="code" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <allowRename>false</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>true</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>true</isRequired>
+                <targetTypes>
+                  <type>Script</type>
+                </targetTypes>
+                <defaultTypeId>043eee26-1591-42ac-9f2c-fc911b070eb1</defaultTypeId>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>false</allowIsNullable>
+                <allowIsCollection>false</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
+      </childElementSettings>
     </elementSetting>
     <elementSetting type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c">
       <icon type="FontAwesome" source="file-code-o" />
@@ -1024,36 +1132,11 @@
       <allowSorting>false</allowSorting>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <childElementSettings />
     </elementSetting>
   </elementSettings>
-  <associationSettings />
   <elementExtensions />
-  <stereotypeSettings>
-    <targetTypeOptions>
-      <option specializationType="Association Creation Option" displayText="Association Creation Option" />
-      <option specializationType="Association Destination End Settings" displayText="Association Destination End Settings" />
-      <option specializationType="Association Settings" displayText="Association Settings" />
-      <option specializationType="Association Source End Settings" displayText="Association Source End Settings" />
-      <option specializationType="Association Visual Settings" displayText="Association Visual Settings" />
-      <option specializationType="Context Menu" displayText="Context Menu" />
-      <option specializationType="Core Type" displayText="Core Type" />
-      <option specializationType="Designer" displayText="Designer" />
-      <option specializationType="Designer Extension" displayText="Designer Extension" />
-      <option specializationType="Designers Folder" displayText="Designers Folder" />
-      <option specializationType="Diagram Settings" displayText="Diagram Settings" />
-      <option specializationType="Element Creation Option" displayText="Element Creation Option" />
-      <option specializationType="Element Event Settings" displayText="Element Event Settings" />
-      <option specializationType="Element Extension" displayText="Element Extension" />
-      <option specializationType="Element Settings" displayText="Element Settings" />
-      <option specializationType="Element Visual Settings" displayText="Element Visual Settings" />
-      <option specializationType="Mapping Settings" displayText="Mapping Settings" />
-      <option specializationType="Package Extension" displayText="Package Extension" />
-      <option specializationType="Package Settings" displayText="Package Settings" />
-      <option specializationType="Script" displayText="Script" />
-      <option specializationType="Stereotype-Definition Creation Option" displayText="Stereotype-Definition Creation Option" />
-    </targetTypeOptions>
-  </stereotypeSettings>
+  <associationSettings />
 </settings>

@@ -10,12 +10,12 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DesignerModel : IHasStereotypes, IMetadataModel
+    public class DesignerReferenceModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Designer";
+        public const string SpecializationType = "Designer Reference";
         protected readonly IElement _element;
 
-        public DesignerModel(IElement element, string requiredType = SpecializationType)
+        public DesignerReferenceModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -34,6 +34,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
+        public ITypeReference TypeReference => _element.TypeReference;
+
+        [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
 
         [IntentManaged(Mode.Fully)]
@@ -43,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public bool Equals(DesignerModel other)
+        public bool Equals(DesignerReferenceModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -54,7 +57,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DesignerModel)obj);
+            return Equals((DesignerReferenceModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -62,11 +65,5 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        [IntentManaged(Mode.Fully)]
-        public IList<DesignerReferenceModel> DesignerReferences => _element.ChildElements
-            .Where(x => x.SpecializationType == DesignerReferenceModel.SpecializationType)
-            .Select(x => new DesignerReferenceModel(x))
-            .ToList();
     }
 }
