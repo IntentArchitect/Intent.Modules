@@ -1,134 +1,42 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2972A488-2F67-426D-8762-C85FB36FB32C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Modules.Application.Contracts</RootNamespace>
-    <AssemblyName>Intent.Modules.Application.Contracts</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Intent.SoftwareFactory.SDK, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Intent.SoftwareFactory.SDK.2.1.1\lib\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Collections" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Intent.IntentArchitectPackager" Version="2.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OperationExtensions.cs" />
-    <Compile Include="Decorators\DataContractDTOAttributeDecoratorRegistration.cs" />
-    <Compile Include="NugetPackages.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates\DTO\Registrations.cs" />
-    <Compile Include="Decorators\DataContractDTOAttributeDecorator.cs" />
-    <Compile Include="Templates\DTO\DTOTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DTOTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\DTO\DTOTemplatePartial.cs" />
-    <Compile Include="Templates\DTO\IDTOAttributeDecorator.cs" />
-    <Compile Include="Templates\ServiceContract\IServiceContractAttributeDecorator.cs" />
-    <Compile Include="Templates\ServiceContract\ServiceContractTemplateRegistrations.cs" />
-    <Compile Include="Templates\ServiceContract\ServiceContractTemplate.cs">
-      <DependentUpon>ServiceContractTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\ServiceContract\ServiceContractTemplatePartial.cs" />
-    <Compile Include="XmlDocExtensions.cs" />
+    <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Intent.Modules.Application.Contracts.imodspec">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Intent.Modules.Application.Contracts.nuspec" />
-    <None Include="metadata\Intent.Application.Contracts\Intent.Application.Contracts.pkg.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj">
-      <Project>{b9fcf2b2-c126-41cd-b5b2-43b4f9166ac1}</Project>
-      <Name>Intent.Modules.Common.CSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
-      <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
-      <Name>Intent.Modules.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj">
-      <Project>{dbadfa28-e995-4e75-9933-215a51e7b580}</Project>
-      <Name>Intent.Modules.Constants</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj">
-      <Project>{C5A5AE9C-9137-4309-AC4E-F9494694390E}</Project>
-      <Name>Intent.Modules.Modelers.Services</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="metadata\Intent.Application.Contracts\Stereotypes\Asynchronous.xml" />
-    <Content Include="metadata\Intent.Application.Contracts\Stereotypes\DataContract.xml" />
-    <Content Include="Templates\DTO\DTOTemplate.tt">
+    <None Update="Templates\DTO\DTOTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DTOTemplate.cs</LastGenOutput>
-    </Content>
-    <None Include="packages.config" />
-    <None Include="Templates\ServiceContract\ServiceContractTemplate.tt">
+    </None>
+    <None Update="Templates\ServiceContract\ServiceContractTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ServiceContractTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Import Project="..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.2.1.0\build\Intent.IntentArchitectPackager.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <Compile Update="Templates\DTO\DTOTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DTOTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\ServiceContract\ServiceContractTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ServiceContractTemplate.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

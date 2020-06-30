@@ -9,23 +9,23 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
+namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class DesignerConfigTemplateRegistration : ModelTemplateRegistrationBase<DesignerModel>
+    public class DesignerSettingsTemplateRegistration : ModelTemplateRegistrationBase<DesignerModel>
     {
         private readonly IMetadataManager _metadataManager;
 
-        public DesignerConfigTemplateRegistration(IMetadataManager metadataManager)
+        public DesignerSettingsTemplateRegistration(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
 
-        public override string TemplateId => DesignerConfigTemplate.TemplateId;
+        public override string TemplateId => DesignerSettingsTemplate.TemplateId;
 
         public override ITemplate CreateTemplateInstance(IProject project, DesignerModel model)
         {
-            return new DesignerConfigTemplate(project, model);
+            return new DesignerSettingsTemplate(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

@@ -3,16 +3,17 @@ using Intent.Modules.Common.Templates;
 using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.TypeScript;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {
-    partial class TypescriptDtoTemplate : IntentTypescriptProjectItemTemplateBase<DTOModel>, ITemplate
+    partial class TypescriptDtoTemplate : TypeScriptTemplateBase<DTOModel>, ITemplate
     {
         public const string LocalIdentifier = "Intent.Typescript.ServiceAgent.Contracts.DTO.Local";
         public const string RemoteIdentifier = "Intent.Typescript.ServiceAgent.Contracts.DTO.Remote";
         public TypescriptDtoTemplate(string identifier, IProject project, DTOModel model)
-            : base(identifier, project, model)
+            : base(identifier, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
         {
             AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.LocalIdentifier));
             AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.RemoteIdentifier));

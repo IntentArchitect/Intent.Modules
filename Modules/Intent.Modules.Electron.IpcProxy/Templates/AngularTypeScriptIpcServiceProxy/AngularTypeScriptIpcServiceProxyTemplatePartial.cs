@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript;
 using Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy;
 using Intent.Modules.Typescript.ServiceAgent.Contracts;
 using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;

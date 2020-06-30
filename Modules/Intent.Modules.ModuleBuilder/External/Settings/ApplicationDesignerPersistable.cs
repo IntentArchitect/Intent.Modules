@@ -24,13 +24,17 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         //        AbsolutePath = filePath
         //    };
         //}
-        public ApplicationDesignerPersistable(string id, string name, int order, IconModelPersistable icon, bool loadStartPage)
+        public static ApplicationDesignerPersistable Create(string id, string name, int order, IconModelPersistable icon, bool loadStartPage)
         {
-            Id = id;
-            Name = name;
-            Order = order;
-            Icon = icon;
-            LoadStartPage = loadStartPage;
+            var x = new ApplicationDesignerPersistable
+            {
+                Id = id,
+                Name = name,
+                Order = order,
+                Icon = icon,
+                LoadStartPage = loadStartPage
+            };
+            return x;
         }
 
         //[XmlElement("icon")]

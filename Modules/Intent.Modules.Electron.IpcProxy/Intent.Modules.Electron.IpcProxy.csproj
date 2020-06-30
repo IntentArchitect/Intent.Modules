@@ -16,9 +16,16 @@
     <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj" />
     <ProjectReference Include="..\Intent.Modules.Application.ServiceCallHandlers\Intent.Modules.Application.ServiceCallHandlers.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
     <ProjectReference Include="..\Intent.Modules.Typescript.ServiceAgent.Contracts\Intent.Modules.Typescript.ServiceAgent.Contracts.csproj" />
     <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Intent.SoftwareFactory.SDK">
+      <HintPath>..\..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\bin\Debug\netstandard2.0\Intent.SoftwareFactory.SDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

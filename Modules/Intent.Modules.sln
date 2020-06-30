@@ -53,7 +53,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules (Unofficial)", "Mod
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B78BC13A-910C-4D34-B966-EC3B815D83B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.VisualStudio.Projects", "Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.csproj", "{7FEA24FE-C3AC-43BF-A8B0-099AABFBD526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.VisualStudio.Projects", "Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.csproj", "{7FEA24FE-C3AC-43BF-A8B0-099AABFBD526}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.OutputManager.TagWeaver", "Intent.Modules.OutputManager.TagWeaver\Intent.Modules.OutputManager.TagWeaver.csproj", "{A79001BD-3CAC-44C0-A429-564B18C84A93}"
 EndProject
@@ -91,9 +91,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNet.WebAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNetCore.Docker", "Intent.Modules.AspNetCore.Docker\Intent.Modules.AspNetCore.Docker.csproj", "{733303D8-9ECF-4ACA-86B2-C2F34B8B9DE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNetCore.Swashbuckle", "Intent.Modules.AspNetCore.Swashbuckle\Intent.Modules.AspNetCore.Swashbuckle.csproj", "{0A2DEC4C-A2FC-4290-85FA-2F64F6FAC4C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.AspNetCore.Swashbuckle", "Intent.Modules.AspNetCore.Swashbuckle\Intent.Modules.AspNetCore.Swashbuckle.csproj", "{0A2DEC4C-A2FC-4290-85FA-2F64F6FAC4C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNetCore", "Intent.Modules.AspNetCore\Intent.Modules.AspNetCore.csproj", "{5CD69B39-BFF1-4713-86C7-D5D7D7F397EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.AspNetCore", "Intent.Modules.AspNetCore\Intent.Modules.AspNetCore.csproj", "{5CD69B39-BFF1-4713-86C7-D5D7D7F397EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNet.Swashbuckle", "Intent.Modules.AspNet.Swashbuckle\Intent.Modules.AspNet.Swashbuckle.csproj", "{485C574B-D830-40EC-9427-EF57D0D40C8D}"
 EndProject
@@ -115,7 +115,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata", "Metadata", "{E6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules (Experimental)", "Modules (Experimental)", "{5F5C3F2E-DD11-4F45-A24D-9E8FB109592A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Angular", "Intent.Modules.Angular\Intent.Modules.Angular.csproj", "{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Angular", "Intent.Modules.Angular\Intent.Modules.Angular.csproj", "{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.ServiceImplementations", "Intent.Modules.Application.ServiceImplementations\Intent.Modules.Application.ServiceImplementations.csproj", "{925156ED-76E0-44B3-9FC4-4CD14AB7312C}"
 EndProject
@@ -152,6 +152,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Sql", "Intent.Modules.Common.Sql\Intent.Modules.Common.Sql.csproj", "{A412121D-D444-44CC-9974-A603F2372BDC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Sql", "Intent.Modules.ModuleBuilder.Sql\Intent.Modules.ModuleBuilder.Sql.csproj", "{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.CSharp", "Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj", "{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeScript", "Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj", "{AFE0081A-5319-43FA-9487-0A5AB5A15846}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -411,6 +415,14 @@ Global
 		{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -489,6 +501,8 @@ Global
 		{ED404A63-FC25-4C42-AB4C-619815D8A6EB} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{A412121D-D444-44CC-9974-A603F2372BDC} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
+		{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{AFE0081A-5319-43FA-9487-0A5AB5A15846} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

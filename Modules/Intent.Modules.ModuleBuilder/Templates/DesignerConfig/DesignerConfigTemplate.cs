@@ -37,22 +37,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
         public override string TransformText()
         {
             var path = FileMetadata.GetFullLocationPathWithFileName();
-            var applicationModelerModeler = File.Exists(path)
-                ? LoadAndDeserialize<ApplicationDesignerSettingsPersistable>(path)
-                : new ApplicationDesignerSettingsPersistable { Settings = new DesignerSettingsPersistable() };
+            var designer = ApplicationDesignerPersistable.Create(
+                id: Model.Id,
+                name: Model.Name,
+                order: Model.GetDesignerSettings().DisplayOrder() ?? 0,
+                icon: Model.GetDesignerSettings().Icon().ToPersistable(),
+                loadStartPage: false);
 
-            applicationModelerModeler.Icon = Model.GetDesignerSettings().Icon().ToPersistable();
-            applicationModelerModeler.DisplayOrder = Model.GetDesignerSettings().DisplayOrder() ?? 0;
-            var modelerSettings = applicationModelerModeler.Settings;
-
-            modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable() ?? (Model as DesignerExtensionModel)?.PackageExtension?.ToPersistable();
-            modelerSettings.ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
-            modelerSettings.AssociationSettings = Model.AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
-            modelerSettings.ElementExtensions = (Model as DesignerExtensionModel)?.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
-
-            modelerSettings.StereotypeSettings = GetStereotypeSettings(Model);
-
-            return Serialize(applicationModelerModeler);
+            return Serialize(designer);
         }
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

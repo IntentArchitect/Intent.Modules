@@ -1,5 +1,4 @@
-﻿using Intent.Modules.Unity.Templates.UnityConfig;
-using Intent.Engine;
+﻿using Intent.Engine;
 using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;

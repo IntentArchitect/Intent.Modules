@@ -14,13 +14,13 @@ using Intent.Modules.ModuleBuilder.Api;
 using Intent.Templates;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
-namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
+namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
 {
-    public class DesignerConfigTemplate : IntentProjectItemTemplateBase<DesignerModel>
+    public class DesignerSettingsTemplate : IntentProjectItemTemplateBase<DesignerModel>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ModelerConfig";
 
-        public DesignerConfigTemplate(IProject project, DesignerModel model) : base(TemplateId, project, model)
+        public DesignerSettingsTemplate(IProject project, DesignerModel model) : base(TemplateId, project, model)
         {
         }
 
@@ -36,23 +36,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 
         public override string TransformText()
         {
-            var path = FileMetadata.GetFullLocationPathWithFileName();
-            var applicationModelerModeler = File.Exists(path)
-                ? LoadAndDeserialize<ApplicationDesignerSettingsPersistable>(path)
-                : new ApplicationDesignerSettingsPersistable { Settings = new DesignerSettingsPersistable() };
+            var modelerSettings = new DesignerSettingsPersistable();
 
-            applicationModelerModeler.Icon = Model.GetDesignerSettings().Icon().ToPersistable();
-            applicationModelerModeler.DisplayOrder = Model.GetDesignerSettings().DisplayOrder() ?? 0;
-            var modelerSettings = applicationModelerModeler.Settings;
-
-            modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable() ?? (Model as DesignerExtensionModel)?.PackageExtension?.ToPersistable();
+            //modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable() ?? (Model as DesignerExtensionModel)?.PackageExtension?.ToPersistable();
+            //modelerSettings.PackageSettings = Model.PackageSettings
             modelerSettings.ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.AssociationSettings = Model.AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
             modelerSettings.ElementExtensions = (Model as DesignerExtensionModel)?.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
 
             modelerSettings.StereotypeSettings = GetStereotypeSettings(Model);
 
-            return Serialize(applicationModelerModeler);
+            return Serialize(modelerSettings);
         }
 
 
@@ -79,8 +73,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{Model.Name}.modeler{(Model is DesignerExtensionModel ? ".extension" : "")}",
-                fileExtension: "config",
+                fileName: $"{Model.Name}",
+                fileExtension: DesignerSettingsPersistable.FileExtension,
                 defaultLocationInProject: "modelers");
         }
 
