@@ -29,8 +29,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             base.OnCreated();
             Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
             {
-                { "Target", (Model as DesignerExtensionModel)?.TypeReference.Element?.Name ?? Model.Name },
-                { "Folder", GetMetadata().LocationInProject }
+                { "Target", Model.Name },
+                { "Folder", GetMetadata().GetRelativeFilePath() }
             });
         }
 
@@ -40,8 +40,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             var designer = ApplicationDesignerPersistable.Create(
                 id: Model.Id,
                 name: Model.Name,
-                order: Model.GetDesignerSettings().DisplayOrder() ?? 0,
-                icon: Model.GetDesignerSettings().Icon().ToPersistable(),
+                order: Model.GetDesignerConfig().DisplayOrder() ?? 0,
+                icon: Model.GetDesignerConfig().Icon().ToPersistable(),
                 loadStartPage: false);
 
             return Serialize(designer);
@@ -52,8 +52,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{Model.Name}.modeler{(Model is DesignerExtensionModel ? ".extension" : "")}",
-                fileExtension: "config",
+                fileName: $"{Model.Name}",
+                fileExtension: ApplicationDesignerPersistable.FileExtension,
                 defaultLocationInProject: "modelers");
         }
 

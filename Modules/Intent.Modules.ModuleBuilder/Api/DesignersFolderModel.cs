@@ -34,9 +34,9 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
-        public IList<DesignerModel> Designers => _element.ChildElements
-            .Where(x => x.SpecializationType == DesignerModel.SpecializationType)
-            .Select(x => new DesignerModel(x))
+        public IList<DesignerSettingsModel> Designers => _element.ChildElements
+            .Where(x => x.SpecializationType == DesignerSettingsModel.SpecializationType)
+            .Select(x => new DesignerSettingsModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -10,12 +11,54 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class PackageExtensionModel : PackageSettingsModel, IHasStereotypes, IMetadataModel
+    public class PackageExtensionModel : IHasStereotypes, IMetadataModel
     {
-        public new const string SpecializationType = "Package Extension";
+        public const string SpecializationType = "Package Extension";
+        protected readonly IElement _element;
 
-        public PackageExtensionModel(IElement element) : base(element, SpecializationType)
+        public PackageExtensionModel(IElement element, string requiredType = SpecializationType)
         {
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+            }
+            _element = element;
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public string Id => _element.Id;
+
+        [IntentManaged(Mode.Fully)]
+        public string Name => _element.Name;
+
+        [IntentManaged(Mode.Fully)]
+        public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        [IntentManaged(Mode.Fully)]
+        public ITypeReference TypeReference => _element.TypeReference;
+
+        [IntentManaged(Mode.Fully)]
+        public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public ContextMenuModel MenuOptions => _element.ChildElements
+            .Where(x => x.SpecializationType == ContextMenuModel.SpecializationType)
+            .Select(x => new ContextMenuModel(x))
+            .SingleOrDefault();
+
+        public PackageSettingsExtensionPersistable ToPersistable()
+        {
+            return new PackageSettingsExtensionPersistable
+            {
+                SpecializationTypeId = Id,
+                SpecializationType = Name,
+                CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
+                    .Concat(MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
+                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
+                    .ToList(),
+                TypeOrder = MenuOptions?.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList(),
+                RequiredPackages = new string[0],
+            };
         }
 
         [IntentManaged(Mode.Fully)]

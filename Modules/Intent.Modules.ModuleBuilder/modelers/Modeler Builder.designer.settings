@@ -318,7 +318,7 @@
       <allowSetValue>false</allowSetValue>
       <childElementSettings />
     </elementSetting>
-    <elementSetting type="Designer" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
+    <elementSetting type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
       <icon type="CharacterBox" source="D|#00ffc8" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
@@ -331,9 +331,11 @@
       <allowConvertToType d5p1:nil="true" xmlns:d5p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type>Element Settings</type>
-        <type>Association Settings</type>
         <type>Package Settings</type>
+        <type>Package Extension</type>
+        <type>Element Settings</type>
+        <type>Element Extension</type>
+        <type>Association Settings</type>
         <type>Core Type</type>
         <type>Script</type>
       </typeOrder>
@@ -345,6 +347,15 @@
           <shortcut>ctrl + shift + e</shortcut>
           <defaultName>NewElementType</defaultName>
           <icon type="CharacterBox" source="E|#095c00" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Element Extension</specializationType>
+          <specializationTypeId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</specializationTypeId>
+          <text>New Element Extension</text>
+          <shortcut>ctrl + shift + x</shortcut>
+          <defaultName>NewElementExtension</defaultName>
+          <icon type="CharacterBox" source="X|#095c00" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
@@ -362,6 +373,15 @@
           <shortcut>ctrl + shift + p</shortcut>
           <defaultName>Package</defaultName>
           <icon type="CharacterBox" source="P|#7d7d7d" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Package Extension</specializationType>
+          <specializationTypeId>ab4152df-3add-4a08-81b6-0fefc7cbb204</specializationTypeId>
+          <text>New Package Extension</text>
+          <shortcut>ctrl + shift + p</shortcut>
+          <defaultName>Package Settings</defaultName>
+          <icon type="CharacterBox" source="X|#7d7d7d" />
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
@@ -481,7 +501,7 @@
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type>Designer Extension</type>
-        <type>Designer</type>
+        <type>Designer Settings</type>
       </typeOrder>
       <creationOptions>
         <option type="element">

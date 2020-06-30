@@ -8,15 +8,15 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public static class DesignerExtensionModelExtensions
+    public static class DesignerSettingsModelExtensions
     {
-        public static DesignerSettings GetDesignerSettings(this DesignerExtensionModel model)
+        public static DesignerSettings GetDesignerSettings(this DesignerSettingsModel model)
         {
             var stereotype = model.GetStereotype("Designer Settings");
             return stereotype != null ? new DesignerSettings(stereotype) : null;
         }
 
-        public static bool HasDesignerSettings(this DesignerExtensionModel model)
+        public static bool HasDesignerSettings(this DesignerSettingsModel model)
         {
             return model.HasStereotype("Designer Settings");
         }
@@ -32,16 +32,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             }
 
             public string Name => _stereotype.Name;
-
-            public IIconModel Icon()
-            {
-                return _stereotype.GetProperty<IIconModel>("Icon");
-            }
-
-            public int? DisplayOrder()
-            {
-                return _stereotype.GetProperty<int?>("Display Order");
-            }
 
             public bool IsReference()
             {

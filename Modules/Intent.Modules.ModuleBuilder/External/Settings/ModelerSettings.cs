@@ -21,20 +21,22 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("packageSetting")]
         public List<PackageSettingsPersistable> PackageSettings { get; set; } = new List<PackageSettingsPersistable>();
 
+        [XmlArray("packageExtensions")]
+        [XmlArrayItem("packageExtension")]
+        public List<PackageSettingsExtensionPersistable> PackageExtensions { get; set; } = new List<PackageSettingsExtensionPersistable>();
+
         [XmlArray("elementSettings")]
         [XmlArrayItem("elementSetting")]
-        public List<ElementSettingPersistable> ElementSettings { get; set; }
-
-        [XmlArray("associationSettings")]
-        [XmlArrayItem("associationSetting")]
-        public List<AssociationSettingsPersistable> AssociationSettings { get; set; }
+        public List<ElementSettingPersistable> ElementSettings { get; set; } = new List<ElementSettingPersistable>();
 
         [XmlArray("elementExtensions")]
         [XmlArrayItem("elementExtension")]
-        public List<ElementSettingExtensionPersistable> ElementExtensions { get; set; }
+        public List<ElementSettingExtensionPersistable> ElementExtensions { get; set; } = new List<ElementSettingExtensionPersistable>();
 
-        [XmlElement("stereotypeSettings")]
-        public StereotypeSettingsPersistable StereotypeSettings { get; set; }
+        [XmlArray("associationSettings")]
+        [XmlArrayItem("associationSetting")]
+        public List<AssociationSettingsPersistable> AssociationSettings { get; set; } = new List<AssociationSettingsPersistable>();
+
     }
 
     public class StereotypeSettingsPersistable
@@ -163,12 +165,33 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         private void UpdateTypesOrdering()
         {
-            _typeOrder = TypeOrder.Select((x, index) => new TypeOrderPersistable()
+            _typeOrder = _typeOrder.Select((x, index) => new TypeOrderPersistable()
             {
                 Type = x.Type,
                 Order = !string.IsNullOrWhiteSpace(x.Order) ? x.Order : index.ToString()
             }).OrderBy(x => int.Parse(x.Order)).ThenBy(x => x.Type).ToList();
         }
+    }
+
+    public class PackageSettingsExtensionPersistable
+    {
+        [XmlAttribute("type")]
+        public string SpecializationType { get; set; }
+
+        [XmlAttribute("typeId")]
+        public string SpecializationTypeId { get; set; }
+
+        [XmlArray("requiredPackages")]
+        [XmlArrayItem("package")]
+        public string[] RequiredPackages { get; set; } = new string[0];
+
+        [XmlArray("creationOptions")]
+        [XmlArrayItem("option")]
+        public List<ElementCreationOption> CreationOptions { get; set; }
+
+        [XmlArray("typeOrder")]
+        [XmlArrayItem("type")]
+        public List<TypeOrderPersistable> TypeOrder { get; set; }
     }
 
     public class ElementCreationOption

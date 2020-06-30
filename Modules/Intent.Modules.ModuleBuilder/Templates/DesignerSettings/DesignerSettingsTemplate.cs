@@ -16,11 +16,11 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
 {
-    public class DesignerSettingsTemplate : IntentProjectItemTemplateBase<DesignerModel>
+    public class DesignerSettingsTemplate : IntentProjectItemTemplateBase<DesignerSettingsModel>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ModelerConfig";
 
-        public DesignerSettingsTemplate(IProject project, DesignerModel model) : base(TemplateId, project, model)
+        public DesignerSettingsTemplate(IProject project, DesignerSettingsModel model) : base(TemplateId, project, model)
         {
         }
 
@@ -36,21 +36,22 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
 
         public override string TransformText()
         {
-            var modelerSettings = new DesignerSettingsPersistable();
-
-            //modelerSettings.PackageSettings = Model.PackageSettings?.ToPersistable() ?? (Model as DesignerExtensionModel)?.PackageExtension?.ToPersistable();
-            //modelerSettings.PackageSettings = Model.PackageSettings
-            modelerSettings.ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
-            modelerSettings.AssociationSettings = Model.AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
-            modelerSettings.ElementExtensions = (Model as DesignerExtensionModel)?.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList();
-
-            modelerSettings.StereotypeSettings = GetStereotypeSettings(Model);
+            var modelerSettings = new DesignerSettingsPersistable
+            {
+                Id = Model.Id,
+                Name = Model.Name,
+                PackageSettings = Model.PackageTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                PackageExtensions = Model.PackageExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                ElementExtensions = Model.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                AssociationSettings = Model.AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+            };
 
             return Serialize(modelerSettings);
         }
 
 
-        private StereotypeSettingsPersistable GetStereotypeSettings(DesignerModel model)
+        private StereotypeSettingsPersistable GetStereotypeSettings(DesignerSettingsModel model)
         {
             var targetTypes = model.ElementTypes.Select(x => x.Name)
                 .Concat(model.ElementTypes.SelectMany(x => x.ElementSettings).Select(x => x.Name))

@@ -10,12 +10,12 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DesignerModel : IHasStereotypes, IMetadataModel
+    public class PackageEventSettingsModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Designer";
+        public const string SpecializationType = "Package Event Settings";
         protected readonly IElement _element;
 
-        public DesignerModel(IElement element, string requiredType = SpecializationType)
+        public PackageEventSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -37,13 +37,25 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IElement InternalElement => _element;
 
         [IntentManaged(Mode.Fully)]
+        public IList<ElementEventHandlerModel> OnLoadedEvents => _element.ChildElements
+            .Where(x => x.SpecializationType == ElementEventHandlerModel.SpecializationType)
+            .Select(x => new ElementEventHandlerModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<ElementEventHandlerModel> OnCreatedEvents => _element.ChildElements
+            .Where(x => x.SpecializationType == ElementEventHandlerModel.SpecializationType)
+            .Select(x => new ElementEventHandlerModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
             return _element.ToString();
         }
 
         [IntentManaged(Mode.Fully)]
-        public bool Equals(DesignerModel other)
+        public bool Equals(PackageEventSettingsModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -54,7 +66,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DesignerModel)obj);
+            return Equals((PackageEventSettingsModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]

@@ -64,6 +64,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DesignerSettingsModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/DesignerSettingsModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DesignersFolderModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/DesignersFolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -76,6 +81,11 @@
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementCreationOptionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/ElementCreationOptionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementEventHandlerModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ElementEventHandlerModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
@@ -144,13 +154,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\DesignerExtensionModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/DesignerExtensionModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\DesignerModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/DesignerModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\DesignerModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/DesignerModelExtensions.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\DesignerSettingsModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/DesignerSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
@@ -219,6 +229,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageEventSettingsModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/PackageEventSettingsModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageExtensionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/PackageExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -279,13 +294,28 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Modeler Builder.modeler.extension.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Modeler Builder.modeler.extension.config</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Intent.designer.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Intent.designer.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Module Builder.modeler.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Module Builder.modeler.config</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Modeler Builder.designer.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Modeler Builder.designer.config</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Modeler Builder.designer.settings</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Modeler Builder.designer.settings</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Module Builder.designer.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Module Builder.designer.config</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Module Builder.designer.settings</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Module Builder.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>

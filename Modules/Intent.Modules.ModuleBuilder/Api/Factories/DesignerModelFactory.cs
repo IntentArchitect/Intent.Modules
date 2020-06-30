@@ -9,12 +9,12 @@ namespace Intent.Modules.ModuleBuilder.Api.Factories
 {
     public class DesignerModelFactory
     {
-        public static DesignerModel Create(IElement element)
+        public static DesignerSettingsModel Create(IElement element)
         {
             switch (element.SpecializationType)
             {
-                case DesignerModel.SpecializationType:
-                    return new DesignerModel(element);
+                case DesignerSettingsModel.SpecializationType:
+                    return new DesignerSettingsModel(element);
                 case DesignerExtensionModel.SpecializationType:
                     return new DesignerExtensionModel(element);
                 default:
@@ -22,10 +22,10 @@ namespace Intent.Modules.ModuleBuilder.Api.Factories
             }
         }
 
-        public static DesignerModel GetDesigner(IElement forElement)
+        public static DesignerSettingsModel GetDesigner(IElement forElement)
         {
             var designerElement = forElement.GetParentPath()
-                .Single(x => x.SpecializationType == Api.DesignerModel.SpecializationType || x.SpecializationType == Api.DesignerExtensionModel.SpecializationType);
+                .Single(x => x.SpecializationType == Api.DesignerSettingsModel.SpecializationType || x.SpecializationType == Api.DesignerExtensionModel.SpecializationType);
             return Create(designerElement);
         }
     }

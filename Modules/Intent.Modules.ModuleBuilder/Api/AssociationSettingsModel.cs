@@ -40,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public DesignerModel Designer => DesignerModelFactory.GetDesigner(_element);
+        public DesignerSettingsModel Designer => DesignerModelFactory.GetDesigner(_element);
 
         [IntentManaged(Mode.Fully)]
         public AssociationSourceEndSettingsModel SourceEnd => _element.ChildElements

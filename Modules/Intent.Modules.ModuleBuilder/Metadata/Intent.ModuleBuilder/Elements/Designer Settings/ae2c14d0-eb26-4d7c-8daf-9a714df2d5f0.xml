@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ae2c14d0-eb26-4d7c-8daf-9a714df2d5f0" type="Designer" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
+<class id="ae2c14d0-eb26-4d7c-8daf-9a714df2d5f0" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
   <name>Intent</name>
   <display>Intent</display>
   <isAbstract>false</isAbstract>
@@ -10,8 +10,6 @@
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="bd56e4e2-b75c-4400-8088-a1a3f21988f0" display="Icon" value="{&quot;source&quot;:&quot;file&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
-        <property name="f577290d-ea2e-4609-8c90-7fd7bcf327d9" display="Display Order" isActive="true" />
         <property name="c3f89951-374a-4bb5-bcf7-10a8f208f317" display="Is Reference" value="true" isActive="true" />
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Metadata.Models" isActive="true" />
         <property name="6f3c57c5-c50d-46bb-b690-2cf081ceb0b3" display="NuGet Package Id" isActive="true" />

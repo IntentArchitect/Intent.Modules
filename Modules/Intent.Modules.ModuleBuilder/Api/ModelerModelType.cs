@@ -25,6 +25,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public string Id => _element.Id;
         public string ClassName => $"{_element.Name.ToCSharpIdentifier()}Model";
-        public DesignerModel Designer => DesignerModelFactory.GetDesigner(forElement: this._element);
+        public DesignerSettingsModel Designer => DesignerModelFactory.GetDesigner(forElement: this._element);
     }
 }

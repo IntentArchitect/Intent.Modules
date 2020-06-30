@@ -37,6 +37,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return new ApiMetadataProvider(metadataManager).GetDesignerExtensionModels(application);
         }
 
+        public static IList<DesignerSettingsModel> GetDesignerSettingsModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetDesignerSettingsModels(application);
+        }
+
         public static IList<DesignersFolderModel> GetDesignersFolderModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetDesignersFolderModels(application);

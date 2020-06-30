@@ -57,7 +57,8 @@ namespace Intent.Modules.ModuleBuilder.Api
                     .Concat(MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
                     .ToList(),
-                TypeOrder = MenuOptions?.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList()
+                TypeOrder = MenuOptions?.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList(),
+                RequiredPackages = new string[0],
             };
         }
 
@@ -90,6 +91,12 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<PackageEventSettingsModel> EventSettings => _element.ChildElements
+            .Where(x => x.SpecializationType == PackageEventSettingsModel.SpecializationType)
+            .Select(x => new PackageEventSettingsModel(x))
+            .ToList();
 
 
     }

@@ -12,7 +12,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class DesignerSettingsTemplateRegistration : ModelTemplateRegistrationBase<DesignerModel>
+    public class DesignerSettingsTemplateRegistration : ModelTemplateRegistrationBase<DesignerSettingsModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -23,16 +23,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
 
         public override string TemplateId => DesignerSettingsTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, DesignerModel model)
+        public override ITemplate CreateTemplateInstance(IProject project, DesignerSettingsModel model)
         {
             return new DesignerSettingsTemplate(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<DesignerModel> GetModels(IApplication application)
+        public override IEnumerable<DesignerSettingsModel> GetModels(IApplication application)
         {
             var modelers = _metadataManager
-                .GetDesignerModels(application)
+                .GetDesignerSettingsModels(application)
                 .Concat(_metadataManager.GetDesignerExtensionModels(application))
                 .Where(x => !x.GetDesignerSettings().IsReference())
                 .ToList();

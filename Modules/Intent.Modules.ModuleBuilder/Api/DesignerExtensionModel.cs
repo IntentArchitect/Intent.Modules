@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DesignerExtensionModel : DesignerModel, IHasStereotypes, IMetadataModel
+    public class DesignerExtensionModel : DesignerSettingsModel, IHasStereotypes, IMetadataModel
     {
         public new const string SpecializationType = "Designer Extension";
 
@@ -44,12 +44,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-        [IntentManaged(Mode.Fully)]
-        public IList<ElementExtensionModel> ElementExtensions => _element.ChildElements
-            .Where(x => x.SpecializationType == ElementExtensionModel.SpecializationType)
-            .Select(x => new ElementExtensionModel(x))
-            .ToList();
-
         public ITypeReference TypeReference => _element.TypeReference;
 
         [IntentManaged(Mode.Fully)]
@@ -57,11 +51,5 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return _element.ToString();
         }
-
-        [IntentManaged(Mode.Fully)]
-        public PackageExtensionModel PackageExtension => _element.ChildElements
-            .Where(x => x.SpecializationType == PackageExtensionModel.SpecializationType)
-            .Select(x => new PackageExtensionModel(x))
-            .SingleOrDefault();
     }
 }

@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b" type="Designer Extension" typeId="a747162d-696b-49ed-9075-b5da8d852e15">
+<class id="3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
   <name>Modeler Builder</name>
-  <display>Modeler Builder: Module Builder</display>
+  <display>Modeler Builder</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="e576cd0a-b12d-42d3-87c9-c455b31e883b">
-    <typeId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</typeId>
-    <isNavigable>true</isNavigable>
-    <isNullable>false</isNullable>
-    <isCollection>false</isCollection>
-    <stereotypes />
-    <genericTypeParameters />
-  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>2231f80d-9ec2-475e-bd7a-473f0b419c9e</parentFolderId>
   <stereotypes>
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="bd56e4e2-b75c-4400-8088-a1a3f21988f0" display="Icon" value="{&quot;source&quot;:&quot;question-circle&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
-        <property name="f577290d-ea2e-4609-8c90-7fd7bcf327d9" display="Display Order" isActive="true" />
         <property name="c3f89951-374a-4bb5-bcf7-10a8f208f317" display="Is Reference" value="false" isActive="true" />
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Modules.ModuleBuilder.Api" isActive="true" />
         <property name="6f3c57c5-c50d-46bb-b690-2cf081ceb0b3" display="NuGet Package Id" isActive="true" />
