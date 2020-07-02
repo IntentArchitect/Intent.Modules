@@ -198,6 +198,15 @@
           <icon type="CharacterBox" source="C|#04007a" />
           <allowMultiple>true</allowMultiple>
         </option>
+        <option type="stereotype-definition">
+          <specializationType>Stereotype-Definition</specializationType>
+          <specializationTypeId>Stereotype-Definition</specializationTypeId>
+          <text>New Stereotype-Definition</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>NewStereotypeDefinition</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <typeOrder>
         <type>File Template</type>

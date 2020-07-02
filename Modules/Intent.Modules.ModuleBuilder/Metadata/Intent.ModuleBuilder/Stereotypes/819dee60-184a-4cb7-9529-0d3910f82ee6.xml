@@ -10,7 +10,7 @@
   <displayIcon>false</displayIcon>
   <displayFunction>return `[.${this.properties['File Extension'].value}]`;</displayFunction>
   <autoAdd>false</autoAdd>
-  <parentFolderId>bc39b8bc-6c2c-4724-bf5c-09bb439e0f26</parentFolderId>
+  <parentFolderId>7f6c3c9b-b131-41a6-bddc-fc644cab7852</parentFolderId>
   <order>0</order>
   <properties>
     <property id="329d0550-b81b-4db6-a99b-05d90360d432">

@@ -60,8 +60,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return new ElementSettingExtensionPersistable()
             {
                 SpecializationType = TypeReference.Element.Name,
-                SpecializationTypeId = TypeReference.Element.Id, 
-                CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable()).ToList(),
+                SpecializationTypeId = TypeReference.Element.Id,
+                CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
+                    .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
+                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
+                    .ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
                 MappingSettings = MappingSettings?.ToPersistable()
             };

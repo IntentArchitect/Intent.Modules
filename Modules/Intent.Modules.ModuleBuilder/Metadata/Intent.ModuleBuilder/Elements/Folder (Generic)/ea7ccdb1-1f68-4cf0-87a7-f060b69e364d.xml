@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ea7ccdb1-1f68-4cf0-87a7-f060b69e364d" type="Folder (Generic)" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Designer</name>
+  <display>Designer</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>7f6c3c9b-b131-41a6-bddc-fc644cab7852</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>
