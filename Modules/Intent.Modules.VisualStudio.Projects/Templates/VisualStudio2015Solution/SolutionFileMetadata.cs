@@ -38,7 +38,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
             return Path.GetFullPath(_fileLocation).Replace(@"\", "/");
         }
 
-
         public string GetRelativeFilePath()
         {
             throw new NotImplementedException();
