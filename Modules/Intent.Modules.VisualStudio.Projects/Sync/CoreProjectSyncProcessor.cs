@@ -294,53 +294,56 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             }
 
             var itemElement = GetFileItem(linkSource ?? relativeFileName);
-            if (implicitlyPresent)
+            if (itemElement?.Attribute("IntentIgnore")?.Value.ToLower() != "true")
             {
-                itemElement?.Remove();
-                return;
-            }
-
-            if (itemElement == null)
-            {
-                var targetElement = GetOrCreateItemGroupFor(itemType);
-                targetElement.Add(
-                    Environment.NewLine,
-                    "    ",
-                    itemElement = new XElement(XName.Get(itemType, _namespace.NamespaceName)),
-                    Environment.NewLine,
-                    "  ");
-            }
-
-            if (itemElement.Name.LocalName != itemType)
-            {
-                itemElement.Name = XName.Get(itemType, itemElement.Name.NamespaceName);
-            }
-
-            itemElement.SetAttributeValue(XName.Get("Update", _namespace.NamespaceName), linkSource == null ? relativeFileName : null);
-            itemElement.SetAttributeValue(XName.Get("Link", _namespace.NamespaceName), linkSource != null ? relativeFileName : null);
-            itemElement.SetAttributeValue(XName.Get("Include", _namespace.NamespaceName), linkSource);
-
-            var subelementWasAdded = false;
-            foreach (var item in metadata)
-            {
-                var subElement = itemElement.Elements().SingleOrDefault(x => x.Name == XName.Get(item.Key, _namespace.NamespaceName));
-                if (subElement == null)
+                if (implicitlyPresent)
                 {
-                    subelementWasAdded = true;
-                    itemElement.Add(
-                        Environment.NewLine,
-                        "      ",
-                        subElement = new XElement(XName.Get(item.Key, _namespace.NamespaceName)));
+                    itemElement?.Remove();
+                    return;
                 }
 
-                subElement.Value = item.Value;
-            }
+                if (itemElement == null)
+                {
+                    var targetElement = GetOrCreateItemGroupFor(itemType);
+                    targetElement.Add(
+                        Environment.NewLine,
+                        "    ",
+                        itemElement = new XElement(XName.Get(itemType, _namespace.NamespaceName)),
+                        Environment.NewLine,
+                        "  ");
+                }
 
-            if (subelementWasAdded)
-            {
-                itemElement.Add(
-                    Environment.NewLine,
-                    "    ");
+                if (itemElement.Name.LocalName != itemType)
+                {
+                    itemElement.Name = XName.Get(itemType, itemElement.Name.NamespaceName);
+                }
+
+                itemElement.SetAttributeValue(XName.Get("Update", _namespace.NamespaceName), linkSource == null ? relativeFileName : null);
+                itemElement.SetAttributeValue(XName.Get("Link", _namespace.NamespaceName), linkSource != null ? relativeFileName : null);
+                itemElement.SetAttributeValue(XName.Get("Include", _namespace.NamespaceName), linkSource);
+
+                var subelementWasAdded = false;
+                foreach (var item in metadata)
+                {
+                    var subElement = itemElement.Elements().SingleOrDefault(x => x.Name == XName.Get(item.Key, _namespace.NamespaceName));
+                    if (subElement == null)
+                    {
+                        subelementWasAdded = true;
+                        itemElement.Add(
+                            Environment.NewLine,
+                            "      ",
+                            subElement = new XElement(XName.Get(item.Key, _namespace.NamespaceName)));
+                    }
+
+                    subElement.Value = item.Value;
+                }
+
+                if (subelementWasAdded)
+                {
+                    itemElement.Add(
+                        Environment.NewLine,
+                        "    ");
+                }
             }
         }
 

@@ -27,14 +27,17 @@ namespace Intent.Modules.Entities.DDD.Decorators
             var sb = new StringBuilder();
             sb.AppendLine($"        [IntentInitialGen]");
             sb.Append($"        public {@class.Name}(");
-            foreach (var attribute in @class.Attributes)
-            {
-                sb.Append($"{Template.Types.Get(attribute.Type)} {attribute.Name.ToCamelCase()}{(associatedClass.Any() || attribute != @class.Attributes.Last() ? ", " : "")}");
-            }
-            foreach (var associationEnd in associatedClass)
-            {
-                sb.Append($"{Template.NormalizeNamespace(Template.Types.Get(associationEnd))} {associationEnd.Name().ToCamelCase()}{(associationEnd != associatedClass.Last() ? ", " : "")}");
-            }
+            sb.Append($"{string.Join(", ", @class.Attributes.Select(x => Template.GetTypeName(x.Type)+ " " + x.Name.ToCamelCase()))}");
+            sb.Append($"{(@class.Attributes.Any() && associatedClass.Any() ? ", " : "")}");
+            sb.Append($"{string.Join(", ", associatedClass.Select(x => Template.GetTypeName(x)+ " " + x.Name().ToCamelCase()))}");
+            //foreach (var attribute in @class.Attributes)
+            //{
+            //    sb.Append($"{Template.Types.Get(attribute.Type)} {attribute.Name.ToCamelCase()}{(associatedClass.Any() || attribute != @class.Attributes.Last() ? ", " : "")}");
+            //}
+            //foreach (var associationEnd in associatedClass)
+            //{
+            //    sb.Append($"{Template.NormalizeNamespace(Template.Types.Get(associationEnd))} {associationEnd.Name().ToCamelCase()}{(associationEnd != associatedClass.Last() ? ", " : "")}");
+            //}
             sb.Append(")");
             sb.AppendLine("        {");
             foreach (var attribute in @class.Attributes)

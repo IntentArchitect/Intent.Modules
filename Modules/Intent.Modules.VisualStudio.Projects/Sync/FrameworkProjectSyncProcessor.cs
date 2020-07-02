@@ -471,7 +471,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 }
                 codeItems.Add(item);
             }
-            else
+            else if (projectItem.Attribute("IntentIgnore")?.Value.ToLower() != "true")
             {
                 if (projectItem.Name.LocalName != itemType)
                 {
