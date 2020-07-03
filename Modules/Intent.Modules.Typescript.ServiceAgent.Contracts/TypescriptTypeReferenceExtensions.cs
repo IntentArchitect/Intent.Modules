@@ -3,10 +3,10 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
-using Intent.Modules.Constants;
 using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
 using Intent.Engine;
 using Intent.Modelers.Services.Api;
+using Intent.Modules.Constants;
 using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts
