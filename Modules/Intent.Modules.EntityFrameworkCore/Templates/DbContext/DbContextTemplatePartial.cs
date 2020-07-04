@@ -95,6 +95,24 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
             return _decorators;
         }
 
+        public string DeclareUsings()
+        {
+            return string.Join(Environment.NewLine, GetDecorators().SelectMany(x => x.DeclareUsings()).Select(s => $"using {s};"));
+        }
+
+        public string GetMethods()
+        {
+            var code = string.Join(Environment.NewLine + Environment.NewLine,
+                GetDecorators()
+                    .SelectMany(s => s.GetMethods())
+                    .Where(p => !string.IsNullOrEmpty(p)));
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                return string.Empty;
+            }
+            return Environment.NewLine + Environment.NewLine + code;
+        }
+
         public string GetBaseClass()
         {
             try

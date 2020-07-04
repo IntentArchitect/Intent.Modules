@@ -15,6 +15,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
         public WebApiFilterTemplate(string templateId, IProject project) 
             : base(templateId, project, null)
         {
+            AddAssemblyReference(new GacAssemblyReference("System.Net.Http"));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
@@ -42,14 +43,6 @@ namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
                 className: "ExceptionHandlerFilter",
                 @namespace: "${Project.ProjectName}.Filters"
             );
-        }
-
-        public IEnumerable<IAssemblyReference> GetAssemblyDependencies()
-        {
-            return new[]
-            {
-                new GacAssemblyReference("System.Net.Http"),
-            };
         }
     }
 }

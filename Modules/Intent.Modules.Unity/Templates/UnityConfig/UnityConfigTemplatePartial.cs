@@ -111,6 +111,14 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
             return _decorators;
         }
 
+        public string GetUsingsFromDecorators()
+        {
+            return string.Join(Environment.NewLine, _decorators
+                .SelectMany(s => s.DeclareUsings())
+                .Distinct()
+                .Select(s => $"using {s};"));
+        }
+
         private void Handle(ApplicationEvent @event)
         {
             _registrations.Add(new ContainerRegistration(

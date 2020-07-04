@@ -21,6 +21,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 <#=DependencyUsings#>
+<#=DeclareUsings()#>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

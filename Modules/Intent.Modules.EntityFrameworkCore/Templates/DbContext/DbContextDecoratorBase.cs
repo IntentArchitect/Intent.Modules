@@ -9,6 +9,8 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
 
         public virtual IEnumerable<string> DeclareUsings() { return new List<string>(); }
 
+        public virtual IEnumerable<string> GetMethods() { return new List<string>(); }
+
         public int Priority { get; set; } = 0;
     }
 }

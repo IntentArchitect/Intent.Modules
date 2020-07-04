@@ -32,11 +32,18 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
         /// </summary>
         public override string TransformText()
         {
-            this.Write(" \r\n\r\nusing System.Data.Entity;\r\nusing System.Data.Entity.ModelConfiguration.Conve" +
-                    "ntions;\r\n");
+            this.Write(" \r\nusing System.Data.Entity;\r\nusing System.Data.Entity.ModelConfiguration.Convent" +
+                    "ions;\r\n");
+            
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
+            this.Write(this.ToStringHelper.ToStringWithCulture(DeclareUsings()));
             
             #line default
             #line hidden
@@ -113,7 +120,14 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             
             #line default
             #line hidden
-            this.Write("\");\r\n        }\r\n    }\r\n}");
+            this.Write("\");\r\n        }");
+            
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbContext\DbContextTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetMethods()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
