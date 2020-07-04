@@ -118,5 +118,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
+        public const string SpecializationTypeId = "5eea5fba-15df-4971-8541-6f19bad4297d";
     }
 }

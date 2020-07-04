@@ -12,8 +12,6 @@ namespace Intent.Modules.ModuleBuilder.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class DesignerExtensionModel : DesignerSettingsModel, IHasStereotypes, IMetadataModel
     {
-        public new const string SpecializationType = "Designer Extension";
-
         public DesignerExtensionModel(IElement element) : base(element, SpecializationType)
         {
         }
@@ -51,5 +49,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return _element.ToString();
         }
+        public new const string SpecializationType = "Designer Extension";
+        public new const string SpecializationTypeId = "a747162d-696b-49ed-9075-b5da8d852e15";
     }
 }

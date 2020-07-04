@@ -14,8 +14,6 @@ namespace Intent.Modules.ModuleBuilder.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class ElementEventHandlerModel : ScriptModel, IHasStereotypes, IMetadataModel
     {
-        public new const string SpecializationType = "Element Event Handler";
-
         public ElementEventHandlerModel(IElement element) : base(element, SpecializationType)
         {
         }
@@ -55,5 +53,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 Script = Script
             };
         }
+        public new const string SpecializationType = "Element Event Handler";
+        public new const string SpecializationTypeId = "0ef412e3-d15a-45d3-bcd3-f646165f2eb6";
     }
 }

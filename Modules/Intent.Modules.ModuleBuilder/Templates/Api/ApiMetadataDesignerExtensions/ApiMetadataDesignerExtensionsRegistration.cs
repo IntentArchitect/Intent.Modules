@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensio
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IList<DesignerModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetDesignerModels(application).ToList();
+            return _metadataManager.ModuleBuilder(application).GetDesignerModels();
         }
     }
 }

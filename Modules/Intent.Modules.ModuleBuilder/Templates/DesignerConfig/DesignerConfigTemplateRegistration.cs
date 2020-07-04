@@ -32,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
         public override IEnumerable<DesignerModel> GetModels(IApplication application)
         {
             var modelers = _metadataManager
-                .GetDesignerModels(application)
+                .ModuleBuilder(application).GetDesignerModels()
                 .ToList();
 
             return modelers;

@@ -19,9 +19,9 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class <#= ClassName #> : <#= BaseType != null ? (BaseType + ", ") : "" #>IHasStereotypes, IMetadataModel
     {
+        public <#= BaseType != null ? "new " : "" #>const string SpecializationType = "<#= Model.Name #>";
+        public <#= BaseType != null ? "new " : "" #>const string SpecializationTypeId = "<#= Model.Id #>";
 <#  if (BaseType == null) { #>
-        public const string SpecializationType = "<#= Model.Name #>";
-        public const string SpecializationTypeId = "<#= Model.Id #>";
         protected readonly IElement _element;
 
         [IntentInitialGen]
@@ -61,7 +61,6 @@ namespace <#= Namespace #>
         public IElement InternalElement => _element;
 
 <#  } else { #>
-        public new const string SpecializationType = "<#= Model.Name #>";
 
         public <#= ClassName #>(IElement element) : base(element, SpecializationType)
         {

@@ -19,14 +19,6 @@ namespace <#= Namespace #>
     public static class <#= ClassName #>
     {
 <#  foreach(var elementSettings in Model) { #>
-        public static IList<<#= GetClassName(elementSettings) #>> Get<#= GetClassName(elementSettings).ToPluralName() #>(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new <#= MetadataProviderClassName #>(metadataManager).Get<#= GetClassName(elementSettings).ToPluralName() #>(application);
-        }
-
-<#  } #>
-
-<#  foreach(var elementSettings in Model) { #>
         public static IList<<#= GetClassName(elementSettings) #>> Get<#= GetClassName(elementSettings).ToPluralName() #>(this IDesigner designer)
         {
             return designer.GetElementsOfType(<#= GetClassName(elementSettings) #>.SpecializationTypeId)

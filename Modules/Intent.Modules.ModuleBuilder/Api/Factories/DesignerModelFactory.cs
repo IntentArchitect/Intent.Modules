@@ -15,8 +15,6 @@ namespace Intent.Modules.ModuleBuilder.Api.Factories
             {
                 case DesignerSettingsModel.SpecializationType:
                     return new DesignerSettingsModel(element);
-                case DesignerExtensionModel.SpecializationType:
-                    return new DesignerExtensionModel(element);
                 default:
                     throw new ArgumentOutOfRangeException();
             }

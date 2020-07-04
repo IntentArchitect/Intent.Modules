@@ -81,5 +81,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             // TODO: The OnCreatedEvents & OnLoadedEvents returns all ElementMacroModels. Need solution
             return OnCreatedEvents.Select(x => x.ToPersistable()).ToList();
         }
+        public const string SpecializationTypeId = "3c628ab0-2407-4fb0-8507-ddde986cff2e";
     }
 }

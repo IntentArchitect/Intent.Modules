@@ -12,94 +12,109 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<AssociationSettingsModel> GetAssociationSettingsModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<AssociationSettingsModel> GetAssociationSettingsModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetAssociationSettingsModels(application);
+            return designer.GetElementsOfType(AssociationSettingsModel.SpecializationTypeId)
+                .Select(x => new AssociationSettingsModel(x))
+                .ToList();
         }
 
-        public static IList<CoreTypeModel> GetCoreTypeModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<CoreTypeModel> GetCoreTypeModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetCoreTypeModels(application);
+            return designer.GetElementsOfType(CoreTypeModel.SpecializationTypeId)
+                .Select(x => new CoreTypeModel(x))
+                .ToList();
         }
 
-        public static IList<DecoratorModel> GetDecoratorModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<DecoratorModel> GetDecoratorModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetDecoratorModels(application);
-        }
-
-        public static IList<DesignerModel> GetDesignerModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetDesignerModels(application);
-        }
-
-        public static IDesigner ModuleBuilder(this IMetadataManager metadataManager, IApplication application)
-        {
-            return metadataManager.GetDesigner(application.Id, "Module Builder");
+            return designer.GetElementsOfType(DecoratorModel.SpecializationTypeId)
+                .Select(x => new DecoratorModel(x))
+                .ToList();
         }
 
         public static IList<DesignerModel> GetDesignerModels(this IDesigner designer)
         {
-            return designer.GetElementsOfType(DesignerModel.SpecializationType)
+            return designer.GetElementsOfType(DesignerModel.SpecializationTypeId)
                 .Select(x => new DesignerModel(x))
                 .ToList();
         }
 
-        // _metadataManager.ModuleBuilder(application).GetDesignerModels();
-        // _metadataManager.Domain(application).GetClassModels();
-
-        public static IList<DesignerExtensionModel> GetDesignerExtensionModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<DesignerExtensionModel> GetDesignerExtensionModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetDesignerExtensionModels(application);
+            return designer.GetElementsOfType(DesignerExtensionModel.SpecializationTypeId)
+                .Select(x => new DesignerExtensionModel(x))
+                .ToList();
         }
 
-        public static IList<DesignerSettingsModel> GetDesignerSettingsModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<DesignerSettingsModel> GetDesignerSettingsModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetDesignerSettingsModels(application);
+            return designer.GetElementsOfType(DesignerSettingsModel.SpecializationTypeId)
+                .Select(x => new DesignerSettingsModel(x))
+                .ToList();
         }
 
-        public static IList<DesignersFolderModel> GetDesignersFolderModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<DesignersFolderModel> GetDesignersFolderModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetDesignersFolderModels(application);
+            return designer.GetElementsOfType(DesignersFolderModel.SpecializationTypeId)
+                .Select(x => new DesignersFolderModel(x))
+                .ToList();
         }
 
-        public static IList<DiagramSettingsModel> GetDiagramSettingsModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<DiagramSettingsModel> GetDiagramSettingsModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetDiagramSettingsModels(application);
+            return designer.GetElementsOfType(DiagramSettingsModel.SpecializationTypeId)
+                .Select(x => new DiagramSettingsModel(x))
+                .ToList();
         }
 
-        public static IList<ElementExtensionModel> GetElementExtensionModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ElementExtensionModel> GetElementExtensionModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetElementExtensionModels(application);
+            return designer.GetElementsOfType(ElementExtensionModel.SpecializationTypeId)
+                .Select(x => new ElementExtensionModel(x))
+                .ToList();
         }
 
-        public static IList<ElementSettingsModel> GetElementSettingsModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ElementSettingsModel> GetElementSettingsModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetElementSettingsModels(application);
+            return designer.GetElementsOfType(ElementSettingsModel.SpecializationTypeId)
+                .Select(x => new ElementSettingsModel(x))
+                .ToList();
         }
 
-        public static IList<FileTemplateModel> GetFileTemplateModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FileTemplateModel> GetFileTemplateModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetFileTemplateModels(application);
+            return designer.GetElementsOfType(FileTemplateModel.SpecializationTypeId)
+                .Select(x => new FileTemplateModel(x))
+                .ToList();
         }
 
-        public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FolderModel> GetFolderModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
+            return designer.GetElementsOfType(FolderModel.SpecializationTypeId)
+                .Select(x => new FolderModel(x))
+                .ToList();
         }
 
-        public static IList<PackageExtensionModel> GetPackageExtensionModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<PackageExtensionModel> GetPackageExtensionModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetPackageExtensionModels(application);
+            return designer.GetElementsOfType(PackageExtensionModel.SpecializationTypeId)
+                .Select(x => new PackageExtensionModel(x))
+                .ToList();
         }
 
-        public static IList<ScriptModel> GetScriptModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ScriptModel> GetScriptModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetScriptModels(application);
+            return designer.GetElementsOfType(ScriptModel.SpecializationTypeId)
+                .Select(x => new ScriptModel(x))
+                .ToList();
         }
 
-        public static IList<TemplateRegistrationModel> GetTemplateRegistrationModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<TemplateRegistrationModel> GetTemplateRegistrationModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetTemplateRegistrationModels(application);
+            return designer.GetElementsOfType(TemplateRegistrationModel.SpecializationTypeId)
+                .Select(x => new TemplateRegistrationModel(x))
+                .ToList();
         }
 
     }

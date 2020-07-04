@@ -174,5 +174,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == ElementEventSettingsModel.SpecializationType)
             .Select(x => new ElementEventSettingsModel(x))
             .SingleOrDefault();
+        public const string SpecializationTypeId = "727577aa-3e07-4b41-be7d-7359bb1e48c8";
     }
 }

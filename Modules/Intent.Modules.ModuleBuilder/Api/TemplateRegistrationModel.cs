@@ -128,5 +128,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+        public const string SpecializationTypeId = "502551f7-c2d7-4d65-ad9f-13bd1e9e96d5";
     }
 }

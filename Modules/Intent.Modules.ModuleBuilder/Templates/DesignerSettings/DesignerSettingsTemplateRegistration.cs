@@ -32,8 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
         public override IEnumerable<DesignerSettingsModel> GetModels(IApplication application)
         {
             var modelers = _metadataManager
-                .GetDesignerSettingsModels(application)
-                .Concat(_metadataManager.GetDesignerExtensionModels(application))
+                .ModuleBuilder(application).GetDesignerSettingsModels()
                 .Where(x => !x.GetDesignerSettings().IsReference())
                 .ToList();
 

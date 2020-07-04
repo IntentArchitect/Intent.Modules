@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 
         public override ITemplate CreateTemplateInstance(IProject project, ElementSettingsModel model)
         {
-            var associationSettings = _metadataManager.GetAssociationSettingsModels(project.Application)
+            var associationSettings = _metadataManager.ModuleBuilder(project.Application).GetAssociationSettingsModels()
                 .Where(x => x.TargetEnd.TargetsType(model.Id) || x.SourceEnd.TargetsType(model.Id))
                 .ToList();
             return new ApiElementModel(project, model, associationSettings);
@@ -37,7 +37,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<ElementSettingsModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetElementSettingsModels(application)
+            return _metadataManager.ModuleBuilder(application).GetElementSettingsModels()
                 .Where(x => !x.Designer.IsReference())
                 .ToList();
         }

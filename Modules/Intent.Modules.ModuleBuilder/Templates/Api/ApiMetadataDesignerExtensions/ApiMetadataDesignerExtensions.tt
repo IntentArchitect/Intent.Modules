@@ -7,6 +7,8 @@
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
+using Intent.Engine;
+using Intent.Metadata.Models;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 

@@ -127,5 +127,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == AssociationVisualSettingsModel.SpecializationType)
             .Select(x => new AssociationVisualSettingsModel(x))
             .SingleOrDefault();
+        public const string SpecializationTypeId = "16d21684-d5ea-4fde-b648-f88d292fa272";
     }
 }

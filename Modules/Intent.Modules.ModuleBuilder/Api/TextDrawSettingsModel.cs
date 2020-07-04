@@ -83,5 +83,6 @@ namespace Intent.Modules.ModuleBuilder.Api
                 StyleFunction = this.GetTextSettings().Style()
             };
         }
+        public const string SpecializationTypeId = "0250c934-455b-4bb6-b5d9-077c6e1ce72c";
     }
 }

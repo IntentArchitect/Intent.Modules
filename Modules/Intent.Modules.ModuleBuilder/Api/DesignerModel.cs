@@ -68,5 +68,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == DesignerReferenceModel.SpecializationType)
             .Select(x => new DesignerReferenceModel(x))
             .ToList();
+        public const string SpecializationTypeId = "7f5fcc9f-c721-4a31-bfe2-7909f4289420";
     }
 }

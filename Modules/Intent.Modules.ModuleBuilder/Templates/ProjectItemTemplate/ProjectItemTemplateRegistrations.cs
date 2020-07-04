@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 
         public override IEnumerable<FileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetFileTemplateModels(application)
+            return _metadataManager.ModuleBuilder(application).GetFileTemplateModels()
                 .Where(x => x.GetFileSettings().TemplatingMethod().IsT4Template())
                 .ToList();
         }

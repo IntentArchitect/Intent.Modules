@@ -69,67 +69,24 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
             
             #line default
             #line hidden
-            this.Write("(this IMetadataManager metadataManager, IApplication application)\r\n        {\r\n   " +
-                    "         return new ");
-            
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(MetadataProviderClassName));
-            
-            #line default
-            #line hidden
-            this.Write("(metadataManager).Get");
-            
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(elementSettings).ToPluralName()));
-            
-            #line default
-            #line hidden
-            this.Write("(application);\r\n        }\r\n\r\n");
-            
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
-  } 
-            
-            #line default
-            #line hidden
-            this.Write("\r\n");
-            
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
-  foreach(var elementSettings in Model) { 
-            
-            #line default
-            #line hidden
-            this.Write("        public static IList<");
-            
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(elementSettings)));
-            
-            #line default
-            #line hidden
-            this.Write("> Get");
-            
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(elementSettings).ToPluralName()));
-            
-            #line default
-            #line hidden
             this.Write("(this IDesigner designer)\r\n        {\r\n            return designer.GetElementsOfTy" +
                     "pe(");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(elementSettings)));
             
             #line default
             #line hidden
             this.Write(".SpecializationTypeId)\r\n                .Select(x => new ");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(elementSettings)));
             
             #line default
             #line hidden
             this.Write("(x))\r\n                .ToList();\r\n        }\r\n\r\n");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt"
   } 
             
             #line default

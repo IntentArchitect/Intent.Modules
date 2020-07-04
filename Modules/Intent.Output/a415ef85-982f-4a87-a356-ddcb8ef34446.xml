@@ -94,11 +94,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementEventHandlerModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ElementEventHandlerModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementEventSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/ElementEventSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -234,6 +229,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageEventHandlerModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/PackageEventHandlerModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageEventSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/PackageEventSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -276,6 +276,11 @@
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\TextDrawSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/TextDrawSettingsModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>

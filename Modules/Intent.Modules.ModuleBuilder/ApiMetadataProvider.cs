@@ -19,26 +19,9 @@ namespace Intent.Modules.ModuleBuilder.Api
             _metadataManager = metadataManager;
         }
 
-
-        // Generated for each "Designer"
-        public IEnumerable<IElement> GetModuleBuilderElements(IApplication application)
-        {
-            return _metadataManager.GetMetadata<IElement>("Module Builder", application.Id);
-        }
-
-        public IEnumerable<IAssociation> GetModuleBuilderAssociations(IApplication application)
-        {
-            return _metadataManager.GetMetadata<IAssociation>("Module Builder", application.Id);
-        }
-
-        public IEnumerable<IPackage> GetModuleBuilderPackages(IApplication application)
-        {
-            return _metadataManager.GetMetadata<IPackage>("Module Builder", application.Id);
-        }
-
         public IList<AssociationSettingsModel> GetAssociationSettingsModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == AssociationSettingsModel.SpecializationType)
                 .Select(x => new AssociationSettingsModel(x))
                 .ToList<AssociationSettingsModel>();
@@ -47,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<CoreTypeModel> GetCoreTypeModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == CoreTypeModel.SpecializationType)
                 .Select(x => new CoreTypeModel(x))
                 .ToList<CoreTypeModel>();
@@ -65,7 +48,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<DesignerModel> GetDesignerModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == DesignerModel.SpecializationType)
                 .Select(x => new DesignerModel(x))
                 .ToList<DesignerModel>();
@@ -74,7 +57,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<DesignerExtensionModel> GetDesignerExtensionModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == DesignerExtensionModel.SpecializationType)
                 .Select(x => new DesignerExtensionModel(x))
                 .ToList<DesignerExtensionModel>();
@@ -83,7 +66,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<DesignerSettingsModel> GetDesignerSettingsModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == DesignerSettingsModel.SpecializationType)
                 .Select(x => new DesignerSettingsModel(x))
                 .ToList<DesignerSettingsModel>();
@@ -92,7 +75,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<DesignersFolderModel> GetDesignersFolderModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == DesignersFolderModel.SpecializationType)
                 .Select(x => new DesignersFolderModel(x))
                 .ToList<DesignersFolderModel>();
@@ -101,7 +84,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<DiagramSettingsModel> GetDiagramSettingsModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == DiagramSettingsModel.SpecializationType)
                 .Select(x => new DiagramSettingsModel(x))
                 .ToList<DiagramSettingsModel>();
@@ -110,7 +93,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<ElementExtensionModel> GetElementExtensionModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == ElementExtensionModel.SpecializationType)
                 .Select(x => new ElementExtensionModel(x))
                 .ToList<ElementExtensionModel>();
@@ -119,7 +102,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<ElementSettingsModel> GetElementSettingsModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == ElementSettingsModel.SpecializationType)
                 .Select(x => new ElementSettingsModel(x))
                 .ToList<ElementSettingsModel>();
@@ -146,7 +129,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<PackageExtensionModel> GetPackageExtensionModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == PackageExtensionModel.SpecializationType)
                 .Select(x => new PackageExtensionModel(x))
                 .ToList<PackageExtensionModel>();
@@ -155,7 +138,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public IList<ScriptModel> GetScriptModels(IApplication application)
         {
-            var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
+            var models = _metadataManager.GetMetadata<IElement>("Modeler Builder", application.Id)
                 .Where(x => x.SpecializationType == ScriptModel.SpecializationType)
                 .Select(x => new ScriptModel(x))
                 .ToList<ScriptModel>();

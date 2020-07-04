@@ -105,5 +105,6 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+        public const string SpecializationTypeId = "5fa12f89-da1e-49c5-b8e9-427b22407f19";
     }
 }

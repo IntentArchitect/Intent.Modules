@@ -1091,7 +1091,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <childElementSettings>
-            <childElementSetting type="Element Event Handler" typeId="e59f6c30-69ba-427c-9a73-33d69e44f765">
+            <childElementSetting type="Package Event Handler" typeId="e59f6c30-69ba-427c-9a73-33d69e44f765">
               <icon type="FontAwesome" source="code" />
               <saveAsOwnFile>false</saveAsOwnFile>
               <allowRename>false</allowRename>

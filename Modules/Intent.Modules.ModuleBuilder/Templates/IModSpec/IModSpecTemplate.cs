@@ -85,7 +85,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             Project.Application.EventDispatcher.Subscribe("MetadataRegistrationRequired", @event =>
             {
                 _metadataToRegister.Add(new MetadataRegistrationInfo(
-                    target: @event.GetValue("Target"), 
+                    target: @event.TryGetValue("Target"), 
                     path: @event.GetValue("Path"), 
                     id: @event.GetValue("Id")));
             });
@@ -173,7 +173,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            var decorators = _metadataManager.GetDecoratorModels(Project.Application).ToList();
+            var decorators = _metadataManager.ModuleBuilder(Project.Application).GetDecoratorModels();
             if (decorators.Any())
             {
                 var decoratorsElement = doc.Element("package").Element("decorators");
@@ -208,13 +208,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (existing == null)
                 {
                     metadataRegistrations.Add(new XElement("install", 
-                        new XAttribute("target", metadataRegistration.Target), 
+                        new XAttribute("target", metadataRegistration.Target ?? string.Empty), 
                         new XAttribute("src", metadataRegistration.Path),
                         new XAttribute("externalReference", metadataRegistration.Id)));
                 }
                 else
                 {
-                    existing.Attribute("target").Value = metadataRegistration.Target;
+                    existing.Attribute("target").Value = metadataRegistration.Target ?? string.Empty;
                     existing.Attribute("src").Value = metadataRegistration.Path;
 
                     if (!existing.Attributes("externalReference").Any())
