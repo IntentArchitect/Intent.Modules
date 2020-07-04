@@ -48,12 +48,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
     public class MetadataRegistrationInfo
     {
         public string Target { get; }
-        public string Folder { get; }
+        public string Path { get; }
+        public string Id { get; }
 
-        public MetadataRegistrationInfo(string target, string folder)
+        public MetadataRegistrationInfo(string target, string path, string id)
         {
             Target = target;
-            Folder = folder;
+            Path = CrossPlatformPathHelpers.NormalizePath(path);
+            Id = id;
         }
     }
 
@@ -71,12 +73,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             _metadataManager = metadataManager;
             Project.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
-                _templatesToRegister.Add(new TemplateRegistrationInfo(@event.GetValue("ModelId"), @event.GetValue("TemplateId"), @event.GetValue("TemplateType"), @event.GetValue("Role"), @event.TryGetValue("Module Dependency"), @event.TryGetValue("Module Dependency Version")));
+                _templatesToRegister.Add(new TemplateRegistrationInfo(
+                    modelId: @event.GetValue("ModelId"), 
+                    templateId: @event.GetValue("TemplateId"), 
+                    templateType: @event.GetValue("TemplateType"), 
+                    role: @event.GetValue("Role"), 
+                    moduleDependency: @event.TryGetValue("Module Dependency"), 
+                    moduleVersion: @event.TryGetValue("Module Dependency Version")));
             });
 
             Project.Application.EventDispatcher.Subscribe("MetadataRegistrationRequired", @event =>
             {
-                _metadataToRegister.Add(new MetadataRegistrationInfo(@event.GetValue("Target"), @event.GetValue("Folder")));
+                _metadataToRegister.Add(new MetadataRegistrationInfo(
+                    target: @event.GetValue("Target"), 
+                    path: @event.GetValue("Path"), 
+                    id: @event.GetValue("Id")));
             });
         }
 
@@ -193,9 +204,23 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             foreach (var metadataRegistration in _metadataToRegister)
             {
-                if (doc.XPathSelectElement($"package/metadata/install[@src=\"{metadataRegistration.Folder}\"]") == null)
+                var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{metadataRegistration.Path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{metadataRegistration.Id}\"]");
+                if (existing == null)
                 {
-                    metadataRegistrations.Add(new XElement("install", new XAttribute("target", metadataRegistration.Target), new XAttribute("src", metadataRegistration.Folder)));
+                    metadataRegistrations.Add(new XElement("install", 
+                        new XAttribute("target", metadataRegistration.Target), 
+                        new XAttribute("src", metadataRegistration.Path),
+                        new XAttribute("externalReference", metadataRegistration.Id)));
+                }
+                else
+                {
+                    existing.Attribute("target").Value = metadataRegistration.Target;
+                    existing.Attribute("src").Value = metadataRegistration.Path;
+
+                    if (!existing.Attributes("externalReference").Any())
+                    {
+                        existing.Add(new XAttribute("externalReference", metadataRegistration.Id));
+                    }
                 }
             }
 
@@ -204,11 +229,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 .ToList();
             foreach (var package in packagesToInclude)
             {
-                var path = CrossPlatformPathHelpers.NormalizePath(Path.GetRelativePath(GetMetadata().GetFullLocationPath(), Path.GetDirectoryName(package.FileLocation)));
-                if (path.StartsWith(".."))
-                {
-                    throw new Exception($"Package [{package.Name}] cannot be included because it is not within the Module Builder root location [{GetMetadata().GetFullLocationPath()}]");
-                }
+                var path = CrossPlatformPathHelpers.NormalizePath(Path.GetRelativePath(GetMetadata().GetFullLocationPath(), package.FileLocation));
                 var installedPackage = doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
                 if (installedPackage == null)
                 {
@@ -228,9 +249,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     }
                 }
             }
+
+            var managedInstalls = _metadataToRegister.Select(x => x.Id).Concat(packagesToInclude.Select(x => x.Id)).ToList();
             foreach (var installElements in doc.XPathSelectElements($"package/metadata/install"))
             {
-                if (installElements.Attribute("externalReference") != null && packagesToInclude.All(x => x.Id != installElements.Attribute("externalReference").Value))
+                if (installElements.Attribute("externalReference") != null && managedInstalls.All(x => x != installElements.Attribute("externalReference").Value))
                 {
                     installElements.Remove();
                 }

@@ -32,6 +32,21 @@ namespace Intent.Modules.ModuleBuilder.Api
             return new ApiMetadataProvider(metadataManager).GetDesignerModels(application);
         }
 
+        public static IDesigner ModuleBuilder(this IMetadataManager metadataManager, IApplication application)
+        {
+            return metadataManager.GetDesigner(application.Id, "Module Builder");
+        }
+
+        public static IList<DesignerModel> GetDesignerModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(DesignerModel.SpecializationType)
+                .Select(x => new DesignerModel(x))
+                .ToList();
+        }
+
+        // _metadataManager.ModuleBuilder(application).GetDesignerModels();
+        // _metadataManager.Domain(application).GetClassModels();
+
         public static IList<DesignerExtensionModel> GetDesignerExtensionModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetDesignerExtensionModels(application);

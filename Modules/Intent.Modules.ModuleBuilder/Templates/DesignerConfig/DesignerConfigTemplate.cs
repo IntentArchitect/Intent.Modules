@@ -29,8 +29,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             base.OnCreated();
             Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
             {
+                { "Id", Model.Id },
                 { "Target", Model.Name },
-                { "Folder", GetMetadata().GetRelativeFilePath() }
+                { "Path", GetMetadata().GetRelativeFilePathWithFileNameWithExtension() },
             });
         }
 

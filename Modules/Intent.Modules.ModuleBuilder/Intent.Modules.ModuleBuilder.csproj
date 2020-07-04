@@ -23,10 +23,19 @@
     <None Remove="Templates\RoslynProjectItemTemplatePartial\**" />
     <None Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
     <None Remove="Templates\RoslynProjectItemTemplate\**" />
+    <None Update="Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensions.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ApiMetadataDesignerExtensions.cs</LastGenOutput>
+    </None>
     <None Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiMetadataProviderExtensions.cs</LastGenOutput>
     </None>
+    <Compile Update="Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensions.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiMetadataDesignerExtensions.tt</DependentUpon>
+    </Compile>
     <Compile Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

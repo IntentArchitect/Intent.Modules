@@ -94,6 +94,13 @@
       </config>
       <role>Api</role>
     </template>
+    <template id="ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions" externalReference="11b1ac64-5537-4301-9a1e-d8de08c2786c">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+    </template>
   </templates>
   <decorators></decorators>
   <dependencies>
@@ -101,31 +108,31 @@
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.2.0" />
   </dependencies>
   <designers>
-    <designer id="Module Builder" name="Module Builder" src="modelers/Module Builder.designer.config"/>
+    <designer id="Module Builder" name="Module Builder" src="modelers/Module Builder.designer.config" />
   </designers>
   <designerSettings>
     <include id="Module Builder Id" name="Module Builder" src="modelers/Module Builder.modeler.config">
       <targets>
-        <target id="Module Builder" name="Module Builder"/>
+        <target id="Module Builder" name="Module Builder" />
       </targets>
     </include>
     <include id="Modeler Builder Id" name="Modeler Builder" src="modelers/Modeler Builder.modeler.config">
       <targets>
-        <target id="Module Builder" name="Module Builder"/>
+        <target id="Module Builder" name="Module Builder" />
       </targets>
     </include>
   </designerSettings>
   <packages>
     <include id="9972b2a9-b749-4bba-b5c8-824bf694c6ef" name="Intent.ModuleBuilder" src="metadata/Intent.ModuleBuilder/Intent.ModuleBuilder.pkg.config">
       <targets>
-        <target id="Module Builder" name="Module Builder"/>
+        <target id="Module Builder" name="Module Builder" />
       </targets>
     </include>
   </packages>
   <metadata>
-    <install target="Module Builder" src="modelers/Module Builder.designer.config" />
-    <install target="Module Builder" src="modelers/Module Builder.designer.settings" />
-    <install target="Module Builder" src="modelers/Modeler Builder.designer.settings" />
+    <install target="Module Builder" src="modelers/Module Builder.designer.config" externalReference="a1c3dd87-352e-4353-853b-c79853debecb" />
+    <install target="Module Builder" src="modelers/Module Builder.designer.settings" externalReference="e4c0d250-d82d-47b1-9f5b-20f1403fb81e" />
+    <install target="Module Builder" src="modelers/Modeler Builder.designer.settings" externalReference="3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b" />
     <install target="Module Builder" src="metadata/Intent.ModuleBuilder/Intent.ModuleBuilder.pkg.config" externalReference="9972b2a9-b749-4bba-b5c8-824bf694c6ef" />
   </metadata>
   <files>

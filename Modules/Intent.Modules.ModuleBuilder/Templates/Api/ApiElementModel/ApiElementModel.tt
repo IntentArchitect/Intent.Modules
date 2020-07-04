@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
@@ -21,6 +21,7 @@ namespace <#= Namespace #>
     {
 <#  if (BaseType == null) { #>
         public const string SpecializationType = "<#= Model.Name #>";
+        public const string SpecializationTypeId = "<#= Model.Id #>";
         protected readonly IElement _element;
 
         [IntentInitialGen]
@@ -33,39 +34,30 @@ namespace <#= Namespace #>
             _element = element;
         }
 
-        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
         
-        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         
-        [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
 <#      if (Model.GetSettings().AllowSetValue()) { #>
-        [IntentManaged(Mode.Fully)]
         public string Value => _element.Value;
 
 <#      } #>
 <#      if (Model.GetSettings().AllowGenericTypes()) { #>
-        [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
 
 <#      } #>
 <#      if (!Model.GetTypeReferenceSettings().Mode().IsDisabled()) { #>
-        [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
 <#      } #>
 <#      if (Model.MappingSettings != null) { #>
-        [IntentManaged(Mode.Fully)]
         public bool IsMapped => _element.IsMapped;
 
-        [IntentManaged(Mode.Fully)]
         public IElementMapping Mapping => _element.MappedElement;
 
 <#      } #>
-        [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
 
 <#  } else { #>
@@ -92,19 +84,16 @@ namespace <#= Namespace #>
 
 <#      } #>
 <#  } #>
-        [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        [IntentManaged(Mode.Fully)]
         public bool Equals(<#= ClassName #> other)
         {
             return Equals(_element, other?._element);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -113,7 +102,6 @@ namespace <#= Namespace #>
             return Equals((<#= ClassName #>)obj);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);

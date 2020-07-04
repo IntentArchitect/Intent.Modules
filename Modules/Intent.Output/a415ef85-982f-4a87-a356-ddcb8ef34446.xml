@@ -394,6 +394,26 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensions.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensions.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsPartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensionsPartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensionsRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProvider\ApiMetadataProvider.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiMetadataProvider/ApiMetadataProvider.cs</ProjectRelativeFilePath>
     </FileLog>

@@ -19,6 +19,23 @@ namespace Intent.Modules.ModuleBuilder.Api
             _metadataManager = metadataManager;
         }
 
+
+        // Generated for each "Designer"
+        public IEnumerable<IElement> GetModuleBuilderElements(IApplication application)
+        {
+            return _metadataManager.GetMetadata<IElement>("Module Builder", application.Id);
+        }
+
+        public IEnumerable<IAssociation> GetModuleBuilderAssociations(IApplication application)
+        {
+            return _metadataManager.GetMetadata<IAssociation>("Module Builder", application.Id);
+        }
+
+        public IEnumerable<IPackage> GetModuleBuilderPackages(IApplication application)
+        {
+            return _metadataManager.GetMetadata<IPackage>("Module Builder", application.Id);
+        }
+
         public IList<AssociationSettingsModel> GetAssociationSettingsModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Module Builder", application.Id)
