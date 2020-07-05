@@ -4,18 +4,13 @@
   <FileLogs>
     <FileLog>
       <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\FolderGenericModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/FolderGenericModel.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\FolderModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\TypeDefinitionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/TypeDefinitionModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\ApiMetadataProvider.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>

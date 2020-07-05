@@ -40,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
 
             if (!models.Any())
             {
-                AbortRegistration = true;
+                AbortRegistration();
             }
 
             return models;

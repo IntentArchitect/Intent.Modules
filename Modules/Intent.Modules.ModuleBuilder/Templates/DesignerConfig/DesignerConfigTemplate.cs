@@ -45,6 +45,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                 icon: Model.GetDesignerConfig().Icon().ToPersistable(),
                 loadStartPage: false);
 
+            foreach (var designerReference in Model.DesignerReferences)
+            {
+                designer.DesignerReferences.Add(new DesignerSettingsReference()
+                {
+                    Id = designerReference.TypeReference.Element.Id,
+                    Name = designerReference.TypeReference.Element.Name,
+                    Module = "TODO"
+                });
+            }
+
             return Serialize(designer);
         }
 

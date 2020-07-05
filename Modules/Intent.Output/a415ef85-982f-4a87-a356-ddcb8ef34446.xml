@@ -284,11 +284,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\ApiMetadataProvider.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -416,26 +411,6 @@
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensionsRegistration.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProvider\ApiMetadataProvider.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Api/ApiMetadataProvider/ApiMetadataProvider.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProvider\ApiMetadataProvider.tt</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Api/ApiMetadataProvider/ApiMetadataProvider.tt</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProvider\ApiMetadataProviderPartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Api/ApiMetadataProvider/ApiMetadataProviderPartial.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataProvider\ApiMetadataProviderRegistration.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Api/ApiMetadataProvider/ApiMetadataProviderRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>

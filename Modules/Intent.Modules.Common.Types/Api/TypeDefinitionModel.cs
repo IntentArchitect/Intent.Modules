@@ -65,5 +65,6 @@ namespace Intent.Modules.Common.Types.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "d4e577cd-ad05-4180-9a2e-fff4ddea0e1e";
     }
 }

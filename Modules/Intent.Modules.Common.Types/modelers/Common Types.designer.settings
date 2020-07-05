@@ -5,7 +5,7 @@
   <packageSettings />
   <packageExtensions />
   <elementSettings>
-    <elementSetting type="Folder (Generic)" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+    <elementSetting type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
       <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
       <expandedIcon type="UrlImagePath" source="./img/icons/uml/FolderOpen_02_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
@@ -19,15 +19,15 @@
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Folder (Generic)</type>
+        <type order="0">Folder</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Folder (Generic)</specializationType>
+          <specializationType>Folder</specializationType>
           <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
           <text>New Folder</text>
           <shortcut>ctrl + shift + f</shortcut>
-          <defaultName>NewFolderGeneric</defaultName>
+          <defaultName>NewFolder</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>

@@ -64,7 +64,7 @@ namespace Intent.Modules.Common.Registrations
                 models = Filter(models);
             }
 
-            if (AbortRegistration)
+            if (RegistrationAborted)
             {
                 Logging.Log.Debug($"Template registration aborted : {TemplateId}");
                 return;
@@ -73,7 +73,12 @@ namespace Intent.Modules.Common.Registrations
             Logging.Log.Debug($"Template instances registered : {TemplateId}");
         }
 
-        protected virtual bool AbortRegistration { get; set; } = false;
+        protected virtual bool RegistrationAborted { get; set; } = false;
+
+        protected virtual void AbortRegistration()
+        {
+            RegistrationAborted = true;
+        }
 
         public IList<TModel> Filter(IList<TModel> list)
         {

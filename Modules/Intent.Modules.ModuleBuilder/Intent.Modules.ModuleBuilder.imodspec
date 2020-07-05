@@ -52,13 +52,6 @@
     <template id="Intent.ModuleBuilder.DecoratorRegistration.Template">
       <role>Decorators</role>
     </template>
-    <template id="ModuleBuilder.Templates.Api.ApiMetadataProvider" externalReference="65807faa-9a61-4958-8554-3d0a0865e587">
-      <config>
-        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
-        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
-      </config>
-      <role>Api</role>
-    </template>
     <template id="ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" externalReference="ff86b4fd-d613-4983-8066-605f97b58581">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />

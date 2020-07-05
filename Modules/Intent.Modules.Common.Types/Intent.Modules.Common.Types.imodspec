@@ -13,18 +13,15 @@
     <factoryExtension id="Intent.CommonTypes.TypeResolvers"></factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="2.1.0" />
+    <dependency id="Intent.Common" version="2.2.0" />
   </dependencies>
   <files>
-    <file src="bin/$configuration$/$id$.dll" />
-    <file src="bin/$configuration$/$id$.pdb" />
+    <file src="$outDir$/$id$.dll" />
+    <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata>
-    <!--<install target="Domain" src="Metadata/Intent.Common.Types" />
-    <install target="Services" src="Metadata/Intent.Common.Types" />
-    <install target="Eventing" src="Metadata/Intent.Common.Types" />-->
-    <install target="Module Builder" src="modelers" />
-    <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Common.Types" externalReference="870ad967-cbd4-4ea9-b86d-9c3a5d55ea67" />
+    <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Common.Types/Intent.Common.Types.pkg.config" externalReference="870ad967-cbd4-4ea9-b86d-9c3a5d55ea67" />
+    <install target="Module Builder" src="modelers/Common Types.designer.settings" externalReference="55d06096-83fe-4acf-86ef-586d254e5170" />
   </metadata>
   <templates />
 </package>

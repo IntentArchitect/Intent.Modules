@@ -11,14 +11,18 @@ namespace Intent.Modules.Common.Types.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FolderModel> GetFolderModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
+            return designer.GetElementsOfType(FolderModel.SpecializationTypeId)
+                .Select(x => new FolderModel(x))
+                .ToList();
         }
 
-        public static IList<TypeDefinitionModel> GetTypeDefinitionModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<TypeDefinitionModel> GetTypeDefinitionModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetTypeDefinitionModels(application);
+            return designer.GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
+                .Select(x => new TypeDefinitionModel(x))
+                .ToList();
         }
 
     }

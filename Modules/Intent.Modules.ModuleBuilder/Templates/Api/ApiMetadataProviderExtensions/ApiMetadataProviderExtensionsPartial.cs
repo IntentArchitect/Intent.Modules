@@ -39,8 +39,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
             );
         }
 
-        public string MetadataProviderClassName => GetTemplateClassName(ApiMetadataProvider.ApiMetadataProvider.TemplateId);
-
         private string GetClassName(ElementSettingsModel elementSettings)
         {
             return GetTemplateClassName(ApiElementModel.ApiElementModel.TemplateId, elementSettings);
