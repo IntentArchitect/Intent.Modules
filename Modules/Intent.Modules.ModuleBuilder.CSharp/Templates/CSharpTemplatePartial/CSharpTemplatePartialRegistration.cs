@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<CSharpTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetCSharpTemplateModels(application);
+            return _metadataManager.ModuleBuilder(application).GetCSharpTemplateModels();
         }
     }
 }

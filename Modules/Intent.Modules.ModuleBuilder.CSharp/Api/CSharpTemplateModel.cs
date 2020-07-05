@@ -46,5 +46,6 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Api
         {
             return _element.ToString();
         }
+        public new const string SpecializationTypeId = "f6456232-0f1b-4235-b5f8-b4cce548ca59";
     }
 }

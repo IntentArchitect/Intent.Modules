@@ -30,8 +30,8 @@
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.2.0" />
   </dependencies>
   <metadata>
-    <install target="Module Builder" src="modelers" />
     <install target="Module Builder" src="metadata/Intent.ModuleBuilder.CSharp" />
+    <install target="Module Builder" src="modelers/CSharp.designer.settings" externalReference="1e3cc0d3-8901-498a-960b-4a51f915b92b" />
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />

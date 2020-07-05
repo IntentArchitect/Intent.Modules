@@ -12,11 +12,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\ApiMetadataProvider.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -32,8 +27,8 @@
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\modelers\CSharp.modeler.extension.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/CSharp.modeler.extension.config</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\modelers\CSharp.designer.settings</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/CSharp.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>

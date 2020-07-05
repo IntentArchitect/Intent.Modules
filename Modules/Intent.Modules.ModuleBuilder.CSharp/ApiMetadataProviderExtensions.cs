@@ -12,9 +12,11 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<CSharpTemplateModel> GetCSharpTemplateModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<CSharpTemplateModel> GetCSharpTemplateModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetCSharpTemplateModels(application);
+            return designer.GetElementsOfType(CSharpTemplateModel.SpecializationTypeId)
+                .Select(x => new CSharpTemplateModel(x))
+                .ToList();
         }
 
     }
