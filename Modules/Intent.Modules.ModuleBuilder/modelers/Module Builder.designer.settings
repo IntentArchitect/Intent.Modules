@@ -34,11 +34,11 @@
           <allowMultiple>true</allowMultiple>
         </option>
         <option order="0" type="element">
-          <specializationType>Folder (Generic)</specializationType>
+          <specializationType>Folder</specializationType>
           <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
           <text>New Generic Folder</text>
           <shortcut>ctrl + shift + f</shortcut>
-          <defaultName>NewFolderGeneric</defaultName>
+          <defaultName>NewFolder</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
@@ -54,10 +54,9 @@
       </creationOptions>
       <typeOrder>
         <type order="0">Folder</type>
-        <type order="0">Folder (Generic)</type>
-        <type order="2">File Template</type>
-        <type order="3">Template Registration</type>
-        <type order="4">Stereotype-Definition</type>
+        <type order="1">File Template</type>
+        <type order="2">Template Registration</type>
+        <type order="3">Stereotype-Definition</type>
       </typeOrder>
     </packageSetting>
   </packageSettings>
@@ -178,7 +177,7 @@
     </elementSetting>
   </elementSettings>
   <elementExtensions>
-    <elementExtension type="Folder (Generic)" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
       <creationOptions>
         <option type="element">
           <specializationType>File Template</specializationType>

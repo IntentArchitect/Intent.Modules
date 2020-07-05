@@ -128,7 +128,7 @@
             </childElement>
             <childElement id="0aa00d90-6737-4d89-8a59-cf296c1a24b2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Generic Folder</name>
-              <display>New Generic Folder: Folder (Generic)</display>
+              <display>New Generic Folder: Folder</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="7d3f55d4-1623-4789-abe6-79a6a7077613">

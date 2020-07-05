@@ -51,7 +51,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                 {
                     Id = designerReference.TypeReference.Element.Id,
                     Name = designerReference.TypeReference.Element.Name,
-                    Module = "TODO"
+                    Module = designerReference.TypeReference.Element.Package.Name
                 });
             }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="a70631bb-3c32-46e6-bc18-621c5cf527c0" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
   <name>Folder Extension</name>
-  <display>Folder Extension: Folder (Generic)</display>
+  <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <typeReference id="cd943cfc-d65f-4d00-9b14-34dfe469cf9a">

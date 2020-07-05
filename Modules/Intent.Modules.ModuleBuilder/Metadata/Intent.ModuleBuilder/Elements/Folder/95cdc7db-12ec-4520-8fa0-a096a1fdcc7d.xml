@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="f9c93dac-243c-4308-b2fc-6d30fcfbae1d" type="Folder (Generic)" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>Association Settings</name>
-  <display>Association Settings</display>
+<class id="95cdc7db-12ec-4520-8fa0-a096a1fdcc7d" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Scripting</name>
+  <display>Scripting</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

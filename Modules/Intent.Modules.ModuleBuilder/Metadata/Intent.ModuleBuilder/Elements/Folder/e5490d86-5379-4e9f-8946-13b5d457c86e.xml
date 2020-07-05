@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="e5490d86-5379-4e9f-8946-13b5d457c86e" type="Folder (Generic)" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+<class id="e5490d86-5379-4e9f-8946-13b5d457c86e" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>Mapping</name>
   <display>Mapping</display>
   <isAbstract>false</isAbstract>
