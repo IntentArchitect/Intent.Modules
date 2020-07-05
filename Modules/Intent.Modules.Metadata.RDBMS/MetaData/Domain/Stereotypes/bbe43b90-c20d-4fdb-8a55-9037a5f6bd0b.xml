@@ -4,7 +4,7 @@
   <targetMode>of-type</targetMode>
   <targetElements>
     <element>attribute</element>
-    <element>association</element>
+    <element>association target end</element>
   </targetElements>
   <applyMode>manually</applyMode>
   <icon type="CharacterBox" source="I|#424242" />

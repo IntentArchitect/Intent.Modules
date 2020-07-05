@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
-using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common;
-using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Constants;
-using Intent.SoftwareFactory;
-using Intent.Engine;
-using Intent.Metadata.Models;
-using Intent.Modelers.Services;
 using Intent.Modules.Common.VisualStudio;
+using Intent.Modules.Constants;
 using Intent.Templates;
 using Intent.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
-    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplatePostCreationHook, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings, ITemplateBeforeExecutionHook
+    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplatePostCreationHook, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasDecorators<WebApiControllerDecoratorBase>, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.AspNet.WebApi.Controller";
 
@@ -29,19 +25,12 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             : base(identifier, project, model)
         {
             AddTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            AddAssemblyReference(new GacAssemblyReference("System.Transactions"));
         }
 
-        public IEnumerable<string> DeclareUsings()
+        public string DeclareUsings()
         {
-            return GetDecorators().SelectMany(x => x.DeclareUsings());
-        }
-
-        public IEnumerable<IAssemblyReference> GetAssemblyDependencies()
-        {
-            return new IAssemblyReference[]
-            {
-                new GacAssemblyReference("System.Transactions")
-            };
+            return string.Join(Environment.NewLine, GetDecorators().SelectMany(x => x.DeclareUsings()).Select(s => $"using {s};"));
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
@@ -241,7 +230,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
                         ? operation.Parameters
                             .Where(x => !IsFromBody(x))
                             .Select(x => $"{GetParameterBindingAttribute(x)}{GetTypeName(x.TypeReference)} {x.Name}")
-                            .Concat(new [] { $"{GetPayloadObjectTypeName(operation)} bodyPayload" })
+                            .Concat(new[] { $"{GetPayloadObjectTypeName(operation)} bodyPayload" })
                             .Aggregate((x, y) => $"{x}, {y}")
                         : operation.Parameters
                             .Select(x => $"{GetParameterBindingAttribute(x)}{GetTypeName(x.TypeReference)} {x.Name}")
@@ -394,7 +383,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             };
 
             // NB: Order of conditional checks is important here
-            return GetParameterBindingAttribute(parameter) == "[FromBody]" 
+            return GetParameterBindingAttribute(parameter) == "[FromBody]"
                 || (!csharpPrimitives.Contains(parameter.TypeReference.Element.Name)
                     && parameter.TypeReference.Element.SpecializationType != "Enum");
         }
