@@ -106,6 +106,8 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("module")]
         public string Module { get; set; }
 
+        [XmlAttribute("type")]
+        public DesignerSettingsReferenceType Type { get; set; }
         //[XmlElement("path")]
         //public string RelativePath
         //{
@@ -119,6 +121,16 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         //    get => _absolutePath;
         //    set => _absolutePath = value.EnsureUsesForwardSlashPathSeparator();
         //}
+    }
+
+    public enum DesignerSettingsReferenceType
+    {
+        [XmlEnum("unknown")]
+        Unknown = 0,
+        [XmlEnum("reference")]
+        Reference = 1,
+        [XmlEnum("extension")]
+        Extenstion = 2
     }
 
     public class PackageReferenceModel //: IEquatable<PackageReferenceModel>

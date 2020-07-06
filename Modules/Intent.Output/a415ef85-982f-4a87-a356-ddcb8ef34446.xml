@@ -219,11 +219,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\FolderModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\MappingSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/MappingSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>

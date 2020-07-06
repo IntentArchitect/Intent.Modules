@@ -53,6 +53,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("NuGet Package Version");
             }
 
+            public IElement[] TargetDesigners()
+            {
+                return _stereotype.GetProperty<IElement[]>("Target Designers");
+            }
+
         }
 
     }

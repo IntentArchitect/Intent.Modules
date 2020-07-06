@@ -30,8 +30,8 @@ namespace Intent.Modules.Common.Templates
             FileName = fileName;
             CodeGenType = codeGenType;
             OverwriteBehaviour = overwriteBehaviour;
-            FullLocationPath = fullLocationPath;
-            RelativeFilePath = relativeFilePath;
+            FullLocationPath = CrossPlatformPathHelpers.NormalizePath(fullLocationPath);
+            RelativeFilePath = CrossPlatformPathHelpers.NormalizePath(relativeFilePath);
             CustomMetadata = new Dictionary<string, string>();
         }
 

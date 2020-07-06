@@ -11,7 +11,7 @@
   <displayIcon>false</displayIcon>
   <displayFunction>return `[${!Shortcut ? "No Shortcut" : Shortcut}]`;</displayFunction>
   <autoAdd>false</autoAdd>
-  <parentFolderId>aa05ffb4-d445-497d-9903-e54dcf1e0c15</parentFolderId>
+  <parentFolderId>ea7ccdb1-1f68-4cf0-87a7-f060b69e364d</parentFolderId>
   <order>0</order>
   <properties>
     <property id="46678a0e-dbb3-479a-a434-092390ec23ec">

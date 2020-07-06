@@ -123,7 +123,7 @@
     </include>
   </packages>
   <metadata>
-    <install target="Module Builder" src="modelers/Module Builder.designer.config" externalReference="a1c3dd87-352e-4353-853b-c79853debecb" />
+    <install target="" src="modelers/Module Builder.designer.config" externalReference="a1c3dd87-352e-4353-853b-c79853debecb" />
     <install target="" src="modelers/Module Builder.designer.settings" externalReference="e4c0d250-d82d-47b1-9f5b-20f1403fb81e" />
     <install target="" src="modelers/Modeler Builder.designer.settings" externalReference="3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b" />
     <install target="Module Builder" src="metadata/Intent.ModuleBuilder/Intent.ModuleBuilder.pkg.config" externalReference="9972b2a9-b749-4bba-b5c8-824bf694c6ef" />

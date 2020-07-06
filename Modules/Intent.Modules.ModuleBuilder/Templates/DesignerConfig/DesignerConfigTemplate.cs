@@ -27,12 +27,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
         public override void OnCreated()
         {
             base.OnCreated();
-            Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
-            {
-                { "Id", Model.Id },
-                { "Target", Model.Name },
-                { "Path", GetMetadata().GetRelativeFilePathWithFileNameWithExtension() },
-            });
+            Project.Application.EventDispatcher.Publish(new MetadataRegistrationRequiredEvent(
+                Model.Id,
+                new List<(string Id, string Name)>(),
+                GetMetadata().GetRelativeFilePathWithFileNameWithExtension()));
+            //Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
+            //{
+            //    { "Id", Model.Id },
+            //    { "Target", Model.Name },
+            //    { "Path", GetMetadata().GetRelativeFilePathWithFileNameWithExtension() },
+            //});
         }
 
         public override string TransformText()
@@ -51,7 +55,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                 {
                     Id = designerReference.TypeReference.Element.Id,
                     Name = designerReference.TypeReference.Element.Name,
-                    Module = designerReference.TypeReference.Element.Package.Name
+                    Module = designerReference.TypeReference.Element.Package.Name,
+                    Type = DesignerSettingsReferenceType.Reference
                 });
             }
 

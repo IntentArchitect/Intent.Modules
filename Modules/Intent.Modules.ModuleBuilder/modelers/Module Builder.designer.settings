@@ -26,17 +26,8 @@
         </option>
         <option order="0" type="element">
           <specializationType>Folder</specializationType>
-          <specializationTypeId>26f606b9-71e2-4e21-b185-04f90cb7d603</specializationTypeId>
-          <text>New Folder</text>
-          <shortcut>ctrl + shift + f</shortcut>
-          <defaultName>NewFolder</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option order="0" type="element">
-          <specializationType>Folder</specializationType>
           <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
-          <text>New Generic Folder</text>
+          <text>New Folder</text>
           <shortcut>ctrl + shift + f</shortcut>
           <defaultName>NewFolder</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
@@ -100,65 +91,6 @@
         <isNullableDefault>false</isNullableDefault>
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
-      <childElementSettings />
-    </elementSetting>
-    <elementSetting type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
-      <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
-      <expandedIcon type="UrlImagePath" source="./img/icons/uml/FolderOpen_02_256x.png" />
-      <saveAsOwnFile>true</saveAsOwnFile>
-      <allowRename>true</allowRename>
-      <allowAbstract>false</allowAbstract>
-      <allowGenericTypes>false</allowGenericTypes>
-      <allowMapping>false</allowMapping>
-      <allowSorting>false</allowSorting>
-      <allowFindInView>false</allowFindInView>
-      <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowSetValue>false</allowSetValue>
-      <typeOrder>
-        <type order="0">Folder</type>
-        <type order="1">File Template</type>
-        <type order="2">Template Registration</type>
-        <type order="3">Stereotype-Definition</type>
-      </typeOrder>
-      <creationOptions>
-        <option type="element">
-          <specializationType>File Template</specializationType>
-          <specializationTypeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</specializationTypeId>
-          <text>New File Template</text>
-          <shortcut>ctrl + shift + t</shortcut>
-          <defaultName>NewFileTemplate</defaultName>
-          <icon type="FontAwesome" source="file-code-o" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
-          <specializationType>Template Registration</specializationType>
-          <specializationTypeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</specializationTypeId>
-          <text>New Template Registration</text>
-          <shortcut>ctrl + shift + r</shortcut>
-          <defaultName>NewTemplateRegistration</defaultName>
-          <icon type="CharacterBox" source="C|#04007a" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option order="0" type="element">
-          <specializationType>Folder</specializationType>
-          <specializationTypeId>26f606b9-71e2-4e21-b185-04f90cb7d603</specializationTypeId>
-          <text>New Folder</text>
-          <shortcut>ctrl + shift + f</shortcut>
-          <defaultName>NewFolder</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="stereotype-definition">
-          <specializationType>Stereotype-Definition</specializationType>
-          <specializationTypeId>Stereotype-Definition</specializationTypeId>
-          <text>New Stereotype-Definition</text>
-          <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>NewStereotypeDefinition</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Template Registration" typeId="502551f7-c2d7-4d65-ad9f-13bd1e9e96d5">

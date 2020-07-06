@@ -89,13 +89,6 @@ namespace Intent.Modules.ModuleBuilder.Api
                 .ToList();
         }
 
-        public static IList<FolderModel> GetFolderModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(FolderModel.SpecializationTypeId)
-                .Select(x => new FolderModel(x))
-                .ToList();
-        }
-
         public static IList<PackageExtensionModel> GetPackageExtensionModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(PackageExtensionModel.SpecializationTypeId)

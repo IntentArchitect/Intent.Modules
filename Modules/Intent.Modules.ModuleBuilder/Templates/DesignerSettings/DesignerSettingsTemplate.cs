@@ -27,12 +27,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
         public override void OnCreated()
         {
             base.OnCreated();
-            Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
-            {
-                { "Id", Model.Id },
-                { "Target", (Model as DesignerExtensionModel)?.TypeReference.Element?.Name },
-                { "Path", GetMetadata().GetRelativeFilePathWithFileNameWithExtension() },
-            });
+            Project.Application.EventDispatcher.Publish(new MetadataRegistrationRequiredEvent(
+                Model.Id, 
+                Model.GetDesignerSettings().TargetDesigners()?.Select(x => (x.Id, x.Name)).ToList() ?? new List<(string Id, string Name)>(), 
+                GetMetadata().GetRelativeFilePathWithFileNameWithExtension()));
+            //Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
+            //{
+            //    { "Id", Model.Id },
+            //    { "Target", (Model as DesignerExtensionModel)?.TypeReference.Element?.Name },
+            //    { "Path", GetMetadata().GetRelativeFilePathWithFileNameWithExtension() },
+            //});
         }
 
         public override string TransformText()
@@ -60,7 +64,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
                 fileExtension: DesignerSettingsPersistable.FileExtension,
                 defaultLocationInProject: "modelers");
         }
-        
+
         private static string Serialize<T>(T @object)
         {
             using (var stringWriter = new Utf8StringWriter())

@@ -20,7 +20,7 @@ namespace Intent.Modules.Common.Templates
             var relativePath = fm.GetRelativeFilePath();
             if (!string.IsNullOrWhiteSpace(relativePath))
             {
-                return Path.Combine(relativePath, fm.FileName);
+                return CrossPlatformPathHelpers.NormalizePath(Path.Combine(relativePath, fm.FileName));
             }
             return fm.FileNameWithExtension();
         }
@@ -30,7 +30,7 @@ namespace Intent.Modules.Common.Templates
             string relativePath = fm.GetRelativeFilePath();
             if (!string.IsNullOrWhiteSpace(relativePath))
             {
-                return Path.Combine(relativePath, fm.FileNameWithExtension());
+                return CrossPlatformPathHelpers.NormalizePath(Path.Combine(relativePath, fm.FileNameWithExtension()));
             }
 
             return fm.FileNameWithExtension();

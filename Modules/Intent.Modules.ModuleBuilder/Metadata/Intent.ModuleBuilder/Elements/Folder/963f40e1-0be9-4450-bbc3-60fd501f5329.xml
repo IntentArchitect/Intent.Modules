@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="963f40e1-0be9-4450-bbc3-60fd501f5329" type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
+<class id="963f40e1-0be9-4450-bbc3-60fd501f5329" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>Visual</name>
   <display>Visual</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>5a60c1d1-d504-45f6-a32a-de24c7d60e44</parentFolderId>
+  <parentFolderId>f9c93dac-243c-4308-b2fc-6d30fcfbae1d</parentFolderId>
   <stereotypes />
   <childElements />
 </class>

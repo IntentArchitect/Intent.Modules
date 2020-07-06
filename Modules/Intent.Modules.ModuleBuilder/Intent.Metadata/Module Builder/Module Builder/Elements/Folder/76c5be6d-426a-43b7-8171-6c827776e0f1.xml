@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b24f3bdf-3ba1-4c66-8aa8-cf63a3ae7436" type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
+<class id="76c5be6d-426a-43b7-8171-6c827776e0f1" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>Api</name>
   <display>Api</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>1e203c0d-d0a7-4d77-9204-d78fabb1b796</parentFolderId>
+  <parentFolderId>e5a6d9c4-a9cf-4e13-9b41-9169e64ed316</parentFolderId>
   <stereotypes />
   <childElements />
 </class>

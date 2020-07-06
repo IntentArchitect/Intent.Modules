@@ -11,6 +11,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
+using Intent.Modules.ModuleBuilder.Templates.DesignerSettings;
 using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
@@ -63,7 +64,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
     {
         private readonly IMetadataManager _metadataManager;
         private readonly ICollection<TemplateRegistrationInfo> _templatesToRegister = new List<TemplateRegistrationInfo>();
-        private readonly ICollection<MetadataRegistrationInfo> _metadataToRegister = new List<MetadataRegistrationInfo>();
+        private readonly ICollection<MetadataRegistrationRequiredEvent> _metadataToRegister = new List<MetadataRegistrationRequiredEvent>();
 
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
@@ -74,20 +75,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             Project.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
                 _templatesToRegister.Add(new TemplateRegistrationInfo(
-                    modelId: @event.GetValue("ModelId"), 
-                    templateId: @event.GetValue("TemplateId"), 
-                    templateType: @event.GetValue("TemplateType"), 
-                    role: @event.GetValue("Role"), 
-                    moduleDependency: @event.TryGetValue("Module Dependency"), 
+                    modelId: @event.GetValue("ModelId"),
+                    templateId: @event.GetValue("TemplateId"),
+                    templateType: @event.GetValue("TemplateType"),
+                    role: @event.GetValue("Role"),
+                    moduleDependency: @event.TryGetValue("Module Dependency"),
                     moduleVersion: @event.TryGetValue("Module Dependency Version")));
             });
 
-            Project.Application.EventDispatcher.Subscribe("MetadataRegistrationRequired", @event =>
+            Project.Application.EventDispatcher.Subscribe<MetadataRegistrationRequiredEvent>(@event =>
             {
-                _metadataToRegister.Add(new MetadataRegistrationInfo(
-                    target: @event.TryGetValue("Target"), 
-                    path: @event.GetValue("Path"), 
-                    id: @event.GetValue("Id")));
+                _metadataToRegister.Add(@event);
             });
         }
 
@@ -207,14 +205,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{metadataRegistration.Path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{metadataRegistration.Id}\"]");
                 if (existing == null)
                 {
-                    metadataRegistrations.Add(new XElement("install", 
-                        new XAttribute("target", metadataRegistration.Target ?? string.Empty), 
+                    metadataRegistrations.Add(new XElement("install",
+                        new XAttribute("target", string.Join(";", metadataRegistration.Targets.Select(x => x.Name))),
                         new XAttribute("src", metadataRegistration.Path),
                         new XAttribute("externalReference", metadataRegistration.Id)));
                 }
                 else
                 {
-                    existing.Attribute("target").Value = metadataRegistration.Target ?? string.Empty;
+                    existing.Attribute("target").Value = string.Join(";", metadataRegistration.Targets.Select(x => x.Name));
                     existing.Attribute("src").Value = metadataRegistration.Path;
 
                     if (!existing.Attributes("externalReference").Any())
