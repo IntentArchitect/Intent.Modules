@@ -97,6 +97,7 @@
   </templates>
   <decorators></decorators>
   <dependencies>
+    <dependency id="Intent.Common.Types" version="2.2.0" />
     <dependency id="Intent.Common.CSharp" version="2.2.0" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.2.0" />
   </dependencies>
