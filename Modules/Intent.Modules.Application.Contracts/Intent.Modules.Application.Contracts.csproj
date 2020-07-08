@@ -50,6 +50,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\DTO\Registrations.cs" />
     <Compile Include="Decorators\DataContractDTOAttributeDecorator.cs" />
+    <Compile Include="Templates\DTO\DTOTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DTOTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\DTO\DTOTemplatePartial.cs" />
     <Compile Include="Templates\DTO\IDTOAttributeDecorator.cs" />
     <Compile Include="Templates\ServiceContract\IServiceContractAttributeDecorator.cs" />

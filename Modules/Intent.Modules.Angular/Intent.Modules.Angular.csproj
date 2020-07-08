@@ -51,6 +51,31 @@
     <Compile Include="Editor\TypescriptNode.cs" />
     <Compile Include="Editor\TypescriptObjectLiteralExpression.cs" />
     <Compile Include="Editor\TypescriptVariableDeclaration.cs" />
+    <Compile Include="Templates\App\AppModuleTemplate\AppModuleTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppModuleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppRoutingModuleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Component\AngularComponentCssTemplate\AngularComponentCssTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AngularComponentCssTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AngularComponentHtmlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AngularComponentTsTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.cs">
       <DependentUpon>PaginatedSearchLayoutHtmlTemplateDecorator.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -70,6 +95,41 @@
     <Compile Include="Templates\AngularComponentCreatedEvent.cs" />
     <Content Include="README.txt" />
     <Compile Include="AngularTypescriptProjectItemTemplateBase.cs" />
+    <Compile Include="Templates\Core\ApiServiceTemplate\ApiServiceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApiServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Core\CoreModuleTemplate\CoreModuleTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreModuleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnvironmentTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Module\AngularModuleTemplate\AngularModuleTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AngularModuleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AngularRoutingModuleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AngularDTOTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AngularServiceProxyTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\TypescriptFileHelper.cs" />
     <Compile Include="Templates\Module\AngularModuleTemplate\AngularModuleTemplatePartial.cs" />
     <Compile Include="Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplatePartial.cs" />

@@ -48,6 +48,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\OwinStartup\OwinStartupTemplateRegistrations.cs" />
     <Compile Include="Templates\OwinStartup\IOwinStartupDecorator.cs" />
+    <Compile Include="Templates\OwinStartup\OwinStartupTemplate.cs">
+      <DependentUpon>OwinStartupTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Templates\OwinStartup\OwinStartupTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
