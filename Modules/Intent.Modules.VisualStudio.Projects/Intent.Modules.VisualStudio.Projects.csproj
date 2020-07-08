@@ -65,37 +65,12 @@
     <Compile Include="Sync\ApplicationSyncProcessor.cs" />
     <Compile Include="Sync\CoreProjectSyncProcessor.cs" />
     <Compile Include="Sync\FrameworkProjectSyncProcessor.cs" />
-    <Compile Include="Templates\AssemblyInfo\AssemblyInfoTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AssemblyInfoTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConsoleAppProgramTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplatePartial.cs" />
     <Compile Include="Templates\ConsoleApp\Program\ConsoleAppProgramTemplateRegistration.cs" />
-    <Compile Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CoreLibraryCSProjectTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\CoreLibrary\CsProject\CoreLibraryCSProjectTemplatePartial.cs" />
     <Compile Include="Templates\CoreLibrary\CsProject\CoreWebCSProjectTemplateRegistrations.cs" />
-    <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppSettingsTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplatePartial.cs" />
     <Compile Include="Templates\CoreWeb\AppSettings\AppSettingsTemplateRegistration.cs" />
-    <Compile Include="Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CoreWebCSProjectTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\CoreWeb\LaunchSettings\LaunchSettingsJsonTemplate.cs" />
     <Compile Include="Templates\CoreWeb\LaunchSettings\LaunchSettingsJsonTemplateRegistration.cs" />
     <Compile Include="Templates\NetCoreProjectExtensions.cs" />
@@ -107,11 +82,6 @@
     <Compile Include="Templates\NodeJSProjectFile\NodeJSProjectFileTemplate.cs" />
     <Compile Include="Templates\NodeJSProjectFile\Registrations.cs" />
     <Compile Include="Templates\VisualStudio2015Solution\Registrations.cs" />
-    <Compile Include="Templates\VisualStudio2015Solution\VisualStudio2015SolutionTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>VisualStudio2015SolutionTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\WcfServiceCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\WebApiServiceCSProjectFile\Registrations.cs" />
     <Compile Include="Templates\WebConfig\Registrations.cs" />
