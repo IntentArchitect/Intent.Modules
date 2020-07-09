@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -68,5 +69,6 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+        public const string SpecializationTypeId = "8f990b5b-a182-4fb8-a577-b985c8859078";
     }
 }

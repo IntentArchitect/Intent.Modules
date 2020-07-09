@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
     <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
   </ItemGroup>

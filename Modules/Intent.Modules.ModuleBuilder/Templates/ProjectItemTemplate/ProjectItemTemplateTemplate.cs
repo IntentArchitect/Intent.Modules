@@ -5,6 +5,7 @@ using Intent.Modules.ModuleBuilder.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Templates;
 
@@ -18,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
         {
         }
 
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
+        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath().Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
         public string FolderPath => string.Join("/", FolderBaseList);
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

@@ -9,8 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.Common.Types.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class FolderModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class FolderModel : IHasStereotypes, IMetadataModel, IHasFolder
     {
         public const string SpecializationType = "Folder";
         protected readonly IElement _element;
@@ -22,6 +22,7 @@ namespace Intent.Modules.Common.Types.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -35,6 +36,8 @@ namespace Intent.Modules.Common.Types.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        public FolderModel Folder { get; set; }
 
         [IntentManaged(Mode.Fully)]
         public IList<FolderModel> Folders => _element.ChildElements
@@ -68,6 +71,7 @@ namespace Intent.Modules.Common.Types.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
         public const string SpecializationTypeId = "4d95d53a-8855-4f35-aa82-e312643f5c5f";
     }
 }

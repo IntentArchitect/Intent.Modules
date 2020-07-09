@@ -9,6 +9,7 @@ using Intent.Templates;
 using Mono.TextTemplating;
 using System.Collections.Generic;
 using System.Text;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Api;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Common
@@ -30,7 +31,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
             _partialTemplateId = partialTemplateId;
         }
 
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
+        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath().Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
         public string FolderPath => string.Join("/", FolderBaseList);
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

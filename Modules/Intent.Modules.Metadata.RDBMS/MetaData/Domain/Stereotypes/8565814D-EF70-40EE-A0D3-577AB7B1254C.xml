@@ -3,7 +3,7 @@
   <name>Numeric</name>
   <targetMode>that-reference</targetMode>
   <targetElements>
-    <element>675c7b84-997a-44e0-82b9-cd724c07c9e6</element>
+    <element id="675c7b84-997a-44e0-82b9-cd724c07c9e6">675c7b84-997a-44e0-82b9-cd724c07c9e6</element>
   </targetElements>
   <applyMode>on-create</applyMode>
   <icon type="CharacterBox" source="N|#FFC107" />

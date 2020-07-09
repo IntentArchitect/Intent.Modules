@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -66,5 +67,6 @@ namespace Intent.Modelers.Domain.Api
         public IElement InternalElement => _element;
 
         public FolderModel Folder { get; }
+        public const string SpecializationTypeId = "c4c0c77f-720b-4e91-9c48-b58d2164d30a";
     }
 }

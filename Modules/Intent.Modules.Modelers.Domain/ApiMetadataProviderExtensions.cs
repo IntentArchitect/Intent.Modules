@@ -12,34 +12,39 @@ namespace Intent.Modelers.Domain.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<ClassModel> GetClassModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ClassModel> GetClassModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetClassModels(application);
+            return designer.GetElementsOfType(ClassModel.SpecializationTypeId)
+                .Select(x => new ClassModel(x))
+                .ToList();
         }
 
-        public static IList<CommentModel> GetCommentModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<CommentModel> GetCommentModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetCommentModels(application);
+            return designer.GetElementsOfType(CommentModel.SpecializationTypeId)
+                .Select(x => new CommentModel(x))
+                .ToList();
         }
 
-        public static IList<DiagramModel> GetDiagramModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<DiagramModel> GetDiagramModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetDiagramModels(application);
+            return designer.GetElementsOfType(DiagramModel.SpecializationTypeId)
+                .Select(x => new DiagramModel(x))
+                .ToList();
         }
 
-        public static IList<EnumModel> GetEnumModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<EnumModel> GetEnumModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetEnumModels(application);
+            return designer.GetElementsOfType(EnumModel.SpecializationTypeId)
+                .Select(x => new EnumModel(x))
+                .ToList();
         }
 
-        public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<TypeDefinitionModel> GetTypeDefinitionModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
-        }
-
-        public static IList<TypeDefinitionModel> GetTypeDefinitionModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetTypeDefinitionModels(application);
+            return designer.GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
+                .Select(x => new TypeDefinitionModel(x))
+                .ToList();
         }
 
     }

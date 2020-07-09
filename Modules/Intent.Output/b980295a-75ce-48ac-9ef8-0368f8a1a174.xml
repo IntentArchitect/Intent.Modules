@@ -59,11 +59,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\FolderModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\GeneralizationModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/GeneralizationModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -84,8 +79,8 @@
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\ApiMetadataProvider.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
@@ -104,8 +99,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\modelers\Domain.modeler.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Domain.modeler.config</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\modelers\Domain Types.designer.settings</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Domain Types.designer.settings</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\modelers\Domain.designer.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Domain.designer.config</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>
