@@ -26,12 +26,12 @@
     <property id="27d378b6-9011-4ced-86b7-b976d690ceb7">
       <name>Reference in Designer</name>
       <type>string</type>
-      <controlType>select</controlType>
+      <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>
       <placeholder />
       <valueOptions />
       <lookupTypes>
-        <type>7a6411a8-ffef-4209-91c6-8d12755a806a</type>
+        <type>7f5fcc9f-c721-4a31-bfe2-7909f4289420</type>
       </lookupTypes>
     </property>
   </properties>

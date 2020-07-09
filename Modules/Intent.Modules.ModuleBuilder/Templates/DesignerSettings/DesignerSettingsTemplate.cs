@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
             base.OnCreated();
             Project.Application.EventDispatcher.Publish(new MetadataRegistrationRequiredEvent(
                 Model.Id, 
-                Model.GetDesignerSettings().TargetDesigners()?.Select(x => (x.Id, x.Name)).ToList() ?? new List<(string Id, string Name)>(), 
+                Model.GetDesignerSettings().ExtendDesigners()?.Select(x => (x.Id, x.Name)).ToList() ?? new List<(string Id, string Name)>(), 
                 GetMetadata().GetRelativeFilePathWithFileNameWithExtension()));
             //Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
             //{

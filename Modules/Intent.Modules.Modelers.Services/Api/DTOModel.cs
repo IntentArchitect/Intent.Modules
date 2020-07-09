@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -18,7 +19,7 @@ namespace Intent.Modelers.Services.Api
         public DTOModel(IElement element)
         {
             _element = element;
-            Folder = _element.ParentElement?.SpecializationType == Api.FolderModel.SpecializationType ? new FolderModel(_element.ParentElement) : null;
+            Folder = _element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(_element.ParentElement) : null;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -79,5 +80,6 @@ namespace Intent.Modelers.Services.Api
         {
             return _element.ToString();
         }
+        public const string SpecializationTypeId = "fee0edca-4aa0-4f77-a524-6bbd84e78734";
     }
 }

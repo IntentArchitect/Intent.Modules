@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="55e213e3-1e43-4bb5-abe6-6ff77af23f39" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
-  <name>Services</name>
-  <display>Services</display>
+  <name>Services Types</name>
+  <display>Services Types</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -10,26 +10,25 @@
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="bd56e4e2-b75c-4400-8088-a1a3f21988f0" display="Icon" value="{&quot;source&quot;:&quot;./img/icons/shell/Services_256x.png&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
-        <property name="f577290d-ea2e-4609-8c90-7fd7bcf327d9" display="Display Order" value="1" isActive="true" />
-        <property name="c3f89951-374a-4bb5-bcf7-10a8f208f317" display="Is Reference" value="false" isActive="true" />
+        <property name="9566aa04-ab84-4fbc-b039-6e676159ed82" display="Is Reference" value="false" isActive="true" />
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Modelers.Services.Api" isActive="true" />
         <property name="6f3c57c5-c50d-46bb-b690-2cf081ceb0b3" display="NuGet Package Id" value="Intent.Modules.Modelers.Services" isActive="true" />
         <property name="e0c92be7-3836-4bf6-bc89-9dca2ac28c6d" display="NuGet Package Version" value="2.1.1" isActive="true" />
+        <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" value="[]" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="43a61085-7660-4fa4-b50c-fb24c05c9788" type="Package Settings">
-      <name>Package Settings</name>
-      <display>Package Settings</display>
+    <childElement id="43a61085-7660-4fa4-b50c-fb24c05c9788" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
+      <name>Package</name>
+      <display>Package</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="9e87ca6d-91d9-466a-8ca6-69d72814e49f" type="Context Menu">
+        <childElement id="9e87ca6d-91d9-466a-8ca6-69d72814e49f" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
           <name>Creation Options</name>
           <display>[context menu]</display>
           <isAbstract>false</isAbstract>
@@ -38,7 +37,7 @@
           <parentFolderId>43a61085-7660-4fa4-b50c-fb24c05c9788</parentFolderId>
           <stereotypes />
           <childElements>
-            <childElement id="261c1c28-660a-4cc4-8a4d-36612c91bd6b" type="Element Creation Option">
+            <childElement id="261c1c28-660a-4cc4-8a4d-36612c91bd6b" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Service</name>
               <display>New Service: Service</display>
               <isAbstract>false</isAbstract>
@@ -68,7 +67,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="55ffffbd-dc77-40a4-b8d7-6f563403f97d" type="Element Creation Option">
+            <childElement id="55ffffbd-dc77-40a4-b8d7-6f563403f97d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New DTO</name>
               <display>New DTO: DTO</display>
               <isAbstract>false</isAbstract>
@@ -98,13 +97,13 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="57e85af3-309c-42fd-831d-44f9c77dee21" type="Element Creation Option">
+            <childElement id="57e85af3-309c-42fd-831d-44f9c77dee21" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Type</name>
               <display>New Type: Type-Definition</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="c9000d10-b6d7-4f21-bcbc-651c641ed18d">
-                <typeId>9eb5a490-c5da-4283-9086-2f214b62a9c1</typeId>
+                <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -128,13 +127,13 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="d6cc0a24-274d-42b3-8330-df3c59b44e98" type="Element Creation Option">
+            <childElement id="d6cc0a24-274d-42b3-8330-df3c59b44e98" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Folder</name>
               <display>New Folder: Folder</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="11b0b3a3-7abc-4ad1-a184-cd5d3208c11c">
-                <typeId>767e34b3-14c3-4769-a135-ab361564ba10</typeId>
+                <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -158,7 +157,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="e7b26012-e796-44a1-881c-a3867b2018a3" type="Element Creation Option">
+            <childElement id="e7b26012-e796-44a1-881c-a3867b2018a3" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Enum</name>
               <display>New Enum: Enum</display>
               <isAbstract>false</isAbstract>
@@ -188,7 +187,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="f1dfb02d-7c88-45b5-97ae-adc437b362b1" type="Stereotype-Definition Creation Option">
+            <childElement id="f1dfb02d-7c88-45b5-97ae-adc437b362b1" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
               <name>New Stereotype-Definition</name>
               <display>New Stereotype-Definition: Stereotype-Definition</display>
               <isAbstract>false</isAbstract>

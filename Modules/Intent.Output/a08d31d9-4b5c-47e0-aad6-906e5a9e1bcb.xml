@@ -3,77 +3,72 @@
   <ApplicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\DTOFieldModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/DTOFieldModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\DTOModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/DTOModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\EnumLiteralModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/EnumLiteralModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\EnumModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/EnumModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\FolderModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\OperationModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/OperationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ParameterModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/ParameterModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ServiceModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/ServiceModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\TypeDefinitionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/TypeDefinitionModel.cs</ProjectRelativeFilePath>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\ApiMetadataProvider.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\modelers\Services.modeler.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Services.modeler.config</ProjectRelativeFilePath>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\modelers\Services Types.designer.settings</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Services Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>1e61d76f-dcf8-4ad2-86da-dd907af4aa1e</ProjectId>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\modelers\Services.designer.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Services.designer.config</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>

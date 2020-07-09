@@ -58,7 +58,7 @@
       <isRequiredFunction />
     </property>
     <property id="fdbbd211-a162-4f29-bcdb-1250309d8aef">
-      <name>Target Designers</name>
+      <name>Extend Designers</name>
       <type>string</type>
       <controlType>multi-select</controlType>
       <optionsSource>lookup-element</optionsSource>

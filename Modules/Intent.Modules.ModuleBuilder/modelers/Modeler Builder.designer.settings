@@ -337,7 +337,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <specializationType>Designer Reference</specializationType>
           <specializationTypeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</specializationTypeId>
           <text>Add Designer Reference</text>
-          <defaultName>NewDesignerReference</defaultName>
+          <defaultName>reference</defaultName>
           <icon type="CharacterBox" source="R|#00BFA5" />
           <allowMultiple>true</allowMultiple>
         </option>

@@ -37,6 +37,7 @@
     </stereotypes>
   </targetEnd>
   <associationType>Association</associationType>
+  <associationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</associationTypeId>
   <stereotypes>
     <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
       <addedByDefault>false</addedByDefault>

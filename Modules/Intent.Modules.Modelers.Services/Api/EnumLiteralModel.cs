@@ -67,5 +67,6 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public string Value => _element.Value;
+        public const string SpecializationTypeId = "cd1dc4bd-30cb-473b-9922-05d9179c4e93";
     }
 }

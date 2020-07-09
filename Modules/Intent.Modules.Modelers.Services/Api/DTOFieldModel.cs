@@ -67,5 +67,6 @@ namespace Intent.Modelers.Services.Api
         {
             return _element.ToString();
         }
+        public const string SpecializationTypeId = "7baed1fd-469b-4980-8fd9-4cefb8331eb2";
     }
 }

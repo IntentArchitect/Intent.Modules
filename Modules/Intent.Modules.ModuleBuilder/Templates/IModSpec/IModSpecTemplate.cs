@@ -232,13 +232,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (installedPackage == null)
                 {
                     metadataRegistrations.Add(new XElement("install",
-                        new XAttribute("target", package.GetStereotypeProperty<IElement>("Package Settings", "Reference in Designer")?.Name ?? string.Empty),
+                        new XAttribute("target", string.Join(";", package.GetStereotypeProperty<IElement[]>("Package Settings", "Reference in Designer").Select(x => x.Name))),
                         new XAttribute("src", path),
                         new XAttribute("externalReference", package.Id)));
                 }
                 else
                 {
-                    installedPackage.Attribute("target").Value = package.GetStereotypeProperty<IElement>("Package Settings", "Reference in Designer")?.Name ?? string.Empty;
+                    installedPackage.Attribute("target").Value = string.Join(";", package.GetStereotypeProperty<IElement[]>("Package Settings", "Reference in Designer").Select(x => x.Name));
                     installedPackage.Attribute("src").Value = path;
 
                     if (!installedPackage.Attributes("externalReference").Any())

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="81104ae6-2bc5-4bae-b05a-f987b0372d81" type="Designer" typeId="7f5fcc9f-c721-4a31-bfe2-7909f4289420">
+  <name>Services</name>
+  <display>Services</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>6968d532-461a-4cc8-a30e-d3ec87c50cdc</parentFolderId>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="6761be76-7c09-4ad4-8a65-82c6d17992db" name="Designer Config">
+      <addedByDefault>false</addedByDefault>
+      <properties>
+        <property name="84ac204b-f187-45b7-b3c3-efb26db2d9d8" display="Icon" value="{&quot;source&quot;:&quot;./img/icons/shell/Services_256x.png&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="179da558-7e6e-43b0-ab61-5d76a2b879d0" display="Display Order" value="1" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="0c91f86f-8a6f-4386-87be-217789016b8f" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: Services Types</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="e4816569-3255-46fa-9255-056b61350dbe">
+        <typeId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>81104ae6-2bc5-4bae-b05a-f987b0372d81</parentFolderId>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="8ccf6171-c6f2-453d-b2ae-f135dc997213" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: Common Types</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="653610a4-0f32-4fe9-8da3-40bc4275581f">
+        <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>81104ae6-2bc5-4bae-b05a-f987b0372d81</parentFolderId>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

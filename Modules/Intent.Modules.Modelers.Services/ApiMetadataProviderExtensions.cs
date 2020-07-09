@@ -13,29 +13,25 @@ namespace Intent.Modelers.Services.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<DTOModel> GetDTOModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<DTOModel> GetDTOModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetDTOModels(application);
+            return designer.GetElementsOfType(DTOModel.SpecializationTypeId)
+                .Select(x => new DTOModel(x))
+                .ToList();
         }
 
-        public static IList<EnumModel> GetEnumModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<EnumModel> GetEnumModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetEnumModels(application);
+            return designer.GetElementsOfType(EnumModel.SpecializationTypeId)
+                .Select(x => new EnumModel(x))
+                .ToList();
         }
 
-        public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ServiceModel> GetServiceModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
-        }
-
-        public static IList<ServiceModel> GetServiceModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetServiceModels(application);
-        }
-
-        public static IList<TypeDefinitionModel> GetTypeDefinitionModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetTypeDefinitionModels(application);
+            return designer.GetElementsOfType(ServiceModel.SpecializationTypeId)
+                .Select(x => new ServiceModel(x))
+                .ToList();
         }
 
     }

@@ -1,50 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="767e34b3-14c3-4769-a135-ab361564ba10" type="Element Settings">
-  <name>Folder</name>
-  <display>Folder</display>
+<class id="9b6f281b-71be-4e61-bb4c-b474c3be6d04" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Folder Extension</name>
+  <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
+  <typeReference id="80b765b0-cd1b-43f6-bed8-f8cd1696746c">
+    <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</parentFolderId>
-  <stereotypes>
-    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
-      <addedByDefault>true</addedByDefault>
-      <properties>
-        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Own File" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/Folder_02_256x.png&quot;}" isActive="true" />
-        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/FolderOpen_02_256x.png&quot;}" isActive="true" />
-        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
-        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
-        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
-        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
-        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
-        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
-        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
-      </properties>
-    </stereotype>
-    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
-      <addedByDefault>true</addedByDefault>
-      <properties>
-        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
-        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
-        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
-        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
-        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
-        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
-      </properties>
-    </stereotype>
-  </stereotypes>
+  <stereotypes />
   <childElements>
-    <childElement id="59f70da0-36f9-498b-a611-39a68528e395" type="Context Menu">
+    <childElement id="59f70da0-36f9-498b-a611-39a68528e395" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>767e34b3-14c3-4769-a135-ab361564ba10</parentFolderId>
+      <parentFolderId>9b6f281b-71be-4e61-bb4c-b474c3be6d04</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="792d5ace-8307-46b5-bc9c-5960d5927378" type="Element Creation Option">
+        <childElement id="792d5ace-8307-46b5-bc9c-5960d5927378" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Service</name>
           <display>New Service: Service</display>
           <isAbstract>false</isAbstract>
@@ -74,7 +55,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="d4e0c7d7-04a9-4a09-877b-7cd458e29cc3" type="Element Creation Option">
+        <childElement id="d4e0c7d7-04a9-4a09-877b-7cd458e29cc3" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New DTO</name>
           <display>New DTO: DTO</display>
           <isAbstract>false</isAbstract>
@@ -104,13 +85,13 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="3b3fc1ff-3bdf-4aed-bd4f-21dce0ac6e92" type="Element Creation Option">
+        <childElement id="3b3fc1ff-3bdf-4aed-bd4f-21dce0ac6e92" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="2f19b9cc-6dbc-455a-b668-282e54549485">
-            <typeId>9eb5a490-c5da-4283-9086-2f214b62a9c1</typeId>
+            <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -134,7 +115,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="8c3215d9-82d0-4970-a94f-3c6e2dadb639" type="Element Creation Option">
+        <childElement id="8c3215d9-82d0-4970-a94f-3c6e2dadb639" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Enum</name>
           <display>New Enum: Enum</display>
           <isAbstract>false</isAbstract>
@@ -164,37 +145,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="c38313a3-1266-4833-acc9-4cb05f35cc3b" type="Element Creation Option">
-          <name>New Folder</name>
-          <display>New Folder: Folder</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="6b97fb09-de29-48b4-ac85-fec0af3df53c">
-            <typeId>767e34b3-14c3-4769-a135-ab361564ba10</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>59f70da0-36f9-498b-a611-39a68528e395</parentFolderId>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment>Overrides the default creation option settings.</comment>
-              <addedByDefault>true</addedByDefault>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + f" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="0" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-        <childElement id="5ae15350-4343-4e93-b194-c92383869c15" type="Stereotype-Definition Creation Option">
+        <childElement id="5ae15350-4343-4e93-b194-c92383869c15" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="fee0edca-4aa0-4f77-a524-6bbd84e78734" type="Element Settings">
+<class id="fee0edca-4aa0-4f77-a524-6bbd84e78734" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>DTO</name>
   <display>DTO</display>
   <isAbstract>false</isAbstract>
@@ -35,7 +35,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="f674d8fa-633a-468e-a8d9-fe6484f46f54" type="Context Menu">
+    <childElement id="f674d8fa-633a-468e-a8d9-fe6484f46f54" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
@@ -44,7 +44,7 @@
       <parentFolderId>fee0edca-4aa0-4f77-a524-6bbd84e78734</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="d42e6f69-09ee-4a76-8be1-120c0756e990" type="Element Creation Option">
+        <childElement id="d42e6f69-09ee-4a76-8be1-120c0756e990" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Field</name>
           <display>Add Field: DTO-Field</display>
           <isAbstract>false</isAbstract>
@@ -76,7 +76,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="1f747d14-681c-4a20-8c68-34223f41b825" type="Mapping Settings">
+    <childElement id="1f747d14-681c-4a20-8c68-34223f41b825" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>NewMappingSettings</name>
       <display>[mappings]</display>
       <isAbstract>false</isAbstract>
@@ -92,7 +92,7 @@
         </stereotype>
       </stereotypes>
       <childElements>
-        <childElement id="e45defc1-8775-49c0-bf70-5ec59684e944" type="Element Mapping">
+        <childElement id="e45defc1-8775-49c0-bf70-5ec59684e944" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
           <display>[mapping]: Class -&gt; DTO</display>
           <isAbstract>false</isAbstract>
@@ -119,7 +119,7 @@
             </stereotype>
           </stereotypes>
           <childElements>
-            <childElement id="a4c91030-1ba4-4939-8896-1a219e98de3e" type="Element Mapping">
+            <childElement id="a4c91030-1ba4-4939-8896-1a219e98de3e" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: Attribute -&gt; DTO-Field</display>
               <isAbstract>false</isAbstract>
@@ -147,7 +147,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="8988ddc1-c496-4ff3-9606-bebef9015fcd" type="Element Mapping">
+            <childElement id="8988ddc1-c496-4ff3-9606-bebef9015fcd" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: Operation -&gt; DTO-Field</display>
               <isAbstract>false</isAbstract>
@@ -175,7 +175,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="0a66170b-1599-42d0-99e8-411a9aa5ccde" type="Element Mapping">
+            <childElement id="0a66170b-1599-42d0-99e8-411a9aa5ccde" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: Association -&gt; DTO-Field</display>
               <isAbstract>false</isAbstract>
@@ -203,7 +203,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="608eb600-d24e-4bee-9318-b6523c9b3f17" type="Element Mapping">
+            <childElement id="608eb600-d24e-4bee-9318-b6523c9b3f17" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: Association -&gt; DTO-Field</display>
               <isAbstract>false</isAbstract>
@@ -231,7 +231,7 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="b8c4aa5c-58a7-477a-a7a0-6e388e013d2b" type="Element Mapping">
+            <childElement id="b8c4aa5c-58a7-477a-a7a0-6e388e013d2b" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: Generalization -&gt; (Traverse)</display>
               <isAbstract>false</isAbstract>

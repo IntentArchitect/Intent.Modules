@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <id>55e213e3-1e43-4bb5-abe6-6ff77af23f39</id>
+  <name>Services Types</name>
+  <packageSettings>
+    <packageSetting type="Package" typeId="43a61085-7660-4fa4-b50c-fb24c05c9788">
+      <requiredPackages />
+      <creationOptions>
+        <option type="element">
+          <specializationType>Service</specializationType>
+          <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
+          <text>New Service</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>NewService</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/services/Service_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>DTO</specializationType>
+          <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
+          <text>New DTO</text>
+          <shortcut>ctrl + shfit + d</shortcut>
+          <defaultName>NewDTO</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Type-Definition</specializationType>
+          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
+          <text>New Type</text>
+          <shortcut>ctrl + shfit + t</shortcut>
+          <defaultName>NewType</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option order="0" type="element">
+          <specializationType>Folder</specializationType>
+          <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
+          <text>New Folder</text>
+          <shortcut>ctrl + shift + f</shortcut>
+          <defaultName>NewFolder</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Enum</specializationType>
+          <specializationTypeId>bc763e02-b38f-41e4-aac3-ea62e39d34f2</specializationTypeId>
+          <text>New Enum</text>
+          <shortcut>ctrl + shift + e</shortcut>
+          <defaultName>NewEnum</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="stereotype-definition">
+          <specializationType>Stereotype-Definition</specializationType>
+          <specializationTypeId>Stereotype-Definition</specializationTypeId>
+          <text>New Stereotype-Definition</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>NewStereotypeDefinition</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <typeOrder>
+        <type order="0">Folder</type>
+        <type order="1">Service</type>
+        <type order="2">DTO</type>
+        <type order="3">Type-Definition</type>
+        <type order="4">Enum</type>
+        <type order="5">Stereotype-Definition</type>
+      </typeOrder>
+    </packageSetting>
+  </packageSettings>
+  <packageExtensions />
+  <elementSettings>
+    <elementSetting type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+      <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>true</allowGenericTypes>
+      <allowMapping>true</allowMapping>
+      <allowSorting>true</allowSorting>
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">DTO-Field</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>DTO-Field</specializationType>
+          <specializationTypeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</specializationTypeId>
+          <text>Add Field</text>
+          <shortcut>ctrl + shift + f</shortcut>
+          <defaultName>field</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <mappingSettings>
+        <defaultModeler>Domain</defaultModeler>
+        <mappings>
+          <mapping id="e45defc1-8775-49c0-bf70-5ec59684e944">
+            <criteria specializationType="Class">
+              <hasTypeReference d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <isCollection d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <hasChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+            </criteria>
+            <mapTo specializationType="DTO" childMappingMode="map-to-child" />
+            <childMappings>
+              <mapping id="a4c91030-1ba4-4939-8896-1a219e98de3e">
+                <criteria specializationType="Attribute">
+                  <hasTypeReference>true</hasTypeReference>
+                  <isCollection d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  <hasChildren>false</hasChildren>
+                </criteria>
+                <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                <childMappings />
+              </mapping>
+              <mapping id="8988ddc1-c496-4ff3-9606-bebef9015fcd">
+                <criteria specializationType="Operation">
+                  <hasTypeReference>true</hasTypeReference>
+                  <isCollection d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  <hasChildren>false</hasChildren>
+                </criteria>
+                <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                <childMappings />
+              </mapping>
+              <mapping id="0a66170b-1599-42d0-99e8-411a9aa5ccde">
+                <criteria specializationType="Association">
+                  <hasTypeReference>true</hasTypeReference>
+                  <isCollection>true</isCollection>
+                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                </criteria>
+                <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                <childMappings />
+              </mapping>
+              <mapping id="608eb600-d24e-4bee-9318-b6523c9b3f17">
+                <criteria specializationType="Association">
+                  <hasTypeReference>true</hasTypeReference>
+                  <isCollection>false</isCollection>
+                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                </criteria>
+                <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="e45defc1-8775-49c0-bf70-5ec59684e944" />
+                <childMappings />
+              </mapping>
+              <mapping id="b8c4aa5c-58a7-477a-a7a0-6e388e013d2b">
+                <criteria specializationType="Generalization">
+                  <hasTypeReference>true</hasTypeReference>
+                  <isCollection>false</isCollection>
+                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                </criteria>
+                <mapTo childMappingMode="traverse" useMappingSettings="e45defc1-8775-49c0-bf70-5ec59684e944" />
+                <childMappings />
+              </mapping>
+            </childMappings>
+          </mapping>
+        </mappings>
+      </mappingSettings>
+      <childElementSettings>
+        <childElementSetting type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+          <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>${name}: ${typeReference.display}</displayFunction>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>true</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type>Enum</type>
+              <type>DTO</type>
+              <type>Type-Definition</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>true</allowIsNullable>
+            <allowIsCollection>true</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+    <elementSetting type="Enum" typeId="bc763e02-b38f-41e4-aac3-ea62e39d34f2">
+      <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Enum-Literal</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Enum-Literal</specializationType>
+          <specializationTypeId>cd1dc4bd-30cb-473b-9922-05d9179c4e93</specializationTypeId>
+          <text>Add Literal</text>
+          <defaultName>NewEnumLiteral</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <childElementSettings>
+        <childElementSetting type="Enum-Literal" typeId="cd1dc4bd-30cb-473b-9922-05d9179c4e93">
+          <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>`${name}${value !== null &amp;&amp; value != "" ? " = " + value : ""}`</displayFunction>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>true</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>true</allowSetValue>
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+    <elementSetting type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
+      <icon type="UrlImagePath" source="./img/icons/services/Service_256x.png" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Operation</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Operation</specializationType>
+          <specializationTypeId>e030c97a-e066-40a7-8188-808c275df3cb</specializationTypeId>
+          <text>Add Operation</text>
+          <shortcut>ctrl + shift + o</shortcut>
+          <defaultName>Operation</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <childElementSettings>
+        <childElementSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+          <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>${name}${genericTypes}(${children("Parameter").map(x =&gt; x.name + ": " + x.typeReference.display).join(", ")}): ${(typeReference.typeId ? typeReference.display : "void")}</displayFunction>
+          <allowRename>true</allowRename>
+          <allowAbstract>true</allowAbstract>
+          <allowGenericTypes>true</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>false</isRequired>
+            <targetTypes>
+              <type>Enum</type>
+              <type>DTO</type>
+              <type>Type-Definition</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>true</allowIsNullable>
+            <allowIsCollection>true</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <typeOrder>
+            <type order="0">Parameter</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Parameter</specializationType>
+              <specializationTypeId>00208d20-469d-41cb-8501-768fd5eb796b</specializationTypeId>
+              <text>Add Parameter</text>
+              <shortcut>ctrl + shift + p</shortcut>
+              <defaultName>param</defaultName>
+              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <childElementSettings>
+            <childElementSetting type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>`in : ${this.name}: ${this.typeReference.display}`</displayFunction>
+              <allowRename>true</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>true</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>true</isRequired>
+                <targetTypes>
+                  <type>Enum</type>
+                  <type>DTO</type>
+                  <type>Type-Definition</type>
+                </targetTypes>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>true</allowIsNullable>
+                <allowIsCollection>true</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <creationOptions>
+        <option type="element">
+          <specializationType>Service</specializationType>
+          <specializationTypeId>b16578a5-27b1-4047-a8df-f0b783d706bd</specializationTypeId>
+          <text>New Service</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>NewService</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/services/Service_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>DTO</specializationType>
+          <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
+          <text>New DTO</text>
+          <shortcut>ctrl + shfit + d</shortcut>
+          <defaultName>NewDTO</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Type-Definition</specializationType>
+          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
+          <text>New Type</text>
+          <shortcut>ctrl + shfit + t</shortcut>
+          <defaultName>NewType</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Enum</specializationType>
+          <specializationTypeId>bc763e02-b38f-41e4-aac3-ea62e39d34f2</specializationTypeId>
+          <text>New Enum</text>
+          <shortcut>ctrl + shift + e</shortcut>
+          <defaultName>NewEnum</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="stereotype-definition">
+          <specializationType>Stereotype-Definition</specializationType>
+          <specializationTypeId>Stereotype-Definition</specializationTypeId>
+          <text>New Stereotype-Definition</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>NewStereotypeDefinition</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <typeOrder>
+        <type>Service</type>
+        <type>DTO</type>
+        <type>Type-Definition</type>
+        <type>Enum</type>
+        <type>Stereotype-Definition</type>
+      </typeOrder>
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings />
+</settings>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 using System.Linq;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -16,7 +17,7 @@ namespace Intent.Modelers.Services.Api
         public ServiceModel(IElement element)
         {
             _element = element;
-            Folder = _element.ParentElement?.SpecializationType == Api.FolderModel.SpecializationType ? new FolderModel(_element.ParentElement) : null;
+            Folder = _element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(_element.ParentElement) : null;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -68,5 +69,6 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+        public const string SpecializationTypeId = "b16578a5-27b1-4047-a8df-f0b783d706bd";
     }
 }
