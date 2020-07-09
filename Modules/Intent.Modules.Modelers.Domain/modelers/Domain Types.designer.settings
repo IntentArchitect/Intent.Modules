@@ -498,10 +498,8 @@ white-space: inherit;`</style>
     </elementExtension>
   </elementExtensions>
   <associationSettings>
-    <associationSetting>
-      <specializationType>Association</specializationType>
-      <sourceEnd>
-        <specializationType>Association Source End</specializationType>
+    <associationSetting type="Association" typeId="eaf9ed4e-0b61-4ac1-ba88-09f912c12087">
+      <sourceEnd type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
@@ -515,8 +513,7 @@ white-space: inherit;`</style>
           <isCollectionDefault>true</isCollectionDefault>
         </typeReferenceSetting>
       </sourceEnd>
-      <targetEnd>
-        <specializationType>Association Target End</specializationType>
+      <targetEnd type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
@@ -556,10 +553,8 @@ white-space: inherit;`</style>
         </targetEnd>
       </visualSettings>
     </associationSetting>
-    <associationSetting>
-      <specializationType>Comment Association</specializationType>
-      <sourceEnd>
-        <specializationType>Comment Source End</specializationType>
+    <associationSetting type="Comment Association" typeId="5264c135-e856-468d-8bd7-154b75842256">
+      <sourceEnd type="Comment Source End" typeId="7e98213c-4a9c-4d6f-98fc-f185948cc9e8">
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
@@ -573,8 +568,7 @@ white-space: inherit;`</style>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
       </sourceEnd>
-      <targetEnd>
-        <specializationType>Comment Target End</specializationType>
+      <targetEnd type="Comment Target End" typeId="b7edce45-ccf0-47ed-b79f-86d5145c9f62">
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
@@ -600,10 +594,8 @@ white-space: inherit;`</style>
         </targetEnd>
       </visualSettings>
     </associationSetting>
-    <associationSetting>
-      <specializationType>Generalization</specializationType>
-      <sourceEnd>
-        <specializationType>Generalization Source End</specializationType>
+    <associationSetting type="Generalization" typeId="5de35973-3ac7-4e65-b48c-385605aec561">
+      <sourceEnd type="Generalization Source End" typeId="8190bf43-222c-4b53-8a44-14626efe3574">
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
@@ -617,8 +609,7 @@ white-space: inherit;`</style>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
       </sourceEnd>
-      <targetEnd>
-        <specializationType>Generalization Target End</specializationType>
+      <targetEnd type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>

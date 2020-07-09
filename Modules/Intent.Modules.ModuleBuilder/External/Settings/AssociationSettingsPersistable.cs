@@ -4,8 +4,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 {
     public class AssociationSettingsPersistable
     {
-        [XmlElement("specializationType")]
+        [XmlAttribute("type")]
         public string SpecializationType { get; set; }
+
+        [XmlAttribute("typeId")]
+        public string SpecializationTypeId { get; set; }
 
         [XmlElement("icon")]
         public IconModelPersistable Icon { get; set; }
@@ -27,10 +30,18 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class AssociationEndSettingsPersistable
     {
-        [XmlElement("specializationType")]
+        [XmlAttribute("type")]
         public string SpecializationType { get; set; }
+
+        [XmlAttribute("typeId")]
+        public string SpecializationTypeId { get; set; }
 
         [XmlElement("typeReferenceSetting")]
         public TypeReferenceSettingPersistable TypeReferenceSetting { get; set; }
+
+        public override string ToString()
+        {
+            return $"{nameof(SpecializationType)} = '{SpecializationType}'";
+        }
     }
 }

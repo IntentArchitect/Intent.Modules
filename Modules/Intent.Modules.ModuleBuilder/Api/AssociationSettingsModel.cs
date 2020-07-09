@@ -58,10 +58,12 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new AssociationSettingsPersistable
             {
+                SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
                 Icon = this.SourceEnd.GetSettings().Icon().ToPersistable(),
                 SourceEnd = new AssociationEndSettingsPersistable
                 {
+                    SpecializationTypeId = this.SourceEnd.Id,
                     SpecializationType = this.SourceEnd.Name,
                     TypeReferenceSetting = new TypeReferenceSettingPersistable()
                     {
@@ -76,6 +78,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 },
                 TargetEnd = new AssociationEndSettingsPersistable
                 {
+                    SpecializationTypeId = this.TargetEnd.Id,
                     SpecializationType = this.TargetEnd.Name,
                     TypeReferenceSetting = new TypeReferenceSettingPersistable()
                     {
