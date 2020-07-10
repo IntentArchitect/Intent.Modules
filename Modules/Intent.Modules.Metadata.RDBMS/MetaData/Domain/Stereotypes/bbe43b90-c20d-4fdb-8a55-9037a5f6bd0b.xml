@@ -3,8 +3,8 @@
   <name>Index</name>
   <targetMode>of-type</targetMode>
   <targetElements>
-    <element id="attribute">attribute</element>
-    <element id="association target end">association target end</element>
+    <element id="0090fb93-483e-41af-a11d-5ad2dc796adf">Attribute</element>
+    <element id="0a66489f-30aa-417b-a75d-b945863366fd">Association Target End</element>
   </targetElements>
   <applyMode>manually</applyMode>
   <icon type="CharacterBox" source="I|#424242" />

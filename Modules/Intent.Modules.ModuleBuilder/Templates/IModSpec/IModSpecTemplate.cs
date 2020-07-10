@@ -205,21 +205,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{metadataRegistration.Path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{metadataRegistration.Id}\"]");
                 if (existing == null)
                 {
-                    metadataRegistrations.Add(new XElement("install",
-                        new XAttribute("target", string.Join(";", metadataRegistration.Targets.Select(x => x.Name))),
-                        new XAttribute("src", metadataRegistration.Path),
-                        new XAttribute("externalReference", metadataRegistration.Id)));
+                    existing = new XElement("install");
+                    metadataRegistrations.Add(new XElement("install"));
                 }
-                else
-                {
-                    existing.Attribute("target").Value = string.Join(";", metadataRegistration.Targets.Select(x => x.Name));
-                    existing.Attribute("src").Value = metadataRegistration.Path;
+                existing.SetAttributeValue("target", metadataRegistration.Targets.Any()
+                        ? string.Join(";", metadataRegistration.Targets.Select(x => x.Name))
+                        : null);
 
-                    if (!existing.Attributes("externalReference").Any())
-                    {
-                        existing.Add(new XAttribute("externalReference", metadataRegistration.Id));
-                    }
-                }
+                existing.SetAttributeValue("src", metadataRegistration.Path);
+                existing.SetAttributeValue("externalReference", metadataRegistration.Id);
             }
 
             var packagesToInclude = _metadataManager.GetMetadata<IPackage>("Module Builder", Project.Application.Id)
@@ -228,24 +222,20 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             foreach (var package in packagesToInclude)
             {
                 var path = CrossPlatformPathHelpers.NormalizePath(Path.GetRelativePath(GetMetadata().GetFullLocationPath(), package.FileLocation));
-                var installedPackage = doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
-                if (installedPackage == null)
+                var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
+                if (existing == null)
                 {
-                    metadataRegistrations.Add(new XElement("install",
-                        new XAttribute("target", string.Join(";", package.GetStereotypeProperty<IElement[]>("Package Settings", "Reference in Designer").Select(x => x.Name))),
-                        new XAttribute("src", path),
-                        new XAttribute("externalReference", package.Id)));
+                    existing = new XElement("install");
+                    metadataRegistrations.Add(new XElement("install"));
                 }
-                else
-                {
-                    installedPackage.Attribute("target").Value = string.Join(";", package.GetStereotypeProperty<IElement[]>("Package Settings", "Reference in Designer").Select(x => x.Name));
-                    installedPackage.Attribute("src").Value = path;
 
-                    if (!installedPackage.Attributes("externalReference").Any())
-                    {
-                        installedPackage.Add(new XAttribute("externalReference", package.Id));
-                    }
-                }
+                var targets = package.GetStereotypeProperty<IElement[]>("Package Settings", "Reference in Designer");
+                existing.SetAttributeValue("target", targets.Any()
+                    ? string.Join(";", targets.Select(x => x.Name))
+                    : null);
+
+                existing.SetAttributeValue("src", path);
+                existing.SetAttributeValue("externalReference", package.Id);
             }
 
             var managedInstalls = _metadataToRegister.Select(x => x.Id).Concat(packagesToInclude.Select(x => x.Id)).ToList();

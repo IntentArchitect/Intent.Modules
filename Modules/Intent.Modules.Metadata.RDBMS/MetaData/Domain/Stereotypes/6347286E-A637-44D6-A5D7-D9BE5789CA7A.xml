@@ -3,7 +3,7 @@
   <name>Text</name>
   <targetMode>that-reference</targetMode>
   <targetElements>
-    <element id="d384db9c-a279-45e1-801e-e4e8099625f2">d384db9c-a279-45e1-801e-e4e8099625f2</element>
+    <element id="d384db9c-a279-45e1-801e-e4e8099625f2">string</element>
   </targetElements>
   <applyMode>manually</applyMode>
   <icon type="CharacterBox" source="T|#FFC107" />
@@ -35,7 +35,6 @@
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(MAX)</placeholder>
-      <defaultValue />
       <valueOptions />
       <lookupTypes />
     </property>
