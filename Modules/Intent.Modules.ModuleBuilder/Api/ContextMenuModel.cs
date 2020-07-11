@@ -16,7 +16,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Context Menu";
         protected readonly IElement _element;
 
-        public ContextMenuModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public ContextMenuModel(IElement element, string requiredType = SpecializationType)
         {
             if (element.SpecializationType != SpecializationType)
             {

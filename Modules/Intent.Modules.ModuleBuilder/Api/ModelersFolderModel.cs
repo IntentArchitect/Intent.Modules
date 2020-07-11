@@ -15,7 +15,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Modelers Folder";
         private readonly IElement _element;
 
-        public ModelersFolderModel(IElement element)
+        public ModelersFolderModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

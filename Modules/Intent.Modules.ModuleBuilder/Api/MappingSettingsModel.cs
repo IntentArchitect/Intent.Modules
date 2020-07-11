@@ -16,7 +16,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Mapping Settings";
         protected readonly IElement _element;
 
-        public MappingSettingsModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public MappingSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

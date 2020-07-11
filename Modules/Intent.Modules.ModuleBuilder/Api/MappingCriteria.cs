@@ -15,7 +15,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Mapping Criteria";
         private readonly IElement _element;
 
-        public MappingCriteria(IElement element)
+        public MappingCriteria(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

@@ -17,6 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Association Destination End Settings";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public AssociationDestinationEndSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))

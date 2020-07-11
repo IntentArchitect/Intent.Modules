@@ -15,7 +15,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Decorator";
         protected readonly IElement _element;
 
-        public DecoratorModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public DecoratorModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

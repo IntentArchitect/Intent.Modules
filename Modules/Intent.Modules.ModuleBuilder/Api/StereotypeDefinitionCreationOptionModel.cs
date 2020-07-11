@@ -19,6 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Stereotype-Definition Creation Option";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public StereotypeDefinitionCreationOptionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))

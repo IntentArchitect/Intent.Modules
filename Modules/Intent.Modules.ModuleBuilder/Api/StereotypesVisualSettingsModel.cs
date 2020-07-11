@@ -16,6 +16,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Stereotypes Visual Settings";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public StereotypesVisualSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))

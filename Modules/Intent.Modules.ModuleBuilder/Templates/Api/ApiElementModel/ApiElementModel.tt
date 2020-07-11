@@ -16,7 +16,7 @@ using Intent.Metadata.Models;
 
 namespace <#= Namespace #>
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge)]
     public class <#= ClassName #> : <#= BaseType != null ? (BaseType + ", ") : "" #>IHasStereotypes, IMetadataModel
     {
         public <#= BaseType != null ? "new " : "" #>const string SpecializationType = "<#= Model.Name #>";
@@ -24,7 +24,7 @@ namespace <#= Namespace #>
 <#  if (BaseType == null) { #>
         protected readonly IElement _element;
 
-        [IntentInitialGen]
+        [IntentManaged(Mode.Ignore)]
         public <#= ClassName #>(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -71,7 +71,6 @@ namespace <#= Namespace #>
         foreach(var creationOption in Model.MenuOptions.ElementCreations) { 
             if (ExistsInBase(creationOption))
                 continue;#>
-        [IntentManaged(Mode.Fully)]
         public <#= FormatForCollection(creationOption.ApiModelName, creationOption.AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => _element.ChildElements
             .Where(x => x.SpecializationType == <#= creationOption.ApiModelName #>.SpecializationType)
             .Select(x => new <#= creationOption.ApiModelName #>(x))

@@ -16,7 +16,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Element Extension";
         protected readonly IElement _element;
 
-        public ElementExtensionModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public ElementExtensionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

@@ -15,7 +15,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Type-Definition";
         private readonly IElement _element;
 
-        public TypeDefinition(IElement element)
+        public TypeDefinition(IElement element, string requiredType = SpecializationType)
         {
             if (element.SpecializationType != SpecializationType)
             {

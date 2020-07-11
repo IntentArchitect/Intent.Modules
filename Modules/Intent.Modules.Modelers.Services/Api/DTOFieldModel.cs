@@ -15,7 +15,7 @@ namespace Intent.Modelers.Services.Api
         public const string SpecializationType = "DTO-Field";
         protected readonly IElement _element;
 
-        public DTOFieldModel(IElement element)
+        public DTOFieldModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

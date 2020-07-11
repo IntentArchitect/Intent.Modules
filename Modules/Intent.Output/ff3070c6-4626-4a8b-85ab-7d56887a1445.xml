@@ -3,39 +3,44 @@
   <ApplicationId>ff3070c6-4626-4a8b-85ab-7d56887a1445</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\EnumLiteralModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/EnumLiteralModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\EnumModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/EnumModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\FolderModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\TypeDefinitionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/TypeDefinitionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Types.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Types.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
+      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\modelers\Common Types.designer.settings</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>modelers/Common Types.designer.settings</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>f4082a7d-ae53-4db4-ac33-cc7b24838867</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Properties\AssemblyInfo.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Properties/AssemblyInfo.cs</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

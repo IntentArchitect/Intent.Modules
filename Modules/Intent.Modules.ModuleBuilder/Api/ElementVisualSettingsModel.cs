@@ -16,7 +16,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Element Visual Settings";
         protected readonly IElement _element;
 
-        public ElementVisualSettingsModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public ElementVisualSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

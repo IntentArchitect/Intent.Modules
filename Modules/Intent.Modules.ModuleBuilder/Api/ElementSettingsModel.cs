@@ -23,6 +23,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string RequiredSpecializationType = "Element Settings";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
 
         public ElementSettingsModel(IElement element, string requiredType = SpecializationType)
         {

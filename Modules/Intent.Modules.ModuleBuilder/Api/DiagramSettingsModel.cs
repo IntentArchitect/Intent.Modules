@@ -16,7 +16,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Diagram Settings";
         protected readonly IElement _element;
 
-        public DiagramSettingsModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public DiagramSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

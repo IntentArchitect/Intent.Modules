@@ -11,6 +11,13 @@ namespace Intent.Modules.Common.Types.Api
 {
     public static class ApiMetadataProviderExtensions
     {
+        public static IList<EnumModel> GetEnumModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(EnumModel.SpecializationTypeId)
+                .Select(x => new EnumModel(x))
+                .ToList();
+        }
+
         public static IList<FolderModel> GetFolderModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(FolderModel.SpecializationTypeId)

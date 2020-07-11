@@ -15,7 +15,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Designers Folder";
         protected readonly IElement _element;
 
-        public DesignersFolderModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public DesignersFolderModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

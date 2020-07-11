@@ -19,6 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         protected readonly IElement _element;
         public const string SpecializationType = "Designer Settings";
 
+        [IntentManaged(Mode.Ignore)]
         public DesignerSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))

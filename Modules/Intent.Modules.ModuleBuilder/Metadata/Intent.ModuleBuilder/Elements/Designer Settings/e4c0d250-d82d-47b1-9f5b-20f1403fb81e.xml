@@ -19,30 +19,30 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="fb419f17-4218-49db-bd49-ba9de933e422" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
-      <name>Package</name>
-      <display>Package</display>
+    <childElement id="d2e543c7-174a-45b4-aebe-a13f9ee90214" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
+      <name>Intent Module</name>
+      <display>Intent Module</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</parentFolderId>
       <stereotypes />
       <childElements>
-        <childElement id="5cbdd439-eeb0-481d-9833-3fd25fb01a1c" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
-          <name>Creation Options</name>
+        <childElement id="61681276-e967-49ab-864a-eb642dbb0a81" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+          <name>[context menu]</name>
           <display>[context menu]</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>
-          <parentFolderId>fb419f17-4218-49db-bd49-ba9de933e422</parentFolderId>
+          <parentFolderId>d2e543c7-174a-45b4-aebe-a13f9ee90214</parentFolderId>
           <stereotypes />
           <childElements>
-            <childElement id="9a0a194c-b718-4052-be57-cee27bcd2ecc" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+            <childElement id="f2693af0-6291-4e07-a8bc-0081f178ca6e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New File Template</name>
               <display>New File Template: File Template</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="dcc31b39-11d0-4d75-9d13-51df683e44f3">
+              <typeReference id="41c508b6-9333-45c5-8eb8-91b2f53cd9c7">
                 <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -51,7 +51,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
+              <parentFolderId>61681276-e967-49ab-864a-eb642dbb0a81</parentFolderId>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -67,12 +67,12 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="f272f1a9-89fe-4925-bbf1-73360de59b79" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+            <childElement id="9910752d-966d-4e06-9200-2af0f7865e1c" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Template Registration</name>
               <display>New Template Registration: Template Registration</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="753d7f62-381a-495c-8078-9974f70fbfa8">
+              <typeReference id="6a2dca5e-655c-427a-8115-08684f095d77">
                 <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -81,7 +81,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
+              <parentFolderId>61681276-e967-49ab-864a-eb642dbb0a81</parentFolderId>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -97,12 +97,12 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="0aa00d90-6737-4d89-8a59-cf296c1a24b2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+            <childElement id="e8d61045-99e1-4961-b2d1-649a4cff234f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
               <name>New Folder</name>
               <display>New Folder: Folder</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="7d3f55d4-1623-4789-abe6-79a6a7077613">
+              <typeReference id="d8cc4a9e-d21c-47cb-9ade-6b36a847f040">
                 <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -111,7 +111,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
+              <parentFolderId>61681276-e967-49ab-864a-eb642dbb0a81</parentFolderId>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
@@ -127,12 +127,12 @@
               </stereotypes>
               <childElements />
             </childElement>
-            <childElement id="bbb893b9-4ad7-4487-ab41-468a5fe0512c" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
+            <childElement id="dcd3ce64-db6b-4bc9-b55c-29148bd5f3db" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
               <name>New Stereotype-Definition</name>
               <display>New Stereotype-Definition: Stereotype-Definition</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="2a8d9669-7e8f-4913-aae5-47a246e4f3bd">
+              <typeReference id="d4e4e7c8-8c55-4d4b-875a-c4ec1c664dbb">
                 <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -141,7 +141,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>5cbdd439-eeb0-481d-9833-3fd25fb01a1c</parentFolderId>
+              <parentFolderId>61681276-e967-49ab-864a-eb642dbb0a81</parentFolderId>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment />

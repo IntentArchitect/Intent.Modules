@@ -19,6 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Association Creation Option";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public AssociationCreationOptionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))

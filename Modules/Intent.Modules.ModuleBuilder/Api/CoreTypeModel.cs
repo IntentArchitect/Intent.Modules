@@ -15,7 +15,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Core Type";
         protected readonly IElement _element;
 
-        public CoreTypeModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public CoreTypeModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

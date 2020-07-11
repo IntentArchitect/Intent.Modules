@@ -20,7 +20,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Association Settings";
         protected readonly IElement _element;
 
-        public AssociationSettingsModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public AssociationSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

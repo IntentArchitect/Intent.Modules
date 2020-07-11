@@ -16,7 +16,7 @@ namespace Intent.Modelers.Services.Api
         protected readonly IElement _element;
         public const string SpecializationType = "DTO";
 
-        public DTOModel(IElement element)
+        public DTOModel(IElement element, string requiredType = SpecializationType)
         {
             _element = element;
             Folder = _element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(_element.ParentElement) : null;

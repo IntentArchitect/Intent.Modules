@@ -15,7 +15,7 @@ namespace Intent.Modelers.Domain.Api
     {
         protected readonly IElement _element;
 
-        public EnumModel(IElement element)
+        public EnumModel(IElement element, string requiredType = SpecializationType)
         {
             _element = element;
             Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;

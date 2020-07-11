@@ -16,6 +16,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Template Registration";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public TemplateRegistrationModel(IElement element, string requiredType = SpecializationType)
         {
             if (element.TypeReference == null)

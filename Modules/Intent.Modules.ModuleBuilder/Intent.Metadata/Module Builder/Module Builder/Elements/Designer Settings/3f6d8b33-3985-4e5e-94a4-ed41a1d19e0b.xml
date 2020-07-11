@@ -14,7 +14,7 @@
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Modules.ModuleBuilder.Api" isActive="true" />
         <property name="6f3c57c5-c50d-46bb-b690-2cf081ceb0b3" display="NuGet Package Id" isActive="true" />
         <property name="e0c92be7-3836-4bf6-bc89-9dca2ac28c6d" display="NuGet Package Version" isActive="true" />
-        <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Target Designers" isActive="true" />
+        <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

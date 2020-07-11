@@ -14,7 +14,7 @@ namespace Intent.Modules.Angular.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class ComponentModel : IHasStereotypes, IMetadataModel
     {
-        public ComponentModel(IElement element)
+        public ComponentModel(IElement element, string requiredType = SpecializationType)
         {
             _element = element;
         }

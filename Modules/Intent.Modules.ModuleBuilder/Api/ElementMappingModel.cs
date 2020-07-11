@@ -17,7 +17,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         public const string SpecializationType = "Element Mapping";
         protected readonly IElement _element;
 
-        public ElementMappingModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public ElementMappingModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

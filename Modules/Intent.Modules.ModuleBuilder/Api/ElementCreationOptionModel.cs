@@ -20,7 +20,8 @@ namespace Intent.Modules.ModuleBuilder.Api
         protected readonly IElement _element;
         public const string SpecializationType = "Element Creation Option";
 
-        public ElementCreationOptionModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public ElementCreationOptionModel(IElement element, string requiredType = SpecializationType)
         {
             if (element.SpecializationType != SpecializationType)
             {

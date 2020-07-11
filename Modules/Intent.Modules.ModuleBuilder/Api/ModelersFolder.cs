@@ -16,7 +16,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         private readonly IElement _element;
 
-        public ModelersFolder(IElement element)
+        public ModelersFolder(IElement element, string requiredType = SpecializationType)
         {
             if (element.SpecializationType != SpecializationType) 
             {

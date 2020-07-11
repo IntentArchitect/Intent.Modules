@@ -2,8 +2,9 @@
 <settings>
   <id>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</id>
   <name>Module Builder</name>
-  <packageSettings>
-    <packageSetting type="Package" typeId="fb419f17-4218-49db-bd49-ba9de933e422">
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="Package" typeId="73cf6531-f699-479d-b2b8-92da159ada37">
       <requiredPackages />
       <creationOptions>
         <option type="element">
@@ -44,14 +45,13 @@
         </option>
       </creationOptions>
       <typeOrder>
+        <type>File Template</type>
+        <type>Template Registration</type>
         <type order="0">Folder</type>
-        <type order="1">File Template</type>
-        <type order="2">Template Registration</type>
-        <type order="3">Stereotype-Definition</type>
+        <type>Stereotype-Definition</type>
       </typeOrder>
-    </packageSetting>
-  </packageSettings>
-  <packageExtensions />
+    </packageExtension>
+  </packageExtensions>
   <elementSettings>
     <elementSetting type="Decorator" typeId="f0f46278-29ea-42bd-9206-0e7034f623bc">
       <icon type="FontAwesome" source="wpforms" />

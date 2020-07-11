@@ -17,6 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         protected readonly IElement _element;
         public const string SpecializationType = "Package Settings";
 
+        [IntentManaged(Mode.Ignore)]
         public PackageSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
