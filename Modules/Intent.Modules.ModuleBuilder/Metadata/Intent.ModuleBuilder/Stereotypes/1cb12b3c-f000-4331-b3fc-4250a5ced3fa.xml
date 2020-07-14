@@ -12,6 +12,8 @@
   <autoAdd>false</autoAdd>
   <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>
   <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="30a84702-a35a-415d-bd8f-66a20d4c858b">
       <name>Text</name>

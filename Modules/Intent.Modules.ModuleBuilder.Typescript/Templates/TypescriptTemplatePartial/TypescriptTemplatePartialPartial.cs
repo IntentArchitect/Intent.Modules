@@ -51,8 +51,8 @@ namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePa
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "C# Template" },
                 { "Role", GetRole() },
-                { "Module Dependency", Model.GetModeler()?.ModuleDependency },
-                { "Module Dependency Version",Model.GetModeler()?.ModuleVersion },
+                { "Module Dependency", Model.GetDesigner()?.ModuleDependency },
+                { "Module Dependency Version",Model.GetDesigner()?.ModuleVersion },
                 { "ModelId", Model.Id }
             });
         }

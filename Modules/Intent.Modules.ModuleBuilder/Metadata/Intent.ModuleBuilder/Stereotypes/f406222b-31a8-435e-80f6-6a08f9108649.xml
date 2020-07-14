@@ -13,6 +13,8 @@
   <autoAdd>false</autoAdd>
   <parentFolderId>86ed4b79-2a1d-4717-b925-4a12291606a9</parentFolderId>
   <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="5a9277a9-b808-4ade-bb57-840b51b0da3a">
       <name>Save Mode</name>

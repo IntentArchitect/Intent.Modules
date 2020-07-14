@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="858d78fd-2e73-4a55-9206-83ece70e3059" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Intent Module Extension</name>
+  <display>Intent Module Extension: Intent Module</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="dda738b4-48c6-4611-b3a8-83dbe6ef1184">
+    <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <typePackageName>Intent.ModuleBuilder</typePackageName>
+    <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="34312cb5-ce8b-4418-94f0-73fb9c36b22c" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>Creation Options</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>858d78fd-2e73-4a55-9206-83ece70e3059</parentFolderId>
+      <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+      <packageName>Intent.ModuleBuilder</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="fc8ce616-b15f-4e12-93be-efd7af9a7122" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Designers Folder</name>
+          <display>Add Designers Folder: Designers Folder</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="557467f0-2346-4502-bf78-45de351c0888">
+            <typeId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>34312cb5-ce8b-4418-94f0-73fb9c36b22c</parentFolderId>
+          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+          <packageName>Intent.ModuleBuilder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment>Overrides the default creation option settings.</comment>
+              <addedByDefault>false</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + d" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="designers" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="0" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

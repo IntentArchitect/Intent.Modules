@@ -20,9 +20,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
         {
             AddNugetDependency(NugetPackages.IntentModulesCommon);
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
-            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.NuGetDependency))
+            if (!string.IsNullOrWhiteSpace(Model.GetDesignerSettings()?.NuGetDependency))
             {
-                AddNugetDependency(new NugetPackageInfo(Model.GetModeler().NuGetDependency, Model.GetModeler().NuGetVersion));
+                AddNugetDependency(new NugetPackageInfo(Model.GetDesignerSettings().NuGetDependency, Model.GetDesignerSettings().NuGetVersion));
             }
         }
 
@@ -59,8 +59,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "File Template" },
                 { "Role", GetRole() },
-                { "Module Dependency", Model.GetModeler()?.ModuleDependency },
-                { "Module Dependency Version", Model.GetModeler()?.ModuleVersion }, 
+                { "Module Dependency", Model.GetDesignerSettings()?.ModuleDependency },
+                { "Module Dependency Version", Model.GetDesignerSettings()?.ModuleVersion }, 
                 { "ModelId", Model.Id }
             });
         }

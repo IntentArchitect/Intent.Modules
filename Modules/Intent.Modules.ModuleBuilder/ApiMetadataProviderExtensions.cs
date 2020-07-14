@@ -96,6 +96,13 @@ namespace Intent.Modules.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<PackageSettingsModel> GetPackageSettingsModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(PackageSettingsModel.SpecializationTypeId)
+                .Select(x => new PackageSettingsModel(x))
+                .ToList();
+        }
+
         public static IList<ScriptModel> GetScriptModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(ScriptModel.SpecializationTypeId)

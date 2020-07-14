@@ -12,6 +12,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
+    using Intent.Modules.Common.Templates;
     using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
     using System;

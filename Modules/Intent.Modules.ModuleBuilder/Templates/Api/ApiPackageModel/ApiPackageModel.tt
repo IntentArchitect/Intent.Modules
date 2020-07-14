@@ -1,0 +1,40 @@
+<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<PackageSettingsModel>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Intent.Metadata.Models;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    [IntentManaged(Mode.Merge)]
+    public class <#= ClassName #> : IHasStereotypes, IMetadataModel
+    {
+        public const string SpecializationType = "<#= Model.Name #>";
+        public const string SpecializationTypeId = "<#= Model.Id #>";
+
+        [IntentManaged(Mode.Ignore)]
+        public <#= ClassName #>(IPackage package)
+        {
+            if (!SpecializationType.Equals(package.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new Exception($"Cannot create a '{GetType().Name}' from package with specialization type '{package.SpecializationType}'. Must be of type '{SpecializationType}'");
+            }
+
+            UnderlyingPackage = package;
+        }
+
+        public IPackage UnderlyingPackage { get; }
+        public string Id => UnderlyingPackage.Id;
+        public string Name => UnderlyingPackage.Name;
+        public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
+    }
+}

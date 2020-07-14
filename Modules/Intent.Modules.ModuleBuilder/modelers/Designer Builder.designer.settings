@@ -1,0 +1,1159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <id>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</id>
+  <name>Designer Builder</name>
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
+      <requiredPackages />
+      <creationOptions>
+        <option order="0" type="element">
+          <specializationType>Designers Folder</specializationType>
+          <specializationTypeId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</specializationTypeId>
+          <text>Add Designers Folder</text>
+          <shortcut>ctrl + shift + d</shortcut>
+          <defaultName>designers</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Folder_03_256x.png" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <typeOrder>
+        <type order="0">Designers Folder</type>
+      </typeOrder>
+    </packageExtension>
+    <packageExtension type="Package" typeId="73cf6531-f699-479d-b2b8-92da159ada37">
+      <requiredPackages />
+      <creationOptions>
+        <option order="0" type="element">
+          <specializationType>Designers Folder</specializationType>
+          <specializationTypeId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</specializationTypeId>
+          <text>Add Designers Folder</text>
+          <shortcut>ctrl + shift + d</shortcut>
+          <defaultName>designers</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Folder_03_256x.png" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <typeOrder>
+        <type order="0">Designers Folder</type>
+      </typeOrder>
+    </packageExtension>
+  </packageExtensions>
+  <elementSettings>
+    <elementSetting type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
+      <icon type="CharacterBox" source="A|#ff8000" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Association Source End Settings</type>
+        <type order="1">Association Destination End Settings</type>
+        <type order="2">Association Visual Settings</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Association Source End Settings</specializationType>
+          <specializationTypeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</specializationTypeId>
+          <text>Add Source End</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>${name} Source End</defaultName>
+          <icon type="CharacterBox" source="S|#00f7ff" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Association Destination End Settings</specializationType>
+          <specializationTypeId>c4c61fdc-464d-41d2-8e0e-5a734d588302</specializationTypeId>
+          <text>Add Target End</text>
+          <shortcut>ctrl + shift + d</shortcut>
+          <defaultName>${name} Target End</defaultName>
+          <icon type="CharacterBox" source="D|#00f7ff" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Association Visual Settings</specializationType>
+          <specializationTypeId>153a4063-82a1-4515-87f1-44c189004fad</specializationTypeId>
+          <text>Add Visual Settings</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>[visual]</defaultName>
+          <icon type="CharacterBox" source="V|#AB47BC" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <macros>
+        <macro trigger="on-created">
+          <script>createElement("Association Source End Settings", "[source]", context.id);
+createElement("Association Destination End Settings", "[destination]", context.id);</script>
+        </macro>
+      </macros>
+      <childElementSettings>
+        <childElementSetting type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
+          <icon type="CharacterBox" source="V|#AB47BC" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>[visual]</displayFunction>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Association Source End Visual Settings</type>
+            <type order="1">Association Destination End Visual Settings</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Association Source End Visual Settings</specializationType>
+              <specializationTypeId>77fdd377-950a-46e4-8d25-ab3c962d6105</specializationTypeId>
+              <text>Add Source Visual</text>
+              <defaultName>[source]</defaultName>
+              <icon type="CharacterBox" source="S|#BA68C8" />
+              <allowMultiple>false</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Association Destination End Visual Settings</specializationType>
+              <specializationTypeId>b59113a4-209c-45d6-b395-352362864fd1</specializationTypeId>
+              <text>Add Destination Visual</text>
+              <defaultName>[desintation]</defaultName>
+              <icon type="CharacterBox" source="D|#BA68C8" />
+              <allowMultiple>false</allowMultiple>
+            </option>
+          </creationOptions>
+          <childElementSettings>
+            <childElementSetting type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
+              <icon type="CharacterBox" source="S|#BA68C8" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>[source]</displayFunction>
+              <allowRename>false</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>false</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <childElementSettings />
+            </childElementSetting>
+            <childElementSetting type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
+              <icon type="CharacterBox" source="D|#BA68C8" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>[destination]</displayFunction>
+              <allowRename>false</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>false</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
+        <childElementSetting type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
+          <icon type="CharacterBox" source="S|#00f7ff" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
+          <icon type="CharacterBox" source="D|#00f7ff" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+    <elementSetting type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <icon type="CharacterBox" source="C|#ad2121" />
+      <saveAsOwnFile>false</saveAsOwnFile>
+      <displayFunction>return "[context menu]"</displayFunction>
+      <allowRename>false</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Element Creation Option</type>
+        <type order="1">Association Creation Option</type>
+        <type order="2">Stereotype-Definition Creation Option</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Element Creation Option</specializationType>
+          <specializationTypeId>5fa12f89-da1e-49c5-b8e9-427b22407f19</specializationTypeId>
+          <text>Add Element Creation</text>
+          <shortcut>ctrl + shift + e</shortcut>
+          <defaultName>New Element</defaultName>
+          <icon type="CharacterBox" source="E|#04007a" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Association Creation Option</specializationType>
+          <specializationTypeId>3dcfa78b-17ee-45b6-be03-8407d089ce76</specializationTypeId>
+          <text>Add Association Creation</text>
+          <shortcut>ctrl + shift + a</shortcut>
+          <defaultName>New Association</defaultName>
+          <icon type="CharacterBox" source="A|#04007a" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Stereotype-Definition Creation Option</specializationType>
+          <specializationTypeId>0c721d5d-7721-414c-adaf-4c9f5c5531a9</specializationTypeId>
+          <text>Add Stereotype-Definition Creation</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>New Stereotype-Definition</defaultName>
+          <icon type="CharacterBox" source="S|#04007a" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <childElementSettings>
+        <childElementSetting type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
+          <icon type="CharacterBox" source="S|#04007a" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <allowFindInView>true</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type>Core Type</type>
+            </targetTypes>
+            <defaultTypeId>54eff27b-2dfc-4853-8498-1a2c4700e385</defaultTypeId>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <icon type="CharacterBox" source="A|#04007a" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <allowFindInView>true</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type>Association Settings</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <icon type="CharacterBox" source="E|#04007a" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <allowFindInView>true</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type>Element Settings</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+    <elementSetting type="Core Type" typeId="dc79fd61-7e57-44c8-ad40-14a7643b89c8">
+      <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <childElementSettings />
+    </elementSetting>
+    <elementSetting type="Designer" typeId="7f5fcc9f-c721-4a31-bfe2-7909f4289420">
+      <icon type="CharacterBox" source="D|#00ffc8" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Designer Reference</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Designer Reference</specializationType>
+          <specializationTypeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</specializationTypeId>
+          <text>Add Designer Reference</text>
+          <defaultName>reference</defaultName>
+          <icon type="CharacterBox" source="R|#00BFA5" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <childElementSettings>
+        <childElementSetting type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+          <icon type="CharacterBox" source="R|#00BFA5" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type>Designer Settings</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <typeOrder />
+          <creationOptions />
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+    <elementSetting type="Designer Extension" typeId="a747162d-696b-49ed-9075-b5da8d852e15">
+      <icon type="CharacterBox" source="X|#00ffc8" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>true</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeReferenceSetting>
+        <isRequired>true</isRequired>
+        <targetTypes>
+          <type>Designer Settings</type>
+        </targetTypes>
+        <allowIsNavigable>true</allowIsNavigable>
+        <allowIsNullable>false</allowIsNullable>
+        <allowIsCollection>false</allowIsCollection>
+        <isNavigableDefault>true</isNavigableDefault>
+        <isNullableDefault>false</isNullableDefault>
+        <isCollectionDefault>false</isCollectionDefault>
+      </typeReferenceSetting>
+      <typeOrder>
+        <type order="0">Element Settings</type>
+        <type order="1">Core Type</type>
+        <type order="2">Association Settings</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Element Settings</specializationType>
+          <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
+          <text>New Element Type</text>
+          <shortcut>ctrl + shift + e</shortcut>
+          <defaultName>NewElementType</defaultName>
+          <icon type="CharacterBox" source="E|#095c00" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Core Type</specializationType>
+          <specializationTypeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</specializationTypeId>
+          <text>New Core Type</text>
+          <defaultName>NewCoreType</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Association Settings</specializationType>
+          <specializationTypeId>16d21684-d5ea-4fde-b648-f88d292fa272</specializationTypeId>
+          <text>New Association Type</text>
+          <defaultName>NewAssociationSettings</defaultName>
+          <icon type="CharacterBox" source="A|#ff8000" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <childElementSettings />
+    </elementSetting>
+    <elementSetting type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
+      <icon type="CharacterBox" source="S|#00ffc8" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Element Settings</type>
+        <type order="1">Element Extension</type>
+        <type order="2">Association Settings</type>
+        <type order="3">Package Settings</type>
+        <type order="4">Package Extension</type>
+        <type order="5">Core Type</type>
+        <type order="6">Script</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Element Settings</specializationType>
+          <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
+          <text>New Element Type</text>
+          <shortcut>ctrl + shift + e</shortcut>
+          <defaultName>NewElementType</defaultName>
+          <icon type="CharacterBox" source="E|#095c00" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Element Extension</specializationType>
+          <specializationTypeId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</specializationTypeId>
+          <text>New Element Extension</text>
+          <shortcut>ctrl + shift + x</shortcut>
+          <defaultName>NewElementExtension</defaultName>
+          <icon type="CharacterBox" source="X|#095c00" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Association Settings</specializationType>
+          <specializationTypeId>16d21684-d5ea-4fde-b648-f88d292fa272</specializationTypeId>
+          <text>New Association Type</text>
+          <defaultName>NewAssociationSettings</defaultName>
+          <icon type="CharacterBox" source="A|#ff8000" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Package Settings</specializationType>
+          <specializationTypeId>89333f72-3960-4159-bf61-9c40d4b65088</specializationTypeId>
+          <text>New Package Type</text>
+          <shortcut>ctrl + shift + p</shortcut>
+          <defaultName>Package</defaultName>
+          <icon type="CharacterBox" source="P|#7d7d7d" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Package Extension</specializationType>
+          <specializationTypeId>ab4152df-3add-4a08-81b6-0fefc7cbb204</specializationTypeId>
+          <text>New Package Extension</text>
+          <shortcut>ctrl + shift + p</shortcut>
+          <defaultName>Package Settings</defaultName>
+          <icon type="CharacterBox" source="X|#7d7d7d" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Core Type</specializationType>
+          <specializationTypeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</specializationTypeId>
+          <text>New Core Type</text>
+          <defaultName>NewCoreType</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Script</specializationType>
+          <specializationTypeId>101fd5b6-3159-4810-9490-a103ef323e9c</specializationTypeId>
+          <text>New Script Type</text>
+          <defaultName>NewScript</defaultName>
+          <icon type="FontAwesome" source="file-code-o" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <macros>
+        <macro trigger="on-created">
+          <script>createElement("Package Settings", "Package", context.id);</script>
+        </macro>
+      </macros>
+      <childElementSettings />
+    </elementSetting>
+    <elementSetting type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
+      <icon type="UrlImagePath" source="./img/icons/uml/Folder_03_256x.png" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <displayFunction>return "designers"</displayFunction>
+      <allowRename>false</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Designer</type>
+        <type order="1">Designer Settings</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Designer</specializationType>
+          <specializationTypeId>7f5fcc9f-c721-4a31-bfe2-7909f4289420</specializationTypeId>
+          <text>New Designer</text>
+          <defaultName>NewDesigner</defaultName>
+          <icon type="CharacterBox" source="D|#00ffc8" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Designer Settings</specializationType>
+          <specializationTypeId>7a6411a8-ffef-4209-91c6-8d12755a806a</specializationTypeId>
+          <text>New Designer Settings</text>
+          <defaultName>NewDesignerSettings</defaultName>
+          <icon type="CharacterBox" source="S|#00ffc8" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <childElementSettings />
+    </elementSetting>
+    <elementSetting type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+      <icon type="CharacterBox" source="X|#095c00" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>true</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeReferenceSetting>
+        <isRequired>true</isRequired>
+        <targetTypes>
+          <type>Element Settings</type>
+        </targetTypes>
+        <allowIsNavigable>true</allowIsNavigable>
+        <allowIsNullable>false</allowIsNullable>
+        <allowIsCollection>false</allowIsCollection>
+        <isNavigableDefault>true</isNavigableDefault>
+        <isNullableDefault>false</isNullableDefault>
+        <isCollectionDefault>false</isCollectionDefault>
+      </typeReferenceSetting>
+      <typeOrder>
+        <type order="0">Context Menu</type>
+        <type order="1">Diagram Settings</type>
+        <type order="2">Mapping Settings</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <text>Add Menu Options</text>
+          <shortcut>ctrl + shift + c</shortcut>
+          <defaultName>[context menu]</defaultName>
+          <icon type="CharacterBox" source="C|#ad2121" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Diagram Settings</specializationType>
+          <specializationTypeId>67d711dd-3918-4b28-b2a0-4d845884e17a</specializationTypeId>
+          <text>Add Diagram Settings</text>
+          <defaultName>NewDiagramSettings</defaultName>
+          <icon type="CharacterBox" source="D|#21abad" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Mapping Settings</specializationType>
+          <specializationTypeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</specializationTypeId>
+          <text>Add Mapping Settings</text>
+          <shortcut>ctrl + shift + m</shortcut>
+          <defaultName>NewMappingSettings</defaultName>
+          <icon type="CharacterBox" source="M|#1A237E" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <childElementSettings />
+    </elementSetting>
+    <elementSetting type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+      <icon type="CharacterBox" source="E|#095c00" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Context Menu</type>
+        <type order="1">Element Settings</type>
+        <type order="2">Mapping Settings</type>
+        <type order="3">Diagram Settings</type>
+        <type order="4">Element Visual Settings</type>
+        <type order="5">Element Event Settings</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <text>Add Menu Options</text>
+          <shortcut>ctrl + shift + c</shortcut>
+          <defaultName>[context menu]</defaultName>
+          <icon type="CharacterBox" source="C|#ad2121" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Element Settings</specializationType>
+          <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
+          <text>Add Element Settings</text>
+          <defaultName>NewElementSettings</defaultName>
+          <icon type="CharacterBox" source="E|#095c00" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Mapping Settings</specializationType>
+          <specializationTypeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</specializationTypeId>
+          <text>Add Mapping Settings</text>
+          <shortcut>ctrl + shift + m</shortcut>
+          <defaultName>NewMappingSettings</defaultName>
+          <icon type="CharacterBox" source="M|#1A237E" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Diagram Settings</specializationType>
+          <specializationTypeId>67d711dd-3918-4b28-b2a0-4d845884e17a</specializationTypeId>
+          <text>Add Diagram Settings</text>
+          <defaultName>[diagram]</defaultName>
+          <icon type="CharacterBox" source="D|#21abad" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Element Visual Settings</specializationType>
+          <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
+          <text>Add Visual Settings</text>
+          <shortcut>ctrl + shift + v</shortcut>
+          <defaultName>[visual]</defaultName>
+          <icon type="CharacterBox" source="V|#FFEE58" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Element Event Settings</specializationType>
+          <specializationTypeId>3c628ab0-2407-4fb0-8507-ddde986cff2e</specializationTypeId>
+          <text>Add Event Settings</text>
+          <defaultName>NewElementEventSettings</defaultName>
+          <icon type="FontAwesome" source="bolt" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <macros>
+        <macro trigger="on-created">
+          <script>createElement("Context Menu", "[context menu]", context.id)</script>
+        </macro>
+      </macros>
+      <childElementSettings>
+        <childElementSetting type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+          <icon type="CharacterBox" source="M|#1A237E" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>[mappings]</displayFunction>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>true</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Element Mapping</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Element Mapping</specializationType>
+              <specializationTypeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</specializationTypeId>
+              <text>Add Mapping</text>
+              <shortcut>ctrl + shift + m</shortcut>
+              <defaultName>NewElementMapping</defaultName>
+              <icon type="CharacterBox" source="M|#095cff" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <childElementSettings>
+            <childElementSetting type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <icon type="CharacterBox" source="M|#095cff" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>
+function getTypeName(stereotypeName, propertyName) {
+    var type = getStereotype(stereotypeName).properties[propertyName].getSelected();
+    if (type) {
+        return type.name;
+    }
+}
+return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getTypeName("Output Settings", "To Type") || "(Traverse)"}`;</displayFunction>
+              <allowRename>false</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <allowFindInView>true</allowFindInView>
+              <allowTypeReference>false</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeOrder>
+                <type order="0">Element Mapping</type>
+              </typeOrder>
+              <creationOptions>
+                <option type="element">
+                  <specializationType>Element Mapping</specializationType>
+                  <specializationTypeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</specializationTypeId>
+                  <text>Add Child Mapping</text>
+                  <shortcut>ctrl + shift + m</shortcut>
+                  <defaultName>NewElementMapping</defaultName>
+                  <icon type="CharacterBox" source="M|#095cff" />
+                  <allowMultiple>true</allowMultiple>
+                </option>
+              </creationOptions>
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
+        <childElementSetting type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+          <icon type="FontAwesome" source="bolt" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>[events]</displayFunction>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Element Event Handler</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <text>On Loaded Event</text>
+              <defaultName>On Loaded</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <text>On Created Event</text>
+              <defaultName>On Created</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <childElementSettings>
+            <childElementSetting type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+              <icon type="FontAwesome" source="code" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <allowRename>false</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>true</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>true</isRequired>
+                <targetTypes>
+                  <type>Script</type>
+                </targetTypes>
+                <defaultTypeId>043eee26-1591-42ac-9f2c-fc911b070eb1</defaultTypeId>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>false</allowIsNullable>
+                <allowIsCollection>false</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
+        <childElementSetting type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+          <icon type="CharacterBox" source="V|#FFEE58" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>return `[visual]: ${typeReference.display}`</displayFunction>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type>Element Settings</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <typeOrder>
+            <type order="0">Path Draw Settings</type>
+            <type order="1">Text Draw Settings</type>
+            <type order="2">Stereotypes Visual Settings</type>
+            <type order="3">Element Visual Settings</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Path Draw Settings</specializationType>
+              <specializationTypeId>ac56c1f1-b259-4de8-acc9-ce0030ad4f99</specializationTypeId>
+              <text>Add Path</text>
+              <defaultName>NewPathDrawSettings</defaultName>
+              <icon type="CharacterBox" source="D|#FBC02D" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Text Draw Settings</specializationType>
+              <specializationTypeId>0250c934-455b-4bb6-b5d9-077c6e1ce72c</specializationTypeId>
+              <text>Add Text</text>
+              <defaultName>[draw text]</defaultName>
+              <icon type="CharacterBox" source="T|#FBC02D" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Stereotypes Visual Settings</specializationType>
+              <specializationTypeId>08620c8b-f6d3-472e-86b6-926fe110d526</specializationTypeId>
+              <text>Add Stereotypes Visual</text>
+              <defaultName>NewStereotypesVisualSettings</defaultName>
+              <icon type="CharacterBox" source="S|#FBC02D" />
+              <allowMultiple>false</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Element Visual Settings</specializationType>
+              <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
+              <text>Add Child Visual</text>
+              <defaultName>NewElementVisualSettings</defaultName>
+              <icon type="CharacterBox" source="V|#FFEE58" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <childElementSettings>
+            <childElementSetting type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+              <icon type="CharacterBox" source="T|#FBC02D" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>[draw text]</displayFunction>
+              <allowRename>false</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>false</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <childElementSettings />
+            </childElementSetting>
+            <childElementSetting type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
+              <icon type="CharacterBox" source="S|#FBC02D" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>[stereotypes]</displayFunction>
+              <allowRename>false</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>false</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <childElementSettings />
+            </childElementSetting>
+            <childElementSetting type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
+              <icon type="CharacterBox" source="D|#FBC02D" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>[draw path]</displayFunction>
+              <allowRename>false</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>false</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
+        <childElementSetting type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a">
+          <icon type="CharacterBox" source="D|#21abad" />
+          <saveAsOwnFile>true</saveAsOwnFile>
+          <displayFunction>[diagram]</displayFunction>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Context Menu</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <text>Add Menu Options</text>
+              <shortcut>ctrl + shift + c</shortcut>
+              <defaultName>[context menu]</defaultName>
+              <icon type="CharacterBox" source="C|#ad2121" />
+              <allowMultiple>false</allowMultiple>
+            </option>
+          </creationOptions>
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+    <elementSetting type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+      <icon type="CharacterBox" source="X|#7d7d7d" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>true</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeReferenceSetting>
+        <isRequired>true</isRequired>
+        <targetTypes>
+          <type>Package Settings</type>
+        </targetTypes>
+        <allowIsNavigable>true</allowIsNavigable>
+        <allowIsNullable>false</allowIsNullable>
+        <allowIsCollection>false</allowIsCollection>
+        <isNavigableDefault>true</isNavigableDefault>
+        <isNullableDefault>false</isNullableDefault>
+        <isCollectionDefault>false</isCollectionDefault>
+      </typeReferenceSetting>
+      <typeOrder>
+        <type order="0">Context Menu</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <text>Add Menu Options</text>
+          <shortcut>ctrl + shift + c</shortcut>
+          <defaultName>[context menu]</defaultName>
+          <icon type="CharacterBox" source="C|#ad2121" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <macros>
+        <macro trigger="on-created">
+          <script>createElement("Context Menu", "[context menu]", context.id)</script>
+        </macro>
+      </macros>
+      <childElementSettings />
+    </elementSetting>
+    <elementSetting type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
+      <icon type="CharacterBox" source="P|#7d7d7d" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Context Menu</type>
+        <type order="1">Package Event Settings</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <text>Add Menu Options</text>
+          <shortcut>ctrl + shift + c</shortcut>
+          <defaultName>[context menu]</defaultName>
+          <icon type="CharacterBox" source="C|#ad2121" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Package Event Settings</specializationType>
+          <specializationTypeId>48bcdd5f-690c-425b-8f5e-99097a7188dc</specializationTypeId>
+          <text>Add Event Settings</text>
+          <defaultName>NewPackageEventSettings</defaultName>
+          <icon type="FontAwesome" source="bolt" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <macros>
+        <macro trigger="on-created">
+          <script>createElement("Context Menu", "[context menu]", context.id)</script>
+        </macro>
+      </macros>
+      <childElementSettings>
+        <childElementSetting type="Package Event Settings" typeId="48bcdd5f-690c-425b-8f5e-99097a7188dc">
+          <icon type="FontAwesome" source="bolt" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>[events]</displayFunction>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Element Event Handler</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <text>On Loaded Event</text>
+              <defaultName>On Loaded</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <text>On Created Event</text>
+              <defaultName>On Created</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <childElementSettings>
+            <childElementSetting type="Package Event Handler" typeId="e59f6c30-69ba-427c-9a73-33d69e44f765">
+              <icon type="FontAwesome" source="code" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <allowRename>false</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>true</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>true</isRequired>
+                <targetTypes>
+                  <type>Script</type>
+                </targetTypes>
+                <defaultTypeId>043eee26-1591-42ac-9f2c-fc911b070eb1</defaultTypeId>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>false</allowIsNullable>
+                <allowIsCollection>false</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+    <elementSetting type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c">
+      <icon type="FontAwesome" source="file-code-o" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <childElementSettings />
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions />
+  <associationSettings />
+</settings>

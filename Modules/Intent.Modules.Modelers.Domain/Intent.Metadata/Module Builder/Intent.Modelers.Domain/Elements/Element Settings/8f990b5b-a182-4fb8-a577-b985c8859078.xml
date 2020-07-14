@@ -6,9 +6,13 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
+  <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+  <packageName>Intent.Modelers.Domain</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Own File" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/DataType_256x.png&quot;}" isActive="true" />
@@ -24,6 +28,8 @@
     </stereotype>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />

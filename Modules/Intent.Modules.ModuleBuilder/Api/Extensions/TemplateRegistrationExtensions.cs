@@ -45,6 +45,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 _stereotype = stereotype;
             }
 
+            public DesignerModel Designer()
+            {
+                return new DesignerModel(_stereotype.GetProperty<IElement>("Designer"));
+            }
+
             public TemplateSettingsSource Source()
             {
                 return new TemplateSettingsSource(_stereotype.GetProperty<string>("Source"));

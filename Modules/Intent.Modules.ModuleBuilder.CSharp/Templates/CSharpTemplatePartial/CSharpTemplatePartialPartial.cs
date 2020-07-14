@@ -24,9 +24,9 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         {
             AddNugetDependency("Intent.Modules.Common.CSharp", "2.2.0");
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
-            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.NuGetDependency))
+            if (!string.IsNullOrWhiteSpace(Model.GetDesignerSettings()?.NuGetDependency))
             {
-                AddNugetDependency(new NugetPackageInfo(Model.GetModeler().NuGetDependency, Model.GetModeler().NuGetVersion));
+                AddNugetDependency(new NugetPackageInfo(Model.GetDesignerSettings().NuGetDependency, Model.GetDesignerSettings().NuGetVersion));
             }
         }
 
@@ -59,8 +59,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "C# Template" },
                 { "Role", GetRole() },
-                { "Module Dependency", Model.GetModeler()?.ModuleDependency },
-                { "Module Dependency Version",Model.GetModeler()?.ModuleVersion },
+                { "Module Dependency", Model.GetDesignerSettings()?.ModuleDependency },
+                { "Module Dependency Version",Model.GetDesignerSettings()?.ModuleVersion },
                 { "ModelId", Model.Id }
             });
         }

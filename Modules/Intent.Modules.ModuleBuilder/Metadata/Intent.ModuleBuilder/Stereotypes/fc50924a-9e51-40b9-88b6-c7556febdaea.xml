@@ -14,6 +14,8 @@
   <autoAdd>false</autoAdd>
   <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>
   <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="39117662-2823-4915-865e-4a0a178f1507">
       <name>X</name>

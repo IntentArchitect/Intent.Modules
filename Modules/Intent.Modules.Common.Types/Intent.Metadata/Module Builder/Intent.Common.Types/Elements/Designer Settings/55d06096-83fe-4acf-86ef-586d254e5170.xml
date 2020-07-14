@@ -6,9 +6,13 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b3b0b719-7ebe-4d0c-88e9-db609bc122a9</parentFolderId>
+  <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+  <packageName>Intent.Common.Types</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="9566aa04-ab84-4fbc-b039-6e676159ed82" display="Is Reference" value="false" isActive="true" />
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Modules.Common.Types.Api" isActive="true" />
@@ -26,6 +30,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>55d06096-83fe-4acf-86ef-586d254e5170</parentFolderId>
+      <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+      <packageName>Intent.Common.Types</packageName>
       <stereotypes />
       <childElements>
         <childElement id="3f11ca78-8314-4599-8676-509e93654da3" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
@@ -35,6 +41,8 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>73cf6531-f699-479d-b2b8-92da159ada37</parentFolderId>
+          <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+          <packageName>Intent.Common.Types</packageName>
           <stereotypes />
           <childElements />
         </childElement>

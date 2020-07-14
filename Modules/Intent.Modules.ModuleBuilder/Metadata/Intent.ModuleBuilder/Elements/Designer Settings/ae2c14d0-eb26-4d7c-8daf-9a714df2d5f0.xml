@@ -6,9 +6,13 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b54ca450-86a6-4a9e-9797-9e628aaeebdd</parentFolderId>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="9566aa04-ab84-4fbc-b039-6e676159ed82" display="Is Reference" value="true" isActive="true" />
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Metadata.Models" isActive="false" />

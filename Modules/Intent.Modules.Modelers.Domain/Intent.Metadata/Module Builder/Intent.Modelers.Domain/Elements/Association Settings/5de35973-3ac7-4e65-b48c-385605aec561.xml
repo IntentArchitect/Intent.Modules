@@ -6,6 +6,8 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
+  <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+  <packageName>Intent.Modelers.Domain</packageName>
   <stereotypes />
   <childElements>
     <childElement id="8190bf43-222c-4b53-8a44-14626efe3574" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
@@ -15,9 +17,13 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5de35973-3ac7-4e65-b48c-385605aec561</parentFolderId>
+      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+      <packageName>Intent.Modelers.Domain</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
           <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;]" isActive="true" />
@@ -41,9 +47,13 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5de35973-3ac7-4e65-b48c-385605aec561</parentFolderId>
+      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+      <packageName>Intent.Modelers.Domain</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
           <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;]" isActive="true" />
@@ -67,9 +77,13 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5de35973-3ac7-4e65-b48c-385605aec561</parentFolderId>
+      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+      <packageName>Intent.Modelers.Domain</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="e21d9a65-36b8-4664-9c61-d70f3615023c" name="Setting">
           <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" isActive="true" />
             <property name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
@@ -85,9 +99,13 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>4f08a3b7-adcb-4e3d-9b27-8306925a7e9f</parentFolderId>
+          <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+          <packageName>Intent.Modelers.Domain</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="1434703f-9e9e-4321-af00-1e857a2e6b80" name="Point Settings">
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" isActive="true" />
                 <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" isActive="true" />
@@ -98,6 +116,8 @@
             </stereotype>
             <stereotype stereotypeDefinitionId="6b16c65c-f348-40b1-96b0-6423917b9356" name="Label Settings">
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" isActive="true" />
                 <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" isActive="true" />
@@ -105,6 +125,8 @@
             </stereotype>
             <stereotype stereotypeDefinitionId="dc5496ee-e524-41ef-8b17-0125a25d0349" name="Navigable Indicator Settings">
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" isActive="true" />
                 <property name="369ff6b9-dc1c-4291-9c63-d50735315c42" display="Line Color" isActive="true" />
@@ -123,9 +145,13 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>4f08a3b7-adcb-4e3d-9b27-8306925a7e9f</parentFolderId>
+          <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+          <packageName>Intent.Modelers.Domain</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="1434703f-9e9e-4321-af00-1e857a2e6b80" name="Point Settings">
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="l 7 10 l -14 0 Z" isActive="true" />
                 <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" value="#000000" isActive="true" />
@@ -136,6 +162,8 @@
             </stereotype>
             <stereotype stereotypeDefinitionId="6b16c65c-f348-40b1-96b0-6423917b9356" name="Label Settings">
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" isActive="true" />
                 <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" isActive="true" />
@@ -143,6 +171,8 @@
             </stereotype>
             <stereotype stereotypeDefinitionId="dc5496ee-e524-41ef-8b17-0125a25d0349" name="Navigable Indicator Settings">
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" isActive="true" />
                 <property name="369ff6b9-dc1c-4291-9c63-d50735315c42" display="Line Color" isActive="true" />

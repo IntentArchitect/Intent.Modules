@@ -14,9 +14,13 @@
   </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>70bb8550-9ff1-488f-a044-be46dff677a5</parentFolderId>
+  <packageId>4bc923af-11c5-4255-b97a-79de29be5060</packageId>
+  <packageName>Module Builder</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709" display="Source" value="Lookup Type" isActive="true" />
         <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="f6456232-0f1b-4235-b5f8-b4cce548ca59" isActive="true" />

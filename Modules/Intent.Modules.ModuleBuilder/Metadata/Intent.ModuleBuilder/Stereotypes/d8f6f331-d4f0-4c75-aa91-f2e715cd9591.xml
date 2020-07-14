@@ -12,6 +12,8 @@
   <autoAdd>false</autoAdd>
   <parentFolderId>86ed4b79-2a1d-4717-b925-4a12291606a9</parentFolderId>
   <order>1</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="8da796ff-e5b8-4a53-9c18-9176bfff8fbc">
       <name>Mode</name>

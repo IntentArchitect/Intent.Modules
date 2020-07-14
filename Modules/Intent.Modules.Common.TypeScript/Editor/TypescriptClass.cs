@@ -73,6 +73,8 @@ namespace Intent.Modules.Common.TypeScript.Editor
             {
                 Change.ChangeNode(methodNode, method);
             }
+
+            UpdateChanges();
         }
 
         public void AddProperty(string propertyDeclaration)

@@ -6,15 +6,19 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>696e26c8-1840-4564-8eee-fef4c77d1439</parentFolderId>
+  <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+  <packageName>Intent.Modelers.Domain</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="9566aa04-ab84-4fbc-b039-6e676159ed82" display="Is Reference" value="false" isActive="true" />
         <property name="c141a969-5a1a-49b8-8935-9d235ab0d835" display="API Namespace" value="Intent.Modelers.Domain.Api" isActive="true" />
         <property name="6f3c57c5-c50d-46bb-b690-2cf081ceb0b3" display="NuGet Package Id" value="Intent.Modules.Modelers.Domain" isActive="true" />
         <property name="e0c92be7-3836-4bf6-bc89-9dca2ac28c6d" display="NuGet Package Version" value="2.2.0" isActive="true" />
-        <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Target Designers" isActive="true" />
+        <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
@@ -26,6 +30,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
+      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+      <packageName>Intent.Modelers.Domain</packageName>
       <stereotypes />
       <childElements>
         <childElement id="1da67b2e-82ae-4708-9b09-123d981c4533" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
@@ -35,6 +41,8 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>0f427fd8-8f26-42db-aaaf-169200b3d3a9</parentFolderId>
+          <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+          <packageName>Intent.Modelers.Domain</packageName>
           <stereotypes />
           <childElements>
             <childElement id="e5580bca-7b08-4ce9-bcab-ef354c5a6ccf" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -47,15 +55,21 @@
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
+                <typePackageName>Intent.Modelers.Domain</typePackageName>
+                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
+              <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+              <packageName>Intent.Modelers.Domain</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
                   <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
@@ -77,15 +91,21 @@
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
+                <typePackageName>Intent.Modelers.Domain</typePackageName>
+                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
+              <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+              <packageName>Intent.Modelers.Domain</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
                   <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
@@ -107,15 +127,21 @@
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
+                <typePackageName>Intent.Modelers.Domain</typePackageName>
+                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
+              <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+              <packageName>Intent.Modelers.Domain</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
                   <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
@@ -137,15 +163,21 @@
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
+                <typePackageName>Intent.Modelers.Domain</typePackageName>
+                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
+              <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+              <packageName>Intent.Modelers.Domain</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
                   <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
@@ -167,15 +199,21 @@
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
+                <typePackageName>Intent.Modelers.Domain</typePackageName>
+                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
                 <stereotypes />
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
+              <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+              <packageName>Intent.Modelers.Domain</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
                   <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
@@ -202,10 +240,14 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
+              <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+              <packageName>Intent.Modelers.Domain</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment>Overrides the default creation option settings.</comment>
                   <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
@@ -232,10 +274,14 @@
               </typeReference>
               <isMapped>false</isMapped>
               <parentFolderId>1da67b2e-82ae-4708-9b09-123d981c4533</parentFolderId>
+              <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+              <packageName>Intent.Modelers.Domain</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
                   <comment />
                   <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
                     <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />

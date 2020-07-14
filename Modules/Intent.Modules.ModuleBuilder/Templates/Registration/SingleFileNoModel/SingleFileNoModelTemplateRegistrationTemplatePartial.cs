@@ -17,10 +17,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 
         public SingleFileNoModelTemplateRegistrationTemplate(IProject project, TemplateRegistrationModel model) : base(TemplateId, project, model)
         {
-            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.GetDesignerSettings().NuGetPackageId()) &&
-                !string.IsNullOrWhiteSpace(Model.GetModeler()?.GetDesignerSettings().NuGetPackageVersion()))
+            if (!string.IsNullOrWhiteSpace(Model.GetDesignerSettings()?.GetDesignerSettings().NuGetPackageId()) &&
+                !string.IsNullOrWhiteSpace(Model.GetDesignerSettings()?.GetDesignerSettings().NuGetPackageVersion()))
             {
-                AddNugetDependency(packageName: Model.GetModeler().GetDesignerSettings().NuGetPackageId(), packageVersion: Model.GetModeler().GetDesignerSettings().NuGetPackageVersion());
+                AddNugetDependency(packageName: Model.GetDesignerSettings().GetDesignerSettings().NuGetPackageId(), packageVersion: Model.GetDesignerSettings().GetDesignerSettings().NuGetPackageVersion());
             }
         }
 

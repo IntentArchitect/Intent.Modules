@@ -94,6 +94,20 @@
       </config>
       <role>Api</role>
     </template>
+    <template id="ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" externalReference="51ff3bbd-74dc-4f6c-996a-c8502814570a">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+    </template>
+    <template id="ModuleBuilder.Templates.Api.ApiPackageModel" externalReference="12d0509f-a513-4263-9c31-3786f61b44bd">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+    </template>
   </templates>
   <decorators></decorators>
   <dependencies>
@@ -126,7 +140,7 @@
   <metadata>
     <install src="modelers/Module Builder.designer.config" externalReference="a1c3dd87-352e-4353-853b-c79853debecb" />
     <install src="modelers/Module Builder.designer.settings" externalReference="e4c0d250-d82d-47b1-9f5b-20f1403fb81e" />
-    <install src="modelers/Modeler Builder.designer.settings" externalReference="3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b" />
+    <install src="modelers/Designer Builder.designer.settings" externalReference="3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b" />
     <install target="Module Builder" src="metadata/Intent.ModuleBuilder/Intent.ModuleBuilder.pkg.config" externalReference="9972b2a9-b749-4bba-b5c8-824bf694c6ef" />
   </metadata>
   <files>

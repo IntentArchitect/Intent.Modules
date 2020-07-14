@@ -18,6 +18,8 @@
   <autoAdd>false</autoAdd>
   <parentFolderId>7f6c3c9b-b131-41a6-bddc-fc644cab7852</parentFolderId>
   <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709">
       <name>Source</name>
@@ -32,6 +34,18 @@
       </valueOptions>
       <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="00d3537c-f71f-4450-8cc8-d9e87c12baee">
+      <name>Designer</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>7f5fcc9f-c721-4a31-bfe2-7909f4289420</type>
+      </lookupTypes>
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="75b89367-1808-43f8-9f18-785915ec1630">
       <comment />

@@ -45,7 +45,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Name => _element.Name;
         public string ApiModelName => $"{Name.ToCSharpIdentifier()}Model";
 
-        public DesignerSettingsModel Designer => DesignerModelFactory.GetDesigner(_element);
+        public DesignerSettingsModel Designer => DesignerModelFactory.GetDesignerSettings(_element);
 
         public bool IsChild => _element.ParentElement.SpecializationType == SpecializationType;
 

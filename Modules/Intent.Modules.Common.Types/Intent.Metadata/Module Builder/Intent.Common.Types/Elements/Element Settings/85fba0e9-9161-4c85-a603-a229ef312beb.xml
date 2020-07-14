@@ -6,9 +6,13 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>55d06096-83fe-4acf-86ef-586d254e5170</parentFolderId>
+  <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+  <packageName>Intent.Common.Types</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Own File" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/Enumeration_256x.png&quot;}" isActive="true" />
@@ -24,6 +28,8 @@
     </stereotype>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
@@ -42,6 +48,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>85fba0e9-9161-4c85-a603-a229ef312beb</parentFolderId>
+      <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+      <packageName>Intent.Common.Types</packageName>
       <stereotypes />
       <childElements>
         <childElement id="293b0a25-7293-46ca-a19c-0d469e911135" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -54,15 +62,21 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>fe0a6375-7177-4070-b759-98321e85ee85</parentFolderId>
+          <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+          <packageName>Intent.Common.Types</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + l" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />

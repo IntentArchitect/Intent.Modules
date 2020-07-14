@@ -20,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Api.Factories
             }
         }
 
-        public static DesignerSettingsModel GetDesigner(IElement forElement)
+        public static DesignerSettingsModel GetDesignerSettings(IElement forElement)
         {
             var designerElement = forElement.GetParentPath()
                 .Single(x => x.SpecializationType == Api.DesignerSettingsModel.SpecializationType || x.SpecializationType == Api.DesignerExtensionModel.SpecializationType);

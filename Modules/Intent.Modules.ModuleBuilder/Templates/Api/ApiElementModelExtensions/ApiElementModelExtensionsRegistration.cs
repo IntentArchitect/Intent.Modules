@@ -36,17 +36,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<ExtensionModel> GetModels(IApplication application)
         {
-
-            _stereotypeDefinitions = _metadataManager.GetMetadata<IStereotypeDefinition>("Module Builder", application.Id)
+            _stereotypeDefinitions = _metadataManager.ModuleBuilder(application).StereotypeDefinitions
                 .Where(x => x.TargetMode == StereotypeTargetMode.ElementsOfType);
-            var targetTypes = _stereotypeDefinitions.SelectMany(x => x.TargetElements).Where(x => !x.SpecializationType.Equals("Package Settings", StringComparison.InvariantCultureIgnoreCase)).Distinct();
+            var targetTypes = _stereotypeDefinitions.SelectMany(x => x.TargetElements).Distinct();
             return targetTypes.Select(x => new ExtensionModel(new ExtensionModelType(x.Name), _stereotypeDefinitions.Where(s => s.TargetElements.Any(t => t.Id.Equals(x.Id, StringComparison.InvariantCultureIgnoreCase))).ToList()));
-            //return _metadataManager.GetElementSettingsModels(application)
-            //    .Where(e => _stereotypeDefinitions.Any(x => x.TargetElements.Any(t => t.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase))))
-            //    .Select(model => new ExtensionModel(
-            //        element: model, 
-            //        stereotypeDefinitions: _stereotypeDefinitions.Where(s => s.TargetElements.Any(t => t.Equals(model.Name, StringComparison.InvariantCultureIgnoreCase))).ToList()))
-            //    .ToList();
         }
     }
 }

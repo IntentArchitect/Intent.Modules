@@ -95,6 +95,28 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiAssociationModelExtensions.tt</DependentUpon>
     </Compile>
+  
+    <None Update="Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ApiMetadataPackageExtensions.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiMetadataPackageExtensions.tt</DependentUpon>
+    </Compile>
+  
+    <None Update="Templates\Api\ApiPackageModel\ApiPackageModel.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ApiPackageModel.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\Api\ApiPackageModel\ApiPackageModel.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiPackageModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

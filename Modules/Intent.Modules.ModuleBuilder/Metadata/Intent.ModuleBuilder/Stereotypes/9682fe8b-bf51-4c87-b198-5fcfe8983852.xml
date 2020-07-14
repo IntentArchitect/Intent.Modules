@@ -13,6 +13,8 @@
   <autoAdd>false</autoAdd>
   <parentFolderId>ea7ccdb1-1f68-4cf0-87a7-f060b69e364d</parentFolderId>
   <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="46678a0e-dbb3-479a-a434-092390ec23ec">
       <name>Shortcut</name>

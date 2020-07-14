@@ -16,10 +16,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
 
         public SingleFileListModelTemplateRegistrationTemplate(IProject project, TemplateRegistrationModel model) : base(TemplateId, project, model)
         {
-            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.GetDesignerSettings().NuGetPackageId()) &&
-                !string.IsNullOrWhiteSpace(Model.GetModeler()?.GetDesignerSettings().NuGetPackageVersion()))
+            if (!string.IsNullOrWhiteSpace(Model.GetDesignerSettings()?.GetDesignerSettings().NuGetPackageId()) &&
+                !string.IsNullOrWhiteSpace(Model.GetDesignerSettings()?.GetDesignerSettings().NuGetPackageVersion()))
             {
-                AddNugetDependency(packageName: Model.GetModeler().GetDesignerSettings().NuGetPackageId(), packageVersion: Model.GetModeler().GetDesignerSettings().NuGetPackageVersion());
+                AddNugetDependency(packageName: Model.GetDesignerSettings().GetDesignerSettings().NuGetPackageId(), packageVersion: Model.GetDesignerSettings().GetDesignerSettings().NuGetPackageVersion());
             }
         }
 
@@ -62,7 +62,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
         public string GetModelsMethod()
         {
             var modelName = GetModelType();
-            return $"_metadataManager.Get{modelName.ToPluralName()}(application)";
+            return $"_metadataManager.{Model.GetDesigner().Name.ToCSharpIdentifier()}(application).Get{modelName.ToPluralName()}()";
         }
 
         public string GetModelType()

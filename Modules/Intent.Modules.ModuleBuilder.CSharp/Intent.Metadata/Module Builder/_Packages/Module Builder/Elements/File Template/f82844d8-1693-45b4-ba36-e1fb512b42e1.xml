@@ -14,9 +14,13 @@
   </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>70bb8550-9ff1-488f-a044-be46dff677a5</parentFolderId>
+  <packageId>4bc923af-11c5-4255-b97a-79de29be5060</packageId>
+  <packageName>Module Builder</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6" name="File Settings">
       <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="329d0550-b81b-4db6-a99b-05d90360d432" display="File Extension" value="tt" isActive="true" />
         <property name="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe" display="Templating Method" value="Custom" isActive="true" />
@@ -24,6 +28,8 @@
     </stereotype>
     <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709" display="Source" value="Lookup Type" isActive="true" />
         <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="f6456232-0f1b-4235-b5f8-b4cce548ca59" isActive="true" />

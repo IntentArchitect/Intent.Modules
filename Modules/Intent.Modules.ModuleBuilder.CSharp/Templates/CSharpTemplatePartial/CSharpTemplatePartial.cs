@@ -39,7 +39,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
                     "");
             
             #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetDesignerSettings() != null ? string.Format("using {0};", Model.GetDesignerSettings().ApiNamespace) : "")));
             
             #line default
             #line hidden

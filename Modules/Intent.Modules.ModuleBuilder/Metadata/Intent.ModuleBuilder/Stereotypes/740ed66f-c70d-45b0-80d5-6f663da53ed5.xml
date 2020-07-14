@@ -12,6 +12,8 @@
   <autoAdd>false</autoAdd>
   <parentFolderId>e5490d86-5379-4e9f-8946-13b5d457c86e</parentFolderId>
   <order>1</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
   <properties>
     <property id="d87242ea-697e-4ab6-b9f9-f48e9af2d3af">
       <name>Child Mapping Mode</name>

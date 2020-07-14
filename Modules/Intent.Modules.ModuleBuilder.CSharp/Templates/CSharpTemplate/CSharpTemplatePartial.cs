@@ -59,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetModeler() != null ? $@"<#@ import namespace=""{Model.GetModeler().ApiNamespace}"" #>" : "")}
+{(Model.GetDesigner() != null ? $@"<#@ import namespace=""{Model.GetDesignerSettings().ApiNamespace}"" #>" : "")}
 {TemplateBody()}";
         }
 
