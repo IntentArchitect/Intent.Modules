@@ -34,7 +34,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataPackageExtension
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IList<PackageSettingsModel> GetModels(IApplication application)
         {
-            return _metadataManager.ModuleBuilder(application).GetPackageSettingsModels().ToList();
+            var models = _metadataManager.ModuleBuilder(application).GetPackageSettingsModels().ToList();
+
+            if (!models.Any())
+            {
+                AbortRegistration();
+            }
+
+            return models;
+
         }
     }
 }
