@@ -148,7 +148,7 @@
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
-    <file src="$outDir$/NuGet.Versioning.dll" />
+    <file src="$outDir$/NuGet.Versioning.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Build.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Build.Framework.dll" inspect="false" />
     <!--<file src="$outDir$/Microsoft.Build.Utilities.Core.dll" inspect="false" />-->
