@@ -9,6 +9,7 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;

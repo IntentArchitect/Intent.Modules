@@ -16,69 +16,91 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         [IntentManaged(Mode.Ignore)]
         public static IList<IVisualStudioProject> GetAllProjectModels(this IMetadataManager metadataManager, IApplication application)
         {
-            return metadataManager.GetASPNETCoreWebApplicationModels(application).Cast<IVisualStudioProject>()
-                .Concat(metadataManager.GetASPNETWebApplicationNETFrameworkModels(application))
-                .Concat(metadataManager.GetClassLibraryNETCoreModels(application))
-                .Concat(metadataManager.GetClassLibraryNETFrameworkModels(application))
-                .Concat(metadataManager.GetConsoleAppNETFrameworkModels(application))
-                .Concat(metadataManager.GetWCFServiceApplicationModels(application))
+            return metadataManager.VisualStudio(application).GetASPNETCoreWebApplicationModels().Cast<IVisualStudioProject>()
+                .Concat(metadataManager.VisualStudio(application).GetASPNETWebApplicationNETFrameworkModels())
+                .Concat(metadataManager.VisualStudio(application).GetClassLibraryNETCoreModels())
+                .Concat(metadataManager.VisualStudio(application).GetClassLibraryNETFrameworkModels())
+                .Concat(metadataManager.VisualStudio(application).GetConsoleAppNETFrameworkModels())
+                .Concat(metadataManager.VisualStudio(application).GetWCFServiceApplicationModels())
                 .ToList();
         }
 
 
-        public static IList<ASPNETCoreWebApplicationModel> GetASPNETCoreWebApplicationModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ASPNETCoreWebApplicationModel> GetASPNETCoreWebApplicationModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetASPNETCoreWebApplicationModels(application);
+            return designer.GetElementsOfType(ASPNETCoreWebApplicationModel.SpecializationTypeId)
+                .Select(x => new ASPNETCoreWebApplicationModel(x))
+                .ToList();
         }
 
-        public static IList<ASPNETWebApplicationNETFrameworkModel> GetASPNETWebApplicationNETFrameworkModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ASPNETWebApplicationNETFrameworkModel> GetASPNETWebApplicationNETFrameworkModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetASPNETWebApplicationNETFrameworkModels(application);
+            return designer.GetElementsOfType(ASPNETWebApplicationNETFrameworkModel.SpecializationTypeId)
+                .Select(x => new ASPNETWebApplicationNETFrameworkModel(x))
+                .ToList();
         }
 
-        public static IList<ClassLibraryNETCoreModel> GetClassLibraryNETCoreModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ClassLibraryNETCoreModel> GetClassLibraryNETCoreModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetClassLibraryNETCoreModels(application);
+            return designer.GetElementsOfType(ClassLibraryNETCoreModel.SpecializationTypeId)
+                .Select(x => new ClassLibraryNETCoreModel(x))
+                .ToList();
         }
 
-        public static IList<ClassLibraryNETFrameworkModel> GetClassLibraryNETFrameworkModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ClassLibraryNETFrameworkModel> GetClassLibraryNETFrameworkModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetClassLibraryNETFrameworkModels(application);
+            return designer.GetElementsOfType(ClassLibraryNETFrameworkModel.SpecializationTypeId)
+                .Select(x => new ClassLibraryNETFrameworkModel(x))
+                .ToList();
         }
 
-        public static IList<ConsoleAppNETFrameworkModel> GetConsoleAppNETFrameworkModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ConsoleAppNETFrameworkModel> GetConsoleAppNETFrameworkModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetConsoleAppNETFrameworkModels(application);
+            return designer.GetElementsOfType(ConsoleAppNETFrameworkModel.SpecializationTypeId)
+                .Select(x => new ConsoleAppNETFrameworkModel(x))
+                .ToList();
         }
 
-        public static IList<FolderModel> GetFolderModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<RoleModel> GetRoleModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
+            return designer.GetElementsOfType(RoleModel.SpecializationTypeId)
+                .Select(x => new RoleModel(x))
+                .ToList();
         }
 
-        public static IList<RoleModel> GetRoleModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<WCFServiceApplicationModel> GetWCFServiceApplicationModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetRoleModels(application);
+            return designer.GetElementsOfType(WCFServiceApplicationModel.SpecializationTypeId)
+                .Select(x => new WCFServiceApplicationModel(x))
+                .ToList();
         }
 
-        public static IList<WCFServiceApplicationModel> GetWCFServiceApplicationModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<NETCoreVersionModel> GetNETCoreVersionModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetWCFServiceApplicationModels(application);
+            return designer.GetElementsOfType(NETCoreVersionModel.SpecializationTypeId)
+                .Select(x => new NETCoreVersionModel(x))
+                .ToList();
         }
 
-        public static IList<NETCoreVersionModel> GetNETCoreVersionModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<NETFrameworkVersionModel> GetNETFrameworkVersionModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetNETCoreVersionModels(application);
+            return designer.GetElementsOfType(NETFrameworkVersionModel.SpecializationTypeId)
+                .Select(x => new NETFrameworkVersionModel(x))
+                .ToList();
         }
 
-        public static IList<NETFrameworkVersionModel> GetNETFrameworkVersionModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<SolutionFolderModel> GetSolutionFolderModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetNETFrameworkVersionModels(application);
+            return designer.GetElementsOfType(SolutionFolderModel.SpecializationTypeId)
+                .Select(x => new SolutionFolderModel(x))
+                .ToList();
         }
 
-        public static IList<SolutionFolderModel> GetSolutionFolderModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FolderModel> GetFolderModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetSolutionFolderModels(application);
+            return designer.GetElementsOfType(FolderModel.SpecializationTypeId)
+                .Select(x => new FolderModel(x))
+                .ToList();
         }
 
     }

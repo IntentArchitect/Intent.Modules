@@ -15,6 +15,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public const string SpecializationType = ".NET Framework Version";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public NETFrameworkVersionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -65,5 +66,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "6453c4bd-78b8-4589-a223-9f57a348a1a1";
     }
 }

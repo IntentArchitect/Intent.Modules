@@ -13,8 +13,10 @@ namespace Intent.Modules.VisualStudio.Projects.Api
     public class FolderModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Folder";
+        public const string SpecializationTypeId = "3407a825-1331-4f3f-89a4-901903ed97ce";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public FolderModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -77,5 +79,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .Where(x => x.SpecializationType == FolderModel.SpecializationType)
             .Select(x => new FolderModel(x))
             .ToList();
+
     }
 }

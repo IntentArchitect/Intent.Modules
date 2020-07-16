@@ -6,6 +6,8 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</parentFolderId>
+  <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+  <packageName>Intent.VisualStudio.Projects</packageName>
   <stereotypes />
   <childElements />
 </class>

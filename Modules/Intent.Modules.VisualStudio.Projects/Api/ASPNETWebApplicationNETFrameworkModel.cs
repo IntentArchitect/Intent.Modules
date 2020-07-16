@@ -18,6 +18,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public const string SpecializationType = "ASP.NET Web Application (.NET Framework)";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public ASPNETWebApplicationNETFrameworkModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -94,5 +95,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .Where(x => x.SpecializationType == FolderModel.SpecializationType)
             .Select(x => new FolderModel(x))
             .ToList();
+        public const string SpecializationTypeId = "8AF747CF-58F0-449C-8B95-46080FEFC8C0";
     }
 }

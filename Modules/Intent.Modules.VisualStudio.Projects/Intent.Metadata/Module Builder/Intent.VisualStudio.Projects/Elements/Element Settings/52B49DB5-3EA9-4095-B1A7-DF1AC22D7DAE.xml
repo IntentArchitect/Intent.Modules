@@ -6,9 +6,13 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>2ef69545-61ca-42b7-89bd-4ae3d5970280</parentFolderId>
+  <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+  <packageName>Intent.VisualStudio.Projects</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
@@ -20,6 +24,8 @@
     </stereotype>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;data:image/png;base64,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&quot;}" isActive="true" />
@@ -42,6 +48,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE</parentFolderId>
+      <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+      <packageName>Intent.VisualStudio.Projects</packageName>
       <stereotypes />
       <childElements>
         <childElement id="72b9097a-cea8-4f60-88be-a4d84143b556" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -50,19 +58,25 @@
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="09ba26d9-6f1f-4a38-be91-45dd8a8c8fff">
-            <typeId>f608a46f-b6a1-4536-b227-b48f6431855f</typeId>
+            <typeId>3407a825-1331-4f3f-89a4-901903ed97ce</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>fa62c8f5-a60c-445e-8fdf-16237b3cea7a</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + f" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
@@ -84,15 +98,21 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>fa62c8f5-a60c-445e-8fdf-16237b3cea7a</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />

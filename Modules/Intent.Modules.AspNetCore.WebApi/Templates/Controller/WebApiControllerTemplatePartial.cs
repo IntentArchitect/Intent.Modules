@@ -10,9 +10,11 @@ using Intent.Modules.Common.Templates;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 using Intent.Utils;
+using IDeclareUsings = Intent.Templates.IDeclareUsings;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {

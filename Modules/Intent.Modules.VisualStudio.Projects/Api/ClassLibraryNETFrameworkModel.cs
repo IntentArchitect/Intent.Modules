@@ -18,6 +18,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public const string SpecializationType = "Class Library (.NET Framework)";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public ClassLibraryNETFrameworkModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -94,5 +95,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .Where(x => x.SpecializationType == FolderModel.SpecializationType)
             .Select(x => new FolderModel(x))
             .ToList();
+        public const string SpecializationTypeId = "0FEBBF41-7C8E-4F98-85A5-F8B5236CFD7D";
     }
 }

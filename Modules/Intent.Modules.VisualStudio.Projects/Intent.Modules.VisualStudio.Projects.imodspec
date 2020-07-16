@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.VisualStudio.Projects</id>
   <version>2.2.0</version>
@@ -141,9 +141,10 @@
     <dependency id="Intent.Common" version="2.0.4" />
   </dependencies>
   <metadata>
-    <install target="Visual Studio" src="modelers" />
-    <install target="Visual Studio" src="Intent.Metadata/Module Builder/Intent.VisualStudio.Projects" externalReference="a0636ab7-d3a1-430b-9609-11a18aa3cc7f" />
+    <install src="Intent.Metadata/Module Builder/Intent.VisualStudio.Projects/Intent.VisualStudio.Projects.pkg.config" externalReference="a0636ab7-d3a1-430b-9609-11a18aa3cc7f" />
     <install target="Visual Studio" src="Intent.Metadata/Visual Studio/Intent.VisualStudio.Projects.Frameworks" externalReference="a0636ab7-d3a1-430b-9609-11a18aa3cc7f" />
+    <install src="modelers/Visual Studio Types.designer.settings" externalReference="2ef69545-61ca-42b7-89bd-4ae3d5970280" />
+    <install src="modelers/Visual Studio.designer.config" externalReference="0701433c-36c0-4569-b1f4-9204986b587d" />
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />

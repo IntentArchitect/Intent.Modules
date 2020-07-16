@@ -7,6 +7,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 

@@ -12,6 +12,7 @@ using Intent.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.CSharp;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {

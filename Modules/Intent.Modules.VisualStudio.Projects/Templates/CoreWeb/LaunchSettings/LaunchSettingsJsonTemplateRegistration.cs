@@ -24,7 +24,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetASPNETCoreWebApplicationModels(application);
+            var models = _metadataManager.VisualStudio(application).GetASPNETCoreWebApplicationModels();
 
             foreach (var model in models)
             {

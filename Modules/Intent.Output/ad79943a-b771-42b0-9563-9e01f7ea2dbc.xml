@@ -89,13 +89,23 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\VisualStudioSolutionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/VisualStudioSolutionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\WCFServiceApplicationModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/WCFServiceApplicationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\ApiMetadataProvider.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\ApiMetadataPackageExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
@@ -114,8 +124,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\modelers\Visual Studio.modeler.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Visual Studio.modeler.config</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\modelers\Visual Studio Types.designer.settings</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Visual Studio Types.designer.settings</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\modelers\Visual Studio.designer.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Visual Studio.designer.config</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

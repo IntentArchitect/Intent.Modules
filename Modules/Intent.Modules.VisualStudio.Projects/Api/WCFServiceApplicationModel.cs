@@ -18,6 +18,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public const string SpecializationType = "WCF Service Application";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public WCFServiceApplicationModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -94,5 +95,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .Where(x => x.SpecializationType == FolderModel.SpecializationType)
             .Select(x => new FolderModel(x))
             .ToList();
+        public const string SpecializationTypeId = "3CDFF513-03D8-4BAB-9435-160108A086A3";
     }
 }

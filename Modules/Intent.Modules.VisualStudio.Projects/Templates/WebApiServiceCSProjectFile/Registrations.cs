@@ -22,7 +22,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
 
         public void Register(IProjectRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetASPNETWebApplicationNETFrameworkModels(application);
+            var models = _metadataManager.VisualStudio(application).GetASPNETWebApplicationNETFrameworkModels();
             foreach (var model in models)
             {
                 registry.RegisterProject(model.ToProjectConfig());
@@ -31,7 +31,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetASPNETWebApplicationNETFrameworkModels(application);
+            var models = _metadataManager.VisualStudio(application).GetASPNETWebApplicationNETFrameworkModels();
 
             foreach (var model in models)
             {

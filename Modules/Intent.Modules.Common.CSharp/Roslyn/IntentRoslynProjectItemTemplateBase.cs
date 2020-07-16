@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;

@@ -8,6 +8,7 @@ using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Application.Contracts.Templates.DTO;
+using Intent.Modules.Common.CSharp;
 using Intent.Templates;
 using Intent.Utils;
 

@@ -23,7 +23,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
 
         public void Register(IProjectRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetClassLibraryNETCoreModels(application);
+            var models = _metadataManager.VisualStudio(application).GetClassLibraryNETCoreModels();
             foreach (var model in models)
             {
                 registry.RegisterProject(model.ToProjectConfig());
@@ -32,7 +32,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetClassLibraryNETCoreModels(application);
+            var models = _metadataManager.VisualStudio(application).GetClassLibraryNETCoreModels();
 
             foreach (var model in models)
             {

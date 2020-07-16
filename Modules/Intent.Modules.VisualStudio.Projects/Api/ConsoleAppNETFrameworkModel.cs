@@ -18,6 +18,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public const string SpecializationType = "Console App (.NET Framework)";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public ConsoleAppNETFrameworkModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -94,5 +95,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .Where(x => x.SpecializationType == FolderModel.SpecializationType)
             .Select(x => new FolderModel(x))
             .ToList();
+        public const string SpecializationTypeId = "673AAE96-C9B1-4B7E-9A52-ADE5F9218CFC";
     }
 }

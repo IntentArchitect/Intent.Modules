@@ -22,7 +22,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var models = _metadataManager.GetConsoleAppNETFrameworkModels(application);
+            var models = _metadataManager.VisualStudio(application).GetConsoleAppNETFrameworkModels();
 
             foreach (var model in models)
             {

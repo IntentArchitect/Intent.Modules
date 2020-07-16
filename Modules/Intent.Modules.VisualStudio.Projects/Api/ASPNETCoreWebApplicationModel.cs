@@ -15,9 +15,11 @@ namespace Intent.Modules.VisualStudio.Projects.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class ASPNETCoreWebApplicationModel : IHasStereotypes, IMetadataModel, IVisualStudioProject
     {
+        public const string SpecializationTypeId = "FFD54A85-9362-48AC-B646-C93AB9AC63D2";
         public const string SpecializationType = "ASP.NET Core Web Application";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public ASPNETCoreWebApplicationModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))

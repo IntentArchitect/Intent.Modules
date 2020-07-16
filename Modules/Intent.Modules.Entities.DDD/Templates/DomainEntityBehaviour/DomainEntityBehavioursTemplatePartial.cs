@@ -7,6 +7,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
 using Intent.Templates;
 
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour

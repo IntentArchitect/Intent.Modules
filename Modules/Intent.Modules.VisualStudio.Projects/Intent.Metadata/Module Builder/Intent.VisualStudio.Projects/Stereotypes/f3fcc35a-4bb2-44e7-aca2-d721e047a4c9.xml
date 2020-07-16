@@ -15,6 +15,8 @@
   <autoAdd>false</autoAdd>
   <parentFolderId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</parentFolderId>
   <order>0</order>
+  <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+  <packageName>Intent.VisualStudio.Projects</packageName>
   <properties>
     <property id="117cf9ee-04da-4f1c-915a-b62c61e2c558">
       <name>Target Framework</name>

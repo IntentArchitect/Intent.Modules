@@ -6,9 +6,13 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>2ef69545-61ca-42b7-89bd-4ae3d5970280</parentFolderId>
+  <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+  <packageName>Intent.VisualStudio.Projects</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
@@ -20,6 +24,8 @@
     </stereotype>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" isActive="true" />
@@ -42,6 +48,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>673AAE96-C9B1-4B7E-9A52-ADE5F9218CFC</parentFolderId>
+      <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+      <packageName>Intent.VisualStudio.Projects</packageName>
       <stereotypes />
       <childElements>
         <childElement id="a21a5103-03d2-4560-a365-8219b96dc336" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -50,19 +58,25 @@
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="a18c7887-cc5a-4213-9553-793c72b710f9">
-            <typeId>f608a46f-b6a1-4536-b227-b48f6431855f</typeId>
+            <typeId>3407a825-1331-4f3f-89a4-901903ed97ce</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>fb9868e7-5c5f-4dcd-bcbf-2c9391d95e17</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + f" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
@@ -84,15 +98,21 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>fb9868e7-5c5f-4dcd-bcbf-2c9391d95e17</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />

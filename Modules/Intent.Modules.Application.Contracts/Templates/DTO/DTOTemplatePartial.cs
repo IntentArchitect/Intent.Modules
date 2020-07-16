@@ -7,6 +7,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;

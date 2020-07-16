@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
 using IClassTypeSource = Intent.Modules.Common.TypeResolution.IClassTypeSource;
 
-namespace Intent.Modules.Common.Templates
+namespace Intent.Modules.Common.CSharp
 {
     public class CSharpTypeSource : IClassTypeSource
     {

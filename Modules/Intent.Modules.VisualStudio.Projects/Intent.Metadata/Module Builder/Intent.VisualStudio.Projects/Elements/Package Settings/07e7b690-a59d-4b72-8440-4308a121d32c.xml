@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="07e7b690-a59d-4b72-8440-4308a121d32c" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
+  <name>Visual Studio Solution</name>
+  <display>Visual Studio Solution</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>2ef69545-61ca-42b7-89bd-4ae3d5970280</parentFolderId>
+  <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+  <packageName>Intent.VisualStudio.Projects</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="3b1cc619-f3d8-40ef-8989-8449ab0efecb" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>07e7b690-a59d-4b72-8440-4308a121d32c</parentFolderId>
+      <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+      <packageName>Intent.VisualStudio.Projects</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="fc95b0a5-c91e-4dfe-abba-f60672af2c45" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Folder</name>
+          <display>New Folder: Solution Folder</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="8a1443c4-307f-4d0c-8fe8-f7c8bf257b12">
+            <typeId>0dc2b846-c968-49eb-99b7-8776919313a8</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + f" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="NewFolder" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="10941e6e-c628-460a-92bf-a4d3a8bb85ea" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Class Library (.NET Core)</name>
+          <display>Class Library (.NET Core): Class Library (.NET Core)</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="8c87f5a9-09de-4e58-8fd1-121289ac24d7">
+            <typeId>52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="ClassLibrary" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="148e9b09-8bea-4f22-aced-8fa2d5fe67e2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Class Library (.NET Framework)</name>
+          <display>Class Library (.NET Framework): Class Library (.NET Framework)</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="16a3d883-1621-445a-868a-a41243496d7f">
+            <typeId>0FEBBF41-7C8E-4F98-85A5-F8B5236CFD7D</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="ClassLibrary" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="8d0592fa-87fc-4140-b502-44066cb39165" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>ASP.NET Core Web Application</name>
+          <display>ASP.NET Core Web Application: ASP.NET Core Web Application</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="0d251450-78f7-4bd2-ad22-c4937b07b263">
+            <typeId>FFD54A85-9362-48AC-B646-C93AB9AC63D2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="WebApplication" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="98eb9945-e505-4b9d-b304-c241121afef1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>ASP.NET Web Application (.NET Framework)</name>
+          <display>ASP.NET Web Application (.NET Framework): ASP.NET Web Application (.NET Framework)</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="344adcd3-d00a-42ef-be3b-7f21e076f513">
+            <typeId>8AF747CF-58F0-449C-8B95-46080FEFC8C0</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="WebApplication" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="3a380adf-85ef-4078-a4ef-163fa86818f9" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>WCF Service Application</name>
+          <display>WCF Service Application: WCF Service Application</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="eeb23b50-6fb3-4886-aa8c-2eb41683291e">
+            <typeId>3CDFF513-03D8-4BAB-9435-160108A086A3</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="9ccd6b7c-8f27-4298-abf9-ff36f9ed2583" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Role</name>
+          <display>Add Role: Role</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="a56c2534-0be0-474f-8381-83c54c4c4c69">
+            <typeId>025e933b-b602-4b6d-95ab-0ec36ae940da</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="e8057355-7568-4bf9-8abf-6869cdb5a82c" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add .NET Core Version</name>
+          <display>Add .NET Core Version: .NET Core Version</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="8a01f9c0-5ecf-4aab-be33-e42ba49bd8be">
+            <typeId>65fb2757-ce97-41a8-9c53-b03d53c2c03f</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="a1f9dd9f-6398-41e2-a51e-b8da432fe2e8" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add .NET Framework Version</name>
+          <display>Add .NET Framework Version: .NET Framework Version</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e2337432-1dc8-4a82-a6ef-e0d6eaf27a78">
+            <typeId>6453c4bd-78b8-4589-a223-9f57a348a1a1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="f5212cbd-2d95-413a-8dd5-e18a245b6e6a" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
+          <name>New Stereotype-Definition</name>
+          <display>New Stereotype-Definition: Stereotype-Definition</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="991a5e13-c114-4268-ad2a-3dfdb789897b">
+            <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b1cc619-f3d8-40ef-8989-8449ab0efecb</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

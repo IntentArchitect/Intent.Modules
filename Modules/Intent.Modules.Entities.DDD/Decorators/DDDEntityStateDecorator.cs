@@ -10,6 +10,7 @@ using Intent.Modules.Entities.Templates.DomainEntityState;
 using Intent.Configuration;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
+using Intent.Modules.Common.CSharp;
 using Intent.Plugins;
 using Intent.Templates;
 

@@ -15,6 +15,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public const string SpecializationType = "Role";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public RoleModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -65,5 +66,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "025e933b-b602-4b6d-95ab-0ec36ae940da";
     }
 }

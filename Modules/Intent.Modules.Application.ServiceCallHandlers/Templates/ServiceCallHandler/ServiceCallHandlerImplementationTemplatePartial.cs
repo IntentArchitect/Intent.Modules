@@ -8,6 +8,7 @@ using Intent.Modules.Application.Contracts;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;

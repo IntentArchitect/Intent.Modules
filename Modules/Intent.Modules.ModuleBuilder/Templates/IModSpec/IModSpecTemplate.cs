@@ -206,7 +206,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (existing == null)
                 {
                     existing = new XElement("install");
-                    metadataRegistrations.Add(new XElement("install"));
+                    metadataRegistrations.Add(existing);
                 }
                 existing.SetAttributeValue("target", metadataRegistration.Targets.Any()
                         ? string.Join(";", metadataRegistration.Targets.Select(x => x.Name))
@@ -226,7 +226,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (existing == null)
                 {
                     existing = new XElement("install");
-                    metadataRegistrations.Add(new XElement("install"));
+                    metadataRegistrations.Add(existing);
                 }
 
                 var targets = package.GetStereotypeProperty<IElement[]>("Package Settings", "Reference in Designer");
