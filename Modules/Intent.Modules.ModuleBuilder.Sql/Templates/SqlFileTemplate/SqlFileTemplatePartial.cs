@@ -7,6 +7,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -58,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
 <#@ import namespace=""Intent.Modules.Common.Sql.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetModeler() != null ? $@"<#@ import namespace=""{Model.GetModeler().ApiNamespace}"" #>" : "")}
+{(Model.GetDesignerSettings() != null ? $@"<#@ import namespace=""{Model.GetDesignerSettings().ApiNamespace}"" #>" : "")}
 {TemplateBody()}";
         }
 

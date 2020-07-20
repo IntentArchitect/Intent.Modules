@@ -13,7 +13,7 @@ using Intent.Modules.Constants;
 namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
 {
     [Description("Assembly Info Template - VS Projects")]
-    public class Registrations : IProjectTemplateRegistration
+    public class Registrations : ITemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -25,7 +25,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
         public string TemplateId => AssemblyInfoTemplate.Identifier;
 
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication application)
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
             var targetProjectIds = new List<string>() {
                 VisualStudioProjectTypeIds.ConsoleAppNetFramework,
@@ -36,7 +36,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
 
             foreach (var project in projects)
             {
-                registery.Register(TemplateId, project, (p) => new AssemblyInfoTemplate(project));
+                registry.RegisterTemplate(TemplateId, project, (p) => new AssemblyInfoTemplate((IProject) project));
             }
         }
     }

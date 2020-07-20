@@ -1,271 +1,289 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.TypeResolution;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public abstract class IntentTemplateBase : IRequireTypeResolver
+    public abstract class IntentTemplateBase<TModel> : IntentTemplateBase, ITemplateWithModel
     {
-        #region Fields
-        private StringBuilder generationEnvironmentField;
-        private List<int> indentLengthsField;
-        private string currentIndentField = "";
-        private bool endsWithNewline;
-        private IDictionary<string, object> sessionField;
-        #endregion
+        protected IntentTemplateBase(string templateId, IOutputContext outputContext, TModel model) : base(templateId, outputContext)
+        {
+            Model = model;
+        }
 
-        public abstract string TransformText();
+        public TModel Model { get; }
 
-        #region Properties
-        /// <summary>
-        /// The string builder that generation-time code is using to assemble generated output
-        /// </summary>
-        protected System.Text.StringBuilder GenerationEnvironment
+        object ITemplateWithModel.Model => Model;
+
+        public override string ToString()
         {
-            get
+            return $"{Id} [{Model?.ToString()}]";
+        }
+    }
+
+    public abstract class IntentTemplateBase : T4TemplateBase, ITemplate, IConfigurableTemplate, IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
+    {
+        protected readonly ICollection<ITemplateDependency> DetectedDependencies = new List<ITemplateDependency>();
+
+        protected IntentTemplateBase(string templateId, IOutputContext outputContext)
+        {
+            OutputContext = outputContext;
+            Id = templateId;
+            Context = new TemplateContext(this);
+        }
+
+        public string Id { get; }
+        public IOutputContext OutputContext { get; }
+        public ITemplateContext Context { get; }
+        public IFileMetadata FileMetadata { get; private set; }
+
+
+
+        public void ConfigureFileMetadata(IFileMetadata fileMetadata)
+        {
+            FileMetadata = fileMetadata;
+        }
+
+        public abstract ITemplateFileConfig DefineDefaultFileMetadata();
+
+        public virtual string RunTemplate()
+        {
+            // NOTE: If this method is run multiple times for a template instance, the output is duplicated. Perhaps put in a check here?
+            return TransformText();
+        }
+
+        public IFileMetadata GetMetadata()
+        {
+            return FileMetadata;
+        }
+
+        public virtual IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        {
+            if (!HasTypeResolver())
             {
-                if ((this.generationEnvironmentField == null))
-                {
-                    this.generationEnvironmentField = new global::System.Text.StringBuilder();
-                }
-                return this.generationEnvironmentField;
+                return DetectedDependencies;
             }
-            set
+            return Types.GetTemplateDependencies().Concat(DetectedDependencies); ;
+        }
+
+        public virtual void OnConfigured()
+        {
+        }
+
+        public virtual void BeforeTemplateExecution()
+        {
+        }
+
+        private string _defaultTypeCollectionFormat;
+        private readonly ICollection<IClassTypeSource> _typeSources = new List<IClassTypeSource>();
+
+        public void SetDefaultTypeCollectionFormat(string collectionFormat)
+        {
+            _defaultTypeCollectionFormat = collectionFormat;
+            if (_onCreatedHasHappened)
             {
-                this.generationEnvironmentField = value;
+                Types.DefaultCollectionFormat = collectionFormat;
             }
         }
-        /// <summary>
-        /// A list of the lengths of each indent that was added with PushIndent
-        /// </summary>
-        private System.Collections.Generic.List<int> indentLengths
+
+        public void AddTypeSource(IClassTypeSource classTypeSource)
         {
-            get
+            _typeSources.Add(classTypeSource);
+            if (_onCreatedHasHappened)
             {
-                if ((this.indentLengthsField == null))
-                {
-                    this.indentLengthsField = new global::System.Collections.Generic.List<int>();
-                }
-                return this.indentLengthsField;
+                Types.AddClassTypeSource(classTypeSource);
             }
         }
-        /// <summary>
-        /// Gets the current indent we use when adding lines to the output
-        /// </summary>
-        public string CurrentIndent
+
+        private bool _onCreatedHasHappened;
+
+        public virtual void OnCreated()
         {
-            get
-            {
-                return this.currentIndentField;
-            }
-        }
-        /// <summary>
-        /// Current transformation session
-        /// </summary>
-        public virtual global::System.Collections.Generic.IDictionary<string, object> Session
-        {
-            get
-            {
-                return this.sessionField;
-            }
-            set
-            {
-                this.sessionField = value;
-            }
-        }
-        #endregion
-        #region Transform-time helpers
-        /// <summary>
-        /// Write text directly into the generated output
-        /// </summary>
-        public void Write(string textToAppend)
-        {
-            if (string.IsNullOrEmpty(textToAppend))
+            _onCreatedHasHappened = true;
+            if (!HasTypeResolver())
             {
                 return;
             }
-            // If we're starting off, or if the previous text ended with a newline,
-            // we have to append the current indent first.
-            if (((this.GenerationEnvironment.Length == 0)
-                        || this.endsWithNewline))
+            if (_defaultTypeCollectionFormat != null)
             {
-                this.GenerationEnvironment.Append(this.currentIndentField);
-                this.endsWithNewline = false;
+                Types.DefaultCollectionFormat = _defaultTypeCollectionFormat;
             }
-            // Check if the current text ends with a newline
-            if (textToAppend.EndsWith(global::System.Environment.NewLine, global::System.StringComparison.CurrentCulture))
+
+            foreach (var typeSource in _typeSources)
             {
-                this.endsWithNewline = true;
+                Types.AddClassTypeSource(typeSource);
             }
-            // This is an optimization. If the current indent is "", then we don't have to do any
-            // of the more complex stuff further down.
-            if ((this.currentIndentField.Length == 0))
+        }
+
+        public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
+        {
+            return Types.Get(typeReference, collectionFormat);
+        }
+
+        public virtual string GetTypeName(ITypeReference typeReference)
+        {
+            return Types.Get(typeReference);
+        }
+
+        public virtual string GetTemplateClassName(ITemplateDependency templateDependency)
+        {
+            return FindTemplate<IHasClassDetails>(templateDependency).FullTypeName();
+        }
+
+        public string GetTemplateClassName(ITemplate template)
+        {
+            return GetTemplateClassName(TemplateDependency.OnTemplate(template));
+        }
+
+        public string GetTemplateClassName(string templateId)
+        {
+            return GetTemplateClassName(TemplateDependency.OnTemplate(templateId));
+        }
+
+        public string GetTemplateClassName(string templateId, IMetadataModel model)
+        {
+            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == model.Id, model));
+        }
+
+        public string GetTemplateClassName(string templateId, string modelId)
+        {
+            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"));
+        }
+
+        public virtual string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound)
+        {
+            return FindTemplate<IHasClassDetails>(templateDependency, throwIfNotFound).FullTypeName();
+        }
+
+        public string GetTemplateClassName(ITemplate template, bool throwIfNotFound)
+        {
+            return GetTemplateClassName(TemplateDependency.OnTemplate(template), throwIfNotFound);
+        }
+
+        public string GetTemplateClassName(string templateId, bool throwIfNotFound)
+        {
+            return GetTemplateClassName(TemplateDependency.OnTemplate(templateId), throwIfNotFound);
+        }
+
+        public string GetTemplateClassName(string templateId, IMetadataModel model, bool throwIfNotFound)
+        {
+            return GetTemplateClassName(TemplateDependency.OnModel(templateId, model), throwIfNotFound);
+        }
+
+        public string GetTemplateClassName(string templateId, string modelId, bool throwIfNotFound)
+        {
+            return GetTemplateClassName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), throwIfNotFound);
+        }
+
+        public TTemplate FindTemplate<TTemplate>(ITemplateDependency dependency)
+            where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(dependency, true);
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId) where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(TemplateDependency.OnTemplate(templateId));
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId, IMetadataModel model) where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(TemplateDependency.OnModel(templateId, model));
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId, string modelId) where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"));
+        }
+
+        public TTemplate FindTemplate<TTemplate>(ITemplateDependency dependency, bool throwIfNotFound) where TTemplate : class
+        {
+            if (!_onCreatedHasHappened)
             {
-                this.GenerationEnvironment.Append(textToAppend);
-                return;
+                throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
             }
-            // Everywhere there is a newline in the text, add an indent after it
-            textToAppend = textToAppend.Replace(global::System.Environment.NewLine, (global::System.Environment.NewLine + this.currentIndentField));
-            // If the text ends with a newline, then we should strip off the indent added at the very end
-            // because the appropriate indent will be added when the next time Write() is called
-            if (this.endsWithNewline)
+
+            var template = OutputContext.Application.FindTemplateInstance<TTemplate>(dependency);
+            if (template != null)
             {
-                this.GenerationEnvironment.Append(textToAppend, 0, (textToAppend.Length - this.currentIndentField.Length));
+                DetectedDependencies.Add(dependency);
+                return template;
+            }
+
+            if (throwIfNotFound)
+            {
+                throw new Exception($"Could not find template from dependency: {dependency}");
+            }
+
+            return null;
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId, bool throwIfNotFound = true) where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(TemplateDependency.OnTemplate(templateId), throwIfNotFound);
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId, IMetadataModel model, bool throwIfNotFound = true) where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(TemplateDependency.OnModel(templateId, model), throwIfNotFound);
+        }
+
+        public TTemplate FindTemplate<TTemplate>(string templateId, string modelId, bool throwIfNotFound = true) where TTemplate : class
+        {
+            return FindTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), throwIfNotFound);
+        }
+
+        public override string ToString()
+        {
+            return $"{Id}";
+        }
+    }
+
+    public class TemplateContext : ITemplateContext
+    {
+        private object _defaultModelContext;
+        private Dictionary<string, object> _prefixLookup;
+
+        public TemplateContext(object defaultModelContext)
+        {
+            _defaultModelContext = defaultModelContext;
+        }
+
+        public TemplateContext() : this(null)
+        {
+        }
+
+        public void SetDefaultModel(object modelContext)
+        {
+            _defaultModelContext = modelContext;
+        }
+
+        public void AddFakeProperty<T>(string fakePropertyName, T obj)
+        {
+            if (_prefixLookup == null)
+            {
+                _prefixLookup = new Dictionary<string, object>();
+            }
+            _prefixLookup[fakePropertyName] = obj;
+        }
+
+        public object GetRootContext(string propertyName, out bool isDefault)
+        {
+            if (_prefixLookup != null && _prefixLookup.ContainsKey(propertyName))
+            {
+                isDefault = false;
+                return _prefixLookup[propertyName];
             }
             else
             {
-                this.GenerationEnvironment.Append(textToAppend);
+                isDefault = true;
+                return _defaultModelContext;
             }
         }
-        /// <summary>
-        /// Write text directly into the generated output
-        /// </summary>
-        public void WriteLine(string textToAppend)
-        {
-            this.Write(textToAppend);
-            this.GenerationEnvironment.AppendLine();
-            this.endsWithNewline = true;
-        }
-        /// <summary>
-        /// Write formatted text directly into the generated output
-        /// </summary>
-        public void Write(string format, params object[] args)
-        {
-            this.Write(string.Format(global::System.Globalization.CultureInfo.CurrentCulture, format, args));
-        }
-        /// <summary>
-        /// Write formatted text directly into the generated output
-        /// </summary>
-        public void WriteLine(string format, params object[] args)
-        {
-            this.WriteLine(string.Format(global::System.Globalization.CultureInfo.CurrentCulture, format, args));
-        }
-        /// <summary>
-        /// Increase the indent
-        /// </summary>
-        public void PushIndent(string indent)
-        {
-            if ((indent == null))
-            {
-                throw new global::System.ArgumentNullException("indent");
-            }
-            this.currentIndentField = (this.currentIndentField + indent);
-            this.indentLengths.Add(indent.Length);
-        }
-        /// <summary>
-        /// Remove the last indent that was added with PushIndent
-        /// </summary>
-        public string PopIndent()
-        {
-            string returnValue = "";
-            if ((this.indentLengths.Count > 0))
-            {
-                int indentLength = this.indentLengths[(this.indentLengths.Count - 1)];
-                this.indentLengths.RemoveAt((this.indentLengths.Count - 1));
-                if ((indentLength > 0))
-                {
-                    returnValue = this.currentIndentField.Substring((this.currentIndentField.Length - indentLength));
-                    this.currentIndentField = this.currentIndentField.Remove((this.currentIndentField.Length - indentLength));
-                }
-            }
-            return returnValue;
-        }
-        /// <summary>
-        /// Remove any indentation
-        /// </summary>
-        public void ClearIndent()
-        {
-            this.indentLengths.Clear();
-            this.currentIndentField = "";
-        }
-
-        #endregion
-        #region ToString Helpers
-        /// <summary>
-        /// Utility class to produce culture-oriented representation of an object as a string.
-        /// </summary>
-        public class ToStringInstanceHelper
-        {
-            private System.IFormatProvider formatProviderField = global::System.Globalization.CultureInfo.InvariantCulture;
-            /// <summary>
-            /// Gets or sets format provider to be used by ToStringWithCulture method.
-            /// </summary>
-            public System.IFormatProvider FormatProvider
-            {
-                get
-                {
-                    return this.formatProviderField;
-                }
-                set
-                {
-                    if ((value != null))
-                    {
-                        this.formatProviderField = value;
-                    }
-                }
-            }
-            /// <summary>
-            /// This is called from the compile/run appdomain to convert objects within an expression block to a string
-            /// </summary>
-            public string ToStringWithCulture(object objectToConvert)
-            {
-                if ((objectToConvert == null))
-                {
-                    return "";
-                }
-                System.Type t = objectToConvert.GetType();
-                System.Reflection.MethodInfo method = t.GetMethod("ToString", new System.Type[] {
-                            typeof(System.IFormatProvider)});
-                if ((method == null))
-                {
-                    return objectToConvert.ToString();
-                }
-                else
-                {
-                    return ((string)(method.Invoke(objectToConvert, new object[] {
-                                this.formatProviderField })));
-                }
-            }
-        }
-        private ToStringInstanceHelper toStringHelperField = new ToStringInstanceHelper();
-        private ITypeResolver _types;
-
-        /// <summary>
-        /// Helper to produce culture-oriented representation of an object as a string
-        /// </summary>
-        public ToStringInstanceHelper ToStringHelper
-        {
-            get
-            {
-                return this.toStringHelperField;
-            }
-        }
-
-        public bool HasTypeResolver()
-        {
-            return _types != null;
-        }
-
-        public virtual ITypeResolver Types
-        {
-            get
-            {
-                if (_types == null)
-                {
-                    throw new Exception($"Error in template {GetType().FullName}: Attempting to access Types before a ITypeResolver has been set. Either install the Intent.Common.Types module or ensure Types is set manually.");
-                }
-                return _types;
-            }
-
-            set => _types = value;
-        }
-
-        public virtual void Initialize()
-        {
-            // NOP - Visual Studio for Mac generates templates which override this.
-        }
-
-        #endregion
     }
 }

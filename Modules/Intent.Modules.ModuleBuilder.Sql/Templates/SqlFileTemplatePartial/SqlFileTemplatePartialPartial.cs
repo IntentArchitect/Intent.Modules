@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -22,9 +23,9 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
         public SqlFileTemplatePartial(IProject project, SqlTemplateModel model) : base(TemplateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentCommonSql);
-            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.NuGetDependency))
+            if (!string.IsNullOrWhiteSpace(Model.GetDesignerSettings()?.NuGetDependency))
             {
-                AddNugetDependency(new NugetPackageInfo(Model.GetModeler().NuGetDependency, Model.GetModeler().NuGetVersion));
+                AddNugetDependency(new NugetPackageInfo(Model.GetDesignerSettings().NuGetDependency, Model.GetDesignerSettings().NuGetVersion));
             }
         }
 
@@ -57,8 +58,8 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "Sql Template" },
                 { "Role", GetRole() },
-                { "Module Dependency", Model.GetModeler()?.ModuleDependency },
-                { "Module Dependency Version",Model.GetModeler()?.ModuleVersion },
+                { "Module Dependency", Model.GetDesignerSettings()?.ModuleDependency },
+                { "Module Dependency Version",Model.GetDesignerSettings()?.ModuleVersion },
                 { "ModelId", Model.Id }
             });
         }

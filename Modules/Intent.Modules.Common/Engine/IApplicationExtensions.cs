@@ -42,19 +42,19 @@ namespace Intent.Modules.Common
             return application.FindTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch) as TTemplate;
         }
 
-        public static IProject FindProjectWithTemplateInstance(this IApplication application, string templateId, object model)
+        public static IOutputContext FindOutputContextWithTemplateInstance(this IApplication application, string templateId, object model)
         {
-            return FindProjectWithTemplateInstance(application, TemplateDependency.OnModel(templateId, model));
+            return FindOutputContextWithTemplateInstance(application, TemplateDependency.OnModel(templateId, model));
         }
 
-        //public static IProject FindProjectWithTemplateInstance(this IApplication application, string templateId, string className)
+        //public static IOutputContext FindProjectWithTemplateInstance(this IApplication application, string templateId, string className)
         //{
         //    return application.FindProjectWithTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
         //}
 
-        public static IProject FindProjectWithTemplateInstance(this IApplication application, ITemplateDependency templateDependency)
+        public static IOutputContext FindOutputContextWithTemplateInstance(this IApplication application, ITemplateDependency templateDependency)
         {
-            return application.FindProjectWithTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch);
+            return application.FindOutputContextWithTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch);
         }
     }
 }

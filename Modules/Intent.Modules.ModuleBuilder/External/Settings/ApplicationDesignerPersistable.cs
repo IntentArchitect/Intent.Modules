@@ -24,7 +24,11 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         //        AbsolutePath = filePath
         //    };
         //}
-        public static ApplicationDesignerPersistable Create(string id, string name, int order, IconModelPersistable icon, bool loadStartPage)
+        public static ApplicationDesignerPersistable Create(
+            string id, 
+            string name, 
+            int order, 
+            IconModelPersistable icon)
         {
             var x = new ApplicationDesignerPersistable
             {
@@ -32,7 +36,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                 Name = name,
                 Order = order,
                 Icon = icon,
-                LoadStartPage = loadStartPage
+                LoadStartPage = false
             };
             return x;
         }
@@ -71,6 +75,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("loadStartPage")]
         public bool LoadStartPage { get; set; }
 
+        [XmlElement("outputConfiguration")]
+        public DesignerOutputConfiguration OutputConfiguration { get; set; }
+
         [XmlArray("designerReferences")]
         [XmlArrayItem("designerReference")]
         public List<DesignerSettingsReference> DesignerReferences { get; set; } = new List<DesignerSettingsReference>();
@@ -80,6 +87,15 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("packageReference")]
         public List<PackageReferenceModel> PackageReferences { get; set; } = new List<PackageReferenceModel>();
 
+    }
+
+    public class DesignerOutputConfiguration
+    {
+        [XmlAttribute("packageTypeId")]
+        public string PackageTypeId { get; set; }
+
+        [XmlAttribute("roleTypeId")]
+        public string RoleTypeId { get; set; }
     }
 
     public class DesignerSettingsReference

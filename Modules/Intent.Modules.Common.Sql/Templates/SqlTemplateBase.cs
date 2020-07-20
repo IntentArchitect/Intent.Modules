@@ -5,9 +5,9 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Sql.Templates
 {
-    public abstract class SqlTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>
+    public abstract class SqlTemplateBase<TModel> : IntentTemplateBase<TModel>
     {
-        protected SqlTemplateBase(string templateId, IProject project, TModel model) : base(templateId, project, model)
+        protected SqlTemplateBase(string templateId, IOutputContext project, TModel model) : base(templateId, project, model)
         {
         }
 
@@ -32,7 +32,7 @@ namespace Intent.Modules.Common.Sql.Templates
         public SqlFileConfiguration(
                     OverwriteBehaviour overwriteBehaviour,
                     string fileName,
-                    string defaultLocationInProject,
+                    string relativeLocation,
                     string fileExtension = "sql",
                     string codeGenType = Common.CodeGenType.Basic
                     )
@@ -40,7 +40,7 @@ namespace Intent.Modules.Common.Sql.Templates
                   codeGenType: codeGenType, 
                   fileName: fileName, 
                   fileExtension: fileExtension,
-                  defaultLocationInProject: defaultLocationInProject)
+                  defaultLocationInProject: relativeLocation)
         {
         }
     }

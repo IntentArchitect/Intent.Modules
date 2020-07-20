@@ -9,7 +9,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
     {
         public static void AddDependencyImports<T>(this TypeScriptFile file, TypeScriptTemplateBase<T> template)
         {
-            var dependencies = template.GetTemplateDependencies().Select(template.Project.FindTemplateInstance<ITemplate>).Distinct();
+            var dependencies = template.GetTemplateDependencies().Select(template.OutputContext.FindTemplateInstance<ITemplate>).Distinct();
             foreach (var dependency in dependencies)
             {
                 if (!(dependency is IHasClassDetails))

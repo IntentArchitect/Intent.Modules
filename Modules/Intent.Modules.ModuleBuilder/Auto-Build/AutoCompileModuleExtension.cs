@@ -6,8 +6,10 @@ using System.Linq;
 using Intent.Modules.Common.Plugins;
 using Intent.SoftwareFactory;
 using Intent.Engine;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Processors;
 using Intent.Modules.Common.VisualStudio;
+using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Plugins.FactoryExtensions;
 using Intent.Utils;
 
@@ -37,7 +39,6 @@ namespace Intent.Modules.Angular
                 return;
             }
 
-
             var cmd = new CommandLineProcessor();
 
             if (!Directory.Exists(Path.GetFullPath(project.ProjectLocation)))
@@ -63,9 +64,9 @@ Auto-compiling of module failed. If the problem persists, consider disabling thi
             }
         }
 
-        private IProject GetProject(IApplication application)
+        private IOutputContext GetProject(IApplication application)
         {
-            return application.Projects.SingleOrDefault(x => x.HasRole("IModSpec")); // TODO: make more robust (i.e. lookup where .imodspec file was installed)
+            return application.Projects.SingleOrDefault(x => x.HasTemplateInstance(IModSpecTemplate.TemplateId)); // TODO: make more robust (i.e. lookup where .imodspec file was installed)
         }
     }
 }

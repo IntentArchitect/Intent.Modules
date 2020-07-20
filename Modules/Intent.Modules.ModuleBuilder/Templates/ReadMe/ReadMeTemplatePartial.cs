@@ -7,11 +7,11 @@ using Intent.Modules.Common.Templates;
 using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
 {
-    partial class ReadMeTemplate : IntentProjectItemTemplateBase
+    partial class ReadMeTemplate : IntentTemplateBase
     {
         public const string TemplateId = "Intent.ModuleBuilder.ReadMe";
 
-        public ReadMeTemplate(IProject project) : base(TemplateId, project)
+        public ReadMeTemplate(IOutputContext context) : base(TemplateId, context)
         {
         }
 

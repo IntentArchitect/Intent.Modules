@@ -6,9 +6,9 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IHasClassDetails
+    public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasClassDetails
     {
-        public IntentTypescriptProjectItemTemplateBase(string templateId, IProject project, TModel model) : base(templateId, project, model)
+        public IntentTypescriptProjectItemTemplateBase(string templateId, IOutputContext outputContext, TModel model) : base(templateId, outputContext, model)
         {
         }
 
@@ -40,7 +40,7 @@ namespace Intent.Modules.Common.Templates
 
         public void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
         {
-            AddTypeSource(TypescriptTypeSource.InProject(Project, templateId, collectionFormat));
+            AddTypeSource(TypescriptTypeSource.InProject(OutputContext, templateId, collectionFormat));
         }
 
 

@@ -8,18 +8,25 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Modules.VisualStudio.Projects.Api;
+using Intent.Modules.VisualStudio.Projects.Events;
 using Intent.Templates;
 using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 {
-    public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IProjectTemplate, IHasNugetDependencies
+    public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IHasNugetDependencies
     {
         public const string IDENTIFIER = "Intent.VisualStudio.Projects.WcfServiceCSProjectFile";
 
-        public WcfServiceCSProjectFileTemplate(IProject project, IVisualStudioProject model)
+        public WcfServiceCSProjectFileTemplate(IOutputContext project, IVisualStudioProject model)
             : base(IDENTIFIER, project, model)
         {
+        }
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, GetMetadata().GetFullLocationPathWithFileName()));
         }
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

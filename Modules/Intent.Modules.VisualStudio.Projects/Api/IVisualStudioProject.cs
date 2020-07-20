@@ -13,7 +13,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         string ProjectTypeId { get; }
         string RelativeLocation { get; }
 
-        IProjectConfig ToProjectConfig();
+        IOutputTargetConfig ToProjectConfig();
         IEnumerable<string> TargetFrameworkVersion();
         IList<RoleModel> Roles { get; }
         IList<FolderModel> Folders { get; }
@@ -21,16 +21,16 @@ namespace Intent.Modules.VisualStudio.Projects.Api
 
     public static class VisualStudioProjectExtensions
     {
-        public static IList<IProjectOutputTarget> GetRoles(this IVisualStudioProject project)
+        public static IList<IOutputTargetRole> GetRoles(this IVisualStudioProject project)
         {
-            return project.Roles.Select(x => new ProjectOutput(x.Name, x.Folder?.Name)).Cast<IProjectOutputTarget>()
+            return project.Roles.Select(x => new ProjectOutput(x.Name, x.Folder?.Name)).Cast<IOutputTargetRole>()
                 .Concat(project.Folders.SelectMany(project.GetRolesInFolder))
                 .ToList();
         }
 
-        private static IEnumerable<IProjectOutputTarget> GetRolesInFolder(this IVisualStudioProject project, FolderModel folder)
+        private static IEnumerable<IOutputTargetRole> GetRolesInFolder(this IVisualStudioProject project, FolderModel folder)
         {
-            var roles = folder.Roles.Select(x => new ProjectOutput(x.Name, x.Folder?.Name)).ToList<IProjectOutputTarget>();
+            var roles = folder.Roles.Select(x => new ProjectOutput(x.Name, x.Folder?.Name)).ToList<IOutputTargetRole>();
             return roles;
         }
 

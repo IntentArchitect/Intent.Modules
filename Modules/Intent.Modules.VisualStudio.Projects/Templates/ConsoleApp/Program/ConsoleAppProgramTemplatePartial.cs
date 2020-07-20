@@ -1,5 +1,6 @@
 ﻿using Intent.Modules.Common.Templates;
 using Intent.Engine;
+using Intent.Modules.VisualStudio.Projects.Events;
 using Intent.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
@@ -11,6 +12,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
         public ConsoleAppProgramTemplate(IProject project)
             : base(Identifier, project, null)
         {
+        }
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, GetMetadata().GetFullLocationPathWithFileName()));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

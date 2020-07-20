@@ -10,7 +10,7 @@ using Intent.Registrations;
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
 {
     [Description(ConsoleAppProgramTemplate.Identifier)]
-    public class ConsoleAppProgramTemplateRegistration : IProjectTemplateRegistration
+    public class ConsoleAppProgramTemplateRegistration : ITemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
         public string TemplateId => ConsoleAppProgramTemplate.Identifier;
@@ -27,7 +27,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registry.RegisterProjectTemplate(TemplateId, project, p => new ConsoleAppProgramTemplate(project));
+                registry.Register(TemplateId, project, p => new ConsoleAppProgramTemplate(p));
             }
         }
         

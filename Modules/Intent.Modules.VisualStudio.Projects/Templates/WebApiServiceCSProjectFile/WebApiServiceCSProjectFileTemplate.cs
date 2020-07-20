@@ -9,18 +9,19 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Modules.VisualStudio.Projects.Api;
+using Intent.Modules.VisualStudio.Projects.Events;
 using Intent.Templates;
 using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectFile
 {
-    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IHasNugetDependencies, IProjectTemplate, IHasDecorators<IWebApiServiceCSProjectDecorator>
+    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IHasNugetDependencies, /*IProjectTemplate,*/ IHasDecorators<IWebApiServiceCSProjectDecorator>
     {
         public const string Identifier = "Intent.VisualStudio.Projects.WebApiServiceCSProjectFile";
         private readonly string _sslPort = "";
         private readonly string _port;
 
-        public WebApiServiceCSProjectFileTemplate(IProject project, IVisualStudioProject model)
+        public WebApiServiceCSProjectFileTemplate(IOutputContext project, IVisualStudioProject model)
             : base(Identifier, project, model)
         {
             //_port = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "Port")?.Value;
@@ -29,6 +30,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             //{
             //    _sslPort = project.ProjectType.Properties.First(x => x.Name == "SslPort").Value;
             //}
+        }
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, GetMetadata().GetFullLocationPathWithFileName()));
         }
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

@@ -20,11 +20,11 @@ namespace Intent.Modules.Common.TypeScript
             _execute = execute;
         }
 
-        public static IClassTypeSource InProject(IProject project, string templateId, string collectionFormat = "{0}[]")
+        public static IClassTypeSource InProject(IOutputContext outputContext, string templateId, string collectionFormat = "{0}[]")
         {
             return new TypescriptTypeSource((_this, typeInfo) =>
             {
-                var typeName = _this.GetTypeName(project, templateId, typeInfo);
+                var typeName = _this.GetTypeName(outputContext, templateId, typeInfo);
                 if (!string.IsNullOrWhiteSpace(typeName) && typeInfo.IsCollection)
                 {
                     return string.Format(collectionFormat, typeName);
@@ -56,9 +56,9 @@ namespace Intent.Modules.Common.TypeScript
             return _templateDependencies;
         }
 
-        private IHasClassDetails GetTemplateInstance(IProject project, string templateId, ITypeReference typeInfo)
+        private IHasClassDetails GetTemplateInstance(IOutputContext outputContext, string templateId, ITypeReference typeInfo)
         {
-            var templateInstance = project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(templateId, typeInfo.Element));
+            var templateInstance = outputContext.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(templateId, typeInfo.Element));
             if (templateInstance != null)
             {
                 _templateDependencies.Add(TemplateDependency.OnModel(templateId, typeInfo.Element));
@@ -78,13 +78,13 @@ namespace Intent.Modules.Common.TypeScript
             return templateInstance;
         }
 
-        private string GetTypeName(IProject project, string templateId, ITypeReference typeInfo)
+        private string GetTypeName(IOutputContext outputContext, string templateId, ITypeReference typeInfo)
         {
-            var templateInstance = GetTemplateInstance(project, templateId, typeInfo);
+            var templateInstance = GetTemplateInstance(outputContext, templateId, typeInfo);
 
             return templateInstance != null ? (string.IsNullOrWhiteSpace(templateInstance.Namespace) ? "" : templateInstance.Namespace + ".") +
                 templateInstance.ClassName + (typeInfo.GenericTypeParameters.Any() 
-                    ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(project, templateId, x)))}>" 
+                    ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(outputContext, templateId, x)))}>" 
                     : "") 
                 : null;
         }

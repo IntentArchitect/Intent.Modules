@@ -9,7 +9,7 @@ using Intent.Utils;
 
 namespace Intent.Modules.Common.Registrations
 {
-    public abstract class ListModelTemplateRegistrationBase<TModel> : IProjectTemplateRegistration, ISupportsConfiguration
+    public abstract class ListModelTemplateRegistrationBase<TModel> : ITemplateRegistration, ISupportsConfiguration
     {
         private ParsedExpression<TModel, bool> _filter;
         private string _filterExpression;
@@ -69,7 +69,7 @@ namespace Intent.Modules.Common.Registrations
                 Logging.Log.Debug($"Template registration aborted : {TemplateId}");
                 return;
             }
-            registry.Register(TemplateId, project => CreateTemplateInstance(project, models));
+            registry.RegisterTemplate(TemplateId, project => CreateTemplateInstance((IProject) project, models));
             Logging.Log.Debug($"Template instances registered : {TemplateId}");
         }
 

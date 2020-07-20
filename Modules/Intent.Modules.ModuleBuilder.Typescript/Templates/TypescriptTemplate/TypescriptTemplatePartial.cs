@@ -10,6 +10,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -58,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplate
 <#@ import namespace=""Intent.Modules.Common.TypeScript.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetDesigner() != null ? $@"<#@ import namespace=""{Model.GetDesigner().ApiNamespace}"" #>" : "")}
+{(Model.GetDesignerSettings() != null ? $@"<#@ import namespace=""{Model.GetDesignerSettings().ApiNamespace}"" #>" : "")}
 {TemplateBody()}";
         }
 

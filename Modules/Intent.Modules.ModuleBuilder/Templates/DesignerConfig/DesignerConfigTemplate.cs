@@ -46,8 +46,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                 id: Model.Id,
                 name: Model.Name,
                 order: Model.GetDesignerConfig().DisplayOrder() ?? 0,
-                icon: Model.GetDesignerConfig().Icon().ToPersistable(),
-                loadStartPage: false);
+                icon: Model.GetDesignerConfig().Icon().ToPersistable());
+
+            
 
             foreach (var designerReference in Model.DesignerReferences)
             {

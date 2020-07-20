@@ -6,7 +6,7 @@ using Intent.Registrations;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
-    public class IModSpecRegistrations : IProjectTemplateRegistration
+    public class IModSpecRegistrations : ITemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -19,9 +19,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public void DoRegistration(ITemplateInstanceRegistry registry, Engine.IApplication applicationManager)
         {
-            registry.Register(TemplateId, project => new IModSpecTemplate(
+            registry.RegisterTemplate(TemplateId, context => new IModSpecTemplate(
                 templateId: TemplateId, 
-                project: project, 
+                project: context, 
                 metadataManager:_metadataManager));
         }
     }

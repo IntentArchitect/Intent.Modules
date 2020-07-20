@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Typescript.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -51,8 +52,8 @@ namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePa
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "C# Template" },
                 { "Role", GetRole() },
-                { "Module Dependency", Model.GetDesigner()?.ModuleDependency },
-                { "Module Dependency Version",Model.GetDesigner()?.ModuleVersion },
+                { "Module Dependency", Model.GetDesignerSettings()?.ModuleDependency },
+                { "Module Dependency Version",Model.GetDesignerSettings()?.ModuleVersion },
                 { "ModelId", Model.Id }
             });
         }

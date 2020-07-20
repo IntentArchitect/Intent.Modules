@@ -37,7 +37,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
                     "s;\r\n");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetDesignerSettings() != null ? string.Format("using {0};", Model.GetDesignerSettings().ApiNamespace) : "")));
             
             #line default
             #line hidden

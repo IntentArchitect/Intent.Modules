@@ -6,7 +6,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
-    internal class ProjectConfig : IProjectConfig
+    internal class ProjectConfig : IOutputTargetConfig
     {
         private readonly IVisualStudioProject _project;
 
@@ -20,9 +20,9 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public string Type => _project.ProjectTypeId;
         public string Name => _project.Name;
         public string RelativeLocation => _project.RelativeLocation ?? _project.Name;
-        public IEnumerable<string> TargetFrameworks => _project.TargetFrameworkVersion()
+        public IEnumerable<string> SupportedFrameworks => _project.TargetFrameworkVersion()
             .Select(x => x.Trim())
             .ToArray();
-        public IList<IProjectOutputTarget> Roles => _project.GetRoles();
+        public IList<IOutputTargetRole> Roles => _project.GetRoles();
     }
 }

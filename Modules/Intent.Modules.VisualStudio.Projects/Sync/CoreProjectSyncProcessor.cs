@@ -18,6 +18,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
     {
         private readonly IXmlFileCache _xmlFileCache;
         private readonly IChanges _changeManager;
+        private readonly string _projectPath;
         private readonly ISoftwareFactoryEventDispatcher _softwareFactoryEventDispatcher;
         private readonly IProject _project;
 
@@ -28,17 +29,20 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         private XElement _projectElement;
 
         public CoreProjectSyncProcessor(
+            string projectPath,
             ISoftwareFactoryEventDispatcher softwareFactoryEventDispatcher,
             IXmlFileCache xmlFileCache,
             IChanges changeManager,
             IProject project)
         {
+            _projectPath = projectPath;
             _softwareFactoryEventDispatcher = softwareFactoryEventDispatcher;
             _xmlFileCache = xmlFileCache;
             _changeManager = changeManager;
             _project = project;
             _syncProjectFile = UpdateFileOnHdd;
         }
+
 
         public void Process(List<SoftwareFactoryEvent> events)
         {
@@ -127,17 +131,16 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private string LoadProjectFile()
         {
-            var filename = _project.ProjectFile();
-            if (string.IsNullOrWhiteSpace(filename))
+            if (string.IsNullOrWhiteSpace(_projectPath))
                 return null;
 
-            var change = _changeManager.FindChange(filename);
+            var change = _changeManager.FindChange(_projectPath);
             if (change == null)
             {
-                _doc = _xmlFileCache.GetFile(filename);
+                _doc = _xmlFileCache.GetFile(_projectPath);
                 if (_doc == null)
                 {
-                    throw new Exception($"Trying to sync project file, but unable to find csproj content. {filename}");
+                    throw new Exception($"Trying to sync project file, but unable to find csproj content. {_projectPath}");
                 }
             }
             else
@@ -157,7 +160,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
             _projectElement = _doc.XPathSelectElement("/ns:Project", _namespaces);
 
-            return filename;
+            return _projectPath;
         }
 
         private XElement GetOrCreateItemGroupFor(string type)

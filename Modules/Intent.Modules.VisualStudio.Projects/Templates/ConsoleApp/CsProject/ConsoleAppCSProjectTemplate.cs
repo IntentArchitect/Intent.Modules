@@ -8,18 +8,25 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Modules.VisualStudio.Projects.Api;
+using Intent.Modules.VisualStudio.Projects.Events;
 using Intent.Templates;
 using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
 {
-    public class ConsoleAppCsProjectTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IProjectTemplate
+    public class ConsoleAppCsProjectTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>
     {
         public const string Identifier = "Intent.VisualStudio.Projects.ConsoleApp.CSProject";
 
         public ConsoleAppCsProjectTemplate(IProject project, IVisualStudioProject model)
             : base (Identifier, project, model)
         {
+        }
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, GetMetadata().GetFullLocationPathWithFileName()));
         }
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

@@ -19,7 +19,8 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
     {
         private readonly IXmlFileCache _xmlFileCache;
         private readonly IChanges _changeManager;
-        private readonly ISoftwareFactoryEventDispatcher _softwareFactoryEventDispatcher;
+        private readonly string _projectPath;
+        private readonly ISoftwareFactoryEventDispatcher _sfEventDispatcher;
         private readonly IProject _project;
 
         private Action<string, string> _syncProjectFile;
@@ -29,16 +30,19 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         private XElement _projectElement;
 
         public FrameworkProjectSyncProcessor(
-            ISoftwareFactoryEventDispatcher softwareFactoryEventDispatcher,
+            string projectPath,
+            ISoftwareFactoryEventDispatcher sfEventDispatcher,
             IXmlFileCache xmlFileCache,
             IChanges changeManager,
             IProject project)
         {
-            _softwareFactoryEventDispatcher = softwareFactoryEventDispatcher;
+            _projectPath = projectPath;
+            _sfEventDispatcher = sfEventDispatcher;
             _xmlFileCache = xmlFileCache;
             _changeManager = changeManager;
             _project = project;
             _syncProjectFile = UpdateFileOnHdd;
+
         }
 
         public void Process(List<SoftwareFactoryEvent> events)
@@ -143,22 +147,21 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                                             {"FullFileName", filename},
                                             {"Content", outputContent},
                                         });
-            _softwareFactoryEventDispatcher.Publish(se);
+            _sfEventDispatcher.Publish(se);
         }
 
         private string LoadProjectFile()
         {
-            var filename = _project.ProjectFile();
-            if (string.IsNullOrWhiteSpace(filename))
+            if (string.IsNullOrWhiteSpace(_projectPath))
                 return null;
 
-            var change = _changeManager.FindChange(filename);
+            var change = _changeManager.FindChange(_projectPath);
             if (change == null)
             {
-                _doc = _xmlFileCache.GetFile(filename);
+                _doc = _xmlFileCache.GetFile(_projectPath);
                 if (_doc == null)
                 {
-                    throw new Exception($"Trying to sync project file, but unable to find csproj content. {filename}");
+                    throw new Exception($"Trying to sync project file, but unable to find csproj content. {_projectPath}");
                 }
             }
             else
@@ -178,7 +181,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
             _projectElement = _doc.XPathSelectElement("/ns:Project", _namespaces);
 
-            return filename;
+            return _projectPath;
         }
 
         private void SyncProjectReferences()
@@ -570,7 +573,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             if (projectItem == null)
             {
                 //WTF
-                throw new Exception($"Cant from config file {relativeFileName} in project file {project.ProjectFile()}");
+                throw new Exception($"Cant from config file {relativeFileName} in project file {_projectPath}");
             }
 
             //Make sure it's None not Content

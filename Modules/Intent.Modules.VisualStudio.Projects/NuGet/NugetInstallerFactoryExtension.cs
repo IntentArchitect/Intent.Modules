@@ -10,8 +10,10 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
+using Intent.Modules.VisualStudio.Projects.Events;
 using Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes;
 using Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors;
+using Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject;
 using Intent.Plugins.FactoryExtensions;
 using Intent.Utils;
 using NuGet.Versioning;
@@ -20,13 +22,14 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
 {
     public class NugetInstallerFactoryExtension : FactoryExtensionBase, IExecutionLifeCycle
     {
-        private readonly ISoftwareFactoryEventDispatcher _eventDispatcher;
+        private readonly ISoftwareFactoryEventDispatcher _sfEventDispatcher;
         private readonly IChanges _changeManager;
         public const string Identifier = "Intent.VisualStudio.NuGet.Installer";
         private const string SettingKeyForConsolidatePackageVersions = "Consolidate Package Versions"; // Must match the config entry in the .imodspec
         private const string SettingKeyForWarnOnMultipleVersionsOfSamePackage = "Warn On Multiple Versions of Same Package"; // Must match the config entry in the .imodspec
         private bool _settingConsolidatePackageVersions;
         private bool _settingWarnOnMultipleVersionsOfSamePackage;
+        private static readonly IDictionary<string, string> _projectLocationRegistry = new Dictionary<string, string>();
         private static readonly IDictionary<NuGetScheme, INuGetSchemeProcessor> NuGetProjectSchemeProcessors;
 
         static NugetInstallerFactoryExtension()
@@ -40,10 +43,11 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
             };
         }
 
-        public NugetInstallerFactoryExtension(ISoftwareFactoryEventDispatcher eventDispatcher, IChanges changeManager)
+        public NugetInstallerFactoryExtension(ISoftwareFactoryEventDispatcher sfEventDispatcher, IChanges changeManager)
         {
-            _eventDispatcher = eventDispatcher;
+            _sfEventDispatcher = sfEventDispatcher;
             _changeManager = changeManager;
+
         }
 
         public override int Order => 200;
@@ -66,6 +70,10 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
 
         public void OnStep(IApplication application, string step)
         {
+            if (step == ExecutionLifeCycleSteps.BeforeTemplateRegistrations)
+            {
+                application.EventDispatcher.Subscribe<VisualStudioProjectCreatedEvent>(HandleEvent);
+            }
             if (step != ExecutionLifeCycleSteps.AfterTemplateExecution)
             {
                 return;
@@ -85,13 +93,22 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
             tracing.Info("Package processing complete");
         }
 
+        private void HandleEvent(VisualStudioProjectCreatedEvent @event)
+        {
+            if (_projectLocationRegistry.ContainsKey(@event.ProjectId))
+            {
+                throw new Exception($"Attempted to add project with same project Id [{@event.ProjectId}] (location: {@event.ProjectPath})");
+            }
+            _projectLocationRegistry.Add(@event.ProjectId, @event.ProjectPath);
+        }
+
         private string LoadProject(IProject project)
         {
-            var change = _changeManager.FindChange(project.ProjectFile());
+            var change = _changeManager.FindChange(_projectLocationRegistry[project.Id]);
 
             return change != null
                 ? change.Content
-                : File.ReadAllText(Path.GetFullPath(project.ProjectFile()));
+                : File.ReadAllText(Path.GetFullPath(_projectLocationRegistry[project.Id]));
         }
 
         private void SaveProject(string filePath, string content)
@@ -115,7 +132,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
                 return;
             }
 
-            _eventDispatcher.Publish(new SoftwareFactoryEvent(SoftwareFactoryEvents.OverwriteFileCommand, new Dictionary<string, string>
+            _sfEventDispatcher.Publish(new SoftwareFactoryEvent(SoftwareFactoryEvents.OverwriteFileCommand, new Dictionary<string, string>
             {
                 { "FullFileName", filePath },
                 { "Content", content },
@@ -188,14 +205,19 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
             foreach (var project in applicationProjects.OrderBy(x => x.Name))
             {
                 string projectContent = null;
-                var document = project.ProjectFile() != null
+                var document = _projectLocationRegistry.ContainsKey(project.Id)
                     ? XDocument.Parse(projectContent = loadDelegate(project))
                     : null;
 
                 var projectType = ResolveNuGetScheme(document);
                 if (!NuGetProjectSchemeProcessors.TryGetValue(projectType, out var processor)) throw new ArgumentOutOfRangeException(nameof(projectType), $"No scheme registered for type {projectType}.");
 
-                var installedPackages = processor.GetInstalledPackages(project, document);
+                if (!_projectLocationRegistry.ContainsKey(project.Id))
+                {
+                    Logging.Log.Warning($"Project file not found for project [{project}]");
+                    continue;
+                }
+                var installedPackages = processor.GetInstalledPackages(_projectLocationRegistry[project.Id], document);
 
                 var highestVersionsInProject = new Dictionary<string, NuGetVersion>();
                 foreach (var installedPackage in installedPackages)
@@ -259,7 +281,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
                     RequestedPackages = requestedPackages,
                     InstalledPackages = installedPackages,
                     Name = project.Name,
-                    FilePath = project.ProjectFile(),
+                    FilePath = _projectLocationRegistry[project.Id],
                     Processor = processor
                 });
             }

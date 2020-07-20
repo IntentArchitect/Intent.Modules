@@ -10,7 +10,7 @@ using Intent.Registrations;
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectFile
 {
     [Description("Web Api Service CS Project File - VS Projects")] 
-    public class Registrations : IProjectTemplateRegistration, IProjectRegistration
+    public class Registrations : ITemplateRegistration, IOutputTargetRegistration
     {
         public string TemplateId => WebApiServiceCSProjectFileTemplate.Identifier;
         private readonly IMetadataManager _metadataManager;
@@ -20,12 +20,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             _metadataManager = metadataManager;
         }
 
-        public void Register(IProjectRegistry registry, IApplication application)
+        public void Register(IOutputTargetRegistry registry, IApplication application)
         {
             var models = _metadataManager.VisualStudio(application).GetASPNETWebApplicationNETFrameworkModels();
             foreach (var model in models)
             {
-                registry.RegisterProject(model.ToProjectConfig());
+                registry.RegisterOutputTarget(model.ToProjectConfig());
             }
         }
 
@@ -36,7 +36,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registry.RegisterProjectTemplate(TemplateId, project, p => new WebApiServiceCSProjectFileTemplate(project, model));
+                registry.RegisterTemplate(TemplateId, project, p => new WebApiServiceCSProjectFileTemplate(project, model));
             }
         }
     }

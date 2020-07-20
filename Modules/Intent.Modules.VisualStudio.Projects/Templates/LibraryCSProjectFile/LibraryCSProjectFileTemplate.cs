@@ -8,16 +8,17 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Modules.VisualStudio.Projects.Api;
+using Intent.Modules.VisualStudio.Projects.Events;
 using Intent.Templates;
 using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
 {
-    public class LibraryCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IProjectTemplate, IHasNugetDependencies
+    public class LibraryCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, /*IProjectTemplate,*/ IHasNugetDependencies
     {
         public const string IDENTIFIER = "Intent.VisualStudio.Projects.LibraryCSProjectFile";
 
-        public LibraryCSProjectFileTemplate(IProject project, IVisualStudioProject model)
+        public LibraryCSProjectFileTemplate(IOutputContext project, IVisualStudioProject model)
             : base (IDENTIFIER, project, model)
         {
         }
@@ -31,6 +32,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
                 fileExtension: "csproj",
                 defaultLocationInProject: ""
                 );
+        }
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, GetMetadata().GetFullLocationPathWithFileName()));
         }
 
         public override string TransformText()

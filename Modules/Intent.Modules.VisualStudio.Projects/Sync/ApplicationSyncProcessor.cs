@@ -16,35 +16,41 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
     [Description("Visual Studio Project File Syncer")]
     public class ApplicationSyncProcessor : FactoryExtensionBase, IExecutionLifeCycle
     {
-        private readonly ISoftwareFactoryEventDispatcher _eventDispatcher;
+        private readonly ISoftwareFactoryEventDispatcher _sfEventDispatcher;
         private readonly IChanges _changeManager;
         private readonly IXmlFileCache _fileCache;
         private readonly Dictionary<string, List<SoftwareFactoryEvent>> _actions;
+        private readonly IDictionary<string, string> _projectLocationRegistry = new Dictionary<string, string>();
 
         public override string Id => "Intent.ApplicationSyncProcessor";
 
-        public ApplicationSyncProcessor(ISoftwareFactoryEventDispatcher eventDispatcher, IXmlFileCache fileCache, IChanges changeManager)
+        public ApplicationSyncProcessor(ISoftwareFactoryEventDispatcher sfEventDispatcher, IXmlFileCache fileCache, IChanges changeManager)
         {
             Order = 90;
             _changeManager = changeManager;
             _fileCache = fileCache;
             _actions = new Dictionary<string, List<SoftwareFactoryEvent>>();
-            _eventDispatcher = eventDispatcher;
+            _sfEventDispatcher = sfEventDispatcher;
             //Subscribe to all the project change events
-            _eventDispatcher.Subscribe(SoftwareFactoryEvents.AddProjectItemEvent, Handle);
-            _eventDispatcher.Subscribe(SoftwareFactoryEvents.RemoveProjectItemEvent, Handle);
-            _eventDispatcher.Subscribe(SoftwareFactoryEvents.AddTargetEvent, Handle);
-            _eventDispatcher.Subscribe(SoftwareFactoryEvents.AddTaskEvent, Handle);
-            _eventDispatcher.Subscribe(SoftwareFactoryEvents.ChangeProjectItemTypeEvent, Handle);
+            _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.AddProjectItemEvent, Handle);
+            _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.RemoveProjectItemEvent, Handle);
+            _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.AddTargetEvent, Handle);
+            _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.AddTaskEvent, Handle);
+            _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.ChangeProjectItemTypeEvent, Handle);
 
-            _eventDispatcher.Subscribe(CsProjectEvents.AddImport, Handle);
-            _eventDispatcher.Subscribe(CsProjectEvents.AddCompileDependsOn, Handle);
-            _eventDispatcher.Subscribe(CsProjectEvents.AddBeforeBuild, Handle);
-            _eventDispatcher.Subscribe(CsProjectEvents.AddContentFile, Handle);
+            _sfEventDispatcher.Subscribe(CsProjectEvents.AddImport, Handle);
+            _sfEventDispatcher.Subscribe(CsProjectEvents.AddCompileDependsOn, Handle);
+            _sfEventDispatcher.Subscribe(CsProjectEvents.AddBeforeBuild, Handle);
+            _sfEventDispatcher.Subscribe(CsProjectEvents.AddContentFile, Handle);
+
         }
 
         public void OnStep(IApplication application, string step)
         {
+            if (step == ExecutionLifeCycleSteps.BeforeTemplateRegistrations)
+            {
+                application.EventDispatcher.Subscribe<VisualStudioProjectCreatedEvent>(HandleEvent);
+            }
             if (step == ExecutionLifeCycleSteps.AfterTemplateExecution)
             {
                 SyncProjectFiles(application);
@@ -69,11 +75,11 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                     case VisualStudioProjectTypeIds.NodeJsConsoleApplication:
                     case VisualStudioProjectTypeIds.WcfApplication:
                     case VisualStudioProjectTypeIds.WebApiApplication:
-                        new FrameworkProjectSyncProcessor(_eventDispatcher, _fileCache, _changeManager, vsproject).Process(project.Value);
+                        new FrameworkProjectSyncProcessor(_projectLocationRegistry[vsproject.Id], _sfEventDispatcher, _fileCache, _changeManager, vsproject).Process(project.Value);
                         break;
                     case VisualStudioProjectTypeIds.CoreCSharpLibrary:
                     case VisualStudioProjectTypeIds.CoreWebApp:
-                        new CoreProjectSyncProcessor(_eventDispatcher, _fileCache, _changeManager, vsproject).Process(project.Value);
+                        new CoreProjectSyncProcessor(_projectLocationRegistry[vsproject.Id], _sfEventDispatcher, _fileCache, _changeManager, vsproject).Process(project.Value);
                         break;
                     default:
                         throw new Exception($"No syncer configured for project '{vsproject.Name}' with type ({vsproject.Type})");
@@ -81,6 +87,15 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             }
 
             _actions.Clear();
+        }
+
+        private void HandleEvent(VisualStudioProjectCreatedEvent @event)
+        {
+            if (_projectLocationRegistry.ContainsKey(@event.ProjectId))
+            {
+                throw new Exception($"Attempted to add project with same project Id [{@event.ProjectId}] (location: {@event.ProjectPath})");
+            }
+            _projectLocationRegistry.Add(@event.ProjectId, @event.ProjectPath);
         }
 
         public void Handle(SoftwareFactoryEvent @event)

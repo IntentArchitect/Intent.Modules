@@ -60,7 +60,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         }
     }
 
-    public class IModSpecTemplate : IntentProjectItemTemplateBase<object>, IHasNugetDependencies
+    public class IModSpecTemplate : IntentProjectItemTemplateBase, IHasNugetDependencies
     {
         private readonly IMetadataManager _metadataManager;
         private readonly ICollection<TemplateRegistrationInfo> _templatesToRegister = new List<TemplateRegistrationInfo>();
@@ -68,11 +68,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
-        public IModSpecTemplate(string templateId, IProject project, IMetadataManager metadataManager)
-            : base(templateId, project, null)
+        public IModSpecTemplate(string templateId, IOutputContext project, IMetadataManager metadataManager)
+            : base(templateId, project)
         {
             _metadataManager = metadataManager;
-            Project.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
+            OutputContext.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
                 _templatesToRegister.Add(new TemplateRegistrationInfo(
                     modelId: @event.GetValue("ModelId"),
@@ -83,7 +83,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     moduleVersion: @event.TryGetValue("Module Dependency Version")));
             });
 
-            Project.Application.EventDispatcher.Subscribe<MetadataRegistrationRequiredEvent>(@event =>
+            OutputContext.Application.EventDispatcher.Subscribe<MetadataRegistrationRequiredEvent>(@event =>
             {
                 _metadataToRegister.Add(@event);
             });
@@ -171,7 +171,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            var decorators = _metadataManager.ModuleBuilder(Project.Application).GetDecoratorModels();
+            var decorators = _metadataManager.ModuleBuilder(OutputContext.Application).GetDecoratorModels();
             if (decorators.Any())
             {
                 var decoratorsElement = doc.Element("package").Element("decorators");
@@ -183,7 +183,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
                 foreach (var model in decorators)
                 {
-                    var id = $"{Project.ApplicationName()}.{model.Name}";
+                    var id = $"{OutputContext.ApplicationName()}.{model.Name}";
                     var specificDecorator = doc.XPathSelectElement($"package/decorators/decorator[@id=\"{id}\"]");
                     if (specificDecorator == null)
                     {
@@ -216,7 +216,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 existing.SetAttributeValue("externalReference", metadataRegistration.Id);
             }
 
-            var packagesToInclude = _metadataManager.GetMetadata<IPackage>("Module Builder", Project.Application.Id)
+            var packagesToInclude = _metadataManager.GetMetadata<IPackage>("Module Builder", OutputContext.Application.Id)
                 .Where(x => x.GetStereotypeProperty("Package Settings", "Include in Module", false))
                 .ToList();
             foreach (var package in packagesToInclude)
@@ -264,11 +264,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 ? XDocument.Load(filePath)
                 : XDocument.Parse($@"<?xml version=""1.0"" encoding=""utf-8"" ?>
 <package>
-  <id>{Project.Name}</id>
+  <id>{OutputContext.Name}</id>
   <version>1.0.0</version>
-  <summary>A custom module for {Project.Application.SolutionName}.</summary>
-  <description>A custom module for {Project.Application.SolutionName}.</description>
-  <authors>{Project.Application.SolutionName}</authors>
+  <summary>A custom module for {OutputContext.Application.SolutionName}.</summary>
+  <description>A custom module for {OutputContext.Application.SolutionName}.</description>
+  <authors>{OutputContext.Application.SolutionName}</authors>
   <templates>
   </templates>
   <dependencies>

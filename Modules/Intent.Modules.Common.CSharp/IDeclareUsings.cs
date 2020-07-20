@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Intent.Engine;
 
-namespace Intent.Modules.Common.CSharp
+namespace Intent.Modules.Common
 {
     public interface IDeclareUsings
     {

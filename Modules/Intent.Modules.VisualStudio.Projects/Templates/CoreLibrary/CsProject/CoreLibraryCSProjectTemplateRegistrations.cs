@@ -11,7 +11,7 @@ using Intent.Registrations;
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
 {
     [Description(CoreLibraryCSProjectTemplate.Identifier)]
-    public class CoreLibraryCSProjectTemplateRegistrations : IProjectTemplateRegistration, IProjectRegistration
+    public class CoreLibraryCSProjectTemplateRegistrations : ITemplateRegistration, IOutputTargetRegistration
     {
         private readonly IMetadataManager _metadataManager;
         public string TemplateId => CoreLibraryCSProjectTemplate.Identifier;
@@ -21,12 +21,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
             _metadataManager = metadataManager;
         }
 
-        public void Register(IProjectRegistry registry, IApplication application)
+        public void Register(IOutputTargetRegistry registry, IApplication application)
         {
             var models = _metadataManager.VisualStudio(application).GetClassLibraryNETCoreModels();
             foreach (var model in models)
             {
-                registry.RegisterProject(model.ToProjectConfig());
+                registry.RegisterOutputTarget(model.ToProjectConfig());
             }
         }
 
@@ -37,7 +37,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreLibrary.CsProject
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registry.RegisterProjectTemplate(TemplateId, project, p => new CoreLibraryCSProjectTemplate(project, model));
+                registry.Register(TemplateId, project, p => new CoreLibraryCSProjectTemplate(p, model));
             }
         }
     }

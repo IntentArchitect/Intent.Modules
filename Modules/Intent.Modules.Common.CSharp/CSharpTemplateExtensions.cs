@@ -10,11 +10,11 @@ namespace Intent.Modules.Common.Templates
 {
     public static class CSharpTemplateExtensions
     {
-        public static string ResolveAllUsings(this ITemplate template, IProject project, params string[] namespacesToIgnore)
+        public static string ResolveAllUsings(this ITemplate template, IOutputContext context, params string[] namespacesToIgnore)
         {
             var usings = template
                 .GetAllTemplateDependencies()
-                .SelectMany(project.FindTemplateInstances<ITemplate>)
+                .SelectMany(context.FindTemplateInstances<ITemplate>)
                 .Where(ti => ti != null && ti.GetMetadata().CustomMetadata.ContainsKey("Namespace"))
                 .ToList()
                 .Select(x => x.GetMetadata().CustomMetadata["Namespace"])

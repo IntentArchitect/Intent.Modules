@@ -12,7 +12,7 @@ using Intent.Templates;
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
 {
     [Description(LaunchSettingsJsonTemplate.Identifier)]
-    public class LaunchSettingsJsonTemplateRegistration : IProjectTemplateRegistration
+    public class LaunchSettingsJsonTemplateRegistration : ITemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
         public string TemplateId => LaunchSettingsJsonTemplate.Identifier;
@@ -29,7 +29,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registry.RegisterProjectTemplate(TemplateId, project, p => new LaunchSettingsJsonTemplate(project, project.Application.EventDispatcher));
+                registry.Register(TemplateId, project, p => new LaunchSettingsJsonTemplate(p, project.Application.EventDispatcher));
             }
         }
     }

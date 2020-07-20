@@ -11,7 +11,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
 {
     internal class LeanSchemeProcessor : INuGetSchemeProcessor
     {
-        public Dictionary<string, NuGetPackage> GetInstalledPackages(IProject project, XNode xNode)
+        public Dictionary<string, NuGetPackage> GetInstalledPackages(string projectPath, XNode xNode)
         {
             var packageReferenceElements = xNode.XPathSelectElements("Project/ItemGroup/PackageReference");
             

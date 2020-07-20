@@ -1,18 +1,26 @@
 ﻿using System;
 using Intent.Modules.Common.Templates;
 using Intent.Engine;
+using Intent.Eventing;
 using Intent.Modules.Common;
+using Intent.Modules.VisualStudio.Projects.Events;
 using Intent.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 {
-    partial class CoreWebCSProjectTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IProjectTemplate
+    partial class CoreWebCSProjectTemplate : IntentProjectItemTemplateBase<object>, ITemplate
     {
         public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.CSProject";
 
         public CoreWebCSProjectTemplate(IProject project)
             : base (Identifier, project, null)
         {
+        }
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, GetMetadata().GetFullLocationPathWithFileName()));
         }
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

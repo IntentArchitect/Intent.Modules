@@ -10,7 +10,7 @@ using Intent.Registrations;
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 {
     [Description(CoreWebCSProjectTemplate.Identifier)]
-    public class CoreWebCSProjectTemplateRegistrations : IProjectTemplateRegistration, IProjectRegistration
+    public class CoreWebCSProjectTemplateRegistrations : ITemplateRegistration, IOutputTargetRegistration
     {
         private readonly IMetadataManager _metadataManager;
         public string TemplateId => CoreWebCSProjectTemplate.Identifier;
@@ -20,12 +20,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
             _metadataManager = metadataManager;
         }
 
-        public void Register(IProjectRegistry registry, IApplication application)
+        public void Register(IOutputTargetRegistry registry, IApplication application)
         {
             var models = _metadataManager.VisualStudio(application).GetASPNETCoreWebApplicationModels();
             foreach (var model in models)
             {
-                registry.RegisterProject(model.ToProjectConfig());
+                registry.RegisterOutputTarget(model.ToProjectConfig());
             }
         }
 
@@ -36,7 +36,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registry.RegisterProjectTemplate(TemplateId, project, p => new CoreWebCSProjectTemplate(project));
+                registry.RegisterTemplate(TemplateId, project, p => new CoreWebCSProjectTemplate((IProject) project));
             }
             //var targetProjectIds = new List<string>
             //{

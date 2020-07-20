@@ -11,7 +11,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
 {
     internal class VerboseWithPackageReferencesSchemeProcessor : INuGetSchemeProcessor
     {
-        public Dictionary<string, NuGetPackage> GetInstalledPackages(IProject project, XNode xNode)
+        public Dictionary<string, NuGetPackage> GetInstalledPackages(string projectPath, XNode xNode)
         {
             var (prefix, namespaceManager, _) = xNode.Document.GetNamespaceManager();
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Intent.Engine;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;

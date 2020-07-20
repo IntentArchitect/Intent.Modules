@@ -7,7 +7,7 @@ using Intent.Registrations;
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
 {
     [Description(ConsoleAppCsProjectTemplate.Identifier)]
-    public class ConsoleAppCsProjectTemplateRegistration : IProjectTemplateRegistration, IProjectRegistration
+    public class ConsoleAppCsProjectTemplateRegistration : ITemplateRegistration, IOutputTargetRegistration
     {
         public string TemplateId => ConsoleAppCsProjectTemplate.Identifier;
         private readonly IMetadataManager _metadataManager;
@@ -17,12 +17,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
             _metadataManager = metadataManager;
         }
 
-        public void Register(IProjectRegistry registry, IApplication application)
+        public void Register(IOutputTargetRegistry registry, IApplication application)
         {
             var models = _metadataManager.VisualStudio(application).GetConsoleAppNETFrameworkModels();
             foreach (var model in models)
             {
-                registry.RegisterProject(model.ToProjectConfig());
+                registry.RegisterOutputTarget(model.ToProjectConfig());
             }
         }
 
@@ -33,7 +33,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registry.RegisterProjectTemplate(TemplateId, project, p => new ConsoleAppCsProjectTemplate(project, model));
+                registry.Register(TemplateId, project, p => new ConsoleAppCsProjectTemplate(p, model));
             }
         }
     }

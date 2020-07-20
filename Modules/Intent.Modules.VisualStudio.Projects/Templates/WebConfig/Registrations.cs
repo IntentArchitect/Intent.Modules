@@ -12,7 +12,7 @@ using Intent.Modules.Constants;
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 {
     [Description("Web Config - VS Projects")]
-    public class Registrations : IProjectTemplateRegistration
+    public class Registrations : ITemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -35,7 +35,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 
             foreach (var project in projects)
             {
-                registery.Register(TemplateId, project, (p) => new WebApiWebConfigFileTemplate(project, application.EventDispatcher));
+                registery.Register(TemplateId, project, (p) => new WebApiWebConfigFileTemplate(p, application.EventDispatcher));
             }
         }
     }

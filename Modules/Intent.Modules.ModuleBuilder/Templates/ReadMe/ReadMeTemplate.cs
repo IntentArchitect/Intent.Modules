@@ -18,7 +18,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ReadMe\ReadMeTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ReadMeTemplate : IntentProjectItemTemplateBase
+    public partial class ReadMeTemplate : IntentTemplateBase
     {
 #line hidden
         /// <summary>
@@ -45,7 +45,7 @@ NOTE: In Visual Studio, it is recommended to use a T4 editor such as this one (h
       ./");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ReadMe\ReadMeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(OutputContext.Application.Name));
             
             #line default
             #line hidden

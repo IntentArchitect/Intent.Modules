@@ -14,11 +14,11 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
     [Description(ServiceCallHandlerImplementationTemplate.Identifier)]
     public class ServiceCallHandlerImplementationTemplateRegistrations : IProjectTemplateRegistration
     {
-        private readonly ApiMetadataProvider _metadataProvider;
+        private readonly IMetadataManager _metadataManager;
 
-        public ServiceCallHandlerImplementationTemplateRegistrations(ApiMetadataProvider metadataProvider)
+        public ServiceCallHandlerImplementationTemplateRegistrations(IMetadataManager metadataManager)
         {
-            _metadataProvider = metadataProvider;
+            _metadataManager = metadataManager;
         }
 
         public string TemplateId => ServiceCallHandlerImplementationTemplate.Identifier;
@@ -31,7 +31,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication applicationManager)
         {
-            var serviceModels = _metadataProvider.GetServiceModels(applicationManager);
+            var serviceModels = _metadataManager.GetServiceModels(applicationManager);
             foreach (var serviceModel in serviceModels)
             {
                 foreach (var operationModel in serviceModel.Operations)

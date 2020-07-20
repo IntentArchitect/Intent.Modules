@@ -10,7 +10,7 @@ using Intent.Registrations;
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
 {
     [Description(AppSettingsTemplate.Identifier)]
-    public class AppSettingsTemplateRegistration : IProjectTemplateRegistration
+    public class AppSettingsTemplateRegistration : ITemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
         public string TemplateId => AppSettingsTemplate.Identifier;
@@ -28,7 +28,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registry.RegisterProjectTemplate(TemplateId, project, p => new AppSettingsTemplate(project, project.Application.EventDispatcher));
+                registry.Register(TemplateId, project, p => new AppSettingsTemplate(p, project.Application.EventDispatcher));
             }
         }
     }

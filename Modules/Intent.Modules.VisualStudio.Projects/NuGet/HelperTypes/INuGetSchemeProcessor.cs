@@ -6,7 +6,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
 {
     internal interface INuGetSchemeProcessor
     {
-        Dictionary<string, NuGetPackage> GetInstalledPackages(IProject project, XNode xNode);
+        Dictionary<string, NuGetPackage> GetInstalledPackages(string projectPath, XNode xNode);
 
         string InstallPackages(
             string projectContent,

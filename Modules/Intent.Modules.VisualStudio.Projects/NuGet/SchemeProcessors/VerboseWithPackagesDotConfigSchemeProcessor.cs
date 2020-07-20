@@ -12,9 +12,9 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
 {
     internal class VerboseWithPackagesDotConfigSchemeProcessor : INuGetSchemeProcessor
     {
-        public Dictionary<string, NuGetPackage> GetInstalledPackages(IProject project, XNode xNode)
+        public Dictionary<string, NuGetPackage> GetInstalledPackages(string projectPath, XNode xNode)
         {
-            var projectFileDirectory = Path.GetDirectoryName(project.ProjectFile());
+            var projectFileDirectory = Path.GetDirectoryName(projectPath);
             if (projectFileDirectory == null)
             {
                 throw new Exception("projectFileDirectory is null.");

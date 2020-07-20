@@ -4,7 +4,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Registrations
 {
-    public abstract class NoModelTemplateRegistrationBase : IProjectTemplateRegistration
+    public abstract class NoModelTemplateRegistrationBase : ITemplateRegistration
     {
         public abstract string TemplateId { get; }
 
@@ -12,7 +12,7 @@ namespace Intent.Modules.Common.Registrations
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            registry.Register(TemplateId, CreateTemplateInstance);
+            registry.RegisterTemplate(TemplateId, context => CreateTemplateInstance((IProject)context));
         }
     }
 }
