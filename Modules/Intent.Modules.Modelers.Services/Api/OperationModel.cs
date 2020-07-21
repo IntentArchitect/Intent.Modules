@@ -15,11 +15,12 @@ namespace Intent.Modelers.Services.Api
         public const string SpecializationType = "Operation";
         protected readonly IElement _element;
 
-        public OperationModel(IElement element)
+        [IntentManaged(Mode.Ignore)]
+        public OperationModel(IElement element, string requiredType = SpecializationType)
         {
-            if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new Exception($"Cannot create a 'OperationModel' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
         }

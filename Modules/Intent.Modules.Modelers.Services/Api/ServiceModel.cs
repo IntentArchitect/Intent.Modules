@@ -13,9 +13,17 @@ namespace Intent.Modelers.Services.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class ServiceModel : IHasStereotypes, IMetadataModel, IHasFolder
     {
+        public const string SpecializationType = "Service";
+        public const string SpecializationTypeId = "b16578a5-27b1-4047-a8df-f0b783d706bd";
         protected readonly IElement _element;
-        public ServiceModel(IElement element)
+
+        [IntentManaged(Mode.Ignore)]
+        public ServiceModel(IElement element, string requiredType = SpecializationType)
         {
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+            }
             _element = element;
             Folder = _element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(_element.ParentElement) : null;
         }
@@ -65,10 +73,9 @@ namespace Intent.Modelers.Services.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-        public const string SpecializationType = "Service";
+
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
-        public const string SpecializationTypeId = "b16578a5-27b1-4047-a8df-f0b783d706bd";
     }
 }

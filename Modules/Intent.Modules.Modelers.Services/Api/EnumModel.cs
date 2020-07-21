@@ -15,6 +15,7 @@ namespace Intent.Modelers.Services.Api
     {
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public EnumModel(IElement element, string requiredType = SpecializationType)
         {
             _element = element;

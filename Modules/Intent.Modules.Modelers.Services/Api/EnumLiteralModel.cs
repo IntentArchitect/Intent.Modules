@@ -16,6 +16,7 @@ namespace Intent.Modelers.Services.Api
         protected readonly IElement _element;
         public const string SpecializationType = "Enum-Literal";
 
+        [IntentManaged(Mode.Ignore)]
         public EnumLiteralModel(IElement element, string requiredType = SpecializationType)
         {
             if (!SpecializationType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))

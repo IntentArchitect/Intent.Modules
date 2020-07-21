@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -15,18 +15,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!--<PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.2" />-->
     <PackageReference Include="Intent.IntentArchitectPackager" Version="2.2.0-pre.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
-    <!--<PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.2" />-->
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
-
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +41,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
 
 </Project>

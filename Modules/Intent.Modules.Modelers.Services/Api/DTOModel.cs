@@ -16,6 +16,7 @@ namespace Intent.Modelers.Services.Api
         protected readonly IElement _element;
         public const string SpecializationType = "DTO";
 
+        [IntentManaged(Mode.Ignore)]
         public DTOModel(IElement element, string requiredType = SpecializationType)
         {
             _element = element;
