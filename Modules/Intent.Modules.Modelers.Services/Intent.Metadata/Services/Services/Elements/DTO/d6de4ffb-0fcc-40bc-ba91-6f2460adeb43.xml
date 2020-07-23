@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="d6de4ffb-0fcc-40bc-ba91-6f2460adeb43" type="DTO">
+<class id="d6de4ffb-0fcc-40bc-ba91-6f2460adeb43" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
   <name>EmptyDTO</name>
   <display>EmptyDTO</display>
   <isAbstract>true</isAbstract>
@@ -13,9 +13,11 @@
     </mappedPath>
   </mappedClass>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Services</packageName>
   <stereotypes />
   <childElements>
-    <childElement id="0f7f3fd3-0012-45e2-92a4-07b38472d5a6" type="DTO-Field">
+    <childElement id="0f7f3fd3-0012-45e2-92a4-07b38472d5a6" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>isDisputeAllowed</name>
       <display>isDisputeAllowed: bool</display>
       <isAbstract>false</isAbstract>
@@ -35,10 +37,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="329074b7-fde5-46e8-9b95-e188d2a49a57" type="DTO-Field">
+    <childElement id="329074b7-fde5-46e8-9b95-e188d2a49a57" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>clientResponsePeriod</name>
       <display>clientResponsePeriod: int?</display>
       <isAbstract>false</isAbstract>
@@ -58,10 +62,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="e67a38ce-dc95-4d83-82da-9c1b5a197dea" type="DTO-Field">
+    <childElement id="e67a38ce-dc95-4d83-82da-9c1b5a197dea" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>subjectResponsePeriod</name>
       <display>subjectResponsePeriod: int?</display>
       <isAbstract>false</isAbstract>
@@ -81,10 +87,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="ee6b22c4-fe47-4480-91a1-283fa6b48276" type="DTO-Field">
+    <childElement id="ee6b22c4-fe47-4480-91a1-283fa6b48276" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>monitoringPeriod</name>
       <display>monitoringPeriod: int?</display>
       <isAbstract>false</isAbstract>
@@ -104,10 +112,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="f26cf388-512c-4935-a7e6-f6ee8f900b68" type="DTO-Field">
+    <childElement id="f26cf388-512c-4935-a7e6-f6ee8f900b68" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>GetSomething</name>
       <display>GetSomething: string</display>
       <isAbstract>false</isAbstract>
@@ -127,10 +137,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="5e59b182-6e5c-48b2-9d9d-2fe5e789c54e" type="DTO-Field">
+    <childElement id="5e59b182-6e5c-48b2-9d9d-2fe5e789c54e" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>field</name>
       <display>field: string</display>
       <isAbstract>false</isAbstract>
@@ -150,6 +162,8 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>d6de4ffb-0fcc-40bc-ba91-6f2460adeb43</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>

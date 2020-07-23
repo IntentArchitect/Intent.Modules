@@ -7,49 +7,49 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common
 {
-    public static class IOutputContextExtensions
+    public static class ITemplateExecutionContextExtensions
     {
-        public static string ApplicationName(this IOutputContext project)
+        public static string ApplicationName(this ITemplateExecutionContext project)
         {
             return project.Application.Name;
         }
 
-        public static bool HasTemplateInstance(this IOutputContext project, string templateId)
-        {
-            return project.FindTemplateInstance(templateId, (t) => true, SearchOption.OnlyThisProject) != null;
-        }
+        //public static bool HasTemplateInstance(this ITemplateExecutionContext project, string templateId)
+        //{
+        //    return project.FindTemplateInstance(templateId, (t) => true, SearchOption.OnlyThisProject) != null;
+        //}
 
-        //public static ITemplate FindTemplateInstance(this IOutputContext project, string templateId, string className)
+        //public static ITemplate FindTemplateInstance(this ITemplateExecutionContext project, string templateId, string className)
         //{
         //    return project.FindTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
         //}
 
-        public static ITemplate FindTemplateInstance(this IOutputContext project, string templateId, IMetadataModel model)
+        public static ITemplate FindTemplateInstance(this ITemplateExecutionContext project, string templateId, IMetadataModel model)
         {
             return project.FindTemplateInstance(TemplateDependency.OnModel(templateId, model));
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IOutputContext project, string templateId, IMetadataModel model) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this ITemplateExecutionContext project, string templateId, IMetadataModel model) where TTemplate : class
         {
             return project.FindTemplateInstance(templateId, model) as TTemplate;
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IOutputContext project, string templateId) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this ITemplateExecutionContext project, string templateId) where TTemplate : class
         {
             return project.FindTemplateInstance(templateId) as TTemplate;
         }
 
-        public static ITemplate FindTemplateInstance(this IOutputContext project, ITemplateDependency templateDependency)
+        public static ITemplate FindTemplateInstance(this ITemplateExecutionContext project, ITemplateDependency templateDependency)
         {
             return project.FindTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch);
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IOutputContext project, ITemplateDependency templateDependency) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this ITemplateExecutionContext project, ITemplateDependency templateDependency) where TTemplate : class
         {
             return project.FindTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch) as TTemplate;
         }
 
-        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IOutputContext project, ITemplateDependency templateDependency) where TTemplate : class
+        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this ITemplateExecutionContext project, ITemplateDependency templateDependency) where TTemplate : class
         {
             return project.FindTemplateInstances(templateDependency.TemplateIdOrName, templateDependency.IsMatch, SearchOption.AllProjects).Cast<TTemplate>();
         }

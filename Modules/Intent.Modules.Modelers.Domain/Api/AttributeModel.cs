@@ -15,6 +15,7 @@ namespace Intent.Modelers.Domain.Api
         public const string SpecializationType = "Attribute";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public AttributeModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))

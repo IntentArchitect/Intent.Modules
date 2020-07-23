@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="38a9b164-346c-491d-b6cc-53df6c842f01" type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb">
+  <name>NewEnum</name>
+  <display>NewEnum</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
+  <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+  <packageName>Modelers.Domain.Domain</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="521cf202-051c-4e7a-b03d-c1951204e9e1" type="Enum-Literal" typeId="4215f417-25d2-4509-9309-5076a1452eaa">
+      <name>NewEnumLiteral</name>
+      <display>NewEnumLiteral = 0</display>
+      <isAbstract>false</isAbstract>
+      <value>0</value>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>38a9b164-346c-491d-b6cc-53df6c842f01</parentFolderId>
+      <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+      <packageName>Modelers.Domain.Domain</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

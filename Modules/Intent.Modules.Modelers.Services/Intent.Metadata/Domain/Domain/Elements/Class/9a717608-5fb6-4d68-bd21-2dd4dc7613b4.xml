@@ -6,6 +6,8 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</parentFolderId>
+  <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+  <packageName>Domain</packageName>
   <stereotypes />
   <childElements>
     <childElement id="02b85a61-d9b8-41b7-9509-f909aa9011f9" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
@@ -23,6 +25,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements />
     </childElement>
@@ -41,6 +45,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements />
     </childElement>
@@ -58,6 +64,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements />
     </childElement>
@@ -76,6 +84,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements />
     </childElement>
@@ -94,6 +104,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements />
     </childElement>
@@ -112,6 +124,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements />
     </childElement>
@@ -129,6 +143,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements>
         <childElement id="716d35be-7f8b-499e-915f-10e31b11b280" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
@@ -145,6 +161,8 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>0a3c107a-e9b9-4e47-89b4-b1efb48e71ae</parentFolderId>
+          <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+          <packageName>Domain</packageName>
           <stereotypes />
           <childElements />
         </childElement>
@@ -164,6 +182,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements>
         <childElement id="01566532-3f8c-4825-9d33-c3a6eefb164b" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
@@ -180,6 +200,8 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>31651611-8b12-48a7-b03c-68c06229bc6a</parentFolderId>
+          <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+          <packageName>Domain</packageName>
           <stereotypes />
           <childElements />
         </childElement>
@@ -197,6 +219,8 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>31651611-8b12-48a7-b03c-68c06229bc6a</parentFolderId>
+          <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+          <packageName>Domain</packageName>
           <stereotypes />
           <childElements />
         </childElement>
@@ -217,6 +241,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements />
     </childElement>
@@ -235,6 +261,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements>
         <childElement id="0517531e-46ea-446e-8bb5-96c8cde83cae" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
@@ -252,6 +280,8 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>f1a7ecd2-6a06-495f-8a5a-424bf02c0b55</parentFolderId>
+          <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+          <packageName>Domain</packageName>
           <stereotypes />
           <childElements />
         </childElement>
@@ -270,6 +300,8 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>f1a7ecd2-6a06-495f-8a5a-424bf02c0b55</parentFolderId>
+          <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+          <packageName>Domain</packageName>
           <stereotypes />
           <childElements />
         </childElement>
@@ -289,6 +321,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</parentFolderId>
+      <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+      <packageName>Domain</packageName>
       <stereotypes />
       <childElements>
         <childElement id="3f1ad084-100d-4aad-80ff-18667aeff3aa" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
@@ -306,6 +340,8 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>facc389e-6b16-4435-9d5a-87e365252eb7</parentFolderId>
+          <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
+          <packageName>Domain</packageName>
           <stereotypes />
           <childElements />
         </childElement>

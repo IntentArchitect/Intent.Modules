@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="29b10ff0-1c9f-422b-ac1e-caeea16e69ec" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Types</name>
+  <display>Types</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</parentFolderId>
+  <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
+  <packageName>Intent.Common.Types</packageName>
+  <stereotypes />
+  <childElements />
+</class>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="99ad535e-de46-4e05-b018-c7dee149a2b0" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Api</name>
+  <display>Api</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+  <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+  <packageName>ModuleBuilder.VisualStudio</packageName>
+  <stereotypes />
+  <childElements />
+</class>

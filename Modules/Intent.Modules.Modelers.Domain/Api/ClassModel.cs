@@ -23,6 +23,7 @@ namespace Intent.Modelers.Domain.Api
         private readonly ICollection<ClassModel> _childClasses = new List<ClassModel>();
         private readonly ClassModel _parent;
 
+        [IntentManaged(Mode.Ignore)]
         public ClassModel(IElement element, string requiredType = SpecializationType)
         {
             //if (classCache == null)

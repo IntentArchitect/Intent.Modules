@@ -2,14 +2,16 @@
 <settings>
   <id>db2f5755-5256-46d1-bb45-72bf2c7cde42</id>
   <name>Domain Types</name>
-  <packageSettings>
-    <packageSetting type="Package" typeId="0f427fd8-8f26-42db-aaaf-169200b3d3a9">
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="Package" typeId="73cf6531-f699-479d-b2b8-92da159ada37">
       <requiredPackages />
       <creationOptions>
         <option type="element">
           <specializationType>Class</specializationType>
           <specializationTypeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</specializationTypeId>
           <text>New Class</text>
+          <shortcut>ctrl + shift + c</shortcut>
           <defaultName>NewClass</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Class_256x.png" />
           <allowMultiple>true</allowMultiple>
@@ -18,6 +20,7 @@
           <specializationType>Type-Definition</specializationType>
           <specializationTypeId>8f990b5b-a182-4fb8-a577-b985c8859078</specializationTypeId>
           <text>New Type</text>
+          <shortcut>ctrl + shift + t</shortcut>
           <defaultName>NewTypeDefinition</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
           <allowMultiple>true</allowMultiple>
@@ -26,6 +29,7 @@
           <specializationType>Enum</specializationType>
           <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
           <text>New Enum</text>
+          <shortcut>ctrl + shift + e</shortcut>
           <defaultName>NewEnum</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
           <allowMultiple>true</allowMultiple>
@@ -34,6 +38,7 @@
           <specializationType>Comment</specializationType>
           <specializationTypeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</specializationTypeId>
           <text>New Comment</text>
+          <shortcut>ctrl + shift + o</shortcut>
           <defaultName>NewComment</defaultName>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAMAAADWZboaAAABSlBMVEUAAAD//wD/gAD/mTP/zAD/gCv/qivmsxr/gDPmvxr/gDPnthj/hjHpvBb/iTHtthL/iS7quBX/hyvquhX/gzDrvBTuuRf6iCvquhX6hTDtuxfquBX7hi7quRXruRf8hi7suxf8hC38hC3suxbruhb9hi/9hi3suhX9hS3quxfruRbruhb7hC3quhf7hS/ruhb7hi3ruRXsuhf8hS/ruhb8hS38hC7quRb4lyT8hC7suhb3mCf2mST0nSTquRb8hS76iivruhf9hS7ruhbruxb7hS77hS77hi7ruhb8hS/ruhbusBr8hS78hS7ruhb8hS7ruhbruhbtsxn8hC77hS3ruhb8hS7ruhb8hS7tthjruhfruhb8hS7ruhbruhb8hS7ruhb8hS7ruhb8hS7ruhbwy1Dx0GDx0GHz1nP346L8hS7++/D++/H///+gFZfLAAAAZHRSTlMAAQIFBQYGCgoUFBUVFxocHCQkJSUmLC8wMDg9PT5NTk9PW15nZ3Z3d3uAgYGIiI2Nj5GUl5igoba3uL/AwcbGyczMztjY2dnb297f4eLj4+Tl5+fo6err6+zu9fn7/Pz9/f7+TQPISAAAAAFiS0dEbbsGAK0AAAFSSURBVEjH5ddHU8JQFIbhDxR7771ih4i9i72LvRdQgiXq/9+6IIHkEGbOPeMiM75LJs+Cb5F7A3iiQG9Iow3TBjr8ubJ132C1UUdlza3B7KSC0BmDXYTQCz49IjTJp3FCDYX+GfV3Boes5s2WaUtrj7m0cVNndbhLaeWZzuzuktBJnd0KoTE+PSc0wacJQnWFPEXfP+29qdDvH3tfKjT1YS/l/Zn+bGH3uR3yJc/C7nM76HGehd3ndtAp8X+9rpLSnWZIqKaFugOAZGHr9SlYmFLOwnF3yqkvKaYYdFCF19ozELHTUz49AHyzNjrNp+MAChaytPqGK2PlAFASzZ6OLXs8uV6bfr5sO3umFvWMhdNlHrsyfwiPWqdnsD1zP2twu+RZ8r5J+X5oyoc2COlTF4T0tR9SOgIpnYCUzvmkdLFQeHnXV4ul9/6tUvEnQz283y9zvWoo9YIzZQAAAABJRU5ErkJggg==" />
           <allowMultiple>true</allowMultiple>
@@ -50,6 +55,7 @@
           <specializationType>Folder</specializationType>
           <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
           <text>New Folder</text>
+          <shortcut>ctrl + shift + f</shortcut>
           <defaultName>NewFolder</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
           <allowMultiple>true</allowMultiple>
@@ -65,17 +71,16 @@
         </option>
       </creationOptions>
       <typeOrder>
-        <type order="0">Class</type>
-        <type order="1">Type-Definition</type>
-        <type order="2">Enum</type>
-        <type order="3">Comment</type>
-        <type order="4">Diagram</type>
-        <type order="5">Folder</type>
-        <type order="6">Stereotype-Definition</type>
+        <type>Class</type>
+        <type>Type-Definition</type>
+        <type>Enum</type>
+        <type>Comment</type>
+        <type>Diagram</type>
+        <type>Folder</type>
+        <type>Stereotype-Definition</type>
       </typeOrder>
-    </packageSetting>
-  </packageSettings>
-  <packageExtensions />
+    </packageExtension>
+  </packageExtensions>
   <elementSettings>
     <elementSetting type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
       <icon type="UrlImagePath" source="./img/icons/uml/Class_256x.png" />
@@ -364,55 +369,20 @@ white-space: inherit;`</style>
             <icon type="UrlImagePath" source="./img/icons/uml/Class_256x.png" />
             <allowMultiple>true</allowMultiple>
           </option>
+          <option type="element">
+            <specializationType>Comment</specializationType>
+            <specializationTypeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</specializationTypeId>
+            <text>New Comment</text>
+            <shortcut>ctrl + shift + o</shortcut>
+            <defaultName>NewComment</defaultName>
+            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAMAAADWZboaAAABSlBMVEUAAAD//wD/gAD/mTP/zAD/gCv/qivmsxr/gDPmvxr/gDPnthj/hjHpvBb/iTHtthL/iS7quBX/hyvquhX/gzDrvBTuuRf6iCvquhX6hTDtuxfquBX7hi7quRXruRf8hi7suxf8hC38hC3suxbruhb9hi/9hi3suhX9hS3quxfruRbruhb7hC3quhf7hS/ruhb7hi3ruRXsuhf8hS/ruhb8hS38hC7quRb4lyT8hC7suhb3mCf2mST0nSTquRb8hS76iivruhf9hS7ruhbruxb7hS77hS77hi7ruhb8hS/ruhbusBr8hS78hS7ruhb8hS7ruhbruhbtsxn8hC77hS3ruhb8hS7ruhb8hS7tthjruhfruhb8hS7ruhbruhb8hS7ruhb8hS7ruhb8hS7ruhbwy1Dx0GDx0GHz1nP346L8hS7++/D++/H///+gFZfLAAAAZHRSTlMAAQIFBQYGCgoUFBUVFxocHCQkJSUmLC8wMDg9PT5NTk9PW15nZ3Z3d3uAgYGIiI2Nj5GUl5igoba3uL/AwcbGyczMztjY2dnb297f4eLj4+Tl5+fo6err6+zu9fn7/Pz9/f7+TQPISAAAAAFiS0dEbbsGAK0AAAFSSURBVEjH5ddHU8JQFIbhDxR7771ih4i9i72LvRdQgiXq/9+6IIHkEGbOPeMiM75LJs+Cb5F7A3iiQG9Iow3TBjr8ubJ132C1UUdlza3B7KSC0BmDXYTQCz49IjTJp3FCDYX+GfV3Boes5s2WaUtrj7m0cVNndbhLaeWZzuzuktBJnd0KoTE+PSc0wacJQnWFPEXfP+29qdDvH3tfKjT1YS/l/Zn+bGH3uR3yJc/C7nM76HGehd3ndtAp8X+9rpLSnWZIqKaFugOAZGHr9SlYmFLOwnF3yqkvKaYYdFCF19ozELHTUz49AHyzNjrNp+MAChaytPqGK2PlAFASzZ6OLXs8uV6bfr5sO3umFvWMhdNlHrsyfwiPWqdnsD1zP2twu+RZ8r5J+X5oyoc2COlTF4T0tR9SOgIpnYCUzvmkdLFQeHnXV4ul9/6tUvEnQz283y9zvWoo9YIzZQAAAABJRU5ErkJggg==" />
+            <allowMultiple>true</allowMultiple>
+          </option>
         </creationOptions>
         <classVisualSettings />
         <associationVisualSettings />
       </diagramSettings>
       <childElementSettings />
-    </elementSetting>
-    <elementSetting type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb">
-      <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
-      <saveAsOwnFile>true</saveAsOwnFile>
-      <allowRename>true</allowRename>
-      <allowAbstract>false</allowAbstract>
-      <allowGenericTypes>false</allowGenericTypes>
-      <allowMapping>false</allowMapping>
-      <allowSorting>true</allowSorting>
-      <allowFindInView>true</allowFindInView>
-      <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowSetValue>false</allowSetValue>
-      <typeOrder>
-        <type order="0">Enum-Literal</type>
-      </typeOrder>
-      <creationOptions>
-        <option type="element">
-          <specializationType>Enum-Literal</specializationType>
-          <specializationTypeId>4215f417-25d2-4509-9309-5076a1452eaa</specializationTypeId>
-          <text>Add Literal</text>
-          <shortcut>ctrl + shift + l</shortcut>
-          <defaultName>NewEnumLiteral</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <childElementSettings>
-        <childElementSetting type="Enum-Literal" typeId="4215f417-25d2-4509-9309-5076a1452eaa">
-          <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <displayFunction>`${name}${value !== null &amp;&amp; value != "" ? " = " + value : ""}`</displayFunction>
-          <allowRename>true</allowRename>
-          <allowAbstract>false</allowAbstract>
-          <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>false</allowMapping>
-          <allowSorting>false</allowSorting>
-          <allowFindInView>false</allowFindInView>
-          <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>true</allowSetValue>
-          <childElementSettings />
-        </childElementSetting>
-      </childElementSettings>
     </elementSetting>
     <elementSetting type="Type-Definition" typeId="8f990b5b-a182-4fb8-a577-b985c8859078">
       <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />

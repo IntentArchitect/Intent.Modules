@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="c4f33203-2c5c-4f32-985c-a5f2b154cdae" type="Folder">
+<class id="c4f33203-2c5c-4f32-985c-a5f2b154cdae" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>NewFolder</name>
   <display>NewFolder</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Services</packageName>
   <stereotypes />
   <childElements />
 </class>

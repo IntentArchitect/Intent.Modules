@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.Sql.Templates
 {
     public abstract class SqlTemplateBase<TModel> : IntentTemplateBase<TModel>
     {
-        protected SqlTemplateBase(string templateId, IOutputContext project, TModel model) : base(templateId, project, model)
+        protected SqlTemplateBase(string templateId, ITemplateExecutionContext project, TModel model) : base(templateId, project, model)
         {
         }
 

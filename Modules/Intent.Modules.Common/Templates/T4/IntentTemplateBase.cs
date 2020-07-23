@@ -11,7 +11,7 @@ namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentTemplateBase<TModel> : IntentTemplateBase, ITemplateWithModel
     {
-        protected IntentTemplateBase(string templateId, IOutputContext outputContext, TModel model) : base(templateId, outputContext)
+        protected IntentTemplateBase(string templateId, ITemplateExecutionContext executionContext, TModel model) : base(templateId, executionContext)
         {
             Model = model;
         }
@@ -30,24 +30,23 @@ namespace Intent.Modules.Common.Templates
     {
         protected readonly ICollection<ITemplateDependency> DetectedDependencies = new List<ITemplateDependency>();
 
-        protected IntentTemplateBase(string templateId, IOutputContext outputContext)
+        protected IntentTemplateBase(string templateId, ITemplateExecutionContext executionContext)
         {
-            OutputContext = outputContext;
+            ExecutionContext = executionContext;
             Id = templateId;
-            Context = new TemplateContext(this);
+            BindingContext = new TemplateBindingContext(this);
         }
 
         public string Id { get; }
-        public IOutputContext OutputContext { get; }
-        public ITemplateContext Context { get; }
+        public ITemplateExecutionContext ExecutionContext { get; }
+        public ITemplateBindingContext BindingContext { get; }
         public IFileMetadata FileMetadata { get; private set; }
-
-
 
         public void ConfigureFileMetadata(IFileMetadata fileMetadata)
         {
             FileMetadata = fileMetadata;
         }
+
 
         public abstract ITemplateFileConfig DefineDefaultFileMetadata();
 
@@ -208,7 +207,7 @@ namespace Intent.Modules.Common.Templates
                 throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
             }
 
-            var template = OutputContext.Application.FindTemplateInstance<TTemplate>(dependency);
+            var template = ExecutionContext.Application.FindTemplateInstance<TTemplate>(dependency);
             if (template != null)
             {
                 DetectedDependencies.Add(dependency);
@@ -244,17 +243,17 @@ namespace Intent.Modules.Common.Templates
         }
     }
 
-    public class TemplateContext : ITemplateContext
+    public class TemplateBindingContext : ITemplateBindingContext
     {
         private object _defaultModelContext;
         private Dictionary<string, object> _prefixLookup;
 
-        public TemplateContext(object defaultModelContext)
+        public TemplateBindingContext(object defaultModelContext)
         {
             _defaultModelContext = defaultModelContext;
         }
 
-        public TemplateContext() : this(null)
+        public TemplateBindingContext() : this(null)
         {
         }
 
@@ -272,18 +271,29 @@ namespace Intent.Modules.Common.Templates
             _prefixLookup[fakePropertyName] = obj;
         }
 
-        public object GetRootContext(string propertyName, out bool isDefault)
+        public object GetProperty(string propertyName)
         {
             if (_prefixLookup != null && _prefixLookup.ContainsKey(propertyName))
             {
-                isDefault = false;
                 return _prefixLookup[propertyName];
             }
-            else
-            {
-                isDefault = true;
-                return _defaultModelContext;
-            }
+
+            return null;
+            //if (_prefixLookup != null && _prefixLookup.ContainsKey(propertyName))
+            //{
+            //    isDefault = false;
+            //    return _prefixLookup[propertyName];
+            //}
+            //else
+            //{
+            //    isDefault = true;
+            //    return _defaultModelContext;
+            //}
+        }
+
+        public object GetRootModel()
+        {
+            return _defaultModelContext;
         }
     }
 }

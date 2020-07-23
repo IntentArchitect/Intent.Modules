@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="892c2c64-dd04-44f9-a0d8-37b27da645ab" type="DTO">
+<class id="892c2c64-dd04-44f9-a0d8-37b27da645ab" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
   <name>MyDTO</name>
   <display>MyDTO</display>
   <isAbstract>true</isAbstract>
@@ -13,9 +13,11 @@
     </mappedPath>
   </mappedClass>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Services</packageName>
   <stereotypes />
   <childElements>
-    <childElement id="9adf9d1b-4f89-4492-bb4b-f265677baeab" type="DTO-Field">
+    <childElement id="9adf9d1b-4f89-4492-bb4b-f265677baeab" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>id</name>
       <display>id: guid</display>
       <isAbstract>true</isAbstract>
@@ -35,10 +37,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="a56ec91e-9481-4bc5-b45f-00181e3e6433" type="DTO-Field">
+    <childElement id="a56ec91e-9481-4bc5-b45f-00181e3e6433" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>isDisputeAllowed</name>
       <display>isDisputeAllowed: bool</display>
       <isAbstract>true</isAbstract>
@@ -59,10 +63,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="6db690a3-8ac0-41a3-bcca-aaeebee55383" type="DTO-Field">
+    <childElement id="6db690a3-8ac0-41a3-bcca-aaeebee55383" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>isShownExternally</name>
       <display>isShownExternally: bool</display>
       <isAbstract>true</isAbstract>
@@ -83,10 +89,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="457cc509-6b72-414a-8ea5-c75f307182b4" type="DTO-Field">
+    <childElement id="457cc509-6b72-414a-8ea5-c75f307182b4" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>clientResponsePeriod</name>
       <display>clientResponsePeriod: int?</display>
       <isAbstract>true</isAbstract>
@@ -106,10 +114,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="ed1abbab-7aef-461e-aa8c-8f830f766317" type="DTO-Field">
+    <childElement id="ed1abbab-7aef-461e-aa8c-8f830f766317" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>subjectResponsePeriod</name>
       <display>subjectResponsePeriod: int?</display>
       <isAbstract>true</isAbstract>
@@ -129,10 +139,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="bb628d2b-3c87-4304-8cd8-407649e435a4" type="DTO-Field">
+    <childElement id="bb628d2b-3c87-4304-8cd8-407649e435a4" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>monitoringPeriod</name>
       <display>monitoringPeriod: int?</display>
       <isAbstract>true</isAbstract>
@@ -152,10 +164,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="94936afe-b2aa-45cf-a325-4e844a038eb2" type="DTO-Field">
+    <childElement id="94936afe-b2aa-45cf-a325-4e844a038eb2" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>GetSomething</name>
       <display>GetSomething: string</display>
       <isAbstract>true</isAbstract>
@@ -175,10 +189,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="b0c48a90-258f-4a5c-a262-186138af84b1" type="DTO-Field">
+    <childElement id="b0c48a90-258f-4a5c-a262-186138af84b1" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>xxx</name>
       <display>xxx: string</display>
       <isAbstract>true</isAbstract>
@@ -201,10 +217,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="7e1b8a53-7118-4d1c-ae92-a566ad94af0c" type="DTO-Field">
+    <childElement id="7e1b8a53-7118-4d1c-ae92-a566ad94af0c" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>field</name>
       <display>field: string</display>
       <isAbstract>true</isAbstract>
@@ -226,10 +244,12 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="8fb747f7-a9a5-4430-b669-140a4be35370" type="DTO-Field">
+    <childElement id="8fb747f7-a9a5-4430-b669-140a4be35370" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>association</name>
       <display>association: string</display>
       <isAbstract>true</isAbstract>
@@ -249,6 +269,8 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>892c2c64-dd04-44f9-a0d8-37b27da645ab</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>

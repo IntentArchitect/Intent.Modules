@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="9767fed7-a950-4ba5-81f4-98098705c830" type="Class Library (.NET Core)" typeId="43351e35-d2b9-4f02-bac4-e3d218ace834">
+<class id="9767fed7-a950-4ba5-81f4-98098705c830" type="Class Library (.NET Core)" typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE">
   <name>Intent.Modules.Modelers.Domain</name>
   <display>Intent.Modules.Modelers.Domain</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>60552236-e866-429d-aebd-855a2058b995</parentFolderId>
+  <packageId>60552236-e866-429d-aebd-855a2058b995</packageId>
+  <packageName>Modelers.Domain.VisualStudio</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="5d85edfb-490c-42c2-81ef-c57c0300eb5a" name=".NET Core Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
       <properties>
         <property name="4756bd10-23e2-473b-9957-d7083759cd42" display="Target Multiple Frameworks" value="false" isActive="true" />
         <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="f2872d65-d69e-460d-988b-165e2fa6c8ca" isActive="true" />

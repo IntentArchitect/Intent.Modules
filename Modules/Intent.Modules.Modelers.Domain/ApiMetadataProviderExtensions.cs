@@ -33,13 +33,6 @@ namespace Intent.Modelers.Domain.Api
                 .ToList();
         }
 
-        public static IList<EnumModel> GetEnumModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(EnumModel.SpecializationTypeId)
-                .Select(x => new EnumModel(x))
-                .ToList();
-        }
-
         public static IList<TypeDefinitionModel> GetTypeDefinitionModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)

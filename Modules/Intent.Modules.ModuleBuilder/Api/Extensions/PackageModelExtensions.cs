@@ -22,6 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             return model.HasStereotype("Package Settings");
         }
 
+
         public class PackageSettings
         {
             private IStereotype _stereotype;

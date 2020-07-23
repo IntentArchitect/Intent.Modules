@@ -29,11 +29,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\PackageModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/PackageModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\ParameterModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/ParameterModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -46,11 +41,6 @@
       <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\ApiMetadataPackageExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>

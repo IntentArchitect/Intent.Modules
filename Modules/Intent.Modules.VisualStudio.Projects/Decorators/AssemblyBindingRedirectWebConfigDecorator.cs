@@ -15,7 +15,7 @@ namespace Intent.Modules.VisualStudio.Projects.Decorators
 
         public int Priority { get; } = 0;
 
-        public void Install(XDocument doc, IOutputContext p)
+        public void Install(XDocument doc, ITemplateExecutionContext p)
         {
             _namespaces = new XmlNamespaceManager(new NameTable());
             var defaultNamespace = doc.Root.GetDefaultNamespace();

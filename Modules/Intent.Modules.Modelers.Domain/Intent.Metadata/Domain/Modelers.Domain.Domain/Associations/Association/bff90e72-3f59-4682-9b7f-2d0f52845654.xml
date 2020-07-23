@@ -8,12 +8,16 @@
       <isNavigable>false</isNavigable>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
+      <typePackageName>Modelers.Domain.Domain</typePackageName>
+      <typePackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</typePackageId>
       <stereotypes />
       <genericTypeParameters />
     </typeReference>
     <stereotypes>
       <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
         <addedByDefault>false</addedByDefault>
+        <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
+        <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
         <properties />
       </stereotype>
     </stereotypes>
@@ -26,12 +30,16 @@
       <isNavigable>true</isNavigable>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
+      <typePackageName>Modelers.Domain.Domain</typePackageName>
+      <typePackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</typePackageId>
       <stereotypes />
       <genericTypeParameters />
     </typeReference>
     <stereotypes>
       <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
         <addedByDefault>false</addedByDefault>
+        <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
+        <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
         <properties />
       </stereotype>
     </stereotypes>
@@ -41,6 +49,8 @@
   <stereotypes>
     <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
       <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
+      <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
       <properties />
     </stereotype>
   </stereotypes>

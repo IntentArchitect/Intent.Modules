@@ -21,7 +21,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
         private readonly string _sslPort = "";
         private readonly string _port;
 
-        public WebApiServiceCSProjectFileTemplate(IOutputContext project, IVisualStudioProject model)
+        public WebApiServiceCSProjectFileTemplate(ITemplateExecutionContext project, IVisualStudioProject model)
             : base(Identifier, project, model)
         {
             //_port = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "Port")?.Value;

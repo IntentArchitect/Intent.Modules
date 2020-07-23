@@ -6,6 +6,8 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
+  <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+  <packageName>Modelers.Domain.Domain</packageName>
   <stereotypes />
   <childElements>
     <childElement id="00d22977-8670-45ac-8cd4-18b0f123ea14" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
@@ -23,6 +25,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>e3ab1103-695b-43cb-9dad-feea553c2711</parentFolderId>
+      <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+      <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
       <childElements />
     </childElement>

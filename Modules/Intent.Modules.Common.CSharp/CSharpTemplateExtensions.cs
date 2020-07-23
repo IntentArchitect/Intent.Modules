@@ -10,7 +10,7 @@ namespace Intent.Modules.Common.Templates
 {
     public static class CSharpTemplateExtensions
     {
-        public static string ResolveAllUsings(this ITemplate template, IOutputContext context, params string[] namespacesToIgnore)
+        public static string ResolveAllUsings(this ITemplate template, ITemplateExecutionContext context, params string[] namespacesToIgnore)
         {
             var usings = template
                 .GetAllTemplateDependencies()

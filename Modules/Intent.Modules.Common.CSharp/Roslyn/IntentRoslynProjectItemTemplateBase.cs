@@ -16,25 +16,25 @@ namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentProjectItemTemplateBase : IntentTemplateBase
     {
-        protected IntentProjectItemTemplateBase(string templateId, IOutputContext project) : base(templateId, project)
+        protected IntentProjectItemTemplateBase(string templateId, ITemplateExecutionContext project) : base(templateId, project)
         {
         }
 
-        public IOutputContext Project => OutputContext;
+        public ITemplateExecutionContext Project => ExecutionContext;
     }
 
     public abstract class IntentProjectItemTemplateBase<TModel> : IntentTemplateBase<TModel>
     {
-        protected IntentProjectItemTemplateBase(string templateId, IOutputContext project, TModel model) : base(templateId, project, model)
+        protected IntentProjectItemTemplateBase(string templateId, ITemplateExecutionContext project, TModel model) : base(templateId, project, model)
         {
         }
 
-        public IOutputContext Project => OutputContext;
+        public ITemplateExecutionContext Project => ExecutionContext;
     }
 
     public abstract class IntentRoslynProjectItemTemplateBase<TModel> : CSharpTemplateBase<TModel>
     {
-        protected IntentRoslynProjectItemTemplateBase(string templateId, IOutputContext project, TModel model) : base(templateId, project, model)
+        protected IntentRoslynProjectItemTemplateBase(string templateId, ITemplateExecutionContext project, TModel model) : base(templateId, project, model)
         {
         }
     }
@@ -43,13 +43,13 @@ namespace Intent.Modules.Common.Templates
     {
         private readonly ICollection<ITemplateDependency> _detectedDependencies = new List<ITemplateDependency>();
 
-        protected CSharpTemplateBase(string templateId, IOutputContext context, TModel model)
+        protected CSharpTemplateBase(string templateId, ITemplateExecutionContext context, TModel model)
             : base(templateId, context, model)
         {
             AddNugetDependency("Intent.RoslynWeaver.Attributes", "1.0.0");
         }
 
-        public IOutputContext Project => OutputContext;
+        public ITemplateExecutionContext Project => ExecutionContext;
 
         public string Namespace
         {
@@ -59,7 +59,7 @@ namespace Intent.Modules.Common.Templates
                 {
                     return FileMetadata.CustomMetadata["Namespace"];
                 }
-                return this.OutputContext.Name;
+                return this.ExecutionContext.Name;
             }
         }
 
@@ -111,7 +111,7 @@ namespace Intent.Modules.Common.Templates
                 .ToArray();
             var localNamespace = Namespace;
             var knownOtherPaths = usingPaths
-                .Concat(OutputContext.Application.Projects.Select(x => x.Name))
+                .Concat(ExecutionContext.Application.Projects.Select(x => x.Name))
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Distinct()
                 .ToArray();
@@ -121,7 +121,7 @@ namespace Intent.Modules.Common.Templates
 
         public void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
-            AddTypeSource(CSharpTypeSource.InProject(OutputContext, templateId, collectionFormat));
+            AddTypeSource(CSharpTypeSource.InProject(ExecutionContext, templateId, collectionFormat));
         }
 
         public override string GetTypeName(ITypeReference typeReference, string collectionFormat)
@@ -310,7 +310,7 @@ namespace Intent.Modules.Common.Templates
 
         protected abstract RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata();
 
-        public virtual string DependencyUsings => this.ResolveAllUsings(OutputContext, namespacesToIgnore: Namespace);
+        public virtual string DependencyUsings => this.ResolveAllUsings(ExecutionContext, namespacesToIgnore: Namespace);
 
         private readonly ICollection<INugetPackageInfo> _nugetDependencies = new List<INugetPackageInfo>();
         public virtual IEnumerable<INugetPackageInfo> GetNugetDependencies()

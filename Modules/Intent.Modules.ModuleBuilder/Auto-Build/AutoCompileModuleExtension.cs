@@ -32,24 +32,24 @@ namespace Intent.Modules.Angular
         
         public void RunAngularCli(IApplication application)
         {
-            var project = GetProject(application);
-            if (project == null)
+            var location = GetRootExecutionLocation(application);
+            if (location == null)
             {
-                Logging.Log.Failure("Could not find project to install Angular application.");
+                Logging.Log.Failure("Could not find location to install Angular application.");
                 return;
             }
 
             var cmd = new CommandLineProcessor();
 
-            if (!Directory.Exists(Path.GetFullPath(project.ProjectLocation)))
+            if (!Directory.Exists(Path.GetFullPath(location)))
             {
-                Logging.Log.Warning($"Could not build module because the path was not found: " + Path.GetFullPath(project.ProjectLocation));
+                Logging.Log.Warning($"Could not build module because the path was not found: " + Path.GetFullPath(location));
             }
             var command = $@"dotnet build";
-            Logging.Log.Info($"Executing: \"{command}\" at location \"{ Path.GetFullPath(project.ProjectLocation) }\"");
+            Logging.Log.Info($"Executing: \"{command}\" at location \"{ Path.GetFullPath(location) }\"");
             try
             {
-                var output = cmd.ExecuteCommand(Path.GetFullPath(project.ProjectLocation),
+                var output = cmd.ExecuteCommand(Path.GetFullPath(location),
                     new[]
                     {
                         command,
@@ -64,9 +64,9 @@ Auto-compiling of module failed. If the problem persists, consider disabling thi
             }
         }
 
-        private IOutputContext GetProject(IApplication application)
+        private string GetRootExecutionLocation(IApplication application)
         {
-            return application.Projects.SingleOrDefault(x => x.HasTemplateInstance(IModSpecTemplate.TemplateId)); // TODO: make more robust (i.e. lookup where .imodspec file was installed)
+            return application.OutputTargets.SingleOrDefault(x => x.HasTemplateInstances(IModSpecTemplate.TemplateId))?.Location;
         }
     }
 }

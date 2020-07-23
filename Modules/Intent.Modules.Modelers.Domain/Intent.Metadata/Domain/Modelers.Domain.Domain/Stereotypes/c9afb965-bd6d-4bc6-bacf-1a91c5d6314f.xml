@@ -12,5 +12,7 @@
   <autoAdd>false</autoAdd>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
   <order>0</order>
+  <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+  <packageName>Modelers.Domain.Domain</packageName>
   <properties />
 </stereotypeDefinition>

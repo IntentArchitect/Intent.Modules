@@ -34,16 +34,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\EnumLiteralModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/EnumLiteralModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\EnumModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/EnumModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\AssociationModelAssociationExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/AssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
     </FileLog>

@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasClassDetails
     {
-        public IntentTypescriptProjectItemTemplateBase(string templateId, IOutputContext outputContext, TModel model) : base(templateId, outputContext, model)
+        public IntentTypescriptProjectItemTemplateBase(string templateId, ITemplateExecutionContext executionContext, TModel model) : base(templateId, executionContext, model)
         {
         }
 
@@ -40,7 +40,7 @@ namespace Intent.Modules.Common.Templates
 
         public void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
         {
-            AddTypeSource(TypescriptTypeSource.InProject(OutputContext, templateId, collectionFormat));
+            AddTypeSource(TypescriptTypeSource.InProject(ExecutionContext, templateId, collectionFormat));
         }
 
 

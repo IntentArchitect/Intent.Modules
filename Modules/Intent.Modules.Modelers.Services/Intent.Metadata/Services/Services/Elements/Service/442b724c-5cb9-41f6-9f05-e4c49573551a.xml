@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="442b724c-5cb9-41f6-9f05-e4c49573551a" type="Service">
+<class id="442b724c-5cb9-41f6-9f05-e4c49573551a" type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
   <name>NewService</name>
   <display>NewService</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c4f33203-2c5c-4f32-985c-a5f2b154cdae</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Services</packageName>
   <stereotypes />
   <childElements />
 </class>

@@ -20,7 +20,7 @@ namespace Intent.Modules.Common.CSharp
             _execute = execute;
         }
 
-        public static IClassTypeSource InProject(IOutputContext context, string templateId, string collectionFormat = "IEnumerable<{0}>")
+        public static IClassTypeSource InProject(ITemplateExecutionContext context, string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
             return new CSharpTypeSource((typeInfo, _this) =>
             {
@@ -46,7 +46,7 @@ namespace Intent.Modules.Common.CSharp
             });
         }
 
-        private string GetTypeName(IOutputContext context, string templateId, ITypeReference typeInfo)
+        private string GetTypeName(ITemplateExecutionContext context, string templateId, ITypeReference typeInfo)
         {
             var templateInstance = GetTemplateInstance(context, templateId, typeInfo);
 
@@ -78,7 +78,7 @@ namespace Intent.Modules.Common.CSharp
             return _templateDependencies;
         }
 
-        private IHasClassDetails GetTemplateInstance(IOutputContext context, string templateId, ITypeReference typeInfo)
+        private IHasClassDetails GetTemplateInstance(ITemplateExecutionContext context, string templateId, ITypeReference typeInfo)
         {
             var templateInstance = context.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id, $"Model Id: {typeInfo.Element.Id}"));
             if (templateInstance != null)

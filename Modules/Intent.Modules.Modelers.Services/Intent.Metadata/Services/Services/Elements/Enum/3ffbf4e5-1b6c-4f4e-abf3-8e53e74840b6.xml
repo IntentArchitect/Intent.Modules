@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="3ffbf4e5-1b6c-4f4e-abf3-8e53e74840b6" type="Enum">
+<class id="3ffbf4e5-1b6c-4f4e-abf3-8e53e74840b6" type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb">
   <name>NewEnum</name>
   <display>NewEnum</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Services</packageName>
   <stereotypes />
   <childElements>
-    <childElement id="d0070731-7f67-49b8-a195-5ea706af1631" type="Enum-Literal">
+    <childElement id="d0070731-7f67-49b8-a195-5ea706af1631" type="Enum-Literal" typeId="4215f417-25d2-4509-9309-5076a1452eaa">
       <name>NewEnumLiteral</name>
       <display>NewEnumLiteral = 3</display>
       <isAbstract>false</isAbstract>
@@ -16,6 +18,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>3ffbf4e5-1b6c-4f4e-abf3-8e53e74840b6</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>

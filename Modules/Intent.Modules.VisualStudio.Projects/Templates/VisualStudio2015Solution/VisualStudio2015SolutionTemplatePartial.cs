@@ -34,7 +34,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
         {
             Application = application;
             //_fileMetadata = CreateMetadata();
-            Context = new TemplateContext(new VisualStudio2015SolutionTemplateModel(Application));
+            BindingContext = new TemplateBindingContext(new VisualStudio2015SolutionTemplateModel(Application));
             Projects = projects;
             //ExistingSolution = existingSolution;
             SolutionFolders = Projects.Where(x => x.Folder != null && x.Folder.Id != Application.Id)
@@ -126,10 +126,10 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
                             foreach (var projectName in missingProjects)
                             {
                                 var project = Projects.First(f => f.Name == projectName);
-                                parser.Insert( $"\t\t{{{project.Id.ToString().ToUpper()}}}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n");
-                                parser.Insert( $"\t\t{{{project.Id.ToString().ToUpper()}}}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n");
-                                parser.Insert( $"\t\t{{{project.Id.ToString().ToUpper()}}}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n");
-                                parser.Insert( $"\t\t{{{project.Id.ToString().ToUpper()}}}.Release|Any CPU.Build.0 = Release|Any CPU\r\n");
+                                parser.Insert($"\t\t{{{project.Id.ToString().ToUpper()}}}.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n");
+                                parser.Insert($"\t\t{{{project.Id.ToString().ToUpper()}}}.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n");
+                                parser.Insert($"\t\t{{{project.Id.ToString().ToUpper()}}}.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n");
+                                parser.Insert($"\t\t{{{project.Id.ToString().ToUpper()}}}.Release|Any CPU.Build.0 = Release|Any CPU\r\n");
                             }
                             break;
                         case "GlobalSection(NestedProjects)":
@@ -175,12 +175,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
                 fileLocation: Application.RootLocation);
         }
 
-        public ITemplateContext Context { get; }
+        public ITemplateBindingContext BindingContext { get; }
     }
 
     public class SolutionFolder
     {
-        public Guid Id { get; set;  }
+        public Guid Id { get; set; }
         public string FolderName { get; }
         public List<IVisualStudioProject> AssociatedProjects { get; }
 

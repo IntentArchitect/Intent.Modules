@@ -18,7 +18,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
     {
         public const string IDENTIFIER = "Intent.VisualStudio.Projects.WcfServiceCSProjectFile";
 
-        public WcfServiceCSProjectFileTemplate(IOutputContext project, IVisualStudioProject model)
+        public WcfServiceCSProjectFileTemplate(ITemplateExecutionContext project, IVisualStudioProject model)
             : base(IDENTIFIER, project, model)
         {
         }

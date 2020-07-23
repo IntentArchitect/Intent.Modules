@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="6dc447c6-cd9a-45de-9c5b-82cb77077d2d" type="Service">
+<class id="6dc447c6-cd9a-45de-9c5b-82cb77077d2d" type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
   <name>NewService</name>
   <display>NewService</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Services</packageName>
   <stereotypes />
   <childElements>
-    <childElement id="3dd4d1e7-a64f-4433-b4bc-6694224f7ce6" type="Operation">
+    <childElement id="3dd4d1e7-a64f-4433-b4bc-6694224f7ce6" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
       <name>GetSomeShit</name>
       <display>GetSomeShit(): date</display>
       <isAbstract>false</isAbstract>
@@ -23,10 +25,12 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>6dc447c6-cd9a-45de-9c5b-82cb77077d2d</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="3ae4da8b-f27c-4fc8-ab25-6c43f1856695" type="Operation">
+    <childElement id="3ae4da8b-f27c-4fc8-ab25-6c43f1856695" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
       <name>DoSomething</name>
       <display>DoSomething(): void</display>
       <isAbstract>false</isAbstract>
@@ -40,10 +44,12 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>6dc447c6-cd9a-45de-9c5b-82cb77077d2d</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="bbeb812f-57e8-4276-8f02-f3d6784bd647" type="Operation">
+    <childElement id="bbeb812f-57e8-4276-8f02-f3d6784bd647" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
       <name>TestParams</name>
       <display>TestParams(param: string): bool</display>
       <isAbstract>false</isAbstract>
@@ -58,9 +64,11 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>6dc447c6-cd9a-45de-9c5b-82cb77077d2d</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements>
-        <childElement id="1979068f-3d35-4d93-9838-580c90727bff" type="Parameter">
+        <childElement id="1979068f-3d35-4d93-9838-580c90727bff" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
           <name>param</name>
           <display>in : param: string</display>
           <isAbstract>false</isAbstract>
@@ -75,6 +83,8 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>bbeb812f-57e8-4276-8f02-f3d6784bd647</parentFolderId>
+          <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+          <packageName>Services</packageName>
           <stereotypes />
           <childElements />
         </childElement>

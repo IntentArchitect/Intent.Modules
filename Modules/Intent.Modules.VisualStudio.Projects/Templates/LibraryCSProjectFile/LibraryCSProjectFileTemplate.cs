@@ -18,7 +18,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
     {
         public const string IDENTIFIER = "Intent.VisualStudio.Projects.LibraryCSProjectFile";
 
-        public LibraryCSProjectFileTemplate(IOutputContext project, IVisualStudioProject model)
+        public LibraryCSProjectFileTemplate(ITemplateExecutionContext project, IVisualStudioProject model)
             : base (IDENTIFIER, project, model)
         {
         }

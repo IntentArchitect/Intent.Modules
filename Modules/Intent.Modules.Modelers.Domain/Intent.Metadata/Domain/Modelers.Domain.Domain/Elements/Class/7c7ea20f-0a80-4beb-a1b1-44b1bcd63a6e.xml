@@ -6,13 +6,19 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
+  <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+  <packageName>Modelers.Domain.Domain</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="c9afb965-bd6d-4bc6-bacf-1a91c5d6314f" name="Stereotype">
       <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
+      <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
       <properties />
     </stereotype>
     <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
       <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
+      <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
       <properties />
     </stereotype>
   </stereotypes>
@@ -27,14 +33,20 @@
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
+        <typePackageName>Modelers.Domain.Domain</typePackageName>
+        <typePackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>7c7ea20f-0a80-4beb-a1b1-44b1bcd63a6e</parentFolderId>
+      <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+      <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
           <addedByDefault>false</addedByDefault>
+          <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
+          <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
           <properties />
         </stereotype>
       </stereotypes>
@@ -54,6 +66,8 @@
       </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>7c7ea20f-0a80-4beb-a1b1-44b1bcd63a6e</parentFolderId>
+      <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+      <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
       <childElements />
     </childElement>

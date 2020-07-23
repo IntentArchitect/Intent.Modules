@@ -8,6 +8,8 @@
       <isNavigable>true</isNavigable>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
+      <typePackageName>Domain</typePackageName>
+      <typePackageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</typePackageId>
       <stereotypes />
       <genericTypeParameters />
     </typeReference>
@@ -21,11 +23,14 @@
       <isNavigable>true</isNavigable>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
+      <typePackageName>Domain</typePackageName>
+      <typePackageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</typePackageId>
       <stereotypes />
       <genericTypeParameters />
     </typeReference>
     <stereotypes />
   </targetEnd>
   <associationType>Association</associationType>
+  <associationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</associationTypeId>
   <stereotypes />
 </association>

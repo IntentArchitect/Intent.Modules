@@ -20,7 +20,7 @@ namespace Intent.Modules.Common.TypeScript
             _execute = execute;
         }
 
-        public static IClassTypeSource InProject(IOutputContext outputContext, string templateId, string collectionFormat = "{0}[]")
+        public static IClassTypeSource InProject(ITemplateExecutionContext outputContext, string templateId, string collectionFormat = "{0}[]")
         {
             return new TypescriptTypeSource((_this, typeInfo) =>
             {
@@ -56,7 +56,7 @@ namespace Intent.Modules.Common.TypeScript
             return _templateDependencies;
         }
 
-        private IHasClassDetails GetTemplateInstance(IOutputContext outputContext, string templateId, ITypeReference typeInfo)
+        private IHasClassDetails GetTemplateInstance(ITemplateExecutionContext outputContext, string templateId, ITypeReference typeInfo)
         {
             var templateInstance = outputContext.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(templateId, typeInfo.Element));
             if (templateInstance != null)
@@ -78,7 +78,7 @@ namespace Intent.Modules.Common.TypeScript
             return templateInstance;
         }
 
-        private string GetTypeName(IOutputContext outputContext, string templateId, ITypeReference typeInfo)
+        private string GetTypeName(ITemplateExecutionContext outputContext, string templateId, ITypeReference typeInfo)
         {
             var templateInstance = GetTemplateInstance(outputContext, templateId, typeInfo);
 

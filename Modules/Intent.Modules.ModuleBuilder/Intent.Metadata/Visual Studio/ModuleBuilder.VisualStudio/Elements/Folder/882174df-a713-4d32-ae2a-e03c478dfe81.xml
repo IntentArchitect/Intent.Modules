@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="882174df-a713-4d32-ae2a-e03c478dfe81" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Templates</name>
+  <display>Templates</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+  <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+  <packageName>ModuleBuilder.VisualStudio</packageName>
+  <stereotypes />
+  <childElements />
+</class>

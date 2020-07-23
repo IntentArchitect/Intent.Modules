@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7" type="DTO">
+<class id="8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
   <name>NewDTO</name>
   <display>NewDTO</display>
   <isAbstract>false</isAbstract>
@@ -13,9 +13,11 @@
     </mappedPath>
   </mappedClass>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Services</packageName>
   <stereotypes />
   <childElements>
-    <childElement id="9ae50aa5-c718-4be9-bac7-143eb040821e" type="DTO-Field">
+    <childElement id="9ae50aa5-c718-4be9-bac7-143eb040821e" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>Characters</name>
       <display>Characters: CharacterDTO?[*]</display>
       <isAbstract>false</isAbstract>
@@ -35,6 +37,8 @@
         </mappedPath>
       </mappedClass>
       <parentFolderId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
