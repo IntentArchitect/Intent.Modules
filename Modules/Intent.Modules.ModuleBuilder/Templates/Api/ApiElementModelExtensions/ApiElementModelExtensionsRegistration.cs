@@ -39,7 +39,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             _stereotypeDefinitions = _metadataManager.ModuleBuilder(application).StereotypeDefinitions
                 .Where(x => x.TargetMode == StereotypeTargetMode.ElementsOfType);
             var targetTypes = _stereotypeDefinitions.SelectMany(x => x.TargetElements).Distinct();
-            return targetTypes.Select(x => new ExtensionModel(new ExtensionModelType(x.Name), _stereotypeDefinitions.Where(s => s.TargetElements.Any(t => t.Id.Equals(x.Id, StringComparison.InvariantCultureIgnoreCase))).ToList()));
+            return targetTypes.Select(x => new ExtensionModel(new ExtensionModelType(x), _stereotypeDefinitions.Where(s => s.TargetElements.Any(t => t.Id.Equals(x.Id, StringComparison.InvariantCultureIgnoreCase))).ToList()));
         }
     }
 }

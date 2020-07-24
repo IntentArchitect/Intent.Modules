@@ -18,6 +18,7 @@ namespace Intent.Modules.ModuleBuilder.Api
     public class AssociationSettingsModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Association Settings";
+        public const string SpecializationTypeId = "16d21684-d5ea-4fde-b648-f88d292fa272";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Ignore)]
@@ -29,6 +30,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             }
             _element = element;
         }
+
+
+        [IntentManaged(Mode.Ignore)]
+        public IntentModuleModel ParentModule => new IntentModuleModel(_element.Package);
 
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
@@ -131,6 +136,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == AssociationVisualSettingsModel.SpecializationType)
             .Select(x => new AssociationVisualSettingsModel(x))
             .SingleOrDefault();
-        public const string SpecializationTypeId = "16d21684-d5ea-4fde-b648-f88d292fa272";
+
     }
 }

@@ -27,7 +27,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public override IList<ClassModel> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetClassModels(application).ToList();
+            return _metadataManager.Domain(application).GetClassModels().ToList();
         }
     }
 }

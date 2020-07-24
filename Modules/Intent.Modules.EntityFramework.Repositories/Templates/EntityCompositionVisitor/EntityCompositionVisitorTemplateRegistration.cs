@@ -34,7 +34,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
 
         public override IList<ClassModel> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetClassModels(application).ToList();
+            return _metadataManager.Domain(application).GetClassModels().ToList();
         }
     }
 }

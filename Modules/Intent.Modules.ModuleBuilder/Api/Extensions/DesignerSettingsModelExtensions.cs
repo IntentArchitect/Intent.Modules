@@ -38,21 +38,6 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Is Reference");
             }
 
-            public string APINamespace()
-            {
-                return _stereotype.GetProperty<string>("API Namespace");
-            }
-
-            public string NuGetPackageId()
-            {
-                return _stereotype.GetProperty<string>("NuGet Package Id");
-            }
-
-            public string NuGetPackageVersion()
-            {
-                return _stereotype.GetProperty<string>("NuGet Package Version");
-            }
-
             public IElement[] ExtendDesigners()
             {
                 return _stereotype.GetProperty<IElement[]>("Extend Designers");

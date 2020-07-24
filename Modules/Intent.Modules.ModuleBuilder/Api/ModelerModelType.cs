@@ -25,6 +25,8 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         public string Id => _element.Id;
         public string ClassName => $"{_element.Name.ToCSharpIdentifier()}Model";
+
+        public IntentModuleModel ParentModule => new IntentModuleModel(_element.Package);
         public DesignerSettingsModel DesignerSettings => DesignerModelFactory.GetDesignerSettings(forElement: this._element);
     }
 }

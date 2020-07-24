@@ -5,7 +5,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Services
+namespace Intent.Modelers.Services.Api
 {
     public static class ApiMetadataDesignerExtensions
     {

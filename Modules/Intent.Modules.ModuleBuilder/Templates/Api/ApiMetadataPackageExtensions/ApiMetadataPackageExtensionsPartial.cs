@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
@@ -35,7 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataPackageExtension
                 fileExtension: "cs",
                 defaultLocationInProject: "",
                 className: "ApiMetadataPackageExtensions",
-                @namespace: "${Project.Name}"
+                @namespace: Model.First().ParentModule.ApiNamespace
             );
         }
 

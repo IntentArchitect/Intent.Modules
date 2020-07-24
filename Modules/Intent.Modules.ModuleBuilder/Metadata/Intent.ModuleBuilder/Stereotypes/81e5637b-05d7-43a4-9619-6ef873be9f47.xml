@@ -25,40 +25,6 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="c141a969-5a1a-49b8-8935-9d235ab0d835">
-      <name>API Namespace</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isActiveFunction>return !properties["Is Reference"].value</isActiveFunction>
-      <isRequiredFunction>true</isRequiredFunction>
-    </property>
-    <property id="6f3c57c5-c50d-46bb-b690-2cf081ceb0b3">
-      <name>NuGet Package Id</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(optional)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <isActiveFunction>return !properties["Is Reference"].value</isActiveFunction>
-      <isRequiredFunction />
-    </property>
-    <property id="e0c92be7-3836-4bf6-bc89-9dca2ac28c6d">
-      <name>NuGet Package Version</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(optional)</placeholder>
-      <defaultValue />
-      <valueOptions />
-      <lookupTypes />
-      <isActiveFunction>return !properties["Is Reference"].value</isActiveFunction>
-      <isRequiredFunction />
-    </property>
     <property id="fdbbd211-a162-4f29-bcdb-1250309d8aef">
       <name>Extend Designers</name>
       <type>string</type>

@@ -40,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
                 fileExtension: "cs",
                 defaultLocationInProject: "Api",
                 className: $"{Model.ApiModelName}",
-                @namespace: Model.Designer.ApiNamespace
+                @namespace: Model.ParentModule.ApiNamespace
             );
         }
 

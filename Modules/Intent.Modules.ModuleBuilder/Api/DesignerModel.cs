@@ -25,6 +25,9 @@ namespace Intent.Modules.ModuleBuilder.Api
             _element = element;
         }
 
+        [IntentManaged(Mode.Ignore)]
+        public IntentModuleModel ParentModule => new IntentModuleModel(_element.Package);
+
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
 

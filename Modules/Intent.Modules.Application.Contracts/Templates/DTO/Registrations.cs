@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modelers.Services;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
@@ -16,9 +15,9 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
     [Description(DTOTemplate.IDENTIFIER)]
     public class Registrations : ModelTemplateRegistrationBase<DTOModel>
     {
-        private readonly ApiMetadataProvider _metadataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public Registrations(ApiMetadataProvider metadataManager)
+        public Registrations(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
 
@@ -33,7 +32,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public override IEnumerable<DTOModel> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetDTOModels(application);
+            return _metadataManager.Services(application).GetDTOModels();
         }
     }
 }

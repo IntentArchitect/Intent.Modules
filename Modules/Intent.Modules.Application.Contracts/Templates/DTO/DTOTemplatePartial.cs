@@ -9,6 +9,7 @@ using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.Plugins;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 
@@ -84,7 +85,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         private IEnumerable<string> GetNamespaceParts()
         {
             return Model
-                .GetFolderPath(includePackage: false)
+                .GetFolderPath()
                 .Select(x => x.GetStereotypeProperty<string>(StandardStereotypes.NamespaceProvider, "Namespace") ?? x.Name)
                 .Where(x => !string.IsNullOrWhiteSpace(x));
         }

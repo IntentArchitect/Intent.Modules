@@ -42,7 +42,7 @@ using Intent.Templates;
 ");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture((Model.GetDesignerSettings() != null ? string.Format("using {0};", Model.GetDesignerSettings().ApiNamespace) : "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("using {0};", Model.GetModule().ApiNamespace)));
             
             #line default
             #line hidden

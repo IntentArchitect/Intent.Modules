@@ -11,9 +11,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
     [Description(MappingTemplate.Identifier)]
     public class MappingTemplateRegistrations : ModelTemplateRegistrationBase<DTOModel>
     {
-        private readonly ApiMetadataProvider _metadataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public MappingTemplateRegistrations(ApiMetadataProvider metadataManager)
+        public MappingTemplateRegistrations(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
 
@@ -29,7 +29,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 
         public override IEnumerable<DTOModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetDTOModels(application);
+            return _metadataManager.Services(application).GetDTOModels();
         }
     }
 }

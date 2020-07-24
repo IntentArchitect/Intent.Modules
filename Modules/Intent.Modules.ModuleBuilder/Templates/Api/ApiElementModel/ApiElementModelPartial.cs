@@ -43,7 +43,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
                 fileExtension: "cs",
                 defaultLocationInProject: "Api",
                 className: $"{Model.ApiModelName}",
-                @namespace: Model.Designer.ApiNamespace
+                @namespace: Model.ParentModule.ApiNamespace
             );
         }
 
@@ -51,7 +51,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             ? GetTemplateClassName(TemplateId, Model.GetInheritedType().Id, throwIfNotFound: false)
                 ?? $"{Model.GetInheritedType().Name.ToCSharpIdentifier()}Model"
             : null;
-
 
         private string FormatForCollection(string name, bool asCollection)
         {

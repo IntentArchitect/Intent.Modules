@@ -27,7 +27,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
         public override IEnumerable<ClassModel> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetClassModels(application).ToList();
+            return _metadataManager.Domain(application).GetClassModels().ToList();
         }
     }
 }

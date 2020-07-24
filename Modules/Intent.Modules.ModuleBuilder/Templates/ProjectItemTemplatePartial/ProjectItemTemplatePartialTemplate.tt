@@ -14,7 +14,7 @@ using Intent.Modules.Common.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-<#=(Model.GetDesignerSettings() != null ? string.Format("using {0};", Model.GetDesignerSettings().ApiNamespace) : "")#>
+<#=string.Format("using {0};", Model.GetModule().ApiNamespace)#>
 <#=DependencyUsings#>
 [assembly: DefaultIntentManaged(Mode.Merge)]
 

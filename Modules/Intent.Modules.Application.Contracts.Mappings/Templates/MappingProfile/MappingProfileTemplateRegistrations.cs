@@ -14,9 +14,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
     [Description("Intent Applications Contract Mapping Profile Template")]
     public class MappingProfileTemplateRegistrations : ListModelTemplateRegistrationBase<DTOModel>
     {
-        private readonly ApiMetadataProvider _metadataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public MappingProfileTemplateRegistrations(ApiMetadataProvider metadataManager)
+        public MappingProfileTemplateRegistrations(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
 
@@ -32,7 +32,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 
         public override IList<DTOModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetDTOModels(application).ToList();
+            return _metadataManager.Services(application).GetDTOModels().ToList();
         }
     }
 }

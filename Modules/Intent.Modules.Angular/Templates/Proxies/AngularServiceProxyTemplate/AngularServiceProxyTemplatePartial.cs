@@ -33,7 +33,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         public AngularServiceProxyTemplate(IProject project, ServiceProxyModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
         {
-            AddTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.AngularDTOTemplate.TemplateId));
+            AddTypeSource(TypescriptTypeSource.InProject(ExecutionContext, AngularDTOTemplate.AngularDTOTemplate.TemplateId));
         }
 
         public string ApiServiceClassName => GetTemplateClassName(ApiServiceTemplate.TemplateId);
@@ -46,7 +46,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             }
 
             // New Proxy:
-            Project.Application.EventDispatcher.Publish(AngularServiceProxyCreatedEvent.EventId,
+            ExecutionContext.Application.EventDispatcher.Publish(AngularServiceProxyCreatedEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularServiceProxyCreatedEvent.ModuleId, Model.Module.Id },

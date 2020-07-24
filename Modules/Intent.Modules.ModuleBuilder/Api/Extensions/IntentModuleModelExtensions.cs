@@ -10,28 +10,43 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class IntentModuleModelExtensions
     {
-        public static PackageSettings GetPackageSettings(this IntentModuleModel model)
+        public static ModuleSettings GetModuleSettings(this IntentModuleModel model)
         {
-            var stereotype = model.GetStereotype("Package Settings");
-            return stereotype != null ? new PackageSettings(stereotype) : null;
+            var stereotype = model.GetStereotype("Module Settings");
+            return stereotype != null ? new ModuleSettings(stereotype) : null;
         }
 
-        public static bool HasPackageSettings(this IntentModuleModel model)
+        public static bool HasModuleSettings(this IntentModuleModel model)
         {
-            return model.HasStereotype("Package Settings");
+            return model.HasStereotype("Module Settings");
         }
 
 
-        public class PackageSettings
+        public class ModuleSettings
         {
             private IStereotype _stereotype;
 
-            public PackageSettings(IStereotype stereotype)
+            public ModuleSettings(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }
 
             public string Name => _stereotype.Name;
+
+            public string APINamespace()
+            {
+                return _stereotype.GetProperty<string>("API Namespace");
+            }
+
+            public string NuGetPackageId()
+            {
+                return _stereotype.GetProperty<string>("NuGet Package Id");
+            }
+
+            public string NuGetPackageVersion()
+            {
+                return _stereotype.GetProperty<string>("NuGet Package Version");
+            }
 
             public bool IncludeInModule()
             {

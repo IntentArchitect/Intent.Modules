@@ -27,7 +27,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 
         public AngularDTOTemplate(IProject project, ModuleDTOModel model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
         {
-            AddTypeSource(TypescriptTypeSource.InProject(Project, TemplateId));
+            AddTypeSource(TypescriptTypeSource.InProject(ExecutionContext, TemplateId));
         }
 
         public string GenericTypes => Model.GenericTypes.Any() ? $"<{ string.Join(", ", Model.GenericTypes) }>" : "";

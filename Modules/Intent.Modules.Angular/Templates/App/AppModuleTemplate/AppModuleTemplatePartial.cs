@@ -65,7 +65,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
                 new NugetPackageInfo("Microsoft.TypeScript.MsBuild", "3.5.3")
             };
 
-            if (Project.IsNetCore3App())
+            if (OutputTarget.IsNetCore3App())
             {
                 packages.Add(new NugetPackageInfo("Microsoft.AspNetCore.SpaServices.Extensions", "3.1.4"));
             }

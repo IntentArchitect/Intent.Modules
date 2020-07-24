@@ -14,9 +14,9 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
     [Description(ServiceContractTemplate.IDENTIFIER)]
     public class ServiceContractTemplateRegistrations : ModelTemplateRegistrationBase<ServiceModel>
     {
-        private readonly ApiMetadataProvider _metadataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public ServiceContractTemplateRegistrations(ApiMetadataProvider metadataManager)
+        public ServiceContractTemplateRegistrations(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
@@ -30,7 +30,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 
         public override IEnumerable<ServiceModel> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetServiceModels(application);
+            return _metadataManager.Services(application).GetServiceModels();
         }
     }
 }

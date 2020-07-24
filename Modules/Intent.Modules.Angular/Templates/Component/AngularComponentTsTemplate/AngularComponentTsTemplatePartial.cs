@@ -47,7 +47,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 
         public override void BeforeTemplateExecution()
         {
-            Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.TemplateId, "{0}[]"));
+            Types.AddClassTypeSource(TypescriptTypeSource.InProject(ExecutionContext, AngularDTOTemplate.TemplateId, "{0}[]"));
 
             if (File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
             {
@@ -55,7 +55,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             }
 
             // New Component:
-            Project.Application.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
+            ExecutionContext.Application.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularComponentCreatedEvent.ModuleId, Model.Module.Id },
@@ -96,7 +96,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            var moduleTemplate = Project.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
+            var moduleTemplate = ExecutionContext.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,

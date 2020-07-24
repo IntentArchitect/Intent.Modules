@@ -31,7 +31,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 
         public override IEnumerable<ClassModel> GetModels(Engine.IApplication application)
         {
-            return _metadataManager.GetClassModels(application);
+            return _metadataManager.Domain(application).GetClassModels();
         }
     }
 }

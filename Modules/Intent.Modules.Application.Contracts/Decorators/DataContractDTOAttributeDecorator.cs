@@ -6,6 +6,7 @@ using Intent.Templates;
 using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 
 namespace Intent.Modules.Application.Contracts.Decorators
 {

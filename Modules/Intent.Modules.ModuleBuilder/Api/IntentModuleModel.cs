@@ -30,5 +30,18 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string Id => UnderlyingPackage.Id;
         public string Name => UnderlyingPackage.Name;
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
+        public string FileLocation => UnderlyingPackage.FileLocation;
+
+        [IntentManaged(Mode.Ignore)]
+        public string ApiNamespace => this.GetModuleSettings().APINamespace();
+
+        [IntentManaged(Mode.Ignore)]
+        public string NuGetPackageId => this.GetModuleSettings().NuGetPackageId();
+
+        [IntentManaged(Mode.Ignore)]
+        public string NuGetPackageVersion => this.GetModuleSettings().NuGetPackageVersion();
+
+        [IntentManaged(Mode.Ignore)]
+        public string Version => "Specify Version";
     }
 }

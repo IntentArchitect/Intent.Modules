@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -37,7 +39,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
                 fileExtension: "cs",
                 defaultLocationInProject: "Api/Extensions",
                 className: $"{Model.Type.ApiClassName}Extensions",
-                @namespace: "${Project.Name}.Api" // Not robust. Stereotypes should reference the ID of their targets as well as the name
+                @namespace: new IntentModuleModel(Model.StereotypeDefinitions.First().Package).ApiNamespace
             );
         }
 
@@ -66,12 +68,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 
     public class ExtensionModelType
     {
-        public string Name { get; }
+        private readonly IElement _element;
+        public string Name => _element.Name;
+        public string ApiNamespace => new IntentModuleModel(_element.Package).GetModuleSettings().APINamespace();
         public string ApiClassName => $"{Name.ToCSharpIdentifier()}Model";
 
-        public ExtensionModelType(string name)
+        public ExtensionModelType(IElement element)
         {
-            Name = name;
+            _element = element;
         }
     }
 }

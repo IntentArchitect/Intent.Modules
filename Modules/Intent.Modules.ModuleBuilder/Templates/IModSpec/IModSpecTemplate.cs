@@ -216,8 +216,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 existing.SetAttributeValue("externalReference", metadataRegistration.Id);
             }
 
-            var packagesToInclude = _metadataManager.GetMetadata<IPackage>("Module Builder", ExecutionContext.Application.Id)
-                .Where(x => x.GetStereotypeProperty("Package Settings", "Include in Module", false))
+            var packagesToInclude = _metadataManager.ModuleBuilder(ExecutionContext.Application).GetIntentModuleModels()
+                .Where(x => x.GetModuleSettings().IncludeInModule())
                 .ToList();
             foreach (var package in packagesToInclude)
             {
@@ -229,7 +229,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     metadataRegistrations.Add(existing);
                 }
 
-                var targets = package.GetStereotypeProperty<IElement[]>("Package Settings", "Reference in Designer");
+                var targets = package.GetModuleSettings().ReferenceInDesigner();
                 existing.SetAttributeValue("target", targets.Any()
                     ? string.Join(";", targets.Select(x => x.Name))
                     : null);

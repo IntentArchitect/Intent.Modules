@@ -46,6 +46,12 @@ namespace Intent.Modules.ModuleBuilder.Api
             return GetModelType()?.DesignerSettings;
         }
 
+        [IntentManaged(Mode.Ignore)]
+        public IntentModuleModel GetModule()
+        {
+            return new IntentModuleModel(_element.Package);
+        }
+
         public DesignerModel GetDesigner()
         {
             return this.GetTemplateSettings()?.Designer();

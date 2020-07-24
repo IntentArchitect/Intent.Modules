@@ -32,7 +32,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override IEnumerable<DTOModel> GetModels(Engine.IApplication application)
         {
-            var dtoModels = _metadataManager.GetDTOModels(application);
+            var dtoModels = _metadataManager.Services(application).GetDTOModels();
 
             // TODO JL: Temp, filter out ones for server only, will ultimately get replaced with concept of client applications in the future
             dtoModels = dtoModels.Where(x => x.Stereotypes.All(s => s.Name != "ServerOnly") && !FolderOrParentFolderHasStereoType(x.Folder, "ServerOnly")).ToList();

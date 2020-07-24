@@ -36,7 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
                 fileExtension: "cs",
                 defaultLocationInProject: "",
                 className: "ApiMetadataProviderExtensions",
-                @namespace: Model.First().Designer.ApiNamespace // Dirty. Maybe need an Metadata Provider per Designer
+                @namespace: Model.First().ParentModule.ApiNamespace
             );
         }
 

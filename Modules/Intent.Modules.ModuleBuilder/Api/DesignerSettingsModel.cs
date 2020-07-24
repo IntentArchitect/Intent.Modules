@@ -65,12 +65,6 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Select(x => new ElementSettingsModel(x))
             .ToList();
 
-        public string ApiNamespace => this.GetDesignerSettings().APINamespace();
-        public string ModuleDependency => null;
-        public string ModuleVersion => null;
-        public string NuGetDependency => this.GetDesignerSettings().NuGetPackageId();
-        public string NuGetVersion => this.GetDesignerSettings().NuGetPackageVersion();
-
         [IntentManaged(Mode.Fully)]
         public bool Equals(DesignerSettingsModel other)
         {

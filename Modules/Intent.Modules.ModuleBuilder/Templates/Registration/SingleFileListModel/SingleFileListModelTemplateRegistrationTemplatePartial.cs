@@ -17,10 +17,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
 
         public SingleFileListModelTemplateRegistrationTemplate(IProject project, TemplateRegistrationModel model) : base(TemplateId, project, model)
         {
-            if (!string.IsNullOrWhiteSpace(Model.GetDesignerSettings()?.GetDesignerSettings().NuGetPackageId()) &&
-                !string.IsNullOrWhiteSpace(Model.GetDesignerSettings()?.GetDesignerSettings().NuGetPackageVersion()))
+            if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId) &&
+                !string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageVersion))
             {
-                AddNugetDependency(packageName: Model.GetDesignerSettings().GetDesignerSettings().NuGetPackageId(), packageVersion: Model.GetDesignerSettings().GetDesignerSettings().NuGetPackageVersion());
+                AddNugetDependency(packageName: Model.GetModule().NuGetPackageId, packageVersion: Model.GetModule().NuGetPackageVersion);
             }
         }
 

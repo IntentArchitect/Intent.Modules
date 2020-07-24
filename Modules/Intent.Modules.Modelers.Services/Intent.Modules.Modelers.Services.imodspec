@@ -17,7 +17,7 @@
   <metadata>
     <install src="modelers/Services Types.designer.settings" externalReference="55e213e3-1e43-4bb5-abe6-6ff77af23f39" />
     <install src="modelers/Services.designer.config" externalReference="81104ae6-2bc5-4bae-b05a-f987b0372d81" />
-    <install src="Intent.Modelers.Services/Intent.Modelers.Services.pkg.config" externalReference="4ba53041-59f9-4446-a207-6da4fbdf86fe" />
+    <install src="Intent.Modelers.Services/Intent.Modelers.Services.pkg.config" externalReference="4ba53041-59f9-4446-a207-6da4fbdf86fe" target="Services" />
   </metadata>
   <files></files>
 </package>

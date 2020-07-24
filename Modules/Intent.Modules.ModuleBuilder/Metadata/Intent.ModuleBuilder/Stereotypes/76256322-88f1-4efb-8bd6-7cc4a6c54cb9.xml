@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="76256322-88f1-4efb-8bd6-7cc4a6c54cb9">
-  <name>Package Settings</name>
+  <name>Module Settings</name>
   <targetMode>of-type</targetMode>
   <targetElements>
     <element id="73cf6531-f699-479d-b2b8-92da159ada37">Package</element>
@@ -16,6 +16,40 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
+    <property id="177a2415-e749-46e7-8257-440e19ecfb5e">
+      <name>API Namespace</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+    <property id="0d2ae582-090e-42d6-a7d6-689144433254">
+      <name>NuGet Package Id</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(optional)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction />
+      <isRequiredFunction />
+    </property>
+    <property id="27cf6544-a9a2-4992-9fef-51d0ed49e66e">
+      <name>NuGet Package Version</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(optional)</placeholder>
+      <defaultValue />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction />
+      <isRequiredFunction />
+    </property>
     <property id="d40394fc-ed23-45a0-9c56-cbcf1c928e47">
       <name>Include in Module</name>
       <type>string</type>

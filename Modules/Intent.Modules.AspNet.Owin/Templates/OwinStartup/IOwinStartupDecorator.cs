@@ -1,5 +1,6 @@
 using Intent.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 {
@@ -8,5 +9,4 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
         IEnumerable<string> Configuration();
         IEnumerable<string> Methods();
     }
-
 }

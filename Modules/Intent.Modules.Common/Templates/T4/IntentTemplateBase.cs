@@ -33,12 +33,14 @@ namespace Intent.Modules.Common.Templates
         protected IntentTemplateBase(string templateId, ITemplateExecutionContext executionContext)
         {
             ExecutionContext = executionContext;
+            OutputTarget = executionContext;
             Id = templateId;
             BindingContext = new TemplateBindingContext(this);
         }
 
         public string Id { get; }
         public ITemplateExecutionContext ExecutionContext { get; }
+        public IOutputTarget OutputTarget { get; }
         public ITemplateBindingContext BindingContext { get; }
         public IFileMetadata FileMetadata { get; private set; }
 

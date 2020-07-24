@@ -64,7 +64,7 @@ namespace Intent.Modules.Angular
                 { InitializationRequiredEvent.CallKey, $@"InitializeAngularSpa(app, env);" },
                 { InitializationRequiredEvent.MethodKey, $@"
         //[IntentManaged(Mode.Ignore)] // Uncomment to take control of this method.
-        private void InitializeAngularSpa(IApplicationBuilder app, { (GetWebCoreProject(application).IsNetCore2App() ? "IHostingEnvironment" : "IWebHostEnvironment") } env)
+        private void InitializeAngularSpa(IApplicationBuilder app, { (GetAngularOutputTarget(application).IsNetCore2App() ? "IHostingEnvironment" : "IWebHostEnvironment") } env)
         {{
             app.UseSpa(spa =>
             {{
@@ -84,13 +84,13 @@ namespace Intent.Modules.Angular
 
         public bool AngularInstalled(IApplication application)
         {
-            var project = GetWebCoreProject(application);
-            return project != null && File.Exists(Path.Combine(project.ProjectLocation, "ClientApp", "angular.json"));
+            var project = GetAngularOutputTarget(application);
+            return project != null && File.Exists(Path.Combine(project.Location, "ClientApp", "angular.json"));
         }
 
         public void RunAngularCli(IApplication application)
         {
-            var project = GetWebCoreProject(application);
+            var project = GetAngularOutputTarget(application);
             if (project == null)
             {
                 Logging.Log.Failure("Could not find project to install Angular application.");
@@ -101,14 +101,14 @@ namespace Intent.Modules.Angular
 
             WindowsCommandLineProcessor cmd = new WindowsCommandLineProcessor();
 
-            if (!Directory.Exists(Path.GetFullPath(project.ProjectLocation)))
+            if (!Directory.Exists(Path.GetFullPath(project.Location)))
             {
-                Directory.CreateDirectory(Path.GetFullPath(project.ProjectLocation));
+                Directory.CreateDirectory(Path.GetFullPath(project.Location));
             }
             var command = $@"ng new {application.Name} --directory ClientApp --minimal --defaults --skipGit=true --force=true";
             try
             {
-                var output = cmd.ExecuteCommand(Path.GetFullPath(project.ProjectLocation),
+                var output = cmd.ExecuteCommand(Path.GetFullPath(project.Location),
                     new[]
                     {
                         command,
@@ -123,12 +123,11 @@ To check that you have the npm client installed, run npm -v in a terminal/consol
 To install the CLI using npm, open a terminal/console window and enter the following command: npm install -g @angular/cli.");
                 Logging.Log.Failure(e);
             }
-
         }
 
-        private IProject GetWebCoreProject(IApplication application)
+        private IOutputTarget GetAngularOutputTarget(IApplication application)
         {
-            return application.Projects.FirstOrDefault(x => x.HasRole("Angular"));
+            return application.OutputTargets.SingleOrDefault(x => x.HasRole("Angular"));
         }
     }
 }

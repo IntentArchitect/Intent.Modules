@@ -29,9 +29,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
             return new ServiceCallHandlerImplementationTemplate(project, service, operationModel);
         }
 
-        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication applicationManager)
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var serviceModels = _metadataManager.GetServiceModels(applicationManager);
+            var serviceModels = _metadataManager.Services(application).GetServiceModels();
             foreach (var serviceModel in serviceModels)
             {
                 foreach (var operationModel in serviceModel.Operations)

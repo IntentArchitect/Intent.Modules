@@ -98,6 +98,9 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == PackageEventSettingsModel.SpecializationType)
             .Select(x => new PackageEventSettingsModel(x))
             .ToList();
+
+        public IntentModuleModel ParentModule => new IntentModuleModel(_element.Package);
+
         public const string SpecializationTypeId = "89333f72-3960-4159-bf61-9c40d4b65088";
 
 

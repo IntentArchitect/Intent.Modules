@@ -83,6 +83,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
         public string Id => UnderlyingPackage.Id;
         public string Name => UnderlyingPackage.Name;
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
+        public string FileLocation => UnderlyingPackage.FileLocation;
     }
 }");
             return this.GenerationEnvironment.ToString();

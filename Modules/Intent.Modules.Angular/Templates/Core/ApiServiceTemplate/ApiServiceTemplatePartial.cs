@@ -28,7 +28,7 @@ namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(AngularConfigVariableRequiredEvent.EventId,
+            ExecutionContext.Application.EventDispatcher.Publish(AngularConfigVariableRequiredEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularConfigVariableRequiredEvent.VariableId, "api_url" },

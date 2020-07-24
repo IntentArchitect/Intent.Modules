@@ -12,9 +12,9 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
     [Description(ServiceImplementationTemplate.Identifier)]
     public class ServiceImplementationTemplateRegistrations : ModelTemplateRegistrationBase<ServiceModel>
     {
-        private readonly ApiMetadataProvider _metadataManager;
+        private readonly IMetadataManager _metadataManager;
 
-        public ServiceImplementationTemplateRegistrations(ApiMetadataProvider metadataManager)
+        public ServiceImplementationTemplateRegistrations(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
@@ -28,7 +28,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         public override IEnumerable<ServiceModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetServiceModels(application);
+            return _metadataManager.Services(application).GetServiceModels();
         }
     }
 }
