@@ -11,7 +11,7 @@ namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentTemplateBase<TModel> : IntentTemplateBase, ITemplateWithModel
     {
-        protected IntentTemplateBase(string templateId, ITemplateExecutionContext executionContext, TModel model) : base(templateId, executionContext)
+        protected IntentTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget)
         {
             Model = model;
         }
@@ -30,16 +30,16 @@ namespace Intent.Modules.Common.Templates
     {
         protected readonly ICollection<ITemplateDependency> DetectedDependencies = new List<ITemplateDependency>();
 
-        protected IntentTemplateBase(string templateId, ITemplateExecutionContext executionContext)
+        protected IntentTemplateBase(string templateId, IOutputTarget outputTarget)
         {
-            ExecutionContext = executionContext;
-            OutputTarget = executionContext;
+            ExecutionContext = outputTarget.ExecutionContext;
+            OutputTarget = outputTarget;
             Id = templateId;
             BindingContext = new TemplateBindingContext(this);
         }
 
         public string Id { get; }
-        public ITemplateExecutionContext ExecutionContext { get; }
+        public ISoftwareFactoryExecutionContext ExecutionContext { get; }
         public IOutputTarget OutputTarget { get; }
         public ITemplateBindingContext BindingContext { get; }
         public IFileMetadata FileMetadata { get; private set; }
@@ -81,7 +81,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         private string _defaultTypeCollectionFormat;
-        private readonly ICollection<IClassTypeSource> _typeSources = new List<IClassTypeSource>();
+        private readonly ICollection<ITypeSource> _typeSources = new List<ITypeSource>();
 
         public void SetDefaultTypeCollectionFormat(string collectionFormat)
         {
@@ -92,12 +92,12 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        public void AddTypeSource(IClassTypeSource classTypeSource)
+        public void AddTypeSource(ITypeSource typeSource)
         {
-            _typeSources.Add(classTypeSource);
+            _typeSources.Add(typeSource);
             if (_onCreatedHasHappened)
             {
-                Types.AddClassTypeSource(classTypeSource);
+                Types.AddClassTypeSource(typeSource);
             }
         }
 
@@ -209,7 +209,7 @@ namespace Intent.Modules.Common.Templates
                 throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
             }
 
-            var template = ExecutionContext.Application.FindTemplateInstance<TTemplate>(dependency);
+            var template = ExecutionContext.FindTemplateInstance<TTemplate>(dependency);
             if (template != null)
             {
                 DetectedDependencies.Add(dependency);

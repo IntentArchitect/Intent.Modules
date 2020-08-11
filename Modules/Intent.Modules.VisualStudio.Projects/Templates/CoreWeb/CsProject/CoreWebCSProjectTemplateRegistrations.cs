@@ -25,7 +25,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
             var models = _metadataManager.VisualStudio(application).GetASPNETCoreWebApplicationModels();
             foreach (var model in models)
             {
-                registry.RegisterOutputTarget(model.ToProjectConfig());
+                registry.RegisterOutputTarget(model.ToOutputTargetConfig());
             }
         }
 

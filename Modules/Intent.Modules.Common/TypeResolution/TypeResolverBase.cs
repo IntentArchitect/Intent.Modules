@@ -8,10 +8,10 @@ namespace Intent.Modules.Common.TypeResolution
 {
     public class TypeResolverContext : ITypeResolverContext
     {
-        private readonly List<IClassTypeSource> _classTypeSources;
+        private readonly List<ITypeSource> _classTypeSources;
         private readonly Func<ITypeReference, string, string> _resolveTypeFunc;
 
-        public TypeResolverContext(List<IClassTypeSource> classTypeSources, Func<ITypeReference, string, string> resolveTypeFunc)
+        public TypeResolverContext(List<ITypeSource> classTypeSources, Func<ITypeReference, string, string> resolveTypeFunc)
         {
             _classTypeSources = classTypeSources;
             _resolveTypeFunc = resolveTypeFunc;
@@ -31,7 +31,7 @@ namespace Intent.Modules.Common.TypeResolution
 
             foreach (var classLookup in _classTypeSources)
             {
-                var foundClass = classLookup.GetClassType(typeInfo);
+                var foundClass = classLookup.GetType(typeInfo);
                 if (!string.IsNullOrWhiteSpace(foundClass))
                 {
                     return foundClass;
@@ -45,33 +45,33 @@ namespace Intent.Modules.Common.TypeResolution
     public abstract class TypeResolverBase : ITypeResolver
     {
         private const string DEFAULT_CONTEXT = "_default_";
-        private readonly IDictionary<string, List<IClassTypeSource>> _classTypeSources;
+        private readonly IDictionary<string, List<ITypeSource>> _classTypeSources;
 
         protected TypeResolverBase()
         {
-            _classTypeSources = new Dictionary<string, List<IClassTypeSource>>()
+            _classTypeSources = new Dictionary<string, List<ITypeSource>>()
             {
-                { DEFAULT_CONTEXT, new List<IClassTypeSource>() }
+                { DEFAULT_CONTEXT, new List<ITypeSource>() }
             };
         }
 
         public abstract string DefaultCollectionFormat { get; set; }
 
-        public void AddClassTypeSource(IClassTypeSource classTypeSource)
+        public void AddClassTypeSource(ITypeSource typeSource)
         {
-            AddClassTypeSource(classTypeSource, DEFAULT_CONTEXT);
+            AddClassTypeSource(typeSource, DEFAULT_CONTEXT);
         }
 
-        public void AddClassTypeSource(IClassTypeSource classTypeSource, string contextName)
+        public void AddClassTypeSource(ITypeSource typeSource, string contextName)
         {
             if (contextName == null)
                 contextName = DEFAULT_CONTEXT;
 
             if (!_classTypeSources.ContainsKey(contextName))
             {
-                _classTypeSources.Add(contextName, new List<IClassTypeSource>());
+                _classTypeSources.Add(contextName, new List<ITypeSource>());
             }
-            _classTypeSources[contextName].Add(classTypeSource);
+            _classTypeSources[contextName].Add(typeSource);
         }
 
         public ITypeResolverContext InContext(string contextName)

@@ -21,7 +21,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
         public CSharpIpcReceivingProxyTemplate(ServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
-            AddTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            AddTypeSource(CSharpTypeSource.Create(ExecutionContext, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasClassDetails
     {
-        public IntentTypescriptProjectItemTemplateBase(string templateId, ITemplateExecutionContext executionContext, TModel model) : base(templateId, executionContext, model)
+        public IntentTypescriptProjectItemTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
         }
 

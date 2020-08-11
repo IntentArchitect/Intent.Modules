@@ -35,7 +35,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public string ProjectTypeId => VisualStudioProjectTypeIds.CoreCSharpLibrary;
         public FolderModel Folder { get; }
 
-        public IOutputTargetConfig ToProjectConfig()
+        public IOutputTargetConfig ToOutputTargetConfig()
         {
             return new ProjectConfig(this);
         }

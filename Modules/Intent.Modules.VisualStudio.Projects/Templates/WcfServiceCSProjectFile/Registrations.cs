@@ -26,7 +26,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             var models = _metadataManager.VisualStudio(application).GetWCFServiceApplicationModels();
             foreach (var model in models)
             {
-                registry.RegisterOutputTarget(model.ToProjectConfig());
+                registry.RegisterOutputTarget(model.ToOutputTargetConfig());
             }
         }
 

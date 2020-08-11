@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         public ServiceContractTemplate(IProject project, ServiceModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
-            AddTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            AddTypeSource(CSharpTypeSource.Create(ExecutionContext, DTOTemplate.IDENTIFIER, "List<{0}>"));
             SetDefaultTypeCollectionFormat("List<{0}>");
         }
 

@@ -9,7 +9,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
     {
         public override string TemplateId => ReadMeTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(ITemplateExecutionContext context)
+        public override ITemplate CreateTemplateInstance(IOutputTarget context)
         {
             return new ReadMeTemplate(context);
         }

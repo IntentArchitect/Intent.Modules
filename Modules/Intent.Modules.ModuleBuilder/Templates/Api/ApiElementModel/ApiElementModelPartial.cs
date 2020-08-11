@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
         public ApiElementModel(IProject project, ElementSettingsModel model, List<AssociationSettingsModel> associationSettings) : base(TemplateId, project, model)
         {
             AssociationSettings = associationSettings;
-            AddTypeSource(CSharpTypeSource.InProject(Project, ApiElementModel.TemplateId, collectionFormat: "IEnumerable<{0}>"));
+            AddTypeSource(CSharpTypeSource.Create(ExecutionContext, ApiElementModel.TemplateId, collectionFormat: "IEnumerable<{0}>"));
             AddNugetDependency(NugetPackages.IntentSdk);
         }
 

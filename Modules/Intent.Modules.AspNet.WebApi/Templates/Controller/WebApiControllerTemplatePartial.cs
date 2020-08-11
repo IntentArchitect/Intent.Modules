@@ -25,7 +25,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
         public WebApiControllerTemplate(IProject project, ServiceModel model, string identifier = Identifier)
             : base(identifier, project, model)
         {
-            AddTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            AddTypeSource(CSharpTypeSource.Create(ExecutionContext, DTOTemplate.IDENTIFIER, "List<{0}>"));
             AddAssemblyReference(new GacAssemblyReference("System.Transactions"));
         }
 

@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.Registrations
 {
     public abstract class FilePerModelTemplateRegistration<TModel> : TemplateRegistrationBase
     {
-        public abstract ITemplate CreateTemplateInstance(ITemplateExecutionContext outputContext, TModel model);
+        public abstract ITemplate CreateTemplateInstance(IOutputTarget outputTarget, TModel model);
         public abstract IEnumerable<TModel> GetModels(IApplication application);
 
         protected override void Register(ITemplateInstanceRegistry registry, IApplication application)

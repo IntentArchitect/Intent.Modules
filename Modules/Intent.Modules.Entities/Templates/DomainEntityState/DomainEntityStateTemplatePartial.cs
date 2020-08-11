@@ -32,7 +32,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 
         public override void OnCreated()
         {
-            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, Identifier, "ICollection<{0}>"));
+            Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, Identifier, "ICollection<{0}>"));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

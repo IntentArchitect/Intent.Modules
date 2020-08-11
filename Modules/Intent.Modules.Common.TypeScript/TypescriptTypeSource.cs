@@ -4,13 +4,13 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeResolution;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
-using IClassTypeSource = Intent.Modules.Common.TypeResolution.IClassTypeSource;
 
 namespace Intent.Modules.Common.TypeScript
 {
-    public class TypescriptTypeSource : IClassTypeSource
+    public class TypescriptTypeSource : ITypeSource
     {
         private readonly Func<TypescriptTypeSource, ITypeReference, string> _execute;
         private readonly IList<ITemplateDependency> _templateDependencies = new List<ITemplateDependency>();
@@ -20,11 +20,11 @@ namespace Intent.Modules.Common.TypeScript
             _execute = execute;
         }
 
-        public static IClassTypeSource InProject(ITemplateExecutionContext outputContext, string templateId, string collectionFormat = "{0}[]")
+        public static ITypeSource InProject(ISoftwareFactoryExecutionContext context, string templateId, string collectionFormat = "{0}[]")
         {
             return new TypescriptTypeSource((_this, typeInfo) =>
             {
-                var typeName = _this.GetTypeName(outputContext, templateId, typeInfo);
+                var typeName = _this.GetTypeName(context, templateId, typeInfo);
                 if (!string.IsNullOrWhiteSpace(typeName) && typeInfo.IsCollection)
                 {
                     return string.Format(collectionFormat, typeName);
@@ -33,7 +33,7 @@ namespace Intent.Modules.Common.TypeScript
             });
         }
 
-        public static IClassTypeSource InApplication(IApplication application, string templateId, string collectionFormat = "{0}[]")
+        public static ITypeSource InApplication(IApplication application, string templateId, string collectionFormat = "{0}[]")
         {
             return new TypescriptTypeSource((_this, typeInfo) =>
             {
@@ -46,7 +46,7 @@ namespace Intent.Modules.Common.TypeScript
             });
         }
 
-        public string GetClassType(ITypeReference typeInfo)
+        public string GetType(ITypeReference typeInfo)
         {
             return _execute(this, typeInfo);
         }
@@ -56,9 +56,9 @@ namespace Intent.Modules.Common.TypeScript
             return _templateDependencies;
         }
 
-        private IHasClassDetails GetTemplateInstance(ITemplateExecutionContext outputContext, string templateId, ITypeReference typeInfo)
+        private IHasClassDetails GetTemplateInstance(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo)
         {
-            var templateInstance = outputContext.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(templateId, typeInfo.Element));
+            var templateInstance = context.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(templateId, typeInfo.Element));
             if (templateInstance != null)
             {
                 _templateDependencies.Add(TemplateDependency.OnModel(templateId, typeInfo.Element));
@@ -78,13 +78,13 @@ namespace Intent.Modules.Common.TypeScript
             return templateInstance;
         }
 
-        private string GetTypeName(ITemplateExecutionContext outputContext, string templateId, ITypeReference typeInfo)
+        private string GetTypeName(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo)
         {
-            var templateInstance = GetTemplateInstance(outputContext, templateId, typeInfo);
+            var templateInstance = GetTemplateInstance(context, templateId, typeInfo);
 
             return templateInstance != null ? (string.IsNullOrWhiteSpace(templateInstance.Namespace) ? "" : templateInstance.Namespace + ".") +
                 templateInstance.ClassName + (typeInfo.GenericTypeParameters.Any() 
-                    ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(outputContext, templateId, x)))}>" 
+                    ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(context, templateId, x)))}>" 
                     : "") 
                 : null;
         }

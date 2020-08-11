@@ -25,7 +25,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
             var models = _metadataManager.VisualStudio(application).GetClassLibraryNETFrameworkModels();
             foreach (var model in models)
             {
-                registry.RegisterOutputTarget(model.ToProjectConfig());
+                registry.RegisterOutputTarget(model.ToOutputTargetConfig());
             }
         }
 

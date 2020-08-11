@@ -45,7 +45,7 @@ NOTE: In Visual Studio, it is recommended to use a T4 editor such as this one (h
       ./");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ReadMe\ReadMeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ExecutionContext.Application.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(OutputTarget.Application.Name));
             
             #line default
             #line hidden

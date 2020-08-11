@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.Registrations
 {
     public abstract class SingleFileTemplateRegistration : TemplateRegistrationBase
     {
-        public abstract ITemplate CreateTemplateInstance(ITemplateExecutionContext project);
+        public abstract ITemplate CreateTemplateInstance(IOutputTarget project);
 
         protected override void Register(ITemplateInstanceRegistry registry, IApplication application)
         {
@@ -19,7 +19,7 @@ namespace Intent.Modules.Common.Registrations
     {
         public abstract TModel GetModels(IApplication application);
 
-        public abstract ITemplate CreateTemplateInstance(ITemplateExecutionContext project, TModel model);
+        public abstract ITemplate CreateTemplateInstance(IOutputTarget project, TModel model);
 
         protected override void Register(ITemplateInstanceRegistry registry, IApplication application)
         {

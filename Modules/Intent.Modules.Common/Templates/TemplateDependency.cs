@@ -6,15 +6,15 @@ namespace Intent.Modules.Common.Templates
 {
     public class TemplateDependency : ITemplateDependency
     {
-        public string TemplateIdOrName { get; }
+        public string TemplateId { get; }
         public object Context { get; }
         //public string ClassName { get; }
 
         private Func<ITemplate, bool> _isMatch;
 
-        private TemplateDependency(string templateIdOrName, Func<ITemplate, bool> isMatch, object context)
+        private TemplateDependency(string templateId, Func<ITemplate, bool> isMatch, object context)
         {
-            TemplateIdOrName = templateIdOrName;
+            TemplateId = templateId;
             Context = context;
             _isMatch = isMatch;
             //MetadataModel = metadataModel;
@@ -23,7 +23,7 @@ namespace Intent.Modules.Common.Templates
 
         public override string ToString()
         {
-            return $"Template Id: {TemplateIdOrName}{(Context != null ? " - " + Context.ToString() : string.Empty)}";
+            return $"Template Id: {TemplateId}{(Context != null ? " - " + Context.ToString() : string.Empty)}";
         }
 
         public static ITemplateDependency OnTemplate(string templateIdOrName)

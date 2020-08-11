@@ -7,14 +7,14 @@ namespace Intent.Modules.Common.TypeScript.Templates
 {
     public abstract class TypeScriptTemplateBase : TypeScriptTemplateBase<object>
     {
-        protected TypeScriptTemplateBase(string templateId, ITemplateExecutionContext executionContext, TypescriptTemplateMode mode) : base(templateId, executionContext, null, mode)
+        protected TypeScriptTemplateBase(string templateId, IOutputTarget outputTarget, TypescriptTemplateMode mode) : base(templateId, outputTarget, null, mode)
         {
         }
     }
 
     public abstract class TypeScriptTemplateBase<TModel> : IntentTypescriptProjectItemTemplateBase<TModel>
     {
-        protected TypeScriptTemplateBase(string templateId, ITemplateExecutionContext executionContext, TModel model, TypescriptTemplateMode mode) : base(templateId, executionContext, model)
+        protected TypeScriptTemplateBase(string templateId, IOutputTarget outputTarget, TModel model, TypescriptTemplateMode mode) : base(templateId, outputTarget, model)
         {
             TemplateMode = mode;
         }

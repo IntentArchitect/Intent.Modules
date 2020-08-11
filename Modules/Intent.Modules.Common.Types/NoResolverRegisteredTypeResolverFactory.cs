@@ -49,12 +49,12 @@ namespace Intent.Modules.Common.Types
                 throw new NotImplementedException();
             }
 
-            public void AddClassTypeSource(IClassTypeSource classTypeSource)
+            public void AddClassTypeSource(ITypeSource typeSource)
             {
                 throw new NotImplementedException();
             }
 
-            public void AddClassTypeSource(IClassTypeSource classTypeSource, string contextName)
+            public void AddClassTypeSource(ITypeSource typeSource, string contextName)
             {
                 throw new NotImplementedException();
             }

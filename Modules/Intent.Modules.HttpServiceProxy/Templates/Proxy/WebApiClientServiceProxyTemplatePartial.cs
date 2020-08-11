@@ -35,7 +35,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             _serviceContractTemplateId = GetMetadata().CustomMetadata[SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY];
             _httpClientServiceInterfaceTemplateId = GetMetadata().CustomMetadata[HTTP_CLIENT_SERVICE_INTERFACE_TEMPLATE_ID_CONFIG_KEY];
             _dtoTemplateId = GetMetadata().CustomMetadata[DTO_TEMPLATE_ID_CONFIG_KEY];
-            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DTOTemplate.IDENTIFIER, "List<{0}>"));
 
         }
 

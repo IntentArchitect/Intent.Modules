@@ -22,7 +22,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
             var models = _metadataManager.VisualStudio(application).GetConsoleAppNETFrameworkModels();
             foreach (var model in models)
             {
-                registry.RegisterOutputTarget(model.ToProjectConfig());
+                registry.RegisterOutputTarget(model.ToOutputTargetConfig());
             }
         }
 

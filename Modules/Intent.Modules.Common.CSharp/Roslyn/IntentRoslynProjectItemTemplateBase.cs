@@ -16,25 +16,25 @@ namespace Intent.Modules.Common.Templates
 {
     public abstract class IntentProjectItemTemplateBase : IntentTemplateBase
     {
-        protected IntentProjectItemTemplateBase(string templateId, ITemplateExecutionContext project) : base(templateId, project)
+        protected IntentProjectItemTemplateBase(string templateId, IOutputTarget project) : base(templateId, project)
         {
         }
 
-        public ITemplateExecutionContext Project => ExecutionContext;
+        public IOutputTarget Project => OutputTarget;
     }
 
     public abstract class IntentProjectItemTemplateBase<TModel> : IntentTemplateBase<TModel>
     {
-        protected IntentProjectItemTemplateBase(string templateId, ITemplateExecutionContext project, TModel model) : base(templateId, project, model)
+        protected IntentProjectItemTemplateBase(string templateId, IOutputTarget project, TModel model) : base(templateId, project, model)
         {
         }
 
-        public ITemplateExecutionContext Project => ExecutionContext;
+        public IOutputTarget Project => OutputTarget;
     }
 
     public abstract class IntentRoslynProjectItemTemplateBase<TModel> : CSharpTemplateBase<TModel>
     {
-        protected IntentRoslynProjectItemTemplateBase(string templateId, ITemplateExecutionContext project, TModel model) : base(templateId, project, model)
+        protected IntentRoslynProjectItemTemplateBase(string templateId, IOutputTarget project, TModel model) : base(templateId, project, model)
         {
         }
     }
@@ -43,13 +43,13 @@ namespace Intent.Modules.Common.Templates
     {
         private readonly ICollection<ITemplateDependency> _detectedDependencies = new List<ITemplateDependency>();
 
-        protected CSharpTemplateBase(string templateId, ITemplateExecutionContext context, TModel model)
-            : base(templateId, context, model)
+        protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel model)
+            : base(templateId, outputTarget, model)
         {
             AddNugetDependency("Intent.RoslynWeaver.Attributes", "1.0.0");
         }
 
-        public ITemplateExecutionContext Project => ExecutionContext;
+        public IOutputTarget Project => OutputTarget;
 
         public string Namespace
         {
@@ -59,7 +59,7 @@ namespace Intent.Modules.Common.Templates
                 {
                     return FileMetadata.CustomMetadata["Namespace"];
                 }
-                return this.ExecutionContext.Name;
+                return this.OutputTarget.Name;
             }
         }
 
@@ -111,7 +111,7 @@ namespace Intent.Modules.Common.Templates
                 .ToArray();
             var localNamespace = Namespace;
             var knownOtherPaths = usingPaths
-                .Concat(ExecutionContext.Application.Projects.Select(x => x.Name))
+                .Concat(ExecutionContext.OutputTargets.Select(x => x.Name))
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Distinct()
                 .ToArray();
@@ -121,7 +121,7 @@ namespace Intent.Modules.Common.Templates
 
         public void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
-            AddTypeSource(CSharpTypeSource.InProject(ExecutionContext, templateId, collectionFormat));
+            AddTypeSource(CSharpTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }
 
         public override string GetTypeName(ITypeReference typeReference, string collectionFormat)

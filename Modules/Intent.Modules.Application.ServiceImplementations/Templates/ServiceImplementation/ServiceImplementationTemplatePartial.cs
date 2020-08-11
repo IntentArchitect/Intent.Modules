@@ -28,7 +28,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         public override void OnCreated()
         {
-            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()

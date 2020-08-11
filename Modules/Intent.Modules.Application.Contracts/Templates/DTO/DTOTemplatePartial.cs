@@ -28,7 +28,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         public override void OnCreated()
         {
-            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DTOTemplate.IDENTIFIER, "List<{0}>"));
+            Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

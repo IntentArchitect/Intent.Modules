@@ -13,7 +13,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         string ProjectTypeId { get; }
         string RelativeLocation { get; }
 
-        IOutputTargetConfig ToProjectConfig();
+        IOutputTargetConfig ToOutputTargetConfig();
         IEnumerable<string> TargetFrameworkVersion();
         IList<RoleModel> Roles { get; }
         IList<FolderModel> Folders { get; }

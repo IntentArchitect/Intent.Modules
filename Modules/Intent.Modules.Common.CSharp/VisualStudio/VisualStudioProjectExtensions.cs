@@ -11,21 +11,21 @@ namespace Intent.Modules.Common.VisualStudio
         private const string NUGET_PACKAGES = "VS.NugetPackages";
         private const string REFERENCES = "VS.References";
 
-        public static void InitializeVSMetadata(this ITemplateExecutionContext project)
+        public static void InitializeVSMetadata(this IOutputTarget outputTarget)
         {
-            project.Metadata[NUGET_PACKAGES] = new List<INugetPackageInfo>();
-            project.Metadata[DEPENDENCIES] = new List<ITemplateExecutionContext>();
-            project.Metadata[REFERENCES] = new List<IAssemblyReference>();
+            outputTarget.Metadata[NUGET_PACKAGES] = new List<INugetPackageInfo>();
+            outputTarget.Metadata[DEPENDENCIES] = new List<IOutputTarget>();
+            outputTarget.Metadata[REFERENCES] = new List<IAssemblyReference>();
         }
 
-        public static IList<ITemplateExecutionContext> Dependencies(this ITemplateExecutionContext project)
+        public static IList<IOutputTarget> Dependencies(this IOutputTarget outputTarget)
         {
-            return project.Metadata[DEPENDENCIES] as IList<ITemplateExecutionContext>;
+            return outputTarget.Metadata[DEPENDENCIES] as IList<IOutputTarget>;
         }
 
-        public static void AddDependency(this ITemplateExecutionContext project, ITemplateExecutionContext dependency)
+        public static void AddDependency(this IOutputTarget outputTarget, IOutputTarget dependency)
         {
-            var collection = project.Dependencies();
+            var collection = outputTarget.Dependencies();
             if (!collection.Contains(dependency))
             {
                 collection.Add(dependency);
@@ -33,63 +33,63 @@ namespace Intent.Modules.Common.VisualStudio
         }
 
 
-        public static void AddNugetPackages(this ITemplateExecutionContext project, IEnumerable<INugetPackageInfo> packages)
+        public static void AddNugetPackages(this IOutputTarget outputTarget, IEnumerable<INugetPackageInfo> packages)
         {
-            var collection = project.NugetPackages();
+            var collection = outputTarget.NugetPackages();
             collection.AddRange(packages);
         }
 
-        public static void AddReference(this ITemplateExecutionContext project, IAssemblyReference assemblyDependency)
+        public static void AddReference(this IOutputTarget outputTarget, IAssemblyReference assemblyDependency)
         {
-            var collection = project.References();
+            var collection = outputTarget.References();
             if (!collection.Contains(assemblyDependency))
                 collection.Add(assemblyDependency);
         }
 
-        public static List<INugetPackageInfo> NugetPackages(this ITemplateExecutionContext project)
+        public static List<INugetPackageInfo> NugetPackages(this IOutputTarget outputTarget)
         {
-            return project.Metadata[NUGET_PACKAGES] as List<INugetPackageInfo>;
+            return outputTarget.Metadata[NUGET_PACKAGES] as List<INugetPackageInfo>;
         }
 
         /*
-        public static IList<IBowerPackageInfo> BowerPackages(this IProject project)
+        public static IList<IBowerPackageInfo> BowerPackages(this IProject outputTarget)
         {
-            return project.TemplateInstances
+            return outputTarget.TemplateInstances
                     .SelectMany(ti => ti.GetAllBowerDependencies())
                     .Distinct()
                     .ToList();
         }*/
 
-        public static IList<IAssemblyReference> References(this ITemplateExecutionContext project)
+        public static IList<IAssemblyReference> References(this IOutputTarget outputTarget)
         {
-            return project.Metadata[REFERENCES] as IList<IAssemblyReference>;
+            return outputTarget.Metadata[REFERENCES] as IList<IAssemblyReference>;
         }
 
-        //public static string SolutionFolder(this IProject project)
+        //public static string SolutionFolder(this IProject outputTarget)
         //{
-        //    return project.Folder.Name;
+        //    return outputTarget.Folder.Name;
         //}
 
-        //public static string TargetFrameworkVersion(this IProject project)
+        //public static string TargetFrameworkVersion(this IProject outputTarget)
         //{
-        //    var targetFramework = project.ProjectType.Properties.FirstOrDefault(x => x.Name == "TargetFramework");
-        //    return project.GetStereotypeProperty("C# .NET", "FrameworkVersion", targetFramework != null ? $"v{targetFramework.Value}" : "v4.5.2");
+        //    var targetFramework = outputTarget.ProjectType.Properties.FirstOrDefault(x => x.Name == "TargetFramework");
+        //    return outputTarget.GetStereotypeProperty("C# .NET", "FrameworkVersion", targetFramework != null ? $"v{targetFramework.Value}" : "v4.5.2");
         //}
 
-        public static string TargetFramework(this ITemplateExecutionContext project)
+        public static string TargetFramework(this IOutputTarget outputTarget)
         {
-            var targetFramework = project.GetSupportedFrameworks().FirstOrDefault();
+            var targetFramework = outputTarget.GetSupportedFrameworks().FirstOrDefault();
             return targetFramework ?? "netcoreapp2.1";
         }
 
-        public static bool IsNetCore2App(this IOutputTarget project)
+        public static bool IsNetCore2App(this IOutputTarget outputTarget)
         {
-            return project.GetSupportedFrameworks().Any(x => x == "netcoreapp2");
+            return outputTarget.GetSupportedFrameworks().Any(x => x == "netcoreapp2");
         }
 
-        public static bool IsNetCore3App(this IOutputTarget project)
+        public static bool IsNetCore3App(this IOutputTarget outputTarget)
         {
-            return project.GetSupportedFrameworks().Any(x => x == "netcoreapp3");
+            return outputTarget.GetSupportedFrameworks().Any(x => x == "netcoreapp3");
         }
     }
 }

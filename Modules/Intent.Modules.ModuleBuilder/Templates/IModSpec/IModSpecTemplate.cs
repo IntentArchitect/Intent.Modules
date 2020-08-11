@@ -68,11 +68,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
-        public IModSpecTemplate(string templateId, ITemplateExecutionContext project, IMetadataManager metadataManager)
+        public IModSpecTemplate(string templateId, IOutputTarget project, IMetadataManager metadataManager)
             : base(templateId, project)
         {
             _metadataManager = metadataManager;
-            ExecutionContext.Application.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
+            ExecutionContext.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
                 _templatesToRegister.Add(new TemplateRegistrationInfo(
                     modelId: @event.GetValue("ModelId"),
@@ -83,7 +83,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     moduleVersion: @event.TryGetValue("Module Dependency Version")));
             });
 
-            ExecutionContext.Application.EventDispatcher.Subscribe<MetadataRegistrationRequiredEvent>(@event =>
+            ExecutionContext.EventDispatcher.Subscribe<MetadataRegistrationRequiredEvent>(@event =>
             {
                 _metadataToRegister.Add(@event);
             });
@@ -171,7 +171,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            var decorators = _metadataManager.ModuleBuilder(ExecutionContext.Application).GetDecoratorModels();
+            var decorators = _metadataManager.ModuleBuilder(OutputTarget.Application).GetDecoratorModels();
             if (decorators.Any())
             {
                 var decoratorsElement = doc.Element("package").Element("decorators");
@@ -183,7 +183,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
                 foreach (var model in decorators)
                 {
-                    var id = $"{ExecutionContext.ApplicationName()}.{model.Name}";
+                    var id = $"{OutputTarget.ApplicationName()}.{model.Name}";
                     var specificDecorator = doc.XPathSelectElement($"package/decorators/decorator[@id=\"{id}\"]");
                     if (specificDecorator == null)
                     {
@@ -216,7 +216,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 existing.SetAttributeValue("externalReference", metadataRegistration.Id);
             }
 
-            var packagesToInclude = _metadataManager.ModuleBuilder(ExecutionContext.Application).GetIntentModuleModels()
+            var packagesToInclude = _metadataManager.ModuleBuilder(OutputTarget.Application).GetIntentModuleModels()
                 .Where(x => x.GetModuleSettings().IncludeInModule())
                 .ToList();
             foreach (var package in packagesToInclude)
@@ -264,11 +264,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 ? XDocument.Load(filePath)
                 : XDocument.Parse($@"<?xml version=""1.0"" encoding=""utf-8"" ?>
 <package>
-  <id>{ExecutionContext.Name}</id>
+  <id>{OutputTarget.Name}</id>
   <version>1.0.0</version>
-  <summary>A custom module for {ExecutionContext.Application.SolutionName}.</summary>
-  <description>A custom module for {ExecutionContext.Application.SolutionName}.</description>
-  <authors>{ExecutionContext.Application.SolutionName}</authors>
+  <summary>A custom module for {OutputTarget.Application.SolutionName}.</summary>
+  <description>A custom module for {OutputTarget.Application.SolutionName}.</description>
+  <authors>{OutputTarget.Application.SolutionName}</authors>
   <templates>
   </templates>
   <dependencies>

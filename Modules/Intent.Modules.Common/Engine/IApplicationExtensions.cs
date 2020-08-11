@@ -1,60 +1,72 @@
-﻿using Intent.Engine;
+﻿using System.Collections.Generic;
+using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Common
 {
+    public interface ITemplateDependency
+    {
+        string TemplateId { get; }
+        bool IsMatch(ITemplate template);
+    }
+
+    public interface IHasTemplateDependencies
+    {
+        IEnumerable<ITemplateDependency> GetTemplateDependencies();
+    }
+
     public static class IApplicationExtensions
     {
-        public static ITemplate FindTemplateInstance(this IApplication application, string templateId, object model)
+        public static ITemplate FindTemplateInstance(this ISoftwareFactoryExecutionContext executionContext, string templateId, object model)
         {
-            return FindTemplateInstance(application, TemplateDependency.OnModel(templateId, model));
+            return FindTemplateInstance(executionContext, TemplateDependency.OnModel(templateId, model));
         }
 
-        //public static ITemplate FindTemplateInstance(this IApplication application, string templateId, string className)
+        //public static ITemplate FindTemplateInstance(this IApplication executionContext, string templateId, string className)
         //{
-        //    return application.FindTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
+        //    return executionContext.FindTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
         //}
 
-        public static ITemplate FindTemplateInstance(this IApplication application, ITemplateDependency templateDependency)
+        public static ITemplate FindTemplateInstance(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
         {
-            return application.FindTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch);
+            return executionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch);
         }
 
         //Typed Overloads
-        public static TTemplate FindTemplateInstance<TTemplate>(this IApplication application, string templateId, string className) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId, string className) where TTemplate : class
         {
-            return application.FindTemplateInstance(templateId, className) as TTemplate;
+            return executionContext.FindTemplateInstance(templateId, className) as TTemplate;
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IApplication application, string templateId, object model) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId, object model) where TTemplate : class
         {
-            return application.FindTemplateInstance(templateId, model) as TTemplate;
+            return executionContext.FindTemplateInstance(templateId, model) as TTemplate;
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IApplication application, string templateId) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId) where TTemplate : class
         {
-            return application.FindTemplateInstance(TemplateDependency.OnTemplate(templateId)) as TTemplate;
+            return executionContext.FindTemplateInstance(TemplateDependency.OnTemplate(templateId)) as TTemplate;
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IApplication application, ITemplateDependency templateDependency) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency) where TTemplate : class
         {
-            return application.FindTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch) as TTemplate;
+            return executionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch) as TTemplate;
         }
 
-        public static ITemplateExecutionContext FindOutputContextWithTemplateInstance(this IApplication application, string templateId, object model)
+        public static IOutputTarget FindOutputTargetWithTemplateInstance(this ISoftwareFactoryExecutionContext executionContext, string templateId, object model)
         {
-            return FindOutputContextWithTemplateInstance(application, TemplateDependency.OnModel(templateId, model));
+            return FindOutputTargetWithTemplateInstance(executionContext, TemplateDependency.OnModel(templateId, model));
         }
 
-        //public static ITemplateExecutionContext FindProjectWithTemplateInstance(this IApplication application, string templateId, string className)
+        //public static IOutputTarget FindProjectWithTemplateInstance(this IApplication executionContext, string templateId, string className)
         //{
-        //    return application.FindProjectWithTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
+        //    return executionContext.FindProjectWithTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
         //}
 
-        public static ITemplateExecutionContext FindOutputContextWithTemplateInstance(this IApplication application, ITemplateDependency templateDependency)
+        public static IOutputTarget FindOutputTargetWithTemplateInstance(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
         {
-            return application.FindOutputContextWithTemplateInstance(templateDependency.TemplateIdOrName, templateDependency.IsMatch);
+            return executionContext.FindOutputTargetWithTemplate(templateDependency.TemplateId, templateDependency.IsMatch);
         }
     }
 }

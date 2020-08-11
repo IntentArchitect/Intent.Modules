@@ -12,7 +12,7 @@ using Intent.Engine;
 using Intent.Modules.Common.Sql.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-<#=(Model.GetDesignerSettings() != null ? string.Format("using {0};", Model.GetDesignerSettings().ApiNamespace) : "")#>
+<#=string.Format("using {0};", Model.GetModule().ApiNamespace)#>
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 

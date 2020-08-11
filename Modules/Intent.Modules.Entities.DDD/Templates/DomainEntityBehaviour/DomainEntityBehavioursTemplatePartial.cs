@@ -23,7 +23,7 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 
         public override void OnCreated()
         {
-            Types.AddClassTypeSource(CSharpTypeSource.InProject(Project, DomainEntityInterfaceTemplate.Identifier));
+            Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DomainEntityInterfaceTemplate.Identifier));
         }
 
         public string ClassStateName => Model.Name;

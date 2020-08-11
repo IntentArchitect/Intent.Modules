@@ -11,7 +11,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
     {
         public const string TemplateId = "Intent.ModuleBuilder.ReadMe";
 
-        public ReadMeTemplate(ITemplateExecutionContext context) : base(TemplateId, context)
+        public ReadMeTemplate(IOutputTarget outputTarget) : base(TemplateId, outputTarget)
         {
         }
 

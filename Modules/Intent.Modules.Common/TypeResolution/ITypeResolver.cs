@@ -4,9 +4,9 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeResolution
 {
-    public interface IClassTypeSource
+    public interface ITypeSource
     {
-        string GetClassType(ITypeReference typeInfo);
+        string GetType(ITypeReference typeInfo);
         IEnumerable<ITemplateDependency> GetTemplateDependencies();
     }
 
@@ -18,17 +18,17 @@ namespace Intent.Modules.Common.TypeResolution
         string DefaultCollectionFormat { get; set; }
         
         /// <summary>
-        /// Adds a default <see cref="IClassTypeSource"/> that is used when resolving type names of classes.
+        /// Adds a default <see cref="ITypeSource"/> that is used when resolving type names of classes.
         /// </summary>
-        /// <param name="classTypeSource"></param>
-        void AddClassTypeSource(IClassTypeSource classTypeSource);
+        /// <param name="typeSource"></param>
+        void AddClassTypeSource(ITypeSource typeSource);
 
         /// <summary>
-        /// Adds an <see cref="IClassTypeSource"/> that is only used to resolve type names when <see cref="InContext(string)"/> is called for the specific <see cref="contextName"/>.
+        /// Adds an <see cref="ITypeSource"/> that is only used to resolve type names when <see cref="InContext(string)"/> is called for the specific <see cref="contextName"/>.
         /// </summary>
-        /// <param name="classTypeSource"></param>
+        /// <param name="typeSource"></param>
         /// <param name="contextName"></param>
-        void AddClassTypeSource(IClassTypeSource classTypeSource, string contextName);
+        void AddClassTypeSource(ITypeSource typeSource, string contextName);
 
         /// <summary>
         /// Resolves the type name for the specified <see cref="typeInfo"/>
@@ -46,7 +46,7 @@ namespace Intent.Modules.Common.TypeResolution
         string Get(ITypeReference typeInfo, string collectionFormat);
 
         /// <summary>
-        /// Returns a <see cref="ITypeResolverContext"/> that resolves the type using the <see cref="IClassTypeSource"/> added to the specified "<paramref name="contextName"/>"
+        /// Returns a <see cref="ITypeResolverContext"/> that resolves the type using the <see cref="ITypeSource"/> added to the specified "<paramref name="contextName"/>"
         /// </summary>
         /// <param name="contextName"></param>
         /// <returns></returns>
