@@ -11,13 +11,13 @@ namespace Intent.Modules.OutputManager.TagWeaver
     public class FileWeaver
     {
         private readonly ISoftwareFactoryEventDispatcher _eventDispatcher;
-        public IProject Project { get; }
+        public IOutputTarget OutputTarget { get; }
         public IFileMetadata FileMetadata { get; }
 
-        public FileWeaver(ISoftwareFactoryEventDispatcher eventDispatcher, IProject project, IFileMetadata fileMetadata)
+        public FileWeaver(ISoftwareFactoryEventDispatcher eventDispatcher, IOutputTarget outputTarget, IFileMetadata fileMetadata)
         {
             _eventDispatcher = eventDispatcher;
-            this.Project = project;
+            this.OutputTarget = outputTarget;
             this.FileMetadata = fileMetadata;
         }
 

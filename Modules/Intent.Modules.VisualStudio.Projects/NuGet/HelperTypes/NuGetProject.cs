@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using NuGet.Versioning;
 
 namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
 {
@@ -9,6 +10,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
         public string Content { get; set; }
         public Dictionary<string, NuGetPackage> RequestedPackages { get; set; } = new Dictionary<string, NuGetPackage>();
         public Dictionary<string, NuGetPackage> InstalledPackages { get; set; } = new Dictionary<string, NuGetPackage>();
+        public Dictionary<string, NuGetVersion> HighestVersions { get; set; } = new Dictionary<string, NuGetVersion>();
         public string FilePath { get; set; }
         public INuGetSchemeProcessor Processor { get; set; }
 

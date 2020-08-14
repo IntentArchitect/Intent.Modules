@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
+using Intent.Modules.Common;
 using Intent.Templates;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller

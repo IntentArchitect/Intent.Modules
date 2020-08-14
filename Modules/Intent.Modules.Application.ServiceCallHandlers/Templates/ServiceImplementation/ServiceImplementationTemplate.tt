@@ -25,7 +25,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace <#=Namespace#>
 {
-    public class <#=ClassName#> : <#= NormalizeNamespace(GetServiceInterfaceName()) #>
+    public class <#=ClassName#> : <#= GetServiceInterfaceName() #>
     {
         private readonly IServiceProvider _serviceProvider;
 
@@ -39,7 +39,7 @@ namespace <#=Namespace#>
 
 #>        public <#= GetOperationReturnType(o) #> <#= o.Name#>(<#= GetOperationDefinitionParameters(o) #>)
         {
-            var sch = (<#= NormalizeNamespace(GetHandlerClassName(o)) #>)_serviceProvider.GetService(typeof(<#= NormalizeNamespace(GetHandlerClassName(o)) #>));
+            var sch = (<#= GetHandlerClassName(o) #>)_serviceProvider.GetService(typeof(<#= GetHandlerClassName(o) #>));
             <#
         if (o.TypeReference.Element != null)
         {

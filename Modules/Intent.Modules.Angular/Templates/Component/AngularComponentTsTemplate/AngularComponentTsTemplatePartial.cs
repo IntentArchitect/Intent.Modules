@@ -55,7 +55,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             }
 
             // New Component:
-            ExecutionContext.Application.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
+            ExecutionContext.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularComponentCreatedEvent.ModuleId, Model.Module.Id },

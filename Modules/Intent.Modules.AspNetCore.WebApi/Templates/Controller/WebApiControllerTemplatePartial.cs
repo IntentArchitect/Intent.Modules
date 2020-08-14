@@ -14,7 +14,6 @@ using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 using Intent.Utils;
-using IDeclareUsings = Intent.Templates.IDeclareUsings;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {
@@ -73,7 +72,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            var serviceContractTemplate = ExecutionContext.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
         }
 

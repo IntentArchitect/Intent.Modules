@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {

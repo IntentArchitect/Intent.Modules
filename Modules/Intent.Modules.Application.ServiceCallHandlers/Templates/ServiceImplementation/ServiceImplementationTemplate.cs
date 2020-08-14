@@ -67,7 +67,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             this.Write(" : ");
             
             #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetServiceInterfaceName())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetServiceInterfaceName()));
             
             #line default
             #line hidden
@@ -114,14 +114,14 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             this.Write(")\r\n        {\r\n            var sch = (");
             
             #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetHandlerClassName(o))));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetHandlerClassName(o)));
             
             #line default
             #line hidden
             this.Write(")_serviceProvider.GetService(typeof(");
             
             #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetHandlerClassName(o))));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetHandlerClassName(o)));
             
             #line default
             #line hidden

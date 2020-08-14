@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter;
 using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 

@@ -1,14 +1,16 @@
-﻿namespace Intent.Modules.VisualStudio.Projects.Events
+﻿using Intent.Modules.VisualStudio.Projects.Templates;
+
+namespace Intent.Modules.VisualStudio.Projects.Events
 {
     public class VisualStudioProjectCreatedEvent
     {
         public string ProjectId { get; }
-        public string ProjectPath { get; }
+        public IVisualStudioProjectTemplate TemplateInstance { get; }
 
-        public VisualStudioProjectCreatedEvent(string projectId, string projectPath)
+        public VisualStudioProjectCreatedEvent(string projectId, IVisualStudioProjectTemplate templateInstance)
         {
             ProjectId = projectId;
-            ProjectPath = projectPath;
+            TemplateInstance = templateInstance;
         }
     }
 }

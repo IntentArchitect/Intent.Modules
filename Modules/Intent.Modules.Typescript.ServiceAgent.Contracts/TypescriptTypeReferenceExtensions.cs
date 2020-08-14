@@ -14,7 +14,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts
     public static class TypescriptTypeReferenceExtensions
     {
         public static string ConvertType<T>(this T template, ITypeReference typeInfo)
-            where T : IProjectItemTemplate, IRequireTypeResolver
+            where T : ITemplate, IRequireTypeResolver
         {
             var result = template.GetQualifiedName(typeInfo);
             return result;
@@ -22,13 +22,13 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts
 
         [Obsolete("Should use Types.Get(...) system")]
         public static string GetQualifiedName<T>(this T template, ITypeReference typeInfo)
-            where T : IProjectItemTemplate, IRequireTypeResolver
+            where T : ITemplate, IRequireTypeResolver
         {
             string result = typeInfo.Element.Name;
             if (typeInfo.Element.SpecializationType == "DTO")
             {
-                var templateInstance = template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<DTOModel>(TypescriptDtoTemplate.LocalIdentifier, (x) => x.Id == typeInfo.Element.Id))
-                    ?? template.Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<DTOModel>(TypescriptDtoTemplate.RemoteIdentifier, (x) => x.Id == typeInfo.Element.Id));
+                var templateInstance = template.OutputTarget.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<DTOModel>(TypescriptDtoTemplate.LocalIdentifier, (x) => x.Id == typeInfo.Element.Id))
+                    ?? template.OutputTarget.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<DTOModel>(TypescriptDtoTemplate.RemoteIdentifier, (x) => x.Id == typeInfo.Element.Id));
                 if (templateInstance != null)
                 {
                     return $"{templateInstance.Namespace}.{templateInstance.ClassName}";

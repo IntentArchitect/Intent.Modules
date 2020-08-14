@@ -16,7 +16,7 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.SchemeTests
             var project = TestFixtureHelper.CreateProject(NuGetScheme.Unsupported, TestVersion.Low, TestPackage.One, new Dictionary<string, string>());
 
             // Act
-            var installedPackages = sut.GetInstalledPackages(project, null);
+            var installedPackages = sut.GetInstalledPackages(project.FilePath, null);
 
             // Assert
             Assert.Empty(installedPackages);

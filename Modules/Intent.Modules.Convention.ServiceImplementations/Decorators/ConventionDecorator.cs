@@ -97,7 +97,7 @@ namespace Intent.Modules.Convention.ServiceImplementations.Decorators
         private Intent.Modelers.Domain.Api.ClassModel GetDomainForService(ServiceModel service)
         {
             var lowerServiceName = service.Name.ToLower();
-            var domains = _metadataManager.GetClassModels(_application);
+            var domains = _metadataManager.Domain(_application).GetClassModels();
             return domains
                 .SingleOrDefault(p =>
                 {

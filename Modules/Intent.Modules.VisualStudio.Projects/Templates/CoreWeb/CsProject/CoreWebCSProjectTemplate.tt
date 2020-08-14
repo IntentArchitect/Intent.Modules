@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<object>"#>
+﻿<#@ template  debug="true"  inherits="VisualStudioProjectTemplateBase"#>
 <#@ output extension=".csproj" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="Intent.SoftwareFactory.SDK" #>

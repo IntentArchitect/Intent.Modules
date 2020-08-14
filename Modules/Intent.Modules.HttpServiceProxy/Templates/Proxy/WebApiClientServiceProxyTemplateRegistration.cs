@@ -31,7 +31,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         public override IEnumerable<ServiceModel> GetModels(IApplication application)
         {
-            var results = _metadataManager.GetMetadata<ServiceModel>("Services")
+            var results = _metadataManager.GetSolutionMetadata<ServiceModel>("Services")
                 .Where(x => x.GetStereotypeProperty("Consumers", "CommaSeperatedList", "").Split(',').Any(y => y.Trim().Equals(application.Name, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
 

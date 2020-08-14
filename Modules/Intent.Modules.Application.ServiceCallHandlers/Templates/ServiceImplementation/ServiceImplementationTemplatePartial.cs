@@ -30,14 +30,14 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
-        {
-            return new[]
-            {
-                TemplateDependency.OnModel(ServiceContractTemplate.IDENTIFIER, Model)
-            }
-            .Union(Model.Operations.Select(x => TemplateDependency.OnModel(ServiceCallHandlerImplementationTemplate.Identifier, x)).ToArray());
-        }
+        //public IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        //{
+        //    return new[]
+        //    {
+        //        TemplateDependency.OnModel(ServiceContractTemplate.IDENTIFIER, Model)
+        //    }
+        //    .Union(Model.Operations.Select(x => TemplateDependency.OnModel(ServiceCallHandlerImplementationTemplate.Identifier, x)).ToArray());
+        //}
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
@@ -67,9 +67,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
                 );
         }
 
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
+            ExecutionContext.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
                 { "InterfaceType", GetServiceInterfaceName()},
                 { "ConcreteType", $"{Namespace}.{ClassName}" },
@@ -107,20 +107,14 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
-            return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
+            var serviceContractTemplate = GetTemplateClassName(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            return serviceContractTemplate;
         }
 
         private string GetHandlerClassName(OperationModel o)
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<OperationModel>(ServiceCallHandlerImplementationTemplate.Identifier, x => x.Id == o.Id));
-            return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
-        }
-
-        private string GetTypeName(ITypeReference typeInfo)
-        {
-            var result = NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
-            return result;
+            var serviceContractTemplate = GetTemplateClassName(TemplateDependency.OnModel<OperationModel>(ServiceCallHandlerImplementationTemplate.Identifier, x => x.Id == o.Id));
+            return serviceContractTemplate;
         }
     }
 }

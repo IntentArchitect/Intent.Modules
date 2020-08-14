@@ -24,7 +24,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\CsProject\CoreWebCSProjectTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class CoreWebCSProjectTemplate : IntentProjectItemTemplateBase<object>
+    public partial class CoreWebCSProjectTemplate : VisualStudioProjectTemplateBase
     {
 #line hidden
         /// <summary>

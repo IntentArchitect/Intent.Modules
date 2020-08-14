@@ -19,7 +19,7 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet
 
             // Arrange
             var project = TestFixtureHelper.CreateProject(nuGetScheme, TestVersion.High, TestPackage.One, new Dictionary<string, string>());
-            var document = XDocument.Load(project.ProjectFile());
+            var document = XDocument.Load(project.FilePath);
 
             // Act
             var result = NugetInstallerFactoryExtension.ResolveNuGetScheme(document.Root);
@@ -41,7 +41,7 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet
             };
 
             // Act
-            sut.Execute(projects, tracing, (filePath, content) => { }, TestFixtureHelper.LoadDelegate);
+            sut.Execute(projects, tracing, (filePath, content) => { });
 
             // Assert
             Assert.Empty(tracing.InfoEntries);
@@ -59,12 +59,12 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet
             var projects = new[] { project1, project2 };
 
             // Act
-            sut.Execute(projects, tracing, (path, content) => saved.Add((path, content)), TestFixtureHelper.LoadDelegate);
+            sut.Execute(projects, tracing, (path, content) => saved.Add((path, content)));
 
             // Assert
             Assert.Collection(saved, nuGetProject =>
             {
-                Assert.Equal(project2.ProjectFile(), nuGetProject.path);
+                Assert.Equal(project2.FilePath, nuGetProject.path);
                 Assert.Equal(
                     XDocument.Parse(
 @"<Project Sdk=""Microsoft.NET.Sdk"">
@@ -93,12 +93,12 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet
             var projects = new[] { project1, project2 };
 
             // Act
-            sut.Execute(projects, tracing, (path, content) => saved.Add((path, content)), TestFixtureHelper.LoadDelegate);
+            sut.Execute(projects, tracing, (path, content) => saved.Add((path, content)));
 
             // Assert
             Assert.Collection(saved, nuGetProject =>
             {
-                Assert.Equal(project2.ProjectFile(), nuGetProject.path);
+                Assert.Equal(project2.FilePath, nuGetProject.path);
                 Assert.Equal(
                     XDocument.Parse(
 @"<Project Sdk=""Microsoft.NET.Sdk"">

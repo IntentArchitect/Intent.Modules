@@ -14,12 +14,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
         {
         }
 
-        public override void OnCreated()
-        {
-            base.OnCreated();
-            Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, GetMetadata().GetFullLocationPathWithFileName()));
-        }
-
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));

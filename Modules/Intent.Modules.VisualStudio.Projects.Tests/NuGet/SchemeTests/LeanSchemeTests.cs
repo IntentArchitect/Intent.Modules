@@ -16,10 +16,10 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.SchemeTests
             // Arrange
             var sut = new LeanSchemeProcessor();
             var project = TestFixtureHelper.CreateProject(NuGetScheme.Lean, TestVersion.Low, TestPackage.One, new Dictionary<string, string>());
-            var doc = XDocument.Load(project.ProjectFile());
+            var doc = XDocument.Load(project.FilePath);
 
             // Act
-            var installedPackages = sut.GetInstalledPackages(project, doc);
+            var installedPackages = sut.GetInstalledPackages(project.FilePath, doc);
 
             // Assert
             Assert.Collection(installedPackages, x =>

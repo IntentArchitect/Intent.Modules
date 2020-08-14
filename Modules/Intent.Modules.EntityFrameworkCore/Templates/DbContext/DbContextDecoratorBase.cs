@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Intent.Modules.Common;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext

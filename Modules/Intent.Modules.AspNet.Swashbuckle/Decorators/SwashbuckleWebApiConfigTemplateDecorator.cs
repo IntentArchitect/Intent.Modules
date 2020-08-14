@@ -2,6 +2,7 @@
 using Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Engine;
+using Intent.Modules.Common;
 using Intent.Templates;
 
 namespace Intent.Modules.AspNet.Swashbuckle.Decorators

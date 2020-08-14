@@ -14,30 +14,13 @@ using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
 {
-    public class ConsoleAppCsProjectTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>
+    public class ConsoleAppCsProjectTemplate : VisualStudioProjectTemplateBase
     {
         public const string Identifier = "Intent.VisualStudio.Projects.ConsoleApp.CSProject";
 
         public ConsoleAppCsProjectTemplate(IProject project, IVisualStudioProject model)
             : base (Identifier, project, model)
         {
-        }
-
-        public override void OnCreated()
-        {
-            base.OnCreated();
-            Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, GetMetadata().GetFullLocationPathWithFileName()));
-        }
-
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
-        {
-            return new DefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
-                codeGenType: CodeGenType.Basic,
-                fileName: Project.Name,
-                fileExtension: "csproj",
-                defaultLocationInProject: ""
-                );
         }
 
         public override string TransformText()
@@ -56,7 +39,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.CsProject
                 : XDocument.Parse(CreateTemplate());
         }
 
-        public string CreateTemplate()
+        private string CreateTemplate()
         {
             var root = ProjectRootElement.Create();
             root.ToolsVersion = "14.0";

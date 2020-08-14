@@ -14,7 +14,7 @@ using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 {
-    public class WcfServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IHasNugetDependencies
+    public class WcfServiceCSProjectFileTemplate : VisualStudioProjectTemplateBase, IHasNugetDependencies
     {
         public const string IDENTIFIER = "Intent.VisualStudio.Projects.WcfServiceCSProjectFile";
 
@@ -22,24 +22,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
             : base(IDENTIFIER, project, model)
         {
         }
-
-        public override void OnCreated()
-        {
-            base.OnCreated();
-            Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, GetMetadata().GetFullLocationPathWithFileName()));
-        }
-
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
-        {
-            return new DefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
-                codeGenType: CodeGenType.Basic,
-                fileName: Project.Name,
-                fileExtension: "csproj",
-                defaultLocationInProject: ""
-            );
-        }
-
+        
         public override string TransformText()
         {
             var meta = GetMetadata();
@@ -56,7 +39,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
                 : XDocument.Parse(CreateTemplate());
         }
 
-        public string CreateTemplate()
+        private string CreateTemplate()
         {
             var root = ProjectRootElement.Create();
             root.ToolsVersion = "14.0";

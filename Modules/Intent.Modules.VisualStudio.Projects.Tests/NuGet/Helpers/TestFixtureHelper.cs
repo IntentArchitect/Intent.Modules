@@ -9,6 +9,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.VisualStudio.Projects.NuGet;
 using Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes;
+using Intent.Modules.VisualStudio.Projects.Templates;
 using Intent.Templates;
 using NSubstitute;
 using IApplication = Intent.Engine.IApplication;
@@ -18,82 +19,43 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.Helpers
 {
     internal static class TestFixtureHelper
     {
-        internal static IProject CreateProject(NuGetScheme? scheme, TestVersion testVersion, TestPackage testPackage, IDictionary<string, string> nugetPackagesToInstall)
+        internal static ProjectImplementation CreateProject(NuGetScheme? scheme, TestVersion testVersion, TestPackage testPackage, IDictionary<string, string> nugetPackagesToInstall)
         {
             return new ProjectImplementation(scheme, testVersion, testPackage, nugetPackagesToInstall);
         }
 
         internal static NuGetProject CreateNuGetProject(NuGetScheme? scheme, TestVersion testVersion, TestPackage testPackage, IDictionary<string, string> nugetPackagesToInstall)
         {
-            return NugetInstallerFactoryExtension.DeterminePackages(
-                applicationProjects: new[]
-                {
-                    CreateProject(scheme, testVersion, testPackage, nugetPackagesToInstall)
-                },
-                loadDelegate: p => File.ReadAllText(p.ProjectFile())).Projects.Single();
+            return NugetInstallerFactoryExtension.DetermineProjectNugetPackageInfo(CreateProject(scheme, testVersion, testPackage, nugetPackagesToInstall));
         }
 
-        public static Func<IProject, string> LoadDelegate => p => File.ReadAllText(Path.GetFullPath(p.ProjectFile()));
-
-        private class ProjectImplementation : IProject
+        internal class ProjectImplementation : IVisualStudioProjectTemplate
         {
-            private readonly NuGetScheme? _nuGetScheme;
-            private readonly TestVersion _testVersion;
-            private readonly int _number;
-            private string _id;
+            private readonly IDictionary<string, string> _nugetPackagesToInstall;
 
             public ProjectImplementation(NuGetScheme? scheme, TestVersion testVersion, TestPackage testPackage, IDictionary<string, string> nugetPackagesToInstall)
             {
-                _nuGetScheme = scheme;
-                _testVersion = testVersion;
-                _number = (int)testPackage;
+                _nugetPackagesToInstall = nugetPackagesToInstall;
 
-                Name = $"{(scheme.HasValue ? scheme.Value.ToString() : "null")}_{testVersion}_{_number}";
-                ProjectType = Name;
-                this.InitializeVSMetadata();
-                this.NugetPackages().AddRange(nugetPackagesToInstall.Select(x => new NuGetPackages(x)));
+                Name = $"{(scheme.HasValue ? scheme.Value.ToString() : "null")}_{testVersion}_{(int)testPackage}";
+                FilePath = GetPath(scheme, testVersion, (int)testPackage);
             }
 
-            public string ProjectFile() => GetPath(_nuGetScheme, _testVersion, _number);
-            public ITemplateTargetInfo AsTarget(string subLocation = null)
-            {
-                throw new NotImplementedException();
-            }
-
-            public bool HasRole(string role)
-            {
-                throw new NotImplementedException();
-            }
-
-            public IEnumerable<string> GetTargetFrameworks()
-            {
-                throw new NotImplementedException();
-            }
-
-            string IProject.Id => _id;
+            public string ProjectId => Name;
 
             public string Name { get; }
 
-            public string ProjectType { get; }
+            public string FilePath { get; }
 
-            public string Type { get; }
-            public IDictionary<string, object> Metadata { get; } = new Dictionary<string, object>();
+            public string LoadContent()
+            {
+                return File.ReadAllText(FilePath);
+            }
 
-            #region throw new NotImplementedException() implementations
-            public bool Equals(IProject other) => throw new NotImplementedException();
-            public IEnumerable<IStereotype> Stereotypes => throw new NotImplementedException();
-            public IFolder Folder => throw new NotImplementedException();
-            public IEnumerable<ITemplate> FindTemplateInstances(string templateId, Func<ITemplate, bool> predicate, SearchOption searchOption) => throw new NotImplementedException();
-            public ITemplate FindTemplateInstance(string templateId, Func<ITemplate, bool> predicate = null) => throw new NotImplementedException();
-            public ITemplate FindTemplateInstance(string templateId, Func<ITemplate, bool> predicate, SearchOption searchOption) => throw new NotImplementedException();
-            public IEnumerable<T> ResolveDecorators<T>(IHasDecorators<T> hasDecorators) where T : ITemplateDecorator => throw new NotImplementedException();
-            public IEnumerable<T> ResolveDecorators<T>() where T : ITemplateDecorator => throw new NotImplementedException();
-            public string ProjectLocation => throw new NotImplementedException();
-            public string ProjectName => throw new NotImplementedException();
-            public Guid Id => throw new NotImplementedException();
-            public IApplication Application => throw new NotImplementedException();
-            public IEnumerable<ITemplate> TemplateInstances => throw new NotImplementedException();
-            #endregion
+            public IEnumerable<INugetPackageInfo> RequestedNugetPackages()
+            {
+                return _nugetPackagesToInstall.Select(x => new NuGetPackages(x));
+            }
 
             private class NuGetPackages : INugetPackageInfo
             {
@@ -131,7 +93,6 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.Helpers
                     path = $@"{scheme}/{testVersion}Version{number}/csproj.xml";
                     break;
                 case NuGetScheme.Unsupported:
-                    return null;
                 case null:
                     path = $@"VerboseWithNoScheme/csproj.xml";
                     break;
@@ -139,7 +100,7 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.Helpers
                     throw new ArgumentOutOfRangeException(nameof(scheme), scheme, null);
             }
 
-            return $"Data/{path}";
+            return $"NuGet/Data/{path}";
         }
 
         public static NugetInstallerFactoryExtension Configure(

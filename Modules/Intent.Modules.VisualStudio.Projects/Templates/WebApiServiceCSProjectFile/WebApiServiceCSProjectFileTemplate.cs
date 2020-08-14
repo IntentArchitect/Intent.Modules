@@ -15,7 +15,7 @@ using Microsoft.Build.Construction;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectFile
 {
-    public class WebApiServiceCSProjectFileTemplate : IntentProjectItemTemplateBase<IVisualStudioProject>, IHasNugetDependencies, /*IProjectTemplate,*/ IHasDecorators<IWebApiServiceCSProjectDecorator>
+    public class WebApiServiceCSProjectFileTemplate : VisualStudioProjectTemplateBase, IHasNugetDependencies, /*IProjectTemplate,*/ IHasDecorators<IWebApiServiceCSProjectDecorator>
     {
         public const string Identifier = "Intent.VisualStudio.Projects.WebApiServiceCSProjectFile";
         private readonly string _sslPort = "";
@@ -31,24 +31,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebApiServiceCSProjectF
             //    _sslPort = project.ProjectType.Properties.First(x => x.Name == "SslPort").Value;
             //}
         }
-
-        public override void OnCreated()
-        {
-            base.OnCreated();
-            Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, GetMetadata().GetFullLocationPathWithFileName()));
-        }
-
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
-        {
-            return new DefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
-                fileName: Project.Name,
-                fileExtension: "csproj",
-                defaultLocationInProject: ""
-            );
-        }
-
+        
         public override string TransformText()
         {
             var meta = GetMetadata();

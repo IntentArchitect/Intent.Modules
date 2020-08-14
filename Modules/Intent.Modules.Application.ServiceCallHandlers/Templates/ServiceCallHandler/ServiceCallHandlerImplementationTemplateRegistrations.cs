@@ -12,7 +12,7 @@ using IApplication = Intent.Engine.IApplication;
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
     [Description(ServiceCallHandlerImplementationTemplate.Identifier)]
-    public class ServiceCallHandlerImplementationTemplateRegistrations : IProjectTemplateRegistration
+    public class ServiceCallHandlerImplementationTemplateRegistrations : ITemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
 

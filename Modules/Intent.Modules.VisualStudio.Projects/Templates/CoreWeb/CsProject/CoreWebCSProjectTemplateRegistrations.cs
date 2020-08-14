@@ -36,7 +36,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
             foreach (var model in models)
             {
                 var project = application.Projects.Single(x => x.Id == model.Id);
-                registry.RegisterTemplate(TemplateId, project, p => new CoreWebCSProjectTemplate((IProject) project));
+                registry.RegisterTemplate(TemplateId, project, p => new CoreWebCSProjectTemplate(project, model));
             }
             //var targetProjectIds = new List<string>
             //{

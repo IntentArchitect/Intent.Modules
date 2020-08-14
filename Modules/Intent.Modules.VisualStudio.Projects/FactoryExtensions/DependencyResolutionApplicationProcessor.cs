@@ -48,7 +48,7 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
             foreach (var project in application.Projects)
             {
                 project.InitializeVSMetadata();
-
+                 
                 project.AddNugetPackages(GetTemplateNugetDependencies(project));
 
                 var assemblyDependencies = project.TemplateInstances
@@ -100,7 +100,7 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
             }
         }
 
-        private IEnumerable<INugetPackageInfo> GetTemplateNugetDependencies(IProject project)
+        private IEnumerable<INugetPackageInfo> GetTemplateNugetDependencies(IOutputTarget project)
         {
             return project.TemplateInstances
                     .SelectMany(ti => ti.GetAllNugetDependencies())

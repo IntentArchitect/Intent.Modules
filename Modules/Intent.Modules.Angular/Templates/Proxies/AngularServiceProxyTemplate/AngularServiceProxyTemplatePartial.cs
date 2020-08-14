@@ -46,7 +46,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             }
 
             // New Proxy:
-            ExecutionContext.Application.EventDispatcher.Publish(AngularServiceProxyCreatedEvent.EventId,
+            ExecutionContext.EventDispatcher.Publish(AngularServiceProxyCreatedEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularServiceProxyCreatedEvent.ModuleId, Model.Module.Id },
