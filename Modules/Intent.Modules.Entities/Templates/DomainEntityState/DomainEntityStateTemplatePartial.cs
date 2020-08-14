@@ -42,7 +42,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 
         protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
         {
-            var entity = Project.FindTemplateInstance(DomainEntityTemplate.Identifier);
+            var entity = Project.FindTemplateInstance(DomainEntityTemplate.Identifier, Model);
 
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
@@ -93,7 +93,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
                 return "Object";
             }
 
-            var type = _metadataManager.GetTypeDefinitionModels(Project.Application).FirstOrDefault(x => x.Id == typeId);
+            var type = _metadataManager.Domain(OutputTarget.Application).GetTypeDefinitionModels().FirstOrDefault(x => x.Id == typeId);
             if (type != null)
             {
                 return type.Name;

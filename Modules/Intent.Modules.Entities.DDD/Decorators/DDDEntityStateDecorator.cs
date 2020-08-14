@@ -114,7 +114,7 @@ namespace Intent.Modules.Entities.DDD.Decorators
                 return base.AssociationBefore(associationEnd);
             }
 
-            var t = CSharpTypeSource.Create(Template.Project, DomainEntityInterfaceTemplate.Identifier, "IEnumerable<{0}>");
+            var t = CSharpTypeSource.Create(Template.ExecutionContext, DomainEntityInterfaceTemplate.Identifier, "IEnumerable<{0}>");
             return $@"
         {Template.NormalizeNamespace(t.GetType(associationEnd))} I{associationEnd.OtherEnd().Class.Name}.{associationEnd.Name().ToPascalCase()} => {associationEnd.Name().ToPascalCase()};
 ";

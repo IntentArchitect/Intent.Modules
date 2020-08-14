@@ -4,6 +4,7 @@ using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
+using Intent.Modules.EntityFrameworkCore.Templates.DbContext;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
@@ -20,7 +21,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbMigrationsReadMe
 
         public string BoundedContextName => Project.ApplicationName();
         public string MigrationProject => Project.Name;
-        public string ProjectWithDbContext => Project.Application.Projects.FirstOrDefault(x => x.HasStereotype("Startup"))?.Name ?? Project.Application.Projects.First().Name;
+        public string ProjectWithDbContext => ExecutionContext.FindOutputTargetWithTemplateInstance(TemplateDependency.OnTemplate(DbContextTemplate.Identifier))?.Name ?? "<UNKNOWN-DB-CONTEXT-PROJECT>";
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {

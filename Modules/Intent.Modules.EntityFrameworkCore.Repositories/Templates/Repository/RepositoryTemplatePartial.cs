@@ -106,7 +106,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
             {
                 { "InterfaceType", $"{contractTemplate.Namespace}.{contractTemplate.ClassName}"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" },
-                { "InterfaceTypeTemplateId", _repositoryInterfaceTemplateDependency.TemplateIdOrName },
+                { "InterfaceTypeTemplateId", _repositoryInterfaceTemplateDependency.TemplateId },
                 { "ConcreteTypeTemplateId", Identifier }
             });
         }

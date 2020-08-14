@@ -50,7 +50,7 @@ namespace Intent.Modules.Entities.Decorators
             {
                 return base.PropertyBefore(associationEnd);
             }
-            var t = CSharpTypeSource.Create(Template.Project, DomainEntityInterfaceTemplate.Identifier);
+            var t = CSharpTypeSource.Create(Template.ExecutionContext, DomainEntityInterfaceTemplate.Identifier);
             return $@"
         {Template.NormalizeNamespace(t.GetType(associationEnd))} {associationEnd.Name().ToPascalCase()} {{ get; }}
 ";

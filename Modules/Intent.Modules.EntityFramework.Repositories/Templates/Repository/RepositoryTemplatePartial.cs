@@ -96,19 +96,20 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 
         }
 
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return new[]
+            // GCB - Looks like an old way of doing things (comment as at V3.0):
+            return base.GetTemplateDependencies().Union(new[]
             {
                 _entityStateTemplateDependency,
                 _entityInterfaceTemplateDependency,
                 _repositoryInterfaceTemplateDependency,
                 _dbContextTemplateDependency,
                 _deleteVisitorTemplateDependency,
-            };
+            });
         }
 
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependency);
             if (contractTemplate == null)
@@ -120,7 +121,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
             {
                 { "InterfaceType", $"{contractTemplate.Namespace}.{contractTemplate.ClassName}"},
                 { "ConcreteType", $"{Namespace}.{ClassName}" },
-                { "InterfaceTypeTemplateId", _repositoryInterfaceTemplateDependency.TemplateIdOrName },
+                { "InterfaceTypeTemplateId", _repositoryInterfaceTemplateDependency.TemplateId },
                 { "ConcreteTypeTemplateId", Identifier }
             });
         }

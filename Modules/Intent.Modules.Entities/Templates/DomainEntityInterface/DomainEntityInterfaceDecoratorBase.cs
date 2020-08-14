@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface

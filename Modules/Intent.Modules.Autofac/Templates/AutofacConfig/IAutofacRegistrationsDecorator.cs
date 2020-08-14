@@ -1,4 +1,5 @@
-﻿using Intent.Templates;
+﻿using Intent.Modules.Common;
+using Intent.Templates;
 
 namespace Intent.Modules.Autofac.Templates.AutofacConfig
 {

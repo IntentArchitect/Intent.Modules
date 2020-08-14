@@ -78,7 +78,9 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
                 return null;
             }
 
-            var type = _metadataManager.GetTypeDefinitionModels(Project.Application).FirstOrDefault(x => x.Id == typeId);
+
+            // GCB - There is definitely a better way to handle this now (V3.0)
+            var type = _metadataManager.Domain(OutputTarget.Application).GetTypeDefinitionModels().FirstOrDefault(x => x.Id == typeId);
             if (type != null)
             {
                 return $"I{type.Name}";
