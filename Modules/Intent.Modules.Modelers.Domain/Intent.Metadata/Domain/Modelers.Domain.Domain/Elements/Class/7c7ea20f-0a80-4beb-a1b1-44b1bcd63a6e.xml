@@ -19,7 +19,9 @@
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
       <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
-      <properties />
+      <properties>
+        <property name="6cc1ebec-b4f9-44f1-973d-bd5c427bee87" display="Property" value="false" isActive="true" />
+      </properties>
     </stereotype>
   </stereotypes>
   <childElements>
@@ -47,7 +49,9 @@
           <addedByDefault>false</addedByDefault>
           <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
           <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
-          <properties />
+          <properties>
+            <property name="6cc1ebec-b4f9-44f1-973d-bd5c427bee87" display="Property" value="false" isActive="true" />
+          </properties>
         </stereotype>
       </stereotypes>
       <childElements />

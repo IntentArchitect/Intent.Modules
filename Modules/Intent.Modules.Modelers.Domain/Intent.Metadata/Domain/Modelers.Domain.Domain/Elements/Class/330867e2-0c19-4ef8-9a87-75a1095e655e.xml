@@ -13,7 +13,9 @@
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
       <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
-      <properties />
+      <properties>
+        <property name="6cc1ebec-b4f9-44f1-973d-bd5c427bee87" display="Property" value="false" isActive="true" />
+      </properties>
     </stereotype>
   </stereotypes>
   <childElements>
@@ -81,13 +83,17 @@
           <addedByDefault>false</addedByDefault>
           <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
           <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
-          <properties />
+          <properties>
+            <property name="6cc1ebec-b4f9-44f1-973d-bd5c427bee87" display="Property" value="false" isActive="true" />
+          </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="0b0ae607-852f-425a-8679-07b4731a62a9" name="StereotypeXX">
           <addedByDefault>false</addedByDefault>
           <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
           <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
-          <properties />
+          <properties>
+            <property name="6cc1ebec-b4f9-44f1-973d-bd5c427bee87" display="Property" value="false" isActive="true" />
+          </properties>
         </stereotype>
       </stereotypes>
       <childElements />

@@ -16,5 +16,16 @@
   <order>0</order>
   <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
   <packageName>Modelers.Domain.Domain</packageName>
-  <properties />
+  <properties>
+    <property id="6cc1ebec-b4f9-44f1-973d-bd5c427bee87">
+      <name>Property</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
 </stereotypeDefinition>
