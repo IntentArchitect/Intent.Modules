@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="d7d556f4-b35d-418f-b0e2-cd3c04ef9294" type="C# Template">
-  <name>TypescriptTemplatePartial</name>
-  <display>TypescriptTemplatePartial: File Per Model</display>
+<class id="17b9a627-3b97-4cdb-86a2-93686d20150e" type="File Template">
+  <name>TypescriptTemplate</name>
+  <display>TypescriptTemplate: File Per Model</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="9511a4bd-485c-4b10-b20c-cb6ae4a8c413">
+  <typeReference id="d66e26ef-27ab-435d-928a-18ce93915c78">
     <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
@@ -18,6 +18,13 @@
   <attributes />
   <operations />
   <stereotypes>
+    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6" name="File Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="329d0550-b81b-4db6-a99b-05d90360d432" display="File Extension" value="tt" isActive="true" />
+        <property name="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe" display="Templating Method" value="Custom" isActive="true" />
+      </properties>
+    </stereotype>
     <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
       <addedByDefault>true</addedByDefault>
       <properties>

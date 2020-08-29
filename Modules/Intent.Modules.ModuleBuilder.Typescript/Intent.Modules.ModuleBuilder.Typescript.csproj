@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -8,24 +8,13 @@
     <Content Update="modelers\Typescript.modeler.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Update="modelers\Typescript.modeler.extension.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Templates\TypescriptTemplate\TypescriptTemplate.tt">
+    <None Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypescriptTemplate.cs</LastGenOutput>
+      <LastGenOutput>TypescriptTemplatePartial.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Templates\TypescriptTemplate\TypescriptTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>TypescriptTemplate.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +32,14 @@
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TypescriptTemplatePartial.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>
