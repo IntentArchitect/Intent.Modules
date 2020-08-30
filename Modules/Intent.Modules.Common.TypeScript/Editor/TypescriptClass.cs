@@ -100,6 +100,11 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return properties.Any(x => x.IdentifierStr == propertyName);
         }
 
+        public override void Accept(ITypeScriptNodeVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
         public override bool IsIgnored()
         {
             return GetDecorator("IntentIgnore") != null;

@@ -5,6 +5,11 @@ using Intent.Modules.Common.TypeScript.Editor;
 
 namespace Intent.Modules.Common.TypeScript.Templates
 {
+    public interface ITypeScriptMerged
+    {
+
+    }
+
     public abstract class TypeScriptTemplateBase : TypeScriptTemplateBase<object>
     {
         protected TypeScriptTemplateBase(string templateId, IProject outputTarget, TypescriptTemplateMode mode) : base(templateId, outputTarget, null, mode)
@@ -12,7 +17,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
         }
     }
 
-    public abstract class TypeScriptTemplateBase<TModel> : IntentTypescriptProjectItemTemplateBase<TModel>
+    public abstract class TypeScriptTemplateBase<TModel> : IntentTypescriptProjectItemTemplateBase<TModel>, ITypeScriptMerged
     {
         protected TypeScriptTemplateBase(string templateId, IProject outputTarget, TModel model, TypescriptTemplateMode mode) : base(templateId, outputTarget, model)
         {

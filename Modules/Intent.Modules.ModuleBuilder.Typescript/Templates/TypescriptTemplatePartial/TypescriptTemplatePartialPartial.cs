@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Typescript.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -20,6 +21,11 @@ namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePa
 
         public TypescriptTemplatePartial(IProject project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {
+            AddNugetDependency(NugetPackages.IntentCommonTypescript);
+            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.NuGetDependency))
+            {
+                AddNugetDependency(new NugetPackageInfo(Model.GetModeler().NuGetDependency, Model.GetModeler().NuGetVersion));
+            }
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

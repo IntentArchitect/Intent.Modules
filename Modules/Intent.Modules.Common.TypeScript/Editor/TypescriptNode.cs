@@ -5,6 +5,11 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
+    public interface ITypeScriptNodeVisitor
+    {
+        void Visit(TypeScriptClass typeScriptClass);
+    }
+
     public abstract class TypeScriptNode
     {
         protected Node Node;
@@ -22,6 +27,8 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             return FindNode(path) != null;
         }
+
+        public abstract void Accept(ITypeScriptNodeVisitor visitor);
 
         /// <summary>
         /// e.g. Decorator/CallExpression:NgModule/PropertyAssignment:providers/ArrayLiteralExpression
