@@ -5,7 +5,7 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypeScriptClass : TypeScriptNode
+    public class TypeScriptClass : TypeScriptNode, IEquatable<TypeScriptClass>
     {
         public TypeScriptClass(Node node, TypeScriptFile file) : base(node, file)
         {
@@ -16,7 +16,8 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public IList<TypeScriptDecorator> Decorators()
         {
-            return Node.OfKind(SyntaxKind.Decorator).Select(x => new TypeScriptDecorator(x, File)).ToList();
+            return Node.Decorators?.Select(x => new TypeScriptDecorator(x, File)).ToList() ?? new List<TypeScriptDecorator>();
+            //return Node.OfKind(SyntaxKind.Decorator).Select(x => new TypeScriptDecorator(x, File)).ToList();
         }
 
         public TypeScriptDecorator GetDecorator(string name)
@@ -45,14 +46,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             var methods = Node.OfKind(SyntaxKind.MethodDeclaration);
 
-            if (methods.Any())
-            {
-                Change.InsertAfter(methods.Last(), method);
-            }
-            else
-            {
-                Change.InsertAfter(Node.Children.Last(), method);
-            }
+            Change.InsertAfter(methods.Any() ? methods.Last() : Node.Children.Last(), method);
 
             UpdateChanges();
         }
@@ -100,14 +94,27 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return properties.Any(x => x.IdentifierStr == propertyName);
         }
 
-        public override void Accept(ITypeScriptNodeVisitor visitor)
-        {
-            visitor.Visit(this);
-        }
-
         public override bool IsIgnored()
         {
             return GetDecorator("IntentIgnore") != null;
+        }
+
+        public bool Equals(TypeScriptClass other)
+        {
+            return Name == other?.Name;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((TypeScriptClass) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
         }
     }
 }

@@ -1,34 +1,48 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Zu.TypeScript.Change;
 using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public interface ITypeScriptNodeVisitor
-    {
-        void Visit(TypeScriptClass typeScriptClass);
-    }
+    //public interface ITypeScriptNodeVisitor
+    //{
+    //    void Visit(TypeScriptClass typeScriptClass);
+    //}
 
     public abstract class TypeScriptNode
     {
-        protected Node Node;
+        protected internal Node Node;
         public readonly TypeScriptFile File;
         public ChangeAST Change => File.Change;
-        
+        public string Path;
 
         public TypeScriptNode(Node node, TypeScriptFile file)
         {
             Node = node;
             File = file;
+            File.Register(this);
+            Path = GetPath(node);
+        }
+
+        private string GetPath(Node node)
+        {
+            var path = "";
+            INode current = node;
+            while (current != File.Ast.RootNode)
+            {
+                path = $"{path}{(node != current ? "/" : "")}{node.Kind}{(node.IdentifierStr != null ? ":" + node.IdentifierStr : "")}";
+                current = current.Parent;
+            }
+
+            return path;
         }
 
         public bool NodeExists(string path)
         {
             return FindNode(path) != null;
         }
-
-        public abstract void Accept(ITypeScriptNodeVisitor visitor);
 
         /// <summary>
         /// e.g. Decorator/CallExpression:NgModule/PropertyAssignment:providers/ArrayLiteralExpression
@@ -42,6 +56,11 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public Node FindNode(Node node, string path)
         {
+            return FindNodes(node, path).FirstOrDefault();
+        }
+
+        public IList<Node> FindNodes(Node node, string path)
+        {
             var pathParts = path.Split('/');
             var part = pathParts[0];
 
@@ -53,14 +72,14 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
             if (pathParts.Length == 1)
             {
-                return node.GetDescendants().OfKind(syntaxKind).FirstOrDefault(x => identifier == null || x.IdentifierStr == identifier);
+                return node.GetDescendants().OfKind(syntaxKind).Where(x => identifier == null || x.IdentifierStr == identifier).ToList();
             }
 
             if (identifier == null)
             {
                 foreach (var descendant in node.GetDescendants().OfKind(syntaxKind))
                 {
-                    var found = FindNode(descendant, path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
+                    var found = FindNodes(descendant, path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
                     if (found != null)
                     {
                         return found;
@@ -70,10 +89,47 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 return null;
             }
 
-            return FindNode(node.GetDescendants().OfKind(syntaxKind).FirstOrDefault(x => x.IdentifierStr == identifier), path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
+            return FindNodes(node.GetDescendants().OfKind(syntaxKind).FirstOrDefault(x => x.IdentifierStr == identifier), path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
+        }
+
+        //public string GetText()
+        //{
+        //    return Node.GetText();
+        //}
+
+        public string GetTextWithComments()
+        {
+            return Node.GetTextWithComments();
         }
 
         public abstract bool IsIgnored();
+
+        public void Remove()
+        {
+            File.ReplaceNode(Node, "");
+            File.Unregister(this);
+            UpdateChanges();
+        }
+
+        public void ReplaceWith(string replaceWith)
+        {
+            if (string.IsNullOrWhiteSpace(replaceWith))
+            {
+                throw new ArgumentException("Cannot replace a method with an empty string", nameof(replaceWith));
+            }
+            if (Node.GetTextWithComments() == replaceWith)
+            {
+                return;
+            }
+            Change.ChangeNode(Node, replaceWith);
+            UpdateChanges();
+            //if (IsIgnored())
+            //{
+            //    throw new Exception($"Cannot add method to TypeScript node [{ToString()}] as it has been decorated with @IntentIgnore()");
+            //}
+            //File.ReplaceNode(Node, replaceWith);
+            //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
+        }
 
         public void UpdateChanges()
         {
@@ -82,7 +138,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 throw new Exception($"Cannot add method to TypeScript node [{ToString()}] as it has been decorated with @IntentIgnore()");
             }
             File.UpdateChanges();
-            Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
+            //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
+        }
+
+        internal virtual void UpdateNode()
+        {
+            Node = FindNode(File.Ast.RootNode, Path) ?? throw new Exception("Could not find node for path: " + Path);
         }
     }
 }

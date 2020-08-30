@@ -36,7 +36,7 @@ namespace Intent.Modules.Common.TypeScript.Weaving
             {
                 var merger = new TypeScriptWeavingMerger();
 
-                var newContent = merger.Merge(output.Content, existingContent);
+                var newContent = merger.Merge(existingContent, output.Content);
 
                 output.ChangeContent(newContent);
             }
@@ -53,30 +53,10 @@ namespace Intent.Modules.Common.TypeScript.Weaving
         {
         }
 
-        public string Merge(string outputContent, string existingContent)
+        public string Merge(string existingContent, string outputContent)
         {
-            var file = new TypeScriptFile(outputContent);
-            var file = new TypeScriptFile(existingContent);
-        }
-    }
-
-    public class TypeScriptFileVisitor : ITypeScriptNodeVisitor
-    {
-        private TypeScriptFile _existingFile;
-        private TypeScriptFile _outputFile;
-
-        public TypeScriptFileVisitor(TypeScriptFile existingFile, TypeScriptFile outputFile)
-        {
-            _existingFile = existingFile;
-            _outputFile = outputFile;
-
-            var existingClasses = _existingFile.ClassDeclarations();
-            var outputClasses = _existingFile.ClassDeclarations();
-        }
-
-        public void Visit(TypeScriptClass typeScriptClass)
-        {
-            
+            var merger = new TypeScriptFileMerger(new TypeScriptFile(existingContent), new TypeScriptFile(outputContent));
+            return merger.GetMergedFile();
         }
     }
 }

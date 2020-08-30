@@ -47,7 +47,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
         }
 
         public override bool IsIgnored() => false;
-
     }
 
     public class TypescriptLiteral : TypeScriptNode

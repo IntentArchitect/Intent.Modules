@@ -10,13 +10,39 @@ namespace Intent.Modules.Common.TypeScript.Editor
     {
         private string _source;
         public TypeScriptAST Ast;
+
         public ChangeAST Change;
+
+        private IList<TypeScriptNode> _registeredNodes = new List<TypeScriptNode>();
 
         public TypeScriptFile(string source)
         {
             _source = source;
             Ast = new TypeScriptAST(_source);
             Change = new ChangeAST();
+        }
+
+        public List<TypescriptFileImport> Imports()
+        {
+            return Ast.OfKind(SyntaxKind.ImportDeclaration).Select(x => new TypescriptFileImport(x, this)).ToList();
+        }
+
+        public bool ImportExists(TypescriptFileImport import)
+        {
+            return import.Types.All(type => Imports().Exists(x => x.HasType(type) && x.Location == import.Location));
+        }
+
+        public void AddImport(TypescriptFileImport import)
+        {
+            if (Imports().Any())
+            {
+                Change.InsertAfter(Imports().Last().Node, $@"{import.GetTextWithComments()}");
+            }
+            else
+            {
+                Change.InsertBefore(Ast.RootNode, $@"{import.GetTextWithComments()}");
+            }
+            UpdateChanges();
         }
 
         public void AddImportIfNotExists(string className, string location)
@@ -49,6 +75,26 @@ import {{ {className} }} from '{location}';");
             return Ast.OfKind(SyntaxKind.VariableDeclaration).Select(x => new TypeScriptVariableDeclaration(x, this)).ToList();
         }
 
+        public void AddClass(string text)
+        {
+            var classes = Ast.OfKind(SyntaxKind.ClassDeclaration);
+            Change.InsertAfter(classes.Any() ? classes.Last() : Ast.RootNode.Children.Last(), text);
+            UpdateChanges();
+        }
+
+        public void ReplaceNode(Node node, string replaceWith = "")
+        {
+            _source = _source
+                .Remove(node.Pos.Value, node.End.Value - node.Pos.Value)
+                .Insert(node.Pos.Value, replaceWith);
+            //Ast = new TypeScriptAST(_source);
+            //Change = new ChangeAST();
+            //foreach (var typeScriptNode in _registeredNodes)
+            //{
+            //    typeScriptNode.UpdateNode();
+            //}
+        }
+
         public string GetSource()
         {
             return _source;
@@ -59,6 +105,20 @@ import {{ {className} }} from '{location}';");
             _source = Change.GetChangedSource(_source);
             Ast = new TypeScriptAST(_source);
             Change = new ChangeAST();
+            foreach (var node in _registeredNodes)
+            {
+                node.UpdateNode();
+            }
+        }
+
+        public void Register(TypeScriptNode node)
+        {
+            _registeredNodes.Add(node);
+        }
+
+        public void Unregister(TypeScriptNode node)
+        {
+            _registeredNodes.Remove(node);
         }
     }
 }
