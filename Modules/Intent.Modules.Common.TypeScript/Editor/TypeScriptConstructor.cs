@@ -11,20 +11,5 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
 
         }
-
-        public IList<TypeScriptDecorator> Decorators()
-        {
-            return Node.Decorators?.Select(x => new TypeScriptDecorator(x, File)).ToList() ?? new List<TypeScriptDecorator>();
-        }
-
-        public TypeScriptDecorator GetDecorator(string name)
-        {
-            return Decorators().SingleOrDefault(x => x.Name == name);
-        }
-
-        public override bool IsIgnored()
-        {
-            return GetDecorator("IntentIgnore") != null;
-        }
     }
 }

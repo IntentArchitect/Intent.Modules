@@ -62,10 +62,37 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 return;
             }
 
-            // TODO: Decorators
+            MergeDecorators(existingClass, outputClass);
             MergeConstructor(existingClass, outputClass);
             MergeProperties(existingClass, outputClass);
             MergeMethods(existingClass, outputClass);
+        }
+
+        private static void MergeDecorators(TypeScriptClass existingClass, TypeScriptClass outputClass)
+        {
+            var existingDecorators = existingClass.Decorators();
+            var outputDecorators = outputClass.Decorators();
+            var toAdd = outputDecorators.Except(existingDecorators).ToList();
+            var toUpdate = existingDecorators.Intersect(outputDecorators).ToList();
+            var toRemove = existingDecorators.Except(outputDecorators).ToList();
+
+            foreach (var decorator in toAdd)
+            {
+                existingClass.AddDecorator(decorator.GetTextWithComments());
+            }
+            foreach (var decorator in toUpdate)
+            {
+                var outputDecorator = outputClass.Decorators().Single(x => x.Equals(decorator));
+                decorator.ReplaceWith(outputDecorator.GetTextWithComments());
+            }
+
+            foreach (var decorator in toRemove)
+            {
+                if (!existingClass.IsIgnored() && !existingClass.IsMerged())
+                {
+                    decorator.Remove();
+                }
+            }
         }
 
         private static void MergeConstructor(TypeScriptClass existingClass, TypeScriptClass outputClass)

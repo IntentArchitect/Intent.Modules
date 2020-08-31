@@ -23,10 +23,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
             Node = node;
             File = file;
             File.Register(this);
-            NodePath = GetPath(node);
+            NodePath = GetNodePath(node);
         }
 
-        private string GetPath(Node startNode)
+        private string GetNodePath(Node startNode)
         {
             var path = "";
             var current = startNode;
@@ -92,6 +92,22 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return FindNodes(node.GetDescendants().OfKind(syntaxKind).FirstOrDefault(x => x.IdentifierStr == identifier), path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
         }
 
+        public IList<TypeScriptDecorator> Decorators()
+        {
+            return Node.Decorators?.Select(x => new TypeScriptDecorator(x, File)).ToList() ?? new List<TypeScriptDecorator>();
+        }
+
+        public bool HasDecorator(string name)
+        {
+            return Decorators().Any(x => x.Name == name);
+        }
+
+        public void AddDecorator(string declaration)
+        {
+            Change.InsertBefore(Node.First, declaration);
+            UpdateChanges();
+        }
+
         //public string GetText()
         //{
         //    return Node.GetText();
@@ -102,7 +118,20 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Node.GetTextWithComments();
         }
 
-        public abstract bool IsIgnored();
+        public virtual bool IsIgnored()
+        {
+            return HasDecorator("IntentIgnore");
+        }
+
+        public virtual bool IsMerged()
+        {
+            return HasDecorator("IntentMerge");
+        }
+
+        public virtual bool IsManaged()
+        {
+            return HasDecorator("IntentManage");
+        }
 
         public void Remove()
         {

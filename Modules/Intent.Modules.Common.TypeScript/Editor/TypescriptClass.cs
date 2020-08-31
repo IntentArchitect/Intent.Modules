@@ -10,21 +10,9 @@ namespace Intent.Modules.Common.TypeScript.Editor
     {
         public TypeScriptClass(Node node, TypeScriptFile file) : base(node, file)
         {
-
         }
 
         public string Name => Node.IdentifierStr;
-
-        public IList<TypeScriptDecorator> Decorators()
-        {
-            return Node.Decorators?.Select(x => new TypeScriptDecorator(x, File)).ToList() ?? new List<TypeScriptDecorator>();
-            //return Node.OfKind(SyntaxKind.Decorator).Select(x => new TypeScriptDecorator(x, File)).ToList();
-        }
-
-        public TypeScriptDecorator GetDecorator(string name)
-        {
-            return Decorators().SingleOrDefault(x => x.Name == name);
-        }
 
         public bool HasConstructor()
         {
@@ -164,16 +152,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
             }
 
             base.UpdateChanges();
-        }
-
-        public override bool IsIgnored()
-        {
-            return GetDecorator("IntentIgnore") != null;
-        }
-
-        public bool IsMerged()
-        {
-            return GetDecorator("IntentMerge") != null;
         }
 
         public bool Equals(TypeScriptClass other)
