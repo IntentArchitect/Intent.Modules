@@ -8,12 +8,13 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.Editor;
 using Intent.Modules.Common.TypeScript.Templates;
 using Intent.Plugins.FactoryExtensions;
+using Intent.Utils;
 
 namespace Intent.Modules.Common.TypeScript.Weaving
 {
     public class TypescriptWeavingOutputTransformer : FactoryExtensionBase, ITransformOutput
     {
-        public override string Id => "Intent.OutputManager.RoslynWeaver";
+        public override string Id => "Intent.Common.TypeScript.OutputWeaver";
 
         public void Transform(IOutputFile output)
         {
@@ -22,12 +23,9 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 return;
             }
 
-            var existingFileLocation = output.FileMetadata.GetFullLocationPathWithFileName();
-            var existingContent = File.Exists(existingFileLocation)
-                ? File.ReadAllText(existingFileLocation)
-                : null;
+            var existingFile = typeScriptMerged.GetExistingFile();
 
-            if (existingContent == null)
+            if (existingFile == null)
             {
                 return;
             }
@@ -36,13 +34,14 @@ namespace Intent.Modules.Common.TypeScript.Weaving
             {
                 var merger = new TypeScriptWeavingMerger();
 
-                var newContent = merger.Merge(existingContent, output.Content);
+                var newContent = merger.Merge(existingFile, output.Content);
 
                 output.ChangeContent(newContent);
             }
             catch (Exception e)
             {
-                throw;
+                Logging.Log.Warning($"Error while weaving TypeScript file: {output.FileMetadata.GetRelativeFilePath()}");
+                Logging.Log.Warning(e.ToString());
             }
         }
     }
@@ -55,7 +54,12 @@ namespace Intent.Modules.Common.TypeScript.Weaving
 
         public string Merge(string existingContent, string outputContent)
         {
-            var merger = new TypeScriptFileMerger(new TypeScriptFile(existingContent), new TypeScriptFile(outputContent));
+            return Merge(new TypeScriptFile(existingContent), outputContent);
+        }
+
+        public string Merge(TypeScriptFile existingFile, string outputContent)
+        {
+            var merger = new TypeScriptFileMerger(existingFile, new TypeScriptFile(outputContent));
             return merger.GetMergedFile();
         }
     }

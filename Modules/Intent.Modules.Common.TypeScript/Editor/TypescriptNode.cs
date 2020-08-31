@@ -16,24 +16,24 @@ namespace Intent.Modules.Common.TypeScript.Editor
         protected internal Node Node;
         public readonly TypeScriptFile File;
         public ChangeAST Change => File.Change;
-        public string Path;
+        public string NodePath;
 
         public TypeScriptNode(Node node, TypeScriptFile file)
         {
             Node = node;
             File = file;
             File.Register(this);
-            Path = GetPath(node);
+            NodePath = GetPath(node);
         }
 
-        private string GetPath(Node node)
+        private string GetPath(Node startNode)
         {
             var path = "";
-            INode current = node;
+            var current = startNode;
             while (current != File.Ast.RootNode)
             {
-                path = $"{path}{(node != current ? "/" : "")}{node.Kind}{(node.IdentifierStr != null ? ":" + node.IdentifierStr : "")}";
-                current = current.Parent;
+                path = $"{current.Kind}{(current.IdentifierStr != null ? ":" + current.IdentifierStr : "")}{(startNode != current ? "/" : "")}{path}";
+                current = (Node) current.Parent;
             }
 
             return path;
@@ -131,7 +131,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
         }
 
-        public void UpdateChanges()
+        public virtual void UpdateChanges()
         {
             if (IsIgnored())
             {
@@ -143,7 +143,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         internal virtual void UpdateNode()
         {
-            Node = FindNode(File.Ast.RootNode, Path) ?? throw new Exception("Could not find node for path: " + Path);
+            Node = FindNode(File.Ast.RootNode, NodePath) ?? throw new Exception("Could not find node for path: " + NodePath);
         }
     }
 }

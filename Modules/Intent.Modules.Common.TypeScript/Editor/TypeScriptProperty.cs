@@ -5,9 +5,9 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypeScriptMethod : TypeScriptNode, IEquatable<TypeScriptMethod>
+    public class TypeScriptProperty : TypeScriptNode, IEquatable<TypeScriptProperty>
     {
-        public TypeScriptMethod(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptProperty(Node node, TypeScriptFile file) : base(node, file)
         {
 
         }
@@ -34,7 +34,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return GetDecorator("IntentManage") != null;
         }
 
-        public bool Equals(TypeScriptMethod other)
+        public bool Equals(TypeScriptProperty other)
         {
             return Name == other?.Name;
         }
@@ -44,7 +44,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((TypeScriptMethod) obj);
+            return Equals((TypeScriptProperty)obj);
         }
 
         public override int GetHashCode()

@@ -100,17 +100,16 @@ namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePa
             
             #line default
             #line hidden
-            this.Write("\",\r\n                fileExtension: \"ts\",\r\n                defaultLocationInProjec" +
-                    "t: \"");
+            this.Write("\",\r\n                defaultLocationInProject: \"");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : ""));
             
             #line default
             #line hidden
             this.Write("\",\r\n                className: \"");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default

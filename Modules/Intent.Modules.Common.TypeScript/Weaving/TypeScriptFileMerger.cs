@@ -51,17 +51,78 @@ namespace Intent.Modules.Common.TypeScript.Weaving
             return _existingFile.GetSource();
         }
 
-        public void MergeClasses(TypeScriptClass existingClass, TypeScriptClass outputClass)
+        private static void MergeClasses(TypeScriptClass existingClass, TypeScriptClass outputClass)
         {
-            var existingMethods = existingClass.Methods();
-            var outputMethods = outputClass.Methods();
-
-            if (existingMethods.All(x => !x.IsIgnored()))
+            if (!existingClass.IsMerged() &&
+                (!existingClass.HasConstructor() || !existingClass.Constructor().IsIgnored()) &&
+                existingClass.Methods().All(x => !x.IsIgnored()) &&
+                existingClass.Properties().All(x => !x.IsIgnored()))
             {
                 existingClass.ReplaceWith(outputClass.GetTextWithComments());
                 return;
             }
 
+            // TODO: Decorators
+            MergeConstructor(existingClass, outputClass);
+            MergeProperties(existingClass, outputClass);
+            MergeMethods(existingClass, outputClass);
+        }
+
+        private static void MergeConstructor(TypeScriptClass existingClass, TypeScriptClass outputClass)
+        {
+            if (existingClass.HasConstructor())
+            {
+                var constructor = existingClass.Constructor();
+                if (constructor.IsIgnored())
+                {
+                    return;
+                }
+                if (outputClass.HasConstructor())
+                {
+                    constructor.ReplaceWith(outputClass.Constructor().GetTextWithComments());
+                }
+                else if (!existingClass.IsMerged())
+                {
+                    constructor.Remove();
+                }
+            }
+            else if (outputClass.HasConstructor())
+            {
+                existingClass.AddConstructor(outputClass.Constructor().GetTextWithComments());
+            }
+        }
+
+        private static void MergeProperties(TypeScriptClass existingClass, TypeScriptClass outputClass)
+        {
+            var existingProperties = existingClass.Properties();
+            var outputProperties = outputClass.Properties();
+            var toAdd = outputProperties.Except(existingProperties).ToList();
+            var toUpdate = existingProperties.Where(x => !x.IsIgnored()).Intersect(outputProperties).ToList();
+            var toRemove = existingProperties.Where(x => !x.IsIgnored()).Except(outputProperties).ToList();
+
+            foreach (var property in toAdd)
+            {
+                existingClass.AddProperty(property.GetTextWithComments());
+            }
+            foreach (var property in toUpdate)
+            {
+                var outputMethod = outputClass.Properties().Single(x => x.Equals(property));
+                property.ReplaceWith(outputMethod.GetTextWithComments());
+            }
+
+            foreach (var property in toRemove)
+            {
+                if (!existingClass.IsMerged() || property.IsManaged())
+                {
+                    property.Remove();
+                }
+            }
+        }
+
+        private static void MergeMethods(TypeScriptClass existingClass, TypeScriptClass outputClass)
+        {
+            var existingMethods = existingClass.Methods();
+            var outputMethods = outputClass.Methods();
             var toAdd = outputMethods.Except(existingMethods).ToList();
             var toUpdate = existingMethods.Where(x => !x.IsIgnored()).Intersect(outputMethods).ToList();
             var toRemove = existingMethods.Where(x => !x.IsIgnored()).Except(outputMethods).ToList();
@@ -71,15 +132,18 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 existingClass.AddMethod(method.GetTextWithComments());
             }
 
-            foreach (var method in toRemove)
-            {
-                method.Remove();
-            }
-
             foreach (var method in toUpdate)
             {
                 var outputMethod = outputClass.Methods().Single(x => x.Equals(method));
                 method.ReplaceWith(outputMethod.GetTextWithComments());
+            }
+
+            foreach (var method in toRemove)
+            {
+                if (!existingClass.IsMerged() || method.IsManaged())
+                {
+                    method.Remove();
+                }
             }
         }
     }

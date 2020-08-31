@@ -35,7 +35,6 @@ namespace <#= Namespace #>
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "<#= Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                fileExtension: "ts",
                 defaultLocationInProject: "<#= Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : "" #>",
                 className: "<#= Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>"
             );

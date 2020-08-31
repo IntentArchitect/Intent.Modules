@@ -17,6 +17,11 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Types.Contains(typeName);
         }
 
+        public void AddType(string typeName)
+        {
+            Change.InsertAfter(Node.OfKind(SyntaxKind.ImportSpecifier).Last(), $", {typeName}");
+        }
+
         public override bool IsIgnored()
         {
             return false;
@@ -24,7 +29,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         internal override void UpdateNode()
         {
-            Node = FindNodes(File.Ast.RootNode, Path).First(x => x.OfKind(SyntaxKind.StringLiteral).Single().GetText() == Location);
+            Node = FindNodes(File.Ast.RootNode, NodePath).First(x => x.OfKind(SyntaxKind.StringLiteral).Single().GetText() == Location);
         }
     }
 }

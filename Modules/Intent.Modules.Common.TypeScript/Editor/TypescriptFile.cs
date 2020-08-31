@@ -22,9 +22,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
             Change = new ChangeAST();
         }
 
+        private List<TypescriptFileImport> _imports;
         public List<TypescriptFileImport> Imports()
         {
-            return Ast.OfKind(SyntaxKind.ImportDeclaration).Select(x => new TypescriptFileImport(x, this)).ToList();
+            return _imports ?? (_imports = Ast.OfKind(SyntaxKind.ImportDeclaration).Select(x => new TypescriptFileImport(x, this)).ToList());
         }
 
         public bool ImportExists(TypescriptFileImport import)
@@ -36,7 +37,21 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             if (Imports().Any())
             {
-                Change.InsertAfter(Imports().Last().Node, $@"{import.GetTextWithComments()}");
+                var existingLocation = Imports().FirstOrDefault(x => x.Location == import.Location);
+                if (existingLocation != null)
+                {
+                    foreach (var importType in import.Types)
+                    {
+                        if (!existingLocation.HasType(importType))
+                        {
+                            existingLocation.AddType(importType);
+                        }
+                    }
+                }
+                else
+                {
+                    Change.InsertAfter(Imports().Last().Node, $@"{import.GetTextWithComments()}");
+                }
             }
             else
             {

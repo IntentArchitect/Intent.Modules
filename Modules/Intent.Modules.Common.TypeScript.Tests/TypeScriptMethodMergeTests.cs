@@ -7,6 +7,21 @@ namespace Intent.Modules.Common.TypeScript.Tests
     public class TypeScriptMethodMergeTests
     {
         [Fact]
+        public void AddsMethodToEmptyClass()
+        {
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: EmptyMergedClass, outputContent: OneMethod);
+            Assert.Equal(@"
+@IntentMerge()
+export class TestClass {
+
+    methodOne() {
+        // Implementation - method one of one
+    }
+}", result);
+        }
+
+        [Fact]
         public void AddsNewMethod()
         {
             var merger = new TypeScriptWeavingMerger();
@@ -75,7 +90,10 @@ export class TestClass {
             Assert.Equal(TwoMethodsWithDecorators, result);
         }
 
-
+        public static string EmptyMergedClass = @"
+@IntentMerge()
+export class TestClass {
+}";
         public static string OneMethod = @"
 export class TestClass {
 
