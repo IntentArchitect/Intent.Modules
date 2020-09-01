@@ -40,8 +40,10 @@ namespace Intent.Modules.Common.TypeScript.Weaving
             }
             catch (Exception e)
             {
-                Logging.Log.Warning($"Error while weaving TypeScript file: {output.FileMetadata.GetRelativeFilePath()}");
-                Logging.Log.Warning(e.ToString());
+                output.ChangeContent(existingFile.GetSource());
+
+                Logging.Log.Failure($"Error while weaving TypeScript file: {output.FileMetadata.GetRelativeFilePath()}");
+                Logging.Log.Failure(e.ToString());
             }
         }
     }

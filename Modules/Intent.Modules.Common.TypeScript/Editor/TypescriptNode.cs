@@ -122,7 +122,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public virtual bool IsIgnored()
         {
-            
             return HasDecorator("IntentIgnore") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentIgnore()");
         }
 
