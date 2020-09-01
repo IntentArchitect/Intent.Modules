@@ -30,12 +30,14 @@ namespace Intent.Modules.Common.Java.Editor
             {
                 IsStatic = true;
                 IsImportOnDemand = true;
-                Namespace = context.staticImportOnDemandDeclaration().typeName().GetText();
+                Namespace = context.staticImportOnDemandDeclaration().typeName().packageOrTypeName().GetText();
+                TypeName = context.staticImportOnDemandDeclaration().typeName().identifier().GetText();
             }
             else if (context.typeImportOnDemandDeclaration() != null)
             {
                 IsImportOnDemand = true;
-                Namespace = context.typeImportOnDemandDeclaration().packageOrTypeName().GetText();
+                Namespace = context.typeImportOnDemandDeclaration().packageOrTypeName().packageOrTypeName().GetText();
+                TypeName = context.typeImportOnDemandDeclaration().packageOrTypeName().identifier().GetText();
             }
         }
 
