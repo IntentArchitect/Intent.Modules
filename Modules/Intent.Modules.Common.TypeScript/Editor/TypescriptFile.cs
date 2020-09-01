@@ -85,15 +85,27 @@ import {{ {className} }} from '{location}';");
             return Ast.OfKind(SyntaxKind.ClassDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
         }
 
+        public IList<TypeScriptClass> InterfaceDeclarations()
+        {
+            return Ast.OfKind(SyntaxKind.InterfaceDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
+        }
+
         public IList<TypeScriptVariableDeclaration> VariableDeclarations()
         {
             return Ast.OfKind(SyntaxKind.VariableDeclaration).Select(x => new TypeScriptVariableDeclaration(x, this)).ToList();
         }
 
-        public void AddClass(string text)
+        public void AddClass(string declaration)
         {
             var classes = Ast.OfKind(SyntaxKind.ClassDeclaration);
-            Change.InsertAfter(classes.Any() ? classes.Last() : Ast.RootNode.Children.Last(), text);
+            Change.InsertAfter(classes.Any() ? classes.Last() : Ast.RootNode.Children.Last(), declaration);
+            UpdateChanges();
+        }
+
+        public void AddInterface(string declaration)
+        {
+            var interfaces = Ast.OfKind(SyntaxKind.InterfaceDeclaration);
+            Change.InsertAfter(interfaces.Any() ? interfaces.Last() : Ast.RootNode.Children.Last(), declaration);
             UpdateChanges();
         }
 

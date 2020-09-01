@@ -5,11 +5,6 @@ using Intent.Modules.Common.TypeScript.Editor;
 
 namespace Intent.Modules.Common.TypeScript.Templates
 {
-    public interface ITypeScriptMerged
-    {
-        TypeScriptFile GetExistingFile();
-    }
-
     public abstract class TypeScriptTemplateBase : TypeScriptTemplateBase<object>
     {
         protected TypeScriptTemplateBase(string templateId, IProject outputTarget) : base(templateId, outputTarget, null)

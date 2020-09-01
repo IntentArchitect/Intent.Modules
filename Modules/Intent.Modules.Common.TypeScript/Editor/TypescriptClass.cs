@@ -6,6 +6,45 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
+    public class TypeScriptInterface : TypeScriptNode, IEquatable<TypeScriptInterface>
+    {
+        public TypeScriptInterface(Node node, TypeScriptFile file) : base(node, file)
+        {
+        }
+
+        public string Name => Node.IdentifierStr;
+
+        private IList<TypeScriptProperty> _properties;
+        public IList<TypeScriptProperty> Properties()
+        {
+            return _properties ?? (_properties = Node.OfKind(SyntaxKind.PropertyDeclaration).Select(x => new TypeScriptProperty(x, File)).ToList());
+        }
+
+        private IList<TypeScriptMethod> _methods;
+        public IList<TypeScriptMethod> Methods()
+        {
+            return _methods ?? (_methods = Node.OfKind(SyntaxKind.MethodDeclaration).Select(x => new TypeScriptMethod(x, File)).ToList());
+        }
+
+        public bool Equals(TypeScriptInterface other)
+        {
+            return Name == other?.Name;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((TypeScriptInterface)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
+    }
+
     public class TypeScriptClass : TypeScriptNode, IEquatable<TypeScriptClass>
     {
         public TypeScriptClass(Node node, TypeScriptFile file) : base(node, file)
@@ -19,9 +58,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Node.OfKind(SyntaxKind.Constructor).Any();
         }
 
+        private TypeScriptConstructor _constructor;
         public TypeScriptConstructor Constructor()
         {
-            return HasConstructor() ? new TypeScriptConstructor(Node.OfKind(SyntaxKind.Constructor).First(), File) : null;
+            return HasConstructor() ? _constructor ?? (_constructor = new TypeScriptConstructor(Node.OfKind(SyntaxKind.Constructor).First(), File)) : null;
         }
 
         public void AddConstructor(string text)
@@ -45,7 +85,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
         }
 
         private IList<TypeScriptMethod> _methods;
-
         public IList<TypeScriptMethod> Methods()
         {
             return _methods ?? (_methods = Node.OfKind(SyntaxKind.MethodDeclaration).Select(x => new TypeScriptMethod(x, File)).ToList());
@@ -92,7 +131,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
         }
 
         private IList<TypeScriptProperty> _properties;
-
         public IList<TypeScriptProperty> Properties()
         {
             return _properties ?? (_properties = Node.OfKind(SyntaxKind.PropertyDeclaration).Select(x => new TypeScriptProperty(x, File)).ToList());
@@ -142,6 +180,19 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public override void UpdateChanges()
         {
+            if (_constructor != null)
+            {
+                File.Unregister(_constructor);
+                _constructor = null;
+            }
+            if (_properties != null)
+            {
+                foreach (var property in _properties)
+                {
+                    File.Unregister(property);
+                }
+                _properties = null;
+            }
             if (_methods != null)
             {
                 foreach (var method in _methods)
@@ -170,6 +221,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public override int GetHashCode()
         {
             return Name.GetHashCode();
+        }
+
+        public void RemoveConstructor(TypeScriptConstructor constructor)
+        {
+            _constructor = null;
+            constructor.Remove();
         }
     }
 }

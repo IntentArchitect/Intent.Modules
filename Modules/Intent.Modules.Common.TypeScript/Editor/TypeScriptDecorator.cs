@@ -9,6 +9,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
     {
         public TypeScriptDecorator(Node node, TypeScriptFile file) : base(node, file)
         {
+            if (string.IsNullOrWhiteSpace(Name))
+            {
+                throw new Exception("Decorator name could not be determined");
+            }
         }
 
         public string Name => Node.First.IdentifierStr;
@@ -20,7 +24,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         internal override void UpdateNode()
         {
-            Node = FindNodes(File.Ast.RootNode, NodePath).First(x => x.OfKind(SyntaxKind.Identifier).Single().IdentifierStr == Name);
+            Node = FindNodes(File.Ast.RootNode, NodePath).First(x => x.OfKind(SyntaxKind.Identifier).First().IdentifierStr == Name);
         }
 
         public override bool IsIgnored() => false;

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>9f168336-ec07-4e5a-ba92-c75bbed5aed0</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Java.sln</SolutionRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>97d9dbd1-fb47-4f72-a1c6-dfd33d64c811</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Java\Intent.Modules.Common.Java.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Java.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>97d9dbd1-fb47-4f72-a1c6-dfd33d64c811</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Java\Intent.Modules.Common.Java.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Java.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>97d9dbd1-fb47-4f72-a1c6-dfd33d64c811</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.Java\README.txt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

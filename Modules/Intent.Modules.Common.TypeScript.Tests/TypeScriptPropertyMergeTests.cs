@@ -23,8 +23,8 @@ export class TestClass {
         public void AddsNewProperty()
         {
             var merger = new TypeScriptWeavingMerger();
-            var result = merger.Merge(existingContent: OneProperty, outputContent: TwoProperties);
-            Assert.Equal(TwoProperties, result);
+            var result = merger.Merge(existingContent: OneProperty, outputContent: TwoPropertiesMerged);
+            Assert.Equal(TwoPropertiesMerged, result);
         }
 
         [Fact]
@@ -47,7 +47,7 @@ export class TestClass {
         public void SkipsExistingPropertyWhenClassMerged()
         {
             var merger = new TypeScriptWeavingMerger();
-            var result = merger.Merge(existingContent: TwoProperties, outputContent: OneProperty);
+            var result = merger.Merge(existingContent: TwoPropertiesMerged, outputContent: OneProperty);
             Assert.Equal(@"
 @IntentMerge()
 export class TestClass {
@@ -93,6 +93,13 @@ export class TestClass {
 }";
 
         public static string TwoProperties = @"
+export class TestClass {
+
+    propertyOne: string = 'one of two';
+    propertyTwo: string = 'two of two';
+}";
+
+        public static string TwoPropertiesMerged = @"
 @IntentMerge()
 export class TestClass {
 

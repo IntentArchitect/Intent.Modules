@@ -18,6 +18,9 @@
     <template id="ModuleBuilder.Typescript.Templates.TypescriptTemplate" externalReference="17b9a627-3b97-4cdb-86a2-93686d20150e">
       <role>Templates</role>
     </template>
+    <template id="ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4">
+      <role>Templates</role>
+    </template>
   </templates>
   <dependencies>
     <dependency id="Intent.Common" version="2.1.0" />

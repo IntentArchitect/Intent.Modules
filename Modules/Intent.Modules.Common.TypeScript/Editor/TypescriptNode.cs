@@ -20,8 +20,8 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public TypeScriptNode(Node node, TypeScriptFile file)
         {
-            Node = node;
-            File = file;
+            Node = node ?? throw new ArgumentNullException(nameof(node));
+            File = file ?? throw new ArgumentNullException(nameof(file));
             File.Register(this);
             NodePath = GetNodePath(node);
         }
@@ -59,6 +59,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return FindNodes(node, path).FirstOrDefault();
         }
 
+        // ClassDeclaration:<className>/MethodDeclaration:<methodName>
         public IList<Node> FindNodes(Node node, string path)
         {
             var pathParts = path.Split('/');
@@ -92,9 +93,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return FindNodes(node.GetDescendants().OfKind(syntaxKind).FirstOrDefault(x => x.IdentifierStr == identifier), path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
         }
 
+        private IList<TypeScriptDecorator> _decorators;
         public IList<TypeScriptDecorator> Decorators()
         {
-            return Node.Decorators?.Select(x => new TypeScriptDecorator(x, File)).ToList() ?? new List<TypeScriptDecorator>();
+            return _decorators ?? (_decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, File)).ToList() ?? new List<TypeScriptDecorator>());
         }
 
         public bool HasDecorator(string name)
@@ -120,12 +122,13 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public virtual bool IsIgnored()
         {
-            return HasDecorator("IntentIgnore");
+            
+            return HasDecorator("IntentIgnore") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentIgnore()");
         }
 
         public virtual bool IsMerged()
         {
-            return HasDecorator("IntentMerge");
+            return HasDecorator("IntentMerge") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentMerge()");
         }
 
         public virtual bool IsManaged()
@@ -133,7 +136,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return HasDecorator("IntentManage");
         }
 
-        public void Remove()
+        public virtual void Remove()
         {
             File.ReplaceNode(Node, "");
             File.Unregister(this);
@@ -166,13 +169,23 @@ namespace Intent.Modules.Common.TypeScript.Editor
             {
                 throw new Exception($"Cannot add method to TypeScript node [{ToString()}] as it has been decorated with @IntentIgnore()");
             }
+
+            if (_decorators != null)
+            {
+                foreach (var decorator in _decorators)
+                {
+                    File.Unregister(decorator);
+                }
+
+                _decorators = null;
+            }
             File.UpdateChanges();
             //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
         }
 
         internal virtual void UpdateNode()
         {
-            Node = FindNode(File.Ast.RootNode, NodePath) ?? throw new Exception("Could not find node for path: " + NodePath);
+            Node = FindNode(File.Ast.RootNode, NodePath) ?? throw new Exception($"[{GetType().Name}] Could not find node for path: " + NodePath);
         }
     }
 }

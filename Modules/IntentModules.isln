@@ -16,5 +16,8 @@
     <application id="ff3070c6-4626-4a8b-85ab-7d56887a1445" relativePath="Intent.Modules.Common.Types\Common.Types.application.config" />
     <application id="4c43397f-638c-4889-bb6b-fb7b064d5562" relativePath="Intent.Modules.Common.Sql/Common.Sql.application.config" />
     <application id="c5d9d6eb-8953-4b30-8e4d-a8d2890d31b4" relativePath="Intent.Modules.ModuleBuilder.Sql/ModuleBuilder.Sql.application.config" />
+    <application id="45b6cbb2-bbe2-4a28-a65b-1100ec6a550c" relativePath="Intent.Modules.Common.TypeScript/Common.Typescript.application.config" />
+    <application id="9f168336-ec07-4e5a-ba92-c75bbed5aed0" relativePath="Intent.Modules.Common.Java/Common.Java.application.config" />
+    <application id="fbb9e269-8250-4831-a2ec-f73b68658e77" relativePath="Intent.Modules.ModuleBuilder.Java/ModuleBuilder.Java.application.config" />
   </applications>
 </solution>
