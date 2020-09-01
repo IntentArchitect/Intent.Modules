@@ -11,7 +11,8 @@ namespace Intent.Modules.Common.Java.Tests
         public void ParsingSucceeds()
         {
             var javaFile = JavaASTParser.Parse(@"
-package mypack;
+import static java.lang.Math.*; 
+import java.lang.System;
 
 public class Employee implements java.io.Serializable {
     @property()

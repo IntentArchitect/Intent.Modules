@@ -5,7 +5,6 @@ namespace Intent.Modules.Common.Java.Editor.Parser
 {
     public class JavaFileFactoryListener : Java9BaseListener
     {
-
         public JavaFileFactoryListener()
         {
             JavaFile = new JavaFile();
@@ -18,6 +17,11 @@ namespace Intent.Modules.Common.Java.Editor.Parser
         {
             _currentClass = new JavaClass(context);
             JavaFile.Classes.Add(_currentClass);
+        }
+
+        public override void EnterImportDeclaration([NotNull] Java9Parser.ImportDeclarationContext context)
+        {
+            JavaFile.Imports.Add(new JavaImport(context));
         }
 
         public override void EnterClassMemberDeclaration([NotNull] Java9Parser.ClassMemberDeclarationContext context)

@@ -5,7 +5,7 @@ using Antlr4.Runtime.Tree;
 
 namespace Intent.Modules.Common.Java.Editor.Parser
 {
-    public class JavaASTParser
+    public static class JavaASTParser
     {
         public static JavaFile Parse(string source)
         {
