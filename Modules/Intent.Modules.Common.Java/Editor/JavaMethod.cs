@@ -5,12 +5,12 @@ namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaMethod
     {
-        private readonly JavaParser.MethodDeclarationContext _context;
+        private readonly Java9Parser.MethodDeclarationContext _context;
 
-        public JavaMethod(JavaParser.MethodDeclarationContext context)
+        public JavaMethod(Java9Parser.MethodDeclarationContext context)
         {
             _context = context;
-            Name = _context.Identifier().GetText();
+            Name = _context.methodHeader().methodDeclarator().identifier().GetText();
         }
 
         public string Name { get; }

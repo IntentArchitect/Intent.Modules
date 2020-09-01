@@ -8,18 +8,18 @@ using System.Text;
 
 namespace JavaParserLib.Listeners
 {
-    public class SourceMergeJavaListener : JavaBaseListener
+    public class SourceMergeJavaListener : Java9BaseListener
     {
         private readonly TokenStreamRewriter _rewriter;
-        private readonly IDictionary<MethodSignatureKey, JavaParser.MethodBodyContext> _ignoredMethods;
+        private readonly IDictionary<MethodSignatureKey, Java9Parser.MethodBodyContext> _ignoredMethods;
 
-        public SourceMergeJavaListener(CommonTokenStream tokens, IDictionary<MethodSignatureKey, JavaParser.MethodBodyContext> ignoredMethods)
+        public SourceMergeJavaListener(CommonTokenStream tokens, IDictionary<MethodSignatureKey, Java9Parser.MethodBodyContext> ignoredMethods)
         {
             _rewriter = new TokenStreamRewriter(tokens);
             _ignoredMethods = ignoredMethods;
         }
 
-        public override void ExitMethodBody([NotNull] JavaParser.MethodBodyContext context)
+        public override void ExitMethodBody([NotNull] Java9Parser.MethodBodyContext context)
         {
             var returnTypeStr = context.Parent.Parent.GetChild(0).GetText();
             var name = context.Parent.Parent.GetChild(1).GetText();

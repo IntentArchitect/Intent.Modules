@@ -5,12 +5,12 @@ namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaClass : IEquatable<JavaClass>
     {
-        private readonly JavaParser.ClassDeclarationContext _context;
+        private readonly Java9Parser.ClassDeclarationContext _context;
 
-        public JavaClass(JavaParser.ClassDeclarationContext context)
+        public JavaClass(Java9Parser.ClassDeclarationContext context)
         {
             _context = context;
-            Name = _context.GetChild(0).GetChild(1).GetText();
+            Name = _context.normalClassDeclaration().identifier().GetText();
         }
 
         public string Name { get; }

@@ -1,8 +1,9 @@
-﻿using System.Net.Mime;
+﻿using Antlr4.Runtime.Misc;
+using System.Net.Mime;
 
 namespace Intent.Modules.Common.Java.Editor.Parser
 {
-    public class JavaFileFactoryListener : JavaBaseListener
+    public class JavaFileFactoryListener : Java9BaseListener
     {
 
         public JavaFileFactoryListener()
@@ -13,13 +14,13 @@ namespace Intent.Modules.Common.Java.Editor.Parser
         public readonly JavaFile JavaFile;
 
         private JavaClass _currentClass;
-        public override void EnterClassDeclaration(JavaParser.ClassDeclarationContext context)
+        public override void EnterClassDeclaration(Java9Parser.ClassDeclarationContext context)
         {
             _currentClass = new JavaClass(context);
             JavaFile.Classes.Add(_currentClass);
         }
-        
-        public override void EnterMemberDeclaration(JavaParser.MemberDeclarationContext context)
+
+        public override void EnterClassMemberDeclaration([NotNull] Java9Parser.ClassMemberDeclarationContext context)
         {
             var methodDeclaration = context.methodDeclaration();
             if (methodDeclaration != null)
@@ -28,13 +29,13 @@ namespace Intent.Modules.Common.Java.Editor.Parser
             }
         }
 
-        public override void EnterMethodDeclaration(JavaParser.MethodDeclarationContext context)
+        /*public override void EnterMethodDeclaration(Java9Parser.MethodDeclarationContext context)
         {
             base.EnterMethodDeclaration(context);
             var identifier = context.Identifier();
-        }
+        }*/
 
-        public override void ExitMethodBody(JavaParser.MethodBodyContext context)
+        public override void ExitMethodBody(Java9Parser.MethodBodyContext context)
         {
             base.ExitMethodBody(context);
         }

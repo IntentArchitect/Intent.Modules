@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace JavaParserLib.Listeners
 {
-    public class PropertyRefactorJavaListener : JavaBaseListener
+    public class PropertyRefactorJavaListener : Java9BaseListener
     {
         private readonly TokenStreamRewriter _rewriter;
 
@@ -17,7 +17,7 @@ namespace JavaParserLib.Listeners
 
         private readonly List<PropertyRefactor> _propertyRefactors = new List<PropertyRefactor>();
 
-        public override void ExitClassBody([NotNull] JavaParser.ClassBodyContext context)
+        public override void ExitClassBody([NotNull] Java9Parser.ClassBodyContext context)
         {
             foreach (var propRef in _propertyRefactors)
             {
@@ -37,7 +37,7 @@ $@"    public void set{propRef.MemberNamePascal}({propRef.MemberType} {propRef.M
             }
         }
 
-        public override void EnterAnnotation([NotNull] JavaParser.AnnotationContext context)
+        public override void EnterAnnotation([NotNull] Java9Parser.AnnotationContext context)
         {
             if (context.children.Any(p => p.GetText() == "property"))
             {
@@ -46,14 +46,14 @@ $@"    public void set{propRef.MemberNamePascal}({propRef.MemberType} {propRef.M
             }
         }
 
-        public override void EnterMemberDeclaration([NotNull] JavaParser.MemberDeclarationContext context)
+        /*public override void EnterMemberDeclaration([NotNull] Java9Parser.MemberDeclarationContext context)
         {
             var propRef = _propertyRefactors.FirstOrDefault(p => p.IsUnassigned());
             if (propRef != null)
             {
                 propRef.Assign(context.GetChild(0).GetText(), context.GetChild(1).GetText().Replace(";", string.Empty));
             }
-        }
+        }*/
 
         public string GetManipulatedCode()
         {

@@ -8,11 +8,11 @@ using JavaParserLib.Listeners.Models;
 
 namespace JavaParserLib.Listeners
 {
-    public class DestinationIgnoreJavaListener : JavaBaseListener
+    public class DestinationIgnoreJavaListener : Java9BaseListener
     {
-        private Dictionary<MethodSignatureKey, JavaParser.MethodBodyContext> _ignoredMethods = new Dictionary<MethodSignatureKey, JavaParser.MethodBodyContext>();
+        private Dictionary<MethodSignatureKey, Java9Parser.MethodBodyContext> _ignoredMethods = new Dictionary<MethodSignatureKey, Java9Parser.MethodBodyContext>();
 
-        public override void ExitMethodBody([NotNull] JavaParser.MethodBodyContext context)
+        public override void ExitMethodBody([NotNull] Java9Parser.MethodBodyContext context)
         {
             var ignoreAnnotate = context.Parent.Parent.Parent.GetChild(0).GetChild(0).GetText();
             if (ignoreAnnotate == "@Ignore")
@@ -28,7 +28,7 @@ namespace JavaParserLib.Listeners
             }
         }
 
-        public IDictionary<MethodSignatureKey, JavaParser.MethodBodyContext> GetIgnoredMethods()
+        public IDictionary<MethodSignatureKey, Java9Parser.MethodBodyContext> GetIgnoredMethods()
         {
             return _ignoredMethods;
         }
