@@ -25,60 +25,87 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 }
             }
 
-            // ------------------- CLASSES -------------------- //
+            var existingVariables = _existingFile.VariableDeclarations();
+            var outputVariables = _outputFile.VariableDeclarations();
+
+            var toAdd = outputVariables.Except(existingVariables).ToList();
+            var toUpdate = existingVariables.Where(x => !x.IsIgnored()).Intersect(outputVariables).ToList();
+            var toRemove = existingVariables.Where(x => !x.IsIgnored()).Except(outputVariables).ToList();
+
+            foreach (var existingVariable in toUpdate)
             {
-                var existingClasses = _existingFile.ClassDeclarations();
-                var outputClasses = _outputFile.ClassDeclarations();
-
-                var toAdd = outputClasses.Except(existingClasses).ToList();
-                var toUpdate = existingClasses.Where(x => !x.IsIgnored()).Intersect(outputClasses).ToList();
-                var toRemove = existingClasses.Where(x => !x.IsIgnored()).Except(outputClasses).ToList();
-
-                foreach (var existingClass in toUpdate)
-                {
-                    var outputClass = outputClasses.Single(x => x.Equals(existingClass));
-                    MergeClasses(existingClass, outputClass);
-                }
-
-                foreach (var @class in toAdd)
-                {
-                    _existingFile.AddClass(@class.GetTextWithComments());
-                }
-
-                foreach (var @class in toRemove)
-                {
-                    @class.Remove();
-                }
+                var outputVariable = outputVariables.Single(x => x.Equals(existingVariable));
+                //MergeVariables(existingVariables, outputVariables);
             }
 
-            // ------------------- INTERFACES -------------------- //
+            foreach (var variable in toAdd)
             {
-                var existingInterfaces = _existingFile.InterfaceDeclarations();
-                var outputInterfaces = _outputFile.InterfaceDeclarations();
-
-                var toAdd = outputInterfaces.Except(existingInterfaces).ToList();
-                var toUpdate = existingInterfaces.Where(x => !x.IsIgnored()).Intersect(outputInterfaces).ToList();
-                var toRemove = existingInterfaces.Where(x => !x.IsIgnored()).Except(outputInterfaces).ToList();
-
-                foreach (var existingInterface in toUpdate)
-                {
-                    var outputInterface = outputInterfaces.Single(x => x.Equals(existingInterface));
-                    MergeInterfaces(existingInterface, outputInterface);
-                }
-
-                foreach (var @interface in toAdd)
-                {
-                    _existingFile.AddInterface(@interface.GetTextWithComments());
-                }
-
-                foreach (var @interface in toRemove)
-                {
-                    @interface.Remove();
-                }
+                _existingFile.AddVariableDeclaration(variable.GetTextWithComments());
             }
+
+            foreach (var variable in toRemove)
+            {
+                variable.Remove();
+            }
+
+            MergeFileClasses();
+
+            MergeFileInterfaces();
 
 
             return _existingFile.GetSource();
+        }
+
+        private void MergeFileInterfaces()
+        {
+            var existingInterfaces = _existingFile.InterfaceDeclarations();
+            var outputInterfaces = _outputFile.InterfaceDeclarations();
+
+            var toAdd = outputInterfaces.Except(existingInterfaces).ToList();
+            var toUpdate = existingInterfaces.Where(x => !x.IsIgnored()).Intersect(outputInterfaces).ToList();
+            var toRemove = existingInterfaces.Where(x => !x.IsIgnored()).Except(outputInterfaces).ToList();
+
+            foreach (var existingInterface in toUpdate)
+            {
+                var outputInterface = outputInterfaces.Single(x => x.Equals(existingInterface));
+                MergeInterfaces(existingInterface, outputInterface);
+            }
+
+            foreach (var @interface in toAdd)
+            {
+                _existingFile.AddInterface(@interface.GetTextWithComments());
+            }
+
+            foreach (var @interface in toRemove)
+            {
+                @interface.Remove();
+            }
+        }
+
+        private void MergeFileClasses()
+        {
+            var existingClasses = _existingFile.ClassDeclarations();
+            var outputClasses = _outputFile.ClassDeclarations();
+
+            var toAdd = outputClasses.Except(existingClasses).ToList();
+            var toUpdate = existingClasses.Where(x => !x.IsIgnored()).Intersect(outputClasses).ToList();
+            var toRemove = existingClasses.Where(x => !x.IsIgnored()).Except(outputClasses).ToList();
+
+            foreach (var existingClass in toUpdate)
+            {
+                var outputClass = outputClasses.Single(x => x.Equals(existingClass));
+                MergeClasses(existingClass, outputClass);
+            }
+
+            foreach (var @class in toAdd)
+            {
+                _existingFile.AddClass(@class.GetTextWithComments());
+            }
+
+            foreach (var @class in toRemove)
+            {
+                @class.Remove();
+            }
         }
 
         private static void MergeClasses(TypeScriptClass existingClass, TypeScriptClass outputClass)

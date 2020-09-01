@@ -186,5 +186,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             Node = FindNode(File.Ast.RootNode, NodePath) ?? throw new Exception($"[{GetType().Name}] Could not find node for path: " + NodePath);
         }
+
+        public override string ToString()
+        {
+            return Node.GetTextWithComments();
+        }
     }
 }

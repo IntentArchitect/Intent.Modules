@@ -80,6 +80,11 @@ import {{ {className} }} from '{location}';");
             UpdateChanges();
         }
 
+        public IList<TypeScriptVariableDeclaration> VariableDeclarations()
+        {
+            return Ast.OfKind(SyntaxKind.VariableStatement).Select(x => new TypeScriptVariableDeclaration(x, this)).ToList();
+        }
+
         public IList<TypeScriptClass> ClassDeclarations()
         {
             return Ast.OfKind(SyntaxKind.ClassDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
@@ -90,9 +95,11 @@ import {{ {className} }} from '{location}';");
             return Ast.OfKind(SyntaxKind.InterfaceDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
         }
 
-        public IList<TypeScriptVariableDeclaration> VariableDeclarations()
+        public void AddVariableDeclaration(string declaration)
         {
-            return Ast.OfKind(SyntaxKind.VariableDeclaration).Select(x => new TypeScriptVariableDeclaration(x, this)).ToList();
+            var variables = Ast.OfKind(SyntaxKind.VariableStatement);
+            Change.InsertAfter(variables.Any() ? variables.Last() : Ast.RootNode.Children.Last(), declaration);
+            UpdateChanges();
         }
 
         public void AddClass(string declaration)
@@ -146,6 +153,11 @@ import {{ {className} }} from '{location}';");
         public void Unregister(TypeScriptNode node)
         {
             _registeredNodes.Remove(node);
+        }
+
+        public override string ToString()
+        {
+            return _source;
         }
     }
 }
