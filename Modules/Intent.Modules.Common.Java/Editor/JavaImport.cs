@@ -12,9 +12,8 @@ namespace Intent.Modules.Common.Java.Editor
         {
             _context = context;
 
-            // Either this list of checks or you get the first child and consult
-            // the RuleIndex and based on that perform a switch statement on the constants
-            // found in Java9Parser.RULE_* (matches the names below)
+            // We can also split this up into different constructors and have different methods
+            // overridden in the listener according to each import declaration
             if (context.singleStaticImportDeclaration() != null)
             {
                 IsStatic = true;
