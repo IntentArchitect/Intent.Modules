@@ -9,13 +9,11 @@ namespace Intent.Modules.Common.Java.Editor.Parser
     {
         public static JavaFile Parse(string source)
         {
-            var inputStream = new AntlrInputStream(new MemoryStream(Encoding.UTF8.GetBytes(source)));
-            var javaLexer = new Java9Lexer(inputStream);
-            var tokens = new CommonTokenStream(javaLexer);
-            var parser = new Java9Parser(tokens);
-            var listener = new JavaFileFactoryListener();
-            ParseTreeWalker.Default.Walk(listener, parser.compilationUnit());
-            return listener.JavaFile;
+            //var inputStream = new AntlrInputStream(new MemoryStream(Encoding.UTF8.GetBytes(source)));
+            //var javaLexer = new Java9Lexer(inputStream);
+            //var tokens = new CommonTokenStream(javaLexer);
+            var javaFile = new JavaFile(source);
+            return javaFile;
         }
     }
 }

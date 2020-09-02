@@ -5,19 +5,19 @@ using System.Text;
 using Intent.Engine;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.TypeScript.Templates;
+using Intent.Modules.Common.Java.Templates;
 using Intent.Plugins.FactoryExtensions;
 using Intent.Utils;
 
-namespace Intent.Modules.Common.TypeScript.Weaving
+namespace Intent.Modules.Common.Java.Weaving
 {
-    public class TypescriptWeavingOutputTransformer : FactoryExtensionBase, ITransformOutput
+    public class JavaWeavingOutputTransformer : FactoryExtensionBase, ITransformOutput
     {
-        public override string Id => "Intent.Common.TypeScript.OutputWeaver";
+        public override string Id => "Intent.Common.Java.OutputWeaver";
 
         public void Transform(IOutputFile output)
         {
-            if (!(output.Template is ITypeScriptMerged typeScriptMerged))
+            if (!(output.Template is IJavaMerged typeScriptMerged))
             {
                 return;
             }
@@ -31,7 +31,7 @@ namespace Intent.Modules.Common.TypeScript.Weaving
 
             try
             {
-                var merger = new TypeScriptWeavingMerger();
+                var merger = new JavaWeavingMerger();
 
                 var newContent = merger.Merge(existingFile, output.Content);
 
@@ -41,7 +41,7 @@ namespace Intent.Modules.Common.TypeScript.Weaving
             {
                 output.ChangeContent(existingFile.GetSource());
 
-                Logging.Log.Failure($"Error while weaving TypeScript file: {output.FileMetadata.GetRelativeFilePath()}");
+                Logging.Log.Failure($"Error while weaving Java file: {output.FileMetadata.GetRelativeFilePath()}");
                 Logging.Log.Failure(e.ToString());
             }
         }

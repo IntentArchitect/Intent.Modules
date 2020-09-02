@@ -1,38 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using JavaParserLib;
 
 namespace Intent.Modules.Common.Java.Editor
 {
-    public class JavaClass : IEquatable<JavaClass>
+    public class JavaClass : JavaNode
     {
         private readonly Java9Parser.ClassDeclarationContext _context;
 
-        public JavaClass(Java9Parser.ClassDeclarationContext context)
+        public JavaClass(Java9Parser.ClassDeclarationContext context, JavaFile file) : base(context, file)
         {
             _context = context;
-            Name = _context.normalClassDeclaration().identifier().GetText();
+            Identifier = _context.normalClassDeclaration().identifier().GetText();
         }
 
-        public string Name { get; }
+        public override string Identifier { get; }
 
-        public IList<JavaMethod> Methods { get; } = new List<JavaMethod>();
+        //public override string GetText()
+        //{
+        //    return $"{Environment.NewLine}{Environment.NewLine}{base.GetText()}";
+        //}
 
-        public bool Equals(JavaClass other)
+        //public override string GetText()
+        //{
+        //    var ws = File.GetWhitespaceBefore(Context);
+        //    return $"{ws}{base.GetText()}";
+        //}
+
+        public string Name => Identifier;
+
+        public IReadOnlyList<JavaMethod> Methods => Children.Where(x => x is JavaMethod).Cast<JavaMethod>().ToList();
+
+        public override bool IsIgnored()
         {
-            return Name == other?.Name;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((JavaClass) obj);
-        }
-
-        public override int GetHashCode()
-        {
-            throw new NotImplementedException();
+            var annotation = _context.normalClassDeclaration()?.classModifier(0)?.annotation();
+            return annotation?.GetText().StartsWith("@IntentIgnore") ?? false;
         }
     }
 }

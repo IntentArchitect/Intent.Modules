@@ -46,15 +46,15 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
             var content = GetExistingTemplateContent();
             if (content != null)
             {
-                return ReplaceTemplateInheritsTag(content, $"TypeScriptTemplateBase<{Model.GetModelName()}>");
+                return ReplaceTemplateInheritsTag(content, $"JavaTemplateBase<{Model.GetModelName()}>");
             }
 
-            return $@"<#@ template language=""C#"" inherits=""TypeScriptTemplateBase<{Model.GetModelName()}>"" #>
+            return $@"<#@ template language=""C#"" inherits=""JavaTemplateBase<{Model.GetModelName()}>"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
-<#@ import namespace=""Intent.Modules.Common.TypeScript.Templates"" #>
+<#@ import namespace=""Intent.Modules.Common.Java.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 {(Model.GetModeler() != null ? $@"<#@ import namespace=""{Model.GetModeler().ApiNamespace}"" #>" : "")}

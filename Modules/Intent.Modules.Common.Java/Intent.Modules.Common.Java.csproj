@@ -12,4 +12,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
+  </ItemGroup>
+
 </Project>

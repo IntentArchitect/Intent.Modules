@@ -55,7 +55,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             
             #line default
             #line hidden
-            this.Write(" : TypeScriptTemplateBase<");
+            this.Write(" : JavaTemplateBase<");
             
             #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
