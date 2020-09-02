@@ -26,7 +26,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             NodePath = GetNodePath(node);
         }
 
-        private string GetNodePath(Node startNode)
+        protected string GetNodePath(Node startNode)
         {
             var path = "";
             var current = startNode;
@@ -65,15 +65,16 @@ namespace Intent.Modules.Common.TypeScript.Editor
             var pathParts = path.Split('/');
             var part = pathParts[0];
 
-            var syntaxKindValue = part.Split(':')[0];
-            var identifier = part.Split(':').Length > 1 ? part.Split(':')[1] : null;
+            var syntaxKindValue = part.Split(':')[0].Split('~')[0];
+            var identifier = part.Split(':').Length > 1 ? part.Split(':')[1].Split('~')[0] : null;
+            var textIdentifier = part.Split('~').Length > 1 ? part.Split('~')[1] : null;
 
             if (node == null || !Enum.TryParse(syntaxKindValue, out SyntaxKind syntaxKind))
                 return null;
 
             if (pathParts.Length == 1)
             {
-                return node.GetDescendants().OfKind(syntaxKind).Where(x => identifier == null || x.IdentifierStr == identifier).ToList();
+                return node.GetDescendants().OfKind(syntaxKind).Where(x => (identifier == null || x.IdentifierStr == identifier) && (textIdentifier == null || x.GetText() == textIdentifier)).ToList();
             }
 
             if (identifier == null)
@@ -81,7 +82,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 foreach (var descendant in node.GetDescendants().OfKind(syntaxKind))
                 {
                     var found = FindNodes(descendant, path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
-                    if (found != null)
+                    if (found.Count > 0)
                     {
                         return found;
                     }
@@ -96,7 +97,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         private IList<TypeScriptDecorator> _decorators;
         public IList<TypeScriptDecorator> Decorators()
         {
-            return _decorators ?? (_decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, File)).ToList() ?? new List<TypeScriptDecorator>());
+            return _decorators ?? (_decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>());
         }
 
         public bool HasDecorator(string name)
@@ -109,11 +110,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
             Change.InsertBefore(Node.First, declaration);
             UpdateChanges();
         }
-
-        //public string GetText()
-        //{
-        //    return Node.GetText();
-        //}
 
         public string GetTextWithComments()
         {

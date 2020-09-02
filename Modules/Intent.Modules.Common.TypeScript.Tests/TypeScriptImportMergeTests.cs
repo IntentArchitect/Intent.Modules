@@ -31,6 +31,7 @@ namespace Intent.Modules.Common.TypeScript.Tests
 import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+@IntentMerge()
 export class EmptyClass { 
 }", result);
         }
@@ -38,6 +39,7 @@ export class EmptyClass {
         public static string OneImport = @"
 import { NgModule } from '@angular/core';
 
+@IntentMerge()
 export class EmptyClass { 
 }";
 
@@ -45,12 +47,14 @@ export class EmptyClass {
 import { NgModule } from '@angular/core';
 import { Component } from '@angular/core';
 
+@IntentMerge()
 export class EmptyClass { 
 }";
 
         public static string TwoImportCombined = @"
 import { NgModule, Component } from '@angular/core';
 
+@IntentMerge()
 export class EmptyClass { 
 }";
 
@@ -59,6 +63,7 @@ import { NgModule } from '@angular/core';
 import { Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+@IntentMerge()
 export class EmptyClass { 
 }";
     }

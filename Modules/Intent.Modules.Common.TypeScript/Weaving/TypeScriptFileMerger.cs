@@ -17,6 +17,11 @@ namespace Intent.Modules.Common.TypeScript.Weaving
 
         public string GetMergedFile()
         {
+            if (_existingFile.GetSource().TrimStart().StartsWith("//@IntentIgnoreFile()"))
+            {
+                return _existingFile.GetSource();
+            }
+
             foreach (var import in _outputFile.Imports())
             {
                 if (!_existingFile.ImportExists(import))
@@ -25,35 +30,74 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 }
             }
 
-            var existingVariables = _existingFile.VariableDeclarations();
-            var outputVariables = _outputFile.VariableDeclarations();
+            //if (_existingFile.Ast.RootNode.OfKind(SyntaxKind.Decorator).All(x => !x.First.IdentifierStr.StartsWith("Intent")))
+            //{
+            //    return _outputFile.GetSource();
+            //}
 
-            var toAdd = outputVariables.Except(existingVariables).ToList();
-            var toUpdate = existingVariables.Where(x => !x.IsIgnored()).Intersect(outputVariables).ToList();
-            var toRemove = existingVariables.Where(x => !x.IsIgnored()).Except(outputVariables).ToList();
+            MergeFileVariables();
 
-            foreach (var existingVariable in toUpdate)
-            {
-                var outputVariable = outputVariables.Single(x => x.Equals(existingVariable));
-                //MergeVariables(existingVariables, outputVariables);
-            }
-
-            foreach (var variable in toAdd)
-            {
-                _existingFile.AddVariableDeclaration(variable.GetTextWithComments());
-            }
-
-            foreach (var variable in toRemove)
-            {
-                variable.Remove();
-            }
+            MergeFileExpressionStatements();
 
             MergeFileClasses();
 
             MergeFileInterfaces();
 
-
             return _existingFile.GetSource();
+        }
+
+
+        private void MergeFileVariables()
+        {
+            var existingVariables = _existingFile.VariableDeclarations();
+            var outputVariables = _outputFile.VariableDeclarations();
+
+            var toAdds = outputVariables.Except(existingVariables).ToList();
+            var toUpdates = existingVariables.Where(x => !x.IsIgnored()).Intersect(outputVariables).ToList();
+            var toRemoves = existingVariables.Where(x => !x.IsIgnored()).Except(outputVariables).ToList();
+
+            foreach (var toUpdate in toUpdates)
+            {
+                var outputVariable = outputVariables.Single(x => x.Equals(toUpdate));
+                //MergeVariables(existingVariables, outputVariables);
+                toUpdate.ReplaceWith(outputVariable.GetTextWithComments());
+            }
+
+            foreach (var toAdd in toAdds)
+            {
+                _existingFile.AddVariableDeclaration(toAdd.GetTextWithComments());
+            }
+
+            foreach (var toRemove in toRemoves)
+            {
+                toRemove.Remove();
+            }
+        }
+
+        private void MergeFileExpressionStatements()
+        {
+            var existingInstances = _existingFile.ExpressionStatements();
+            var outputInstances = _outputFile.ExpressionStatements();
+
+            var toAdds = outputInstances.Except(existingInstances).ToList();
+            var toUpdates = existingInstances.Where(x => !x.IsIgnored()).Intersect(outputInstances).ToList();
+            var toRemoves = existingInstances.Where(x => !x.IsIgnored()).Except(outputInstances).ToList();
+
+            foreach (var toUpdate in toUpdates)
+            {
+                var inOutput = outputInstances.Single(x => x.Equals(toUpdate));
+                toUpdate.ReplaceWith(inOutput.GetTextWithComments());
+            }
+
+            foreach (var toAdd in toAdds)
+            {
+                _existingFile.AddExpressionStatement(toAdd.GetTextWithComments());
+            }
+
+            foreach (var toRemove in toRemoves)
+            {
+                toRemove.Remove();
+            }
         }
 
         private void MergeFileInterfaces()

@@ -80,38 +80,50 @@ import {{ {className} }} from '{location}';");
             UpdateChanges();
         }
 
-        public IList<TypeScriptVariableDeclaration> VariableDeclarations()
+        public IList<TypeScriptVariableStatement> VariableDeclarations()
         {
-            return Ast.OfKind(SyntaxKind.VariableStatement).Select(x => new TypeScriptVariableDeclaration(x, this)).ToList();
+            return Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.VariableStatement).Select(x => new TypeScriptVariableStatement(x, this)).ToList();
+        }
+
+        public IList<TypeScriptExpressionStatement> ExpressionStatements()
+        {
+            return Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.ExpressionStatement).Select(x => new TypeScriptExpressionStatement(x, this)).ToList();
         }
 
         public IList<TypeScriptClass> ClassDeclarations()
         {
-            return Ast.OfKind(SyntaxKind.ClassDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
+            return Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.ClassDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
         }
 
         public IList<TypeScriptClass> InterfaceDeclarations()
         {
-            return Ast.OfKind(SyntaxKind.InterfaceDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
+            return Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.InterfaceDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
         }
 
         public void AddVariableDeclaration(string declaration)
         {
-            var variables = Ast.OfKind(SyntaxKind.VariableStatement);
+            var variables = Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.VariableStatement);
             Change.InsertAfter(variables.Any() ? variables.Last() : Ast.RootNode.Children.Last(), declaration);
+            UpdateChanges();
+        }
+
+        public void AddExpressionStatement(string declaration)
+        {
+            var existings = Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.ExpressionStatement);
+            Change.InsertAfter(existings.Any() ? existings.Last() : Ast.RootNode.Children.Last(), declaration);
             UpdateChanges();
         }
 
         public void AddClass(string declaration)
         {
-            var classes = Ast.OfKind(SyntaxKind.ClassDeclaration);
+            var classes = Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.ClassDeclaration);
             Change.InsertAfter(classes.Any() ? classes.Last() : Ast.RootNode.Children.Last(), declaration);
             UpdateChanges();
         }
 
         public void AddInterface(string declaration)
         {
-            var interfaces = Ast.OfKind(SyntaxKind.InterfaceDeclaration);
+            var interfaces = Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.InterfaceDeclaration);
             Change.InsertAfter(interfaces.Any() ? interfaces.Last() : Ast.RootNode.Children.Last(), declaration);
             UpdateChanges();
         }

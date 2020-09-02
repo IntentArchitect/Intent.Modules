@@ -4,15 +4,15 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypeScriptVariableStatement : TypeScriptNode, IEquatable<TypeScriptVariableStatement>
+    public class TypeScriptExpressionStatement : TypeScriptNode, IEquatable<TypeScriptExpressionStatement>
     {
-        public TypeScriptVariableStatement(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptExpressionStatement(Node node, TypeScriptFile file) : base(node, file)
         {
-            Name = Node.OfKind(SyntaxKind.VariableDeclaration).First().IdentifierStr ?? throw new ArgumentException("Variable Name could not be determined for node: " + this);
-            NodePath = this.GetNodePath(Node.OfKind(SyntaxKind.VariableDeclaration).First());
+            Identifier = Node.OfKind(SyntaxKind.PropertyAccessExpression).First().GetText() ?? throw new ArgumentException("Variable identifier could not be determined for node: " + this);
+            NodePath += $"/PropertyAccessExpression~{Identifier}";
         }
 
-        public string Name { get; }
+        public string Identifier { get; }
 
         public T GetAssignedValue<T>()
             where T : TypeScriptNode
@@ -34,12 +34,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         internal override void UpdateNode()
         {
-            Node = (Node)FindNode(NodePath).Parent.Parent;
+            Node = (Node)FindNode(File.Ast.RootNode, NodePath).Parent.Parent;
         }
 
-        public bool Equals(TypeScriptVariableStatement other)
+        public bool Equals(TypeScriptExpressionStatement other)
         {
-            return Name == other?.Name;
+            return Identifier == other?.Identifier;
         }
 
         public override bool Equals(object obj)
@@ -47,12 +47,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((TypeScriptVariableStatement)obj);
+            return Equals((TypeScriptExpressionStatement)obj);
         }
 
         public override int GetHashCode()
         {
-            return Name.GetHashCode();
+            return Identifier.GetHashCode();
         }
     }
 }
