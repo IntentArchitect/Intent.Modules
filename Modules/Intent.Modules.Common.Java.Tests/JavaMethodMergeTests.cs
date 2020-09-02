@@ -81,25 +81,6 @@ public class TestClass {
         // custom implementation
     }
 }";
-
-        public static string TwoClasses = @"
-public class OneClass {
-}
-
-class TwoClass {
-}";
-
-        public static string ThreeClasses = @"
-public class OneClass {
-    // Implementation one of three
-}
-
-class ThreeClass {
-    // Implementation three of three
-}
-
-class TwoClass {
-    // Implementation two of three
-}";
+       
     }
 }

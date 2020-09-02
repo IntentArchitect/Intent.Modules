@@ -14,6 +14,7 @@
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
+    <file src="$outDir$/Antlr4.Runtime.Standard.dll" />
   </files>
   <metadata />
 </package>

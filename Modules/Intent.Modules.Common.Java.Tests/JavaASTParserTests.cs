@@ -21,7 +21,33 @@ namespace Intent.Modules.Common.Java.Tests
             var javaFile = JavaASTParser.Parse(JavaTestFile);
             Assert.Equal(1, javaFile.Classes.Count);
             var @class = javaFile.Classes.Single();
-            Assert.Equal("Employee", @class.Name);
+            Assert.Equal("Employee", @class.Identifier);
+        }
+
+        [Fact]
+        public void FieldsParseCorrectly()
+        {
+            var javaFile = JavaASTParser.Parse(JavaTestFile);
+            var @class = javaFile.Classes.Single();
+            Assert.Equal(2, @class.Methods.Count);
+            var id = @class.Fields[0];
+            var name = @class.Fields[1];
+            Assert.Equal("id", id.Identifier);
+            Assert.Equal("name", name.Identifier);
+           
+        }
+
+        [Fact]
+        public void ConstructorsParseCorrectly()
+        {
+            var javaFile = JavaASTParser.Parse(JavaTestFile);
+            var @class = javaFile.Classes.Single();
+            Assert.Equal(2, @class.Constructors.Count);
+            var constructor1 = @class.Constructors[0];
+            var constructor2 = @class.Constructors[1];
+            Assert.Equal("", constructor1.Identifier);
+            Assert.Equal("int, String", constructor2.Identifier);
+
         }
 
         [Fact]
@@ -29,11 +55,11 @@ namespace Intent.Modules.Common.Java.Tests
         {
             var javaFile = JavaASTParser.Parse(JavaTestFile);
             var @class = javaFile.Classes.Single();
-            Assert.Equal(2, @class.Methods.Count);
+            Assert.Equal(2, @class.Fields.Count);
             var somePublicMethod = @class.Methods[0];
             var someDefaultMethod = @class.Methods[1];
-            Assert.Equal("somePublicMethod", somePublicMethod.Name);
-            Assert.Equal("someDefaultMethod", someDefaultMethod.Name);
+            Assert.Equal("somePublicMethod", somePublicMethod.Identifier);
+            Assert.Equal("someDefaultMethod", someDefaultMethod.Identifier);
         }
 
         public static string JavaTestFile = @"
@@ -48,6 +74,11 @@ public class Employee implements java.io.Serializable {
     private String name;
 
     public Employee() {}
+
+    public Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
 	public void somePublicMethod(String param) {
         // void somePublicMethod(String param) implementation

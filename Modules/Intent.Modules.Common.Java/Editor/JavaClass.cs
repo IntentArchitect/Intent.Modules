@@ -30,7 +30,9 @@ namespace Intent.Modules.Common.Java.Editor
 
         public string Name => Identifier;
 
+        public IReadOnlyList<JavaField> Fields => Children.Where(x => x is JavaField).Cast<JavaField>().ToList();
         public IReadOnlyList<JavaMethod> Methods => Children.Where(x => x is JavaMethod).Cast<JavaMethod>().ToList();
+        public IReadOnlyList<JavaConstructor> Constructors => Children.Where(x => x is JavaConstructor).Cast<JavaConstructor>().ToList();
 
         public override bool IsIgnored()
         {

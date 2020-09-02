@@ -58,16 +58,12 @@ namespace Intent.Modules.Common.Java.Weaving
                     existingNode.ReplaceWith(outputNode.GetText());
                     continue;
                 }
-                MergeNodes(outputNode.Children, existingNode.Children);
+                MergeNodes(existingNode.Children, outputNode.Children);
             }
 
             foreach (var node in toAdd)
             {
                 var text = node.GetText();
-                if (text.TrimStart().Length == text.Length)
-                {
-                    text = $"{Environment.NewLine}{Environment.NewLine}{text}";
-                }
                 _existingFile.InsertAfter(existingNodes.Last(), text);
             }
 

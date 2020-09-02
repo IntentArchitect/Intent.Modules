@@ -24,12 +24,23 @@ namespace Intent.Modules.Common.Java.Editor.Parser
             File.Imports.Add(new JavaImport(context));
         }
 
+        public override void EnterConstructorDeclaration(Java9Parser.ConstructorDeclarationContext context)
+        {
+            _currentClass.Children.Add(new JavaConstructor(context, _currentClass));
+        }
+
         public override void EnterClassMemberDeclaration([NotNull] Java9Parser.ClassMemberDeclarationContext context)
         {
             var methodDeclaration = context.methodDeclaration();
             if (methodDeclaration != null)
             {
                 _currentClass.Children.Add(new JavaMethod(methodDeclaration, _currentClass));
+            }
+
+            var fieldDeclaration = context.fieldDeclaration();
+            if (fieldDeclaration != null)
+            {
+                _currentClass.Children.Add(new JavaField(fieldDeclaration, _currentClass));
             }
         }
     }
