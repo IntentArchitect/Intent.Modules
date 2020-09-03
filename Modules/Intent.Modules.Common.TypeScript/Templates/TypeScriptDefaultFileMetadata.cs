@@ -8,18 +8,16 @@ namespace Intent.Modules.Common.TypeScript.Templates
         public TypeScriptDefaultFileMetadata(
             OverwriteBehaviour overwriteBehaviour,
             string fileName,
-            string defaultLocationInProject,
+            string relativeLocation,
             string className,
             string codeGenType = Common.CodeGenType.Basic,
             string fileExtension = "ts",
-            string @namespace = null,
-            string dependsUpon = null
-        )
-            : base(overwriteBehaviour: overwriteBehaviour, 
-                codeGenType: codeGenType, 
-                fileName: fileName, 
+            string @namespace = null
+        ) : base(overwriteBehaviour: overwriteBehaviour,
+                codeGenType: codeGenType,
+                fileName: fileName,
                 fileExtension: fileExtension,
-                defaultLocationInProject: defaultLocationInProject)
+                defaultLocationInProject: relativeLocation)
         {
             if (!string.IsNullOrWhiteSpace(className))
             {
@@ -28,10 +26,6 @@ namespace Intent.Modules.Common.TypeScript.Templates
             if (!string.IsNullOrWhiteSpace(@namespace))
             {
                 this.CustomMetadata["Namespace"] = @namespace;
-            }
-            if (!string.IsNullOrWhiteSpace(dependsUpon))
-            {
-                this.CustomMetadata["Depends On"] = dependsUpon;
             }
         }
     }

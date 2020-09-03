@@ -23,13 +23,13 @@ namespace Intent.Modules.Common.Java.Weaving
             //    return _existingFile.GetSource();
             //}
 
-            //foreach (var import in _outputFile.Imports())
-            //{
-            //    if (!_existingFile.ImportExists(import))
-            //    {
-            //        _existingFile.AddImport(import);
-            //    }
-            //}
+            foreach (var import in _outputFile.Imports)
+            {
+                if (!_existingFile.ImportExists(import))
+                {
+                    _existingFile.AddImport(import);
+                }
+            }
 
             //if (_existingFile.Ast.RootNode.OfKind(SyntaxKind.Decorator).All(x => !x.First.IdentifierStr.StartsWith("Intent")))
             //{

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
@@ -82,6 +83,17 @@ namespace Intent.Modules.Common.Java.Editor
             //}
 
             //return ws;
+        }
+
+        public bool ImportExists(JavaImport import)
+        {
+            return Imports.Any(x => x.Equals(import));
+        }
+
+        public void AddImport(JavaImport import)
+        {
+            InsertAfter(Imports.Last(), import.GetText());
+            //Imports.Add(import); // commented out while AST doesn't update after each change to it
         }
     }
 }

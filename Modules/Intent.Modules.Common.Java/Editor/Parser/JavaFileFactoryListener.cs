@@ -21,7 +21,7 @@ namespace Intent.Modules.Common.Java.Editor.Parser
 
         public override void EnterImportDeclaration([NotNull] Java9Parser.ImportDeclarationContext context)
         {
-            File.Imports.Add(new JavaImport(context));
+            File.Imports.Add(new JavaImport(context, File));
         }
 
         public override void EnterConstructorDeclaration(Java9Parser.ConstructorDeclarationContext context)

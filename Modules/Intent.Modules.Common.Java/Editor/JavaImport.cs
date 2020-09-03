@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Intent.Modules.Common.Java.Editor
 {
-    public class JavaImport
+    public class JavaImport : JavaNode
     {
         private readonly Java9Parser.ImportDeclarationContext _context;
 
-        public JavaImport(Java9Parser.ImportDeclarationContext context)
+        public JavaImport(Java9Parser.ImportDeclarationContext context, JavaFile file) : base(context, file)
         {
             _context = context;
 
@@ -44,5 +44,6 @@ namespace Intent.Modules.Common.Java.Editor
         public bool IsImportOnDemand { get; }
         public string TypeName { get; }
         public string Namespace { get; }
+        public override string Identifier => $"{Namespace}.{TypeName}{(IsImportOnDemand ? ".*" : "")}";
     }
 }
