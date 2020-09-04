@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         public JavaFile(CommonTokenStream tokens) : base(ParseFile(tokens), null)
         {
+            File = this;
             _tokens = tokens;
             _rewriter = new TokenStreamRewriter(tokens);
             var listener = new JavaFileFactoryListener(this);
@@ -73,6 +75,19 @@ namespace Intent.Modules.Common.Java.Editor
             UpdateContext();
         }
 
+        public void InsertBefore(JavaNode node, string text)
+        {
+            _rewriter.InsertBefore(GetWhitespaceBefore(node.Context) ?? node.Context.Start, text);
+            UpdateContext();
+        }
+
+        public void InsertBefore(IToken token, string text)
+        {
+            _rewriter.InsertBefore(token, text + Environment.NewLine);
+            UpdateContext();
+        }
+
+
         public void UpdateContext()
         {
             var inputStream = new AntlrInputStream(new MemoryStream(Encoding.UTF8.GetBytes(GetSource())));
@@ -92,17 +107,16 @@ namespace Intent.Modules.Common.Java.Editor
                 return wsToken;
             }
             return null;
+        }
 
-            //var ws = "";
-            //var pos = context.Start.StartIndex - 1;
-            //var source = GetSource();
-            //while (pos >= 0 && char.IsWhiteSpace(source[pos]))
-            //{
-            //    ws = $"{source[pos]}{ws}";
-            //    pos--;
-            //}
-
-            //return ws;
+        public IToken GetWhitespaceAfter(ParserRuleContext context)
+        {
+            var wsToken = _tokens.Get(context.Stop.TokenIndex + 1);
+            if (wsToken.Type == Java9Lexer.WS)
+            {
+                return wsToken;
+            }
+            return null;
         }
 
         public bool ImportExists(JavaImport import)

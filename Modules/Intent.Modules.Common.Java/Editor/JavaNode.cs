@@ -23,41 +23,36 @@ namespace Intent.Modules.Common.Java.Editor
             Parent = parent;
         }
 
-        protected string GetNodePath()
-        {
-            var path = "";
-            var current = Context;
-            while (current != null && current != Parent?.Context)
-            {
-                path = $"{current.GetType().Name}{(!current.Equals(Context) ? "/" : "")}{path}";
-                current = current.Parent as ParserRuleContext;
-            }
-
-            return $"{path}{(Identifier != null ? $":{Identifier}" : "")}";
-        }
-
-        public JavaFile File { get; }
-
+        public JavaFile File { get; protected set; }
         public string Identifier => GetIdentifier(Context);
         protected abstract string GetIdentifier(ParserRuleContext context);
         public ParserRuleContext Context { get; private set; }
         public JavaNode Parent { get; }
-
         public IList<JavaNode> Children => _children;
 
         public JavaNode TryGetChild(ParserRuleContext context)
         {
-            foreach (var child in Children)
-            {
-                if (child.Context.GetType() == context.GetType())
-                {
-                    if (child.Identifier == child.GetIdentifier(context))
-                    {
-
-                    }
-                }
-            }
             return Children.SingleOrDefault(x => x.Context.GetType() == context.GetType() &&  x.Identifier == x.GetIdentifier(context));
+        }
+
+        public void InsertBefore(JavaNode existing, JavaNode node)
+        {
+            if (HasChild(node))
+            {
+                throw new InvalidOperationException("Child already exists: " + node.ToString());
+            }
+            Children.Insert(Children.IndexOf(existing), node);
+            File.InsertBefore(existing, node.GetText());
+        }
+
+        public void InsertAfter(JavaNode existing, JavaNode node)
+        {
+            if (HasChild(node))
+            {
+                throw new InvalidOperationException("Child already exists: " + node.ToString());
+            }
+            Children.Insert(Children.IndexOf(existing) + 1, node);
+            File.InsertAfter(existing, node.GetText());
         }
 
         public bool HasChild(JavaNode node)
@@ -66,11 +61,6 @@ namespace Intent.Modules.Common.Java.Editor
         }
 
         public void AddChild(JavaNode node)
-        {
-            _children.Add(node);
-        }
-
-        public void InsertChild(JavaNode node)
         {
             _children.Add(node);
         }
@@ -97,58 +87,14 @@ namespace Intent.Modules.Common.Java.Editor
             return false;
         }
 
+        public virtual bool IsMerged()
+        {
+            return false;
+        }
+
         public void UpdateContext(RuleContext fromContext)
         {
             Context = (ParserRuleContext) fromContext;
-            //var path = GetNodePath();
-            //var found = FindNodes((ParserRuleContext) fromContext, path);
-            //Context = found[0];
-            //foreach (var node in Children)
-            //{
-            //    node.UpdateContext(Context);
-            //}
-
-        }
-
-        private IList<ParserRuleContext> FindNodes(ParserRuleContext node, string path)
-        {
-            var pathParts = path.Split('/');
-            var part = pathParts[0];
-
-            var nodeKind = part.Split(':')[0].Split('~')[0];
-            var identifier = part.Split(':').Length > 1 ? part.Split(':')[1].Split('~')[0] : null;
-            var textIdentifier = part.Split('~').Length > 1 ? part.Split('~')[1] : null;
-
-            if (pathParts.Length == 1)
-            {
-                if (identifier == null)
-                {
-                    return new [] { node };
-                }
-                return node.children.Where(x => x.GetType().Name == nodeKind && (identifier == null || GetIdentifier((ParserRuleContext) x) == identifier) && (textIdentifier == null || x.GetText() == textIdentifier)).Cast<ParserRuleContext>().ToList();
-            }
-
-            if (nodeKind == node.GetType().Name)
-            {
-                return FindNodes(node, path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
-            }
-
-            if (identifier == null)
-            {
-                foreach (var descendant in node.children.Where(x => x.GetType().Name == nodeKind))
-                {
-                    var found = FindNodes((ParserRuleContext) descendant, path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
-                    if (found?.Count > 0)
-                    {
-                        return found;
-                    }
-                }
-
-                return null;
-            }
-
-            throw new Exception("Failed to find node at path: "+ path);
-            //return FindNodes(node.children.Where(x => x.GetType().Name == nodeKind).FirstOrDefault(x => x.IdentifierStr == identifier), path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
         }
 
         public bool Equals(JavaNode other)
@@ -168,6 +114,7 @@ namespace Intent.Modules.Common.Java.Editor
         {
             return Identifier.GetHashCode();
         }
+
 
         public override string ToString()
         {

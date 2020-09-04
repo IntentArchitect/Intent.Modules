@@ -76,8 +76,8 @@ namespace Intent.Modules.Common.Java.Tests
             Assert.Equal(2, @class.Fields.Count);
             var somePublicMethod = @class.Methods[0];
             var someDefaultMethod = @class.Methods[1];
-            Assert.Equal("somePublicMethod", somePublicMethod.Identifier);
-            Assert.Equal("someDefaultMethod", someDefaultMethod.Identifier);
+            Assert.Equal("somePublicMethod(String)", somePublicMethod.Identifier);
+            Assert.Equal("someDefaultMethod(int)", someDefaultMethod.Identifier);
         }
 
         public static string JavaTestFile = @"

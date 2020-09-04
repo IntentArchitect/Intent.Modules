@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Antlr4.Runtime;
 
 namespace Intent.Modules.Common.Java.Editor
@@ -16,9 +15,7 @@ namespace Intent.Modules.Common.Java.Editor
         protected override string GetIdentifier(ParserRuleContext context)
         {
             return ((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList() != null
-                ? string.Join(", ", (((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList().formalParameters()?.formalParameter()
-                        .Select(x => x.unannType().GetText()) ?? new List<string>())
-                    .Concat(new[] { ((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList().lastFormalParameter().formalParameter().unannType().GetText() }))
+                ? string.Join(", ", ((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList().GetParameterTypes())
                 : "";
         }
 

@@ -40,6 +40,24 @@ namespace Intent.Modules.Common.Java.Tests
             Assert.Equal(OneMethod, result);
         }
 
+
+        [Fact]
+        public void AddsOverloadAtCorrectPlace()
+        {
+            var merger = new JavaWeavingMerger();
+            var result = merger.Merge(OneMethodIgnored, TwoOverloads);
+            Assert.Equal(@"
+public class TestClass {
+    public string testMethod(string s) {
+        // custom implementation - string overload
+    }
+    @IntentIgnore
+    public string testMethod() {
+        // custom implementation
+    }
+}", result);
+        }
+
         //[Fact]
         //public void RemovesOldAndUpdatesExisting()
         //{
@@ -81,6 +99,16 @@ public class TestClass {
         // custom implementation
     }
 }";
-       
+
+        public static string TwoOverloads = @"
+public class TestClass {
+    public string testMethod(string s) {
+        // custom implementation - string overload
+    }
+
+    public string testMethod() {
+        // implementation returns string
+    }
+}";
     }
 }

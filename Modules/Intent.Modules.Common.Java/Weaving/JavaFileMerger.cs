@@ -44,28 +44,56 @@ namespace Intent.Modules.Common.Java.Weaving
         private void MergeNodes(JavaNode existingNode, JavaNode outputNode)
         {
             var existingNodes = existingNode.Children;
-            var outputNodes = outputNode.Children;
-            var toAdd = outputNodes.Except(existingNodes).ToList();
-            var toUpdate = existingNodes.Where(x => !x.IsIgnored()).Intersect(outputNodes).ToList();
-            var toRemove = existingNodes.Where(x => !x.IsIgnored()).Except(outputNodes).ToList();
 
-            foreach (var update in toUpdate)
+            var index = 0;
+            foreach (var node in outputNode.Children)
             {
-                var inOutput = outputNodes.Single(x => x.Equals(update));
-                if (update.Children.All(x => !x.IsIgnored()))
+                var existing = existingNode.TryGetChild(node.Context);
+                if (existing == null)
                 {
-                    update.ReplaceWith(inOutput.GetText());
-                    continue;
+                    // toAdd:
+                    var text = node.GetText();
+                    if (existingNode.Children.Count == 0)
+                    {
+                        _existingFile.InsertBefore(existingNode.Context.Stop, text);
+                    }
+                    else if (index == 0)
+                    {
+                        existingNode.InsertBefore(existingNode.Children[0], node);
+                        //_existingFile.InsertBefore(existingNode.Children[0], text);
+                    }
+                    else if (existingNode.Children.Count > index)
+                    {
+                        existingNode.InsertAfter(existingNode.Children[index - 1], node); 
+                        //_existingFile.InsertAfter(existingNode.Children[index - 1], text);
+                    }
+                    else
+                    {
+                        existingNode.InsertAfter(existingNode.Children.Last(), node);
+                        //_existingFile.InsertAfter(existingNode.Children.Last(), text);
+                    }
+
+                    index++;
                 }
-                MergeNodes(update, inOutput);
+                else
+                {
+                    // toUpdate:
+                    index++;
+                    if (existing.IsIgnored())
+                    {
+                        continue;
+                    }
+
+                    if (existing.Children.All(x => !x.IsIgnored()))
+                    {
+                        existing.ReplaceWith(node.GetText());
+                        continue;
+                    }
+                    MergeNodes(existing, node);
+                }
             }
 
-            foreach (var node in toAdd)
-            {
-                var text = node.GetText();
-                _existingFile.InsertAfter(existingNode.Children.Last(), text);
-            }
-
+            var toRemove = existingNodes.Where(x => !x.IsIgnored()).Except(outputNode.Children).ToList();
             foreach (var node in toRemove)
             {
                 node.Remove();
