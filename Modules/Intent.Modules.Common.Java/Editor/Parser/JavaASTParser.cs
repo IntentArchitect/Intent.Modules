@@ -12,7 +12,7 @@ namespace Intent.Modules.Common.Java.Editor.Parser
             //var inputStream = new AntlrInputStream(new MemoryStream(Encoding.UTF8.GetBytes(source)));
             //var javaLexer = new Java9Lexer(inputStream);
             //var tokens = new CommonTokenStream(javaLexer);
-            var javaFile = new JavaFile(source);
+            var javaFile = JavaFile.Parse(source);
             return javaFile;
         }
     }

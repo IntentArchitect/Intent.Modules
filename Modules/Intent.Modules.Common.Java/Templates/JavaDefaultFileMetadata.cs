@@ -10,6 +10,7 @@ namespace Intent.Modules.Common.Java.Templates
             string fileName,
             string relativeLocation,
             string className,
+            string package = null,
             string codeGenType = Common.CodeGenType.Basic,
             string fileExtension = "java"
         )
@@ -23,10 +24,10 @@ namespace Intent.Modules.Common.Java.Templates
             {
                 this.CustomMetadata["ClassName"] = className;
             }
-            //if (!string.IsNullOrWhiteSpace(@namespace))
-            //{
-            //    this.CustomMetadata["Namespace"] = @namespace;
-            //}
+            if (!string.IsNullOrWhiteSpace(package))
+            {
+                this.CustomMetadata["Package"] = package;
+            }
         }
     }
 }

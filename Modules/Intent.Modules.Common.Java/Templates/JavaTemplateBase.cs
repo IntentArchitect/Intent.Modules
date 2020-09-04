@@ -64,14 +64,14 @@ namespace Intent.Modules.Common.Java.Templates
 
         public JavaFile GetTemplateFile()
         {
-            return new JavaFile(base.RunTemplate());
+            return JavaFile.Parse(base.RunTemplate());
         }
 
         public JavaFile GetExistingFile()
         {
             var metadata = GetMetadata();
             var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
-            return File.Exists(fullFileName) ? new JavaFile(File.ReadAllText(fullFileName)) : null;
+            return File.Exists(fullFileName) ? JavaFile.Parse(File.ReadAllText(fullFileName)) : null;
         }
     }
 }

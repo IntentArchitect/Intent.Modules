@@ -1,28 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Antlr4.Runtime;
 
 namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaConstructor : JavaNode
     {
-        public JavaClass Parent { get; }
         private readonly Java9Parser.ConstructorDeclarationContext _context;
 
-        public JavaConstructor(Java9Parser.ConstructorDeclarationContext context, JavaClass parent) : base(context, parent.File)
+        public JavaConstructor(Java9Parser.ConstructorDeclarationContext context, JavaClass parent) : base(context, parent)
         {
-            Parent = parent;
             _context = context;
-
-            Name = _context.constructorDeclarator().formalParameterList() != null
-                ? string.Join(", ", (_context.constructorDeclarator().formalParameterList().formalParameters()?.formalParameter()
-                    .Select(x => x.unannType().GetText()) ?? new List<string>())
-                    .Concat(new []{ _context.constructorDeclarator().formalParameterList().lastFormalParameter().formalParameter().unannType().GetText() }))
-                : "";
-            Identifier = Name; // plus parameter types
         }
 
-        public string Name { get; }
-        public override string Identifier { get; }
+        protected override string GetIdentifier(ParserRuleContext context)
+        {
+            return ((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList() != null
+                ? string.Join(", ", (((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList().formalParameters()?.formalParameter()
+                        .Select(x => x.unannType().GetText()) ?? new List<string>())
+                    .Concat(new[] { ((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList().lastFormalParameter().formalParameter().unannType().GetText() }))
+                : "";
+        }
 
         public override bool IsIgnored()
         {

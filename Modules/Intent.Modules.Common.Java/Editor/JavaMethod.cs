@@ -6,19 +6,20 @@ namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaMethod : JavaNode
     {
-        public JavaClass Parent { get; }
         private readonly Java9Parser.MethodDeclarationContext _context;
 
-        public JavaMethod(Java9Parser.MethodDeclarationContext context, JavaClass parent) : base(context, parent.File)
+        public JavaMethod(Java9Parser.MethodDeclarationContext context, JavaClass parent) : base(context, parent)
         {
-            Parent = parent;
             _context = context;
             Name = _context.methodHeader().methodDeclarator().identifier().GetText();
-            Identifier = Name; // plus parameter types
         }
 
         public string Name { get; }
-        public override string Identifier { get; }
+
+        protected override string GetIdentifier(ParserRuleContext context)
+        {
+            return ((Java9Parser.MethodDeclarationContext)context).methodHeader().methodDeclarator().identifier().GetText();
+        }
 
         public override bool IsIgnored()
         {

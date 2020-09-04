@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Antlr4.Runtime;
 using JavaParserLib;
 
 namespace Intent.Modules.Common.Java.Editor
@@ -12,10 +13,12 @@ namespace Intent.Modules.Common.Java.Editor
         public JavaClass(Java9Parser.ClassDeclarationContext context, JavaFile file) : base(context, file)
         {
             _context = context;
-            Identifier = _context.normalClassDeclaration().identifier().GetText();
         }
 
-        public override string Identifier { get; }
+        protected override string GetIdentifier(ParserRuleContext context)
+        {
+            return ((Java9Parser.ClassDeclarationContext) context).normalClassDeclaration().identifier().GetText();
+        }
 
         //public override string GetText()
         //{

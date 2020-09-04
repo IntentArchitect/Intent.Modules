@@ -1,22 +1,24 @@
 ﻿using System.Linq;
+using Antlr4.Runtime;
 
 namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaField : JavaNode
     {
-        public JavaClass Parent { get; }
         private readonly Java9Parser.FieldDeclarationContext _context;
 
-        public JavaField(Java9Parser.FieldDeclarationContext context, JavaClass parent) : base(context, parent.File)
+        public JavaField(Java9Parser.FieldDeclarationContext context, JavaClass parent) : base(context, parent)
         {
-            Parent = parent;
             _context = context;
-            Name = _context.variableDeclaratorList().variableDeclarator(0).variableDeclaratorId().identifier().GetText();
-            Identifier = Name; // plus parameter types
+            Name = Identifier;
         }
 
         public string Name { get; }
-        public override string Identifier { get; }
+
+        protected override string GetIdentifier(ParserRuleContext context)
+        {
+            return ((Java9Parser.FieldDeclarationContext)context).variableDeclaratorList().variableDeclarator(0).variableDeclaratorId().identifier().GetText();
+        }
 
         public override bool IsIgnored()
         {

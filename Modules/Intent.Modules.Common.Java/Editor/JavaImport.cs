@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Antlr4.Runtime;
 
 namespace Intent.Modules.Common.Java.Editor
 {
@@ -44,6 +45,10 @@ namespace Intent.Modules.Common.Java.Editor
         public bool IsImportOnDemand { get; }
         public string TypeName { get; }
         public string Namespace { get; }
-        public override string Identifier => $"{Namespace}.{TypeName}{(IsImportOnDemand ? ".*" : "")}";
+
+        protected override string GetIdentifier(ParserRuleContext context)
+        {
+            return context.GetText();
+        }
     }
 }

@@ -36,35 +36,34 @@ namespace Intent.Modules.Common.Java.Weaving
             //    return _outputFile.GetSource();
             //}
 
-            var existingClasses = _existingFile.Classes;
-            var outputClasses = _outputFile.Classes;
-
-            MergeNodes(existingClasses, outputClasses);
+            MergeNodes(_existingFile, _outputFile);
 
             return _existingFile.GetSource();
         }
 
-        private void MergeNodes(IEnumerable<JavaNode> existingNodes, IEnumerable<JavaNode> outputNodes)
+        private void MergeNodes(JavaNode existingNode, JavaNode outputNode)
         {
+            var existingNodes = existingNode.Children;
+            var outputNodes = outputNode.Children;
             var toAdd = outputNodes.Except(existingNodes).ToList();
             var toUpdate = existingNodes.Where(x => !x.IsIgnored()).Intersect(outputNodes).ToList();
             var toRemove = existingNodes.Where(x => !x.IsIgnored()).Except(outputNodes).ToList();
 
-            foreach (var existingNode in toUpdate)
+            foreach (var update in toUpdate)
             {
-                var outputNode = outputNodes.Single(x => x.Equals(existingNode));
-                if (existingNode.Children.All(x => !x.IsIgnored()))
+                var inOutput = outputNodes.Single(x => x.Equals(update));
+                if (update.Children.All(x => !x.IsIgnored()))
                 {
-                    existingNode.ReplaceWith(outputNode.GetText());
+                    update.ReplaceWith(inOutput.GetText());
                     continue;
                 }
-                MergeNodes(existingNode.Children, outputNode.Children);
+                MergeNodes(update, inOutput);
             }
 
             foreach (var node in toAdd)
             {
                 var text = node.GetText();
-                _existingFile.InsertAfter(existingNodes.Last(), text);
+                _existingFile.InsertAfter(existingNode.Children.Last(), text);
             }
 
             foreach (var node in toRemove)

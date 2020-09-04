@@ -54,6 +54,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
+<#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Modules.Common.Java.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
@@ -64,7 +65,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
         private string TemplateBody()
         {
             return @"
-export class <#= ClassName #> { 
+public class <#= ClassName #>() { 
 
 }";
         }

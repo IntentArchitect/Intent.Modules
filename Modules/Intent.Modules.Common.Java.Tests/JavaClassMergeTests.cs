@@ -48,6 +48,14 @@ namespace Intent.Modules.Common.Java.Tests
             Assert.Equal(TwoClasses, result);
         }
 
+        [Fact]
+        public void AddsTwoNewClassInOrder()
+        {
+            var merger = new JavaWeavingMerger();
+            var result = merger.Merge(OneClass, ThreeClasses);
+            Assert.Equal(ThreeClasses, result);
+        }
+
         public static string OneClass = @"
 public class OneClass {
 }";

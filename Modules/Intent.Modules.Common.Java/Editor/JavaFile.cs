@@ -9,44 +9,41 @@ using Intent.Modules.Common.Java.Editor.Parser;
 
 namespace Intent.Modules.Common.Java.Editor
 {
-    public class JavaFile
+    public class JavaFile : JavaNode
     {
-        private readonly string _originalSource;
-        private readonly CommonTokenStream _tokens;
-        private readonly TokenStreamRewriter _rewriter;
+        private CommonTokenStream _tokens;
+        private TokenStreamRewriter _rewriter;
 
-        public JavaFile(string originalSource)
+        public static JavaFile Parse(string originalSource)
         {
             var inputStream = new AntlrInputStream(new MemoryStream(Encoding.UTF8.GetBytes(originalSource)));
             var javaLexer = new Java9Lexer(inputStream);
             var tokens = new CommonTokenStream(javaLexer);
-            _originalSource = originalSource;
-            _tokens = tokens;
-            _rewriter = new TokenStreamRewriter(tokens);
-            ParseFile(tokens);
+
+            return new JavaFile(tokens);
         }
 
-        //public JavaFile(string source, CommonTokenStream tokens)
-        //{
-        //    _source = source;
-        //    _tokens = tokens;
-        //    _rewriter = new TokenStreamRewriter(tokens);
-        //    ParseFile(tokens);
-        //}
-
-        private void ParseFile(CommonTokenStream tokens)
+        private static Java9Parser.CompilationUnitContext ParseFile(ITokenStream tokens)
         {
             var parser = new Java9Parser(tokens);
-            var listener = new JavaFileFactoryListener(this);
-            ParseTreeWalker.Default.Walk(listener, parser.compilationUnit());
+            return parser.compilationUnit();
         }
 
-        public IList<JavaClass> Classes { get; } = new List<JavaClass>();
+        public JavaFile(CommonTokenStream tokens) : base(ParseFile(tokens), null)
+        {
+            _tokens = tokens;
+            _rewriter = new TokenStreamRewriter(tokens);
+            var listener = new JavaFileFactoryListener(this);
+            ParseTreeWalker.Default.Walk(listener, Context);
+        }
+
+        public IReadOnlyList<JavaClass> Classes => Children.Where(x => x is JavaClass).Cast<JavaClass>().ToList();
         public IList<JavaImport> Imports { get; } = new List<JavaImport>();
 
         public void Replace(ParserRuleContext context, string text)
         {
             _rewriter.Replace(GetWhitespaceBefore(context) ?? context.Start, context.Stop, text);
+            UpdateContext();
         }
 
         public string GetSource()
@@ -54,14 +51,37 @@ namespace Intent.Modules.Common.Java.Editor
             return _rewriter.GetText();
         }
 
+        protected override string GetIdentifier(ParserRuleContext context)
+        {
+            return null;
+        }
+
         public override string ToString()
         {
             return GetSource();
         }
 
+        public void InsertAfter(JavaNode after, JavaNode nodeToInsert)
+        {
+            Children.Insert(Children.IndexOf(after) + 1, nodeToInsert);
+            InsertAfter(after, nodeToInsert.GetText());
+        }
+
         public void InsertAfter(JavaNode node, string text)
         {
             _rewriter.InsertAfter(node.Context.Stop, text);
+            UpdateContext();
+        }
+
+        public void UpdateContext()
+        {
+            var inputStream = new AntlrInputStream(new MemoryStream(Encoding.UTF8.GetBytes(GetSource())));
+            var javaLexer = new Java9Lexer(inputStream);
+            _tokens = new CommonTokenStream(javaLexer);
+            _rewriter = new TokenStreamRewriter(_tokens);
+            UpdateContext(ParseFile(_tokens));
+            var listener = new JavaFileFactoryListener(this);
+            ParseTreeWalker.Default.Walk(listener, Context);
         }
 
         public IToken GetWhitespaceBefore(ParserRuleContext context)
