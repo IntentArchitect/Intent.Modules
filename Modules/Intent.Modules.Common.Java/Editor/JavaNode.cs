@@ -29,6 +29,8 @@ namespace Intent.Modules.Common.Java.Editor
         public ParserRuleContext Context { get; private set; }
         public JavaNode Parent { get; }
         public IList<JavaNode> Children => _children;
+        public IToken StartToken => File.GetCommentsAndWhitespaceBefore(Context.Start).StartToken ?? Context.Start;
+        public IToken StopToken => Context.Stop;
 
         public JavaNode TryGetChild(ParserRuleContext context)
         {
@@ -67,19 +69,19 @@ namespace Intent.Modules.Common.Java.Editor
 
         public virtual string GetText()
         {
-            var ws = File.GetWhitespaceBefore(Context);
-            return $"{ws?.Text ?? ""}{Context.GetFullText()}";
+            var ws = File.GetCommentsAndWhitespaceBefore(Context.Start);
+            return $"{ws.Text}{Context.GetFullText()}";
             //return Context.GetFullText();
         }
 
         public void ReplaceWith(string text)
         {
-            File.Replace(Context, text);
+            File.Replace(this, text);
         }
 
         public void Remove()
         {
-            File.Replace(Context, "");
+            File.Replace(this, "");
         }
 
         public virtual bool IsIgnored()

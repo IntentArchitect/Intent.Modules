@@ -42,9 +42,9 @@ namespace Intent.Modules.Common.Java.Editor
         public IReadOnlyList<JavaClass> Classes => Children.Where(x => x is JavaClass).Cast<JavaClass>().ToList();
         public IList<JavaImport> Imports { get; } = new List<JavaImport>();
 
-        public void Replace(ParserRuleContext context, string text)
+        public void Replace(JavaNode node, string text)
         {
-            _rewriter.Replace(GetWhitespaceBefore(context) ?? context.Start, context.Stop, text);
+            _rewriter.Replace(node.StartToken, node.StopToken, text);
             UpdateContext();
         }
 
@@ -63,12 +63,6 @@ namespace Intent.Modules.Common.Java.Editor
             return GetSource();
         }
 
-        public void InsertAfter(JavaNode after, JavaNode nodeToInsert)
-        {
-            Children.Insert(Children.IndexOf(after) + 1, nodeToInsert);
-            InsertAfter(after, nodeToInsert.GetText());
-        }
-
         public void InsertAfter(JavaNode node, string text)
         {
             _rewriter.InsertAfter(node.Context.Stop, text);
@@ -77,7 +71,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         public void InsertBefore(JavaNode node, string text)
         {
-            _rewriter.InsertBefore(GetWhitespaceBefore(node.Context) ?? node.Context.Start, text);
+            _rewriter.InsertBefore(node.StartToken, text);
             UpdateContext();
         }
 
@@ -99,22 +93,54 @@ namespace Intent.Modules.Common.Java.Editor
             ParseTreeWalker.Default.Walk(listener, Context);
         }
 
-        public IToken GetWhitespaceBefore(ParserRuleContext context)
+        public (string Text, IToken StartToken) GetCommentsAndWhitespaceBefore(IToken token)
         {
-            var wsToken = _tokens.Get(context.Start.TokenIndex - 1);
-            if (wsToken.Type == Java9Lexer.WS)
+            if (token.TokenIndex - 1 < 0)
             {
-                return wsToken;
+                return ("", null);
             }
-            return null;
+            var text = "";
+            var previous = _tokens.Get(token.TokenIndex - 1);
+            while (previous.Type == Java9Lexer.WS || previous.Type == Java9Lexer.COMMENT)
+            {
+                text = $"{previous.Text}{text}";
+                if (previous.TokenIndex - 1 < 0)
+                {
+                    return (text, previous);
+                }
+                previous = _tokens.Get(previous.TokenIndex - 1);
+            }
+
+            return text != "" ? (text, _tokens.Get(previous.TokenIndex + 1)) : (text, null);
         }
 
-        public IToken GetWhitespaceAfter(ParserRuleContext context)
+        //public IToken GetWhitespaceBefore(ParserRuleContext context)
+        //{
+        //    var wsToken = _tokens.Get(context.Start.TokenIndex - 1);
+        //    if (wsToken.Type == Java9Lexer.WS)
+        //    {
+        //        return wsToken;
+        //    }
+        //    return null;
+        //}
+
+        // Not used...
+        //public IToken GetWhitespaceAfter(ParserRuleContext context)
+        //{
+        //    var wsToken = _tokens.Get(context.Stop.TokenIndex + 1);
+        //    if (wsToken.Type == Java9Lexer.WS)
+        //    {
+        //        return wsToken;
+        //    }
+        //    return null;
+        //}
+
+        public object GetCommentsBefore(IToken token)
         {
-            var wsToken = _tokens.Get(context.Stop.TokenIndex + 1);
-            if (wsToken.Type == Java9Lexer.WS)
+            var commentToken = _tokens.Get(token.TokenIndex - 1);
+            if (commentToken.Type == Java9Lexer.COMMENT)
             {
-                return wsToken;
+                return commentToken;
             }
             return null;
         }

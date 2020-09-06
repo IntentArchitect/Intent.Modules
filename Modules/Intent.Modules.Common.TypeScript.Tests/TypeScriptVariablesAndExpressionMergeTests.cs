@@ -95,7 +95,6 @@ server.listen(port, hostname, () => {
 });", result);
         }
 
-
         [Fact]
         public void SkipsIgnoredInCommentsAndUpdatesOthers()
         {

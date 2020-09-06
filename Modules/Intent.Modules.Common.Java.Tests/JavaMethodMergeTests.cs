@@ -58,13 +58,22 @@ public class TestClass {
 }", result);
         }
 
-        //[Fact]
-        //public void RemovesOldAndUpdatesExisting()
-        //{
-        //    var merger = new JavaWeavingMerger();
-        //    var result = merger.Merge(ThreeMethodes, TwoMethodes);
-        //    Assert.Equal(TwoClasses, result);
-        //}
+        [Fact]
+        public void SkipsRemovingUnknownMethodsWhenClassMerged()
+        {
+            var merger = new JavaWeavingMerger();
+            var result = merger.Merge(TwoMethodsOnMergedClass, OneMethod);
+            Assert.Equal(@"
+@IntentMerge
+public class TestClass {
+    public string testMethod(string s) {
+        // custom implementation - string overload
+    }
+    public string testMethod() {
+        // implementation returns string
+    }
+}", result);
+        }
 
         public static string OneMethodVoid = @"
 public class TestClass {
@@ -101,6 +110,18 @@ public class TestClass {
 }";
 
         public static string TwoOverloads = @"
+public class TestClass {
+    public string testMethod(string s) {
+        // custom implementation - string overload
+    }
+
+    public string testMethod() {
+        // implementation returns string
+    }
+}";
+
+        public static string TwoMethodsOnMergedClass = @"
+@IntentMerge
 public class TestClass {
     public string testMethod(string s) {
         // custom implementation - string overload

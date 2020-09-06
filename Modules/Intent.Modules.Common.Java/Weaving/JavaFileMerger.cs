@@ -43,8 +43,6 @@ namespace Intent.Modules.Common.Java.Weaving
 
         private void MergeNodes(JavaNode existingNode, JavaNode outputNode)
         {
-            var existingNodes = existingNode.Children;
-
             var index = 0;
             foreach (var node in outputNode.Children)
             {
@@ -60,17 +58,14 @@ namespace Intent.Modules.Common.Java.Weaving
                     else if (index == 0)
                     {
                         existingNode.InsertBefore(existingNode.Children[0], node);
-                        //_existingFile.InsertBefore(existingNode.Children[0], text);
                     }
                     else if (existingNode.Children.Count > index)
                     {
-                        existingNode.InsertAfter(existingNode.Children[index - 1], node); 
-                        //_existingFile.InsertAfter(existingNode.Children[index - 1], text);
+                        existingNode.InsertAfter(existingNode.Children[index - 1], node);
                     }
                     else
                     {
                         existingNode.InsertAfter(existingNode.Children.Last(), node);
-                        //_existingFile.InsertAfter(existingNode.Children.Last(), text);
                     }
 
                     index++;
@@ -84,19 +79,22 @@ namespace Intent.Modules.Common.Java.Weaving
                         continue;
                     }
 
-                    if (existing.Children.All(x => !x.IsIgnored()))
+                    if (existing.Children.All(x => !x.IsIgnored()) && !existing.IsMerged())
                     {
-                        existing.ReplaceWith(node.GetText());
+                        existing.ReplaceWith(node.GetText()); // Overwrite
                         continue;
                     }
                     MergeNodes(existing, node);
                 }
             }
 
-            var toRemove = existingNodes.Where(x => !x.IsIgnored()).Except(outputNode.Children).ToList();
-            foreach (var node in toRemove)
+            if (!existingNode.IsMerged())
             {
-                node.Remove();
+                var toRemove = existingNode.Children.Where(x => !x.IsIgnored()).Except(outputNode.Children).ToList();
+                foreach (var node in toRemove)
+                {
+                    node.Remove();
+                }
             }
         }
     }
