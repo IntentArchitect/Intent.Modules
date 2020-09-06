@@ -4,15 +4,18 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypeScriptVariableStatement : TypeScriptNode, IEquatable<TypeScriptVariableStatement>
+    public class TypeScriptVariableStatement : TypeScriptNode
     {
         public TypeScriptVariableStatement(Node node, TypeScriptFile file) : base(node, file)
         {
-            Name = Node.OfKind(SyntaxKind.VariableDeclaration).First().IdentifierStr ?? throw new ArgumentException("Variable Name could not be determined for node: " + this);
-            NodePath = this.GetNodePath(Node.OfKind(SyntaxKind.VariableDeclaration).First());
+            //Name = Node.OfKind(SyntaxKind.VariableDeclaration).First().IdentifierStr ?? throw new ArgumentException("Variable Name could not be determined for node: " + this);
+            //NodePath = this.GetNodePath(Node.OfKind(SyntaxKind.VariableDeclaration).First());
         }
 
-        public string Name { get; }
+        public override string GetIdentifier(Node node)
+        {
+            return Node.OfKind(SyntaxKind.VariableDeclaration).First().IdentifierStr;
+        }
 
         public T GetAssignedValue<T>()
             where T : TypeScriptNode
@@ -32,27 +35,27 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return null;
         }
 
-        internal override void UpdateNode()
-        {
-            Node = (Node)FindNode(NodePath).Parent.Parent;
-        }
+        //internal override void UpdateNode()
+        //{
+        //    Node = (Node)FindNode(NodePath).Parent.Parent;
+        //}
 
-        public bool Equals(TypeScriptVariableStatement other)
-        {
-            return Name == other?.Name;
-        }
+        //public bool Equals(TypeScriptVariableStatement other)
+        //{
+        //    return Name == other?.Name;
+        //}
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((TypeScriptVariableStatement)obj);
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    if (ReferenceEquals(null, obj)) return false;
+        //    if (ReferenceEquals(this, obj)) return true;
+        //    if (obj.GetType() != this.GetType()) return false;
+        //    return Equals((TypeScriptVariableStatement)obj);
+        //}
 
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode();
-        }
+        //public override int GetHashCode()
+        //{
+        //    return Name.GetHashCode();
+        //}
     }
 }

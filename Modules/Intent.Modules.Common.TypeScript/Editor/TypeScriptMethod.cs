@@ -5,31 +5,37 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypeScriptMethod : TypeScriptNode, IEquatable<TypeScriptMethod>
+    public class TypeScriptMethod : TypeScriptNode
     {
         public TypeScriptMethod(Node node, TypeScriptFile file) : base(node, file)
         {
 
         }
 
-        public string Name => Node.IdentifierStr;
-
-        public bool Equals(TypeScriptMethod other)
+        public override string GetIdentifier(Node node)
         {
-            return Name == other?.Name;
+            return Node.IdentifierStr;
         }
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((TypeScriptMethod) obj);
-        }
+        //public string Name => Node.IdentifierStr;
 
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode();
-        }
+        //public bool Equals(TypeScriptMethod other)
+        //{
+        //    return Name == other?.Name;
+        //}
+
+        //public override bool Equals(object obj)
+        //{
+        //    if (ReferenceEquals(null, obj)) return false;
+        //    if (ReferenceEquals(this, obj)) return true;
+        //    if (obj.GetType() != this.GetType()) return false;
+        //    return Equals((TypeScriptMethod) obj);
+        //}
+
+        //public override int GetHashCode()
+        //{
+        //    return Name.GetHashCode();
+        //}
+
     }
 }

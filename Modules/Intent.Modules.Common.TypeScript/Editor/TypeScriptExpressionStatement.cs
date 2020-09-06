@@ -4,15 +4,18 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypeScriptExpressionStatement : TypeScriptNode, IEquatable<TypeScriptExpressionStatement>
+    public class TypeScriptExpressionStatement : TypeScriptNode
     {
         public TypeScriptExpressionStatement(Node node, TypeScriptFile file) : base(node, file)
         {
-            Identifier = Node.OfKind(SyntaxKind.PropertyAccessExpression).First().GetText() ?? throw new ArgumentException("Variable identifier could not be determined for node: " + this);
-            NodePath += $"/PropertyAccessExpression~{Identifier}";
+            //Identifier =  ?? throw new ArgumentException("Variable identifier could not be determined for node: " + this);
+            //NodePath += $"/PropertyAccessExpression~{Identifier}";
         }
 
-        public string Identifier { get; }
+        public override string GetIdentifier(Node node)
+        {
+            return Node.OfKind(SyntaxKind.PropertyAccessExpression).First().GetText();
+        }
 
         public T GetAssignedValue<T>()
             where T : TypeScriptNode
@@ -32,27 +35,45 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return null;
         }
 
-        internal override void UpdateNode()
-        {
-            Node = (Node)FindNode(File.Ast.RootNode, NodePath).Parent.Parent;
-        }
+        //internal override void UpdateNode()
 
-        public bool Equals(TypeScriptExpressionStatement other)
-        {
-            return Identifier == other?.Identifier;
-        }
+        //{
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((TypeScriptExpressionStatement)obj);
-        }
+        //    Node = (Node)FindNode(File.Ast.RootNode, NodePath).Parent.Parent;
 
-        public override int GetHashCode()
-        {
-            return Identifier.GetHashCode();
-        }
+        //}
+
+
+        //public bool Equals(TypeScriptExpressionStatement other)
+
+        //{
+
+        //    return Identifier == other?.Identifier;
+
+        //}
+
+
+        //public override bool Equals(object obj)
+
+        //{
+
+        //    if (ReferenceEquals(null, obj)) return false;
+
+        //    if (ReferenceEquals(this, obj)) return true;
+
+        //    if (obj.GetType() != this.GetType()) return false;
+
+        //    return Equals((TypeScriptExpressionStatement)obj);
+
+        //}
+
+
+        //public override int GetHashCode()
+
+        //{
+
+        //    return Identifier.GetHashCode();
+
+        //}
     }
 }

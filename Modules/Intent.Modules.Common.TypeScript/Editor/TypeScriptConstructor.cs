@@ -10,5 +10,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public TypeScriptConstructor(Node node, TypeScriptFile file) : base(node, file)
         {
         }
+
+        public override string GetIdentifier(Node node)
+        {
+            return null;
+        }
     }
 }

@@ -6,7 +6,7 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypeScriptClass : TypeScriptNode, IEquatable<TypeScriptClass>
+    public class TypeScriptClass : TypeScriptNode
     {
         public TypeScriptClass(Node node, TypeScriptFile file) : base(node, file)
         {
@@ -14,117 +14,125 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public string Name => Node.IdentifierStr;
 
-        public bool HasConstructor()
+        public override string GetIdentifier(Node node)
         {
-            return Node.OfKind(SyntaxKind.Constructor).Any();
+            return Node.IdentifierStr;
         }
 
-        private TypeScriptConstructor _constructor;
-        public TypeScriptConstructor Constructor()
-        {
-            return HasConstructor() ? _constructor ?? (_constructor = new TypeScriptConstructor(Node.OfKind(SyntaxKind.Constructor).First(), File)) : null;
-        }
+        //public bool HasConstructor()
+        //{
+        //    return Node.OfKind(SyntaxKind.Constructor).Any();
+        //}
 
-        public void AddConstructor(string text)
-        {
-            if (IsEmptyClass())
-            {
-                AddCodeToClass(text);
-                return;
-            }
+        //private TypeScriptConstructor _constructor;
 
-            var methods = Node.OfKind(SyntaxKind.MethodDeclaration);
-            if (methods.Any())
-            {
-                Change.InsertBefore(methods.First(), text);
-            }
+        //public TypeScriptConstructor Constructor()
+        //{
+        //    return HasConstructor() ? _constructor ?? (_constructor = new TypeScriptConstructor(Node.OfKind(SyntaxKind.Constructor).First(), File)) : null;
+        //}
 
-            var properties = Node.OfKind(SyntaxKind.PropertyDeclaration);
-            Change.InsertAfter(properties.LastOrDefault() ?? Node.Children.Last(), text);
+        //public void AddConstructor(string text)
+        //{
+        //    if (IsEmptyClass())
+        //    {
+        //        AddCodeToClass(text);
+        //        return;
+        //    }
 
-            UpdateChanges();
-        }
+        //    var methods = Node.OfKind(SyntaxKind.MethodDeclaration);
+        //    if (methods.Any())
+        //    {
+        //        Change.InsertBefore(methods.First(), text);
+        //    }
 
-        private IList<TypeScriptMethod> _methods;
-        public IList<TypeScriptMethod> Methods()
-        {
-            return _methods ?? (_methods = Node.OfKind(SyntaxKind.MethodDeclaration).Select(x => new TypeScriptMethod(x, File)).ToList());
-        }
+        //    var properties = Node.OfKind(SyntaxKind.PropertyDeclaration);
+        //    Change.InsertAfter(properties.LastOrDefault() ?? Node.Children.Last(), text);
 
-        public bool MethodExists(string methodName)
-        {
-            var methods = Node.OfKind(SyntaxKind.MethodDeclaration);
+        //    UpdateChanges();
+        //}
 
-            if (!methods.Any())
-            {
-                return false;
-            }
+        //private IList<TypeScriptMethod> _methods;
 
-            return NodeExists($"MethodDeclaration/MethodDeclaration:{methodName}");
-        }
+        //public IList<TypeScriptMethod> Methods()
+        //{
+        //    return _methods ?? (_methods = Node.OfKind(SyntaxKind.MethodDeclaration).Select(x => new TypeScriptMethod(x, File)).ToList());
+        //}
 
-        public void AddMethod(string method)
-        {
-            if (IsEmptyClass())
-            {
-                AddCodeToClass(method);
-                return;
-            }
+        //public bool MethodExists(string methodName)
+        //{
+        //    var methods = Node.OfKind(SyntaxKind.MethodDeclaration);
 
-            var methods = Node.OfKind(SyntaxKind.MethodDeclaration);
-            Change.InsertAfter(methods.Any() ? methods.Last() 
-                : HasConstructor() ? Constructor().Node 
-                : Node.Children.Last(), method);
+        //    if (!methods.Any())
+        //    {
+        //        return false;
+        //    }
 
-            UpdateChanges();
-        }
+        //    return NodeExists($"MethodDeclaration/MethodDeclaration:{methodName}");
+        //}
 
-        public void ReplaceMethod(string methodName, string method)
-        {
-            var existing = Methods().FirstOrDefault(x => x.Name == methodName);
+        //public void AddMethod(string method)
+        //{
+        //    if (IsEmptyClass())
+        //    {
+        //        AddCodeToClass(method);
+        //        return;
+        //    }
 
-            if (existing == null)
-            {
-                throw new InvalidOperationException($"Method ({methodName}) could not be found.");
-            }
+        //    var methods = Node.OfKind(SyntaxKind.MethodDeclaration);
+        //    Change.InsertAfter(methods.Any() ? methods.Last() 
+        //        : HasConstructor() ? Constructor().Node 
+        //        : Node.Children.Last(), method);
 
-            existing.ReplaceWith(method);
-        }
+        //    UpdateChanges();
+        //}
 
-        private IList<TypeScriptProperty> _properties;
-        public IList<TypeScriptProperty> Properties()
-        {
-            return _properties ?? (_properties = Node.OfKind(SyntaxKind.PropertyDeclaration).Select(x => new TypeScriptProperty(x, File)).ToList());
-        }
+        //public void ReplaceMethod(string methodName, string method)
+        //{
+        //    var existing = Methods().FirstOrDefault(x => x.Name == methodName);
 
-        public bool PropertyExists(string propertyName)
-        {
-            var properties = Node.OfKind(SyntaxKind.PropertyDeclaration);
+        //    if (existing == null)
+        //    {
+        //        throw new InvalidOperationException($"Method ({methodName}) could not be found.");
+        //    }
 
-            return properties.Any(x => x.IdentifierStr == propertyName);
-        }
+        //    existing.ReplaceWith(method);
+        //}
 
-        public void AddProperty(string propertyDeclaration)
-        {
-            if (IsEmptyClass())
-            {
-                AddCodeToClass(propertyDeclaration);
-                return;
-            }
+        //private IList<TypeScriptProperty> _properties;
 
-            var properties = Node.OfKind(SyntaxKind.PropertyDeclaration);
+        //public IList<TypeScriptProperty> Properties()
+        //{
+        //    return _properties ?? (_properties = Node.OfKind(SyntaxKind.PropertyDeclaration).Select(x => new TypeScriptProperty(x, File)).ToList());
+        //}
 
-            if (properties.Any())
-            {
-                Change.InsertAfter(properties.Last(), propertyDeclaration);
-            }
-            else
-            {
-                Change.InsertBefore(Node.Children.OfKind(SyntaxKind.Constructor).FirstOrDefault() ?? Node.Children.OfKind(SyntaxKind.MethodDeclaration).FirstOrDefault() ?? Node.Children.Last(), propertyDeclaration);
-            }
+        //public bool PropertyExists(string propertyName)
+        //{
+        //    var properties = Node.OfKind(SyntaxKind.PropertyDeclaration);
 
-            UpdateChanges();
-        }
+        //    return properties.Any(x => x.IdentifierStr == propertyName);
+        //}
+
+        //public void AddProperty(string propertyDeclaration)
+        //{
+        //    if (IsEmptyClass())
+        //    {
+        //        AddCodeToClass(propertyDeclaration);
+        //        return;
+        //    }
+
+        //    var properties = Node.OfKind(SyntaxKind.PropertyDeclaration);
+
+        //    if (properties.Any())
+        //    {
+        //        Change.InsertAfter(properties.Last(), propertyDeclaration);
+        //    }
+        //    else
+        //    {
+        //        Change.InsertBefore(Node.Children.OfKind(SyntaxKind.Constructor).FirstOrDefault() ?? Node.Children.OfKind(SyntaxKind.MethodDeclaration).FirstOrDefault() ?? Node.Children.Last(), propertyDeclaration);
+        //    }
+
+        //    UpdateChanges();
+        //}
 
         public bool IsEmptyClass()
         {
@@ -139,55 +147,55 @@ namespace Intent.Modules.Common.TypeScript.Editor
             UpdateChanges();
         }
 
-        public override void UpdateChanges()
-        {
-            if (_constructor != null)
-            {
-                File.Unregister(_constructor);
-                _constructor = null;
-            }
-            if (_properties != null)
-            {
-                foreach (var property in _properties)
-                {
-                    File.Unregister(property);
-                }
-                _properties = null;
-            }
-            if (_methods != null)
-            {
-                foreach (var method in _methods)
-                {
-                    File.Unregister(method);
-                }
-                _methods = null;
-            }
+        //public override void UpdateChanges()
+        //{
+        //    //if (_constructor != null)
+        //    //{
+        //    //    File.Unregister(_constructor);
+        //    //    _constructor = null;
+        //    //}
+        //    //if (_properties != null)
+        //    //{
+        //    //    foreach (var property in _properties)
+        //    //    {
+        //    //        File.Unregister(property);
+        //    //    }
+        //    //    _properties = null;
+        //    //}
+        //    //if (_methods != null)
+        //    //{
+        //    //    foreach (var method in _methods)
+        //    //    {
+        //    //        File.Unregister(method);
+        //    //    }
+        //    //    _methods = null;
+        //    //}
 
-            base.UpdateChanges();
-        }
+        //    base.UpdateChanges();
+        //}
 
-        public bool Equals(TypeScriptClass other)
-        {
-            return Name == other?.Name;
-        }
+        //public bool Equals(TypeScriptClass other)
+        //{
+        //    return Name == other?.Name;
+        //}
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((TypeScriptClass)obj);
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    if (ReferenceEquals(null, obj)) return false;
+        //    if (ReferenceEquals(this, obj)) return true;
+        //    if (obj.GetType() != this.GetType()) return false;
+        //    return Equals((TypeScriptClass)obj);
+        //}
 
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode();
-        }
+        //public override int GetHashCode()
+        //{
+        //    return Name.GetHashCode();
+        //}
 
-        public void RemoveConstructor(TypeScriptConstructor constructor)
-        {
-            _constructor = null;
-            constructor.Remove();
-        }
+        //public void RemoveConstructor(TypeScriptConstructor constructor)
+        //{
+        //    _constructor = null;
+        //    constructor.Remove();
+        //}
     }
 }

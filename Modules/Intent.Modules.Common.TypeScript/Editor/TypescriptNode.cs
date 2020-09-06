@@ -11,7 +11,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
     //    void Visit(TypeScriptClass typeScriptClass);
     //}
 
-    public abstract class TypeScriptNode
+    public abstract class TypeScriptNode : IEquatable<TypeScriptNode>
     {
         protected internal Node Node;
         public readonly TypeScriptFile File;
@@ -24,6 +24,17 @@ namespace Intent.Modules.Common.TypeScript.Editor
             File = file ?? throw new ArgumentNullException(nameof(file));
             File.Register(this);
             NodePath = GetNodePath(node);
+        }
+
+        public string Identifier => GetIdentifier(Node);
+
+        public IList<TypeScriptNode> Children = new List<TypeScriptNode>();
+
+        public abstract string GetIdentifier(Node node);
+
+        public TypeScriptNode TryGetChild(Node node)
+        {
+            return Children.SingleOrDefault(x => x.Node.Kind == node.Kind && x.Identifier == x.GetIdentifier(node));
         }
 
         protected string GetNodePath(Node startNode)
@@ -178,9 +189,32 @@ namespace Intent.Modules.Common.TypeScript.Editor
             //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
         }
 
-        internal virtual void UpdateNode()
+        public void UpdateNode(Node node)
         {
-            Node = FindNode(File.Ast.RootNode, NodePath) ?? throw new Exception($"[{GetType().Name}] Could not find node for path: " + NodePath);
+            Node = node;
+        }
+
+        //internal virtual void UpdateNode()
+        //{
+        //    Node = FindNode(File.Ast.RootNode, NodePath) ?? throw new Exception($"[{GetType().Name}] Could not find node for path: " + NodePath);
+        //}
+
+        public bool Equals(TypeScriptNode other)
+        {
+            return Identifier == other?.Identifier;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((TypeScriptNode)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Identifier.GetHashCode();
         }
 
         public override string ToString()

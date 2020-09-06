@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using Zu.TypeScript;
 using Zu.TypeScript.Change;
 using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypeScriptFile
+    public class TypeScriptFile : TypeScriptNode
     {
         private string _source;
         public TypeScriptAST Ast;
@@ -15,25 +16,25 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         private IList<TypeScriptNode> _registeredNodes = new List<TypeScriptNode>();
 
-        public TypeScriptFile(string source)
+        public TypeScriptFile(string source) : base(null, null)
         {
             _source = source;
             Ast = new TypeScriptAST(_source);
             Change = new ChangeAST();
         }
 
-        private List<TypescriptFileImport> _imports;
-        public List<TypescriptFileImport> Imports()
+        private List<TypeScriptFileImport> _imports;
+        public List<TypeScriptFileImport> Imports()
         {
-            return _imports ?? (_imports = Ast.OfKind(SyntaxKind.ImportDeclaration).Select(x => new TypescriptFileImport(x, this)).ToList());
+            return _imports ?? (_imports = Ast.OfKind(SyntaxKind.ImportDeclaration).Select(x => new TypeScriptFileImport(x, this)).ToList());
         }
 
-        public bool ImportExists(TypescriptFileImport import)
+        public bool ImportExists(TypeScriptFileImport import)
         {
             return import.Types.All(type => Imports().Exists(x => x.HasType(type) && x.Location == import.Location));
         }
 
-        public void AddImport(TypescriptFileImport import)
+        public void AddImport(TypeScriptFileImport import)
         {
             if (Imports().Any())
             {
@@ -144,6 +145,11 @@ import {{ {className} }} from '{location}';");
         public string GetSource()
         {
             return _source;
+        }
+
+        public override string GetIdentifier(Node node)
+        {
+            return null;
         }
 
         public void UpdateChanges()

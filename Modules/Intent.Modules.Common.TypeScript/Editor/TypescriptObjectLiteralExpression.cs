@@ -9,6 +9,11 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
         }
 
+        public override string GetIdentifier(Node node)
+        {
+            return Node.GetText(); // No idea...
+        }
+
         public bool PropertyAssignmentExists(string propertyName, string valueLiteral = null)
         {
             var properties = Node.Children.Where(x => x.Kind == SyntaxKind.PropertyAssignment);
@@ -47,7 +52,5 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             InsertPropertyAssignment(propertyAssignment, Node.OfKind(SyntaxKind.PropertyAssignment).LastOrDefault());
         }
-
-        public override bool IsIgnored() => false;
     }
 }
