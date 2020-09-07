@@ -215,8 +215,7 @@ function registerAsEurekaService(): void {
   }
 }
 
-bootstrap();
-";
+bootstrap();";
             var result = merger.Merge(existingContent: @"", outputContent: nhipsterMain);
             Assert.Equal(nhipsterMain, result);
         }

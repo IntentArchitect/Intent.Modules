@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using Intent.Modules.Common.TypeScript.Editor.Parsing;
 using Zu.TypeScript;
@@ -8,80 +7,6 @@ using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
-    public class TypeScriptFile : TypeScriptNode
-    {
-        public TypeScriptFile(Node node, TypeScriptFileEditor editor) : base(node, editor)
-        {
-        }
-
-        public override string GetIdentifier(Node node)
-        {
-            return null;
-        }
-
-        public override void AddChild(TypeScriptNode node)
-        {
-            if (Imports.Count > 0)
-            {
-                InsertAfter(Imports.Last(), node);
-                return;
-            }
-            base.AddChild(node);
-        }
-
-        public IList<TypeScriptFileImport> Imports { get; } = new List<TypeScriptFileImport>();
-        public IList<TypeScriptClass> Classes => Children.Where(x => x is TypeScriptClass).Cast<TypeScriptClass>().ToList();
-        public IList<TypeScriptInterface> Interfaces => Children.Where(x => x is TypeScriptInterface).Cast<TypeScriptInterface>().ToList();
-
-        public void AddImport(TypeScriptFileImport import)
-        {
-            if (Imports.Any())
-            {
-                var existingLocation = Imports.FirstOrDefault(x => x.Location == import.Location);
-                if (existingLocation != null)
-                {
-                    foreach (var importType in import.Types)
-                    {
-                        if (!existingLocation.HasType(importType))
-                        {
-                            existingLocation.AddType(importType);
-                        }
-                    }
-                }
-                else
-                {
-                    Editor.InsertAfter(Imports.Last(), import.GetTextWithComments());
-                }
-            }
-            else
-            {
-                Editor.InsertBefore(this, import.GetTextWithComments());
-            }
-        }
-
-        public void AddImportIfNotExists(string className, string location)
-        {
-            if (Imports.Any())
-            {
-                if (Imports.All(x => x.Location != location && x.Types.All(t => t != className)))
-                {
-                    Editor.InsertAfter(Imports.Last(), $@"
-import {{ {className} }} from '{location}';");
-                }
-            }
-            else
-            {
-                Editor.InsertBefore(this, $@"
-import {{ {className} }} from '{location}';");
-            }
-        }
-
-        public string GetSource()
-        {
-            return Editor.GetSource();
-        }
-    }
-
     public class TypeScriptFileEditor
     {
         private string _source;

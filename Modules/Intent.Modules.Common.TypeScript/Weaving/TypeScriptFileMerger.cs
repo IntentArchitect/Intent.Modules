@@ -22,27 +22,9 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 return _existingFile.GetSource();
             }
 
-            foreach (var import in _outputFile.Imports)
-            {
-                if (_existingFile.Imports.All(x => !x.Equals(import)))
-                {
-                    _existingFile.AddImport(import);
-                }
-            }
-
-            //if (_existingFile.Ast.RootNode.OfKind(SyntaxKind.Decorator).All(x => !x.First.IdentifierStr.StartsWith("Intent")))
-            //{
-            //    return _outputFile.GetSource();
-            //}
-
-            //MergeFileVariables();
-
-            //MergeFileExpressionStatements();
-
-            //MergeFileClasses();
-
-            //MergeFileInterfaces();
             MergeNodes(_existingFile, _outputFile);
+
+            _existingFile.NormalizeImports();
 
             return _existingFile.GetSource();
         }
@@ -57,12 +39,11 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 var existing = existingNode.TryGetChild(node.Node);
                 if (existing == null)
                 {
+                    
                     // toAdd:
-                    //var text = node.GetTextWithComments();
                     if (existingNode.Children.Count == 0)
                     {
-                        existingNode.AddChild(node);
-                        //_existingFile.Editor.InsertBefore(existingNode.Node.End.Value - 1, node);
+                        existingNode.AddNode(node);
                     }
                     else if (index == 0)
                     {
@@ -99,7 +80,7 @@ namespace Intent.Modules.Common.TypeScript.Weaving
 
             if (!existingNode.IsMerged())
             {
-                var toRemove = existingNode.Children.Where(x => !x.IsIgnored()).Except(outputNode.Children).ToList();
+                var toRemove = existingNode.Children.Where(x => !(x is TypeScriptFileImport) && !x.IsIgnored()).Except(outputNode.Children).ToList();
                 foreach (var node in toRemove)
                 {
                     node.Remove();

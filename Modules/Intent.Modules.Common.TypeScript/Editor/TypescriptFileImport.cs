@@ -9,7 +9,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public TypeScriptFileImport(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
             Location = Node.OfKind(SyntaxKind.StringLiteral).SingleOrDefault()?.GetText();
-            Types = Node.OfKind(SyntaxKind.ImportSpecifier).Select(x => x.IdentifierStr).ToList();
+            Types = GetTypes(Node);
         }
 
         public string Location { get; }
@@ -30,13 +30,14 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public override string GetIdentifier(Node node)
         {
-            var types = node.OfKind(SyntaxKind.ImportSpecifier).Select(x => x.IdentifierStr).ToArray();
+            var types = GetTypes(node);
             var location = node.OfKind(SyntaxKind.StringLiteral).SingleOrDefault()?.GetText();
             return GetIdentifier(types, location);
         }
 
         private string GetIdentifier(IList<string> types, string location)
         {
+            //return location;
             return $"import {{{string.Join(", ", types.OrderBy(x => x))}}} from {location};";
         }
 
@@ -45,5 +46,9 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return false;
         }
 
+        public IList<string> GetTypes(Node node)
+        {
+            return node.OfKind(SyntaxKind.ImportSpecifier).Select(x => x.IdentifierStr).ToList();
+        }
     }
 }

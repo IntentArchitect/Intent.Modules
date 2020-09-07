@@ -17,6 +17,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public TypeScriptFileEditor Editor;
         public string NodePath;
         private readonly SyntaxKind _syntaxKind;
+        private readonly List<TypeScriptNode> _children = new List<TypeScriptNode>();
 
         public TypeScriptNode(Node node, TypeScriptFileEditor editor)
         {
@@ -30,9 +31,9 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public virtual string Identifier => GetIdentifier(Node);
 
-        public IList<TypeScriptNode> Children = new List<TypeScriptNode>();
+        public IReadOnlyList<TypeScriptNode> Children => _children;
 
-        public IList<T> GetChildren<T>() where T : TypeScriptNode => Children.Where(x => x is T).Cast<T>().ToList();
+        public List<T> GetChildren<T>() where T : TypeScriptNode => Children.Where(x => x is T).Cast<T>().ToList();
 
         public abstract string GetIdentifier(Node node);
 
@@ -43,40 +44,64 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public void InsertBefore(TypeScriptNode existing, TypeScriptNode node)
         {
-            if (HasChild(node))
+            if (HasNode(node))
             {
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
-            Children.Insert(Children.IndexOf(existing), node);
+            //InsertChild(_children.IndexOf(existing), node);
             Editor.InsertBefore(existing, node.GetTextWithComments());
         }
 
         public void InsertBefore(TypeScriptDecorator existing, TypeScriptDecorator node)
         {
-            if (HasChild(node))
+            if (HasNode(node))
             {
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
-            Decorators.Insert(Decorators.IndexOf(existing), node);
+            //InsertDecorator(Decorators.IndexOf(existing), node);
             Editor.InsertBefore(existing, node.GetTextWithComments());
         }
 
         public void InsertAfter(TypeScriptNode existing, TypeScriptNode node)
         {
-            if (HasChild(node))
+            if (HasNode(node))
             {
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
-            Children.Insert(Children.IndexOf(existing) + 1, node);
+            //InsertChild(_children.IndexOf(existing) + 1, node);
             Editor.InsertAfter(existing, node.GetTextWithComments());
         }
 
-        public bool HasChild(TypeScriptNode node)
+        public void AddChild(TypeScriptNode node)
+        {
+            node.Editor = Editor;
+            _children.Add(node);
+        }
+
+        public void InsertChild(int index, TypeScriptNode node)
+        {
+            node.Editor = Editor;
+            _children.Insert(index, node);
+        }
+
+        public void RemoveChild(TypeScriptNode toRemove)
+        {
+            toRemove.Remove();
+            _children.Remove(toRemove);
+        }
+
+        public void InsertDecorator(int index, TypeScriptDecorator node)
+        {
+            Decorators.Insert(index, node);
+            node.Editor = Editor;
+        }
+
+        public bool HasNode(TypeScriptNode node)
         {
             return Children.Contains(node);
         }
 
-        public virtual void AddChild(TypeScriptNode node)
+        public virtual void AddNode(TypeScriptNode node)
         {
             if (Children.Count == 0)
             {

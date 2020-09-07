@@ -51,8 +51,8 @@ export class EmptyClass {
             var result = merger.Merge(existingContent: MergedClassWithTwoDifferentDecorators, outputContent: ClassTwoDecorators);
             Assert.Equal(@"
 @OneDecorator('one of two')
-@TwoDecorator('two of two')
 @OneDifferentDecorator('one of two')
+@TwoDecorator('two of two')
 @TwoDifferentDecorator('two of two')
 @IntentMerge()
 export class EmptyClass {

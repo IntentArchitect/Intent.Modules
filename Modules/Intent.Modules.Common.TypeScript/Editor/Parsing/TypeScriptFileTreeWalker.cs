@@ -7,6 +7,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
     {
         private readonly TypeScriptFileEditor _editor;
         private readonly TypeScriptNode _node;
+        private int _index = 0;
 
         public TypeScriptFileTreeWalker(TypeScriptNode node, TypeScriptFileEditor editor)
         {
@@ -28,40 +29,48 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             {
                 case SyntaxKind.ImportDeclaration:
                     OnImportDeclaration(node);
+                    _index++;
                     return;
                 case SyntaxKind.VariableStatement:
                     OnVariableStatement(node);
+                    _index++;
                     return;
                 case SyntaxKind.ExpressionStatement:
                     OnExpressionStatement(node);
+                    _index++;
                     return;
                 case SyntaxKind.FunctionDeclaration:
                     OnFunctionDeclaration(node);
+                    _index++;
                     return;
                 case SyntaxKind.ClassDeclaration:
                     OnClassDeclaration(node);
+                    _index++;
                     return;
                 case SyntaxKind.InterfaceDeclaration:
                     OnInterfaceDeclaration(node);
+                    _index++;
                     return;
                 case SyntaxKind.Constructor:
                     OnConstructor(node);
+                    _index++;
                     return;
                 case SyntaxKind.MethodDeclaration:
                     OnMethodDeclaration(node);
+                    _index++;
                     return;
                 case SyntaxKind.PropertyDeclaration:
                     OnPropertyDeclaration(node);
+                    _index++;
                     return;
                 case SyntaxKind.GetAccessor:
                     OnGetAccessor(node);
+                    _index++;
                     return;
                 case SyntaxKind.SetAccessor:
                     OnSetAccessor(node);
+                    _index++;
                     return;
-                    //case SyntaxKind.Decorator:
-                    //    OnDecorator(node);
-                    //    return;
             }
             foreach (var child in node.Children)
             {
@@ -71,10 +80,10 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
 
         private void OnImportDeclaration(Node node)
         {
-            var existing = _editor.File.Imports.SingleOrDefault(x => x.Identifier == x.GetIdentifier(node));
+            var existing = _editor.File.Imports.SingleOrDefault(x => x.Identifier == x.GetIdentifier(node) && !x.Types.Except(x.GetTypes(node)).Any());
             if (existing == null)
             {
-                _editor.File.Imports.Add(new TypeScriptFileImport(node, _editor));
+                _node.InsertChild(_index, new TypeScriptFileImport(node, _editor));
             }
             else
             {
@@ -87,7 +96,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.Children.Add(new TypeScriptConstructor(node, _editor));
+                _node.InsertChild(_index, new TypeScriptConstructor(node, _editor));
             }
             else
             {
@@ -100,7 +109,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.Children.Add(new TypeScriptProperty(node, _editor));
+                _node.InsertChild(_index, new TypeScriptProperty(node, _editor));
             }
             else
             {
@@ -113,7 +122,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.Children.Add(new TypeScriptGetAccessor(node, _editor));
+                _node.InsertChild(_index, new TypeScriptGetAccessor(node, _editor));
             }
             else
             {
@@ -126,7 +135,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.Children.Add(new TypeScriptSetAccessor(node, _editor));
+                _node.InsertChild(_index, new TypeScriptSetAccessor(node, _editor));
             }
             else
             {
@@ -139,7 +148,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.Children.Add(new TypeScriptMethod(node, _editor));
+                _node.InsertChild(_index, new TypeScriptMethod(node, _editor));
             }
             else
             {
@@ -152,7 +161,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.Children.Add(new TypeScriptVariableStatement(node, _editor));
+                _node.InsertChild(_index, new TypeScriptVariableStatement(node, _editor));
             }
             else
             {
@@ -165,7 +174,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.Children.Add(new TypeScriptFunctionDeclaration(node, _editor));
+                _node.InsertChild(_index, new TypeScriptFunctionDeclaration(node, _editor));
             }
             else
             {
@@ -178,20 +187,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.Children.Add(new TypeScriptExpressionStatement(node, _editor));
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
-        }
-
-        private void OnDecorator(Node node)
-        {
-            var existing = _node.Decorators.SingleOrDefault(x => x.Identifier == x.GetIdentifier(node));
-            if (existing == null)
-            {
-                _node.Decorators.Add(new TypeScriptDecorator(node, _node));
+                _node.InsertChild(_index, new TypeScriptExpressionStatement(node, _editor));
             }
             else
             {
@@ -205,7 +201,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             if (existing == null)
             {
                 existing = new TypeScriptClass(node, _editor);
-                _node.Children.Add(existing);
+                _node.InsertChild(_index, existing);
             }
             else
             {
@@ -221,7 +217,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             if (existing == null)
             {
                 existing = new TypeScriptInterface(node, _editor);
-                _node.Children.Add(existing);
+                _node.InsertChild(_index, existing);
             }
             else
             {
