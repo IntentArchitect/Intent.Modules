@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptExpressionStatement : TypeScriptNode
     {
-        public TypeScriptExpressionStatement(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptExpressionStatement(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
             //Identifier =  ?? throw new ArgumentException("Variable identifier could not be determined for node: " + this);
             //NodePath += $"/PropertyAccessExpression~{Identifier}";
@@ -14,7 +14,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public override string GetIdentifier(Node node)
         {
-            return Node.OfKind(SyntaxKind.PropertyAccessExpression).First().GetText();
+            return node.OfKind(SyntaxKind.PropertyAccessExpression).First().GetText();
         }
 
         public T GetAssignedValue<T>()
@@ -23,12 +23,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             var arrayLiteral = Node.Children.FirstOrDefault(x => x.Kind == SyntaxKind.ArrayLiteralExpression);
             if (arrayLiteral != null)
             {
-                return new TypeScriptArrayLiteralExpression(arrayLiteral, File) as T;
+                return new TypeScriptArrayLiteralExpression(arrayLiteral, Editor) as T;
             }
             var objectLiteral = Node.Children.FirstOrDefault(x => x.Kind == SyntaxKind.ObjectLiteralExpression);
             if (objectLiteral != null)
             {
-                return new TypeScriptObjectLiteralExpression(objectLiteral, File) as T;
+                return new TypeScriptObjectLiteralExpression(objectLiteral, Editor) as T;
             }
             // TODO: ValueLiteral
 

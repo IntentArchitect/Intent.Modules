@@ -8,15 +8,17 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptClass : TypeScriptNode
     {
-        public TypeScriptClass(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptClass(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
         }
 
         public string Name => Node.IdentifierStr;
+        public IList<TypeScriptMethod> Methods => Children.Where(x => x is TypeScriptMethod).Cast<TypeScriptMethod>().ToList();
+
 
         public override string GetIdentifier(Node node)
         {
-            return Node.IdentifierStr;
+            return node.IdentifierStr;
         }
 
         //public bool HasConstructor()
@@ -143,8 +145,8 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             var overwriteClass = Node.GetTextWithComments();
             overwriteClass = overwriteClass.Insert(overwriteClass.LastIndexOf('{') + 1, code);
-            File.ReplaceNode(Node, overwriteClass);
-            UpdateChanges();
+            Editor.ReplaceNode(Node, overwriteClass);
+            Editor.UpdateNodes();
         }
 
         //public override void UpdateChanges()

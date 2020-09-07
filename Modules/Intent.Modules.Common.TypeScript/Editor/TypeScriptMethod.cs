@@ -7,14 +7,14 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptMethod : TypeScriptNode
     {
-        public TypeScriptMethod(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptMethod(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
 
         }
 
         public override string GetIdentifier(Node node)
         {
-            return Node.IdentifierStr;
+            return node.IdentifierStr;
         }
 
         //public string Name => Node.IdentifierStr;

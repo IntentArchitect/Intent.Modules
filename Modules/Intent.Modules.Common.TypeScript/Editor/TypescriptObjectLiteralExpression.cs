@@ -5,7 +5,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptObjectLiteralExpression : TypeScriptNode
     {
-        public TypeScriptObjectLiteralExpression(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptObjectLiteralExpression(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
         }
 
@@ -34,7 +34,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 {
                     propertyAssignment = $", {propertyAssignment}";
                 }
-                Change.InsertAfter(afterNode, propertyAssignment);
+                Editor.Change.InsertAfter(afterNode, propertyAssignment);
             }
             else
             {
@@ -43,9 +43,9 @@ namespace Intent.Modules.Common.TypeScript.Editor
                     InsertPropertyAssignment(propertyAssignment, Node.OfKind(SyntaxKind.PropertyAssignment).LastOrDefault());
                     return;
                 }
-                Change.InsertBefore(Node.Children.Last(), propertyAssignment);
+                Editor.Change.InsertBefore(Node.Children.Last(), propertyAssignment);
             }
-            UpdateChanges();
+            Editor.UpdateNodes();
         }
 
         public void AddPropertyAssignment(string propertyAssignment)

@@ -9,7 +9,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
     {
         private readonly TypeScriptNode _parent;
 
-        public TypeScriptDecorator(Node node, TypeScriptNode parent) : base(node, parent.File)
+        public TypeScriptDecorator(Node node, TypeScriptNode parent) : base(node, parent.Editor)
         {
             if (string.IsNullOrWhiteSpace(Name))
             {
@@ -28,7 +28,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public IEnumerable<TypeScriptObjectLiteralExpression> Parameters()
         {
-            return Node.OfKind(SyntaxKind.ObjectLiteralExpression).Select(x => new TypeScriptObjectLiteralExpression(x, File));
+            return Node.OfKind(SyntaxKind.ObjectLiteralExpression).Select(x => new TypeScriptObjectLiteralExpression(x, Editor));
         }
 
         //internal override void UpdateNode()

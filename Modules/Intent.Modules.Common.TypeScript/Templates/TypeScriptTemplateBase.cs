@@ -34,14 +34,14 @@ namespace Intent.Modules.Common.TypeScript.Templates
 
         public TypeScriptFile GetTemplateFile()
         {
-            return new TypeScriptFile(base.RunTemplate());
+            return new TypeScriptFileEditor(base.RunTemplate()).File;
         }
 
         public TypeScriptFile GetExistingFile()
         {
             var metadata = GetMetadata();
             var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
-            return File.Exists(fullFileName) ? new TypeScriptFile(File.ReadAllText(fullFileName)) : null;
+            return File.Exists(fullFileName) ? new TypeScriptFileEditor(File.ReadAllText(fullFileName)).File : null;
         }
     }
 }

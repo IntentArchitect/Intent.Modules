@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptVariableStatement : TypeScriptNode
     {
-        public TypeScriptVariableStatement(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptVariableStatement(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
             //Name = Node.OfKind(SyntaxKind.VariableDeclaration).First().IdentifierStr ?? throw new ArgumentException("Variable Name could not be determined for node: " + this);
             //NodePath = this.GetNodePath(Node.OfKind(SyntaxKind.VariableDeclaration).First());
@@ -23,12 +23,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             var arrayLiteral = Node.Children.FirstOrDefault(x => x.Kind == SyntaxKind.ArrayLiteralExpression);
             if (arrayLiteral != null)
             {
-                return new TypeScriptArrayLiteralExpression(arrayLiteral, File) as T;
+                return new TypeScriptArrayLiteralExpression(arrayLiteral, Editor) as T;
             }
             var objectLiteral = Node.Children.FirstOrDefault(x => x.Kind == SyntaxKind.ObjectLiteralExpression);
             if (objectLiteral != null)
             {
-                return new TypeScriptObjectLiteralExpression(objectLiteral, File) as T;
+                return new TypeScriptObjectLiteralExpression(objectLiteral, Editor) as T;
             }
             // TODO: ValueLiteral
 

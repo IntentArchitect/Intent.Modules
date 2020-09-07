@@ -14,21 +14,23 @@ namespace Intent.Modules.Common.TypeScript.Editor
     public abstract class TypeScriptNode : IEquatable<TypeScriptNode>
     {
         protected internal Node Node;
-        public readonly TypeScriptFile File;
-        public ChangeAST Change => File.Change;
+        public TypeScriptFileEditor Editor;
+        private ChangeAST Change => Editor.Change;
         public string NodePath;
 
-        public TypeScriptNode(Node node, TypeScriptFile file)
+        public TypeScriptNode(Node node, TypeScriptFileEditor editor)
         {
             Node = node ?? throw new ArgumentNullException(nameof(node));
-            File = file ?? throw new ArgumentNullException(nameof(file));
-            File.Register(this);
+            Editor = editor ?? throw new ArgumentNullException(nameof(editor));
+            //File.Register(this);
             NodePath = GetNodePath(node);
         }
 
-        public string Identifier => GetIdentifier(Node);
+        public virtual string Identifier => GetIdentifier(Node);
 
         public IList<TypeScriptNode> Children = new List<TypeScriptNode>();
+
+        public IList<T> GetChildren<T>() where T : TypeScriptNode => Children.Where(x => x is T).Cast<T>().ToList();
 
         public abstract string GetIdentifier(Node node);
 
@@ -37,14 +39,64 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Children.SingleOrDefault(x => x.Node.Kind == node.Kind && x.Identifier == x.GetIdentifier(node));
         }
 
+        public void InsertBefore(TypeScriptNode existing, TypeScriptNode node)
+        {
+            if (HasChild(node))
+            {
+                throw new InvalidOperationException("Child already exists: " + node.ToString());
+            }
+            Children.Insert(Children.IndexOf(existing), node);
+            Editor.InsertBefore(existing, node.GetTextWithComments());
+        }
+
+        public void InsertAfter(TypeScriptNode existing, TypeScriptNode node)
+        {
+            if (HasChild(node))
+            {
+                throw new InvalidOperationException("Child already exists: " + node.ToString());
+            }
+            Children.Insert(Children.IndexOf(existing) + 1, node);
+            Editor.InsertAfter(existing, node.GetTextWithComments());
+        }
+
+        public bool HasChild(TypeScriptNode node)
+        {
+            return Children.Contains(node);
+        }
+
+        public virtual void AddChild(TypeScriptNode node)
+        {
+            if (Children.Count == 0)
+            {
+                var index = GetTextWithComments().LastIndexOf('{') != -1 
+                    ? Node.Pos.Value + GetTextWithComments().LastIndexOf('{') + 1
+                    : Node.End.Value;
+                Editor.Insert(index, node);
+            }
+            else
+            {
+                InsertAfter(Children.Last(), node);
+            }
+        }
+
+        public void ReplaceWith(string text)
+        {
+            Editor.Replace(this, text);
+        }
+
+        public void Remove()
+        {
+            Editor.Replace(this, "");
+        }
+
         protected string GetNodePath(Node startNode)
         {
             var path = "";
             var current = startNode;
-            while (current != File.Ast.RootNode)
+            while (current != Editor.Ast.RootNode)
             {
                 path = $"{current.Kind}{(current.IdentifierStr != null ? ":" + current.IdentifierStr : "")}{(startNode != current ? "/" : "")}{path}";
-                current = (Node) current.Parent;
+                current = (Node)current.Parent;
             }
 
             return path;
@@ -119,7 +171,8 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public void AddDecorator(string declaration)
         {
             Change.InsertBefore(Node.First, declaration);
-            UpdateChanges();
+            Editor.UpdateNodes();
+            //UpdateChanges();
         }
 
         public string GetTextWithComments()
@@ -142,52 +195,56 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return HasDecorator("IntentManage");
         }
 
-        public virtual void Remove()
-        {
-            File.ReplaceNode(Node, "");
-            File.Unregister(this);
-            UpdateChanges();
-        }
+        //public virtual void Remove()
+        //{
+        //    Editor.ReplaceNode(Node, "");
+        //    Editor.Unregister(this);
+        //    UpdateChanges();
+        //}
 
-        public void ReplaceWith(string replaceWith)
-        {
-            if (string.IsNullOrWhiteSpace(replaceWith))
-            {
-                throw new ArgumentException("Cannot replace a method with an empty string", nameof(replaceWith));
-            }
-            if (Node.GetTextWithComments() == replaceWith)
-            {
-                return;
-            }
-            Change.ChangeNode(Node, replaceWith);
-            UpdateChanges();
-            //if (IsIgnored())
-            //{
-            //    throw new Exception($"Cannot add method to TypeScript node [{ToString()}] as it has been decorated with @IntentIgnore()");
-            //}
-            //File.ReplaceNode(Node, replaceWith);
-            //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
-        }
+        //public void ReplaceWith(string replaceWith)
+        //{
+        //    if (string.IsNullOrWhiteSpace(replaceWith))
+        //    {
+        //        throw new ArgumentException("Cannot replace a method with an empty string", nameof(replaceWith));
+        //    }
+        //    if (Node.GetTextWithComments() == replaceWith)
+        //    {
+        //        return;
+        //    }
+        //    Change.ChangeNode(Node, replaceWith);
+        //    UpdateChanges();
+        //    //if (IsIgnored())
+        //    //{
+        //    //    throw new Exception($"Cannot add method to TypeScript node [{ToString()}] as it has been decorated with @IntentIgnore()");
+        //    //}
+        //    //File.ReplaceNode(Node, replaceWith);
+        //    //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
+        //}
 
-        public virtual void UpdateChanges()
-        {
-            if (IsIgnored())
-            {
-                throw new Exception($"Cannot add method to TypeScript node [{ToString()}] as it has been decorated with @IntentIgnore()");
-            }
+        //private void UpdateChanges()
+        //{
+        //    Editor.UpdateChanges();
+        //}
+        //public virtual void UpdateChanges()
+        //{
+        //    if (IsIgnored())
+        //    {
+        //        throw new Exception($"Cannot add method to TypeScript node [{ToString()}] as it has been decorated with @IntentIgnore()");
+        //    }
 
-            if (_decorators != null)
-            {
-                foreach (var decorator in _decorators)
-                {
-                    File.Unregister(decorator);
-                }
+        //    if (_decorators != null)
+        //    {
+        //        foreach (var decorator in _decorators)
+        //        {
+        //            File.Unregister(decorator);
+        //        }
 
-                _decorators = null;
-            }
-            File.UpdateChanges();
-            //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
-        }
+        //        _decorators = null;
+        //    }
+        //    File.UpdateChanges();
+        //    //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
+        //}
 
         public void UpdateNode(Node node)
         {
@@ -214,7 +271,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public override int GetHashCode()
         {
-            return Identifier.GetHashCode();
+            return Identifier?.GetHashCode() ?? 0;
         }
 
         public override string ToString()

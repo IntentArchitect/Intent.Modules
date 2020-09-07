@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptInterface : TypeScriptNode
     {
-        public TypeScriptInterface(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptInterface(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
         }
 
