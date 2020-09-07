@@ -35,6 +35,9 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
                 case SyntaxKind.ExpressionStatement:
                     OnExpressionStatement(node);
                     return;
+                case SyntaxKind.FunctionDeclaration:
+                    OnFunctionDeclaration(node);
+                    return;
                 case SyntaxKind.ClassDeclaration:
                     OnClassDeclaration(node);
                     return;
@@ -150,6 +153,19 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             if (existing == null)
             {
                 _node.Children.Add(new TypeScriptVariableStatement(node, _editor));
+            }
+            else
+            {
+                existing.UpdateNode(node);
+            }
+        }
+
+        private void OnFunctionDeclaration(Node node)
+        {
+            var existing = _node.TryGetChild(node);
+            if (existing == null)
+            {
+                _node.Children.Add(new TypeScriptFunctionDeclaration(node, _editor));
             }
             else
             {
