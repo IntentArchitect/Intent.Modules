@@ -42,7 +42,6 @@ namespace Intent.Modules.Common.TypeScript.Weaving
             //MergeFileClasses();
 
             //MergeFileInterfaces();
-
             MergeNodes(_existingFile, _outputFile);
 
             return _existingFile.GetSource();
@@ -50,6 +49,8 @@ namespace Intent.Modules.Common.TypeScript.Weaving
 
         private void MergeNodes(TypeScriptNode existingNode, TypeScriptNode outputNode)
         {
+            MergeDecorators(existingNode, outputNode);
+            
             var index = 0;
             foreach (var node in outputNode.Children)
             {
@@ -99,6 +100,63 @@ namespace Intent.Modules.Common.TypeScript.Weaving
             if (!existingNode.IsMerged())
             {
                 var toRemove = existingNode.Children.Where(x => !x.IsIgnored()).Except(outputNode.Children).ToList();
+                foreach (var node in toRemove)
+                {
+                    node.Remove();
+                }
+            }
+        }
+
+        private void MergeDecorators(TypeScriptNode existingNode, TypeScriptNode outputNode)
+        {
+            var index = 0;
+            foreach (var node in outputNode.Decorators)
+            {
+                var existing = existingNode.TryGetDecorator(node.Node);
+                if (existing == null)
+                {
+                    // toAdd:
+                    //var text = node.GetTextWithComments();
+                    if (existingNode.Decorators.Count == 0)
+                    {
+                        _existingFile.Editor.InsertBefore(existingNode.Node, node.GetTextWithComments());
+                    }
+                    else if (index == 0)
+                    {
+                        existingNode.InsertBefore(existingNode.Decorators[0], node);
+                    }
+                    else if (existingNode.Decorators.Count > index)
+                    {
+                        existingNode.InsertAfter(existingNode.Decorators[index - 1], node);
+                    }
+                    else
+                    {
+                        existingNode.InsertAfter(existingNode.Decorators.Last(), node);
+                    }
+
+                    index++;
+                }
+                else
+                {
+                    // toUpdate:
+                    index++;
+                    if (existing.IsIgnored())
+                    {
+                        continue;
+                    }
+
+                    if (existing.Decorators.All(x => !x.IsIgnored()) && !existing.IsMerged())
+                    {
+                        existing.ReplaceWith(node.GetTextWithComments()); // Overwrite
+                        continue;
+                    }
+                    //MergeDecorators(existing, node); // maybe one day
+                }
+            }
+
+            if (!existingNode.IsMerged())
+            {
+                var toRemove = existingNode.Decorators.Where(x => !x.IsIgnored()).Except(outputNode.Decorators).ToList();
                 foreach (var node in toRemove)
                 {
                     node.Remove();

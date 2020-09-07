@@ -38,6 +38,9 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
                 case SyntaxKind.ClassDeclaration:
                     OnClassDeclaration(node);
                     return;
+                case SyntaxKind.InterfaceDeclaration:
+                    OnInterfaceDeclaration(node);
+                    return;
                 case SyntaxKind.Constructor:
                     OnConstructor(node);
                     return;
@@ -47,6 +50,15 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
                 case SyntaxKind.PropertyDeclaration:
                     OnPropertyDeclaration(node);
                     return;
+                case SyntaxKind.GetAccessor:
+                    OnGetAccessor(node);
+                    return;
+                case SyntaxKind.SetAccessor:
+                    OnSetAccessor(node);
+                    return;
+                    //case SyntaxKind.Decorator:
+                    //    OnDecorator(node);
+                    //    return;
             }
             foreach (var child in node.Children)
             {
@@ -93,6 +105,32 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             }
         }
 
+        private void OnGetAccessor(Node node)
+        {
+            var existing = _node.TryGetChild(node);
+            if (existing == null)
+            {
+                _node.Children.Add(new TypeScriptGetAccessor(node, _editor));
+            }
+            else
+            {
+                existing.UpdateNode(node);
+            }
+        }
+
+        private void OnSetAccessor(Node node)
+        {
+            var existing = _node.TryGetChild(node);
+            if (existing == null)
+            {
+                _node.Children.Add(new TypeScriptSetAccessor(node, _editor));
+            }
+            else
+            {
+                existing.UpdateNode(node);
+            }
+        }
+
         private void OnMethodDeclaration(Node node)
         {
             var existing = _node.TryGetChild(node);
@@ -132,12 +170,41 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             }
         }
 
+        private void OnDecorator(Node node)
+        {
+            var existing = _node.Decorators.SingleOrDefault(x => x.Identifier == x.GetIdentifier(node));
+            if (existing == null)
+            {
+                _node.Decorators.Add(new TypeScriptDecorator(node, _node));
+            }
+            else
+            {
+                existing.UpdateNode(node);
+            }
+        }
+
         private void OnClassDeclaration(Node node)
         {
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
                 existing = new TypeScriptClass(node, _editor);
+                _node.Children.Add(existing);
+            }
+            else
+            {
+                existing.UpdateNode(node);
+            }
+            var listener = new TypeScriptFileTreeWalker(existing, _editor);
+            listener.WalkTree();
+        }
+
+        private void OnInterfaceDeclaration(Node node)
+        {
+            var existing = _node.TryGetChild(node);
+            if (existing == null)
+            {
+                existing = new TypeScriptInterface(node, _editor);
                 _node.Children.Add(existing);
             }
             else

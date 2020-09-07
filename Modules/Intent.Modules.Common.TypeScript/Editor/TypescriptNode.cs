@@ -15,15 +15,17 @@ namespace Intent.Modules.Common.TypeScript.Editor
     {
         protected internal Node Node;
         public TypeScriptFileEditor Editor;
-        private ChangeAST Change => Editor.Change;
         public string NodePath;
+        private readonly SyntaxKind _syntaxKind;
 
         public TypeScriptNode(Node node, TypeScriptFileEditor editor)
         {
             Node = node ?? throw new ArgumentNullException(nameof(node));
             Editor = editor ?? throw new ArgumentNullException(nameof(editor));
+            _syntaxKind = Node.Kind;
             //File.Register(this);
             NodePath = GetNodePath(node);
+            Decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>();
         }
 
         public virtual string Identifier => GetIdentifier(Node);
@@ -46,6 +48,16 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
             Children.Insert(Children.IndexOf(existing), node);
+            Editor.InsertBefore(existing, node.GetTextWithComments());
+        }
+
+        public void InsertBefore(TypeScriptDecorator existing, TypeScriptDecorator node)
+        {
+            if (HasChild(node))
+            {
+                throw new InvalidOperationException("Child already exists: " + node.ToString());
+            }
+            Decorators.Insert(Decorators.IndexOf(existing), node);
             Editor.InsertBefore(existing, node.GetTextWithComments());
         }
 
@@ -93,7 +105,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             var path = "";
             var current = startNode;
-            while (current != Editor.Ast.RootNode)
+            while (current.Kind != SyntaxKind.SourceFile)
             {
                 path = $"{current.Kind}{(current.IdentifierStr != null ? ":" + current.IdentifierStr : "")}{(startNode != current ? "/" : "")}{path}";
                 current = (Node)current.Parent;
@@ -157,23 +169,31 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return FindNodes(node.GetDescendants().OfKind(syntaxKind).FirstOrDefault(x => x.IdentifierStr == identifier), path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
         }
 
-        private IList<TypeScriptDecorator> _decorators;
-        public IList<TypeScriptDecorator> Decorators()
-        {
-            return _decorators ?? (_decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>());
-        }
+        //private IList<TypeScriptDecorator> _decorators;
+        //public IList<TypeScriptDecorator> Decorators()
+        //{
+        //    return _decorators ?? (_decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>());
+        //}
+
+
+        public IList<TypeScriptDecorator> Decorators { get; private set; }
 
         public bool HasDecorator(string name)
         {
-            return Decorators().Any(x => x.Name == name);
+            return Decorators.Any(x => x.Name == name);
         }
 
-        public void AddDecorator(string declaration)
+        public TypeScriptDecorator TryGetDecorator(Node node)
         {
-            Change.InsertBefore(Node.First, declaration);
-            Editor.UpdateNodes();
-            //UpdateChanges();
+            return Decorators.SingleOrDefault(x => x.Node.Kind == node.Kind && x.Identifier == x.GetIdentifier(node));
         }
+
+        //public void AddDecorator(string declaration)
+        //{
+        //    Change.InsertBefore(Node.First, declaration);
+        //    Editor.UpdateNodes();
+        //    //UpdateChanges();
+        //}
 
         public string GetTextWithComments()
         {
@@ -248,7 +268,23 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public void UpdateNode(Node node)
         {
+            if (node.Kind != _syntaxKind)
+            {
+                throw new Exception($"Cannot update node of kind [{_syntaxKind}] to a different SyntaxKind: " + node.Kind);
+            }
             Node = node;
+            Node.Decorators?.ForEach(x =>
+            {
+                var existing = this.TryGetDecorator(x);
+                if (existing == null)
+                {
+                    Decorators.Add(new TypeScriptDecorator(x, this));
+                }
+                else
+                {
+                    existing.UpdateNode(x);
+                }
+            });
         }
 
         //internal virtual void UpdateNode()

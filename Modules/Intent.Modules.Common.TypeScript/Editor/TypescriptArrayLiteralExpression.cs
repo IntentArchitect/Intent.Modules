@@ -64,7 +64,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public override string GetIdentifier(Node node)
         {
-            return Node.GetText();
+            return node.GetText();
         }
 
         public override bool IsIgnored() => false;

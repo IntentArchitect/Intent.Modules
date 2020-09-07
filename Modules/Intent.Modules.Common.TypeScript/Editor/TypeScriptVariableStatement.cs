@@ -14,7 +14,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public override string GetIdentifier(Node node)
         {
-            return Node.OfKind(SyntaxKind.VariableDeclaration).First().IdentifierStr;
+            return node.OfKind(SyntaxKind.VariableDeclaration).First().IdentifierStr;
         }
 
         public T GetAssignedValue<T>()

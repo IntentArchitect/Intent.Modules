@@ -24,6 +24,13 @@ namespace Intent.Modules.Common.TypeScript.Tests
         }
 
         [Fact]
+        public void FindsDecorators()
+        {
+            var file = new TypeScriptFileEditor(TypeScriptFile).File;
+            Assert.Equal(2, file.Classes[0].Decorators.Count);
+        }
+
+        [Fact]
         public void FindsMethods()
         {
             var file = new TypeScriptFileEditor(TypeScriptFile).File;
@@ -36,6 +43,22 @@ namespace Intent.Modules.Common.TypeScript.Tests
                     Assert.Equal(1, x.GetChildren<TypeScriptMethod>().Count);
                 });
 
+        }
+
+        [Fact]
+        public void FindsProperties()
+        {
+            var file = new TypeScriptFileEditor(TypeScriptFile).File;
+            Assert.Collection(file.Classes,
+                x =>
+                {
+                    Assert.Equal(2, x.GetChildren<TypeScriptProperty>().Count);
+                    Assert.Equal(2, x.GetChildren<TypeScriptGetAccessor>().Count);
+                    Assert.Equal(2, x.GetChildren<TypeScriptSetAccessor>().Count);
+                }, x =>
+                {
+                    Assert.Equal(0, x.GetChildren<TypeScriptProperty>().Count);
+                });
         }
 
         public static string TypeScriptFile = @"
@@ -59,6 +82,9 @@ export class AppComponent {
   get myProperty(): string { return this.model.property; }
   set myProperty(value: string) { this.model.property = value; }
   
+  get myProperty2(): string { return this.model.property2; }
+  set myProperty2(value: string) { this.model.property2 = value; }
+
   @IntentIgnore()
   customMethod() {
   }

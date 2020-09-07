@@ -10,15 +10,15 @@ namespace Intent.Modules.Common.TypeScript.Tests
         public void AddsDecoratorToEmptyClass()
         {
             var merger = new TypeScriptWeavingMerger();
-            var result = merger.Merge(existingContent: EmptyClass, outputContent: OneDecorator);
-            Assert.Equal(OneDecorator, result);
+            var result = merger.Merge(existingContent: ClassWithNoDecorators, outputContent: ClassWithOneDecorator);
+            Assert.Equal(ClassWithOneDecorator, result);
         }
 
         [Fact]
         public void AddsDecoratorToEmptyClassMerged()
         {
             var merger = new TypeScriptWeavingMerger();
-            var result = merger.Merge(existingContent: EmptyClassMerged, outputContent: OneDecorator);
+            var result = merger.Merge(existingContent: EmptyClassMerged, outputContent: ClassWithOneDecorator);
             Assert.Equal(@"
 @OneDecorator('one of one')
 @IntentMerge()
@@ -33,10 +33,10 @@ export class EmptyClass {
         public void UpdatesDecorators()
         {
             var merger = new TypeScriptWeavingMerger();
-            var result = merger.Merge(existingContent: OneDecorator, outputContent: TwoDecorators);
+            var result = merger.Merge(existingContent: ClassWithOneDecorator, outputContent: ClassTwoDecorators);
             Assert.Equal(@"
-@TwoDecorator('two of two')
 @OneDecorator('one of two')
+@TwoDecorator('two of two')
 export class EmptyClass {
     @IntentIgnore()
     someMethod() { // prevent straight override
@@ -48,13 +48,13 @@ export class EmptyClass {
         public void SkipsExistingAndAddsDecoratorsOnMergedClass()
         {
             var merger = new TypeScriptWeavingMerger();
-            var result = merger.Merge(existingContent: TwoDifferentDecoratorsOnMergedClass, outputContent: TwoDecorators);
+            var result = merger.Merge(existingContent: MergedClassWithTwoDifferentDecorators, outputContent: ClassTwoDecorators);
             Assert.Equal(@"
-@TwoDecorator('two of two')
 @OneDecorator('one of two')
+@TwoDecorator('two of two')
 @OneDifferentDecorator('one of two')
 @TwoDifferentDecorator('two of two')
-@IntentMerge
+@IntentMerge()
 export class EmptyClass {
     @IntentIgnore()
     someMethod() { // prevent straight override
@@ -62,9 +62,36 @@ export class EmptyClass {
 }", result);
         }
 
+        [Fact]
+        public void AddsDecoratorToMethodWithNoDecorators()
+        {
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: MethodWithNoDecorators, outputContent: MergedMethodWithOneDecorator);
+            Assert.Equal(MergedMethodWithOneDecorator, result);
+        }
 
-        public static string EmptyClass = @"
+        [Fact]
+        public void AddsDecoratorToMethodWithOneDecorators()
+        {
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: MergedMethodWithOneDecorator, outputContent: MergedMethodWithTwoDecorator);
+            Assert.Equal(MergedMethodWithTwoDecorator, result);
+        }
+
+        [Fact]
+        public void SkipsRemovingDecoratorFromMethodWhenMerged()
+        {
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: MergedMethodWithTwoDecorator, outputContent: MergedMethodWithOneDecorator);
+            Assert.Equal(MergedMethodWithTwoDecorator, result);
+        }
+
+
+        public static string ClassWithNoDecorators = @"
 export class EmptyClass {
+    @IntentIgnore()
+    someMethod() { // prevent straight override
+    }
 }";
 
         public static string EmptyClassMerged = @"
@@ -72,7 +99,7 @@ export class EmptyClass {
 export class EmptyClass {
 }";
 
-        public static string OneDecorator = @"
+        public static string ClassWithOneDecorator = @"
 @OneDecorator('one of one')
 export class EmptyClass {
     @IntentIgnore()
@@ -80,7 +107,7 @@ export class EmptyClass {
     }
 }";
 
-        public static string TwoDecorators = @"
+        public static string ClassTwoDecorators = @"
 @OneDecorator('one of two')
 @TwoDecorator('two of two')
 export class EmptyClass {
@@ -89,13 +116,41 @@ export class EmptyClass {
     }
 }";
 
-        public static string TwoDifferentDecoratorsOnMergedClass = @"
+        public static string MergedClassWithTwoDifferentDecorators = @"
 @OneDifferentDecorator('one of two')
 @TwoDifferentDecorator('two of two')
-@IntentMerge
+@IntentMerge()
 export class EmptyClass {
     @IntentIgnore()
     someMethod() { // prevent straight override
+    }
+}";
+
+        public static string MethodWithNoDecorators = @"
+@IntentMerge
+export class EmptyClass {
+    someMethod() {
+        // some implementation
+    }
+}";
+        public static string MergedMethodWithOneDecorator = @"
+@IntentMerge
+export class EmptyClass {
+    @OneDecorator()
+    @IntentMerge()
+    someMethod() {
+        // some implementation
+    }
+}";
+
+        public static string MergedMethodWithTwoDecorator = @"
+@IntentMerge
+export class EmptyClass {
+    @OneDecorator()
+    @TwoDecorator()
+    @IntentMerge()
+    someMethod() {
+        // some implementation
     }
 }";
     }

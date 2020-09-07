@@ -105,7 +105,23 @@ import {{ {className} }} from '{location}';");
 
         public void InsertAfter(TypeScriptNode node, string text)
         {
-            Change.InsertAfter(node.Node, text);
+            InsertAfter(node.Node, text);
+        }
+
+        public void InsertAfter(Node node, string text)
+        {
+            Change.InsertAfter(node, text);
+            UpdateNodes();
+        }
+
+        public void InsertBefore(TypeScriptNode node, string text)
+        {
+           InsertBefore(node.Node, text);
+        }
+
+        public void InsertBefore(Node node, string text)
+        {
+            Change.InsertBefore(node, text);
             UpdateNodes();
         }
 
@@ -117,12 +133,6 @@ import {{ {className} }} from '{location}';");
         public void Insert(int index, string text)
         {
             _source = _source.Insert(index, text);
-            UpdateNodes();
-        }
-
-        public void InsertBefore(TypeScriptNode node, string text)
-        {
-            Change.InsertBefore(node.Node, text);
             UpdateNodes();
         }
 
