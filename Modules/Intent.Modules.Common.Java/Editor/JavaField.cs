@@ -20,10 +20,10 @@ namespace Intent.Modules.Common.Java.Editor
             return ((Java9Parser.FieldDeclarationContext)context).variableDeclaratorList().variableDeclarator(0).variableDeclaratorId().identifier().GetText();
         }
 
-        public override bool IsIgnored()
-        {
-            var isIgnored = _context.fieldModifier().Any(x => x.annotation()?.GetText().StartsWith("@IntentIgnore") ?? false); ;
-            return isIgnored;
-        }
+        //public override bool IsIgnored()
+        //{
+        //    var isIgnored = _context.fieldModifier().Any(x => x.annotation()?.GetText().StartsWith("@IntentIgnore") ?? false); ;
+        //    return isIgnored;
+        //}
     }
 }

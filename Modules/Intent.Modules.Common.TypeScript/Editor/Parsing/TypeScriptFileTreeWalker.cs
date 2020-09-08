@@ -80,7 +80,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
 
         private void OnImportDeclaration(Node node)
         {
-            var existing = _editor.File.Imports.SingleOrDefault(x => x.Identifier == x.GetIdentifier(node) && !x.Types.Except(x.GetTypes(node)).Any());
+            var existing = _editor.File.Imports.SingleOrDefault(x => x.Identifier == x.GetIdentifier(node) && x.Types.OrderBy(t => t).SequenceEqual(x.GetTypes(node).OrderBy(t => t)));
             if (existing == null)
             {
                 _node.InsertChild(_index, new TypeScriptFileImport(node, _editor));

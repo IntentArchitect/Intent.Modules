@@ -26,10 +26,10 @@ namespace Intent.Modules.Common.Java.Editor
             return $"{name}({string.Join(", ", parameterTypes)})";
         }
 
-        public override bool IsIgnored()
-        {
-            var isIgnored = _context.methodModifier().Any(x => x.annotation()?.GetText().StartsWith("@IntentIgnore") ?? false); ;
-            return isIgnored;
-        }
+        //public override bool IsIgnored()
+        //{
+        //    var isIgnored = _context.methodModifier().Any(x => x.annotation()?.GetText().StartsWith("@IntentIgnore") ?? false); ;
+        //    return isIgnored;
+        //}
     }
 }

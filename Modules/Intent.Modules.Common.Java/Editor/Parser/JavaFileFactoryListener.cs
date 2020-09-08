@@ -1,6 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Antlr4.Runtime.Misc;
 using System.Net.Mime;
+using Antlr4.Runtime;
 
 namespace Intent.Modules.Common.Java.Editor.Parser
 {
@@ -9,24 +12,22 @@ namespace Intent.Modules.Common.Java.Editor.Parser
         public JavaFileFactoryListener(JavaFile javaFile)
         {
             File = javaFile;
+            _nodeStack.Push(new JavaNodeContext(File));
         }
 
         public readonly JavaFile File;
 
-        private JavaClass _currentClass;
+        private readonly Stack<JavaNodeContext> _nodeStack = new Stack<JavaNodeContext>();
+        private JavaNodeContext Current => _nodeStack.Peek();
+
         public override void EnterClassDeclaration(Java9Parser.ClassDeclarationContext context)
         {
-            _currentClass = new JavaClass(context, File);
-            if (!File.HasChild(_currentClass))
-            {
-                File.AddChild(_currentClass);
-            }
-            else
-            {
-                _currentClass = (JavaClass) File.TryGetChild(context);
-                _currentClass.UpdateContext(context);
-                //_currentClass = (JavaClass)File.Children.Single(x => x.Equals(_currentClass));
-            }
+            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaClass(context, Current.Node)));
+        }
+
+        public override void ExitClassDeclaration(Java9Parser.ClassDeclarationContext context)
+        {
+            _nodeStack.Pop();
         }
 
         public override void EnterImportDeclaration([NotNull] Java9Parser.ImportDeclarationContext context)
@@ -40,46 +41,79 @@ namespace Intent.Modules.Common.Java.Editor.Parser
 
         public override void EnterConstructorDeclaration(Java9Parser.ConstructorDeclarationContext context)
         {
-            var constructor = new JavaConstructor(context, _currentClass);
-            if (!_currentClass.HasChild(constructor))
+            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaConstructor(context, (JavaClass)Current.Node)));
+        }
+
+        public override void ExitConstructorDeclaration(Java9Parser.ConstructorDeclarationContext context)
+        {
+            _nodeStack.Pop();
+        }
+
+        public override void EnterMethodDeclaration(Java9Parser.MethodDeclarationContext context)
+        {
+            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaMethod(context, (JavaClass)Current.Node)));
+        }
+
+        public override void ExitMethodDeclaration(Java9Parser.MethodDeclarationContext context)
+        {
+            _nodeStack.Pop();
+        }
+
+        public override void EnterFieldDeclaration(Java9Parser.FieldDeclarationContext context)
+        {
+            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaField(context, (JavaClass)Current.Node)));
+        }
+
+        public override void ExitFieldDeclaration(Java9Parser.FieldDeclarationContext context)
+        {
+            _nodeStack.Pop();
+        }
+        
+        public override void EnterAnnotation(Java9Parser.AnnotationContext context)
+        {
+            var existing = Current.Node.TryGetAnnotation(context);
+            if (existing == null)
             {
-                _currentClass.AddChild(constructor);
+                Current.Node.InsertAnnotation(Current.AnnotationIndex, new JavaAnnotation(context, Current.Node));
             }
             else
             {
-                _currentClass.TryGetChild(context).UpdateContext(context);
+                existing.UpdateContext(context);
             }
+
+            Current.AnnotationIndex++;
         }
 
-        public override void EnterClassMemberDeclaration([NotNull] Java9Parser.ClassMemberDeclarationContext context)
+        private JavaNodeContext InsertOrUpdateNode<TRuleContext>(TRuleContext context, Func<JavaNode> createNode)
+            where TRuleContext : ParserRuleContext
         {
-            var methodDeclaration = context.methodDeclaration();
-            if (methodDeclaration != null)
+            var node = Current.Node.TryGetChild(context);
+            if (node == null)
             {
-                var method = new JavaMethod(methodDeclaration, _currentClass);
-                if (!_currentClass.HasChild(method))
-                {
-                    _currentClass.AddChild(method);
-                }
-                else
-                {
-                    _currentClass.TryGetChild(methodDeclaration).UpdateContext(methodDeclaration);
-                }
+                node = createNode();
+                Current.Node.InsertChild(Current.ChildIndex, node);
+            }
+            else
+            {
+                node.UpdateContext(context);
             }
 
-            var fieldDeclaration = context.fieldDeclaration();
-            if (fieldDeclaration != null)
+            Current.ChildIndex++;
+
+            return new JavaNodeContext(node);
+        }
+
+        private class JavaNodeContext
+        {
+            public JavaNodeContext(JavaNode node)
             {
-                var field = new JavaField(fieldDeclaration, _currentClass);
-                if (!_currentClass.HasChild(field))
-                {
-                    _currentClass.AddChild(field);
-                }
-                else
-                {
-                    _currentClass.TryGetChild(fieldDeclaration).UpdateContext(fieldDeclaration);
-                }
+                Node = node;
+                ChildIndex = 0;
+                AnnotationIndex = 0;
             }
+            public JavaNode Node { get; }
+            public int ChildIndex { get; set; }
+            public int AnnotationIndex { get; set; }
         }
     }
 }

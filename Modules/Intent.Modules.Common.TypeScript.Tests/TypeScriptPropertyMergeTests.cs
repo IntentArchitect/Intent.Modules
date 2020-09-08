@@ -71,6 +71,43 @@ export class TestClass {
 }", result);
         }
 
+        [Fact]
+        public void InsertPropertyAtCorrectPlace()
+        {
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: MergedClassWithTenProperties, outputContent: @"
+export class TestClass {
+    propertyFour: string = 'four of ten';
+
+    // must insert after four
+    insertPropertyOne: boolean;
+    propertyTen: string = 'ten of ten';
+
+    // must insert after ten
+    insertPropertyTwo: boolean; 
+}");
+            Assert.Equal(@"
+@IntentMerge()
+export class TestClass {
+    propertyOne: string = 'one of ten';
+    propertyTwo: string = 'two of ten';
+    propertyThree: string = 'three of ten';
+    propertyFour: string = 'four of ten';
+
+    // must insert after four
+    insertPropertyOne: boolean;
+    propertyFive: string = 'fie of ten';
+    propertySix: string = 'six of ten';
+    propertySeven: string = 'seven of ten';
+    propertyEight: string = 'eight of ten';
+    propertyNine: string = 'nine of ten';
+    propertyTen: string = 'ten of ten';
+
+    // must insert after ten
+    insertPropertyTwo: boolean;
+}", result);
+        }
+
         public static string EmptyMergedClass = @"
 @IntentMerge()
 export class TestClass {
@@ -114,6 +151,21 @@ export class TestClass {
     @IntentIgnore()
     propertyTwo: string = 'two of three (ignored)';
     propertyThree: string = 'one of three';
+}";
+
+        public static string MergedClassWithTenProperties = @"
+@IntentMerge()
+export class TestClass {
+    propertyOne: string = 'one of ten';
+    propertyTwo: string = 'two of ten';
+    propertyThree: string = 'three of ten';
+    propertyFour: string = 'four of ten';
+    propertyFive: string = 'fie of ten';
+    propertySix: string = 'six of ten';
+    propertySeven: string = 'seven of ten';
+    propertyEight: string = 'eight of ten';
+    propertyNine: string = 'nine of ten';
+    propertyTen: string = 'ten of ten';
 }";
 
     }

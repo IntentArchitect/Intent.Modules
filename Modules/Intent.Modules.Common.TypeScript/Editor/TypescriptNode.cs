@@ -31,7 +31,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public virtual string Identifier => GetIdentifier(Node);
 
-        public IReadOnlyList<TypeScriptNode> Children => _children;
+        public IList<TypeScriptNode> Children => _children;
 
         public List<T> GetChildren<T>() where T : TypeScriptNode => Children.Where(x => x is T).Cast<T>().ToList();
 

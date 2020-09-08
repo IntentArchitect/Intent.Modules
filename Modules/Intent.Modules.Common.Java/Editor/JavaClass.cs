@@ -10,7 +10,7 @@ namespace Intent.Modules.Common.Java.Editor
     {
         private readonly Java9Parser.ClassDeclarationContext _context;
 
-        public JavaClass(Java9Parser.ClassDeclarationContext context, JavaFile file) : base(context, file)
+        public JavaClass(Java9Parser.ClassDeclarationContext context, JavaNode parent) : base(context, parent)
         {
             _context = context;
         }
@@ -25,16 +25,16 @@ namespace Intent.Modules.Common.Java.Editor
         public IReadOnlyList<JavaMethod> Methods => Children.Where(x => x is JavaMethod).Cast<JavaMethod>().ToList();
         public IReadOnlyList<JavaConstructor> Constructors => Children.Where(x => x is JavaConstructor).Cast<JavaConstructor>().ToList();
 
-        public override bool IsIgnored()
-        {
-            var annotation = _context.normalClassDeclaration()?.classModifier(0)?.annotation();
-            return annotation?.GetText().StartsWith("@IntentIgnore") ?? false;
-        }
+        //public override bool IsIgnored()
+        //{
+        //    var annotation = _context.normalClassDeclaration()?.classModifier(0)?.annotation();
+        //    return annotation?.GetText().StartsWith("@IntentIgnore") ?? false;
+        //}
 
-        public override bool IsMerged()
-        {
-            var annotation = _context.normalClassDeclaration()?.classModifier(0)?.annotation();
-            return annotation?.GetText().StartsWith("@IntentMerge") ?? false;
-        }
+        //public override bool IsMerged()
+        //{
+        //    var annotation = _context.normalClassDeclaration()?.classModifier(0)?.annotation();
+        //    return annotation?.GetText().StartsWith("@IntentMerge") ?? false;
+        //}
     }
 }

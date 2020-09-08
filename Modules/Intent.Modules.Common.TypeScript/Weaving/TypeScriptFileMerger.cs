@@ -32,14 +32,14 @@ namespace Intent.Modules.Common.TypeScript.Weaving
         private void MergeNodes(TypeScriptNode existingNode, TypeScriptNode outputNode)
         {
             MergeDecorators(existingNode, outputNode);
-            
+
             var index = 0;
             foreach (var node in outputNode.Children)
             {
                 var existing = existingNode.TryGetChild(node.Node);
                 if (existing == null)
                 {
-                    
+
                     // toAdd:
                     if (existingNode.Children.Count == 0)
                     {
@@ -63,7 +63,9 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 else
                 {
                     // toUpdate:
-                    index++;
+                    var existingIndex = existingNode.Children.IndexOf(existing);
+                    index = (existingIndex > index) ? existingIndex + 1 : index + 1;
+
                     if (existing.IsIgnored())
                     {
                         continue;

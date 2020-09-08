@@ -19,10 +19,10 @@ namespace Intent.Modules.Common.Java.Editor
                 : "";
         }
 
-        public override bool IsIgnored()
-        {
-            var isIgnored = _context.constructorModifier().Any(x => x.annotation()?.GetText().StartsWith("@IntentIgnore") ?? false); ;
-            return isIgnored;
-        }
+        //public override bool IsIgnored()
+        //{
+        //    var isIgnored = _context.constructorModifier().Any(x => x.annotation()?.GetText().StartsWith("@IntentIgnore") ?? false); ;
+        //    return isIgnored;
+        //}
     }
 }

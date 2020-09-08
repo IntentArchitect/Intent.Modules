@@ -79,17 +79,17 @@ import {{ {className} }} from '{location}';");
             {
                 var import = Imports[i];
                 var sameLocationImports = Imports.Where(x => !x.Equals(import) && x.Location == import.Location).ToArray();
+                foreach (var toRemove in sameLocationImports)
+                {
+                    RemoveChild(toRemove);
+                }
+
                 foreach (var type in sameLocationImports.SelectMany(x => x.Types))
                 {
                     if (!import.HasType(type))
                     {
                         import.AddType(type);
                     }
-                }
-
-                foreach (var toRemove in sameLocationImports)
-                {
-                    RemoveChild(toRemove);
                 }
 
                 i++;

@@ -43,6 +43,8 @@ namespace Intent.Modules.Common.Java.Weaving
 
         private void MergeNodes(JavaNode existingNode, JavaNode outputNode)
         {
+            MergeAnnotations(existingNode, outputNode);
+
             var index = 0;
             foreach (var node in outputNode.Children)
             {
@@ -73,7 +75,8 @@ namespace Intent.Modules.Common.Java.Weaving
                 else
                 {
                     // toUpdate:
-                    index++;
+                    var existingIndex = existingNode.Children.IndexOf(existing);
+                    index = (existingIndex > index) ? existingIndex + 1 : index + 1;
                     if (existing.IsIgnored())
                     {
                         continue;
@@ -91,6 +94,63 @@ namespace Intent.Modules.Common.Java.Weaving
             if (!existingNode.IsMerged())
             {
                 var toRemove = existingNode.Children.Where(x => !x.IsIgnored()).Except(outputNode.Children).ToList();
+                foreach (var node in toRemove)
+                {
+                    node.Remove();
+                }
+            }
+        }
+
+        private void MergeAnnotations(JavaNode existingNode, JavaNode outputNode)
+        {
+            var index = 0;
+            foreach (var node in outputNode.Annotations)
+            {
+                var existing = existingNode.TryGetAnnotation((Java9Parser.AnnotationContext) node.Context);
+                if (existing == null)
+                {
+                    // toAdd:
+                    //var text = node.GetTextWithComments();
+                    if (existingNode.Annotations.Count == 0)
+                    {
+                        _existingFile.InsertBefore(existingNode, node.GetText());
+                    }
+                    else if (index == 0)
+                    {
+                        existingNode.InsertBefore(existingNode.Annotations[0], node);
+                    }
+                    else if (existingNode.Annotations.Count > index)
+                    {
+                        existingNode.InsertAfter(existingNode.Annotations[index - 1], node);
+                    }
+                    else
+                    {
+                        existingNode.InsertAfter(existingNode.Annotations.Last(), node);
+                    }
+
+                    index++;
+                }
+                else
+                {
+                    // toUpdate:
+                    index++;
+                    if (existing.IsIgnored())
+                    {
+                        continue;
+                    }
+
+                    if (existing.Annotations.All(x => !x.IsIgnored()) && !existing.IsMerged())
+                    {
+                        existing.ReplaceWith(node.GetText()); // Overwrite
+                        continue;
+                    }
+                    //MergeDecorators(existing, node); // maybe one day
+                }
+            }
+
+            if (!existingNode.IsMerged())
+            {
+                var toRemove = existingNode.Annotations.Where(x => !x.IsIgnored()).Except(outputNode.Annotations).ToList();
                 foreach (var node in toRemove)
                 {
                     node.Remove();

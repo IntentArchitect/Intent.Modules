@@ -15,7 +15,7 @@ namespace Intent.Modules.Common.Java.Editor
         protected JavaNode(ParserRuleContext context, JavaFile file)
         {
             File = file;
-            Context = context;
+            UpdateContext(context);
         }
 
         protected JavaNode(ParserRuleContext context, JavaNode parent) : this(context, parent.File)
@@ -29,6 +29,7 @@ namespace Intent.Modules.Common.Java.Editor
         public ParserRuleContext Context { get; private set; }
         public JavaNode Parent { get; }
         public IList<JavaNode> Children => _children;
+        public IList<JavaAnnotation> Annotations { get; } = new List<JavaAnnotation>();
         public IToken StartToken => File.GetCommentsAndWhitespaceBefore(Context.Start).StartToken ?? Context.Start;
         public IToken StopToken => Context.Stop;
 
@@ -43,7 +44,7 @@ namespace Intent.Modules.Common.Java.Editor
             {
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
-            Children.Insert(Children.IndexOf(existing), node);
+            //Children.Insert(Children.IndexOf(existing), node);
             File.InsertBefore(existing, node.GetText());
         }
 
@@ -53,7 +54,7 @@ namespace Intent.Modules.Common.Java.Editor
             {
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
-            Children.Insert(Children.IndexOf(existing) + 1, node);
+            //Children.Insert(Children.IndexOf(existing) + 1, node);
             File.InsertAfter(existing, node.GetText());
         }
 
@@ -62,9 +63,19 @@ namespace Intent.Modules.Common.Java.Editor
             return Children.Contains(node);
         }
 
-        public void AddChild(JavaNode node)
+        public void InsertChild(int index, JavaNode node)
         {
-            _children.Add(node);
+            _children.Insert(index, node);
+        }
+
+        public JavaAnnotation TryGetAnnotation(Java9Parser.AnnotationContext context)
+        {
+            return Annotations.SingleOrDefault(x => x.Context.GetType() == context.GetType() &&  x.Identifier == x.GetIdentifier(context));
+        }
+
+        public void InsertAnnotation(int index, JavaAnnotation annotation)
+        {
+            Annotations.Insert(index, annotation);
         }
 
         public virtual string GetText()
@@ -86,12 +97,12 @@ namespace Intent.Modules.Common.Java.Editor
 
         public virtual bool IsIgnored()
         {
-            return false;
+            return Annotations.Any(x => x.Identifier.StartsWith("@IntentIgnore"));// || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentIgnore()");
         }
 
         public virtual bool IsMerged()
         {
-            return false;
+            return Annotations.Any(x => x.Identifier.StartsWith("@IntentMerge"));// || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentMerge()");
         }
 
         public void UpdateContext(RuleContext fromContext)
