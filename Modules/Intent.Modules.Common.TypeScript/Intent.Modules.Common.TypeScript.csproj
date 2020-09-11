@@ -25,4 +25,10 @@
     <PackageReference Include="TypeScriptAST" Version="1.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Microsoft.CSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

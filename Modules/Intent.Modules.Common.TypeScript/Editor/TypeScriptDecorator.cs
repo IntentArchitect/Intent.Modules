@@ -31,6 +31,14 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Node.OfKind(SyntaxKind.ObjectLiteralExpression).Select(x => new TypeScriptObjectLiteralExpression(x, Editor));
         }
 
-        public override bool IsIgnored() => false;
+        public override bool IsIgnored()
+        {
+            return _parent.IsIgnored();
+        }
+
+        public override bool IsMerged()
+        {
+            return _parent.IsMerged();
+        }
     }
 }

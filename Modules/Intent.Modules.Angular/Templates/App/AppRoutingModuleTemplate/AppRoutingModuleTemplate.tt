@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="AngularTypescriptProjectItemTemplateBase<IList<ModuleModel>>" #>
+<#@ template language="C#" inherits="TypeScriptTemplateBase<IList<ModuleModel>>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>

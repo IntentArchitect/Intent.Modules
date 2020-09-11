@@ -10,46 +10,49 @@ using Intent.Templates;
 using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
+using Intent.Modules.Common.TypeScript.Editor;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.VisualStudio.Projects;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AppModuleTemplate : AngularTypescriptProjectItemTemplateBase<object>, IHasNugetDependencies
+    partial class AppModuleTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
 
-        public AppModuleTemplate(IProject project, object model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AppModuleTemplate(IProject project, object model) : base(TemplateId, project, model)
         {
         }
 
         public string AppRoutingModuleClassName => GetTemplateClassName(AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId);
         public string CoreModule => GetTemplateClassName(CoreModuleTemplate.TemplateId);
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+        protected override TypeScriptFile CreateOutputFile()
         {
-            var moduleClass = file.ClassDeclarations().First();
+            var file = GetExistingFile() ?? base.CreateOutputFile();
+            var moduleClass = file.Classes.First();
 
-            var moduleDecorator = moduleClass.Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
+            var moduleDecorator = moduleClass.Decorators.FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
 
             moduleDecorator?.AddImportIfNotExists(CoreModule);
             moduleDecorator?.AddImportIfNotExists(AppRoutingModuleClassName);
+
+            return file;
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: $"app.module",
-                fileExtension: "ts",
-                defaultLocationInProject: $"ClientApp/src/app",
+                relativeLocation: $"ClientApp/src/app",
                 className: "AppModule"
             );
         }

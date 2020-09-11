@@ -41,6 +41,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return $"import {{{string.Join(", ", types.OrderBy(x => x))}}} from {location};";
         }
 
+        public override void Remove()
+        {
+            base.Remove();
+            this.Editor.File.Children.Remove(this);
+        }
+
         public override bool IsIgnored()
         {
             return false;

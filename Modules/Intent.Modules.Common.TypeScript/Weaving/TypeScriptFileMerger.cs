@@ -22,7 +22,8 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 return _existingFile.GetSource();
             }
 
-            MergeNodes(_existingFile, _outputFile);
+            //MergeNodes(_existingFile, _outputFile);
+            _existingFile.MergeWith(_outputFile);
 
             _existingFile.NormalizeImports();
 

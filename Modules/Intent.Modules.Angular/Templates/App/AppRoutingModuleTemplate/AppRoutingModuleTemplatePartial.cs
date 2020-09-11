@@ -9,14 +9,15 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Metadata.Models;
 using System;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AppRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<IList<ModuleModel>>
+    partial class AppRoutingModuleTemplate : TypeScriptTemplateBase<IList<ModuleModel>>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppRoutingModuleTemplate";

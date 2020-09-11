@@ -25,6 +25,16 @@ namespace Intent.Modules.Common.TypeScript.Editor
             base.AddNode(node);
         }
 
+        public override void AddFirst(TypeScriptNode node)
+        {
+            if (Imports.Count > 0)
+            {
+                InsertAfter(Imports.Last(), node);
+                return;
+            }
+            base.AddFirst(node);
+        }
+
         public IReadOnlyList<TypeScriptFileImport> Imports => GetChildren<TypeScriptFileImport>(); //{ get; } = new List<TypeScriptFileImport>();
         public IReadOnlyList<TypeScriptClass> Classes => Children.Where(x => x is TypeScriptClass).Cast<TypeScriptClass>().ToList();
         public IReadOnlyList<TypeScriptInterface> Interfaces => Children.Where(x => x is TypeScriptInterface).Cast<TypeScriptInterface>().ToList();
