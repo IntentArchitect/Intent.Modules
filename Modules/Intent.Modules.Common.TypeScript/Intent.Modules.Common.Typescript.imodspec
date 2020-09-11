@@ -7,6 +7,9 @@
   <description>A custom module for Intent.Modules.</description>
   <authors>Intent.Modules</authors>
   <templates></templates>
+  <factoryExtensions>
+    <factoryExtension id="Intent.Common.TypeScript.OutputWeaver"/>
+  </factoryExtensions>
   <dependencies>
     <dependency id="Intent.Common" version="2.2.0" />
   </dependencies>

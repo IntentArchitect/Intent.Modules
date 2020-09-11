@@ -7,50 +7,41 @@ namespace Intent.Modules.Common.TypeScript.Templates
 {
     public abstract class TypeScriptTemplateBase : TypeScriptTemplateBase<object>
     {
-        protected TypeScriptTemplateBase(string templateId, IOutputTarget outputTarget, TypescriptTemplateMode mode) : base(templateId, outputTarget, null, mode)
+        protected TypeScriptTemplateBase(string templateId, IProject outputTarget) : base(templateId, outputTarget, null)
         {
         }
     }
 
-    public abstract class TypeScriptTemplateBase<TModel> : IntentTypescriptProjectItemTemplateBase<TModel>
+    public abstract class TypeScriptTemplateBase<TModel> : IntentTypescriptProjectItemTemplateBase<TModel>, ITypeScriptMerged
     {
-        protected TypeScriptTemplateBase(string templateId, IOutputTarget outputTarget, TModel model, TypescriptTemplateMode mode) : base(templateId, outputTarget, model)
+        protected TypeScriptTemplateBase(string templateId, IProject outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
-            TemplateMode = mode;
         }
-
-        public TypescriptTemplateMode TemplateMode { get; }
 
         public override string RunTemplate()
         {
-            var metadata = GetMetadata();
-            var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
-
-            var source = LoadOrCreate(fullFileName);
-            var file = new TypeScriptFile(source);
-
-            ApplyFileChanges(file);
+            var file = CreateOutputFile();
 
             file.AddDependencyImports(this);
 
             return file.GetSource();
         }
 
-        protected virtual void ApplyFileChanges(TypeScriptFile file) { }
-
-        protected string LoadOrCreate(string fullFileName)
+        protected virtual TypeScriptFile CreateOutputFile()
         {
-            if (TemplateMode == TypescriptTemplateMode.AlwaysRecreateFromTemplate)
-            {
-                return base.RunTemplate();
-            }
-            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : base.RunTemplate();
+            return GetTemplateFile();
         }
-    }
 
-    public enum TypescriptTemplateMode
-    {
-        AlwaysRecreateFromTemplate = 0,
-        UpdateFile = 1
+        public TypeScriptFile GetTemplateFile()
+        {
+            return new TypeScriptFileEditor(base.RunTemplate()).File;
+        }
+
+        public TypeScriptFile GetExistingFile()
+        {
+            var metadata = GetMetadata();
+            var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
+            return File.Exists(fullFileName) ? new TypeScriptFileEditor(File.ReadAllText(fullFileName)).File : null;
+        }
     }
 }

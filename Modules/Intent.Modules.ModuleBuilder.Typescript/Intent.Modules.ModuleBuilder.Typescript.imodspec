@@ -18,9 +18,13 @@
     <template id="ModuleBuilder.Typescript.Templates.TypescriptTemplate" externalReference="acaa8094-bccf-40b8-9364-c50cc89b0653">
       <role>Templates</role>
     </template>
+    <template id="ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4">
+      <role>Templates</role>
+    </template>
   </templates>
   <dependencies>
     <dependency id="Intent.Common" version="2.2.0" />
+    <dependency id="Intent.Common.Typescript" version="2.2.0" />
     <dependency id="Intent.ModuleBuilder" version="2.2.0" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.2.0" />
   </dependencies>

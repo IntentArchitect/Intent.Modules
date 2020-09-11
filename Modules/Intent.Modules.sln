@@ -155,7 +155,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.CSharp", "Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj", "{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeScript", "Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj", "{AFE0081A-5319-43FA-9487-0A5AB5A15846}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeScript.Tests", "Intent.Modules.Common.TypeScript.Tests\Intent.Modules.Common.TypeScript.Tests.csproj", "{95D948E6-EDBF-4084-A140-98C68D3354F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Java", "Intent.Modules.Common.Java\Intent.Modules.Common.Java.csproj", "{56964EE2-2626-4EE8-B438-5F914C7A7B64}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Java", "Intent.Modules.ModuleBuilder.Java\Intent.Modules.ModuleBuilder.Java.csproj", "{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.Java.Tests", "Intent.Modules.Common.Java.Tests\Intent.Modules.Common.Java.Tests.csproj", "{22158299-341A-45A3-8522-B1A765950021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -423,6 +429,22 @@ Global
 		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95D948E6-EDBF-4084-A140-98C68D3354F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D948E6-EDBF-4084-A140-98C68D3354F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D948E6-EDBF-4084-A140-98C68D3354F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95D948E6-EDBF-4084-A140-98C68D3354F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56964EE2-2626-4EE8-B438-5F914C7A7B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56964EE2-2626-4EE8-B438-5F914C7A7B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56964EE2-2626-4EE8-B438-5F914C7A7B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56964EE2-2626-4EE8-B438-5F914C7A7B64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22158299-341A-45A3-8522-B1A765950021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22158299-341A-45A3-8522-B1A765950021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22158299-341A-45A3-8522-B1A765950021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22158299-341A-45A3-8522-B1A765950021}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -503,6 +525,10 @@ Global
 		{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 		{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{AFE0081A-5319-43FA-9487-0A5AB5A15846} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{95D948E6-EDBF-4084-A140-98C68D3354F7} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{56964EE2-2626-4EE8-B438-5F914C7A7B64} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
+		{22158299-341A-45A3-8522-B1A765950021} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

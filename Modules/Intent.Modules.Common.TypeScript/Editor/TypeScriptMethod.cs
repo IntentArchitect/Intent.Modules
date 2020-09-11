@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Zu.TypeScript.TsTypes;
@@ -6,29 +7,14 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptMethod : TypeScriptNode
     {
-        public TypeScriptMethod(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptMethod(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
 
         }
 
-        public IList<TypeScriptDecorator> Decorators()
+        public override string GetIdentifier(Node node)
         {
-            return Node.OfKind(SyntaxKind.Decorator).Select(x => new TypeScriptDecorator(x, File)).ToList();
-        }
-
-        public TypeScriptDecorator GetDecorator(string name)
-        {
-            return Decorators().SingleOrDefault(x => x.Name == name);
-        }
-
-        public string GetTextWithComments()
-        {
-            return Node.GetTextWithComments();
-        }
-
-        public override bool IsIgnored()
-        {
-            return GetDecorator("IntentIgnore") != null;
+            return node.IdentifierStr;
         }
     }
 }

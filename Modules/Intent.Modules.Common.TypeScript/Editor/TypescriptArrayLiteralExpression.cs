@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptArrayLiteralExpression : TypeScriptNode
     {
-        public TypeScriptArrayLiteralExpression(Node node, TypeScriptFile file) : base(node, file)
+        public TypeScriptArrayLiteralExpression(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
         }
 
@@ -18,12 +18,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 switch (x.Kind)
                 {
                     case SyntaxKind.ObjectLiteralExpression:
-                        return new TypeScriptObjectLiteralExpression(x, File);
+                        return new TypeScriptObjectLiteralExpression(x, Editor);
                     case SyntaxKind.ArrayLiteralExpression:
-                        return new TypeScriptArrayLiteralExpression(x, File);
+                        return new TypeScriptArrayLiteralExpression(x, Editor);
                     case SyntaxKind.FirstLiteralToken:
                     case SyntaxKind.StringLiteral:
-                        return new TypescriptLiteral(x, File);
+                        return new TypescriptLiteral(x, Editor);
                     default:
                         return null;
                 }
@@ -34,29 +34,38 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             if (!Node.Children.Any())
             {
-                Change.ChangeNode(Node, $@"[
+                Editor.Change.ChangeNode(Node, $@"[
   {literal}
 ]");
             }
             else
             {
-                Change.InsertAfter(Node.Children.Last(), $@",
+                Editor.Change.InsertAfter(Node.Children.Last(), $@",
   {literal}");
             }
-            UpdateChanges();
+            Editor.UpdateNodes();
+        }
+
+        public override string GetIdentifier(Node node)
+        {
+            return node.IdentifierStr;
         }
 
         public override bool IsIgnored() => false;
-
     }
 
     public class TypescriptLiteral : TypeScriptNode
     {
-        public TypescriptLiteral(Node node, TypeScriptFile file) : base(node, file)
+        public TypescriptLiteral(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
         }
 
         public string Value => Node.GetText();
+
+        public override string GetIdentifier(Node node)
+        {
+            return node.GetText();
+        }
 
         public override bool IsIgnored() => false;
     }

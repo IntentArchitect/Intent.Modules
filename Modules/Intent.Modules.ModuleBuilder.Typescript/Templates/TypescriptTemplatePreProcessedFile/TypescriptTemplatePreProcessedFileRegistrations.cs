@@ -8,16 +8,16 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePreProcessedFile
 {
-    public class RoslynProjectItemTemplatePreProcessedFileRoslynProjectItemTemplateRegistrations : ModelTemplateRegistrationBase<TypescriptFileTemplateModel>
+    public class TypescriptTemplatePreProcessedFileRegistrations : ModelTemplateRegistrationBase<TypescriptFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
-        public RoslynProjectItemTemplatePreProcessedFileRoslynProjectItemTemplateRegistrations(IMetadataManager metadataManager)
+        public TypescriptTemplatePreProcessedFileRegistrations(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
 
-        public override string TemplateId => "Intent.ModuleBuilder.RoslynProjectItemTemplate.T4Template.PreProcessed";
+        public override string TemplateId => "ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4";
 
         public override ITemplate CreateTemplateInstance(IProject project, TypescriptFileTemplateModel model)
         {

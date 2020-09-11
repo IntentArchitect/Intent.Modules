@@ -84,37 +84,4 @@ namespace Intent.Modules.Common.Templates
             return "./" + relativeUrl.ToString();
         }
     }
-
-    public class TypescriptDefaultFileMetadata : DefaultFileMetadata
-    {
-        public TypescriptDefaultFileMetadata(
-                    OverwriteBehaviour overwriteBehaviour,
-                    string codeGenType,
-                    string fileName,
-                    string fileExtension,
-                    string defaultLocationInProject,
-                    string className,
-                    string @namespace = null,
-                    string dependsUpon = null
-                    )
-            : base(overwriteBehaviour: overwriteBehaviour, 
-                  codeGenType: codeGenType, 
-                  fileName: fileName, 
-                  fileExtension: fileExtension,
-                  defaultLocationInProject: defaultLocationInProject)
-        {
-            if (!string.IsNullOrWhiteSpace(className))
-            {
-                this.CustomMetadata["ClassName"] = className;
-            }
-            if (!string.IsNullOrWhiteSpace(@namespace))
-            {
-                this.CustomMetadata["Namespace"] = @namespace;
-            }
-            if (!string.IsNullOrWhiteSpace(dependsUpon))
-            {
-                this.CustomMetadata["Depends On"] = dependsUpon;
-            }
-        }
-    }
 }

@@ -20,5 +20,7 @@
     <application id="3517d53b-f6f7-4d96-8315-efcc6d5622ec" relativePath="Intent.Modules.Common.CSharp\Common.CSharp.application.config" />
     <application id="45b6cbb2-bbe2-4a28-a65b-1100ec6a550c" relativePath="Intent.Modules.Common.TypeScript\Common.Typescript.application.config" />
     <application id="ad79943a-b771-42b0-9563-9e01f7ea2dbc" relativePath="Intent.Modules.VisualStudio.Projects\VisualStudio.Projects.application.config" />
+    <application id="9f168336-ec07-4e5a-ba92-c75bbed5aed0" relativePath="Intent.Modules.Common.Java/Common.Java.application.config" />
+    <application id="fbb9e269-8250-4831-a2ec-f73b68658e77" relativePath="Intent.Modules.ModuleBuilder.Java/ModuleBuilder.Java.application.config" />
   </applications>
 </solution>
