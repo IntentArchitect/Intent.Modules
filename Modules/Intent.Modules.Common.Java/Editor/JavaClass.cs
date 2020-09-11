@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Antlr4.Runtime;
-using Antlr4.Runtime.Tree;
 using Intent.Modules.Common.Java.Editor.Parser;
 using JavaParserLib;
 
@@ -19,10 +18,10 @@ namespace Intent.Modules.Common.Java.Editor
         }
 
         public string Name => Identifier;
-        public string SuperClass { get; set; }
-        public IList<JavaInterfaceType> Interfaces = new List<JavaInterfaceType>();
+        public JavaSuperClass SuperClass { get; set; }
+        public JavaSuperInterfaces SuperInterfaces { get; set; }
         public IReadOnlyList<JavaField> Fields => Children.Where(x => x is JavaField).Cast<JavaField>().ToList();
-        public IReadOnlyList<JavaMethod> Methods => Children.Where(x => x is JavaMethod).Cast<JavaMethod>().ToList();
+        public IReadOnlyList<JavaClassMethod> Methods => Children.Where(x => x is JavaClassMethod).Cast<JavaClassMethod>().ToList();
         public IReadOnlyList<JavaConstructor> Constructors => Children.Where(x => x is JavaConstructor).Cast<JavaConstructor>().ToList();
 
         public override void UpdateContext(RuleContext context)
@@ -35,111 +34,57 @@ namespace Intent.Modules.Common.Java.Editor
         public override void MergeWith(JavaNode node)
         {
             base.MergeWith(node);
-            MergeNodeCollections(node, x => ((JavaClass)x).Interfaces.ToList<JavaNode>());
+            MergeSuperClass((JavaClass)node);
+            MergeInterfaces((JavaClass)node);
         }
 
-        protected override void AddFirst(JavaNode node)
+        private void MergeSuperClass(JavaClass node)
         {
-            if (node is JavaInterfaceType)
+            if (node.SuperClass != null)
             {
-                var afterContext = ((Java9Parser.NormalClassDeclarationContext)Context).superclass() ?? (ParserRuleContext)((Java9Parser.NormalClassDeclarationContext)Context).identifier();
-                File.InsertAfter(afterContext.Stop, " implements" + node.GetText());
+                if (SuperClass != null)
+                {
+                    SuperClass.ReplaceWith(node.SuperClass.GetText());
+                }
+                else
+                {
+                    File.InsertAfter(((Java9Parser.NormalClassDeclarationContext)Context).identifier().Stop, node.SuperClass.GetText());
+                }
             }
-            else
+            else if (!IsMerged())
             {
-                base.AddFirst(node);
-            }
-        }
-
-        public override void InsertBefore(JavaNode existing, JavaNode node)
-        {
-            if (node is JavaInterfaceType)
-            {
-                File.InsertBefore(existing, $"{node.GetText()},");
-            }
-            else
-            {
-                base.InsertBefore(existing, node);
+                SuperClass?.Remove();
             }
         }
 
-        public override void InsertAfter(JavaNode existing, JavaNode node)
+        private void MergeInterfaces(JavaClass node)
         {
-            if (node is JavaInterfaceType)
+            if (node.SuperInterfaces != null)
             {
-                File.InsertAfter(existing, $",{node.GetText()}");
+                if (SuperInterfaces != null)
+                {
+                    SuperInterfaces.MergeWith(node.SuperInterfaces);
+                }
+                else
+                {
+                    var afterContext = ((Java9Parser.NormalClassDeclarationContext)Context).superclass() ?? (ParserRuleContext)((Java9Parser.NormalClassDeclarationContext)Context).identifier();
+                    File.InsertAfter(afterContext.Stop, node.SuperInterfaces.GetText());
+                }
             }
-            else
+            else if (!IsMerged())
             {
-                base.InsertAfter(existing, node);
+                SuperInterfaces?.Remove();
             }
         }
 
         private void UpdateSuperClass(Java9Parser.SuperclassContext superclass)
         {
-            SuperClass = superclass?.classType().identifier().GetText();
+            SuperClass = superclass != null ? new JavaSuperClass(superclass, this) : null;
         }
 
-
-        private void UpdateInterfaces(Java9Parser.SuperinterfacesContext interfaces)
+        private void UpdateInterfaces(Java9Parser.SuperinterfacesContext superinterfaces)
         {
-            if (interfaces == null)
-            {
-                Interfaces.Clear();
-            }
-            ParseTreeWalker.Default.Walk(new JavaInterfacesListener(this), Context);
+            SuperInterfaces = superinterfaces != null ? new JavaSuperInterfaces(superinterfaces, this) : null;
         }
-    }
-
-    public class JavaInterfacesListener : Java9BaseListener
-    {
-        private int _index;
-        private readonly JavaClass _class;
-
-        public JavaInterfacesListener(JavaClass @class)
-        {
-            _class = @class;
-        }
-
-        public override void EnterInterfaceType(Java9Parser.InterfaceTypeContext context)
-        {
-            var node = _class.Interfaces.SingleOrDefault(x => x.Context.GetType() == context.GetType() && x.Identifier == x.GetIdentifier(context));
-            if (node == null)
-            {
-                node = new JavaInterfaceType(context, _class);
-                _class.Interfaces.Insert(_index, node);
-            }
-            else
-            {
-                node.UpdateContext(context);
-            }
-
-            if (_index < _class.Interfaces.Count)
-            {
-                _index++;
-            }
-        }
-    }
-    public class JavaInterfaceType : JavaNode
-    {
-        public JavaInterfaceType(Java9Parser.InterfaceTypeContext context, JavaNode parent) : base(context, parent)
-        {
-
-        }
-
-        public override string GetIdentifier(ParserRuleContext context)
-        {
-            return context.GetText();
-        }
-
-        //public override string GetText()
-        //{
-        //    var previousTokenIndex = ((ParserRuleContext) Context.Parent).children.IndexOf(Context) - 1;
-        //    if (previousTokenIndex >= 0 && Context.Parent.GetChild(previousTokenIndex) is TerminalNodeImpl)
-        //    {
-        //        return Context.Parent.GetChild(previousTokenIndex).GetText() + base.GetText();
-        //    }
-        //    return base.GetText();
-        //}
     }
 }

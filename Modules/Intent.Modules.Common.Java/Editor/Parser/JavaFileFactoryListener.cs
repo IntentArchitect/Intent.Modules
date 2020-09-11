@@ -30,6 +30,16 @@ namespace Intent.Modules.Common.Java.Editor.Parser
             _nodeStack.Pop();
         }
 
+        public override void EnterNormalInterfaceDeclaration(Java9Parser.NormalInterfaceDeclarationContext context)
+        {
+            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaInterface(context, Current.Node)));
+        }
+
+        public override void ExitNormalInterfaceDeclaration(Java9Parser.NormalInterfaceDeclarationContext context)
+        {
+            _nodeStack.Pop();
+        }
+
         public override void EnterImportDeclaration([NotNull] Java9Parser.ImportDeclarationContext context)
         {
             var import = new JavaImport(context, File);
@@ -51,10 +61,20 @@ namespace Intent.Modules.Common.Java.Editor.Parser
 
         public override void EnterMethodDeclaration(Java9Parser.MethodDeclarationContext context)
         {
-            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaMethod(context, (JavaClass)Current.Node)));
+            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaClassMethod(context, (JavaClass)Current.Node)));
         }
 
         public override void ExitMethodDeclaration(Java9Parser.MethodDeclarationContext context)
+        {
+            _nodeStack.Pop();
+        }
+
+        public override void EnterInterfaceMethodDeclaration(Java9Parser.InterfaceMethodDeclarationContext context)
+        {
+            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaInterfaceMethod(context, Current.Node)));
+        }
+
+        public override void ExitInterfaceMethodDeclaration(Java9Parser.InterfaceMethodDeclarationContext context)
         {
             _nodeStack.Pop();
         }

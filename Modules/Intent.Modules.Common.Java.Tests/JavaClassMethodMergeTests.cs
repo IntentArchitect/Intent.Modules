@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Intent.Modules.Common.Java.Tests
 {
-    public class JavaMethodMergeTests
+    public class JavaClassMethodMergeTests
     {
         [Fact]
         public void AddsNewMethod()
