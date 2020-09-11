@@ -33,18 +33,18 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
         public string AppRoutingModuleClassName => GetTemplateClassName(AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId);
         public string CoreModule => GetTemplateClassName(CoreModuleTemplate.TemplateId);
 
-        protected override TypeScriptFile CreateOutputFile()
-        {
-            var file = GetExistingFile() ?? base.CreateOutputFile();
-            var moduleClass = file.Classes.First();
+        //protected override TypeScriptFile CreateOutputFile()
+        //{
+        //    var file = GetExistingFile() ?? base.CreateOutputFile();
+        //    var moduleClass = file.Classes.First();
 
-            var moduleDecorator = moduleClass.Decorators.FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
+        //    var moduleDecorator = moduleClass.Decorators.FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
 
-            moduleDecorator?.AddImportIfNotExists(CoreModule);
-            moduleDecorator?.AddImportIfNotExists(AppRoutingModuleClassName);
+        //    moduleDecorator?.AddImportIfNotExists(CoreModule);
+        //    moduleDecorator?.AddImportIfNotExists(AppRoutingModuleClassName);
 
-            return file;
-        }
+        //    return file;
+        //}
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()

@@ -12,7 +12,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
-    using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
     using System;
     
@@ -36,6 +36,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+@IntentMerge()
 @NgModule({
   declarations: [
     AppComponent
@@ -43,13 +44,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class ");
+    ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(CoreModule));
+            
+            #line default
+            #line hidden
+            this.Write(",\r\n    ");
+            
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AppRoutingModuleClassName));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class ");
+            
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

@@ -6,28 +6,98 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptArrayLiteralExpression : TypeScriptNode
     {
-        public TypeScriptArrayLiteralExpression(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        private readonly TypeScriptNode _parent;
+
+        public TypeScriptArrayLiteralExpression(Node node, TypeScriptNode parent) : base(node, parent.Editor)
         {
+            _parent = parent;
         }
 
-        public List<T> GetValues<T>()
-            where T : TypeScriptNode
+        public override string GetIdentifier(Node node)
         {
-            return Node.Children.Select<Node, TypeScriptNode> (x =>
+            return node.Parent.Children.IndexOf(node).ToString();
+        }
+
+        public override bool IsMerged()
+        {
+            return _parent.IsMerged();
+        }
+
+        public override void UpdateNode(Node node)
+        {
+            base.UpdateNode(node);
+            var index = 0;
+            foreach (var child in node.Children)
             {
-                switch (x.Kind)
+                switch (child.Kind)
                 {
                     case SyntaxKind.ObjectLiteralExpression:
-                        return new TypeScriptObjectLiteralExpression(x, Editor);
+                        this.InsertOrUpdateChildNode(child, index, () => new TypeScriptObjectLiteralExpression(child, this));
+                        index++;
+                        continue;
                     case SyntaxKind.ArrayLiteralExpression:
-                        return new TypeScriptArrayLiteralExpression(x, Editor);
-                    case SyntaxKind.FirstLiteralToken:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypeScriptArrayLiteralExpression(child, this));
+                        index++;
+                        continue;
                     case SyntaxKind.StringLiteral:
-                        return new TypescriptLiteral(x, Editor);
-                    default:
-                        return null;
+                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
+                        index++;
+                        continue;
+                    case SyntaxKind.NumericLiteral:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
+                        index++;
+                        continue;
+                    case SyntaxKind.RegularExpressionLiteral:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
+                        index++;
+                        continue;
+                    case SyntaxKind.Identifier:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
+                        index++;
+                        continue;
+                        // OTHERS? Not sure...
+                        //case SyntaxKind.TypeLiteral:
+                        //    this.InsertOrUpdateNode(node, index, () => new TypescriptLiteral(node, this));
+                        //    index++;
+                        //    continue;
                 }
-            }).Select(x => x as T).ToList();
+            }
+        }
+
+        public override void MergeWith(TypeScriptNode node)
+        {
+            base.MergeWith(node);
+        }
+
+        public override void InsertBefore(TypeScriptNode existing, TypeScriptNode node)
+        {
+            Editor.InsertBefore(existing, $"{node.GetTextWithComments()},");
+        }
+
+        public override void InsertAfter(TypeScriptNode existing, TypeScriptNode node)
+        {
+            Editor.InsertAfter(existing, $",{node.GetTextWithComments()}");
+        }
+
+
+        public List<T> GetValues<T>()
+                where T : TypeScriptNode
+        {
+            return Node.Children.Select<Node, TypeScriptNode>(x =>
+           {
+               switch (x.Kind)
+               {
+                   case SyntaxKind.ObjectLiteralExpression:
+                       return new TypeScriptObjectLiteralExpression(x, this);
+                   case SyntaxKind.ArrayLiteralExpression:
+                       return new TypeScriptArrayLiteralExpression(x, this);
+                   case SyntaxKind.FirstLiteralToken:
+                   case SyntaxKind.StringLiteral:
+                       return new TypescriptLiteral(x, this);
+                   default:
+                       return null;
+               }
+           }).Select(x => x as T).ToList();
         }
 
         public void AddValue(string literal)
@@ -44,27 +114,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
   {literal}");
             }
             Editor.UpdateNodes();
-        }
-
-        public override string GetIdentifier(Node node)
-        {
-            return node.IdentifierStr;
-        }
-
-        public override bool IsIgnored() => false;
-    }
-
-    public class TypescriptLiteral : TypeScriptNode
-    {
-        public TypescriptLiteral(Node node, TypeScriptFileEditor editor) : base(node, editor)
-        {
-        }
-
-        public string Value => Node.GetText();
-
-        public override string GetIdentifier(Node node)
-        {
-            return node.GetText();
         }
 
         public override bool IsIgnored() => false;

@@ -24,12 +24,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             var arrayLiteral = Node.Children.FirstOrDefault(x => x.Kind == SyntaxKind.ArrayLiteralExpression);
             if (arrayLiteral != null)
             {
-                return new TypeScriptArrayLiteralExpression(arrayLiteral, Editor) as T;
+                return new TypeScriptArrayLiteralExpression(arrayLiteral, this) as T;
             }
             var objectLiteral = Node.Children.FirstOrDefault(x => x.Kind == SyntaxKind.ObjectLiteralExpression);
             if (objectLiteral != null)
             {
-                return new TypeScriptObjectLiteralExpression(objectLiteral, Editor) as T;
+                return new TypeScriptObjectLiteralExpression(objectLiteral, this) as T;
             }
             // TODO: ValueLiteral
 

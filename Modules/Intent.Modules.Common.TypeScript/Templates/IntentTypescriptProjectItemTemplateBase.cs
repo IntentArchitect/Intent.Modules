@@ -1,11 +1,8 @@
-﻿using System;
-using System.Threading;
-using Intent.Engine;
+﻿using Intent.Engine;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.TypeScript;
 using Intent.Templates;
 
-namespace Intent.Modules.Common.Templates
+namespace Intent.Modules.Common.TypeScript.Templates
 {
     public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IHasClassDetails
     {
@@ -41,7 +38,7 @@ namespace Intent.Modules.Common.Templates
 
         public void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
         {
-            AddTypeSource(TypescriptTypeSource.InProject(Project, templateId, collectionFormat));
+            AddTypeSource(Common.Templates.TypescriptTypeSource.InProject(Project, templateId, collectionFormat));
         }
 
 

@@ -12,7 +12,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
-    using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
     using Intent.Modules.Angular.Api;
     using System;
@@ -23,7 +23,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AppRoutingModuleTemplate : AngularTypescriptProjectItemTemplateBase<IList<ModuleModel>>
+    public partial class AppRoutingModuleTemplate : TypeScriptTemplateBase<IList<ModuleModel>>
     {
 #line hidden
         /// <summary>

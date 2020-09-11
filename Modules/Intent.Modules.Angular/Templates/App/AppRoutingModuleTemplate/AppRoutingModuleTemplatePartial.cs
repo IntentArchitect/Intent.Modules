@@ -22,27 +22,19 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppRoutingModuleTemplate";
 
-        public AppRoutingModuleTemplate(IProject project, IList<ModuleModel> model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
+        public AppRoutingModuleTemplate(IProject project, IList<ModuleModel> model) : base(TemplateId, project, model)
         {
         }
 
-        public IEnumerable<AngularModuleTemplate> ModuleTemplates
-        {
-            get
-            {
-                return Model.Select(x => FindTemplate<AngularModuleTemplate>(TemplateDependency.OnModel(AngularModuleTemplate.TemplateId, x)));
-            }
-        }
+        public IEnumerable<AngularModuleTemplate> ModuleTemplates => Model.Select(x => FindTemplate<AngularModuleTemplate>(TemplateDependency.OnModel(AngularModuleTemplate.TemplateId, x)));
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: $"app-routing.module",
-                fileExtension: "ts",
-                defaultLocationInProject: $"ClientApp/src/app",
+                relativeLocation: $"ClientApp/src/app",
                 className: "AppRoutingModule"
             );
         }

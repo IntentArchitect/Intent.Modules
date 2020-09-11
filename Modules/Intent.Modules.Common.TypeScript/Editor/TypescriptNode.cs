@@ -25,7 +25,8 @@ namespace Intent.Modules.Common.TypeScript.Editor
             Editor = editor ?? throw new ArgumentNullException(nameof(editor));
             _syntaxKind = Node.Kind;
             NodePath = GetNodePath(node);
-            Decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>();
+            //Decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>();
+            UpdateNode(node);
         }
 
         public virtual string Identifier => GetIdentifier(Node);
@@ -41,7 +42,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Children.SingleOrDefault(x => x.Node.Kind == node.Kind && x.Identifier == x.GetIdentifier(node));
         }
 
-        public void InsertBefore(TypeScriptNode existing, TypeScriptNode node)
+        public virtual void InsertBefore(TypeScriptNode existing, TypeScriptNode node)
         {
             if (HasNode(node))
             {
@@ -50,7 +51,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             Editor.InsertBefore(existing, node.GetTextWithComments());
         }
 
-        public void InsertBefore(TypeScriptDecorator existing, TypeScriptDecorator node)
+        public virtual void InsertBefore(TypeScriptDecorator existing, TypeScriptDecorator node)
         {
             if (HasNode(node))
             {
@@ -59,7 +60,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             Editor.InsertBefore(existing, node.GetTextWithComments());
         }
 
-        public void InsertAfter(TypeScriptNode existing, TypeScriptNode node)
+        public virtual void InsertAfter(TypeScriptNode existing, TypeScriptNode node)
         {
             if (HasNode(node))
             {
@@ -136,7 +137,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return path;
         }
 
-        public IList<TypeScriptDecorator> Decorators { get; private set; }
+        public IList<TypeScriptDecorator> Decorators { get; } = new List<TypeScriptDecorator>();
 
         public bool HasDecorator(string name)
         {
@@ -163,7 +164,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return HasDecorator("IntentMerge") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentMerge()");
         }
 
-        public void UpdateNode(Node node)
+        public virtual void UpdateNode(Node node)
         {
             if (node.Kind != _syntaxKind)
             {
@@ -234,12 +235,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
                         continue;
                     }
 
-                    if (getCollection(existing).All(x => !x.IsIgnored()) && !existing.IsMerged())
+                    //if (!getCollection(existing).Any() || getCollection(existing).All(x => !x.IsIgnored()) && !existing.IsMerged())
+                    if (existing.CanReplaceInsteadOfMerge() && existing.GetTextWithComments() != node.GetTextWithComments())
                     {
-                        if (existing.GetTextWithComments() != node.GetTextWithComments())
-                        {
-                            existing.ReplaceWith(node.GetTextWithComments()); // Overwrite
-                        }
+                        existing.ReplaceWith(node.GetTextWithComments()); // Overwrite
                         continue;
                     }
 
@@ -257,12 +256,30 @@ namespace Intent.Modules.Common.TypeScript.Editor
             }
         }
 
+        protected bool CanReplaceInsteadOfMerge()
+        {
+            return (!Decorators.Any() && !Children.Any()) || (Children.All(x => !x.IsIgnored()) && !IsMerged());
+        }
+
         public virtual void AddFirst(TypeScriptNode node)
         {
             var index = GetTextWithComments().LastIndexOf('{') != -1
                 ? Node.Pos.Value + GetTextWithComments().LastIndexOf('{') + 1
                 : Node.End.Value;
             Editor.Insert(index, node);
+        }
+
+        protected virtual void InsertOrUpdateChildNode(Node node, int index, Func<TypeScriptNode> createNode)
+        {
+            var existing = TryGetChild(node);
+            if (existing == null)
+            {
+                InsertChild(index, createNode());
+            }
+            else
+            {
+                existing.UpdateNode(node);
+            }
         }
 
         private void AddFirst(TypeScriptDecorator node)
