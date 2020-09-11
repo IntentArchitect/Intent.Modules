@@ -20,12 +20,12 @@ namespace Intent.Modules.Common.Java.Editor.Parser
         private readonly Stack<JavaNodeContext> _nodeStack = new Stack<JavaNodeContext>();
         private JavaNodeContext Current => _nodeStack.Peek();
 
-        public override void EnterClassDeclaration(Java9Parser.ClassDeclarationContext context)
+        public override void EnterNormalClassDeclaration(Java9Parser.NormalClassDeclarationContext context)
         {
             _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaClass(context, Current.Node)));
         }
 
-        public override void ExitClassDeclaration(Java9Parser.ClassDeclarationContext context)
+        public override void ExitNormalClassDeclaration(Java9Parser.NormalClassDeclarationContext context)
         {
             _nodeStack.Pop();
         }
@@ -98,7 +98,11 @@ namespace Intent.Modules.Common.Java.Editor.Parser
                 node.UpdateContext(context);
             }
 
-            Current.ChildIndex++;
+
+            if (Current.ChildIndex < Current.Node.Children.Count)
+            {
+                Current.ChildIndex++;
+            }
 
             return new JavaNodeContext(node);
         }

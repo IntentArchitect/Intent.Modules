@@ -17,7 +17,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         public string Name { get; }
 
-        protected override string GetIdentifier(ParserRuleContext context)
+        public override string GetIdentifier(ParserRuleContext context)
         {
             var name = ((Java9Parser.MethodDeclarationContext)context).methodHeader().methodDeclarator().identifier().GetText();
 

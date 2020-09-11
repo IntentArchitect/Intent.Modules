@@ -65,8 +65,10 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
         private string TemplateBody()
         {
             return @"
-public class <#= ClassName #>() { 
+public class <#= ClassName #> { 
+    public <#= ClassName #>() {
 
+    }
 }";
         }
 

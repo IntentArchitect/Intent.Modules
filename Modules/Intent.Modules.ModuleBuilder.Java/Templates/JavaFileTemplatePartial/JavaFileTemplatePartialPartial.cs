@@ -55,7 +55,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
             {
                 { "TemplateId", GetTemplateId() },
-                { "TemplateType", "C# Template" },
+                { "TemplateType", "Java Template" },
                 { "Role", GetRole() },
                 //{ "Module Dependency", Model.GetDesignerSettings()?.ModuleDependency },
                 //{ "Module Dependency Version",Model.GetDesignerSettings()?.ModuleVersion },

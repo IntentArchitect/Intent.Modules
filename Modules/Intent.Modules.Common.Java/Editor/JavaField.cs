@@ -15,7 +15,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         public string Name { get; }
 
-        protected override string GetIdentifier(ParserRuleContext context)
+        public override string GetIdentifier(ParserRuleContext context)
         {
             return ((Java9Parser.FieldDeclarationContext)context).variableDeclaratorList().variableDeclarator(0).variableDeclaratorId().identifier().GetText();
         }

@@ -139,68 +139,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return path;
         }
 
-        public bool NodeExists(string path)
-        {
-            return FindNode(path) != null;
-        }
-
-        /// <summary>
-        /// e.g. Decorator/CallExpression:NgModule/PropertyAssignment:providers/ArrayLiteralExpression
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public Node FindNode(string path)
-        {
-            return FindNode(Node, path);
-        }
-
-        public Node FindNode(Node node, string path)
-        {
-            return FindNodes(node, path).FirstOrDefault();
-        }
-
-        // ClassDeclaration:<className>/MethodDeclaration:<methodName>
-        public IList<Node> FindNodes(Node node, string path)
-        {
-            var pathParts = path.Split('/');
-            var part = pathParts[0];
-
-            var syntaxKindValue = part.Split(':')[0].Split('~')[0];
-            var identifier = part.Split(':').Length > 1 ? part.Split(':')[1].Split('~')[0] : null;
-            var textIdentifier = part.Split('~').Length > 1 ? part.Split('~')[1] : null;
-
-            if (node == null || !Enum.TryParse(syntaxKindValue, out SyntaxKind syntaxKind))
-                return null;
-
-            if (pathParts.Length == 1)
-            {
-                return node.GetDescendants().OfKind(syntaxKind).Where(x => (identifier == null || x.IdentifierStr == identifier) && (textIdentifier == null || x.GetText() == textIdentifier)).ToList();
-            }
-
-            if (identifier == null)
-            {
-                foreach (var descendant in node.GetDescendants().OfKind(syntaxKind))
-                {
-                    var found = FindNodes(descendant, path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
-                    if (found.Count > 0)
-                    {
-                        return found;
-                    }
-                }
-
-                return null;
-            }
-
-            return FindNodes(node.GetDescendants().OfKind(syntaxKind).FirstOrDefault(x => x.IdentifierStr == identifier), path.Substring(path.IndexOf("/", StringComparison.Ordinal) + 1));
-        }
-
-        //private IList<TypeScriptDecorator> _decorators;
-        //public IList<TypeScriptDecorator> Decorators()
-        //{
-        //    return _decorators ?? (_decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>());
-        //}
-
-
         public IList<TypeScriptDecorator> Decorators { get; private set; }
 
         public bool HasDecorator(string name)
@@ -212,13 +150,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             return Decorators.SingleOrDefault(x => x.Node.Kind == node.Kind && x.Identifier == x.GetIdentifier(node));
         }
-
-        //public void AddDecorator(string declaration)
-        //{
-        //    Change.InsertBefore(Node.First, declaration);
-        //    Editor.UpdateNodes();
-        //    //UpdateChanges();
-        //}
 
         public string GetTextWithComments()
         {

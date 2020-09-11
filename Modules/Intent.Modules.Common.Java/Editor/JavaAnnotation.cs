@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.Java.Editor
         {
         }
 
-        protected override string GetIdentifier(ParserRuleContext context)
+        public override string GetIdentifier(ParserRuleContext context)
         {
             return ((Java9Parser.AnnotationContext)context).GetText();
         }

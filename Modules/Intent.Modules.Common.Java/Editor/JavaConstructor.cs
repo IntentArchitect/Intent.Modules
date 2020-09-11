@@ -12,7 +12,7 @@ namespace Intent.Modules.Common.Java.Editor
             _context = context;
         }
 
-        protected override string GetIdentifier(ParserRuleContext context)
+        public override string GetIdentifier(ParserRuleContext context)
         {
             return ((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList() != null
                 ? string.Join(", ", ((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList().GetParameterTypes())

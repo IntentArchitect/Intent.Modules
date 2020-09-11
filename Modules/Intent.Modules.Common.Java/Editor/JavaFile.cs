@@ -53,7 +53,7 @@ namespace Intent.Modules.Common.Java.Editor
             return _rewriter.GetText();
         }
 
-        protected override string GetIdentifier(ParserRuleContext context)
+        public override string GetIdentifier(ParserRuleContext context)
         {
             return null;
         }
@@ -66,6 +66,12 @@ namespace Intent.Modules.Common.Java.Editor
         public void InsertAfter(JavaNode node, string text)
         {
             _rewriter.InsertAfter(node.Context.Stop, text);
+            UpdateContext();
+        }
+
+        public void InsertAfter(IToken token, string text)
+        {
+            _rewriter.InsertAfter(token, text);
             UpdateContext();
         }
 
@@ -114,27 +120,6 @@ namespace Intent.Modules.Common.Java.Editor
             return text != "" ? (text, _tokens.Get(previous.TokenIndex + 1)) : (text, null);
         }
 
-        //public IToken GetWhitespaceBefore(ParserRuleContext context)
-        //{
-        //    var wsToken = _tokens.Get(context.Start.TokenIndex - 1);
-        //    if (wsToken.Type == Java9Lexer.WS)
-        //    {
-        //        return wsToken;
-        //    }
-        //    return null;
-        //}
-
-        // Not used...
-        //public IToken GetWhitespaceAfter(ParserRuleContext context)
-        //{
-        //    var wsToken = _tokens.Get(context.Stop.TokenIndex + 1);
-        //    if (wsToken.Type == Java9Lexer.WS)
-        //    {
-        //        return wsToken;
-        //    }
-        //    return null;
-        //}
-
         public object GetCommentsBefore(IToken token)
         {
             var commentToken = _tokens.Get(token.TokenIndex - 1);
@@ -155,5 +140,10 @@ namespace Intent.Modules.Common.Java.Editor
             InsertAfter(Imports.Last(), import.GetText());
             //Imports.Add(import); // commented out while AST doesn't update after each change to it
         }
+
+        //public override bool IsMerged()
+        //{
+        //    return true;
+        //}
     }
 }

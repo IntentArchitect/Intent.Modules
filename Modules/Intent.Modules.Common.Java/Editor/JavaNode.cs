@@ -25,7 +25,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         public JavaFile File { get; protected set; }
         public string Identifier => GetIdentifier(Context);
-        protected abstract string GetIdentifier(ParserRuleContext context);
+        public abstract string GetIdentifier(ParserRuleContext context);
         public ParserRuleContext Context { get; private set; }
         public JavaNode Parent { get; }
         public IList<JavaNode> Children => _children;
@@ -35,10 +35,10 @@ namespace Intent.Modules.Common.Java.Editor
 
         public JavaNode TryGetChild(ParserRuleContext context)
         {
-            return Children.SingleOrDefault(x => x.Context.GetType() == context.GetType() &&  x.Identifier == x.GetIdentifier(context));
+            return Children.SingleOrDefault(x => x.Context.GetType() == context.GetType() && x.Identifier == x.GetIdentifier(context));
         }
 
-        public void InsertBefore(JavaNode existing, JavaNode node)
+        public virtual void InsertBefore(JavaNode existing, JavaNode node)
         {
             if (HasChild(node))
             {
@@ -48,7 +48,7 @@ namespace Intent.Modules.Common.Java.Editor
             File.InsertBefore(existing, node.GetText());
         }
 
-        public void InsertAfter(JavaNode existing, JavaNode node)
+        public virtual void InsertAfter(JavaNode existing, JavaNode node)
         {
             if (HasChild(node))
             {
@@ -70,7 +70,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         public JavaAnnotation TryGetAnnotation(Java9Parser.AnnotationContext context)
         {
-            return Annotations.SingleOrDefault(x => x.Context.GetType() == context.GetType() &&  x.Identifier == x.GetIdentifier(context));
+            return Annotations.SingleOrDefault(x => x.Context.GetType() == context.GetType() && x.Identifier == x.GetIdentifier(context));
         }
 
         public void InsertAnnotation(int index, JavaAnnotation annotation)
@@ -105,9 +105,15 @@ namespace Intent.Modules.Common.Java.Editor
             return Annotations.Any(x => x.Identifier.StartsWith("@IntentMerge"));// || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentMerge()");
         }
 
-        public void UpdateContext(RuleContext fromContext)
+        public virtual void UpdateContext(RuleContext context)
         {
-            Context = (ParserRuleContext) fromContext;
+            Context = (ParserRuleContext)context;
+        }
+
+        public virtual void MergeWith(JavaNode node)
+        {
+            MergeNodeCollections(node, x => x.Annotations.ToList<JavaNode>());
+            MergeNodeCollections(node, x => x.Children.ToList<JavaNode>());
         }
 
         public bool Equals(JavaNode other)
@@ -128,10 +134,82 @@ namespace Intent.Modules.Common.Java.Editor
             return Identifier.GetHashCode();
         }
 
-
         public override string ToString()
         {
             return GetText();
+        }
+
+        protected void MergeNodeCollections(JavaNode outputNode, Func<JavaNode, IList<JavaNode>> getCollection)
+        {
+            var index = 0;
+            foreach (var node in getCollection(outputNode))
+            {
+                var existing = getCollection(this).SingleOrDefault(x => x.Context.GetType() == node.Context.GetType() && x.Identifier == x.GetIdentifier(node.Context));
+                //this.TryGetAnnotation((Java9Parser.AnnotationContext)node.Context);
+                if (existing == null)
+                {
+                    // toAdd:
+                    //var text = node.GetTextWithComments();
+                    if (getCollection(this).Count == 0)
+                    {
+                        this.AddFirst((dynamic)node);
+                    }
+                    else if (index == 0)
+                    {
+                        this.InsertBefore(getCollection(this)[0], node);
+                    }
+                    else if (getCollection(this).Count > index)
+                    {
+                        this.InsertAfter(getCollection(this)[index - 1], node);
+                    }
+                    else
+                    {
+                        this.InsertAfter(getCollection(this).Last(), node);
+                    }
+
+                    index++;
+                }
+                else
+                {
+                    // toUpdate:
+                    var existingIndex = getCollection(this).IndexOf(existing);
+                    index = (existingIndex > index) ? existingIndex + 1 : index + 1;
+                    if (existing.IsIgnored())
+                    {
+                        continue;
+                    }
+
+                    if (getCollection(existing).All(x => !x.IsIgnored()) && !existing.IsMerged())
+                    {
+                        if (existing.GetText() != node.GetText())
+                        {
+                            existing.ReplaceWith(node.GetText()); // Overwrite
+                        }
+                        continue;
+                    }
+
+                    existing.MergeWith(node);
+                }
+            }
+
+            if (!this.IsMerged())
+            {
+                var toRemove = getCollection(this).Where(x => !x.IsIgnored()).Except(getCollection(outputNode)).ToList();
+                foreach (var node in toRemove)
+                {
+                    node.Remove();
+                }
+            }
+        }
+
+        protected virtual void AddFirst(JavaAnnotation node)
+        {
+            File.InsertBefore(this, node.GetText());
+        }
+
+        protected virtual void AddFirst(JavaNode node)
+        {
+            File.InsertBefore(Context.Stop ?? Context.Start, node.GetText());
         }
     }
 }

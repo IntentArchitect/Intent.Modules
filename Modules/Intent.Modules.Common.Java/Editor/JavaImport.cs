@@ -46,7 +46,7 @@ namespace Intent.Modules.Common.Java.Editor
         public string TypeName { get; }
         public string Namespace { get; }
 
-        protected override string GetIdentifier(ParserRuleContext context)
+        public override string GetIdentifier(ParserRuleContext context)
         {
             return context.GetText();
         }

@@ -94,7 +94,7 @@ public class TestClass {
 
     @IntentIgnore
     public int testMethod() {
-        // implementation
+        // implementation - different customization
     }
 }", result);
         }
@@ -132,7 +132,7 @@ public class TestClass {
 
     @IntentIgnore
     public int testMethod() {
-        // implementation
+        // implementation - different customization
     }
 }";
 
@@ -162,7 +162,7 @@ public class TestClass {
 
     @IntentIgnore
     public int testMethod() {
-        // implementation
+        // implementation - different customization
     }
 }";
 

@@ -36,7 +36,8 @@ namespace Intent.Modules.Common.Java.Weaving
             //    return _outputFile.GetSource();
             //}
 
-            MergeNodes(_existingFile, _outputFile);
+            //MergeNodes(_existingFile, _outputFile);
+            _existingFile.MergeWith(_outputFile);
 
             return _existingFile.GetSource();
         }
@@ -55,7 +56,8 @@ namespace Intent.Modules.Common.Java.Weaving
                     var text = node.GetText();
                     if (existingNode.Children.Count == 0)
                     {
-                        _existingFile.InsertBefore(existingNode.Context.Stop, text);
+                        // EOF has Stop == null
+                        _existingFile.InsertBefore(existingNode.Context.Stop ?? existingNode.Context.Start, text);
                     }
                     else if (index == 0)
                     {
