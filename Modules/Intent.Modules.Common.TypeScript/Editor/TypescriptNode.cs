@@ -57,7 +57,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             {
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
-            Editor.InsertBefore(existing, node.GetTextWithComments());
+            InsertBefore(existing, node.GetTextWithComments());
+        }
+
+        public virtual void InsertBefore(TypeScriptNode existing, string text)
+        {
+            Editor.InsertBefore(existing, text);
         }
 
         public virtual void InsertAfter(TypeScriptNode existing, TypeScriptNode node)
@@ -66,7 +71,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             {
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
-            Editor.InsertAfter(existing, node.GetTextWithComments());
+            InsertAfter(existing, node.GetTextWithComments());
+        }
+
+        public virtual void InsertAfter(TypeScriptNode existing, string text)
+        {
+            Editor.InsertAfter(existing, text);
         }
 
         public void AddChild(TypeScriptNode node)
@@ -156,12 +166,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public virtual bool IsIgnored()
         {
-            return HasDecorator("IntentIgnore") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentIgnore()");
+            return HasDecorator("IntentIgnore") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentIgnore");
         }
 
         public virtual bool IsMerged()
         {
-            return HasDecorator("IntentMerge") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentMerge()");
+            return HasDecorator("IntentMerge") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentMerge");
         }
 
         public virtual void UpdateNode(Node node)

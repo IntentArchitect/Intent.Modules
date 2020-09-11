@@ -12,7 +12,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
-    using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Modules.Angular.Api;
     using System;
     
@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AngularModuleTemplate : AngularTypescriptProjectItemTemplateBase<ModuleModel>
+    public partial class AngularModuleTemplate : TypeScriptTemplateBase<ModuleModel>
     {
 #line hidden
         /// <summary>
@@ -31,17 +31,44 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
         public override string TransformText()
         {
             this.Write("import { NgModule } from \'@angular/core\';\r\nimport { CommonModule } from \'@angular" +
-                    "/common\';\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [\r\n    CommonModule,\r\n" +
-                    "    ");
+                    "/common\';\r\n\r\n@IntentMerge\r\n@NgModule({\r\n  declarations: [");
+            
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetComponents()));
+            
+            #line default
+            #line hidden
+            this.Write("],\r\n");
+            
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
+  if (HasProviders()) { 
+            
+            #line default
+            #line hidden
+            this.Write("  providers: [");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetProviders()));
+            
+            #line default
+            #line hidden
+            this.Write("],\r\n");
+            
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("  imports: [\r\n    CommonModule,\r\n    ");
+            
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RoutingModuleClassName));
             
             #line default
             #line hidden
             this.Write("\r\n  ]\r\n})\r\nexport class ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

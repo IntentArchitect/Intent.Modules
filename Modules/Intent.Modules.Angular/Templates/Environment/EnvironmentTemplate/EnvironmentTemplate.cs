@@ -12,7 +12,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
-    using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
     using System;
     
@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class EnvironmentTemplate : AngularTypescriptProjectItemTemplateBase<object>
+    public partial class EnvironmentTemplate : TypeScriptTemplateBase<object>
     {
 #line hidden
         /// <summary>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="94b72a54-773d-4c37-8ef3-bb84a34341d2" type="File Template">
-  <name>AngularRoutingModuleTemplate</name>
-  <display>AngularRoutingModuleTemplate: File Per Model</display>
+<class id="aa06d3ae-2965-4101-8f8b-8db7da8a0146" type="Typescript File Template">
+  <name>AngularComponentTsTemplate</name>
+  <display>AngularComponentTsTemplate: File Per Model</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="27027291-01c6-49fa-931a-d9282458cdff">
+  <typeReference id="ebe498e8-56a8-4d51-8764-e82a1f381fda">
     <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
@@ -13,23 +13,16 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>c39d6711-5d0f-4071-8833-fac4dd9c054a</parentFolderId>
+  <parentFolderId>64b3312f-d442-4283-81f4-8fdaa7676430</parentFolderId>
   <literals />
   <attributes />
   <operations />
   <stereotypes>
-    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6" name="File Settings">
-      <addedByDefault>false</addedByDefault>
-      <properties>
-        <property name="329d0550-b81b-4db6-a99b-05d90360d432" display="File Extension" value="txt" isActive="true" />
-        <property name="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe" display="Templating Method" value="T4 Template" isActive="true" />
-      </properties>
-    </stereotype>
     <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
       <addedByDefault>true</addedByDefault>
       <properties>
         <property name="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709" display="Source" value="Lookup Type" isActive="true" />
-        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="cac14331-198a-4f9a-bbb9-171eb0bd4efe" isActive="true" />
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" isActive="true" />
         <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
         <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" value="Angular" isActive="true" />
       </properties>

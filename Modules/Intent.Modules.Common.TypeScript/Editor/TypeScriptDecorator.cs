@@ -41,6 +41,11 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return _parent.IsMerged();
         }
 
+        public override void MergeWith(TypeScriptNode node)
+        {
+            base.MergeWith(node);
+        }
+
         public override void UpdateNode(Node node)
         {
             base.UpdateNode(node);
@@ -57,18 +62,18 @@ namespace Intent.Modules.Common.TypeScript.Editor
                         this.InsertOrUpdateChildNode(child, index, () => new TypeScriptArrayLiteralExpression(child, this));
                         index++;
                         continue;
-                    case SyntaxKind.StringLiteral:
-                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
-                        index++;
-                        continue;
-                    case SyntaxKind.NumericLiteral:
-                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
-                        index++;
-                        continue;
-                    case SyntaxKind.RegularExpressionLiteral:
-                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
-                        index++;
-                        continue;
+                    //case SyntaxKind.StringLiteral:
+                    //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Index));
+                    //    index++;
+                    //    continue;
+                    //case SyntaxKind.NumericLiteral:
+                    //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Index));
+                    //    index++;
+                    //    continue;
+                    //case SyntaxKind.RegularExpressionLiteral:
+                    //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Index));
+                    //    index++;
+                    //    continue;
                 }
             }
         }

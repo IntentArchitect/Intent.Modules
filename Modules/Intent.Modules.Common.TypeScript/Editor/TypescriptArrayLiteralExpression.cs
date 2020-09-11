@@ -40,19 +40,19 @@ namespace Intent.Modules.Common.TypeScript.Editor
                         index++;
                         continue;
                     case SyntaxKind.StringLiteral:
-                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
+                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Name));
                         index++;
                         continue;
                     case SyntaxKind.NumericLiteral:
-                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
+                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Name));
                         index++;
                         continue;
                     case SyntaxKind.RegularExpressionLiteral:
-                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
+                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Name));
                         index++;
                         continue;
                     case SyntaxKind.Identifier:
-                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
+                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Name));
                         index++;
                         continue;
                         // OTHERS? Not sure...
@@ -93,7 +93,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
                        return new TypeScriptArrayLiteralExpression(x, this);
                    case SyntaxKind.FirstLiteralToken:
                    case SyntaxKind.StringLiteral:
-                       return new TypescriptLiteral(x, this);
+                       return new TypescriptLiteral(x, this, IdentifyBy.Name);
                    default:
                        return null;
                }

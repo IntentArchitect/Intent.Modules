@@ -11,19 +11,20 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularDTOTemplate : AngularTypescriptProjectItemTemplateBase<ModuleDTOModel> 
+    partial class AngularDTOTemplate : TypeScriptTemplateBase<ModuleDTOModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularDTOTemplate";
 
-        public AngularDTOTemplate(IProject project, ModuleDTOModel model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
+        public AngularDTOTemplate(IProject project, ModuleDTOModel model) : base(TemplateId, project, model)
         {
             AddTypeSource(TypescriptTypeSource.InProject(Project, TemplateId));
         }
@@ -34,12 +35,10 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             //var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
-                fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"ClientApp/src/app/{Model.Module.GetModuleName().ToKebabCase()}/models",
+                relativeLocation: $"ClientApp/src/app/{Model.Module.GetModuleName().ToKebabCase()}/models",
                 className: "${Model.Name}"
             );
         }

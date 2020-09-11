@@ -32,9 +32,10 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
         public override string TransformText()
         {
             this.Write("import { NgModule } from \'@angular/core\';\r\nimport { Routes, RouterModule, Preload" +
-                    "AllModules } from \'@angular/router\';\r\n\r\nconst routes: Routes = [\r\n");
+                    "AllModules } from \'@angular/router\';\r\n\r\n@IntentMerge\r\nconst routes: Routes = [\r\n" +
+                    "");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
  foreach(var module in Model) {
 // All of the below is not gonna work; but for now just to test idea...
 
@@ -43,42 +44,42 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
             #line hidden
             this.Write("  {\r\n    path: \'");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(module.Name.Replace("Module","").ToLower()));
             
             #line default
             #line hidden
             this.Write("\',\r\n    loadChildren: \'./");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(module.Name.Replace("Module","").ToLower()));
             
             #line default
             #line hidden
             this.Write("/");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(module.Name.Replace("Module","").ToLower()));
             
             #line default
             #line hidden
             this.Write(".module#");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(module.Name));
             
             #line default
             #line hidden
             this.Write("\'\r\n  },\r\n");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forRoot(routes, {\r\n    preloadingStra" +
-                    "tegy: PreloadAllModules\r\n  })],\r\n  exports: [RouterModule]\r\n})\r\nexport class App" +
-                    "RoutingModule { }\r\n");
+            this.Write("];\r\n\r\n@IntentMerge\r\n@NgModule({\r\n  imports: [RouterModule.forRoot(routes, {\r\n    " +
+                    "preloadingStrategy: PreloadAllModules\r\n  })],\r\n  exports: [RouterModule]\r\n})\r\nex" +
+                    "port class AppRoutingModule { }\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

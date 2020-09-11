@@ -1,9 +1,10 @@
-<#@ template language="C#" inherits="AngularTypescriptProjectItemTemplateBase<ComponentModel>" #>
+<#@ template language="C#" inherits="TypeScriptTemplateBase<ComponentModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
 import { Component, OnInit } from '@angular/core';
 
@@ -13,10 +14,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./<#= ComponentName.ToKebabCase() #>.component.css']
 })
 export class <#= ClassName #> implements OnInit {
+<#  foreach (var model in Model.Models) {#>
+
+  <#= model.Name #>: <#= Types.Get(model.TypeReference)#>;
+<#  }#>
 
   constructor() { }
 
   ngOnInit() {
   }
+<#  foreach (var command in Model.Commands) {#>
 
+  @IntentIgnore
+  <#= command.Name.ToCamelCase() #>(<#= GetParameters(command) #>): <#= GetReturnType(command) #> {
+    // write your business logic here for this command
+  }
+<#  }#>
 }

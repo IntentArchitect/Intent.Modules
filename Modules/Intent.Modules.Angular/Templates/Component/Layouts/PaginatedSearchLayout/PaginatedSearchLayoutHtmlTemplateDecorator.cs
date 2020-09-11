@@ -13,6 +13,7 @@ namespace Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayo
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Modules.Angular.Api;
     using System;
     
@@ -42,21 +43,21 @@ namespace Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayo
       <div class=""row border rounded-top"">
 ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  foreach(var field in PagingModel.Fields) { 
             
             #line default
             #line hidden
             this.Write("        <div class=\"col\">");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("</div>\r\n");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  } 
             
             #line default
@@ -64,21 +65,21 @@ namespace Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayo
             this.Write("      </div>\r\n      <div *ngFor=\"let item of pagination.items\" class=\"row border\"" +
                     ">\r\n");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  foreach(var field in PagingModel.Fields) { 
             
             #line default
             #line hidden
             this.Write("        <div class=\"col\">\r\n          <span>{{item.");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
             
             #line default
             #line hidden
             this.Write("}}</span>\r\n        </div>\r\n");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\Layouts\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  } 
             
             #line default

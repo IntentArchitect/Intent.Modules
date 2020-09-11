@@ -106,6 +106,68 @@ export class AppModule { }", outputContent: ComplexAngularAppDecoration);
             Assert.Equal(ComplexAngularAppDecoration, result);
         }
 
+        [Fact]
+        public void AddsTypeToInnerArrayOfDecorator()
+        {
+            
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: @"import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UsersRouting } from './users-routing.module';
+import { IntentMerge } from ""../../shared/intent.decorators"";
+import { UserDetailsComponent } from ""./user-details/user-details.component"";
+
+@IntentMerge
+@NgModule({
+  declarations: [
+    UserDetailsComponent
+  ],
+  imports: [
+    CommonModule,
+    UsersRouting
+  ]
+})
+export class UsersModule { }
+", outputContent: @"import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UserSearchComponent } from './user-search/user-search.component';
+import { UsersRouting } from './users-routing.module';
+import { IntentMerge } from ""../../shared/intent.decorators"";
+
+@IntentMerge
+@NgModule({
+  declarations: [
+    UserSearchComponent
+  ],
+  imports: [
+    CommonModule,
+    UsersRouting
+  ]
+})
+export class UsersModule { }
+");
+            Assert.Equal(@"import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UserSearchComponent } from './user-search/user-search.component';
+import { UsersRouting } from './users-routing.module';
+import { IntentMerge } from ""../../shared/intent.decorators"";
+import { UserDetailsComponent } from ""./user-details/user-details.component"";
+
+@IntentMerge
+@NgModule({
+  declarations: [
+    UserSearchComponent,
+    UserDetailsComponent
+  ],
+  imports: [
+    CommonModule,
+    UsersRouting
+  ]
+})
+export class UsersModule { }
+", result);
+        }
+
         public static string ClassWithNoDecorators = @"
 export class EmptyClass {
     @IntentIgnore()

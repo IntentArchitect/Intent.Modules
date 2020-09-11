@@ -12,19 +12,20 @@ using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
 using Intent.Modules.Common.Plugins;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularComponentTsTemplate : AngularTypescriptProjectItemTemplateBase<ComponentModel>
+    partial class AngularComponentTsTemplate : TypeScriptTemplateBase<ComponentModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Component.AngularComponentTsTemplate";
 
-        public AngularComponentTsTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AngularComponentTsTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model)
         {
         }
 
@@ -60,30 +61,40 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 });
         }
 
-        protected override void ApplyFileChanges(TypescriptFile file)
+  //      protected override void ApplyFileChanges(TypescriptFile file)
+  //      {
+  //          var @class = file.ClassDeclarations().First();
+
+  //          foreach (var model in Model.Models)
+  //          {
+  //              if (!@class.NodeExists($"PropertyDeclaration:{model.Name}"))
+  //              {
+  //                  @class.AddProperty($@"
+  //{model.Name}: {Types.Get(model.TypeReference)};");
+  //              }
+  //          }
+
+  //          foreach (var command in Model.Commands)
+  //          {
+  //              if (!@class.MethodExists(command.Name.ToCamelCase()))
+  //              {
+  //                  @class.AddMethod($@"
+
+  //{command.Name.ToCamelCase()}({}): {(command.ReturnType != null ? Types.Get(command.ReturnType) : "void")} {{
+
+  //}}");
+  //              }
+  //          }
+  //      }
+
+        public string GetParameters(ComponentCommandModel command)
         {
-            var @class = file.ClassDeclarations().First();
+            return string.Join(", ", command.Parameters.Select(x => x.Name.ToCamelCase() + (x.TypeReference.IsNullable ? "?" : "") + ": " + Types.Get(x.TypeReference, "{0}[]")));
+        }
 
-            foreach (var model in Model.Models)
-            {
-                if (!@class.NodeExists($"PropertyDeclaration:{model.Name}"))
-                {
-                    @class.AddProperty($@"
-  {model.Name}: {Types.Get(model.TypeReference)};");
-                }
-            }
-
-            foreach (var command in Model.Commands)
-            {
-                if (!@class.MethodExists(command.Name.ToCamelCase()))
-                {
-                    @class.AddMethod($@"
-
-  {command.Name.ToCamelCase()}({string.Join(", ", command.Parameters.Select(x => x.Name.ToCamelCase() + (x.TypeReference.IsNullable ? "?" : "") + ": " + Types.Get(x.TypeReference, "{0}[]")))}): {(command.ReturnType != null ? Types.Get(command.ReturnType) : "void")} {{
-
-  }}");
-                }
-            }
+        public string GetReturnType(ComponentCommandModel command)
+        {
+            return command.ReturnType != null ? Types.Get(command.ReturnType) : "void";
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

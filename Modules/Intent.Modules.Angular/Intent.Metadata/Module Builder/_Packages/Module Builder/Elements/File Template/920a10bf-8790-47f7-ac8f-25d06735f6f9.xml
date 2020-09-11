@@ -21,7 +21,7 @@
     <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6" name="File Settings">
       <addedByDefault>false</addedByDefault>
       <properties>
-        <property name="329d0550-b81b-4db6-a99b-05d90360d432" display="File Extension" value="txt" isActive="true" />
+        <property name="329d0550-b81b-4db6-a99b-05d90360d432" display="File Extension" value="html" isActive="true" />
         <property name="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe" display="Templating Method" value="T4 Template" isActive="true" />
       </properties>
     </stereotype>
