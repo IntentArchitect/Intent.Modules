@@ -39,10 +39,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
     <span class=""navbar-toggler-icon""></span>
   </button>
   <div class=""collapse navbar-collapse"" [collapse]=""isCollapsed"">
-    <ul class=""navbar-nav"">
-      <li class=""nav-item active"">
-        <a class=""nav-link"" routerLink=""/users/user-search"">Users</a>
-      </li>
+    <ul class=""navbar-nav"" intent-managed=""navbar"">
     </ul>
   </div>
 </nav>
