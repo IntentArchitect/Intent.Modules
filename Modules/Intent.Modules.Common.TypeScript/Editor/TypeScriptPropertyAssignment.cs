@@ -15,9 +15,20 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             return node.IdentifierStr;
         }
+
         public override bool IsMerged()
         {
             return _parent.IsMerged();
+        }
+
+        public override void Remove()
+        {
+            if (_parent.Children.IndexOf(this) > 0)
+            {
+                Editor.Replace(StartIndex - 1, EndIndex, ""); // to get rid of the comma
+                return;
+            }
+            base.Remove();
         }
 
         public override void MergeWith(TypeScriptNode node)

@@ -10,13 +10,20 @@ import { RouterModule, Routes } from '@angular/router';
 
 //@IntentMerge
 const routes: Routes = [
-<# foreach(var component in Model.Components) { #>
-  //@IntentIdentifier('<#= GetClassName(component)  #>')
+<#  foreach(var component in Model.Components) { #>
+<#      if (Model.Components.IndexOf(component) == 0) { #>
+  //@IntentIgnore('default')
+  {
+    path: '',
+    redirectTo: '<#= GetPath(component) #>'
+  },
+<#      } #>
+  //@IntentMerge('<#= GetClassName(component)  #>')
   {
     path: '<#= GetPath(component) #>',
     component: <#= GetClassName(component)  #>
   },
-<# } #>
+<#  } #>
 ];
 
 @IntentMerge

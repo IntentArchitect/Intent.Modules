@@ -23,6 +23,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public override string GetIdentifier(Node node)
         {
+            if (node.First.IdentifierStr.StartsWith("Intent"))
+            {
+                return "Intent";
+            }
             return node.First.IdentifierStr;
         }
 
@@ -33,6 +37,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public override bool IsIgnored()
         {
+            if (Name.StartsWith("Intent"))
+            {
+                return true;
+            }
             return _parent.IsIgnored();
         }
 
@@ -62,18 +70,18 @@ namespace Intent.Modules.Common.TypeScript.Editor
                         this.InsertOrUpdateChildNode(child, index, () => new TypeScriptArrayLiteralExpression(child, this));
                         index++;
                         continue;
-                    //case SyntaxKind.StringLiteral:
-                    //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Index));
-                    //    index++;
-                    //    continue;
-                    //case SyntaxKind.NumericLiteral:
-                    //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Index));
-                    //    index++;
-                    //    continue;
-                    //case SyntaxKind.RegularExpressionLiteral:
-                    //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Index));
-                    //    index++;
-                    //    continue;
+                        //case SyntaxKind.StringLiteral:
+                        //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Index));
+                        //    index++;
+                        //    continue;
+                        //case SyntaxKind.NumericLiteral:
+                        //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Index));
+                        //    index++;
+                        //    continue;
+                        //case SyntaxKind.RegularExpressionLiteral:
+                        //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Index));
+                        //    index++;
+                        //    continue;
                 }
             }
         }

@@ -37,7 +37,7 @@ const routes: Routes = [
     loadChildren: './users/users.module#UsersModule'
   }
 ];", result);
-            
+
         }
 
         [Fact]
@@ -50,14 +50,14 @@ const routes: Routes = [
     path: 'users',
     loadChildren: './users/users.module#UsersModule'
   },
-  //@IntentIdentifier('test')
+  //@IntentMerge('test')
   {
     path: 'test',
     loadChildren: './users/users.module#UsersModule'
   }
 ];", outputContent: @"//@IntentMerge
 const routes: Routes = [
-  //@IntentIdentifier('test')
+  //@IntentMerge('test')
   {
     path: 'users-changed',
     loadChildren: './users/users.module#UsersChangedModule'
@@ -69,13 +69,49 @@ const routes: Routes = [
     path: 'users',
     loadChildren: './users/users.module#UsersModule'
   },
-  //@IntentIdentifier('test')
+  //@IntentMerge('test')
   {
     path: 'users-changed',
     loadChildren: './users/users.module#UsersChangedModule'
   }
 ];", result);
+        }
 
+        [Fact]
+        public void OverwritesManagedObjectLiteralUsingIdentifier()
+        {
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: @"//@IntentMerge
+const routes: Routes = [
+  {
+    path: 'users',
+    loadChildren: './users/users.module#UsersModule'
+  },
+  //@IntentManage('test')
+  {
+    path: 'test',
+    loadChildren: './users/users.module#UsersModule'
+  }
+];", outputContent: @"//@IntentMerge
+const routes: Routes = [
+  //@IntentManage('test')
+  {
+    path: 'users-changed',
+    load: './users/users.module#UsersChangedModule'
+  }
+];");
+            Assert.Equal(@"//@IntentMerge
+const routes: Routes = [
+  {
+    path: 'users',
+    loadChildren: './users/users.module#UsersModule'
+  },
+  //@IntentManage('test')
+  {
+    path: 'users-changed',
+    load: './users/users.module#UsersChangedModule'
+  }
+];", result);
         }
     }
 }

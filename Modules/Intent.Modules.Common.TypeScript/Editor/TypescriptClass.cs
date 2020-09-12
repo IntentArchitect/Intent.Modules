@@ -141,14 +141,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Node.Last.Kind == SyntaxKind.Identifier && Node.Last.IdentifierStr == Name;
         }
 
-        public void AddCodeToClass(string code)
-        {
-            var overwriteClass = Node.GetTextWithComments();
-            overwriteClass = overwriteClass.Insert(overwriteClass.LastIndexOf('{') + 1, code);
-            Editor.ReplaceNode(Node, overwriteClass);
-            Editor.UpdateNodes();
-        }
-
         //public override void UpdateChanges()
         //{
         //    //if (_constructor != null)

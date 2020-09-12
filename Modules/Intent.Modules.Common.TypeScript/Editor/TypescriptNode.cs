@@ -11,6 +11,13 @@ namespace Intent.Modules.Common.TypeScript.Editor
     //    void Visit(TypeScriptClass typeScriptClass);
     //}
 
+    public class IntentDecorators
+    {
+        public const string IntentIgnore = "IntentIgnore";
+        public const string IntentMerge = "IntentMerge";
+        public const string IntentManage = "IntentManage";
+    }
+
     public abstract class TypeScriptNode : IEquatable<TypeScriptNode>
     {
         protected internal Node Node;
@@ -30,35 +37,17 @@ namespace Intent.Modules.Common.TypeScript.Editor
         }
 
         public virtual string Identifier => GetIdentifier(Node);
-        public virtual string ExplicitIdentifier => GetExplicitIdentifier(Node);
+        public virtual string ExplicitIdentifier => GetExplicitIdentifier();
 
         public IList<TypeScriptNode> Children => _children;
+
+        public virtual int StartIndex => Node.Pos.Value;
+        public virtual int EndIndex => Node.End.Value;
 
         public List<T> GetChildren<T>() where T : TypeScriptNode => Children.Where(x => x is T).Cast<T>().ToList();
 
         public abstract string GetIdentifier(Node node);
-
-        private string GetExplicitIdentifier(Node node)
-        {
-            var identifierDecorator = Decorators.FirstOrDefault(x => x.Name == "@IntentIdentifier");
-            if (identifierDecorator != null)
-            {
-                var identifier = identifierDecorator.Children.FirstOrDefault()?.Node.GetText();
-                return identifier;
-            }
-
-            var comments = node.GetTextWithComments().Substring(0, node.GetTextWithComments().Length - node.GetText().Length);
-            if (comments.IndexOf("@IntentIdentifier(") != -1 && comments.IndexOf(")") != -1)
-            {
-                var startIndex = comments.IndexOf("@IntentIdentifier(") + "@IntentIdentifier(".Length;
-                var length = comments.IndexOf(")") - startIndex;
-
-                return comments.Substring(startIndex, length);
-            }
-
-            return null;
-        }
-
+        
         public TypeScriptNode TryGetChild(Node node)
         {
             return Children.SingleOrDefault(x => x.Node.Kind == node.Kind && x.Identifier == x.GetIdentifier(node));
@@ -194,12 +183,17 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public virtual bool IsIgnored()
         {
-            return HasDecorator("IntentIgnore") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentIgnore");
+            return HasDecorator(IntentDecorators.IntentIgnore) || GetComments().Contains($"//@{IntentDecorators.IntentIgnore}");
         }
 
         public virtual bool IsMerged()
         {
-            return HasDecorator("IntentMerge") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentMerge");
+            return HasDecorator(IntentDecorators.IntentMerge) || GetComments().Contains($"//@{IntentDecorators.IntentMerge}");
+        }
+
+        public virtual bool IsManaged()
+        {
+            return HasDecorator(IntentDecorators.IntentManage) || GetComments().Contains($"//@{IntentDecorators.IntentManage}");
         }
 
         public virtual void UpdateNode(Node node)
@@ -227,11 +221,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             MergeNodeCollections(node, x => x.Decorators.ToList<TypeScriptNode>());
             MergeNodeCollections(node, x => x.Children.ToList<TypeScriptNode>());
-        }
-
-        public virtual bool IsManaged()
-        {
-            return HasDecorator("IntentManage");
         }
 
         protected void MergeNodeCollections(TypeScriptNode outputNode, Func<TypeScriptNode, IList<TypeScriptNode>> getCollection)
@@ -284,7 +273,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 }
             }
 
-            if (!this.IsMerged())
+            if (!this.IsMerged() || this.IsManaged())
             {
                 var toRemove = getCollection(this).Where(x => !(x is TypeScriptFileImport) && !x.IsIgnored()).Except(getCollection(outputNode)).ToList();
                 foreach (var node in toRemove)
@@ -292,6 +281,30 @@ namespace Intent.Modules.Common.TypeScript.Editor
                     node.Remove();
                 }
             }
+        }
+
+        protected virtual string GetExplicitIdentifier()
+        {
+            var identifierDecorator = Decorators.FirstOrDefault(x => x.Name.StartsWith("@Intent"));
+            if (identifierDecorator != null)
+            {
+                var identifier = identifierDecorator.Children.FirstOrDefault()?.Node.GetText();
+                return identifier;
+            }
+
+            var comments = GetComments();
+            var commentLines = comments.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var commentLine in commentLines)
+            {
+                if (commentLine.IndexOf("@Intent") != -1 && commentLine.IndexOf(")") != -1)
+                {
+                    var startIndex = commentLine.IndexOf('(', commentLine.IndexOf("@Intent")) + 1;
+                    var length = commentLine.IndexOf(")") - startIndex;
+                    return length == 0 ? null : commentLine.Substring(startIndex, length);
+                }
+            }
+
+            return null;
         }
 
         private bool IsSameNodeAs(TypeScriptNode node)
