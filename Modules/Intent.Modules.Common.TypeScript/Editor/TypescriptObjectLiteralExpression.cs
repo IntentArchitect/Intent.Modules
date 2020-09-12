@@ -11,12 +11,11 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public TypeScriptObjectLiteralExpression(Node node, TypeScriptNode parent) : base(node, parent.Editor)
         {
             _parent = parent;
-            _indexInParent = node.Children.IndexOf(node).ToString();
         }
 
         public override string GetIdentifier(Node node)
         {
-            return _indexInParent;
+            return node.Parent.Children.IndexOf(node).ToString();
         }
 
         public override bool IsMerged()

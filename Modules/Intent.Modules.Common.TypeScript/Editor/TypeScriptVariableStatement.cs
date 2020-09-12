@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Zu.TypeScript.TsTypes;
 
@@ -33,6 +34,26 @@ namespace Intent.Modules.Common.TypeScript.Editor
             // TODO: ValueLiteral
 
             return null;
+        }
+
+        public override void UpdateNode(Node node)
+        {
+            base.UpdateNode(node);
+            var index = 0;
+            foreach (var child in node.OfKind(SyntaxKind.VariableDeclaration).FirstOrDefault()?.Children ?? new List<Node>())
+            {
+                switch (child.Kind)
+                {
+                    case SyntaxKind.ObjectLiteralExpression:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypeScriptObjectLiteralExpression(child, this));
+                        index++;
+                        continue;
+                    case SyntaxKind.ArrayLiteralExpression:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypeScriptArrayLiteralExpression(child, this));
+                        index++;
+                        continue;
+                }
+            }
         }
 
         //internal override void UpdateNode()

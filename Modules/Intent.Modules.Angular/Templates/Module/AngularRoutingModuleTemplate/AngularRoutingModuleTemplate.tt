@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 //@IntentMerge
 const routes: Routes = [
 <# foreach(var component in Model.Components) { #>
+  //@IntentIdentifier('<#= GetClassName(component)  #>')
   {
     path: '<#= GetPath(component) #>',
     component: <#= GetClassName(component)  #>

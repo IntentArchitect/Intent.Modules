@@ -46,7 +46,6 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                     return;
                 }
 
-                //_components.Add(FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
                 var template = FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
                 _providers.Add(template);
             });
@@ -56,22 +55,6 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string RoutingModuleClassName => GetTemplateClassName(AngularRoutingModuleTemplate.AngularRoutingModuleTemplate.TemplateId, Model);
 
-        //protected override void ApplyFileChanges(TypescriptFile file)
-        //{
-        //    foreach (var template in _components)
-        //    {
-        //        var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
-        //        ngModuleDecorator?.AddDeclarationIfNotExists(GetTemplateClassName(template));
-        //        file.UpdateChanges();
-        //    }
-
-        //    foreach (var template in _providers)
-        //    {
-        //        var ngModuleDecorator = file.ClassDeclarations().First().Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
-        //        ngModuleDecorator?.AddProviderIfNotExists(GetTemplateClassName(template));
-        //        file.UpdateChanges();
-        //    }
-        //}
         public bool HasComponents()
         {
             return _components.Any();
@@ -121,6 +104,11 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string ComponentName { get; set; }
         public string Location { get; set; }
+
+        public override string ToString()
+        {
+            return $"Component: {ComponentName} - {Location}";
+        }
     }
 
     internal class AngularProviderInfo
@@ -133,5 +121,10 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string ProviderName { get; set; }
         public string Location { get; set; }
+
+        public override string ToString()
+        {
+            return $"Provider: {ProviderName} - {Location}";
+        }
     }
 }

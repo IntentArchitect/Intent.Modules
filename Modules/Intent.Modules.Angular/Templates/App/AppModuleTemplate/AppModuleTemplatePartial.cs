@@ -10,6 +10,8 @@ using Intent.Templates;
 using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
+using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
+using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
 using Intent.Modules.Common.TypeScript.Editor;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.VisualStudio.Projects;
@@ -21,30 +23,58 @@ using Intent.Modules.Common.TypeScript.Templates;
 namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AppModuleTemplate : TypeScriptTemplateBase<object>
+    partial class AppModuleTemplate : TypeScriptTemplateBase<object>, IHasNugetDependencies
     {
+        private readonly IList<string> _components = new List<string>() { "AppComponent"};
+        private readonly IList<string> _providers = new List<string>();
+
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
 
         public AppModuleTemplate(IProject project, object model) : base(TemplateId, project, model)
         {
+            project.Application.EventDispatcher.Subscribe(AngularComponentCreatedEvent.EventId, @event =>
+            {
+                if (@event.GetValue(AngularComponentCreatedEvent.ModuleId) != ClassName)
+                {
+                    return;
+                }
+
+                _components.Add(GetTemplateClassName(@event.GetValue(AngularComponentCreatedEvent.ModelId)));
+            });
+
+            project.Application.EventDispatcher.Subscribe(AngularServiceProxyCreatedEvent.EventId, @event =>
+            {
+                if (@event.GetValue(AngularServiceProxyCreatedEvent.ModuleId) != ClassName)
+                {
+                    return;
+                }
+
+                var template = GetTemplateClassName(@event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
+                _providers.Add(template);
+            });
         }
 
         public string AppRoutingModuleClassName => GetTemplateClassName(AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId);
         public string CoreModule => GetTemplateClassName(CoreModuleTemplate.TemplateId);
 
-        //protected override TypeScriptFile CreateOutputFile()
-        //{
-        //    var file = GetExistingFile() ?? base.CreateOutputFile();
-        //    var moduleClass = file.Classes.First();
+        public string GetComponents()
+        {
+            if (!_components.Any())
+            {
+                return "";
+            }
+            return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _components) + $"{System.Environment.NewLine}  ";
+        }
 
-        //    var moduleDecorator = moduleClass.Decorators.FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
-
-        //    moduleDecorator?.AddImportIfNotExists(CoreModule);
-        //    moduleDecorator?.AddImportIfNotExists(AppRoutingModuleClassName);
-
-        //    return file;
-        //}
+        public string GetProviders()
+        {
+            if (!_providers.Any())
+            {
+                return "";
+            }
+            return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _providers) + $"{System.Environment.NewLine}  ";
+        }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()

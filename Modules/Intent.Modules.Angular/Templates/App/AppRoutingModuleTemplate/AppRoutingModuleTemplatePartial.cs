@@ -39,6 +39,21 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
             );
         }
 
+        public override void BeforeTemplateExecution()
+        {
+            foreach (var module in Model)
+            {
+                Project.Application.EventDispatcher.Publish(AngularModuleRouteCreatedEvent.EventId, new Dictionary<string, string>()
+                {
+                    {AngularModuleRouteCreatedEvent.ModuleName, module.GetModuleName()},
+                    {AngularModuleRouteCreatedEvent.Route, GetRoute(module)},
+                });
+            }
+        }
 
+        private string GetRoute(ModuleModel module)
+        {
+            return module.Name.Replace("Module", "").ToLower();
+        }
     }
 }

@@ -19,5 +19,7 @@
     <application id="45b6cbb2-bbe2-4a28-a65b-1100ec6a550c" relativePath="Intent.Modules.Common.TypeScript/Common.Typescript.application.config" />
     <application id="9f168336-ec07-4e5a-ba92-c75bbed5aed0" relativePath="Intent.Modules.Common.Java/Common.Java.application.config" />
     <application id="fbb9e269-8250-4831-a2ec-f73b68658e77" relativePath="Intent.Modules.ModuleBuilder.Java/ModuleBuilder.Java.application.config" />
+    <application id="db7b140b-14a1-4dac-93a3-84cd8fae7298" relativePath="Intent.Modules.Common.Html/Intent.Modules.Common.Html.application.config" />
+    <application id="49018a38-94b9-46d5-b6b7-8ce2e5aae4a9" relativePath="Intent.Modules.Angular.Layout/Angular.Layout.application.config" />
   </applications>
 </solution>

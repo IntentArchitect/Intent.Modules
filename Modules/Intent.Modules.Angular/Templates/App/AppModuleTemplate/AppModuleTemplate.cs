@@ -34,33 +34,42 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @IntentMerge
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    ");
+  declarations: [");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetComponents()));
+            
+            #line default
+            #line hidden
+            this.Write("],\r\n  imports: [\r\n    BrowserModule,\r\n    BrowserAnimationsModule,\r\n    ");
+            
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CoreModule));
             
             #line default
             #line hidden
             this.Write(",\r\n    ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AppRoutingModuleClassName));
             
             #line default
             #line hidden
-            this.Write("\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class ");
+            this.Write("\r\n  ],\r\n  providers: [");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetProviders()));
+            
+            #line default
+            #line hidden
+            this.Write("],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class ");
+            
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

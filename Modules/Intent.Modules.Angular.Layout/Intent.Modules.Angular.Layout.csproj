@@ -1,0 +1,95 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="Templates\AppComponentHtmlTemplate\AppComponentHtmlTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AppComponentHtmlTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Footer\FooterComponentCssTemplate\FooterComponentCssTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FooterComponentCssTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Footer\FooterComponentHtmlTemplate\FooterComponentHtmlTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FooterComponentHtmlTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Footer\FooterComponentTsTemplate\FooterComponentTsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FooterComponentTsTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Header\HeaderComponentCssTemplate\HeaderComponentCssTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HeaderComponentCssTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Header\HeaderComponentHtmlTemplate\HeaderComponentHtmlTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HeaderComponentHtmlTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Header\HeaderComponentTsTemplate\HeaderComponentTsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HeaderComponentTsTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Templates\AppComponentHtmlTemplate\AppComponentHtmlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppComponentHtmlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Footer\FooterComponentCssTemplate\FooterComponentCssTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FooterComponentCssTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Footer\FooterComponentHtmlTemplate\FooterComponentHtmlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FooterComponentHtmlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Footer\FooterComponentTsTemplate\FooterComponentTsTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FooterComponentTsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Header\HeaderComponentCssTemplate\HeaderComponentCssTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HeaderComponentCssTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Header\HeaderComponentHtmlTemplate\HeaderComponentHtmlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HeaderComponentHtmlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Header\HeaderComponentTsTemplate\HeaderComponentTsTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HeaderComponentTsTemplate.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Intent.IntentArchitectPackager" Version="1.9.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.Modules.Common" Version="2.1.1" />
+    <PackageReference Include="Intent.Modules.Common.Typescript" Version="2.1.0-pre.5" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Angular\Intent.Modules.Angular.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

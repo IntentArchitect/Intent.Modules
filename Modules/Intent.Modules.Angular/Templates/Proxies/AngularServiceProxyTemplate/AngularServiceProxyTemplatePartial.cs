@@ -70,41 +70,41 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             return base.CreateOutputFile();
         }
 
-  //      protected override void ApplyFileChanges(TypescriptFile file)
-  //      {
-  //          if (Model.MappedService == null)
-  //          {
-  //              Logging.Log.Warning($"{ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service");
-  //              return;
-  //          }
-  //          var @class = file.ClassDeclarations().First();
-  //          foreach (var operation in Model.Operations)
-  //          {
-  //              if (!operation.IsMapped || operation.Mapping == null)
-  //              {
-  //                  Logging.Log.Warning($"Operation [{operation.Name}] on {ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service Operation");
-  //                  continue;
-  //              }
-  //              var url = $"/{Model.MappedService.Name.ToLower()}/{operation.Mapping.Element.Name.ToLower()}";
-  //              var method = $@"
+        //      protected override void ApplyFileChanges(TypescriptFile file)
+        //      {
+        //          if (Model.MappedService == null)
+        //          {
+        //              Logging.Log.Warning($"{ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service");
+        //              return;
+        //          }
+        //          var @class = file.ClassDeclarations().First();
+        //          foreach (var operation in Model.Operations)
+        //          {
+        //              if (!operation.IsMapped || operation.Mapping == null)
+        //              {
+        //                  Logging.Log.Warning($"Operation [{operation.Name}] on {ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service Operation");
+        //                  continue;
+        //              }
+        //              var url = $"/{Model.MappedService.Name.ToLower()}/{operation.Mapping.Element.Name.ToLower()}";
+        //              var method = $@"
 
-  //{operation.Name.ToCamelCase()}({GetParameterDefinitions(operation)}): Observable<{GetReturnType(operation)}> {{
-  //  let url = ""{url}"";{GetUpdateUrl(operation)}
-  //  return this.apiService.{GetDataServiceCall(operation)}
-  //    .pipe(map((response: any) => {{
-  //      return response;
-  //    }}));
-  //}}";
-  //              if (@class.MethodExists(operation.Name.ToCamelCase()))
-  //              {
-  //                  @class.ReplaceMethod(operation.Name.ToCamelCase(), method);
-  //              }
-  //              else
-  //              {
-  //                  @class.AddMethod(method);
-  //              }
-  //          }
-  //      }
+        //{operation.Name.ToCamelCase()}({GetParameterDefinitions(operation)}): Observable<{GetReturnType(operation)}> {{
+        //  let url = ""{url}"";{GetUpdateUrl(operation)}
+        //  return this.apiService.{GetDataServiceCall(operation)}
+        //    .pipe(map((response: any) => {{
+        //      return response;
+        //    }}));
+        //}}";
+        //              if (@class.MethodExists(operation.Name.ToCamelCase()))
+        //              {
+        //                  @class.ReplaceMethod(operation.Name.ToCamelCase(), method);
+        //              }
+        //              else
+        //              {
+        //                  @class.AddMethod(method);
+        //              }
+        //          }
+        //      }
 
         private string GetReturnType(ServiceProxyOperationModel operation)
         {

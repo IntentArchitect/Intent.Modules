@@ -42,23 +42,17 @@ namespace Intent.Modules.Common.TypeScript.Editor
                         index++;
                         continue;
                     // Don't merge literals:
-                    //case SyntaxKind.StringLiteral:
-                    //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
-                    //    index++;
-                    //    continue;
-                    //case SyntaxKind.NumericLiteral:
-                    //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
-                    //    index++;
-                    //    continue;
-                    //case SyntaxKind.RegularExpressionLiteral:
-                    //    this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this));
-                    //    index++;
-                    //    continue;
+                    case SyntaxKind.StringLiteral:
+                    case SyntaxKind.NumericLiteral:
+                    case SyntaxKind.RegularExpressionLiteral:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypescriptLiteral(child, this, IdentifyBy.Index));
+                        index++;
+                        continue;
                     // OTHERS? Not sure...
-                    //case SyntaxKind.TypeLiteral:
-                    //    this.InsertOrUpdateNode(node, index, () => new TypescriptLiteral(node, this));
-                    //    index++;
-                    //    continue;
+                        //case SyntaxKind.TypeLiteral:
+                        //    this.InsertOrUpdateNode(node, index, () => new TypescriptLiteral(node, this));
+                        //    index++;
+                        //    continue;
                 }
             }
         }

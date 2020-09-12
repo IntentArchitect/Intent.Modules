@@ -38,23 +38,30 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
             
             #line default
             #line hidden
-            this.Write("  {\r\n    path: \'");
+            this.Write("  //@IntentIdentifier(\'");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(component)));
+            
+            #line default
+            #line hidden
+            this.Write("\')\r\n  {\r\n    path: \'");
+            
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetPath(component)));
             
             #line default
             #line hidden
             this.Write("\',\r\n    component: ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(component)));
             
             #line default
             #line hidden
             this.Write("\r\n  },\r\n");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
  } 
             
             #line default
@@ -62,7 +69,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
             this.Write("];\r\n\r\n@IntentMerge\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  e" +
                     "xports: [RouterModule]\r\n})\r\nexport class ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

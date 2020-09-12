@@ -7,6 +7,13 @@ namespace Intent.Modules.Angular.Templates
         public const string ModuleId = "ModuleId";
     }
 
+    public static class AngularModuleRouteCreatedEvent
+    {
+        public const string EventId = nameof(AngularModuleRouteCreatedEvent);
+        public const string ModuleName = "ModuleName";
+        public const string Route = "Route";
+    }
+
     public static class AngularComponentCreatedEvent
     {
         public const string EventId = "AngularComponentCreatedEvent";

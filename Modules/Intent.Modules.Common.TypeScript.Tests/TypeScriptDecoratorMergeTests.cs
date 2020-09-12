@@ -96,8 +96,7 @@ import { NgModule } from '@angular/core';
 
 @IntentMerge()
 @NgModule({
-  imports: [
-  ],
+  imports: [],
   providers: [],
   bootstrap: []
 })

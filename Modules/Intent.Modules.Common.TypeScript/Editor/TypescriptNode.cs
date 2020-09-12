@@ -30,12 +30,34 @@ namespace Intent.Modules.Common.TypeScript.Editor
         }
 
         public virtual string Identifier => GetIdentifier(Node);
+        public virtual string ExplicitIdentifier => GetExplicitIdentifier(Node);
 
         public IList<TypeScriptNode> Children => _children;
 
         public List<T> GetChildren<T>() where T : TypeScriptNode => Children.Where(x => x is T).Cast<T>().ToList();
 
         public abstract string GetIdentifier(Node node);
+
+        private string GetExplicitIdentifier(Node node)
+        {
+            var identifierDecorator = Decorators.FirstOrDefault(x => x.Name == "@IntentIdentifier");
+            if (identifierDecorator != null)
+            {
+                var identifier = identifierDecorator.Children.FirstOrDefault()?.Node.GetText();
+                return identifier;
+            }
+
+            var comments = node.GetTextWithComments().Substring(0, node.GetTextWithComments().Length - node.GetText().Length);
+            if (comments.IndexOf("@IntentIdentifier(") != -1 && comments.IndexOf(")") != -1)
+            {
+                var startIndex = comments.IndexOf("@IntentIdentifier(") + "@IntentIdentifier(".Length;
+                var length = comments.IndexOf(")") - startIndex;
+
+                return comments.Substring(startIndex, length);
+            }
+
+            return null;
+        }
 
         public TypeScriptNode TryGetChild(Node node)
         {
@@ -164,6 +186,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Node.GetTextWithComments();
         }
 
+        public string GetComments()
+        {
+            return Node.GetTextWithComments().Substring(0, Node.GetTextWithComments().Length - Node.GetText().Length);
+        }
+
+
         public virtual bool IsIgnored()
         {
             return HasDecorator("IntentIgnore") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentIgnore");
@@ -211,7 +239,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             var index = 0;
             foreach (var node in getCollection(outputNode))
             {
-                var existing = getCollection(this).SingleOrDefault(x => x.Node.Kind == node.Node.Kind && x.Identifier == x.GetIdentifier(node.Node));
+                var existing = getCollection(this).SingleOrDefault(x => x.IsSameNodeAs(node));
                 if (existing == null)
                 {
                     // toAdd:
@@ -266,6 +294,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             }
         }
 
+        private bool IsSameNodeAs(TypeScriptNode node)
+        {
+            return this.Equals(node);
+            //return Node.Kind == node.Node.Kind && Identifier == GetIdentifier(node.Node);
+        }
+
         protected bool CanReplaceInsteadOfMerge()
         {
             return (!Decorators.Any() && !Children.Any()) || (Children.All(x => !x.IsIgnored()) && !IsMerged());
@@ -275,7 +309,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             var index = GetTextWithComments().LastIndexOf('{') != -1
                 ? Node.Pos.Value + GetTextWithComments().LastIndexOf('{') + 1
-                : Node.End.Value;
+                : Math.Max(0, Node.End.Value - 1);
             Editor.Insert(index, node);
         }
 
@@ -299,6 +333,14 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public bool Equals(TypeScriptNode other)
         {
+            if (Node.Kind != other?.Node.Kind)
+            {
+                return false;
+            }
+            if (ExplicitIdentifier != null || other?.ExplicitIdentifier != null)
+            {
+                return ExplicitIdentifier == other.ExplicitIdentifier;
+            }
             return Identifier == other?.Identifier;
         }
 
