@@ -10,12 +10,12 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Angular.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class TypeDefinitionModel : IHasStereotypes, IMetadataModel
+    public class ViewTemplateModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Type Definition";
+        public const string SpecializationType = "ViewTemplate";
         protected readonly IElement _element;
 
-        public TypeDefinitionModel(IElement element, string requiredType = SpecializationType)
+        public ViewTemplateModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -43,7 +43,7 @@ namespace Intent.Modules.Angular.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public bool Equals(TypeDefinitionModel other)
+        public bool Equals(ViewTemplateModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -54,7 +54,7 @@ namespace Intent.Modules.Angular.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((TypeDefinitionModel)obj);
+            return Equals((ViewTemplateModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -62,8 +62,5 @@ namespace Intent.Modules.Angular.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        [IntentManaged(Mode.Fully)]
-        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
     }
 }

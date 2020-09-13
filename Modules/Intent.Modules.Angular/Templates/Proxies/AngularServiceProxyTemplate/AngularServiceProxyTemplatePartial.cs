@@ -190,7 +190,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         private string GetPath(ServiceProxyOperationModel operation)
         {
             var path = operation.GetStereotypeProperty<string>("Http", "Route")?.ToLower();
-            return path ?? operation.Name.ToLower();
+            return path ?? $"/{Model.MappedService.Name.ToLower()}/{operation.Mapping.Element.Name.ToLower()}";
         }
     }
 

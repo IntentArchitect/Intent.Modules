@@ -111,7 +111,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (specificTemplate == null)
                 {
                     var sameId = doc.XPathSelectElement($"package/templates/template[@id=\"{template.TemplateId}\"]");
-                    specificTemplate = sameId.Attribute("externalReference") == null ? sameId : null;
+                    specificTemplate = sameId?.Attribute("externalReference") == null ? sameId : null;
                 }
 
                 if (specificTemplate == null)

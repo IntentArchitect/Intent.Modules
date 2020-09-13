@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
+using Intent.Modules.Angular.Templates.Model.ModelTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.TypeScript.Templates;
@@ -27,6 +28,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 
         public AngularComponentTsTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model)
         {
+            AddTypeSource(ModelTemplate.TemplateId);
         }
 
         public string ComponentName
@@ -61,31 +63,31 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 });
         }
 
-  //      protected override void ApplyFileChanges(TypescriptFile file)
-  //      {
-  //          var @class = file.ClassDeclarations().First();
+        //      protected override void ApplyFileChanges(TypescriptFile file)
+        //      {
+        //          var @class = file.ClassDeclarations().First();
 
-  //          foreach (var model in Model.Models)
-  //          {
-  //              if (!@class.NodeExists($"PropertyDeclaration:{model.Name}"))
-  //              {
-  //                  @class.AddProperty($@"
-  //{model.Name}: {Types.Get(model.TypeReference)};");
-  //              }
-  //          }
+        //          foreach (var model in Model.Models)
+        //          {
+        //              if (!@class.NodeExists($"PropertyDeclaration:{model.Name}"))
+        //              {
+        //                  @class.AddProperty($@"
+        //{model.Name}: {Types.Get(model.TypeReference)};");
+        //              }
+        //          }
 
-  //          foreach (var command in Model.Commands)
-  //          {
-  //              if (!@class.MethodExists(command.Name.ToCamelCase()))
-  //              {
-  //                  @class.AddMethod($@"
+        //          foreach (var command in Model.Commands)
+        //          {
+        //              if (!@class.MethodExists(command.Name.ToCamelCase()))
+        //              {
+        //                  @class.AddMethod($@"
 
-  //{command.Name.ToCamelCase()}({}): {(command.ReturnType != null ? Types.Get(command.ReturnType) : "void")} {{
+        //{command.Name.ToCamelCase()}({}): {(command.ReturnType != null ? Types.Get(command.ReturnType) : "void")} {{
 
-  //}}");
-  //              }
-  //          }
-  //      }
+        //}}");
+        //              }
+        //          }
+        //      }
 
         public string GetParameters(ComponentCommandModel command)
         {

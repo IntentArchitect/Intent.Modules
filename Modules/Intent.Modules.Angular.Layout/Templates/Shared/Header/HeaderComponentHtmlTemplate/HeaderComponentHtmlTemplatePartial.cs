@@ -5,6 +5,7 @@ using System.Linq;
 using HtmlAgilityPack;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Angular.Layout.Html;
 using Intent.Modules.Angular.Templates;
 using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Common;
@@ -38,19 +39,23 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
         public override string RunTemplate()
         {
             var file = GetExistingFile() ?? base.RunTemplate();
-            var html = new HtmlDocument();
+            var html = new HtmlDocument()
+            {
+                OptionOutputOriginalCase = true,
+                OptionWriteEmptyNodes = true
+            };
             html.LoadHtml(file);
             var navbar = html.DocumentNode.SelectSingleNode("//ul[@intent-managed='navbar']");
             if (navbar != null)
             {
                 foreach (var moduleRoute in _mainRoutes)
                 {
-                    if (navbar.SelectSingleNode("//li[a[@routerLink='/users']]") == null)
+                    if (navbar.SelectSingleNode($"//a[@routerlink='/{moduleRoute.Route}']") == null)
                     {
-                        navbar.AppendChild(HtmlNode.CreateNode($@"
+                        navbar.AppendChild($@"
       <li class=""nav-item active"">
         <a class=""nav-link"" routerLink=""/{moduleRoute.Route}"">{moduleRoute.ModuleName}</a>
-      </li>"));
+      </li>") ;
                     }
                 }
             }

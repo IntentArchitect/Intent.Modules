@@ -31,11 +31,15 @@ namespace Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayo
             _pagingModelReference = _template.Model.Models.FirstOrDefault(x => x.Name == _template.Model.GetStereotypeProperty("Paginated Search Layout", "Paging Model", ""))?.TypeReference;
         }
 
+        public ComponentViewModel View => _template.Model.Views.FirstOrDefault();
         public ComponentModel Model => _template.Model;
-        public ModuleDTOModel PagingModel => _metadataManager.GetDTOModels(_template.Project.Application).FirstOrDefault(x => x.Id == _pagingModelReference.GenericTypeParameters.First().Element.Id);
+        public ComponentModelModel PaginationModel => new ComponentModelModel(View.GetStereotypeProperty<IElement>("Search View Settings", "Pagination Model"));
+        public ModelDefinitionModel DataModel => new ModelDefinitionModel(PaginationModel.TypeReference.GenericTypeParameters.First().Element);
 
         public int Priority { get; } = 0;
-        public string GetOverwrite() => _template.Model.HasStereotype("Paginated Search Layout") ? TransformText() : null;
+        public string GetOverwrite() => MustOverwrite() ? TransformText() : null;
+
+        private bool MustOverwrite() => View?.TypeReference.Element.Name == "Search View";
     }
 
     public interface IOverwriteDecorator : ITemplateDecorator

@@ -44,6 +44,9 @@
     <template id="Angular.Templates.Environment.EnvironmentTemplate" externalReference="e7ea472f-5ef5-453b-8df6-4fb3569b9e07">
       <role>Angular</role>
     </template>
+    <template id="Angular.Templates.Model.ModelTemplate" externalReference="9273966e-d177-45c3-8807-1e3bcbbf2cd8">
+      <role>Angular</role>
+    </template>
   </templates>
   <decorators>
     <decorator id="Angular.AngularComponentHtmlTemplate.PagedSearchDecorator" />

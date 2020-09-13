@@ -47,44 +47,51 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             
             #line default
             #line hidden
-            this.Write("\r\n  ) {\r\n");
+            this.Write("\r\n  ) {\r\n  }\r\n");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
   foreach (var operation in Model.Operations) { 
             
             #line default
             #line hidden
             this.Write("\r\n  public ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetParameterDefinitions(operation)));
             
             #line default
             #line hidden
             this.Write("): Observable<");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetReturnType(operation)));
             
             #line default
             #line hidden
-            this.Write("> {\r\n    let url = \"\"{url}\"\";");
+            this.Write("> {\r\n    let url = \"");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetPath(operation)));
+            
+            #line default
+            #line hidden
+            this.Write("\";");
+            
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetUpdateUrl(operation)));
             
             #line default
             #line hidden
             this.Write("\r\n    return this.apiService.");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetDataServiceCall(operation)));
             
             #line default
@@ -92,12 +99,12 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             this.Write("\r\n      .pipe(map((response: any) => {\r\n        return response;\r\n      }));\r\n  }" +
                     "\r\n");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplate.tt"
   } 
             
             #line default
             #line hidden
-            this.Write("  }\r\n}\r\n");
+            this.Write("}\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

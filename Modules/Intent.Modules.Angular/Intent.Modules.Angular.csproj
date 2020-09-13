@@ -219,6 +219,19 @@
     <Compile Include="Api\ServiceProxyOperationModel.cs" />
     <Compile Include="Api\ParameterModel.cs" />
     <Compile Include="Api\TypeDefinitionModel.cs" />
+    <Compile Include="Api\EnumLiteralModel.cs" />
+    <Compile Include="Api\ViewTemplateModel.cs" />
+    <Compile Include="Templates\Model\ModelTemplate\ModelTemplateRegistration.cs" />
+    <Content Include="Templates\Model\ModelTemplate\ModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Compile Include="Templates\Model\ModelTemplate\ModelTemplate.cs">
+      <DependentUpon>ModelTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Model\ModelTemplate\ModelTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Intent.Modules.Angular.imodspec" />

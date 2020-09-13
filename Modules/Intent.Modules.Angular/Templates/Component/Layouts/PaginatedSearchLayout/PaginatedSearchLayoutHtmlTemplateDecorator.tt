@@ -7,37 +7,31 @@
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
 <!--IntentManaged-->
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col">
-      <button class="btn btn-secondary mb-2" type="button" (click)="createMovie()">Create New</button>
-    </div>
-  </div>
-  <div *ngIf="pagination">
-    <div class="">
-      <div class="row border rounded-top">
-<# foreach(var field in PagingModel.Fields) { #>
-        <div class="col"><#= field.Name.ToPascalCase() #></div>
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+<# foreach(var field in DataModel.Fields) { #>
+            <th><#= field.Name.ToPascalCase() #></th>
 <# } #>
-      </div>
-      <div *ngFor="let item of pagination.items" class="row border">
-<# foreach(var field in PagingModel.Fields) { #>
-        <div class="col">
-          <span>{{item.<#= field.Name #>}}</span>
-        </div>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of <#= PaginationModel.Name #>?.items" class="clickable">
+<# foreach(var field in DataModel.Fields) { #>
+            <td>{{item.<#= field.Name #>}}</td>
 <# } #>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col">
-          <ngb-pagination class="d-flex justify-content-center"
-                          [(page)]="pagination.pageNumber"
-                          [pageSize]="pagination.pageSize"
-                          [collectionSize]="pagination.totalItems"
-                          (pageChange)="changePage()"
-                          [maxSize]="5" [boundaryLinks]="false"></ngb-pagination>
-        </div>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
+  </div>
+  <div class="row">
+    <div class="col">
+      <pagination [totalItems]="<#= PaginationModel.Name #>?.totalItems" [(ngModel)]="<#= PaginationModel.Name #>.pageNumber" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
   </div>
 </div>
