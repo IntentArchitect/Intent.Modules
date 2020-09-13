@@ -32,8 +32,8 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
         public override string TransformText()
         {
             this.Write("import { NgModule } from \'@angular/core\';\r\nimport { Routes, RouterModule, Preload" +
-                    "AllModules } from \'@angular/router\';\r\n\r\n//@IntentMerge\r\nconst routes: Routes = [" +
-                    "\r\n");
+                    "AllModules } from \'@angular/router\';\r\n\r\n//@IntentMerge()\r\nconst routes: Routes =" +
+                    " [\r\n");
             
             #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppRoutingModuleTemplate\AppRoutingModuleTemplate.tt"
  foreach(var module in Model) {
@@ -77,9 +77,9 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
             
             #line default
             #line hidden
-            this.Write("];\r\n\r\n@IntentMerge\r\n@NgModule({\r\n  imports: [RouterModule.forRoot(routes, {\r\n    " +
-                    "preloadingStrategy: PreloadAllModules\r\n  })],\r\n  exports: [RouterModule]\r\n})\r\nex" +
-                    "port class AppRoutingModule { }\r\n");
+            this.Write("];\r\n\r\n@IntentMerge()\r\n@NgModule({\r\n  imports: [RouterModule.forRoot(routes, {\r\n  " +
+                    "  preloadingStrategy: PreloadAllModules\r\n  })],\r\n  exports: [RouterModule]\r\n})\r\n" +
+                    "export class AppRoutingModule { }\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

@@ -7,15 +7,15 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.Angular.Api
+namespace Intent.Modules.Angular.Layout.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ComponentViewModel : IHasStereotypes, IMetadataModel
+    public class TableModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Component View";
+        public const string SpecializationType = "Table";
         protected readonly IElement _element;
 
-        public ComponentViewModel(IElement element, string requiredType = SpecializationType)
+        public TableModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -43,7 +43,7 @@ namespace Intent.Modules.Angular.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public bool Equals(ComponentViewModel other)
+        public bool Equals(TableModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -54,7 +54,7 @@ namespace Intent.Modules.Angular.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ComponentViewModel)obj);
+            return Equals((TableModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -62,5 +62,11 @@ namespace Intent.Modules.Angular.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public bool IsMapped => _element.IsMapped;
+
+        [IntentManaged(Mode.Fully)]
+        public IElementMapping Mapping => _element.MappedElement;
     }
 }

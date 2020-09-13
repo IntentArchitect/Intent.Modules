@@ -95,7 +95,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             
             #line default
             #line hidden
-            this.Write("\r\n  @IntentIgnore\r\n  ");
+            this.Write("\r\n  @IntentIgnore()\r\n  ");
             
             #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(command.Name.ToCamelCase()));

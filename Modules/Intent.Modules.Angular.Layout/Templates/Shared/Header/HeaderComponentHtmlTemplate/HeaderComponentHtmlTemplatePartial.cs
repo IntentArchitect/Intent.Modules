@@ -55,7 +55,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
                         navbar.AppendChild($@"
       <li class=""nav-item active"">
         <a class=""nav-link"" routerLink=""/{moduleRoute.Route}"">{moduleRoute.ModuleName}</a>
-      </li>") ;
+      </li>");
                     }
                 }
             }

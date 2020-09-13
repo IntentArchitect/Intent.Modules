@@ -8,7 +8,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-//@IntentMerge
+//@IntentMerge()
 const routes: Routes = [
 <#  foreach(var component in Model.Components) { #>
 <#      if (Model.Components.IndexOf(component) == 0) { #>
@@ -26,7 +26,7 @@ const routes: Routes = [
 <#  } #>
 ];
 
-@IntentMerge
+@IntentMerge()
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

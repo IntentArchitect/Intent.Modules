@@ -37,6 +37,9 @@
       <role>Angular</role>
     </template>
   </templates>
+  <decorators>
+    <decorator id="Angular.Layout.AngularComponentHtmlDecorator.PagedSearchDecorator" />
+  </decorators>
   <dependencies>
     <dependency id="Intent.Common" version="2.1.0" />
     <dependency id="Intent.Common.Types" version="2.1.0" />
@@ -47,5 +50,7 @@
     <file src="$outDir$/$id$.pdb" />
     <file src="$outDir$/HtmlAgilityPack.dll" />
   </files>
-  <metadata />
+  <metadata>
+    <install target="Angular" src="modelers" />
+  </metadata>
 </package>

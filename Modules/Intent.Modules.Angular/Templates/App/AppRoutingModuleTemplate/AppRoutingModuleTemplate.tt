@@ -9,7 +9,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-//@IntentMerge
+//@IntentMerge()
 const routes: Routes = [
 <# foreach(var module in Model) {
 // All of the below is not gonna work; but for now just to test idea...
@@ -21,7 +21,7 @@ const routes: Routes = [
 <# } #>
 ];
 
-@IntentMerge
+@IntentMerge()
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     preloadingStrategy: PreloadAllModules

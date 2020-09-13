@@ -31,7 +31,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
         public override string TransformText()
         {
             this.Write("import { NgModule } from \'@angular/core\';\r\nimport { RouterModule, Routes } from \'" +
-                    "@angular/router\';\r\n\r\n//@IntentMerge\r\nconst routes: Routes = [\r\n");
+                    "@angular/router\';\r\n\r\n//@IntentMerge()\r\nconst routes: Routes = [\r\n");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
   foreach(var component in Model.Components) { 
@@ -86,8 +86,8 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
             
             #line default
             #line hidden
-            this.Write("];\r\n\r\n@IntentMerge\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  e" +
-                    "xports: [RouterModule]\r\n})\r\nexport class ");
+            this.Write("];\r\n\r\n@IntentMerge()\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n " +
+                    " exports: [RouterModule]\r\n})\r\nexport class ");
             
             #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularRoutingModuleTemplate\AngularRoutingModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

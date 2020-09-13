@@ -29,6 +29,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         public AngularComponentTsTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model)
         {
             AddTypeSource(ModelTemplate.TemplateId);
+            AddTypeSource(AngularDTOTemplate.TemplateId);
         }
 
         public string ComponentName
@@ -62,32 +63,6 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                     {AngularComponentCreatedEvent.ModelId, Model.Id},
                 });
         }
-
-        //      protected override void ApplyFileChanges(TypescriptFile file)
-        //      {
-        //          var @class = file.ClassDeclarations().First();
-
-        //          foreach (var model in Model.Models)
-        //          {
-        //              if (!@class.NodeExists($"PropertyDeclaration:{model.Name}"))
-        //              {
-        //                  @class.AddProperty($@"
-        //{model.Name}: {Types.Get(model.TypeReference)};");
-        //              }
-        //          }
-
-        //          foreach (var command in Model.Commands)
-        //          {
-        //              if (!@class.MethodExists(command.Name.ToCamelCase()))
-        //              {
-        //                  @class.AddMethod($@"
-
-        //{command.Name.ToCamelCase()}({}): {(command.ReturnType != null ? Types.Get(command.ReturnType) : "void")} {{
-
-        //}}");
-        //              }
-        //          }
-        //      }
 
         public string GetParameters(ComponentCommandModel command)
         {

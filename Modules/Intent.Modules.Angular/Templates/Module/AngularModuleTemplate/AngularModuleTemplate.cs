@@ -31,7 +31,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
         public override string TransformText()
         {
             this.Write("import { NgModule } from \'@angular/core\';\r\nimport { CommonModule } from \'@angular" +
-                    "/common\';\r\n\r\n@IntentMerge\r\n@NgModule({\r\n  declarations: [");
+                    "/common\';\r\n\r\n@IntentMerge()\r\n@NgModule({\r\n  declarations: [");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetComponents()));

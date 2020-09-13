@@ -63,14 +63,5 @@ namespace Intent.Modules.Angular.Api
             return models;
         }
 
-        public IList<ViewTemplateModel> GetViewTemplateModels(IApplication application)
-        {
-            var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)
-                .Where(x => x.SpecializationType == ViewTemplateModel.SpecializationType)
-                .Select(x => new ViewTemplateModel(x))
-                .ToList<ViewTemplateModel>();
-            return models;
-        }
-
     }
 }

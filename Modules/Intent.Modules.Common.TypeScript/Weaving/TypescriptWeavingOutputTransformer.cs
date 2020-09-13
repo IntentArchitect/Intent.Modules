@@ -21,16 +21,16 @@ namespace Intent.Modules.Common.TypeScript.Weaving
             {
                 return;
             }
-
-            var existingFile = typeScriptMerged.GetExistingFile();
-
-            if (existingFile == null)
-            {
-                return;
-            }
-
             try
             {
+                var existingFile = typeScriptMerged.GetExistingFile();
+
+                if (existingFile == null)
+                {
+                    return;
+                }
+
+
                 var merger = new TypeScriptWeavingMerger();
 
                 var newContent = merger.Merge(existingFile, output.Content);
@@ -39,7 +39,9 @@ namespace Intent.Modules.Common.TypeScript.Weaving
             }
             catch (Exception e)
             {
-                output.ChangeContent(existingFile.GetSource());
+                var metadata = output.FileMetadata;
+                var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
+                output.ChangeContent(File.ReadAllText(fullFileName)); // don't change output
 
                 Logging.Log.Failure($"Error while weaving TypeScript file: {output.FileMetadata.GetRelativeFilePath()}");
                 Logging.Log.Failure(e.ToString());

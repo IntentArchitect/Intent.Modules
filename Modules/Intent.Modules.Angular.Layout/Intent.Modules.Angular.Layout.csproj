@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt">
+      <LastGenOutput>PaginatedSearchLayoutHtmlTemplateDecorator.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Templates\AppComponentHtmlTemplate\AppComponentHtmlTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AppComponentHtmlTemplate.cs</LastGenOutput>
@@ -37,6 +48,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PaginatedSearchLayoutHtmlTemplateDecorator.tt</DependentUpon>
+    </Compile>
     <Compile Update="Templates\AppComponentHtmlTemplate\AppComponentHtmlTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

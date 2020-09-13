@@ -7,6 +7,31 @@
     </FileLog>
     <FileLog>
       <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\Api\PaginationModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/PaginationModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\Api\TableColumnModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/TableColumnModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\Api\TableModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/TableModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\ApiMetadataProvider.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\Intent.Modules.Angular.Layout.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Angular.Layout.csproj</ProjectRelativeFilePath>
     </FileLog>
@@ -14,6 +39,11 @@
       <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\Intent.Modules.Angular.Layout.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Angular.Layout.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\modelers\Angular Layout Extensions.modeler.extension.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Angular Layout Extensions.modeler.extension.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>

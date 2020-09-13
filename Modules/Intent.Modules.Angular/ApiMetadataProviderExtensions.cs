@@ -36,10 +36,5 @@ namespace Intent.Modules.Angular.Api
             return new ApiMetadataProvider(metadataManager).GetTypeDefinitionModels(application);
         }
 
-        public static IList<ViewTemplateModel> GetViewTemplateModels(this IMetadataManager metadataManager, IApplication application)
-        {
-            return new ApiMetadataProvider(metadataManager).GetViewTemplateModels(application);
-        }
-
     }
 }

@@ -9,13 +9,17 @@ using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Angular.Api;
-using Intent.Modules.Angular.Templates.Component.Layouts.PaginatedSearchLayout;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplate
 {
+    public interface IOverwriteDecorator : ITemplateDecorator
+    {
+        string GetOverwrite();
+    }
+
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class AngularComponentHtmlTemplate : IntentProjectItemTemplateBase<ComponentModel>, ITemplatePostCreationHook, IHasDecorators<IOverwriteDecorator>
     {

@@ -7,15 +7,15 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.Angular.Api
+namespace Intent.Modules.Angular.Layout.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ViewTemplateModel : IHasStereotypes, IMetadataModel
+    public class PaginationModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "ViewTemplate";
+        public const string SpecializationType = "Pagination";
         protected readonly IElement _element;
 
-        public ViewTemplateModel(IElement element, string requiredType = SpecializationType)
+        public PaginationModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -43,7 +43,7 @@ namespace Intent.Modules.Angular.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public bool Equals(ViewTemplateModel other)
+        public bool Equals(PaginationModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -54,7 +54,7 @@ namespace Intent.Modules.Angular.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ViewTemplateModel)obj);
+            return Equals((PaginationModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -62,5 +62,11 @@ namespace Intent.Modules.Angular.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public bool IsMapped => _element.IsMapped;
+
+        [IntentManaged(Mode.Fully)]
+        public IElementMapping Mapping => _element.MappedElement;
     }
 }

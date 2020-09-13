@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -20,6 +23,7 @@ namespace Intent.Modules.Angular.Templates.Model.ModelTemplate
 
         public ModelTemplate(IProject project, ModelDefinitionModel model) : base(TemplateId, project, model)
         {
+            AddTypeSource(AngularDTOTemplate.TemplateId);
         }
 
         public string GetGenericParameters()
@@ -42,6 +46,11 @@ namespace Intent.Modules.Angular.Templates.Model.ModelTemplate
         {
             var modelName = Model.Name.EndsWith("Model") ? Model.Name.Substring(0, Model.Name.Length - "Model".Length) : Model.Name;
             return $"{modelName.ToKebabCase()}.model";
+        }
+
+        public string GetPath(IEnumerable<IElementMappingPathTarget> path)
+        {
+            return string.Join(".", path.Select(x => x.Name.ToCamelCase()));
         }
     }
 }

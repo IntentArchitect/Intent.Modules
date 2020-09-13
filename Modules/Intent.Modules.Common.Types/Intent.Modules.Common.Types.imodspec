@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Types</id>
-  <version>2.1.1</version>
+  <version>2.1.2</version>
   <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Provides common types supported by the majority of programming languages.</summary>
   <description>Provides common types supported by the majority of programming languages.</description>
@@ -14,7 +14,7 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="2.1.0"/>
+    <dependency id="Intent.Common" version="2.1.1"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

@@ -10,7 +10,17 @@
 <#@ import namespace="Intent.Modules.Angular.Api" #>
 
 export class <#= ClassName #><#= GetGenericParameters() #> { 
+<#  if (Model.Mapping != null) { #>
+  public static create<#= GetGenericParameters() #>(dto: <#= GetTypeName(Model.Mapping.Element) #><#= GetGenericParameters() #>): <#= ClassName #><#= GetGenericParameters() #> {
+    var model = new <#= ClassName #><#= GetGenericParameters() #>();
+<# foreach (var field in Model.Fields.Where(x => x.InternalElement.IsMapped)) {#>
+    model.<#= field.Name.ToCamelCase() #> = dto.<#=GetPath(field.InternalElement.MappedElement.Path)#>;
+<#}#>
+    return model;
+  }
+
+<#  } #>
 <# foreach (var field in Model.Fields) {#>
-    <#= field.Name.ToCamelCase() #>: <#= GetTypeName(field.TypeReference) #>;
+  <#= field.Name.ToCamelCase() #>: <#= GetTypeName(field.TypeReference) #>;
 <#}#>
 }

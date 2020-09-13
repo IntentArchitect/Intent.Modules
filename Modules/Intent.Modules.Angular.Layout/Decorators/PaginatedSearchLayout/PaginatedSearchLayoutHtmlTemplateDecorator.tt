@@ -1,4 +1,4 @@
-<#@ template language="C#" #>
+<#@ template language="C#" inherits="IntentTemplateBase" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -13,21 +13,20 @@
       <table class="table table-hover">
         <thead class="thead-dark">
           <tr>
-<# foreach(var field in DataModel.Fields) { #>
+<# foreach(var field in DataModel.ChildElements) { #>
             <th><#= field.Name.ToPascalCase() #></th>
 <# } #>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of <#= PaginationModel.Name #>?.items" class="clickable">
-<# foreach(var field in DataModel.Fields) { #>
+<# foreach(var field in DataModel.ChildElements) { #>
             <td>{{item.<#= field.Name #>}}</td>
 <# } #>
           </tr>
         </tbody>
       </table>
     </div>
-
   </div>
   <div class="row">
     <div class="col">

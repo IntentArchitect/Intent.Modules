@@ -25,7 +25,7 @@ export class <#= ClassName #> implements OnInit {
   }
 <#  foreach (var command in Model.Commands) {#>
 
-  @IntentIgnore
+  @IntentIgnore()
   <#= command.Name.ToCamelCase() #>(<#= GetParameters(command) #>): <#= GetReturnType(command) #> {
     // write your business logic here for this command
   }
