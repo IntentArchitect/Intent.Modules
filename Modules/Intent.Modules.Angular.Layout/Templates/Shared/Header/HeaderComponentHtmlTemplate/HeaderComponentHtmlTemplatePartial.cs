@@ -9,6 +9,7 @@ using Intent.Modules.Angular.Layout.Html;
 using Intent.Modules.Angular.Templates;
 using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Html.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.Editor;
 using Intent.RoslynWeaver.Attributes;
@@ -21,14 +22,14 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentHtmlTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class HeaderComponentHtmlTemplate : IntentProjectItemTemplateBase<object>
+    partial class HeaderComponentHtmlTemplate : HtmlTemplateBase
     {
         private List<ModuleRoute> _mainRoutes = new List<ModuleRoute>();
 
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.Templates.Shared.Header.HeaderComponentHtmlTemplate";
 
-        public HeaderComponentHtmlTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public HeaderComponentHtmlTemplate(IProject project) : base(TemplateId, project)
         {
             project.Application.EventDispatcher.Subscribe(AngularModuleRouteCreatedEvent.EventId, @event =>
             {
@@ -36,55 +37,53 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
             });
         }
 
-        public override string RunTemplate()
-        {
-            var file = GetExistingFile() ?? base.RunTemplate();
-            var html = new HtmlDocument()
-            {
-                OptionOutputOriginalCase = true,
-                OptionWriteEmptyNodes = true
-            };
-            html.LoadHtml(file);
-            var navbar = html.DocumentNode.SelectSingleNode("//ul[@intent-managed='navbar']");
-            if (navbar != null)
-            {
-                foreach (var moduleRoute in _mainRoutes)
-                {
-                    if (navbar.SelectSingleNode($"//a[@routerlink='/{moduleRoute.Route}']") == null)
-                    {
-                        navbar.AppendChild($@"
-      <li class=""nav-item active"">
-        <a class=""nav-link"" routerLink=""/{moduleRoute.Route}"">{moduleRoute.ModuleName}</a>
-      </li>");
-                    }
-                }
-            }
+      //  public override string RunTemplate()
+      //  {
+      //      var file = GetExistingFile() ?? base.RunTemplate();
+      //      var html = new HtmlDocument()
+      //      {
+      //          OptionOutputOriginalCase = true,
+      //          OptionWriteEmptyNodes = true
+      //      };
+      //      html.LoadHtml(file);
+      //      var navbar = html.DocumentNode.SelectSingleNode("//ul[@intent-managed='navbar']");
+      //      if (navbar != null)
+      //      {
+      //          foreach (var moduleRoute in _mainRoutes)
+      //          {
+      //              if (navbar.SelectSingleNode($"//a[@routerlink='/{moduleRoute.Route}']") == null)
+      //              {
+      //                  navbar.AppendChild($@"
+      //<li class=""nav-item active"">
+      //  <a class=""nav-link"" routerLink=""/{moduleRoute.Route}"">{moduleRoute.ModuleName}</a>
+      //</li>");
+      //              }
+      //          }
+      //      }
 
-            using (StringWriter writer = new StringWriter())
-            {
-                html.Save(writer);
-                return writer.ToString();
-            }
-        }
+      //      using (StringWriter writer = new StringWriter())
+      //      {
+      //          html.Save(writer);
+      //          return writer.ToString();
+      //      }
+      //  }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetadata(
+            return new HtmlDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: "header.component",
-                fileExtension: "html",
-                defaultLocationInProject: "ClientApp/src/app/shared/header"
+                relativeLocation: "ClientApp/src/app/shared/header"
             );
         }
 
-        private string GetExistingFile()
-        {
-            var metadata = GetMetadata();
-            var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
-            return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : null;
-        }
+        //private string GetExistingFile()
+        //{
+        //    var metadata = GetMetadata();
+        //    var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
+        //    return File.Exists(fullFileName) ? File.ReadAllText(fullFileName) : null;
+        //}
 
         private class ModuleRoute
         {

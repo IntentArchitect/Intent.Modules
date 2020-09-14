@@ -18,6 +18,10 @@ namespace Intent.Modules.Common.Html.Weaving
 
         public string GetMergedFile()
         {
+            if (string.IsNullOrWhiteSpace(_existingFile.Node.OuterHtml))
+            {
+                return _outputFile.GetSource();
+            }
             _existingFile.MergeWith(_outputFile);
 
             return _existingFile.GetSource();

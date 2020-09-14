@@ -104,6 +104,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Angular\Intent.Modules.Angular.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.Html\Intent.Modules.Common.Html.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj" />
   </ItemGroup>
 

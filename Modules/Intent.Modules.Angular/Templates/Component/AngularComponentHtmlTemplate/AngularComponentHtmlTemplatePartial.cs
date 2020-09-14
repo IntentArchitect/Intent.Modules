@@ -9,6 +9,7 @@ using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Common.Html.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -21,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularComponentHtmlTemplate : IntentProjectItemTemplateBase<ComponentModel>, ITemplatePostCreationHook, IHasDecorators<IOverwriteDecorator>
+    partial class AngularComponentHtmlTemplate : HtmlTemplateBase<ComponentModel>, ITemplatePostCreationHook, IHasDecorators<IOverwriteDecorator>
     {
         private readonly IList<IOverwriteDecorator> _decorators = new List<IOverwriteDecorator>();
         [IntentManaged(Mode.Fully)]
@@ -53,23 +54,23 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
 
         public override string RunTemplate()
         {
-            var meta = GetMetadata();
-            var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
+            //var meta = GetMetadata();
+            //var fullFileName = Path.Combine(meta.GetFullLocationPath(), meta.FileNameWithExtension());
 
-            if (File.Exists(fullFileName))
-            {
-                var source = File.ReadAllText(fullFileName);
-                if (source.StartsWith("<!--IntentManaged-->"))
-                {
+            //if (File.Exists(fullFileName))
+            //{
+            //    var source = File.ReadAllText(fullFileName);
+                //if (source.StartsWith("<!--IntentManaged-->"))
+                //{
                     return GetDecorators().Any() ? GetDecorators().First().GetOverwrite() ?? base.RunTemplate() : base.RunTemplate();
-                }
-                else
-                {
-                    return source;
-                }
-            }
+                //}
+                //else
+                //{
+                //    return source;
+                //}
+            //}
 
-            return base.RunTemplate();
+            //return base.RunTemplate();
         }
 
         public void AddDecorator(IOverwriteDecorator decorator)

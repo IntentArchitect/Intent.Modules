@@ -7,8 +7,7 @@
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
 <#@ import namespace="Intent.Modules.Angular.Layout.Api" #>
-<!--IntentManaged-->
-<div class="container-fluid">
+<div class="container-fluid" intent-merge="container">
 <#  foreach(var control in View.InternalElement.ChildElements) { 
         switch(control.SpecializationType) {#>
 <#          case TableModel.SpecializationType: {
@@ -38,7 +37,7 @@
 <#          case PaginationModel.SpecializationType: {
                 var model = new PaginationModel(control);
                 if (!model.IsValid()) break;#>
-  <div class="row">
+  <div class="row" intent-manage="<#= PaginationModel.SpecializationType.ToKebabCase() #>-<#= model.Name.ToKebabCase() #>">
     <div class="col">
       <pagination [totalItems]="<#= model.DataModelPath #>?.<#= model.TotalItemsPath #>" [(ngModel)]="<#= model.DataModelPath #>.<#= model.PageNumberPath #>" (pageChanged)="pageChanged($event)"></pagination>
     </div>

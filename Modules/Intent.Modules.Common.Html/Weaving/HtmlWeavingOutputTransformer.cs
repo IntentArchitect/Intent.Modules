@@ -17,12 +17,12 @@ namespace Intent.Modules.Common.Html.Weaving
 
         public void Transform(IOutputFile output)
         {
-            if (!(output.Template is IHtmlFileMerge typeScriptMerged))
+            if (!(output.Template is IHtmlFileMerge htmlFileMerge))
             {
                 return;
             }
 
-            var existingFile = typeScriptMerged.GetExistingFile();
+            var existingFile = htmlFileMerge.GetExistingFile();
 
             if (existingFile == null)
             {

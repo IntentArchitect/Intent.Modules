@@ -32,16 +32,16 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
         /// </summary>
         public override string TransformText()
         {
-            this.Write("<!--IntentManaged-->\r\n<div class=\"container-fluid\">\r\n");
+            this.Write("<div class=\"container-fluid\" intent-merge=\"container\">\r\n");
             
-            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
   foreach(var control in View.InternalElement.ChildElements) { 
         switch(control.SpecializationType) {
             
             #line default
             #line hidden
             
-            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
           case TableModel.SpecializationType: {
                 var model = new TableModel(control);
                 if (!model.IsValid()) break;
@@ -50,14 +50,14 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             #line hidden
             this.Write("  <div class=\"row\" intent-manage=\"");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TableModel.SpecializationType.ToKebabCase()));
             
             #line default
             #line hidden
             this.Write("-");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToKebabCase()));
             
             #line default
@@ -65,21 +65,21 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             this.Write("\">\r\n    <div class=\"col\">\r\n      <table class=\"table table-hover\">\r\n        <thea" +
                     "d class=\"thead-dark\">\r\n          <tr>\r\n");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  foreach(var field in model.DataModel.ChildElements) { 
             
             #line default
             #line hidden
             this.Write("            <th>");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("</th>\r\n");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  } 
             
             #line default
@@ -87,84 +87,98 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             this.Write("          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let ite" +
                     "m of ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.DataModelPath));
             
             #line default
             #line hidden
             this.Write("\" class=\"clickable\">\r\n");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  foreach(var field in model.DataModel.ChildElements) { 
             
             #line default
             #line hidden
             this.Write("            <td>{{item.");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
             
             #line default
             #line hidden
             this.Write("}}</td>\r\n");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  } 
             
             #line default
             #line hidden
             this.Write("          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n  </div>\r\n");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
           } break; 
             
             #line default
             #line hidden
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
           case PaginationModel.SpecializationType: {
                 var model = new PaginationModel(control);
                 if (!model.IsValid()) break;
             
             #line default
             #line hidden
-            this.Write("  <div class=\"row\">\r\n    <div class=\"col\">\r\n      <pagination [totalItems]=\"");
+            this.Write("  <div class=\"row\" intent-manage=\"");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(PaginationModel.SpecializationType.ToKebabCase()));
+            
+            #line default
+            #line hidden
+            this.Write("-");
+            
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToKebabCase()));
+            
+            #line default
+            #line hidden
+            this.Write("\">\r\n    <div class=\"col\">\r\n      <pagination [totalItems]=\"");
+            
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.DataModelPath));
             
             #line default
             #line hidden
             this.Write("?.");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.TotalItemsPath));
             
             #line default
             #line hidden
             this.Write("\" [(ngModel)]=\"");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.DataModelPath));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.PageNumberPath));
             
             #line default
             #line hidden
             this.Write("\" (pageChanged)=\"pageChanged($event)\"></pagination>\r\n    </div>\r\n  </div>\r\n");
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
           } break; 
             
             #line default
             #line hidden
             
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
       }
     }
             

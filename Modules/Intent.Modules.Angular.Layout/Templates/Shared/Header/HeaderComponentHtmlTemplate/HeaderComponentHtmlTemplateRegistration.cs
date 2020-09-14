@@ -20,7 +20,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
 
         public override ITemplate CreateTemplateInstance(IProject project)
         {
-            return new HeaderComponentHtmlTemplate(project, null);
+            return new HeaderComponentHtmlTemplate(project);
         }
     }
 }
